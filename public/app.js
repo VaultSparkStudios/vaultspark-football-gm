@@ -609,6 +609,20 @@ function bindEvents() {
   );
   const closeMobileNav = bindMobileNav();
   bindMenuTabs(activateTab, closeMobileNav);
+  document.querySelectorAll("[data-team-mode]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const targetId = button.dataset.teamMode;
+      if (targetId === state.activeTab) return;
+      try {
+        await activateTab(targetId);
+        if (state.activeTab === targetId) {
+          document.querySelector(`#${targetId} .team-mode-switch button[data-team-mode='${targetId}']`)?.focus();
+        }
+      } catch (error) {
+        presentActionError(error);
+      }
+    });
+  });
   bindUiIslandPreloads();
   queueIdleUiIslandPreloads();
 

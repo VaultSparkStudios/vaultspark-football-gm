@@ -51,6 +51,7 @@ export const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/session111-cpu-trade-market.test.js",
     "test/session109-front-office-advisor.test.js",
     "test/session109-persona-causal-trades.test.js",
     "test/session109-worker-transport-contract.test.js",
@@ -221,6 +222,7 @@ export const SHARDS = {
     "test/capability-operations-authority.test.js",
     "test/closeout-board-truth.test.js",
     "test/community-deploy-config.test.js",
+    "test/backend-ssh-transport.test.js",
     "test/context-meter-authority.test.js",
     "test/edge-security-policy.test.js",
     "test/session94-context-budget.test.js",

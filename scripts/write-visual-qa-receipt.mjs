@@ -9,6 +9,9 @@ const receiptDir = path.join(root, "docs", "visual-qa");
 const surfaceLabels = new Map([
   ["game-overview", "Franchise Desk, first-season contract, and Front Office Advisor"],
   ["game-league", "League standings and season navigation"],
+  ["game-roster", "Team workspace roster mode"],
+  ["game-depth", "Team workspace depth mode"],
+  ["game-trades", "Trade market and club identity"],
   ["game-dialog", "First-run Opening Contract tutorial"],
   ["cap-pressure", "Opening salary-cap pressure and General Manager legacy"],
   ["waiver-identity", "Named and rated waiver-wire player identity"],

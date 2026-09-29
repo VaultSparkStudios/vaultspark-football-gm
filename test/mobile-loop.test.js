@@ -38,7 +38,7 @@ test("mobile decision deck flags cap and injury pressure before advancing", () =
   assert.equal(cards[0].targetTab, "contractsTab");
   assert.equal(cards[0].targetId, "contractsSpotlight");
   assert.equal(cards[0].tone, "danger");
-  assert.equal(cards[1].targetTab, "rosterTab");
+  assert.equal(cards[1].targetTab, "depthTab");
   assert.equal(cards[1].targetId, "depthTable");
   assert.match(cards[1].detail, /1 controlled-team injury/);
 });

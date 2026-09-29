@@ -136,9 +136,9 @@ test("a hidden target is reported as unreached", async () => {
 });
 
 test("a target in the activated tab is still focused normally", async () => {
-  const { element, focus } = fakeElement({ id: "depthTable", panelId: "rosterTab" });
+  const { element, focus } = fakeElement({ id: "depthTable", panelId: "depthTab" });
   const result = await navigateToExactSurface(
-    { targetTab: "rosterTab", targetId: "depthTable" },
+    { targetTab: "depthTab", targetId: "depthTable" },
     { activateTab: () => {}, documentRef: { getElementById: () => element }, windowRef: {} }
   );
 

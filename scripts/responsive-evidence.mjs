@@ -26,6 +26,8 @@ const evidenceTabs = [
   ["overviewTab", "overview"],
   ["calendarTab", "league"],
   ["rosterTab", "roster"],
+  ["depthTab", "depth"],
+  ["transactionsTab", "trades"],
   ["faTab", "free-agency"],
   ["contractsTab", "contracts"],
   ["scoutingTab", "scouting"],
@@ -201,7 +203,8 @@ async function captureElement(page, outputDir, name, selector, records) {
 }
 
 async function selectGameTab(page, tabId) {
-  const tab = page.locator(`#sideMenu [data-tab="${tabId}"]`).first();
+  const teamSubmode = tabId === "depthTab";
+  const tab = page.locator(`#sideMenu [data-tab="${teamSubmode ? "rosterTab" : tabId}"]`).first();
   if (await tab.count() !== 1) throw new Error(`Missing responsive-evidence tab authority: ${tabId}`);
   const navToggle = page.locator("#mobileNavToggle");
   const drawerMode = await navToggle.isVisible().catch(() => false);
@@ -219,6 +222,7 @@ async function selectGameTab(page, tabId) {
     await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
     await page.waitForTimeout(320);
   }
+  if (teamSubmode) await page.locator("#rosterTab [data-team-mode='depthTab']").click();
   await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
   await page.waitForFunction((id) => !document.getElementById(id)?.hasAttribute("aria-busy"), tabId);
 }

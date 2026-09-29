@@ -13,6 +13,10 @@ const rootDir = path.resolve(__dirname, "..");
 
 const TEAM_COUNT = 32;
 
+export function engineModuleCount(root = rootDir) {
+  return fs.readdirSync(path.join(root, "src", "engine")).filter((name) => name.endsWith(".js")).length;
+}
+
 // Claims that were previously published and proven false or dev-facing.
 // Comments are stripped before matching, so this guards shipped text.
 const FORBIDDEN_PUBLIC_CLAIMS = [
@@ -135,7 +139,7 @@ export function inspectPublicTruth(root = rootDir) {
     }
   }
 
-  const engineCount = fs.readdirSync(path.join(root, "src", "engine")).filter((name) => name.endsWith(".js")).length;
+  const engineCount = engineModuleCount(root);
   // S94: landing.html was merged into index.html and is now an edge 301. The
   // engine-system and rival-club claims moved with it, so this gate follows
   // them rather than silently losing its subject.
@@ -143,9 +147,11 @@ export function inspectPublicTruth(root = rootDir) {
 
   const statedEngineCounts = [...landing.matchAll(/(\d+) Engine Systems|class="stat-num">(\d+)<\/strong><span class="stat-label">Engine Systems/g)]
     .map((m) => Number(m[1] ?? m[2]));
-  if (!statedEngineCounts.length) {
-    problems.push("index.html no longer states the engine-system count; update check-public-truth.mjs if that is intentional");
+  const derivedEngineCount = landing.includes('class="stat-num" data-engine-system-count>{{ENGINE_SYSTEM_COUNT}}</strong><span class="stat-label">Engine Systems');
+  if (!statedEngineCounts.length && !derivedEngineCount) {
+    problems.push("index.html no longer declares a derived or literal engine-system count; update check-public-truth.mjs if that is intentional");
   }
+  if (statedEngineCounts.length && derivedEngineCount) problems.push("index.html has conflicting derived and literal engine-system counts");
   for (const stated of statedEngineCounts) {
     if (stated !== engineCount) {
       problems.push(`index.html claims ${stated} engine systems but src/engine contains ${engineCount} modules`);

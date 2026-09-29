@@ -366,7 +366,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       kicker: "Trainer report",
       title: `${injuries.length} controlled-team ${injuries.length === 1 ? "injury" : "injuries"}`,
       detail: "Check depth before advancing the week.",
-      targetTab: "rosterTab",
+      targetTab: "depthTab",
       targetId: "depthTable",
       tone: injuries.length >= 3 ? "danger" : "warning"
     });

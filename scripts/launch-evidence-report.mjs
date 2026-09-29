@@ -7,6 +7,8 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const defaultBaseUrl = "https://playfranchisearchitect.com";
+const projectEmailAddress = "football@playfranchisearchitect.com";
+const studioMailbox = "founder@vaultsparkstudios.com";
 const defaultRoutes = [
   "/",
   "/game.html",
@@ -151,12 +153,93 @@ async function readFixture(file) {
   return JSON.parse(body);
 }
 
+const mailAddress = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
+const messageId = /^<[^\s<>@]+@[^\s<>@]+>$/;
+const evidenceReference = /^[A-Za-z0-9][A-Za-z0-9._:/-]{7,255}$/;
+
+function normalizedAddress(value) {
+  return typeof value === "string" ? value.trim().toLowerCase() : "";
+}
+
+function validDate(value) {
+  return typeof value === "string" && /^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/.test(value)
+    && Number.isFinite(Date.parse(value));
+}
+
+function validProof(value, type) {
+  return value && typeof value === "object" && !Array.isArray(value)
+    && value.type === type && typeof value.reference === "string"
+    && evidenceReference.test(value.reference);
+}
+
+/**
+ * --email-evidence points to JSON with schemaVersion, kind, provider, address,
+ * inbound, and reply. Each event carries addresses, an RFC-style message ID,
+ * a receivedAt timestamp, and a distinct mailbox evidence reference. The reply
+ * must be observed in the external recipient inbox and reference the inbound ID.
+ * No sender identity or private evidence reference is copied into the report.
+ */
+export function validateEmailRoundTrip(receipt) {
+  const fail = (detail) => ({ status: "unverified", address: projectEmailAddress, detail });
+  if (!receipt || typeof receipt !== "object" || Array.isArray(receipt)) {
+    return fail("A structured project-email-round-trip JSON receipt is required; a note or filename is not proof.");
+  }
+  if (receipt.schemaVersion !== 1 || receipt.kind !== "project-email-round-trip" || receipt.provider !== "zoho") {
+    return fail("Email receipt schema, kind, or Zoho provider is invalid.");
+  }
+  if (normalizedAddress(receipt.address) !== projectEmailAddress) return fail("Email receipt project address does not match the published contact address.");
+  const inbound = receipt.inbound;
+  const reply = receipt.reply;
+  if (!inbound || typeof inbound !== "object" || !reply || typeof reply !== "object") {
+    return fail("Email receipt requires inbound delivery and a reply observed in the recipient inbox.");
+  }
+  const sender = normalizedAddress(inbound.from);
+  if (!mailAddress.test(sender) || [projectEmailAddress, studioMailbox].includes(sender)
+    || normalizedAddress(inbound.to) !== projectEmailAddress
+    || normalizedAddress(inbound.deliveredTo) !== studioMailbox) {
+    return fail("Inbound sender, project-domain recipient, or Zoho mailbox delivery address is invalid.");
+  }
+  if (!messageId.test(inbound.messageId || "") || !validDate(inbound.receivedAt)
+    || !validProof(inbound.evidence, "zoho-inbox-received")) {
+    return fail("Inbound delivery lacks a message ID, receipt time, or Zoho inbox evidence reference.");
+  }
+  if (normalizedAddress(reply.from) !== projectEmailAddress || normalizedAddress(reply.to) !== sender
+    || normalizedAddress(reply.deliveredTo) !== sender || reply.inReplyTo !== inbound.messageId) {
+    return fail("Reply From/To/delivered-to identity or thread does not match the inbound message.");
+  }
+  if (!messageId.test(reply.messageId || "") || reply.messageId === inbound.messageId
+    || !validDate(reply.receivedAt) || Date.parse(reply.receivedAt) <= Date.parse(inbound.receivedAt)
+    || !validProof(reply.evidence, "recipient-inbox-received")
+    || reply.evidence.reference === inbound.evidence.reference) {
+    return fail("Reply lacks a distinct message ID, later receipt time, or recipient inbox evidence reference.");
+  }
+  if (Date.parse(reply.receivedAt) > Date.now() + 5 * 60_000) {
+    return fail("Reply receipt time is in the future.");
+  }
+  return {
+    status: "verified",
+    address: projectEmailAddress,
+    detail: "Zoho inbound delivery and recipient-observed reply-as-alias evidence match the published contact address and message thread."
+  };
+}
+
+async function readEmailEvidence(file) {
+  if (!file) return null;
+  try {
+    const body = await fs.readFile(path.resolve(file), "utf8");
+    return JSON.parse(body);
+  } catch {
+    // Keep the report fail-closed without disclosing a possibly private path or mail data.
+    return null;
+  }
+}
+
 export async function buildLaunchEvidenceReport({
   baseUrl = defaultBaseUrl,
   routes = defaultRoutes,
   timeoutMs = 7000,
   fixture = null,
-  emailEvidence = ""
+  emailEvidence = undefined
 } = {}) {
   const checkedAt = new Date().toISOString();
   const fixtureRoutes = fixture?.routes || {};
@@ -185,18 +268,7 @@ export async function buildLaunchEvidenceReport({
     routeChecks.push(check);
   }
 
-  const trimmedEvidence = String(emailEvidence || fixture?.emailEvidence || "").trim();
-  const emailForwarding = trimmedEvidence
-    ? {
-        status: "verified",
-        address: "football@playfranchisearchitect.com",
-        detail: trimmedEvidence
-      }
-    : {
-        status: "unverified",
-        address: "football@playfranchisearchitect.com",
-        detail: "No delivery/forwarding evidence supplied. Do not mark SPARKED from route checks alone."
-      };
+  const emailForwarding = validateEmailRoundTrip(emailEvidence === undefined ? fixture?.emailEvidence : emailEvidence);
 
   const routesOk = routeChecks.every((check) => check.ok);
   const emailOk = emailForwarding.status === "verified";
@@ -225,7 +297,7 @@ export async function buildLaunchEvidenceReport({
   const originOk = !originEvidenceRequired || (healthReceiptValid && headersValid);
   const blockers = [];
   if (!routesOk) blockers.push("One or more public routes failed or could not be checked.");
-  if (!emailOk) blockers.push("On-domain email forwarding/copying is unverified.");
+  if (!emailOk) blockers.push("On-domain email inbound delivery and reply-as-alias are unverified.");
   if (originEvidenceRequired && !healthReceiptValid) blockers.push("Canonical-origin health receipt is missing or invalid.");
   if (originEvidenceRequired && !headersValid) blockers.push("Canonical-origin edge security headers are incomplete.");
   return {
@@ -269,11 +341,12 @@ function renderText(report) {
 async function main() {
   const args = parseArgs();
   const fixture = await readFixture(args.fixture);
+  const emailEvidence = args.emailEvidence === undefined ? undefined : await readEmailEvidence(args.emailEvidence);
   const report = await buildLaunchEvidenceReport({
     baseUrl: args.baseUrl,
     timeoutMs: args.timeoutMs,
     fixture,
-    emailEvidence: args.emailEvidence
+    emailEvidence
   });
   if (args.output) {
     const outputPath = path.resolve(rootDir, args.output);

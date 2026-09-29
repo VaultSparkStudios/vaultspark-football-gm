@@ -193,7 +193,8 @@ test("create league, advance week, and open player modal", async ({ page }) => {
 test("depth chart controls and game guide modal are operational", async ({ page }) => {
   await createLeagueFromSetup(page);
 
-  await page.click('[data-testid="tab-depth"]');
+  await page.click('[data-testid="tab-roster"]');
+  await page.click('#rosterTab [data-team-mode="depthTab"]');
   await page.selectOption("#depthPositionSelect", "RB");
   await page.click("#loadDepthBtn");
   await waitGameReady(page);
@@ -608,14 +609,13 @@ test("primary franchise tablist supports keyboard activation on desktop and in t
   await expect(teamGroup).toHaveAttribute("aria-expanded", "true");
   await page.keyboard.press("Tab");
   await expect(roster).toBeFocused();
-  await page.keyboard.press("ArrowDown");
-  const depth = page.locator('[data-testid="tab-depth"]');
-  await expect(depth).toBeFocused();
   await page.keyboard.press("Enter");
-  await expect(depth).toHaveAttribute("aria-selected", "true");
+  await expect(roster).toHaveAttribute("aria-selected", "true");
+  await page.locator('#rosterTab [data-team-mode="depthTab"]').click();
+  await expect(roster).toHaveAttribute("aria-controls", "depthTab");
   await expect(page.locator("#depthTab")).toHaveClass(/active/);
   await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
-  await expect(toggle).toBeFocused();
+  await expect(page.locator('#depthTab [data-team-mode="depthTab"]')).toBeFocused();
 
   await toggle.click();
   await expect(deskGroup).toBeFocused();

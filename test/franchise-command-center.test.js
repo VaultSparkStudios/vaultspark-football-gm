@@ -77,7 +77,7 @@ test("every open-tab command names the exact decision surface in its explanation
   const cards = buildFranchiseCommandStack(input).filter((card) => card.action === "open-tab");
   assert.deepEqual(cards.map(({ targetTab, targetId }) => ({ targetTab, targetId })), [
     { targetTab: "contractsTab", targetId: "contractsSpotlight" },
-    { targetTab: "rosterTab", targetId: "depthTable" },
+    { targetTab: "depthTab", targetId: "depthTable" },
     // the deadline panel lives in the overview tab; pointing at transactionsTab
     // focused a display:none element and reported success (S101).
     { targetTab: "overviewTab", targetId: "tradeDeadlinePanel" }

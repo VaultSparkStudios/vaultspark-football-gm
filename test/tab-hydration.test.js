@@ -75,8 +75,11 @@ test("every public game tab has an explicit hydration declaration", () => {
 
 test("hydration topology proves shell parity and rejects missing or orphaned loaders", async () => {
   const html = await import("node:fs/promises").then((fs) => fs.readFile(new URL("../public/game.html", import.meta.url), "utf8"));
-  const shellTabs = [...html.matchAll(/class="menu-btn[^"]*"[^>]*data-tab="([^"]+)"/g)].map((match) => match[1]).sort();
+  const menuTabs = [...html.matchAll(/class="menu-btn[^"]*"[^>]*data-tab="([^"]+)"/g)].map((match) => match[1]);
+  const teamModes = [...html.matchAll(/data-team-mode="([^"]+)"/g)].map((match) => match[1]);
+  const shellTabs = [...new Set([...menuTabs, ...teamModes])].sort();
   assert.deepEqual(shellTabs, Object.keys(TAB_HYDRATION_DOMAINS).sort());
+  assert.ok(menuTabs.includes("rosterTab") && teamModes.includes("depthTab"), "Team keeps one primary destination and an explicit depth mode");
   assert.throws(
     () => validateHydrationTopology({ loaders: {}, domainsByTab: { rosterTab: ["roster"] } }),
     /missing loader roster/

@@ -323,7 +323,7 @@ export function mountShareControl(container, buildOptions) {
 
       let crestSvg = opts.crestSvg;
       if (crestSvg === undefined) {
-        // TODO-free hook: public/lib/teamCrest.js is optional. Its absence
+        // The crest module is optional. Its absence
         // (module 404, or a load error) must never block sharing.
         try {
           const crestModule = await import("./teamCrest.js");

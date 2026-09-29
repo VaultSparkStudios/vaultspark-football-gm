@@ -84,7 +84,7 @@ test("choosing a section closes the drawer", async ({ page }) => {
   await expect(page.locator("#rosterTab")).toHaveClass(/active/);
 });
 
-test("six first-level groups expose all fourteen tabs and Commissioner Mode", async ({ page }) => {
+test("six first-level groups expose thirteen destinations plus Team modes and Commissioner Mode", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await startFranchise(page);
   await page.locator("#mlFullViewBtn").click();
@@ -93,7 +93,7 @@ test("six first-level groups expose all fourteen tabs and Commissioner Mode", as
   const groups = page.locator("#sideMenu .menu-group-toggle:visible");
   await expect(groups).toHaveCount(6);
   await expect(groups).toHaveText(["Desk", "Team", "Market", "Draft", "League", "Club"]);
-  await expect(page.locator("#sideMenu .menu-btn")).toHaveCount(14);
+  await expect(page.locator("#sideMenu .menu-btn")).toHaveCount(13);
   await expect(page.locator("#sideMenu .menu-btn:visible")).toHaveCount(0);
   await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
 

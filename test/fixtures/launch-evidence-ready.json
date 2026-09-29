@@ -24,5 +24,27 @@
       "body": "{\"status\":\"ok\",\"launchReady\":false,\"sourceRevision\":\"fixture-ready\"}"
     }
   },
-  "emailEvidence": "Forwarding receipt copied to founder operations inbox."
+  "emailEvidence": {
+    "schemaVersion": 1,
+    "kind": "project-email-round-trip",
+    "provider": "zoho",
+    "address": "football@playfranchisearchitect.com",
+    "inbound": {
+      "from": "qa@example.net",
+      "to": "football@playfranchisearchitect.com",
+      "deliveredTo": "founder@vaultsparkstudios.com",
+      "messageId": "<inbound-qa@example.net>",
+      "receivedAt": "2026-09-29T12:00:00Z",
+      "evidence": { "type": "zoho-inbox-received", "reference": "fixture:zoho-inbox-001" }
+    },
+    "reply": {
+      "from": "football@playfranchisearchitect.com",
+      "to": "qa@example.net",
+      "deliveredTo": "qa@example.net",
+      "inReplyTo": "<inbound-qa@example.net>",
+      "messageId": "<reply-qa@playfranchisearchitect.com>",
+      "receivedAt": "2026-09-29T12:05:00Z",
+      "evidence": { "type": "recipient-inbox-received", "reference": "fixture:recipient-inbox-001" }
+    }
+  }
 }

@@ -7,7 +7,7 @@ import { assertBrowserModuleReachability } from "./check-browser-module-reachabi
 import { assertBrowserPromiseObservability } from "./check-browser-promise-observability.mjs";
 import { assertApiContractParity } from "./check-api-contract-parity.mjs";
 import { assertPublicFooterContract } from "./lib/public-footer.mjs";
-import { assertPublicTruth } from "./check-public-truth.mjs";
+import { assertPublicTruth, engineModuleCount } from "./check-public-truth.mjs";
 import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
 import { compactArtifactFingerprint, fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
@@ -308,6 +308,11 @@ async function writeHtml(pageName) {
   const sourcePath = path.join(publicDir, pageName);
   const outputPath = path.join(outDir, pageName);
   let source = await fs.readFile(sourcePath, "utf8");
+  if (pageName === "index.html") {
+    const marker = "{{ENGINE_SYSTEM_COUNT}}";
+    if (!source.includes(marker)) throw new Error("Landing engine count marker missing");
+    source = source.replace(marker, String(engineModuleCount(rootDir)));
+  }
   const pagePath = pageName === "index.html" ? "./" : pageName;
   if (pageName === "status.html") {
     // The source keeps every note (the freshness gate reads it); the served

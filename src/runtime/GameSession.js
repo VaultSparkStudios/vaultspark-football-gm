@@ -171,6 +171,7 @@ import {
 import { enrichGmDecisionQueue, getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
 import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary } from "../engine/ownerConfidence.js";
 import { generateInboundTradeOffers, getInboundTradeOffers, respondToInboundTradeOffer } from "../engine/rivalTradeOffers.js";
+import { runCpuTradeMarket } from "../engine/cpuTradeMarket.js";
 import { appendCounterPick, buildOnClockFingerprint, buildOnClockTradeOffers } from "../engine/onClockTradeMarket.js";
 import { generateGmDecisions } from "../engine/gmDecisionAuthority.js";
 import { answerPressQuestion, getPendingPressQuestion, getPressReceipts } from "../engine/pressRoom.js";
@@ -5741,6 +5742,9 @@ export class GameSession {
       }
       // Fan sentiment update (uses current standings snapshot)
       updateFanSentiment(this.league, weekResult, this.currentYear);
+      // The rest of the league acts too. The market proposes only CPU-to-CPU
+      // packages; TradeService rechecks and commits every accepted swap.
+      runCpuTradeMarket(this);
       // Rival GMs act on the player: bounded, deterministic inbound trade
       // offers arrive through the news/inbox pipeline (S62).
       const inboundOffer = generateInboundTradeOffers(this);

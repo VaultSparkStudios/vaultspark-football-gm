@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildLaunchEvidenceReport, probeWithRedirects } from "../scripts/launch-evidence-report.mjs";
+import { buildLaunchEvidenceReport, probeWithRedirects, validateEmailRoundTrip } from "../scripts/launch-evidence-report.mjs";
+import readyFixture from "./fixtures/launch-evidence-ready.json" with { type: "json" };
 
 function fakeProber(responsesByUrl) {
   const seen = [];
@@ -19,6 +20,7 @@ const okRoutes = {
   "/game.html": { ok: true, statusCode: 200, detail: "HTTP 200" },
   "/contact.html": { ok: true, statusCode: 200, detail: "HTTP 200" }
 };
+const roundTrip = readyFixture.emailEvidence;
 
 test("launch evidence stays blocked when email forwarding is not verified", async () => {
   const report = await buildLaunchEvidenceReport({
@@ -29,13 +31,13 @@ test("launch evidence stays blocked when email forwarding is not verified", asyn
   assert.equal(report.summary.routesOk, true);
   assert.equal(report.summary.emailForwardingVerified, false);
   assert.equal(report.summary.status, "blocked");
-  assert.match(report.summary.blocker, /email forwarding/i);
+  assert.match(report.summary.blocker, /email inbound delivery/i);
 });
 
-test("launch evidence reports ready only when routes and email evidence are both present", async () => {
+test("launch evidence reports ready only when routes and a matched received/replied round trip are present", async () => {
   const report = await buildLaunchEvidenceReport({
     routes: Object.keys(okRoutes),
-    fixture: { routes: okRoutes, emailEvidence: "Forwarding receipt copied to founder operations inbox." }
+    fixture: { routes: okRoutes, emailEvidence: roundTrip }
   });
 
   assert.equal(report.summary.routesOk, true);
@@ -61,7 +63,7 @@ test("canonical-origin evidence requires an honest health receipt and edge heade
           body: JSON.stringify({ status: "ok", launchReady: false, sourceRevision: "abc123" })
         }
       },
-      emailEvidence: "Forwarding receipt copied to founder operations inbox."
+      emailEvidence: roundTrip
     }
   });
 
@@ -96,7 +98,7 @@ test("canonical-origin evidence passes only with receipt plus every required hea
           body: JSON.stringify({ status: "ok", launchReady: false, sourceRevision: "abc123" })
         }
       },
-      emailEvidence: "Forwarding receipt copied to founder operations inbox."
+      emailEvidence: roundTrip
     }
   });
 
@@ -112,7 +114,7 @@ test("launch evidence keeps route failures distinct from email evidence", async 
         "/": { ok: true, statusCode: 200, detail: "HTTP 200" },
         "/terms.html": { ok: false, statusCode: 404, detail: "HTTP 404" }
       },
-      emailEvidence: "Forwarding receipt copied to founder operations inbox."
+      emailEvidence: roundTrip
     }
   });
 
@@ -138,7 +140,7 @@ test("fixture route representing redirect-to-404 yields ok:false and blocked sta
           ]
         }
       },
-      emailEvidence: "Forwarding receipt copied to founder operations inbox."
+      emailEvidence: roundTrip
     }
   });
 
@@ -167,7 +169,7 @@ test("fixture route representing redirect-to-200 yields ok:true and preserves th
           ]
         }
       },
-      emailEvidence: "Forwarding receipt copied to founder operations inbox."
+      emailEvidence: roundTrip
     }
   });
 
@@ -203,7 +205,47 @@ test("email gate stays blocked without evidence even when redirect chains resolv
   assert.equal(report.summary.routesOk, true);
   assert.equal(report.summary.emailForwardingVerified, false);
   assert.equal(report.summary.status, "blocked");
-  assert.match(report.summary.blocker, /email forwarding/i);
+  assert.match(report.summary.blocker, /email inbound delivery/i);
+});
+
+test("a freeform email evidence claim stays blocked even when every route is green", async () => {
+  const report = await buildLaunchEvidenceReport({
+    routes: Object.keys(okRoutes),
+    fixture: { routes: okRoutes, emailEvidence: "Forwarding receipt copied to founder operations inbox." }
+  });
+  assert.equal(report.summary.status, "blocked");
+  assert.equal(report.summary.emailForwardingVerified, false);
+  assert.match(report.emailForwarding.detail, /structured.*JSON receipt/i);
+});
+
+test("an explicit invalid email receipt cannot fall back to a fixture's valid mail proof", async () => {
+  const report = await buildLaunchEvidenceReport({
+    routes: Object.keys(okRoutes),
+    fixture: { routes: okRoutes, emailEvidence: roundTrip },
+    emailEvidence: "an arbitrary claim"
+  });
+  assert.equal(report.summary.emailForwardingVerified, false);
+  assert.equal(report.summary.status, "blocked");
+});
+
+test("email proof rejects missing reply, wrong identities, sent-only claims, and broken thread", () => {
+  const cases = [
+    ["missing reply", { reply: undefined }],
+    ["wrong project address", { address: "support@elsewhere.example" }],
+    ["wrong inbound alias", { inbound: { ...roundTrip.inbound, to: "support@elsewhere.example" } }],
+    ["no Zoho delivery", { inbound: { ...roundTrip.inbound, deliveredTo: "unknown@example.net" } }],
+    ["sent copy is not recipient delivery", { reply: { ...roundTrip.reply, evidence: { type: "zoho-sent-copy", reference: "fixture:sent-copy-001" } } }],
+    ["wrong reply identity", { reply: { ...roundTrip.reply, from: "founder@vaultsparkstudios.com" } }],
+    ["wrong external recipient", { reply: { ...roundTrip.reply, deliveredTo: "other@example.net" } }],
+    ["unrelated reply", { reply: { ...roundTrip.reply, inReplyTo: "<different@example.net>" } }],
+    ["reply predates inbound", { reply: { ...roundTrip.reply, receivedAt: "2026-09-29T11:00:00Z" } }],
+    ["one reference cannot prove two inboxes", { reply: { ...roundTrip.reply, evidence: { ...roundTrip.reply.evidence, reference: roundTrip.inbound.evidence.reference } } }],
+    ["fake evidence reference", { inbound: { ...roundTrip.inbound, evidence: { type: "zoho-inbox-received", reference: "x" } } }]
+  ];
+  for (const [name, override] of cases) {
+    assert.equal(validateEmailRoundTrip({ ...roundTrip, ...override }).status, "unverified", name);
+  }
+  assert.equal(validateEmailRoundTrip(roundTrip).status, "verified");
 });
 
 test("probeWithRedirects follows a relative-Location redirect to a 200", async () => {

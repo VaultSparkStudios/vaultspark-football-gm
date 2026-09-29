@@ -105,7 +105,7 @@ export function buildFranchiseCommandStack({
       title: "Patch the depth chart",
       detail: injuries.length + " controlled-team injur" + (injuries.length === 1 ? "y" : "ies") + " need a roster check.",
       action: "open-tab",
-      targetTab: "rosterTab",
+      targetTab: "depthTab",
       targetId: "depthTable",
       tone: cards.length ? "warning" : "danger",
       lane: "Before advance",

@@ -176,10 +176,9 @@ test("negative control: the pre-S109 flat band accepts the surplus package the n
 // ── 5. Realism guard ────────────────────────────────────────────────────────
 
 test("realism guard: seed 20260306 over 3 seasons trades inside a sane band and rival offers still arrive", () => {
-  // There is no CPU-to-CPU trade market in this engine: the only `commit`
-  // callers are the controlled club and an accepted inbound offer, so with no
-  // GM acting the honest expectation is zero trades. The guard therefore bounds
-  // the ceiling, and reads the market's pulse from the offers rivals generate.
+  // S111 added a bounded CPU-to-CPU market. This standing guard keeps its
+  // broad transaction ceiling and separately checks that inbound offers still
+  // reach the controlled club; focused market bounds live in the S111 spec.
   const session = createSession({ seed: 20260306, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
   const seen = new Set();
   const perSeason = [];

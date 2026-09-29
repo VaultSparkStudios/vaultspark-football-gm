@@ -84,6 +84,8 @@ test("the Desk shows the advisor's call and the first-season contract; the Leagu
   // After a played week the League tab carries real standings rows.
   await page.click('[data-testid="tab-calendar"]');
   await expect(page.locator("#calendarTab #standingsTable tr").nth(1)).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator("[data-league-team-crest] svg")).toBeVisible();
+  await expect(page.locator("#leagueTeamIdentityLabel")).not.toHaveText("League context");
   await page.click('[data-testid="tab-overview"]');
 
   // Shelving the contract hides it and stays hidden after a re-render.
@@ -94,6 +96,8 @@ test("the Desk shows the advisor's call and the first-season contract; the Leagu
 test("a player can work the trade desk for the contract without waiting for a rival call", async ({ page }) => {
   await createLeague(page);
   await page.click('[data-testid="tab-transactions"]');
+  await expect(page.locator("[data-trade-team-crest] svg")).toBeVisible();
+  await expect(page.locator("#tradeTeamIdentityLabel")).not.toHaveText("Trade context");
   const teamA = await page.locator("#tradeTeamA").inputValue();
   const opponent = await page.locator("#tradeTeamB option").evaluateAll((options, controlled) =>
     options.map((option) => option.value).find((value) => value && value !== controlled), teamA);

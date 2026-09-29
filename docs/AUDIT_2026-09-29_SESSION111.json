@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-29",
+  "session": 111,
+  "agent": "codex",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "source": "S111 live-code survey, game-loop review, release operations review, S110 production receipts and typed premise checks. Completed S109/S110 work is excluded. No real player cohort is claimed.",
+    "itemsRanked": 6,
+    "combinedPriority": 103.1,
+    "verificationNote": "Every ranked gap is checked against current source. The launch remains HOLD independently of technical deployment. Priority = impact x innovation / log2(effortHours + 2), rounded to one decimal."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop consequence, responsive browser decisions, evidence-honest release gates",
+    "staging": "stable Cloudflare staging before public Pages promotion",
+    "source": "local PROJECT_STATUS, startup brief, audit skill profile; game-loop review over live code"
+  },
+  "gameLoopReview": {
+    "loopTightness": "4/5",
+    "progression": "4/5",
+    "sessionEngagement": "4/5",
+    "retention": "2/5 evidence quality",
+    "soulFidelity": "4/5",
+    "evidence": "Source-design assessment only. No consented player cohort or D1/D7 retention observations exist."
+  },
+  "phantomsRejected": [
+    {"slug": "pre-push-hook-is-deadlocked", "reason": "The ordinary S110 checkpoint push completed after several minutes and the narrow follow-up push completed in eight seconds. The old task describes latency as a deadlock; reclassify it during closeout, and optimize only against a measured need."},
+    {"slug": "first-season-has-no-goal-or-owner-verdict", "reason": "public/lib/firstSeasonContract.js implements five goals and a season verdict; S110 corrected the player-controlled trade objective."},
+    {"slug": "mobile-drawer-and-icon-sprite-are-missing", "reason": "public/game.html and public/styles.css now contain a six-group drawer and shared SVG sprite; S110 visual receipt covers dark/light desktop/mobile."},
+    {"slug": "routine-weeks-end-in-only-a-toast", "reason": "weeklyPlanComposer, seasonChapters and returnDigest already produce source-bound weekly and return receipts."},
+    {"slug": "retention-is-proven-by-local-playtest-fixtures", "reason": "Synthetic tests and self-selected local receipts cannot establish player comprehension, return intent, or cohort retention."}
+  ],
+  "recommendedMoves": [
+    "Build a bounded deterministic CPU-to-CPU market using existing trade legality, with matched seed and transaction-volume controls and visible league news.",
+    "Require typed inbound delivery plus reply-as identity before launch evidence can mark project-domain mail verified; preserve HOLD until independent proof exists.",
+    "Join roster and depth decisions in one Team workspace, then carry club identity across the league and market surfaces without a boot-cost regression."
+  ],
+  "secondOrderCandidates": [
+    {"slug":"derived-public-engine-count","trigger":"Adding the CPU market made the public-truth gate reject a stale hand-maintained 43-module claim; the build itself knows the source count and can render it without a human update.","status":"shipped","evidence":["public-truth gate green at 44 modules", "Pages build rendered the derived 44 in static/index.html"]}
+  ],
+  "items": [
+    {
+      "rank": 1, "tier": "HIGH", "category": "feature depth / league ecology", "axis": "gamification/engagement/immersion", "effortHours": 8, "impact": 9, "innovation": 8, "priority": 21.7,
+      "slug": "cpu-to-cpu-trade-ecology", "title": "Make rival clubs transact with each other under cap and roster law, and let the player see a changing league", "status": "implemented",
+      "premise": "GameSession only scheduled inbound offers targeted at the controlled team. No CPU-to-CPU market existed; the canonical three-season observation recorded zero such trades.",
+      "executionEvidence": "New matched-seed three-year spec 3/3; rival-offer neighbors 10/10; integrated core 290/290, runtime 849/849, sim-contract 85/85, realism 9/9. Candidate publication and final long/Studio shards pending.",
+      "premises": [{"claim":"No CPU-to-CPU trade market module exists","adapter":"file-exists","target":"src/engine/cpuTradeMarket.js","operator":"eq","expected":false},{"claim":"The weekly runtime schedules inbound offers","adapter":"grep","target":"src/runtime/GameSession.js","pattern":"generateInboundTradeOffers\\(this\\)","operator":"eq","expected":true}],
+      "ladder": {
+        "L1": {"effortHours":3,"recipe":"Introduce a deterministic CPU-only trade candidate selector with strict cap, roster, and deadline rejection; log accepted transactions in League News."},
+        "L2": {"effortHours":8,"recipe":"Integrate a bounded deterministic CPU–CPU offer-and-accept market at weekly advance through the existing TradeService; preserve picks, cap, roster and transaction invariants, explain both clubs' need and surplus, and render news. Compare matched seeded three-season controls for transaction volume and parity before enabling it."},
+        "L3": {"effortHours":14,"recipe":"Add multi-season market memory, persona-aware bid/ask negotiation, a readable trade ecology report, and player-visible ripple effects on standings, roster needs and rivalry narratives with matched counterfactual evidence."}
+      }
+    },
+    {
+      "rank": 2, "tier": "HIGH", "category": "security / launch truth", "axis": "security", "effortHours": 2, "impact": 8, "innovation": 5, "priority": 20.0,
+      "slug": "typed-reply-capable-email-proof", "title": "Make launch evidence require a checkable receive-and-reply-as receipt", "status": "implemented",
+      "premise": "launch-evidence-report marked an arbitrary nonempty --email-evidence string verified; the current canon requires receiving on the project domain and replying as that alias.",
+      "executionEvidence": "Structured Zoho inbound and recipient-observed alias reply validator; freeform and forged controls rejected. Focused launch evidence 17/17 and release-truth 26/26. Actual mail receipt absent, so public launch remains HOLD.",
+      "premises": [{"claim":"A freeform nonempty email evidence string is accepted","adapter":"grep","target":"scripts/launch-evidence-report.mjs","pattern":"const trimmedEvidence","operator":"eq","expected":true}],
+      "ladder": {
+        "L1": {"effortHours":1,"recipe":"Reject freeform strings and preserve unverified state until a structured receipt is supplied."},
+        "L2": {"effortHours":2,"recipe":"Parse a structured project-domain mail receipt with inbound delivery and reply-as-alias evidence, schema validation, address matching and negative controls; keep current launch HOLD and fixture tests honest."},
+        "L3": {"effortHours":4,"recipe":"Add source IDs, independent header/message witnesses and expiry/freshness validation, then show which of receive, reply identity or DNS failed without exposing personal addresses."}
+      }
+    },
+    {
+      "rank": 4, "tier": "HIGH", "category": "UI / decision flow", "axis": "ui/ux/user-experience", "effortHours": 4, "impact": 7, "innovation": 6, "priority": 16.2,
+      "slug": "team-workspace-roster-depth", "title": "Put roster and playing-time decisions in one navigable Team workspace", "status": "implemented",
+      "premise": "The six-group menu had separate Roster and Depth Chart destinations; a lineup change forced navigation away from the players being compared.",
+      "executionEvidence": "One Team destination with Roster/Depth submodes; two hidden depth routes corrected; 34/34 focused Node navigation tests and focused real-browser keyboard/depth flow green. Final dark/light pixel receipt pending.",
+      "premises": [{"claim":"Depth remains a separate primary destination","adapter":"grep","target":"public/game.html","pattern":"data-tab=\\\"depthTab\\\"","operator":"eq","expected":true}],
+      "ladder": {
+        "L1": {"effortHours":2,"recipe":"Add a contextual route from Roster to Depth with return navigation and preserved selected player."},
+        "L2": {"effortHours":4,"recipe":"Create one Team destination with Roster and Depth submodes; preserve exact tab IDs and deep links, keyboard focus, history and mobile drawer behavior. Verify both themes and phone/desktop pixels while switching modes."},
+        "L3": {"effortHours":8,"recipe":"Add a comparison rail that previews snap-share changes for the selected player before save, with undo and accessibility narration."}
+      }
+    },
+    {
+      "rank": 5, "tier": "MEDIUM", "category": "release automation", "axis": "speed/organization/efficiency", "effortHours": 3, "impact": 7, "innovation": 5, "priority": 15.1,
+      "slug": "bounded-backend-ssh-transport", "title": "Survive transient shared-host SSH pre-auth resets without weakening host identity", "status": "implemented",
+      "premise": "The exact-source GitHub deploy workflow failed after build on SCP/SSH pre-auth resets. Its old remote steps had one transport attempt per workflow run.",
+      "executionEvidence": "Pinned host-key secret provisioned from a previously trusted and freshly verified host; bounded transport helper, reset-success and terminal-failure controls 15/15; Windows-hide guard zero. Live GitHub runner proof pending next dispatch.",
+      "premises": [{"claim":"Workflow uses a single appleboy SCP action","adapter":"grep","target":".github/workflows/deploy-backend.yml","pattern":"appleboy/scp-action@v0.1.7","operator":"eq","expected":true}],
+      "ladder": {
+        "L1": {"effortHours":1,"recipe":"Wrap transport with a short bounded retry and explicit failure report."},
+        "L2": {"effortHours":3,"recipe":"Replace fragile transport with bounded noninteractive SCP/SSH retry steps that enforce known-host identity; test reset-then-success and terminal failure locally. Keep deployment idempotent and distinguish workflow success from independent recovery."},
+        "L3": {"effortHours":6,"recipe":"Add concurrency-aware backoff, staged artifact checksum and same-host source receipt before proxy reload; emit a machine-readable transport failure class."}
+      }
+    },
+    {
+      "rank": 3, "tier": "MEDIUM", "category": "immersion / visual identity", "axis": "gamification/engagement/immersion", "effortHours": 3, "impact": 6, "innovation": 7, "priority": 18.1,
+      "slug": "crest-through-decision-surfaces", "title": "Let club identity follow the GM through league and market decisions", "status": "implemented",
+      "premise": "Procedural crests appeared in the Desk spotlight and optional share cards, but league and market decision surfaces did not mount them.",
+      "executionEvidence": "Lazy team-specific crest mounts in League and Trades; both passed real-browser assertions after a fresh game boot. Final dark/light pixel receipt pending.",
+      "premises": [{"claim":"The Desk mounts the team crest","adapter":"grep","target":"public/lib/tabOverview.js","pattern":"mountTeamCrest","operator":"eq","expected":true},{"claim":"The transaction surface has no crest mount","adapter":"grep","target":"public/lib/tabContracts.js","pattern":"mountTeamCrest","operator":"eq","expected":false}],
+      "ladder": {
+        "L1": {"effortHours":1,"recipe":"Add the controlled club crest beside team identity in one high-value transaction panel."},
+        "L2": {"effortHours":3,"recipe":"Mount lightweight procedural crests in the league and trade decision surfaces using the shared lazy module; retain text labels and avoid new boot dependencies. Review dark/light desktop/mobile pixels and accessibility names."},
+        "L3": {"effortHours":6,"recipe":"Carry crest identity into weekly receipts, rival trade consequences and dynasty chronicle with a consistent compact grammar and share-card parity."}
+      }
+    },
+    {
+      "rank": 6, "tier": "MEDIUM", "category": "second-order innovation / public truth", "axis": "speed/organization/efficiency", "effortHours": 2, "impact": 6, "innovation": 4, "priority": 12.0,
+      "slug": "derived-public-engine-count", "title": "Let the build publish the engine's real size without a manual stat edit", "status": "implemented",
+      "premise": "The CPU market exposed a stale hand-maintained public count. A source placeholder now declares derived authority; the Pages renderer substitutes the actual module count before publishing and the truth gate rejects missing or contradictory declarations.",
+      "premises": [{"claim":"Landing source declares a derived engine count","adapter":"grep","target":"public/index.html","pattern":"data-engine-system-count","operator":"eq","expected":true},{"claim":"Pages derives the count from source modules","adapter":"grep","target":"scripts/build-pages.mjs","pattern":"engineModuleCount","operator":"eq","expected":true}],
+      "ladder": {
+        "L1": {"effortHours":1,"recipe":"Update the landing number when the engine module count changes and let the existing gate catch stale edits."},
+        "L2": {"effortHours":2,"recipe":"Render the landing stat from the source module count at build time; keep a fail-closed source marker and verify the built HTML contains the exact count with no placeholder leak."},
+        "L3": {"effortHours":4,"recipe":"Generalize derived claim markers for other public numbers with source-specific resolvers and a build receipt explaining each figure's authority."}
+      },
+      "executionEvidence": "node scripts/check-public-truth.mjs passed at 44 modules; npm run build:pages succeeded; static/index.html rendered data-engine-system-count>44 with no marker."
+    }
+  ]
+}

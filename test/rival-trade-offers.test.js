@@ -175,25 +175,22 @@ test("accepting an offer commits the real trade with fresh-fingerprint disciplin
 // control no longer pins one seed. It walks the reproducing seeds in order and
 // requires one to reproduce, the same pattern `OFFER_SEEDS` uses above, so one
 // legitimate simulation change cannot flip it by moving a single league.
-const PAST_DEADLINE_SEEDS = [620111, 620108, 620114, 620115];
-
+// S111 supersedes the seed walk below: the new CPU-to-CPU market changes rival
+// rosters during weekly advance, so this negative control now takes a real
+// pending offer and moves its clock past the deadline. The shared commit seam,
+// rather than a particular offer-generation seed, is what it tests.
 test("negative control: without the window guard the fixture yields an unacceptable offer", () => {
-  let session = null;
-  let offer = null;
-  const observed = [];
-  for (const seed of PAST_DEADLINE_SEEDS) {
-    const attempt = sessionWithOffer(seed);
-    const deadline = Number(attempt.session.getLeagueSettings().tradeDeadlineWeek);
-    observed.push(`${seed}:${attempt.offer ? `week ${attempt.session.currentWeek}` : "no offer"}`);
-    if (attempt.offer && attempt.session.currentWeek > deadline) {
-      ({ session, offer } = attempt);
-      break;
-    }
-  }
-  assert.ok(
-    offer,
-    `no candidate seed surfaced a pending offer past the deadline (${observed.join(", ")}) — re-scan, do not delete`
-  );
+  // S111: the CPU-to-CPU market legitimately moves rival rosters before their
+  // inbound-offer draw. A natural past-deadline offer is therefore a brittle
+  // seed fixture. Keep the negative control on the authority it polices: take
+  // a real pending offer generated inside the window, then advance its clock
+  // beyond the deadline without resolving it. The commit must still refuse.
+  const { session, offer } = firstSessionWithOffer(620084, { withinTradeWindow: true });
+  assert.ok(offer, "a real pending offer is required for the deadline control");
+  const deadline = Number(session.getLeagueSettings().tradeDeadlineWeek);
+  assert.ok(session.currentWeek <= deadline);
+  session.currentWeek = deadline + 1;
+  assert.equal(offer.status, "pending");
 
   const result = respondToInboundTradeOffer(session, { offerId: offer.id, action: "accept" });
   assert.equal(result.ok, false, "the deadline must refuse a trade committed after it closed");

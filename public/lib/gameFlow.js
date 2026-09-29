@@ -1,4 +1,4 @@
-import { state, api } from "./appState.js";
+import { state, api, TEAM_THEME_MAP } from "./appState.js";
 import { applyShellTheme, escapeHtml, fmtMoney, presentActionError, renderPanelError, renderTable, selectedSeasonType, setSimControl, setStatus, shapeStatsRowsForDisplay, showToast, syncTeamSelects, syncTradeBlockScope, teamCode, updateTopMeta } from "./appCore.js";
 import { renderBoxScoreTicker, renderCapAlertBanner, renderFanSentimentCard, renderGmLegacyScore, renderInjuryOverlayCard, renderLeaders, renderNewsTicker, renderOverview, renderOwnerUltimatum, renderRosterNeeds, renderSchedule, renderSeasonPreviewPanel, renderStandings, renderStatLeadersStrip, renderWeekResults } from "./tabOverview.js";
 import { getLoadedUiIsland, invokeUiIsland, loadUiIsland, preloadUiIslandForTab, uiIslandForTab } from "./uiIslands.js";
@@ -199,17 +199,33 @@ export function applyDashboard(newState) {
 
 export function activateTab(tabId) {
   state.activeTab = tabId;
+  const inTeamWorkspace = tabId === "rosterTab" || tabId === "depthTab";
   document.querySelectorAll(".menu-btn").forEach((btn) => {
-    const isActive = btn.dataset.tab === tabId;
+    const isActive = btn.dataset.tab === tabId || (inTeamWorkspace && btn.dataset.tab === "rosterTab");
     btn.classList.toggle("active", isActive);
     // ARIA tab state must track the active tab (S29) — a screen reader
     // otherwise announces whichever tab loaded first as selected forever.
     btn.setAttribute("aria-selected", isActive ? "true" : "false");
     btn.setAttribute("tabindex", isActive ? "0" : "-1");
+    if (btn.id === "tab-roster") btn.setAttribute("aria-controls", tabId === "depthTab" ? "depthTab" : "rosterTab");
+  });
+  document.querySelectorAll("[data-team-mode]").forEach((button) => {
+    button.setAttribute("aria-pressed", button.dataset.teamMode === tabId ? "true" : "false");
   });
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
+  if (tabId === "calendarTab" || tabId === "transactionsTab") {
+    const team = state.dashboard?.controlledTeam || state.dashboard?.teams?.find((row) => row.id === state.dashboard?.controlledTeamId);
+    const label = document.getElementById(tabId === "calendarTab" ? "leagueTeamIdentityLabel" : "tradeTeamIdentityLabel");
+    if (label) label.textContent = team ? [team.city, team.nickname || team.name].filter(Boolean).join(" ") : "Your club";
+    const slot = document.querySelector(tabId === "calendarTab" ? "[data-league-team-crest]" : "[data-trade-team-crest]");
+    if (slot && team) {
+      observeBackgroundTask(() => import("./teamCrest.js").then(({ mountTeamCrest }) => {
+        if (slot.isConnected) mountTeamCrest(slot, team, TEAM_THEME_MAP[team.abbrev || team.id], 56);
+      }), { surface: tabId === "calendarTab" ? "league" : "trades", operation: "team-crest", severity: "warning" });
+    }
+  }
   applyShellTheme();
   const islandName = uiIslandForTab(tabId);
   const panel = document.getElementById(tabId);
