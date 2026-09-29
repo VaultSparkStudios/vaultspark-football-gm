@@ -200,6 +200,29 @@ async function captureElement(page, outputDir, name, selector, records) {
   records.push({ name, file, url: page.url(), elementCapture: selector, ...audit });
 }
 
+async function selectGameTab(page, tabId) {
+  const tab = page.locator(`#sideMenu [data-tab="${tabId}"]`).first();
+  if (await tab.count() !== 1) throw new Error(`Missing responsive-evidence tab authority: ${tabId}`);
+  const navToggle = page.locator("#mobileNavToggle");
+  const drawerMode = await navToggle.isVisible().catch(() => false);
+  if (drawerMode) {
+    await navToggle.click();
+    await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
+    const group = await tab.evaluate((node) => node.closest("[data-menu-group]")?.getAttribute("data-menu-group"));
+    if (group) {
+      const groupToggle = page.locator(`#sideMenu [data-menu-group="${group}"] .menu-group-toggle`);
+      if (await groupToggle.getAttribute("aria-expanded") !== "true") await groupToggle.click();
+    }
+  }
+  await tab.click();
+  if (drawerMode) {
+    await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
+    await page.waitForTimeout(320);
+  }
+  await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
+  await page.waitForFunction((id) => !document.getElementById(id)?.hasAttribute("aria-busy"), tabId);
+}
+
 async function main() {
   const identity = await sourceIdentity();
   const revision = identity.sourceRevision;
@@ -310,6 +333,8 @@ async function main() {
           if (drawerX < -1) {
             throw new Error(`${viewport.name} ${theme} nav drawer did not settle on-screen (x=${drawerX})`);
           }
+          const deskGroup = page.locator('#sideMenu [data-menu-group="desk"] .menu-group-toggle');
+          if (await deskGroup.getAttribute("aria-expanded") !== "true") await deskGroup.click();
           await capture(
             page,
             outputDir,
@@ -326,26 +351,7 @@ async function main() {
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
         for (const [tabId, label] of evidenceTabs) {
-          const tab = page.locator(`[data-tab="${tabId}"]`).first();
-          if (await tab.count() !== 1) throw new Error(`Missing responsive-evidence tab authority: ${tabId}`);
-          // CANON-041: below 980px the section nav is an off-canvas drawer that
-          // is closed and `inert` by default, so reaching a tab means opening it
-          // first — exactly what a real tablet user does. The drawer closes
-          // itself on selection, so each tab needs its own open.
-          const navToggle = page.locator("#mobileNavToggle");
-          if (await navToggle.isVisible().catch(() => false)) {
-            await navToggle.click();
-            await page.waitForFunction(
-              () => document.body.classList.contains("mobile-nav-open")
-            );
-          }
-          await tab.click();
-          if (await navToggle.isVisible().catch(() => false)) {
-            await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
-            await page.waitForTimeout(320);
-          }
-          await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
-          await page.waitForFunction((id) => !document.getElementById(id)?.hasAttribute("aria-busy"), tabId);
+          await selectGameTab(page, tabId);
           if (tabId === "draftTab") {
             await page.evaluate(async () => {
               const [{ state }, draftUi] = await Promise.all([
@@ -525,17 +531,7 @@ async function main() {
 
       // S94: the coaching staff sheet lives in the Boardroom with the rest of
       // the owner economy, not in Settings.
-      const boardroomTab = page.locator(`[data-tab="boardroomTab"]`).first();
-      const boardroomNavToggle = page.locator("#mobileNavToggle");
-      if (await boardroomNavToggle.isVisible().catch(() => false)) {
-        await boardroomNavToggle.click();
-        await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
-      }
-      await boardroomTab.click();
-      if (await boardroomNavToggle.isVisible().catch(() => false)) {
-        await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
-        await page.waitForTimeout(320);
-      }
+      await selectGameTab(page, "boardroomTab");
       await page.waitForSelector("#staffTeamSelect", { state: "visible", timeout: 30_000 });
 
       const controlledStaffTeam = await page.locator("#staffTeamSelect").inputValue();
@@ -563,17 +559,7 @@ async function main() {
       }
       // Exercise the verifier once so CANON-053 evidence proves the rendered
       // progression and finite-number receipts with source-derived data.
-      const settingsTab = page.locator(`[data-tab="settingsTab"]`).first();
-      const verifierNavToggle = page.locator("#mobileNavToggle");
-      if (await verifierNavToggle.isVisible().catch(() => false)) {
-        await verifierNavToggle.click();
-        await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
-      }
-      await settingsTab.click();
-      if (await verifierNavToggle.isVisible().catch(() => false)) {
-        await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
-        await page.waitForTimeout(320);
-      }
+      await selectGameTab(page, "settingsTab");
       // S94: developer diagnostics ship hidden and open only for ?dev=1. The
       // evidence run is the intended caller of that flag; a player is not.
       await page.evaluate(async () => {
@@ -595,18 +581,7 @@ async function main() {
         await captureElement(page, outputDir, `${viewport.name}-room-watch-${theme}`, "#realismRoomWatch", records);
         await captureElement(page, outputDir, `${viewport.name}-integrity-receipt-${theme}`, "#realismVerifyIntegrityTable", records);
       }
-      const overviewTab = page.locator(`[data-tab="overviewTab"]`).first();
-      const returnNavToggle = page.locator("#mobileNavToggle");
-      if (await returnNavToggle.isVisible().catch(() => false)) {
-        await returnNavToggle.click();
-        await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
-      }
-      await overviewTab.click();
-      if (await returnNavToggle.isVisible().catch(() => false)) {
-        await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
-        await page.waitForTimeout(320);
-      }
-      await page.waitForFunction(() => document.getElementById("overviewTab")?.classList.contains("active"));
+      await selectGameTab(page, "overviewTab");
       await page.evaluate(async () => {
         const [{ state }, overview] = await Promise.all([
           import("./lib/appState.js"),
