@@ -335,7 +335,7 @@ async function main() {
           }
           const deskGroup = page.locator('#sideMenu [data-menu-group="desk"] .menu-group-toggle');
           if (await deskGroup.getAttribute("aria-expanded") !== "true") await deskGroup.click();
-          await capture(
+          await captureViewport(
             page,
             outputDir,
             `${viewport.name}-nav-drawer-${theme}`,
