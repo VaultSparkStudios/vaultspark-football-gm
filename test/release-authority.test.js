@@ -146,6 +146,18 @@ test("a deployable publication delta is never treated as receipt-only", () => {
   assert.deepEqual(delta.unsafeFiles, ["public/app.js"]);
 });
 
+test("closeout ledger roll is receipt-only without exempting other logs", () => {
+  const from = "a".repeat(40);
+  const to = "b".repeat(40);
+  const closeout = evaluatePublicationDelta({ from, to, changedFiles: ["logs/WORK_LOG.md", "logs/archive/WORK_LOG.archive.md"] });
+  assert.equal(closeout.verified, true);
+  assert.deepEqual(closeout.unsafeFiles, []);
+
+  const unrelatedLog = evaluatePublicationDelta({ from, to, changedFiles: ["logs/archive/runtime.log"] });
+  assert.equal(unrelatedLog.verified, false);
+  assert.deepEqual(unrelatedLog.unsafeFiles, ["logs/archive/runtime.log"]);
+});
+
 test("an origin that answers without identifying itself contradicts a verified release claim", () => {
   const candidate = "a".repeat(40);
   const digest = "c".repeat(64);
