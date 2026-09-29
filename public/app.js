@@ -476,6 +476,10 @@ async function refreshAfterWeeklyCommand(response) {
   }
   return hydration;
 }
+const deskIslands = () => import("./lib/deskIslands.js");
+const recordAdvisorOutcome = (receipt) => deskIslands().then((desk) => desk.recordAdvisorOutcome(receipt));
+const markFirstSeasonObjective = (id) => deskIslands().then((desk) => desk.markFirstSeasonObjective(id));
+
 async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
   const intent = await collectWeeklyCommandIntent({ gmDecisionChoice });
   state.weeklyPlanReceipt = intent.receipt;
@@ -486,6 +490,8 @@ async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
   }
   const response = await api("/api/advance-week", { method: "POST", body: intent.body });
   state.weeklyPlanReceipt = commitWeeklyPlanReceipt(intent.receipt, response);
+  await observeBackgroundTask(() => recordAdvisorOutcome(state.weeklyPlanReceipt),
+    { surface: "desk-islands", operation: "score-agreement", authorityKey: dashboardAuthorityKey(state.dashboard), severity: "warning" });
   recordPlaytestJourneyCheckpoint("weekly-plan-committed");
   state.mobilePendingDecisionChoice = null;
   const postCommitReceipt = await refreshAfterWeeklyCommand(response);
@@ -594,6 +600,13 @@ function exposeLocalTestHooks() {
 }
 
 function bindEvents() {
+ document.addEventListener("vsfgm:dashboard-applied", () => observeBackgroundTask(
+    () => deskIslands().then((desk) => Promise.all([desk.renderFrontOfficeAdvisor(), desk.renderFirstSeasonContractStrip()])),
+    { surface: "desk-islands", operation: "render", authorityKey: dashboardAuthorityKey(state.dashboard), severity: "warning" }
+  ));
+  document.getElementById("firstSeasonContractDismissBtn")?.addEventListener("click", () =>
+    runAction(() => deskIslands().then((desk) => desk.dismissFirstSeasonContract()), "Shelving the contract...")
+  );
   const closeMobileNav = bindMobileNav();
   bindMenuTabs(activateTab, closeMobileNav);
   bindUiIslandPreloads();
@@ -812,6 +825,7 @@ function bindEvents() {
       const playerId = button.dataset.id;
       if (button.dataset.act === "sign") {
         await api("/api/sign", { method: "POST", body: { teamId, playerId } });
+        await markFirstSeasonObjective("sign-starter");
       } else if (button.dataset.act === "offer") {
         const yearsSelect = button.parentElement?.querySelector("[data-offer-years]");
         const years = Number(yearsSelect?.value || 3);
@@ -951,6 +965,7 @@ function bindEvents() {
         }
         throw error;
       }
+      await markFirstSeasonObjective("answer-the-phone");
       if (action === "counter" && result.counterPrefill) {
         await applyCounterPrefill(result.counterPrefill);
         showToast("Counter loaded at the trade desk — reshape the package and evaluate.");
@@ -1002,6 +1017,10 @@ function bindEvents() {
       const payload = buildTradePayload();
       if (payload.teamA === payload.teamB) throw new Error("Select two different teams.");
       const result = await api("/api/trade/evaluate", { method: "POST", body: payload });
+      const { isDeliberateTradeEvaluation } = await import("./lib/firstSeasonContract.js");
+      if (isDeliberateTradeEvaluation({ ...payload, controlledTeamId: state.dashboard?.controlledTeamId })) {
+        await markFirstSeasonObjective("answer-the-phone");
+      }
       state.tradePlanFingerprint = result.plan?.fingerprint || null;
       const a = result.valuation?.[payload.teamA] || {};
       const b = result.valuation?.[payload.teamB] || {};
@@ -1239,6 +1258,7 @@ function bindEvents() {
         }
       });
       await loadDepthChart();
+      await markFirstSeasonObjective("depth-chart");
     }, "Saving depth chart...")
   );
   document.getElementById("depthTable").addEventListener("click", (event) => {

@@ -78,9 +78,54 @@ test("choosing a section closes the drawer", async ({ page }) => {
   await page.locator("#mobileNavToggle").click();
   await expect(page.locator("#mobileNavToggle")).toHaveAttribute("aria-expanded", "true");
 
+  await page.locator('[data-menu-group="team"] .menu-group-toggle').click();
   await page.locator('[data-tab="rosterTab"]').first().click();
   await expect(page.locator("#mobileNavToggle")).toHaveAttribute("aria-expanded", "false");
   await expect(page.locator("#rosterTab")).toHaveClass(/active/);
+});
+
+test("six first-level groups expose all fourteen tabs and Commissioner Mode", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await startFranchise(page);
+  await page.locator("#mlFullViewBtn").click();
+  await page.locator("#mobileNavToggle").click();
+
+  const groups = page.locator("#sideMenu .menu-group-toggle:visible");
+  await expect(groups).toHaveCount(6);
+  await expect(groups).toHaveText(["Desk", "Team", "Market", "Draft", "League", "Club"]);
+  await expect(page.locator("#sideMenu .menu-btn")).toHaveCount(14);
+  await expect(page.locator("#sideMenu .menu-btn:visible")).toHaveCount(0);
+  await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
+
+  for (const name of ["desk", "team", "market", "draft", "league", "club"]) {
+    const group = page.locator(`[data-menu-group="${name}"]`);
+    await group.locator(".menu-group-toggle").click();
+    await expect(group.locator(".menu-group-toggle")).toHaveAttribute("aria-expanded", "true");
+    await expect(group.locator(".menu-btn:visible")).not.toHaveCount(0);
+  }
+  await expect(page.locator("#mobileCommissionerNav")).toBeVisible();
+  await page.locator("#mobileCommissionerNav").click();
+  await expect(page.locator("#settingsTab")).toHaveClass(/active/);
+  await expect(page.locator("#commissionerPanel")).toBeFocused();
+  await expect(page.locator("#mobileNavToggle")).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
+});
+
+test("drawer groups work by keyboard and keep focus inside until Escape", async ({ page }) => {
+  await page.setViewportSize({ width: 768, height: 700 });
+  await startFranchise(page);
+  await page.locator("#mobileNavToggle").focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator('[data-menu-group="desk"] .menu-group-toggle')).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await expect(page.locator('[data-menu-group="team"] .menu-group-toggle')).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page.locator('[data-menu-group="team"] .menu-group-toggle')).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Tab");
+  await expect(page.locator("#tab-roster")).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#mobileNavToggle")).toBeFocused();
+  await expect(page.locator("#sideMenu")).toHaveAttribute("inert", "");
 });
 
 test("scrim and Escape both dismiss the drawer", async ({ page }) => {
@@ -89,7 +134,7 @@ test("scrim and Escape both dismiss the drawer", async ({ page }) => {
   const toggle = page.locator("#mobileNavToggle");
 
   await toggle.click();
-  await page.locator("#mobileNavScrim").click({ position: { x: 300, y: 400 } });
+  await page.mouse.click(700, 400);
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
 
   await toggle.click();

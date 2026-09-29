@@ -1309,3 +1309,19 @@ Rationale: Public route checks can be automated, but email forwarding cannot be 
 Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green public routes while still blocking launch on missing email evidence. This is the desired honest state, not a failure to paper over.
 
 ---
+
+## 2026-07-02 — Session 29: additive situational play-calling over drive-engine rewrite
+
+**Decision:** Implement fourth-down decision-making and situational play selection as a real, tracked-within-the-drive down/distance/field-position state machine layered on top of the existing drive-summary engine, rather than rearchitecting `simulateDrive` into a full down-by-down play-by-play engine.
+
+**Rationale:** The audit's literal ask ("no down-and-distance awareness, no 4th-down go-for-it model") is real, but the drive engine's yardage/completion/sack/interception formulas are tuned against a heavily-guarded regression suite (calibration, monte-carlo, stats, ratings, career-realism, determinism). A full rearchitecture in one session risks destabilizing calibration that took many prior sessions to tune, with no safety net beyond re-tuning tolerances after the fact. The additive design tracks real down/distance/field position, replaces the flat coin-flip play selector with a situational one, and adds a genuine go/kick/punt fourth-down brain — reusing the exact existing FG-make and punt-yardage formulas for the forced-4th-down path, and leaving the natural-end-of-drive resolution path (for drives that exhaust their rolled play budget before a real 4th down) completely untouched byte-for-byte.
+
+**Verification:** Full calibration/monte-carlo/stats/ratings/career-realism/determinism regression suite passed unchanged before and after; a new end-to-end test proves forced fourth-down kicks/punts fire in real simulated games.
+
+**Pattern established:** When an audit item's literal scope would require rearchitecting a heavily-calibrated system, prefer an additive layer that changes *decisions* (what play is called, whether to go for it) without touching the *formulas* that produce the outcome distributions those decisions feed into. Verify with the full regression suite, not just the new feature's own tests.
+
+---
+
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

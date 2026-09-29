@@ -91,6 +91,10 @@ One shared auto-approval model across Claude Code, Codex, and managed agents —
 
 On Windows, Git must be non-interactive under agent control. Run `node ../vaultspark-studio-ops/scripts/install-git-window-guard.mjs --apply` at `/start` (or local `node scripts/install-git-window-guard.mjs --apply` when present). It idempotently sets user-env guard variables for future Codex/shell processes; Studio scripts additionally inherit the same guard through `scripts/lib/safe-spawn.mjs` + `windows-hide-shim.cjs`. Symptoms this prevents: repeated `C:\Program Files\Git\cmd\git.exe` windows, credential helper prompts, commit-editor windows during rebase/commit, and pager focus stealing.
 
+## Command output never leaves your repo (S341 founder-reported)
+
+Never redirect command output outside this repository — no `> ../build.log`, no `tee ../check.txt`. The folder above every repo is the founder's personal workspace; four sessions of one repo parking build/check/deploy logs there left 157 files among hand-made ones. Write logs to the agent scratchpad / OS temp (`$TEMP`, `os.tmpdir()`) or a gitignored in-repo dir such as `.cache/logs/`. If a frozen or purity-checked tree is why you want to write elsewhere, OS temp is the answer — the parent folder never is.
+
 <!-- canon-section: package-trust -->
 ## Package trust (CANON-023)
 
@@ -122,9 +126,19 @@ Producer allowlist: `vaultspark-studio-ops/portfolio/ark/MANIFEST.json` (`canon-
 
 Don't know the command? Check capabilities before declaring anything unknown or blocked: master index `vaultspark-studio-ops/docs/AGENT_CAPABILITIES.md` · NL lookup `node ../vaultspark-studio-ops/scripts/ops.mjs cap "<intent>"` · skills `~/.claude/skills/` (Claude) / `~/.agents/skills/` (Codex) · cheatsheet `vaultspark-studio-ops/docs/SKILL_MAP.md`. Universal skills: `/audit` (9-axis audit → `docs/AUDIT_<date>.md`) + `/implement` (ship the audit). No match → file an innovation candidate.
 
+**Cloudflare questions → live docs, never pre-trained memory (D-S267.1):** the `cloudflare-docs` MCP server (public, no auth) semantically searches CURRENT Cloudflare documentation — limits, pricing tiers, API shapes change under you (the Workers 3MB/10MB gzip caps and free-tier SQLite Durable Objects were both learned the hard way). The `cloudflare:*` skills (wrangler, workers-best-practices, durable-objects, web-perf, turnstile, email) auto-load on matching tasks. Registry entry: `vaultspark-studio-ops/docs/INTERNAL_TOOLS.md` → "Official agent-setup surfaces".
+
 **Before building any tool, check the reuse-registry (CANON-039 · Internal-First):** `vaultspark-studio-ops/docs/INTERNAL_TOOLS.md` is the studio-wide registry of already-built internal tools (arc/guard/propagation/secrets/Ark/doctor and more). Reuse an existing internal tool before researching OSS or building new; only build when the registry has no fit and OSS research comes up short. Record a new reusable tool back to the registry so the next project finds it.
 
 **Frontier capability currency (CANON-049):** at every `/start`, run `node ../vaultspark-studio-ops/scripts/frontier-capability-radar.mjs --refresh-if-stale --write --json` (use the repo-local path inside studio-ops). It checks official OpenAI/ChatGPT/Codex, Anthropic/Claude, and critical-tool sources and refreshes only when the last complete scan exceeds seven days. A failed source stays unknown/degraded. Changed fingerprints create scored review candidates; never silently install, enable a beta, spend API funds, broaden data access, or promise adoption.
+
+**Model currency across surfaces (CANON-049):** Select Claude, OpenAI API, ChatGPT, and Codex models from current official documentation and the model list available in the target runtime; API IDs, subscription product choices, and CLI selectors are separate contracts. Reuse Studio Ops `scripts/lib/model-router.mjs`, `openai-model-catalog.mjs`, and `openai-router.mjs` with their import dependencies. Review project-owned defaults, model menus, allowlists, and pricing when the catalogs change; preserve intentional pins, historical records, provider constraints, and cost gates. Dateless Claude API version IDs are pinned, not evergreen aliases. Use the frontier radar's seven-day refresh guard; failed or stale evidence remains unverified. Never guess an ID, assume entitlement, or introduce paid use to prove currency. Record applied changes and focused checks separately from queued guidance or provider availability.
+
+**Outcome and session scope (S342 founder direction):** Ordinary bounded tasks use Deliver: read the relevant brief, task and creative constraints; run checks needed by the requested action; stop when the requested outcome is verified. Explore and Maintain are explicit scopes, not automatic follow-ups. Budgets are ceilings. Unused tokens, historical velocity, an empty queue, or unrelated maintenance never authorize extra work. Preserve locks, history, credentials, rights, spending and relevant release checks. This supersedes older saturation, token-floor and mandatory-innovation wording. Current SIL scoring is ten categories totaling 1000; older five-category instructions are obsolete. Raw context lists are lookup guides, not mandatory startup reads.
+
+**Media production:** A private production workspace can create public entertainment. Resolve medium independently from audience/access. Use the existing project episode checker through the configured media adapter; missing footage, rights or exact-export review evidence stays nonpassing. A completed proof is not publishing permission. Keep project creative direction and approval separate when sharing render tooling.
+
+**Coordination:** Every work-bearing handoff names the requested outcome, owner, artifact/version, actual dependency and acceptance evidence. Distinguish received, accepted, applied and verified; a transport receipt proves delivery only. Batch nonurgent updates and escalate stalled dependencies when they affect the requested deliverable. Keep shared-file ownership explicit; project creative approval remains local.
 
 ## Public-facing project requirements
 
@@ -213,6 +227,8 @@ It reads the **live** `STUDIO_CANON.md` (always current) and maintains `context/
 - **CANON-051** · Web Hardening: every public surface meets the edge-security + standard-files baseline
 - **CANON-052** · Project Lifecycle Ladder: FORGE/SPARKED/VAULTED with sub-stages, gated transitions, and a single write path
 - **CANON-053** · Rendered-Pixel UI Discipline: look at the real interface while building it
+- **CANON-054** · Public Stats Surface: every website reports and analyzes its own numbers
+- **CANON-055** · Surface Follow-Through: every project change reaches the thing people actually touch
 
 <!-- canon-index:end -->
 

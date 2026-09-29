@@ -2,23 +2,6 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
-## 2026-07-02 — Session 29: additive situational play-calling over drive-engine rewrite
-
-**Decision:** Implement fourth-down decision-making and situational play selection as a real, tracked-within-the-drive down/distance/field-position state machine layered on top of the existing drive-summary engine, rather than rearchitecting `simulateDrive` into a full down-by-down play-by-play engine.
-
-**Rationale:** The audit's literal ask ("no down-and-distance awareness, no 4th-down go-for-it model") is real, but the drive engine's yardage/completion/sack/interception formulas are tuned against a heavily-guarded regression suite (calibration, monte-carlo, stats, ratings, career-realism, determinism). A full rearchitecture in one session risks destabilizing calibration that took many prior sessions to tune, with no safety net beyond re-tuning tolerances after the fact. The additive design tracks real down/distance/field position, replaces the flat coin-flip play selector with a situational one, and adds a genuine go/kick/punt fourth-down brain — reusing the exact existing FG-make and punt-yardage formulas for the forced-4th-down path, and leaving the natural-end-of-drive resolution path (for drives that exhaust their rolled play budget before a real 4th down) completely untouched byte-for-byte.
-
-**Verification:** Full calibration/monte-carlo/stats/ratings/career-realism/determinism regression suite passed unchanged before and after; a new end-to-end test proves forced fourth-down kicks/punts fire in real simulated games.
-
-**Pattern established:** When an audit item's literal scope would require rearchitecting a heavily-calibrated system, prefer an additive layer that changes *decisions* (what play is called, whether to go for it) without touching the *formulas* that produce the outcome distributions those decisions feed into. Verify with the full regression suite, not just the new feature's own tests.
-
----
-
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-09-09 — S100 — Storage and milestone truth
 
 Optional feedback suppression can fall back to franchise-scoped page memory, while saving still requires a successful browser-storage write. Milestones require a measured prior-to-current crossing, persist deduplication independently of the rolling news feed, and do not backfill unsupported historical events. Ticker visibility uses one native hidden-state authority.
@@ -145,6 +128,32 @@ Release posture: stable staging is independently verified at the exact candidate
 **Decision 5 — the profile's development outlook reads headroom and trait, and the runway is measured against the curve's own boundary, not the generator's.** A Bust at his ceiling in a top facility read "surging". With no headroom the outlook now cannot exceed "steady" whatever the environment says, and the environment still lifts a player who has room. The first projection of "seasons remaining" used `closedHeadroomAge` (31) — a generation-time constant that never moves a rating — while the development curve turns negative at 26; the review caught it. `GROWTH_WINDOW_MAX_AGE` is exported from the curve's module, `developmentDelta` and the projection both read it, and the narrative speaks of growth seasons and a closed growth window. **Pattern:** a shape declared twice will drift (memory), and this was the near miss: the constant that names an age is not the constant that drives development.
 
 **Decision 6 — the review ran before the receipt, and it found eight things.** The standing Next item since S94. Every finding was acted on before any shard ran, and the review also exposed why the browser spec had failed four times: the lazy History-tab module imported `state` from a module that does not export it, and the failure was swallowed by a `.catch` — which the promise-observability gate then rejected. The load is now observed through `observeBackgroundTask`. **Rationale:** a review that costs minutes found what a 45-minute receipt cannot see (surfaces the receipt does not render), and struck a Next item that had been carried for fourteen sessions.
+
+## 2026-09-14 — S109 — The advisor is deterministic and the model voice is the user's key or nothing; rivals price by who they are; the worker owns the engine; three audit premises were the auditor's own phantoms
+
+**Decision 1 — the Front Office Advisor ships deterministic, cites only the packet, and any model voice is opt-in on the user's own key from the browser.** The project's contract is zero runtime token spend and zero-backend loops. `buildAdvice` ranks candidate calls with an exported weight table over packet numbers; `cites` lists the packet paths read so a test proves nothing is invented; agreement with the committed weekly plan is tallied descriptively and feeds no score. L3 was not built; if it ever is, it is the user's Anthropic key, called from the page, cached per week, with the deterministic card always rendered first.
+
+**Decision 2 — rival personas are causal at the shared trade seam, for CPU clubs only, with no RNG draw added.** `rivalGmPersona.js` had declared its traits "descriptive and non-causal". `evaluateTradeValue` now applies per-archetype tolerance (win-now .45 → rebuild .22), an age-horizon multiplier and a quality need read (premium .15, discount .12), and the rationale names the need. The controlled club stays on the flat band so the player's own evaluation is unchanged; stream invariance is asserted so no seeded league re-calibrates. **Rationale:** a persona that changes no decision is a label, and the seam already existed for CPU clubs. **Finding recorded, not acted on:** no CPU–CPU trade market exists; the realism guard bounds inbound offers instead.
+
+**Decision 3 — the in-browser engine runs in a module Worker with a storage mirror; the page keeps the in-page runtime as the fallback and every existing test runs against it unchanged.** The mirror is seeded from the page's `vsfgm` keys and replayed by message; IndexedDB stays in the worker because the hybrid store opens and closes per operation and the page builds no runtime while the worker is active, so there is one writer. The gate is the largest main-thread stall (1,000 ms) because it separates the arms fifty-fold; the 750 ms wall-clock bound is the player's number and is noisy on a loaded host.
+
+**Decision 4 — three audit premises were corrected before code and recorded as phantoms rather than shipped.** Built pages already strip HTML comments (the sitemap did not, and now does); the landing stat bar has been gated since S94 (only the legacy-tier count was ungated, and now is); the pre-cohort atlas already renders an invitation (what was missing was a product argument, now the Showcase League). **Pattern:** an audit that reads source and not the build reports the build's work as missing. The lane inventories in `docs/audit-lanes/` carry these as standing negative controls.
+
+**Decision 5 — the Overview is the Desk and the Calendar tab is League; tab ids, testids and hydration keys are unchanged.** The split was done by moving markup, not renaming surfaces, so `exactSurfaceNavigation` (which resolves the owning tab from the DOM) and every spec held. Tab count stays 14; the sidecar's "14 → 13" was wrong arithmetic and is recorded as such. The six-group drawer and the Depth Chart merge are the unshipped L2.
+
+**Decision 6 — standings are read from the live team records in-season through the one row shape the archive uses.** `latestStandings` had read the season-end archive for the project's whole history, so the Standings panel said "No rows" for every first season. The fix declares `teamSeasonRow` once and prefers the archive when it exists, so a finished season reads identically before and after. Found by a new spec, not by a player.
+
+**Decision 7 — a count premise must use a separator that cannot overlap its token.** `(?:#hex[^#]*){200}`, never `(hex[\s\S]*?){200}`: the lazy form backtracks catastrophically the moment the file holds fewer than n matches, which is exactly the state the fix produces. The checker hung for twenty minutes across three runs before it was killed.
+
+## 2026-09-28 — S110 — Recover the candidate and finish the product promise before promotion
+
+**Decision 1 — S109's uncommitted implementation is one recoverable candidate, not a completed deployment.** `main` and `origin/main` still matched `83d6ad0` when S110 began, while S109's code and closeout files were only in the worktree. The generated zero-file proof measured `HEAD` against itself. S110 keeps that work, verifies its final form, and requires a clean exact-SHA staging candidate before promotion. Historical S109 test counts remain local evidence, not release authority.
+
+**Decision 2 — the first-year trade objective must be under the player's control and the contract must settle.** A random inbound rival offer can fail to arrive, so accepting one cannot be the only way to earn the trade objective. A successful non-empty evaluation of a player-authored proposal now counts; inbound response still counts. The season review records a franchise/year-bound owner verdict from the objectives actually met, including a visible unmet or unverified outcome, rather than leaving the strip in an eternal in-progress state.
+
+**Decision 3 — the browser-module gate follows Worker URLs instead of exempting the new engine entry.** `new Worker(new URL(..., import.meta.url))` is a dependency edge in the shipped browser graph. The S109 allowlist let this entry skip the same reachability check as other modules; S110 teaches the checker to follow that syntax and removes the exception. A fixture guards the edge.
+
+**Decision 4 — technical deployment does not change launch authority.** Stable staging and exact artifact promotion are authorized for this code. The public lifecycle remains HOLD until reply-capable project-domain email, candidate-bound founder launch approval, and authoritative registry reconciliation have evidence. The local FORGE state is not changed to make the registry warning disappear.
 
 <!-- ledger-roll:pointer -->
 ---

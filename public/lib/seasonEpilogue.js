@@ -12,9 +12,9 @@
  * of the same season produce the same epilogue.
  */
 
-import { state, api } from "./appState.js";
+import { state, api, TEAM_THEME_MAP } from "./appState.js";
 import { escapeHtml } from "./appCore.js";
-import { observeBackgroundTask } from "./clientDiagnostics.js";
+import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
 import { buildArchitectCut } from "./architectCut.js";
 import { buildDecisionAnthology } from "./decisionAnthology.js";
 import { findTeamStanding, formatTeamRecord, teamRecordWinPct } from "./teamRecord.js";
@@ -70,13 +70,15 @@ function pickQuote(key, seedYear) {
 
 /**
  * Build the epilogue model for the season that just ended.
- * @param {object} dashboard current dashboard state (post-rollover)
+ * @param {object} dashboard current dashboard state at the season review boundary
  * @returns {Promise<object|null>}
  */
 export async function buildSeasonEpilogue(dashboard) {
   const d = dashboard || state.dashboard;
   if (!d) return null;
-  const seasonYear = (d.currentYear || 0) - 1;
+  // The review opens in season-awards before the engine increments currentYear.
+  const seasonYear = Number(d.seasonAwardsStage?.year ??
+    (d.phase === "season-awards" ? d.currentYear : (d.currentYear || 0) - 1));
   const team = d.controlledTeam || {};
   const teamKey = team.abbrev || team.teamId || d.controlledTeamId || "";
 
@@ -288,4 +290,42 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
     <blockquote class="ep-quote">"${escapeHtml(ep.closingQuote)}"<cite>— Head Coach, season-ending press conference</cite></blockquote>
   `;
   bodyEl.appendChild(section);
+  mountEpilogueShareControl(section, ep, dashboard);
+}
+
+// S109 — the epilogue panel is the season's one cinematic payoff moment;
+// loaded lazily so a player who never shares never pays for momentCard.js.
+function mountEpilogueShareControl(section, ep, dashboard) {
+  const mount = document.createElement("div");
+  mount.className = "moment-card-share-mount";
+  section.appendChild(mount);
+  import("./momentCard.js").then((momentCard) => {
+    momentCard.mountShareControl(mount, () => {
+      const d = dashboard || state.dashboard || {};
+      const teamAbbrev = d.controlledTeam?.abbrev || "";
+      const theme = TEAM_THEME_MAP[teamAbbrev] || {};
+      const headline = ep.isChampion
+        ? "World Champions"
+        : ep.isMiracleRunSeason
+          ? "Miracle Run"
+          : `${ep.seasonYear} Season Epilogue`;
+      const stats = [
+        { label: "Record", value: ep.record },
+        ep.fanApproval != null ? { label: "Fan Approval", value: `${ep.fanApproval}/100` } : null,
+        ep.recordsBroken.length ? { label: "Records Set", value: ep.recordsBroken.length } : null
+      ].filter(Boolean);
+      return {
+        kind: "season-epilogue",
+        headline,
+        subline: ep.closingQuote,
+        stats,
+        teamCode: teamAbbrev,
+        teamName: d.controlledTeam?.name || "",
+        primary: theme.primary,
+        secondary: theme.secondary,
+        seasonLabel: `${ep.seasonYear} Season`,
+        challengeCode: momentCard.deriveActiveChallengeCode(state)
+      };
+    });
+  }).catch((error) => recordClientDiagnostic({ surface: "moment-card", operation: "share-control", error, severity: "warning" }));
 }

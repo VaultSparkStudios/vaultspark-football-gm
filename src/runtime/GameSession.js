@@ -86,6 +86,7 @@ import {
 import { runFacilityInvestmentRound } from "../engine/facilityMarket.js";
 import {
   defaultDepthChartForTeam,
+  evaluateTradeValue,
   isTradeValueAcceptable,
   roleRetentionProfile,
   sortPlayersForDepth,
@@ -1938,6 +1939,7 @@ export class GameSession {
     this.services = createServices(this, {
       clamp,
       ensureDepthCharts,
+      evaluateTradeValue,
       isTradeValueAcceptable,
       pickTradeValueForTeam,
       playerTradeValueForTeam,
@@ -1993,6 +1995,7 @@ export class GameSession {
     session.services = createServices(session, {
       clamp,
       ensureDepthCharts,
+      evaluateTradeValue,
       isTradeValueAcceptable,
       pickTradeValueForTeam,
       playerTradeValueForTeam,
@@ -6747,9 +6750,11 @@ export class GameSession {
       injuryModifierCache.set(teamId, modifiers);
       return modifiers;
     };
-    const currentRows = this.statBook.getTeamSeasonTable({ year: this.currentYear });
-    const fallbackRows = this.statBook.getTeamSeasonTable({ year: this.currentYear - 1 });
-    const standingsRows = (currentRows.length ? currentRows : fallbackRows)
+    // S109: the archive holds finished seasons only; in-season standings read
+    // the live team records through the same row shape.
+    const archivedRows = this.statBook.getTeamSeasonTable({ year: this.currentYear });
+    const currentRows = archivedRows.length ? archivedRows : this.statBook.getLiveTeamSeasonTable(this.currentYear);
+    const standingsRows = currentRows
       .slice(0, 32)
       .map((row) => ({ ...row, isControlledTeam: row.team === this.controlledTeamId }));
 

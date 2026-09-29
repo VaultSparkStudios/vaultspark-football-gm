@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import http from "node:http";
 import { GAME_NAME } from "./config.js";
+import { corsHeadersFor, resolveAllowedOrigins } from "./app/devCors.js";
 import { recordWinPct } from "./stats/teamRecord.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "./config/leagueSetup.js";
 import { createSession, createSessionFromSnapshot } from "./runtime/bootstrap.js";
@@ -55,16 +56,8 @@ import {
 const PORT = Number(process.env.PORT || 4173);
 const PUBLIC_DIR = path.resolve("public");
 const SRC_DIR = path.resolve("src");
-const ALLOWED_ORIGINS = new Set(
-  [
-    process.env.APP_ORIGIN,
-    process.env.GAME_PUBLIC_ORIGIN,
-    process.env.GAME_SERVICE_ORIGIN,
-    process.env.API_ORIGIN
-  ]
-    .map((value) => String(value || "").trim().replace(/\/+$/, ""))
-    .filter(Boolean)
-);
+// Fail-closed: an empty configuration allows the local dev origins only (S109).
+const ALLOWED_ORIGINS = resolveAllowedOrigins(process.env);
 
 let session = null;
 let sessionReady = false;
@@ -294,14 +287,9 @@ function sendText(res, statusCode, body, contentType = "text/plain; charset=utf-
 }
 
 function applyCorsHeaders(req, res) {
-  const requestOrigin = String(req.headers.origin || "").trim().replace(/\/+$/, "");
-  if (!requestOrigin) return;
-  if (!ALLOWED_ORIGINS.size || ALLOWED_ORIGINS.has(requestOrigin)) {
-    res.setHeader("Access-Control-Allow-Origin", requestOrigin);
-    res.setHeader("Vary", "Origin");
-    res.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  }
+  const headers = corsHeadersFor(req.headers.origin, ALLOWED_ORIGINS);
+  if (!headers) return;
+  for (const [name, value] of headers) res.setHeader(name, value);
 }
 
 const BUFFERED_BODY = Symbol("vsfgm.bufferedBody");
@@ -2240,4 +2228,5 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`${GAME_NAME} running at http://localhost:${PORT}`);
+  console.log(`CORS allows: ${[...ALLOWED_ORIGINS].join(", ")}`);
 });

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.2",
   "headerLinks": [
     "./about.html",
     "./index.html"
@@ -7,21 +7,21 @@
   "footerLinks": [
     "./index.html",
     "./about.html",
-    "/stats",
     "./simulation.html",
+    "/stats",
     "./status.html",
-    "https://github.com/VaultSparkStudios/vaultspark-football-gm",
-    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
+    "./press.html",
     "./contact.html",
     "./privacy.html",
-    "./terms.html"
+    "./terms.html",
+    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"
   ],
   "footerOnly": [
     "/stats",
-    "https://github.com/VaultSparkStudios/vaultspark-football-gm",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
     "./simulation.html",
     "./status.html",
+    "./press.html",
     "./contact.html",
     "./privacy.html",
     "./terms.html"
@@ -39,6 +39,19 @@
     "privacy.html",
     "terms.html",
     "stats.html",
-    "simulation.html"
-  ]
+    "simulation.html",
+    "press.html"
+  ],
+  "labels": {
+    "./index.html": "Play",
+    "./about.html": "About & FAQ",
+    "./simulation.html": "The Simulation",
+    "/stats": "Community Stats",
+    "./status.html": "Status & Updates",
+    "./press.html": "Press",
+    "./contact.html": "Contact",
+    "./privacy.html": "Privacy",
+    "./terms.html": "Terms",
+    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions": "Discussions"
+  }
 }

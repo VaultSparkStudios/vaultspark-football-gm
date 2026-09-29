@@ -17,6 +17,8 @@
  * The caller treats a load failure as "proceed with the pick": the reveal is
  * flavour, and losing it must never cost the player their selection.
  */
+import { state, TEAM_THEME_MAP } from "./appState.js";
+import { recordClientDiagnostic } from "./clientDiagnostics.js";
 import { escapeHtml } from "./appCore.js";
 import { getProspectNarrative } from "./prospectNarratives.js";
 import { closeModal, openModal } from "./modalManager.js";
@@ -38,7 +40,7 @@ export function pickAnalystLine(seed) {
   return DRAFT_ANALYST_LINES[idx];
 }
 
-export function renderDraftPickReveal(modal, prospect, teamName, onConfirm) {
+export function renderDraftPickReveal(modal, prospect, teamName, onConfirm, { round = null } = {}) {
   const body = modal.querySelector(".draft-reveal-body");
   if (body) {
     // S108 — the draft surface carries the scout's read, not the truth; the
@@ -58,6 +60,7 @@ export function renderDraftPickReveal(modal, prospect, teamName, onConfirm) {
       <div class="draft-reveal-analyst">"${escapeHtml(analyst)}"</div>
       <div class="prospect-origin-note">${escapeHtml(getProspectNarrative(prospect).line)}</div>
       <button class="dr-confirm-btn btn-primary">Confirm Pick</button>
+      <div class="moment-card-share-mount"></div>
     `;
     body.querySelector(".dr-confirm-btn")?.addEventListener("click", () => {
       closeModal(modal);
@@ -65,6 +68,9 @@ export function renderDraftPickReveal(modal, prospect, teamName, onConfirm) {
       modal.classList.remove("active");
       onConfirm();
     }, { once: true });
+    // S109 — only the first-round reveal is share-worthy; later rounds skip
+    // the control entirely rather than mount one that never gets used.
+    if (Number(round) === 1) mountDraftRevealShareControl(body, prospect, teamName, shownOverall);
   }
   modal.hidden = false;
   modal.classList.add("active");
@@ -76,4 +82,14 @@ export function renderDraftPickReveal(modal, prospect, teamName, onConfirm) {
       onConfirm();
     }
   });
+}
+
+// S109 — the user's first-round pick reveal, loaded lazily so a player who
+// never shares never pays for momentCard.js.
+function mountDraftRevealShareControl(body, prospect, teamName, shownOverall) {
+  const mount = body.querySelector(".moment-card-share-mount");
+  if (!mount) return;
+  import("./momentCard.js")
+    .then((momentCard) => momentCard.mountDraftRevealShareControl(mount, { prospect, teamName, shownOverall, state, teamThemeMap: TEAM_THEME_MAP }))
+    .catch((error) => recordClientDiagnostic({ surface: "moment-card", operation: "share-control", error, severity: "warning" }));
 }

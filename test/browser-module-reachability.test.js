@@ -26,6 +26,18 @@ test("reachability follows HTML entries and static module imports", async () => 
   assert.deepEqual(report.reachable, ["app.js", "lib/live.js"]);
 });
 
+test("reachability follows module Worker URL entries and their imports", async () => {
+  const publicDir = await fixture({
+    "index.html": '<script type="module" src="./app.js"></script>',
+    "app.js": 'new Worker(new URL("./lib/worker.js", import.meta.url), { type: "module" });',
+    "lib/worker.js": 'import "./engine.js";',
+    "lib/engine.js": "export const engine = true;"
+  });
+  const report = await analyzeBrowserModuleReachability({ publicDir });
+  assert.equal(report.ok, true);
+  assert.deepEqual(report.reachable, ["app.js", "lib/engine.js", "lib/worker.js"]);
+});
+
 test("reachability reports browser JavaScript with no route from HTML", async () => {
   const publicDir = await fixture({
     "index.html": '<script type="module" src="./app.js"></script>',

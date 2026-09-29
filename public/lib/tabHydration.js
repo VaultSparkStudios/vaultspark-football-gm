@@ -8,7 +8,7 @@ export const TAB_HYDRATION_DOMAINS = Object.freeze({
   scoutingTab: ["draft-island", "scouting"],
   draftTab: ["draft-island", "draft", "scouting"],
   statsTab: ["stats-island", "stats", "analytics"],
-  calendarTab: ["history-island", "calendar"],
+  calendarTab: ["history-island", "calendar", "news", "analytics", "simulation-jobs"],
   logTab: ["settings-island", "transactions", "news"],
   historyTab: ["history-island", "team-history"],
   // S94: the Boardroom carries the owner economy, the staff sheet and the brand

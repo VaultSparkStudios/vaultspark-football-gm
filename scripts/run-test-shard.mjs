@@ -12,6 +12,9 @@ import {
 
 export const SHARDS = {
   core: [
+    "test/session109-moment-card.test.js",
+    "test/session109-first-season-contract.test.js",
+    "test/session109-team-crest.test.js",
     "test/session101-cap-authority.test.js",
     "test/session101-league-economy.test.js",
     "test/session102-contract-proration.test.js",
@@ -39,7 +42,6 @@ export const SHARDS = {
     "test/season-value-authority.test.js",
     "test/session90-development-environment.test.js",
     "test/session91-potential-reversion.test.js",
-    "test/session92-nfl-elite-density-baseline.test.js",
     "test/session93-owner-capital-authority.test.js",
     "test/session94-rival-front-office.test.js",
     "test/situational-playcalling.test.js",
@@ -49,6 +51,10 @@ export const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/session109-front-office-advisor.test.js",
+    "test/session109-persona-causal-trades.test.js",
+    "test/session109-worker-transport-contract.test.js",
+    "test/session109-live-standings.test.js",
     "test/session101-restore-and-rewind.test.js",
     "test/session101-trade-deadline.test.js",
     "test/session102-free-agent-pool.test.js",
@@ -168,6 +174,8 @@ export const SHARDS = {
     "test/weekly-plan-composer.test.js"
   ],
   "sim-contract": [
+    "test/determinism.test.js",
+    "test/session89-cap-legality-regression.test.js",
     "test/bootstrap-realism-profile.test.js",
     "test/continuity-ledger.test.js",
     "test/home-field-advantage.test.js",
@@ -187,14 +195,16 @@ export const SHARDS = {
     "test/what-if-replay.test.js"
   ],
   "sim-realism": [
+    "test/session92-nfl-elite-density-baseline.test.js",
     "test/monte-carlo-regression.test.js"
   ],
   long: [
-    "test/determinism.test.js",
-    "test/session89-cap-legality-regression.test.js",
     "test/realism-career-regression.test.js"
   ],
   studio: [
+    "test/session109-public-chrome.test.js",
+    "test/session109-css-tokens.test.js",
+    "test/session109-dev-cors.test.js",
     "test/api-contract-parity.test.js",
     "test/audit-renderer.test.js",
     "test/session104-audit-premise-decay.test.js",

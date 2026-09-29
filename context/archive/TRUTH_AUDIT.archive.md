@@ -786,3 +786,9 @@ Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`.
 - **Identity absence is explicit.** Passport v1 query-token/session examples are removed. Structured status declares external/not-integrated Obelisk v2, no local auth and no account flows until relying-party registration and PKCE verification succeed.
 - **Candidate and publication evidence are exact.** Node passes 1,078/1,078. Nine reviewed dark/light desktop/mobile captures, hosted performance, staging, and production are unified at published revision 8b7d595… and artifact 0f79737d…. Staging passes 14/14 with rollback; production passes 10/10.
 - **Deployment is not launch.** Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved. launchReady stays false.
+
+## 2026-09-09 — Session 99 release truth
+
+Application revision `713b326d4d84843112ddbc8354c0760bb6400859` and artifact `aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4` pass staging 14/14 and production provenance 10/10. CI 34273797142, Pages promotion 34275252182, backend deployment 34275259066, and receipt-only CI 34296387803 succeeded. Live staging/production currency passed 6/6 during closeout recovery; live backend reports database ready at the exact revision. The implementation-boundary Node receipt is 1,319/1,319 and Playwright is 55/55; these are retained historical receipts, not newly rerun suites.
+
+S98 references in current handoff/status were stale; S99 is the recovered session and S100 is next. Deployment authorization was explicit. Public launch remains false; deployment does not establish cohort behavior or missing mailbox/identity/lifecycle evidence.

@@ -34,14 +34,14 @@
         <div id="boxScoreTicker" class="boxscore-ticker">Loading recent games...</div>
       </div>
       <div class="row compact topbar-actions">
-        <button id="mobileNavToggle" class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sideMenu">☰</button>
+        <button id="mobileNavToggle" class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sideMenu"><svg class="ui-icon" aria-hidden="true"><use href="#icon-menu"></use></svg></button>
         <span id="stageChip" class="chip">Stage: Loading...</span>
         <button id="advanceWeekBtn" data-testid="advance-week-btn">Advance Week</button>
         <button id="advance4WeeksBtn" data-testid="advance-4-weeks-btn">Advance 4 Weeks</button>
         <button id="advanceSeasonBtn" data-testid="advance-season-btn">Advance Season</button>
         <button id="pauseSimBtn" disabled>Pause Sim</button>
         <button class="inbox-bell-btn" id="openInboxBtn" aria-label="Open GM Inbox" title="GM Inbox">
-          🔔<span id="inboxBadge" class="inbox-badge" hidden>0</span>
+          <svg class="ui-icon" aria-hidden="true"><use href="#icon-inbox"></use></svg><span id="inboxBadge" class="inbox-badge" hidden>0</span>
         </button>
         <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">◐</button>
         <button id="backSetupBtn" data-testid="back-setup-btn">Main Menu</button>
@@ -51,7 +51,7 @@
 
     <!-- ── Beat Reporter News Ticker ─────────────────────────────────── -->
     <div id="newsTicker" class="news-ticker" hidden aria-live="polite">
-      <span class="news-ticker-icon">📡</span>
+      <span class="news-ticker-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-news"></use></svg></span>
       <div id="newsTickerContent" class="news-ticker-content">No league news yet.</div>
       <button class="news-ticker-close" id="closeNewsTickerBtn" aria-label="Close ticker">✕</button>
     </div>
@@ -71,28 +71,58 @@
 
     <div id="mobileNavScrim" class="mobile-nav-scrim" aria-hidden="true"></div>
 
+    <svg class="brand-icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="icon-desk" viewBox="0 0 24 24"><path d="M3 19h18M5 19V9h14v10M8 9V5h8v4M9 13h6M11 16h2"/></symbol>
+      <symbol id="icon-stats" viewBox="0 0 24 24"><path d="M4 20h16M6 17v-5h3v5M11 17V5h3v12M16 17V9h3v8"/></symbol>
+      <symbol id="icon-league" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c-3 4-3 12 0 16M12 4c3 4 3 12 0 16"/></symbol>
+      <symbol id="icon-roster" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 20v-2c0-3 3-5 7-5s7 2 7 5v2H5Z"/></symbol>
+      <symbol id="icon-market" viewBox="0 0 24 24"><path d="M4 8h16v12H4zM3 8l2-4h14l2 4M8 12h8M12 9v7"/></symbol>
+      <symbol id="icon-depth" viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 9h8M8 12h8M8 15h5"/></symbol>
+      <symbol id="icon-contracts" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM15 3v4h4M9 11h6M9 15h6M9 18h4"/></symbol>
+      <symbol id="icon-trades" viewBox="0 0 24 24"><path d="M4 8h15l-3-3M19 8l-3 3M20 16H5l3-3M5 16l3 3"/></symbol>
+      <symbol id="icon-scouting" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M7 10h6M10 7v6"/></symbol>
+      <symbol id="icon-draft" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.2.9-4.5 4.4 1.1 6.2L12 17.2l-5.5 2.9 1.1-6.2-4.5-4.4 6.2-.9z"/></symbol>
+      <symbol id="icon-log" viewBox="0 0 24 24"><path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h5"/></symbol>
+      <symbol id="icon-history" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-7.5 5M4 4v5h5M12 7v5l3 2"/></symbol>
+      <symbol id="icon-boardroom" viewBox="0 0 24 24"><path d="M4 19h16M6 19V9l6-4 6 4v10M9 12h6M10 19v-4h4v4"/></symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+      <symbol id="icon-inbox" viewBox="0 0 24 24"><path d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5zM10 20h4"/></symbol>
+      <symbol id="icon-trophy" viewBox="0 0 24 24"><path d="M7 4h10v7a5 5 0 0 1-10 0zM7 6H4v3a4 4 0 0 0 4 4m9-7h3v3a4 4 0 0 1-4 4M12 16v4m-4 0h8"/></symbol>
+      <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="19" r="2"/><path d="m8 11 8-5M8 13l8 5"/></symbol>
+      <symbol id="icon-warning" viewBox="0 0 24 24"><path d="m12 3 10 18H2zM12 9v5m0 3v1"/></symbol>
+      <symbol id="icon-news" viewBox="0 0 24 24"><path d="M4 8h16v10H4zM7 5h10M7 11h5M7 14h10M15 11h2"/></symbol>
+    </svg>
+
     <main class="game-shell">
       <aside id="sideMenu" class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
-        <div class="menu-group-header">Gameday</div>
-        <button id="tab-overview" class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview" role="tab" aria-selected="true" aria-controls="overviewTab" tabindex="0">Overview</button>
-        <button id="tab-stats" class="menu-btn" data-tab="statsTab" data-testid="tab-stats" role="tab" aria-selected="false" aria-controls="statsTab" tabindex="-1">Statistics</button>
-        <button id="tab-calendar" class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar" role="tab" aria-selected="false" aria-controls="calendarTab" tabindex="-1">Calendar</button>
-        <div class="menu-group-header">Roster</div>
-        <button id="tab-roster" class="menu-btn" data-tab="rosterTab" data-testid="tab-roster" role="tab" aria-selected="false" aria-controls="rosterTab" tabindex="-1">Roster</button>
-        <button id="tab-fa" class="menu-btn" data-tab="faTab" data-testid="tab-fa" role="tab" aria-selected="false" aria-controls="faTab" tabindex="-1">Free Agents</button>
-        <button id="tab-depth" class="menu-btn" data-tab="depthTab" data-testid="tab-depth" role="tab" aria-selected="false" aria-controls="depthTab" tabindex="-1">Depth Chart</button>
-        <button id="tab-contracts" class="menu-btn" data-tab="contractsTab" data-testid="tab-contracts" role="tab" aria-selected="false" aria-controls="contractsTab" tabindex="-1">Contracts</button>
-        <div class="menu-group-header">Builds</div>
-        <button id="tab-transactions" class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions" role="tab" aria-selected="false" aria-controls="transactionsTab" tabindex="-1">Trades</button>
-        <button id="tab-scouting" class="menu-btn" data-tab="scoutingTab" data-testid="tab-scouting" role="tab" aria-selected="false" aria-controls="scoutingTab" tabindex="-1">Scouting</button>
-        <button id="tab-draft" class="menu-btn" data-tab="draftTab" data-testid="tab-draft" role="tab" aria-selected="false" aria-controls="draftTab" tabindex="-1">Draft</button>
-        <div class="menu-group-header">History</div>
-        <button id="tab-log" class="menu-btn" data-tab="logTab" data-testid="tab-log" role="tab" aria-selected="false" aria-controls="logTab" tabindex="-1">League Log</button>
-        <button id="tab-history" class="menu-btn" data-tab="historyTab" data-testid="tab-history" role="tab" aria-selected="false" aria-controls="historyTab" tabindex="-1">Dynasty</button>
-        <div class="menu-group-header">Front Office</div>
-        <button id="tab-boardroom" class="menu-btn" data-tab="boardroomTab" data-testid="tab-boardroom" role="tab" aria-selected="false" aria-controls="boardroomTab" tabindex="-1">Boardroom</button>
-        <div class="menu-group-header">Config</div>
-        <button id="tab-settings" class="menu-btn" data-tab="settingsTab" data-testid="tab-settings" role="tab" aria-selected="false" aria-controls="settingsTab" tabindex="-1">Settings</button>
+        <div class="menu-group" data-menu-group="desk"><div class="menu-group-header">Desk</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-desk"><svg class="ui-icon" aria-hidden="true"><use href="#icon-desk"></use></svg><span>Desk</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-desk" class="menu-group-links">
+          <button id="tab-overview" class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview" role="tab" aria-selected="true" aria-controls="overviewTab" tabindex="0"><svg class="ui-icon" aria-hidden="true"><use href="#icon-desk"></use></svg><span>Desk</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="team"><div class="menu-group-header">Team</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-team"><svg class="ui-icon" aria-hidden="true"><use href="#icon-roster"></use></svg><span>Team</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-team" class="menu-group-links">
+          <button id="tab-roster" class="menu-btn" data-tab="rosterTab" data-testid="tab-roster" role="tab" aria-selected="false" aria-controls="rosterTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-roster"></use></svg><span>Roster</span></button>
+          <button id="tab-depth" class="menu-btn" data-tab="depthTab" data-testid="tab-depth" role="tab" aria-selected="false" aria-controls="depthTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-depth"></use></svg><span>Depth Chart</span></button>
+          <button id="tab-contracts" class="menu-btn" data-tab="contractsTab" data-testid="tab-contracts" role="tab" aria-selected="false" aria-controls="contractsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-contracts"></use></svg><span>Contracts</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="market"><div class="menu-group-header">Market</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-market"><svg class="ui-icon" aria-hidden="true"><use href="#icon-market"></use></svg><span>Market</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-market" class="menu-group-links">
+          <button id="tab-fa" class="menu-btn" data-tab="faTab" data-testid="tab-fa" role="tab" aria-selected="false" aria-controls="faTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-market"></use></svg><span>Free Agents</span></button>
+          <button id="tab-transactions" class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions" role="tab" aria-selected="false" aria-controls="transactionsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-trades"></use></svg><span>Trades</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="draft"><div class="menu-group-header">Draft</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-draft"><svg class="ui-icon" aria-hidden="true"><use href="#icon-draft"></use></svg><span>Draft</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-draft" class="menu-group-links">
+          <button id="tab-scouting" class="menu-btn" data-tab="scoutingTab" data-testid="tab-scouting" role="tab" aria-selected="false" aria-controls="scoutingTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-scouting"></use></svg><span>Scouting</span></button>
+          <button id="tab-draft" class="menu-btn" data-tab="draftTab" data-testid="tab-draft" role="tab" aria-selected="false" aria-controls="draftTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-draft"></use></svg><span>Draft</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="league"><div class="menu-group-header">League</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-league"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg><span>League</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-league" class="menu-group-links">
+          <button id="tab-stats" class="menu-btn" data-tab="statsTab" data-testid="tab-stats" role="tab" aria-selected="false" aria-controls="statsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-stats"></use></svg><span>Statistics</span></button>
+          <button id="tab-calendar" class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar" role="tab" aria-selected="false" aria-controls="calendarTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg><span>League</span></button>
+          <button id="tab-log" class="menu-btn" data-tab="logTab" data-testid="tab-log" role="tab" aria-selected="false" aria-controls="logTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-log"></use></svg><span>League Log</span></button>
+          <button id="tab-history" class="menu-btn" data-tab="historyTab" data-testid="tab-history" role="tab" aria-selected="false" aria-controls="historyTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-history"></use></svg><span>Dynasty</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="club"><div class="menu-group-header">Club</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-club"><svg class="ui-icon" aria-hidden="true"><use href="#icon-boardroom"></use></svg><span>Club</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-club" class="menu-group-links">
+          <button id="tab-boardroom" class="menu-btn" data-tab="boardroomTab" data-testid="tab-boardroom" role="tab" aria-selected="false" aria-controls="boardroomTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-boardroom"></use></svg><span>Boardroom</span></button>
+          <button id="tab-settings" class="menu-btn" data-tab="settingsTab" data-testid="tab-settings" role="tab" aria-selected="false" aria-controls="settingsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-settings"></use></svg><span>Settings</span></button>
+          <button id="mobileCommissionerNav" class="menu-destination" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg><span>Commissioner Mode</span></button>
+        </div></div>
       </aside>
 
       <section class="tab-panels">
@@ -139,6 +169,21 @@
           </div>
 
           <section id="franchiseCommandCenter" class="panel franchise-command-center" aria-live="polite"></section>
+          <section id="firstSeasonContract" class="panel first-season-contract" aria-labelledby="firstSeasonContractTitle" aria-live="polite" hidden>
+            <div class="franchise-command-head">
+              <div><span class="brand-kicker">First Season Contract</span><h3 id="firstSeasonContractTitle">Five things a first-year GM gets judged on</h3></div>
+              <span id="firstSeasonContractProgress" class="small">0 of 5</span>
+            </div>
+            <ol id="firstSeasonContractList" class="first-season-contract-list"></ol>
+            <div class="row compact"><button id="firstSeasonContractDismissBtn" type="button" class="btn-sm">I know the job</button></div>
+          </section>
+          <section id="frontOfficeAdvisorPanel" class="panel front-office-advisor" aria-labelledby="frontOfficeAdvisorTitle" aria-live="polite" hidden>
+            <div class="franchise-command-head">
+              <div><span class="brand-kicker">Front Office Advisor</span><h3 id="frontOfficeAdvisorTitle">The room's read on this week</h3></div>
+              <span id="frontOfficeAdvisorTally" class="small">No calls scored yet</span>
+            </div>
+            <div id="frontOfficeAdvisorContent"></div>
+          </section>
           <section id="coGmBriefPanel" class="panel" aria-labelledby="coGmBriefTitle">
             <div class="franchise-command-head">
               <div><span class="brand-kicker">Agent-ready decision handoff</span><h3 id="coGmBriefTitle">Co-GM Brief</h3></div>
@@ -168,7 +213,7 @@
           <!-- ── Season Preview Hype Panel ────────────────────────────────── -->
           <div class="panel season-preview-panel" id="seasonPreviewPanel" hidden>
             <div class="season-preview-header">
-              <span class="season-preview-icon">🏟️</span>
+              <span class="season-preview-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg></span>
               <div>
                 <h2 id="seasonPreviewTitle">Season Preview</h2>
                 <div class="small" id="seasonPreviewSub">Pre-season outlook and media projections.</div>
@@ -177,38 +222,11 @@
             <div id="seasonPreviewContent" class="season-preview-grid"></div>
           </div>
 
+          <!-- S109: standings, results, leaders, schedule, news and story feeds
+               moved to the League tab so the Desk carries decisions, not the
+               whole league. The Schedule and the Franchise Story stay here
+               because the week's game and the club's own beats are the Desk. -->
           <div class="panel split">
-            <div>
-              <h2>Standings</h2>
-              <div class="table-wrap"><table id="standingsTable" data-testid="standings-table"></table></div>
-            </div>
-            <div>
-              <h2>Week Results</h2>
-              <div class="table-wrap"><table id="weekTable" data-testid="week-table"></table></div>
-              <h3>Injuries / Suspensions</h3>
-              <div class="table-wrap"><table id="injuryTable" data-testid="injury-table"></table></div>
-              <section id="rehabCommandCenter" class="rehab-command-center" aria-live="polite" hidden></section>
-            </div>
-          </div>
-
-          <div class="panel split triple">
-            <div>
-              <h2>Roster Needs</h2>
-              <div class="table-wrap"><table id="needsTable" data-testid="needs-table"></table></div>
-            </div>
-            <div>
-              <h2>League Leaders</h2>
-              <div class="row compact">
-                <label>Category
-                  <select id="leadersCategory" data-testid="leaders-category">
-                    <option value="passing">Passing</option>
-                    <option value="rushing">Rushing</option>
-                    <option value="receiving">Receiving</option>
-                  </select>
-                </label>
-              </div>
-              <div class="table-wrap"><table id="leadersTable" data-testid="leaders-table"></table></div>
-            </div>
             <div>
               <h2>Schedule</h2>
               <div class="row compact">
@@ -221,20 +239,13 @@
               <div class="table-wrap"><table id="scheduleTable" data-testid="schedule-table"></table></div>
               <div id="weeklyPredictionsPanel" class="weekly-predictions-mount" aria-live="polite" data-testid="weekly-predictions-panel"></div>
             </div>
-          </div>
-
-          <div class="panel">
-            <h2>League News Feed</h2>
-            <div class="table-wrap"><table id="newsTable"></table></div>
-          </div>
-
-          <!-- ── Season Narrative Arcs (Session 8) ───────────────────────── -->
-          <div class="panel" id="seasonArcsPanel" hidden>
-            <div class="narrative-panel-header">
-              <h2>Season Story Threads</h2>
-              <span class="narrative-panel-kicker">3 narrative arcs defining your season</span>
+            <div>
+              <h2>Roster Needs</h2>
+              <div class="table-wrap"><table id="needsTable" data-testid="needs-table"></table></div>
+              <h3>Injuries / Suspensions</h3>
+              <div class="table-wrap"><table id="injuryTable" data-testid="injury-table"></table></div>
+              <section id="rehabCommandCenter" class="rehab-command-center" aria-live="polite" hidden></section>
             </div>
-            <div id="seasonArcsContent"></div>
           </div>
 
           <div class="panel" id="narrativePanel">
@@ -278,21 +289,6 @@
             <div id="tradeDeadlineFrenzy"></div>
           </div>
 
-          <div class="panel split">
-            <div>
-              <h2>League Charts</h2>
-              <canvas id="analyticsChart" height="160"></canvas>
-            </div>
-            <div>
-              <h2>Long Sim Jobs</h2>
-              <div class="row compact">
-                <label>Seasons <input id="jobSeasonsInput" type="number" value="10" min="1" max="200" /></label>
-                <button id="startSimJobBtn">Start Job</button>
-                <button id="refreshJobsBtn">Refresh Jobs</button>
-              </div>
-              <div class="table-wrap"><table id="simJobsTable"></table></div>
-            </div>
-          </div>
         </section>
 
         <section id="rosterTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-roster" tabindex="0">
@@ -779,6 +775,57 @@
         </section>
 
         <section id="calendarTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-calendar" tabindex="0">
+          <div class="panel split">
+            <div>
+              <h2>Standings</h2>
+              <div class="table-wrap"><table id="standingsTable" data-testid="standings-table"></table></div>
+            </div>
+            <div>
+              <h2>Week Results</h2>
+              <div class="table-wrap"><table id="weekTable" data-testid="week-table"></table></div>
+              <h3>League Leaders</h3>
+              <div class="row compact">
+                <label>Category
+                  <select id="leadersCategory" data-testid="leaders-category">
+                    <option value="passing">Passing</option>
+                    <option value="rushing">Rushing</option>
+                    <option value="receiving">Receiving</option>
+                  </select>
+                </label>
+              </div>
+              <div class="table-wrap"><table id="leadersTable" data-testid="leaders-table"></table></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>League News Feed</h2>
+            <div class="table-wrap"><table id="newsTable"></table></div>
+          </div>
+
+          <div class="panel" id="seasonArcsPanel" hidden>
+            <div class="narrative-panel-header">
+              <h2>Season Story Threads</h2>
+              <span class="narrative-panel-kicker">3 narrative arcs defining your season</span>
+            </div>
+            <div id="seasonArcsContent"></div>
+          </div>
+
+          <div class="panel split">
+            <div>
+              <h2>League Charts</h2>
+              <canvas id="analyticsChart" height="160"></canvas>
+            </div>
+            <div>
+              <h2>Long Sim Jobs</h2>
+              <div class="row compact">
+                <label>Seasons <input id="jobSeasonsInput" type="number" value="10" min="1" max="200" /></label>
+                <button id="startSimJobBtn">Start Job</button>
+                <button id="refreshJobsBtn">Refresh Jobs</button>
+              </div>
+              <div class="table-wrap"><table id="simJobsTable"></table></div>
+            </div>
+          </div>
+
           <div class="panel">
             <h2>Season Calendar</h2>
             <div class="row">
@@ -1078,7 +1125,7 @@
             <!-- ── Coaching DNA Card ─────────────────────────────────────── -->
             <div id="coachingDnaCard" class="coaching-dna-card" hidden>
               <div class="coaching-dna-header">
-                <span class="coaching-dna-icon">🌳</span>
+                <span class="coaching-dna-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-boardroom"></use></svg></span>
                 <div>
                   <div class="coaching-dna-title">Coaching Tree DNA</div>
                   <div class="coaching-dna-sub" id="coachingDnaSub">Load a team to see scheme lineage.</div>

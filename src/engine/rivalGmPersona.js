@@ -25,8 +25,17 @@ function pickFrom(list, key) {
  * session RNG stream, so replays and normalizers stay in sync). A bounded
  * per-team memory ledger records only real receipted interactions with the
  * player's franchise (trades, rejected/accepted inbound offers, free-agency
- * outbids). Flavor text is descriptive and non-causal: personas never grant
- * or remove a single point of on-field value.
+ * outbids).
+ *
+ * S109 — personas are causal at the trade seam and nowhere else. Until this
+ * session the header here promised they were "non-causal", and the promise
+ * was kept in the worst way: a rival's style and traits changed the words on
+ * an offer and never the verdict, because `isTradeValueAcceptable` judged
+ * every club through one flat band. `aiTeamStrategy.js` now maps `style` to
+ * a tolerance and an age horizon, and haggling traits to a tolerance delta
+ * (declared tables, no RNG draw — the persona is already derived). Personas
+ * still never grant or remove a point of on-field value; they decide what a
+ * front office will pay.
  */
 
 const FIRST_NAMES = [

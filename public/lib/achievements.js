@@ -3,7 +3,8 @@
 // effects. Earned trophies persist per browser profile (not per save), giving
 // the player a permanent identity across every franchise they run.
 
-import { state } from "./appState.js";
+import { state, TEAM_THEME_MAP } from "./appState.js";
+import { recordClientDiagnostic } from "./clientDiagnostics.js";
 import { escapeHtml, showToast } from "./appCore.js";
 import { playSound, vibrate, HAPTIC_PATTERNS } from "./audioFeedback.js";
 import { findTeamStanding, normalizeTeamRecord } from "./teamRecord.js";
@@ -49,6 +50,9 @@ export const ACHIEVEMENTS = [
   { id: "first-trade", name: "Deal Maker", icon: "🤝", tier: "bronze", desc: "Complete your first trade.", check: (c) => c.event.type === "trade-committed" },
   { id: "trade-heist", name: "Grand Theft Roster", icon: "🎭", tier: "gold", desc: "Win a trade by 15+ value points.", check: (c) => c.event.type === "trade-committed" && Number(c.event.valueEdge) >= 15 },
   { id: "inbound-accepted", name: "My Phone Rings", icon: "📞", tier: "bronze", desc: "Accept a trade offer a rival GM brought to you.", check: (c) => c.event.type === "trade-committed" && c.event.inbound === true },
+
+  // S109: fired once by the First Season Contract strip on the Desk.
+  { id: "first-season-contract", name: "Honoured the Contract", icon: "📜", tier: "silver", desc: "Complete every objective of your First Season Contract.", check: (c) => c.event.type === "first-season-contract" },
 
   // Career identity
   { id: "tier-2", name: "Proving Ground", icon: "🌱", tier: "bronze", desc: "Reach GM legacy tier 2.", check: (c) => c.event.type === "gm-tier" && c.event.tier >= 2 },
@@ -287,6 +291,14 @@ export function renderTrophyRoad({
   if (mobile) mobile.innerHTML = trophyRoadMarkup(road, true);
   return road;
 }
+// S109: share control lives on the earned row (the toast is transient); lazy.
+function mountTrophyCaseShareControls(el, earned) {
+  if (!el.querySelector(".trophy-earned[data-trophy-id]")) return;
+  import("./momentCard.js")
+    .then((momentCard) => momentCard.mountTrophyCaseShareControls(el, earned, { achievements: ACHIEVEMENTS, tierLabels: TIER_LABELS, state, teamThemeMap: TEAM_THEME_MAP }))
+    .catch((error) => recordClientDiagnostic({ surface: "moment-card", operation: "share-control", error, severity: "warning" }));
+}
+
 export function renderTrophyCase() {
   const el = document.getElementById("trophyCaseContent");
   if (!el) return;
@@ -309,6 +321,7 @@ export function renderTrophyCase() {
   el.innerHTML = `
     <div class="trophy-case-summary">${earnedCount} / ${ACHIEVEMENTS.length} trophies earned — permanent across every franchise in this browser.</div>
     <div class="trophy-case-grid">${rows}</div>`;
+  mountTrophyCaseShareControls(el, earned);
   el.querySelectorAll("button[data-trophy-share]").forEach((button) => {
     button.addEventListener("click", () => {
       const achievement = ACHIEVEMENTS.find((a) => a.id === button.dataset.trophyShare);

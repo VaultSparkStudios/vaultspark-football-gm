@@ -7,6 +7,8 @@ const root = process.cwd();
 const outputRoot = path.join(root, "output", "playwright");
 const receiptDir = path.join(root, "docs", "visual-qa");
 const surfaceLabels = new Map([
+  ["game-overview", "Franchise Desk, first-season contract, and Front Office Advisor"],
+  ["game-league", "League standings and season navigation"],
   ["game-dialog", "First-run Opening Contract tutorial"],
   ["cap-pressure", "Opening salary-cap pressure and General Manager legacy"],
   ["waiver-identity", "Named and rated waiver-wire player identity"],
@@ -116,31 +118,42 @@ for (const theme of ["dark", "light"]) {
   });
 }
 
+const publicEvidenceDir = path.join(outputRoot, "public-qa");
+const publicReport = JSON.parse(await fs.readFile(path.join(publicEvidenceDir, "report.json"), "utf8"));
+if (publicReport.sourceRevision !== report.sourceRevision
+  || publicReport.artifactFingerprint?.digest !== report.artifactFingerprint.digest) {
+  throw new Error("Public-page captures do not match the responsive candidate and artifact");
+}
+for (const item of publicReport.captures || []) {
+  if (item.status !== 200 || item.documentWidth > item.width + 1) {
+    throw new Error(`Public-page capture failed: ${item.file}`);
+  }
+  const targetName = `s${receiptSession}-public-${item.file}`;
+  const buffer = await fs.readFile(path.join(publicEvidenceDir, item.file));
+  await fs.writeFile(path.join(receiptDir, targetName), buffer);
+  captures.push({
+    file: targetName,
+    sha256: sha256(buffer),
+    theme: item.theme,
+    viewport: { width: item.viewport.width, height: item.viewport.height },
+    page: `Public ${item.route}`
+  });
+}
+
 const receipt = {
   schemaVersion: 1,
-  capturedAt: report.generatedAt,
+  capturedAt: new Date(Math.max(Date.parse(report.generatedAt), Date.parse(publicReport.capturedAt))).toISOString(),
   sourceRevision: report.sourceRevision,
   artifactFingerprint: report.artifactFingerprint,
   artifact: `${report.artifact} responsive-evidence:${sha256(reportBuffer)}`,
   themes: ["dark", "light"],
   captures,
   inspection: {
-    renderedPixelsReviewed: true,
+    renderedPixelsReviewed: false,
     reviewer: "session-agent",
-    findings: [
-      "S108 added a Dev column to the roster table (the development trait the DTO has carried since S8; the free-agent table already showed it). Inspected on the 1440px dark roster capture, the column renders beside POT with the trait labels (Steady, Superstar, Hidden Development, Bust) and the table's width still scrolls inside its own container at 390px light rather than widening the page.",
-      "The draft room's Available Prospects table now shows Scout Ovr and Scout Pot in place of Ovr and Pot. The capture's single available prospect is a hardcoded fixture in scripts/responsive-evidence.mjs, so it is evidence that the renamed columns render and align, NOT evidence of the fog's values; the fog itself (overall, potential and ratings stripped from every draft response; scouted potential within plus-or-minus 6 off the main RNG stream) is asserted by test/session108-draft-board-fog.test.js against a real class.",
-      "The Offseason Development Report card on the History tab is outside this capture set, which does not drive an offseason. It is proven by tests-ui/offseason-development.spec.js, which drives the runtime to the retirements stage through its own API and asserts the card names the club's risers and fallers with before, after and change; the card's module is lazily imported and its load is observed, because the history island sits at 15.2 per cent headroom against a 15 per cent floor.",
-      "Theme parity checked on the roster surface: the 390px light-theme roster renders the same structure with readable contrast against the 1440px dark capture.",
-      "The release note on public/status.html is outside this capture set, which covers game surfaces only. It was verified against the live staging origin instead: the 2026-09-14 note is served above the 2026-09-13 note and tells players what they can now see (who developed), that the draft board stops giving away the answers, and that saved franchises are unaffected.",
-      "The deterministic harness inspected the dark and light states at 1440px desktop, 768px tablet and 390px mobile with no overflow, contrast, touch-target, selector or runtime failures, and reported status passed bound to an immutable source revision and artifact fingerprint.",
-      "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email, cohort, retention, or launch approval is verified."
-    ],
-    fixesApplied: [
-      "No rendered-pixel defect was found this session, so no visual fix was applied. The captures are evidence for two table changes (a Dev column on the roster; Scout Ovr / Scout Pot on the draft board) and for theme parity, not a repair of the render layer.",
-      "The player-facing release note on the public status page was written for what shipped: the offseason development report, the honest draft board, the profile outlook that reads potential and trait, and saved franchises unaffected."
-    ],
-    blockingDefectsOpen: 0
+    findings: [],
+    fixesApplied: [],
+    blockingDefectsOpen: null
   }
 };
 

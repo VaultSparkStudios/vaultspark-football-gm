@@ -11,10 +11,39 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 - [ ] Restore `/stats` to sitemap.xml the moment the community snapshot clears its suppression threshold. S94 withheld it so the first page indexed about this game is not a table of zeros; that is a temporary state with a defined exit condition, not a permanent decision.
 - [x] Re-run `/code-review` against a session's own diff BEFORE the canonical receipt, not after. **Done S108: eight findings, all acted on before any shard ran.** S94 ran it late and it found ten real defects, which cost a full 45-minute shard re-run. The review is cheap relative to the receipt and should precede it.
-- [ ] Reconsider the mobile tab-target count on its own terms. S94 skipped the 14-to-6 regroup because the rail is already grouped under five task headers and the remaining cost is target count on a phone — which is the founder-deferred item needing its own visual-evidence re-baseline budget, not a side effect of an information-architecture pass.
+- [x] Reconsider the mobile tab-target count on its own terms. S110 grouped the fourteen destinations behind six phone drawer sections while retaining direct desktop tab access; visual evidence is being re-baselined before release.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
+
+## Session 110 — Recover S109 and finish the authorized release (2026-09-28)
+
+- [x] Recover the uncommitted S109 implementation and verify that `main` still matches `origin/main`; preserve its work and the public launch HOLD.
+- [x] Close the remaining player-facing S109 audit rungs: six-section mobile drawer and SVG icon sprite; make the First Season Contract trade objective player-controllable and show its season-end verdict.
+- [x] Make the Worker entry discoverable by the browser-module reachability check rather than using a build-only allowlist; add a recorded audit-lane delta command.
+- [ ] Complete the source-bound Node and browser suites, static smoke, security and public-sanitization checks.
+- [ ] Capture and inspect desktop/mobile pixels in dark and light themes for touched game and public surfaces; commit the hash-bound visual receipt.
+- [ ] Deploy the exact candidate to stable staging, verify staging provenance and hosted performance, then commit/push and promote the same artifact to the live Cloudflare origin and backend runtime.
+- [ ] Reconcile release receipts and closeout records; leave public launch HOLD until its independent email, approval, and lifecycle gates are proved.
+
+## Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there (2026-09-14)
+
+- [x] **Front Office Advisor** — deterministic, packet-cited, scored at the weekly commit into a descriptive tally; lazy island on the Desk. L3 (user-keyed model voice) deliberately unshipped: zero project token spend is the contract.
+- [x] **Rival personas are causal at the trade seam** — `evaluateTradeValue` with archetype tolerance, age horizon, need premium/surplus discount and rationale; CPU clubs only; stream invariance asserted.
+- [x] **First Season Contract** — five objectives, three from actions and two from the dashboard at season close; collapses after week 6; fires one achievement.
+- [x] **Moment cards** on trophies, epilogue, development report and first-round reveal, with the challenge code.
+- [x] **Worker-hosted runtime** — module Worker with a storage mirror, in-page fallback with a diagnostic, byte-equal contract through both transports; long-task ceiling 1,000 ms is the gate, wall-clock 750 ms the bound.
+- [x] **Token sweep and crests** — zero hex outside token blocks; `teamCrest.js` in the Desk spotlight. Icon sprite not shipped.
+- [x] **Showcase League** on the stats page (committed JSON; the ten-season run took 26 minutes under load).
+- [x] **Desk and League** — Overview split; tab ids unchanged; League hydrates news, analytics and sim jobs. Six-group drawer and Depth Chart merge not shipped.
+- [x] **Public chrome** — one header, footer and theme toggle from the manifest on every page; two inert toggles repaired; About + FAQ; press kit; status archive; sitemap comment stripped; legacy-tier count gated; cover.png lossless 445 → 378 KB.
+- [x] **Dev CORS fails closed**; parity gate reads `devCors.js`.
+- [x] **Audit-lane cache** L1 — `docs/audit-lanes/` with the SHA described and the delta command for S110.
+- [x] **Live standings** — `latestStandings` read the season-end archive, so year one showed "No rows" and later years last season's table; one shared `teamSeasonRow` now serves both.
+- [ ] **Icon sprite** (14 glyphs on the brand mark's grid, replacing emoji in nav and panel headers) and the **six-group phone drawer** are the next two visual/IA rungs.
+- [ ] **CPU–CPU trade market does not exist** (0 trades in 3 seasons on the canonical seed). The persona seam is ready; a market needs its own item with a matched control on transaction volume.
+- [ ] **Alias mounts** (eight copies, 33.7 MB) wait on the Studio host contract before any alias becomes a 301.
+- [ ] Never write a count premise as `[\s\S]*?){n}`; the checker hung twenty minutes when the fix made n unreachable. Use a non-overlapping separator.
 
 ## Session 108 — Full arc: the question answered first, the roll's remedy revived, and the offseason's verdict shown (2026-09-14)
 
@@ -172,18 +201,6 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] Inspect and hash-bind the new surface on desktop/mobile in dark/light themes; correct the light-theme contrast defect found in the first render.
 
 **Verification:** canonical aggregate **1,319/1,319** across six shards; Playwright **55/55**; focused release guards **44/44**; Pages build, browser-module reachability, static smoke, and CANON-053 visual receipt green. Lazy-loading the post-game reward layer holds the first-decision graph at **643,495/650,000 bytes**, 52/58 modules, with zero lazy-root leaks. Application and release evidence are committed and pushed; exact staging, production Pages and backend deployment are verified. Public launch remains **HOLD** pending delivered reply-capable project-domain email evidence, exact-SHA founder approval, and authoritative lifecycle reconciliation.
-
-## Session 98 — Full arc: the first season pays off, chronology stays true, and tablet focus comes home (2026-09-03)
-
-- [x] Replace the never-initialized dashboard-phase sentinel with one pure previous/current season-transition authority.
-- [x] Prove initial load and ordinary refresh remain quiet while the first regular-season or postseason completion opens the existing season review exactly once.
-- [x] Preserve `GameSession.getRecentBoxScores()` year/week-descending authority in Trophy Road instead of applying a destructive week-only re-sort.
-- [x] Consolidate duplicate Arrow/Home/End handlers into one declared-orientation keyboard authority.
-- [x] Preserve desktop roving focus and return tablet focus to the visible drawer toggle after selection closes and inerts the drawer.
-- [x] Bring the corrected boot graph under the strict 650 KB initial-shell budget without declaring a lazy island as a preload.
-- [x] Bind Node, browser, responsive-pixel, hosted-performance, staging, production Pages and backend deployment evidence to source `3cce0a51e82e78625bdfad82f1cbdb19a31c94aa` and artifact `6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4`.
-
-**Verification:** canonical Node 1,303/1,303 across six shards; exact-SHA CI workflow 33769176381 green; Playwright 55/55 locally and in the release workflow; boot 649,716/730,000 bytes with 53/58 initial modules and zero lazy leaks; 255 responsive game states with 98 retained exact-candidate captures plus four reviewed status-page captures; stable staging 14/14 at deployment `a835d039-bd18-4084-8eec-5a60b81993aa` with rollback; hosted `/` and `/game.html` performance verified; production Pages workflow 33770515766 and backend workflow 33770517153 use the exact candidate. Technical deployment is complete; public launch remains HOLD.
 
 <!-- ledger-roll:pointer -->
 ---

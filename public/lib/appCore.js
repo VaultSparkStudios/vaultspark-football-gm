@@ -5,7 +5,6 @@ import { getClientDiagnosticsSnapshot, recordClientDiagnostic, subscribeClientDi
 import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
 import { buildMentorshipBadge } from "./engagementFeatures.js";
 import { orientWinnerFirst } from "./scoreline.js";
-import { resolveTabKeyboardIndex } from "./tabKeyboardNavigation.js";
 
 export function escapeHtml(value) {
   return String(value)
@@ -305,6 +304,7 @@ export function setStatus(text) {
 }
 
 export function syncClientDiagnosticsStatus(snapshot = getClientDiagnosticsSnapshot()) {
+  if (typeof globalThis.document?.getElementById !== "function") return; // headless (S109)
   const el = document.getElementById("statusChip");
   if (!el) return;
   const degraded = snapshot.unresolved > 0;
@@ -1386,86 +1386,26 @@ export function closePlayerModal() {
  *
  * @returns {(() => void)|null} a close function, so tab selection can dismiss it
  */
+let navigationModulePromise;
+function navigationModule() {
+  return navigationModulePromise ||= import("./mobileNavigation.js");
+}
+
 export function bindMobileNav() {
+  let closeNav = null;
   const toggle = document.getElementById("mobileNavToggle");
-  const scrim = document.getElementById("mobileNavScrim");
-  const sideMenu = document.getElementById("sideMenu");
-  if (!toggle || !scrim) return null;
-
-  /** True when the hamburger is actually rendered, i.e. the drawer breakpoint is live. */
-  const isDrawerActive = () => window.getComputedStyle(toggle).display !== "none";
-
-  function closeNav({ restoreFocus = false } = {}) {
-    const focusWasInDrawer = sideMenu?.contains(document.activeElement);
-    document.body.classList.remove("mobile-nav-open");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Open navigation");
-    // Move focus before the drawer becomes inert. Escape and scrim dismissal
-    // must be as focus-safe as selecting a destination tab.
-    if (restoreFocus || focusWasInDrawer) toggle.focus();
-    // Keep the off-screen drawer out of the tab order and away from screen readers.
-    if (sideMenu && isDrawerActive()) sideMenu.setAttribute("inert", "");
-  }
-
-  function openNav() {
-    document.body.classList.add("mobile-nav-open");
-    toggle.setAttribute("aria-expanded", "true");
-    toggle.setAttribute("aria-label", "Close navigation");
-    if (sideMenu) {
-      sideMenu.removeAttribute("inert");
-      sideMenu.querySelector(".menu-btn")?.focus();
-    }
-  }
-
-  function syncInert() {
-    if (!sideMenu) return;
-    if (document.body.classList.contains("mobile-nav-open")) return;
-    if (isDrawerActive()) sideMenu.setAttribute("inert", "");
-    else sideMenu.removeAttribute("inert");
-  }
-
-  syncInert();
-  window.addEventListener("resize", syncInert, { passive: true });
-
-  toggle.addEventListener("click", () => {
-    if (document.body.classList.contains("mobile-nav-open")) closeNav();
-    else openNav();
-  });
-  scrim.addEventListener("click", () => closeNav({ restoreFocus: true }));
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && document.body.classList.contains("mobile-nav-open")) closeNav({ restoreFocus: true });
-  });
-
-  return closeNav;
+  const ready = navigationModule().then((module) => { closeNav ||= module.bindMobileNav(); });
+  toggle?.addEventListener("click", (event) => {
+    if (closeNav) return;
+    event.stopImmediatePropagation();
+    ready.then(() => toggle.click());
+  }, { capture: true });
+  return (options) => closeNav?.(options);
 }
 
 export function bindMenuTabs(activateTabFn, closeMobileNav) {
-  const buttons = Array.from(document.querySelectorAll(".menu-btn"));
-  const activateButton = (button, { keyboard = false } = {}) => {
-    const drawerWasOpen = document.body.classList.contains("mobile-nav-open");
-    activateTabFn(button.dataset.tab);
-    // Selecting a section is the drawer's job done — get it off the screen.
-    closeMobileNav?.();
-    if (!drawerWasOpen && keyboard) button.focus();
-  };
-
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => activateButton(button));
-    button.addEventListener("keydown", (event) => {
-      const orientation = button.closest('[role="tablist"]')?.getAttribute("aria-orientation") || "vertical";
-      const nextIndex = resolveTabKeyboardIndex({
-        key: event.key,
-        currentIndex: buttons.indexOf(button),
-        count: buttons.length,
-        orientation
-      });
-      if (nextIndex === null) return;
-      event.preventDefault();
-      activateButton(buttons[nextIndex], { keyboard: true });
-    });
-  });
+  navigationModule().then((module) => module.bindMenuTabs(activateTabFn, closeMobileNav));
 }
-
 function setActionControlsDisabled(controlIds, disabled) {
   for (const id of controlIds || []) {
     const element = document.getElementById(id);

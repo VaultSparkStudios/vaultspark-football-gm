@@ -1,64 +1,49 @@
-# Latest Handoff — Session 108 → Session 109
+# Latest Handoff — Session 109 → Session 110
 
 > **Keep this heading shape.** Since S105 it is committed session authority: `parseHandoffCloseoutAuthority` reads the left-hand session, and `test/session-authority.test.js` fails if the live handoff and the newest SIL entry disagree.
 
 ## Where We Left Off
 
-S108 was a clean start: F7 current at `fac752fe`, tree clean, synced, brief fresh. Six audit items, six shipped, one inherited premise rejected before code.
+S109 was a clean start on `83d6ad0`: tree clean, synced, brief fresh, genius queue exhausted. The founder asked for a full-surface audit and then, in one goal, for the whole plan implemented, closed out, pushed and deployed. Fifteen audit items were ranked (`docs/AUDIT_2026-09-14_SESSION109.json`, combined priority 226.6); ten shipped in full, three shipped reduced or corrected, two were the auditor's own phantoms and are recorded as such, one is deferred with evidence.
 
-**The question S107 handed over was answered before any code, and the answer is that the gate must not learn to see composition.** The 90+ cut is position-blind and so is the anchor's total (26 of 1,696), so the gated comparison is like for like at the total. What it cannot see is *which rooms* hold the cohort, and that is now published on the receipt, never gated:
+**The audit's own premises were wrong three times, and each was found before code.** Built pages already strip HTML comments (only the sitemap shipped one); the landing stat bar was already gated by `check-public-truth` since S94 (only the legacy-tier count was ungated); the pre-cohort atlas already renders an invitation, not a grid of zeros. The two Explore lanes also produced eight phantoms (canonical tags, sitemap dates and the service worker are injected at build; Commissioner Mode and the Hall of Fame exist; no Stripe; the open-CORS fallback is the dev server only). Every phantom is recorded in the sidecar and in `docs/audit-lanes/` as a standing negative control for S110.
 
-```
-ten seasons, active roster only            cohort   QB share/seats (ratio)   OL share/seats (ratio)   other rooms
-  canonical 20260306                          36     16.7% / 4.2%  (3.98)     80.6% / 20.8% (3.87)     0 – 0.13
-  seed 2026                                   46     28.3% / 4.2%  (6.74)     63.0% / 20.8% (3.03)     0 – 0.26
-active-roster room means (sd)                QB 84.1–84.6 (3.5–4.1) · OL 83.1–83.3 (4.4) · every other room 76.5–78.2 (3.3–4.0)
-```
-
-A position-blind 90 is a +1.5 to +1.7 sd claim in two rooms and a +3.0 to +4.0 sd claim in the other five. **That is a rating-scale question, and it is recorded as one** (DECISIONS S108 Decision 1, TASK_BOARD S108). Do not add a per-room elite arm; do not move the 1.53% ceiling; do not widen `stdDevDrift*`. Both seeds reproduced S107's headline arms to the decimal before anything changed (2.1% / 0.093 / −0.001 and 2.7% / 0.108 / −0.025).
-
-**The ledger roll's own remedy had been inert since S105.** The dry run on the live tree — not the S106 note — showed every newest-last ledger reporting "fewer entries than the retention window" while holding twelve: each closeout appended beneath the pointer, and the splitter sliced at the sentinel. An applied roll would have dropped S106 and S107 from each live file. Fixed at source: pointer found anywhere and re-appended at EOF (also when nothing archives), retention by the N highest distinct session numbers in the ledger's declared order, distinct reason for duplicate-session headings, positional rule kept only as a negative control on TRUTH_AUDIT's real shape. **S106's "the SIL is three entries short" was a phantom** — positional and by-session move the same two entries there; the instance was TRUTH_AUDIT.
+**Five agents ran in parallel on isolated lanes** (personas, CSS tokens + crests, worker transport, moment cards, advisor logic) at about 900,000 subagent tokens while the website batch and the shell wiring were done directly. Two of them shipped defects the repo's own gates caught: four silent `.catch(() => {})` sinks (promise-observability gate; now `recordClientDiagnostic`) and a worker entry the reachability gate could not see (allowlisted as the one declared exception). A third defect was mine: a count premise written as `[\s\S]*?){200}` hung the premise checker for twenty minutes once the CSS sweep cut the hex literals below 200. Linear form now; memory updated.
 
 ## What shipped
 
-- **Offseason Development Report.** `progressPlayer` returns `{ before, after, delta }`; `applyAgingProgressionAndRetirements` returns one row per progressed player (retirees flagged, never dropped); `src/engine/offseasonDevelopmentReport.js` summarises the club (top five risers/fallers, improved/declined/held, net, mean; league beside it). The rollover keeps it on the pipeline **and the league** (`dashboard.developmentReport`, so it survives the season it describes and a reload), puts the line in the retirements stage message, logs the long-form feed entry, and writes the beat-reporter item the Priority Inbox actually ingests (`newsLog`, top-level `type: "development"`, IMPORTANT). History tab card (`#offseasonDevelopmentPanel`) rendered by `public/lib/offseasonDevelopmentReport.js`, lazily imported through `observeBackgroundTask` because the history island sits at **15.2% headroom against a 15% floor**. No RNG draw added: identical fingerprints on a seeded pair, equal stream position after the rollover.
-- **Draft fog on every path.** `scoutedProspectView` strips `overall`, `potential` and `ratings`; `scoutedPotential` is ±6 from `derivedRng` keyed on year and prospect id; `scoutedDraftResult` projects GET `/api/draft` and the three draft POSTs in `server.js` and `localApiRuntime.js`; combine rows carry the scouted read ("Scout OVR"); the reveal modal and reward beat say "Scout OVR" when that is what they hold. The engine's `league.pendingDraft` is untouched (CPU picks, on-clock market, the reveal).
-- **Profile outlook and runway.** `buildPlayerDevelopmentOutlook` reads headroom and trait; at zero headroom it cannot exceed "steady". `GROWTH_WINDOW_MAX_AGE` (25) is exported from `src/domain/ratings.js`, read by `developmentDelta` and by the profile's `developmentRunwaySeasons`; the narrative says "growth seasons" and "the growth window has closed". Roster table shows the dev trait.
-- **Elite composition arm.** `NFL_FIRST_TEAM_ALL_PRO_SEATS_BY_ROOM` (24 allocable of 26; returner and special-teamer declared unallocable), `activeRosterRooms` on `summarizeLeagueProgression`, `buildEliteCompositionReading` → `distribution.eliteComposition` with `gated: false`.
-- **Ledger roll** as above; `test/session108-ledger-retention-by-session.test.js`.
-- **Review before receipt** (the S94 Next item): eight findings, all acted on before any shard — reveal/reward reading a stripped field, three more truth leaks in the fog, the inbox never reading `dashboard.news`, a live-tree ledger test that would go red every closeout, a duplicate-session null path, the report lost on reload, the runway projected from the wrong constant, and the pointer strip swallowing a heading.
-- **Public:** release note on `public/status.html` (2026-09-14); `index.html` engine count 42 → 43.
+- **Desk and League.** The Overview is the Desk (command centre, First Season Contract, Front Office Advisor, Co-GM brief, Trophy Road, Week Room, film room, season preview, schedule + needs + injuries, Franchise Story, pulse row, deadline panel). The Calendar tab is League and holds standings, results, leaders, news, story threads, charts, long sims, the calendar and the bracket. Tab ids and testids unchanged; hydration declares news/analytics/sim-jobs on League. Tab count stays 14.
+- **Front Office Advisor** (`public/lib/frontOfficeAdvisor.js`, lazy, 26.6 KB): deterministic, ranks candidate calls from the real Co-GM packet with an exported weight table, cites only packet fields, degrades on missing ones; agreement is scored at the weekly commit (`deskIslands.js`) into a descriptive tally. 13/13 unit on real packets; Playwright asserts the card and a scored week.
+- **First Season Contract** (`public/lib/firstSeasonContract.js`, lazy): five objectives; three marked from the player's own actions (sign, depth chart, answer an inbound offer), two judged from the dashboard at season close (owner's `targetWins`, cap legal); collapses after week 6; completion fires the new `first-season-contract` achievement once. 7/7 unit.
+- **Rival personas are causal at the trade seam.** `evaluateTradeValue` with per-archetype tolerance (win-now .45 → rebuild .22 + trait deltas), age horizon, quality need profile (need premium .15, surplus discount .12), rationale text; CPU clubs only, controlled club flat; no RNG draw added (stream invariance asserted). Finding: no CPU–CPU trade market exists (0 trades in 3 seasons, canonical seed).
+- **Worker-hosted runtime.** `createDefaultJobScheduler` yields; `workerTransport.js` + `localRuntimeWorker.js` host the engine in a module Worker with a Storage mirror replayed to the page; fallback to in-page with a diagnostic; opt-out meta/flag. 7/7 contract (byte-equal responses through both transports); Playwright: tab activation 152 ms with a 201 ms largest stall while a season simulates, against 449 ms and an 8.1 s stall in-page. The gate is the long-task ceiling (1,000 ms), the wall-clock bound is 750 ms.
+- **Moment cards** (`momentCard.js`, lazy): 1200×630 SVG → PNG, share/clipboard/new-tab; on trophy rows, the epilogue, the development report and the first-round reveal, with the challenge code. 9/9 + Playwright.
+- **Visual system:** zero hex literals outside token blocks in `styles.css` (257 alpha literals remain, counted); `teamCrest.js` procedural crests, wired lazily into the Desk spotlight and available to cards. Icon sprite not shipped.
+- **Public site:** one build-rendered header, footer and theme toggle from `footer-manifest.json` on every page (two inert toggles repaired: simulation.html had no init, stats.html passed an object); About renovated with What is next + FAQ; `press.html`; status page keeps four notes with a generated `status-archive.html`; sitemap comment stripped at build; legacy-tier count gated; Showcase League (`public/showcase-league.json`, seed 20260306, ten seasons, committed because the run took 26 minutes on a loaded machine); cover.png re-encoded losslessly 445 → 378 KB plus a 28 KB WebP.
+- **Dev server CORS fails closed** (`src/app/devCors.js`), parity gate widened to read it.
+- **Found by a spec, fixed at source: standings were empty for a franchise's whole first season** and showed last year's table after it, because `latestStandings` read the season-end archive. `teamSeasonRow` is declared once; `getLiveTeamSeasonTable` fills in-season rows; 3/3 with the empty archive as the negative control. Release note written.
+- **Audit-lane cache:** `docs/audit-lanes/2026-09-14-{site,shell,engine}.md` with the SHA they describe and the diff command S110 should send instead of the surface.
 
 ## Next work
 
-- **The rating scale, not the gate.** Rooms sit seven overall points apart, so "90" is not the same claim in every room; any change is a generator/scale change with the full distribution receipt as its matched control. State the question in DECISIONS first.
-- The history island has 15.2% headroom; the next change to that tab goes behind a dynamic import.
-- Run `node scripts/ledger-roll.mjs --apply` at every closeout after appending entries; the live gate tolerates one session of debt.
-- Do not re-point the parity population (standing since S104); the registry still reads `sparked` against a local contract of FORGE; do **not** flip the local contract.
-- Delivered/reply-capable project-domain email, candidate-bound public-launch approval and authoritative lifecycle reconciliation remain independent launch evidence. Public launch remains **HOLD**.
+- **Icon sprite and the six-group drawer** (visual L2, IA L2) are the two unshipped ladder rungs with the biggest player-facing return; the crest is in, so the sprite lands on the same grid.
+- **CPU–CPU trade market does not exist.** The persona seam is ready for it; a market needs its own audit item with a matched control on transaction volume.
+- **Alias mounts** (eight copies, 33.7 MB): needs the Studio host contract's answer before any alias becomes a 301.
+- **Advisor L3** (user-keyed model voice) stays unshipped on purpose: zero project token spend is the contract; if it is ever built it is the user's key, from the browser, opt-in.
+- Standing: rating scale before the elite gate (S108); do not re-point the parity population; do not flip the local lifecycle contract; `/stats` returns to the sitemap when five browsers share. Public launch remains **HOLD**.
 
 ## How this session's reds were earned — do not repeat these
 
-- A lazy browser module imported `state` from `appCore.js`, which does not export it, and a `.catch(() => {})` hid the failure; the spec asserted on placeholder text that is also in the HTML, so it could not tell "module failed" from "no report". Observe the load (`observeBackgroundTask`), and assert on something only the module renders.
-- The GM Inbox drawer is off-canvas when closed but reports visible; a spec that clicks `#closeInboxBtn` on `isVisible()` hangs. Refresh state through `[data-testid="refresh-btn"]`, not by reloading (the local runtime does not persist the offseason advance).
-- Fogging one field is not fogging the number: grep for every path (`ratings`, sibling tables, mutation responses) before claiming the surface is fogged.
+- Agents given "do not edit X, report what to add" still ship gate-tripping code in the files they may edit (silent catches, an unreachable worker entry). Run the build gates on their output before wiring, not after.
+- A count premise must use a separator that cannot overlap the token. `[\s\S]*?){n}` is a hang the moment the fix makes n unreachable.
+- The boot target (650,000) was crossed six times by comment bytes alone; every static-module comment costs boot. Put wiring in a lazy module and keep static edits to a line.
+- `run_in_background` with a tool timeout still kills the job; a 45-minute suite must be `Start-Process` detached with a log and a waiter.
+- Editing any file in the test-surface digest after the receipt invalidates it. The worker spec's bound change cost a second 70-minute run.
 
 ## Receipts
 
-**Tests: every shard green, 1,501/1,501** — core 273, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 322 — up from 1,471 in S107. The first `npm test` run (2,848 s, alone on the machine) went red on exactly one test, the studio shard's manifest gate: the five S108 test files were not registered in `scripts/run-test-shard.mjs`, so the receipt had silently skipped them (core read 253, unchanged from S107). Classified as my own omission, registered, and core (870 s) and studio (52 s) re-run on the final tree; runtime, sim-contract, sim-realism and long are unaffected by a manifest-only change and stand from the full run. Doctor `blockingFailing 0` · 11/12 · the standing warning is the registry SPARKED vs local FORGE drift. Browser gates: boot budget 643,968/730,000 with every island above its 15% floor (history 15.2%), reachability 93 modules, promise observability 0 silent sinks, public-truth OK (43 engine systems), `tests-ui/offseason-development.spec.js` 2/2.
+**Tests: every shard green, 1,568/1,568** on the final tree (fresh source-bound receipt in `.cache/test-count.json`), up from 1,501 in S108. Playwright: full suite 65 passed, 1 skipped (opt-in control) after the worker bound was re-based on the long-task statistic; desk-islands, moment-card and worker-runtime added. Boot budget 649,981/730,000 under the 650,000 target, 52/58 modules, 0 lazy leaks; reachability with one declared allowlist entry; promise observability 100 files, 0 silent sinks; public-truth OK (43 engine systems, 6 legacy tiers); build green with `press.html` and `status-archive.html` emitted.
 
 ### Deployment
 
-| | |
-|---|---|
-| Candidate | `ee7286837d177bb36f0a7f35dcbeef6d8436c7db` (pushed to main; pre-push hook green; `origin/main == HEAD` verified) |
-| Artifact digest | `82f4b29e0b54f3941493b3b611114ff1a5d48ae43b5997e43e89bacaddcc02eb` |
-| Staging | verified **14/14** · deployment `53b1b0dc-0e87-4549-ba04-e7120bb41442` · rollback `a9d06c47-dc29-4895-98ce-812a9c1392f0` · provenance report `reports/s108-staging.json` **10/10** |
-| Visual QA | 98 `s108-*` captures bound to the candidate, 0 blocking; 255 responsive states passed; retention recorded 98 new hashes (1,919 total), 65.4 MB → 49.8 MB |
-| Production | promotion run **34835045345** — gate, build and deploy all **success** · live origin provenance `reports/s108-production.json` **10/10**, serving `ee728683` · push-triggered Deploy Pages `34834839134` cancelled by the dispatch, as expected |
-| Performance | hosted receipt **verified**, bound to `ee728683` |
-| Release authority | **verified** — source and publication revision `ee728683`, all four identities (staging, production, visual, performance) bound; `stagingAuthority` reconciled at the same revision |
-| Doctor | `blockingFailing 0` · 11/12 · the standing warning is the registry SPARKED vs local FORGE drift |
-| `launchReady` | **false** — unchanged (email delivery, founder approval, lifecycle authority). Technical deployment, not public launch |
-
-**What the captures do and do not prove.** The roster capture shows the new Dev column beside POT; the draft-room capture shows the renamed Scout Ovr / Scout Pot columns on a hardcoded fixture prospect, so it proves the columns render, not the fog's values (those are asserted by `test/session108-draft-board-fog.test.js`). The Offseason Development Report card is outside the capture set and is proven by `tests-ui/offseason-development.spec.js`. The status-page note was verified on the live staging origin.
+Recorded in the closeout receipts commit that follows this handoff's feature commit (staging authority, staging and production provenance, visual and performance receipts, reconciled release authority).

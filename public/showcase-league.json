@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "simulation",
+  "seed": 20260306,
+  "seasons": 10,
+  "startYear": 2026,
+  "endYear": 2035,
+  "generatedAt": "2026-09-14",
+  "cards": [
+    {
+      "id": "dynasty",
+      "label": "Most titles",
+      "value": "2 in 10",
+      "detail": "Fresno Mustangs won 2 championships across the decade."
+    },
+    {
+      "id": "champions",
+      "label": "Different champions",
+      "value": "8",
+      "detail": "8 of 32 clubs lifted the trophy at least once in 10 seasons."
+    },
+    {
+      "id": "latest-title",
+      "label": "Final season's title game",
+      "value": "63-26",
+      "detail": "Austin Aces over Charleston Kings in 2035."
+    },
+    {
+      "id": "passing",
+      "label": "Career passing yards leader",
+      "value": "50,202",
+      "detail": "Michael Johnson, over the decade."
+    },
+    {
+      "id": "rushing",
+      "label": "Career rushing yards leader",
+      "value": "11,784",
+      "detail": "Liam Anderson, over the decade."
+    },
+    {
+      "id": "receiving",
+      "label": "Career receiving yards leader",
+      "value": "11,761",
+      "detail": "David Young, over the decade."
+    },
+    {
+      "id": "retired",
+      "label": "Careers ended",
+      "value": "2,402",
+      "detail": "2,402 players retired while 2,385 were still on a roster at the end."
+    }
+  ]
+}

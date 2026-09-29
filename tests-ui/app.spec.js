@@ -579,13 +579,13 @@ test("primary franchise tablist supports keyboard activation on desktop and in t
   await createLeagueFromSetup(page);
 
   const overview = page.locator('[data-testid="tab-overview"]');
-  const stats = page.locator('[data-testid="tab-stats"]');
+  const roster = page.locator('[data-testid="tab-roster"]');
   await overview.focus();
   await expect(overview).toBeFocused();
   await page.keyboard.press("ArrowDown");
-  await expect(stats).toBeFocused();
-  await expect(stats).toHaveAttribute("aria-selected", "true");
-  await expect(page.locator("#statsTab")).toHaveClass(/active/);
+  await expect(roster).toBeFocused();
+  await expect(roster).toHaveAttribute("aria-selected", "true");
+  await expect(page.locator("#rosterTab")).toHaveClass(/active/);
 
   await page.keyboard.press("End");
   const settings = page.locator('[data-testid="tab-settings"]');
@@ -599,22 +599,33 @@ test("primary franchise tablist supports keyboard activation on desktop and in t
   const toggle = page.locator("#mobileNavToggle");
   await toggle.click();
   await expect(page.locator("body")).toHaveClass(/mobile-nav-open/);
-  await expect(overview).toBeFocused();
+  const deskGroup = page.locator('[data-menu-group="desk"] .menu-group-toggle');
+  const teamGroup = page.locator('[data-menu-group="team"] .menu-group-toggle');
+  await expect(deskGroup).toBeFocused();
   await page.keyboard.press("ArrowDown");
-  await expect(stats).toHaveAttribute("aria-selected", "true");
-  await expect(page.locator("#statsTab")).toHaveClass(/active/);
+  await expect(teamGroup).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(teamGroup).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Tab");
+  await expect(roster).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  const depth = page.locator('[data-testid="tab-depth"]');
+  await expect(depth).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(depth).toHaveAttribute("aria-selected", "true");
+  await expect(page.locator("#depthTab")).toHaveClass(/active/);
   await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
   await expect(toggle).toBeFocused();
 
   await toggle.click();
-  await expect(overview).toBeFocused();
+  await expect(deskGroup).toBeFocused();
   await page.keyboard.press("Escape");
   await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
   await expect(toggle).toBeFocused();
 
   await toggle.click();
-  await expect(overview).toBeFocused();
-  await page.locator("#mobileNavScrim").click({ position: { x: 760, y: 20 } });
+  await expect(deskGroup).toBeFocused();
+  await page.mouse.click(700, 400);
   await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
   await expect(toggle).toBeFocused();
 });

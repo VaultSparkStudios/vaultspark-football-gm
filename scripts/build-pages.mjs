@@ -13,6 +13,7 @@ import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker
 import { compactArtifactFingerprint, fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
 import { staticGraphFor } from "./check-browser-boot-budget.mjs";
 import { replaceSimulationAnchor, SIMULATION_ANCHOR_START } from "./lib/simulation-methodology.mjs";
+import { inspectIndexFooter, renderPublicChrome, splitStatusNotes, stripXmlComments } from "./lib/public-chrome.mjs";
 // CANON-016: never the raw module — safe-spawn forces windowsHide so a build
 // does not flash a console window per git call on Windows.
 import { execFileSync } from "./lib/safe-spawn.mjs";
@@ -95,8 +96,13 @@ const htmlPages = [
   "terms.html",
   "status.html",
   "simulation.html",
+  "press.html",
   "404.html"
 ];
+// Generated at build from status.html; there is no source page to drift.
+const STATUS_ARCHIVE_PAGE = "status-archive.html";
+const STATUS_NOTES_KEPT = 4;
+let footerManifest = null;
 
 function normalizeBasePath(value) {
   const trimmed = String(value || "").trim() || `/${slug}/`;
@@ -282,6 +288,8 @@ function injectHtmlDefaults(html, pagePath) {
   if (next.includes(SIMULATION_ANCHOR_START)) {
     next = replaceSimulationAnchor(next);
   }
+  // S109: one header, one footer, one working theme toggle, from the manifest.
+  next = renderPublicChrome(next, { pageName: pagePath === "./" ? "index.html" : pagePath, manifest: footerManifest });
   const preloadPage = pagePath === "./" ? "index.html" : pagePath;
   const preloads = modulePreloadLinks.get(preloadPage);
   if (preloads && !next.includes('rel="modulepreload"')) {
@@ -299,8 +307,17 @@ function injectHtmlDefaults(html, pagePath) {
 async function writeHtml(pageName) {
   const sourcePath = path.join(publicDir, pageName);
   const outputPath = path.join(outDir, pageName);
-  const source = await fs.readFile(sourcePath, "utf8");
+  let source = await fs.readFile(sourcePath, "utf8");
   const pagePath = pageName === "index.html" ? "./" : pageName;
+  if (pageName === "status.html") {
+    // The source keeps every note (the freshness gate reads it); the served
+    // page keeps the newest few and the archive page carries the rest.
+    const split = splitStatusNotes(source, { keep: STATUS_NOTES_KEPT, archiveHref: `./${STATUS_ARCHIVE_PAGE}` });
+    source = split.latest;
+    if (split.archive) {
+      await fs.writeFile(path.join(outDir, STATUS_ARCHIVE_PAGE), injectHtmlDefaults(split.archive, STATUS_ARCHIVE_PAGE), "utf8");
+    }
+  }
   await fs.writeFile(outputPath, injectHtmlDefaults(source, pagePath), "utf8");
 }
 
@@ -343,6 +360,7 @@ function sitemapSourceFor(loc) {
   const route = loc.replace(/^https?:\/\/[^/]+/, "") || "/";
   if (route === "/") return "public/index.html";
   if (route === "/stats") return "public/stats.html";
+  if (route === `/${STATUS_ARCHIVE_PAGE}`) return "public/status.html";
   return `public${route}`;
 }
 
@@ -497,9 +515,17 @@ async function main() {
   assertPublicFooterContract(publicDir);
   assertPublicTruth(rootDir);
   await assertBrowserPromiseObservability({ publicDir });
+  // Worker URL references are part of the graph, so an unused worker fails the
+  // same reachability gate as every other browser module.
   await assertBrowserModuleReachability({ publicDir });
+  footerManifest = JSON.parse(await fs.readFile(path.join(publicDir, "footer-manifest.json"), "utf8"));
+  const indexFooter = inspectIndexFooter(await fs.readFile(path.join(publicDir, "index.html"), "utf8"), footerManifest);
+  if (!indexFooter.ok) throw new Error(`index.html footer is missing manifest destinations: ${indexFooter.missing.join(", ")}`);
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);
+  // The sitemap is copied, not rendered, so its comments need their own strip.
+  const sitemapSource = path.join(outDir, "sitemap.xml");
+  await fs.writeFile(sitemapSource, stripXmlComments(await fs.readFile(sitemapSource, "utf8")), "utf8");
   await copyBrowserModules();
   await emitHashedStylesheet();
   await emitHashedCommunityStats();

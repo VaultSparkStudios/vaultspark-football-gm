@@ -9,7 +9,8 @@
  * retirements stage from the engine's own development ledger — so the rows
  * here are exactly the moves the offseason made, not a re-estimate.
  */
-import { state } from "./appState.js";
+import { state, TEAM_THEME_MAP } from "./appState.js";
+import { recordClientDiagnostic } from "./clientDiagnostics.js";
 import { renderTable, escapeHtml } from "./appCore.js";
 
 const signed = (value) => `${Number(value) > 0 ? "+" : ""}${Number(value)}`;
@@ -64,4 +65,52 @@ export function renderOffseasonDevelopmentReport() {
   }
   summary.innerHTML = escapeHtml(developmentReportSummary(report));
   renderTable("offseasonDevelopmentTable", developmentReportRows(report));
+  mountDevelopmentReportShareControl(report);
+}
+
+// S109 — the report card's shareable headline is the club's biggest riser,
+// the one number on this card a player actually wants to brag about. Loaded
+// lazily so a player who never shares never pays for momentCard.js.
+function biggestRiser(report) {
+  const risers = Array.isArray(report?.risers) ? report.risers : [];
+  return risers.reduce((best, mover) => {
+    const change = Number(mover?.change) || 0;
+    return !best || change > (Number(best.change) || 0) ? mover : best;
+  }, null);
+}
+
+function mountDevelopmentReportShareControl(report) {
+  const host = document.getElementById("offseasonDevelopmentSummary")?.parentElement
+    || document.getElementById("offseasonDevelopmentSummary");
+  if (!host) return;
+  const existing = host.querySelector(".moment-card-share-mount");
+  if (existing) existing.remove();
+  const riser = biggestRiser(report);
+  if (!riser) return;
+  const mount = document.createElement("div");
+  mount.className = "moment-card-share-mount";
+  host.appendChild(mount);
+  import("./momentCard.js").then((momentCard) => {
+    momentCard.mountShareControl(mount, () => {
+      const d = state.dashboard || {};
+      const teamAbbrev = d.controlledTeam?.abbrev || "";
+      const theme = TEAM_THEME_MAP[teamAbbrev] || {};
+      return {
+        kind: "development-report",
+        headline: `${riser.name} is rising`,
+        subline: `${riser.position} · ${riser.before} → ${riser.after} OVR`,
+        stats: [
+          { label: "Change", value: `${Number(riser.change) > 0 ? "+" : ""}${riser.change}` },
+          { label: "Age", value: riser.age ?? "-" },
+          report.club ? { label: "Club Improved", value: `${report.club.improved}/${report.club.progressed}` } : null
+        ].filter(Boolean),
+        teamCode: teamAbbrev,
+        teamName: d.controlledTeam?.name || "",
+        primary: theme.primary,
+        secondary: theme.secondary,
+        seasonLabel: report.year ? `${report.year} Offseason` : "",
+        challengeCode: momentCard.deriveActiveChallengeCode(state)
+      };
+    });
+  }).catch((error) => recordClientDiagnostic({ surface: "moment-card", operation: "share-control", error, severity: "warning" }));
 }

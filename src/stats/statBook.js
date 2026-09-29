@@ -391,6 +391,45 @@ function playerCareerApproximateValue(player, seasonType, contextByYear) {
   return total;
 }
 
+/**
+ * One team's season row, in the shape the archive stores and the dashboard
+ * reads. Declared once (S109): the archive is written at season end, so the
+ * live standings the dashboard shows in-season come from the same mapping
+ * over the live `team.season` record rather than a second literal.
+ */
+export function teamSeasonRow(team, year) {
+  return {
+    year,
+    team: team.id,
+    teamName: team.name,
+    conference: team.conference,
+    division: team.division,
+    wins: team.season.wins,
+    losses: team.season.losses,
+    ties: team.season.ties,
+    winPct: Number(
+      ((team.season.wins + team.season.ties * 0.5) /
+        Math.max(1, team.season.wins + team.season.losses + team.season.ties)).toFixed(3)
+    ),
+    pf: team.season.pointsFor,
+    pa: team.season.pointsAgainst,
+    yardOff: team.season.yardsFor,
+    yardDef: team.season.yardsAgainst,
+    drivesFor: team.season.drivesFor || 0,
+    drivesAgainst: team.season.drivesAgainst || 0,
+    turnovers: team.season.turnovers,
+    // S86 [audit #4] — carry playoff participation into the archived row so a
+    // restored session derives the same answer the live session did. Written
+    // on the team by seasonSimulator, never on team.season.
+    playoffSeed: team.playoffSeed ?? null,
+    playoffExit: team.playoffExit ?? null
+  };
+}
+
+export function sortTeamSeasonRows(rows) {
+  return rows.sort((a, b) => b.winPct - a.winPct || b.pf - a.pf);
+}
+
 export class StatBook {
   constructor(league) {
     this.league = league;
@@ -456,32 +495,7 @@ export class StatBook {
   }
 
   archiveTeamSeason(year) {
-    const rows = this.league.teams.map((team) => ({
-      year,
-      team: team.id,
-      teamName: team.name,
-      conference: team.conference,
-      division: team.division,
-      wins: team.season.wins,
-      losses: team.season.losses,
-      ties: team.season.ties,
-      winPct: Number(
-        ((team.season.wins + team.season.ties * 0.5) /
-          Math.max(1, team.season.wins + team.season.losses + team.season.ties)).toFixed(3)
-      ),
-      pf: team.season.pointsFor,
-      pa: team.season.pointsAgainst,
-      yardOff: team.season.yardsFor,
-      yardDef: team.season.yardsAgainst,
-      drivesFor: team.season.drivesFor || 0,
-      drivesAgainst: team.season.drivesAgainst || 0,
-      turnovers: team.season.turnovers,
-      // S86 [audit #4] — carry playoff participation into the archived row so a
-      // restored session derives the same answer the live session did. Written
-      // on the team by seasonSimulator, never on team.season.
-      playoffSeed: team.playoffSeed ?? null,
-      playoffExit: team.playoffExit ?? null
-    }));
+    const rows = this.league.teams.map((team) => teamSeasonRow(team, year));
     this.teamSeasonArchive.push(...rows);
     this.buildWarehouseForYear(year);
   }
@@ -533,12 +547,20 @@ export class StatBook {
 
   getTeamSeasonTable(filters = {}) {
     const { year, team, conference, division } = filters;
-    return this.teamSeasonArchive
+    return sortTeamSeasonRows(this.teamSeasonArchive
       .filter((row) => (year == null ? true : row.year === year))
       .filter((row) => (!team ? true : row.team === team))
       .filter((row) => (!conference ? true : row.conference === conference))
-      .filter((row) => (!division ? true : row.division === division))
-      .sort((a, b) => b.winPct - a.winPct || b.pf - a.pf);
+      .filter((row) => (!division ? true : row.division === division)));
+  }
+
+  /**
+   * S109: the standings of the season in progress, from the live team records.
+   * The archive only exists for finished seasons, so before this the dashboard
+   * showed "No rows" for a whole first season and last year's table after it.
+   */
+  getLiveTeamSeasonTable(year) {
+    return sortTeamSeasonRows(this.league.teams.map((team) => teamSeasonRow(team, year)));
   }
 
   getPlayerSeasonTable(category, filters = {}) {

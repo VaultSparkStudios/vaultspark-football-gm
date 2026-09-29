@@ -314,11 +314,37 @@ function toSetupTeamIdentity(team) {
   };
 }
 
+/**
+ * S109 — the simulation-job scheduler must give the event loop a real turn
+ * between batches, not just a macrotask. `setTimeout(fn, 0)` is clamped to
+ * >=4 ms after nesting and, worse, does not let pending input run ahead of it
+ * in every engine. Preference order in a browser: `scheduler.yield()` (input
+ * and rendering get priority), a MessageChannel tick (unclamped macrotask),
+ * then `setTimeout`. Node has no rendering to protect, so `setImmediate`.
+ */
+export function createDefaultJobScheduler() {
+  const isNode = typeof process !== "undefined" && Boolean(process.versions?.node);
+  if (isNode) {
+    return typeof setImmediate === "function" ? (fn) => setImmediate(fn) : (fn) => setTimeout(fn, 0);
+  }
+  const nativeYield = globalThis.scheduler?.yield;
+  if (typeof nativeYield === "function") {
+    return (fn) => { globalThis.scheduler.yield().then(fn, fn); };
+  }
+  if (typeof MessageChannel === "function") {
+    const channel = new MessageChannel();
+    const queue = [];
+    channel.port1.onmessage = () => { const fn = queue.shift(); if (fn) fn(); };
+    return (fn) => { queue.push(fn); channel.port2.postMessage(null); };
+  }
+  return (fn) => setTimeout(fn, 0);
+}
+
 export function createLocalApiRuntime({
   storage,
   now = () => Date.now(),
   currentYear = new Date().getFullYear(),
-  scheduler = (fn) => setTimeout(fn, 0)
+  scheduler = createDefaultJobScheduler()
 } = {}) {
   const saveStore = createHybridBrowserSaveStore({
     storage,

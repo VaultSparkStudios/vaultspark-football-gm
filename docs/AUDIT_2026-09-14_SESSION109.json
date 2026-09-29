@@ -1,0 +1,937 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-14",
+  "session": 109,
+  "agent": "claude-code",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "source": "Three read-only lanes (public site content, in-game UI/UX, engine + security + performance + token) run in parallel over the live tree, then every load-bearing premise re-verified by grep, by running check-browser-boot-budget, and by fetching the live origin (stats-surface.json and the community snapshot endpoint, which reports status 'warming' with sampleSize 0). Eight lane findings failed verification and are recorded as phantoms below rather than carried.",
+    "itemsRanked": 15,
+    "combinedPriority": 226.6,
+    "verificationNote": "The deployed game is the in-browser runtime: createApiClient imports src/app/api/localApiRuntime.js directly, so the whole engine runs on the page's main thread with sim jobs scheduled by setTimeout(fn, 0) and no Worker anywhere under public/. The Node server under src/server.js is the dev runtime only, and the deployed backend is the community-stats service, which carries an origin allowlist, HMAC-signed capabilities and a rate limiter. No LLM is wired into the product; every narrative surface is template-driven, so runtime token spend is zero and the AI items below are deterministic-first with an opt-in, user-keyed L3. Priority = (axis-weighted impact x innovation) / log2(effortHours + 2), with the skill profile's axis deltas applied as impact x (1 + delta/10): gamification/engagement +2, ui/ux +1, speed/organization +1. Items below 1.5 are culled except security. Implementation (same session): 10 implemented, 3 shipped-reduced/corrected, 2 premise-corrected/deferred; three premises were the auditor's own phantoms (built pages already stripped comments; the stat bar was already gated; the pre-cohort atlas already renders an invitation) and are recorded as such rather than shipped."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop payoff, truthful feedback, static-host safety and measured release readiness",
+    "staging": "Stable Cloudflare staging before authorized main promotion and production deployment",
+    "source": "context/PROJECT_STATUS.json, docs/STARTUP_BRIEF.md, scripts/lib/skill-profile.mjs audit (medium: game; overlay: prefer beta-readiness, zero-backend loops, vivid GM decision pressure)"
+  },
+  "phantomsRejected": [
+    {
+      "slug": "public-pages-lack-canonical-and-og-url",
+      "reason": "The site lane read source files; scripts/build-pages.mjs:267-273 injects rel=canonical and og:url into every built page from VITE_CANONICAL_URL. The live origin carries them. Not an item."
+    },
+    {
+      "slug": "sitemap-lastmod-frozen-at-2026-08-03",
+      "reason": "scripts/build-pages.mjs:330-342 derives lastmod per URL at build time (S94: 'derived instead of declared'). The source sitemap's dates are placeholders the build overwrites. Not an item."
+    },
+    {
+      "slug": "headers-reserve-sw-js-that-does-not-exist",
+      "reason": "scripts/build-pages.mjs:518 calls emitServiceWorker(outDir) and registers it only in built app shells (line 290-293); test/service-worker-precache.test.js covers it. Not an item."
+    },
+    {
+      "slug": "commissioner-mode-has-no-entry-point-in-the-shell",
+      "reason": "public/game.html:1123-1126 renders a Commissioner Mode panel inside the Boardroom tab. Discoverability is folded into the information-architecture item rather than carried as a missing surface."
+    },
+    {
+      "slug": "no-hall-of-fame-or-awards-module",
+      "reason": "src/runtime/GameSession.js carries 35 hallOfFame/inductee references and public/lib/hallOfFameCeremony.js renders the ceremony inside the history island. Not an item."
+    },
+    {
+      "slug": "routine-weeks-return-only-a-toast",
+      "reason": "public/lib/weeklyPlanComposer.js:189 describeWeeklyPlanReceipt renders a per-week receipt on the Overview (tabOverview.js:13), and the S108 offseason development report covers the season boundary. The gap that survives is the first-season scaffolding, carried as its own item."
+    },
+    {
+      "slug": "stripe-premium-gate-in-the-product",
+      "reason": "No payment code exists under public/ or src/; 'premium' names an in-fiction free-agent tier (tabRoster.js:99). Nothing to secure."
+    },
+    {
+      "slug": "deployed-backend-reflects-any-origin",
+      "reason": "The open-origin fallback is in the dev server (src/server.js:298) which the deployed game never calls (index.html sets vsfgm-runtime-default=client). The deployed community server (src/community/server.js:26) has a default allowlist, HMAC-signed capability tokens (lines 79-146) and a 90/min limiter. The dev fallback is kept as a LOW security item only because it costs half an hour to make fail-closed."
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "slug": "depth-chart-has-no-consequence-preview",
+      "reason": "src/engine/depthChartUsage.js and tabRoster.js:278 already carry snap-share; whether a projection is rendered before commit was not verified this session and is not carried as a finding."
+    },
+    {
+      "slug": "runtime-shard-holds-half-the-tests",
+      "reason": "Reported by the engine lane (117 of 230 files) but not re-verified against scripts/run-test-shard.mjs; a CI wall-clock measurement is required before it is an item. Recorded for the next audit."
+    }
+  ],
+  "recommendedMoves": [
+    "Website batch first, cheapest to dearest, because five items edit the same three files: strip internal narrative from built pages, fail-closed dev CORS, build-generated landing figures, one build-rendered header/footer/contact partial from footer-manifest.json, then the About/FAQ + Status archive + Press renovation and the pre-cohort Stats showcase.",
+    "Visual system before engagement: design-token sweep, SVG icon sprite and procedural team crests land first so the shareable moment cards, the First Season Contract strip and the Desk regroup inherit them instead of being restyled twice.",
+    "Engine and intelligence last, in dependency order: causal rival personas (trade seam), then the deterministic Front Office Advisor on the Co-GM packet inside the new Desk, then the Worker-hosted local runtime, which changes the transport every earlier item was tested against and so ships with its own Playwright responsiveness spec."
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "AI / intelligence; the only agent hook is a one-way JSON export",
+      "axis": "ai-integration + gamification",
+      "effortHours": 8,
+      "impact": 8,
+      "innovation": 9,
+      "priority": 26,
+      "slug": "front-office-advisor-narrates-the-co-gm-packet",
+      "title": "The Co-GM Brief packages every input a decision needs and hands it to nobody; a deterministic Front Office Advisor should argue this week's call in the shell, with an opt-in user-keyed LLM voice as the ceiling",
+      "status": "implemented",
+      "premise": "public/lib/coGmBriefing.js exports buildCoGmBriefingPacket, serializeCoGmBriefingPacket and coGmBriefingFilename and nothing else: the packet (owner mandate, cap, needs, deadline, pending offers, next call) exists only to be downloaded as 'Agent-ready decision handoff' (game.html:139-150). No module under public/lib reads it back. Rival intelligence is rendered (rivalCoachIntel, rivalFrontOfficeCard) but the player's own front office never speaks. No LLM is wired anywhere in the product, and the profile overlay prefers zero-backend loops, so the advisor must be deterministic first and any model voice must be the user's own key, called from the browser, opt-in, at zero project token cost.",
+      "premises": [
+        {
+          "claim": "The Co-GM packet builder exists and is export-only",
+          "adapter": "grep",
+          "target": "public/lib/coGmBriefing.js",
+          "pattern": "export function buildCoGmBriefingPacket",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "No advisor module reads the packet back in the shell",
+          "adapter": "grep",
+          "target": "public/app.js",
+          "pattern": "frontOfficeAdvisor|renderAdvisor",
+          "operator": "eq",
+          "expected": false
+        },
+        {
+          "claim": "No model API is wired into the browser client",
+          "adapter": "grep",
+          "target": "public/lib/api/createApiClient.js",
+          "pattern": "anthropic|openai",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "public/lib/frontOfficeAdvisor.js (pure, lazy root): takes the Co-GM packet and returns one ranked recommendation for the week's next call with three reasons drawn from the packet's own numbers (cap room, need severity, deadline distance, owner floor) and one stated risk; rendered as an Advisor card on the Overview beside the Week Room. Unit test: same packet, same advice; advice cites only fields present in the packet."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "L1 plus a counterfactual: the advisor states what it would have said last week and whether the player's actual call matched, sourced from the weekly plan receipt, so disagreement is visible and scored into GM Legacy as 'went against the room' with no hidden bonus. Playwright: the card names the current next call and updates after a commit."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus an opt-in 'Advisor voice' in Settings: the player pastes their own Anthropic key (stored like the Gist token, never sent anywhere but api.anthropic.com from the browser, CSP connect-src extended for that origin only), and the deterministic recommendation plus packet is rendered into a two-paragraph voiced brief with claude-haiku-4-5, cached per week in localStorage so a re-open costs nothing. Measurement plan: project token spend stays 0; the user-side call is one request per committed week, bounded by a 1,200-token max_tokens, and the deterministic card is always rendered first so the feature degrades to L2 with no key."
+        }
+      },
+      "executionEvidence": "L2 shipped. public/lib/frontOfficeAdvisor.js (pure, lazy): buildAdvice ranks candidate calls from the real Co-GM packet with an exported ADVISOR_WEIGHTS table, cites only packet fields, degrades on missing fields; scoreAgreement + updateAgreementTally keep a descriptive 'went against the room' tally; renderAdvisorCard escapes everything. public/lib/deskIslands.js wires it: rendered on every vsfgm:dashboard-applied event, the advice on the desk is scored at the weekly commit (app.js advanceOneWeek), memory franchise-scoped under front-office-advisor:last / :tally. Desk panel #frontOfficeAdvisorPanel in game.html. test/session109-front-office-advisor.test.js 13/13 on packets built from a real session (seed 20260306, BUF, week 10). tests-ui/desk-islands.spec.js asserts the card renders and the tally reads 'over 1 week' after a commit. L3 (user-keyed model voice) not shipped: zero project token spend stays the contract."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "AI / intelligence; rival personas are declared non-causal",
+      "axis": "ai-integration",
+      "effortHours": 5,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 22.8,
+      "slug": "rival-personas-never-change-a-rival-decision",
+      "title": "Thirty-one rival front offices carry archetypes and a memory ledger that only ever produce flavor text; trade acceptance is one flat +/-33% band for every club and ignores need",
+      "status": "implemented",
+      "premise": "src/engine/rivalGmPersona.js:28 states 'Flavor text is descriptive and non-causal: personas never grant' an edge, and rivalTradeOffers.js uses the persona only for gmName and personaGrudgeLine (lines 212-213). src/engine/aiTeamStrategy.js:78-84 isTradeValueAcceptable accepts any package whose value ratio sits within tolerance 0.33 of parity, for every team, with no roster-need term, although onClockTradeMarket.js already passes rosterNeeds for draft-day offers. A rival the player has fleeced twice prices the third deal exactly like the first. The command-boundary rule holds: CPU clubs call the same TradeService seam, so a persona-aware acceptance changes CPU-to-CPU trades too and must ship with a matched-seed control.",
+      "premises": [
+        {
+          "claim": "Personas are documented as non-causal",
+          "adapter": "grep",
+          "target": "src/engine/rivalGmPersona.js",
+          "pattern": "descriptive and non-causal",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The acceptance gate is a flat tolerance with no need term",
+          "adapter": "grep",
+          "target": "src/engine/aiTeamStrategy.js",
+          "pattern": "isTradeValueAcceptable\\(\\{ outgoing, incoming, team, tolerance = 0\\.33 \\}\\)",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "aiTeamStrategy does not read a persona",
+          "adapter": "grep",
+          "target": "src/engine/aiTeamStrategy.js",
+          "pattern": "persona",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Per-archetype tolerance and horizon: isTradeValueAcceptable takes an optional persona and maps archetype to tolerance (hoarder 0.22, gambler 0.45, default 0.33) and to the age-curve weight in playerStrategyValue, derived with no RNG draw. Test: stream position after a season is identical with and without the persona; acceptance rates differ by archetype on four seeds."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "L1 plus need-aware acceptance: pass rosterNeeds the way onClockTradeMarket does, so an incoming player at a rival's top need is worth a declared premium and a surplus position a discount, published in the offer rationale ('they need a corner more than they need your pick'). Negative control: the pre-fix flat band accepts a trade the need-aware gate refuses, in the observed shape."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus memory pricing: the rival's bounded memory ledger (already recorded) adds a grudge premium after the player has out-traded them, decaying over seasons, and the trade evaluation text names it. Update rivalGmPersona.js's header so the non-causal claim is no longer true, and the rival front office card shows 'how they see you'. Measured: CPU-CPU trade volume per season stays within the S101 realism band."
+        }
+      },
+      "executionEvidence": "L2 shipped. src/engine/aiTeamStrategy.js: evaluateTradeValue seam with per-archetype tolerance (PERSONA_TRADE_TOLERANCE win-now .45 → rebuild .22, trait deltas, bounds), age-horizon multiplier in playerStrategyValue (identity without a persona), quality-based need profile (TRADE_NEED_PREMIUM .15 / TRADE_SURPLUS_DISCOUNT .12), old flat band kept as isTradeValueAcceptableFlat for the negative control. TradeService applies persona + needs to CPU clubs on both branches; the controlled club stays flat; valuation receipts carry tolerance, gmName, needRead; rivalTradeOffers rationale names the need. rivalGmPersona.js header no longer claims non-causality. test/session109-persona-causal-trades.test.js 6/6 (stream invariance, archetype divergence, need-aware accept/refuse, negative control, 3-season realism guard), 43/43 existing across seven touching files. Finding recorded: no CPU–CPU trade market exists (0 trades in 3 seasons on the canonical seed); the guard bounds inbound offers instead."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Onboarding and retention; a three-step overlay then fourteen tabs",
+      "axis": "gamification/engagement/immersion",
+      "effortHours": 5,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 20.5,
+      "slug": "first-season-has-no-contract-after-the-tutorial",
+      "title": "The tutorial is three modal steps and then the player is dropped into a fourteen-tab shell with no objectives; the owner mandate the tutorial introduces never becomes a checklist",
+      "status": "implemented",
+      "premise": "public/lib/tutorialCampaign.js STEPS holds exactly three entries (Who Are You Building?, Your Owner Sets the Table, Your Scout Calls) and dismisses to the full shell. public/game.html renders fourteen data-tab targets. Trophy Road shows long-horizon marks and the owner ultimatum banner fires on failure, but nothing between them tells a new GM what a good first season looks like week by week. The profile overlay asks for vivid GM decision pressure and fast playable proof; a first-season objective strip is the cheapest form of both.",
+      "premises": [
+        {
+          "claim": "The tutorial declares a third step",
+          "adapter": "grep",
+          "target": "public/lib/tutorialCampaign.js",
+          "pattern": "(\\n\\s+title: \"[^\"]+\"[\\s\\S]*?){3}",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The tutorial declares no fourth step",
+          "adapter": "grep",
+          "target": "public/lib/tutorialCampaign.js",
+          "pattern": "(\\n\\s+title: \"[^\"]+\"[\\s\\S]*?){4}",
+          "operator": "eq",
+          "expected": false
+        },
+        {
+          "claim": "The shell exposes fourteen or more tab targets",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "(data-tab=\"[\\s\\S]*?){14}",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "public/lib/firstSeasonContract.js (lazy root): five objectives derived from the owner mandate and cap state at franchise creation (sign one starter in free agency, set a depth chart, make or refuse a deadline offer with a reason, finish at or above the owner's floor, stay cap-compliant into the offseason), stored per franchise, rendered as a strip on the Overview and marked from existing engine events with no new RNG draw."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "L1 plus payoff: completing the contract unlocks a Trophy Road mark and a one-line owner verdict at the season review; the strip collapses after week 6 and disappears on completion. Playwright: a fresh franchise shows the strip, signing a free agent ticks the first objective."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus difficulty-aware objectives (rebuild archetype gets 'trade a veteran for a pick' instead of 'finish above the floor'), and a seasoned-player skip that remembers across franchises with the tutorial-seen key."
+        }
+      },
+      "executionEvidence": "L2 shipped. public/lib/firstSeasonContract.js (lazy): five objectives (sign a free agent, set a depth chart, answer a rival's call, reach the owner's targetWins, carry a legal cap into the offseason); action objectives marked from /api/sign, /api/trade-offers and /api/depth-chart handlers in app.js, dashboard objectives judged only when the season closes; franchise-scoped storage; strip on the Desk collapses after week 6, dismissable, completion fires the new 'first-season-contract' achievement (Honoured the Contract) once. test/session109-first-season-contract.test.js 7/7; tests-ui/desk-islands.spec.js asserts five objectives at 0 of 5 and dismissal. L3 difficulty-aware objectives not shipped."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Engagement; the moments the engine produces cannot leave the browser",
+      "axis": "gamification/engagement/immersion",
+      "effortHours": 4,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 19.5,
+      "slug": "moments-are-not-shareable",
+      "title": "Only the Hall of Fame ceremony can render an image; trophy unlocks, the season epilogue, draft night and the new development report end as toasts and tables",
+      "status": "implemented",
+      "premise": "public/lib/hallOfFameCeremony.js:116 is the only toBlob/toDataURL call under public/lib. achievements.js fires a toast and confetti on unlock; seasonEpilogue.js, seasonChapters.js and offseasonDevelopmentReport render HTML only; challengeCodes.js already ships a seed code the recipient can play. A shareable card is a static-host-safe acquisition loop for an unlaunched game with no marketing surface beyond the landing page.",
+      "premises": [
+        {
+          "claim": "The ceremony renders to canvas",
+          "adapter": "grep",
+          "target": "public/lib/hallOfFameCeremony.js",
+          "pattern": "toBlob|toDataURL",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Achievement unlocks do not",
+          "adapter": "grep",
+          "target": "public/lib/achievements.js",
+          "pattern": "toBlob|toDataURL|navigator\\.share",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "public/lib/momentCard.js (lazy root): one SVG template (team colours, crest when item 6 lands, headline, three stat lines, season/week, challenge code) rasterised through a canvas to PNG; copy-to-clipboard fallback where navigator.share is absent. Unit test renders deterministic SVG for a fixture."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "L1 hooked to four producers: achievement unlock, season epilogue, offseason development report (club's biggest riser) and draft-night first pick; the card embeds the franchise's challenge code so a viewer can start the same league. Playwright: unlocking a mark shows a Share control and the produced blob is non-empty."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus a Moments shelf on the Dynasty tab listing every card produced this franchise, bounded to 24 with the save-payload budget respected (cards regenerate from stored inputs, not stored pixels)."
+        }
+      },
+      "executionEvidence": "L2 shipped. public/lib/momentCard.js (15.7 KB, lazy): deterministic 1200×630 SVG card, canvas rasterisation, navigator.share → clipboard → new-tab fallback, idempotent mountShareControl with scoped styles, deriveActiveChallengeCode from the existing challenge-code path; producer hook bodies live in the lazy module so achievements.js and draftPickReveal.js pay a three-line call. Hooked: trophy-case rows, season epilogue, offseason development report (biggest riser), first-round pick reveal. test/session109-moment-card.test.js 9/9 including a static-import boundary check; tests-ui/moment-card.spec.js 1/1 captures a non-empty PNG through a stubbed share. The four silent .catch(() => …) sinks the first draft carried were caught by the promise-observability gate and route through recordClientDiagnostic."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Speed and responsiveness; the whole engine runs on the UI thread",
+      "axis": "speed/organization/efficiency",
+      "effortHours": 6,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 17.6,
+      "slug": "engine-runs-on-the-main-thread",
+      "title": "The browser imports the full engine into the page thread and schedules long sims with setTimeout(fn, 0); a season advance freezes every control until it returns",
+      "status": "implemented",
+      "premise": "public/lib/api/createApiClient.js:172-176 dynamically imports src/app/api/localApiRuntime.js and constructs it against window.localStorage in the page. localApiRuntime.js:321 sets scheduler = (fn) => setTimeout(fn, 0) and runs each simulation job step on that timer; no file under public/ constructs a Worker. gameFlow.js's sequential advance awaits each week with no yield of its own, so on a phone a ten-season job blocks input for the duration of each step. The api contract (apiContract.js) is already a request/response shape that a postMessage transport can carry unchanged.",
+      "premises": [
+        {
+          "claim": "Sim jobs are scheduled on the page thread with setTimeout",
+          "adapter": "grep",
+          "target": "src/app/api/localApiRuntime.js",
+          "pattern": "scheduler = \\(fn\\) => setTimeout\\(fn, 0\\)",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The client imports the local runtime into the page",
+          "adapter": "grep",
+          "target": "public/lib/api/createApiClient.js",
+          "pattern": "src/app/api/localApiRuntime\\.js",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "No Worker hosts the runtime",
+          "adapter": "grep",
+          "target": "public/lib/api/createApiClient.js",
+          "pattern": "new Worker\\(",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Yield between weeks inside advanceWeeksSequential and between job steps in localApiRuntime with a scheduler that prefers scheduler.yield() and falls back to a MessageChannel tick; render a progress bar with week count on the Long Sim Jobs card. Measure: main-thread longest task during a 10-season job before and after (Performance API, recorded in the responsive-evidence run)."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "L1 plus a Worker-hosted local runtime: public/lib/api/workerTransport.js wraps postMessage in the existing apiContract request/response shape, the worker owns the engine and a storage proxy (localStorage is unavailable in workers, so persistence calls marshal back to the page through the same hybridSaveStore seam), and createApiClient chooses the worker when available with the in-page runtime as fallback. Every existing test runs unchanged against the in-page runtime; a new contract test runs the same fixture through both transports and asserts byte-equal dashboards."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "L2 plus a Playwright spec that starts a 10-season job and asserts a tab switch responds within 100 ms while it runs, and the boot budget records the worker entry as a lazy root with its own island headroom."
+        }
+      },
+      "executionEvidence": "L2 shipped. localApiRuntime.js createDefaultJobScheduler yields via scheduler.yield → MessageChannel → setTimeout (setImmediate in Node). public/lib/api/workerTransport.js + localRuntimeWorker.js: module Worker hosts the engine with a Storage-shaped mirror seeded from the page's vsfgm keys and replayed by storage-set/remove messages; IndexedDB stays in the worker (single writer); createApiClient prefers the worker, falls back to in-page on any failure with a diagnostic, opt-out via meta/localStorage, injectable factories. test/session109-worker-transport-contract.test.js 7/7 (byte-equal responses through both transports, storage replay, rejection + fallback); tests-ui/worker-runtime.spec.js 2/2: tab activation 151 ms under a long sim against 449 ms in-page (negative control, max long task 8.1 s). build-pages allowlists the worker entry for the reachability gate; both modules are declared lazy roots."
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Visual system; tokens exist but most colour is hardcoded, icons are emoji, clubs have no marks",
+      "axis": "ui/ux/user-experience",
+      "effortHours": 10,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 17.2,
+      "slug": "visual-system-has-tokens-but-does-not-use-them",
+      "title": "styles.css declares 96 tokens and then hardcodes 258 hex colours; the shell's iconography is OS emoji; every club is a pair of colour chips and every player is a procedural portrait, but no team has a crest",
+      "status": "shipped-reduced",
+      "premise": "public/styles.css is a single 5,658-line file: 96 custom properties in :root against 258 six-digit hex literals in rules (S101 already found seven hardcoded reds with no light-theme path, and the count says the class is still open). Iconography in game.html is emoji glyphs (🏟️, 🌳, ⚔), which render differently per OS and never match the brand mark. appCore.js:128-163 buildPlayerPortraitSvg already generates deterministic player art; nothing generates a club crest, so standings, box scores, the header and any share card carry text and a colour chip where a real product carries an identity.",
+      "premises": [
+        {
+          "claim": "At least two hundred hardcoded hex colours sit in the stylesheet",
+          "adapter": "grep",
+          "target": "public/styles.css",
+          "pattern": "(?:#[0-9a-fA-F]{6}\\b[^#]*){200}",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Player portraits are procedural SVG",
+          "adapter": "grep",
+          "target": "public/lib/appCore.js",
+          "pattern": "buildPlayerPortraitSvg",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "No crest generator exists",
+          "adapter": "grep",
+          "target": "public/lib/appCore.js",
+          "pattern": "buildTeamCrestSvg|teamCrest",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Token sweep: extract public/tokens.css (colour, spacing, radius, elevation, motion durations) imported first by styles.css; replace every rule-level hex with a token; a studio test asserts the six-digit-hex count outside :root blocks is 0 and that every token has a light-theme value. Boot budget unchanged (CSS is not in the module budget) and measured anyway."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "L1 plus an inline SVG sprite of 14 glyphs (one per nav tab plus inbox, trophy, share, warning) drawn on the brand mark's grid, replacing the emoji in nav, panel headers and the mobile drawer; aria-hidden with text labels retained. Responsive-evidence captures re-baselined in both themes."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "L2 plus buildTeamCrestSvg: a deterministic crest from team colours, city fingerprint and a small motif set (derivedRng, no session-stream draw), rendered in the header, standings, schedule, box score, share cards and the setup team picker; the Brand Builder in the Boardroom previews it live. Playwright: two franchises from different seeds render different crests; the same seed renders the same crest."
+        }
+      },
+      "executionEvidence": "L1 + crest module shipped; icon sprite (L2) not shipped. styles.css: zero six-digit hex literals outside token blocks (from 199 in ordinary rules), 108 dead var() fallbacks stripped, undefined fallback names promoted to real tokens, four theme-reactive pairs added with light values, theme-neutral tokens marked; 257 alpha rgba() literals remain and are counted. test/session109-css-tokens.test.js 5/5 with a negative control. public/lib/teamCrest.js (5.3 KB, no imports, FNV-1a motif pick, luminance contrast, escaped text) with mountTeamCrest; wired lazily into the Desk spotlight (tabOverview renderOverviewSpotlight) and available to moment cards. test/session109-team-crest.test.js 6/6. Boot graph unchanged at 649,913 bytes against the 650,000 target."
+    },
+    {
+      "rank": 7,
+      "tier": "HIGH",
+      "category": "Website truth; the community atlas is a page of 'Private for now' until launch",
+      "axis": "ui/ux/user-experience + website",
+      "effortHours": 3,
+      "impact": 6,
+      "innovation": 6,
+      "priority": 17.1,
+      "slug": "stats-page-is-private-for-now-in-every-cell",
+      "title": "The live community snapshot reports status 'warming' with sampleSize 0, so /stats renders 'Private for now' in every metric while the landing page and five footers link to it",
+      "status": "shipped-corrected",
+      "premise": "Fetched live this session: https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot returns status 'warming', sampleSize 0 for every period, suppressionThreshold 5. public/community-stats.js:70 renders 'Private for now' for a suppressed stat and line 91 the 'More players need to share' line. The landing page's pre-cohort prerender (index.html data-community-prerendered='pre-cohort') is graceful, but its 'Explore all community stats' link and five footer links lead to an atlas with no numbers in it. S94 withheld /stats from the sitemap for exactly this reason; the page itself was left as it is. Nothing on it argues the product while the cohort forms.",
+      "premises": [
+        {
+          "claim": "Suppressed cells render as 'Private for now'",
+          "adapter": "grep",
+          "target": "public/community-stats.js",
+          "pattern": "Private for now",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The landing page links to the atlas",
+          "adapter": "grep",
+          "target": "public/index.html",
+          "pattern": "class=\"community-atlas-link\" href=\"/stats\"",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "When the snapshot is 'warming', the atlas renders one honest state block ('The league is still filling up: N of 5 browsers') instead of a grid of suppressed cells, and the landing link reads 'How community stats will work' until the threshold clears. No number is invented."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "L1 plus a Showcase League: build-pages runs the engine for ten seasons on a fixed seed at build time (the same mechanism as the simulation.html anchor) and renders a clearly labelled 'What a decade looks like' panel (dynasties, biggest trade, a bust and a steal, cap crunch year) beneath the state block, so the page shows the simulation while it waits for the community. Labelled simulation, never blended with cohort figures."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus 'Your league versus the showcase': a visitor with a local franchise sees their own decade beside the showcase from their browser only (no upload), which is the comparison section stats.html already scaffolds but cannot fill."
+        }
+      },
+      "executionEvidence": "Premise narrowed before code: isPreCohort already renders an invitation on both the landing pulse and the atlas, so the 'Private for now' grid only appears for a suppressed period with contributors below five; what was missing was the product argument. Shipped L2: scripts/build-showcase-league.mjs runs the engine ten seasons from seed 20260306 (26 minutes on the loaded machine, so the result is committed as public/showcase-league.json, labelled kind:'simulation'); stats.html gains a 'What a decade looks like' section rendered by community-stats.js showcaseCards, never blended with cohort figures. Covered in test/session109-public-chrome.test.js."
+    },
+    {
+      "rank": 8,
+      "tier": "MEDIUM",
+      "category": "Information architecture; fourteen tabs, ten Overview panels, one buried multiplayer mode",
+      "axis": "ui/ux/user-experience",
+      "effortHours": 8,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 15.9,
+      "slug": "overview-carries-ten-panels-and-the-shell-fourteen-tabs",
+      "title": "The Overview stacks ten panels and twenty-four headings, the nav has fourteen targets on a phone, and Commissioner Mode lives at the bottom of the Boardroom",
+      "status": "shipped-reduced",
+      "premise": "public/game.html:99-297 (overviewTab) holds ten panel elements and twenty-four h2/h3 headings from Franchise Command through Long Sim Jobs; the nav (lines 77-95) has fourteen data-tab targets; the Commissioner Mode panel sits at line 1124 inside the Boardroom tab. TASK_BOARD carries the S94 deferral: 'reconsider the mobile tab-target count on its own terms' with a visual-evidence re-baseline budget. The S108 development report was placed on the History tab because the Overview had no room. Calendar and Depth Chart are read-only tables with no consequence surfaced.",
+      "premises": [
+        {
+          "claim": "The nav has fourteen or more tab targets",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "(data-tab=\"[\\s\\S]*?){14}",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Commissioner mode is a panel, not a destination",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "id=\"commissionerPanel\"",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Split the Overview into Desk (Franchise Command, Week Room, Advisor when it lands, Inbox, Fan Pulse, Trophy Road) and a new League tab (standings, results, leaders, schedule, news, story threads, charts, sim jobs); Calendar folds into League. Tab count 14 -> 13 with no panel lost; exact-surface navigation targets updated; responsive-evidence re-baselined."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "L1 plus six phone-level groups in the drawer (Desk, Team, Market, Draft, League, Club) with the existing tabs as second-level destinations, Commissioner Mode promoted to a Club destination, and Depth Chart merged into Roster as a mode. mobile-nav.spec.js asserts six first-level targets."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus a per-tab boot island for the new League tab so the Overview island's static share falls, measured by check-browser-boot-budget before and after with the ceiling untouched."
+        }
+      },
+      "executionEvidence": "L1 shipped in a corrected shape: the Overview became the Desk (decisions: command centre, First Season Contract, Front Office Advisor, Co-GM brief, Trophy Road, Week Room, film room, season preview, schedule + needs + injuries, Franchise Story, pulse row, deadline panel) and the Calendar tab became League, gaining standings, results, leaders, news feed, story threads, charts and long sims above the season calendar and bracket. Tab count stays 14 (the sidecar's '14 → 13' arithmetic was wrong; folding Calendar and adding League nets zero). Tab ids and testids unchanged, so hydration and the Playwright suite hold; exactSurfaceNavigation resolves the owning tab from the DOM. tests-ui/desk-islands.spec.js asserts the labels and that standings hydrate on the League tab. That spec found a pre-existing defect: the dashboard's latestStandings read the stat book's team-season archive, which is written at season end, so the Standings panel read 'No rows' for a franchise's entire first season and showed the previous year's table during later ones. Fixed at source: src/stats/statBook.js declares teamSeasonRow once, getLiveTeamSeasonTable maps the live team records through it, and getDashboardState prefers the archive when it exists; test/session109-live-standings.test.js 3/3 with the empty archive as the negative control. L2 six-group drawer and Depth Chart merge not shipped."
+    },
+    {
+      "rank": 9,
+      "tier": "MEDIUM",
+      "category": "Token efficiency; every audit re-reads the whole surface",
+      "axis": "token-efficiency",
+      "effortHours": 1.5,
+      "impact": 5,
+      "innovation": 5,
+      "priority": 13.8,
+      "slug": "audit-lanes-are-not-cached-between-sessions",
+      "title": "This audit spent about 211,000 subagent tokens re-deriving a site and shell inventory that changes by a few files a session; the lane reports should persist and the next audit verify deltas",
+      "status": "shipped-reduced",
+      "premise": "Measured this session: three Explore lanes consumed 69,724 + 71,178 + 70,398 subagent tokens to inventory public pages, the game shell and the engine, and eight of their findings were phantoms that verification then had to spend more tokens rejecting. docs/ holds AUDIT sidecars but no lane inventory, so S110 will pay the same bill for a tree that git can diff. The task-slice already truncates TASK_BOARD at 6,000 characters and dropped 10 open items this session.",
+      "premises": [
+        {
+          "claim": "No lane inventory is persisted",
+          "adapter": "file-exists",
+          "target": "docs/audit-lanes",
+          "operator": "eq",
+          "expected": false
+        },
+        {
+          "claim": "The task slice truncates and reports drops",
+          "adapter": "grep",
+          "target": "scripts/task-slice.mjs",
+          "pattern": "truncated",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Persist the three lane reports from this session as docs/audit-lanes/2026-09-14-{site,shell,engine}.md with the verified-phantom list appended, and record the git SHA they describe in a front-matter line."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "L1 plus scripts/audit-lane-delta.mjs: prints the files changed since the recorded SHA grouped by lane, so the audit skill sends each Explore agent only the delta and the prior inventory. Measurement plan: subagent tokens per audit recorded in the sidecar summary; target under 80,000 at S110 against 211,300 here."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus the phantom list as a standing negative control: any S110 candidate whose slug matches a recorded phantom is rejected before verification unless the delta touched the file the phantom cites."
+        }
+      },
+      "executionEvidence": "L1 shipped: docs/audit-lanes/2026-09-14-{site,shell,engine}.md persist the three lane inventories with the SHA they describe (83d6ad0), the gates that already exist, and the phantoms rejected as standing negative controls, each with the git diff command the next audit should send instead of the surface. Measured cost this session: 211,300 subagent tokens across the three lanes. L2 delta script not shipped."
+    },
+    {
+      "rank": 10,
+      "tier": "MEDIUM",
+      "category": "Website truth; hand-typed landing figures",
+      "axis": "website",
+      "effortHours": 1.5,
+      "impact": 5,
+      "innovation": 4,
+      "priority": 11.1,
+      "slug": "landing-stat-bar-is-hand-typed",
+      "title": "The landing 'Why' bar states 43 engine systems, 31 rivals and 6 legacy tiers as literals while simulation.html generates its figures at build; the 43 is true today because src/engine holds 43 files and will be false the session one is added",
+      "status": "skipped-premise-corrected",
+      "premise": "public/index.html:140-144 hardcodes the five figures. scripts/build-pages.mjs:280-283 already rewrites simulation.html's anchor block from the engine's constants via replaceSimulationAnchor; nothing touches why-stats-bar. Counted this session: src/engine has exactly 43 .js files, so the claim is currently honest by coincidence of maintenance, not by construction.",
+      "premises": [
+        {
+          "claim": "The engine-systems figure is a literal",
+          "adapter": "grep",
+          "target": "public/index.html",
+          "pattern": "<strong class=\"stat-num\">43</strong>",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The build does not generate the why bar",
+          "adapter": "grep",
+          "target": "scripts/build-pages.mjs",
+          "pattern": "why-stats",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "scripts/lib/public-figures.mjs derives engine-system count (src/engine file count minus test helpers), rival count (team count minus one) and legacy tier count (gmLegacyScore tiers) and build-pages fills data-figure attributes on the why bar; a studio test asserts the built figures equal the derived ones."
+        },
+        "L2": {
+          "effortHours": 1.25,
+          "recipe": "L1 plus the same figures stamped into llms.txt and agents.json so machine readers and humans read one number."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus a check-public-truth arm that fails when any literal figure on a public page is not backed by a data-figure attribute."
+        }
+      },
+      "executionEvidence": "The premise was wrong in its risk: scripts/check-public-truth.mjs has gated the engine-system count against src/engine and the rival count against TEAM_COUNT since S94, so a stale literal fails the build rather than shipping. What was ungated was the GM legacy tier count; the gate now derives it from gmLegacyScore.js TIER_DEFS and fails when index.html disagrees or stops stating it. Build-time generation was not needed."
+    },
+    {
+      "rank": 11,
+      "tier": "MEDIUM",
+      "category": "Website organisation; nine pages hand-copy nav, footer, contact and community copy",
+      "axis": "website + speed/organization",
+      "effortHours": 4,
+      "impact": 7,
+      "innovation": 4,
+      "priority": 10.8,
+      "slug": "public-footer-contract-checks-copyright-not-navigation",
+      "title": "footer-manifest.json declares the canonical link set but the build only asserts copyright and the Studio link-back, so nine pages carry nine different footers, three carry a theme toggle, and the Community Stats rules are restated in four places",
+      "status": "implemented",
+      "premise": "scripts/lib/public-footer.mjs inspectPublicFooterContract checks PUBLIC_COPYRIGHT, an open-source claim and the vaultsparkstudios.com link-back; it never reads footerLinks from public/footer-manifest.json. Measured in source: about.html's footer omits Privacy and Terms, status.html's omits Privacy and Terms, stats.html's omits About and Status, contact/privacy/terms carry a single return link; setupThemeToggleBtn exists on index, simulation and stats only; the Community Stats explanation is written independently at index.html:73-77, stats.html:43-49, privacy.html:26-29 and terms.html:20; a Contact panel is repeated on contact, privacy, terms and status.",
+      "premises": [
+        {
+          "claim": "The footer manifest declares the link set",
+          "adapter": "file-exists",
+          "target": "public/footer-manifest.json",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The footer contract does not check it",
+          "adapter": "grep",
+          "target": "scripts/lib/public-footer.mjs",
+          "pattern": "footerLinks",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "build-pages renders one header (brand, Play, theme toggle) and one footer (manifest footerLinks in manifest order, copyright, Studio link-back) into a data-public-chrome slot on every page; source pages keep a minimal placeholder. inspectPublicFooterContract gains a footerLinks check against the built output."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "L1 plus one Contact partial and one Community Stats methodology block (on stats.html#methodology) that index, privacy and terms link to instead of restating; the retention window and suppression threshold are read from stats-surface.json at build so the prose cannot drift from the contract."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus s94-public-surface.spec.js asserting every built page exposes the same footer link set, a working theme toggle and one h1, in both themes."
+        }
+      },
+      "executionEvidence": "L2 shipped. scripts/lib/public-chrome.mjs renders one manifest footer (labels, aria-current, external rel), one breadcrumb header with the theme toggle, and one correctly-signed initThemeCustomizer call on every non-exempt page at build; link-only paragraphs are removed, the transform is idempotent, index.html is asserted against the manifest instead of replaced. Two live defects repaired on the way: simulation.html had no toggle init at all and stats.html passed an object where the initialiser takes an element id, so both toggles were inert. footer-manifest.json 1.2 adds labels and the press page; terms.html links to the methodology instead of restating it. test/session109-public-chrome.test.js 9/9 including negative controls for both toggle defects."
+    },
+    {
+      "rank": 12,
+      "tier": "MEDIUM",
+      "category": "Website depth; About is three sentences, Status is an unpaginated changelog, no FAQ or press surface",
+      "axis": "website",
+      "effortHours": 5,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 10.7,
+      "slug": "about-status-and-the-missing-faq-and-press-pages",
+      "title": "About argues the universe in three sentences, Status stacks fourteen dated notes with no archive, and the questions visitors ask most (free? account? mobile? what leaves my browser?) are answered piecemeal across four pages with no FAQ and no press kit",
+      "status": "implemented",
+      "premise": "public/about.html body is three paragraphs plus links. public/status.html holds fourteen h3 release notes from 2026-07-01 to 2026-09-14 in one section, growing weekly by design. No page answers 'is it free / is there an account / does it work on my phone / what leaves my browser' in one place: the answers sit in index why-cards, privacy.html and terms.html. No page offers logo, cover, boilerplate or screenshots although responsive-evidence produces reviewed captures every deployment and the OG image already exists.",
+      "premises": [
+        {
+          "claim": "Status carries at least twelve dated notes in one list",
+          "adapter": "grep",
+          "target": "public/status.html",
+          "pattern": "(<h3>20\\d\\d-\\d\\d-\\d\\d[\\s\\S]*?){12}",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "No FAQ page exists",
+          "adapter": "file-exists",
+          "target": "public/faq.html",
+          "operator": "eq",
+          "expected": false
+        },
+        {
+          "claim": "No press page exists",
+          "adapter": "file-exists",
+          "target": "public/press.html",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Renovate about.html into About + What is next (three roadmap lanes stated as intent, not dates) + FAQ (eight questions, each linking to the page that owns the detail); status.html keeps the newest four notes and links to a build-generated status-archive.html for the rest. Sitemap and footer manifest updated; llms.txt lists the new paths."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "L1 plus press.html: logo and mark downloads, the OG cover, a 60-word and 150-word boilerplate, six reviewed screenshots copied from the latest responsive-evidence run by build-pages, and the contact line. No claims that the public-truth gate cannot verify."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus check-public-truth arms: the FAQ's privacy answers must quote the same retention and suppression values as stats-surface.json, and status.html must hold at most five notes."
+        }
+      },
+      "executionEvidence": "L2 shipped. about.html renovated into About + What is being built next (three honest lanes) + eight-question FAQ; status.html keeps every note in source and the build serves the newest four with a generated status-archive.html carrying all (parser fixed to keep the oldest note, which the first draft dropped); press.html with two boilerplates, fact sheet, wordmark/mark/cover (PNG re-encoded losslessly 445 → 378 KB, plus a 28 KB WebP), rights note; sitemap, llms.txt and the footer manifest updated. Screenshots offered on request rather than faked."
+    },
+    {
+      "rank": 13,
+      "tier": "LOW",
+      "category": "Public-safe boundary; internal session narrative ships in page source",
+      "axis": "security + website",
+      "effortHours": 1,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 9.5,
+      "slug": "internal-session-narrative-ships-in-public-source",
+      "title": "Built pages carry HTML comments naming sessions and DECISIONS entries (22 in game.html, 4 in index.html, one in sitemap.xml); CLAUDE.md limits this repo's public surface to deployable code and public-safe documentation",
+      "status": "skipped-premise-corrected",
+      "premise": "Counted in source this session: public/game.html has 22 matches for session numbers or DECISIONS references, public/index.html 4 (lines 126-134 narrate DECISIONS S70 and S94), public/sitemap.xml 1 (the S94 suppression rationale). All sit in comments, so no visitor sees them rendered, but view-source and crawlers do, and game.html's 107 KB shell pays their bytes on every boot. The comments are valuable to agents and should stay in source; they should not reach static/.",
+      "premises": [
+        {
+          "claim": "game.html source carries session-numbered comments",
+          "adapter": "grep",
+          "target": "public/game.html",
+          "pattern": "<!-- S\\d{2,3} |\\(Session \\d+\\)",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The sitemap carries a session rationale",
+          "adapter": "grep",
+          "target": "public/sitemap.xml",
+          "pattern": "S94",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "build-pages strips HTML and XML comments from every built page and the sitemap (conditional comments are not used); a studio test asserts no built file under static/ matches \\bS\\d{2,3}\\b or DECISIONS."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "L1 plus the boot-budget receipt before and after, since game.html's comment bytes leave the shell; the ceiling is not touched."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "L2 plus the same strip applied to inline script comments in built pages, with the CSP hashes regenerated by the existing emitEdgeSecurityPolicy path."
+        }
+      },
+      "executionEvidence": "Half the premise was the auditor's own phantom: build-pages injectHtmlDefaults has stripped HTML comments from every served page since before this session, so no session narrative reaches static/*.html. The sitemap is copied rather than rendered and did ship its S94 rationale comment; stripXmlComments now runs on it at build and the test asserts the built sitemap carries no comment and no session marker."
+    },
+    {
+      "rank": 14,
+      "tier": "LOW",
+      "category": "Artifact organisation; eight alias mounts multiply the deploy",
+      "axis": "speed/organization/efficiency",
+      "effortHours": 2,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 8.3,
+      "slug": "static-artifact-ships-eight-alias-copies",
+      "title": "static/ is 33.7 MB across 2,210 files because build-pages copies the whole site into eight legacy alias mounts, including eight 445 KB copies of the cover image and the engine source",
+      "status": "deferred",
+      "premise": "scripts/build-pages.mjs:26-31 declares legacySlugs (games/vaultspark-football-gm, games/franchise-architect, games/franchise-architect-football and their bare forms) and line 108-110 explains the Studio host may mount the artifact at any alias. Measured: static/ holds 2,210 files, 33.7 MB, with images/cover.png present eight times at 445,481 bytes each. Cloudflare Pages uploads every file per deploy. The alias contract may be required by the Studio host, so redirects replace copies only where the contract allows; the image is oversized regardless.",
+      "premises": [
+        {
+          "claim": "Legacy alias mounts are declared",
+          "adapter": "grep",
+          "target": "scripts/build-pages.mjs",
+          "pattern": "games/vaultspark-football-gm",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Re-encode cover.png to a 1200x630 WebP under 120 KB with a PNG fallback under 200 KB; og:image points at the PNG; a test bounds both sizes."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "L1 plus: confirm with the Studio host contract which aliases must be served as content; convert the rest to _redirects 301s to the canonical path; a test asserts the artifact file count and byte total against a declared ceiling."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus smoke-pages fetching each legacy alias on staging and asserting either 200 with the canonical shell or a 301 to it, so an alias cannot silently 404."
+        }
+      },
+      "executionEvidence": "Alias mounts are declared for the Studio host contract (build-pages legacySlugs) and were not converted to redirects without that contract's answer. Shipped the image half: cover.png re-encoded losslessly with ffmpeg (445,481 → 378,376 bytes, pixel-identical) and cover.webp added for the press page. A quantised PNG was tried and refused: a 256-colour social cover bands its gradients."
+    },
+    {
+      "rank": 15,
+      "tier": "LOW",
+      "category": "Security; dev server CORS is open by default",
+      "axis": "security",
+      "effortHours": 0.5,
+      "impact": 4,
+      "innovation": 2,
+      "priority": 6.1,
+      "slug": "dev-server-cors-reflects-any-origin-when-unconfigured",
+      "title": "src/server.js reflects any request Origin when ALLOWED_ORIGINS is empty; the deployed game never calls it, but a fail-open default is the wrong default for a server that also serves the game with a single shared session",
+      "status": "implemented",
+      "premise": "src/server.js:296-303 applyCorsHeaders sets Access-Control-Allow-Origin to the request origin when !ALLOWED_ORIGINS.size || ALLOWED_ORIGINS.has(origin). The deployed runtime is the in-browser client and the deployed backend (src/community/server.js) has its own default allowlist, so exposure is a developer running the dev server on a shared network. Kept as a security item because the fix is half an hour and the default should fail closed.",
+      "premises": [
+        {
+          "claim": "CORS falls open on an empty allowlist",
+          "adapter": "grep",
+          "target": "src/server.js",
+          "pattern": "!ALLOWED_ORIGINS\\.size \\|\\| ALLOWED_ORIGINS\\.has\\(requestOrigin\\)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Default ALLOWED_ORIGINS to the local dev origins (http://127.0.0.1:3000, http://localhost:3000) instead of empty, and drop the !size branch; a runtime test asserts a foreign origin gets no CORS headers with no env set."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "L1 plus the same fail-closed default documented in the server's startup log line so a developer sees which origins are allowed."
+        },
+        "L3": {
+          "effortHours": 0.5,
+          "recipe": "L2; nothing further is warranted for a dev-only surface."
+        }
+      },
+      "executionEvidence": "L2 shipped. src/app/devCors.js: an empty configuration resolves to the four local dev origins and nothing else; a configured origin replaces the defaults; headers are emitted as setHeader pairs so the API-contract parity gate still reads the DELETE method literal (the gate's population was widened to the new file). The server logs the allowed origins on listen. test/session109-dev-cors.test.js 3/3 with the pre-fix rule as a negative control."
+    }
+  ],
+  "websitePass": {
+    "pagesReviewed": [
+      "index.html",
+      "about.html",
+      "contact.html",
+      "simulation.html",
+      "stats.html",
+      "status.html",
+      "privacy.html",
+      "terms.html",
+      "404.html",
+      "game.html (shell chrome only)",
+      "sitemap.xml",
+      "robots.txt",
+      ".well-known/llms.txt"
+    ],
+    "upToDate": [
+      "status.html newest note is dated 2026-09-14 and matches S108's shipped change; the public-truth gate keeps it current",
+      "simulation.html figures are build-generated from the engine's constants",
+      "canonical, og:url, sitemap lastmod and the service worker are all injected at build (rejected as phantoms above)",
+      "no rendered visitor-facing text carries session numbers, SHAs or gate names"
+    ],
+    "mergeOrStreamline": [
+      "Nine hand-copied footers -> one build-rendered footer from footer-manifest.json (item 11)",
+      "Four Community Stats explanations (index, stats, privacy, terms) -> one methodology block on stats.html#methodology, linked from the others (item 11)",
+      "Four Contact panels (contact, privacy, terms, status) -> one partial (item 11)",
+      "Two-footer pattern on about, contact, privacy, terms, status -> one footer (item 11)",
+      "Theme toggle on three pages -> every page via the shared header (item 11)",
+      "Landing 'Why' stat bar literals -> build-generated figures (item 10)",
+      "Internal comments in built pages and sitemap -> stripped at build, kept in source (item 13)"
+    ],
+    "newOrRenovatedPages": [
+      "about.html renovated into About + What is next + FAQ (item 12 L1)",
+      "status.html trimmed to the newest four notes plus a generated status-archive.html (item 12 L1)",
+      "press.html: logo, mark, cover, boilerplate, reviewed screenshots (item 12 L2)",
+      "stats.html pre-cohort state and build-time Showcase League (item 7); restore to sitemap when the live cohort clears five browsers, per the standing TASK_BOARD item",
+      "In-shell: Desk and League tabs replacing the ten-panel Overview, Commissioner Mode promoted to a Club destination (item 8)"
+    ]
+  },
+  "executionOrder": [
+    {
+      "step": 1,
+      "slug": "internal-session-narrative-ships-in-public-source",
+      "effortHours": 1,
+      "why": "touches build-pages once; every later website item builds on the same file read"
+    },
+    {
+      "step": 2,
+      "slug": "dev-server-cors-reflects-any-origin-when-unconfigured",
+      "effortHours": 0.5,
+      "why": "half an hour, isolated, security"
+    },
+    {
+      "step": 3,
+      "slug": "landing-stat-bar-is-hand-typed",
+      "effortHours": 1.5,
+      "why": "build-pages is already open; establishes the public-figures module the FAQ and press pages reuse"
+    },
+    {
+      "step": 4,
+      "slug": "public-footer-contract-checks-copyright-not-navigation",
+      "effortHours": 4,
+      "why": "shared chrome must exist before new pages are added, or the new pages copy the old footers"
+    },
+    {
+      "step": 5,
+      "slug": "about-status-and-the-missing-faq-and-press-pages",
+      "effortHours": 5,
+      "why": "inherits the chrome, the figures module and the comment strip"
+    },
+    {
+      "step": 6,
+      "slug": "stats-page-is-private-for-now-in-every-cell",
+      "effortHours": 3,
+      "why": "closes the website batch; the showcase league reuses the simulation-anchor build path"
+    },
+    {
+      "step": 7,
+      "slug": "visual-system-has-tokens-but-does-not-use-them",
+      "effortHours": 10,
+      "why": "tokens, icons and crests are consumed by every shell item that follows"
+    },
+    {
+      "step": 8,
+      "slug": "moments-are-not-shareable",
+      "effortHours": 4,
+      "why": "cards need crests; cheapest engagement win once the visual layer exists"
+    },
+    {
+      "step": 9,
+      "slug": "first-season-has-no-contract-after-the-tutorial",
+      "effortHours": 5,
+      "why": "lives on the Overview that item 8 is about to split; define it first so the Desk is designed around it"
+    },
+    {
+      "step": 10,
+      "slug": "overview-carries-ten-panels-and-the-shell-fourteen-tabs",
+      "effortHours": 8,
+      "why": "one responsive-evidence re-baseline covers the crests, the contract strip and the regroup together"
+    },
+    {
+      "step": 11,
+      "slug": "rival-personas-never-change-a-rival-decision",
+      "effortHours": 5,
+      "why": "engine-only; the advisor cites rival behaviour, so rivals must behave first"
+    },
+    {
+      "step": 12,
+      "slug": "front-office-advisor-narrates-the-co-gm-packet",
+      "effortHours": 8,
+      "why": "lands in the Desk, reads persona-aware offers, ships deterministic first"
+    },
+    {
+      "step": 13,
+      "slug": "engine-runs-on-the-main-thread",
+      "effortHours": 6,
+      "why": "changes the transport every earlier item was tested against; last so its contract test covers the finished shell"
+    },
+    {
+      "step": 14,
+      "slug": "static-artifact-ships-eight-alias-copies",
+      "effortHours": 2,
+      "why": "needs the Studio host contract answer; image re-encode can go earlier if idle"
+    },
+    {
+      "step": 15,
+      "slug": "audit-lanes-are-not-cached-between-sessions",
+      "effortHours": 1.5,
+      "why": "closeout-adjacent; persists this session's lane reports for S110"
+    }
+  ]
+}

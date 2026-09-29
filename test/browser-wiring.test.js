@@ -16,7 +16,7 @@ test("primary tab navigation resolves orientation-correct roving keyboard target
 });
 
 test("mobile drawer dismissal restores focus before making the drawer inert", () => {
-  const source = read("../public/lib/appCore.js");
+  const source = read("../public/lib/mobileNavigation.js");
   const focusCapture = source.indexOf("const focusWasInDrawer = sideMenu?.contains(document.activeElement)");
   const focusRestore = source.indexOf("if (restoreFocus || focusWasInDrawer) toggle.focus()", focusCapture);
   const inertWrite = source.indexOf('sideMenu.setAttribute("inert", "")', focusRestore);

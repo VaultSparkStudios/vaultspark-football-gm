@@ -166,6 +166,19 @@ export function inspectPublicTruth(root = rootDir) {
     problems.push(`index.html claims ${rivalMatch[1]} rival front offices but the league has ${TEAM_COUNT - 1}`);
   }
 
+  // S109: the engine and rival counts were gated; the legacy-tier count beside
+  // them was not. Derived from the tier table the engine actually uses.
+  const legacyPath = path.join(root, "src", "engine", "gmLegacyScore.js");
+  if (fs.existsSync(legacyPath)) {
+    const tierCount = (fs.readFileSync(legacyPath, "utf8").match(/^\s*tier:\s*\d+,/gm) || []).length;
+    const tierMatch = landing.match(/<strong(?: class="stat-num")?>\s*(\d+)\s*<\/strong>\s*<span class="stat-label">\s*GM Legacy Tiers/);
+    if (!tierMatch) {
+      problems.push("index.html no longer states the GM legacy tier count in a shape this gate can read; update check-public-truth.mjs if that is intentional");
+    } else if (Number(tierMatch[1]) !== tierCount) {
+      problems.push(`index.html claims ${tierMatch[1]} GM legacy tiers but gmLegacyScore.js declares ${tierCount}`);
+    }
+  }
+
   // S101 — this walked only the TOP level of public/ and only `.html`, so
   // `public/lib/*.js` (87 shipped modules) and any future subdirectory sat
   // outside the gate's denominator entirely. The surface is clean today; it was

@@ -207,7 +207,11 @@ export function generateInboundTradeOffers(session) {
         const pick = picks.find((row) => row.id === id);
         return { id, year: pick?.year, round: pick?.round };
       }),
-      rationale: archetypeRationale(rival, target, needSeverity),
+      // S109 — the seam's own need read rides on the rationale, so the line the
+      // GM sees is the reason the verdict was reached, not a restatement of it.
+      rationale: [archetypeRationale(rival, target, needSeverity), evaluation.valuation?.[rival.id]?.needRead]
+        .filter(Boolean)
+        .join(" "),
       archetype: rival.strategyProfile || "balanced",
       gmName: getRivalGmPersona(session.league, rival.id).name,
       gmLine: personaGrudgeLine(getRivalGmPersona(session.league, rival.id), getRivalGmMemory(session.league, rival.id)),

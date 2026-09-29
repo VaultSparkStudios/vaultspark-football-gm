@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-09-14",
+  "lastUpdated": "2026-09-15",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -25,9 +25,9 @@
   "ignisScore": 41119,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
-  "testSuiteStatus": "passing",
-  "testsPassing": 1501,
-  "testsTotal": 1501,
+  "testSuiteStatus": "green",
+  "testsPassing": 1568,
+  "testsTotal": 1568,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,20 +66,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 963,
+  "silScore": 958,
   "silCategoriesV3": {
-    "devHealth": 97,
-    "creativeAlignment": 98,
+    "devHealth": 96,
+    "creativeAlignment": 97,
     "momentum": 98,
-    "engagement": 89,
-    "processQuality": 96,
-    "crossRepoCoherence": 96,
+    "engagement": 93,
+    "processQuality": 92,
+    "crossRepoCoherence": 95,
     "securityPosture": 98,
     "ecosystemIntegration": 91,
     "capitalEfficiency": 100,
-    "automationCoverage": 100
+    "automationCoverage": 98
   },
-  "currentSession": 108,
+  "currentSession": 109,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
@@ -118,14 +118,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 664,
+  "silHealth": 601,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-09-14",
+    "date": "2026-09-29",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -146,7 +146,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.004,
   "entropyLastComputed": "2026-09-09",
-  "lastSessionSummary": "S108 answered the question S107 handed over before writing code - the elite ceiling stays position-blind because the anchor's total is, and composition is published on the receipt, never gated: QB and OL hold 97 per cent of the canonical cohort against 25 per cent of the seats (ratios 3.9 and 3.9; 6.7 and 3.0 on seed 2026), and the two rooms sit seven overall points above the other five, which makes it a rating-scale question rather than a gate. The ledger roll's own remedy had been inert since S105 (every closeout appended beneath the pointer where the splitter stopped reading) and would have dropped S106 and S107; retention is now by session number with the pointer found anywhere. The offseason development ledger the engine always computed is now returned and shown to the GM - stage message, feed, inbox, History-tab card - with no RNG draw added; the draft surface ships the scout's read on every response instead of the truth the scouting board sells; the profile outlook reads headroom and trait. A pre-receipt review found eight things, all acted on before any shard ran.",
+  "lastSessionSummary": "S109 ran the whole arc under one founder goal: a three-lane audit ranked fifteen items, three of its own premises were corrected before code, and ten items shipped in full - the Desk/League split, a deterministic Front Office Advisor scored at the weekly commit, a First Season Contract, causal rival personas at the trade seam, a Worker-hosted engine (152 ms tab activation against an 8.1 s in-page stall), moment cards, a token-only stylesheet with procedural crests, one build-rendered public chrome with FAQ, press kit, status archive and a Showcase League, fail-closed dev CORS - plus a standings panel that had been empty for every first season, fixed at source. Receipt 1,568/1,568; Playwright 65 passed.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -167,8 +167,8 @@
       "lastChecked": "2026-09-14"
     }
   ],
-  "lastSession": 107,
-  "silLastSession": 108,
+  "lastSession": 109,
+  "silLastSession": 109,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -1386,7 +1386,7 @@
     "verified": true,
     "observedAt": "2026-09-14T10:48:01.815Z"
   },
-  "lastCloseoutAt": "2026-09-12T03:40:41.929Z",
+  "lastCloseoutAt": "2026-09-15T02:27:26.985Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",

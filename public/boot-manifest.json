@@ -72,6 +72,13 @@
     "lib/seasonEpilogue.js",
     "lib/devSurfaces.js",
     "lib/tradeDeadlineFrenzy.js",
-    "lib/offseasonDevelopmentReport.js"
+    "lib/offseasonDevelopmentReport.js",
+    "lib/momentCard.js",
+    "lib/frontOfficeAdvisor.js",
+    "lib/firstSeasonContract.js",
+    "lib/deskIslands.js",
+    "lib/api/workerTransport.js",
+    "lib/api/localRuntimeWorker.js",
+    "lib/teamCrest.js"
   ]
 }

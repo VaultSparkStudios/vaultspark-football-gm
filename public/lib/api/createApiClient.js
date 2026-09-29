@@ -1,7 +1,8 @@
 import { assertApiContract, assertApiContractResponse } from "../apiContract.js";
-import { observeBackgroundTask } from "../clientDiagnostics.js";
+import { observeBackgroundTask, recordClientDiagnostic } from "../clientDiagnostics.js";
 
 let localRuntimePromise = null;
+let localRuntimeKind = null;
 let runtimeModeCache = null;
 let fallbackAttempted = false;
 let fallbackPromise = null;
@@ -130,7 +131,10 @@ async function requestHttp(path, options = {}) {
   if (!isServerRuntimeAvailable()) {
     throw new Error("Server-backed mode is unavailable on this deployment. Switch to client-only mode.");
   }
-  const timeoutMs = options.timeoutMs || 15_000;
+  // Multi-year server mutations can serialize a full dashboard before replying.
+  // Keep reads responsive while allowing those writes to finish without a
+  // client-side abort after the server has already committed the action.
+  const timeoutMs = options.timeoutMs ?? ((options.method || "GET").toUpperCase() === "GET" ? 15_000 : 60_000);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   let response;
@@ -163,26 +167,111 @@ async function requestHttp(path, options = {}) {
   return payload;
 }
 
+async function createInPageRuntime() {
+  const moduleCandidates = [
+    new URL("../../src/app/api/localApiRuntime.js", import.meta.url),
+    new URL("../../../src/app/api/localApiRuntime.js", import.meta.url)
+  ];
+  let lastError = null;
+  for (const candidate of moduleCandidates) {
+    try {
+      const { createLocalApiRuntime } = await import(candidate);
+      return createLocalApiRuntime({ storage: window.localStorage });
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError || new Error("Unable to load local runtime.");
+}
+
+// S109 — the engine runs in a module Worker so simulation never blocks input
+// or rendering (localRuntimeWorker.js hosts the same module through the same
+// candidates). The transport is lazy: it is only fetched when the worker is
+// actually going to be used, so the boot graph does not grow.
+async function createWorkerRuntime() {
+  const { createWorkerTransport } = await import("./workerTransport.js");
+  const transport = createWorkerTransport({
+    onStorageError: (error, message) => recordClientDiagnostic({
+      surface: "local-runtime",
+      operation: "storage-replay",
+      error: new Error(`${error?.message || "Storage write failed"} (${message?.key || "?"})`),
+      authorityKey: "client",
+      severity: "degraded"
+    })
+  });
+  await transport.ready;
+  return transport;
+}
+
+// Opt out with <meta name="vsfgm-runtime-worker" content="off"> or
+// localStorage "vsfgm:runtime-worker" = "off". Module-worker support itself is
+// proven by construction: an unsupported `{ type: "module" }` throws or fires
+// `error`, and either path falls back to the in-page runtime.
+function shouldPreferWorkerRuntime() {
+  if (typeof Worker === "undefined") return false;
+  try {
+    if (document.querySelector('meta[name="vsfgm-runtime-worker"]')?.content === "off") return false;
+  } catch {
+    // No document: keep going on the storage flag.
+  }
+  try {
+    if (window.localStorage.getItem("vsfgm:runtime-worker") === "off") return false;
+  } catch {
+    // Storage unavailable: the worker path is still fine.
+  }
+  return true;
+}
+
+const defaultRuntimeFactories = Object.freeze({
+  worker: createWorkerRuntime,
+  inPage: createInPageRuntime,
+  preferWorker: shouldPreferWorkerRuntime
+});
+let runtimeFactories = defaultRuntimeFactories;
+
+/** Test seam: override how local runtimes are built. Returns a restore function. */
+export function configureLocalRuntimeFactories(overrides = {}) {
+  const previous = runtimeFactories;
+  runtimeFactories = { ...runtimeFactories, ...overrides };
+  localRuntimePromise = null;
+  localRuntimeKind = null;
+  return () => {
+    runtimeFactories = previous;
+    localRuntimePromise = null;
+    localRuntimeKind = null;
+  };
+}
+
+/** "worker" | "in-page" | null (not yet built). */
+export function getLocalRuntimeKind() {
+  return localRuntimeKind;
+}
+
 async function getLocalRuntime() {
   if (!localRuntimePromise) {
-    const moduleCandidates = [
-      new URL("../../src/app/api/localApiRuntime.js", import.meta.url),
-      new URL("../../../src/app/api/localApiRuntime.js", import.meta.url)
-    ];
     localRuntimePromise = (async () => {
-      let lastError = null;
-      for (const candidate of moduleCandidates) {
+      if (runtimeFactories.preferWorker()) {
         try {
-          const { createLocalApiRuntime } = await import(candidate);
-          return createLocalApiRuntime({ storage: window.localStorage });
+          const transport = await runtimeFactories.worker();
+          localRuntimeKind = "worker";
+          return transport;
         } catch (error) {
-          lastError = error;
+          recordClientDiagnostic({
+            surface: "local-runtime",
+            operation: "worker-transport",
+            error,
+            authorityKey: "client",
+            severity: "degraded"
+          });
         }
       }
-      throw lastError || new Error("Unable to load local runtime.");
+      const runtime = await runtimeFactories.inPage();
+      localRuntimeKind = "in-page";
+      return runtime;
     })()
       .catch((error) => {
         localRuntimePromise = null;
+        localRuntimeKind = null;
         throw error;
       });
   }

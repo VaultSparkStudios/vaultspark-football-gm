@@ -24,6 +24,7 @@ const configuredViewports = [
 const evidenceThemes = ["dark", "light"];
 const evidenceTabs = [
   ["overviewTab", "overview"],
+  ["calendarTab", "league"],
   ["rosterTab", "roster"],
   ["faTab", "free-agency"],
   ["contractsTab", "contracts"],

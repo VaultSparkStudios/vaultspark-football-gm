@@ -5,7 +5,8 @@
  * refusal pipeline succeeds, then refreshes every derived index exactly once.
  */
 import { buildTradePlan } from "./tradePlan.js";
-import { recordRivalGmMemory } from "../../engine/rivalGmPersona.js";
+import { getRivalGmPersona, recordRivalGmMemory } from "../../engine/rivalGmPersona.js";
+import { buildTradeNeedProfile, evaluateTradeValue as evaluateTradeValueDefault, tradeNeedMultiplier } from "../../engine/aiTeamStrategy.js";
 
 export class TradeService {
   constructor(session, strategies = {}) {
@@ -134,12 +135,22 @@ export class TradeService {
     const teamBObj = session.getTeamById(teamB);
     const rosterA = teamPlayersAll(session.league, teamA);
     const rosterB = teamPlayersAll(session.league, teamB);
+    // S109 — a CPU club judges the package as its GM, against its own exposed
+    // rooms. The controlled club keeps the flat read: the human is the GM there.
+    const controlledId = session.controlledTeamId;
+    const cpuSide = (team) =>
+      team?.id && team.id !== controlledId
+        ? { persona: getRivalGmPersona(session.league, team.id), rosterNeeds: buildTradeNeedProfile(session.league, team.id) }
+        : { persona: null, rosterNeeds: [] };
+    const sideA = cpuSide(teamAObj);
+    const sideB = cpuSide(teamBObj);
     const playerValueOutA = fromA.reduce(
       (sum, player) => sum + playerTradeValueForTeam(player, teamAObj, rosterA, { incoming: false }),
       0
     );
     const playerValueInA = fromB.reduce(
-      (sum, player) => sum + playerTradeValueForTeam(player, teamAObj, rosterA, { incoming: true }),
+      (sum, player) =>
+        sum + playerTradeValueForTeam(player, teamAObj, rosterA, { incoming: true }) * tradeNeedMultiplier(player.position, sideA.rosterNeeds),
       0
     );
     const playerValueOutB = fromB.reduce(
@@ -147,7 +158,8 @@ export class TradeService {
       0
     );
     const playerValueInB = fromA.reduce(
-      (sum, player) => sum + playerTradeValueForTeam(player, teamBObj, rosterB, { incoming: true }),
+      (sum, player) =>
+        sum + playerTradeValueForTeam(player, teamBObj, rosterB, { incoming: true }) * tradeNeedMultiplier(player.position, sideB.rosterNeeds),
       0
     );
     const adjustedPickValueA = picksA.reduce(
@@ -185,22 +197,42 @@ export class TradeService {
     };
     const toleranceA = strategyTolerance(teamAObj);
     const toleranceB = strategyTolerance(teamBObj);
-    const aiAcceptableA =
-      isTradeValueAcceptable({ outgoing: fromA, incoming: fromB, team: teamAObj, tolerance: toleranceA }) ||
-      incomingValueA >= outgoingValueA * (1 - toleranceA);
-    const aiAcceptableB =
-      isTradeValueAcceptable({ outgoing: fromB, incoming: fromA, team: teamBObj, tolerance: toleranceB }) ||
-      incomingValueB >= outgoingValueB * (1 - toleranceB);
+    // One shared seam decides for both clubs; an injected `isTradeValueAcceptable`
+    // without a receipt shape still works, it just carries no need line.
+    const evaluateTradeValue =
+      this.strategies.evaluateTradeValue ||
+      (isTradeValueAcceptable ? (args) => ({ acceptable: isTradeValueAcceptable(args) }) : evaluateTradeValueDefault);
+    const readA = evaluateTradeValue({ outgoing: fromA, incoming: fromB, team: teamAObj, tolerance: toleranceA, ...sideA });
+    const readB = evaluateTradeValue({ outgoing: fromB, incoming: fromA, team: teamBObj, tolerance: toleranceB, ...sideB });
+    const bandA = readA.tolerance ?? toleranceA;
+    const bandB = readB.tolerance ?? toleranceB;
+    const aiAcceptableA = readA.acceptable || incomingValueA >= outgoingValueA * (1 - bandA);
+    const aiAcceptableB = readB.acceptable || incomingValueB >= outgoingValueB * (1 - bandB);
+    const valuation = {
+      [teamA]: {
+        outgoingValue: outgoingValueA,
+        incomingValue: incomingValueA,
+        delta: incomingValueA - outgoingValueA,
+        tolerance: bandA,
+        gmName: sideA.persona?.name || null,
+        needRead: readA.needRead || null
+      },
+      [teamB]: {
+        outgoingValue: outgoingValueB,
+        incomingValue: incomingValueB,
+        delta: incomingValueB - outgoingValueB,
+        tolerance: bandB,
+        gmName: sideB.persona?.name || null,
+        needRead: readB.needRead || null
+      }
+    };
 
     if (!aiAcceptableA || !aiAcceptableB) {
       return {
         ok: false,
         error: "Trade rejected by AI valuation.",
         reasonCode: "valuation-failed",
-        valuation: {
-          [teamA]: { outgoingValue: outgoingValueA, incomingValue: incomingValueA, delta: incomingValueA - outgoingValueA },
-          [teamB]: { outgoingValue: outgoingValueB, incomingValue: incomingValueB, delta: incomingValueB - outgoingValueB }
-        }
+        valuation
       };
     }
     return {
@@ -214,10 +246,7 @@ export class TradeService {
         [teamA]: capA + outgoingA - incomingA,
         [teamB]: capB + outgoingB - incomingB
       },
-      valuation: {
-        [teamA]: { outgoingValue: outgoingValueA, incomingValue: incomingValueA, delta: incomingValueA - outgoingValueA },
-        [teamB]: { outgoingValue: outgoingValueB, incomingValue: incomingValueB, delta: incomingValueB - outgoingValueB }
-      }
+      valuation
     };
   }
 

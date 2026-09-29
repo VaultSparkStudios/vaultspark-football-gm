@@ -457,8 +457,10 @@ export async function showDraftPickReveal(prospect, teamName, onConfirm) {
   const modal = document.getElementById("draftPickRevealModal");
   if (!modal) { onConfirm(); return; }
   try {
+    const draft = state.draftState;
+    const round = draft?.slots?.[draft.currentPick - 1]?.round || Math.max(1, Math.ceil((draft?.currentPick || 1) / 32));
     const module = await import("./draftPickReveal.js");
-    module.renderDraftPickReveal(modal, prospect, teamName, onConfirm);
+    module.renderDraftPickReveal(modal, prospect, teamName, onConfirm, { round });
   } catch {
     onConfirm();
   }

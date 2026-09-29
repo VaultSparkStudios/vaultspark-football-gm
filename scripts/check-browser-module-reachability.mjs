@@ -25,7 +25,8 @@ function relativeImports(source) {
     .replace(/^\s*\/\/.*$/gm, "");
   const declarationPattern = /\b(?:import|export)\b\s+(?:[^"'`]*?\s+from\s+)?["']([^"']+)["']/g;
   const dynamicPattern = /\bimport\(\s*["']([^"']+)["']\s*\)/g;
-  for (const pattern of [declarationPattern, dynamicPattern]) {
+  const workerPattern = /\bnew\s+Worker\s*\(\s*new\s+URL\s*\(\s*["']([^"']+)["']\s*,\s*import\.meta\.url\s*\)/g;
+  for (const pattern of [declarationPattern, dynamicPattern, workerPattern]) {
     for (let match = pattern.exec(executableSource); match; match = pattern.exec(executableSource)) {
       if (match[1].startsWith(".")) imports.push(match[1]);
     }

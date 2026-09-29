@@ -143,7 +143,10 @@ export async function assertApiContractParity({ rootDir = defaultRoot } = {}) {
   );
   const undeclared = browserCalls.filter((call) => !manifestKeys.has(call.key));
   const localSource = await fs.readFile(path.join(rootDir, "src", "app", "api", "localApiRuntime.js"), "utf8");
-  const serverSource = await fs.readFile(path.join(rootDir, "src", "server.js"), "utf8");
+  // S109: the CORS header literal moved to src/app/devCors.js; the gate reads
+  // both so it follows the header rather than the file it once lived in.
+  const serverSource = (await fs.readFile(path.join(rootDir, "src", "server.js"), "utf8"))
+    + "\n" + (await fs.readFile(path.join(rootDir, "src", "app", "devCors.js"), "utf8"));
   const localKeys = extractAdapterContracts(localSource, "local");
   const serverKeys = extractAdapterContracts(serverSource, "server");
   const adapterDiff = compareAdapterContracts({ manifestKeys, localKeys, serverKeys });

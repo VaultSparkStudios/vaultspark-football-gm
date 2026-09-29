@@ -1,14 +1,3 @@
-## 2026-09-09 — Session 99 — Tie-honest debrief and verified deployment
-
-S99 shipped tie-complete results across career and post-game surfaces, focus-safe drawer dismissal, an explicit local-only first-debrief pulse, truthful session/release guidance, and stable mobile entry paint. Exact staging, production Pages and backend deployment are verified; public launch remains HOLD.
-
-Application revision `713b326d4d84843112ddbc8354c0760bb6400859` and artifact `aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4` pass staging 14/14 and production provenance 10/10. CI 34273797142, Pages promotion 34275252182, backend deployment 34275259066, and receipt-only CI 34296387803 succeeded. Live staging/production currency passed 6/6 during closeout recovery; live backend reports database ready at the exact revision. The implementation-boundary Node receipt is 1,319/1,319 and Playwright is 55/55; these are retained historical receipts, not newly rerun suites.
-
-Recovered the incomplete closeout: the clean tree and green release existed while handoff, SIL and session status still described S98. Both audit plans and the second-order private debrief pulse are complete. CDR reviewed: no new human creative direction. No lifecycle flip or public announcement was made.
-
-Closeout verification: Studio shard 267/267 passed; doctor blockingFailing 0 with the existing lifecycle warning; settings sanitizer found zero issues. Entropy measured 0.070 (healthy); the canonical update path rejected the missing local schema, so the measured result was persisted through this repository's invariant-enforcing writer.
-
-
 ## 2026-09-09 — Session 100
 
 S100 fixes storage-safe optional feedback dismissal, canonical once-only player milestone reporting, visible and keyboard-safe news tickers, and consistent completed-audit status handling. Stable staging, production Pages and backend deployment are verified.
@@ -189,6 +178,30 @@ CDR reviewed: no founder creative direction this session, so no entry is owed. A
 **Receipt.** Every shard green on the final tree, **1,501/1,501** (core 273, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 322). The first full run went red on exactly one test, the studio manifest gate: the five S108 test files were not registered in scripts/run-test-shard.mjs, so the receipt had silently skipped them (core read 253, unchanged from S107). My omission; registered; core and studio re-run on the final tree. Doctor lockingFailing 0.
 
 **Record.** DECISIONS S108 (six decisions), TRUTH_AUDIT S108, this entry, TASK_BOARD S108, CURRENT_STATE, the handoff, and a player-facing release note on `public/status.html`. Ledgers rolled at closeout so each live file holds its ten newest sessions.
+
+## 2026-09-14 — Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there
+
+**Triage.** Clean start on `83d6ad0`: tree clean, synced, brief fresh, genius queue exhausted, meter CONTINUE. The founder's goal in one line: full-surface audit, implement the plan in efficiency order, close out, push, deploy.
+
+**Audit** (`docs/AUDIT_2026-09-14_SESSION109.json`, 15 items, combined priority 226.6). Three parallel Explore lanes (site, shell, engine; 211,300 subagent tokens) then every premise re-verified by grep, by running the boot-budget gate and by fetching the live origin (community snapshot: status warming, sampleSize 0). Eight lane phantoms rejected before ranking. The premise checker in this repo knows only three adapters; five count premises were rewritten as multiline grep groups.
+
+**Implementation.** Five agents on isolated lanes (personas, CSS + crests, worker transport, moment cards, advisor logic; ~900,000 subagent tokens) while the website batch and the shell wiring were done directly. Order: website batch (comment strip narrowed to the sitemap; fail-closed CORS; legacy-tier gate; manifest chrome; About/FAQ, press, status archive; showcase league), then visual layer, then shell (Desk/League, First Season Contract, advisor wiring behind `deskIslands.js`), then engine (personas), then transport (worker), then image and lane cache.
+
+**Corrected premises.** Built pages already strip comments; the stat bar was already gated; the pre-cohort atlas already invites. Recorded, not shipped.
+
+**Gates that caught agent output.** Promise observability: four silent `.catch(() => {})` sinks around lazy imports (now `recordClientDiagnostic`). Reachability: the worker entry is reached only through `new Worker(new URL())` and is the one declared allowlist entry. API-contract parity: the CORS methods literal moved files and the gate's population was widened rather than the literal duplicated. Boot target: crossed six times by comment bytes and wiring; the advisor/contract wiring moved into a lazy module and every static comment was cut to a line; final 649,981.
+
+**Found by a spec.** `tests-ui/desk-islands.spec.js` asserted standings rows after a played week and found none: `latestStandings` read `statBook.getTeamSeasonTable`, which is filled at season end, so a franchise's first season showed "No rows" and later seasons showed the previous year. `teamSeasonRow` declared once, `getLiveTeamSeasonTable` for the season in progress, archive preferred when present; 3/3 with the empty archive as the negative control; release note extended.
+
+**Receipts.** Full suite run three times: the first died to the tool's own 600 s timeout, the second went green on core and red on two worker-transport tests under shared-process order (appCore subscribes a DOM renderer at module load; guarded), the third, on the final tree, 1,568/1,568 with a fresh source-bound receipt. Playwright full suite 65 passed, 1 skipped, after the worker bound was re-based on the long-task statistic (worker max 201 ms, in-page 8,100 ms) with a 750 ms wall-clock bound. Boot budget, reachability, observability, public-truth, build all green.
+
+**Deployment.** Recorded in the closeout receipts commit.
+
+## 2026-09-28 — Session 110 — S109 recovery and exact-candidate release
+
+Recovered the uncommitted S109 implementation above synced `main`, corrected its zero-file closeout claim, and retained the separate public launch HOLD. Completed its remaining player-facing rungs: a six-section mobile drawer with focus and scroll handling; one SVG icon system; and a First Season Contract that credits the GM's own trade evaluation and delivers a season-end owner verdict. The Worker entry is checked through the browser dependency graph without an allowlist. Added a lane-delta command so later audits can start from the recorded lane SHA. The public status entry now uses the release date.
+
+Verification is in progress: the direct Node run has passed core 298, runtime 846, simulation contract 83, and realism 1; the long and Studio shards, static/browser checks, visual receipt, staging, and production are not yet claimed here. Public repo sanitizer reports zero critical and zero warning findings. The release receipts will be recorded only after observing them.
 
 <!-- ledger-roll:pointer -->
 ---

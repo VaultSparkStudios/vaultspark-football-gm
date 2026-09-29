@@ -1,4 +1,4 @@
-import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
+import { state, api, STATS_BENCHMARK_HINTS, TEAM_THEME_MAP } from "./appState.js";
 import { tradeWindow } from "./tradeWindow.js";
 import { deriveTrophyRoad, readEarnedAchievements, recordAchievementEvent } from "./achievements.js";
 import { playSound } from "./audioFeedback.js";
@@ -597,9 +597,14 @@ export function renderOverviewSpotlight() {
   const schemeFallback = typeof controlledTeam.scheme === "string" ? controlledTeam.scheme : "";
   const schemeLabel = [scheme.offense, scheme.defense].filter(Boolean).join(" / ") || schemeFallback || "Balanced";
   const spotlight = document.getElementById("overviewTeamSpotlight");
+  // S109: the club's crest is procedural and lazy; the boot graph never pays for it.
+  const mountCrest = () => import("./teamCrest.js")
+    .then((crest) => crest.mountTeamCrest(spotlight?.querySelector("[data-team-crest]"), controlledTeam, TEAM_THEME_MAP[controlledTeam.abbrev]))
+    .catch((error) => recordClientDiagnostic({ surface: "overview", operation: "team-crest", error, severity: "warning" }));
   if (spotlight) {
     spotlight.innerHTML = `
       <div class="overview-team-mark">
+        <div class="overview-team-crest" data-team-crest aria-hidden="true"></div>
         <div class="overview-team-label">${escapeHtml(teamLabel)}</div>
         <div class="overview-team-meta">
           ${escapeHtml(controlledTeam.abbrev || controlledTeam.id || "-")} | ${escapeHtml(standingsRow?.conference || controlledTeam.conference || "-")} ${escapeHtml(standingsRow?.division || controlledTeam.division || "")} | Record ${escapeHtml(recordLabel)}
@@ -628,6 +633,7 @@ export function renderOverviewSpotlight() {
         </div>
       </div>
     `;
+    mountCrest();
   }
   const pulse = document.getElementById("overviewPulseBar");
   if (pulse) {

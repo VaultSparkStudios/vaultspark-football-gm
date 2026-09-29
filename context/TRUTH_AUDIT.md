@@ -5,13 +5,6 @@ Overall status: green
 Last reviewed: 2026-09-09
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
-## 2026-09-09 — Session 99 release truth
-
-Application revision `713b326d4d84843112ddbc8354c0760bb6400859` and artifact `aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4` pass staging 14/14 and production provenance 10/10. CI 34273797142, Pages promotion 34275252182, backend deployment 34275259066, and receipt-only CI 34296387803 succeeded. Live staging/production currency passed 6/6 during closeout recovery; live backend reports database ready at the exact revision. The implementation-boundary Node receipt is 1,319/1,319 and Playwright is 55/55; these are retained historical receipts, not newly rerun suites.
-
-S98 references in current handoff/status were stale; S99 is the recovered session and S100 is next. Deployment authorization was explicit. Public launch remains false; deployment does not establish cohort behavior or missing mailbox/identity/lifecycle evidence.
-
-
 ## 2026-09-09 — Session 100
 
 Application revision d0fea099ea9c177e724d958755d1d47a93770a3b; artifact ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6. Staging 14/14; production 10/10; hosted performance verified. Node 1327/1327 across six shards, with the studio shard rerun after adding screenshot-ledger entries. Local browser verification: 59/60 on the final full run, then the sole setup timeout passed unchanged on focused rerun; earlier full run 60/60. Hosted candidate workflows: CI 34331844586 success; Deploy Pages 34333215833 success; Deploy Backend Runtime 34333220807 success. Sixteen reviewed captures cover desktop/mobile and both themes.
@@ -132,6 +125,24 @@ Feedback save failures are visible and are never counted as saved. Milestone fix
 **A gate that must not learn to see.** Elite composition is now measured (QB and OL hold 97% of the canonical cohort against 25% of the seats; ratios 3.9–6.7) and published on the receipt with `gated: false`. A test proves the gated verdict is identical for a cohort seated in the anchor's proportions and one concentrated in two rooms. The elite ceiling remains `watch` at 2.1% (canonical) / 2.7% (seed 2026) against 1.53%; dispersion remains `watch` at 0.093 / 0.108 against 0.08. No threshold moved.
 
 **What is claimed and what is not.** Composition readings are ten seasons on two seeds, active roster only, the same runs S107 used and reproduced to the decimal before anything changed. The development ledger's fidelity is proven player-by-player against the league on one seed and by an identical-fingerprint pair on another; the browser card is proven by one Playwright spec that drives the runtime to the retirements stage. The runway in growth seasons is a projection of the declared curve's boundary, not a measured outcome for any player. No real-cohort evidence exists and none was manufactured. Public launch remains HOLD on the same three unmet gates.
+
+## 2026-09-14 — S109 — Three premises the auditor got wrong, two gates that caught agent output, and a panel that had been empty for every first season
+
+**The audit contradicted itself three times and the contradictions were kept.** "Internal narrative ships in built pages" was false for HTML (stripped at build since before this session) and true for the sitemap; "the stat bar is hand-typed and will drift" was false in its risk (gated since S94) and true for the tier count; "the atlas is Private for now in every cell" was false (pre-cohort renders an invitation). Each is recorded in the sidecar as `skipped-premise-corrected` or `shipped-corrected`, with the narrowed thing that actually shipped.
+
+**Agent output was treated as untrusted and the gates were right.** Four silent catch sinks and one unreachable worker entry were caught by `check-browser-promise-observability` and `check-browser-module-reachability`; the parity gate's regex went red when the CORS literal changed shape and the gate's population was widened rather than the literal duplicated. No gate was loosened; one allowlist entry was added with its reason.
+
+**A surface contradicting its own data.** The Standings table read "No rows" for a franchise's entire first season and showed the previous year's table during later ones, because the dashboard read the season-end archive. A player would have read it as "no games yet" in week one and as current standings in year two. Fixed at source; the release note says so.
+
+**What is claimed and what is not.** The worker's 152 ms activation and 201 ms largest stall are one run on one machine against an in-page control of 449 ms and 8,100 ms; the wall-clock bound was raised from 300 to 750 ms because it crossed 387 ms on an identical tree, and the long-task ceiling carries the gate. The Showcase League is one seed, ten seasons, labelled simulation. The advisor's counterfactual tally is descriptive. The persona change adds no RNG draw and changes no controlled-club decision; CPU–CPU trades do not exist to be affected. The receipt is 1,568/1,568 on the final tree after two earlier runs (one killed by a tool timeout, one red on shared-process order); Playwright 65 passed with the opt-in control skipped.
+
+## 2026-09-28 — S110 — A green closeout was not a deployed artifact
+
+**Cutoff truth.** The S109 closeout brief reported zero changed files and its handoff spoke of a deployment receipt to follow. In fact, S109's code, audit and closeout artifacts were uncommitted; `main` still matched the S108 remote revision when S110 opened. The zero came from measuring a commit against itself. S110 has corrected the brief and will bind release claims to a clean commit, stable staging, and observed live origins.
+
+**Product promise corrected.** An objective that depended on a random inbound offer was described as player-achievable. It now accepts the player's own successful trade evaluation and closes at the season review with an owner verdict. The public release note's September 14 label described a local build, so it is dated to the actual September 28 release candidate.
+
+**Gate coverage corrected.** S109 recorded a Worker reachability exception. The checker now follows the Worker URL edge and the exception is removed. The browser gate will inspect the shipped Worker module as a member of the graph.
 
 <!-- ledger-roll:pointer -->
 ---

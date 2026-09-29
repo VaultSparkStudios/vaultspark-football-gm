@@ -192,7 +192,9 @@ export function applyDashboard(newState) {
   if (analyticsYearInput && (!analyticsYearInput.value || !previous || previous.currentYear !== newState.currentYear)) {
     analyticsYearInput.value = String(state.dashboard.currentYear);
   }  maybeMountContextualFeedback(newState, { onSaved: () => showToast("Private playtest receipt saved locally.") });
-
+  // S109: lazy Desk surfaces (advisor, first-season contract) re-render on
+  // every applied dashboard without this module importing them.
+  document.dispatchEvent(new CustomEvent("vsfgm:dashboard-applied", { detail: { dashboard: newState, previous } }));
 }
 
 export function activateTab(tabId) {
@@ -1156,7 +1158,7 @@ export function showSeasonEndReview() {
   const body = modal.querySelector(".season-review-body");
   if (!body) return;
   body.innerHTML = `
-    <div class="sr-headline">Season ${d.currentYear - 1} Complete</div>
+    <div class="sr-headline">Season ${escapeHtml(String(d.seasonAwardsStage?.year ?? d.currentYear))} Complete</div>
     <div class="sr-grid">
       <div class="sr-tile"><div class="sr-tile-label">Record</div><div class="sr-tile-val">${escapeHtml(record)}</div></div>
       <div class="sr-tile"><div class="sr-tile-label">League Rank</div><div class="sr-tile-val">${rank > 0 ? `#${rank}` : "—"}</div></div>
@@ -1167,6 +1169,7 @@ export function showSeasonEndReview() {
       <strong>Owner Verdict:</strong> <span class="tone-${verdictTone}">${escapeHtml(verdict)}</span>
       ${team.owner?.expectation?.reasons?.length ? `<div class="sr-reasons">${escapeHtml(team.owner.expectation.reasons.join(" · "))}</div>` : ""}
     </div>
+    <div class="sr-first-season-contract-mount"></div>
     ${legacy ? `<div class="sr-legacy">
       <strong>GM Legacy:</strong> ${escapeHtml(legacy.label || "")} — Score ${legacy.score ?? "—"} · Grade ${escapeHtml(legacy.grade || "—")}
     </div>` : ""}
@@ -1188,6 +1191,13 @@ export function showSeasonEndReview() {
   `;
   appendWhatIfReplay(body);
   observeBackgroundTask(async () => {
+    const contract = await import("./firstSeasonContract.js");
+    const closeout = contract.finalizeFirstSeasonContract(d);
+    if (closeout) {
+      if (closeout.done === closeout.total) recordAchievementEvent("first-season-contract");
+      body.querySelector(".sr-first-season-contract-mount")?.insertAdjacentHTML("beforeend", contract.renderContractCloseout(closeout));
+      contract.renderFirstSeasonContract({ dashboard: d });
+    }
     const { appendSeasonEpilogue } = await import("./seasonEpilogue.js");
     return appendSeasonEpilogue(body, d);
   }, {

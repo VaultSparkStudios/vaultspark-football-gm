@@ -60,6 +60,9 @@ jobs:
       - name: Run sim contract shard
         run: npm run test:sim:contract
 
+      - name: Run sim realism shard
+        run: npm run test:sim:realism
+
   build-images:
     needs: gate
     runs-on: ubuntu-latest
