@@ -81,7 +81,7 @@ test("first session turns onboarding promises into a committed weekly evidence t
     // so in its own receipt and must not have asked for a tactic.
     await expect(byeReceipt).toContainText("bye week — no opponent");
     await expect(byeReceipt).toContainText("gm-decision → bye");
-    await expect(page.locator("#halftimeAdjustModal .tactic-option")).toHaveCount(0);
+    await expect(page.locator("#halftimeAdjustModal")).toBeHidden();
   } else {
     await expect(page.locator(".weekly-plan-receipt")).toContainText("Weekly plan committed");
     await expect(page.locator(".weekly-plan-receipt")).toContainText("tactic run-heavy");
