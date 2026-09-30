@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0",
+  "session": 112,
+  "kind": "superseded-candidate-evidence",
+  "sourceRevision": "88a5e006bf0582c8dcba4ddfd84e9516f688de6d",
+  "artifactDigest": "92301758c11ad25a9173255fb96ddfb0822c0498d61d2bf68cea90772aab6575",
+  "status": "validation-interrupted-for-reproducible-browser-test-repair",
+  "generalCi": {
+    "run": 36747125169,
+    "status": "success",
+    "browser": {
+      "passed": 70,
+      "skipped": 1,
+      "failed": 0
+    }
+  },
+  "pages": {
+    "run": 36747125173,
+    "status": "failure",
+    "browser": {
+      "passed": 69,
+      "skipped": 1,
+      "failed": 1
+    },
+    "failedTest": "reward-beats: advancing a week surfaces a recap beat card unless the team was on a bye",
+    "failure": "Test timed out while status was Advancing week; no advance request had been submitted."
+  },
+  "localReproduction": {
+    "originalUnchangedTest": {
+      "repeats": 3,
+      "passed": 2,
+      "failed": 1
+    },
+    "renderedFailure": "Weekly Plan Composer remained open, waiting for the choice missed by the test.",
+    "trace": {
+      "gmDecisionRequestStartMs": 22328.666,
+      "gmDecisionResponseDurationMs": 307.803,
+      "gmProbeFalseMs": 22411.59,
+      "tacticProbeFalseMs": 22465.718,
+      "rehearsalProbeFalseMs": 22515.629,
+      "advanceRequests": 0
+    },
+    "cause": "isVisible timeout does not wait. All three probes completed before the asynchronous empty GM-decision response opened the next required tactic dialog."
+  },
+  "partialNodeSuite": {
+    "authoritative": false,
+    "startedAt": "2026-09-30T16:49:05.236Z",
+    "completedShards": [
+      {
+        "name": "core",
+        "status": 0,
+        "passed": 290,
+        "total": 290,
+        "durationMs": 755343
+      },
+      {
+        "name": "runtime",
+        "status": 0,
+        "passed": 909,
+        "total": 909,
+        "durationMs": 1248626
+      },
+      {
+        "name": "sim-contract",
+        "status": 0,
+        "passed": 85,
+        "total": 85,
+        "durationMs": 756616
+      },
+      {
+        "name": "sim-realism",
+        "status": 0,
+        "passed": 9,
+        "total": 9,
+        "durationMs": 557823
+      }
+    ],
+    "passed": 1293,
+    "cancelledShard": "long",
+    "exitCode": -1,
+    "reason": "Stopped verified owned runner and test child before modifying the test surface. No full-green receipt claimed."
+  },
+  "visual": {
+    "receipt": "reports/visual-review-s112.json",
+    "reviewed": 198,
+    "fresh": 143,
+    "hashInherited": 55,
+    "status": "verified-for-this-artifact"
+  },
+  "backend": {
+    "run": 36747125372,
+    "status": "images-built",
+    "deployed": false
+  },
+  "productionPromoted": false,
+  "repairVerification": {
+    "sourceFile": "tests-ui/reward-beats.spec.js",
+    "correctedSpec": {
+      "passed": 9,
+      "total": 9,
+      "repeats": 3,
+      "duration": "1.5 minutes"
+    },
+    "heldResponseControl": {
+      "passed": 2,
+      "total": 2,
+      "durationSeconds": 25,
+      "method": "Hold the actual GM request; assert the former three visibility probes are false with zero advances; explicitly release the request and complete the corrected real played/bye flow exactly once. No response mock, sleep, force click or timeout increase."
+    },
+    "syntaxAndWhitespace": "passed",
+    "productionCodeChanged": false
+  }
+}

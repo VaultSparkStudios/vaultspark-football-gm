@@ -5632,6 +5632,996 @@
       "bytes": 73375,
       "session": 112
     },
+    "s112-desktop-advisor-dark.png": {
+      "sha256": "60e770d06d4c372cb6f22d5de3988b784f581625f0618008a7f2810c82c6b826",
+      "bytes": 341332,
+      "session": 112
+    },
+    "s112-desktop-advisor-light.png": {
+      "sha256": "2a368690e849abbc8936dc8f5b95c6e5aefdcc54241ba7ce79e40aabbe180858",
+      "bytes": 299401,
+      "session": 112
+    },
+    "s112-desktop-agent-negotiation-dark.png": {
+      "sha256": "214012df0c4d020ef36451922da28c6f7a5dff7c04f8b08ec0a44403921fbe44",
+      "bytes": 295056,
+      "session": 112
+    },
+    "s112-desktop-agent-negotiation-light.png": {
+      "sha256": "26cc1402e88ecbaddda26fe8d92a4dcfafabddbed9b258fdbe7f37d8bbd2c644",
+      "bytes": 325902,
+      "session": 112
+    },
+    "s112-desktop-architect-cut-dark.png": {
+      "sha256": "587bbce306325e82c86c4fd2ec79b7f85eaa75da6aa31c6695aa68afca1a6824",
+      "bytes": 181040,
+      "session": 112
+    },
+    "s112-desktop-architect-cut-light.png": {
+      "sha256": "1aebe0755e79860dc9c86aa726601101d18845e260f45729bc80fc51f26b1c89",
+      "bytes": 195294,
+      "session": 112
+    },
+    "s112-desktop-architect-objective-dark.png": {
+      "sha256": "0d65e43c6c89a92e533acd5d6206009f03f44ea27baae8a8c05fa2fb9ecb7e60",
+      "bytes": 15112,
+      "session": 112
+    },
+    "s112-desktop-architect-objective-light.png": {
+      "sha256": "00a651b64811e16de9f89a1d731b9dd0421e06d5117f25a401b953d10c411a28",
+      "bytes": 14863,
+      "session": 112
+    },
+    "s112-desktop-architect-signature-dark.png": {
+      "sha256": "a12b2b5ae45599c5cc7020a01fa98762867079602eabf6c00d5c08fc69b447ce",
+      "bytes": 204974,
+      "session": 112
+    },
+    "s112-desktop-architect-signature-light.png": {
+      "sha256": "c73100457ca21222e37c59766b7ed6be290fa5638f3338462d195756b189b756",
+      "bytes": 183924,
+      "session": 112
+    },
+    "s112-desktop-cap-pressure-dark.png": {
+      "sha256": "ee928c5956c6c6f1b38818580ae2029d049db3048b58b764cc08fcbc962fa2fe",
+      "bytes": 120303,
+      "session": 112
+    },
+    "s112-desktop-cap-pressure-light.png": {
+      "sha256": "1314d7faed713fce5d3e293eb53bf9e06af91f293f16654491757fde56caa1c6",
+      "bytes": 117320,
+      "session": 112
+    },
+    "s112-desktop-co-gm-brief-dark.png": {
+      "sha256": "9b746820369777f4c9035a4a30744c044bf4da64eda3c1292cec9e06728acff7",
+      "bytes": 46823,
+      "session": 112
+    },
+    "s112-desktop-co-gm-brief-light.png": {
+      "sha256": "2edb1c94799a8893e60d793423aa31ab37fc4da658c33fe13895b88c5fe2152e",
+      "bytes": 43610,
+      "session": 112
+    },
+    "s112-desktop-decision-archive-dark.png": {
+      "sha256": "481d365e5950754ce420bced28a79644e9fd563c98f596d986573e6f067dabc9",
+      "bytes": 40576,
+      "session": 112
+    },
+    "s112-desktop-decision-archive-light.png": {
+      "sha256": "45b1b2549e11fc7bbdb288013ae1f49cbab86a3feb30b62f7eb2e8dc7f11930f",
+      "bytes": 39005,
+      "session": 112
+    },
+    "s112-desktop-draft-trade-review-dark.png": {
+      "sha256": "17053449db3b4a991844af3958e998d289da2f88a4fc52537c22b438317d322e",
+      "bytes": 71578,
+      "session": 112
+    },
+    "s112-desktop-draft-trade-review-light.png": {
+      "sha256": "49baba39529d1ef01e54d7d5c6f855b6a92a57fd24f2f3fcdafe8173257804e3",
+      "bytes": 59806,
+      "session": 112
+    },
+    "s112-desktop-dynasty-timeline-dark.png": {
+      "sha256": "1d5f0a5b89d188faefcaee94bbc60c0522348c150a47265efd743332e4173a30",
+      "bytes": 364277,
+      "session": 112
+    },
+    "s112-desktop-dynasty-timeline-light.png": {
+      "sha256": "5b7df14311f0909374225abc9f92f4bbf6f4fe1824b6a37bf791f36fcd7b18ae",
+      "bytes": 299587,
+      "session": 112
+    },
+    "s112-desktop-exact-command-center-dark.png": {
+      "sha256": "d3b711ccd6b77bea6feb776ae118d0f98b75838031a897c0bf2e35c4d80d1adc",
+      "bytes": 70815,
+      "session": 112
+    },
+    "s112-desktop-exact-command-center-light.png": {
+      "sha256": "55e92ea3023529ac9edadbc2762c4a616ded5242bd9d8eff46eb0cde75b02885",
+      "bytes": 80740,
+      "session": 112
+    },
+    "s112-desktop-exact-command-target-dark.png": {
+      "sha256": "664fee552fd65e2d76c5fad438d265a8f6dd9521a9aff101d71077f86a2395ca",
+      "bytes": 61816,
+      "session": 112
+    },
+    "s112-desktop-exact-command-target-light.png": {
+      "sha256": "d6e93d4dee7bfa1d826d24f8a0d403be70ba4937ac0e7bf487917c0da910a696",
+      "bytes": 42154,
+      "session": 112
+    },
+    "s112-desktop-facility-capital-dark.png": {
+      "sha256": "bd43fb9d58b0a9c8775905757ee711c46bfa5e0dbc16c5be70ac4e61d85b044d",
+      "bytes": 68627,
+      "session": 112
+    },
+    "s112-desktop-facility-capital-light.png": {
+      "sha256": "44fad91b28b2c1f9ccd54fc9b0c2c9ad281a485a39b26be5250fffb3aade8c0c",
+      "bytes": 58426,
+      "session": 112
+    },
+    "s112-desktop-first-debrief-dark.png": {
+      "sha256": "e6f2c52205def7fec07efe5ce1ac3cf35f8724d5b845374354e5629c18f81e6c",
+      "bytes": 251757,
+      "session": 112
+    },
+    "s112-desktop-first-debrief-light.png": {
+      "sha256": "591245417a6d03c6ed87a99cb0c152ac5014ce6f6cd240c10632289bc6e64d35",
+      "bytes": 316539,
+      "session": 112
+    },
+    "s112-desktop-franchise-legends-dark.png": {
+      "sha256": "e50ecc4bf1367795e79f9f0ab7f824109360b4bc520f0f0ccb89c029e395d706",
+      "bytes": 46398,
+      "session": 112
+    },
+    "s112-desktop-franchise-legends-light.png": {
+      "sha256": "6c6610b54ffa0d6857b804e38ffe623d428a365b88163a5e37f105448641f909",
+      "bytes": 37426,
+      "session": 112
+    },
+    "s112-desktop-game-depth-dark.png": {
+      "sha256": "ad084af7bd99703c864ca0b9ddf3a0d2864eaa567f4a6e1b8a49d63ff02348e1",
+      "bytes": 740543,
+      "session": 112
+    },
+    "s112-desktop-game-depth-light.png": {
+      "sha256": "6c57a8a3f32ddfd75b0099bcfc0ca620b20658e13a98c73cda4b5f8818ec4d64",
+      "bytes": 623582,
+      "session": 112
+    },
+    "s112-desktop-game-dialog-dark.png": {
+      "sha256": "05513265ba2786214ce116b11d9a363b29d33dac84de74371fd3fed57a01eae6",
+      "bytes": 1050917,
+      "session": 112
+    },
+    "s112-desktop-game-dialog-light.png": {
+      "sha256": "bbd4b7f6cf7a8e6b1295815e9959ca8929e6135c8a5db6230dd1554f82a3460c",
+      "bytes": 1124737,
+      "session": 112
+    },
+    "s112-desktop-game-league-dark.png": {
+      "sha256": "77f0b7412404cba44361c0ba343d51d0e5c28525a4e2eea8f27f1e27b0acc6b3",
+      "bytes": 701604,
+      "session": 112
+    },
+    "s112-desktop-game-league-light.png": {
+      "sha256": "5218e322e0c0b1fc17c6090342ac70b4d33c64d16c64d5917c4f26811722402a",
+      "bytes": 624131,
+      "session": 112
+    },
+    "s112-desktop-game-overview-dark.png": {
+      "sha256": "25f9b13f2fe961b51b3ee0ad371aa5b7ba9cb9a63d617f155bd56d6d1e443e14",
+      "bytes": 1411916,
+      "session": 112
+    },
+    "s112-desktop-game-overview-light.png": {
+      "sha256": "2cef9e9ef47d7bff0024faa9cdd97433fd78622e546465f4fdc4652799eb9513",
+      "bytes": 1201064,
+      "session": 112
+    },
+    "s112-desktop-game-roster-dark.png": {
+      "sha256": "7246aa795c8f9e8e6653df17f808860905f0e94b31f9beb0c5bc92afb531eda6",
+      "bytes": 1607015,
+      "session": 112
+    },
+    "s112-desktop-game-roster-light.png": {
+      "sha256": "d9684a8a9496c4238579b5148f370b23ba5931c6a01d0335a7f5eb0234b10a62",
+      "bytes": 1383731,
+      "session": 112
+    },
+    "s112-desktop-game-trades-dark.png": {
+      "sha256": "8a29eff13a9c6c862ae765c176f2ad6987e95d051651a4cd842c11c242918e46",
+      "bytes": 1568100,
+      "session": 112
+    },
+    "s112-desktop-game-trades-light.png": {
+      "sha256": "cd09eebbcfbc6841638993da1c78f2d55577ed8f70535ea09b6c9aa7a71df9d9",
+      "bytes": 1319489,
+      "session": 112
+    },
+    "s112-desktop-gist-authentication-dark.png": {
+      "sha256": "93bb1e69419474407684ff78d0cbcf14b81e888c7b09822076b6ea534d31b364",
+      "bytes": 67459,
+      "session": 112
+    },
+    "s112-desktop-gist-authentication-light.png": {
+      "sha256": "9a2668f08c59a65d3f39817322efeaaa5aef4a2e7f158ee5c37dd9e790c2f2d5",
+      "bytes": 57265,
+      "session": 112
+    },
+    "s112-desktop-gm-persona-dark.png": {
+      "sha256": "fe1f24484c4e834f4ae50494fa4880dd4ae54a6d9446460168528b4640906dbd",
+      "bytes": 62210,
+      "session": 112
+    },
+    "s112-desktop-gm-persona-light.png": {
+      "sha256": "9f0a49796262f8fb3349efd8a86ac4db10f46162b1505d7cc615ee5328cc0809",
+      "bytes": 65556,
+      "session": 112
+    },
+    "s112-desktop-guide-modal-dark.png": {
+      "sha256": "d900cdd5f5179fcdd85593d25300f1160378984a4c141abf2519c63c16097642",
+      "bytes": 181471,
+      "session": 112
+    },
+    "s112-desktop-guide-modal-light.png": {
+      "sha256": "49145f0534329a75ea9bf1cbd5081b2044e621ee183518fcc234029a504eb8b8",
+      "bytes": 121448,
+      "session": 112
+    },
+    "s112-desktop-hof-ceremony-dark.png": {
+      "sha256": "74897fda7d50f53719642b312f2a2dbdae683dd0b02086b5f2d8d21ee54b83fc",
+      "bytes": 352652,
+      "session": 112
+    },
+    "s112-desktop-hof-ceremony-light.png": {
+      "sha256": "f81316b92deea0c6d4e3cc67403d5c6a7c5c872f4dda3f4d7acedcc02360f177",
+      "bytes": 444649,
+      "session": 112
+    },
+    "s112-desktop-moment-card-dark.png": {
+      "sha256": "b6692e1601b7dffa9729350ebf214af717b7b977163991a17074a670c9d64bc0",
+      "bytes": 364314,
+      "session": 112
+    },
+    "s112-desktop-moment-card-light.png": {
+      "sha256": "eb48ed4dfe9ad24ff0e1e2e706eee0a230e37c47d920591073760b23154a580c",
+      "bytes": 299649,
+      "session": 112
+    },
+    "s112-desktop-prediction-receipt-dark.png": {
+      "sha256": "34be8ebc37900cf7ca4b6aaf8e54e8ec239fb0b4ad47b2e2d9e76e6512cfe5b8",
+      "bytes": 18997,
+      "session": 112
+    },
+    "s112-desktop-prediction-receipt-light.png": {
+      "sha256": "7ff8d1e82a2cf4278a4b9d7170826aeb1919eaab6069a8f0aea9b3e88edb38f1",
+      "bytes": 19734,
+      "session": 112
+    },
+    "s112-desktop-return-digest-dark.png": {
+      "sha256": "6ac6bc42826055e7cdb777dfed35c0451c9769c3c624e44e53f5b03dd04d2635",
+      "bytes": 407908,
+      "session": 112
+    },
+    "s112-desktop-return-digest-light.png": {
+      "sha256": "a43925b873899506469d3ae96b9af07a5c0e4a3bb2b04b8b7a8ec8c8999cf91d",
+      "bytes": 550211,
+      "session": 112
+    },
+    "s112-desktop-rival-coaching-dark.png": {
+      "sha256": "a418a3f7a36f22409d262def1135e4180d4b47a793e768776f53404ea9a54d5a",
+      "bytes": 5920,
+      "session": 112
+    },
+    "s112-desktop-rival-coaching-light.png": {
+      "sha256": "9f84ab435cf945c70bf89a0a404d0437f7b0936d2c925d0dbebe41211efa8fb6",
+      "bytes": 5729,
+      "session": 112
+    },
+    "s112-desktop-room-watch-dark.png": {
+      "sha256": "992b81518553d4417e8d443dbfae526be2027c64cd1840b00f1466fae3bc2578",
+      "bytes": 26549,
+      "session": 112
+    },
+    "s112-desktop-room-watch-light.png": {
+      "sha256": "63b6fec34bb41ebdd628aebf8c45bb8a2ab0512eb1d6f2a6ea43fb0b50d287a6",
+      "bytes": 26020,
+      "session": 112
+    },
+    "s112-desktop-sim-watch-reel-dark.png": {
+      "sha256": "dd79f2d24f2023f6154eeb9f28869627bc3167db00b4fc8ff8a51b4f0ad1b792",
+      "bytes": 43618,
+      "session": 112
+    },
+    "s112-desktop-sim-watch-reel-light.png": {
+      "sha256": "c292aa39fd661a2acd4d4255605a9a83ee6d149a9d1b153a3f0097bc1f60b41d",
+      "bytes": 44727,
+      "session": 112
+    },
+    "s112-desktop-trophy-road-dark.png": {
+      "sha256": "08f73354650c3826cce884dbe2d7611ae173762d0c92cd1e0d359f2e95682d74",
+      "bytes": 30644,
+      "session": 112
+    },
+    "s112-desktop-trophy-road-light.png": {
+      "sha256": "0acb83939e1925a1fc1e31bd892ffa4d44ebe8b8d002f93c5d9d739cb5e0e4a0",
+      "bytes": 29093,
+      "session": 112
+    },
+    "s112-desktop-tutorial-first-call-dark.png": {
+      "sha256": "18af1eaf43f915e198b4772a658de58616fb9e197d29db6a4d298ba98cbfef64",
+      "bytes": 282989,
+      "session": 112
+    },
+    "s112-desktop-tutorial-first-call-light.png": {
+      "sha256": "8bba54a00aee9f405cdcfa3dff3311fa8a5c8ec74aee8eaf1daf60deac701e2d",
+      "bytes": 387565,
+      "session": 112
+    },
+    "s112-desktop-tutorial-identity-dark.png": {
+      "sha256": "c6b84716a78f46de7885f867c2618c52d526e82a1a07a3d07f95479258c89cfa",
+      "bytes": 272704,
+      "session": 112
+    },
+    "s112-desktop-tutorial-identity-light.png": {
+      "sha256": "607f5a3915ca431dfc82a715debd5f7c43915ab2735de484876fc298d53b90a5",
+      "bytes": 374349,
+      "session": 112
+    },
+    "s112-desktop-tutorial-pressure-dark.png": {
+      "sha256": "7023a921537f34ecb36fbfae58e5e7794e37bd844a4b63eb69687dbcd6deebf4",
+      "bytes": 278241,
+      "session": 112
+    },
+    "s112-desktop-tutorial-pressure-light.png": {
+      "sha256": "152cdfdab70107fcb07017bd4b3e817e9753fcdf87ef7274258b417d1bb80739",
+      "bytes": 380176,
+      "session": 112
+    },
+    "s112-desktop-tutorial-receipt-dark.png": {
+      "sha256": "a1de722e6072ed0c586b1e1904b04db97f1441b59c3ac6a24b8dc65bd795c2da",
+      "bytes": 275650,
+      "session": 112
+    },
+    "s112-desktop-tutorial-receipt-light.png": {
+      "sha256": "710d7927d6cf0e196b4e3ea6435bb6f49d1ca6a5740923c721d739eed125d6b6",
+      "bytes": 384645,
+      "session": 112
+    },
+    "s112-desktop-tutorial-skip-dark.png": {
+      "sha256": "dfcc5451c1ed6b90a820554e6aacb81b8086dd78e3c3171ab9b5cd15b7232c84",
+      "bytes": 267610,
+      "session": 112
+    },
+    "s112-desktop-tutorial-skip-light.png": {
+      "sha256": "ca623a7961f3fd7307b0a0ae7a02b6f1d97f7f15b0a8248707caf043ee4cbe88",
+      "bytes": 368047,
+      "session": 112
+    },
+    "s112-desktop-waiver-identity-dark.png": {
+      "sha256": "b144ac12c2bbf9941b3739549d3035eed5859cae3cf9898ab96f9458f0d46d92",
+      "bytes": 8116,
+      "session": 112
+    },
+    "s112-desktop-waiver-identity-light.png": {
+      "sha256": "dc04ad8b13d98a4370f14e2af44c2b5b4de682776058aa10991501d794253d84",
+      "bytes": 7004,
+      "session": 112
+    },
+    "s112-mobile-advisor-dark.png": {
+      "sha256": "a7a4f32221f536c07d4a984b7f09e3f99f1435407388bb6f1110e1011770f030",
+      "bytes": 155148,
+      "session": 112
+    },
+    "s112-mobile-advisor-light.png": {
+      "sha256": "75b5dc465814ad078bf55cc607e850d2fa0b4b03447d48257510e1e9b820dadd",
+      "bytes": 145664,
+      "session": 112
+    },
+    "s112-mobile-agent-negotiation-dark.png": {
+      "sha256": "a46ecbe695ee5bd4870f9e1726183529ebe0b23f50c566ce8181798bf72a20b4",
+      "bytes": 116476,
+      "session": 112
+    },
+    "s112-mobile-agent-negotiation-light.png": {
+      "sha256": "31e1a8c3b0964226b10d15484f135148818efdefac59456251a0ddb00d7ae10d",
+      "bytes": 127426,
+      "session": 112
+    },
+    "s112-mobile-architect-cut-dark.png": {
+      "sha256": "ba2bb9a69b4ee411b62bd795cafb70107a4902055acc243ed290cd7b35840821",
+      "bytes": 197830,
+      "session": 112
+    },
+    "s112-mobile-architect-cut-light.png": {
+      "sha256": "b2d727a63f8749f0defb0e2113ba7116a669d9ef6f6d137da26d98a435ecae61",
+      "bytes": 233903,
+      "session": 112
+    },
+    "s112-mobile-architect-objective-dark.png": {
+      "sha256": "6dd192bc26c0c6ec982df269ef9df3011fe8b03d2248eb245e7cd4f317534fe5",
+      "bytes": 32364,
+      "session": 112
+    },
+    "s112-mobile-architect-objective-light.png": {
+      "sha256": "76e0a2e1407447805e3eaa7dd9e1853a3525a198d164a44677e8f00a3bd32f46",
+      "bytes": 32713,
+      "session": 112
+    },
+    "s112-mobile-architect-signature-dark.png": {
+      "sha256": "9d8ee4eec363eb174a4115ffd58ee98d230bb7c37fca3fdfa1d4577af9c2d330",
+      "bytes": 129526,
+      "session": 112
+    },
+    "s112-mobile-architect-signature-light.png": {
+      "sha256": "e9a5b6620e94e316f69c14c801cc5036f4ef61751a22c955427fa6d6e4a96b4a",
+      "bytes": 119062,
+      "session": 112
+    },
+    "s112-mobile-cap-pressure-dark.png": {
+      "sha256": "d01c215ca840e94b34db217b5d764f306ad3c2d6ac1ec9bb16d384ff1c568879",
+      "bytes": 109132,
+      "session": 112
+    },
+    "s112-mobile-cap-pressure-light.png": {
+      "sha256": "98b610266131ebf38dece8093541d381fc85ea6002dc5eda1fc54f6cefb93087",
+      "bytes": 118230,
+      "session": 112
+    },
+    "s112-mobile-co-gm-brief-dark.png": {
+      "sha256": "5112ecdfffd7d62f4209e85d63c435766617527de96e8f3e105d0193feb40d88",
+      "bytes": 52465,
+      "session": 112
+    },
+    "s112-mobile-co-gm-brief-light.png": {
+      "sha256": "79e43f903a6199b241a9bade4f83a93df931b7950a254cc5e15beccd6e2eeafd",
+      "bytes": 51169,
+      "session": 112
+    },
+    "s112-mobile-decision-archive-dark.png": {
+      "sha256": "9f263b0ba126d1df7e90b86237178e56c214f9f2d3ee9fc494d9e6c65ac31145",
+      "bytes": 40243,
+      "session": 112
+    },
+    "s112-mobile-decision-archive-light.png": {
+      "sha256": "2f69dfde1362afc7787aaa913e07136110ad7cc20092b3ecae362e2308ada588",
+      "bytes": 38213,
+      "session": 112
+    },
+    "s112-mobile-draft-trade-review-dark.png": {
+      "sha256": "bad946ab89881ce371830d4e4cbd54053566819eed91d5ccf3ddab9136d263c1",
+      "bytes": 77206,
+      "session": 112
+    },
+    "s112-mobile-draft-trade-review-light.png": {
+      "sha256": "2325a59ea470ff7e3c166d1514b955f24659981654f67d508362bb29f4ffd6ac",
+      "bytes": 73866,
+      "session": 112
+    },
+    "s112-mobile-dynasty-timeline-dark.png": {
+      "sha256": "54a5bae535a2821e9d04d003348631cb4559eda6864e77dab6866b9380805d9f",
+      "bytes": 139688,
+      "session": 112
+    },
+    "s112-mobile-dynasty-timeline-light.png": {
+      "sha256": "b3ad97d56ce1953f2a9bab68cc23ab0ae0967eaf59a35a3847a57317b3dee62c",
+      "bytes": 127462,
+      "session": 112
+    },
+    "s112-mobile-exact-command-center-dark.png": {
+      "sha256": "7c0cde7f8adc1fe59004ca6827017f52c110a3d3e1b75dbef9263592d7aa2d67",
+      "bytes": 81224,
+      "session": 112
+    },
+    "s112-mobile-exact-command-center-light.png": {
+      "sha256": "16253222ee56447f7ebb088d8fde2c1109b117f97e71e1f46190e110ab8ab6ae",
+      "bytes": 86203,
+      "session": 112
+    },
+    "s112-mobile-exact-command-target-dark.png": {
+      "sha256": "e6edc4aba111284387f3f56cc9fc2b34950414a675c50274fe6e2ec632db33f3",
+      "bytes": 56463,
+      "session": 112
+    },
+    "s112-mobile-exact-command-target-light.png": {
+      "sha256": "98ad564240448fc405aaf1c943c8388c1e240b1d1c1bf8108b8bc221872958ea",
+      "bytes": 43636,
+      "session": 112
+    },
+    "s112-mobile-facility-capital-dark.png": {
+      "sha256": "847b5980523426bd6edad00caf4a15831dc20f5ba191669a5bd7a537d78e52b7",
+      "bytes": 73211,
+      "session": 112
+    },
+    "s112-mobile-facility-capital-light.png": {
+      "sha256": "e634c3f477ea0a32336b054590014a82db59008c01b94272f44dd72e9fb0ce8d",
+      "bytes": 62539,
+      "session": 112
+    },
+    "s112-mobile-first-debrief-dark.png": {
+      "sha256": "deca60e3993731d19c3d5c63cf2cd2b5539836fd7224ecea99d927f87c9cf995",
+      "bytes": 79808,
+      "session": 112
+    },
+    "s112-mobile-first-debrief-light.png": {
+      "sha256": "8ce9a42c109cf090d26e4e5d190f00186bd6bc0de151632a04ea7a86a486b822",
+      "bytes": 92875,
+      "session": 112
+    },
+    "s112-mobile-franchise-legends-dark.png": {
+      "sha256": "d6ef2f39f2b0e835dbb37b3bfeabdc6d96dc086ed66921f4e00d566105459122",
+      "bytes": 36387,
+      "session": 112
+    },
+    "s112-mobile-franchise-legends-light.png": {
+      "sha256": "ce678667d5665184d088bf39684e3999e6dcfb85f1c1e8b6cbc701b9c222e6fb",
+      "bytes": 31960,
+      "session": 112
+    },
+    "s112-mobile-game-depth-dark.png": {
+      "sha256": "21004d919d3ecbf1a9e99a5ff4ed55c7ee38d50a746d043c6e17674fd8ac32cd",
+      "bytes": 207978,
+      "session": 112
+    },
+    "s112-mobile-game-depth-light.png": {
+      "sha256": "72f8938a5766befd860068a0030317c0fbe211faa1173bcf56c9805878fb5d91",
+      "bytes": 199280,
+      "session": 112
+    },
+    "s112-mobile-game-dialog-dark.png": {
+      "sha256": "29c336e684bad14244317603e5f1f4fd357f9d297af7a35c0355d2add769340b",
+      "bytes": 911435,
+      "session": 112
+    },
+    "s112-mobile-game-dialog-light.png": {
+      "sha256": "8dc6fdcade6c3703cab8c6003f67f96d41b3e2cd2f5e8687eec31656a5c0039f",
+      "bytes": 874508,
+      "session": 112
+    },
+    "s112-mobile-game-league-dark.png": {
+      "sha256": "14d3e54d750286def5511c371d462c362ab35cab87ba1163dd7e119ccd8e6185",
+      "bytes": 395542,
+      "session": 112
+    },
+    "s112-mobile-game-league-light.png": {
+      "sha256": "ff87df26a0773c7e3693d0783f8a8cfece8459488a4394102a631c96041af9ee",
+      "bytes": 359423,
+      "session": 112
+    },
+    "s112-mobile-game-loop-dark.png": {
+      "sha256": "227a22d279d0135a8ab6379328cabcced34f9f2bf2617049afb7866d1e9ac140",
+      "bytes": 912650,
+      "session": 112
+    },
+    "s112-mobile-game-loop-light.png": {
+      "sha256": "d05dbd0991ad191cff99d0c9bd70c3fa33782f6f5da6e3b11eca61d5022dbd32",
+      "bytes": 879754,
+      "session": 112
+    },
+    "s112-mobile-game-overview-dark.png": {
+      "sha256": "6e5cdd9197dbbfaa4090418001aaf4375fbf712ea582d3a2aae2f3e4c0b2dca4",
+      "bytes": 996220,
+      "session": 112
+    },
+    "s112-mobile-game-overview-light.png": {
+      "sha256": "5ab59d18f9884724031173c33ceda086374e2f8aa5cefad6c743578b38bc6b46",
+      "bytes": 845748,
+      "session": 112
+    },
+    "s112-mobile-game-roster-dark.png": {
+      "sha256": "cb150b70b3ba3f6e1496aeda7a1fb2f704a75b2138a54747262ef4ec12f78d7d",
+      "bytes": 531979,
+      "session": 112
+    },
+    "s112-mobile-game-roster-light.png": {
+      "sha256": "c2c5c42d2607351c1cc2d8feecc6fcc297890e087c9a3b5b28d7711cd2757cca",
+      "bytes": 487890,
+      "session": 112
+    },
+    "s112-mobile-game-trades-dark.png": {
+      "sha256": "e7ef7746cee24064681c2340c36ed89e4bae0ee713cefd5200d57326bbbabe17",
+      "bytes": 992957,
+      "session": 112
+    },
+    "s112-mobile-game-trades-light.png": {
+      "sha256": "c28296d127f1864839415b2a0649984ddf6dd07fab8414da251ee9c44e7e0297",
+      "bytes": 891583,
+      "session": 112
+    },
+    "s112-mobile-gist-authentication-dark.png": {
+      "sha256": "1568dbdb2fb0f5d43d73e270c09b3de2ecb42742e9470ea177586f8feb32824c",
+      "bytes": 71437,
+      "session": 112
+    },
+    "s112-mobile-gist-authentication-light.png": {
+      "sha256": "f1f6f5585c5abfa81143b27ab64e8a7dec196f496dfaa3704d82a9264a6bf82c",
+      "bytes": 62739,
+      "session": 112
+    },
+    "s112-mobile-gm-persona-dark.png": {
+      "sha256": "280730fa5e6e3491d75edf1e29b0ae9cdba5d06b4af72f8c15824191c2cf8a5c",
+      "bytes": 84289,
+      "session": 112
+    },
+    "s112-mobile-gm-persona-light.png": {
+      "sha256": "39158954d64df2ba2be5ad027853075f9a97015696dd18d58fb9636b802ae1b5",
+      "bytes": 99464,
+      "session": 112
+    },
+    "s112-mobile-guide-modal-dark.png": {
+      "sha256": "efab18d3eef18227f0c7db7dbb1897536882b444c0599810e78ef8deef8f7b51",
+      "bytes": 141833,
+      "session": 112
+    },
+    "s112-mobile-guide-modal-light.png": {
+      "sha256": "ece3bc79a75d48eb54f0948a0e2c7a81c2ac2213fe563b6bf2d507981fad5ee8",
+      "bytes": 97041,
+      "session": 112
+    },
+    "s112-mobile-hof-ceremony-dark.png": {
+      "sha256": "07b43b1e246d0cafc4b588f746ff352cd4e1a3dc51b5e0ac43b960b5be4e7f49",
+      "bytes": 107641,
+      "session": 112
+    },
+    "s112-mobile-hof-ceremony-light.png": {
+      "sha256": "e4f8a7365fc6f5b65a1ab9d2d35ef6665b409a215373b1538cabbdb57e173ab2",
+      "bytes": 128067,
+      "session": 112
+    },
+    "s112-mobile-moment-card-dark.png": {
+      "sha256": "f2e91fb7c5252cca26da382bab9fb507114166b6357b616b2744eceabeee7b1d",
+      "bytes": 168952,
+      "session": 112
+    },
+    "s112-mobile-moment-card-light.png": {
+      "sha256": "b3ad97d56ce1953f2a9bab68cc23ab0ae0967eaf59a35a3847a57317b3dee62c",
+      "bytes": 127462,
+      "session": 112
+    },
+    "s112-mobile-nav-drawer-dark.png": {
+      "sha256": "8979915c868cac7e10038906818dbaa15c7f5f3dedf0967bbfcd181255182d92",
+      "bytes": 115050,
+      "session": 112
+    },
+    "s112-mobile-nav-drawer-light.png": {
+      "sha256": "bddd0ba813b780dbb8c08ea06bf988fbcfe99a5298efedfd8f6a608a5bbae51e",
+      "bytes": 74410,
+      "session": 112
+    },
+    "s112-mobile-prediction-receipt-dark.png": {
+      "sha256": "39b480e789d5864d2e3eda378c1fda6b2b31d8a170982aa41b3e7a8c77130589",
+      "bytes": 19163,
+      "session": 112
+    },
+    "s112-mobile-prediction-receipt-light.png": {
+      "sha256": "252c3031c77460eaa77b2d81688c39794b522a5c2054b04826933fec6a3bff2e",
+      "bytes": 20117,
+      "session": 112
+    },
+    "s112-mobile-return-digest-dark.png": {
+      "sha256": "aa45b22dc5f4378b8a42be139caa2db8839b86d0e8947a4aafa16e283a5eca85",
+      "bytes": 119878,
+      "session": 112
+    },
+    "s112-mobile-return-digest-light.png": {
+      "sha256": "6d1024129cc2ac5159c86bee363f853566e549c36c52d4e4f88da01726dc5ddb",
+      "bytes": 160652,
+      "session": 112
+    },
+    "s112-mobile-rival-coaching-dark.png": {
+      "sha256": "79f8ec9cbcafa4f756f533e762b283e774f7a5636a681605361208e7751f17c7",
+      "bytes": 6309,
+      "session": 112
+    },
+    "s112-mobile-rival-coaching-light.png": {
+      "sha256": "f167af6177eef949edf1443c2ffab700768fb9220c76a1aa86c9449ce213af6b",
+      "bytes": 5807,
+      "session": 112
+    },
+    "s112-mobile-room-watch-dark.png": {
+      "sha256": "0167879b35066a550297c834526c5187112fa3266a2fa92c94abf6bacf50c733",
+      "bytes": 30337,
+      "session": 112
+    },
+    "s112-mobile-room-watch-light.png": {
+      "sha256": "15c2bb41e7b6d7343144d808cdfad8e33b163aa1d546a5927012939cff586206",
+      "bytes": 29921,
+      "session": 112
+    },
+    "s112-mobile-sim-watch-reel-dark.png": {
+      "sha256": "959de86df9003b5b120aea5c29ceefa033abe251f4fce66b57e25229221d987e",
+      "bytes": 48323,
+      "session": 112
+    },
+    "s112-mobile-sim-watch-reel-light.png": {
+      "sha256": "643cb57583e4bd81e96436656a1c952d642c2ad4268ebfd1c44104c70391cd50",
+      "bytes": 49643,
+      "session": 112
+    },
+    "s112-mobile-trophy-road-dark.png": {
+      "sha256": "d02c94bccd28fc54e263065bc41b519500cee5c0249aa4b44e46cc2eece2674b",
+      "bytes": 33900,
+      "session": 112
+    },
+    "s112-mobile-trophy-road-light.png": {
+      "sha256": "1a81f2674c592407f38417434035123ffa2357145f39596238e905f58d55dd95",
+      "bytes": 32927,
+      "session": 112
+    },
+    "s112-mobile-tutorial-first-call-dark.png": {
+      "sha256": "cf7b2ce7e5052453592b09bce4d385b4ec92405ffe522569f190b78085fda960",
+      "bytes": 113995,
+      "session": 112
+    },
+    "s112-mobile-tutorial-first-call-light.png": {
+      "sha256": "c7ce01da429933e3cb6b7a5addcc1684f17d77686a4f9260869b41efdef7fdf5",
+      "bytes": 115121,
+      "session": 112
+    },
+    "s112-mobile-tutorial-identity-dark.png": {
+      "sha256": "61e1fa21022be141406e73b3c8437ce0bcbc1c8b46aa87421450a89f0bb36ab5",
+      "bytes": 102635,
+      "session": 112
+    },
+    "s112-mobile-tutorial-identity-light.png": {
+      "sha256": "53875ecfd1c2bf8732f4d22fc2e1102bda1ceadbe16aefb4d9d722cf44b35328",
+      "bytes": 104084,
+      "session": 112
+    },
+    "s112-mobile-tutorial-pressure-dark.png": {
+      "sha256": "4a9716709b359085cc728cd70ad0a47b4abb96919931a9d111537923589f0fe2",
+      "bytes": 107376,
+      "session": 112
+    },
+    "s112-mobile-tutorial-pressure-light.png": {
+      "sha256": "a923dd1178af3265e98affae5857f301bf11e45416ccfce202ee2ba0fc7fd961",
+      "bytes": 109069,
+      "session": 112
+    },
+    "s112-mobile-tutorial-receipt-dark.png": {
+      "sha256": "73ad8b203883fde14da9396a1266cda062b285aed31d69379ad792a969477918",
+      "bytes": 100645,
+      "session": 112
+    },
+    "s112-mobile-tutorial-receipt-light.png": {
+      "sha256": "40a24459d6b076db9705f266219edce54d64a26ad47581f7c31675545495930f",
+      "bytes": 106376,
+      "session": 112
+    },
+    "s112-mobile-tutorial-skip-dark.png": {
+      "sha256": "2364e53501c9d5d2812be88b6bff8239cad2a5416762a930f1293e0fb45b07a0",
+      "bytes": 98668,
+      "session": 112
+    },
+    "s112-mobile-tutorial-skip-light.png": {
+      "sha256": "f7bb977838d857eca765d247573f9575022c4df6b2eef13f92da58c03b176d9e",
+      "bytes": 98523,
+      "session": 112
+    },
+    "s112-mobile-waiver-identity-dark.png": {
+      "sha256": "bf0760f963f93058249296e9403a3778eaaad7e5889566e4d4410c86152d806f",
+      "bytes": 7056,
+      "session": 112
+    },
+    "s112-mobile-waiver-identity-light.png": {
+      "sha256": "17f37634e81c2f33fa1f1d71a47becfffad4812618b270d2d3ea61ef01017818",
+      "bytes": 6587,
+      "session": 112
+    },
+    "s112-public-desktop-dark-about.png": {
+      "sha256": "df109fbcd6ce206e58045dd09bfe4aa814383f66e233750e31905625850002d5",
+      "bytes": 869780,
+      "session": 112
+    },
+    "s112-public-desktop-dark-contact.png": {
+      "sha256": "22ebdc968c130c8672883700761ba4b19fe6e7b35bf62e63903830df661b611a",
+      "bytes": 93649,
+      "session": 112
+    },
+    "s112-public-desktop-dark-index.png": {
+      "sha256": "5d7932a632df1a6bba8d3ceb7463400768d3b81b351f7ebf7e141dc00efb87ff",
+      "bytes": 1210976,
+      "session": 112
+    },
+    "s112-public-desktop-dark-press.png": {
+      "sha256": "10e1d95bffca698e76d4291554fdf188667d250b2536f2d06d37fb4bc6f05353",
+      "bytes": 765365,
+      "session": 112
+    },
+    "s112-public-desktop-dark-privacy.png": {
+      "sha256": "3665b5b848b07799c305da5449e6d4cbe756bc26df34e5ce7725b3f08f4f64a6",
+      "bytes": 343538,
+      "session": 112
+    },
+    "s112-public-desktop-dark-simulation.png": {
+      "sha256": "78e6a38e2bfd47c8bd0192ed5757402e662ceb389b73bd5a71efbfef9b6f18dc",
+      "bytes": 1243470,
+      "session": 112
+    },
+    "s112-public-desktop-dark-stats.png": {
+      "sha256": "544c7a32dd6a918d92be188c95eb8ceb772a79228ecb282c7ab06021f3e32017",
+      "bytes": 1061150,
+      "session": 112
+    },
+    "s112-public-desktop-dark-status-archive.png": {
+      "sha256": "dce2d3582468998fb473a3475e96fe60b07def23ab95d6d1a2b7dcfe2a48b8e4",
+      "bytes": 2013070,
+      "session": 112
+    },
+    "s112-public-desktop-dark-status.png": {
+      "sha256": "d5cce5005c83637d805d8c929c9acca07a43c7712bcec12294268759dc0b3af4",
+      "bytes": 946177,
+      "session": 112
+    },
+    "s112-public-desktop-dark-terms.png": {
+      "sha256": "1a1e17678f51cd64ed2216c86b50834e8c9a3b0dd9f8a94fdba01e53a5022a57",
+      "bytes": 214422,
+      "session": 112
+    },
+    "s112-public-desktop-light-about.png": {
+      "sha256": "3dc89a67ab0f90b18ffcadcafaf74031d73223725d8a0103c6bcbdc92b602aee",
+      "bytes": 928995,
+      "session": 112
+    },
+    "s112-public-desktop-light-contact.png": {
+      "sha256": "95572c99f9610cd843584cd569715d3500b5f064761241034ef2e99570cac6cd",
+      "bytes": 88641,
+      "session": 112
+    },
+    "s112-public-desktop-light-index.png": {
+      "sha256": "880ef9d0e08bf3c719bbdb9a1b2c921e5eb2408b7f3e29d35a654c35b7ef4d0b",
+      "bytes": 1089613,
+      "session": 112
+    },
+    "s112-public-desktop-light-press.png": {
+      "sha256": "72fab46abe77ca3d8c58d00282316b23a6a9625f0e8c479ad06826fbed3a2616",
+      "bytes": 826105,
+      "session": 112
+    },
+    "s112-public-desktop-light-privacy.png": {
+      "sha256": "f6952a87e6b996c4bd72cb5e9df21c3899f2ca4b56d340f644b9387fe0ce558f",
+      "bytes": 344838,
+      "session": 112
+    },
+    "s112-public-desktop-light-simulation.png": {
+      "sha256": "4666d580557de587e4fb2cfe85d8c023f831c4bb0aa3dccd73ecd38fe56b16e8",
+      "bytes": 1256320,
+      "session": 112
+    },
+    "s112-public-desktop-light-stats.png": {
+      "sha256": "aa459f6d328b0c783520577f0147759ca6e5840b0f2cd027c9fba2e966df850e",
+      "bytes": 1057860,
+      "session": 112
+    },
+    "s112-public-desktop-light-status-archive.png": {
+      "sha256": "564512dc1183437534b488db875b81d30f721718c75d6532f34d771890fb46d9",
+      "bytes": 2092227,
+      "session": 112
+    },
+    "s112-public-desktop-light-status.png": {
+      "sha256": "b0bcaae5e95f75f40be23049768b605d7ae211ef18b6a7e272fa38511209ac1a",
+      "bytes": 1004056,
+      "session": 112
+    },
+    "s112-public-desktop-light-terms.png": {
+      "sha256": "1b22e4cec0854b7cc8e11e5104a4a951ee69aad970e77dd5653a2df4cd006cd3",
+      "bytes": 205049,
+      "session": 112
+    },
+    "s112-public-mobile-dark-about.png": {
+      "sha256": "52fa81843890dfd9065d7690fb2af071cb4c04d303a006163e600e2e77203d9a",
+      "bytes": 466067,
+      "session": 112
+    },
+    "s112-public-mobile-dark-contact.png": {
+      "sha256": "2986079eedcfe590f8b0f45a14460dcc851169737979b502323206e5995278fa",
+      "bytes": 76167,
+      "session": 112
+    },
+    "s112-public-mobile-dark-index.png": {
+      "sha256": "7a3b60b9cbcef1d91e4013c91397fe13c45735796fc9417613eb5242a0221e66",
+      "bytes": 690956,
+      "session": 112
+    },
+    "s112-public-mobile-dark-press.png": {
+      "sha256": "96a888af14dac43af6fc092eb78ba588c53294d9d0c9dff066d8a45d0665b2f3",
+      "bytes": 363991,
+      "session": 112
+    },
+    "s112-public-mobile-dark-privacy.png": {
+      "sha256": "d98f19709479812e6fb2dfdaf14c34d1ce10bb767778498f60fa7ae9bdf8b597",
+      "bytes": 356846,
+      "session": 112
+    },
+    "s112-public-mobile-dark-simulation.png": {
+      "sha256": "aac184f38ca51cc28843bed1aeb4a774c64dce2ef0ab5b91edeb02fbd3350849",
+      "bytes": 570685,
+      "session": 112
+    },
+    "s112-public-mobile-dark-stats.png": {
+      "sha256": "344cd77172784f0f030a0139b7120371606be357be2013b010e2531c529a260f",
+      "bytes": 472625,
+      "session": 112
+    },
+    "s112-public-mobile-dark-status-archive.png": {
+      "sha256": "a7ed24a4051051f152eb62525906e659bb96dd87fab8ef0c77d4893a0d7645f6",
+      "bytes": 1691458,
+      "session": 112
+    },
+    "s112-public-mobile-dark-status.png": {
+      "sha256": "485c7934257211596b0e40734ade2ad5e488bf9d20f50596ad157bd5aaa260b4",
+      "bytes": 602713,
+      "session": 112
+    },
+    "s112-public-mobile-dark-terms.png": {
+      "sha256": "356b0adaf097335eb898b942ab9dbc11557f4db04c557a62debf619163f0b6f4",
+      "bytes": 209947,
+      "session": 112
+    },
+    "s112-public-mobile-light-about.png": {
+      "sha256": "7c7ccee88a6a7852e04ec9524e9c5c4e14504f87506ec3018729abf76251561e",
+      "bytes": 481613,
+      "session": 112
+    },
+    "s112-public-mobile-light-contact.png": {
+      "sha256": "1b30252b84c2469a8e537a4a559ddf596687eb6ce2f2f059ce6d9f2534e2fbe3",
+      "bytes": 75200,
+      "session": 112
+    },
+    "s112-public-mobile-light-index.png": {
+      "sha256": "34bbf3ad203944cdf08b2f7b2eba64ed3f6f491606be09b9f56769b8d054749c",
+      "bytes": 621573,
+      "session": 112
+    },
+    "s112-public-mobile-light-press.png": {
+      "sha256": "58b381e899ff7fcca66fa45573f57b91bbde6fa648511b874eabe97115423370",
+      "bytes": 376393,
+      "session": 112
+    },
+    "s112-public-mobile-light-privacy.png": {
+      "sha256": "115700328da248fcbecab88f5e9564178ce28198ce977c82ec41f90532d33972",
+      "bytes": 361704,
+      "session": 112
+    },
+    "s112-public-mobile-light-simulation.png": {
+      "sha256": "b066777d8936e226771a16971fe66da8da1e64630cd77dd3460a35b107bcb1ed",
+      "bytes": 567171,
+      "session": 112
+    },
+    "s112-public-mobile-light-stats.png": {
+      "sha256": "3aa135565c63e1a738ead0b5dd78bd8c296324167738a28ee381bd586afaae63",
+      "bytes": 456788,
+      "session": 112
+    },
+    "s112-public-mobile-light-status-archive.png": {
+      "sha256": "00c7c7b1b5f8fc37961aff5615f5d99946ce84ea0674d8b52f20368347f845b3",
+      "bytes": 1740901,
+      "session": 112
+    },
+    "s112-public-mobile-light-status.png": {
+      "sha256": "912c1914d697868064d072907eb84342feb15a952f551659490e9b609215899c",
+      "bytes": 617126,
+      "session": 112
+    },
+    "s112-public-mobile-light-terms.png": {
+      "sha256": "0b9a92f99543d078fa5f07be2aed333e0504bba45b9c6d263a5bca92ccee780f",
+      "bytes": 209256,
+      "session": 112
+    },
+    "s112-tablet-nav-drawer-dark.png": {
+      "sha256": "61c580a82af6d679eade441046ebd160e8a56efcd9e00cb3b7381a183e8083bb",
+      "bytes": 210190,
+      "session": 112
+    },
+    "s112-tablet-nav-drawer-light.png": {
+      "sha256": "199b8e24f9ffafc00fc12f47ac39891a5b4d70b4fc4f6b5e9f993e31370bacb7",
+      "bytes": 205258,
+      "session": 112
+    },
     "s69-desktop-gm-persona-dark.png": {
       "sha256": "6fceb8a7121d7c6ebe4d5bb955fd2be60b49d247dc97b43bcc00860a909a5bc5",
       "bytes": 52906,
