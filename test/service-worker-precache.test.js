@@ -9,6 +9,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import path from "node:path";
 import os from "node:os";
+import vm from "node:vm";
 import {
   buildPrecacheManifest,
   renderServiceWorker,
@@ -40,6 +41,8 @@ test("evidence and freshness surfaces are never precached", () => {
     assert.equal(shouldPrecache(excluded), false, `${excluded} must stay network-only`);
   }
   assert.equal(shouldPrecache("lib/gameFlow.js"), true);
+  assert.equal(shouldPrecache("game.html"), false, "redirected HTML alias must never be precached");
+  assert.equal(shouldPrecache("index.html"), false, "document navigations use the browser network path");
   assert.equal(shouldPrecache("src/runtime/GameSession.js"), true);
   assert.equal(shouldPrecache("photo.bin"), false, "unknown binaries stay out of the manifest");
   assert.equal(shouldPrecache("styles.css"), false, "plain styles.css duplicates the hashed stylesheet (S70)");
@@ -53,7 +56,7 @@ test("manifest is deterministic, content-versioned, and byte-accounted", async (
   const first = await buildPrecacheManifest(dir);
   const second = await buildPrecacheManifest(dir);
   assert.deepEqual(first, second, "same content, same manifest");
-  assert.equal(first.assetCount, 5, "html + 2 js + hashed CSS + hashed Community Pulse (plain assets deduped)");
+  assert.equal(first.assetCount, 4, "two js + hashed CSS + hashed Community Pulse (HTML navigations and plain assets excluded)");
   assert.ok(!first.assets.some((asset) => asset.url === "./styles.css"), "plain styles.css never precached twice");
   assert.ok(!first.assets.some((asset) => asset.url === "./community-stats.js"), "plain Community Pulse module is never precached");
   assert.ok(first.totalBytes > 0);
@@ -76,10 +79,35 @@ test("rendered worker is dependency-free with the right cache policy", async () 
   assert.match(source, /caches\.delete\(name\)/, "activate swaps old caches atomically");
   assert.match(source, /\/api\\\//, "API routes are network-only");
   assert.match(source, /_health\$/, "health stays network-only");
+  assert.match(source, /request\.mode === "navigate"\) return;/, "the browser owns redirecting document navigation");
   assert.doesNotMatch(source, /import |require\(/, "worker is dependency-free");
   assert.doesNotMatch(source, /https?:\/\//, "worker makes no hard-coded external requests");
   const written = JSON.parse(await fs.readFile(path.join(dir, "precache-manifest.json"), "utf8"));
   assert.equal(written.version, manifest.version);
+});
+
+test("redirecting game navigation remains browser-owned under an active worker", () => {
+  const listeners = new Map();
+  const source = renderServiceWorker({ version: "fixture", assets: [] });
+  vm.runInNewContext(source, {
+    URL,
+    console,
+    self: {
+      location: { origin: "https://playfranchisearchitect.com" },
+      addEventListener: (name, handler) => listeners.set(name, handler)
+    }
+  });
+  let intercepted = false;
+  listeners.get("fetch")({
+    request: {
+      method: "GET",
+      mode: "navigate",
+      redirect: "manual",
+      url: "https://playfranchisearchitect.com/game.html"
+    },
+    respondWith() { intercepted = true; }
+  });
+  assert.equal(intercepted, false, "browser must follow the clean-URL redirect instead of receiving a cached redirected response");
 });
 
 test("registration snippet is scoped, resilient, and update-aware", () => {
