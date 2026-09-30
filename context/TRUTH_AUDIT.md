@@ -139,6 +139,12 @@ The `9400912` static artifact was exactly what staging and production reported, 
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
 
+
+
+## 2026-09-30 — S111 recovery verification — completed baseline
+
+Fresh recovery verifies the S111 final green claim: 1,588/1,588 across every canonical shard, direct exit 0, Doctor blockingFailing 0. The older pending-verification prose is superseded; the first red run is not rewritten. The CPU-market tests prove a matched-seed single-week enabled/disabled control plus a three-year volume bound; they do **not** prove a matched three-year disabled-market parity comparison. That broader reading of the earlier handoff is unsupported. No source corruption, unfinished source diff, or missing closeout surface was found.
+
 <!-- ledger-roll:pointer -->
 ---
 

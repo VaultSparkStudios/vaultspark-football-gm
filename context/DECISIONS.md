@@ -164,6 +164,12 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
 
+
+
+## 2026-09-30 — S111 recovery verification — completed baseline
+
+The completed S111 closeout is verified rather than repeated. Fresh direct source-bound tests pass 1,588/1,588 and Doctor reports blockingFailing 0; earlier S111 statements requesting that final run are superseded by this receipt. Preserve the historical failed run and the separate launch HOLD. No SIL score is repeated or inflated for re-verification. The recovery checkpoint changes documentation and evidence only, so no deployment or user-interface change is required.
+
 <!-- ledger-roll:pointer -->
 ---
 

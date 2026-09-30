@@ -206,6 +206,12 @@ The founder reported that the Play button failed after the `9400912` promotion, 
 
 Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
 
+
+
+## 2026-09-30 — S111 recovery verification — completed baseline
+
+Recovery rechecked committed closeout `754ffb7`: all canonical surfaces were present, the initial full diff was empty, no stale session lock or debris existed, all 22 closeout JSON receipts parsed, and the user configuration passed strict JSON validation. A fresh direct six-shard run passed **1,588/1,588** (290 core, 849 runtime, 85 simulation contract, 9 realism, 3 long, 352 Studio), exit 0; fresh Doctor reports **blockingFailing 0** with the standing registry warning. This supersedes the earlier S111 in-flight wording that verification was still required. The historical first red run remains red. No implementation was left uncommitted; the next session is S112. Evidence: `reports/recovery-s111-2026-09-30.json`.
+
 <!-- ledger-roll:pointer -->
 ---
 

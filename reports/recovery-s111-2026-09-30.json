@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "recovery-verification",
+  "session": 111,
+  "verifiedAt": "2026-09-30T13:40:18.291Z",
+  "sourceRevision": "754ffb7e7d0b362cfa0bb0e00d1668dfc8b37472",
+  "intent": "Complete the recovered S109/S110 arc, then complete S111 and repair the reported live Play outage.",
+  "classification": "closed-and-pushed; historical interim wording superseded",
+  "initialWorkingTree": {
+    "changed": 0,
+    "untracked": 0,
+    "staleSessionLock": false,
+    "debrisFound": false
+  },
+  "integrity": {
+    "closeoutJsonFilesChecked": 22,
+    "invalid": 0,
+    "claudeConfigStrictJson": "valid; no restoration needed"
+  },
+  "surfaces": [
+    {
+      "file": "context/CURRENT_STATE.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "context/TASK_BOARD.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "context/LATEST_HANDOFF.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "logs/WORK_LOG.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "context/DECISIONS.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "context/SELF_IMPROVEMENT_LOOP.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "context/TRUTH_AUDIT.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "context/PROJECT_STATUS.json",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    },
+    {
+      "file": "context/AGENT_MEMORY.md",
+      "currentThroughSession": 111,
+      "status": "verified committed write-back"
+    }
+  ],
+  "creativeDirection": {
+    "status": "not-applicable",
+    "reason": "No new project creative direction; no CDR entry owed."
+  },
+  "tests": {
+    "generatedAt": "2026-09-30T06:31:10.342Z",
+    "command": "all",
+    "exitCode": 0,
+    "passed": 1588,
+    "total": 1588,
+    "failed": 0,
+    "surfaceDigest": "578b75d9ddfabd7eb9383800a7856466e57d562b5f0850c9f1aa6de68248139e",
+    "shards": [
+      {
+        "name": "core",
+        "passed": 290,
+        "total": 290,
+        "failed": 0,
+        "durationMs": 595921
+      },
+      {
+        "name": "runtime",
+        "passed": 849,
+        "total": 849,
+        "failed": 0,
+        "durationMs": 941749
+      },
+      {
+        "name": "sim-contract",
+        "passed": 85,
+        "total": 85,
+        "failed": 0,
+        "durationMs": 425438
+      },
+      {
+        "name": "sim-realism",
+        "passed": 9,
+        "total": 9,
+        "failed": 0,
+        "durationMs": 475366
+      },
+      {
+        "name": "long",
+        "passed": 3,
+        "total": 3,
+        "failed": 0,
+        "durationMs": 304145
+      },
+      {
+        "name": "studio",
+        "passed": 352,
+        "total": 352,
+        "failed": 0,
+        "durationMs": 71796
+      }
+    ]
+  },
+  "doctor": {
+    "blockingFailing": 0,
+    "warning": 1,
+    "items": [
+      {
+        "id": "lifecycle-authoritative-registry",
+        "status": "warning",
+        "blocking": false,
+        "detail": "registry SPARKED · local contract FORGE"
+      }
+    ]
+  },
+  "release": {
+    "staticSource": "15a962b2fa87532bbbe349c2f51b1b46fbe3a3d8",
+    "backendSource": "9400912dc95898c458620efb7ed499347bdb3d11",
+    "launchReady": false
+  },
+  "remaining": "Deterministic bye-week browser coverage is an S112 follow-up; launch and cohort gates remain evidence-dependent.",
+  "scope": "Verification and append-only clarification; no deployable source changed."
+}
