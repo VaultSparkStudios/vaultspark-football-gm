@@ -1,4 +1,15 @@
 # Agent Memory
+## Session 111 durable patterns
+
+- CPU-to-CPU transactions belong behind the same `TradeService` legality, cap, roster, pick and deadline authority as player trades. Use a matched seeded control before interpreting volume changes as league ecology.
+- `docs/visual-qa/LATEST.json` and the PNG files are insufficient as a historical receipt. Run `writeCaptureLedger()` after final captures, then the Studio capture-ledger regression; the ledger keeps old hashes after pruning.
+- A browser evidence driver must resolve the product's real GM gates through visible controls before advancing a week. A forced transition is not evidence of the player path.
+- A structured mail proof must witness inbound delivery and reply-as identity on the project domain. Passing route checks or a provider configuration description cannot clear launch readiness.
+- Treat CI, stable staging, live Pages, backend health, and launch authority as distinct witnesses. The exact artifact digest binds static surfaces; backend has its own revision and database-ready health.
+- Re-check inherited incident language against ordinary observed commands. The S110 hook completed on normal pushes and was slow rather than reproducibly deadlocked; do not replace it from a stale diagnosis.
+- Test the actual Play click and direct document URL on the stable Pages hostname with an installed service worker. Pages canonicalizes `/game.html` to `/game`; a worker returning the cached redirected HTML response breaks the navigation even when static provenance is exact. Let the browser own navigation and keep the worker cache for static assets.
+- A hidden dialog can retain all of its buttons in the DOM. On a bye week, assert that the tactic dialog stays hidden; counting `.tactic-option` elements misstates the user-visible contract.
+
 ## Session 98 durable patterns
 
 - A transition guard should read the previous and current domain states it is asked to compare. A second sentinel that is initialized only inside the transition path makes the first valid transition disappear.

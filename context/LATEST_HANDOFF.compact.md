@@ -1,9 +1,12 @@
-<!-- manual recovery summary: 2026-09-29; canonical source is LATEST_HANDOFF.md -->
+<!-- generated locally without paid API use -->
+<!-- source-hash: 28b0e1cb79f0 -->
+<!-- generated-at: 2026-09-30T04:49:26.083Z -->
 
 # LATEST_HANDOFF (compact)
 
-S110 → S111. The S109 source and closeout had been left uncommitted, despite historical deployment language. Recovery confirmed no JSON/config corruption, passed direct Node 1,573/1,573, full Playwright 69 plus one intentional skip, Studio Doctor zero blocking findings, and public sanitizer. Final deployable source `dbcd750b1c8e8d477928f28ca8afa869bb80d253` is committed on main. Six-section mobile drawer, SVG icons, First Season Contract trade/owner verdict, Worker reachability, audit-lane delta, and four rendered-pixel corrections shipped.
-
-Stable staging 14/14 and live Pages 10/10 serve artifact `6585b783020cbca6b639f8222fd26825139db2e3c665e7ff576ae237534cd51a`; manual Pages run `36613134108` green. Reviewed visual receipt has 146 hash-bound images across two themes and desktop/mobile; hosted lab performance passed. Backend workflow `36616242344` failed on runner SSH after its gate and image builds passed; gateway SSH then deployed the exact image, with same-host and external HTTPS health at `dbcd750`. Public launch HOLD for email receive/reply-as, founder approval and authoritative lifecycle. The Windows Bash pre-push hook hung; direct checks passed and a documented `--no-verify` source push succeeded. Repair is queued. The direct Node/full Playwright receipts predate final visual-only edits; exact-source CI and focused browser checks cover the final candidate.
-
-Finish S110 status/brief/shard/doctor/commit `recover S110 closeout` and direct-main push, clear stale lock, then automatically run the founder-requested full `/arc`: `/start → /audit → /implement → /closeout`, including second-order candidates while context permits.
+- S111 recovered the interrupted S109/S110 closeout as its own pushed checkpoint, then completed the /start → /audit → /implement → /closeout arc. Six ranked items and one second-order source-derived public count shipped.
+- Final static source: 15a962b2fa87532bbbe349c2f51b1b46fbe3a3d8; artifact: c09fc822db5834efdf52a381930acd0ed5ab9a4132c8655f777938bb686c980c. Backend independently remains at 9400912 with database-ready health.
+- Founder-reported Play outage came from the service worker returning a cached Cloudflare /game.html → /game redirect to a navigation. The worker now lets the browser navigate and avoids HTML precache. A bye-week browser assertion was corrected. Final CI, staging 14/14, Pages 10/10, old-worker upgrade, direct /game.html and live Play all passed.
+- Direct six-shard suite: 1588/1588. Doctor: blockingFailing 0. Visual QA: 158 reviewed, hash-bound captures across dark/light desktop/mobile. Hosted performance is lab evidence only.
+- Public launch remains HOLD: observed project-domain inbound and reply-as mail, candidate-bound founder approval, and authoritative lifecycle reconciliation are absent. Local FORGE and a registry SPARKED row differ; do not infer launch authority from deployment.
+- Next: observe a real opted-in cohort when one exists; complete the three independent launch gates; restore /stats to the sitemap when the privacy threshold clears.

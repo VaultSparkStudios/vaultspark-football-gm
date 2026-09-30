@@ -1,26 +1,12 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Last session: 110 (2026-09-29) | Total: 952/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 957.7 | 5: 958.6 | 10: 958.7 | 25: 974.3 | all: 986.5
-Sparkline: ▅▅▅▅▅
+Last session: 111 (2026-09-29) | Total: 938/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 949.3 | 5: 954.2 | 10: 957.1 | 25: 972.5 | all: 985.8
+Sparkline: ▅▅▅▅▄
 Intent rate: 100% (5/5 last 5)
-SIL delta: 958 → 952 (-6). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 64 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 952 → 938 (-14). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 65 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
-
-## 2026-09-09 — Session 101 — Advertised rules become enforced rules
-
-SIL v3.0: **954 / 1000** (Dev Health 96, Creative Alignment 98, Momentum 98, Engagement 86, Process Quality 94, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 90, Capital Efficiency 100, Automation Coverage 99). Intent outcome: Achieved. These are engineering assessments, not measured player outcomes; engagement remains limited by the absence of any real-cohort evidence.
-
-S101 found that several rules the game advertises were never enforced, and that several gates reporting green had no ability to report red. The trade deadline is now one declared league setting enforced at the shared trade command seam, so the three surfaces that each hand-typed their own window agree with a rule the engine actually applies — and CPU front offices obey it. The salary cap can no longer be walked through by a fallback that caught the cap authority's refusal and hand-wrote the contract with the old cap hit; a signing below the offer now states the terms actually signed. A restored franchise can no longer become permanently unadvanceable behind a compatibility check that said "compatible". The rewind lane, whose every write exceeded the browser quota, now goes through the save codec, refuses a restore whose recovery point failed, and rebuilds a corrupt index rather than committing an empty one. Banked cap space carries forward again, coaching contracts run their declared length, and all seven staff roles expire rather than three.
-
-**Verification:** canonical Node **1,369/1,369** across six shards (core 210, runtime 784, sim-contract 83, sim-realism 1, long 5, studio 286). The studio shard was rerun after two self-caused reds on its first pass — a stale `static/` build whose modulepreload list predated this session's new module, and a Command Center fixture that predated the declared `tradeDeadlineWeek` setting. Both were fixed at source; neither was flaky, sibling drift, or force-greened. Doctor `blockingFailing 0`. Boot budget 649,152/650,000 static bytes with zero lazy leaks; public-truth green over a population widened from 10 to 102 shipped surfaces. Engine fixes were re-measured over 10 simulated seasons: cap rollover holds ~29-31M where it previously collapsed to ~1.09M by season 8, with `capComplianceUnresolved` empty every season.
-
-Dev Health is 96 rather than higher because three measured engine defects were deliberately deferred, including a dispersion arm that reads out-of-range on every probed seed. Process Quality is 94: every new or repaired gate got a negative control, which caught one of this session's own tests passing with the bug restored, but a negative control also silently reverted an hour of work in an unrelated file before it was noticed.
-
-- [SIL] Negative-control the tests you write in the same breath as the fix, not only the gates you inherit. This session's own cap-rollover regression passed with the bug deliberately restored — the fixture left both readings clamped at the same ceiling — and was only trustworthy after being rewritten until it failed.
-- [SIL] When one function answers two different questions, a change that is right for one caller is a lie for the other. Making absent live evidence "not current" was correct for the release-freshness CLI and wrong for the prose caller, whose evidence was live-derived when issued; the questions are now separated by an explicit flag rather than conflated.
-
 
 ## 2026-09-09 — Session 102 — The ledger, the pool, and the population a gate declares
 
@@ -189,6 +175,27 @@ Process Quality is 88 because the initial handoff's deployment claim was phantom
 - [SIL] A screenshot of a hidden target is not visual proof of a reachable interaction. Navigate through the same visible controls a player uses and inspect both themes at mobile and desktop sizes.
 - [SIL] When a hook hangs, isolate the hook's process family, run its checks directly, document the bypass, and repair the hook. Do not kill another repository's Git process while diagnosing yours.
 - [SIL] A capture retention job that records images but misses the hash ledger will fail a later studio gate. Write and verify the ledger before treating the visual receipt as complete.
+
+## 2026-09-29 — Session 111 — A richer league and a release receipt that can fail honestly
+
+SIL v3.0: **938 / 1000** (Dev Health 94, Creative Alignment 98, Momentum 99, Engagement 90, Process Quality 78, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 95). Intent outcome: **Achieved for the requested recovery and S111 full arc, including repair of the founder-reported Play failure**; public launch remains HOLD on independent evidence. These are engineering assessments, not measured player outcomes.
+
+Phase 0 recovered and closed the interrupted S109/S110 work as its own pushed boundary. S111 then audited live code and receipts, rejected five false or unsupported candidates, shipped six ranked improvements and one second-order improvement, and deployed an exact source to stable staging, live Pages and the backend. Rival clubs now transact through real trade law; the GM gets one Team workspace for roster and playing time; club identity follows league and trade choices; the public engine count follows the build; email claims require an observed receive/reply-as roundtrip; and backend SSH transport is pinned and bounded. The first-decision budget, browser suite, same-origin staging/live checks, 158 reviewed images, and exact-source CI all passed. A real opted-in cohort has still not been observed, so Engagement is capped at 93.
+
+Process Quality is 78 for concrete self-inflicted costs. The initial new test file missed the shard registry and a comment was misread as an innovation marker; both were corrected before the deployable source. A visual capture driver initially tried to advance through a genuine GM decision gate and had to resolve the decision through the UI. A fake PEM envelope in a test fixture tripped the public sanitizer and forced a test-only source revision; no secret was present. After exact-source release checks, the first direct full suite's Studio shard caught 158 new screenshots omitted from the durable capture ledger. More seriously, the promoted service worker served Cloudflare's redirected `/game.html` response to a navigation and broke the live Play button; the production gate later caught an inherited bye-week browser assertion that counted hidden modal buttons. The browser-routing fix and corrected assertion were verified on staging before renewed promotion. Security Posture 98 reflects a clean final sanitizer, host-key pinning, and no S111 hook bypass. Automation Coverage 95 reflects the missed live navigation and the now-falsifiable ledger and mail gates, with actual mail evidence still absent.
+
+- [SIL] Add every new test file to the canonical shard registry in the same patch. A local focused green result is not a suite receipt when the suite never ran that file.
+- [SIL] Treat screenshots as a two-part receipt: inspect the rendered pixels and append immutable hashes to `CAPTURE_LEDGER.json` before the Studio shard. `LATEST.json` alone covers only the current set.
+- [SIL] Browser capture drivers must satisfy the product's real decision gates through the same visible controls a player uses. A forced week advance that skips a GM choice is invalid evidence.
+- [SIL] Public sanitizers can correctly flag fake credential-shaped fixtures. Use non-credential fixture material unless the credential syntax itself is under test; never bypass the scan for convenience.
+- [SIL] Reclassify inherited operational diagnoses when a normal path succeeds under observation. S110's pre-push “deadlock” did not reproduce; a slow push was not proof of a broken hook.
+- [SIL] Keep technical deployment, launch authority, and player outcomes as three distinct claims. Exact-source Pages/API health cannot manufacture an email roundtrip, founder approval, lifecycle change, or retention signal.
+- [SIL] Exercise Play under an installed service worker on stable staging before promotion. A network redirect can become a failed navigation when a worker returns it from cache, even when provenance, static smoke, and a worker-disabled browser all pass.
+- [SIL] Test whether a modal is visible when the product promises no prompt; static hidden descendants remain in the DOM. Add a deterministic bye fixture so the negative branch cannot be missed by a random first week.
+
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
 
 <!-- ledger-roll:pointer -->
 ---

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "backend-workflow-authority",
+  "sourceRevision": "9400912dc95898c458620efb7ed499347bdb3d11",
+  "verifiedAt": "2026-09-30T01:47:10.000Z",
+  "githubWorkflow": {
+    "run": 36652030133,
+    "conclusion": "success",
+    "gate": "success",
+    "imageBuilds": "success",
+    "deployServer": "success",
+    "transport": "bounded pinned-host SSH"
+  },
+  "externalHealth": {
+    "verified": true,
+    "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "ok": true,
+    "database": "ready",
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "9400912dc95898c458620efb7ed499347bdb3d11"
+  },
+  "boundary": "Workflow conclusion and independent HTTPS runtime probe agree on the exact source. This is technical deployment evidence, not public launch approval."
+}

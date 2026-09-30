@@ -7,16 +7,28 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
+## Session 111 — Full arc: rival market, Team decisions, and exact-source technical promotion (2026-09-29)
+
+- [x] Close the founder-reported Play outage on live Pages. The worker no longer intercepts document navigation or precaches HTML aliases; source `15a962b` passed exact-source CI, staging 14/14, live Pages 10/10, and promotion `36664256243`. An existing visitor upgraded from the old cache and clicked Play; direct `/game.html` and fresh Play also loaded without failed requests.
+- [x] Audit the live product and release seams, reject five stale or unsupported premises, implement all six ranked items and the second-order derived public engine count.
+- [x] Add a bounded deterministic CPU-to-CPU market through the existing trade authority, with matched seeded transaction controls and league news.
+- [x] Join Roster and Depth under one Team destination, carry crests through League and Trades, and verify the changed states in dark/light desktop/mobile rendered pixels.
+- [x] Replace freeform email assertions with typed inbound and reply-as evidence; negative controls reject forged or incomplete receipts. Actual delivery remains unverified.
+- [x] Deploy through bounded pinned-host SSH; workflow `36652030133` passed gate, image builds and server deployment, and independent HTTPS API health reports source `9400912` with database ready.
+- [x] The original feature source `9400912` passed CI, staging 14/14 and Pages provenance 10/10, but its live Play route failed under the installed worker. Final source `15a962b` supersedes that release at artifact `c09fc822…686c980c`; full browser CI and 158 reviewed hash-bound captures pass. Public launch remains HOLD.
+- [x] Finish the direct six-shard closeout receipt and Doctor after ledger/status write-back. Final run passed 1,588/1,588 and Doctor has blockingFailing 0. The first run caught 158 omitted capture-ledger entries; the writer repaired them before the final receipt.
+
 ## Next
 
+- [ ] Make the first-week bye branch deterministic in the browser test so it always exercises the hidden tactic modal and receipt, rather than relying on a random bye. The production gate exposed the previous assertion's false assumption.
 - [ ] Restore `/stats` to sitemap.xml the moment the community snapshot clears its suppression threshold. S94 withheld it so the first page indexed about this game is not a table of zeros; that is a temporary state with a defined exit condition, not a permanent decision.
 - [x] Re-run `/code-review` against a session's own diff BEFORE the canonical receipt, not after. **Done S108: eight findings, all acted on before any shard ran.** S94 ran it late and it found ten real defects, which cost a full 45-minute shard re-run. The review is cheap relative to the receipt and should precede it.
 - [x] Reconsider the mobile tab-target count on its own terms. S110 grouped the fourteen destinations behind six phone drawer sections while retaining direct desktop tab access; visual evidence is being re-baselined before release.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
-- [ ] [SIL:1] Replace or repair the Windows Git Bash pre-push hook path: it repeatedly spawned Bash children and hung on the S110 recovery push. Preserve the same credential, path, and router checks with a bounded non-interactive runner; prove both a clean push and a seeded violation fail before removing the recorded `--no-verify` exception.
-- [ ] [SIL:1] Make backend runner SSH transport resilient to the shared host's observed pre-auth resets. Keep host-key checking and bounded retries; prove a simulated reset then success and a terminal failure. The S110 backend was recovered through gateway SSH, but the GitHub workflow itself concluded failure.
+- [x] [SIL:1] Reclassify the S110 Windows pre-push deadlock premise: ordinary recovery/source pushes completed without `--no-verify` (one was slow, later pushes took seconds). Preserve the existing hook and reopen only if a measured, reproducible hang occurs.
+- [x] [SIL:1] Make backend runner SSH transport resilient to observed pre-auth resets. Reset-success and terminal controls pass, host-key checking stays strict, and the S111 deploy workflow plus external runtime probe succeeded.
 
 ## Session 110 — Recover S109 and finish the authorized release (2026-09-28)
 
@@ -43,8 +55,8 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] **Dev CORS fails closed**; parity gate reads `devCors.js`.
 - [x] **Audit-lane cache** L1 — `docs/audit-lanes/` with the SHA described and the delta command for S110.
 - [x] **Live standings** — `latestStandings` read the season-end archive, so year one showed "No rows" and later years last season's table; one shared `teamSeasonRow` now serves both.
-- [ ] **Icon sprite** (14 glyphs on the brand mark's grid, replacing emoji in nav and panel headers) and the **six-group phone drawer** are the next two visual/IA rungs.
-- [ ] **CPU–CPU trade market does not exist** (0 trades in 3 seasons on the canonical seed). The persona seam is ready; a market needs its own item with a matched control on transaction volume.
+- [x] **Icon sprite and six-group phone drawer** shipped in S110; S111 added one Team destination with Roster/Depth submodes.
+- [x] **CPU–CPU trade market** shipped in S111 with a matched seeded three-season transaction control.
 - [ ] **Alias mounts** (eight copies, 33.7 MB) wait on the Studio host contract before any alias becomes a 301.
 - [ ] Never write a count premise as `[\s\S]*?){n}`; the checker hung twenty minutes when the fix made n unreachable. Use a non-overlapping separator.
 
@@ -169,31 +181,6 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] The parity target's own denominator is load-bearing, and the divergence is now published rather than acted on: the same mean drift reads **+0.055/season** on the declared `rostered` population and **+0.282/season** on `activeRosterOnly`, which would classify as `watch`. `LEAGUE_PROGRESSION_PARITY_TARGET` declares `rostered` and measures `rostered`, so this is not an implementation defect — re-pointing a declared target at a population that turns it red is a calibration decision, and one that would be indistinguishable from the outside from moving a threshold until the number fit. It is emitted as `progression.activeRosterMeanOverallDrift` (ungated, with `wouldClassifyAs`) so the decision can be taken deliberately with the numbers in hand. Take it as its own item, with the question stated first: is the league the gate is meant to police the one the GM competes in, or the one the roster rules define?
 - [ ] Elite density remains `watch` at 3.5% of the active roster at 90+, against a sourced All-Pro ceiling of 1.53%. The centre fix moved it (3.60% → 3.20% on the ad-hoc 10-season probe) but did not close it, because the residual driver is survivorship rather than a stale centre: mean potential on the active roster climbs 79.92 → 83.57 over ten seasons as low-potential players wash out while intake keeps supplying the same distribution. A ratchet needs a recurring cost; the candidate is an age-indexed decline in potential, which is both the realistic model and the one that prices the ratchet. Not attempted here — it changes career arcs and needs its own 10-season re-measurement across seeds against the career-length bands.
 - [ ] Every league generated in the same start year shares one set of coaching-staff names. `staffSeedKey` falls back to `y${year}` when a league carries no `leagueId`/`franchiseId`, so the derived identity is not per-franchise. Measured: byte-identical head-coach names across seeds 8121, 2026 and 4242. Fixing it means changing the seed key, which regenerates staff for every existing save, so it wants a migration decision rather than an edit.
-
-## Session 101 — Full arc: the advertised rules become enforced rules (2026-09-09)
-
-- [x] Declare the trade deadline once in league settings and enforce it at the shared trade command seam, replacing three surfaces that advertised three different windows for a rule the engine never checked.
-- [x] Stop `negotiateAndSign` hand-writing a contract with the old cap hit when the cap authority refuses, and report the terms actually signed instead of a flat "accepted the offer".
-- [x] Rebuild the whole declared `team.season` shape on the restore path (third drift site) and normalize the league before `new StatBook` so an omitted collection cannot throw after the compatibility check passed.
-- [x] Route rewind snapshots through the save codec, refuse a restore whose recovery point could not be written, and reconcile a corrupt rewind index against the payloads actually present.
-- [x] Compute cap rollover against the grown cap, guard `processStaffLifecycle` against the repeated pipeline call, and expire all seven staff roles rather than three.
-- [x] Make the deploy gates run the behaviour shards that cover `src/**`, with a structural test that fails on the pre-fix workflow.
-- [x] Replace the tautological lifecycle-drift assertion with fixture-driven negative controls, and report an unresolved authoritative registry as unresolved instead of omitting the check.
-- [x] Let `git-head-covered-by-publication` and an anonymous-but-reachable origin contradict a verified release claim; make an unverified live origin an explicit freshness state.
-- [x] Assert `fromSnapshot` TradeService parity against the live session rather than absence-of-throw.
-- [x] Report navigation honestly when the target is in another tab or hidden, and repoint the two call sites that pointed into the wrong tab.
-- [x] Populate the two team selects that shipped empty, remove the one the data cannot support, wire the commissioner intent queue to its existing endpoint, and token-ize seven hardcoded reds with no light-theme path.
-- [x] Ship an Ark `registry-delta` correcting the authoritative registry to FORGE, rather than flipping the local contract (which would vacuate three blocking lifecycle gates).
-
-**Verification:** canonical Node **1,369/1,369** across six shards (core 210, runtime 784, sim-contract 83, sim-realism 1, long 5, studio 286). The studio shard was rerun after two self-caused reds on its first pass — a stale `static/` build whose modulepreload list predated this session's new module (the earlier build had been blocked by the public-truth gate), and a Command Center fixture that predated the declared `tradeDeadlineWeek` setting. Both were fixed at source; neither was flaky, sibling drift, or force-greened. The rerun also covers the writeback-currency test, which was registered after the runner had already loaded its shard map. Doctor `blockingFailing 0` with the one standing lifecycle-registry warning. Pages build, browser module reachability, promise observability, boot budget (649,152/650,000 static bytes, 53/58 modules, zero lazy leaks) and public-truth (42 engine systems · 102 shipped surfaces) all green.
-
-**Deferred with measurements, not silently:**
-
-- [x] RESOLVED IN S102 — Signing-bonus proration is recomputed over *remaining* years (`src/domain/contracts.js:120`), so a contract gets more expensive every year it exists — measured +18.3% over 3 years, +26.4% over 4, +22.8% over 5, and a deal's final year is its most expensive, which is backwards. `normalizeContract` already computes a `capYears` local that is never persisted. The fix is a save-shape change (persist the original term, migrate existing snapshots by defaulting to current `yearsRemaining`) and was too large to land safely alongside this session's other persistence work.
-- [x] RESOLVED IN S102 — The free-agent pool is unbounded (0 → ~413 players by simulated season 10, ~60/season with no exit path) and sits inside the reversion gap centre that `progressionParity.js` explicitly fences it out of. Measured displacement of the centre every rostered player converges toward: 0.00 at season 0, 0.44-0.51 by season 10. Bound the pool — force retirement after N consecutive unsigned offseasons — rather than re-scoping the centre; the conservation argument in `potentialReversion.js:117-134` is correct.
-- [~] PARTLY RESOLVED IN S102 — the arm was reading a population no target declared; corrected to ctiveRosterOnly, where dispersion is on-target (0.037) and the blended reading is published for contrast. The elite-density half of this item stands and is re-deferred with fresh numbers in the S102 section. Original entry: the engine's own `buildDistributionReceipt` reads `dispersionStatus: out-of-range` on all three probed seeds (annual sd drift 0.165-0.171 against a 0.15 ceiling; 90+ share 0.3-0.45% → 2.97-3.51% on a fixed active-roster denominator), while `realism-career-regression.test.js` and `session92-nfl-elite-density-baseline.test.js` assert only the *elite* and *global mean* arms — the arms that pass. The mean is on-target (77.28 → 77.67), so this is a shape defect a mean gate cannot see. Wiring the dispersion assertion turns the suite red immediately, which is the point; the root is that the generator's implied 90+ share is ~3x the sourced All-Pro ceiling, so the fix is `playerFactory.js`'s SUPERSTAR band, not the reversion rate. Needs its own session with a 10-season re-measurement budget.
-- [x] RESOLVED IN S102 — Every coach in a generated league shares one name ("Head Coach", "Offensive Coordinator") — `buildStaffProfile` falls back to the role label, and coordinators never get real names. Immersion, and it weakens `nodeForStaff`'s (teamId, role, name) identity.
-- [x] RESOLVED IN S102 — A bye week still demands a tactical decision and returns no feedback: `weeklyPlanComposer.js` forces the tactic step for every regular-season week, the film receipt is null, and no beat card fires. The client already reads `schedule.byeTeams`; pass it in and give the bye its own beat.
 
 <!-- ledger-roll:pointer -->
 ---

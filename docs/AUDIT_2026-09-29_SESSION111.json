@@ -47,7 +47,7 @@
       "rank": 1, "tier": "HIGH", "category": "feature depth / league ecology", "axis": "gamification/engagement/immersion", "effortHours": 8, "impact": 9, "innovation": 8, "priority": 21.7,
       "slug": "cpu-to-cpu-trade-ecology", "title": "Make rival clubs transact with each other under cap and roster law, and let the player see a changing league", "status": "implemented",
       "premise": "GameSession only scheduled inbound offers targeted at the controlled team. No CPU-to-CPU market existed; the canonical three-season observation recorded zero such trades.",
-      "executionEvidence": "New matched-seed three-year spec 3/3; rival-offer neighbors 10/10; integrated core 290/290, runtime 849/849, sim-contract 85/85, realism 9/9. Candidate publication and final long/Studio shards pending.",
+      "executionEvidence": "Matched-seed three-year spec 3/3; rival-offer neighbors 10/10; final direct six-shard suite 1,588/1,588 (core 290, runtime 849, sim-contract 85, realism 9, long 3, Studio 352). Exact-source CI, staging 14/14 and live Pages 10/10 succeeded. The first direct run found an omitted visual capture ledger append; it was repaired before the final green receipt.",
       "premises": [{"claim":"No CPU-to-CPU trade market module exists","adapter":"file-exists","target":"src/engine/cpuTradeMarket.js","operator":"eq","expected":false},{"claim":"The weekly runtime schedules inbound offers","adapter":"grep","target":"src/runtime/GameSession.js","pattern":"generateInboundTradeOffers\\(this\\)","operator":"eq","expected":true}],
       "ladder": {
         "L1": {"effortHours":3,"recipe":"Introduce a deterministic CPU-only trade candidate selector with strict cap, roster, and deadline rejection; log accepted transactions in League News."},
@@ -71,7 +71,7 @@
       "rank": 4, "tier": "HIGH", "category": "UI / decision flow", "axis": "ui/ux/user-experience", "effortHours": 4, "impact": 7, "innovation": 6, "priority": 16.2,
       "slug": "team-workspace-roster-depth", "title": "Put roster and playing-time decisions in one navigable Team workspace", "status": "implemented",
       "premise": "The six-group menu had separate Roster and Depth Chart destinations; a lineup change forced navigation away from the players being compared.",
-      "executionEvidence": "One Team destination with Roster/Depth submodes; two hidden depth routes corrected; 34/34 focused Node navigation tests and focused real-browser keyboard/depth flow green. Final dark/light pixel receipt pending.",
+      "executionEvidence": "One Team destination with Roster/Depth submodes; two hidden depth routes corrected; 34/34 focused Node navigation tests and focused real-browser keyboard/depth flow green. 158 final-source dark/light desktop/mobile pixels reviewed with zero blocking defects and hashes recorded in the capture ledger.",
       "premises": [{"claim":"Depth remains a separate primary destination","adapter":"grep","target":"public/game.html","pattern":"data-tab=\\\"depthTab\\\"","operator":"eq","expected":true}],
       "ladder": {
         "L1": {"effortHours":2,"recipe":"Add a contextual route from Roster to Depth with return navigation and preserved selected player."},
@@ -83,7 +83,7 @@
       "rank": 5, "tier": "MEDIUM", "category": "release automation", "axis": "speed/organization/efficiency", "effortHours": 3, "impact": 7, "innovation": 5, "priority": 15.1,
       "slug": "bounded-backend-ssh-transport", "title": "Survive transient shared-host SSH pre-auth resets without weakening host identity", "status": "implemented",
       "premise": "The exact-source GitHub deploy workflow failed after build on SCP/SSH pre-auth resets. Its old remote steps had one transport attempt per workflow run.",
-      "executionEvidence": "Pinned host-key secret provisioned from a previously trusted and freshly verified host; bounded transport helper, reset-success and terminal-failure controls 15/15; Windows-hide guard zero. Live GitHub runner proof pending next dispatch.",
+      "executionEvidence": "Pinned host-key secret provisioned from a previously trusted and freshly verified host; bounded transport helper, reset-success and terminal-failure controls 15/15. Backend workflow 36652030133 succeeded through deploy-server; independent HTTPS health reported source 9400912 and database ready.",
       "premises": [{"claim":"Workflow uses a single appleboy SCP action","adapter":"grep","target":".github/workflows/deploy-backend.yml","pattern":"appleboy/scp-action@v0.1.7","operator":"eq","expected":true}],
       "ladder": {
         "L1": {"effortHours":1,"recipe":"Wrap transport with a short bounded retry and explicit failure report."},
@@ -95,7 +95,7 @@
       "rank": 3, "tier": "MEDIUM", "category": "immersion / visual identity", "axis": "gamification/engagement/immersion", "effortHours": 3, "impact": 6, "innovation": 7, "priority": 18.1,
       "slug": "crest-through-decision-surfaces", "title": "Let club identity follow the GM through league and market decisions", "status": "implemented",
       "premise": "Procedural crests appeared in the Desk spotlight and optional share cards, but league and market decision surfaces did not mount them.",
-      "executionEvidence": "Lazy team-specific crest mounts in League and Trades; both passed real-browser assertions after a fresh game boot. Final dark/light pixel receipt pending.",
+      "executionEvidence": "Lazy team-specific crest mounts in League and Trades; both passed real-browser assertions after a fresh game boot, and their dark/light desktop/mobile states were reviewed in the final-source visual receipt.",
       "premises": [{"claim":"The Desk mounts the team crest","adapter":"grep","target":"public/lib/tabOverview.js","pattern":"mountTeamCrest","operator":"eq","expected":true},{"claim":"The transaction surface has no crest mount","adapter":"grep","target":"public/lib/tabContracts.js","pattern":"mountTeamCrest","operator":"eq","expected":false}],
       "ladder": {
         "L1": {"effortHours":1,"recipe":"Add the controlled club crest beside team identity in one high-value transaction panel."},
