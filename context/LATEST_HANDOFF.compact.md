@@ -1,12 +1,31 @@
-<!-- generated locally without paid API use -->
+<!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
 <!-- source-hash: 28b0e1cb79f0 -->
-<!-- generated-at: 2026-09-30T04:49:26.083Z -->
+<!-- generated-at: 2026-09-30T14:32:18.259Z -->
 
 # LATEST_HANDOFF (compact)
 
-- S111 recovered the interrupted S109/S110 closeout as its own pushed checkpoint, then completed the /start → /audit → /implement → /closeout arc. Six ranked items and one second-order source-derived public count shipped.
-- Final static source: 15a962b2fa87532bbbe349c2f51b1b46fbe3a3d8; artifact: c09fc822db5834efdf52a381930acd0ed5ab9a4132c8655f777938bb686c980c. Backend independently remains at 9400912 with database-ready health.
-- Founder-reported Play outage came from the service worker returning a cached Cloudflare /game.html → /game redirect to a navigation. The worker now lets the browser navigate and avoids HTML precache. A bye-week browser assertion was corrected. Final CI, staging 14/14, Pages 10/10, old-worker upgrade, direct /game.html and live Play all passed.
-- Direct six-shard suite: 1588/1588. Doctor: blockingFailing 0. Visual QA: 158 reviewed, hash-bound captures across dark/light desktop/mobile. Hosted performance is lab evidence only.
-- Public launch remains HOLD: observed project-domain inbound and reply-as mail, candidate-bound founder approval, and authoritative lifecycle reconciliation are absent. Local FORGE and a registry SPARKED row differ; do not infer launch authority from deployment.
-- Next: observe a real opted-in cohort when one exists; complete the three independent launch gates; restore /stats to the sitemap when the privacy threshold clears.
+Session 111 → 112
+
+SHIPPED
+Feature source 15a962b (deterministic CPU-to-CPU ecology, Team workspace, crest procedures, public engine count, typed project-domain evidence, SSH retry pinning). Play outage corrected (68856a7 → 15a962b, service worker precache). Pages/CI exact-source 36664256243 passed 1,588/1,588 tests (core 290, runtime 849, sim-contract 85, realism 9, long 3, Studio 352). 158 screenshot hashes logged CAPTURE_LEDGER.json. Backend 9400912 unchanged.
+
+CURRENT INTENT
+Hold public launch pending three gates: (1) real opted-in cohort with verified data freshness/suppression/deletion, (2) on-domain Zoho receive/reply-as evidence + SHA-bound founder approval, (3) lifecycle registry write path.
+
+NOW BUCKET
+- Observe real cohort only when it exists; verify data and abuse ceilings (no manufactured engagement)
+- Complete independent launch gates from actual Zoho evidence and founder approval (do not infer from green deploy)
+- Restore /stats to sitemap when community snapshot clears suppression threshold
+
+BLOCKERS
+- Project-domain inbound delivery and reply-as-alias evidence not observed (9 routes verified, mail unverified)
+- Candidate-bound founder launch approval absent
+- Authoritative lifecycle reconciliation incomplete; launchReady stays false
+
+HUMAN-BLOCKED
+None listed.
+
+EVIDENCE
+Play correction changed no backend code. First direct npm test is red (overridden by final 6-shard green). Visual captures tied to source hash. Receipt-only closeout commits are descendants of 15a962b, not new deployables.
+
+Next: Await real user cohort signals and on-domain Zoho evidence before lifting launch hold.

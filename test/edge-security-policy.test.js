@@ -4,8 +4,25 @@ import {
   buildEdgeHeaders,
   inspectHtmlForEdgePolicy,
   auditDeliveredDocument,
+  parseArtifactHeaderRules,
+  resolveArtifactHeaders,
   EDGE_INJECTED_ORIGINS
 } from "../scripts/lib/edge-security-policy.mjs";
+
+test("browser evidence replays exact artifact CSP plus only matching route-cache rules", () => {
+  const generated = buildEdgeHeaders({ inlineStyleHashes: ["'sha256-test='"] });
+  const rules = parseArtifactHeaderRules(generated);
+  const expectedCsp = generated.match(/Content-Security-Policy: (.*)/)[1];
+  for (const route of ["/", "/game.html", "/lib/frontOfficeAdvisor.js", "/styles.a123.css", "/sw.js"]) {
+    assert.equal(resolveArtifactHeaders(rules, route)["content-security-policy"], expectedCsp);
+  }
+  assert.equal(resolveArtifactHeaders(rules, "/sw.js")["cache-control"], "no-cache");
+  assert.match(resolveArtifactHeaders(rules, "/styles.a123.css")["cache-control"], /immutable/);
+  assert.equal(resolveArtifactHeaders(rules, "/stylesXa123Xcss")["cache-control"], undefined, "glob punctuation is literal");
+  assert.equal(resolveArtifactHeaders(rules, "/lib/tutorialCampaign.js")["cache-control"], undefined);
+  assert.throws(() => parseArtifactHeaderRules("/*\n  Cache-Control: no-cache\n"), /lack the global/);
+  assert.throws(() => parseArtifactHeaderRules("/*\n  malformed\n"), /Invalid artifact/);
+});
 
 test("edge policy hashes exact inline script bodies and keeps self modules hash-free", () => {
   const html = `<script type="application/ld+json">\n{"name":"Architect"}\n</script>

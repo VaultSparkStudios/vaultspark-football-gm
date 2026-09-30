@@ -14,11 +14,11 @@
  * rather than filling the gap.
  *
  * Pure functions only. `renderAdvisorCard` returns an HTML string and touches
- * no DOM; the caller injects `ADVISOR_STYLE` once.
+ * no DOM; presentation is delivered by the app stylesheet.
  */
 import { describeWeeklyPlanReceipt } from "./weeklyPlanComposer.js";
 
-export const FRONT_OFFICE_ADVISOR_SCHEMA_VERSION = "1.0";
+export const FRONT_OFFICE_ADVISOR_SCHEMA_VERSION = "2.0";
 
 /**
  * The whole scoring table. Every number the ranking uses is here so the
@@ -425,6 +425,8 @@ export function buildAdvice(packet = {}, { lastWeekAdvice = null, lastWeekReceip
       id: top.id,
       kind: top.kind,
       choiceId: top.choiceId ?? null,
+      decisionId: top.kind === "gm-decision" ? read("currentCommand.decisionId") ?? null : null,
+      occurrenceKey: top.kind === "gm-decision" ? read("currentCommand.occurrenceKey") ?? null : null,
       title: top.title,
       body: limitWords(top.body)
     },
@@ -443,7 +445,9 @@ export function buildAdvice(packet = {}, { lastWeekAdvice = null, lastWeekReceip
       playerDid: described ? `${described.title}: ${described.detail}` : "No plan receipt recorded.",
       agreed: agreement.agreed,
       basis: agreement.basis,
-      note: agreement.agreed
+      note: agreement.agreed === null
+        ? "Outcome not observed. This call stays outside the agreement tally."
+        : agreement.agreed
         ? "Same call as the room. Tally only; no bonus either way."
         : "Went against the room. Tally only; no penalty either way."
     };
@@ -457,36 +461,35 @@ export function buildAdvice(packet = {}, { lastWeekAdvice = null, lastWeekReceip
  *
  * Did the committed weekly plan match the advised call? Matching is defined
  * on what a weekly-plan receipt can observe:
- * - a `gm-decision` call matches when `receipt.plan.gmDecision.choiceId`
- *   equals the advised choice;
- * - `advance-week` matches when a plan was committed (or readied) at all;
- * - every tab-shaped call (cap, injuries, deadline, owner, need) cannot be
- *   observed by the receipt, so it matches when the player committed a week
- *   without deferring — the room said act, the player acted — and the basis
- *   says so, so a tally can separate observed from inferred agreement.
- * A deferred receipt never agrees: the room made a call and nothing was
- * committed.
+ * Only applied GM decisions and committed week advances are observable here.
+ * Missing, staged, deferred and tab-shaped actions stay unscored. The memory
+ * reducer below additionally binds the receipt to the pre-command checkpoint.
  */
 export function scoreAgreement(advice = {}, receipt = null) {
   const call = advice?.call || {};
   const advisedId = call.id || null;
   if (!receipt || typeof receipt !== "object") {
-    return { agreed: false, basis: "no-receipt", advisedId, committedChoiceId: null };
+    return { agreed: null, basis: "no-receipt", advisedId, committedChoiceId: null };
   }
   const status = String(receipt.status || "");
-  const committed = status === "committed" || status === "ready";
+  const committed = status === "committed";
   const committedChoiceId = receipt.plan?.gmDecision?.choiceId ?? null;
   if (!committed) {
-    return { agreed: false, basis: "deferred", advisedId, committedChoiceId };
+    return { agreed: null, basis: status === "deferred" ? "deferred" : "not-committed", advisedId, committedChoiceId };
   }
   if (call.kind === "gm-decision") {
+    if (receipt.observed?.gmDecisionApplied !== true || !call.decisionId || !call.occurrenceKey ||
+        call.decisionId !== receipt.plan?.gmDecision?.decisionId ||
+        call.occurrenceKey !== receipt.plan?.gmDecision?.occurrenceKey || committedChoiceId == null) {
+      return { agreed: null, basis: "decision-not-observed", advisedId, committedChoiceId };
+    }
     const agreed = call.choiceId !== null && call.choiceId !== undefined && String(committedChoiceId) === String(call.choiceId);
     return { agreed, basis: "gm-decision-choice", advisedId, committedChoiceId };
   }
   if (call.kind === "advance-week") {
     return { agreed: true, basis: "week-committed", advisedId, committedChoiceId };
   }
-  return { agreed: true, basis: "week-committed-unobserved-call", advisedId, committedChoiceId };
+  return { agreed: null, basis: "action-not-observed", advisedId, committedChoiceId };
 }
 
 /**
@@ -499,14 +502,38 @@ export function updateAgreementTally(tally = {}, agreement = {}) {
     weeks: finite(tally?.weeks) ?? 0,
     agreed: finite(tally?.agreed) ?? 0,
     against: finite(tally?.against) ?? 0,
-    deferred: finite(tally?.deferred) ?? 0
+    deferred: finite(tally?.deferred) ?? 0,
+    unscored: finite(tally?.unscored) ?? 0
   };
   if (!agreement || typeof agreement !== "object") return next;
   next.weeks += 1;
-  if (agreement.basis === "deferred" || agreement.basis === "no-receipt") next.deferred += 1;
-  else if (agreement.agreed) next.agreed += 1;
-  else next.against += 1;
+  if (agreement.basis === "deferred") next.deferred += 1;
+  if (agreement.agreed === true) next.agreed += 1;
+  else if (agreement.agreed === false) next.against += 1;
+  else next.unscored += 1;
   return next;
+}
+
+/** One atomic storage value records both the tally and its replay boundary. */
+export function reduceAdvisorOutcome(memory = {}, receipt = null) {
+  const pending = memory.pending;
+  const source = receipt?.sourceAuthority;
+  if (!pending?.advice || !source?.key || source.key !== pending.sourceAuthority?.key ||
+      !["preseason", "regular-season", "postseason"].includes(source.phase) ||
+      ["year", "week", "teamId", "phase"].some((key) => source[key] !== pending.sourceAuthority[key]) ||
+      receipt.authority?.teamId !== source.teamId ||
+      receipt?.status !== "committed") return memory;
+  const processedKeys = Array.isArray(memory.processedKeys) ? memory.processedKeys : [];
+  // A week can be committed only once; different receipt IDs cannot replay it.
+  if (processedKeys.includes(source.key)) return memory;
+  const agreement = scoreAgreement(pending.advice, receipt);
+  return {
+    schemaVersion: FRONT_OFFICE_ADVISOR_SCHEMA_VERSION,
+    pending: null,
+    scored: { advice: pending.advice, receipt, agreement },
+    tally: updateAgreementTally(memory.tally || {}, agreement),
+    processedKeys: [...processedKeys, source.key].slice(-128)
+  };
 }
 
 // appCore.escapeHtml is not importable here without pulling appState (DOM,
@@ -521,25 +548,7 @@ export function escapeAdvisorHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
-export const ADVISOR_STYLE = `
-.advisor-card{border:1px solid var(--line,#2a3140);border-radius:12px;padding:14px 16px;background:var(--panel,#0f1420);display:grid;gap:10px;font-size:.92rem;line-height:1.4}
-.advisor-card[data-compact="true"]{padding:10px 12px;gap:6px}
-.advisor-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
-.advisor-kicker{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
-.advisor-authority{font-size:.78rem;opacity:.75}
-.advisor-confidence{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor}
-.advisor-card[data-confidence="firm"] .advisor-confidence{color:var(--positive,#4cc38a)}
-.advisor-card[data-confidence="lean"] .advisor-confidence{color:var(--warning,#e7b84a)}
-.advisor-card[data-confidence="toss-up"] .advisor-confidence{color:var(--muted,#9aa3b2)}
-.advisor-call strong{display:block;font-size:1.05rem;margin-bottom:4px}
-.advisor-call p{margin:0}
-.advisor-reasons{margin:0;padding-left:18px;display:grid;gap:3px}
-.advisor-risk{margin:0;font-size:.85rem;opacity:.85}
-.advisor-risk strong{margin-right:6px}
-.advisor-counterfactual{border-top:1px dashed var(--line,#2a3140);padding-top:8px;font-size:.85rem;display:grid;gap:2px}
-.advisor-counterfactual[data-agreed="true"] .advisor-verdict{color:var(--positive,#4cc38a)}
-.advisor-counterfactual[data-agreed="false"] .advisor-verdict{color:var(--warning,#e7b84a)}
-`.trim();
+
 
 /**
  * renderAdvisorCard(advice, { compact }) → HTML string. Every value passes
@@ -557,7 +566,7 @@ export function renderAdvisorCard(advice = {}, { compact = false } = {}) {
     .join(" · ");
   const cf = advice?.counterfactual;
   const counterfactual = cf && !compact
-    ? `<div class="advisor-counterfactual" data-agreed="${cf.agreed ? "true" : "false"}">
+    ? `<div class="advisor-counterfactual" data-agreed="${cf.agreed === null ? "unscored" : cf.agreed ? "true" : "false"}">
       <span><strong>Last week the room said:</strong> ${e(cf.saidLastWeek)}</span>
       <span><strong>You did:</strong> ${e(cf.playerDid)}</span>
       <span class="advisor-verdict">${e(cf.note)}</span>

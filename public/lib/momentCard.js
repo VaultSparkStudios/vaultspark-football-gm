@@ -265,22 +265,9 @@ export function deriveActiveChallengeCode(state) {
 
 // ── Mount ────────────────────────────────────────────────────────────────────
 
-const STYLE_ID = "moment-card-share-styles";
 
-function injectMomentCardStyles() {
-  if (typeof document === "undefined" || document.getElementById(STYLE_ID)) return;
-  const style = document.createElement("style");
-  style.id = STYLE_ID;
-  style.textContent = `
-.moment-card-share { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.35rem; }
-.moment-card-share-btn { font: inherit; font-weight: 600; padding: 0.35rem 0.75rem; border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); color: inherit; cursor: pointer; }
-.moment-card-share-btn:hover { background: rgba(255,255,255,0.16); }
-.moment-card-share-btn:disabled { opacity: 0.6; cursor: default; }
-.moment-card-share-status { font-size: 0.8em; opacity: 0.75; }
-`;
-  document.head.appendChild(style);
-}
+
+
 
 /**
  * Appends a "Share this moment" button to `container`. `buildOptions` may be
@@ -293,7 +280,6 @@ function injectMomentCardStyles() {
  */
 export function mountShareControl(container, buildOptions) {
   if (!container || container.querySelector("[data-moment-share-btn]")) return null;
-  injectMomentCardStyles();
 
   const wrap = document.createElement("div");
   wrap.className = "moment-card-share";

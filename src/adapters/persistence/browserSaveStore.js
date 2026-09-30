@@ -40,7 +40,8 @@ export function createBrowserSaveStore({
   storage,
   namespace = "vsfgm",
   backupPrefix = getDefaultBackupPrefix(),
-  now = () => new Date().toISOString()
+  now = () => new Date().toISOString(),
+  isSlotBusy = () => false
 } = {}) {
   if (!storage) {
     throw new Error("Browser save store requires a storage implementation.");
@@ -48,6 +49,28 @@ export function createBrowserSaveStore({
 
   const dataPrefix = `${namespace}:save:`;
   const metaPrefix = `${namespace}:meta:`;
+  const slotOperations = new Map();
+  function withSlot(slot, run) {
+    const safe = safeSlotName(slot);
+    if (!safe) return Promise.reject(new Error("Invalid save slot name."));
+    const operation = (slotOperations.get(safe) || Promise.resolve()).then(() => run(safe));
+    const release = () => {
+      if (slotOperations.get(safe) === tail) slotOperations.delete(safe);
+    };
+    const tail = operation.then(release, release);
+    slotOperations.set(safe, tail);
+    return operation;
+  }
+  const setItem = (key, value) => typeof storage.setItemAsync === "function"
+    ? storage.setItemAsync(key, value) : storage.setItem(key, value);
+  const removeItem = (key) => typeof storage.removeItemAsync === "function"
+    ? storage.removeItemAsync(key) : storage.removeItem(key);
+
+  async function restoreItem(key, previous) {
+    if (storage.getItem(key) === previous) return;
+    if (previous == null) await removeItem(key);
+    else await setItem(key, previous);
+  }
 
   function dataKey(slot) {
     const safe = safeSlotName(slot);
@@ -93,58 +116,66 @@ export function createBrowserSaveStore({
     return listSaveSlots({ includeBackups: true }).filter((slot) => isBackupSlot(slot.slot, backupPrefix));
   }
 
-  function clearOldestBackups(count = 1, { exclude = [] } = {}) {
+  async function clearOldestBackups(count = 1, { exclude = [] } = {}) {
     const excluded = new Set((exclude || []).map((slot) => safeSlotName(slot)));
-    const candidates = listBackupSlots().filter((entry) => !excluded.has(safeSlotName(entry.slot)));
+    // Never acquire a second occupied slot while holding a save's slot lock.
+    // Two quota retries could otherwise wait forever while evicting each other.
+    const candidates = listBackupSlots().filter((entry) => {
+      const slot = safeSlotName(entry.slot);
+      return !excluded.has(slot) && !slotOperations.has(slot) && !isSlotBusy(slot);
+    });
     let removed = 0;
     for (const backup of candidates.slice().reverse().slice(0, count)) {
-      if (deleteSaveSlot(backup.slot)) removed += 1;
+      if (await deleteSaveSlot(backup.slot)) removed += 1;
     }
     return removed;
   }
 
-  async function saveSessionToSlot(slot, snapshot) {
+  async function saveSessionToSlotUnlocked(slot, snapshot) {
     assertSnapshotCompatibility(snapshot);
     const safe = safeSlotName(slot);
     const updatedAt = now();
     // Compressed before stamping, so the integrity stamp continues to describe
     // exactly the bytes that land in storage (see ./snapshotCodec.js).
     const serialized = await encodeSnapshot(snapshot);
-    const write = () => {
+    const write = async () => {
+      const previousData = storage.getItem(dataKey(safe));
+      const previousMeta = storage.getItem(metaKey(safe));
       try {
-        storage.setItem(dataKey(safe), serialized);
-        storage.setItem(
+        await setItem(dataKey(safe), serialized);
+        await setItem(
           metaKey(safe),
           JSON.stringify({ ...(extractSnapshotMeta(snapshot) || {}), updatedAt, integrity: buildIntegrityStamp(serialized) })
         );
         return { slot: safe, key: dataKey(safe) };
       } catch (error) {
-        storage.removeItem(dataKey(safe));
-        storage.removeItem(metaKey(safe));
+        // setItem itself is atomic, but the payload/meta pair is not. Restore
+        // only changed keys: a rejected first write must never delete a save.
+        try {
+          await restoreItem(dataKey(safe), previousData);
+          await restoreItem(metaKey(safe), previousMeta);
+        } catch (rollbackError) {
+          throw new AggregateError([error, rollbackError], "Save failed and the previous save could not be restored.", { cause: error });
+        }
         throw error;
       }
     };
     try {
-      return write();
+      return await write();
     } catch (error) {
       if (!isQuotaExceededError(error)) throw error;
-      let recovered = false;
-      while (clearOldestBackups(1, { exclude: [safe] }) > 0) {
+      while (await clearOldestBackups(1, { exclude: [safe] }) > 0) {
         try {
-          const saved = write();
-          recovered = true;
-          return saved;
+          return await write();
         } catch (retryError) {
           if (!isQuotaExceededError(retryError)) throw retryError;
         }
       }
-      if (!recovered) {
-        throw new Error("Browser storage is full. Delete old saves/backups or clear site data, then try again.");
-      }
+      throw new Error("Browser storage is full. Delete old saves/backups or clear site data, then try again.", { cause: error });
     }
   }
 
-  async function loadSessionFromSlot(slot) {
+  async function loadSessionFromSlotUnlocked(slot) {
     const raw = storage.getItem(dataKey(slot));
     if (!raw) return null;
     let integrity = null;
@@ -165,14 +196,33 @@ export function createBrowserSaveStore({
     return snapshot;
   }
 
-  function deleteSaveSlot(slot) {
+  async function deleteSaveSlotUnlocked(slot) {
     const safe = safeSlotName(slot);
     const key = dataKey(safe);
-    const exists = storage.getItem(key) != null;
-    storage.removeItem(key);
-    storage.removeItem(metaKey(safe));
-    return exists;
+    const previousData = storage.getItem(key);
+    const previousMeta = storage.getItem(metaKey(safe));
+    try {
+      // A metadata NACK must not destroy the payload. If payload removal then
+      // fails, republish the old metadata before reporting the failed delete.
+      await removeItem(metaKey(safe));
+      await removeItem(key);
+    } catch (error) {
+      try {
+        await restoreItem(key, previousData);
+        await restoreItem(metaKey(safe), previousMeta);
+      } catch (rollbackError) {
+        throw new AggregateError([error, rollbackError], "Delete failed and the previous save could not be restored.", { cause: error });
+      }
+      throw error;
+    }
+    return previousData != null;
   }
+
+  // Reserve the slot before encoding or reading any prior state. A failed
+  // older operation can then never roll back an acknowledged newer save.
+  const saveSessionToSlot = (slot, snapshot) => withSlot(slot, (safe) => saveSessionToSlotUnlocked(safe, snapshot));
+  const loadSessionFromSlot = (slot) => withSlot(slot, loadSessionFromSlotUnlocked);
+  const deleteSaveSlot = (slot) => withSlot(slot, deleteSaveSlotUnlocked);
 
   /** Total bytes currently held by rolling backups. */
   function backupBytes() {
@@ -196,17 +246,12 @@ export function createBrowserSaveStore({
   ) {
     const stamp = now().replace(/[:.]/g, "-");
     const slot = safeSlotName(`${backupPrefix}${reason}-y${year}-w${week}-${phase}-${stamp}`);
-    const retainCount = Math.max(0, maxBackups - 1);
-    const existingBackups = listBackupSlots();
-    if (existingBackups.length > retainCount) {
-      clearOldestBackups(existingBackups.length - retainCount);
-    }
     const saved = await saveSessionToSlot(slot, snapshot);
 
     const backups = listBackupSlots();
     if (backups.length > maxBackups) {
       for (const old of backups.slice(maxBackups)) {
-        deleteSaveSlot(old.slot);
+        await deleteSaveSlot(old.slot);
       }
     }
 
@@ -214,7 +259,7 @@ export function createBrowserSaveStore({
     // grows with the franchise. Evict oldest until the backups fit their byte
     // budget, always keeping the one just written.
     while (backupBytes() > maxBackupBytes && listBackupSlots().length > 1) {
-      if (clearOldestBackups(1, { exclude: [slot] }) === 0) break;
+      if (await clearOldestBackups(1, { exclude: [slot] }) === 0) break;
     }
     return saved;
   }

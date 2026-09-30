@@ -66,6 +66,7 @@ export function createWorkerTransport({
   let nextId = 1;
   let dead = null;
   let worker = null;
+  let initTimer = null;
   let resolveReady;
   let rejectReady;
   const ready = new Promise((resolve, reject) => {
@@ -80,32 +81,56 @@ export function createWorkerTransport({
   function fail(error) {
     if (dead) return;
     dead = error;
+    clearTimeout(initTimer);
+    worker?.removeEventListener?.("message", onMessage);
+    worker?.removeEventListener?.("error", onError);
+    worker?.removeEventListener?.("messageerror", onError);
+    try { worker?.terminate?.(); } catch { /* already gone */ }
     rejectReady(error);
     for (const [, entry] of pending) entry.reject(error);
     pending.clear();
   }
 
   function onMessage(event) {
+    if (dead) return;
     const message = event?.data;
     if (!message || typeof message !== "object") return;
     if (message.type === "storage-set" || message.type === "storage-remove") {
+      let failure = null;
       try {
-        if (storage) applyStorageMessage(storage, message);
+        if (!isRuntimeStorageKey(message.key)) throw new Error("Worker storage key is outside the runtime namespace.");
+        if (!storage) throw new Error("Browser storage is unavailable; this change was not saved.");
+        applyStorageMessage(storage, message);
       } catch (error) {
-        // Quota or a blocked storage: the worker's mirror still holds the
-        // value, so play continues; the loss is recorded rather than swallowed.
-        if (typeof onStorageError === "function") onStorageError(error, message);
+        failure = error;
+        // Diagnostics cannot prevent the negative acknowledgment reaching the
+        // save store, which owns quota recovery and restoration of old bytes.
+        try { onStorageError?.(error, message); } catch { /* the NACK carries the failure */ }
+      }
+      const reply = { type: failure ? "storage-nack" : "storage-ack", storageId: message.storageId };
+      if (failure) reply.error = { name: failure.name, message: failure.message, code: failure.code };
+      try {
+        // Successful writes already have exact bytes in the worker; do not
+        // structured-clone a multi-megabyte save back just to acknowledge it.
+        if (failure && storage && isRuntimeStorageKey(message.key)) reply.currentValue = storage.getItem(message.key);
+      } catch { /* retain the last acknowledged value when reads are also blocked */ }
+      try {
+        worker.postMessage(reply);
+      } catch (error) {
+        fail(error);
       }
       return;
     }
     if (message.type === "ready") {
+      clearTimeout(initTimer);
       resolveReady();
       return;
     }
-    if (message.type === "init-error") {
+    if (message.type === "init-error" || message.type === "runtime-error") {
       fail(transportError(message.error, "Worker runtime failed to initialise."));
       return;
     }
+    if (message.type !== "response" && message.type !== "response-error") return;
     const entry = pending.get(message.id);
     if (!entry) return;
     pending.delete(message.id);
@@ -133,15 +158,16 @@ export function createWorkerTransport({
   }
 
   if (!dead && initTimeoutMs > 0) {
-    const timer = setTimeout(() => {
+    initTimer = setTimeout(() => {
       fail(new Error(`Worker runtime did not become ready within ${initTimeoutMs}ms.`));
     }, initTimeoutMs);
-    ready.then(() => clearTimeout(timer), () => clearTimeout(timer));
+    ready.then(() => clearTimeout(initTimer), () => clearTimeout(initTimer));
   }
 
   async function request(path, { method = "GET", body = null } = {}) {
     if (dead) throw dead;
     await ready;
+    if (dead) throw dead;
     return new Promise((resolve, reject) => {
       const id = nextId++;
       pending.set(id, { resolve, reject });
@@ -155,7 +181,6 @@ export function createWorkerTransport({
   }
 
   function terminate() {
-    try { worker?.terminate?.(); } catch { /* already gone */ }
     fail(new Error("Worker runtime transport terminated."));
   }
 

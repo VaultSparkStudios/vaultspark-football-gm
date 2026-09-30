@@ -1,0 +1,595 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-30",
+  "session": 112,
+  "agent": "codex",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented-pending-release-verification",
+  "summary": {
+    "source": "Fresh S111 recovery, three bounded in-process source reviews, direct in-memory fault reproductions and live browser pixels.",
+    "itemsRanked": 10,
+    "combinedPriority": 206.8,
+    "verificationNote": "Recovery suite 1588/1588; all ten audit implementations and four second-order candidates completed with focused controls. Final full-suite, immutable visual proof, exact-source CI and staging/production verification remain pending. No cohort or launch authority inferred."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product and game-loop consequence",
+    "staging": "stable staging before production",
+    "source": "local status, explicit user mission, skill profile and source"
+  },
+  "gameLoopReview": {
+    "loopTightness": "7/10",
+    "progression": "6/10",
+    "sessionEngagement": "8/10",
+    "retention": "unmeasured; affordances 7/10",
+    "soulFidelity": "unscored: public summary points to private creative authority",
+    "evidence": "Editorial source assessment and deterministic fixtures, not human engagement data."
+  },
+  "axisReview": {
+    "feature depth": [
+      "Complete package trade economics",
+      "Transaction commit durability"
+    ],
+    "new innovative features": [
+      "Durable save acknowledgment",
+      "Checkpoint-bound advisor outcome"
+    ],
+    "UX": [
+      "Real-CSP tutorial and advisor styles",
+      "Deterministic bye flow"
+    ],
+    "feedback loop": [
+      "Unobserved advice must be unscored",
+      "Resolved signing receipt"
+    ],
+    "gamification": [
+      "Winning bids must fulfill contract",
+      "Preserve frozen owner verdict; already implemented"
+    ],
+    "AI integration": [
+      "Keep deterministic packet-cited advice",
+      "Reject paid model voice without need/cost authorization"
+    ],
+    "security": [
+      "Preserve existing saves on failure",
+      "Enforce stale trade guard"
+    ],
+    "speed/organization": [
+      "Official Node 24 action currency",
+      "Reuse existing stylesheet/build/test tools"
+    ],
+    "token/API reduction": [
+      "Keep zero paid per-player API cost",
+      "Reject speculative API integration and generated feature panels"
+    ]
+  },
+  "phantomsRejected": [
+    {
+      "slug": "incomplete-s111-closeout",
+      "reason": "All canonical surfaces committed at 754ffb7, fresh six-shard suite 1588/1588 and Doctor blockingFailing0."
+    },
+    {
+      "slug": "play-redirect-still-broken",
+      "reason": "Live fresh browser navigated to /game with an active worker; current service-worker navigation fix remains in source."
+    },
+    {
+      "slug": "missing-cpu-trade-ecology",
+      "reason": "Existing bounded CPU market and tests verified; the uncovered defect is complete-package valuation."
+    },
+    {
+      "slug": "missing-owner-contract-payoff",
+      "reason": "Existing owner verdict and frozen results already implement it."
+    },
+    {
+      "slug": "real-cohort-ready",
+      "reason": "Live aggregate remains suppressed below five participating browsers; no new cohort claim or sitemap promotion."
+    },
+    {
+      "slug": "ledger-retention-still-positional",
+      "reason": "S108 implemented session-number retention; current dry run preserves all newest sessions."
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "advisor-checkpoint-and-replay-authority",
+      "status": "implemented",
+      "trigger": "Honest three-state scoring still needs to reject stale or repeated weekly receipts; included in advisor L3."
+    },
+    {
+      "slug": "csp-enforced-artifact-browser-proof",
+      "status": "implemented",
+      "trigger": "Source and local screenshots passed while live runtime styles were rejected; included in visual parity L3."
+    },
+    {
+      "slug": "readable-saves-after-write-degradation",
+      "status": "implemented",
+      "trigger": "A failed IDB write should not make all prior IDB saves disappear; included in durability L3."
+    },
+    {
+      "slug": "atomic-visual-capture-ledger-publication",
+      "status": "implemented",
+      "trigger": "S111 required a repair after capture hashes were omitted from the append-only ledger. The receipt writer now publishes ledger entries immediately after its immutable full-proof receipt, while rejecting provisional or incomplete proof."
+    }
+  ],
+  "items": [
+    {
+      "slug": "complete-package-trade-law",
+      "title": "Price every pick in the complete trade package",
+      "category": "simulation authority",
+      "axis": "feature depth",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 25.8,
+      "tier": "HIGH",
+      "status": "implemented",
+      "premise": "A zero-for-first-round-pick package currently passes despite a 288-to-zero valuation.",
+      "premises": [
+        {
+          "claim": "Price every pick in the complete trade package — current source seam",
+          "adapter": "file-content",
+          "target": "src/runtime/services/TradeService.js",
+          "pattern": "readA.acceptable || incomingValueA",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "A zero-for-first-round-pick package currently passes despite a 288-to-zero valuation. Apply complete-package valuation whenever picks are present while preserving pure-player persona rules and all current tolerance constants; prove free-pick and mixed-package padding refusals and fair-trade acceptance without mutation on failure."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "A zero-for-first-round-pick package currently passes despite a 288-to-zero valuation. Apply complete-package valuation whenever picks are present while preserving pure-player persona rules and all current tolerance constants; prove free-pick and mixed-package padding refusals and fair-trade acceptance without mutation on failure. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 1,
+      "executionEvidence": "4/4 direct engine controls and 11/11 persona, trade-plan and CPU-market neighbors; repeated asset IDs refused without changing legal player-only trades or tolerance constants."
+    },
+    {
+      "slug": "worker-durable-storage",
+      "title": "Acknowledge durable worker storage and retire failed workers",
+      "category": "runtime integrity",
+      "axis": "security",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 24.9,
+      "tier": "HIGH",
+      "status": "implemented",
+      "premise": "Page storage failures currently become diagnostics while worker saves can report success.",
+      "premises": [
+        {
+          "claim": "Acknowledge durable worker storage and retire failed workers — current source seam",
+          "adapter": "file-content",
+          "target": "public/lib/api/workerTransport.js",
+          "pattern": "if (typeof onStorageError === \"function\") onStorageError(error, message);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2.5,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Page storage failures currently become diagnostics while worker saves can report success. Add correlated write acknowledgments, asynchronous durable mutations and a flush barrier; return persistence failure through the existing API error surface, terminate failed transports and ignore all late writes."
+        },
+        "L3": {
+          "effortHours": 7,
+          "recipe": "Page storage failures currently become diagnostics while worker saves can report success. Add correlated write acknowledgments, asynchronous durable mutations and a flush barrier; return persistence failure through the existing API error surface, terminate failed transports and ignore all late writes. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 2,
+      "executionEvidence": "23/23 focused worker, actual-runtime parity/fallback and observability checks. Includes independent-review regressions for held writer/concurrent read, request-owned failure attribution, initialization ordering and continuing after failure."
+    },
+    {
+      "slug": "indexeddb-commit-authority",
+      "title": "Publish saves only after IndexedDB commits",
+      "category": "save durability",
+      "axis": "feature depth",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 23.2,
+      "tier": "HIGH",
+      "status": "implemented",
+      "premise": "Request success currently resolves before transaction completion.",
+      "premises": [
+        {
+          "claim": "Publish saves only after IndexedDB commits — current source seam",
+          "adapter": "file-content",
+          "target": "src/adapters/persistence/hybridSaveStore.js",
+          "pattern": "request.onsuccess = () => resolve(request.result);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Request success currently resolves before transaction completion. Wait for committed transactions, reject aborted and blocked operations with bounded failure, preserve legacy bytes on failed migration, and keep existing IndexedDB saves readable after write degradation."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Request success currently resolves before transaction completion. Wait for committed transactions, reject aborted and blocked operations with bounded failure, preserve legacy bytes on failed migration, and keep existing IndexedDB saves readable after write degradation. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 3,
+      "executionEvidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Transaction completion, bounded stalled/blocked operations, versioned payload publication, committed readback, and readable prior IDB records after write degradation verified. Independent concurrency and failed-delete reproducers now pass."
+    },
+    {
+      "slug": "production-csp-style-parity",
+      "title": "Deliver lazy-surface styles under the real production policy",
+      "category": "mobile onboarding and visual clarity",
+      "axis": "ui/ux/user-experience",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 23.2,
+      "tier": "HIGH",
+      "status": "implemented",
+      "premise": "Live CSP blocks advisor and tutorial style elements, leaving plain labels and a mobile tutorial behind the deck.",
+      "premises": [
+        {
+          "claim": "Deliver lazy-surface styles under the real production policy — current source seam",
+          "adapter": "file-content",
+          "target": "public/lib/deskIslands.js",
+          "pattern": "style.textContent = advisor.ADVISOR_STYLE;",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Live CSP blocks advisor and tutorial style elements, leaving plain labels and a mobile tutorial behind the deck. Move all six on-page injected style blocks to the existing stylesheet, keep CSP strict, and exercise a built artifact serving its generated headers; normal mobile tutorial clicks and readable advisor styles must pass in both themes."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Live CSP blocks advisor and tutorial style elements, leaving plain labels and a mobile tutorial behind the deck. Move all six on-page injected style blocks to the existing stylesheet, keep CSP strict, and exercise a built artifact serving its generated headers; normal mobile tutorial clicks and readable advisor styles must pass in both themes. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 4,
+      "executionEvidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate."
+    },
+    {
+      "slug": "trade-fingerprint-transport",
+      "title": "Carry evaluated trade authority through both API routes",
+      "category": "command authority",
+      "axis": "security",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 5,
+      "priority": 22.5,
+      "tier": "HIGH",
+      "status": "implemented",
+      "premise": "Both API routes discard expectedPlanFingerprint.",
+      "premises": [
+        {
+          "claim": "Carry evaluated trade authority through both API routes — current source seam",
+          "adapter": "file-content",
+          "target": "src/app/api/localApiRuntime.js",
+          "pattern": "const result = session.tradePlayers({",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Both API routes discard expectedPlanFingerprint. Forward the optional field and preserve the service's 409 status; route-level tests must reject stale plans without asset/log mutation and accept current evaluated plans."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Both API routes discard expectedPlanFingerprint. Forward the optional field and preserve the service's 409 status; route-level tests must reject stale plans without asset/log mutation and accept current evaluated plans. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 5,
+      "executionEvidence": "Real local and HTTP route scenario passed: stale evaluation returns409 without asset/log mutation; current plan succeeds and omitted fingerprint remains compatible."
+    },
+    {
+      "slug": "observed-advisor-outcomes",
+      "title": "Score only observed advisor actions from the matching checkpoint",
+      "category": "decision feedback",
+      "axis": "feedback loop",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 21.7,
+      "tier": "MEDIUM",
+      "status": "implemented",
+      "premise": "The advisor currently calls an unobserved depth/cap action agreement.",
+      "premises": [
+        {
+          "claim": "Score only observed advisor actions from the matching checkpoint — current source seam",
+          "adapter": "file-content",
+          "target": "public/lib/frontOfficeAdvisor.js",
+          "pattern": "week-committed-unobserved-call",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "The advisor currently calls an unobserved depth/cap action agreement. Use observed agreement, observed disagreement and unscored outcomes; bind advice to pre-command franchise/year/week/phase authority and deduplicate repeated receipts, with clear visible copy and theme/mobile review."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "The advisor currently calls an unobserved depth/cap action agreement. Use observed agreement, observed disagreement and unscored outcomes; bind advice to pre-command franchise/year/week/phase authority and deduplicate repeated receipts, with clear visible copy and theme/mobile review. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 6,
+      "executionEvidence": "20/20 advisor, briefing and source-bound outcome checks, including no observed action, wrong decision occurrence, wrong franchise/checkpoint, replay and reload; unscored copy distinct from agreement/disagreement."
+    },
+    {
+      "slug": "preserve-failed-save-overwrite",
+      "title": "Keep the previous save when an overwrite fails",
+      "category": "save integrity",
+      "axis": "security",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 5,
+      "priority": 21.5,
+      "tier": "HIGH",
+      "status": "implemented",
+      "premise": "A failed overwrite currently deletes both existing keys.",
+      "premises": [
+        {
+          "claim": "Keep the previous save when an overwrite fails — current source seam",
+          "adapter": "file-content",
+          "target": "src/adapters/persistence/browserSaveStore.js",
+          "pattern": "storage.removeItem(dataKey(safe));",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "A failed overwrite currently deletes both existing keys. Preserve the prior snapshot and metadata across payload or metadata failure, including quota recovery and acknowledged worker storage writes; verify first-write failure, second-write failure and successful retry."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "A failed overwrite currently deletes both existing keys. Preserve the prior snapshot and metadata across payload or metadata failure, including quota recovery and acknowledged worker storage writes; verify first-write failure, second-write failure and successful retry. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 7,
+      "executionEvidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Per-slot serialization preserves newest acknowledged overwrite and prior readable save on payload, metadata or deletion failure. Busy/protected eviction and backup pruning tested. Irrecoverable rollback failures remain explicit."
+    },
+    {
+      "slug": "resolved-signing-contract",
+      "title": "Credit a winning player bid in the first-season contract",
+      "category": "progression payoff",
+      "axis": "gamification/engagement/immersion",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 18.6,
+      "tier": "MEDIUM",
+      "status": "implemented",
+      "premise": "A resolved player free-agent bid currently misses the signing objective.",
+      "premises": [
+        {
+          "claim": "Credit a winning player bid in the first-season contract — current source seam",
+          "adapter": "file-content",
+          "target": "public/lib/firstSeasonContract.js",
+          "pattern": "id: \"sign-starter\"",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "A resolved player free-agent bid currently misses the signing objective. Carry explicit player offer intent into the winning transaction and a bounded first-season dashboard projection; reconcile only a controlled-team player-origin win, excluding submission, losses, CPU moves and finalized/later-season results."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "A resolved player free-agent bid currently misses the signing objective. Carry explicit player offer intent into the winning transaction and a bounded first-season dashboard projection; reconcile only a controlled-team player-origin win, excluding submission, losses, CPU moves and finalized/later-season results. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 8,
+      "executionEvidence": "18/18 new and existing first-season checks: pending/outbid/CPU/legacy/later-year/finalized exclusions and real winning player intent through restore/team switch."
+    },
+    {
+      "slug": "deterministic-bye-browser",
+      "title": "Exercise both played-week and bye-week browser paths deterministically",
+      "category": "release behavior",
+      "axis": "speed/organization/efficiency",
+      "effortHours": 2,
+      "impact": 7,
+      "innovation": 4,
+      "priority": 14,
+      "tier": "MEDIUM",
+      "status": "implemented",
+      "premise": "Bye assertions currently depend on a randomly generated opening schedule.",
+      "premises": [
+        {
+          "claim": "Exercise both played-week and bye-week browser paths deterministically — current source seam",
+          "adapter": "file-content",
+          "target": "tests-ui/play-mode-smoke.spec.js",
+          "pattern": "halftimeAdjustModal",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Bye assertions currently depend on a randomly generated opening schedule. Add fixed played-game and bye fixtures with explicit branch preconditions, exactly one advance, no bye tactic/rehearsal modal, authoritative receipt and reload coherence."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Bye assertions currently depend on a randomly generated opening schedule. Add fixed played-game and bye fixtures with explicit branch preconditions, exactly one advance, no bye tactic/rehearsal modal, authoritative receipt and reload coherence. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 9,
+      "executionEvidence": "4/4 Playwright spec: seed20260306 BUF played-game and CHI bye, explicit schedule preconditions, actual onboarding, exactly one advance, bye modal absence, receipted ledger and reload coherence."
+    },
+    {
+      "slug": "node24-actions",
+      "title": "Adopt the available official Node 24 action majors",
+      "category": "delivery currency",
+      "axis": "speed/organization/efficiency",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 11.4,
+      "tier": "MEDIUM",
+      "status": "implemented",
+      "premise": "The inherited task waits for Node 24-native majors that now exist upstream.",
+      "premises": [
+        {
+          "claim": "Adopt the available official Node 24 action majors — current source seam",
+          "adapter": "file-content",
+          "target": ".github/workflows/deploy-pages.yml",
+          "pattern": "actions/configure-pages@v5",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Reproduce the stated defect and correct its primary source seam with a negative control."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "The inherited task waits for Node 24-native majors that now exist upstream. Verify official pinned releases and package trust, upgrade the named cache/configure-pages/upload-artifact actions on hosted runners, preserve the intentional Node binary pin, and validate through exact-source CI."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "The inherited task waits for Node 24-native majors that now exist upstream. Verify official pinned releases and package trust, upgrade the named cache/configure-pages/upload-artifact actions on hosted runners, preserve the intentional Node binary pin, and validate through exact-source CI. Verify the adjacent failure boundary and real browser behavior without new paid services or weaker gates."
+        }
+      },
+      "rank": 10,
+      "executionEvidence": "Founder approved the three exact signed-release pins after generic package-trust URL BLOCK40. Five workflow references updated; Node 24.14.0 and gates preserved. Focused workflow invariant checks passed; exact-source hosted CI remains a release gate."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "complete-package-trade-law",
+      "status": "implemented",
+      "evidence": "4/4 direct engine controls and 11/11 persona, trade-plan and CPU-market neighbors; repeated asset IDs refused without changing legal player-only trades or tolerance constants."
+    },
+    {
+      "slug": "worker-durable-storage",
+      "status": "implemented",
+      "evidence": "23/23 focused worker, actual-runtime parity/fallback and observability checks. Includes independent-review regressions for held writer/concurrent read, request-owned failure attribution, initialization ordering and continuing after failure."
+    },
+    {
+      "slug": "indexeddb-commit-authority",
+      "status": "implemented",
+      "evidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Transaction completion, bounded stalled/blocked operations, versioned payload publication, committed readback, and readable prior IDB records after write degradation verified. Independent concurrency and failed-delete reproducers now pass."
+    },
+    {
+      "slug": "production-csp-style-parity",
+      "status": "implemented",
+      "evidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate."
+    },
+    {
+      "slug": "trade-fingerprint-transport",
+      "status": "implemented",
+      "evidence": "Real local and HTTP route scenario passed: stale evaluation returns409 without asset/log mutation; current plan succeeds and omitted fingerprint remains compatible."
+    },
+    {
+      "slug": "observed-advisor-outcomes",
+      "status": "implemented",
+      "evidence": "20/20 advisor, briefing and source-bound outcome checks, including no observed action, wrong decision occurrence, wrong franchise/checkpoint, replay and reload; unscored copy distinct from agreement/disagreement."
+    },
+    {
+      "slug": "preserve-failed-save-overwrite",
+      "status": "implemented",
+      "evidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Per-slot serialization preserves newest acknowledged overwrite and prior readable save on payload, metadata or deletion failure. Busy/protected eviction and backup pruning tested. Irrecoverable rollback failures remain explicit."
+    },
+    {
+      "slug": "resolved-signing-contract",
+      "status": "implemented",
+      "evidence": "18/18 new and existing first-season checks: pending/outbid/CPU/legacy/later-year/finalized exclusions and real winning player intent through restore/team switch."
+    },
+    {
+      "slug": "deterministic-bye-browser",
+      "status": "implemented",
+      "evidence": "4/4 Playwright spec: seed20260306 BUF played-game and CHI bye, explicit schedule preconditions, actual onboarding, exactly one advance, bye modal absence, receipted ledger and reload coherence."
+    },
+    {
+      "slug": "node24-actions",
+      "status": "implemented",
+      "evidence": "Founder approved the three exact signed-release pins after generic package-trust URL BLOCK40. Five workflow references updated; Node 24.14.0 and gates preserved. Focused workflow invariant checks passed; exact-source hosted CI remains a release gate."
+    }
+  ],
+  "review": {
+    "method": "Independent source review and deterministic actual-module fault injection before the full suite",
+    "findings": [
+      "Older failed save can roll back newer acknowledged save",
+      "Failed metadata deletion can leave listed unreadable slot",
+      "Concurrent worker read can consume writer storage failure"
+    ],
+    "status": "all-three-reproduced-defects-corrected-and-verified",
+    "receipt": ".cache/s112-persistence-review.mjs"
+  },
+  "actionTrust": {
+    "automatedVerdict": "BLOCK40: generic HTTPS download heuristic, not an incident finding",
+    "override": "Founder approved these three exact pinned updates in this session",
+    "releases": [
+      {
+        "action": "actions/cache",
+        "version": "6.1.0",
+        "sha": "55cc8345863c7cc4c66a329aec7e433d2d1c52a9",
+        "source": "https://github.com/actions/cache/releases/tag/v6.1.0"
+      },
+      {
+        "action": "actions/configure-pages",
+        "version": "6.0.0",
+        "sha": "45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+        "source": "https://github.com/actions/configure-pages/releases/tag/v6.0.0"
+      },
+      {
+        "action": "actions/upload-artifact",
+        "version": "7.0.1",
+        "sha": "043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        "source": "https://github.com/actions/upload-artifact/releases/tag/v7.0.1"
+      }
+    ],
+    "evidence": "Official GitHub-verified release commits; tagged action.yml node24; release age over three months; hosted ubuntu-latest runner requirements satisfied; upload archive default preserved."
+  }
+}

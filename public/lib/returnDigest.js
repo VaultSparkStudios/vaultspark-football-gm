@@ -193,30 +193,10 @@ export async function fetchPendingDecisionSummary() {
   }
 }
 
-let stylesInjected = false;
-function ensureStyles() {
-  if (stylesInjected || document.getElementById("returnDigestStyles")) return;
-  stylesInjected = true;
-  const style = document.createElement("style");
-  style.id = "returnDigestStyles";
-  style.textContent = `
-    .return-digest-overlay { position: fixed; inset: 0; z-index: 9000; display: flex; align-items: center; justify-content: center; background: rgba(6, 10, 18, 0.72); padding: 1rem; pointer-events: none; }
-    .return-digest-card { max-width: 420px; width: 100%; background: var(--panel, #141c2b); color: var(--ink, #eef2fb); border: 1px solid var(--line, #263248); border-radius: 14px; padding: 1.25rem 1.4rem; box-shadow: 0 18px 60px rgba(0,0,0,0.45); pointer-events: auto; }
-    .return-digest-header { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.01em; }
-    .return-digest-sub { margin-top: 0.25rem; font-size: 0.85rem; color: var(--muted, #93a1bd); }
-    .return-digest-list { list-style: none; margin: 0.9rem 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; }
-    .return-digest-list li { padding-left: 1.1rem; position: relative; }
-    .return-digest-list li::before { content: "\\2022"; position: absolute; left: 0; color: var(--accent, #5b8cff); }
-    .return-digest-decision { color: var(--accent, #5b8cff); font-weight: 600; }
-    .return-digest-actions { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
-    .return-digest-actions button { flex: 1; min-height: 44px; border-radius: 8px; border: 1px solid var(--line, #263248); background: transparent; color: inherit; cursor: pointer; font: inherit; }
-    .return-digest-actions button[data-action="dismiss"] { background: var(--accent, #5b8cff); border-color: transparent; color: #0b1220; font-weight: 700; }
-  `;
-  document.head.appendChild(style);
-}
+
+
 
 export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpToInbox, onContinueChapter } = {}) {
-  ensureStyles();
   const chapterAction = buildReturnChapterAction(digest);
 
   const recordLine = digest.recordDelta

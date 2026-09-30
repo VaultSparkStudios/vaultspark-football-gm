@@ -14,7 +14,7 @@ function numberOrNull(value) {
   return Number.isFinite(normalized) ? normalized : null;
 }
 
-function commandShape(card = {}) {
+function commandShape(card = {}, pendingDecision = null) {
   return {
     rank: numberOrNull(card.rank),
     lane: text(card.lane, "Optional"),
@@ -23,6 +23,8 @@ function commandShape(card = {}) {
     reasonCode: text(card.reasonCode, "league-pulse"),
     blocking: card.blocking === true,
     action: text(card.action, "open-tab"),
+    decisionId: card.action === "choose-gm-decision" ? pendingDecision?.id || pendingDecision?.decisionId || null : null,
+    occurrenceKey: card.action === "choose-gm-decision" ? pendingDecision?.occurrenceKey || null : null,
     targetTab: text(card.targetTab) || null,
     choices: (Array.isArray(card.choices) ? card.choices : []).slice(0, 4).map((choice) => ({
       id: text(choice.id),
@@ -81,7 +83,7 @@ export function buildCoGmBriefingPacket({
       phase: text(dashboard.phase, "unknown"),
       record: text(team.record || team.recordLabel || dashboard.controlledTeamRecord, "unavailable")
     },
-    currentCommand: commandShape(currentCommand),
+    currentCommand: commandShape(currentCommand, pendingDecision),
     pressure: {
       ownerMandate: text(owner.mandate, "No explicit owner mandate surfaced"),
       ownerTrend: text(owner.trend, "watch"),

@@ -866,9 +866,10 @@ async function handleApi(req, res, url) {
       teamAPlayerIds: (body.teamAPlayerIds || []).map((id) => String(id)),
       teamBPlayerIds: (body.teamBPlayerIds || []).map((id) => String(id)),
       teamAPickIds: (body.teamAPickIds || []).map((id) => String(id)),
-      teamBPickIds: (body.teamBPickIds || []).map((id) => String(id))
+      teamBPickIds: (body.teamBPickIds || []).map((id) => String(id)),
+      expectedPlanFingerprint: body.expectedPlanFingerprint
     });
-    sendJson(res, result.ok ? 200 : 400, { ...result, state: session.getDashboardState() });
+    sendJson(res, result.ok ? 200 : (result.status || 400), { ...result, state: session.getDashboardState() });
     return true;
   }
 

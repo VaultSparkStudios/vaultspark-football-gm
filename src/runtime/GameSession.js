@@ -6924,6 +6924,16 @@ export class GameSession {
         })()
       : null;
     dashboard.franchiseLore = this.league.franchiseLore || [];
+    dashboard.firstSeasonEvidence = {
+      year: this.startYear,
+      playerFreeAgentSignings: (this.league.transactionLog || [])
+        .filter((row) => row.type === "fa-signing" && row.teamId === this.controlledTeamId &&
+          row.year === this.startYear && row.details?.submittedYear === this.startYear &&
+          row.details?.origin === "player" && row.details?.offerId)
+        .slice(-8)
+        .map((row) => ({ transactionId: row.id, offerId: row.details.offerId,
+          playerId: row.playerId, teamId: row.teamId, year: row.year, origin: "player" }))
+    };
     dashboard.newsLog = this.league.newsLog || [];
     dashboard.coachingTree = this.league.coachingTree || null;
     dashboard.gmLegacy = this.league.gmLegacy
@@ -7241,7 +7251,7 @@ export class GameSession {
     };
   }
 
-  submitFreeAgencyOffer({ teamId, playerId, years = 2, salary = null }) {
+  submitFreeAgencyOffer({ teamId, playerId, years = 2, salary = null, initiator = "player" }) {
     if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
     const restrictions = this.getChallengeRestrictions(teamId);
     if (!restrictions.allowUserFreeAgency) {
@@ -7271,6 +7281,8 @@ export class GameSession {
     const gmBenefits = teamId === this.controlledTeamId ? getGmBenefits(this.league.gmLegacy) : null;
     const payload = {
       id: `OFF-${this.currentYear}-${this.currentWeek}-${teamId}-${playerId}`,
+      origin: initiator === "player" && teamId === this.controlledTeamId ? "player" : "cpu",
+      submittedYear: this.currentYear,
       teamId,
       playerId,
       playerName: player.name,
@@ -7362,7 +7374,7 @@ export class GameSession {
               : baseSalary;
         const years =
           strategy === "rebuild" ? 4 : (player.age || 27) >= 29 ? 2 : 3;
-        const offer = this.submitFreeAgencyOffer({ teamId: team.id, playerId: player.id, years, salary });
+        const offer = this.submitFreeAgencyOffer({ teamId: team.id, playerId: player.id, years, salary, initiator: "cpu" });
         if (offer.ok) submitted += 1;
       }
     }
@@ -7416,7 +7428,11 @@ export class GameSession {
           teamId: offer.teamId,
           playerId,
           playerName: player.name,
-          details: { years: offer.years, salary: offer.salary }
+          details: {
+            years: offer.years, salary: offer.salary,
+            offerId: offer.id || null, origin: offer.origin || "unknown",
+            submittedYear: offer.submittedYear ?? null
+          }
         });
         this.registerFreeAgencyMove({
           teamId: offer.teamId,

@@ -2,6 +2,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { writeCaptureLedger } from "./visual-qa-retention.mjs";
 
 const root = process.cwd();
 const outputRoot = path.join(root, "output", "playwright");
@@ -13,6 +14,16 @@ const surfaceLabels = new Map([
   ["game-depth", "Team workspace depth mode"],
   ["game-trades", "Trade market and club identity"],
   ["game-dialog", "First-run Opening Contract tutorial"],
+  ["tutorial-skip", "Opening Contract above the mobile deck; ordinary Skip action"],
+  ["tutorial-identity", "Opening Contract identity choice under production policy"],
+  ["tutorial-pressure", "Opening Contract pressure choice under production policy"],
+  ["tutorial-first-call", "Opening Contract first call under production policy"],
+  ["tutorial-receipt", "Committed Opening Contract receipt under production policy"],
+  ["advisor", "Styled Front Office Advisor under production policy"],
+  ["dynasty-timeline", "Theme-aware dynasty history fixture under production policy"],
+  ["first-debrief", "Optional first-debrief feedback under production policy"],
+  ["moment-card", "Moment share control under production policy"],
+  ["return-digest", "Return-session digest under production policy"],
   ["cap-pressure", "Opening salary-cap pressure and General Manager legacy"],
   ["waiver-identity", "Named and rated waiver-wire player identity"],
   ["franchise-legends", "Franchise Legends dynasty memory"],
@@ -47,7 +58,7 @@ if (process.argv.includes("--help") || process.argv.includes("-h")) {
 }
 
 const candidates = (await fs.readdir(outputRoot, { withFileTypes: true }))
-  .filter((entry) => entry.isDirectory() && entry.name.startsWith("responsive-"))
+  .filter((entry) => entry.isDirectory() && entry.name.startsWith("responsive-") && !entry.name.includes("-lazy-style"))
   .map((entry) => path.join(outputRoot, entry.name));
 if (!candidates.length) throw new Error("No responsive evidence directory found");
 
@@ -65,6 +76,9 @@ const evidenceDir = evidenceDirs[0].dir;
 const reportBuffer = await fs.readFile(path.join(evidenceDir, "responsive-evidence.json"));
 const report = JSON.parse(reportBuffer);
 if (report.status !== "passed") throw new Error("Latest responsive evidence did not pass");
+if (report.kind === "provisional-rendered-evidence" || report.coverage?.scope !== "full") {
+  throw new Error("Canonical visual receipt requires a full immutable artifact proof, not an iteration capture.");
+}
 if (!/^[a-f0-9]{40}$/i.test(report.sourceRevision || "")) throw new Error("Responsive evidence is not bound to an immutable source revision");
 if (!/^[a-f0-9]{64}$/i.test(report.artifactFingerprint?.digest || "")) throw new Error("Responsive evidence is not bound to an immutable artifact fingerprint");
 const projectStatus = JSON.parse(await fs.readFile(path.join(root, "context", "PROJECT_STATUS.json"), "utf8"));
@@ -123,12 +137,15 @@ for (const theme of ["dark", "light"]) {
 
 const publicEvidenceDir = path.join(outputRoot, "public-qa");
 const publicReport = JSON.parse(await fs.readFile(path.join(publicEvidenceDir, "report.json"), "utf8"));
+if (publicReport.status !== "passed" || publicReport.failures?.length) {
+  throw new Error("Public-page evidence did not pass its delivered-policy checks");
+}
 if (publicReport.sourceRevision !== report.sourceRevision
   || publicReport.artifactFingerprint?.digest !== report.artifactFingerprint.digest) {
   throw new Error("Public-page captures do not match the responsive candidate and artifact");
 }
 for (const item of publicReport.captures || []) {
-  if (item.status !== 200 || item.documentWidth > item.width + 1) {
+  if (item.status !== 200 || item.documentWidth > item.width + 1 || !item.policyMatchesArtifact || item.policyViolations?.length) {
     throw new Error(`Public-page capture failed: ${item.file}`);
   }
   const targetName = `s${receiptSession}-public-${item.file}`;
@@ -161,4 +178,6 @@ const receipt = {
 };
 
 await fs.writeFile(path.join(receiptDir, "LATEST.json"), `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
+const ledger = writeCaptureLedger({ root });
+console.log(`Capture ledger updated: ${ledger.added} new, ${ledger.revised} revised hashes`);
 console.log(`Visual QA receipt written: ${captures.length} captures from ${path.basename(evidenceDir)}`);

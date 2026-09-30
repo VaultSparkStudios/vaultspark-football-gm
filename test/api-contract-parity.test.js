@@ -51,6 +51,19 @@ function scheduleUnref(callback, delay) {
   return timer;
 }
 
+async function captureTradeAssets(runtime, server) {
+  const captured = {};
+  for (const route of [
+    "/api/picks?team=BUF", "/api/picks?team=MIA",
+    "/api/roster?team=BUF", "/api/roster?team=MIA",
+    "/api/transactions?limit=2000", "/api/news?limit=500"
+  ]) {
+    const pair = await requestPair(runtime, server, route);
+    captured[route] = structuredClone({ local: pair.local.payload, remote: pair.remote.payload });
+  }
+  return captured;
+}
+
 
 async function reservePort() {
   const socket = net.createServer();
@@ -178,6 +191,84 @@ test("response contracts fail closed on malformed success envelopes", () => {
     () => assertApiContractResponse("GET", "/api/rivalry", { ok: true }),
     /expected one of rivalry, rivalries/
   );
+});
+
+test("trade APIs enforce complete pick valuation and stale-plan authority through both transports", { timeout: 120_000 }, async () => {
+  const runtime = createLocalApiRuntime({ storage: memoryStorage(), scheduler: (fn) => fn() });
+  const server = await startServer();
+  try {
+    const created = await requestPair(runtime, server, "/api/new-league", {
+      method: "POST", body: { seed: 20260306, startYear: 2026, controlledTeamId: "BUF", mode: "play" }
+    });
+    assert.equal(created.local.status, 200);
+    const assetsA = await requestPair(runtime, server, "/api/picks?team=BUF");
+    const assetsB = await requestPair(runtime, server, "/api/picks?team=MIA");
+    const pickA = assetsA.local.payload.picks[0];
+    const pickB = assetsB.local.payload.picks[0];
+    assert.equal(pickA.id, assetsA.remote.payload.picks[0].id);
+    assert.equal(pickB.id, assetsB.remote.payload.picks[0].id);
+    const balanced = {
+      teamA: "BUF", teamB: "MIA", teamAPlayerIds: [], teamBPlayerIds: [],
+      teamAPickIds: [pickA.id], teamBPickIds: [pickB.id]
+    };
+    const beforeRefusal = await captureTradeAssets(runtime, server);
+    for (const route of ["/api/trade/evaluate", "/api/trade"]) {
+      const refused = await requestPair(runtime, server, route, {
+        method: "POST", body: { ...balanced, teamAPickIds: [] }
+      });
+      assert.equal(refused.local.status, 400);
+      for (const response of [refused.local, refused.remote]) {
+        assert.equal(response.payload.reasonCode, "valuation-failed");
+        assert.equal(response.payload.valuation.MIA.incomingValue, 0);
+        assert.ok(response.payload.valuation.MIA.outgoingValue > 0);
+      }
+    }
+    assert.deepEqual(await captureTradeAssets(runtime, server), beforeRefusal,
+      "both APIs preserve players, picks, cap, transaction log and news after a refused gift");
+
+    const evaluation = await requestPair(runtime, server, "/api/trade/evaluate", { method: "POST", body: balanced });
+    assert.equal(evaluation.local.status, 200, "the fixture is a legal balanced exchange");
+    assert.equal(evaluation.local.payload.plan.fingerprint, evaluation.remote.payload.plan.fingerprint);
+    await requestPair(runtime, server, "/api/settings", { method: "POST", body: { cpuTradeAggression: 0.75 } });
+    const beforeStale = await captureTradeAssets(runtime, server);
+    const stale = await requestPair(runtime, server, "/api/trade", {
+      method: "POST", body: { ...balanced, expectedPlanFingerprint: evaluation.local.payload.plan.fingerprint }
+    });
+    assert.equal(stale.local.status, 409, "a real rule change invalidates the evaluated plan across both transports");
+    for (const response of [stale.local, stale.remote]) {
+      assert.equal(response.payload.reasonCode, "stale-trade-plan");
+      assert.notEqual(response.payload.currentPlan.fingerprint, evaluation.local.payload.plan.fingerprint);
+    }
+    assert.deepEqual(await captureTradeAssets(runtime, server), beforeStale,
+      "a stale plan cannot change either club's assets, cap or logs");
+
+    const fresh = await requestPair(runtime, server, "/api/trade/evaluate", { method: "POST", body: balanced });
+    assert.equal(fresh.local.status, 200);
+    assert.equal(fresh.local.payload.plan.fingerprint, fresh.remote.payload.plan.fingerprint);
+    const accepted = await requestPair(runtime, server, "/api/trade", {
+      method: "POST", body: { ...balanced, expectedPlanFingerprint: fresh.local.payload.plan.fingerprint }
+    });
+    assert.equal(accepted.local.status, 200);
+    for (const response of [accepted.local, accepted.remote]) {
+      assert.deepEqual(response.payload.movedPicksA, [pickA.id]);
+      assert.deepEqual(response.payload.movedPicksB, [pickB.id]);
+    }
+    for (const [teamId, received] of [["BUF", pickB.id], ["MIA", pickA.id]]) {
+      const owned = await requestPair(runtime, server, `/api/picks?team=${teamId}`);
+      for (const response of [owned.local, owned.remote]) {
+        assert.equal(response.payload.picks.filter((pick) => pick.id === received && pick.ownerTeamId === teamId).length, 1);
+      }
+    }
+    const returned = await requestPair(runtime, server, "/api/trade", {
+      method: "POST", body: { ...balanced, teamAPickIds: [pickB.id], teamBPickIds: [pickA.id] }
+    });
+    assert.equal(returned.local.status, 200, "the fingerprint remains optional for callers that did not preview a plan");
+    const log = await requestPair(runtime, server, "/api/transactions?type=trade");
+    assert.equal(log.local.payload.transactions.length, 2);
+    assert.equal(log.remote.payload.transactions.length, 2);
+  } finally {
+    await server.close();
+  }
 });
 
 test("server and static runtimes preserve representative route shapes and state transitions", { timeout: 120_000 }, async () => {

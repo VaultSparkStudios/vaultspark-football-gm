@@ -4,7 +4,6 @@ import { readFile } from "node:fs/promises";
 import { createSession } from "../src/runtime/bootstrap.js";
 import { buildCoGmBriefingPacket } from "../public/lib/coGmBriefing.js";
 import {
-  ADVISOR_STYLE,
   ADVISOR_WEIGHTS,
   buildAdvice,
   renderAdvisorCard,
@@ -53,6 +52,7 @@ function resolvePath(root, path) {
 }
 
 function receipt({ status = "committed", choiceId = null, tacticId = "balanced" } = {}) {
+  const command = realPacket().currentCommand;
   return {
     schemaVersion: "1.0",
     kind: status === "committed" ? "weekly-plan-commit-receipt" : "weekly-plan-preview",
@@ -60,7 +60,8 @@ function receipt({ status = "committed", choiceId = null, tacticId = "balanced" 
     phase: "regular-season",
     onBye: false,
     compositionOrder: ["gm-decision", "tactic"],
-    plan: { gmDecision: choiceId ? { decisionId: "trade-deadline", choiceId, occurrenceKey: "k" } : null, tacticId, explicitNoPlan: false },
+    plan: { gmDecision: choiceId ? { decisionId: command.decisionId, choiceId, occurrenceKey: command.occurrenceKey } : null, tacticId, explicitNoPlan: false },
+    observed: { gmDecisionApplied: Boolean(choiceId) && status === "committed" },
     review: null
   };
 }
@@ -189,13 +190,14 @@ test("scoreAgreement: gm-decision matches on the committed choice id, deferral n
   const other = ["buy", "sell", "hold"].find((id) => id !== advised);
   assert.equal(scoreAgreement(advice, receipt({ choiceId: advised })).agreed, true);
   assert.equal(scoreAgreement(advice, receipt({ choiceId: other })).agreed, false);
-  assert.equal(scoreAgreement(advice, receipt({ status: "deferred", choiceId: advised })).agreed, false);
+  assert.equal(scoreAgreement(advice, receipt({ status: "deferred", choiceId: advised })).agreed, null);
   assert.equal(scoreAgreement(advice, null).basis, "no-receipt");
 
   const desk = buildAdvice({ pressure: { capSpace: -1_000_000 } });
   assert.equal(desk.call.kind, "cap-pressure");
-  assert.equal(scoreAgreement(desk, receipt({ status: "ready" })).basis, "week-committed-unobserved-call");
-  assert.equal(scoreAgreement(desk, receipt({ status: "deferred" })).agreed, false);
+  assert.equal(scoreAgreement(desk, receipt({ status: "ready" })).basis, "not-committed");
+  assert.equal(scoreAgreement(desk, receipt({ status: "committed" })).agreed, null);
+  assert.equal(scoreAgreement(desk, receipt({ status: "deferred" })).agreed, null);
 
   let tally = updateAgreementTally(null, scoreAgreement(advice, receipt({ choiceId: advised })));
   tally = updateAgreementTally(tally, scoreAgreement(advice, receipt({ choiceId: other })));
@@ -223,7 +225,7 @@ test("the counterfactual reports both branches and describes what the player act
   assert.equal(JSON.stringify(buildAdvice(packet)), JSON.stringify(lastWeekAdvice), "the counterfactual does not perturb the call");
 });
 
-test("renderAdvisorCard escapes a hostile team name and carries the contract classes and data attributes", () => {
+test("renderAdvisorCard escapes a hostile team name and carries the contract classes and data attributes", async () => {
   const packet = clone(realPacket());
   packet.authority.teamName = "<script>alert('x')</script> Stallions";
   packet.currentCommand.choices[0].label = "Buy <b>now</b>";
@@ -244,8 +246,8 @@ test("renderAdvisorCard escapes a hostile team name and carries the contract cla
   assert.ok(!compact.includes("advisor-counterfactual"), "compact drops the counterfactual");
   assert.equal((compact.match(/<li>/g) || []).length, 1, "compact keeps one reason");
 
-  assert.match(ADVISOR_STYLE, /^\.advisor-card\{/);
-  assert.ok(ADVISOR_STYLE.split("\n").every((line) => line.startsWith(".advisor-")), "style is scoped under .advisor-*");
+  const styles = await readFile(new URL("../public/styles.css", import.meta.url), "utf8");
+  assert.match(styles, /\.advisor-card\{[^}]*display:grid/);
 });
 
 test("ADVISOR_WEIGHTS is the whole table and is frozen", () => {

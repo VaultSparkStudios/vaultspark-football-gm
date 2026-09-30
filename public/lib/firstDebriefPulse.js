@@ -28,29 +28,7 @@ function pulsePageStates(storage) {
   return pageStates.get(storage);
 }
 
-function ensureFirstDebriefStyles() {
-  if (document.getElementById("firstDebriefPulseStyles")) return;
-  const styles = document.createElement("style");
-  styles.id = "firstDebriefPulseStyles";
-  styles.textContent = `
-    .first-debrief-overlay{align-items:center;background:color-mix(in srgb,#050914 78%,transparent);display:flex;inset:0;justify-content:center;padding:20px;position:fixed;z-index:2600}
-    .first-debrief-card{background:var(--panel-strong);border:1px solid color-mix(in srgb,var(--accent) 42%,var(--line));border-radius:18px;box-shadow:0 24px 80px var(--shadow);color:var(--ink);max-height:calc(100dvh - 40px);max-width:680px;overflow-y:auto;padding:24px;width:100%}
-    .first-debrief-kicker{color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
-    .first-debrief-card h2{color:var(--ink-strong);font-size:clamp(1.35rem,3vw,1.85rem);margin:.35rem 0 .45rem}
-    .first-debrief-lede{color:var(--muted);line-height:1.5;margin:0 0 1.1rem}
-    .first-debrief-rating-grid{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
-    .first-debrief-rating-grid label,.first-debrief-note{color:var(--ink-dim);display:grid;font-size:.82rem;font-weight:700;gap:6px}
-    .first-debrief-rating-grid select,.first-debrief-note textarea{background:var(--inset);border:1px solid var(--line);border-radius:10px;color:var(--ink);font:inherit;min-height:42px;padding:9px 10px}
-    .first-debrief-rating-grid select:focus-visible,.first-debrief-note textarea:focus-visible{border-color:var(--accent);outline:2px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:2px}
-    .first-debrief-note{margin-top:12px}.first-debrief-note textarea{min-height:76px;resize:vertical}
-    .first-debrief-privacy{color:var(--muted);font-size:.77rem;line-height:1.45;margin:12px 0}
-    .first-debrief-error{color:var(--danger);font-size:.82rem;min-height:1.2em}
-    .first-debrief-actions{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end;margin-top:8px}
-    .first-debrief-confirmation{max-width:520px}
-    @media(max-width:560px){.first-debrief-overlay{align-items:flex-end;padding:10px}.first-debrief-card{border-radius:16px;max-height:calc(100dvh - 20px);padding:18px}.first-debrief-rating-grid{grid-template-columns:1fr}.first-debrief-actions{flex-direction:column}.first-debrief-actions .btn{min-height:44px;width:100%}}
-  `;
-  document.head.append(styles);
-}
+
 
 export function firstDebriefPulseStorageKey(dashboard = {}) {
   return franchiseStorageKey(FIRST_DEBRIEF_PULSE_STORAGE_PREFIX, dashboard);
@@ -159,7 +137,6 @@ export function maybePromptFirstDebriefPulse({
   }
   if (document.getElementById("firstDebriefPulse")) return false;
 
-  ensureFirstDebriefStyles();
   const overlay = document.createElement("div");
   overlay.id = "firstDebriefPulse";
   overlay.className = "first-debrief-overlay";

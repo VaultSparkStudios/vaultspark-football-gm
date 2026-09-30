@@ -95,6 +95,17 @@ function seasonIsClosed(dashboard = {}) {
   return LATE_PHASES.has(String(dashboard.phase || "")) || Number(dashboard.seasonsSimulated || 0) >= 1;
 }
 
+export function hasFirstSeasonSigningEvidence(dashboard = {}, contractState = {}) {
+  if (contractState.finalized) return false;
+  const firstYear = contractState.startYear ?? dashboard.startYear;
+  const evidence = dashboard.firstSeasonEvidence;
+  return firstYear != null && Number(dashboard.currentYear) === Number(firstYear) &&
+    Number(evidence?.year) === Number(firstYear) &&
+    Array.isArray(evidence?.playerFreeAgentSignings) && evidence.playerFreeAgentSignings.some((row) =>
+      row.origin === "player" && row.offerId && row.transactionId &&
+      row.teamId === dashboard.controlledTeamId && Number(row.year) === Number(firstYear));
+}
+
 /**
  * Objective status from the two sources of truth: the player's marked actions
  * and the dashboard. Dashboard-derived objectives can only pass; they never
@@ -110,7 +121,8 @@ export function evaluateObjectives(dashboard = {}, contractState = { marks: {} }
     let done = false;
     let progress = "";
     if (objective.source === "action") {
-      done = Boolean(marks[objective.id]);
+      done = Boolean(marks[objective.id]) ||
+        (objective.id === "sign-starter" && hasFirstSeasonSigningEvidence(dashboard, contractState));
     } else if (objective.id === "owner-floor") {
       if (target && record) {
         done = closed && record.wins >= target;
@@ -245,6 +257,10 @@ export function renderFirstSeasonContract({ dashboard, storage = globalThis.loca
   let contractState = readContractState(dashboard, storage);
   if (contractState.startYear == null && dashboard.currentYear != null && Number(dashboard.seasonsSimulated || 0) === 0) {
     contractState = writeContractState(dashboard, { ...contractState, startYear: dashboard.currentYear }, storage);
+  }
+  if (!contractState.marks["sign-starter"] && hasFirstSeasonSigningEvidence(dashboard, contractState)) {
+    contractState = writeContractState(dashboard, { ...contractState,
+      marks: { ...contractState.marks, "sign-starter": true } }, storage);
   }
   const summary = contractState.finalized
     ? { rows: contractState.finalized.rows, done: contractState.finalized.done, total: contractState.finalized.total, complete: contractState.finalized.done === contractState.finalized.total }

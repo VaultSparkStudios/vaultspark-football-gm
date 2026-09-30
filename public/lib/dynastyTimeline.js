@@ -161,34 +161,6 @@ function renderDetail(season) {
 }
 
 /**
- * Inject timeline CSS into document head (idempotent).
+ * Compatibility export; timeline rules are delivered by the app stylesheet.
  */
-export function injectStyles() {
-  if (document.getElementById("dynasty-timeline-styles")) return;
-  const style = document.createElement("style");
-  style.id = "dynasty-timeline-styles";
-  style.textContent = `
-    .dynasty-timeline { display: flex; flex-direction: column; gap: 1rem; min-width: 0; max-width: 100%; overflow: hidden; }
-    .tl-scroll-wrapper { width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; padding-bottom: .5rem; }
-    .tl-track { position: relative; padding: 1.5rem 40px; }
-    .tl-connector { position: absolute; top: 50%; left: 40px; right: 40px; height: 4px; transform: translateY(-50%); border-radius: 2px; }
-    .tl-nodes { display: flex; gap: 12px; position: relative; z-index: 1; }
-    .tl-node { width: 80px; min-width: 80px; padding: .5rem .25rem; border-radius: 8px; background: #1a2030; border: 2px solid #2a3040; cursor: pointer; text-align: center; transition: border-color .15s, background .15s; }
-    .tl-node:hover, .tl-node.tl-active { border-color: var(--tl-color); background: #202838; }
-    .tl-champion { border-color: #f0c040 !important; background: #1e1a08 !important; }
-    .tl-champion:hover, .tl-champion.tl-active { background: #282208 !important; }
-    .tl-deep-run { border-color: #4a8fb5; }
-    .tl-playoff { border-color: #3a6080; }
-    .tl-year { font-size: .75rem; font-weight: 700; color: #c8d4e0; }
-    .tl-rec { font-size: .7rem; color: #8a9ab0; margin-top: 2px; }
-    .tl-crown { color: #f0c040; font-size: .8rem; }
-    .tl-empty { color: #6a7a8a; padding: 2rem; text-align: center; font-style: italic; font-size: .9rem; }
-    .tl-detail { background: #111820; border: 1px solid #2a3a4a; border-radius: 8px; padding: 1rem 1.25rem; }
-    .tl-detail-title { font-size: 1rem; font-weight: 700; color: #e8d5a0; margin-bottom: .75rem; }
-    .tl-detail-row { display: flex; justify-content: space-between; padding: .35rem 0; border-bottom: 1px solid #1e2830; font-size: .85rem; }
-    .tl-detail-row:last-child { border-bottom: none; }
-    .tl-detail-label { color: #6a7a8a; }
-    .tl-detail-value { color: #c8d4e0; text-align: right; }
-  `;
-  document.head.appendChild(style);
-}
+export function injectStyles() { /* Styles ship in styles.css. */ }

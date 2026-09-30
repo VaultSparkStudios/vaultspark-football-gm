@@ -10,6 +10,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
 import { resolveVisualGameReceipt } from "./lib/visual-game-receipt.mjs";
+import { parseArtifactHeaderRules, resolveArtifactHeaders } from "./lib/edge-security-policy.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, "..");
@@ -22,6 +23,9 @@ const configuredViewports = [
   { name: "desktop", width: 1440, height: 1000 }
 ];
 const evidenceThemes = ["dark", "light"];
+const lazyStyleOnly = process.env.EVIDENCE_SCOPE === "lazy-style";
+const iterationEvidence = process.env.EVIDENCE_ITERATION === "1";
+const lazyStyleSurfaces = ["tutorial-skip", "tutorial-identity", "tutorial-pressure", "tutorial-first-call", "tutorial-receipt", "advisor", "dynasty-timeline", "first-debrief", "moment-card", "return-digest"];
 const evidenceTabs = [
   ["overviewTab", "overview"],
   ["calendarTab", "league"],
@@ -51,8 +55,10 @@ async function exists(target) {
 }
 
 async function sourceIdentity() {
+  if (iterationEvidence && !lazyStyleOnly) throw new Error("EVIDENCE_ITERATION=1 is restricted to EVIDENCE_SCOPE=lazy-style; full evidence requires an immutable source revision.");
   const manifest = JSON.parse(await fs.readFile(path.join(staticDir, "deploy-manifest.json"), "utf8"));
-  if (!/^[a-f0-9]{40}$/i.test(manifest.sourceRevision || "")) throw new Error("Static manifest lacks an immutable source revision.");
+  const provisionalWorktree = iterationEvidence && lazyStyleOnly && manifest.sourceRevision === "local-worktree";
+  if (!provisionalWorktree && !/^[a-f0-9]{40}$/i.test(manifest.sourceRevision || "")) throw new Error("Static manifest lacks an immutable source revision. Provisional worktree evidence requires EVIDENCE_ITERATION=1 and EVIDENCE_SCOPE=lazy-style.");
   if (!/^[a-f0-9]{64}$/i.test(manifest.artifactFingerprint?.digest || "")) throw new Error("Static manifest lacks an immutable artifact fingerprint.");
   return { sourceRevision: manifest.sourceRevision, artifactFingerprint: manifest.artifactFingerprint };
 }
@@ -72,6 +78,7 @@ async function sourceRevision() {
 
 async function createServer() {
   if (!(await exists(path.join(staticDir, "index.html")))) throw new Error("Missing static artifact. Run npm run build:pages first.");
+  const artifactHeaderRules = parseArtifactHeaderRules(await fs.readFile(path.join(staticDir, "_headers"), "utf8"));
   const server = http.createServer(async (req, res) => {
     try {
       const url = new URL(req.url || "/", `http://${host}`);
@@ -80,7 +87,7 @@ async function createServer() {
       const safeTarget = target.startsWith(`${staticDir}${path.sep}`) ? target : path.join(staticDir, "404.html");
       const file = await exists(safeTarget) ? safeTarget : path.join(staticDir, "404.html");
       const data = await fs.readFile(file);
-      res.writeHead(200, { "Content-Type": contentTypes[path.extname(file).toLowerCase()] || "application/octet-stream" });
+      res.writeHead(200, { ...resolveArtifactHeaders(artifactHeaderRules, url.pathname), "Content-Type": contentTypes[path.extname(file).toLowerCase()] || "application/octet-stream" });
       res.end(data);
     } catch (error) {
       res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
@@ -89,7 +96,32 @@ async function createServer() {
   });
   await new Promise((resolve) => server.listen(0, host, resolve));
   const address = server.address();
-  return { server, baseUrl: `http://${host}:${address.port}/` };
+  const baseUrl = `http://${host}:${address.port}/`;
+  const policyWitnesses = [];
+  try {
+    const manifest = JSON.parse(await fs.readFile(path.join(staticDir, "deploy-manifest.json"), "utf8"));
+    for (const pathname of ["/game.html", "/sw.js", ...(manifest.styleAsset ? [`/${manifest.styleAsset}`] : [])]) {
+      const response = await fetch(new URL(pathname, baseUrl), { method: "HEAD" });
+      const expected = resolveArtifactHeaders(artifactHeaderRules, pathname);
+      const observed = Object.fromEntries(Object.keys(expected).map((key) => [key, response.headers.get(key)]));
+      const ok = response.ok && Object.entries(expected).every(([key, value]) => observed[key] === value);
+      policyWitnesses.push({ pathname, expected, observed, ok });
+      if (!ok) throw new Error(`Evidence host does not serve the exact artifact headers at ${pathname}`);
+    }
+  } catch (error) {
+    await new Promise((resolve) => server.close(resolve));
+    throw error;
+  }
+  return { server, baseUrl, artifactHeaderRules, policyWitnesses };
+}
+
+async function monitorArtifactPolicy(context) {
+  await context.addInitScript(() => {
+    globalThis.__evidencePolicyViolations = [];
+    document.addEventListener("securitypolicyviolation", (event) => {
+      globalThis.__evidencePolicyViolations.push({ directive: event.effectiveDirective, blockedURI: event.blockedURI });
+    });
+  });
 }
 
 async function setTheme(page, theme) {
@@ -129,6 +161,7 @@ async function inspectSurface(page, selectors) {
       documentWidth: document.documentElement.scrollWidth,
       overflowX: document.documentElement.scrollWidth > innerWidth + 1,
       bodyContrast: Number(contrast(bodyStyle.color, bodyStyle.backgroundColor).toFixed(2)),
+      policyViolations: globalThis.__evidencePolicyViolations || [],
       overflowElements: [...document.querySelectorAll("body *")]
         .map((element) => {
           const rect = element.getBoundingClientRect();
@@ -202,6 +235,192 @@ async function captureElement(page, outputDir, name, selector, records) {
   records.push({ name, file, url: page.url(), elementCapture: selector, ...audit });
 }
 
+async function captureStyledSurface(page, outputDir, name, selector, records, { fixture = null, checks = [], action = null } = {}) {
+  const element = page.locator(selector).first();
+  await element.waitFor({ state: "visible" });
+  await element.scrollIntoViewIfNeeded();
+  if (action) await page.locator(action).scrollIntoViewIfNeeded();
+  await element.evaluate((node) => {
+    // A browser's scrollIntoView does not account for the real sticky topbar.
+    // Position ordinary page surfaces below it without hiding or restyling it.
+    let fixedAncestor = false;
+    for (let parent = node; parent; parent = parent.parentElement) {
+      if (getComputedStyle(parent).position === "fixed") { fixedAncestor = true; break; }
+    }
+    if (fixedAncestor) return;
+    const header = document.querySelector(".game-topbar");
+    const headerRect = header?.getBoundingClientRect();
+    const top = headerRect && ["sticky", "fixed"].includes(getComputedStyle(header).position)
+      ? Math.max(0, headerRect.bottom) + 12 : 12;
+    const rect = node.getBoundingClientRect();
+    if (rect.top < top || rect.bottom > innerHeight - 12) window.scrollBy(0, rect.top - top);
+  });
+  await page.waitForTimeout(100);
+  const layout = await page.evaluate(({ selector, checks, action }) => {
+    const root = document.querySelector(selector);
+    const rect = root.getBoundingClientRect();
+    let fixedAncestor = false;
+    for (let parent = root; parent; parent = parent.parentElement) {
+      if (getComputedStyle(parent).position === "fixed") { fixedAncestor = true; break; }
+    }
+    const header = document.querySelector(".game-topbar");
+    const headerRect = header?.getBoundingClientRect();
+    const visibleTop = !fixedAncestor && headerRect && ["sticky", "fixed"].includes(getComputedStyle(header).position)
+      ? Math.max(0, headerRect.bottom) : 0;
+    const fitsAvailableHeight = rect.height <= innerHeight - visibleTop - 12;
+    const inspected = checks.map(({ selector: target, property, equals, min }) => {
+      const node = document.querySelector(target);
+      const value = node ? getComputedStyle(node)[property] : null;
+      const ok = value != null && (equals == null || value === equals) && (min == null || parseFloat(value) >= min);
+      return { selector: target, property, value, equals, min, ok };
+    });
+    let actionReachable = null;
+    if (action) {
+      const button = document.querySelector(action);
+      const box = button.getBoundingClientRect();
+      const hit = document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2);
+      actionReachable = Boolean(hit && (hit === button || button.contains(hit)));
+    }
+    return { width: rect.width, height: rect.height, left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, visibleTop, fitsAvailableHeight, fixedAncestor, viewportWidth: innerWidth, viewportHeight: innerHeight, inspected, actionReachable };
+  }, { selector, checks, action });
+  // No hidden occluders or forced actions: these frames show what a player can reach.
+  await captureViewport(page, outputDir, name, action ? [action] : [], records);
+  const record = records.at(-1);
+  record.surface = selector;
+  record.fixture = fixture;
+  record.computedLayout = layout;
+  record.styleFailures = [
+    ...layout.inspected.filter((item) => !item.ok).map((item) => `${item.selector} ${item.property}=${item.value}`),
+    ...(layout.width <= 0 || layout.height <= 0 || layout.left < -1 || layout.right > layout.viewportWidth + 1 ? ["surface is clipped outside the viewport"] : []),
+    ...(layout.top < layout.visibleTop - 1 || (layout.fitsAvailableHeight && layout.bottom > layout.viewportHeight + 1) ? ["surface is vertically clipped or covered by the sticky header"] : []),
+    ...(layout.actionReachable === false ? [`${action} is occluded`] : [])
+  ];
+}
+
+const tutorialStyleChecks = [
+  { selector: ".tutorial-overlay", property: "position", equals: "fixed" },
+  { selector: ".tutorial-modal", property: "display", equals: "flex" },
+  { selector: ".tutorial-modal", property: "paddingTop", min: 16 }
+];
+
+async function captureTutorialCompletion(browser, viewport, baseUrl, outputDir, records, runtimeErrors) {
+  const context = await browser.newContext({ viewport });
+  await monitorArtifactPolicy(context);
+  const page = await context.newPage();
+  page.on("pageerror", (error) => runtimeErrors.push({ viewport: viewport.name, type: "tutorial-completion", message: error.message }));
+  try {
+    await page.goto(baseUrl, { waitUntil: "networkidle" });
+    await page.evaluate(() => { document.getElementById("seedInput").value = "20260306"; });
+    await page.locator("#createLeagueBtn").click();
+    await page.waitForURL("**/game.html", { timeout: 90_000 });
+    await page.locator("#tutSkipBtn").waitFor({ state: "visible" });
+    for (const [step, choice] of [["identity", "balanced"], ["pressure", "balanced-mandate"], ["first-call", "trust-scout"]]) {
+      await page.locator(`.tutorial-choice[data-choice="${choice}"]`).click();
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureStyledSurface(page, outputDir, `${viewport.name}-tutorial-${step}-${theme}`, ".tutorial-modal", records, { checks: tutorialStyleChecks, action: "#tutNextBtn" });
+      }
+      await page.locator("#tutNextBtn").click();
+    }
+    await page.locator(".tutorial-receipt").waitFor({ state: "visible", timeout: 30_000 });
+    const receipt = await page.evaluate(async () => {
+      const [{ state }, tutorial] = await Promise.all([import("./lib/appState.js"), import("./lib/tutorialCampaign.js")]);
+      return { receipt: state.dashboard.startScenarioReceipt, tutorialState: tutorial.getTutorialState(state.dashboard) };
+    });
+    if (!receipt.receipt?.effects || receipt.tutorialState !== "done") throw new Error("Completed tutorial lacks its committed opening-contract receipt.");
+    for (const theme of evidenceThemes) {
+      await setTheme(page, theme);
+      await captureStyledSurface(page, outputDir, `${viewport.name}-tutorial-receipt-${theme}`, ".tutorial-receipt", records, { checks: tutorialStyleChecks, action: ".tutorial-receipt button" });
+      records.at(-1).tutorialReceipt = receipt;
+    }
+    await page.locator(".tutorial-receipt button").click();
+    await page.locator(".tutorial-overlay").waitFor({ state: "detached" });
+  } finally { await context.close(); }
+}
+
+async function captureLazyStyleFixtures(page, viewport, outputDir, records) {
+  await selectGameTab(page, "overviewTab");
+  await page.evaluate(async () => {
+    const desk = await import("./lib/deskIslands.js");
+    await desk.renderFrontOfficeAdvisor();
+  });
+  for (const theme of evidenceThemes) {
+    await setTheme(page, theme);
+    await captureStyledSurface(page, outputDir, `${viewport.name}-advisor-${theme}`, ".advisor-card", records, {
+      checks: [{ selector: ".advisor-card", property: "display", equals: "grid" }, { selector: ".advisor-card", property: "paddingTop", min: 10 }]
+    });
+  }
+  await selectGameTab(page, "settingsTab");
+  await page.evaluate(async () => {
+    const [timeline, moment] = await Promise.all([import("./lib/dynastyTimeline.js"), import("./lib/momentCard.js")]);
+    const mount = document.getElementById("dynastyTimelineContainer");
+    timeline.mount(mount, { teamId: "BUF", seasons: [
+      { year: 2026, record: "9-8", coachName: "Avery Stone", playoffRound: "wildcard", keyNote: "Render fixture: a rebuilding season." },
+      { year: 2027, record: "12-5", coachName: "Avery Stone", champion: true, keyNote: "Render fixture: the championship season." }
+    ] });
+    const card = document.createElement("section");
+    card.id = "momentCardEvidenceFixture";
+    const heading = document.createElement("h3");
+    heading.textContent = "Share a franchise moment · render fixture";
+    card.append(heading);
+    mount.after(card);
+    moment.mountShareControl(card, { kind: "achievement", headline: "First playoff win", teamCode: "BUF", teamName: "Buffalo", stats: [{ label: "Season", value: "2027" }] });
+  });
+  await page.locator("#dynastyTimelineContainer [data-idx='1']").click();
+  for (const theme of evidenceThemes) {
+    await setTheme(page, theme);
+    await captureStyledSurface(page, outputDir, `${viewport.name}-dynasty-timeline-${theme}`, ".dynasty-timeline", records, {
+      fixture: "Two labelled synthetic seasons rendered by the shipped timeline module; no career outcome claimed.",
+      checks: [{ selector: ".tl-nodes", property: "display", equals: "flex" }, { selector: ".tl-scroll-wrapper", property: "overflowX", equals: "auto" }]
+    });
+    await captureStyledSurface(page, outputDir, `${viewport.name}-moment-card-${theme}`, "#momentCardEvidenceFixture", records, {
+      fixture: "Synthetic achievement sharing control mounted by the shipped module; no share transmitted.",
+      checks: [{ selector: "#momentCardEvidenceFixture .moment-card-share", property: "display", equals: "inline-flex" }, { selector: "#momentCardEvidenceFixture button", property: "borderRadius", min: 100 }],
+      action: "#momentCardEvidenceFixture button"
+    });
+  }
+  await page.evaluate(async () => {
+    const [{ state }, pulse] = await Promise.all([import("./lib/appState.js"), import("./lib/firstDebriefPulse.js")]);
+    const values = new Map();
+    const storage = { getItem: (key) => values.get(key) || null, setItem: (key, value) => values.set(key, value) };
+    if (!pulse.maybePromptFirstDebriefPulse({ dashboard: state.dashboard, storage })) throw new Error("First-debrief fixture did not mount.");
+  });
+  for (const theme of evidenceThemes) {
+    await setTheme(page, theme);
+    await captureStyledSurface(page, outputDir, `${viewport.name}-first-debrief-${theme}`, ".first-debrief-card", records, {
+      fixture: "Feedback prompt rendering with isolated in-memory storage; no answer, engagement, or cohort receipt generated.",
+      checks: [{ selector: ".first-debrief-overlay", property: "position", equals: "fixed" }, { selector: ".first-debrief-card", property: "paddingTop", min: 16 }],
+      action: "#firstDebriefDecline"
+    });
+  }
+  await page.locator("#firstDebriefDecline").click();
+}
+
+async function captureReturnDigestFixture(page, viewport, outputDir, records) {
+  await page.evaluate(async () => {
+    const [{ state }, digestModule] = await Promise.all([import("./lib/appState.js"), import("./lib/returnDigest.js")]);
+    const key = Object.keys(localStorage).find((entry) => entry.startsWith("franchise-architect-session-boundary:v3"));
+    if (!key || !state.dashboard) throw new Error("Live return authority missing after game boot");
+    const prior = JSON.parse(localStorage.getItem(key));
+    prior.timestamp = Date.now() - (8 * 60 * 60 * 1000);
+    prior.week = Number(prior.week || 0) - 1;
+    prior.chapterId = "visual-qa-prior-chapter";
+    const digest = digestModule.buildReturnDigest(state.dashboard, prior);
+    if (!digest) throw new Error("Live dashboard did not produce a visual return digest");
+    digestModule.renderReturnDigest(digest, null, {});
+  });
+  await page.locator(".return-digest-overlay").waitFor({ state: "visible" });
+  for (const theme of evidenceThemes) {
+    await setTheme(page, theme);
+    await captureStyledSurface(page, outputDir, `${viewport.name}-return-digest-${theme}`, ".return-digest-card", records, {
+      fixture: "Live dashboard with a synthetic eight-hour prior boundary; no returning player/cohort claimed.",
+      checks: [{ selector: ".return-digest-overlay", property: "position", equals: "fixed" }, { selector: ".return-digest-card", property: "paddingTop", min: 16 }],
+      action: '.return-digest-actions button[data-action="dismiss"]'
+    });
+  }
+  await page.locator('.return-digest-actions button[data-action="dismiss"]').click();
+}
+
 async function selectGameTab(page, tabId) {
   const teamSubmode = tabId === "depthTab";
   const tab = page.locator(`#sideMenu [data-tab="${teamSubmode ? "rosterTab" : tabId}"]`).first();
@@ -230,10 +449,10 @@ async function selectGameTab(page, tabId) {
 async function main() {
   const identity = await sourceIdentity();
   const revision = identity.sourceRevision;
-  const outputDir = path.join(outputRoot, `responsive-${revision.replace(/[^a-z0-9._-]/gi, "-")}`);
+  const outputDir = path.join(outputRoot, `responsive-${revision.replace(/[^a-z0-9._-]/gi, "-")}${lazyStyleOnly ? "-lazy-style" : ""}${iterationEvidence ? "-iteration" : ""}`);
   await fs.rm(outputDir, { recursive: true, force: true });
   await fs.mkdir(outputDir, { recursive: true });
-  const { server, baseUrl } = await createServer();
+  const { server, baseUrl, artifactHeaderRules, policyWitnesses } = await createServer();
   const browser = await chromium.launch({ headless: true });
   const records = [];
   const runtimeErrors = [];
@@ -241,6 +460,7 @@ async function main() {
   try {
     for (const viewport of viewports) {
       const context = await browser.newContext({ viewport });
+      await monitorArtifactPolicy(context);
       const page = await context.newPage();
       page.on("pageerror", (error) => runtimeErrors.push({ viewport: viewport.name, type: "pageerror", message: error.message }));
       await page.goto(baseUrl, { waitUntil: "networkidle" });
@@ -266,9 +486,28 @@ async function main() {
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
         await capture(page, outputDir, `${viewport.name}-game-dialog-${theme}`, ["#tutSkipBtn"], records);
+        await captureStyledSurface(page, outputDir, `${viewport.name}-tutorial-skip-${theme}`, ".tutorial-modal", records, { checks: tutorialStyleChecks, action: "#tutSkipBtn" });
       }
       const skip = page.locator("#tutSkipBtn");
-      if (await skip.isVisible().catch(() => false)) await skip.click();
+      await skip.click();
+      await page.locator(".tutorial-overlay").waitFor({ state: "detached" });
+      const skipped = await page.evaluate(async () => {
+        const [{ state }, tutorial] = await Promise.all([import("./lib/appState.js"), import("./lib/tutorialCampaign.js")]);
+        return { tutorialState: tutorial.getTutorialState(state.dashboard), committed: Boolean(state.dashboard.startScenarioReceipt) };
+      });
+      if (skipped.tutorialState !== "deferred" || skipped.committed) throw new Error("Normal tutorial Skip did not preserve an uncommitted, deferred opening contract.");
+      for (const record of records.filter((entry) => entry.name.startsWith(`${viewport.name}-tutorial-skip-`))) record.tutorialReceipt = skipped;
+      if (lazyStyleOnly) {
+        if (viewport.name === "mobile") {
+          await page.locator("#mlFullViewBtn").click();
+          await page.waitForFunction(() => document.getElementById("mobileLoopOverlay")?.classList.contains("hidden"));
+        }
+        await captureLazyStyleFixtures(page, viewport, outputDir, records);
+        await captureReturnDigestFixture(page, viewport, outputDir, records);
+        await context.close();
+        await captureTutorialCompletion(browser, viewport, baseUrl, outputDir, records, runtimeErrors);
+        continue;
+      }
 
       await page.evaluate(async () => {
         const [{ state }, overview] = await Promise.all([
@@ -714,7 +953,11 @@ async function main() {
       await page.waitForSelector(".return-digest-overlay", { state: "visible" });
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
-        await captureElement(page, outputDir, `${viewport.name}-return-digest-${theme}`, ".return-digest-card", records);
+        await captureStyledSurface(page, outputDir, `${viewport.name}-return-digest-${theme}`, ".return-digest-card", records, {
+          fixture: "Live dashboard with a synthetic eight-hour prior boundary; no returning player/cohort claimed.",
+          checks: [{ selector: ".return-digest-overlay", property: "position", equals: "fixed" }, { selector: ".return-digest-card", property: "paddingTop", min: 16 }],
+          action: '.return-digest-actions button[data-action="dismiss"]'
+        });
       }
       await page.locator(`.return-digest-actions button[data-action="dismiss"]`).click();
       await page.evaluate(async () => {
@@ -743,14 +986,26 @@ async function main() {
         await setTheme(page, theme);
         await captureElement(page, outputDir, `${viewport.name}-architect-cut-${theme}`, ".season-epilogue", records);
       }
+      await page.evaluate(async () => {
+        const modal = document.getElementById("seasonReviewModal");
+        const manager = await import("./lib/modalManager.js");
+        manager.closeModal(modal, { restoreFocus: false });
+        modal.hidden = true;
+        modal.classList.remove("active");
+      });
+      await captureLazyStyleFixtures(page, viewport, outputDir, records);
       await context.close();
+      await captureTutorialCompletion(browser, viewport, baseUrl, outputDir, records, runtimeErrors);
     }
   } finally {
     await browser.close();
     await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
   }
 
-  const requiredCaptureNames = viewports.flatMap((viewport) => [
+  const requiredCaptureNames = viewports.flatMap((viewport) => lazyStyleOnly
+    ? evidenceThemes.flatMap((theme) => lazyStyleSurfaces.map((surface) => `${viewport.name}-${surface}-${theme}`))
+    : [
+    ...evidenceThemes.flatMap((theme) => lazyStyleSurfaces.filter((surface) => surface !== "return-digest").map((surface) => `${viewport.name}-${surface}-${theme}`)),
     ...evidenceThemes.map((theme) => `${viewport.name}-game-dialog-${theme}`),
     ...evidenceThemes.map((theme) => viewport.name + "-draft-trade-review-" + theme),
     ...evidenceThemes.map((theme) => viewport.name + "-architect-objective-" + theme),
@@ -790,16 +1045,23 @@ async function main() {
     ...records.filter((record) => record.overflowX).map((record) => `${record.name}: horizontal overflow (${record.documentWidth}px > ${record.viewport.width}px); suspects ${record.overflowElements.map((item) => item.selector).join(", ")}`),
     ...records.filter((record) => record.bodyContrast < 4.5).map((record) => `${record.name}: body contrast ${record.bodyContrast}:1`),
     ...records.flatMap((record) => record.undersizedControls.map((control) => `${record.name}: ${control.selector} is ${control.width}x${control.height}, below 44x44`)),
+    ...records.flatMap((record) => (record.policyViolations || []).map((violation) => `${record.name}: CSP ${violation.directive} refused ${violation.blockedURI}`)),
+    ...records.flatMap((record) => (record.styleFailures || []).map((failure) => `${record.name}: ${failure}`)),
     ...runtimeErrors.map((error) => `${error.viewport}: ${error.type}: ${error.message}`)
   ];
   const report = {
     schemaVersion: "1.0",
     sourceRevision: revision,
+    kind: iterationEvidence ? "provisional-rendered-evidence" : "immutable-rendered-evidence",
     artifact: "static",
     artifactFingerprint: identity.artifactFingerprint,
+    policySource: "static/_headers",
+    contentSecurityPolicy: resolveArtifactHeaders(artifactHeaderRules, "/game.html")["content-security-policy"],
+    policyWitnesses,
     generatedAt: new Date().toISOString(),
     viewports,
     coverage: {
+      scope: lazyStyleOnly ? "lazy-style" : "full",
       themes: evidenceThemes,
       tabs: evidenceTabs.map(([id, label]) => ({ id, label })),
       requiredCaptures: requiredCaptureNames.length,
@@ -807,16 +1069,16 @@ async function main() {
     },
     captures: records,
     runtimeErrors,
-    status: failures.length ? "failed" : "passed",
+    status: iterationEvidence ? (failures.length ? "iteration-failed" : "iteration-passed") : (failures.length ? "failed" : "passed"),
     failures
   };
   await fs.writeFile(path.join(outputDir, "responsive-evidence.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
   if (failures.length) throw new Error(`Responsive evidence failed:\n- ${failures.join("\n- ")}\nReport: ${path.join(outputDir, "responsive-evidence.json")}`);
-  console.log(`Responsive evidence passed: ${records.length} captures in ${outputDir}`);
+  console.log(`Responsive evidence ${report.status}: ${records.length} captures in ${outputDir}`);
 }
 
 if (process.argv.includes("--help")) {
-  console.log("Usage: node scripts/responsive-evidence.mjs (optional EVIDENCE_VIEWPORT=mobile|tablet|desktop)");
+  console.log("Usage: node scripts/responsive-evidence.mjs (optional EVIDENCE_VIEWPORT=mobile|tablet|desktop, EVIDENCE_SCOPE=lazy-style; provisional local worktree only: EVIDENCE_ITERATION=1 with EVIDENCE_SCOPE=lazy-style)");
 } else {
   main().catch((error) => {
     console.error(error.message || error);

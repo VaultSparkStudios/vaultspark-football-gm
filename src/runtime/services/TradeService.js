@@ -68,6 +68,14 @@ export class TradeService {
     }
     if (teamA === teamB) return { ok: false, error: "Teams must be different.", reasonCode: "same-team" };
 
+    // One owned asset can pay for a trade only once. Besides inflating value,
+    // duplicate player IDs would count the same outgoing cap hit repeatedly.
+    const playerIds = [...teamAPlayerIds, ...teamBPlayerIds];
+    const pickIds = [...teamAPickIds, ...teamBPickIds];
+    if (new Set(playerIds).size !== playerIds.length || new Set(pickIds).size !== pickIds.length) {
+      return { ok: false, error: "Each asset can appear only once in a trade package.", reasonCode: "duplicate-asset" };
+    }
+
     const fromA = teamAPlayerIds
       .map((id) => session.getPlayerById(id))
       .filter((player) => player?.teamId === teamA)
@@ -206,8 +214,15 @@ export class TradeService {
     const readB = evaluateTradeValue({ outgoing: fromB, incoming: fromA, team: teamBObj, tolerance: toleranceB, ...sideB });
     const bandA = readA.tolerance ?? toleranceA;
     const bandB = readB.tolerance ?? toleranceB;
-    const aiAcceptableA = readA.acceptable || incomingValueA >= outgoingValueA * (1 - bandA);
-    const aiAcceptableB = readB.acceptable || incomingValueB >= outgoingValueB * (1 - bandB);
+    // The persona read prices players only. Letting it approve a package with
+    // picks made an empty player exchange authorize a free first-round pick,
+    // or a fair player swap conceal any number of uncompensated picks. Once
+    // picks enter the deal, both clubs must accept the complete valuation
+    // shown in the receipt. Pure-player trades keep their existing persona
+    // rule, and the full package keeps its need premiums and persona tolerance.
+    const hasPicks = picksA.length > 0 || picksB.length > 0;
+    const aiAcceptableA = (!hasPicks && readA.acceptable) || incomingValueA >= outgoingValueA * (1 - bandA);
+    const aiAcceptableB = (!hasPicks && readB.acceptable) || incomingValueB >= outgoingValueB * (1 - bandB);
     const valuation = {
       [teamA]: {
         outgoingValue: outgoingValueA,

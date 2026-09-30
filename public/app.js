@@ -477,11 +477,22 @@ async function refreshAfterWeeklyCommand(response) {
   return hydration;
 }
 const deskIslands = () => import("./lib/deskIslands.js");
-const recordAdvisorOutcome = (receipt) => deskIslands().then((desk) => desk.recordAdvisorOutcome(receipt));
+const recordAdvisorOutcome = (receipt) => {
+  const dashboard = state.dashboard;
+  return deskIslands().then((desk) => desk.recordAdvisorOutcome(receipt, dashboard));
+};
 const markFirstSeasonObjective = (id) => deskIslands().then((desk) => desk.markFirstSeasonObjective(id));
 
 async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
+  const sourceAuthority = {
+    key: dashboardAuthorityKey(state.dashboard),
+    year: state.dashboard?.currentYear,
+    week: state.dashboard?.currentWeek,
+    phase: state.dashboard?.phase,
+    teamId: state.dashboard?.controlledTeamId
+  };
   const intent = await collectWeeklyCommandIntent({ gmDecisionChoice });
+  intent.receipt = { ...intent.receipt, sourceAuthority };
   state.weeklyPlanReceipt = intent.receipt;
   if (intent.deferred) {
     renderOverview();

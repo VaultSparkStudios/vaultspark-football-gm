@@ -63,7 +63,8 @@ test("the Desk shows the advisor's call and the first-season contract; the Leagu
   await expect(page.locator("#calendarTab #standingsTable")).toHaveCount(1);
   await expect(page.locator("#calendarTab #newsTable")).toHaveCount(1);
 
-  // Committing a week scores the advice on the desk. The weekly plan is
+  // This seed's room/depth advice has no observed matching action: committing
+  // a week records an unscored outcome instead of inventing agreement. The plan is
   // composed in modals (decision → tactic → rehearsal); drain them like app.spec.
   await page.click("#advanceWeekBtn");
   const gmDecisionChoice = page.locator("#gmDecisionOptions .gm-decision-option").first();
@@ -79,7 +80,9 @@ test("the Desk shows the advisor's call and the first-season contract; the Leagu
     await commitPlan.click();
   }
   await waitGameReady(page, 120_000);
-  await expect(page.locator("#frontOfficeAdvisorTally")).toContainText(/over 1 week/, { timeout: 60_000 });
+  await expect(page.locator("#frontOfficeAdvisorTally")).toHaveText(
+    "0 with the room · 0 against · 1 unscored over 1 recorded week", { timeout: 60_000 }
+  );
 
   // After a played week the League tab carries real standings rows.
   await page.click('[data-testid="tab-calendar"]');

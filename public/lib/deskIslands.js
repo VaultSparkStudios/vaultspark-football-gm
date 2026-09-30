@@ -13,24 +13,24 @@ import { showToast } from "./appCore.js";
 import { currentCoGmBriefingPacket } from "./tabOverview.js";
 import { isMobileModeEnabled } from "./mobileLoop.js";
 import { recordAchievementEvent } from "./achievements.js";
-import { franchiseStorageKey } from "./franchiseScope.js";
+import { franchiseStorageKey, dashboardAuthorityKey } from "./franchiseScope.js";
 
-const ADVISOR_LAST_PREFIX = "front-office-advisor:last";
-const ADVISOR_TALLY_PREFIX = "front-office-advisor:tally";
-let advisorStyleMounted = false;
+// v1 counted unobserved actions as agreements. Retain those historical keys,
+// but start the evidence-based tally separately rather than relabel old data.
+const ADVISOR_STATE_PREFIX = "front-office-advisor:v2";
 
-function readFranchiseJson(prefix) {
+function readFranchiseJson(key) {
   try {
-    const raw = localStorage.getItem(franchiseStorageKey(prefix, state.dashboard));
+    const raw = localStorage.getItem(key);
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
   }
 }
 
-function writeFranchiseJson(prefix, value) {
+function writeFranchiseJson(key, value) {
   try {
-    localStorage.setItem(franchiseStorageKey(prefix, state.dashboard), JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value));
   } catch {
     // Storage full or blocked: the advisor simply loses its memory of last week.
   }
@@ -40,45 +40,45 @@ export function describeAdvisorTally(tally) {
   const weeks = Number(tally?.weeks || 0);
   if (!weeks) return "No calls scored yet";
   const parts = [`${tally.agreed || 0} with the room`, `${tally.against || 0} against`];
-  if (tally.deferred) parts.push(`${tally.deferred} deferred`);
-  return `${parts.join(" · ")} over ${weeks} week${weeks === 1 ? "" : "s"}`;
+  if (tally.unscored) parts.push(`${tally.unscored} unscored`);
+  return `${parts.join(" · ")} over ${weeks} recorded week${weeks === 1 ? "" : "s"}`;
 }
 
 export async function renderFrontOfficeAdvisor() {
   const panel = document.getElementById("frontOfficeAdvisorPanel");
   const content = document.getElementById("frontOfficeAdvisorContent");
   if (!panel || !content || !state.dashboard?.controlledTeamId) return;
+  const dashboard = state.dashboard;
+  const sourceAuthority = {
+    key: dashboardAuthorityKey(dashboard), year: dashboard.currentYear,
+    week: dashboard.currentWeek, phase: dashboard.phase, teamId: dashboard.controlledTeamId
+  };
+  const key = franchiseStorageKey(ADVISOR_STATE_PREFIX, dashboard);
+  const packet = currentCoGmBriefingPacket();
   const advisor = await import("./frontOfficeAdvisor.js");
-  if (!advisorStyleMounted && !document.getElementById("front-office-advisor-style")) {
-    const style = document.createElement("style");
-    style.id = "front-office-advisor-style";
-    style.textContent = advisor.ADVISOR_STYLE;
-    document.head.appendChild(style);
-    advisorStyleMounted = true;
-  }
-  const memory = readFranchiseJson(ADVISOR_LAST_PREFIX) || {};
-  const advice = advisor.buildAdvice(currentCoGmBriefingPacket(), {
+  if (sourceAuthority.key !== dashboardAuthorityKey(state.dashboard)) return;
+  const memory = readFranchiseJson(key) || {};
+  const advice = advisor.buildAdvice(packet, {
     lastWeekAdvice: memory.scored?.advice || null,
     lastWeekReceipt: memory.scored?.receipt || null
   });
   content.innerHTML = advisor.renderAdvisorCard(advice, { compact: isMobileModeEnabled() });
   const tallyEl = document.getElementById("frontOfficeAdvisorTally");
-  if (tallyEl) tallyEl.textContent = describeAdvisorTally(readFranchiseJson(ADVISOR_TALLY_PREFIX));
+  if (tallyEl) tallyEl.textContent = describeAdvisorTally(memory.tally);
   // The advice on the desk is what the coming commit will be scored against.
-  writeFranchiseJson(ADVISOR_LAST_PREFIX, {
+  writeFranchiseJson(key, {
     ...memory,
-    pending: { advice, year: state.dashboard.currentYear, week: state.dashboard.currentWeek }
+    pending: { advice, sourceAuthority }
   });
   panel.hidden = false;
 }
 
-export async function recordAdvisorOutcome(receipt) {
-  const memory = readFranchiseJson(ADVISOR_LAST_PREFIX);
-  if (!memory?.pending?.advice) return;
+export async function recordAdvisorOutcome(receipt, dashboard = state.dashboard) {
+  const key = franchiseStorageKey(ADVISOR_STATE_PREFIX, dashboard);
   const advisor = await import("./frontOfficeAdvisor.js");
-  const agreement = advisor.scoreAgreement(memory.pending.advice, receipt);
-  writeFranchiseJson(ADVISOR_TALLY_PREFIX, advisor.updateAgreementTally(readFranchiseJson(ADVISOR_TALLY_PREFIX) || {}, agreement));
-  writeFranchiseJson(ADVISOR_LAST_PREFIX, { scored: { advice: memory.pending.advice, receipt, agreement }, pending: null });
+  const memory = readFranchiseJson(key) || {};
+  const next = advisor.reduceAdvisorOutcome(memory, receipt);
+  if (next !== memory) writeFranchiseJson(key, next);
 }
 
 export async function renderFirstSeasonContractStrip() {

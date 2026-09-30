@@ -5,6 +5,39 @@ import { createHash } from "node:crypto";
 const INLINE_EVENT_HANDLER = /\son[a-z]+\s*=/i;
 const JAVASCRIPT_URL = /(?:href|src)\s*=\s*["']\s*javascript:/i;
 
+// Replay the generated artifact's path rules in local browser evidence. This
+// supports the literal paths and * globs emitted below, not a second policy.
+export function parseArtifactHeaderRules(contents) {
+  const rules = [];
+  let current;
+  for (const line of String(contents).split(/\r?\n/)) {
+    if (!line.trim() || line.trimStart().startsWith("#")) continue;
+    if (!/^\s/.test(line)) {
+      const route = line.trim();
+      if (!route.startsWith("/")) throw new Error(`Unsupported artifact header route: ${route}`);
+      const escaped = route.split("*").map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join(".*");
+      current = { route, pattern: new RegExp(`^${escaped}$`), headers: {} };
+      rules.push(current);
+      continue;
+    }
+    const match = line.trim().match(/^([a-z0-9-]+):\s*(.+)$/i);
+    if (!current || !match) throw new Error(`Invalid artifact header declaration: ${line.trim()}`);
+    current.headers[match[1].toLowerCase()] = match[2];
+  }
+  if (!rules.some((rule) => rule.route === "/*" && rule.headers["content-security-policy"])) {
+    throw new Error("Artifact headers lack the global Content-Security-Policy.");
+  }
+  return rules;
+}
+
+export function resolveArtifactHeaders(rules, pathname) {
+  const headers = {};
+  for (const rule of rules) {
+    if (rule.pattern.test(pathname)) Object.assign(headers, rule.headers);
+  }
+  return headers;
+}
+
 // S94: origins the EDGE injects into the delivered document after this build has
 // run. The build cannot see them -- `inspectHtmlForEdgePolicy` reads the artifact,
 // and the artifact is correct -- so a policy authored only from the artifact will

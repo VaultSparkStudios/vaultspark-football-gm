@@ -9,12 +9,10 @@
  *
  * Storage decision: a Worker has no localStorage, so the runtime is given a
  * MIRROR — a Storage-shaped object seeded from the page's snapshot of this
- * app's keys at boot. Every write is applied to the mirror and posted back
- * (`storage-set` / `storage-remove`) so the page replays it into the real
- * localStorage. Messages are FIFO on one port, so a write always lands on the
- * page BEFORE the response of the request that caused it — page-side readers
- * of vsfgm-rw-index (engagementFeatures.checkAndPruneRewindStorage) never see
- * a response ahead of its own writes.
+ * app's keys at boot. Save stores await setItemAsync/removeItemAsync: a value
+ * becomes committed only after the page acknowledges its real storage write.
+ * Legacy synchronous callers retain immediate read-after-write behavior, but
+ * each response waits for their writes and rejects on a failed replay.
  *
  * IndexedDB is available in workers. hybridSaveStore opens `fa_saves_v2` per
  * operation and closes it when the transaction settles — it never holds a
@@ -32,14 +30,116 @@ function describeError(error) {
   return {
     message: String(error?.message || error || "Worker runtime failure."),
     name: error?.name || "Error",
+    code: error?.code,
     stack: typeof error?.stack === "string" ? error.stack.slice(0, 2000) : null
   };
 }
 
-/** Storage-shaped in-memory mirror; every write is echoed to `post`. */
-export function createMirrorStorage(entries = [], post = () => {}) {
-  const data = new Map();
-  for (const [key, value] of entries) data.set(String(key), String(value));
+/** Acknowledged storage with a synchronous compatibility view. */
+export function createMirrorStorage(entries = [], post = () => {}, {
+  acknowledgmentTimeoutMs = 20_000,
+  onFatal = null
+} = {}) {
+  const committed = new Map(entries.map(([key, value]) => [String(key), String(value)]));
+  let data = new Map(committed);
+  const pending = new Map();
+  const syncFailures = [];
+  let nextStorageId = 1;
+  let closed = null;
+
+  function apply(target, key, value) {
+    if (value == null) target.delete(key);
+    else target.set(key, value);
+  }
+
+  function rebuildView() {
+    data = new Map(committed);
+    for (const entry of pending.values()) {
+      if (entry.optimistic) apply(data, entry.key, entry.value);
+    }
+  }
+
+  function storageError(detail) {
+    const error = new Error(detail?.message || "Browser storage write failed; this change was not saved.");
+    if (detail?.name) error.name = detail.name;
+    if (detail?.code != null) error.code = detail.code;
+    return error;
+  }
+
+  function acknowledge(message) {
+    if (closed) return;
+    const entry = pending.get(message.storageId);
+    if (!entry) return;
+    pending.delete(message.storageId);
+    clearTimeout(entry.timer);
+    if (Object.hasOwn(message, "currentValue")) apply(committed, entry.key, message.currentValue);
+    else if (message.type === "storage-ack") apply(committed, entry.key, entry.value);
+    rebuildView();
+    if (message.type === "storage-ack") entry.resolve();
+    else {
+      const error = storageError(message.error);
+      if (entry.optimistic) syncFailures.push(error);
+      entry.reject(error);
+    }
+  }
+
+  function close(error = new Error("Worker storage mirror closed.")) {
+    if (closed) return;
+    closed = error;
+    for (const entry of pending.values()) {
+      clearTimeout(entry.timer);
+      entry.reject(error);
+    }
+    pending.clear();
+    rebuildView();
+  }
+
+  function abort(error) {
+    close(error);
+    try { onFatal?.(error); } catch { /* pending callers and flush retain the fatal error */ }
+  }
+
+  function write(key, value, optimistic) {
+    if (closed) throw closed;
+    const safeKey = String(key);
+    const safeValue = value == null ? null : String(value);
+    const storageId = nextStorageId++;
+    let resolve;
+    let reject;
+    const promise = new Promise((yes, no) => { resolve = yes; reject = no; });
+    // Synchronous callers cannot observe a Promise; flush reports their errors.
+    // Async callers may attach their await on the next tick.
+    // observability-allow-silent: failures are surfaced by the caller or flush
+    promise.catch(() => {});
+    const entry = { key: safeKey, value: safeValue, optimistic, promise, resolve, reject, timer: null };
+    pending.set(storageId, entry);
+    if (optimistic) apply(data, safeKey, safeValue);
+    entry.timer = setTimeout(() => {
+      const error = new Error(`Browser storage did not acknowledge its write within ${acknowledgmentTimeoutMs}ms.`);
+      abort(error);
+    }, acknowledgmentTimeoutMs);
+    try {
+      post({ type: safeValue == null ? "storage-remove" : "storage-set", storageId, key: safeKey, ...(safeValue == null ? {} : { value: safeValue }) });
+    } catch (error) {
+      abort(error);
+    }
+    return promise;
+  }
+
+  async function flush() {
+    let failure = syncFailures.shift() || null;
+    while (pending.size) {
+      const entries = [...pending.values()];
+      const results = await Promise.allSettled(entries.map((entry) => entry.promise));
+      results.forEach((result, index) => {
+        if (result.status === "rejected" && entries[index].optimistic) failure ||= result.reason;
+      });
+    }
+    failure ||= syncFailures[0] || closed;
+    syncFailures.length = 0;
+    if (failure) throw failure;
+  }
+
   return {
     get length() {
       return data.size;
@@ -52,16 +152,17 @@ export function createMirrorStorage(entries = [], post = () => {}) {
       return data.has(safeKey) ? data.get(safeKey) : null;
     },
     setItem(key, value) {
-      const safeKey = String(key);
-      const safeValue = String(value);
-      data.set(safeKey, safeValue);
-      post({ type: "storage-set", key: safeKey, value: safeValue });
+      write(key, String(value), true);
     },
     removeItem(key) {
-      const safeKey = String(key);
-      data.delete(safeKey);
-      post({ type: "storage-remove", key: safeKey });
+      write(key, null, true);
     },
+    setItemAsync: (key, value) => write(key, String(value), false),
+    removeItemAsync: (key) => write(key, null, false),
+    acknowledge,
+    flush,
+    close,
+    pendingCount: () => pending.size,
     clear() {
       for (const key of [...data.keys()]) this.removeItem(key);
     }
@@ -88,6 +189,8 @@ export async function loadLocalRuntimeModule(baseUrl = import.meta.url) {
 export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalRuntimeModule, createRuntime = null } = {}) {
   let ready = null;
   let runtime = null;
+  let mirror = null;
+  let requestTail = Promise.resolve();
   const post = (message) => scope.postMessage(message);
 
   function postResponse(id, response) {
@@ -105,8 +208,11 @@ export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalR
   }
 
   function init(message) {
+    if (ready) return;
     ready = (async () => {
-      const mirror = createMirrorStorage(message.storage || [], post);
+      mirror = createMirrorStorage(message.storage || [], post, {
+        onFatal: (error) => post({ type: "runtime-error", error: describeError(error) })
+      });
       // The runtime module also reads the `localStorage` GLOBAL at import time
       // (commissioner lobby, speedrun challenge). A worker has none, so the
       // mirror is installed under that name BEFORE the module is evaluated.
@@ -118,11 +224,15 @@ export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalR
       const module = await loadRuntimeModule();
       const factory = createRuntime || module.createLocalApiRuntime;
       runtime = factory({ storage: mirror });
+      await mirror.flush();
       return runtime;
     })();
     ready.then(
       () => post({ type: "ready", id: message.id }),
-      (error) => post({ type: "init-error", id: message.id, error: describeError(error) })
+      (error) => {
+        mirror?.close(error);
+        post({ type: "init-error", id: message.id, error: describeError(error) });
+      }
     );
   }
 
@@ -130,7 +240,17 @@ export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalR
     try {
       if (!ready) throw new Error("Worker runtime received a request before init.");
       await ready;
-      const response = await runtime.request(message.path, { method: message.method || "GET", body: message.body ?? null });
+      let response;
+      let failure = null;
+      try {
+        response = await runtime.request(message.path, { method: message.method || "GET", body: message.body ?? null });
+      } catch (error) {
+        failure = error;
+      }
+      // Even a runtime exception must drain its own storage failure before
+      // the next request can run against the restored mirror.
+      try { await mirror.flush(); } catch (error) { failure ||= error; }
+      if (failure) throw failure;
       postResponse(message.id, response);
     } catch (error) {
       post({ type: "response-error", id: message.id, error: describeError(error) });
@@ -140,8 +260,18 @@ export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalR
   scope.addEventListener("message", (event) => {
     const message = event?.data;
     if (!message || typeof message !== "object") return;
-    if (message.type === "init") init(message);
-    else if (message.type === "request") handleRequest(message);
+    if (message.type === "storage-ack" || message.type === "storage-nack") mirror?.acknowledge(message);
+    else if (message.type === "init") init(message);
+    else if (message.type === "request") {
+      // A request owns the mirror barrier until its response is settled.
+      // Otherwise a concurrent read can consume a writer's NACK and report
+      // the failure against the read while the failed write returns success.
+      // ACK/NACK handling above remains independent of this queue.
+      requestTail = requestTail.then(() => handleRequest(message)).catch((error) => {
+        mirror?.close(error);
+        try { post({ type: "runtime-error", error: describeError(error) }); } catch { /* the port is gone */ }
+      });
+    }
   });
 }
 

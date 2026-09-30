@@ -207,9 +207,10 @@ test("session109: the mirror seeds from the page snapshot and only this app's ke
   mirror.setItem("vsfgm-rw-index", "[1]");
   mirror.removeItem("vsfgm:save:auto-1");
   assert.deepEqual(posted, [
-    { type: "storage-set", key: "vsfgm-rw-index", value: "[1]" },
-    { type: "storage-remove", key: "vsfgm:save:auto-1" }
+    { type: "storage-set", storageId: 1, key: "vsfgm-rw-index", value: "[1]" },
+    { type: "storage-remove", storageId: 2, key: "vsfgm:save:auto-1" }
   ]);
+  for (const message of posted) mirror.acknowledge({ type: "storage-ack", storageId: message.storageId });
   assert.equal(mirror.getItem("vsfgm:save:auto-1"), null);
 });
 

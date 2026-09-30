@@ -899,9 +899,10 @@ export function createLocalApiRuntime({
           teamAPlayerIds: (body.teamAPlayerIds || []).map((id) => String(id)),
           teamBPlayerIds: (body.teamBPlayerIds || []).map((id) => String(id)),
           teamAPickIds: (body.teamAPickIds || []).map((id) => String(id)),
-          teamBPickIds: (body.teamBPickIds || []).map((id) => String(id))
+          teamBPickIds: (body.teamBPickIds || []).map((id) => String(id)),
+          expectedPlanFingerprint: body.expectedPlanFingerprint
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
+        return finish(jsonResponse(result.ok ? 200 : (result.status || 400), { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/trade/evaluate") {
@@ -1459,12 +1460,14 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/saves/delete") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        return finish(jsonResponse(200, { ok: true, deleted: saveStore.deleteSaveSlot(String(body.slot)), slots: saveStore.listSaveSlots() }));
+        const deleted = await saveStore.deleteSaveSlot(String(body.slot));
+        return finish(jsonResponse(200, { ok: true, deleted, slots: saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/backups/delete") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        return finish(jsonResponse(200, { ok: true, deleted: saveStore.deleteSaveSlot(String(body.slot)), slots: saveStore.listBackupSlots() }));
+        const deleted = await saveStore.deleteSaveSlot(String(body.slot));
+        return finish(jsonResponse(200, { ok: true, deleted, slots: saveStore.listBackupSlots() }));
       }
 
       // ── Rewind routes ───────────────────────────────────────────────────────
