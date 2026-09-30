@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "kind": "before-rendered-evidence",
+  "sourceRevision": "6296885ed30af020fe44cd43c8badc2f569671df",
+  "artifactDigest": "066d0352878638d949c5898c43e4dba728bf88690612bdd88d0c462f5503d512",
+  "captures": [
+    {
+      "file": "s112-before-contrast-desktop-tutorial-identity-dark.png",
+      "sha256": "e1058b0c9ee63cf595a9251a8ac48a0a4c23c4bbd9dfb4f03cddc38230281e2c",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "tutorial-identity"
+    },
+    {
+      "file": "s112-before-contrast-desktop-tutorial-pressure-dark.png",
+      "sha256": "6b3e40f17509b24ce759c133149695c2703926329e0e45e49833ccd2f0de835c",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "tutorial-pressure"
+    },
+    {
+      "file": "s112-before-contrast-desktop-tutorial-first-call-dark.png",
+      "sha256": "f71c6547951a13e9949f1b2282e322a24dd4f7198e738d70ff646a14985e1497",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "tutorial-first-call"
+    },
+    {
+      "file": "s112-before-contrast-desktop-game-overview-dark.png",
+      "sha256": "1328b8d46ecb225c4269f30750f67e66d1ea325261f0c5fe05e350c17d1eb971",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "game-overview"
+    },
+    {
+      "file": "s112-before-contrast-desktop-game-league-dark.png",
+      "sha256": "ee4277b3376ade1540757bcc240466ebe24f01730ff4f2d603032eff6a81d914",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "game-league"
+    },
+    {
+      "file": "s112-before-contrast-desktop-architect-signature-dark.png",
+      "sha256": "9a7bae3fd9d536452d501e1af35fbe95455d9e7e787584f01c406364445b1632",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "architect-signature"
+    },
+    {
+      "file": "s112-before-contrast-desktop-hof-ceremony-dark.png",
+      "sha256": "ce3ca12d4e45cc3c4fb0e7b955a5452b7928bdc95ac324f639c94d5191705a17",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "hof-ceremony"
+    },
+    {
+      "file": "s112-before-contrast-desktop-sim-watch-reel-dark.png",
+      "sha256": "0d413ee6b49549e26913cdd76f1e88559a2ddcf136b7bf25953abfe1c63f07c1",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "sim-watch-reel"
+    },
+    {
+      "file": "s112-before-contrast-desktop-gm-persona-dark.png",
+      "sha256": "33251d60c8024cd2b4dfed982e35f112dde17ed70d0f6593301499d99a9cf8fa",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "gm-persona"
+    },
+    {
+      "file": "s112-before-contrast-desktop-room-watch-dark.png",
+      "sha256": "1a95c24428da43f22545f343ec9b0c8b77064540df36534e1a731423a8f7459a",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "room-watch"
+    },
+    {
+      "file": "s112-before-contrast-desktop-prediction-receipt-dark.png",
+      "sha256": "ac3b072b82c0babb6d8b59473b0d7826009e6234433ed19ec9519a870caf2dfb",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "prediction-receipt"
+    },
+    {
+      "file": "s112-before-contrast-desktop-moment-card-dark.png",
+      "sha256": "b81451a7c971552fd6d3f30fd4860c241320ce99fab401564fc67ce6782ad005",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "moment-card"
+    },
+    {
+      "file": "s112-before-contrast-desktop-dynasty-timeline-dark.png",
+      "sha256": "7150a61a8934c23a8afaa1e5b3c1ffd53c6602d640d796e2764552f7e1b7296f",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "dynasty-timeline"
+    },
+    {
+      "file": "s112-before-contrast-desktop-tutorial-identity-light.png",
+      "sha256": "20fac3c330f8c30040908c65e87e6e170b27fdb9b26a90039207ffaf4cd17b6a",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "tutorial-identity"
+    },
+    {
+      "file": "s112-before-contrast-desktop-tutorial-pressure-light.png",
+      "sha256": "53321e589676c00eb9365718ff98045d535549e007d2908e634877404e51b8ba",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "tutorial-pressure"
+    },
+    {
+      "file": "s112-before-contrast-desktop-tutorial-first-call-light.png",
+      "sha256": "0985969a28e0a0010565cd2b66ded9df9865cb3fa3b013869f4f7bf1817ac530",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "tutorial-first-call"
+    },
+    {
+      "file": "s112-before-contrast-desktop-game-overview-light.png",
+      "sha256": "9417ddb70e3286ca5205a22dff1b86de371cc976c3c81fcad314df1f339892ae",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "game-overview"
+    },
+    {
+      "file": "s112-before-contrast-desktop-game-league-light.png",
+      "sha256": "6e74c6e1d0d175ea4993a212a0c39b9567a8638ddd7096b5b5dc30d26e883951",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "game-league"
+    },
+    {
+      "file": "s112-before-contrast-desktop-architect-signature-light.png",
+      "sha256": "46bfc9836dd9e85b8cb63c32c1637ad91e8d575535bed986c08735241407c041",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "architect-signature"
+    },
+    {
+      "file": "s112-before-contrast-desktop-hof-ceremony-light.png",
+      "sha256": "b0565bc6c75dcb52a33d09b0233e2355a4c8d5467c4e9bceff0c3fd9bd2a1b7d",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "hof-ceremony"
+    },
+    {
+      "file": "s112-before-contrast-desktop-sim-watch-reel-light.png",
+      "sha256": "13942505ff3facce16aacab430f4045ab80ec246b20744a1cb3d3b4aedf13d97",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "sim-watch-reel"
+    },
+    {
+      "file": "s112-before-contrast-desktop-gm-persona-light.png",
+      "sha256": "d34bd5c58ccab968b31d5ac917d4ac37315f4147f501c4d0a0478e30df62db95",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "gm-persona"
+    },
+    {
+      "file": "s112-before-contrast-desktop-room-watch-light.png",
+      "sha256": "44d6ad9746794b7c985c6ee702cce9eee54706d074976c33e13176ab42dafb21",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "room-watch"
+    },
+    {
+      "file": "s112-before-contrast-desktop-prediction-receipt-light.png",
+      "sha256": "e3f3d587df6e16ef9a125d81df45f74a2f7fc0ffdbffc067f58b735d485fbceb",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "prediction-receipt"
+    },
+    {
+      "file": "s112-before-contrast-desktop-moment-card-light.png",
+      "sha256": "9fee1152d334edd51a326dbe15170e7aa0154464eaa4aef99cea3eaeffea1797",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "moment-card"
+    },
+    {
+      "file": "s112-before-contrast-desktop-dynasty-timeline-light.png",
+      "sha256": "97e8eb9727c6f2afb0f03e929f5d2d2667870fa6df52ce5234fdc9002868efbf",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "dynasty-timeline"
+    },
+    {
+      "file": "s112-before-contrast-mobile-tutorial-identity-dark.png",
+      "sha256": "575e75c4fc1316866fc558e900d74bd546d6234000ddd01af22fe8addfbc0754",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "tutorial-identity"
+    },
+    {
+      "file": "s112-before-contrast-mobile-tutorial-pressure-dark.png",
+      "sha256": "1329d635feb77bb7380b094557e899501d69a49cf816f9561edb402c82d48a09",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "tutorial-pressure"
+    },
+    {
+      "file": "s112-before-contrast-mobile-tutorial-first-call-dark.png",
+      "sha256": "ddf31a3dbe2475789c4eb2b21d3c22239e349368ec3beb3d4798775abd8cb016",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "tutorial-first-call"
+    },
+    {
+      "file": "s112-before-contrast-mobile-game-overview-dark.png",
+      "sha256": "d28e65740d9a9b9d6d0885ee629756fed7ab20e6564e283f56c87dc24921fbbd",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "game-overview"
+    },
+    {
+      "file": "s112-before-contrast-mobile-game-league-dark.png",
+      "sha256": "510ffd9e0994020ba5a373c13cb4d37956a4022cc37d00ecde305de82a1e90f4",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "game-league"
+    },
+    {
+      "file": "s112-before-contrast-mobile-architect-signature-dark.png",
+      "sha256": "5467f3d63c99669ee6acaf07ff3802f226a7ebefb193579ad45a33650cb10318",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "architect-signature"
+    },
+    {
+      "file": "s112-before-contrast-mobile-hof-ceremony-dark.png",
+      "sha256": "6608eeade7b429c06ab022c75455bd2e593275913a7fb2e7ab72deca6ebad003",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "hof-ceremony"
+    },
+    {
+      "file": "s112-before-contrast-mobile-sim-watch-reel-dark.png",
+      "sha256": "79fbe8ce907fc766223143c02b80dd5fc76615ea0e7122281f0bf67b619b6e67",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "sim-watch-reel"
+    },
+    {
+      "file": "s112-before-contrast-mobile-gm-persona-dark.png",
+      "sha256": "b2e28976d458b74b08c1d5384007bff123a914ba39dd89792bfb816eb492d4cd",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "gm-persona"
+    },
+    {
+      "file": "s112-before-contrast-mobile-room-watch-dark.png",
+      "sha256": "0f1e3651a6525809d6e5c8e12e07465555eb5b5d11eb5f46abe64b15b8866eb5",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "room-watch"
+    },
+    {
+      "file": "s112-before-contrast-mobile-prediction-receipt-dark.png",
+      "sha256": "39b480e789d5864d2e3eda378c1fda6b2b31d8a170982aa41b3e7a8c77130589",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "prediction-receipt"
+    },
+    {
+      "file": "s112-before-contrast-mobile-moment-card-dark.png",
+      "sha256": "917074410ff1d664c9e927a3285df3e00c9b1c089dc685478f1b74ab6ff93393",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "moment-card"
+    },
+    {
+      "file": "s112-before-contrast-mobile-dynasty-timeline-dark.png",
+      "sha256": "51f9467b5dbea41903e7c94102a85126280237e963bff73b005c4beefb062f5c",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "dynasty-timeline"
+    },
+    {
+      "file": "s112-before-contrast-mobile-tutorial-identity-light.png",
+      "sha256": "f7752b57724d1bc26edd1f80b037f2e676ed5ab5d9538f51088d3050a0564213",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "tutorial-identity"
+    },
+    {
+      "file": "s112-before-contrast-mobile-tutorial-pressure-light.png",
+      "sha256": "50ac365edb3c0649e01345d97312fa874ddc1e456c4b89b247643e3a0f12183f",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "tutorial-pressure"
+    },
+    {
+      "file": "s112-before-contrast-mobile-tutorial-first-call-light.png",
+      "sha256": "e050a7a1a1621d9849891b96dfed825f47f2e1af619f048022dd34a476aeaa9c",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "tutorial-first-call"
+    },
+    {
+      "file": "s112-before-contrast-mobile-game-overview-light.png",
+      "sha256": "31552712d3ffbdd4a1efffecb25fdf92653717b839bddd0c089053acac3dff51",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "game-overview"
+    },
+    {
+      "file": "s112-before-contrast-mobile-game-league-light.png",
+      "sha256": "e75874260504fdcd124d289a68d18364723cfcff90d82b644d0bc534fec1065c",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "game-league"
+    },
+    {
+      "file": "s112-before-contrast-mobile-architect-signature-light.png",
+      "sha256": "9c03c95313e70fd8bf555067c6717e8edfce15fc14d60eca46cae6c09bb1bea5",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "architect-signature"
+    },
+    {
+      "file": "s112-before-contrast-mobile-hof-ceremony-light.png",
+      "sha256": "2ebbe43efbfe09c4d986b12265911335ecfe526394ee6a1cdd82fa9acb38a4c4",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "hof-ceremony"
+    },
+    {
+      "file": "s112-before-contrast-mobile-sim-watch-reel-light.png",
+      "sha256": "9c0ba546e3347fb9b09cf76cc7c6473e32a40eeaf8d1763ca026ace9fe0d73a1",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "sim-watch-reel"
+    },
+    {
+      "file": "s112-before-contrast-mobile-gm-persona-light.png",
+      "sha256": "1db1bba0bfcf4ea64df8c744f8771c9a5bf124c5d7a2edd9c5a93dc1d8ff1a39",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "gm-persona"
+    },
+    {
+      "file": "s112-before-contrast-mobile-room-watch-light.png",
+      "sha256": "46b796122981e28c458a4c58c99d219cd8ff53d055c4b129f10205aa9c2fb39b",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "room-watch"
+    },
+    {
+      "file": "s112-before-contrast-mobile-prediction-receipt-light.png",
+      "sha256": "5365d11aff388dc9d75603f2d5d2d9a8488580e30bc8818db5192fd28c77493d",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "prediction-receipt"
+    },
+    {
+      "file": "s112-before-contrast-mobile-moment-card-light.png",
+      "sha256": "b8c357b343f8b534ac65f259f3f456b149df119b0b35fef89d1fbd8954e21f8b",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "moment-card"
+    },
+    {
+      "file": "s112-before-contrast-mobile-dynasty-timeline-light.png",
+      "sha256": "b8c357b343f8b534ac65f259f3f456b149df119b0b35fef89d1fbd8954e21f8b",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "dynasty-timeline"
+    },
+    {
+      "file": "s112-before-contrast-public-desktop-dark-simulation.png",
+      "sha256": "e29148842f3673164de304090fe0c751247a69c98ccab6df273bfa645f06f2dd",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "simulation"
+    },
+    {
+      "file": "s112-before-contrast-public-desktop-dark-stats.png",
+      "sha256": "2d09bef8402d4cbf28f5e4d13434a467c200dc937e439ca5b3ff9fc7c971b926",
+      "viewport": "desktop",
+      "theme": "dark",
+      "surface": "stats"
+    },
+    {
+      "file": "s112-before-contrast-public-desktop-light-simulation.png",
+      "sha256": "26a4fd9709c987117d351b2992255487573a3f56b616525bfd182d96994f945d",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "simulation"
+    },
+    {
+      "file": "s112-before-contrast-public-desktop-light-stats.png",
+      "sha256": "f7b3fcfc285b970df35dfba0093e674d3ad00a12c0efef3f1722460113092e50",
+      "viewport": "desktop",
+      "theme": "light",
+      "surface": "stats"
+    },
+    {
+      "file": "s112-before-contrast-public-mobile-dark-simulation.png",
+      "sha256": "5e9286db296627c685d060134d4dd23ef2b616691d2cb51391bd01a0943065c4",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "simulation"
+    },
+    {
+      "file": "s112-before-contrast-public-mobile-dark-stats.png",
+      "sha256": "a9eec466158be200e2536d00d93ed17cb4fd6718ae1379213b1ff3587c8fcbb1",
+      "viewport": "mobile",
+      "theme": "dark",
+      "surface": "stats"
+    },
+    {
+      "file": "s112-before-contrast-public-mobile-light-simulation.png",
+      "sha256": "6afa0e683a29342da8833cda2c060e0fd847ce8aa989681647c8e4c8d5ccabf9",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "simulation"
+    },
+    {
+      "file": "s112-before-contrast-public-mobile-light-stats.png",
+      "sha256": "cbd5fa4d6d93fbae574a762fca34a2a98b2a935c658030904952b73f9a601c2a",
+      "viewport": "mobile",
+      "theme": "light",
+      "surface": "stats"
+    }
+  ],
+  "inspection": {
+    "reviewed": true,
+    "reviewers": [
+      "recovery_ledger",
+      "browser_recon",
+      "product_recon"
+    ],
+    "count": 60
+  },
+  "limits": "Rejected intermediate candidate. Automated layout checks passed; real image review found light-theme contrast defects. Selected tutorial tips measured3.605–3.682:1 and failed the new guard. Synthetic fixtures prove rendering only."
+}

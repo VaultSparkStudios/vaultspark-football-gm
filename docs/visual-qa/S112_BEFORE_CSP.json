@@ -1,0 +1,1224 @@
+{
+  "schemaVersion": 1,
+  "kind": "before-rendered-evidence",
+  "sourceRevision": "15a962b2fa87532bbbe349c2f51b1b46fbe3a3d8",
+  "artifactDigest": "c09fc822db5834efdf52a381930acd0ed5ab9a4132c8655f777938bb686c980c",
+  "origin": "https://playfranchisearchitect.com",
+  "capturedAt": "2026-09-30T15:36:35.299Z",
+  "captures": [
+    {
+      "file": "s112-before-csp-desktop-tutorial-skip-dark.png",
+      "sha256": "ed0adbe4bb0005bdf47b11ac53a6134fd74e5ee99b691849f2bc89bc4e451724",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-skip",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-skip-light.png",
+      "sha256": "31bc91f1cf7611a70a72c99e759c8eb976ec7733bc8983fb98c03e8219330a97",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-skip",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-identity-dark.png",
+      "sha256": "e6715863293efaf9cdda139a6231b6605c982a7871d2b9458167dde4b30f9eda",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-identity",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-identity-light.png",
+      "sha256": "6faf1ee4ed20d4931393ec4c7f323723392acd41067a45e2643818eba1115c49",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-identity",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-pressure-dark.png",
+      "sha256": "f9813c119ac2f0a37fad3dbfb6dd0b383ad0da920ce3a6ddba9030d498739f14",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-pressure",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-pressure-light.png",
+      "sha256": "8c322b230379433e9b3dcf671e6f18c1f3bd5e30a49d76087435a3ff70896aa8",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-pressure",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-first-call-dark.png",
+      "sha256": "e50870b57b091f5a6dc40d37ee7b836d41ed8f047efd615b55dc701fad81d022",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-first-call",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-first-call-light.png",
+      "sha256": "6827a029a9fcb044a3ca112013eec17bcc0888fcaabec8704789c7d0b2a8af3a",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-first-call",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-receipt-dark.png",
+      "sha256": "b2ec819a3357906687443a0f82bec1b5a9f3b0ea676bd5ddedd1c1b489a91a17",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-receipt",
+      "fixture": "Synthetic isolated receipt rendered by live tutorial module; no opening contract committed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-tutorial-receipt-light.png",
+      "sha256": "7ca7cf686def8a6f1aec101019954db8f561fbc4615f90316e064a9cd1b51253",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "tutorial-receipt",
+      "fixture": "Synthetic isolated receipt rendered by live tutorial module; no opening contract committed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-advisor-dark.png",
+      "sha256": "47013c80c9721a1d9f12054841067b6325f3d69c50a2c00af1694a5c9752f03a",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "advisor",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-advisor-light.png",
+      "sha256": "83ed9c216ce26ff5a402b38a8723588c59726b1d3c25c3ef77e515c0db4ea7b3",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "advisor",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-dynasty-timeline-dark.png",
+      "sha256": "8168fcb96c0d8a1b7acf5174f557cb77b486b3b19f46f10124b29a488668e1bd",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "dynasty-timeline",
+      "fixture": "Two synthetic seasons rendered by live timeline module; no career outcome claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-dynasty-timeline-light.png",
+      "sha256": "7b90e3994d5921b72799f1298d4516e07c2ffd4e5760e2d2385e307da7552466",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "dynasty-timeline",
+      "fixture": "Two synthetic seasons rendered by live timeline module; no career outcome claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-moment-card-dark.png",
+      "sha256": "5649b61072358697115837d17f1ca418d5fc00b9a1ceb1e757dda78753a7f7ab",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "moment-card",
+      "fixture": "Synthetic achievement sharing control from live module; no share transmitted.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-moment-card-light.png",
+      "sha256": "5fb373ca223f887960fa71edd4fdedf5e44f2353f6dde3d512aebc127cade64b",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "moment-card",
+      "fixture": "Synthetic achievement sharing control from live module; no share transmitted.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-first-debrief-dark.png",
+      "sha256": "7a95f22feabfc6dcda0faef13ffa416898ab08a62e43bae8347a48ee8e7f7258",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "first-debrief",
+      "fixture": "Live prompt rendered with isolated memory storage; no answer or engagement receipt.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-first-debrief-light.png",
+      "sha256": "1e044dc7ebfdf036464aa626f9f427864ac799566043350e13e8e791c039ddc9",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "first-debrief",
+      "fixture": "Live prompt rendered with isolated memory storage; no answer or engagement receipt.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-return-digest-dark.png",
+      "sha256": "0d393fa4fab2167fceac6e49ebff7af74f4a3c67cea94c36cd4ab1708e4b25cb",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "return-digest",
+      "fixture": "Live dashboard with synthetic eight-hour boundary; no returning player claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/returnDigest.js",
+          "lineNumber": 215
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-desktop-return-digest-light.png",
+      "sha256": "7a61751f5508ede03539361dad7d0818e4baf6add1c61376362c769a2b11e727",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "surface": "return-digest",
+      "fixture": "Live dashboard with synthetic eight-hour boundary; no returning player claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/returnDigest.js",
+          "lineNumber": 215
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-skip-dark.png",
+      "sha256": "d8193473f47b82e24a1a33ceaca04b380d31615ad51615e0375f48ddcf579426",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-skip",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-skip-light.png",
+      "sha256": "43481b0c2cf4f24ed5cdcabb5a4754337c95e1d5cdd876fe1484a36ca2f32787",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-skip",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-identity-dark.png",
+      "sha256": "29c4255b3733c774f54137c0da07ca9d05b3179df7523e4b429c56277e1792ba",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-identity",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-identity-light.png",
+      "sha256": "2f95df7d500057f4f2b88e130536734d095ae5ef1a2ff9863a985dc01dd8a7c1",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-identity",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-pressure-dark.png",
+      "sha256": "ebf6a78d710eefa463efcbe805a4829f6ac593d38d7738bd1d411f43254f5da9",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-pressure",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-pressure-light.png",
+      "sha256": "8815b12dfdc76e5106b692c495fe6c2147a26c211726a01ea855648f1b199777",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-pressure",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-first-call-dark.png",
+      "sha256": "7d79caf2c0926c22224f2f22c7c301cf61d75e08cf0f7fa446bf268493f4db3d",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-first-call",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-first-call-light.png",
+      "sha256": "9496c70ce166fea009ec4f622b2d5aaa838e2c970045cfe13710062d48c1a4af",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-first-call",
+      "fixture": "Actual live tutorial module; synthetic isolated receipt. Programmatic step selection is rendering-only, not a passed interaction.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-receipt-dark.png",
+      "sha256": "dd96592e740adcaf34cef7ad1b9cb2ee65b2c4633cab94473a4f388485d4b7c1",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-receipt",
+      "fixture": "Synthetic isolated receipt rendered by live tutorial module; no opening contract committed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-tutorial-receipt-light.png",
+      "sha256": "21e885363ac8558548303f6c7667963b67f6f922e324ae38770b544b6f28aba4",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "tutorial-receipt",
+      "fixture": "Synthetic isolated receipt rendered by live tutorial module; no opening contract committed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-advisor-dark.png",
+      "sha256": "5aa668156dddb9e554af367fb933cdffc5e56014312f174e2b4f4c2e2e62181a",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "advisor",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-advisor-light.png",
+      "sha256": "d5366d8dcd6b745cbdb8c5bc205a1b0507114c81e943d5ba9bcb14c66ade395f",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "advisor",
+      "fixture": null,
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-dynasty-timeline-dark.png",
+      "sha256": "f3cef0bf33d451cc73662ea4b1cc5f0df70e14dcc9e24c09469127793d6e4deb",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "dynasty-timeline",
+      "fixture": "Two synthetic seasons rendered by live timeline module; no career outcome claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-dynasty-timeline-light.png",
+      "sha256": "b54e2311278260d507df99ca262c2c7fa4306b55d67bc8d09b515c75306f18d3",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "dynasty-timeline",
+      "fixture": "Two synthetic seasons rendered by live timeline module; no career outcome claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-moment-card-dark.png",
+      "sha256": "b0396042b4675b4cdaec5de7bd388b7e0000416299da4f0444ceeea869cd8452",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "moment-card",
+      "fixture": "Synthetic achievement sharing control from live module; no share transmitted.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-moment-card-light.png",
+      "sha256": "544bd76e60b992754ad2e68eafda7ba285d7e969abb01ad0d788dc11706a5215",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "moment-card",
+      "fixture": "Synthetic achievement sharing control from live module; no share transmitted.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-first-debrief-dark.png",
+      "sha256": "bab5703d7d4858f4210ac49822a105699ab0f48a6617ce015e6f4624c0a95ab6",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "first-debrief",
+      "fixture": "Live prompt rendered with isolated memory storage; no answer or engagement receipt.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-first-debrief-light.png",
+      "sha256": "96890f1d530aa59156e28c6923d08036bc3e95d00b7efe391c601d2733fb5f7d",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "first-debrief",
+      "fixture": "Live prompt rendered with isolated memory storage; no answer or engagement receipt.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-return-digest-dark.png",
+      "sha256": "f452a7525bf173bb58335958f4bdf4749c27b66ef7a254b071fa58b5eccacc5f",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "return-digest",
+      "fixture": "Live dashboard with synthetic eight-hour boundary; no returning player claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/returnDigest.js",
+          "lineNumber": 215
+        }
+      ]
+    },
+    {
+      "file": "s112-before-csp-mobile-return-digest-light.png",
+      "sha256": "73aff8153d1fa0783d70d8042a277987a12625e4638ae01700a86106dee58bd4",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "surface": "return-digest",
+      "fixture": "Live dashboard with synthetic eight-hour boundary; no returning player claimed.",
+      "policyViolations": [
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/tutorialCampaign.js",
+          "lineNumber": 359
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/deskIslands.js",
+          "lineNumber": 56
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/momentCard.js",
+          "lineNumber": 282
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/firstDebriefPulse.js",
+          "lineNumber": 52
+        },
+        {
+          "effectiveDirective": "style-src-elem",
+          "blockedURI": "inline",
+          "sourceFile": "https://playfranchisearchitect.com/lib/returnDigest.js",
+          "lineNumber": 215
+        }
+      ]
+    }
+  ],
+  "inspection": {
+    "reviewed": true,
+    "reviewer": "browser_recon",
+    "count": 40
+  },
+  "limits": "Tutorial intermediate baseline steps and several lazy surfaces use labeled synthetic rendering fixtures. Natural mobile Skip was intercepted by the weekly deck; desktop scroll-and-click succeeded. No engagement or gameplay result inferred."
+}

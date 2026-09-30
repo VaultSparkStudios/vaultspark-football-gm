@@ -3627,11 +3627,11 @@ body.mobile-loop-active .mobile-loop-overlay {
 .inbox-bell-btn:hover { border-color: var(--accent); background: rgba(var(--team-primary-rgb),0.12); }
 .inbox-badge {
   position: absolute; top: -4px; right: -4px;
-  background: var(--warning); color: #111; border-radius: 10px;
+  background: var(--warning); color: var(--btn-primary-text); border-radius: 10px;
   font-size: 9px; font-weight: 800; padding: 1px 4px; min-width: 14px;
   text-align: center; line-height: 14px; border: 1px solid var(--bg-0);
 }
-.inbox-badge-critical { background: var(--danger); color: #fff; }
+.inbox-badge-critical { background: var(--danger); color: var(--btn-primary-text); }
 #inboxDrawer {
   position: fixed; right: -360px; top: 0; width: 360px; height: 100vh;
   background: var(--bg-1); border-left: 1px solid var(--line);
@@ -3705,7 +3705,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 #fmTopPlay { font-size: 0.78rem; color: var(--muted); background: var(--bg-3); border-radius: 8px; padding: 6px 10px; margin-bottom: 10px; }
 .fm-actions { display: flex; gap: 8px; margin-top: 12px; }
 .fm-close-btn { background: none; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font-size: 0.78rem; cursor: pointer; color: var(--muted); }
-.fm-share-btn { background: var(--accent); border: none; border-radius: 8px; padding: 6px 14px; font-size: 0.78rem; cursor: pointer; color: #111; font-weight: 700; }
+.fm-share-btn { background: var(--accent); border: none; border-radius: 8px; padding: 6px 14px; font-size: 0.78rem; cursor: pointer; color: var(--btn-primary-text); font-weight: 700; }
 .fm-share-btn:hover { background: var(--accent-strong); }
 
 /* ── GM Decision Modal ──────────────────────────────────────────────────── */
@@ -3797,12 +3797,12 @@ body.mobile-loop-active .mobile-loop-overlay {
 .sw-play-qtr { color: var(--muted); min-width: 32px; font-size: 0.68rem; }
 .sw-play-team { color: var(--accent-2); min-width: 28px; font-size: 0.68rem; font-weight: 700; }
 .sw-play-desc { flex: 1; line-height: 1.4; }
-.sw-play-tag { background: var(--accent); color: #111; border-radius: 4px; padding: 1px 5px; font-size: 0.64rem; font-weight: 800; white-space: nowrap; }
+.sw-play-tag { background: var(--accent); color: var(--btn-primary-text); border-radius: 4px; padding: 1px 5px; font-size: 0.64rem; font-weight: 800; white-space: nowrap; }
 .sw-highlight { background: rgba(var(--section-wash-rgb), 0.08); }
 .sw-scoring { background: rgba(99,214,140,0.08); }
 .sw-scoring .sw-play-tag { background: var(--success); }
 .sw-turnover { background: rgba(208,92,92,0.08); }
-.sw-turnover .sw-play-tag { background: var(--danger); color: #fff; }
+.sw-turnover .sw-play-tag { background: var(--danger); color: var(--btn-primary-text); }
 #simWatchFinal {
   padding: 10px 16px; background: var(--bg-2); border-top: 1px solid var(--line);
   font-weight: 700; font-size: 0.9rem; text-align: center;
