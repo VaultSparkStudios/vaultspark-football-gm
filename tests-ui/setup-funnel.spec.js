@@ -36,14 +36,14 @@ test("fresh visitor: one-click instant start reaches the game with a random team
 
   // One click: instant start creates a league and lands in the game.
   await page.click('[data-testid="instant-start-btn"]');
-  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
+  await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
 });
 
 test("quick start era card starts a league in the same click", async ({ page }) => {
   await gotoAsFreshClientVisitor(page);
   await page.click("#presetBalancedBtn");
-  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
+  await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
 });
 

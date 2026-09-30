@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-09-30T22:46:20.438Z",
+  "status": "measured",
+  "scope": "Immutable committed client artifact, Chromium worker runtime; fresh franchise and one actual completed season per mode.",
+  "limitations": [
+    "Single warm checkpoint samples on this machine, not a benchmark distribution or cold module-load measurement.",
+    "No mature or 100-year franchise claim.",
+    "Size and task observers add measurement overhead.",
+    "The 90-second season limit closes only its owned browser context if reached."
+  ],
+  "modes": [
+    {
+      "mode": "drive",
+      "samples": [
+        {
+          "label": "fresh",
+          "runtime": "worker",
+          "snapshotJsonBytes": 5290429,
+          "encodedSnapshotChars": 629007,
+          "checkpointEnvelopeBytes": 629219,
+          "checkpointKind": "snapshot",
+          "exportMs": 49.5,
+          "snapshotSizeMeasurementMs": 46,
+          "flushMs": 226.60000002384186,
+          "flushOk": true,
+          "error": null,
+          "status": {
+            "status": "ready",
+            "message": "Updated this tab's recovery checkpoint. Use a save slot to keep the franchise after closing the tab.",
+            "dirty": false,
+            "canRestorePrevious": true,
+            "backgroundRunning": false,
+            "interruptedJob": false,
+            "reasonCode": null
+          },
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "exportLongTasks": {
+            "count": 1,
+            "maxMs": 74,
+            "sumMs": 74
+          },
+          "flushLongTasks": {
+            "count": 0,
+            "maxMs": 0,
+            "sumMs": 0
+          },
+          "interactionOccurredDuringFlush": true,
+          "inputDispatchAfterFlushStartMs": 12.700000047683716,
+          "interactionWallMs": 26.275700000000143,
+          "afterFlushInteractionWallMs": 10.898200000001452,
+          "identity": {
+            "franchiseId": "fa-20260306-CHI",
+            "team": "CHI",
+            "startYear": 2024,
+            "year": 2024,
+            "week": 1,
+            "mode": "drive",
+            "rngSeed": 3266323032
+          }
+        },
+        {
+          "label": "one-completed-season",
+          "runtime": "worker",
+          "snapshotJsonBytes": 30160996,
+          "encodedSnapshotChars": 3525759,
+          "checkpointEnvelopeBytes": 3526059,
+          "checkpointKind": "snapshot",
+          "exportMs": 324.7000000476837,
+          "snapshotSizeMeasurementMs": 312.39999997615814,
+          "flushMs": 1331.1000000238419,
+          "flushOk": true,
+          "error": null,
+          "status": {
+            "status": "ready",
+            "message": "Updated this tab's recovery checkpoint. Use a save slot to keep the franchise after closing the tab.",
+            "dirty": false,
+            "canRestorePrevious": true,
+            "backgroundRunning": false,
+            "interruptedJob": false,
+            "reasonCode": null
+          },
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "exportLongTasks": {
+            "count": 1,
+            "maxMs": 493,
+            "sumMs": 493
+          },
+          "flushLongTasks": {
+            "count": 1,
+            "maxMs": 69,
+            "sumMs": 69
+          },
+          "interactionOccurredDuringFlush": true,
+          "inputDispatchAfterFlushStartMs": 14.299999952316284,
+          "interactionWallMs": 56.22780000000057,
+          "afterFlushInteractionWallMs": 9.334100000000035,
+          "identity": {
+            "franchiseId": "fa-20260306-CHI",
+            "team": "CHI",
+            "startYear": 2024,
+            "year": 2025,
+            "week": 1,
+            "mode": "drive",
+            "rngSeed": 2253340988
+          }
+        }
+      ],
+      "opening": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "drive",
+        "rngSeed": 3266323032
+      },
+      "seasonWallMs": 12486.145199999999,
+      "afterSeason": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2025,
+        "week": 1,
+        "mode": "drive",
+        "rngSeed": 2253340988
+      }
+    },
+    {
+      "mode": "play",
+      "samples": [
+        {
+          "label": "fresh",
+          "runtime": "worker",
+          "snapshotJsonBytes": 5290428,
+          "encodedSnapshotChars": 629007,
+          "checkpointEnvelopeBytes": 629219,
+          "checkpointKind": "snapshot",
+          "exportMs": 32.700000047683716,
+          "snapshotSizeMeasurementMs": 28.199999928474426,
+          "flushMs": 201.19999992847443,
+          "flushOk": true,
+          "error": null,
+          "status": {
+            "status": "ready",
+            "message": "Updated this tab's recovery checkpoint. Use a save slot to keep the franchise after closing the tab.",
+            "dirty": false,
+            "canRestorePrevious": true,
+            "backgroundRunning": false,
+            "interruptedJob": false,
+            "reasonCode": null
+          },
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "exportLongTasks": {
+            "count": 0,
+            "maxMs": 0,
+            "sumMs": 0
+          },
+          "flushLongTasks": {
+            "count": 0,
+            "maxMs": 0,
+            "sumMs": 0
+          },
+          "interactionOccurredDuringFlush": true,
+          "inputDispatchAfterFlushStartMs": 5.699999928474426,
+          "interactionWallMs": 16.998499999994237,
+          "afterFlushInteractionWallMs": 16.544699999998556,
+          "identity": {
+            "franchiseId": "fa-20260306-CHI",
+            "team": "CHI",
+            "startYear": 2024,
+            "year": 2024,
+            "week": 1,
+            "mode": "play",
+            "rngSeed": 3266323032
+          }
+        },
+        {
+          "label": "one-completed-season",
+          "runtime": "worker",
+          "snapshotJsonBytes": 34594878,
+          "encodedSnapshotChars": 3888819,
+          "checkpointEnvelopeBytes": 3889119,
+          "checkpointKind": "snapshot",
+          "exportMs": 278.60000002384186,
+          "snapshotSizeMeasurementMs": 267.7000000476837,
+          "flushMs": 1271.5999999046326,
+          "flushOk": true,
+          "error": null,
+          "status": {
+            "status": "ready",
+            "message": "Updated this tab's recovery checkpoint. Use a save slot to keep the franchise after closing the tab.",
+            "dirty": false,
+            "canRestorePrevious": true,
+            "backgroundRunning": false,
+            "interruptedJob": false,
+            "reasonCode": null
+          },
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "exportLongTasks": {
+            "count": 1,
+            "maxMs": 413,
+            "sumMs": 413
+          },
+          "flushLongTasks": {
+            "count": 0,
+            "maxMs": 0,
+            "sumMs": 0
+          },
+          "interactionOccurredDuringFlush": true,
+          "inputDispatchAfterFlushStartMs": 3.799999952316284,
+          "interactionWallMs": 10.870799999996962,
+          "afterFlushInteractionWallMs": 12.83009999999922,
+          "identity": {
+            "franchiseId": "fa-20260306-CHI",
+            "team": "CHI",
+            "startYear": 2024,
+            "year": 2025,
+            "week": 1,
+            "mode": "play",
+            "rngSeed": 4051207593
+          }
+        }
+      ],
+      "opening": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032
+      },
+      "seasonWallMs": 12529.905299999999,
+      "afterSeason": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2025,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 4051207593
+      }
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "service": "franchise-architect-football",
+    "sourceRevision": "23139baf778792dcea44118138de3ee07eed5a5a",
+    "artifactFingerprint": {
+      "algorithm": "sha256",
+      "digest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3",
+      "files": 234,
+      "exclusions": [
+        "_health",
+        "deploy-manifest.json",
+        "edge-policy-receipt.json"
+      ]
+    },
+    "styleAsset": "styles.13cf35ad8f.css",
+    "communityStatsAsset": "community-stats.ee24bbbfe2.js",
+    "edgePolicyFingerprint": "sha256:735dd2e27ee2ae8364a2afcf8195187e42e90b1ddaa6bea0be7bfb3e233606bd",
+    "edgePolicyAppliedToHostedOrigin": false,
+    "generatedAt": "2026-09-30T22:43:51.208Z",
+    "launchReady": false,
+    "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+  }
+}

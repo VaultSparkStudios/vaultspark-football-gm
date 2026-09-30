@@ -16,7 +16,7 @@ test("canonical milestone news is visible, closeable, and reopenable", async ({ 
   await expect(page.locator('#teamSelect option[value="BUF"]')).toHaveCount(1, { timeout: 60000 });
   await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
-  await expect(page).toHaveURL(/game\.html$/, { timeout: 90000 });
+  await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60000 });
   const skip = page.locator("#tutSkipBtn");
   if (await skip.isVisible().catch(() => false)) await skip.click();

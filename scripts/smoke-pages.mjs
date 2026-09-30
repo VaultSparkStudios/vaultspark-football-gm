@@ -152,7 +152,7 @@ async function main() {
     }
 
     await page.click("#createLeagueBtn");
-    await page.waitForURL(`**/game.html`, { timeout: 15000 });
+    await page.waitForURL(`**/game.html?resume=tab`, { timeout: 15000 });
     await page.waitForSelector("#refreshBtn");
     await page.waitForFunction(() => {
       const text = document.getElementById("topMetaText")?.textContent || "";

@@ -360,7 +360,7 @@ async function captureTutorialCompletion(browser, viewport, baseUrl, outputDir, 
     await page.goto(baseUrl, { waitUntil: "networkidle" });
     await page.evaluate(() => { document.getElementById("seedInput").value = "20260306"; });
     await page.locator("#createLeagueBtn").click();
-    await page.waitForURL("**/game.html", { timeout: 90_000 });
+    await page.waitForURL("**/game.html?resume=tab", { timeout: 90_000 });
     await page.locator("#tutSkipBtn").waitFor({ state: "visible" });
     for (const [step, choice] of [["identity", "balanced"], ["pressure", "balanced-mandate"], ["first-call", "trust-scout"]]) {
       await page.locator(`.tutorial-choice[data-choice="${choice}"]`).click();
@@ -525,7 +525,7 @@ async function main() {
         document.getElementById("seedInput").value = "20260306";
       });
       await page.click("#createLeagueBtn");
-      await page.waitForURL("**/game.html", { timeout: 90_000 });
+      await page.waitForURL("**/game.html?resume=tab", { timeout: 90_000 });
       await page.waitForSelector("#statusChip");
       await page.waitForFunction(() => !/loading/i.test(document.getElementById("topMetaText")?.textContent || "Loading"));
       await page.waitForFunction(() => /^ready/i.test(document.getElementById("statusChip")?.textContent || ""));

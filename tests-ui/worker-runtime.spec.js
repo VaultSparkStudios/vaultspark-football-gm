@@ -55,7 +55,7 @@ async function createClientLeague(page, { workerRuntime = true } = {}) {
   await page.fill("#seedInput", String(SEED));
   await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
-  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
+  await expect(page).toHaveURL(/\/game\.html\?resume=tab$/, { timeout: 90_000 });
   await waitGameReady(page);
   await dismissTutorialIfVisible(page);
 }
