@@ -268,7 +268,7 @@
         }
       },
       "rank": 4,
-      "executionEvidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate."
+      "executionEvidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate. Full immutable proof automated gates passed327+40 but actual review of198 receipt images found remaining light contrast defects; corrected before promotion. The added selected-tip check fails the prior artifact at3.605–3.682:1. Focused style/theme/policy/wiring30/30 passed."
     },
     {
       "slug": "trade-fingerprint-transport",
@@ -524,7 +524,7 @@
     {
       "slug": "production-csp-style-parity",
       "status": "implemented",
-      "evidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate."
+      "evidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate. Full immutable proof automated gates passed327+40 but actual review of198 receipt images found remaining light contrast defects; corrected before promotion. The added selected-tip check fails the prior artifact at3.605–3.682:1. Focused style/theme/policy/wiring30/30 passed."
     },
     {
       "slug": "trade-fingerprint-transport",
@@ -591,5 +591,28 @@
       }
     ],
     "evidence": "Official GitHub-verified release commits; tagged action.yml node24; release age over three months; hosted ubuntu-latest runner requirements satisfied; upload archive default preserved."
+  },
+  "visualReview": {
+    "rejectedCandidate": "6296885ed30af020fe44cd43c8badc2f569671df",
+    "automated": {
+      "responsive": 327,
+      "public": 40,
+      "status": "passed"
+    },
+    "pixelReview": {
+      "gameFrames": 158,
+      "publicFrames": 40,
+      "status": "corrections-required"
+    },
+    "findings": [
+      "Selected tutorial hint contrast measured 3.605–3.682:1 under the actual light-theme wash",
+      "Reduced-opacity section kickers",
+      "Fixed dark palette on owner confidence, mastery tiles and ceremony dialog",
+      "Canvas chart labels did not follow or refresh with theme",
+      "Field endzone labels, prediction success, room warnings, moment CTA and community note contrast",
+      "Public Simulation emphasis used a fixed light foreground"
+    ],
+    "correction": "Use existing semantic palette and surfaces, strengthen light success/warning/Discord tokens, preserve awaiting-evidence distinction through dashed borders, redraw chart from computed palette when theme/accent changes. Add screenshot-sampled selected-tip contrast guard with old-artifact negative control.",
+    "finalVerification": "pending revised immutable candidate"
   }
 }

@@ -1098,7 +1098,7 @@ body[data-theme="light"] .btn-primary {
   text-transform: uppercase;
   color: var(--accent-3);
   margin-bottom: 0.2rem;
-  opacity: 0.75;
+  opacity: 1;
 }
 
 .topbar-brand p {
@@ -3066,7 +3066,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 }
 .gm-tier-dot.active { background: var(--code-attention); border-color: var(--code-attention); }
 .gm-persona-desc { font-size: 11px; color: var(--code-muted); line-height: 1.4; margin-bottom: 4px; }
-.gm-persona-next { font-size: 11px; color: var(--code-link); }
+.gm-persona-next { font-size: 11px; color: var(--accent-3); }
 .gm-legacy-card { grid-column: span 2; }
 
 /* ── Cap Alert Banner ───────────────────────────────────────────────────── */
@@ -3233,7 +3233,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 }
 .owner-confidence-meter[data-band="critical"] { border-color: var(--danger); background: rgba(224,90,90,0.12); }
 .owner-confidence-meter[data-band="strained"] { border-color: var(--warn-alt); background: rgba(224,180,90,0.1); }
-.owner-confidence-meter .ultimatum-body strong { color: var(--text); }
+.owner-confidence-meter .ultimatum-body strong { color: var(--ink-strong); }
 .owner-confidence-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
 
 /* Inbound trade offers (S62) — rival GMs act on the player */
@@ -3443,7 +3443,7 @@ body.mobile-loop-active .mobile-loop-overlay {
   padding: 6px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: var(--bg2);
+  background: var(--inset);
   font-size: 9px;
 }
 .gm-mastery-path small {
@@ -3451,7 +3451,7 @@ body.mobile-loop-active .mobile-loop-overlay {
   color: var(--muted);
 }
 .gm-mastery-path.signature-strength { border-color: var(--accent); }
-.gm-mastery-path.awaiting-evidence { opacity: .72; }
+.gm-mastery-path.awaiting-evidence { border-style: dashed; }
 .gm-mastery-disclaimer {
   display: block;
   margin-top: 7px;
@@ -4257,8 +4257,9 @@ body.mobile-loop-active .mobile-loop-overlay {
   --accent-2: #12795d;
   --accent-3: #1a6a80;
   --danger: #c0392b;
-  --success: #1f9d57;
-  --warning: #b26a00;
+  --success: #146c3a;
+  --warning: #875000;
+  --discord-text: #384eb3;
   --info: #1a6a80;
   --shadow: rgba(16, 30, 38, 0.14);
 
@@ -4528,7 +4529,7 @@ html[data-theme="light"] .bg-layer {
 .hof-ceremony-card {
   width: min(760px, 100%);
   border: 1px solid rgba(247, 201, 72, 0.5);
-  background: linear-gradient(135deg, var(--panel-strong), rgba(16, 24, 27, 0.98));
+  background: var(--panel-grad);
   border-radius: 8px;
   padding: 1.2rem;
   box-shadow: 0 26px 80px rgba(0,0,0,0.45);
@@ -4558,7 +4559,7 @@ html[data-theme="light"] .bg-layer {
   width: 34px;
   display: grid;
   place-items: center;
-  color: rgba(255,255,255,0.66);
+  color: var(--ink-strong);
   font-size: 0.62rem;
   font-weight: 800;
   writing-mode: vertical-rl;
@@ -5631,7 +5632,7 @@ html[data-theme="light"] .bg-layer {
 .community-command-bar button.is-active { color:var(--ink-strong); background:var(--raised); border-color:var(--line); }
 .community-command-bar > span { color:var(--muted); font-size:.7rem; }
 .community-atlas-insight { display:flex; gap:14px; padding:14px 18px; border-left:4px solid var(--gold); background:color-mix(in srgb,var(--gold) 7%,var(--inset)); border-radius:0 12px 12px 0; }
-.community-atlas-insight span { color:var(--gold); font-size:.63rem; font-weight:900; letter-spacing:.12em; }
+.community-atlas-insight span { color:var(--accent-strong); font-size:.63rem; font-weight:900; letter-spacing:.12em; }
 .community-atlas-insight p { margin:0; color:var(--ink); font-size:.78rem; }
 .community-category { margin:18px 0; padding:clamp(18px,3vw,30px); }
 .community-category-head { align-items:baseline; justify-content:flex-start; }
@@ -5708,7 +5709,7 @@ html[data-theme="light"] .bg-layer {
 .sim-section { margin:26px 0; padding:22px 24px; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
 .sim-section h2 { margin:0 0 12px; }
 .sim-section p { margin:0 0 12px; max-width:70ch; color:var(--muted); }
-.sim-section p strong, .sim-limits strong { color:var(--text,inherit); }
+.sim-section p strong, .sim-limits strong { color:var(--ink-strong); }
 .sim-section--limits { border-left:3px solid var(--accent); }
 .sim-limits { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:14px; }
 .sim-limits li { padding-left:22px; position:relative; color:var(--muted); max-width:72ch; }
@@ -5851,7 +5852,7 @@ html[data-theme="light"] .bg-layer {
     .choice-label { font-weight: 700; font-size: .95rem; color: var(--ink-strong); margin-bottom: .2rem; }
     .choice-sub { font-size: .82rem; color: var(--muted); margin-bottom: .35rem; }
     .choice-tip { font-size: .75rem; color: var(--accent-2); font-style: italic; }
-    .tutorial-choice.selected .choice-tip { color: var(--accent); }
+    .tutorial-choice.selected .choice-tip { color: var(--accent-strong); }
     .tutorial-actions { display: flex; justify-content: space-between; align-items: center; padding-top: .5rem; }
     .tutorial-actions button { min-height: 44px; }
     .tutorial-next:disabled { opacity: .45; cursor: not-allowed; }

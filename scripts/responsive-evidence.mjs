@@ -235,6 +235,52 @@ async function captureElement(page, outputDir, name, selector, records) {
   records.push({ name, file, url: page.url(), elementCapture: selector, ...audit });
 }
 
+async function measureSelectedTutorialTextContrast(page, screenshotPath) {
+  if (!(await page.locator(".tutorial-choice.selected .choice-tip").count())) return [];
+  const pngBase64 = (await fs.readFile(screenshotPath)).toString("base64");
+  return page.evaluate(async (pngBase64) => {
+    const tips = [...document.querySelectorAll(".tutorial-choice.selected .choice-tip")];
+    if (!tips.length) return [];
+    const bytes = Uint8Array.from(atob(pngBase64), (character) => character.charCodeAt(0));
+    const bitmap = await createImageBitmap(new Blob([bytes], { type: "image/png" }));
+    const canvas = new OffscreenCanvas(bitmap.width, bitmap.height);
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    context.drawImage(bitmap, 0, 0);
+    const scaleX = bitmap.width / innerWidth;
+    const scaleY = bitmap.height / innerHeight;
+    const luminance = (rgb) => {
+      const channels = rgb.map((value) => {
+        const unit = value / 255;
+        return unit <= 0.04045 ? unit / 12.92 : ((unit + 0.055) / 1.055) ** 2.4;
+      });
+      return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+    };
+    const results = tips.map((tip) => {
+      const style = getComputedStyle(tip);
+      const foreground = (style.color.match(/[\d.]+/g) || []).map(Number);
+      let opacity = foreground[3] ?? 1;
+      for (let node = tip; node; node = node.parentElement) opacity *= Number(getComputedStyle(node).opacity);
+      const rect = tip.getBoundingClientRect();
+      // The choice padding beside each line contains the exact composited
+      // backdrop, including the selection wash, modal gradient and scrim.
+      // Sample outside glyphs at three heights; do not alter the rendered page.
+      const samples = [rect.top + 1, rect.top + rect.height / 2, rect.bottom - 1].map((y) => {
+        const x = Math.max(0, Math.min(bitmap.width - 1, Math.floor((rect.left - 3) * scaleX)));
+        const pixelY = Math.max(0, Math.min(bitmap.height - 1, Math.floor(y * scaleY)));
+        const background = [...context.getImageData(x, pixelY, 1, 1).data].slice(0, 3);
+        const compositedText = foreground.slice(0, 3).map((value, index) => value * opacity + background[index] * (1 - opacity));
+        const a = luminance(compositedText);
+        const b = luminance(background);
+        return { x, y: pixelY, background, contrast: (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) };
+      });
+      const minimumContrast = Math.min(...samples.map((sample) => sample.contrast));
+      return { selector: ".tutorial-choice.selected .choice-tip", fontSize: style.fontSize, foreground: style.color, opacity, samples, minimumContrast, requiredContrast: 4.5, ok: minimumContrast >= 4.5 };
+    });
+    bitmap.close();
+    return results;
+  }, pngBase64);
+}
+
 async function captureStyledSurface(page, outputDir, name, selector, records, { fixture = null, checks = [], action = null } = {}) {
   const element = page.locator(selector).first();
   await element.waitFor({ state: "visible" });
@@ -289,11 +335,13 @@ async function captureStyledSurface(page, outputDir, name, selector, records, { 
   record.surface = selector;
   record.fixture = fixture;
   record.computedLayout = layout;
+  record.smallTextContrast = await measureSelectedTutorialTextContrast(page, path.join(outputDir, record.file));
   record.styleFailures = [
     ...layout.inspected.filter((item) => !item.ok).map((item) => `${item.selector} ${item.property}=${item.value}`),
     ...(layout.width <= 0 || layout.height <= 0 || layout.left < -1 || layout.right > layout.viewportWidth + 1 ? ["surface is clipped outside the viewport"] : []),
     ...(layout.top < layout.visibleTop - 1 || (layout.fitsAvailableHeight && layout.bottom > layout.viewportHeight + 1) ? ["surface is vertically clipped or covered by the sticky header"] : []),
-    ...(layout.actionReachable === false ? [`${action} is occluded`] : [])
+    ...(layout.actionReachable === false ? [`${action} is occluded`] : []),
+    ...record.smallTextContrast.filter((item) => !item.ok).map((item) => `${item.selector} small-text contrast ${item.minimumContrast.toFixed(3)}:1 is below ${item.requiredContrast}:1`)
   ];
 }
 

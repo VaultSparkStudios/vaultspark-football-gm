@@ -178,11 +178,22 @@ export function renderCompareSearchResults() {
   });
 }
 
+let chartThemeObserver = null;
+
 export function renderAnalyticsChart() {
   const canvas = document.getElementById("analyticsChart");
   if (!(canvas instanceof HTMLCanvasElement)) return;
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
+  if (!chartThemeObserver) {
+    chartThemeObserver = new MutationObserver(renderAnalyticsChart);
+    chartThemeObserver.observe(document.documentElement, {
+      attributes: true, attributeFilter: ["data-theme", "data-accent"]
+    });
+  }
+  const palette = getComputedStyle(canvas);
+  const barColor = palette.getPropertyValue("--accent-2").trim();
+  const labelColor = palette.getPropertyValue("--ink").trim();
   const data = state.analytics;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const metrics = [
@@ -199,9 +210,9 @@ export function renderAnalyticsChart() {
     const x = 24 + index * (barW + 20);
     const barHeight = Math.round((Math.min(metric.value, metric.max) / metric.max) * (height - 42));
     const y = height - barHeight - 20;
-    ctx.fillStyle = "#49b3a1";
+    ctx.fillStyle = barColor;
     ctx.fillRect(x, y, barW, barHeight);
-    ctx.fillStyle = "#d8e6e2";
+    ctx.fillStyle = labelColor;
     ctx.font = "11px Bahnschrift";
     ctx.fillText(metric.label, x, height - 4);
   });
