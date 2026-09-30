@@ -1,6 +1,9 @@
 import test, { before, after } from "node:test";
 import assert from "node:assert/strict";
 import net from "node:net";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { spawn } from "../scripts/lib/safe-spawn.mjs";
 
 /**
@@ -71,12 +74,16 @@ async function waitForReady(base, timeoutMs = 60_000) {
  */
 let server = null;
 let serverBase = null;
+let saveDirectory = null;
 
 before(async () => {
   const port = await freePort();
+  saveDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "fa-server-routes-"));
   const child = spawn(process.execPath, ["src/server.js"], {
     cwd: process.cwd(),
-    env: { ...process.env, PORT: String(port), NODE_ENV: "test" },
+    // One fixture executes many independent HTTP assertions in seconds; use
+    // the existing harness budget without changing the production 50/min limit.
+    env: { ...process.env, PORT: String(port), NODE_ENV: "test", VSFGM_SAVE_DIR: saveDirectory, VSFGM_RATE_LIMIT_PER_MIN: "500" },
     // stdout is discarded rather than piped. A piped stream that nobody drains
     // fills its ~64KB buffer and then blocks the child on write — the server
     // stays alive but stops answering, which surfaced as an empty response body
@@ -101,6 +108,11 @@ after(async () => {
   server.child.kill();
   await new Promise((resolve) => server.child.once("exit", resolve));
   server = null;
+  // Only this fixture's verified temporary directory is eligible for cleanup.
+  if (saveDirectory && path.dirname(path.resolve(saveDirectory)) === path.resolve(os.tmpdir()) &&
+      path.basename(saveDirectory).startsWith("fa-server-routes-")) {
+    fs.rmSync(saveDirectory, { recursive: true, force: true });
+  }
 });
 
 /** Run `body` against the shared server. */
@@ -249,6 +261,49 @@ test("the server never answers a mutating route with an unhandled exception", as
         !/is not a function|undefined is not|Cannot read propert/i.test(String(response.body.error || "")),
         `${path} leaked a runtime error: ${response.body.error}`
       );
+    }
+  });
+});
+
+test("saved snapshot authority is checked over HTTP before replacing the active franchise", async () => {
+  await withServer(async (base) => {
+    const original = (await getJson(base, "/api/state")).body;
+    const alternateTeam = original.controlledTeamId === "NYJ" ? "BUF" : "NYJ";
+    const control = async teamId => {
+      const response = await postJson(base, "/api/control-team", { teamId });
+      assert.equal(response.status, 200, JSON.stringify(response.body));
+    };
+    for (const [route, slot] of [["/api/saves/load", "s112-source"], ["/api/backups/load", "auto-s112-source"]]) {
+      await control(original.controlledTeamId);
+      const saved = await postJson(base, "/api/saves/save", { slot });
+      assert.equal(saved.status, 200);
+      const expectedSavedSnapshotIntegrity = saved.body.savedSnapshotIntegrity;
+      assert.equal(expectedSavedSnapshotIntegrity.algo, "fnv1a32");
+      assert.ok(expectedSavedSnapshotIntegrity.length > 0);
+      await control(alternateTeam);
+      const active = (await getJson(base, "/api/state")).body;
+      for (const expected of [null, {}, { ...expectedSavedSnapshotIntegrity, length: expectedSavedSnapshotIntegrity.length + 1 }]) {
+        const denied = await postJson(base, route, { slot, expectedSavedSnapshotIntegrity: expected });
+        assert.equal(denied.status, 409);
+        assert.equal(denied.body.reasonCode, "RECOVERY_REFERENCE_CHANGED");
+        const after = (await getJson(base, "/api/state")).body;
+        assert.equal(after.franchiseId, active.franchiseId, "failed evidence must preserve the current franchise");
+        assert.equal(after.controlledTeamId, active.controlledTeamId);
+      }
+      const restored = await postJson(base, route, { slot, expectedSavedSnapshotIntegrity });
+      assert.equal(restored.status, 200);
+      assert.equal(restored.body.state.controlledTeamId, original.controlledTeamId);
+      assert.deepEqual(restored.body.savedSnapshotIntegrity, expectedSavedSnapshotIntegrity, "restoration normalization cannot change raw saved authority");
+
+      await control(alternateTeam);
+      assert.equal((await postJson(base, "/api/saves/save", { slot })).status, 200);
+      await control(original.controlledTeamId);
+      const stale = await postJson(base, route, { slot, expectedSavedSnapshotIntegrity });
+      assert.equal(stale.status, 409, "an overwritten slot must reject the old authority");
+      assert.equal((await getJson(base, "/api/state")).body.controlledTeamId, original.controlledTeamId);
+      const explicitlySelected = await postJson(base, route, { slot });
+      assert.equal(explicitlySelected.status, 200, "explicit selection remains available without a prior authority stamp");
+      assert.equal(explicitlySelected.body.state.controlledTeamId, alternateTeam);
     }
   });
 });

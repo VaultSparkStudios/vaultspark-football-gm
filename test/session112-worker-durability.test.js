@@ -5,6 +5,9 @@ import { attachLocalRuntimeWorker, createMirrorStorage } from "../public/lib/api
 import { createWorkerTransport } from "../public/lib/api/workerTransport.js";
 import { createBrowserSaveStore } from "../src/adapters/persistence/browserSaveStore.js";
 import { createHybridBrowserSaveStore } from "../src/adapters/persistence/hybridSaveStore.js";
+import { buildIntegrityStamp, verifyIntegrityStamp } from "../src/adapters/persistence/saveStoreShared.js";
+import { createClientSessionRecovery, CLIENT_SESSION_RECOVERY_KEY, CLIENT_SESSION_PENDING_KEY } from "../public/lib/api/clientSessionRecovery.js";
+import { recoverySnapshotIdentity } from "../public/lib/api/recoverySnapshotState.js";
 
 function memoryStorage(entries = []) {
   const data = new Map(entries);
@@ -24,15 +27,17 @@ function quotaError() {
   return error;
 }
 
-function workerHarness(createRuntime, { holdAcknowledgments = false } = {}) {
+function workerHarness(createRuntime, { holdAcknowledgments = false, loadRecovery } = {}) {
   const { port1, port2 } = new MessageChannel();
   const listeners = new Map();
   const replies = [];
+  const requests = [];
+  const posted = [];
   let terminations = 0;
   const emit = (type, event) => { for (const listener of listeners.get(type) || []) listener(event); };
   port1.on("message", (data) => emit("message", { data }));
   const scope = {
-    postMessage: (message) => port2.postMessage(message),
+    postMessage: (message) => { posted.push(message); port2.postMessage(message); },
     addEventListener: (_type, listener) => port2.on("message", (data) => listener({ data }))
   };
   const worker = {
@@ -42,14 +47,15 @@ function workerHarness(createRuntime, { holdAcknowledgments = false } = {}) {
     },
     removeEventListener(type, listener) { listeners.get(type)?.delete(listener); },
     postMessage(message) {
+      requests.push(message);
       if (holdAcknowledgments && /storage-(ack|nack)/.test(message.type)) replies.push(message);
       else port1.postMessage(message);
     },
     terminate() { terminations += 1; scope.localStorage?.close(); port1.close(); port2.close(); }
   };
-  attachLocalRuntimeWorker(scope, { createRuntime, loadRuntimeModule: async () => ({}) });
+  attachLocalRuntimeWorker(scope, { createRuntime, loadRuntimeModule: async () => ({}), ...(loadRecovery ? { loadRecovery } : {}) });
   return {
-    worker, scope, replies,
+    worker, scope, replies, requests, posted,
     releaseAcknowledgments() { for (const reply of replies.splice(0)) port1.postMessage(reply); },
     emitError: (error) => emit("error", { error }),
     listenerCount: () => [...listeners.values()].reduce((sum, set) => sum + set.size, 0),
@@ -64,6 +70,148 @@ const waitFor = async (read) => {
   }
   assert.fail("expected worker event did not arrive");
 };
+
+function recoveryRuntime() {
+  let snapshot = { schemaVersion: 9, rngSeed: 71392, startYear: 2031, currentYear: 2031, currentWeek: 8,
+    phase: "regular-season", mode: "play", controlledTeamId: "CHI",
+    league: { players: [{ id: "chosen-player", teamId: "CHI" }], archive: "persisted game evidence ".repeat(500) } };
+  const slots = new Map();
+  const calls = [];
+  return { calls, slots, get snapshot() { return snapshot; },
+    async request(path, options = {}) {
+      calls.push(path);
+      if (path === "/api/snapshot/export") return { ok: true, status: 200, payload: { snapshot } };
+      if (path === "/api/snapshot/import") snapshot = structuredClone(options.body.snapshot);
+      if (path === "/api/advance-week") snapshot.currentWeek++;
+      let savedSnapshotIntegrity;
+      if (path === "/api/saves/save") {
+        slots.set(options.body.slot, structuredClone(snapshot));
+        savedSnapshotIntegrity = buildIntegrityStamp(JSON.stringify(snapshot));
+      }
+      if (path === "/api/saves/load") {
+        const saved = slots.get(options.body.slot);
+        if (!saved) return { ok: false, status: 404, payload: { ok: false } };
+        const serialized = JSON.stringify(saved);
+        if (options.body.expectedSavedSnapshotIntegrity && !verifyIntegrityStamp(serialized, options.body.expectedSavedSnapshotIntegrity)) {
+          return { ok: false, status: 409, payload: { ok: false, reasonCode: "RECOVERY_REFERENCE_CHANGED" } };
+        }
+        savedSnapshotIntegrity = buildIntegrityStamp(serialized);
+        snapshot = structuredClone(saved);
+      }
+      return { ok: true, status: 200, payload: path === "/api/state" ? recoverySnapshotIdentity(snapshot) :
+        { ok: true, state: recoverySnapshotIdentity(snapshot), ...(savedSnapshotIntegrity ? { savedSnapshotIntegrity, saved: { slot: options.body.slot } } : {}) } };
+    }
+  };
+}
+
+test("worker recovery freezes before compression, serializes RPCs, and returns no parsed snapshots", async () => {
+  const raw = recoveryRuntime();
+  let release;
+  let began;
+  const held = new Promise(resolve => { release = resolve; });
+  const encoding = new Promise(resolve => { began = resolve; });
+  const harness = workerHarness(() => raw, { loadRecovery: async () => ({ buildIntegrityStamp, verifyIntegrityStamp,
+    encodeSnapshot: async snapshot => { began(); await held; return JSON.stringify(snapshot); }, decodeSnapshot: async encoded => JSON.parse(encoded) }) });
+  const transport = createWorkerTransport({ createWorker: () => harness.worker, storage: memoryStorage() });
+  try {
+    const capture = transport.captureRecoverySnapshot();
+    await encoding;
+    raw.snapshot.currentWeek = 9; // Simulates an asynchronous job during compression.
+    const next = transport.request("/api/state");
+    await new Promise(resolve => setImmediate(resolve));
+    assert.deepEqual(raw.calls, ["/api/snapshot/export"], "capture owns the same queue as ordinary requests");
+    release();
+    const captured = await capture;
+    assert.equal(JSON.parse(captured.encoded).currentWeek, 8);
+    assert.equal(captured.identity.currentWeek, 8);
+    assert.ok(verifyIntegrityStamp(captured.encoded, captured.encodedIntegrity));
+    assert.equal((await next).payload.currentWeek, 9);
+    assert.equal(Object.hasOwn(captured, "snapshot"), false);
+    const currentOnly = await transport.captureRecoverySnapshot({ encode: false });
+    assert.equal(Object.hasOwn(currentOnly, "encoded"), false);
+    assert.equal(currentOnly.identity.currentWeek, 9);
+    assert.ok(JSON.stringify(currentOnly).length < 500);
+    const restored = await transport.restoreRecoverySnapshot(captured.encoded, captured.encodedIntegrity);
+    assert.equal(restored.identity.currentWeek, 8);
+    assert.equal(restored.response.payload.state.currentWeek, 8);
+    assert.equal(Object.hasOwn(restored.response.payload.state, "league"), false);
+    assert.equal(raw.snapshot.currentWeek, 8);
+    const imports = raw.calls.filter(path => path === "/api/snapshot/import").length;
+    await assert.rejects(transport.restoreRecoverySnapshot(`${captured.encoded}x`, captured.encodedIntegrity), { reasonCode: "RECOVERY_CORRUPT" });
+    await assert.rejects(transport.restoreRecoverySnapshot("bad json", buildIntegrityStamp("bad json")), { reasonCode: "RECOVERY_CORRUPT" });
+    assert.equal(raw.calls.filter(path => path === "/api/snapshot/import").length, imports);
+    assert.equal(transport.isAlive(), true);
+  } finally { release(); transport.terminate(); }
+});
+
+test("page recovery uses worker capture/restore capabilities and reference guards without snapshot transport", async () => {
+  const raw = recoveryRuntime();
+  const harness = workerHarness(() => raw);
+  const transport = createWorkerTransport({ createWorker: () => harness.worker, storage: memoryStorage() });
+  const storage = memoryStorage();
+  const recovery = createClientSessionRecovery({ runtime: transport, storage,
+    encode: () => { throw new Error("page encoder must not run"); }, decode: () => { throw new Error("page decoder must not run"); } });
+  try {
+    await recovery.request("/api/new-league", { method: "POST" });
+    await recovery.request("/api/advance-week", { method: "POST" });
+    assert.equal(recovery.getStatus().status, "ready");
+    const fresh = createClientSessionRecovery({ runtime: transport, storage, requireCheckpoint: true,
+      decode: () => { throw new Error("page decoder must not run"); } });
+    assert.equal((await fresh.request("/api/state")).payload.currentWeek, 9);
+    const nativeSet = storage.setItem;
+    storage.setItem = (key, value) => {
+      if (key === CLIENT_SESSION_RECOVERY_KEY && JSON.parse(value).kind === "snapshot") throw quotaError();
+      nativeSet(key, value);
+    };
+    await fresh.request("/api/saves/save", { method: "POST", body: { slot: "explicit" } });
+    assert.equal(JSON.parse(storage.getItem(CLIENT_SESSION_RECOVERY_KEY)).kind, "save-reference");
+    const referenced = createClientSessionRecovery({ runtime: transport, storage, requireCheckpoint: true });
+    await referenced.request("/api/state");
+    assert.equal(referenced.getStatus().status, "ready");
+    assert.equal(storage.getItem(CLIENT_SESSION_PENDING_KEY), null);
+    await referenced.request("/api/advance-week", { method: "POST" });
+    assert.equal(referenced.getStatus().status, "unsaved");
+    await assert.rejects(referenced.flush());
+    assert.ok(storage.getItem(CLIENT_SESSION_PENDING_KEY));
+    const messages = harness.requests;
+    assert.ok(messages.some(row => row.type === "recovery-capture" && row.encode === false), "reference restore uses the small fingerprint capture");
+    assert.ok(messages.some(row => row.type === "recovery-restore"));
+    assert.equal(messages.some(row => row.type === "request" && ["/api/snapshot/export", "/api/snapshot/import"].includes(row.path)), false);
+    assert.equal(harness.posted.some(row => row.response?.payload?.snapshot || row.response?.snapshot), false);
+    assert.equal(raw.calls.filter(path => path === "/api/advance-week").length, 2, "flush never replays a mutation");
+  } finally { transport.terminate(); }
+});
+
+test("worker recovery capture owns its storage NACK barrier and retirement rejects pending capture", async () => {
+  const raw = recoveryRuntime();
+  let mirror;
+  const request = raw.request.bind(raw);
+  raw.request = async (...args) => {
+    if (args[0] === "/api/snapshot/export") mirror.setItem("vsfgm:meta:checkpoint", "new");
+    return request(...args);
+  };
+  const harness = workerHarness(({ storage }) => { mirror = storage; return raw; }, { holdAcknowledgments: true });
+  const pageStorage = memoryStorage();
+  pageStorage.setItem = () => { throw quotaError(); };
+  const transport = createWorkerTransport({ createWorker: () => harness.worker, storage: pageStorage });
+  try {
+    const capture = transport.captureRecoverySnapshot();
+    const rejected = assert.rejects(capture, /synthetic page quota/);
+    const next = transport.request("/api/state");
+    await waitFor(() => harness.replies.length > 0);
+    assert.deepEqual(raw.calls, ["/api/snapshot/export"]);
+    harness.releaseAcknowledgments();
+    await rejected;
+    assert.equal((await next).ok, true);
+    const pending = transport.captureRecoverySnapshot();
+    const retired = assert.rejects(pending, /terminated/);
+    await waitFor(() => harness.replies.length > 0);
+    transport.terminate();
+    await retired;
+    assert.equal(transport.pendingCount(), 0);
+    assert.equal(harness.listenerCount(), 0);
+  } finally { transport.terminate(); }
+});
 
 test("async mirror writes and deletes change committed state only after acknowledgment", async () => {
   const posted = [];

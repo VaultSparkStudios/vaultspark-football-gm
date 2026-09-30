@@ -21,6 +21,8 @@
  * no second connection to reconcile. It runs in the worker unchanged.
  */
 
+import { recoverySnapshotBytes, recoverySnapshotIdentity } from "./recoverySnapshotState.js";
+
 const RUNTIME_MODULE_CANDIDATES = [
   "../../src/app/api/localApiRuntime.js",
   "../../../src/app/api/localApiRuntime.js"
@@ -31,6 +33,7 @@ function describeError(error) {
     message: String(error?.message || error || "Worker runtime failure."),
     name: error?.name || "Error",
     code: error?.code,
+    reasonCode: error?.reasonCode,
     stack: typeof error?.stack === "string" ? error.stack.slice(0, 2000) : null
   };
 }
@@ -181,16 +184,33 @@ export async function loadLocalRuntimeModule(baseUrl = import.meta.url) {
   throw lastError || new Error("Unable to load local runtime in worker.");
 }
 
+async function loadRecoveryModules() {
+  let lastError;
+  for (const root of ["../../src/adapters/persistence/", "../../../src/adapters/persistence/"]) {
+    try {
+      const [codec, integrity] = await Promise.all([
+        import(new URL(`${root}snapshotCodec.js`, import.meta.url)),
+        import(new URL(`${root}saveStoreShared.js`, import.meta.url))
+      ]);
+      return { ...codec, ...integrity };
+    } catch (error) { lastError = error; }
+  }
+  throw lastError;
+}
+
 /**
  * Bind the message protocol to a worker-like scope ({ postMessage,
  * addEventListener }). Exported so Node can drive it through a MessagePort
  * double; the real worker binds `self` at the bottom of this file.
  */
-export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalRuntimeModule, createRuntime = null } = {}) {
+export function attachLocalRuntimeWorker(scope, {
+  loadRuntimeModule = loadLocalRuntimeModule, createRuntime = null, loadRecovery = loadRecoveryModules
+} = {}) {
   let ready = null;
   let runtime = null;
   let mirror = null;
   let requestTail = Promise.resolve();
+  let recoveryModules;
   const post = (message) => scope.postMessage(message);
 
   function postResponse(id, response) {
@@ -236,6 +256,47 @@ export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalR
     );
   }
 
+  async function recoveryRequest(message) {
+    recoveryModules ||= loadRecovery();
+    let modules;
+    try { modules = await recoveryModules; } catch (error) { recoveryModules = null; throw error; }
+    const { buildIntegrityStamp, verifyIntegrityStamp, encodeSnapshot, decodeSnapshot } = modules;
+    if (message.type === "recovery-capture") {
+      const exported = await runtime.request("/api/snapshot/export", { method: "GET" });
+      if (!exported?.ok || exported.payload?.ok === false || !exported.payload?.snapshot) throw new Error("The current franchise could not be checkpointed.");
+      // Export contains live league references. Freeze before asynchronous
+      // compression so background simulation cannot alter an in-flight receipt.
+      const snapshot = JSON.parse(JSON.stringify(exported.payload.snapshot));
+      const result = { currentIntegrity: buildIntegrityStamp(recoverySnapshotBytes(snapshot)), identity: recoverySnapshotIdentity(snapshot) };
+      if (message.encode !== false) {
+        result.encoded = await encodeSnapshot(snapshot);
+        if (typeof result.encoded !== "string" || !result.encoded) throw new Error("Snapshot encoding did not return bytes.");
+        result.encodedIntegrity = buildIntegrityStamp(result.encoded);
+      }
+      return result;
+    }
+    let snapshot;
+    try {
+      if (typeof message.encoded !== "string" || !message.encoded || !message.integrity ||
+          !verifyIntegrityStamp(message.encoded, message.integrity)) throw new Error("Recovery bytes failed integrity verification.");
+      snapshot = await decodeSnapshot(message.encoded);
+      if (!snapshot || typeof snapshot !== "object" || Array.isArray(snapshot)) throw new Error("Recovery snapshot is not an object.");
+    } catch (cause) {
+      throw Object.assign(new Error("The recovery checkpoint in this tab is unreadable.", { cause }), {
+        code: "RECOVERY_CORRUPT", reasonCode: "RECOVERY_CORRUPT"
+      });
+    }
+    const identity = recoverySnapshotIdentity(snapshot);
+    const response = await runtime.request("/api/snapshot/import", { method: "POST", body: { snapshot } });
+    const payload = response?.payload || {};
+    // Only the restore receipt crosses the port; the full dashboard and parsed
+    // snapshot stay in the worker until the caller requests its normal view.
+    return { identity, response: { ok: response?.ok, status: response?.status, payload: {
+      ok: payload.ok, error: payload.error, reasonCode: payload.reasonCode,
+      state: recoverySnapshotIdentity(payload.state)
+    } } };
+  }
+
   async function handleRequest(message) {
     try {
       if (!ready) throw new Error("Worker runtime received a request before init.");
@@ -243,7 +304,9 @@ export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalR
       let response;
       let failure = null;
       try {
-        response = await runtime.request(message.path, { method: message.method || "GET", body: message.body ?? null });
+        response = message.type === "request"
+          ? await runtime.request(message.path, { method: message.method || "GET", body: message.body ?? null })
+          : await recoveryRequest(message);
       } catch (error) {
         failure = error;
       }
@@ -262,7 +325,7 @@ export function attachLocalRuntimeWorker(scope, { loadRuntimeModule = loadLocalR
     if (!message || typeof message !== "object") return;
     if (message.type === "storage-ack" || message.type === "storage-nack") mirror?.acknowledge(message);
     else if (message.type === "init") init(message);
-    else if (message.type === "request") {
+    else if (["request", "recovery-capture", "recovery-restore"].includes(message.type)) {
       // A request owns the mirror barrier until its response is settled.
       // Otherwise a concurrent read can consume a writer's NACK and report
       // the failure against the read while the failed write returns success.

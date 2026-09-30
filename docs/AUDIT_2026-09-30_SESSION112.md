@@ -8,7 +8,7 @@ Public-safe live-code audit. The JSON sidecar is the sole source of truth.
 - Rubric: product and game-loop consequence; staging: stable staging before production
 - Profile source: local status, explicit user mission, skill profile and source
 - Game-loop review: tightness 7/10 · progression 6/10 · session engagement 8/10 · retention unmeasured; affordances 7/10 · soul fidelity unscored: public summary points to private creative authority
-- Evidence caveat: Editorial source assessment and deterministic fixtures, not human engagement data.
+- Evidence caveat: The original ten items and four second-order outcomes are implemented. Actual BCF staging then exposed lost franchise identity after creation and saved-slot navigation; reports/staging-browser-s112.json preserves that failure. The fifth outcome now preserves per-tab identity/progress, rejects changed durable references before replacement, and makes failed checkpoint retry independent of command replay. An unchanged save recalculates350 derived values on load, so exact frozen saved bytes are checked before reconstruction. Focused recovery proof:48 helper,15 worker durability,11 worker parity/fallback,7 HTTP and18 browser tests. One-season checkpoints now keep JSON/hash/codec work in the worker: longest main-thread tasks58/71ms versus735/892ms, with similar total checkpoint wall time. These are single local warm samples, not mature-career or retention evidence. Final release acceptance remains pending; the interrupted BCF canonical1199-test run and earlier failed/readiness checks remain historical, not green acceptance.
 
 ## Ranked implementation plan
 

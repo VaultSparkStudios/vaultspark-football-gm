@@ -53,6 +53,8 @@ function defaultCreateWorker() {
 function transportError(detail, fallbackMessage) {
   const error = new Error(detail?.message || fallbackMessage);
   if (detail?.name) error.workerErrorName = detail.name;
+  if (detail?.code != null) error.code = detail.code;
+  if (detail?.reasonCode) error.reasonCode = detail.reasonCode;
   return error;
 }
 
@@ -164,7 +166,7 @@ export function createWorkerTransport({
     ready.then(() => clearTimeout(initTimer), () => clearTimeout(initTimer));
   }
 
-  async function request(path, { method = "GET", body = null } = {}) {
+  async function send(message) {
     if (dead) throw dead;
     await ready;
     if (dead) throw dead;
@@ -172,12 +174,16 @@ export function createWorkerTransport({
       const id = nextId++;
       pending.set(id, { resolve, reject });
       try {
-        worker.postMessage({ type: "request", id, path: String(path), method, body });
+        worker.postMessage({ ...message, id });
       } catch (error) {
         pending.delete(id);
         reject(error);
       }
     });
+  }
+
+  function request(path, { method = "GET", body = null } = {}) {
+    return send({ type: "request", path: String(path), method, body });
   }
 
   function terminate() {
@@ -188,6 +194,8 @@ export function createWorkerTransport({
     kind: "worker",
     ready,
     request,
+    captureRecoverySnapshot: ({ encode = true } = {}) => send({ type: "recovery-capture", encode }),
+    restoreRecoverySnapshot: (encoded, integrity) => send({ type: "recovery-restore", encoded, integrity }),
     terminate,
     isAlive: () => !dead,
     pendingCount: () => pending.size

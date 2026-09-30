@@ -54,6 +54,7 @@ export const SHARDS = {
     "test/session112-advisor-evidence.test.js",
     "test/session112-complete-trade-law.test.js",
     "test/session112-worker-durability.test.js",
+    "test/session112-client-session-recovery.test.js",
     "test/session112-signing-evidence.test.js",
     "test/session111-cpu-trade-market.test.js",
     "test/session109-front-office-advisor.test.js",

@@ -8,6 +8,22 @@ let fallbackAttempted = false;
 let fallbackPromise = null;
 let serverSessionEstablished = false;
 let communityTelemetryPromise = null;
+let localRecoveryStatus = { status: "idle" };
+
+function publishRecoveryStatus(status) {
+  localRecoveryStatus = status;
+  if (typeof globalThis.window?.dispatchEvent === "function" && typeof CustomEvent === "function") {
+    window.dispatchEvent(new CustomEvent("vsfgm:session-recovery", { detail: status }));
+  }
+}
+
+async function withSessionRecovery(runtime) {
+  if (typeof window === "undefined" || !("sessionStorage" in window)) return runtime;
+  const { wrapBrowserClientRuntime } = await import("./clientSessionRecovery.js");
+  return wrapBrowserClientRuntime(runtime, publishRecoveryStatus);
+}
+
+export function getLocalSessionRecoveryStatus() { return localRecoveryStatus; }
 
 function observeCommunityReceipt(details) {
   if (String(details.method || "GET").toUpperCase() === "GET") return;
@@ -97,6 +113,7 @@ export function setRuntimeMode(mode) {
   fallbackAttempted = false;
   fallbackPromise = null;
   serverSessionEstablished = false;
+  if (localRecoveryStatus.status !== "idle") publishRecoveryStatus({ status: "idle" });
   return nextMode;
 }
 
@@ -247,14 +264,14 @@ export function getLocalRuntimeKind() {
   return localRuntimeKind;
 }
 
-async function getLocalRuntime() {
+export async function getLocalRuntime() {
   if (!localRuntimePromise) {
     localRuntimePromise = (async () => {
       if (runtimeFactories.preferWorker()) {
         try {
           const transport = await runtimeFactories.worker();
           localRuntimeKind = "worker";
-          return transport;
+          return withSessionRecovery(transport);
         } catch (error) {
           recordClientDiagnostic({
             surface: "local-runtime",
@@ -267,7 +284,7 @@ async function getLocalRuntime() {
       }
       const runtime = await runtimeFactories.inPage();
       localRuntimeKind = "in-page";
-      return runtime;
+      return withSessionRecovery(runtime);
     })()
       .catch((error) => {
         localRuntimePromise = null;

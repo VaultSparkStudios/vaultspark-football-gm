@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "public-community-observation",
+  "observedAt": "2026-09-30T18:43:39.571Z",
+  "endpoint": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
+  "status": "suppressed",
+  "computedAt": "2026-09-30T18:36:42.058Z",
+  "latestReceiptAt": "2026-09-24T01:13:06.929Z",
+  "suppressionThreshold": 5,
+  "denominator": "participating anonymous browsers",
+  "periods": {
+    "24h": {
+      "status": "warming",
+      "sampleSize": 0
+    },
+    "7d": {
+      "status": "suppressed",
+      "sampleSize": 1
+    },
+    "30d": {
+      "status": "suppressed",
+      "sampleSize": 1
+    }
+  },
+  "interpretation": "Public aggregate data remains suppressed. These values describe eligible opted-in anonymous browsers, not all players or retention. Cohort-dependent indexing and aggregate-history work remains conditional."
+}

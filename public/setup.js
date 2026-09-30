@@ -8,6 +8,7 @@ import {
 } from "./lib/api/createApiClient.js";
 import { decodeChallengeCode, saveRivalTarget } from "./lib/challengeCodes.js";
 import { observeBackgroundTask } from "./lib/clientDiagnostics.js";
+import { mountClientRecoveryUi, flushLocalSessionCheckpoint } from "./lib/clientRecoveryUi.js";
 
 const state = {
   currentYear: new Date().getFullYear(),
@@ -25,6 +26,30 @@ const state = {
 
 const api = createApiClient();
 let setupLoadVersion = 0;
+let navigationInFlight = false;
+let pendingNavigation = false;
+
+function setNavigationControlsDisabled(disabled) {
+  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, [data-resume], [data-backup-resume]")
+    .forEach((button) => { button.disabled = disabled; });
+}
+
+async function enterGame(load = null) {
+  if (navigationInFlight) return;
+  if (load) pendingNavigation = false;
+  navigationInFlight = true;
+  setNavigationControlsDisabled(true);
+  try {
+    if (load) await load();
+    pendingNavigation = true;
+    await flushLocalSessionCheckpoint();
+    window.location.href = pageUrl(getRuntimeMode() === "client" ? "game.html?resume=tab" : "game.html");
+  } catch (error) {
+    navigationInFlight = false;
+    setNavigationControlsDisabled(false);
+    throw error;
+  }
+}
 
 const MODE_HELP = {
   drive: "Drive resolves games possession-by-possession. It is faster for long sims and keeps weekly progression moving.",
@@ -413,6 +438,7 @@ async function loadSetup(retryCount = 0) {
   renderSetupGuide();
   updateModeHelp();
   setStatus(setupStatusText("Ready"));
+  setNavigationControlsDisabled(navigationInFlight);
 
   if (state.savesDeferred) {
     queueMicrotask(() => {
@@ -435,41 +461,44 @@ async function loadSetup(retryCount = 0) {
 }
 
 async function createLeague() {
-  setStatus("Creating league...");
-  await api("/api/new-league", {
-    method: "POST",
-    timeoutMs: 60_000,
-    body: {
-      seed: Number(document.getElementById("seedInput").value || Date.now()),
-      startYear: Number(document.getElementById("startYearInput").value || state.currentYear),
-      mode: document.getElementById("modeInput").value,
-      eraProfile: document.getElementById("eraProfileInput").value || "modern",
-      franchiseArchetype: document.getElementById("franchiseArchetypeInput").value || "balanced",
-      rulesPreset: document.getElementById("rulesPresetInput").value || "standard",
-      difficultyPreset: document.getElementById("difficultyPresetInput").value || "standard",
-      challengeMode: document.getElementById("challengeModeInput").value || "open",
-      enableOwnerMode: document.getElementById("ownerModeInput").checked,
-      enableNarratives: document.getElementById("narrativesInput").checked,
-      enableCompPicks: document.getElementById("compPicksInput").checked,
-      enableChemistry: document.getElementById("chemistryInput").checked,
-      controlledTeamId: resolveControlledTeamId(),
-      pfrPath: document.getElementById("pfrPathInput").value.trim() || null,
-      realismProfilePath: document.getElementById("profilePathInput").value.trim() || null
-    }
+  return enterGame(async () => {
+    setStatus("Creating league...");
+    await api("/api/new-league", {
+      method: "POST",
+      timeoutMs: 60_000,
+      body: {
+        seed: Number(document.getElementById("seedInput").value || Date.now()),
+        startYear: Number(document.getElementById("startYearInput").value || state.currentYear),
+        mode: document.getElementById("modeInput").value,
+        eraProfile: document.getElementById("eraProfileInput").value || "modern",
+        franchiseArchetype: document.getElementById("franchiseArchetypeInput").value || "balanced",
+        rulesPreset: document.getElementById("rulesPresetInput").value || "standard",
+        difficultyPreset: document.getElementById("difficultyPresetInput").value || "standard",
+        challengeMode: document.getElementById("challengeModeInput").value || "open",
+        enableOwnerMode: document.getElementById("ownerModeInput").checked,
+        enableNarratives: document.getElementById("narrativesInput").checked,
+        enableCompPicks: document.getElementById("compPicksInput").checked,
+        enableChemistry: document.getElementById("chemistryInput").checked,
+        controlledTeamId: resolveControlledTeamId(),
+        pfrPath: document.getElementById("pfrPathInput").value.trim() || null,
+        realismProfilePath: document.getElementById("profilePathInput").value.trim() || null
+      }
+    });
   });
-  window.location.href = pageUrl("game.html");
 }
 
 async function resumeSlot(slot) {
-  setStatus(`Loading ${slot}...`);
-  await api("/api/saves/load", { method: "POST", body: { slot } });
-  window.location.href = pageUrl("game.html");
+  return enterGame(async () => {
+    setStatus(`Loading ${slot}...`);
+    await api("/api/saves/load", { method: "POST", body: { slot } });
+  });
 }
 
 async function resumeBackup(slot) {
-  setStatus(`Restoring backup ${slot}...`);
-  await api("/api/backups/load", { method: "POST", body: { slot } });
-  window.location.href = pageUrl("game.html");
+  return enterGame(async () => {
+    setStatus(`Restoring backup ${slot}...`);
+    await api("/api/backups/load", { method: "POST", body: { slot } });
+  });
 }
 
 async function deleteSlot() {
@@ -500,6 +529,11 @@ function bindEvents() {
   });
 
   document.getElementById("runtimeModeSelect")?.addEventListener("change", (event) => {
+    if (navigationInFlight) {
+      event.target.value = getRuntimeMode();
+      return;
+    }
+    pendingNavigation = false;
     const mode = setRuntimeMode(event.target.value);
     event.target.value = mode;
     const statusText = mode === "client" ? "Loading client-only menu..." : "Loading server-backed menu...";
@@ -584,8 +618,9 @@ function bindEvents() {
     );
   });
 
-  document.getElementById("continueActiveBtn").addEventListener("click", () => {
-    window.location.href = pageUrl("game.html");
+  document.getElementById("continueActiveBtn").addEventListener("click", async () => {
+    try { await enterGame(); }
+    catch (error) { setStatus(`Error: ${error.message}`); }
   });
 
   document.getElementById("resumeLatestBtn").addEventListener("click", async () => {
@@ -678,7 +713,13 @@ function bindEvents() {
 }
 
 async function init() {
+  mountClientRecoveryUi({
+    onCheckpointReady: async () => {
+      if (pendingNavigation) await enterGame();
+    }
+  });
   bindEvents();
+  setNavigationControlsDisabled(true);
   await loadSetup();
 }
 

@@ -1,4 +1,5 @@
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
+const recoveryUi = () => import("./lib/clientRecoveryUi.js");
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { maybeShowReturnDigest, recordReturnBoundary } from "./lib/returnDigest.js";
 import { initPressRoomPanel } from "./lib/pressRoomPanel.js";
@@ -637,8 +638,11 @@ function bindEvents() {
   bindUiIslandPreloads();
   queueIdleUiIslandPreloads();
 
-  document.getElementById("backSetupBtn").addEventListener("click", () => {
-    window.location.href = new URL("./", document.baseURI).toString();
+  document.getElementById("backSetupBtn").addEventListener("click", async () => {
+    try {
+      await (await recoveryUi()).flushLocalSessionCheckpoint();
+      window.location.href = new URL("./", document.baseURI).toString();
+    } catch (error) { presentActionError(error); }
   });
 
   document.getElementById("teamSelect").addEventListener("change", (event) =>
@@ -2541,6 +2545,9 @@ async function init() {
   }, 8000);
 }
 
-init();
+init().catch(async (error) => {
+  try { (await recoveryUi()).showClientRecoveryBootError(error); }
+  catch { document.querySelector(".game-boot-card").textContent = "Unable to open the franchise. Reload this page to retry."; }
+});
 
 initThemeCustomizer("themeToggleBtn");

@@ -1,0 +1,467 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "staging-play-path-browser-smoke",
+  "generatedAt": "2026-09-30T18:43:39.992Z",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
+  "artifactDigest": "92301758c11ad25a9173255fb96ddfb0822c0498d61d2bf68cea90772aab6575",
+  "status": "failed-client-session-continuity",
+  "scenarios": [
+    {
+      "viewport": "desktop",
+      "dimensions": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "status": "play-route-and-fresh-boot-passed",
+      "diagnostics": [],
+      "documentResponses": [
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        }
+      ],
+      "identityBefore": {
+        "status": 200,
+        "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
+        "artifactDigest": "92301758c11ad25a9173255fb96ddfb0822c0498d61d2bf68cea90772aab6575"
+      },
+      "freshPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/",
+        "serviceWorkerControlled": true
+      },
+      "freshGame": {
+        "url": "https://staging.playfranchisearchitect.com/game",
+        "status": "Ready",
+        "yearWeek": "2026 / W1",
+        "team": "2026 W1 | regular-season | Team: OS",
+        "runtimeDefault": "client",
+        "serviceWorkerControlled": true,
+        "serviceWorkerScript": "https://staging.playfranchisearchitect.com/sw.js"
+      },
+      "normalTutorialSkip": "passed",
+      "returningPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/",
+        "serviceWorkerControlled": true
+      }
+    },
+    {
+      "viewport": "mobile",
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "status": "play-route-and-fresh-boot-passed",
+      "diagnostics": [],
+      "documentResponses": [
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        }
+      ],
+      "identityBefore": {
+        "status": 200,
+        "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
+        "artifactDigest": "92301758c11ad25a9173255fb96ddfb0822c0498d61d2bf68cea90772aab6575"
+      },
+      "freshPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/",
+        "serviceWorkerControlled": true
+      },
+      "freshGame": {
+        "url": "https://staging.playfranchisearchitect.com/game",
+        "status": "Ready",
+        "yearWeek": "2026 / W1",
+        "team": "2026 W1 | regular-season | Team: OS",
+        "runtimeDefault": "client",
+        "serviceWorkerControlled": true,
+        "serviceWorkerScript": "https://staging.playfranchisearchitect.com/sw.js"
+      },
+      "normalTutorialSkip": "passed",
+      "returningPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/",
+        "serviceWorkerControlled": true
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "desktop-fresh-setup",
+      "file": "output/playwright/staging-browser-s112/desktop-fresh-setup.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "53112750191635a6cabe7ff682847845ac005175a1b1851a2dcadf4c2f1e562c",
+      "reviewed": true
+    },
+    {
+      "name": "desktop-fresh-game",
+      "file": "output/playwright/staging-browser-s112/desktop-fresh-game.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e974d9783d6a73fe242f408c95978b8dc3bc013e15e0b6af66bfeee6ee6e7ae6",
+      "reviewed": true
+    },
+    {
+      "name": "mobile-fresh-setup",
+      "file": "output/playwright/staging-browser-s112/mobile-fresh-setup.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ce6ca3a62cc633cf6df720764a7aa13b07241d95c470542111368de9d4c2a5de",
+      "reviewed": true
+    },
+    {
+      "name": "mobile-fresh-game",
+      "file": "output/playwright/staging-browser-s112/mobile-fresh-game.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8b0963a8a712ce4c3e0c019fa6bec0e567e8b3908fe7e07f767c0f0a939317bd",
+      "reviewed": true
+    },
+    {
+      "name": "explicit-team-game",
+      "file": "output/playwright/staging-browser-s112/session-boundary/explicit-team-game.png",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "18ef92372ece208de4cffdbff74d99267b66746c44fb5ed807910158110651c6",
+      "reviewed": true
+    },
+    {
+      "name": "returning-actions",
+      "file": "output/playwright/staging-browser-s112/session-boundary/returning-actions.png",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "42373a797fd1996c0e26b4e4480ff688ea52aaaa6090e9e61da7303fb5a41390",
+      "reviewed": true
+    },
+    {
+      "name": "resumed-game",
+      "file": "output/playwright/staging-browser-s112/session-boundary/resumed-game.png",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "342dcd933b4cf86fae15b179864b0660aca071c0bd503c23cb262e146655d1f3",
+      "reviewed": true
+    }
+  ],
+  "errors": [
+    {
+      "code": "created-session-lost-on-navigation",
+      "message": "The actual new-league worker request and successful response select CHI / seed 20260306 / play mode, but normal game navigation creates a different BUF franchise."
+    },
+    {
+      "code": "loaded-session-lost-on-navigation",
+      "message": "The actual saved-slot load succeeds inside the setup worker, but normal game navigation creates a new franchise instead of retaining the loaded one."
+    }
+  ],
+  "scope": "Actual staging Play navigation and client game boot on desktop/mobile, followed by explicit-team creation and named-save resume across full-page navigation.",
+  "limitations": [
+    "The first returning probe assumed Continue survives a closed tab; it was replaced with an actual saved-slot Resume flow.",
+    "This checks the current candidate's installed service worker, not an older-version worker upgrade.",
+    "The returning-actions screenshot precedes the deferred save-list refresh; the subsequent successful Resume action is proven by actual worker messages.",
+    "No games advanced, analytics consent granted, account created, or share transmitted. Only isolated browser-local test saves were created."
+  ],
+  "visualReview": {
+    "status": "inspected",
+    "inspected": 7,
+    "method": "view_image original pixels",
+    "findings": [
+      "Play/setup/tutorial layouts are readable at both sampled viewports. The loaded game shows the wrong franchise; a newly created tutorial appears again after Resume."
+    ]
+  },
+  "browserVersion": "151.0.7922.34",
+  "completedAt": "2026-09-30T20:04:19.800Z",
+  "promotionReady": false,
+  "initialProbeCorrection": "Continue Franchise is an in-memory action and is not expected after the setup worker ends. The decisive follow-up uses the real visible Resume Latest Save control after a successful manual save.",
+  "findings": [
+    {
+      "severity": "blocking",
+      "code": "created-session-lost-on-navigation",
+      "expected": "fa-20260306-CHI",
+      "actual": "fa-4089734262-BUF",
+      "detail": "The actual new-league worker request and successful response select CHI / seed 20260306 / play mode, but normal game navigation creates a different BUF franchise."
+    },
+    {
+      "severity": "blocking",
+      "code": "loaded-session-lost-on-navigation",
+      "expected": "fa-4089734262-BUF",
+      "actual": "fa-4089748847-BUF",
+      "detail": "The actual saved-slot load succeeds inside the setup worker, but normal game navigation creates a new franchise instead of retaining the loaded one."
+    }
+  ],
+  "sessionBoundary": {
+    "kind": "client-session-boundary-observation",
+    "generatedAt": "2026-09-30T19:21:57.427Z",
+    "origin": "https://staging.playfranchisearchitect.com",
+    "expectedTeam": "CHI",
+    "expectedSeed": 20260306,
+    "observations": [],
+    "errors": [],
+    "health": {
+      "status": "ok",
+      "service": "franchise-architect-football",
+      "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
+      "artifactFingerprint": {
+        "algorithm": "sha256",
+        "digest": "92301758c11ad25a9173255fb96ddfb0822c0498d61d2bf68cea90772aab6575",
+        "files": 231,
+        "exclusions": [
+          "_health",
+          "deploy-manifest.json",
+          "edge-policy-receipt.json"
+        ]
+      },
+      "styleAsset": "styles.93fd5373b3.css",
+      "communityStatsAsset": "community-stats.ee24bbbfe2.js",
+      "edgePolicyFingerprint": "sha256:735dd2e27ee2ae8364a2afcf8195187e42e90b1ddaa6bea0be7bfb3e233606bd",
+      "edgePolicyAppliedToHostedOrigin": false,
+      "generatedAt": "2026-09-30T18:24:34.845Z",
+      "launchReady": false,
+      "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+    },
+    "setup": {
+      "team": "CHI",
+      "teamLabel": "BP - Buffalo Pilots",
+      "seed": "20260306",
+      "runtime": "client",
+      "mode": "play"
+    },
+    "game": {
+      "url": "https://staging.playfranchisearchitect.com/game",
+      "team": "BUF",
+      "franchiseId": "fa-4089734262-BUF",
+      "year": 2026,
+      "week": 1,
+      "label": "2026 W1 | regular-season | Team: OS",
+      "serviceWorkerControlled": true
+    },
+    "returningSetup": {
+      "status": "Ready | client 833ms | api 0ms | saves deferred",
+      "active": "New here? One click starts a franchise — surprise team included.",
+      "controls": [
+        {
+          "id": "instantStartBtn",
+          "text": "▶ Start Your Franchise",
+          "hidden": false,
+          "disabled": false
+        },
+        {
+          "id": "continueActiveBtn",
+          "text": "Continue Franchise",
+          "hidden": true,
+          "disabled": true
+        },
+        {
+          "id": "resumeLatestBtn",
+          "text": "Resume Latest Save",
+          "hidden": true,
+          "disabled": true
+        }
+      ],
+      "serviceWorkerControlled": true
+    },
+    "resumedGame": {
+      "url": "https://staging.playfranchisearchitect.com/game",
+      "team": "BUF",
+      "franchiseId": "fa-4089748847-BUF",
+      "year": 2026,
+      "week": 1,
+      "serviceWorkerControlled": true
+    },
+    "workerObservations": [
+      {
+        "direction": "request",
+        "path": "/api/new-league",
+        "method": "POST",
+        "body": {
+          "seed": 20260306,
+          "startYear": 2026,
+          "mode": "play",
+          "eraProfile": "modern",
+          "franchiseArchetype": "balanced",
+          "rulesPreset": "standard",
+          "difficultyPreset": "standard",
+          "challengeMode": "open",
+          "enableOwnerMode": true,
+          "enableNarratives": true,
+          "enableCompPicks": true,
+          "enableChemistry": true,
+          "controlledTeamId": "CHI",
+          "pfrPath": null,
+          "realismProfilePath": null
+        }
+      },
+      {
+        "direction": "response",
+        "path": "/api/new-league",
+        "type": "response",
+        "status": 200,
+        "keys": [
+          "status",
+          "ok",
+          "payload"
+        ],
+        "team": "CHI",
+        "franchiseId": "fa-20260306-CHI",
+        "ok": true
+      },
+      {
+        "direction": "request",
+        "path": "/api/saves/save",
+        "method": "POST",
+        "body": {
+          "slot": "slot1"
+        }
+      },
+      {
+        "direction": "response",
+        "path": "/api/saves/save",
+        "type": "response",
+        "status": 200,
+        "keys": [
+          "status",
+          "ok",
+          "payload"
+        ],
+        "ok": true
+      },
+      {
+        "direction": "request",
+        "path": "/api/saves/load",
+        "method": "POST",
+        "body": {
+          "slot": "slot1"
+        }
+      },
+      {
+        "direction": "response",
+        "path": "/api/saves/load",
+        "type": "response",
+        "status": 200,
+        "keys": [
+          "status",
+          "ok",
+          "payload"
+        ],
+        "team": "BUF",
+        "franchiseId": "fa-4089734262-BUF",
+        "ok": true
+      }
+    ],
+    "savedFranchisePreserved": false,
+    "teamPreserved": false
+  },
+  "portableBeforeEvidence": [
+    {
+      "file": "reports/staging-browser-s112-before/explicit-team-game.png",
+      "sha256": "18ef92372ece208de4cffdbff74d99267b66746c44fb5ed807910158110651c6",
+      "reviewed": true
+    },
+    {
+      "file": "reports/staging-browser-s112-before/resumed-game.png",
+      "sha256": "342dcd933b4cf86fae15b179864b0660aca071c0bd503c23cb262e146655d1f3",
+      "reviewed": true
+    }
+  ]
+}

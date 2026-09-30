@@ -165,7 +165,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-09-29"
+      "lastChecked": "2026-09-30"
     }
   ],
   "lastSession": 111,
@@ -274,14 +274,12 @@
     ]
   },
   "stagingAuthority": {
-    "schemaVersion": "1.1",
-    "kind": "independent-staging-authority",
-    "project": "franchise-architect-staging",
-    "branch": "staging",
-    "sourceRevision": "15a962b2fa87532bbbe349c2f51b1b46fbe3a3d8",
+    "schemaVersion": "1.0",
+    "receiptSha256": "371f72801f67c6d9d5def4a1ee5db8ca66e191e641189375fa9be1eead6d4992",
+    "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "c09fc822db5834efdf52a381930acd0ed5ab9a4132c8655f777938bb686c980c",
+      "digest": "92301758c11ad25a9173255fb96ddfb0822c0498d61d2bf68cea90772aab6575",
       "files": 231,
       "entries": [
         {
@@ -297,7 +295,7 @@
         {
           "path": "404.html",
           "bytes": 2611,
-          "sha256": "d4bba2ff08c557e2dfb46f45405bba6c7c91db32d45331d14acecc51bfc53e7b"
+          "sha256": "632027ff2484fc1490685a5e9cc70afb8a0c3d8186be33679c95b437d2ca3a0d"
         },
         {
           "path": "_headers",
@@ -312,7 +310,7 @@
         {
           "path": "about.html",
           "bytes": 6811,
-          "sha256": "50d4c3923a47346ec76d16714ac1bac430e91ee7312aaee5377b5b3ce5ae3a8f"
+          "sha256": "7fe8197506779799ad5b32775a7e6afdbfe69c90c75d2522ed86bd090fdb79ed"
         },
         {
           "path": "agents.json",
@@ -321,8 +319,8 @@
         },
         {
           "path": "app.js",
-          "bytes": 111448,
-          "sha256": "178ae52adff1250c544ec74ed69737acdc1737c7da462840ff95fdbd2cb38e6d"
+          "bytes": 111812,
+          "sha256": "136e91f8c44e0557f7c362913ba52a84ded10aa68a3450fb2642b4479953458e"
         },
         {
           "path": "boot-manifest.json",
@@ -342,7 +340,7 @@
         {
           "path": "contact.html",
           "bytes": 3141,
-          "sha256": "8fe5ad473ae2f382191586a645c28d340938c3a07ed786464b98630b9a2742d4"
+          "sha256": "b616685e3dc7d3a935deb04444a89be4294e00073d3f7f4302e61b5ec8e7f0db"
         },
         {
           "path": "favicon.ico",
@@ -362,7 +360,7 @@
         {
           "path": "game.html",
           "bytes": 112003,
-          "sha256": "07aa266870ad7206589e1d5756a25dc148655cf691799b87b2b66a9aec48cd66"
+          "sha256": "e8eff94f206284866708c6e82e253a8cc432222caf1923cfa5ba762bd37e9b1c"
         },
         {
           "path": "images/cover.png",
@@ -387,7 +385,7 @@
         {
           "path": "index.html",
           "bytes": 19379,
-          "sha256": "4a9bc817fb1c618fbfd90ad377a3c8aadd019343b9a7c315d2e02d22961da40b"
+          "sha256": "ba7952d7903d3b058581a009d116bb14d9ce99e5a8ed513175352594f15c151b"
         },
         {
           "path": "lib/achievements.js",
@@ -406,13 +404,13 @@
         },
         {
           "path": "lib/api/localRuntimeWorker.js",
-          "bytes": 5755,
-          "sha256": "a262b10b07f953cad0f16c3c5e2c0ae100d741f163be2abee36b501987226a31"
+          "bytes": 10351,
+          "sha256": "53b2e11bcee0d5d4eb3c3ad25f871899126d3553cad73aa749ad44022ecc5a69"
         },
         {
           "path": "lib/api/workerTransport.js",
-          "bytes": 5757,
-          "sha256": "ec8d06219a5d3d394f48edb3124ef6424b13892830c57c7b47fbddb9a5b4ebf9"
+          "bytes": 7135,
+          "sha256": "d2f931538b395d2d2917ab34da7d2babfa0e624a7d15654b79d4791fef5fd2b1"
         },
         {
           "path": "lib/apiContract.js",
@@ -471,8 +469,8 @@
         },
         {
           "path": "lib/coGmBriefing.js",
-          "bytes": 5030,
-          "sha256": "66cd38ab9b7773ef03829c5b2ba6c1bf4d192685ae5cf443f1c02fd6f7b5206f"
+          "bytes": 5298,
+          "sha256": "a7db0a07c3ad7691e13132d68aa63d6551b5630a924c30111d8892712e9db3cf"
         },
         {
           "path": "lib/coachingMarketPanel.js",
@@ -506,8 +504,8 @@
         },
         {
           "path": "lib/deskIslands.js",
-          "bytes": 4624,
-          "sha256": "b6af5924e1f4846c3aaabd2ebce8de93ef17e8fcd07ae0f546a7c58c33ac3aea"
+          "bytes": 4450,
+          "sha256": "5499b411f5e161400778801a43f4d20e0c7601a371d2c98a5719ffff885ce208"
         },
         {
           "path": "lib/devSurfaces.js",
@@ -521,8 +519,8 @@
         },
         {
           "path": "lib/dynastyTimeline.js",
-          "bytes": 8343,
-          "sha256": "c7eb9bcf4ffa1299a58a13741572bb38d4a483cc35456c8babbc2e5f7e4b7fac"
+          "bytes": 6287,
+          "sha256": "dafb35d6c73e3219627d2817bbe904be89be70dadb418b56bcd72303c239b79a"
         },
         {
           "path": "lib/engagementFeatures.js",
@@ -551,13 +549,13 @@
         },
         {
           "path": "lib/firstDebriefPulse.js",
-          "bytes": 11109,
-          "sha256": "2f9b61fb67c74566590a58cf7f7516839a14dbcab1eb77c075991ba9d224b346"
+          "bytes": 8640,
+          "sha256": "999b19235673547da1285f05574111307f087b4e01be8caaff93e616a92ca198"
         },
         {
           "path": "lib/firstSeasonContract.js",
-          "bytes": 12568,
-          "sha256": "6968fc05d3bd2bd51c7ba56b56a667c0ab549c14109de5c26789fdc3569710fa"
+          "bytes": 13577,
+          "sha256": "f2bcbebc9fac5bf2942b4840a95bdc8c2676ff70d6b75456fdb578f72f489c8d"
         },
         {
           "path": "lib/franchiseArchitecture.js",
@@ -581,8 +579,8 @@
         },
         {
           "path": "lib/frontOfficeAdvisor.js",
-          "bytes": 26644,
-          "sha256": "e8bc3bb446736e80ce1c848c21fbbac09127f82c83278ce74b56c31c79f8f95d"
+          "bytes": 26784,
+          "sha256": "29eaf4cf176cd71ed07588171bc789d8315cb589345f2b686587763125d6e9dc"
         },
         {
           "path": "lib/gameFlow.js",
@@ -666,8 +664,8 @@
         },
         {
           "path": "lib/momentCard.js",
-          "bytes": 18255,
-          "sha256": "651a59d6285a39cdd3fad35757a25560baea175fa6b97d9d85865c3bc58f6d06"
+          "bytes": 17407,
+          "sha256": "dfdb3f2c5d15cf6d1903cb2b780e355a0f3bdb5bb2a4b8ad385c4559e7cf2550"
         },
         {
           "path": "lib/offseasonDevelopmentReport.js",
@@ -721,8 +719,8 @@
         },
         {
           "path": "lib/returnDigest.js",
-          "bytes": 13543,
-          "sha256": "4c3fc7c065e343bf5b4b439c42d83bba14ff7685edf5dbd1f9655eeff1a9e6f5"
+          "bytes": 11680,
+          "sha256": "c52c05580ef4920f5cd8de588028654df4e3d416abb4c69daae42c28236be025"
         },
         {
           "path": "lib/rewardBeats.js",
@@ -826,8 +824,8 @@
         },
         {
           "path": "lib/tabStats.js",
-          "bytes": 8815,
-          "sha256": "0020c3f709e8e30c31057d753a862124345c171332b1f39526484454a9e991c8"
+          "bytes": 9260,
+          "sha256": "1d02e3393cd5d7119fbe6ad640b1508dda63a63044eefd9a8fad08a76d4c204b"
         },
         {
           "path": "lib/tacticalFilmRoom.js",
@@ -866,8 +864,8 @@
         },
         {
           "path": "lib/tutorialCampaign.js",
-          "bytes": 16237,
-          "sha256": "efe4306ba4f79f12fce785bfe39c924f9f5d80d9c89fa75aca5fcc22b04964fe"
+          "bytes": 12897,
+          "sha256": "f2414f2b81880ea4c772019d4dab9ae86d0c784f50ab6732f0004e864231b64a"
         },
         {
           "path": "lib/uiIslands.js",
@@ -881,18 +879,18 @@
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 16383,
-          "sha256": "8be1bd9983a6937ff537f9075477a600b7f4db8edd804ed2a6e2ec8d1421e16e"
+          "bytes": 16384,
+          "sha256": "6139885db7565de73ae0f4d49ee09e485b60546a2235dcb8b057f586270a7e75"
         },
         {
           "path": "press.html",
           "bytes": 5919,
-          "sha256": "10cc1232e4065a670333298621241154271a768e0988254c194ab72c28eb09ea"
+          "sha256": "5abdd2b8706033c2853caf8f25bd9d210ab1601d5169fae6c4f9c1ba3a4a5bcf"
         },
         {
           "path": "privacy.html",
           "bytes": 5483,
-          "sha256": "368186c88f7e678bc039f90330ffc70dd2c13de2134caba8345ba0c4d53904e0"
+          "sha256": "552bb6b0a38d29e0da93a6713243fc2ee58c13dc2f60ccfd6da55210125371d1"
         },
         {
           "path": "public-identity.json",
@@ -937,7 +935,7 @@
         {
           "path": "simulation.html",
           "bytes": 9787,
-          "sha256": "d67e4c34894057d2d4f0d7228000442db3f546fc10d8e51b6958ca0d556cab0b"
+          "sha256": "881979297b8d040be7fc975ebd4a0a3016545d3c26a608b4266526f579102a42"
         },
         {
           "path": "sitemap.xml",
@@ -946,13 +944,13 @@
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
-          "bytes": 7523,
-          "sha256": "3cf9c92b78ffed96cf5a7961cd92341dd23af335840985273e29a814d7df6856"
+          "bytes": 10036,
+          "sha256": "ec8f692dbf53e14e20bcd675138984f0f7f99991a565bd66f73fe4315e43d342"
         },
         {
           "path": "src/adapters/persistence/hybridSaveStore.js",
-          "bytes": 10821,
-          "sha256": "3f6d5549a24b2f83534867888373f145d3887426ddcc8306a7551f6a850cbdcc"
+          "bytes": 15546,
+          "sha256": "b7cb1b7f74fca3cc07d5e647216840cedb87cf7570712b967a706d5a74ba0c98"
         },
         {
           "path": "src/adapters/persistence/saveStoreShared.js",
@@ -966,8 +964,8 @@
         },
         {
           "path": "src/app/api/localApiRuntime.js",
-          "bytes": 93920,
-          "sha256": "d6924c654655c45e23c119aa6812e770f25c1560e12e2f385f9e5e646b23293b"
+          "bytes": 94064,
+          "sha256": "8ec6439ac997a352e2d5407a9cb69f6626e32cb74c0848c7bc90fc8585826c77"
         },
         {
           "path": "src/config.js",
@@ -1251,8 +1249,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 347065,
-          "sha256": "afc472f4e7e12abec539748f10ba5ccae37dbdb1dc304a9cf93c0eb8a6943894"
+          "bytes": 347968,
+          "sha256": "2708e18b990c22a888e78b910c51d09d0f8c548e86a2309b6e66bdc32fcf7913"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -1311,8 +1309,8 @@
         },
         {
           "path": "src/runtime/services/TradeService.js",
-          "bytes": 13674,
-          "sha256": "da47b62345463e0c6e2bcae525f9f0f24ddb5c271a06b0bc40ce202342b355a3"
+          "bytes": 14734,
+          "sha256": "60afd1b18db65264393546459f226dac9d60c427cdbbf7c1f9e9c147118d0cd6"
         },
         {
           "path": "src/runtime/services/index.js",
@@ -1407,37 +1405,37 @@
         {
           "path": "stats.html",
           "bytes": 6615,
-          "sha256": "3d12905db9afb0c428d80899037c63b09fa67d3f1bc070f681b64f1e0366c6dd"
+          "sha256": "5dd4359d4d911fdf10af0d9f2d3301a62cc38f01a6b06da4ebd3748d35705820"
         },
         {
           "path": "status-archive.html",
           "bytes": 19520,
-          "sha256": "d61bb2974bfeadf2c6d3681b566acaae532c743b6b8b560967621287d6e5286f"
+          "sha256": "4ec9d7ac7d59824eb0b532c943f4b2c19da7560d947419090f2327ccf96d3e14"
         },
         {
           "path": "status.html",
           "bytes": 7843,
-          "sha256": "43c6c672df66703ccfb5754f82239f37a85004456101c8b862da49ce38e1f8d3"
+          "sha256": "4c87c56c85c09646de357174c58a0999563a78b9c59bf776a2240b886619801c"
         },
         {
-          "path": "styles.b0ab35203b.css",
-          "bytes": 195333,
-          "sha256": "b0ab35203b8039827bda379e1fc5be8c8566d8af68380e1d15805b120b564a38"
+          "path": "styles.93fd5373b3.css",
+          "bytes": 206426,
+          "sha256": "93fd5373b3304eaedf34d57b50a9dd4890c43a1fff214297cbdb07e8af328b58"
         },
         {
           "path": "styles.css",
-          "bytes": 195333,
-          "sha256": "b0ab35203b8039827bda379e1fc5be8c8566d8af68380e1d15805b120b564a38"
+          "bytes": 206426,
+          "sha256": "93fd5373b3304eaedf34d57b50a9dd4890c43a1fff214297cbdb07e8af328b58"
         },
         {
           "path": "sw.js",
           "bytes": 8989,
-          "sha256": "0e770e9a185cc41dc9dc7e83ff6d5cb6135e6d40ff028cd839050df1a935f2bb"
+          "sha256": "df49c80cacb8f2827d702121eaec5fa6b884e2c9f82c7d88a66a9e17343602ff"
         },
         {
           "path": "terms.html",
           "bytes": 4153,
-          "sha256": "6ea25698c4f7d3afdb66c5a7f50f1e574cb73c50d4ceaa4162f2d51b382d0e19"
+          "sha256": "8b296d5b83163361bd8722f79ad6fe5544d70b7291757718e8aa943f3188def6"
         }
       ],
       "exclusions": [
@@ -1446,27 +1444,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "promotionIdentity": "15a962b2fa87532bbbe349c2f51b1b46fbe3a3d8:c09fc822db5834efdf52a381930acd0ed5ab9a4132c8655f777938bb686c980c",
-    "deploymentId": "ac4a504a-fca7-4457-9047-a32485aebe02",
-    "deploymentUrl": "https://ac4a504a.franchise-architect-staging.pages.dev",
+    "deploymentId": "372bbf42-ebff-4b45-a6ba-d75db0d6d458",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
-    "independent": true,
-    "exactRevision": true,
-    "exactArtifact": true,
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-30T03:23:54.471Z"
+      "checkedAt": "2026-09-30T18:26:01.404Z"
     },
     "rollback": {
-      "previousDeploymentId": "5e36bba2-4fa5-4317-8ddd-28fad0925e28",
+      "previousDeploymentId": "e21bd172-7f4d-4cde-a64f-1fc0230ed0b9",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-30T03:23:54.471Z",
-    "receiptSha256": "c38381c3492e0ebec61aa75e538d75611c01600932dbdaecdf7ff1f301484b48"
+    "observedAt": "2026-09-30T18:26:01.405Z"
   },
   "lastCloseoutAt": "2026-09-15T02:27:26.985Z",
   "performanceAuthority": {

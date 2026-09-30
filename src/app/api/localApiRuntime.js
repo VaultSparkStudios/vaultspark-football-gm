@@ -1,5 +1,5 @@
 import { createHybridBrowserSaveStore } from "../../adapters/persistence/hybridSaveStore.js";
-import { createPersistenceDescriptor } from "../../adapters/persistence/saveStoreShared.js";
+import { buildIntegrityStamp, createPersistenceDescriptor, verifyIntegrityStamp } from "../../adapters/persistence/saveStoreShared.js";
 import { decodeSnapshot, encodeSnapshot } from "../../adapters/persistence/snapshotCodec.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { createLeagueBase } from "../../domain/teamFactory.js";
@@ -1428,8 +1428,12 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/saves/save") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        const saved = await saveStore.saveSessionToSlot(String(body.slot), session.toSnapshot());
-        return finish(jsonResponse(200, { ok: true, saved, slots: saveStore.listSaveSlots() }));
+        // Freeze the exact JSON before the adapter's asynchronous queue can run.
+        // Recovery binds these stored values, before restore rebuilds derived data.
+        const serialized = JSON.stringify(session.toSnapshot());
+        const savedSnapshotIntegrity = buildIntegrityStamp(serialized);
+        const saved = await saveStore.saveSessionToSlot(String(body.slot), JSON.parse(serialized));
+        return finish(jsonResponse(200, { ok: true, saved, savedSnapshotIntegrity, slots: saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/saves/load") {
@@ -1438,11 +1442,17 @@ export function createLocalApiRuntime({
         try { snapshot = await saveStore.loadSessionFromSlot(String(body.slot)); }
         catch (error) { return finish(jsonResponse(error.status || 409, snapshotErrorPayload(error))); }
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Save slot not found." }));
+        const serialized = JSON.stringify(snapshot);
+        if (Object.hasOwn(body, "expectedSavedSnapshotIntegrity") &&
+            (!body.expectedSavedSnapshotIntegrity || !verifyIntegrityStamp(serialized, body.expectedSavedSnapshotIntegrity))) {
+          return finish(jsonResponse(409, { ok: false, reasonCode: "RECOVERY_REFERENCE_CHANGED", error: "The selected saved checkpoint has changed. Choose the saved franchise explicitly from setup." }));
+        }
+        const savedSnapshotIntegrity = buildIntegrityStamp(serialized);
         let replacement;
         try { replacement = sessionFromSnapshot(snapshot); }
         catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
         session = applyPersistenceProfile(replacement);
-        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listSaveSlots() }));
+        return finish(jsonResponse(200, { ok: true, savedSnapshotIntegrity, state: getAugmentedState(session), slots: saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/backups/load") {
@@ -1451,11 +1461,17 @@ export function createLocalApiRuntime({
         try { snapshot = await saveStore.loadSessionFromSlot(String(body.slot)); }
         catch (error) { return finish(jsonResponse(error.status || 409, snapshotErrorPayload(error))); }
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Backup slot not found." }));
+        const serialized = JSON.stringify(snapshot);
+        if (Object.hasOwn(body, "expectedSavedSnapshotIntegrity") &&
+            (!body.expectedSavedSnapshotIntegrity || !verifyIntegrityStamp(serialized, body.expectedSavedSnapshotIntegrity))) {
+          return finish(jsonResponse(409, { ok: false, reasonCode: "RECOVERY_REFERENCE_CHANGED", error: "The selected saved checkpoint has changed. Choose the saved franchise explicitly from setup." }));
+        }
+        const savedSnapshotIntegrity = buildIntegrityStamp(serialized);
         let replacement;
         try { replacement = sessionFromSnapshot(snapshot); }
         catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
         session = applyPersistenceProfile(replacement);
-        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listBackupSlots() }));
+        return finish(jsonResponse(200, { ok: true, savedSnapshotIntegrity, state: getAugmentedState(session), slots: saveStore.listBackupSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/saves/delete") {

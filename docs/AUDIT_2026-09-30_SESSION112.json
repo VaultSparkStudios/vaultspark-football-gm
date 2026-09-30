@@ -10,7 +10,7 @@
     "source": "Fresh S111 recovery, three bounded in-process source reviews, direct in-memory fault reproductions and live browser pixels.",
     "itemsRanked": 10,
     "combinedPriority": 206.8,
-    "verificationNote": "Recovery suite 1588/1588; all ten audit implementations and four second-order candidates completed with focused controls. Final full-suite, immutable visual proof, exact-source CI and staging/production verification remain pending. No cohort or launch authority inferred."
+    "verificationNote": "S111 recovery remains separately verified at1588/1588 and Doctor blockingFailing0. All ten audit implementations and five second-order candidates now have focused implementation proof. The new navigation recovery passes18/18 browser cases on5c60a5bd; worker capture/restore has74 focused tests and substantially lower measured main-thread stalls. Final immutable canonical suite, CI,222-image review, actual staging/production continuity and closeout remain pending. No S112 production promotion, public-launch approval or cohort result is inferred."
   },
   "profile": {
     "audience": "public-unlaunched",
@@ -25,7 +25,7 @@
     "sessionEngagement": "8/10",
     "retention": "unmeasured; affordances 7/10",
     "soulFidelity": "unscored: public summary points to private creative authority",
-    "evidence": "Editorial source assessment and deterministic fixtures, not human engagement data."
+    "evidence": "The original ten items and four second-order outcomes are implemented. Actual BCF staging then exposed lost franchise identity after creation and saved-slot navigation; reports/staging-browser-s112.json preserves that failure. The fifth outcome now preserves per-tab identity/progress, rejects changed durable references before replacement, and makes failed checkpoint retry independent of command replay. An unchanged save recalculates350 derived values on load, so exact frozen saved bytes are checked before reconstruction. Focused recovery proof:48 helper,15 worker durability,11 worker parity/fallback,7 HTTP and18 browser tests. One-season checkpoints now keep JSON/hash/codec work in the worker: longest main-thread tasks58/71ms versus735/892ms, with similar total checkpoint wall time. These are single local warm samples, not mature-career or retention evidence. Final release acceptance remains pending; the interrupted BCF canonical1199-test run and earlier failed/readiness checks remain historical, not green acceptance."
   },
   "axisReview": {
     "feature depth": [
@@ -111,6 +111,226 @@
       "slug": "atomic-visual-capture-ledger-publication",
       "status": "implemented",
       "trigger": "S111 required a repair after capture hashes were omitted from the append-only ledger. The receipt writer now publishes ledger entries immediately after its immutable full-proof receipt, while rejecting provisional or incomplete proof."
+    },
+    {
+      "slug": "browser-session-navigation-recovery",
+      "status": "implemented",
+      "trigger": "The actual BCF staging /api/new-league request selected CHI, seed 20260306 and play mode and returned 200 with fa-20260306-CHI; normal full-page game navigation created fa-4089734262-BUF instead. An explicit manual slot1 save/load returned 200 with that saved franchise, but subsequent navigation created fa-4089748847-BUF. Correct route/status/artifact identity did not preserve the active client runtime.",
+      "evidence": [
+        "reports/staging-browser-s112.json",
+        "output/playwright/staging-browser-s112/session-boundary/observation.json",
+        "reports/staging-browser-s112-before/explicit-team-game.png",
+        "reports/staging-browser-s112-before/resumed-game.png",
+        "output/playwright/client-checkpoint-performance-s112.json"
+      ],
+      "implementation": "Per-tab compressed checkpoint recovery after successful local mutations, loading/unsaved states, checkpoint-only retry and guarded navigation. A small integrity-bound reference may point only to an explicitly selected or saved existing slot when a full checkpoint exceeds sessionStorage quota. Save responses expose savedSnapshotIntegrity; reference loads submit expectedSavedSnapshotIntegrity and verify the exact frozen saved snapshot before replacing either the local or server runtime. A separate live-state fingerprint excludes only league.observability when deciding whether the current session still matches that explicit save. Changed or missing references fail closed. Manual saves and exports remain the authority for keeping a franchise after tab close. Snapshot serialization, hashing and codec capture/restore run inside the worker; only compact encoded checkpoints and identity receipts cross its port. Capture/restore share the existing request queue and storage acknowledgment barrier. Setup locks runtime selection while a command/checkpoint is pending, and a new selection or runtime switch cancels old deferred navigation.",
+      "diagnosis": "Reloading an unchanged saved snapshot legitimately recalculates 350 derived leaf values, including weekly plans, opponent data and pressure. Comparing raw saved bytes with the reconstructed runtime therefore rejected an unchanged save. The fix binds integrity to the frozen saved snapshot before runtime replacement instead of exempting gameplay fields from integrity checks. Request diagnostics are excluded only from the separate live-state fingerprint.",
+      "focusedValidation": {
+        "status": "passed-final-release-acceptance-pending",
+        "sourceRevision": "local-worktree",
+        "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3",
+        "helper": {
+          "passed": 48,
+          "total": 48
+        },
+        "workerDurability": {
+          "passed": 15,
+          "total": 15
+        },
+        "workerParityAndFallback": {
+          "passed": 11,
+          "total": 11
+        },
+        "fullServerFile": {
+          "passed": 7,
+          "total": 7,
+          "durationSeconds": 30.85
+        },
+        "browserRecovery": {
+          "passed": 18,
+          "total": 18,
+          "durationMinutes": 7.1,
+          "status": "passed",
+          "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3"
+        },
+        "performance": {
+          "status": "measured",
+          "report": "output/playwright/client-checkpoint-performance-s112-5c60a5bd.json",
+          "measuredAt": "2026-09-30T22:37:10.904Z",
+          "samples": [
+            {
+              "mode": "drive",
+              "label": "fresh",
+              "flushMs": 229.30000007152557,
+              "maxMainThreadTaskMs": 0,
+              "sumMainThreadTasksMs": 0,
+              "checkpointWire": {
+                "captureRequests": 1,
+                "restoreRequests": 0,
+                "snapshotExportRequests": 0,
+                "snapshotImportRequests": 0,
+                "rawSnapshotRequests": 0,
+                "rawSnapshotResponses": 0
+              }
+            },
+            {
+              "mode": "drive",
+              "label": "one-completed-season",
+              "flushMs": 1432.3999999761581,
+              "maxMainThreadTaskMs": 58,
+              "sumMainThreadTasksMs": 58,
+              "checkpointWire": {
+                "captureRequests": 1,
+                "restoreRequests": 0,
+                "snapshotExportRequests": 0,
+                "snapshotImportRequests": 0,
+                "rawSnapshotRequests": 0,
+                "rawSnapshotResponses": 0
+              }
+            },
+            {
+              "mode": "play",
+              "label": "fresh",
+              "flushMs": 266.40000009536743,
+              "maxMainThreadTaskMs": 0,
+              "sumMainThreadTasksMs": 0,
+              "checkpointWire": {
+                "captureRequests": 1,
+                "restoreRequests": 0,
+                "snapshotExportRequests": 0,
+                "snapshotImportRequests": 0,
+                "rawSnapshotRequests": 0,
+                "rawSnapshotResponses": 0
+              }
+            },
+            {
+              "mode": "play",
+              "label": "one-completed-season",
+              "flushMs": 1683.7999999523163,
+              "maxMainThreadTaskMs": 71,
+              "sumMainThreadTasksMs": 71,
+              "checkpointWire": {
+                "captureRequests": 1,
+                "restoreRequests": 0,
+                "snapshotExportRequests": 0,
+                "snapshotImportRequests": 0,
+                "rawSnapshotRequests": 0,
+                "rawSnapshotResponses": 0
+              }
+            }
+          ],
+          "finding": "One completed season: maximum checkpoint main-thread tasks fell from735/892ms to58/71ms for Drive/Play. Flush wall times were1432/1684ms versus1368/1614ms; total latency did not improve. Fresh checkpoints had no observed tasks at or above50ms. Single warm local samples, not a benchmark distribution or mature-career claim. Isolated restore timing was not measured."
+        },
+        "review": "Independent review found a runtime-selector race during setup; selector locking, guarded changes and deferred-intent clearing fix it. Both worker and in-page held-checkpoint browser cases verify attempted runtime changes leave the originating client authority intact.",
+        "intermediateBrowserRun": {
+          "artifactDigest": "4c25afd4c1c3c2957706008cbb3e58951a25c752b5cd69c2016e4dfa1c64320c",
+          "passed": 3,
+          "failed": 1,
+          "unrun": 14,
+          "reason": "Warning assertion ran before creation settled; failure image showed the correct warning. The test now waits for the existing bounded creation terminal state before its unchanged warning assertions."
+        },
+        "acceptanceLimit": "Focused implementation proof is complete. Immutable canonical suite, final CI, source-bound222-image review, stable-staging continuity, production/backend promotion and closeout remain pending."
+      },
+      "acceptance": "Focused implementation proof is complete. Immutable canonical suite, final CI, source-bound222-image review, stable-staging continuity, production/backend promotion and closeout remain pending.",
+      "validationBoundary": {
+        "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
+        "canonicalSuiteStatus": "interrupted",
+        "completedTests": 1199,
+        "completedShards": [
+          {
+            "name": "core",
+            "passed": 290,
+            "total": 290
+          },
+          {
+            "name": "runtime",
+            "passed": 909,
+            "total": 909
+          }
+        ],
+        "unfinishedShard": "sim-contract",
+        "partialProgress": ".cache/s112-tests-bcf-interrupted-progress.json",
+        "sourceBinding": ".cache/s112-tests-bcf-interrupted-binding.json",
+        "processDisposition": "Only owned wrapper, runner and test children were stopped; partial evidence was preserved. This is not a full-suite green receipt.",
+        "ciRun": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36758642906",
+        "ciAttempt": 2,
+        "ciConclusion": "success",
+        "productionPromoted": false
+      },
+      "provisionalValidationHistory": {
+        "helper": {
+          "passed": 48,
+          "total": 48,
+          "status": "passed"
+        },
+        "realHttpGuard": {
+          "passed": 1,
+          "total": 1,
+          "durationSeconds": 21,
+          "status": "passed"
+        },
+        "fullServerFile": {
+          "passed": 7,
+          "total": 7,
+          "durationSeconds": 30.85,
+          "status": "passed"
+        },
+        "browserRecovery": {
+          "passed": 18,
+          "total": 18,
+          "durationMinutes": 8.3,
+          "artifactDigest": "f34e2099c3f72a7885ebab4a871d05c2739a2b0955cd7765728d678818e94966",
+          "status": "passed"
+        },
+        "httpFixtureCorrection": "The first HTTP fixture exceeded the existing 1 MB request-body limit. It was corrected to use the existing small /api/control-team command; the limit was not relaxed.",
+        "httpRateFixtureCorrection": "The first full HTTP file run passed six tests and received HTTP 429 in one. The fixture now uses the pre-existing test-only VSFGM_RATE_LIMIT_PER_MIN=500 override; the production limit remains 50 requests per minute.",
+        "httpStorageIsolation": "The new HTTP test uses its own validated temporary directory for storage.",
+        "dirtyMarkerRegression": "The failed second-marker transition now preserves unload protection for dirty live progress and has a focused regression check.",
+        "provisionalVisualReview": {
+          "inspected": 24,
+          "status": "provisional",
+          "finalRecapture": "pending after corrupt-state recovery copy correction"
+        },
+        "performance": {
+          "status": "acceptance_gap",
+          "report": "output/playwright/client-checkpoint-performance-s112.json",
+          "reportVisibility": "ignored local evidence",
+          "artifactDigest": "f34e2099c3f72a7885ebab4a871d05c2739a2b0955cd7765728d678818e94966",
+          "sourceRevision": "local-worktree",
+          "scope": "Single warm checkpoint samples in Chromium worker runtime, fresh and after one actual completed season per mode; measurement observers add overhead. No mature-career, 100-year or benchmark-distribution claim.",
+          "fresh": {
+            "flushMillisecondsRange": [
+              223,
+              252
+            ],
+            "maxMainThreadTaskMillisecondsRange": [
+              106,
+              112
+            ]
+          },
+          "oneCompletedSeason": [
+            {
+              "mode": "drive",
+              "snapshotJsonBytes": 30160992,
+              "checkpointEnvelopeBytes": 3526167,
+              "flushMilliseconds": 1368,
+              "maxMainThreadTaskMilliseconds": 735
+            },
+            {
+              "mode": "play",
+              "snapshotJsonBytes": 34594875,
+              "checkpointEnvelopeBytes": 3888991,
+              "flushMilliseconds": 1614,
+              "maxMainThreadTaskMilliseconds": 892
+            }
+          ],
+          "interactionLimit": "Actual clicks took 11–197 ms and overlapped early checkpoint work; this does not prove responsiveness through the later heavy main-thread work.",
+          "authorizedCorrection": "Move JSON serialization/parsing, hash and codec capture/restore into the default worker, retaining page-side verified checkpoint receipts and pending markers. No public-route or hidden-store changes.",
+          "processDisposition": "All performance probes are closed.",
+          "limit": "The f34e 18/18 browser result remains functional evidence and a negative performance baseline, not final acceptance or a neutral-cost claim. The current source is staged but uncommitted; corrected-source canonical testing has not started."
+        },
+        "acceptanceLimit": "Focused checks prove recovery functionality on f34e, but the measured performance gap keeps the fifth implementation and final acceptance in progress. Worker correction and measured recheck, source commit, canonical suite, exact-source CI, final source-bound review of 222 images, actual staging, production publication and closeout remain pending."
+      }
     }
   ],
   "items": [

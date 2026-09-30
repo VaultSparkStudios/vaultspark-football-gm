@@ -17,6 +17,7 @@ import {
   saveSessionToSlot
 } from "./runtime/saveStore.js";
 import { getPersistenceDescriptor } from "./runtime/persistence.js";
+import { buildIntegrityStamp, verifyIntegrityStamp } from "./adapters/persistence/saveStoreShared.js";
 import { executeAdvanceWeekTransaction } from "./runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, snapshotErrorPayload } from "./runtime/snapshotMigration.js";
 import { handleArchitectThesisRequest } from "./runtime/handlers/architectThesisHandler.js";
@@ -1573,8 +1574,10 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "slot is required." });
       return true;
     }
-    const saved = saveSessionToSlot(String(body.slot), session.toSnapshot());
-    sendJson(res, 200, { ok: true, saved, slots: listSaveSlots() });
+    const serialized = JSON.stringify(session.toSnapshot());
+    const savedSnapshotIntegrity = buildIntegrityStamp(serialized);
+    const saved = saveSessionToSlot(String(body.slot), JSON.parse(serialized));
+    sendJson(res, 200, { ok: true, saved, savedSnapshotIntegrity, slots: listSaveSlots() });
     return true;
   }
 
@@ -1591,11 +1594,18 @@ async function handleApi(req, res, url) {
       sendJson(res, 404, { ok: false, error: "Save slot not found." });
       return true;
     }
+    const serialized = JSON.stringify(snapshot);
+    if (Object.hasOwn(body, "expectedSavedSnapshotIntegrity") &&
+        (!body.expectedSavedSnapshotIntegrity || !verifyIntegrityStamp(serialized, body.expectedSavedSnapshotIntegrity))) {
+      sendJson(res, 409, { ok: false, reasonCode: "RECOVERY_REFERENCE_CHANGED", error: "The selected saved checkpoint has changed. Choose the saved franchise explicitly from setup." });
+      return true;
+    }
+    const savedSnapshotIntegrity = buildIntegrityStamp(serialized);
     let replacement;
     try { replacement = createSessionFromSnapshot(snapshot); }
     catch (error) { sendJson(res, error.status || 400, snapshotErrorPayload(error)); return true; }
     session = replacement;
-    sendJson(res, 200, { ok: true, state: session.getDashboardState(), slots: listSaveSlots() });
+    sendJson(res, 200, { ok: true, savedSnapshotIntegrity, state: session.getDashboardState(), slots: listSaveSlots() });
     return true;
   }
 
@@ -1612,11 +1622,18 @@ async function handleApi(req, res, url) {
       sendJson(res, 404, { ok: false, error: "Backup slot not found." });
       return true;
     }
+    const serialized = JSON.stringify(snapshot);
+    if (Object.hasOwn(body, "expectedSavedSnapshotIntegrity") &&
+        (!body.expectedSavedSnapshotIntegrity || !verifyIntegrityStamp(serialized, body.expectedSavedSnapshotIntegrity))) {
+      sendJson(res, 409, { ok: false, reasonCode: "RECOVERY_REFERENCE_CHANGED", error: "The selected saved checkpoint has changed. Choose the saved franchise explicitly from setup." });
+      return true;
+    }
+    const savedSnapshotIntegrity = buildIntegrityStamp(serialized);
     let replacement;
     try { replacement = createSessionFromSnapshot(snapshot); }
     catch (error) { sendJson(res, error.status || 400, snapshotErrorPayload(error)); return true; }
     session = replacement;
-    sendJson(res, 200, { ok: true, state: session.getDashboardState(), slots: listBackupSlots() });
+    sendJson(res, 200, { ok: true, savedSnapshotIntegrity, state: session.getDashboardState(), slots: listBackupSlots() });
     return true;
   }
 
