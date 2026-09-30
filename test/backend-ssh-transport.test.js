@@ -6,7 +6,7 @@ import { deployBackendViaSsh, validateBackendSshConfig, withTransportRetry } fro
 const config = {
   host: "backend.example.test",
   user: "deployer",
-  privateKey: "-----BEGIN OPENSSH PRIVATE KEY-----\nfixture-only\n-----END OPENSSH PRIVATE KEY-----",
+  privateKey: "fixture-key-material",
   hostKey: "backend.example.test ssh-ed25519 Zml4dHVyZS1ob3N0LWtleQ==",
   deployPath: "/srv/franchise-architect",
   sourceRevision: "a".repeat(40),
