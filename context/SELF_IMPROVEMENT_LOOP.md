@@ -229,6 +229,13 @@ Portable authority: reports/session112-followthrough-acceptance.json. Backend an
 
 S112 SIL remains804/1000 across its original ten categories. No new scored session is created.
 
+<!-- s112-startup-docs-sil-addendum -->
+### Session 112 addendum — startup documentation currency
+
+The upstream Studio Template Bot commit 08a3d08 changed three documentation files after the main closeout writeback. Correction 00b4dd7 adds only prompts/start.md to the explicit nondeployable-file list. Independent build-input review confirmed the boundary; 10/10 focused checks include mixed application, backend, build and other-prompt negative cases. Direct post-commit Doctor returned zero blockers and the standing lifecycle warning. The product suite remains 1702/1702 at f8b640b; the new focused check is separate. See reports/s112-startup-docs-classification.json. This completes the writeback for the observed upstream change and its correction; no new scored session or product deployment is claimed. S112 remains 804/1000.
+
+[SIL] Reconcile upstream changes before finalizing a session, and distinguish actual artifact inputs from agent instructions with a narrow, tested classification.
+<!-- /s112-startup-docs-sil-addendum -->
 <!-- ledger-roll:pointer -->
 ---
 
