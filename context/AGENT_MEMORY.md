@@ -1,4 +1,26 @@
 # Agent Memory
+
+<!-- s112-closeout:memory -->
+## Session 112 durable patterns
+
+- Reserve the save slot before reading previous bytes; serialization spans compression, publication, rollback, load migration and deletion.
+- Publish IndexedDB metadata only after transaction completion and readback; failed new writes must not hide older IndexedDB saves.
+- Remove metadata before authoritative bytes and restore a loadable save on fallible early deletion steps; skip busy backups to avoid quota-lock cycles.
+- Each worker request owns its storage flush; acknowledgment handling must remain able to progress while request handlers queue.
+- Pick packages require whole-package economics; preserve player-only tolerances and carry evaluated authority through both API transports.
+- Grade only observed action at its source checkpoint; unobserved is neutral, duplicate receipts are idempotent, and offer submission is not a signing.
+- Verify generated security policy in a real browser, inspect changed themes, and record capture hashes before pruning. Distinguish fresh image inspections from reviews inherited through identical SHA256 bytes.
+- Locator visibility queries do not wait for an asynchronous dialog. Wait for the actual decision transition and prove the advance request occurred; a timeout increase cannot repair a missed choice.
+- General CI, Pages, staging, production and each suite shard are independent evidence. A partially passing suite cancelled for repair is never a green suite; retain its source-bound failure history.
+- Exact approved dependency pins remain narrow exceptions. Native test-receipt surface identity and explicit run-start Git identity are different fields.
+- Browser-only runtime state does not survive full-page navigation. Restore a per-tab checkpoint before the first dashboard read; missing expected, corrupt or pending authority must not silently create a default franchise.
+- A successfully applied action followed by a failed checkpoint stays successful and dirty. Retry checkpoint publication without replaying the action, and retain unload protection even if a later marker failure changes the error status.
+- A durable save and its reconstructed runtime are different comparison points. Loading an unchanged one-week save recalculated 350 derived values; bind the raw saved snapshot before migration, then separately guard unsaved changes in live state.
+- Measure checkpoints after a real completed season. Fresh-snapshot timings and an early click during an asynchronous operation can miss later main-thread stalls; S112 observed 735–892 ms tasks after one season before moving the bulk work to the worker.
+- Theme-specific primary-button selectors must exclude disabled controls when disabled foregrounds have separate semantics. A passing enabled button or ready-state screenshot does not prove loading-state contrast; capture actual disabled controls under the generated policy.
+- Preserve raw security-scan findings. A known public inline-script CSP digest may receive a narrow documented annotation only after checking the exact artifact bytes, keeping all measured values unchanged and rescanning with the unchanged scanner.
+<!-- /s112-closeout:memory -->
+
 ## Session 111 durable patterns
 
 - CPU-to-CPU transactions belong behind the same `TradeService` legality, cap, roster, pick and deadline authority as player trades. Use a matched seeded control before interpreting volume changes as league ecology.

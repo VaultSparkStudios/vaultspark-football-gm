@@ -1,0 +1,325 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+  "status": "passed",
+  "errors": [],
+  "startedAt": "2026-10-01T01:05:13.616Z",
+  "fixture": "Actual static artifact and its CSP; real Create League action with completed worker recovery-capture response delivery held, then released once. No CSS, rendered-state or snapshot substitution.",
+  "beforeReceipt": "reports/s112-disabled-primary-before.json",
+  "canonicalCaptureCountUnchanged": 222,
+  "limitations": [
+    "Local browser worker I/O fixture; not a hosted latency sample.",
+    "Full-page images include both controls across scroll positions; they are not a single viewport.",
+    "Community Stats is unavailable on the local static-only fixture, which has no backend API; this proof covers setup controls."
+  ],
+  "scenarios": [
+    {
+      "name": "desktop-dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "status": "passed",
+      "errors": [],
+      "csp": {
+        "present": true,
+        "sha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+        "scriptInlineRestricted": true,
+        "styleElementsSelfOnly": true,
+        "styleAttributesInlineAllowed": true,
+        "source": "actual artifact _headers served with navigation response"
+      },
+      "held": {
+        "responses": 1,
+        "pendingMarker": true,
+        "controls": [
+          {
+            "id": "instantStartBtn",
+            "text": "▶ Start Your Franchise",
+            "disabled": true,
+            "color": "rgb(205, 216, 211)",
+            "backgroundColor": "rgba(9, 15, 17, 0.62)",
+            "opacity": "0.72"
+          },
+          {
+            "id": "createLeagueBtn",
+            "text": "Create League",
+            "disabled": true,
+            "color": "rgb(205, 216, 211)",
+            "backgroundColor": "rgba(9, 15, 17, 0.62)",
+            "opacity": "0.72"
+          }
+        ]
+      },
+      "restoredIdentity": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032
+      },
+      "released": {
+        "gameReady": true,
+        "setupReady": "Ready | client 9008ms | api 0ms | saves deferred",
+        "startEnabled": true,
+        "createEnabled": true
+      }
+    },
+    {
+      "name": "desktop-light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "status": "passed",
+      "errors": [],
+      "csp": {
+        "present": true,
+        "sha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+        "scriptInlineRestricted": true,
+        "styleElementsSelfOnly": true,
+        "styleAttributesInlineAllowed": true,
+        "source": "actual artifact _headers served with navigation response"
+      },
+      "held": {
+        "responses": 1,
+        "pendingMarker": true,
+        "controls": [
+          {
+            "id": "instantStartBtn",
+            "text": "▶ Start Your Franchise",
+            "disabled": true,
+            "color": "rgb(51, 69, 77)",
+            "backgroundColor": "rgb(231, 240, 234)",
+            "opacity": "0.72"
+          },
+          {
+            "id": "createLeagueBtn",
+            "text": "Create League",
+            "disabled": true,
+            "color": "rgb(51, 69, 77)",
+            "backgroundColor": "rgb(231, 240, 234)",
+            "opacity": "0.72"
+          }
+        ]
+      },
+      "restoredIdentity": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032
+      },
+      "released": {
+        "gameReady": true,
+        "setupReady": "Ready | client 8614ms | api 13ms | saves deferred",
+        "startEnabled": true,
+        "createEnabled": true
+      }
+    },
+    {
+      "name": "mobile-dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "status": "passed",
+      "errors": [],
+      "csp": {
+        "present": true,
+        "sha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+        "scriptInlineRestricted": true,
+        "styleElementsSelfOnly": true,
+        "styleAttributesInlineAllowed": true,
+        "source": "actual artifact _headers served with navigation response"
+      },
+      "held": {
+        "responses": 1,
+        "pendingMarker": true,
+        "controls": [
+          {
+            "id": "instantStartBtn",
+            "text": "▶ Start Your Franchise",
+            "disabled": true,
+            "color": "rgb(205, 216, 211)",
+            "backgroundColor": "rgba(9, 15, 17, 0.62)",
+            "opacity": "0.72"
+          },
+          {
+            "id": "createLeagueBtn",
+            "text": "Create League",
+            "disabled": true,
+            "color": "rgb(205, 216, 211)",
+            "backgroundColor": "rgba(9, 15, 17, 0.62)",
+            "opacity": "0.72"
+          }
+        ]
+      },
+      "restoredIdentity": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032
+      },
+      "released": {
+        "gameReady": true,
+        "setupReady": "Ready | client 9407ms | api 7ms | saves deferred",
+        "startEnabled": true,
+        "createEnabled": true
+      }
+    },
+    {
+      "name": "mobile-light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "status": "passed",
+      "errors": [],
+      "csp": {
+        "present": true,
+        "sha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+        "scriptInlineRestricted": true,
+        "styleElementsSelfOnly": true,
+        "styleAttributesInlineAllowed": true,
+        "source": "actual artifact _headers served with navigation response"
+      },
+      "held": {
+        "responses": 1,
+        "pendingMarker": true,
+        "controls": [
+          {
+            "id": "instantStartBtn",
+            "text": "▶ Start Your Franchise",
+            "disabled": true,
+            "color": "rgb(51, 69, 77)",
+            "backgroundColor": "rgb(231, 240, 234)",
+            "opacity": "0.72"
+          },
+          {
+            "id": "createLeagueBtn",
+            "text": "Create League",
+            "disabled": true,
+            "color": "rgb(51, 69, 77)",
+            "backgroundColor": "rgb(231, 240, 234)",
+            "opacity": "0.72"
+          }
+        ]
+      },
+      "restoredIdentity": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032
+      },
+      "released": {
+        "gameReady": true,
+        "setupReady": "Ready | client 7199ms | api 4ms | saves deferred",
+        "startEnabled": true,
+        "createEnabled": true
+      }
+    }
+  ],
+  "captures": [
+    {
+      "file": "reports/s112-disabled-primary-after/desktop-dark.png",
+      "sha256": "dc2718cac1451e7f0fa9b2788bc426fdd5f51d849c7d84d9e798248b60da9e28",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "Create League awaiting real worker checkpoint response; Start and Create disabled",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T01:07:50.1898511Z",
+      "reviewedSha256": "dc2718cac1451e7f0fa9b2788bc426fdd5f51d849c7d84d9e798248b60da9e28",
+      "observation": "Disabled Start Your Franchise and Create League labels are visibly legible in muted theme ink; no white-on-pale text remains. Both controls fit the captured layout."
+    },
+    {
+      "file": "reports/s112-disabled-primary-after/desktop-light.png",
+      "sha256": "8f66c0fb8e90c6ad984b073b531336ee73c2f4a68dccfdd210f38bb5efbcbc1e",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "Create League awaiting real worker checkpoint response; Start and Create disabled",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T01:07:50.2064140Z",
+      "reviewedSha256": "8f66c0fb8e90c6ad984b073b531336ee73c2f4a68dccfdd210f38bb5efbcbc1e",
+      "observation": "Disabled Start Your Franchise and Create League labels are visibly legible in muted theme ink; no white-on-pale text remains. Both controls fit the captured layout."
+    },
+    {
+      "file": "reports/s112-disabled-primary-after/mobile-dark.png",
+      "sha256": "500e1857c7fc9dff7927b2ed5fe7b736bb356352e44f436bc2c5f014044c0630",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "Create League awaiting real worker checkpoint response; Start and Create disabled",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T01:07:50.2098341Z",
+      "reviewedSha256": "500e1857c7fc9dff7927b2ed5fe7b736bb356352e44f436bc2c5f014044c0630",
+      "observation": "Disabled Start Your Franchise and Create League labels are visibly legible in muted theme ink; no white-on-pale text remains. Both controls fit the captured layout."
+    },
+    {
+      "file": "reports/s112-disabled-primary-after/mobile-light.png",
+      "sha256": "5fd55cd396c7fdfcc4532fc6a5ce1b7b70414d8cf993c5e3b47744bf0b4b8743",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "Create League awaiting real worker checkpoint response; Start and Create disabled",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T01:07:50.2125876Z",
+      "reviewedSha256": "5fd55cd396c7fdfcc4532fc6a5ce1b7b70414d8cf993c5e3b47744bf0b4b8743",
+      "observation": "Disabled Start Your Franchise and Create League labels are visibly legible in muted theme ink; no white-on-pale text remains. Both controls fit the captured layout."
+    }
+  ],
+  "health": {
+    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+    "styleAsset": "styles.98aed5d077.css"
+  },
+  "finishedAt": "2026-10-01T01:07:08.145Z",
+  "reviewCounts": {
+    "fresh": 4,
+    "inherited": 0,
+    "failed": 0
+  },
+  "preliminaryAttempt": {
+    "cause": "Probe initially rejected any unsafe-inline token, including the intentionally permitted style-src-attr. Corrected to verify script restriction and style-src-elem self-only.",
+    "affectedProductState": false,
+    "rawEvidence": "output/playwright/s112-disabled-primary-after-be71869/attempt-1-csp-assertion-failure.json",
+    "status": "failed-probe-assertion"
+  }
+}

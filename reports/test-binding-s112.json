@@ -1,0 +1,18 @@
+{
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "testSurfaceDigest": "59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef",
+  "runStartedAt": "2026-10-01T00:43:16.743Z",
+  "wrapperPid": 55780,
+  "command": "node scripts/run-test-shard.mjs all",
+  "status": "passed",
+  "basis": "Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
+  "finishedAt": "2026-10-01T02:25:52.193Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "testSurfaceUnchanged": true,
+  "nativeReceiptValid": true,
+  "nativeReceiptFresh": true,
+  "passed": 1702,
+  "total": 1702
+}

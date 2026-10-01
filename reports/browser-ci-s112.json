@@ -1,42 +1,43 @@
 {
   "schemaVersion": "1.0",
   "kind": "browser-ci-job-log-receipt",
-  "observedAt": "2026-09-30T17:23:46Z",
+  "observedAt": "2026-10-01T01:08:23.137Z",
   "repository": "VaultSparkStudios/vaultspark-football-gm",
-  "sourceRevision": "88a5e006bf0582c8dcba4ddfd84e9516f688de6d",
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "acceptanceScope": "Completed CI and browser-test evidence for this exact candidate. Independent canonical local tests, pixel review, staging and production acceptance remain separate.",
   "run": {
-    "id": 36747125169,
-    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36747125169",
+    "id": 36796745264,
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264",
     "status": "completed",
     "conclusion": "success",
-    "startedAt": "2026-09-30T16:50:25Z",
-    "updatedAt": "2026-09-30T17:02:36Z"
+    "startedAt": "2026-10-01T00:33:10Z",
+    "updatedAt": "2026-10-01T00:52:04Z"
   },
   "job": {
-    "id": 109996020266,
+    "id": 110161816871,
     "name": "browser-gates",
-    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36747125169/job/109996020266",
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264/job/110161816871",
     "status": "completed",
     "conclusion": "success",
-    "startedAt": "2026-09-30T16:50:28Z",
-    "completedAt": "2026-09-30T16:58:08Z"
+    "startedAt": "2026-10-01T00:33:12Z",
+    "completedAt": "2026-10-01T00:42:09Z"
   },
   "step": {
-    "number": 10,
-    "name": "Run UI tests",
-    "status": "completed",
+    "completedAt": "2026-10-01T00:42:06Z",
     "conclusion": "success",
-    "startedAt": "2026-09-30T16:51:39Z",
-    "completedAt": "2026-09-30T16:58:05Z"
+    "name": "Run UI tests",
+    "number": 10,
+    "startedAt": "2026-10-01T00:34:04Z",
+    "status": "completed"
   },
   "browserTests": {
-    "total": 71,
-    "passed": 70,
+    "total": 90,
+    "passed": 89,
     "skipped": 1,
     "failed": 0,
     "workers": 1,
-    "reportedDuration": "6.4m",
-    "failedCountBasis": "Successful job and complete accounting: 71 total = 70 passed + 1 skipped.",
+    "reportedDuration": "8.0m",
+    "failedCountBasis": "Successful job and complete accounting: 90 total = 89 passed + 1 skipped.",
     "skippedControl": {
       "name": "negative control: the same probe against the in-page runtime",
       "path": "tests-ui/worker-runtime.spec.js",
@@ -47,17 +48,34 @@
     }
   },
   "evidence": {
-    "basis": "GitHub Actions job logs retrieved with gh run view --job --log and metadata retrieved with gh run view --json.",
-    "logCommand": "gh run view 36747125169 --repo VaultSparkStudios/vaultspark-football-gm --job 109996020266 --log",
+    "basis": "GitHub Actions completed job logs retrieved with gh api actions/jobs/{job_id}/logs; completed run/job metadata retrieved with gh run view --json.",
+    "logCommand": "gh api repos/VaultSparkStudios/vaultspark-football-gm/actions/jobs/110161816871/logs",
     "summaryLines": [
-      { "at": "2026-09-30T16:51:40.8245922Z", "text": "Running 71 tests using 1 worker" },
-      { "at": "2026-09-30T16:58:05.6646320Z", "text": "1 skipped" },
-      { "at": "2026-09-30T16:58:05.6646835Z", "text": "70 passed (6.4m)" }
+      {
+        "at": "2026-10-01T00:34:05.6894593Z",
+        "text": "Running 90 tests using 1 worker"
+      },
+      {
+        "at": "2026-10-01T00:42:06.6947715Z",
+        "text": "1 skipped"
+      },
+      {
+        "at": "2026-10-01T00:42:06.6948034Z",
+        "text": "89 passed (8.0m)"
+      }
     ],
     "jobLogsRetrievable": true,
-    "artifactsApi": "https://api.github.com/repos/VaultSparkStudios/vaultspark-football-gm/actions/runs/36747125169/artifacts",
+    "artifactsApi": "https://api.github.com/repos/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264/artifacts",
     "downloadableArtifacts": 0,
-    "artifactsApiResult": { "total_count": 0, "artifacts": [] },
+    "artifactsApiResult": {
+      "total_count": 0,
+      "artifacts": []
+    },
     "receiptLimit": "This is a transcription of observed CI metadata and job-log counts, not a downloaded Playwright JSON report or an uploaded CI artifact."
+  },
+  "history": {
+    "previousSourceReceipt": "reports/browser-ci-s112-6608db3.json",
+    "previousSourceReceiptSha256": "8d5eda49df24575050d35ca1a51c2e665d2aa70f0715156a2af6631bf0a2c14e",
+    "earliestPreservedReceipt": "reports/browser-ci-s112-88a5e006.json"
   }
 }

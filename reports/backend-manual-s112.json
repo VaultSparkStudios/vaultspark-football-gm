@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "backend-manual-deployment",
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "backendRunId": 36796745293,
+  "at": "2026-10-01T01:19:49.821Z",
+  "status": "passed",
+  "service": "community-stats",
+  "image": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:be71869a428e6224330d72cbba76df436ee31938",
+  "exactHealth": true,
+  "externalHealth": true,
+  "postgresAndCaddyPreserved": true,
+  "opsCopied": false,
+  "deployAttempts": 1,
+  "backendBuildVerified": true,
+  "markers": [
+    "PREVIOUS_APP_IMAGE:sha256:5574fbac8dbe009ee5e70798fc4319b834d3c535786c3f48f7b4e46414a3e7fb",
+    "BACKEND_HEALTH_EXACT:be71869a428e6224330d72cbba76df436ee31938",
+    "POSTGRES_AND_CADDY_PRESERVED"
+  ],
+  "externalHealthSourceRevision": "be71869a428e6224330d72cbba76df436ee31938"
+}

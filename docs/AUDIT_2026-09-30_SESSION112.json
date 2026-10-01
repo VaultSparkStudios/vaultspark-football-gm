@@ -5,12 +5,12 @@
   "agent": "codex",
   "project": "franchise-architect-football",
   "displayName": "Franchise Architect: Football",
-  "status": "implemented-pending-release-verification",
+  "status": "completed-verified",
   "summary": {
     "source": "Fresh S111 recovery, three bounded in-process source reviews, direct in-memory fault reproductions and live browser pixels.",
     "itemsRanked": 10,
     "combinedPriority": 206.8,
-    "verificationNote": "S111 recovery remains separately verified at1588/1588 and Doctor blockingFailing0. All ten audit implementations and five second-order candidates now have focused implementation proof. The new navigation recovery passes18/18 browser cases on5c60a5bd; worker capture/restore has74 focused tests and substantially lower measured main-thread stalls. Final immutable canonical suite, CI,222-image review, actual staging/production continuity and closeout remain pending. No S112 production promotion, public-launch approval or cohort result is inferred."
+    "verificationNote": "Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt. Actual stable-staging continuity: Real stable staging: desktop dark1440 and mobile light390 preserve explicit CHI/seed20260306/play/year2024 as fa-20260306-CHI across creation, full-page navigation, reload and Continue. Exactly one real advance moves week1→2 and survives reload; explicit named manual saves resume in a new tab at year2024/week2. No storage/request/worker behavior is mocked. Returning browser uses this candidate service worker; no older-release upgrade or full theme matrix is claimed. (reports/staging-browser-s112-final.json). Actual production continuity: Actual desktop dark and mobile light production flows preserve CHI, seed20260306 and Play mode through creation, reload and Continue. Exactly one W1-to-W2 advance per viewport survives reload; an explicitly named save restores in a new tab. Active service worker, no browser diagnostic failures, eight freshly inspected portable images; no analytics consent or synthetic state. (reports/production-browser-s112-final.json). Checkpoint capture/flush: Observed immutable worker capture/flush: drive fresh232.3ms and one completed season1066.5ms with maximum flush main-thread task51ms; play fresh158.9ms and one completed season1362ms with maximum task55ms. Fresh flushes had no observed tasks at or above50ms. Each measured flush sent one capture request and no bulk snapshot export/import/raw payload. Compared with the preserved f34e same-scenario baseline, observed season flush maximum tasks fell from735/892ms to51/55ms. These are single warm local samples with observer overhead, not isolated restore timing, mature-career, field-cohort, cost-neutral or universal-bound evidence. (reports/client-checkpoint-performance-s112.json). Isolated restore timing was not measured; worker restore correctness and absence of bulk snapshot transport are separate functional evidence. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks. Earlier interrupted and provisional runs remain historical evidence below, not final-source acceptance."
   },
   "profile": {
     "audience": "public-unlaunched",
@@ -25,7 +25,7 @@
     "sessionEngagement": "8/10",
     "retention": "unmeasured; affordances 7/10",
     "soulFidelity": "unscored: public summary points to private creative authority",
-    "evidence": "The original ten items and four second-order outcomes are implemented. Actual BCF staging then exposed lost franchise identity after creation and saved-slot navigation; reports/staging-browser-s112.json preserves that failure. The fifth outcome now preserves per-tab identity/progress, rejects changed durable references before replacement, and makes failed checkpoint retry independent of command replay. An unchanged save recalculates350 derived values on load, so exact frozen saved bytes are checked before reconstruction. Focused recovery proof:48 helper,15 worker durability,11 worker parity/fallback,7 HTTP and18 browser tests. One-season checkpoints now keep JSON/hash/codec work in the worker: longest main-thread tasks58/71ms versus735/892ms, with similar total checkpoint wall time. These are single local warm samples, not mature-career or retention evidence. Final release acceptance remains pending; the interrupted BCF canonical1199-test run and earlier failed/readiness checks remain historical, not green acceptance."
+    "evidence": "Engineering and rendered-browser evidence, not observed player engagement. All ten audit items and five second-order outcomes are verified for source be71869a428e6224330d72cbba76df436ee31938. Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt. Actual stable-staging continuity: Real stable staging: desktop dark1440 and mobile light390 preserve explicit CHI/seed20260306/play/year2024 as fa-20260306-CHI across creation, full-page navigation, reload and Continue. Exactly one real advance moves week1→2 and survives reload; explicit named manual saves resume in a new tab at year2024/week2. No storage/request/worker behavior is mocked. Returning browser uses this candidate service worker; no older-release upgrade or full theme matrix is claimed. (reports/staging-browser-s112-final.json). Actual production continuity: Actual desktop dark and mobile light production flows preserve CHI, seed20260306 and Play mode through creation, reload and Continue. Exactly one W1-to-W2 advance per viewport survives reload; an explicitly named save restores in a new tab. Active service worker, no browser diagnostic failures, eight freshly inspected portable images; no analytics consent or synthetic state. (reports/production-browser-s112-final.json). Checkpoint capture/flush: Observed immutable worker capture/flush: drive fresh232.3ms and one completed season1066.5ms with maximum flush main-thread task51ms; play fresh158.9ms and one completed season1362ms with maximum task55ms. Fresh flushes had no observed tasks at or above50ms. Each measured flush sent one capture request and no bulk snapshot export/import/raw payload. Compared with the preserved f34e same-scenario baseline, observed season flush maximum tasks fell from735/892ms to51/55ms. These are single warm local samples with observer overhead, not isolated restore timing, mature-career, field-cohort, cost-neutral or universal-bound evidence. (reports/client-checkpoint-performance-s112.json). Isolated restore timing was not measured; worker restore correctness and absence of bulk snapshot transport are separate functional evidence. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks."
   },
   "axisReview": {
     "feature depth": [
@@ -95,22 +95,26 @@
     {
       "slug": "advisor-checkpoint-and-replay-authority",
       "status": "implemented",
-      "trigger": "Honest three-state scoring still needs to reject stale or repeated weekly receipts; included in advisor L3."
+      "trigger": "Honest three-state scoring still needs to reject stale or repeated weekly receipts; included in advisor L3.",
+      "finalAcceptance": "Advisor20/20 focused controls cover wrong franchise/checkpoint/team, stale or repeated decision receipts, reload and distinct unscored outcomes. Final hosted UI suite89passed+1skip provides additional candidate-bound regression coverage; final canonical local acceptance passed 1702/1702."
     },
     {
       "slug": "csp-enforced-artifact-browser-proof",
       "status": "implemented",
-      "trigger": "Source and local screenshots passed while live runtime styles were rejected; included in visual parity L3."
+      "trigger": "Source and local screenshots passed while live runtime styles were rejected; included in visual parity L3.",
+      "finalAcceptance": "The responsive server serves actual generated static/_headers and rejects element-style policy violations; immutable source/artifact binding remains required. Real stable staging reports exact source/artifact and strict CSP. Actual pixel review remains a separate gate from327 automated responsive and40 public captures. Final222-image review and exact live provenance are accepted; four supplemental disabled-state captures verify the corrected CSS in actual held worker flows."
     },
     {
       "slug": "readable-saves-after-write-degradation",
       "status": "implemented",
-      "trigger": "A failed IDB write should not make all prior IDB saves disappear; included in durability L3."
+      "trigger": "A failed IDB write should not make all prior IDB saves disappear; included in durability L3.",
+      "finalAcceptance": "Transaction-commit and write-degradation controls retain previously committed IndexedDB records after a failed write. Per-slot/versioned publication and worker acknowledgments are covered by the focused60/60 adapter-worker integration; failed overwrites/deletes retain the previous readable save."
     },
     {
       "slug": "atomic-visual-capture-ledger-publication",
       "status": "implemented",
-      "trigger": "S111 required a repair after capture hashes were omitted from the append-only ledger. The receipt writer now publishes ledger entries immediately after its immutable full-proof receipt, while rejecting provisional or incomplete proof."
+      "trigger": "S111 required a repair after capture hashes were omitted from the append-only ledger. The receipt writer now publishes ledger entries immediately after its immutable full-proof receipt, while rejecting provisional or incomplete proof.",
+      "finalAcceptance": "Existing canonical writer now publishes capture ledger entries with the immutable receipt, and the prepared recovery24 extension uses the same ledger functions after actual hash-bound review. Source/artifact/hash/provisional gates and atomic LATEST-last publication remain enforced. Final222 publication and complete retained-PNG ledger verification passed."
     },
     {
       "slug": "browser-session-navigation-recovery",
@@ -126,44 +130,65 @@
       "implementation": "Per-tab compressed checkpoint recovery after successful local mutations, loading/unsaved states, checkpoint-only retry and guarded navigation. A small integrity-bound reference may point only to an explicitly selected or saved existing slot when a full checkpoint exceeds sessionStorage quota. Save responses expose savedSnapshotIntegrity; reference loads submit expectedSavedSnapshotIntegrity and verify the exact frozen saved snapshot before replacing either the local or server runtime. A separate live-state fingerprint excludes only league.observability when deciding whether the current session still matches that explicit save. Changed or missing references fail closed. Manual saves and exports remain the authority for keeping a franchise after tab close. Snapshot serialization, hashing and codec capture/restore run inside the worker; only compact encoded checkpoints and identity receipts cross its port. Capture/restore share the existing request queue and storage acknowledgment barrier. Setup locks runtime selection while a command/checkpoint is pending, and a new selection or runtime switch cancels old deferred navigation.",
       "diagnosis": "Reloading an unchanged saved snapshot legitimately recalculates 350 derived leaf values, including weekly plans, opponent data and pressure. Comparing raw saved bytes with the reconstructed runtime therefore rejected an unchanged save. The fix binds integrity to the frozen saved snapshot before runtime replacement instead of exempting gameplay fields from integrity checks. Request diagnostics are excluded only from the separate live-state fingerprint.",
       "focusedValidation": {
-        "status": "passed-final-release-acceptance-pending",
-        "sourceRevision": "local-worktree",
-        "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3",
-        "helper": {
-          "passed": 48,
-          "total": 48
+        "status": "final-source-verified",
+        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+        "suite": "reports/test-suite-s112.json",
+        "browser": "reports/browser-ci-s112.json",
+        "stagingContinuity": {
+          "status": "verified",
+          "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+          "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+          "receipt": "reports/staging-browser-s112-final.json",
+          "receiptSha256": "6bc6b3bb83f7c33c5173c0ad9d0d2ef816b7da609d73cf266eb47183774cceb7",
+          "summary": "Real stable staging: desktop dark1440 and mobile light390 preserve explicit CHI/seed20260306/play/year2024 as fa-20260306-CHI across creation, full-page navigation, reload and Continue. Exactly one real advance moves week1→2 and survives reload; explicit named manual saves resume in a new tab at year2024/week2. No storage/request/worker behavior is mocked. Returning browser uses this candidate service worker; no older-release upgrade or full theme matrix is claimed.",
+          "observedOutcomes": {
+            "explicitTeamNavigation": {
+              "status": "passed",
+              "evidence": "desktop: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI; mobile: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI"
+            },
+            "selectedSaveNavigation": {
+              "status": "passed",
+              "evidence": "desktop: explicit slot s112-proof-desktop resumed in a new tab as fa-20260306-CHI, year 2024, week 2; mobile: explicit slot s112-proof-mobile resumed in a new tab as fa-20260306-CHI, year 2024, week 2"
+            },
+            "progressReload": {
+              "status": "passed",
+              "evidence": "desktop: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2; mobile: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2"
+            }
+          },
+          "limitations": [
+            "No runtime preference is forced and no request, storage, worker or service-worker behavior is mocked.",
+            "The returning browser uses this candidate's installed service worker; this does not simulate an older-release upgrade.",
+            "Desktop dark and mobile light are sampled; this is not the full visual matrix.",
+            "One week is advanced in each isolated local browser franchise; no analytics consent is granted, account created or share transmitted."
+          ]
         },
-        "workerDurability": {
-          "passed": 15,
-          "total": 15
+        "productionContinuity": {
+          "status": "verified",
+          "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+          "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+          "receipt": "reports/production-browser-s112-final.json",
+          "receiptSha256": "71fc3a9eb2d358a9044fa93749063853ab811889b36918babc633c552fdb23a6",
+          "summary": "Actual desktop dark and mobile light production flows preserve CHI, seed20260306 and Play mode through creation, reload and Continue. Exactly one W1-to-W2 advance per viewport survives reload; an explicitly named save restores in a new tab. Active service worker, no browser diagnostic failures, eight freshly inspected portable images; no analytics consent or synthetic state."
         },
-        "workerParityAndFallback": {
-          "passed": 11,
-          "total": 11
-        },
-        "fullServerFile": {
-          "passed": 7,
-          "total": 7,
-          "durationSeconds": 30.85
-        },
-        "browserRecovery": {
-          "passed": 18,
-          "total": 18,
-          "durationMinutes": 7.1,
-          "status": "passed",
-          "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3"
-        },
-        "performance": {
-          "status": "measured",
-          "report": "output/playwright/client-checkpoint-performance-s112-5c60a5bd.json",
-          "measuredAt": "2026-09-30T22:37:10.904Z",
-          "samples": [
+        "checkpointPerformance": {
+          "status": "verified",
+          "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+          "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+          "receipt": "reports/client-checkpoint-performance-s112.json",
+          "receiptSha256": "3643eb8dcf67dbf6fb0db2408cc42fb17e433d5355dcd9e5cc91ed580acbad17",
+          "baselineReceipt": ".cache/s112-checkpoint-performance-f34e-before.json",
+          "baselineReceiptSha256": "9bd18b733cabee8a35df381dce9b3beed98a538d9c256a5c7e6a4ce1cd0b2f2d",
+          "restoreTimingMeasured": false,
+          "summary": "Observed immutable worker capture/flush: drive fresh232.3ms and one completed season1066.5ms with maximum flush main-thread task51ms; play fresh158.9ms and one completed season1362ms with maximum task55ms. Fresh flushes had no observed tasks at or above50ms. Each measured flush sent one capture request and no bulk snapshot export/import/raw payload. Compared with the preserved f34e same-scenario baseline, observed season flush maximum tasks fell from735/892ms to51/55ms. These are single warm local samples with observer overhead, not isolated restore timing, mature-career, field-cohort, cost-neutral or universal-bound evidence.",
+          "observedSamples": [
             {
               "mode": "drive",
               "label": "fresh",
-              "flushMs": 229.30000007152557,
+              "flushMs": 232.29999995231628,
               "maxMainThreadTaskMs": 0,
-              "sumMainThreadTasksMs": 0,
+              "snapshotJsonBytes": 5290431,
+              "checkpointEnvelopeBytes": 629227,
               "checkpointWire": {
                 "captureRequests": 1,
                 "restoreRequests": 0,
@@ -171,14 +196,16 @@
                 "snapshotImportRequests": 0,
                 "rawSnapshotRequests": 0,
                 "rawSnapshotResponses": 0
-              }
+              },
+              "flushOk": true
             },
             {
               "mode": "drive",
               "label": "one-completed-season",
-              "flushMs": 1432.3999999761581,
-              "maxMainThreadTaskMs": 58,
-              "sumMainThreadTasksMs": 58,
+              "flushMs": 1066.5,
+              "maxMainThreadTaskMs": 51,
+              "snapshotJsonBytes": 30160998,
+              "checkpointEnvelopeBytes": 3525987,
               "checkpointWire": {
                 "captureRequests": 1,
                 "restoreRequests": 0,
@@ -186,14 +213,16 @@
                 "snapshotImportRequests": 0,
                 "rawSnapshotRequests": 0,
                 "rawSnapshotResponses": 0
-              }
+              },
+              "flushOk": true
             },
             {
               "mode": "play",
               "label": "fresh",
-              "flushMs": 266.40000009536743,
+              "flushMs": 158.89999997615814,
               "maxMainThreadTaskMs": 0,
-              "sumMainThreadTasksMs": 0,
+              "snapshotJsonBytes": 5290431,
+              "checkpointEnvelopeBytes": 629227,
               "checkpointWire": {
                 "captureRequests": 1,
                 "restoreRequests": 0,
@@ -201,14 +230,16 @@
                 "snapshotImportRequests": 0,
                 "rawSnapshotRequests": 0,
                 "rawSnapshotResponses": 0
-              }
+              },
+              "flushOk": true
             },
             {
               "mode": "play",
               "label": "one-completed-season",
-              "flushMs": 1683.7999999523163,
-              "maxMainThreadTaskMs": 71,
-              "sumMainThreadTasksMs": 71,
+              "flushMs": 1362,
+              "maxMainThreadTaskMs": 55,
+              "snapshotJsonBytes": 34594874,
+              "checkpointEnvelopeBytes": 3888907,
               "checkpointWire": {
                 "captureRequests": 1,
                 "restoreRequests": 0,
@@ -216,46 +247,52 @@
                 "snapshotImportRequests": 0,
                 "rawSnapshotRequests": 0,
                 "rawSnapshotResponses": 0
-              }
+              },
+              "flushOk": true
             }
           ],
-          "finding": "One completed season: maximum checkpoint main-thread tasks fell from735/892ms to58/71ms for Drive/Play. Flush wall times were1432/1684ms versus1368/1614ms; total latency did not improve. Fresh checkpoints had no observed tasks at or above50ms. Single warm local samples, not a benchmark distribution or mature-career claim. Isolated restore timing was not measured."
+          "limitations": [
+            "Single warm checkpoint samples on this machine, not a benchmark distribution or cold module-load measurement.",
+            "No mature or 100-year franchise claim.",
+            "Size and task observers add measurement overhead.",
+            "The 90-second season limit closes only its owned browser context if reached."
+          ]
         },
-        "review": "Independent review found a runtime-selector race during setup; selector locking, guarded changes and deferred-intent clearing fix it. Both worker and in-page held-checkpoint browser cases verify attempted runtime changes leave the originating client authority intact.",
-        "intermediateBrowserRun": {
-          "artifactDigest": "4c25afd4c1c3c2957706008cbb3e58951a25c752b5cd69c2016e4dfa1c64320c",
-          "passed": 3,
-          "failed": 1,
-          "unrun": 14,
-          "reason": "Warning assertion ran before creation settled; failure image showed the correct warning. The test now waits for the existing bounded creation terminal state before its unchanged warning assertions."
-        },
-        "acceptanceLimit": "Focused implementation proof is complete. Immutable canonical suite, final CI, source-bound222-image review, stable-staging continuity, production/backend promotion and closeout remain pending."
-      },
-      "acceptance": "Focused implementation proof is complete. Immutable canonical suite, final CI, source-bound222-image review, stable-staging continuity, production/backend promotion and closeout remain pending.",
-      "validationBoundary": {
-        "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
-        "canonicalSuiteStatus": "interrupted",
-        "completedTests": 1199,
-        "completedShards": [
-          {
-            "name": "core",
-            "passed": 290,
-            "total": 290
-          },
-          {
-            "name": "runtime",
-            "passed": 909,
-            "total": 909
+        "visual": {
+          "status": "verified",
+          "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+          "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+          "reviewedImages": 222,
+          "gameImages": 182,
+          "publicImages": 40,
+          "beforeImages": 100,
+          "afterImages": 222,
+          "responsiveCaptures": 327,
+          "publicCaptures": 40,
+          "recoveryCaptures": 24,
+          "receipt": "docs/visual-qa/LATEST.json",
+          "hashCoverage": "complete",
+          "freshlyInspectedImages": 126,
+          "hashInheritedImages": 96,
+          "hashInheritanceReceipt": "reports/visual-review-s112.json",
+          "requiredFinalScope": {
+            "reviewedImages": 222,
+            "gameImages": 182,
+            "publicImages": 40,
+            "responsiveCaptures": 327,
+            "recoveryCaptures": 24
           }
-        ],
-        "unfinishedShard": "sim-contract",
-        "partialProgress": ".cache/s112-tests-bcf-interrupted-progress.json",
-        "sourceBinding": ".cache/s112-tests-bcf-interrupted-binding.json",
-        "processDisposition": "Only owned wrapper, runner and test children were stopped; partial evidence was preserved. This is not a full-suite green receipt.",
-        "ciRun": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36758642906",
-        "ciAttempt": 2,
-        "ciConclusion": "success",
-        "productionPromoted": false
+        }
+      },
+      "acceptance": "Per-tab compressed worker checkpoints preserve successful local mutations across navigation/reload; explicit-save fallback verifies raw saved snapshot integrity before runtime replacement, and dirty/failure UI avoids replaying successful mutations. Focused helper48+worker15+parity11 and real HTTP7 checks passed without production body/rate-limit relaxation. Final hosted CI89passed+1skip includes18 recovery browser cases. Real stable staging proves explicitCHI creation, one-week reload and named-save/new-tab continuity. Actual final capture/flush measurements show51/55ms maximum season tasks versus735/892ms baseline; isolated restore timing is unmeasured. Production continuity passed both real browser scenarios with eight freshly reviewed images; the complete canonical suite passed 1702/1702, and final222-image publication passed. Ordered closeout consumes these accepted receipts.",
+      "validationBoundary": {
+        "status": "final-source-verified",
+        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+        "canonicalSuiteStatus": "passed",
+        "canonicalReceipt": "reports/test-suite-s112.json",
+        "productionPromoted": true,
+        "publicLaunchReady": false
       },
       "provisionalValidationHistory": {
         "helper": {
@@ -330,6 +367,142 @@
           "limit": "The f34e 18/18 browser result remains functional evidence and a negative performance baseline, not final acceptance or a neutral-cost claim. The current source is staged but uncommitted; corrected-source canonical testing has not started."
         },
         "acceptanceLimit": "Focused checks prove recovery functionality on f34e, but the measured performance gap keeps the fifth implementation and final acceptance in progress. Worker correction and measured recheck, source commit, canonical suite, exact-source CI, final source-bound review of 222 images, actual staging, production publication and closeout remain pending."
+      },
+      "finalAcceptance": "Per-tab compressed worker checkpoints preserve successful local mutations across navigation/reload; explicit-save fallback verifies raw saved snapshot integrity before runtime replacement, and dirty/failure UI avoids replaying successful mutations. Focused helper48+worker15+parity11 and real HTTP7 checks passed without production body/rate-limit relaxation. Final hosted CI89passed+1skip includes18 recovery browser cases. Real stable staging proves explicitCHI creation, one-week reload and named-save/new-tab continuity. Actual final capture/flush measurements show51/55ms maximum season tasks versus735/892ms baseline; isolated restore timing is unmeasured. Production continuity passed both real browser scenarios with eight freshly reviewed images; the complete canonical suite passed 1702/1702, and final222-image publication passed. Ordered closeout consumes these accepted receipts.",
+      "preFinalValidation": {
+        "focusedValidation": {
+          "status": "passed-final-release-acceptance-pending",
+          "sourceRevision": "local-worktree",
+          "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3",
+          "helper": {
+            "passed": 48,
+            "total": 48
+          },
+          "workerDurability": {
+            "passed": 15,
+            "total": 15
+          },
+          "workerParityAndFallback": {
+            "passed": 11,
+            "total": 11
+          },
+          "fullServerFile": {
+            "passed": 7,
+            "total": 7,
+            "durationSeconds": 30.85
+          },
+          "browserRecovery": {
+            "passed": 18,
+            "total": 18,
+            "durationMinutes": 7.1,
+            "status": "passed",
+            "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3"
+          },
+          "performance": {
+            "status": "measured",
+            "report": "output/playwright/client-checkpoint-performance-s112-5c60a5bd.json",
+            "measuredAt": "2026-09-30T22:37:10.904Z",
+            "samples": [
+              {
+                "mode": "drive",
+                "label": "fresh",
+                "flushMs": 229.30000007152557,
+                "maxMainThreadTaskMs": 0,
+                "sumMainThreadTasksMs": 0,
+                "checkpointWire": {
+                  "captureRequests": 1,
+                  "restoreRequests": 0,
+                  "snapshotExportRequests": 0,
+                  "snapshotImportRequests": 0,
+                  "rawSnapshotRequests": 0,
+                  "rawSnapshotResponses": 0
+                }
+              },
+              {
+                "mode": "drive",
+                "label": "one-completed-season",
+                "flushMs": 1432.3999999761581,
+                "maxMainThreadTaskMs": 58,
+                "sumMainThreadTasksMs": 58,
+                "checkpointWire": {
+                  "captureRequests": 1,
+                  "restoreRequests": 0,
+                  "snapshotExportRequests": 0,
+                  "snapshotImportRequests": 0,
+                  "rawSnapshotRequests": 0,
+                  "rawSnapshotResponses": 0
+                }
+              },
+              {
+                "mode": "play",
+                "label": "fresh",
+                "flushMs": 266.40000009536743,
+                "maxMainThreadTaskMs": 0,
+                "sumMainThreadTasksMs": 0,
+                "checkpointWire": {
+                  "captureRequests": 1,
+                  "restoreRequests": 0,
+                  "snapshotExportRequests": 0,
+                  "snapshotImportRequests": 0,
+                  "rawSnapshotRequests": 0,
+                  "rawSnapshotResponses": 0
+                }
+              },
+              {
+                "mode": "play",
+                "label": "one-completed-season",
+                "flushMs": 1683.7999999523163,
+                "maxMainThreadTaskMs": 71,
+                "sumMainThreadTasksMs": 71,
+                "checkpointWire": {
+                  "captureRequests": 1,
+                  "restoreRequests": 0,
+                  "snapshotExportRequests": 0,
+                  "snapshotImportRequests": 0,
+                  "rawSnapshotRequests": 0,
+                  "rawSnapshotResponses": 0
+                }
+              }
+            ],
+            "finding": "One completed season: maximum checkpoint main-thread tasks fell from735/892ms to58/71ms for Drive/Play. Flush wall times were1432/1684ms versus1368/1614ms; total latency did not improve. Fresh checkpoints had no observed tasks at or above50ms. Single warm local samples, not a benchmark distribution or mature-career claim. Isolated restore timing was not measured."
+          },
+          "review": "Independent review found a runtime-selector race during setup; selector locking, guarded changes and deferred-intent clearing fix it. Both worker and in-page held-checkpoint browser cases verify attempted runtime changes leave the originating client authority intact.",
+          "intermediateBrowserRun": {
+            "artifactDigest": "4c25afd4c1c3c2957706008cbb3e58951a25c752b5cd69c2016e4dfa1c64320c",
+            "passed": 3,
+            "failed": 1,
+            "unrun": 14,
+            "reason": "Warning assertion ran before creation settled; failure image showed the correct warning. The test now waits for the existing bounded creation terminal state before its unchanged warning assertions."
+          },
+          "acceptanceLimit": "Focused implementation proof is complete. Immutable canonical suite, final CI, source-bound222-image review, stable-staging continuity, production/backend promotion and closeout remain pending."
+        },
+        "acceptance": "Focused implementation proof is complete. Immutable canonical suite, final CI, source-bound222-image review, stable-staging continuity, production/backend promotion and closeout remain pending.",
+        "validationBoundary": {
+          "sourceRevision": "bcf53841900a38e64786e486d6490e86495c6d15",
+          "canonicalSuiteStatus": "interrupted",
+          "completedTests": 1199,
+          "completedShards": [
+            {
+              "name": "core",
+              "passed": 290,
+              "total": 290
+            },
+            {
+              "name": "runtime",
+              "passed": 909,
+              "total": 909
+            }
+          ],
+          "unfinishedShard": "sim-contract",
+          "partialProgress": ".cache/s112-tests-bcf-interrupted-progress.json",
+          "sourceBinding": ".cache/s112-tests-bcf-interrupted-binding.json",
+          "processDisposition": "Only owned wrapper, runner and test children were stopped; partial evidence was preserved. This is not a full-suite green receipt.",
+          "ciRun": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36758642906",
+          "ciAttempt": 2,
+          "ciConclusion": "success",
+          "productionPromoted": false
+        },
+        "note": "Historical provisional evidence, including the f34e performance gap; superseded only by the final acceptance below."
       }
     }
   ],
@@ -371,7 +544,8 @@
         }
       },
       "rank": 1,
-      "executionEvidence": "4/4 direct engine controls and 11/11 persona, trade-plan and CPU-market neighbors; repeated asset IDs refused without changing legal player-only trades or tolerance constants."
+      "executionEvidence": "4/4 direct engine controls and 11/11 persona, trade-plan and CPU-market neighbors; repeated asset IDs refused without changing legal player-only trades or tolerance constants.",
+      "finalAcceptance": "4/4 direct engine controls and 11/11 persona, trade-plan and CPU-market neighbors; repeated asset IDs refused without changing legal player-only trades or tolerance constants."
     },
     {
       "slug": "worker-durable-storage",
@@ -410,7 +584,8 @@
         }
       },
       "rank": 2,
-      "executionEvidence": "23/23 focused worker, actual-runtime parity/fallback and observability checks. Includes independent-review regressions for held writer/concurrent read, request-owned failure attribution, initialization ordering and continuing after failure."
+      "executionEvidence": "23/23 focused worker, actual-runtime parity/fallback and observability checks. Includes independent-review regressions for held writer/concurrent read, request-owned failure attribution, initialization ordering and continuing after failure.",
+      "finalAcceptance": "23/23 focused worker, actual-runtime parity/fallback and observability checks. Includes independent-review regressions for held writer/concurrent read, request-owned failure attribution, initialization ordering and continuing after failure."
     },
     {
       "slug": "indexeddb-commit-authority",
@@ -449,7 +624,8 @@
         }
       },
       "rank": 3,
-      "executionEvidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Transaction completion, bounded stalled/blocked operations, versioned payload publication, committed readback, and readable prior IDB records after write degradation verified. Independent concurrency and failed-delete reproducers now pass."
+      "executionEvidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Transaction completion, bounded stalled/blocked operations, versioned payload publication, committed readback, and readable prior IDB records after write degradation verified. Independent concurrency and failed-delete reproducers now pass.",
+      "finalAcceptance": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Transaction completion, bounded stalled/blocked operations, versioned payload publication, committed readback, and readable prior IDB records after write degradation verified. Independent concurrency and failed-delete reproducers now pass."
     },
     {
       "slug": "production-csp-style-parity",
@@ -488,7 +664,8 @@
         }
       },
       "rank": 4,
-      "executionEvidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate. Full immutable proof automated gates passed327+40 but actual review of198 receipt images found remaining light contrast defects; corrected before promotion. The added selected-tip check fails the prior artifact at3.605–3.682:1. Focused style/theme/policy/wiring30/30 passed."
+      "executionEvidence": "Six style blocks moved to the shared themed stylesheet; 39/39 neighboring checks passed. Provisional rendered proof: 72 captures, 60 required across three viewports and both themes, zero policy/layout failures. Ordinary mobile Skip and real completed tutorial receipt verified. Immutable full proof remains a release gate. Full immutable proof automated gates passed327+40 but actual review of198 receipt images found remaining light contrast defects; corrected before promotion. The added selected-tip check fails the prior artifact at3.605–3.682:1. Focused style/theme/policy/wiring30/30 passed.",
+      "finalAcceptance": "Six module-injected style blocks moved into the themed stylesheet. Generated element-style policy remains self-only and is exercised by the immutable browser harness and actual staging/production. Selected-tip, inherited light-text and disabled-primary regressions were found by actual pixel review and fixed. Final222 reviewed images pass (126 fresh,96 exact-byte inherited), plus four freshly reviewed real held-I/O disabled Start/Create frames. Rejected before-images remain preserved."
     },
     {
       "slug": "trade-fingerprint-transport",
@@ -527,7 +704,8 @@
         }
       },
       "rank": 5,
-      "executionEvidence": "Real local and HTTP route scenario passed: stale evaluation returns409 without asset/log mutation; current plan succeeds and omitted fingerprint remains compatible."
+      "executionEvidence": "Real local and HTTP route scenario passed: stale evaluation returns409 without asset/log mutation; current plan succeeds and omitted fingerprint remains compatible.",
+      "finalAcceptance": "Real local and HTTP route scenario passed: stale evaluation returns409 without asset/log mutation; current plan succeeds and omitted fingerprint remains compatible."
     },
     {
       "slug": "observed-advisor-outcomes",
@@ -566,7 +744,8 @@
         }
       },
       "rank": 6,
-      "executionEvidence": "20/20 advisor, briefing and source-bound outcome checks, including no observed action, wrong decision occurrence, wrong franchise/checkpoint, replay and reload; unscored copy distinct from agreement/disagreement."
+      "executionEvidence": "20/20 advisor, briefing and source-bound outcome checks, including no observed action, wrong decision occurrence, wrong franchise/checkpoint, replay and reload; unscored copy distinct from agreement/disagreement.",
+      "finalAcceptance": "20/20 advisor, briefing and source-bound outcome checks, including no observed action, wrong decision occurrence, wrong franchise/checkpoint, replay and reload; unscored copy distinct from agreement/disagreement."
     },
     {
       "slug": "preserve-failed-save-overwrite",
@@ -605,7 +784,8 @@
         }
       },
       "rank": 7,
-      "executionEvidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Per-slot serialization preserves newest acknowledged overwrite and prior readable save on payload, metadata or deletion failure. Busy/protected eviction and backup pruning tested. Irrecoverable rollback failures remain explicit."
+      "executionEvidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Per-slot serialization preserves newest acknowledged overwrite and prior readable save on payload, metadata or deletion failure. Busy/protected eviction and backup pruning tested. Irrecoverable rollback failures remain explicit.",
+      "finalAcceptance": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Per-slot serialization preserves newest acknowledged overwrite and prior readable save on payload, metadata or deletion failure. Busy/protected eviction and backup pruning tested. Irrecoverable rollback failures remain explicit."
     },
     {
       "slug": "resolved-signing-contract",
@@ -644,7 +824,8 @@
         }
       },
       "rank": 8,
-      "executionEvidence": "18/18 new and existing first-season checks: pending/outbid/CPU/legacy/later-year/finalized exclusions and real winning player intent through restore/team switch."
+      "executionEvidence": "18/18 new and existing first-season checks: pending/outbid/CPU/legacy/later-year/finalized exclusions and real winning player intent through restore/team switch.",
+      "finalAcceptance": "18/18 new and existing first-season checks: pending/outbid/CPU/legacy/later-year/finalized exclusions and real winning player intent through restore/team switch."
     },
     {
       "slug": "deterministic-bye-browser",
@@ -683,7 +864,8 @@
         }
       },
       "rank": 9,
-      "executionEvidence": "4/4 Playwright spec: seed20260306 BUF played-game and CHI bye, explicit schedule preconditions, actual onboarding, exactly one advance, bye modal absence, receipted ledger and reload coherence."
+      "executionEvidence": "4/4 Playwright spec: seed20260306 BUF played-game and CHI bye, explicit schedule preconditions, actual onboarding, exactly one advance, bye modal absence, receipted ledger and reload coherence.",
+      "finalAcceptance": "4/4 Playwright spec: seed20260306 BUF played-game and CHI bye, explicit schedule preconditions, actual onboarding, exactly one advance, bye modal absence, receipted ledger and reload coherence."
     },
     {
       "slug": "node24-actions",
@@ -722,7 +904,8 @@
         }
       },
       "rank": 10,
-      "executionEvidence": "Founder approved the three exact signed-release pins after generic package-trust URL BLOCK40. Five workflow references updated; Node 24.14.0 and gates preserved. Focused workflow invariant checks passed; exact-source hosted CI remains a release gate."
+      "executionEvidence": "Founder approved the three exact signed-release pins after generic package-trust URL BLOCK40. Five workflow references updated; Node 24.14.0 and gates preserved. Focused workflow invariant checks passed; exact-source hosted CI remains a release gate.",
+      "finalAcceptance": "Founder approved the exact signed-release actions/cache6.1.0, configure-pages6.0.0 and upload-artifact7.0.1 SHAs after the generic URL package-trust BLOCK40. Five action references changed; Node24.14.0 and gates remain pinned. Exact final CI36796745264 completed successfully, including all five hosted unit shards and89 browser passes plus1 intentional skip."
     }
   ],
   "executionLog": [
@@ -775,6 +958,76 @@
       "slug": "node24-actions",
       "status": "implemented",
       "evidence": "Founder approved the three exact signed-release pins after generic package-trust URL BLOCK40. Five workflow references updated; Node 24.14.0 and gates preserved. Focused workflow invariant checks passed; exact-source hosted CI remains a release gate."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "complete-package-trade-law",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "4/4 direct engine controls and 11/11 persona, trade-plan and CPU-market neighbors; repeated asset IDs refused without changing legal player-only trades or tolerance constants."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "worker-durable-storage",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "23/23 focused worker, actual-runtime parity/fallback and observability checks. Includes independent-review regressions for held writer/concurrent read, request-owned failure attribution, initialization ordering and continuing after failure."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "indexeddb-commit-authority",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Transaction completion, bounded stalled/blocked operations, versioned payload publication, committed readback, and readable prior IDB records after write degradation verified. Independent concurrency and failed-delete reproducers now pass."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "production-csp-style-parity",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "Six module-injected style blocks moved into the themed stylesheet. Generated element-style policy remains self-only and is exercised by the immutable browser harness and actual staging/production. Selected-tip, inherited light-text and disabled-primary regressions were found by actual pixel review and fixed. Final222 reviewed images pass (126 fresh,96 exact-byte inherited), plus four freshly reviewed real held-I/O disabled Start/Create frames. Rejected before-images remain preserved."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "trade-fingerprint-transport",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "Real local and HTTP route scenario passed: stale evaluation returns409 without asset/log mutation; current plan succeeds and omitted fingerprint remains compatible."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "observed-advisor-outcomes",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "20/20 advisor, briefing and source-bound outcome checks, including no observed action, wrong decision occurrence, wrong franchise/checkpoint, replay and reload; unscored copy distinct from agreement/disagreement."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "preserve-failed-save-overwrite",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Per-slot serialization preserves newest acknowledged overwrite and prior readable save on payload, metadata or deletion failure. Busy/protected eviction and backup pruning tested. Irrecoverable rollback failures remain explicit."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "resolved-signing-contract",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "18/18 new and existing first-season checks: pending/outbid/CPU/legacy/later-year/finalized exclusions and real winning player intent through restore/team switch."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "deterministic-bye-browser",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "4/4 Playwright spec: seed20260306 BUF played-game and CHI bye, explicit schedule preconditions, actual onboarding, exactly one advance, bye modal absence, receipted ledger and reload coherence."
+    },
+    {
+      "kind": "s112-final-acceptance",
+      "slug": "node24-actions",
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "evidence": "Founder approved the exact signed-release actions/cache6.1.0, configure-pages6.0.0 and upload-artifact7.0.1 SHAs after the generic URL package-trust BLOCK40. Five action references changed; Node24.14.0 and gates remain pinned. Exact final CI36796745264 completed successfully, including all five hosted unit shards and89 browser passes plus1 intentional skip."
     }
   ],
   "review": {
@@ -833,6 +1086,267 @@
       "Public Simulation emphasis used a fixed light foreground"
     ],
     "correction": "Use existing semantic palette and surfaces, strengthen light success/warning/Discord tokens, preserve awaiting-evidence distinction through dashed borders, redraw chart from computed palette when theme/accent changes. Add screenshot-sampled selected-tip contrast guard with old-artifact negative control.",
-    "finalVerification": "pending revised immutable candidate"
+    "finalVerification": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "docs/visual-qa/LATEST.json",
+      "reviewedImages": 222,
+      "history": "Prior rejected-candidate findings above remain historical and are not relabeled as passing."
+    }
+  },
+  "verification": {
+    "date": "2026-09-30",
+    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+    "canonical": "Direct suite 1702/1702: core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354; exit 0. Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
+    "testReceipt": "reports/test-suite-s112.json",
+    "testSurfaceDigest": "59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef",
+    "testSourceBinding": "Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
+    "browser": "89 passed, 1 intentional skips; reports/browser-ci-s112.json",
+    "doctor": {
+      "blockingFailing": 0,
+      "warnings": 1,
+      "receipt": "reports/doctor-s112.json"
+    },
+    "ci": {
+      "status": "success",
+      "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938"
+    },
+    "staging": "14/14 verified; reports/staging-authority-s112.json",
+    "production": "10/10 verified; run https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768; reports/production-provenance-s112.json",
+    "backend": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "receipt": "reports/backend-manual-s112.json",
+      "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745293",
+      "summary": "Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt.",
+      "duplicateRunBoundary": "Duplicate run36796812804 was cancelled; build authority is36796745293."
+    },
+    "visual": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "reviewedImages": 222,
+      "gameImages": 182,
+      "publicImages": 40,
+      "beforeImages": 100,
+      "afterImages": 222,
+      "responsiveCaptures": 327,
+      "publicCaptures": 40,
+      "recoveryCaptures": 24,
+      "receipt": "docs/visual-qa/LATEST.json",
+      "hashCoverage": "complete",
+      "freshlyInspectedImages": 126,
+      "hashInheritedImages": 96,
+      "hashInheritanceReceipt": "reports/visual-review-s112.json",
+      "requiredFinalScope": {
+        "reviewedImages": 222,
+        "gameImages": 182,
+        "publicImages": 40,
+        "responsiveCaptures": 327,
+        "recoveryCaptures": 24
+      }
+    },
+    "performance": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "docs/performance/STAGING_S112.json",
+      "receiptSha256": "0c957cf54001014ed802dc1c143be983e244b7a953c9b876d1956b5550cee34d",
+      "summary": "Stable staging canonical entry route /, three actual browser samples per profile: desktop LCP632ms/INP24ms/CLS0; mobile LCP624ms/INP16ms/CLS0.0085. All14 receipt checks passed, including actual hosted security headers and deliberate interaction. Laboratory entry-route evidence only; separate game hydration diagnostic and field-cohort data are not inferred.",
+      "profiles": [
+        {
+          "name": "desktop",
+          "runs": 3,
+          "lcpMs": 632,
+          "inpMs": 24,
+          "cls": 0,
+          "interactionObserved": true
+        },
+        {
+          "name": "mobile",
+          "runs": 3,
+          "lcpMs": 624,
+          "inpMs": 16,
+          "cls": 0.0085,
+          "interactionObserved": true
+        }
+      ],
+      "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route."
+    },
+    "checkpointPerformance": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "reports/client-checkpoint-performance-s112.json",
+      "receiptSha256": "3643eb8dcf67dbf6fb0db2408cc42fb17e433d5355dcd9e5cc91ed580acbad17",
+      "baselineReceipt": ".cache/s112-checkpoint-performance-f34e-before.json",
+      "baselineReceiptSha256": "9bd18b733cabee8a35df381dce9b3beed98a538d9c256a5c7e6a4ce1cd0b2f2d",
+      "restoreTimingMeasured": false,
+      "summary": "Observed immutable worker capture/flush: drive fresh232.3ms and one completed season1066.5ms with maximum flush main-thread task51ms; play fresh158.9ms and one completed season1362ms with maximum task55ms. Fresh flushes had no observed tasks at or above50ms. Each measured flush sent one capture request and no bulk snapshot export/import/raw payload. Compared with the preserved f34e same-scenario baseline, observed season flush maximum tasks fell from735/892ms to51/55ms. These are single warm local samples with observer overhead, not isolated restore timing, mature-career, field-cohort, cost-neutral or universal-bound evidence.",
+      "observedSamples": [
+        {
+          "mode": "drive",
+          "label": "fresh",
+          "flushMs": 232.29999995231628,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        },
+        {
+          "mode": "drive",
+          "label": "one-completed-season",
+          "flushMs": 1066.5,
+          "maxMainThreadTaskMs": 51,
+          "snapshotJsonBytes": 30160998,
+          "checkpointEnvelopeBytes": 3525987,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        },
+        {
+          "mode": "play",
+          "label": "fresh",
+          "flushMs": 158.89999997615814,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        },
+        {
+          "mode": "play",
+          "label": "one-completed-season",
+          "flushMs": 1362,
+          "maxMainThreadTaskMs": 55,
+          "snapshotJsonBytes": 34594874,
+          "checkpointEnvelopeBytes": 3888907,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        }
+      ],
+      "limitations": [
+        "Single warm checkpoint samples on this machine, not a benchmark distribution or cold module-load measurement.",
+        "No mature or 100-year franchise claim.",
+        "Size and task observers add measurement overhead.",
+        "The 90-second season limit closes only its owned browser context if reached."
+      ],
+      "observed": [
+        {
+          "mode": "drive",
+          "label": "fresh",
+          "flushMs": 232.29999995231628,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227
+        },
+        {
+          "mode": "drive",
+          "label": "one-completed-season",
+          "flushMs": 1066.5,
+          "maxMainThreadTaskMs": 51,
+          "snapshotJsonBytes": 30160998,
+          "checkpointEnvelopeBytes": 3525987
+        },
+        {
+          "mode": "play",
+          "label": "fresh",
+          "flushMs": 158.89999997615814,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227
+        },
+        {
+          "mode": "play",
+          "label": "one-completed-season",
+          "flushMs": 1362,
+          "maxMainThreadTaskMs": 55,
+          "snapshotJsonBytes": 34594874,
+          "checkpointEnvelopeBytes": 3888907
+        }
+      ]
+    },
+    "stagingContinuity": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "reports/staging-browser-s112-final.json",
+      "receiptSha256": "6bc6b3bb83f7c33c5173c0ad9d0d2ef816b7da609d73cf266eb47183774cceb7",
+      "summary": "Real stable staging: desktop dark1440 and mobile light390 preserve explicit CHI/seed20260306/play/year2024 as fa-20260306-CHI across creation, full-page navigation, reload and Continue. Exactly one real advance moves week1→2 and survives reload; explicit named manual saves resume in a new tab at year2024/week2. No storage/request/worker behavior is mocked. Returning browser uses this candidate service worker; no older-release upgrade or full theme matrix is claimed.",
+      "observedOutcomes": {
+        "explicitTeamNavigation": {
+          "status": "passed",
+          "evidence": "desktop: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI; mobile: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI"
+        },
+        "selectedSaveNavigation": {
+          "status": "passed",
+          "evidence": "desktop: explicit slot s112-proof-desktop resumed in a new tab as fa-20260306-CHI, year 2024, week 2; mobile: explicit slot s112-proof-mobile resumed in a new tab as fa-20260306-CHI, year 2024, week 2"
+        },
+        "progressReload": {
+          "status": "passed",
+          "evidence": "desktop: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2; mobile: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2"
+        }
+      },
+      "limitations": [
+        "No runtime preference is forced and no request, storage, worker or service-worker behavior is mocked.",
+        "The returning browser uses this candidate's installed service worker; this does not simulate an older-release upgrade.",
+        "Desktop dark and mobile light are sampled; this is not the full visual matrix.",
+        "One week is advanced in each isolated local browser franchise; no analytics consent is granted, account created or share transmitted."
+      ]
+    },
+    "productionContinuity": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "reports/production-browser-s112-final.json",
+      "receiptSha256": "71fc3a9eb2d358a9044fa93749063853ab811889b36918babc633c552fdb23a6",
+      "summary": "Actual desktop dark and mobile light production flows preserve CHI, seed20260306 and Play mode through creation, reload and Continue. Exactly one W1-to-W2 advance per viewport survives reload; an explicitly named save restores in a new tab. Active service worker, no browser diagnostic failures, eight freshly inspected portable images; no analytics consent or synthetic state."
+    },
+    "captureLedger": {
+      "status": "verified",
+      "receipt": "docs/visual-qa/CAPTURE_LEDGER.json",
+      "summary": "630 retained PNG files verified against 2545 immutable ledger entries; final222 includes24 recovery captures. Supplemental failed5 and corrected4 disabled-control images remain separate."
+    },
+    "supersededCandidateReceipt": "reports/s112-superseded-88a5e006.json",
+    "supersededCandidateReceipts": [
+      "reports/s112-superseded-88a5e006.json",
+      "reports/s112-superseded-23139ba.json",
+      "reports/s112-superseded-6608db3.json"
+    ],
+    "note": "The initial full UI run remains 69 passed, 1 failed and 1 intentional skip: its advisor-copy assertion expected the former two-state wording. The deterministic assertion was corrected without relabeling that red run. The first immutable visual candidate passed automated capture gates but actual pixel review found light-theme contrast defects; those defects were corrected and the final artifact was recaptured and reviewed. Superseded source 88a5e006bf0582c8dcba4ddfd84e9516f688de6d retains separate outcomes: general CI run 36747125169 succeeded with 70 browser passes and 1 skip, while Pages run 36747125173 failed with 69 passes, 1 failure and 1 skip. The unchanged reward-beats test reproduced locally at 2 passes and 1 failure across 3 repeats. Its failed image showed the Weekly Plan Composer awaiting a required choice; all three non-waiting visibility probes ran before the GM-decision response, and no advance request was submitted. Its Node run stopped after four passing shards totaling 1,293 tests; the long shard was cancelled with exit -1, so this was not a complete green suite. That candidate was not promoted to production. These earlier results remain superseded evidence, not final-source acceptance. See reports/s112-superseded-88a5e006.json. The replacement bcf5384 passed general CI after a clean failed-job rerun, but real stable-staging browser interaction proved that both new-franchise creation and explicit save loading lost the selected franchise across page navigation. Its local suite was interrupted after core 290 and runtime 909 passed (1199 total); sim-contract had not completed. No full green suite or production promotion was claimed for that candidate. The first 13 recovery browser checks failed because the test observer copied full imported snapshots into sessionStorage and its identity reader used a nonexistent field; those harness defects were corrected without treating that run as product acceptance. See reports/staging-browser-s112.json. Product source 23139baf778792dcea44118138de3ee07eed5a5a was pushed normally with hooks intact and verified on stable staging at 14/14. Its local canonical run was stopped during core with zero completed shards before correcting tested browser-gate scripts. General CI run 36787373005 passed all five hosted unit shards but failed static smoke before the full browser suite, and Pages run 36787373023 failed the same smoke: assertions expected bare game.html after successful navigation to game.html?resume=tab. Its responsive harness had the same stale expectation. Backend build 36787373038 succeeded, but no backend or production publication was accepted for that candidate. The normal push was delayed but completed; no deadlock or hook bypass is claimed. Three script sites and four client-runtime assertions across three files were corrected without changing public/src product code, server-runtime expectations or timeouts. Focused client checks passed 6 with 1 existing intentional skip, and static smoke passed. The clean replacement commit 6608db347debe8d72b44f2dbeec7e8ca39308981 builds the same artifact 5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3. Its independent final acceptance must come from final receipts, not these predecessor results. See reports/s112-superseded-23139ba.json. Source 6608db347debe8d72b44f2dbeec7e8ca39308981 completed general CI run 36793635097 successfully, including browser job 110151960971 with 89 passes and 1 intentional skip out of 90 tests (10.4 minutes, no downloadable artifacts). It reached stable staging with 14/14 identity checks and actual desktop/mobile continuity. Subsequent actual pixel review found that the light-theme primary-button foreground override also affected disabled controls, rendering white labels on pale backgrounds. Its local canonical run was stopped after core 290/290; runtime was unfinished, so it was not a complete green suite. The candidate was not promoted to production or backend. The two light-theme selectors were subsequently narrowed to enabled controls in be71869. Existing actual per-PNG inspections may carry forward only when the new capture has the exact same hash; whole-candidate visual acceptance cannot carry forward. See reports/s112-superseded-6608db3.json and reports/browser-ci-s112-6608db3.json. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks.",
+    "status": "verified",
+    "itemsCompleted": 10,
+    "secondOrderCompleted": 5
   }
 }

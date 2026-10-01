@@ -447,6 +447,25 @@
       "cause": "S110 recovery committed the previously uncommitted S109/S110 implementation, corrected four visible defects, and verifie",
       "dimensionMeasurementStatus": "unmeasured",
       "dimensionMeasurementNote": "Dimension table absent from the source truth audit; zero values are parser defaults, not assessed dimension scores. The green headline is not a measured 0/25 genome result."
+    },
+    {
+      "date": "2026-10-01",
+      "session": 112,
+      "total": 0,
+      "maxTotal": 25,
+      "overallStatus": "unmeasured",
+      "lastReviewed": "2026-09-29",
+      "dimensions": {
+        "schema_alignment": 0,
+        "prompt_template_alignment": 0,
+        "derived_view_freshness": 0,
+        "handoff_continuity": 0,
+        "contradiction_density": 0
+      },
+      "delta": 0,
+      "cause": "S112 canonical writeback completed. Legacy five-axis measurements are unavailable; consult exact source-bound tests, release receipts, and the independent ten-category SIL assessment.",
+      "dimensionMeasurementStatus": "unmeasured",
+      "dimensionMeasurementNote": "No five-axis dimension table exists in the source truth audit. Zero-valued dimensions and total are parser defaults, not assessed 0/25 health. SIL v3 is separate; truthGenome remains null."
     }
   ]
 }

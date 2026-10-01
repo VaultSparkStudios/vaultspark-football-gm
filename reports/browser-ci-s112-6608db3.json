@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "browser-ci-job-log-receipt",
+  "observedAt": "2026-10-01T00:31:40.628Z",
+  "repository": "VaultSparkStudios/vaultspark-football-gm",
+  "sourceRevision": "6608db347debe8d72b44f2dbeec7e8ca39308981",
+  "acceptanceScope": "Successful historical CI evidence for superseded candidate 6608db3. This does not accept a later source or establish final release completion.",
+  "run": {
+    "id": 36793635097,
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36793635097",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-09-30T23:56:21Z",
+    "updatedAt": "2026-10-01T00:16:21Z"
+  },
+  "job": {
+    "id": 110151960971,
+    "name": "browser-gates",
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36793635097/job/110151960971",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-09-30T23:56:24Z",
+    "completedAt": "2026-10-01T00:07:47Z"
+  },
+  "step": {
+    "completedAt": "2026-10-01T00:07:44Z",
+    "conclusion": "success",
+    "name": "Run UI tests",
+    "number": 10,
+    "startedAt": "2026-09-30T23:57:22Z",
+    "status": "completed"
+  },
+  "browserTests": {
+    "total": 90,
+    "passed": 89,
+    "skipped": 1,
+    "failed": 0,
+    "workers": 1,
+    "reportedDuration": "10.4m",
+    "failedCountBasis": "Successful job and complete accounting: 90 total = 89 passed + 1 skipped.",
+    "skippedControl": {
+      "name": "negative control: the same probe against the in-page runtime",
+      "path": "tests-ui/worker-runtime.spec.js",
+      "line": 167,
+      "optInVariable": "VSFGM_WORKER_NEGATIVE_CONTROL",
+      "requiredValue": "1",
+      "identityBasis": "The candidate contains one explicit test.skip: the opt-in negative control. The CI summary supplies the observed skipped count."
+    }
+  },
+  "evidence": {
+    "basis": "GitHub Actions completed job logs retrieved with gh api actions/jobs/{job_id}/logs; completed run/job metadata retrieved with gh run view --json.",
+    "logCommand": "gh api repos/VaultSparkStudios/vaultspark-football-gm/actions/jobs/110151960971/logs",
+    "summaryLines": [
+      {
+        "at": "2026-09-30T23:57:23.2591707Z",
+        "text": "Running 90 tests using 1 worker"
+      },
+      {
+        "at": "2026-10-01T00:07:44.4022080Z",
+        "text": "1 skipped"
+      },
+      {
+        "at": "2026-10-01T00:07:44.4022490Z",
+        "text": "89 passed (10.4m)"
+      }
+    ],
+    "jobLogsRetrievable": true,
+    "artifactsApi": "https://api.github.com/repos/VaultSparkStudios/vaultspark-football-gm/actions/runs/36793635097/artifacts",
+    "downloadableArtifacts": 0,
+    "artifactsApiResult": {
+      "total_count": 0,
+      "artifacts": []
+    },
+    "receiptLimit": "This is a transcription of observed CI metadata and job-log counts, not a downloaded Playwright JSON report or an uploaded CI artifact."
+  }
+}

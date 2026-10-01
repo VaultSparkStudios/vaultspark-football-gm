@@ -1,0 +1,742 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-01T00:44:43.499Z",
+  "kind": "hosted-client-continuity",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+  "status": "passed",
+  "scenarioInput": {
+    "seed": 20260306,
+    "year": 2024,
+    "team": "CHI",
+    "mode": "play"
+  },
+  "scenarios": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "status": "passed",
+      "diagnostics": [
+        {
+          "type": "requestfailed",
+          "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "documentResponses": [
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        }
+      ],
+      "healthBefore": {
+        "status": 200,
+        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+        "generatedAt": "2026-10-01T00:36:31.574Z"
+      },
+      "hostedHeaders": [
+        {
+          "route": "/about",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/game",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/sw.js",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "application/javascript",
+            "cache-control": "max-age=14400",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        }
+      ],
+      "freshPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/"
+      },
+      "created": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "reloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "continued": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "advanceReceipt": {
+        "beforeWeek": 1,
+        "afterWeek": 2,
+        "controlledOnBye": false,
+        "actualAdvanceRequests": 1
+      },
+      "advanced": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2344307371,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "progressReloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2344307371,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "savedSlot": "s112-proof-desktop",
+      "savedMetadata": {
+        "slot": "s112-proof-desktop",
+        "updatedAt": "2026-10-01T00:45:29.989Z",
+        "sizeBytes": 945767,
+        "meta": {
+          "schemaVersion": 2,
+          "currentYear": 2024,
+          "currentWeek": 2,
+          "phase": "regular-season",
+          "controlledTeamId": "CHI",
+          "controlledTeamName": "Knoxville Dragons",
+          "controlledTeamAbbrev": "KD",
+          "seasonsSimulated": 0
+        }
+      },
+      "returningPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/"
+      },
+      "resumed": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2344307371,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "serviceWorker": {
+        "controlled": true,
+        "scriptUrl": "https://staging.playfranchisearchitect.com/sw.js",
+        "state": "activated"
+      },
+      "healthAfter": {
+        "status": 200,
+        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+        "generatedAt": "2026-10-01T00:36:31.574Z"
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "status": "passed",
+      "diagnostics": [
+        {
+          "type": "requestfailed",
+          "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
+          "error": "net::ERR_ABORTED"
+        }
+      ],
+      "documentResponses": [
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://staging.playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        }
+      ],
+      "healthBefore": {
+        "status": 200,
+        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+        "generatedAt": "2026-10-01T00:36:31.574Z"
+      },
+      "hostedHeaders": [
+        {
+          "route": "/about",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/game",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/sw.js",
+          "status": 200,
+          "headers": {
+            "_publicCspReview_content-security-policy": "// scan-secrets: allow - verified public inline-script SHA-256 in this CSP value; see publicEvidencePostprocess",
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "application/javascript",
+            "cache-control": "max-age=14400",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        }
+      ],
+      "freshPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/"
+      },
+      "created": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "reloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "continued": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3266323032,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "advanceReceipt": {
+        "beforeWeek": 1,
+        "afterWeek": 2,
+        "controlledOnBye": false,
+        "actualAdvanceRequests": 1
+      },
+      "advanced": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2344307371,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "progressReloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2344307371,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "savedSlot": "s112-proof-mobile",
+      "savedMetadata": {
+        "slot": "s112-proof-mobile",
+        "updatedAt": "2026-10-01T00:46:38.073Z",
+        "sizeBytes": 945767,
+        "meta": {
+          "schemaVersion": 2,
+          "currentYear": 2024,
+          "currentWeek": 2,
+          "phase": "regular-season",
+          "controlledTeamId": "CHI",
+          "controlledTeamName": "Knoxville Dragons",
+          "controlledTeamAbbrev": "KD",
+          "seasonsSimulated": 0
+        }
+      },
+      "returningPlay": {
+        "from": "https://staging.playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://staging.playfranchisearchitect.com/"
+      },
+      "resumed": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2344307371,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "serviceWorker": {
+        "controlled": true,
+        "scriptUrl": "https://staging.playfranchisearchitect.com/sw.js",
+        "state": "activated"
+      },
+      "healthAfter": {
+        "status": 200,
+        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+        "generatedAt": "2026-10-01T00:36:31.574Z"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "desktop-created-franchise",
+      "file": "reports/staging-browser-s112-final/desktop-created-franchise.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5432ea7e0a87f725d4c51a74659794e2f4573d1dc6cb8f0c56f7ddc1c4f75235",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "5432ea7e0a87f725d4c51a74659794e2f4573d1dc6cb8f0c56f7ddc1c4f75235",
+      "reviewResult": "Chosen franchise dashboard is readable and contained; header shows week 1 and no user-team games yet."
+    },
+    {
+      "name": "desktop-advanced-reloaded",
+      "file": "reports/staging-browser-s112-final/desktop-advanced-reloaded.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7f1597d458eaad2c50419e7aa45a178846b4b531176d7839ce17857f7b7a6f88",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "7f1597d458eaad2c50419e7aa45a178846b4b531176d7839ce17857f7b7a6f88",
+      "reviewResult": "Week 2 and the played-game result remain visible behind the readable, contained Welcome Back dialog; all three actions fit."
+    },
+    {
+      "name": "desktop-new-tab-saved-franchise",
+      "file": "reports/staging-browser-s112-final/desktop-new-tab-saved-franchise.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "77c8081fcd0ba46d24f657e06774821c9ef5d3e2cb1133a68bb8066657af412c",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "77c8081fcd0ba46d24f657e06774821c9ef5d3e2cb1133a68bb8066657af412c",
+      "reviewResult": "Resume Latest Save is visible and readable; title and content wrap within the viewport."
+    },
+    {
+      "name": "desktop-saved-slot-resumed",
+      "file": "reports/staging-browser-s112-final/desktop-saved-slot-resumed.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7f1597d458eaad2c50419e7aa45a178846b4b531176d7839ce17857f7b7a6f88",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "7f1597d458eaad2c50419e7aa45a178846b4b531176d7839ce17857f7b7a6f88",
+      "reviewResult": "Week 2 and the played-game result remain visible behind the readable, contained Welcome Back dialog; all three actions fit."
+    },
+    {
+      "name": "mobile-created-franchise",
+      "file": "reports/staging-browser-s112-final/mobile-created-franchise.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e39499aaff700e61e9e6e515415a47a2ea04f3067978fd7007d223c9db650d62",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "e39499aaff700e61e9e6e515415a47a2ea04f3067978fd7007d223c9db650d62",
+      "reviewResult": "Chosen franchise dashboard is readable and contained; header shows week 1 and no user-team games yet."
+    },
+    {
+      "name": "mobile-advanced-reloaded",
+      "file": "reports/staging-browser-s112-final/mobile-advanced-reloaded.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "381ddd6d8207e9e85501b5093a501ad1611e7cef1c59ccefccd01aeb81b21f5e",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "381ddd6d8207e9e85501b5093a501ad1611e7cef1c59ccefccd01aeb81b21f5e",
+      "reviewResult": "Week 2 and the played-game result remain visible behind the readable, contained Welcome Back dialog; all three actions fit."
+    },
+    {
+      "name": "mobile-new-tab-saved-franchise",
+      "file": "reports/staging-browser-s112-final/mobile-new-tab-saved-franchise.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7f5ec29b9d1f698068bcbb3cbf80181f47fd8cc90d3109350af14c90c0be1dfd",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "7f5ec29b9d1f698068bcbb3cbf80181f47fd8cc90d3109350af14c90c0be1dfd",
+      "reviewResult": "Resume Latest Save is visible and readable; title and content wrap within the viewport."
+    },
+    {
+      "name": "mobile-saved-slot-resumed",
+      "file": "reports/staging-browser-s112-final/mobile-saved-slot-resumed.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "381ddd6d8207e9e85501b5093a501ad1611e7cef1c59ccefccd01aeb81b21f5e",
+      "reviewed": true,
+      "reviewMethod": "Actual pixels inspected with view_image",
+      "reviewedSha256": "381ddd6d8207e9e85501b5093a501ad1611e7cef1c59ccefccd01aeb81b21f5e",
+      "reviewResult": "Week 2 and the played-game result remain visible behind the readable, contained Welcome Back dialog; all three actions fit."
+    }
+  ],
+  "errors": [],
+  "scope": "Real Play link, explicit nondefault client league, same-tab reload/Main Menu/Continue, one actual week and reload, then a manual saved slot reopened after closing the tab.",
+  "limitations": [
+    "No runtime preference is forced and no request, storage, worker or service-worker behavior is mocked.",
+    "The returning browser uses this candidate's installed service worker; this does not simulate an older-release upgrade.",
+    "Desktop dark and mobile light are sampled; this is not the full visual matrix.",
+    "One week is advanced in each isolated local browser franchise; no analytics consent is granted, account created or share transmitted."
+  ],
+  "visualReview": {
+    "status": "passed",
+    "inspected": 8,
+    "findings": [],
+    "reviewedAt": "2026-10-01T00:48:12.7352473Z"
+  },
+  "browserVersion": "151.0.7922.34",
+  "outcomes": {
+    "explicitTeamNavigation": {
+      "status": "passed",
+      "evidence": "desktop: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI; mobile: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI"
+    },
+    "selectedSaveNavigation": {
+      "status": "passed",
+      "evidence": "desktop: explicit slot s112-proof-desktop resumed in a new tab as fa-20260306-CHI, year 2024, week 2; mobile: explicit slot s112-proof-mobile resumed in a new tab as fa-20260306-CHI, year 2024, week 2"
+    },
+    "progressReload": {
+      "status": "passed",
+      "evidence": "desktop: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2; mobile: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2"
+    }
+  },
+  "publicEvidencePostprocess": {
+    "kind": "verified-public-csp-value-annotation",
+    "preparedAt": "2026-10-01T00:52:43.716Z",
+    "rawReceiptSha256": "f947e2d80929ba8b6f89226ea0ec7a28860c56864fb43e0ae1de681f6d4432f8",
+    "rawScannerExitCode": 1,
+    "rawScannerFindingCount": 8,
+    "annotations": [
+      {
+        "pointer": "/scenarios/0/hostedHeaders/0/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      },
+      {
+        "pointer": "/scenarios/0/hostedHeaders/1/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      },
+      {
+        "pointer": "/scenarios/0/hostedHeaders/2/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      },
+      {
+        "pointer": "/scenarios/0/hostedHeaders/3/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      },
+      {
+        "pointer": "/scenarios/1/hostedHeaders/0/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      },
+      {
+        "pointer": "/scenarios/1/hostedHeaders/1/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      },
+      {
+        "pointer": "/scenarios/1/hostedHeaders/2/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      },
+      {
+        "pointer": "/scenarios/1/hostedHeaders/3/headers/content-security-policy",
+        "classification": "public-inline-script-csp-digest",
+        "valueSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564"
+      }
+    ],
+    "boundary": "Explanatory metadata identifies public content hashes. Original measurements, observation time, source, artifact, and CSP values are unchanged. The raw scanner findings are preserved separately."
+  }
+}

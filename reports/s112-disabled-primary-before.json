@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "preserved-negative-rendered-evidence",
+  "sourceRevision": "6608db347debe8d72b44f2dbeec7e8ca39308981",
+  "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3",
+  "status": "failed-disabled-primary-contrast",
+  "preservedAt": "2026-10-01T00:45:42.172Z",
+  "captures": [
+    {
+      "file": "reports/s112-disabled-primary-before/s112-desktop-game-dialog-light.png",
+      "sha256": "dd0374238b287c87c50f2485e3fc24368286278c6eef14bed7ac2c90ce0390ce",
+      "result": "failed",
+      "finding": "Disabled primary-button label is light on a pale disabled background because the light-theme primary foreground rule outranks the disabled selector.",
+      "reviewMethod": "actual view_image inspection during candidate review"
+    },
+    {
+      "file": "reports/s112-disabled-primary-before/s112-desktop-tutorial-skip-light.png",
+      "sha256": "aeed68777c6dd92541375e8cb40c0639f8b6f8b93578b51ac9f3a1c10d199459",
+      "result": "failed",
+      "finding": "Disabled primary-button label is light on a pale disabled background because the light-theme primary foreground rule outranks the disabled selector.",
+      "reviewMethod": "actual view_image inspection during candidate review"
+    },
+    {
+      "file": "reports/s112-disabled-primary-before/s112-mobile-game-dialog-light.png",
+      "sha256": "4c899b4a9b0dd808d3ecbae2e4d8b122b535791ac9000cfe366ae410a006824a",
+      "result": "failed",
+      "finding": "Disabled primary-button label is light on a pale disabled background because the light-theme primary foreground rule outranks the disabled selector.",
+      "reviewMethod": "actual view_image inspection during candidate review"
+    },
+    {
+      "file": "reports/s112-disabled-primary-before/s112-mobile-tutorial-skip-light.png",
+      "sha256": "f61d3ea6888cf5d86b2cabe87d198b3b551fec73b2ed0c8f5320d32e867324b8",
+      "result": "failed",
+      "finding": "Disabled primary-button label is light on a pale disabled background because the light-theme primary foreground rule outranks the disabled selector.",
+      "reviewMethod": "actual view_image inspection during candidate review"
+    },
+    {
+      "file": "reports/s112-disabled-primary-before/s112-public-mobile-light-index.png",
+      "sha256": "563b90cf1567ba2fc3f4ad483061fac04fd4b95905c7f90e8530c9f4495006ff",
+      "result": "failed",
+      "finding": "Disabled primary-button label is light on a pale disabled background because the light-theme primary foreground rule outranks the disabled selector.",
+      "reviewMethod": "actual view_image inspection during candidate review"
+    }
+  ],
+  "boundary": "These five failed frames document the superseded candidate. They are additional regression evidence, not passing final images or additions to the canonical 100-image before set."
+}

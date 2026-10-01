@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "measuredAt": "2026-09-30T22:46:20.438Z",
+  "measuredAt": "2026-10-01T00:40:50.041Z",
   "status": "measured",
   "scope": "Immutable committed client artifact, Chromium worker runtime; fresh franchise and one actual completed season per mode.",
   "limitations": [
@@ -16,13 +16,13 @@
         {
           "label": "fresh",
           "runtime": "worker",
-          "snapshotJsonBytes": 5290429,
-          "encodedSnapshotChars": 629007,
-          "checkpointEnvelopeBytes": 629219,
+          "snapshotJsonBytes": 5290431,
+          "encodedSnapshotChars": 629015,
+          "checkpointEnvelopeBytes": 629227,
           "checkpointKind": "snapshot",
-          "exportMs": 49.5,
-          "snapshotSizeMeasurementMs": 46,
-          "flushMs": 226.60000002384186,
+          "exportMs": 49.800000071525574,
+          "snapshotSizeMeasurementMs": 36.199999928474426,
+          "flushMs": 232.29999995231628,
           "flushOk": true,
           "error": null,
           "status": {
@@ -44,8 +44,8 @@
           },
           "exportLongTasks": {
             "count": 1,
-            "maxMs": 74,
-            "sumMs": 74
+            "maxMs": 63,
+            "sumMs": 63
           },
           "flushLongTasks": {
             "count": 0,
@@ -53,9 +53,9 @@
             "sumMs": 0
           },
           "interactionOccurredDuringFlush": true,
-          "inputDispatchAfterFlushStartMs": 12.700000047683716,
-          "interactionWallMs": 26.275700000000143,
-          "afterFlushInteractionWallMs": 10.898200000001452,
+          "inputDispatchAfterFlushStartMs": 5.399999976158142,
+          "interactionWallMs": 18.746500000001106,
+          "afterFlushInteractionWallMs": 6.337499999999636,
           "identity": {
             "franchiseId": "fa-20260306-CHI",
             "team": "CHI",
@@ -69,13 +69,13 @@
         {
           "label": "one-completed-season",
           "runtime": "worker",
-          "snapshotJsonBytes": 30160996,
-          "encodedSnapshotChars": 3525759,
-          "checkpointEnvelopeBytes": 3526059,
+          "snapshotJsonBytes": 30160998,
+          "encodedSnapshotChars": 3525687,
+          "checkpointEnvelopeBytes": 3525987,
           "checkpointKind": "snapshot",
-          "exportMs": 324.7000000476837,
-          "snapshotSizeMeasurementMs": 312.39999997615814,
-          "flushMs": 1331.1000000238419,
+          "exportMs": 327,
+          "snapshotSizeMeasurementMs": 242.89999997615814,
+          "flushMs": 1066.5,
           "flushOk": true,
           "error": null,
           "status": {
@@ -97,18 +97,18 @@
           },
           "exportLongTasks": {
             "count": 1,
-            "maxMs": 493,
-            "sumMs": 493
+            "maxMs": 405,
+            "sumMs": 405
           },
           "flushLongTasks": {
             "count": 1,
-            "maxMs": 69,
-            "sumMs": 69
+            "maxMs": 51,
+            "sumMs": 51
           },
           "interactionOccurredDuringFlush": true,
-          "inputDispatchAfterFlushStartMs": 14.299999952316284,
-          "interactionWallMs": 56.22780000000057,
-          "afterFlushInteractionWallMs": 9.334100000000035,
+          "inputDispatchAfterFlushStartMs": 4,
+          "interactionWallMs": 8.293600000000879,
+          "afterFlushInteractionWallMs": 4.2348000000019965,
           "identity": {
             "franchiseId": "fa-20260306-CHI",
             "team": "CHI",
@@ -129,7 +129,7 @@
         "mode": "drive",
         "rngSeed": 3266323032
       },
-      "seasonWallMs": 12486.145199999999,
+      "seasonWallMs": 11308.8559,
       "afterSeason": {
         "franchiseId": "fa-20260306-CHI",
         "team": "CHI",
@@ -146,13 +146,13 @@
         {
           "label": "fresh",
           "runtime": "worker",
-          "snapshotJsonBytes": 5290428,
-          "encodedSnapshotChars": 629007,
-          "checkpointEnvelopeBytes": 629219,
+          "snapshotJsonBytes": 5290431,
+          "encodedSnapshotChars": 629015,
+          "checkpointEnvelopeBytes": 629227,
           "checkpointKind": "snapshot",
-          "exportMs": 32.700000047683716,
-          "snapshotSizeMeasurementMs": 28.199999928474426,
-          "flushMs": 201.19999992847443,
+          "exportMs": 32.39999997615814,
+          "snapshotSizeMeasurementMs": 27.100000023841858,
+          "flushMs": 158.89999997615814,
           "flushOk": true,
           "error": null,
           "status": {
@@ -183,9 +183,9 @@
             "sumMs": 0
           },
           "interactionOccurredDuringFlush": true,
-          "inputDispatchAfterFlushStartMs": 5.699999928474426,
-          "interactionWallMs": 16.998499999994237,
-          "afterFlushInteractionWallMs": 16.544699999998556,
+          "inputDispatchAfterFlushStartMs": 4.600000023841858,
+          "interactionWallMs": 14.029900000001362,
+          "afterFlushInteractionWallMs": 10.835199999994074,
           "identity": {
             "franchiseId": "fa-20260306-CHI",
             "team": "CHI",
@@ -199,13 +199,13 @@
         {
           "label": "one-completed-season",
           "runtime": "worker",
-          "snapshotJsonBytes": 34594878,
-          "encodedSnapshotChars": 3888819,
-          "checkpointEnvelopeBytes": 3889119,
+          "snapshotJsonBytes": 34594874,
+          "encodedSnapshotChars": 3888607,
+          "checkpointEnvelopeBytes": 3888907,
           "checkpointKind": "snapshot",
-          "exportMs": 278.60000002384186,
-          "snapshotSizeMeasurementMs": 267.7000000476837,
-          "flushMs": 1271.5999999046326,
+          "exportMs": 201,
+          "snapshotSizeMeasurementMs": 268.10000002384186,
+          "flushMs": 1362,
           "flushOk": true,
           "error": null,
           "status": {
@@ -227,18 +227,18 @@
           },
           "exportLongTasks": {
             "count": 1,
-            "maxMs": 413,
-            "sumMs": 413
+            "maxMs": 384,
+            "sumMs": 384
           },
           "flushLongTasks": {
-            "count": 0,
-            "maxMs": 0,
-            "sumMs": 0
+            "count": 1,
+            "maxMs": 55,
+            "sumMs": 55
           },
           "interactionOccurredDuringFlush": true,
-          "inputDispatchAfterFlushStartMs": 3.799999952316284,
-          "interactionWallMs": 10.870799999996962,
-          "afterFlushInteractionWallMs": 12.83009999999922,
+          "inputDispatchAfterFlushStartMs": 3.600000023841858,
+          "interactionWallMs": 9.822299999999814,
+          "afterFlushInteractionWallMs": 5.1929999999993015,
           "identity": {
             "franchiseId": "fa-20260306-CHI",
             "team": "CHI",
@@ -259,7 +259,7 @@
         "mode": "play",
         "rngSeed": 3266323032
       },
-      "seasonWallMs": 12529.905299999999,
+      "seasonWallMs": 12363.2307,
       "afterSeason": {
         "franchiseId": "fa-20260306-CHI",
         "team": "CHI",
@@ -274,10 +274,10 @@
   "health": {
     "status": "ok",
     "service": "franchise-architect-football",
-    "sourceRevision": "23139baf778792dcea44118138de3ee07eed5a5a",
+    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3",
+      "digest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
       "files": 234,
       "exclusions": [
         "_health",
@@ -285,11 +285,11 @@
         "edge-policy-receipt.json"
       ]
     },
-    "styleAsset": "styles.13cf35ad8f.css",
+    "styleAsset": "styles.98aed5d077.css",
     "communityStatsAsset": "community-stats.ee24bbbfe2.js",
     "edgePolicyFingerprint": "sha256:735dd2e27ee2ae8364a2afcf8195187e42e90b1ddaa6bea0be7bfb3e233606bd",
     "edgePolicyAppliedToHostedOrigin": false,
-    "generatedAt": "2026-09-30T22:43:51.208Z",
+    "generatedAt": "2026-10-01T00:36:31.574Z",
     "launchReady": false,
     "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
   }

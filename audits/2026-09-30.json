@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-09-30",
+  "session": 112,
+  "project": "franchise-architect-football",
+  "summary": "S112 completed ten audit items and five second-order outcomes: complete trade value, durable and recoverable browser saves, observed advisor results, resolved player signing credit, real-policy theme parity, deterministic weekly paths and approved action updates. Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks.",
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+  "verification": "Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt.",
+  "evidence": {
+    "date": "2026-09-30",
+    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+    "canonical": "Direct suite 1702/1702: core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354; exit 0. Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
+    "testReceipt": "reports/test-suite-s112.json",
+    "testSurfaceDigest": "59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef",
+    "testSourceBinding": "Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
+    "browser": "89 passed, 1 intentional skips; reports/browser-ci-s112.json",
+    "doctor": {
+      "blockingFailing": 0,
+      "warnings": 1,
+      "receipt": "reports/doctor-s112.json"
+    },
+    "ci": {
+      "status": "success",
+      "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938"
+    },
+    "staging": "14/14 verified; reports/staging-authority-s112.json",
+    "production": "10/10 verified; run https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768; reports/production-provenance-s112.json",
+    "backend": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "receipt": "reports/backend-manual-s112.json",
+      "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745293",
+      "summary": "Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt.",
+      "duplicateRunBoundary": "Duplicate run36796812804 was cancelled; build authority is36796745293."
+    },
+    "visual": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "reviewedImages": 222,
+      "gameImages": 182,
+      "publicImages": 40,
+      "beforeImages": 100,
+      "afterImages": 222,
+      "responsiveCaptures": 327,
+      "publicCaptures": 40,
+      "recoveryCaptures": 24,
+      "receipt": "docs/visual-qa/LATEST.json",
+      "hashCoverage": "complete",
+      "freshlyInspectedImages": 126,
+      "hashInheritedImages": 96,
+      "hashInheritanceReceipt": "reports/visual-review-s112.json",
+      "requiredFinalScope": {
+        "reviewedImages": 222,
+        "gameImages": 182,
+        "publicImages": 40,
+        "responsiveCaptures": 327,
+        "recoveryCaptures": 24
+      }
+    },
+    "performance": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "docs/performance/STAGING_S112.json",
+      "receiptSha256": "0c957cf54001014ed802dc1c143be983e244b7a953c9b876d1956b5550cee34d",
+      "summary": "Stable staging canonical entry route /, three actual browser samples per profile: desktop LCP632ms/INP24ms/CLS0; mobile LCP624ms/INP16ms/CLS0.0085. All14 receipt checks passed, including actual hosted security headers and deliberate interaction. Laboratory entry-route evidence only; separate game hydration diagnostic and field-cohort data are not inferred.",
+      "profiles": [
+        {
+          "name": "desktop",
+          "runs": 3,
+          "lcpMs": 632,
+          "inpMs": 24,
+          "cls": 0,
+          "interactionObserved": true
+        },
+        {
+          "name": "mobile",
+          "runs": 3,
+          "lcpMs": 624,
+          "inpMs": 16,
+          "cls": 0.0085,
+          "interactionObserved": true
+        }
+      ],
+      "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route."
+    },
+    "checkpointPerformance": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "reports/client-checkpoint-performance-s112.json",
+      "receiptSha256": "3643eb8dcf67dbf6fb0db2408cc42fb17e433d5355dcd9e5cc91ed580acbad17",
+      "baselineReceipt": ".cache/s112-checkpoint-performance-f34e-before.json",
+      "baselineReceiptSha256": "9bd18b733cabee8a35df381dce9b3beed98a538d9c256a5c7e6a4ce1cd0b2f2d",
+      "restoreTimingMeasured": false,
+      "summary": "Observed immutable worker capture/flush: drive fresh232.3ms and one completed season1066.5ms with maximum flush main-thread task51ms; play fresh158.9ms and one completed season1362ms with maximum task55ms. Fresh flushes had no observed tasks at or above50ms. Each measured flush sent one capture request and no bulk snapshot export/import/raw payload. Compared with the preserved f34e same-scenario baseline, observed season flush maximum tasks fell from735/892ms to51/55ms. These are single warm local samples with observer overhead, not isolated restore timing, mature-career, field-cohort, cost-neutral or universal-bound evidence.",
+      "observedSamples": [
+        {
+          "mode": "drive",
+          "label": "fresh",
+          "flushMs": 232.29999995231628,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        },
+        {
+          "mode": "drive",
+          "label": "one-completed-season",
+          "flushMs": 1066.5,
+          "maxMainThreadTaskMs": 51,
+          "snapshotJsonBytes": 30160998,
+          "checkpointEnvelopeBytes": 3525987,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        },
+        {
+          "mode": "play",
+          "label": "fresh",
+          "flushMs": 158.89999997615814,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        },
+        {
+          "mode": "play",
+          "label": "one-completed-season",
+          "flushMs": 1362,
+          "maxMainThreadTaskMs": 55,
+          "snapshotJsonBytes": 34594874,
+          "checkpointEnvelopeBytes": 3888907,
+          "checkpointWire": {
+            "captureRequests": 1,
+            "restoreRequests": 0,
+            "snapshotExportRequests": 0,
+            "snapshotImportRequests": 0,
+            "rawSnapshotRequests": 0,
+            "rawSnapshotResponses": 0
+          },
+          "flushOk": true
+        }
+      ],
+      "limitations": [
+        "Single warm checkpoint samples on this machine, not a benchmark distribution or cold module-load measurement.",
+        "No mature or 100-year franchise claim.",
+        "Size and task observers add measurement overhead.",
+        "The 90-second season limit closes only its owned browser context if reached."
+      ],
+      "observed": [
+        {
+          "mode": "drive",
+          "label": "fresh",
+          "flushMs": 232.29999995231628,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227
+        },
+        {
+          "mode": "drive",
+          "label": "one-completed-season",
+          "flushMs": 1066.5,
+          "maxMainThreadTaskMs": 51,
+          "snapshotJsonBytes": 30160998,
+          "checkpointEnvelopeBytes": 3525987
+        },
+        {
+          "mode": "play",
+          "label": "fresh",
+          "flushMs": 158.89999997615814,
+          "maxMainThreadTaskMs": 0,
+          "snapshotJsonBytes": 5290431,
+          "checkpointEnvelopeBytes": 629227
+        },
+        {
+          "mode": "play",
+          "label": "one-completed-season",
+          "flushMs": 1362,
+          "maxMainThreadTaskMs": 55,
+          "snapshotJsonBytes": 34594874,
+          "checkpointEnvelopeBytes": 3888907
+        }
+      ]
+    },
+    "stagingContinuity": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "reports/staging-browser-s112-final.json",
+      "receiptSha256": "6bc6b3bb83f7c33c5173c0ad9d0d2ef816b7da609d73cf266eb47183774cceb7",
+      "summary": "Real stable staging: desktop dark1440 and mobile light390 preserve explicit CHI/seed20260306/play/year2024 as fa-20260306-CHI across creation, full-page navigation, reload and Continue. Exactly one real advance moves week1→2 and survives reload; explicit named manual saves resume in a new tab at year2024/week2. No storage/request/worker behavior is mocked. Returning browser uses this candidate service worker; no older-release upgrade or full theme matrix is claimed.",
+      "observedOutcomes": {
+        "explicitTeamNavigation": {
+          "status": "passed",
+          "evidence": "desktop: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI; mobile: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI"
+        },
+        "selectedSaveNavigation": {
+          "status": "passed",
+          "evidence": "desktop: explicit slot s112-proof-desktop resumed in a new tab as fa-20260306-CHI, year 2024, week 2; mobile: explicit slot s112-proof-mobile resumed in a new tab as fa-20260306-CHI, year 2024, week 2"
+        },
+        "progressReload": {
+          "status": "passed",
+          "evidence": "desktop: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2; mobile: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2"
+        }
+      },
+      "limitations": [
+        "No runtime preference is forced and no request, storage, worker or service-worker behavior is mocked.",
+        "The returning browser uses this candidate's installed service worker; this does not simulate an older-release upgrade.",
+        "Desktop dark and mobile light are sampled; this is not the full visual matrix.",
+        "One week is advanced in each isolated local browser franchise; no analytics consent is granted, account created or share transmitted."
+      ]
+    },
+    "productionContinuity": {
+      "status": "verified",
+      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "receipt": "reports/production-browser-s112-final.json",
+      "receiptSha256": "71fc3a9eb2d358a9044fa93749063853ab811889b36918babc633c552fdb23a6",
+      "summary": "Actual desktop dark and mobile light production flows preserve CHI, seed20260306 and Play mode through creation, reload and Continue. Exactly one W1-to-W2 advance per viewport survives reload; an explicitly named save restores in a new tab. Active service worker, no browser diagnostic failures, eight freshly inspected portable images; no analytics consent or synthetic state."
+    },
+    "captureLedger": {
+      "status": "verified",
+      "receipt": "docs/visual-qa/CAPTURE_LEDGER.json",
+      "summary": "630 retained PNG files verified against 2545 immutable ledger entries; final222 includes24 recovery captures. Supplemental failed5 and corrected4 disabled-control images remain separate."
+    },
+    "supersededCandidateReceipt": "reports/s112-superseded-88a5e006.json",
+    "supersededCandidateReceipts": [
+      "reports/s112-superseded-88a5e006.json",
+      "reports/s112-superseded-23139ba.json",
+      "reports/s112-superseded-6608db3.json"
+    ],
+    "note": "The initial full UI run remains 69 passed, 1 failed and 1 intentional skip: its advisor-copy assertion expected the former two-state wording. The deterministic assertion was corrected without relabeling that red run. The first immutable visual candidate passed automated capture gates but actual pixel review found light-theme contrast defects; those defects were corrected and the final artifact was recaptured and reviewed. Superseded source 88a5e006bf0582c8dcba4ddfd84e9516f688de6d retains separate outcomes: general CI run 36747125169 succeeded with 70 browser passes and 1 skip, while Pages run 36747125173 failed with 69 passes, 1 failure and 1 skip. The unchanged reward-beats test reproduced locally at 2 passes and 1 failure across 3 repeats. Its failed image showed the Weekly Plan Composer awaiting a required choice; all three non-waiting visibility probes ran before the GM-decision response, and no advance request was submitted. Its Node run stopped after four passing shards totaling 1,293 tests; the long shard was cancelled with exit -1, so this was not a complete green suite. That candidate was not promoted to production. These earlier results remain superseded evidence, not final-source acceptance. See reports/s112-superseded-88a5e006.json. The replacement bcf5384 passed general CI after a clean failed-job rerun, but real stable-staging browser interaction proved that both new-franchise creation and explicit save loading lost the selected franchise across page navigation. Its local suite was interrupted after core 290 and runtime 909 passed (1199 total); sim-contract had not completed. No full green suite or production promotion was claimed for that candidate. The first 13 recovery browser checks failed because the test observer copied full imported snapshots into sessionStorage and its identity reader used a nonexistent field; those harness defects were corrected without treating that run as product acceptance. See reports/staging-browser-s112.json. Product source 23139baf778792dcea44118138de3ee07eed5a5a was pushed normally with hooks intact and verified on stable staging at 14/14. Its local canonical run was stopped during core with zero completed shards before correcting tested browser-gate scripts. General CI run 36787373005 passed all five hosted unit shards but failed static smoke before the full browser suite, and Pages run 36787373023 failed the same smoke: assertions expected bare game.html after successful navigation to game.html?resume=tab. Its responsive harness had the same stale expectation. Backend build 36787373038 succeeded, but no backend or production publication was accepted for that candidate. The normal push was delayed but completed; no deadlock or hook bypass is claimed. Three script sites and four client-runtime assertions across three files were corrected without changing public/src product code, server-runtime expectations or timeouts. Focused client checks passed 6 with 1 existing intentional skip, and static smoke passed. The clean replacement commit 6608db347debe8d72b44f2dbeec7e8ca39308981 builds the same artifact 5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3. Its independent final acceptance must come from final receipts, not these predecessor results. See reports/s112-superseded-23139ba.json. Source 6608db347debe8d72b44f2dbeec7e8ca39308981 completed general CI run 36793635097 successfully, including browser job 110151960971 with 89 passes and 1 intentional skip out of 90 tests (10.4 minutes, no downloadable artifacts). It reached stable staging with 14/14 identity checks and actual desktop/mobile continuity. Subsequent actual pixel review found that the light-theme primary-button foreground override also affected disabled controls, rendering white labels on pale backgrounds. Its local canonical run was stopped after core 290/290; runtime was unfinished, so it was not a complete green suite. The candidate was not promoted to production or backend. The two light-theme selectors were subsequently narrowed to enabled controls in be71869. Existing actual per-PNG inspections may carry forward only when the new capture has the exact same hash; whole-candidate visual acceptance cannot carry forward. See reports/s112-superseded-6608db3.json and reports/browser-ci-s112-6608db3.json. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks."
+  },
+  "itemsCompleted": 10,
+  "secondOrderCompleted": 5,
+  "launchReady": false,
+  "boundary": "Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks.",
+  "silCategoriesV3": {
+    "devHealth": 97,
+    "creativeAlignment": 98,
+    "momentum": 94,
+    "engagement": 65,
+    "processQuality": 78,
+    "crossRepoCoherence": 88,
+    "securityPosture": 75,
+    "ecosystemIntegration": 65,
+    "capitalEfficiency": 50,
+    "automationCoverage": 94
+  },
+  "silScore": 804
+}
