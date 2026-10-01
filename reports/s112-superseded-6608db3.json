@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "superseded-candidate-evidence",
+  "observedAt": "2026-10-01T00:25:50.518Z",
+  "sourceRevision": "6608db347debe8d72b44f2dbeec7e8ca39308981",
+  "artifactDigest": "5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3",
+  "status": "superseded-for-disabled-control-contrast",
+  "reason": "Actual pixel review found disabled light-theme primary buttons rendered with light text on a pale background. The new light-theme enabled-button text rule incorrectly overrode the disabled foreground. Narrow that rule to :not(:disabled), then verify a new immutable candidate.",
+  "ci": {
+    "runId": 36793635097,
+    "status": "completed",
+    "conclusion": "success",
+    "browserJobId": 110151960971,
+    "browserTests": {
+      "total": 90,
+      "passed": 89,
+      "skipped": 1,
+      "failed": 0
+    },
+    "boundary": "Successful CI does not override the subsequent actual pixel finding."
+  },
+  "canonicalSuite": {
+    "status": "interrupted",
+    "completedShards": [
+      {
+        "name": "core",
+        "passed": 290,
+        "total": 290
+      }
+    ],
+    "unfinishedShard": "runtime",
+    "completeGreenSuite": false,
+    "progress": ".cache/s112-tests-6608db3-interrupted-progress.json",
+    "binding": ".cache/s112-tests-6608db3-interrupted-binding.json",
+    "log": ".cache/logs/s112-tests-6608db3-before-disabled-contrast-fix.log"
+  },
+  "staging": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14,
+    "deploymentId": "a33a7214-b0ab-4bc2-975b-43a107cf76fc",
+    "continuityReceipt": "reports/staging-browser-s112-final.json",
+    "continuity": "Desktop dark and mobile light actual creation, reload, Continue, one-week progress and named-save/new-tab resume passed; eight images actually inspected."
+  },
+  "visual": {
+    "responsiveCaptures": 327,
+    "publicCaptures": 40,
+    "recoveryCaptures": 24,
+    "acceptance": "nonpassing: disabled primary-button foreground regression",
+    "knownExamples": [
+      "s112-public-mobile-light-index.png",
+      "s112-desktop-game-dialog-light.png",
+      "s112-desktop-tutorial-skip-light.png"
+    ],
+    "boundary": "Per-frame actual inspections remain valid only for those exact PNG bytes. The complete candidate is not visually accepted."
+  },
+  "productionPromoted": false,
+  "backendPromoted": false,
+  "publicLaunch": "HOLD"
+}

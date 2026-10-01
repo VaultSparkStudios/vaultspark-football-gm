@@ -585,8 +585,8 @@ th {
 
 /* Light-mode accents are darkened for contrast on white surfaces, so the
    filled CTA needs light text to stay legible across every accent preset. */
-:root[data-theme="light"] .btn-primary,
-body[data-theme="light"] .btn-primary {
+:root[data-theme="light"] .btn-primary:not(:disabled),
+body[data-theme="light"] .btn-primary:not(:disabled) {
   color: var(--btn-primary-text);
 }
 
