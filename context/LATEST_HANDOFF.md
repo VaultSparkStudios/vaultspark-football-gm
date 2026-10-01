@@ -1,6 +1,8 @@
-# Latest Handoff — Session 112 completed
+# Session 112 Closeout — franchise durability and delivery
 
 > S112 is the closeout authority; match the newest scored SIL entry.
+
+> Closeout follow-through in progress: commit 0f0d3a1 reached main, but its CI run 36893062846 found a stale public release note and an unparseable handoff heading. The heading is restored here; the public note, narrow rendered review, final verification and publication are being completed. The be71869 receipts below remain evidence for that published source, not for a later correction. Keep the S112 lock until the correction is verified.
 
 ## Where We Left Off
 

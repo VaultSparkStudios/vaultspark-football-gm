@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "closeout-followthrough-verification",
+  "session": 112,
+  "status": "in_progress",
+  "observedAt": "2026-10-01T17:01:02.665Z",
+  "correctionAcceptance": "pending",
+  "failedCandidate": {
+    "sourceRevision": "0f0d3a1341e85c7c76c402f89551ff777262cb05",
+    "ci": {
+      "runId": 36893062846,
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846",
+      "status": "completed",
+      "conclusion": "failure",
+      "createdAt": "2026-10-01T16:34:53Z",
+      "jobs": [
+        {
+          "id": 110473183819,
+          "name": "browser-gates",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846/job/110473183819",
+          "startedAt": "2026-10-01T16:34:56Z",
+          "completedAt": "2026-10-01T16:37:46Z"
+        },
+        {
+          "id": 110473184057,
+          "name": "unit-shards (sim:contract)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846/job/110473184057",
+          "startedAt": "2026-10-01T16:34:56Z",
+          "completedAt": "2026-10-01T16:42:44Z"
+        },
+        {
+          "id": 110473184080,
+          "name": "unit-shards (core)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846/job/110473184080",
+          "startedAt": "2026-10-01T16:34:56Z",
+          "completedAt": "2026-10-01T16:43:32Z"
+        },
+        {
+          "id": 110473184129,
+          "name": "unit-shards (studio)",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846/job/110473184129",
+          "startedAt": "2026-10-01T16:34:56Z",
+          "completedAt": "2026-10-01T16:36:10Z"
+        },
+        {
+          "id": 110473184268,
+          "name": "unit-shards (sim:realism)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846/job/110473184268",
+          "startedAt": "2026-10-01T16:34:56Z",
+          "completedAt": "2026-10-01T16:42:01Z"
+        },
+        {
+          "id": 110473184393,
+          "name": "unit-shards (runtime)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846/job/110473184393",
+          "startedAt": "2026-10-01T16:34:56Z",
+          "completedAt": "2026-10-01T16:53:36Z"
+        }
+      ]
+    },
+    "studio": {
+      "jobId": 110473184129,
+      "passed": 351,
+      "total": 354,
+      "failed": 3,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 46052.464098,
+      "basis": "Completed studio job log TAP summary",
+      "failures": [
+        {
+          "test": "test/public-compliance.test.js:164:1",
+          "name": "public truth gate: derived stats match source and no internal vocabulary ships",
+          "error": "status.html newest release note is 2026-09-29 (session 110); PROJECT_STATUS lastSession is 112 dated 2026-10-01 — 2 sessions unpublished (tolerance 1). Write the player-facing note for what shipped."
+        },
+        {
+          "test": "test/session-authority.test.js:63:1",
+          "name": "the live handoff and the newest SIL entry name the same closed session",
+          "error": "the live handoff must carry a parseable closed session"
+        },
+        {
+          "test": "test/session94-public-surface.test.js:59:1",
+          "name": "the shipped status page is current",
+          "error": "status.html newest release note is 2026-09-29 (session 110); PROJECT_STATUS lastSession is 112 dated 2026-10-01 — 2 sessions unpublished (tolerance 1). Write the player-facing note for what shipped."
+        }
+      ]
+    },
+    "browser": {
+      "jobId": 110473183819,
+      "failedStep": "Verify Pages build",
+      "error": "public-truth gate failed: status.html newest release note is 2026-09-29 (session 110); PROJECT_STATUS lastSession is 112 dated 2026-10-01 — 2 sessions unpublished (tolerance 1). Write the player-facing note for what shipped.",
+      "smoke": "skipped",
+      "uiTests": "skipped",
+      "browserTestCount": null,
+      "limitation": "This job did not reach smoke or UI execution; it cannot supply new browser pass counts."
+    },
+    "archivedJobLogs": [
+      {
+        "job": "unit-shards (studio)",
+        "path": ".cache/logs/s112-closeout-ci-studio-failed.log",
+        "sha256": "bf68c568680b6503d25d8abee90b69e3db432d961dc9f3dd97e7c960e21f5389",
+        "storage": "ignored local archive; not a public downloadable artifact"
+      },
+      {
+        "job": "browser-gates",
+        "path": ".cache/logs/s112-closeout-ci-browser-failed.log",
+        "sha256": "71b76cebc75db97e5ee3f2a444900be17bf097339ad5767ef1341e49eda3ccf8",
+        "storage": "ignored local archive; not a public downloadable artifact"
+      }
+    ]
+  },
+  "correctionScope": {
+    "required": [
+      "Restore the parseable Session 112 closeout header.",
+      "Publish the player-facing release note for the already delivered Session 112 changes."
+    ],
+    "engineCssAndTests": "frozen; no correction changes authorized",
+    "failureClassification": "Two release-note assertions and one handoff-format assertion; the Pages build rejected the same stale release note."
+  },
+  "priorAcceptedEvidence": {
+    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "passed": 1702,
+    "total": 1702,
+    "nativeReceipt": "reports/test-suite-s112.json",
+    "nativeReceiptSha256": "5ba52285beb39ebb4fb492308b09d8d02206cfe88246313660db0fe6ec905358",
+    "bindingReceipt": "reports/test-binding-s112.json",
+    "bindingReceiptSha256": "a0731e9948b2fbb0aefacaa13a8a2352edb7f3cd78026e84b2a3a6a8cc581486",
+    "testSurfaceDigest": "59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef",
+    "limitation": "The existing 1702-test receipt remains evidence for its recorded be71869 source and test-surface digest. It is not a pass for the changed public status page or the correction commit."
+  },
+  "nextAcceptance": {
+    "sourceRevision": null,
+    "status": "pending",
+    "fullCanonicalSuite": "Required after committing and freezing the narrow correction; expected count is not an observed new result.",
+    "nativeReceiptDestination": "reports/test-suite-s112-followthrough.json",
+    "bindingReceiptDestination": "reports/test-binding-s112-followthrough.json",
+    "ci": "Pending corrected immutable source.",
+    "stagingAndProduction": "Pending exact corrected source and artifact verification.",
+    "visual": "Pending correction-source captures and actual review. Only exact PNG hash matches may carry prior pixel inspection.",
+    "doctor": "Pending post-publication reconciliation; no inherited blockingFailing=0 claim."
+  },
+  "limitations": [
+    "The failed CI run is complete. Its four other unit shards passed; the studio shard and browser build failed.",
+    "No corrected-source full test suite, browser result, visual acceptance, or deployment is claimed by this receipt.",
+    "Local job-log archives contain no published credential content; only public failure messages and count summaries are reproduced here."
+  ]
+}

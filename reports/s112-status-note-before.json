@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "phase": "before",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+  "capturedAt": "2026-10-01T16:51:52.283Z",
+  "status": "passed-before-baseline",
+  "captures": [
+    {
+      "file": "reports/s112-status-note-before/desktop-dark.png",
+      "sha256": "d5cce5005c83637d805d8c929c9acca07a43c7712bcec12294268759dc0b3af4",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-09-29 — A LEAGUE THAT TRADES AROUND YOU",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "documentHeight": 1741
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T16:53:27.9839334Z",
+      "observation": "Readable and contained in this theme/viewport; newest visible release note is September29, so the S112 note is absent."
+    },
+    {
+      "file": "reports/s112-status-note-before/desktop-light.png",
+      "sha256": "559f0185cb7e87a8ef4e7296afa3914eca6b7bdef24187fcf00885b71eb57eeb",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-09-29 — A LEAGUE THAT TRADES AROUND YOU",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "documentHeight": 1741
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T16:53:27.9995176Z",
+      "observation": "Readable and contained in this theme/viewport; newest visible release note is September29, so the S112 note is absent."
+    },
+    {
+      "file": "reports/s112-status-note-before/mobile-dark.png",
+      "sha256": "485c7934257211596b0e40734ade2ad5e488bf9d20f50596ad157bd5aaa260b4",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-09-29 — A LEAGUE THAT TRADES AROUND YOU",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "documentHeight": 3792
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T16:53:28.0006085Z",
+      "observation": "Readable and contained in this theme/viewport; newest visible release note is September29, so the S112 note is absent."
+    },
+    {
+      "file": "reports/s112-status-note-before/mobile-light.png",
+      "sha256": "912c1914d697868064d072907eb84342feb15a952f551659490e9b609215899c",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-09-29 — A LEAGUE THAT TRADES AROUND YOU",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "documentHeight": 3792
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T16:53:28.0016241Z",
+      "observation": "Readable and contained in this theme/viewport; newest visible release note is September29, so the S112 note is absent."
+    }
+  ],
+  "errors": [],
+  "scope": "Actual status.html, desktop/mobile and both native preferred themes. No CSS, content, snapshot or response substitutions.",
+  "review": {
+    "status": "passed",
+    "inspected": 4,
+    "findings": [
+      "S112 release-note content missing before correction."
+    ],
+    "blockingVisualDefects": 0
+  }
+}
