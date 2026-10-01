@@ -1,5 +1,17 @@
 # Closeout Brief — franchise-architect — S112
 
+<!-- s112-delivery-followthrough -->
+### Delivery follow-through — 2026-10-01
+
+Closeout commit0f0d3a1 failed CI36893062846: two assertions found the missing public release note and one found an unparseable handoff header. Correctionf8b640b restores the parseable Session112 heading and publishes the player-facing note. The failed run and original be71869 receipts remain separate historical evidence. Edge email-protection changes whole HTML response bytes; both encoded addresses are verified and the release note itself matches the artifact exactly.
+
+Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.
+
+Portable authority: reports/session112-followthrough-acceptance.json. Backend and detailed checkpoint/continuity measurements remain explicitly bound to be71869; no new backend deployment, cohort, isolated restore timing or field-performance claim is made.
+<!-- /s112-delivery-followthrough -->
+
+## Original product acceptance (be71869)
+
 > Franchise state survives navigation, trades respect every asset, and save success follows durable storage. 1702/1702 tests; 222 visual frames covered (126 fresh inspections, 96 exact-hash inherited reviews); verified staging and technical production. Public launch remains HOLD.
 
 ## Shipped

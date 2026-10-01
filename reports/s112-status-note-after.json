@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "phase": "after",
+  "origin": "immutable-local-static-artifact",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+  "capturedAt": "2026-10-01T17:18:31.781Z",
+  "status": "passed",
+  "errors": [],
+  "captures": [
+    {
+      "file": "reports/s112-status-note-after/desktop-dark.png",
+      "sha256": "19faa5ec81e5b5f4a9b053e6020ce6cc606c7a9ef9051cf89b8ff62bb4e0fab6",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T17:31:09.947Z",
+      "observation": "The Oct 1 note and its three paragraphs are readable, contained, and visually consistent; no clipping or concrete contrast defect.",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "route": "status.html",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "policyMatchesArtifact": true,
+      "policyViolations": [],
+      "documentWidth": 1440,
+      "firstVisibleNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP"
+    },
+    {
+      "file": "reports/s112-status-note-after/desktop-light.png",
+      "sha256": "dd84aa64135a7ebdc47f42f2bfa48c4834bb507da7c051f756f26569b0ba86a8",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T17:31:09.947Z",
+      "observation": "The Oct 1 note and its three paragraphs are readable, contained, and visually consistent; no clipping or concrete contrast defect.",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "route": "status.html",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "policyMatchesArtifact": true,
+      "policyViolations": [],
+      "documentWidth": 1440,
+      "firstVisibleNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP"
+    },
+    {
+      "file": "reports/s112-status-note-after/mobile-dark.png",
+      "sha256": "b175dc1ac0cfec4f16837c80a50c2e2a959bf487bbd5d0311135ef9583893236",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T17:31:09.947Z",
+      "observation": "The Oct 1 note and its three paragraphs are readable, contained, and visually consistent; no clipping or concrete contrast defect.",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "route": "status.html",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "policyMatchesArtifact": true,
+      "policyViolations": [],
+      "documentWidth": 390,
+      "firstVisibleNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP"
+    },
+    {
+      "file": "reports/s112-status-note-after/mobile-light.png",
+      "sha256": "357f692bf0d2f6df075a36f6b250a5980c7e596a5d597fbe3f302f781b68dbff",
+      "result": "passed",
+      "reviewMethod": "fresh-image-inspection",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T17:31:09.947Z",
+      "observation": "The Oct 1 note and its three paragraphs are readable, contained, and visually consistent; no clipping or concrete contrast defect.",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "route": "status.html",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "policyMatchesArtifact": true,
+      "policyViolations": [],
+      "documentWidth": 390,
+      "firstVisibleNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP"
+    }
+  ],
+  "review": {
+    "status": "passed",
+    "inspected": 4,
+    "findings": [],
+    "blockingVisualDefects": 0
+  },
+  "scope": "Actual status page from the final built artifact, served with its delivered production policy, both viewports and themes. Images copied byte-for-byte from the completed public-page QA run.",
+  "captureEvidence": {
+    "report": "output/playwright/public-qa/report.json",
+    "sha256": "b12effa1a0a29f57747b96ecdc6fa74eea72ae7d2f6980a9d14e17fadca072f0"
+  },
+  "beforeReceipt": {
+    "file": "reports/s112-status-note-before.json",
+    "sha256": "aa946648ec1b44ae8e3b6534f1a5bf2a617f82cbf03ed1aff9fa2a675699740c"
+  }
+}

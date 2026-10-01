@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "browser-ci-job-log-receipt",
+  "observedAt": "2026-10-01T17:30:39.322Z",
+  "repository": "VaultSparkStudios/vaultspark-football-gm",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "acceptanceScope": "Completed CI and browser-test evidence for this exact correction candidate. Canonical local tests, pixel review, staging and production acceptance remain separate.",
+  "run": {
+    "id": 36896631492,
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-10-01T17:04:03Z",
+    "updatedAt": "2026-10-01T17:21:43Z"
+  },
+  "job": {
+    "id": 110485142911,
+    "name": "browser-gates",
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/job/110485142911",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-10-01T17:04:05Z",
+    "completedAt": "2026-10-01T17:17:38Z"
+  },
+  "step": {
+    "completedAt": "2026-10-01T17:17:36Z",
+    "conclusion": "success",
+    "name": "Run UI tests",
+    "number": 10,
+    "startedAt": "2026-10-01T17:05:00Z",
+    "status": "completed"
+  },
+  "browserTests": {
+    "total": 90,
+    "passed": 89,
+    "skipped": 1,
+    "failed": 0,
+    "workers": 1,
+    "reportedDuration": "12.6m",
+    "failedCountBasis": "Successful completed job and complete accounting: 90 total = 89 passed + 1 skipped.",
+    "skippedControl": {
+      "name": "negative control: the same probe against the in-page runtime",
+      "path": "tests-ui/worker-runtime.spec.js",
+      "line": 167,
+      "optInVariable": "VSFGM_WORKER_NEGATIVE_CONTROL",
+      "requiredValue": "1",
+      "identityBasis": "The candidate contains one explicit test.skip: the opt-in negative control. The CI summary supplies the observed skipped count."
+    }
+  },
+  "allJobs": [
+    {
+      "id": 110485142911,
+      "name": "browser-gates",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/job/110485142911"
+    },
+    {
+      "id": 110485143321,
+      "name": "unit-shards (runtime)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/job/110485143321"
+    },
+    {
+      "id": 110485143421,
+      "name": "unit-shards (sim:contract)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/job/110485143421"
+    },
+    {
+      "id": 110485143505,
+      "name": "unit-shards (studio)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/job/110485143505"
+    },
+    {
+      "id": 110485143597,
+      "name": "unit-shards (sim:realism)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/job/110485143597"
+    },
+    {
+      "id": 110485143722,
+      "name": "unit-shards (core)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/job/110485143722"
+    }
+  ],
+  "evidence": {
+    "basis": "GitHub Actions completed job logs retrieved with gh api actions/jobs/{job_id}/logs; completed run/job metadata retrieved with gh run view --json.",
+    "logCommand": "gh api repos/VaultSparkStudios/vaultspark-football-gm/actions/jobs/110485142911/logs",
+    "localLogPath": ".cache/logs/s112-followthrough-ci-browser-job.log",
+    "localLogSha256": "e3a94297ca21a4e0ee1cd3ec03edf68903c102c1b61888829b580f85bde87e30",
+    "summaryLines": [
+      {
+        "at": "2026-10-01T17:05:02.4336368Z",
+        "text": "Running 90 tests using 1 worker"
+      },
+      {
+        "at": "2026-10-01T17:17:35.9919551Z",
+        "text": "1 skipped"
+      },
+      {
+        "at": "2026-10-01T17:17:35.9920095Z",
+        "text": "89 passed (12.6m)"
+      }
+    ],
+    "jobLogsRetrievable": true,
+    "artifactsApi": "https://api.github.com/repos/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492/artifacts",
+    "downloadableArtifacts": 0,
+    "artifactsApiResult": {
+      "total_count": 0,
+      "artifacts": []
+    },
+    "receiptLimit": "This is a transcription of observed CI metadata and job-log counts, not a downloaded Playwright JSON report or an uploaded CI artifact. No local suite or pixel-review acceptance is inferred."
+  },
+  "history": {
+    "priorAcceptedSourceReceipt": "reports/browser-ci-s112.json",
+    "priorAcceptedSourceReceiptSha256": "be7046f1bb54cbfd72ef5039c505bf91dee4844c6995929c7bbe3ed4f75e35f5",
+    "priorAcceptedSourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "failedCloseoutReceipt": "reports/s112-closeout-followthrough.json"
+  }
+}

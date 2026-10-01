@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "hosted-status-delivery",
+  "checkedAt": "2026-10-01T20:13:19.508Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "route": "/status.html",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+  "expectedSha256": "9a232ac70950fc4672844f2d730dbab1353280f80cbc74de633e7daf2ab95c5d",
+  "observedSha256": "72bea8414a8a0c126d611df563494448d8526197326fe47d304061701e621f59",
+  "exactBytes": false,
+  "releaseNoteExactBytes": true,
+  "releaseNoteSha256": "ee73552560354a00545db0d433a008c039315396f088cea404b9de398eb139c5",
+  "verifiedEmailProtection": {
+    "anchorCount": 1,
+    "scriptCount": 1,
+    "decodedAddress": "football@playfranchisearchitect.com",
+    "normalizedPageMatches": true
+  },
+  "verified": true,
+  "limitation": "Whole response bytes differ when the edge protects the public email address. Only the observed one email-anchor rewrite and its exact decoder script are normalized after verifying both encoded addresses. The release note itself must match the built bytes exactly; no other page differences are accepted."
+}

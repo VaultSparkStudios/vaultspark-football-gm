@@ -1348,5 +1348,12 @@
     "status": "verified",
     "itemsCompleted": 10,
     "secondOrderCompleted": 5
+  },
+  "deliveryFollowthrough": {
+    "status": "verified",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+    "receipt": "reports/session112-followthrough-acceptance.json",
+    "scope": "Closeout handoff format and public release-note correction. Engine, CSS, tests and workflow source remain unchanged."
   }
 }

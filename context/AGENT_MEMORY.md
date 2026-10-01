@@ -105,3 +105,12 @@
 - Component screenshots can be truthfully framed by hiding only unrelated fixed/sticky elements that overlap the target. Preserve target descendants and ancestors; never apply that lens to full-page evidence.
 - Studio CLI smoke tests must use `scripts/lib/safe-spawn.mjs`, and `--help` must exit without generating tracked artifacts or requiring runtime inputs.
 - Release deployment and launch readiness are independent. A green exact-SHA promotion can bind founder deployment approval while reply-capable email and registry lifecycle remain honest launch holds.
+
+
+<!-- s112-delivery-followthrough -->
+### Delivery evidence patterns
+
+- Closeout metadata needs its own contract checks: preserve a parseable closed-session heading and publish the corresponding player-facing note before asserting closeout CI success.
+- A receipt-only closeout remains separate from its deployed source; a public-page correction needs new exact-source artifact acceptance. Preserve prior evidence and carry pixel review only across identical PNG hashes.
+- Hosted email protection can change page-response bytes. Verify both encoded addresses and the exact observed decoder insertion before normalizing those two transformations; retain raw inequality and require the changed release-note block to match exactly.
+<!-- /s112-delivery-followthrough -->

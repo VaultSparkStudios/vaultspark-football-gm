@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "correction-source-scope",
+  "observedAt": "2026-10-01T17:57:23.013Z",
+  "priorAcceptedSource": "be71869a428e6224330d72cbba76df436ee31938",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+  "command": [
+    "git",
+    "diff",
+    "--name-status",
+    "be71869a428e6224330d72cbba76df436ee31938",
+    "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "--",
+    "src",
+    "public",
+    "scripts",
+    "test",
+    "tests-ui",
+    ".github",
+    "package.json",
+    "package-lock.json",
+    "playwright.config.mjs",
+    "Dockerfile",
+    "docker-compose.yml"
+  ],
+  "pathsChecked": [
+    "src",
+    "public",
+    "scripts",
+    "test",
+    "tests-ui",
+    ".github",
+    "package.json",
+    "package-lock.json",
+    "playwright.config.mjs",
+    "Dockerfile",
+    "docker-compose.yml"
+  ],
+  "changes": [
+    {
+      "status": "M",
+      "file": "public/status.html"
+    }
+  ],
+  "engineCssTestsAndWorkflowsUnchanged": true,
+  "sourceNoteSha256": "3ef6635abe7318f9e0325adcf1d2b8f04d38a28dc269e6b088f67aff7c053929",
+  "boundary": "Git proves the sole change within the listed source/test/build/workflow paths is the public status page. This supports retaining the separately bound prior backend and engine measurements; it does not relabel their original source identity or replace the fresh correction-source acceptance."
+}

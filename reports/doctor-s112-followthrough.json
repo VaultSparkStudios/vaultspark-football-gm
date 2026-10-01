@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-10-01T20:26:32.954Z",
+  "blockingFailing": 0,
+  "failing": 0,
+  "warning": 1,
+  "passing": 11,
+  "lifecycle": {
+    "schemaVersion": "1.0",
+    "slug": "franchise-architect-football",
+    "expectedVaultStatus": "FORGE",
+    "localVaultStatus": "FORGE",
+    "authoritativeVaultStatus": "SPARKED",
+    "authoritativeResolution": "resolved",
+    "authoritativeUnverified": false,
+    "audience": "public-unlaunched",
+    "blockingFailing": 0,
+    "warning": 1,
+    "coherent": true,
+    "authoritativeDrift": true,
+    "checks": [
+      {
+        "id": "local-vault-status",
+        "ok": true,
+        "blocking": true,
+        "detail": "local FORGE · contract FORGE"
+      },
+      {
+        "id": "audience",
+        "ok": true,
+        "blocking": true,
+        "detail": "local public-unlaunched · contract public-unlaunched"
+      },
+      {
+        "id": "launch-blocker",
+        "ok": true,
+        "blocking": true,
+        "detail": "1 blocker(s) recorded"
+      },
+      {
+        "id": "public-status",
+        "ok": true,
+        "blocking": true,
+        "detail": "public status preserves the evidence gate"
+      },
+      {
+        "id": "launch-evidence",
+        "ok": true,
+        "blocking": true,
+        "detail": "launch-evidence-2026-09-09-session100.json: blocked"
+      },
+      {
+        "id": "authoritative-registry",
+        "ok": false,
+        "blocking": false,
+        "resolution": "resolved",
+        "detail": "registry SPARKED · local contract FORGE"
+      }
+    ]
+  },
+  "releaseCurrency": {
+    "schemaVersion": "1.0",
+    "kind": "release-authority-currency",
+    "status": "current",
+    "claimsCurrent": true,
+    "blockingFailing": 0,
+    "warning": 0,
+    "passing": 6,
+    "identities": {
+      "head": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "checked": {
+        "staging": {
+          "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+          "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+        },
+        "releaseSource": {
+          "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+          "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+        },
+        "publication": {
+          "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+          "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+        }
+      },
+      "live": {
+        "staging": {
+          "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+          "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+        },
+        "production": {
+          "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+          "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+        }
+      }
+    },
+    "receiptOnlyHead": null,
+    "checks": [
+      {
+        "id": "live-staging-observed",
+        "ok": true,
+        "unknown": false,
+        "contradiction": false,
+        "detail": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9"
+      },
+      {
+        "id": "live-production-observed",
+        "ok": true,
+        "unknown": false,
+        "contradiction": false,
+        "detail": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9"
+      },
+      {
+        "id": "checked-staging-current",
+        "ok": true,
+        "contradiction": false,
+        "detail": "checked f8b640b3774390f0dc74692b7bc7f71e7563f1e9 · live f8b640b3774390f0dc74692b7bc7f71e7563f1e9"
+      },
+      {
+        "id": "checked-publication-current",
+        "ok": true,
+        "contradiction": false,
+        "detail": "checked f8b640b3774390f0dc74692b7bc7f71e7563f1e9 · live f8b640b3774390f0dc74692b7bc7f71e7563f1e9"
+      },
+      {
+        "id": "release-source-current",
+        "ok": true,
+        "contradiction": false,
+        "detail": "release source f8b640b3774390f0dc74692b7bc7f71e7563f1e9 · live staging f8b640b3774390f0dc74692b7bc7f71e7563f1e9"
+      },
+      {
+        "id": "git-head-covered-by-publication",
+        "ok": true,
+        "contradiction": false,
+        "detail": "HEAD f8b640b3774390f0dc74692b7bc7f71e7563f1e9 is live"
+      }
+    ],
+    "items": []
+  },
+  "items": [
+    {
+      "id": "lifecycle-authoritative-registry",
+      "status": "warning",
+      "blocking": false,
+      "detail": "registry SPARKED · local contract FORGE"
+    }
+  ]
+}

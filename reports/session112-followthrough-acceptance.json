@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "session-delivery-followthrough",
+  "session": 112,
+  "status": "verified",
+  "observedAt": "2026-10-01T20:26:58.029Z",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+  "scope": "Closeout handoff format and public release-note correction. Engine, CSS, tests and workflow source remain unchanged.",
+  "suite": {
+    "passed": 1702,
+    "total": 1702,
+    "failed": 0,
+    "shards": [
+      {
+        "name": "core",
+        "passed": 290,
+        "total": 290,
+        "failed": 0,
+        "durationMs": 575980
+      },
+      {
+        "name": "runtime",
+        "passed": 961,
+        "total": 961,
+        "failed": 0,
+        "durationMs": 1570350
+      },
+      {
+        "name": "sim-contract",
+        "passed": 85,
+        "total": 85,
+        "failed": 0,
+        "durationMs": 729574
+      },
+      {
+        "name": "sim-realism",
+        "passed": 9,
+        "total": 9,
+        "failed": 0,
+        "durationMs": 781414
+      },
+      {
+        "name": "long",
+        "passed": 3,
+        "total": 3,
+        "failed": 0,
+        "durationMs": 862994
+      },
+      {
+        "name": "studio",
+        "passed": 354,
+        "total": 354,
+        "failed": 0,
+        "durationMs": 231781
+      }
+    ],
+    "sourceBinding": "Clean tested paths at the exact correction Git revision before launching the unchanged canonical all-shard runner. Completion must retain that source revision and test-surface digest, and match a fresh direct native receipt for all six shards.",
+    "testSurfaceDigest": "be86d2249b7b9e5ebb8786d48f9369c20548499a08b97f4826012dc6c9881bcd",
+    "finishedAt": "2026-10-01T18:36:29.818Z"
+  },
+  "ci": {
+    "id": 36896631492,
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-10-01T17:04:03Z",
+    "updatedAt": "2026-10-01T17:21:43Z",
+    "browserTests": {
+      "total": 90,
+      "passed": 89,
+      "skipped": 1,
+      "failed": 0,
+      "workers": 1,
+      "reportedDuration": "12.6m",
+      "failedCountBasis": "Successful completed job and complete accounting: 90 total = 89 passed + 1 skipped.",
+      "skippedControl": {
+        "name": "negative control: the same probe against the in-page runtime",
+        "path": "tests-ui/worker-runtime.spec.js",
+        "line": 167,
+        "optInVariable": "VSFGM_WORKER_NEGATIVE_CONTROL",
+        "requiredValue": "1",
+        "identityBasis": "The candidate contains one explicit test.skip: the opt-in negative control. The CI summary supplies the observed skipped count."
+      }
+    }
+  },
+  "visual": {
+    "reviewedImages": 222,
+    "freshlyInspectedImages": 147,
+    "hashInheritedImages": 75
+  },
+  "staging": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "production": {
+    "status": "verified",
+    "checksPassed": 10,
+    "checksTotal": 10,
+    "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555"
+  },
+  "doctor": {
+    "blockingFailing": 0,
+    "warnings": 1
+  },
+  "performance": {
+    "route": "/",
+    "profiles": [
+      {
+        "name": "desktop",
+        "runs": 3,
+        "lcpMs": 564,
+        "inpMs": 32,
+        "cls": 0,
+        "interactionObserved": true
+      },
+      {
+        "name": "mobile",
+        "runs": 3,
+        "lcpMs": 524,
+        "inpMs": 24,
+        "cls": 0.0085,
+        "interactionObserved": true
+      }
+    ],
+    "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route."
+  },
+  "receipts": {
+    "suite": {
+      "file": "reports/test-suite-s112-followthrough.json",
+      "sha256": "302e6c2027a0dd7bf902c025ffde7a1f33359d22776273bd2ae6dd16e8439454"
+    },
+    "binding": {
+      "file": "reports/test-binding-s112-followthrough.json",
+      "sha256": "79817825fa35d7e888397369e29696f67b03213790dccaadbd06222bb8db2c9d"
+    },
+    "ci": {
+      "file": "reports/browser-ci-s112-followthrough.json",
+      "sha256": "5966b91bd84fbb59c1600b9e10cb559646c1f6e3cae3260f4d83434f3f8dd0ba"
+    },
+    "staging": {
+      "file": "reports/staging-provenance-s112-followthrough.json",
+      "sha256": "b917f8909c498085314ace5105ee88d4281709917d66d7550456c1c9e0632ff6"
+    },
+    "production": {
+      "file": "reports/production-provenance-s112-followthrough.json",
+      "sha256": "e8fd564bbc9f3d82e433e4281d67230313cadaae94b1f86da41c3191ef954cba"
+    },
+    "workflow": {
+      "file": "reports/production-workflow-s112-followthrough.json",
+      "sha256": "ed46a10af0ddb92381528905d05494f8d6d3abb313c7feee2a1bb90c0faca155"
+    },
+    "visual": {
+      "file": "docs/visual-qa/LATEST.json",
+      "sha256": "330201dc173f7d50234e5e850c90dbdef9c4021827227bbaeabc0adbbe7d7868"
+    },
+    "review": {
+      "file": "reports/visual-review-s112-followthrough.json",
+      "sha256": "c5f30b074e413c453786dd9d0885a35dd7baf8ac63c8689f2a834c07ca3c7afd"
+    },
+    "performance": {
+      "file": "docs/performance/STAGING_S112_FOLLOWTHROUGH.json",
+      "sha256": "bc2b40acc85b6bc42dce0c35f0fb513c9b0cc910336d770de0a4e2033e65f7d9"
+    },
+    "doctor": {
+      "file": "reports/doctor-s112-followthrough.json",
+      "sha256": "3960089e6b95814b408b59fbf41b817c499f6456d78d55518214bd6c2d9efd25"
+    },
+    "authority": {
+      "file": "reports/release-authority-s112-followthrough.json",
+      "sha256": "2fa5645548ea731c1c3019815f2ec6bb9f393fac463f06d10af24d4926b87448"
+    },
+    "stagingNote": {
+      "file": "reports/staging-status-delivery-s112-followthrough.json",
+      "sha256": "32ba5033727c44d621a7f44d10288a423db1d6cd2376c8722127f4c78000a7be"
+    },
+    "productionNote": {
+      "file": "reports/production-status-delivery-s112-followthrough.json",
+      "sha256": "572fd2845f4fa6c2ff53c79263d984c87f9ea6c9eebdbe7f072d290315ff2822"
+    },
+    "hostedVisual": {
+      "file": "reports/s112-status-note-production.json",
+      "sha256": "4505a05f6040ee62087a51dc91949fa5524147117b0b23e6a5d3a8b23af0282f"
+    }
+  },
+  "priorProductEvidence": {
+    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "commitContainingReceipts": "0f0d3a1341e85c7c76c402f89551ff777262cb05",
+    "suite": "reports/test-suite-s112.json",
+    "backend": "reports/backend-manual-s112.json",
+    "checkpointPerformance": "reports/client-checkpoint-performance-s112.json",
+    "limitation": "Original receipts retain their original source identity. The unchanged backend was not redeployed for a static release-note correction."
+  },
+  "failedCloseout": {
+    "sourceRevision": "0f0d3a1341e85c7c76c402f89551ff777262cb05",
+    "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36893062846",
+    "receipt": "reports/s112-closeout-followthrough.json"
+  },
+  "launchReady": false,
+  "sil": {
+    "score": 804,
+    "max": 1000,
+    "note": "One Session112 score retained; follow-through is not a second scored session."
+  }
+}

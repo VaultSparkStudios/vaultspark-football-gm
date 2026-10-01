@@ -2,9 +2,9 @@
   "schemaVersion": "1.0",
   "kind": "closeout-followthrough-verification",
   "session": 112,
-  "status": "in_progress",
+  "status": "verified",
   "observedAt": "2026-10-01T17:01:02.665Z",
-  "correctionAcceptance": "pending",
+  "correctionAcceptance": "verified",
   "failedCandidate": {
     "sourceRevision": "0f0d3a1341e85c7c76c402f89551ff777262cb05",
     "ci": {
@@ -141,17 +141,23 @@
     "limitation": "The existing 1702-test receipt remains evidence for its recorded be71869 source and test-surface digest. It is not a pass for the changed public status page or the correction commit."
   },
   "nextAcceptance": {
-    "sourceRevision": null,
-    "status": "pending",
-    "fullCanonicalSuite": "Required after committing and freezing the narrow correction; expected count is not an observed new result.",
-    "nativeReceiptDestination": "reports/test-suite-s112-followthrough.json",
-    "bindingReceiptDestination": "reports/test-binding-s112-followthrough.json",
-    "ci": "Pending corrected immutable source.",
-    "stagingAndProduction": "Pending exact corrected source and artifact verification.",
-    "visual": "Pending correction-source captures and actual review. Only exact PNG hash matches may carry prior pixel inspection.",
-    "doctor": "Pending post-publication reconciliation; no inherited blockingFailing=0 claim."
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "status": "verified",
+    "receipt": "reports/session112-followthrough-acceptance.json",
+    "suite": "reports/test-suite-s112-followthrough.json",
+    "binding": "reports/test-binding-s112-followthrough.json",
+    "ci": "reports/browser-ci-s112-followthrough.json",
+    "visual": "docs/visual-qa/LATEST.json",
+    "staging": "reports/staging-provenance-s112-followthrough.json",
+    "production": "reports/production-provenance-s112-followthrough.json",
+    "doctor": "reports/doctor-s112-followthrough.json"
   },
   "limitations": [
+    "The original failed CI and initial pending-acceptance limits remain historical. The final nextAcceptance names the separately verified correction.",
+    "The unchanged backend and detailed checkpoint/continuity observations retain their original be71869 source identity. Public launch remains HOLD."
+  ],
+  "completedAt": "2026-10-01T20:26:58.029Z",
+  "initialLimitations": [
     "The failed CI run is complete. Its four other unit shards passed; the studio shard and browser build failed.",
     "No corrected-source full test suite, browser result, visual acceptance, or deployment is claimed by this receipt.",
     "Local job-log archives contain no published credential content; only public failure messages and count summaries are reproduced here."

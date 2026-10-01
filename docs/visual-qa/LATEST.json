@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-10-01T00:49:49.214Z",
-  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "capturedAt": "2026-10-01T17:23:53.048Z",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+    "digest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
     "files": 234,
     "entries": [
       {
@@ -680,7 +680,7 @@
       {
         "path": "sitemap.xml",
         "bytes": 1439,
-        "sha256": "441d4a5ccb48b0111ed9884d0e8cc97b370c5052d6d26cf30b00eaf2acacf50e"
+        "sha256": "1a42deb5d9c3e05b246fedfac2655ff2ff6e692fc57d743bf2ea58cf4d723921"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1149,13 +1149,13 @@
       },
       {
         "path": "status-archive.html",
-        "bytes": 19520,
-        "sha256": "eaee694a9e5d14e6fc4ca4b9efb4252fdc75d3df128aee8873df9596f2d6e000"
+        "bytes": 20477,
+        "sha256": "672c14d74c26d0c1edc68718af46a4bdde23f5964fce32dc116ae0e7ead03c26"
       },
       {
         "path": "status.html",
-        "bytes": 7843,
-        "sha256": "ec6aeb8cef6fbaeeaceae9644f58afa5a90f7e697e892b5ee623b65279701dc1"
+        "bytes": 7388,
+        "sha256": "9a232ac70950fc4672844f2d730dbab1353280f80cbc74de633e7daf2ab95c5d"
       },
       {
         "path": "styles.98aed5d077.css",
@@ -1184,7 +1184,7 @@
       "edge-policy-receipt.json"
     ]
   },
-  "artifact": "static responsive-evidence:4ccfe9a96eb670180b05b0db313903f20ae91fe3057879a4af9ff401e3e168cd",
+  "artifact": "static responsive-evidence:2837608d961ec6d6aaf72b71f3352a9cb41cda44d184a034f5efe60de37e2fd8",
   "themes": [
     "dark",
     "light"
@@ -1192,7 +1192,7 @@
   "captures": [
     {
       "file": "s112-desktop-game-overview-dark.png",
-      "sha256": "b482e60e3ab89ec82942c758e8f5952ea7bd0bd0be8bf166354cfce2511f6dfd",
+      "sha256": "fd616fb8d631e0b82fb41b38655317a2308d26b916af018eaa3cc4ed1c0fc850",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1202,7 +1202,7 @@
     },
     {
       "file": "s112-desktop-game-overview-light.png",
-      "sha256": "05016a9d4699e1c435669f8bdbad1f97ad2313148da57ecf09518c6ce07f5079",
+      "sha256": "dbc7734a0541f8dbd8d84739f5ae48e6c4cae57a10d8166f3bbc5c40198e4ba5",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1212,7 +1212,7 @@
     },
     {
       "file": "s112-desktop-game-league-dark.png",
-      "sha256": "3ae1c8ab020ce13aab7ce4bf0333dfc93c4bb215ca28fbc0099dfb42f73bb55a",
+      "sha256": "cbfb595ed5e6f9c841b57124db40d2c1f3c8098a222b8508f9f94f4c1b2932e9",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1222,7 +1222,7 @@
     },
     {
       "file": "s112-desktop-game-league-light.png",
-      "sha256": "fb9899809f101abc83ec7decb6b55491353f7ccb370cf34e1ba149751544f70c",
+      "sha256": "cff01f4aea596059bf712b4ce17b4e6d4e7a074eba9a962959b726efd3631586",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1232,7 +1232,7 @@
     },
     {
       "file": "s112-desktop-game-roster-dark.png",
-      "sha256": "9eef48ff21b1f90dd261eaaeb73e4f4abee57767062cbb9bbfc5e2c0c8ad3dee",
+      "sha256": "194393ff56b53401c99a2cb1085e0dbd15af71ee7db7c1f2c07cf07cf09a7e03",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1242,7 +1242,7 @@
     },
     {
       "file": "s112-desktop-game-roster-light.png",
-      "sha256": "7ea177d4de08adecef9d4f9305b474bce70109b4a7e61222cc3fe323fb33385e",
+      "sha256": "a656f4bc7eee514c58b064cfc30d7266e2d86e393e3e4419a4a591ace8671bb6",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1252,7 +1252,7 @@
     },
     {
       "file": "s112-desktop-game-depth-dark.png",
-      "sha256": "2fb71f10d6fdcb07ce5d22e7e7860a811252c8451d883a6898f147bb1c79775f",
+      "sha256": "82bf728973d0821ecd7fb6c99f618149a82db9b6a4523c419af04519925c49e7",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1262,7 +1262,7 @@
     },
     {
       "file": "s112-desktop-game-depth-light.png",
-      "sha256": "7703d42bfc468c0421af4bf471eabc7abc4a2b30233a216159bb1857cb59a34c",
+      "sha256": "f148f0f5ebc048595067dda83261715750bce1248025bbdab16a77412bb4dea3",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1272,7 +1272,7 @@
     },
     {
       "file": "s112-desktop-game-trades-dark.png",
-      "sha256": "acf284659897ed144ee4c9123ac84935977cd44b6170fb307693658e1637d2fc",
+      "sha256": "0b33f793400a7d80c6bef9e1a9a1266658361cf7acb49e711212622339d91925",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1282,7 +1282,7 @@
     },
     {
       "file": "s112-desktop-game-trades-light.png",
-      "sha256": "663650c9908c9e6f6d260fd27068f5fca1b02942999083757d0abc4f5af259f5",
+      "sha256": "04715c83bc1ddeafab4ece07a5b691be1ab7564e52ec0a482d4714323b03e626",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1292,7 +1292,7 @@
     },
     {
       "file": "s112-desktop-game-dialog-dark.png",
-      "sha256": "ca90f47865947638b10d48f219a6eb025e89bff3f39f4cf96ad81e30be381622",
+      "sha256": "5a28c089862e5471cf0a728232f5fa09fa0ee49c722d99b1426aa5566588534b",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1302,7 +1302,7 @@
     },
     {
       "file": "s112-desktop-game-dialog-light.png",
-      "sha256": "e73f316a7d979a54565d937283b9f468c88d4d84298736971aef4490167eccd8",
+      "sha256": "b2e7c100d0ca2f7753973c7e4618408e3610bd6927f067f867500412678e84ca",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1312,7 +1312,7 @@
     },
     {
       "file": "s112-desktop-tutorial-skip-dark.png",
-      "sha256": "4bceb735a1b75d9bb37b59c6a8d807f6d663a4fd322534262aa75226ee4ff71b",
+      "sha256": "710e686a725c01c6f0f99ab45878ddd8350f648ab4c6dc4a204e204683d02746",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1322,7 +1322,7 @@
     },
     {
       "file": "s112-desktop-tutorial-skip-light.png",
-      "sha256": "0b5ac3df1b291f29b8e5f4ac87f1f46ef266297fefd53eaa5016f7637f998565",
+      "sha256": "a14e55f5e275baeff26933662d104c066a8a2ee888d3683d494c0793c9bc3fb1",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1332,7 +1332,7 @@
     },
     {
       "file": "s112-desktop-tutorial-identity-dark.png",
-      "sha256": "51266f29778bc1b6e85fc325bd136222963eb71f098c1cc0bcda272b59e2fe1e",
+      "sha256": "4e2e22b94e32b5aa70465c1b0c1c46b283042af4e1b33132ab4fac08a4018ebc",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1342,7 +1342,7 @@
     },
     {
       "file": "s112-desktop-tutorial-identity-light.png",
-      "sha256": "c628558d31764bae471739a2569969fb1f23d238ea2bbe01a7a96d1d3d43f8b7",
+      "sha256": "7960ab90487abef36e38999c843027645236fcdedfbbf9e83b06e73fb92928b7",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1352,7 +1352,7 @@
     },
     {
       "file": "s112-desktop-tutorial-pressure-dark.png",
-      "sha256": "da65481736d333b5298f3bee274e63c5f83d68546b9ab5800aa28a226fea1dff",
+      "sha256": "1f2821b697afddb5924942ec611d364c680d753e3c2efd7ca347e0b9e11275c3",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1362,7 +1362,7 @@
     },
     {
       "file": "s112-desktop-tutorial-pressure-light.png",
-      "sha256": "f58fcf7d3aded00adbb6099b58989300f28f5d8bc09c1fc4af74505e002f9b70",
+      "sha256": "0102199962887831f9f997829a6e16820a8e12fb13e962da12864ffc739fa799",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1372,7 +1372,7 @@
     },
     {
       "file": "s112-desktop-tutorial-first-call-dark.png",
-      "sha256": "4e2d0c0281a126bf05a58125aafdf320a0c2758ac59e01f946de3c486c54af78",
+      "sha256": "c9f8154e77d81dd71a05968149093893fe68c9a7d3c1169657401a6a3247a409",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1382,7 +1382,7 @@
     },
     {
       "file": "s112-desktop-tutorial-first-call-light.png",
-      "sha256": "8f3fa8fd643d2744d941917538b954481acb9395fbfb7aa8465668b7bc06d8c4",
+      "sha256": "edb2a5684467781befbff372dcec0a0f5d0a50e10130e0a742abd37fb67dfaac",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1392,7 +1392,7 @@
     },
     {
       "file": "s112-desktop-tutorial-receipt-dark.png",
-      "sha256": "634c6abe91b34b3c68b2a0d50814247468de2be6f73dad1587e96aedf1113ea1",
+      "sha256": "c725184c65d975a8fdb8a6a9e955ca7d946836832f02debb302a87f63423ed0c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1402,7 +1402,7 @@
     },
     {
       "file": "s112-desktop-tutorial-receipt-light.png",
-      "sha256": "bf364c323b287e768bdff92602f1991682a263b2a35448469300eb3fc6e2e183",
+      "sha256": "8a6494265029e1c4ac54cd768baccfefb6a3aa65b57b9df97664299301415a5c",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1412,7 +1412,7 @@
     },
     {
       "file": "s112-desktop-advisor-dark.png",
-      "sha256": "3d0039a78ae6e17624929ea27b3b52b9bab84b61e8cc4a69497293448fe06417",
+      "sha256": "c0aaabfe2602db0a6a57fbdc39124468b6e0ad4f82b37559d561cc456a43298c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1422,7 +1422,7 @@
     },
     {
       "file": "s112-desktop-advisor-light.png",
-      "sha256": "e4671ab5acc0210556ec4a8f514b6f2c40f5f8c3d159fe819c887c4babcaa74b",
+      "sha256": "d170302f5976d17b46c628a1b666146fabab24064905f3384d2d90e55216bf91",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1432,7 +1432,7 @@
     },
     {
       "file": "s112-desktop-dynasty-timeline-dark.png",
-      "sha256": "6c840a481bf2ad47432ac57ee2c73ca4910a1f60b5252ec6bd2c26a56d0c0503",
+      "sha256": "831da3cad4f18a98bccfc9e55e32e8df7ae21c07b7b5797e71ec58055114137a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1442,7 +1442,7 @@
     },
     {
       "file": "s112-desktop-dynasty-timeline-light.png",
-      "sha256": "9b7e3978cd0f5e697b0dc606fd79375f279fa2bb2cdb59f2d4a974f20599e7cf",
+      "sha256": "22b84f374fcad9e09b1f97bf173633334f80b4c8e8403bd2c70e4690931497d9",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1452,7 +1452,7 @@
     },
     {
       "file": "s112-desktop-first-debrief-dark.png",
-      "sha256": "7d3bdb6b97dfe3d31f2614c577bd33dd14d978717898cff3cd625c2006aa6f6c",
+      "sha256": "f3a21f08122a37a865289aa0242d66d8e0f0a4072cad5698018009737610a819",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1462,7 +1462,7 @@
     },
     {
       "file": "s112-desktop-first-debrief-light.png",
-      "sha256": "9ed984f80520176261a2613f7975b84e60b09ff9801239f22e08066f07b49f1c",
+      "sha256": "a76163925ff63a41bce78f8d3f80f5470f2df7026855f98374029c4510599637",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1472,7 +1472,7 @@
     },
     {
       "file": "s112-desktop-moment-card-dark.png",
-      "sha256": "59704eaae49d4ead83adb168114dbd33a92aacf3587c89e1b703475542daae03",
+      "sha256": "9dffa8cea15a3793a063e7c43f13802a26d92fe9129300712ba03b67cbd50364",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1482,7 +1482,7 @@
     },
     {
       "file": "s112-desktop-moment-card-light.png",
-      "sha256": "616d63c89e6495352185487b8a97de5931031c0148018ca43ac891226b7ebe2b",
+      "sha256": "cec57247753a7f80f9b39a1234a495d872d6333cfab32d895834692019f10d34",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1492,7 +1492,7 @@
     },
     {
       "file": "s112-desktop-return-digest-dark.png",
-      "sha256": "67a714fc1bd6196e944e257b403ccc5e51c4672c3663cdcdbf034c8c0aea9c5b",
+      "sha256": "9413fc43bcff0751b79bb1dcc2c187aaa109ac4605c826078acadf68eec4d339",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1502,7 +1502,7 @@
     },
     {
       "file": "s112-desktop-return-digest-light.png",
-      "sha256": "1e907decd21dca3d58df4df23829f2803598ba3fdf63a702b3bf4480c27ca8a3",
+      "sha256": "c5569c45edfaf82c6c6f00e0c6bbfe35909bf5aba43ae5ab53c30d76ab74a5f1",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1512,7 +1512,7 @@
     },
     {
       "file": "s112-desktop-cap-pressure-dark.png",
-      "sha256": "6babef3f497256039df9372e79612f62f0b820b4cd00a71925b31c2c763cf3f4",
+      "sha256": "cda8fc9ff31416fcff399cc7e6e1ab12ed0bbcdf97e0bc20503024efa60e9a02",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1522,7 +1522,7 @@
     },
     {
       "file": "s112-desktop-cap-pressure-light.png",
-      "sha256": "9bd78ad1189fa150df647950ed8cca196f49b39832d46b34bd7d2c3a13f478c2",
+      "sha256": "5feb4d951567ac72f855cf25c4a0e60bec3b31f26aa5bfbbd86936f925c7df35",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1532,7 +1532,7 @@
     },
     {
       "file": "s112-desktop-waiver-identity-dark.png",
-      "sha256": "939f8d09d8c09ef90cc6c863b52e6112c7b03d9a442b0c4032263c071dbca7b4",
+      "sha256": "940dc8e8207758e8ca026afe613fbeb7a29db521386c0c78295c0099e9b09a4d",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1542,7 +1542,7 @@
     },
     {
       "file": "s112-desktop-waiver-identity-light.png",
-      "sha256": "811acb33beadff256b757d4ac025b102d8a71901b13096c454bfda69142b6d82",
+      "sha256": "73bbfc772827d70d6b226662cd4b1ec871559f0f8edbbe348706dbd836616bb2",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1552,7 +1552,7 @@
     },
     {
       "file": "s112-desktop-franchise-legends-dark.png",
-      "sha256": "5890b32e6e51df2f6ee76efebf4952562691a90d78f3210cce818d0361626c12",
+      "sha256": "cd34441c1072402aa9fb654010af091796a28b03cad8a9dd28e102dbb05a0366",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1562,7 +1562,7 @@
     },
     {
       "file": "s112-desktop-franchise-legends-light.png",
-      "sha256": "c82fb3c0632c80b2f859a2d0b271c6b5e28c2a2cb280b36c67320aa064add2c1",
+      "sha256": "9ef19e7d3974e61bc49d32c3c76bebbcd0db91c16c25287cf598190a7e6df9d6",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1572,7 +1572,7 @@
     },
     {
       "file": "s112-desktop-gm-persona-dark.png",
-      "sha256": "280cb938f9f74b92287d550bed8589d60f10b4eaaadf634d5968ef3d1a84ec41",
+      "sha256": "ad633951cff9e0a7e875955a84ddefa4f0eb0e93e0061a1e7d1cb8b1c6128018",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1582,7 +1582,7 @@
     },
     {
       "file": "s112-desktop-gm-persona-light.png",
-      "sha256": "e579298d5e9255ecfb69accce02e08044b8fc7fae5724af4eeb528534f649ded",
+      "sha256": "e833923d59e87293d288554cd729a97f600c43af1038905c0761e07603186c3d",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1612,7 +1612,7 @@
     },
     {
       "file": "s112-desktop-sim-watch-reel-dark.png",
-      "sha256": "4f07a199a2d36fef0ccdfc5fb0dbdfbb1f4b17600588b9167afd2feba45ce8dd",
+      "sha256": "cf704573783f8fbc7f7f242e78a4af63e0f48dd54b72bb376e12d882038fdbad",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1622,7 +1622,7 @@
     },
     {
       "file": "s112-desktop-sim-watch-reel-light.png",
-      "sha256": "93a1ca59cd2ec40dbffaa6944a7098322b1a383cc22947d9173e1f44991e9a33",
+      "sha256": "35547603a31ad046947eb8479e56a5e570fdd5cf262d7268178967d3c3ffe133",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1632,7 +1632,7 @@
     },
     {
       "file": "s112-desktop-room-watch-dark.png",
-      "sha256": "02e2d8c3f3cb8d942ce77594a43ea81bbd9501c20dbdff5a0e3f8fbec0f0f6ba",
+      "sha256": "c16dc1799b7bf0efd68a629672f105668d728ceeef780e11b7aa468002ed572c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1642,7 +1642,7 @@
     },
     {
       "file": "s112-desktop-room-watch-light.png",
-      "sha256": "db2bd9788ab8e6506f18f46c958f60de670915f6072d88ea43a69eed360d8c4a",
+      "sha256": "e18195305e7fe6fd0288244afb91fa92e5c16c895c252dc9456cbbbf1658437d",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1652,7 +1652,7 @@
     },
     {
       "file": "s112-desktop-architect-cut-dark.png",
-      "sha256": "79081d4a8851b0ee6c732e4f1e06e176e215146169ac6b203222b8deb9be97a8",
+      "sha256": "a903230f24b60c939b2fdb0b4f1979e938985b5de86e49911d3e903c19db5640",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1662,7 +1662,7 @@
     },
     {
       "file": "s112-desktop-architect-cut-light.png",
-      "sha256": "8adcd23915192cea56a13bd8e2ee2c2cf4dd20df177d7e9a57f1100a983bd4ec",
+      "sha256": "be6b0169e4f6fa0f1a05c48c4cdbbf54bbd9c4e08c870ec4ac1f8fbee015316f",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1692,7 +1692,7 @@
     },
     {
       "file": "s112-desktop-rival-coaching-dark.png",
-      "sha256": "2483d6ccae2ab644ded2618e0d14c185ea944d9eb80bf7bfc67fa98daaa47dac",
+      "sha256": "c030de2ab99b8aeb6838b36fab499463c1815ce078057c6306d9869106824e46",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1702,7 +1702,7 @@
     },
     {
       "file": "s112-desktop-rival-coaching-light.png",
-      "sha256": "f2be703b06239c52d4b72bdfbf8a7b4c831d983ddb54719fe65d66823f30254f",
+      "sha256": "ef0878ef730cfd24a27a231c20cc10e3e65d45e66778cc1f9ae921613f71acc6",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1732,7 +1732,7 @@
     },
     {
       "file": "s112-desktop-co-gm-brief-dark.png",
-      "sha256": "890025b207ec0c92625a70c155399c49fa9600245cb4af2974789718b2301ddf",
+      "sha256": "28b5ddc900837506fc81c2fdfbf1a535cd62380dfad47a563d7be060ca83fa2c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1742,7 +1742,7 @@
     },
     {
       "file": "s112-desktop-co-gm-brief-light.png",
-      "sha256": "677c9dafce78f53bccd569d65b000f8c7d8f637b634f13047bfd648c53f2a91f",
+      "sha256": "946787cba2afbc63ab18e4b3313b31bb93d96eece9949ac3ad4317adcf3d73f5",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1772,7 +1772,7 @@
     },
     {
       "file": "s112-desktop-agent-negotiation-dark.png",
-      "sha256": "8e734f43e28d24e7a11bba12a1739073ac0c53825dc06bcf1cda50690144a28c",
+      "sha256": "3e636251c13f0c6a198f4248e91b5a35cdf6e5d50c35c35e31c56e2c62648091",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1782,7 +1782,7 @@
     },
     {
       "file": "s112-desktop-agent-negotiation-light.png",
-      "sha256": "3f822b41f633fa29dafc312e08b092c63e3f9d5ebad802d40a44c5c43e449045",
+      "sha256": "c3a2a6b700b77d2217e2f5194bc4b8698b3a6d2249aeaf292565c2d32aef3e69",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1812,7 +1812,7 @@
     },
     {
       "file": "s112-desktop-hof-ceremony-dark.png",
-      "sha256": "55d7d780b0b411d17418ee9f2ff37e2c3a0f5cbe0771b05890d08b2980ab15aa",
+      "sha256": "83969ee3bc77839e921c1be105e6e2e281309c977b831b534a087b23bd1dd1f8",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1822,7 +1822,7 @@
     },
     {
       "file": "s112-desktop-hof-ceremony-light.png",
-      "sha256": "d1b0f837300c6f2679b76f34b58e2e014bff4615312b206bd4b9c0f88ee00636",
+      "sha256": "c6767528d118db540cc37b348078e681eb0817239ecb847778335f27e7f097f4",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1892,7 +1892,7 @@
     },
     {
       "file": "s112-desktop-exact-command-target-dark.png",
-      "sha256": "5718742ff26d2455b6965fbd1a9f339a525020308c434ded7470196eb7c75b56",
+      "sha256": "3450af04df4011ed33f2dab9e317498519c3c3aea2926e78fcfdd2884867ce99",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1902,7 +1902,7 @@
     },
     {
       "file": "s112-desktop-exact-command-target-light.png",
-      "sha256": "9b3b67bd2e9a49224323ffb5adc954ce4805a8b8fddf5058c4e72371ed89dd25",
+      "sha256": "4bd1864cda65c93c00e6f38050f84172102abe1ad58bc2bc86db3bf3f3df51fa",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1912,7 +1912,7 @@
     },
     {
       "file": "s112-desktop-facility-capital-dark.png",
-      "sha256": "507f9b4de30d4ebe282cd45e7eb7f856ec959a118e591545a0f9098be700847e",
+      "sha256": "7fcbba027dbf1670426919f7a21575dd2c40bb130e5029c7cc527b70e2816488",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1922,7 +1922,7 @@
     },
     {
       "file": "s112-desktop-facility-capital-light.png",
-      "sha256": "f100974f525cce7a44fc1ec16b3f447f221ef25acd533069599ceb3eef03ebea",
+      "sha256": "4f6acd52071ef40206f50eaf9a28c87fa2fcb23fcd1b730d303d4eb58acca950",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1942,7 +1942,7 @@
     },
     {
       "file": "s112-desktop-gist-authentication-light.png",
-      "sha256": "9a2668f08c59a65d3f39817322efeaaa5aef4a2e7f158ee5c37dd9e790c2f2d5",
+      "sha256": "b7b3d23a859f418c7a4db3a84e5414f366913e5020adc4378506effc29e10376",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1952,7 +1952,7 @@
     },
     {
       "file": "s112-mobile-game-overview-dark.png",
-      "sha256": "2be306bd965c373aadd6728531520c86492f6fd79284ee0eae342647c6f14f32",
+      "sha256": "521c9f692115788abb532117946401a1e7ed0723ae22d4678146b3616a74fa60",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1962,7 +1962,7 @@
     },
     {
       "file": "s112-mobile-game-overview-light.png",
-      "sha256": "3abb674d71d1dd567d7b5c534574cd7a68aa40fc71686000f59af59a994817cc",
+      "sha256": "4a60d28e355f955827aefa2e1898e2d3a62b5aaed54b9365bddae61084aae669",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1972,7 +1972,7 @@
     },
     {
       "file": "s112-mobile-game-league-dark.png",
-      "sha256": "f32b65df1a9894090261dc83660d295e93614fbcafc915f5006279f447e738fe",
+      "sha256": "500a753996592ebfcaa169ed706d659837252a2e913f898c61719863be564f4f",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1982,7 +1982,7 @@
     },
     {
       "file": "s112-mobile-game-league-light.png",
-      "sha256": "24e17a8da6c94642cd8324ae28528ef0dec2e842249e91f1b54ca0e868448db7",
+      "sha256": "7b8056eaa151a4510e8c35389a393a4aed89183129cd99e7256d5e4e2e2eaede",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1992,7 +1992,7 @@
     },
     {
       "file": "s112-mobile-game-roster-dark.png",
-      "sha256": "d5da25790aee16fcdd31ae615ed6866ce3755db5fd239ae0cb86557efcd25546",
+      "sha256": "945ed3ec8b4cd9a184230fc83c1432915ad5c26b2cd186c1dddb6b5bc363a4ef",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2002,7 +2002,7 @@
     },
     {
       "file": "s112-mobile-game-roster-light.png",
-      "sha256": "09dbbcf27addf180795fea63da6b03643930819ba739f64e42db92ed4dc385c0",
+      "sha256": "35b308f04655c6da275425d4696f4ef8f131bcd07c06cc47ee3b10301e26f778",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2012,7 +2012,7 @@
     },
     {
       "file": "s112-mobile-game-depth-dark.png",
-      "sha256": "2804124eeb97b8a7440fcdce2b3436d9b9b87c2e622b49d0b8ae1fec3e8d8f15",
+      "sha256": "3d6fec65e08c2dd51768a840c5ddea77c7af0cc77d4cff356c9d3e8580cdc959",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2022,7 +2022,7 @@
     },
     {
       "file": "s112-mobile-game-depth-light.png",
-      "sha256": "c64c8cfea83052e13988cc4862056ad1ad43693c122bc532e5997e8f0f053404",
+      "sha256": "99a2ee81c59e2fae283b465742a258b0040e93510cc499b2727969b94d45aee6",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2032,7 +2032,7 @@
     },
     {
       "file": "s112-mobile-game-trades-dark.png",
-      "sha256": "2e8cade259e629dab41073bfb72ff94942051dd6339e83e30616f7d1f844ecfe",
+      "sha256": "21d2cb78509946bc211f6b85bcae855cdd477abc8984e175ea50a805a694dbc4",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2042,7 +2042,7 @@
     },
     {
       "file": "s112-mobile-game-trades-light.png",
-      "sha256": "81274fe7fcf936f26d5cf6103ae66872508dc07bff007511012054d4b1978642",
+      "sha256": "9aca86ed1855edda54847ca509f67882e45fe26653db04a9b9b08e9fdc7051e8",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2052,7 +2052,7 @@
     },
     {
       "file": "s112-mobile-game-dialog-dark.png",
-      "sha256": "f6c87a24afca153043a3665e7457a3179a0fe1128fa192d7162ce3155ca481f5",
+      "sha256": "3dff1ea2e89e0090c257dc7837e8e61aa3eff853877bfe92be30087775ac4d82",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2062,7 +2062,7 @@
     },
     {
       "file": "s112-mobile-game-dialog-light.png",
-      "sha256": "13dcd1e2358b379f57d6aa1a44cd6e68793bee90b54c2809f9546e1e23b5e4f7",
+      "sha256": "7c3f07a0577d81a55c4d714eba4971a22e793bd8d4310e1f48b2f13a8c88bfd7",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2072,7 +2072,7 @@
     },
     {
       "file": "s112-mobile-tutorial-skip-dark.png",
-      "sha256": "0add6d74697bafab0a242c8aa9f42b5fce0d4108ac08c8a3274aaf2233b0e812",
+      "sha256": "41e3abbf4e558ef7c14f89cd336abc553678babfebfe62e0eb699746780def91",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2082,7 +2082,7 @@
     },
     {
       "file": "s112-mobile-tutorial-skip-light.png",
-      "sha256": "28d1acea5a443955e98c456df4c9ceda715dd5e75ef763401fc6d6c62c314a59",
+      "sha256": "c580b16295563b3424fa5665e318eea61f6787d9e593d749c1a87740963c9a29",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2092,7 +2092,7 @@
     },
     {
       "file": "s112-mobile-tutorial-identity-dark.png",
-      "sha256": "bbf6a75c8205f82f02aeb7c477d336700c9d724e629cc9cd59d044e8ed430bb5",
+      "sha256": "0fe6f468e2904c915c4fefdc0b9bfbf4be3ec4d9f5aebe2e147fb3906909a9f2",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2102,7 +2102,7 @@
     },
     {
       "file": "s112-mobile-tutorial-identity-light.png",
-      "sha256": "132c032c01d0df728613583da0f2bfa9341845c976a39aaf56606af00271a07f",
+      "sha256": "e69e379ab1e86b01666d0d9e68b543492b47fe553786f62567468e7db6ff154a",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2112,7 +2112,7 @@
     },
     {
       "file": "s112-mobile-tutorial-pressure-dark.png",
-      "sha256": "eaf7e93883e3822ae2617d63934ba27fbaccb83b68221c5b22c44c879a46d5f3",
+      "sha256": "519725d4e32eea047a66366a5a8c509bd7a3343758aa389d1d6e93d022b6d8c7",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2122,7 +2122,7 @@
     },
     {
       "file": "s112-mobile-tutorial-pressure-light.png",
-      "sha256": "c6342abcefe90af5aa44330d03c4942184fc664c0e035bb8b2b26bc05f2e4c2e",
+      "sha256": "6953c43cb955fd807148c94b2d6feb51124525e36f590ea1652c8c4eb6dd8440",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2132,7 +2132,7 @@
     },
     {
       "file": "s112-mobile-tutorial-first-call-dark.png",
-      "sha256": "468ba5615997ee8d4140913a78d500a14a175b0f6d23ce8c6fdfd93079ae4434",
+      "sha256": "ef534443cc65160b377b07465b0b811855e15981434cc739648491749871329d",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2142,7 +2142,7 @@
     },
     {
       "file": "s112-mobile-tutorial-first-call-light.png",
-      "sha256": "7ca2cde4f9e54f40d72187122a32b29ee4485d1327b22a3f6ad2d93ac82e02c1",
+      "sha256": "892a87eddd8a0a9f79bac127c0c5d6b5bdceefa037b445fab217d0b8c861e1aa",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2152,7 +2152,7 @@
     },
     {
       "file": "s112-mobile-tutorial-receipt-dark.png",
-      "sha256": "ee23483c6cf35d4e0ac08ee0e83314e183d006726368e5d3c2c2af738a1ca846",
+      "sha256": "c8f8ec5f0f7c109032dca2d20f6bad6d0369cb15edeea8c28c7533e26448041e",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2162,7 +2162,7 @@
     },
     {
       "file": "s112-mobile-tutorial-receipt-light.png",
-      "sha256": "b6c4070ff1c5909a87f4151d22c21f6d8755c52af2eb2e76d6c19376c8d27b95",
+      "sha256": "3bb98d432291e5c7de276e5e083d3c2945b9600dbd079bb0b6d8fe7723cb92fe",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2172,7 +2172,7 @@
     },
     {
       "file": "s112-mobile-advisor-dark.png",
-      "sha256": "b11d6fa3489f278a009ac77bf14d5d2da2df3cdfcf03a5e33b295cfdc480e0ec",
+      "sha256": "1230694a6d38283407fd55ced89b8e5d08f0fd28bff1f6c2446ac057265b75fd",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2182,7 +2182,7 @@
     },
     {
       "file": "s112-mobile-advisor-light.png",
-      "sha256": "35a06891100b11c2ce38f0d41a68c490c3056fbee260fb54cfd1b75eca369aec",
+      "sha256": "192afcc7073482a0a86ebcf3dc7a720388dbf895ac37be6089608c7b7cedfa36",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2192,7 +2192,7 @@
     },
     {
       "file": "s112-mobile-dynasty-timeline-dark.png",
-      "sha256": "46870a837bf5ea13cec2dfbdb2c595cd11448f4c9bedf661ecefdbe5a3c1e4e5",
+      "sha256": "22006fded5280d612da43f4d36fc1635c27b40764d78063e33975915290c6113",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2202,7 +2202,7 @@
     },
     {
       "file": "s112-mobile-dynasty-timeline-light.png",
-      "sha256": "50d0d8bbc6e676fd27edcd27ccf07f78c7072891a860856cd9f86e02f02e7a45",
+      "sha256": "812162baf8f326d6bb3ac1c8acdae69e7a6185fd2291067e75a4c2e3aa89c1e8",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2212,7 +2212,7 @@
     },
     {
       "file": "s112-mobile-first-debrief-dark.png",
-      "sha256": "96b9cfaef693e80d07a2b493fa440a5885a0742c0d7c3cb8460a643608cbbb35",
+      "sha256": "519fc5656616da06a63bd8129b8e634ea033a51ca996fa3376c87dc2573c17e0",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2222,7 +2222,7 @@
     },
     {
       "file": "s112-mobile-first-debrief-light.png",
-      "sha256": "6095e88786f0e3bd55b64a1a672635ce779a3555ebdf7f4134358d0b631db338",
+      "sha256": "51acdf623aef72f91bdeb7b6d930422ee6c24b3abacdb8ddd7ce54ae49acd4ea",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2232,7 +2232,7 @@
     },
     {
       "file": "s112-mobile-moment-card-dark.png",
-      "sha256": "9e61fb3b26eaf6c76552061d64d4f12722ab295163bd926f94b1dfd52ce39968",
+      "sha256": "3b9e4336892598501942d3234eba71062dfbdbd6bf5c3a7102b22ef9f78a1f5a",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2242,7 +2242,7 @@
     },
     {
       "file": "s112-mobile-moment-card-light.png",
-      "sha256": "50d0d8bbc6e676fd27edcd27ccf07f78c7072891a860856cd9f86e02f02e7a45",
+      "sha256": "812162baf8f326d6bb3ac1c8acdae69e7a6185fd2291067e75a4c2e3aa89c1e8",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2252,7 +2252,7 @@
     },
     {
       "file": "s112-mobile-return-digest-dark.png",
-      "sha256": "b56d7a9debfd6e104b0a8724c3884d002fcc69e88b9fe02e5b1a1aba86f5c995",
+      "sha256": "11915c9c6fe693bc28ba9d98e881436af561b236a0a02522cda0a60bcaf45dbd",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2262,7 +2262,7 @@
     },
     {
       "file": "s112-mobile-return-digest-light.png",
-      "sha256": "7a9ea9f46278d554150a11ee0f421af0d481327960b8870f083a81182ad2ac5a",
+      "sha256": "582111ae4e882f83785be31a0e86c17e42208f8426159285793a96edcc58aa3a",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2272,7 +2272,7 @@
     },
     {
       "file": "s112-mobile-cap-pressure-dark.png",
-      "sha256": "4980e369381f21db2b86b05043c886c6bf6dbcf89d396485835852fe86f031d2",
+      "sha256": "0fc4b4fda9387cfa6ea8aa4129c2d8861c2ae248ca041efe95d9e6068542d9a7",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2282,7 +2282,7 @@
     },
     {
       "file": "s112-mobile-cap-pressure-light.png",
-      "sha256": "54ac1c2fd685d58ea444c399314cafdb22f37d74b4b8a30a3d724181bdcdd9d9",
+      "sha256": "c080304937ff735090eaf2c1ca3759ff886b577987b59705ddf33bf5917d3d0c",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2292,7 +2292,7 @@
     },
     {
       "file": "s112-mobile-waiver-identity-dark.png",
-      "sha256": "c544061014e2d9f03ce22c607a1848917cc4d5c0ea1f200d74c98235450543e8",
+      "sha256": "6352bc2b531262e886fb974eec45b384756eb21497a677b675c7f779d6d55885",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2302,7 +2302,7 @@
     },
     {
       "file": "s112-mobile-waiver-identity-light.png",
-      "sha256": "80697c9499024f87df74025d549d32ad816b82a1bfa3be93f6b3b3745cdd0a5d",
+      "sha256": "b16197ad47d4c97115e3ca42d974007dd3e24bbe5a49405ee041281fce76fb5d",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2312,7 +2312,7 @@
     },
     {
       "file": "s112-mobile-franchise-legends-dark.png",
-      "sha256": "b97103f9bf458dca741fd88e69d7d5d801c418d5b6f566b4f57d00147bf72948",
+      "sha256": "808cc084d3f2cdf9cfb25c86fe8390b57d2380faab0a6a67aa2a828411b31b47",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2322,7 +2322,7 @@
     },
     {
       "file": "s112-mobile-franchise-legends-light.png",
-      "sha256": "b3dd2546d26343ad33ea0494480d834839a320e53a413c0bf340f943d91d5254",
+      "sha256": "34acf5ba269be6debed9ff8c348cc92f02eef51e657466578a22674e9bd923b8",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2332,7 +2332,7 @@
     },
     {
       "file": "s112-mobile-gm-persona-dark.png",
-      "sha256": "7bdf02330b65e65e09f3f64b231d4cc51fd0b234935bcfa7917f60f000ee8a80",
+      "sha256": "d6dfec8a44fa18e3dc5e06d48c7637b215fba20daeee6f90e65528a1d624c0c1",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2342,7 +2342,7 @@
     },
     {
       "file": "s112-mobile-gm-persona-light.png",
-      "sha256": "c849f56bc857d548459df001f2571525eeaa3543c772160b4cdb6e19b86f2856",
+      "sha256": "02ae7e543ba86edf8357a476f5fd2235b87f06202cc263ae8a8c68710966ee6e",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2352,7 +2352,7 @@
     },
     {
       "file": "s112-mobile-trophy-road-dark.png",
-      "sha256": "7a550d19d53325efb03e83ed77a19763765b805b958d89a736cabadc26d7e4ff",
+      "sha256": "d02c94bccd28fc54e263065bc41b519500cee5c0249aa4b44e46cc2eece2674b",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2362,7 +2362,7 @@
     },
     {
       "file": "s112-mobile-trophy-road-light.png",
-      "sha256": "819d99142ac5acb041f9f3ea700e9ea39a28c04ecfafb495305a38e373ea9573",
+      "sha256": "1a81f2674c592407f38417434035123ffa2357145f39596238e905f58d55dd95",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2372,7 +2372,7 @@
     },
     {
       "file": "s112-mobile-sim-watch-reel-dark.png",
-      "sha256": "4585b3cca7fe595a33ecf219bbc4cb793299d60b4ae090c048ee4e7cfdb526a9",
+      "sha256": "10ebf403fdf1cbf012f70ae2f3fd97ef12bec85d2d30bb0bd0c81d94789dd98b",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2382,7 +2382,7 @@
     },
     {
       "file": "s112-mobile-sim-watch-reel-light.png",
-      "sha256": "2487f1b73b1cda96605c2df2f743b710e1c4a809735a88848d52f038e56bcb48",
+      "sha256": "3aaf5d8736452ded062ef72b23426df7d3c9b695520bb5bc239b44227b080f2a",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2392,7 +2392,7 @@
     },
     {
       "file": "s112-mobile-room-watch-dark.png",
-      "sha256": "26b0debb9203149d54d1f6a025da99f9f498ad611d09f03f35ab9c4d11c8cb34",
+      "sha256": "74e5abc6e9be86fb46950809bffa33d2e80694fac0e28a4a7813dae031203ab9",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2402,7 +2402,7 @@
     },
     {
       "file": "s112-mobile-room-watch-light.png",
-      "sha256": "619b36210b596f90a0733a8c28619e21d45b0da09b125b5307e12d1d5b4c70d2",
+      "sha256": "f40a2d455a01ecaf8b02febe78a1852c0c91a7037ab58fad0e9aafa8969f2e10",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2412,7 +2412,7 @@
     },
     {
       "file": "s112-mobile-architect-cut-dark.png",
-      "sha256": "e544cbb5d3e4dfca4ab50d03cfd5eee6a8bc9a2e74d3526c5dfd379d61380237",
+      "sha256": "feb4194553622fde725ad5ff86cc4c9d65d6c69cfd04bb86959735333b946d0e",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2422,7 +2422,7 @@
     },
     {
       "file": "s112-mobile-architect-cut-light.png",
-      "sha256": "bc54fff54aedfc51c7b28bb20b0ce5e770adc9d314dc154faed1a6df546b3f85",
+      "sha256": "ace1542c57ad320c17d0d813e66d3bdb1512cbfd9f85490d2f50396e7ae7cce4",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2452,7 +2452,7 @@
     },
     {
       "file": "s112-mobile-rival-coaching-dark.png",
-      "sha256": "89acf61439922f443296943c41d99bc19b3921c1edf8e68b7dda1d6e33cd91a9",
+      "sha256": "0441ad99989e786950fbbbb26d3b1263270909b4229833349b3a6479fb92090e",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2462,7 +2462,7 @@
     },
     {
       "file": "s112-mobile-rival-coaching-light.png",
-      "sha256": "c397b22525f4606364805e36c0024efe30d09936afc93fedbe5e92a6595275f3",
+      "sha256": "65f240c3377878996c8e00362a21b3f20f51ca8b31ab6cf25d29330e2d4be264",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2492,7 +2492,7 @@
     },
     {
       "file": "s112-mobile-co-gm-brief-dark.png",
-      "sha256": "5eae6d4544177e0529d41810f60fbce63bbc9d43df7767941a465e09b83b98ac",
+      "sha256": "e4ae9bb8aae53c7193e94d104b2804807c4497a018152e409ebdfac072cd4b96",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2502,7 +2502,7 @@
     },
     {
       "file": "s112-mobile-co-gm-brief-light.png",
-      "sha256": "62c3ecffd7ba401956f0e0a43f79d6114f6721e97cd7ad10ac6d7e4abbaf48e7",
+      "sha256": "3225d765531a44eecc26764e2ece5305890aa57775a4eb88aba547de201b813e",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2512,7 +2512,7 @@
     },
     {
       "file": "s112-mobile-prediction-receipt-dark.png",
-      "sha256": "80e54875554a93d678ae87df3ee815f251d9ce3d6b11674f5467b02593453532",
+      "sha256": "3d301851a624dba567a71916e8d3e7c5d4d2da8f7d6db28cfcc301898f5fd703",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2522,7 +2522,7 @@
     },
     {
       "file": "s112-mobile-prediction-receipt-light.png",
-      "sha256": "106c225114b0101fe3827bea3f8b42ec38900713fb281a49ed4a29c2890d0d00",
+      "sha256": "f4358d054a932830cb82a2f35585e0a62dd71ef7f847ce6d49bc2b7ab253b857",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2532,7 +2532,7 @@
     },
     {
       "file": "s112-mobile-agent-negotiation-dark.png",
-      "sha256": "fbe3d66fb7bacb8d4c773f750127a2d9cd560b366cc19469c3c119a53ded16d0",
+      "sha256": "439f43104e263e72c5322268abd23cb14cef5771280d96e72b0acd74aadcf73d",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2542,7 +2542,7 @@
     },
     {
       "file": "s112-mobile-agent-negotiation-light.png",
-      "sha256": "2a0da40a92932042f19a36301b4fbe9bd654f2e841bf17738139bce126ffc751",
+      "sha256": "72ea443bb1abbfbc999625b81d319ee28d8c145cb0b6d0ef1a2a797d08b85c5f",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2572,7 +2572,7 @@
     },
     {
       "file": "s112-mobile-hof-ceremony-dark.png",
-      "sha256": "1e69e1f5d337b5f818e0f2dec59b7f9fdc64111987ba24bb89d95e2f82b9b2cd",
+      "sha256": "6c1907dc64327eeddc194cfe2b2d57a5abddc6584867d054afd40dd9b044dd39",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2582,7 +2582,7 @@
     },
     {
       "file": "s112-mobile-hof-ceremony-light.png",
-      "sha256": "c0afc6d611a4415be91dc9da59ad89312fa15a3cfa8953a99d35d6dd4351e6cb",
+      "sha256": "0888aae733f626bc0ac9d786d8827f96fb11764ed61694f7367f44eb6469333a",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2592,7 +2592,7 @@
     },
     {
       "file": "s112-mobile-architect-signature-dark.png",
-      "sha256": "a157b29a065dd21c73954a25bf1122cc6e0205d897ee32ce8e2afb4c7b0c35c1",
+      "sha256": "9d8ee4eec363eb174a4115ffd58ee98d230bb7c37fca3fdfa1d4577af9c2d330",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2602,7 +2602,7 @@
     },
     {
       "file": "s112-mobile-architect-signature-light.png",
-      "sha256": "519189f3632a7758056108cd4e19a6d5175c0623db0919a6318753e83702a055",
+      "sha256": "e9a5b6620e94e316f69c14c801cc5036f4ef61751a22c955427fa6d6e4a96b4a",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2632,7 +2632,7 @@
     },
     {
       "file": "s112-mobile-exact-command-center-dark.png",
-      "sha256": "ad4817ba3ef8a8d23bfe5df60896bbfb14f08a97680b46931e33cd3f1670259e",
+      "sha256": "7c0cde7f8adc1fe59004ca6827017f52c110a3d3e1b75dbef9263592d7aa2d67",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2642,7 +2642,7 @@
     },
     {
       "file": "s112-mobile-exact-command-center-light.png",
-      "sha256": "b5191ca45fd36759a7c0965cf78ef587fb7126a770d5cd480531d625815efe65",
+      "sha256": "16253222ee56447f7ebb088d8fde2c1109b117f97e71e1f46190e110ab8ab6ae",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2652,7 +2652,7 @@
     },
     {
       "file": "s112-mobile-exact-command-target-dark.png",
-      "sha256": "703234f5973e3c1eeffc6ad272d87e2785d095ea4270ce64d8efbb8cec731b40",
+      "sha256": "b8d087dbdba3561931f2330b875adcf917ea8be2de138b6d9f9dac4cfda3cec9",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2662,7 +2662,7 @@
     },
     {
       "file": "s112-mobile-exact-command-target-light.png",
-      "sha256": "85fd51bd45e519e79c4d8cf8b5a47e3a5f892a24de36baa394e77a95b27368b3",
+      "sha256": "a71723b670a5a5ea7cf9fec9e813e732e52fe64f3a7b1ced0b975bc1041f57b4",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2672,7 +2672,7 @@
     },
     {
       "file": "s112-mobile-facility-capital-dark.png",
-      "sha256": "99cef4169df87dcae0943b285f128d8e8b6650804f4636d0bf158d9393de2e54",
+      "sha256": "9fa8914a028ded496be0990b970d0fb450502b824333a66132f56c76f68a81e5",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2682,7 +2682,7 @@
     },
     {
       "file": "s112-mobile-facility-capital-light.png",
-      "sha256": "3295468b88822fd673f3d02b7e59b25a7ef3ad599b7123ed085632b8bc111ad9",
+      "sha256": "574399ff05691e0667d2f6191578d3bf5c3660fe63950235485600d035b4dcb6",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2712,7 +2712,7 @@
     },
     {
       "file": "s112-tablet-nav-drawer-dark.png",
-      "sha256": "31797bfefeb0d7954853b6197d801bc2d576a5a8636d833340473636b3c350fa",
+      "sha256": "cf1b99b26a60bd9d091b8321a2ca58f7b1cf7a8be89bf6a09d9d584abe72f7f1",
       "theme": "dark",
       "viewport": {
         "width": 768,
@@ -2722,7 +2722,7 @@
     },
     {
       "file": "s112-tablet-nav-drawer-light.png",
-      "sha256": "666c18b599e6c7052f7f97e061efa5fae3f33f17b44dd99fd4d3de21ef132eda",
+      "sha256": "01212030c0789cce894653d30aeac15d58cd152f10a4d22e6d69068b99439ff5",
       "theme": "light",
       "viewport": {
         "width": 768,
@@ -2732,7 +2732,7 @@
     },
     {
       "file": "s112-mobile-nav-drawer-dark.png",
-      "sha256": "106039c9d1f59ed7f8d510672519dc58daf7776704d08e7e8894dc70fb681f39",
+      "sha256": "7f8fc80372dae7e4a4ef61cddfd5eda8cb33637d07f489da9fbf81738f62f9aa",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2742,7 +2742,7 @@
     },
     {
       "file": "s112-mobile-nav-drawer-light.png",
-      "sha256": "8ee8d43e098db7e8163b73ec5106a2eaa2e81eb790d03157fb52220c3175ef4a",
+      "sha256": "828defd4cbdf82dbb5323880b0c9b59fff83ac03604276380899849bbc9dd685",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2752,7 +2752,7 @@
     },
     {
       "file": "s112-mobile-game-loop-dark.png",
-      "sha256": "c4eb1a0353aac12e289b1cd1508564c7ec9b0a9eee5da7a852c8448737b0ab36",
+      "sha256": "394d3fe5f4412914951f3bcb0369b7466630ceed44f097137115862fef214693",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2762,7 +2762,7 @@
     },
     {
       "file": "s112-mobile-game-loop-light.png",
-      "sha256": "44fac574be2496efb4a505da95f0ca243a59d89873dc52158d7e28ecfdc7e258",
+      "sha256": "f6c8a854bf96182b57a90e7c84f2c8d611a84b66b8a78066b103746152f64d4b",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2772,7 +2772,7 @@
     },
     {
       "file": "s112-public-desktop-dark-index.png",
-      "sha256": "5af0d45f498abbafbb56b5d84f94e9d9c3bdf61b6c97a12c942ffbbd1c9bc7d7",
+      "sha256": "6314b43142fa42dc63178097bc80e95ecf5b1e692d2db152282497b9cd4dd1d9",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2802,7 +2802,7 @@
     },
     {
       "file": "s112-public-desktop-dark-status.png",
-      "sha256": "d5cce5005c83637d805d8c929c9acca07a43c7712bcec12294268759dc0b3af4",
+      "sha256": "19faa5ec81e5b5f4a9b053e6020ce6cc606c7a9ef9051cf89b8ff62bb4e0fab6",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2812,7 +2812,7 @@
     },
     {
       "file": "s112-public-desktop-dark-status-archive.png",
-      "sha256": "dce2d3582468998fb473a3475e96fe60b07def23ab95d6d1a2b7dcfe2a48b8e4",
+      "sha256": "f7db162266bea742e07dad1f5117c4caaecee9bc31d44d810b2c9faceb4ea74d",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2822,7 +2822,7 @@
     },
     {
       "file": "s112-public-desktop-dark-stats.png",
-      "sha256": "768224cb2b940fcb7d069755c05d4ee7e11feb6082acfdd1727ba8e724ef7940",
+      "sha256": "544c7a32dd6a918d92be188c95eb8ceb772a79228ecb282c7ab06021f3e32017",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2872,7 +2872,7 @@
     },
     {
       "file": "s112-public-desktop-light-index.png",
-      "sha256": "b2fbd217d7472e418887c720cee721774f397e7223e3644e82540bd47a57c4d8",
+      "sha256": "6455fe8cb59d6341a0d77c9c65a9e97f1c7f63b79803230dd015a21228d75b00",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2892,7 +2892,7 @@
     },
     {
       "file": "s112-public-desktop-light-press.png",
-      "sha256": "43539ed4b8259b6588f26ae04a45aec01a7f94d2adc4e2ed67cdcd8fdc72532d",
+      "sha256": "72fab46abe77ca3d8c58d00282316b23a6a9625f0e8c479ad06826fbed3a2616",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2902,7 +2902,7 @@
     },
     {
       "file": "s112-public-desktop-light-status.png",
-      "sha256": "559f0185cb7e87a8ef4e7296afa3914eca6b7bdef24187fcf00885b71eb57eeb",
+      "sha256": "dd84aa64135a7ebdc47f42f2bfa48c4834bb507da7c051f756f26569b0ba86a8",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2912,7 +2912,7 @@
     },
     {
       "file": "s112-public-desktop-light-status-archive.png",
-      "sha256": "13c1df50fe8b2652f4fb9f4785220ccaee52f22c221a7585fc09138414eefd0c",
+      "sha256": "4c2efe38342bb61c8cf856bad5ba9a55d101d05fa35ba332f8bb1eacb719eab7",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2972,7 +2972,7 @@
     },
     {
       "file": "s112-public-mobile-dark-index.png",
-      "sha256": "159396e094e3a598dc45ca2bf1b6710386f15d6db1fee5d08f5c3bd30b58b73d",
+      "sha256": "1e6118252fba94f324198b5f80cd1b06780aa944abd2b58c465c3b68be9186b8",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -3002,7 +3002,7 @@
     },
     {
       "file": "s112-public-mobile-dark-status.png",
-      "sha256": "485c7934257211596b0e40734ade2ad5e488bf9d20f50596ad157bd5aaa260b4",
+      "sha256": "b175dc1ac0cfec4f16837c80a50c2e2a959bf487bbd5d0311135ef9583893236",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -3012,7 +3012,7 @@
     },
     {
       "file": "s112-public-mobile-dark-status-archive.png",
-      "sha256": "a7ed24a4051051f152eb62525906e659bb96dd87fab8ef0c77d4893a0d7645f6",
+      "sha256": "900d42dce38e736fdccbfc008e780bca8b5f066426d1263d8045c3311398c15e",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -3072,7 +3072,7 @@
     },
     {
       "file": "s112-public-mobile-light-index.png",
-      "sha256": "58c409b36559f2d31fdb8319076af8a712c3e84d0edabc0ba0c4cecf03664b94",
+      "sha256": "5d32ea2930986d5cff6a16def7db498aeae35ce4140d8260421d05dcd356fb5d",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3102,7 +3102,7 @@
     },
     {
       "file": "s112-public-mobile-light-status.png",
-      "sha256": "912c1914d697868064d072907eb84342feb15a952f551659490e9b609215899c",
+      "sha256": "357f692bf0d2f6df075a36f6b250a5980c7e596a5d597fbe3f302f781b68dbff",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3112,7 +3112,7 @@
     },
     {
       "file": "s112-public-mobile-light-status-archive.png",
-      "sha256": "00c7c7b1b5f8fc37961aff5615f5d99946ce84ea0674d8b52f20368347f845b3",
+      "sha256": "30fe4e3a557df3b0d22b17f6b6b346398ae766ed456eb6eb02e8a01c02cf5e59",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3122,7 +3122,7 @@
     },
     {
       "file": "s112-public-mobile-light-stats.png",
-      "sha256": "3aa135565c63e1a738ead0b5dd78bd8c296324167738a28ee381bd586afaae63",
+      "sha256": "0515bed9c6804a44caa031299c4cea8b501327fa55ed9e1dd6ad394775ea6eb0",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3180,8 +3180,8 @@
       },
       "page": "Browser session recovery: setup-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-game-unsaved-dark.png",
@@ -3193,8 +3193,8 @@
       },
       "page": "Browser session recovery: game-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-pending-recovery-dark.png",
@@ -3206,8 +3206,8 @@
       },
       "page": "Browser session recovery: pending-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-simulation-running-dark.png",
@@ -3219,8 +3219,8 @@
       },
       "page": "Browser session recovery: simulation-running",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-simulation-interrupted-dark.png",
@@ -3232,8 +3232,8 @@
       },
       "page": "Browser session recovery: simulation-interrupted",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-corrupt-recovery-dark.png",
@@ -3245,8 +3245,8 @@
       },
       "page": "Browser session recovery: corrupt-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-setup-unsaved-light.png",
@@ -3258,8 +3258,8 @@
       },
       "page": "Browser session recovery: setup-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-game-unsaved-light.png",
@@ -3271,8 +3271,8 @@
       },
       "page": "Browser session recovery: game-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-pending-recovery-light.png",
@@ -3284,8 +3284,8 @@
       },
       "page": "Browser session recovery: pending-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-simulation-running-light.png",
@@ -3297,8 +3297,8 @@
       },
       "page": "Browser session recovery: simulation-running",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-simulation-interrupted-light.png",
@@ -3310,8 +3310,8 @@
       },
       "page": "Browser session recovery: simulation-interrupted",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-desktop-corrupt-recovery-light.png",
@@ -3323,8 +3323,8 @@
       },
       "page": "Browser session recovery: corrupt-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-setup-unsaved-dark.png",
@@ -3336,8 +3336,8 @@
       },
       "page": "Browser session recovery: setup-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-game-unsaved-dark.png",
@@ -3349,8 +3349,8 @@
       },
       "page": "Browser session recovery: game-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-pending-recovery-dark.png",
@@ -3362,8 +3362,8 @@
       },
       "page": "Browser session recovery: pending-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-simulation-running-dark.png",
@@ -3375,8 +3375,8 @@
       },
       "page": "Browser session recovery: simulation-running",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-simulation-interrupted-dark.png",
@@ -3388,8 +3388,8 @@
       },
       "page": "Browser session recovery: simulation-interrupted",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-corrupt-recovery-dark.png",
@@ -3401,8 +3401,8 @@
       },
       "page": "Browser session recovery: corrupt-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-setup-unsaved-light.png",
@@ -3414,12 +3414,12 @@
       },
       "page": "Browser session recovery: setup-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-game-unsaved-light.png",
-      "sha256": "ef31ac660000b2a104f32238dfbce40a0896197c8c131bf5fd8cfa0b9babd541",
+      "sha256": "9d880058052f392b3829a34f4abb97e19d84288546ec372a7bd7d55ab324b931",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3427,8 +3427,8 @@
       },
       "page": "Browser session recovery: game-unsaved",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-pending-recovery-light.png",
@@ -3440,8 +3440,8 @@
       },
       "page": "Browser session recovery: pending-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-simulation-running-light.png",
@@ -3453,8 +3453,8 @@
       },
       "page": "Browser session recovery: simulation-running",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-simulation-interrupted-light.png",
@@ -3466,8 +3466,8 @@
       },
       "page": "Browser session recovery: simulation-interrupted",
       "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     {
       "file": "s112-recovery-mobile-corrupt-recovery-light.png",
@@ -3479,32 +3479,35 @@
       },
       "page": "Browser session recovery: corrupt-recovery",
       "basis": "real browser runtime and injected checkpoint write rejection",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "Codex root + browser_recon + recovery_ledger + product_recon; recovery: Codex product_recon",
-    "reviewedAt": "2026-10-01T01:13:05.554Z",
+    "reviewer": "Codex browser_recon + product_recon; recovery: Codex browser_recon",
+    "reviewedAt": "2026-10-01T17:45:27.486Z",
     "reviewedImages": 222,
-    "newlyInspectedImages": 126,
-    "byteIdenticalPreviouslyInspectedImages": 96,
-    "reviewMethod": "102 final PNGs individually inspected with view_image; 96 inherited only after exact SHA-256 equality to the preserved reviewed PNGs. Recovery extension: 24 freshly inspected and 0 inherited only after exact SHA-256 equality to actually reviewed PNGs.",
+    "newlyInspectedImages": 147,
+    "byteIdenticalPreviouslyInspectedImages": 75,
+    "reviewMethod": "146 final PNGs individually inspected with view_image; 52 inherited only after exact SHA-256 equality to the preserved reviewed PNGs. Recovery extension: 1 freshly inspected and 23 inherited only after exact SHA-256 equality to actually reviewed PNGs.",
     "findings": [],
     "fixesApplied": [
-      "Two light-theme primary-button selectors now exclude disabled controls, preserving the disabled muted foreground.",
-      "Final game dialog/tutorial disabled states inspected; four held-I/O setup-state captures are recorded separately in reports/s112-disabled-primary-after.json."
+      "October 1 S112 release note is visible and readable on the current status page and generated release archive; existing S112 theme corrections remain intact.",
+      "Prior S112 recovery rendering retained under final source; 23 exact PNG matches plus one fresh inspection."
     ],
     "blockingDefectsOpen": 0,
     "limitations": [
       "Synthetic states prove rendering, not gameplay semantics.",
       "Byte equality carries prior pixel inspection, not prior source authority.",
       "Automated contrast samples do not cover every application pixel.",
-      "All 24 assigned images were freshly inspected with view_image; no exact-byte inherited reviews were used.",
-      "Simulation-running and simulation-interrupted captures are synthetic status rendering fixtures in the real browser, not proof of simulation job behavior.",
-      "Pixel inspection checks visible layout, text, and recovery controls; it does not measure contrast ratios or replace interaction tests.",
-      "Recovery simulation notices are synthetic rendering states, not evidence that background jobs execute correctly."
+      "Exact-byte inheritance carries only prior actual pixel inspection, never source/artifact authority.",
+      "Synthetic simulation notices prove rendering only; job behavior is separately tested.",
+      "Recovery simulation notices are synthetic rendering states, not evidence that background jobs execute correctly.",
+      "Populated and synthetic fixture captures prove rendering only.",
+      "Moment share captures cover the share control, not an exported image.",
+      "Public stats frames retain the actual loading/unavailable presentation; no service availability is inferred.",
+      "Exact PNG equality carries historical pixel inspection only; every current capture comes from f8b640/dc8f."
     ]
   },
   "beforeReceipts": [
@@ -3515,21 +3518,38 @@
     {
       "path": "docs/visual-qa/S112_BEFORE_CONTRAST.json",
       "sha256": "68723e699f259f5d3fdb5653f8f5d818d72cd877542bdf212759280710d70827"
+    },
+    {
+      "path": "reports/s112-status-note-before.json",
+      "sha256": "aa946648ec1b44ae8e3b6534f1a5bf2a617f82cbf03ed1aff9fa2a675699740c"
     }
   ],
   "recoveryEvidence": {
-    "path": "output/playwright/client-recovery-be71869a428e6224330d72cbba76df436ee31938-fe99666e7525/report.json",
-    "sha256": "bbf752ac5c9e17a5356f525ad6bd3834dcbcd01bf538584a4822ea8b6bb6ab85",
-    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-    "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
     "captures": 24,
-    "review": {
-      "path": ".cache/s112-recovery-be71869-review.json",
-      "sha256": "78017efe61ff3484f647d469733b2b698e3caadf4eeb7d932f6ed08edffc56a2"
+    "freshImages": 1,
+    "hashInheritedImages": 23,
+    "captureEvidence": {
+      "path": "reports/s112-visual-followthrough-captures.json",
+      "sha256": "310ad007f222bbf9f830874e5e1fd9d30d921a62c057e35fcd4b9f17da08322e"
     },
-    "baseReview": {
-      "path": ".cache/s112-be71869-base-visual-review.json",
-      "sha256": "ce2fd05431515b5cfdbde1291868fa6f2212a09d30d7d22dcfe9298aa666b301"
+    "review": {
+      "path": "reports/visual-review-s112-followthrough.json"
+    },
+    "priorAuthority": {
+      "path": "reports/s112-visual-prior-authority.json",
+      "sha256": "f6b127d44dea954f265e10c91c4c3b3f7739719c15dbde0830b7ff610d9f5781",
+      "gitRevision": "0f0d3a1341e85c7c76c402f89551ff777262cb05"
     }
+  },
+  "priorVisualAuthority": {
+    "path": "reports/s112-visual-prior-authority.json",
+    "sha256": "f6b127d44dea954f265e10c91c4c3b3f7739719c15dbde0830b7ff610d9f5781",
+    "gitRevision": "0f0d3a1341e85c7c76c402f89551ff777262cb05"
+  },
+  "statusNoteAfter": {
+    "path": "reports/s112-status-note-after.json",
+    "sha256": "7c4e6044c9d874f5561721842904331713624148250f2430951c6b3751a2e271"
   }
 }

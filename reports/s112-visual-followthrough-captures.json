@@ -1,0 +1,2322 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+  "status": "verified",
+  "capturedAt": "2026-10-01T17:23:53.048Z",
+  "captures": [
+    {
+      "file": "docs/visual-qa/s112-desktop-game-overview-dark.png",
+      "sha256": "fd616fb8d631e0b82fb41b38655317a2308d26b916af018eaa3cc4ed1c0fc850",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-overview-light.png",
+      "sha256": "dbc7734a0541f8dbd8d84739f5ae48e6c4cae57a10d8166f3bbc5c40198e4ba5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-league-dark.png",
+      "sha256": "cbfb595ed5e6f9c841b57124db40d2c1f3c8098a222b8508f9f94f4c1b2932e9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "League standings and season navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-league-light.png",
+      "sha256": "cff01f4aea596059bf712b4ce17b4e6d4e7a074eba9a962959b726efd3631586",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "League standings and season navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-roster-dark.png",
+      "sha256": "194393ff56b53401c99a2cb1085e0dbd15af71ee7db7c1f2c07cf07cf09a7e03",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Team workspace roster mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-roster-light.png",
+      "sha256": "a656f4bc7eee514c58b064cfc30d7266e2d86e393e3e4419a4a591ace8671bb6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Team workspace roster mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-depth-dark.png",
+      "sha256": "82bf728973d0821ecd7fb6c99f618149a82db9b6a4523c419af04519925c49e7",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Team workspace depth mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-depth-light.png",
+      "sha256": "f148f0f5ebc048595067dda83261715750bce1248025bbdab16a77412bb4dea3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Team workspace depth mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-trades-dark.png",
+      "sha256": "0b33f793400a7d80c6bef9e1a9a1266658361cf7acb49e711212622339d91925",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trade market and club identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-trades-light.png",
+      "sha256": "04715c83bc1ddeafab4ece07a5b691be1ab7564e52ec0a482d4714323b03e626",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trade market and club identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-dialog-dark.png",
+      "sha256": "5a28c089862e5471cf0a728232f5fa09fa0ee49c722d99b1426aa5566588534b",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-game-dialog-light.png",
+      "sha256": "b2e7c100d0ca2f7753973c7e4618408e3610bd6927f067f867500412678e84ca",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-skip-dark.png",
+      "sha256": "710e686a725c01c6f0f99ab45878ddd8350f648ab4c6dc4a204e204683d02746",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-skip-light.png",
+      "sha256": "a14e55f5e275baeff26933662d104c066a8a2ee888d3683d494c0793c9bc3fb1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-identity-dark.png",
+      "sha256": "4e2e22b94e32b5aa70465c1b0c1c46b283042af4e1b33132ab4fac08a4018ebc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract identity choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-identity-light.png",
+      "sha256": "7960ab90487abef36e38999c843027645236fcdedfbbf9e83b06e73fb92928b7",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract identity choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-pressure-dark.png",
+      "sha256": "1f2821b697afddb5924942ec611d364c680d753e3c2efd7ca347e0b9e11275c3",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract pressure choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-pressure-light.png",
+      "sha256": "0102199962887831f9f997829a6e16820a8e12fb13e962da12864ffc739fa799",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract pressure choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-first-call-dark.png",
+      "sha256": "c9f8154e77d81dd71a05968149093893fe68c9a7d3c1169657401a6a3247a409",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract first call under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-first-call-light.png",
+      "sha256": "edb2a5684467781befbff372dcec0a0f5d0a50e10130e0a742abd37fb67dfaac",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening Contract first call under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-receipt-dark.png",
+      "sha256": "c725184c65d975a8fdb8a6a9e955ca7d946836832f02debb302a87f63423ed0c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Committed Opening Contract receipt under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-tutorial-receipt-light.png",
+      "sha256": "8a6494265029e1c4ac54cd768baccfefb6a3aa65b57b9df97664299301415a5c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Committed Opening Contract receipt under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-advisor-dark.png",
+      "sha256": "c0aaabfe2602db0a6a57fbdc39124468b6e0ad4f82b37559d561cc456a43298c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Styled Front Office Advisor under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-advisor-light.png",
+      "sha256": "d170302f5976d17b46c628a1b666146fabab24064905f3384d2d90e55216bf91",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Styled Front Office Advisor under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-dynasty-timeline-dark.png",
+      "sha256": "831da3cad4f18a98bccfc9e55e32e8df7ae21c07b7b5797e71ec58055114137a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Theme-aware dynasty history fixture under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-dynasty-timeline-light.png",
+      "sha256": "22b84f374fcad9e09b1f97bf173633334f80b4c8e8403bd2c70e4690931497d9",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Theme-aware dynasty history fixture under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-first-debrief-dark.png",
+      "sha256": "f3a21f08122a37a865289aa0242d66d8e0f0a4072cad5698018009737610a819",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional first-debrief feedback under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-first-debrief-light.png",
+      "sha256": "a76163925ff63a41bce78f8d3f80f5470f2df7026855f98374029c4510599637",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional first-debrief feedback under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-moment-card-dark.png",
+      "sha256": "9dffa8cea15a3793a063e7c43f13802a26d92fe9129300712ba03b67cbd50364",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Moment share control under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-moment-card-light.png",
+      "sha256": "cec57247753a7f80f9b39a1234a495d872d6333cfab32d895834692019f10d34",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Moment share control under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-return-digest-dark.png",
+      "sha256": "9413fc43bcff0751b79bb1dcc2c187aaa109ac4605c826078acadf68eec4d339",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Return-session digest under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-return-digest-light.png",
+      "sha256": "c5569c45edfaf82c6c6f00e0c6bbfe35909bf5aba43ae5ab53c30d76ab74a5f1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Return-session digest under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-cap-pressure-dark.png",
+      "sha256": "cda8fc9ff31416fcff399cc7e6e1ab12ed0bbcdf97e0bc20503024efa60e9a02",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening salary-cap pressure and General Manager legacy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-cap-pressure-light.png",
+      "sha256": "5feb4d951567ac72f855cf25c4a0e60bec3b31f26aa5bfbbd86936f925c7df35",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening salary-cap pressure and General Manager legacy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-waiver-identity-dark.png",
+      "sha256": "940dc8e8207758e8ca026afe613fbeb7a29db521386c0c78295c0099e9b09a4d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-waiver-identity-light.png",
+      "sha256": "73bbfc772827d70d6b226662cd4b1ec871559f0f8edbbe348706dbd836616bb2",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-franchise-legends-dark.png",
+      "sha256": "cd34441c1072402aa9fb654010af091796a28b03cad8a9dd28e102dbb05a0366",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-franchise-legends-light.png",
+      "sha256": "9ef19e7d3974e61bc49d32c3c76bebbcd0db91c16c25287cf598190a7e6df9d6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-gm-persona-dark.png",
+      "sha256": "ad633951cff9e0a7e875955a84ddefa4f0eb0e93e0061a1e7d1cb8b1c6128018",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-gm-persona-light.png",
+      "sha256": "e833923d59e87293d288554cd729a97f600c43af1038905c0761e07603186c3d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-trophy-road-dark.png",
+      "sha256": "08f73354650c3826cce884dbe2d7611ae173762d0c92cd1e0d359f2e95682d74",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-trophy-road-light.png",
+      "sha256": "0acb83939e1925a1fc1e31bd892ffa4d44ebe8b8d002f93c5d9d739cb5e0e4a0",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-sim-watch-reel-dark.png",
+      "sha256": "cf704573783f8fbc7f7f242e78a4af63e0f48dd54b72bb376e12d882038fdbad",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-sim-watch-reel-light.png",
+      "sha256": "35547603a31ad046947eb8479e56a5e570fdd5cf262d7268178967d3c3ffe133",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-room-watch-dark.png",
+      "sha256": "c16dc1799b7bf0efd68a629672f105668d728ceeef780e11b7aa468002ed572c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-room-watch-light.png",
+      "sha256": "e18195305e7fe6fd0288244afb91fa92e5c16c895c252dc9456cbbbf1658437d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-architect-cut-dark.png",
+      "sha256": "a903230f24b60c939b2fdb0b4f1979e938985b5de86e49911d3e903c19db5640",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-architect-cut-light.png",
+      "sha256": "be6b0169e4f6fa0f1a05c48c4cdbbf54bbd9c4e08c870ec4ac1f8fbee015316f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-guide-modal-dark.png",
+      "sha256": "d900cdd5f5179fcdd85593d25300f1160378984a4c141abf2519c63c16097642",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-guide-modal-light.png",
+      "sha256": "49145f0534329a75ea9bf1cbd5081b2044e621ee183518fcc234029a504eb8b8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-rival-coaching-dark.png",
+      "sha256": "c030de2ab99b8aeb6838b36fab499463c1815ce078057c6306d9869106824e46",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-rival-coaching-light.png",
+      "sha256": "ef0878ef730cfd24a27a231c20cc10e3e65d45e66778cc1f9ae921613f71acc6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-decision-archive-dark.png",
+      "sha256": "481d365e5950754ce420bced28a79644e9fd563c98f596d986573e6f067dabc9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-decision-archive-light.png",
+      "sha256": "45b1b2549e11fc7bbdb288013ae1f49cbab86a3feb30b62f7eb2e8dc7f11930f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-co-gm-brief-dark.png",
+      "sha256": "28b5ddc900837506fc81c2fdfbf1a535cd62380dfad47a563d7be060ca83fa2c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-co-gm-brief-light.png",
+      "sha256": "946787cba2afbc63ab18e4b3313b31bb93d96eece9949ac3ad4317adcf3d73f5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-prediction-receipt-dark.png",
+      "sha256": "34be8ebc37900cf7ca4b6aaf8e54e8ec239fb0b4ad47b2e2d9e76e6512cfe5b8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-prediction-receipt-light.png",
+      "sha256": "7ff8d1e82a2cf4278a4b9d7170826aeb1919eaab6069a8f0aea9b3e88edb38f1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-agent-negotiation-dark.png",
+      "sha256": "3e636251c13f0c6a198f4248e91b5a35cdf6e5d50c35c35e31c56e2c62648091",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-agent-negotiation-light.png",
+      "sha256": "c3a2a6b700b77d2217e2f5194bc4b8698b3a6d2249aeaf292565c2d32aef3e69",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-draft-trade-review-dark.png",
+      "sha256": "17053449db3b4a991844af3958e998d289da2f88a4fc52537c22b438317d322e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-draft-trade-review-light.png",
+      "sha256": "49baba39529d1ef01e54d7d5c6f855b6a92a57fd24f2f3fcdafe8173257804e3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-hof-ceremony-dark.png",
+      "sha256": "83969ee3bc77839e921c1be105e6e2e281309c977b831b534a087b23bd1dd1f8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-hof-ceremony-light.png",
+      "sha256": "c6767528d118db540cc37b348078e681eb0817239ecb847778335f27e7f097f4",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-architect-signature-dark.png",
+      "sha256": "a12b2b5ae45599c5cc7020a01fa98762867079602eabf6c00d5c08fc69b447ce",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-architect-signature-light.png",
+      "sha256": "c73100457ca21222e37c59766b7ed6be290fa5638f3338462d195756b189b756",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-architect-objective-dark.png",
+      "sha256": "0d65e43c6c89a92e533acd5d6206009f03f44ea27baae8a8c05fa2fb9ecb7e60",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-architect-objective-light.png",
+      "sha256": "00a651b64811e16de9f89a1d731b9dd0421e06d5117f25a401b953d10c411a28",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-exact-command-center-dark.png",
+      "sha256": "d3b711ccd6b77bea6feb776ae118d0f98b75838031a897c0bf2e35c4d80d1adc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-exact-command-center-light.png",
+      "sha256": "55e92ea3023529ac9edadbc2762c4a616ded5242bd9d8eff46eb0cde75b02885",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-exact-command-target-dark.png",
+      "sha256": "3450af04df4011ed33f2dab9e317498519c3c3aea2926e78fcfdd2884867ce99",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-exact-command-target-light.png",
+      "sha256": "4bd1864cda65c93c00e6f38050f84172102abe1ad58bc2bc86db3bf3f3df51fa",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-facility-capital-dark.png",
+      "sha256": "7fcbba027dbf1670426919f7a21575dd2c40bb130e5029c7cc527b70e2816488",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-facility-capital-light.png",
+      "sha256": "4f6acd52071ef40206f50eaf9a28c87fa2fcb23fcd1b730d303d4eb58acca950",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-gist-authentication-dark.png",
+      "sha256": "93bb1e69419474407684ff78d0cbcf14b81e888c7b09822076b6ea534d31b364",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-desktop-gist-authentication-light.png",
+      "sha256": "b7b3d23a859f418c7a4db3a84e5414f366913e5020adc4378506effc29e10376",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-overview-dark.png",
+      "sha256": "521c9f692115788abb532117946401a1e7ed0723ae22d4678146b3616a74fa60",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-overview-light.png",
+      "sha256": "4a60d28e355f955827aefa2e1898e2d3a62b5aaed54b9365bddae61084aae669",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-league-dark.png",
+      "sha256": "500a753996592ebfcaa169ed706d659837252a2e913f898c61719863be564f4f",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "League standings and season navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-league-light.png",
+      "sha256": "7b8056eaa151a4510e8c35389a393a4aed89183129cd99e7256d5e4e2e2eaede",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "League standings and season navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-roster-dark.png",
+      "sha256": "945ed3ec8b4cd9a184230fc83c1432915ad5c26b2cd186c1dddb6b5bc363a4ef",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Team workspace roster mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-roster-light.png",
+      "sha256": "35b308f04655c6da275425d4696f4ef8f131bcd07c06cc47ee3b10301e26f778",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Team workspace roster mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-depth-dark.png",
+      "sha256": "3d6fec65e08c2dd51768a840c5ddea77c7af0cc77d4cff356c9d3e8580cdc959",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Team workspace depth mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-depth-light.png",
+      "sha256": "99a2ee81c59e2fae283b465742a258b0040e93510cc499b2727969b94d45aee6",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Team workspace depth mode"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-trades-dark.png",
+      "sha256": "21d2cb78509946bc211f6b85bcae855cdd477abc8984e175ea50a805a694dbc4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trade market and club identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-trades-light.png",
+      "sha256": "9aca86ed1855edda54847ca509f67882e45fe26653db04a9b9b08e9fdc7051e8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trade market and club identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-dialog-dark.png",
+      "sha256": "3dff1ea2e89e0090c257dc7837e8e61aa3eff853877bfe92be30087775ac4d82",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-dialog-light.png",
+      "sha256": "7c3f07a0577d81a55c4d714eba4971a22e793bd8d4310e1f48b2f13a8c88bfd7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-skip-dark.png",
+      "sha256": "41e3abbf4e558ef7c14f89cd336abc553678babfebfe62e0eb699746780def91",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-skip-light.png",
+      "sha256": "c580b16295563b3424fa5665e318eea61f6787d9e593d749c1a87740963c9a29",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-identity-dark.png",
+      "sha256": "0fe6f468e2904c915c4fefdc0b9bfbf4be3ec4d9f5aebe2e147fb3906909a9f2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract identity choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-identity-light.png",
+      "sha256": "e69e379ab1e86b01666d0d9e68b543492b47fe553786f62567468e7db6ff154a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract identity choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-pressure-dark.png",
+      "sha256": "519725d4e32eea047a66366a5a8c509bd7a3343758aa389d1d6e93d022b6d8c7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract pressure choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-pressure-light.png",
+      "sha256": "6953c43cb955fd807148c94b2d6feb51124525e36f590ea1652c8c4eb6dd8440",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract pressure choice under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-first-call-dark.png",
+      "sha256": "ef534443cc65160b377b07465b0b811855e15981434cc739648491749871329d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract first call under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-first-call-light.png",
+      "sha256": "892a87eddd8a0a9f79bac127c0c5d6b5bdceefa037b445fab217d0b8c861e1aa",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening Contract first call under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-receipt-dark.png",
+      "sha256": "c8f8ec5f0f7c109032dca2d20f6bad6d0369cb15edeea8c28c7533e26448041e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Committed Opening Contract receipt under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-tutorial-receipt-light.png",
+      "sha256": "3bb98d432291e5c7de276e5e083d3c2945b9600dbd079bb0b6d8fe7723cb92fe",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Committed Opening Contract receipt under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-advisor-dark.png",
+      "sha256": "1230694a6d38283407fd55ced89b8e5d08f0fd28bff1f6c2446ac057265b75fd",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Styled Front Office Advisor under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-advisor-light.png",
+      "sha256": "192afcc7073482a0a86ebcf3dc7a720388dbf895ac37be6089608c7b7cedfa36",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Styled Front Office Advisor under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-dynasty-timeline-dark.png",
+      "sha256": "22006fded5280d612da43f4d36fc1635c27b40764d78063e33975915290c6113",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Theme-aware dynasty history fixture under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-dynasty-timeline-light.png",
+      "sha256": "812162baf8f326d6bb3ac1c8acdae69e7a6185fd2291067e75a4c2e3aa89c1e8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Theme-aware dynasty history fixture under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-first-debrief-dark.png",
+      "sha256": "519fc5656616da06a63bd8129b8e634ea033a51ca996fa3376c87dc2573c17e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional first-debrief feedback under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-first-debrief-light.png",
+      "sha256": "51acdf623aef72f91bdeb7b6d930422ee6c24b3abacdb8ddd7ce54ae49acd4ea",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional first-debrief feedback under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-moment-card-dark.png",
+      "sha256": "3b9e4336892598501942d3234eba71062dfbdbd6bf5c3a7102b22ef9f78a1f5a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Moment share control under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-moment-card-light.png",
+      "sha256": "812162baf8f326d6bb3ac1c8acdae69e7a6185fd2291067e75a4c2e3aa89c1e8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Moment share control under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-return-digest-dark.png",
+      "sha256": "11915c9c6fe693bc28ba9d98e881436af561b236a0a02522cda0a60bcaf45dbd",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Return-session digest under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-return-digest-light.png",
+      "sha256": "582111ae4e882f83785be31a0e86c17e42208f8426159285793a96edcc58aa3a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Return-session digest under production policy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-cap-pressure-dark.png",
+      "sha256": "0fc4b4fda9387cfa6ea8aa4129c2d8861c2ae248ca041efe95d9e6068542d9a7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening salary-cap pressure and General Manager legacy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-cap-pressure-light.png",
+      "sha256": "c080304937ff735090eaf2c1ca3759ff886b577987b59705ddf33bf5917d3d0c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening salary-cap pressure and General Manager legacy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-waiver-identity-dark.png",
+      "sha256": "6352bc2b531262e886fb974eec45b384756eb21497a677b675c7f779d6d55885",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-waiver-identity-light.png",
+      "sha256": "b16197ad47d4c97115e3ca42d974007dd3e24bbe5a49405ee041281fce76fb5d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-franchise-legends-dark.png",
+      "sha256": "808cc084d3f2cdf9cfb25c86fe8390b57d2380faab0a6a67aa2a828411b31b47",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-franchise-legends-light.png",
+      "sha256": "34acf5ba269be6debed9ff8c348cc92f02eef51e657466578a22674e9bd923b8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-gm-persona-dark.png",
+      "sha256": "d6dfec8a44fa18e3dc5e06d48c7637b215fba20daeee6f90e65528a1d624c0c1",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-gm-persona-light.png",
+      "sha256": "02ae7e543ba86edf8357a476f5fd2235b87f06202cc263ae8a8c68710966ee6e",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-trophy-road-dark.png",
+      "sha256": "d02c94bccd28fc54e263065bc41b519500cee5c0249aa4b44e46cc2eece2674b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-trophy-road-light.png",
+      "sha256": "1a81f2674c592407f38417434035123ffa2357145f39596238e905f58d55dd95",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-sim-watch-reel-dark.png",
+      "sha256": "10ebf403fdf1cbf012f70ae2f3fd97ef12bec85d2d30bb0bd0c81d94789dd98b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-sim-watch-reel-light.png",
+      "sha256": "3aaf5d8736452ded062ef72b23426df7d3c9b695520bb5bc239b44227b080f2a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-room-watch-dark.png",
+      "sha256": "74e5abc6e9be86fb46950809bffa33d2e80694fac0e28a4a7813dae031203ab9",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-room-watch-light.png",
+      "sha256": "f40a2d455a01ecaf8b02febe78a1852c0c91a7037ab58fad0e9aafa8969f2e10",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-architect-cut-dark.png",
+      "sha256": "feb4194553622fde725ad5ff86cc4c9d65d6c69cfd04bb86959735333b946d0e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-architect-cut-light.png",
+      "sha256": "ace1542c57ad320c17d0d813e66d3bdb1512cbfd9f85490d2f50396e7ae7cce4",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-guide-modal-dark.png",
+      "sha256": "efab18d3eef18227f0c7db7dbb1897536882b444c0599810e78ef8deef8f7b51",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-guide-modal-light.png",
+      "sha256": "ece3bc79a75d48eb54f0948a0e2c7a81c2ac2213fe563b6bf2d507981fad5ee8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-rival-coaching-dark.png",
+      "sha256": "0441ad99989e786950fbbbb26d3b1263270909b4229833349b3a6479fb92090e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-rival-coaching-light.png",
+      "sha256": "65f240c3377878996c8e00362a21b3f20f51ca8b31ab6cf25d29330e2d4be264",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-decision-archive-dark.png",
+      "sha256": "9f263b0ba126d1df7e90b86237178e56c214f9f2d3ee9fc494d9e6c65ac31145",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-decision-archive-light.png",
+      "sha256": "2f69dfde1362afc7787aaa913e07136110ad7cc20092b3ecae362e2308ada588",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-co-gm-brief-dark.png",
+      "sha256": "e4ae9bb8aae53c7193e94d104b2804807c4497a018152e409ebdfac072cd4b96",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-co-gm-brief-light.png",
+      "sha256": "3225d765531a44eecc26764e2ece5305890aa57775a4eb88aba547de201b813e",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-prediction-receipt-dark.png",
+      "sha256": "3d301851a624dba567a71916e8d3e7c5d4d2da8f7d6db28cfcc301898f5fd703",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-prediction-receipt-light.png",
+      "sha256": "f4358d054a932830cb82a2f35585e0a62dd71ef7f847ce6d49bc2b7ab253b857",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-agent-negotiation-dark.png",
+      "sha256": "439f43104e263e72c5322268abd23cb14cef5771280d96e72b0acd74aadcf73d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-agent-negotiation-light.png",
+      "sha256": "72ea443bb1abbfbc999625b81d319ee28d8c145cb0b6d0ef1a2a797d08b85c5f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-draft-trade-review-dark.png",
+      "sha256": "bad946ab89881ce371830d4e4cbd54053566819eed91d5ccf3ddab9136d263c1",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-draft-trade-review-light.png",
+      "sha256": "2325a59ea470ff7e3c166d1514b955f24659981654f67d508362bb29f4ffd6ac",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-hof-ceremony-dark.png",
+      "sha256": "6c1907dc64327eeddc194cfe2b2d57a5abddc6584867d054afd40dd9b044dd39",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-hof-ceremony-light.png",
+      "sha256": "0888aae733f626bc0ac9d786d8827f96fb11764ed61694f7367f44eb6469333a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-architect-signature-dark.png",
+      "sha256": "9d8ee4eec363eb174a4115ffd58ee98d230bb7c37fca3fdfa1d4577af9c2d330",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-architect-signature-light.png",
+      "sha256": "e9a5b6620e94e316f69c14c801cc5036f4ef61751a22c955427fa6d6e4a96b4a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-architect-objective-dark.png",
+      "sha256": "6dd192bc26c0c6ec982df269ef9df3011fe8b03d2248eb245e7cd4f317534fe5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-architect-objective-light.png",
+      "sha256": "76e0a2e1407447805e3eaa7dd9e1853a3525a198d164a44677e8f00a3bd32f46",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-exact-command-center-dark.png",
+      "sha256": "7c0cde7f8adc1fe59004ca6827017f52c110a3d3e1b75dbef9263592d7aa2d67",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-exact-command-center-light.png",
+      "sha256": "16253222ee56447f7ebb088d8fde2c1109b117f97e71e1f46190e110ab8ab6ae",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-exact-command-target-dark.png",
+      "sha256": "b8d087dbdba3561931f2330b875adcf917ea8be2de138b6d9f9dac4cfda3cec9",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-exact-command-target-light.png",
+      "sha256": "a71723b670a5a5ea7cf9fec9e813e732e52fe64f3a7b1ced0b975bc1041f57b4",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-facility-capital-dark.png",
+      "sha256": "9fa8914a028ded496be0990b970d0fb450502b824333a66132f56c76f68a81e5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-facility-capital-light.png",
+      "sha256": "574399ff05691e0667d2f6191578d3bf5c3660fe63950235485600d035b4dcb6",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-gist-authentication-dark.png",
+      "sha256": "1568dbdb2fb0f5d43d73e270c09b3de2ecb42742e9470ea177586f8feb32824c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-gist-authentication-light.png",
+      "sha256": "f1f6f5585c5abfa81143b27ab64e8a7dec196f496dfaa3704d82a9264a6bf82c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "docs/visual-qa/s112-tablet-nav-drawer-dark.png",
+      "sha256": "cf1b99b26a60bd9d091b8321a2ca58f7b1cf7a8be89bf6a09d9d584abe72f7f1",
+      "theme": "dark",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-tablet-nav-drawer-light.png",
+      "sha256": "01212030c0789cce894653d30aeac15d58cd152f10a4d22e6d69068b99439ff5",
+      "theme": "light",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-nav-drawer-dark.png",
+      "sha256": "7f8fc80372dae7e4a4ef61cddfd5eda8cb33637d07f489da9fbf81738f62f9aa",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-nav-drawer-light.png",
+      "sha256": "828defd4cbdf82dbb5323880b0c9b59fff83ac03604276380899849bbc9dd685",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-loop-dark.png",
+      "sha256": "394d3fe5f4412914951f3bcb0369b7466630ceed44f097137115862fef214693",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Mobile weekly decision deck and sticky command dock"
+    },
+    {
+      "file": "docs/visual-qa/s112-mobile-game-loop-light.png",
+      "sha256": "f6c8a854bf96182b57a90e7c84f2c8d611a84b66b8a78066b103746152f64d4b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Mobile weekly decision deck and sticky command dock"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-index.png",
+      "sha256": "6314b43142fa42dc63178097bc80e95ecf5b1e692d2db152282497b9cd4dd1d9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public index.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-about.png",
+      "sha256": "df109fbcd6ce206e58045dd09bfe4aa814383f66e233750e31905625850002d5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public about.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-press.png",
+      "sha256": "bf256f5caef0b9726c0c043e471048efdf1074027fad21a2ae9436fe266375aa",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public press.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-status.png",
+      "sha256": "19faa5ec81e5b5f4a9b053e6020ce6cc606c7a9ef9051cf89b8ff62bb4e0fab6",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public status.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-status-archive.png",
+      "sha256": "f7db162266bea742e07dad1f5117c4caaecee9bc31d44d810b2c9faceb4ea74d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public status-archive.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-stats.png",
+      "sha256": "544c7a32dd6a918d92be188c95eb8ceb772a79228ecb282c7ab06021f3e32017",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public stats.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-simulation.png",
+      "sha256": "78e6a38e2bfd47c8bd0192ed5757402e662ceb389b73bd5a71efbfef9b6f18dc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public simulation.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-contact.png",
+      "sha256": "22ebdc968c130c8672883700761ba4b19fe6e7b35bf62e63903830df661b611a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public contact.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-privacy.png",
+      "sha256": "3665b5b848b07799c305da5449e6d4cbe756bc26df34e5ce7725b3f08f4f64a6",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public privacy.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-dark-terms.png",
+      "sha256": "1a1e17678f51cd64ed2216c86b50834e8c9a3b0dd9f8a94fdba01e53a5022a57",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public terms.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-index.png",
+      "sha256": "6455fe8cb59d6341a0d77c9c65a9e97f1c7f63b79803230dd015a21228d75b00",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public index.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-about.png",
+      "sha256": "3dc89a67ab0f90b18ffcadcafaf74031d73223725d8a0103c6bcbdc92b602aee",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public about.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-press.png",
+      "sha256": "72fab46abe77ca3d8c58d00282316b23a6a9625f0e8c479ad06826fbed3a2616",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public press.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-status.png",
+      "sha256": "dd84aa64135a7ebdc47f42f2bfa48c4834bb507da7c051f756f26569b0ba86a8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public status.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-status-archive.png",
+      "sha256": "4c2efe38342bb61c8cf856bad5ba9a55d101d05fa35ba332f8bb1eacb719eab7",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public status-archive.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-stats.png",
+      "sha256": "b3e9905930cf0fd4184e5f750a9172b4806db3bc834f60d04c295c4fde7ea6a1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public stats.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-simulation.png",
+      "sha256": "4666d580557de587e4fb2cfe85d8c023f831c4bb0aa3dccd73ecd38fe56b16e8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public simulation.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-contact.png",
+      "sha256": "95572c99f9610cd843584cd569715d3500b5f064761241034ef2e99570cac6cd",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public contact.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-privacy.png",
+      "sha256": "f6952a87e6b996c4bd72cb5e9df21c3899f2ca4b56d340f644b9387fe0ce558f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public privacy.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-desktop-light-terms.png",
+      "sha256": "1b22e4cec0854b7cc8e11e5104a4a951ee69aad970e77dd5653a2df4cd006cd3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Public terms.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-index.png",
+      "sha256": "1e6118252fba94f324198b5f80cd1b06780aa944abd2b58c465c3b68be9186b8",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public index.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-about.png",
+      "sha256": "52fa81843890dfd9065d7690fb2af071cb4c04d303a006163e600e2e77203d9a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public about.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-press.png",
+      "sha256": "96a888af14dac43af6fc092eb78ba588c53294d9d0c9dff066d8a45d0665b2f3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public press.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-status.png",
+      "sha256": "b175dc1ac0cfec4f16837c80a50c2e2a959bf487bbd5d0311135ef9583893236",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public status.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-status-archive.png",
+      "sha256": "900d42dce38e736fdccbfc008e780bca8b5f066426d1263d8045c3311398c15e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public status-archive.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-stats.png",
+      "sha256": "344cd77172784f0f030a0139b7120371606be357be2013b010e2531c529a260f",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public stats.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-simulation.png",
+      "sha256": "aac184f38ca51cc28843bed1aeb4a774c64dce2ef0ab5b91edeb02fbd3350849",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public simulation.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-contact.png",
+      "sha256": "2986079eedcfe590f8b0f45a14460dcc851169737979b502323206e5995278fa",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public contact.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-privacy.png",
+      "sha256": "d98f19709479812e6fb2dfdaf14c34d1ce10bb767778498f60fa7ae9bdf8b597",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public privacy.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-dark-terms.png",
+      "sha256": "356b0adaf097335eb898b942ab9dbc11557f4db04c557a62debf619163f0b6f4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public terms.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-index.png",
+      "sha256": "5d32ea2930986d5cff6a16def7db498aeae35ce4140d8260421d05dcd356fb5d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public index.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-about.png",
+      "sha256": "7c7ccee88a6a7852e04ec9524e9c5c4e14504f87506ec3018729abf76251561e",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public about.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-press.png",
+      "sha256": "58b381e899ff7fcca66fa45573f57b91bbde6fa648511b874eabe97115423370",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public press.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-status.png",
+      "sha256": "357f692bf0d2f6df075a36f6b250a5980c7e596a5d597fbe3f302f781b68dbff",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public status.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-status-archive.png",
+      "sha256": "30fe4e3a557df3b0d22b17f6b6b346398ae766ed456eb6eb02e8a01c02cf5e59",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public status-archive.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-stats.png",
+      "sha256": "0515bed9c6804a44caa031299c4cea8b501327fa55ed9e1dd6ad394775ea6eb0",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public stats.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-simulation.png",
+      "sha256": "b066777d8936e226771a16971fe66da8da1e64630cd77dd3460a35b107bcb1ed",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public simulation.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-contact.png",
+      "sha256": "1b30252b84c2469a8e537a4a559ddf596687eb6ce2f2f059ce6d9f2534e2fbe3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public contact.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-privacy.png",
+      "sha256": "115700328da248fcbecab88f5e9564178ce28198ce977c82ec41f90532d33972",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public privacy.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-public-mobile-light-terms.png",
+      "sha256": "0b9a92f99543d078fa5f07be2aed333e0504bba45b9c6d263a5bca92ccee780f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Public terms.html"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-setup-unsaved-dark.png",
+      "sha256": "9c40063c7a193e9afd1d6e07a282fe18af56f4daf9cd6293ef8595b337bc5844",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: setup-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-game-unsaved-dark.png",
+      "sha256": "ed16da7d87affd7d61f87b5aeefec4dd322beca3a9a765a6d46d6b1ba6dedbb7",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: game-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-pending-recovery-dark.png",
+      "sha256": "03b31e270d212d337f1e68559b3d520da72e6e9e9bc95354b1c2720b84be682e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: pending-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-simulation-running-dark.png",
+      "sha256": "f69f6475c6753beaac304135aff5e1539c94e1787acb84bdb4bf94c4b9cbda3c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: simulation-running",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-simulation-interrupted-dark.png",
+      "sha256": "313323227debfd60cd42cbc57a59e6c45d73a984f1847e50725d7d8fe1f4f09c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: simulation-interrupted",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-corrupt-recovery-dark.png",
+      "sha256": "c6a0f0e8fc14828e06c4cdc1bc65edf4bb47b4ae1489faf444c96b847ddac7a6",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: corrupt-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-setup-unsaved-light.png",
+      "sha256": "fe639d5d98df9433017cfe2f337c9f4bd266d9992d518671188294e1ae5d8515",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: setup-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-game-unsaved-light.png",
+      "sha256": "44ea002c70d059bc192dbff73d72ae9123ca021eae90c0fcf9cd982ba94971ee",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: game-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-pending-recovery-light.png",
+      "sha256": "cab39cf3918e55dfca91c9539fcce037239265af5688ec5e76980f7ae4cdc75c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: pending-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-simulation-running-light.png",
+      "sha256": "2d34e40d28286f414414db6a6ad3fcd0591427d92c14da4d13fc6cd75acdb0f6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: simulation-running",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-simulation-interrupted-light.png",
+      "sha256": "19261ffbb8518bdab566cb16c678cece666f147150770285d1b38590d4b32d74",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: simulation-interrupted",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-desktop-corrupt-recovery-light.png",
+      "sha256": "6e3636d20d59f12dc4d14cc54680dce55021dbf50d37c0c7f4cc66ea08873e1d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Browser session recovery: corrupt-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-setup-unsaved-dark.png",
+      "sha256": "a9a1437a159f19cf77c509cafb4ad65e75ba2e68de4e7b58c4c5bfc1444ef990",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: setup-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-game-unsaved-dark.png",
+      "sha256": "59a60a4f336a74e3e02e3733ceb7ea75be8b4188702aa731e0d1f777f363a663",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: game-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-pending-recovery-dark.png",
+      "sha256": "96f3c0058240c57a9988bfeca0c1613a974f4e0e9ba19736a60dce7d29ea26f3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: pending-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-simulation-running-dark.png",
+      "sha256": "b657d0dd68195fb3299a17f7df32ea30d555293d4057897b1b99b71834e11674",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: simulation-running",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-simulation-interrupted-dark.png",
+      "sha256": "4927c6c737ce97e6491bda5b3f1f31321b69839fce946c877ba3fb32fb56f324",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: simulation-interrupted",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-corrupt-recovery-dark.png",
+      "sha256": "b5bb1a0189c7b39e801f59bbf75809faccb472517b4ea592b04c3c98c0200618",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: corrupt-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-setup-unsaved-light.png",
+      "sha256": "ed288de3c0cb969fcc993c09a01ec9ef861d00f5061e9cf70cce6cc668801e28",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: setup-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-game-unsaved-light.png",
+      "sha256": "9d880058052f392b3829a34f4abb97e19d84288546ec372a7bd7d55ab324b931",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: game-unsaved",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-pending-recovery-light.png",
+      "sha256": "e1d233ef1f8672751af25b6b345fe2b9ce47af875397acf351ca359980147c4b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: pending-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-simulation-running-light.png",
+      "sha256": "776b5327470a352846fe6be90b4aa35df2e6bf99cd2759c31f30a97fbb74ced7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: simulation-running",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-simulation-interrupted-light.png",
+      "sha256": "7a05c887e5b949a98fd0523379a072159dfa4d23a146b3157d750882e0df1804",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: simulation-interrupted",
+      "basis": "synthetic recovery-status fixture rendered in the real browser; job execution is covered separately",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    },
+    {
+      "file": "docs/visual-qa/s112-recovery-mobile-corrupt-recovery-light.png",
+      "sha256": "e170821a3c167c67fd7ebc189bbf3d5eac0cf4dbc623bd40388680293bf15dab",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Browser session recovery: corrupt-recovery",
+      "basis": "real browser runtime and injected checkpoint write rejection",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
+    }
+  ],
+  "captureRuns": [
+    {
+      "localRawPath": "output/playwright/responsive-f8b640b3774390f0dc74692b7bc7f71e7563f1e9/responsive-evidence.json",
+      "sha256": "2837608d961ec6d6aaf72b71f3352a9cb41cda44d184a034f5efe60de37e2fd8",
+      "portable": false,
+      "note": "Local raw run retained; portable captured PNGs and their review authority are listed above."
+    },
+    {
+      "localRawPath": "output/playwright/public-qa/report.json",
+      "sha256": "b12effa1a0a29f57747b96ecdc6fa74eea72ae7d2f6980a9d14e17fadca072f0",
+      "portable": false,
+      "note": "Local raw run retained; portable captured PNGs and their review authority are listed above."
+    },
+    {
+      "localRawPath": "output/playwright/client-recovery-f8b640b3774390f0dc74692b7bc7f71e7563f1e9-dc8f15e50f56/report.json",
+      "sha256": "3ea4fe56c5d12d519518c2dc5d832332e906218bb75bfbf55a21cb4560939d33",
+      "portable": false,
+      "note": "Local raw run retained; portable captured PNGs and their review authority are listed above."
+    }
+  ],
+  "scope": "222 newly captured PNGs from this exact source and built artifact. Existing fixture limitations remain; capture runs and pixel review are separate evidence."
+}

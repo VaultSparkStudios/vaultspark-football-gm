@@ -187,6 +187,16 @@ Public launch remains HOLD for actual project-domain receive/reply-as evidence, 
   The cost is real — mean potential falls 0.87 — and it lands on the wrong thing. Elite density does not move and the parity reading gets worse. The mechanism appears self-defeating: declining veterans wash out faster, accelerating the youth turnover that supplies the high-potential intake driving the ratchet. Measured age mix at season 8: the active roster's mean age has fallen 27.38 → 26.0, the elite cohort's mean age is 26.6, and only 34% of it is past the decline onset at all. Reverted; no dead module left behind.
 - [ ] Elite density remains `watch` at 3.3% of the active roster at 90+ against a sourced 1.53% All-Pro ceiling, with the diagnosis re-derived rather than re-inherited: the driver is not veterans holding ceilings but intake supplying a fixed potential distribution into a filter that grows more selective every season — and, on this receipt, into an active roster whose position mix is itself drifting toward the highest-rated rooms.
 
+<!-- s112-delivery-followthrough -->
+### Delivery follow-through — 2026-10-01
+
+Closeout commit0f0d3a1 failed CI36893062846: two assertions found the missing public release note and one found an unparseable handoff header. Correctionf8b640b restores the parseable Session112 heading and publishes the player-facing note. The failed run and original be71869 receipts remain separate historical evidence. Edge email-protection changes whole HTML response bytes; both encoded addresses are verified and the release note itself matches the artifact exactly.
+
+Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.
+
+Portable authority: reports/session112-followthrough-acceptance.json. Backend and detailed checkpoint/continuity measurements remain explicitly bound to be71869; no new backend deployment, cohort, isolated restore timing or field-performance claim is made.
+<!-- /s112-delivery-followthrough -->
+
 <!-- ledger-roll:pointer -->
 ---
 

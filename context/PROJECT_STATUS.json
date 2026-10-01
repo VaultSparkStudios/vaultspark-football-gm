@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S112 completed fair trade packages, durable saves and observed front-office feedback with exact-source technical publication. Public launch remains HOLD.",
-  "nextMilestone": "Observe real opted-in activity and complete independent email receive/reply-as, candidate-bound approval and lifecycle launch evidence.",
+  "currentFocus": "S112 improvements and closeout delivery correction verified on staging and production. Public launch remains HOLD.",
+  "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -21,7 +21,7 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-09-30",
+  "truthAuditLastRun": "2026-10-01",
   "ignisScore": 41119,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
@@ -83,26 +83,26 @@
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
-    "date": "2026-09-30",
-    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-    "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
-    "canonical": "Direct suite 1702/1702: core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354; exit 0. Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
-    "testReceipt": "reports/test-suite-s112.json",
-    "testSurfaceDigest": "59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef",
-    "testSourceBinding": "Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
-    "browser": "89 passed, 1 intentional skips; reports/browser-ci-s112.json",
+    "date": "2026-10-01",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+    "canonical": "Fresh direct six-shard suite 1702/1702, exit0; Clean tested paths at the exact correction Git revision before launching the unchanged canonical all-shard runner. Completion must retain that source revision and test-surface digest, and match a fresh direct native receipt for all six shards.",
+    "testReceipt": "reports/test-suite-s112-followthrough.json",
+    "testSurfaceDigest": "be86d2249b7b9e5ebb8786d48f9369c20548499a08b97f4826012dc6c9881bcd",
+    "testSourceBinding": "Clean tested paths at the exact correction Git revision before launching the unchanged canonical all-shard runner. Completion must retain that source revision and test-surface digest, and match a fresh direct native receipt for all six shards.",
+    "browser": "89 passed, 1 intentional skip; reports/browser-ci-s112-followthrough.json",
     "doctor": {
       "blockingFailing": 0,
       "warnings": 1,
-      "receipt": "reports/doctor-s112.json"
+      "receipt": "reports/doctor-s112-followthrough.json"
     },
     "ci": {
       "status": "success",
-      "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938"
+      "run": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9"
     },
-    "staging": "14/14 verified; reports/staging-authority-s112.json",
-    "production": "10/10 verified; run https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768; reports/production-provenance-s112.json",
+    "staging": "14/14; reports/staging-provenance-s112-followthrough.json",
+    "production": "10/10; https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; reports/production-provenance-s112-followthrough.json",
     "backend": {
       "status": "verified",
       "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
@@ -112,51 +112,35 @@
       "duplicateRunBoundary": "Duplicate run36796812804 was cancelled; build authority is36796745293."
     },
     "visual": {
-      "status": "verified",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
       "reviewedImages": 222,
-      "gameImages": 182,
-      "publicImages": 40,
-      "beforeImages": 100,
-      "afterImages": 222,
-      "responsiveCaptures": 327,
-      "publicCaptures": 40,
-      "recoveryCaptures": 24,
+      "freshlyInspectedImages": 147,
+      "hashInheritedImages": 75,
+      "status": "verified",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
       "receipt": "docs/visual-qa/LATEST.json",
-      "hashCoverage": "complete",
-      "freshlyInspectedImages": 126,
-      "hashInheritedImages": 96,
-      "hashInheritanceReceipt": "reports/visual-review-s112.json",
-      "requiredFinalScope": {
-        "reviewedImages": 222,
-        "gameImages": 182,
-        "publicImages": 40,
-        "responsiveCaptures": 327,
-        "recoveryCaptures": 24
-      }
+      "reviewReceipt": "reports/visual-review-s112-followthrough.json"
     },
     "performance": {
       "status": "verified",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
-      "receipt": "docs/performance/STAGING_S112.json",
-      "receiptSha256": "0c957cf54001014ed802dc1c143be983e244b7a953c9b876d1956b5550cee34d",
-      "summary": "Stable staging canonical entry route /, three actual browser samples per profile: desktop LCP632ms/INP24ms/CLS0; mobile LCP624ms/INP16ms/CLS0.0085. All14 receipt checks passed, including actual hosted security headers and deliberate interaction. Laboratory entry-route evidence only; separate game hydration diagnostic and field-cohort data are not inferred.",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+      "receipt": "docs/performance/STAGING_S112_FOLLOWTHROUGH.json",
+      "route": "/",
       "profiles": [
         {
           "name": "desktop",
           "runs": 3,
-          "lcpMs": 632,
-          "inpMs": 24,
+          "lcpMs": 564,
+          "inpMs": 32,
           "cls": 0,
           "interactionObserved": true
         },
         {
           "name": "mobile",
           "runs": 3,
-          "lcpMs": 624,
-          "inpMs": 16,
+          "lcpMs": 524,
+          "inpMs": 24,
           "cls": 0.0085,
           "interactionObserved": true
         }
@@ -323,7 +307,7 @@
     "captureLedger": {
       "status": "verified",
       "receipt": "docs/visual-qa/CAPTURE_LEDGER.json",
-      "summary": "630 retained PNG files verified against 2545 immutable ledger entries; final222 includes24 recovery captures. Supplemental failed5 and corrected4 disabled-control images remain separate."
+      "reviewReceipt": "reports/visual-review-s112-followthrough.json"
     },
     "supersededCandidateReceipt": "reports/s112-superseded-88a5e006.json",
     "supersededCandidateReceipts": [
@@ -331,7 +315,8 @@
       "reports/s112-superseded-23139ba.json",
       "reports/s112-superseded-6608db3.json"
     ],
-    "note": "The initial full UI run remains 69 passed, 1 failed and 1 intentional skip: its advisor-copy assertion expected the former two-state wording. The deterministic assertion was corrected without relabeling that red run. The first immutable visual candidate passed automated capture gates but actual pixel review found light-theme contrast defects; those defects were corrected and the final artifact was recaptured and reviewed. Superseded source 88a5e006bf0582c8dcba4ddfd84e9516f688de6d retains separate outcomes: general CI run 36747125169 succeeded with 70 browser passes and 1 skip, while Pages run 36747125173 failed with 69 passes, 1 failure and 1 skip. The unchanged reward-beats test reproduced locally at 2 passes and 1 failure across 3 repeats. Its failed image showed the Weekly Plan Composer awaiting a required choice; all three non-waiting visibility probes ran before the GM-decision response, and no advance request was submitted. Its Node run stopped after four passing shards totaling 1,293 tests; the long shard was cancelled with exit -1, so this was not a complete green suite. That candidate was not promoted to production. These earlier results remain superseded evidence, not final-source acceptance. See reports/s112-superseded-88a5e006.json. The replacement bcf5384 passed general CI after a clean failed-job rerun, but real stable-staging browser interaction proved that both new-franchise creation and explicit save loading lost the selected franchise across page navigation. Its local suite was interrupted after core 290 and runtime 909 passed (1199 total); sim-contract had not completed. No full green suite or production promotion was claimed for that candidate. The first 13 recovery browser checks failed because the test observer copied full imported snapshots into sessionStorage and its identity reader used a nonexistent field; those harness defects were corrected without treating that run as product acceptance. See reports/staging-browser-s112.json. Product source 23139baf778792dcea44118138de3ee07eed5a5a was pushed normally with hooks intact and verified on stable staging at 14/14. Its local canonical run was stopped during core with zero completed shards before correcting tested browser-gate scripts. General CI run 36787373005 passed all five hosted unit shards but failed static smoke before the full browser suite, and Pages run 36787373023 failed the same smoke: assertions expected bare game.html after successful navigation to game.html?resume=tab. Its responsive harness had the same stale expectation. Backend build 36787373038 succeeded, but no backend or production publication was accepted for that candidate. The normal push was delayed but completed; no deadlock or hook bypass is claimed. Three script sites and four client-runtime assertions across three files were corrected without changing public/src product code, server-runtime expectations or timeouts. Focused client checks passed 6 with 1 existing intentional skip, and static smoke passed. The clean replacement commit 6608db347debe8d72b44f2dbeec7e8ca39308981 builds the same artifact 5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3. Its independent final acceptance must come from final receipts, not these predecessor results. See reports/s112-superseded-23139ba.json. Source 6608db347debe8d72b44f2dbeec7e8ca39308981 completed general CI run 36793635097 successfully, including browser job 110151960971 with 89 passes and 1 intentional skip out of 90 tests (10.4 minutes, no downloadable artifacts). It reached stable staging with 14/14 identity checks and actual desktop/mobile continuity. Subsequent actual pixel review found that the light-theme primary-button foreground override also affected disabled controls, rendering white labels on pale backgrounds. Its local canonical run was stopped after core 290/290; runtime was unfinished, so it was not a complete green suite. The candidate was not promoted to production or backend. Two light-theme selectors are being narrowed to enabled controls. Existing actual per-PNG inspections may carry forward only when the new capture has the exact same hash; whole-candidate visual acceptance cannot carry forward. See reports/s112-superseded-6608db3.json and reports/browser-ci-s112-6608db3.json. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks."
+    "note": "Closeout commit0f0d3a1 failed CI36893062846: two assertions found the missing public release note and one found an unparseable handoff header. Correctionf8b640b restores the parseable Session112 heading and publishes the player-facing note. The failed run and original be71869 receipts remain separate historical evidence. Edge email-protection changes whole HTML response bytes; both encoded addresses are verified and the release note itself matches the artifact exactly. Backend, continuity and checkpointPerformance fields retain their explicit original source identities.",
+    "followthrough": "reports/session112-followthrough-acceptance.json"
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -380,13 +365,13 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-09-29",
-  "lastVerificationAt": "2026-10-01T02:25:52.193Z",
+  "lastVerificationAt": "2026-10-01T18:36:29.818Z",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.118,
   "entropyLastComputed": "2026-10-01",
-  "lastSessionSummary": "S112 completed ten audit items and five second-order outcomes: complete trade value, durable and recoverable browser saves, observed advisor results, resolved player signing credit, real-policy theme parity, deterministic weekly paths and approved action updates. Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks.",
+  "lastSessionSummary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -462,16 +447,16 @@
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "8a58e6f748c5a51780996e7ed55f805fafdb108d7e84a5d4c666a24f417cdf35",
-    "checkedAt": "2026-10-01T02:03:54.256Z",
+    "receiptSha256": "b93519c821b1e6baee8035fa61de9c4e99f7bffc1b45c3b6d146d5195a5acf08",
+    "checkedAt": "2026-10-01T20:06:46.520Z",
     "evidenceWindow": {
-      "observedAt": "2026-10-01T02:03:54.256Z",
+      "observedAt": "2026-10-01T20:06:46.520Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-10-02T02:03:54.256Z",
+      "expiresAt": "2026-10-02T20:06:46.520Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "deployedRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
     "routes": {
       "verified": true,
       "checked": 9
@@ -492,7 +477,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "be71869a428e6224330d72cbba76df436ee31938"
+      "expected": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9"
     },
     "independentStaging": {
       "verified": true
@@ -513,11 +498,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "750d1380c596526296d3a17e618569299467ed7bdf6beba86e12814bed179bc5",
-    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "receiptSha256": "eac9e617057d838434fb877af108cd3f834a80c5196f7e31f6c5b80e484745cd",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+      "digest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
       "files": 234,
       "entries": [
         {
@@ -1193,7 +1178,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1439,
-          "sha256": "441d4a5ccb48b0111ed9884d0e8cc97b370c5052d6d26cf30b00eaf2acacf50e"
+          "sha256": "1a42deb5d9c3e05b246fedfac2655ff2ff6e692fc57d743bf2ea58cf4d723921"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1662,13 +1647,13 @@
         },
         {
           "path": "status-archive.html",
-          "bytes": 19520,
-          "sha256": "eaee694a9e5d14e6fc4ca4b9efb4252fdc75d3df128aee8873df9596f2d6e000"
+          "bytes": 20477,
+          "sha256": "672c14d74c26d0c1edc68718af46a4bdde23f5964fce32dc116ae0e7ead03c26"
         },
         {
           "path": "status.html",
-          "bytes": 7843,
-          "sha256": "ec6aeb8cef6fbaeeaceae9644f58afa5a90f7e697e892b5ee623b65279701dc1"
+          "bytes": 7388,
+          "sha256": "9a232ac70950fc4672844f2d730dbab1353280f80cbc74de633e7daf2ab95c5d"
         },
         {
           "path": "styles.98aed5d077.css",
@@ -1697,75 +1682,80 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "a9e593b0-529e-44f3-bb2d-40f3a752c410",
+    "deploymentId": "8ef075ac-bdab-4079-97ed-1994ae1c5d28",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-01T00:37:58.727Z"
+      "checkedAt": "2026-10-01T17:16:02.038Z"
     },
     "rollback": {
-      "previousDeploymentId": "a33a7214-b0ab-4bc2-975b-43a107cf76fc",
+      "previousDeploymentId": "a9e593b0-529e-44f3-bb2d-40f3a752c410",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-01T00:37:58.727Z"
+    "observedAt": "2026-10-01T17:16:02.038Z"
   },
   "lastCloseoutAt": "2026-09-30",
   "performanceAuthority": {
     "schemaVersion": "1.0",
-    "sourceRevision": "15a962b2fa87532bbbe349c2f51b1b46fbe3a3d8",
-    "artifactDigest": "c09fc822db5834efdf52a381930acd0ed5ab9a4132c8655f777938bb686c980c",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
     "route": "/",
     "verified": true,
-    "observedAt": "2026-09-30T03:29:13.192Z",
-    "receiptSha256": "83eab339203352ed484e914de8bd477648d0ad75bc0be935a3b0370c55a26178",
-    "note": "Hosted lab only. Both / and /game.html verified on desktop and mobile.",
-    "diagnostic": {
-      "route": "/",
-      "desktop": {
-        "lcpMs": 536,
+    "observedAt": "2026-10-01T17:31:08.798Z",
+    "receipt": "docs/performance/STAGING_S112_FOLLOWTHROUGH.json",
+    "receiptSha256": "f3ae4e9ec8c339612cc23fbefeba6c703ae12739e2e2e2ee1b2c8212666c95ac",
+    "note": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
+    "profiles": [
+      {
+        "name": "desktop",
+        "runs": 3,
+        "lcpMs": 564,
+        "inpMs": 32,
+        "cls": 0,
+        "interactionObserved": true
+      },
+      {
+        "name": "mobile",
+        "runs": 3,
+        "lcpMs": 524,
         "inpMs": 24,
-        "cls": 0
-      },
-      "mobile": {
-        "lcpMs": 572,
-        "inpMs": 16,
-        "cls": 0.0085
-      },
-      "verified": true
-    }
+        "cls": 0.0085,
+        "interactionObserved": true
+      }
+    ]
   },
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-01T02:05:16.912Z",
+    "observedAt": "2026-10-01T20:14:45.215Z",
     "status": "verified",
-    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-    "publicationRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "publicationRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+      "digest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+        "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+        "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
       },
       "production": {
-        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+        "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+        "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
       },
       "visual": {
-        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+        "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+        "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
       },
       "performance": {
-        "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-        "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc"
+        "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+        "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a"
       }
     },
     "checks": [
@@ -1811,12 +1801,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "8599f015bd83d9673ea410ca460846013892c6b607f233f5a75e0b5f1164011a",
-      "productionSha256": "dd5c529e4608d2ea2a6d05fd0082f997435261578cc0030d5a47d5e23456bddc",
-      "visualSha256": "5203b08b2022f053317b385cf58f6b36db77624a5404b1d3a6ab2a67491b5652",
-      "performanceSha256": "02fcc8407655322f413fd85a71add5e00cc38be97ae75d98436815d543ab35c1"
+      "stagingSha256": "4f5b3854bae72e9867c5aaa59e9fb6367c95e64925a56ff21498d5c07d353b6c",
+      "productionSha256": "11ac170671e6c8ac82cb0d3aeff64b87d3c48638365035fc9e8cbf3b67608d50",
+      "visualSha256": "c5e55a9cd979d865f16ae177b6809ca9b50abede9159e0165596ef6911d19f3b",
+      "performanceSha256": "b437c13fe2c7ae6c17f91f900627d0cd2eaf4d75a89ab7ff26ffc03a3cd8a4cd"
     },
-    "receiptSha256": "f323eb661199f564754ddc73d3bb321274dd5290e10fded301a0a8c150724b7d"
+    "receiptSha256": "da3ead28673625ff78db27c28e43577320e254dbdfc9657e37a57be926fd6317"
   },
   "launchReady": false,
   "sil": {
@@ -1856,12 +1846,12 @@
       "studio": 354
     },
     "total": 1702,
-    "generatedAt": "2026-10-01T02:25:52.193Z",
-    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-    "sourceBinding": "Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.",
-    "testSurfaceDigest": "59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef",
-    "receipt": "reports/test-suite-s112.json",
-    "note": "Native receipt authority is its computed test surface; sourceRevision here is the explicit run-start binding, not an inferred native field."
+    "generatedAt": "2026-10-01T18:36:29.818Z",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "sourceBinding": "Clean tested paths at the exact correction Git revision before launching the unchanged canonical all-shard runner. Completion must retain that source revision and test-surface digest, and match a fresh direct native receipt for all six shards.",
+    "testSurfaceDigest": "be86d2249b7b9e5ebb8786d48f9369c20548499a08b97f4826012dc6c9881bcd",
+    "receipt": "reports/test-suite-s112-followthrough.json",
+    "note": "Native receipt sourceRevision remains unchanged; this sourceRevision is the separate run-start binding."
   },
   "silRollingAverages": {
     "3": 898,
@@ -1870,12 +1860,12 @@
     "25": 965,
     "all": 983
   },
-  "session112Summary": "S112 completed ten audit items and five second-order outcomes: complete trade value, durable and recoverable browser saves, observed advisor results, resolved player signing credit, real-policy theme parity, deterministic weekly paths and approved action updates. Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks.",
+  "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
     "durableSession": 112,
-    "currentFocus": "S112 completed fair trade packages, durable saves and observed front-office feedback with exact-source technical publication. Public launch remains HOLD.",
-    "nextMilestone": "Observe real opted-in activity and complete independent email receive/reply-as, candidate-bound approval and lifecycle launch evidence.",
-    "lastSessionSummary": "S112 completed ten audit items and five second-order outcomes: complete trade value, durable and recoverable browser saves, observed advisor results, resolved player signing credit, real-policy theme parity, deterministic weekly paths and approved action updates. Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt. Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks."
+    "currentFocus": "S112 improvements and closeout delivery correction verified on staging and production. Public launch remains HOLD.",
+    "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
+    "lastSessionSummary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD."
   }
 }

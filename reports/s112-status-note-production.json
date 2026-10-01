@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+  "capturedAt": "2026-10-01T20:08:21.809Z",
+  "status": "passed",
+  "captures": [
+    {
+      "file": "reports/s112-status-note-production/desktop-dark.png",
+      "sha256": "91da8b9f363346c77750ab55dee8d77a4ba847056a247c5054d04c1aface3419",
+      "theme": "dark",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "documentHeight": 1706
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T20:13:20.573Z",
+      "observation": "The October 1 release note and all three paragraphs are visible, readable and contained on the actual production page; both themes retain coherent contrast and mobile wrapping."
+    },
+    {
+      "file": "reports/s112-status-note-production/desktop-light.png",
+      "sha256": "dd84aa64135a7ebdc47f42f2bfa48c4834bb507da7c051f756f26569b0ba86a8",
+      "theme": "light",
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 1440,
+        "documentWidth": 1440,
+        "documentHeight": 1706
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T20:13:20.573Z",
+      "observation": "The October 1 release note and all three paragraphs are visible, readable and contained on the actual production page; both themes retain coherent contrast and mobile wrapping."
+    },
+    {
+      "file": "reports/s112-status-note-production/mobile-dark.png",
+      "sha256": "b175dc1ac0cfec4f16837c80a50c2e2a959bf487bbd5d0311135ef9583893236",
+      "theme": "dark",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "documentHeight": 3578
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T20:13:20.573Z",
+      "observation": "The October 1 release note and all three paragraphs are visible, readable and contained on the actual production page; both themes retain coherent contrast and mobile wrapping."
+    },
+    {
+      "file": "reports/s112-status-note-production/mobile-light.png",
+      "sha256": "357f692bf0d2f6df075a36f6b250a5980c7e596a5d597fbe3f302f781b68dbff",
+      "theme": "light",
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "resolvedUrl": "https://playfranchisearchitect.com/status",
+      "firstNote": "2026-10-01 — YOUR FRANCHISE SURVIVES THE RETURN TRIP",
+      "cspSha256": "e42adf2753e7489e8190059e4b5e23e4589661ce6a8371216daafd115733f564",
+      "layout": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "documentHeight": 3578
+      },
+      "pageErrors": [],
+      "reviewMethod": "fresh-image-inspection",
+      "reviewResult": "passed",
+      "tool": "view_image",
+      "reviewer": "Codex browser_recon",
+      "reviewedAt": "2026-10-01T20:13:20.573Z",
+      "observation": "The October 1 release note and all three paragraphs are visible, readable and contained on the actual production page; both themes retain coherent contrast and mobile wrapping."
+    }
+  ],
+  "errors": [],
+  "scope": "Actual status.html, desktop/mobile and both native preferred themes. No CSS, content, snapshot or response substitutions.",
+  "review": {
+    "status": "passed",
+    "inspected": 4,
+    "findings": [],
+    "blockingVisualDefects": 0,
+    "reviewer": "Codex browser_recon",
+    "reviewedAt": "2026-10-01T20:13:20.573Z"
+  }
+}

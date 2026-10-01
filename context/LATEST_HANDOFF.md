@@ -2,11 +2,11 @@
 
 > S112 is the closeout authority; match the newest scored SIL entry.
 
-> Closeout follow-through in progress: commit 0f0d3a1 reached main, but its CI run 36893062846 found a stale public release note and an unparseable handoff heading. The heading is restored here; the public note, narrow rendered review, final verification and publication are being completed. The be71869 receipts below remain evidence for that published source, not for a later correction. Keep the S112 lock until the correction is verified.
+> Delivery follow-through verified. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.
 
 ## Where We Left Off
 
-Deploy: deployed to stable staging and production; source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc; staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Public launch remains HOLD.
+Deploy: stable staging and production verified at f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a; https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555. Public launch remains HOLD.
 
 Recovery boundary a783194 verified S111 separately: fresh 1,588/1,588 tests, Doctor blockingFailing 0, valid closeout receipts, and no unfinished source diff. It does not recount S111 implementation as S112 work.
 
@@ -16,7 +16,17 @@ Ten ranked improvements and five second-order outcomes are complete. Determinist
 
 Independent review reproduced three defects in the initial persistence draft: an older failed overwrite could erase a newer acknowledged save; rejected metadata deletion could leave a listed but unreadable save; a concurrent read could consume a writer’s failure. Per-slot adapter queues, recoverable deletion and request-owned worker barriers corrected all three. The original reproducer and 60/60 adapter/worker integration checks passed.
 
-## Verification and technical publication
+<!-- s112-delivery-followthrough -->
+### Delivery follow-through — 2026-10-01
+
+Closeout commit0f0d3a1 failed CI36893062846: two assertions found the missing public release note and one found an unparseable handoff header. Correctionf8b640b restores the parseable Session112 heading and publishes the player-facing note. The failed run and original be71869 receipts remain separate historical evidence. Edge email-protection changes whole HTML response bytes; both encoded addresses are verified and the release note itself matches the artifact exactly.
+
+Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.
+
+Portable authority: reports/session112-followthrough-acceptance.json. Backend and detailed checkpoint/continuity measurements remain explicitly bound to be71869; no new backend deployment, cohort, isolated restore timing or field-performance claim is made.
+<!-- /s112-delivery-followthrough -->
+
+## Earlier product verification and technical publication (be71869)
 
 Actual stable-staging continuity: Real stable staging: desktop dark1440 and mobile light390 preserve explicit CHI/seed20260306/play/year2024 as fa-20260306-CHI across creation, full-page navigation, reload and Continue. Exactly one real advance moves week1→2 and survives reload; explicit named manual saves resume in a new tab at year2024/week2. No storage/request/worker behavior is mocked. Returning browser uses this candidate service worker; no older-release upgrade or full theme matrix is claimed. (reports/staging-browser-s112-final.json). Actual production continuity: Actual desktop dark and mobile light production flows preserve CHI, seed20260306 and Play mode through creation, reload and Continue. Exactly one W1-to-W2 advance per viewport survives reload; an explicitly named save restores in a new tab. Active service worker, no browser diagnostic failures, eight freshly inspected portable images; no analytics consent or synthetic state. (reports/production-browser-s112-final.json). Checkpoint capture/flush: Observed immutable worker capture/flush: drive fresh232.3ms and one completed season1066.5ms with maximum flush main-thread task51ms; play fresh158.9ms and one completed season1362ms with maximum task55ms. Fresh flushes had no observed tasks at or above50ms. Each measured flush sent one capture request and no bulk snapshot export/import/raw payload. Compared with the preserved f34e same-scenario baseline, observed season flush maximum tasks fell from735/892ms to51/55ms. These are single warm local samples with observer overhead, not isolated restore timing, mature-career, field-cohort, cost-neutral or universal-bound evidence. (reports/client-checkpoint-performance-s112.json). Isolated restore timing was not measured; worker restore correctness and absence of bulk snapshot transport are separate functional evidence.
 

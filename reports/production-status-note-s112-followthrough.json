@@ -1,0 +1,13 @@
+{
+  "checkedAt": "2026-10-01T20:08:22.670Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+  "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+  "route": "/status.html",
+  "httpStatus": 200,
+  "expectedSha256": "9a232ac70950fc4672844f2d730dbab1353280f80cbc74de633e7daf2ab95c5d",
+  "observedSha256": "c3b91c192a6380877746186c3ef084e41c71c291d8dd9eda744cfd3e8202d3d5",
+  "exactBytes": false,
+  "notePresent": true,
+  "launchReady": false
+}

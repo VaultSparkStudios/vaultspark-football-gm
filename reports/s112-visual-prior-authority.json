@@ -1,0 +1,1132 @@
+{
+  "schemaVersion": 1,
+  "kind": "committed-prior-rendered-pixel-authority",
+  "verifiedAt": "2026-10-01T17:38:40.529Z",
+  "gitRevision": "0f0d3a1341e85c7c76c402f89551ff777262cb05",
+  "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+  "artifactDigest": "fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc",
+  "reviewedImages": 222,
+  "receipt": {
+    "path": "docs/visual-qa/LATEST.json",
+    "gitBlob": "13ed883922a564413be3166f7646aad33cb59f87",
+    "sha256": "1df4960bb9d146e16cab24c25c89dee114c1fdd7dcba6a62a285853e974fc369"
+  },
+  "review": {
+    "path": "reports/visual-review-s112.json",
+    "gitBlob": "e11278af12433b1abaf627cf60d63b38213c8d15",
+    "sha256": "f3690de7371259f7f557722c66298b5b0b82c25f0d1b7bd119c0d117020512db"
+  },
+  "captures": [
+    {
+      "path": "docs/visual-qa/s112-desktop-game-overview-dark.png",
+      "gitBlob": "7f23ddfdebe810f6190e101bb4778f77d284b86f",
+      "sha256": "b482e60e3ab89ec82942c758e8f5952ea7bd0bd0be8bf166354cfce2511f6dfd"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-overview-light.png",
+      "gitBlob": "f51905ba0ceeb3ae8d30d598822ef5c303cf5d79",
+      "sha256": "05016a9d4699e1c435669f8bdbad1f97ad2313148da57ecf09518c6ce07f5079"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-league-dark.png",
+      "gitBlob": "756bae2d588f2ef52332a65092b5de00f3bceedc",
+      "sha256": "3ae1c8ab020ce13aab7ce4bf0333dfc93c4bb215ca28fbc0099dfb42f73bb55a"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-league-light.png",
+      "gitBlob": "3592d6ecf46a8a350170711c905131ebda1a0757",
+      "sha256": "fb9899809f101abc83ec7decb6b55491353f7ccb370cf34e1ba149751544f70c"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-roster-dark.png",
+      "gitBlob": "64de8e425110c1bc987802321ad3ef354c72e868",
+      "sha256": "9eef48ff21b1f90dd261eaaeb73e4f4abee57767062cbb9bbfc5e2c0c8ad3dee"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-roster-light.png",
+      "gitBlob": "4aafaedeed9bb3162c3c32607291adf8c840d409",
+      "sha256": "7ea177d4de08adecef9d4f9305b474bce70109b4a7e61222cc3fe323fb33385e"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-depth-dark.png",
+      "gitBlob": "9bd1feceb80ce370d9ccc93e11a433e80d6ced1c",
+      "sha256": "2fb71f10d6fdcb07ce5d22e7e7860a811252c8451d883a6898f147bb1c79775f"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-depth-light.png",
+      "gitBlob": "476df48d63c106b0897274e5dd11b12accc2b8bf",
+      "sha256": "7703d42bfc468c0421af4bf471eabc7abc4a2b30233a216159bb1857cb59a34c"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-trades-dark.png",
+      "gitBlob": "1b08efd1c9194d78f53e4cb55d5706fbf6c5a9f3",
+      "sha256": "acf284659897ed144ee4c9123ac84935977cd44b6170fb307693658e1637d2fc"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-trades-light.png",
+      "gitBlob": "a34e4e6d99f675e01c9e1e6b7bab1c4f4b7f442f",
+      "sha256": "663650c9908c9e6f6d260fd27068f5fca1b02942999083757d0abc4f5af259f5"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-dialog-dark.png",
+      "gitBlob": "09c3ba2ed3c138af9519d020106dc1d088f68064",
+      "sha256": "ca90f47865947638b10d48f219a6eb025e89bff3f39f4cf96ad81e30be381622"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-game-dialog-light.png",
+      "gitBlob": "bb21dc6238030190b645cabff25daf553012df9b",
+      "sha256": "e73f316a7d979a54565d937283b9f468c88d4d84298736971aef4490167eccd8"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-skip-dark.png",
+      "gitBlob": "de7f6a0b13a962e9cd50d80b308a90ca81f1f685",
+      "sha256": "4bceb735a1b75d9bb37b59c6a8d807f6d663a4fd322534262aa75226ee4ff71b"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-skip-light.png",
+      "gitBlob": "870c3e59193e572ef6d6f6280854aeb9dcdea813",
+      "sha256": "0b5ac3df1b291f29b8e5f4ac87f1f46ef266297fefd53eaa5016f7637f998565"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-identity-dark.png",
+      "gitBlob": "19fb47599f9ecb438c84226c140dc5b0367540ef",
+      "sha256": "51266f29778bc1b6e85fc325bd136222963eb71f098c1cc0bcda272b59e2fe1e"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-identity-light.png",
+      "gitBlob": "e1bf03c20c0f6b19a0ec75116256fe1c2dffba27",
+      "sha256": "c628558d31764bae471739a2569969fb1f23d238ea2bbe01a7a96d1d3d43f8b7"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-pressure-dark.png",
+      "gitBlob": "fd031c02e190c27a579798c511bc7f7bc9c9abd7",
+      "sha256": "da65481736d333b5298f3bee274e63c5f83d68546b9ab5800aa28a226fea1dff"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-pressure-light.png",
+      "gitBlob": "a6f140f3279c7dd8e31d765d6bf99087dedab4f7",
+      "sha256": "f58fcf7d3aded00adbb6099b58989300f28f5d8bc09c1fc4af74505e002f9b70"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-first-call-dark.png",
+      "gitBlob": "5f6aaedf07031a9708586c7fe728ca5a4176730e",
+      "sha256": "4e2d0c0281a126bf05a58125aafdf320a0c2758ac59e01f946de3c486c54af78"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-first-call-light.png",
+      "gitBlob": "cbb720e35692ea8da66637d0e533a60873a52282",
+      "sha256": "8f3fa8fd643d2744d941917538b954481acb9395fbfb7aa8465668b7bc06d8c4"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-receipt-dark.png",
+      "gitBlob": "6aa160749128faf2e5d2a5076ed39218cf77a5a3",
+      "sha256": "634c6abe91b34b3c68b2a0d50814247468de2be6f73dad1587e96aedf1113ea1"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-tutorial-receipt-light.png",
+      "gitBlob": "f96d1cdde212c177f94b305945942d8422e32874",
+      "sha256": "bf364c323b287e768bdff92602f1991682a263b2a35448469300eb3fc6e2e183"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-advisor-dark.png",
+      "gitBlob": "f3a508cc201f57ec27dc4458b130e63912460063",
+      "sha256": "3d0039a78ae6e17624929ea27b3b52b9bab84b61e8cc4a69497293448fe06417"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-advisor-light.png",
+      "gitBlob": "7a3d894b12e8618dfb605818e2dade4618737968",
+      "sha256": "e4671ab5acc0210556ec4a8f514b6f2c40f5f8c3d159fe819c887c4babcaa74b"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-dynasty-timeline-dark.png",
+      "gitBlob": "d274fe87d3b8a66227009eab36eeef647d62a4c3",
+      "sha256": "6c840a481bf2ad47432ac57ee2c73ca4910a1f60b5252ec6bd2c26a56d0c0503"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-dynasty-timeline-light.png",
+      "gitBlob": "ec5ffb9dc23a2ed4ebc3b5e65fb00e5b104a7ee7",
+      "sha256": "9b7e3978cd0f5e697b0dc606fd79375f279fa2bb2cdb59f2d4a974f20599e7cf"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-first-debrief-dark.png",
+      "gitBlob": "3b022dafc06dc47e43b74efa1c85ad8c2585fe99",
+      "sha256": "7d3bdb6b97dfe3d31f2614c577bd33dd14d978717898cff3cd625c2006aa6f6c"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-first-debrief-light.png",
+      "gitBlob": "8f88fd4d93354f558e6072ad1ab1788e1a265e85",
+      "sha256": "9ed984f80520176261a2613f7975b84e60b09ff9801239f22e08066f07b49f1c"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-moment-card-dark.png",
+      "gitBlob": "98f0d2d9fa9e5094e0235db02773581124f8a048",
+      "sha256": "59704eaae49d4ead83adb168114dbd33a92aacf3587c89e1b703475542daae03"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-moment-card-light.png",
+      "gitBlob": "2e8047c3749582c7f6da4e76b5d046290c350df9",
+      "sha256": "616d63c89e6495352185487b8a97de5931031c0148018ca43ac891226b7ebe2b"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-return-digest-dark.png",
+      "gitBlob": "e66e560d3860aab71c9d90268e98a247ab8d0bf3",
+      "sha256": "67a714fc1bd6196e944e257b403ccc5e51c4672c3663cdcdbf034c8c0aea9c5b"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-return-digest-light.png",
+      "gitBlob": "cbd6cc86a7e454c1719b97b3875def10aafa5884",
+      "sha256": "1e907decd21dca3d58df4df23829f2803598ba3fdf63a702b3bf4480c27ca8a3"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-cap-pressure-dark.png",
+      "gitBlob": "9ca103d540774ac09505438ba74d76f9cd45470c",
+      "sha256": "6babef3f497256039df9372e79612f62f0b820b4cd00a71925b31c2c763cf3f4"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-cap-pressure-light.png",
+      "gitBlob": "56786a602505de2ff130fe476529987cc48faa92",
+      "sha256": "9bd78ad1189fa150df647950ed8cca196f49b39832d46b34bd7d2c3a13f478c2"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-waiver-identity-dark.png",
+      "gitBlob": "c2d26b68a89f85c3befebc4c125154f2537cfef6",
+      "sha256": "939f8d09d8c09ef90cc6c863b52e6112c7b03d9a442b0c4032263c071dbca7b4"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-waiver-identity-light.png",
+      "gitBlob": "775dd6b5f7dc6f2c085b295bedd783d831b98153",
+      "sha256": "811acb33beadff256b757d4ac025b102d8a71901b13096c454bfda69142b6d82"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-franchise-legends-dark.png",
+      "gitBlob": "93e96b3b83c731851dc61adac15ded98d0f67752",
+      "sha256": "5890b32e6e51df2f6ee76efebf4952562691a90d78f3210cce818d0361626c12"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-franchise-legends-light.png",
+      "gitBlob": "93728822ba053ea4702b284da1e7f2c0434bbd49",
+      "sha256": "c82fb3c0632c80b2f859a2d0b271c6b5e28c2a2cb280b36c67320aa064add2c1"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-gm-persona-dark.png",
+      "gitBlob": "4e7b876db021b53bbfe46c41e40100c731979758",
+      "sha256": "280cb938f9f74b92287d550bed8589d60f10b4eaaadf634d5968ef3d1a84ec41"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-gm-persona-light.png",
+      "gitBlob": "07860db007fc177c233756e903144a3bc121654c",
+      "sha256": "e579298d5e9255ecfb69accce02e08044b8fc7fae5724af4eeb528534f649ded"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-trophy-road-dark.png",
+      "gitBlob": "382cea12a9a6e838c3ae6538df736240646f9dec",
+      "sha256": "08f73354650c3826cce884dbe2d7611ae173762d0c92cd1e0d359f2e95682d74"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-trophy-road-light.png",
+      "gitBlob": "d410bd7125c0d99ef8c64f2677d6e95f3d22ff7b",
+      "sha256": "0acb83939e1925a1fc1e31bd892ffa4d44ebe8b8d002f93c5d9d739cb5e0e4a0"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-sim-watch-reel-dark.png",
+      "gitBlob": "fbc791dfd3aeb04f3429b4de6892454773f652c6",
+      "sha256": "4f07a199a2d36fef0ccdfc5fb0dbdfbb1f4b17600588b9167afd2feba45ce8dd"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-sim-watch-reel-light.png",
+      "gitBlob": "b0ea99fecb3159070e1c00dd20b5e06541186212",
+      "sha256": "93a1ca59cd2ec40dbffaa6944a7098322b1a383cc22947d9173e1f44991e9a33"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-room-watch-dark.png",
+      "gitBlob": "3b15a95b22f4abefc5cd41d80aa130a7fdcebe36",
+      "sha256": "02e2d8c3f3cb8d942ce77594a43ea81bbd9501c20dbdff5a0e3f8fbec0f0f6ba"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-room-watch-light.png",
+      "gitBlob": "04ddfe1ea7f7719f21105ef2f112c9c91582be3e",
+      "sha256": "db2bd9788ab8e6506f18f46c958f60de670915f6072d88ea43a69eed360d8c4a"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-architect-cut-dark.png",
+      "gitBlob": "aa92b87096e609a7d5713fa98672ebe20d423555",
+      "sha256": "79081d4a8851b0ee6c732e4f1e06e176e215146169ac6b203222b8deb9be97a8"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-architect-cut-light.png",
+      "gitBlob": "f0b5fca1a1fc909f2942ccbfe929b1a0260aae58",
+      "sha256": "8adcd23915192cea56a13bd8e2ee2c2cf4dd20df177d7e9a57f1100a983bd4ec"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-guide-modal-dark.png",
+      "gitBlob": "5328d4d305ac2c1f5f6a5e74bb482af965710ebb",
+      "sha256": "d900cdd5f5179fcdd85593d25300f1160378984a4c141abf2519c63c16097642"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-guide-modal-light.png",
+      "gitBlob": "8217d6fac30897450e437ae9b61ea49bcd9b9897",
+      "sha256": "49145f0534329a75ea9bf1cbd5081b2044e621ee183518fcc234029a504eb8b8"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-rival-coaching-dark.png",
+      "gitBlob": "771d86761e05d74cd75a32624f826cb1a5557d2a",
+      "sha256": "2483d6ccae2ab644ded2618e0d14c185ea944d9eb80bf7bfc67fa98daaa47dac"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-rival-coaching-light.png",
+      "gitBlob": "4fdb1897dbe5c3b76a89eedf89c8e86ca2277261",
+      "sha256": "f2be703b06239c52d4b72bdfbf8a7b4c831d983ddb54719fe65d66823f30254f"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-decision-archive-dark.png",
+      "gitBlob": "b0476b992f045e40c5231b225bcc7356e9e947e8",
+      "sha256": "481d365e5950754ce420bced28a79644e9fd563c98f596d986573e6f067dabc9"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-decision-archive-light.png",
+      "gitBlob": "bff2820f141a8685cc0da0a7e5280137f85632d5",
+      "sha256": "45b1b2549e11fc7bbdb288013ae1f49cbab86a3feb30b62f7eb2e8dc7f11930f"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-co-gm-brief-dark.png",
+      "gitBlob": "b68054848436a369e9f71dd2931e5798c6027774",
+      "sha256": "890025b207ec0c92625a70c155399c49fa9600245cb4af2974789718b2301ddf"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-co-gm-brief-light.png",
+      "gitBlob": "41adfe47a15914f44339cf4c99bcf6853a778cd1",
+      "sha256": "677c9dafce78f53bccd569d65b000f8c7d8f637b634f13047bfd648c53f2a91f"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-prediction-receipt-dark.png",
+      "gitBlob": "f4c38c645f6e44295c2de5a554212dfd816bd66c",
+      "sha256": "34be8ebc37900cf7ca4b6aaf8e54e8ec239fb0b4ad47b2e2d9e76e6512cfe5b8"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-prediction-receipt-light.png",
+      "gitBlob": "7c815addcb708d4a235c3d8dc8858106be4c6494",
+      "sha256": "7ff8d1e82a2cf4278a4b9d7170826aeb1919eaab6069a8f0aea9b3e88edb38f1"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-agent-negotiation-dark.png",
+      "gitBlob": "b0e0aecc2bc5fe2a720306fa8e1785a80b0309de",
+      "sha256": "8e734f43e28d24e7a11bba12a1739073ac0c53825dc06bcf1cda50690144a28c"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-agent-negotiation-light.png",
+      "gitBlob": "3ee44bcf776589170c0f43c478535a574f34688c",
+      "sha256": "3f822b41f633fa29dafc312e08b092c63e3f9d5ebad802d40a44c5c43e449045"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-draft-trade-review-dark.png",
+      "gitBlob": "a9632d4213614c33fc186bf12ba2b1e2f7c98c80",
+      "sha256": "17053449db3b4a991844af3958e998d289da2f88a4fc52537c22b438317d322e"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-draft-trade-review-light.png",
+      "gitBlob": "1950b72b70e590c8c5b2914486476b2ded6fa903",
+      "sha256": "49baba39529d1ef01e54d7d5c6f855b6a92a57fd24f2f3fcdafe8173257804e3"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-hof-ceremony-dark.png",
+      "gitBlob": "19fed44c65224285a7debe169beb000095294871",
+      "sha256": "55d7d780b0b411d17418ee9f2ff37e2c3a0f5cbe0771b05890d08b2980ab15aa"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-hof-ceremony-light.png",
+      "gitBlob": "e0a245ce6f66e3149eabc49cb1464e90052b42a7",
+      "sha256": "d1b0f837300c6f2679b76f34b58e2e014bff4615312b206bd4b9c0f88ee00636"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-architect-signature-dark.png",
+      "gitBlob": "d0bfcfc08b9ad362a083d6e0760299f304c6b46e",
+      "sha256": "a12b2b5ae45599c5cc7020a01fa98762867079602eabf6c00d5c08fc69b447ce"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-architect-signature-light.png",
+      "gitBlob": "19a55976fca3c84627c16fd59b7353c7c69d3676",
+      "sha256": "c73100457ca21222e37c59766b7ed6be290fa5638f3338462d195756b189b756"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-architect-objective-dark.png",
+      "gitBlob": "0120c48e2edd4130383f804c9b22410e52a0acc9",
+      "sha256": "0d65e43c6c89a92e533acd5d6206009f03f44ea27baae8a8c05fa2fb9ecb7e60"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-architect-objective-light.png",
+      "gitBlob": "91bc213c7111553dd61c87f2afe0b8e13b2d2ea7",
+      "sha256": "00a651b64811e16de9f89a1d731b9dd0421e06d5117f25a401b953d10c411a28"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-exact-command-center-dark.png",
+      "gitBlob": "378f8964d7fb54eeb045dff8c80f3454b9846e61",
+      "sha256": "d3b711ccd6b77bea6feb776ae118d0f98b75838031a897c0bf2e35c4d80d1adc"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-exact-command-center-light.png",
+      "gitBlob": "96f3ddb4c7d1573ea3b0a7cd23225a7564016750",
+      "sha256": "55e92ea3023529ac9edadbc2762c4a616ded5242bd9d8eff46eb0cde75b02885"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-exact-command-target-dark.png",
+      "gitBlob": "49d767391fa53af97177414db1233bdf34ac3493",
+      "sha256": "5718742ff26d2455b6965fbd1a9f339a525020308c434ded7470196eb7c75b56"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-exact-command-target-light.png",
+      "gitBlob": "d8b7f0d195cf424d27a8c3a3e891b982f7dc8d4b",
+      "sha256": "9b3b67bd2e9a49224323ffb5adc954ce4805a8b8fddf5058c4e72371ed89dd25"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-facility-capital-dark.png",
+      "gitBlob": "9223d6be1427b5ac9cba96f3bc9a4dad25e16490",
+      "sha256": "507f9b4de30d4ebe282cd45e7eb7f856ec959a118e591545a0f9098be700847e"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-facility-capital-light.png",
+      "gitBlob": "08122477b5833b3d10bf9e5766d0f17479b1d095",
+      "sha256": "f100974f525cce7a44fc1ec16b3f447f221ef25acd533069599ceb3eef03ebea"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-gist-authentication-dark.png",
+      "gitBlob": "b7d378882c7c4557306e7c59da039d35b2e8cee7",
+      "sha256": "93bb1e69419474407684ff78d0cbcf14b81e888c7b09822076b6ea534d31b364"
+    },
+    {
+      "path": "docs/visual-qa/s112-desktop-gist-authentication-light.png",
+      "gitBlob": "0af70435df07616537586deb14ec48a130854a42",
+      "sha256": "9a2668f08c59a65d3f39817322efeaaa5aef4a2e7f158ee5c37dd9e790c2f2d5"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-overview-dark.png",
+      "gitBlob": "1a155ddbbbf2faf9d27ed71cfd92bf79d80facb3",
+      "sha256": "2be306bd965c373aadd6728531520c86492f6fd79284ee0eae342647c6f14f32"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-overview-light.png",
+      "gitBlob": "60df73502d1d28883e622dbf885953862b7b8d18",
+      "sha256": "3abb674d71d1dd567d7b5c534574cd7a68aa40fc71686000f59af59a994817cc"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-league-dark.png",
+      "gitBlob": "a131ae7c5df0c73c5b526539ce6bb41f50b1444a",
+      "sha256": "f32b65df1a9894090261dc83660d295e93614fbcafc915f5006279f447e738fe"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-league-light.png",
+      "gitBlob": "4066cca69341eac4710aa5cc2ab720586015f566",
+      "sha256": "24e17a8da6c94642cd8324ae28528ef0dec2e842249e91f1b54ca0e868448db7"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-roster-dark.png",
+      "gitBlob": "f533bf307c464d52f0456f1c73de9f392a462d73",
+      "sha256": "d5da25790aee16fcdd31ae615ed6866ce3755db5fd239ae0cb86557efcd25546"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-roster-light.png",
+      "gitBlob": "84bc32930b36727a6b56870ab658e052f19323cd",
+      "sha256": "09dbbcf27addf180795fea63da6b03643930819ba739f64e42db92ed4dc385c0"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-depth-dark.png",
+      "gitBlob": "061229a8f1c3fa684fcfa4675ebfd11726a3e99e",
+      "sha256": "2804124eeb97b8a7440fcdce2b3436d9b9b87c2e622b49d0b8ae1fec3e8d8f15"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-depth-light.png",
+      "gitBlob": "067f70a6438e7484e7e5a68c4207dce5a93c049c",
+      "sha256": "c64c8cfea83052e13988cc4862056ad1ad43693c122bc532e5997e8f0f053404"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-trades-dark.png",
+      "gitBlob": "5cc58054f01bd0cdc04c11379bedf97b1214fb37",
+      "sha256": "2e8cade259e629dab41073bfb72ff94942051dd6339e83e30616f7d1f844ecfe"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-trades-light.png",
+      "gitBlob": "f2becb056daebd953a72a73de5fb560caa828516",
+      "sha256": "81274fe7fcf936f26d5cf6103ae66872508dc07bff007511012054d4b1978642"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-dialog-dark.png",
+      "gitBlob": "f1d62ad3da9076f347194045276700cb5dd209d0",
+      "sha256": "f6c87a24afca153043a3665e7457a3179a0fe1128fa192d7162ce3155ca481f5"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-dialog-light.png",
+      "gitBlob": "31e8f4082756387c2b84a19f9d7c8012fa90cfcf",
+      "sha256": "13dcd1e2358b379f57d6aa1a44cd6e68793bee90b54c2809f9546e1e23b5e4f7"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-skip-dark.png",
+      "gitBlob": "3ab5289e1c30742e589526e81331604579ed1d6b",
+      "sha256": "0add6d74697bafab0a242c8aa9f42b5fce0d4108ac08c8a3274aaf2233b0e812"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-skip-light.png",
+      "gitBlob": "e0bf01ac5dde5a55060cf1a92074501c67fc86c9",
+      "sha256": "28d1acea5a443955e98c456df4c9ceda715dd5e75ef763401fc6d6c62c314a59"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-identity-dark.png",
+      "gitBlob": "d85e7cdece50b3fcb10fece710cd60d9c881a3e2",
+      "sha256": "bbf6a75c8205f82f02aeb7c477d336700c9d724e629cc9cd59d044e8ed430bb5"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-identity-light.png",
+      "gitBlob": "3da6541eb4b6b629e2b8e532e1f31e52f51030ba",
+      "sha256": "132c032c01d0df728613583da0f2bfa9341845c976a39aaf56606af00271a07f"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-pressure-dark.png",
+      "gitBlob": "859912337557265cac2742fc440a4e5a8cfa1bfb",
+      "sha256": "eaf7e93883e3822ae2617d63934ba27fbaccb83b68221c5b22c44c879a46d5f3"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-pressure-light.png",
+      "gitBlob": "7c5e2c6399dcb39e83a287ff2514a738c0831769",
+      "sha256": "c6342abcefe90af5aa44330d03c4942184fc664c0e035bb8b2b26bc05f2e4c2e"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-first-call-dark.png",
+      "gitBlob": "57b7309fa0abdcb7cff507bc11bd30f9ed54744d",
+      "sha256": "468ba5615997ee8d4140913a78d500a14a175b0f6d23ce8c6fdfd93079ae4434"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-first-call-light.png",
+      "gitBlob": "c8c892e28e97f5925c5c642da75d42324bafcfcb",
+      "sha256": "7ca2cde4f9e54f40d72187122a32b29ee4485d1327b22a3f6ad2d93ac82e02c1"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-receipt-dark.png",
+      "gitBlob": "95076f5d8b755ad1bdaee5a6dfb6df19dd843a66",
+      "sha256": "ee23483c6cf35d4e0ac08ee0e83314e183d006726368e5d3c2c2af738a1ca846"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-tutorial-receipt-light.png",
+      "gitBlob": "863d630ae7068c92426061aabeb0662c2b7b6e76",
+      "sha256": "b6c4070ff1c5909a87f4151d22c21f6d8755c52af2eb2e76d6c19376c8d27b95"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-advisor-dark.png",
+      "gitBlob": "b6b8a0b4acda9a07e2aa56468ec5aebed50ef4ba",
+      "sha256": "b11d6fa3489f278a009ac77bf14d5d2da2df3cdfcf03a5e33b295cfdc480e0ec"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-advisor-light.png",
+      "gitBlob": "a529d09e4f4fa7257587d87d1bc7e0b11ab99802",
+      "sha256": "35a06891100b11c2ce38f0d41a68c490c3056fbee260fb54cfd1b75eca369aec"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-dynasty-timeline-dark.png",
+      "gitBlob": "fa64b6aee2914ee1daa2b3d8a764651be7dd78f0",
+      "sha256": "46870a837bf5ea13cec2dfbdb2c595cd11448f4c9bedf661ecefdbe5a3c1e4e5"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-dynasty-timeline-light.png",
+      "gitBlob": "441e9c63a275668c79f99f2c22cbe153ee73d6e3",
+      "sha256": "50d0d8bbc6e676fd27edcd27ccf07f78c7072891a860856cd9f86e02f02e7a45"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-first-debrief-dark.png",
+      "gitBlob": "9cb82f5039c757dc51f02504b262509d43025c52",
+      "sha256": "96b9cfaef693e80d07a2b493fa440a5885a0742c0d7c3cb8460a643608cbbb35"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-first-debrief-light.png",
+      "gitBlob": "f8bf9df10f835b5e4d5cb5b067d6e27a82c776e7",
+      "sha256": "6095e88786f0e3bd55b64a1a672635ce779a3555ebdf7f4134358d0b631db338"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-moment-card-dark.png",
+      "gitBlob": "bf72595beae2d754be8b8f3736abdbdceb176818",
+      "sha256": "9e61fb3b26eaf6c76552061d64d4f12722ab295163bd926f94b1dfd52ce39968"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-moment-card-light.png",
+      "gitBlob": "441e9c63a275668c79f99f2c22cbe153ee73d6e3",
+      "sha256": "50d0d8bbc6e676fd27edcd27ccf07f78c7072891a860856cd9f86e02f02e7a45"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-return-digest-dark.png",
+      "gitBlob": "995e7c827b202630489bfb97336dffec51ffc546",
+      "sha256": "b56d7a9debfd6e104b0a8724c3884d002fcc69e88b9fe02e5b1a1aba86f5c995"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-return-digest-light.png",
+      "gitBlob": "9e546b82cbde72f2782c559c6e437acd6744517e",
+      "sha256": "7a9ea9f46278d554150a11ee0f421af0d481327960b8870f083a81182ad2ac5a"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-cap-pressure-dark.png",
+      "gitBlob": "0dab1c6b63fec0b415264bf4ad6c9e4816495d71",
+      "sha256": "4980e369381f21db2b86b05043c886c6bf6dbcf89d396485835852fe86f031d2"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-cap-pressure-light.png",
+      "gitBlob": "d957c30a265edca8cb3743bd6ef651c96c382227",
+      "sha256": "54ac1c2fd685d58ea444c399314cafdb22f37d74b4b8a30a3d724181bdcdd9d9"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-waiver-identity-dark.png",
+      "gitBlob": "2de149542e29f748f448b0183f198bd1934e9d91",
+      "sha256": "c544061014e2d9f03ce22c607a1848917cc4d5c0ea1f200d74c98235450543e8"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-waiver-identity-light.png",
+      "gitBlob": "3c7a94ef62ff1d39685560650be06e03c4f6c0ca",
+      "sha256": "80697c9499024f87df74025d549d32ad816b82a1bfa3be93f6b3b3745cdd0a5d"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-franchise-legends-dark.png",
+      "gitBlob": "0bbfedb646d1a5955a188a3090368d2b467a81e2",
+      "sha256": "b97103f9bf458dca741fd88e69d7d5d801c418d5b6f566b4f57d00147bf72948"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-franchise-legends-light.png",
+      "gitBlob": "7c7e1cdb396d52a34690b1c7e733e2f433366f42",
+      "sha256": "b3dd2546d26343ad33ea0494480d834839a320e53a413c0bf340f943d91d5254"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-gm-persona-dark.png",
+      "gitBlob": "6cbfe85d1c228b96fc87c9919238b71936060eb1",
+      "sha256": "7bdf02330b65e65e09f3f64b231d4cc51fd0b234935bcfa7917f60f000ee8a80"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-gm-persona-light.png",
+      "gitBlob": "0c89c0d2490d51be841d8c6544dda7177391c188",
+      "sha256": "c849f56bc857d548459df001f2571525eeaa3543c772160b4cdb6e19b86f2856"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-trophy-road-dark.png",
+      "gitBlob": "4d87c495ba6744e0292454e9133705f9e4b54d54",
+      "sha256": "7a550d19d53325efb03e83ed77a19763765b805b958d89a736cabadc26d7e4ff"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-trophy-road-light.png",
+      "gitBlob": "7dbb1b7398ed5c81f6fab50de016499d2c8a04da",
+      "sha256": "819d99142ac5acb041f9f3ea700e9ea39a28c04ecfafb495305a38e373ea9573"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-sim-watch-reel-dark.png",
+      "gitBlob": "d738d1fa7bc3551c46b94fd658ab19b3a82896c5",
+      "sha256": "4585b3cca7fe595a33ecf219bbc4cb793299d60b4ae090c048ee4e7cfdb526a9"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-sim-watch-reel-light.png",
+      "gitBlob": "f37cad85514c2a7532618e8cc34e3276f0cc0c1b",
+      "sha256": "2487f1b73b1cda96605c2df2f743b710e1c4a809735a88848d52f038e56bcb48"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-room-watch-dark.png",
+      "gitBlob": "b508f371569553ff61537b15c9491f0c7a79eb8c",
+      "sha256": "26b0debb9203149d54d1f6a025da99f9f498ad611d09f03f35ab9c4d11c8cb34"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-room-watch-light.png",
+      "gitBlob": "88a9d3f1b26b8915489f2732012c4207f7d29aa2",
+      "sha256": "619b36210b596f90a0733a8c28619e21d45b0da09b125b5307e12d1d5b4c70d2"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-architect-cut-dark.png",
+      "gitBlob": "0b26c0b371e930d7bd0dc1375a6372255df8a1a3",
+      "sha256": "e544cbb5d3e4dfca4ab50d03cfd5eee6a8bc9a2e74d3526c5dfd379d61380237"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-architect-cut-light.png",
+      "gitBlob": "8fd46b8963dc578dc1dcb2e35c579b0d0ed1d197",
+      "sha256": "bc54fff54aedfc51c7b28bb20b0ce5e770adc9d314dc154faed1a6df546b3f85"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-guide-modal-dark.png",
+      "gitBlob": "4c5f54fe9a8c410033c29a92cd9fd586c6863bcd",
+      "sha256": "efab18d3eef18227f0c7db7dbb1897536882b444c0599810e78ef8deef8f7b51"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-guide-modal-light.png",
+      "gitBlob": "1a67af270f48111cf958db3e0053b6223179a40a",
+      "sha256": "ece3bc79a75d48eb54f0948a0e2c7a81c2ac2213fe563b6bf2d507981fad5ee8"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-rival-coaching-dark.png",
+      "gitBlob": "e478e0c6b90bb737d3a3e40b343af8e5254625ce",
+      "sha256": "89acf61439922f443296943c41d99bc19b3921c1edf8e68b7dda1d6e33cd91a9"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-rival-coaching-light.png",
+      "gitBlob": "4343092543ba28ee1d97c75895e4252edb35d702",
+      "sha256": "c397b22525f4606364805e36c0024efe30d09936afc93fedbe5e92a6595275f3"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-decision-archive-dark.png",
+      "gitBlob": "3c6dc0d6b5698a352c8343bb16fc59ff3fb57e1b",
+      "sha256": "9f263b0ba126d1df7e90b86237178e56c214f9f2d3ee9fc494d9e6c65ac31145"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-decision-archive-light.png",
+      "gitBlob": "7e0c6cd7700030bbdf3044b1a8a8581bd6032a75",
+      "sha256": "2f69dfde1362afc7787aaa913e07136110ad7cc20092b3ecae362e2308ada588"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-co-gm-brief-dark.png",
+      "gitBlob": "f71962a0a8e08eaf2984593da72dada6a424ef87",
+      "sha256": "5eae6d4544177e0529d41810f60fbce63bbc9d43df7767941a465e09b83b98ac"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-co-gm-brief-light.png",
+      "gitBlob": "889be57d20eb0d7b71c51e35fbad71ee8774eafd",
+      "sha256": "62c3ecffd7ba401956f0e0a43f79d6114f6721e97cd7ad10ac6d7e4abbaf48e7"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-prediction-receipt-dark.png",
+      "gitBlob": "f443b9ff9c67e14d19f59e5d55115b5ac2270276",
+      "sha256": "80e54875554a93d678ae87df3ee815f251d9ce3d6b11674f5467b02593453532"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-prediction-receipt-light.png",
+      "gitBlob": "e4c79ac15b7711922466561efeecd56c6bec4a79",
+      "sha256": "106c225114b0101fe3827bea3f8b42ec38900713fb281a49ed4a29c2890d0d00"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-agent-negotiation-dark.png",
+      "gitBlob": "7bc994484ece4ef23e2674fcee0a722bfcdc5159",
+      "sha256": "fbe3d66fb7bacb8d4c773f750127a2d9cd560b366cc19469c3c119a53ded16d0"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-agent-negotiation-light.png",
+      "gitBlob": "0d3b86b14cef53b27a6e747bdc1a142b25ed6cc7",
+      "sha256": "2a0da40a92932042f19a36301b4fbe9bd654f2e841bf17738139bce126ffc751"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-draft-trade-review-dark.png",
+      "gitBlob": "8b16323130eaf5c5df890af38c062866e28de7e8",
+      "sha256": "bad946ab89881ce371830d4e4cbd54053566819eed91d5ccf3ddab9136d263c1"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-draft-trade-review-light.png",
+      "gitBlob": "20cc618ceffcbd4242f4a003f28fc6bf09c70d1a",
+      "sha256": "2325a59ea470ff7e3c166d1514b955f24659981654f67d508362bb29f4ffd6ac"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-hof-ceremony-dark.png",
+      "gitBlob": "e9230d45c4ce3366c3f4c69a9dd5ddff8628d93e",
+      "sha256": "1e69e1f5d337b5f818e0f2dec59b7f9fdc64111987ba24bb89d95e2f82b9b2cd"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-hof-ceremony-light.png",
+      "gitBlob": "6fbcd6ef19e6b421fc7ef7baac7079cc0b9f872e",
+      "sha256": "c0afc6d611a4415be91dc9da59ad89312fa15a3cfa8953a99d35d6dd4351e6cb"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-architect-signature-dark.png",
+      "gitBlob": "a49cc2f3d0386d87acf79191cf0856e4b87d3c5f",
+      "sha256": "a157b29a065dd21c73954a25bf1122cc6e0205d897ee32ce8e2afb4c7b0c35c1"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-architect-signature-light.png",
+      "gitBlob": "fa640fb9b300a05358df07d418f3769ab7868129",
+      "sha256": "519189f3632a7758056108cd4e19a6d5175c0623db0919a6318753e83702a055"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-architect-objective-dark.png",
+      "gitBlob": "59dce61ee3c11945d07a6e458778af48607379bb",
+      "sha256": "6dd192bc26c0c6ec982df269ef9df3011fe8b03d2248eb245e7cd4f317534fe5"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-architect-objective-light.png",
+      "gitBlob": "eb1f38b3db88a0dffb5fdb34c446e64b2c05f664",
+      "sha256": "76e0a2e1407447805e3eaa7dd9e1853a3525a198d164a44677e8f00a3bd32f46"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-exact-command-center-dark.png",
+      "gitBlob": "af9d518f73f2063e6bcb62b4209716312ccc0409",
+      "sha256": "ad4817ba3ef8a8d23bfe5df60896bbfb14f08a97680b46931e33cd3f1670259e"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-exact-command-center-light.png",
+      "gitBlob": "1916492001ff466d3818faff23d48a4345d66e23",
+      "sha256": "b5191ca45fd36759a7c0965cf78ef587fb7126a770d5cd480531d625815efe65"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-exact-command-target-dark.png",
+      "gitBlob": "a2dc9d8cef0ba8a0d7b8d4f2afe6a945447c33f3",
+      "sha256": "703234f5973e3c1eeffc6ad272d87e2785d095ea4270ce64d8efbb8cec731b40"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-exact-command-target-light.png",
+      "gitBlob": "c98cd15f066baf94be8d8a17f8680636a3c60d1a",
+      "sha256": "85fd51bd45e519e79c4d8cf8b5a47e3a5f892a24de36baa394e77a95b27368b3"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-facility-capital-dark.png",
+      "gitBlob": "aed538cccdec3cae48e35811c2aed9cb727503d1",
+      "sha256": "99cef4169df87dcae0943b285f128d8e8b6650804f4636d0bf158d9393de2e54"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-facility-capital-light.png",
+      "gitBlob": "99e29d412d4c77bbf4cff12986039d42f54f9eb9",
+      "sha256": "3295468b88822fd673f3d02b7e59b25a7ef3ad599b7123ed085632b8bc111ad9"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-gist-authentication-dark.png",
+      "gitBlob": "7ec0fdc6289df8266587c066e7a682250c4ccf02",
+      "sha256": "1568dbdb2fb0f5d43d73e270c09b3de2ecb42742e9470ea177586f8feb32824c"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-gist-authentication-light.png",
+      "gitBlob": "c3e21979b879a7fd06e95788066e587eab493b0d",
+      "sha256": "f1f6f5585c5abfa81143b27ab64e8a7dec196f496dfaa3704d82a9264a6bf82c"
+    },
+    {
+      "path": "docs/visual-qa/s112-tablet-nav-drawer-dark.png",
+      "gitBlob": "ed4282af95623402e6859a140d8e7e48d637b9ad",
+      "sha256": "31797bfefeb0d7954853b6197d801bc2d576a5a8636d833340473636b3c350fa"
+    },
+    {
+      "path": "docs/visual-qa/s112-tablet-nav-drawer-light.png",
+      "gitBlob": "53aa56016f6bdbdaff4bc78d347d8aa05c108d9f",
+      "sha256": "666c18b599e6c7052f7f97e061efa5fae3f33f17b44dd99fd4d3de21ef132eda"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-nav-drawer-dark.png",
+      "gitBlob": "6fece52ce59609725f49028e6f6dce7c0fe445f1",
+      "sha256": "106039c9d1f59ed7f8d510672519dc58daf7776704d08e7e8894dc70fb681f39"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-nav-drawer-light.png",
+      "gitBlob": "5d7bcd3dfe3fabd2ab8ba7eb3aefb3079e81acbf",
+      "sha256": "8ee8d43e098db7e8163b73ec5106a2eaa2e81eb790d03157fb52220c3175ef4a"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-loop-dark.png",
+      "gitBlob": "4c827161871f691b25b37d9a5f222278e7cf5578",
+      "sha256": "c4eb1a0353aac12e289b1cd1508564c7ec9b0a9eee5da7a852c8448737b0ab36"
+    },
+    {
+      "path": "docs/visual-qa/s112-mobile-game-loop-light.png",
+      "gitBlob": "1b1c4e51b12b5efc3a2a4f381b7a1d76c47a8c64",
+      "sha256": "44fac574be2496efb4a505da95f0ca243a59d89873dc52158d7e28ecfdc7e258"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-index.png",
+      "gitBlob": "1460ba30f9a02114d73a8a06d0bd3f94915e176e",
+      "sha256": "5af0d45f498abbafbb56b5d84f94e9d9c3bdf61b6c97a12c942ffbbd1c9bc7d7"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-about.png",
+      "gitBlob": "46e6b84074b204c9476cf1fe191db558dba1a85e",
+      "sha256": "df109fbcd6ce206e58045dd09bfe4aa814383f66e233750e31905625850002d5"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-press.png",
+      "gitBlob": "77b79232c6a23db6110483fd99d2b422cbaa1e91",
+      "sha256": "bf256f5caef0b9726c0c043e471048efdf1074027fad21a2ae9436fe266375aa"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-status.png",
+      "gitBlob": "cc36e3e131c181eca8eaee3bfc7f812852ea52e1",
+      "sha256": "d5cce5005c83637d805d8c929c9acca07a43c7712bcec12294268759dc0b3af4"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-status-archive.png",
+      "gitBlob": "b32e352a4d6987c7641a91477974c31f59d10ece",
+      "sha256": "dce2d3582468998fb473a3475e96fe60b07def23ab95d6d1a2b7dcfe2a48b8e4"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-stats.png",
+      "gitBlob": "e96bc68e368520a0d9d6cb99cd225c8ee6db9665",
+      "sha256": "768224cb2b940fcb7d069755c05d4ee7e11feb6082acfdd1727ba8e724ef7940"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-simulation.png",
+      "gitBlob": "b67596f26b5fc66c065a262c4ceea7cac5f3ea0a",
+      "sha256": "78e6a38e2bfd47c8bd0192ed5757402e662ceb389b73bd5a71efbfef9b6f18dc"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-contact.png",
+      "gitBlob": "da07f559982194a2c80d99c5573c8607033c5947",
+      "sha256": "22ebdc968c130c8672883700761ba4b19fe6e7b35bf62e63903830df661b611a"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-privacy.png",
+      "gitBlob": "cdc404046010d05f4f83dc38c8e509b8c6c04187",
+      "sha256": "3665b5b848b07799c305da5449e6d4cbe756bc26df34e5ce7725b3f08f4f64a6"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-dark-terms.png",
+      "gitBlob": "10671fbbe486c4a4cc3cb637b7b35cceeedf4fdc",
+      "sha256": "1a1e17678f51cd64ed2216c86b50834e8c9a3b0dd9f8a94fdba01e53a5022a57"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-index.png",
+      "gitBlob": "f863276cb7de6e91f187eb38c248155a73c549cb",
+      "sha256": "b2fbd217d7472e418887c720cee721774f397e7223e3644e82540bd47a57c4d8"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-about.png",
+      "gitBlob": "314a84f33d6f26dd201091c0cbaeb1ffded03c68",
+      "sha256": "3dc89a67ab0f90b18ffcadcafaf74031d73223725d8a0103c6bcbdc92b602aee"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-press.png",
+      "gitBlob": "d588ccffef5934ab7881402f4620d5a0a29ca7b5",
+      "sha256": "43539ed4b8259b6588f26ae04a45aec01a7f94d2adc4e2ed67cdcd8fdc72532d"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-status.png",
+      "gitBlob": "6ed94ca9f0be52709047b0cb2403d9fcb6928564",
+      "sha256": "559f0185cb7e87a8ef4e7296afa3914eca6b7bdef24187fcf00885b71eb57eeb"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-status-archive.png",
+      "gitBlob": "99b78338f3f46eded338c458fd6e46ebb6165007",
+      "sha256": "13c1df50fe8b2652f4fb9f4785220ccaee52f22c221a7585fc09138414eefd0c"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-stats.png",
+      "gitBlob": "367e680a6d87406dcfeca651a63ad1e5c72169c5",
+      "sha256": "b3e9905930cf0fd4184e5f750a9172b4806db3bc834f60d04c295c4fde7ea6a1"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-simulation.png",
+      "gitBlob": "2d07339c8b2c02cf6d2e17b377cf49c2d17b1c81",
+      "sha256": "4666d580557de587e4fb2cfe85d8c023f831c4bb0aa3dccd73ecd38fe56b16e8"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-contact.png",
+      "gitBlob": "82195c8089b943ca29131ee779f112170956a41d",
+      "sha256": "95572c99f9610cd843584cd569715d3500b5f064761241034ef2e99570cac6cd"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-privacy.png",
+      "gitBlob": "c220cb0e475adaf2ffd099744f53e7d8f5519bb2",
+      "sha256": "f6952a87e6b996c4bd72cb5e9df21c3899f2ca4b56d340f644b9387fe0ce558f"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-desktop-light-terms.png",
+      "gitBlob": "a15cc86f16f87c02cf575c4d3ded9a054e4ac83f",
+      "sha256": "1b22e4cec0854b7cc8e11e5104a4a951ee69aad970e77dd5653a2df4cd006cd3"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-index.png",
+      "gitBlob": "fd4ebeea88f17f56f00cd144a14bc9bc4a6a033b",
+      "sha256": "159396e094e3a598dc45ca2bf1b6710386f15d6db1fee5d08f5c3bd30b58b73d"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-about.png",
+      "gitBlob": "45284b7883c0b38202546cfeb72333bd7d4d507d",
+      "sha256": "52fa81843890dfd9065d7690fb2af071cb4c04d303a006163e600e2e77203d9a"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-press.png",
+      "gitBlob": "80fe12732c8f7728b983d7ab9bf785af4694e336",
+      "sha256": "96a888af14dac43af6fc092eb78ba588c53294d9d0c9dff066d8a45d0665b2f3"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-status.png",
+      "gitBlob": "67cca9699b54bc0de56122f04dbbb2018257f82f",
+      "sha256": "485c7934257211596b0e40734ade2ad5e488bf9d20f50596ad157bd5aaa260b4"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-status-archive.png",
+      "gitBlob": "f30cebf280c5766c503910346c3b2c4126ad619c",
+      "sha256": "a7ed24a4051051f152eb62525906e659bb96dd87fab8ef0c77d4893a0d7645f6"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-stats.png",
+      "gitBlob": "13533ef40010b90840b439ccd5c245c590e06667",
+      "sha256": "344cd77172784f0f030a0139b7120371606be357be2013b010e2531c529a260f"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-simulation.png",
+      "gitBlob": "9cc29dec6d4453e47da94411401f275b7b1f7a96",
+      "sha256": "aac184f38ca51cc28843bed1aeb4a774c64dce2ef0ab5b91edeb02fbd3350849"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-contact.png",
+      "gitBlob": "650e773a00dd807cb1995a9180e575382fea3cc8",
+      "sha256": "2986079eedcfe590f8b0f45a14460dcc851169737979b502323206e5995278fa"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-privacy.png",
+      "gitBlob": "f207bc99cee9bb8a073210994bc6a8f38a3c77d7",
+      "sha256": "d98f19709479812e6fb2dfdaf14c34d1ce10bb767778498f60fa7ae9bdf8b597"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-dark-terms.png",
+      "gitBlob": "34265c417d905efcf6b496b25537e2af04d14ae1",
+      "sha256": "356b0adaf097335eb898b942ab9dbc11557f4db04c557a62debf619163f0b6f4"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-index.png",
+      "gitBlob": "bcbdecf58034574aa26296264377f6ace198527f",
+      "sha256": "58c409b36559f2d31fdb8319076af8a712c3e84d0edabc0ba0c4cecf03664b94"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-about.png",
+      "gitBlob": "0a639f329de9799b0e4d33a3f7ae9c22b3b79a85",
+      "sha256": "7c7ccee88a6a7852e04ec9524e9c5c4e14504f87506ec3018729abf76251561e"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-press.png",
+      "gitBlob": "2fb72a84d1c46d80f936026ef4afb3cf31af22bf",
+      "sha256": "58b381e899ff7fcca66fa45573f57b91bbde6fa648511b874eabe97115423370"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-status.png",
+      "gitBlob": "52f4bb78340b4299feb6ce2a980a8933bc037288",
+      "sha256": "912c1914d697868064d072907eb84342feb15a952f551659490e9b609215899c"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-status-archive.png",
+      "gitBlob": "1714e5638ba5b2a2e9c30a0f0f8ff71324e0c2ec",
+      "sha256": "00c7c7b1b5f8fc37961aff5615f5d99946ce84ea0674d8b52f20368347f845b3"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-stats.png",
+      "gitBlob": "6fb41161d7e02cea193d9e330e4fb39f577e9149",
+      "sha256": "3aa135565c63e1a738ead0b5dd78bd8c296324167738a28ee381bd586afaae63"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-simulation.png",
+      "gitBlob": "4096db8ba08860444343603677adbc9110f99963",
+      "sha256": "b066777d8936e226771a16971fe66da8da1e64630cd77dd3460a35b107bcb1ed"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-contact.png",
+      "gitBlob": "8bc12422f50939696df13a64aa1a80b28e7eaec6",
+      "sha256": "1b30252b84c2469a8e537a4a559ddf596687eb6ce2f2f059ce6d9f2534e2fbe3"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-privacy.png",
+      "gitBlob": "c5e23ffbd2ecee6bac6a03e4335b9010d1fb2909",
+      "sha256": "115700328da248fcbecab88f5e9564178ce28198ce977c82ec41f90532d33972"
+    },
+    {
+      "path": "docs/visual-qa/s112-public-mobile-light-terms.png",
+      "gitBlob": "4b955ba501e8a0a230ea3c763aa3ddd8465a5b69",
+      "sha256": "0b9a92f99543d078fa5f07be2aed333e0504bba45b9c6d263a5bca92ccee780f"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-setup-unsaved-dark.png",
+      "gitBlob": "d183e37e6a21df637a3a76ca001cbaef9e230a02",
+      "sha256": "9c40063c7a193e9afd1d6e07a282fe18af56f4daf9cd6293ef8595b337bc5844"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-game-unsaved-dark.png",
+      "gitBlob": "95f76cfeae5f877169725280156f2e38994bb5d8",
+      "sha256": "ed16da7d87affd7d61f87b5aeefec4dd322beca3a9a765a6d46d6b1ba6dedbb7"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-pending-recovery-dark.png",
+      "gitBlob": "b49d5b0dd5031822282232930ef65f5899e7fa1b",
+      "sha256": "03b31e270d212d337f1e68559b3d520da72e6e9e9bc95354b1c2720b84be682e"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-simulation-running-dark.png",
+      "gitBlob": "4cea660a18c828c2472f6c331e598b50af781b1d",
+      "sha256": "f69f6475c6753beaac304135aff5e1539c94e1787acb84bdb4bf94c4b9cbda3c"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-simulation-interrupted-dark.png",
+      "gitBlob": "002bd800a981d37e996605d9b1e15a0aa8bcb47b",
+      "sha256": "313323227debfd60cd42cbc57a59e6c45d73a984f1847e50725d7d8fe1f4f09c"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-corrupt-recovery-dark.png",
+      "gitBlob": "83c0f847d4b1487dc6850a11e92595f2646c61ea",
+      "sha256": "c6a0f0e8fc14828e06c4cdc1bc65edf4bb47b4ae1489faf444c96b847ddac7a6"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-setup-unsaved-light.png",
+      "gitBlob": "ea3088f5c4eba2de9fb7b6db055c82076059d39d",
+      "sha256": "fe639d5d98df9433017cfe2f337c9f4bd266d9992d518671188294e1ae5d8515"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-game-unsaved-light.png",
+      "gitBlob": "0586a5b5e94824e1ad403bddc81bc2d5023a8058",
+      "sha256": "44ea002c70d059bc192dbff73d72ae9123ca021eae90c0fcf9cd982ba94971ee"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-pending-recovery-light.png",
+      "gitBlob": "fd2d95869937871014d73ed248f2b06a9ed080e9",
+      "sha256": "cab39cf3918e55dfca91c9539fcce037239265af5688ec5e76980f7ae4cdc75c"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-simulation-running-light.png",
+      "gitBlob": "430f1a89a6ed9fb8fb2c910ce9dd78db13eabb5e",
+      "sha256": "2d34e40d28286f414414db6a6ad3fcd0591427d92c14da4d13fc6cd75acdb0f6"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-simulation-interrupted-light.png",
+      "gitBlob": "5f1ca46e2edb1934462f1b9c9e1ba97680595832",
+      "sha256": "19261ffbb8518bdab566cb16c678cece666f147150770285d1b38590d4b32d74"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-desktop-corrupt-recovery-light.png",
+      "gitBlob": "ddc2d5b1f178211a266ee999ead65437397efc77",
+      "sha256": "6e3636d20d59f12dc4d14cc54680dce55021dbf50d37c0c7f4cc66ea08873e1d"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-setup-unsaved-dark.png",
+      "gitBlob": "b10cf8efc77cafeecf50a1ebee6f8d90ad1861f1",
+      "sha256": "a9a1437a159f19cf77c509cafb4ad65e75ba2e68de4e7b58c4c5bfc1444ef990"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-game-unsaved-dark.png",
+      "gitBlob": "6506697c982fad0d9fafed0895b0cd149494d557",
+      "sha256": "59a60a4f336a74e3e02e3733ceb7ea75be8b4188702aa731e0d1f777f363a663"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-pending-recovery-dark.png",
+      "gitBlob": "dd3e810effff23a1366ab3a65873e2fdf62fb8a1",
+      "sha256": "96f3c0058240c57a9988bfeca0c1613a974f4e0e9ba19736a60dce7d29ea26f3"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-simulation-running-dark.png",
+      "gitBlob": "4198e20d115ac0b08308ee5a6f48816bbf724665",
+      "sha256": "b657d0dd68195fb3299a17f7df32ea30d555293d4057897b1b99b71834e11674"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-simulation-interrupted-dark.png",
+      "gitBlob": "f549b0c0452e51bc44529c2ff4617bf94601fbcf",
+      "sha256": "4927c6c737ce97e6491bda5b3f1f31321b69839fce946c877ba3fb32fb56f324"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-corrupt-recovery-dark.png",
+      "gitBlob": "c0d07e474d90777280ce23f4810828b0df4cdc58",
+      "sha256": "b5bb1a0189c7b39e801f59bbf75809faccb472517b4ea592b04c3c98c0200618"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-setup-unsaved-light.png",
+      "gitBlob": "ea92fdf0564f4f6886af37590d73238937c38f1a",
+      "sha256": "ed288de3c0cb969fcc993c09a01ec9ef861d00f5061e9cf70cce6cc668801e28"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-game-unsaved-light.png",
+      "gitBlob": "bd316ebbe61f1026d9536eda038c771401e7ddd4",
+      "sha256": "ef31ac660000b2a104f32238dfbce40a0896197c8c131bf5fd8cfa0b9babd541"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-pending-recovery-light.png",
+      "gitBlob": "0fec35fee4b05395382b552b9f95e8720c015fa5",
+      "sha256": "e1d233ef1f8672751af25b6b345fe2b9ce47af875397acf351ca359980147c4b"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-simulation-running-light.png",
+      "gitBlob": "508539df8f4b4ce9ea4b8bcdc6771ae4426efd7a",
+      "sha256": "776b5327470a352846fe6be90b4aa35df2e6bf99cd2759c31f30a97fbb74ced7"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-simulation-interrupted-light.png",
+      "gitBlob": "8a49942099d1ef38714d195bf1aafdd5189ee82c",
+      "sha256": "7a05c887e5b949a98fd0523379a072159dfa4d23a146b3157d750882e0df1804"
+    },
+    {
+      "path": "docs/visual-qa/s112-recovery-mobile-corrupt-recovery-light.png",
+      "gitBlob": "56811742e8c1aec18a0ff8633928b01a8bf11122",
+      "sha256": "e170821a3c167c67fd7ebc189bbf3d5eac0cf4dbc623bd40388680293bf15dab"
+    }
+  ],
+  "scope": "Prior accepted capture receipt, per-frame reviews and all 222 PNGs verified byte-for-byte from this Git commit. This proves the historical review authority; only exact matches from new captures may inherit its pixel inspection."
+}

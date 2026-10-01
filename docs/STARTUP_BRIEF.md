@@ -4,7 +4,7 @@
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: d4f4950f35569d55 -->
-<!-- session-authority: committed=S112 · SIL=S112 · status=S112 · handoff=S?; divergent=false -->
+<!-- session-authority: committed=S112 · SIL=S112 · status=S112 · handoff=S112; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
@@ -22,9 +22,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S112) - WHAT SHIPPED ══════════════════════════╗
-║  S112 completed ten audit items and five second-order outcomes:  ║
-║  Tests  Direct suite 1702/1702: core 290/290, runtime 961/961,   ║
-║  Deploy 10/10 verified; run https://github.com/VaultSparkStudio  ║
+║  S112 completed ten audit items and five second-order outcomes.  ║
+║  Tests  Fresh direct six-shard suite 1702/1702, exit0; Clean te  ║
+║  Deploy 10/10; https://github.com/VaultSparkStudios/vaultspark-  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -62,14 +62,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 112 ═══════════════════════════╗
-║  Shipped:  S112 completed fair trade packages, durable saves an  ║
-║  Tests:    1702/1702 passing  ·  Deploy: 10/10 verified; run ht  ║
+║  Shipped:  S112 improvements and closeout delivery correction v  ║
+║  Tests:    1702/1702 passing  ·  Deploy: 10/10; https://github.  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ██░░░░░░░░░░░░░░░░░░░░░░   10% used                          ║
-║     26,853 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
-║     ~13,427 tok/turn  ·  cache 50%  ·  16 turns to compact       ║
+║     27,084 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
+║     ~13,542 tok/turn  ·  cache 50%  ·  16 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
