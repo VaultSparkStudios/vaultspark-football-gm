@@ -146,6 +146,17 @@ test("a deployable publication delta is never treated as receipt-only", () => {
   assert.deepEqual(delta.unsafeFiles, ["public/app.js"]);
 });
 
+test("Studio startup documentation does not hide an unpublished application change", () => {
+  const botFiles = ["docs/SESSION_PROTOCOL.md", "docs/SKILL_MAP.md", "prompts/start.md"];
+  const input = { from: revision, to: "c".repeat(40), changedFiles: botFiles };
+  assert.equal(evaluatePublicationDelta(input).verified, true);
+  for (const file of ["public/app.js", "src/server.js", "scripts/build-pages.mjs", "prompts/runtime.json"]) {
+    const mixed = evaluatePublicationDelta({ ...input, changedFiles: [...botFiles, file] });
+    assert.equal(mixed.verified, false, file);
+    assert.deepEqual(mixed.unsafeFiles, [file]);
+  }
+});
+
 test("closeout ledger roll is receipt-only without exempting other logs", () => {
   const from = "a".repeat(40);
   const to = "b".repeat(40);

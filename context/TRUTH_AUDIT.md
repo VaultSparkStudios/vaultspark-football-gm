@@ -161,6 +161,13 @@ Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f5
 Portable authority: reports/session112-followthrough-acceptance.json. Backend and detailed checkpoint/continuity measurements remain explicitly bound to be71869; no new backend deployment, cohort, isolated restore timing or field-performance claim is made.
 <!-- /s112-delivery-followthrough -->
 
+
+<!-- s112-startup-docs-reconciliation -->
+### Startup documentation reconciliation — 2026-10-01
+
+While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with three documentation files. Closeout 31087ed subsequently passed all six CI jobs. A clean pull --rebase fast-forwarded the checkout. Doctor then reported one blocker because prompts/start.md was absent from its nondeployable-file list. The exact-file classification now matches Pages, Docker and SSH deployment inputs; no prompts-directory exemption was added. Focused release-authority checks passed 10/10, including mixed application/build/backend changes that still block; direct Doctor returned 0 blockers and 1 standing lifecycle warning. Independent deployment-scope review passed. Evidence: reports/s112-startup-docs-classification.json. The full 1702/1702 suite remains bound to product source f8b640b; the focused checker test is separate. Product deployment and SIL 804 remain unchanged.
+<!-- /s112-startup-docs-reconciliation -->
+
 <!-- ledger-roll:pointer -->
 ---
 

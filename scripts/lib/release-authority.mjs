@@ -10,6 +10,8 @@ function reportArtifact(report) {
 
 const RECEIPT_ONLY_PREFIXES = ["docs/", "context/", "audits/", "reports/", "test/"];
 const RECEIPT_ONLY_FILES = new Set([
+  // Studio startup instructions are not inputs to the application artifact.
+  "prompts/start.md",
   "logs/WORK_LOG.md",
   "logs/archive/WORK_LOG.archive.md",
   "portfolio/BLOCKER_DISCIPLINE_LOG.ndjson",

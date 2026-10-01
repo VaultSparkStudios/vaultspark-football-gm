@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "nondeployable-startup-documentation-reconciliation",
+  "session": 112,
+  "status": "verified",
+  "observedAt": "2026-10-01T21:12:47.073Z",
+  "upstreamCommit": "08a3d08d8088512aa9a887a723cc4b72aab50dcf",
+  "upstreamAuthor": "Studio OS Template Bot",
+  "upstreamFiles": [
+    "docs/SESSION_PROTOCOL.md",
+    "docs/SKILL_MAP.md",
+    "prompts/start.md"
+  ],
+  "originalCloseoutCi": {
+    "headSha": "31087edeabf0f4c22e49098586d9eb0c564ee949",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36923902857"
+  },
+  "diagnosis": {
+    "beforeBlockingFailing": 1,
+    "unsafeFiles": [
+      "prompts/start.md"
+    ],
+    "afterBlockingFailing": 0,
+    "warning": 1,
+    "doctorGeneratedAt": "2026-10-01T21:07:12.731Z"
+  },
+  "fix": "Classify only prompts/start.md as nondeployable documentation. Do not exempt the prompts directory.",
+  "deploymentScope": "Pages copies public plus the src browser module graph; Docker runtime copies package manifests, public and src; SSH deploy copies ops. None includes this startup instruction file.",
+  "verification": {
+    "command": "node --test test/release-authority.test.js",
+    "exitCode": 0,
+    "passed": 10,
+    "total": 10,
+    "failed": 0,
+    "skipped": 0,
+    "basis": "Direct observed Node test output before recording this receipt.",
+    "testedFiles": [
+      {
+        "file": "scripts/lib/release-authority.mjs",
+        "sha256": "8992d701d8aa7c22cdf0255ead311f37e64ec420d686857dbaa7881ffb8e7668"
+      },
+      {
+        "file": "test/release-authority.test.js",
+        "sha256": "86486d6dd5c8d161dd901bd617734ee07be7681d2eb709d7f5b69c9cd407461a"
+      }
+    ],
+    "negativeCases": [
+      "public/app.js",
+      "src/server.js",
+      "scripts/build-pages.mjs",
+      "prompts/runtime.json"
+    ]
+  },
+  "productEvidence": {
+    "file": "reports/session112-followthrough-acceptance.json",
+    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+    "boundary": "The 1702-test full suite remains bound to f8. This focused check is separate; no full-suite rerun or new product deployment is claimed."
+  },
+  "review": {
+    "status": "passed",
+    "lane": "product_recon",
+    "scope": "Read-only deployment-input and exact-file exception review"
+  },
+  "launchReady": false
+}
