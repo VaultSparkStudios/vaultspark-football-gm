@@ -67,8 +67,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █████████░░░░░░░░░░░░░░░   39% used                          ║
-║     77,714 / 200,000 tok  ·  unknown  ·  heuristic-stale         ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,671 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,336 tok/turn  ·  cache 50%  ·  135 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -87,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⛔  Doctor        10/12 (83%)  ·  1 failing                      ║
+║  ⛔  Doctor        9/12 (75%)  ·  2 failing                       ║
 ║  ✓  Cost          Max flat-rate · $0.19/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 

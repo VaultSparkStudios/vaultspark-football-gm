@@ -51,6 +51,13 @@ export const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/session113-gm-archetype.test.js",
+    "test/session113-league-lens.test.js",
+    "test/session113-look-ahead.test.js",
+    "test/session113-operating-statement.test.js",
+    "test/session113-potential-fog.test.js",
+    "test/session113-server-hardening.test.js",
+    "test/session113-sim-watch-field.test.js",
     "test/session112-advisor-evidence.test.js",
     "test/session112-complete-trade-law.test.js",
     "test/session112-worker-durability.test.js",
@@ -241,6 +248,7 @@ export const SHARDS = {
     "test/lifecycle-coherence.test.js",
     "test/obelisk-migration-boundary.test.js",
     "test/public-compliance.test.js",
+    "test/public-claims.test.js",
     "test/project-authority-contract.test.js",
     "test/promotion-bind.test.js",
     "test/release-provenance.test.js",

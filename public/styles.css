@@ -5985,7 +5985,7 @@ html[data-theme="light"] .bg-layer {
 .lens-team small { color: var(--muted); }
 .lens-move { font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--muted); }
 .lens-move.up { color: var(--success); }
-.lens-move.down { color: var(--danger, #d0605e); }
+.lens-move.down { color: var(--danger); }
 .lens-races { display: grid; gap: 14px; }
 .lens-race h4 { margin: 0 0 6px; }
 .lens-race li { display: grid; gap: 3px; }

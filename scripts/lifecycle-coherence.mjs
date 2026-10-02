@@ -66,12 +66,14 @@ export function inspectLifecycleCoherence(root = process.cwd(), { registryPath =
     },
     {
       id: "public-status",
-      // The evidence gate on the public page means: it still declares beta and
-      // never claims launch. It must NOT require internal lifecycle vocabulary
-      // (SPARKED/FORGE) — the S70 public-truth gate forbids exactly that leak.
+      // The evidence gate on the public page means: it still declares pre-launch
+      // status and never claims launch. It must NOT require internal lifecycle
+      // vocabulary (SPARKED/FORGE) — the S70 public-truth gate forbids that leak.
+      // S113: the public label became "free early access", the same pre-launch
+      // declaration in player words, so it satisfies the gate.
       ok:
         expected !== "FORGE"
-        || (/open beta|public beta/i.test(publicStatus)
+        || (/open beta|public beta|early access/i.test(publicStatus)
           && !/launched|generally available|full release/i.test(publicStatus)),
       blocking: true,
       detail: "public status preserves the evidence gate"
