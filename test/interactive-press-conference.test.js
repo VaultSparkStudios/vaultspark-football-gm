@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { readServerSource } from "../scripts/lib/server-source.mjs";
 
 import {
   PRESS_RESPONSE_CATALOG,
@@ -317,7 +318,7 @@ test("both adapters serve the podium, and the authority boundary guards it", asy
   assert.equal(foreign.payload.reasonCode, "team-authority");
 
   // And the route must exist in both adapters, not just this one.
-  const server = readFileSync(new URL("../src/server.js", import.meta.url), "utf8");
+  const server = readServerSource();
   assert.match(server, /url\.pathname === "\/api\/press-conference"/);
 });
 

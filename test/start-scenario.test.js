@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { readServerSource } from "../scripts/lib/server-source.mjs";
 import { createLocalApiRuntime } from "../src/app/api/localApiRuntime.js";
 import { createSession, createSessionFromSnapshot } from "../src/runtime/bootstrap.js";
 import {
@@ -154,7 +155,7 @@ test("browser completion and both adapters share the versioned route contract", 
   const tutorial = fs.readFileSync(path.join(root, "public", "lib", "tutorialCampaign.js"), "utf8");
   const app = fs.readFileSync(path.join(root, "public", "app.js"), "utf8");
   const local = fs.readFileSync(path.join(root, "src", "app", "api", "localApiRuntime.js"), "utf8");
-  const server = fs.readFileSync(path.join(root, "src", "server.js"), "utf8");
+  const server = readServerSource(root);
   const overview = fs.readFileSync(path.join(root, "public", "lib", "tabOverview.js"), "utf8");
   assert.match(tutorial, /await onComplete\?\.\(buildStartScenarioRequest\(selections\)\)/);
   assert.match(tutorial, /await onComplete\?\.[\s\S]*markTutorialSeen\(scope, storage\);[\s\S]*renderReceipt\(receipt\)/);

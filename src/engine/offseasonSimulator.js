@@ -1,3 +1,4 @@
+import { teamLabel } from "../domain/teamLabel.js";
 import {
   CONTRACT_RULES,
   FREE_AGENCY_RULES,
@@ -465,7 +466,7 @@ export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], 
               type: "emergency-depth-signing",
               year,
               teamIds: [team.id],
-              headline: `${team.id} sign emergency ${need.position} depth off the street`,
+              headline: `${teamLabel(league, team.id)} sign emergency ${need.position} depth off the street`,
               detail: `The ${need.position} market was empty — a journeyman was signed to keep the roster legal.`
             });
           }

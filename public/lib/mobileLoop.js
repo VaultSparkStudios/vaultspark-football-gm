@@ -39,6 +39,7 @@
 
 import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
 import { tradeWindow } from "./tradeWindow.js";
+import { teamCodeFrom } from "./teamDisplay.js";
 import { deriveTrophyRoad, readEarnedAchievements, renderTrophyRoad } from "./achievements.js";
 import { buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
@@ -111,7 +112,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
     (g) => g.homeTeamId === d.controlledTeamId || g.awayTeamId === d.controlledTeamId
   );
   const nextGameText = nextGame
-    ? `${nextGame.homeTeamId} vs ${nextGame.awayTeamId}`
+    ? `${teamCodeFrom(state?.dashboard?.teams, nextGame.homeTeamId)} vs ${teamCodeFrom(state?.dashboard?.teams, nextGame.awayTeamId)}`
     : "No game this week";
 
   // Injury count

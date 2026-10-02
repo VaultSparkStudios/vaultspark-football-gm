@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { readServerSource } from "../scripts/lib/server-source.mjs";
 
 import { createLocalApiRuntime } from "../src/app/api/localApiRuntime.js";
 import {
@@ -36,7 +37,12 @@ async function bootRuntime(controlledTeamId = "BUF") {
   return runtime;
 }
 
-const readSource = (relative) => readFileSync(new URL(`../${relative}`, import.meta.url), "utf8");
+// The server adapter is src/server.js plus its route modules (src/server/**);
+// readServerSource returns that combined text so a route moved between files
+// stays visible to every check below.
+const readSource = (relative) => relative === "src/server.js"
+  ? readServerSource()
+  : readFileSync(new URL(`../${relative}`, import.meta.url), "utf8");
 
 const POST_ROUTE_PATTERNS = {
   "src/server.js": /req\.method === "POST" && url\.pathname === "([^"]+)"/g,

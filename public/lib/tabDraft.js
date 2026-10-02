@@ -1,5 +1,5 @@
 import { state, api } from "./appState.js";
-import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamName } from "./appCore.js";
+import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamCode, teamName } from "./appCore.js";
 import { getProspectNarrative, getScoutingRevealTier } from "./prospectNarratives.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
 
@@ -98,9 +98,9 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
         : "CPU pick in progress";
   const tone = isUserPick ? "danger" : picksUntilUser <= 5 ? "warning" : "accent";
   const provenance = currentSlot?.compensatory
-    ? `Compensatory pick (${currentSlot.teamId})`
+    ? `Compensatory pick (${teamCode(currentSlot.teamId)})`
     : currentSlot?.acquired
-      ? `Acquired from ${currentSlot.originalTeamId}`
+      ? `Acquired from ${teamCode(currentSlot.originalTeamId)}`
       : null;
   const chips = [
     status,

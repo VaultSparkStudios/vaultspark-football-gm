@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { readServerSource } from "../scripts/lib/server-source.mjs";
 
 function walk(dir) {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) =>
@@ -56,7 +57,7 @@ test("agent negotiation actions bind the IDs actually rendered by the modal", ()
 
 test("retiring a jersey refreshes bounded history without a full dashboard round-trip", () => {
   const flow = fs.readFileSync(path.resolve("public/lib/gameFlow.js"), "utf8");
-  const server = fs.readFileSync(path.resolve("src/server.js"), "utf8");
+  const server = readServerSource();
   const local = fs.readFileSync(path.resolve("src/app/api/localApiRuntime.js"), "utf8");
   const action = flow.match(/export async function retireSelectedJersey\(\) \{[\s\S]*?\n\}/)?.[0] || "";
   assert.match(action, /await loadTeamHistory\(\)/);

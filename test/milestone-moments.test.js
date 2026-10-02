@@ -8,6 +8,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { readServerSource } from "../scripts/lib/server-source.mjs";
 import { scoreDrama, buildFranchiseMoment, handleFranchiseMomentRequest } from "../src/runtime/handlers/franchiseMomentHandler.js";
 import { createSession } from "../src/runtime/bootstrap.js";
 
@@ -88,7 +89,7 @@ test("a tied game is a neutral Franchise Moment, never a loss", () => {
 });
 
 test("both adapters delegate to the shared moment authority (drift twin is dead)", () => {
-  const serverSource = read("../src/server.js");
+  const serverSource = readServerSource();
   const runtimeSource = read("../src/app/api/localApiRuntime.js");
   assert.match(serverSource, /handleFranchiseMomentRequest/);
   assert.match(runtimeSource, /handleFranchiseMomentRequest/);

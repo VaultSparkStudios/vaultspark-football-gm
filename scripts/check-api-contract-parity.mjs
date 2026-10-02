@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { API_CONTRACT, apiContractKey } from "../public/lib/apiContract.js";
+import { readServerSource } from "./lib/server-source.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(scriptDir, "..");
@@ -145,7 +146,8 @@ export async function assertApiContractParity({ rootDir = defaultRoot } = {}) {
   const localSource = await fs.readFile(path.join(rootDir, "src", "app", "api", "localApiRuntime.js"), "utf8");
   // S109: the CORS header literal moved to src/app/devCors.js; the gate reads
   // both so it follows the header rather than the file it once lived in.
-  const serverSource = (await fs.readFile(path.join(rootDir, "src", "server.js"), "utf8"))
+  // Routes live in src/server/routes/*.js; readServerSource covers them all.
+  const serverSource = readServerSource(rootDir)
     + "\n" + (await fs.readFile(path.join(rootDir, "src", "app", "devCors.js"), "utf8"));
   const localKeys = extractAdapterContracts(localSource, "local");
   const serverKeys = extractAdapterContracts(serverSource, "server");

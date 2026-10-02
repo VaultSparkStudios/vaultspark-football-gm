@@ -8,7 +8,7 @@
  * exactly what the hire costs.
  */
 
-import { escapeHtml } from "./appCore.js";
+import { escapeHtml, teamCode } from "./appCore.js";
 
 const PANEL_ID = "coachingMarketPanel";
 
@@ -23,7 +23,7 @@ function ratingRow(candidate) {
 
 function originLabel(candidate) {
   if (candidate.origin === "coordinator" && candidate.currentTeamId) {
-    return `Poach from ${candidate.currentTeamId}`;
+    return `Poach from ${teamCode(candidate.currentTeamId)}`;
   }
   return "Free agent";
 }

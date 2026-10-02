@@ -1,3 +1,4 @@
+import { teamCodeFrom } from "./teamDisplay.js";
 function decisionKeys(dashboard = {}) {
   return new Set((dashboard.gmDecisionQueue || []).map((decision) => String(decision.id || decision.type || "decision")));
 }
@@ -22,7 +23,7 @@ function gameDigest(dashboard = {}) {
   const ownScore = Number(home ? game.homeScore : game.awayScore) || 0;
   const opponentScore = Number(home ? game.awayScore : game.homeScore) || 0;
   const result = ownScore > opponentScore ? "W" : ownScore < opponentScore ? "L" : "T";
-  return `${result} ${teamId} ${ownScore}–${opponentScore} ${opponentId}`;
+  return `${result} ${teamCodeFrom(dashboard.teams, teamId)} ${ownScore}–${opponentScore} ${teamCodeFrom(dashboard.teams, opponentId)}`;
 }
 
 function offseasonStage(dashboard = {}) {

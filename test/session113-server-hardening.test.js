@@ -7,6 +7,7 @@ import os from "node:os";
 import path from "node:path";
 import { PassThrough } from "node:stream";
 import { spawn } from "../scripts/lib/safe-spawn.mjs";
+import { readServerSource } from "../scripts/lib/server-source.mjs";
 import {
   BUFFERED_BODY,
   SECURITY_HEADERS,
@@ -108,7 +109,7 @@ test("isPathInsideBaseDir rejects a sibling directory sharing the base prefix", 
 });
 
 test("serveStatic uses the separator-aware containment check", () => {
-  const source = fs.readFileSync(new URL("../src/server.js", import.meta.url), "utf8");
+  const source = readServerSource();
   assert.match(source, /if \(!isPathInsideBaseDir\(resolved, baseDir\)\)/);
   assert.doesNotMatch(source, /resolved\.startsWith\(baseDir\)/);
 });
@@ -290,7 +291,7 @@ test("live: limit query params are clamped", async () => {
   assert.ok(freeAgents.freeAgents.length <= 500);
   const search = await (await realFetch(`${base}/api/players/search?q=a&limit=999999&includeRetired=1`)).json();
   assert.ok(search.players.length <= 100);
-  const source = fs.readFileSync(new URL("../src/server.js", import.meta.url), "utf8");
+  const source = readServerSource();
   for (const [route, max] of [["free-agents", 500], ["retired", 1000], ["players/search", 100], ["free-agency/market", 200], ["calibration/jobs", 200]]) {
     const start = source.indexOf(`url.pathname === "/api/${route}"`);
     const block = source.slice(start, source.indexOf("return true;", start));

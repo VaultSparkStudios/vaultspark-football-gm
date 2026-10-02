@@ -1,4 +1,5 @@
 
+import { teamLabel } from "../domain/teamLabel.js";
 import {
   COACHING_TENDENCY_ARCHETYPES,
   CONTRACT_RULES,
@@ -5873,7 +5874,7 @@ export class GameSession {
               type: "playoff-win",
               year: this.currentYear,
               teamIds: [controlledId],
-              headline: `Playoff win: ${controlledId} take the ${game.label || "playoff round"}`,
+              headline: `Playoff win: ${teamLabel(this.league, controlledId)} take the ${game.label || "playoff round"}`,
               detail: `${game.homeTeamId} ${game.homeScore} — ${game.awayScore} ${game.awayTeamId}. The run continues.`
             });
           }
@@ -5883,7 +5884,7 @@ export class GameSession {
             type: "championship",
             year: this.currentYear,
             teamIds: [controlledId],
-            headline: `🏆 ${controlledId} are world champions`,
+            headline: `🏆 ${teamLabel(this.league, controlledId)} are world champions`,
             detail: `Final: ${superBowl.homeScore}-${superBowl.awayScore} over ${superBowl.runnerUpTeamId}. A season for the ages.`
           });
         } else {
@@ -7878,7 +7879,7 @@ export class GameSession {
       year: this.currentYear,
       teamIds: [teamId],
       playerIds: [playerId],
-      headline: `🎽 ${teamId} retire #${player.jerseyNumber} for ${player.name}`,
+      headline: `🎽 ${teamLabel(this.league, teamId)} retire #${player.jerseyNumber} for ${player.name}`,
       detail: `No one wears #${player.jerseyNumber} in ${teamId} colors again. Career AV ${careerAv}, ${record.championships} title${record.championships === 1 ? "" : "s"}.`
     });
     this.logTransaction({

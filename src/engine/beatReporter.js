@@ -6,6 +6,7 @@
  * Items attach to league.newsLog (rolling 50-item window, newest first).
  */
 
+import { teamLabel } from "../domain/teamLabel.js";
 import { getRivalGmPersona, recordRivalGmMemory } from "./rivalGmPersona.js";
 import { formatRecord } from "../stats/teamRecord.js";
 
@@ -225,7 +226,7 @@ export function reportOwnerUltimatum(league, { teamId, message, targetWins, cons
     year,
     week,
     teamIds: [teamId],
-    headline: `Ownership issues ultimatum to ${teamId}`,
+    headline: `Ownership issues ultimatum to ${teamLabel(league, teamId)}`,
     detail: `${message} Consequence on the table: ${consequence || "major changes"} (target: ${targetWins} wins).`
   });
   return league.newsLog[0];
@@ -273,7 +274,7 @@ export function reportFreeAgencyOutbid(league, {
     week,
     teamIds: [winnerTeamId],
     playerIds: playerId ? [playerId] : [],
-    headline: `Outbid: ${playerName} signs with ${winnerTeamId}`,
+    headline: `Outbid: ${playerName} signs with ${teamLabel(league, winnerTeamId)}`,
     detail: `Your offer (${losingYears}yr / $${Math.round(losingSalary / 1_000_000)}M) lost to ${winnerTeamId}'s ${winningYears}yr / $${Math.round(winningSalary / 1_000_000)}M — ${winnerGm.name} worked the phones while you slept on it.`
   });
   return league.newsLog[0];
@@ -285,7 +286,7 @@ export function reportTrade(league, fromTeamId, toTeamId, playerName, year, week
     type: "trade",
     week,
     year,
-    headline: `Trade: ${playerName} dealt from ${fromTeamId} to ${toTeamId}`,
+    headline: `Trade: ${playerName} dealt from ${teamLabel(league, fromTeamId)} to ${teamLabel(league, toTeamId)}`,
     teamIds: [fromTeamId, toTeamId]
   });
 }
@@ -304,7 +305,7 @@ export function reportStreaks(league, year, week) {
         type: "streak",
         week,
         year,
-        headline: `${team.id} has won ${streak} straight — building serious momentum entering the stretch`,
+        headline: `${teamLabel(league, team.id)} has won ${streak} straight — building serious momentum entering the stretch`,
         teamIds: [team.id]
       });
     } else if (streak <= -5) {
@@ -312,7 +313,7 @@ export function reportStreaks(league, year, week) {
         type: "streak",
         week,
         year,
-        headline: `${team.id} has dropped ${Math.abs(streak)} in a row — hot-seat pressure building`,
+        headline: `${teamLabel(league, team.id)} has dropped ${Math.abs(streak)} in a row — hot-seat pressure building`,
         teamIds: [team.id]
       });
     }
@@ -322,7 +323,7 @@ export function reportStreaks(league, year, week) {
         type: "standings",
         week,
         year,
-        headline: `${team.id} (${record}) is closing in on a playoff berth with a strong late-season push`,
+        headline: `${teamLabel(league, team.id)} (${record}) is closing in on a playoff berth with a strong late-season push`,
         teamIds: [team.id]
       });
     }
@@ -353,7 +354,7 @@ export function reportFreeAgentSigning(league, player, toTeamId, salary, year) {
       type: "signing",
       week: 0,
       year,
-      headline: `${player.name} (${player.position}, ${player.overall} OVR) signs with ${toTeamId} — $${salaryM}M deal`,
+      headline: `${player.name} (${player.position}, ${player.overall} OVR) signs with ${teamLabel(league, toTeamId)} — $${salaryM}M deal`,
       playerIds: [player.id],
       teamIds: [toTeamId]
     });

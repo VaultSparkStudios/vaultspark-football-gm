@@ -16,6 +16,7 @@
  * Each event includes: type, year, week, teamIds[], playerIds[], headline, detail, impact.
  */
 
+import { teamLabel } from "../domain/teamLabel.js";
 import { applyEventFeedback, openThreadForEvent } from "./continuityLedger.js";
 import { recordWinPct } from "../stats/teamRecord.js";
 
@@ -192,7 +193,7 @@ export function checkCultureCrises(league, year, week, rng) {
     pushEvent(league, {
       type: "CULTURE_CRISIS",
       year, week,
-      headline: `Locker-room tension boils over in ${team.id}`,
+      headline: `Locker-room tension boils over in ${teamLabel(league, team.id)}`,
       detail: `Sources inside the ${team.id} facility describe fractured relationships between veterans and the coaching staff. Team chemistry is at a critical low (${chemistry}) amid a losing streak.`,
       impact: "Performance drag will continue until culture metrics recover. Staff changes or veteran departures may be necessary.",
       teamIds: [team.id],
@@ -221,7 +222,7 @@ export function checkOwnerUltimatums(league, year, week, rng) {
     pushEvent(league, {
       type: "OWNER_ULTIMATUM",
       year, week,
-      headline: `${team.id} ownership delivers ultimatum to front office`,
+      headline: `${teamLabel(league, team.id)} ownership delivers ultimatum to front office`,
       detail: `Owner pressure has reached a critical level. The front office has been put on notice — results need to improve or significant changes are coming at season's end.`,
       impact: "Hot-seat modifier is at maximum. Trades and signings may require owner approval. Missing the target could trigger staff overhaul.",
       teamIds: [team.id],

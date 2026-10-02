@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { resolveTabKeyboardIndex } from "../public/lib/tabKeyboardNavigation.js";
+import { readServerSource } from "../scripts/lib/server-source.mjs";
 
 const read = (path) => fs.readFileSync(new URL(path, import.meta.url), "utf8");
 
@@ -91,7 +92,7 @@ test("Rehab Command Center is visible, actionable, and routed through both runti
   const overviewSource = read("../public/lib/tabOverview.js");
   const gameHtml = read("../public/game.html");
   const localRuntime = read("../src/app/api/localApiRuntime.js");
-  const serverRuntime = read("../src/server.js");
+  const serverRuntime = readServerSource();
 
   assert.match(gameHtml, /id="rehabCommandCenter"/);
   assert.match(overviewSource, /export function renderRehabCommandCenter/);

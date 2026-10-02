@@ -157,6 +157,7 @@ export const SHARDS = {
     "test/session-lookup-indexes.test.js",
     "test/franchise-authority.test.js",
     "test/server-routes.test.js",
+    "test/server-route-split.test.js",
     "test/save-payload-budget.test.js",
     "test/snapshot-codec.test.js",
     "test/press-room-truth.test.js",
