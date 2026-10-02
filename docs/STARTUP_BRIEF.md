@@ -67,14 +67,13 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,688 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,344 tok/turn  ·  cache 50%  ·  134 turns to compact       ║
+║  ✓  ███████░░░░░░░░░░░░░░░░░   30% used                          ║
+║     59,468 / 200,000 tok  ·  unknown  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1752/1752 passing (2026-10-02)                 ║
+║  ⚠  Tests         1752/1752 passing (2026-10-02) · STALE — run   ║
 ║  ✓  Velocity      4   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -88,7 +87,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ⛔  Doctor        10/12 (83%)  ·  1 failing                      ║
 ║  ✓  Cost          Max flat-rate · $0.19/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
