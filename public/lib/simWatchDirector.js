@@ -79,7 +79,7 @@ function appendPlay(play, scoringSet) {
   row.className = `sw-play${kind.highlight ? " sw-highlight" : ""}${kind.scoring ? " sw-scoring" : ""}${kind.turnover ? " sw-turnover" : ""}`;
   row.innerHTML = `
     <span class="sw-play-qtr">${escapeHtml(play.quarterLabel || play.clock || "")}</span>
-    <span class="sw-play-team">${escapeHtml(play.offenseTeamId || "")}</span>
+    <span class="sw-play-team">${escapeHtml(play.offenseTeamId ? teamCode(play.offenseTeamId) : "")}</span>
     <span class="sw-play-desc">${escapeHtml(kind.description.slice(0, 120))}</span>
     ${kind.highlight ? `<span class="sw-play-tag">${kind.scoring ? "SCORE" : kind.turnover ? "TURNOVER" : "4TH"}</span>` : ""}`;
   feed.appendChild(row);

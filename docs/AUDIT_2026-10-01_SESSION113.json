@@ -1,0 +1,751 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-10-01",
+  "session": 113,
+  "agent": "claude-code",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "completed-verified",
+  "summary": {
+    "source": "Three read-only sweeps of the public site, game shell and server/ops, then live-code implementation.",
+    "itemsRanked": 18,
+    "combinedPriority": 309.6,
+    "verificationNote": "Source b62e4bb1ca408ee1953729a06157ca43c22771c5 (feature f9296f6 + fix b62e4bb on Studio OS sync a888ef0). Direct six-shard suite 1748/1748 at 10b145c (core 290, runtime 996, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0; studio 365/365 re-run after each rebase onto the two docs-only Studio OS syncs. Full Playwright suite: 25 initial failures traced to pinned wording, collapsed Advanced settings and a hidden dev row whose .row display overrode [hidden]; all fixed and the affected specs re-run green (46 then 22 then 12 passing). Pre-receipt /code-review found four defects (restored-session potential leak, playoff stats in regular-season records, two lost spaces), all fixed with a non-vacuous regression and negative control. Stable staging 14/14 verified for artifact a3965277…. Public launch remains HOLD."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product clarity and game-loop consequence",
+    "staging": "stable staging before production",
+    "source": "founder mission, startup brief and three read-only sweeps"
+  },
+  "gameLoopReview": {
+    "loopTightness": "7/10",
+    "progression": "7/10",
+    "sessionEngagement": "8/10",
+    "retention": "unmeasured; affordances 8/10",
+    "soulFidelity": "unscored: public summary points to private creative authority",
+    "evidence": "Engineering and rendered-browser evidence, not observed player engagement. Public launch remains HOLD."
+  },
+  "phantomsRejected": [
+    {
+      "slug": "tutorial-week-one-is-wrong",
+      "reason": "The league opens at regular-season Week 1 and the first advance moves W1→W2; the tutorial copy was correct."
+    },
+    {
+      "slug": "cpu-draft-ignores-needs",
+      "reason": "runCpuDraft already weights roster need, projection and depth; persona-tilted drafting is deferred until a measured realism run."
+    },
+    {
+      "slug": "hex-colors-break-theme",
+      "reason": "Most of the 114 literals are team identity colors and standalone export documents, which must not follow the page theme."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "slug": "player-language-gate",
+      "title": "Speak to players in football language, and gate the leak",
+      "category": "player trust",
+      "axis": "ui/ux",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 7,
+      "tier": "HIGH",
+      "priority": 24,
+      "status": "implemented",
+      "premise": "The Desk showed schema versions, reason codes, 'source receipts' and 'Live Franchise Authority' to players; the public truth gate did not know the vocabulary.",
+      "premises": [
+        {
+          "claim": "Desk command head speaks to players",
+          "adapter": "file-content",
+          "target": "public/lib/tabOverview.js",
+          "pattern": "Front office</span><h3>What needs your call?",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Rewrite every visible engineering string in the game shell and public pages, keep the honesty voice, and extend the public-copy gate with the internal vocabulary plus a negative control."
+        },
+        "L3": {
+          "effortHours": 6.4,
+          "recipe": "Rewrite every visible engineering string in the game shell and public pages, keep the honesty voice, and extend the public-copy gate with the internal vocabulary plus a negative control. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "~190 visible strings rewritten across 40+ modules and pages; marketing vocabulary gate flags injected 'S94/receipts/canon/shard/schema 2' five times on a temp copy and passes the real site; game pinned tests updated with intent preserved.",
+      "finalAcceptance": "~190 visible strings rewritten across 40+ modules and pages; marketing vocabulary gate flags injected 'S94/receipts/canon/shard/schema 2' five times on a temp copy and passes the real site; game pinned tests updated with intent preserved."
+    },
+    {
+      "rank": 2,
+      "slug": "desk-next-move",
+      "title": "One Desk lead: the call and the Advisor side by side",
+      "category": "decision clarity",
+      "axis": "ui/ux",
+      "effortHours": 6,
+      "impact": 9,
+      "innovation": 6,
+      "tier": "HIGH",
+      "priority": 20.4,
+      "status": "implemented",
+      "premise": "Seven Desk panels answered 'what next?' in sequence and injuries appeared three times.",
+      "premises": [
+        {
+          "claim": "Desk lead grid exists",
+          "adapter": "file-content",
+          "target": "public/game.html",
+          "pattern": "class=\"desk-lead\"",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Group the ranked calls with the Advisor, put progress tracks on one rail, collapse the Co-GM brief into a lazy drawer, and show injuries once."
+        },
+        "L3": {
+          "effortHours": 9.600000000000001,
+          "recipe": "Group the ranked calls with the Advisor, put progress tracks on one rail, collapse the Co-GM brief into a lazy drawer, and show injuries once. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "game.html desk-lead/desk-rail grids; Co-GM brief moved to a lazy drawer (coGmBriefPanel.js) which also returned the static boot graph under its 650000-byte target; Desk injury table scoped to the controlled club; rendered dark/light 1440/390 inspected.",
+      "finalAcceptance": "game.html desk-lead/desk-rail grids; Co-GM brief moved to a lazy drawer (coGmBriefPanel.js) which also returned the static boot graph under its 650000-byte target; Desk injury table scoped to the controlled club; rendered dark/light 1440/390 inspected."
+    },
+    {
+      "rank": 3,
+      "slug": "dev-surface-gating",
+      "title": "Developer tools stay behind ?dev=1",
+      "category": "player trust",
+      "axis": "efficiency",
+      "effortHours": 2,
+      "impact": 7,
+      "innovation": 4,
+      "tier": "MEDIUM",
+      "priority": 16.4,
+      "status": "implemented",
+      "premise": "Long Sim Jobs polled every 8 seconds for every player; QA report controls were visible.",
+      "premises": [
+        {
+          "claim": "Sim-job poll is developer-only",
+          "adapter": "file-content",
+          "target": "public/app.js",
+          "pattern": "players never poll for them",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Gate the jobs panel, QA report and its table behind the developer flag and stop the poll for players."
+        },
+        "L3": {
+          "effortHours": 3.2,
+          "recipe": "Gate the jobs panel, QA report and its table behind the developer flag and stop the poll for players. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "Sim-jobs panel, its 8s poll and QA report gated behind ?dev=1; [data-dev-surface][hidden] forced hidden after the browser suite caught a visible .row; s94 spec now checks every surface.",
+      "finalAcceptance": "Sim-jobs panel, its 8s poll and QA report gated behind ?dev=1; [data-dev-surface][hidden] forced hidden after the browser suite caught a visible .row; s94 spec now checks every surface."
+    },
+    {
+      "rank": 4,
+      "slug": "landing-rebuild",
+      "title": "Landing page leads with the game",
+      "category": "acquisition",
+      "axis": "visual",
+      "effortHours": 6,
+      "impact": 9,
+      "innovation": 7,
+      "tier": "HIGH",
+      "priority": 21.2,
+      "status": "implemented",
+      "premise": "The landing page had seven competing CTAs, no gameplay image, unverifiable superlatives and an empty social-proof block above the fold.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Hero with a real gameplay capture and one primary CTA, refreshed feature cards from the single claims source, community pulse below the fold, superlatives removed."
+        },
+        "L3": {
+          "effortHours": 9.600000000000001,
+          "recipe": "Hero with a real gameplay capture and one primary CTA, refreshed feature cards from the single claims source, community pulse below the fold, superlatives removed. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "Hero screenshot, one primary CTA, Advanced settings hold runtime/seed/data paths, visible help text, unverifiable superlatives and file-count stat removed; captured at 1440/390 both themes.",
+      "finalAcceptance": "Hero screenshot, one primary CTA, Advanced settings hold runtime/seed/data paths, visible help text, unverifiable superlatives and file-count stat removed; captured at 1440/390 both themes."
+    },
+    {
+      "rank": 5,
+      "slug": "single-source-claims",
+      "title": "Marketing claims live in one file",
+      "category": "currency",
+      "axis": "organization",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 6,
+      "tier": "MEDIUM",
+      "priority": 19.2,
+      "status": "implemented",
+      "premise": "The same privacy, rival and early-access lines were repeated four to six times and had drifted.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Render feature, fact and status copy from public/content/claims.json at build and assert every marker is filled."
+        },
+        "L3": {
+          "effortHours": 6.4,
+          "recipe": "Render feature, fact and status copy from public/content/claims.json at build and assert every marker is filled. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "public/content/claims.json rendered by scripts/lib/public-claims.mjs into marker blocks; build fails on unfilled markers; test/public-claims.test.js.",
+      "finalAcceptance": "public/content/claims.json rendered by scripts/lib/public-claims.mjs into marker blocks; build fails on unfilled markers; test/public-claims.test.js."
+    },
+    {
+      "rank": 6,
+      "slug": "new-public-pages",
+      "title": "Features, How to Play, FAQ, Roadmap, Changelog and a real press kit",
+      "category": "ecosystem",
+      "axis": "pages",
+      "effortHours": 8,
+      "impact": 8,
+      "innovation": 7,
+      "tier": "HIGH",
+      "priority": 18.4,
+      "status": "implemented",
+      "premise": "The site had no feature tour, guide, roadmap, changelog feed or downloadable screenshots.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Add the pages, an RSS feed from release notes, real screenshots, and register them in the sitemap and shared navigation."
+        },
+        "L3": {
+          "effortHours": 12.8,
+          "recipe": "Add the pages, an RSS feed from release notes, real screenshots, and register them in the sitemap and shared navigation. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "features, how-to-play, faq, roadmap, changelog (status-archive + changelog.xml RSS), press kit with five 103-154 KB screenshots; sitemap, llms.txt, agents.json and footer manifest updated; smoke-pages passes.",
+      "finalAcceptance": "features, how-to-play, faq, roadmap, changelog (status-archive + changelog.xml RSS), press kit with five 103-154 KB screenshots; sitemap, llms.txt, agents.json and footer manifest updated; smoke-pages passes."
+    },
+    {
+      "rank": 7,
+      "slug": "site-chrome-parity",
+      "title": "Shared header, meta and template parity",
+      "category": "visual",
+      "axis": "seo",
+      "effortHours": 3,
+      "impact": 6,
+      "innovation": 4,
+      "tier": "MEDIUM",
+      "priority": 14,
+      "status": "implemented",
+      "premise": "Pages had no header navigation, three templates, and most lacked social metadata.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Inject one header from footer-manifest headerLinks, give every page og/twitter meta, a manifest and theme-color."
+        },
+        "L3": {
+          "effortHours": 4.800000000000001,
+          "recipe": "Inject one header from footer-manifest headerLinks, give every page og/twitter meta, a manifest and theme-color. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "Shared header from footer-manifest headerLinks on every public page; og/twitter/theme-color/apple-touch-icon/manifest.webmanifest everywhere; contact/privacy/terms on the shared template.",
+      "finalAcceptance": "Shared header from footer-manifest headerLinks on every public page; og/twitter/theme-color/apple-touch-icon/manifest.webmanifest everywhere; contact/privacy/terms on the shared template."
+    },
+    {
+      "rank": 8,
+      "slug": "onboarding-copy",
+      "title": "Guide and tutorial speak current game",
+      "category": "onboarding",
+      "axis": "ui/ux",
+      "effortHours": 3,
+      "impact": 7,
+      "innovation": 4,
+      "tier": "MEDIUM",
+      "priority": 16,
+      "status": "implemented",
+      "premise": "The Guide named retired tabs and backticked internals; the tutorial described a 'world-state system'.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Rewrite the guide as a week rhythm, season loop and where-things-live map; fix the tutorial's scouting copy."
+        },
+        "L3": {
+          "effortHours": 4.800000000000001,
+          "recipe": "Rewrite the guide as a week rhythm, season loop and where-things-live map; fix the tutorial's scouting copy. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "Guide rewritten as league setup, your week, your season, where things live; tutorial scouting copy fixed; return digest speaks 'since your last visit'.",
+      "finalAcceptance": "Guide rewritten as league setup, your week, your season, where things live; tutorial scouting copy fixed; return digest speaks 'since your last visit'."
+    },
+    {
+      "rank": 9,
+      "slug": "real-field-replay",
+      "title": "Replays show the real ball spot, down and distance",
+      "category": "immersion",
+      "axis": "engagement",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 8,
+      "tier": "HIGH",
+      "priority": 20.8,
+      "status": "implemented",
+      "premise": "Sim-Watch moved its ball marker by a formula on the play index while every play carried its recorded field position.",
+      "premises": [
+        {
+          "claim": "Field marker reads the recorded spot",
+          "adapter": "file-content",
+          "target": "public/lib/simWatchPlayback.js",
+          "pattern": "export function deriveFieldState",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Drive the field marker from fieldPosition oriented by possession, add down and distance, a red-zone state and a score-margin game-flow strip; unknown spots are never invented."
+        },
+        "L3": {
+          "effortHours": 6.4,
+          "recipe": "Drive the field marker from fieldPosition oriented by possession, add down and distance, a red-zone state and a score-margin game-flow strip; unknown spots are never invented. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "deriveFieldState/buildGameFlow in simWatchPlayback.js; replaces the index-formula marker; unknown spots fall back to midfield, never invented; 2/2 new + 33 Sim-Watch neighbours.",
+      "finalAcceptance": "deriveFieldState/buildGameFlow in simWatchPlayback.js; replaces the index-formula marker; unknown spots fall back to midfield, never invented; 2/2 new + 33 Sim-Watch neighbours."
+    },
+    {
+      "rank": 10,
+      "slug": "league-pulse",
+      "title": "Power rankings, award races and the record watch",
+      "category": "engagement",
+      "axis": "feature depth",
+      "effortHours": 6,
+      "impact": 9,
+      "innovation": 8,
+      "tier": "HIGH",
+      "priority": 22,
+      "status": "implemented",
+      "premise": "The league had no weekly rankings, award races or record chases despite holding every input.",
+      "premises": [
+        {
+          "claim": "League lens is on the dashboard",
+          "adapter": "file-content",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "dashboard.leagueLens = buildLeagueLens(",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "A read-only league lens over standings, ratings and season tables, reusing the MVP ballot weights, with movement from the prior week and on-pace/broken record alerts."
+        },
+        "L3": {
+          "effortHours": 9.600000000000001,
+          "recipe": "A read-only league lens over standings, ratings and season tables, reusing the MVP ballot weights, with movement from the prior week and on-pace/broken record alerts. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "src/stats/leagueLens.js (power rankings with prior-week movement, MVP/DPOY/Coach races on GAME_IMPACT_WEIGHTS, record watch on a memoized regular-season record book); same-seed determinism and unchanged standings asserted; postseason uses regular-season tables after review.",
+      "finalAcceptance": "src/stats/leagueLens.js (power rankings with prior-week movement, MVP/DPOY/Coach races on GAME_IMPACT_WEIGHTS, record watch on a memoized regular-season record book); same-seed determinism and unchanged standings asserted; postseason uses regular-season tables after review."
+    },
+    {
+      "rank": 11,
+      "slug": "advisor-look-ahead",
+      "title": "The Advisor reads next week's opponent",
+      "category": "intelligence",
+      "axis": "ai",
+      "effortHours": 3,
+      "impact": 7,
+      "innovation": 7,
+      "tier": "MEDIUM",
+      "priority": 18.4,
+      "status": "implemented",
+      "premise": "The Advisor argued the current call but never framed the upcoming opponent.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Add a deterministic look-ahead from the league lens: venue, opponent rank and record, your rank, and a framing line, never odds."
+        },
+        "L3": {
+          "effortHours": 4.800000000000001,
+          "recipe": "Add a deterministic look-ahead from the league lens: venue, opponent rank and record, your rank, and a framing line, never odds. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "public/lib/lookAhead.js: venue, opponent rank/record/blurb, your rank and framing; asserts no odds language; 2/2.",
+      "finalAcceptance": "public/lib/lookAhead.js: venue, opponent rank/record/blurb, your rank and framing; asserts no odds language; 2/2."
+    },
+    {
+      "rank": 12,
+      "slug": "potential-scouting-fog",
+      "title": "Other clubs' potential is a scouting read",
+      "category": "depth",
+      "axis": "feature depth",
+      "effortHours": 5,
+      "impact": 8,
+      "innovation": 7,
+      "tier": "HIGH",
+      "priority": 19.6,
+      "status": "implemented",
+      "premise": "Free agents and every rival player shipped their true potential; only draft prospects were fogged.",
+      "premises": [
+        {
+          "claim": "Every carrier uses the visible potential",
+          "adapter": "file-content",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "visiblePotential(player) {",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2.5,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Fog potential for players you do not employ with an age-narrowing band from a derived stream, through every carrier (roster, free agents, search, profile, contract lists, stat tables), labelled as scouted."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Fog potential for players you do not employ with an age-narrowing band from a derived stream, through every carrier (roster, free agents, search, profile, contract lists, stat tables), labelled as scouted. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "visiblePotential through roster, free agents, search, profile, contract lists, waiver wire, depth snap share and stat tables (constructor and fromSnapshot); age-narrowing derived-stream band; 4/4 including restored-session regression whose negative control leaks truth without the hook; 70 potential neighbours green.",
+      "finalAcceptance": "visiblePotential through roster, free agents, search, profile, contract lists, waiver wire, depth snap share and stat tables (constructor and fromSnapshot); age-narrowing derived-stream band; 4/4 including restored-session regression whose negative control leaks truth without the hook; 70 potential neighbours green."
+    },
+    {
+      "rank": 13,
+      "slug": "operating-statement",
+      "title": "Boardroom operating statement",
+      "category": "depth",
+      "axis": "feature depth",
+      "effortHours": 4,
+      "impact": 7,
+      "innovation": 6,
+      "tier": "MEDIUM",
+      "priority": 17.2,
+      "status": "implemented",
+      "premise": "The Boardroom showed raw owner numbers in a wide table with no statement or runway.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "A read-only statement over gate revenue, staff costs, cash runway against the owner's target and the heat it adds; salaries stay with the cap."
+        },
+        "L3": {
+          "effortHours": 6.4,
+          "recipe": "A read-only statement over gate revenue, staff costs, cash runway against the owner's target and the heat it adds; salaries stay with the cap. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "src/domain/operatingStatement.js over owner.finances and ownerEconomy liquidity; lazy Boardroom panel; 3/3 including determinism; rendered both themes.",
+      "finalAcceptance": "src/domain/operatingStatement.js over owner.finances and ownerEconomy liquidity; lazy Boardroom panel; 3/3 including determinism; rendered both themes."
+    },
+    {
+      "rank": 14,
+      "slug": "server-hardening",
+      "title": "Server request, error and proxy hardening",
+      "category": "security",
+      "axis": "security",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 4,
+      "tier": "HIGH",
+      "priority": 17.6,
+      "status": "implemented",
+      "premise": "Oversize bodies kept buffering, 500s returned error messages, the static prefix check lacked a separator, several limits were unclamped and the rate-limit key trusted a spoofable header.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Stop and drain oversize uploads with one 413, generic 500s, separator-safe static paths, clamped limits, trust-flagged proxy keys, parameterized retention, security headers and a secrets ignore rule."
+        },
+        "L3": {
+          "effortHours": 6.4,
+          "recipe": "Stop and drain oversize uploads with one 413, generic 500s, separator-safe static paths, clamped limits, trust-flagged proxy keys, parameterized retention, security headers and a secrets ignore rule. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "src/server/httpHardening.js; 17/17 new tests (64 MB upload cut short with 413, generic 500 with server-side log, sibling-prefix traversal refused, clamps, headers, spoofed XFF/cf-connecting-ip still 429) and 157/157 server/community neighbours.",
+      "finalAcceptance": "src/server/httpHardening.js; 17/17 new tests (64 MB upload cut short with 413, generic 500 with server-side log, sibling-prefix traversal refused, clamps, headers, spoofed XFF/cf-connecting-ip still 429) and 157/157 server/community neighbours."
+    },
+    {
+      "rank": 15,
+      "slug": "precache-diet",
+      "title": "Marketing imagery leaves the install path",
+      "category": "speed",
+      "axis": "performance",
+      "effortHours": 1,
+      "impact": 5,
+      "innovation": 3,
+      "tier": "MEDIUM",
+      "priority": 12,
+      "status": "implemented",
+      "premise": "The service worker precached the 378 KB social card on every install.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Exclude social and marketing imagery from the precache while keeping offline game code."
+        },
+        "L3": {
+          "effortHours": 1.6,
+          "recipe": "Exclude social and marketing imagery from the precache while keeping offline game code. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "images/cover.png and images/screens/ excluded; precache 212 assets 3.21 MB -> 224 assets 2.84 MB; service-worker-precache 6/6.",
+      "finalAcceptance": "images/cover.png and images/screens/ excluded; precache 212 assets 3.21 MB -> 224 assets 2.84 MB; service-worker-precache 6/6."
+    },
+    {
+      "rank": 16,
+      "slug": "repo-hygiene",
+      "title": "Archive root clutter and stale inputs",
+      "category": "organization",
+      "axis": "token cost",
+      "effortHours": 2,
+      "impact": 5,
+      "innovation": 3,
+      "tier": "LOW",
+      "priority": 11.6,
+      "status": "implemented",
+      "premise": "Root handoff files, screenshots, 27 closeout inputs and old implement plans crowded agent globs.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Move them under docs/archive without deleting content and roll the hot ledgers at closeout."
+        },
+        "L3": {
+          "effortHours": 3.2,
+          "recipe": "Move them under docs/archive without deleting content and roll the hot ledgers at closeout. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "Root CODEX_HANDOFF/HANDOFF/screenshots, 27 closeout-brief inputs and pre-S109 implement plans moved under docs/archive; nothing deleted.",
+      "finalAcceptance": "Root CODEX_HANDOFF/HANDOFF/screenshots, 27 closeout-brief inputs and pre-S109 implement plans moved under docs/archive; nothing deleted."
+    },
+    {
+      "rank": 17,
+      "slug": "accessibility-pass",
+      "title": "Dialogs, labels and glyphs",
+      "category": "accessibility",
+      "axis": "a11y",
+      "effortHours": 1,
+      "impact": 5,
+      "innovation": 3,
+      "tier": "LOW",
+      "priority": 12,
+      "status": "implemented",
+      "premise": "The shortcuts modal lacked dialog semantics, Depth borrowed the Team tab's label and the theme toggle had no accessible name.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Add dialog roles and labels and remove emoji/arrow glyphs from cloud-sync controls."
+        },
+        "L3": {
+          "effortHours": 1.6,
+          "recipe": "Add dialog roles and labels and remove emoji/arrow glyphs from cloud-sync controls. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "Shortcuts dialog role/aria-modal/label, Depth tab labelled, theme toggle named, cloud-sync glyphs removed.",
+      "finalAcceptance": "Shortcuts dialog role/aria-modal/label, Depth tab labelled, theme toggle named, cloud-sync glyphs removed."
+    },
+    {
+      "rank": 18,
+      "slug": "server-route-split",
+      "title": "Split src/server.js route table",
+      "category": "organization",
+      "axis": "token cost",
+      "effortHours": 4,
+      "impact": 4,
+      "innovation": 3,
+      "tier": "LOW",
+      "priority": 8.8,
+      "status": "deferred",
+      "premise": "src/server.js is 2,250 lines.",
+      "premises": [],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Correct the primary seam and pin it with a negative control."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Deferred: the API parity checker and seven test files read src/server.js as text to discover routes, so a split must move those readers first; only the HTTP helpers were extracted."
+        },
+        "L3": {
+          "effortHours": 6.4,
+          "recipe": "Deferred: the API parity checker and seven test files read src/server.js as text to discover routes, so a split must move those readers first; only the HTTP helpers were extracted. Verify in rendered browser states across both themes and phone width."
+        }
+      },
+      "executionEvidence": "Deferred with reason: the API parity checker and seven test files read src/server.js as text.",
+      "finalAcceptance": "Deferred with reason: the API parity checker and seven test files read src/server.js as text."
+    }
+  ],
+  "executionLog": [
+    {
+      "item": "player-language-gate",
+      "status": "implemented",
+      "evidence": "~190 visible strings rewritten across 40+ modules and pages; marketing vocabulary gate flags injected 'S94/receipts/canon/shard/schema 2' five times on a temp copy and passes the real site; game pinned tests updated with intent preserved."
+    },
+    {
+      "item": "desk-next-move",
+      "status": "implemented",
+      "evidence": "game.html desk-lead/desk-rail grids; Co-GM brief moved to a lazy drawer (coGmBriefPanel.js) which also returned the static boot graph under its 650000-byte target; Desk injury table scoped to the controlled club; rendered dark/light 1440/390 inspected."
+    },
+    {
+      "item": "dev-surface-gating",
+      "status": "implemented",
+      "evidence": "Sim-jobs panel, its 8s poll and QA report gated behind ?dev=1; [data-dev-surface][hidden] forced hidden after the browser suite caught a visible .row; s94 spec now checks every surface."
+    },
+    {
+      "item": "landing-rebuild",
+      "status": "implemented",
+      "evidence": "Hero screenshot, one primary CTA, Advanced settings hold runtime/seed/data paths, visible help text, unverifiable superlatives and file-count stat removed; captured at 1440/390 both themes."
+    },
+    {
+      "item": "single-source-claims",
+      "status": "implemented",
+      "evidence": "public/content/claims.json rendered by scripts/lib/public-claims.mjs into marker blocks; build fails on unfilled markers; test/public-claims.test.js."
+    },
+    {
+      "item": "new-public-pages",
+      "status": "implemented",
+      "evidence": "features, how-to-play, faq, roadmap, changelog (status-archive + changelog.xml RSS), press kit with five 103-154 KB screenshots; sitemap, llms.txt, agents.json and footer manifest updated; smoke-pages passes."
+    },
+    {
+      "item": "site-chrome-parity",
+      "status": "implemented",
+      "evidence": "Shared header from footer-manifest headerLinks on every public page; og/twitter/theme-color/apple-touch-icon/manifest.webmanifest everywhere; contact/privacy/terms on the shared template."
+    },
+    {
+      "item": "onboarding-copy",
+      "status": "implemented",
+      "evidence": "Guide rewritten as league setup, your week, your season, where things live; tutorial scouting copy fixed; return digest speaks 'since your last visit'."
+    },
+    {
+      "item": "real-field-replay",
+      "status": "implemented",
+      "evidence": "deriveFieldState/buildGameFlow in simWatchPlayback.js; replaces the index-formula marker; unknown spots fall back to midfield, never invented; 2/2 new + 33 Sim-Watch neighbours."
+    },
+    {
+      "item": "league-pulse",
+      "status": "implemented",
+      "evidence": "src/stats/leagueLens.js (power rankings with prior-week movement, MVP/DPOY/Coach races on GAME_IMPACT_WEIGHTS, record watch on a memoized regular-season record book); same-seed determinism and unchanged standings asserted; postseason uses regular-season tables after review."
+    },
+    {
+      "item": "advisor-look-ahead",
+      "status": "implemented",
+      "evidence": "public/lib/lookAhead.js: venue, opponent rank/record/blurb, your rank and framing; asserts no odds language; 2/2."
+    },
+    {
+      "item": "potential-scouting-fog",
+      "status": "implemented",
+      "evidence": "visiblePotential through roster, free agents, search, profile, contract lists, waiver wire, depth snap share and stat tables (constructor and fromSnapshot); age-narrowing derived-stream band; 4/4 including restored-session regression whose negative control leaks truth without the hook; 70 potential neighbours green."
+    },
+    {
+      "item": "operating-statement",
+      "status": "implemented",
+      "evidence": "src/domain/operatingStatement.js over owner.finances and ownerEconomy liquidity; lazy Boardroom panel; 3/3 including determinism; rendered both themes."
+    },
+    {
+      "item": "server-hardening",
+      "status": "implemented",
+      "evidence": "src/server/httpHardening.js; 17/17 new tests (64 MB upload cut short with 413, generic 500 with server-side log, sibling-prefix traversal refused, clamps, headers, spoofed XFF/cf-connecting-ip still 429) and 157/157 server/community neighbours."
+    },
+    {
+      "item": "precache-diet",
+      "status": "implemented",
+      "evidence": "images/cover.png and images/screens/ excluded; precache 212 assets 3.21 MB -> 224 assets 2.84 MB; service-worker-precache 6/6."
+    },
+    {
+      "item": "repo-hygiene",
+      "status": "implemented",
+      "evidence": "Root CODEX_HANDOFF/HANDOFF/screenshots, 27 closeout-brief inputs and pre-S109 implement plans moved under docs/archive; nothing deleted."
+    },
+    {
+      "item": "accessibility-pass",
+      "status": "implemented",
+      "evidence": "Shortcuts dialog role/aria-modal/label, Depth tab labelled, theme toggle named, cloud-sync glyphs removed."
+    },
+    {
+      "item": "server-route-split",
+      "status": "deferred",
+      "evidence": "Deferred with reason: the API parity checker and seven test files read src/server.js as text."
+    }
+  ],
+  "verification": {}
+}

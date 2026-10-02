@@ -24,7 +24,7 @@ export function renderCoGmBriefingPanel() {
   if (content) content.innerHTML = `
     <div class="history-card-grid">
       <div class="history-card-stat"><strong>Current command</strong><div>${escapeHtml(command.title)}</div><small>${command.blocking ? "Must be settled before you advance" : "Optional this week"}</small></div>
-      <div class="history-card-stat"><strong>Pressure</strong><div>${escapeHtml(packet.pressure.ownerMandate)}</div><small>${escapeHtml(packet.pressure.controlledTeamInjuries)} injuries · ${escapeHtml(packet.pressure.rosterNeeds.join(", ") || "no ranked need")}</small></div>
+      <div class="history-card-stat"><strong>Pressure</strong><div>${escapeHtml(humanizeId(packet.pressure.ownerMandate) || "No mandate")}</div><small>${escapeHtml(packet.pressure.controlledTeamInjuries)} ${Number(packet.pressure.controlledTeamInjuries) === 1 ? "injury" : "injuries"} · ${escapeHtml(packet.pressure.rosterNeeds.length ? `needs ${packet.pressure.rosterNeeds.join(", ")}` : "no pressing need")}</small></div>
       <div class="history-card-stat"><strong>Your focus</strong><div>${escapeHtml(humanizeId(packet.architectThesis.focusPathId) || "Not declared")}</div><small>Version ${escapeHtml(packet.architectThesis.revision)}</small></div>
       <div class="history-card-stat"><strong>Decision memory</strong><div>${escapeHtml(receipts.length)} logged decision${receipts.length === 1 ? "" : "s"}</div><small>${escapeHtml(receipts[0]?.declared || "No recorded declaration yet")}</small></div>
     </div>`;

@@ -327,7 +327,7 @@ function collectCandidates(s, teamName) {
       kind: "injury-depth",
       id: "injury-depth",
       title: "Patch the depth chart",
-      body: `${pluralInjuries(s.injuries)} on the controlled roster${s.injuryHeavy ? " — that is a heavy week" : ""}. Check who starts before the slate, not after.`,
+      body: `${pluralInjuries(s.injuries)} on your roster${s.injuryHeavy ? " — that is a heavy week" : ""}. Check who starts before the slate, not after.`,
       score: base["injury-depth"] + s.injuries * mod.injuryEach,
       risk: "An unchecked depth chart starts whoever the engine finds; that is a loss you chose by default."
     });

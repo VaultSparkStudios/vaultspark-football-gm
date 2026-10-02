@@ -833,9 +833,9 @@ async function main() {
       if (!rivalStaffTeam) throw new Error("Rival coaching visual evidence could not find another team");
       await page.selectOption("#staffTeamSelect", rivalStaffTeam);
       await page.waitForFunction(
-        (teamId) => document.querySelector("#coachingMarketPanel .coaching-market-empty")?.textContent?.includes(teamId)
-          && document.querySelectorAll("#coachingMarketPanel .cm-hire, #coachingMarketPanel .cm-fire").length === 0,
-        rivalStaffTeam
+        // S113: the message names clubs by display code, not internal id.
+        () => /only its own front office can change it/.test(document.querySelector("#coachingMarketPanel .coaching-market-empty")?.textContent || "")
+          && document.querySelectorAll("#coachingMarketPanel .cm-hire, #coachingMarketPanel .cm-fire").length === 0
       );
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
@@ -930,7 +930,10 @@ async function main() {
         await setTheme(page, theme);
         await captureElement(page, outputDir, `${viewport.name}-gm-persona-${theme}`, "#gmLegacyCardWrap", records);
         await captureElement(page, outputDir, `${viewport.name}-trophy-road-${theme}`, "#trophyRoadPanel", records);
-        await captureElement(page, outputDir, `${viewport.name}-co-gm-brief-${theme}`, "#coGmBriefPanel", records);
+        // S113: the brief lives in a collapsed Desk drawer that renders when opened.
+      await page.evaluate(() => { const drawer = document.getElementById("coGmBriefPanel")?.closest("details"); if (drawer) drawer.open = true; });
+      await page.waitForFunction(() => (document.getElementById("coGmBriefContent")?.textContent || "").trim().length > 0);
+      await captureElement(page, outputDir, `${viewport.name}-co-gm-brief-${theme}`, "#coGmBriefPanel", records);
         await captureElement(page, outputDir, `${viewport.name}-architect-signature-${theme}`, ".architecture-review", records);
         await captureElement(page, outputDir, `${viewport.name}-exact-command-center-${theme}`, "#franchiseCommandCenter", records);
         await page.locator('#franchiseCommandCenter [data-target-id="contractsSpotlight"]').click();
