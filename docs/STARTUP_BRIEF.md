@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-02 (Session 113 closeout) -->
+<!-- generated-at: 2026-10-02 (Session 114 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: a6417cd9214b3b96 -->
-<!-- session-authority: committed=S113 · SIL=S113 · status=S113 · handoff=S113; divergent=false -->
+<!-- session-authority: committed=S114 · SIL=S114 · status=S114 · handoff=S114; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 113 closeout · 2026-10-02.
+> **Fast-boot brief** — generated at Session 114 closeout · 2026-10-02.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 114 · 2026-10-02 · BUILDER MODE                         ║
+║  Session 115 · 2026-10-02 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S113) - WHAT SHIPPED ══════════════════════════╗
-║  S113 shipped the player-language pass, Desk lead with Advisor   ║
+╔══ LAST SESSION (S114) - WHAT SHIPPED ══════════════════════════╗
+║  S114 published the S113 release note, moved stored headlines a  ║
 ║  Tests  Fresh direct six-shard suite 1702/1702, exit0; Clean te  ║
 ║  Deploy 10/10; https://github.com/VaultSparkStudios/vaultspark-  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -41,40 +41,40 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    820/1000   ███████████████████░░░░░   82%                     ║
-║    SIL v3.0  ·  Avg3: 854  ·  Velocity 4→                        ║
+║    846/1000   ████████████████████░░░░   85%                     ║
+║    SIL v3.0  ·  Avg3: 823.3  ·  Velocity 4→                      ║
 ║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
-║    Trend  ▅▅▄▁▁  →  (last 5 sessions)                            ║
+║    Trend  ▅▄▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
 ║    Dev Health        96    ██████████  —        →                ║
 ║    Alignment         95    ██████████  —        →                ║
-║    Momentum          95    ██████████  —        →                ║
+║    Momentum          92    █████████░  —        →                ║
 ║    Engagement        72    ███████░░░  —        →                ║
-║    Process Qual      76    ████████░░  —        →                ║
-║    Coherence         85    █████████░  ········ →                ║
+║    Process Qual      86    █████████░  —        →                ║
+║    Coherence         86    █████████░  ········ →                ║
 ║    Security          82    ████████░░  ········ →                ║
-║    Ecosystem         72    ███████░░░  ········ →                ║
-║    Capital           55    ██████░░░░  ········ →                ║
-║    Automation        92    █████████░  ········ →                ║
+║    Ecosystem         74    ███████░░░  ········ →                ║
+║    Capital           70    ███████░░░  ········ →                ║
+║    Automation        93    █████████░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 113 ═══════════════════════════╗
-║  Shipped:  S113 player language, League Pulse, potential fog an  ║
-║  Tests:    1748/1748 passing  ·  Deploy: 10/10; https://github.  ║
+╔══ WHERE WE LEFT OFF  ·  Session 114 ═══════════════════════════╗
+║  Shipped:  S114 release note, display codes and the server rout  ║
+║  Tests:    1752/1752 passing  ·  Deploy: 10/10; https://github.  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,707 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,354 tok/turn  ·  cache 50%  ·  133 turns to compact       ║
+║     2,688 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,344 tok/turn  ·  cache 50%  ·  134 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1748/1748 passing (2026-10-02) · STALE — run   ║
+║  ✓  Tests         1752/1752 passing (2026-10-02)                 ║
 ║  ✓  Velocity      4   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -106,7 +106,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
-║  Velocity:   ▅▅▄▁▁  4→  (last 5 sessions)                        ║
+║  Velocity:   ▅▄▁▁▁  4→  (last 5 sessions)                        ║
 ║  Intent:     100% achieved last 5                                ║
 ║  Streak:     ✓ 10 consecutive achieved-intent sessions           ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -123,5 +123,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 113 closeout · 2026-10-02*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 114 closeout · 2026-10-02*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

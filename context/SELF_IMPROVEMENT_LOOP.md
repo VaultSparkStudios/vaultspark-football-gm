@@ -1,35 +1,12 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Last session: 113 (2026-10-02) | Total: 820/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 854 | 5: 894.4 | 10: 927.7 | 25: 958 | all: 980.6
-Sparkline: ▅▅▄▁▁
+Last session: 114 (2026-10-02) | Total: 846/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 823.3 | 5: 872 | 10: 916.2 | 25: 953 | all: 978.6
+Sparkline: ▅▄▁▁▁
 Intent rate: 100% (5/5 last 5)
-SIL delta: 804 → 820 (+16). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 67 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 820 → 846 (+26). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 68 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
-
-## 2026-09-10 — Session 104 — The league was never generated at the roster its own rules declare
-
-SIL v3.0: **961 / 1000** (Dev Health 97, Creative Alignment 98, Momentum 100, Engagement 86, Process Quality 97, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 90, Capital Efficiency 100, Automation Coverage 100). Intent outcome: Achieved. These are engineering assessments, not measured player outcomes; engagement remains limited by the absence of any real-cohort evidence.
-
-S104 was recovered mid-implement: ~1,300 uncommitted lines across ten source files, an untracked test, S103's capture-ledger entries still unstaged, and no session lock. F7 read "session likely in flight" and the per-surface ledger showed all eight core surfaces current through S103, so the recovery was to verify and finish the work rather than reconstruct a record.
-
-Three sessions had been circling a defect one level below all of them. S102 published a divergence between two candidate gated populations and declined to choose; S103 proved `rostered` failed a prior test — a drift statistic requires a population that exists at both ends of its window — and then measured the re-point at `out-of-range` and refused to buy it with a threshold. **What no session tested is that the other candidate fails the same test, mirrored:** an unfiltered 49 at the start of the window becoming the top 53 of 69 at the end silently acquires a selection filter. Neither candidate was a valid drift statistic, so choosing between them could not have produced one. `ROSTER_TEMPLATE` summed to 49 against a declared `activeLimit` of 53 and generation built no practice squad at all against a declared `practiceLimit` of 16; every league in this project's history began 20 players a club below its own steady state. Generating at the declared structure, and reading that structure as a floor in `teamNeeds` rather than only as a ceiling in the compliance pass, takes the between-group term from −0.197 to +0.003 and the within-group term from `watch` to `on-target`.
-
-Three defects of the same family fell out of it. The active 53 was chosen by a position-blind ranking of a scalar that is not comparable across positions, so quarterback rooms went 64 → 195 and specialists 64 → 155 while the line fell 288 → 258; both release paths could cut a club below a roster it could field, and value density is least favourable to exactly the rooms a club must dress; and draft intake was uniform at 11.1% a position against demand ranging 1.9% to 18.9%, which does not equilibrate but accumulates, monotonically, in the order the measured populations actually moved. Separately, `scripts/check-audit-premises.mjs` — spawned by the startup brief's preflight inside a silent `catch` — did not exist, so every typed `premises` block in the project's audit history had gone unchecked with nothing to say so.
-
-Two of this session's own fixes were caught by gates rather than by judgement, and both corrections are recorded rather than quietly absorbed. Writing the missing `check-last-session-summary.mjs` was **wrong** — the path is named in this project's `forbiddenFiles`, and the studio shard said so; it was deleted rather than allowlisted, and the four-session staleness is closed by this project's own authority instead (the closeout write, plus reconciling `currentSession`). And the public status page owed players two sessions of release notes, invisible until now because S103's omission sat exactly on a one-session tolerance.
-
-Process Quality is 97 rather than higher because **two of the three drafts of the `teamNeeds` floor were reasoned and wrong**, and only measurement caught them: reading the generation template reported a permanent shortfall in whichever room lost the merit pass, and reading the fieldable minimum drained the league 2,208 → 1,905 with the practice squad falling from 16 a club to 6.5 — the S103 moving-denominator defect with its sign flipped, installed by the fix for it. The fieldability guard was also wrong on its first draft in a way a fixture would not have shown. Dev Health is 97: the composition backlog item S103 carried is closed and the parity denominator is fixed, but elite density remains an open `watch` that has not been re-derived under the new roster shape, and the dispersion arm honestly moved to `watch`.
-
-- [SIL] When two candidate answers to a question both fail the same prior test, stop choosing and check the premise the question shares. Two sessions were spent deciding which population a gate should measure. Both candidates were invalid for the same reason — the league was generated below its own declared structure — and no amount of choosing between them could have produced a valid statistic. The tell was available in S103's own receipt: one candidate's denominator moved, and the other's *filter* moved, which is the same defect wearing the other hat.
-- [SIL] After removing an accumulator, re-measure the same window for the one you just installed. Both wrong drafts of the `teamNeeds` floor were plausible on inspection and only visible over a ten-season run, and the second reproduced the exact defect class this session existed to remove, with its sign flipped. A fix for a moving denominator is precisely the kind of change that installs a new one.
-- [SIL] A minimum does not stop an accumulation; a maximum does. Nothing in a floor prevents a sixth quarterback out-rating a fourth cornerback and taking the slot on merit, which is exactly how the room grew from 64 to 195. If you are declaring a floor to fix an accumulation, name the term that stops the accumulation before shipping.
-- [SIL] A silent `catch` around a spawn makes a missing dependency and a clean run the same observation. A premise-decay step had been spawning a script that was not in the repository, producing no cache, no signal and no error, for the project's whole history. Audit the catch, not only the code inside it — and when a step is advisory, make sure advisory means "reports without blocking", never "reports nothing".
-- [SIL] When a gate you did not write fails your change, the first hypothesis is that the gate is right. Having found a propagated module importing an absent script, I wrote the script — and the studio shard failed it on the spot, because the path is named in this project's `forbiddenFiles` and the module would have been a fourth mutator of `PROJECT_STATUS.json` against three declared ones. The file was not missing by oversight; it is excluded by contract, and the importer is generic machinery that depends on something this project deliberately does not have. Read what a gate is protecting before touching it, and never allowlist your own change through one.
-- [SIL] A gate that can only be satisfied by violating another gate is not a gate, it is a trap. The naive form of this session's import check — every static relative import must resolve — would have *required* creating the forbidden file to go green. The rule that is actually true adds one clause: unless the target is contractually forbidden, in which case the importing module must have no importer. That clause states the real property and fails loudly the moment someone wires the dead module up.
-- [SIL] When two instances of a defect hide behind two different mechanisms, ship the general form. `check-audit-premises.mjs` hid behind a silent catch; `check-last-session-summary.mjs` hid behind a *static* import in a module nothing imports, so its `ERR_MODULE_NOT_FOUND` was never raised by anything. Writing both files closes two instances. Asserting that every static relative import under `scripts/` resolves closes the class — and does it by reading rather than by executing, so no runtime path has to be exercised to prove it. Strip comments before matching, or docstring usage examples (which name modules relative to the *caller*) drown the signal.
-- [SIL] A field with a derivation function is not a field you set — and I wrote down an invariant about one before reading the code that computes it. I claimed closeout must bump `currentSession` to reconcile two renderers, recorded that in five places, then disproved it in two minutes: `resolveSessionAuthority` derives the value from the monotonic maximum of every committed authority and the brief self-heals it at session start, so the hand bump became another authority and pushed the brief to *Session 106*. It was caught only because the fix was verified end to end rather than declared done. Find what computes a value before asserting who owns it; when the check is cheap, run it instead of reasoning about it.
 
 ## 2026-09-11 — Session 105 — Every surface the brief reads gets a writer, and a test that fails when the writer is skipped
 
@@ -240,6 +217,20 @@ Prior recorded total 804/1000; current 820/1000 (+16). Source 097a7caf6f63c019bc
 - [SIL] Review captures of the first candidate before promoting; the second candidate existed only because copy gaps surfaced in pixels.
 - [SIL] Keep the push window short on a repo with automated syncs; fetch and rebase immediately before a long pre-push hook.
 <!-- /s113-closeout:sil -->
+
+<!-- s114-closeout:sil -->
+## 2026-10-02 — Session 114 — Release note, display codes and the server route split
+
+SIL v3.0: **846 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 92, Engagement 72, Process Quality 86, Cross-Repo Coherence 86, Security Posture 82, Ecosystem Integration 74, Capital Efficiency 70, Automation Coverage 93). Intent outcome: **Achieved**. Public launch remains HOLD. Scores are engineering judgment.
+
+- Process Quality: the S113 lesson held. The evidence harness ran locally before promotion and passed, and the only rework was a runner-speed gate timeout.
+- Capital Efficiency: one focused agent, and a measured decision not to build a low-value split.
+
+Source 1c57a3beeb420001d6ba1611e027043df76f7d57. Direct six-shard suite 1752/1752 (core 290, runtime 1000, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact a878e519…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37054296649 success after run 37050905781 hit the gate job's 25-minute timeout on a slower runner, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 1c57a3b. Public launch remains HOLD.
+
+- [SIL] Measure the payoff (compressed and cached bytes) before scheduling a performance refactor.
+- [SIL] The deploy gate runs about 23 of its 25 minutes; give timeouts headroom before they become flakiness.
+<!-- /s114-closeout:sil -->
 
 <!-- ledger-roll:pointer -->
 ---
