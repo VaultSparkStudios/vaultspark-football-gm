@@ -1,31 +1,12 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Last session: 112 (2026-09-30) | Total: 804/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 898 | 5: 923 | 10: 941.7 | 25: 965 | all: 983
-Sparkline: ▅▅▅▄▁
+Last session: 113 (2026-10-02) | Total: 820/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 854 | 5: 894.4 | 10: 927.7 | 25: 958 | all: 980.6
+Sparkline: ▅▅▄▁▁
 Intent rate: 100% (5/5 last 5)
-SIL delta: 938 → 804 (-134). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 66 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 804 → 820 (+16). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 67 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
-
-## 2026-09-10 — Session 103 — The denominator answered; the re-point and the ratchet both refused on measurement
-
-SIL v3.0: **960 / 1000** (Dev Health 96, Creative Alignment 98, Momentum 98, Engagement 86, Process Quality 99, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 90, Capital Efficiency 100, Automation Coverage 100). Intent outcome: Achieved. These are engineering assessments, not measured player outcomes; engagement remains limited by the absence of any real-cohort evidence.
-
-S103 opened by recovering S102, whose engine work was committed and deployed to both staging and production at `30572068` but whose closeout-artifact commit never landed — a clean-looking history above an uncommitted proof layer, exactly the state the arc's F7 probe exists for and exactly the state a tree-only triage calls "not cut off".
-
-S102's deferred denominator question had a factual answer: a drift statistic requires a population that exists at both ends of its window, and `rostered` does not — a generated league starts with an empty practice squad and fills 16 slots per club over the following decade. Shift-share on the canonical seed: within-group +0.269/season (`watch`), between-group −0.197/season, blended +0.072 reported `on-target`. Third instance of that cancelling shape here.
-
-**The session's real decision was refusing to ship the answer.** Re-pointing reads 0.303/season on the canonical seed — `out-of-range`, not `watch` — and a red gate is closed by fixing the defect it found or by weakening the gate. Having the right argument for a re-point is necessary and not sufficient; you also have to be able to pay for it without a threshold. What shipped instead is the finding as a machine-checked fact: the realism regression asserts that `compositionShift` reports `verdict-changed-by-composition` on the canonical path, so the gate can no longer say `on-target` without also saying its denominator moved. The same receipt handed over the root-cause candidate — active-roster position composition drifting (quarterback room 64 to 195, specialists 64 to 155, offensive line 288 to 258, and 11.3% of quarterbacks at 90+) because `normalizeRosterSlots` ranks a roster by overall with no positional structure.
-
-S102's recommended fix for elite density was built and refused on measurement: age-indexed potential decline lowers active-roster mean potential 83.78 to 82.91, so the cost is real, but elite density does not move (3.80% to 3.92%) and the parity reading gets worse (+0.265 to +0.298/season). A league also got an identity: `staffSeedKey` and `coachingMarket.leagueSeed` both fell back to the start year, so every franchise shared one derived seed and produced byte-identical staff across three seeds.
-
-Process Quality is 99 because the two failures that mattered were caught by the session's own discipline rather than by the suite — the new composition guard returned the wrong verdict when run against the measurement that motivated it and was rewritten before shipping, and the re-point was measured against the canonical gate before being committed rather than after. Dev Health is 96, a point below S102: elite density is still `watch`, its recommended fix is now known not to work, and a fourth measured item (roster position composition) joined the carried backlog. That is better knowledge and not yet a better league. Automation Coverage moves to 100: the gate that could be fooled by its own denominator now says so on every run.
-
-- [SIL] Run the finished gate against the real measurement before believing it. A negative control proves the gate sees the defect in a fixture; it does not prove the gate sees the defect *as it was actually measured*. This session's composition guard passed its fixture control and returned the wrong verdict on the production numbers, because a magnitude criterion invented to describe the defect missed it by 0.072. S101: every gate needs a negative control. S102: the control must be in the observed shape. S103: and the control must include the observed *numbers*.
-- [SIL] Having the argument for a re-point is necessary, not sufficient — you must also be able to pay for it. The evidence that `rostered` was the wrong denominator was decisive and the re-point still could not ship, because on the canonical seed it lands `out-of-range` and the only ways past that are fixing the defect or widening the band. Land the *finding* instead: a receipt that reports its own denominator moved costs nothing in thresholds and cannot be argued away, and it leaves the next session strictly better armed than a deferral note would.
-- [SIL] Re-derive a handoff's recommended fix, not only its diagnosis. Three sessions running, executing the engine has contradicted a plausible reading of it. S102 correctly identified that a ratchet needs a recurring cost and correctly named survivorship as the driver, and its proposed cost still made the target metric slightly worse. Run it against a matched control and report the table.
-- [SIL] Verify an inherited *cost estimate* before deferring on it, and end a twin sweep with a verdict per site. The league-identity item was carried for a session on a migration cost that took minutes to disprove; and of three call sites sharing one fallback shape, two were defective and one was not — changing the third for symmetry would have bought a diff and no behaviour.
 
 ## 2026-09-10 — Session 104 — The league was never generated at the roster its own rules declare
 
@@ -236,6 +217,30 @@ The upstream Studio Template Bot commit 08a3d08 changed three documentation file
 
 [SIL] Reconcile upstream changes before finalizing a session, and distinguish actual artifact inputs from agent instructions with a narrow, tested classification.
 <!-- /s112-startup-docs-sil-addendum -->
+<!-- s113-closeout:sil -->
+## 2026-10-02 — Session 113 — Player language, League Pulse and a site that tells the truth
+
+SIL v3.0: **820 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 95, Engagement 72, Process Quality 76, Cross-Repo Coherence 85, Security Posture 82, Ecosystem Integration 72, Capital Efficiency 55, Automation Coverage 92). Intent outcome: **Achieved** — full audit, implementation, closeout and production deploy; public launch remains HOLD. Scores are engineering judgment, not player-outcome measurements.
+
+- Dev Health: canonical 1748/1748 at the deployed source and the full browser suite green in the promotion build.
+- Creative Alignment: player-facing voice and fictional league identity now match the game's honesty contract.
+- Momentum: 17 of 18 ranked items shipped; one deferred with a stated dependency.
+- Engagement: rankings, races, record chases, look-ahead and real replays add weekly talking points; real cohort effects remain unmeasured.
+- Process Quality: rework was real — 25 browser failures from pinned wording and collapsed settings, two push races with Studio OS syncs, a promotion that failed in its own evidence harness and a superseded candidate.
+- Cross-Repo Coherence: studio-ops start-sync/canon-sync scripts are absent in this repo and were not run; two upstream syncs rebased cleanly.
+- Security Posture: concrete server hardening with tests; no fresh key-rotation audit.
+- Ecosystem Integration: new public pages, RSS, manifest and press kit; launch HOLD and cohort absent.
+- Capital Efficiency: no paid services; parallel agents consumed substantial tokens.
+- Automation Coverage: agent-owned through production; no founder approvals required.
+
+Prior recorded total 804/1000; current 820/1000 (+16). Source 097a7caf6f63c019bc4bf18ed763a3dae68da4d3. Direct six-shard suite 1748/1748 (core 290, runtime 996, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact af49f89b…), production promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36985778315 success (gate, build with full browser suite and evidence, deploy), production provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt: 214 captures bound to 097a7ca, changed surfaces inspected in both themes. Public launch remains HOLD.
+
+- [SIL] A copy pass must sweep the browser and evidence harnesses too; pinned UI strings live in tests-ui and scripts/responsive-evidence.mjs, not only in test/.
+- [SIL] Moving a control under a collapsed section breaks every automation that clicks it; open sections in helpers, never in each test.
+- [SIL] Review captures of the first candidate before promoting; the second candidate existed only because copy gaps surfaced in pixels.
+- [SIL] Keep the push window short on a repo with automated syncs; fetch and rebase immediately before a long pre-push hook.
+<!-- /s113-closeout:sil -->
+
 <!-- ledger-roll:pointer -->
 ---
 

@@ -241,6 +241,15 @@ Creative-direction review: no new game-specific direction; existing CDR remains 
 While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with three documentation files. Closeout 31087ed subsequently passed all six CI jobs. A clean pull --rebase fast-forwarded the checkout. Doctor then reported one blocker because prompts/start.md was absent from its nondeployable-file list. The exact-file classification now matches Pages, Docker and SSH deployment inputs; no prompts-directory exemption was added. Focused release-authority checks passed 10/10, including mixed application/build/backend changes that still block; direct Doctor returned 0 blockers and 1 standing lifecycle warning. Independent deployment-scope review passed. Evidence: reports/s112-startup-docs-classification.json. The full 1702/1702 suite remains bound to product source f8b640b; the focused checker test is separate. Product deployment and SIL 804 remain unchanged.
 <!-- /s112-startup-docs-reconciliation -->
 
+<!-- s113-closeout:worklog -->
+## Session 113 — 2026-10-02 — Player language, League Pulse, scouting fog and the public site
+
+Startup read the brief (S112 queue exhausted, SIL 804, launch HOLD); studio-ops start-sync/canon-sync are absent here and were not run. Three read-only sweeps produced an 18-item plan; the founder approved it and set the goal: implement in full, close out, push and deploy.
+
+Parallel agents took disjoint files: server hardening (route split deferred — parity tooling reads src/server.js as text), the public site (claims single source, five pages, RSS, press kit, jargon gate), the in-game jargon sweep (~150 strings across 35 files) and the trademark/team-code sweep. The orchestrating session built the Desk lead, dev gating, guide, League Pulse, look-ahead, potential fog, operating statement, real-spot Sim-Watch, GM archetype and cap fixes.
+
+Verification found real problems before release: a code review (restored-session potential leak, playoff stats in records, two spacing bugs), the first canonical run (unregistered tests, a hex fallback, the lifecycle gate's beta wording), 25 browser failures (pinned wording, collapsed Advanced settings, a .row overriding [hidden]) and a promotion that failed in its own evidence harness. Candidate b62e4bb was superseded by 097a7ca, which passed 1748/1748, staging 14/14, promotion 36985778315, production 10/10, hosted performance and Doctor blockingFailing 0.
+<!-- /s113-closeout:worklog -->
 <!-- ledger-roll:pointer -->
 ---
 
