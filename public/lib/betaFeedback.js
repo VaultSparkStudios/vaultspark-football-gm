@@ -119,8 +119,8 @@ export function buildFeedbackIssueUrl(ctx = {}) {
     ...readinessRows.map((row) => `- Readiness/${row.area}: ${row.status} — ${row.detail}`),
     ...(omittedCount ? [`- Disclosure budget: ${omittedCount} excess context row${omittedCount === 1 ? " was" : "s were"} omitted.`] : []),
     ctx.playtestReceipt
-      ? "- Playtest receipt: explicitly selected for this report."
-      : "- Playtest receipt: not attached — local receipts stay private unless selected."
+      ? "- Playtest note: explicitly selected for this report."
+      : "- Playtest note: not attached — local notes stay private unless selected."
   ];
   const params = new URLSearchParams({
     title: `[Beta feedback] ${phase === "?" ? "general" : phase} — ${tab === "?" ? "game" : tab}`,
@@ -204,8 +204,8 @@ export async function openFeedback() {
   const url = buildFeedbackIssueUrl(ctx);
   commitFeedbackNavigation({ popup, url, browser: window });
   showToast(includePlaytestReceipt && ctx.playtestReceipt
-    ? "Feedback form opened with the selected local receipt."
-    : "Feedback form opened — local receipts stayed private.");
+    ? "Feedback form opened with your selected playtest note."
+    : "Feedback form opened — your playtest notes stayed private.");
 }
 
 export function openFeedbackPlaceholder(browser = globalThis.window) {
@@ -254,17 +254,17 @@ export function mountBetaFeedback() {
         game context is attached automatically, never any personal data.</p>
       <button id="betaFeedbackBtn" class="btn btn-accent" data-testid="beta-feedback-btn">Send Feedback</button>
       <details class="playtest-receipt-panel">
-        <summary>Record a private playtest receipt</summary>
-        <p class="small">Nothing is sent automatically. Save a compact anonymous receipt locally, then choose whether to copy or attach it to feedback.</p>
+        <summary>Record a private playtest note</summary>
+        <p class="small">Nothing is sent automatically. Save a short anonymous note on this device, then choose whether to copy or attach it to feedback.</p>
         <div class="playtest-rating-grid">
           ${[["clarity", "Loop clarity"], ["agency", "Decision agency"], ["pace", "Pacing"], ["returnIntent", "Want another session"]].map(([id, label]) => `
             <label>${label}<select id="playtest-${id}"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></label>`).join("")}
         </div>
         <label>One useful moment or friction<textarea id="playtest-note" maxlength="280" rows="3" placeholder="Optional; keep it public-safe."></textarea></label>
-        <div class="row compact"><button id="savePlaytestReceiptBtn" type="button">Save Local Receipt</button><button id="copyPlaytestReceiptsBtn" type="button">Copy Receipt Pack</button><span id="playtestReceiptCount" class="small"></span></div>
-        <label class="playtest-attach-choice"><input id="attachLatestPlaytestReceiptInput" type="checkbox" /> Attach the latest local receipt to my next feedback report</label>
-        <p id="playtestAttachmentPreview" class="small" aria-live="polite">No receipt selected. Local ratings and notes remain on this device.</p>
-        <p id="playtestJourneyDisclosure" class="small">Export includes only your saved ratings plus allowlisted relative journey checkpoints. It excludes accounts, tokens, absolute journey timestamps, and save data.</p>
+        <div class="row compact"><button id="savePlaytestReceiptBtn" type="button">Save Note</button><button id="copyPlaytestReceiptsBtn" type="button">Copy All Notes</button><span id="playtestReceiptCount" class="small"></span></div>
+        <label class="playtest-attach-choice"><input id="attachLatestPlaytestReceiptInput" type="checkbox" /> Attach my latest note to my next feedback report</label>
+        <p id="playtestAttachmentPreview" class="small" aria-live="polite">No note selected. Your ratings and notes stay on this device.</p>
+        <p id="playtestJourneyDisclosure" class="small">Export includes only your saved ratings plus a short list of play-progress checkpoints (relative times only). It excludes accounts, tokens, absolute journey timestamps, and save data.</p>
         <div id="playtestTrend" class="playtest-trend small" aria-live="polite"></div>
       </details>`;
     settingsTab.insertBefore(panel, settingsTab.firstElementChild);
@@ -276,12 +276,12 @@ export function mountBetaFeedback() {
       const count = receipts.length;
       const target = document.getElementById("playtestReceiptCount");
       const packet = buildLocalPlaytestExport(receipts);
-      if (target) target.textContent = `${count} local receipt${count === 1 ? "" : "s"} · ${packet.journey.eventCount} journey checkpoint${packet.journey.eventCount === 1 ? "" : "s"}`;
+      if (target) target.textContent = `${count} saved note${count === 1 ? "" : "s"} · ${packet.journey.eventCount} journey checkpoint${packet.journey.eventCount === 1 ? "" : "s"}`;
       const trend = buildLocalPlaytestTrend(receipts);
       const trendTarget = document.getElementById("playtestTrend");
       if (trendTarget) trendTarget.textContent = trend.available
         ? `Local signal (${trend.count}): clarity ${trend.averages.clarity}/5 · agency ${trend.averages.agency}/5 · pace ${trend.averages.pace}/5 · another session ${trend.averages.returnIntent}/5. ${trend.warning}`
-        : `${trend.count}/${trend.minimum} receipts recorded before a local trend is shown. ${trend.warning}`;
+        : `${trend.count}/${trend.minimum} notes saved — a trend appears once you reach ${trend.minimum}. ${trend.warning}`;
       const attach = document.getElementById("attachLatestPlaytestReceiptInput");
       if (attach) {
         attach.disabled = count === 0;
@@ -291,7 +291,7 @@ export function mountBetaFeedback() {
       const selected = attach?.checked ? selectPublishedPlaytestReceipt(receipts[0]) : null;
       if (preview) preview.textContent = selected
         ? `Selected for the next report: clarity ${selected.ratings.clarity}/5 · agency ${selected.ratings.agency}/5 · pace ${selected.ratings.pace}/5 · another session ${selected.ratings.returnIntent}/5${selected.note ? " · note included" : " · no note"}.`
-        : "No receipt selected. Local ratings and notes remain on this device.";
+        : "No note selected. Your ratings and notes stay on this device.";
     };
     document.getElementById("attachLatestPlaytestReceiptInput")?.addEventListener("change", refreshReceiptCount);
     document.getElementById("savePlaytestReceiptBtn")?.addEventListener("click", () => {
@@ -307,17 +307,17 @@ export function mountBetaFeedback() {
         });
         saveLocalPlaytestReceipt(receipt);
         refreshReceiptCount();
-        showToast("Private playtest receipt saved locally.");
+        showToast("Playtest note saved on this device.");
       } catch (error) {
         reportFeedbackError(error);
       }
     });
     document.getElementById("copyPlaytestReceiptsBtn")?.addEventListener("click", async () => {
       const pack = buildLocalPlaytestExport(loadLocalPlaytestReceipts());
-      if (!pack.count) return showToast("Record a playtest receipt before exporting.");
+      if (!pack.count) return showToast("Save a playtest note before copying.");
       try {
         await navigator.clipboard.writeText(JSON.stringify(pack, null, 2));
-        showToast(`${pack.count} private playtest receipt${pack.count === 1 ? "" : "s"} copied.`);
+        showToast(`${pack.count} playtest note${pack.count === 1 ? "" : "s"} copied.`);
       } catch (error) {
         reportFeedbackError(error);
       }

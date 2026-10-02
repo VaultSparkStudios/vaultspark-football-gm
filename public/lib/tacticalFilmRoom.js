@@ -77,7 +77,7 @@ export function buildRematchMemory(dashboard = {}, opponentId = null) {
     controlledScore,
     opponentScore,
     headline: `Rematch memory: ${controlledLabel} ${controlledScore}, ${opponentLabel} ${opponentScore}.`,
-    detail: `You ${result} the last meeting${game.week != null ? ` in Week ${game.week}` : ""}. Recent receipted sample: ${controlledWins}-${opponentWins}${sample.length > controlledWins + opponentWins ? `-${sample.length - controlledWins - opponentWins}` : ""}.`,
+    detail: `You ${result} the last meeting${game.week != null ? ` in Week ${game.week}` : ""}. Recent meetings: ${controlledWins}-${opponentWins}${sample.length > controlledWins + opponentWins ? `-${sample.length - controlledWins - opponentWins}` : ""}.`,
     disclaimer: "Prior meetings are context, not a prediction or a causal claim."
   };
 }
@@ -90,7 +90,7 @@ export function buildTacticalMatchupBrief(dashboard = {}) {
   if (!game) {
     return {
       available: false,
-      headline: "No controlled-team game is scheduled this week.",
+      headline: "Your team has no game this week.",
       read: "A tactical override would have no matchup to affect.",
       options: Object.entries(TACTICS).map(([id, tactic]) => ({ id, ...tactic, matchup: tactic.intent }))
     };
@@ -276,7 +276,7 @@ export function previewTacticalIdentity(receipts = [], tactic) {
         : nextThreshold == null
           ? `If executed, this call would reinforce a Signature ${definition.label} identity.`
           : `If executed, ${nextThreshold - projectedRepetitions} more ${definition.label} call${nextThreshold - projectedRepetitions === 1 ? "" : "s"} would remain before ${tacticalIdentityTier(nextThreshold)}.`,
-    disclaimer: "Only an executed call updates the identity ledger; the preview does not predict results."
+    disclaimer: "Only a call you actually run changes your team identity; the preview does not predict results."
   };
 }
 export function buildTacticalIdentityLedger(receipts = []) {

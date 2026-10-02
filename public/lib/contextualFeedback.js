@@ -35,7 +35,7 @@ export function deriveContextualEvidenceMoments(dashboard = {}) {
     moments.push({
       id: `season-${teamId}-${latestChampion.year}`,
       kind: "season-complete",
-      kicker: "Season ledger closed",
+      kicker: "Season in the books",
       title: `How did the ${latestChampion.year} season feel?`,
       question: "Capture clarity, agency, pacing, and whether you want another season while the full arc is fresh."
     });
@@ -121,7 +121,7 @@ export function maybeMountContextualFeedback(dashboard = {}, {
     </div>
     <label class="contextual-evidence-note">One moment worth preserving (optional)<textarea data-context-note maxlength="280" rows="2"></textarea></label>
     <p class="contextual-evidence-privacy">Saved only in this browser unless you explicitly export it. No save data or personal identifier is included.</p>
-    <div class="contextual-evidence-actions"><button type="button" data-context-action="snooze">Ask in a week</button><button type="button" class="btn btn-accent" data-context-action="save">Save local receipt</button></div>`;
+    <div class="contextual-evidence-actions"><button type="button" data-context-action="snooze">Ask in a week</button><button type="button" class="btn btn-accent" data-context-action="save">Save note</button></div>`;
 
   const shownLedger = recordContextualFeedbackAction({ ledger, momentId: moment.id, action: "shown", now: now() });
   saveContextualFeedbackLedger(shownLedger, storage);

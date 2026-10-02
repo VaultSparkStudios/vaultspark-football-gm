@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-10-01",
+  "lastUpdated": "2026-10-02",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -346,14 +346,20 @@
   "silHealth": 804,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 92,
-    "date": "2026-10-01",
-    "passing": 11,
+    "failing": 1,
+    "score": 83,
+    "date": "2026-10-02",
+    "passing": 10,
     "warning": 1,
     "checks": [
+      {
+        "id": "lifecycle-public-status",
+        "status": "failing",
+        "blocking": true,
+        "detail": "public status preserves the evidence gate"
+      },
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",

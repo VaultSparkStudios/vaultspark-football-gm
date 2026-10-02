@@ -117,7 +117,7 @@ export function deriveTrophyRoad({ dashboard = {}, recentBoxScores = [], earned 
         return {
           id: achievement.id, name: achievement.name, icon: achievement.icon, desc: achievement.desc,
           tier: achievement.tier, kind: "event", progressPct: null, registryIndex,
-          progressText: "Receipted moment — no percentage invented"
+          progressText: "One-time moment — no percentage invented"
         };
       }
       const current = Math.max(0, Number(progressMetric(metadata.metric, { dashboard, recentBoxScores })) || 0);
@@ -128,7 +128,7 @@ export function deriveTrophyRoad({ dashboard = {}, recentBoxScores = [], earned 
         tier: achievement.tier, kind: "measurable", current, target, unit: metadata.unit,
         progressPct, remaining: Math.max(0, target - current), registryIndex,
         progressText: current >= target
-          ? current + "/" + target + " " + metadata.unit + " · awaiting the next matching receipt"
+          ? current + "/" + target + " " + metadata.unit + " · unlocks on the next qualifying moment"
           : current + "/" + target + " " + metadata.unit
       };
     })

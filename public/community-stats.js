@@ -166,7 +166,7 @@ function isPreCohort(snapshot) {
 // second copy there would be both unbound and a duplicate aria-live region.
 function invitationMarkup(compact = false) {
   const pact = compact
-    ? `<p>Optional and anonymous. Your save, your names and your notes never leave this browser.</p>`
+    ? `<p>Optional and anonymous. <a href="./stats#methodology">How it works</a>.</p>`
     : `<ul class="community-invitation-pact">
         <li><strong>Optional.</strong> Off until you turn it on, and one click turns it back off and deletes what you shared.</li>
         <li><strong>Anonymous.</strong> No account, no email, no internet address stored — and never your save, your names, your notes or your hidden ratings.</li>

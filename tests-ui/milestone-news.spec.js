@@ -12,6 +12,8 @@ test("canonical milestone news is visible, closeable, and reopenable", async ({ 
   reportPlayerMilestones(league, [player], 2026, 14, previous);
   await page.goto("/");
   await expect(page.locator("#setupStatus")).toContainText("Ready");
+  // S113: the runtime selector lives under the landing page's Advanced settings.
+  await page.evaluate(() => document.querySelectorAll("details").forEach((element) => { element.open = true; }));
   await page.selectOption("#runtimeModeSelect", "client");
   await expect(page.locator('#teamSelect option[value="BUF"]')).toHaveCount(1, { timeout: 60000 });
   await page.selectOption("#teamSelect", "BUF");

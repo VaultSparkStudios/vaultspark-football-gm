@@ -18,7 +18,7 @@ export function awardCountLine(awardCounts = {}) {
   const pairs = [
     ["MVP", awardCounts.MVP || 0], ["OPOY", awardCounts.OPOY || 0], ["DPOY", awardCounts.DPOY || 0],
     ["All-Pro 1", awardCounts.AllPro1 || 0], ["All-Pro 2", awardCounts.AllPro2 || 0],
-    ["Pro Bowl", awardCounts.ProBowl || 0],
+    ["All-Star", awardCounts.ProBowl || 0],
     ["ROY", (awardCounts.OROY || 0) + (awardCounts.DROY || 0) + (awardCounts.ROY || 0)],
     ["CPOY", awardCounts.CPOY || 0], ["Most Improved", awardCounts.MostImproved || 0]
   ].filter(([, value]) => value > 0);

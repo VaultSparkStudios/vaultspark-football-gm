@@ -10,14 +10,14 @@ function money(value) {
 }
 
 function explainCommand(card) {
-  if (card.action === "choose-gm-decision") return { reasonCode: "gm-decision", reason: card.blocking ? "An unresolved controlled decision must be staged before advance." : "The staged choice remains editable until the weekly command commits." };
-  if (card.targetTab === "draftTab") return { reasonCode: "draft-authority", reason: card.blocking ? "The controlled franchise is on the clock; CPU resolution requires explicit delegation." : "The live draft board is the next roster authority." };
-  if (card.targetTab === "contractsTab") return { reasonCode: "cap-pressure", reason: "Negative live cap space elevates contract review before optional work." };
-  if (card.targetTab === "rosterTab") return { reasonCode: "injury-depth", reason: "Controlled-team injuries elevate active depth-chart review." };
-  if (card.targetTab === "transactionsTab") return { reasonCode: "deadline-window", reason: "The current week is inside the bounded trade-deadline window." };
-  if (card.action === "blocked") return { reasonCode: "advance-blocked", reason: "At least one higher-ranked controlled action is still blocking simulation." };
-  if (card.action === "advance-week") return { reasonCode: "advance-ready", reason: "No source-derived controlled action currently blocks the shared weekly command." };
-  return { reasonCode: "league-pulse", reason: "No higher-priority action displaced the latest league context." };
+  if (card.action === "choose-gm-decision") return { reasonCode: "gm-decision", reason: card.blocking ? "You have a decision to make before the week can advance." : "You can change your choice until you commit the week." };
+  if (card.targetTab === "draftTab") return { reasonCode: "draft-authority", reason: card.blocking ? "You are on the clock; the CPU only picks for you if you hand it the pick." : "The draft board is where your roster changes next." };
+  if (card.targetTab === "contractsTab") return { reasonCode: "cap-pressure", reason: "You are over the cap, so contracts come before anything optional." };
+  if (card.targetTab === "rosterTab") return { reasonCode: "injury-depth", reason: "Injuries on your roster mean the depth chart needs a look." };
+  if (card.targetTab === "transactionsTab") return { reasonCode: "deadline-window", reason: "The trade deadline is approaching." };
+  if (card.action === "blocked") return { reasonCode: "advance-blocked", reason: "Something more urgent still has to be handled before you can sim." };
+  if (card.action === "advance-week") return { reasonCode: "advance-ready", reason: "Nothing is blocking the week. You are clear to advance." };
+  return { reasonCode: "league-pulse", reason: "Nothing more urgent right now; here is the latest around the league." };
 }
 export function buildFranchiseCommandStack({
   dashboard = {},
@@ -71,7 +71,7 @@ export function buildFranchiseCommandStack({
 
   if (draftActive) {
     cards.push({
-      kicker: controlledPickBlocking ? "Controlled pick required" : "Draft room",
+      kicker: controlledPickBlocking ? "Your pick" : "Draft room",
       title: controlledPickBlocking ? "You are on the clock" : "Set your board",
       detail: controlledPickBlocking
         ? "Choose the franchise's player or explicitly delegate with Finish Draft."
@@ -103,7 +103,7 @@ export function buildFranchiseCommandStack({
     cards.push({
       kicker: "Trainer report",
       title: "Patch the depth chart",
-      detail: injuries.length + " controlled-team injur" + (injuries.length === 1 ? "y" : "ies") + " need a roster check.",
+      detail: injuries.length + " injur" + (injuries.length === 1 ? "y" : "ies") + " on your roster " + (injuries.length === 1 ? "needs" : "need") + " a depth check.",
       action: "open-tab",
       targetTab: "depthTab",
       targetId: "depthTable",

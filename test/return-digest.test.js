@@ -87,7 +87,7 @@ test("return continuation carries the exact season thesis authority", () => {
   const action = buildReturnChapterAction(digest);
   assert.equal(action.thesisId, "opening-2026-BUF-v1:season:2026");
   assert.equal(action.thesisCheckpoint, "identity-test");
-  assert.match(formatSeasonThesisContinuation(digest.seasonChapter), /Build through the trenches.*identity-test is open/i);
+  assert.match(formatSeasonThesisContinuation(digest.seasonChapter), /Build through the trenches.*identity test is open/i);
 });
 
 test("legacy chapter actions keep their original shape when no thesis authority exists", () => {

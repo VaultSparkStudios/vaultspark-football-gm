@@ -223,7 +223,7 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
   const receiptIcon = { hit: "✅", push: "➖", miss: "❌" };
   const receiptsHtml = ep.receipts
     ? `<div class="ep-records ep-receipts">
-        <div class="ep-section-label">The Receipts — Preseason Predictions, Graded (${ep.receipts.hits}-${ep.receipts.misses}${ep.receipts.pushes ? `, ${ep.receipts.pushes} push` : ""})</div>
+        <div class="ep-section-label">The Report Card — Preseason Predictions, Graded (${ep.receipts.hits}-${ep.receipts.misses}${ep.receipts.pushes ? `, ${ep.receipts.pushes} push` : ""})</div>
         ${ep.receipts.rows
           .map(
             (r) => `<div class="ep-record">${receiptIcon[r.verdict] || "➖"} ${escapeHtml(r.text)}<br>
@@ -247,12 +247,12 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
           </dl>
           <p class="ep-cut-limit">${escapeHtml(point.limitations)}</p>
         </article>`).join("")}</div>`
-    : `<p class="ep-cut-empty">No decision receipts were available for this season. The review remains incomplete; no turning points were invented.</p>`;
+    : `<p class="ep-cut-empty">No decisions were recorded this season. The review remains incomplete; no turning points were invented.</p>`;
   const sourceSummary = Object.entries(cut.sources)
     .map(([source, count]) => `${source.replace(/([A-Z])/g, " $1").toLowerCase()}: ${count}`)
     .join(" · ");
   const missingSummary = cut.missingSources.length
-    ? `<p class="ep-cut-missing">Missing evidence: ${escapeHtml(cut.missingSources.join(", "))}</p>`
+    ? `<p class="ep-cut-missing">Missing evidence: ${escapeHtml(cut.missingSources.map((source) => source.replace(/([A-Z])/g, " $1").toLowerCase()).join(", "))}</p>`
     : "";
   const architectCutHtml = `<section class="ep-architect-cut" aria-label="Architect's Cut">
       <div class="ep-section-label">Architect's Cut — Three Decisions That Shaped the Year</div>
@@ -269,7 +269,7 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
         ? `<div class="ep-anthology-shelf">${priorVolumes.map((volume) => `<div class="ep-anthology-volume">
             <strong>${escapeHtml(String(volume.seasonYear))}</strong>
             <span>${escapeHtml(volume.headline)}</span>
-            <small>${escapeHtml(volume.status)} · ${volume.turningPointCount} receipted turning point${volume.turningPointCount === 1 ? "" : "s"} · ${volume.sourceCoverage}/4 sources</small>
+            <small>${escapeHtml(volume.status)} · ${volume.turningPointCount} recorded turning point${volume.turningPointCount === 1 ? "" : "s"} · ${volume.sourceCoverage}/4 sources</small>
           </div>`).join("")}</div>`
         : `<p class="ep-cut-empty">Volume ${escapeHtml(String(ep.seasonYear))} opens the anthology. Future seasons will preserve their evidence coverage beside it.</p>`}
       <p class="ep-cut-disclaimer">${escapeHtml(ep.decisionAnthology?.disclaimer || "")}</p>

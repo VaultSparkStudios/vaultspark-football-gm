@@ -12,12 +12,36 @@
     "schemaVersion": "1.0",
     "ui": "https://playfranchisearchitect.com/game.html#coGmBriefPanel",
     "activation": "Player-initiated copy or download",
-    "privacy": "Allowlisted visible franchise authority only; excludes save payloads, credentials, personal identifiers, and hidden simulation state"
+    "privacy": "Only franchise information already visible in the game; excludes save payloads, credentials, personal identifiers, and hidden simulation state"
   },
   "entrypoints": [
     {
       "label": "Play",
       "url": "https://playfranchisearchitect.com/"
+    },
+    {
+      "label": "Features",
+      "url": "https://playfranchisearchitect.com/features.html"
+    },
+    {
+      "label": "How to Play",
+      "url": "https://playfranchisearchitect.com/how-to-play.html"
+    },
+    {
+      "label": "FAQ",
+      "url": "https://playfranchisearchitect.com/faq.html"
+    },
+    {
+      "label": "Changelog",
+      "url": "https://playfranchisearchitect.com/status-archive.html"
+    },
+    {
+      "label": "Changelog feed",
+      "url": "https://playfranchisearchitect.com/changelog.xml"
+    },
+    {
+      "label": "Press kit",
+      "url": "https://playfranchisearchitect.com/press.html"
     },
     {
       "label": "Contact",
@@ -41,6 +65,6 @@
     "snapshot": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
     "descriptor": "https://playfranchisearchitect.com/stats-surface.json",
     "denominator": "participating anonymous browsers",
-    "privacy": "Opt-in, allowlisted receipt aggregates; k>=5 behavioral suppression; no saves, names, free text, credentials, raw player identifiers, hidden ratings, or stored IP addresses."
+    "privacy": "Opt-in anonymous aggregates of a fixed set of game choices and results; a figure is published only when at least five browsers contribute; no saves, names, free text, credentials, player identities, hidden ratings, or stored IP addresses."
   }
 }

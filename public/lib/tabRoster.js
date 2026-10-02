@@ -88,7 +88,7 @@ export function renderRoster() {
   if (windowSummary) {
     const ascending = state.rosterWindow?.ascendingRooms || [];
     const aging = state.rosterWindow?.agingRooms || [];
-    windowSummary.textContent = `Profile ${state.rosterWindow?.profileVersion || "—"} · Rising: ${ascending.join(", ") || "none"} · Succession watch: ${aging.join(", ") || "none"}`;
+    windowSummary.textContent = `Rising: ${ascending.join(", ") || "none"} · Succession watch: ${aging.join(", ") || "none"}`;
   }
 }
 

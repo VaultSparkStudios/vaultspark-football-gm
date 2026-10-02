@@ -26,7 +26,7 @@ test("tactical previews reward only execution and expose the exact next identity
   assert.equal(preview.projectedTier, "Established");
   assert.equal(preview.tierChange, true);
   assert.match(preview.copy, /If executed/);
-  assert.match(preview.disclaimer, /Only an executed call updates/);
+  assert.match(preview.disclaimer, /Only a call you actually run changes/);
   assert.equal(previewTacticalIdentity(ledger, "unknown"), null);
 });
 

@@ -1,3 +1,4 @@
+import { deriveSessionGmArchetype } from "../../engine/gmArchetype.js";
 import { createHybridBrowserSaveStore } from "../../adapters/persistence/hybridSaveStore.js";
 import { buildIntegrityStamp, createPersistenceDescriptor, verifyIntegrityStamp } from "../../adapters/persistence/saveStoreShared.js";
 import { decodeSnapshot, encodeSnapshot } from "../../adapters/persistence/snapshotCodec.js";
@@ -224,16 +225,6 @@ function toBool(value, fallback = null) {
 
 // ── Session-8 engagement helpers (mirrored from server.js) ───────────────────
 
-function _deriveGmArchetype(team) {
-  const roster = Array.isArray(team.roster) ? team.roster : [];
-  const avgAge = roster.length ? roster.reduce((s, p) => s + (p.age || 26), 0) / roster.length : 27;
-  const ovr = team.overallRating || 75;
-  const capHit = team.capSummary?.activeCap || 0;
-  if (avgAge < 25.5 && ovr < 79) return { label: "Moneyball", description: "Builds through analytics, cheap young talent, draft-first.", icon: "📊" };
-  if (avgAge > 28 && ovr > 80) return { label: "Win-Now", description: "Aggressive veteran acquisitions, mortgages the future.", icon: "🔥" };
-  if (capHit > 220_000_000) return { label: "Gut-Feel", description: "Pays for star names, trusts instinct over data.", icon: "🎲" };
-  return { label: "Loyalty", description: "Extends core players, rewards homegrown talent.", icon: "🤝" };
-}
 
 function _generateSeasonArcs(sess) {
   try {
@@ -1933,7 +1924,7 @@ export function createLocalApiRuntime({
           name: [t.city, t.nickname].filter(Boolean).join(" ") || t.name || t.id,
           abbrev: t.abbrev || t.id,
           ovr: t.overallRating || 75,
-          archetype: _deriveGmArchetype(t),
+          archetype: deriveSessionGmArchetype(session, t),
           gm: buildPersonaIntel(session.league, t.id)
         }));
         return finish(jsonResponse(200, { ok: true, archetypes }));

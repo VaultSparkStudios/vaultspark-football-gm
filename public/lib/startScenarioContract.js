@@ -88,13 +88,13 @@ export function buildStartScenarioRequest(selections = {}) {
 
 export function validateStartScenario(payload) {
   if (!payload || typeof payload !== "object") {
-    return { ok: false, reasonCode: "START_SCENARIO_INVALID", error: "Start scenario payload is required." };
+    return { ok: false, reasonCode: "START_SCENARIO_INVALID", error: "Choose your opening options before starting." };
   }
   if (Number(payload.schemaVersion) !== START_SCENARIO_SCHEMA_VERSION) {
     return {
       ok: false,
       reasonCode: "START_SCENARIO_VERSION_UNSUPPORTED",
-      error: "Unsupported start scenario schema version."
+      error: "This opening setup came from an unsupported version. Reload and try again."
     };
   }
   const selections = payload.selections || {};

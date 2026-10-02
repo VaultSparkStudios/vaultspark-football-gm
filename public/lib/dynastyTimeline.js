@@ -55,8 +55,8 @@ export function renderNodesHTML(data, activeIdx, teamColor, detailPanelId) {
     const isActive = i === activeIdx;
     const cls = nodeClass(season) + (isActive ? " tl-active" : "");
     const rec = recordLabel(season);
-    const crown = season.champion ? `<span class="tl-crown" title="Super Bowl Champion">&#9813;</span>` : "";
-    const label = `Season ${esc(season.year)}${season.champion ? ", Super Bowl Champion" : ""}${rec ? `, ${esc(rec)}` : ""}`;
+    const crown = season.champion ? `<span class="tl-crown" title="Champion">&#9813;</span>` : "";
+    const label = `Season ${esc(season.year)}${season.champion ? ", Champion" : ""}${rec ? `, ${esc(rec)}` : ""}`;
     return `
         <div class="${cls}" data-idx="${i}" style="--tl-color:${teamColor}" role="button" tabindex="0" aria-expanded="${isActive}" aria-controls="${detailPanelId}" aria-label="${label}">
           <div class="tl-year">${esc(season.year)}${crown}</div>
@@ -145,7 +145,7 @@ function renderDetail(season) {
   const rows = [
     ["Season Record", esc(season.record || "—")],
     ["Head Coach", esc(season.coachName || "—")],
-    ["Super Bowl", season.champion ? `<span class="tone-positive">Champion</span>` : (season.playoffRound ? `Eliminated: ${esc(season.playoffRound)}` : "Missed playoffs")],
+    ["Championship", season.champion ? `<span class="tone-positive">Champion</span>` : (season.playoffRound ? `Eliminated: ${esc(season.playoffRound)}` : "Missed playoffs")],
     ["League MVP", esc(season.mvpName || "—")],
     ["Top Draft Pick", esc(season.draftPick1 || "—")],
     ["Key Note", esc(season.keyNote || "—")]

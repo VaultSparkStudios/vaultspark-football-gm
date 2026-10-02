@@ -1,3 +1,4 @@
+import { recordClientDiagnostic } from "./clientDiagnostics.js";
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, formatTransactionDetails, presentActionError, renderGuideContent, renderPulseChips, renderTable, showToast, teamCode } from "./appCore.js";
 import { openGuideModal } from "./tabOverview.js";
@@ -45,12 +46,12 @@ export function resolveContactEmailReadiness(status = {}) {
   if (status.status === "needs-check") {
     return {
       status: "Needs check",
-      detail: status.detail || `Send a real message to football@playfranchisearchitect.com and confirm receipt by Studio operations.${checkedAt}`.trim()
+      detail: status.detail || `Send a real message to football@playfranchisearchitect.com and confirm Studio operations received it.${checkedAt}`.trim()
     };
   }
   return {
     status: "Unverified",
-    detail: status.detail || "Need a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations"
+    detail: status.detail || "Need proof that a real message to football@playfranchisearchitect.com reaches Studio operations"
   };
 }
 
@@ -198,6 +199,9 @@ export function renderOwner() {
   ]);
   renderOwnerSpotlight();
   renderFacilitiesMarket();
+  import("./operatingStatementPanel.js")
+    .then((module) => module.renderOperatingStatement(state.dashboard?.operatingStatement))
+    .catch((error) => recordClientDiagnostic({ surface: "boardroom", operation: "operating-statement", error }));
 }
 
 /**
@@ -547,12 +551,12 @@ export function renderRealismVerification() {
 
 export function renderRulesTab() {
   const coreRows = [
-    { area: "League Structure", rule: "32 teams, 18-week regular season calendar with 17 games and one bye per team, plus NFL playoff format and division/conference standings." },
+    { area: "League Structure", rule: "32 teams, 18-week regular season calendar with 17 games and one bye per team, plus a 14-team playoff format and division/conference standings." },
     { area: "Simulation Engine", rule: "Drive/possession simulation with rating, coaching, chemistry, and scheme effects." },
     { area: "Team Identity", rule: "Every new league draws one real U.S. city plus one nickname per team for a single randomized team identity." },
     { area: "Depth Chart Usage", rule: "Each depth slot has position-specific snap-share targets; game snaps and touches are role-weighted." },
-    { area: "Stats Model", rule: "PFR-inspired season/career tables, player profiles, playoffs filters, and archived controlled-team box scores." },
-    { area: "Contracts & Cap", rule: "Cap hits, dead cap, restructures, tags, options, waivers, and rollover modeled in team cap ledger." },
+    { area: "Stats Model", rule: "PFR-inspired season/career tables, player profiles, playoffs filters, and archived box scores for your team." },
+    { area: "Contracts & Cap", rule: "Cap hits, dead cap, restructures, tags, options, waivers, and rollover tracked on each team's cap sheet." },
     { area: "Career & Retirement", rule: "Position max ages (QB 45, RB 40, etc), age curve progression/decline, and override comeback logic." },
     { area: "Retirement Override", rule: "You can bring retired players back while age-eligible; winning teams can suppress retirement chance." },
     { area: "Realism Verification", rule: "Runs 10-20 year verification against season and career PFR-based position targets with drift flags." },
@@ -562,7 +566,7 @@ export function renderRulesTab() {
 
   const actionRows = [
     { tab: "Overview", feature: "Advance Week/Season", behavior: "Simulates schedule, updates standings, stats, transactions, and events. Multi-week sims can be paused." },
-    { tab: "Overview", feature: "Header Box Scores", behavior: "Tracks the controlled team’s recent games with clickable scoring summary, play-by-play, team stats, and player stats." },
+    { tab: "Overview", feature: "Header Box Scores", behavior: "Tracks your team’s recent games with clickable scoring summary, play-by-play, team stats, and player stats." },
     { tab: "Roster & FA", feature: "Release / PS / Active", behavior: "Moves players between active/practice/waiver/free-agent pools with eligibility checks." },
     { tab: "Depth Chart", feature: "Order + Snap Share", behavior: "Reorders role priority and lets you set manual snap-share targets per player; saved values feed the live game rotation." },
     { tab: "Transactions", feature: "Trade + Evaluate", behavior: "Validates package fairness/cap before executing asset swaps." },
@@ -748,7 +752,7 @@ export function renderCoachingDnaCard() {
   const lineage = (view.lineage || []).slice(1);
   body.innerHTML = `
     <div class="coaching-dna-summary">
-      ${escapeHtml(String(view.familySize || 0))} active lineage member${view.familySize === 1 ? "" : "s"} · source: ${escapeHtml(view.source || "league coaching ledger")}
+      ${escapeHtml(String(view.familySize || 0))} active lineage member${view.familySize === 1 ? "" : "s"} · source: ${escapeHtml(view.source || "league coaching records")}
     </div>
     ${staff.slice(0, 3).map((entry) => `
     <div class="coaching-dna-row">

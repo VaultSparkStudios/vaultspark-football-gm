@@ -30,7 +30,7 @@ test("game context is embedded in title and body", () => {
 
 test("local playtest receipts stay private unless explicitly supplied", () => {
   const without = new URL(buildFeedbackIssueUrl()).searchParams.get("body");
-  assert.match(without, /not attached — local receipts stay private/);
+  assert.match(without, /not attached — local notes stay private/);
   assert.doesNotMatch(without, /Playtest\/Clarity/);
 
   const receipt = selectPublishedPlaytestReceipt({

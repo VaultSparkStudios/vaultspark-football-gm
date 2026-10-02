@@ -13,7 +13,9 @@ import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker
 import { compactArtifactFingerprint, fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
 import { staticGraphFor } from "./check-browser-boot-budget.mjs";
 import { replaceSimulationAnchor, SIMULATION_ANCHOR_START } from "./lib/simulation-methodology.mjs";
-import { inspectIndexFooter, renderPublicChrome, splitStatusNotes, stripXmlComments } from "./lib/public-chrome.mjs";
+import { ensurePageMetadata, inspectIndexFooter, renderChangelogFeed, renderPublicChrome, splitStatusNotes, stripXmlComments } from "./lib/public-chrome.mjs";
+import { applyClaimBlocks, findUnfilledMarkers, loadClaims } from "./lib/public-claims.mjs";
+import { inspectBuiltPublicVocabulary } from "./check-public-truth.mjs";
 // CANON-016: never the raw module — safe-spawn forces windowsHide so a build
 // does not flash a console window per git call on Windows.
 import { execFileSync } from "./lib/safe-spawn.mjs";
@@ -46,6 +48,7 @@ const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js"
 // serves fresh CSS via a brand-new URL (guaranteed cache miss) — no stale-theme
 // window. styles.css is still emitted for back-compat / smoke assertions.
 let hashedStyleHref = "styles.css";
+let hashedSiteStyleHref = "site.css";
 let hashedCommunityStatsSrc = "community-stats.js";
 
 // S94: module preload hints.
@@ -97,12 +100,20 @@ const htmlPages = [
   "status.html",
   "simulation.html",
   "press.html",
+  "features.html",
+  "how-to-play.html",
+  "faq.html",
+  "roadmap.html",
   "404.html"
 ];
 // Generated at build from status.html; there is no source page to drift.
+// Served as the changelog: /changelog.html 301s here, and changelog.xml is the
+// RSS feed of the same notes.
 const STATUS_ARCHIVE_PAGE = "status-archive.html";
+const CHANGELOG_FEED = "changelog.xml";
 const STATUS_NOTES_KEPT = 4;
 let footerManifest = null;
+let publicClaims = null;
 
 function normalizeBasePath(value) {
   const trimmed = String(value || "").trim() || `/${slug}/`;
@@ -264,6 +275,9 @@ function injectHtmlDefaults(html, pagePath) {
     // Rewrite ./styles.css (optionally with an existing ?query) to the hashed file.
     next = next.replace(/href="\.\/styles\.css(?:\?[^"]*)?"/g, `href="./${hashedStyleHref}"`);
   }
+  if (hashedSiteStyleHref !== "site.css") {
+    next = next.replace(/href="\.\/site\.css(?:\?[^"]*)?"/g, `href="./${hashedSiteStyleHref}"`);
+  }
   if (hashedCommunityStatsSrc !== "community-stats.js") {
     // Community Pulse updates must not inherit a stale custom-domain edge or
     // service-worker cache entry. A content-derived URL makes every copy
@@ -290,6 +304,7 @@ function injectHtmlDefaults(html, pagePath) {
   }
   // S109: one header, one footer, one working theme toggle, from the manifest.
   next = renderPublicChrome(next, { pageName: pagePath === "./" ? "index.html" : pagePath, manifest: footerManifest });
+  if (pagePath !== "game.html") next = ensurePageMetadata(next, { ogImageUrl });
   const preloadPage = pagePath === "./" ? "index.html" : pagePath;
   const preloads = modulePreloadLinks.get(preloadPage);
   if (preloads && !next.includes('rel="modulepreload"')) {
@@ -308,22 +323,44 @@ async function writeHtml(pageName) {
   const sourcePath = path.join(publicDir, pageName);
   const outputPath = path.join(outDir, pageName);
   let source = await fs.readFile(sourcePath, "utf8");
-  if (pageName === "index.html") {
-    const marker = "{{ENGINE_SYSTEM_COUNT}}";
-    if (!source.includes(marker)) throw new Error("Landing engine count marker missing");
-    source = source.replace(marker, String(engineModuleCount(rootDir)));
+  // A literal engine-system count is no longer published; the marker stays
+  // supported so a page that opts back in gets the derived number.
+  if (source.includes("{{ENGINE_SYSTEM_COUNT}}")) {
+    source = source.replaceAll("{{ENGINE_SYSTEM_COUNT}}", String(engineModuleCount(rootDir)));
   }
+  // Public copy has one home (public/content/claims.json). Every marker block is
+  // re-rendered from it here, before comments are stripped.
+  source = applyClaimBlocks(source, publicClaims).html;
   const pagePath = pageName === "index.html" ? "./" : pageName;
+  const outputs = [];
   if (pageName === "status.html") {
     // The source keeps every note (the freshness gate reads it); the served
-    // page keeps the newest few and the archive page carries the rest.
+    // page keeps the newest few and the changelog page carries every note.
     const split = splitStatusNotes(source, { keep: STATUS_NOTES_KEPT, archiveHref: `./${STATUS_ARCHIVE_PAGE}` });
-    source = split.latest;
+    source = withFeedLink(split.latest);
     if (split.archive) {
-      await fs.writeFile(path.join(outDir, STATUS_ARCHIVE_PAGE), injectHtmlDefaults(split.archive, STATUS_ARCHIVE_PAGE), "utf8");
+      outputs.push([STATUS_ARCHIVE_PAGE, injectHtmlDefaults(withFeedLink(split.archive), STATUS_ARCHIVE_PAGE)]);
     }
+    await fs.writeFile(
+      path.join(outDir, CHANGELOG_FEED),
+      renderChangelogFeed(split.notes, { siteUrl: canonicalBase, pagePath: STATUS_ARCHIVE_PAGE, feedPath: CHANGELOG_FEED }),
+      "utf8"
+    );
   }
-  await fs.writeFile(outputPath, injectHtmlDefaults(source, pagePath), "utf8");
+  outputs.push([pageName, injectHtmlDefaults(source, pagePath)]);
+  for (const [name, html] of outputs) {
+    const leftover = findUnfilledMarkers(html);
+    if (leftover.length) throw new Error(`${name} shipped unfilled claims markers: ${leftover.join(", ")}`);
+    await fs.writeFile(name === pageName ? outputPath : path.join(outDir, name), html, "utf8");
+  }
+}
+
+function withFeedLink(html) {
+  if (html.includes('type="application/rss+xml"')) return html;
+  return html.replace(
+    "</head>",
+    `    <link rel="alternate" type="application/rss+xml" title="Franchise Architect: Football changelog" href="./${CHANGELOG_FEED}" />\n  </head>`
+  );
 }
 
 async function mirrorPath(mirrorSlug) {
@@ -407,7 +444,7 @@ async function stampSitemapLastmod() {
 // design system. Declared once here so the route map has a single home.
 const RETIRED_ROUTES = Object.freeze([
   ["/landing.html", "/#why", "merged into the root page (S94)"],
-  ["/changelog.html", "/status.html", "release notes live on Status & Updates"],
+  ["/changelog.html", "/status-archive.html", "the changelog is the full release history"],
   ["/ip.html", "/terms.html", "rights notice lives on Terms"],
   ["/play.html", "/", "the root page is the play surface"]
 ]);
@@ -427,6 +464,15 @@ async function emitHashedStylesheet() {
   hashedStyleHref = `styles.${hash}.css`;
   await fs.writeFile(path.join(outDir, hashedStyleHref), css, "utf8");
   return hashedStyleHref;
+}
+
+async function emitHashedSiteStylesheet() {
+  const cssPath = path.join(outDir, "site.css");
+  const css = await fs.readFile(cssPath, "utf8");
+  const hash = createHash("sha256").update(css).digest("hex").slice(0, 10);
+  hashedSiteStyleHref = `site.${hash}.css`;
+  await fs.writeFile(path.join(outDir, hashedSiteStyleHref), css, "utf8");
+  return hashedSiteStyleHref;
 }
 
 async function emitHashedCommunityStats() {
@@ -487,6 +533,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
     sourceRevision,
     artifactFingerprint,
     styleAsset: hashedStyleHref,
+    siteStyleAsset: hashedSiteStyleHref,
     communityStatsAsset: hashedCommunityStatsSrc,
     basePath,
     assetBasePath,
@@ -524,6 +571,7 @@ async function main() {
   // same reachability gate as every other browser module.
   await assertBrowserModuleReachability({ publicDir });
   footerManifest = JSON.parse(await fs.readFile(path.join(publicDir, "footer-manifest.json"), "utf8"));
+  publicClaims = loadClaims(rootDir);
   const indexFooter = inspectIndexFooter(await fs.readFile(path.join(publicDir, "index.html"), "utf8"), footerManifest);
   if (!indexFooter.ok) throw new Error(`index.html footer is missing manifest destinations: ${indexFooter.missing.join(", ")}`);
   await ensureCleanDir(outDir);
@@ -533,10 +581,17 @@ async function main() {
   await fs.writeFile(sitemapSource, stripXmlComments(await fs.readFile(sitemapSource, "utf8")), "utf8");
   await copyBrowserModules();
   await emitHashedStylesheet();
+  await emitHashedSiteStylesheet();
   await emitHashedCommunityStats();
   await computeModulePreloads();
   for (const pageName of htmlPages) {
     await writeHtml(pageName);
+  }
+  // The source gate scans public/; this one scans what actually ships,
+  // including the generated changelog page and feed.
+  const builtVocabulary = inspectBuiltPublicVocabulary(outDir, [...htmlPages, STATUS_ARCHIVE_PAGE, CHANGELOG_FEED]);
+  if (!builtVocabulary.ok) {
+    throw new Error(`built public pages leak internal vocabulary:\n- ${builtVocabulary.problems.join("\n- ")}`);
   }
   const sourceRevision = String(
     process.env.SOURCE_REVISION || process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || "local-worktree"
@@ -545,7 +600,7 @@ async function main() {
   console.log(`retired routes served as 301s: ${redirects}`);
   const sitemap = await stampSitemapLastmod();
   if (sitemap.stamped) console.log(`sitemap lastmod refreshed from git history: ${sitemap.stamped} URL(s)`);
-  const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages, sourceRevision });
+  const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages: [...htmlPages, STATUS_ARCHIVE_PAGE], sourceRevision });
   const swManifest = await emitServiceWorker(outDir);
   console.log(
     `Service worker precache v${swManifest.version}: ${swManifest.assetCount} assets · ${Math.round(swManifest.totalBytes / 1024)} KB (repeat loads serve from cache)`

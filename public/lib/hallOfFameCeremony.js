@@ -11,7 +11,7 @@ function ceremonyCareerLine(entry = {}) {
 }
 
 function ceremonyAwardLine(awardCounts = {}) {
-  const pairs = [["MVP", awardCounts.MVP || 0], ["OPOY", awardCounts.OPOY || 0], ["DPOY", awardCounts.DPOY || 0], ["All-Pro", awardCounts.AllPro1 || 0], ["Pro Bowl", awardCounts.ProBowl || 0]].filter(([, value]) => value > 0);
+  const pairs = [["MVP", awardCounts.MVP || 0], ["OPOY", awardCounts.OPOY || 0], ["DPOY", awardCounts.DPOY || 0], ["All-Pro", awardCounts.AllPro1 || 0], ["All-Star", awardCounts.ProBowl || 0]].filter(([, value]) => value > 0);
   return pairs.length ? pairs.map(([label, value]) => `${label} ${value}`).join(" | ") : "No major awards logged";
 }
 function shareText(entry) {

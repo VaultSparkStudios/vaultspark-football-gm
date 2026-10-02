@@ -97,11 +97,11 @@ test("the bye receipt renders exactly the strings the browser spec matches on", 
     compositionOrder: ["gm-decision", "bye"]
   });
   assert.equal(described.title, "Bye week committed");
-  assert.equal(described.detail, "GM choice · bye week — no opponent · gm-decision → bye");
+  assert.equal(described.detail, "GM choice · bye week — no opponent · GM call → bye week");
   // The three literals play-mode-smoke's bye branch depends on, by name.
   assert.match(described.title, /Bye week/);
   assert.match(described.detail, /bye week — no opponent/);
-  assert.match(described.detail, /gm-decision → bye/);
+  assert.match(described.detail, /GM call → bye week/);
   // Negative control: an ordinary week must NOT render the bye wording, or the
   // branch would match on a week that actually demanded a tactic.
   const played = describeWeeklyPlanReceipt({
@@ -112,7 +112,7 @@ test("the bye receipt renders exactly the strings the browser spec matches on", 
   });
   assert.equal(played.title, "Weekly plan committed");
   assert.doesNotMatch(played.detail, /bye week/);
-  assert.match(played.detail, /tactic run-heavy/);
+  assert.match(played.detail, /tactic: run heavy/);
 });
 
 /**

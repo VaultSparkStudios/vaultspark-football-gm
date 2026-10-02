@@ -3,52 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About &amp; FAQ - Franchise Architect: Football</title>
-    <meta name="description" content="What Franchise Architect: Football is, what is being built next, and answers to the questions new general managers ask most." />
+    <title>About — Franchise Architect: Football</title>
+    <meta name="description" content="What Franchise Architect: Football is, who makes it, and the ideas behind it." />
+    <meta property="og:title" content="About — Franchise Architect: Football" />
+    <meta property="og:description" content="A football franchise game for players who want to build organizations, not just manage lineups." />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./site.css" />
     <script src="./lib/themeBoot.js"></script>
   </head>
   <body class="setup-body">
     <div class="bg-layer"></div>
     <main class="legal-wrap">
-      <img class="brand-logo-wide" src="./images/franchise-architect-logo.svg" alt="Franchise Architect" />
+      <img class="brand-logo-wide" src="./images/franchise-architect-logo.svg" alt="Franchise Architect" width="420" height="103" />
       <h1>About Franchise Architect</h1>
       <section class="panel legal-panel" id="about">
         <p>Franchise Architect is the VaultSpark Studios sports simulation universe for players who want to build organizations, not just manage lineups.</p>
-        <p>The first release is <strong>Franchise Architect: Football</strong>, a browser-native franchise game focused on roster construction, contracts, scouting, draft strategy, rivalries, league history, and long-save consequences. It runs entirely in your browser: no account, no install, and no server between you and your league.</p>
-        <p>The shared architecture is designed so future sports can live under the same universe with sport-specific rules and shared simulation, save, draft, history, and user-interface packages.</p>
-        <p>The game is in open beta. Every dated change ships on <a href="./status.html">Status &amp; Updates</a>, and the numbers the simulation is measured against are published on <a href="./simulation.html">The Simulation</a>.</p>
+        <p>The first game is <strong>Franchise Architect: Football</strong>, a franchise game about roster construction, contracts, scouting, the draft, rivalries, league history and decisions that matter seasons later.</p>
+        <p>Future sports are planned to live in the same universe, with their own rules on top of a shared foundation for simulation, saves, drafts and history.</p>
       </section>
 
-      <section class="panel legal-panel" id="next">
-        <h2>In the game and ahead</h2>
-        <p>The rival trade market and Front Office Advisor are playable now. Community Stats will publish real trends only after its privacy threshold is met.</p>
+      <section class="panel legal-panel" id="principles">
+        <h2>What we care about</h2>
         <ul>
-          <li><strong>Rivals who remember you.</strong> Every rival front office has an archetype and a memory of its dealings with you. That identity now affects the terms it accepts and the reasons it gives for a trade.</li>
-          <li><strong>A front office that talks back.</strong> The weekly Front Office Advisor argues one call from your briefing, cites the numbers behind it, and keeps score of when you went against the room.</li>
-          <li><strong>Community Stats going live.</strong> The <a href="/stats">community atlas</a> publishes trends only once at least five browsers are sharing. Until then it shows a simulated decade so you can see what the league produces, clearly labelled as simulation.</li>
+          <li><strong>Consequences that last.</strong> A contract you sign, a pick you trade and a promise you make to the owner should still matter five seasons later.</li>
+          <li><strong>Rules you can read.</strong> <!-- claims:intelligence:start -->No AI services and no paid APIs. Every rival, every Advisor call and every headline is worked out by the game&#39;s own rules from your league&#39;s data.<!-- claims:intelligence:end --></li>
+          <li><strong>Realism we can show.</strong> The numbers the league is held to, and the limits of that comparison, are published on <a href="./simulation.html">The Simulation</a>.</li>
+          <li><strong>Your league is yours.</strong> <!-- claims:privacy:start -->Your league is saved in this browser. Nothing leaves it unless you turn on anonymous Community Stats or choose GitHub Gist sync.<!-- claims:privacy:end --></li>
         </ul>
       </section>
 
-      <section class="panel legal-panel" id="faq">
-        <h2>Frequently asked questions</h2>
-        <h3>Is it free?</h3>
-        <p>Yes. Franchise Architect: Football is a free open beta. There is nothing to buy inside it.</p>
-        <h3>Do I need an account?</h3>
-        <p>No. Your league is saved in the browser you play in. If you want a copy elsewhere, the game can export a save file, and an optional GitHub Gist sync uses a token you supply and that never leaves your session.</p>
-        <h3>Does it work on a phone?</h3>
-        <p>Yes. The game ships phone and tablet layouts with a drawer for every tab, and every release is captured on desktop, tablet, and phone in both themes before it is promoted.</p>
-        <h3>What leaves my browser?</h3>
-        <p>Nothing, unless you opt into Community Stats. If you do, the browser shares anonymous, aggregate game choices and results, never your save, names, notes, or hidden ratings, and you can stop and delete at any time. The exact rules are in the <a href="/stats#methodology">methodology</a> and the <a href="./privacy.html">privacy notice</a>.</p>
-        <h3>How real is the simulation?</h3>
-        <p>It is measured, not asserted. <a href="./simulation.html">The Simulation</a> page publishes the anchors the league is checked against at build time and states where the comparison stops working.</p>
-        <h3>Can I share a league with a friend?</h3>
-        <p>Yes. Every league has a challenge code that starts the same league from the same seed, so two people can run the same franchise and compare.</p>
-        <h3>Will an update break my save?</h3>
-        <p>Updates migrate saves in place. When a change alters something you will notice in an existing league, the <a href="./status.html">status page</a> says so in the release note for that day.</p>
-        <h3>Where do I report a bug or ask for something?</h3>
-        <p>Use the in-game <em>Tell the Commissioner</em> button, post on the <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">discussion board</a>, or email <a href="mailto:football@playfranchisearchitect.com">football@playfranchisearchitect.com</a>.</p>
+      <section class="panel legal-panel" id="status">
+        <h2>Where things stand</h2>
+        <p><!-- claims:status-line:start -->Franchise Architect: Football is free to play in early access. It is complete enough to run a franchise for decades, and it changes often; every change is dated in the changelog.<!-- claims:status-line:end --></p>
+        <p>See the <a href="./features.html">features</a> in the game today and the <a href="./roadmap.html">roadmap</a> for where it is heading. Questions are answered in the <a href="./faq.html">FAQ</a>, and the <a href="./contact.html">contact page</a> lists the ways to report a bug or suggest something.</p>
       </section>
     </main>
     <footer class="studio-legal-footer"><span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span> · <a href="https://vaultsparkstudios.com/" rel="author">Studio home</a></footer>

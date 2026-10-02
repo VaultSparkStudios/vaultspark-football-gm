@@ -7,6 +7,10 @@
        it is only withheld from the crawl invitation. Restore this entry the moment
        the snapshot clears its suppression threshold. -->
   <url><loc>https://playfranchisearchitect.com/stats-surface.json</loc><lastmod>2026-08-08</lastmod></url>
+  <url><loc>https://playfranchisearchitect.com/features.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://playfranchisearchitect.com/how-to-play.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://playfranchisearchitect.com/faq.html</loc><lastmod>2026-10-01</lastmod></url>
+  <url><loc>https://playfranchisearchitect.com/roadmap.html</loc><lastmod>2026-10-01</lastmod></url>
   <url><loc>https://playfranchisearchitect.com/simulation.html</loc><lastmod>2026-08-23</lastmod></url>
   <url><loc>https://playfranchisearchitect.com/about.html</loc><lastmod>2026-08-03</lastmod></url>
   <url><loc>https://playfranchisearchitect.com/status.html</loc><lastmod>2026-08-03</lastmod></url>

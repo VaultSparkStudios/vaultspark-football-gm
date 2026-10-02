@@ -1,21 +1,28 @@
 # Franchise Architect: Football
 
-Franchise Architect: Football is a proprietary browser franchise simulator by VaultSpark Studios LLC.
+Franchise Architect: Football is a proprietary football franchise management game by VaultSpark Studios LLC. It runs entirely in the browser, with no account and no install, and is free in early access. It uses no AI services: rivals, the Front Office Advisor and league news are computed by the game's own rules.
 
 Canonical URL: https://playfranchisearchitect.com/
 Contact: football@playfranchisearchitect.com
 Rights: Proprietary - All Rights Reserved, VaultSpark Studios LLC.
 
 Useful paths:
-- / - browser game
+- / - browser game (start page)
+- /features.html - feature tour with screenshots
+- /how-to-play.html - how a season works, from week one to the draft
+- /faq.html - frequently asked questions: early access, saves, privacy, challenge codes, commissioner mode, system requirements
+- /roadmap.html - where the game is heading, stated as intentions without dates
 - /simulation.html - what the football simulation is measured against, and the stated limits of that anchor
-- /about.html - about the game, what is being built next, and the FAQ
-- /press.html - press kit: boilerplate, fact sheet, logo, mark, cover image
-- /status.html - dated release notes (newest); /status-archive.html carries every note
-- /contact.html - project contact
+- /about.html - about the game and the studio's principles
+- /press.html - press kit: fact sheet, boilerplate, screenshots, logo, mark, cover image
+- /status.html - latest dated release notes
+- /status-archive.html - changelog: every dated release note (also at /changelog.html)
+- /changelog.xml - RSS feed of the changelog
+- /contact.html - project contact and bug reports
 - /privacy.html - privacy notice
 - /terms.html - terms and rights notice
 - /agents.json - machine-readable agent metadata
-- /stats.html - human-readable near-live Community Stats Atlas
+- /content/claims.json - machine-readable feature list and fact sheet (the source the website copy is rendered from)
+- /stats - human-readable Community Stats
 - https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot - machine-readable aggregate snapshot
 - /stats-surface.json - stats contract and methodology descriptor

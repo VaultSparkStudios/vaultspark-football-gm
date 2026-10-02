@@ -120,7 +120,7 @@ const PLAYER_MILESTONES = [
   { key: "passing-td-30", positions: ["QB"], group: "passing", stat: "td", threshold: 30,
     headline: (p) => `${p.name} throws his 30th TD pass of the year — elite season taking shape` },
   { key: "rushing-yards-1000", positions: ["RB"], group: "rushing", stat: "yards", threshold: 1000,
-    headline: (p) => `${p.name} hits 1,000 rushing yards — on pace for a Pro Bowl season` },
+    headline: (p) => `${p.name} hits 1,000 rushing yards — on pace for an All-Star season` },
   { key: "receiving-yards-1000", positions: ["WR", "TE"], group: "receiving", stat: "yards", threshold: 1000,
     headline: (p) => `${p.name} eclipses 1,000 receiving yards — commanding target in the passing game` },
   { key: "defense-sacks-10", positions: ["DL", "LB"], group: "defense", stat: "sacks", threshold: 10,

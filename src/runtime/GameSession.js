@@ -182,6 +182,8 @@ import { ensureLeagueIdentity } from "../domain/leagueIdentity.js";
 import { applyArchiveRetention, pruneWeeklyHistory, toLeanWeekResult } from "./weekResultProjection.js";
 import { consumePendingWeeklyTactic } from "./weeklyTactic.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
+import { buildLeagueLens, buildSeasonRecordBook } from "../stats/leagueLens.js";
+import { buildOperatingStatement } from "../domain/operatingStatement.js";
 import {
   agentSummary,
   ensureContractAgent,
@@ -699,6 +701,28 @@ export function scoutedPotential(prospect, draftYear) {
   return clamp(Math.round(truth + fog), SCOUTED_POTENTIAL_FOG.floor, SCOUTED_POTENTIAL_FOG.ceiling);
 }
 
+/**
+ * S113 — potential is a scouting read for every player you do not employ.
+ * Current overall stays visible (a veteran's play is on film); what he can
+ * still become is an estimate until he is yours. The band narrows with age and
+ * the read is re-drawn each league year from a derived stream, so it never
+ * touches the simulation's RNG and the same league always shows the same read.
+ */
+export const SCOUTED_PLAYER_POTENTIAL_FOG = Object.freeze([
+  Object.freeze({ maxAge: 23, band: 6 }),
+  Object.freeze({ maxAge: 26, band: 4 }),
+  Object.freeze({ maxAge: 29, band: 2 })
+]);
+
+export function scoutedPlayerPotential(player, year) {
+  const truth = Number(player?.potential);
+  if (!Number.isFinite(truth)) return null;
+  const age = Number(player?.age);
+  const tier = SCOUTED_PLAYER_POTENTIAL_FOG.find((entry) => Number.isFinite(age) && age <= entry.maxAge);
+  if (!tier) return truth;
+  const fog = derivedRng(`player-potential:${year}:${player.id}`).int(-tier.band, tier.band);
+  return clamp(Math.round(truth + fog), SCOUTED_POTENTIAL_FOG.floor, SCOUTED_POTENTIAL_FOG.ceiling);
+}
 export function scoutedProspectView(prospect, draftYear) {
   // `ratings` go too: overall is a pure position-weighted function of them,
   // so shipping the ratings ships the answer.
@@ -1957,6 +1981,8 @@ export class GameSession {
 
     recalculateAllTeamRatings(this.league);
     this.statBook = new StatBook(this.league);
+    // S113: stat tables show other clubs' potential through the same scouting lens.
+    this.statBook.potentialView = (player) => this.visiblePotential(player);
     this.controlledTeamId = teamById(this.league, controlledTeamId)?.id || this.league.teams[0].id;
 
     this.phase = "regular-season";
@@ -2006,6 +2032,8 @@ export class GameSession {
     });
     session.statBook = new StatBook(session.league);
     session.statBook.teamSeasonArchive = snapshot.teamSeasonArchive || [];
+    // Restored sessions keep the scouting lens on stat tables (S113 review fix).
+    session.statBook.potentialView = (player) => session.visiblePotential(player);
     session.realismProfile = snapshot.realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
     session.careerRealismProfile = snapshot.careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
     session.lastRealismVerificationReport = snapshot.lastRealismVerificationReport || null;
@@ -3165,7 +3193,7 @@ export class GameSession {
         // guard's bench press are not interchangeable signals.
         prospect.scouting.combineGrade = computeCombineGrade(prospect);
       }
-      this.logNews(`NFL Combine wrapped for class ${this.league.pendingDraft.year}`, { year: this.league.pendingDraft.year });
+      this.logNews(`Scouting Combine wrapped for class ${this.league.pendingDraft.year}`, { year: this.league.pendingDraft.year });
       return next({ nextStage: "pro-days", message: "Combine metrics applied to draft class." });
     }
     if (stage === "pro-days") {
@@ -4680,7 +4708,7 @@ export class GameSession {
           playerId,
           player: includePlayers ? player?.name || null : null,
           overall: includePlayers ? player?.overall || null : null,
-          potential: includePlayers ? player?.potential || null : null,
+          potential: includePlayers ? this.visiblePotential(player) || null : null,
           meritScore: includePlayers && player ? rotationMeritScore(player) : null,
           available: includePlayers
             ? Boolean(
@@ -4980,7 +5008,7 @@ export class GameSession {
         name: player.name,
         pos: player.position,
         overall: player.overall,
-        potential: player.potential,
+        potential: this.visiblePotential(player),
         contract: normalizeContract(player.contract)
       }));
   }
@@ -4999,7 +5027,7 @@ export class GameSession {
           name: player.name,
           pos: player.position,
           overall: player.overall,
-          potential: player.potential,
+          potential: this.visiblePotential(player),
           contract,
           projectedCapHit: Math.round(projectedCapHit),
           capDelta: Math.round(projectedCapHit - contract.capHit)
@@ -5022,7 +5050,7 @@ export class GameSession {
           name: player.name,
           pos: player.position,
           overall: player.overall,
-          potential: player.potential,
+          potential: this.visiblePotential(player),
           experience: player.experience,
           contract,
           projectedCapHit: Math.round(projectedCapHit),
@@ -5861,7 +5889,7 @@ export class GameSession {
         } else {
           const lastGame = controlledGames[controlledGames.length - 1];
           if (lastGame && lastGame.winnerId && lastGame.winnerId !== controlledId) {
-            const round = lastGame.label === "super-bowl" ? "the Super Bowl" : `the ${lastGame.label || "playoffs"}`;
+            const round = lastGame.label === "super-bowl" ? "the Championship Game" : `the ${lastGame.label || "playoffs"}`;
             reportMilestone(this.league, {
               type: "playoff-elimination",
               year: this.currentYear,
@@ -6360,6 +6388,33 @@ export class GameSession {
     applyArchiveRetention(this.league);
   }
 
+  /** S113: true potential for your own players and the retired; a scouting read otherwise. */
+  visiblePotential(player) {
+    if (!player) return null;
+    if (player.status === "retired" || (this.controlledTeamId && player.teamId === this.controlledTeamId)) {
+      return Number.isFinite(Number(player.potential)) ? Number(player.potential) : player.potential ?? null;
+    }
+    return scoutedPlayerPotential(player, this.currentYear);
+  }
+
+  /**
+   * Prior single-season bests for the record watch (S113). Completed seasons
+   * never change, so the book is memoized per year span and rebuilt only when
+   * a season closes or another league is loaded.
+   */
+  getSeasonRecordBook() {
+    const firstYear = Number(this.startYear) || this.currentYear;
+    const key = `${this.rngStreams?.baseSeed ?? ""}:${firstYear}:${this.currentYear}`;
+    if (this.seasonRecordBookCache?.key === key) return this.seasonRecordBookCache.book;
+    const years = [];
+    for (let year = firstYear; year < this.currentYear; year += 1) years.push(year);
+    const book = buildSeasonRecordBook({
+      years,
+      seasonTable: (category, year) => this.statBook.getPlayerSeasonTable(category, { year, seasonType: "regular" })
+    });
+    this.seasonRecordBookCache = { key, book };
+    return book;
+  }
   getRecentBoxScores(teamId = this.controlledTeamId, limit = 8) {
     const safeLimit = normalizeCount(limit, 1, 20, 8);
     return this.league.gameArchive
@@ -6548,13 +6603,13 @@ export class GameSession {
         motivation: player.motivation,
         reinjuryRisk: player.reinjuryRisk || 0,
         developmentTrait: player.developmentTrait,
-        potential: player.potential,
+        potential: this.visiblePotential(player),
         // S108 — the runway in growth seasons: offseasons left before the
         // declared development curve turns negative (`GROWTH_WINDOW_MAX_AGE`,
         // the curve's own boundary — not the generation-time headroom constant,
         // which never moves a rating). Projected here so the browser narrative
         // does not re-declare the age.
-        developmentHeadroom: Number.isFinite(Number(player.potential)) ? Number(player.potential) - Number(player.overall || 0) : null,
+        developmentHeadroom: Number.isFinite(Number(this.visiblePotential(player))) ? Number(this.visiblePotential(player)) - Number(player.overall || 0) : null,
         developmentRunwaySeasons: Math.max(0, GROWTH_WINDOW_MAX_AGE + 1 - Number(player.age || 0)),
         status: player.status,
         rosterSlot: player.rosterSlot,
@@ -6791,6 +6846,14 @@ export class GameSession {
         this.controlledTeamId &&
         (this.getScheduleWeek(this.currentWeek)?.byeTeams || []).includes(this.controlledTeamId)
     );
+    // One season-table read per category feeds both the leader strips and the
+    // league lens (S113), instead of re-scanning every player per consumer.
+    const seasonTables = {
+      passing: this.statBook.getPlayerSeasonTable("passing", { year: this.currentYear }),
+      rushing: this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear }),
+      receiving: this.statBook.getPlayerSeasonTable("receiving", { year: this.currentYear }),
+      defense: this.statBook.getPlayerSeasonTable("defense", { year: this.currentYear })
+    };
     const dashboard = {
       controlledOnBye,
       game: GAME_NAME,
@@ -6894,13 +6957,13 @@ export class GameSession {
           player: player?.name || "Unavailable player",
           pos: player?.position || "—",
           overall: Number.isFinite(Number(player?.overall)) ? Number(player.overall) : null,
-          potential: Number.isFinite(Number(player?.potential)) ? Number(player.potential) : null
+          potential: Number.isFinite(Number(this.visiblePotential(player))) ? Number(this.visiblePotential(player)) : null
         };
       }),
       leaders: {
-        passing: topRows(this.statBook.getPlayerSeasonTable("passing", { year: this.currentYear }), 15),
-        rushing: topRows(this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear }), 15),
-        receiving: topRows(this.statBook.getPlayerSeasonTable("receiving", { year: this.currentYear }), 15)
+        passing: topRows(seasonTables.passing, 15),
+        rushing: topRows(seasonTables.rushing, 15),
+        receiving: topRows(seasonTables.receiving, 15)
       },
       currentWeekSchedule: postseasonSchedule || this.getScheduleWeek(this.currentWeek),
       nextWeekSchedule: this.getScheduleWeek(this.currentWeek + 1),
@@ -6934,6 +6997,25 @@ export class GameSession {
         .map((row) => ({ transactionId: row.id, offerId: row.details.offerId,
           playerId: row.playerId, teamId: row.teamId, year: row.year, origin: "player" }))
     };
+    dashboard.leagueLens = buildLeagueLens({
+      standings: standingsRows,
+      teams: dashboard.teams,
+      latestWeek: dashboard.latestWeekResults,
+      // Records and award races are regular-season measures; once playoffs start the
+      // "all" tables would credit postseason games to a regular-season record.
+      leaders: this.phase === "regular-season" ? seasonTables : {
+        passing: this.statBook.getPlayerSeasonTable("passing", { year: this.currentYear, seasonType: "regular" }),
+        rushing: this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear, seasonType: "regular" }),
+        receiving: this.statBook.getPlayerSeasonTable("receiving", { year: this.currentYear, seasonType: "regular" }),
+        defense: this.statBook.getPlayerSeasonTable("defense", { year: this.currentYear, seasonType: "regular" })
+      },
+      recordBook: this.getSeasonRecordBook(),
+      year: this.currentYear,
+      week: this.currentWeek
+    });
+    dashboard.operatingStatement = this.controlledTeamId
+      ? buildOperatingStatement(teamById(this.league, this.controlledTeamId), this.league.teams)
+      : null;
     dashboard.newsLog = this.league.newsLog || [];
     dashboard.coachingTree = this.league.coachingTree || null;
     dashboard.gmLegacy = this.league.gmLegacy
@@ -7011,7 +7093,7 @@ export class GameSession {
       weightLbs: player.weightLbs || null,
       experience: player.experience,
       overall: player.overall,
-      potential: player.potential,
+      potential: this.visiblePotential(player),
       schemeFit: player.schemeFit,
       morale: player.morale,
       motivation: player.motivation,
@@ -7047,7 +7129,7 @@ export class GameSession {
         heightInches: player.heightInches || null,
         weightLbs: player.weightLbs || null,
         overall: player.overall,
-        potential: player.potential,
+        potential: this.visiblePotential(player),
         schemeFit: player.schemeFit || null,
         devTrait: player.developmentTrait,
         source: player.teamId === "WAIVER" ? "waiver" : "free-agent"
@@ -7073,7 +7155,7 @@ export class GameSession {
         pos: player.position,
         age: player.age,
         overall: player.overall,
-        potential: player.potential,
+        potential: this.visiblePotential(player),
         retiredYear: player.retiredYear,
         maxAge: this.getPositionMaxAge(player.position),
         seasonsPlayed: player.seasonsPlayed || 0,
@@ -7110,7 +7192,7 @@ export class GameSession {
         pos: player.position,
         age: player.age,
         overall: player.overall,
-        potential: player.potential,
+        potential: this.visiblePotential(player),
         teamId: player.__retired ? "RET" : player.teamId,
         status: player.__retired ? "retired" : player.teamId === "WAIVER" ? "waiver" : player.teamId === "FA" ? "free-agent" : "active",
         retiredYear: player.retiredYear || null
@@ -7221,7 +7303,7 @@ export class GameSession {
         pos: player.position,
         age: player.age,
         overall: player.overall,
-        potential: player.potential,
+        potential: this.visiblePotential(player),
         contract: normalizeContract(player.contract),
         retirementOverride: player.retirementOverride
       }

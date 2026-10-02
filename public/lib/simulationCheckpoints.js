@@ -111,7 +111,7 @@ export function formatSimulationDigest(digest = []) {
   return digest.slice(-5).map((entry) => {
     const location = `Y${entry.year ?? "?"} W${entry.week ?? "?"}`;
     const policy = entry.policy?.tactic
-      ? `Plan: ${entry.policy.tactic} · ${entry.policy.aligned === true ? "aligned" : entry.policy.aligned === false ? "not aligned" : "receipt pending"}`
+      ? `Plan: ${entry.policy.tactic} · ${entry.policy.aligned === true ? "aligned" : entry.policy.aligned === false ? "not aligned" : "result pending"}`
       : null;
     const details = [entry.result, policy, entry.checkpoint].filter(Boolean).join(" · ");
     return `${location} · ${details || entry.phase}`;

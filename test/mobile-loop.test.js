@@ -40,7 +40,7 @@ test("mobile decision deck flags cap and injury pressure before advancing", () =
   assert.equal(cards[0].tone, "danger");
   assert.equal(cards[1].targetTab, "depthTab");
   assert.equal(cards[1].targetId, "depthTable");
-  assert.match(cards[1].detail, /1 controlled-team injury/);
+  assert.match(cards[1].detail, /1 injury on your roster/);
 });
 
 test("mobile decision deck falls back to advance week when no pressure exists", () => {
@@ -109,7 +109,7 @@ test("mobile pressure stack surfaces owner mandate, fan pulse, cap, and injuries
   assert.equal(cards[0].tone, "danger");
   assert.equal(cards[1].targetTab, "overviewTab");
   assert.equal(cards[2].targetTab, "contractsTab");
-  assert.match(cards[3].title, /2 controlled-team injuries/);
+  assert.match(cards[3].title, /2 injuries on your roster/);
 });
 
 test("mobile pressure stack elevates deadline window and stays useful without urgent pressure", () => {

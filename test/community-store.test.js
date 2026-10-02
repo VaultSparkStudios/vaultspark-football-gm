@@ -23,8 +23,11 @@ class FakePool {
       this.rows = this.rows.filter((r) => r.participant_hash !== participantHash);
       return { rowCount: before - this.rows.length };
     }
-    if (/DELETE FROM community_stats\.receipts WHERE received_at < now\(\) - interval '(\d+) days'/.test(sql)) {
-      const days = Number(sql.match(/interval '(\d+) days'/)[1]);
+    if (/DELETE FROM community_stats\.receipts WHERE received_at < now\(\) - \(\$1::int \* interval '1 day'\)/.test(sql)) {
+      // S113: retention days are a bound parameter, never interpolated SQL.
+      const [days] = params;
+      assert.ok(Number.isInteger(days) && days > 0, "retention days must be bound as a positive integer");
+      this.retentionSweeps = (this.retentionSweeps || 0) + 1;
       const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
       const before = this.rows.length;
       this.rows = this.rows.filter((r) => r.received_at.getTime() >= cutoff);
@@ -154,6 +157,7 @@ test("cleanupIfDue only runs the retention sweep once per 6-hour window", async 
   now = new Date(now.getTime() + 4 * 60 * 60 * 1000);
   await store.cleanupIfDue();
   assert.equal(store.lastCleanupAt, now.getTime());
+  assert.equal(pool.retentionSweeps, 2, "the parameterized retention sweep must actually execute");
 });
 
 test("hashParticipant is deterministic for a given pepper and participant", () => {

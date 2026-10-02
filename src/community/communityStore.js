@@ -107,7 +107,10 @@ export class CommunityStore {
   async cleanupIfDue() {
     const now = this.clock().getTime();
     if (now - this.lastCleanupAt < 6 * 60 * 60 * 1000) return;
-    await this.pool.query(`DELETE FROM community_stats.receipts WHERE received_at < now() - interval '${COMMUNITY_RAW_RETENTION_DAYS} days'`);
+    await this.pool.query(
+      "DELETE FROM community_stats.receipts WHERE received_at < now() - ($1::int * interval '1 day')",
+      [COMMUNITY_RAW_RETENTION_DAYS]
+    );
     this.lastCleanupAt = now;
   }
 

@@ -43,7 +43,10 @@ export function shouldPrecache(relativePath) {
   // A redirected HTML Response returned by a worker to a navigation whose
   // redirect mode is manual becomes a browser network error. HTML navigations
   // therefore stay browser-owned; precaching their .html aliases is wasteful.
-  if (["styles.css", "community-stats.js"].includes(normalized)) return false;
+  if (["styles.css", "site.css", "community-stats.js"].includes(normalized)) return false;
+  // S113: social-card and marketing imagery is fetched by link previews and the
+  // public pages, never by the game shell; precaching it cost ~380 KB per install.
+  if (normalized === "images/cover.png" || normalized.startsWith("images/screens/")) return false;
   return PRECACHE_EXTENSIONS.has(path.extname(normalized).toLowerCase());
 }
 

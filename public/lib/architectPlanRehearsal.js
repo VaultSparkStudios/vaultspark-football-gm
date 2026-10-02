@@ -106,7 +106,7 @@ export function buildArchitectPlanRehearsal({ dashboard = {}, decisionChoice = n
 
   let counterSignal = {
     source: tactic ? "Declared tactic tradeoff" : "No-plan boundary",
-    text: tactic?.tradeoff || "Without a declared tactic, the ledger will record no tactical intent for this week."
+    text: tactic?.tradeoff || "Without a declared tactic, no tactical intent is logged for this week."
   };
   if (recentFilm?.aligned === false) {
     counterSignal = {
@@ -141,13 +141,13 @@ export function buildArchitectPlanRehearsal({ dashboard = {}, decisionChoice = n
     activePressure: opening.pressure?.label
       || dashboard.ownerState?.owner?.expectation?.mandate
       || "No owner pressure observed",
-    identityPreview: identityPreview?.copy || "No executed tactic means no identity-ledger change.",
+    identityPreview: identityPreview?.copy || "No executed tactic means no change to your team identity.",
     architectThesis: thesis ? {
       label: `${thesis.label} hypothesis`,
       text: `Declared from ${thesis.sourceEntryId}: ${thesis.sourceObserved}`
     } : null,
     counterSignal,
-    disclaimer: "This rehearsal challenges the declared plan with existing receipts. It predicts no result, grants no hidden bonus, and mutates nothing until Commit Plan."
+    disclaimer: "This rehearsal tests your plan against what has already happened. It predicts no result, grants no hidden bonus, and changes nothing until you Commit Plan."
   };
 }
 

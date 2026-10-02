@@ -77,8 +77,8 @@ function resolvedReceipt(prediction, game) {
 function recentReceiptJournal(receipts = []) {
   if (!receipts.length) return "";
   return `
-    <div class="wp-recent" aria-label="Recent prediction receipts">
-      <strong>Recent receipts</strong>
+    <div class="wp-recent" aria-label="Recent graded predictions">
+      <strong>Recent results</strong>
       ${receipts.slice(0, 3).map((receipt) => `
         <div class="wp-recent-row">
           Y${escapeHtml(receipt.year)} W${escapeHtml(receipt.week)}

@@ -58,7 +58,7 @@ export function loadLocalPlaytestReceipts(storage = globalThis.localStorage) {
 
 export function saveLocalPlaytestReceipt(receipt, storage = globalThis.localStorage) {
   if (receipt?.schemaVersion !== PLAYTEST_RECEIPT_SCHEMA_VERSION || receipt?.kind !== "local-playtest-receipt") {
-    throw new Error("A valid local playtest receipt is required.");
+    throw new Error("A valid playtest note is required.");
   }
   const receipts = [receipt, ...loadLocalPlaytestReceipts(storage).filter((entry) => entry.receiptId !== receipt.receiptId)].slice(0, PLAYTEST_RECEIPT_LIMIT);
   storage?.setItem?.(PLAYTEST_RECEIPT_STORAGE_KEY, JSON.stringify(receipts));
@@ -88,6 +88,6 @@ export function buildLocalPlaytestExport(receipts = [], journey = loadPlaytestJo
     count: valid.length,
     receipts: valid,
     journey: buildPlaytestJourneySummary(journey),
-    privacy: "Explicit local receipts and relative journey checkpoints only; no account identifier or save payload is included; no token or absolute journey timestamp is included. Local instrumentation is self-selected and cannot support cohort, retention, comprehension, or causal claims."
+    privacy: "Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims."
   };
 }

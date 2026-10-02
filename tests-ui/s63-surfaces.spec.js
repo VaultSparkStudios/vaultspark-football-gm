@@ -156,7 +156,8 @@ test("a rival's staff is visible but not editable", async ({ page }) => {
   const market = page.locator("#coachingMarketPanel");
   await expect(market.locator(".cm-hire")).toHaveCount(0);
   await expect(market.locator(".cm-fire")).toHaveCount(0);
-  await expect(market.locator(".coaching-market-empty")).toContainText(otherValue);
+  // S113: the message names clubs by their displayed code, not the internal id.
+  await expect(market.locator(".coaching-market-empty")).toContainText("only its own front office can change it");
 });
 
 // ── Press room ────────────────────────────────────────────────────────────────
@@ -217,13 +218,13 @@ test("the pre-game brief states the opponent read the engine acts on", async ({ 
     // A bye is an authoritative empty state, not a missing read: the plan must
     // say so in its own receipt, and it must not have asked for a tactic.
     await expect(byeReceipt).toContainText("bye week — no opponent");
-    await expect(byeReceipt).toContainText("gm-decision → bye");
+    await expect(byeReceipt).toContainText("GM call → bye week");
     return;
   }
   await expect(brief).toBeVisible({ timeout: 30_000 });
   const headline = (await brief.locator("strong").textContent()) || "";
   const edge = brief.locator(".tactical-matchup-edge");
-  if (/No controlled-team game/i.test(headline)) {
+  if (/has no game this week/i.test(headline)) {
     // Retained for a postseason plan, which can still open the modal with no
     // matchup to affect; a regular-season bye no longer reaches this line.
     await expect(brief).toContainText("A tactical override would have no matchup to affect.");

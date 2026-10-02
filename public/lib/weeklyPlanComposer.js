@@ -182,8 +182,22 @@ export function commitWeeklyPlanReceipt(receipt, response = {}) {
       gmDecisionApplied: response.gmDecision?.applied === true,
       architectReceiptId: response.architectEntry?.id || null
     },
-    disclaimer: "This receipt proves composition and commit order. It does not claim the plan caused the result."
+    disclaimer: "This summary records what you chose and in what order. It does not claim the plan caused the result."
   };
+}
+
+const PLAN_STEP_LABELS = {
+  "gm-decision": "GM call",
+  tactic: "game plan",
+  review: "review",
+  "review-revise": "rethink",
+  "tactic-revision": "revised plan",
+  "standing-plan-reinforced": "plan kept",
+  bye: "bye week"
+};
+
+function describePlanSteps(order = []) {
+  return order.map((step) => PLAN_STEP_LABELS[step] || String(step).replace(/-/g, " ")).join(" → ");
 }
 
 export function describeWeeklyPlanReceipt(receipt) {
@@ -192,17 +206,17 @@ export function describeWeeklyPlanReceipt(receipt) {
   // On a bye there was no tactic to give, so "explicit no-plan" would describe
   // a refusal that never happened.
   const tactic = receipt.plan?.tacticId
-    ? `tactic ${receipt.plan.tacticId}`
+    ? `tactic: ${String(receipt.plan.tacticId).replace(/-/g, " ")}`
     : receipt.onBye
       ? "bye week — no opponent"
-      : "explicit no-plan";
+      : "no game plan (your call)";
   if (receipt.status === "deferred") {
-    return { title: "Weekly plan deferred", detail: "No command was committed.", tone: "warning" };
+    return { title: "Weekly plan deferred", detail: "Nothing was committed this week.", tone: "warning" };
   }
   if (receipt.onBye) {
     return {
       title: receipt.status === "committed" ? "Bye week committed" : "Bye week staged",
-      detail: `${decision} · ${tactic} · ${receipt.compositionOrder.join(" → ") || "phase-only command"}`,
+      detail: `${decision} · ${tactic} · ${describePlanSteps(receipt.compositionOrder) || "no game this week"}`,
       tone: "accent"
     };
   }
@@ -210,11 +224,11 @@ export function describeWeeklyPlanReceipt(receipt) {
     ? ` · reviewed against ${String(receipt.review.counterSignalSource).slice(0, 80)}`
     : "";
   const reinforcement = receipt.review?.mode === "standing-reinforcement"
-    ? ` · reinforced from ${receipt.review.sourceReceiptId || "last executed film"}`
+    ? ` · reinforced from ${receipt.review.sourceReceiptId ? "your last game plan" : "last week's film"}`
     : reviewSource;
   return {
     title: receipt.status === "committed" ? "Weekly plan committed" : "Weekly plan staged",
-    detail: `${decision} · ${tactic}${reinforcement} · ${receipt.compositionOrder.join(" → ") || "phase-only command"}`,
+    detail: `${decision} · ${tactic}${reinforcement} · ${describePlanSteps(receipt.compositionOrder) || "plan only"}`,
     tone: receipt.status === "committed" ? "positive" : "accent"
   };
 }

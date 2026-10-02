@@ -191,7 +191,7 @@ export function applyDashboard(newState) {
   const analyticsYearInput = document.getElementById("analyticsYearFilter");
   if (analyticsYearInput && (!analyticsYearInput.value || !previous || previous.currentYear !== newState.currentYear)) {
     analyticsYearInput.value = String(state.dashboard.currentYear);
-  }  maybeMountContextualFeedback(newState, { onSaved: () => showToast("Private playtest receipt saved locally.") });
+  }  maybeMountContextualFeedback(newState, { onSaved: () => showToast("Thanks. Your feedback is saved on this device only.") });
   // S109: lazy Desk surfaces (advisor, first-season contract) re-render on
   // every applied dashboard without this module importing them.
   document.dispatchEvent(new CustomEvent("vsfgm:dashboard-applied", { detail: { dashboard: newState, previous } }));
@@ -408,8 +408,8 @@ export async function loadStaff() {
   renderCoachingMarketPanel({
     ok: false,
     error: teamId !== controlledTeamId
-      ? `You control ${controlledTeamId}. ${teamId}'s staff is visible, but only its own front office can change it.`
-      : "Loading the source-derived coaching market…"
+      ? `You control ${teamCode(controlledTeamId)}. ${teamCode(teamId)}'s staff is visible, but only its own front office can change it.`
+      : "Loading the coaching market…"
   });
   const payload = await api(`/api/staff?team=${encodeURIComponent(teamId)}`);
   const currentTeamId = document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId || "BUF";
@@ -431,7 +431,7 @@ export async function loadCoachingMarket(teamId = null) {
   if (team && state.dashboard?.controlledTeamId && team !== state.dashboard.controlledTeamId) {
     renderCoachingMarketPanel({
       ok: false,
-      error: `You control ${state.dashboard.controlledTeamId}. ${team}'s staff is visible, but only its own front office can change it.`
+      error: `You control ${teamCode(state.dashboard.controlledTeamId)}. ${teamCode(team)}'s staff is visible, but only its own front office can change it.`
     });
     return;
   }
@@ -1191,7 +1191,7 @@ export function showSeasonEndReview() {
     </div>` : ""}
     ${stewardship ? `<section class="sr-stewardship" aria-labelledby="stewardshipTitle">
       <div class="sr-stewardship-head">
-        <div><div class="brand-kicker">Receipted season authority</div><strong id="stewardshipTitle">GM Stewardship · ${escapeHtml(stewardship.grades?.overall || "—")}</strong></div>
+        <div><div class="brand-kicker">Season front-office report</div><strong id="stewardshipTitle">GM Stewardship · ${escapeHtml(stewardship.grades?.overall || "—")}</strong></div>
         <span>${escapeHtml(String(stewardship.overallScore ?? "—"))}/100</span>
       </div>
       <div class="sr-stewardship-grid">${(stewardship.dimensions || []).map((dimension) => `

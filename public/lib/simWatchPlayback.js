@@ -55,6 +55,46 @@ export function resolveBoxScoreTeamIds(boxScore = {}) {
   };
 }
 
+const ORDINAL_DOWN = Object.freeze({ 1: "1st", 2: "2nd", 3: "3rd", 4: "4th" });
+
+/**
+ * S113 — the field as the simulation recorded it. `fieldPosition` is yards
+ * from the offense's own goal line when the snap happened; the home side
+ * attacks to the right, so the marker is the real spot, not decoration.
+ */
+export function deriveFieldState(play = {}, teamIds = {}) {
+  const spot = Number(play.fieldPosition);
+  if (!Number.isFinite(spot)) return null;
+  const towardRight = play.offenseTeamId && play.offenseTeamId === teamIds.home;
+  const x = Math.max(2, Math.min(98, towardRight ? spot : 100 - spot));
+  const down = ORDINAL_DOWN[Number(play.down)] || null;
+  const distance = Number(play.distance);
+  const goalToGo = Number.isFinite(distance) && spot + distance >= 100;
+  return {
+    x,
+    offenseTeamId: play.offenseTeamId || null,
+    downLabel: down ? `${down} & ${goalToGo ? "Goal" : Number.isFinite(distance) ? distance : "—"}` : null,
+    spotLabel: spot === 50 ? "Midfield" : spot < 50 ? `Own ${Math.round(spot)}` : `Opp ${Math.round(100 - spot)}`,
+    redZone: spot >= 80
+  };
+}
+
+/** Home-minus-away score margin after every play, for the game-flow strip. */
+export function buildGameFlow(plays = [], scoreTimeline = [], teamIds = {}) {
+  const margins = new Array(plays.length).fill(0);
+  const deltas = new Array(plays.length).fill(0);
+  for (const score of scoreTimeline) {
+    if (score.playIndex == null || score.playIndex >= plays.length) continue;
+    const sign = score.teamId === teamIds.home ? 1 : score.teamId === teamIds.away ? -1 : 0;
+    deltas[score.playIndex] += sign * Number(score.points || 0);
+  }
+  let running = 0;
+  for (let index = 0; index < plays.length; index += 1) {
+    running += deltas[index];
+    margins[index] = running;
+  }
+  return margins;
+}
 function clampIndex(index, length) {
   return Math.max(-1, Math.min(Math.max(-1, length - 1), Number(index) || 0));
 }

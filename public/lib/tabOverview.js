@@ -2,7 +2,7 @@ import { state, api, STATS_BENCHMARK_HINTS, TEAM_THEME_MAP } from "./appState.js
 import { tradeWindow } from "./tradeWindow.js";
 import { deriveTrophyRoad, readEarnedAchievements, recordAchievementEvent } from "./achievements.js";
 import { playSound } from "./audioFeedback.js";
-import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderPanelError, renderTable, setBoxScoreTab, setMetricCardValue, setTableSkeleton, showToast, teamCode, teamName } from "./appCore.js";
+import { classifyTone, humanizeId, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderPanelError, renderTable, setBoxScoreTab, setMetricCardValue, setTableSkeleton, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { invokeUiIsland } from "./uiIslands.js";
 import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
@@ -12,7 +12,6 @@ import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
 import { architectLedgerRows, buildArchitectureSignal, buildProgressiveWeekRoom, buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 import { describeWeeklyPlanReceipt } from "./weeklyPlanComposer.js";
 import { renderPressRoomPanel } from "./pressRoomPanel.js";
-import { buildCoGmBriefingPacket } from "./coGmBriefing.js";
 import { deriveMarqueeBadge } from "./marqueeBadge.js";
 import { renderPredictionPanel } from "./predictionPanel.js";
 import { findTeamStanding, formatTeamRecord, teamRecordWinPct } from "./teamRecord.js";
@@ -47,7 +46,7 @@ export function renderOverview() {
   }
   renderOverviewSpotlight();
   renderFranchiseCommandCenter();
-  renderCoGmBriefingPanel();
+  renderCoGmBriefIfOpen();
   renderFranchiseArchitecture();
   renderOpeningContract();
   renderPressRoomPanel(state.dashboard?.pressRoom);
@@ -58,33 +57,20 @@ export function renderOverview() {
   renderTradeDeadlineAlert();
 }
 
-export function currentCoGmBriefingPacket() {
-  return buildCoGmBriefingPacket({
-    dashboard: state.dashboard || {},
-    newsRows: state.newsRows || [],
-    pendingDecision: state.mobilePendingDecision || state.dashboard?.gmDecisionQueue?.[0] || null,
-    pendingChoice: state.mobilePendingDecisionChoice || null
-  });
+// S113: the Co-GM Brief lives in a collapsed Desk drawer, so its builder loads
+// only when the drawer is opened (and re-renders while it stays open).
+function renderCoGmBriefIfOpen() {
+  const drawer = document.getElementById("coGmBriefPanel")?.closest("details");
+  if (!drawer) return;
+  if (!drawer.dataset.briefWired) {
+    drawer.dataset.briefWired = "1";
+    drawer.addEventListener("toggle", () => { if (drawer.open) renderCoGmBriefIfOpen(); });
+  }
+  if (!drawer.open) return;
+  import("./coGmBriefPanel.js")
+    .then((module) => module.renderCoGmBriefingPanel())
+    .catch((error) => recordClientDiagnostic({ surface: "desk", operation: "co-gm-brief", error }));
 }
-
-export function renderCoGmBriefingPanel() {
-  const panel = document.getElementById("coGmBriefPanel");
-  if (!panel) return;
-  const packet = currentCoGmBriefingPacket();
-  const command = packet.currentCommand;
-  const receipts = packet.recentDecisionReceipts;
-  const status = document.getElementById("coGmBriefStatus");
-  const content = document.getElementById("coGmBriefContent");
-  if (status) status.textContent = `${packet.authority.teamName} · ${packet.authority.year ?? "—"} W${packet.authority.week ?? "—"} · schema ${packet.schemaVersion}`;
-  if (content) content.innerHTML = `
-    <div class="history-card-grid">
-      <div class="history-card-stat"><strong>Current command</strong><div>${escapeHtml(command.title)}</div><small>${escapeHtml(command.reasonCode)} · ${command.blocking ? "blocks advance" : "advisory"}</small></div>
-      <div class="history-card-stat"><strong>Pressure</strong><div>${escapeHtml(packet.pressure.ownerMandate)}</div><small>${escapeHtml(packet.pressure.controlledTeamInjuries)} injuries · ${escapeHtml(packet.pressure.rosterNeeds.join(", ") || "no ranked need")}</small></div>
-      <div class="history-card-stat"><strong>Architect thesis</strong><div>${escapeHtml(packet.architectThesis.focusPathId || "Not declared")}</div><small>Revision ${escapeHtml(packet.architectThesis.revision)}</small></div>
-      <div class="history-card-stat"><strong>Decision memory</strong><div>${escapeHtml(receipts.length)} bounded receipt${receipts.length === 1 ? "" : "s"}</div><small>${escapeHtml(receipts[0]?.declared || "No recorded declaration yet")}</small></div>
-    </div>`;
-}
-
 export function renderFranchiseCommandCenter() {
   const panel = document.getElementById("franchiseCommandCenter");
   if (!panel) return;
@@ -97,7 +83,7 @@ export function renderFranchiseCommandCenter() {
   const planReceipt = describeWeeklyPlanReceipt(state.weeklyPlanReceipt);
   panel.innerHTML = `
     <div class="franchise-command-head">
-      <div><span class="brand-kicker">Live Franchise Authority</span><h3>What needs your call?</h3></div>
+      <div><span class="brand-kicker">Front office</span><h3>What needs your call?</h3></div>
       <span class="small">Ranked from current league state</span>
     </div>
     ${planReceipt ? `<div class="weekly-plan-receipt ${escapeHtml(planReceipt.tone)}" role="status"><strong>${escapeHtml(planReceipt.title)}</strong><span>${escapeHtml(planReceipt.detail)}</span></div>` : ""}
@@ -121,8 +107,8 @@ export function renderMasterySignatureCard(mastery = null) {
     return `
       <div class="gm-mastery-signature awaiting-evidence" data-mastery-signature-state="awaiting-evidence">
         <span class="franchise-horizon-label">Strongest signature</span>
-        <strong>Awaiting source receipts</strong>
-        <small>No path is named until a committed season, stewardship, promise, or tactical receipt exists.</small>
+        <strong>Still taking shape</strong>
+        <small>Your style is named once a season, promise, stewardship call, or game plan is on record.</small>
       </div>`;
   }
   const evidenceCount = Number(signature.evidenceCount || 0);
@@ -130,7 +116,7 @@ export function renderMasterySignatureCard(mastery = null) {
     <div class="gm-mastery-signature ${escapeHtml(signature.status || "emerging")}" data-mastery-signature-state="${escapeHtml(signature.status || "emerging")}">
       <span class="franchise-horizon-label">Strongest signature</span>
       <strong>${escapeHtml(signature.label)} · ${escapeHtml(String(signature.score))}/${escapeHtml(String(signature.maxScore || 25))}</strong>
-      <small>${escapeHtml(String(evidenceCount))} source receipt${evidenceCount === 1 ? "" : "s"} · Descriptive identity only; no hidden bonus or causal claim.</small>
+      <small>${escapeHtml(String(evidenceCount))} recorded move${evidenceCount === 1 ? "" : "s"} · Describes your style only; no hidden bonus or causal claim.</small>
     </div>`;
 }
 
@@ -167,7 +153,6 @@ export function renderFranchiseArchitecture() {
     ${primary ? `
       <button type="button" class="week-room-primary ${escapeHtml(primary.tone)}" data-blueprint-target-tab="${escapeHtml(primary.targetTab)}" data-blueprint-target-id="${escapeHtml(primary.targetId)}">
         <span class="franchise-horizon-label">This week's controlled call</span>
-        <small>${escapeHtml(primary.authority)}</small>
         <strong>${escapeHtml(primary.title)}</strong>
         <span>${escapeHtml(primary.detail)}</span>
         <em>Why now · ${escapeHtml(primary.milestone)}</em>
@@ -184,10 +169,10 @@ export function renderFranchiseArchitecture() {
       `).join("")}
     </div>
     <details class="architecture-review">
-      <summary><span>Architecture Review</span><small>${escapeHtml(signal.sampleSize)} decision receipt${signal.sampleSize === 1 ? "" : "s"} · ${escapeHtml(mastery?.label || "mastery forming")}</small></summary>
+      <summary><span>Architecture Review</span><small>${escapeHtml(signal.sampleSize)} logged decision${signal.sampleSize === 1 ? "" : "s"} · ${escapeHtml(mastery?.label || "mastery forming")}</small></summary>
       <div class="architecture-review-body">
         <section class="architect-thesis" aria-label="Player-authored Architect thesis">
-          <div class="architect-ledger-head"><strong>Your Architect Thesis</strong><span class="small">Revision ${escapeHtml(String(thesis.revision || 0))} · ${thesis.lineage?.valid === false ? `${escapeHtml(String(thesis.lineage.issues.length))} lineage issue${thesis.lineage.issues.length === 1 ? "" : "s"}` : "lineage verified"} · no hidden bonus</span></div>
+          <div class="architect-ledger-head"><strong>Your Architect Thesis</strong><span class="small">Version ${escapeHtml(String(thesis.revision || 0))}${thesis.lineage?.valid === false ? ` · ${escapeHtml(String(thesis.lineage.issues.length))} history gap${thesis.lineage.issues.length === 1 ? "" : "s"}` : ""} · no hidden bonus</span></div>
           <label for="architectFocusSelect">Mastery focus</label>
           <div class="architect-thesis-controls">
             <select id="architectFocusSelect" data-architect-focus-select aria-label="Architect mastery focus">
@@ -199,7 +184,7 @@ export function renderFranchiseArchitecture() {
             ${["reinforce", "counter", "investigate"].map((mode) => `<button type="button" class="btn-sm ${thesis.pendingAdaptation?.mode === mode ? "active" : ""}" data-architect-adaptation="${mode}">${escapeHtml(mode[0].toUpperCase() + mode.slice(1))}</button>`).join("")}
             <button type="button" class="btn-sm" data-architect-adaptation="">Clear</button>
           </div>
-          <p class="small">${thesis.pendingAdaptation ? `${escapeHtml(thesis.pendingAdaptation.label)} from ${escapeHtml(thesis.pendingAdaptation.sourceEntryId)} · ${escapeHtml(thesis.pendingAdaptation.sourceObserved)}` : "Choose an adaptation only after committed film exists. The next ledger receipt will resolve it descriptively."}</p>
+          <p class="small">${thesis.pendingAdaptation ? `${escapeHtml(thesis.pendingAdaptation.label)} from ${escapeHtml(thesis.pendingAdaptation.sourceEntryId)} · ${escapeHtml(thesis.pendingAdaptation.sourceObserved)}` : "Choose an adaptation once you have played a game under this plan. Your next logged week shows how it played out."}</p>
           ${thesis.review?.baseline ? `
             <section class="architect-focus-review ${escapeHtml(thesis.review.status || "awaiting-declaration")}" aria-label="Focus declaration review">
               <div class="architect-ledger-head">
@@ -209,28 +194,28 @@ export function renderFranchiseArchitecture() {
               <div class="architect-focus-review-grid">
                 <div>
                   <span class="franchise-horizon-label">Declaration</span>
-                  <strong>${escapeHtml(String(thesis.review.baseline.score))}/25 · ${escapeHtml(String(thesis.review.baseline.evidenceCount))} receipt${thesis.review.baseline.evidenceCount === 1 ? "" : "s"}</strong>
+                  <strong>${escapeHtml(String(thesis.review.baseline.score))}/25 · ${escapeHtml(String(thesis.review.baseline.evidenceCount))} move${thesis.review.baseline.evidenceCount === 1 ? "" : "s"}</strong>
                   <small>Year ${escapeHtml(String(thesis.review.baseline.declaredAt?.year ?? "—"))} · Week ${escapeHtml(String(thesis.review.baseline.declaredAt?.week ?? "—"))}</small>
                 </div>
                 <div>
                   <span class="franchise-horizon-label">Current</span>
-                  <strong>${escapeHtml(String(thesis.review.current?.score ?? 0))}/25 · ${escapeHtml(String(thesis.review.current?.evidenceCount ?? 0))} receipt${thesis.review.current?.evidenceCount === 1 ? "" : "s"}</strong>
-                  <small>${escapeHtml(thesis.review.current?.evidence || "No source evidence recorded.")}</small>
+                  <strong>${escapeHtml(String(thesis.review.current?.score ?? 0))}/25 · ${escapeHtml(String(thesis.review.current?.evidenceCount ?? 0))} move${thesis.review.current?.evidenceCount === 1 ? "" : "s"}</strong>
+                  <small>${escapeHtml(thesis.review.current?.evidence || "Nothing recorded yet.")}</small>
                 </div>
                 <div>
                   <span class="franchise-horizon-label">Evidence delta</span>
-                  <strong>${thesis.review.delta?.evidenceCount > 0 ? "+" : ""}${escapeHtml(String(thesis.review.delta?.evidenceCount ?? 0))} receipt${thesis.review.delta?.evidenceCount === 1 ? "" : "s"} · ${thesis.review.delta?.score > 0 ? "+" : ""}${escapeHtml(String(thesis.review.delta?.score ?? 0))} score</strong>
-                  <small>${escapeHtml(thesis.review.newReceipt ? "New source evidence exists." : "No new source receipt since declaration.")}</small>
+                  <strong>${thesis.review.delta?.evidenceCount > 0 ? "+" : ""}${escapeHtml(String(thesis.review.delta?.evidenceCount ?? 0))} move${thesis.review.delta?.evidenceCount === 1 ? "" : "s"} · ${thesis.review.delta?.score > 0 ? "+" : ""}${escapeHtml(String(thesis.review.delta?.score ?? 0))} score</strong>
+                  <small>${escapeHtml(thesis.review.newReceipt ? "New moves logged since you declared." : "Nothing new logged since you declared.")}</small>
                 </div>
               </div>
               ${thesis.review.nextAction ? `<button type="button" class="btn-sm architect-focus-next" data-blueprint-target-tab="${escapeHtml(thesis.review.nextAction.targetTab)}" data-blueprint-target-id="${escapeHtml(thesis.review.nextAction.targetId)}">${escapeHtml(thesis.review.nextAction.label)} →</button>` : ""}
               <small class="gm-mastery-disclaimer">${escapeHtml(thesis.review.disclaimer)}</small>
             </section>
-          ` : '<p class="architect-ledger-empty">No declaration baseline yet. Save a mastery focus to begin a source-bound review.</p>'}
+          ` : '<p class="architect-ledger-empty">No declaration baseline yet. Save a mastery focus to start tracking it.</p>'}
           <small class="gm-mastery-disclaimer">${escapeHtml(thesis.disclaimer || "Your thesis changes the review lens, never simulation outcomes.")}</small>
         </section>
         <div class="architect-signal ${signal.ready ? "ready" : "awaiting"}">
-          <span class="franchise-horizon-label">Decision-memory signal · ${escapeHtml(signal.sampleSize)} receipt${signal.sampleSize === 1 ? "" : "s"}</span>
+          <span class="franchise-horizon-label">Decision memory · ${escapeHtml(signal.sampleSize)} logged decision${signal.sampleSize === 1 ? "" : "s"}</span>
           <strong>${escapeHtml(signal.title)}</strong>
           <span>${escapeHtml(signal.detail)}</span>
           <small>${escapeHtml(signal.disclaimer)}</small>
@@ -242,12 +227,12 @@ export function renderFranchiseArchitecture() {
             <div class="gm-mastery-paths">
               ${(mastery.paths || []).map((path) => `
                 <div class="gm-mastery-path ${escapeHtml(path.status)}" title="${escapeHtml(path.evidence)}">
-                  <span>${escapeHtml(path.label)}</span><strong>${escapeHtml(String(path.score))}/${escapeHtml(String(path.maxScore))}</strong><small>${escapeHtml(path.breakdown?.summary || `${path.evidenceCount} receipt${path.evidenceCount === 1 ? "" : "s"}`)}</small>
+                  <span>${escapeHtml(path.label)}</span><strong>${escapeHtml(String(path.score))}/${escapeHtml(String(path.maxScore))}</strong><small>${escapeHtml(path.breakdown?.summary || `${path.evidenceCount} move${path.evidenceCount === 1 ? "" : "s"}`)}</small>
                 </div>`).join("")}
             </div>
             <small class="gm-mastery-disclaimer">${escapeHtml(mastery.disclaimer)}</small>
           </section>
-        ` : '<p class="architect-ledger-empty">Mastery detail appears only after its source receipt loads.</p>'}
+        ` : '<p class="architect-ledger-empty">Mastery detail appears once your first moves are on record.</p>'}
         <div class="architect-ledger">
           <div class="architect-ledger-head"><strong>Architect's Ledger</strong><span class="small">Intent → execution → observed result → next adaptation</span></div>
           ${ledger.length ? `
@@ -726,7 +711,7 @@ export function renderSchedule() {
   }
   const controlledTeamId = state.dashboard?.controlledTeamId || null;
   const controlledOnBye = controlledTeamId && (schedule.byeTeams || []).includes(controlledTeamId);
-  weekText.textContent = `Week ${schedule.week} (${schedule.played ? "Played" : "Upcoming"})${controlledOnBye ? ` | ${controlledTeamId} bye week` : ""}`;
+  weekText.textContent = `Week ${schedule.week} (${schedule.played ? "Played" : "Upcoming"})${controlledOnBye ? ` | ${teamCode(controlledTeamId)} bye week` : ""}`;
   const standings = state.dashboard?.latestStandings || [];
   const rows = (schedule.games || []).map((game) => {
     const marquee = deriveMarqueeBadge(game, standings, schedule.week);
@@ -858,7 +843,7 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
 
 export function renderStandings() {
   const rows = (state.dashboard?.latestStandings || []).map((row) => ({
-    tm: row.team,
+    tm: teamCode(row.team),
     team: row.teamName,
     w: row.wins,
     l: row.losses,
@@ -870,6 +855,12 @@ export function renderStandings() {
     div: row.division
   }));
   renderTable("standingsTable", rows);
+  // S113 League Pulse loads with the League tab, not on the boot path.
+  if (document.getElementById("leagueLensPanel")) {
+    import("./leagueLensPanel.js")
+      .then((module) => module.renderLeagueLensPanel(state.dashboard))
+      .catch((error) => recordClientDiagnostic({ surface: "league", operation: "league-lens", error }));
+  }
 }
 
 export function renderWeekResults() {
@@ -883,7 +874,10 @@ export function renderWeekResults() {
   }));
   renderTable("weekTable", games);
 
-  const injuries = (state.dashboard?.injuryReport || []).map((entry) => ({
+  // S113: the Desk is about your club; the league-wide report lives in League news.
+  const ownTeamId = state.dashboard?.controlledTeamId;
+  const ownTeam = (entry) => !ownTeamId || entry.teamId === ownTeamId;
+  const injuries = (state.dashboard?.injuryReport || []).filter(ownTeam).map((entry) => ({
     player: entry.player,
     team: teamCode(entry.teamId),
     pos: entry.pos,
@@ -891,7 +885,7 @@ export function renderWeekResults() {
     weeks: entry.injury?.weeksRemaining || 0
   }));
 
-  const suspensions = (state.dashboard?.suspensionReport || []).map((entry) => ({
+  const suspensions = (state.dashboard?.suspensionReport || []).filter(ownTeam).map((entry) => ({
     player: entry.player,
     team: teamCode(entry.teamId),
     pos: entry.pos,

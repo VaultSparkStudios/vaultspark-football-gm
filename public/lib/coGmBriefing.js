@@ -105,9 +105,9 @@ export function buildCoGmBriefingPacket({
     recentDecisionReceipts: ledger,
     disclosure: {
       bounded: true,
-      included: ["current franchise authority", "ranked command", "pressure summary", "architect thesis", `up to ${MAX_RECEIPTS} decision receipts`],
-      excluded: ["save payload", "full roster ratings", "credentials", "personal identifiers", "hidden simulation state"],
-      note: "Player-created export from visible franchise authority. Descriptive context is not causal proof."
+      included: ["current team, season, and week", "ranked command", "pressure summary", "architect thesis", `up to ${MAX_RECEIPTS} recent decisions`],
+      excluded: ["save file", "full roster ratings", "credentials", "personal identifiers", "hidden simulation state"],
+      note: "Player-created export of what you can already see. It describes your situation; it does not prove what caused it."
     }
   };
 }

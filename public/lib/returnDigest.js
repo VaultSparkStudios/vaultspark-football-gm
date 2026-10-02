@@ -61,6 +61,10 @@ function returnSessionId(dashboard = {}, now = Date.now()) {
   return activeReturnSessions.get(scope);
 }
 
+function humanizeCheckpoint(value) {
+  return String(value ?? "").replace(/[-_]+/g, " ").trim() || "pending";
+}
+
 export function buildReturnBoundary(dashboard = {}, {
   timestamp = Date.now(),
   reason = "session-boundary",
@@ -174,8 +178,8 @@ export function buildReturnChapterAction(digest = {}) {
 export function formatSeasonThesisContinuation(chapter = {}) {
   const thesis = chapter.seasonThesis || null;
   if (!thesis) return "";
-  if (!thesis.thesisId) return "Season thesis remains unproven; no Opening Contract receipt is available.";
-  return `Thesis ${thesis.identity?.label || thesis.thesisId}: ${thesis.checkpointId} is ${thesis.checkpointStatus}.`;
+  if (!thesis.thesisId) return "Season thesis remains unproven; no Opening Contract is on record.";
+  return `Season promise (${thesis.identity?.label || "your plan"}): ${humanizeCheckpoint(thesis.checkpointId)} is ${humanizeCheckpoint(thesis.checkpointStatus)}.`;
 }
 
 export function formatElapsed(ms) {
@@ -200,12 +204,12 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
   const chapterAction = buildReturnChapterAction(digest);
 
   const recordLine = digest.recordDelta
-    ? `Record is now ${formatTeamRecord(digest.currentRecord, { separator: "-" })} (${["wins", "losses", "ties"].filter((key) => digest.recordDelta[key] !== 0).map((key) => `${digest.recordDelta[key] >= 0 ? "+" : ""}${digest.recordDelta[key]}${key[0].toUpperCase()}`).join(", ")} since the recorded session boundary).`
+    ? `Record is now ${formatTeamRecord(digest.currentRecord, { separator: "-" })} (${["wins", "losses", "ties"].filter((key) => digest.recordDelta[key] !== 0).map((key) => `${digest.recordDelta[key] >= 0 ? "+" : ""}${digest.recordDelta[key]}${key[0].toUpperCase()}`).join(", ")} since your last visit).`
     : digest.currentRecord
       ? `Current record: ${formatTeamRecord(digest.currentRecord, { separator: "-" })}.`
       : "";
   const weekLine = digest.weekAdvanced
-    ? `Your saved franchise moved from Year ${digest.fromYear} Week ${digest.fromWeek} to Year ${digest.toYear} Week ${digest.toWeek} since the recorded session boundary.`
+    ? `Your saved franchise moved from Year ${digest.fromYear} Week ${digest.fromWeek} to Year ${digest.toYear} Week ${digest.toWeek} since your last visit.`
     : "";
   const inboxLine =
     digest.unreadCount > 0
@@ -225,7 +229,7 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
   overlay.innerHTML = `
     <div class="return-digest-card">
       <div class="return-digest-header">Welcome Back</div>
-      <div class="return-digest-sub">Session boundary recorded ${escapeHtml(formatElapsed(digest.elapsedMs))} ago for ${escapeHtml(digest.teamName)}.</div>
+      <div class="return-digest-sub">Last here ${escapeHtml(formatElapsed(digest.elapsedMs))} ago with the ${escapeHtml(digest.teamName)}.</div>
       <ul class="return-digest-list">
         ${weekLine ? `<li>${escapeHtml(weekLine)}</li>` : ""}
         ${recordLine ? `<li>${escapeHtml(recordLine)}</li>` : ""}

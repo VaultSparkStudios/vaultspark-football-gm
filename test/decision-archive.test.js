@@ -43,5 +43,5 @@ test("Decision Archive HTML escapes receipts and states the non-causal boundary"
 test("Decision Archive keeps an explicit empty state", () => {
   const model = buildDecisionArchiveModel({ dashboard: { currentYear: 2028, controlledTeamId: "BUF" } });
   assert.equal(model.status, "incomplete");
-  assert.match(renderDecisionArchiveHtml(model), /No receipted General Manager decisions/);
+  assert.match(renderDecisionArchiveHtml(model), /No recorded General Manager decisions/);
 });

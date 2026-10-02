@@ -103,7 +103,7 @@ const STEPS = [
     title: "Your Scout Calls",
     body: `It's Week 1 of your first season. Your scouting director flags a prospect.
            You can act on this signal or wait — but scouting confidence decays if you ignore your board.
-           This is how the world-state system works: invest in your staff and they surface better intel.`,
+           Invest in your scouts and they bring you better intel.`,
     choices: [
       {
         id: "trust-scout",
@@ -184,7 +184,7 @@ export function mountTutorial({ onComplete, onSkip, scope = {}, completed = fals
       const status = document.createElement("span");
       status.className = "small";
       status.textContent = key === "scouting" && effect.status === "pending-draft-class"
-        ? "Pending: no draft prospect exists yet. This will apply to the real class when generated."
+        ? "Saved for later: this call applies to the draft class as soon as it is revealed."
         : "Applied from the current league state.";
       row.append(label, detail, status);
       list.appendChild(row);
@@ -272,7 +272,7 @@ export function mountTutorial({ onComplete, onSkip, scope = {}, completed = fals
         nextButton.textContent = "Applying Contract…";
         try {
           const receipt = await onComplete?.(buildStartScenarioRequest(selections));
-          if (!receipt?.effects) throw new Error("The league did not return an opening-contract receipt.");
+          if (!receipt?.effects) throw new Error("The league did not confirm your Opening Contract. Try again.");
           markTutorialSeen(scope, storage);
           renderReceipt(receipt);
         } catch (error) {

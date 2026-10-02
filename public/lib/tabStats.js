@@ -19,7 +19,7 @@ export function renderAnalytics() {
     avgTicket: analytics.ownerEconomy?.avgTicketPrice || 0,
     fanInterest: analytics.ownerEconomy?.avgFanInterest || 0
   }]);
-  const playmakers = (analytics.defensivePlaymakers || []).map((row) => ({ playerId: row.playerId, player: row.player, tm: row.tm, pos: row.pos, sacks: row.sacks || 0, int: row.int || 0, tkl: row.tkl || 0 }));
+  const playmakers = (analytics.defensivePlaymakers || []).map((row) => ({ playerId: row.playerId, player: row.player, tm: teamCode(row.tm), pos: row.pos, sacks: row.sacks || 0, int: row.int || 0, tkl: row.tkl || 0 }));
   renderTable("analyticsPlaymakersTable", playmakers);
   decoratePlayerColumnFromRows("analyticsPlaymakersTable", playmakers, { idKeys: ["playerId"] });
   renderAnalyticsChart();
@@ -70,7 +70,7 @@ export function renderStatsBenchmarkHint() {
   if (scope === "career") qualifiers.push("Career tables aggregate seasons, so use the baseline as a role anchor, not a direct total target.");
   if (scope === "season" && seasonType !== "regular") qualifiers.push("Displayed benchmark is still based on regular-season starter samples.");
   if (scope === "season" && !position && ["receiving", "rushing", "defense"].includes(category)) {
-    qualifiers.push("Choose a position filter for the cleanest NFL-average comparison.");
+    qualifiers.push("Choose a position filter for the cleanest pro-average comparison.");
   }
   box.textContent = [base, ...qualifiers].join(" ");
 }

@@ -24,3 +24,7 @@ docs/cache-ledger.ndjson
 CODEX_HANDOFF_2026-03-11.md
 CODEX_HANDOFF_2026-03-12.md
 context/.session-lock
+
+# Local secrets and gateway logs never enter git (keep only a placeholder).
+secrets/*
+!secrets/.gitkeep

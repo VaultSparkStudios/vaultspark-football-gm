@@ -10,8 +10,8 @@ export function resolveContactEmailReadiness(status = {}) {
   status = status || {};
   const checkedAt = status.checkedAt ? ` Checked ${status.checkedAt}.` : "";
   if (status.ok === true || status.status === "verified") return { status: "Verified", detail: status.detail || `football@playfranchisearchitect.com forwarding/copying is verified.${checkedAt}`.trim() };
-  if (status.status === "needs-check") return { status: "Needs check", detail: status.detail || `Send a real message to football@playfranchisearchitect.com and confirm receipt by Studio operations.${checkedAt}`.trim() };
-  return { status: "Unverified", detail: status.detail || "Need a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations" };
+  if (status.status === "needs-check") return { status: "Needs check", detail: status.detail || `Send a real message to football@playfranchisearchitect.com and confirm Studio operations received it.${checkedAt}`.trim() };
+  return { status: "Unverified", detail: status.detail || "Need proof that a real message to football@playfranchisearchitect.com reaches Studio operations" };
 }
 
 export function buildLaunchReadinessRows({ dashboard = null, saves = [], persistence = {}, observability = {}, speedrunChallenge = null, publicDomainStatus = {}, contactEmailStatus = {} } = {}) {

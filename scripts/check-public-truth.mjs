@@ -35,6 +35,58 @@ const FORBIDDEN_INTERNAL_VOCAB = [
   /Studio OS/
 ];
 
+// Ops-plane words that read as jargon or leak process on the marketing and
+// legal pages (S113). Scoped to the public website (top-level pages, their
+// metadata and the generated changelog), not to in-game modules, where a word
+// like "receipt" is a deliberate piece of game vocabulary.
+export const FORBIDDEN_MARKETING_VOCAB = [
+  /\breceipts?\b/i,
+  /\bshards?\b/i,
+  /\bSIL\b/,
+  /\bS\d{2,3}\b/,
+  /\bcanon(?!ical)\w*/i,
+  /\bschema \d/i,
+  /\ballowlist/i,
+  /Studio OS/
+];
+
+// The website surfaces the marketing gate reads. game.html is the app shell and
+// is covered by FORBIDDEN_INTERNAL_VOCAB only.
+export const MARKETING_JSON_SURFACES = ["public-identity.json", "agents.json", "footer-manifest.json", "content/claims.json", "manifest.webmanifest", ".well-known/llms.txt"];
+
+export function marketingVocabularyProblems(name, text) {
+  const problems = [];
+  for (const pattern of FORBIDDEN_MARKETING_VOCAB) {
+    const match = text.match(pattern);
+    if (match) problems.push(`${name} uses internal/jargon wording "${match[0]}" (${pattern})`);
+  }
+  return problems;
+}
+
+// Visible text only: markup attributes such as rel="canonical" or a JSON-LD
+// "@context": "https://schema.org" are not copy.
+function visibleCopy(html) {
+  return stripComments(html)
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, " ")
+    .replace(/<(?!meta\b)[^>]+>/gi, " ")
+    .replace(/<meta\b[^>]*\bcontent="([^"]*)"[^>]*>/gi, " $1 ");
+}
+
+/** Scan built output (pages, generated changelog and feed) for the same words. */
+export function inspectBuiltPublicVocabulary(outDir, files) {
+  const problems = [];
+  for (const name of files) {
+    const file = path.join(outDir, name);
+    if (!fs.existsSync(file)) continue;
+    if (name === "game.html") continue;
+    const raw = fs.readFileSync(file, "utf8");
+    const text = name.endsWith(".html") ? visibleCopy(raw) : raw;
+    problems.push(...marketingVocabularyProblems(name, text));
+  }
+  return { ok: problems.length === 0, problems };
+}
+
 function stripComments(html) {
   return html.replace(/<!--[\s\S]*?-->/g, "");
 }
@@ -145,12 +197,12 @@ export function inspectPublicTruth(root = rootDir) {
   // them rather than silently losing its subject.
   const landing = stripComments(fs.readFileSync(path.join(publicDir, "index.html"), "utf8"));
 
+  // S113: the landing page no longer publishes a source-file count (a count of
+  // modules is not a player-facing fact). The gate still refuses a literal
+  // count that disagrees with src/engine, should one ever come back.
   const statedEngineCounts = [...landing.matchAll(/(\d+) Engine Systems|class="stat-num">(\d+)<\/strong><span class="stat-label">Engine Systems/g)]
     .map((m) => Number(m[1] ?? m[2]));
-  const derivedEngineCount = landing.includes('class="stat-num" data-engine-system-count>{{ENGINE_SYSTEM_COUNT}}</strong><span class="stat-label">Engine Systems');
-  if (!statedEngineCounts.length && !derivedEngineCount) {
-    problems.push("index.html no longer declares a derived or literal engine-system count; update check-public-truth.mjs if that is intentional");
-  }
+  const derivedEngineCount = landing.includes("{{ENGINE_SYSTEM_COUNT}}");
   if (statedEngineCounts.length && derivedEngineCount) problems.push("index.html has conflicting derived and literal engine-system counts");
   for (const stated of statedEngineCounts) {
     if (stated !== engineCount) {
@@ -207,6 +259,17 @@ export function inspectPublicTruth(root = rootDir) {
     for (const pattern of FORBIDDEN_INTERNAL_VOCAB) {
       if (pattern.test(source)) problems.push(`${jsonName} leaks internal vocabulary matching ${pattern}`);
     }
+  }
+
+  // Website copy: every top-level page except the app shell, plus the
+  // metadata and claims sources it is rendered from.
+  const marketingPages = shippedFiles.filter((name) => /^[^/]+\.html$/.test(name) && name !== "game.html");
+  for (const name of marketingPages) {
+    problems.push(...marketingVocabularyProblems(name, visibleCopy(fs.readFileSync(path.join(publicDir, name), "utf8"))));
+  }
+  for (const name of MARKETING_JSON_SURFACES) {
+    const file = path.join(publicDir, name);
+    if (fs.existsSync(file)) problems.push(...marketingVocabularyProblems(name, fs.readFileSync(file, "utf8")));
   }
 
   const surfaceCount = shippedFiles.length;

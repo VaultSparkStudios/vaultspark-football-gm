@@ -46,9 +46,13 @@ test("evidence and freshness surfaces are never precached", () => {
   assert.equal(shouldPrecache("src/runtime/GameSession.js"), true);
   assert.equal(shouldPrecache("photo.bin"), false, "unknown binaries stay out of the manifest");
   assert.equal(shouldPrecache("styles.css"), false, "plain styles.css duplicates the hashed stylesheet (S70)");
+  assert.equal(shouldPrecache("site.css"), false, "plain site.css duplicates the hashed website stylesheet");
   assert.equal(shouldPrecache("styles.abc123def0.css"), true, "the hashed stylesheet is the one HTML references");
   assert.equal(shouldPrecache("community-stats.js"), false, "the stale-prone plain Community Pulse module is not precached");
   assert.equal(shouldPrecache("community-stats.abc123def0.js"), true, "the content-hashed Community Pulse module is precached");
+  assert.equal(shouldPrecache("images/cover.png"), false, "the 378 KB social card is never needed by the game shell (S113)");
+  assert.equal(shouldPrecache("images/screens/desk.png"), false, "marketing screenshots stay off the install path (S113)");
+  assert.equal(shouldPrecache("images/mark.svg"), true, "brand icons the shell renders stay precached");
 });
 
 test("manifest is deterministic, content-versioned, and byte-accounted", async () => {

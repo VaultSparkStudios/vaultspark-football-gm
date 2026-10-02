@@ -11,8 +11,8 @@ function nowLane(commands = [], latestLedger = null) {
       label: "Now",
       authority: "Franchise Command",
       title: "Load the live franchise state",
-      detail: "No ranked controlled action is available yet.",
-      milestone: "Establish a playable league authority.",
+      detail: "No next move is ranked yet.",
+      milestone: "Start or load a league to begin.",
       targetTab: "overviewTab",
       targetId: "franchiseCommandCenter",
       tone: "muted"
@@ -24,7 +24,7 @@ function nowLane(commands = [], latestLedger = null) {
     authority: safeText(card.reasonCode, "franchise-command"),
     title: safeText(card.title, "Review the next command"),
     detail: safeText(card.detail, card.reason),
-    milestone: card.blocking ? "Resolve this controlled choice before advance." : safeText(latestLedger?.nextAdaptation, card.reason || "Commit the next source-derived action."),
+    milestone: card.blocking ? "Settle this before you advance." : safeText(latestLedger?.nextAdaptation, card.reason || "Make your next move."),
     targetTab: card.targetTab || "overviewTab",
     targetId: card.action === "advance-week" ? "advanceWeekBtn" : (card.targetId || "franchiseCommandCenter"),
     tone: card.tone || "accent"
@@ -64,7 +64,7 @@ function legacyLane(gmLegacy = null, mastery = null, trophyRoad = null) {
       targetTab: "overviewTab",
       targetId: "franchiseArchitecture",
       tone: focus.source === "player-authored" ? "positive" : "accent",
-      evidenceBoundary: "This objective organizes existing receipts. It creates no hidden bonus and predicts no result."
+      evidenceBoundary: "This objective organizes what you have already done. It creates no hidden bonus and predicts no result."
     };
   }
   const persona = gmLegacy?.persona || null;
@@ -75,8 +75,8 @@ function legacyLane(gmLegacy = null, mastery = null, trophyRoad = null) {
       id: "legacy",
       label: "Legacy",
       authority: "General Manager Legacy",
-      title: "Legacy authority loading",
-      detail: "Career evidence appears after the live legacy receipt loads.",
+      title: "Your legacy is loading",
+      detail: "Your career record appears once it loads.",
       milestone: "Complete a season to establish a career record.",
       targetTab: "overviewTab",
       targetId: "gmLegacyCard",
@@ -113,7 +113,7 @@ export function buildProgressiveWeekRoom({ horizons = [], signal = null, ledger 
         sampleSize: 0,
         title: "Decision memory awaiting evidence",
         detail: "No committed architecture signal is available yet.",
-        disclaimer: "No result is inferred from an empty ledger."
+        disclaimer: "Nothing is inferred until there are decisions to review."
       },
       ledger: Array.isArray(ledger) ? ledger : [],
       mastery: mastery || null
@@ -141,7 +141,7 @@ export function buildArchitectureSignal(entries = [], limit = 8) {
       ready: false,
       sampleSize: sample.length,
       title: "Identity signal awaiting declared tactics",
-      detail: "The ledger needs at least one committed tactic before it can describe decision consistency.",
+      detail: "Commit at least one tactic before your decision pattern can be described.",
       disclaimer: "No performance inference is made from an empty or undeclared sample."
     };
   }
@@ -155,8 +155,8 @@ export function buildArchitectureSignal(entries = [], limit = 8) {
   const aligned = observedAlignment.filter((entry) => entry.outcome.aligned).length;
   const consistencyPct = Math.round((dominant.count / declared.length) * 100);
   const alignmentText = observedAlignment.length
-    ? `${aligned}/${observedAlignment.length} film receipts aligned with declared intent`
-    : "No alignment receipts are available yet";
+    ? `${aligned}/${observedAlignment.length} film reviews matched your declared intent`
+    : "No film reviews are available yet";
   return {
     ready: true,
     sampleSize: sample.length,

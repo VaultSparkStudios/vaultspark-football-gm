@@ -87,7 +87,7 @@ test(`first session commits exactly one ${scenario.name} with a durable evidence
     // A bye is an authoritative empty state, not a missing read: the plan says
     // so in its own receipt and must not have asked for a tactic.
     await expect(byeReceipt).toContainText("bye week — no opponent");
-    await expect(byeReceipt).toContainText("gm-decision → bye");
+    await expect(byeReceipt).toContainText("GM call → bye week");
     await expect(page.locator("#halftimeAdjustModal")).toBeHidden();
     await expect(page.locator("#architectPlanRehearsalModal")).toBeHidden();
     expect(await page.evaluate(() => window.__weeklyModalOpens)).toEqual([]);
@@ -95,7 +95,7 @@ test(`first session commits exactly one ${scenario.name} with a durable evidence
     expect(commit.architectEntry.outcome.recordAfter).toEqual(commit.architectEntry.outcome.recordBefore);
   } else {
     await expect(page.locator(".weekly-plan-receipt")).toContainText("Weekly plan committed");
-    await expect(page.locator(".weekly-plan-receipt")).toContainText("tactic run-heavy");
+    await expect(page.locator(".weekly-plan-receipt")).toContainText("tactic: run heavy");
     await expect(page.locator(".weekly-plan-receipt")).toContainText("reviewed against");
   }
   await page.locator("details.architecture-review summary").click();
@@ -103,7 +103,7 @@ test(`first session commits exactly one ${scenario.name} with a durable evidence
   await expect(page.locator(".architecture-mastery")).toBeVisible();
   await expect(page.locator(".gm-mastery-signature")).toBeVisible();
   await expect(page.locator(".gm-mastery-signature")).toContainText("Strongest signature");
-  await expect(page.locator(".gm-mastery-signature")).toContainText(/source receipt|Awaiting source receipts/);
+  await expect(page.locator(".gm-mastery-signature")).toContainText(/recorded move|Still taking shape/);
   await expect(page.locator(".architecture-mastery .gm-mastery-disclaimer")).toContainText("not a causal claim");
   await expect(page.locator(".week-room-horizon").first()).not.toHaveText(beforeSeasonChapter || "");
   await expect(page.locator("#yearCard")).toContainText(`/ W${before.currentWeek + 1}`);

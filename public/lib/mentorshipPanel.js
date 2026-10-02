@@ -1,5 +1,5 @@
 import { state, api } from "./appState.js";
-import { escapeHtml } from "./appCore.js";
+import { escapeHtml, humanizeId as humanizeReason } from "./appCore.js";
 
 let mentorshipAuthority = null;
 
@@ -60,7 +60,7 @@ export async function renderVeteranMentorshipPanel() {
       Maximum ${Number(data.budget?.maximumPairs || 0)} pair(s), ${Number(data.budget?.totalOvr || 0)} total OVR.
     </div>
     ${latestDissolution ? `
-      <div class="mentorship-note small muted">Latest dissolved covenant: ${escapeHtml(latestDissolution.reasonCode)}.</div>`
+      <div class="mentorship-note small muted">Latest mentorship ended: ${escapeHtml(humanizeReason(latestDissolution.reasonCode))}.</div>`
       : ""}
   `;
 }

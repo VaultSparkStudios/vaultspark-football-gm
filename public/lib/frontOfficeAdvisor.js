@@ -217,7 +217,7 @@ function reasonLines(s) {
       : `${s.weeksToDeadline} week${s.weeksToDeadline === 1 ? "" : "s"} to the Week ${s.deadlineWeek} deadline.`);
   }
   if (s.injuries !== null && s.injuries > 0) {
-    lines.push(`${s.injuries} controlled-team injur${s.injuries === 1 ? "y" : "ies"} on the report right now.`);
+    lines.push(`${s.injuries} of your players ${s.injuries === 1 ? "is" : "are"} on the injury report right now.`);
   }
   if (s.topNeed) {
     lines.push(`${s.rosterNeeds.length} ranked need${s.rosterNeeds.length === 1 ? "" : "s"}; ${s.topNeed} sits first.`);
@@ -442,7 +442,7 @@ export function buildAdvice(packet = {}, { lastWeekAdvice = null, lastWeekReceip
     const described = describeWeeklyPlanReceipt(lastWeekReceipt);
     advice.counterfactual = {
       saidLastWeek: String(lastWeekAdvice.call?.title || lastWeekAdvice.call?.id || "no call recorded"),
-      playerDid: described ? `${described.title}: ${described.detail}` : "No plan receipt recorded.",
+      playerDid: described ? `${described.title}: ${described.detail}` : "No plan recorded.",
       agreed: agreement.agreed,
       basis: agreement.basis,
       note: agreement.agreed === null

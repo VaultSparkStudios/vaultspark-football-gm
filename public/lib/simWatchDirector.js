@@ -1,7 +1,7 @@
 import { api, state } from "./appState.js";
 import { escapeHtml, showToast, teamCode } from "./appCore.js";
 import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
-import { buildScoringTimeline, createSimWatchPlayback, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
+import { buildGameFlow, buildScoringTimeline, createSimWatchPlayback, deriveFieldState, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
 import { playSound } from "./audioFeedback.js";
 import { deriveMarqueeBadge } from "./marqueeBadge.js";
 import { closeModal, openModal } from "./modalManager.js";
@@ -103,18 +103,38 @@ function updateField(boxScore, play, index) {
   const field = document.getElementById("simWatchField");
   const possession = document.getElementById("simWatchPossession");
   const yardLine = document.getElementById("simWatchYardLine");
+  const downDistance = document.getElementById("simWatchDownDistance");
   if (!field) return;
-  const description = String(play?.description || "").toLowerCase();
+  const teamIds = resolveBoxScoreTeamIds(boxScore);
+  const spot = deriveFieldState(play, teamIds);
   const offense = play?.offenseTeamId || "";
-  let x = 50 + ((index * 13) % 42) - 21;
-  if (description.includes("touchdown")) x = offense === resolveBoxScoreTeamIds(boxScore).home ? 92 : 8;
-  if (description.includes("interception") || description.includes("fumble")) x = 100 - x;
-  x = Math.max(8, Math.min(92, x));
-  field.style.setProperty("--ball-x", String(x));
+  // Older saves may lack a recorded spot; fall back to midfield rather than invent one.
+  field.style.setProperty("--ball-x", String(spot ? spot.x : 50));
+  field.classList.toggle("red-zone", Boolean(spot?.redZone));
   if (possession) possession.textContent = offense ? `${teamCode(offense)} ball` : "Live drive";
-  if (yardLine) yardLine.textContent = x >= 50 ? `Opp ${Math.max(1, Math.round(100 - x))}` : `Own ${Math.max(1, Math.round(x))}`;
+  if (yardLine) yardLine.textContent = spot?.spotLabel || "—";
+  if (downDistance) downDistance.textContent = spot?.downLabel || "";
+  renderGameFlow(index);
 }
 
+function renderGameFlow(index) {
+  const svg = document.getElementById("simWatchFlow");
+  if (!svg || !context?.flow?.length) return;
+  const flow = context.flow;
+  const limit = Math.max(1, ...flow.map((value) => Math.abs(value)), 7);
+  const width = 300;
+  const height = 40;
+  const through = Math.max(0, Math.min(flow.length - 1, index));
+  const step = width / Math.max(1, flow.length - 1);
+  const points = flow.slice(0, through + 1).map((margin, i) => `${(i * step).toFixed(1)},${(height / 2 - (margin / limit) * (height / 2 - 2)).toFixed(1)}`).join(" ");
+  const homeCode = teamCode(context.teamIds.home);
+  const awayCode = teamCode(context.teamIds.away);
+  svg.innerHTML = `
+    <line x1="0" y1="${height / 2}" x2="${width}" y2="${height / 2}" class="sw-flow-axis"></line>
+    <polyline points="${points}" class="sw-flow-line"></polyline>
+    <text x="2" y="9" class="sw-flow-label">${escapeHtml(homeCode)} ahead</text>
+    <text x="2" y="${height - 2}" class="sw-flow-label">${escapeHtml(awayCode)} ahead</text>`;
+}
 function scoringThrough(index) {
   const totals = { away: 0, home: 0 };
   for (const score of context.scoreTimeline) {
@@ -158,7 +178,7 @@ function renderDirector(snapshot) {
     const mode = context?.mode === "reel" ? "Final Reel · " : "";
     label.textContent = snapshot.total
       ? `${mode}${snapshot.quarter} · play ${snapshot.quarterPlay}/${snapshot.quarterTotal} · drive ${snapshot.drive}/${snapshot.driveTotal} · ${snapshot.played}/${snapshot.total}`
-      : "Pregame · no play receipts";
+      : "Pregame · no plays yet";
   }
 }
 
@@ -199,10 +219,11 @@ export async function runSimWatch(gameId) {
   try {
     const response = await api(`/api/boxscore?gameId=${encodeURIComponent(gameId)}`);
     const boxScore = response?.boxScore;
-    if (!boxScore) throw new Error("Box score did not include a Sim-Watch receipt.");
+    if (!boxScore) throw new Error("This game has no play-by-play to watch.");
     const plays = boxScore.playByPlay || [];
     const scoring = boxScore.scoringSummary || [];
     context = { boxScore, teamIds: resolveBoxScoreTeamIds(boxScore), plays, fullPlays: plays, scoring, scoreTimeline: buildScoringTimeline(plays, scoring), scoringSet: new Set(scoring.map((entry) => entry.description)), mode: "full", renderedIndex: -1 };
+  context.flow = buildGameFlow(plays, context.scoreTimeline, context.teamIds);
     active = true;
     renderHeader(boxScore);
     overlay.hidden = false;
@@ -236,7 +257,7 @@ export function playSimWatchFinalReel() {
   if (!active || !context) return null;
   const reel = deriveFinalReel(context.fullPlays || context.plays, context.scoring, 8);
   if (!reel.length) {
-    showToast("Final Reel is unavailable because this game has no high-impact play receipts.");
+    showToast("Final Reel is unavailable because this game had no big plays.");
     return null;
   }
   controller?.stop();

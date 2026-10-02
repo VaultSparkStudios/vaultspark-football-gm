@@ -362,7 +362,7 @@ export function showGmDecisionModal(decision) {
           ${subject}
           ${preview.timing ? `<span><strong>When</strong> ${escapeHtml(preview.timing)}</span>` : ""}
           ${preview.exactAction ? `<span><strong>Action</strong> ${escapeHtml(preview.exactAction)}</span>` : ""}
-          ${preview.successRule ? `<span><strong>Receipt</strong> ${escapeHtml(preview.successRule)}</span>` : ""}
+          ${preview.successRule ? `<span><strong>Success</strong> ${escapeHtml(preview.successRule)}</span>` : ""}
           ${preview.reversibility ? `<span><strong>Boundary</strong> ${escapeHtml(preview.reversibility)}</span>` : ""}
           ${availability}
         </div>

@@ -28,7 +28,7 @@ export function buildDecisionAnthology({
       seasonYear,
       status: cut.status,
       turningPointCount: cut.turningPoints.length,
-      headline: cut.turningPoints[0]?.title || "No receipted turning point",
+      headline: cut.turningPoints[0]?.title || "No recorded turning point",
       sourceCoverage: Object.values(cut.sources).filter((count) => count > 0).length,
       missingSources: cut.missingSources,
       turningPoints: cut.turningPoints
@@ -40,6 +40,6 @@ export function buildDecisionAnthology({
     status: volumes.length ? (volumes.some((volume) => volume.status === "complete") ? "evidence-rich" : "partial") : "incomplete",
     seasonsObserved: volumes.length,
     volumes,
-    disclaimer: "Volumes preserve the receipt coverage available in each season. Sparse years remain sparse, and editorial rank is not causal proof."
+    disclaimer: "Each volume keeps only what was recorded that season. Sparse years remain sparse, and editorial rank is not causal proof."
   };
 }

@@ -107,7 +107,7 @@ test("the current panel carries a bounded recent receipt journal with truthful w
     marginBand: "within3",
     marginError: 2
   }]);
-  assert.match(html, /Recent receipts/);
+  assert.match(html, /Recent results/);
   assert.match(html, /Y2026 W4/);
   assert.match(html, /winner hit/);
   assert.match(html, /within 3 \(2 off\)/);

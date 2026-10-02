@@ -1,0 +1,15 @@
+{
+  "name": "Franchise Architect: Football",
+  "short_name": "Franchise Architect",
+  "description": "A football franchise management game that runs in your browser. Free early access.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090c0e",
+  "theme_color": "#090c0e",
+  "icons": [
+    { "src": "./images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./images/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "./images/franchise-architect-mark.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

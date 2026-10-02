@@ -364,7 +364,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
   if (injuries.length) {
     cards.push({
       kicker: "Trainer report",
-      title: `${injuries.length} controlled-team ${injuries.length === 1 ? "injury" : "injuries"}`,
+      title: `${injuries.length} ${injuries.length === 1 ? "injury" : "injuries"} on your roster`,
       detail: "Check depth before advancing the week.",
       targetTab: "depthTab",
       targetId: "depthTable",
@@ -449,7 +449,7 @@ function renderChoiceBoundary(preview = null) {
     preview.subject?.name ? `Who: ${preview.subject.name}${preview.subject.position ? ` (${preview.subject.position})` : ""}` : null,
     preview.timing ? `When: ${preview.timing}` : null,
     preview.exactAction ? `Action: ${preview.exactAction}` : null,
-    preview.successRule ? `Receipt: ${preview.successRule}` : null
+    preview.successRule ? `Success: ${preview.successRule}` : null
   ].filter(Boolean);
   if (preview.availability === "unavailable") rows.push("Availability: no eligible immediate candidate; fails closed or becomes the declared promise.");
   return rows.length

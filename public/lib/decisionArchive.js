@@ -36,19 +36,21 @@ export function buildDecisionArchiveModel({ dashboard = {}, transactions = [], s
     activeYear,
     volume,
     disclaimer: anthology.disclaimer,
-    disclosure: "Only stored weekly commands, completed trades, and draft receipts are shown. Missing sources stay missing."
+    disclosure: "Only saved weekly plans, completed trades, and draft picks are shown. Anything not recorded stays blank."
   });
 }
 
+const SOURCE_LABELS = Object.freeze({ weeklyPlans: "weekly plans", gmChoices: "GM choices", trades: "trades", draftCalls: "draft calls" });
+
 export function renderDecisionArchiveHtml(model = {}) {
   if (!model.volume) {
-    return `<div class="history-empty">No receipted General Manager decisions are archived yet. Complete a weekly plan, trade, or draft call to open the first volume.</div>
+    return `<div class="history-empty">No recorded General Manager decisions are archived yet. Complete a weekly plan, trade, or draft call to open the first volume.</div>
       <p class="small muted">${escapeHtml(model.disclaimer || "Sparse seasons remain sparse; no result is inferred.")}</p>`;
   }
   const volume = model.volume;
   const missing = volume.missingSources?.length
-    ? `<div class="history-chip-row">${volume.missingSources.map((source) => `<span class="history-chip">Missing ${escapeHtml(source)}</span>`).join("")}</div>`
-    : `<div class="history-chip-row"><span class="history-chip">All four receipt families represented</span></div>`;
+    ? `<div class="history-chip-row">${volume.missingSources.map((source) => `<span class="history-chip">Missing ${escapeHtml(SOURCE_LABELS[source] || source)}</span>`).join("")}</div>`
+    : `<div class="history-chip-row"><span class="history-chip">All four decision types recorded</span></div>`;
   const cards = volume.turningPoints?.length
     ? volume.turningPoints.map((point) => `<article class="history-card decision-archive-card">
         <div class="history-card-top">
@@ -66,11 +68,11 @@ export function renderDecisionArchiveHtml(model = {}) {
         </div>
         <p class="small muted">${escapeHtml(point.whyRanked)} ${escapeHtml(point.limitations)}</p>
       </article>`).join("")
-    : `<div class="history-empty">This volume has source rows but no bounded turning point.</div>`;
+    : `<div class="history-empty">This volume has records but no clear turning point.</div>`;
   return `<div class="history-spotlight">
       <div class="history-spotlight-mark">
         <div class="history-spotlight-label">${escapeHtml(`Volume ${volume.seasonYear} · ${volume.status}`)}</div>
-        <div class="history-spotlight-meta">${escapeHtml(`${volume.turningPointCount} receipted turning point${volume.turningPointCount === 1 ? "" : "s"} · ${volume.sourceCoverage}/4 source families`)}</div>
+        <div class="history-spotlight-meta">${escapeHtml(`${volume.turningPointCount} recorded turning point${volume.turningPointCount === 1 ? "" : "s"} · ${volume.sourceCoverage}/4 decision types`)}</div>
       </div>
       ${missing}
     </div>

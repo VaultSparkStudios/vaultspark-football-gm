@@ -87,8 +87,8 @@ test("league story card html escapes source-derived values", () => {
   assert.match(html, /A&amp;B/);
   assert.match(html, /MVP &lt;bad&gt;/);
   assert.doesNotMatch(html, /<bad>/);
-  assert.match(html, /Time Capsule Receipts/);
-  assert.match(html, /Prediction Ledger/);
+  assert.match(html, /Time Capsule Grades/);
+  assert.match(html, /Prediction Record/);
   assert.match(html, /Winner accuracy &lt;unsafe&gt;/);
   assert.doesNotMatch(html, /<bad>@BUF/);
 });
@@ -127,8 +127,8 @@ test("league story export includes truthful aggregate and recent local predictio
     assert.match(story.predictionRecent, /Y2031 W4 NYJ@BUF: winner hit, exact margin/);
 
     const html = renderStoryHTML(story);
-    assert.match(html, /Prediction Ledger/);
-    assert.match(html, /Recent Prediction Receipts/);
+    assert.match(html, /Prediction Record/);
+    assert.match(html, /Recent Predictions/);
     assert.match(html, /Winner accuracy 50%/);
   });
 });

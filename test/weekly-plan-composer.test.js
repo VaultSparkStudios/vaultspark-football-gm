@@ -89,7 +89,7 @@ test("explicit no-plan remains honest and commit receipt names source authority"
   });
   assert.equal(committed.status, "committed");
   assert.equal(committed.authority.teamId, "BUF");
-  assert.match(describeWeeklyPlanReceipt(committed).detail, /explicit no-plan/);
+  assert.match(describeWeeklyPlanReceipt(committed).detail, /no game plan \(your call\)/);
   assert.match(committed.disclaimer, /does not claim/);
 });
 
@@ -126,7 +126,7 @@ test("stable standing plans emit an honest reinforcement step instead of a fabri
     "standing-plan-reinforced"
   ]);
   assert.equal(preview.receipt.review.reviewed, false);
-  assert.match(describeWeeklyPlanReceipt(preview.receipt).detail, /reinforced from film-2030-7-BUF-run-heavy/);
+  assert.match(describeWeeklyPlanReceipt(preview.receipt).detail, /reinforced from your last game plan · GM call → game plan → plan kept/);
 });
 
 test("an active controlled-team postseason gate uses the same inspect-plan-commit contract", async () => {

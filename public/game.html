@@ -43,7 +43,7 @@
         <button class="inbox-bell-btn" id="openInboxBtn" aria-label="Open GM Inbox" title="GM Inbox">
           <svg class="ui-icon" aria-hidden="true"><use href="#icon-inbox"></use></svg><span id="inboxBadge" class="inbox-badge" hidden>0</span>
         </button>
-        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">◐</button>
+        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme" aria-label="Switch between light and dark theme">◐</button>
         <button id="backSetupBtn" data-testid="back-setup-btn">Main Menu</button>
         <span id="statusChip" data-testid="status-chip" class="chip">Loading...</span>
       </div>
@@ -167,7 +167,19 @@
             </div>
           </div>
 
+          <!-- S113: one "next move" lead — the ranked calls and the Advisor's read
+               sit side by side, and the progress tracks share one rail below. -->
+          <div class="desk-lead">
           <section id="franchiseCommandCenter" class="panel franchise-command-center" aria-live="polite"></section>
+          <section id="frontOfficeAdvisorPanel" class="panel front-office-advisor" aria-labelledby="frontOfficeAdvisorTitle" aria-live="polite" hidden>
+            <div class="franchise-command-head">
+              <div><span class="brand-kicker">Front Office Advisor</span><h3 id="frontOfficeAdvisorTitle">The room's read on this week</h3></div>
+              <span id="frontOfficeAdvisorTally" class="small">No calls scored yet</span>
+            </div>
+            <div id="frontOfficeAdvisorContent"></div>
+          </section>
+          </div>
+          <div class="desk-rail">
           <section id="firstSeasonContract" class="panel first-season-contract" aria-labelledby="firstSeasonContractTitle" aria-live="polite" hidden>
             <div class="franchise-command-head">
               <div><span class="brand-kicker">First Season Contract</span><h3 id="firstSeasonContractTitle">Five things a first-year GM gets judged on</h3></div>
@@ -176,33 +188,15 @@
             <ol id="firstSeasonContractList" class="first-season-contract-list"></ol>
             <div class="row compact"><button id="firstSeasonContractDismissBtn" type="button" class="btn-sm">I know the job</button></div>
           </section>
-          <section id="frontOfficeAdvisorPanel" class="panel front-office-advisor" aria-labelledby="frontOfficeAdvisorTitle" aria-live="polite" hidden>
-            <div class="franchise-command-head">
-              <div><span class="brand-kicker">Front Office Advisor</span><h3 id="frontOfficeAdvisorTitle">The room's read on this week</h3></div>
-              <span id="frontOfficeAdvisorTally" class="small">No calls scored yet</span>
-            </div>
-            <div id="frontOfficeAdvisorContent"></div>
-          </section>
-          <section id="coGmBriefPanel" class="panel" aria-labelledby="coGmBriefTitle">
-            <div class="franchise-command-head">
-              <div><span class="brand-kicker">Agent-ready decision handoff</span><h3 id="coGmBriefTitle">Co-GM Brief</h3></div>
-              <span id="coGmBriefStatus" class="small">Live franchise authority</span>
-            </div>
-            <div id="coGmBriefContent" aria-live="polite"></div>
-            <div class="row compact">
-              <button id="coGmCopyBtn" type="button" class="btn-sm">Copy JSON</button>
-              <button id="coGmDownloadBtn" type="button" class="btn-sm">Download brief</button>
-            </div>
-            <p class="small muted">Player-created, allowlisted context only: no save payload, credentials, full roster ratings, personal identifiers, or hidden simulation state.</p>
-          </section>
           <section id="trophyRoadPanel" class="panel trophy-road-panel" aria-labelledby="trophyRoadTitle">
-            <div class="trophy-road-head"><div><span class="brand-kicker">Trophy Road</span><h3 id="trophyRoadTitle">The next marks within reach</h3></div><span class="small">Live truth · no invented progress</span></div>
+            <div class="trophy-road-head"><div><span class="brand-kicker">Trophy Road</span><h3 id="trophyRoadTitle">The next marks within reach</h3></div><span class="small">Real progress only</span></div>
             <div id="trophyRoadContent" aria-live="polite"></div>
           </section>
+          </div>
           <section id="franchiseArchitecture" class="panel franchise-architecture" aria-labelledby="franchiseArchitectureTitle">
             <div class="franchise-architecture-head">
-              <div><span class="brand-kicker">The Week Room</span><h3 id="franchiseArchitectureTitle">One call now · every horizon intact</h3></div>
-              <span class="small">Current authority first; evidence on demand</span>
+              <div><span class="brand-kicker">The Week Room</span><h3 id="franchiseArchitectureTitle">This week, this season, your legacy</h3></div>
+              <span class="small">The call that matters now; the detail when you want it</span>
             </div>
             <div id="franchiseArchitectureContent" aria-live="polite"></div>
           </section>
@@ -242,6 +236,7 @@
               <h2>Roster Needs</h2>
               <div class="table-wrap"><table id="needsTable" data-testid="needs-table"></table></div>
               <h3>Injuries / Suspensions</h3>
+              <div id="injuryOverlayCard" hidden></div>
               <div class="table-wrap"><table id="injuryTable" data-testid="injury-table"></table></div>
               <section id="rehabCommandCenter" class="rehab-command-center" aria-live="polite" hidden></section>
             </div>
@@ -260,15 +255,12 @@
           <!-- ── Owner Ultimatum Banner ──────────────────────────────────── -->
           <div id="ownerUltimatumBanner" hidden></div>
 
-          <!-- ── World-State Pulse Row (Fan Sentiment, Injuries, Stat Leaders) ─ -->
-          <div class="panel split triple">
+          <!-- ── World-State Pulse Row (Fan Sentiment, Stat Leaders). S113: injuries
+               live once, beside Roster Needs, instead of three times on the Desk. ─ -->
+          <div class="panel split">
             <div>
               <h3>Fan Pulse</h3>
               <div id="fanSentimentCard" hidden></div>
-            </div>
-            <div>
-              <h3>Active Injuries</h3>
-              <div id="injuryOverlayCard" hidden></div>
             </div>
             <div>
               <h3>Stat Leaders</h3>
@@ -287,6 +279,22 @@
             </div>
             <div id="tradeDeadlineFrenzy"></div>
           </div>
+
+          <details class="panel desk-more">
+            <summary><span class="brand-kicker">Bring your own AI</span> Co-GM Brief</summary>
+            <section id="coGmBriefPanel" aria-labelledby="coGmBriefTitle">
+              <div class="franchise-command-head">
+                <div><h3 id="coGmBriefTitle">Co-GM Brief</h3></div>
+                <span id="coGmBriefStatus" class="small">Your franchise this week</span>
+              </div>
+              <div id="coGmBriefContent" aria-live="polite"></div>
+              <div class="row compact">
+                <button id="coGmCopyBtn" type="button" class="btn-sm">Copy for your AI assistant</button>
+                <button id="coGmDownloadBtn" type="button" class="btn-sm">Download brief</button>
+              </div>
+              <p class="small muted">Paste this into any AI chat for a second opinion. It contains only your franchise summary: no save file, passwords, full ratings, personal details, or hidden simulation data. The game itself never calls an AI service.</p>
+            </section>
+          </details>
 
         </section>
 
@@ -375,7 +383,7 @@
           </div>
         </section>
 
-        <section id="depthTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-roster" tabindex="0">
+        <section id="depthTab" class="tab-panel" role="tabpanel" aria-label="Depth Chart" tabindex="0">
           <nav class="team-mode-switch" aria-label="Team workspace">
             <button type="button" data-team-mode="rosterTab" aria-pressed="false">Roster</button>
             <button type="button" data-team-mode="depthTab" aria-pressed="true">Depth Chart</button>
@@ -457,7 +465,7 @@
           </div>
 
           <div class="panel">
-            <h2>Retirement Overrides</h2>
+            <h2>Comeback Targets</h2>
             <div class="row">
               <label>Position
                 <select id="retiredPosFilter">
@@ -790,6 +798,7 @@
             <div class="overview-team-crest" data-league-team-crest aria-hidden="true"></div>
             <div><span class="narrative-panel-kicker">Your club in the league</span><strong id="leagueTeamIdentityLabel">League context</strong></div>
           </div>
+          <section id="leagueLensPanel" class="panel league-lens" aria-labelledby="leagueLensTitle" aria-live="polite" hidden></section>
           <div class="panel split">
             <div>
               <h2>Standings</h2>
@@ -830,7 +839,7 @@
               <h2>League Charts</h2>
               <canvas id="analyticsChart" height="160"></canvas>
             </div>
-            <div>
+            <div class="dev-only" data-dev-surface hidden aria-hidden="true">
               <h2>Long Sim Jobs</h2>
               <div class="row compact">
                 <label>Seasons <input id="jobSeasonsInput" type="number" value="10" min="1" max="200" /></label>
@@ -871,7 +880,7 @@
                 <div class="table-wrap"><table id="nfcBracketTable" data-testid="nfc-bracket-table"></table></div>
               </div>
             </div>
-            <h3>Super Bowl</h3>
+            <h3>Championship Game</h3>
             <div class="table-wrap"><table id="sbBracketTable" data-testid="sb-bracket-table"></table></div>
           </div>
         </section>
@@ -987,7 +996,7 @@
                   <div id="allPro2Gallery" class="history-gallery compact"></div>
                   <h3>All-Pro Third Team</h3>
                   <div id="allPro3Gallery" class="history-gallery compact"></div>
-                  <h3>Pro Bowl Roster</h3>
+                  <h3>All-Star Roster</h3>
                   <div id="proBowlGallery" class="history-gallery compact"></div>
                   <details class="history-data-drawer">
                     <summary>Open Award Lookup Tables</summary>
@@ -1112,6 +1121,7 @@
                 <label>Points <input id="facilityInvestPoints" type="number" min="1" max="3" value="1" /></label>
                 <button id="investFacilityBtn">Break Ground</button>
               </div>
+              <section id="operatingStatementPanel" class="operating-statement" aria-label="Operating statement" hidden></section>
               <div class="table-wrap"><table id="ownerTable"></table></div>
             </div>
             <div class="panel">
@@ -1211,7 +1221,7 @@
               <button id="advanceLobbyBtn" disabled>Force Advance (Commissioner)</button>
             </div>
             <div class="row compact" id="commissionerQueueRow">
-              <label>Intent Type
+              <label>Request
                 <select id="intentTypeSelect">
                   <option value="depth-reorder">Depth Reorder</option>
                   <option value="restructure">Restructure</option>
@@ -1221,7 +1231,7 @@
                    by no JavaScript, while POST /api/commissioner/intent is fully
                    implemented on both the server and the local runtime and is
                    registered in the API contract. The control now invokes it. -->
-              <button id="queueIntentBtn">Queue Intent</button>
+              <button id="queueIntentBtn">Send to Commissioner</button>
               <button id="refreshLobbyBtn">Refresh Lobby</button>
               <button id="disbandLobbyBtn" class="danger-text">Disband Lobby</button>
             </div>
@@ -1231,7 +1241,7 @@
           <div class="panel" id="speedrunPanel">
             <div class="narrative-panel-header">
               <h2>Speedrun Challenge</h2>
-              <span class="narrative-panel-kicker">Win the Super Bowl in the fewest seasons possible</span>
+              <span class="narrative-panel-kicker">Win the Championship Game in the fewest seasons possible</span>
             </div>
             <div id="speedrunStatus"></div>
             <div id="speedrunActions" class="row compact" style="margin-top:10px"></div>
@@ -1301,13 +1311,13 @@
               <input id="snapshotImportInput" type="file" accept="application/json" hidden />
             </div>
             <div class="row small" id="saveListText"></div>
-            <div class="row">
+            <div class="row dev-only" data-dev-surface hidden aria-hidden="true">
               <button id="loadQaBtn" data-testid="load-qa-btn">Load QA Report</button>
             </div>
 
             <!-- ── GitHub Gist Cloud Sync ──────────────────────────────────── -->
             <div class="panel cloud-sync-panel" style="margin-top:16px;">
-              <h3>☁️ Cloud Save Sync <span class="small muted">(GitHub Gist)</span></h3>
+              <h3>Cloud Save Sync <span class="small muted">(GitHub Gist)</span></h3>
               <p class="small muted" style="margin:6px 0 12px;">
                 Sync saves to a private GitHub Gist — play from any device.
                 Requires a GitHub Personal Access Token with <code>gist</code> scope.
@@ -1328,11 +1338,11 @@
                 </label>
               </div>
               <div class="row compact" style="margin-top:8px;">
-                <button id="gistExportBtn">⬆ Export to Gist</button>
+                <button id="gistExportBtn">Export to Gist</button>
                 <label style="flex:1">
                   <input id="gistIdInput" placeholder="Gist ID (auto-filled after first export)" style="width:100%" />
                 </label>
-                <button id="gistImportBtn">⬇ Import from Gist</button>
+                <button id="gistImportBtn">Import from Gist</button>
               </div>
               <div id="gistSyncStatus" class="small" style="margin-top:6px;color:var(--muted)"></div>
               <div class="row compact" style="margin-top:8px;">
@@ -1340,7 +1350,7 @@
               </div>
               <div id="gistSaveList" style="margin-top:8px;"></div>
             </div>
-            <div class="table-wrap"><table id="qaTable" data-testid="qa-table"></table></div>
+            <div class="table-wrap dev-only" data-dev-surface hidden aria-hidden="true"><table id="qaTable" data-testid="qa-table"></table></div>
           </div>
           <div class="panel">
             <h2>Commissioner Controls</h2>
@@ -1415,7 +1425,7 @@
             <div class="small" style="color:var(--muted);margin-top:.5rem;">
               Mobile mode shows a simplified daily-decision view optimized for narrow screens.
               Dynasty share generates a downloadable HTML card of your franchise history.
-              League Story Card downloads a source-derived season snapshot with champion, leaders, cap, legacy, and prediction receipts.
+              League Story Card downloads a season snapshot with the champion, leaders, cap, legacy, and how your predictions held up.
               Season Newsletter generates a shareable season-end card with headlines, GM legacy, and quotes.
             </div>
             <div id="dynastyTimelineContainer" style="margin-top:1rem;" aria-live="polite"></div>
@@ -1688,7 +1698,7 @@
     </div>
 
     <!-- ── Keyboard Shortcuts Modal ──────────────────────────────────────── -->
-    <div id="shortcutsModal" class="modal hidden">
+    <div id="shortcutsModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
       <div class="modal-card shortcuts-card">
         <div class="row" style="justify-content:space-between">
           <h2>Keyboard Shortcuts</h2>
@@ -1882,7 +1892,8 @@
         <span id="simWatchProgressLabel">Pregame</span>
       </div>
       <div class="sw-swipe-hint" aria-hidden="true">Swipe the play log left or right for the next or previous key play.</div>
-      <div id="simWatchField" class="sw-field" aria-hidden="true"><span id="simWatchBall" class="sw-ball"></span><div class="sw-field-meta"><span id="simWatchPossession">Possession</span><span id="simWatchYardLine">50</span></div></div>
+      <div id="simWatchField" class="sw-field" aria-hidden="true"><span id="simWatchBall" class="sw-ball"></span><div class="sw-field-meta"><span id="simWatchPossession">Possession</span><span id="simWatchDownDistance"></span><span id="simWatchYardLine">50</span></div></div>
+      <svg id="simWatchFlow" class="sw-flow" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-label="Score margin through the game"></svg>
       <div id="simWatchFeed" role="log"></div>
       <div id="simWatchFinal" hidden></div>
     </div>

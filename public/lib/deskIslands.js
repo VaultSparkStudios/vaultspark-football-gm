@@ -10,10 +10,11 @@
 
 import { state } from "./appState.js";
 import { showToast } from "./appCore.js";
-import { currentCoGmBriefingPacket } from "./tabOverview.js";
+import { currentCoGmBriefingPacket } from "./coGmBriefPanel.js";
 import { isMobileModeEnabled } from "./mobileLoop.js";
 import { recordAchievementEvent } from "./achievements.js";
 import { franchiseStorageKey, dashboardAuthorityKey } from "./franchiseScope.js";
+import { renderLookAhead } from "./lookAhead.js";
 
 // v1 counted unobserved actions as agreements. Retain those historical keys,
 // but start the evidence-based tally separately rather than relabel old data.
@@ -62,7 +63,7 @@ export async function renderFrontOfficeAdvisor() {
     lastWeekAdvice: memory.scored?.advice || null,
     lastWeekReceipt: memory.scored?.receipt || null
   });
-  content.innerHTML = advisor.renderAdvisorCard(advice, { compact: isMobileModeEnabled() });
+  content.innerHTML = advisor.renderAdvisorCard(advice, { compact: isMobileModeEnabled() }) + renderLookAhead(dashboard);
   const tallyEl = document.getElementById("frontOfficeAdvisorTally");
   if (tallyEl) tallyEl.textContent = describeAdvisorTally(memory.tally);
   // The advice on the desk is what the coming commit will be scored against.
@@ -104,3 +105,4 @@ export async function dismissFirstSeasonContract() {
   await renderFirstSeasonContractStrip();
   showToast("Contract shelved. The owner still remembers what was in it.");
 }
+

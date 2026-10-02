@@ -225,7 +225,7 @@ export function renderContractsPage() {
     fmtMoney(state.contractCap?.capSpace || 0),
     (state.contractCap?.capSpace || 0) >= 0 ? "positive" : "negative"
   );
-  setMetricCardValue("contractsActiveCapCard", fmtMoney(state.contractCap?.activeCap || 0), "accent");
+  setMetricCardValue("contractsActiveCapCard", fmtMoney(state.contractCap?.usedCap || 0), "accent");
   setMetricCardValue(
     "contractsDeadCapCard",
     fmtMoney(state.contractCap?.deadCapCurrentYear || 0),
@@ -336,7 +336,7 @@ export function renderContractsSpotlight() {
       <div class="control-spotlight-card">
         <strong>Risk Signal</strong>
         <div>${escapeHtml((cap.deadCapCurrentYear || 0) > (cap.capSpace || 0) ? "Dead cap pressure is elevated" : "Cap sheet is manageable")}</div>
-        <div class="small">${escapeHtml(`Active cap ${fmtMoney(cap.activeCap || 0)} | Dead cap ${fmtMoney(cap.deadCapCurrentYear || 0)}`)}</div>
+        <div class="small">${escapeHtml(`Active cap ${fmtMoney(cap.usedCap || 0)} | Dead cap ${fmtMoney(cap.deadCapCurrentYear || 0)}`)}</div>
       </div>
     </div>
   `;
@@ -636,7 +636,7 @@ export function renderAgentModal(playerId, responseAgent = null) {
   header.innerHTML = `<strong>${escapeHtml(agent.name || target?.name || playerId)}</strong><span>${escapeHtml(agent.pos || target?.pos || "")} · OVR ${escapeHtml(String(agent.overall ?? target?.overall ?? "—"))}</span>`;
   personality.innerHTML = `<strong>${escapeHtml(agent.personality || "Balanced")}</strong><span>${escapeHtml(agent.flavor || "")}</span><span>Leverage: ${escapeHtml(agent.leverageReason || "Market posture unavailable.")}</span><span>Deadline: ${escapeHtml(agent.deadline || "Before free agency")}</span>`;
   demandBar.innerHTML = `<div class="agent-demand-copy"><span>Ask ${fmtMoney(salary)}/yr</span><span>Guaranteed ${fmtMoney(agent.guaranteed || 0)}</span></div><div class="agent-demand-track" aria-label="Agent ask compared with market"><span style="width:${barPct}%"></span></div>`;
-  history.innerHTML = `<strong>Negotiation ledger</strong>` + (agent.negotiationHistory || agent.history || [])
+  history.innerHTML = `<strong>Negotiation history</strong>` + (agent.negotiationHistory || agent.history || [])
     .map((entry) => `<div class="agent-history-entry">${escapeHtml(entry.label || entry.outcome || "Negotiation update")}</div>`)
     .join("");
   if (salaryInput) salaryInput.value = String(salary);
@@ -665,7 +665,7 @@ export async function submitAgentOffer() {
       box.className = `agent-response-box ${data.countered ? "counter" : "accepted"}`;
       box.textContent = data.countered
         ? `Counter: ${data.counterOffer?.years} years at ${fmtMoney(data.counterOffer?.salary || 0)} per year.`
-        : `Accepted. The canonical contract ledger now shows ${data.contract?.yearsRemaining || years} years at ${fmtMoney(data.contract?.salary || salary)} per year.`;
+        : `Accepted. His contract is now ${data.contract?.yearsRemaining || years} years at ${fmtMoney(data.contract?.salary || salary)} per year.`;
     }
     renderAgentModal(_agentModalPlayerId, data.agent);
     document.dispatchEvent(new CustomEvent("agent-negotiation-complete", { detail: data }));

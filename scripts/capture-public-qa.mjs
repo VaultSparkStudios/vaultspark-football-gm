@@ -8,12 +8,12 @@ import { parseArtifactHeaderRules, resolveArtifactHeaders } from "./lib/edge-sec
 const root = process.cwd();
 const staticDir = path.join(root, "static");
 const outputDir = path.join(root, "output", "playwright", "public-qa");
-const routes = ["index.html", "about.html", "press.html", "status.html", "status-archive.html", "stats.html", "simulation.html", "contact.html", "privacy.html", "terms.html"];
+const routes = ["index.html", "features.html", "how-to-play.html", "faq.html", "roadmap.html", "about.html", "press.html", "status.html", "status-archive.html", "stats.html", "simulation.html", "contact.html", "privacy.html", "terms.html"];
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
   { name: "mobile", width: 390, height: 844 }
 ];
-const mime = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml" };
+const mime = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".webp": "image/webp", ".svg": "image/svg+xml", ".jpg": "image/jpeg", ".webmanifest": "application/manifest+json", ".xml": "application/xml" };
 
 const manifest = JSON.parse(await fs.readFile(path.join(staticDir, "deploy-manifest.json"), "utf8"));
 if (!/^[a-f0-9]{40}$/i.test(manifest.sourceRevision || "")) throw new Error("Public evidence requires an immutable source revision.");

@@ -21,7 +21,7 @@ function chapter({ id, label, title, detail, nextCall, targetTab = "overviewTab"
     targetId,
     tone,
     evidence,
-    disclaimer: "Season chapters organize source-derived league milestones. They do not predict results or create a hidden bonus."
+    disclaimer: "Season chapters organize real league milestones. They do not predict results or create a hidden bonus."
   };
 }
 
@@ -178,9 +178,9 @@ export function buildSeasonThesisLedger(dashboard = {}) {
     reckoning: {
       status,
       summary: thesisId
-        ? `${film.length} executed tactical call${film.length === 1 ? "" : "s"} · ${aligned} aligned source receipt${aligned === 1 ? "" : "s"} · ${contested} contested source receipt${contested === 1 ? "" : "s"} · ${architect.length} Architect review${architect.length === 1 ? "" : "s"}${identityLedger ? ` · ${identityLedger.summary}` : ""}`
-        : "No exact Opening Contract receipt is available; the season thesis remains unproven.",
-      disclaimer: "The reckoning summarizes bounded source receipts. It does not claim the thesis caused results, predict an outcome, or grant a hidden bonus."
+        ? `${film.length} executed tactical call${film.length === 1 ? "" : "s"} · ${aligned} on-plan result${aligned === 1 ? "" : "s"} · ${contested} off-plan result${contested === 1 ? "" : "s"} · ${architect.length} Architect review${architect.length === 1 ? "" : "s"}${identityLedger ? ` · ${identityLedger.summary}` : ""}`
+        : "No Opening Contract is on record, so the season promise is still unproven.",
+      disclaimer: "The reckoning summarizes your recorded results. It does not claim the thesis caused results, predict an outcome, or grant a hidden bonus."
     }
   };
 }
@@ -190,7 +190,7 @@ function bindChapterToThesis(base, thesis, checkpointId) {
     || { id: checkpointId, status: "unproven", evidenceIds: [] };
   const thesisLine = thesis.available
     ? `Season thesis: ${thesis.identity.label} · checkpoint ${checkpoint.status}.`
-    : "Season thesis: unproven — no exact Opening Contract receipt is available.";
+    : "Season thesis: unproven — no Opening Contract is on record.";
   return {
     ...base,
     detail: `${base.detail} ${thesisLine}`,
@@ -229,7 +229,7 @@ export function buildSeasonChapter(dashboard = {}) {
       id: "opening-contract",
       label: "Opening Contract",
       title: text(nextStep?.label, "Establish the opening promise"),
-      detail: text(opening.nextAction, nextStep?.detail || "Complete the source-named opening step."),
+      detail: text(opening.nextAction, nextStep?.detail || "Complete the next opening step."),
       nextCall: text(opening.nextAction, "Advance the opening week with a declared plan."),
       targetId: "openingContractCard",
       tone: "warning",
@@ -243,7 +243,7 @@ export function buildSeasonChapter(dashboard = {}) {
       label: "Foundation",
       title: "Prove the opening identity",
       detail: "The first month establishes whether the declared football identity survives live personnel and opponent pressure.",
-      nextCall: "Reach the Week 5 checkpoint with a committed tactic and film receipt.",
+      nextCall: "Reach the Week 5 checkpoint with a committed tactic and film to review.",
       evidence
     }), thesis, "foundation");
     if (week <= 8) return bindChapterToThesis(chapter({
@@ -259,8 +259,8 @@ export function buildSeasonChapter(dashboard = {}) {
       label: "Deadline Pressure",
       title: activePromise ? text(activePromise.label, "Honor the active General Manager promise") : "Choose what this roster is becoming",
       detail: activePromise
-        ? `A source-recorded promise is active through Week ${activePromise.deadlineWeek ?? "?"}.`
-        : "Buy, sell, or hold only through an explicit roster decision; silence is not a strategy receipt.",
+        ? `A recorded promise is active through Week ${activePromise.deadlineWeek ?? "?"}.`
+        : "Buy, sell, or hold only through an explicit roster decision; doing nothing does not count as a strategy.",
       nextCall: activePromise
         ? `Resolve ${text(activePromise.label, "the active promise")} by Week ${activePromise.deadlineWeek ?? "?"}.`
         : "Review the deadline room and commit one roster direction.",
@@ -280,7 +280,7 @@ export function buildSeasonChapter(dashboard = {}) {
       id: "playoff-push",
       label: "Playoff Push",
       title: text(owner?.mandate, "Close the regular season"),
-      detail: owner ? `${text(owner.trend, "watch")} owner trend · heat ${owner.heat ?? "?"}.` : "Every remaining week now changes the source standings and postseason gate.",
+      detail: owner ? `${text(owner.trend, "watch")} owner trend · heat ${owner.heat ?? "?"}.` : "Every remaining week now changes the standings and the playoff picture.",
       nextCall: "Commit the next weekly plan and reach the postseason gate without inferring the result.",
       tone: "danger",
       evidence
@@ -291,7 +291,7 @@ export function buildSeasonChapter(dashboard = {}) {
     id: "postseason",
     label: "Postseason",
     title: "The season promise is under elimination pressure",
-    detail: "The bracket and controlled-team game receipt are now the authority; regular-season projections no longer apply.",
+    detail: "Only the bracket and your next result matter now; regular-season projections no longer apply.",
     nextCall: "Review the matchup, declare the plan, and advance the next playoff gate.",
     ...gameplaySurface("postseason"),
     tone: "danger",
@@ -302,8 +302,8 @@ export function buildSeasonChapter(dashboard = {}) {
     id: "season-reckoning",
     label: "Season Reckoning",
     title: "Turn the completed season into an architectural lesson",
-    detail: "Awards, owner response, promises, film, and the epilogue now form the source record for this year.",
-    nextCall: "Review the season receipt before authorizing the offseason transition.",
+    detail: "Awards, owner response, promises, film, and the epilogue now form the official record for this year.",
+    nextCall: "Review the season summary before moving into the offseason.",
     targetTab: "historyTab",
     targetId: "seasonAwardsSpotlight",
     tone: "positive",
@@ -363,8 +363,8 @@ export function buildSeasonChapter(dashboard = {}) {
       id: "offseason-blueprint",
       label: "Offseason Blueprint",
       title: `Build through ${stage.replace(/-/g, " ")}`,
-      detail: "Roster, cap, staff, and draft authorities move only through their named offseason stage.",
-      nextCall: text(dashboard.offseasonPipeline?.nextAction, `Complete ${stage.replace(/-/g, " ")} and inspect its receipt.`),
+      detail: "Roster, cap, staff, and draft moves each happen in their own offseason stage.",
+      nextCall: text(dashboard.offseasonPipeline?.nextAction, `Complete ${stage.replace(/-/g, " ")} and review the results.`),
       ...stageSurface,
       tone: "info",
       evidence: [...evidence, `stage:${stage}`]
@@ -374,9 +374,9 @@ export function buildSeasonChapter(dashboard = {}) {
   return chapter({
     id: "league-state",
     label: "League State",
-    title: "Load the next authoritative season milestone",
+    title: "Load the next season milestone",
     detail: "No recognized chapter is active yet; the current phase remains visible rather than guessed.",
-    nextCall: "Refresh the live franchise state before making a controlled decision.",
+    nextCall: "Refresh your franchise before making a decision.",
     tone: "muted",
     evidence
   });

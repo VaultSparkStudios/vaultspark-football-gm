@@ -214,7 +214,7 @@ test("the counterfactual reports both branches and describes what the player act
   const agreed = buildAdvice(packet, { lastWeekAdvice, lastWeekReceipt: receipt({ choiceId: advised, tacticId: "air-raid" }) });
   assert.equal(agreed.counterfactual.agreed, true);
   assert.equal(agreed.counterfactual.saidLastWeek, lastWeekAdvice.call.title);
-  assert.match(agreed.counterfactual.playerDid, /Weekly plan committed: GM choice · tactic air-raid/);
+  assert.match(agreed.counterfactual.playerDid, /Weekly plan committed: GM choice · tactic: air raid/);
   assert.match(agreed.counterfactual.note, /no bonus either way/);
 
   const against = buildAdvice(packet, { lastWeekAdvice, lastWeekReceipt: receipt({ choiceId: other }) });

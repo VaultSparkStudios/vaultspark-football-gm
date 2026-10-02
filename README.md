@@ -1,148 +1,49 @@
 # Franchise Architect: Football
 
-Franchise Architect: Football is a browser-based NFL franchise simulator with weekly progression, offseason systems, and PFR-weighted statistical calibration.
+Franchise Architect: Football is a football franchise management game that runs in the browser. You run a club for as many seasons as you like: contracts and the salary cap, scouting and the draft, trades with 31 rival front offices, a coaching staff, an owner, and a league that keeps its own history.
 
-## Implemented Systems
+It is free in early access at <https://playfranchisearchitect.com/>. The league, clubs and players are fictional; the game is not affiliated with or endorsed by any professional sports league, team, or players association.
 
-1. Weekly playable flow:
-   - `advance week` and `advance season`
-   - weekly game results
-   - injury and suspension reports
-   - per-week transactions
-2. Franchise actions:
-   - free agency signing
-   - releasing players (waiver or FA)
-   - trades
-   - practice squad moves
-   - depth chart edits
-   - contract re-signing
-3. Contract and cap mechanics:
-   - base salary, bonus, guarantees
-   - cap hit and dead cap tracking
-   - restructure support
-   - June 1 release option support in backend
-   - rollover/dead-cap ledger
-4. Draft pipeline:
-   - draft class with combine/pro-day fields
-   - mock draft snapshot
-   - user picks
-   - CPU draft flow
-5. League events:
-   - injuries
-   - suspensions
-   - morale updates
-   - coaching/scheme effects in game simulation
-6. Save/load slots:
-   - save, load, delete, list slots (`saves/`)
-7. PFR ETL pipeline:
-   - ingest JSON/CSV/NDJSON rows
-   - output season rows + player import + realism profile
-8. QA dashboard:
-   - league metrics vs target baselines (PPG, YPA, sack/int rates, rush YPA)
-9. Richer stat/history tools:
-   - sortable + paginated stat table
-   - record book view
-   - player timeline
-   - team history
-   - awards tracking
-10. Automated tests:
-   - deterministic simulation
-   - session integration
-   - contract/roster actions
-   - calibration coverage
-11. Retirements and longevity:
-   - position max-age limits (QB 45, RB 40, etc.)
-   - winning-team retirement retention
-   - manual retirement override comeback flow
-12. Rulebook UI:
-   - in-game `Rules` tab documenting simulation rules and every major UI feature/button
-13. Multi-year realism verification:
-   - season + career drift checks by position over 10-20 year simulation windows
+## What is in the game
 
-## Run Browser Game
+- **Weekly season flow** — a weekly plan (an optional general manager decision plus a tactical focus), advance a week, four weeks or a season, then read results, Sim-Watch replays, press conferences and League News.
+- **Front Office Advisor** — argues one call each week with the figures behind it and keeps score of when you overrule it. A **First Season Contract** sets five objectives for a new franchise.
+- **Rival front offices** — every rival general manager has an archetype, prices trades by it, and remembers past dealings. Rival clubs also trade with each other under the same rules.
+- **Contracts and cap** — extensions, restructures, franchise tags, dead money, cap carryover, expiring contracts and free agency in bidding waves.
+- **Scouting and the draft** — prospects arrive in scouting fog; scouting points sharpen your read before you run the draft.
+- **The Boardroom** — owner mandate and patience, facilities paid for from club cash with ongoing upkeep, ticket pricing, and a coaching market.
+- **History** — awards, records, retired numbers, a Dynasty timeline, and a Hall of Fame with an induction ceremony; six GM legacy tiers.
+- **Saves** — stored in the browser with rolling backups and rewind points, save-file export and import, and optional GitHub Gist sync.
+- **Sharing** — moment cards, a League Story Card, and challenge codes that recreate a league from the same seed.
+- **Commissioner mode** — up to four general managers sharing one league on the same device.
+- **Community Stats** — optional and anonymous; off until a player turns it on.
+
+There are no AI services or paid APIs behind any of this: every rival, Advisor call and headline comes from the game's own deterministic rules.
+
+## Run it locally
 
 ```powershell
-cd "[local-project-root]"
-npm.cmd run dev
+npm install
+npm run dev
 ```
 
-Open `http://localhost:4173`.
+Open `http://localhost:4173`. The start page is `index.html`; the game itself is `game.html`. By default the league runs in the browser; the local server also exposes an optional server-backed runtime for development.
 
-## Run CLI Simulation
+## Build the static site
 
 ```powershell
-npm.cmd run cli -- --years 100 --seed 2026 --export --outDir output
+npm run build:pages
 ```
 
-## Scripts
+Writes the deployable site to `static/`. The build renders the shared site header and footer, fills the copy blocks from `public/content/claims.json`, generates the changelog page and `changelog.xml` feed from `public/status.html`, and runs the public-copy checks in `scripts/check-public-truth.mjs`.
 
-- `npm run dev`: run browser server
-- `npm run start`: same as dev
-- `npm run cli`: CLI simulation mode
-- `npm run sim:100`: 100-year export simulation
-- `npm run build:realism-profile`: profile from season rows
-- `npm run etl:pfr`: full PFR ETL pipeline
-- `npm run verify:realism`: run multi-year realism verification
-- `npm run test`: automated tests
+## Other scripts
 
-## PFR ETL Usage
+- `npm run cli -- --years 100 --seed 2026 --export --outDir output` — run a long simulation from the command line
+- `npm run verify:realism` — multi-season realism checks
+- `npm test` — the full automated test suite (long); run single files with `node --test test/<file>.test.js`
+- `npm run test:ui` — Playwright browser tests
 
-```powershell
-npm.cmd run etl:pfr -- --input path\to\pfr_rows.json --outDir output\pfr-etl --fromYear 2019 --toYear 2025 --halfLife 2.2
-```
+## Rights
 
-Outputs:
-- `season-rows.json`
-- `player-import.json`
-- `realism-profile.json`
-- `career-realism-profile.json`
-
-## Key API Endpoints
-
-Core:
-- `GET /api/state`
-- `POST /api/new-league`
-- `POST /api/control-team`
-- `POST /api/advance-week`
-- `POST /api/advance-season`
-
-Roster/transactions:
-- `GET /api/roster?team=BUF`
-- `GET /api/free-agents?position=WR&limit=120`
-- `GET /api/retired?position=QB&limit=200`
-- `POST /api/sign`
-- `POST /api/release`
-- `POST /api/practice-squad`
-- `POST /api/retirement/override`
-- `POST /api/waiver-claim`
-- `POST /api/trade`
-
-Contracts:
-- `GET /api/contracts/expiring?team=BUF`
-- `POST /api/contracts/resign`
-- `POST /api/contracts/restructure`
-
-Draft:
-- `GET /api/draft`
-- `POST /api/draft/prepare`
-- `POST /api/draft/user-pick`
-- `POST /api/draft/cpu`
-
-Stats/history/qa:
-- `GET /api/tables/player-season`
-- `GET /api/tables/player-career`
-- `GET /api/tables/team-season`
-- `GET /api/records`
-- `GET /api/champions`
-- `GET /api/calibration`
-- `GET /api/qa/season?year=2026`
-- `GET /api/realism/verify?seasons=12`
-- `GET /api/history/team?team=BUF`
-- `GET /api/history/player?playerId=<id>`
-
-Saves:
-- `GET /api/saves`
-- `POST /api/saves/save`
-- `POST /api/saves/load`
-- `POST /api/saves/delete`
-
+Copyright 2026 VaultSpark Studios LLC. All rights reserved. Proprietary — see `public/terms.html`.

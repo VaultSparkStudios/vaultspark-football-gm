@@ -172,8 +172,10 @@ test("shared gameplay routes resolve to an exact target inside their declared ta
 test("developer diagnostics do not ship to players, and open for ?dev=1", async ({ page }) => {
   await startFranchise(page);
   await page.locator('[data-tab="settingsTab"]').first().click();
+  // S113: several surfaces carry the flag now (sim jobs, QA report); every one stays hidden.
   const dev = page.locator("[data-dev-surface]");
-  await expect(dev).toBeHidden({ timeout: 30_000 });
+  await expect(dev.first()).toBeAttached({ timeout: 30_000 });
+  for (const surface of await dev.all()) await expect(surface).toBeHidden();
   await expect(page.getByRole("heading", { name: /Realism Verification/ })).toBeHidden();
 
   const url = new URL(page.url());
@@ -181,7 +183,7 @@ test("developer diagnostics do not ship to players, and open for ?dev=1", async 
   await page.goto(url.toString());
   await expect(page.locator("#tab-overview")).toBeAttached({ timeout: 40_000 });
   await page.locator('[data-tab="settingsTab"]').first().click();
-  await expect(page.locator("[data-dev-surface]")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".panel.dev-only[data-dev-surface]")).toBeVisible({ timeout: 30_000 });
 });
 
 test("there is one place to learn the game, with three views", async ({ page }) => {

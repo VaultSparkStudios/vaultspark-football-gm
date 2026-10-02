@@ -156,7 +156,7 @@ export function buildPlayerProfileNarrative(profile = {}) {
     ...milestoneAchievements(position, career)
   ];
   if (!achievements.length) {
-    achievements.push(seasonCount ? `${seasonCount} season${seasonCount === 1 ? "" : "s"} of recorded league service` : "Career ledger opened; first milestone still ahead");
+    achievements.push(seasonCount ? `${seasonCount} season${seasonCount === 1 ? "" : "s"} of recorded league service` : "Career just getting started; first milestone still ahead");
   }
   const milestones = careerMilestones(position, career);
 

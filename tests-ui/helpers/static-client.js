@@ -122,7 +122,7 @@ export async function configureClient(page, worker) {
 export async function waitSetupReady(page) {
   // The source HTML says Ready before its module starts; only populated client
   // diagnostics prove that setup initialization has settled.
-  await expect(page.locator("#setupStatus")).toContainText(/^Ready \| client/, { timeout: 30_000 });
+  await expect(page.locator("#setupStatus")).toHaveAttribute("data-diagnostics", /^Ready \| client/, { timeout: 30_000 });
   await expect(page.locator("#activeLeagueText")).not.toContainText("Checking");
   await expect(page.locator("#runtimeModeSelect")).toHaveValue("client");
 }

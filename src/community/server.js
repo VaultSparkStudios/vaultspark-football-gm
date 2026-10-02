@@ -28,16 +28,20 @@ function allowedOrigins() {
 
 function sendJson(res, status, payload, headers = {}) {
   const body = JSON.stringify(payload);
-  res.writeHead(status, { "Content-Type": "application/json; charset=utf-8", "Content-Length": Buffer.byteLength(body), "X-Content-Type-Options": "nosniff", "Referrer-Policy": "no-referrer", ...headers });
+  res.writeHead(status, { "Content-Type": "application/json; charset=utf-8", "Content-Length": Buffer.byteLength(body), "X-Content-Type-Options": "nosniff", "X-Frame-Options": "DENY", "Referrer-Policy": "no-referrer", ...headers });
   res.end(body);
 }
 
 async function readJson(req) {
-  let body = "";
+  const chunks = [];
+  let received = 0;
   for await (const chunk of req) {
-    body += chunk;
-    if (Buffer.byteLength(body) > MAX_BODY_BYTES) { const error = new Error("Request body is too large."); error.status = 413; throw error; }
+    const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(String(chunk));
+    received += buffer.length;
+    if (received > MAX_BODY_BYTES) { const error = new Error("Request body is too large."); error.status = 413; throw error; }
+    chunks.push(buffer);
   }
+  const body = Buffer.concat(chunks).toString("utf8");
   try { return body ? JSON.parse(body) : {}; } catch { const error = new Error("Invalid JSON body."); error.status = 400; throw error; }
 }
 
@@ -63,9 +67,25 @@ function isLoopbackAddress(value) {
   return address === "127.0.0.1" || address === "::1";
 }
 
-function trustedRequestAddress(req) {
+function isTruthyFlag(value) {
+  return /^(1|true|yes|on)$/i.test(String(value || "").trim());
+}
+
+/**
+ * Forwarding headers are honoured only when the TCP peer is the loopback
+ * reverse proxy (ops/Caddyfile), which replaces any client-supplied
+ * X-Forwarded-For with the address it actually saw. A direct peer can never
+ * pick its own key. `cf-connecting-ip` is additionally honoured from that proxy
+ * only when COMMUNITY_TRUST_PROXY is set (i.e. the deployment sits behind
+ * Cloudflare and the proxy is locked to Cloudflare's ranges).
+ */
+function trustedRequestAddress(req, env = process.env) {
   const peer = String(req.socket?.remoteAddress || "unknown").trim();
   if (!isLoopbackAddress(peer)) return peer;
+  if (isTruthyFlag(env.COMMUNITY_TRUST_PROXY)) {
+    const cf = String(req.headers["cf-connecting-ip"] || "").trim();
+    if (cf) return cf;
+  }
   const forwarded = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
   return forwarded || peer;
 }
@@ -74,9 +94,9 @@ function trustedRequestAddress(req) {
  * Produces a process-local, privacy-safe rate-limit key. Raw network addresses
  * exist only long enough to compute this HMAC; they are never stored or logged.
  */
-export function createPrivacySafeAddressKey(signingKey = PROCESS_ADDRESS_KEY) {
+export function createPrivacySafeAddressKey(signingKey = PROCESS_ADDRESS_KEY, { env = process.env } = {}) {
   const key = Buffer.isBuffer(signingKey) ? signingKey : Buffer.from(String(signingKey));
-  return (req) => createHmac("sha256", key).update(`community-address-v1:${trustedRequestAddress(req)}`).digest("base64url");
+  return (req) => createHmac("sha256", key).update(`community-address-v1:${trustedRequestAddress(req, env)}`).digest("base64url");
 }
 
 function capabilityError(message = "Participation capability is invalid, expired, or exhausted.") {

@@ -132,7 +132,7 @@ test("Three-Horizon Blueprint derives Now, Season, and Legacy lanes from live au
   assert.equal(lanes[0].milestone, "Review early-down efficiency.");
   assert.equal(lanes[1].title, "Opening day");
   assert.match(lanes[2].milestone, /8 points remain/);
-  assert.equal(buildThreeHorizonBlueprint()[2].title, "Legacy authority loading");
+  assert.equal(buildThreeHorizonBlueprint()[2].title, "Your legacy is loading");
 });
 
 test("Architect's Ledger presentation preserves explicit evidence boundaries", () => {
@@ -157,7 +157,7 @@ test("Architect's Ledger presentation preserves explicit evidence boundaries", (
     outcome: { aligned: false }
   }]);
   assert.equal(signal.title, "Run-heavy is the leading declared identity");
-  assert.match(signal.detail, /2\/2 declared tactics.*1\/2 film receipts aligned/);
+  assert.match(signal.detail, /2\/2 declared tactics.*1\/2 film reviews matched/);
   assert.match(signal.disclaimer, /not evidence.*caused/i);
 });
 

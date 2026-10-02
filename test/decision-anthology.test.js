@@ -27,6 +27,6 @@ test("Decision Anthology stays honestly incomplete when no receipts exist", () =
     status: "incomplete",
     seasonsObserved: 0,
     volumes: [],
-    disclaimer: "Volumes preserve the receipt coverage available in each season. Sparse years remain sparse, and editorial rank is not causal proof."
+    disclaimer: "Each volume keeps only what was recorded that season. Sparse years remain sparse, and editorial rank is not causal proof."
   });
 });

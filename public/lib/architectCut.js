@@ -21,11 +21,11 @@ function weeklyCandidate(entry, seasonYear) {
     week: Number(entry.week || entry.execution?.completed?.week || 0),
     title: intents.join(" + ") || "Undeclared weekly command",
     declaredIntent: intents.join(" · ") || "No explicit intent was stored.",
-    observedEvidence: observed.join(" · ") || "No outcome receipt was stored.",
+    observedEvidence: observed.join(" · ") || "No outcome was recorded.",
     nextAdaptation: text(entry.nextAdaptation, "No next adaptation was stored."),
     evidenceState: complete ? "joined" : "incomplete",
     causalStatus: "non-causal",
-    limitations: text(entry.disclaimer, "The receipt records sequence and observed evidence; it does not prove the choice caused the result."),
+    limitations: text(entry.disclaimer, "This record shows what happened and in what order; it does not prove the choice caused the result."),
     gmChoice: Boolean(gm),
     weeklyPlan: Boolean(tactic),
     editorialScore: 60 + (gm ? 14 : 0) + (tactic ? 8 : 0) + (typeof entry.outcome?.aligned === "boolean" ? 8 : 0) + (observed.length ? 6 : 0)
@@ -48,9 +48,9 @@ function tradeCandidate(entry, seasonYear, teamId) {
     year: Number(entry.year || seasonYear),
     week: Number(entry.week || 0),
     title: `Exchange with ${text(rival, "another club")}`,
-    declaredIntent: "The completed package is authoritative; no pre-trade intent receipt was stored.",
+    declaredIntent: "The completed deal is on record; no pre-trade intent was noted.",
     observedEvidence: `Sent ${assetNames(outgoing).join(", ") || "no named assets"}; received ${assetNames(incoming).join(", ") || "no named assets"}.`,
-    nextAdaptation: "Evaluate the acquired assets over future receipts; this season-end cut does not grade the trade from one snapshot.",
+    nextAdaptation: "Judge the acquired assets over future seasons; this season-end cut does not grade the trade from one snapshot.",
     evidenceState: "incomplete",
     causalStatus: "non-causal",
     limitations: "Execution is proven, but intent and downstream player value are incomplete.",
@@ -71,8 +71,8 @@ function draftCandidate(selection, seasonYear) {
     year: seasonYear,
     week: 0,
     title: `Pick ${selection.pick}: ${text(selection.player, "Unnamed prospect")}`,
-    declaredIntent: `Selected ${text(selection.pos, "unknown position")} in round ${selection.round || "?"}${selection.userSelected ? " by direct GM call" : " through the configured draft authority"}.`,
-    observedEvidence: `Selection receipt${rating}${potential}; career impact is not graded at draft time.`,
+    declaredIntent: `Selected ${text(selection.pos, "unknown position")} in round ${selection.round || "?"}${selection.userSelected ? " by direct GM call" : " by your draft settings"}.`,
+    observedEvidence: `Selected${rating}${potential}; career impact is not graded at draft time.`,
     nextAdaptation: "Track role, development, and retained value in later seasons before judging the pick.",
     evidenceState: complete ? "joined" : "incomplete",
     causalStatus: "non-causal",
@@ -112,8 +112,8 @@ export function buildArchitectCut({ seasonYear, teamId, architectLedger = [], tr
     turningPoints: candidates.slice(0, 3).map((candidate, index) => ({
       ...candidate,
       rank: index + 1,
-      whyRanked: "Ranked by decision scope and receipt density, not claimed causal impact."
+      whyRanked: "Ranked by how big the decision was and how much was recorded, not by claimed impact."
     })),
-    disclaimer: "Architect's Cut joins declared intent to stored outcomes in sequence. It is an editorial evidence review, not a causal model. Missing receipts stay missing."
+    disclaimer: "Architect's Cut joins declared intent to stored outcomes in sequence. It is an editorial evidence review, not a causal model. Gaps in the record stay gaps."
   };
 }

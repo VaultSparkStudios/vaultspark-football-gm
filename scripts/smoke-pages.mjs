@@ -165,7 +165,7 @@ async function main() {
     await page.goto(`${baseUrl}missing-route`, { waitUntil: "networkidle" });
     await page.waitForSelector("#notFoundHomeLink");
     await assertStaticPath(`/contact.html`, /football@playfranchisearchitect\.com/);
-    await assertStaticPath("/privacy.html", /Browser-First Beta/);
+    await assertStaticPath("/privacy.html", /Browser-First Play/);
     await assertStaticPath("/stats.html", /Community Stats/);
     await assertStaticPath("/stats-surface.json", /participating anonymous browsers/);
     await assertStaticPath(`/terms.html`, /All rights reserved/);
@@ -182,7 +182,7 @@ async function main() {
     await assertStaticFile(`${slug}/game.html`, /Franchise Architect: Football/);
     await assertStaticFile(`${slug}/styles.css`, /:root/);
     await assertStaticFile(`${slug}/contact.html`, /football@playfranchisearchitect\.com/);
-    await assertStaticFile(`${slug}/privacy.html`, /Browser-First Beta/);
+    await assertStaticFile(`${slug}/privacy.html`, /Browser-First Play/);
     await assertStaticFile(`${slug}/terms.html`, /All rights reserved/);
     await assertStaticFile(`${slug}/agents.json`, /Proprietary - All Rights Reserved/);
     await assertStaticFile(`${slug}/.well-known/llms.txt`, /Franchise Architect: Football/);

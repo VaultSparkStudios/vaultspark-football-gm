@@ -15,6 +15,12 @@ export function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+// Turns an internal id or reason code ("draft-authority", "CAP_PRESSURE") into readable words.
+export function humanizeId(value) {
+  const words = String(value ?? "").trim().replace(/[_-]+/g, " ").toLowerCase();
+  return words ? words[0].toUpperCase() + words.slice(1) : "";
+}
+
 export function fmtMoney(value) {
   if (!Number.isFinite(value)) return "$0";
   return `$${(value / 1_000_000).toFixed(1)}M`;
@@ -47,7 +53,7 @@ export function playerBodyTypeLabel(player) {
   if (position === "WR") return height >= 75 ? "Boundary X-receiver build" : "Lean space-creator build";
   if (position === "DB") return weight >= 205 ? "Press-corner safety frame" : "Lean recovery-speed frame";
   if (position === "QB") return height >= 76 ? "Tall pocket-passer frame" : "Compact movement-passer frame";
-  return "NFL-caliber frame";
+  return "Pro-caliber frame";
 }
 
 export function buildPlayerPortraitSvg(player) {
@@ -204,7 +210,7 @@ export function renderPlayerProfileHero(profile) {
     `${teamCode(player.teamId)} ${player.position}`,
     `#${player.jerseyNumber ?? "--"}`,
     `OVR ${player.overall ?? "-"}`,
-    `Potential ${player.potential ?? "-"}`,
+    `Potential ${player.potential ?? "-"}${player.teamId && player.teamId !== state.dashboard?.controlledTeamId && player.status !== "retired" ? " (scouted)" : ""}`,
     `${player.developmentTrait || "Steady"} Dev`,
     `${player.rosterSlot || "active"} Slot`
   ];
@@ -310,10 +316,10 @@ export function syncClientDiagnosticsStatus(snapshot = getClientDiagnosticsSnaps
   const degraded = snapshot.unresolved > 0;
   el.dataset.clientHealth = degraded ? "degraded" : "healthy";
   el.title = degraded
-    ? `${snapshot.unresolved} unresolved client degradation${snapshot.unresolved === 1 ? "" : "s"}. Open Settings > System Health.`
-    : "Client runtime healthy.";
-  if (/^ready(?:\s*·\s*degraded\s+\d+)?$/i.test(el.textContent || "")) {
-    el.textContent = degraded ? `Ready · Degraded ${snapshot.unresolved}` : "Ready";
+    ? `${snapshot.unresolved} panel${snapshot.unresolved === 1 ? "" : "s"} failed to load. Open Settings > System Health to retry.`
+    : "All panels loaded.";
+  if (/^ready(?:\s*·\s*(?:degraded\s+\d+|\d+\s+panels?\s+to\s+retry))?$/i.test(el.textContent || "")) {
+    el.textContent = degraded ? `Ready · ${snapshot.unresolved} panel${snapshot.unresolved === 1 ? "" : "s"} to retry` : "Ready";
     setElementTone(el, degraded ? "warning" : "positive");
   }
 }
@@ -473,7 +479,7 @@ export function formatActionError(error) {
     return "Challenge mode blocks free-agent adds, waiver claims, and forced comeback signings for this franchise.";
   }
   if (reasonCode === "challenge-top10-picks") {
-    return "Challenge mode blocks the controlled team from acquiring or using top-10 draft picks.";
+    return "Challenge mode blocks your team from acquiring or using top-10 draft picks.";
   }
   if (reasonCode === "history-retired-number-active") {
     return "This league requires a player to be retired before a team can retire that jersey number.";
@@ -637,7 +643,7 @@ export function passerRateFromStats(stats) {
 
 export function formatAwards(awards = [], champion = false) {
   const tags = [...awards];
-  if (champion) tags.unshift("SB");
+  if (champion) tags.unshift("Champ");
   return tags.join(", ");
 }
 
@@ -654,8 +660,7 @@ export function buildProfileSeasonRows(profile) {
     const common = {
       season: entry.year,
       age: profile.player.age - ((state.dashboard?.currentYear || entry.year) - entry.year),
-      team: entry.teamId,
-      lg: "NFL",
+      team: teamCode(entry.teamId),
       pos: entry.pos || position,
       g: stats.games || 0,
       gs: stats.gamesStarted || 0
@@ -911,8 +916,7 @@ export function shapeStatsRowsForDisplay(rows, { scope, category }) {
       player: row.player,
       season: row.year ?? row.seasons,
       age: row.age ?? "",
-      team: row.tm,
-      lg: "NFL",
+      team: teamCode(row.tm),
       pos: row.pos,
       g: row.g ?? row.seasons ?? 0,
       gs: row.gs ?? 0
@@ -1169,8 +1173,13 @@ export function syncTeamSelects() {
   setSelectOptions("teamSelect", teamOptions, controlled);
   setSelectOptions("rosterTeamSelect", teamOptions, controlledChanged ? controlled : null);
   setSelectOptions("contractsTeamSelect", teamOptions, controlledChanged ? controlled : state.contractTeamId || controlled);
-  setSelectOptions("tradeTeamA", teamOptions);
-  setSelectOptions("tradeTeamB", teamOptions);
+  // Team A opens on the controlled club, Team B on a different club, so the
+  // builder never starts as a same-team trade.
+  const tradeBPrevious = document.getElementById("tradeTeamB")?.value;
+  setSelectOptions("tradeTeamA", teamOptions, controlledChanged ? controlled : null);
+  const tradeA = document.getElementById("tradeTeamA")?.value || controlled;
+  const tradeBReset = controlledChanged || !tradeBPrevious || tradeBPrevious === tradeA;
+  setSelectOptions("tradeTeamB", teamOptions, tradeBReset ? teams.find((team) => team.id !== tradeA)?.id : null);
   setSelectOptions("teamHistorySelect", teamOptions);
   setSelectOptions("depthTeamSelect", teamOptions, controlledChanged ? controlled : null);
   setSelectOptions("retirementOverrideTeamSelect", teamOptions, controlled);
@@ -1295,7 +1304,7 @@ export async function loadPlayerModal(playerId) {
 
   document.getElementById("playerModalTitle").textContent = `${player.name} (${player.position})`;
   document.getElementById("playerModalMeta").textContent =
-      `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | POT ${player.potential ?? "-"} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
+      `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | POT ${player.potential ?? "-"}${player.teamId && player.teamId !== state.dashboard?.controlledTeamId && player.status !== "retired" ? " (scouted)" : ""} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
   document.getElementById("playerProfileSummary").innerHTML = renderPlayerProfileHero(profile);
   attachPlayerMentorshipBadge(player);
 
@@ -1424,7 +1433,7 @@ export async function runAction(fn, statusText = "Working...", { key = null, con
         return result;
       }
       if (result?.actionStatus === "committed-degraded") {
-        setStatus("Ready · refresh degraded");
+        setStatus("Ready · some panels will refresh");
         showToast(result.statusText || "Committed · some panels need refresh");
         return result;
       }

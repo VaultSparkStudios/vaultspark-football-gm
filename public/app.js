@@ -117,10 +117,8 @@ import {
   renderFanSentimentCard,
   renderInjuryOverlayCard,
   renderStatLeadersStrip,
-  renderOwnerUltimatum,
-  currentCoGmBriefingPacket
+  renderOwnerUltimatum
 } from "./lib/tabOverview.js";
-import { coGmBriefingFilename, serializeCoGmBriefingPacket } from "./lib/coGmBriefing.js";
 
 import {
   bindUiIslandPreloads,
@@ -368,7 +366,7 @@ async function collectAcceleratedStrategyPolicy(scope) {
     title: "Architect Auto-Plan",
     subtitle: seasonScope
       ? "Declare one regular-season identity for this run. The plan pauses with every material franchise checkpoint."
-      : "Declare one identity for the next four regular-season weeks. Each week earns its own Architect receipt.",
+      : "Declare one identity for the next four regular-season weeks. Each week gets its own Architect review.",
     confirmLabel: seasonScope ? "Commit Season Plan" : "Commit Four-Week Plan",
     skipLabel: "Sim Without A Plan"
   }));
@@ -707,16 +705,20 @@ function bindEvents() {
       }).catch(presentActionError);
     }
   });
+  // The brief's builder is a lazy island (lib/coGmBriefPanel.js), loaded on first use.
+  const loadCoGmBrief = () => Promise.all([import("./lib/coGmBriefPanel.js"), import("./lib/coGmBriefing.js")]);
   document.getElementById("coGmCopyBtn")?.addEventListener("click", async () => {
+    const [{ currentCoGmBriefingPacket }, { serializeCoGmBriefingPacket }] = await loadCoGmBrief();
     const serialized = serializeCoGmBriefingPacket(currentCoGmBriefingPacket());
     try {
       await navigator.clipboard.writeText(serialized);
-      showToast("Co-GM briefing copied — only the disclosed franchise context was included.");
+      showToast("Brief copied. Paste it into your AI assistant for a second opinion.");
     } catch {
       showToast("Clipboard access was unavailable. Download the briefing instead.");
     }
   });
-  document.getElementById("coGmDownloadBtn")?.addEventListener("click", () => {
+  document.getElementById("coGmDownloadBtn")?.addEventListener("click", async () => {
+    const [{ currentCoGmBriefingPacket }, { serializeCoGmBriefingPacket, coGmBriefingFilename }] = await loadCoGmBrief();
     const packet = currentCoGmBriefingPacket();
     const url = URL.createObjectURL(new Blob([serializeCoGmBriefingPacket(packet)], { type: "application/json" }));
     const anchor = document.createElement("a");
@@ -726,7 +728,7 @@ function bindEvents() {
     anchor.click();
     anchor.remove();
     URL.revokeObjectURL(url);
-    showToast("Co-GM briefing downloaded with a bounded disclosure receipt.");
+    showToast("Assistant brief downloaded. It contains only your franchise summary, no save data.");
   });
   document.getElementById("franchiseArchitecture")?.addEventListener("click", (event) => {
     const focusAction = event.target.closest?.("[data-architect-save-focus]");
@@ -1412,7 +1414,7 @@ function bindEvents() {
         }
       });
       if (action === "decline") showToast("Offer declined; the live board remains yours.");
-      else if (result.accepted) showToast(`${action === "counter" ? "Counter accepted" : "Trade accepted"} — the rival made the live pick and the ledger now owns your return.`);
+      else if (result.accepted) showToast(`${action === "counter" ? "Counter accepted" : "Trade accepted"} — the rival made the live pick and your return is on the books.`);
       else showToast(result.error || "The rival declined the counter; no assets moved.");
       await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
     }, action === "decline" ? "Declining offer..." : action === "counter" ? "Sending counter..." : "Accepting trade...");
@@ -1639,12 +1641,12 @@ function bindEvents() {
       const result = await retryClientDiagnostics();
       callAppIsland("settings", "renderObservability");
       showToast(`${result.recovered} client surface${result.recovered === 1 ? "" : "s"} recovered.`);
-    }, "Retrying degraded panels...")
+    }, "Reloading panels that failed...")
   );
   document.getElementById("clearClientDiagnosticsBtn")?.addEventListener("click", () => {
     clearClientDiagnostics();
     callAppIsland("settings", "renderObservability");
-    showToast("Client degradation ledger cleared.");
+    showToast("Diagnostics cleared.");
   });
   document.getElementById("loadPersistenceBtn").addEventListener("click", () =>
     runAction(loadPersistence, "Loading persistence...")
@@ -1917,7 +1919,7 @@ function bindEvents() {
 
   document.getElementById("runOpeningContractBtn")?.addEventListener("click", () => {
     if (state.dashboard?.startScenarioReceipt) {
-      showToast("Your Opening Contract is already declared — see the Overview receipt.");
+      showToast("Your Opening Contract is already declared — see the summary on Overview.");
       return;
     }
     document.dispatchEvent(new CustomEvent("vsfgm:run-opening-contract"));
@@ -2423,7 +2425,7 @@ async function checkSpeedrunCompletion() {
   const res = await api("/api/speedrun/check", { method: "POST" });
   if (res.complete) {
     recordAchievementEvent("speedrun-complete", { seasons: res.seasonsElapsed });
-    const name = prompt("You won the Super Bowl! Enter your name for the leaderboard:", "GM");
+    const name = prompt("You won the Championship Game! Enter your name for the leaderboard:", "GM");
     if (name) {
       const sub = await api("/api/speedrun/submit", { method: "POST", body: { playerName: name } });
       showToast(`Ranked #${sub.rank} on the leaderboard!`);
@@ -2536,6 +2538,9 @@ async function init() {
   );
   initMobileLoop(state, advanceFromMobileLoop);
   syncMobileLoopOverlay();
+  // Long simulation jobs are a developer surface (?dev=1); players never poll for them.
+  if (new URLSearchParams(location.search).get("dev") !== "1") return;
+  import("./lib/devSurfaces.js").then((module) => module.applyDeveloperSurfaceVisibility());
   setInterval(() => {
     observeBackgroundTask(loadSimJobs, {
       surface: "jobs",

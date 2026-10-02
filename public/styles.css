@@ -5944,3 +5944,85 @@ html[data-theme="light"] .bg-layer {
     .return-digest-actions { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
     .return-digest-actions button { flex: 1; min-height: 44px; border-radius: 8px; border: 1px solid var(--line); background: transparent; color: inherit; cursor: pointer; font: inherit; }
     .return-digest-actions button[data-action="dismiss"] { background: var(--accent-strong); border-color: transparent; color: var(--bg-0); font-weight: 700; }
+
+/* S113 Desk: the next move leads — ranked calls beside the Advisor, progress tracks on one rail. */
+.desk-lead,
+.desk-rail {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+}
+.desk-lead > .panel,
+.desk-rail > .panel { margin: 0; min-width: 0; }
+@media (min-width: 1100px) {
+  .desk-lead { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+  .desk-rail { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+}
+.desk-lead, .desk-rail { margin-bottom: 16px; }
+.desk-more > summary {
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-weight: 600;
+  list-style: none;
+}
+.desk-more > summary::-webkit-details-marker { display: none; }
+.desk-more > summary::after { content: "+"; margin-left: auto; color: var(--muted); }
+.desk-more[open] > summary::after { content: "–"; }
+.desk-more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.desk-more[open] > summary { margin-bottom: 12px; }
+
+/* S113 League Pulse */
+.league-lens .lens-grid { display: grid; gap: 18px; }
+@media (min-width: 980px) { .league-lens .lens-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.lens-ranking-list, .lens-race ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.lens-ranking-list li { display: grid; grid-template-columns: 2.2em 3.2em minmax(0, 1fr); align-items: center; gap: 8px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--line, rgba(127,127,127,.2)); }
+.lens-ranking-list li.is-controlled { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.lens-ranking-list li.lens-gap { margin-top: 6px; }
+.lens-rank { font-weight: 700; font-size: 1.05rem; text-align: right; font-variant-numeric: tabular-nums; }
+.lens-team { display: grid; min-width: 0; }
+.lens-team small { color: var(--muted); }
+.lens-move { font-size: .8rem; font-variant-numeric: tabular-nums; color: var(--muted); }
+.lens-move.up { color: var(--success); }
+.lens-move.down { color: var(--danger, #d0605e); }
+.lens-races { display: grid; gap: 14px; }
+.lens-race h4 { margin: 0 0 6px; }
+.lens-race li { display: grid; gap: 3px; }
+.lens-race small { color: var(--muted); }
+.lens-race-head { display: flex; justify-content: space-between; gap: 8px; }
+.lens-bar { height: 6px; border-radius: 999px; background: color-mix(in srgb, var(--muted) 22%, transparent); overflow: hidden; }
+.lens-bar span { display: block; height: 100%; background: var(--accent); border-radius: inherit; }
+.lens-alerts { display: grid; gap: 8px; margin-bottom: 14px; }
+.lens-alert { display: grid; gap: 2px; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.lens-alert.broken { border-color: var(--success); background: color-mix(in srgb, var(--success) 12%, transparent); }
+
+/* S113 Boardroom operating statement */
+.operating-statement { margin: 0 0 16px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; }
+.statement-grid { display: grid; gap: 14px; }
+@media (min-width: 900px) { .statement-grid { grid-template-columns: 1fr 1fr; } }
+.statement-col { display: grid; gap: 6px; }
+.statement-line { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+.statement-line span { color: var(--muted); }
+.statement-line.positive strong { color: var(--success); }
+.statement-line.negative strong { color: var(--danger); }
+.statement-runway { display: grid; gap: 4px; }
+.statement-status { font-size: .8rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid currentColor; }
+.statement-status.healthy { color: var(--success); }
+.statement-status.watch { color: var(--warning); }
+.statement-status.pressure { color: var(--danger); }
+
+/* S113 Advisor look-ahead */
+.advisor-look-ahead { display: grid; gap: 2px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.advisor-look-ahead small { color: var(--muted); }
+
+/* S113 Sim-Watch: real field spot, down & distance, and the game-flow strip */
+.sw-field.red-zone { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--danger) 55%, transparent); }
+#simWatchDownDistance { font-weight: 700; font-variant-numeric: tabular-nums; }
+.sw-flow { display: block; width: 100%; height: 40px; margin: 6px 0 4px; }
+.sw-flow-axis { stroke: var(--line); stroke-width: 1; }
+.sw-flow-line { fill: none; stroke: var(--accent); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.sw-flow-label { fill: var(--muted); font-size: 8px; }
+
+/* S113: a hidden developer surface stays hidden even when its layout class sets display. */
+[data-dev-surface][hidden] { display: none !important; }

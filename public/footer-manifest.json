@@ -1,15 +1,24 @@
 {
-  "schemaVersion": "1.2",
+  "schemaVersion": "1.3",
   "headerLinks": [
-    "./about.html",
-    "./index.html"
+    "./index.html",
+    "./features.html",
+    "./how-to-play.html",
+    "./faq.html",
+    "./stats",
+    "./status.html"
   ],
   "footerLinks": [
     "./index.html",
+    "./features.html",
+    "./how-to-play.html",
+    "./faq.html",
+    "./roadmap.html",
     "./about.html",
     "./simulation.html",
-    "/stats",
+    "./stats",
     "./status.html",
+    "./status-archive.html",
     "./press.html",
     "./contact.html",
     "./privacy.html",
@@ -17,14 +26,15 @@
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"
   ],
   "footerOnly": [
-    "/stats",
-    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
+    "./roadmap.html",
+    "./about.html",
     "./simulation.html",
-    "./status.html",
+    "./status-archive.html",
     "./press.html",
     "./contact.html",
     "./privacy.html",
-    "./terms.html"
+    "./terms.html",
+    "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions"
   ],
   "legalPages": [
     "./privacy.html",
@@ -33,6 +43,10 @@
   "sharedFooterPages": [
     "index.html",
     "game.html",
+    "features.html",
+    "how-to-play.html",
+    "faq.html",
+    "roadmap.html",
     "about.html",
     "status.html",
     "contact.html",
@@ -44,14 +58,23 @@
   ],
   "labels": {
     "./index.html": "Play",
-    "./about.html": "About & FAQ",
+    "./features.html": "Features",
+    "./how-to-play.html": "How to Play",
+    "./faq.html": "FAQ",
+    "./roadmap.html": "Roadmap",
+    "./about.html": "About",
     "./simulation.html": "The Simulation",
-    "/stats": "Community Stats",
+    "./stats": "Community Stats",
     "./status.html": "Status & Updates",
+    "./status-archive.html": "Changelog",
     "./press.html": "Press",
     "./contact.html": "Contact",
     "./privacy.html": "Privacy",
     "./terms.html": "Terms",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions": "Discussions"
+  },
+  "headerLabels": {
+    "./stats": "Community",
+    "./status.html": "Updates"
   }
 }

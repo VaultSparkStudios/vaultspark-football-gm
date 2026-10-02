@@ -175,7 +175,7 @@ test("a bye week returns its own beat instead of nothing", async () => {
   const described = describeWeeklyPlanReceipt(result.receipt);
   assert.match(described.title, /bye/i);
   assert.match(described.detail, /bye week/i);
-  assert.doesNotMatch(described.detail, /explicit no-plan/i);
+  assert.doesNotMatch(described.detail, /no game plan \(your call\)/i);
 });
 
 test("the bye fires a checkpoint, so the week is observable", async () => {

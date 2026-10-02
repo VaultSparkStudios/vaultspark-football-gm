@@ -33,7 +33,7 @@ function builtPage(name) {
   return renderPublicChrome(fs.readFileSync(path.join(publicDir, name), "utf8"), { pageName: name, manifest });
 }
 
-test("every non-exempt public page renders the same manifest footer, one breadcrumb and one wired theme toggle", () => {
+test("every non-exempt public page renders the same manifest footer, one shared header and one wired theme toggle", () => {
   for (const name of publicPages) {
     if (CHROME_EXEMPT_PAGES.has(name)) continue;
     const html = builtPage(name);
@@ -43,7 +43,11 @@ test("every non-exempt public page renders the same manifest footer, one breadcr
       assert.ok(html.includes(`href="${href}"`), `${name} footer links ${href}`);
     }
     assert.match(html, /© 2026 VaultSpark Studios LLC\. All rights reserved\./, `${name} keeps the copyright line`);
-    assert.equal((html.match(/class="community-breadcrumb"/g) || []).length, 1, `${name} has one breadcrumb`);
+    assert.equal((html.match(/class="site-header"/g) || []).length, 1, `${name} has one shared site header`);
+    assert.equal((html.match(/class="community-breadcrumb"/g) || []).length, 0, `${name} no longer carries a separate breadcrumb`);
+    for (const href of manifest.headerLinks.filter((link) => link !== "./index.html")) {
+      assert.ok(html.includes(`href="${href}"`), `${name} header links ${href}`);
+    }
     assert.equal((html.match(/id="setupThemeToggleBtn"/g) || []).length, 1, `${name} has one toggle`);
     assert.equal((html.match(/initThemeCustomizer\(/g) || []).length, 1, `${name} wires the toggle exactly once`);
     assert.ok(html.includes(THEME_INIT_SCRIPT), `${name} calls initThemeCustomizer with an element id, not an object`);
@@ -93,7 +97,8 @@ test("index.html keeps every manifest destination in its own footer, because it 
 test("the manifest footer labels every destination and marks the current page", () => {
   const footer = renderFooter(manifest, { currentPage: "about.html" });
   assert.match(footer, /aria-current="page"/);
-  assert.match(footer, />About &amp; FAQ</);
+  assert.match(footer, />About</);
+  assert.match(footer, />Changelog</);
   assert.match(footer, /target="_blank" rel="noopener"/, "external links open in a new tab");
 });
 
@@ -115,7 +120,9 @@ test("status.html splits into the newest four notes plus a complete archive", ()
   assert.equal(parseReleaseNotes(split.latest).length, 4);
   assert.match(split.latest, /status-archive\.html/);
   assert.equal(parseReleaseNotes(split.archive).length, notes.length);
-  assert.match(split.archive, /<h1>Release History<\/h1>/);
+  assert.match(split.archive, /<h1>Changelog<\/h1>/);
+  assert.match(split.archive, /<h3 id="note-\d{4}-\d{2}-\d{2}">/, "every archived note carries a linkable anchor");
+  assert.match(split.latest, /changelog\.xml/, "the status page points at the RSS feed");
   assert.equal(parseReleaseNotes(split.latest)[0].date, notes[0].date, "the newest note stays first on the status page");
   const chromed = renderPublicChrome(split.archive, { pageName: "status-archive.html", manifest });
   assert.equal((chromed.match(/<footer\b/g) || []).length, 1);

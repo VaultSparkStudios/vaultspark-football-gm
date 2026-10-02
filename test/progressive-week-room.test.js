@@ -40,7 +40,7 @@ test("Week Room has an honest empty review and one native accessible disclosure"
   const room = buildProgressiveWeekRoom();
   assert.equal(room.primary, null);
   assert.equal(room.review.signal.ready, false);
-  assert.match(room.review.signal.disclaimer, /No result is inferred/);
+  assert.match(room.review.signal.disclaimer, /Nothing is inferred/);
 
   const overview = readFileSync(new URL("../public/lib/tabOverview.js", import.meta.url), "utf8");
   const game = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");

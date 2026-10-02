@@ -88,7 +88,12 @@ function setupStatusText(base = "Ready") {
   if (Number.isFinite(diag.totalMs)) parts.push(`api ${diag.totalMs}ms`);
   if (Number.isFinite(diag.savesMs) && !diag.savesDeferred) parts.push(`saves ${diag.savesMs}ms`);
   if (diag.savesDeferred) parts.push("saves deferred");
-  return parts.join(" | ");
+  // Load timings are a developer diagnostic: shown only with ?dev=1 (or on the
+  // dev server), never as part of the player-facing status chip.
+  // The full line stays machine-readable for diagnostics and the browser suite.
+  globalThis.document?.getElementById?.("setupStatus")?.setAttribute("data-diagnostics", parts.join(" | "));
+  const devView = /[?&]dev=1\b/.test(globalThis.location?.search || "") || isServerRuntimeAvailable();
+  return devView ? parts.join(" | ") : base;
 }
 
 function pageUrl(page) {

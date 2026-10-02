@@ -51,21 +51,21 @@ export function buildOnClockTradeReview({ action, offer, marketFingerprint } = {
     valueDelta: Number(offer.valueDelta || 0),
     counterAddsPick: normalizedAction === "counter",
     boundary: normalizedAction === "counter"
-      ? "Confirm sends one bounded counter. If the rival accepts, pick ownership transfers and the rival immediately consumes the live slot; if declined, no asset moves."
+      ? "Confirm sends one counter offer. If the rival accepts, pick ownership transfers and the rival immediately consumes the live slot; if declined, no asset moves."
       : "Confirm transfers pick ownership and the rival immediately consumes the live slot. This cannot be undone from the Draft War Room.",
-    evidenceBoundary: "Disclosed values explain the offer; they are not acceptance odds, urgency, or a forecast. The board fingerprint must still match at commit."
+    evidenceBoundary: "Disclosed values explain the offer; they are not acceptance odds, urgency, or a forecast. If the board changes before you confirm, the offer is voided."
   });
 }
 
 export function renderOnClockTradeReview(review) {
   if (!review) return "";
   return `
-    <div class="brand-kicker">Irreversible draft authority</div>
+    <div class="brand-kicker">Final draft-day decision</div>
     <h3 id="onClockTradeReviewTitle">Review ${escapeHtml(review.action === "counter" ? "counter" : "trade")} before commitment</h3>
     <div class="on-clock-trade-review-grid">
       <section><span>You send</span><strong>${escapeHtml(review.outgoing)}</strong><small>Live selection · disclosed value ${escapeHtml(review.outgoingValue)}</small></section>
       <section><span>${escapeHtml(review.rivalGm ? `${review.rival} (${review.rivalGm})` : review.rival)} sends</span><strong>${review.incomingPicks.map((pick) => escapeHtml(pick.label)).join(" + ")}</strong><small>Disclosed value ${escapeHtml(review.incomingValue)} · delta ${review.valueDelta >= 0 ? "+" : ""}${escapeHtml(review.valueDelta)}</small></section>
-      <section><span>Rival target</span><strong>${escapeHtml(review.targetPosition)}</strong><small>Source-derived roster need; no acceptance probability is claimed.</small></section>
+      <section><span>Rival target</span><strong>${escapeHtml(review.targetPosition)}</strong><small>Based on their roster needs; no acceptance odds are claimed.</small></section>
     </div>
     <p id="onClockTradeReviewBoundary" class="on-clock-trade-boundary"><strong>Commit boundary:</strong> ${escapeHtml(review.boundary)}</p>
     <p class="small">${escapeHtml(review.evidenceBoundary)}</p>`;

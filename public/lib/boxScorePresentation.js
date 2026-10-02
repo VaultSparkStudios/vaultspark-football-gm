@@ -87,7 +87,7 @@ export function buildBoxScoreImpactLeaders(boxScore = {}) {
         ...entry,
         score: Number(entry.score.toFixed(1)),
         category: signature?.category || "Impact",
-        summary: signature?.summary || "Source-derived game contribution"
+        summary: signature?.summary || "Game contribution"
       };
     })
     .sort((a, b) => b.score - a.score || a.player.localeCompare(b.player))

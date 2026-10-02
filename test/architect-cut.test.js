@@ -42,7 +42,7 @@ test("missing intent and sources remain explicit rather than receiving invented 
   assert.equal(cut.status, "partial");
   assert.ok(cut.missingSources.includes("weeklyPlans"));
   assert.equal(cut.turningPoints[0].evidenceState, "incomplete");
-  assert.match(cut.turningPoints[0].declaredIntent, /no pre-trade intent receipt/i);
+  assert.match(cut.turningPoints[0].declaredIntent, /no pre-trade intent was noted/i);
 });
 
 test("empty seasons produce an honest incomplete cut", () => {

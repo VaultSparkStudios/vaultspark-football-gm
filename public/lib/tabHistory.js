@@ -58,7 +58,7 @@ export function awardCountLine(awardCounts = {}) {
     ["DPOY", awardCounts.DPOY || 0],
     ["All-Pro 1", awardCounts.AllPro1 || 0],
     ["All-Pro 2", awardCounts.AllPro2 || 0],
-    ["Pro Bowl", awardCounts.ProBowl || 0],
+    ["All-Star", awardCounts.ProBowl || 0],
     ["ROY", (awardCounts.OROY || 0) + (awardCounts.DROY || 0) + (awardCounts.ROY || 0)],
     ["CPOY", awardCounts.CPOY || 0],
     ["Most Improved", awardCounts.MostImproved || 0]
@@ -130,13 +130,13 @@ export function renderAwardGallery(containerId, entries = [], emptyText = "No ho
       <div class="history-card-top">
         <div class="history-card-title">
           <strong>${escapeHtml(entry.player || "-")}</strong>
-          <div class="history-card-meta">${escapeHtml(entry.pos || "-")} | ${escapeHtml(entry.team || "-")}</div>
+          <div class="history-card-meta">${escapeHtml(entry.pos || "-")} | ${escapeHtml(teamCode(entry.team))}</div>
         </div>
         <div class="history-number-plate">${escapeHtml(entry.av ?? "-")}</div>
       </div>
       <div class="history-card-grid">
         <div class="history-card-stat"><strong>Honor</strong><div>${escapeHtml(entry.label || "-")}</div></div>
-        <div class="history-card-stat"><strong>Team</strong><div>${escapeHtml(entry.team || "-")}</div></div>
+        <div class="history-card-stat"><strong>Team</strong><div>${escapeHtml(teamCode(entry.team))}</div></div>
         <div class="history-card-stat"><strong>Position</strong><div>${escapeHtml(entry.pos || "-")}</div></div>
         <div class="history-card-stat"><strong>AV</strong><div>${escapeHtml(entry.av ?? "-")}</div></div>
       </div>
@@ -162,7 +162,7 @@ export function renderSeasonAwardsShowcase(selectedAward = null) {
       spotlight.innerHTML = `
         <div class="history-spotlight-mark">
           <div class="history-spotlight-label">Season Awards Archive</div>
-          <div class="history-spotlight-meta">Select an award year to review winners, All-Pro teams, Pro Bowl rosters, and the Super Bowl summary.</div>
+          <div class="history-spotlight-meta">Select an award year to review winners, All-Pro teams, All-Star rosters, and the Championship Game summary.</div>
         </div>
       `;
     }
@@ -175,8 +175,8 @@ export function renderSeasonAwardsShowcase(selectedAward = null) {
   }
 
   const superBowlSummary = selectedAward.SuperBowl
-    ? `${selectedAward.SuperBowl.championTeamId || "-"} def. ${selectedAward.SuperBowl.runnerUpTeamId || "-"} ${orientWinnerFirst(selectedAward.SuperBowl.finalScore || "")}`
-    : "No Super Bowl summary recorded";
+    ? `${teamCode(selectedAward.SuperBowl.championTeamId)} def. ${teamCode(selectedAward.SuperBowl.runnerUpTeamId)} ${orientWinnerFirst(selectedAward.SuperBowl.finalScore || "")}`
+    : "No Championship Game summary recorded";
   if (spotlight) {
     spotlight.innerHTML = `
       <div class="history-spotlight-mark">
@@ -187,17 +187,17 @@ export function renderSeasonAwardsShowcase(selectedAward = null) {
         <div class="history-spotlight-card">
           <strong>MVP Standard</strong>
           <div>${escapeHtml(selectedAward.MVP?.player || "No MVP recorded")}</div>
-          <div class="small">${escapeHtml(selectedAward.MVP ? `${selectedAward.MVP.team || "-"} | ${selectedAward.MVP.pos || "-"}` : "No major award winner logged.")}</div>
+          <div class="small">${escapeHtml(selectedAward.MVP ? `${teamCode(selectedAward.MVP.team)} | ${selectedAward.MVP.pos || "-"}` : "No major award winner logged.")}</div>
         </div>
         <div class="history-spotlight-card">
-          <strong>Super Bowl MVP</strong>
-          <div>${escapeHtml(selectedAward.SuperBowl?.MVP?.player || "No Super Bowl MVP")}</div>
+          <strong>Championship Game MVP</strong>
+          <div>${escapeHtml(selectedAward.SuperBowl?.MVP?.player || "No Championship Game MVP")}</div>
           <div class="small">${escapeHtml(selectedAward.SuperBowl?.pivotalMoment || "No pivotal moment logged")}</div>
         </div>
         <div class="history-spotlight-card">
           <strong>All-Pro Depth</strong>
           <div>${escapeHtml((selectedAward.AllPro1 || []).length + (selectedAward.AllPro2 || []).length + (selectedAward.AllPro3 || []).length)} selections</div>
-          <div class="small">${escapeHtml(`${(selectedAward.AllPro1 || []).length} first-team | ${(selectedAward.ProBowl || []).length} Pro Bowl`)}</div>
+          <div class="small">${escapeHtml(`${(selectedAward.AllPro1 || []).length} first-team | ${(selectedAward.ProBowl || []).length} All-Star`)}</div>
         </div>
       </div>
     `;
@@ -212,7 +212,7 @@ export function renderSeasonAwardsShowcase(selectedAward = null) {
     { label: "ROY", ...selectedAward.ROY, note: "Overall Rookie of the Year" },
     { label: "CPOY", ...selectedAward.CPOY, note: "Comeback Player of the Year" },
     { label: "Most Improved", ...selectedAward.MostImproved, note: "Most Improved award winner" },
-    { label: "Super Bowl MVP", ...selectedAward.SuperBowl?.MVP, team: selectedAward.SuperBowl?.championTeamId, note: selectedAward.SuperBowl?.pivotalMoment || "Super Bowl MVP" }
+    { label: "Championship Game MVP", ...selectedAward.SuperBowl?.MVP, team: selectedAward.SuperBowl?.championTeamId, note: selectedAward.SuperBowl?.pivotalMoment || "Championship Game MVP" }
   ].filter((entry) => entry?.player);
 
   if (winnerGallery) {
@@ -236,8 +236,8 @@ export function renderSeasonAwardsShowcase(selectedAward = null) {
   );
   renderAwardGallery(
     "proBowlGallery",
-    (selectedAward.ProBowl || []).map((entry) => ({ label: "Pro Bowl", note: "Pro Bowl selection", ...entry })),
-    "No Pro Bowl selections recorded."
+    (selectedAward.ProBowl || []).map((entry) => ({ label: "All-Star", note: "All-Star selection", ...entry })),
+    "No All-Star selections recorded."
   );
 }
 
@@ -374,7 +374,7 @@ export function renderHistorySpotlight() {
     spotlight.innerHTML = `
       <div class="history-spotlight-mark">
         <div class="history-spotlight-label">Legacy Ledger</div>
-        <div class="history-spotlight-meta">${escapeHtml(latestChampion ? `${latestChampion.year} champion ${latestChampion.championTeamId}` : "No champions recorded yet")} | ${escapeHtml(hall.length)} Hall of Fame resumes | ${escapeHtml(retiredCount)} retired numbers logged | ${escapeHtml(hallOfFamePolicyLine(settings))}</div>
+        <div class="history-spotlight-meta">${escapeHtml(latestChampion ? `${latestChampion.year} champion ${teamCode(latestChampion.championTeamId)}` : "No champions recorded yet")} | ${escapeHtml(hall.length)} Hall of Fame resumes | ${escapeHtml(retiredCount)} retired numbers logged | ${escapeHtml(hallOfFamePolicyLine(settings))}</div>
       </div>
       <div class="history-spotlight-grid">
         <div class="history-spotlight-card">
@@ -390,7 +390,7 @@ export function renderHistorySpotlight() {
         <div class="history-spotlight-card">
           <strong>Ring Standard</strong>
           <div>${escapeHtml(latestChampion ? orientWinnerFirst(latestChampion.score) || "-" : "-")}</div>
-          <div class="small">${escapeHtml(latestChampion ? `${latestChampion.championTeamId} over ${latestChampion.runnerUpTeamId}` : "Super Bowl scorecards will show here")}</div>
+          <div class="small">${escapeHtml(latestChampion ? `${teamCode(latestChampion.championTeamId)} over ${teamCode(latestChampion.runnerUpTeamId)}` : "Championship Game scorecards will show here")}</div>
         </div>
       </div>
     `;
@@ -639,8 +639,8 @@ export function renderRecordsAndHistory() {
       ROY: award.ROY?.player || "",
       CPOY: award.CPOY?.player || "",
       mostImproved: award.MostImproved?.player || "",
-      sbScore: orientWinnerFirst(award.SuperBowl?.finalScore || ""),
-      sbMVP: award.SuperBowl?.MVP?.player || ""
+      titleScore: orientWinnerFirst(award.SuperBowl?.finalScore || ""),
+      titleMVP: award.SuperBowl?.MVP?.player || ""
     }))
   );
 
@@ -670,17 +670,18 @@ export function renderRecordsAndHistory() {
           ROY: selectedAward.ROY?.player || "",
           CPOY: selectedAward.CPOY?.player || "",
           mostImproved: selectedAward.MostImproved?.player || "",
-          superBowl: `${selectedAward.SuperBowl?.championTeamId || "-"} def. ${selectedAward.SuperBowl?.runnerUpTeamId || "-"} ${orientWinnerFirst(selectedAward.SuperBowl?.finalScore || "")}`,
-          superBowlMVP: selectedAward.SuperBowl?.MVP?.player || "",
+          championship: `${teamCode(selectedAward.SuperBowl?.championTeamId)} def. ${teamCode(selectedAward.SuperBowl?.runnerUpTeamId)} ${orientWinnerFirst(selectedAward.SuperBowl?.finalScore || "")}`,
+          championshipMVP:selectedAward.SuperBowl?.MVP?.player || "",
           pivotalMoment: selectedAward.SuperBowl?.pivotalMoment || ""
         }]
       : []
   );
 
-  renderTable("allPro1Table", (selectedAward?.AllPro1 || []).map((entry) => ({ team: "All-Pro 1", pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
-  renderTable("allPro2Table", (selectedAward?.AllPro2 || []).map((entry) => ({ team: "All-Pro 2", pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
-  renderTable("allPro3Table", (selectedAward?.AllPro3 || []).map((entry) => ({ team: "All-Pro 3", pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
-  renderTable("proBowlTable", (selectedAward?.ProBowl || []).map((entry) => ({ pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
+  const honorRows = (list, team) => (list || []).map((entry) => ({ ...(team && { team }), pos: entry.pos, player: entry.player, tm: teamCode(entry.team), av: entry.av }));
+  renderTable("allPro1Table", honorRows(selectedAward?.AllPro1, "All-Pro 1"));
+  renderTable("allPro2Table", honorRows(selectedAward?.AllPro2, "All-Pro 2"));
+  renderTable("allPro3Table", honorRows(selectedAward?.AllPro3, "All-Pro 3"));
+  renderTable("proBowlTable", honorRows(selectedAward?.ProBowl));
 
   renderTable(
     "championsTable",

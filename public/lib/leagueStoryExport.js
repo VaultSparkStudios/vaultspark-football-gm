@@ -56,7 +56,7 @@ function leaderName(rows = [], category) {
 function predictionStoryCopy(snapshot) {
   const stats = snapshot?.stats || {};
   if (!stats.totalCount) {
-    return { summary: "No prediction receipts yet", recent: "No recent receipts" };
+    return { summary: "No predictions graded yet", recent: "No recent predictions" };
   }
   const mae = snapshot.meanAbsoluteMarginError;
   const summary =
@@ -75,7 +75,7 @@ function predictionStoryCopy(snapshot) {
             : "margin ungraded";
     return `Y${receipt.year} W${receipt.week} ${receipt.gameId}: ${winner}, ${margin}`;
   }).join(" · ");
-  return { summary, recent: recent || "No recent receipts" };
+  return { summary, recent: recent || "No recent predictions" };
 }
 
 export function buildLeagueStoryFromDashboard(dashboard = {}) {
@@ -113,8 +113,8 @@ export function buildLeagueStoryFromDashboard(dashboard = {}) {
     capSpace: cap.capSpace,
     gmLegacy: gmLegacy.score != null ? `${gmLegacy.score} (${gmLegacy.grade || "grade pending"})` : "—",
     timeCapsule: capsule
-      ? `${capsule.hits || 0}-${capsule.misses || 0}${capsule.pushes ? `, ${capsule.pushes} push` : ""}: ${capsule.reporterVerdict || "receipts filed"}`
-      : "No receipt ledger yet",
+      ? `${capsule.hits || 0}-${capsule.misses || 0}${capsule.pushes ? `, ${capsule.pushes} push` : ""}: ${capsule.reporterVerdict || "predictions graded"}`
+      : "No graded predictions yet",
     predictionSummary: prediction.summary,
     predictionRecent: prediction.recent
   });
@@ -167,8 +167,8 @@ export function buildLeagueStory(state) {
     capSpace: fmtSalary(capSpace),
     gmLegacy: gmLegacy || "—",
     timeCapsule: timeCapsule || "—",
-    predictionSummary: predictionSummary || "No prediction receipts yet",
-    predictionRecent: predictionRecent || "No recent receipts"
+    predictionSummary: predictionSummary || "No predictions graded yet",
+    predictionRecent: predictionRecent || "No recent predictions"
   };
 }
 
@@ -210,7 +210,7 @@ export function renderStoryHTML(story) {
     <div class="league-name">${esc(story.leagueName)}</div>
     <div class="season-title">Season ${esc(story.year)} Story</div>
     <div class="champion-row">Champion: <span class="champion-team">${esc(story.champion)}</span></div>
-    <div class="sb-score">Super Bowl: ${esc(story.sbScore)} &nbsp;|&nbsp; MVP: ${esc(story.sbMvp)}</div>
+    <div class="sb-score">Championship Game: ${esc(story.sbScore)} &nbsp;|&nbsp; MVP: ${esc(story.sbMvp)}</div>
   </div>
   <div class="grid">
     <div class="cell">
@@ -262,15 +262,15 @@ export function renderStoryHTML(story) {
       <div class="cell-value">${esc(story.sacksLeader)}</div>
     </div>
     <div class="cell">
-      <div class="cell-label">Time Capsule Receipts</div>
+      <div class="cell-label">Time Capsule Grades</div>
       <div class="cell-value">${esc(story.timeCapsule)}</div>
     </div>
     <div class="cell">
-      <div class="cell-label">Prediction Ledger</div>
+      <div class="cell-label">Prediction Record</div>
       <div class="cell-value">${esc(story.predictionSummary)}</div>
     </div>
     <div class="cell">
-      <div class="cell-label">Recent Prediction Receipts</div>
+      <div class="cell-label">Recent Predictions</div>
       <div class="cell-value">${esc(story.predictionRecent)}</div>
     </div>
   </div>

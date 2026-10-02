@@ -1,3 +1,4 @@
+import { deriveSessionGmArchetype } from "./engine/gmArchetype.js";
 import fs from "node:fs";
 import path from "node:path";
 import http from "node:http";
@@ -53,6 +54,14 @@ import {
   lobbyStatus,
   ADVANCE_GATE_STATUS
 } from "./runtime/multiplayerSession.js";
+import {
+  applySecurityHeaders,
+  clampQueryInt,
+  isPathInsideBaseDir,
+  readRequestBody,
+  resolveClientAddress,
+  stopOversizeUpload
+} from "./server/httpHardening.js";
 
 const PORT = Number(process.env.PORT || 4173);
 const PUBLIC_DIR = path.resolve("public");
@@ -158,7 +167,9 @@ function commissionerIntentSessionAdapter() {
   };
 }
 
-// ── Rate limiter (token-bucket, 50 req/min per IP) ───────────────────────────
+// ── Rate limiter (fixed 60s window counter, 50 req/min per client) ──────────
+// The client key is the socket peer; forwarding headers are honoured only when
+// VSFGM_TRUST_PROXY is set (see resolveClientAddress).
 // VSFGM_RATE_LIMIT_PER_MIN overrides the per-minute budget. UI test harnesses
 // poll far faster than a human and self-throttle into 429s — see CI run
 // 26991314776, where Playwright tripped the limit the first time the UI suite
@@ -219,16 +230,6 @@ function validateParam(value, { type, min, max, allow } = {}) {
   return true;
 }
 
-function deriveGmArchetype(team) {
-  const roster = Array.isArray(team.roster) ? team.roster : [];
-  const avgAge = roster.length ? roster.reduce((s, p) => s + (p.age || 26), 0) / roster.length : 27;
-  const ovr = team.overallRating || 75;
-  const capHit = team.capSummary?.activeCap || 0;
-  if (avgAge < 25.5 && ovr < 79) return { label: "Moneyball", description: "Builds through analytics, cheap young talent, draft-first.", icon: "📊" };
-  if (avgAge > 28 && ovr > 80) return { label: "Win-Now", description: "Aggressive veteran acquisitions, mortgages the future.", icon: "🔥" };
-  if (capHit > 220_000_000) return { label: "Gut-Feel", description: "Pays for star names, trusts instinct over data.", icon: "🎲" };
-  return { label: "Loyalty", description: "Extends core players, rewards homegrown talent.", icon: "🤝" };
-}
 
 function generateSeasonArcs(sess) {
   try {
@@ -293,32 +294,8 @@ function applyCorsHeaders(req, res) {
   for (const [name, value] of headers) res.setHeader(name, value);
 }
 
-const BUFFERED_BODY = Symbol("vsfgm.bufferedBody");
-
-/**
- * Read the request body, once.
- *
- * The franchise authority boundary (S63) has to inspect the body before any
- * mutating route acts on it, but the stream can only be consumed a single time
- * and every route already calls this helper for itself. Memoizing on the request
- * lets the guard read the body up front while each route's existing call site
- * keeps working unchanged.
- */
-function readRequestBody(req) {
-  if (req[BUFFERED_BODY] !== undefined) return Promise.resolve(req[BUFFERED_BODY]);
-  return new Promise((resolve, reject) => {
-    let body = "";
-    req.on("data", (chunk) => {
-      body += chunk;
-      if (body.length > 1_000_000) reject(new Error("Body too large"));
-    });
-    req.on("end", () => {
-      req[BUFFERED_BODY] = body;
-      resolve(body);
-    });
-    req.on("error", reject);
-  });
-}
+// readRequestBody (read-once, byte-bounded, 413 on overflow) lives in
+// ./server/httpHardening.js so it can be tested without booting the server.
 
 function parseJsonBody(body) {
   if (!body) return {};
@@ -393,7 +370,7 @@ function serveStatic(reqPath, res) {
   const { baseDir } = moduleRoot;
   const relativePath = moduleRoot.prefix ? safePath.slice(moduleRoot.prefix.length) : safePath;
   const resolved = path.resolve(baseDir, `.${relativePath}`);
-  if (!resolved.startsWith(baseDir)) {
+  if (!isPathInsideBaseDir(resolved, baseDir)) {
     sendText(res, 403, "Forbidden");
     return;
   }
@@ -672,7 +649,7 @@ async function handleApi(req, res, url) {
 
   if (req.method === "GET" && url.pathname === "/api/free-agents") {
     const position = url.searchParams.get("position");
-    const limit = toInt(url.searchParams.get("limit")) || 200;
+    const limit = clampQueryInt(url.searchParams.get("limit"), { min: 1, max: 500, fallback: 200 });
     const minOverall = toInt(url.searchParams.get("minOverall"));
     const minAge = toInt(url.searchParams.get("minAge"));
     const maxAge = toInt(url.searchParams.get("maxAge"));
@@ -682,7 +659,7 @@ async function handleApi(req, res, url) {
 
   if (req.method === "GET" && url.pathname === "/api/retired") {
     const position = url.searchParams.get("position");
-    const limit = toInt(url.searchParams.get("limit")) || 250;
+    const limit = clampQueryInt(url.searchParams.get("limit"), { min: 1, max: 1000, fallback: 250 });
     const minOverall = toInt(url.searchParams.get("minOverall"));
     const minAge = toInt(url.searchParams.get("minAge"));
     const maxAge = toInt(url.searchParams.get("maxAge"));
@@ -695,7 +672,7 @@ async function handleApi(req, res, url) {
 
   if (req.method === "GET" && url.pathname === "/api/players/search") {
     const query = url.searchParams.get("q") || "";
-    const limit = toInt(url.searchParams.get("limit")) || 20;
+    const limit = clampQueryInt(url.searchParams.get("limit"), { min: 1, max: 100, fallback: 20 });
     const includeRetired = url.searchParams.get("includeRetired") !== "0";
     sendJson(res, 200, {
       ok: true,
@@ -706,7 +683,7 @@ async function handleApi(req, res, url) {
 
   if (req.method === "GET" && url.pathname === "/api/free-agency/market") {
     const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
-    const limit = toInt(url.searchParams.get("limit")) || 60;
+    const limit = clampQueryInt(url.searchParams.get("limit"), { min: 5, max: 200, fallback: 60 });
     sendJson(res, 200, { ok: true, market: session.getFreeAgencyMarket({ teamId, limit }) });
     return true;
   }
@@ -1349,7 +1326,7 @@ async function handleApi(req, res, url) {
   }
 
   if (req.method === "GET" && url.pathname === "/api/calibration/jobs") {
-    const limit = toInt(url.searchParams.get("limit")) || 40;
+    const limit = clampQueryInt(url.searchParams.get("limit"), { min: 1, max: 200, fallback: 40 });
     sendJson(res, 200, { ok: true, jobs: session.listCalibrationJobs(limit) });
     return true;
   }
@@ -1361,7 +1338,7 @@ async function handleApi(req, res, url) {
       return true;
     }
     const year = toInt(body.year) || session.currentYear;
-    const samples = toInt(body.samples) || 20;
+    const samples = clampQueryInt(body.samples, { min: 1, max: 500, fallback: 20 });
     const label = body.label ? String(body.label) : "manual";
     const job = session.runAutoCalibrationJob({ year, samples, label });
     sendJson(res, 200, { ok: true, job });
@@ -1477,7 +1454,7 @@ async function handleApi(req, res, url) {
   }
 
   if (req.method === "GET" && url.pathname === "/api/realism/verify") {
-    const seasons = toInt(url.searchParams.get("seasons")) || 12;
+    const seasons = clampQueryInt(url.searchParams.get("seasons"), { min: 1, max: 30, fallback: 12 });
     const report = session.runRealismVerification({ seasons });
     sendJson(res, 200, { ok: true, report });
     return true;
@@ -2134,7 +2111,7 @@ async function handleApi(req, res, url) {
       name: [t.city, t.nickname].filter(Boolean).join(" ") || t.name || t.id,
       abbrev: t.abbrev || t.id,
       ovr: t.overallRating || 75,
-      archetype: deriveGmArchetype(t),
+      archetype: deriveSessionGmArchetype(session, t),
       gm: buildPersonaIntel(session.league, t.id)
     }));
     sendJson(res, 200, { ok: true, archetypes });
@@ -2212,6 +2189,7 @@ const server = http.createServer(async (req, res) => {
   const started = Date.now();
   serverMetrics.requests += 1;
   try {
+    applySecurityHeaders(res);
     applyCorsHeaders(req, res);
     if (req.method === "OPTIONS") {
       res.writeHead(204);
@@ -2222,7 +2200,7 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname.startsWith("/api/")) {
       serverMetrics.apiRequests += 1;
       // Rate limiting — exempt health/static, apply to all API calls
-      const clientIp = String(req.socket?.remoteAddress || req.headers["x-forwarded-for"] || "unknown").split(",")[0].trim();
+      const clientIp = resolveClientAddress(req);
       if (!checkRateLimit(clientIp)) {
         sendJson(res, 429, { ok: false, error: "Too many requests. Please wait a moment." });
         return;
@@ -2239,7 +2217,22 @@ const server = http.createServer(async (req, res) => {
     serveStatic(url.pathname, res);
     trackRouteMetric(`static:${url.pathname}`, Date.now() - started);
   } catch (error) {
-    sendJson(res, 500, { ok: false, error: error.message || "Internal server error." });
+    // Deliberate client errors (e.g. 413 from readRequestBody) carry `expose`;
+    // anything else is logged here and answered generically so runtime
+    // internals never reach the client.
+    const exposed = error?.expose === true && Number(error.status) >= 400 && Number(error.status) < 500;
+    if (!exposed) console.error(`[server] ${req.method} ${req.url} failed:`, error);
+    if (!res.headersSent) {
+      if (exposed) {
+        sendJson(res, Number(error.status), { ok: false, error: error.message });
+      } else {
+        sendJson(res, 500, { ok: false, error: "Internal server error." });
+      }
+    } else if (!res.writableEnded) {
+      res.end();
+    }
+    // An oversized upload may still be streaming: stop it once the 413 is flushed.
+    if (error?.code === "BODY_TOO_LARGE") stopOversizeUpload(req, res);
     trackRouteMetric("error", Date.now() - started);
   }
 });

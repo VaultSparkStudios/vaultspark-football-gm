@@ -18,7 +18,14 @@ const requiredFiles = [
   "../public/.well-known/llms.txt",
   "../public/sitemap.xml",
   "../public/stats.html",
-  "../public/stats-surface.json"
+  "../public/stats-surface.json",
+  "../public/content/claims.json",
+  "../public/manifest.webmanifest",
+  "../public/site.css",
+  "../public/features.html",
+  "../public/how-to-play.html",
+  "../public/faq.html",
+  "../public/roadmap.html"
 ];
 
 test("public Pages bundle has contact, legal, sitemap, and agent metadata sources", () => {
@@ -44,9 +51,12 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.match(sitemap, /simulation\.html/, "sitemap lists the simulation methodology page");
   assert.doesNotMatch(sitemap, /<loc>[^<]*\/stats<\/loc>/, "a zero-cohort stats page is withheld from the crawl invitation (S94)");
   assert.match(sitemap, /status\.html/, "sitemap lists the merged status+release-notes page");
+  for (const page of ["features.html", "how-to-play.html", "faq.html", "roadmap.html"]) {
+    assert.match(sitemap, new RegExp(page.replace(".", "\\.")), `sitemap lists ${page}`);
+  }
   assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, "sitemap entries carry lastmod");
   assert.doesNotMatch(sitemap, /changelog\.html/, "changelog is a redirect stub and stays out of the sitemap");
-  assert.doesNotMatch(sitemap, /play\.html/, "play.html is a redirect stub and stays out of the sitemap");
+  assert.doesNotMatch(sitemap, /\/play\.html/, "play.html is a redirect stub and stays out of the sitemap");
   assert.doesNotMatch(sitemap, /game\.html/, "the app shell is not an indexable page");
   assert.doesNotMatch(sitemap, /ip\.html/, "ip.html merged into terms.html");
 });
@@ -86,7 +96,8 @@ test("Community Stats uses its clean canonical route and player-first homepage c
   const index = fs.readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
   const stats = fs.readFileSync(new URL("../public/stats.html", import.meta.url), "utf8");
   const client = fs.readFileSync(new URL("../public/community-stats.js", import.meta.url), "utf8");
-  assert.match(index, /href="\/stats"/, "homepage links the redirect-free canonical route");
+  assert.match(index, /href="\.\/stats"/, "homepage links the redirect-free clean route, mount-relative like every other link");
+  assert.doesNotMatch(index, /href="\/stats/, "no root-absolute link survives on the homepage (it breaks under a mounted path)");
   assert.doesNotMatch(index, /href="\.\/stats\.html"/, "homepage does not send players through the HTML redirect");
   assert.match(stats, /rel="canonical" href="https:\/\/playfranchisearchitect\.com\/stats"/);
   assert.doesNotMatch(index, /participating football architects|anonymous, aggregate|refreshed near live/i);
@@ -126,7 +137,12 @@ const themedStaticPages = [
   "../public/privacy.html",
   "../public/terms.html",
   "../public/simulation.html",
-  "../public/stats.html"
+  "../public/stats.html",
+  "../public/features.html",
+  "../public/how-to-play.html",
+  "../public/faq.html",
+  "../public/roadmap.html",
+  "../public/press.html"
 ];
 
 test("themeBoot is a dependency-free classic script honoring the shared theme key", () => {
@@ -174,7 +190,13 @@ test("root page is visitor-first: no server-first copy, no disabled hero buttons
   assert.doesNotMatch(index, /<button[^>]*continue-active-btn[^>]*disabled/, "Continue is hidden, not disabled, for new visitors");
   assert.match(index, /instant-start-btn/, "one-click start exists");
   assert.match(index, /<meta name="vsfgm-runtime-default" content="client"/, "source runtime metas match deployed truth");
-  assert.match(index, /<title>Franchise Architect: Football — Deep NFL Franchise Simulator<\/title>/, "homepage title is not an in-app breadcrumb");
+  assert.match(index, /<title>Franchise Architect: Football — Free Browser Football Franchise Sim<\/title>/, "homepage title is not an in-app breadcrumb");
+  // The terms disclaim any league affiliation, so the landing metadata may not
+  // borrow one, and engine jargon is not a selling point.
+  const head = index.slice(0, index.indexOf("</head>"));
+  assert.doesNotMatch(head, /\bNFL\b|deepest|agent AI|rivalry DNA|PFR-calibrated/i);
+  assert.doesNotMatch(index, /open beta/i, "the status label is free early access");
+  assert.doesNotMatch(index, /Engine Systems|Playable Seasons/, "unverifiable or file-count stats are not published");
   assert.doesNotMatch(index, /<details[^>]*class="setup-section setup-details"[^>]*\sopen/, "empty save tables are not expanded by default");
 });
 
@@ -194,7 +216,7 @@ test("retired routes are real 301s and merged pages hold their contracts", () =>
     ? fs.readFileSync(new URL("../static/_redirects", import.meta.url), "utf8")
     : "";
   if (redirects) {
-    for (const [from, to] of [["/play.html", "/"], ["/changelog.html", "/status.html"], ["/ip.html", "/terms.html"], ["/landing.html", "/#why"]]) {
+    for (const [from, to] of [["/play.html", "/"], ["/changelog.html", "/status-archive.html"], ["/ip.html", "/terms.html"], ["/landing.html", "/#why"]]) {
       assert.ok(redirects.includes(`${from} ${to} 301`), `${from} must 301 to ${to}`);
     }
   }

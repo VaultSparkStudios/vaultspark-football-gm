@@ -34,14 +34,14 @@ async function createLeagueFromSetup(page, { runtimeMode = null, seed = 20260306
   await page.goto("/");
   await waitSetupReady(page);
   if (runtimeMode) {
+    // S113: the runtime selector lives under the landing page's Advanced settings.
+    await page.evaluate(() => document.querySelectorAll("details").forEach((element) => { element.open = true; }));
     await page.selectOption("#runtimeModeSelect", runtimeMode);
     await waitSetupReady(page);
     await expect(page.locator("#runtimeModeSelect")).toHaveValue(runtimeMode);
   }
-  const advancedSettings = page.locator("details:has(#seedInput)");
-  if (!(await advancedSettings.getAttribute("open"))) {
-    await advancedSettings.locator(":scope > summary").click();
-  }
+  // S113: seed and runtime live under nested Advanced settings; open every section.
+  await page.evaluate(() => document.querySelectorAll("details").forEach((element) => { element.open = true; }));
   await page.fill("#seedInput", String(seed));
   await expect(page.locator("#seedInput")).toHaveValue(String(seed));
   await page.selectOption("#teamSelect", "BUF");
@@ -493,7 +493,9 @@ test("roster window map renders development and succession pressure", async ({ p
   await page.click("#loadRosterBtn");
   await waitGameReady(page);
 
-  await expect(page.locator("#rosterWindowSummary")).toContainText(`Profile ${PLAYER_DEVELOPMENT_PROFILE.version}`);
+  // S113: the internal profile version is no longer shown to players.
+  await expect(page.locator("#rosterWindowSummary")).toContainText("Succession watch");
+  await expect(page.locator("#rosterWindowSummary")).not.toContainText(PLAYER_DEVELOPMENT_PROFILE.version);
   await expect(page.locator("#rosterWindowTable tr").nth(1)).toBeVisible();
   await expect(page.locator("#rosterWindowTable")).toContainText(/Quarterback|Backfield|Receivers/);
   await expect(page.locator("#rosterWindowTable")).toContainText(/Protect the runway|Stable room|Succession|Contract decisions|Draft a successor/);
@@ -562,6 +564,10 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
   await waitSetupReady(page);
   await expect(page.locator("#savesTable")).toContainText(slot, { timeout: 20_000 });
 
+  // S113: the runtime selector lives under the landing page's Advanced settings.
+
+  await page.evaluate(() => document.querySelectorAll("details").forEach((element) => { element.open = true; }));
+
   await page.selectOption("#runtimeModeSelect", "client");
   await waitSetupReady(page);
   await expect(page.locator("#runtimeModeSelect")).toHaveValue("client");
@@ -569,6 +575,10 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
   await expect(page.locator("#profilePathInput")).toBeDisabled();
   await expect(page.locator("#savesTable")).not.toContainText(slot);
   await expect(page.locator("#resumeLatestBtn")).toBeDisabled();
+
+  // S113: the runtime selector lives under the landing page's Advanced settings.
+
+  await page.evaluate(() => document.querySelectorAll("details").forEach((element) => { element.open = true; }));
 
   await page.selectOption("#runtimeModeSelect", "server");
   await waitSetupReady(page);

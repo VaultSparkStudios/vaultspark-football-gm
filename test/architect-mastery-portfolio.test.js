@@ -64,11 +64,11 @@ test("the strongest signature is visible with its source count and honest empty 
   const visible = renderMasterySignatureCard(portfolio);
   assert.match(visible, /Strongest signature/);
   assert.ok(visible.includes(portfolio.signature.label));
-  assert.match(visible, new RegExp(`${portfolio.signature.evidenceCount} source receipt`));
+  assert.match(visible, new RegExp(`${portfolio.signature.evidenceCount} recorded move`));
   assert.match(visible, /no hidden bonus or causal claim/i);
 
   const empty = renderMasterySignatureCard(buildArchitectMasteryPortfolio({ teams: [], champions: [] }, "BUF"));
-  assert.match(empty, /Awaiting source receipts/);
+  assert.match(empty, /Still taking shape/);
   assert.doesNotMatch(empty, /\b\d+\/25\b/);
 });
 

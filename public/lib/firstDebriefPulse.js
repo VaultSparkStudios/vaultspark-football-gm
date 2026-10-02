@@ -114,12 +114,12 @@ function contextFromDashboard(dashboard = {}) {
 function confirmationMarkup() {
   return `
     <section class="first-debrief-card first-debrief-confirmation" role="document" aria-labelledby="firstDebriefSavedTitle">
-      <div class="first-debrief-kicker">Local receipt saved</div>
+      <div class="first-debrief-kicker">Check-in saved on this device</div>
       <h2 id="firstDebriefSavedTitle">Thanks — the check-in stays yours.</h2>
-      <p class="first-debrief-lede">Copy the receipt only if you choose to share it with the studio.</p>
+      <p class="first-debrief-lede">Copy it only if you want to share it with the studio.</p>
       <p id="firstDebriefCopyStatus" class="first-debrief-privacy" aria-live="polite">Nothing has been sent.</p>
       <div class="first-debrief-actions">
-        <button class="btn btn-primary" id="firstDebriefCopy" type="button">Copy receipt</button>
+        <button class="btn btn-primary" id="firstDebriefCopy" type="button">Copy check-in</button>
         <button class="btn btn-secondary" id="firstDebriefDone" type="button">Done</button>
       </div>
     </section>`;
@@ -186,9 +186,9 @@ export function maybePromptFirstDebriefPulse({
         try {
           if (typeof clipboard?.writeText !== "function") throw new Error("Clipboard unavailable.");
           await clipboard.writeText(JSON.stringify(buildLocalPlaytestExport([receipt]), null, 2));
-          if (status) status.textContent = "Receipt copied. Sharing it remains your choice.";
+          if (status) status.textContent = "Check-in copied. Sharing it is up to you.";
         } catch {
-          if (status) status.textContent = "Copy was unavailable. Your receipt is still stored locally.";
+          if (status) status.textContent = "Copy was unavailable. Your check-in is still saved on this device.";
         }
       });
       openModal(overlay, { onClose: () => dismiss() });
