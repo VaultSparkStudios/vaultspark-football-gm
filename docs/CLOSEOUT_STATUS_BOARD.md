@@ -1,47 +1,47 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-29 (Session 110 closeout) -->
+<!-- generated-at: 2026-10-02 (Session 113 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S110 ═════╗
-║  Date: 2026-09-29  ·  SIL: 952/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S113 ═════╗
+║  Date: 2026-10-02  ·  SIL: 820/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ correct shipped roadmap copy and hide empty Desk panel        ║
-║  ✓ polish themed public links and legible drawer evidence        ║
-║  ✓ fix visual evidence navigation for grouped drawer             ║
-║  ✓ recover S110 implementation from interrupted S109-S110 sessi  ║
-║  ✓ chore(closeout): record S108 deployment receipts, provenance  ║
+║  ✓ chore(closeout): drop a local path the brief renderer printe  ║
+║  ✓ chore(closeout): record S113 write-back, release authority a  ║
+║  ✓ fix(s113): evidence harness follows the S113 Desk and copy;   ║
+║  ✓ fix(s113): register new tests in shards, accept early-access  ║
+║  ✓ feat(s113): player-language game, League Pulse, scouting fog  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 952/1000 ═══════════════════════════════════════╗
-║    Dev Health         97   ██████████                            ║
-║    Alignment          98   ██████████                            ║
-║    Momentum           98   ██████████                            ║
-║    Engagement         92   █████████░                            ║
-║    Process Qual       88   █████████░                            ║
-║    Coherence          94   █████████░                            ║
-║    Security           97   ██████████                            ║
-║    Ecosystem          91   █████████░                            ║
-║    Capital            100  ██████████                            ║
-║    Automation         97   ██████████                            ║
+╔══ SCORES · SIL 820/1000 ═══════════════════════════════════════╗
+║    Dev Health         96   ██████████                            ║
+║    Alignment          95   ██████████                            ║
+║    Momentum           95   ██████████                            ║
+║    Engagement         72   ███████░░░                            ║
+║    Process Qual       76   ████████░░                            ║
+║    Coherence          85   █████████░                            ║
+║    Security           82   ████████░░                            ║
+║    Ecosystem          72   ███████░░░                            ║
+║    Capital            55   ██████░░░░                            ║
+║    Automation         92   █████████░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
-║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
+║  · context/LATEST_HANDOFF.md                                     ║
+║  · logs/WORK_LOG.md                                              ║
+║  · context/DECISIONS.md                                          ║
+║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
-║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · context/TRUTH_AUDIT.md                                        ║
+║  · context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 274 files  ·  M:23 A:0 D:98 ?:153                      ║
+║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,14 +52,14 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1573/1573 · STALE                                ║
-║  IGNIS:         21d ago                                          ║
+║  Tests:         1748/1748                                        ║
+║  IGNIS:         23d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  1d ago                                           ║
+║  Sanitization:  3d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: visual-system-has-tokens-but-does-not-use-them — L1 plus a  ║
-║      Visual system; tokens exist but most colour is hardcoded,   ║
+║  #1: server-route-split — Deferred: the API parity checker and   ║
+║      organization                                                ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
