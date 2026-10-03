@@ -190,6 +190,8 @@ export const SHARDS = {
     "test/weekly-plan-composer.test.js"
   ],
   "sim-contract": [
+    "test/football-golden-master.test.js",
+    "test/sport-conformance-football.test.js",
     "test/determinism.test.js",
     "test/session89-cap-legality-regression.test.js",
     "test/bootstrap-realism-profile.test.js",

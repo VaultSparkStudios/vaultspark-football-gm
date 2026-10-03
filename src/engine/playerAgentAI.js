@@ -1,3 +1,4 @@
+import { NFL_STRUCTURE } from "../config.js";
 /**
  * Contract-year agent intelligence.
  *
@@ -34,7 +35,7 @@ function interestReason(signals) {
   return "The current market is quiet; continuity gives your club leverage.";
 }
 
-export function ensureContractAgent(player, { currentYear, baseSalary, baseYears, guaranteed, capHardLimit = 224_800_000 } = {}) {
+export function ensureContractAgent(player, { currentYear, baseSalary, baseYears, guaranteed, capHardLimit = NFL_STRUCTURE.salaryCap } = {}) {
   const seasonKey = `${Number(currentYear) || 0}:${Number(player?.contract?.yearsRemaining) || 0}`;
   if (player?.agentState?.seasonKey === seasonKey) return player.agentState;
   const rng = derivedRng(`contract-agent|${player?.id || player?.name || "player"}|${seasonKey}`);
