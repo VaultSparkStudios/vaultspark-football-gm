@@ -51,6 +51,8 @@ export const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/session114-draft-persona.test.js",
+    "test/situational-calls.test.js",
     "test/session113-gm-archetype.test.js",
     "test/session113-league-lens.test.js",
     "test/session113-look-ahead.test.js",

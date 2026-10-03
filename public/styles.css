@@ -6026,3 +6026,15 @@ html[data-theme="light"] .bg-layer {
 
 /* S113: a hidden developer surface stays hidden even when its layout class sets display. */
 [data-dev-surface][hidden] { display: none !important; }
+
+/* Situational calls — standing 4th-down and two-minute posture on the Desk */
+.situational-calls { display: grid; gap: 10px; margin: 12px 0 0; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--inset); }
+.situational-calls-head { display: grid; gap: 2px; }
+.situational-calls-head h3 { margin: 0; color: var(--ink-strong); font-size: .95rem; }
+.situational-calls-row { display: grid; gap: 6px; }
+.situational-calls-label { color: var(--ink-dim); font-size: .8rem; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
+.situational-calls-switch { margin: 0; flex-wrap: wrap; }
+.situational-calls-switch button { min-height: 40px; padding: 6px 12px; cursor: pointer; }
+.situational-calls-switch button:disabled { cursor: progress; opacity: .7; }
+.situational-calls-help { color: var(--muted); }
+.sw-play-tag.sw-two-minute { color: var(--info); border-color: currentColor; }

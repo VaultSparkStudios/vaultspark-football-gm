@@ -280,3 +280,27 @@ export function applyReputationToTradeAsk(baseAsk, gmLegacy) {
   const rep = buildGmReputationProfile(gmLegacy);
   return Math.round(baseAsk * rep.multiplier);
 }
+
+/**
+ * S114 — rival front offices reach the draft board. The tilt is keyed to the
+ * club's GM archetype (src/engine/gmArchetype.js, the same classifier the GM
+ * Archetypes table shows), because generated leagues are almost all
+ * "balanced" by strategy profile and a profile-keyed tilt measured as a no-op.
+ * Moneyball and Loyalty fronts pay for the gap between what a prospect is and
+ * what he can become; Win-Now and Gut-Feel fronts pay for what he is today.
+ * A deterministic score term (no RNG draw), CPU clubs only, per point of
+ * development headroom (potential − overall), kept below one roster-need step.
+ */
+export const DRAFT_PERSONA_TILT = Object.freeze({
+  "Win-Now": -0.35,
+  "Gut-Feel": -0.15,
+  Loyalty: 0.25,
+  Moneyball: 0.6
+});
+
+export function draftPersonaTilt(prospect, archetypeLabel) {
+  const weight = DRAFT_PERSONA_TILT[archetypeLabel] ?? 0;
+  if (!weight) return 0;
+  const headroom = Math.max(0, Number(prospect?.potential || 0) - Number(prospect?.overall || 0));
+  return weight * headroom;
+}

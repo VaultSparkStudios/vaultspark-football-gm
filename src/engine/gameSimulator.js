@@ -4,6 +4,7 @@ import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings
 import { clamp, mean } from "../utils/rng.js";
 import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
 import { matchupEdgeFromContexts } from "./matchupEdge.js";
+import { fourthDownAggressionAdjustment, isTwoMinuteDrill, twoMinuteAdjustment } from "./situationalCalls.js";
 import { getTeamPlayers } from "../domain/teamFactory.js";
 import {
   buildMeritAdjustedRoomShares,
@@ -632,6 +633,9 @@ function buildTeamContext(league, teamId, rng) {
     p,
     passLean,
     weeklyPlan,
+    // Standing game-day posture; set only on the controlled team. Read through
+    // the situationalCalls.js normalizer, so an unset value is exactly neutral.
+    situationalCalls: team.situationalCalls || null,
     chemistry,
     schemeFit,
     roleNames: DEPTH_CHART_ROLE_NAMES,
@@ -683,7 +687,19 @@ function maybeRecordPassDefended(deltaMap, rng, defenseContext, bucket = "medium
 
 function simulateDrive(offenseContext, defenseContext, rng, mode, situational = {}) {
   const driveDeltas = new Map();
-  const plays = mode === "play" ? rng.int(6, 10) : rng.int(3, 7);
+  // Two-minute drill (end of either half, offense trailing or tied). The
+  // posture shifts the play-budget range and pass lean only — the budget is
+  // still exactly one draw, and the default posture shifts nothing.
+  const twoMinuteDrill = isTwoMinuteDrill(situational.elapsedSeconds || 0, situational.scoreDifferential || 0);
+  const twoMinuteCall = twoMinuteDrill ? twoMinuteAdjustment(offenseContext.situationalCalls) : null;
+  const playBudgetShift = twoMinuteCall?.playBudget || 0;
+  const situationalLean = twoMinuteCall?.passLean || 0;
+  const plays = mode === "play"
+    ? rng.int(Math.max(2, 6 + playBudgetShift), 10 + playBudgetShift)
+    : rng.int(Math.max(2, 3 + playBudgetShift), 7 + playBudgetShift);
+  const fourthDownAggression =
+    weeklyPlanUnitAggression(offenseContext.weeklyPlan, "offense") +
+    fourthDownAggressionAdjustment(offenseContext.situationalCalls);
   let driveYards = 0;
   let turnover = false;
   let turnoverType = null;
@@ -742,6 +758,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       down,
       distance,
       fieldPosition,
+      ...(twoMinuteDrill ? { twoMinute: true } : null),
       ...entry
     });
   };
@@ -757,7 +774,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
           fieldPosition,
           scoreDifferential,
           elapsedSeconds,
-          aggressionDelta: weeklyPlanUnitAggression(offenseContext.weeklyPlan, "offense")
+          aggressionDelta: fourthDownAggression
         },
         rng
       );
@@ -774,7 +791,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
 
     const yardsBeforePlay = driveYards;
     const playType = choosePlayType(
-      { down, distance, fieldPosition, scoreDifferential, elapsedSeconds, matchupLean },
+      { down, distance, fieldPosition, scoreDifferential, elapsedSeconds, matchupLean, situationalLean },
       offenseContext,
       rng
     );

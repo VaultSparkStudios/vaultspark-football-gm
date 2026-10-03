@@ -79,6 +79,7 @@
     "lib/deskIslands.js",
     "lib/api/workerTransport.js",
     "lib/api/localRuntimeWorker.js",
-    "lib/teamCrest.js"
+    "lib/teamCrest.js",
+    "lib/situationalCallsPanel.js"
   ]
 }

@@ -1259,6 +1259,15 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
+      if (method === "POST" && pathname === "/api/situational-calls") {
+        const result = session.setSituationalCalls({
+          teamId: String(body?.teamId || session.controlledTeamId || "").toUpperCase(),
+          fourthDown: body?.fourthDown == null ? null : String(body.fourthDown),
+          twoMinute: body?.twoMinute == null ? null : String(body.twoMinute)
+        });
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
+      }
+
       if (method === "GET" && pathname === "/api/facilities") {
         const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
         const market = session.getFacilitiesMarket(teamId);

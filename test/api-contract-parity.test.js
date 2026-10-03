@@ -378,6 +378,27 @@ test("server and static runtimes preserve representative route shapes and state 
     });
     assert.equal(badBrand.local.status, 400);
 
+    const calls = await requestPair(runtime, server, "/api/situational-calls", {
+      method: "POST",
+      body: { teamId: "BUF", fourthDown: "aggressive", twoMinute: "hurry-up" }
+    });
+    assert.deepEqual(calls.local.payload.situationalCalls, { fourthDown: "aggressive", twoMinute: "hurry-up" });
+    assert.deepEqual(calls.remote.payload.situationalCalls, calls.local.payload.situationalCalls);
+    assert.deepEqual(calls.remote.payload.state.controlledTeam.situationalCalls, calls.local.payload.situationalCalls);
+    assertApiContractResponse("POST", "/api/situational-calls", calls.remote.payload);
+    const badCalls = await requestPair(runtime, server, "/api/situational-calls", {
+      method: "POST",
+      body: { teamId: "BUF", fourthDown: "reckless" }
+    });
+    assert.equal(badCalls.local.status, 400);
+    assert.equal(badCalls.remote.status, 400);
+    const rivalCalls = await requestPair(runtime, server, "/api/situational-calls", {
+      method: "POST",
+      body: { teamId: "NYJ", fourthDown: "aggressive" }
+    });
+    assert.equal(rivalCalls.local.status, 403, "a rival's posture is not yours to set");
+    assert.equal(rivalCalls.remote.status, 403, "a rival's posture is not yours to set");
+
     const localSnapshot = await runtime.request("/api/rewind/snapshot", {
       method: "POST", body: { label: "Parity checkpoint" }
     });

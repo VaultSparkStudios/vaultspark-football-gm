@@ -44,6 +44,8 @@ export function renderOverview() {
     }
     box.textContent = lines.join(" ") || "Weekly plan, locker-room pressure, and owner mandate updates will appear here.";
   }
+  import("./situationalCallsPanel.js").then((m) => m.renderSituationalCalls())
+    .catch((error) => recordClientDiagnostic({ surface: "desk", operation: "situational-calls", error }));
   renderOverviewSpotlight();
   renderFranchiseCommandCenter();
   renderCoGmBriefIfOpen();

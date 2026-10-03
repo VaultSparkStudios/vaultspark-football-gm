@@ -51,6 +51,11 @@ import {
 import { buildOffseasonDevelopmentReport } from "../engine/offseasonDevelopmentReport.js";
 import { enforceRosterAndCapCompliance } from "../engine/capCompliance.js";
 import {
+  FOURTH_DOWN_POSTURES,
+  TWO_MINUTE_POSTURES,
+  normalizeSituationalCalls
+} from "../engine/situationalCalls.js";
+import {
   buildMeritAdjustedRoomShares,
   buildTeamUsageProfile,
   resolveDepthChartRoomShares,
@@ -91,7 +96,8 @@ import {
   isTradeValueAcceptable,
   roleRetentionProfile,
   sortPlayersForDepth,
-  strategyPresetForTeam
+  strategyPresetForTeam,
+  draftPersonaTilt
 } from "../engine/aiTeamStrategy.js";
 import { buildSeasonSchedule } from "../engine/schedule.js";
 import {
@@ -185,6 +191,7 @@ import { consumePendingWeeklyTactic } from "./weeklyTactic.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 import { buildLeagueLens, buildSeasonRecordBook } from "../stats/leagueLens.js";
 import { buildOperatingStatement } from "../domain/operatingStatement.js";
+import { deriveSessionGmArchetype } from "../engine/gmArchetype.js";
 import {
   agentSummary,
   ensureContractAgent,
@@ -4010,8 +4017,42 @@ export class GameSession {
     });
   }
   setControlledTeam(teamId) {
-    if (teamById(this.league, teamId)) this.controlledTeamId = teamId;
+    const next = teamById(this.league, teamId);
+    if (next) {
+      // Situational calls are the player's standing posture, carried only by the
+      // team they control: they follow the GM to the new club and never stay
+      // behind on a club the CPU now runs.
+      const previous = teamById(this.league, this.controlledTeamId);
+      if (previous && previous !== next && previous.situationalCalls) {
+        next.situationalCalls = previous.situationalCalls;
+        delete previous.situationalCalls;
+      }
+      this.controlledTeamId = teamId;
+    }
     return this.controlledTeamId;
+  }
+
+  getSituationalCalls(teamId = this.controlledTeamId) {
+    const team = teamById(this.league, teamId);
+    if (!team) return null;
+    return normalizeSituationalCalls(team.situationalCalls);
+  }
+
+  setSituationalCalls({ teamId = this.controlledTeamId, fourthDown = null, twoMinute = null } = {}) {
+    const team = teamById(this.league, teamId);
+    if (!team) return { ok: false, error: "Team not found." };
+    if (fourthDown != null && !FOURTH_DOWN_POSTURES.includes(fourthDown)) {
+      return { ok: false, error: "Choose Conservative, By the book or Aggressive for fourth downs.", reasonCode: "situational-calls-invalid" };
+    }
+    if (twoMinute != null && !TWO_MINUTE_POSTURES.includes(twoMinute)) {
+      return { ok: false, error: "Choose Protect the ball, Standard or Hurry-up for the two-minute drill.", reasonCode: "situational-calls-invalid" };
+    }
+    const current = normalizeSituationalCalls(team.situationalCalls);
+    team.situationalCalls = normalizeSituationalCalls({
+      fourthDown: fourthDown ?? current.fourthDown,
+      twoMinute: twoMinute ?? current.twoMinute
+    });
+    return { ok: true, teamId: team.id, situationalCalls: { ...team.situationalCalls } };
   }
 
   getControlledTeam() {
@@ -6706,6 +6747,8 @@ export class GameSession {
         currentCounts[player.position] = (currentCounts[player.position] || 0) + 1;
       }
 
+      // One archetype read per pick (real roster, rating and cap), CPU clubs only.
+      const clubArchetype = teamOnClock === this.controlledTeamId ? null : deriveSessionGmArchetype(this, teamById(this.league, teamOnClock)).label;
       let bestIndex = 0;
       let bestScore = -Infinity;
       for (let i = 0; i < draft.available.length; i += 1) {
@@ -6714,7 +6757,8 @@ export class GameSession {
         const depthPenalty =
           (currentCounts[prospect.position] || 0) > (ROSTER_TEMPLATE[prospect.position] || 2) + 2 ? 18 : 0;
         const projectionBonus = Math.max(0, 9 - (prospect.scouting?.projectedRound || 9)) * 2;
-        const score = prospect.overall * 2 + needBoost + projectionBonus - depthPenalty + this.rng.int(-4, 4);
+        const personaTilt = clubArchetype ? draftPersonaTilt(prospect, clubArchetype) : 0;
+        const score = prospect.overall * 2 + needBoost + projectionBonus - depthPenalty + personaTilt + this.rng.int(-4, 4);
         if (score > bestScore) {
           bestScore = score;
           bestIndex = i;
@@ -6878,6 +6922,7 @@ export class GameSession {
             strategyProfile: controlledTeam.strategyProfile || "balanced",
             cultureProfile: controlledTeam.cultureProfile || null,
             weeklyPlan: controlledTeam.weeklyPlan || null,
+            situationalCalls: normalizeSituationalCalls(controlledTeam.situationalCalls),
             chemistry: controlledTeam.chemistry || 70,
             owner: controlledTeam.owner || null
           }

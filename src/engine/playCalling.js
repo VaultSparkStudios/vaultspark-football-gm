@@ -46,12 +46,16 @@ export function isClockUrgent(elapsedSeconds) {
  * @returns {"pass"|"run"}
  */
 export function choosePlayType(
-  { down, distance, fieldPosition, scoreDifferential = 0, elapsedSeconds = 0, matchupLean = 0 },
+  { down, distance, fieldPosition, scoreDifferential = 0, elapsedSeconds = 0, matchupLean = 0, situationalLean = 0 },
   offenseContext,
   rng
 ) {
   let lean = offenseContext.passLean;
   const clockUrgent = isClockUrgent(elapsedSeconds);
+
+  // Player's two-minute posture (situationalCalls.js): 0 unless the offense
+  // has a non-default posture and is in a two-minute drill. Same single draw.
+  lean += Number(situationalLean) || 0;
 
   // Opponent read (S63): where this specific defense is soft. Bounded and
   // coaching-gated upstream in matchupEdge.js, and applied before situational

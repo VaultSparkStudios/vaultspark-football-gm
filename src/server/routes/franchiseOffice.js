@@ -69,6 +69,18 @@ export async function handleFranchiseOfficeRoutes(req, res, url, ctx) {
     return true;
   }
 
+  // Standing game-day posture for fourth downs and the two-minute drill.
+  if (req.method === "POST" && url.pathname === "/api/situational-calls") {
+    const body = parseJsonBody(await readRequestBody(req)) || {};
+    const result = ctx.session.setSituationalCalls({
+      teamId: String(body.teamId || ctx.session.controlledTeamId || "").toUpperCase(),
+      fourthDown: body.fourthDown == null ? null : String(body.fourthDown),
+      twoMinute: body.twoMinute == null ? null : String(body.twoMinute)
+    });
+    sendJson(res, result.ok ? 200 : 400, { ...result, state: ctx.session.getDashboardState() });
+    return true;
+  }
+
   if (req.method === "GET" && url.pathname === "/api/facilities") {
     const teamId = (url.searchParams.get("team") || ctx.session.controlledTeamId).toUpperCase();
     const market = ctx.session.getFacilitiesMarket(teamId);

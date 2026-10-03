@@ -81,7 +81,7 @@ function appendPlay(play, scoringSet) {
     <span class="sw-play-qtr">${escapeHtml(play.quarterLabel || play.clock || "")}</span>
     <span class="sw-play-team">${escapeHtml(play.offenseTeamId ? teamCode(play.offenseTeamId) : "")}</span>
     <span class="sw-play-desc">${escapeHtml(kind.description.slice(0, 120))}</span>
-    ${kind.highlight ? `<span class="sw-play-tag">${kind.scoring ? "SCORE" : kind.turnover ? "TURNOVER" : "4TH"}</span>` : ""}`;
+    ${kind.highlight ? `<span class="sw-play-tag">${kind.scoring ? "SCORE" : kind.turnover ? "TURNOVER" : "4TH"}</span>` : ""}${play.twoMinute === true ? `<span class="sw-play-tag sw-two-minute" title="Two-minute drill">2-MIN</span>` : ""}`;
   feed.appendChild(row);
 }
 
