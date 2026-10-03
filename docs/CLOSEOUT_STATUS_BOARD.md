@@ -1,32 +1,32 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-02 (Session 114 closeout) -->
+<!-- generated-at: 2026-10-03 (Session 115 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S114 ═════╗
-║  Date: 2026-10-02  ·  SIL: 846/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S115 ═════╗
+║  Date: 2026-10-03  ·  SIL: 858/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ feat(s115): situational calls, archetype-driven CPU drafting  ║
+║  ✓ chore(closeout): roll S114 ledgers after the late work-log e  ║
+║  ✓ chore(closeout): record S114 write-back, release authority a  ║
+║  ✓ docs: sync Studio OS 2 files [agent-dna, validators]          ║
 ║  ✓ feat(s114): release note, display codes in stored headlines,  ║
-║  ✓ chore(closeout): S113 status board                            ║
-║  ✓ chore(closeout): drop a local path the brief renderer printe  ║
-║  ✓ chore(closeout): record S113 write-back, release authority a  ║
-║  ✓ fix(s113): evidence harness follows the S113 Desk and copy;   ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 846/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 858/1000 ═══════════════════════════════════════╗
 ║    Dev Health         96   ██████████                            ║
-║    Alignment          95   ██████████                            ║
-║    Momentum           92   █████████░                            ║
-║    Engagement         72   ███████░░░                            ║
-║    Process Qual       86   █████████░                            ║
+║    Alignment          96   ██████████                            ║
+║    Momentum           93   █████████░                            ║
+║    Engagement         78   ████████░░                            ║
+║    Process Qual       87   █████████░                            ║
 ║    Coherence          86   █████████░                            ║
 ║    Security           82   ████████░░                            ║
 ║    Ecosystem          74   ███████░░░                            ║
-║    Capital            70   ███████░░░                            ║
-║    Automation         93   █████████░                            ║
+║    Capital            72   ███████░░░                            ║
+║    Automation         94   █████████░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
@@ -36,12 +36,12 @@
 ║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 391 files  ·  M:16 A:0 D:158 ?:217                     ║
+║  Changes: 559 files  ·  M:20 A:217 D:322 ?:0                     ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1752/1752                                        ║
-║  IGNIS:         24d ago                                          ║
+║  Tests:         1752/1752 · STALE                                ║
+║  IGNIS:         25d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  4d ago                                           ║
+║  Sanitization:  5d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: server-route-split — Deferred: the API parity checker and   ║

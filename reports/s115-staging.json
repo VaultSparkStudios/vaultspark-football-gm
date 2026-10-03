@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.1",
+  "generatedBy": "scripts/verify-release-provenance.mjs",
+  "checkedAt": "2026-10-03T18:19:16.363Z",
+  "baseUrl": "https://staging.playfranchisearchitect.com",
+  "expectedRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+  "summary": {
+    "status": "verified",
+    "checksPassed": 10,
+    "checksTotal": 10
+  },
+  "checks": [
+    {
+      "name": "health reachable",
+      "ok": true
+    },
+    {
+      "name": "manifest reachable",
+      "ok": true
+    },
+    {
+      "name": "style asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset identity",
+      "ok": true,
+      "expected": "community-stats.25f97e0a1e.js",
+      "observed": "community-stats.25f97e0a1e.js"
+    },
+    {
+      "name": "source revision",
+      "ok": true,
+      "expected": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+      "observed": "80125a0a5609be8a9fd7c01399e176ffe1b8e052"
+    },
+    {
+      "name": "artifact fingerprint",
+      "ok": true,
+      "expected": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d",
+      "observed": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d"
+    },
+    {
+      "name": "style asset identity",
+      "ok": true,
+      "expected": "styles.b8e154d291.css",
+      "observed": "styles.b8e154d291.css"
+    },
+    {
+      "name": "repository identity",
+      "ok": true,
+      "expected": "VaultSparkStudios/vaultspark-football-gm",
+      "observed": "VaultSparkStudios/vaultspark-football-gm"
+    },
+    {
+      "name": "launch truth separation",
+      "ok": true,
+      "expected": false,
+      "observed": false
+    }
+  ]
+}

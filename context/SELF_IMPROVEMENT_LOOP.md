@@ -1,37 +1,12 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Last session: 114 (2026-10-02) | Total: 846/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 823.3 | 5: 872 | 10: 916.2 | 25: 953 | all: 978.6
-Sparkline: ▅▄▁▁▁
+Last session: 115 (2026-10-03) | Total: 858/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 841.3 | 5: 853.2 | 10: 905.9 | 25: 947.9 | all: 976.9
+Sparkline: ▄▁▁▁▁
 Intent rate: 100% (5/5 last 5)
-SIL delta: 820 → 846 (+26). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 68 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 846 → 858 (+12). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 69 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
-
-## 2026-09-11 — Session 105 — Every surface the brief reads gets a writer, and a test that fails when the writer is skipped
-
-SIL v3.0: **961 / 1000** (Dev Health 97, Creative Alignment 98, Momentum 98, Engagement 86, Process Quality 97, Cross-Repo Coherence 96, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 100). Intent outcome: Achieved. These are engineering assessments, not measured player outcomes; engagement remains limited by the absence of any real-cohort evidence.
-
-S105 was a clean start. F7 flagged `ccf68c2`, which is S104's own post-closeout handoff edit — the known closeout-order false positive — and every core surface was current through S104.
-
-S104 found one brief row reading a surface nothing writes. S105 read every derived row of the rendered brief instead of the rows that looked wrong, and found three more. The costliest was invisible precisely because it rendered a value: `session-authority: … divergent=false` was a two-way comparison presented as a three-way one for the project's whole recorded history, because the handoff parser knew a heading this project has never written — twelve committed handoffs checked, none matched. The rolling SIL header had named S100 as the last session through S104 and never carried an intent rate, and when it was finally derived rather than typed, its published averages turned out not to be reproducible from the ledger at all (Avg3 959.7, not 974.7; 58 sessions, not 87). The profile row reads a 30-minute cache only studio-ops can write, and went upstream as cargo.
-
-Elite density was re-derived under the roster shape S104 shipped, and decomposed. The active roster's 90+ share goes 0.4% → 2.8% on the canonical seed — down from the 3.3% S103 carried, still `watch`. A probe that reproduces the gate's clone path exactly (2.79% against the gated 2.8%) puts **64% of the elite cohort in the quarterback and offensive-line rooms, which are 24% of the roster**; the QB room's 90+ rate is 11.6%, the same 11.3% S103 measured before S104 bounded it. S104 fixed how many quarterbacks a club carries, not how highly a quarterback rates. The measured candidate sits at generation: those are the only two rooms generated *above* their own mean potential (OL 82.1 against 79.8, QB 82.7 against 80.9). Nothing was changed on it — it is one seed, and the statistic-versus-generator question deserves to be asked before it is answered.
-
-Process Quality is 97. Two of my own first drafts were wrong and tests caught both — the intent rate counted an entry that recorded no outcome as a miss, and the sparkline rescaled five near-identical scores into a cliff — and the corpus premise gate went red on this session's own sidecar within a minute of existing, because shipped items were still marked `planned`. That last one is the gate working, and it is the best negative control it will ever have. Momentum is 98 because nothing a player sees changed. Cross-Repo Coherence and Ecosystem each gain a point for fixing a studio-wide parser locally *and* shipping it upstream so propagation does not revert it. Dev Health holds at 97: elite density and dispersion both remain honest `watch` readings.
-
-- [SIL] Read every derived row of a rendered surface, not only the rows that look wrong. A row that renders `?` is at least visibly broken; `handoff=S?` sat inside a line whose verdict — `divergent=false` — read as healthy, and that verdict was computed from two sources while claiming three. The dangerous failures of a reader-without-a-writer are the ones that still print a confident answer.
-- [SIL] A hand-maintained summary of a ledger is a second authority, and it will drift. Derive it, name the population it read, and bind the committed copy to a fresh derivation by test. When the derivation disagrees with the published number, the derivation ships — and the disagreement is a finding, not a reconciliation problem.
-- [SIL] A gate that fires on its author's own work in its first minute is the strongest negative control available. Record it; do not exempt the current artefact to make the first run green.
-
-**The canonical run's second red was the session's most valuable finding, and it came from obeying a gate's own remedy.** `DECISIONS.md` hit the 96 KB ledger ceiling, whose stated fix is `ledger-roll.mjs --apply`. Running it archived **this session's own decisions, truth-audit section and SIL entry**, and left the live SIL holding sessions 85–98 with zero intent lines. The roller declared "ledgers are newest-first here, so the retained window is a prefix" — true of `CURRENT_STATE` alone, while `DECISIONS`, `TRUTH_AUDIT` and this file are append-only with the newest entry **last**, so it kept the oldest ten and archived everything newer. Independently, its entry patterns matched only the pre-S100 `— Session N` heading, so for DECISIONS the cut landed at the eleventh *old-style* entry and every modern section beneath it moved as one contiguous block. Reversal was exact rather than reconstructed — the archives were untouched this session, so the moved block is the current archive minus its committed body, asserted before any write, and `git checkout` was deliberately not used on the live ledgers because it would have discarded this session's own uncommitted work. Both defects are fixed at source with a negative control reproducing the inversion and a direct invariant: every live ledger still holds this session's own entry after a roll.
-
-**The production promotion then failed on an intermittent browser test, and a green was available by simply re-running it.** `play-mode-smoke` asserted the tactic modal unconditionally, while S102 made a bye suppress the tactic step and the browser league is generated from a random seed — the same defect S103 had already fixed in `s63-surfaces`, left latent one spec over. It failed in S104's CI on `ccf68c2`, passed in S105's CI on the very commit whose promotion it then failed. Retrying until the seed cooperated would have shipped production on a coin flip; the spec now asserts against whichever branch the product rendered, and the bye literals are pinned against `describeWeeklyPlanReceipt` so they cannot rot unnoticed.
-
-- [SIL] When the same test fails intermittently across two sessions, the flake IS the finding — chase it, don't re-run it. This one had been visible since S104 (a CI red its handoff does not mention) and was one seeded league away from blocking every promotion. The tell that it was a product-shaped defect rather than timing: a sibling spec already carried the fix, with a comment explaining exactly why.
-- [SIL] Fixing a conditional branch you never executed leaves a claim you have not tested. Six local repeats passed and not one is known to have drawn a bye, so the branch's strings were pinned against the renderer that produces them, with a negative control — and the fact that the live browser bye path is still unexercised is written down rather than left to read as covered.
-- [SIL] A remedy printed by a gate is code, and it has not been tested on your repo's shape. `ledger-roll` was correct for one of its four ledgers and silently inverted the other three, and the gate that recommended it would have gone green on the result — smaller files, pointer present, archive non-empty — while the live ledgers held the oldest sessions and the newest record sat in the archive. Before running a remedy that rewrites history, dry-run it and check *which end* it moved; afterwards, assert that the thing you just wrote is still where a reader will look for it.
-- [SIL] A pattern that matches a subset of a file's entries makes a bounded operation unbounded. The roll reported "archived 2 entries" while moving six sessions of DECISIONS, because headings written since S100 did not match a regex written before them. When a rule counts things, assert that its count equals what a human counts, or the next format change turns a retention window into a silent bulk move.
 
 ## 2026-09-12 — Session 106 — Potential stops being drawn on a scale overall does not share
 
@@ -231,6 +206,19 @@ Source 1c57a3beeb420001d6ba1611e027043df76f7d57. Direct six-shard suite 1752/175
 - [SIL] Measure the payoff (compressed and cached bytes) before scheduling a performance refactor.
 - [SIL] The deploy gate runs about 23 of its 25 minutes; give timeouts headroom before they become flakiness.
 <!-- /s114-closeout:sil -->
+
+<!-- s115-closeout:sil -->
+## 2026-10-03 — Session 115 — Situational calls, archetype drafting and a parallel deploy gate
+
+SIL v3.0: **858 / 1000** (Dev Health 96, Creative Alignment 96, Momentum 93, Engagement 78, Process Quality 87, Cross-Repo Coherence 86, Security Posture 82, Ecosystem Integration 74, Capital Efficiency 72, Automation Coverage 94). Intent outcome: **Achieved**. Public launch remains HOLD. Scores are engineering judgment.
+
+- Engagement: the first player-controlled game-day decisions, with measured effects, plus rivals whose drafting matches their visible identity.
+- Process Quality: the matched probe caught a no-op before release. An interruption by host memory pressure was completed rather than repeated.
+
+Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
+
+- [SIL] Before claiming a persona effect, count how many clubs actually have that persona; a population of one style turns any tilt into a no-op.
+<!-- /s115-closeout:sil -->
 
 <!-- ledger-roll:pointer -->
 ---

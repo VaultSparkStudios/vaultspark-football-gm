@@ -172,14 +172,16 @@ test("the entry patterns match both heading eras, so a roll cannot sweep one era
 test("every live ledger still holds this session's own entry after any roll", () => {
   // The defect was only visible because a live file stopped containing the
   // session that had just written to it. That is the invariant, stated directly.
-  const session = 105;
-  for (const [file, pattern] of [
-    ["DECISIONS.md", /S105 — A surface the brief reads/],
-    ["TRUTH_AUDIT.md", /S105 — Three brief rows/],
-    ["SELF_IMPROVEMENT_LOOP.md", /## 2026-09-11 — Session 105/]
-  ]) {
+  // S115: this was pinned to S105 and turned red the moment S105 correctly aged
+  // out of the retention window. The invariant is about the session that just
+  // wrote, so read it from PROJECT_STATUS instead of a literal.
+  const status = JSON.parse(fs.readFileSync(path.join(ROOT, "context", "PROJECT_STATUS.json"), "utf8"));
+  const session = Number(status.lastSession);
+  assert.ok(Number.isInteger(session) && session >= 105, "PROJECT_STATUS names the last session");
+  const ownHeading = new RegExp(`^## .*\\b(?:S|Session )${session}\\b`, "m");
+  for (const file of ["DECISIONS.md", "TRUTH_AUDIT.md", "SELF_IMPROVEMENT_LOOP.md"]) {
     const live = fs.readFileSync(path.join(ROOT, "context", file), "utf8");
-    assert.match(live, pattern, `${file} must still hold S${session}'s own entry`);
+    assert.match(live, ownHeading, `${file} must still hold S${session}'s own entry`);
   }
 });
 

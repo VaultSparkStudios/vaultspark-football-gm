@@ -1,0 +1,1349 @@
+{
+  "schemaVersion": "1.1",
+  "kind": "independent-staging-authority",
+  "project": "franchise-architect-staging",
+  "branch": "staging",
+  "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d",
+    "files": 262,
+    "entries": [
+      {
+        "path": ".well-known/llms.txt",
+        "bytes": 1838,
+        "sha256": "e3e0b6523eacd499b63c718a9c877a79f6cc3cad7fa9f66621aeb225d6e5610c"
+      },
+      {
+        "path": ".well-known/security.txt",
+        "bytes": 231,
+        "sha256": "2e4ef4346b5df79a5d2800b3fd9c782aeebc5c5150b490820496c0af50bc0996"
+      },
+      {
+        "path": "404.html",
+        "bytes": 4275,
+        "sha256": "925c52bec37637e8b413809e67d696e9f4ab9675229dd1535c13c61aeb92957a"
+      },
+      {
+        "path": "_headers",
+        "bytes": 1133,
+        "sha256": "ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c"
+      },
+      {
+        "path": "_redirects",
+        "bytes": 252,
+        "sha256": "d2980cf6098ee6d141e080c2d9bc3a0f17ab80b703088c60bcde5b2dc84b1c56"
+      },
+      {
+        "path": "about.html",
+        "bytes": 6379,
+        "sha256": "105388889ab4add0311f0b91cdd2a799293974b9b473222b17921adfdbce4bba"
+      },
+      {
+        "path": "agents.json",
+        "bytes": 2445,
+        "sha256": "f5ddfb29615054c7e9e2483fd180d02efb302f1a6be3164e169f11a2efa399b1"
+      },
+      {
+        "path": "app.js",
+        "bytes": 112799,
+        "sha256": "d447f2793380b9e1bf7096e19879960a5ad118ffd303c7c429410090bff95606"
+      },
+      {
+        "path": "boot-manifest.json",
+        "bytes": 1771,
+        "sha256": "70688b03d1fe23c504fee3574a5268534426dad4fab94310f224651b1d31d518"
+      },
+      {
+        "path": "changelog.xml",
+        "bytes": 25064,
+        "sha256": "1956f322d60ae4cfbb88c5c2182587209d448f9d6fd75f1efa6fd952ff476a71"
+      },
+      {
+        "path": "community-stats.25f97e0a1e.js",
+        "bytes": 22015,
+        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
+      },
+      {
+        "path": "community-stats.js",
+        "bytes": 22015,
+        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
+      },
+      {
+        "path": "contact.html",
+        "bytes": 5482,
+        "sha256": "873ef461fe4d3450ced7824f7e4fd0b6de0d4e2d5253946e1e37db260658dc9f"
+      },
+      {
+        "path": "content/claims.json",
+        "bytes": 11531,
+        "sha256": "2f6d661d428fde3a81d10263f67bec98c5c98ff8d415353afe64f574c67b0c89"
+      },
+      {
+        "path": "faq.html",
+        "bytes": 10553,
+        "sha256": "5461d1e6d88a7df6fe50b00613cac8feb264d1140fb0ac734c3fb61d9f13ad52"
+      },
+      {
+        "path": "favicon.ico",
+        "bytes": 1427,
+        "sha256": "918642e9f38003862ef7b74417a6d7854972b34d82a2073c147c81690a0a7eac"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 301,
+        "sha256": "f450f64990cfefe57bfb9bd3689d901edba654d09e8dddfa579eb1e794940cf3"
+      },
+      {
+        "path": "features.html",
+        "bytes": 13819,
+        "sha256": "d3db602b7c763f6aba032a8b988084154e2a9a85bf666fb1525a1eb9e5485986"
+      },
+      {
+        "path": "footer-manifest.json",
+        "bytes": 1895,
+        "sha256": "ed7c5b5165d31484f28998878c9294ea94b25bb69e0a22344c0c98f2f36f4c25"
+      },
+      {
+        "path": "game.html",
+        "bytes": 113093,
+        "sha256": "aba82651638b74cc3581eb928deabe72af72f58fc44e4a4107a44e38847b691a"
+      },
+      {
+        "path": "how-to-play.html",
+        "bytes": 8526,
+        "sha256": "0c734eb44d4aca70f0d864e0dc3c8c95117d24867c462224ddace55dc40a3752"
+      },
+      {
+        "path": "images/apple-touch-icon.png",
+        "bytes": 3077,
+        "sha256": "039ede3f2768ba639095bb83ef58e95f4190c0d9f8e059875de03b04de2198f7"
+      },
+      {
+        "path": "images/cover.png",
+        "bytes": 378376,
+        "sha256": "409df9ab5dfc016bc04e16ef3bee6edbe837f0da0f9c803928a31a3834dbf0a6"
+      },
+      {
+        "path": "images/cover.webp",
+        "bytes": 28418,
+        "sha256": "68584f71803e58ee0e9ce8f21d2b9390bad9eb3d2b2985a9e4af5824ce1383c3"
+      },
+      {
+        "path": "images/franchise-architect-logo.svg",
+        "bytes": 1001,
+        "sha256": "2e30a473a7fff7c7a11fda90e7b3e5eb56de572afcfd8aca464ff54bcf84f754"
+      },
+      {
+        "path": "images/franchise-architect-mark.svg",
+        "bytes": 599,
+        "sha256": "64a966830119196ac799e00b8dc58d3970460ba2d6b82fb324fa6ae848d9ad3d"
+      },
+      {
+        "path": "images/icon-192.png",
+        "bytes": 3082,
+        "sha256": "51dff9db397d1c13c5d06c8a69543678acafaec5ef215ec236e976a6a9819c66"
+      },
+      {
+        "path": "images/icon-512.png",
+        "bytes": 8341,
+        "sha256": "b7b5a916704a3a11868fe31d7dbb86ece3d371aab2fd872d5ff7f3fb5e65f1a7"
+      },
+      {
+        "path": "images/screens/boardroom.jpg",
+        "bytes": 152963,
+        "sha256": "6255f9c371e31178db42af10f520e80f634930729a06c1d6903af274dc9e9f66"
+      },
+      {
+        "path": "images/screens/contracts.jpg",
+        "bytes": 138297,
+        "sha256": "282107d77478dfa9f0d8820a28363f38a5d0a909143c4603ce45a796b1257d9f"
+      },
+      {
+        "path": "images/screens/desk.jpg",
+        "bytes": 103191,
+        "sha256": "cd66e490aedb12d6da6bb39134ccb81d1ab300c331fef20b7c5922bf96b15847"
+      },
+      {
+        "path": "images/screens/hero.jpg",
+        "bytes": 154408,
+        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+      },
+      {
+        "path": "images/screens/trade.jpg",
+        "bytes": 125476,
+        "sha256": "51bed8fcb5bb28d7aa98bd52e4d258a23bcb94d71789398192cb55a2ee133108"
+      },
+      {
+        "path": "index.html",
+        "bytes": 21726,
+        "sha256": "51fbf99fd4c9cd1b405b9bb4e5398a3f9201685fdc3705cb88e49e8de96735df"
+      },
+      {
+        "path": "lib/achievements.js",
+        "bytes": 20801,
+        "sha256": "dcacc93c2af840afae41de2a892915c9bcaa7e6b90c894d6c9f56080fc976dc1"
+      },
+      {
+        "path": "lib/actionCoordinator.js",
+        "bytes": 762,
+        "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a"
+      },
+      {
+        "path": "lib/api/clientSessionRecovery.js",
+        "bytes": 25582,
+        "sha256": "90cece6bd4990b54b19fee769d55a8b692217086e20378fcbca2344e6c6987e3"
+      },
+      {
+        "path": "lib/api/createApiClient.js",
+        "bytes": 12700,
+        "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605"
+      },
+      {
+        "path": "lib/api/localRuntimeWorker.js",
+        "bytes": 13705,
+        "sha256": "4e76d369959eb57c14fd69c80f44c97bcd4f6b99918d0e29b6745b75544f23ce"
+      },
+      {
+        "path": "lib/api/recoverySnapshotState.js",
+        "bytes": 1059,
+        "sha256": "8951e759850a18e52e83fb53635a5b74519eee907fde50e35a4fe0238d6506d9"
+      },
+      {
+        "path": "lib/api/workerTransport.js",
+        "bytes": 7528,
+        "sha256": "7335d20537d8a268b588d9099a8d0c6cfb9b3aa97fcbfe1ae4b7002c7a016ab8"
+      },
+      {
+        "path": "lib/apiContract.js",
+        "bytes": 8674,
+        "sha256": "a05805bd8e25ca2ccd68e6a197912d3dcd6d196a5aa8d456fa90657e559ae3d9"
+      },
+      {
+        "path": "lib/appCore.js",
+        "bytes": 63946,
+        "sha256": "96e06919d75bdcd82933273624f3da22eac57b737be5e085115ca30b61aa4ae4"
+      },
+      {
+        "path": "lib/appState.js",
+        "bytes": 12429,
+        "sha256": "c8151d6eb27c2bbb8012e7707671bcb6558cc38268dba89bc19fac8092c7cedc"
+      },
+      {
+        "path": "lib/architectCut.js",
+        "bytes": 6574,
+        "sha256": "5edb460f761619cef360a87293f212c7b4fc280432398304f47009f3c0c1d963"
+      },
+      {
+        "path": "lib/architectPlanRehearsal.js",
+        "bytes": 6938,
+        "sha256": "dc7987a06cf65f9c2ab2483fc73d897664e172008f00f44d436ffcbfe440a1c3"
+      },
+      {
+        "path": "lib/audioFeedback.js",
+        "bytes": 4117,
+        "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe"
+      },
+      {
+        "path": "lib/authorityEpoch.js",
+        "bytes": 1348,
+        "sha256": "fd8619500e7fd5f7484dbcc25f952252311ecda9e5723e6586b2f6727c257371"
+      },
+      {
+        "path": "lib/betaFeedback.js",
+        "bytes": 16195,
+        "sha256": "f2e2050e4788c12378ff4d73e2ec50d7f0c945b6a78c81844d544aad4d73a080"
+      },
+      {
+        "path": "lib/boxScorePresentation.js",
+        "bytes": 3897,
+        "sha256": "1b90e1b0beace7f999428a29ca1123049d1916504f93b3d6bd357c099736b743"
+      },
+      {
+        "path": "lib/challengeCodes.js",
+        "bytes": 5945,
+        "sha256": "d2f3d5d98aeb8880311aa273ca9e3dd49579cacecff8cabbd58feb9a9b8ed24f"
+      },
+      {
+        "path": "lib/clientDiagnostics.js",
+        "bytes": 5996,
+        "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c"
+      },
+      {
+        "path": "lib/clientRecoveryUi.js",
+        "bytes": 5660,
+        "sha256": "59e6c1f894b9b7aade41e35ed283c4d94faea9a479d98804dfc0c54188aa4999"
+      },
+      {
+        "path": "lib/coGmBriefPanel.js",
+        "bytes": 2304,
+        "sha256": "f15230f9ee51344d8150d1be39b0d1919dc54074bb67b80c8c5def11a19311a5"
+      },
+      {
+        "path": "lib/coGmBriefing.js",
+        "bytes": 5314,
+        "sha256": "db4231955adc35ac8a04a1f4a373d7c6e33d75a6d3e02ad003aac4565016d5f0"
+      },
+      {
+        "path": "lib/coachingMarketPanel.js",
+        "bytes": 4655,
+        "sha256": "1165e0d0bffb1b0dc6af84b303e9c7ec31ac1605989656b52313dcbaa0880eae"
+      },
+      {
+        "path": "lib/communityEventContract.js",
+        "bytes": 4634,
+        "sha256": "1466f7970beb27da0b33f767386ed19bce77de3e69737ac2be228bd2e8bb3354"
+      },
+      {
+        "path": "lib/communityTelemetry.js",
+        "bytes": 14177,
+        "sha256": "db4f14553a6d4dcdb55fe565e27219bf69f0491c287bb84f6163c070904ba84f"
+      },
+      {
+        "path": "lib/contextualFeedback.js",
+        "bytes": 7864,
+        "sha256": "f4798ea71e9bc3c8f8a56437f4239b947415a3eb106d8ec7e82c8f7afb9e2edf"
+      },
+      {
+        "path": "lib/decisionAnthology.js",
+        "bytes": 1679,
+        "sha256": "96a791b4dc4af5b9444618a18773d2d58d9c51fea38004bb6a88d28aa9a28951"
+      },
+      {
+        "path": "lib/decisionArchive.js",
+        "bytes": 4377,
+        "sha256": "f1733d13e24ebc7d51b656082a789c2bd2a0df08dafb658dae08d4f701aaf76f"
+      },
+      {
+        "path": "lib/deskIslands.js",
+        "bytes": 4533,
+        "sha256": "84d6649422ad0b2c91144055427c7db20f270b6653ade47d43d59e4e42f79f14"
+      },
+      {
+        "path": "lib/devSurfaces.js",
+        "bytes": 1377,
+        "sha256": "c19928d9eada8145f5cc688bafc38cf57949e8e6aa75cf5411fd7e2b927df2f4"
+      },
+      {
+        "path": "lib/draftPickReveal.js",
+        "bytes": 4661,
+        "sha256": "71757db9aa7cdce68712047479ca8e50fffd511f5f71a602660137f31f372300"
+      },
+      {
+        "path": "lib/dynastyTimeline.js",
+        "bytes": 6267,
+        "sha256": "17658196cf6e9fbaa45a2824192e41df11986a85b8ec5775deacc5b7b650968d"
+      },
+      {
+        "path": "lib/engagementFeatures.js",
+        "bytes": 32794,
+        "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660"
+      },
+      {
+        "path": "lib/exactSurfaceNavigation.js",
+        "bytes": 3114,
+        "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
+      },
+      {
+        "path": "lib/extractCommunityEvents.js",
+        "bytes": 8329,
+        "sha256": "e1c507fc40fb87675e17797951ff7a36bcb80e2d9a41e9a2c8583fc483c62a64"
+      },
+      {
+        "path": "lib/facilitiesPanel.js",
+        "bytes": 6563,
+        "sha256": "2d1cbd0dcfb79c441d939c06359a2912a3eeb04f0ef00a5b5ee9f9fb6ad1e352"
+      },
+      {
+        "path": "lib/fastSimulationPolicy.js",
+        "bytes": 2071,
+        "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
+      },
+      {
+        "path": "lib/firstDebriefPulse.js",
+        "bytes": 8641,
+        "sha256": "ce6751727604018d54d6b98689ce3b6c88c480b871e8b0cb6dc28236c6a4cea0"
+      },
+      {
+        "path": "lib/firstSeasonContract.js",
+        "bytes": 13577,
+        "sha256": "f2bcbebc9fac5bf2942b4840a95bdc8c2676ff70d6b75456fdb578f72f489c8d"
+      },
+      {
+        "path": "lib/franchiseArchitecture.js",
+        "bytes": 7220,
+        "sha256": "0035be48f9b922bfa88a5122fd04ef5aecd3d82c585a820264cb71b14302e03a"
+      },
+      {
+        "path": "lib/franchiseCommandCenter.js",
+        "bytes": 8509,
+        "sha256": "6a2ad885ad8fd686b5b933f739e236850b63749bc76d9e0629f53df4b204f762"
+      },
+      {
+        "path": "lib/franchiseNewsletter.js",
+        "bytes": 8147,
+        "sha256": "124c0b8893d87ad3ae0e35f178bbea2d678c1638d93133c7ef2d53354733a81b"
+      },
+      {
+        "path": "lib/franchiseScope.js",
+        "bytes": 1553,
+        "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178"
+      },
+      {
+        "path": "lib/frontOfficeAdvisor.js",
+        "bytes": 26769,
+        "sha256": "4f2308ae806d01c8f5a43d7eeb30a0e4305fa372665c39ce93fabe8599d1e188"
+      },
+      {
+        "path": "lib/gameFlow.js",
+        "bytes": 62840,
+        "sha256": "2003c9f561319e31950e49d71fd9b359e4305d3507e45b1212d1f5ce3149e539"
+      },
+      {
+        "path": "lib/gameOutcome.js",
+        "bytes": 2085,
+        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+      },
+      {
+        "path": "lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "lib/gistAuthentication.js",
+        "bytes": 3215,
+        "sha256": "737be150b40d767dff6f1d43b7e4c2e5f96eff106aed193d4cc7fba192c7f359"
+      },
+      {
+        "path": "lib/gistCredentials.js",
+        "bytes": 1631,
+        "sha256": "789a78e5ecfce53ee06aa4dc93f1938c4a17573d3f4511f146c8fdf32917c828"
+      },
+      {
+        "path": "lib/gistSync.js",
+        "bytes": 8867,
+        "sha256": "10409f97753e6323fe7ce0574ab7305f0306b1bf2ff0426dceaf4350d039b429"
+      },
+      {
+        "path": "lib/gistVerification.js",
+        "bytes": 2018,
+        "sha256": "11f6ac5bd9a7a6461d75c4d6734bdad435d84fc566b91d930adfcf8c6b1d517a"
+      },
+      {
+        "path": "lib/hallOfFameCeremony.js",
+        "bytes": 6068,
+        "sha256": "7ca70ec97ef3f38add573af53d780174827f381779cf4dfc23f7f4bb8348fe3d"
+      },
+      {
+        "path": "lib/historyFormatting.js",
+        "bytes": 2289,
+        "sha256": "aa6d22845a7fdfd0ec88680880458002cbabd613e32a0cfdbeee6631550833a5"
+      },
+      {
+        "path": "lib/launchReadiness.js",
+        "bytes": 2771,
+        "sha256": "a3644f95686596e6025c7b30ebc11254f102eef6f573900060dbabed3a3a106c"
+      },
+      {
+        "path": "lib/leagueLensPanel.js",
+        "bytes": 4686,
+        "sha256": "dc9fe60927b67a7e0dbc354719a44afb56ab1129d9e024026b48f68a59b33505"
+      },
+      {
+        "path": "lib/leagueStoryExport.js",
+        "bytes": 12078,
+        "sha256": "43ef55dba1382f058532e82a8cf4b4379fef1bec2c49ea3f4364b83ff0220058"
+      },
+      {
+        "path": "lib/lookAhead.js",
+        "bytes": 1963,
+        "sha256": "f5f83462192dff00d60831ca69223dcfa5d4177e419672ab580937831f0deb40"
+      },
+      {
+        "path": "lib/marqueeBadge.js",
+        "bytes": 4158,
+        "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e"
+      },
+      {
+        "path": "lib/mentorshipPanel.js",
+        "bytes": 5148,
+        "sha256": "f944718618e8d51af9909908364058bf99acd4f071b28a9d533f73c49e4e2050"
+      },
+      {
+        "path": "lib/mobileLoop.js",
+        "bytes": 20052,
+        "sha256": "0c59f1121cdca3e3d1cc9af5901371f4a96fe582ff76ce9e980e7e3b1f603650"
+      },
+      {
+        "path": "lib/mobileNavigation.js",
+        "bytes": 5813,
+        "sha256": "a563a6432cd9f387fccc9ec8a55606889362355261b48e778d72f7abfe82980f"
+      },
+      {
+        "path": "lib/modalManager.js",
+        "bytes": 6529,
+        "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
+      },
+      {
+        "path": "lib/momentCard.js",
+        "bytes": 17407,
+        "sha256": "dfdb3f2c5d15cf6d1903cb2b780e355a0f3bdb5bb2a4b8ad385c4559e7cf2550"
+      },
+      {
+        "path": "lib/offseasonDevelopmentReport.js",
+        "bytes": 5332,
+        "sha256": "c47910970117440d207aac9694b94e94781385215b1610933e3e181cce4fe6f1"
+      },
+      {
+        "path": "lib/onClockTradeMarketPanel.js",
+        "bytes": 5155,
+        "sha256": "c9944026c098d9b62670359dea2ac3601111a18c99e44bf1260c985b2a6755b6"
+      },
+      {
+        "path": "lib/operatingStatementPanel.js",
+        "bytes": 2653,
+        "sha256": "9f685f33c5e2301bef562091e70bc7ed8a5aa43b3dd5beaaea5c25f066ff57dd"
+      },
+      {
+        "path": "lib/playerProfileNarrative.js",
+        "bytes": 9776,
+        "sha256": "2f29b9e4104a48e34eddb23391fde4c9489285428cc3223cda89067fba180445"
+      },
+      {
+        "path": "lib/playtestJourney.js",
+        "bytes": 4111,
+        "sha256": "a07965f79cb3fbecde479ba1e991625381d380c83c136ec0e286440e778c96c4"
+      },
+      {
+        "path": "lib/playtestReceipts.js",
+        "bytes": 4557,
+        "sha256": "51d34f651a7d55074b9bd1b5f2d5b154b342ae99a6447752866ad13e79c5ebb5"
+      },
+      {
+        "path": "lib/postCommitHydration.js",
+        "bytes": 2027,
+        "sha256": "7bf28b18ec26dc059ae17537a00566a2efe3684558ad0b989ab34a69f7f62bfe"
+      },
+      {
+        "path": "lib/predictionPanel.js",
+        "bytes": 7619,
+        "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+      },
+      {
+        "path": "lib/pressRoomPanel.js",
+        "bytes": 4316,
+        "sha256": "cf807f96e9ff510ff84a4afaee24cf0363dd4f8f6226a16975830573ab0a9bcc"
+      },
+      {
+        "path": "lib/progressionWatch.js",
+        "bytes": 1949,
+        "sha256": "8254616bd7d5987eafdb4f41b198cb843f6475414363951844de0e5aebc4630c"
+      },
+      {
+        "path": "lib/prospectNarratives.js",
+        "bytes": 4627,
+        "sha256": "124e0becdc00bb020287e1bc7a724628c250eea3f1614342d63fa79d8af4fc7a"
+      },
+      {
+        "path": "lib/returnDigest.js",
+        "bytes": 11792,
+        "sha256": "7cd5dc692287d2ba5f006fa3aa3ef25d567984948ea75eff03924177f18c7351"
+      },
+      {
+        "path": "lib/rewardBeats.js",
+        "bytes": 7590,
+        "sha256": "0f06ee560442b7fcc6506c46cee53fd8a5db715b1019ae9b5dccec0964699405"
+      },
+      {
+        "path": "lib/rivalCoachIntel.js",
+        "bytes": 2496,
+        "sha256": "f7885fa55083a9038cc830ecf1e47574a5de0fc077916b2ad930b26249e3f870"
+      },
+      {
+        "path": "lib/rivalFrontOfficeCard.js",
+        "bytes": 1983,
+        "sha256": "9a3a1321ddd8db463507385cc402b2b9b03492db6b62be7719fe9c9ce435a289"
+      },
+      {
+        "path": "lib/scoreline.js",
+        "bytes": 1280,
+        "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003"
+      },
+      {
+        "path": "lib/seasonChapters.js",
+        "bytes": 17256,
+        "sha256": "d7c3e69b653169d9d37f04535f744049037e97fa5315686c29a52742638380ad"
+      },
+      {
+        "path": "lib/seasonEpilogue.js",
+        "bytes": 14718,
+        "sha256": "f832da600d35aca6aa56b15d4e1f32fa7784e7ce84913472d485bb6ab60d76cd"
+      },
+      {
+        "path": "lib/seasonReviewTransition.js",
+        "bytes": 343,
+        "sha256": "373f0b73cd6cfacdb72f97a5c62e5e4ddb54c3f123e97425fc7df87cac8479d8"
+      },
+      {
+        "path": "lib/simWatchDirector.js",
+        "bytes": 16252,
+        "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00"
+      },
+      {
+        "path": "lib/simWatchPlayback.js",
+        "bytes": 9334,
+        "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3"
+      },
+      {
+        "path": "lib/simulationCheckpoints.js",
+        "bytes": 5298,
+        "sha256": "f371488ebc68a78a1350e01320bfbbcc5ce735dd6c4621ecfbd2714b178d6eca"
+      },
+      {
+        "path": "lib/situationalCallsPanel.js",
+        "bytes": 4081,
+        "sha256": "630cf0715481a00d2e6fb41ba370eba8c76ccf252a90f9077471b0f298c026ca"
+      },
+      {
+        "path": "lib/spreadPredictions.js",
+        "bytes": 8724,
+        "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
+      },
+      {
+        "path": "lib/startScenarioContract.js",
+        "bytes": 4454,
+        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+      },
+      {
+        "path": "lib/tabContracts.js",
+        "bytes": 34520,
+        "sha256": "f37cc90e0d2d72e7c363780af1555d14db4ed8ab5fa90e25a3ed1ab880de00c6"
+      },
+      {
+        "path": "lib/tabDraft.js",
+        "bytes": 23489,
+        "sha256": "8d849daf90776d7b65dbf17c1e2a619c2f243f6300ae05cfd37769b8622a6619"
+      },
+      {
+        "path": "lib/tabHistory.js",
+        "bytes": 42347,
+        "sha256": "7b582bd4aeb1f7d608a34a9e67bf9910c4aefe350ac79092467312e3e053015b"
+      },
+      {
+        "path": "lib/tabHydration.js",
+        "bytes": 6294,
+        "sha256": "4a623ab5b7b900cf34ff8cfa6531ac95bf6c70dec3e2cad107d9373718c24b65"
+      },
+      {
+        "path": "lib/tabKeyboardNavigation.js",
+        "bytes": 770,
+        "sha256": "88f0a334c69c5e7ee3f6781cd207fd0206a0215b12bdc261c5a24ed99dd1a026"
+      },
+      {
+        "path": "lib/tabOverview.js",
+        "bytes": 70154,
+        "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+      },
+      {
+        "path": "lib/tabRoster.js",
+        "bytes": 16171,
+        "sha256": "5aa4be1726125dba3ed6684e2d693ff375fb122be7c973b0e1b4239ccb83877d"
+      },
+      {
+        "path": "lib/tabSettings.js",
+        "bytes": 41382,
+        "sha256": "bcec0bb549d8671b99d1e4d5d022b603a5fddb1ff18f51a19167b281f2fe39a0"
+      },
+      {
+        "path": "lib/tabStats.js",
+        "bytes": 9270,
+        "sha256": "7037408e4624feef2fc29ca3a11f58aa41423d4a1d635763f509af82a42b4c5c"
+      },
+      {
+        "path": "lib/tacticalFilmRoom.js",
+        "bytes": 15126,
+        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+      },
+      {
+        "path": "lib/teamCrest.js",
+        "bytes": 5789,
+        "sha256": "8ab745aacd1fda86da8406eee04282cf7910b3b8d8dba02fcebcbcff5f48e0ec"
+      },
+      {
+        "path": "lib/teamDisplay.js",
+        "bytes": 262,
+        "sha256": "adf9834822fb376d8324eba63177071ca3458e79b85d386677179bea87af1595"
+      },
+      {
+        "path": "lib/teamRecord.js",
+        "bytes": 1811,
+        "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6"
+      },
+      {
+        "path": "lib/themeBoot.js",
+        "bytes": 1644,
+        "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+      },
+      {
+        "path": "lib/themeCustomizer.js",
+        "bytes": 8390,
+        "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
+      },
+      {
+        "path": "lib/tradeDeadlineFrenzy.js",
+        "bytes": 9802,
+        "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
+      },
+      {
+        "path": "lib/tradeWindow.js",
+        "bytes": 1486,
+        "sha256": "ae3cd16bbad79e54d94dda978ebdab22af87a037d0c4848f7dcc9a39448f316c"
+      },
+      {
+        "path": "lib/tutorialCampaign.js",
+        "bytes": 12856,
+        "sha256": "719b7fafc70d0721f197b13039c72903140967ad7ea2fede6abd3356a27f147f"
+      },
+      {
+        "path": "lib/uiIslands.js",
+        "bytes": 6228,
+        "sha256": "0cb27840070920312ec23041398a7f1f5373d8c4ec1fa02a793f10ecef51855f"
+      },
+      {
+        "path": "lib/weeklyPlanComposer.js",
+        "bytes": 7650,
+        "sha256": "7c257e23dace7197745fd6b5928707bea18e4d974f4e2e512a61c15df94afca6"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "bytes": 600,
+        "sha256": "07e5426cdaf6094a5c9de2e141b27521ef1e1c64fff95fbfc5991362d439cc64"
+      },
+      {
+        "path": "precache-manifest.json",
+        "bytes": 17833,
+        "sha256": "f6dd08fa6414bcbe6c00a0fdbfa2b4cca82bd891ebd2f4bdc3bb0432fee54ae4"
+      },
+      {
+        "path": "press.html",
+        "bytes": 10946,
+        "sha256": "6a835db22c6d7fd77ce9b11e46c433df7f921c006dd6c08efccd609372973b8e"
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 7429,
+        "sha256": "a43f864c5827e9d1d72fdc8833fe27e373c2c574468901e2f34951017a985f96"
+      },
+      {
+        "path": "public-identity.json",
+        "bytes": 584,
+        "sha256": "39a81c7ebeead641bc7aeef0087798797a6f2a960f99eb8ba0e1c29db299ac3e"
+      },
+      {
+        "path": "public/lib/gameOutcome.js",
+        "bytes": 2085,
+        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+      },
+      {
+        "path": "public/lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "public/lib/startScenarioContract.js",
+        "bytes": 4454,
+        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+      },
+      {
+        "path": "public/lib/tacticalFilmRoom.js",
+        "bytes": 15126,
+        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+      },
+      {
+        "path": "roadmap.html",
+        "bytes": 6313,
+        "sha256": "197751262e28678423eff7a6b182f51833bb609f2a7e6212fe57778d7830299a"
+      },
+      {
+        "path": "robots.txt",
+        "bytes": 80,
+        "sha256": "d129cfd34a4621cf972482cd0164f3dae6efe89688a6c243cfc3dd5c5b313019"
+      },
+      {
+        "path": "setup.js",
+        "bytes": 29163,
+        "sha256": "a73fc050a4971da043dd5b4e9c8b48c92ece0bf2c9e045e0d0dfb3b0ebe4d3b9"
+      },
+      {
+        "path": "showcase-league.json",
+        "bytes": 1342,
+        "sha256": "0fcd055662bda952fa32d977df135f7ac949bc044ebc327a0258f70451bcc4dd"
+      },
+      {
+        "path": "simulation.html",
+        "bytes": 11282,
+        "sha256": "34d0b2c78e08a27c4404d0a44ccbc161503d5c9fef7381e1c6cc8e3c8ff9ca33"
+      },
+      {
+        "path": "site.11e8faac8d.css",
+        "bytes": 10999,
+        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      },
+      {
+        "path": "site.css",
+        "bytes": 10999,
+        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      },
+      {
+        "path": "sitemap.xml",
+        "bytes": 1844,
+        "sha256": "4c1f679180b59affe80c65626adac112271059d41ac3838f1846b185ef906f29"
+      },
+      {
+        "path": "src/adapters/persistence/browserSaveStore.js",
+        "bytes": 10036,
+        "sha256": "ec8f692dbf53e14e20bcd675138984f0f7f99991a565bd66f73fe4315e43d342"
+      },
+      {
+        "path": "src/adapters/persistence/hybridSaveStore.js",
+        "bytes": 15546,
+        "sha256": "b7cb1b7f74fca3cc07d5e647216840cedb87cf7570712b967a706d5a74ba0c98"
+      },
+      {
+        "path": "src/adapters/persistence/saveStoreShared.js",
+        "bytes": 4579,
+        "sha256": "8881f866cae3ee2e4d5ba0a6706453dcaa87a4719b5f0967a646c1d13394f8da"
+      },
+      {
+        "path": "src/adapters/persistence/snapshotCodec.js",
+        "bytes": 4641,
+        "sha256": "272a9f7bf8c19f0ad7b37e71bd55cc27bb5496089c3bb0ace4c45b74fc4c2731"
+      },
+      {
+        "path": "src/app/api/localApiRuntime.js",
+        "bytes": 95310,
+        "sha256": "a311fa96c024ff63b413026ee285111f259b34bc9a2eee00ad5ed6aef2beb293"
+      },
+      {
+        "path": "src/config.js",
+        "bytes": 16609,
+        "sha256": "e876a49daf8cc88774e9f1960dc067f20e99e97eb8429fe7576854bf47e61c71"
+      },
+      {
+        "path": "src/config/leagueSetup.js",
+        "bytes": 16836,
+        "sha256": "a8a98029a13a6f8caf8769390ebe17eb69b2615a850ca1fae3b5a4bf5b3b2c5f"
+      },
+      {
+        "path": "src/data/nflEliteDensityBaseline.js",
+        "bytes": 8606,
+        "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d"
+      },
+      {
+        "path": "src/domain/contracts.js",
+        "bytes": 10451,
+        "sha256": "ba3cca2be6328ce24a7d04b2d3021138a784fb850a847b36bb82c10fdbb8428e"
+      },
+      {
+        "path": "src/domain/developmentEnvironment.js",
+        "bytes": 9551,
+        "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1"
+      },
+      {
+        "path": "src/domain/facilityInvestment.js",
+        "bytes": 15900,
+        "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
+      },
+      {
+        "path": "src/domain/leagueIdentity.js",
+        "bytes": 6966,
+        "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
+      },
+      {
+        "path": "src/domain/operatingStatement.js",
+        "bytes": 3005,
+        "sha256": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381"
+      },
+      {
+        "path": "src/domain/ownerEconomy.js",
+        "bytes": 6571,
+        "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
+      },
+      {
+        "path": "src/domain/playerFactory.js",
+        "bytes": 20923,
+        "sha256": "e010d21f0d1baf19a9c84ff6a2f0efdcc41b1dfd8b297c1244f359205337d65e"
+      },
+      {
+        "path": "src/domain/potentialReversion.js",
+        "bytes": 11659,
+        "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87"
+      },
+      {
+        "path": "src/domain/ratings.js",
+        "bytes": 15953,
+        "sha256": "f42c0f2c8598b38a35b36513ac92bb9602ee4a7d203e855a0d401920541c1597"
+      },
+      {
+        "path": "src/domain/teamFactory.js",
+        "bytes": 15579,
+        "sha256": "7624d4c0b0a25bf7c7d6a09ae803da1288083aad00a056017c0babd165a36794"
+      },
+      {
+        "path": "src/domain/teamLabel.js",
+        "bytes": 567,
+        "sha256": "3fd9f4306747ff9d5bfd0a823305f92fc027eac943a037d39c902f180be760df"
+      },
+      {
+        "path": "src/domain/ticketDemand.js",
+        "bytes": 7685,
+        "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174"
+      },
+      {
+        "path": "src/engine/adaptiveDifficulty.js",
+        "bytes": 3761,
+        "sha256": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763"
+      },
+      {
+        "path": "src/engine/aiTeamStrategy.js",
+        "bytes": 13834,
+        "sha256": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020"
+      },
+      {
+        "path": "src/engine/architectFocusReview.js",
+        "bytes": 3519,
+        "sha256": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704"
+      },
+      {
+        "path": "src/engine/architectMasteryPortfolio.js",
+        "bytes": 8565,
+        "sha256": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4"
+      },
+      {
+        "path": "src/engine/architectThesis.js",
+        "bytes": 7247,
+        "sha256": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0"
+      },
+      {
+        "path": "src/engine/beatReporter.js",
+        "bytes": 14751,
+        "sha256": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6"
+      },
+      {
+        "path": "src/engine/capAlerts.js",
+        "bytes": 6315,
+        "sha256": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03"
+      },
+      {
+        "path": "src/engine/capCompliance.js",
+        "bytes": 19993,
+        "sha256": "9c3153394377e90e73f96acce82fae1c6f394d935121de1614a53c0e52bbe1da"
+      },
+      {
+        "path": "src/engine/coachingMarket.js",
+        "bytes": 16734,
+        "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011"
+      },
+      {
+        "path": "src/engine/coachingTree.js",
+        "bytes": 9579,
+        "sha256": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73"
+      },
+      {
+        "path": "src/engine/continuityLedger.js",
+        "bytes": 8621,
+        "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896"
+      },
+      {
+        "path": "src/engine/cpuTradeMarket.js",
+        "bytes": 5196,
+        "sha256": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2"
+      },
+      {
+        "path": "src/engine/depthChartUsage.js",
+        "bytes": 11825,
+        "sha256": "6137615931198349196ee514370eee3888cddcd50132e1b09e22f75a705471fb"
+      },
+      {
+        "path": "src/engine/draftCombine.js",
+        "bytes": 5974,
+        "sha256": "68c9f6b2928c7f513849becbdfb2c407911dec67edce7080f51cc14c61cc639b"
+      },
+      {
+        "path": "src/engine/facilityMarket.js",
+        "bytes": 12906,
+        "sha256": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097"
+      },
+      {
+        "path": "src/engine/fanSentiment.js",
+        "bytes": 3641,
+        "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58"
+      },
+      {
+        "path": "src/engine/gameSimulator.js",
+        "bytes": 79747,
+        "sha256": "2d035c0e4d2b7562c172953dcf767dcbf1c79eb20291f81f3ec7b443cb533961"
+      },
+      {
+        "path": "src/engine/gmArchetype.js",
+        "bytes": 2300,
+        "sha256": "21b2991fd81a026119192a441039e4af469f615775cc0c0776fcb534382d4b84"
+      },
+      {
+        "path": "src/engine/gmDecisionAuthority.js",
+        "bytes": 17267,
+        "sha256": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1"
+      },
+      {
+        "path": "src/engine/gmDecisionConsequences.js",
+        "bytes": 23253,
+        "sha256": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a"
+      },
+      {
+        "path": "src/engine/gmLegacyScore.js",
+        "bytes": 19007,
+        "sha256": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3"
+      },
+      {
+        "path": "src/engine/injurySystem.js",
+        "bytes": 9323,
+        "sha256": "ca0a4e9b987e750fb39d7c2200b8cadd07c2a4562e94820914b2f1eed69ef556"
+      },
+      {
+        "path": "src/engine/matchupEdge.js",
+        "bytes": 5305,
+        "sha256": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b"
+      },
+      {
+        "path": "src/engine/narrativeEvents.js",
+        "bytes": 13267,
+        "sha256": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc"
+      },
+      {
+        "path": "src/engine/offseasonDevelopmentReport.js",
+        "bytes": 4011,
+        "sha256": "965ce7177c18ccad6a834e8cbfb1eb70724bbefa42999700615b749c1a4e7dbe"
+      },
+      {
+        "path": "src/engine/offseasonSimulator.js",
+        "bytes": 26440,
+        "sha256": "6945d8b6b912f290ddc01f4e67b87a6afb6ce3ba8cd40a8f54eaf13a2f23f54f"
+      },
+      {
+        "path": "src/engine/onClockTradeMarket.js",
+        "bytes": 5121,
+        "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7"
+      },
+      {
+        "path": "src/engine/ownerConfidence.js",
+        "bytes": 5471,
+        "sha256": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b"
+      },
+      {
+        "path": "src/engine/playCalling.js",
+        "bytes": 5136,
+        "sha256": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23"
+      },
+      {
+        "path": "src/engine/playerAgentAI.js",
+        "bytes": 6817,
+        "sha256": "a09fdabfb98c492d5bec786d0d6288e9f5e08102a2486bbac3cc6d6d43401753"
+      },
+      {
+        "path": "src/engine/pressConference.js",
+        "bytes": 14480,
+        "sha256": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f"
+      },
+      {
+        "path": "src/engine/pressRoom.js",
+        "bytes": 14828,
+        "sha256": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa"
+      },
+      {
+        "path": "src/engine/rivalFrontOffice.js",
+        "bytes": 3052,
+        "sha256": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76"
+      },
+      {
+        "path": "src/engine/rivalGmPersona.js",
+        "bytes": 6110,
+        "sha256": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8"
+      },
+      {
+        "path": "src/engine/rivalTradeOffers.js",
+        "bytes": 13031,
+        "sha256": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7"
+      },
+      {
+        "path": "src/engine/rivalryDNA.js",
+        "bytes": 4936,
+        "sha256": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962"
+      },
+      {
+        "path": "src/engine/schedule.js",
+        "bytes": 14293,
+        "sha256": "19ea2e12919c38f7d89b925f5c475d120709c34114f0beb03da9b0e7ce142434"
+      },
+      {
+        "path": "src/engine/seasonSimulator.js",
+        "bytes": 21369,
+        "sha256": "79ddd4566498cac9d7eb8384365f08e7dbe5e0fff0a68cefa328ea2d62a2cf17"
+      },
+      {
+        "path": "src/engine/situationalCalls.js",
+        "bytes": 3887,
+        "sha256": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db"
+      },
+      {
+        "path": "src/engine/speedrunChallenge.js",
+        "bytes": 3881,
+        "sha256": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb"
+      },
+      {
+        "path": "src/engine/staffGeneration.js",
+        "bytes": 3565,
+        "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
+      },
+      {
+        "path": "src/engine/timeCapsule.js",
+        "bytes": 13128,
+        "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
+      },
+      {
+        "path": "src/engine/veteranMentorship.js",
+        "bytes": 14005,
+        "sha256": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b"
+      },
+      {
+        "path": "src/engine/weeklySimulator.js",
+        "bytes": 1941,
+        "sha256": "d2f174a239bbf4d3b0cb672f583cf27c0fff6328230bd30b192e59b4be61f7d9"
+      },
+      {
+        "path": "src/engine/whatIfReplay.js",
+        "bytes": 4072,
+        "sha256": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a"
+      },
+      {
+        "path": "src/runtime/GameSession.js",
+        "bytes": 355009,
+        "sha256": "7b1f5cca343f7b20b5739cb4d001089a65e7fe24ec416da435e70e49d68feda3"
+      },
+      {
+        "path": "src/runtime/advanceWeekCommand.js",
+        "bytes": 7037,
+        "sha256": "4989eefa5de67fa778fb5b6759a04401ae4850fbce2e85e6dede5ccf92357d91"
+      },
+      {
+        "path": "src/runtime/applyLeagueSetup.js",
+        "bytes": 6269,
+        "sha256": "43d627b8de1fa10394acb255e9394a50ca892ccf8ff8ec1bb384777c673c309a"
+      },
+      {
+        "path": "src/runtime/architectLedger.js",
+        "bytes": 3897,
+        "sha256": "8a1b2aa18052c46c17ff3de07fccae3520726d4d97804bf2ed6dc73eb0d54563"
+      },
+      {
+        "path": "src/runtime/franchiseAuthority.js",
+        "bytes": 10648,
+        "sha256": "805662347b693f1eaa2e3666614a1390a9953b7642d4aa9d84ddc67e3f7c7f94"
+      },
+      {
+        "path": "src/runtime/handlers/architectThesisHandler.js",
+        "bytes": 1264,
+        "sha256": "f4e591fbe4c76b9583e6229ce55fefdf202a7cf9c2f810c2038ea097a7a249cb"
+      },
+      {
+        "path": "src/runtime/handlers/franchiseMomentHandler.js",
+        "bytes": 4492,
+        "sha256": "dd9104a2e6597bb6276e720e50f850df23fcadb295ea050de23653d0469b315a"
+      },
+      {
+        "path": "src/runtime/handlers/tradeOffersHandler.js",
+        "bytes": 1342,
+        "sha256": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2"
+      },
+      {
+        "path": "src/runtime/modules/sessionModules.js",
+        "bytes": 1099,
+        "sha256": "05316a071da75db231b7d3151b6c8eda874e3eadf7d78e086bbe39d9fe756f40"
+      },
+      {
+        "path": "src/runtime/multiplayerSession.js",
+        "bytes": 9525,
+        "sha256": "834151078c7990d52fbcdd4f203527b991939b7aa86f5a42dc39ca50acdb55a7"
+      },
+      {
+        "path": "src/runtime/services/CoachingService.js",
+        "bytes": 6743,
+        "sha256": "8bc57ca62777f7c8453d77596361fba5c6242fc7283fed57fd193f6781f731c5"
+      },
+      {
+        "path": "src/runtime/services/ContractService.js",
+        "bytes": 1646,
+        "sha256": "eea0f96a9fa549c2edab7359e6a8c6b3542b90c825b6c5b68d8655e213048bbe"
+      },
+      {
+        "path": "src/runtime/services/TradeService.js",
+        "bytes": 14734,
+        "sha256": "60afd1b18db65264393546459f226dac9d60c427cdbbf7c1f9e9c147118d0cd6"
+      },
+      {
+        "path": "src/runtime/services/index.js",
+        "bytes": 1835,
+        "sha256": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6"
+      },
+      {
+        "path": "src/runtime/services/tradePlan.js",
+        "bytes": 1939,
+        "sha256": "b58965b01237848130b36067e8e5f158fd488b1ec1ae0a05fbadccc8938e36a7"
+      },
+      {
+        "path": "src/runtime/snapshotMigration.js",
+        "bytes": 4725,
+        "sha256": "54d632309f363300c2ab503b1567a37801a6d7c67454e4d076d297bf4ca62a12"
+      },
+      {
+        "path": "src/runtime/weekResultProjection.js",
+        "bytes": 10497,
+        "sha256": "89ddf5d63abb22222d3a0a86cb3a234b122f06d9c69b22ccb5daa97a3838b983"
+      },
+      {
+        "path": "src/runtime/weeklyTactic.js",
+        "bytes": 3178,
+        "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
+      },
+      {
+        "path": "src/stats/approximateValue.js",
+        "bytes": 12713,
+        "sha256": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486"
+      },
+      {
+        "path": "src/stats/gameImpact.js",
+        "bytes": 3136,
+        "sha256": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5"
+      },
+      {
+        "path": "src/stats/gmReportCard.js",
+        "bytes": 10017,
+        "sha256": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca"
+      },
+      {
+        "path": "src/stats/leagueLens.js",
+        "bytes": 12467,
+        "sha256": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f"
+      },
+      {
+        "path": "src/stats/profiles/pfrCareerWeightedProfile.js",
+        "bytes": 4418,
+        "sha256": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0"
+      },
+      {
+        "path": "src/stats/profiles/pfrRecentWeightedProfile.js",
+        "bytes": 2383,
+        "sha256": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866"
+      },
+      {
+        "path": "src/stats/progressionParity.js",
+        "bytes": 41570,
+        "sha256": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1"
+      },
+      {
+        "path": "src/stats/realismCalibrator.js",
+        "bytes": 25821,
+        "sha256": "e9d51c5555059430201a8fd31dabee7eb71b75f895f754cdbffe64afb5c17d58"
+      },
+      {
+        "path": "src/stats/scoreline.js",
+        "bytes": 2928,
+        "sha256": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b"
+      },
+      {
+        "path": "src/stats/statBook.js",
+        "bytes": 37018,
+        "sha256": "dcba64cbb47a9854c48977bbed21854c1054fdcf72753799141cc4bcdae77293"
+      },
+      {
+        "path": "src/stats/teamRecord.js",
+        "bytes": 765,
+        "sha256": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51"
+      },
+      {
+        "path": "src/utils/rng.js",
+        "bytes": 5535,
+        "sha256": "12b630dea99627b266aef906d5344ba17ce77316b336ca2dab113c655d41d089"
+      },
+      {
+        "path": "src/utils/rngStreams.js",
+        "bytes": 1408,
+        "sha256": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181"
+      },
+      {
+        "path": "stats-surface.json",
+        "bytes": 3191,
+        "sha256": "e75c35e7f59e1c1c3a84bff2d581a238835b6710ac791b34802b80680f3dd67a"
+      },
+      {
+        "path": "stats.html",
+        "bytes": 8090,
+        "sha256": "392b2bdc3f5c243cd8e293990a10149081f0678231c21477a31daa275bc3eebf"
+      },
+      {
+        "path": "status-archive.html",
+        "bytes": 23230,
+        "sha256": "386cb67134826e1fecc1790d2bf24920160880bd477cb8b94a7fbb69232e37fa"
+      },
+      {
+        "path": "status.html",
+        "bytes": 8639,
+        "sha256": "4204644e01b9726c3b5eed621d7887608decc34c3fe5d72de50923045e4d3fae"
+      },
+      {
+        "path": "styles.b8e154d291.css",
+        "bytes": 212862,
+        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
+      },
+      {
+        "path": "styles.css",
+        "bytes": 212862,
+        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 9546,
+        "sha256": "9860f458e4e3100f06e2af990be4d6855faae581ddd2905193962fb37b8a1e94"
+      },
+      {
+        "path": "terms.html",
+        "bytes": 6025,
+        "sha256": "74726d11c99ad2854fa4cebea664d4aa146519dcc90c828c4cf76597882e75dc"
+      }
+    ],
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "promotionIdentity": "80125a0a5609be8a9fd7c01399e176ffe1b8e052:b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d",
+  "deploymentId": "78120e88-de2b-4553-8c77-ca11fedba0e7",
+  "deploymentUrl": "https://78120e88.franchise-architect-staging.pages.dev",
+  "stableUrl": "https://staging.playfranchisearchitect.com",
+  "domainStatus": "active",
+  "independent": true,
+  "exactRevision": true,
+  "exactArtifact": true,
+  "provenance": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14,
+    "checkedAt": "2026-10-03T17:44:13.098Z"
+  },
+  "rollback": {
+    "previousDeploymentId": "2c0af618-bd5a-44d2-aa80-a780d1f785d0",
+    "available": true
+  },
+  "verified": true,
+  "observedAt": "2026-10-03T17:44:13.099Z"
+}

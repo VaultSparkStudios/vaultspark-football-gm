@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-10-02T18:51:29.103Z",
-  "sourceRevision": "1c57a3beeb420001d6ba1611e027043df76f7d57",
+  "capturedAt": "2026-10-03T17:49:54.502Z",
+  "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "a878e519e43501ec67da8180b51c5133a197caf76c3843a13365fd42426f7808",
-    "files": 260,
+    "digest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d",
+    "files": 262,
     "entries": [
       {
         "path": ".well-known/llms.txt",
@@ -20,7 +20,7 @@
       {
         "path": "404.html",
         "bytes": 4275,
-        "sha256": "7e71df95730f967a09d8721c4d6f4b7aeb4df3d145ab6dad8a352287897308e3"
+        "sha256": "925c52bec37637e8b413809e67d696e9f4ab9675229dd1535c13c61aeb92957a"
       },
       {
         "path": "_headers",
@@ -35,7 +35,7 @@
       {
         "path": "about.html",
         "bytes": 6379,
-        "sha256": "72aeef2918e0ca2dff694236b787912b4603b5c2ca84e37fa3f6bc1efcb6aa44"
+        "sha256": "105388889ab4add0311f0b91cdd2a799293974b9b473222b17921adfdbce4bba"
       },
       {
         "path": "agents.json",
@@ -49,13 +49,13 @@
       },
       {
         "path": "boot-manifest.json",
-        "bytes": 1735,
-        "sha256": "4589d3097948c95be991b15a1a1def543a01325f487d28fc100c1a8ec2d16dd4"
+        "bytes": 1771,
+        "sha256": "70688b03d1fe23c504fee3574a5268534426dad4fab94310f224651b1d31d518"
       },
       {
         "path": "changelog.xml",
-        "bytes": 23964,
-        "sha256": "6da04328dc6c4c4b3cb4f4857cbc4139a62fb58f94939068ed74cbb6fe470c3e"
+        "bytes": 25064,
+        "sha256": "1956f322d60ae4cfbb88c5c2182587209d448f9d6fd75f1efa6fd952ff476a71"
       },
       {
         "path": "community-stats.25f97e0a1e.js",
@@ -70,7 +70,7 @@
       {
         "path": "contact.html",
         "bytes": 5482,
-        "sha256": "f05fb7cf193d81feaa1b1092c641ea8d12189d06b9f213f52d47343ed73eb7bd"
+        "sha256": "873ef461fe4d3450ced7824f7e4fd0b6de0d4e2d5253946e1e37db260658dc9f"
       },
       {
         "path": "content/claims.json",
@@ -80,7 +80,7 @@
       {
         "path": "faq.html",
         "bytes": 10553,
-        "sha256": "5cfb854b7a7c2fbd9f36760dad9b0f458ca1a9aa0bd9b8d7c999af10582dd803"
+        "sha256": "5461d1e6d88a7df6fe50b00613cac8feb264d1140fb0ac734c3fb61d9f13ad52"
       },
       {
         "path": "favicon.ico",
@@ -95,7 +95,7 @@
       {
         "path": "features.html",
         "bytes": 13819,
-        "sha256": "af7b28e5887a8cee405a79cd9cc8205f81d1b8b460ac041704bb3f7a868eb565"
+        "sha256": "d3db602b7c763f6aba032a8b988084154e2a9a85bf666fb1525a1eb9e5485986"
       },
       {
         "path": "footer-manifest.json",
@@ -104,13 +104,13 @@
       },
       {
         "path": "game.html",
-        "bytes": 112958,
-        "sha256": "a443656babef9aacd2b178cb9da2fdba44b6ef5c2b15c36b8878be854b5daed3"
+        "bytes": 113093,
+        "sha256": "aba82651638b74cc3581eb928deabe72af72f58fc44e4a4107a44e38847b691a"
       },
       {
         "path": "how-to-play.html",
         "bytes": 8526,
-        "sha256": "c8489760d5a6416382f3f9f2856263ba963cfb6a3fd1d009b670d38197263145"
+        "sha256": "0c734eb44d4aca70f0d864e0dc3c8c95117d24867c462224ddace55dc40a3752"
       },
       {
         "path": "images/apple-touch-icon.png",
@@ -175,7 +175,7 @@
       {
         "path": "index.html",
         "bytes": 21726,
-        "sha256": "020846135228cf2d126b275a65926541c64d9714474e18591090d4e4d30a8f61"
+        "sha256": "51fbf99fd4c9cd1b405b9bb4e5398a3f9201685fdc3705cb88e49e8de96735df"
       },
       {
         "path": "lib/achievements.js",
@@ -214,8 +214,8 @@
       },
       {
         "path": "lib/apiContract.js",
-        "bytes": 8552,
-        "sha256": "a1f68da96343979dfd79f4223811211f0c07c3d4a2c506aa06448d043ae1293e"
+        "bytes": 8674,
+        "sha256": "a05805bd8e25ca2ccd68e6a197912d3dcd6d196a5aa8d456fa90657e559ae3d9"
       },
       {
         "path": "lib/appCore.js",
@@ -584,8 +584,8 @@
       },
       {
         "path": "lib/simWatchDirector.js",
-        "bytes": 16139,
-        "sha256": "5434050d5f9ed8d5b71f5be4ccf0f3b958c545fe541c938c6c9506fe17334951"
+        "bytes": 16252,
+        "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00"
       },
       {
         "path": "lib/simWatchPlayback.js",
@@ -596,6 +596,11 @@
         "path": "lib/simulationCheckpoints.js",
         "bytes": 5298,
         "sha256": "f371488ebc68a78a1350e01320bfbbcc5ce735dd6c4621ecfbd2714b178d6eca"
+      },
+      {
+        "path": "lib/situationalCallsPanel.js",
+        "bytes": 4081,
+        "sha256": "630cf0715481a00d2e6fb41ba370eba8c76ccf252a90f9077471b0f298c026ca"
       },
       {
         "path": "lib/spreadPredictions.js",
@@ -634,8 +639,8 @@
       },
       {
         "path": "lib/tabOverview.js",
-        "bytes": 69968,
-        "sha256": "24617af64747af98534fb7a19ddf95df427d21d482b3f440820ab8f4448e6e6f"
+        "bytes": 70154,
+        "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
       },
       {
         "path": "lib/tabRoster.js",
@@ -714,18 +719,18 @@
       },
       {
         "path": "precache-manifest.json",
-        "bytes": 17671,
-        "sha256": "72a35e27c11d01aa446d56cdb191fefb98e06c2c16d25272fb2af91203ff4ca5"
+        "bytes": 17833,
+        "sha256": "f6dd08fa6414bcbe6c00a0fdbfa2b4cca82bd891ebd2f4bdc3bb0432fee54ae4"
       },
       {
         "path": "press.html",
         "bytes": 10946,
-        "sha256": "991e3f7f39ca882dad5acad5de652454751629e80c4d4fc848d7b2fe9fddbc60"
+        "sha256": "6a835db22c6d7fd77ce9b11e46c433df7f921c006dd6c08efccd609372973b8e"
       },
       {
         "path": "privacy.html",
         "bytes": 7429,
-        "sha256": "638d8e28a4aeaa1780d1ed6c18be231b27dac547e0a72b5f73ef8f1518a1d7ae"
+        "sha256": "a43f864c5827e9d1d72fdc8833fe27e373c2c574468901e2f34951017a985f96"
       },
       {
         "path": "public-identity.json",
@@ -755,7 +760,7 @@
       {
         "path": "roadmap.html",
         "bytes": 6313,
-        "sha256": "4624e3f9e20c87bf16a39833a8232406d77fdcd4f5543fecdecf5e9e6afdc0f9"
+        "sha256": "197751262e28678423eff7a6b182f51833bb609f2a7e6212fe57778d7830299a"
       },
       {
         "path": "robots.txt",
@@ -775,7 +780,7 @@
       {
         "path": "simulation.html",
         "bytes": 11282,
-        "sha256": "e65efcb6f3221348b5bc29675ce67fa44ba101080554ac8c0f9e46b24056c8a6"
+        "sha256": "34d0b2c78e08a27c4404d0a44ccbc161503d5c9fef7381e1c6cc8e3c8ff9ca33"
       },
       {
         "path": "site.11e8faac8d.css",
@@ -790,7 +795,7 @@
       {
         "path": "sitemap.xml",
         "bytes": 1844,
-        "sha256": "8132f0cfc0a0d6ff654b1d8f7181ea9d4fb706de6ef03866cb95f9fc2b91c12c"
+        "sha256": "4c1f679180b59affe80c65626adac112271059d41ac3838f1846b185ef906f29"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
@@ -814,8 +819,8 @@
       },
       {
         "path": "src/app/api/localApiRuntime.js",
-        "bytes": 94808,
-        "sha256": "fb881a3a612361b7f07d1af9657d85166779675dc374cb53dc3ee7a3d3818e32"
+        "bytes": 95310,
+        "sha256": "a311fa96c024ff63b413026ee285111f259b34bc9a2eee00ad5ed6aef2beb293"
       },
       {
         "path": "src/config.js",
@@ -899,8 +904,8 @@
       },
       {
         "path": "src/engine/aiTeamStrategy.js",
-        "bytes": 12804,
-        "sha256": "88c00c8b4cafda9a18976f846c7937d43d55464dee0618ca52137786ca33f134"
+        "bytes": 13834,
+        "sha256": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020"
       },
       {
         "path": "src/engine/architectFocusReview.js",
@@ -974,8 +979,8 @@
       },
       {
         "path": "src/engine/gameSimulator.js",
-        "bytes": 78566,
-        "sha256": "d58390cd5cf1f1f9daca5d012962ad014f1d56f1eabfdb33936202b4073696d3"
+        "bytes": 79747,
+        "sha256": "2d035c0e4d2b7562c172953dcf767dcbf1c79eb20291f81f3ec7b443cb533961"
       },
       {
         "path": "src/engine/gmArchetype.js",
@@ -1034,8 +1039,8 @@
       },
       {
         "path": "src/engine/playCalling.js",
-        "bytes": 4918,
-        "sha256": "c17ba6492f97bcc7aea90becb1c08a16a4ea5ad3384ade68ab22fae324c2df73"
+        "bytes": 5136,
+        "sha256": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23"
       },
       {
         "path": "src/engine/playerAgentAI.js",
@@ -1083,6 +1088,11 @@
         "sha256": "79ddd4566498cac9d7eb8384365f08e7dbe5e0fff0a68cefa328ea2d62a2cf17"
       },
       {
+        "path": "src/engine/situationalCalls.js",
+        "bytes": 3887,
+        "sha256": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db"
+      },
+      {
         "path": "src/engine/speedrunChallenge.js",
         "bytes": 3881,
         "sha256": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb"
@@ -1114,8 +1124,8 @@
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 352681,
-        "sha256": "a345202a4f62f750bc5916f1c1827b389a1f6f9c7bbfa2cdd385e78bcca42117"
+        "bytes": 355009,
+        "sha256": "7b1f5cca343f7b20b5739cb4d001089a65e7fe24ec416da435e70e49d68feda3"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
@@ -1134,8 +1144,8 @@
       },
       {
         "path": "src/runtime/franchiseAuthority.js",
-        "bytes": 10557,
-        "sha256": "d3011841d3aaf6ff3ad0f31540feede534a6efcee6af40a8d3f1c5a081d43c9f"
+        "bytes": 10648,
+        "sha256": "805662347b693f1eaa2e3666614a1390a9953b7642d4aa9d84ddc67e3f7c7f94"
       },
       {
         "path": "src/runtime/handlers/architectThesisHandler.js",
@@ -1275,37 +1285,37 @@
       {
         "path": "stats.html",
         "bytes": 8090,
-        "sha256": "e32c1fccfa79bbfb206e03b645ba04fc066e683306bd0a852258960957b520ef"
+        "sha256": "392b2bdc3f5c243cd8e293990a10149081f0678231c21477a31daa275bc3eebf"
       },
       {
         "path": "status-archive.html",
-        "bytes": 22394,
-        "sha256": "8958d8d3c88335c005be509d19d80091ef37fbbe675b5ed2bdb6fef92aa49d67"
+        "bytes": 23230,
+        "sha256": "386cb67134826e1fecc1790d2bf24920160880bd477cb8b94a7fbb69232e37fa"
       },
       {
         "path": "status.html",
-        "bytes": 9377,
-        "sha256": "20c84dc556b4d310b16e5ca1a7c4bfa36925d0d40bbce9061fa7f392ff6badb5"
+        "bytes": 8639,
+        "sha256": "4204644e01b9726c3b5eed621d7887608decc34c3fe5d72de50923045e4d3fae"
       },
       {
-        "path": "styles.20dac9adf9.css",
-        "bytes": 211932,
-        "sha256": "20dac9adf92b7d82d45273e896591e738bd4e8eaa85fc01e2cd9590d41d9fe2c"
+        "path": "styles.b8e154d291.css",
+        "bytes": 212862,
+        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
       },
       {
         "path": "styles.css",
-        "bytes": 211932,
-        "sha256": "20dac9adf92b7d82d45273e896591e738bd4e8eaa85fc01e2cd9590d41d9fe2c"
+        "bytes": 212862,
+        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
       },
       {
         "path": "sw.js",
-        "bytes": 9478,
-        "sha256": "a86b2b0c46a12d122da1f69ca863e5830916d02db128cff58d454c5f2d7789a3"
+        "bytes": 9546,
+        "sha256": "9860f458e4e3100f06e2af990be4d6855faae581ddd2905193962fb37b8a1e94"
       },
       {
         "path": "terms.html",
         "bytes": 6025,
-        "sha256": "c9616e7d03a86565da34630f80fef8c7d51e4a5feb649144e7a63965c5a0ac22"
+        "sha256": "74726d11c99ad2854fa4cebea664d4aa146519dcc90c828c4cf76597882e75dc"
       }
     ],
     "exclusions": [
@@ -1314,15 +1324,15 @@
       "edge-policy-receipt.json"
     ]
   },
-  "artifact": "static responsive-evidence:892f0480f6a478928668ec6a11b769d4e5e3ecc30bd9de20a1c5328078c9d61c",
+  "artifact": "static responsive-evidence:54fa79c2796c10fea189a266a53ed3e9ee899a0281d8c643a60c7f6c73ea622b",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "s114-desktop-game-overview-dark.png",
-      "sha256": "0612177915620a6ef39093b3192fa9845d8761c70c4a3c8f31fa01705897f477",
+      "file": "s115-desktop-game-overview-dark.png",
+      "sha256": "466c48cfef949fa7e89b2e149c700909420d4ff33eb90fe66edd179e24ac2036",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1331,8 +1341,8 @@
       "page": "Franchise Desk, first-season contract, and Front Office Advisor"
     },
     {
-      "file": "s114-desktop-game-overview-light.png",
-      "sha256": "75d82eff21e6330e419c523d87c3a0aa66bf435ca35b59616ea7543a8aca89aa",
+      "file": "s115-desktop-game-overview-light.png",
+      "sha256": "0f197729abcbd7df582722f05c78a21e3dbc4f1d958d102a76981b3fd71423fc",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1341,8 +1351,8 @@
       "page": "Franchise Desk, first-season contract, and Front Office Advisor"
     },
     {
-      "file": "s114-desktop-game-league-dark.png",
-      "sha256": "812228149b29e965990c7127ef56f76e0f516064bd00dc0ae656560f262b0bf8",
+      "file": "s115-desktop-game-league-dark.png",
+      "sha256": "2d3b79d45a8b26f9a9d1838c3ba8c8a4656d196a861cf07f0da36eddbbcf8a7a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1351,8 +1361,8 @@
       "page": "League standings and season navigation"
     },
     {
-      "file": "s114-desktop-game-league-light.png",
-      "sha256": "41b03bfa194f67d3f2eedef0d1befecf828b461e88417fa77d221c1ee454c9ed",
+      "file": "s115-desktop-game-league-light.png",
+      "sha256": "b7a641984683d5a2b39267c8edd6036579e1a78523fe82842cdd4f8960f35671",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1361,8 +1371,8 @@
       "page": "League standings and season navigation"
     },
     {
-      "file": "s114-desktop-game-roster-dark.png",
-      "sha256": "77e10428fe0f6426c2754b26d4fae543be487d13a1e9a74854d4b76f8ccba613",
+      "file": "s115-desktop-game-roster-dark.png",
+      "sha256": "2dd9a7b94eb9150fbb3f2b939f8eed0c6e912c97f5c7bd9346e9c2b81b83cf5b",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1371,8 +1381,8 @@
       "page": "Team workspace roster mode"
     },
     {
-      "file": "s114-desktop-game-roster-light.png",
-      "sha256": "5e348f05c961fb8855ec1fcf37c807d5904e193381db620192b0bb1ccc3c0f41",
+      "file": "s115-desktop-game-roster-light.png",
+      "sha256": "bd16ea15fdc9570305bf9cc1dd5c88ec5adaa153ea2abd2b6312eef01f8d43f9",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1381,8 +1391,8 @@
       "page": "Team workspace roster mode"
     },
     {
-      "file": "s114-desktop-game-depth-dark.png",
-      "sha256": "6e5fd6151aa4e8f62bec4d3716440f2deb7911927ad25f1820f494abfff63578",
+      "file": "s115-desktop-game-depth-dark.png",
+      "sha256": "9fc27d4088ee125f81b57aaf7156a4faaf0ec66a2ad4e1448e57115625529c08",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1391,8 +1401,8 @@
       "page": "Team workspace depth mode"
     },
     {
-      "file": "s114-desktop-game-depth-light.png",
-      "sha256": "61e0517f18d2ecf178cec0314f5a99ff99d63597560d63fb94993e7ddf57cd25",
+      "file": "s115-desktop-game-depth-light.png",
+      "sha256": "21804a1c245fa3c70db1916172b650ce791d0b77161b2398e6abcbda80cfb85d",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1401,8 +1411,8 @@
       "page": "Team workspace depth mode"
     },
     {
-      "file": "s114-desktop-game-trades-dark.png",
-      "sha256": "277f248da59f7f6e2d2b45e070ec52e94b3e6ef56034309bda9ae0007b0798a3",
+      "file": "s115-desktop-game-trades-dark.png",
+      "sha256": "dbcad83df1c43c7fba4b705b949c7c92075348ccc688e500603c7f89f24b8248",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1411,8 +1421,8 @@
       "page": "Trade market and club identity"
     },
     {
-      "file": "s114-desktop-game-trades-light.png",
-      "sha256": "ff95cbb4de6230e1acbb6553136bbcf51fdd424b3ad73e41a4edada269e79f20",
+      "file": "s115-desktop-game-trades-light.png",
+      "sha256": "67db0dd4f1ac7302ed370d645ca4944860d8ffa9cb23d2660b4ad0c2e2166130",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1421,8 +1431,8 @@
       "page": "Trade market and club identity"
     },
     {
-      "file": "s114-desktop-game-dialog-dark.png",
-      "sha256": "039846d77148de8945b2ceb5dbd6ecb8d6188ff78c67b563d2445ccb2d0ecef5",
+      "file": "s115-desktop-game-dialog-dark.png",
+      "sha256": "4764783f1e17671a24309db21332ab84fcc7f631acd710ddb3a871db1de68a73",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1431,8 +1441,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s114-desktop-game-dialog-light.png",
-      "sha256": "ab406fc90c5d27b0f73c5f40a6e64dd40567baa49690018b8753307ef77a3c40",
+      "file": "s115-desktop-game-dialog-light.png",
+      "sha256": "55d1daf88b90ff0117567ee8e3bb15dbfecc38c54a14a77ae0668cf210d7c6d2",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1441,8 +1451,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s114-desktop-tutorial-skip-dark.png",
-      "sha256": "89f6a0c714dbcdd56c8c06a726372302b5c03df5502b68d4e9412340935fe207",
+      "file": "s115-desktop-tutorial-skip-dark.png",
+      "sha256": "f06ed785744a5e33446c944dd20784e614e0c6e01ce1481adba12880f85e13d5",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1451,8 +1461,8 @@
       "page": "Opening Contract above the mobile deck; ordinary Skip action"
     },
     {
-      "file": "s114-desktop-tutorial-skip-light.png",
-      "sha256": "e5eb30c15031077836c59d46554e477e6b3d287e6b3f85b0c27fd913be5aa57e",
+      "file": "s115-desktop-tutorial-skip-light.png",
+      "sha256": "dfd7e6560016de8cd99ffa0487db4ff39b664acb9028b3ae2fe14716def03fd3",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1461,8 +1471,8 @@
       "page": "Opening Contract above the mobile deck; ordinary Skip action"
     },
     {
-      "file": "s114-desktop-tutorial-identity-dark.png",
-      "sha256": "254f63fc98a4bd3eb51e5ec0210fc86c0cb6ab6299bbec9c78fd488f6e976871",
+      "file": "s115-desktop-tutorial-identity-dark.png",
+      "sha256": "a2afd65a54e81895de1965bb5ba73ed437210f334fdaeffd20df9e29020a805f",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1471,8 +1481,8 @@
       "page": "Opening Contract identity choice under production policy"
     },
     {
-      "file": "s114-desktop-tutorial-identity-light.png",
-      "sha256": "2d717711d7b3bfa11a6e0bb1ed1fc2fd47cb00ea83a56c69d84ca010e24e5596",
+      "file": "s115-desktop-tutorial-identity-light.png",
+      "sha256": "68c6c3c3664d8922ad7ad7069008fe4f408f4735c5e4ddcc35d60391084a38e9",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1481,8 +1491,8 @@
       "page": "Opening Contract identity choice under production policy"
     },
     {
-      "file": "s114-desktop-tutorial-pressure-dark.png",
-      "sha256": "9a8d4595e6ffa01a73169de1156f77c3bdff754021d2e13fb5db3904ac8f1aa3",
+      "file": "s115-desktop-tutorial-pressure-dark.png",
+      "sha256": "95c9631e651a1d6f04f1a82b5f58c2eb27c6ec2a4194e676d58a5961d85ee483",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1491,8 +1501,8 @@
       "page": "Opening Contract pressure choice under production policy"
     },
     {
-      "file": "s114-desktop-tutorial-pressure-light.png",
-      "sha256": "24b479985dea4066b68d4def60546f43c7ca5b5d5c167c32d429196564a3a03d",
+      "file": "s115-desktop-tutorial-pressure-light.png",
+      "sha256": "7c9716b903bed7019c12ba1e3781f7839172a06057a43667acb82dd894a58095",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1501,8 +1511,8 @@
       "page": "Opening Contract pressure choice under production policy"
     },
     {
-      "file": "s114-desktop-tutorial-first-call-dark.png",
-      "sha256": "e8a4e0441ce4d555cb1a396690d445d8cac44d5ba99f7f589ce26b4b5ea90a8b",
+      "file": "s115-desktop-tutorial-first-call-dark.png",
+      "sha256": "f65df44a5679f831f8983ed59450491fac53746ad1c3f751e6e7a75a4cd557a9",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1511,8 +1521,8 @@
       "page": "Opening Contract first call under production policy"
     },
     {
-      "file": "s114-desktop-tutorial-first-call-light.png",
-      "sha256": "fca20ece2b3d29d9202b46a9ec3814af8a1a1e32d9f336c79a10847c3549a41f",
+      "file": "s115-desktop-tutorial-first-call-light.png",
+      "sha256": "4eae9de89fb9c30bf3388574b7c40852b6868c53f486262adb9b18832d424167",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1521,8 +1531,8 @@
       "page": "Opening Contract first call under production policy"
     },
     {
-      "file": "s114-desktop-tutorial-receipt-dark.png",
-      "sha256": "d63c2142bc8ca3cb2a3f39408f92c565973f148ece186d3d65062972d3e765c3",
+      "file": "s115-desktop-tutorial-receipt-dark.png",
+      "sha256": "23bdb54e39d7e70089f16dc5a7fa9500a417fe22dbb3b4b3d96e5a1a604de152",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1531,8 +1541,8 @@
       "page": "Committed Opening Contract receipt under production policy"
     },
     {
-      "file": "s114-desktop-tutorial-receipt-light.png",
-      "sha256": "cd74d330346dffd0f5cc5bcd5bf982e24d132dbb5d9c4ef391b1b6c490570210",
+      "file": "s115-desktop-tutorial-receipt-light.png",
+      "sha256": "73aa7ef0cf78ff55f8ce2d833062a65701ed6bc639eb73533b839e7fceef1da1",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1541,8 +1551,8 @@
       "page": "Committed Opening Contract receipt under production policy"
     },
     {
-      "file": "s114-desktop-advisor-dark.png",
-      "sha256": "e7429c1f2ce26d0550eee1343c2c69d3f5f77f2983f22c36baac037aa4a1f250",
+      "file": "s115-desktop-advisor-dark.png",
+      "sha256": "ab87a603ac3260c74fb6bc1e702f588e089844680a11481436146fd4476fbd2f",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1551,8 +1561,8 @@
       "page": "Styled Front Office Advisor under production policy"
     },
     {
-      "file": "s114-desktop-advisor-light.png",
-      "sha256": "cd12bca3f3767a2b67a1161be7b2fb0331756562e4f5633a2e3f9e0b48ee3344",
+      "file": "s115-desktop-advisor-light.png",
+      "sha256": "c631837a63156a4cb595e97c1174236c26040ded09da5cc33804997545d51c2a",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1561,8 +1571,8 @@
       "page": "Styled Front Office Advisor under production policy"
     },
     {
-      "file": "s114-desktop-dynasty-timeline-dark.png",
-      "sha256": "bef3158df5bb4f2670ecdff930a2b0fc8e704977bdd90b916062677c9a5d7c8e",
+      "file": "s115-desktop-dynasty-timeline-dark.png",
+      "sha256": "cc1ca0ed631c906be58cf46bf30e03079ddea796b74e9e27ce08bd7fbb1f1b0f",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1571,8 +1581,8 @@
       "page": "Theme-aware dynasty history fixture under production policy"
     },
     {
-      "file": "s114-desktop-dynasty-timeline-light.png",
-      "sha256": "36c5aa7d58aac57d410c3df23171c566b7ecc94ffc5990d08d3f263bacb68206",
+      "file": "s115-desktop-dynasty-timeline-light.png",
+      "sha256": "96836848c1fc8eae6a3ee2c87478ac644222fb8612fb5629d01b73dda23cf2f2",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1581,8 +1591,8 @@
       "page": "Theme-aware dynasty history fixture under production policy"
     },
     {
-      "file": "s114-desktop-first-debrief-dark.png",
-      "sha256": "fd4c75eaeff403bdaefc6cee1a8b8dd855573c8161014a8e008f340fcdfbc804",
+      "file": "s115-desktop-first-debrief-dark.png",
+      "sha256": "c3189e5561879840093632df338b792984c66cb5a4ff29709e49b7c074bca21f",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1591,8 +1601,8 @@
       "page": "Optional first-debrief feedback under production policy"
     },
     {
-      "file": "s114-desktop-first-debrief-light.png",
-      "sha256": "2150876fabe86bd70a23e38ebca9436a889a8f33588b7e17670ce3d4961a5aef",
+      "file": "s115-desktop-first-debrief-light.png",
+      "sha256": "16a80acaa9bb7431b20c937c7d45e8854c48277f5ca97b58b354e08062cd3fb4",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1601,8 +1611,8 @@
       "page": "Optional first-debrief feedback under production policy"
     },
     {
-      "file": "s114-desktop-moment-card-dark.png",
-      "sha256": "6cd770dab70a40591ba8f6ad1121b05eb51b996c11bac3b2e2d7ac6111e622ab",
+      "file": "s115-desktop-moment-card-dark.png",
+      "sha256": "675b0391f944dda21404ac08dced1a310a375c932bd52a67b1c107c17c62706f",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1611,8 +1621,8 @@
       "page": "Moment share control under production policy"
     },
     {
-      "file": "s114-desktop-moment-card-light.png",
-      "sha256": "661edf3a65aa1fcc2a548f4fed1a82c3749824ee3be8ffcca55b117bd3b68f05",
+      "file": "s115-desktop-moment-card-light.png",
+      "sha256": "5db58ea461a3d7f9824bedd14922b40c245fc4005901a4d0f6319ec28c02d90f",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1621,8 +1631,8 @@
       "page": "Moment share control under production policy"
     },
     {
-      "file": "s114-desktop-return-digest-dark.png",
-      "sha256": "ff102f76d191d53f599659662710997f8af0e360008a5b1491a4c03ddc163ecc",
+      "file": "s115-desktop-return-digest-dark.png",
+      "sha256": "d7e7aa1099adeb13306b49ff136de027ec59cfa31f050267291f47f75a410ad0",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1631,8 +1641,8 @@
       "page": "Return-session digest under production policy"
     },
     {
-      "file": "s114-desktop-return-digest-light.png",
-      "sha256": "7c429e937e066acd43ca1c5fd5ee0b4e212955eb186ea4cdcb0fd118681ee749",
+      "file": "s115-desktop-return-digest-light.png",
+      "sha256": "21fc407f07ac755d0b625668c96776a16f5cf635dd5dd8e21f99e6206349e5ac",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1641,8 +1651,8 @@
       "page": "Return-session digest under production policy"
     },
     {
-      "file": "s114-desktop-cap-pressure-dark.png",
-      "sha256": "ae40039b4027d0e65e796d504414e60e075f3fc5c670ee03429547e371edbcf1",
+      "file": "s115-desktop-cap-pressure-dark.png",
+      "sha256": "dd07c427b8acf5071d1f593d3d4ef5a812bc7c5f77d7d9cec445b07bfcb83461",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1651,8 +1661,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s114-desktop-cap-pressure-light.png",
-      "sha256": "add990f15e746b9d2b1d0ee9c8ffc64352cd5a199277e67332dcf907f124deaa",
+      "file": "s115-desktop-cap-pressure-light.png",
+      "sha256": "9f21b3d47538f5f2adc900750609621e33aa1950dd444c8006fc3e796106b2c7",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1661,8 +1671,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s114-desktop-waiver-identity-dark.png",
-      "sha256": "e592dc49a14b7bb9353e8c11e61d4426d9a0cf2c88272124c83517e804252b43",
+      "file": "s115-desktop-waiver-identity-dark.png",
+      "sha256": "e0f66cfa97771b7799f617219c26c9a36fbe64cad116cd2ff7c5e5c0c942f166",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1671,8 +1681,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s114-desktop-waiver-identity-light.png",
-      "sha256": "fe5b9d7cca33a47d403123190bbcedeca4d2eafe611aa09011b309a7892966a3",
+      "file": "s115-desktop-waiver-identity-light.png",
+      "sha256": "b3170b05dfa72708b4bc4ccaf0b1695beb4fefb4135ddf2def9b4a51a2cf0d71",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1681,8 +1691,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s114-desktop-franchise-legends-dark.png",
-      "sha256": "9b0f8c645c49d72e8dc9257ccce26bf6385a8078942cea1eae2e5f0bcefd27df",
+      "file": "s115-desktop-franchise-legends-dark.png",
+      "sha256": "a10bb72aab0c2905db7edd6c025e4da635f71696490ee1f009042439380e954b",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1691,8 +1701,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s114-desktop-franchise-legends-light.png",
-      "sha256": "1c7ef5559c48a472b665735451c77efe70aed2c5bd0860a0f3f3ef72ca9ba560",
+      "file": "s115-desktop-franchise-legends-light.png",
+      "sha256": "5d4d1b23b0fe22b57ef0b88c33625a8da70affc3e3b8da5dc61254bf3d5f1354",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1701,8 +1711,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s114-desktop-gm-persona-dark.png",
-      "sha256": "8452adbc0ebb316dabbf3268836ff61b8cf6d3a6c113de68221ad210fded1842",
+      "file": "s115-desktop-gm-persona-dark.png",
+      "sha256": "7893b78ca28044e297987d05c151ded395a50f28da308d78897ddae2d2ee2346",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1711,8 +1721,8 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s114-desktop-gm-persona-light.png",
-      "sha256": "5ab9162ade39ad7ce145e80da6a65d6a53ba1614e3d5bda4834ca4237e8339b1",
+      "file": "s115-desktop-gm-persona-light.png",
+      "sha256": "fd3395bd2b4508942f1e7c84e00c6960cf985926271165ebc50d8df3296edcac",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1721,8 +1731,8 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s114-desktop-trophy-road-dark.png",
-      "sha256": "b5e2566dd509f43e55c96e5fea684f92a675dfc4a8a67a3074e993ac0fdeff00",
+      "file": "s115-desktop-trophy-road-dark.png",
+      "sha256": "c9bedaf6997c6f8f68a64c29fdc7fb307b7666267792cacfbb45226d5d9c90ce",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1731,8 +1741,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s114-desktop-trophy-road-light.png",
-      "sha256": "52b87c029323e972bbc91730c91a440c977fdadb841415b76f0d89e1c74d1d95",
+      "file": "s115-desktop-trophy-road-light.png",
+      "sha256": "679a97ca39d0e2a1a8a96ed55e2499b65d4f029078eb0a979aa24c972b67086d",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1741,8 +1751,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s114-desktop-sim-watch-reel-dark.png",
-      "sha256": "37d6c5d88b46630f84f42575bf626abd7390b988fe346b12e2633d18d8b16124",
+      "file": "s115-desktop-sim-watch-reel-dark.png",
+      "sha256": "46c648e8f0bfae94bd6551682cb2c6f515ccbd754ec5d9b0e722d5f189e633d3",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1751,8 +1761,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s114-desktop-sim-watch-reel-light.png",
-      "sha256": "48bdc587aa2f320b466f5f741cadd8b30a901168cb12c6aa2b6279ca1fe4fd3e",
+      "file": "s115-desktop-sim-watch-reel-light.png",
+      "sha256": "0037531a3ab7f6ed1a75e12e833e616a2d2815ae98cd2fa710612cb95ef120fc",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1761,8 +1771,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s114-desktop-room-watch-dark.png",
-      "sha256": "1eceb6a44e563377a548eee8c57f9a5f576d9caf1975774f2df73348ecffcdac",
+      "file": "s115-desktop-room-watch-dark.png",
+      "sha256": "663fd9869ca6ba36dfe16e26391028f46df4963c8820d55e584b20f751a308f7",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1771,8 +1781,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s114-desktop-room-watch-light.png",
-      "sha256": "d1b50fd787ad7fb6941ea519e680134561362f579c8ae322f8b4544dbc11233c",
+      "file": "s115-desktop-room-watch-light.png",
+      "sha256": "6c0b4296a8c30f9e13d0f282dd9972f613a83e0c17bcb91769131c66e47c41a4",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1781,8 +1791,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s114-desktop-architect-cut-dark.png",
-      "sha256": "6106d3f6006f5420f7ed95caf5b8abd68c0684398716556b4edcf610a65b903f",
+      "file": "s115-desktop-architect-cut-dark.png",
+      "sha256": "74eeeff497c0d4f085d8c73b2374e74895e0f86a9c215759d3f362e467f57276",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1791,8 +1801,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s114-desktop-architect-cut-light.png",
-      "sha256": "fcf6c609fc02d0ac6edf6a5dc0af8c2066f35a7ffdb1ec82044c01df77b84d13",
+      "file": "s115-desktop-architect-cut-light.png",
+      "sha256": "fb4e317cbd31c2e97932f158537d07da4ebb7e682e1283821274fe1d3e509164",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1801,7 +1811,7 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s114-desktop-guide-modal-dark.png",
+      "file": "s115-desktop-guide-modal-dark.png",
       "sha256": "37aa4ac929e2355cae5939c8155603cd78c3daa25bae937860b7fa0fd619647d",
       "theme": "dark",
       "viewport": {
@@ -1811,8 +1821,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s114-desktop-guide-modal-light.png",
-      "sha256": "598ad628764fbb129395adc48433688e0ea3abec6c57b73d2e87b0a8bbd98114",
+      "file": "s115-desktop-guide-modal-light.png",
+      "sha256": "5906c1024ee2864b235d1512fc14c9f6cb7d87409b95961a175e6b36ff556c90",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1821,8 +1831,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s114-desktop-rival-coaching-dark.png",
-      "sha256": "e15c268d88feca43d5ee0b149dd5e1dcac4584df2ece494ed93b71a7ba104f83",
+      "file": "s115-desktop-rival-coaching-dark.png",
+      "sha256": "6ec0b5fc4100550591b9876b1cf035ce4fe9af2e46295bb84004abc86f2d4c0e",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1831,8 +1841,8 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s114-desktop-rival-coaching-light.png",
-      "sha256": "b70ad29e12397bc91854d793d7c3324d86df4913c6aa99dc724024a6452a92e5",
+      "file": "s115-desktop-rival-coaching-light.png",
+      "sha256": "5797ea55063cfa4af01c03f85af762f93faf1ee39df495ea3b49584120b079fc",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1841,7 +1851,7 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s114-desktop-decision-archive-dark.png",
+      "file": "s115-desktop-decision-archive-dark.png",
       "sha256": "25e60d720c5fc67f5916bde5952d1b398713b9efe76263cc3cf02836898e6eab",
       "theme": "dark",
       "viewport": {
@@ -1851,7 +1861,7 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s114-desktop-decision-archive-light.png",
+      "file": "s115-desktop-decision-archive-light.png",
       "sha256": "1112883a9317e1baf13f5417feeb25fc3ffa2b3932936a07a4f80db13bc3f95b",
       "theme": "light",
       "viewport": {
@@ -1861,8 +1871,8 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s114-desktop-co-gm-brief-dark.png",
-      "sha256": "e5d58f47a7761b375451bee74cf1918158a1f8d0908348f20cb243e4b8e672a1",
+      "file": "s115-desktop-co-gm-brief-dark.png",
+      "sha256": "a513a1d6bf50570d840d8b064b36fbd929b012f4630ba0c9be36c0101337400a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1871,8 +1881,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s114-desktop-co-gm-brief-light.png",
-      "sha256": "744db80124d7c4089f020a189844f7fd055b95777c5121cbb80ca789734346bc",
+      "file": "s115-desktop-co-gm-brief-light.png",
+      "sha256": "c9bb2fc549e662fffb66d82bf1ded3fa153e3eb9670324618c01ca92a6b0dd6d",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1881,8 +1891,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s114-desktop-prediction-receipt-dark.png",
-      "sha256": "cde560cba9181e1d2f9154a8c81e89e0c29cbd5953b269153afa898b9d3c0d74",
+      "file": "s115-desktop-prediction-receipt-dark.png",
+      "sha256": "53454bb8366631e8d1d06aecdc379cc4281b22ef075c7063c9b7a0576a1a5512",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1891,8 +1901,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s114-desktop-prediction-receipt-light.png",
-      "sha256": "7a0252ce597e060f82af3b8f703074a57e7468437c0f9f3cf9872170d577ceac",
+      "file": "s115-desktop-prediction-receipt-light.png",
+      "sha256": "4fd40d677f44dcdeec88da893eb340306c0db0afab328c1185975505d0b2bcc6",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1901,8 +1911,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s114-desktop-agent-negotiation-dark.png",
-      "sha256": "1172fe48169a3701ec633a5ededfc5a329b577f4c353062dfaae02cca380d217",
+      "file": "s115-desktop-agent-negotiation-dark.png",
+      "sha256": "89c9c964cd9421f4d290965823ef76e0929f261399eff810c85cd2145b82c8b8",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1911,8 +1921,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s114-desktop-agent-negotiation-light.png",
-      "sha256": "e5ce0a4b6f9d6b20b7f6a7815ce5acfcff5e10b2eac454c0f1cdb6467eaf974d",
+      "file": "s115-desktop-agent-negotiation-light.png",
+      "sha256": "a55674ae7bbe357055a8ee6d35b5d88bc8b39464ab29021bf6b510b77beea7dc",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1921,7 +1931,7 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s114-desktop-draft-trade-review-dark.png",
+      "file": "s115-desktop-draft-trade-review-dark.png",
       "sha256": "3adcd794bfcd43c9b8fbe48f714d21a29fd208aa6c8cbd0e25124b6ebaaf557c",
       "theme": "dark",
       "viewport": {
@@ -1931,7 +1941,7 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s114-desktop-draft-trade-review-light.png",
+      "file": "s115-desktop-draft-trade-review-light.png",
       "sha256": "daafb1a2041f54a5a185bf801fcee46bb8d22dad0b31da5fa21d940ac6df929b",
       "theme": "light",
       "viewport": {
@@ -1941,8 +1951,8 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s114-desktop-hof-ceremony-dark.png",
-      "sha256": "060bc7069ceba84c31c6c2e08be1e9586e5e74315a87c8e388d213cc4f2fc440",
+      "file": "s115-desktop-hof-ceremony-dark.png",
+      "sha256": "5103b8adf0e07cd74dad50451a59ed9e0d33d335ad33de22cd80726c4d90bf8d",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1951,8 +1961,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s114-desktop-hof-ceremony-light.png",
-      "sha256": "84c9e3940c43d813578746ef8c1bacc8d5590f4a9c96a7c11aff53d349778d3a",
+      "file": "s115-desktop-hof-ceremony-light.png",
+      "sha256": "c4ccdf78595cf62d828d3b7eb668f4b420cb0232552d7aa8b4fa9d618f92d251",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1961,8 +1971,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s114-desktop-architect-signature-dark.png",
-      "sha256": "2bda6a9432133e56dc12d9965679a3e5c058f08c67a916b77d4405bc799737d8",
+      "file": "s115-desktop-architect-signature-dark.png",
+      "sha256": "cf30f5d36c78d7dc9b8f8cedf25397dda9cbf538188d29bdd21c7a4233305248",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1971,8 +1981,8 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s114-desktop-architect-signature-light.png",
-      "sha256": "a093ec663ea29fa90547f061a81b8c65ec4cc89da989a3f033deb5709dd27265",
+      "file": "s115-desktop-architect-signature-light.png",
+      "sha256": "7d48bc7831a76d630a9f306e1da928f368eabaf4b2ea8a91c1320afcae343201",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1981,8 +1991,8 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s114-desktop-architect-objective-dark.png",
-      "sha256": "244491300e2a4f0a6c6336d8435c5ba7d9a1d577ffd38e1661c038589ae97270",
+      "file": "s115-desktop-architect-objective-dark.png",
+      "sha256": "10cf6413c72a311e66ee091d86b56486f4012adeed2827207359a15e414c177a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1991,8 +2001,8 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s114-desktop-architect-objective-light.png",
-      "sha256": "f0a4cd9436610104810ddd753a445c96ce6ae5f9e87735c10288154a7a54ed0c",
+      "file": "s115-desktop-architect-objective-light.png",
+      "sha256": "822e6269653f71bc50bb7eb4c62db8eff7db04b05c8fad3a2553156b0f34344a",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2001,8 +2011,8 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s114-desktop-exact-command-center-dark.png",
-      "sha256": "87e5d2495f2fa08708dfd8851a2c174bc2a83af10020b2a7d86f771cce267392",
+      "file": "s115-desktop-exact-command-center-dark.png",
+      "sha256": "4dc440706cb6cec801d7670aa5e7128a39c6ccb333c687a109a6f008a6f5d16e",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2011,8 +2021,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s114-desktop-exact-command-center-light.png",
-      "sha256": "2703d894ed340c42313ef0f9392c9c8695718aa8ccb6aadaf3c35db6f8542ef5",
+      "file": "s115-desktop-exact-command-center-light.png",
+      "sha256": "39758f4706b047a493d822b79db22db3a0b4e39daa8bee4abad726b3fd3e2e65",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2021,8 +2031,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s114-desktop-exact-command-target-dark.png",
-      "sha256": "2d50117f1788121a08958a3cb06031ea13f60c0d3b839159692f56c8fa8f513e",
+      "file": "s115-desktop-exact-command-target-dark.png",
+      "sha256": "6736e65cbde63a19b21941149ed5aaeac4a442d0c27bacf6cfedb81633f72fe0",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2031,8 +2041,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s114-desktop-exact-command-target-light.png",
-      "sha256": "b97c372e23ff53ade33148b76015701c3c40e3ac5a3cce3a786f3b5d95557c53",
+      "file": "s115-desktop-exact-command-target-light.png",
+      "sha256": "ce96fbe4d847aa0af12afa48e145b7bdd06813d4bdac69ff9557be87ace1eb57",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2041,8 +2051,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s114-desktop-facility-capital-dark.png",
-      "sha256": "6859f4a4737771c454519081a20dee624c7d7e284b4fb60ab96cf256461861e9",
+      "file": "s115-desktop-facility-capital-dark.png",
+      "sha256": "f26ead5d6a86c1b63ec3dc1b0c2dcc4d08e76d791086fac4609e5bdba2aeb767",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2051,8 +2061,8 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s114-desktop-facility-capital-light.png",
-      "sha256": "77683e30c37449320a15a46b52ff2af93a734db4371347334d99e1b355ab3c19",
+      "file": "s115-desktop-facility-capital-light.png",
+      "sha256": "3362b2dd9412f9685c45d78c5342dd47d7f1bdd5cd35091065fcc3debdbf6368",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2061,7 +2071,7 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s114-desktop-gist-authentication-dark.png",
+      "file": "s115-desktop-gist-authentication-dark.png",
       "sha256": "ae2c12ee9d51c8f2abdcd5c8754163acfc8711ecc4af4308829448503caa547a",
       "theme": "dark",
       "viewport": {
@@ -2071,8 +2081,8 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s114-desktop-gist-authentication-light.png",
-      "sha256": "fd65b29d46d30aa4ecaff7835fdeac6ef2f26fb99731af37d9079f6489090b6c",
+      "file": "s115-desktop-gist-authentication-light.png",
+      "sha256": "c9a3a2e95c2ccbd2e2cf18052aa5a800981559ad1af14bc0446091c697b62993",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -2081,8 +2091,8 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s114-mobile-game-overview-dark.png",
-      "sha256": "80601d679d79cdbadf1d27204f4b7091885c9a061d1f0d928be20e58774b5a9d",
+      "file": "s115-mobile-game-overview-dark.png",
+      "sha256": "f12a61eff619778baf71d71a6f4ee5b2a9cbe051d32b18c66071eced06d3c66f",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2091,8 +2101,8 @@
       "page": "Franchise Desk, first-season contract, and Front Office Advisor"
     },
     {
-      "file": "s114-mobile-game-overview-light.png",
-      "sha256": "19e253e1a900f84ded320bada047179f2096aad44f960f12f5b7ef640baf5809",
+      "file": "s115-mobile-game-overview-light.png",
+      "sha256": "d4b848feb926affa0fae0f9e1fb5fe84e09d79cb804e1e33e60dc01e821d2f56",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2101,8 +2111,8 @@
       "page": "Franchise Desk, first-season contract, and Front Office Advisor"
     },
     {
-      "file": "s114-mobile-game-league-dark.png",
-      "sha256": "4194f082e0a0bfea64cc00798439432f45fc2a764433ef172120a67f149967ed",
+      "file": "s115-mobile-game-league-dark.png",
+      "sha256": "2aaedfb8cb9e2cec08ed0466cf010ead84dda851fa488febaa18ec55e8a5f1d6",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2111,8 +2121,8 @@
       "page": "League standings and season navigation"
     },
     {
-      "file": "s114-mobile-game-league-light.png",
-      "sha256": "d0171d4acad2cd28c7d3fae8720860bb332b57b94680daa18bc3ba2566cc66ce",
+      "file": "s115-mobile-game-league-light.png",
+      "sha256": "19d712baac01b28f9dd97e9bbaaae7bb104f43ed7db27463d4072d4bd996cb99",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2121,8 +2131,8 @@
       "page": "League standings and season navigation"
     },
     {
-      "file": "s114-mobile-game-roster-dark.png",
-      "sha256": "7fbe19fda50fe0507cbd0ec6d8b1ca3fe859151f38aa662c0e203fe5df9584ab",
+      "file": "s115-mobile-game-roster-dark.png",
+      "sha256": "1988a4831807632b1616b8d1232ae09b4bfb9a9b0fa2655b171961299c301f76",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2131,8 +2141,8 @@
       "page": "Team workspace roster mode"
     },
     {
-      "file": "s114-mobile-game-roster-light.png",
-      "sha256": "d2cca31d031cbff213756038212eec6df30d6c9c86a024ec4fd7a420e25127dc",
+      "file": "s115-mobile-game-roster-light.png",
+      "sha256": "a3c6060fd968cbe16fc4d63ada3a51a8e219af81b371beecde04a8790cdc60e9",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2141,8 +2151,8 @@
       "page": "Team workspace roster mode"
     },
     {
-      "file": "s114-mobile-game-depth-dark.png",
-      "sha256": "98a9487ea6e7e12c9f21f8a669c98bc6ae1164f36004695ce52478947bb6114f",
+      "file": "s115-mobile-game-depth-dark.png",
+      "sha256": "c61e3a1c0f6999b4e7d93098a6a3ce3e7149a3b1f4c887032f98c2e71c0ebae7",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2151,8 +2161,8 @@
       "page": "Team workspace depth mode"
     },
     {
-      "file": "s114-mobile-game-depth-light.png",
-      "sha256": "302f03df14418b2aba8c48d1a7cbec194c1eda5fa6b7962db156daa9aa52e3eb",
+      "file": "s115-mobile-game-depth-light.png",
+      "sha256": "04c76876cd5b58adb9c2cbd1c5770da899004391c6fad8d799779f04cdeccf59",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2161,8 +2171,8 @@
       "page": "Team workspace depth mode"
     },
     {
-      "file": "s114-mobile-game-trades-dark.png",
-      "sha256": "f5ae863f42c4b469a76112ce4cde5ec905ee71589630d50f0c906e6b3684d44a",
+      "file": "s115-mobile-game-trades-dark.png",
+      "sha256": "e967ad220d56bfaa7fd552c8f09c50c0d4c0e923665b37812188de0b5563c0f3",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2171,8 +2181,8 @@
       "page": "Trade market and club identity"
     },
     {
-      "file": "s114-mobile-game-trades-light.png",
-      "sha256": "fed1ad4fd7620933e9768e8d9593c8981db3594fc7121fa08ac880346d236144",
+      "file": "s115-mobile-game-trades-light.png",
+      "sha256": "7c6b9e518a088153a18250144187bb6ea98c765784a10666283f97fccfaf7126",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2181,8 +2191,8 @@
       "page": "Trade market and club identity"
     },
     {
-      "file": "s114-mobile-game-dialog-dark.png",
-      "sha256": "6a13b3ab0daf440ac099c9b70710a1131bcc6661e0e17c7f7df2d38fff2d277a",
+      "file": "s115-mobile-game-dialog-dark.png",
+      "sha256": "372b89eea5f5a32c1854cbd6f96aaa0cf43a5cedd975cd119432b3b0d132e344",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2191,8 +2201,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s114-mobile-game-dialog-light.png",
-      "sha256": "ab537976af20ef3cfe2cd2fb7d3ff1df84c86dadd28c0762b3a1d55872954d3a",
+      "file": "s115-mobile-game-dialog-light.png",
+      "sha256": "dc50da77b4060399157fa58b78baa583d154ef840ec9692b2f7431092315e4d7",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2201,8 +2211,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s114-mobile-tutorial-skip-dark.png",
-      "sha256": "3ba4fdb9b8eb95864e0de7362f3fc62e7e7e966e98f7bbb28820d78cdfa271a0",
+      "file": "s115-mobile-tutorial-skip-dark.png",
+      "sha256": "746594a9d08d51b99276849ffb29b1fe5d6ce97cb6f9cf2ce7db407009eaaa5b",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2211,8 +2221,8 @@
       "page": "Opening Contract above the mobile deck; ordinary Skip action"
     },
     {
-      "file": "s114-mobile-tutorial-skip-light.png",
-      "sha256": "c5f9f4a97c7c5afc3c1f0a70758dbfbaa41b9dcd0123a420d4432919470cdb34",
+      "file": "s115-mobile-tutorial-skip-light.png",
+      "sha256": "4dfd0b017084944032e2aa0c06de3eb9ce832924b5669777879d3ac6076e1d88",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2221,8 +2231,8 @@
       "page": "Opening Contract above the mobile deck; ordinary Skip action"
     },
     {
-      "file": "s114-mobile-tutorial-identity-dark.png",
-      "sha256": "dd8a47739051771559ecfa27931f7332e98b9862035a03abd586ba8659570ec5",
+      "file": "s115-mobile-tutorial-identity-dark.png",
+      "sha256": "358324800e3eb58862d5db9e77a6f9538280ea09b3b8148bb834fe521e7475d8",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2231,8 +2241,8 @@
       "page": "Opening Contract identity choice under production policy"
     },
     {
-      "file": "s114-mobile-tutorial-identity-light.png",
-      "sha256": "2cf1dc37de6ac44e8ceaa1acf1cc4f29f70c8c8b8cf88d9cd632d836e7fabb12",
+      "file": "s115-mobile-tutorial-identity-light.png",
+      "sha256": "8f1002a4cbe8c2d3057caa430e4085865d8e7274503812b003319af91e0bb0cf",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2241,8 +2251,8 @@
       "page": "Opening Contract identity choice under production policy"
     },
     {
-      "file": "s114-mobile-tutorial-pressure-dark.png",
-      "sha256": "8023806fb4bc077c594a7ddc9f2815bc4f7347435adc38aefb09b48f5aa9e7ff",
+      "file": "s115-mobile-tutorial-pressure-dark.png",
+      "sha256": "2b5bd10535ca54ac4b97c785c8f1bfe6fec1fcd66914cf78baa837ad5afe271e",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2251,8 +2261,8 @@
       "page": "Opening Contract pressure choice under production policy"
     },
     {
-      "file": "s114-mobile-tutorial-pressure-light.png",
-      "sha256": "43eba870cdea830bd6fc0d76f8a26e3841f475a7b4b82d8a6a54c34688311c41",
+      "file": "s115-mobile-tutorial-pressure-light.png",
+      "sha256": "3f9af035c272023c8e070e455bd2975ecd91753e230f0c106f0a4a841c5f631f",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2261,8 +2271,8 @@
       "page": "Opening Contract pressure choice under production policy"
     },
     {
-      "file": "s114-mobile-tutorial-first-call-dark.png",
-      "sha256": "c4eb82fd2d7612238db0eeca3559b9062356e6ae6c609050f09c9702ae522e9d",
+      "file": "s115-mobile-tutorial-first-call-dark.png",
+      "sha256": "d298ddcbbd532800d7e299955cf79418318a857bdfd1cbec8f79db5e0cfce15b",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2271,8 +2281,8 @@
       "page": "Opening Contract first call under production policy"
     },
     {
-      "file": "s114-mobile-tutorial-first-call-light.png",
-      "sha256": "8cf7b7357bd39ce9dbfc5dc52fc370dff1bfa972c319e4f76aea9610c41b2d3d",
+      "file": "s115-mobile-tutorial-first-call-light.png",
+      "sha256": "47848e8dba102e49dac5482730e1215e9046bef3c5d535431138367fb2d5a846",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2281,8 +2291,8 @@
       "page": "Opening Contract first call under production policy"
     },
     {
-      "file": "s114-mobile-tutorial-receipt-dark.png",
-      "sha256": "a2e8cee6b7bb60b575f3fae7a5d75be5aeaa407fb7803c6c268cf9662bb89156",
+      "file": "s115-mobile-tutorial-receipt-dark.png",
+      "sha256": "861f1d85b4f082c8392bbb3325bd73ef4848dff4e48fd094d639d8857a4b5472",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2291,8 +2301,8 @@
       "page": "Committed Opening Contract receipt under production policy"
     },
     {
-      "file": "s114-mobile-tutorial-receipt-light.png",
-      "sha256": "d3cf68cdb8d1cd9828fe6c69778210101bc77073d6dc92b18d55d9d841411073",
+      "file": "s115-mobile-tutorial-receipt-light.png",
+      "sha256": "f0e9a90524d91f3167628d21d9993ca36bf2d60413862bebea2a1c2861d86987",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2301,8 +2311,8 @@
       "page": "Committed Opening Contract receipt under production policy"
     },
     {
-      "file": "s114-mobile-advisor-dark.png",
-      "sha256": "2700d14e0b19adf277c5b20921e1d96ed981511c14ef8b2a901397c75af6d49c",
+      "file": "s115-mobile-advisor-dark.png",
+      "sha256": "f44c234ecfae201b603df4cf3fff851c189738b1318a4dddf32a1212e33f4bb7",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2311,8 +2321,8 @@
       "page": "Styled Front Office Advisor under production policy"
     },
     {
-      "file": "s114-mobile-advisor-light.png",
-      "sha256": "94431fc7b917033819863b235aa716d568a93cf5067c9a3c8c61817980c6eddc",
+      "file": "s115-mobile-advisor-light.png",
+      "sha256": "cabea957fc1b0c458f50c4318f2c744f0cf8b11638dd9e949189d91af1523739",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2321,8 +2331,8 @@
       "page": "Styled Front Office Advisor under production policy"
     },
     {
-      "file": "s114-mobile-dynasty-timeline-dark.png",
-      "sha256": "4e9be1eeef4e02351edaa23ad511e88cea75228794c09c246b2f134024756a7b",
+      "file": "s115-mobile-dynasty-timeline-dark.png",
+      "sha256": "f1c6e0cbb1d00169780d6a1db3069245625cfb5f884d5db2731dcc87a4609f4f",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2331,8 +2341,8 @@
       "page": "Theme-aware dynasty history fixture under production policy"
     },
     {
-      "file": "s114-mobile-dynasty-timeline-light.png",
-      "sha256": "a5d4270ac3752854acf946807864c54320e7825836852b4b7ba1426c623cb2fa",
+      "file": "s115-mobile-dynasty-timeline-light.png",
+      "sha256": "374badac3b37a63a84bf135df4ed89ae5df0b4b14ea0de960c298135db3c13b3",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2341,8 +2351,8 @@
       "page": "Theme-aware dynasty history fixture under production policy"
     },
     {
-      "file": "s114-mobile-first-debrief-dark.png",
-      "sha256": "12e5c7a207903b83b76e7d11d1a65ce0eeb252fae8fd6fb93245a008d9fe7b72",
+      "file": "s115-mobile-first-debrief-dark.png",
+      "sha256": "dcb7af969983b3a9a958920751dbac249ba749833a192cb58db98a3226a063da",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2351,8 +2361,8 @@
       "page": "Optional first-debrief feedback under production policy"
     },
     {
-      "file": "s114-mobile-first-debrief-light.png",
-      "sha256": "ea87e5e096dece00d7d32433d49c7021b371a177dc74eee7cf29f30cc5b6ca51",
+      "file": "s115-mobile-first-debrief-light.png",
+      "sha256": "3a3c7f70fbcc20fabfc58850740f207c8e6b7861d3118462edbf72bd298fe81d",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2361,8 +2371,8 @@
       "page": "Optional first-debrief feedback under production policy"
     },
     {
-      "file": "s114-mobile-moment-card-dark.png",
-      "sha256": "33c94a1fe9ac361abf0bb52a26b03d8ae5ca31279fa0cd0d4759b96f3c363480",
+      "file": "s115-mobile-moment-card-dark.png",
+      "sha256": "4f37b62459faa0fbf189a819210fbbf8bf2e67c57bb01277b1584adb5b80cabd",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2371,8 +2381,8 @@
       "page": "Moment share control under production policy"
     },
     {
-      "file": "s114-mobile-moment-card-light.png",
-      "sha256": "a5d4270ac3752854acf946807864c54320e7825836852b4b7ba1426c623cb2fa",
+      "file": "s115-mobile-moment-card-light.png",
+      "sha256": "374badac3b37a63a84bf135df4ed89ae5df0b4b14ea0de960c298135db3c13b3",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2381,8 +2391,8 @@
       "page": "Moment share control under production policy"
     },
     {
-      "file": "s114-mobile-return-digest-dark.png",
-      "sha256": "ee768a93a52ecee34e54fb42026d8463490314464bca96be18830412fa2f4a43",
+      "file": "s115-mobile-return-digest-dark.png",
+      "sha256": "9b07017ac78705e17be14aaa75073b5cfdbd65b62cdda52b7c03f8741557aa0b",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2391,8 +2401,8 @@
       "page": "Return-session digest under production policy"
     },
     {
-      "file": "s114-mobile-return-digest-light.png",
-      "sha256": "d8830bc88a0132f6a0cd7bb0fe8a8ba14cb25404b78b110a0f4ead7401c418f4",
+      "file": "s115-mobile-return-digest-light.png",
+      "sha256": "77eb6aa37f7aa1f71c48fef0485b3a91507353569b4c88bcefdf384179531ae2",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2401,8 +2411,8 @@
       "page": "Return-session digest under production policy"
     },
     {
-      "file": "s114-mobile-cap-pressure-dark.png",
-      "sha256": "73864de788127619b68db93d80c6cfaef0a0bfbae50523bee2ead12ddab4f688",
+      "file": "s115-mobile-cap-pressure-dark.png",
+      "sha256": "e0028a5364bb1bed8f05465474c56300f61416ec9bfa9c70a65cd7923b6e55fe",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2411,8 +2421,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s114-mobile-cap-pressure-light.png",
-      "sha256": "522f6dd97b1b46cbd59fb1db9a6225de30fbc0ca82815f4e86d20ec3543e2c84",
+      "file": "s115-mobile-cap-pressure-light.png",
+      "sha256": "5c05320be65e19db34f2a8b935c5eaf8827c267a0b506b4190dcd717a1dac091",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2421,8 +2431,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s114-mobile-waiver-identity-dark.png",
-      "sha256": "ebf8b5ba5c087bb79cfae98093f70482263bd5aa283d6d8384f8a9f85b27189a",
+      "file": "s115-mobile-waiver-identity-dark.png",
+      "sha256": "d76c111f50351583cb1f034a49f1e08c673fb399eb1b7fe7f5639035434a08b1",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2431,8 +2441,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s114-mobile-waiver-identity-light.png",
-      "sha256": "05f5cacd4b3a6ee7396d0c6247f28a7b061009d5bf0baebad1a08d735f328867",
+      "file": "s115-mobile-waiver-identity-light.png",
+      "sha256": "323a79828d8e91884a8db586b846184ee5f12e6d0fde8f863b85dfd2e1f09de2",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2441,8 +2451,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s114-mobile-franchise-legends-dark.png",
-      "sha256": "a65200f0f2bccd9363d28650f6e6ca3554cf95c90a7c608eae22aee0a7166ad7",
+      "file": "s115-mobile-franchise-legends-dark.png",
+      "sha256": "82e34531b9eaadb07f6309518e875264b19f8b13308414564fe9dc00eb64088b",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2451,8 +2461,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s114-mobile-franchise-legends-light.png",
-      "sha256": "9969c03f7a36910959a4b7605bb015d78235369d277736977d99151f8fdc8d84",
+      "file": "s115-mobile-franchise-legends-light.png",
+      "sha256": "80a0b0ac50489dd3a0f33a4f3af0c81e7b70ef769affe6ba98d1bd7f8ea5cdb6",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2461,8 +2471,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s114-mobile-gm-persona-dark.png",
-      "sha256": "88082c85341c70b862bcd621a3c16b58c7819da591c160cdd41fc17a2ad84cdb",
+      "file": "s115-mobile-gm-persona-dark.png",
+      "sha256": "b28894a2eda4c3aa2e21573e96e05e422fec4f10ac5045de64dc7066399b2106",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2471,8 +2481,8 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s114-mobile-gm-persona-light.png",
-      "sha256": "60fccb94e3b39f3ec9b11de8245cf7ba1b3656754792eb9a21ffa180ed92c959",
+      "file": "s115-mobile-gm-persona-light.png",
+      "sha256": "1f7234c03bb6d6968312c7b908f4216d321f0731a07ed82ae3904c1e6b00c9b7",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2481,7 +2491,7 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s114-mobile-trophy-road-dark.png",
+      "file": "s115-mobile-trophy-road-dark.png",
       "sha256": "eeb1fe8696462ee2a0b187dbbad1bcca954652cd676e187da023406b616b8d92",
       "theme": "dark",
       "viewport": {
@@ -2491,7 +2501,7 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s114-mobile-trophy-road-light.png",
+      "file": "s115-mobile-trophy-road-light.png",
       "sha256": "502f8824cc4f3ca0a79496be4a90d0944f30fa43909e47522f2dd460bb9783b5",
       "theme": "light",
       "viewport": {
@@ -2501,8 +2511,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s114-mobile-sim-watch-reel-dark.png",
-      "sha256": "3c555396ee50872ed1f0e7964583a150da151e4b379fc627b032c4755f4f23ee",
+      "file": "s115-mobile-sim-watch-reel-dark.png",
+      "sha256": "cf03f83c46b74a9b083ae78582783ac52393509cac4bfa4276a4ec190292d0a9",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2511,8 +2521,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s114-mobile-sim-watch-reel-light.png",
-      "sha256": "9b6dae1a969c643b0e4dd87865afd7b6bd4824d5590f0b8c5133c6731b35c1b7",
+      "file": "s115-mobile-sim-watch-reel-light.png",
+      "sha256": "1a6746b05ef27e9243f7d7d1d588b3f2f8e1b4351fc5beff5fe997926fa524d5",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2521,8 +2531,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s114-mobile-room-watch-dark.png",
-      "sha256": "0ed536220abf96e19c2ac9d6672025c969c557961aa1f2cdfadd55a6fe503565",
+      "file": "s115-mobile-room-watch-dark.png",
+      "sha256": "a92f8e4e939e8990cdaea03e71cce9e732ed8f4c70fa47726421ea08a30c453f",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2531,8 +2541,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s114-mobile-room-watch-light.png",
-      "sha256": "93d7372f3da2640f90cb001da0f98abfe81e0620c2c8da8ed099ef73b129cd45",
+      "file": "s115-mobile-room-watch-light.png",
+      "sha256": "03d30a0ee5644be9be6c4a8faa78f82d74eb8cae5a028a1b22d7f6069d3b39bb",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2541,8 +2551,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s114-mobile-architect-cut-dark.png",
-      "sha256": "be2452df49af8597634c801225d114c33b6a8a3e03795724f2538d911d00366e",
+      "file": "s115-mobile-architect-cut-dark.png",
+      "sha256": "b6841716a14a707e0155269266dad3d036d4ed77cb6dee8f50eda024db6e3870",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2551,8 +2561,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s114-mobile-architect-cut-light.png",
-      "sha256": "c66d94553f68440b15d62ca9862383a532cf18c5a7f34aa916bdadca0b8e3533",
+      "file": "s115-mobile-architect-cut-light.png",
+      "sha256": "4569cf39d0521255ad2bd04341f028165b062a074f414b05165972d89c1c3c75",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2561,7 +2571,7 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s114-mobile-guide-modal-dark.png",
+      "file": "s115-mobile-guide-modal-dark.png",
       "sha256": "ffb96bc953069d354462de0812d78858186d8ecd5f7dd8d08e24610dc9a54c31",
       "theme": "dark",
       "viewport": {
@@ -2571,7 +2581,7 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s114-mobile-guide-modal-light.png",
+      "file": "s115-mobile-guide-modal-light.png",
       "sha256": "43bbded98369e09c1a5de67c74b3abdfaa84ed48a32ff964b0fb0e6a0c076824",
       "theme": "light",
       "viewport": {
@@ -2581,8 +2591,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s114-mobile-rival-coaching-dark.png",
-      "sha256": "56ebcc2db43fba1fca815881aaf795fd0a6e255efee989f72a51a9fddc8b8a59",
+      "file": "s115-mobile-rival-coaching-dark.png",
+      "sha256": "d0450d36a35562f9c4886111d6998b30f560f5b2b312f88c2d9df254e1b555df",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2591,8 +2601,8 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s114-mobile-rival-coaching-light.png",
-      "sha256": "4da5a748047697a79d9ab38885bef17302a3b5855595865b0d5ff0351cbcb41b",
+      "file": "s115-mobile-rival-coaching-light.png",
+      "sha256": "2709828de2c3e521564f0748f49facfe16a8f7e64ddac1ba47015296657d64ca",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2601,7 +2611,7 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s114-mobile-decision-archive-dark.png",
+      "file": "s115-mobile-decision-archive-dark.png",
       "sha256": "03ea1411faf618e2a8e6f941d9d3252f040f61e7ab028e350127b9c6ad6c4de0",
       "theme": "dark",
       "viewport": {
@@ -2611,7 +2621,7 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s114-mobile-decision-archive-light.png",
+      "file": "s115-mobile-decision-archive-light.png",
       "sha256": "1b61724f061c889b18599efbdc039b1fc1584153eaad85c0e047122181681c23",
       "theme": "light",
       "viewport": {
@@ -2621,8 +2631,8 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s114-mobile-co-gm-brief-dark.png",
-      "sha256": "a6c686d16997740ea8344a52af87be01a675209f83844b624fe34d9425ac0871",
+      "file": "s115-mobile-co-gm-brief-dark.png",
+      "sha256": "bb09b64568b12d538a2216c8907f6b4eb2f5997c8411757eac03f1fa31ae8c85",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2631,8 +2641,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s114-mobile-co-gm-brief-light.png",
-      "sha256": "4318ba5ce9f5f41669b2ec0af90b994c05a7760e34701ed29204282065442406",
+      "file": "s115-mobile-co-gm-brief-light.png",
+      "sha256": "bdcd414182f248bf65e82457bacfa117017eb363caa3783e73a6528ee7a00e02",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2641,8 +2651,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s114-mobile-prediction-receipt-dark.png",
-      "sha256": "21cde60116049aa476fe216600521d079228dc41173a7cf74f1ff9cbb13611e9",
+      "file": "s115-mobile-prediction-receipt-dark.png",
+      "sha256": "e9e5d6bbf0c43c7a2a31a1260d3c783fd265867e0807db703f83e803e7417fb7",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2651,8 +2661,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s114-mobile-prediction-receipt-light.png",
-      "sha256": "8f617739667b7df0337bb4ab48b806b430bb8024d9eb2851109c565403a27f0a",
+      "file": "s115-mobile-prediction-receipt-light.png",
+      "sha256": "ff5c6981485ac2eb95b261a10a7fa61ccfad98e6b853a841c9133581d1f956e8",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2661,8 +2671,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s114-mobile-agent-negotiation-dark.png",
-      "sha256": "e2fde4d658e14b0a36dd6b14e3aa1390fc94b6b8ca0af60b7e9a64946590ecb2",
+      "file": "s115-mobile-agent-negotiation-dark.png",
+      "sha256": "b3297f9486b5b40343af7bc6baaff0426231db1fc0c748fe2a98ff1db20a6a50",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2671,8 +2681,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s114-mobile-agent-negotiation-light.png",
-      "sha256": "c0942d6b44fc8fb0ab84fc9b593f59a18d43be6c8b9cbe4bd9c255b74341cda5",
+      "file": "s115-mobile-agent-negotiation-light.png",
+      "sha256": "d05e47a54ad35428d172dce83efb04d2bead9150b52bbf9f71d72907563c27dc",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2681,7 +2691,7 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s114-mobile-draft-trade-review-dark.png",
+      "file": "s115-mobile-draft-trade-review-dark.png",
       "sha256": "e08631a672662bb946f56e0cc2a7324bd254a19b0515be6cddb3b92841f80a73",
       "theme": "dark",
       "viewport": {
@@ -2691,7 +2701,7 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s114-mobile-draft-trade-review-light.png",
+      "file": "s115-mobile-draft-trade-review-light.png",
       "sha256": "bcca497c0018a9fe19ea7a89f28b75a81d1221d783d6d389aa13307bf0a69665",
       "theme": "light",
       "viewport": {
@@ -2701,8 +2711,8 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s114-mobile-hof-ceremony-dark.png",
-      "sha256": "a30338c73ae600c2eed3950ab31e0daf194d9ed5da0c5c3a77ec96a9a841b271",
+      "file": "s115-mobile-hof-ceremony-dark.png",
+      "sha256": "b5ce325910887e177dbbf6f68d1dcdcaa6a20fd3219981636088506e00cbd659",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2711,8 +2721,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s114-mobile-hof-ceremony-light.png",
-      "sha256": "a6f98eb0838543e2b137bca270af0f94d3c01b9ae78f5eab5aee260b64f8778c",
+      "file": "s115-mobile-hof-ceremony-light.png",
+      "sha256": "add72f7e1bd95e75651c45c25bedf0b1c6cdbffd9705fd1fe51e3f8aa5e1b734",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2721,8 +2731,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s114-mobile-architect-signature-dark.png",
-      "sha256": "e018dc344bf0c47d5c361622f1369870c09b76aa9f0b958b649f4dbe0efbfbb0",
+      "file": "s115-mobile-architect-signature-dark.png",
+      "sha256": "d0f058916cb327837b8c7b4c6800f513336e057e67e605c9e90dd13d342a53e6",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2731,8 +2741,8 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s114-mobile-architect-signature-light.png",
-      "sha256": "1d0f5379258f940d878bc11152073e6d5c477adc8867bfdf63ba999135d7782e",
+      "file": "s115-mobile-architect-signature-light.png",
+      "sha256": "c3445d6f32aa8e39b762c864328d9012c09bbb007c114497651becf587f23fdb",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2741,7 +2751,7 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s114-mobile-architect-objective-dark.png",
+      "file": "s115-mobile-architect-objective-dark.png",
       "sha256": "54e52a7d12231ea33a821d22e2215306806c07ccefd02d71fcea4171619d947f",
       "theme": "dark",
       "viewport": {
@@ -2751,7 +2761,7 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s114-mobile-architect-objective-light.png",
+      "file": "s115-mobile-architect-objective-light.png",
       "sha256": "8a00cb4220700de4170347f5c5b932254c14a1c15a9b5703cdd216561bcddaca",
       "theme": "light",
       "viewport": {
@@ -2761,8 +2771,8 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s114-mobile-exact-command-center-dark.png",
-      "sha256": "ab4c9e061f7cf240cb2011e90f8b69451ceb480a75d22c930b23f2fba5c1239c",
+      "file": "s115-mobile-exact-command-center-dark.png",
+      "sha256": "3708337edc99c72bdc2f66349843aaa150854b00e9573b542511d315f8aeeea8",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2771,8 +2781,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s114-mobile-exact-command-center-light.png",
-      "sha256": "e0b26e21282eb6ddc37bdab1efd713576a6c6aca6814dbbc0dffe93a380ca04d",
+      "file": "s115-mobile-exact-command-center-light.png",
+      "sha256": "72a91586781368800e1436980d7605566768e443b5da706ec8d2a37059394dac",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2781,8 +2791,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s114-mobile-exact-command-target-dark.png",
-      "sha256": "2aa9126ee01fff6d8cca374a70758cd84d172bea10fd6b737b58eb8ddb8cb367",
+      "file": "s115-mobile-exact-command-target-dark.png",
+      "sha256": "b6b9c48f45c6bb495f37748e74ecfe693e355c18e767fa9946933250482ddafa",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2791,8 +2801,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s114-mobile-exact-command-target-light.png",
-      "sha256": "62885517335c8f511ca3405e03a8a0d3562ab59d280e4114f3cc880e93e8ad25",
+      "file": "s115-mobile-exact-command-target-light.png",
+      "sha256": "9a1b43ea50e1922dd620b005d10d8798f965ddb4bafb3c360a906a9f21877f4d",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2801,8 +2811,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s114-mobile-facility-capital-dark.png",
-      "sha256": "82f9ce6a5f8044d0b6f5d41342418fa944397e4ce33bf6a6741bad5139c86299",
+      "file": "s115-mobile-facility-capital-dark.png",
+      "sha256": "2a8249a28c7353bf4ca56e0a3585f99b5eae6730bf1f88f910a1d2cf2598f1d2",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2811,8 +2821,8 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s114-mobile-facility-capital-light.png",
-      "sha256": "fb5bd6ed3cf1aa032f897d26c124b0b7d2ea1b6374dd7d08d073489d9f9d76fc",
+      "file": "s115-mobile-facility-capital-light.png",
+      "sha256": "b167d84b6491d5e6750468ebd7967dc4d587ef424acc67e898d4f884a6b03393",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2821,7 +2831,7 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s114-mobile-gist-authentication-dark.png",
+      "file": "s115-mobile-gist-authentication-dark.png",
       "sha256": "b833305b5605023b495eea9f4f5f47b81c82805749603e44f19ca69329f3d270",
       "theme": "dark",
       "viewport": {
@@ -2831,7 +2841,7 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s114-mobile-gist-authentication-light.png",
+      "file": "s115-mobile-gist-authentication-light.png",
       "sha256": "e62e6022ea120cc7f915de0be025190eb333c87c2939ce8e3a26b74e0ae597fb",
       "theme": "light",
       "viewport": {
@@ -2841,8 +2851,8 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s114-tablet-nav-drawer-dark.png",
-      "sha256": "c5d4337ba7d3924233763d5f8186ece9f4a229e207ecb496060f53c88008051f",
+      "file": "s115-tablet-nav-drawer-dark.png",
+      "sha256": "391b23c69ec65c2676d55e1d249674e251750db79c7301921cf7d2523d178294",
       "theme": "dark",
       "viewport": {
         "width": 768,
@@ -2851,8 +2861,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s114-tablet-nav-drawer-light.png",
-      "sha256": "125864f87f4ee98fc67336ae4195df104d85e34dabe5d05a081b58308075d7de",
+      "file": "s115-tablet-nav-drawer-light.png",
+      "sha256": "97bb0035d2df16d27daed6093c9b8062e51012c0fef5b609d1510ad95456b222",
       "theme": "light",
       "viewport": {
         "width": 768,
@@ -2861,8 +2871,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s114-mobile-nav-drawer-dark.png",
-      "sha256": "b83bb3f2e40f7ba80c9969a69f95e875017c1b4838b6ee6a8f00009396b5694e",
+      "file": "s115-mobile-nav-drawer-dark.png",
+      "sha256": "e851c6467d4471baecdad5dfee0b6ecd0f8fe525887db491a4c0ee57adfdf159",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2871,8 +2881,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s114-mobile-nav-drawer-light.png",
-      "sha256": "6d4b73ba54d4894a1781dfe78ae60820a0a275ee521230dcd82edc42b687d471",
+      "file": "s115-mobile-nav-drawer-light.png",
+      "sha256": "8814d670a251832d35c3e4570171504dfc513f90b4cfa2104727b5c89185e3c4",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2881,8 +2891,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s114-mobile-game-loop-dark.png",
-      "sha256": "0bd46a9473126b956d7e4574061360b84f05a9d9c6a95441d9e1749aa322d854",
+      "file": "s115-mobile-game-loop-dark.png",
+      "sha256": "ed6626717c3c5b322b4cf5fbeb4c0894fd3256aa41314eb61938af8bdd1a7df1",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2891,8 +2901,8 @@
       "page": "Mobile weekly decision deck and sticky command dock"
     },
     {
-      "file": "s114-mobile-game-loop-light.png",
-      "sha256": "62f4190450b2d1bb74fe65579dfb0f23ed2b259ef709f5ad48873e4a30017016",
+      "file": "s115-mobile-game-loop-light.png",
+      "sha256": "8af5a842b2b3da1dabda9d6d170e4cfebdafa80c4699fe299a6c14c6e67b774b",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2901,7 +2911,7 @@
       "page": "Mobile weekly decision deck and sticky command dock"
     },
     {
-      "file": "s114-public-desktop-dark-index.png",
+      "file": "s115-public-desktop-dark-index.png",
       "sha256": "869d570a94fc4d0bc6e49e4e71672a1466158b6716c6812e07514e15388d8b76",
       "theme": "dark",
       "viewport": {
@@ -2911,7 +2921,7 @@
       "page": "Public index.html"
     },
     {
-      "file": "s114-public-desktop-dark-features.png",
+      "file": "s115-public-desktop-dark-features.png",
       "sha256": "f0c844a94429f302b684a179192d8cb913f63ecb1e3e6f01fcda5c3e750fa331",
       "theme": "dark",
       "viewport": {
@@ -2921,7 +2931,7 @@
       "page": "Public features.html"
     },
     {
-      "file": "s114-public-desktop-dark-how-to-play.png",
+      "file": "s115-public-desktop-dark-how-to-play.png",
       "sha256": "72f513a9f50315ca5c7306f4b5aab169a2f224b24cca390f4f63e37cb2c37560",
       "theme": "dark",
       "viewport": {
@@ -2931,7 +2941,7 @@
       "page": "Public how-to-play.html"
     },
     {
-      "file": "s114-public-desktop-dark-faq.png",
+      "file": "s115-public-desktop-dark-faq.png",
       "sha256": "3156b82533d67ee064473cd58a155f8d43ca5f1c2a441c03ba14a2ff84c6264e",
       "theme": "dark",
       "viewport": {
@@ -2941,7 +2951,7 @@
       "page": "Public faq.html"
     },
     {
-      "file": "s114-public-desktop-dark-roadmap.png",
+      "file": "s115-public-desktop-dark-roadmap.png",
       "sha256": "b0d2e67d5e2e136dd2cb74163e0d46d3a477d6f1b0c4ea8dc12eb6e78e94845d",
       "theme": "dark",
       "viewport": {
@@ -2951,7 +2961,7 @@
       "page": "Public roadmap.html"
     },
     {
-      "file": "s114-public-desktop-dark-about.png",
+      "file": "s115-public-desktop-dark-about.png",
       "sha256": "174da4cb42c75f5cd0ed177a4404e8e1d9107bc1df52df88e37802e6a5d02cdc",
       "theme": "dark",
       "viewport": {
@@ -2961,8 +2971,8 @@
       "page": "Public about.html"
     },
     {
-      "file": "s114-public-desktop-dark-press.png",
-      "sha256": "29f1837987da1c1df56cd496f3b020a736c85c927f85d897116d599839e9672f",
+      "file": "s115-public-desktop-dark-press.png",
+      "sha256": "a868353db881723289f9c71f0d43bb5fe407d802836460f3e594f9de64110113",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2971,8 +2981,8 @@
       "page": "Public press.html"
     },
     {
-      "file": "s114-public-desktop-dark-status.png",
-      "sha256": "09b7d0590bc594a2cf9c901ddc05a7f51c807b0e0482d02746627a6df9b3de5e",
+      "file": "s115-public-desktop-dark-status.png",
+      "sha256": "79207f47164877a2443dc19e5587ccee57fc6acce97beccbee60843f3967b87b",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2981,8 +2991,8 @@
       "page": "Public status.html"
     },
     {
-      "file": "s114-public-desktop-dark-status-archive.png",
-      "sha256": "dbf2aec144c1ee6a26c51fcdd38ccc761e0bb38d2a46529c85875a290a6585bb",
+      "file": "s115-public-desktop-dark-status-archive.png",
+      "sha256": "ff2b4174840b064444bd16a51bc7f8a3edbad3babec96f587b8215e246ae349a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -2991,7 +3001,7 @@
       "page": "Public status-archive.html"
     },
     {
-      "file": "s114-public-desktop-dark-stats.png",
+      "file": "s115-public-desktop-dark-stats.png",
       "sha256": "cd8517c65de0ef9efdd89dd0da2892fce3e8fef7b8048a7b32a0f16241917de3",
       "theme": "dark",
       "viewport": {
@@ -3001,8 +3011,8 @@
       "page": "Public stats.html"
     },
     {
-      "file": "s114-public-desktop-dark-simulation.png",
-      "sha256": "d75f80a677ffdcd4093c7c728bf00a52549efe34c048feb83fc0a6dd98fa9c40",
+      "file": "s115-public-desktop-dark-simulation.png",
+      "sha256": "53d6bdfa08a4c7d4fed8bc6a9400a5ef35a1823787f43c8c860192f843d80df2",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -3011,7 +3021,7 @@
       "page": "Public simulation.html"
     },
     {
-      "file": "s114-public-desktop-dark-contact.png",
+      "file": "s115-public-desktop-dark-contact.png",
       "sha256": "a880561e7bc2460d387edecca757d2b11f379d13c3bcf0fa89d8cfe143a6ede6",
       "theme": "dark",
       "viewport": {
@@ -3021,7 +3031,7 @@
       "page": "Public contact.html"
     },
     {
-      "file": "s114-public-desktop-dark-privacy.png",
+      "file": "s115-public-desktop-dark-privacy.png",
       "sha256": "9cec7ddefe4ef4a6eff0b772b4c15f57f368b16dc79ea9c753bef2df49f42744",
       "theme": "dark",
       "viewport": {
@@ -3031,7 +3041,7 @@
       "page": "Public privacy.html"
     },
     {
-      "file": "s114-public-desktop-dark-terms.png",
+      "file": "s115-public-desktop-dark-terms.png",
       "sha256": "5a70f31532f758b5b248f08f16e5948c6e97cc0fc58cabc03778d4f99c6bdffb",
       "theme": "dark",
       "viewport": {
@@ -3041,7 +3051,7 @@
       "page": "Public terms.html"
     },
     {
-      "file": "s114-public-desktop-light-index.png",
+      "file": "s115-public-desktop-light-index.png",
       "sha256": "83c6412cffbccea778ca17e4ef04b7269e3c1fc12e8c42fe745cb50d926819aa",
       "theme": "light",
       "viewport": {
@@ -3051,8 +3061,8 @@
       "page": "Public index.html"
     },
     {
-      "file": "s114-public-desktop-light-features.png",
-      "sha256": "7b1de6b8c62e406a13a5b14c4d50f718b72e64702e193c4850f91fafa939508e",
+      "file": "s115-public-desktop-light-features.png",
+      "sha256": "d455642df5c338ef7383f67037dfda35c34e1dec0d1e87029c1362dd5e348fc2",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -3061,7 +3071,7 @@
       "page": "Public features.html"
     },
     {
-      "file": "s114-public-desktop-light-how-to-play.png",
+      "file": "s115-public-desktop-light-how-to-play.png",
       "sha256": "4b8b8328aeda6cd776f0a86a2d53a4db4bb0031839855ab70131e5fd1c3f8f40",
       "theme": "light",
       "viewport": {
@@ -3071,7 +3081,7 @@
       "page": "Public how-to-play.html"
     },
     {
-      "file": "s114-public-desktop-light-faq.png",
+      "file": "s115-public-desktop-light-faq.png",
       "sha256": "4857e3c9150983d8243935296b551ee0084a2bdbad6f69d3ab3723184233e2d9",
       "theme": "light",
       "viewport": {
@@ -3081,7 +3091,7 @@
       "page": "Public faq.html"
     },
     {
-      "file": "s114-public-desktop-light-roadmap.png",
+      "file": "s115-public-desktop-light-roadmap.png",
       "sha256": "d65c5a59fb2114fffee2428aa3ac1593f938f34af3556a1200e34d03ad3a6bbe",
       "theme": "light",
       "viewport": {
@@ -3091,7 +3101,7 @@
       "page": "Public roadmap.html"
     },
     {
-      "file": "s114-public-desktop-light-about.png",
+      "file": "s115-public-desktop-light-about.png",
       "sha256": "2f5330f1e9e5afb8d3256bda66e820c9bf574d090427cbac958385363a77c458",
       "theme": "light",
       "viewport": {
@@ -3101,8 +3111,8 @@
       "page": "Public about.html"
     },
     {
-      "file": "s114-public-desktop-light-press.png",
-      "sha256": "5e9a2e6ce640d7624d2b34e25445d9ec9f1f5098fbceb2535bc82d0ee794f1de",
+      "file": "s115-public-desktop-light-press.png",
+      "sha256": "89e38a21b8c724a3e9f5640123e27fe6cdd981c45b866c9a3e5e585b562a681c",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -3111,8 +3121,8 @@
       "page": "Public press.html"
     },
     {
-      "file": "s114-public-desktop-light-status.png",
-      "sha256": "b53202f782fe75aacf7a00729560f32a2286df8e6401e015558f7fc3792d5aa1",
+      "file": "s115-public-desktop-light-status.png",
+      "sha256": "3a44e80f07987766074b0a6494242b4a20fdc0fc9456d3b337288bedf29edd27",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -3121,8 +3131,8 @@
       "page": "Public status.html"
     },
     {
-      "file": "s114-public-desktop-light-status-archive.png",
-      "sha256": "34aa8f6baa58363b82014e52d71fe0c107c685a0440170f614381268312a2ab4",
+      "file": "s115-public-desktop-light-status-archive.png",
+      "sha256": "e62abffbcf4444519526937decf3c9e4f8b7c761fba154bad69586b1e0be054e",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -3131,7 +3141,7 @@
       "page": "Public status-archive.html"
     },
     {
-      "file": "s114-public-desktop-light-stats.png",
+      "file": "s115-public-desktop-light-stats.png",
       "sha256": "99c76a64af3e9f39eae472aa20922517ca261844811c0187cc67ef94c97dd1a6",
       "theme": "light",
       "viewport": {
@@ -3141,7 +3151,7 @@
       "page": "Public stats.html"
     },
     {
-      "file": "s114-public-desktop-light-simulation.png",
+      "file": "s115-public-desktop-light-simulation.png",
       "sha256": "f9be4bfb42b9279f3177aefdd4daebc1d15c0fc056547a894f104dd719f74819",
       "theme": "light",
       "viewport": {
@@ -3151,7 +3161,7 @@
       "page": "Public simulation.html"
     },
     {
-      "file": "s114-public-desktop-light-contact.png",
+      "file": "s115-public-desktop-light-contact.png",
       "sha256": "293748a8830003a41ecdd61f595bdf17d9fa38e26246707d3f8ce4afde3d3d40",
       "theme": "light",
       "viewport": {
@@ -3161,7 +3171,7 @@
       "page": "Public contact.html"
     },
     {
-      "file": "s114-public-desktop-light-privacy.png",
+      "file": "s115-public-desktop-light-privacy.png",
       "sha256": "52fc99aada11632b44916056137faf50743200deeeb8a3efcd542342bbdd97b0",
       "theme": "light",
       "viewport": {
@@ -3171,7 +3181,7 @@
       "page": "Public privacy.html"
     },
     {
-      "file": "s114-public-desktop-light-terms.png",
+      "file": "s115-public-desktop-light-terms.png",
       "sha256": "67def8aa1dbca6bfa38bece9b00f0d6e383f6205785679a9f6557ec7f19b6900",
       "theme": "light",
       "viewport": {
@@ -3181,7 +3191,7 @@
       "page": "Public terms.html"
     },
     {
-      "file": "s114-public-mobile-dark-index.png",
+      "file": "s115-public-mobile-dark-index.png",
       "sha256": "789c60fa112a3f915c05a005a6b7945571460c069bde48e6ef0340dc250e8963",
       "theme": "dark",
       "viewport": {
@@ -3191,8 +3201,8 @@
       "page": "Public index.html"
     },
     {
-      "file": "s114-public-mobile-dark-features.png",
-      "sha256": "89f9f0b17975f58b06fc2be98aaf0a0890546e26501dca970475022ff3275bf1",
+      "file": "s115-public-mobile-dark-features.png",
+      "sha256": "67ecb397654769b683a9789756f57e5cea836d302794b55e103a69374ab154da",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -3201,7 +3211,7 @@
       "page": "Public features.html"
     },
     {
-      "file": "s114-public-mobile-dark-how-to-play.png",
+      "file": "s115-public-mobile-dark-how-to-play.png",
       "sha256": "32332408a01bf1c0738b5c8d925f85a959a58fabee6d154219d9533cdea2143b",
       "theme": "dark",
       "viewport": {
@@ -3211,7 +3221,7 @@
       "page": "Public how-to-play.html"
     },
     {
-      "file": "s114-public-mobile-dark-faq.png",
+      "file": "s115-public-mobile-dark-faq.png",
       "sha256": "607e55ab7a0de09a149531e418d11f49533f6e0886cc5791e2f356b90174b422",
       "theme": "dark",
       "viewport": {
@@ -3221,7 +3231,7 @@
       "page": "Public faq.html"
     },
     {
-      "file": "s114-public-mobile-dark-roadmap.png",
+      "file": "s115-public-mobile-dark-roadmap.png",
       "sha256": "621b0dd4c73eec28994f654732625698ccb1f83553be547cdc0f4fd045e34f4f",
       "theme": "dark",
       "viewport": {
@@ -3231,7 +3241,7 @@
       "page": "Public roadmap.html"
     },
     {
-      "file": "s114-public-mobile-dark-about.png",
+      "file": "s115-public-mobile-dark-about.png",
       "sha256": "b3ac7407a97fea08611656c9eb11a9f292edc448e5675eedcf5f59cc92c9de4a",
       "theme": "dark",
       "viewport": {
@@ -3241,8 +3251,8 @@
       "page": "Public about.html"
     },
     {
-      "file": "s114-public-mobile-dark-press.png",
-      "sha256": "a7d4274b8a571fd7f388963661037eecc6e7bc2aa73595ed7d476c829359b74b",
+      "file": "s115-public-mobile-dark-press.png",
+      "sha256": "0383fe77bddadd884d44e8ef16b13f26c87777f84eb52858fca89750118378c8",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -3251,8 +3261,8 @@
       "page": "Public press.html"
     },
     {
-      "file": "s114-public-mobile-dark-status.png",
-      "sha256": "8ea6474a81a9902d6096e4517267033ef7c05fb140c02e18793131a04a2792a3",
+      "file": "s115-public-mobile-dark-status.png",
+      "sha256": "47d3861e5d9b9cd8502f5348eecf2b3a52d301d314ad90436b31e76c82a48d7c",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -3261,8 +3271,8 @@
       "page": "Public status.html"
     },
     {
-      "file": "s114-public-mobile-dark-status-archive.png",
-      "sha256": "a866ac01424deba4b5de8893f90a24b70294dd79799f7de263a35ac38debcc93",
+      "file": "s115-public-mobile-dark-status-archive.png",
+      "sha256": "c67d7b0657a93464991c9956e6ee87c72cecfecf5a199f09d93d2265aa3d22d7",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -3271,7 +3281,7 @@
       "page": "Public status-archive.html"
     },
     {
-      "file": "s114-public-mobile-dark-stats.png",
+      "file": "s115-public-mobile-dark-stats.png",
       "sha256": "9d2ec3f5f2de32d0bf87a0f44ea36b8f07a0a3010ae0afeee308ba5de73bc7c4",
       "theme": "dark",
       "viewport": {
@@ -3281,7 +3291,7 @@
       "page": "Public stats.html"
     },
     {
-      "file": "s114-public-mobile-dark-simulation.png",
+      "file": "s115-public-mobile-dark-simulation.png",
       "sha256": "6eb93e3e464b2e37c084b16a65b9bf6f385934efde1579724ce22e98fe4c8eb0",
       "theme": "dark",
       "viewport": {
@@ -3291,7 +3301,7 @@
       "page": "Public simulation.html"
     },
     {
-      "file": "s114-public-mobile-dark-contact.png",
+      "file": "s115-public-mobile-dark-contact.png",
       "sha256": "5d07d40fa85fe3383e1e7504e257a41086fcb7305dd8a50d92b7309587912a4d",
       "theme": "dark",
       "viewport": {
@@ -3301,7 +3311,7 @@
       "page": "Public contact.html"
     },
     {
-      "file": "s114-public-mobile-dark-privacy.png",
+      "file": "s115-public-mobile-dark-privacy.png",
       "sha256": "6c7548cc0d5994b2f6f00400df3a221b9c9edbe0a4e5b971bb0f26da92c6d021",
       "theme": "dark",
       "viewport": {
@@ -3311,7 +3321,7 @@
       "page": "Public privacy.html"
     },
     {
-      "file": "s114-public-mobile-dark-terms.png",
+      "file": "s115-public-mobile-dark-terms.png",
       "sha256": "3a9db192b17b70b9700d21eeee97db4b34d4f6713327d828fc8d5ea1d89e05e1",
       "theme": "dark",
       "viewport": {
@@ -3321,7 +3331,7 @@
       "page": "Public terms.html"
     },
     {
-      "file": "s114-public-mobile-light-index.png",
+      "file": "s115-public-mobile-light-index.png",
       "sha256": "a2cb45abfa840d52b22d177e747af42d31ea19a0e64ebf8392203f337113025d",
       "theme": "light",
       "viewport": {
@@ -3331,7 +3341,7 @@
       "page": "Public index.html"
     },
     {
-      "file": "s114-public-mobile-light-features.png",
+      "file": "s115-public-mobile-light-features.png",
       "sha256": "3828147b6f62ace3c5e6748213289f2484c617002782d3b7af99fe2676ed17eb",
       "theme": "light",
       "viewport": {
@@ -3341,7 +3351,7 @@
       "page": "Public features.html"
     },
     {
-      "file": "s114-public-mobile-light-how-to-play.png",
+      "file": "s115-public-mobile-light-how-to-play.png",
       "sha256": "22361688efa67b28628a3383addc4f6beef54f5f64d61fc4591339cd0e170e50",
       "theme": "light",
       "viewport": {
@@ -3351,7 +3361,7 @@
       "page": "Public how-to-play.html"
     },
     {
-      "file": "s114-public-mobile-light-faq.png",
+      "file": "s115-public-mobile-light-faq.png",
       "sha256": "ddb5aad5a067ac5d8fdf71f94ff775bdf08ac38edcf7feee3d2eafb70d158863",
       "theme": "light",
       "viewport": {
@@ -3361,7 +3371,7 @@
       "page": "Public faq.html"
     },
     {
-      "file": "s114-public-mobile-light-roadmap.png",
+      "file": "s115-public-mobile-light-roadmap.png",
       "sha256": "b52dcd2dc126f5252ebecac288141d8a10873f22c472c905659010decfb4429d",
       "theme": "light",
       "viewport": {
@@ -3371,7 +3381,7 @@
       "page": "Public roadmap.html"
     },
     {
-      "file": "s114-public-mobile-light-about.png",
+      "file": "s115-public-mobile-light-about.png",
       "sha256": "2501d0f2e00add3f26f61dab3e9088080f7a985f41964a93444239b0854ad0f4",
       "theme": "light",
       "viewport": {
@@ -3381,8 +3391,8 @@
       "page": "Public about.html"
     },
     {
-      "file": "s114-public-mobile-light-press.png",
-      "sha256": "9b6a09a5b3238aa2804048614395772308b50cc1c6c7248976ae90ab078a9a7b",
+      "file": "s115-public-mobile-light-press.png",
+      "sha256": "a4d093cf439f02a37c91c9df75a2b0d0f96dd30e8968cca7a394f2e3507a5bfc",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3391,8 +3401,8 @@
       "page": "Public press.html"
     },
     {
-      "file": "s114-public-mobile-light-status.png",
-      "sha256": "87cb0e9e87c98dc9544c1e2f4695557a92aed516c3f55fb0b755aa611f394f83",
+      "file": "s115-public-mobile-light-status.png",
+      "sha256": "31ebab6b4a6ef7102b7aedc4ccc5374c679860e8ac543ea6698688d3558dd86e",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3401,8 +3411,8 @@
       "page": "Public status.html"
     },
     {
-      "file": "s114-public-mobile-light-status-archive.png",
-      "sha256": "82fc73f4a15dbfa010ffff512284d23da5bfcf6833369faa9316bcf7e585710e",
+      "file": "s115-public-mobile-light-status-archive.png",
+      "sha256": "d65b7fa50eb9956f702d735b72ae6824b5ac9785f1d382305c6f328673456260",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -3411,7 +3421,7 @@
       "page": "Public status-archive.html"
     },
     {
-      "file": "s114-public-mobile-light-stats.png",
+      "file": "s115-public-mobile-light-stats.png",
       "sha256": "f0e829baeef33bc7ab81a1330a49326c65dfe573944d77e58756412bc5413f99",
       "theme": "light",
       "viewport": {
@@ -3421,7 +3431,7 @@
       "page": "Public stats.html"
     },
     {
-      "file": "s114-public-mobile-light-simulation.png",
+      "file": "s115-public-mobile-light-simulation.png",
       "sha256": "6b72faf60e45e88ba9cb9e0748a0a0122f550874fb9e3b92fc0b83375033f696",
       "theme": "light",
       "viewport": {
@@ -3431,7 +3441,7 @@
       "page": "Public simulation.html"
     },
     {
-      "file": "s114-public-mobile-light-contact.png",
+      "file": "s115-public-mobile-light-contact.png",
       "sha256": "bbe7b3949ec4f0b59193092f4f94544c61b3cba9af217fac6e1eb6c07f5f4c79",
       "theme": "light",
       "viewport": {
@@ -3441,7 +3451,7 @@
       "page": "Public contact.html"
     },
     {
-      "file": "s114-public-mobile-light-privacy.png",
+      "file": "s115-public-mobile-light-privacy.png",
       "sha256": "897e9b4d9ae909d04aac7ee84489f2dce61b891478f12af6ad458c04f339d0d4",
       "theme": "light",
       "viewport": {
@@ -3451,7 +3461,7 @@
       "page": "Public privacy.html"
     },
     {
-      "file": "s114-public-mobile-light-terms.png",
+      "file": "s115-public-mobile-light-terms.png",
       "sha256": "2f5837413a80c5d889952f9fec3bbec2f9fe12dce21f7afcc0600cef7c4bacfc",
       "theme": "light",
       "viewport": {
@@ -3465,9 +3475,8 @@
     "renderedPixelsReviewed": true,
     "reviewer": "session-agent",
     "findings": [
-      "Status page carries the 2026-10-02 player-facing note at mobile width in light theme.",
-      "Rival coaching panel names clubs by display code (desktop dark).",
-      "Remaining 212 captures are the S113 surfaces, unchanged by S114's engine-text and server-structure work; harness passed 327/327."
+      "Situational calls card renders inside Franchise Command with both segmented groups, the selected default and its one-line explanation (desktop dark, mobile light).",
+      "Remaining captures are prior surfaces; harness passed 327/327 at 80125a0."
     ],
     "fixesApplied": [],
     "blockingDefectsOpen": 0
