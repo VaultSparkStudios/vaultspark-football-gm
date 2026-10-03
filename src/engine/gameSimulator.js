@@ -1,4 +1,5 @@
-import { DEPTH_CHART_ROLE_NAMES, DRIVE_OUTCOMES, NFL_STRUCTURE } from "../config.js";
+import { DEPTH_CHART_ROLE_NAMES, DRIVE_OUTCOMES } from "../config.js";
+import { FOOTBALL_RULES } from "../sport/football/rules.js";
 import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js";
 import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings.js";
 import { clamp, mean } from "../utils/rng.js";
@@ -1741,8 +1742,8 @@ export function simulateGame({
   for (const player of homeStarters) statBook.registerGameAppearance(player.id, year, true, homeTeamId, player.position, seasonType);
   for (const player of awayStarters) statBook.registerGameAppearance(player.id, year, true, awayTeamId, player.position, seasonType);
 
-  const homePossessions = rng.int(...NFL_STRUCTURE.possessionsPerTeamRange);
-  const awayPossessions = rng.int(...NFL_STRUCTURE.possessionsPerTeamRange);
+  const homePossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
+  const awayPossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
   let homeScore = 0;
   let awayScore = 0;
   let homeYards = 0;

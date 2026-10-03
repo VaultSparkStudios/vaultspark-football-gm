@@ -5,7 +5,6 @@ import {
   CONTRACT_RULES,
   DEPTH_CHART_ROLE_NAMES,
   GAME_NAME,
-  NFL_STRUCTURE,
   POSITION_MAX_AGE_LIMITS,
   TEAM_STRATEGY_PRESETS,
   ROSTER_TEMPLATE
@@ -191,6 +190,8 @@ import { consumePendingWeeklyTactic } from "./weeklyTactic.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 import { buildLeagueLens, buildSeasonRecordBook } from "../stats/leagueLens.js";
 import { buildOperatingStatement } from "../domain/operatingStatement.js";
+import { getSportRules } from "../sport/registry.js";
+import { FOOTBALL_RULES } from "../sport/football/rules.js";
 import { deriveSessionGmArchetype } from "../engine/gmArchetype.js";
 import {
   agentSummary,
@@ -214,7 +215,6 @@ const FREE_AGENCY_WAVES = 3;
 const COMP_PICKS_PER_TEAM_MAX = 4;
 const COMP_PICK_QUALIFYING_NET = 350;
 const MAX_GAME_DAY_INACTIVES = 7;
-const DRAFT_ROUNDS = 7;
 const PICK_ASSET_HORIZON_YEARS = 3;
 const STAFF_ROLE_KEYS = [
   "headCoach",
@@ -811,7 +811,7 @@ function buildOwnerExpectation(team, roster = [], transactions = [], { currentWe
   const ties = Number(team?.season?.ties || 0);
   const gamesPlayed = wins + losses + ties;
   const winPct = gamesPlayed ? (wins + ties * 0.5) / gamesPlayed : 0.5;
-  const projectedWins = Number((winPct * NFL_STRUCTURE.regularSeasonWeeks).toFixed(1));
+  const projectedWins = Number((winPct * FOOTBALL_RULES.structure.regularSeasonWeeks).toFixed(1));
   const targetWinsBase =
     6 +
     ((team?.overallRating || 70) - 70) * 0.22 +
@@ -856,7 +856,7 @@ function buildOwnerExpectation(team, roster = [], transactions = [], { currentWe
   let ultimatum = null;
   if (heat >= 75 && gamesPlayed >= 6 && (owner.patience || 0.55) <= 0.35) {
     const winsNeeded = Math.max(1, targetWins - wins);
-    const weeksLeft = Math.max(0, NFL_STRUCTURE.regularSeasonWeeks - gamesPlayed);
+    const weeksLeft = Math.max(0, FOOTBALL_RULES.structure.regularSeasonWeeks - gamesPlayed);
     ultimatum = {
       active: true,
       message: `Win ${winsNeeded} more game${winsNeeded !== 1 ? "s" : ""} or expect major changes.`,
@@ -2006,6 +2006,14 @@ export class GameSession {
     this.rebuildLookupIndexes();
   }
 
+  /**
+   * S116: the rules of this league's sport. A getter rather than a field so the
+   * constructor and fromSnapshot (Object.create) paths can never disagree.
+   */
+  get sportRules() {
+    return getSportRules(this.league?.sportId);
+  }
+
   static fromSnapshot(snapshot, rngFactory) {
     const session = Object.create(GameSession.prototype);
     Object.assign(session, snapshot);
@@ -2252,7 +2260,7 @@ export class GameSession {
     const existing = new Set(this.league.draftPicks.map((pick) => `${pick.year}-${pick.originalTeamId}-${pick.round}`));
     for (let year = this.currentYear + 1; year <= this.currentYear + PICK_ASSET_HORIZON_YEARS; year += 1) {
       for (const team of this.league.teams) {
-        for (let round = 1; round <= DRAFT_ROUNDS; round += 1) {
+        for (let round = 1; round <= this.sportRules.draft.rounds; round += 1) {
           const key = `${year}-${team.id}-${round}`;
           if (existing.has(key)) continue;
           this.league.draftPicks.push({
@@ -2294,7 +2302,7 @@ export class GameSession {
 
     if (!ledgerPicks.length) {
       const slots = [];
-      for (let round = 1; round <= DRAFT_ROUNDS; round += 1) {
+      for (let round = 1; round <= this.sportRules.draft.rounds; round += 1) {
         fallbackOrder.forEach((teamId, index) => {
           slots.push({
             pickId: null,
@@ -3851,7 +3859,7 @@ export class GameSession {
       createdYear: this.currentYear,
       createdWeek: this.currentWeek,
       deadlineYear: this.currentYear,
-      deadlineWeek: NFL_STRUCTURE.regularSeasonWeeks + 1,
+      deadlineWeek: this.sportRules.structure.regularSeasonWeeks + 1,
       baselineTransactionSeq: Number(this.league.transactionSeq || 0),
       baselineQbIds: [],
       baselineCapSpace: 0,
@@ -3937,10 +3945,10 @@ export class GameSession {
       );
       home.owner.finances.revenueYtd += homeRevenue;
       away.owner.finances.revenueYtd += awayRevenue;
-      home.owner.finances.expensesYtd += Math.round((home.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
-      away.owner.finances.expensesYtd += Math.round((away.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
-      home.owner.cash += homeRevenue - Math.round((home.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
-      away.owner.cash += awayRevenue - Math.round((away.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
+      home.owner.finances.expensesYtd += Math.round((home.owner.staffBudget || 25_000_000) / this.sportRules.structure.regularSeasonWeeks);
+      away.owner.finances.expensesYtd += Math.round((away.owner.staffBudget || 25_000_000) / this.sportRules.structure.regularSeasonWeeks);
+      home.owner.cash += homeRevenue - Math.round((home.owner.staffBudget || 25_000_000) / this.sportRules.structure.regularSeasonWeeks);
+      away.owner.cash += awayRevenue - Math.round((away.owner.staffBudget || 25_000_000) / this.sportRules.structure.regularSeasonWeeks);
       const updatePressure = (team, won, modifiers) => {
         const owner = team.owner;
         const pressurePenalty = owner.personality === "win-now" || owner.priorities?.championships >= 85 ? 1.2 : 0.8;
@@ -3972,7 +3980,7 @@ export class GameSession {
     const settings = this.getLeagueSettings();
     const era = this.getEraProfile();
     const growthYears = Math.max(0, year - this.startYear);
-    const scaledCap = Math.round(NFL_STRUCTURE.salaryCap * Math.pow(1 + settings.capGrowthRate, growthYears));
+    const scaledCap = Math.round(this.sportRules.structure.salaryCap * Math.pow(1 + settings.capGrowthRate, growthYears));
     for (const team of this.league.teams) {
       this.league.teamCapOverride[team.id] = scaledCap;
       if (!team.scheme) team.scheme = { passRate: 0.54, aggression: 0.5 };
@@ -5834,7 +5842,7 @@ export class GameSession {
       this.league.weeklyHistory.push({ ...leanWeek, year: this.currentYear, week: weekResult.week });
 
       this.currentWeek += 1;
-      if (this.currentWeek > NFL_STRUCTURE.regularSeasonWeeks) {
+      if (this.currentWeek > this.sportRules.structure.regularSeasonWeeks) {
         this.phase = "postseason";
         this.initializePostseasonRoundFlow();
         this.preparePostseasonControlledGate();

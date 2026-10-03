@@ -1,4 +1,5 @@
-import { CONTRACT_RULES, FIELDABLE_DEPTH, NFL_STRUCTURE, ROSTER_STRUCTURE } from "../config.js";
+import { CONTRACT_RULES, FIELDABLE_DEPTH, ROSTER_STRUCTURE } from "../config.js";
+import { getSportRules } from "../sport/registry.js";
 import { getAllTeamPlayers } from "../domain/teamFactory.js";
 
 /**
@@ -45,7 +46,7 @@ export function capUsedByTeam(league, teamId) {
 /** The club's cap for this year, including any rollover and per-team override. */
 export function capForTeam(league, teamId) {
   const ledger = league.capLedger?.[teamId] || {};
-  const base = league.teamCapOverride?.[teamId] || NFL_STRUCTURE.salaryCap;
+  const base = league.teamCapOverride?.[teamId] || getSportRules(league.sportId).structure.salaryCap;
   return base + Number(ledger.rollover || 0);
 }
 

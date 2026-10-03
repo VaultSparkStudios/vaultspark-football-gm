@@ -1,9 +1,9 @@
 import { teamLabel } from "../domain/teamLabel.js";
+import { getSportRules } from "../sport/registry.js";
 import {
   CONTRACT_RULES,
   FREE_AGENCY_RULES,
   FULL_ROSTER_TEMPLATE,
-  NFL_STRUCTURE,
   POSITION_MAX_AGE_LIMITS
 } from "../config.js";
 import { createDraftClass, createSyntheticPlayer } from "../domain/playerFactory.js";
@@ -367,7 +367,7 @@ function capSpace(league, teamId) {
   const roster = getAllTeamPlayers(league, teamId);
   const used = roster.reduce((sum, p) => sum + (p.contract?.capHit || 0), 0);
   const capLedger = league.capLedger?.[teamId] || {};
-  const capForYear = (league.teamCapOverride?.[teamId] || NFL_STRUCTURE.salaryCap) + (capLedger.rollover || 0);
+  const capForYear = (league.teamCapOverride?.[teamId] || getSportRules(league.sportId).structure.salaryCap) + (capLedger.rollover || 0);
   const deadCapCurrentYear = capLedger.deadCapCurrentYear || 0;
   return capForYear - used - deadCapCurrentYear;
 }
@@ -378,7 +378,7 @@ function runDraft(league, year, rng) {
     .slice()
     .sort((a, b) => teamWinPct(a) - teamWinPct(b) || a.season.pointsFor - b.season.pointsFor);
 
-  for (let round = 1; round <= 7; round += 1) {
+  for (let round = 1; round <= getSportRules(league.sportId).draft.rounds; round += 1) {
     for (const team of order) {
       const needs = teamNeeds(league, team.id);
       const neededPositionSet = new Set(needs.map((n) => n.position));
@@ -510,7 +510,7 @@ export function applyCapRollover(league) {
     // went to zero. The override-with-flat-fallback form is required: the
     // headless `runOffseason` path never calls `startSeason` and so has no
     // override, which is why line 264 already reads it exactly this way.
-    const capForYear = (league.teamCapOverride?.[team.id] || NFL_STRUCTURE.salaryCap) + (current.rollover || 0);
+    const capForYear = (league.teamCapOverride?.[team.id] || getSportRules(league.sportId).structure.salaryCap) + (current.rollover || 0);
     const capSpace = capForYear - used - (current.deadCapCurrentYear || 0);
     const nextRollover = clamp(Math.round(Math.max(0, capSpace) * 0.48), 0, 35_000_000);
     league.capLedger[team.id] = {

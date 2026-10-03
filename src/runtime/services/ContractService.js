@@ -6,7 +6,7 @@
  * test proves response and mutation parity and the manifest is updated atomically.
  */
 
-import { NFL_STRUCTURE } from "../../config.js";
+import { getSportRules } from "../../sport/registry.js";
 import { normalizeContract } from "../../domain/contracts.js";
 import { getAllTeamPlayers } from "../../domain/teamFactory.js";
 
@@ -28,7 +28,7 @@ export class ContractService {
       (sum, player) => sum + normalizeContract(player.contract).capHit,
       0
     );
-    const salaryCapBase = this.league.teamCapOverride?.[teamId] || NFL_STRUCTURE.salaryCap;
+    const salaryCapBase = this.league.teamCapOverride?.[teamId] || getSportRules(this.league.sportId).structure.salaryCap;
     const salaryCap = salaryCapBase + (capLedger.rollover || 0);
     const deadCap = capLedger.deadCapCurrentYear || 0;
     return {

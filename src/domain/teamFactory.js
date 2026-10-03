@@ -1,4 +1,5 @@
-import { CONTRACT_RULES, NFL_STRUCTURE, ROSTER_TEMPLATE, TEAM_METADATA } from "../config.js";
+import { CONTRACT_RULES, ROSTER_TEMPLATE } from "../config.js";
+import { FOOTBALL_RULES } from "../sport/football/rules.js";
 import { buildSyntheticTeamRoster, createSyntheticPlayer } from "./playerFactory.js";
 import { assignFieldableActiveRoster, capSpaceForTeam, fieldableProtectedIds } from "../engine/capCompliance.js";
 import { buildContract } from "./contracts.js";
@@ -213,7 +214,7 @@ function buildRandomizedTeamIdentities(year) {
   const mascots = [...TEAM_NAME_PARTS.mascot];
   const usedAbbreviations = new Set();
   const identities = new Map();
-  for (const meta of TEAM_METADATA) {
+  for (const meta of FOOTBALL_RULES.teams) {
     const cityIndex = hashString(`${year}-${meta.id}-city`) % cities.length;
     const mascotIndex = hashString(`${year}-${meta.id}-mascot`) % mascots.length;
     const city = cities.splice(cityIndex, 1)[0];
@@ -257,7 +258,7 @@ function createTeam(meta, year, randomizedIdentities = null) {
     abbrev: identity.abbrev,
     conference: meta.conference,
     division: meta.division,
-    salaryCap: NFL_STRUCTURE.salaryCap,
+    salaryCap: FOOTBALL_RULES.structure.salaryCap,
     season: createTeamSeasonState(year),
     offenseRating: 60,
     defenseRating: 60,
@@ -318,7 +319,7 @@ export function createLeagueBase(year, rng = null) {
   const randomizedIdentities = buildRandomizedTeamIdentities(year);
   return {
     year,
-    teams: TEAM_METADATA.map((meta) => createTeam(meta, year, randomizedIdentities)),
+    teams: FOOTBALL_RULES.teams.map((meta) => createTeam(meta, year, randomizedIdentities)),
     players: [],
     retiredPlayers: [],
     retiredNumbers: [],
