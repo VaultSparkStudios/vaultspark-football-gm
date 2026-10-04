@@ -191,6 +191,17 @@ import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 import { buildLeagueLens, buildSeasonRecordBook } from "../stats/leagueLens.js";
 import { buildOperatingStatement } from "../domain/operatingStatement.js";
 import { getSportRules } from "../sport/registry.js";
+import {
+  calendarPhase,
+  calendarPhaseWeekLimit,
+  firstOffseasonStageId,
+  nextCalendarPhaseId,
+  nextOffseasonStageId,
+  offseasonStage,
+  offseasonStageIds,
+  seasonOpeningPhaseId,
+  terminalOffseasonStageId
+} from "../sport/calendarContract.js";
 import { FOOTBALL_RULES } from "../sport/football/rules.js";
 import { deriveSessionGmArchetype } from "../engine/gmArchetype.js";
 import {
@@ -1337,36 +1348,15 @@ function defaultRulebookRows() {
 }
 
 /**
- * The offseason calendar, declared once (S67).
- *
- * Before S67 these stage names were labels: every stage except `udfa` did
- * nothing to the roster, and `udfa` ran the whole `runOffseason()` blob —
- * aging, retirement, contract expiry, free agency and cap rollover — in one
- * synchronous call, after the draft had already been held. The consequence was
- * that the free-agent pool was empty at all seven stages while ~295 contracts
- * sat pending expiry, so no GM ever saw a free agent.
- *
- * The order below is the real league calendar: bodies leave first, the market
- * opens on the class that just hit it, and only then does anyone draft.
+ * A fresh offseason pipeline. The stage list and its order are the sport's
+ * calendar (src/sport/football/calendar.js for football), declared once.
  */
-const OFFSEASON_STAGES = Object.freeze([
-  "retirements",
-  "coaching-carousel",
-  "combine",
-  "pro-days",
-  "free-agency",
-  "draft",
-  "udfa",
-  "camp-cuts",
-  "complete"
-]);
-
-function defaultOffseasonPipeline(year) {
+function defaultOffseasonPipeline(year, calendar) {
   return {
     year,
-    stage: "retirements",
+    stage: firstOffseasonStageId(calendar),
     completed: false,
-    stages: [...OFFSEASON_STAGES],
+    stages: offseasonStageIds(calendar),
     history: []
   };
 }
@@ -1499,7 +1489,10 @@ function ensureLeagueRuntime(league) {
     league.compFormulaLedger = { losses: {}, gains: {} };
   }
   if (!league.offseasonPipeline || typeof league.offseasonPipeline !== "object") {
-    league.offseasonPipeline = defaultOffseasonPipeline(league.year || new Date().getFullYear());
+    league.offseasonPipeline = defaultOffseasonPipeline(
+      league.year || new Date().getFullYear(),
+      getSportRules(league.sportId).calendar
+    );
   }
   if (!league.observability || typeof league.observability !== "object") {
     league.observability = { counters: {}, timings: {}, lastUpdated: Date.now() };
@@ -1993,7 +1986,7 @@ export class GameSession {
     this.statBook.potentialView = (player) => this.visiblePotential(player);
     this.controlledTeamId = teamById(this.league, controlledTeamId)?.id || this.league.teams[0].id;
 
-    this.phase = "regular-season";
+    this.phase = seasonOpeningPhaseId(this.sportRules.calendar);
     this.currentWeek = 1;
     this.seasonSchedule = [];
     this.weekResultsCurrentSeason = [];
@@ -2170,7 +2163,7 @@ export class GameSession {
     }
     this.ensureDraftPickAssets();
     if (!this.league.offseasonPipeline || this.league.offseasonPipeline.year !== this.currentYear) {
-      this.league.offseasonPipeline = defaultOffseasonPipeline(this.currentYear);
+      this.league.offseasonPipeline = defaultOffseasonPipeline(this.currentYear, this.sportRules.calendar);
     }
   }
 
@@ -2565,13 +2558,13 @@ export class GameSession {
 
   getOffseasonPipeline() {
     if (!this.league.offseasonPipeline || typeof this.league.offseasonPipeline !== "object") {
-      this.league.offseasonPipeline = defaultOffseasonPipeline(this.currentYear);
+      this.league.offseasonPipeline = defaultOffseasonPipeline(this.currentYear, this.sportRules.calendar);
     }
     return this.league.offseasonPipeline;
   }
 
   resetOffseasonPipeline(year = this.currentYear) {
-    this.league.offseasonPipeline = defaultOffseasonPipeline(year);
+    this.league.offseasonPipeline = defaultOffseasonPipeline(year, this.sportRules.calendar);
     return this.league.offseasonPipeline;
   }
 
@@ -3137,203 +3130,214 @@ export class GameSession {
   advanceOffseasonPipeline() {
     const pipeline = this.getOffseasonPipeline();
     if (pipeline.completed) return { ...pipeline, message: "Offseason pipeline complete." };
+    const calendar = this.sportRules.calendar;
     const stage = pipeline.stage;
-    const next = (value) => {
+    // Each stage handler reports only its message; the stage that follows is
+    // the calendar's, so the order lives in one declaration (calendar.js).
+    const next = (outcome) => {
+      const value = { nextStage: nextOffseasonStageId(calendar, stage), ...outcome };
       pipeline.history.push({ stage, week: this.currentWeek, year: this.currentYear, result: value });
       pipeline.stage = value.nextStage;
-      if (pipeline.stage === "complete") pipeline.completed = true;
+      if (pipeline.stage === terminalOffseasonStageId(calendar)) pipeline.completed = true;
       return { ...pipeline, message: value.message };
     };
 
-    if (stage === "retirements") {
-      this.processStaffLifecycle();
-      const rollover = this.runRosterYearRollover();
-      const retention = this.runRetentionWindow();
-      this.logNews(`Retirement processing complete for ${this.currentYear}`, {
-        year: this.currentYear,
-        retired: rollover.retired,
-        expired: rollover.expired,
-        retained: retention.retained
-      });
-      const developmentLine = rollover.development?.summaryLine ? ` ${rollover.development.summaryLine}` : "";
-      return next({
-        nextStage: "coaching-carousel",
-        message: `${rollover.retired} retired, ${rollover.expired} contracts expired, ${retention.retained} re-signed by their own club.${developmentLine}`
-      });
-    }
-    if (stage === "coaching-carousel") {
-      this.processStaffLifecycle();
-      // S93 — the offseason's front-office stage is also where rival ownership
-      // commits capital. Measured across a live decade before this existed, the
-      // league-wide facility standard deviation was 5.66 at seasons 0, 3, 6 and
-      // 10 — identical to the last digit. Nothing but the player's Settings tab
-      // had ever written a facility. The controlled club is excluded: the
-      // player's capital is the player's decision.
-      const facilityRound = runFacilityInvestmentRound({
-        league: this.league,
-        year: this.currentYear,
-        controlledTeamId: this.controlledTeamId
-      });
-      if (facilityRound.investments.length || facilityRound.upkeep.length || facilityRound.distributions.length) {
-        this._developmentCentresRevision = null;
-        const capitalReturned = facilityRound.distributions.reduce(
-          (sum, entry) => sum + (Number(entry.returned) || 0),
-          0
-        );
-        this.logNews(
-          `${facilityRound.investments.length} clubs committed facility capital for ${this.currentYear}` +
-            (facilityRound.upkeep.length ? `; ${facilityRound.upkeep.length} let a wing slip on deferred maintenance` : "") +
-            (facilityRound.distributions.length
-              ? `; ownership returned ${(capitalReturned / 1_000_000).toFixed(1)}M above operating envelopes`
-              : ""),
-          {
-            year: this.currentYear,
-            investments: facilityRound.investments.length,
-            degraded: facilityRound.upkeep.length,
-            distributions: facilityRound.distributions.length,
-            capitalReturned
-          }
-        );
-      }
-      return next({
-        nextStage: "combine",
-        message:
-          `Coaching carousel resolved. ${facilityRound.investments.length} clubs broke ground on facilities` +
-          (facilityRound.upkeep.length ? `, ${facilityRound.upkeep.length} deferred maintenance.` : ".")
-      });
-    }
-    if (stage === "combine") {
-      if (!this.league.pendingDraft) this.prepareDraft();
-      for (const prospect of this.league.pendingDraft.available) {
-        // Position-weighted combine grade (S29) — a corner's 40 time and a
-        // guard's bench press are not interchangeable signals.
-        prospect.scouting.combineGrade = computeCombineGrade(prospect);
-      }
-      this.logNews(`Scouting Combine wrapped for class ${this.league.pendingDraft.year}`, { year: this.league.pendingDraft.year });
-      return next({ nextStage: "pro-days", message: "Combine metrics applied to draft class." });
-    }
-    if (stage === "pro-days") {
-      const controlledState = this.controlledTeamId
-        ? this.ensureScoutingTeamState(this.controlledTeamId)
-        : null;
-      for (const prospect of this.league.pendingDraft?.available || []) {
-        // Public baseline: unchanged flat-noise pro-day bump — nobody's homework,
-        // nobody's payoff. This is the grade a team that never scouted still sees.
-        const bump = this.rng.int(-1, 3);
-        prospect.scouting.proDayBoost = (prospect.scouting.proDayBoost || 0) + bump;
-        prospect.scouting.scoutedOverall = clamp((prospect.scouting.scoutedOverall || prospect.overall) + bump, 45, 99);
+    const declared = offseasonStage(calendar, stage);
+    if (declared && !declared.terminal) return this[declared.handler](pipeline, next);
+    // The terminal stage, or a stage this calendar does not declare (a legacy save).
+    pipeline.completed = true;
+    pipeline.stage = terminalOffseasonStageId(calendar);
+    return { ...pipeline, message: "Offseason pipeline complete." };
+  }
 
-        // Investment payoff (S29 audit fix): the controlled team's own private
-        // evaluation converges toward true overall proportional to points spent —
-        // pro days are the scouting department's last data point before the draft,
-        // so heavy investment should sharply reduce remaining uncertainty.
-        if (controlledState) {
-          const spent = Number(controlledState.effort[prospect.id] || 0);
-          if (spent > 0) {
-            const priorEval = controlledState.evaluations[prospect.id] ?? prospect.scouting.scoutedOverall;
-            const convergence = clamp(spent / 90, 0.15, 0.85);
-            const noiseRange = Math.max(0, 2 - Math.round(convergence * 4));
-            const proDayNoise = noiseRange ? this.rng.int(-noiseRange, noiseRange) : 0;
-            const converged = Math.round(priorEval + (prospect.overall - priorEval) * convergence) + proDayNoise;
-            controlledState.evaluations[prospect.id] = clamp(converged, 45, 99);
-          }
+  runOffseasonRetirementsStage(pipeline, next) {
+    this.processStaffLifecycle();
+    const rollover = this.runRosterYearRollover();
+    const retention = this.runRetentionWindow();
+    this.logNews(`Retirement processing complete for ${this.currentYear}`, {
+      year: this.currentYear,
+      retired: rollover.retired,
+      expired: rollover.expired,
+      retained: retention.retained
+    });
+    const developmentLine = rollover.development?.summaryLine ? ` ${rollover.development.summaryLine}` : "";
+    return next({
+      message: `${rollover.retired} retired, ${rollover.expired} contracts expired, ${retention.retained} re-signed by their own club.${developmentLine}`
+    });
+  }
+
+  runOffseasonCoachingCarouselStage(pipeline, next) {
+    this.processStaffLifecycle();
+    // S93 — the offseason's front-office stage is also where rival ownership
+    // commits capital. Measured across a live decade before this existed, the
+    // league-wide facility standard deviation was 5.66 at seasons 0, 3, 6 and
+    // 10 — identical to the last digit. Nothing but the player's Settings tab
+    // had ever written a facility. The controlled club is excluded: the
+    // player's capital is the player's decision.
+    const facilityRound = runFacilityInvestmentRound({
+      league: this.league,
+      year: this.currentYear,
+      controlledTeamId: this.controlledTeamId
+    });
+    if (facilityRound.investments.length || facilityRound.upkeep.length || facilityRound.distributions.length) {
+      this._developmentCentresRevision = null;
+      const capitalReturned = facilityRound.distributions.reduce(
+        (sum, entry) => sum + (Number(entry.returned) || 0),
+        0
+      );
+      this.logNews(
+        `${facilityRound.investments.length} clubs committed facility capital for ${this.currentYear}` +
+          (facilityRound.upkeep.length ? `; ${facilityRound.upkeep.length} let a wing slip on deferred maintenance` : "") +
+          (facilityRound.distributions.length
+            ? `; ownership returned ${(capitalReturned / 1_000_000).toFixed(1)}M above operating envelopes`
+            : ""),
+        {
+          year: this.currentYear,
+          investments: facilityRound.investments.length,
+          degraded: facilityRound.upkeep.length,
+          distributions: facilityRound.distributions.length,
+          capitalReturned
+        }
+      );
+    }
+    return next({
+      message:
+        `Coaching carousel resolved. ${facilityRound.investments.length} clubs broke ground on facilities` +
+        (facilityRound.upkeep.length ? `, ${facilityRound.upkeep.length} deferred maintenance.` : ".")
+    });
+  }
+
+  runOffseasonCombineStage(pipeline, next) {
+    if (!this.league.pendingDraft) this.prepareDraft();
+    for (const prospect of this.league.pendingDraft.available) {
+      // Position-weighted combine grade (S29) — a corner's 40 time and a
+      // guard's bench press are not interchangeable signals.
+      prospect.scouting.combineGrade = computeCombineGrade(prospect);
+    }
+    this.logNews(`Scouting Combine wrapped for class ${this.league.pendingDraft.year}`, { year: this.league.pendingDraft.year });
+    return next({ message: "Combine metrics applied to draft class." });
+  }
+
+  runOffseasonProDaysStage(pipeline, next) {
+    const controlledState = this.controlledTeamId
+      ? this.ensureScoutingTeamState(this.controlledTeamId)
+      : null;
+    for (const prospect of this.league.pendingDraft?.available || []) {
+      // Public baseline: unchanged flat-noise pro-day bump — nobody's homework,
+      // nobody's payoff. This is the grade a team that never scouted still sees.
+      const bump = this.rng.int(-1, 3);
+      prospect.scouting.proDayBoost = (prospect.scouting.proDayBoost || 0) + bump;
+      prospect.scouting.scoutedOverall = clamp((prospect.scouting.scoutedOverall || prospect.overall) + bump, 45, 99);
+
+      // Investment payoff (S29 audit fix): the controlled team's own private
+      // evaluation converges toward true overall proportional to points spent —
+      // pro days are the scouting department's last data point before the draft,
+      // so heavy investment should sharply reduce remaining uncertainty.
+      if (controlledState) {
+        const spent = Number(controlledState.effort[prospect.id] || 0);
+        if (spent > 0) {
+          const priorEval = controlledState.evaluations[prospect.id] ?? prospect.scouting.scoutedOverall;
+          const convergence = clamp(spent / 90, 0.15, 0.85);
+          const noiseRange = Math.max(0, 2 - Math.round(convergence * 4));
+          const proDayNoise = noiseRange ? this.rng.int(-noiseRange, noiseRange) : 0;
+          const converged = Math.round(priorEval + (prospect.overall - priorEval) * convergence) + proDayNoise;
+          controlledState.evaluations[prospect.id] = clamp(converged, 45, 99);
         }
       }
-      return next({ nextStage: "free-agency", message: "Pro day updates merged." });
     }
-    if (stage === "free-agency") {
-      const market = this.runFreeAgencyWindow();
-      if (!market.closed) {
-        // Hold the stage between waves so the GM can actually bid. Each call
-        // advances the wave counter, so this pauses without ever deadlocking.
-        return {
-          ...pipeline,
-          userActionRequired: true,
-          blockingReason: "free-agency-open",
-          freeAgency: this.getFreeAgencyWindow(),
-          message: market.message
-        };
-      }
-      // The formula can only be resolved once the market has closed, and the
-      // awards have to exist before the board is built or they are decoration.
-      const comp = this.generateCompensatoryPicks();
-      // Rebuild the board here, at the close of the market, rather than on
-      // entry to the draft: the awards have to be selections, and any pick
-      // traded during the offseason has to be honoured, but once the draft
-      // stage owns the board nothing may re-sort it underneath the clock.
-      this.refreshDraftOrder();
-      return next({
-        nextStage: "draft",
-        message: comp.length
-          ? `${market.message} ${comp.length} compensatory pick${comp.length === 1 ? "" : "s"} awarded.`
-          : market.message
-      });
+    return next({ message: "Pro day updates merged." });
+  }
+
+  runOffseasonFreeAgencyStage(pipeline, next) {
+    const market = this.runFreeAgencyWindow();
+    if (!market.closed) {
+      // Hold the stage between waves so the GM can actually bid. Each call
+      // advances the wave counter, so this pauses without ever deadlocking.
+      return {
+        ...pipeline,
+        userActionRequired: true,
+        blockingReason: "free-agency-open",
+        freeAgency: this.getFreeAgencyWindow(),
+        message: market.message
+      };
     }
-    if (stage === "draft") {
-      if (this.league.pendingDraft && !this.league.pendingDraft.completed) {
-        this.runCpuDraft({ untilUserPick: true });
-      }
-      const authority = this.getDraftAuthority();
-      if (authority?.controlledTeamOnClock) {
-        return {
-          ...pipeline,
-          userActionRequired: true,
-          blockingReason: "controlled-team-on-clock",
-          draft: authority,
-          message: `${authority.teamOnClock} is on the clock. Make the pick or explicitly delegate with Finish Draft.`
-        };
-      }
-      if (!authority?.completed) {
-        return {
-          ...pipeline,
-          userActionRequired: true,
-          blockingReason: "draft-action-required",
-          draft: authority,
-          message: "Draft progress paused before an unresolved user action."
-        };
-      }
-      return next({ nextStage: "udfa", message: "Draft complete." });
+    // The formula can only be resolved once the market has closed, and the
+    // awards have to exist before the board is built or they are decoration.
+    const comp = this.generateCompensatoryPicks();
+    // Rebuild the board here, at the close of the market, rather than on
+    // entry to the draft: the awards have to be selections, and any pick
+    // traded during the offseason has to be honoured, but once the draft
+    // stage owns the board nothing may re-sort it underneath the clock.
+    this.refreshDraftOrder();
+    return next({
+      message: comp.length
+        ? `${market.message} ${comp.length} compensatory pick${comp.length === 1 ? "" : "s"} awarded.`
+        : market.message
+    });
+  }
+
+  runOffseasonDraftStage(pipeline, next) {
+    if (this.league.pendingDraft && !this.league.pendingDraft.completed) {
+      this.runCpuDraft({ untilUserPick: true });
     }
-    if (stage === "udfa") {
-      // Legacy-save safety: a snapshot written before S67 can resume at `udfa`
-      // having never passed the new `retirements`/`free-agency` stages, so both
-      // are idempotently reconciled here rather than silently skipped.
-      this.runRosterYearRollover();
-      this.runRetentionWindow();
-      this.runFreeAgencyWindow();
-      const backstop = this.runRosterLegalityBackstop();
-      return next({
-        nextStage: "camp-cuts",
-        message: backstop.message
-      });
+    const authority = this.getDraftAuthority();
+    if (authority?.controlledTeamOnClock) {
+      return {
+        ...pipeline,
+        userActionRequired: true,
+        blockingReason: "controlled-team-on-clock",
+        draft: authority,
+        message: `${authority.teamOnClock} is on the clock. Make the pick or explicitly delegate with Finish Draft.`
+      };
     }
-    if (stage === "camp-cuts") {
-      this.runAiTeamMaintenance();
-      this.refreshChemistryAndSchemeFit();
-      // Apply veteran mentorship development bonuses
-      applyMentorshipBonuses(this.league, this.currentYear);
-      // S91 — camp cuts must actually cut.
-      //
-      // The offseason's only compliance pass ran back in the `free-agency`
-      // stage, and `draft` and `udfa` then add a full rookie class of contracts
-      // after it, with `runAiTeamMaintenance` above free to sign more. So the
-      // league came to rest with clubs the authority had never been given a
-      // chance to examine: measured at seed 20260817, IND finished the 2028
-      // offseason $3.3M over the cap with 68 players — fifteen clear of the
-      // 53-man floor — and a single release put it back under. It was never
-      // trapped; enforcement had simply already happened.
-      //
-      // This is the S89 defect shape one seam later. S89 recorded that a limit
-      // enforced only at the moment of addition is not enforcement; this is its
-      // mirror, a limit enforced only *before* the additions. The stage named
-      // for the moment a real club cuts to the roster limit is the right place
-      // to hold that limit, so it now does.
-      this.enforceLeagueLegality();
-      return next({ nextStage: "complete", message: "Training camp cuts and roster normalization complete." });
+    if (!authority?.completed) {
+      return {
+        ...pipeline,
+        userActionRequired: true,
+        blockingReason: "draft-action-required",
+        draft: authority,
+        message: "Draft progress paused before an unresolved user action."
+      };
     }
-    pipeline.completed = true;
-    pipeline.stage = "complete";
-    return { ...pipeline, message: "Offseason pipeline complete." };
+    return next({ message: "Draft complete." });
+  }
+
+  runOffseasonUdfaStage(pipeline, next) {
+    // Legacy-save safety: a snapshot written before S67 can resume at `udfa`
+    // having never passed the new `retirements`/`free-agency` stages, so both
+    // are idempotently reconciled here rather than silently skipped.
+    this.runRosterYearRollover();
+    this.runRetentionWindow();
+    this.runFreeAgencyWindow();
+    const backstop = this.runRosterLegalityBackstop();
+    return next({
+      message: backstop.message
+    });
+  }
+
+  runOffseasonCampCutsStage(pipeline, next) {
+    this.runAiTeamMaintenance();
+    this.refreshChemistryAndSchemeFit();
+    // Apply veteran mentorship development bonuses
+    applyMentorshipBonuses(this.league, this.currentYear);
+    // S91 — camp cuts must actually cut.
+    //
+    // The offseason's only compliance pass ran back in the `free-agency`
+    // stage, and `draft` and `udfa` then add a full rookie class of contracts
+    // after it, with `runAiTeamMaintenance` above free to sign more. So the
+    // league came to rest with clubs the authority had never been given a
+    // chance to examine: measured at seed 20260817, IND finished the 2028
+    // offseason $3.3M over the cap with 68 players — fifteen clear of the
+    // 53-man floor — and a single release put it back under. It was never
+    // trapped; enforcement had simply already happened.
+    //
+    // This is the S89 defect shape one seam later. S89 recorded that a limit
+    // enforced only at the moment of addition is not enforcement; this is its
+    // mirror, a limit enforced only *before* the additions. The stage named
+    // for the moment a real club cuts to the roster limit is the right place
+    // to hold that limit, so it now does.
+    this.enforceLeagueLegality();
+    return next({ message: "Training camp cuts and roster normalization complete." });
   }
 
   getLeagueAnalytics({ year = this.currentYear, teamId = null } = {}) {
@@ -3992,7 +3996,7 @@ export class GameSession {
     this.ensureDraftPickAssets();
     recalculateAllTeamRatings(this.league);
     this.statBook.reindexPlayers();
-    this.phase = "regular-season";
+    this.phase = seasonOpeningPhaseId(this.sportRules.calendar);
     this.currentWeek = 1;
     this.weekResultsCurrentSeason = [];
     // Completed seasons are served from league.history[].weekly; keeping them in
@@ -5718,383 +5722,396 @@ export class GameSession {
     };
   }
 
+  /**
+   * Advances the season one step. The phase list, its order and each phase's
+   * handler are the sport's calendar (src/sport/football/calendar.js); a phase
+   * the calendar does not declare throws UnknownCalendarPhaseError.
+   */
   advanceWeek() {
-    if (this.phase === "regular-season") {
-      this.resetGameDayInactives();
-      this.runStaffAndStrategyRefresh();
-      // S86 [audit #1] — runStaffAndStrategyRefresh rebuilds every team's
-      // weeklyPlan wholesale, which is what silently erased the player's chosen
-      // weekly tactic. Apply the staged tactic to the freshly rebuilt plan, so
-      // the simulator actually observes the decision. Consumed exactly once.
-      consumePendingWeeklyTactic(this);
-      this.grantWeeklyScoutingPoints();
-      this.decrementAvailability();
-      this.processWaivers();
-      this.runAiTeamMaintenance();
-      // Premium free agency is a live weekly market (S62): rivals bid, then
-      // the multi-offer resolution runs — the player can be outbid and learns
-      // exactly what won.
-      this.submitCpuFreeAgencyOffers();
-      this.processFreeAgencyMarket();
-      const weekBlock = this.seasonSchedule[this.currentWeek - 1];
-      if (!weekBlock) {
-        this.phase = "postseason";
-        return { ok: true, phase: this.phase, message: "Regular season complete. Advance again for playoffs." };
-      }
+    const phase = calendarPhase(this.sportRules.calendar, this.phase);
+    return this[phase.handler]();
+  }
 
-      const simStart = Date.now();
-      // Teams coming off a scheduled bye carry a rest edge into this week,
-      // derived from the previous week block's absences (source schedule truth).
-      const previousBlock = this.seasonSchedule[this.currentWeek - 2] || null;
-      const restedTeamIds = previousBlock
-        ? this.league.teams
-            .map((team) => team.id)
-            .filter((teamId) =>
-              !previousBlock.games.some(
-                (game) => game.homeTeamId === teamId || game.awayTeamId === teamId
-              )
+  /** Moves to the phase the calendar declares after the current one. */
+  enterNextCalendarPhase() {
+    this.phase = nextCalendarPhaseId(this.sportRules.calendar, this.phase);
+    return this.phase;
+  }
+
+  advanceRegularSeasonPhase() {
+    this.resetGameDayInactives();
+    this.runStaffAndStrategyRefresh();
+    // S86 [audit #1] — runStaffAndStrategyRefresh rebuilds every team's
+    // weeklyPlan wholesale, which is what silently erased the player's chosen
+    // weekly tactic. Apply the staged tactic to the freshly rebuilt plan, so
+    // the simulator actually observes the decision. Consumed exactly once.
+    consumePendingWeeklyTactic(this);
+    this.grantWeeklyScoutingPoints();
+    this.decrementAvailability();
+    this.processWaivers();
+    this.runAiTeamMaintenance();
+    // Premium free agency is a live weekly market (S62): rivals bid, then
+    // the multi-offer resolution runs — the player can be outbid and learns
+    // exactly what won.
+    this.submitCpuFreeAgencyOffers();
+    this.processFreeAgencyMarket();
+    const weekBlock = this.seasonSchedule[this.currentWeek - 1];
+    if (!weekBlock) {
+      this.enterNextCalendarPhase();
+      return { ok: true, phase: this.phase, message: "Regular season complete. Advance again for playoffs." };
+    }
+
+    const simStart = Date.now();
+    // Teams coming off a scheduled bye carry a rest edge into this week,
+    // derived from the previous week block's absences (source schedule truth).
+    const previousBlock = this.seasonSchedule[this.currentWeek - 2] || null;
+    const restedTeamIds = previousBlock
+      ? this.league.teams
+          .map((team) => team.id)
+          .filter((teamId) =>
+            !previousBlock.games.some(
+              (game) => game.homeTeamId === teamId || game.awayTeamId === teamId
             )
-        : [];
-      const previousMilestoneStats = capturePlayerMilestoneStats(this.league.players, this.currentYear);
-      const weekResult = simulateRegularSeasonWeek({
+          )
+      : [];
+    const previousMilestoneStats = capturePlayerMilestoneStats(this.league.players, this.currentYear);
+    const weekResult = simulateRegularSeasonWeek({
+      league: this.league,
+      statBook: this.statBook,
+      year: this.currentYear,
+      weekBlock,
+      rng: this.rng,
+      mode: this.mode,
+      restedTeamIds
+    });
+    this.trackTiming("simulate-week", Date.now() - simStart);
+    this.trackCounter("weeks-simulated", 1);
+    applyWeekMorale(this.league, weekResult);
+    const events = this.generateWeekEvents(weekResult);
+    weekResult.events = events;
+    weekResult.narratives = this.generateNarratives(weekResult);
+    this.processOwnerFinances(weekResult);
+    this.refreshChemistryAndSchemeFit();
+
+    // ── Engine hooks ──────────────────────────────────────────────────────
+    // Injury rolls for every game this week
+    const injuryMultiplier = this.league.settings?.injuryRateMultiplier ?? 1.0;
+    const injuryModifierCache = new Map();
+    const injuryModifiers = (teamId) => {
+      if (injuryModifierCache.has(teamId)) return injuryModifierCache.get(teamId);
+      const team = teamById(this.league, teamId);
+      const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
+      injuryModifierCache.set(teamId, modifiers);
+      return modifiers;
+    };
+    for (const game of weekResult.games) {
+      // Injury exposure is limited to players who actually dressed: the same
+      // dressed-roster authority that builds lineups (active slot, not IR/PUP/NFI,
+      // not game-day inactive, not already out) owns candidate selection.
+      const homePlayers = getTeamPlayers(this.league, game.homeTeamId);
+      const awayPlayers = getTeamPlayers(this.league, game.awayTeamId);
+      const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier, {
+        getTeamModifiers: injuryModifiers
+      });
+      for (const { player } of injured) {
+        reportSignificantInjury(this.league, player, this.currentYear, weekResult.week);
+      }
+    }
+    // Beat reporter: results, milestones, streaks
+    reportWeeklyResults(this.league, weekResult, this.currentYear);
+    reportPlayerMilestones(this.league, this.league.players, this.currentYear, weekResult.week, previousMilestoneStats);
+    reportStreaks(this.league, this.currentYear, weekResult.week);
+    // Rivalry DNA
+    recordWeekRivalries(this.league, weekResult, this.currentYear);
+    // Press conference quotes for controlled team's game
+    generatePressConference(this.league, weekResult, this.controlledTeamId, this.currentYear);
+    // Narrative event engine + continuity threads (S29 — previously unwired)
+    if (this.getLeagueSettings().enableNarratives) {
+      runNarrativeChecks(this.league, this.currentYear, weekResult.week, this.rng);
+      for (const thread of resolveContinuityThreads(this.league, { year: this.currentYear, week: weekResult.week })) {
+        this.logNews(thread.resolution, {
+          teamId: thread.teamId,
+          playerId: thread.playerId,
+          kind: "continuity-resolution",
+          threadType: thread.type
+        });
+      }
+    }
+    // Fan sentiment update (uses current standings snapshot)
+    updateFanSentiment(this.league, weekResult, this.currentYear);
+    // The rest of the league acts too. The market proposes only CPU-to-CPU
+    // packages; TradeService rechecks and commits every accepted swap.
+    runCpuTradeMarket(this);
+    // Rival GMs act on the player: bounded, deterministic inbound trade
+    // offers arrive through the news/inbox pipeline (S62).
+    const inboundOffer = generateInboundTradeOffers(this);
+    if (inboundOffer) {
+      reportInboundTradeOffer(this.league, inboundOffer);
+    }
+    // ─────────────────────────────────────────────────────────────────────
+
+    // Archive first: gameArchive is the box-score authority every consumer
+    // reads through, and the stored week records below keep only identity and
+    // scoreline fields (see src/runtime/weekResultProjection.js). The live
+    // `weekResult` returned to callers is untouched and still carries full
+    // box scores for post-game consumers.
+    this.archiveGameResults(weekResult.games);
+    const leanWeek = toLeanWeekResult(weekResult);
+    this.weekResultsCurrentSeason.push(leanWeek);
+    this.league.weeklyHistory.push({ ...leanWeek, year: this.currentYear, week: weekResult.week });
+
+    this.currentWeek += 1;
+    const { calendar, structure } = this.sportRules;
+    if (this.currentWeek > calendarPhaseWeekLimit(calendar, this.phase, structure)) {
+      this.enterNextCalendarPhase();
+      this.initializePostseasonRoundFlow();
+      this.preparePostseasonControlledGate();
+    }
+    resolveGmDecisionCommitments(this);
+    // Owner confidence drifts from this week's observable results and any
+    // commitment resolutions just recorded; the controlled team's receipt is
+    // kept for the dashboard. Patience changes feed next week's heat.
+    this.lastOwnerConfidenceReceipt = applyWeeklyOwnerConfidence({
+      league: this.league,
+      weekResult,
+      currentYear: this.currentYear,
+      commitmentWeek: this.currentWeek,
+      controlledTeamId: this.controlledTeamId
+    }) || this.lastOwnerConfidenceReceipt || null;
+    this.registerOwnerUltimatumPressure();
+    return { ok: true, phase: this.phase, week: weekResult.week, games: weekResult.games, events };
+  }
+
+  advancePostseasonPhase() {
+    const state = this.initializePostseasonRoundFlow();
+    let gate = this.preparePostseasonControlledGate();
+    let controlledGame = null;
+    if (gate && (gate.homeTeamId === this.controlledTeamId || gate.awayTeamId === this.controlledTeamId)) {
+      this.setPostseasonMatchupPlans(gate);
+      consumePendingWeeklyTactic(this);
+      const resolved = simulateNextPostseasonGame({
+        state,
         league: this.league,
         statBook: this.statBook,
         year: this.currentYear,
-        weekBlock,
         rng: this.rng,
-        mode: this.mode,
-        restedTeamIds
+        mode: this.mode
       });
-      this.trackTiming("simulate-week", Date.now() - simStart);
-      this.trackCounter("weeks-simulated", 1);
-      applyWeekMorale(this.league, weekResult);
-      const events = this.generateWeekEvents(weekResult);
-      weekResult.events = events;
-      weekResult.narratives = this.generateNarratives(weekResult);
-      this.processOwnerFinances(weekResult);
-      this.refreshChemistryAndSchemeFit();
-
-      // ── Engine hooks ──────────────────────────────────────────────────────
-      // Injury rolls for every game this week
-      const injuryMultiplier = this.league.settings?.injuryRateMultiplier ?? 1.0;
-      const injuryModifierCache = new Map();
-      const injuryModifiers = (teamId) => {
-        if (injuryModifierCache.has(teamId)) return injuryModifierCache.get(teamId);
-        const team = teamById(this.league, teamId);
-        const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
-        injuryModifierCache.set(teamId, modifiers);
-        return modifiers;
-      };
-      for (const game of weekResult.games) {
-        // Injury exposure is limited to players who actually dressed: the same
-        // dressed-roster authority that builds lineups (active slot, not IR/PUP/NFI,
-        // not game-day inactive, not already out) owns candidate selection.
-        const homePlayers = getTeamPlayers(this.league, game.homeTeamId);
-        const awayPlayers = getTeamPlayers(this.league, game.awayTeamId);
-        const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier, {
-          getTeamModifiers: injuryModifiers
-        });
-        for (const { player } of injured) {
-          reportSignificantInjury(this.league, player, this.currentYear, weekResult.week);
-        }
-      }
-      // Beat reporter: results, milestones, streaks
-      reportWeeklyResults(this.league, weekResult, this.currentYear);
-      reportPlayerMilestones(this.league, this.league.players, this.currentYear, weekResult.week, previousMilestoneStats);
-      reportStreaks(this.league, this.currentYear, weekResult.week);
-      // Rivalry DNA
-      recordWeekRivalries(this.league, weekResult, this.currentYear);
-      // Press conference quotes for controlled team's game
-      generatePressConference(this.league, weekResult, this.controlledTeamId, this.currentYear);
-      // Narrative event engine + continuity threads (S29 — previously unwired)
-      if (this.getLeagueSettings().enableNarratives) {
-        runNarrativeChecks(this.league, this.currentYear, weekResult.week, this.rng);
-        for (const thread of resolveContinuityThreads(this.league, { year: this.currentYear, week: weekResult.week })) {
-          this.logNews(thread.resolution, {
-            teamId: thread.teamId,
-            playerId: thread.playerId,
-            kind: "continuity-resolution",
-            threadType: thread.type
-          });
-        }
-      }
-      // Fan sentiment update (uses current standings snapshot)
-      updateFanSentiment(this.league, weekResult, this.currentYear);
-      // The rest of the league acts too. The market proposes only CPU-to-CPU
-      // packages; TradeService rechecks and commits every accepted swap.
-      runCpuTradeMarket(this);
-      // Rival GMs act on the player: bounded, deterministic inbound trade
-      // offers arrive through the news/inbox pipeline (S62).
-      const inboundOffer = generateInboundTradeOffers(this);
-      if (inboundOffer) {
-        reportInboundTradeOffer(this.league, inboundOffer);
-      }
-      // ─────────────────────────────────────────────────────────────────────
-
-      // Archive first: gameArchive is the box-score authority every consumer
-      // reads through, and the stored week records below keep only identity and
-      // scoreline fields (see src/runtime/weekResultProjection.js). The live
-      // `weekResult` returned to callers is untouched and still carries full
-      // box scores for post-game consumers.
-      this.archiveGameResults(weekResult.games);
-      const leanWeek = toLeanWeekResult(weekResult);
-      this.weekResultsCurrentSeason.push(leanWeek);
-      this.league.weeklyHistory.push({ ...leanWeek, year: this.currentYear, week: weekResult.week });
-
-      this.currentWeek += 1;
-      if (this.currentWeek > this.sportRules.structure.regularSeasonWeeks) {
-        this.phase = "postseason";
-        this.initializePostseasonRoundFlow();
-        this.preparePostseasonControlledGate();
-      }
-      resolveGmDecisionCommitments(this);
-      // Owner confidence drifts from this week's observable results and any
-      // commitment resolutions just recorded; the controlled team's receipt is
-      // kept for the dashboard. Patience changes feed next week's heat.
-      this.lastOwnerConfidenceReceipt = applyWeeklyOwnerConfidence({
-        league: this.league,
-        weekResult,
-        currentYear: this.currentYear,
-        commitmentWeek: this.currentWeek,
-        controlledTeamId: this.controlledTeamId
-      }) || this.lastOwnerConfidenceReceipt || null;
-      this.registerOwnerUltimatumPressure();
-      return { ok: true, phase: this.phase, week: weekResult.week, games: weekResult.games, events };
+      controlledGame = resolved?.game || null;
+      gate = this.preparePostseasonControlledGate();
     }
 
-    if (this.phase === "postseason") {
-      const state = this.initializePostseasonRoundFlow();
-      let gate = this.preparePostseasonControlledGate();
-      let controlledGame = null;
-      if (gate && (gate.homeTeamId === this.controlledTeamId || gate.awayTeamId === this.controlledTeamId)) {
-        this.setPostseasonMatchupPlans(gate);
-        consumePendingWeeklyTactic(this);
-        const resolved = simulateNextPostseasonGame({
-          state,
-          league: this.league,
-          statBook: this.statBook,
-          year: this.currentYear,
-          rng: this.rng,
-          mode: this.mode
-        });
-        controlledGame = resolved?.game || null;
-        gate = this.preparePostseasonControlledGate();
-      }
-
-      if (state.status !== "completed") {
-        return {
-          ok: true,
-          phase: this.phase,
-          year: this.currentYear,
-          week: this.currentWeek,
-          games: controlledGame ? [controlledGame] : [],
-          postseasonProgress: this.getPostseasonProgress()
-        };
-      }
-
-      const playoffResult = postseasonResultFromState(state);
-
-      const calibration = applySeasonRealismCalibration({
-        league: this.league,
-        year: this.currentYear,
-        profile: this.realismProfile
-      });
-
-      this.lastCalibrationReport = calibration;
-      this.statBook.archiveTeamSeason(this.currentYear);
-      this.previousDivisionRanks = playoffResult.divisionRanksForNextYear;
-      this.league.champions.push({
-        year: this.currentYear,
-        championTeamId: playoffResult.superBowl.championTeamId,
-        runnerUpTeamId: playoffResult.superBowl.runnerUpTeamId,
-        score: championScoreline(playoffResult.superBowl)
-      });
-      // Milestone celebrations (S62): titles, playoff wins, and eliminations
-      // announce themselves through the inbox instead of dying in a table.
-      if (this.controlledTeamId) {
-        const controlledId = this.controlledTeamId;
-        const superBowl = playoffResult.superBowl;
-        const controlledGames = (playoffResult.gameArchiveEntries || []).filter(
-          (game) => game.homeTeamId === controlledId || game.awayTeamId === controlledId
-        );
-        for (const game of controlledGames) {
-          if (game.winnerId === controlledId && game.label !== "super-bowl") {
-            reportMilestone(this.league, {
-              type: "playoff-win",
-              year: this.currentYear,
-              teamIds: [controlledId],
-              headline: `Playoff win: ${teamLabel(this.league, controlledId)} take the ${game.label || "playoff round"}`,
-              detail: `${game.homeTeamId} ${game.homeScore} — ${game.awayScore} ${game.awayTeamId}. The run continues.`
-            });
-          }
-        }
-        if (superBowl.championTeamId === controlledId) {
-          reportMilestone(this.league, {
-            type: "championship",
-            year: this.currentYear,
-            teamIds: [controlledId],
-            headline: `🏆 ${teamLabel(this.league, controlledId)} are world champions`,
-            detail: `Final: ${superBowl.homeScore}-${superBowl.awayScore} over ${superBowl.runnerUpTeamId}. A season for the ages.`
-          });
-        } else {
-          const lastGame = controlledGames[controlledGames.length - 1];
-          if (lastGame && lastGame.winnerId && lastGame.winnerId !== controlledId) {
-            const round = lastGame.label === "super-bowl" ? "the Championship Game" : `the ${lastGame.label || "playoffs"}`;
-            reportMilestone(this.league, {
-              type: "playoff-elimination",
-              year: this.currentYear,
-              teamIds: [controlledId],
-              headline: `Season ends in ${round}`,
-              detail: `${lastGame.homeTeamId} ${lastGame.homeScore} — ${lastGame.awayScore} ${lastGame.awayTeamId}. The locker room will carry this one into the offseason.`
-            });
-          }
-        }
-      }
-      this.league.history.push({
-        year: this.currentYear,
-        standings: playoffResult.standings,
-        superBowl: playoffResult.superBowl,
-        playoffBracket: playoffResult.bracket,
-        realismCalibration: calibration,
-        weekly: this.weekResultsCurrentSeason
-      });
-      this.logTransaction({
-        type: "championship",
-        teamId: playoffResult.superBowl.championTeamId,
-        details: {
-          runnerUp: playoffResult.superBowl.runnerUpTeamId,
-          score: championScoreline(playoffResult.superBowl)
-        }
-      });
-      this.lastAwardSummary = estimateAwards(this, this.currentYear, playoffResult);
-      this.latestPostseason = playoffResult;
-      // GM Legacy Score — update after each season
-      let stewardshipReport = null;
-      if (this.controlledTeamId) {
-        const capSummary = this.getTeamCapSummary(this.controlledTeamId);
-        const seasonAvByPlayerId = Object.fromEntries(
-          [...collectSeasonAvMap(this, this.currentYear, "regular")].map(([playerId, row]) => [playerId, Number(row?.av || 0)])
-        );
-        const currentReport = generateGMReportCard(
-          teamById(this.league, this.controlledTeamId),
-          teamPlayersAll(this.league, this.controlledTeamId),
-          this.currentYear,
-          {
-            capSummary,
-            transactions: this.league.transactionLog || [],
-            seasonAvByPlayerId
-          }
-        );
-        const previousReport = (this.league.gmStewardshipReports || [])
-          .filter((entry) => Number(entry.year) < Number(this.currentYear))
-          .sort((a, b) => Number(b.year) - Number(a.year))[0] || null;
-        stewardshipReport = attachTrend(currentReport, previousReport);
-        this.league.gmStewardshipReports = [
-          ...(this.league.gmStewardshipReports || []).filter((entry) => Number(entry.year) !== Number(this.currentYear)),
-          stewardshipReport
-        ].sort((a, b) => Number(a.year) - Number(b.year)).slice(-30);
-        updateGmLegacyAfterSeason(this.league, this.controlledTeamId, this.currentYear, { capSummary, stewardshipReport });
-        // Adaptive League (S70): opt-in, bounded, announced; no-op when off.
-        applyAdaptiveDifficultyAfterSeason(this);
-      }
-      this.pendingSeasonWrap = {
-        year: this.currentYear,
-        superBowl: playoffResult.superBowl,
-        awards: this.lastAwardSummary,
-        stewardshipReport
-      };
-      this.archiveGameResults(playoffResult.gameArchiveEntries);
-      this.postseasonState = null;
-      const capsuleGrade = gradeTimeCapsule({ league: this.league, statBook: this.statBook, year: this.currentYear });
-      if (capsuleGrade) {
-        this.logNews(
-          `Receipts are in: the beat reporter went ${capsuleGrade.hits}-${capsuleGrade.misses}${capsuleGrade.pushes ? ` (${capsuleGrade.pushes} push)` : ""} on preseason predictions`,
-          { year: this.currentYear, kind: "time-capsule-receipts", verdict: capsuleGrade.reporterVerdict }
-        );
-      }
-      this.logNews(`${playoffResult.superBowl.championTeamId} won the championship`, {
-        teamId: playoffResult.superBowl.championTeamId,
-        runnerUp: playoffResult.superBowl.runnerUpTeamId
-      });
-      this.phase = "season-awards";
+    if (state.status !== "completed") {
       return {
         ok: true,
         phase: this.phase,
         year: this.currentYear,
         week: this.currentWeek,
         games: controlledGame ? [controlledGame] : [],
-        superBowl: playoffResult.superBowl,
-        awards: this.lastAwardSummary
+        postseasonProgress: this.getPostseasonProgress()
       };
     }
 
-    if (this.phase === "season-awards") {
-      // Hall of Fame inductions announce themselves (S62): diff the hall
-      // before/after refresh and celebrate new members through the inbox.
-      const hofBefore = new Set((this.league.hallOfFame || []).map((entry) => entry.playerId));
-      this.refreshHallOfFame();
-      const inducted = (this.league.hallOfFame || []).filter((entry) => !hofBefore.has(entry.playerId));
-      for (const entry of inducted.slice(0, 3)) {
-        reportMilestone(this.league, {
-          type: "hof-induction",
-          year: this.currentYear,
-          teamIds: (entry.teams || []).slice(0, 1),
-          playerIds: [entry.playerId],
-          headline: `🏛️ ${entry.player} elected to the Hall of Fame`,
-          detail: `Career AV ${entry.careerAv} · ${entry.championships} title${entry.championships === 1 ? "" : "s"} · Class of ${this.currentYear}. Open the Hall to hold the induction ceremony.`
-        });
+    const playoffResult = postseasonResultFromState(state);
+
+    const calibration = applySeasonRealismCalibration({
+      league: this.league,
+      year: this.currentYear,
+      profile: this.realismProfile
+    });
+
+    this.lastCalibrationReport = calibration;
+    this.statBook.archiveTeamSeason(this.currentYear);
+    this.previousDivisionRanks = playoffResult.divisionRanksForNextYear;
+    this.league.champions.push({
+      year: this.currentYear,
+      championTeamId: playoffResult.superBowl.championTeamId,
+      runnerUpTeamId: playoffResult.superBowl.runnerUpTeamId,
+      score: championScoreline(playoffResult.superBowl)
+    });
+    // Milestone celebrations (S62): titles, playoff wins, and eliminations
+    // announce themselves through the inbox instead of dying in a table.
+    if (this.controlledTeamId) {
+      const controlledId = this.controlledTeamId;
+      const superBowl = playoffResult.superBowl;
+      const controlledGames = (playoffResult.gameArchiveEntries || []).filter(
+        (game) => game.homeTeamId === controlledId || game.awayTeamId === controlledId
+      );
+      for (const game of controlledGames) {
+        if (game.winnerId === controlledId && game.label !== "super-bowl") {
+          reportMilestone(this.league, {
+            type: "playoff-win",
+            year: this.currentYear,
+            teamIds: [controlledId],
+            headline: `Playoff win: ${teamLabel(this.league, controlledId)} take the ${game.label || "playoff round"}`,
+            detail: `${game.homeTeamId} ${game.homeScore} — ${game.awayScore} ${game.awayTeamId}. The run continues.`
+          });
+        }
       }
-      this.prepareDraft();
-      this.seedCompLedgerForUpcomingOffseason();
-      this.resetOffseasonPipeline(this.currentYear);
-      this.league.freeAgencyMarket.stage = "legal-tampering";
-      this.seasonsSimulated += 1;
-      this.phase = "offseason";
+      if (superBowl.championTeamId === controlledId) {
+        reportMilestone(this.league, {
+          type: "championship",
+          year: this.currentYear,
+          teamIds: [controlledId],
+          headline: `🏆 ${teamLabel(this.league, controlledId)} are world champions`,
+          detail: `Final: ${superBowl.homeScore}-${superBowl.awayScore} over ${superBowl.runnerUpTeamId}. A season for the ages.`
+        });
+      } else {
+        const lastGame = controlledGames[controlledGames.length - 1];
+        if (lastGame && lastGame.winnerId && lastGame.winnerId !== controlledId) {
+          const round = lastGame.label === "super-bowl" ? "the Championship Game" : `the ${lastGame.label || "playoffs"}`;
+          reportMilestone(this.league, {
+            type: "playoff-elimination",
+            year: this.currentYear,
+            teamIds: [controlledId],
+            headline: `Season ends in ${round}`,
+            detail: `${lastGame.homeTeamId} ${lastGame.homeScore} — ${lastGame.awayScore} ${lastGame.awayTeamId}. The locker room will carry this one into the offseason.`
+          });
+        }
+      }
+    }
+    this.league.history.push({
+      year: this.currentYear,
+      standings: playoffResult.standings,
+      superBowl: playoffResult.superBowl,
+      playoffBracket: playoffResult.bracket,
+      realismCalibration: calibration,
+      weekly: this.weekResultsCurrentSeason
+    });
+    this.logTransaction({
+      type: "championship",
+      teamId: playoffResult.superBowl.championTeamId,
+      details: {
+        runnerUp: playoffResult.superBowl.runnerUpTeamId,
+        score: championScoreline(playoffResult.superBowl)
+      }
+    });
+    this.lastAwardSummary = estimateAwards(this, this.currentYear, playoffResult);
+    this.latestPostseason = playoffResult;
+    // GM Legacy Score — update after each season
+    let stewardshipReport = null;
+    if (this.controlledTeamId) {
+      const capSummary = this.getTeamCapSummary(this.controlledTeamId);
+      const seasonAvByPlayerId = Object.fromEntries(
+        [...collectSeasonAvMap(this, this.currentYear, "regular")].map(([playerId, row]) => [playerId, Number(row?.av || 0)])
+      );
+      const currentReport = generateGMReportCard(
+        teamById(this.league, this.controlledTeamId),
+        teamPlayersAll(this.league, this.controlledTeamId),
+        this.currentYear,
+        {
+          capSummary,
+          transactions: this.league.transactionLog || [],
+          seasonAvByPlayerId
+        }
+      );
+      const previousReport = (this.league.gmStewardshipReports || [])
+        .filter((entry) => Number(entry.year) < Number(this.currentYear))
+        .sort((a, b) => Number(b.year) - Number(a.year))[0] || null;
+      stewardshipReport = attachTrend(currentReport, previousReport);
+      this.league.gmStewardshipReports = [
+        ...(this.league.gmStewardshipReports || []).filter((entry) => Number(entry.year) !== Number(this.currentYear)),
+        stewardshipReport
+      ].sort((a, b) => Number(a.year) - Number(b.year)).slice(-30);
+      updateGmLegacyAfterSeason(this.league, this.controlledTeamId, this.currentYear, { capSummary, stewardshipReport });
+      // Adaptive League (S70): opt-in, bounded, announced; no-op when off.
+      applyAdaptiveDifficultyAfterSeason(this);
+    }
+    this.pendingSeasonWrap = {
+      year: this.currentYear,
+      superBowl: playoffResult.superBowl,
+      awards: this.lastAwardSummary,
+      stewardshipReport
+    };
+    this.archiveGameResults(playoffResult.gameArchiveEntries);
+    this.postseasonState = null;
+    const capsuleGrade = gradeTimeCapsule({ league: this.league, statBook: this.statBook, year: this.currentYear });
+    if (capsuleGrade) {
+      this.logNews(
+        `Receipts are in: the beat reporter went ${capsuleGrade.hits}-${capsuleGrade.misses}${capsuleGrade.pushes ? ` (${capsuleGrade.pushes} push)` : ""} on preseason predictions`,
+        { year: this.currentYear, kind: "time-capsule-receipts", verdict: capsuleGrade.reporterVerdict }
+      );
+    }
+    this.logNews(`${playoffResult.superBowl.championTeamId} won the championship`, {
+      teamId: playoffResult.superBowl.championTeamId,
+      runnerUp: playoffResult.superBowl.runnerUpTeamId
+    });
+    this.enterNextCalendarPhase();
+    return {
+      ok: true,
+      phase: this.phase,
+      year: this.currentYear,
+      week: this.currentWeek,
+      games: controlledGame ? [controlledGame] : [],
+      superBowl: playoffResult.superBowl,
+      awards: this.lastAwardSummary
+    };
+  }
+
+  advanceSeasonAwardsPhase() {
+    // Hall of Fame inductions announce themselves (S62): diff the hall
+    // before/after refresh and celebrate new members through the inbox.
+    const hofBefore = new Set((this.league.hallOfFame || []).map((entry) => entry.playerId));
+    this.refreshHallOfFame();
+    const inducted = (this.league.hallOfFame || []).filter((entry) => !hofBefore.has(entry.playerId));
+    for (const entry of inducted.slice(0, 3)) {
+      reportMilestone(this.league, {
+        type: "hof-induction",
+        year: this.currentYear,
+        teamIds: (entry.teams || []).slice(0, 1),
+        playerIds: [entry.playerId],
+        headline: `🏛️ ${entry.player} elected to the Hall of Fame`,
+        detail: `Career AV ${entry.careerAv} · ${entry.championships} title${entry.championships === 1 ? "" : "s"} · Class of ${this.currentYear}. Open the Hall to hold the induction ceremony.`
+      });
+    }
+    this.prepareDraft();
+    this.seedCompLedgerForUpcomingOffseason();
+    this.resetOffseasonPipeline(this.currentYear);
+    this.league.freeAgencyMarket.stage = "legal-tampering";
+    this.seasonsSimulated += 1;
+    this.enterNextCalendarPhase();
+    return {
+      ok: true,
+      phase: this.phase,
+      year: this.currentYear,
+      awards: this.lastAwardSummary,
+      superBowl: this.pendingSeasonWrap?.superBowl || this.latestPostseason?.superBowl || null,
+      message: "Season awards finalized. Offseason has begun."
+    };
+  }
+
+  advanceOffseasonPhase() {
+    const stageResult = this.advanceOffseasonPipeline();
+    if (stageResult.completed) {
+      this.league.freeAgencyMarket.stage = "post-draft";
+      this.startSeason(this.currentYear + 1);
+      this.ensureDraftPickAssets();
+      this.logNews(`Offseason complete: ${this.currentYear} season has started`, { year: this.currentYear });
       return {
         ok: true,
         phase: this.phase,
         year: this.currentYear,
-        awards: this.lastAwardSummary,
-        superBowl: this.pendingSeasonWrap?.superBowl || this.latestPostseason?.superBowl || null,
-        message: "Season awards finalized. Offseason has begun."
+        pipeline: stageResult,
+        message: "Offseason complete, new season started."
       };
     }
-
-    if (this.phase === "offseason") {
-      const stageResult = this.advanceOffseasonPipeline();
-      if (stageResult.completed) {
+    if (this.getLeagueSettings().autoProgressOffseason) {
+      let guard = 0;
+      let auto = stageResult;
+      // Stop on a stage that wants the GM (draft clock, open free-agency wave)
+      // instead of burning the guard against a stage that will not advance.
+      while (!auto.completed && !auto.userActionRequired && guard < 24) {
+        auto = this.advanceOffseasonPipeline();
+        guard += 1;
+      }
+      if (auto.completed) {
         this.league.freeAgencyMarket.stage = "post-draft";
         this.startSeason(this.currentYear + 1);
         this.ensureDraftPickAssets();
-        this.logNews(`Offseason complete: ${this.currentYear} season has started`, { year: this.currentYear });
-        return {
-          ok: true,
-          phase: this.phase,
-          year: this.currentYear,
-          pipeline: stageResult,
-          message: "Offseason complete, new season started."
-        };
       }
-      if (this.getLeagueSettings().autoProgressOffseason) {
-        let guard = 0;
-        let auto = stageResult;
-        // Stop on a stage that wants the GM (draft clock, open free-agency wave)
-        // instead of burning the guard against a stage that will not advance.
-        while (!auto.completed && !auto.userActionRequired && guard < 24) {
-          auto = this.advanceOffseasonPipeline();
-          guard += 1;
-        }
-        if (auto.completed) {
-          this.league.freeAgencyMarket.stage = "post-draft";
-          this.startSeason(this.currentYear + 1);
-          this.ensureDraftPickAssets();
-        }
-        return { ok: true, phase: this.phase, year: this.currentYear, pipeline: auto, message: auto.message };
-      }
-      return { ok: true, phase: this.phase, year: this.currentYear, pipeline: stageResult, message: stageResult.message };
+      return { ok: true, phase: this.phase, year: this.currentYear, pipeline: auto, message: auto.message };
     }
-
-    return { ok: false, error: `Unknown phase: ${this.phase}` };
+    return { ok: true, phase: this.phase, year: this.currentYear, pipeline: stageResult, message: stageResult.message };
   }
 
   simulateOneSeason({ runOffseasonAfter = true } = {}) {
