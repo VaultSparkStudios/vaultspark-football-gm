@@ -9,6 +9,7 @@ import {
 import { calculatePositionOverall, ensureCoverageDepthRatings, ensureQuarterbackDepthRatings } from "./ratings.js";
 import { buildContract } from "./contracts.js";
 import { clamp } from "../utils/rng.js";
+import { FOOTBALL_STAT_SCHEMA } from "../sport/football/statSchema.js";
 
 const FIRST_NAMES = [
   "James",
@@ -93,64 +94,15 @@ const POSITION_BODY_PROFILES = {
   P: { height: [71, 78], weight: [185, 235] }
 };
 
+// The stat shape is the sport's, declared in its stat schema. playerFactory is
+// still football's player factory, so it reads the football schema directly;
+// it moves behind getSportRules(sportId).stats when player creation does.
 export function createZeroedSeasonStats() {
-  return {
-    games: 0,
-    gamesStarted: 0,
-    snaps: {
-      offense: 0,
-      defense: 0,
-      special: 0,
-      passBlock: 0,
-      runBlock: 0
-    },
-    passing: {
-      cmp: 0,
-      att: 0,
-      yards: 0,
-      td: 0,
-      int: 0,
-      sacks: 0,
-      sackYards: 0,
-      firstDowns: 0,
-      long: 0
-    },
-    rushing: { att: 0, yards: 0, td: 0, long: 0, fumbles: 0, firstDowns: 0, brokenTackles: 0 },
-    receiving: { targets: 0, rec: 0, yards: 0, td: 0, long: 0, drops: 0, firstDowns: 0, yac: 0 },
-    defense: {
-      tackles: 0,
-      solo: 0,
-      ast: 0,
-      sacks: 0,
-      qbHits: 0,
-      tfl: 0,
-      int: 0,
-      passDefended: 0,
-      ff: 0,
-      fr: 0
-    },
-    blocking: {
-      sacksAllowed: 0,
-      pressuresAllowed: 0,
-      penalties: 0
-    },
-    kicking: {
-      fgm: 0,
-      fga: 0,
-      xpm: 0,
-      xpa: 0,
-      long: 0,
-      fgM40: 0,
-      fgA40: 0,
-      fgM50: 0,
-      fgA50: 0
-    },
-    punting: { punts: 0, yards: 0, in20: 0, long: 0, touchbacks: 0, blocks: 0 }
-  };
+  return FOOTBALL_STAT_SCHEMA.zeroedSeasonStats();
 }
 
 export function createZeroedCareerStats() {
-  return createZeroedSeasonStats();
+  return FOOTBALL_STAT_SCHEMA.zeroedCareerStats();
 }
 
 function randomName(rng) {
@@ -524,8 +476,9 @@ export function createDraftClass({ size = 256, year, rng }) {
   return classPlayers.sort((a, b) => b.potential - a.potential);
 }
 
-export function ensureSeasonStatBucket(player, year) {
-  if (!player.seasonStats[year]) player.seasonStats[year] = createZeroedSeasonStats();
+// createStats lets the StatBook build the bucket from its league's stat schema.
+export function ensureSeasonStatBucket(player, year, createStats = createZeroedSeasonStats) {
+  if (!player.seasonStats[year]) player.seasonStats[year] = createStats();
   return player.seasonStats[year];
 }
 
