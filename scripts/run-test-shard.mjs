@@ -193,6 +193,7 @@ export const SHARDS = {
     "test/football-golden-master.test.js",
     "test/sport-conformance-football.test.js",
     "test/sport-registry.test.js",
+    "test/match-engine-contract.test.js",
     "test/determinism.test.js",
     "test/session89-cap-legality-regression.test.js",
     "test/bootstrap-realism-profile.test.js",

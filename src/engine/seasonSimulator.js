@@ -1,5 +1,6 @@
 import { NFL_STRUCTURE } from "../config.js";
-import { simulateGame } from "./gameSimulator.js";
+import { getSportRules } from "../sport/registry.js";
+import { applyGameStats } from "../stats/applyGameStats.js";
 import { buildSeasonSchedule } from "./schedule.js";
 
 export function winPct(team) {
@@ -189,7 +190,7 @@ export function getPlayoffSeeds(league, conference) {
 }
 
 function simulateBracketGame({ league, statBook, year, rng, higherSeedTeam, lowerSeedTeam, mode, label }) {
-  const result = simulateGame({
+  const match = getSportRules(league.sportId).match.simulate({
     league,
     statBook,
     homeTeamId: higherSeedTeam.id,
@@ -202,6 +203,8 @@ function simulateBracketGame({ league, statBook, year, rng, higherSeedTeam, lowe
     seasonType: "playoffs",
     label
   });
+  applyGameStats(statBook, match);
+  const result = match.result;
   const winner = result.winnerId === higherSeedTeam.id ? higherSeedTeam : lowerSeedTeam;
   return { result, winner };
 }
@@ -513,7 +516,7 @@ export function simulateNextPostseasonGame({ state, league, statBook, year, rng,
   let result;
   let winner;
   if (next.round === "super-bowl") {
-    result = simulateGame({
+    const match = getSportRules(league.sportId).match.simulate({
       league,
       statBook,
       homeTeamId: higherSeedTeam.id,
@@ -527,6 +530,8 @@ export function simulateNextPostseasonGame({ state, league, statBook, year, rng,
       label: "super-bowl",
       neutralSite: true
     });
+    applyGameStats(statBook, match);
+    result = match.result;
     winner = result.winnerId === higherSeedTeam.id ? higherSeedTeam : lowerSeedTeam;
     const runnerUp = winner.id === higherSeedTeam.id ? lowerSeedTeam : higherSeedTeam;
     state.bracket.superBowl = {
@@ -617,7 +622,7 @@ export function simulateSeason({
         : []
     );
     for (const matchup of weekBlock.games) {
-      const game = simulateGame({
+      const match = getSportRules(league.sportId).match.simulate({
         league,
         statBook,
         homeTeamId: matchup.homeTeamId,
@@ -630,7 +635,8 @@ export function simulateSeason({
         homeRested: rested.has(matchup.homeTeamId),
         awayRested: rested.has(matchup.awayTeamId)
       });
-      applyRegularSeasonResult(league, weekBlock.week, game);
+      applyGameStats(statBook, match);
+      applyRegularSeasonResult(league, weekBlock.week, match.result);
     }
     previousBlock = weekBlock;
   }

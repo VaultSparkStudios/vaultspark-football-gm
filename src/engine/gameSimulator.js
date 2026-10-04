@@ -7,6 +7,7 @@ import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition
 import { matchupEdgeFromContexts } from "./matchupEdge.js";
 import { fourthDownAggressionAdjustment, isTwoMinuteDrill, twoMinuteAdjustment } from "./situationalCalls.js";
 import { getTeamPlayers } from "../domain/teamFactory.js";
+import { applyGameStats } from "../stats/applyGameStats.js";
 import {
   buildMeritAdjustedRoomShares,
   buildTeamUsageProfile,
@@ -74,7 +75,33 @@ function chooseFromRotation(rng, rotation) {
   return rotation[rotation.length - 1].player;
 }
 
-function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = "regular", gameStats = null) {
+/**
+ * The engine no longer writes season stats itself (multi-sport Phase 1 step 2).
+ * It records every season-stat write as a plain record, in the exact order the
+ * old inline code made them, and the core applies them afterwards through
+ * src/stats/applyGameStats.js. One shared sequence number across the three
+ * record lists keeps that order recoverable: blocking pressures (a stat delta)
+ * land after the snap counts, and bench appearances after both, and a season's
+ * per-team game tally depends on call order when two teams tie.
+ */
+function createGameStatRecorder() {
+  let seq = 0;
+  const records = { statDeltas: [], appearances: [], snapCounts: [] };
+  return {
+    records,
+    appearance(playerId, year, started, teamId, position, seasonType) {
+      records.appearances.push({ seq: seq++, playerId, year, started, teamId, position, seasonType });
+    },
+    statDelta(playerId, year, delta, meta) {
+      records.statDeltas.push({ seq: seq++, playerId, year, delta, meta });
+    },
+    snapCount(playerId, year, delta, meta) {
+      records.snapCounts.push({ seq: seq++, playerId, year, delta, meta });
+    }
+  };
+}
+
+function applySnapCounts(recorder, statBook, year, rotation, unitSnaps, key, seasonType = "regular", gameStats = null) {
   const playersWithSnaps = new Set();
   if (!rotation?.length || !unitSnaps) return playersWithSnaps;
   const boundedSnaps = Math.max(0, Math.round(unitSnaps));
@@ -82,7 +109,7 @@ function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = 
     const snaps = Math.max(0, Math.round(boundedSnaps * row.snapShare));
     if (!snaps) continue;
     playersWithSnaps.add(row.player.id);
-    statBook.applyStatDelta(
+    recorder.snapCount(
       row.player.id,
       year,
       { snaps: { [key]: snaps } },
@@ -93,7 +120,7 @@ function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = 
     }
     if (key === "offense" && row.player.position === "OL") {
       const blockingSnaps = { passBlock: Math.round(snaps * 0.58), runBlock: Math.round(snaps * 0.42) };
-      statBook.applyStatDelta(
+      recorder.snapCount(
         row.player.id,
         year,
         { snaps: blockingSnaps },
@@ -107,7 +134,7 @@ function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = 
   return playersWithSnaps;
 }
 
-function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng, seasonType = "regular", gameStats = null) {
+function applyBlockingNoise(recorder, statBook, year, olRotation, offSnaps, rng, seasonType = "regular", gameStats = null) {
   for (const row of olRotation.slice(0, 5)) {
     const snaps = Math.max(1, Math.round(offSnaps * row.snapShare));
     const pressureChance = clamp(0.015 + (78 - (row.player.overall || 70)) * 0.0012, 0.004, 0.07);
@@ -119,7 +146,7 @@ function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng, seasonTyp
     const penalties = rng.chance(penaltyChance * Math.min(3, snaps / 25)) ? 1 : 0;
     if (pressures || penalties) {
       const delta = { blocking: { pressuresAllowed: pressures, penalties } };
-      statBook.applyStatDelta(
+      recorder.statDelta(
         row.player.id,
         year,
         delta,
@@ -1394,10 +1421,10 @@ function collectStarters(teamContext) {
   ].filter(Boolean);
 }
 
-function applyDriveDeltas(statBook, year, deltaMap, seasonType = "regular") {
+function applyDriveDeltas(recorder, statBook, year, deltaMap, seasonType = "regular") {
   for (const [playerId, delta] of deltaMap.entries()) {
     const player = statBook.getPlayerById(playerId);
-    statBook.applyStatDelta(
+    recorder.statDelta(
       playerId,
       year,
       delta,
@@ -1694,7 +1721,11 @@ function applyVenueRatingEdge(context, boost) {
   }
 }
 
-export function simulateGame({
+/**
+ * Football's match engine. Plays one game and returns what happened without
+ * touching season stats; see src/sport/matchEngineContract.js for the shape.
+ */
+export function simulateMatch({
   league,
   statBook,
   homeTeamId,
@@ -1739,8 +1770,11 @@ export function simulateGame({
   let homePossessionSeconds = 0;
   let awayPossessionSeconds = 0;
 
-  for (const player of homeStarters) statBook.registerGameAppearance(player.id, year, true, homeTeamId, player.position, seasonType);
-  for (const player of awayStarters) statBook.registerGameAppearance(player.id, year, true, awayTeamId, player.position, seasonType);
+  // statBook is only read here (player lookups for the box score); every
+  // season-stat write goes through the recorder and is applied by the core.
+  const recorder = createGameStatRecorder();
+  for (const player of homeStarters) recorder.appearance(player.id, year, true, homeTeamId, player.position, seasonType);
+  for (const player of awayStarters) recorder.appearance(player.id, year, true, awayTeamId, player.position, seasonType);
 
   const homePossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
   const awayPossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
@@ -1809,7 +1843,7 @@ export function simulateGame({
       homeRushPlays += drive.rushPlays || 0;
       if (drive.outcome === DRIVE_OUTCOMES.PUNT) homePOps += 1;
       if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) homeKOps += 1;
-      applyDriveDeltas(statBook, year, drive.deltas, seasonType);
+      applyDriveDeltas(recorder, statBook, year, drive.deltas, seasonType);
       finalizeDrive(drive, homeTeamId);
       homeBall = false;
       continue;
@@ -1828,7 +1862,7 @@ export function simulateGame({
       awayRushPlays += drive.rushPlays || 0;
       if (drive.outcome === DRIVE_OUTCOMES.PUNT) awayPOps += 1;
       if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
-      applyDriveDeltas(statBook, year, drive.deltas, seasonType);
+      applyDriveDeltas(recorder, statBook, year, drive.deltas, seasonType);
       finalizeDrive(drive, awayTeamId);
       homeBall = true;
       continue;
@@ -1848,7 +1882,7 @@ export function simulateGame({
       const firstDrive = firstHome
         ? simulateDrive(homeContext, awayContext, rng, mode, otSituational)
         : simulateDrive(awayContext, homeContext, rng, mode, otSituational);
-      applyDriveDeltas(statBook, year, firstDrive.deltas, seasonType);
+      applyDriveDeltas(recorder, statBook, year, firstDrive.deltas, seasonType);
       finalizeDrive(firstDrive, firstHome ? homeTeamId : awayTeamId);
       if (firstHome) {
         homeScore += firstDrive.points;
@@ -1877,7 +1911,7 @@ export function simulateGame({
       const secondDrive = firstHome
         ? simulateDrive(awayContext, homeContext, rng, mode, secondDriveSituational)
         : simulateDrive(homeContext, awayContext, rng, mode, secondDriveSituational);
-      applyDriveDeltas(statBook, year, secondDrive.deltas, seasonType);
+      applyDriveDeltas(recorder, statBook, year, secondDrive.deltas, seasonType);
       finalizeDrive(secondDrive, firstHome ? awayTeamId : homeTeamId);
       if (firstHome) {
         awayScore += secondDrive.points;
@@ -1906,38 +1940,38 @@ export function simulateGame({
   const trackSnaps = (set) => {
     for (const playerId of set) snappedPlayerIds.add(playerId);
   };
-  trackSnaps(applySnapCounts(statBook, year, homeContext.qbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.rbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.wrRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.teRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.olRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.qbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.rbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.wrRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.teRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.olRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.qbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.rbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.wrRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.teRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.olRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.qbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.rbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.wrRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.teRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.olRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
 
-  trackSnaps(applySnapCounts(statBook, year, homeContext.dlRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.lbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.dbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.dlRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.lbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.dbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.dlRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.lbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.dbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.dlRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.lbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.dbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
 
   const homeSpecialSnaps = homeKOps + homePOps + awayKOps;
   const awaySpecialSnaps = awayKOps + awayPOps + homeKOps;
-  trackSnaps(applySnapCounts(statBook, year, homeContext.kRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.pRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.kRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.pRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
-  applyBlockingNoise(statBook, year, homeContext.olRotation, homeOffSnaps, rng, seasonType, playerGameStats);
-  applyBlockingNoise(statBook, year, awayContext.olRotation, awayOffSnaps, rng, seasonType, playerGameStats);
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.kRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.pRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.kRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.pRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
+  applyBlockingNoise(recorder, statBook, year, homeContext.olRotation, homeOffSnaps, rng, seasonType, playerGameStats);
+  applyBlockingNoise(recorder, statBook, year, awayContext.olRotation, awayOffSnaps, rng, seasonType, playerGameStats);
 
   for (const playerId of snappedPlayerIds) {
     if (starterIds.has(playerId)) continue;
     const player = statBook.getPlayerById(playerId);
     if (!player) continue;
-    statBook.registerGameAppearance(playerId, year, false, player.teamId, player.position, seasonType);
+    recorder.appearance(playerId, year, false, player.teamId, player.position, seasonType);
   }
 
   const playerEntries = [...playerGameStats.values()];
@@ -1968,7 +2002,7 @@ export function simulateGame({
     }
   };
 
-  return {
+  const result = {
     gameId,
     year,
     week,
@@ -2003,4 +2037,25 @@ export function simulateGame({
     winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId,
     boxScore
   };
+
+  // The stat records ride beside the result, never inside it: callers spread
+  // the result into week results and the game archive, which are saved.
+  return {
+    result,
+    boxScore,
+    statDeltas: recorder.records.statDeltas,
+    appearances: recorder.records.appearances,
+    snapCounts: recorder.records.snapCounts
+  };
+}
+
+/**
+ * Plays a game and applies its season stats straight away: the pre-split
+ * behaviour, kept for tests and tools that want one call. The season engines
+ * call simulateMatch and apply the records themselves.
+ */
+export function simulateGame(context) {
+  const output = simulateMatch(context);
+  applyGameStats(context.statBook, output);
+  return output.result;
 }

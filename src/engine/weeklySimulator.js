@@ -1,4 +1,5 @@
-import { simulateGame } from "./gameSimulator.js";
+import { getSportRules } from "../sport/registry.js";
+import { applyGameStats } from "../stats/applyGameStats.js";
 import { applyRegularSeasonResult, conferenceStandings, sortStandings } from "./seasonSimulator.js";
 
 export function simulateRegularSeasonWeek({
@@ -16,7 +17,7 @@ export function simulateRegularSeasonWeek({
   for (const matchup of weekBlock.games) {
     activeTeams.add(matchup.homeTeamId);
     activeTeams.add(matchup.awayTeamId);
-    const game = simulateGame({
+    const match = getSportRules(league.sportId).match.simulate({
       league,
       statBook,
       homeTeamId: matchup.homeTeamId,
@@ -31,6 +32,9 @@ export function simulateRegularSeasonWeek({
       homeRested: rested.has(matchup.homeTeamId),
       awayRested: rested.has(matchup.awayTeamId)
     });
+    // The engine returns stat records; the season's stat book is written here.
+    applyGameStats(statBook, match);
+    const game = match.result;
     applyRegularSeasonResult(league, weekBlock.week, game);
     games.push({
       week: weekBlock.week,
