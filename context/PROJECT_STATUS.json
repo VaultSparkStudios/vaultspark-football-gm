@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S115 situational calls, archetype-driven CPU drafting and a parallel deploy gate verified on staging and production. Public launch remains HOLD.",
+  "currentFocus": "S116 multi-sport platform: golden master, conformance kit and Phase 1 steps 1-6 (football behind a sport pack) verified on staging and production. Public launch remains HOLD.",
   "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-10-03",
+  "lastUpdated": "2026-10-04",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -26,8 +26,8 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "green",
-  "testsPassing": 1765,
-  "testsTotal": 1765,
+  "testsPassing": 1802,
+  "testsTotal": 1802,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -68,18 +68,18 @@
   "silScoreLegacy500": null,
   "silScore": 858,
   "silCategoriesV3": {
-    "devHealth": 96,
+    "devHealth": 97,
     "creativeAlignment": 96,
-    "momentum": 93,
-    "engagement": 78,
-    "processQuality": 87,
-    "crossRepoCoherence": 86,
+    "momentum": 95,
+    "engagement": 72,
+    "processQuality": 88,
+    "crossRepoCoherence": 88,
     "securityPosture": 82,
-    "ecosystemIntegration": 74,
-    "capitalEfficiency": 72,
+    "ecosystemIntegration": 76,
+    "capitalEfficiency": 70,
     "automationCoverage": 94
   },
-  "currentSession": 115,
+  "currentSession": 116,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
@@ -333,7 +333,7 @@
   "freeTierAuditDoc": "vaultspark-studio-ops/docs/FREE_TIER_AUDIT_2026-05-22_PORTFOLIO.md",
   "estimatedMonthlyCostAt1000FreeUsers": 0,
   "freeTierAuditNote": "Session 75 refresh: browser-first game plus a bounded, cached community aggregate on the existing shared self-hosted server. No language model, email, paid analytics vendor, or per-user API spend; marginal cost remains zero within current fixed infrastructure capacity.",
-  "silHealthAsOf": "2026-10-03",
+  "silHealthAsOf": "2026-10-04",
   "silImpactCategories": {
     "reach": 0,
     "retention": 0,
@@ -350,7 +350,7 @@
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-10-03",
+    "date": "2026-10-04",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -371,7 +371,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.118,
   "entropyLastComputed": "2026-10-01",
-  "lastSessionSummary": "S115 shipped situational calls (standing 4th-down and two-minute orders, neutral defaults proven byte-identical), CPU drafting by GM archetype (measured in a matched 10-season probe) and a parallel deploy gate (about 23 to 7.5 minutes). Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052: 1765/1765, staging 14/14, production 10/10 via run 37141977109, Doctor blockingFailing 0. Launch remains HOLD.",
+  "lastSessionSummary": "S116 began the multi-sport platform: a football golden master and sport conformance kit, then six behavior-identical seams (rules, match engine boundary, stat schema, calendar, schedule, postseason) under src/sport/. Source d913b9f9c0043d00131506c0d4271034a15fc169: all shards green, staging 14/14, production 10/10 via run 37200292923, Doctor blockingFailing 0. Launch remains HOLD.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -389,11 +389,11 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-10-03"
+      "lastChecked": "2026-10-04"
     }
   ],
-  "lastSession": 115,
-  "silLastSession": 115,
+  "lastSession": 116,
+  "silLastSession": 116,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -498,12 +498,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "e831184ef14b71876813cfbe8493d8b537727afc1ce1de9b019ff1eb44c6aa9b",
-    "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+    "receiptSha256": "1bf82c68cef53e2556a4e56af91a67341caa77ee7b609f057624fef90cb53bfd",
+    "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d",
-      "files": 262,
+      "digest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280",
+      "files": 272,
       "entries": [
         {
           "path": ".well-known/llms.txt",
@@ -1217,8 +1217,8 @@
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 17833,
-          "sha256": "f6dd08fa6414bcbe6c00a0fdbfa2b4cca82bd891ebd2f4bdc3bb0432fee54ae4"
+          "bytes": 18633,
+          "sha256": "ac1b523e4c1f4afad025af299f46da85e215777a8534311c983759b8073a9be3"
         },
         {
           "path": "press.html",
@@ -1367,8 +1367,8 @@
         },
         {
           "path": "src/domain/playerFactory.js",
-          "bytes": 20923,
-          "sha256": "e010d21f0d1baf19a9c84ff6a2f0efdcc41b1dfd8b297c1244f359205337d65e"
+          "bytes": 20375,
+          "sha256": "2f7aa232449d1fd813aa94ba8953e85879da879f3d7ab78ba12b1d6baffef515"
         },
         {
           "path": "src/domain/potentialReversion.js",
@@ -1382,8 +1382,8 @@
         },
         {
           "path": "src/domain/teamFactory.js",
-          "bytes": 15579,
-          "sha256": "7624d4c0b0a25bf7c7d6a09ae803da1288083aad00a056017c0babd165a36794"
+          "bytes": 15635,
+          "sha256": "fe8b4d4a1d30ce54e4670477c6d03c8cccf2a69ec17303b90e84e170fbf579ee"
         },
         {
           "path": "src/domain/teamLabel.js",
@@ -1432,8 +1432,8 @@
         },
         {
           "path": "src/engine/capCompliance.js",
-          "bytes": 19993,
-          "sha256": "9c3153394377e90e73f96acce82fae1c6f394d935121de1614a53c0e52bbe1da"
+          "bytes": 20058,
+          "sha256": "d748466711a68d14f03ba1769027af828f8b29aa11a07fb36d06bff1ea70cede"
         },
         {
           "path": "src/engine/coachingMarket.js",
@@ -1477,8 +1477,8 @@
         },
         {
           "path": "src/engine/gameSimulator.js",
-          "bytes": 79747,
-          "sha256": "2d035c0e4d2b7562c172953dcf767dcbf1c79eb20291f81f3ec7b443cb533961"
+          "bytes": 82312,
+          "sha256": "d86ecae2169357ae8d879c91028edfe7cb3af356dd15bb0dcc1851eb9d55b811"
         },
         {
           "path": "src/engine/gmArchetype.js",
@@ -1522,8 +1522,8 @@
         },
         {
           "path": "src/engine/offseasonSimulator.js",
-          "bytes": 26440,
-          "sha256": "6945d8b6b912f290ddc01f4e67b87a6afb6ce3ba8cd40a8f54eaf13a2f23f54f"
+          "bytes": 26570,
+          "sha256": "3ef37859afbaef53564fb95c1896d5a543aa9f6372bc10a7a5a8dd2638018f86"
         },
         {
           "path": "src/engine/onClockTradeMarket.js",
@@ -1542,8 +1542,8 @@
         },
         {
           "path": "src/engine/playerAgentAI.js",
-          "bytes": 6817,
-          "sha256": "a09fdabfb98c492d5bec786d0d6288e9f5e08102a2486bbac3cc6d6d43401753"
+          "bytes": 6901,
+          "sha256": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d"
         },
         {
           "path": "src/engine/pressConference.js",
@@ -1577,13 +1577,13 @@
         },
         {
           "path": "src/engine/schedule.js",
-          "bytes": 14293,
-          "sha256": "19ea2e12919c38f7d89b925f5c475d120709c34114f0beb03da9b0e7ce142434"
+          "bytes": 15255,
+          "sha256": "9f68341d397ff04effc9c4b97153a2f40ce3515476f10b5dc541834e779782e3"
         },
         {
           "path": "src/engine/seasonSimulator.js",
-          "bytes": 21369,
-          "sha256": "79ddd4566498cac9d7eb8384365f08e7dbe5e0fff0a68cefa328ea2d62a2cf17"
+          "bytes": 7479,
+          "sha256": "6cd5419fb5943a872982190f19d3351ba0c39e2150c3fa0e906a055db92a0173"
         },
         {
           "path": "src/engine/situationalCalls.js",
@@ -1601,6 +1601,11 @@
           "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
         },
         {
+          "path": "src/engine/standings.js",
+          "bytes": 3867,
+          "sha256": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2"
+        },
+        {
           "path": "src/engine/timeCapsule.js",
           "bytes": 13128,
           "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
@@ -1612,8 +1617,8 @@
         },
         {
           "path": "src/engine/weeklySimulator.js",
-          "bytes": 1941,
-          "sha256": "d2f174a239bbf4d3b0cb672f583cf27c0fff6328230bd30b192e59b4be61f7d9"
+          "bytes": 2186,
+          "sha256": "fad2ce0a18bc64738937e217fba284affb797a4c9acc96d8c889612eb20fa77a"
         },
         {
           "path": "src/engine/whatIfReplay.js",
@@ -1622,8 +1627,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 355009,
-          "sha256": "7b1f5cca343f7b20b5739cb4d001089a65e7fe24ec416da435e70e49d68feda3"
+          "bytes": 355252,
+          "sha256": "d409fde9e178d2dd54477d83d13f0de35774cc0b2fe99287a51d2089d31b353b"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -1677,8 +1682,8 @@
         },
         {
           "path": "src/runtime/services/ContractService.js",
-          "bytes": 1646,
-          "sha256": "eea0f96a9fa549c2edab7359e6a8c6b3542b90c825b6c5b68d8655e213048bbe"
+          "bytes": 1685,
+          "sha256": "e50f791c2f2613e6a875fb4333d0f7890469c5151293c28b3911f10bf39d06c5"
         },
         {
           "path": "src/runtime/services/TradeService.js",
@@ -1709,6 +1714,51 @@
           "path": "src/runtime/weeklyTactic.js",
           "bytes": 3178,
           "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
+        },
+        {
+          "path": "src/sport/calendarContract.js",
+          "bytes": 5261,
+          "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179"
+        },
+        {
+          "path": "src/sport/football/calendar.js",
+          "bytes": 1774,
+          "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8"
+        },
+        {
+          "path": "src/sport/football/competition.js",
+          "bytes": 570,
+          "sha256": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55"
+        },
+        {
+          "path": "src/sport/football/index.js",
+          "bytes": 1224,
+          "sha256": "14da23943698fc27fddce255a00d039a41667291c9391440d08c77472dcc1c0a"
+        },
+        {
+          "path": "src/sport/football/postseason.js",
+          "bytes": 11119,
+          "sha256": "9b8578f5a2b76b684a834e03c4ffd07b1e776fa5c0b444ee4b21c60fc12e4550"
+        },
+        {
+          "path": "src/sport/football/rules.js",
+          "bytes": 609,
+          "sha256": "64fef4a35a808ee4ca33f504b5ff774ee08b24803a3157ca167d419a0af87de1"
+        },
+        {
+          "path": "src/sport/football/statSchema.js",
+          "bytes": 13775,
+          "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
+        },
+        {
+          "path": "src/sport/registry.js",
+          "bytes": 1823,
+          "sha256": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5"
+        },
+        {
+          "path": "src/stats/applyGameStats.js",
+          "bytes": 1593,
+          "sha256": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f"
         },
         {
           "path": "src/stats/approximateValue.js",
@@ -1757,8 +1807,8 @@
         },
         {
           "path": "src/stats/statBook.js",
-          "bytes": 37018,
-          "sha256": "dcba64cbb47a9854c48977bbed21854c1054fdcf72753799141cc4bcdae77293"
+          "bytes": 24640,
+          "sha256": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683"
         },
         {
           "path": "src/stats/teamRecord.js",
@@ -1807,8 +1857,8 @@
         },
         {
           "path": "sw.js",
-          "bytes": 9546,
-          "sha256": "9860f458e4e3100f06e2af990be4d6855faae581ddd2905193962fb37b8a1e94"
+          "bytes": 9877,
+          "sha256": "cdd12a71cf56b99fc5bc6bbd00dae3f3260ea96344f464137ba4675df92fc785"
         },
         {
           "path": "terms.html",
@@ -1822,23 +1872,23 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "78120e88-de2b-4553-8c77-ca11fedba0e7",
+    "deploymentId": "42ec1001-c5bf-41b8-89d6-5f7a4f38e7ab",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-03T17:44:13.098Z"
+      "checkedAt": "2026-10-04T11:54:11.112Z"
     },
     "rollback": {
-      "previousDeploymentId": "2c0af618-bd5a-44d2-aa80-a780d1f785d0",
+      "previousDeploymentId": "78120e88-de2b-4553-8c77-ca11fedba0e7",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-03T17:44:13.099Z"
+    "observedAt": "2026-10-04T11:54:11.112Z"
   },
-  "lastCloseoutAt": "2026-10-03",
+  "lastCloseoutAt": "2026-10-04",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
@@ -1871,31 +1921,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-03T18:19:31.007Z",
+    "observedAt": "2026-10-04T12:21:46.451Z",
     "status": "verified",
-    "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
-    "publicationRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+    "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+    "publicationRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d"
+      "digest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
-        "artifactDigest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d"
+        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
       },
       "production": {
-        "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
-        "artifactDigest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d"
+        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
       },
       "visual": {
-        "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
-        "artifactDigest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d"
+        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
       },
       "performance": {
-        "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
-        "artifactDigest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d"
+        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
       }
     },
     "checks": [
@@ -1941,31 +1991,31 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "62b9c7b71a00789618a26b5736b4274254d236087f023292bc7937b8e678702a",
-      "productionSha256": "68d7ad71d5267d4131cdc26e61d882729b6512d37ecef5fec8f673626490dbff",
-      "visualSha256": "85284b92bf3b978670240c9c2af39a2de3ba414b97e161431449f238d9c0abb4",
-      "performanceSha256": "af686ccf418bf1ceccb0e519c8be19f379a744ac271b4349d340a13c36b691c9"
+      "stagingSha256": "6786167ece72fe68ea77a2e29c4a8de81c51a8a7664131d224d6ec3b8afe0310",
+      "productionSha256": "4d0643c4afaf64505c7de3557c7cf45c1f2ade2ca6e8c37e78db8b39367cd3b4",
+      "visualSha256": "72f9a8cb6717b0dec401d7901c7d41ca2656ac676db6a426f8759aaa83dfbcb4",
+      "performanceSha256": "4388be3d4f232ea17151dbe7fa6ae0fb1ea6c3f5d9547c4f89b773602cfde804"
     },
-    "receiptSha256": "4e0a64c140bdaf4fd2474baeeffcb62a002a436a39baf11f091b9e481402eedc"
+    "receiptSha256": "3eeb1770233ac22adc61da982c1adb140255504f2f002520bfdd023c3011cafd"
   },
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 115,
+    "session": 116,
     "silScore": 858,
     "categories": {
-      "devHealth": 96,
+      "devHealth": 97,
       "creativeAlignment": 96,
-      "momentum": 93,
-      "engagement": 78,
-      "processQuality": 87,
-      "crossRepoCoherence": 86,
+      "momentum": 95,
+      "engagement": 72,
+      "processQuality": 88,
+      "crossRepoCoherence": 88,
       "securityPosture": 82,
-      "ecosystemIntegration": 74,
-      "capitalEfficiency": 72,
+      "ecosystemIntegration": 76,
+      "capitalEfficiency": 70,
       "automationCoverage": 94
     },
-    "date": "2026-10-03"
+    "date": "2026-10-04"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",
@@ -1980,14 +2030,14 @@
     "counts": {
       "core": 290,
       "runtime": 1013,
-      "sim-contract": 85,
+      "sim-contract": 122,
       "sim-realism": 9,
       "long": 3,
       "studio": 365
     },
-    "total": 1765,
+    "total": 1802,
     "generatedAt": "2026-10-02T07:56:00.000Z",
-    "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+    "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
     "sourceBinding": "Clean tested paths at the exact correction Git revision before launching the unchanged canonical all-shard runner. Completion must retain that source revision and test-surface digest, and match a fresh direct native receipt for all six shards.",
     "testSurfaceDigest": "be86d2249b7b9e5ebb8786d48f9369c20548499a08b97f4826012dc6c9881bcd",
     "receipt": "reports/test-suite-s112-followthrough.json",
@@ -2003,8 +2053,8 @@
   "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
-    "durableSession": 115,
-    "currentFocus": "S115 situational calls, archetype-driven CPU drafting and a parallel deploy gate verified on staging and production. Public launch remains HOLD.",
+    "durableSession": 116,
+    "currentFocus": "S116 multi-sport platform: golden master, conformance kit and Phase 1 steps 1-6 (football behind a sport pack) verified on staging and production. Public launch remains HOLD.",
     "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
     "lastSessionSummary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD."
   }

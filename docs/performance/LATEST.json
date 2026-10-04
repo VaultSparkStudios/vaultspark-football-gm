@@ -2,14 +2,14 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-10-03T18:19:30.371Z",
+  "observedAt": "2026-10-04T12:21:45.999Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+  "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d",
-    "files": 262,
+    "digest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280",
+    "files": 272,
     "entries": [
       {
         "path": ".well-known/llms.txt",
@@ -723,8 +723,8 @@
       },
       {
         "path": "precache-manifest.json",
-        "bytes": 17833,
-        "sha256": "f6dd08fa6414bcbe6c00a0fdbfa2b4cca82bd891ebd2f4bdc3bb0432fee54ae4"
+        "bytes": 18633,
+        "sha256": "ac1b523e4c1f4afad025af299f46da85e215777a8534311c983759b8073a9be3"
       },
       {
         "path": "press.html",
@@ -873,8 +873,8 @@
       },
       {
         "path": "src/domain/playerFactory.js",
-        "bytes": 20923,
-        "sha256": "e010d21f0d1baf19a9c84ff6a2f0efdcc41b1dfd8b297c1244f359205337d65e"
+        "bytes": 20375,
+        "sha256": "2f7aa232449d1fd813aa94ba8953e85879da879f3d7ab78ba12b1d6baffef515"
       },
       {
         "path": "src/domain/potentialReversion.js",
@@ -888,8 +888,8 @@
       },
       {
         "path": "src/domain/teamFactory.js",
-        "bytes": 15579,
-        "sha256": "7624d4c0b0a25bf7c7d6a09ae803da1288083aad00a056017c0babd165a36794"
+        "bytes": 15635,
+        "sha256": "fe8b4d4a1d30ce54e4670477c6d03c8cccf2a69ec17303b90e84e170fbf579ee"
       },
       {
         "path": "src/domain/teamLabel.js",
@@ -938,8 +938,8 @@
       },
       {
         "path": "src/engine/capCompliance.js",
-        "bytes": 19993,
-        "sha256": "9c3153394377e90e73f96acce82fae1c6f394d935121de1614a53c0e52bbe1da"
+        "bytes": 20058,
+        "sha256": "d748466711a68d14f03ba1769027af828f8b29aa11a07fb36d06bff1ea70cede"
       },
       {
         "path": "src/engine/coachingMarket.js",
@@ -983,8 +983,8 @@
       },
       {
         "path": "src/engine/gameSimulator.js",
-        "bytes": 79747,
-        "sha256": "2d035c0e4d2b7562c172953dcf767dcbf1c79eb20291f81f3ec7b443cb533961"
+        "bytes": 82312,
+        "sha256": "d86ecae2169357ae8d879c91028edfe7cb3af356dd15bb0dcc1851eb9d55b811"
       },
       {
         "path": "src/engine/gmArchetype.js",
@@ -1028,8 +1028,8 @@
       },
       {
         "path": "src/engine/offseasonSimulator.js",
-        "bytes": 26440,
-        "sha256": "6945d8b6b912f290ddc01f4e67b87a6afb6ce3ba8cd40a8f54eaf13a2f23f54f"
+        "bytes": 26570,
+        "sha256": "3ef37859afbaef53564fb95c1896d5a543aa9f6372bc10a7a5a8dd2638018f86"
       },
       {
         "path": "src/engine/onClockTradeMarket.js",
@@ -1048,8 +1048,8 @@
       },
       {
         "path": "src/engine/playerAgentAI.js",
-        "bytes": 6817,
-        "sha256": "a09fdabfb98c492d5bec786d0d6288e9f5e08102a2486bbac3cc6d6d43401753"
+        "bytes": 6901,
+        "sha256": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d"
       },
       {
         "path": "src/engine/pressConference.js",
@@ -1083,13 +1083,13 @@
       },
       {
         "path": "src/engine/schedule.js",
-        "bytes": 14293,
-        "sha256": "19ea2e12919c38f7d89b925f5c475d120709c34114f0beb03da9b0e7ce142434"
+        "bytes": 15255,
+        "sha256": "9f68341d397ff04effc9c4b97153a2f40ce3515476f10b5dc541834e779782e3"
       },
       {
         "path": "src/engine/seasonSimulator.js",
-        "bytes": 21369,
-        "sha256": "79ddd4566498cac9d7eb8384365f08e7dbe5e0fff0a68cefa328ea2d62a2cf17"
+        "bytes": 7479,
+        "sha256": "6cd5419fb5943a872982190f19d3351ba0c39e2150c3fa0e906a055db92a0173"
       },
       {
         "path": "src/engine/situationalCalls.js",
@@ -1107,6 +1107,11 @@
         "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
       },
       {
+        "path": "src/engine/standings.js",
+        "bytes": 3867,
+        "sha256": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2"
+      },
+      {
         "path": "src/engine/timeCapsule.js",
         "bytes": 13128,
         "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
@@ -1118,8 +1123,8 @@
       },
       {
         "path": "src/engine/weeklySimulator.js",
-        "bytes": 1941,
-        "sha256": "d2f174a239bbf4d3b0cb672f583cf27c0fff6328230bd30b192e59b4be61f7d9"
+        "bytes": 2186,
+        "sha256": "fad2ce0a18bc64738937e217fba284affb797a4c9acc96d8c889612eb20fa77a"
       },
       {
         "path": "src/engine/whatIfReplay.js",
@@ -1128,8 +1133,8 @@
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 355009,
-        "sha256": "7b1f5cca343f7b20b5739cb4d001089a65e7fe24ec416da435e70e49d68feda3"
+        "bytes": 355252,
+        "sha256": "d409fde9e178d2dd54477d83d13f0de35774cc0b2fe99287a51d2089d31b353b"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
@@ -1183,8 +1188,8 @@
       },
       {
         "path": "src/runtime/services/ContractService.js",
-        "bytes": 1646,
-        "sha256": "eea0f96a9fa549c2edab7359e6a8c6b3542b90c825b6c5b68d8655e213048bbe"
+        "bytes": 1685,
+        "sha256": "e50f791c2f2613e6a875fb4333d0f7890469c5151293c28b3911f10bf39d06c5"
       },
       {
         "path": "src/runtime/services/TradeService.js",
@@ -1215,6 +1220,51 @@
         "path": "src/runtime/weeklyTactic.js",
         "bytes": 3178,
         "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
+      },
+      {
+        "path": "src/sport/calendarContract.js",
+        "bytes": 5261,
+        "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179"
+      },
+      {
+        "path": "src/sport/football/calendar.js",
+        "bytes": 1774,
+        "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8"
+      },
+      {
+        "path": "src/sport/football/competition.js",
+        "bytes": 570,
+        "sha256": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55"
+      },
+      {
+        "path": "src/sport/football/index.js",
+        "bytes": 1224,
+        "sha256": "14da23943698fc27fddce255a00d039a41667291c9391440d08c77472dcc1c0a"
+      },
+      {
+        "path": "src/sport/football/postseason.js",
+        "bytes": 11119,
+        "sha256": "9b8578f5a2b76b684a834e03c4ffd07b1e776fa5c0b444ee4b21c60fc12e4550"
+      },
+      {
+        "path": "src/sport/football/rules.js",
+        "bytes": 609,
+        "sha256": "64fef4a35a808ee4ca33f504b5ff774ee08b24803a3157ca167d419a0af87de1"
+      },
+      {
+        "path": "src/sport/football/statSchema.js",
+        "bytes": 13775,
+        "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
+      },
+      {
+        "path": "src/sport/registry.js",
+        "bytes": 1823,
+        "sha256": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5"
+      },
+      {
+        "path": "src/stats/applyGameStats.js",
+        "bytes": 1593,
+        "sha256": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f"
       },
       {
         "path": "src/stats/approximateValue.js",
@@ -1263,8 +1313,8 @@
       },
       {
         "path": "src/stats/statBook.js",
-        "bytes": 37018,
-        "sha256": "dcba64cbb47a9854c48977bbed21854c1054fdcf72753799141cc4bcdae77293"
+        "bytes": 24640,
+        "sha256": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683"
       },
       {
         "path": "src/stats/teamRecord.js",
@@ -1313,8 +1363,8 @@
       },
       {
         "path": "sw.js",
-        "bytes": 9546,
-        "sha256": "9860f458e4e3100f06e2af990be4d6855faae581ddd2905193962fb37b8a1e94"
+        "bytes": 9877,
+        "sha256": "cdd12a71cf56b99fc5bc6bbd00dae3f3260ea96344f464137ba4675df92fc785"
       },
       {
         "path": "terms.html",
@@ -1333,17 +1383,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a44df4999e137ff1-IAD",
+    "cf-ray": "a45425e50c51a5ff-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Sat, 03 Oct 2026 18:19:30 GMT",
+    "date": "Sun, 04 Oct 2026 12:21:43 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=J5quHV68oEiMPSbxrkjqLqzuzZny4PB8DuW9zLTPjoFZL8jetsqo38rtDIjb5JPEoZYn%2FtuIWkM0KLr2IdDsmDGW%2FF0Hp5Fr9r%2BxoL1021moqgYtVHNIUFq7K2zw%2FFODRB5xRdyMLQRXJO7kog%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=rPzHvbSFRqugGD%2BcANxkALlf5l%2Bv42ZGwcUuxt525Cg9Zwa%2BJGjSe%2FMgnaSNWeV2EPRECMr2pD5skRlw%2B80M8Qw0AoZt6qhl8KAvP63FQ%2BLlCwL5BwwlqrC6rsQIVzhkBlcrGB0zje1Q0oT3OQ%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1359,13 +1409,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 332,
+      "lcpMs": 344,
       "inpMs": 24,
       "cls": 0.0003,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 476,
+          "lcpMs": 10164,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1375,7 +1425,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 1547,
+              "startTimeMs": 11213,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1436,7 +1486,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 324,
+          "lcpMs": 336,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1446,7 +1496,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 697,
+              "startTimeMs": 835,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1503,11 +1553,11 @@
               ]
             }
           ],
-          "inpMs": 16,
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 332,
+          "lcpMs": 344,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1517,7 +1567,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 731,
+              "startTimeMs": 772,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1586,13 +1636,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 336,
+      "lcpMs": 480,
       "inpMs": 24,
       "cls": 0.0131,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 464,
+          "lcpMs": 10144,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1602,7 +1652,103 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1551,
+              "startTimeMs": 11212,
+              "scrollY": 0,
+              "value": 0.0131,
+              "sources": [
+                {
+                  "tag": "FIGURE",
+                  "id": null,
+                  "className": "hero-shot",
+                  "previousRect": {
+                    "x": 20.1875,
+                    "y": 534.40625,
+                    "width": 349.625,
+                    "height": 279.046875,
+                    "top": 534.40625,
+                    "right": 369.8125,
+                    "bottom": 813.453125,
+                    "left": 20.1875
+                  },
+                  "currentRect": {
+                    "x": 20.1875,
+                    "y": 546.59375,
+                    "width": 349.625,
+                    "height": 266.859375,
+                    "top": 546.59375,
+                    "right": 369.8125,
+                    "bottom": 813.453125,
+                    "left": 20.1875
+                  }
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "why",
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 781.453125,
+                    "width": 390,
+                    "height": 62.546875,
+                    "top": 781.453125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 793.640625,
+                    "width": 390,
+                    "height": 50.359375,
+                    "top": 793.640625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 68.96875,
+                    "y": 540.203125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 540.203125,
+                    "right": 321.96875,
+                    "bottom": 554.015625,
+                    "left": 68.96875
+                  },
+                  "currentRect": {
+                    "x": 36.1875,
+                    "y": 540.203125,
+                    "width": 317.625,
+                    "height": 26,
+                    "top": 540.203125,
+                    "right": 353.8125,
+                    "bottom": 566.203125,
+                    "left": 36.1875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 16,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 372,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0131,
+          "shifts": [
+            {
+              "startTimeMs": 959,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -1688,7 +1834,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 336,
+          "lcpMs": 480,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1698,103 +1844,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 723,
-              "scrollY": 0,
-              "value": 0.0131,
-              "sources": [
-                {
-                  "tag": "FIGURE",
-                  "id": null,
-                  "className": "hero-shot",
-                  "previousRect": {
-                    "x": 20.1875,
-                    "y": 534.40625,
-                    "width": 349.625,
-                    "height": 279.046875,
-                    "top": 534.40625,
-                    "right": 369.8125,
-                    "bottom": 813.453125,
-                    "left": 20.1875
-                  },
-                  "currentRect": {
-                    "x": 20.1875,
-                    "y": 546.59375,
-                    "width": 349.625,
-                    "height": 266.859375,
-                    "top": 546.59375,
-                    "right": 369.8125,
-                    "bottom": 813.453125,
-                    "left": 20.1875
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "why",
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 781.453125,
-                    "width": 390,
-                    "height": 62.546875,
-                    "top": 781.453125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 793.640625,
-                    "width": 390,
-                    "height": 50.359375,
-                    "top": 793.640625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 68.96875,
-                    "y": 540.203125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 540.203125,
-                    "right": 321.96875,
-                    "bottom": 554.015625,
-                    "left": 68.96875
-                  },
-                  "currentRect": {
-                    "x": 36.1875,
-                    "y": 540.203125,
-                    "width": 317.625,
-                    "height": 26,
-                    "top": 540.203125,
-                    "right": 353.8125,
-                    "bottom": 566.203125,
-                    "left": 36.1875
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 316,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0131,
-          "shifts": [
-            {
-              "startTimeMs": 720,
+              "startTimeMs": 1009,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -1888,13 +1938,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+        "observed": "d913b9f9c0043d00131506c0d4271034a15fc169",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "b4506762a7873680c3d00facbaa8bf900c445d2b791e00a43f0f62ec56c3d95d",
+        "observed": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280",
         "expected": "sha256"
       },
       {
@@ -1918,7 +1968,7 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 332,
+        "observed": 344,
         "expected": "< 1800ms"
       },
       {
@@ -1942,7 +1992,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 336,
+        "observed": 480,
         "expected": "< 1800ms"
       },
       {
@@ -1984,5 +2034,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "1c6c36e816a52698efdb51df8a2f13150f4021e6ed7deb2bc06aaab2ed8866af"
+  "receiptSha256": "2352ba677146edaa24fc049b9e36192215f33f272e0385cbae0c91048ee8ab28"
 }

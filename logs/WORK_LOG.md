@@ -1,26 +1,3 @@
-## 2026-09-12 — Session 106 — Full arc: potential stops being drawn on a scale overall does not share
-
-**Triage.** Clean start: F7 write-back current, tree clean, brief fresh and coherent for S106, canon synced (54 canons, Ark drained).
-
-**Audit** (`docs/AUDIT_2026-09-12_SESSION106.json`, 4 items, combined priority 82) opened on the S105 handoff's named candidate and found the generator defect beneath it. Every premise verified against live code first — and the premise checker caught **two of my own typed premises** matching explanatory comments rather than the code they described, which is the gate working on its author again.
-
-**Shipped: three of four items.** The headline generator change was implemented, measured twice and **reverted** — `session90-development-environment` read 0.285 against a 0.25 tolerance and stayed red at 0.289 after per-room trait centres were also implemented and measured. Reversion's mean contribution measured exactly 0.000, so the cause is not a miscentred term: deltas are applied to ratings and overall is recomputed with position weights, so changing which players move moves aggregate OVR at zero mean delta. Closing the gate would have meant duplicating the engine in the test or widening its tolerance; both refused. `src/` carries a 37-line comment recording the measurement, verified by diff as zero behaviour change. **The next item is the test's declared curve, not the generator.**
-
-**Measured, implemented, reverted:**
-
-1. **Position-aware potential.** `randomPotential` drew one band for every position while `overall` is a position-weighted average of position-biased attributes. Measured at generation, four seeds, 8,832 players: mean potential ~80 everywhere against mean overall 73.6-81.7; **36.8% of the league generated above its own potential**; all 45 elite players in a fresh league were QB or OL. Potential is now trait-sized headroom above the player's own overall, tapered by age, damped near the ceiling, drawn in the same stream slot (one `rng.int`). Result: above-own-potential **36.8% → 0.0%**, mean potential tracks the room, **every mean overall unchanged to the decimal**.
-2. **The counterweight discovery.** The uncalibrated fix read elite **5.3%** and dispersion **0.157**, both out-of-range: the old defect had been a downward brake in the reversion term. Ceiling-proximity damping restored it with no threshold moved — elite **2.8% → 1.8%**, dispersion **0.095 → 0.083**, parity **+0.043 → +0.034**.
-**Shipped:**
-
-3. **Ledger-budget gate population.** WORK_LOG (213 KB) and TASK_BOARD (206 KB) were unpoliced; both registered with directory, order and both heading eras, then rolled (**572 KB → 244 KB**, S105 entries and `Now`/`Next` intact). The population is now derived from disk by test.
-4. **Brief reports post-heal authority**, and the doctor remedy naming a contractually forbidden writer is deleted with a test to keep it gone.
-
-CDR reviewed: no new founder creative direction, so no entry is owed. No player-facing surface changed, so no status-page release note is owed (the freshness gate tolerates one session).
-
-**Receipts.** Canonical Node **1,463/1,463** across six shards (core 245, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 312), up from 1,458/1,458 in S105. The full run read 1,461/1,463 with two self-caused studio reds — one defect seen from two gates: `status.html`'s newest release note sat at session 104 against a `lastSession` of 106, two unpublished against a tolerance of one. Fixed at source by writing the note; studio re-run green. An earlier full run in this session, before the revert, read 1,450/1,452 and is superseded — it measured code no longer in the tree.
-
-**The release note says nothing changed, because nothing did.** Neither S105 nor S106 shipped a player-facing surface, and the gate counts sessions rather than features, so the note says so plainly, records that the ceiling-scale repair was built, measured twice and withdrawn, and confirms saved franchises are untouched.
-
 ## 2026-09-13 — Session 107 — Full arc: the gate measured who survived, and potential lands on the scale overall uses
 
 **Triage.** Clean start: tree clean, synced with origin, F7 write-back current at `dbdc5c5a`, no session lock. The startup brief was two days stale and was re-rendered and validated fresh for S107; doctor `blockingFailing 0` with the standing registry SPARKED vs local FORGE warning. `start-canon-sync`, the capability radar and the maintenance lane scripts are not present in this repo and were skipped, not faked.
@@ -179,6 +156,12 @@ On the founder's "yes" to the S113 next list: published the S113 release note, m
 
 On "go": parallelized the deploy gate and built situational calls (one agent, with proofs of neutrality and stream invariance). The first draft-persona tilt was keyed to strategy profile; a matched 10-season probe against a clean worktree showed it was a no-op, because generated clubs are nearly all balanced. It was re-keyed to GM archetype and re-measured. The full run was reaped by host memory pressure during the studio shard; the studio shard was completed at the same commit after the founder freed memory. Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
 <!-- /s115-closeout:worklog -->
+
+<!-- s116-closeout:worklog -->
+## Session 116 — 2026-10-04 — Multi-sport platform: guardrails and the first six seams
+
+The founder asked for every sport as a branch of Franchise Architect. Plan approved: one shared core plus sport packs in this monorepo, with basketball second. This session built Phase 0 (golden master and conformance kit) and Phase 1 steps 1–6 with agents, verifying each step independently against the golden master. The host repeatedly stopped long background test runs under memory pressure (WSL held about 7 GB), so every shard ran at each commit in the foreground or in runtime chunks. A deploy cycle brought production level with main once the refactors had moved past it. Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this commit, run shard by shard and in runtime chunks under host memory pressure (studio 365, sim-contract 122, sim-realism 9, long 3, core 290, runtime 1013). Football golden master identical at every extraction step. Stable staging 14/14 (artifact b4acf986…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37200292923 success, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Public launch remains HOLD.
+<!-- /s116-closeout:worklog -->
 
 <!-- ledger-roll:pointer -->
 ---

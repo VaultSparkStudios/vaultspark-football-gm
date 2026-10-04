@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-03 (Session 115 closeout) -->
+<!-- generated-at: 2026-10-04 (Session 116 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: a6417cd9214b3b96 -->
-<!-- session-authority: committed=S115 · SIL=S115 · status=S115 · handoff=S115; divergent=false -->
+<!-- session-authority: committed=S116 · SIL=S116 · status=S116 · handoff=S116; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 115 closeout · 2026-10-03.
+> **Fast-boot brief** — generated at Session 116 closeout · 2026-10-04.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 116 · 2026-10-03 · BUILDER MODE                         ║
+║  Session 117 · 2026-10-04 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S115) - WHAT SHIPPED ══════════════════════════╗
-║  S115 shipped situational calls (standing 4th-down and two-minu  ║
+╔══ LAST SESSION (S116) - WHAT SHIPPED ══════════════════════════╗
+║  S116 began the multi-sport platform: a football golden master   ║
 ║  Tests  Fresh direct six-shard suite 1702/1702, exit0; Clean te  ║
 ║  Deploy 10/10; https://github.com/VaultSparkStudios/vaultspark-  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -34,7 +34,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 4d · refresh required              ║
+║  Profile · game · cache stale 5d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -42,27 +42,27 @@
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
 ║    858/1000   ████████████████████░░░░   86%                     ║
-║    SIL v3.0  ·  Avg3: 841.3  ·  Velocity 4→                      ║
+║    SIL v3.0  ·  Avg3: 854  ·  Velocity 4→                        ║
 ║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
-║    Trend  ▄▁▁▁▁  →  (last 5 sessions)                            ║
+║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        96    ██████████  —        →                ║
+║    Dev Health        97    ██████████  —        →                ║
 ║    Alignment         96    ██████████  —        →                ║
-║    Momentum          93    █████████░  —        →                ║
-║    Engagement        78    ████████░░  —        →                ║
-║    Process Qual      87    █████████░  —        →                ║
-║    Coherence         86    █████████░  ········ →                ║
+║    Momentum          95    ██████████  —        →                ║
+║    Engagement        72    ███████░░░  —        →                ║
+║    Process Qual      88    █████████░  —        →                ║
+║    Coherence         88    █████████░  ········ →                ║
 ║    Security          82    ████████░░  ········ →                ║
-║    Ecosystem         74    ███████░░░  ········ →                ║
-║    Capital           72    ███████░░░  ········ →                ║
+║    Ecosystem         76    ████████░░  ········ →                ║
+║    Capital           70    ███████░░░  ········ →                ║
 ║    Automation        94    █████████░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 115 ═══════════════════════════╗
-║  Shipped:  S115 situational calls, archetype-driven CPU draftin  ║
+╔══ WHERE WE LEFT OFF  ·  Session 116 ═══════════════════════════╗
+║  Shipped:  S116 multi-sport platform: golden master, conformanc  ║
 ║  Tests:    1752/1752 passing  ·  Deploy: 10/10; https://github.  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -78,7 +78,7 @@
 ║  ✓  Velocity      4   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⛔  IGNIS         41119 FORGE  ·  24d old                        ║
+║  ⛔  IGNIS         41119 FORGE  ·  25d old                        ║
 ║  ✓  Truth         green  ·  Genome: unmeasured                   ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -106,7 +106,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
-║  Velocity:   ▄▁▁▁▁  4→  (last 5 sessions)                        ║
+║  Velocity:   ▁▁▁▁▁  4→  (last 5 sessions)                        ║
 ║  Intent:     100% achieved last 5                                ║
 ║  Streak:     ✓ 10 consecutive achieved-intent sessions           ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -123,5 +123,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 115 closeout · 2026-10-03*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 116 closeout · 2026-10-04*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

@@ -5,16 +5,6 @@ Overall status: green
 Last reviewed: 2026-09-29
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
-## 2026-09-11 — S105 — Three brief rows that read surfaces nothing writes
-
-**The session-authority line reported three sources and read two.** `session-authority: … handoff=S?` was rendered on every brief in this project's recorded history, because the handoff parser knew only `# Session N Closeout` and this project writes `# Latest Handoff — Session N → Session N+1` (checked against twelve committed handoffs; none matched). `divergent=false` was therefore a two-way comparison presented as a three-way one. Corrected at the parser, and the live handoff is now bound to the newest SIL entry by test. The same line now reads `handoff=S104`.
-
-**The SIL rolling-status header was a hand-maintained summary that had drifted from the ledger it summarised.** It named S100 as the last session through S104, never carried an intent rate, and its averages are not reproducible from the entries: Avg3 derives to 959.7 against the printed 974.7, and the "87 unique scored sessions" it claimed derives to 58 sessions scored `/1000`. The header is now a derived projection that names the count it read, and `PROJECT_STATUS.silRollingAverages` is written from the same derivation rather than carried. No normalisation rule for older score scales was invented to reconcile the two figures.
-
-**Premise verification of the audit history was a claim, not a gate.** S104 recorded "zero open decay across all 83 sidecars" from a single manual run. It is now asserted over every sidecar in the studio shard, and its first execution found a real instance in this session's own sidecar — which is recorded rather than smoothed over.
-
-**What is deliberately not claimed.** Elite density was re-derived on one seed (the canonical path) and remains `watch`; no cross-seed reading was taken and no cost was shipped. The PROJECT PROFILE row remains structurally stale until studio-ops acts on the S105 cargo; it is not fixed here. `launchReady` remains false on unchanged evidence.
-
 ## 2026-09-12 — S106 — A number the whole system compares against, measured on the wrong scale
 
 **What shipped and what did not.** The generator change described below was implemented, measured twice, and **reverted**; `src/` carries only a comment recording it, verified by diff as zero behaviour change. What shipped are three gate and record fixes: the ledger-budget gate's population, the brief's post-heal session authority, and the removal of a doctor remedy prescribing a contractually forbidden file. Every number below is a real measurement of code that was run, not of code that is live — that distinction is the point of recording it here.
@@ -153,6 +143,16 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 
 **A full run was reaped by host memory pressure, not by a failure.** Five shards passed in that run; the studio shard was completed at the same commit afterwards.
 <!-- /s115-closeout:truth -->
+
+<!-- s116-closeout:truth -->
+## 2026-10-04 — S116 — A gate that could not see a small change, and a formula that is not the one it claims
+
+**The first negative control proved nothing.** Moving a draft weight from −0.35 to −0.36 left the golden master identical, because no pick changed. A −6 weight flipped 94 sections. The gate is real; the first control was too gentle to show it.
+
+**Passer rating is not the published formula.** The schema extraction pinned it as it is: clamping before scaling caps the yards term, so the example line rates 89.3, not 99.3. It is recorded as a deliberate fix, not silently changed inside a refactor.
+
+**Pluggability is proven, not asserted.** A toy round-robin sport runs a season through the core functions, and statBook.js builds a toy schema's tables. League generation, awards and the superBowl key remain football-specific and are listed as such.
+<!-- /s116-closeout:truth -->
 
 <!-- ledger-roll:pointer -->
 ---

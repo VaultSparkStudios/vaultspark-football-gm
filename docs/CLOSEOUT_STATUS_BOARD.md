@@ -1,31 +1,31 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-03 (Session 115 closeout) -->
+<!-- generated-at: 2026-10-04 (Session 116 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S115 ═════╗
-║  Date: 2026-10-03  ·  SIL: 858/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S116 ═════╗
+║  Date: 2026-10-04  ·  SIL: 858/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ feat(s115): situational calls, archetype-driven CPU drafting  ║
-║  ✓ chore(closeout): roll S114 ledgers after the late work-log e  ║
-║  ✓ chore(closeout): record S114 write-back, release authority a  ║
-║  ✓ docs: sync Studio OS 2 files [agent-dna, validators]          ║
-║  ✓ feat(s114): release note, display codes in stored headlines,  ║
+║  ✓ refactor(platform): Phase 1 steps 5-6 — schedule and postsea  ║
+║  ✓ refactor(platform): Phase 1 step 4 — the season calendar bec  ║
+║  ✓ refactor(platform): Phase 1 step 3 — football stats become a  ║
+║  ✓ refactor(platform): Phase 1 step 2 — the match engine return  ║
+║  ✓ docs: sync Studio OS 2 files [protocol, skills]               ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 858/1000 ═══════════════════════════════════════╗
-║    Dev Health         96   ██████████                            ║
+║    Dev Health         97   ██████████                            ║
 ║    Alignment          96   ██████████                            ║
-║    Momentum           93   █████████░                            ║
-║    Engagement         78   ████████░░                            ║
-║    Process Qual       87   █████████░                            ║
-║    Coherence          86   █████████░                            ║
+║    Momentum           95   ██████████                            ║
+║    Engagement         72   ███████░░░                            ║
+║    Process Qual       88   █████████░                            ║
+║    Coherence          88   █████████░                            ║
 ║    Security           82   ████████░░                            ║
-║    Ecosystem          74   ███████░░░                            ║
-║    Capital            72   ███████░░░                            ║
+║    Ecosystem          76   ████████░░                            ║
+║    Capital            70   ███████░░░                            ║
 ║    Automation         94   █████████░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
@@ -41,7 +41,7 @@
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 559 files  ·  M:20 A:217 D:322 ?:0                     ║
+║  Changes: 449 files  ·  M:18 A:0 D:214 ?:217                     ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -53,9 +53,9 @@
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1752/1752 · STALE                                ║
-║  IGNIS:         25d ago                                          ║
+║  IGNIS:         26d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  5d ago                                           ║
+║  Sanitization:  6d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: server-route-split — Deferred: the API parity checker and   ║
