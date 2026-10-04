@@ -17,12 +17,31 @@ function sports() {
   return SPORTS;
 }
 
+// Packs added at runtime (a second sport under development, or a test's toy
+// pack). Built-in packs cannot be replaced.
+const REGISTERED = new Map();
+
 export function getSportRules(sportId = DEFAULT_SPORT_ID) {
-  const rules = sports()[sportId || DEFAULT_SPORT_ID];
-  if (!rules) throw new Error(`Unknown sport "${sportId}". Registered: ${Object.keys(sports()).join(", ")}`);
+  const id = sportId || DEFAULT_SPORT_ID;
+  const rules = sports()[id] || REGISTERED.get(id);
+  if (!rules) throw new Error(`Unknown sport "${sportId}". Registered: ${listSports().map((sport) => sport.id).join(", ")}`);
   return rules;
 }
 
 export function listSports() {
-  return Object.values(sports()).map(({ id, displayName }) => ({ id, displayName }));
+  return [...Object.values(sports()), ...REGISTERED.values()].map(({ id, displayName }) => ({ id, displayName }));
+}
+
+/**
+ * Registers a sport pack under `pack.id` and returns a function that removes
+ * it again (tests share one process, so they must unregister what they add).
+ */
+export function registerSport(pack) {
+  const id = pack?.id;
+  if (typeof id !== "string" || !id) throw new Error("A sport pack needs a string id");
+  if (sports()[id] || REGISTERED.has(id)) throw new Error(`Sport "${id}" is already registered`);
+  REGISTERED.set(id, pack);
+  return () => {
+    if (REGISTERED.get(id) === pack) REGISTERED.delete(id);
+  };
 }

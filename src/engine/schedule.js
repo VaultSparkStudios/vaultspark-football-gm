@@ -1,4 +1,12 @@
-import { NFL_STRUCTURE } from "../config.js";
+/**
+ * Football's regular-season schedule (the NFL formula): division home-and-away,
+ * same-conference and inter-conference rotations, standing-based games, then a
+ * week packer. Reached through FOOTBALL_PACK.competition.buildSchedule
+ * (src/sport/football/competition.js); the core never imports this file.
+ */
+import { FOOTBALL_RULES } from "../sport/football/rules.js";
+
+const STRUCTURE = FOOTBALL_RULES.structure;
 
 function divisionKey(team) {
   return `${team.conference}-${team.division}`;
@@ -36,8 +44,8 @@ function teamsInDivision(league, conference, division) {
 
 function addMatchup({ home, away, tag, games, pairCounts, teamGameCounts, homeCounts, awayCounts, maxPair = 2 }) {
   if (home === away) return false;
-  if ((teamGameCounts.get(home) || 0) >= NFL_STRUCTURE.gamesPerTeam) return false;
-  if ((teamGameCounts.get(away) || 0) >= NFL_STRUCTURE.gamesPerTeam) return false;
+  if ((teamGameCounts.get(home) || 0) >= STRUCTURE.gamesPerTeam) return false;
+  if ((teamGameCounts.get(away) || 0) >= STRUCTURE.gamesPerTeam) return false;
 
   const key = pairKey(home, away);
   if ((pairCounts.get(key) || 0) >= maxPair) return false;
@@ -67,12 +75,15 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
   const awayCounts = new Map(league.teams.map((t) => [t.id, 0]));
   const ranks = buildDivisionRanks(league, previousDivisionRanks, rng);
 
-  const divisionsByConference = {
-    AFC: listDivisionsForConference(league, "AFC"),
-    NFC: listDivisionsForConference(league, "NFC")
-  };
+  // The formula pairs exactly two conferences; the first plays "home side" of
+  // every inter-conference rotation. Names come from the rules, in their order.
+  const conferences = STRUCTURE.conferences;
+  const [firstConference, secondConference] = conferences;
+  const divisionsByConference = Object.fromEntries(
+    conferences.map((conference) => [conference, listDivisionsForConference(league, conference)])
+  );
 
-  for (const conference of NFL_STRUCTURE.conferences) {
+  for (const conference of conferences) {
     for (const division of divisionsByConference[conference]) {
       const teams = teamsInDivision(league, conference, division);
       for (let i = 0; i < teams.length; i += 1) {
@@ -110,9 +121,9 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
     [[0, 3], [1, 2]]
   ];
   const sameConferencePattern = sameConferencePatterns[year % sameConferencePatterns.length];
-  const sameConferencePartner = { AFC: {}, NFC: {} };
+  const sameConferencePartner = Object.fromEntries(conferences.map((conference) => [conference, {}]));
 
-  for (const conference of NFL_STRUCTURE.conferences) {
+  for (const conference of conferences) {
     const divisions = divisionsByConference[conference];
     for (const [leftIndex, rightIndex] of sameConferencePattern) {
       sameConferencePartner[conference][leftIndex] = rightIndex;
@@ -138,15 +149,15 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
     }
   }
 
-  const interConferenceOffset = year % divisionsByConference.NFC.length;
+  const interConferenceOffset = year % divisionsByConference[secondConference].length;
   const interConferenceRotation = {};
-  for (let index = 0; index < divisionsByConference.AFC.length; index += 1) {
-    interConferenceRotation[index] = (index + interConferenceOffset) % divisionsByConference.NFC.length;
-    const afcTeams = teamsInDivision(league, "AFC", divisionsByConference.AFC[index]);
-    const nfcTeams = teamsInDivision(league, "NFC", divisionsByConference.NFC[interConferenceRotation[index]]);
-    for (const afcTeam of afcTeams) {
-      for (const nfcTeam of nfcTeams) {
-        const [home, away] = fairHomeAway(afcTeam.id, nfcTeam.id, homeCounts, awayCounts, rng);
+  for (let index = 0; index < divisionsByConference[firstConference].length; index += 1) {
+    interConferenceRotation[index] = (index + interConferenceOffset) % divisionsByConference[secondConference].length;
+    const firstTeams = teamsInDivision(league, firstConference, divisionsByConference[firstConference][index]);
+    const secondTeams = teamsInDivision(league, secondConference, divisionsByConference[secondConference][interConferenceRotation[index]]);
+    for (const firstTeam of firstTeams) {
+      for (const secondTeam of secondTeams) {
+        const [home, away] = fairHomeAway(firstTeam.id, secondTeam.id, homeCounts, awayCounts, rng);
         addMatchup({
           home,
           away,
@@ -162,7 +173,7 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
     }
   }
 
-  for (const conference of NFL_STRUCTURE.conferences) {
+  for (const conference of conferences) {
     const divisions = divisionsByConference[conference];
     for (let leftIndex = 0; leftIndex < divisions.length; leftIndex += 1) {
       for (let rightIndex = leftIndex + 1; rightIndex < divisions.length; rightIndex += 1) {
@@ -190,17 +201,17 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
   }
 
   const interConferenceStandingOffset = (year % 3) + 1;
-  for (let divisionIndex = 0; divisionIndex < divisionsByConference.AFC.length; divisionIndex += 1) {
-    const afcDivision = divisionsByConference.AFC[divisionIndex];
-    const targetNfcDivision = divisionsByConference.NFC[
-      (divisionIndex + interConferenceOffset + interConferenceStandingOffset) % divisionsByConference.NFC.length
+  for (let divisionIndex = 0; divisionIndex < divisionsByConference[firstConference].length; divisionIndex += 1) {
+    const firstDivision = divisionsByConference[firstConference][divisionIndex];
+    const targetSecondDivision = divisionsByConference[secondConference][
+      (divisionIndex + interConferenceOffset + interConferenceStandingOffset) % divisionsByConference[secondConference].length
     ];
-    const afcTeams = teamsInDivision(league, "AFC", afcDivision);
-    const nfcTeams = teamsInDivision(league, "NFC", targetNfcDivision);
+    const firstTeams = teamsInDivision(league, firstConference, firstDivision);
+    const secondTeams = teamsInDivision(league, secondConference, targetSecondDivision);
     for (let rank = 1; rank <= 4; rank += 1) {
-      const afcTeam = afcTeams.find((entry) => (ranks[entry.id] || 2) === rank) || afcTeams[rank - 1];
-      const nfcTeam = nfcTeams.find((entry) => (ranks[entry.id] || 2) === rank) || nfcTeams[rank - 1];
-      const [home, away] = fairHomeAway(afcTeam.id, nfcTeam.id, homeCounts, awayCounts, rng);
+      const firstTeam = firstTeams.find((entry) => (ranks[entry.id] || 2) === rank) || firstTeams[rank - 1];
+      const secondTeam = secondTeams.find((entry) => (ranks[entry.id] || 2) === rank) || secondTeams[rank - 1];
+      const [home, away] = fairHomeAway(firstTeam.id, secondTeam.id, homeCounts, awayCounts, rng);
       addMatchup({
         home,
         away,
@@ -316,7 +327,7 @@ function repairWeekConflicts(weeks, league, teamWeekUsage) {
     changed = false;
     guard += 1;
     for (const team of league.teams) {
-      const missingWeeks = teamMissingWeeks(teamWeekUsage, NFL_STRUCTURE.regularSeasonWeeks, team.id);
+      const missingWeeks = teamMissingWeeks(teamWeekUsage, STRUCTURE.regularSeasonWeeks, team.id);
       if (!missingWeeks.length) continue;
       const duplicateWeeks = weeks.filter((week) => weekTeamGames(week, team.id).length > 1);
       if (!duplicateWeeks.length) continue;
@@ -357,10 +368,11 @@ function repairWeekConflicts(weeks, league, teamWeekUsage) {
   }
 }
 
+/** Football competition: `{ league, year, previousDivisionRanks, rng }` -> `[{ week, games }]`. */
 export function buildSeasonSchedule({ league, year, previousDivisionRanks, rng }) {
   const rawGames = buildMatchups(league, year, previousDivisionRanks, rng);
   const games = rng.shuffle(rawGames);
-  const weeks = Array.from({ length: NFL_STRUCTURE.regularSeasonWeeks }, (_, index) => ({
+  const weeks = Array.from({ length: STRUCTURE.regularSeasonWeeks }, (_, index) => ({
     week: index + 1,
     games: []
   }));

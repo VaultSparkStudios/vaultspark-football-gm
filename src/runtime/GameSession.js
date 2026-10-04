@@ -98,12 +98,10 @@ import {
   strategyPresetForTeam,
   draftPersonaTilt
 } from "../engine/aiTeamStrategy.js";
-import { buildSeasonSchedule } from "../engine/schedule.js";
 import {
   createPostseasonState,
   nextPostseasonGame,
   postseasonResultFromState,
-  runPlayoffsAndSuperBowl,
   simulateNextPostseasonGame,
   sortStandings
 } from "../engine/seasonSimulator.js";
@@ -4006,7 +4004,7 @@ export class GameSession {
     this.postseasonState = null;
     this.lastAwardSummary = null;
     this.pendingSeasonWrap = null;
-    this.seasonSchedule = buildSeasonSchedule({
+    this.seasonSchedule = this.sportRules.competition.buildSchedule({
       league: this.league,
       year,
       previousDivisionRanks: this.previousDivisionRanks,
@@ -5668,7 +5666,7 @@ export class GameSession {
     return this.postseasonState;
   }
 
-  setPostseasonMatchupPlans(game = nextPostseasonGame(this.postseasonState)) {
+  setPostseasonMatchupPlans(game = nextPostseasonGame(this.postseasonState, this.league)) {
     if (!game) return null;
     const home = teamById(this.league, game.homeTeamId);
     const away = teamById(this.league, game.awayTeamId);
@@ -5679,7 +5677,7 @@ export class GameSession {
 
   preparePostseasonControlledGate() {
     const state = this.initializePostseasonRoundFlow();
-    let next = nextPostseasonGame(state);
+    let next = nextPostseasonGame(state, this.league);
     while (next && next.homeTeamId !== this.controlledTeamId && next.awayTeamId !== this.controlledTeamId) {
       simulateNextPostseasonGame({
         state,
@@ -5689,10 +5687,11 @@ export class GameSession {
         rng: this.rng,
         mode: this.mode
       });
-      next = nextPostseasonGame(state);
+      next = nextPostseasonGame(state, this.league);
     }
     if (next) {
-      const weekByRound = { wildcard: 19, divisional: 20, conference: 21, "super-bowl": 22 };
+      // The week label for a postseason round is the sport's (football: 19-22).
+      const weekByRound = this.sportRules.competition.postseason.roundWeeks || {};
       this.currentWeek = weekByRound[next.round] || this.currentWeek;
       this.setPostseasonMatchupPlans(next);
     }
@@ -5702,7 +5701,7 @@ export class GameSession {
   getPostseasonProgress() {
     const state = this.postseasonState;
     if (!state) return null;
-    const next = nextPostseasonGame(state);
+    const next = nextPostseasonGame(state, this.league);
     const qualified = Object.values(state.seeds || {}).flat().some((entry) => entry.teamId === this.controlledTeamId);
     const champion = state.superBowl?.championTeamId === this.controlledTeamId;
     const controlledStatus = next && (next.homeTeamId === this.controlledTeamId || next.awayTeamId === this.controlledTeamId)
@@ -5912,7 +5911,7 @@ export class GameSession {
       };
     }
 
-    const playoffResult = postseasonResultFromState(state);
+    const playoffResult = postseasonResultFromState(state, this.league);
 
     const calibration = applySeasonRealismCalibration({
       league: this.league,
