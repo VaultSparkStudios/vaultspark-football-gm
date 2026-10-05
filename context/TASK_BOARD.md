@@ -30,7 +30,7 @@ S112 evidence correction to the older CPU–CPU market task: test/session111-cpu
 - [ ] Championship data key: rename superBowl to championship with a snapshot migration and aliases for old saves, and give conferences display names that are not the real NFL's (AFC/NFC are stored ids).
 - [ ] Step 7: position/roster catalog. Step 8: rating model. Step 9: value metric and calibration. Step 10: week event bus.
 - [ ] Client shell versus pack UI islands, then the physical move to packages/core and packages/sport-football.
-- [ ] Passer rating clamps before scaling (89.3 instead of the real formula's 99.3 on a 300/450, 3500-yard, 25 TD, 10 INT line). Fix it as a deliberate golden-master change.
+- [x] Passer rating clamps before scaling (89.3 instead of the real formula's 99.3 on a 300/450, 3500-yard, 25 TD, 10 INT line). Fix it as a deliberate golden-master change.
 - [ ] weeklySimulator still builds weekly standings with literal AFC/NFC keys.
 - [ ] Launch stays HOLD: email delivery evidence, founder approval, lifecycle reconciliation.
 <!-- /s116-closeout:tasks -->

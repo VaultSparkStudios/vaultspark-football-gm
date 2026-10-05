@@ -26,8 +26,8 @@ function per(numerator, denominator, digits = 1) {
 
 export function passerRating({ cmp, att, yards, td, int }) {
   if (!att) return 0;
-  const a = Math.max(0, Math.min(2.375, cmp / att - 0.3)) * 5;
-  const b = Math.max(0, Math.min(2.375, yards / att - 3)) * 0.25;
+  const a = Math.max(0, Math.min(2.375, (cmp / att - 0.3) * 5));
+  const b = Math.max(0, Math.min(2.375, (yards / att - 3) * 0.25));
   const c = Math.max(0, Math.min(2.375, (td / att) * 20));
   const d = Math.max(0, Math.min(2.375, 2.375 - (int / att) * 25));
   return Number((((a + b + c + d) / 6) * 100).toFixed(1));

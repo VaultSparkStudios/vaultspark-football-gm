@@ -89,11 +89,8 @@ test("the schema's derived rates keep their formulas and rounding", () => {
   assert.equal(row.ypa, 7.8);
   assert.equal(row.nya, 6.88);
   assert.equal(row.anya, 6.98);
-  // Pinned as shipped. The completion and yardage terms clamp before scaling
-  // (min(2.375, y/a - 3) * 0.25), unlike the NFL formula, so this is not the
-  // 99.3 an NFL passer rating would give; fixing it is a gameplay change for
-  // its own step, not part of moving ownership.
-  assert.equal(row.rate, 89.3);
+  // Each term clamps after scaling, as in the NFL formula: 99.3 for this line.
+  assert.equal(row.rate, 99.3);
   // Season and career rushing rows hold the same values; only column order differs.
   Object.assign(stats.rushing, { att: 40, yards: 180, td: 2, long: 22, fumbles: 1, firstDowns: 9 });
   const seasonRush = FOOTBALL_STAT_SCHEMA.categories.rushing.seasonRow(stats);
