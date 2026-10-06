@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-04 (Session 116 closeout) -->
+<!-- generated-at: 2026-10-06 (Session 116 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
 ╔══ SESSION CLOSEOUT · Franchise Architect: Football · S116 ═════╗
-║  Date: 2026-10-04  ·  SIL: 858/1000  ·  Velocity: —              ║
+║  Date: 2026-10-06  ·  SIL: 858/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ chore(closeout): record S116 write-back, release authority a  ║
 ║  ✓ refactor(platform): Phase 1 steps 5-6 — schedule and postsea  ║
 ║  ✓ refactor(platform): Phase 1 step 4 — the season calendar bec  ║
 ║  ✓ refactor(platform): Phase 1 step 3 — football stats become a  ║
 ║  ✓ refactor(platform): Phase 1 step 2 — the match engine return  ║
-║  ✓ docs: sync Studio OS 2 files [protocol, skills]               ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 858/1000 ═══════════════════════════════════════╗
 ║    Dev Health         97   ██████████                            ║
@@ -38,10 +38,10 @@
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  · agent memory (~/.codex or ~/.claude project memory)           ║
+║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 449 files  ·  M:18 A:0 D:214 ?:217                     ║
+║  Changes: 10 files  ·  M:10 A:0 D:0 ?:0                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -53,9 +53,9 @@
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1752/1752 · STALE                                ║
-║  IGNIS:         26d ago                                          ║
+║  IGNIS:         27d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  6d ago                                           ║
+║  Sanitization:  7d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: server-route-split — Deferred: the API parity checker and   ║

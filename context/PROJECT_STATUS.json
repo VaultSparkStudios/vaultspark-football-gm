@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S116 multi-sport platform: golden master, conformance kit and Phase 1 steps 1-6 (football behind a sport pack) verified on staging and production. Public launch remains HOLD.",
+  "currentFocus": "Multi-sport platform Phase 1 (football behind sport packs, golden-master identical). Inbound football@ email verified; reply-as deferred to the email studio project. Public launch remains HOLD.",
   "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project), founder S0→FB apply pending, S1 release receipt and founder GO pending."
   ],
-  "lastUpdated": "2026-10-04",
+  "lastUpdated": "2026-10-06",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -350,7 +350,7 @@
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-10-04",
+    "date": "2026-10-06",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -2054,7 +2054,7 @@
   "sessionState": {
     "version": 1,
     "durableSession": 116,
-    "currentFocus": "S116 multi-sport platform: golden master, conformance kit and Phase 1 steps 1-6 (football behind a sport pack) verified on staging and production. Public launch remains HOLD.",
+    "currentFocus": "Multi-sport platform Phase 1 (football behind sport packs, golden-master identical). Inbound football@ email verified; reply-as deferred to the email studio project. Public launch remains HOLD.",
     "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
     "lastSessionSummary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD."
   }

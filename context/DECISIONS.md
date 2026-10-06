@@ -175,6 +175,15 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 **Decision 5 — verify under memory pressure by splitting, not skipping.** When the host kept stopping long background runs, the suite ran shard by shard and in runtime chunks at the same commit. Every shard still ran.
 <!-- /s116-closeout:decisions -->
 
+<!-- s116-addendum:decisions -->
+## 2026-10-05 — S116 addendum — Founder direction: every sport, and the email plane as its own project
+
+**Decision 1 — Franchise Architect becomes a multi-sport platform** (founder direction: "the #1 most diverse sports simulation platform"). The plan is a shared core plus sport packs in this monorepo, with basketball second. Football is kept byte-identical behind the golden master.
+
+**Decision 2 — reply-as email is deferred to the founder's custom email studio project.** Inbound now works through a Cloudflare routing rule. The launch email receipt waits for that project or for Zoho Send Mail As through Brevo SMTP.
+
+**Decision 3 — founder approvals are run by the founder.** The S0→FB transition is verdicted green, but the founder-go apply was not executed by the agent. CANON-052 and the session's permission system both keep it founder-run.
+<!-- /s116-addendum:decisions -->
 <!-- ledger-roll:pointer -->
 ---
 

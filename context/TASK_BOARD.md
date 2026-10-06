@@ -32,7 +32,11 @@ S112 evidence correction to the older CPU–CPU market task: test/session111-cpu
 - [ ] Client shell versus pack UI islands, then the physical move to packages/core and packages/sport-football.
 - [ ] Passer rating clamps before scaling (89.3 instead of the real formula's 99.3 on a 300/450, 3500-yard, 25 TD, 10 INT line). Fix it as a deliberate golden-master change.
 - [ ] weeklySimulator still builds weekly standings with literal AFC/NFC keys.
-- [ ] Launch stays HOLD: email delivery evidence, founder approval, lifecycle reconciliation.
+- [x] Inbound project email: added the Cloudflare routing rule football@ → founder@vaultsparkstudios.com; test (3) delivered and the founder replied from Zoho (2026-10-05).
+- [ ] Reply-as football@ (Zoho Send Mail As through Brevo SMTP, or the founder's custom email studio project): deferred by founder direction. Then build the project-email-round-trip receipt and rerun scripts/launch-evidence-report.mjs.
+- [ ] Founder: apply S0→FB in vaultspark-studio-ops (Ladder Court gate and canon are green; GO packet at docs/launch/franchise-architect-football-go-packet.md).
+- [ ] Before S1 (public release): announcement on the current URL, a release receipt (product, identity, email, operations, release, posting), and a founder GO. The registry liveUrl and staging fields are stale.
+- [ ] Studio-ops gaps: Analytica feed (baton 2026-10-02), Obelisk OIDC (handoff 2026-10-01), Studio OS map 14/15; decide hello@ (studio standard) vs football@.
 <!-- /s116-closeout:tasks -->
 
 ## Session 115 — Situational calls, archetype drafting and a parallel deploy gate (2026-10-03)
