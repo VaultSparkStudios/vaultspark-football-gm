@@ -7,7 +7,7 @@
   "currentFocus": "Multi-sport platform Phase 1 (football behind sport packs, golden-master identical). Inbound football@ email verified; reply-as deferred to the email studio project. Public launch remains HOLD.",
   "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
   "blockers": [
-    "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project), founder S0→FB apply pending, S1 release receipt and founder GO pending."
+    "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
   "lastUpdated": "2026-10-06",
   "lifecycle": "deployed",
@@ -349,18 +349,11 @@
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 92,
+    "score": 100,
     "date": "2026-10-06",
-    "passing": 11,
-    "warning": 1,
-    "checks": [
-      {
-        "id": "lifecycle-authoritative-registry",
-        "status": "warning",
-        "blocking": false,
-        "detail": "registry SPARKED · local contract FORGE"
-      }
-    ]
+    "passing": 12,
+    "warning": 0,
+    "checks": []
   },
   "complianceScore": 37,
   "complianceTotal": 37,

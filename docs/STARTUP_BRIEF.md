@@ -2,7 +2,7 @@
 <!-- generated-at: 2026-10-06 (Session 116 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
-<!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
+<!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
 <!-- genius-authority-fingerprint: a6417cd9214b3b96 -->
 <!-- session-authority: committed=S116 · SIL=S116 · status=S116 · handoff=S116; divergent=false -->
 
@@ -35,8 +35,7 @@
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
 ║  Profile · game · cache stale 7d · refresh required              ║
-║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
-║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
+║  ✓ Lifecycle authority · local FORGE · registry FORGE            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
@@ -67,9 +66,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,707 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,354 tok/turn  ·  cache 50%  ·  133 turns to compact       ║
+║  ✓  ██████░░░░░░░░░░░░░░░░░░   25% used                          ║
+║     49,603 / 200,000 tok  ·  unknown  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -88,7 +86,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ✓  Doctor        12/12 (100%)  ·  2026-10-06  ✓                 ║
 ║  ✓  Cost          Max flat-rate · $0.13/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
