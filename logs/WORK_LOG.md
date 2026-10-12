@@ -163,6 +163,11 @@ On "go": parallelized the deploy gate and built situational calls (one agent, wi
 The founder asked for every sport as a branch of Franchise Architect. Plan approved: one shared core plus sport packs in this monorepo, with basketball second. This session built Phase 0 (golden master and conformance kit) and Phase 1 steps 1–6 with agents, verifying each step independently against the golden master. The host repeatedly stopped long background test runs under memory pressure (WSL held about 7 GB), so every shard ran at each commit in the foreground or in runtime chunks. A deploy cycle brought production level with main once the refactors had moved past it. Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this commit, run shard by shard and in runtime chunks under host memory pressure (studio 365, sim-contract 122, sim-realism 9, long 3, core 290, runtime 1013). Football golden master identical at every extraction step. Stable staging 14/14 (artifact b4acf986…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37200292923 success, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Public launch remains HOLD.
 <!-- /s116-closeout:worklog -->
 
+<!-- s116-addendum:worklog -->
+### Session 116 addendum — 2026-10-05 — launch path
+
+The founder asked the agent to clear the launch blockers and to consult studio-ops. A Studio-ops review found the D-S259.2 email contract: Zoho for human mail, Brevo for transactional mail, Cloudflare Routing for inbound. FA's ledger state was "dns-configured-unproved". The first inbound test bounced (550 5.1.1) because no routing rule existed. The agent added a forward rule through the Cloudflare API after the founder re-authenticated the connector, and the third test was delivered. The founder's Zoho reply proved inbound delivery but came from founder@, so reply-as is not yet proved and the founder deferred it to a custom email studio project. The S0→FB registry request was filed and verdicted green. The founder-go apply was blocked for the agent by the permission system and remains founder-run.
+<!-- /s116-addendum:worklog -->
 <!-- ledger-roll:pointer -->
 ---
 

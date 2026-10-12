@@ -154,6 +154,11 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 **Pluggability is proven, not asserted.** A toy round-robin sport runs a season through the core functions, and statBook.js builds a toy schema's tables. League generation, awards and the superBowl key remain football-specific and are listed as such.
 <!-- /s116-closeout:truth -->
 
+<!-- s116-addendum:truth -->
+### 2026-10-05 — S116 addendum — inbound proved, reply-as not
+
+Inbound football@ delivery is proved: a test was sent from an external Gmail address, delivered with no bounce, and replied to from the founder's Zoho mailbox. The reply came from founder@, so "reply as the project address" is **not** proved, and no email round-trip receipt has been written. The launch evidence report correctly still reads "email: unverified". The registry is still S0/sparked until the founder applies FB.
+<!-- /s116-addendum:truth -->
 <!-- ledger-roll:pointer -->
 ---
 

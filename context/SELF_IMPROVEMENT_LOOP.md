@@ -216,6 +216,13 @@ Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this co
 - [SIL] Under host memory pressure, run shards and runtime chunks in the foreground instead of retrying one long background run.
 <!-- /s116-closeout:sil -->
 
+<!-- s116-addendum:sil -->
+### Session 116 addendum — launch path (no new scored session)
+
+S116 remains 858/1000. The email blocker was a missing route, not a missing provider: the evidence was a 550 bounce, read from the sender's mailbox within a second, and fixing the route was a single API call. Cloudflare Email Routing had no rule for football@playfranchisearchitect.com (550 5.1.1). A forward rule to the studio Zoho mailbox was added through the Cloudflare API. Inbound is verified end to end: test (3) was delivered with no bounce, and the founder replied from Zoho. Reply-as football@ (Zoho Send Mail As through Brevo SMTP) is deferred to the founder's custom email studio project. The S0→FB registry transition has green Ladder Court verdicts and a GO packet, but the apply command is founder-only and is still pending. No deployable change since d913b9f; production already serves it.
+
+- [SIL] Before configuring providers, send one real message and read the bounce; it names the broken hop.
+<!-- /s116-addendum:sil -->
 <!-- ledger-roll:pointer -->
 ---
 

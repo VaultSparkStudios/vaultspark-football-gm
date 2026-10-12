@@ -10,9 +10,13 @@ Deploy: stable staging 14/14 and production 10/10 at d913b9f9c0043d00131506c0d42
 
 Shipped (behavior-identical): Phase 0 golden master and conformance kit; Phase 1 steps 1–6 (rules, match engine boundary, stat schema, calendar, schedule, postseason) under src/sport/.
 
+## Launch path (2026-10-05 addendum)
+
+Cloudflare Email Routing had no rule for football@playfranchisearchitect.com (550 5.1.1). A forward rule to the studio Zoho mailbox was added through the Cloudflare API. Inbound is verified end to end: test (3) was delivered with no bounce, and the founder replied from Zoho. Reply-as football@ (Zoho Send Mail As through Brevo SMTP) is deferred to the founder's custom email studio project. The S0→FB registry transition has green Ladder Court verdicts and a GO packet, but the apply command is founder-only and is still pending. No deployable change since d913b9f; production already serves it.
+
 ## Next
 
-1. Championship key rename (superBowl to championship) and conference display names, with a save migration.
-2. Phase 1 steps 7–10, then the client split and physical move to packages/.
-3. Passer-rating formula fix as a deliberate golden-master change.
-4. Launch stays HOLD.
+1. Founder: apply S0→FB in vaultspark-studio-ops (verdicts green).
+2. Reply-as football@ through the custom email studio project (or Zoho Send Mail As through Brevo SMTP); then the email round-trip receipt and the launch evidence report.
+3. Multi-sport Phase 1: championship key rename with save migration and conference display names, then steps 7–10, the client split and the packages/ move.
+4. Passer-rating formula fix as a deliberate golden-master change.
