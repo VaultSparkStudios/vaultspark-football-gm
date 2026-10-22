@@ -1,0 +1,353 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "exact-candidate-promotion-workflow",
+  "service": "pages",
+  "observedAt": "2026-10-22T17:23:08.128Z",
+  "runId": 39797016574,
+  "attempt": 1,
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "event": "workflow_dispatch",
+  "status": "completed",
+  "conclusion": "success",
+  "criticalSteps": [
+    "Run browser release gate",
+    "Capture responsive artifact evidence",
+    "Upload responsive evidence",
+    "Bind production promotion to the exact staged candidate",
+    "Verify stable staging serves the exact promotion candidate",
+    "Require complete exact-candidate CI before production publication",
+    "Publish to Cloudflare Pages (live origin)",
+    "Verify the live origin serves this build"
+  ],
+  "jobs": [
+    {
+      "id": 119887356662,
+      "name": "gate (sim contract)",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run sim contract shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119887356787,
+      "name": "gate (core (engine + domain behavior))",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run core (engine + domain behavior) shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119887356957,
+      "name": "gate (sim realism)",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run sim realism shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119887357085,
+      "name": "gate (studio (protocol truth))",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run studio (protocol truth) shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119921159834,
+      "name": "build",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build Pages bundle",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify installed browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Smoke static Pages client",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run browser release gate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Capture responsive artifact evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload responsive evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Upload Pages artifact",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Bind production promotion to the exact staged candidate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify stable staging serves the exact promotion candidate",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Require complete exact-candidate CI before production publication",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Publish to Cloudflare Pages (live origin)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify the live origin serves this build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119975028902,
+      "name": "deploy",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/deploy-pages@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

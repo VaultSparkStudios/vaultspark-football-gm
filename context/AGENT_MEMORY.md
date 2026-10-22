@@ -114,3 +114,13 @@
 - A receipt-only closeout remains separate from its deployed source; a public-page correction needs new exact-source artifact acceptance. Preserve prior evidence and carry pixel review only across identical PNG hashes.
 - Hosted email protection can change page-response bytes. Verify both encoded addresses and the exact observed decoder insertion before normalizing those two transformations; retain raw inequality and require the changed release-note block to match exactly.
 <!-- /s112-delivery-followthrough -->
+
+<!-- s118-final:memory -->
+## Session 118 durable patterns
+
+- Family authority inherits appearance context, never ratings or football RNG; preserve natural pigment resemblance and individual face seeds across restoration.
+- Historical accepted geometry and deliberate new anatomy need separate immutable authorities. Keep strict mesh/save budgets and attribute golden changes explicitly.
+- Version scratch-generated fixtures before CI, hash exact decoded bytes and test from a clean checkout with the built artifact.
+- Do not scan PNG base64 for numeric geometry errors; retain actual geometry validation and a negative control.
+- Verify child-script mutation roots independently of an outer project flag. Native bounded closeout is preferable to an unsafe cross-repository ceremony.
+- Successful exact CI jobs/test steps are valid execution evidence; missing TAP summary counts remain unmeasured.

@@ -4,9 +4,9 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
-- [ ] S118: Verify smoother measured characters, articulated movement and refined faces against compatibility, mesh-memory and rendered-pixel checks.
-- [ ] S118: Verify saved family background/coloring and relationship narratives in both draft paths and browser restoration.
-- [ ] S118: Finish the complete test inventory, inspect final captures, verify the exact candidate on staging and hosted checks, deploy Pages/backend, and record readback and rollback evidence.
+- [x] S118: Verify smoother measured characters, articulated movement and refined faces against compatibility, mesh-memory and rendered-pixel checks. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
+- [x] S118: Verify saved family background/coloring and relationship narratives in both draft paths and browser restoration. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
+- [x] S118: Finish the complete test inventory, inspect final captures, verify the exact candidate on staging and hosted checks, deploy Pages/backend, and record readback and rollback evidence. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
 
 ### Later — existing independent work
 

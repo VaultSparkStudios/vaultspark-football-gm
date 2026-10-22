@@ -1,0 +1,664 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-22T17:23:28.480Z",
+  "kind": "hosted-client-continuity",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+  "status": "passed",
+  "scenarioInput": {
+    "seed": 20260306,
+    "year": 2024,
+    "team": "CHI",
+    "mode": "play"
+  },
+  "scenarios": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "status": "passed",
+      "diagnostics": [],
+      "documentResponses": [
+        {
+          "url": "https://playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        }
+      ],
+      "healthBefore": {
+        "status": 200,
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "generatedAt": "2026-10-22T15:37:52.072Z"
+      },
+      "hostedHeaders": [
+        {
+          "route": "/about",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/game",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/sw.js",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "application/javascript",
+            "cache-control": "max-age=14400",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        }
+      ],
+      "freshPlay": {
+        "from": "https://playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://playfranchisearchitect.com/"
+      },
+      "created": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3777751941,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "reloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3777751941,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "continued": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3777751941,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "advanceReceipt": {
+        "beforeWeek": 1,
+        "afterWeek": 2,
+        "controlledOnBye": false,
+        "actualAdvanceRequests": 1
+      },
+      "advanced": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2437437922,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "progressReloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2437437922,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "savedSlot": "s112-proof-desktop",
+      "savedMetadata": {
+        "slot": "s112-proof-desktop",
+        "updatedAt": "2026-10-22T17:23:55.078Z",
+        "sizeBytes": 949311,
+        "meta": {
+          "schemaVersion": 4,
+          "currentYear": 2024,
+          "currentWeek": 2,
+          "phase": "regular-season",
+          "controlledTeamId": "CHI",
+          "controlledTeamName": "Knoxville Dragons",
+          "controlledTeamAbbrev": "KD",
+          "seasonsSimulated": 0
+        }
+      },
+      "returningPlay": {
+        "from": "https://playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://playfranchisearchitect.com/"
+      },
+      "resumed": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2437437922,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "serviceWorker": {
+        "controlled": true,
+        "scriptUrl": "https://playfranchisearchitect.com/sw.js",
+        "state": "activated"
+      },
+      "healthAfter": {
+        "status": 200,
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "generatedAt": "2026-10-22T15:37:52.072Z"
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "status": "passed",
+      "diagnostics": [],
+      "documentResponses": [
+        {
+          "url": "https://playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/about",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/index.html",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "status": 200,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game.html?resume=tab",
+          "status": 308,
+          "fromServiceWorker": false
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game?resume=tab",
+          "status": 200,
+          "fromServiceWorker": false
+        }
+      ],
+      "healthBefore": {
+        "status": 200,
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "generatedAt": "2026-10-22T15:37:52.072Z"
+      },
+      "hostedHeaders": [
+        {
+          "route": "/about",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/game",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "text/html; charset=utf-8",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        },
+        {
+          "route": "/sw.js",
+          "status": 200,
+          "headers": {
+            "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+            "content-type": "application/javascript",
+            "cache-control": "max-age=14400",
+            "x-content-type-options": "nosniff",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+            "strict-transport-security": "max-age=31536000; includeSubDomains; preload"
+          }
+        }
+      ],
+      "freshPlay": {
+        "from": "https://playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://playfranchisearchitect.com/"
+      },
+      "created": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3777751941,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "reloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3777751941,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "continued": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 1,
+        "mode": "play",
+        "rngSeed": 3777751941,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "advanceReceipt": {
+        "beforeWeek": 1,
+        "afterWeek": 2,
+        "controlledOnBye": false,
+        "actualAdvanceRequests": 1
+      },
+      "advanced": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2437437922,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "progressReloaded": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2437437922,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "savedSlot": "s112-proof-mobile",
+      "savedMetadata": {
+        "slot": "s112-proof-mobile",
+        "updatedAt": "2026-10-22T17:24:25.284Z",
+        "sizeBytes": 949303,
+        "meta": {
+          "schemaVersion": 4,
+          "currentYear": 2024,
+          "currentWeek": 2,
+          "phase": "regular-season",
+          "controlledTeamId": "CHI",
+          "controlledTeamName": "Knoxville Dragons",
+          "controlledTeamAbbrev": "KD",
+          "seasonsSimulated": 0
+        }
+      },
+      "returningPlay": {
+        "from": "https://playfranchisearchitect.com/about",
+        "href": "./index.html",
+        "destination": "https://playfranchisearchitect.com/"
+      },
+      "resumed": {
+        "franchiseId": "fa-20260306-CHI",
+        "team": "CHI",
+        "startYear": 2024,
+        "year": 2024,
+        "week": 2,
+        "mode": "play",
+        "rngSeed": 2437437922,
+        "runtime": "client",
+        "runtimeKind": "worker"
+      },
+      "serviceWorker": {
+        "controlled": true,
+        "scriptUrl": "https://playfranchisearchitect.com/sw.js",
+        "state": "activated"
+      },
+      "healthAfter": {
+        "status": 200,
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "generatedAt": "2026-10-22T15:37:52.072Z"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "desktop-created-franchise",
+      "file": "reports/visual/s118-production-continuity/desktop-created-franchise.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "2f71ff763b8904603548690bd9e73fdc2b72fa8661dba47ec2d52f82d0728212",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/desktop-created-franchise.png"
+    },
+    {
+      "name": "desktop-advanced-reloaded",
+      "file": "reports/visual/s118-production-continuity/desktop-advanced-reloaded.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e4637d18a92af53c853cf3d0f3b50f61319e8fe8e4ff76a0b8c6de17142876dc",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/desktop-advanced-reloaded.png"
+    },
+    {
+      "name": "desktop-new-tab-saved-franchise",
+      "file": "reports/visual/s118-production-continuity/desktop-new-tab-saved-franchise.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "59e39bb83cdc7321837b03bb9e458ac11162006cde262da6ae047b60089576d9",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/desktop-new-tab-saved-franchise.png"
+    },
+    {
+      "name": "desktop-saved-slot-resumed",
+      "file": "reports/visual/s118-production-continuity/desktop-saved-slot-resumed.png",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e4637d18a92af53c853cf3d0f3b50f61319e8fe8e4ff76a0b8c6de17142876dc",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/desktop-saved-slot-resumed.png"
+    },
+    {
+      "name": "mobile-created-franchise",
+      "file": "reports/visual/s118-production-continuity/mobile-created-franchise.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "38a2525d895d8ba8e3fc113fa16935b10d0938667b0d3a82602ba74ae01c4c22",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/mobile-created-franchise.png"
+    },
+    {
+      "name": "mobile-advanced-reloaded",
+      "file": "reports/visual/s118-production-continuity/mobile-advanced-reloaded.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d6c883c4a1dcf612b14937bc9936bc442286c54a50796fa6ec077340bae51884",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/mobile-advanced-reloaded.png"
+    },
+    {
+      "name": "mobile-new-tab-saved-franchise",
+      "file": "reports/visual/s118-production-continuity/mobile-new-tab-saved-franchise.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d3e73182a13855575ca7624301aecfd640a051fabb9ef698a6a18135338d2182",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/mobile-new-tab-saved-franchise.png"
+    },
+    {
+      "name": "mobile-saved-slot-resumed",
+      "file": "reports/visual/s118-production-continuity/mobile-saved-slot-resumed.png",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d6c883c4a1dcf612b14937bc9936bc442286c54a50796fa6ec077340bae51884",
+      "reviewed": true,
+      "originalFile": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/mobile-saved-slot-resumed.png"
+    }
+  ],
+  "errors": [],
+  "scope": "Real Play link, explicit nondefault client league, same-tab reload/Main Menu/Continue, one actual week and reload, then a manual saved slot reopened after closing the tab.",
+  "limitations": [
+    "No runtime preference is forced and no request, storage, worker or service-worker behavior is mocked.",
+    "The returning browser uses this candidate's installed service worker; this does not simulate an older-release upgrade.",
+    "Desktop dark and mobile light are sampled; this is not the full visual matrix.",
+    "One week is advanced in each isolated local browser franchise; no analytics consent is granted, account created or share transmitted."
+  ],
+  "visualReview": {
+    "status": "passed",
+    "reviewer": "/root",
+    "reviewedAt": "2026-10-22T17:25:10.928Z",
+    "imageCapableInspection": true,
+    "inspected": 8,
+    "mandatorySelectedScopeDefects": 0,
+    "findings": [
+      "Desktop dark and mobile light captures preserve readable league identity and save controls across creation, reload, saved-slot listing and resumed franchise.",
+      "Actual one-week progression and explicit named-save restoration are established by runtime identities and request counts in the scenarios."
+    ],
+    "limitation": "Existing expanded-mobile Desk/card right-edge clipping remains recorded; tested restoration controls are readable. This does not claim globally flawless mobile layout or an older-release service-worker upgrade."
+  },
+  "browserVersion": "155.0.8059.80",
+  "outcomes": {
+    "explicitTeamNavigation": {
+      "status": "passed",
+      "evidence": "desktop: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI; mobile: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI"
+    },
+    "selectedSaveNavigation": {
+      "status": "passed",
+      "evidence": "desktop: explicit slot s112-proof-desktop resumed in a new tab as fa-20260306-CHI, year 2024, week 2; mobile: explicit slot s112-proof-mobile resumed in a new tab as fa-20260306-CHI, year 2024, week 2"
+    },
+    "progressReload": {
+      "status": "passed",
+      "evidence": "desktop: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2; mobile: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2"
+    }
+  },
+  "originalReport": "output/playwright/hosted-continuity-playfranchisearchitect-com-863ea60e6139-2026-10-22T17-23-28-479Z/report.json"
+}

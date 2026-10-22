@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S118 browser suite passes; repair responsive capture harness before new exact-candidate frontend promotion.",
-  "nextMilestone": "Verify full responsive capture, stage and push corrected candidate, complete required CI and production readback, then closeout.",
+  "currentFocus": "S118 selected character/family outcomes and exact production verified; final closeout publication pending.",
+  "nextMilestone": "Publish verified closeout receipts, then stop the completed selected arc.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
@@ -21,11 +21,11 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "partial",
-  "truthAuditLastRun": "2026-10-08",
-  "ignisScore": 41119,
+  "truthAuditLastRun": "2026-10-22",
+  "ignisScore": 40285,
   "ignisGrade": "FORGE",
-  "ignisLastComputed": "2026-09-09",
-  "testSuiteStatus": "nonpassing",
+  "ignisLastComputed": "2026-10-22",
+  "testSuiteStatus": "passed",
   "testsPassing": null,
   "testsTotal": null,
   "session8Summary": {
@@ -66,18 +66,18 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 655,
+  "silScore": 838,
   "silCategoriesV3": {
-    "devHealth": 55,
-    "creativeAlignment": 75,
-    "momentum": 60,
-    "engagement": 50,
-    "processQuality": 55,
-    "crossRepoCoherence": 70,
-    "securityPosture": 75,
-    "ecosystemIntegration": 60,
-    "capitalEfficiency": 90,
-    "automationCoverage": 65
+    "devHealth": 90,
+    "creativeAlignment": 88,
+    "momentum": 70,
+    "engagement": 80,
+    "processQuality": 60,
+    "crossRepoCoherence": 90,
+    "securityPosture": 92,
+    "ecosystemIntegration": 85,
+    "capitalEfficiency": 95,
+    "automationCoverage": 88
   },
   "currentSession": 118,
   "lastAgent": "codex",
@@ -343,41 +343,28 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 626,
+  "silHealth": 784,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 83,
+    "score": 100,
     "date": "2026-10-22",
-    "passing": 10,
-    "warning": 2,
-    "checks": [
-      {
-        "id": "release-authority-release-source-current",
-        "status": "warning",
-        "blocking": false,
-        "detail": "release source d913b9f9c0043d00131506c0d4271034a15fc169 · live staging adb9b22840600219349b2d4428bdbe3232aa7a5f"
-      },
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "warning",
-        "blocking": false,
-        "detail": "HEAD adb9b22840600219349b2d4428bdbe3232aa7a5f is not covered by live production d913b9f9c0043d00131506c0d4271034a15fc169"
-      }
-    ]
+    "passing": 12,
+    "warning": 0,
+    "checks": []
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-09-29",
+  "sanitizationLastCleared": "2026-10-22",
   "lastVerificationAt": "2026-10-01T18:36:29.818Z",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.118,
-  "entropyLastComputed": "2026-10-01",
-  "lastSessionSummary": "S118 active:7/7exactCIjobs pass;browser267/0/3;backend exact revision verified with database/routing preserved and rollback available; frontend pending.",
+  "entropyScore": 0.058,
+  "entropyLastComputed": "2026-10-22",
+  "lastSessionSummary": "S118: measured stylized characters, articulated motion and persistent family identity delivered; exact candidate CI and production verified. Closeout publication finalizing.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -433,8 +420,8 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
-    "workflowRun": 39771529288,
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "workflowRun": 39797029101,
     "workflowConclusion": "success",
     "deployServer": "bounded-pinned-ssh-exact-health",
     "workflowDeployment": "executed workflow_dispatch",
@@ -443,10 +430,10 @@
     "externalHealth": {
       "verified": true,
       "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
-      "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
       "database": "ready"
     },
-    "verifiedAt": "2026-10-22T13:13:00.505Z",
+    "verifiedAt": "2026-10-22T16:23:49.700Z",
     "postgresAndCaddyPreserved": true,
     "opsCopied": true
   },
@@ -505,8 +492,8 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "597f49b3ea40dfd53098ea670fed0a0c03c3f33498be129b3f69db2e5ed51f00",
-    "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+    "receiptSha256": "6bd33e9dd7df1ab093431574923af89050530ea320abd88592f8e42f47748b6a",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
     "artifactFingerprint": {
       "algorithm": "sha256",
       "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
@@ -2324,48 +2311,49 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "7ed34044-fe5a-4fcf-80ec-74e28ba249d5",
+    "deploymentId": "f8b33838-d3b3-487e-8fa0-3a1ac54ba800",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-22T11:33:02.822Z"
+      "checkedAt": "2026-10-22T14:34:48.275Z"
     },
     "rollback": {
-      "previousDeploymentId": "f4f9ac34-8718-431d-bf5c-aa9d85f0d67e",
+      "previousDeploymentId": "35d125cf-0fa2-4c72-b062-202368a1dc30",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-22T11:33:02.822Z"
+    "observedAt": "2026-10-22T14:34:48.275Z"
   },
   "lastCloseoutAt": "2026-10-04",
   "performanceAuthority": {
     "schemaVersion": "1.0",
-    "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
-    "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "origin": "https://playfranchisearchitect.com",
     "route": "/",
     "verified": true,
-    "observedAt": "2026-10-01T17:31:08.798Z",
-    "receipt": "docs/performance/STAGING_S112_FOLLOWTHROUGH.json",
-    "receiptSha256": "f3ae4e9ec8c339612cc23fbefeba6c703ae12739e2e2e2ee1b2c8212666c95ac",
-    "note": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
+    "observedAt": "2026-10-22T17:25:30.837Z",
+    "receipt": "docs/performance/LATEST.json",
+    "receiptSha256": "f4be69f24a2966af6d565d51d84c3bc800628eba5c7f3c2cc2f5a7c120e0b160",
+    "note": "Three real hosted laboratory samples per desktop/mobile profile with deliberate interactions; field cohort performance and physical-device frame rate remain unmeasured.",
     "profiles": [
       {
         "name": "desktop",
         "runs": 3,
-        "lcpMs": 564,
+        "lcpMs": 1488,
         "inpMs": 32,
-        "cls": 0,
+        "cls": 0.0003,
         "interactionObserved": true
       },
       {
         "name": "mobile",
         "runs": 3,
-        "lcpMs": 524,
-        "inpMs": 24,
-        "cls": 0.0085,
+        "lcpMs": 1584,
+        "inpMs": 48,
+        "cls": 0.0131,
         "interactionObserved": true
       }
     ]
@@ -2373,31 +2361,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-04T12:21:46.451Z",
-    "status": "pending-current-candidate",
-    "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
-    "publicationRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+    "observedAt": "2026-10-22T17:34:56.270Z",
+    "status": "verified",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "publicationRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
+      "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
-        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
       },
       "production": {
-        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
-        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
       },
       "visual": {
-        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
-        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
       },
       "performance": {
-        "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
-        "artifactDigest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280"
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
       }
     },
     "checks": [
@@ -2430,7 +2418,7 @@
         "ok": true
       }
     ],
-    "evidenceVerified": false,
+    "evidenceVerified": true,
     "launchReady": false,
     "blockerCodes": [
       "email-delivery-unverified",
@@ -2438,19 +2426,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-      "verifiedAt": "2026-10-01T01:19:49.821Z",
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "verifiedAt": "2026-10-22T16:23:49.700Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "6786167ece72fe68ea77a2e29c4a8de81c51a8a7664131d224d6ec3b8afe0310",
-      "productionSha256": "4d0643c4afaf64505c7de3557c7cf45c1f2ade2ca6e8c37e78db8b39367cd3b4",
-      "visualSha256": "72f9a8cb6717b0dec401d7901c7d41ca2656ac676db6a426f8759aaa83dfbcb4",
-      "performanceSha256": "4388be3d4f232ea17151dbe7fa6ae0fb1ea6c3f5d9547c4f89b773602cfde804"
+      "stagingSha256": "febdaaefc71b2ee47b60037bfa628d24be8717f82087229ad6d4d8298ecd4e08",
+      "productionSha256": "bbf81256ed559bb10bd829cc1195911c8a39471202dff6c1f6d98ddebfa5ec51",
+      "visualSha256": "babbb808b33b1975c348e43068016617dcf41d7f28e9cf4d3a15bec728653f3f",
+      "performanceSha256": "35b0000f1f27cf0ba1e795c43de97b816b3a1fc7897bf0af2dde96f84a70dec9"
     },
-    "receiptSha256": "3eeb1770233ac22adc61da982c1adb140255504f2f002520bfdd023c3011cafd",
-    "previousVerifiedReceipt": "reports/s118-prior-release-authority.json",
-    "pendingReason": "S118 working candidate is not the last verified production source. Preserve prior authority as history; new exact-candidate staging, CI and production evidence are still required."
+    "receiptSha256": "b6b95580a0b1562a7996e1f85f5db59c17b464ee638eafcdcdbdc7147f788528"
   },
   "launchReady": false,
   "sil": {
@@ -2508,9 +2494,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 118,
-    "currentFocus": "S118 browser suite passes; repair responsive capture harness before new exact-candidate frontend promotion.",
-    "nextMilestone": "Verify full responsive capture, stage and push corrected candidate, complete required CI and production readback, then closeout.",
-    "lastSessionSummary": "S118 active:7/7exactCIjobs pass;browser267/0/3;backend exact revision verified with database/routing preserved and rollback available; frontend pending."
+    "currentFocus": "S118 selected character/family outcomes and exact production verified; final closeout publication pending.",
+    "nextMilestone": "Publish verified closeout receipts, then stop the completed selected arc.",
+    "lastSessionSummary": "S118: measured stylized characters, articulated motion and persistent family identity delivered; exact candidate CI and production verified. Closeout publication finalizing."
   },
   "partialCloseout": {
     "session": 117,
@@ -2687,23 +2673,15 @@
     }
   },
   "characterPromotion": {
-    "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
     "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
-    "ciRun": 39771485408,
-    "pagesRun": 39771524992,
-    "backendRun": 39771529288,
+    "ciRun": 39796952874,
+    "pagesRun": 39797016574,
+    "backendRun": 39797029101,
     "stagingVerified": true,
-    "visualCaptures": 217,
+    "visualCaptures": 225,
     "freshHostedCaptures": 8,
-    "inheritedReviewedCaptures": 209,
-    "cleanCheckoutFocused": {
-      "passed": 6,
-      "total": 6
-    },
-    "cutRepeated": {
-      "passed": 10,
-      "total": 10
-    },
+    "inheritedReviewedCaptures": 217,
     "priorCandidates": [
       {
         "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
@@ -2724,24 +2702,175 @@
           "skipped": 3
         },
         "productionPromoted": false
+      },
+      {
+        "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+        "ciRun": 39771485408,
+        "browser": {
+          "passed": 267,
+          "failed": 0,
+          "skipped": 3,
+          "total": 270
+        },
+        "pagesRun": 39771524992,
+        "pagesBrowser": {
+          "passed": 267,
+          "failed": 0,
+          "skipped": 3
+        },
+        "backendRun": 39771529288,
+        "frontendPromoted": false,
+        "backendPromoted": true,
+        "cleanCheckoutFocused": {
+          "passed": 6,
+          "total": 6
+        },
+        "cutRepeated": {
+          "passed": 10,
+          "total": 10
+        },
+        "evidence": "reports/s118-responsive-capture-failure.json"
       }
     ],
-    "productionVerified": false,
+    "productionVerified": true,
     "closeoutComplete": false,
     "ciStatus": "seven-required-jobs-and-test-steps-passed",
+    "backendStatus": "success",
+    "backendVerified": true,
+    "pagesStatus": "success",
+    "priorCaptureFailure": "reports/s118-responsive-capture-failure.json",
+    "localResponsiveCapture": {
+      "captured": 327,
+      "required": 312,
+      "requiredCompleted": 312,
+      "runtimeErrors": 0,
+      "artifactSourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "automationVersion": "1.64.0",
+      "scope": "Full local327-capture/312-required matrix on unchanged application artifact with repaired evidence harness; hosted exact-candidate capture remains pending."
+    },
+    "localProtocolChecks": [
+      {
+        "sourceRevision": "9c1686185840404c07ab1ef6cb8e98e3d08f8792",
+        "passed": 376,
+        "total": 376,
+        "scope": "Complete studio shard; checkout clean at start; tests subsequently generate doctor/brief metadata."
+      },
+      {
+        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "passed": 72,
+        "total": 72,
+        "scope": "Focused public/script/protocol checks in source-bound checkout; earlier test-generated doctor metadata present, no app changes."
+      }
+    ],
     "browser": {
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "ciRun": 39796952874,
       "passed": 267,
       "failed": 0,
       "skipped": 3,
       "total": 270
     },
-    "backendStatus": "success-readback-and-rollback-verified",
-    "backendVerified": true,
-    "pagesStatus": "failed-responsive-artifact-capture-after-full-browser-pass",
-    "pagesBrowser": {
-      "passed": 267,
-      "failed": 0,
-      "skipped": 3
+    "pagesVerified": true
+  },
+  "candidateTestAcceptance": {
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "ciRun": 39796952874,
+    "requiredJobs": 7,
+    "passedJobs": 7,
+    "aggregateCaseCount": null,
+    "receipt": "reports/s118-candidate-ci.json"
+  },
+  "priorPerformanceAuthorities": [
+    {
+      "schemaVersion": "1.0",
+      "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
+      "artifactDigest": "dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a",
+      "route": "/",
+      "verified": true,
+      "observedAt": "2026-10-01T17:31:08.798Z",
+      "receipt": "docs/performance/STAGING_S112_FOLLOWTHROUGH.json",
+      "receiptSha256": "f3ae4e9ec8c339612cc23fbefeba6c703ae12739e2e2e2ee1b2c8212666c95ac",
+      "note": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
+      "profiles": [
+        {
+          "name": "desktop",
+          "runs": 3,
+          "lcpMs": 564,
+          "inpMs": 32,
+          "cls": 0,
+          "interactionObserved": true
+        },
+        {
+          "name": "mobile",
+          "runs": 3,
+          "lcpMs": 524,
+          "inpMs": 24,
+          "cls": 0.0085,
+          "interactionObserved": true
+        }
+      ]
     }
+  ],
+  "productionContinuityAuthority": {
+    "schemaVersion": "1.0",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "origin": "https://playfranchisearchitect.com",
+    "status": "verified",
+    "observedAt": "2026-10-22T17:23:28.480Z",
+    "receipt": "reports/s118-production-continuity.json",
+    "receiptSha256": "7cf5ba3cd0ecfcd85050712191365c95b0bc39b52d1c8443ddf502983f565db5",
+    "observedOutcomes": {
+      "explicitTeamNavigation": {
+        "status": "passed",
+        "evidence": "desktop: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI; mobile: created fa-20260306-CHI, seed 20260306, year 2024, team CHI, mode play; same-tab reload and Continue fa-20260306-CHI"
+      },
+      "selectedSaveNavigation": {
+        "status": "passed",
+        "evidence": "desktop: explicit slot s112-proof-desktop resumed in a new tab as fa-20260306-CHI, year 2024, week 2; mobile: explicit slot s112-proof-mobile resumed in a new tab as fa-20260306-CHI, year 2024, week 2"
+      },
+      "progressReload": {
+        "status": "passed",
+        "evidence": "desktop: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2; mobile: 1 actual advance request, week 1→2, reload fa-20260306-CHI year 2024 week 2"
+      }
+    },
+    "visualReview": {
+      "status": "passed",
+      "reviewer": "/root",
+      "reviewedAt": "2026-10-22T17:25:10.928Z",
+      "imageCapableInspection": true,
+      "inspected": 8,
+      "mandatorySelectedScopeDefects": 0,
+      "findings": [
+        "Desktop dark and mobile light captures preserve readable league identity and save controls across creation, reload, saved-slot listing and resumed franchise.",
+        "Actual one-week progression and explicit named-save restoration are established by runtime identities and request counts in the scenarios."
+      ],
+      "limitation": "Existing expanded-mobile Desk/card right-edge clipping remains recorded; tested restoration controls are readable. This does not claim globally flawless mobile layout or an older-release service-worker upgrade."
+    },
+    "limitations": [
+      "No runtime preference is forced and no request, storage, worker or service-worker behavior is mocked.",
+      "The returning browser uses this candidate's installed service worker; this does not simulate an older-release upgrade.",
+      "Desktop dark and mobile light are sampled; this is not the full visual matrix.",
+      "One week is advanced in each isolated local browser franchise; no analytics consent is granted, account created or share transmitted."
+    ]
+  },
+  "velocity": 3,
+  "technicalDebtTrend": "decreasing",
+  "closeoutExecution": {
+    "mode": "native-bounded-ceremony",
+    "sharedAutopilotExecuted": false,
+    "reason": "Shared autopilot child scripts resolve another repository; preserve project-only mutation boundary.",
+    "state": "writeback-complete-review-publication-pending"
+  },
+  "closeoutSecurity": {
+    "status": "passed",
+    "receipt": "reports/s118-closeout-security.json",
+    "observedAt": "2026-10-22T17:34:01.966Z"
+  },
+  "closeoutProtocol": {
+    "status": "passed",
+    "receipt": "reports/s118-closeout-protocol.json",
+    "tests": 44
   }
 }

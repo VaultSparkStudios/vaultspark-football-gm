@@ -466,6 +466,25 @@
       "cause": "S112 canonical writeback completed. Legacy five-axis measurements are unavailable; consult exact source-bound tests, release receipts, and the independent ten-category SIL assessment.",
       "dimensionMeasurementStatus": "unmeasured",
       "dimensionMeasurementNote": "No five-axis dimension table exists in the source truth audit. Zero-valued dimensions and total are parser defaults, not assessed 0/25 health. SIL v3 is separate; truthGenome remains null."
+    },
+    {
+      "date": "2026-10-22",
+      "session": 118,
+      "total": 0,
+      "maxTotal": 25,
+      "overallStatus": "selected S118 production verified; broader historical truth remains partial",
+      "lastReviewed": "2026-10-22",
+      "dimensions": {
+        "schema_alignment": 0,
+        "prompt_template_alignment": 0,
+        "derived_view_freshness": 0,
+        "handoff_continuity": 0,
+        "contradiction_density": 0
+      },
+      "delta": 0,
+      "cause": "S118 selected character/family outcomes and exact production verified; final closeout publication pending.",
+      "dimensionMeasurementStatus": "unmeasured",
+      "dimensionMeasurementNote": "No legacy five-axis dimension scores exist in the truth audit. Zero-valued dimensions and total are shared-parser defaults, not measured 0/25 health. Consult source-bound production receipts and the separate ten-category SIL assessment."
     }
   ]
 }

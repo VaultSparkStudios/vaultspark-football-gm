@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 117 (2026-10-08) | Total: 655/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 790.3 | 5: 807.4 | 10: 865.2 | 25: 929.2 | all: 970.6
+Last session: 118 (2026-10-22) | Total: 838/1000 | Velocity: 3 | Debt: ↓
+Avgs — 3: 783.7 | 5: 811 | 10: 852.7 | 25: 923.3 | all: 968.8
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 858 → 655 (-203). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 71 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 655 → 838 (+183). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 72 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 ## 2026-09-14 — Session 109 — Fifteen items in one goal, and the audit's own phantoms caught first
@@ -203,6 +203,20 @@ SIL v3.0: **655 / 1000** (Dev Health 55, Creative Alignment 75, Momentum 60, Eng
 ## 2026-10-22 — S118 — Active verification checkpoint, unscored
 
 The character implementation is under complete verification. Three crown/memory failures were repaired within existing limits; the scouting click collision was corrected; the claim lazy-load check now observes actual responses; ten omitted tests were added to the inventory. No final score or completed-session record is assigned while full acceptance and deployment remain pending. The latest closed-session score below remains S117.
+
+
+<!-- s118-final:sil -->
+## 2026-10-22 — Session 118 — Character delivery with evidence that survives a clean checkout
+
+SIL v3.0: **838 / 1000** (Dev Health 90, Creative Alignment 88, Momentum 70, Engagement 80, Process Quality 60, Cross-Repo Coherence 90, Security Posture 92, Ecosystem Integration 85, Capital Efficiency 95, Automation Coverage 88). Intent outcome: Achieved for the three selected implementation/production outcomes; canonical closeout publication is finalizing. Velocity: 3 selected outcomes. Debt: ↓ repaired save budget, browser portability and release acceptance; broader historical debt retained. These are engineering assessments, not measured player retention or a physical realism certification.
+
+Process and momentum remain reduced for repeated local repairs, an initially nonportable browser suite and long duplicate hosted verification. No paid inference or new dependency was introduced for the character system.
+
+- [SIL] A focused pass in a populated workspace does not establish portable CI: exercise the committed fixture and built client from a clean checkout.
+- [SIL] Binary image payloads are opaque; validate numeric geometry separately and retain a real invalid-value control.
+- [SIL] An outer --project flag does not make script-rooted child writers safe. Verify each mutation boundary before invoking a shared closeout tool.
+
+Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
 
 <!-- ledger-roll:pointer -->
 ---

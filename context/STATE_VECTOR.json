@@ -1,15 +1,15 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-10-01",
-  "generatedAtMs": 1790886560349,
-  "session": 112,
-  "vectorHash": "fb36d2ee933dabe9",
-  "silTotal": 804,
+  "generatedAt": "2026-10-22",
+  "generatedAtMs": 1792690134185,
+  "session": 118,
+  "vectorHash": "70a62cc5cb831366",
+  "silTotal": 838,
   "silAvg3": null,
-  "velocity": 4,
+  "velocity": 3,
   "debt": null,
   "runway": "unknown",
-  "intentRate": "100% (5/5 last 5)",
+  "intentRate": "80% (4/5 last 5)",
   "openNow": 2,
   "openNext": 3,
   "openBlocked": 0,
@@ -23,19 +23,19 @@
     "Offer aggregate-only Analytica ingestion through Studio Ark when that authority "
   ],
   "health": "yellow",
-  "truthStatus": "green",
+  "truthStatus": "selected S118 production verified; broader historical truth remains partial",
   "genome": null,
-  "ignisScore": 41119,
+  "ignisScore": 40285,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 22,
+  "ignisAgeDays": 0,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
-  "currentFocus": "S112 improvements and closeout delivery correction verified on staging and production. Public launch remains HOLD.",
+  "nextMilestone": "Publish verified closeout receipts, then stop the completed selected arc.",
+  "currentFocus": "S118 selected character/family outcomes and exact production verified; final closeout publication pending.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ]
 }

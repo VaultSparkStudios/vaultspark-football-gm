@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0",
   "kind": "exact-candidate-hosted-ci",
-  "observedAt": "2026-10-22T13:12:37.872Z",
+  "observedAt": "2026-10-22T16:19:42.766Z",
   "ok": true,
-  "sha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
-  "runId": 39771485408,
+  "sha": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "runId": 39796952874,
   "attempt": 1,
   "requiredJobs": [
     "unit-shards (core)",
@@ -18,13 +18,13 @@
   "lane": "hosted-exact-sha",
   "jobs": [
     {
-      "id": 119799839353,
+      "id": 119886501825,
       "name": "browser-gates",
-      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
       "status": "completed",
       "conclusion": "success",
-      "startedAt": "2026-10-22T11:33:35Z",
-      "completedAt": "2026-10-22T13:10:43Z",
+      "startedAt": "2026-10-22T14:35:18Z",
+      "completedAt": "2026-10-22T16:16:00Z",
       "steps": [
         {
           "name": "Set up job",
@@ -84,13 +84,13 @@
       ]
     },
     {
-      "id": 119799839454,
+      "id": 119886502345,
       "name": "unit-shards (sim:contract)",
-      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
       "status": "completed",
       "conclusion": "success",
-      "startedAt": "2026-10-22T11:33:35Z",
-      "completedAt": "2026-10-22T12:20:00Z",
+      "startedAt": "2026-10-22T14:35:18Z",
+      "completedAt": "2026-10-22T15:25:23Z",
       "steps": [
         {
           "name": "Set up job",
@@ -135,115 +135,13 @@
       ]
     },
     {
-      "id": 119799839461,
-      "name": "unit-shards (runtime)",
-      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
-      "status": "completed",
-      "conclusion": "success",
-      "startedAt": "2026-10-22T11:33:34Z",
-      "completedAt": "2026-10-22T12:05:38Z",
-      "steps": [
-        {
-          "name": "Set up job",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Checkout",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Setup Node",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Install dependencies",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Run runtime shard",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Post Setup Node",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Post Checkout",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Complete job",
-          "status": "completed",
-          "conclusion": "success"
-        }
-      ]
-    },
-    {
-      "id": 119799839565,
-      "name": "unit-shards (studio)",
-      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
-      "status": "completed",
-      "conclusion": "success",
-      "startedAt": "2026-10-22T11:33:34Z",
-      "completedAt": "2026-10-22T11:34:31Z",
-      "steps": [
-        {
-          "name": "Set up job",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Checkout",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Setup Node",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Install dependencies",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Run studio shard",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Post Setup Node",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Post Checkout",
-          "status": "completed",
-          "conclusion": "success"
-        },
-        {
-          "name": "Complete job",
-          "status": "completed",
-          "conclusion": "success"
-        }
-      ]
-    },
-    {
-      "id": 119799839604,
+      "id": 119886502502,
       "name": "unit-shards (core)",
-      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
       "status": "completed",
       "conclusion": "success",
-      "startedAt": "2026-10-22T11:33:35Z",
-      "completedAt": "2026-10-22T12:05:39Z",
+      "startedAt": "2026-10-22T14:35:18Z",
+      "completedAt": "2026-10-22T15:01:17Z",
       "steps": [
         {
           "name": "Set up job",
@@ -288,13 +186,13 @@
       ]
     },
     {
-      "id": 119799839629,
+      "id": 119886502544,
       "name": "unit-shards (sim:realism)",
-      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
       "status": "completed",
       "conclusion": "success",
-      "startedAt": "2026-10-22T11:33:35Z",
-      "completedAt": "2026-10-22T12:14:33Z",
+      "startedAt": "2026-10-22T14:35:18Z",
+      "completedAt": "2026-10-22T15:01:11Z",
       "steps": [
         {
           "name": "Set up job",
@@ -339,13 +237,64 @@
       ]
     },
     {
-      "id": 119799839756,
-      "name": "unit-shards (long)",
-      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "id": 119886502581,
+      "name": "unit-shards (runtime)",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
       "status": "completed",
       "conclusion": "success",
-      "startedAt": "2026-10-22T11:33:35Z",
-      "completedAt": "2026-10-22T12:07:54Z",
+      "startedAt": "2026-10-22T14:35:18Z",
+      "completedAt": "2026-10-22T15:18:37Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run runtime shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119886502811,
+      "name": "unit-shards (long)",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T14:35:18Z",
+      "completedAt": "2026-10-22T15:08:51Z",
       "steps": [
         {
           "name": "Set up job",
@@ -369,6 +318,57 @@
         },
         {
           "name": "Run long shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119886502980,
+      "name": "unit-shards (studio)",
+      "headSha": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T14:35:18Z",
+      "completedAt": "2026-10-22T14:36:30Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run studio shard",
           "status": "completed",
           "conclusion": "success"
         },
@@ -425,12 +425,33 @@
       "productionPromoted": false
     }
   ],
+  "priorAttemptWithCaptureFailure": {
+    "sha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+    "ciRunId": 39771485408,
+    "ciConclusion": "success",
+    "ciBrowser": {
+      "passed": 267,
+      "failed": 0,
+      "skipped": 3
+    },
+    "pagesRunId": 39771524992,
+    "pagesBrowser": {
+      "passed": 267,
+      "failed": 0,
+      "skipped": 3
+    },
+    "pagesFailedStep": "Capture responsive artifact evidence",
+    "classification": "Capture harness imported renderFreeAgency from the retired module owner; fixed to current tabContracts export. Full local327capture/312required matrix passed with zero runtime errors. Remote Dependabot Playwright1.64.1 update was preserved by ordinary merge and trust-verified.",
+    "frontendPromoted": false,
+    "backendRunId": 39771529288,
+    "backendPromoted": true
+  },
   "browser": {
     "passed": 267,
     "failed": 0,
     "skipped": 3,
     "total": 270,
     "skippedScope": "Three existing opt-in actual-career/negative-control checks; no selected assertion disabled.",
-    "logSha256": "60724fcc7be69e81acfdac18a5cb117a82cde3a761f42194adee543393e5896b"
+    "logSha256": "4c248e174ca939d9505542f61c31c720170736c4da0f126fc68fe337c79c516b"
   }
 }

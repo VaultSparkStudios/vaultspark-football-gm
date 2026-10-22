@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "observedAt": "2026-10-22T17:35:42.5848185Z",
+  "session": 118,
+  "status": "passed",
+  "historicalStarted": null,
+  "historicalClosed": null,
+  "currentlyOwnedVerificationProcesses": 0,
+  "ownedProcesses": [],
+  "ownedLocalPreviewListeners": 0,
+  "portsChecked": [
+    4273,
+    4275
+  ],
+  "knownToolSessions": "All owned test, build, scan and hosted browser helpers terminal; live GH release workflows also terminal success.",
+  "limitations": [
+    "Historical process start/close totals across prior compacted turns are unmeasured.",
+    "Unrelated system, editor and sibling-project processes were not terminated."
+  ],
+  "scaffold": {
+    "inProgress": 0,
+    "open": 0,
+    "done": 3,
+    "selected": 3
+  }
+}

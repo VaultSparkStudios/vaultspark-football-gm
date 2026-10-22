@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "observedAt": "2026-10-22T17:34:01.966Z",
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "status": "passed",
+  "scope": "Focused checks for the changed closeout/audit/handoff/status documents; full application acceptance remains the separate seven-job exact-candidate CI report.",
+  "tests": 44,
+  "passed": 44,
+  "failed": 0,
+  "skipped": 0,
+  "files": [
+    "test/closeout-board-truth.test.js",
+    "test/audit-renderer.test.js",
+    "test/audit-completion-contract.test.js",
+    "test/session101-writeback-currency.test.js",
+    "test/startup-sil-truth.test.js",
+    "test/studio-protocol-smoke.test.js"
+  ],
+  "logSha256": "c5a6823ac499bf61dceea6b319e9d072fc1b9d9ad964fa7f2997af896a129d48"
+}

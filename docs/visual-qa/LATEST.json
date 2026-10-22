@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-10-22T07:07:17.217Z",
-  "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+  "capturedAt": "2026-10-22T17:25:21.828Z",
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
   "themes": [
     "dark",
     "light"
   ],
-  "status": "selected-character-visual-scope-reviewed; exact-candidate-release-pending",
+  "status": "selected-character-visual-scope-reviewed; exact-candidate-production-verified",
   "scope": "S118 selected measured-body, face/blink, foot-motion, family identity, dossier controls and status-note improvements.",
   "sourceHashes": {
     "public/app.js": "c79e2b07d4300e7aebd0d642618b0ad2e9a24b2fee7a72e57f09357fc9e2ab28",
@@ -46,7 +46,9 @@
       "Fresh final-build body/family pass: all36 frames exactly hash-identical to independently inspected captures; primary reopened desktop dark running and mobile light jump. Runtime provenance refreshed to current owner-fix source.",
       "Exact candidate hosted review: all52 accepted images inspected across desktop/mobile dark/light; saved height/weight, six modes, live motion/pause/resume/reduced motion, actual generated brothers and reload persistence passed with no mandatory scoped defect.",
       "Fresh11816546 hosted review:52 inspected images; saved body dimensions, six studies, live motion controls, actual generated brothers and reload pass. Application source hashes identical to4721; failed first-candidate CI remains historical and current full CI is pending.",
-      "Freshadb9b228 hosted check:8 newly inspected images, actual observed Plant & redirect phase and visible GPU advance/pause for both athletes, persistent family identity/reload. Prior209 inspections inherited only through identical19sources/all361artifactentries. Current full CI and production remain pending."
+      "Freshadb9b228 hosted check:8 newly inspected images, actual observed Plant & redirect phase and visible GPU advance/pause for both athletes, persistent family identity/reload. Prior209 inspections inherited only through identical19sources/all361artifactentries. Current full CI and production remain pending.",
+      "Fresh863ea60e hosted check:8 newly inspected images, actual observed Plant & redirect phase and visible GPU advance/pause for both athletes, persistent family identity/reload. Prior217 inspections inherited only through identical19sources/all361artifactentries. Current full CI and production remain pending.",
+      "Actual production863ea60e verified:8 fresh individually inspected images and real motion/cut/family/reload checks, exact canonical provider/public source and artifact, same-origin provenance and rollback availability. Prior225 inspections preserved; full application CI seven jobs passed separately. Procedural/stylized and physical-device limitations remain unchanged."
     ],
     "fixesApplied": [
       "Closed-eye canthal returns and crown preservation.",
@@ -70,7 +72,7 @@
     "sha256": "8b65ce0dbc3b5d86d7097991cc63dd535b33cfabf1cf8904aa81148d26203554",
     "note": "Preserved unchanged; its broader open craft claim is not silently promoted by the narrower S118 evidence."
   },
-  "releaseVerified": false,
+  "releaseVerified": true,
   "captures": [
     {
       "file": "captures/s118-face-budget-person-0-desktop-dark.png",
@@ -2841,6 +2843,198 @@
         "height": 844
       },
       "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-heavy-desktop-dark-run.png",
+      "sha256": "ae585d3dfae1ec68b0d5c7a8e5b2a60184a5b40df70dd35b62b5b4e877e861d7",
+      "original": "output/playwright/s118-hosted-staging-r5-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-heavy-mobile-light-run.png",
+      "sha256": "0c8d5e896facb52a0cb7415929baaf687a296aafff4379e275bcc046a0435f85",
+      "original": "output/playwright/s118-hosted-staging-r5-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15",
+      "original": "output/playwright/s118-hosted-staging-r5-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-light-mobile-dark-run.png",
+      "sha256": "2e6a718ce5225fee4f3ca40d04fdf25e476d995ea286879375c7757642bff66d",
+      "original": "output/playwright/s118-hosted-staging-r5-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-desktop-dark-anchor.png",
+      "sha256": "194183b07e8c5f5a61688a9c580a544beae5c515134d394023b8052a2342aa22",
+      "original": "output/playwright/s118-hosted-staging-r5-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-desktop-dark-relative.png",
+      "sha256": "3dc9c71296594bd6772aabb389073b84c0f71aa5f238677f8b573879b9fed2fc",
+      "original": "output/playwright/s118-hosted-staging-r5-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-mobile-light-anchor.png",
+      "sha256": "fd5c414145a19592f42c75f14db8fa977fefa9b49f9a5797ff7f73160d8797b8",
+      "original": "output/playwright/s118-hosted-staging-r5-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-mobile-light-relative.png",
+      "sha256": "9cfbc99e780c6a8a54962abb0422ffddcafa30a4af829dc84f01af78ae07749e",
+      "original": "output/playwright/s118-hosted-staging-r5-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7",
+      "original": "output/playwright/s118-production-r5-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-heavy-mobile-light-run.png",
+      "sha256": "377fb94916631d77177531aa20b6b5943a776b9c3f96f03d95da96882b14a38c",
+      "original": "output/playwright/s118-production-r5-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15",
+      "original": "output/playwright/s118-production-r5-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-light-mobile-dark-run.png",
+      "sha256": "f68f20eea7096b02a9da44de680a598f9167584e9ace558094ef303854a50f70",
+      "original": "output/playwright/s118-production-r5-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-desktop-dark-anchor.png",
+      "sha256": "9dc7e2d4da712db1a850eee6c5c5f367944ec5662c37f4ba39ff0b50abcbb732",
+      "original": "output/playwright/s118-production-r5-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-desktop-dark-relative.png",
+      "sha256": "536d114b28571506cb1b1ca44f7312b68c567b02bcb34dc7865d7ba00b5da897",
+      "original": "output/playwright/s118-production-r5-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-mobile-light-anchor.png",
+      "sha256": "fd5c414145a19592f42c75f14db8fa977fefa9b49f9a5797ff7f73160d8797b8",
+      "original": "output/playwright/s118-production-r5-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-mobile-light-relative.png",
+      "sha256": "9cfbc99e780c6a8a54962abb0422ffddcafa30a4af829dc84f01af78ae07749e",
+      "original": "output/playwright/s118-production-r5-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
     }
   ],
   "earlierRuntimeCaptureProvenance": {
@@ -2865,20 +3059,20 @@
     "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
   },
   "candidateBinding": {
-    "observedAt": "2026-10-22T11:36:25.468Z",
-    "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+    "observedAt": "2026-10-22T14:38:35.138Z",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
     "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
     "committedSourceHashesVerified": 19,
-    "priorCaptureHashesVerified": 209,
+    "priorCaptureHashesVerified": 217,
     "hostedCaptureCount": 8,
-    "hostedReview": "HOSTED_S118_R3.json",
-    "hostedReviewSha256": "c2b55ff2ecd35218232bf3bbda5aa3952bc14c9503050685c954e67de7800297",
-    "stagingDeploymentId": "7ed34044-fe5a-4fcf-80ec-74e28ba249d5",
+    "hostedReview": "HOSTED_S118_R5.json",
+    "hostedReviewSha256": "55938426521016f141b5cee9da707d953c9d165e0c56133f245c7664482bf562",
+    "stagingDeploymentId": "f8b33838-d3b3-487e-8fa0-3a1ac54ba800",
     "stagingProvenanceChecks": 14,
-    "method": "Eight fresh actual hosted images individually inspected, plus actual animation/cut-phase/pause/reduced-motion/family reload proofs. Prior209 inspected images are inherited through19 identical committed visual/runtime sources and all361 unchanged artifact entries; no new209-image inspection is claimed.",
+    "method": "Eight fresh actual hosted images individually inspected, plus actual animation/cut-phase/pause/reduced-motion/family reload proofs. Prior217 inspected images are inherited through19 identical committed visual/runtime sources and all361 unchanged artifact entries; no new217-image inspection is claimed.",
     "captureMetadata": {
       "method": "Explicit viewport/theme filename tokens",
-      "scriptSha256": "09bdb4ef3fd4c7ad5f999d3403403568ce4f4f2d820b33dbe458b9a5766ee720"
+      "scriptSha256": "b9f7a617307b2372a4674122b2ad8f82e1644ae5ed5c2332f6feb1473e291786"
     }
   },
   "candidateBindingHistory": [
@@ -2916,6 +3110,46 @@
         "method": "Explicit desktop/mobile and dark/light filename tokens; live-run frames explicitly desktop dark in source helper",
         "scriptSha256": "9f2f75c0644a459e1eb5a3d8c7496e3577fee4df1f64bbf17aa9dc432e17f4bb"
       }
+    },
+    {
+      "observedAt": "2026-10-22T11:36:25.468Z",
+      "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "committedSourceHashesVerified": 19,
+      "priorCaptureHashesVerified": 209,
+      "hostedCaptureCount": 8,
+      "hostedReview": "HOSTED_S118_R3.json",
+      "hostedReviewSha256": "c2b55ff2ecd35218232bf3bbda5aa3952bc14c9503050685c954e67de7800297",
+      "stagingDeploymentId": "7ed34044-fe5a-4fcf-80ec-74e28ba249d5",
+      "stagingProvenanceChecks": 14,
+      "method": "Eight fresh actual hosted images individually inspected, plus actual animation/cut-phase/pause/reduced-motion/family reload proofs. Prior209 inspected images are inherited through19 identical committed visual/runtime sources and all361 unchanged artifact entries; no new209-image inspection is claimed.",
+      "captureMetadata": {
+        "method": "Explicit viewport/theme filename tokens",
+        "scriptSha256": "09bdb4ef3fd4c7ad5f999d3403403568ce4f4f2d820b33dbe458b9a5766ee720"
+      }
     }
-  ]
+  ],
+  "productionBinding": {
+    "observedAt": "2026-10-22T17:25:21.828Z",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "productionDeploymentId": "11119545-e3ff-4230-82c1-cefdc64b1fc2",
+    "workflowRun": 39797016574,
+    "workflowVerified": true,
+    "productionProvenanceChecks": 14,
+    "priorCaptureHashesVerified": 225,
+    "freshProductionCaptureCount": 8,
+    "productionReview": "PRODUCTION_S118.json",
+    "productionReviewSha256": "04983416447f286c258209bed41a04a5eb07aca0af0355a1136893665ea6f037",
+    "committedSourceHashesVerified": 19,
+    "rollback": {
+      "deploymentId": "945b7008-4325-48f6-88cb-debc870a1e9e",
+      "available": true,
+      "stage": "success"
+    },
+    "method": "Eight fresh production images individually inspected after actual hosted motion/cut-phase/GPU pause/family reload checks. Before/after health and manifest, canonical provider readback, successful promotion workflow and same-origin provenance bind the exact candidate. Prior225 reviewed capture hashes preserved.",
+    "scriptSha256": "0e6bb22ec01cfb409872996147eaab35284bb451fb5a282dae6bd39678a86e16"
+  },
+  "priorReceiptCapturedAt": "2026-10-22T07:07:17.217Z",
+  "priorReceiptStatus": "selected-character-visual-scope-reviewed; exact-candidate-release-pending"
 }

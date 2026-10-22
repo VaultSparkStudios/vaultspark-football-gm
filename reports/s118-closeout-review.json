@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "session": 118,
+  "reviewer": "/root/closeout_review",
+  "freshContext": true,
+  "readOnly": true,
+  "applicationSourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "implementationBase": "4d051b9ca02632562daa8ce3f89afa9a518e13f2",
+  "status": "passed-after-fix",
+  "recordingMode": "Project-local equivalent; shared record-review resolves Studio Ops and was not invoked as a project mutator.",
+  "rounds": [
+    {
+      "round": 1,
+      "date": "2026-10-22",
+      "verdict": "fix",
+      "findings": [
+        {
+          "file": "docs/visual-qa/LATEST.json",
+          "line": 9,
+          "problem": "Current status still reported exact-candidate-release-pending despite releaseVerified and completed production binding.",
+          "resolution": "Corrected current status/time, preserved priorReceiptStatus and priorReceiptCapturedAt, reconciled release authority, and repeated visual receipt validation."
+        }
+      ],
+      "unverified": [
+        "Final ordinary closeout commit/push and post-publication readback remain pending.",
+        "Did not rerun hosted browser suites or inspect all233 images independently. Verified recorded CI step successes, production/provenance/performance receipts and all233 capture hashes; independently ran family tests5 passed,0 failed,0 skipped.",
+        "Photorealism, physical-device frame rates, older-release service-worker upgrades and actual-user long careers remain unproven."
+      ],
+      "judged": {
+        "craft": {"score": 86, "reason": "Measured geometry, articulated motion and persistent family authority have source-linked functional and visual evidence."},
+        "judgement": {"score": 89, "reason": "Selected scope stays bounded; failed candidates remain distinct and foreign-rooted closeout writers were avoided."},
+        "honesty": {"score": 92, "reason": "Limits, skipped checks, unknown aggregate counts and publication state are explicit; one current status remains stale."},
+        "efficiency": {"score": 70, "reason": "Evidence inheritance avoids redundant pixel reviews, but repeated release attempts and expansive checkpoint documentation impose considerable overhead."},
+        "learning": {"score": 88, "reason": "Repairs address observed caption polling and renderer ownership failures while retaining substantive assertions."}
+      }
+    },
+    {
+      "round": 2,
+      "date": "2026-10-22",
+      "verdict": "pass",
+      "findings": [],
+      "verifiedCorrection": "Current capture time matches production binding; original status/time remain historical. Release-authority visual hash independently matches the receipt, and PROJECT_STATUS contains the identical authority record.",
+      "unverified": [
+        "Final ordinary closeout commit/push and post-publication readback remain pending; this verdict does not establish their completion.",
+        "Security2537-file and protocol44-check results reviewed as supplemental receipts without independently repeating those entire checks.",
+        "Round1 physical-device, photorealism and actual-user career limitations remain."
+      ],
+      "judged": {
+        "craft": {"score": 86, "reason": "Source-linked geometry, movement and family continuity evidence remains sound."},
+        "judgement": {"score": 89, "reason": "Publication and launch authorization remain separate, with bounded scope preserved."},
+        "honesty": {"score": 94, "reason": "Stale current status corrected without erasing historical observations; completion remains accurately pending."},
+        "efficiency": {"score": 70, "reason": "Targeted correction and hash rebinding avoid unnecessary application changes."},
+        "learning": {"score": 90, "reason": "Review feedback produced a precise fix with preserved history and refreshed dependent evidence."}
+      }
+    }
+  ]
+}

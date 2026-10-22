@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0",
+  "recordedAt": "2026-10-22T17:24:07.966Z",
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "status": "verified",
+  "repository": "VaultSparkStudios/vaultspark-football-gm",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "files": 361
+  },
+  "workflow": {
+    "runId": 39797016574,
+    "buildJobId": 119921159834,
+    "deployJobId": 119975028902,
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/39797016574",
+    "status": "completed",
+    "conclusion": "success",
+    "completedJobs": 6,
+    "successfulJobs": 6
+  },
+  "browser": {
+    "step": "Run browser release gate",
+    "conclusion": "success",
+    "total": 270,
+    "passed": 267,
+    "failed": 0,
+    "skipped": 3,
+    "startedAt": "2026-10-22T15:38:11Z",
+    "completedAt": "2026-10-22T17:12:57Z",
+    "durationSeconds": 5686,
+    "countAuthority": "Completed hosted browser log"
+  },
+  "responsive": {
+    "step": "Capture responsive artifact evidence",
+    "conclusion": "success",
+    "startedAt": "2026-10-22T17:12:57Z",
+    "completedAt": "2026-10-22T17:20:45Z",
+    "durationSeconds": 468,
+    "status": "passed",
+    "captures": 327,
+    "requiredCaptures": 312,
+    "completedRequiredCaptures": 312,
+    "scope": "full",
+    "viewports": [
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      }
+    ],
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "tabs": 13,
+    "runtimeErrors": [],
+    "failures": [],
+    "artifactId": 12445460749,
+    "artifactName": "responsive-evidence-863ea60e61398fa149d0e5715f15341a57337df5",
+    "artifactUrl": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/39797016574/artifacts/12445460749",
+    "reportSha256": "62bf205fb54366c5771dcc45a30e3a496fba1419d57a2fff1a5768b01d124b55",
+    "generatedAt": "2026-10-22T17:20:45.534Z"
+  },
+  "evidence": {
+    "terminalLog": {
+      "path": ".cache/s118-r5-pages-build-completed.log",
+      "sha256": "5aa46a47424795064a9151f5e85c341e271556754016a2a2e88293409b13c03a"
+    },
+    "nativeMetadata": {
+      "path": ".cache/s118-r5-pages-terminal-metadata.json",
+      "sha256": "bf25c9e34521eed30626968a84af0bf4281f52e9116929c5af008c2bb7f10110"
+    }
+  },
+  "history": {
+    "priorFailedRunsPreserved": [
+      {
+        "runId": 39743686153,
+        "browser": {
+          "passed": 262,
+          "failed": 5,
+          "skipped": 3
+        }
+      },
+      {
+        "runId": 39757998797,
+        "browser": {
+          "passed": 266,
+          "failed": 1,
+          "skipped": 3
+        }
+      },
+      {
+        "runId": 39771524992,
+        "browser": {
+          "passed": 267,
+          "failed": 0,
+          "skipped": 3
+        },
+        "laterFailure": "Responsive evidence harness called an export from its former module owner."
+      }
+    ],
+    "scope": "This receipt verifies only the stated final hosted run; prior failures remain historical evidence."
+  }
+}

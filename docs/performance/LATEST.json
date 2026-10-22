@@ -2,14 +2,14 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-10-04T12:21:45.999Z",
+  "observedAt": "2026-10-22T17:25:30.837Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280",
-    "files": 272,
+    "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "files": 361,
     "entries": [
       {
         "path": ".well-known/llms.txt",
@@ -24,7 +24,7 @@
       {
         "path": "404.html",
         "bytes": 4275,
-        "sha256": "925c52bec37637e8b413809e67d696e9f4ab9675229dd1535c13c61aeb92957a"
+        "sha256": "f3a8e864d086aefff602c8279d4a5c60add65946c5d87f04ef26fbe905faf940"
       },
       {
         "path": "_headers",
@@ -39,7 +39,7 @@
       {
         "path": "about.html",
         "bytes": 6379,
-        "sha256": "105388889ab4add0311f0b91cdd2a799293974b9b473222b17921adfdbce4bba"
+        "sha256": "8e4f11e674716b20e892fdf12d6b4c7aa056e5e88bbc268916273f81e075bf06"
       },
       {
         "path": "agents.json",
@@ -48,18 +48,18 @@
       },
       {
         "path": "app.js",
-        "bytes": 112799,
-        "sha256": "d447f2793380b9e1bf7096e19879960a5ad118ffd303c7c429410090bff95606"
+        "bytes": 113920,
+        "sha256": "c79e2b07d4300e7aebd0d642618b0ad2e9a24b2fee7a72e57f09357fc9e2ab28"
       },
       {
         "path": "boot-manifest.json",
-        "bytes": 1771,
-        "sha256": "70688b03d1fe23c504fee3574a5268534426dad4fab94310f224651b1d31d518"
+        "bytes": 2001,
+        "sha256": "d0c14a86963f91513789b80b46216740ebdc18557bab89c86610e1f5f196071b"
       },
       {
         "path": "changelog.xml",
-        "bytes": 25064,
-        "sha256": "1956f322d60ae4cfbb88c5c2182587209d448f9d6fd75f1efa6fd952ff476a71"
+        "bytes": 25982,
+        "sha256": "d90043c1f98bc50843e584163d910668934b61e6d4b8902c9509e191e8a78420"
       },
       {
         "path": "community-stats.25f97e0a1e.js",
@@ -74,7 +74,7 @@
       {
         "path": "contact.html",
         "bytes": 5482,
-        "sha256": "873ef461fe4d3450ced7824f7e4fd0b6de0d4e2d5253946e1e37db260658dc9f"
+        "sha256": "caaa297ac277503f2d35c8fbe4c3e015559d551c5cbb3868de4c0d8b22ee75d8"
       },
       {
         "path": "content/claims.json",
@@ -84,7 +84,7 @@
       {
         "path": "faq.html",
         "bytes": 10553,
-        "sha256": "5461d1e6d88a7df6fe50b00613cac8feb264d1140fb0ac734c3fb61d9f13ad52"
+        "sha256": "2223325ff301be403554e1f34ea813da2cadfd263c935f543330adb2918a7838"
       },
       {
         "path": "favicon.ico",
@@ -99,7 +99,7 @@
       {
         "path": "features.html",
         "bytes": 13819,
-        "sha256": "d3db602b7c763f6aba032a8b988084154e2a9a85bf666fb1525a1eb9e5485986"
+        "sha256": "ede64f0981b2344ea3715eb8dac68ddc2895b9fe24c3ff148a1bf0286a382a54"
       },
       {
         "path": "footer-manifest.json",
@@ -108,13 +108,13 @@
       },
       {
         "path": "game.html",
-        "bytes": 113093,
-        "sha256": "aba82651638b74cc3581eb928deabe72af72f58fc44e4a4107a44e38847b691a"
+        "bytes": 116778,
+        "sha256": "069ae2a2926b5a431e8398210a29c8682070cbc3de799e456a3aa786eec5a204"
       },
       {
         "path": "how-to-play.html",
         "bytes": 8526,
-        "sha256": "0c734eb44d4aca70f0d864e0dc3c8c95117d24867c462224ddace55dc40a3752"
+        "sha256": "9f16a9f2c40f39f3711aaf22eeb5ff97ded9170077efef6906fc51366b4319b3"
       },
       {
         "path": "images/apple-touch-icon.png",
@@ -178,8 +178,8 @@
       },
       {
         "path": "index.html",
-        "bytes": 21726,
-        "sha256": "51fbf99fd4c9cd1b405b9bb4e5398a3f9201685fdc3705cb88e49e8de96735df"
+        "bytes": 21743,
+        "sha256": "1ed1ebdbd6257c2f68e6bba22a57673c2aa14f6b5b01e41d738357675a266b46"
       },
       {
         "path": "lib/achievements.js",
@@ -218,18 +218,23 @@
       },
       {
         "path": "lib/apiContract.js",
-        "bytes": 8674,
-        "sha256": "a05805bd8e25ca2ccd68e6a197912d3dcd6d196a5aa8d456fa90657e559ae3d9"
+        "bytes": 8804,
+        "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba"
       },
       {
         "path": "lib/appCore.js",
-        "bytes": 63946,
-        "sha256": "96e06919d75bdcd82933273624f3da22eac57b737be5e085115ca30b61aa4ae4"
+        "bytes": 60660,
+        "sha256": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863"
       },
       {
         "path": "lib/appState.js",
-        "bytes": 12429,
-        "sha256": "c8151d6eb27c2bbb8012e7707671bcb6558cc38268dba89bc19fac8092c7cedc"
+        "bytes": 12455,
+        "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78"
+      },
+      {
+        "path": "lib/appearancePalette.js",
+        "bytes": 2653,
+        "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
       },
       {
         "path": "lib/architectCut.js",
@@ -258,8 +263,8 @@
       },
       {
         "path": "lib/boxScorePresentation.js",
-        "bytes": 3897,
-        "sha256": "1b90e1b0beace7f999428a29ca1123049d1916504f93b3d6bd357c099736b743"
+        "bytes": 5404,
+        "sha256": "cde2ae34bac10813b2b0a2cafe0136a1e6e0ae182f09d5c70fd1047d26589f8f"
       },
       {
         "path": "lib/challengeCodes.js",
@@ -305,6 +310,16 @@
         "path": "lib/contextualFeedback.js",
         "bytes": 7864,
         "sha256": "f4798ea71e9bc3c8f8a56437f4239b947415a3eb106d8ec7e82c8f7afb9e2edf"
+      },
+      {
+        "path": "lib/continuousHairTexture.js",
+        "bytes": 2104,
+        "sha256": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f"
+      },
+      {
+        "path": "lib/croppedHairVolume.js",
+        "bytes": 2358,
+        "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e"
       },
       {
         "path": "lib/decisionAnthology.js",
@@ -362,6 +377,11 @@
         "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
       },
       {
+        "path": "lib/fineFaceGeometry.js",
+        "bytes": 13557,
+        "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025"
+      },
+      {
         "path": "lib/firstDebriefPulse.js",
         "bytes": 8641,
         "sha256": "ce6751727604018d54d6b98689ce3b6c88c480b871e8b0cb6dc28236c6a4cea0"
@@ -398,8 +418,8 @@
       },
       {
         "path": "lib/gameFlow.js",
-        "bytes": 62840,
-        "sha256": "2003c9f561319e31950e49d71fd9b359e4305d3507e45b1212d1f5ce3149e539"
+        "bytes": 62528,
+        "sha256": "da2a58aeb925a6b113e1ca7d8a8052781bdfb94839c697fcae74f603dc8a3492"
       },
       {
         "path": "lib/gameOutcome.js",
@@ -432,6 +452,16 @@
         "sha256": "11f6ac5bd9a7a6461d75c4d6734bdad435d84fc566b91d930adfcf8c6b1d517a"
       },
       {
+        "path": "lib/hairArrangement.js",
+        "bytes": 1659,
+        "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+      },
+      {
+        "path": "lib/hairGrayFibers.js",
+        "bytes": 1012,
+        "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49"
+      },
+      {
         "path": "lib/hallOfFameCeremony.js",
         "bytes": 6068,
         "sha256": "7ca70ec97ef3f38add573af53d780174827f381779cf4dfc23f7f4bb8348fe3d"
@@ -440,6 +470,11 @@
         "path": "lib/historyFormatting.js",
         "bytes": 2289,
         "sha256": "aa6d22845a7fdfd0ec88680880458002cbabd613e32a0cfdbeee6631550833a5"
+      },
+      {
+        "path": "lib/injurySalaryClaimsPanel.js",
+        "bytes": 3151,
+        "sha256": "7bccd36c6ce7e1a67447080ec48c3afc17f49c8ce916b7ab1a7fa1f6847a9886"
       },
       {
         "path": "lib/launchReadiness.js",
@@ -455,6 +490,11 @@
         "path": "lib/leagueStoryExport.js",
         "bytes": 12078,
         "sha256": "43ef55dba1382f058532e82a8cf4b4379fef1bec2c49ea3f4364b83ff0220058"
+      },
+      {
+        "path": "lib/longHairFlow.js",
+        "bytes": 4467,
+        "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba"
       },
       {
         "path": "lib/lookAhead.js",
@@ -493,8 +533,8 @@
       },
       {
         "path": "lib/offseasonDevelopmentReport.js",
-        "bytes": 5332,
-        "sha256": "c47910970117440d207aac9694b94e94781385215b1610933e3e181cce4fe6f1"
+        "bytes": 5709,
+        "sha256": "c644c99eb069256885075c85ed9119ce0881022c5ec17077c20be5afa8f85bbc"
       },
       {
         "path": "lib/onClockTradeMarketPanel.js",
@@ -507,9 +547,109 @@
         "sha256": "9f685f33c5e2301bef562091e70bc7ed8a5aa43b3dd5beaaea5c25f066ff57dd"
       },
       {
+        "path": "lib/partedHairFlow.js",
+        "bytes": 2557,
+        "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35"
+      },
+      {
+        "path": "lib/physiqueGeometryContract.js",
+        "bytes": 8976,
+        "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+      },
+      {
+        "path": "lib/playerBody3d.js",
+        "bytes": 24016,
+        "sha256": "b214af25db170da632d972a039d107137e5bc22bc6c74993b27325e8f001aa8e"
+      },
+      {
+        "path": "lib/playerBodyAnimation3d.js",
+        "bytes": 5006,
+        "sha256": "ef6920eb7f435ce19a4119c937de85335e283d1890432592b03aa36a75c15d98"
+      },
+      {
+        "path": "lib/playerCapacityStudy.js",
+        "bytes": 2885,
+        "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7"
+      },
+      {
+        "path": "lib/playerCharacter3d.js",
+        "bytes": 6674,
+        "sha256": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58"
+      },
+      {
+        "path": "lib/playerFootArticulation.js",
+        "bytes": 738,
+        "sha256": "2ca2890c5814109f64a60b5f8443423c124712e01413ab57d3548489175bab7e"
+      },
+      {
+        "path": "lib/playerFootwear.js",
+        "bytes": 989,
+        "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+      },
+      {
+        "path": "lib/playerHand.js",
+        "bytes": 2081,
+        "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca"
+      },
+      {
+        "path": "lib/playerHead3d.js",
+        "bytes": 58038,
+        "sha256": "b410c81a2633052a77589cb84d4401358ee490f68f8de737be92276bc0d95abb"
+      },
+      {
+        "path": "lib/playerHeadImage.js",
+        "bytes": 2869,
+        "sha256": "f4c264f72ba4643abe271fc8298e8395e9096570db18e281666791c998639a0f"
+      },
+      {
+        "path": "lib/playerLimbSweep3d.js",
+        "bytes": 6722,
+        "sha256": "726f2d17b7234ca00b589d83b89dd0d0cbd779ce2d4a099f643ebfddc089244d"
+      },
+      {
+        "path": "lib/playerMotion.js",
+        "bytes": 34408,
+        "sha256": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5"
+      },
+      {
+        "path": "lib/playerPortrait.js",
+        "bytes": 23512,
+        "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445"
+      },
+      {
+        "path": "lib/playerPortraitFace.js",
+        "bytes": 56012,
+        "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774"
+      },
+      {
+        "path": "lib/playerPortraitMotion.js",
+        "bytes": 2523,
+        "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9"
+      },
+      {
         "path": "lib/playerProfileNarrative.js",
-        "bytes": 9776,
-        "sha256": "2f29b9e4104a48e34eddb23391fde4c9489285428cc3223cda89067fba180445"
+        "bytes": 11463,
+        "sha256": "f00e726494fb4df27f43172e1792609edb73abf659787438f3fea3473b490391"
+      },
+      {
+        "path": "lib/playerSideAppearance.js",
+        "bytes": 14309,
+        "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30"
+      },
+      {
+        "path": "lib/playerSurfaceLighting.js",
+        "bytes": 2992,
+        "sha256": "88f6fa0d1b32d7c305d7bed8bdd070f6597dc6f8c6ee08030bc4fd4ead9a8171"
+      },
+      {
+        "path": "lib/playerTorsoSurface3d.js",
+        "bytes": 1527,
+        "sha256": "9c69ad1c48d087205161c97f5acbd7aff164a47e7901923f9044afeb4015b70d"
+      },
+      {
+        "path": "lib/playerTrainingKit.js",
+        "bytes": 1536,
+        "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec"
       },
       {
         "path": "lib/playtestJourney.js",
@@ -520,6 +660,21 @@
         "path": "lib/playtestReceipts.js",
         "bytes": 4557,
         "sha256": "51d34f651a7d55074b9bd1b5f2d5b154b342ae99a6447752866ad13e79c5ebb5"
+      },
+      {
+        "path": "lib/portraitAppearanceContract.js",
+        "bytes": 964,
+        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+      },
+      {
+        "path": "lib/portraitEyeSurface.js",
+        "bytes": 1873,
+        "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f"
+      },
+      {
+        "path": "lib/portraitSurfaceLighting.js",
+        "bytes": 10698,
+        "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72"
       },
       {
         "path": "lib/postCommitHydration.js",
@@ -535,6 +690,11 @@
         "path": "lib/pressRoomPanel.js",
         "bytes": 4316,
         "sha256": "cf807f96e9ff510ff84a4afaee24cf0363dd4f8f6226a16975830573ab0a9bcc"
+      },
+      {
+        "path": "lib/profiledLimbSurface.js",
+        "bytes": 4888,
+        "sha256": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07"
       },
       {
         "path": "lib/progressionWatch.js",
@@ -565,6 +725,11 @@
         "path": "lib/rivalFrontOfficeCard.js",
         "bytes": 1983,
         "sha256": "9a3a1321ddd8db463507385cc402b2b9b03492db6b62be7719fe9c9ce435a289"
+      },
+      {
+        "path": "lib/rosterActions.js",
+        "bytes": 4598,
+        "sha256": "e18e5d4a29242291e9b9afac77ac0c67043fda94b34e1300bf9879a6bb01c35b"
       },
       {
         "path": "lib/scoreline.js",
@@ -617,9 +782,14 @@
         "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
       },
       {
+        "path": "lib/structuredHair.js",
+        "bytes": 3570,
+        "sha256": "9022287ee0d777c9459607719fa3aabb1addd4cc3445ed5ea2831bedb8f7e755"
+      },
+      {
         "path": "lib/tabContracts.js",
-        "bytes": 34520,
-        "sha256": "f37cc90e0d2d72e7c363780af1555d14db4ed8ab5fa90e25a3ed1ab880de00c6"
+        "bytes": 38413,
+        "sha256": "d6a8b92e0e8a79ddbe65afd1c184fc6802b8b75b20727784a1ebc64b1b585f1b"
       },
       {
         "path": "lib/tabDraft.js",
@@ -648,13 +818,13 @@
       },
       {
         "path": "lib/tabRoster.js",
-        "bytes": 16171,
-        "sha256": "5aa4be1726125dba3ed6684e2d693ff375fb122be7c973b0e1b4239ccb83877d"
+        "bytes": 13930,
+        "sha256": "39a4173ccaf752e785ae8303f98b895489229629b8d6e752ccf123f0e4f6814a"
       },
       {
         "path": "lib/tabSettings.js",
-        "bytes": 41382,
-        "sha256": "bcec0bb549d8671b99d1e4d5d022b603a5fddb1ff18f51a19167b281f2fe39a0"
+        "bytes": 43133,
+        "sha256": "f12a47a79e46e1788abfd69496abdf690120c479a326ba1bd5a19dab4d958e72"
       },
       {
         "path": "lib/tabStats.js",
@@ -692,6 +862,11 @@
         "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
       },
       {
+        "path": "lib/torsoSurface.js",
+        "bytes": 6541,
+        "sha256": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc"
+      },
+      {
         "path": "lib/tradeDeadlineFrenzy.js",
         "bytes": 9802,
         "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
@@ -708,8 +883,8 @@
       },
       {
         "path": "lib/uiIslands.js",
-        "bytes": 6228,
-        "sha256": "0cb27840070920312ec23041398a7f1f5373d8c4ec1fa02a793f10ecef51855f"
+        "bytes": 6424,
+        "sha256": "de2089084e7baf56d214e0190c8232c96dad2c2d6fa2733a9e3a5489a3eaa0ba"
       },
       {
         "path": "lib/weeklyPlanComposer.js",
@@ -723,23 +898,28 @@
       },
       {
         "path": "precache-manifest.json",
-        "bytes": 18633,
-        "sha256": "ac1b523e4c1f4afad025af299f46da85e215777a8534311c983759b8073a9be3"
+        "bytes": 25901,
+        "sha256": "a5c4b060fc0aa2fdc6c3aed174131e5b0c8edd1b97c2a9d112621cd639f4d58b"
       },
       {
         "path": "press.html",
         "bytes": 10946,
-        "sha256": "6a835db22c6d7fd77ce9b11e46c433df7f921c006dd6c08efccd609372973b8e"
+        "sha256": "cfe390568597432baf5169f0c71aaae9cc1e80fff8b9c354e53cd3b8dd475a7a"
       },
       {
         "path": "privacy.html",
         "bytes": 7429,
-        "sha256": "a43f864c5827e9d1d72fdc8833fe27e373c2c574468901e2f34951017a985f96"
+        "sha256": "cb043ad29ffcb9ee4f58261b569eb43f89ee1feb26633960285606df72483d86"
       },
       {
         "path": "public-identity.json",
         "bytes": 584,
         "sha256": "39a81c7ebeead641bc7aeef0087798797a6f2a960f99eb8ba0e1c29db299ac3e"
+      },
+      {
+        "path": "public/lib/appearancePalette.js",
+        "bytes": 2653,
+        "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
       },
       {
         "path": "public/lib/gameOutcome.js",
@@ -750,6 +930,21 @@
         "path": "public/lib/gameplayNavigation.js",
         "bytes": 2767,
         "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "public/lib/physiqueGeometryContract.js",
+        "bytes": 8976,
+        "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+      },
+      {
+        "path": "public/lib/playerSurfaceLighting.js",
+        "bytes": 2992,
+        "sha256": "88f6fa0d1b32d7c305d7bed8bdd070f6597dc6f8c6ee08030bc4fd4ead9a8171"
+      },
+      {
+        "path": "public/lib/portraitAppearanceContract.js",
+        "bytes": 964,
+        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
       },
       {
         "path": "public/lib/startScenarioContract.js",
@@ -764,7 +959,7 @@
       {
         "path": "roadmap.html",
         "bytes": 6313,
-        "sha256": "197751262e28678423eff7a6b182f51833bb609f2a7e6212fe57778d7830299a"
+        "sha256": "b0ba177721d5362b02ee42271fc32aea7f9fe6622f28d92bdc31810c700ac01e"
       },
       {
         "path": "robots.txt",
@@ -773,8 +968,8 @@
       },
       {
         "path": "setup.js",
-        "bytes": 29163,
-        "sha256": "a73fc050a4971da043dd5b4e9c8b48c92ece0bf2c9e045e0d0dfb3b0ebe4d3b9"
+        "bytes": 30439,
+        "sha256": "253a3ca138e93b951850bae7f07ffac8288f4afd68abf078070d90897362bf3c"
       },
       {
         "path": "showcase-league.json",
@@ -784,7 +979,7 @@
       {
         "path": "simulation.html",
         "bytes": 11282,
-        "sha256": "34d0b2c78e08a27c4404d0a44ccbc161503d5c9fef7381e1c6cc8e3c8ff9ca33"
+        "sha256": "0dcfcd22ed7779fe3e27a8258816090815e8bdfb98f8abb1b3ccff2c4a7ac236"
       },
       {
         "path": "site.11e8faac8d.css",
@@ -799,7 +994,7 @@
       {
         "path": "sitemap.xml",
         "bytes": 1844,
-        "sha256": "4c1f679180b59affe80c65626adac112271059d41ac3838f1846b185ef906f29"
+        "sha256": "cb5cc16b709976407cd6c9f6031db6e4007205f4b0000a70b16578ffe76285af"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
@@ -808,8 +1003,13 @@
       },
       {
         "path": "src/adapters/persistence/hybridSaveStore.js",
-        "bytes": 15546,
-        "sha256": "b7cb1b7f74fca3cc07d5e647216840cedb87cf7570712b967a706d5a74ba0c98"
+        "bytes": 16167,
+        "sha256": "a39c082678bbf4fcd505b8411cdbb32bb5c03aa8d96333099c7dde19e9bd464f"
+      },
+      {
+        "path": "src/adapters/persistence/jsonLayouts.js",
+        "bytes": 2156,
+        "sha256": "ad74c2748791f529e7d9b49851dca246be5c666a5a11fe2a561b5e633db4f435"
       },
       {
         "path": "src/adapters/persistence/saveStoreShared.js",
@@ -818,23 +1018,28 @@
       },
       {
         "path": "src/adapters/persistence/snapshotCodec.js",
-        "bytes": 4641,
-        "sha256": "272a9f7bf8c19f0ad7b37e71bd55cc27bb5496089c3bb0ace4c45b74fc4c2731"
+        "bytes": 5386,
+        "sha256": "15e0996f3b8660a8f144d1f0f9e9e54b4201ea88de2e4dfa2e1eb3a53c270903"
       },
       {
         "path": "src/app/api/localApiRuntime.js",
-        "bytes": 95310,
-        "sha256": "a311fa96c024ff63b413026ee285111f259b34bc9a2eee00ad5ed6aef2beb293"
+        "bytes": 97319,
+        "sha256": "d01ae657f3781996a5610892def880f5c909f30a779bb0c327821c8b0194d939"
       },
       {
         "path": "src/config.js",
-        "bytes": 16609,
-        "sha256": "e876a49daf8cc88774e9f1960dc067f20e99e97eb8429fe7576854bf47e61c71"
+        "bytes": 16689,
+        "sha256": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d"
       },
       {
         "path": "src/config/leagueSetup.js",
-        "bytes": 16836,
-        "sha256": "a8a98029a13a6f8caf8769390ebe17eb69b2615a850ca1fae3b5a4bf5b3b2c5f"
+        "bytes": 17122,
+        "sha256": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88"
+      },
+      {
+        "path": "src/data/nflElevationSalary.js",
+        "bytes": 2967,
+        "sha256": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e"
       },
       {
         "path": "src/data/nflEliteDensityBaseline.js",
@@ -842,9 +1047,69 @@
         "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d"
       },
       {
+        "path": "src/data/nflPostseasonSalary.js",
+        "bytes": 2188,
+        "sha256": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267"
+      },
+      {
+        "path": "src/data/nflPracticeSalary.js",
+        "bytes": 1031,
+        "sha256": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54"
+      },
+      {
+        "path": "src/data/nflSalaryCap.js",
+        "bytes": 3133,
+        "sha256": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d"
+      },
+      {
+        "path": "src/data/nflSalaryMinimum.js",
+        "bytes": 1302,
+        "sha256": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44"
+      },
+      {
+        "path": "src/data/playerDemographicBaseline.js",
+        "bytes": 2193,
+        "sha256": "cc25ff5a65990b33aad5881bbc6f5ba1eea69b2350aacf3859217d3765afc294"
+      },
+      {
+        "path": "src/data/playerFamilyHeritage.js",
+        "bytes": 7097,
+        "sha256": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8"
+      },
+      {
+        "path": "src/domain/activeInactiveHistory.js",
+        "bytes": 6614,
+        "sha256": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e"
+      },
+      {
+        "path": "src/domain/admittedInjuryContinuation.js",
+        "bytes": 7551,
+        "sha256": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945"
+      },
+      {
+        "path": "src/domain/admittedInjuryPayroll.js",
+        "bytes": 13800,
+        "sha256": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426"
+      },
+      {
+        "path": "src/domain/admittedPostseasonRecovery.js",
+        "bytes": 4728,
+        "sha256": "c96bd53ba247ccaaaa9ce579332097821c9df65fb4e2eee7be6c89468a7c6d86"
+      },
+      {
+        "path": "src/domain/annualElevationInjuryResolution.js",
+        "bytes": 7778,
+        "sha256": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da"
+      },
+      {
+        "path": "src/domain/capCarryover.js",
+        "bytes": 510,
+        "sha256": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524"
+      },
+      {
         "path": "src/domain/contracts.js",
-        "bytes": 10451,
-        "sha256": "ba3cca2be6328ce24a7d04b2d3021138a784fb850a847b36bb82c10fdbb8428e"
+        "bytes": 17014,
+        "sha256": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568"
       },
       {
         "path": "src/domain/developmentEnvironment.js",
@@ -852,14 +1117,54 @@
         "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1"
       },
       {
+        "path": "src/domain/draftCohort.js",
+        "bytes": 1074,
+        "sha256": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf"
+      },
+      {
+        "path": "src/domain/earnedPracticeCap.js",
+        "bytes": 1526,
+        "sha256": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4"
+      },
+      {
+        "path": "src/domain/elevationInjuryPay.js",
+        "bytes": 17985,
+        "sha256": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0"
+      },
+      {
         "path": "src/domain/facilityInvestment.js",
         "bytes": 15900,
         "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
       },
       {
+        "path": "src/domain/footballGameReference.js",
+        "bytes": 1627,
+        "sha256": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a"
+      },
+      {
+        "path": "src/domain/injuryClaimNegotiation.js",
+        "bytes": 4567,
+        "sha256": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6"
+      },
+      {
+        "path": "src/domain/injurySalaryClaims.js",
+        "bytes": 8699,
+        "sha256": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141"
+      },
+      {
         "path": "src/domain/leagueIdentity.js",
         "bytes": 6966,
         "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
+      },
+      {
+        "path": "src/domain/livingPotential.js",
+        "bytes": 5626,
+        "sha256": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9"
+      },
+      {
+        "path": "src/domain/offseasonMedicalCalendar.js",
+        "bytes": 5940,
+        "sha256": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714"
       },
       {
         "path": "src/domain/operatingStatement.js",
@@ -872,9 +1177,54 @@
         "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
       },
       {
+        "path": "src/domain/pensionService.js",
+        "bytes": 17102,
+        "sha256": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015"
+      },
+      {
+        "path": "src/domain/playerDemographicModel.js",
+        "bytes": 5382,
+        "sha256": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370"
+      },
+      {
         "path": "src/domain/playerFactory.js",
-        "bytes": 20375,
-        "sha256": "2f7aa232449d1fd813aa94ba8953e85879da879f3d7ab78ba12b1d6baffef515"
+        "bytes": 24220,
+        "sha256": "616f136e07074d33fa64f21732f50b16c1e22ff9ca8b71f57b9dc22083db47b3"
+      },
+      {
+        "path": "src/domain/playerFamilyIdentity.js",
+        "bytes": 3180,
+        "sha256": "7a319e232c58c2c8f50477fb96d81287b2769214f2e8377010eed6707bac5d4d"
+      },
+      {
+        "path": "src/domain/playerIdentity.js",
+        "bytes": 27846,
+        "sha256": "c25aea313929cf1dd9c1890f675a754b2b1f8c501aada635afbf513bb07ff7f7"
+      },
+      {
+        "path": "src/domain/playerMeasurements.js",
+        "bytes": 14939,
+        "sha256": "68156e5be124649c7549c02dcbad706fb56dd9cbc95fc52f6bdeb0dcd1cef90e"
+      },
+      {
+        "path": "src/domain/playerService.js",
+        "bytes": 8894,
+        "sha256": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e"
+      },
+      {
+        "path": "src/domain/playerVisualIdentity.js",
+        "bytes": 12355,
+        "sha256": "aee4524633f194c8125221cf7af971015686716d6b7d4618d5a6f0f17cebc6af"
+      },
+      {
+        "path": "src/domain/playerWorkouts.js",
+        "bytes": 3652,
+        "sha256": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4"
+      },
+      {
+        "path": "src/domain/postseasonMedicalClock.js",
+        "bytes": 14419,
+        "sha256": "01850182d8b292c9cdec395f193a83a2bda739f86ae778c3f10499fed9a107a9"
       },
       {
         "path": "src/domain/potentialReversion.js",
@@ -882,14 +1232,59 @@
         "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87"
       },
       {
+        "path": "src/domain/practiceContractTerm.js",
+        "bytes": 4951,
+        "sha256": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238"
+      },
+      {
+        "path": "src/domain/practiceContracts.js",
+        "bytes": 8284,
+        "sha256": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934"
+      },
+      {
+        "path": "src/domain/practiceSquadEligibility.js",
+        "bytes": 2820,
+        "sha256": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c"
+      },
+      {
+        "path": "src/domain/preRolloverMedicalCalendar.js",
+        "bytes": 7471,
+        "sha256": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47"
+      },
+      {
         "path": "src/domain/ratings.js",
-        "bytes": 15953,
-        "sha256": "f42c0f2c8598b38a35b36513ac92bb9602ee4a7d203e855a0d401920541c1597"
+        "bytes": 16983,
+        "sha256": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd"
+      },
+      {
+        "path": "src/domain/regularInjuryAccrual.js",
+        "bytes": 5482,
+        "sha256": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13"
+      },
+      {
+        "path": "src/domain/regularMedicalRecovery.js",
+        "bytes": 2395,
+        "sha256": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2"
+      },
+      {
+        "path": "src/domain/reserveLists.js",
+        "bytes": 16532,
+        "sha256": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e"
+      },
+      {
+        "path": "src/domain/standardElevations.js",
+        "bytes": 19437,
+        "sha256": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53"
+      },
+      {
+        "path": "src/domain/talentDistribution.js",
+        "bytes": 3804,
+        "sha256": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050"
       },
       {
         "path": "src/domain/teamFactory.js",
-        "bytes": 15635,
-        "sha256": "fe8b4d4a1d30ce54e4670477c6d03c8cccf2a69ec17303b90e84e170fbf579ee"
+        "bytes": 20005,
+        "sha256": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad"
       },
       {
         "path": "src/domain/teamLabel.js",
@@ -900,6 +1295,11 @@
         "path": "src/domain/ticketDemand.js",
         "bytes": 7685,
         "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174"
+      },
+      {
+        "path": "src/domain/undraftedFreeAgency.js",
+        "bytes": 3151,
+        "sha256": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6"
       },
       {
         "path": "src/engine/adaptiveDifficulty.js",
@@ -938,8 +1338,8 @@
       },
       {
         "path": "src/engine/capCompliance.js",
-        "bytes": 20058,
-        "sha256": "d748466711a68d14f03ba1769027af828f8b29aa11a07fb36d06bff1ea70cede"
+        "bytes": 25500,
+        "sha256": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168"
       },
       {
         "path": "src/engine/coachingMarket.js",
@@ -955,6 +1355,11 @@
         "path": "src/engine/continuityLedger.js",
         "bytes": 8621,
         "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896"
+      },
+      {
+        "path": "src/engine/cpuStandardElevations.js",
+        "bytes": 4878,
+        "sha256": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3"
       },
       {
         "path": "src/engine/cpuTradeMarket.js",
@@ -982,14 +1387,19 @@
         "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58"
       },
       {
+        "path": "src/engine/gameDayRoster.js",
+        "bytes": 7554,
+        "sha256": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36"
+      },
+      {
         "path": "src/engine/gameSimulator.js",
-        "bytes": 82312,
-        "sha256": "d86ecae2169357ae8d879c91028edfe7cb3af356dd15bb0dcc1851eb9d55b811"
+        "bytes": 83851,
+        "sha256": "e1f7afbc06e9ca32b3c11811c7feb1424f7cddc55ef8123e556df31246e52a78"
       },
       {
         "path": "src/engine/gmArchetype.js",
-        "bytes": 2300,
-        "sha256": "21b2991fd81a026119192a441039e4af469f615775cc0c0776fcb534382d4b84"
+        "bytes": 3240,
+        "sha256": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23"
       },
       {
         "path": "src/engine/gmDecisionAuthority.js",
@@ -1008,8 +1418,8 @@
       },
       {
         "path": "src/engine/injurySystem.js",
-        "bytes": 9323,
-        "sha256": "ca0a4e9b987e750fb39d7c2200b8cadd07c2a4562e94820914b2f1eed69ef556"
+        "bytes": 10427,
+        "sha256": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1"
       },
       {
         "path": "src/engine/matchupEdge.js",
@@ -1023,18 +1433,23 @@
       },
       {
         "path": "src/engine/offseasonDevelopmentReport.js",
-        "bytes": 4011,
-        "sha256": "965ce7177c18ccad6a834e8cbfb1eb70724bbefa42999700615b749c1a4e7dbe"
+        "bytes": 4426,
+        "sha256": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705"
       },
       {
         "path": "src/engine/offseasonSimulator.js",
-        "bytes": 26570,
-        "sha256": "3ef37859afbaef53564fb95c1896d5a543aa9f6372bc10a7a5a8dd2638018f86"
+        "bytes": 45898,
+        "sha256": "848dcd193a1a484b0e1330d074f30f3af56298f94c9e5f0eba57f370be2d3209"
       },
       {
         "path": "src/engine/onClockTradeMarket.js",
         "bytes": 5121,
         "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7"
+      },
+      {
+        "path": "src/engine/overtime.js",
+        "bytes": 2077,
+        "sha256": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64"
       },
       {
         "path": "src/engine/ownerConfidence.js",
@@ -1083,13 +1498,13 @@
       },
       {
         "path": "src/engine/schedule.js",
-        "bytes": 15255,
-        "sha256": "9f68341d397ff04effc9c4b97153a2f40ce3515476f10b5dc541834e779782e3"
+        "bytes": 15539,
+        "sha256": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec"
       },
       {
         "path": "src/engine/seasonSimulator.js",
-        "bytes": 7479,
-        "sha256": "6cd5419fb5943a872982190f19d3351ba0c39e2150c3fa0e906a055db92a0173"
+        "bytes": 12819,
+        "sha256": "0d78babe22ab2ccf9d4f0e54c3fde04c91aafe5c0907e6922570d04c907cac49"
       },
       {
         "path": "src/engine/situationalCalls.js",
@@ -1123,8 +1538,8 @@
       },
       {
         "path": "src/engine/weeklySimulator.js",
-        "bytes": 2186,
-        "sha256": "fad2ce0a18bc64738937e217fba284affb797a4c9acc96d8c889612eb20fa77a"
+        "bytes": 3305,
+        "sha256": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65"
       },
       {
         "path": "src/engine/whatIfReplay.js",
@@ -1133,13 +1548,13 @@
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 355252,
-        "sha256": "d409fde9e178d2dd54477d83d13f0de35774cc0b2fe99287a51d2089d31b353b"
+        "bytes": 401744,
+        "sha256": "d25af1bf04a7af424fe76456596e8317d0e311d11dec8411eb9d787bfd12fb6d"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
-        "bytes": 7037,
-        "sha256": "4989eefa5de67fa778fb5b6759a04401ae4850fbce2e85e6dede5ccf92357d91"
+        "bytes": 7514,
+        "sha256": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007"
       },
       {
         "path": "src/runtime/applyLeagueSetup.js",
@@ -1153,8 +1568,8 @@
       },
       {
         "path": "src/runtime/franchiseAuthority.js",
-        "bytes": 10648,
-        "sha256": "805662347b693f1eaa2e3666614a1390a9953b7642d4aa9d84ddc67e3f7c7f94"
+        "bytes": 10941,
+        "sha256": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2"
       },
       {
         "path": "src/runtime/handlers/architectThesisHandler.js",
@@ -1172,9 +1587,19 @@
         "sha256": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2"
       },
       {
+        "path": "src/runtime/identityMetadataSnapshot.js",
+        "bytes": 2578,
+        "sha256": "dfc7d5afcfd0e253350c030f690d4c539c039dbc7d2c1c507bb64684156432ad"
+      },
+      {
+        "path": "src/runtime/measurementProvenanceSnapshot.js",
+        "bytes": 3310,
+        "sha256": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e"
+      },
+      {
         "path": "src/runtime/modules/sessionModules.js",
-        "bytes": 1099,
-        "sha256": "05316a071da75db231b7d3151b6c8eda874e3eadf7d78e086bbe39d9fe756f40"
+        "bytes": 1255,
+        "sha256": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63"
       },
       {
         "path": "src/runtime/multiplayerSession.js",
@@ -1182,19 +1607,24 @@
         "sha256": "834151078c7990d52fbcdd4f203527b991939b7aa86f5a42dc39ca50acdb55a7"
       },
       {
+        "path": "src/runtime/pensionServiceSnapshot.js",
+        "bytes": 2536,
+        "sha256": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd"
+      },
+      {
         "path": "src/runtime/services/CoachingService.js",
-        "bytes": 6743,
-        "sha256": "8bc57ca62777f7c8453d77596361fba5c6242fc7283fed57fd193f6781f731c5"
+        "bytes": 7251,
+        "sha256": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf"
       },
       {
         "path": "src/runtime/services/ContractService.js",
-        "bytes": 1685,
-        "sha256": "e50f791c2f2613e6a875fb4333d0f7890469c5151293c28b3911f10bf39d06c5"
+        "bytes": 2398,
+        "sha256": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97"
       },
       {
         "path": "src/runtime/services/TradeService.js",
-        "bytes": 14734,
-        "sha256": "60afd1b18db65264393546459f226dac9d60c427cdbbf7c1f9e9c147118d0cd6"
+        "bytes": 15372,
+        "sha256": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be"
       },
       {
         "path": "src/runtime/services/index.js",
@@ -1203,13 +1633,18 @@
       },
       {
         "path": "src/runtime/services/tradePlan.js",
-        "bytes": 1939,
-        "sha256": "b58965b01237848130b36067e8e5f158fd488b1ec1ae0a05fbadccc8938e36a7"
+        "bytes": 2022,
+        "sha256": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04"
       },
       {
         "path": "src/runtime/snapshotMigration.js",
-        "bytes": 4725,
-        "sha256": "54d632309f363300c2ab503b1567a37801a6d7c67454e4d076d297bf4ca62a12"
+        "bytes": 7382,
+        "sha256": "973e583b9d43e680757c80a521e18bc302ae959ee35018f9db9ebb30ba0d1481"
+      },
+      {
+        "path": "src/runtime/statSnapshot.js",
+        "bytes": 5886,
+        "sha256": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86"
       },
       {
         "path": "src/runtime/weekResultProjection.js",
@@ -1227,6 +1662,11 @@
         "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179"
       },
       {
+        "path": "src/sport/competitionContract.js",
+        "bytes": 5371,
+        "sha256": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76"
+      },
+      {
         "path": "src/sport/football/calendar.js",
         "bytes": 1774,
         "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8"
@@ -1238,13 +1678,13 @@
       },
       {
         "path": "src/sport/football/index.js",
-        "bytes": 1224,
-        "sha256": "14da23943698fc27fddce255a00d039a41667291c9391440d08c77472dcc1c0a"
+        "bytes": 1393,
+        "sha256": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84"
       },
       {
         "path": "src/sport/football/postseason.js",
-        "bytes": 11119,
-        "sha256": "9b8578f5a2b76b684a834e03c4ffd07b1e776fa5c0b444ee4b21c60fc12e4550"
+        "bytes": 12210,
+        "sha256": "6007428021bb6258e375f4a9a7b8ac5787a0992436f155970130090fd7d6c318"
       },
       {
         "path": "src/sport/football/rules.js",
@@ -1255,6 +1695,11 @@
         "path": "src/sport/football/statSchema.js",
         "bytes": 13775,
         "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
+      },
+      {
+        "path": "src/sport/matchReadiness.js",
+        "bytes": 491,
+        "sha256": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5"
       },
       {
         "path": "src/sport/registry.js",
@@ -1339,37 +1784,37 @@
       {
         "path": "stats.html",
         "bytes": 8090,
-        "sha256": "392b2bdc3f5c243cd8e293990a10149081f0678231c21477a31daa275bc3eebf"
+        "sha256": "36c6a2f022778082dfa4283a82d132516b60d84e56467a250059d529a4cc1038"
       },
       {
         "path": "status-archive.html",
-        "bytes": 23230,
-        "sha256": "386cb67134826e1fecc1790d2bf24920160880bd477cb8b94a7fbb69232e37fa"
+        "bytes": 23884,
+        "sha256": "0ec8978174e3b42fff43f6e955a6c5c002c1dca7d189982755279550fb39d730"
       },
       {
         "path": "status.html",
-        "bytes": 8639,
-        "sha256": "4204644e01b9726c3b5eed621d7887608decc34c3fe5d72de50923045e4d3fae"
+        "bytes": 8778,
+        "sha256": "677bdbc83482530d5a527e51cd9767b79feaed30b9909afe66b15c8bfff99eed"
       },
       {
-        "path": "styles.b8e154d291.css",
-        "bytes": 212862,
-        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
+        "path": "styles.3c9bac11ad.css",
+        "bytes": 217536,
+        "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
       },
       {
         "path": "styles.css",
-        "bytes": 212862,
-        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
+        "bytes": 217536,
+        "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
       },
       {
         "path": "sw.js",
-        "bytes": 9877,
-        "sha256": "cdd12a71cf56b99fc5bc6bbd00dae3f3260ea96344f464137ba4675df92fc785"
+        "bytes": 12948,
+        "sha256": "c1c7644fba85e2e8808e728fa3fdac6720d23ecac0da7d2f13ed0d5909598de7"
       },
       {
         "path": "terms.html",
         "bytes": 6025,
-        "sha256": "74726d11c99ad2854fa4cebea664d4aa146519dcc90c828c4cf76597882e75dc"
+        "sha256": "e175a02b7e10e5e19973c12f6fe0ed5c4a3d468582fe500545cac85daa7ffbdb"
       }
     ],
     "exclusions": [
@@ -1383,17 +1828,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a45425e50c51a5ff-IAD",
+    "cf-ray": "a4ea339cc8de6060-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Sun, 04 Oct 2026 12:21:43 GMT",
+    "date": "Thu, 22 Oct 2026 17:25:29 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=rPzHvbSFRqugGD%2BcANxkALlf5l%2Bv42ZGwcUuxt525Cg9Zwa%2BJGjSe%2FMgnaSNWeV2EPRECMr2pD5skRlw%2B80M8Qw0AoZt6qhl8KAvP63FQ%2BLlCwL5BwwlqrC6rsQIVzhkBlcrGB0zje1Q0oT3OQ%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=J5NoYfvm7bKSn1LlJr%2BQrFFBEZH6nTF9o%2BrbMN9dWQCCWjeBWBMZNc%2BEPGfcofdazY1z4g3udbGVOdqiUYB96dRfLpd243s1Ey%2BKTgsqtbpcxbDB56uWyRPvsIKhrOpLhqM1gxBsjIfrh8u4rw%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1409,13 +1854,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 344,
-      "inpMs": 24,
+      "lcpMs": 1488,
+      "inpMs": 32,
       "cls": 0.0003,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 10164,
+          "lcpMs": 1676,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1425,7 +1870,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 11213,
+              "startTimeMs": 2901,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1482,11 +1927,11 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 336,
+          "lcpMs": 1392,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1496,7 +1941,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 835,
+              "startTimeMs": 2655,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1553,11 +1998,11 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 344,
+          "lcpMs": 1488,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1567,7 +2012,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 772,
+              "startTimeMs": 2713,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1624,7 +2069,7 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         }
       ]
@@ -1636,13 +2081,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 480,
-      "inpMs": 24,
+      "lcpMs": 1584,
+      "inpMs": 48,
       "cls": 0.0131,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 10144,
+          "lcpMs": 1540,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1652,7 +2097,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 11212,
+              "startTimeMs": 2348,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -1734,11 +2179,11 @@
               ]
             }
           ],
-          "inpMs": 16,
+          "inpMs": 96,
           "interactionObserved": true
         },
         {
-          "lcpMs": 372,
+          "lcpMs": 1584,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1748,7 +2193,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 959,
+              "startTimeMs": 2959,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -1830,11 +2275,11 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 48,
           "interactionObserved": true
         },
         {
-          "lcpMs": 480,
+          "lcpMs": 1588,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1844,7 +2289,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1009,
+              "startTimeMs": 2980,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -1926,7 +2371,7 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         }
       ]
@@ -1938,13 +2383,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "d913b9f9c0043d00131506c0d4271034a15fc169",
+        "observed": "863ea60e61398fa149d0e5715f15341a57337df5",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280",
+        "observed": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
         "expected": "sha256"
       },
       {
@@ -1968,13 +2413,13 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 344,
+        "observed": 1488,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 24,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
@@ -1992,13 +2437,13 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 480,
+        "observed": 1584,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 24,
+        "observed": 48,
         "expected": "<= 200ms"
       },
       {
@@ -2034,5 +2479,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "2352ba677146edaa24fc049b9e36192215f33f272e0385cbae0c91048ee8ab28"
+  "receiptSha256": "4712551900a775daae510d91654d0599d7d2acc4bd22503187a43a7629e13839"
 }

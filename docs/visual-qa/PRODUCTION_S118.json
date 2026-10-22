@@ -1,0 +1,285 @@
+{
+  "origin": "https://playfranchisearchitect.com",
+  "revision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+  "startedAt": "2026-10-22T17:23:31.312Z",
+  "defaultClient": true,
+  "mocks": false,
+  "captures": [
+    {
+      "path": "output/playwright/s118-production-r5-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7"
+    },
+    {
+      "path": "output/playwright/s118-production-r5-heavy-mobile-light-run.png",
+      "sha256": "377fb94916631d77177531aa20b6b5943a776b9c3f96f03d95da96882b14a38c"
+    },
+    {
+      "path": "output/playwright/s118-production-r5-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15"
+    },
+    {
+      "path": "output/playwright/s118-production-r5-light-mobile-dark-run.png",
+      "sha256": "f68f20eea7096b02a9da44de680a598f9167584e9ace558094ef303854a50f70"
+    },
+    {
+      "path": "output/playwright/s118-production-r5-family-desktop-dark-anchor.png",
+      "sha256": "9dc7e2d4da712db1a850eee6c5c5f367944ec5662c37f4ba39ff0b50abcbb732"
+    },
+    {
+      "path": "output/playwright/s118-production-r5-family-desktop-dark-relative.png",
+      "sha256": "536d114b28571506cb1b1ca44f7312b68c567b02bcb34dc7865d7ba00b5da897"
+    },
+    {
+      "path": "output/playwright/s118-production-r5-family-mobile-light-anchor.png",
+      "sha256": "fd5c414145a19592f42c75f14db8fa977fefa9b49f9a5797ff7f73160d8797b8"
+    },
+    {
+      "path": "output/playwright/s118-production-r5-family-mobile-light-relative.png",
+      "sha256": "9cfbc99e780c6a8a54962abb0422ffddcafa30a4af829dc84f01af78ae07749e"
+    }
+  ],
+  "animationChecks": [
+    {
+      "label": "heavy",
+      "actualCanvasAdvances": true,
+      "pauseFreezes": true,
+      "resumeAdvances": true,
+      "reducedMotionFreezes": true
+    },
+    {
+      "label": "light",
+      "actualCanvasAdvances": true,
+      "pauseFreezes": true,
+      "resumeAdvances": true,
+      "reducedMotionFreezes": true
+    }
+  ],
+  "errors": [],
+  "before": {
+    "health": {
+      "status": "ok",
+      "service": "franchise-architect-football",
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "artifactFingerprint": {
+        "algorithm": "sha256",
+        "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "files": 361,
+        "exclusions": [
+          "_health",
+          "deploy-manifest.json",
+          "edge-policy-receipt.json"
+        ]
+      },
+      "styleAsset": "styles.3c9bac11ad.css",
+      "communityStatsAsset": "community-stats.25f97e0a1e.js",
+      "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+      "edgePolicyAppliedToHostedOrigin": false,
+      "generatedAt": "2026-10-22T15:37:52.072Z",
+      "launchReady": false,
+      "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+    },
+    "manifest": {
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "runtimeDefault": "client",
+      "serverAvailable": false
+    }
+  },
+  "setup": {
+    "runtime": "client",
+    "storedOverride": null
+  },
+  "runtime": {
+    "mode": "client",
+    "kind": "worker"
+  },
+  "people": [
+    {
+      "id": "P2026-BUF-OL-75203022",
+      "name": "Christopher Reid",
+      "position": "OL",
+      "heightInches": 80,
+      "weightLbs": 338
+    },
+    {
+      "id": "P2026-BUF-WR-86039379",
+      "name": "Christopher Wright",
+      "position": "WR",
+      "heightInches": 73,
+      "weightLbs": 195
+    }
+  ],
+  "cutChecks": [
+    {
+      "label": "heavy",
+      "actualGpuAdvances": true,
+      "pauseFreezes": true,
+      "captionHistory": [
+        {
+          "text": "Treadmill running Â· movement study",
+          "time": 8353.399999976158
+        },
+        {
+          "text": "Lateral plant & cut Â· Push-off",
+          "time": 8371.399999976158
+        },
+        {
+          "text": "Lateral plant & cut Â· Lateral step",
+          "time": 8573.899999976158
+        },
+        {
+          "text": "Lateral plant & cut Â· Braking",
+          "time": 9425
+        },
+        {
+          "text": "Lateral plant & cut Â· Plant & redirect",
+          "time": 9624.199999928474
+        },
+        {
+          "text": "Lateral plant & cut Â· Push-off",
+          "time": 9924.299999952316
+        },
+        {
+          "text": "Lateral plant & cut Â· Lateral step",
+          "time": 10073.5
+        }
+      ]
+    },
+    {
+      "label": "light",
+      "actualGpuAdvances": true,
+      "pauseFreezes": true,
+      "captionHistory": [
+        {
+          "text": "Treadmill running Â· movement study",
+          "time": 13693.799999952316
+        },
+        {
+          "text": "Lateral plant & cut Â· Push-off",
+          "time": 13706.699999928474
+        },
+        {
+          "text": "Lateral plant & cut Â· Lateral step",
+          "time": 13857.399999976158
+        },
+        {
+          "text": "Lateral plant & cut Â· Braking",
+          "time": 14658
+        },
+        {
+          "text": "Lateral plant & cut Â· Plant & redirect",
+          "time": 14807.799999952316
+        },
+        {
+          "text": "Lateral plant & cut Â· Push-off",
+          "time": 15008.299999952316
+        },
+        {
+          "text": "Lateral plant & cut Â· Lateral step",
+          "time": 15157.899999976158
+        }
+      ]
+    }
+  ],
+  "renderingDoesNotAdvanceFootballRng": true,
+  "family": {
+    "relativeId": "P2027-FA-WR-70924506",
+    "anchorId": "P2026-MIA-DB-73421300",
+    "relation": {
+      "anchorId": "P2026-MIA-DB-73421300",
+      "anchorName": "Michael Chen",
+      "relation": "brother"
+    },
+    "sharedAuthority": true,
+    "sharedBackground": true,
+    "individualAppearanceSeeds": true,
+    "complexionDelta": 0.05441691776504731,
+    "heritage": [
+      "African American"
+    ],
+    "surveyCategory": "Black",
+    "persistsAcrossActualReload": true
+  },
+  "after": {
+    "health": {
+      "status": "ok",
+      "service": "franchise-architect-football",
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "artifactFingerprint": {
+        "algorithm": "sha256",
+        "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "files": 361,
+        "exclusions": [
+          "_health",
+          "deploy-manifest.json",
+          "edge-policy-receipt.json"
+        ]
+      },
+      "styleAsset": "styles.3c9bac11ad.css",
+      "communityStatsAsset": "community-stats.25f97e0a1e.js",
+      "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+      "edgePolicyAppliedToHostedOrigin": false,
+      "generatedAt": "2026-10-22T15:37:52.072Z",
+      "launchReady": false,
+      "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+    },
+    "manifest": {
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "runtimeDefault": "client",
+      "serverAvailable": false
+    }
+  },
+  "completedAt": "2026-10-22T17:24:11.687Z",
+  "acceptance": {
+    "exactCandidateHealth": true,
+    "actualDefaultClient": true,
+    "actualAnimationAndFamilies": true,
+    "visualInspectionPending": false,
+    "inspectedHostedVisuals": true
+  },
+  "visualReview": {
+    "completedAt": "2026-10-22T17:24:43.121140+00:00",
+    "reviewer": "independent-character-review (/root/character_review)",
+    "freshCaptureCount": 8,
+    "inspectedOriginals": [
+      "output/playwright/s118-production-r5-heavy-desktop-dark-run.png",
+      "output/playwright/s118-production-r5-heavy-mobile-light-run.png",
+      "output/playwright/s118-production-r5-light-desktop-light-run.png",
+      "output/playwright/s118-production-r5-light-mobile-dark-run.png",
+      "output/playwright/s118-production-r5-family-desktop-dark-anchor.png",
+      "output/playwright/s118-production-r5-family-desktop-dark-relative.png",
+      "output/playwright/s118-production-r5-family-mobile-light-anchor.png",
+      "output/playwright/s118-production-r5-family-mobile-light-relative.png"
+    ],
+    "findings": [],
+    "mandatoryFindings": [],
+    "verdict": "Pass for selected stylized L2 character outcome.",
+    "observations": [
+      "Production heavy 80in/338lb and light 73in/195lb athletes have visibly distinct saved-dimension builds, complete connected silhouettes and readable front/profile/movement views.",
+      "All four fresh body views and four actual family views individually inspected across the assigned desktop/mobile dark/light matrix.",
+      "Real generated brothers share complexion and facial resemblance while individual hair, age, jersey and appearance seeds remain distinct.",
+      "Actual default client worker animation advances; pause freezes, resume advances, and reduced-motion freezes for both athletes.",
+      "Both cut studies record actual Plant & redirect caption transitions and visible GPU advance/pause.",
+      "Family authority persists after actual page reload; rendering preserves football RNG and saved appearance/frame."
+    ],
+    "limitations": [
+      "Procedural anatomy, facial surfaces, muscle contours and clothing remain visibly stylized.",
+      "Animation is illustrative rather than motion-captured technique; no empirical athletic-performance, tissue-mass or photorealism claim."
+    ]
+  },
+  "productionDeploymentId": "11119545-e3ff-4230-82c1-cefdc64b1fc2",
+  "productionPagesWorkflow": "39797016574",
+  "reviewHelperSha256": "0e6bb22ec01cfb409872996147eaab35284bb451fb5a282dae6bd39678a86e16",
+  "preservedCaptureFiles": [
+    "captures/s118-production/s118-production-r5-heavy-desktop-dark-run.png",
+    "captures/s118-production/s118-production-r5-heavy-mobile-light-run.png",
+    "captures/s118-production/s118-production-r5-light-desktop-light-run.png",
+    "captures/s118-production/s118-production-r5-light-mobile-dark-run.png",
+    "captures/s118-production/s118-production-r5-family-desktop-dark-anchor.png",
+    "captures/s118-production/s118-production-r5-family-desktop-dark-relative.png",
+    "captures/s118-production/s118-production-r5-family-mobile-light-anchor.png",
+    "captures/s118-production/s118-production-r5-family-mobile-light-relative.png"
+  ]
+}

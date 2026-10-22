@@ -1,32 +1,32 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-06 (Session 116 closeout) -->
+<!-- generated-at: 2026-10-22 (Session 118 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S116 ═════╗
-║  Date: 2026-10-06  ·  SIL: 858/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-code                            ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S118 ═════╗
+║  Date: 2026-10-22  ·  SIL: 838/1000  ·  Velocity: 3              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ chore(closeout): record S116 write-back, release authority a  ║
-║  ✓ refactor(platform): Phase 1 steps 5-6 — schedule and postsea  ║
-║  ✓ refactor(platform): Phase 1 step 4 — the season calendar bec  ║
-║  ✓ refactor(platform): Phase 1 step 3 — football stats become a  ║
-║  ✓ refactor(platform): Phase 1 step 2 — the match engine return  ║
+║  ✓ Fix responsive capture renderer ownership for character rele  ║
+║  ✓ chore(deps-dev): bump @playwright/test (#67)                  ║
+║  ✓ Observe actual cut animation phases without polling aliasing  ║
+║  ✓ Record active session identity for preview freshness          ║
+║  ✓ Make character and injury browser regressions portable        ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 858/1000 ═══════════════════════════════════════╗
-║    Dev Health         97   ██████████                            ║
-║    Alignment          96   ██████████                            ║
-║    Momentum           95   ██████████                            ║
-║    Engagement         72   ███████░░░                            ║
-║    Process Qual       88   █████████░                            ║
-║    Coherence          88   █████████░                            ║
-║    Security           82   ████████░░                            ║
-║    Ecosystem          76   ████████░░                            ║
-║    Capital            70   ███████░░░                            ║
-║    Automation         94   █████████░                            ║
+╔══ SCORES · SIL 838/1000 ═══════════════════════════════════════╗
+║    Dev Health         90   █████████░                            ║
+║    Alignment          88   █████████░                            ║
+║    Momentum           70   ███████░░░                            ║
+║    Engagement         80   ████████░░                            ║
+║    Process Qual       60   ██████░░░░                            ║
+║    Coherence          90   █████████░                            ║
+║    Security           92   █████████░                            ║
+║    Ecosystem          85   █████████░                            ║
+║    Capital            95   ██████████                            ║
+║    Automation         88   █████████░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 10 files  ·  M:10 A:0 D:0 ?:0                          ║
+║  Changes: 37 files  ·  M:21 A:0 D:0 ?:16                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -50,17 +50,27 @@
 ║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        11/12                                            ║
-║  Compliance:    37/37                                            ║
-║  Tests:         1752/1752 · STALE                                ║
-║  IGNIS:         27d ago                                          ║
-║  Truth:         green                                            ║
-║  Sanitization:  7d ago                                           ║
+║  Doctor:        12/12                                            ║
+║  Compliance:    historical 37/37; separate from current CI       ║
+║  Tests:         7/7 CI jobs; browser 267 pass, 3 opt-in skips    ║
+║  IGNIS:         40,285 FORGE · 2026-10-22                        ║
+║  Truth:         partial                                          ║
+║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: server-route-split — Deferred: the API parity checker and   ║
-║      organization                                                ║
+║  #1: selected arc complete; await new founder scope              ║
+║      ↳ node scripts/ops.mjs genius-list                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
 *Generated by `scripts/render-closeout-board.mjs v1.0`*
+
+S118 scoped evidence (snapshot 2026-10-22T17:36:39.985Z):
+
+- Application source: `863ea60e61398fa149d0e5715f15341a57337df5`; production and staging match. Closeout publication pending review and ordinary push.
+- Actual browser result: 267 passed, zero failed, three existing opt-in skips. All seven CI jobs and test steps passed; aggregate core/runtime case counts remain unmeasured. The renderer's historical shard count is not current acceptance.
+- Responsive evidence: 327 captures, all 312 required, zero runtime errors or failures. Selected visual receipt: 233 preserved/fresh captures, including eight newly inspected production character images. Eight separate production continuity images were also inspected.
+- SCAFFOLD: 3 selected tasks · 3 done · 0 in progress · 0 open. Unselected historical queue remains outside this completed scope.
+- Shells: historical started/closed totals unmeasured; currently owned verification helpers and test runners are terminal. Final process and port enumeration is recorded in the closeout hygiene receipt.
+- Private creative-direction record: updated and intentionally ignored; never force-published. Project and personal agent memory updated.
+- Procedural characters remain stylized. Known expanded-mobile Desk clipping remains recorded; tested restoration controls are readable. Launch and lifecycle approval remain separate.

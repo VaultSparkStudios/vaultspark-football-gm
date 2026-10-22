@@ -1,6 +1,35 @@
-# Latest Handoff — Session 117 → Session 118
+# Latest Handoff — Session 118 → Session 119
 
-## Current checkpoint — S118 responsive capture repair
+## Where We Left Off (Session 118)
+
+Measured character v5 contours, garment relief, articulated feet and softer face/eye treatment are integrated into the actual player dossier. Saved height/weight continue to distinguish real roster players. Six athletic studies support motion, pause/resume and reduced motion. Explicit family authority shares racial/background category, heritage and natural pigment channels while retaining individual faces, recorded measurements and football random streams; generated brothers and reload persistence were exercised in the actual default client worker.
+
+Exact application candidate 863ea60e61398fa149d0e5715f15341a57337df5; artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. CI39796952874 verified all six canonical unit shards and the complete browser job/test step. Pages39797016574 and backend39797029101 promoted the exact candidate. Stable staging14/14 and production14/14 provenance passed; hosted performance passed desktop/mobile. Provider/public source identities match. Previous Pages deployment and API image are available for rollback. Database container, image/start/mount identity and routing files/service identity are unchanged. No aggregate core/runtime case count is invented from truncated TAP output.
+
+Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
+
+Canonical closeout is finalizing its review and receipt publication. Native goal01a16182-9d54-72b0-82a9-5655a228e67a remains active until the ordinary closeout push and final readback are verified. This is still S118; do not start another arc.
+
+
+## Superseded checkpoint — S118 CI and backend verified
+
+Exact candidate 863ea60e61398fa149d0e5715f15341a57337df5 CI39796952874 passed all seven required jobs/test steps: browser267passed/0failed/3existing opt-in skips; core/runtime aggregate counts remain unmeasured where TAP summaries truncate. Backend39797029101 deployed and readback verifies the exact API revision/database ready, unchanged database container/image/start/mount and routing file/process identities, plus retained rollback API image. Frontend Pages39797016574 final production acceptance remains unverified. Full production acceptance and S118 closeout remain pending; no new arc.
+
+Evidence: reports/s118-candidate-ci.json, reports/s118-backend-workflow.json, reports/backend-manual-s118.json. Visual LATEST225 captures (8fresh/217inherited),19matching committed sources and unchanged361artifactentries; stagingf8b33838 verified; artifact2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. Await Pages, then provider/public readback, production browser/visual/performance, release authority and full ordered native closeout. Shared autopilot remains unsafe to target because child scripts write Studio Ops; do not invoke it or claim it passed. Prepared helpers are future-gated, not achieved closeout evidence.
+
+## Superseded checkpoint — S118 exact CI verified
+
+Exact candidate 863ea60e61398fa149d0e5715f15341a57337df5 CI39796952874 passed all seven required jobs and their actual test steps. Browser267passed/0failed/3existing opt-in skips; core/runtime aggregate case counts remain unmeasured where TAP output truncates. Native CI acceptance re-observation passed after the first bounded observation expired; no test execution or gate was bypassed. Backend39797029101 has all five gates and both images green and is awaiting the hosted CI check; Pages39797016574 passed all four gates and is running its browser release suite. Current production verification and canonical S118 closeout remain incomplete.
+
+Same native goal/session118. Wait for actual backend completion, then use the r5 readback/verification helpers and r5 backend-delivery updater. Production character r5 helper remains unrun until Pages/provider/public source are exact. Preserve225 existing visual captures and append8 fresh production captures only after actual functional/image review. Final writeback additionally requires reviewed actual production continuity (8 images), performance, provenance and release authority. Do not run old R3/R4 state recorders or rebind another arc.
+
+## Superseded checkpoint — S118 combined candidate after capture repair
+
+Combined candidate 863ea60e61398fa149d0e5715f15341a57337df5 is pushed to remote main and verified on stable staging f8b33838-d3b3-487e-8fa0-3a1ac54ba800 with unchanged361-entry artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. The responsive harness now calls the current tabContracts free-agency renderer; its full local327captures/312required matrix passed with zero runtime errors, and clean-checkout protocol checks passed376/376 plus focused72/72. Concurrent remote Dependabot Playwright1.64.1 update was preserved through an ordinary merge, with live registry signatures/lock integrity/maintainer continuity verified before installation. Fresh actual hosted8-image review passed motion/cut/GPU/pause/reduced-motion/family/reload/RNG checks; LATEST225images preserves217 inherited reviews. Exact CI39796952874, Pages39797016574 and backend39797029101 are running or queued. Prioradb9 CI and Pages full browser suites both passed267/0/3; its Pages capture step failed and skipped frontend publication, while its backend was genuinely deployed and readback-verified. Full production and canonical S118 closeout remain incomplete.
+
+Same native goal and session118. Future-gated helpers are rebound to this exact revision and runs. Backend now has a fresh predeployment readback in .cache/s118-r5-backend-readback-before.json; preserve earlier before/after evidence and compare actual database/routing identity plus the retained adb9 API image after final deployment. Production character helper r5 remains unrun. No autopilot override; use reviewed project-scoped native closeout ceremony after verified production.
+
+## Superseded checkpoint — S118 responsive capture repair
 
 Candidate adb9b228 CI39771485408 passed all seven required jobs, with267 browser cases passed and3 existing opt-in skips. Backend39771529288 deployed and exact API/database/routing/rollback readback passed. Pages39771524992 separately passed267 browser cases and3 skips, then failed responsive artifact capture because the capture harness called renderFreeAgency from tabRoster instead of its current tabContracts owner. Frontend publication was skipped and remains on d913b9f9. Repair is limited to the capture harness; the selected application source is unchanged. A new exact candidate and full release checks remain required; production and canonical S118 closeout are incomplete.
 

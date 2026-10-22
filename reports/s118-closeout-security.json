@@ -1,0 +1,874 @@
+{
+  "schemaVersion": "1.0",
+  "observedAt": "2026-10-22T17:34:01.966Z",
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "status": "passed",
+  "scope": "Current worktree changes since selected arc base4d051b9ca02632562daa8ce3f89afa9a518e13f2 plus untracked public candidates; before final ordinary push.",
+  "scannedTextFiles": 2537,
+  "rawCandidates": 70,
+  "reviewedFalsePositives": 70,
+  "unresolved": 0,
+  "personalPathFindings": 0,
+  "reviewed": [
+    {
+      "file": "docs/ADMITTED_INJURY_EARNING_PAYROLL_2026-10-07.json",
+      "line": 1833,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "249564810757966bb60b89094f9dd6d67a5381d9556ab122b6ad8228de4f89a8",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_PENSION_SERVICE_2026-10-08.json",
+      "line": 218,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6f240318c21874fa15832c30ae82f3cb3ef5d2c7f1409cfd385e214c3fcb3d8a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_PENSION_SERVICE_R2_SUPPLEMENT_2026-10-08.json",
+      "line": 227,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6f240318c21874fa15832c30ae82f3cb3ef5d2c7f1409cfd385e214c3fcb3d8a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_POSTSEASON_RECOVERY_2026-10-07.json",
+      "line": 2022,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "02884f58a6f19c0c00824a4a286d98fca1f69116543d7da1d56ccfa21b0bf635",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_PRACTICE_PAY_OVERLAP_2026-10-08.json",
+      "line": 108,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "249564810757966bb60b89094f9dd6d67a5381d9556ab122b6ad8228de4f89a8",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_REGULAR_RECONCILIATION_2026-10-08.json",
+      "line": 213,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "249564810757966bb60b89094f9dd6d67a5381d9556ab122b6ad8228de4f89a8",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_REGULAR_RECONCILIATION_R2_2026-10-08.json",
+      "line": 213,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "249564810757966bb60b89094f9dd6d67a5381d9556ab122b6ad8228de4f89a8",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_REGULAR_RECONCILIATION_REVIEW_R1_2026-10-08.json",
+      "line": 69,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6f240318c21874fa15832c30ae82f3cb3ef5d2c7f1409cfd385e214c3fcb3d8a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ADMITTED_SOURCE_YEAR_PAYROLL_REVIEW_2026-10-07.json",
+      "line": 69,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6f240318c21874fa15832c30ae82f3cb3ef5d2c7f1409cfd385e214c3fcb3d8a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ANNUAL_ADMITTED_INJURY_TRANSITION_2026-10-08.json",
+      "line": 253,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "249564810757966bb60b89094f9dd6d67a5381d9556ab122b6ad8228de4f89a8",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ANNUAL_ADMITTED_INJURY_TRANSITION_REVIEW_R1_2026-10-08.json",
+      "line": 126,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6f240318c21874fa15832c30ae82f3cb3ef5d2c7f1409cfd385e214c3fcb3d8a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ANNUAL_ADMITTED_INJURY_TRANSITION_REVIEW_R2_2026-10-08.json",
+      "line": 277,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "249564810757966bb60b89094f9dd6d67a5381d9556ab122b6ad8228de4f89a8",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/ANNUAL_ENTITLEMENT_AUTHORITY_GAP_2026-10-07.json",
+      "line": 632,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "40424a18fd53c3e4b33d06896cff4c152dc4d5f50d443f271fa0f5ec1ca704e5",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/CONTINUATION_ACCOUNTING_AUTHORITY_2026-10-07.json",
+      "line": 5,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "11e0a0966b4c164cc9534226d76c6277e4cb7bf0d89b3323b229727617514248",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/CURRENT_CHARACTER_VOLUME_FIT_2026-10-08.json",
+      "line": 537,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bce719ad7caa6400ba836a8bc7736aace5d394cf83dc7084aafe19c9daaa3034",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/IMPLEMENT_PLAN.md",
+      "line": 780,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "a4300a431e1fc19388d8a3ca56246222253fdeda720a576ea1a5bb884a6c6783",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL",
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/IMPLEMENT_PLAN.md",
+      "line": 818,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "5cac00d16e928cf90069867d41c7a1e70dc6c7713565c663c37753a2f490ecb5",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/IMPLEMENT_PLAN.md",
+      "line": 1205,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "5ac4def39943fbaddafc6ce37dcb0c7f2c16648fb5f8b420261d045c02e77aa2",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 5,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "442b506785bfbf8a747b73aa9910543e6c660b861a7a1c3c46ac2b4a4b3a5c9a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 23,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "c4467dce98bc05e2338da749a410c7e8613e858f824a9ba65c53e811430ea2a5",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 33,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "1e19d0d04bab546c9ef975ed784864208cbe92a63e5934d9d7f20ada93d4cb88",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 43,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "03c2578f5dc0292c403c737c33a9d094df0d91eb1fa6d3b34cc4fc9f24d2d5c1",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 55,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "2ee794478c1262d1733ba67ccbedae06c53bb0636878249fdca32fe37316f2ad",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL",
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 69,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "07f6fb88dc520131abbb45c33e3780a17276628cdd1fcd9c4fadb350630c162c",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 87,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6d840bd31ed61f8b98738ed0428861e5459863955e327661b45e24ecd974aa5b",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 105,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "648c12e62575859e8d3022093384fddab386562a42d2f6e79eca0ad2c7b2fba5",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 113,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "13f5993fb02866c2f5d1d6c0097e10a6165336a588721f74320b344ef92673c5",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 127,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6640e32100af0a48fb7cfd74573ce6473196ad189e86ec63c90afe40aec1c5f4",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 151,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "067ed40380e2144ba2f531d670bb8cd369cae5e746c2e16de41318bc014380d5",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL",
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 159,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "6955a943afa8de70bfb345034258840cb095f95837b24b5c67eadfe7f12d5a54",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL",
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 183,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "4cf9742038b47b68fe5b65c11fe832c0d1a252c48b3b11df0eda4026b82d50a1",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 207,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "dbfb54869554bb2e38de7b7411c072ce0dba8f0aaa0fca2c44a1ae97595d138e",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL",
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 221,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "193419a93b03cc5049f7c3184f24fe3c13c75df8e0b02ca5f2ac4fb3b766f97a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/NFL_RULES_REVIEW_2026-10-06.md",
+      "line": 263,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "4fadb7b6dbb8b100e15b44e70cc1585de9e8c5e18a11a3ae5bbe62af2adcaa4b",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/OFFSEASON_MEDICAL_CALENDAR_2026-10-07.json",
+      "line": 1791,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "6211539701654d247a802666e77e3a4ccd4c6d39e8d9de585b9b17352056a829",
+      "classification": "false-positive",
+      "reason": [
+        "literal build metrics, not credential material"
+      ]
+    },
+    {
+      "file": "docs/PLAYER_APPEARANCE_DEMOGRAPHICS_EXPANSION_2026-10-07.md",
+      "line": 347,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "627c4c5f82444a414b307c093301853280e02a8be5f1d7b501ea8b5b964eb4b8",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/PLAYER_APPEARANCE_EVIDENCE_2026-10-06.json",
+      "line": 635,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "3b0dc98693902471d0e966e79bf87ece9d0b5feb8113a5af0ef1ee21ecf29d52",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/PLAYER_IDENTITY_RESEARCH_2026-10-06.md",
+      "line": 94,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "29f99b3e1aecc76af061846a316ad6ae4df332c99403aef530075433207cb82a",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL",
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/PLAYER_IDENTITY_RESEARCH_2026-10-06.md",
+      "line": 769,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "802d20683edcf20675cd0bfa6124844fd284255d38a5600b8f17454de71372ae",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/PLAYER_LIMB_REFERENCE_EXTRACTION_REVIEW_2026-10-07.json",
+      "line": 23,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "3b0dc98693902471d0e966e79bf87ece9d0b5feb8113a5af0ef1ee21ecf29d52",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/PLAYER_LIMB_REFERENCE_OBSERVATIONS_2026-10-07.json",
+      "line": 16,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "5f8fd77856251a42fb4fa29ffd3850aab366be1c89bd044df2686021fd172843",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/POSTSEASON_TERM_PAY_DISCREPANCY_2026-10-07.json",
+      "line": 4649,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "72d4b1462f8e8aa0481b8092e64e60ea93552dbd7c926e7b8a878d31a6ad2144",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_BODY_BATCHING_2026-10-08.json",
+      "line": 948,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_EXTREMITIES_2026-10-08.json",
+      "line": 949,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_FACE_SCULPT_2026-10-08.json",
+      "line": 700,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json",
+      "line": 949,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_LIMB_SWEEP_R2_2026-10-08.json",
+      "line": 868,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "ad27664bbe2ab92f093b108e4effc6b3bc0ac0dd107f8d1a8e140ebad8f6c7de",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_LONG_LOCKS_R2_2026-10-08.json",
+      "line": 690,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_LONG_TEXTURE_2026-10-08.json",
+      "line": 687,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_LONG_TEXTURE_R2_2026-10-08.json",
+      "line": 689,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_PERSON_MATERIAL_2026-10-08.json",
+      "line": 692,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_SHOULDER_CONTOUR_2026-10-08.json",
+      "line": 951,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_SKIN_CONTINUITY_2026-10-08.json",
+      "line": 119,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "5fb14fec17949c6dc119eab1ff062b9dab663ea368251a0fa0ed5766c1550818",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_TORSO_CONTOUR_R1_2026-10-08.json",
+      "line": 873,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "cbf5e297562e4ea9076b8ef7b4d27d317235e7533a233d2f685573244c3c8bb6",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_TORSO_CONTOUR_R2_2026-10-08.json",
+      "line": 874,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "bf16bbeed31947516473261e4e851d8a848cbf9547151f0785ddf2fa8b6bb5d0",
+      "classification": "false-positive",
+      "reason": [
+        "existing hashed evidence/source path"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/references/limb-sweep-r2-2026-10-08-src-data-nflSalaryMinimum.js",
+      "line": 2,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "edf3460bf9b12bad002e3ff618d88bca6a2796285819cb149ef0382c918cd1dc",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/references/torso-contour-r1-2026-10-08-src-data-nflSalaryMinimum.js",
+      "line": 2,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "edf3460bf9b12bad002e3ff618d88bca6a2796285819cb149ef0382c918cd1dc",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "docs/visual-qa/references/torso-contour-r2-2026-10-08-src-data-nflSalaryMinimum.js",
+      "line": 2,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "edf3460bf9b12bad002e3ff618d88bca6a2796285819cb149ef0382c918cd1dc",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 37,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "4d811a5a79d6869fdef0bb8f806e0c73aa8b08f1b100a201254b1cdf8e04007a",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 37,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "4d811a5a79d6869fdef0bb8f806e0c73aa8b08f1b100a201254b1cdf8e04007a",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 64,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "17e39c26f355780713b0834dfa1b6fb46b79c0a640dc977757b38881bd96a989",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 71,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "108c9db3180a68c0cad3f1999a17155c6150275a3f638ebcd20a49e802bf42ee",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 77,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "01630c7ce022ccbfe5b579c838d672c7902ef8053e324ef6c76b571564ba4f04",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 77,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "01630c7ce022ccbfe5b579c838d672c7902ef8053e324ef6c76b571564ba4f04",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 86,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "fc6572f4efbc852499c9466b94e844e778881189becd629075bab67626e4fba7",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 126,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "e6a9146839aaebfdbd29e810bdd21b87923cc9edf42c68f361f7cec0be26640a",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 142,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "fb09e1e199743eda01af77dd421cccd7d98aa9244e72c45d561e2f30b5e65a29",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 173,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "9d0bd24571ec35985c13fa79f195ae21218df771aae57caf5d98b499e538eea3",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "line": 203,
+      "pattern": "AWS Secret Key",
+      "type": "aws-maybe",
+      "confidence": "low",
+      "lineSha256": "1dfd0ee9eb3e24f6a6d9b0e3fe20ee667f39c506b23bae7c9e5365c9eae529ca",
+      "classification": "false-positive",
+      "reason": [
+        "structured npm package integrity SHA512, not an authentication credential"
+      ]
+    },
+    {
+      "file": "src/data/nflSalaryMinimum.js",
+      "line": 2,
+      "pattern": "Cloudflare API Token",
+      "type": "cf-maybe",
+      "confidence": "low",
+      "lineSha256": "edf3460bf9b12bad002e3ff618d88bca6a2796285819cb149ef0382c918cd1dc",
+      "classification": "false-positive",
+      "reason": [
+        "public primary-source reference URL"
+      ]
+    }
+  ],
+  "settings": {
+    "checkOnly": true,
+    "findings": 0,
+    "entries": 29
+  },
+  "supplyChain": {
+    "knownIncidents": 3,
+    "repositoriesWithFindings": 0
+  },
+  "gateBypass": false,
+  "limitations": [
+    "The legacy secrets --audit alias is advisory capability discovery, not an independent gateway health certificate. Actual production deployments exercised the gateway.",
+    "Final pre-push hook separately scans outgoing committed bytes."
+  ]
+}
