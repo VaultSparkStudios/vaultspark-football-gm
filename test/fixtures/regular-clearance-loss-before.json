@@ -1,0 +1,14 @@
+{
+  "kind": "actual-regular-clearance-pay-loss",
+  "scope": "Controlled1-week injury fixture and actual runtime regular advance, not a played injury outcome",
+  "sourceHash": "4192c872265401d4be2dff1fe60ca394b0f61f57b13e1d30e99bbb188a6186ec",
+  "beforeSnapshotSha256": "bea759a5325259fa9d06d660ae4d958364b8cb820e13513ecbc5b8ad807ac310",
+  "playerId": "P2026-BUF-QB-87221813",
+  "sourceGameId": "2026-regular-regular-season-1-BUF-IND",
+  "expectedDownPayCents": 2861111,
+  "practiceBaseCents": 1375000,
+  "recordedAdjustment": null,
+  "missingCents": 1486111,
+  "recovered": true,
+  "episodeStatus": "recovered"
+}

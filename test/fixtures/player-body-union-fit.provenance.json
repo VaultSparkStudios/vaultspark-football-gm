@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "fixture": "player-body-union-fit.json",
+  "sha256": "65ce3bed9faa4cab46a616c20ef45482f7c45916ca9301078177abfc024ee070",
+  "bytes": 36789,
+  "source": "Exact raw bytes preserved from the 2026-10-08 body-union controlled synthetic fixture; no regeneration or reserialization.",
+  "generation": {
+    "sessionSeed": 117,
+    "startYear": 2026,
+    "controlledTeamId": "BUF",
+    "selection": "First generated OL; same fictional person cloned at height 80in and weights 180/240/350/500lb.",
+    "appearanceAndFrame": "Resolved separately for each controlled weight by playerAppearance/playerFrame.",
+    "bulkScale": "Original fitPlayerBodyMeshMass resolution128 converged scales retained verbatim."
+  },
+  "scope": "Synthetic renderer regression inputs. Artistic 1kg/L density proxy; no real person, empirical anatomy calibration, physical tissue-mass certification or production mass-fit integration claim.",
+  "cases": [
+    {
+      "id": "P2026-BUF-OL-48032446",
+      "heightInches": 80,
+      "weightLbs": 180,
+      "bulkScale": 1.0288935802765609
+    },
+    {
+      "id": "P2026-BUF-OL-48032446",
+      "heightInches": 80,
+      "weightLbs": 240,
+      "bulkScale": 1.0408829915353588
+    },
+    {
+      "id": "P2026-BUF-OL-48032446",
+      "heightInches": 80,
+      "weightLbs": 350,
+      "bulkScale": 1.057834573330589
+    },
+    {
+      "id": "P2026-BUF-OL-48032446",
+      "heightInches": 80,
+      "weightLbs": 500,
+      "bulkScale": 1.0810895487546168
+    }
+  ]
+}

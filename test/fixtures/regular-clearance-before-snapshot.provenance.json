@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "synthetic-historical-regression-fixture",
+  "scope": "Controlled1-week injury fixture and actual runtime regular advance, not a played injury outcome",
+  "sourceGameSessionSha256": "4192c872265401d4be2dff1fe60ca394b0f61f57b13e1d30e99bbb188a6186ec",
+  "originalSnapshotSha256": "bea759a5325259fa9d06d660ae4d958364b8cb820e13513ecbc5b8ad807ac310",
+  "originalSnapshotBytes": 9468539,
+  "compression": "gzip; lossless decoding restores exact original bytes",
+  "compressedSha256": "882f9f22d1ab12b8bfb7719c8e452d7c0dcd963f84dffcd0440653ce48c8ed0a",
+  "compressedBytes": 779919,
+  "generator": {
+    "sourceSha256": "822b48c6d0753cc8dc7720fc7708e44246ec8c39dcb77fa3b1d329fefcc5f7d4",
+    "seed": 117,
+    "startYear": 2026,
+    "controlledTeamId": "BUF",
+    "steps": [
+      "Create a synthetic league and select an uninjured rookie practice-squad player.",
+      "Declare and settle a standard elevation for the actual week-one matchup.",
+      "Apply the explicitly controlled one-week injury and export before the actual week-two advance."
+    ],
+    "notPlayedInjuryOutcome": true,
+    "notActualUserCareer": true
+  },
+  "authorityFile": "regular-clearance-loss-before.json",
+  "publicSafeScan": {
+    "uncompressedText": true,
+    "findings": 0,
+    "localPaths": 0
+  }
+}

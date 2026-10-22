@@ -27,7 +27,21 @@ test('static definition retains the same body across strength while movement rem
    card.querySelectorAll('svg').forEach(svg=>svg.style.cssText='display:block;width:100%;max-width:230px;height:auto');gallery.append(card);
   }document.body.replaceChildren(gallery);
  },players);
- expect(await page.locator('#definitionGallery').innerHTML()).not.toMatch(/NaN|Infinity|undefined/);
+ const finiteMarkup=await page.locator('#definitionGallery').evaluate(root=>{
+   const geometry=root.cloneNode(true);
+   // PNG bytes are opaque binary data: legal base64 can contain "NaN".
+   // Preserve every geometric/numeric attribute, including the image camera.
+   for(const image of geometry.querySelectorAll('image'))for(const attribute of ['href','xlink:href']){
+    const value=image.getAttribute(attribute);
+    if(value?.startsWith('data:image/png;base64,'))image.setAttribute(attribute,'opaque-png');
+   }
+   const markup=geometry.innerHTML;
+   const path=geometry.querySelector('path');if(!path)throw Error('No geometry validated');
+   path.setAttribute('d','MNaN 0 LInfinity undefined');
+   return{markup,invalidNumericControl:geometry.innerHTML};
+  });
+  expect(finiteMarkup.markup).not.toMatch(/NaN|Infinity|undefined/);
+  expect(finiteMarkup.invalidNumericControl).toMatch(/NaN|Infinity|undefined/);
  await fs.mkdir('output/playwright',{recursive:true});
  for(const [viewport,width,height]of[['desktop',1440,1000],['mobile',390,844]]){
   await page.setViewportSize({width,height});

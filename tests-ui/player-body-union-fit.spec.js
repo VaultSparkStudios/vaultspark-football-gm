@@ -1,7 +1,9 @@
-import {test,expect} from '@playwright/test';import fs from 'node:fs/promises';
+import {test,expect} from '@playwright/test';import fs from 'node:fs/promises';import {createHash} from 'node:crypto';
 test('closed and mass-fitted clay body keeps one physical camera and original person',async({page})=>{
  test.setTimeout(180000);
- const fixtures=JSON.parse(await fs.readFile('.cache/body-union/fixtures.json','utf8'));
+ const fixtureBytes=await fs.readFile('test/fixtures/player-body-union-fit.json');
+ expect(createHash('sha256').update(fixtureBytes).digest('hex')).toBe('65ce3bed9faa4cab46a616c20ef45482f7c45916ca9301078177abfc024ee070');
+ const fixtures=JSON.parse(fixtureBytes.toString('utf8'));
  const currentSource=(await fs.readFile('test-support/appearance/playerBody3d.js','utf8')).replaceAll("from '../../public/lib/","from '/lib/");
  await page.route('**/lib/playerBody3d.js',route=>route.fulfill({contentType:'application/javascript',body:currentSource}));
  const beforeSource=(await fs.readFile('docs/visual-qa/references/player-body-3d-before-closure-2026-10-08.js','utf8')).replaceAll("from './","from '/lib/");

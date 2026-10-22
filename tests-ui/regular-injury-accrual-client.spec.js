@@ -1,14 +1,16 @@
 import {test,expect} from '@playwright/test';
 import fs from 'node:fs/promises';
 import crypto from 'node:crypto';
+import {gunzipSync} from 'node:zlib';
 import {startStaticClientHost,configureClient,createClientLeague,readClient,assertRuntime,saveSlot,waitGameReady} from './helpers/static-client.js';
 let host;
 test.beforeAll(async()=>{host=await startStaticClientHost();});
 test.afterAll(async()=>{await host?.close();});
 for(const worker of [true,false])test(`built ${worker?'worker':'in-page'} pays regular clearance and preserves it through named restoration`,async({page})=>{
  test.setTimeout(180000);
- const raw=await fs.readFile('.cache/regular-clearance-before-snapshot.json');
- const baseline=JSON.parse(await fs.readFile('.cache/regular-clearance-loss-before.json','utf8'));
+ const raw=gunzipSync(await fs.readFile(new URL('../test/fixtures/regular-clearance-before-snapshot.json.gz',import.meta.url)));
+ const baseline=JSON.parse(await fs.readFile(new URL('../test/fixtures/regular-clearance-loss-before.json',import.meta.url),'utf8'));
+ expect(baseline.beforeSnapshotSha256).toBe('bea759a5325259fa9d06d660ae4d958364b8cb820e13513ecbc5b8ad807ac310');
  expect(crypto.createHash('sha256').update(raw).digest('hex')).toBe(baseline.beforeSnapshotSha256);
  const playerId=baseline.playerId;
  await configureClient(page,worker);await createClientLeague(page,host.origin,{seed:117,year:2026,team:'BUF',mode:'play'});await assertRuntime(page,worker);

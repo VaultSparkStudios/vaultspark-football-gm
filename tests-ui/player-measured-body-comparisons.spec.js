@@ -45,7 +45,21 @@ test('measured stature, mass, estimated proportions and capacities remain distin
   expect(await page.locator('#measuredBodyGallery svg').count()).toBeGreaterThanOrEqual(6);
   expect(await page.locator('#measuredBodyGallery .motion-articulated-light').count()).toBeGreaterThan(0);
   if(phase.startsWith('torso-form-'))expect(await page.locator('#measuredBodyGallery .player-torso-form').count()).toBe(phase==='torso-form-before'?0:6);
-  expect(await page.locator('#measuredBodyGallery').innerHTML()).not.toMatch(/NaN|Infinity|undefined/);
+  const finiteMarkup=await page.locator('#measuredBodyGallery').evaluate(root=>{
+   const geometry=root.cloneNode(true);
+   // PNG bytes are opaque binary data: legal base64 can contain "NaN".
+   // Preserve every geometric/numeric attribute, including the image camera.
+   for(const image of geometry.querySelectorAll('image'))for(const attribute of ['href','xlink:href']){
+    const value=image.getAttribute(attribute);
+    if(value?.startsWith('data:image/png;base64,'))image.setAttribute(attribute,'opaque-png');
+   }
+   const markup=geometry.innerHTML;
+   const path=geometry.querySelector('path');if(!path)throw Error('No geometry validated');
+   path.setAttribute('d','MNaN 0 LInfinity undefined');
+   return{markup,invalidNumericControl:geometry.innerHTML};
+  });
+  expect(finiteMarkup.markup).not.toMatch(/NaN|Infinity|undefined/);
+  expect(finiteMarkup.invalidNumericControl).toMatch(/NaN|Infinity|undefined/);
   if(pair==='capacities')for(const mode of ['run','acceleration','cut','jump','strength','endurance'])await expect(page.locator(`#measuredBodyGallery svg[data-mode="${mode}"]`)).toHaveCount(2);
   for(const [viewport,width,height]of [['desktop',1440,1000],['mobile',390,844]]){
    await page.setViewportSize({width,height});

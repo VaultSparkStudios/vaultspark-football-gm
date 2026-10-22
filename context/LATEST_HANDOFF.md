@@ -1,6 +1,21 @@
 # Latest Handoff — Session 117 → Session 118
 
-## Current checkpoint — 2026-10-22 02:46 EDT (supersedes older run details)
+## Current checkpoint — S118 browser portability repairs
+
+Candidate4721b342 CI39743686153 completed with all six unit shards passing and browser262passed/5failed/3existing opt-in skips. Five failures were test portability/opaque-PNG text validation: two unversioned fixture dependencies and two PNG-base64 NaN matches. All five cases now pass in focused installed-Chrome runs, with original assertions and numeric thresholds preserved. Application sources are unchanged. Backend39743717163 refused promotion at the exact-CI guard; Pages39743711411 was cancelled after the actual CI failure. No production promotion occurred. A new exact candidate, clean-checkout focused verification, fresh staging, seven-leg CI and production readback are still required.
+
+## Superseded checkpoint — S118 first candidate promotion refused
+
+Implemented measured character contours, articulated feet, softer faces and persistent family identity. Candidate 4721b3426edd347e73e1d724830c1b730deba91c is pushed to main and verified on stable staging with artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. Hosted character review passed52 captures; the combined receipt binds157 reviewed captures and19 committed visual/runtime sources. Exact-candidate CI39743686153 and authorized Pages39743711411/backend39743717163 promotions are running. Production and canonical closeout remain pending; S117 remains an explicitly partial historical handoff.
+
+Same native goal/session118; automatic continuation resumes this arc. Local binding records native thread01a16182-9d54-72b0-82a9-5655a228e67a/createdAt1792637353. No new arc. Exact CI requires all six canonical unit shards plus browser. Both duplicate push build-only workflows were cancelled; the manual promotion workflows retain their complete gates and exact-CI guard. No required CI leg was cancelled.
+
+Golden baseline adoption is complete: original S116 fixture preserved, attributed S118v2 fixture, canonical golden3/3; repeated four payloads identical. Current local Studio376/376, corrected public surfaces9/9, public-safe frozen references22/22. The old full-browser diagnostic remains235pass/28fail/3opt-in skips and is not current full acceptance; all28 failures received focused passing repairs. Hosted actual client continuity passed desktop dark/mobile light, including reload/Continue/week advance/save/new-tab reopen. Existing expanded-mobile-desk clipping is recorded separately from the accepted character scope. No photorealism, tissue calibration, physical-mobile frame-rate or actual-user long-career proof is claimed.
+
+Evidence: docs/visual-qa/LATEST.json, docs/visual-qa/HOSTED_S118.json, docs/GOLDEN_BASELINE_S118.json. Staging deployment1d40413f-5adc-4786-bf8c-b386e3fa42d1; staging rollback42ec1001-c5bf-41b8-89d6-5f7a4f38e7ab. Production predecessor945b7008-4325-48f6-88cb-debc870a1e9e/source d913b9f9c0043d00131506c0d4271034a15fc169, backend predecessorbe71869a428e6224330d72cbba76df436ee31938; verify current provider readback after promotion. Public launch/email/lifecycle hold is independent.
+
+
+## Superseded checkpoint — 2026-10-22 02:46 EDT (supersedes older run details)
 
 Same active S118/native goal, no task commit/push/staging/production yet. HEAD4d051b9. Runtime1057/1057 exit0, core723/723, long3/3, realism9/9 (MonteCarlo+simulateddecade) completed. Bound core/long/realism wrappers correctly sourceUnchangedfalse as test/UI surface changed. Contract6932 TERMINAL124: 90min timeout while still completing tests, no finalsummary. Per-shard contract budget now150min, other shards90; CI/Pages/backend contract jobs160, other100. Focused runner/protocol/coverage27/27 pass90186; no assertions removed. CI nowincludes all6 canonical shards includinglong. Browser step180min/CIjob205 (actualfull exceeded60min). Finalexactcandidate CI must provide current full proof; never create green native receipt from incomplete old runs.
 
