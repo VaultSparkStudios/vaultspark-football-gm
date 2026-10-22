@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "backend-manual-deployment",
+  "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+  "backendRunId": 39771529288,
+  "at": "2026-10-22T13:13:00.505Z",
+  "status": "passed",
+  "service": "community-stats",
+  "image": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:adb9b22840600219349b2d4428bdbe3232aa7a5f",
+  "imageId": "sha256:f72a652942bd2ee68dd8bef71c6490c139e1a37279b2ab35fd70460cb166b0ec",
+  "exactHealth": true,
+  "externalHealth": true,
+  "externalHealthUrl": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+  "externalHealthSourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+  "database": "ready",
+  "postgresAndCaddyPreserved": true,
+  "opsCopied": true,
+  "checks": [
+    {
+      "name": "database container/image/start/running",
+      "ok": true
+    },
+    {
+      "name": "database mounts hash",
+      "ok": true
+    },
+    {
+      "name": "project routing hash",
+      "ok": true
+    },
+    {
+      "name": "global routing hash",
+      "ok": true
+    },
+    {
+      "name": "routing process identity",
+      "ok": true
+    },
+    {
+      "name": "routing start identity",
+      "ok": true
+    }
+  ],
+  "rollback": {
+    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+    "image": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:be71869a428e6224330d72cbba76df436ee31938",
+    "imageId": "sha256:28af3324f42a74664b214fe5c7c10d562208c084a9b23769a97b3a8fcdd56f08",
+    "available": true
+  },
+  "databaseContainerId": "78d30c4ff6e1d2a067422ac0a64265458f56349d64b2d7787776bcb64e8efa73",
+  "databaseStartedAt": "2026-10-01T18:57:37.203018954Z",
+  "databaseMountsSha256": "5ef59efcd5d17834c659fb32056dd2214e2eb2beea6d0bb54de4dae48aa2823f",
+  "scope": "Read-only before/after container identity, image, start time, running state, mount/routing hashes and routing process checks; no database records or environment values read."
+}

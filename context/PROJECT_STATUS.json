@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S118 final cut-phase test observation repair; new candidate acceptance and production pending.",
-  "nextMilestone": "Verify focused and clean-checkout cut study, stage/push fresh candidate, complete CI and production, then S118 closeout.",
+  "currentFocus": "S118 browser suite passes; repair responsive capture harness before new exact-candidate frontend promotion.",
+  "nextMilestone": "Verify full responsive capture, stage and push corrected candidate, complete required CI and production readback, then closeout.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
@@ -349,28 +349,22 @@
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 75,
+    "score": 83,
     "date": "2026-10-22",
-    "passing": 9,
-    "warning": 3,
+    "passing": 10,
+    "warning": 2,
     "checks": [
-      {
-        "id": "release-authority-checked-staging-current",
-        "status": "warning",
-        "blocking": false,
-        "detail": "checked 4721b3426edd347e73e1d724830c1b730deba91c · live 118165465bedabf1e9f1316b7a50c6aa5c65efe8"
-      },
       {
         "id": "release-authority-release-source-current",
         "status": "warning",
         "blocking": false,
-        "detail": "release source d913b9f9c0043d00131506c0d4271034a15fc169 · live staging 118165465bedabf1e9f1316b7a50c6aa5c65efe8"
+        "detail": "release source d913b9f9c0043d00131506c0d4271034a15fc169 · live staging adb9b22840600219349b2d4428bdbe3232aa7a5f"
       },
       {
         "id": "release-authority-git-head-covered-by-publication",
         "status": "warning",
         "blocking": false,
-        "detail": "HEAD 118165465bedabf1e9f1316b7a50c6aa5c65efe8 is not covered by live production d913b9f9c0043d00131506c0d4271034a15fc169"
+        "detail": "HEAD adb9b22840600219349b2d4428bdbe3232aa7a5f is not covered by live production d913b9f9c0043d00131506c0d4271034a15fc169"
       }
     ]
   },
@@ -383,7 +377,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.118,
   "entropyLastComputed": "2026-10-01",
-  "lastSessionSummary": "S118 active: second candidate browser266/1/3; transient cut caption observation repaired without changing application sources or limits.",
+  "lastSessionSummary": "S118 active:7/7exactCIjobs pass;browser267/0/3;backend exact revision verified with database/routing preserved and rollback available; frontend pending.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -439,21 +433,22 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
-    "workflowRun": 36796745293,
+    "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+    "workflowRun": 39771529288,
     "workflowConclusion": "success",
-    "deployServer": "gateway-ssh-exact-health",
-    "workflowDeployment": "skipped; build-only push workflow",
-    "receipt": "reports/backend-manual-s112.json",
+    "deployServer": "bounded-pinned-ssh-exact-health",
+    "workflowDeployment": "executed workflow_dispatch",
+    "receipt": "reports/backend-manual-s118.json",
+    "workflowReceipt": "reports/s118-backend-workflow.json",
     "externalHealth": {
       "verified": true,
       "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
-      "sourceRevision": "be71869a428e6224330d72cbba76df436ee31938",
+      "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
       "database": "ready"
     },
-    "verifiedAt": "2026-10-01T01:19:49.821Z",
+    "verifiedAt": "2026-10-22T13:13:00.505Z",
     "postgresAndCaddyPreserved": true,
-    "opsCopied": false
+    "opsCopied": true
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",
@@ -510,8 +505,8 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "7bf011f33867c83415438bde41a83fd0e66680e9b6191ca0579b5ef7b30220cd",
-    "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+    "receiptSha256": "597f49b3ea40dfd53098ea670fed0a0c03c3f33498be129b3f69db2e5ed51f00",
+    "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
     "artifactFingerprint": {
       "algorithm": "sha256",
       "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
@@ -2329,21 +2324,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "f4f9ac34-8718-431d-bf5c-aa9d85f0d67e",
+    "deploymentId": "7ed34044-fe5a-4fcf-80ec-74e28ba249d5",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-22T09:45:18.057Z"
+      "checkedAt": "2026-10-22T11:33:02.822Z"
     },
     "rollback": {
-      "previousDeploymentId": "1d40413f-5adc-4786-bf8c-b386e3fa42d1",
+      "previousDeploymentId": "f4f9ac34-8718-431d-bf5c-aa9d85f0d67e",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-22T09:45:18.057Z"
+    "observedAt": "2026-10-22T11:33:02.822Z"
   },
   "lastCloseoutAt": "2026-10-04",
   "performanceAuthority": {
@@ -2513,9 +2508,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 118,
-    "currentFocus": "S118 final cut-phase test observation repair; new candidate acceptance and production pending.",
-    "nextMilestone": "Verify focused and clean-checkout cut study, stage/push fresh candidate, complete CI and production, then S118 closeout.",
-    "lastSessionSummary": "S118 active: second candidate browser266/1/3; transient cut caption observation repaired without changing application sources or limits."
+    "currentFocus": "S118 browser suite passes; repair responsive capture harness before new exact-candidate frontend promotion.",
+    "nextMilestone": "Verify full responsive capture, stage and push corrected candidate, complete required CI and production readback, then closeout.",
+    "lastSessionSummary": "S118 active:7/7exactCIjobs pass;browser267/0/3;backend exact revision verified with database/routing preserved and rollback available; frontend pending."
   },
   "partialCloseout": {
     "session": 117,
@@ -2692,31 +2687,61 @@
     }
   },
   "characterPromotion": {
-    "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+    "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
     "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
-    "ciRun": 39757998797,
-    "pagesRun": 39758015910,
-    "backendRun": 39758021271,
+    "ciRun": 39771485408,
+    "pagesRun": 39771524992,
+    "backendRun": 39771529288,
     "stagingVerified": true,
-    "visualCaptures": 209,
+    "visualCaptures": 217,
+    "freshHostedCaptures": 8,
+    "inheritedReviewedCaptures": 209,
     "cleanCheckoutFocused": {
-      "passed": 5,
-      "total": 5
+      "passed": 6,
+      "total": 6
     },
-    "priorCandidate": {
-      "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
-      "ciRun": 39743686153,
-      "browser": {
-        "passed": 262,
-        "failed": 5,
-        "skipped": 3
+    "cutRepeated": {
+      "passed": 10,
+      "total": 10
+    },
+    "priorCandidates": [
+      {
+        "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+        "ciRun": 39743686153,
+        "browser": {
+          "passed": 262,
+          "failed": 5,
+          "skipped": 3
+        },
+        "productionPromoted": false
       },
-      "productionPromoted": false
-    },
+      {
+        "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+        "ciRun": 39757998797,
+        "browser": {
+          "passed": 266,
+          "failed": 1,
+          "skipped": 3
+        },
+        "productionPromoted": false
+      }
+    ],
     "productionVerified": false,
     "closeoutComplete": false,
-    "ciStatus": "failed-browser-266-pass-1-fail-3-opt-in-skips",
-    "pagesStatus": "cancellation-requested-after-ci-failure",
-    "backendStatus": "promotion-refused-exact-ci-guard"
+    "ciStatus": "seven-required-jobs-and-test-steps-passed",
+    "browser": {
+      "passed": 267,
+      "failed": 0,
+      "skipped": 3,
+      "total": 270
+    },
+    "backendStatus": "success-readback-and-rollback-verified",
+    "backendVerified": true,
+    "pagesStatus": "failed-responsive-artifact-capture-after-full-browser-pass",
+    "pagesBrowser": {
+      "passed": 267,
+      "failed": 0,
+      "skipped": 3
+    }
   }
 }

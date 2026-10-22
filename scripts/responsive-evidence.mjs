@@ -690,9 +690,9 @@ async function main() {
           }
           if (tabId === "faTab") {
             await page.evaluate(async () => {
-              const [{ state }, rosterUi] = await Promise.all([
+              const [{ state }, contractsUi] = await Promise.all([
                 import("./lib/appState.js"),
-                import("./lib/tabRoster.js")
+                import("./lib/tabContracts.js")
               ]);
               const player = state.freeAgents?.[0] || state.roster?.[0];
               if (!player) throw new Error("Waiver visual evidence requires a player authority");
@@ -707,7 +707,7 @@ async function main() {
                 week: state.dashboard.currentWeek,
                 expiresWeek: Number(state.dashboard.currentWeek || 0) + 1
               }];
-              rosterUi.renderFreeAgency();
+              contractsUi.renderFreeAgency();
             });
           }
           const selectors = tabId === "overviewTab"

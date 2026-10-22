@@ -1,6 +1,30 @@
 # Latest Handoff — Session 117 → Session 118
 
-## Current checkpoint — S118 cut-phase observation repair
+## Current checkpoint — S118 responsive capture repair
+
+Candidate adb9b228 CI39771485408 passed all seven required jobs, with267 browser cases passed and3 existing opt-in skips. Backend39771529288 deployed and exact API/database/routing/rollback readback passed. Pages39771524992 separately passed267 browser cases and3 skips, then failed responsive artifact capture because the capture harness called renderFreeAgency from tabRoster instead of its current tabContracts owner. Frontend publication was skipped and remains on d913b9f9. Repair is limited to the capture harness; the selected application source is unchanged. A new exact candidate and full release checks remain required; production and canonical S118 closeout are incomplete.
+
+Same native goal and session118. Do not treat successful CI/backend as completed frontend promotion. Preserve prior candidate evidence; do not bypass the failed capture or publication gates.
+
+## Superseded checkpoint — S118 responsive capture repair
+
+Candidate adb9b228 CI39771485408 passed all seven required jobs, with267 browser cases passed and3 existing opt-in skips. Backend39771529288 deployed and exact API/database/routing/rollback readback passed. Pages39771524992 separately passed267 browser cases and3 skips, then failed responsive artifact capture because the capture harness called renderFreeAgency from tabRoster instead of its current tabContracts owner. Frontend publication was skipped and remains on d913b9f9. Repair is limited to the capture harness; the selected application source is unchanged. A new exact candidate and full release checks remain required; production and canonical S118 closeout are incomplete.
+
+Same native goal and session118. Do not treat successful CI/backend as completed frontend promotion. Preserve prior candidate evidence; do not bypass the failed capture or publication gates.
+
+## Superseded checkpoint — S118 CI and backend verified
+
+Exact candidate adb9b22840600219349b2d4428bdbe3232aa7a5f CI39771485408 passed all seven required jobs/test steps: browser267passed/0failed/3existing opt-in skips; core/runtime aggregate counts remain unmeasured where TAP summaries truncate. Backend39771529288 deployed and readback verifies the exact API revision/database ready, unchanged database container/image/start/mount and routing file/process identities, plus retained rollback API image. Frontend Pages39771524992 is still running its separate full browser release gate. Full production acceptance and S118 closeout remain pending; no new arc.
+
+Evidence: reports/s118-candidate-ci.json, reports/s118-backend-workflow.json, reports/backend-manual-s118.json. Visual LATEST217 captures (8fresh/209inherited),19matching committed sources and unchanged361artifactentries; staging7ed34044 verified; artifact2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. Await Pages, then provider/public readback, production browser/visual/performance, release authority and full ordered native closeout. Shared autopilot remains unsafe to target because child scripts write Studio Ops; do not invoke it or claim it passed. Prepared helpers are future-gated, not achieved closeout evidence.
+
+## Superseded checkpoint — S118 third candidate acceptance
+
+Fresh candidate adb9b22840600219349b2d4428bdbe3232aa7a5f is pushed to remote main and verified on stable staging 7ed34044-fe5a-4fcf-80ec-74e28ba249d5 with unchanged artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737. All six repaired cases pass from a clean checkout; the cut observer also passed ten repeated Chrome runs and independent review. Fresh hosted check inspected8 new images and verified actual cut phases/GPU motion/pause plus family reload. The visual receipt preserves217 inspected images:209 inherited through19 identical committed sources/all361 unchanged artifact entries, plus8 fresh. Exact CI39771485408, Pages39771524992 and backend39771529288 are running. Second-candidate11816546 CI266pass/1fail/3existing opt-in skips remains failed history; backend refused and Pages cancelled. Both public production services were confirmed unchanged after refusal. Production and canonical closeout remain pending.
+
+Same native goal/session118; no new arc. Complete current seven-leg CI, both authorized promotions, production/API readback and rollback, then the ten ordered closeout writebacks and reviewed native ceremony. The shared autopilot was independently found to write Studio Ops through child script roots despite --project; do not execute it or claim it passed. Prepared ignored final-writeback/verification helpers are future-gated and already retargeted to this candidate/run IDs; they are not completed release evidence.
+
+## Superseded checkpoint — S118 cut-phase observation repair
 
 Candidate118165465bedabf1e9f1316b7a50c6aa5c65efe8 CI39757998797 completed with six unit shards passing and browser266passed/1failed/3existing opt-in skips. The only failure sampled a transient Plant & redirect caption between phases; all five prior portability repairs passed. The test now latches actual caption mutations before the cut starts, retains the required phase and15second limit, and additionally verifies visible GPU pixels advance and remain stable when paused. Ten repeated installed-Chrome runs passed, and independent review verified the actual observer/canvas logic; clean-checkout and fresh exact-candidate hosted acceptance remain pending. Backend39758021271 refused production at the exact-CI guard; Pages39758015910 cancellation requested after the actual CI failure. No production promotion occurred. Application sources and the reviewed artifact remain unchanged. Fresh candidate staging, complete CI, authorized promotion/readback and canonical closeout remain required.
 
@@ -45,7 +69,7 @@ Release reviewer currently IMPLEMENTING narrow CIwait guard, reusing local scrip
 
 Stillpending: finalrepeat/baselineadoption, finalcurrenttestinventory+focusedguardcheck/fullStudio afterrecords, finalsecurity/supplychain/doctor, candidatecommit→stable stagingcapture/readback→authorizedmainpush/exacthostedCI+manualPages/backendgates→production/readback/rollbackproof, fullcanonical10surfaceS118closeout/SIL/fresh-contextindependentreview/Ark/lockclear/nativegoalcomplete. ExistingunselectedS117actualusercareer/launch/emailhold remaintruthful. Do not fresharc or nativecomplete early.
 
-## Current checkpoint — 2026-10-22 02:14 EDT (supersedes older run details)
+## Superseded checkpoint — 2026-10-22 02:14 EDT (supersedes older run details)
 
 Same active S118/native goal, no new arc or task commit/push/deployment. Runtime99339 completed1057/1057, exit0,75m44s (.cache/s118-final-runtime.log). Core35263 completed723/723 and long71745 completed3/3, but their bound wrappers correctly exitnonzero because global test surface changed during execution; retain that limitation. Newly assigned omitted files have separate direct pass evidence. Exact final candidate hosted CI now includes all six canonical shards including long; browser/Pages full-suite budgets are finite180min after observed local suite exceeded60min, assertions unchanged. Protocol budget test57747 passed.
 
@@ -55,7 +79,7 @@ Current full UI64155 continues266cases, port4273, .cache/s118-release-full-ui.lo
 
 Remaining live old engine handles6932 sim-contract,14891 sim-realism may fail golden or source-binding; poll same handles, do not restart from silence. Runtime source changed ONLY owner fix after existing runs started, so do not claim final exact-SHA proof from these. Required final exactcandidate hosted6shards/staging/Pages/backend+readback/rollback, visualreceipt/security/doctor, canonical10surface closeout/SIL/freshreview/Ark/lockclear/nativecomplete remain pending and authorized.
 
-## Current checkpoint — 2026-10-22 01:20 EDT (supersedes older run details)
+## Superseded checkpoint — 2026-10-22 01:20 EDT (supersedes older run details)
 
 Current full browser64155: .cache/s118-release-full-ui.log,266cases, Chrome, CHARACTER_CAPTURE_PREFIX=s118-release, FACE_CAPTURE_PREFIX=s118-face-final; port4273 owned by this run. Earlier39558 diagnostic was deliberately stopped after78cases due3known failures and required source changes; log/results preserved in.cache/s118-diagnostic-ui-results. No acceptance claim for it. Focused corrected5cases87233 finished5/5: scouting save/load + add/remove/reorder and no unintended modal, contract block/unblock and correct name opener, both claim negotiation/save runtimes, strict head gallery18closedviews zero exposure/exact reopening. Rebuilt static via85977 terminalexit0 after source fixes and publicstatus note. Publicstatus before/after8captures +controls12 captured and main visually reviewed contact sheets plus original mobile/desktop views; no clipping/readability issue. Statusbefore is controlled currentbuiltpage with onlynewrelease-note blockremoved (shared injected header/styles); prior note text verifiedHEAD. Record this precise baseline, not unmodified historicalartifact. Currenthead native0open/closed and2clayclosed individually inspected after64x96 optimization. Stillstylized/outlinedears/proceduralhair; no full photorealism or whole-tissue-mass claim.
 

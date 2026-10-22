@@ -1,0 +1,436 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "exact-candidate-hosted-ci",
+  "observedAt": "2026-10-22T13:12:37.872Z",
+  "ok": true,
+  "sha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+  "runId": 39771485408,
+  "attempt": 1,
+  "requiredJobs": [
+    "unit-shards (core)",
+    "unit-shards (runtime)",
+    "unit-shards (sim:contract)",
+    "unit-shards (sim:realism)",
+    "unit-shards (long)",
+    "unit-shards (studio)",
+    "browser-gates"
+  ],
+  "lane": "hosted-exact-sha",
+  "jobs": [
+    {
+      "id": 119799839353,
+      "name": "browser-gates",
+      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T11:33:35Z",
+      "completedAt": "2026-10-22T13:10:43Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify installed browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify Pages build",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Smoke static Pages client",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run UI tests",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119799839454,
+      "name": "unit-shards (sim:contract)",
+      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T11:33:35Z",
+      "completedAt": "2026-10-22T12:20:00Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run sim:contract shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119799839461,
+      "name": "unit-shards (runtime)",
+      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T11:33:34Z",
+      "completedAt": "2026-10-22T12:05:38Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run runtime shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119799839565,
+      "name": "unit-shards (studio)",
+      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T11:33:34Z",
+      "completedAt": "2026-10-22T11:34:31Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run studio shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119799839604,
+      "name": "unit-shards (core)",
+      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T11:33:35Z",
+      "completedAt": "2026-10-22T12:05:39Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run core shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119799839629,
+      "name": "unit-shards (sim:realism)",
+      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T11:33:35Z",
+      "completedAt": "2026-10-22T12:14:33Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run sim:realism shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "id": 119799839756,
+      "name": "unit-shards (long)",
+      "headSha": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-22T11:33:35Z",
+      "completedAt": "2026-10-22T12:07:54Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run long shard",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Setup Node",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "aggregateCaseCount": null,
+  "aggregateCaseCountReason": "Core/runtime runner stdout truncates the TAP summary; successful executed shard/test steps are independently verified. No invented aggregate test count.",
+  "priorFailedCandidate": {
+    "sha": "4721b3426edd347e73e1d724830c1b730deba91c",
+    "runId": 39743686153,
+    "browser": {
+      "passed": 262,
+      "failed": 5,
+      "skipped": 3
+    },
+    "productionPromoted": false
+  },
+  "priorFailedCandidates": [
+    {
+      "sha": "4721b3426edd347e73e1d724830c1b730deba91c",
+      "runId": 39743686153,
+      "browser": {
+        "passed": 262,
+        "failed": 5,
+        "skipped": 3
+      },
+      "productionPromoted": false
+    },
+    {
+      "sha": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+      "runId": 39757998797,
+      "browser": {
+        "passed": 266,
+        "failed": 1,
+        "skipped": 3
+      },
+      "classification": "Transient cut-phase caption polling alias; repaired with actual caption mutation history and visible GPU advance/pause checks, required phase and timeout preserved.",
+      "productionPromoted": false
+    }
+  ],
+  "browser": {
+    "passed": 267,
+    "failed": 0,
+    "skipped": 3,
+    "total": 270,
+    "skippedScope": "Three existing opt-in actual-career/negative-control checks; no selected assertion disabled.",
+    "logSha256": "60724fcc7be69e81acfdac18a5cb117a82cde3a761f42194adee543393e5896b"
+  }
+}

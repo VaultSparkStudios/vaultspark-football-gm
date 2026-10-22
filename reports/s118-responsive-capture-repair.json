@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0",
+  "recordedAt": "2026-10-22T14:25:27.564Z",
+  "script": "scripts/responsive-evidence.mjs",
+  "executedScriptSha256": "92b0b5c4c2ffef52cf6679063bf71359dc29b185039bdb4833870f0f72e50f6a",
+  "canonicalLfScriptSha256": "a52517738f26d86e14656fd3561b55b3170a5c1f3d71e96a4e0ad3a965a26386",
+  "artifactRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+  "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+  "captures": 327,
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000
+    }
+  ],
+  "failures": [],
+  "runtimeErrors": [],
+  "scope": "Full actual local Chrome capture on unchanged adb9 application artifact using repaired evidence harness; candidate hosted checks and production remain pending."
+}

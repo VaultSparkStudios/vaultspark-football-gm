@@ -1,0 +1,33 @@
+{
+  "observedAt": "2026-10-22T14:25:19.506Z",
+  "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+  "ci": {
+    "runId": 39771485408,
+    "conclusion": "success",
+    "requiredJobs": 7,
+    "browser": {
+      "passed": 267,
+      "failed": 0,
+      "skipped": 3
+    }
+  },
+  "backend": {
+    "runId": 39771529288,
+    "conclusion": "success",
+    "productionVerified": true
+  },
+  "pages": {
+    "runId": 39771524992,
+    "conclusion": "failure",
+    "browser": {
+      "passed": 267,
+      "failed": 0,
+      "skipped": 3
+    },
+    "failedStep": "Capture responsive artifact evidence",
+    "error": "rosterUi.renderFreeAgency is not a function",
+    "publicationSkipped": true
+  },
+  "frontendStillPrevious": true,
+  "fullGoalComplete": false
+}
