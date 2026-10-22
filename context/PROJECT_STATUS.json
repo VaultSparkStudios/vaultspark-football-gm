@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S118 selected character/family outcomes and exact production verified; final closeout publication pending.",
-  "nextMilestone": "Publish verified closeout receipts, then stop the completed selected arc.",
+  "currentFocus": "S118 complete: measured characters, articulated motion and persistent family identity verified in production.",
+  "nextMilestone": "Await the next founder-selected scope; selected S118 arc is complete.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
@@ -364,7 +364,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.058,
   "entropyLastComputed": "2026-10-22",
-  "lastSessionSummary": "S118: measured stylized characters, articulated motion and persistent family identity delivered; exact candidate CI and production verified. Closeout publication finalizing.",
+  "lastSessionSummary": "S118 completed three selected outcomes and exact production delivery; seven CI jobs,267 browser passes/3existing opt-in skips,312required responsive captures,233 reviewed character/history captures, fresh save restoration and rollback verified. Independent closeout review passed.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -2327,7 +2327,7 @@
     "verified": true,
     "observedAt": "2026-10-22T14:34:48.275Z"
   },
-  "lastCloseoutAt": "2026-10-04",
+  "lastCloseoutAt": "2026-10-22",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
@@ -2494,9 +2494,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 118,
-    "currentFocus": "S118 selected character/family outcomes and exact production verified; final closeout publication pending.",
-    "nextMilestone": "Publish verified closeout receipts, then stop the completed selected arc.",
-    "lastSessionSummary": "S118: measured stylized characters, articulated motion and persistent family identity delivered; exact candidate CI and production verified. Closeout publication finalizing."
+    "currentFocus": "S118 complete: measured characters, articulated motion and persistent family identity verified in production.",
+    "nextMilestone": "Await the next founder-selected scope; selected S118 arc is complete.",
+    "lastSessionSummary": "S118 completed three selected outcomes and exact production delivery; seven CI jobs,267 browser passes/3existing opt-in skips,312required responsive captures,233 reviewed character/history captures, fresh save restoration and rollback verified. Independent closeout review passed."
   },
   "partialCloseout": {
     "session": 117,
@@ -2733,11 +2733,11 @@
       }
     ],
     "productionVerified": true,
-    "closeoutComplete": false,
+    "closeoutComplete": true,
     "ciStatus": "seven-required-jobs-and-test-steps-passed",
-    "backendStatus": "success",
+    "backendStatus": "success-readback-and-rollback-verified",
     "backendVerified": true,
-    "pagesStatus": "success",
+    "pagesStatus": "success-production-browser-and-provider-verified",
     "priorCaptureFailure": "reports/s118-responsive-capture-failure.json",
     "localResponsiveCapture": {
       "captured": 327,
@@ -2861,7 +2861,8 @@
     "mode": "native-bounded-ceremony",
     "sharedAutopilotExecuted": false,
     "reason": "Shared autopilot child scripts resolve another repository; preserve project-only mutation boundary.",
-    "state": "writeback-complete-review-publication-pending"
+    "state": "complete",
+    "completionCondition": "The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback."
   },
   "closeoutSecurity": {
     "status": "passed",
@@ -2872,5 +2873,17 @@
     "status": "passed",
     "receipt": "reports/s118-closeout-protocol.json",
     "tests": 44
+  },
+  "lastCloseoutSession": 118,
+  "closeoutPublication": {
+    "commit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
+    "pushed": true,
+    "applicationSourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "receiptOnly": true,
+    "independentReview": "passed-after-fix",
+    "arkCargoId": "01K5IB7Q1U348173B7DFE7C352",
+    "arkState": "shipped",
+    "sessionBeacon": "unconfigured",
+    "completionCondition": "The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback."
   }
 }

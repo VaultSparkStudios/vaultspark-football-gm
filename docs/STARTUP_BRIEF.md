@@ -22,7 +22,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S118) - WHAT SHIPPED ══════════════════════════╗
-║  S118: measured stylized characters, articulated motion and per  ║
+║  S118 completed three selected outcomes and exact production de  ║
 ║  Tests  Fresh direct six-shard suite 1702/1702, exit0; Clean te  ║
 ║  Deploy 10/10; https://github.com/VaultSparkStudios/vaultspark-  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -61,14 +61,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 118 ═══════════════════════════╗
-║  Shipped:  S118 selected character/family outcomes and exact pr  ║
+║  Shipped:  S118 complete: measured characters, articulated moti  ║
 ║  Tests:    1752/1752 passing  ·  Deploy: 10/10; https://github.  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ███████░░░░░░░░░░░░░░░░░   30% used                          ║
-║     80,705 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
-║     ~40,353 tok/turn  ·  cache 50%  ·  4 turns to compact        ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,652 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,326 tok/turn  ·  cache 50%  ·  136 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "session": 118,
+  "observedAt": "2026-10-22T17:43:32.523Z",
+  "status": "complete-subject-to-containing-commit-publication",
+  "applicationSourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+  "closeoutCommit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
+  "closeoutRemoteVerified": true,
+  "healths": [
+    {
+      "url": "https://playfranchisearchitect.com/_health",
+      "status": 200,
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
+    },
+    {
+      "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+      "status": 200,
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "database": "ready"
+    }
+  ],
+  "ciRun": 39796952874,
+  "pagesRun": 39797016574,
+  "backendRun": 39797029101,
+  "independentReview": "pass",
+  "securityUnresolved": 0,
+  "sessionLock": "cleared after exact session and native-goal ownership check",
+  "sessionBeacon": "unconfigured",
+  "ark": {
+    "id": "01K5IB7Q1U348173B7DFE7C352",
+    "state": "shipped",
+    "received": false,
+    "applied": false
+  },
+  "completionCondition": "The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.",
+  "limits": [
+    "Characters remain stylized procedural models and illustrative technique.",
+    "No physical-device frame-rate, photorealism, motion-capture or actual-user long-career certification.",
+    "Receipt-only descendants do not manufacture new application CI results; candidate acceptance remains bound to863ea60e."
+  ]
+}

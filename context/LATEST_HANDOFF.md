@@ -8,7 +8,9 @@ Exact application candidate 863ea60e61398fa149d0e5715f15341a57337df5; artifact 2
 
 Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
 
-Canonical closeout is finalizing its review and receipt publication. Native goal01a16182-9d54-72b0-82a9-5655a228e67a remains active until the ordinary closeout push and final readback are verified. This is still S118; do not start another arc.
+S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
+
+Deploy: deployed to production — application 863ea60e61398fa149d0e5715f15341a57337df5; documentation-only descendants retain the exact deployed artifact. No selected S118 work remains after the receipt publication condition is met. A fresh founder arc starts Session119.
 
 
 ## Superseded checkpoint — S118 CI and backend verified

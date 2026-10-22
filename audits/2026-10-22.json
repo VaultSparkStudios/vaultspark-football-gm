@@ -7,8 +7,8 @@
   "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
   "selectedItems": 3,
   "shipped": 3,
-  "fullGoalComplete": false,
-  "closeoutPublication": "pending",
+  "fullGoalComplete": true,
+  "closeoutPublication": "verified-main-closeout-with-conditional-receipt-tail",
   "ci": {
     "runId": 39796952874,
     "requiredJobs": 7,
@@ -60,5 +60,11 @@
       "productionPromoted": false
     }
   ],
-  "closeoutExecution": "Native bounded ceremony; shared autopilot not executed due verified foreign writers."
+  "closeoutExecution": "Native bounded ceremony; shared autopilot not executed due verified foreign writers.",
+  "closeoutCommit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
+  "completionCondition": "The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.",
+  "closeoutReview": "reports/s118-closeout-review.json",
+  "arkCargoId": "01K5IB7Q1U348173B7DFE7C352",
+  "sessionBeacon": "unconfigured",
+  "finalizedAt": "2026-10-22T17:43:32.523Z"
 }

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0",
+  "session": 118,
+  "observedAt": "2026-10-22T17:41:14.433Z",
+  "type": "session-impact-summary",
+  "id": "01K5IB7Q1U348173B7DFE7C352",
+  "from": "franchise-architect-football",
+  "to": "*",
+  "state": "shipped",
+  "received": false,
+  "applied": false,
+  "verifiedByRecipients": false,
+  "authorization": "Founder-invoked arc and Studio Closeout skill require this informational summary.",
+  "payload": {
+    "sessionId": "118",
+    "slug": "franchise-architect-football",
+    "headline": "More lifelike measured characters and persistent family resemblance are live.",
+    "bullets": [
+      "Saved height and weight shape smoother bodies, clothing and articulated motion in the real dossier.",
+      "Relatives share saved racial background, heritage and pigment channels while keeping individual faces.",
+      "Exact source863ea60e passed seven CI jobs,267 browser cases and all312 required responsive captures; staging and production verified.",
+      "Closeout commit eb0ed0a6 is on main. Models remain stylized; launch and lifecycle approval remain separate."
+    ],
+    "synopsis": "Player bodies, faces and movement now carry saved measurements and family identity into the actual browser experience. Production checks verify animation controls, family reload, save continuity and rollback; no photorealism or motion-capture claim is made.",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "closeoutCommit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
+    "evidence": [
+      "reports/s118-candidate-ci.json",
+      "reports/s118-pages-browser-responsive.json",
+      "docs/visual-qa/PRODUCTION_S118.json",
+      "reports/s118-production-continuity.json"
+    ],
+    "requestedFollowUp": "Informational summary only; no new work or adoption is asserted."
+  }
+}
