@@ -1,6 +1,16 @@
 # Latest Handoff — Session 117 → Session 118
 
-## Current checkpoint — S118 browser portability repairs
+## Current checkpoint — S118 cut-phase observation repair
+
+Candidate118165465bedabf1e9f1316b7a50c6aa5c65efe8 CI39757998797 completed with six unit shards passing and browser266passed/1failed/3existing opt-in skips. The only failure sampled a transient Plant & redirect caption between phases; all five prior portability repairs passed. The test now latches actual caption mutations before the cut starts, retains the required phase and15second limit, and additionally verifies visible GPU pixels advance and remain stable when paused. Ten repeated installed-Chrome runs passed, and independent review verified the actual observer/canvas logic; clean-checkout and fresh exact-candidate hosted acceptance remain pending. Backend39758021271 refused production at the exact-CI guard; Pages39758015910 cancellation requested after the actual CI failure. No production promotion occurred. Application sources and the reviewed artifact remain unchanged. Fresh candidate staging, complete CI, authorized promotion/readback and canonical closeout remain required.
+
+## Superseded checkpoint — S118 second candidate verification
+
+Session 118 remains active. Fresh candidate 118165465bedabf1e9f1316b7a50c6aa5c65efe8 is pushed to remote main and verified on stable staging (deployment f4f9ac34-8718-431d-bf5c-aa9d85f0d67e, unchanged application artifact 2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737). Clean-checkout build and all five repaired browser cases pass. Fresh actual hosted character review inspected52 new captures; LATEST binds209 preserved reviewed images and19 matching committed sources. Fresh hosted continuity passed desktop dark/mobile light with the existing expanded-mobile Desk clipping explicitly retained. CI39757998797, Pages39758015910 and backend39758021271 are running with exact candidate identities. Production and canonical closeout remain pending. Prior4721 CI262pass/5fail/3existing opt-in skips and refused/cancelled promotions remain historical nonpassing evidence.
+
+Native goal01a16182-9d54-72b0-82a9-5655a228e67a/createdAt1792637353 remains bound to S118. Continue this arc; never start another. Acceptance still requires seven-leg CI, both promotions, production readback/rollback and full canonical closeout. No app source changes since4721. New test fixture provenance is controlled synthetic, never actual-user career or physically certified anatomy.
+
+## Superseded checkpoint — S118 browser portability repairs
 
 Candidate4721b342 CI39743686153 completed with all six unit shards passing and browser262passed/5failed/3existing opt-in skips. Five failures were test portability/opaque-PNG text validation: two unversioned fixture dependencies and two PNG-base64 NaN matches. All five cases now pass in focused installed-Chrome runs, with original assertions and numeric thresholds preserved. Application sources are unchanged. Backend39743717163 refused promotion at the exact-CI guard; Pages39743711411 was cancelled after the actual CI failure. No production promotion occurred. A new exact candidate, clean-checkout focused verification, fresh staging, seven-leg CI and production readback are still required.
 

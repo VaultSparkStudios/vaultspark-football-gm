@@ -1,0 +1,444 @@
+{
+  "origin": "https://staging.playfranchisearchitect.com",
+  "revision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+  "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+  "startedAt": "2026-10-22T09:46:44.257Z",
+  "defaultClient": true,
+  "mocks": false,
+  "captures": [
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-live-run-0.png",
+      "sha256": "2959fda0e4b411ab5c07a55410786df286720b8b3df5f9fb38dcdc129c7eb3cc"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-live-run-1.png",
+      "sha256": "237cb193aac077db0b2a1ea414c37fad3588f95459a04cc6c2d63a58dbcb7d53"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-acceleration.png",
+      "sha256": "b9031dc510c3872f3062f974427baf8ba09e6d64e2769ecc55ce00065bbe309a"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-cut.png",
+      "sha256": "6fbc8cbc53b383a35aed0d5938bc03fec78c729f517224748d2f3a182faefdfd"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-jump.png",
+      "sha256": "c0ae64c81a9d393268ab404c5792e946c26fe5c1afb2b59b8239e024ea993753"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-strength.png",
+      "sha256": "ebf9b1498406baaab3e98400e52fc45a73cfa1f0e6f42db24204861a764979a3"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-endurance.png",
+      "sha256": "f90d20705955418cf60e1da68e49166ace89f3c0094c7e5e397374c7f88eeaf6"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-run.png",
+      "sha256": "c09cf6edfe52cc77812b5670e3ac864e3e85ce55c03aa94b6c8cafa8fbb3e995"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-acceleration.png",
+      "sha256": "a2bfb30748c6ee67d31a83f834329a49d1c82ed5958b0b1c246a646a77184ceb"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-cut.png",
+      "sha256": "434d898abf81c0499ca8cec3bf6d18f3c1e6418e602e0b5f7fb7acbe8599d11b"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-jump.png",
+      "sha256": "fb5698f937a98f595b2979cb44d366d02e7837ca3903e558dadf442f3d425c35"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-strength.png",
+      "sha256": "6c7d64bd22bc20136b82ccb53ac4840d47767015bf151dd882ae85869c578ab4"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-endurance.png",
+      "sha256": "037a266962215248b8fc418551504d708f4f01fced2ef858c3cc6699e361e300"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-run.png",
+      "sha256": "1af9a2fb1f43bbf19831f6850e1ea0749bc65771554346390f3d080bd064cdce"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-acceleration.png",
+      "sha256": "812d697ee1d7b4762a3f2d02828ffabf0eb82bb637e75d570d849f0d561a6b76"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-cut.png",
+      "sha256": "b228378cc6e816978f8675e25abf349a241b66b57f24c16c71e30ac400f1fa03"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-jump.png",
+      "sha256": "cc82a866bac339be5db832abe7cf7f6452a98c8b6e03ae173992cbaf4442005c"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-strength.png",
+      "sha256": "7a2a165d5c9d140e1d54ff954a266ecb0414224c7c1bcd7d6e6932b3e5ca976c"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-endurance.png",
+      "sha256": "781bad430eff9b2657fd9b909584995d2e06f5b1658b21ed5bf85f79d0df819c"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-front.png",
+      "sha256": "f1c364de8caa1b19e9d4639df52a9f29e0c078f7637b8d9fbff56c2addceec6a"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-side.png",
+      "sha256": "d174ecc37fbe5a0ab21db11b8d6dca5c8f81972b9ecdd9d46a2f9bf08b32f137"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-run.png",
+      "sha256": "4f4b5b08069674505b7200d872617e7e3214521d7d282d28c067be8f339a0a35"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-acceleration.png",
+      "sha256": "d0a1c05bd07ac229b6e67d7cf84ea76c28c3e9a732aff9a478830aa861232d29"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-cut.png",
+      "sha256": "559102ea5f206869be4706a3b289d32af7b286234635a882a245158ddce6b0cd"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-jump.png",
+      "sha256": "87651fd038782ca1a9bf53b63b1c8dcad58f0692709c04b2f71d9acabd0dc74b"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-strength.png",
+      "sha256": "a289cbb70cb6882da9817fdfe9356d0c7792a7181b51c17c195a6e66c096d002"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-endurance.png",
+      "sha256": "7075dbf802af0f3515fcf8e9cbea7bb26860886c9d28b029bf69c5d832f997c7"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-front.png",
+      "sha256": "0d289ff163d578efc7f7de5a1df651944c00cafc8bf226c9bcf0579f7ae393bf"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-side.png",
+      "sha256": "b9b17bd711a08f5705daf92322793c99e702a9d1152e8ee4a744d33d76bf2c37"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-live-run-0.png",
+      "sha256": "7281e16a0aa33a449bc73fd743ffd86b6b40f956f1fec19cb0ad884f34a0561a"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-live-run-1.png",
+      "sha256": "fb41182183ec0d4d43f478123d27c997b21b4c671759a6cddf7154a54845e49d"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-dark-run.png",
+      "sha256": "eedf91f36f6f705c7fae8d2bb9830e33c21e6e4fa2843bd2140c39222b76361d"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-dark-jump.png",
+      "sha256": "e2cca7de66527b96b27a199dcb9b77426f00e1f9ab20365cfdbb0da58ec320fe"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-light-jump.png",
+      "sha256": "ec81ccb2a6e91263cdf0a1dea2354bd168bebde46e7d3646503b5bf4bcb97c2d"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-run.png",
+      "sha256": "14cfa522bceca11cacd0c52892492e863e438157bfab904f4e5ce0d4fee1118a"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-jump.png",
+      "sha256": "71d3262dd9ee5bc8f847753a2636038e5475977145ddb8b8a0df4781c24a2bac"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-front.png",
+      "sha256": "8c0f103fb595ade10cd5b0c2f382cb0d67992b34a6d67f05417d74832f4d01ac"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-side.png",
+      "sha256": "9748d322b467c4d0fe36ec669667ca4b47b5f1d555ca81d3a2cbb6587e6f32d1"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-run.png",
+      "sha256": "1a38002d01435406ee37bc3432f72f32a16970453a00a2d1bf479e0cb30fd71d"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-jump.png",
+      "sha256": "cd617f335cd150c23071563aa2d1e9e80031c4396fe582adce2adab0cee507bb"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-front.png",
+      "sha256": "07784c82df6a42aded7633d93e1c7a8e580bf3426cd037e445736ce846ade165"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-side.png",
+      "sha256": "3693f815a6c4355897a53c02b2f2e17b48e801d0391c1d751034fa9e1ca189e0"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-dark-anchor.png",
+      "sha256": "9dc7e2d4da712db1a850eee6c5c5f367944ec5662c37f4ba39ff0b50abcbb732"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-dark-relative.png",
+      "sha256": "a91a34df026d1743b56283b8343d4451408941c45165507c4f046863d9241972"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-light-anchor.png",
+      "sha256": "a26b11a9d7ebc7bc2b1c09e55c719744321bedfa419d8aa31d6d6c22f3ab5ccc"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-light-relative.png",
+      "sha256": "ba26f6df361645fd1e5ef3fa9fb3424b233f08ec50356862f6d99ef22a37366f"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-dark-anchor.png",
+      "sha256": "b0443fbfb2edcf78459e6c5e667fdfaa0f8cdb584ce620ade863a7a2f2ea89ed"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-dark-relative.png",
+      "sha256": "01f0bf9dc6de719be4936b5bd996da0ebda25c49939a34ba2510e12772713b65"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-light-anchor.png",
+      "sha256": "1c00f37ad0f10c1fdad39bc18d9419faec6b5a7fa354a9fef2ec9b60dd54d4b4"
+    },
+    {
+      "path": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-light-relative.png",
+      "sha256": "6e9355539693cf5463f68b6232bccb5f1a196b50d8e0e8c0831990346b67f9d6"
+    }
+  ],
+  "animationChecks": [
+    {
+      "label": "heavy",
+      "actualCanvasAdvances": true,
+      "pauseFreezes": true,
+      "resumeAdvances": true,
+      "reducedMotionFreezes": true
+    },
+    {
+      "label": "light",
+      "actualCanvasAdvances": true,
+      "pauseFreezes": true,
+      "resumeAdvances": true,
+      "reducedMotionFreezes": true
+    }
+  ],
+  "errors": [],
+  "before": {
+    "health": {
+      "status": "ok",
+      "service": "franchise-architect-football",
+      "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+      "artifactFingerprint": {
+        "algorithm": "sha256",
+        "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "files": 361,
+        "exclusions": [
+          "_health",
+          "deploy-manifest.json",
+          "edge-policy-receipt.json"
+        ]
+      },
+      "styleAsset": "styles.3c9bac11ad.css",
+      "communityStatsAsset": "community-stats.25f97e0a1e.js",
+      "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+      "edgePolicyAppliedToHostedOrigin": false,
+      "generatedAt": "2026-10-22T09:44:25.440Z",
+      "launchReady": false,
+      "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+    },
+    "manifest": {
+      "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+      "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "runtimeDefault": "client",
+      "serverAvailable": false
+    }
+  },
+  "setup": {
+    "runtime": "client",
+    "storedOverride": null
+  },
+  "runtime": {
+    "mode": "client",
+    "kind": "worker"
+  },
+  "people": [
+    {
+      "id": "P2026-BUF-OL-75203022",
+      "name": "Christopher Reid",
+      "position": "OL",
+      "heightInches": 80,
+      "weightLbs": 338
+    },
+    {
+      "id": "P2026-BUF-WR-86039379",
+      "name": "Christopher Wright",
+      "position": "WR",
+      "heightInches": 73,
+      "weightLbs": 195
+    }
+  ],
+  "renderingDoesNotAdvanceFootballRng": true,
+  "family": {
+    "relativeId": "P2027-FA-WR-70924506",
+    "anchorId": "P2026-MIA-DB-73421300",
+    "relation": {
+      "anchorId": "P2026-MIA-DB-73421300",
+      "anchorName": "Michael Chen",
+      "relation": "brother"
+    },
+    "sharedAuthority": true,
+    "sharedBackground": true,
+    "individualAppearanceSeeds": true,
+    "complexionDelta": 0.05441691776504731,
+    "heritage": [
+      "African American"
+    ],
+    "surveyCategory": "Black",
+    "persistsAcrossActualReload": true
+  },
+  "after": {
+    "health": {
+      "status": "ok",
+      "service": "franchise-architect-football",
+      "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+      "artifactFingerprint": {
+        "algorithm": "sha256",
+        "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "files": 361,
+        "exclusions": [
+          "_health",
+          "deploy-manifest.json",
+          "edge-policy-receipt.json"
+        ]
+      },
+      "styleAsset": "styles.3c9bac11ad.css",
+      "communityStatsAsset": "community-stats.25f97e0a1e.js",
+      "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+      "edgePolicyAppliedToHostedOrigin": false,
+      "generatedAt": "2026-10-22T09:44:25.440Z",
+      "launchReady": false,
+      "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+    },
+    "manifest": {
+      "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+      "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "runtimeDefault": "client",
+      "serverAvailable": false
+    }
+  },
+  "completedAt": "2026-10-22T09:47:21.706Z",
+  "acceptance": {
+    "exactCandidateHealth": true,
+    "actualDefaultClient": true,
+    "actualAnimationAndFamilies": true,
+    "visualInspectionPending": false,
+    "inspectedHostedVisuals": true
+  },
+  "visualReview": {
+    "completedAt": "2026-10-22T09:48:21.303550+00:00",
+    "scope": "S118 stylized L2 athlete representation using saved height/weight, articulated motion, persistent same-background fictional family resemblance. No photorealism, scanned anatomy, tissue-mass or measured-workout claim.",
+    "acceptedCaptureCount": 52,
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "viewports": {
+      "desktop": [
+        1440,
+        1000
+      ],
+      "mobile": [
+        390,
+        844
+      ]
+    },
+    "mandatoryFindings": [],
+    "observations": [
+      "Saved 80in/338lb lineman visibly broader than saved 73in/195lb receiver in front and side views.",
+      "Live running captures show coordinated pose changes including articulated legs/feet; pause, resume and reduced-motion raster checks passed.",
+      "Six movement modes display complete connected figures in both themes and viewports.",
+      "Real generated brother portraits share complexion and recognizable facial structure while retaining individual appearance seeds; family authority survived actual page reload.",
+      "Facial surfaces, clothing and muscle contours remain visibly procedural and stylized; motion is illustrative rather than captured athletic technique."
+    ],
+    "reviewArtifacts": [
+      "output/playwright/s118-hosted-r2-review-contact-heavy-desktop.png",
+      "output/playwright/s118-hosted-r2-review-contact-heavy-mobile.png",
+      "output/playwright/s118-hosted-r2-review-contact-light-desktop.png",
+      "output/playwright/s118-hosted-r2-review-contact-light-mobile.png",
+      "output/playwright/s118-hosted-r2-review-contact-family-desktop.png",
+      "output/playwright/s118-hosted-r2-review-contact-family-mobile.png",
+      "output/playwright/s118-hosted-r2-review-contact-live.png"
+    ],
+    "nativeDetailInspections": [
+      "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-strength.png",
+      "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-dark-relative.png"
+    ],
+    "attemptHistory": "First r2 attempt preserved separately; helper incorrectly required Full View to reappear despite saved preference. This completed pass2 uses entirely fresh unique captures with first-transition-only overview handling."
+  },
+  "stagingAuthorityReceipt": ".cache/s118-staging-candidate-r2.json",
+  "stagingDeploymentId": "f4f9ac34-8718-431d-bf5c-aa9d85f0d67e",
+  "reviewHelperSha256": "9f2f75c0644a459e1eb5a3d8c7496e3577fee4df1f64bbf17aa9dc432e17f4bb",
+  "preservedCaptureFiles": [
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-live-run-0.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-live-run-1.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-acceleration.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-cut.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-strength.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-endurance.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-acceleration.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-cut.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-strength.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-endurance.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-acceleration.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-cut.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-strength.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-endurance.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-front.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-side.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-acceleration.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-cut.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-strength.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-endurance.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-front.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-side.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-live-run-0.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-live-run-1.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-dark-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-dark-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-light-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-light-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-front.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-side.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-run.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-jump.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-front.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-side.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-dark-anchor.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-dark-relative.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-light-anchor.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-light-relative.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-dark-anchor.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-dark-relative.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-light-anchor.png",
+    "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-light-relative.png"
+  ]
+}

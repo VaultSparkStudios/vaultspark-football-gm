@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S118 five browser portability failures repaired; prepare and verify a fresh exact release candidate.",
-  "nextMilestone": "Clean-checkout browser verification, fresh candidate staging and seven-leg CI, then authorized production promotion and S118 closeout.",
+  "currentFocus": "S118 final cut-phase test observation repair; new candidate acceptance and production pending.",
+  "nextMilestone": "Verify focused and clean-checkout cut study, stage/push fresh candidate, complete CI and production, then S118 closeout.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
@@ -346,19 +346,31 @@
   "silHealth": 626,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 1,
+    "blockingFailing": 0,
     "total": 12,
-    "failing": 1,
-    "score": 92,
+    "failing": 0,
+    "score": 75,
     "date": "2026-10-22",
-    "passing": 11,
-    "warning": 0,
+    "passing": 9,
+    "warning": 3,
     "checks": [
       {
+        "id": "release-authority-checked-staging-current",
+        "status": "warning",
+        "blocking": false,
+        "detail": "checked 4721b3426edd347e73e1d724830c1b730deba91c · live 118165465bedabf1e9f1316b7a50c6aa5c65efe8"
+      },
+      {
+        "id": "release-authority-release-source-current",
+        "status": "warning",
+        "blocking": false,
+        "detail": "release source d913b9f9c0043d00131506c0d4271034a15fc169 · live staging 118165465bedabf1e9f1316b7a50c6aa5c65efe8"
+      },
+      {
         "id": "release-authority-git-head-covered-by-publication",
-        "status": "failing",
-        "blocking": true,
-        "detail": "HEAD 4d051b9ca02632562daa8ce3f89afa9a518e13f2 is not covered by live production d913b9f9c0043d00131506c0d4271034a15fc169"
+        "status": "warning",
+        "blocking": false,
+        "detail": "HEAD 118165465bedabf1e9f1316b7a50c6aa5c65efe8 is not covered by live production d913b9f9c0043d00131506c0d4271034a15fc169"
       }
     ]
   },
@@ -371,7 +383,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.118,
   "entropyLastComputed": "2026-10-01",
-  "lastSessionSummary": "S118 active; first candidate production refused safely after browser CI failure. All five failing cases pass focused repairs; release remains pending.",
+  "lastSessionSummary": "S118 active: second candidate browser266/1/3; transient cut caption observation repaired without changing application sources or limits.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -498,8 +510,8 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "9971999a10fce08c04b8874e03a8bdcf5ccf1934aab77421520a0029170a14b9",
-    "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+    "receiptSha256": "7bf011f33867c83415438bde41a83fd0e66680e9b6191ca0579b5ef7b30220cd",
+    "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
     "artifactFingerprint": {
       "algorithm": "sha256",
       "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
@@ -2317,21 +2329,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "1d40413f-5adc-4786-bf8c-b386e3fa42d1",
+    "deploymentId": "f4f9ac34-8718-431d-bf5c-aa9d85f0d67e",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-22T07:34:28.120Z"
+      "checkedAt": "2026-10-22T09:45:18.057Z"
     },
     "rollback": {
-      "previousDeploymentId": "42ec1001-c5bf-41b8-89d6-5f7a4f38e7ab",
+      "previousDeploymentId": "1d40413f-5adc-4786-bf8c-b386e3fa42d1",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-22T07:34:28.120Z"
+    "observedAt": "2026-10-22T09:45:18.057Z"
   },
   "lastCloseoutAt": "2026-10-04",
   "performanceAuthority": {
@@ -2501,9 +2513,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 118,
-    "currentFocus": "S118 five browser portability failures repaired; prepare and verify a fresh exact release candidate.",
-    "nextMilestone": "Clean-checkout browser verification, fresh candidate staging and seven-leg CI, then authorized production promotion and S118 closeout.",
-    "lastSessionSummary": "S118 active; first candidate production refused safely after browser CI failure. All five failing cases pass focused repairs; release remains pending."
+    "currentFocus": "S118 final cut-phase test observation repair; new candidate acceptance and production pending.",
+    "nextMilestone": "Verify focused and clean-checkout cut study, stage/push fresh candidate, complete CI and production, then S118 closeout.",
+    "lastSessionSummary": "S118 active: second candidate browser266/1/3; transient cut caption observation repaired without changing application sources or limits."
   },
   "partialCloseout": {
     "session": 117,
@@ -2680,16 +2692,31 @@
     }
   },
   "characterPromotion": {
-    "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+    "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
     "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
-    "ciRun": 39743686153,
-    "pagesRun": 39743711411,
-    "backendRun": 39743717163,
+    "ciRun": 39757998797,
+    "pagesRun": 39758015910,
+    "backendRun": 39758021271,
     "stagingVerified": true,
+    "visualCaptures": 209,
+    "cleanCheckoutFocused": {
+      "passed": 5,
+      "total": 5
+    },
+    "priorCandidate": {
+      "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+      "ciRun": 39743686153,
+      "browser": {
+        "passed": 262,
+        "failed": 5,
+        "skipped": 3
+      },
+      "productionPromoted": false
+    },
     "productionVerified": false,
     "closeoutComplete": false,
-    "ciStatus": "failed-browser-262-pass-5-fail-3-opt-in-skips",
-    "pagesStatus": "cancelled-after-ci-failure",
+    "ciStatus": "failed-browser-266-pass-1-fail-3-opt-in-skips",
+    "pagesStatus": "cancellation-requested-after-ci-failure",
     "backendStatus": "promotion-refused-exact-ci-guard"
   }
 }

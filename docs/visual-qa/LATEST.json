@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "capturedAt": "2026-10-22T07:07:17.217Z",
-  "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+  "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
   "themes": [
     "dark",
     "light"
@@ -44,7 +44,8 @@
       "Stylized torso/materials remain an art limitation; reduced-motion snapshots do not establish physical mobile frame rate.",
       "All eight actual family dossiers inspected across both themes and viewports; shared family background/pigment with individual faces and reload consistency.",
       "Fresh final-build body/family pass: all36 frames exactly hash-identical to independently inspected captures; primary reopened desktop dark running and mobile light jump. Runtime provenance refreshed to current owner-fix source.",
-      "Exact candidate hosted review: all52 accepted images inspected across desktop/mobile dark/light; saved height/weight, six modes, live motion/pause/resume/reduced motion, actual generated brothers and reload persistence passed with no mandatory scoped defect."
+      "Exact candidate hosted review: all52 accepted images inspected across desktop/mobile dark/light; saved height/weight, six modes, live motion/pause/resume/reduced motion, actual generated brothers and reload persistence passed with no mandatory scoped defect.",
+      "Fresh11816546 hosted review:52 inspected images; saved body dimensions, six studies, live motion controls, actual generated brothers and reload pass. Application source hashes identical to4721; failed first-candidate CI remains historical and current full CI is pending."
     ],
     "fixesApplied": [
       "Closed-eye canthal returns and crown preservation.",
@@ -2119,6 +2120,630 @@
         "height": 844
       },
       "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-live-run-0.png",
+      "sha256": "2959fda0e4b411ab5c07a55410786df286720b8b3df5f9fb38dcdc129c7eb3cc",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-live-run-0.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-live-run-1.png",
+      "sha256": "237cb193aac077db0b2a1ea414c37fad3588f95459a04cc6c2d63a58dbcb7d53",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-live-run-1.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-acceleration.png",
+      "sha256": "b9031dc510c3872f3062f974427baf8ba09e6d64e2769ecc55ce00065bbe309a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-acceleration.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-cut.png",
+      "sha256": "6fbc8cbc53b383a35aed0d5938bc03fec78c729f517224748d2f3a182faefdfd",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-cut.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-jump.png",
+      "sha256": "c0ae64c81a9d393268ab404c5792e946c26fe5c1afb2b59b8239e024ea993753",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-strength.png",
+      "sha256": "ebf9b1498406baaab3e98400e52fc45a73cfa1f0e6f42db24204861a764979a3",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-strength.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-endurance.png",
+      "sha256": "f90d20705955418cf60e1da68e49166ace89f3c0094c7e5e397374c7f88eeaf6",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-endurance.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-run.png",
+      "sha256": "c09cf6edfe52cc77812b5670e3ac864e3e85ce55c03aa94b6c8cafa8fbb3e995",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-acceleration.png",
+      "sha256": "a2bfb30748c6ee67d31a83f834329a49d1c82ed5958b0b1c246a646a77184ceb",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-acceleration.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-cut.png",
+      "sha256": "434d898abf81c0499ca8cec3bf6d18f3c1e6418e602e0b5f7fb7acbe8599d11b",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-cut.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-jump.png",
+      "sha256": "fb5698f937a98f595b2979cb44d366d02e7837ca3903e558dadf442f3d425c35",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-strength.png",
+      "sha256": "6c7d64bd22bc20136b82ccb53ac4840d47767015bf151dd882ae85869c578ab4",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-strength.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-endurance.png",
+      "sha256": "037a266962215248b8fc418551504d708f4f01fced2ef858c3cc6699e361e300",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-endurance.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-run.png",
+      "sha256": "1af9a2fb1f43bbf19831f6850e1ea0749bc65771554346390f3d080bd064cdce",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-acceleration.png",
+      "sha256": "812d697ee1d7b4762a3f2d02828ffabf0eb82bb637e75d570d849f0d561a6b76",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-acceleration.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-cut.png",
+      "sha256": "b228378cc6e816978f8675e25abf349a241b66b57f24c16c71e30ac400f1fa03",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-cut.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-jump.png",
+      "sha256": "cc82a866bac339be5db832abe7cf7f6452a98c8b6e03ae173992cbaf4442005c",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-strength.png",
+      "sha256": "7a2a165d5c9d140e1d54ff954a266ecb0414224c7c1bcd7d6e6932b3e5ca976c",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-strength.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-endurance.png",
+      "sha256": "781bad430eff9b2657fd9b909584995d2e06f5b1658b21ed5bf85f79d0df819c",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-endurance.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-front.png",
+      "sha256": "f1c364de8caa1b19e9d4639df52a9f29e0c078f7637b8d9fbff56c2addceec6a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-front.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-side.png",
+      "sha256": "d174ecc37fbe5a0ab21db11b8d6dca5c8f81972b9ecdd9d46a2f9bf08b32f137",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-side.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-run.png",
+      "sha256": "4f4b5b08069674505b7200d872617e7e3214521d7d282d28c067be8f339a0a35",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-acceleration.png",
+      "sha256": "d0a1c05bd07ac229b6e67d7cf84ea76c28c3e9a732aff9a478830aa861232d29",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-acceleration.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-cut.png",
+      "sha256": "559102ea5f206869be4706a3b289d32af7b286234635a882a245158ddce6b0cd",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-cut.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-jump.png",
+      "sha256": "87651fd038782ca1a9bf53b63b1c8dcad58f0692709c04b2f71d9acabd0dc74b",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-strength.png",
+      "sha256": "a289cbb70cb6882da9817fdfe9356d0c7792a7181b51c17c195a6e66c096d002",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-strength.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-endurance.png",
+      "sha256": "7075dbf802af0f3515fcf8e9cbea7bb26860886c9d28b029bf69c5d832f997c7",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-endurance.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-front.png",
+      "sha256": "0d289ff163d578efc7f7de5a1df651944c00cafc8bf226c9bcf0579f7ae393bf",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-front.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-side.png",
+      "sha256": "b9b17bd711a08f5705daf92322793c99e702a9d1152e8ee4a744d33d76bf2c37",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-side.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-live-run-0.png",
+      "sha256": "7281e16a0aa33a449bc73fd743ffd86b6b40f956f1fec19cb0ad884f34a0561a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-live-run-0.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-live-run-1.png",
+      "sha256": "fb41182183ec0d4d43f478123d27c997b21b4c671759a6cddf7154a54845e49d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-live-run-1.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-dark-run.png",
+      "sha256": "eedf91f36f6f705c7fae8d2bb9830e33c21e6e4fa2843bd2140c39222b76361d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-dark-jump.png",
+      "sha256": "e2cca7de66527b96b27a199dcb9b77426f00e1f9ab20365cfdbb0da58ec320fe",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-light-jump.png",
+      "sha256": "ec81ccb2a6e91263cdf0a1dea2354bd168bebde46e7d3646503b5bf4bcb97c2d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-run.png",
+      "sha256": "14cfa522bceca11cacd0c52892492e863e438157bfab904f4e5ce0d4fee1118a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-jump.png",
+      "sha256": "71d3262dd9ee5bc8f847753a2636038e5475977145ddb8b8a0df4781c24a2bac",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-front.png",
+      "sha256": "8c0f103fb595ade10cd5b0c2f382cb0d67992b34a6d67f05417d74832f4d01ac",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-front.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-side.png",
+      "sha256": "9748d322b467c4d0fe36ec669667ca4b47b5f1d555ca81d3a2cbb6587e6f32d1",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-side.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-run.png",
+      "sha256": "1a38002d01435406ee37bc3432f72f32a16970453a00a2d1bf479e0cb30fd71d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-jump.png",
+      "sha256": "cd617f335cd150c23071563aa2d1e9e80031c4396fe582adce2adab0cee507bb",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-front.png",
+      "sha256": "07784c82df6a42aded7633d93e1c7a8e580bf3426cd037e445736ce846ade165",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-front.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-side.png",
+      "sha256": "3693f815a6c4355897a53c02b2f2e17b48e801d0391c1d751034fa9e1ca189e0",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-side.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-dark-anchor.png",
+      "sha256": "9dc7e2d4da712db1a850eee6c5c5f367944ec5662c37f4ba39ff0b50abcbb732",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-dark-relative.png",
+      "sha256": "a91a34df026d1743b56283b8343d4451408941c45165507c4f046863d9241972",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-light-anchor.png",
+      "sha256": "a26b11a9d7ebc7bc2b1c09e55c719744321bedfa419d8aa31d6d6c22f3ab5ccc",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-light-relative.png",
+      "sha256": "ba26f6df361645fd1e5ef3fa9fb3424b233f08ec50356862f6d99ef22a37366f",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-dark-anchor.png",
+      "sha256": "b0443fbfb2edcf78459e6c5e667fdfaa0f8cdb584ce620ade863a7a2f2ea89ed",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-dark-relative.png",
+      "sha256": "01f0bf9dc6de719be4936b5bd996da0ebda25c49939a34ba2510e12772713b65",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-light-anchor.png",
+      "sha256": "1c00f37ad0f10c1fdad39bc18d9419faec6b5a7fa354a9fef2ec9b60dd54d4b4",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-light-relative.png",
+      "sha256": "6e9355539693cf5463f68b6232bccb5f1a196b50d8e0e8c0831990346b67f9d6",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
     }
   ],
   "earlierRuntimeCaptureProvenance": {
@@ -2143,21 +2768,40 @@
     "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
   },
   "candidateBinding": {
-    "observedAt": "2026-10-22T07:52:18.097Z",
-    "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+    "observedAt": "2026-10-22T09:50:07.183Z",
+    "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
     "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
     "committedSourceHashesVerified": 19,
-    "priorCaptureHashesVerified": 105,
+    "priorCaptureHashesVerified": 157,
     "hostedCaptureCount": 52,
-    "hostedReview": "HOSTED_S118.json",
-    "hostedReviewSha256": "7c2ef5289d682b1cb1237783f732cccae4daf0411e5d00906ef995813516bb05",
-    "stagingDeploymentId": "1d40413f-5adc-4786-bf8c-b386e3fa42d1",
+    "hostedReview": "HOSTED_S118_R2.json",
+    "hostedReviewSha256": "14b2f8f1138209e81e3ae0eaed9c2b7bfbdb966351ca1424e33ea9702952d0e4",
+    "stagingDeploymentId": "f4f9ac34-8718-431d-bf5c-aa9d85f0d67e",
     "stagingProvenanceChecks": 14,
-    "method": "All prior visual/runtime source bytes match the committed candidate. New actual hosted character captures independently verified health and manifest before and after browser journeys and received rendered-pixel inspection.",
+    "method": "All visual/runtime source bytes match the exact committed candidate. Fresh actual hosted default-worker body/family and animation journeys verified health and manifest before/after; all52 images inspected. Prior capture hashes preserved.",
     "captureMetadata": {
-      "corrected": 8,
-      "method": "Explicit -(desktop|mobile)-(dark|light)- filename segments. All four live-run captures occur immediately after setView(desktop,dark) in the preserved capture script.",
-      "captureScriptSha256": "f618a315c1bffc1309d278c5b765114fac499c664d002e174be764cd388b91b2"
+      "method": "Explicit desktop/mobile and dark/light filename tokens; live-run frames explicitly desktop dark in source helper",
+      "scriptSha256": "9f2f75c0644a459e1eb5a3d8c7496e3577fee4df1f64bbf17aa9dc432e17f4bb"
     }
-  }
+  },
+  "candidateBindingHistory": [
+    {
+      "observedAt": "2026-10-22T07:52:18.097Z",
+      "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+      "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "committedSourceHashesVerified": 19,
+      "priorCaptureHashesVerified": 105,
+      "hostedCaptureCount": 52,
+      "hostedReview": "HOSTED_S118.json",
+      "hostedReviewSha256": "7c2ef5289d682b1cb1237783f732cccae4daf0411e5d00906ef995813516bb05",
+      "stagingDeploymentId": "1d40413f-5adc-4786-bf8c-b386e3fa42d1",
+      "stagingProvenanceChecks": 14,
+      "method": "All prior visual/runtime source bytes match the committed candidate. New actual hosted character captures independently verified health and manifest before and after browser journeys and received rendered-pixel inspection.",
+      "captureMetadata": {
+        "corrected": 8,
+        "method": "Explicit -(desktop|mobile)-(dark|light)- filename segments. All four live-run captures occur immediately after setView(desktop,dark) in the preserved capture script.",
+        "captureScriptSha256": "f618a315c1bffc1309d278c5b765114fac499c664d002e174be764cd388b91b2"
+      }
+    }
+  ]
 }

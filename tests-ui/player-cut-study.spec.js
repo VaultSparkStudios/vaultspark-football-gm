@@ -21,12 +21,26 @@ test('actual dossier exposes a preserved-body lateral cut with pause and reduced
   await page.locator('.player-physique > summary').click();
   const detail=page.locator('.player-movement');await detail.locator(':scope > summary').click();await detail.scrollIntoViewIfNeeded();
   if(phase==='after'){
+    // Capture every actual caption mutation before the mode starts. Polling the
+    // transient plant caption can alias with the cycle and repeatedly miss it.
+    await detail.evaluate(root=>{
+      const caption=root.querySelector('[data-motion-caption]'),history=[];
+      const observe=()=>{const text=caption.textContent;if(history.at(-1)?.text!==text)history.push({text,time:performance.now()});};
+      const observer=new MutationObserver(observe);observer.observe(caption,{childList:true,characterData:true,subtree:true});observe();
+      root.cutCaptionObservation={history,observer};
+    });
     await detail.locator('[data-motion-mode]').selectOption('cut');
     await expect(detail.locator('.player-motion-svg')).toHaveAttribute('data-mode','cut');
-    await expect(detail.locator('[data-motion-caption]')).toContainText('Plant & redirect',{timeout:15000});
+    const canvas=detail.locator('canvas[data-player-character3d]');await expect(canvas).toBeVisible();
+    const pixels=()=>canvas.evaluate(c=>{const gl=c.getContext('webgl'),px=new Uint8Array(c.width*c.height*4);gl.finish();gl.readPixels(0,0,c.width,c.height,gl.RGBA,gl.UNSIGNED_BYTE,px);let hash=2166136261;for(const value of px)hash=Math.imul(hash^value,16777619);return hash>>>0;});
+    const movingBefore=await pixels();await expect.poll(pixels).not.toBe(movingBefore);
+    await expect.poll(()=>detail.evaluate(root=>root.cutCaptionObservation.history.map(row=>row.text).join('\n')),{timeout:15000}).toContain('Plant & redirect');
+    const captionHistory=await detail.evaluate(root=>{root.cutCaptionObservation.observer.disconnect();return root.cutCaptionObservation.history;});
     await detail.locator('[data-motion-toggle]').click();
-    const still=await detail.locator('[data-motion-content]').innerHTML();await page.waitForTimeout(150);
+    const still=await detail.locator('[data-motion-content]').innerHTML(),pausedPixels=await pixels();await page.waitForTimeout(150);
     expect(await detail.locator('[data-motion-content]').innerHTML()).toBe(still);
+    expect(await pixels()).toBe(pausedPixels);
+    await fs.mkdir('output/playwright',{recursive:true});await fs.writeFile('output/playwright/s118-cut-motion-observation.json',JSON.stringify({captionHistory,movingBefore,pausedPixels,actualVisibleCanvasAdvanced:true,actualVisibleCanvasPaused:true},null,2));
     await page.emulateMedia({reducedMotion:'reduce'});
     await expect(detail.locator('[data-motion-toggle]')).toBeDisabled();
     await expect(detail.locator('.player-motion-svg')).toHaveAttribute('data-mode','cut');
