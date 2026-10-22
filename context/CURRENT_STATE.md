@@ -1,7 +1,7 @@
 # Current State
 
 <!-- s118-active:state -->
-- 2026-10-22: Candidate4721b342 CI39743686153 completed with all six unit shards passing and browser262passed/5failed/3existing opt-in skips. Five failures were test portability/opaque-PNG text validation: two unversioned fixture dependencies and two PNG-base64 NaN matches. All five cases now pass in focused installed-Chrome runs, with original assertions and numeric thresholds preserved. Application sources are unchanged. Backend39743717163 refused promotion at the exact-CI guard; Pages39743711411 was cancelled after the actual CI failure. No production promotion occurred. A new exact candidate, clean-checkout focused verification, fresh staging, seven-leg CI and production readback are still required.
+- 2026-10-22: Session 118 (active; production and closeout pending). Candidate4721b342 CI39743686153 completed with all six unit shards passing and browser262passed/5failed/3existing opt-in skips. Five failures were test portability/opaque-PNG text validation: two unversioned fixture dependencies and two PNG-base64 NaN matches. All five cases now pass in focused installed-Chrome runs, with original assertions and numeric thresholds preserved. Application sources are unchanged. Backend39743717163 refused promotion at the exact-CI guard; Pages39743711411 was cancelled after the actual CI failure. No production promotion occurred. A new exact candidate, clean-checkout focused verification, fresh staging, seven-leg CI and production readback are still required.
 <!-- /s118-active:state -->
 
 <!-- s116-closeout:state -->
