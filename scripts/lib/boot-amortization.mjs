@@ -1,16 +1,6 @@
-// boot-amortization.mjs — S176 [audit #5]. Persist the per-session boot-amortization metric the
-// harness computes-but-DISCARDS, and expose the trailing-average helper the doctor probe reads.
-//
-// session-economics.bootAmortization() is computed live in session-floor.mjs every session, then
-// thrown away — so the one signal that makes Codex's 4-10min wasted-boot sessions VISIBLE never
-// reaches a persisted surface. This module records it into PROJECT_STATUS at closeout and the
-// gentle doctor probe (check-boot-amortization.mjs) reads the trailing average.
-//
-// HONESTY CAVEAT (S175): the harness context-meter undercounts real usage (measured 0× here), so a
-// ratio of null/unknown is NOT a wasted boot — it is an UNMEASURED boot. The recorder stores it
-// honestly (ratio:null, verdict:'unknown') and trailingMeasuredAvg ignores unmeasured samples, so
-// the probe can only warn on a genuine measured run of low ratios — never on a missing denominator.
-
+// Resource-ratio persistence and reporting. Token consumption does not establish
+// output quality, wasted work, or a requirement to extend a session.
+import { strictNumber } from './strict-number.mjs';
 import { spawnSync } from './safe-spawn.mjs';
 import fsSync from 'node:fs';
 import path from 'node:path';
@@ -45,7 +35,27 @@ export function liveAmortization(root = ROOT) {
   if (usedTokens == null) {
     return { ...bootAmortization({ workTokens: 0, startupTokens: 0 }), workTokens: null, startupTokens: null };
   }
-  const workTokens = Math.max(0, usedTokens - startupTokens);
+  // S317 [audit #8] — a BELOW-DENOMINATOR reading is unmeasured, not zero.
+  //
+  // S264 fixed `usedTokens ?? 0` fabricating zeros from a null meter. This clamp
+  // reintroduced the identical shape from the other side: when usedTokens <=
+  // startupTokens the subtraction goes negative, Math.max floors it to 0, and a
+  // ratio of exactly 0 is published as a MEASURED verdict. Three such rows exist —
+  // 19:57, 20:04 and 20:10 on 2026-09-01, three samples in thirteen minutes — and
+  // they alone drag the trailing average from 0.33 to 0.23, which is the number the
+  // probe then reports as "sessions ending before amortizing their boot".
+  //
+  // usedTokens below the bootstrap estimate does not mean no work happened; it
+  // means the two numbers are not comparable on this reading. Say so.
+  if (usedTokens <= startupTokens) {
+    return {
+      ...bootAmortization({ workTokens: 0, startupTokens: 0 }),
+      workTokens: null,
+      startupTokens,
+      unmeasuredReason: `usedTokens (${usedTokens}) is at or below the bootstrap estimate (${startupTokens}) — not comparable, not zero`,
+    };
+  }
+  const workTokens = usedTokens - startupTokens;
   const amort = bootAmortization({ workTokens, startupTokens });
   return { ...amort, workTokens, startupTokens };
 }
@@ -121,14 +131,42 @@ export function recordAmortization(status, amort, ranAt, cap = HISTORY_CAP, meta
   const trigger = inferTrigger({ ...meta, trigger: amort.trigger ?? meta.trigger });
   const scheduled = isScheduledTrigger(trigger);
   const record = {
-    ratio: amort.ratio ?? null,
-    verdict: scheduled ? 'scheduled-routine' : (amort.verdict ?? 'unknown'),
+    ratio: Number.isFinite(amort.ratio) && amort.ratio >= 0 ? amort.ratio : null,
+    verdict: scheduled ? 'scheduled-routine' : (Number.isFinite(amort.ratio) ? 'resource-ratio' : 'unknown'),
     ranAt,
     ...(trigger ? { trigger } : {}),
   };
   status.bootAmortization = record;
   const hist = Array.isArray(status.bootAmortizationHistory) ? status.bootAmortizationHistory : [];
-  hist.push(record);
+  // S317 [audit #8] — ROWS ARE NOT SESSIONS, and they were being counted as if
+  // they were. A row is pushed per non-dry autopilot run, so S309 carries three,
+  // S312 three, S314 three, S315 two — the ten-row trailing window covers roughly
+  // four to five sessions, and an ABORTED closeout contributes a row of its own.
+  // The rows also carried no session number at all, which is the S305 stamp rule.
+  //
+  // Stamp the session and REPLACE its row rather than appending, so one session
+  // contributes one sample. Without a session the old append behaviour is kept —
+  // an unstamped row is not evidence about any particular session, and dropping it
+  // silently would be worse than counting it once.
+  // S351 [audit #6] — the guard above this line SAYS an unstamped row must be
+  // appended, and `Number.isFinite(Number(null))` is TRUE (null coerces to 0), so
+  // a null session took the replace-at-session-0 branch instead: every unstamped
+  // row collided into one slot and overwrote the last. Latent, not observed live
+  // (all 10 current rows are stamped), but it is the same coercion that cost the
+  // closeout-autopilot probe 273 phantom bypasses this session.
+  // S351 [self-audit] — this line first hoisted the value into a local and
+  // re-derived the check inline. That was correct but UNPROTECTED: the
+  // null-vs-absent coercion rule matches a property access, so hoisting to a
+  // local hides the identical defect from the lint that exists to catch it.
+  // One shared predicate, in a file that is tested directly.
+  const session = strictNumber(meta.session);
+  if (session !== null) {
+    record.session = session;
+    const at = hist.findIndex((h) => strictNumber(h?.session) === session);
+    if (at >= 0) hist[at] = record; else hist.push(record);
+  } else {
+    hist.push(record);
+  }
   status.bootAmortizationHistory = hist.slice(-cap);
   return status;
 }
@@ -149,7 +187,7 @@ function isUntyped(h) {
 export function trailingMeasuredAvg(history = []) {
   const arr = Array.isArray(history) ? history : [];
   const scheduledCount = arr.filter(h => h?.verdict === 'scheduled-routine' || isScheduledTrigger(h?.trigger)).length;
-  const measuredRows = arr.filter(h => h?.verdict !== 'scheduled-routine' && !isScheduledTrigger(h?.trigger) && h && typeof h.ratio === 'number');
+  const measuredRows = arr.filter(h => h?.verdict !== 'scheduled-routine' && !isScheduledTrigger(h?.trigger) && h && Number.isFinite(h.ratio) && h.ratio >= 0);
   const untyped = measuredRows.filter(isUntyped).length;
   const measured = measuredRows.map(h => h.ratio);
   if (!measured.length) return { avg: null, samples: 0, scheduledCount, untyped };
@@ -157,29 +195,11 @@ export function trailingMeasuredAvg(history = []) {
   return { avg: Math.round(avg * 100) / 100, samples: measured.length, scheduledCount, untyped };
 }
 
-// PURE: the gentle-probe verdict. WARN only on a genuine measured run of low ratios; an unmeasured
-// or short history is green (honest — you cannot flag what you cannot measure).
-//
-// S245 [audit R08] — OBSERVABILITY HONESTY (CANON-031). The old message asserted every low-ratio
-// measured session was "a session ending before amortizing its boot" — i.e. founder waste. But when
-// the measured set is DOMINATED by untyped sessions (no `trigger:` provenance), the metric cannot
-// tell an unstamped cloud routine from a real short founder session. Asserting "founder waste" there
-// is a lie. So: still WARN (something IS mis-stamped and worth fixing — see R06 / docs/CLAUDE_ROUTINES.md),
-// but the detail names the untyped provenance instead of pretending it measured founder inefficiency.
+// Historical ratios stay readable; this probe makes no outcome/value inference.
 export function amortizationProbe(history = []) {
   const { avg, samples, scheduledCount, untyped } = trailingMeasuredAvg(history);
-  const scheduledNote = scheduledCount ? ` · ${scheduledCount} scheduled routine(s) excluded` : '';
-  if (samples < MIN_SAMPLES_TO_WARN || avg == null) {
-    return { pass: true, warn: false, detail: `boot-amortization unmeasured/insufficient (${samples}/${MIN_SAMPLES_TO_WARN} measured samples)${scheduledNote} — no signal`, avg, samples, scheduledCount, untyped };
-  }
-  if (avg < WASTED_AVG_BAND) {
-    // Untyped provenance dominates → do NOT claim founder waste; name the real gap (unstamped triggers).
-    if (untyped > samples / 2) {
-      return { pass: false, warn: true, detail: `trailing boot-amortization ${avg}× over ${samples} sessions${scheduledNote} — ${untyped}/${samples} untyped (no trigger: provenance; likely unstamped routine sessions, not measured founder waste — see docs/CLAUDE_ROUTINES.md)`, avg, samples, scheduledCount, untyped };
-    }
-    return { pass: false, warn: true, detail: `trailing boot-amortization ${avg}× over ${samples} sessions < ${WASTED_AVG_BAND}×${scheduledNote} — sessions ending before amortizing their boot`, avg, samples, scheduledCount, untyped };
-  }
-  return { pass: true, warn: false, detail: `trailing boot-amortization ${avg}× over ${samples} sessions${scheduledNote} — healthy`, avg, samples, scheduledCount, untyped };
+  const resource = avg == null ? 'unmeasured' : avg + '×';
+  return { pass: true, warn: false, detail: 'work/startup token ratio '+resource+' over '+samples+' samples · '+scheduledCount+' scheduled routine(s) excluded · '+untyped+' untyped · resource use only; outcome not assessed', avg, samples, scheduledCount, untyped };
 }
 
 export default { liveAmortization, recordAmortization, trailingMeasuredAvg, amortizationProbe, inferTrigger, isScheduledTrigger, readLockTrigger, HISTORY_CAP, MIN_SAMPLES_TO_WARN, WASTED_AVG_BAND };

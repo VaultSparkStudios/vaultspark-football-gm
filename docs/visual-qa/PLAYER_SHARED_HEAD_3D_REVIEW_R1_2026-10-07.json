@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 1,
+  "verdict": "FIX",
+  "scope": "Unadopted shared indexed 3D head prototype; no production or whole-appearance acceptance",
+  "primaryReceipt": ".cache/shared-head-3d-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "83714e4274f4676ad475e42f68792163e3f38efb0dae5f75294b934cd2a0c2f3",
+  "sourceHashes": {
+    ".cache/shared-head-3d-reviewed-r1-source.mjs": "759bc3b722ee854008636e957abe4e788ab595a7312568366c8b69671d3dd050"
+  },
+  "historicalExecutedTestSource": {
+    "path": "prototypes/playerHead3d.test.mjs",
+    "sha256": "38aed174fa77396462bc9aea8ad4e1b26ef420bffeb3ccb994991c5ed9c5b976",
+    "qualification": "Executed and read before parent repair; current test and prototype may now differ. Verdict binds the frozen original source."
+  },
+  "findings": [
+    {
+      "id": "P2-angular-relief-discontinuity",
+      "severity": "P2",
+      "source": ".cache/shared-head-3d-reviewed-r1-source.mjs",
+      "function": "headPointWithAnatomy",
+      "issue": "The clamped face factor is used only as a boolean. Full facial relief is added for every positive factor, then drops abruptly to zero across cos(angle)=0. The supposedly continuous shared head skin therefore has an angular discontinuity at both profile boundaries.",
+      "reproduction": "Default shaved appearance, y=166, angle=PI/2 plus/minus 1e-8: point distance 1.6867652997065252. The discrepancy persists at other vertical samples and the opposite profile boundary.",
+      "evidence": ".cache/shared-head-3d-r1-angular-probe.json",
+      "requiredCorrection": "Apply a continuous, preferably C1, angular weight to the complete relief and independently test boundary values and tangents on both sides. Existing authored breadth-station tangent tests do not test this boundary.",
+      "disposition": "Parent accepted and subsequently repaired separately. This R1 does not approve the forthcoming repair."
+    }
+  ],
+  "independentChecks": [
+    {"command": "node --test prototypes/playerHead3d.test.mjs", "passed": 4, "failed": 0, "skipped": 0, "durationMs": 657.4836, "qualification": "Original pre-repair test/source execution"},
+    {"command": "node .cache/shared-head-3d-r1-angular-probe.mjs", "exitCode": 0, "boundaryCases": 8, "maxDiscontinuity": 1.6867652997065252, "captureHashMatches": 8, "qualification": "Independent red probe against frozen original; confirms defect rather than desired continuity"},
+    {"check": "Accepted maximum tessellation rings96/slices128", "cases": {"shaved": {"vertices":16575,"triangles":32064},"buzz":{"vertices":26448,"triangles":48384},"locs":{"vertices":20976,"triangles":39872},"afro":{"vertices":29808,"triangles":52584}}, "qualification": "Independent bounded mesh construction, not device or browser performance acceptance"}
+  ],
+  "imagesActuallyInspected": [
+    "docs/visual-qa/captures/player-shared-head-3d-desktop-dark-before.png",
+    "docs/visual-qa/captures/player-shared-head-3d-desktop-dark-final.png",
+    "docs/visual-qa/captures/player-shared-head-3d-desktop-light-final.png",
+    "docs/visual-qa/captures/player-shared-head-3d-mobile-dark-final.png",
+    "docs/visual-qa/captures/player-shared-head-3d-mobile-light-final.png"
+  ],
+  "imageBinding": "These canonical capture copies retain the original reviewed pixels and all eight hashes match frozen primary. Live output/playwright images were subsequently regenerated for repair and are excluded from this R1.",
+  "visualAssessment": "Shared profile volume and attached neck improve the initial prototype. Skin remains low-detail and mannequin-like, hair resembles solid caps, and eyes/beard remain simplified shader patterns. Images do not establish complete adult-person art quality or all saved-trait fidelity.",
+  "primaryExecutionOnly": {"focusedPassed":4,"browserPassed":1,"output":"bf6c26","browserDurationSeconds":5.4,"qualification":"Primary execution attributed; reviewer did not rerun browser"},
+  "verifiedArchitecture": [
+    "Front and profile cameras reuse indexed person geometry; pigment changes preserve geometry, normals and topology in tested cases.",
+    "Head-skin authored breadth tangents are tested along vertical stations, with bounded tessellation and finite indexed output.",
+    "Primary open/closed/open blink checks restore pixels and retain the mesh for six people."
+  ],
+  "limits": [
+    "One indexed mesh contains intersecting/separate ears, neck, hair and garment parts; this is not evidence of a wholly connected or watertight anatomy mesh.",
+    "Timing is one local synchronous observation, not mobile/UI performance validation; indexing and tessellation both changed.",
+    "Saved identity/frame purity is bounded to tested DTOs. All hair, gray, dye, part, grooming and facial traits are not yet integrated.",
+    "No actual roster/dossier/moving-body/save adoption, context-loss/lifecycle/cache/fallback or full malformed-input acceptance.",
+    "Unadopted artistic prototype; no empirical anatomy, worldwide frequency fit, full naturalism, whole audit or release acceptance."
+  ]
+}

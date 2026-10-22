@@ -1,0 +1,902 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "dataset": "ONS RM010 Census2021 edition2021 version1",
+  "sourcePage": "https://www.ons.gov.uk/datasets/RM010/editions/2021/versions/1",
+  "downloadUrl": "https://download.ons.gov.uk/downloads/datasets/RM010/editions/2021/versions/1.csv",
+  "sourceBytes": 3125543,
+  "sourceSha256": "abce09839c2e197887af779f389f517876005166d4dbd3d99e21d5a340f52fa2",
+  "sourceLicense": "Open Government Licence v3.0; attribution to Office for National Statistics. Project software remains proprietary.",
+  "referenceDate": "2021-03-21",
+  "releaseDate": "2023-04-18",
+  "cohort": "All usual residents of England and Wales; all ages and sexes",
+  "aggregation": "Sum each mutually exclusive published lower-tier local authority cell once; no overlapping geographic totals",
+  "verification": {
+    "areas": 331,
+    "sourceCells": 31776,
+    "birthRegionCategories": 12,
+    "ethnicCategories": 8,
+    "aggregateCells": 96,
+    "sumPublishedCells": 59597524,
+    "uniqueNonnegativeIntegerCells": true
+  },
+  "observations": [
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "-8",
+      "birthRegion": "Does not apply",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 0,
+      "birthRegionDenominator": 0,
+      "conditionalShare": null
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 2515335,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.05073330622538804
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 1169748,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.02359335177641754
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 1405078,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.028339864250509685
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 43200135,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.8713295358006404
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 221655,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.004470693164683188
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 665556,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.013423999728920548
+    },
+    {
+      "birthRegionCode": "1",
+      "birthRegion": "Europe: United Kingdom",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 402053,
+      "birthRegionDenominator": 49579560,
+      "conditionalShare": 0.00810924905344057
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 82099,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.050670200251564254
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 99279,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.06127342368086149
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 57257,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.03533811198435809
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 301948,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.1863575150191759
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 267673,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.16520352881200695
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 751912,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.464068156878332
+    },
+    {
+      "birthRegionCode": "2",
+      "birthRegion": "Europe: EU countries: European Union EU14",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 60094,
+      "birthRegionDenominator": 1620262,
+      "conditionalShare": 0.03708906337370129
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 1422,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.0011602404684042532
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 869,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.0007090358418025992
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 8104,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.006612228379710315
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 126990,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.1036138798049621
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 600,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.0004895529402549592
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 1057508,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.8628435845719022
+    },
+    {
+      "birthRegionCode": "3",
+      "birthRegion": "Europe: EU countries: European Union EU8",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 30115,
+      "birthRegionDenominator": 1225608,
+      "conditionalShare": 0.024571477992963494
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 949,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.0013771765993170714
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 590,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.0008562004147492857
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 6734,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.009772294225290998
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 78141,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.1133972145913965
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 1079,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.0015658309279906427
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 564209,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.8187728471275927
+    },
+    {
+      "birthRegionCode": "4",
+      "birthRegion": "Europe: EU countries: European Union EU2",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 37389,
+      "birthRegionDenominator": 689091,
+      "conditionalShare": 0.05425843611366278
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 400,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.0036950135791749034
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 255,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.002355571156724001
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 2127,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.019648234707262548
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 46470,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.4292682025606444
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 264,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.0024387089622554363
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 43249,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.3995141057143385
+    },
+    {
+      "birthRegionCode": "5",
+      "birthRegion": "Europe: EU countries: All other EU countries",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 15489,
+      "birthRegionDenominator": 108254,
+      "conditionalShare": 0.1430801633196002
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 9992,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.019994637146962185
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 4088,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.00818035194723593
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 10107,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.020224759572092355
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 95415,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.19093157559821824
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 918,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.0018369772719086554
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 310380,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.621090420103495
+    },
+    {
+      "birthRegionCode": "6",
+      "birthRegion": "Europe: Non-EU countries: All other non-EU countries",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 68834,
+      "birthRegionDenominator": 499734,
+      "conditionalShare": 0.13774127836008757
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 194021,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.12244317106110136
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 883712,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.5576947834757475
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 64582,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.040756541165482336
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 183886,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.11604715445102172
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 4509,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.002845548978278156
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 113105,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.07137853563720355
+    },
+    {
+      "birthRegionCode": "7",
+      "birthRegion": "Africa",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 140765,
+      "birthRegionDenominator": 1584580,
+      "conditionalShare": 0.08883426523116536
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 2682392,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.8101348094437887
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 8042,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.0024288411751701277
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 62618,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.018911859824272948
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 119313,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.03603485788772363
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 1519,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.00045876768777461125
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 42840,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.012938517277330051
+    },
+    {
+      "birthRegionCode": "8",
+      "birthRegion": "Middle East and Asia",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 394320,
+      "birthRegionDenominator": 3311044,
+      "conditionalShare": 0.11909234670393991
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 21398,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.02723251102128916
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 229507,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.29208579806351115
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 90354,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.11499048045693806
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 118563,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.15089112086256223
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 6562,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.008351235504332156
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 220666,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.2808341563241328
+    },
+    {
+      "birthRegionCode": "9",
+      "birthRegion": "The Americas and the Caribbean",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 98702,
+      "birthRegionDenominator": 785752,
+      "conditionalShare": 0.12561469776723444
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 6189,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.03586973530928881
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 1955,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.011330640253620879
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 8483,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.04916512597005929
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 79118,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.4585460846987093
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 2632,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.015254345344005193
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 66786,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.3870732173802169
+    },
+    {
+      "birthRegionCode": "10",
+      "birthRegion": "Antarctica and Oceania (including Australasia) and Other",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 7378,
+      "birthRegionDenominator": 172541,
+      "conditionalShare": 0.042760851044099664
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "-8",
+      "ethnicGroup": "Does not apply",
+      "count": 0,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.0
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "1",
+      "ethnicGroup": "Asian, Asian British or Asian Welsh",
+      "count": 1233,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.05844155844155844
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "2",
+      "ethnicGroup": "Black, Black British, Black Welsh, Caribbean or African",
+      "count": 11263,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.5338420703384207
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "3",
+      "ethnicGroup": "Mixed or Multiple ethnic groups",
+      "count": 2504,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.11868423547255665
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "4",
+      "ethnicGroup": "White: English, Welsh, Scottish, Northern Irish or British",
+      "count": 5082,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.24087591240875914
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "5",
+      "ethnicGroup": "White: Irish",
+      "count": 75,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.003554839321262679
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "6",
+      "ethnicGroup": "White: Gypsy or Irish Traveller, Roma or Other White",
+      "count": 432,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.020475874490473032
+    },
+    {
+      "birthRegionCode": "11",
+      "birthRegion": "British Overseas",
+      "ethnicGroupCode": "7",
+      "ethnicGroup": "Other ethnic group",
+      "count": 509,
+      "birthRegionDenominator": 21098,
+      "conditionalShare": 0.02412550952696938
+    }
+  ],
+  "allowedUse": [
+    "Empirical resident-context joint observations; test birthplace-only assumptions",
+    "Candidate validation context for UK-raised diaspora background after cohort and reporting-category reconciliation"
+  ],
+  "implementationDecision": "Keep as contextual research; no runtime generator coefficients changed",
+  "limits": [
+    "England/Wales residents are not the worldwide populations of their birth regions or NFL recruitment cohort",
+    "Birth categories include grouped regions; cannot distribute grouped counts across individual countries",
+    "All-age/all-sex observations lack athlete, upbringing, parentage and appearance channels",
+    "Reported eight-group ethnic classification is not a quantitative skin/hair/eye distribution and does not imply ability",
+    "ONS uses record swapping and cell-key perturbation; sums are aggregates of published perturbed cells, not independently certified national marginals",
+    "Does-not-apply categories retained; zero denominators produce null rather than invented shares"
+  ]
+}

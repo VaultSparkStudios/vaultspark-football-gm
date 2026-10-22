@@ -1,0 +1,654 @@
+{
+  "kind": "actual-annual-expiry-entitlement-diagnostic-v1",
+  "recordedAt": "2026-10-07T13:33:34.644Z",
+  "scope": "Actual next annual command from preserved first-year GM failure snapshot; not a full career or legal adjudication",
+  "source": {
+    "file": ".cache/managed-franchise-command/current-2026-10-07/failure-snapshot.json",
+    "sha256": "9d3e618fbd9f0ede6d6e3711f6eff8521a1b3c6c0c1f56c1a61d0e3add6387db"
+  },
+  "sourceHashes": {
+    "src/domain/annualElevationInjuryResolution.js": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da",
+    "src/domain/preRolloverMedicalCalendar.js": "fbf72b88730a0594ee6979e5c099d41c6a05f0ab1113eeabf16981c35840b019",
+    "src/domain/elevationInjuryPay.js": "6aa83a9a5b37b55b89352b95bf4b6d1560f9aacab49d75f0098d65fb4c4d230b",
+    "src/domain/injurySalaryClaims.js": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2",
+    "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+    "src/runtime/advanceWeekCommand.js": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007"
+  },
+  "playerId": "P2026-CLE-LB-10032552",
+  "before": {
+    "episode": {
+      "version": "elevation-injury-pay-v1",
+      "episodes": [
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 18,
+          "origin": "game",
+          "creditedSeasons": 3,
+          "status": "active"
+        }
+      ],
+      "payroll": [
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 19,
+          "payCents": 3277778,
+          "practiceCents": 1835000,
+          "additionalCents": 1442778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 20,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 21,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 22,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 23,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        }
+      ]
+    },
+    "injury": {
+      "type": "IR-Long (8W)",
+      "weeksRemaining": 3,
+      "bodyPart": "IR-Long (8W)",
+      "reinjuryRisk": 0
+    },
+    "claims": [],
+    "resolutions": []
+  },
+  "after": {
+    "episode": {
+      "version": "elevation-injury-pay-v1",
+      "episodes": [
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 18,
+          "origin": "game",
+          "creditedSeasons": 3,
+          "status": "claim-pending"
+        }
+      ],
+      "payroll": [
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 19,
+          "payCents": 3277778,
+          "practiceCents": 1835000,
+          "additionalCents": 1442778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 20,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 21,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 22,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        },
+        {
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "year": 2026,
+          "week": 23,
+          "payCents": 3277778,
+          "practiceCents": 0,
+          "additionalCents": 3277778,
+          "capChargeCents": 0
+        }
+      ]
+    },
+    "injury": null,
+    "resolution": {
+      "version": "post-term-injury-claim-retention-v1",
+      "year": 2026,
+      "playerId": "P2026-CLE-LB-10032552",
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "term": {
+        "ok": true,
+        "version": "club-final-game-practice-term-v1",
+        "year": 2026,
+        "teamId": "CLE",
+        "lastGameId": "2026-playoffs-afc-wildcard-0-CLE-NYJ",
+        "lastGameMedicalWeek": 19,
+        "endsAfterMedicalWeek": 20,
+        "proof": "playoff-elimination",
+        "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+      },
+      "termEvidence": {
+        "version": "retained-club-term-games-v1",
+        "games": [
+          {
+            "gameId": "2026-regular-regular-season-18-NE-BUF",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "BUF",
+            "awayTeamId": "NE",
+            "homeScore": 34,
+            "awayScore": 22,
+            "winnerId": "BUF"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-NYJ-MIA",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "MIA",
+            "awayTeamId": "NYJ",
+            "homeScore": 12,
+            "awayScore": 33,
+            "winnerId": "NYJ"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-CLE-BAL",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "BAL",
+            "awayTeamId": "CLE",
+            "homeScore": 31,
+            "awayScore": 24,
+            "winnerId": "BAL"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-PIT-CIN",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "CIN",
+            "awayTeamId": "PIT",
+            "homeScore": 9,
+            "awayScore": 3,
+            "winnerId": "CIN"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-TEN-HOU",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "HOU",
+            "awayTeamId": "TEN",
+            "homeScore": 23,
+            "awayScore": 29,
+            "winnerId": "TEN"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-JAX-IND",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "IND",
+            "awayTeamId": "JAX",
+            "homeScore": 33,
+            "awayScore": 19,
+            "winnerId": "IND"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-LAC-DEN",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "DEN",
+            "awayTeamId": "LAC",
+            "homeScore": 3,
+            "awayScore": 50,
+            "winnerId": "LAC"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-LV-KC",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "KC",
+            "awayTeamId": "LV",
+            "homeScore": 59,
+            "awayScore": 9,
+            "winnerId": "KC"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-WAS-DAL",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "DAL",
+            "awayTeamId": "WAS",
+            "homeScore": 30,
+            "awayScore": 3,
+            "winnerId": "DAL"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-PHI-NYG",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "NYG",
+            "awayTeamId": "PHI",
+            "homeScore": 19,
+            "awayScore": 17,
+            "winnerId": "NYG"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-MIN-CHI",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "CHI",
+            "awayTeamId": "MIN",
+            "homeScore": 26,
+            "awayScore": 13,
+            "winnerId": "CHI"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-GB-DET",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "DET",
+            "awayTeamId": "GB",
+            "homeScore": 10,
+            "awayScore": 13,
+            "winnerId": "GB"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-TB-ATL",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "ATL",
+            "awayTeamId": "TB",
+            "homeScore": 16,
+            "awayScore": 19,
+            "winnerId": "TB"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-NO-CAR",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "CAR",
+            "awayTeamId": "NO",
+            "homeScore": 34,
+            "awayScore": 12,
+            "winnerId": "CAR"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-LAR-ARI",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "ARI",
+            "awayTeamId": "LAR",
+            "homeScore": 27,
+            "awayScore": 15,
+            "winnerId": "ARI"
+          },
+          {
+            "gameId": "2026-regular-regular-season-18-SEA-SF",
+            "year": 2026,
+            "week": 18,
+            "seasonType": "regular",
+            "label": "regular-season",
+            "round": null,
+            "homeTeamId": "SF",
+            "awayTeamId": "SEA",
+            "homeScore": 12,
+            "awayScore": 26,
+            "winnerId": "SEA"
+          },
+          {
+            "gameId": "2026-playoffs-afc-wildcard-0-CLE-NYJ",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "afc-wildcard",
+            "round": "wildcard",
+            "homeTeamId": "NYJ",
+            "awayTeamId": "CLE",
+            "homeScore": 39,
+            "awayScore": 16,
+            "winnerId": "NYJ"
+          },
+          {
+            "gameId": "2026-playoffs-afc-wildcard-0-NE-BAL",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "afc-wildcard",
+            "round": "wildcard",
+            "homeTeamId": "BAL",
+            "awayTeamId": "NE",
+            "homeScore": 20,
+            "awayScore": 9,
+            "winnerId": "BAL"
+          },
+          {
+            "gameId": "2026-playoffs-afc-wildcard-0-LAC-HOU",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "afc-wildcard",
+            "round": "wildcard",
+            "homeTeamId": "HOU",
+            "awayTeamId": "LAC",
+            "homeScore": 24,
+            "awayScore": 55,
+            "winnerId": "LAC"
+          },
+          {
+            "gameId": "2026-playoffs-nfc-wildcard-0-CHI-SEA",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "nfc-wildcard",
+            "round": "wildcard",
+            "homeTeamId": "SEA",
+            "awayTeamId": "CHI",
+            "homeScore": 16,
+            "awayScore": 6,
+            "winnerId": "SEA"
+          },
+          {
+            "gameId": "2026-playoffs-nfc-wildcard-0-SF-ATL",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "nfc-wildcard",
+            "round": "wildcard",
+            "homeTeamId": "ATL",
+            "awayTeamId": "SF",
+            "homeScore": 17,
+            "awayScore": 13,
+            "winnerId": "ATL"
+          },
+          {
+            "gameId": "2026-playoffs-nfc-wildcard-0-ARI-GB",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "nfc-wildcard",
+            "round": "wildcard",
+            "homeTeamId": "GB",
+            "awayTeamId": "ARI",
+            "homeScore": 15,
+            "awayScore": 40,
+            "winnerId": "ARI"
+          },
+          {
+            "gameId": "2026-playoffs-afc-divisional-0-LAC-KC",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "afc-divisional",
+            "round": "divisional",
+            "homeTeamId": "KC",
+            "awayTeamId": "LAC",
+            "homeScore": 41,
+            "awayScore": 27,
+            "winnerId": "KC"
+          },
+          {
+            "gameId": "2026-playoffs-afc-divisional-0-BAL-NYJ",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "afc-divisional",
+            "round": "divisional",
+            "homeTeamId": "NYJ",
+            "awayTeamId": "BAL",
+            "homeScore": 27,
+            "awayScore": 14,
+            "winnerId": "NYJ"
+          },
+          {
+            "gameId": "2026-playoffs-nfc-divisional-0-ARI-DAL",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "nfc-divisional",
+            "round": "divisional",
+            "homeTeamId": "DAL",
+            "awayTeamId": "ARI",
+            "homeScore": 19,
+            "awayScore": 9,
+            "winnerId": "DAL"
+          },
+          {
+            "gameId": "2026-playoffs-nfc-divisional-0-ATL-SEA",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "nfc-divisional",
+            "round": "divisional",
+            "homeTeamId": "SEA",
+            "awayTeamId": "ATL",
+            "homeScore": 18,
+            "awayScore": 10,
+            "winnerId": "SEA"
+          },
+          {
+            "gameId": "2026-playoffs-afc-conference-0-NYJ-KC",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "afc-conference",
+            "round": "conference",
+            "homeTeamId": "KC",
+            "awayTeamId": "NYJ",
+            "homeScore": 44,
+            "awayScore": 48,
+            "winnerId": "NYJ"
+          },
+          {
+            "gameId": "2026-playoffs-nfc-conference-0-SEA-DAL",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "nfc-conference",
+            "round": "conference",
+            "homeTeamId": "DAL",
+            "awayTeamId": "SEA",
+            "homeScore": 16,
+            "awayScore": 6,
+            "winnerId": "DAL"
+          },
+          {
+            "gameId": "2026-playoffs-super-bowl-0-DAL-NYJ",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "super-bowl",
+            "round": "super-bowl",
+            "homeTeamId": "NYJ",
+            "awayTeamId": "DAL",
+            "homeScore": 0,
+            "awayScore": 10,
+            "winnerId": "DAL"
+          },
+          {
+            "gameId": "2026-playoffs-super-bowl-0-DAL-NYJ",
+            "year": 2026,
+            "week": 0,
+            "seasonType": "playoffs",
+            "label": "super-bowl",
+            "round": "super-bowl",
+            "homeTeamId": "NYJ",
+            "awayTeamId": "DAL",
+            "homeScore": 0,
+            "awayScore": 10,
+            "winnerId": "DAL"
+          }
+        ]
+      },
+      "claimId": "[\"P2026-CLE-LB-10032552\",\"2026-regular-regular-season-18-CLE-BAL\"]",
+      "estimate": {
+        "version": "medical-claim-estimate-v1",
+        "advances": 3,
+        "weeklyAmountCents": 3277778,
+        "amountCents": 9833334,
+        "kind": "modeled-medical-estimate"
+      }
+    },
+    "claim": {
+      "version": "elevation-injury-salary-claim-v1",
+      "claimId": "[\"P2026-CLE-LB-10032552\",\"2026-regular-regular-season-18-CLE-BAL\"]",
+      "playerId": "P2026-CLE-LB-10032552",
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "injuryYear": 2026,
+      "filedYear": 2026,
+      "claimedCents": 9833334,
+      "reservedCents": 3933334,
+      "status": "settled",
+      "resolution": {
+        "year": 2027,
+        "paidCents": 8555001,
+        "regularGameEquivalents": 0,
+        "clubAccepted": true,
+        "playerAccepted": true,
+        "statutoryRightsPreserved": true,
+        "pensionTreatment": "separate-review-required"
+      }
+    }
+  },
+  "controlledGM": {
+    "scope": "Explicit controlledTeamId CLE counterfactual; actual annual command, no filing or offer command",
+    "claim": {
+      "version": "elevation-injury-salary-claim-v1",
+      "claimId": "[\"P2026-CLE-LB-10032552\",\"2026-regular-regular-season-18-CLE-BAL\"]",
+      "playerId": "P2026-CLE-LB-10032552",
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "injuryYear": 2026,
+      "filedYear": 2026,
+      "claimedCents": 9833334,
+      "reservedCents": 3933334,
+      "status": "filed"
+    }
+  },
+  "findings": [
+    "No pre-existing claim for the player; annual command automatically files and settles a modeled CPU-club claim after practice-term expiry.",
+    "No player filing choice or club denial is supplied by this command; the branch treats term plus remaining injury as sufficient.",
+    "The probe does not establish that individual payments or a modeled dispute are unlawful; it demonstrates missing entitlement/dispute authority."
+  ],
+  "requiredSeparation": [
+    "Employment term",
+    "Admitted continuing injury entitlement",
+    "Actual disputed liability and chosen grievance route",
+    "Medical recovery",
+    "Cash/cap and source-year classification"
+  ],
+  "primarySource": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+  "sourceClauses": [
+    "Appendix J paragraph1",
+    "Article33 section5(k/l)",
+    "Article44 section1"
+  ],
+  "diagnosticScriptSha256": "c7dd99dd1ac73bfbedd3160112468afb5cccc8279b3f1b4e38f6d3b9d623dd64",
+  "independentReview": {
+    "file": ".cache/annual-expiry-entitlement-review.json",
+    "sha256": "4d19bf1715708c038bd531f8ef8cfa67309e9db4804c762846c727d692778ce5",
+    "verdict": "DIAGNOSTIC_SUPPORTED_AUTHORITY_GAP",
+    "scope": "Independent source/receipt/CBA inspection of original CPU branch, no independent rerun; controlled-GM comparison added afterward and verified primarily"
+  },
+  "implementationStatus": "correction-required-no-new-runtime-policy",
+  "repairConstraints": [
+    "Persist distinct admitted continuation, actual club denial/disputed duration, claimant election and settlement authority; expiry must not invent a dispute or extinguish an admitted obligation.",
+    "Select grievance route from actual trigger: Article33 entitlement/duration dispute versus actual club termination. Do not equate expiry with Article44 termination. Preserve appropriate neutral medical process and separate statutory/pension authority.",
+    "Protect original paid receipts/history/claim files and source-club financialyear attribution; no retroactive recomputation/erasure of modeled legacy settlements.",
+    "Keep already genuine filed claims negotiable and originalclub GM/CPU offers working; do not silently convert all liabilities to the fictional80–100% bargaining branch.",
+    "Before continuing GM annual commands, preflight rights/cash/calendar on copies; allow sourced admitted continuation or explicitly modeled voluntary resolution, otherwise actionable atomic refusal. Do not strand ordinary unrelated clubs.",
+    "Test no-dispute expiry with continuing incapacity, genuine denial/duration disagreement, actual termination, healthy recovery, user/CPU election/consent, crossyear originalpayer/cap and named-save/retry, no manufactured physical-game/pension proof."
+  ]
+}

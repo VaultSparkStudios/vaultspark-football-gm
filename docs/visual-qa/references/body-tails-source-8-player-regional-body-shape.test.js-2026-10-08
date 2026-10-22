@@ -1,0 +1,70 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {playerAppearance,playerFrame} from '../src/domain/playerIdentity.js';
+import {resolveRegionalBodyShape} from '../src/domain/playerMeasurements.js';
+import {ensurePlayerVisualIdentity,validateSnapshotVisualIdentity} from '../src/domain/playerVisualIdentity.js';
+import {createSession,createSessionFromSnapshot} from '../src/runtime/bootstrap.js';
+import {buildPlayerPhysiqueSvg} from '../public/lib/playerPortrait.js';
+import {buildPlayerMotionSvg} from '../public/lib/playerMotion.js';
+const player=seed=>ensurePlayerVisualIdentity({id:'regional-control',age:24,heightInches:74,weightLbs:225,armLengthInches:33,handLengthInches:8,ratings:{strength:70,speed:70},profile:{regionalBodyShapeRecipe:{version:'regional-body-shape-v1',seed}}},{newPlayer:true});
+
+test('new regional shape persists through career/save while grooming, team and capabilities preserve shape',()=>{
+  const session=createSession({seed:972,startYear:2026,controlledTeamId:'BUF'}),p=session.league.players[0],before=playerFrame(p),rng=structuredClone(session.rng);
+  assert.equal(p.profile.regionalBodyShapeRecipe.version,'regional-body-shape-v3');
+  const restored=createSessionFromSnapshot(session.toSnapshot());assert.deepEqual(playerFrame(restored.league.players.find(q=>q.id===p.id)),before);
+  const q={...p,age:p.age+5,name:'New name',teamId:'KC',ratings:{...p.ratings,speed:99,agility:40,jumping:99}};
+  assert.deepEqual(playerFrame(q),before);
+  assert.deepEqual(resolveRegionalBodyShape({...q,weightLbs:p.weightLbs+30}),resolveRegionalBodyShape(p));
+  assert.notEqual(playerFrame({...p,weightLbs:p.weightLbs+30}).volumeBudgetInches3,before.volumeBudgetInches3);
+  assert.deepEqual(structuredClone(session.rng),rng);
+});
+
+test('equal-size independent regional allocations conserve volume without replacing skeleton or face',()=>{
+  const frames=[];
+  for(let i=0;i<200;i++){
+    const p=player(`regional-${i}`),f=playerFrame(p);frames.push(f);
+    assert.equal(f.heightInches,74);assert.equal(f.weightLbs,225);
+    assert.ok(Math.abs(f.torsoVolumeInches3+f.legsVolumeInches3+f.armsVolumeInches3+f.neckVolumeInches3+f.reservedVolumeInches3-f.volumeBudgetInches3)<1e-8);
+    assert.ok(f.legsVolumeInches3>f.volumeBudgetInches3*.24);
+    // Independently integrate elliptical torso sections, including solved
+    // depth when recorded shoulders impose the width floor.
+    let torso=0;const steps=1000;
+    for(let n=0;n<steps;n++){
+      const scale=1+((n+.5)/steps)*(f.waistRatio-1);
+      torso+=Math.PI/4*f.chestWidthInches*f.chestDepthInches*scale**2*f.torsoLengthInches/steps;
+    }
+    assert.ok(Math.abs(torso/f.torsoVolumeInches3-1)<1e-7);
+    const body={...p,appearance:playerAppearance(p),visualFrame:f};
+    for(const view of ['front','side'])assert.doesNotMatch(buildPlayerPhysiqueSvg(body,{view}),/NaN|Infinity|undefined/);
+    for(const mode of ['run','jump','acceleration','cut'])assert.doesNotMatch(buildPlayerMotionSvg(body,{mode,phase:.37,idSuffix:'regional'}),/NaN|Infinity|undefined/);
+    const strong=playerFrame({...p,ratings:{...p.ratings,strength:99}});
+    assert.deepEqual(f,strong,'modern static definition and anatomy are independent of strength');
+    if(i){for(const key of ['upperArmShare','upperLegShare','pelvicBreadthInches','footLengthInches','footWidthInches','shoulderSpanInches','armLengthInches','torsoShare'])assert.equal(f[key],frames[0][key]);assert.deepEqual(playerAppearance(p),playerAppearance(player('regional-0')));}
+  }
+  for(const key of ['upperArmWidth','thighWidth','neckDiameterInches','waistRatio','chestDepthInches'])assert.ok(new Set(frames.map(f=>f[key])).size>190,key);
+});
+
+test('unsupported body recipes are refused for active, retired and pending prospects before mutation',()=>{
+  for(const recipe of [{version:'wrong',seed:'x'},{version:'regional-body-shape-v1',seed:''},{version:'regional-body-shape-v1',seed:'x',fatPercent:10}]){
+    const p={profile:{regionalBodyShapeRecipe:recipe}},before=structuredClone(p);
+    assert.throws(()=>ensurePlayerVisualIdentity(p),/visual identity/);assert.deepEqual(p,before);
+    for(const league of [{players:[p]},{retiredPlayers:[p]},{pendingDraft:{available:[p]}}])assert.throws(()=>validateSnapshotVisualIdentity({league}),/visual identity/);
+  }
+});
+
+test('absent regional recipe retains exact prior frame for legacy and anatomy-only saves',async context=>{
+  const dir='.cache/regional-body-shape-before';if(!fs.existsSync(dir)){context.skip('Preserved previous source exists only in local implementation evidence.');return;}
+  const resolve=source=>source.replace(/from (['"])(\.\.?\/[^'"]+)\1/g,(_,q,s)=>`from ${q}${pathToFileURL(path.resolve('src/domain',s)).href}${q}`);
+  const previousMeasurements=`data:text/javascript;base64,${Buffer.from(resolve(fs.readFileSync(`${dir}/playerMeasurements.js.txt`,'utf8'))).toString('base64')}`;
+  const source=resolve(fs.readFileSync(`${dir}/playerIdentity.js.txt`,'utf8').replace('"./playerMeasurements.js"',`"${previousMeasurements}"`));
+  const old=await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+  let count=0;
+  for(const heightInches of [62,74,86])for(const weightLbs of [140,225,400])for(const anatomy of [false,true]){
+    const p={id:'old-regional',heightInches,weightLbs,profile:anatomy?{individualAnatomyRecipe:{version:'individual-anatomy-v1',seed:'old'}}:{}};
+    ensurePlayerVisualIdentity(p);assert.equal(p.profile.regionalBodyShapeRecipe,undefined);
+    assert.deepEqual(playerFrame(p),old.playerFrame(p));count++;
+  }assert.equal(count,18);
+});

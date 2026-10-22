@@ -4,6 +4,8 @@
 // several historical header shapes. Session number, never document position, is
 // the ordering authority. Every consumer gets the same parsed block contract.
 
+import { V3_CATS } from './sil-categories.mjs';
+
 // `##` ONLY — a `###` sub-heading is an ADDENDUM to the session above it, not a
 // session of its own. Matching `###` here made every addendum a phantom duplicate
 // entry carrying `total: null`, and (because addenda are appended out of document
@@ -39,6 +41,17 @@ function revisionsBySession(markdown) {
   return map;
 }
 
+/**
+ * S372 [Vorn S386] — the display label of each canonical category key, DERIVED from
+ * the one list of keys (sil-categories.mjs) rather than typed a second time:
+ * `processQuality` → `Process Quality`. `crossRepoCoherence` is the only key whose
+ * label is not a plain word split.
+ */
+export const SIL_CATEGORY_LABELS = Object.freeze(Object.fromEntries(V3_CATS.map((key) => {
+  const words = key.replace(/([a-z])([A-Z])/g, '$1 $2');
+  return [key, (words[0].toUpperCase() + words.slice(1)).replace(/^Cross Repo\b/, 'Cross-Repo')];
+})));
+
 const CATEGORY_ALIASES = new Map([
   ['cross-repo coherence', 'Cross-Repo Coherence'],
   ['cross-repo coher', 'Cross-Repo Coherence'],
@@ -47,7 +60,23 @@ const CATEGORY_ALIASES = new Map([
   ['automation coverage', 'Automation Coverage'],
   ['automation cover', 'Automation Coverage'],
   ['engagement (infra)', 'Engagement'],
+  // S372 [Vorn S386] — some ledgers label their rows with the PROJECT_STATUS keys
+  // (`devHealth`, `processQuality`, …). Without these every category read as an
+  // unknown label, the forecaster found no series, and Vorn's brief published a
+  // projection of 0/1000 for five sessions. Keyed on the separator-free form, so
+  // `devHealth`, `dev_health`, `dev-health` and `Dev Health` are one label.
+  ...V3_CATS.map((key) => [key.toLowerCase(), SIL_CATEGORY_LABELS[key]]),
 ]);
+
+/** Row label → the one canonical label; an unknown label is returned as written. */
+function canonicalLabel(raw) {
+  const lookup = (text) => {
+    const lower = text.toLowerCase();
+    return CATEGORY_ALIASES.get(lower) ?? CATEGORY_ALIASES.get(lower.replace(/[\s_-]+/g, ''));
+  };
+  const bare = raw.replace(/\s*\([^)]*\)\s*$/, '');
+  return lookup(raw) ?? lookup(bare) ?? bare;
+}
 
 function numberMatch(text, label) {
   const re = new RegExp(`(?:\\*\\*)?${label}:(?:\\*\\*)?\\s*(\\d+)`, 'i');
@@ -60,13 +89,45 @@ function totalMatch(text) {
   return match ? { total: Number(match[1]), max: Number(match[2]) } : { total: null, max: null };
 }
 
+/**
+ * S323 — READ THE CURRENT COLUMN, NOT THE FIRST ONE.
+ *
+ * THE DEFECT. The row regex captured the FIRST numeric cell after the label. The
+ * live table is `| Category | Prev | Now | Trend | Note |`, so every consumer of
+ * `entry.categories` was reading the PREVIOUS session's scores under the current
+ * session's heading — plausible at a glance, because they are real numbers in the
+ * right range and they move.
+ *
+ * Measured live before the fix: `decompose-sil-gap` published `Process Quality
+ * 93/100 gap=7` for S322, whose actual Process Quality is **82** (gap 18). The
+ * founder-facing gap decomposition was showing S321's numbers as current, and the
+ * single largest gap in the ledger was invisible. The same shifted series fed
+ * `generate-innovation-pack`'s "SIL category drop" detector (comparing two Prev
+ * columns, so it notices a drop one session late), `sil-forecaster`, and
+ * `render-sil-trends` → portfolio/SIL_TRENDS.json.
+ *
+ * The fix takes the LAST cell of the leading contiguous run of purely-numeric
+ * cells, which is `Now` in the five-column shape and the only score in older
+ * two-column entries — so historical rows keep parsing as they did. A `Note`
+ * column containing digits cannot be captured, because the run stops at the first
+ * non-numeric cell.
+ */
 function parseCategories(block) {
   const categories = {};
-  const rowRe = /^\|\s*(?:\d+\s*\|\s*)?([A-Za-z][^|]+?)\s*\|\s*(\d+)\s*\|/gm;
+  const rowRe = /^\|\s*(?:\d+\s*\|\s*)?([A-Za-z][^|]+?)\s*\|([^\n]*)$/gm;
   for (const match of String(block).matchAll(rowRe)) {
-    let label = match[1].trim().replace(/\s+/g, ' ');
-    label = CATEGORY_ALIASES.get(label.toLowerCase()) ?? label.replace(/\s*\([^)]*\)\s*$/, '');
-    categories[label] = Number(match[2]);
+    const label = canonicalLabel(match[1].trim().replace(/\s+/g, ' '));
+    // A score is frequently emphasised when it MOVED (`**82**`), which is exactly the
+    // row that matters most — so emphasis must be stripped before the numeric test,
+    // or the contiguous run stops at `Prev` and the fix silently changes nothing.
+    const cells = match[2].split('|').map((c) => c.trim().replace(/[*`_]/g, '').trim());
+    const run = [];
+    for (const c of cells) {
+      if (/^\d+$/.test(c)) run.push(Number(c));
+      else if (run.length) break;            // contiguous run ended
+      else if (c !== '') break;              // a non-numeric first cell: not a score row
+    }
+    if (run.length) categories[label] = run[run.length - 1];
   }
   return categories;
 }

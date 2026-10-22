@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T06:28:04.567Z",
+  "reviewer": "/root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Shared camera-space artistic skin lighting and modern measured-neck presentation; bounded rendering progress, not complete body/head craft.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_SKIN_CONTINUITY_2026-10-08.json",
+  "primaryReceiptSha256": "c91ecb91a4bfc97e23a228920ac03ab3f3545a6ceb89a94a5164d1768c7079c0",
+  "sourceHashes": {
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerHead3d.js": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerPortrait.js": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+    "public/lib/playerMotion.js": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/playerPortraitMotion.js": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+    "test/player-surface-lighting.test.js": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4",
+    "test/player-portrait-features.test.js": "d4148600eaf9a35a040e0d35926ce6ec49c63d6f80eb3ec218ed1ef1b6300a55",
+    "test/player-motion.test.js": "0c5c03760db3af198c2710a0af86cce9b88c357e52c1258ae11ccf50d210fb7f",
+    "test/player-motion-surfaces.test.js": "73d5379f32cacf6e8ebc9d2263c054a0754eab989498a2b0571a6fe8cbebe068",
+    "test/player-regional-sections.test.js": "2c2fcc5f436cba196f7b9198948b49d8a768a1c77e5916dde42e272b9fbf2f5c",
+    "test/player-shared-head.test.js": "7443c5846ad5cd316083b4ca103d89b7cd7fafff19c7435e201ea4da13c83aed",
+    ".cache/production-head-contracts.test.mjs": "d312efa8d182a9f37b511a0004412018a9c90727a86dee249303e553c4d48ca7",
+    "tests-ui/player-skin-continuity.spec.js": "1cbda8988e9c8a66954b8bbd4d5158f64ad2d188ac1c17ff2b8027209bd3a478",
+    "tests-ui/player-head-anatomy-gallery.spec.js": "94f29c693aeb4730a2f2e440f6bb902e8b817fd4504a3c46a6a6f9cd535add16",
+    "tests-ui/player-portrait-motion.spec.js": "499447dade5d1079f1410ba8382549bd92a88a23c2141b5aa58a467f83558a90",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+    "scripts/run-test-shard.mjs": "d300a7813c0dd8d78def8621590a21ceada8b012f12438c7faafdff838544c19"
+  },
+  "bindings": {
+    "sources": 21,
+    "inputs": 6,
+    "captures": 65,
+    "supportingJsons": 5,
+    "allFrozenAndCurrentSourceHashesMatch": true,
+    "built": {
+      "playerSurfaceLighting.js": {
+        "sourceSha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+        "builtSha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+        "normalizedTextEqual": true,
+        "byteEqual": true
+      },
+      "appearancePalette.js": {
+        "sourceSha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+        "builtSha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+        "normalizedTextEqual": true,
+        "byteEqual": true
+      },
+      "playerHead3d.js": {
+        "sourceSha256": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8",
+        "builtSha256": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8",
+        "normalizedTextEqual": true,
+        "byteEqual": true
+      },
+      "playerPortraitFace.js": {
+        "sourceSha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+        "builtSha256": "39a07707a1d0ea1e5dd2a5ff796c567b857718f843ec366d40ce0a3e46e587d1",
+        "normalizedTextEqual": true,
+        "byteEqual": false
+      },
+      "playerPortrait.js": {
+        "sourceSha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+        "builtSha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+        "normalizedTextEqual": true,
+        "byteEqual": true
+      },
+      "playerMotion.js": {
+        "sourceSha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+        "builtSha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+        "normalizedTextEqual": true,
+        "byteEqual": true
+      }
+    },
+    "buildNormalizationQualification": "Five changed modules byte-identical; playerPortraitFace differs only line-ending normalization, normalized text exact."
+  },
+  "independentEvidence": [
+    {
+      "command": "node --test test/player-surface-lighting.test.js test/player-shared-head.test.js test/player-whole-head-form.test.js",
+      "tests": 10,
+      "passed": 8,
+      "failed": 2,
+      "skipped": 0,
+      "durationMs": 2080.7661,
+      "terminalChunk": "aefd8d",
+      "qualification": "New shared-lighting2 and existing shared-head4 passed. Two existing whole-head tests failed; this command is not a green suite."
+    },
+    {
+      "check": "Immediate frozen-before front/full/head-only fallback comparisons across v2/v3, detail present/absent and all48 legal style-textures.",
+      "comparisons": 384,
+      "exactMatches": 384,
+      "terminalChunk": "975454",
+      "method": "Imported frozen immediate-before playerPortraitFace through a data URL with absolute current unchanged relative dependencies; same generated DTOs, no graphics context."
+    },
+    {
+      "check": "Immediate frozen-before modern no-WebGL fallback: six movement modes at phase.37 with explicit resource suffixes, plus staticfront/staticprofile.",
+      "comparisons": 8,
+      "exactMatches": 8,
+      "terminalChunk": "4a35e4",
+      "method": "Imported frozen playerMotion/playerPortrait through data URLs with absolute current dependency URLs; unsupported-context fallback path. This is not a GL render proof."
+    },
+    {
+      "check": "Full/headOnly mesh arrays/parts/anatomy/material metadata against immediate frozen head baseline for three controlled fixtures.",
+      "comparisons": 6,
+      "exactMatches": 6,
+      "terminalChunk": "0ccc84",
+      "method": "deepEqual whole buildHeadMesh3d outputs; same saved controls/colors/identitySeed."
+    },
+    {
+      "check": "Review material equations and normal direction handling",
+      "result": "CPU diffuse/specular/gamma expression agrees with centralized GLSL skin model; CPU clamps and rounds8-bit output, shader framebuffer quantizes. Screen-down SVG y converts to camera-up normal y. Dense stops and per-bone normals are artistic cross-section approximations, not full 3D skin normals."
+    },
+    {
+      "check": "Frozen source/input/capture/supporting JSON SHA verification and source-built text identity",
+      "terminalChunk": "fc8aa3",
+      "result": "All97 frozen entries match; current source matches all21 source hashes; allsix changed build modules match normalized source."
+    }
+  ],
+  "primaryObservedEvidence": {
+    "attribution": "Root execution and frozen report; reviewer did not rerun final browser/primary grouped Node jobs.",
+    "checks": {
+      "focusedNode": {
+        "passed": 24,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 3362.5798,
+        "terminalChunk": "205d96"
+      },
+      "geometryNode": {
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 14855.2491,
+        "terminalChunk": "587b9b"
+      },
+      "skinBrowser": {
+        "passed": 3,
+        "failed": 0,
+        "durationSeconds": 29.7,
+        "terminalChunk": "9b061b",
+        "scope": "25 CPU/GPU lighting comparisons; three-person complete-body gallery with six motion modes; actual before/after dossier with equal body path coordinates and complete DTO"
+      },
+      "fallbackBrowser": {
+        "passed": 1,
+        "failed": 0,
+        "durationSeconds": 5.4,
+        "terminalChunk": "277014",
+        "scope": "Real unavailable-WebGL portrait fallback remains exact"
+      },
+      "currentClosureAndRecovery": {
+        "passedCases": 2,
+        "terminalChunk": "cab44d",
+        "qualification": "These two current-source cases passed in a mixed run containing four passes and one failed new gallery assertion. Gallery scanned PNG base64 for NaN; structural assertion was corrected and all three skin cases then passed. This is not a unified five-case green run.",
+        "closedEyeComparisons": 18,
+        "closedEyeExposedPixels": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "contextRecoveryExactOpen": true
+      },
+      "shader": {
+        "samples": 25,
+        "maxChannelError": 0,
+        "scope": "Flat controlled diffuse material across five pigments and five camera-space normals; not whole-body anatomical reconstruction"
+      },
+      "actualDossier": {
+        "playerId": "P2026-BUF-LB-33468504",
+        "bodyPathCoordinatesUnchanged": true,
+        "playerUnchanged": true,
+        "projectionAgreement": [
+          {
+            "mode": "run",
+            "frontBody": true,
+            "sideMotion": true
+          },
+          {
+            "mode": "acceleration",
+            "frontBody": true,
+            "sideMotion": true
+          },
+          {
+            "mode": "cut",
+            "frontBody": true,
+            "sideMotion": true
+          },
+          {
+            "mode": "jump",
+            "frontBody": true,
+            "sideMotion": true
+          },
+          {
+            "mode": "strength",
+            "frontBody": true,
+            "sideMotion": true
+          },
+          {
+            "mode": "endurance",
+            "frontBody": true,
+            "sideMotion": true
+          }
+        ]
+      },
+      "build": {
+        "passed": true,
+        "terminalChunk": "131a23",
+        "precacheVersion": "5a1f3da36bb0",
+        "assets": 318,
+        "sizeKB": 3528
+      },
+      "browserReachability": {
+        "passed": true,
+        "terminalChunk": "3fdd57",
+        "modules": 138,
+        "entries": 4
+      },
+      "bootBudget": {
+        "passed": true,
+        "terminalChunk": "1627fd",
+        "bytes": 649321,
+        "byteLimit": 730000,
+        "modules": 51,
+        "moduleLimit": 58,
+        "lazyLeaks": 0
+      }
+    },
+    "qualification": "Skin3-case rerun and fallback1-case were independently green primary runs. Closure/recovery2cases passed in the prior mixed4PASS/1FAIL run; no unified five-case green result is claimed. The gallery failure was structural numeric scan over embedded PNG base64; corrected test excludes only PNG payload from numeric markup scan."
+  },
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/skin-continuity-component-skin-continuity-after-desktop-light-body.png",
+      "sha256": "7d64c310c4831499e019f76742decbd6945e15e46a5c9aeb5ceab001a5db3bd2",
+      "inspection": "Direct original rendered-PNG view_image inspection; first four read from identical output/playwright copies, then frozen bindings verified."
+    },
+    {
+      "file": "docs/visual-qa/captures/skin-continuity-component-skin-continuity-before-desktop-light-body.png",
+      "sha256": "e48facc438d2a911cb5101131eb6ea1be385fd7a3c2179e987a88ad87913209e",
+      "inspection": "Direct original rendered-PNG view_image inspection; first four read from identical output/playwright copies, then frozen bindings verified."
+    },
+    {
+      "file": "docs/visual-qa/captures/skin-continuity-component-skin-continuity-gallery-0-desktop-dark.png",
+      "sha256": "eaab96f82c7ab24b9932e186ef1999e333e20268d649b4322e2c8f6093656858",
+      "inspection": "Direct original rendered-PNG view_image inspection; first four read from identical output/playwright copies, then frozen bindings verified."
+    },
+    {
+      "file": "docs/visual-qa/captures/skin-continuity-component-skin-continuity-gallery-2-mobile-light.png",
+      "sha256": "8df30275b9a5d161e8360a82f11993749664070c58ce266c8e7e8e80a10173f6",
+      "inspection": "Direct original rendered-PNG view_image inspection; first four read from identical output/playwright copies, then frozen bindings verified."
+    },
+    {
+      "file": "docs/visual-qa/captures/skin-continuity-component-skin-continuity-before-mobile-light-portrait.png",
+      "sha256": "30ba46c5cdd1a722d9e17d5cdb871788fd2f97a3907353f5f5240c55629a82a9",
+      "inspection": "Direct original rendered-PNG view_image inspection; first four read from identical output/playwright copies, then frozen bindings verified."
+    },
+    {
+      "file": "docs/visual-qa/captures/skin-continuity-component-skin-continuity-after-mobile-light-portrait.png",
+      "sha256": "c11538df0ff2c2973efdabcb3e1b5b841ddf01c7b1138360d7d5525c28daec87",
+      "inspection": "Direct original rendered-PNG view_image inspection; first four read from identical output/playwright copies, then frozen bindings verified."
+    },
+    {
+      "file": "docs/visual-qa/captures/skin-continuity-component-skin-continuity-after-desktop-dark-portrait.png",
+      "sha256": "8c15373c261c910a5f45854df55bb2055a1e0136ac4d585acf04c55f31962d88",
+      "inspection": "Direct original rendered-PNG view_image inspection; first four read from identical output/playwright copies, then frozen bindings verified."
+    }
+  ],
+  "findings": [
+    {
+      "status": "SCOPED_PROGRESS",
+      "finding": "Head, neck and limbs share the same artistic albedo/light response. The selected body and neck images look rounder and less disconnected from the rendered head.",
+      "disposition": "No new conspicuous joint seam, clipping or shape corruption found in inspected ordinary desktop/mobile dark/light views."
+    },
+    {
+      "status": "INHERITED_ADJACENT_TEST_FAILURE",
+      "finding": "player-whole-head-form.test.js eyelid midpoint<135 assertion and old384 legacy-output hash fixture fail on current source.",
+      "disposition": "The component does not change fineFaceGeometry, and384 direct immediate-before/current front/head-only renders match exactly. These failures remain adjacent verification work; old expectations were not refreshed or waived, and full-suite acceptance staysfalse."
+    },
+    {
+      "status": "OPEN_FULL_QUALITY",
+      "finding": "SVG body normals remain synthetic cross-section samples; hands/joints and neck transitions remain simplified. Complete faces and bodies still look stylized/mannequin-like, with cap hair, sparse/painted beard, simplified ears and rigid expressions.",
+      "disposition": "Keep full appearance quality blocker open. This shared-material PASS does not certify complete natural adult-person appearance or empirical anatomy."
+    }
+  ],
+  "limits": [
+    "Only seven listed original PNGs independently visually inspected;65 capture hashes verified, not all65 visually inspected.",
+    "GPU shader25 samples/current closure/context recovery and actual GL-driven body-path/DTO equality are primary-observed evidence, not independently rerun here.",
+    "Exact fallback comparisons use current generated DTOs and current unchanged dependencies with immediate-before render modules; they prove this material delta preserves those outputs, not that every historical fixture expectation is correct.",
+    "Surface lighting is a power2.2 artistic color model, not a fitted physiological/material model or full sRGB/colorimetry claim.",
+    "No statistical cohort/empirical demographic/body-composition calibration, complete football RNG/outcome counterfactual or long-career verification performed.",
+    "Two inherited adjacent tests remain failing; no whole-suite, release or complete appearance acceptance."
+  ],
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

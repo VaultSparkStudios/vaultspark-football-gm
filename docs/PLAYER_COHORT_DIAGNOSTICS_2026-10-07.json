@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "recordedAt": "2026-10-07T08:05:32.099Z",
+  "kind": "generated-cohort-diagnostic-summary",
+  "sourceHashes": {
+    "src/domain/playerIdentity.js": "7e1dcf529ea6170e5606b7bf9572e843c9c7b5edee7a15d4d5078f9345ca6754",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerMeasurements.js": "2d8ccd15fa403a7991a70fe0d5f2e00a29fd4dd47ba3e860ed1ccddf95e38124",
+    "src/domain/playerDemographicModel.js": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370",
+    "src/domain/playerFactory.js": "3065bc39f7d8ba1cf5743235094e81bd54a93fb4e70df250ec152e68b26c4323",
+    "src/data/playerDemographicBaseline.js": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699",
+    "src/data/playerFamilyHeritage.js": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8",
+    "src/runtime/GameSession.js": "2a50c9d5927eb1d372ca43486f62be40b6617ab3cb268918c3a90fcd043a5b28",
+    "scripts/inspect-player-cohorts.mjs": "68275f3558b20308a13240813a11c7644341f55ce2d49e166151aaef243ba7b6"
+  },
+  "reportSha256": "5106ceab014a8b468c0e11f376de22e5fdbdf4dce795bc434b6cb69053599bca",
+  "seeds": [
+    117,
+    2026,
+    4040,
+    7411,
+    8354,
+    20260306
+  ],
+  "cohorts": [
+    {
+      "name": "opening-active",
+      "populationYear": 2026,
+      "n": 10176,
+      "clubSeedObservations": 192,
+      "overallRange": {
+        "minimum": 22,
+        "maximum": 50
+      },
+      "minimumMaximumPotentialGap": 18,
+      "minimumDistinctHairstyles": 11,
+      "clubsWithDuplicateAppearanceRecipes": 0,
+      "clubsWithDuplicateFrameRecipes": 0
+    },
+    {
+      "name": "opening-practice",
+      "populationYear": 2026,
+      "n": 3072,
+      "clubSeedObservations": 192,
+      "overallRange": {
+        "minimum": 8,
+        "maximum": 43
+      },
+      "minimumMaximumPotentialGap": 15,
+      "minimumDistinctHairstyles": 6,
+      "clubsWithDuplicateAppearanceRecipes": 0,
+      "clubsWithDuplicateFrameRecipes": 0
+    },
+    {
+      "name": "draft-board",
+      "populationYear": 2027,
+      "n": 1536,
+      "clubSeedObservations": 0
+    },
+    {
+      "name": "actual-undrafted-admission",
+      "populationYear": 2027,
+      "n": 192,
+      "clubSeedObservations": 0
+    }
+  ],
+  "invarianceChecks": 14976,
+  "independentReview": {
+    "round": 1,
+    "verdict": "pass",
+    "findings": 0,
+    "scope": "Diagnostic source and output only"
+  },
+  "limits": [
+    "Generated distributions are simulation outputs, not measured world or NFL phenotype frequencies.",
+    "The dated 2023 reporting margin is not certified for separate practice, draft or undrafted cohorts.",
+    "Birthplace, pigment and body conditional weights remain simulation assumptions.",
+    "Numerical diversity does not prove visible realism; group channels report observed variation, not an aesthetic verdict.",
+    "Version/derived/hidden controls may remain constant or inapplicable; cardinality alone is not visible control coverage.",
+    "Groups with fewer than two observations cannot establish within-group variation; controlled rare-category fixtures are separate from prevalence.",
+    "Background counterfactuals check saved appearance/frame decoders; they do not execute football outcomes.",
+    "Distinct numerical recipes do not prove visible distinction at product size.",
+    "These opening/draft diagnostics do not replace the required managed 20–30-season verification."
+  ]
+}

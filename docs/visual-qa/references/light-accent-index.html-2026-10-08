@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="vsfgm-runtime-default" content="client" />
+    <meta name="vsfgm-server-available" content="false" />
+    <meta name="vsfgm-server-base-url" content="" />
+    <meta name="fa-community-api" content="https://api-franchise-architect-football.vaultsparkstudios.com/community/v1" />
+    <title>Franchise Architect: Football — Free Browser Football Franchise Sim</title>
+    <meta name="description" content="Run a football franchise for decades in your browser: contracts, the salary cap, scouting, the draft, and 31 rival front offices that remember you. Free early access." />
+    <meta property="og:title" content="Franchise Architect: Football — Build Your Dynasty" />
+    <meta property="og:description" content="A football franchise sim that runs in your browser. Contracts, the cap, scouting, the draft, and 31 rival front offices that remember you. Free early access." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://playfranchisearchitect.com/" />
+    <meta property="og:image" content="https://playfranchisearchitect.com/images/cover.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Franchise Architect: Football" />
+    <meta name="twitter:description" content="A football franchise sim that runs in your browser. Build your dynasty. Free early access." />
+    <meta name="twitter:image" content="https://playfranchisearchitect.com/images/cover.png" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <script src="./lib/themeBoot.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./site.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Franchise Architect: Football",
+        "url": "https://playfranchisearchitect.com/",
+        "description": "A football franchise management game that runs in the browser: contracts, the salary cap, scouting, the draft, rival front offices with memory, and a league that keeps its own history. Free early access.",
+        "applicationCategory": "Game",
+        "genre": ["Sports", "Simulation", "Strategy", "Management"],
+        "gamePlatform": "Web Browser",
+        "operatingSystem": "Any (browser-based)",
+        "playMode": "SinglePlayer",
+        "inLanguage": "en",
+        "image": "https://playfranchisearchitect.com/images/cover.png",
+        "screenshot": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+        "author": { "@type": "Organization", "name": "VaultSpark Studios", "url": "https://vaultsparkstudios.com/" },
+        "publisher": { "@type": "Organization", "name": "VaultSpark Studios", "url": "https://vaultsparkstudios.com/" },
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" }
+      }
+    </script>
+  </head>
+  <body class="setup-body">
+    <div class="bg-layer"></div>
+    <!-- The build replaces this with the shared header from footer-manifest.json;
+         it is kept in source so the dev server shows the same navigation. -->
+    <header class="site-header" data-site-header>
+      <div class="site-header-inner">
+        <a class="site-brand" href="./index.html"><img src="./images/franchise-architect-mark.svg" alt="" width="28" height="28" /><span>Franchise Architect</span></a>
+        <nav class="site-nav" aria-label="Primary"><a href="./features.html">Features</a><a href="./how-to-play.html">How to Play</a><a href="./faq.html">FAQ</a><a href="./stats">Community</a><a href="./status.html">Updates</a></nav>
+        <button id="setupThemeToggleBtn" class="theme-toggle-btn" type="button" title="Theme" aria-label="Customize theme">◐</button>
+      </div>
+    </header>
+    <main class="setup-wrap">
+
+      <!-- ── HERO ── -->
+      <section class="setup-hero">
+        <div class="setup-hero-inner">
+          <div class="brand-lockup">
+            <img class="brand-mark" src="./images/franchise-architect-mark.svg" alt="" aria-hidden="true" />
+            <div>
+              <div class="brand-kicker franchise-kicker">Franchise Architect Universe</div>
+              <h1 class="setup-title">Franchise Architect: Football</h1>
+            </div>
+          </div>
+          <p class="setup-tagline">Build a dynasty. Own every roster move, draft pick, and cap decision across decades of franchise football.</p>
+          <p class="setup-hero-sub"><!-- claims:hero-subline:start -->No account, no install, no server. It runs in your browser.<!-- claims:hero-subline:end --></p>
+          <div class="setup-hero-actions">
+            <button id="instantStartBtn" class="btn-primary btn-lg" data-testid="instant-start-btn">▶ Start Your Franchise</button>
+            <button id="continueActiveBtn" class="btn-primary btn-lg" data-testid="continue-active-btn" hidden>Continue Franchise</button>
+            <button id="resumeLatestBtn" class="btn-secondary btn-lg" data-testid="resume-latest-btn" hidden>Resume Latest Save</button>
+          </div>
+          <div class="hero-meta">
+            <span class="site-status-chip"><!-- claims:status-label:start -->Free early access<!-- claims:status-label:end --></span>
+            <span id="activeLeagueText" class="setup-session-status">Checking this browser for saved franchises...</span>
+          </div>
+          <!-- claims:hero-shot:start --><figure class="hero-shot">
+  <img src="./images/screens/hero.jpg" alt="The franchise Desk: your club, its competitive window and needs, cap space, the press room and the controls to advance the season" width="1440" height="900" loading="eager" fetchpriority="high" decoding="async" />
+</figure><!-- claims:hero-shot:end -->
+        </div>
+      </section>
+
+      <!-- ── FEATURES ── -->
+      <section class="setup-section" id="why">
+        <h2 class="setup-section-title">A franchise that remembers everything</h2>
+        <p class="setup-section-subtitle">Most franchise games let you manage a lineup. This one asks you to build an organization, and then holds you to it for decades.</p>
+
+        <div class="why-stats-bar">
+          <div class="why-stat"><strong class="stat-num">32</strong><span class="stat-label">Clubs</span></div>
+          <div class="why-stat"><strong class="stat-num">31</strong><span class="stat-label">Rival Front Offices</span></div>
+          <div class="why-stat"><strong class="stat-num">6</strong><span class="stat-label">GM Legacy Tiers</span></div>
+          <div class="why-stat"><strong class="stat-num">5</strong><span class="stat-label">First-Season Objectives</span></div>
+        </div>
+
+        <!-- claims:features-cards:start --><div class="why-grid">
+<article class="why-card">
+  <h3>A Front Office Advisor that shows its work</h3>
+  <p>Each week it argues one call, with the numbers behind it, and keeps score when you overrule it. <a href="./features.html#advisor" aria-label="More about A Front Office Advisor that shows its work">More <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>Thirty-one front offices that remember you</h3>
+  <p>Every rival general manager has a way of valuing players and a memory of your last deal. <a href="./features.html#rivals" aria-label="More about Thirty-one front offices that remember you">More <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>An owner you answer to</h3>
+  <p>Facilities cost real money and upkeep, ticket prices meet a market, and the owner&#39;s patience runs out. <a href="./features.html#boardroom" aria-label="More about An owner you answer to">More <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>Scouts give you a read, not the answer</h3>
+  <p>Draft prospects arrive in scouting fog. Spend scouting points to see more clearly. <a href="./features.html#draft" aria-label="More about Scouts give you a read, not the answer">More <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>Set the plan, then watch it play out</h3>
+  <p>A weekly tactical plan that changes how your team plays, and Sim-Watch replays of the key plays. <a href="./features.html#sim-watch" aria-label="More about Set the plan, then watch it play out">More <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>The league writes its own history</h3>
+  <p>Awards, records, a Dynasty timeline and a Hall of Fame with an induction ceremony. <a href="./features.html#history" aria-label="More about The league writes its own history">More <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>Measured realism</h3>
+  <p>Elite talent is held to a ceiling drawn from real football honors, and the limits are published. <a href="./simulation.html">See what we measure <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>A career, not a save file</h3>
+  <p>Six GM legacy tiers, from Young Gun to Immortal, earned from results. <a href="./features.html#career" aria-label="More about A career, not a save file">More <span aria-hidden="true">→</span></a></p>
+</article>
+<article class="why-card">
+  <h3>Saves that protect themselves</h3>
+  <p>Local saves, rolling backups, a rewind ledger, exports and optional Gist sync. <a href="./features.html#saves" aria-label="More about Saves that protect themselves">More <span aria-hidden="true">→</span></a></p>
+</article>
+</div><!-- claims:features-cards:end -->
+        <p class="why-more"><a class="btn-secondary" href="./features.html">See every feature</a></p>
+      </section>
+
+      <!-- ── QUICK START ── -->
+      <section class="setup-section" id="quick-start">
+        <h2 class="setup-section-title">New Franchise</h2>
+        <p class="setup-section-subtitle">Pick an era and jump straight in. One click starts your league, or customize everything below first.</p>
+
+        <div class="quickstart-grid">
+          <button id="presetModernBtn" class="quickstart-card">
+            <span class="quickstart-era">Modern</span>
+            <span class="quickstart-label">Pass-heavy era with explosive offenses and aggressive cap management.</span>
+            <span class="quickstart-go">Play now →</span>
+          </button>
+          <button id="presetBalancedBtn" class="quickstart-card quickstart-card--featured">
+            <span class="quickstart-era">Balanced</span>
+            <span class="quickstart-label">League-average tendencies. The classic franchise experience.</span>
+            <span class="quickstart-go">Play now →</span>
+          </button>
+          <button id="presetLegacyBtn" class="quickstart-card">
+            <span class="quickstart-era">Legacy</span>
+            <span class="quickstart-label">Run-first, low-tempo football. Grind it out on the ground.</span>
+            <span class="quickstart-go">Play now →</span>
+          </button>
+        </div>
+
+        <div class="setup-team-row">
+          <label class="setup-team-label">
+            Your Team
+            <select id="teamSelect" data-testid="setup-team-select"></select>
+          </label>
+          <button id="createLeagueBtn" class="btn-primary" data-testid="create-league-btn">Create League</button>
+          <span id="setupStatus" data-testid="setup-status" class="chip">Loading league data...</span>
+        </div>
+
+        <div class="challenge-code-row">
+          <label class="sr-only" for="challengeCodeInput">Challenge code</label>
+          <input id="challengeCodeInput" data-testid="challenge-code-input" type="text" maxlength="512"
+                 placeholder="Have a challenge code? Paste it here to accept a friend's duel" autocomplete="off" aria-describedby="challengeCodeHelp" />
+          <button id="applyChallengeCodeBtn" data-testid="apply-challenge-code-btn" class="btn-ghost">Accept Challenge</button>
+        </div>
+        <span id="challengeCodeHelp" class="setup-help">A challenge code starts the same league a friend is playing, from the same seed. <a href="./faq.html#challenge-codes">How challenge codes work</a></span>
+      </section>
+
+      <!-- ── COMMUNITY PULSE ── -->
+      <section class="community-pulse" data-community-pulse data-state="loading" aria-labelledby="communityPulseTitle">
+        <div class="community-pulse-head">
+          <div><span class="brand-kicker">Around the league</span><h2 id="communityPulseTitle">What GMs are doing</h2><p>See the franchises players are building, the moves they are making, and the milestones they are reaching. Updated throughout the day.</p></div>
+          <div class="community-live-mark"><span></span><strong data-community-freshness role="status" aria-live="polite">Connecting…</strong></div>
+        </div>
+        <div data-community-pulse-content data-community-prerendered="pre-cohort" aria-live="polite">
+          <div class="community-invitation" data-community-invitation>
+            <h3>The league is still filling up</h3>
+            <p>Community Stats shows the choices real general managers are making &mdash; which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here once enough players have chosen to share.</p>
+            <p>Optional and anonymous. <a href="./stats#methodology">How it works</a>.</p>
+          </div>
+          <div class="community-consent" data-participating="false" data-deletion-status="idle">
+            <div role="status" aria-live="polite"><strong>Help bring these numbers to life</strong><span>Share game choices and results without sharing your save, names, notes, or private details.</span></div>
+            <button type="button" class="btn-primary" data-community-consent>Share anonymous game stats</button>
+          </div>
+        </div>
+        <a class="community-atlas-link" href="./stats">Explore all community stats <span aria-hidden="true">→</span></a>
+      </section>
+
+      <!-- ── ADVANCED LEAGUE SETTINGS ── -->
+      <details class="setup-section setup-details" id="advanced">
+        <summary class="setup-details-toggle">Advanced: League Settings</summary>
+        <div class="setup-details-body">
+          <div class="form-grid">
+            <label>Seed
+              <input id="seedInput" data-testid="seed-input" type="number" aria-describedby="seedHelp" />
+              <span id="seedHelp" class="setup-help">The same seed and settings produce the same league.</span>
+            </label>
+            <label>Start Year
+              <input id="startYearInput" data-testid="start-year-input" type="number" />
+            </label>
+            <label>Mode
+              <select id="modeInput" data-testid="mode-input" aria-describedby="modeHelpText">
+                <option value="drive">Drive</option>
+                <option value="play">Play</option>
+              </select>
+              <span id="modeHelpText" class="setup-help">Drive is faster and more abstract. Play uses more granular play-level variance.</span>
+            </label>
+            <label>Era Profile
+              <select id="eraProfileInput">
+                <option value="modern">Modern Pass Era</option>
+                <option value="balanced">Balanced</option>
+                <option value="legacy">Legacy Run Era</option>
+              </select>
+            </label>
+            <label>Franchise Archetype
+              <select id="franchiseArchetypeInput"></select>
+            </label>
+            <label>Rules Preset
+              <select id="rulesPresetInput"></select>
+            </label>
+            <label>Difficulty
+              <select id="difficultyPresetInput"></select>
+            </label>
+            <label>Challenge Mode
+              <select id="challengeModeInput"></select>
+            </label>
+          </div>
+          <div class="row compact" style="margin-top:0.6rem">
+            <label><input id="ownerModeInput" type="checkbox" checked /> Owner Mode</label>
+            <label><input id="narrativesInput" type="checkbox" checked /> Dynamic Narratives</label>
+            <label><input id="compPicksInput" type="checkbox" checked /> Comp Picks</label>
+            <label><input id="chemistryInput" type="checkbox" checked /> Team Chemistry</label>
+          </div>
+          <div id="configSummaryContent" class="stack small"></div>
+
+          <div class="setup-advanced-block">
+            <h3>Where your league runs</h3>
+            <label class="setup-runtime-label">Runtime
+              <select id="runtimeModeSelect" aria-describedby="runtimeModeDescription">
+                <option value="client">In this browser (recommended)</option>
+                <option value="server">Dev server (advanced)</option>
+              </select>
+            </label>
+            <span id="runtimeModeDescription" class="setup-help">Your league lives in this browser — no account, no server, no install.</span>
+            <div id="setupGuideContent" class="stack small"></div>
+          </div>
+
+          <details id="dataPathsSection" class="setup-details setup-details--nested" hidden>
+            <summary class="setup-details-toggle">Data Paths (Dev Server Only)</summary>
+            <div class="setup-details-body">
+              <div class="form-grid">
+                <label>PFR Player JSON Path
+                  <input id="pfrPathInput" data-testid="pfr-path-input" type="text" placeholder="optional local path" />
+                </label>
+                <label>Realism Profile Path
+                  <input id="profilePathInput" data-testid="profile-path-input" type="text" placeholder="optional local path" />
+                </label>
+              </div>
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <!-- ── SAVES ── -->
+      <details id="savedLeaguesSection" class="setup-section setup-details">
+        <summary class="setup-details-toggle">Saved Leagues</summary>
+        <div class="setup-details-body">
+          <div class="row compact">
+            <button id="refreshSavesBtn" data-testid="refresh-saves-btn">Refresh</button>
+            <label>Search
+              <input id="saveSearchInput" data-testid="save-search-input" type="text" placeholder="slot, team, year" />
+            </label>
+            <label>Delete Slot
+              <input id="deleteSlotInput" data-testid="delete-slot-input" type="text" placeholder="slot name" />
+            </label>
+            <button id="deleteSlotBtn" data-testid="delete-slot-btn" class="warn">Delete</button>
+          </div>
+          <div class="table-wrap">
+            <table id="savesTable" data-testid="saves-table"></table>
+          </div>
+        </div>
+      </details>
+
+      <!-- ── BACKUPS ── -->
+      <details class="setup-section setup-details">
+        <summary class="setup-details-toggle">Auto Backups</summary>
+        <div class="setup-details-body">
+          <div class="row compact">
+            <button id="refreshBackupsBtn" data-testid="refresh-backups-btn">Refresh</button>
+            <label>Delete Backup
+              <input id="deleteBackupInput" data-testid="delete-backup-input" type="text" placeholder="backup slot" />
+            </label>
+            <button id="deleteBackupBtn" data-testid="delete-backup-btn" class="warn">Delete</button>
+          </div>
+          <div class="table-wrap">
+            <table id="backupsTable" data-testid="backups-table"></table>
+          </div>
+        </div>
+      </details>
+
+      <!-- ── FOOTER ── -->
+      <footer class="setup-footer">
+        <span class="setup-footer-links">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank">VaultSpark Studios</a> Game · <a href="#why">Why Franchise Architect?</a> · <a href="./features.html">Features</a> · <a href="./how-to-play.html">How to Play</a> · <a href="./faq.html">FAQ</a> · <a href="./roadmap.html">Roadmap</a> · <a href="./about.html">About</a> · <a href="./simulation.html">The Simulation</a> · <a href="./stats">Community Stats</a> · <a href="./status.html">Status &amp; Updates</a> · <a href="./status-archive.html">Changelog</a> · <a href="./press.html">Press</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">Discussions</a></span>
+        <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span>
+      </footer>
+
+    </main>
+    <script type="module" src="./setup.js"></script>
+    <script type="module" src="./community-stats.js"></script>
+  </body>
+</html>

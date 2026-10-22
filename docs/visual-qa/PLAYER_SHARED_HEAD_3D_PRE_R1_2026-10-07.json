@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "status": "shared-geometry-prototype-verified-not-production-accepted",
+  "scope": "Unadopted 3D head foundation with shared cameras and blink; not complete trait/rendering, save integration or whole-person acceptance",
+  "productionRendererChanged": false,
+  "runtimeCoefficientsChanged": false,
+  "source": {
+    "path": "prototypes/playerHead3d.mjs",
+    "sha256": "759bc3b722ee854008636e957abe4e788ab595a7312568366c8b69671d3dd050",
+    "frozen": "docs/visual-qa/references/playerHead3d-prototype-2026-10-07.mjs",
+    "frozenBefore": "docs/visual-qa/references/playerHead3d-prototype-before-2026-10-07.mjs",
+    "beforeSha256": "ee3a1045c05e69d501af759eda27180a509ace32f2a0538c3d24854f849a8064"
+  },
+  "testSource": {
+    "path": "prototypes/playerHead3d.test.mjs",
+    "sha256": "38aed174fa77396462bc9aea8ad4e1b26ef420bffeb3ccb994991c5ed9c5b976"
+  },
+  "browserSource": {
+    "path": ".cache/shared-head-3d.spec.mjs",
+    "sha256": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883"
+  },
+  "officialReference": {
+    "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Lighting_in_WebGL",
+    "use": "Normals and directional lighting implementation reference; no third-party model or dependency installed"
+  },
+  "execution": {
+    "focused": {
+      "passed": 4,
+      "failed": 0,
+      "output": "bf6c26",
+      "durationMs": 428.6623
+    },
+    "browser": {
+      "passed": 1,
+      "failed": 0,
+      "output": "bf6c26",
+      "durationSeconds": 5.4
+    },
+    "initialBrowser": {
+      "passed": 1,
+      "output": "b0b9b0",
+      "durationSeconds": 13.4
+    },
+    "repairBrowser": {
+      "passed": 1,
+      "output": "480722",
+      "durationSeconds": 5.7
+    }
+  },
+  "observations": [
+    {
+      "id": "art-benchmark-0",
+      "geometryMs": 53.39999985694885,
+      "parts": 108,
+      "triangles": 36096,
+      "meshBytes": 1026176,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 25995,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 21090,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        }
+      ],
+      "blinkPixels": 182,
+      "blinkRestored": true,
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-1",
+      "geometryMs": 38.09999990463257,
+      "parts": 32,
+      "triangles": 27584,
+      "meshBytes": 756224,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 27169,
+          "triangles": 27584,
+          "meshBytes": 756224
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 24335,
+          "triangles": 27584,
+          "meshBytes": 756224
+        }
+      ],
+      "blinkPixels": 258,
+      "blinkRestored": true,
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "geometryMs": 47.799999952316284,
+      "parts": 108,
+      "triangles": 36096,
+      "meshBytes": 1026176,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 28438,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 25278,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        }
+      ],
+      "blinkPixels": 180,
+      "blinkRestored": true,
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-3",
+      "geometryMs": 48.299999952316284,
+      "parts": 108,
+      "triangles": 36096,
+      "meshBytes": 1026176,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 27191,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 25189,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        }
+      ],
+      "blinkPixels": 224,
+      "blinkRestored": true,
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "geometryMs": 39.299999952316284,
+      "parts": 228,
+      "triangles": 40296,
+      "meshBytes": 1185776,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 26922,
+          "triangles": 40296,
+          "meshBytes": 1185776
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 21620,
+          "triangles": 40296,
+          "meshBytes": 1185776
+        }
+      ],
+      "blinkPixels": 220,
+      "blinkRestored": true,
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-5",
+      "geometryMs": 34.700000047683716,
+      "parts": 108,
+      "triangles": 36096,
+      "meshBytes": 1026176,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 29074,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 24687,
+          "triangles": 36096,
+          "meshBytes": 1026176
+        }
+      ],
+      "blinkPixels": 236,
+      "blinkRestored": true,
+      "meshUnchanged": true
+    }
+  ],
+  "performanceLimits": "Per-person synchronous mesh-construction timing in one local browser run, not full UI latency or a mobile-device benchmark. Both indexing and tessellation changed; do not attribute the entire difference to indexing alone.",
+  "beforeObservations": [
+    {
+      "id": "art-benchmark-0",
+      "geometryMs": 339.89999985694885,
+      "parts": 107,
+      "triangles": 43224,
+      "meshBytes": 5186880,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 22678,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 19773,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        }
+      ],
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-1",
+      "geometryMs": 198.29999995231628,
+      "parts": 31,
+      "triangles": 37904,
+      "meshBytes": 4548480,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 23621,
+          "triangles": 37904,
+          "meshBytes": 4548480
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 22975,
+          "triangles": 37904,
+          "meshBytes": 4548480
+        }
+      ],
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "geometryMs": 266.7999999523163,
+      "parts": 107,
+      "triangles": 43224,
+      "meshBytes": 5186880,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 25291,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 24268,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        }
+      ],
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-3",
+      "geometryMs": 280.2000000476837,
+      "parts": 107,
+      "triangles": 43224,
+      "meshBytes": 5186880,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 24029,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 24034,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        }
+      ],
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "geometryMs": 331.5,
+      "parts": 227,
+      "triangles": 51624,
+      "meshBytes": 6194880,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 23618,
+          "triangles": 51624,
+          "meshBytes": 6194880
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 20038,
+          "triangles": 51624,
+          "meshBytes": 6194880
+        }
+      ],
+      "meshUnchanged": true
+    },
+    {
+      "id": "art-benchmark-5",
+      "geometryMs": 383.89999985694885,
+      "parts": 107,
+      "triangles": 43224,
+      "meshBytes": 5186880,
+      "views": [
+        {
+          "angle": 0,
+          "nonBackgroundPixels": 25776,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        },
+        {
+          "angle": 1.5707963267948966,
+          "nonBackgroundPixels": 23542,
+          "triangles": 43224,
+          "meshBytes": 5186880
+        }
+      ],
+      "meshUnchanged": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-desktop-dark-before.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "fce5ca090a1f543ecabae2d138505b0037b123a092f2e0f2a43c1f4868be1979",
+      "original": ".cache/player-shared-head-3d-desktop-dark-before.png",
+      "stage": "before",
+      "primaryOriginalInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-desktop-light-before.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "642e49b9cb575d5cf9f8d3197f752f498e9a6a67097db8d64a701902f6b95966",
+      "original": ".cache/player-shared-head-3d-desktop-light-before.png",
+      "stage": "before",
+      "primaryOriginalInspected": false
+    },
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-mobile-dark-before.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "9ccd34fb69912c2faf2c41f82c6697ce53dded62dbd7878dc568501efd775a21",
+      "original": ".cache/player-shared-head-3d-mobile-dark-before.png",
+      "stage": "before",
+      "primaryOriginalInspected": false
+    },
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-mobile-light-before.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "48ca0806b7605d3dc1f90c9dd8cf92ffe00a89f77cdab7aedd5cd7ee69358358",
+      "original": ".cache/player-shared-head-3d-mobile-light-before.png",
+      "stage": "before",
+      "primaryOriginalInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-desktop-dark-final.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "615d08b40ae723b507c51a55521769716d5fff9b53d52f984260266d801c11bc",
+      "original": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "stage": "final",
+      "primaryOriginalInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-desktop-light-final.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "11bfaf3e0c3f8a2a40cae49ae365af4b4e77e1809f224789cafa16664a55a7e8",
+      "original": "output/playwright/player-shared-head-3d-desktop-light.png",
+      "stage": "final",
+      "primaryOriginalInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-mobile-dark-final.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "ae6137fee95b2becfc994c313dc5ff7676c2c6c830ec7a793905c6bed8f3af22",
+      "original": "output/playwright/player-shared-head-3d-mobile-dark.png",
+      "stage": "final",
+      "primaryOriginalInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-shared-head-3d-mobile-light-final.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "4ec22eacd9917913d6c64952a3e4ce20839c55ea37cb318b5fdd41ca84acffce",
+      "original": "output/playwright/player-shared-head-3d-mobile-light.png",
+      "stage": "final",
+      "primaryOriginalInspected": true
+    }
+  ],
+  "primaryOriginalsInspected": 6,
+  "repairs": [
+    "Continuous cubic breadth tangents remove the authored-station shading bands.",
+    "Shifted lower-jaw geometry and a neck/training-top junction repair the detached bulb-like neck.",
+    "Indexed vertices and bounded tessellation reduce the prototype geometry payload.",
+    "Tapered hanging locks and compact coil masses replace upright ellipsoid spikes.",
+    "Nostril placement follows the same saved nose dimensions used in mesh geometry."
+  ],
+  "verifiedFoundation": [
+    "One indexed mesh per saved individual supplies front and true-profile cameras.",
+    "Camera rotation and blinking leave the vertex array unchanged.",
+    "Open/closed/open blink restores the same pixels exactly for six exported people.",
+    "Finite unit normals, index bounds and outward front normals checked independently of browser screenshots.",
+    "Pigment-only changes preserve positions, normals and topology.",
+    "Invalid tessellation is rejected before an unbounded mesh allocation."
+  ],
+  "remainingDefects": [
+    "Plastic/low-detail skin and simplified facial material remain below the adult-person art target.",
+    "Grooming approximations omit complete saved hairstyle, strand, arrangement, gray and dye coverage; no full trait-consumption claim.",
+    "Eyes and eyelids remain material patterns on a simple surface; detailed anatomical quality remains open.",
+    "Projection quality and coherent geometry do not establish real-world anthropometry or ancestry probabilities.",
+    "Prototype is not connected to the actual dossier, roster, draft, moving measured body, accessibility fallback or save decoder.",
+    "Production readiness requires context-loss/resource lifecycle, bounded caching, actual UI/mobile performance and persistence checks."
+  ],
+  "decision": "Retain and develop the common geometric foundation; do not ship or label the appearance overhaul complete.",
+  "independentReview": "pending",
+  "blockingDefectsOpen": 1,
+  "globalVisualAcceptance": false,
+  "latestReceiptReplaced": false
+}

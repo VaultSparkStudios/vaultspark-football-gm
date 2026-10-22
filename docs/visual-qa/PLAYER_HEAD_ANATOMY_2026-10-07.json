@@ -1,0 +1,436 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-07",
+  "scope": "Coordinated anatomy prototype; no production adoption, demographic coefficients or full appearance acceptance",
+  "productionChanged": false,
+  "fullAppearanceAccepted": false,
+  "sources": [
+    {
+      "original": "prototypes/playerHead3d.mjs",
+      "path": "docs/visual-qa/references/head-anatomy-playerHead3d.mjs-2026-10-07.mjs",
+      "sha256": "86d35c68ab0cfbd250f43f7502840fbd8c2d963330d6094d7fb8c1c07a98276f"
+    },
+    {
+      "original": "prototypes/playerHead3d.test.mjs",
+      "path": "docs/visual-qa/references/head-anatomy-playerHead3d.test.mjs-2026-10-07.mjs",
+      "sha256": "7d995b0a8e3d04ce17d7013cd43883e64e89240225ed1add16a6803faa88cb55"
+    },
+    {
+      "original": ".cache/head-anatomy.spec.mjs",
+      "path": "docs/visual-qa/references/head-anatomy-head-anatomy.spec.mjs-2026-10-07.mjs",
+      "sha256": "3cc842077dba367581c65c427a23edd6b5594428c0c1a029277e8eeb58446e2f"
+    },
+    {
+      "original": ".cache/head-anatomy.config.mjs",
+      "path": "docs/visual-qa/references/head-anatomy-head-anatomy.config.mjs-2026-10-07.mjs",
+      "sha256": "b571625b61d14350432bd8ce39702829bfec914efd30c40a76bfffd383373437"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "path": "docs/visual-qa/references/head-anatomy-appearancePalette.js-2026-10-07.mjs",
+      "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+    },
+    {
+      "original": "output/playwright/player-art-benchmark.json",
+      "path": "docs/visual-qa/references/head-anatomy-player-art-benchmark.json-2026-10-07.json",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    }
+  ],
+  "beforeSource": {
+    "original": ".cache/head-anatomy-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-anatomy-before-2026-10-07.mjs",
+    "sha256": "f54fd9e84a8786292da13057ba936cc9e503c0166c7ac1b957a273dfdbe36a13"
+  },
+  "checks": {
+    "focused": {
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 8961.6435
+    },
+    "browser": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 11.2
+    },
+    "observations": [
+      {
+        "id": "art-benchmark-0",
+        "state": "before",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 4465,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 4061,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 3768,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-0",
+        "state": "after",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 4444,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 3947,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 3640,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-0",
+        "state": "clay",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 4447,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 4049,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 3823,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-2",
+        "state": "before",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 5076,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 4631,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 4363,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-2",
+        "state": "after",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 5055,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 4542,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 4205,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-2",
+        "state": "clay",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 4407,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 4024,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 3848,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-4",
+        "state": "before",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 4713,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 4328,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 4103,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-4",
+        "state": "after",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 4697,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 4233,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 3974,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      },
+      {
+        "id": "art-benchmark-4",
+        "state": "clay",
+        "views": [
+          {
+            "angle": 0,
+            "ordinaryColoredPixels": 4256,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 0.7853981633974483,
+            "ordinaryColoredPixels": 3864,
+            "nativePixels": 72000
+          },
+          {
+            "angle": 1.5707963267948966,
+            "ordinaryColoredPixels": 3664,
+            "nativePixels": 72000
+          }
+        ],
+        "inputUnchanged": true
+      }
+    ]
+  },
+  "captures": [
+    {
+      "file": "output/playwright/head-anatomy-person-0-desktop-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "277a464d04cf366b473351501d041c13d6dac333925feb704b911cd7caf6e5e7",
+      "original": "output/playwright/head-anatomy-person-0-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-0-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "facc0f1ee5e58d9954c6ad08582593d1d6a043c5f536bac4b94cd664e1d2c6ce",
+      "original": "output/playwright/head-anatomy-person-1-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-1-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "725410790c7733c69711c96e1a540517a057f50428ffd8edcb5915e154d0e32e",
+      "original": "output/playwright/head-anatomy-person-2-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-2-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-0-desktop-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "235ea127466436462d91463db93e3edb9e8cc231ab5ae009c80ff09662e1573b",
+      "original": "output/playwright/head-anatomy-person-0-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-0-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "78b4b8e93bcd92cadb21dccb30a3b98f59a27839d8dd83d291c8bcb8e9bf5bc1",
+      "original": "output/playwright/head-anatomy-person-1-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-1-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-2-desktop-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e088493af7d1547baf3c50bd9a7b1699878b4f1ae97767f221aa4c4a7edb160b",
+      "original": "output/playwright/head-anatomy-person-2-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-2-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-0-mobile-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a2a19d58455cbd61b9c4efcf782574b85f69f58dbddf0f1346220382d5d6d672",
+      "original": "output/playwright/head-anatomy-person-0-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-0-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7e9d6a99fb6a0840836432127d7e2af3d3586bb925f29e15c94a14fe5e894b4c",
+      "original": "output/playwright/head-anatomy-person-1-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-1-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-2-mobile-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c22dc3a25cef7aac2c427b0c85f1a586ed1ccee065fba4dd95a760ce3ad575de",
+      "original": "output/playwright/head-anatomy-person-2-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-2-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-0-mobile-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ce8650adbe665a10f9a271d1c854f35b34a57f0a146b9af53d921639e6296581",
+      "original": "output/playwright/head-anatomy-person-0-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-0-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "793e96eb879b86d3287be46b8cbbfaea0832f549a98c4e1a80eeea6b7e4d8f03",
+      "original": "output/playwright/head-anatomy-person-1-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-1-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-anatomy-person-2-mobile-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0356793a14c61ac8086885bc7efa8a57922a5b0cd535357e93accb7f349943d9",
+      "original": "output/playwright/head-anatomy-person-2-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-anatomy-person-2-mobile-light.png",
+      "primaryInspected": true
+    }
+  ],
+  "inspection": {
+    "originalsInspected": 4,
+    "findings": [
+      "Linked orbital basins/lid margins, cheeks, nasal bridge/wings and perioral/chin regions now share the same front/three-quarter/profile geometry.",
+      "Two separate exposed spherical eye patches have outward normal probes and saved spacing/aperture; eyelid closure remains shader masking, not a moving lid mesh.",
+      "Plain clay with deliberately shaved/clean grooming reveals deeper orbital and cheek-to-nose transitions. The first overly raised rims and chin groove were reduced after image inspection.",
+      "Complete heads remain mannequin-like, with weak mouth/canthal anatomy, wire/cap hair, hard beard coverage, thin ear attachment and a simplified neck. These defects prevent whole appearance acceptance."
+    ],
+    "qualification": "Three selected saved appearance DTOs only. Native 240×300 images are shown on desktop; mobile shows intrinsic 96×120 images. No complete roster/draft/dossier/body/career integration proof."
+  },
+  "blockingDefectsOpen": 1,
+  "independentReview": "pending",
+  "measurementQualification": "Facial dimensions and sculpt coefficients remain artistic estimates; clay removes pigment/grooming for anatomy inspection, not an additional real player.",
+  "remaining": [
+    "Convincing complete-person craft and proper moving eyelid geometry",
+    "Coherent fitted hair/beard volumes and measured neck/body connection",
+    "All saved traits and legal combinations at actual game size",
+    "Demographic and joint measured-body calibration",
+    "Production integration, lifecycle/accessibility/performance, current full suite/career/release"
+  ]
+}

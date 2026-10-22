@@ -1,0 +1,55 @@
+{
+  "component": "modern-shared-limb-contour",
+  "round": 1,
+  "verdict": "PASS",
+  "sourceHashes": {
+    "public/lib/profiledLimbSurface.js": "f0e9ebd25a40ab1b3f6e39cf5478c5591caa9b44f445d557cbbb54c0ddd32555",
+    "public/lib/playerPortrait.js": "4996c8b87f2595a4c91fe3ae9501d39b0988902516bde56409ae42851c1be753",
+    "public/lib/playerMotion.js": "2669b8da29b8b5d3211a04c29b7b01f93018001faecf492bf631b0ade9ca063b",
+    "test/player-limb-contours.test.js": "69455c4c4ea52bdc035efd0224377854bbd4269887048fe99c693b7892426b5f",
+    "tests-ui/player-capacity-client.spec.js": "73c4deb69bae69625a976b705aa56d8bc26c23dae231e21424363b2d4197f76b",
+    "scripts/run-test-shard.mjs": "8292f2eec721b35745f07ae8670414c69417f41024ff105d73b4849f1be9da6d"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-limb-contours.test.js test/player-motion-surfaces.test.js test/player-individual-anatomy.test.js",
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 2528.8928,
+      "scope": "Emitted vertical cubic cross-sections and integrated squared widths, bent attachment centers, exact solved poses and immutable DTOs across six modes, exact immediate legacy static/motion/helper output; existing anatomy/surface safeguards."
+    },
+    {
+      "command": "node .cache/limb-contour-independent.mjs",
+      "result": "PASS",
+      "obliqueActualCubicCrossSectionSamples": 2970,
+      "anchorChecks": 90,
+      "scope": "Independently parse actual SVG cubics, invert their projected bone-axis coordinate, compare perpendicular cross-sectional widths with contour disabled across five oblique angles/two limb kinds/three joint shares. Width tolerance .03px and root/joint/terminal center tolerance .02px include emitted rounding."
+    }
+  ],
+  "imagesActuallyInspected": [
+    "output/playwright/face-relief-dossier-limb-contour-before-side-part-desktop-light-body.png",
+    "output/playwright/face-relief-dossier-limb-contour-after-side-part-desktop-light-body.png",
+    "output/playwright/face-relief-dossier-limb-contour-before-afro-mobile-dark-body.png",
+    "output/playwright/face-relief-dossier-limb-contour-after-afro-mobile-dark-body.png",
+    "output/playwright/s117-measured-body-baseline-mass-desktop-dark.png",
+    "output/playwright/s117-measured-body-limb-contour-after-mass-desktop-dark.png",
+    "output/playwright/s117-measured-body-baseline-stature-mobile-light.png",
+    "output/playwright/s117-measured-body-limb-contour-after-stature-mobile-light.png"
+  ],
+  "assessment": [
+    "Equal translation of both profile sides preserves perpendicular cross-section width while adding regional biceps/forearm/calf asymmetry. Union knots and analytic derivatives restrict both width and offset cubics correctly at articulated splits.",
+    "Contour shifts are zero at canonical root, joint and terminal shares. No pose solver, saved measurements, volume allocation, person recipe or gameplay RNG changes were introduced.",
+    "Inspected matched originals show clearer regional limb silhouettes without observed clipping or attachment breaks. Static and moving figures remain stylized and the torso remains rigid.",
+    "New test is registered in the core shard. Immediate-baseline comparison cases executed without skips in this review; those two cases explicitly skip when local untracked baseline files are unavailable.",
+    "Optional built-client additions compare mounted static/all-six-mode path geometry with the built renderer and retain named-save replacement/load/reload assertions. This is integration verification, not a visual naturalism criterion."
+  ],
+  "limits": [
+    "Scoped contour geometry/rendering progress only; full appearance, anatomy calibration and naturalism remain open.",
+    "Eight actual originals independently inspected; no claim all comparison/dossier captures inspected.",
+    "The baseline controlled gallery was captured under the baseline filenames listed above; those names do not imply another production baseline.",
+    "Current built browser session9786 remained primary-pending at this receipt; source review of its optional assertions does not certify execution. Primary build/boot/reach reports are separate evidence.",
+    "No whole goal, full NFL rules, current long-career source qualification or release approval."
+  ]
+}

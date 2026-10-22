@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T08:47:28.980Z",
+  "kind": "body-authority-adverse-probe",
+  "scope": "Controlled fictional measurement examples, not athlete prevalence or source observations",
+  "sourceHashes": {
+    "src/domain/playerIdentity.js": "c192777620fc80dba87b308f741f1559d8bef866e8a059f05da33c738dfeba71",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "public/lib/physiqueGeometryContract.js": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241"
+  },
+  "rows": [
+    {
+      "input": {
+        "heightInches": 77,
+        "weightLbs": 308
+      },
+      "canonical": {
+        "heightInches": 77,
+        "weightLbs": 308
+      },
+      "frame": {
+        "heightInches": 77,
+        "weightLbs": 308
+      },
+      "reservedMassProxyLbs": 38.5,
+      "inputUnchanged": true
+    },
+    {
+      "input": {
+        "heightInches": 74,
+        "weightLbs": 410
+      },
+      "canonical": {
+        "heightInches": 74,
+        "weightLbs": 410
+      },
+      "frame": {
+        "heightInches": 74,
+        "weightLbs": 400
+      },
+      "reservedMassProxyLbs": 50,
+      "inputUnchanged": true
+    },
+    {
+      "input": {
+        "heightInches": 87,
+        "weightLbs": 225
+      },
+      "canonical": {
+        "heightInches": 87,
+        "weightLbs": 225
+      },
+      "frame": {
+        "heightInches": 86,
+        "weightLbs": 225
+      },
+      "reservedMassProxyLbs": 28.125,
+      "inputUnchanged": true
+    },
+    {
+      "input": {
+        "heightInches": 74,
+        "weightLbs": 130
+      },
+      "canonical": {
+        "heightInches": 74,
+        "weightLbs": 130
+      },
+      "frame": {
+        "heightInches": 74,
+        "weightLbs": 140
+      },
+      "reservedMassProxyLbs": 17.5,
+      "inputUnchanged": true
+    }
+  ],
+  "findings": [
+    "Canonical positive measurements survive but presentation frame clamps 410 pounds to 400, 87 inches to 86 and 130 pounds to 140. Complete measurement-compatible rendering is unproven.",
+    "Reserved head/hands/feet proxy is a fixed 12.5 percent of mass; rendered complete-region volume is not reconstructed by the existing torso-only path integration. This does not itself prove a physical density or mass discrepancy.",
+    "The 77-inch/308-pound reviewed actual gallery appears too simplified/slender; visual judgement must be reconciled with actual regional geometry before changing sampling coefficients."
+  ]
+}

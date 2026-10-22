@@ -1,0 +1,12 @@
+[WebServer] (node:27252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:19552) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests-ui\player-scalp-gallery.spec.js:3:1 › rooted scalp hair: shared front, oblique and profile at ordinary size (18.7s)
+  ✓  2 tests-ui\player-scalp-production.spec.js:6:1 › production scalp before/after retains one saved head across actual dossier views (36.6s)
+  ✓  3 tests-ui\player-shared-head-production.spec.js:57:1 › unavailable WebGL preserves the existing complete portrait fallback (1.8s)
+
+  3 passed (1.0m)

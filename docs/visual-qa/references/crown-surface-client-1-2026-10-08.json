@@ -1,0 +1,13 @@
+{
+  "worker": false,
+  "playerId": "P2026-BUF-QB-9487479",
+  "facialHair": "full-beard",
+  "artifactDigest": "5f10ca07c069232a6018dc58f86374dfa2f1c5924aa609f4056da8ca9f2183bf",
+  "namedSaveReplacementLoadReload": true,
+  "personRecipeAndMeasurementsExact": true,
+  "frontProfileHeadImagesExact": true,
+  "frontSideMotionDimensionsExact": true,
+  "threeActualCollars": true,
+  "sixActualSectionLights": true,
+  "rngExact": true
+}

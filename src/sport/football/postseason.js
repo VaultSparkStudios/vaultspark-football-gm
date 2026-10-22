@@ -17,7 +17,7 @@
 import { FOOTBALL_RULES } from "./rules.js";
 import { conferenceStandings, divisionStandings, sortStandings } from "../../engine/standings.js";
 
-export const POSTSEASON_STATE_SCHEMA_VERSION = "1.0";
+export const POSTSEASON_STATE_SCHEMA_VERSION = "2.0";
 
 const STRUCTURE = FOOTBALL_RULES.structure;
 const CONFERENCES = STRUCTURE.conferences;
@@ -26,10 +26,23 @@ const CONFERENCE_ROUNDS = Object.freeze(["wildcard", "divisional", "conference"]
 const FINAL_ROUND = "super-bowl";
 const WILDCARD_PAIRINGS = Object.freeze([[2, 7], [3, 6], [4, 5]]);
 
-const POSTSEASON_STAGE_ORDER = Object.freeze([
+const LEGACY_POSTSEASON_STAGE_ORDER = Object.freeze([
   ...CONFERENCES.flatMap((conference) => CONFERENCE_ROUNDS.map((round) => `${conference}-${round}`)),
   `${LEAGUE_STAGE_PREFIX}-${FINAL_ROUND}`
 ]);
+
+const POSTSEASON_STAGE_ORDER = Object.freeze([
+  ...CONFERENCE_ROUNDS.flatMap((round) => CONFERENCES.map((conference) => `${conference}-${round}`)),
+  `${LEAGUE_STAGE_PREFIX}-${FINAL_ROUND}`
+]);
+
+// Preserve already played version-one brackets, including their RNG/result
+// order. New brackets share one chronological round across both conferences.
+function stageOrder(state) {
+  if (state.schemaVersion === POSTSEASON_STATE_SCHEMA_VERSION) return POSTSEASON_STAGE_ORDER;
+  if (state.schemaVersion === '1.0' || state.schemaVersion == null) return LEGACY_POSTSEASON_STAGE_ORDER;
+  throw new TypeError('Unsupported football postseason state version');
+}
 
 /** The week number the UI shows for each postseason round (the regular season is weeks 1-18). */
 export const FOOTBALL_POSTSEASON_ROUND_WEEKS = Object.freeze({ wildcard: 19, divisional: 20, conference: 21, "super-bowl": 22 });
@@ -121,7 +134,7 @@ function buildWildcardMatchups(state, conference) {
 
 function buildDivisionalMatchups(state, league, conference) {
   const seedOneId = state.seeds[conference].find((entry) => entry.seed === 1).teamId;
-  const survivors = [seedOneId, ...state.roundWinners];
+  const survivors = [seedOneId, ...state.bracket[conference].wildcard.map(game => game.winnerId)];
   const topSeed = teamForPostseason(league, seedOneId);
   const opponentForTop = lowestRemaining(
     survivors.filter((teamId) => teamId !== seedOneId).map((teamId) => teamForPostseason(league, teamId))
@@ -133,15 +146,16 @@ function buildDivisionalMatchups(state, league, conference) {
   return [matchupIds(topSeed, opponentForTop), matchupIds(otherTwo[0], otherTwo[1])];
 }
 
-function buildConferenceMatchup(state, league) {
-  const finalists = state.roundWinners
+function buildConferenceMatchup(state, league, conference) {
+  const finalists = state.bracket[conference].divisional.map(game => game.winnerId)
     .map((teamId) => teamForPostseason(league, teamId))
     .sort((a, b) => a.playoffSeed - b.playoffSeed);
   return [matchupIds(finalists[0], finalists[1])];
 }
 
 function advancePostseasonStage(state, league) {
-  const currentStageIndex = POSTSEASON_STAGE_ORDER.indexOf(state.stage);
+  const order = stageOrder(state);
+  const currentStageIndex = order.indexOf(state.stage);
   const conference = conferenceFromStage(state.stage);
   const round = roundFromStage(state.stage);
 
@@ -165,7 +179,7 @@ function advancePostseasonStage(state, league) {
     return state;
   }
 
-  state.stage = POSTSEASON_STAGE_ORDER[currentStageIndex + 1];
+  state.stage = order[currentStageIndex + 1];
   state.gameIndex = 0;
   if (state.stage.endsWith("-wildcard")) {
     state.roundWinners = [];
@@ -174,7 +188,7 @@ function advancePostseasonStage(state, league) {
     state.matchups = buildDivisionalMatchups(state, league, conferenceFromStage(state.stage));
     state.roundWinners = [];
   } else if (state.stage.endsWith("-conference")) {
-    state.matchups = buildConferenceMatchup(state, league);
+    state.matchups = buildConferenceMatchup(state, league, conferenceFromStage(state.stage));
     state.roundWinners = [];
   } else {
     state.matchups = [CONFERENCES.map((name) => state.conferenceChampions[name])];
@@ -189,6 +203,7 @@ export function createPostseasonState({ league, year }) {
   const state = {
     schemaVersion: POSTSEASON_STATE_SCHEMA_VERSION,
     kind: "postseason-round-state",
+    practicePayrollVersion: 'postseason-practice-weeks-v1',
     year,
     status: "active",
     stage: POSTSEASON_STAGE_ORDER[0],
@@ -213,6 +228,7 @@ export function createPostseasonState({ league, year }) {
 
 export function nextPostseasonGame(state = {}) {
   if (state.status !== "active") return null;
+  stageOrder(state);
   const matchup = state.matchups?.[state.gameIndex];
   if (!matchup) return null;
   const conference = conferenceFromStage(state.stage);
@@ -237,6 +253,7 @@ export function postseasonGameLabel(next) {
  * played for; returns the winner's team id.
  */
 export function recordPostseasonResult({ state, league, next, result }) {
+  stageOrder(state);
   const higherSeedTeam = teamForPostseason(league, next.homeTeamId);
   const lowerSeedTeam = teamForPostseason(league, next.awayTeamId);
   const winner = result.winnerId === higherSeedTeam.id ? higherSeedTeam : lowerSeedTeam;
@@ -278,6 +295,8 @@ export function recordPostseasonResult({ state, league, next, result }) {
 export function postseasonResultFromState(state) {
   if (state?.status !== "completed") return null;
   return {
+    ...(state.medicalRecovery ? { medicalRecovery: { ...state.medicalRecovery } } : {}),
+    ...(state.admittedMedicalClock ? { admittedMedicalClock: { ...state.admittedMedicalClock } } : {}),
     standings: state.standings,
     bracket: state.bracket,
     superBowl: state.superBowl,

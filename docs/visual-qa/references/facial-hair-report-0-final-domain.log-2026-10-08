@@ -1,0 +1,44 @@
+✔ all long-grooming vertices clear the rendered lip mask across valid mouth proportions and curves (8484.5048ms)
+✔ frozen grooming and scalp refinements preserve their reviewed non-grooming anatomy (5437.1893ms)
+✔ current grooming variations preserve the current shared face, eyes and ears (2601.2736ms)
+✔ facial grooming has fitted camera-independent volume while preserving anatomy and the mouth aperture (5380.4772ms)
+✔ all 56 legacy combinations remain exact (19963.8311ms)
+✔ all continuous label boundaries keep fixed topology and bounded neighboring geometry (2386.7195ms)
+✔ continuous positions remain finite and bounded, independent of label, while arranged grooming hides loose texture (13126.5403ms)
+✔ face lighting follows saved landmarks across complexions and grooming with complete resources (2997.9327ms)
+✔ surface lighting bounds its estimates and retains legacy fallback (4.8952ms)
+✔ pigment and grooming changes preserve saved anatomical contours (1506.3373ms)
+✔ modern facial grooming preserves the saved person, every other mesh surface and the resource budget (3225.9554ms)
+✔ categorical and older facial pigment recipes keep exact pre-change mesh geometry (8073.671ms)
+✔ modern beard and relocated mustache vertices clear the actual curved lip mask (2685.5633ms)
+✔ new facial pigments have independent residuals and saved identity across demographic or grooming changes (14.8007ms)
+✔ isolated beard/brow dyes reach front, side and motion without changing saved facial paths or frame (50.4636ms)
+✔ legacy recipes keep identical decoded appearance and their undyed pigment fallback (1.0048ms)
+✔ compact seed aliases remain compact and explicit independent pigment seeds remain intact (0.9884ms)
+✔ grooming versions upgrade monotonically and invalid facial dye changes are atomic (1.0913ms)
+✔ actual session and draft snapshots preserve pigment recipes/dyes and corrupt imports refuse without mutation (3438.2169ms)
+✔ pigment edits and rendering leave actual match results and every simulation random stream identical (17078.6964ms)
+✔ saved regional face controls affect the visible outline independently of pigment (39.9023ms)
+✔ front face projection handles malformed and extreme inputs inside its canvas (6.0598ms)
+✔ fine facial structure persists across actual saves, grooming and identity changes without gameplay draws (997.7413ms)
+✔ isolated facial controls change visible geometry only in appropriate projections and survive moving heads (673.2475ms)
+✔ fine face imports validate active, retired and prospective recipes before any mutation (1.3656ms)
+✔ an optional fine recipe on v2/v3 imports has complete SVG resources with or without natural detail (37.7364ms)
+✔ legacy facial renderers retain frozen October 8 geometry and appearance without a fine recipe (48.2579ms)
+✔ modern combed volume changes hair while preserving every non-hair surface and saved input (3686.469ms)
+✔ all hair styles retain legacy geometry and changed modern styles remain within the mesh budget (10988.8729ms)
+✔ part location changes the modern hair volume without changing facial anatomy (480.177ms)
+✔ modern asymmetric support joins actual rear mesh positions and normals at every row (3246.5042ms)
+✔ eye and closing lid polygons share lateral samples with an opaque meeting margin (290.3028ms)
+✔ saved blink phase remains periodic, bounded and returns to the open pose (2.7777ms)
+✔ head-only projection removes fixed prototype anatomy while retaining every head surface (828.5316ms)
+✔ server or non-graphical consumers retain fallback without creating a renderer (1.8691ms)
+✔ saved ear size and shape retain a folded surface attached to the same skull (261.932ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37018.8548

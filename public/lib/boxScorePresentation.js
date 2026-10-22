@@ -95,10 +95,29 @@ export function buildBoxScoreImpactLeaders(boxScore = {}) {
 }
 
 export function buildQuarterScoreboard(boxScore = {}) {
-  const home = boxScore.quarterScores?.home || [];
-  const away = boxScore.quarterScores?.away || [];
-  const includeOvertime = Number(home[4] || 0) !== 0 || Number(away[4] || 0) !== 0;
-  const labels = includeOvertime ? ["Q1", "Q2", "Q3", "Q4", "OT"] : ["Q1", "Q2", "Q3", "Q4"];
+  const home = Array.isArray(boxScore.quarterScores?.home) ? boxScore.quarterScores.home : [];
+  const away = Array.isArray(boxScore.quarterScores?.away) ? boxScore.quarterScores.away : [];
+  // Initial arrays include an unused fifth slot. Show actual overtime from
+  // scoring, logged plays or extended period arrays, including scoreless OT.
+  let periods = Math.max(4, home.length > 5 ? home.length : 4, away.length > 5 ? away.length : 4);
+  // Completed playoff games extend the score arrays to the winning period;
+  // regular scoreless ties retain an explicit receipt after archive trimming.
+  // Log/receipt metadata may not invent periods outside those actual arrays.
+  const reportedPeriods = Math.max(5, home.length, away.length);
+  const overtime = boxScore.overtime;
+  if ([600, 900].includes(overtime?.periodSeconds) && Number.isFinite(overtime?.elapsedSeconds) &&
+      overtime.elapsedSeconds > 0 && overtime.elapsedSeconds <= overtime.periodSeconds * (reportedPeriods - 4)) {
+    periods = Math.max(periods, 4 + Math.ceil(overtime.elapsedSeconds / overtime.periodSeconds));
+  }
+  for (let index = 4; index < Math.max(home.length, away.length); index += 1) {
+    if (Number(home[index] || 0) !== 0 || Number(away[index] || 0) !== 0) periods = Math.max(periods, index + 1);
+  }
+  const plays = Array.isArray(boxScore.playByPlay) ? boxScore.playByPlay : [];
+  const scores = Array.isArray(boxScore.scoringSummary) ? boxScore.scoringSummary : [];
+  for (const entry of [...plays, ...scores]) {
+    if (Number.isInteger(entry?.quarter) && entry.quarter >= 5 && entry.quarter <= reportedPeriods) periods = Math.max(periods, entry.quarter);
+  }
+  const labels = Array.from({ length: periods }, (_, index) => index < 4 ? `Q${index + 1}` : index === 4 ? "OT" : `OT${index - 3}`);
   return {
     labels,
     rows: [

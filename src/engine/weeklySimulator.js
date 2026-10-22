@@ -1,6 +1,9 @@
 import { getSportRules } from "../sport/registry.js";
+import { assertMatchReadiness } from "../sport/matchReadiness.js";
 import { applyGameStats } from "../stats/applyGameStats.js";
 import { applyRegularSeasonResult, conferenceStandings, sortStandings } from "./seasonSimulator.js";
+import { recordPracticeWeekPay } from '../domain/practiceContracts.js';
+import { previewCpuStandardElevations, applyCpuStandardElevations } from './cpuStandardElevations.js';
 
 export function simulateRegularSeasonWeek({
   league,
@@ -9,8 +12,17 @@ export function simulateRegularSeasonWeek({
   weekBlock,
   rng,
   mode = "drive",
-  restedTeamIds = []
+  restedTeamIds = [],
+  excludeElevationTeamIds = []
 }) {
+  const football = (league.sportId || 'football') === 'football';
+  const elevations = { league, excludeTeamIds: excludeElevationTeamIds, games: weekBlock.games.map(game => ({ ...game,
+    year, week: weekBlock.week, seasonType: 'regular' })) };
+  const readyLeague = football ? previewCpuStandardElevations(elevations).league : league;
+  assertMatchReadiness(getSportRules(league.sportId), { league: readyLeague,
+    year,weekBlock,
+    teamIds: weekBlock.games.flatMap(game => [game.homeTeamId, game.awayTeamId]) });
+  const cpuElevations = football ? applyCpuStandardElevations(elevations) : [];
   const games = [];
   const activeTeams = new Set();
   const rested = restedTeamIds instanceof Set ? restedTeamIds : new Set(restedTeamIds);
@@ -36,12 +48,16 @@ export function simulateRegularSeasonWeek({
     applyGameStats(statBook, match);
     const game = match.result;
     applyRegularSeasonResult(league, weekBlock.week, game);
+    getSportRules(league.sportId).match.afterGame?.({ league, result: game });
     games.push({
       week: weekBlock.week,
       ...game
     });
   }
+  const practicePayroll=(league.sportId||'football')==='football'?recordPracticeWeekPay(league,{year,week:weekBlock.week}):[];
   return {
+    cpuElevations,
+    practicePayroll,
     week: weekBlock.week,
     games,
     byeTeams: league.teams.map((team) => team.id).filter((teamId) => !activeTeams.has(teamId)).sort(),

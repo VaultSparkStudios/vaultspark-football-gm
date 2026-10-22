@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Scalp coverage and bounded fitted clump/crown-path refinement correctness and evidence honesty only. Complete hairstyle recognition/naturalism fails and remains open.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_SCALP_PRODUCTION_2026-10-08.json",
+  "primaryReceiptSha256": "4ee7a2175d03cce1df6d6b7c24aeb69f8df0a0afa64c1cda252e97e9f1ee827e",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "3113c97b5a9f603c723f2f9cdeb10fcc6347be4bd8f1a069d5ea28e9a071d32c",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerPortrait.js": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+    "public/lib/playerMotion.js": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "test/player-scalp-volume.test.js": "46d8e408f3449b12365c6753febb14aaf271c3a299c3c1cb46ba59dc6ce25e30",
+    "test/player-beard-volume.test.js": "272b028c071667710cff0580504629457e9daaa700ab134c2b4c921b001f8c73",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-whole-head-form.test.js": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf",
+    "test/player-surface-lighting.test.js": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4",
+    "tests-ui/player-scalp-gallery.spec.js": "98f7343e239f5ffcd7f4762ce199bc30d782492c66b263a50c703c55e5ca5165",
+    "tests-ui/player-scalp-production.spec.js": "1882d620d13bbde13b2ea8c5b8873112628c0d6b5f4261e621c6f6d726b44ec7",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+  },
+  "bindings": {
+    "verifiedFrozenEntries": 110,
+    "sources": 19,
+    "inputs": 2,
+    "supportingEvidence": 5,
+    "captures": 84,
+    "normalizedBuiltSourcePairs": 8
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-scalp-volume.test.js test/player-beard-volume.test.js test/player-shared-head.test.js test/player-whole-head-form.test.js test/player-surface-lighting.test.js",
+      "result": "PASS",
+      "tests": 18,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 20324.4016,
+      "terminalChunk": "f1cc00",
+      "covered": [
+        "56 supported style/texture maximum headOnly meshes finite and below unchanged1650000-byte/16-bit ceilings",
+        "Grouped loose texture/curvature/wave concealed while saved strand width changes geometry",
+        "Dense core coverage exceeds.999, sparse below.3, hairline/fade taper and no-scalp density zero",
+        "Current exact non-scalp indexed semantic geometry including skin, eye, ear and beard",
+        "Historical all-non-beard grooming comparison preserved via frozen before-scalp beard version",
+        "Repaired lip-mask tests retained",
+        "384 unchanged historical front/profile SVG hashes"
+      ]
+    },
+    {
+      "command": "Python stdin primary/source/input/evidence/capture SHA and normalized build comparisons",
+      "result": "PASS"
+    }
+  ],
+  "testRepairAssessment": "The old beard-only comparison still compares every original non-beard part, including its scalp, against the exact frozen beard-only renderer. A second current-to-before-scalp indexed-part comparison excludes only scalp-hair/hair-lock geometry and retains all remaining anatomy. This is appropriate source-version scoping; no original hash or all-non-beard expectation deleted.",
+  "sourceAssessment": [
+    "Coverage encoded in existing scalp material5..5.4, with density-derived opaque core and bounded hairline/fade taper; fragment discard applies only that scalp material range.",
+    "Grouped loc/braid controls replace loose texture curvature/wave, while width remains independently effective and raw controls remain unchanged.",
+    "Crown/lock changes remain artistic deterministic projections. Saved identity seed and no domain/measurement/rating edits.",
+    "No-scalp compiled pixel control is primary browser evidence for one bearded fixture across three cameras, not a universal all-person GPU equivalence claim.",
+    "56-case bound is production headOnly geometry; not an assertion of every unsupported raw input or unrelated full prototype allocation.",
+    "Gallery rows0..11 reuse an appearance DTO with different matched-scalp IDs/seeds. Each row controls before-versus-after; cross-row style/texture images are not isolated single-trait comparisons. This does not invalidate the stated matched-row refinement proof, but clean cross-style pixel comparisons require a fixed identity seed. Unit grouped-control comparisons do use the same seed."
+  ],
+  "imagesActuallyInspected": [
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-0-desktop-dark.png",
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-8-mobile-light.png",
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-11-desktop-light.png",
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-10-desktop-dark.png",
+    "docs/visual-qa/captures/production-scalp-component-production-scalp-after-mobile-light-portrait.png"
+  ],
+  "imageHashes": {
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-0-desktop-dark.png": "3dff4deb404c91b939f18b1bed2baa17df2658d631ca5132b0ae6c4aaaf9e6da",
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-8-mobile-light.png": "9799908b79960c431acd223b0a094a15501c4343972cd9f96bb43b1949bf6572",
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-11-desktop-light.png": "e54c48b5beef5675e10c1e0fd473f1e2073f964e4db4e53c52932005ef7062f6",
+    "docs/visual-qa/captures/production-scalp-component-scalp-gallery-10-desktop-dark.png": "da8cd9c64b0dcda2b80cada8d1efbca7bd88c2dcc01656b9e77bfcb7631a190d",
+    "docs/visual-qa/captures/production-scalp-component-production-scalp-after-mobile-light-portrait.png": "3862b9e48f118cefa14b0253e989efa694a0a9191c1ed1e994bf5db1d8e68c23"
+  },
+  "visualAssessment": [
+    "Side-part edge is less perfectly uniform in paired gallery; small strands remain subtle at ordinary96x120 raster.",
+    "Afro still looks swept/cap-like at ordinary mobile size. Braids remain a smooth cap with thin radial paths. Locs remain a large smooth cap with sparse dangling ends. These explicitly retained recognition/craft deficits prevent full appearance acceptance.",
+    "Actual mobile-light dossier remains readable with shared saved face/ear/beard; whole face and lower beard remain mannequin-like/rigid.",
+    "No new clipping or resource corruption identified in these five inspected originals. Reviewer does not claim inspection of all84 retained captures."
+  ],
+  "primaryAttribution": "Primary18 Node tests, browser3 cases60s, cache/projection/fallback/DTO and build/budget logs are frozen primary observations; independent execution is18 focused tests above and byte-binding checks, no browser rerun.",
+  "limits": [
+    "Full hairstyle recognition, complete natural-looking adult people, empirical country/NFL calibration and measured hair anatomy remain unaccepted.",
+    "Current shared full-person quality gate remains failing from blockingDefectsOpen1; scoped PASS does not weaken it.",
+    "No current complete core/full-suite, career persistence, full NFL workflow, release or overall-goal acceptance.",
+    "No blanket adversarial raw-DTO or every triangle/intersection proof; tested bounded valid controls and legacy behavior only.",
+    "Only owned review receipt written; primary/LATEST/production sources left unchanged.",
+    "Gallery cross-row images cannot certify isolated style/texture response because identitySeed changes with row ID. No cross-row pure single-trait visual acceptance claimed."
+  ]
+}

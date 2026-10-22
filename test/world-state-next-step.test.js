@@ -40,14 +40,28 @@ test("world-state next step: scouting reveal quality improves with staff and fit
   // S108 — the draft SURFACE no longer carries a prospect's true overall (the
   // scouting board sells that read); the reveal's accuracy is measured against
   // the engine's own prospect, which is where the truth lives.
-  const prospect = strong.league.pendingDraft.available[0];
-  const strongSpend = strong.allocateScoutingPoints({ teamId: "BUF", playerId: prospect.id, points: 12 });
-  const weakSpend = weak.allocateScoutingPoints({ teamId: "BUF", playerId: prospect.id, points: 12 });
-
-  assert.equal(strongSpend.ok, true);
-  assert.equal(weakSpend.ok, true);
-  assert.ok(Math.abs(strongSpend.scoutedOverall - prospect.overall) <= Math.abs(weakSpend.scoutedOverall - prospect.overall));
-  assert.ok(strongSpend.confidence >= weakSpend.confidence);
+  // A stronger department improves a noisy cohort's accuracy; an individual
+  // weak read can land closer by chance. Give both fixtures the same budget
+  // and compare actual investment commands across the same prospect cohort.
+  const cohort = strong.league.pendingDraft.available.slice(0, 100);
+  assert.equal(cohort.length, 100);
+  strong.ensureScoutingTeamState("BUF").points = cohort.length * 12;
+  weak.ensureScoutingTeamState("BUF").points = cohort.length * 12;
+  let strongError = 0, weakError = 0, strongSquared = 0, weakSquared = 0;
+  for (const prospect of cohort) {
+    const strongSpend = strong.allocateScoutingPoints({ teamId: "BUF", playerId: prospect.id, points: 12 });
+    const weakSpend = weak.allocateScoutingPoints({ teamId: "BUF", playerId: prospect.id, points: 12 });
+    assert.equal(strongSpend.ok, true);
+    assert.equal(weakSpend.ok, true);
+    const a = strongSpend.scoutedOverall - prospect.overall;
+    const b = weakSpend.scoutedOverall - prospect.overall;
+    strongError += Math.abs(a); weakError += Math.abs(b);
+    strongSquared += a * a; weakSquared += b * b;
+    assert.ok(strongSpend.confidence >= weakSpend.confidence);
+  }
+  assert.ok(weakError > 0, "exercise uncertain reads rather than a fully known cohort");
+  assert.ok(strongError < weakError, `strong/weak total absolute error: ${strongError}/${weakError}`);
+  assert.ok(strongSquared < weakSquared, `strong/weak squared error: ${strongSquared}/${weakSquared}`);
 });
 
 test("world-state next step: development environment improves offseason growth and recovery", () => {

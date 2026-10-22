@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T13:26:05.654Z",
+  "status": "diagnostic-review-pending-complete-body-accounting-unverified",
+  "scope": "Closed skull mesh volume at the actual fitSkull physical scale versus fixed reserved budget; not complete body union or measured tissue mass.",
+  "method": "Absolute signed tetrahedron sum over actual skin triangles, scaled by the same skull-height/span ratio used by fitSkull and physical head placement.",
+  "density": "Current1kg/litre artistic assumption only; not biological density.",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerFootwear.js": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    ".cache/observe-skull-reserve.mjs": "3bf58b620f62a7787e97f1f11ea7368904e7635936db56a27683fa8ad05e1f6a"
+  },
+  "rows": [
+    {
+      "playerId": "P2026-BUF-QB-9487479",
+      "position": "QB",
+      "heightInches": 78,
+      "weightLbs": 212,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1281565.2948863492,
+          "orientedAreaResidual": 1.7742155963305744e-9,
+          "skullHeightInches": 9.540000000000001,
+          "uniformInchScale": 0.05224774295479825,
+          "volumeInches3": 182.78617317743664
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1305129.763845582,
+          "orientedAreaResidual": 1.5007156068083557e-9,
+          "skullHeightInches": 9.540000000000001,
+          "uniformInchScale": 0.05224774295479825,
+          "volumeInches3": 186.14710930859073
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1311603.789335375,
+          "orientedAreaResidual": 1.367835872648618e-10,
+          "skullHeightInches": 9.540000000000001,
+          "uniformInchScale": 0.05224774295479825,
+          "volumeInches3": 187.07048196003052
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.004935961257837991,
+      "allocatedReserveInches3": 733.5174748203827,
+      "skullOnlyShareOfReserve": 0.2550320726930721,
+      "unexplainedReserveAfterSkullInches3": 546.4469928603522,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-RB-93081306",
+      "position": "RB",
+      "heightInches": 73,
+      "weightLbs": 205,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1195951.9771782649,
+          "orientedAreaResidual": 5.946128085102366e-10,
+          "skullHeightInches": 9.365,
+          "uniformInchScale": 0.04898614862454472,
+          "volumeInches3": 140.58326601816043
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1219616.4953900897,
+          "orientedAreaResidual": 5.874973897332253e-10,
+          "skullHeightInches": 9.365,
+          "uniformInchScale": 0.04898614862454472,
+          "volumeInches3": 143.3650125451522
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1226154.1370772333,
+          "orientedAreaResidual": 2.2625073323148717e-11,
+          "skullHeightInches": 9.365,
+          "uniformInchScale": 0.04898614862454472,
+          "volumeInches3": 144.1335074663309
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.0053318269615982095,
+      "allocatedReserveInches3": 709.2975581989551,
+      "skullOnlyShareOfReserve": 0.2032059828773611,
+      "unexplainedReserveAfterSkullInches3": 565.1640507326242,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-WR-14493685",
+      "position": "WR",
+      "heightInches": 76,
+      "weightLbs": 230,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1273527.860340483,
+          "orientedAreaResidual": 6.896844643334319e-10,
+          "skullHeightInches": 9.47,
+          "uniformInchScale": 0.05258206630676202,
+          "volumeInches3": 185.14901064485508
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1298084.3134048816,
+          "orientedAreaResidual": 2.457288953308335e-10,
+          "skullHeightInches": 9.47,
+          "uniformInchScale": 0.05258206630676202,
+          "volumeInches3": 188.71909586356767
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1304792.4846385445,
+          "orientedAreaResidual": 2.6941598396821816e-10,
+          "skullHeightInches": 9.47,
+          "uniformInchScale": 0.05258206630676202,
+          "volumeInches3": 189.69434839303875
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.0051411786262097565,
+      "allocatedReserveInches3": 795.7972604183399,
+      "skullOnlyShareOfReserve": 0.23837019530994488,
+      "unexplainedReserveAfterSkullInches3": 606.1029120253011,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-TE-8329455",
+      "position": "TE",
+      "heightInches": 78,
+      "weightLbs": 258,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1215596.5003821505,
+          "orientedAreaResidual": 4.346798865781273e-10,
+          "skullHeightInches": 9.540000000000001,
+          "uniformInchScale": 0.051115394815792886,
+          "volumeInches3": 162.3471242140578
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1239637.2493608533,
+          "orientedAreaResidual": 1.2008626390593148e-9,
+          "skullHeightInches": 9.540000000000001,
+          "uniformInchScale": 0.051115394815792886,
+          "volumeInches3": 165.557849532383
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1246036.2773453926,
+          "orientedAreaResidual": 7.74796039883329e-11,
+          "skullHeightInches": 9.540000000000001,
+          "uniformInchScale": 0.051115394815792886,
+          "volumeInches3": 166.41246188996104
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.005135506967880532,
+      "allocatedReserveInches3": 892.6769269040509,
+      "skullOnlyShareOfReserve": 0.18641958459384245,
+      "unexplainedReserveAfterSkullInches3": 726.2644650140899,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-OL-48032446",
+      "position": "OL",
+      "heightInches": 79,
+      "weightLbs": 324,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1159351.8346829077,
+          "orientedAreaResidual": 1.1151104814071771e-10,
+          "skullHeightInches": 9.575000000000001,
+          "uniformInchScale": 0.05368782282468562,
+          "volumeInches3": 179.40834147183358
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1181740.8976059225,
+          "orientedAreaResidual": 2.1133499741729573e-10,
+          "skullHeightInches": 9.575000000000001,
+          "uniformInchScale": 0.05368782282468562,
+          "volumeInches3": 182.8730227928626
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1187665.5469294577,
+          "orientedAreaResidual": 5.693300951440532e-11,
+          "skullHeightInches": 9.575000000000001,
+          "uniformInchScale": 0.05368782282468562,
+          "volumeInches3": 183.78985535148652
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.0049884829435799865,
+      "allocatedReserveInches3": 1121.0361407632265,
+      "skullOnlyShareOfReserve": 0.16394641409719252,
+      "unexplainedReserveAfterSkullInches3": 937.24628541174,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-DL-38027117",
+      "position": "DL",
+      "heightInches": 76,
+      "weightLbs": 310,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1126757.4917590793,
+          "orientedAreaResidual": 3.2644049349125435e-10,
+          "skullHeightInches": 9.47,
+          "uniformInchScale": 0.053432423524608245,
+          "volumeInches3": 171.88780784686307
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1147764.065639844,
+          "orientedAreaResidual": 1.0060670964840452e-9,
+          "skullHeightInches": 9.47,
+          "uniformInchScale": 0.053432423524608245,
+          "volumeInches3": 175.09237844980683
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1153447.366682366,
+          "orientedAreaResidual": 8.726270551984477e-11,
+          "skullHeightInches": 9.47,
+          "uniformInchScale": 0.053432423524608245,
+          "volumeInches3": 175.95937082809385
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.004927230497624614,
+      "allocatedReserveInches3": 1072.596307520371,
+      "skullOnlyShareOfReserve": 0.16404995019503363,
+      "unexplainedReserveAfterSkullInches3": 896.6369366922772,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-LB-73144310",
+      "position": "LB",
+      "heightInches": 75,
+      "weightLbs": 243,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1197995.3060366027,
+          "orientedAreaResidual": 7.411386911080642e-10,
+          "skullHeightInches": 9.435,
+          "uniformInchScale": 0.05645519683636614,
+          "volumeInches3": 215.5593643511911
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1222161.9331083384,
+          "orientedAreaResidual": 3.962787300894642e-10,
+          "skullHeightInches": 9.435,
+          "uniformInchScale": 0.05645519683636614,
+          "volumeInches3": 219.90774764104722
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1228648.0613503112,
+          "orientedAreaResidual": 2.412843324476509e-10,
+          "skullHeightInches": 9.435,
+          "uniformInchScale": 0.05645519683636614,
+          "volumeInches3": 221.074818725462
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.005279077423395197,
+      "allocatedReserveInches3": 840.7771055724199,
+      "skullOnlyShareOfReserve": 0.2629410544842908,
+      "unexplainedReserveAfterSkullInches3": 619.7022868469579,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-K-27698189",
+      "position": "K",
+      "heightInches": 70,
+      "weightLbs": 203,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1311365.9994360055,
+          "orientedAreaResidual": 3.0870449884006615e-10,
+          "skullHeightInches": 9.26,
+          "uniformInchScale": 0.050442666732518085,
+          "volumeInches3": 168.3131445258368
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1336644.3139858714,
+          "orientedAreaResidual": 3.198067673800105e-10,
+          "skullHeightInches": 9.26,
+          "uniformInchScale": 0.050442666732518085,
+          "volumeInches3": 171.5576030614638
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1343653.0475203688,
+          "orientedAreaResidual": 3.1978767285742726e-11,
+          "skullHeightInches": 9.26,
+          "uniformInchScale": 0.050442666732518085,
+          "volumeInches3": 172.4571703682586
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.005216178050897536,
+      "allocatedReserveInches3": 702.3775820214042,
+      "skullOnlyShareOfReserve": 0.24553342074491658,
+      "unexplainedReserveAfterSkullInches3": 529.9204116531456,
+      "wholeBodyMassVerified": false
+    },
+    {
+      "playerId": "P2026-BUF-P-5964564",
+      "position": "P",
+      "heightInches": 77,
+      "weightLbs": 208,
+      "levels": [
+        {
+          "rings": 16,
+          "slices": 24,
+          "skinTriangles": 768,
+          "modelSignedVolume": 1346572.8003261716,
+          "orientedAreaResidual": 1.1801677138300847e-9,
+          "skullHeightInches": 9.505,
+          "uniformInchScale": 0.0507669214084861,
+          "volumeInches3": 176.18637551123177
+        },
+        {
+          "rings": 32,
+          "slices": 48,
+          "skinTriangles": 3072,
+          "modelSignedVolume": 1371962.5990695364,
+          "orientedAreaResidual": 5.206730623299378e-10,
+          "skullHeightInches": 9.505,
+          "uniformInchScale": 0.0507669214084861,
+          "volumeInches3": 179.50839168033124
+        },
+        {
+          "rings": 64,
+          "slices": 96,
+          "skinTriangles": 12288,
+          "modelSignedVolume": 1378603.9286004028,
+          "orientedAreaResidual": 2.4321455766378617e-11,
+          "skullHeightInches": 9.505,
+          "uniformInchScale": 0.0507669214084861,
+          "volumeInches3": 180.3773471340101
+        }
+      ],
+      "lastRefinementRelativeDelta": 0.004817431165750987,
+      "allocatedReserveInches3": 719.6775224652812,
+      "skullOnlyShareOfReserve": 0.25063634961964776,
+      "unexplainedReserveAfterSkullInches3": 539.300175331271,
+      "wholeBodyMassVerified": false
+    }
+  ],
+  "controlledMassPairs": [
+    {
+      "weightLbs": 180,
+      "heightInches": 80,
+      "appearanceSha256": "bd465bc8d7c7ae1bbf2453dab05bf6bc0d8def2132f39fc204a83e8a7f473bcf",
+      "reservedVolumeInches3": 622.7978559795703,
+      "skullVolumeInches3": 185.8126816194998,
+      "skullHeightInches": 9.610000000000001,
+      "handSizeInches": 10.125,
+      "handLengthInches": 8,
+      "footLengthInches": 12.337919646222147,
+      "footWidthInches": 4.39278572328633
+    },
+    {
+      "weightLbs": 240,
+      "heightInches": 80,
+      "appearanceSha256": "bd465bc8d7c7ae1bbf2453dab05bf6bc0d8def2132f39fc204a83e8a7f473bcf",
+      "reservedVolumeInches3": 830.3971413060937,
+      "skullVolumeInches3": 185.8126816194998,
+      "skullHeightInches": 9.610000000000001,
+      "handSizeInches": 10.125,
+      "handLengthInches": 8,
+      "footLengthInches": 12.337919646222147,
+      "footWidthInches": 4.39278572328633
+    },
+    {
+      "weightLbs": 350,
+      "heightInches": 80,
+      "appearanceSha256": "bd465bc8d7c7ae1bbf2453dab05bf6bc0d8def2132f39fc204a83e8a7f473bcf",
+      "reservedVolumeInches3": 1210.9958310713866,
+      "skullVolumeInches3": 185.8126816194998,
+      "skullHeightInches": 9.610000000000001,
+      "handSizeInches": 10.125,
+      "handLengthInches": 8,
+      "footLengthInches": 12.337919646222147,
+      "footWidthInches": 4.39278572328633
+    },
+    {
+      "weightLbs": 500,
+      "heightInches": 80,
+      "appearanceSha256": "bd465bc8d7c7ae1bbf2453dab05bf6bc0d8def2132f39fc204a83e8a7f473bcf",
+      "reservedVolumeInches3": 1729.994044387695,
+      "skullVolumeInches3": 185.8126816194998,
+      "skullHeightInches": 9.610000000000001,
+      "handSizeInches": 10.125,
+      "handLengthInches": 8,
+      "footLengthInches": 12.337919646222147,
+      "footWidthInches": 4.39278572328633
+    }
+  ],
+  "simulationRngUnchanged": true,
+  "findings": [
+    "The closed skull has measurable volume and a tessellation refinement residual.",
+    "Identical saved face/stature gives identical skull volume across four masses, while the reserved volume changes linearly with total mass.",
+    "Remaining reserve has no rendered hand/foot depth or complete cap/overlap reconciliation. It cannot certify complete rendered mass."
+  ],
+  "requiredNext": [
+    "Define matched camera-independent hand/foot solids distinct from footwear.",
+    "Include actual head/neck/torso/limb solids and root caps with intersection subtraction.",
+    "Fit and test the union at controlled physical scale; publish numerical convergence and mass residuals instead of treating allocation sums as proof."
+  ],
+  "fullBodyAcceptance": false,
+  "releaseAccepted": false,
+  "frozenSources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-0-playerHead3d.js-2026-10-08",
+      "sha256": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-1-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-2-playerSideAppearance.js-2026-10-08",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-3-playerPortrait.js-2026-10-08",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-4-playerMotion.js-2026-10-08",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "original": "public/lib/playerHand.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-5-playerHand.js-2026-10-08",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca"
+    },
+    {
+      "original": "public/lib/playerFootwear.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-6-playerFootwear.js-2026-10-08",
+      "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+    },
+    {
+      "original": "public/lib/physiqueGeometryContract.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-7-physiqueGeometryContract.js-2026-10-08",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-8-playerIdentity.js-2026-10-08",
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-9-playerMeasurements.js-2026-10-08",
+      "sha256": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293"
+    },
+    {
+      "original": ".cache/observe-skull-reserve.mjs",
+      "file": "docs/visual-qa/references/reserved-volume-source-10-observe-skull-reserve.mjs-2026-10-08",
+      "sha256": "3bf58b620f62a7787e97f1f11ea7368904e7635936db56a27683fa8ad05e1f6a"
+    }
+  ],
+  "observerOutputSha256": "e57bbdf2af77143d542b9c8ec3d85f8f525a066b9af1c7f4422ecd0e59a14383",
+  "maximumOrientedAreaResidual": 1.7742155963305744e-9,
+  "maximumLastRefinementRelativeDelta": 0.0053318269615982095
+}

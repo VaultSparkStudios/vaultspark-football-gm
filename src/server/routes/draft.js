@@ -17,7 +17,7 @@ export async function handleDraftRoutes(req, res, url, ctx) {
   if (req.method === "POST" && url.pathname === "/api/draft/prepare") {
     // S108 — every draft response carries the scout's view of the class, never
     // the truth; see scoutedProspectView.
-    const draft = scoutedDraftResult(ctx.session.prepareDraft());
+    const draft = scoutedDraftResult(ctx.session.prepareDraft({ scoutingOnly: ctx.session.phase !== 'offseason' }));
     sendJson(res, 200, { ok: true, draft, state: ctx.session.getDashboardState() });
     return true;
   }

@@ -1,0 +1,1414 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T12:33:43.775Z",
+  "status": "scoped-hair-volume-repair-review-pending",
+  "scope": "Modern continuous hair only: asymmetric swept support volume, broader combed locks and connected long-hair back/side curtain. Not complete portrait naturalism or population calibration.",
+  "doneCondition": [
+    "Modern combed/long hair has visible form changes in matched front, three-quarter and profile captures.",
+    "Saved recipes, non-hair geometry and categorical legacy geometry remain exact versus the accepted pre-change face renderer.",
+    "Continuous boundaries remain bounded and all tested meshes stay within existing resource limits.",
+    "Built worker/in-page clients preserve front/profile head images, natural identity, body measurements and RNG through named-save replacement/load/reload."
+  ],
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "4bdfeacb0c6aaf5589d6c3824561a5d84bd80e4354153a8292a3701d7dedcf84",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "test/player-hair-volume.test.js": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99",
+    "test/player-continuous-hair.test.js": "099d96880eccece3af9436c7c126e08f555200b8cf06124a1ce3b4e55b40bc6d",
+    "test/player-occupied-hair.test.js": "919c929c997f269757a51dc8faa6ee4c40462d6e1f6c6413e7e70fb4a4a7d20c",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-fine-face.test.js": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459",
+    "test/player-continuous-hair-identity.test.js": "225a744f0b736810235c317a6b712c0bdbb53611be0e64abb59dc2f5aa387f78",
+    "tests-ui/player-hair-volume-gallery.spec.js": "375a62ce4bdd27de9007078cd11f26345ff62cc3e32775939847f609aa767bf4",
+    "tests-ui/player-hair-volume-production.spec.js": "dbb9d7580bf95f67c6e24ebbf60992492bb2b3bd2ffc306ab54312a4d543c252",
+    "tests-ui/player-hair-volume-client.spec.js": "7490fbb687772820bcc85b91f8a2a58e9128cfb89ab3bf8d9e599e358ddd5435",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+    "scripts/run-test-shard.mjs": "a1914511c47de0eed0da69d78c6932b4fa9a9c07d59acd6203b4c94533a77e0f"
+  },
+  "frozenSources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/hair-volume-r2-source-0-playerHead3d.js-2026-10-08",
+      "sha256": "4bdfeacb0c6aaf5589d6c3824561a5d84bd80e4354153a8292a3701d7dedcf84"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/hair-volume-r2-source-1-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/hair-volume-r2-source-2-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/hair-volume-r2-source-3-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/hair-volume-r2-source-4-playerPortraitFace.js-2026-10-08",
+      "sha256": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/hair-volume-r2-source-5-playerSideAppearance.js-2026-10-08",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/hair-volume-r2-source-6-playerPortrait.js-2026-10-08",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/hair-volume-r2-source-7-playerMotion.js-2026-10-08",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/hair-volume-r2-source-8-playerIdentity.js-2026-10-08",
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/hair-volume-r2-source-9-playerVisualIdentity.js-2026-10-08",
+      "sha256": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/hair-volume-r2-source-10-playerMeasurements.js-2026-10-08",
+      "sha256": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293"
+    },
+    {
+      "original": "test/player-hair-volume.test.js",
+      "file": "references/hair-volume-r2-source-11-player-hair-volume.test.js-2026-10-08",
+      "sha256": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99"
+    },
+    {
+      "original": "test/player-continuous-hair.test.js",
+      "file": "references/hair-volume-r2-source-12-player-continuous-hair.test.js-2026-10-08",
+      "sha256": "099d96880eccece3af9436c7c126e08f555200b8cf06124a1ce3b4e55b40bc6d"
+    },
+    {
+      "original": "test/player-occupied-hair.test.js",
+      "file": "references/hair-volume-r2-source-13-player-occupied-hair.test.js-2026-10-08",
+      "sha256": "919c929c997f269757a51dc8faa6ee4c40462d6e1f6c6413e7e70fb4a4a7d20c"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/hair-volume-r2-source-14-player-shared-head.test.js-2026-10-08",
+      "sha256": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f"
+    },
+    {
+      "original": "test/player-fine-face.test.js",
+      "file": "references/hair-volume-r2-source-15-player-fine-face.test.js-2026-10-08",
+      "sha256": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459"
+    },
+    {
+      "original": "test/player-continuous-hair-identity.test.js",
+      "file": "references/hair-volume-r2-source-16-player-continuous-hair-identity.test.js-2026-10-08",
+      "sha256": "225a744f0b736810235c317a6b712c0bdbb53611be0e64abb59dc2f5aa387f78"
+    },
+    {
+      "original": "tests-ui/player-hair-volume-gallery.spec.js",
+      "file": "references/hair-volume-r2-source-17-player-hair-volume-gallery.spec.js-2026-10-08",
+      "sha256": "375a62ce4bdd27de9007078cd11f26345ff62cc3e32775939847f609aa767bf4"
+    },
+    {
+      "original": "tests-ui/player-hair-volume-production.spec.js",
+      "file": "references/hair-volume-r2-source-18-player-hair-volume-production.spec.js-2026-10-08",
+      "sha256": "dbb9d7580bf95f67c6e24ebbf60992492bb2b3bd2ffc306ab54312a4d543c252"
+    },
+    {
+      "original": "tests-ui/player-hair-volume-client.spec.js",
+      "file": "references/hair-volume-r2-source-19-player-hair-volume-client.spec.js-2026-10-08",
+      "sha256": "7490fbb687772820bcc85b91f8a2a58e9128cfb89ab3bf8d9e599e358ddd5435"
+    },
+    {
+      "original": "tests-ui/helpers/static-client.js",
+      "file": "references/hair-volume-r2-source-20-static-client.js-2026-10-08",
+      "sha256": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/hair-volume-r2-source-21-run-test-shard.mjs-2026-10-08",
+      "sha256": "a1914511c47de0eed0da69d78c6932b4fa9a9c07d59acd6203b4c94533a77e0f"
+    }
+  ],
+  "baseline": {
+    "original": "public/lib/playerHead3d.js before this work",
+    "file": "references/player-hair-volume-before-2026-10-08.js",
+    "sha256": "8544fcbd7ccc3cce2bc1bbb238564c91a62e1ca45534267197597faacbc8b65a"
+  },
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "4bdfeacb0c6aaf5589d6c3824561a5d84bd80e4354153a8292a3701d7dedcf84",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f",
+  "clients": [
+    {
+      "original": ".cache/hair-volume/client/worker.json",
+      "file": "references/hair-volume-r2-client-worker-2026-10-08.json",
+      "sha256": "78d9de2af4a1fa972f749246fbe1f249ef5d2a4e0fc1c95edc6e7891a1073a0c",
+      "proof": {
+        "worker": true,
+        "playerId": "P2026-BUF-RB-82079160",
+        "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f",
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "frontSideMotionDimensionsExact": true,
+        "threeActualCollars": true,
+        "sixActualSectionLights": true,
+        "rngExact": true
+      }
+    },
+    {
+      "original": ".cache/hair-volume/client/in-page.json",
+      "file": "references/hair-volume-r2-client-in-page-2026-10-08.json",
+      "sha256": "6c75ade334982f7dc479c4c851d4449c5d23bf3b0562c47884bc25e2cbb2c9d7",
+      "proof": {
+        "worker": false,
+        "playerId": "P2026-BUF-RB-82079160",
+        "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f",
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "frontSideMotionDimensionsExact": true,
+        "threeActualCollars": true,
+        "sixActualSectionLights": true,
+        "rngExact": true
+      }
+    }
+  ],
+  "captures": [
+    {
+      "original": "output/playwright/hair-volume-gallery-0-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-0-desktop-dark.png",
+      "sha256": "e375527f5f5c1f44cf59e440fca7a94182cf2460dba36fcfc71b57abf3c12fc7",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-0-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-0-desktop-light.png",
+      "sha256": "05d8327c93ce87289e2c0eb2f61c68d92b0f95f8bc001cc4837594ee76e63052",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-0-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-0-mobile-dark.png",
+      "sha256": "ae8f064f32efd4ce54054def1f608ccfc7707117cfb3e4dd9d0f56e058f42069",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-0-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-0-mobile-light.png",
+      "sha256": "daeca0c2f457dfb797d20e75e3fd262782a5670dbf4bf8aa0b54fdb46d5be148",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-1-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-1-desktop-dark.png",
+      "sha256": "c6731437fbb8815b81310121a6f81e41d814f230eac82b341d34e99e69774141",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-1-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-1-desktop-light.png",
+      "sha256": "d93ede2ae311d0c58b071967d830207fb9442fc0557e8587236cdea7fa08f6bf",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-1-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-1-mobile-dark.png",
+      "sha256": "f6bf11f072dbcddf43c2321f647ab9b0cbf69df9b952ead335a623fe07999f49",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-1-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-1-mobile-light.png",
+      "sha256": "35f9e051c966accbcf0ce07347297c9821adbf7997348786a12a2d87fe761a64",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-10-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-10-desktop-dark.png",
+      "sha256": "8cb0bdedf4109290751c2b75af035e5d5f2ee97d44266adebee835df2f74d901",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-10-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-10-desktop-light.png",
+      "sha256": "c8b85575053ac5b8720fb79a1b7adbb6cf4f9b7cb83f0fb638fc1d10c5d298cd",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-10-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-10-mobile-dark.png",
+      "sha256": "54564ed9514303488243ef8cdd1a6aa03be0d3d05794ebe9c651823e0c47265b",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-10-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-10-mobile-light.png",
+      "sha256": "c528a23a0510a25ae371364e3558854515c8ac296ebfa96fada3aeb552818dfb",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-11-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-11-desktop-dark.png",
+      "sha256": "b77b2323790485a98fae7de757a0c4bd62162d5112ef6e3cd0b08d073692e7fb",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-11-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-11-desktop-light.png",
+      "sha256": "9c7f0ba40388ad005540b5fd2b85ae83ffc7554c6c0f4eb623d74a45be880a55",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-11-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-11-mobile-dark.png",
+      "sha256": "89aed45b89a1e1490e011366e4932ea023f45a78fa1076f184b40a47da656047",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-11-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-11-mobile-light.png",
+      "sha256": "03c70ba56fdf1d1636af6933d81bdcc2a00dd4eaa71ae7346debc77076adfcab",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-12-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-12-desktop-dark.png",
+      "sha256": "4946a8c73c772379350fe23d4dbcd53004b3327a8b19376baba975e5e07da112",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-12-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-12-desktop-light.png",
+      "sha256": "fd258e7a50cab2d1751968c856a1b2e78d6794ce1308a8b8d53bb059259dcc0d",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-12-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-12-mobile-dark.png",
+      "sha256": "6787fa07b1de857e220e34b8d0cb3f0f98c0fc3392a373ad1383ffa13b263460",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-12-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-12-mobile-light.png",
+      "sha256": "e04bcc78378a3888a33e0ecbda563579cb3614e15e44269d020bbf5e4a43bf9f",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-13-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-13-desktop-dark.png",
+      "sha256": "b9ef11b5c816630facf2aa57650d180199adce4d9306eceb93bde11ea9754352",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-13-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-13-desktop-light.png",
+      "sha256": "b19f990b11b721438bfe5e23b67f001cc3850a5634c425c2e16ca3cd632a0546",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-13-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-13-mobile-dark.png",
+      "sha256": "f797db2c64c7caaf64ba6a4ee5943cdf418972e07e7904079ed5d1d6dd817f05",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-13-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-13-mobile-light.png",
+      "sha256": "56263af0c3d2ecb8224b3bacfe463147340356397735319dd10f36f6731327ef",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-14-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-14-desktop-dark.png",
+      "sha256": "71fcbb6f6f43684cfc597de1818677e468c1d7f60eb267f23a6d6d7da81fbded",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-14-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-14-desktop-light.png",
+      "sha256": "620ad22dce2ea471caeabe790eb3072b1fdd27de005a4faacc5b27f033c4b2e1",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-14-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-14-mobile-dark.png",
+      "sha256": "2b366704f866fc23c1d301c3f46013edf490db8eccbe3685186465dce36c02ed",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-14-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-14-mobile-light.png",
+      "sha256": "7faefd1c9f0ff7a0d56d3a997ddfd0954ca21af24bcea8359c86d6bdb843ca61",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-2-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-2-desktop-dark.png",
+      "sha256": "3d0a8616e2e8f7bf1007eb6fb716a02ff5a72d7d90622b7a713bdb35e3299a5c",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-2-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-2-desktop-light.png",
+      "sha256": "612da9af873b0a375b2e8398dff8be2093b3893ac51272b32ff73f5ba78a6167",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-2-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-2-mobile-dark.png",
+      "sha256": "42d7f5f2230ba1894b139adf5a64c64d35c21b0d81864311a0e3606168049f8c",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-2-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-2-mobile-light.png",
+      "sha256": "87af4da4d4cd16ffdbed804d24d7fa11b9aaee4a1053facb51ca9467dc173e8d",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-3-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-3-desktop-dark.png",
+      "sha256": "73c28dc805f0932f92a4b3f48b8dc4c833ae7824186d7b11d0d17ff8ec83c697",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-3-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-3-desktop-light.png",
+      "sha256": "ec954531ec25fd51c5b3d151f907c6aa4a301b3de8c674a6f8789f28bbd3868d",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-3-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-3-mobile-dark.png",
+      "sha256": "a482a65fb7c14609e7d943c87177e5a99df3e4cd09cc30a1ccb48374233d5a75",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-3-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-3-mobile-light.png",
+      "sha256": "b37a771fb16869cd7f65341a2d3dd8f81b5350e73c4f190824efaa2a0f3002bc",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-4-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-4-desktop-dark.png",
+      "sha256": "2a3d7102b3808c2b737872228310eed8940e367e3b1e7dd9cb12ae2732dfbeba",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-4-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-4-desktop-light.png",
+      "sha256": "0e010ee5ec278fbf6cca815de998e968958f1d70443029378363883fc296f488",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-4-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-4-mobile-dark.png",
+      "sha256": "a800b888a7ad67f8693c58a7a088b4f983949f2fa3af2b3eef78628ca0ed7dd0",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-4-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-4-mobile-light.png",
+      "sha256": "07fc3684f14567c9088afd1e37a649470ea6579b20189f7bc09962eabe6a686e",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-5-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-5-desktop-dark.png",
+      "sha256": "3fca561c42578bbe6fc4861eab73111ace0292f1c307fc2add91dc11c71edc73",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-5-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-5-desktop-light.png",
+      "sha256": "4e753ff9fafaf1eb59adc63e5259863dcbf52b95ed66ae89989155675c31aa90",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-5-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-5-mobile-dark.png",
+      "sha256": "4c7092062b1d2cbb99bd494b0447b4e1db00aa71f360d45fa19ca97f5b8b993c",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-5-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-5-mobile-light.png",
+      "sha256": "a618bc6403b35a8a842093c6e5ed96601f5480afa408fff47f1d00529031334f",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-6-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-6-desktop-dark.png",
+      "sha256": "b45cc003549a0d40c16d06aed3b303193ccf11eaed2b78ef8259c2cc57dc6d28",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-6-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-6-desktop-light.png",
+      "sha256": "02abe62df1f068f2bcda4124faccaaecbf42374e4ba54d6ba716d4e1f6670fb4",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-6-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-6-mobile-dark.png",
+      "sha256": "5da4e48d83066da05852e81c4c54098d1f1fed271aaea9b121e187558bc4bb8d",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-6-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-6-mobile-light.png",
+      "sha256": "b9418f7f54d10cde2b717cd00cd749a3d499c7b09ca80b1d4a71956fa0fe652d",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-7-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-7-desktop-dark.png",
+      "sha256": "eb0784a0a674fb6e4d6aca3200e7e551bff59c6cd590ca7c42e0362acf3b33dd",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-7-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-7-desktop-light.png",
+      "sha256": "80b5f52c1dfa3ff90d109af3775f1cde017756ad65ebbf82c8db09a8f3ea6202",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-7-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-7-mobile-dark.png",
+      "sha256": "36ce29e589765a2758dbbede2a032d9c272ec42a13643e14e5d69e8934b25b67",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-7-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-7-mobile-light.png",
+      "sha256": "646f9ebf1a02be001e38147ec0b48daf66a70d20ed93811afcb1acba9622bf26",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-8-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-8-desktop-dark.png",
+      "sha256": "605e19467dd1ae2b408319a3a8bf58c9926619efce9fea539d26b5e7a2c3fe2e",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-8-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-8-desktop-light.png",
+      "sha256": "ec6cbb161fbf78a0783fc0cf9a3ffc045c7048e4f01d4c5b6a2d408f3453e9ee",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-8-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-8-mobile-dark.png",
+      "sha256": "1365438f0417b8457b09a71cf152ae1ad85d290ffe1259caf8c0f0c499072e79",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-8-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-8-mobile-light.png",
+      "sha256": "6f78897e69c1adcd5b5f9a81536d0c3c547a12c39f5780ba8cdd2e67ad1f4466",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-9-desktop-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-9-desktop-dark.png",
+      "sha256": "30be96f9345f3af1d0f46a35b33d14dec5429d67de9e848f463e161e97d66dd1",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-9-desktop-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-9-desktop-light.png",
+      "sha256": "404c6e365d9ed0cf084e42b4cd65d3d351ecadea33e4eb212f4986b4a89a0361",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-9-mobile-dark.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-9-mobile-dark.png",
+      "sha256": "e88f51ee1ecf1bc81089056e9bdba9386c55a0190544ac3292891232ada811f0",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-9-mobile-light.png",
+      "file": "captures/hair-volume-r2-hair-volume-gallery-9-mobile-light.png",
+      "sha256": "925047498d17e499c2538f33b7719828b2af4da9a3325ab2ede6ee61c4e67881",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-desktop-dark-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-desktop-dark-body.png",
+      "sha256": "3e8311b808c2580512c07938023127bfd7868f4de7348d9b9af36c7d74eeaf8a",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-desktop-dark-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-desktop-dark-motion.png",
+      "sha256": "186d635e1c2961049731f5e0db356724c9d3dfc8fd8a3f495457f2f49da544ff",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-desktop-dark-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-desktop-dark-portrait.png",
+      "sha256": "805fba0362b43300d829b1739864c770519161c88f278cf752772793596ae64b",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-desktop-light-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-desktop-light-body.png",
+      "sha256": "13d2d891fd60b58a8243aaffb55e7f9ad7a72a3b1e77b13454fd314173aa9f02",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-desktop-light-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-desktop-light-motion.png",
+      "sha256": "ad949bf22d0fbb1efd44b243405cf2242d88f3e9b219e168d91ff4a6f5a01a9a",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-desktop-light-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-desktop-light-portrait.png",
+      "sha256": "91bf5233f2cbb24524471b5789a177d5d67cf0a04a23dd7914f5467ef229dab8",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-mobile-dark-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-mobile-dark-body.png",
+      "sha256": "a6e61ec2fa22dea388f82d586d4090b3236f049ec384e3299830050eca9be607",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-mobile-dark-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-mobile-dark-motion.png",
+      "sha256": "4fb888bf9669a701ddad62eabb10f3adce831044f6cdd11e1d1ad8696fd064fa",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-mobile-dark-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-mobile-dark-portrait.png",
+      "sha256": "f8fce9f9f2ceaee0efd64b0ffeb688b20de71b1671f27067adc0e17dc76922c6",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-mobile-light-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-mobile-light-body.png",
+      "sha256": "e2fe338e3336457cfc83834dc6d13bfc92f416a9d8262b806858747870a2a40c",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-mobile-light-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-mobile-light-motion.png",
+      "sha256": "48c4add5c6faebfb26bb4fd721676d71dfe07caba7e47023304f4b3b74fd2d86",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-after-mobile-light-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-after-mobile-light-portrait.png",
+      "sha256": "71daea261a493bb55eff2067ac20b894f12f96a28a19841fb3b6f729f73a3ab6",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-desktop-dark-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-desktop-dark-body.png",
+      "sha256": "c0333cb28ded45514714b4b8ee5f5f4bccd1600a9abe0c413e703320e0bc01fc",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-desktop-dark-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-desktop-dark-motion.png",
+      "sha256": "1ef9e64de9783e83fdb4151b06d50efaf9e5623325f30f01ecff62a3938c11a7",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-desktop-dark-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-desktop-dark-portrait.png",
+      "sha256": "e2cc793b7a7cc4fab59f819e538a10fa9b8bd3bd6b2d3c72597aff6c6a617f36",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-desktop-light-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-desktop-light-body.png",
+      "sha256": "fa63c4e2f3b9a97cf7b691028df46599af0f9284f0de899eb3f10fc036c7fa63",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-desktop-light-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-desktop-light-motion.png",
+      "sha256": "6478f861c6dad49d25bf33f38be3f09686775fcdac9363116ba695c6c196f15c",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-desktop-light-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-desktop-light-portrait.png",
+      "sha256": "a0668e2c22381f531927c7fc47b8562858500c01d73c8d45ca20a6cef71c11db",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-mobile-dark-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-mobile-dark-body.png",
+      "sha256": "f012d5197e9edadf94f78e1cd1336203d03fae63b94ceb83cf6c94e09a64e7a4",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-mobile-dark-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-mobile-dark-motion.png",
+      "sha256": "0529a366266ae7e0addfe4dbd369735654bd85e1cc133e4f5b14bfbef124d0a1",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-mobile-dark-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-mobile-dark-portrait.png",
+      "sha256": "dd0dcc8d52723d4e2c8fdd788722d4b88e6682a8806b1b0d3d4b03ff45973da6",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-mobile-light-body.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-mobile-light-body.png",
+      "sha256": "c1fd2974e4e4f73c7128fc064f0262f3ba0131225a7aa81a97442c46848055f1",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-mobile-light-motion.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-mobile-light-motion.png",
+      "sha256": "5d5acacf3bfc7e326647acaf2c43f1480b386a487fbfcc55b66e496fdbd12d2d",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-hair-volume-before-mobile-light-portrait.png",
+      "file": "captures/hair-volume-r2-production-hair-volume-before-mobile-light-portrait.png",
+      "sha256": "12c08ad7d581593694dcc3a3698253502164feee1200c1124f7b5c69a29030c1",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "reports": [
+    {
+      "original": ".cache/hair-volume/r2-domain.log",
+      "file": "references/hair-volume-r2-report-0-r2-domain.log-2026-10-08",
+      "sha256": "cbc587f953902a8ac210fe88c3a213362744168648ad07dbe672db88a88ac54f"
+    },
+    {
+      "original": ".cache/hair-volume/r2-browser.log",
+      "file": "references/hair-volume-r2-report-1-r2-browser.log-2026-10-08",
+      "sha256": "a4484caff0571816bd427b3f91958b7bfbce62fdb8674703af0d28a88a2e82c3"
+    },
+    {
+      "original": ".cache/hair-volume/r2-build.log",
+      "file": "references/hair-volume-r2-report-2-r2-build.log-2026-10-08",
+      "sha256": "1402dd299757665fb6ed5e14b0dead6b5a8bac70bde6bb497c82aa76a0dc623d",
+      "originalSha256": "603595fa2fdd6e8a87519d1274d3017cd3e4fcd8f71623e4a4667fa6381de871",
+      "publicSafeDerivative": true
+    },
+    {
+      "original": ".cache/hair-volume/r2-reachability.log",
+      "file": "references/hair-volume-r2-report-3-r2-reachability.log-2026-10-08",
+      "sha256": "2682ba4d9903d47aabe3f8ad7f455cde012eec375d01d0038881cf176c18d866"
+    },
+    {
+      "original": ".cache/hair-volume/r2-boot-budget.log",
+      "file": "references/hair-volume-r2-report-4-r2-boot-budget.log-2026-10-08",
+      "sha256": "7bcff9a51ce60488ae34a4ee230c6d7209292055fa6eda315733c014796c8b30"
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-observations.json",
+      "file": "references/hair-volume-r2-report-5-hair-volume-gallery-observations.json-2026-10-08",
+      "sha256": "21fd004dfbe2d2199e108b40b1ac499d6b5c05bbc2570223524af094f268e1d5"
+    },
+    {
+      "original": "output/playwright/production-hair-volume.json",
+      "file": "references/hair-volume-r2-report-6-production-hair-volume.json-2026-10-08",
+      "sha256": "53d608738ca41453b3cd83d0432c5fc4dceec8b17e5a6519f41af2beaafd1ee2"
+    },
+    {
+      "original": "static/deploy-manifest.json",
+      "file": "references/hair-volume-r2-report-7-deploy-manifest.json-2026-10-08",
+      "sha256": "4a375b871d99d6339ff095497c3b28cd688ee71dd4a76cfb4757f68f0654b77b"
+    }
+  ],
+  "verification": {
+    "domainPassed": 25,
+    "browserPassed": 4,
+    "reachabilityModules": 139,
+    "htmlEntries": 4,
+    "bootBytes": 649321,
+    "maxBootBytes": 730000,
+    "bootModules": 51,
+    "maxBootModules": 58,
+    "lazyLeaks": 0
+  },
+  "testCorrection": {
+    "reason": "Two historical hair tests compared current full head anatomy to references predating the independently accepted chin/eye/face changes. Their current compatibility authority now uses the accepted face renderer frozen before this scalp change.",
+    "historicalFilesPreserved": [
+      "references/production-continuous-hair-before-2026-10-08.js",
+      "references/production-occupied-hair-before-2026-10-08.js"
+    ],
+    "historicalGoldensRegenerated": false
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "original": "output/playwright/hair-volume-gallery-0-desktop-light.png",
+        "file": "captures/hair-volume-r2-hair-volume-gallery-0-desktop-light.png",
+        "sha256": "05d8327c93ce87289e2c0eb2f61c68d92b0f95f8bc001cc4837594ee76e63052",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/hair-volume-gallery-0-mobile-light.png",
+        "file": "captures/hair-volume-r2-hair-volume-gallery-0-mobile-light.png",
+        "sha256": "daeca0c2f457dfb797d20e75e3fd262782a5670dbf4bf8aa0b54fdb46d5be148",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/hair-volume-gallery-4-desktop-dark.png",
+        "file": "captures/hair-volume-r2-hair-volume-gallery-4-desktop-dark.png",
+        "sha256": "2a3d7102b3808c2b737872228310eed8940e367e3b1e7dd9cb12ae2732dfbeba",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/hair-volume-gallery-13-mobile-light.png",
+        "file": "captures/hair-volume-r2-hair-volume-gallery-13-mobile-light.png",
+        "sha256": "56263af0c3d2ecb8224b3bacfe463147340356397735319dd10f36f6731327ef",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/production-hair-volume-after-desktop-light-portrait.png",
+        "file": "captures/hair-volume-r2-production-hair-volume-after-desktop-light-portrait.png",
+        "sha256": "91bf5233f2cbb24524471b5789a177d5d67cf0a04a23dd7914f5467ef229dab8",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/production-hair-volume-after-mobile-dark-motion.png",
+        "file": "captures/hair-volume-r2-production-hair-volume-after-mobile-dark-motion.png",
+        "sha256": "4fb888bf9669a701ddad62eabb10f3adce831044f6cdd11e1d1ad8696fd064fa",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "findings": [
+      "Matched parted hair has more sweep, rooted clump structure and less uniform cap volume.",
+      "Long hair now occupies back/side space down to the jaw and below; previous cheek-height sparse wires were rejected.",
+      "Faces still look stylized/plastic and long-hair materials/ends need further craft; body naturalism and full rendered mass accounting also remain unfinished."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false,
+  "repair": {
+    "review": "PLAYER_HAIR_VOLUME_REVIEW_R1_2026-10-08.json",
+    "reviewSha256": "6bc1034869875b7bf5e808570cbd156f88aa038c06a009c70fef75d94b182710",
+    "primary": "PLAYER_HAIR_VOLUME_2026-10-08.json",
+    "primarySha256": "682bf2c0d0dbbab68649d277e8470f1d6ed7206a0979cc6e2a695287c1ea4af9",
+    "finding": "Nonperiodic asymmetric scalp support and unwrapped curtain roots.",
+    "change": "Modern scalp angles normalize to a single periodic domain; front-weighted asymmetry returns to symmetric rear support. Actual emitted rear positions/normals now meet across every row in twelve extreme combinations.",
+    "regression": {
+      "combinations": 12,
+      "rowsPerCombination": 33,
+      "positionRows": 396,
+      "normalRows": 372,
+      "maxPositionTolerance": 0.00001,
+      "maxNormalTolerance": 0.00001
+    },
+    "rearViewsIncluded": true
+  },
+  "publicSafeEvidenceRedactions": {
+    "receipt": "docs/visual-qa/PUBLIC_SAFE_DIAGNOSTICS_S118.json",
+    "originalManifestSha256": "e50148eff7b50b608932da1b8897fc4030202c59c2cb8a4cd73b95e352816e8c",
+    "files": [
+      "docs/visual-qa/references/hair-volume-r2-report-2-r2-build.log-2026-10-08"
+    ],
+    "originalManifestPreservedPrivately": true
+  }
+}

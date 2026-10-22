@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T06:36:29.904Z",
+  "scope": "Test-only whole-head regression repair; original saved-recipe and SVG compatibility, meaningful legacy eye opening. No production changes, visual-quality completion or whole-suite acceptance.",
+  "status": "scoped-regression-pass-full-overhaul-open",
+  "sources": [
+    {
+      "original": "test/player-whole-head-form.test.js",
+      "file": "visual-qa/references/whole-head-regression-player-whole-head-form.test.js-2026-10-08",
+      "sha256": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf"
+    },
+    {
+      "original": "test/fixtures/whole-head-legacy-inputs.json",
+      "file": "visual-qa/references/whole-head-regression-whole-head-legacy-inputs.json-2026-10-08",
+      "sha256": "97f287f6239776b4cf9d74c57be2977eaa1464248f791dbdee41c6520f78b662"
+    },
+    {
+      "original": "test/fixtures/whole-head-legacy-hashes.json",
+      "file": "visual-qa/references/whole-head-regression-whole-head-legacy-hashes.json-2026-10-08",
+      "sha256": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "visual-qa/references/whole-head-regression-playerIdentity.js-2026-10-08",
+      "sha256": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "visual-qa/references/whole-head-regression-playerVisualIdentity.js-2026-10-08",
+      "sha256": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "visual-qa/references/whole-head-regression-playerMeasurements.js-2026-10-08",
+      "sha256": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3"
+    },
+    {
+      "original": "public/lib/fineFaceGeometry.js",
+      "file": "visual-qa/references/whole-head-regression-fineFaceGeometry.js-2026-10-08",
+      "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "visual-qa/references/whole-head-regression-playerPortraitFace.js-2026-10-08",
+      "sha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "visual-qa/references/whole-head-regression-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/portraitAppearanceContract.js",
+      "file": "visual-qa/references/whole-head-regression-portraitAppearanceContract.js-2026-10-08",
+      "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+    },
+    {
+      "original": "public/lib/croppedHairVolume.js",
+      "file": "visual-qa/references/whole-head-regression-croppedHairVolume.js-2026-10-08",
+      "sha256": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5"
+    },
+    {
+      "original": "public/lib/longHairFlow.js",
+      "file": "visual-qa/references/whole-head-regression-longHairFlow.js-2026-10-08",
+      "sha256": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "visual-qa/references/whole-head-regression-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "visual-qa/references/whole-head-regression-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "public/lib/portraitSurfaceLighting.js",
+      "file": "visual-qa/references/whole-head-regression-portraitSurfaceLighting.js-2026-10-08",
+      "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72"
+    },
+    {
+      "original": "public/lib/hairArrangement.js",
+      "file": "visual-qa/references/whole-head-regression-hairArrangement.js-2026-10-08",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+    },
+    {
+      "original": "public/lib/hairGrayFibers.js",
+      "file": "visual-qa/references/whole-head-regression-hairGrayFibers.js-2026-10-08",
+      "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49"
+    },
+    {
+      "original": "public/lib/structuredHair.js",
+      "file": "visual-qa/references/whole-head-regression-structuredHair.js-2026-10-08",
+      "sha256": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1"
+    },
+    {
+      "original": "public/lib/partedHairFlow.js",
+      "file": "visual-qa/references/whole-head-regression-partedHairFlow.js-2026-10-08",
+      "sha256": "be4c479ad8251c593a0b3287672b1f368573da0081a75f4c4b62ae047b539de0"
+    },
+    {
+      "original": "public/lib/portraitEyeSurface.js",
+      "file": "visual-qa/references/whole-head-regression-portraitEyeSurface.js-2026-10-08",
+      "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "visual-qa/references/whole-head-regression-playerHead3d.js-2026-10-08",
+      "sha256": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "visual-qa/references/whole-head-regression-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    }
+  ],
+  "evidence": [
+    {
+      "original": ".cache/whole-head-legacy-input-recovery.json",
+      "file": "visual-qa/references/whole-head-regression-evidence-whole-head-legacy-input-recovery.json-2026-10-08",
+      "sha256": "68f1140b0224e3dedaeb7f6b232a4b54ad7bc969279212ab7c6c116254f0e0b4"
+    },
+    {
+      "original": ".cache/whole-head-fixture-diagnosis.json",
+      "file": "visual-qa/references/whole-head-regression-evidence-whole-head-fixture-diagnosis.json-2026-10-08",
+      "sha256": "72b90c0eed6d5faee0cdf354da80a06ac3ad97264616e831e791b0d1c7a3553e"
+    },
+    {
+      "original": ".cache/recover-whole-head-legacy-inputs.mjs",
+      "file": "visual-qa/references/whole-head-regression-evidence-recover-whole-head-legacy-inputs.mjs-2026-10-08",
+      "sha256": "7e4ce17c1d49f5406a669eda26b5ef527365b1f2bba08f8c659e3e3d1245e448"
+    }
+  ],
+  "historicalGenerator": {
+    "file": "docs/visual-qa/references/whole-head-regression-original-playerVisualIdentity-2026-10-08.js",
+    "sha256": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "priorReceipt": "docs/visual-qa/PLAYER_WHOLE_HEAD_2026-10-07.json"
+  },
+  "recoveryQualification": {
+    "originalRecoveryReceiptTargetSha256": "e11a542fe1795a869f16e8bd6b09dd5472a9358e21695992d80ce3d809c4dea8",
+    "currentPortableInputSha256": "97f287f6239776b4cf9d74c57be2977eaa1464248f791dbdee41c6520f78b662",
+    "rawInputsReconstructedFromOriginalGenerator": true,
+    "metadataTransition": "Recovery script initially wrote the .cache generator path. Only historicalAuthority.generatorSource was moved to its durable exact-byte copy and recoveredFrom was added afterward. The recovery receipt target hash is pre-metadata-migration, not current portable-file bytes; current inputs are separately source-bound.",
+    "originalRenderExpectationsSha256": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a",
+    "renderExpectationsChanged": false
+  },
+  "checks": {
+    "reproducedFailure": {
+      "tests": 4,
+      "passed": 2,
+      "failed": 2,
+      "durationMs": 303.2492,
+      "terminalChunk": "a62a5f"
+    },
+    "originalInputRecovery": {
+      "inputs": 4,
+      "renderHashComparisons": 384,
+      "allOriginalHashesMatch": true,
+      "terminalChunk": "c6b104"
+    },
+    "combinedFocused": {
+      "tests": 30,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4360.0855,
+      "terminalChunk": "ac1163"
+    },
+    "finalPortableFixture": {
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 459.3463,
+      "terminalChunk": "943bed"
+    },
+    "legacyContract": {
+      "rawInputs": 4,
+      "styleTextureCases": 192,
+      "originalFrontProfileHashes": 384,
+      "decodedAppearanceExact": true,
+      "decodedFrameExact": true,
+      "rawSaveInputUnchanged": true
+    },
+    "apertureContract": {
+      "sides": 2,
+      "apertures": [
+        0.7,
+        0.85,
+        1,
+        1.2
+      ],
+      "fixedWidth": 21,
+      "joinedCorners": true,
+      "clearOpeningBounds": [
+        4,
+        12
+      ],
+      "increasingClearOpening": true
+    }
+  },
+  "findings": [
+    "The previous test generated current regional-body-shape-v2 inputs and compared them with historical v1 SVG hashes. Original v1 saved inputs recovered from the original hash-verified generator reproduce all 384 untouched expectations. Current new-player defaults remain unchanged.",
+    "The static legacy eye test used an older upper-midpoint threshold. The current narrower contour preserves width and joined corners; replacement acceptance independently checks bounded pigment clearance and monotonic opening across four aperture values and both sides. This does not assert WebGL blink correctness or complete naturalism.",
+    "Recovered raw profiles and decoded baseline appearance/frame are now portable fixed inputs. Future generation defaults cannot silently reroll this compatibility fixture. Production decoders and original expected SVG hashes remain unchanged.",
+    "Canonical core is started separately with retained output; no terminal result or whole-suite acceptance is asserted here. Complete player craft, population/body calibration, final current managed career and release remain open."
+  ],
+  "independentReview": "pending",
+  "productionSourcesChanged": false,
+  "fullVisualAcceptance": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

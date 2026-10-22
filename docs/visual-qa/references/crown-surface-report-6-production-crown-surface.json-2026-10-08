@@ -1,0 +1,326 @@
+{
+  "scope": "Actual dossier before/after rounded modern upper crown, iris/sclera treatment and skin warmth; no complete craft or population acceptance",
+  "playerId": "P2026-BUF-OL-75203022",
+  "facialHair": "short-beard",
+  "captures": [
+    {
+      "file": "output/playwright/production-crown-surface-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "1d6e73d33b911bbcd66e231326bb6bdd5978ca288140c41d72186da66fb1e466"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "2cb65a56d9368eaaf5180de66fa02986aa761ee257cfe6e08313f27d58f332ba"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7afa9f75d04679183804b4ad2750481d2e0123efa592115109f7ebd8aa33331f"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "35d53c62c784c83cdc3cbcbb4f4d179df7e51db577e59add4cb37e045c64bd64"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f5b135ff0eecc8e76d1f47d3d72754aaaa05c3e28c96928a190f1aa763b04f7c"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b0172fc25d069091c2f23cf1d74f26aab7ecea3e46f7c3d8214c178701135436"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6afb468b341b5e7b5f7443a8fce2afaa1c090d3bc5308538c0851f9d90e07989"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b2d357b62d3c50009801c9ba66505d0b08d8f313fbb8970da5bc35784f2f6241"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4f725104f09450fd28c593e436a4de1641096afef651a545105c3f296f555933"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4a7f7b2e6afb1dd150f76945a6db961bc709a210ab1073d5d2ad6d3a7ac0aaf0"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "55316d486c9f965ed628b83c49853f960244daf360cbe1d50826d88e26dc5405"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "bdfe04529dd5fb5e76923f5f2ba1bd436e1e5e3b626cdf9c1396fe32bc92b024"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "86430cef0419941b0b6de0c484544125013bc952a10d7db7bb797e103d69025c"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9f2dfc4410fd1075b4595e267d66a21798d829dfb7617b84ffbc160d883498f6"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e49d5cdc6ddfecd9afb28e3381b3bbc4c4e2cca333f15a58363c577d2440e4f0"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f76d28f7d25fa9094e0b5066840f894a717307fa6e7312ed8ef0917b73b05c88"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e608d5fdb4cc15afb8d642b5d01c75cd59ff9b8fa03a8f54c45d5083c42c97ea"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5d31f991124c9e0bdc2d6901d654905db4eaca130cc342c9f8b10199a13962ee"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "dffdf1a471f536809f0f2da40da13225b9ff0321118725fd12f3c82c9f0dd61a"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4331d8b7f6adfaf104cc82c7712b7c61f2eed01da17ea86685bd45aa8b924fae"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "697eb21694a559c1603efe5e5c8ef9ac1943d2f98f2d4bae0f65d923340c1522"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e11a09df7cedd6288ad227a60a7c391426abe66d1f758f84f2e344899af8b868"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ed7c174d778a4a9f891942b598fd87c79606e6f59b15fa50e9b429ebb5a7062c"
+    },
+    {
+      "file": "output/playwright/production-crown-surface-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6afbad6a1b9e665492ea2b3d8ec4b37fc220c58f674066cee8d5892b5c6909a6"
+    }
+  ],
+  "agreement": [
+    {
+      "mode": "run",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "acceleration",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "cut",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "jump",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "strength",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "endurance",
+      "frontBody": true,
+      "sideMotion": true
+    }
+  ],
+  "diagnostics": {
+    "cacheEntries": 2,
+    "cacheLimit": 32,
+    "draws": 2,
+    "meshBuilds": 1,
+    "unavailable": false,
+    "contexts": 1
+  },
+  "cacheProof": {
+    "bounded": {
+      "cacheEntries": 32,
+      "cacheLimit": 32,
+      "draws": 37,
+      "meshBuilds": 36,
+      "unavailable": false,
+      "contexts": 1
+    },
+    "restored": true,
+    "malformed": true,
+    "malformedSkin": true,
+    "healthy": true
+  },
+  "playerUnchanged": true
+}

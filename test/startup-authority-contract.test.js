@@ -5,6 +5,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:f
 import { relative, resolve } from "node:path";
 import { spawnSync } from "../scripts/lib/safe-spawn.mjs";
 import { evaluateBriefFreshness } from "../scripts/check-brief-staleness.mjs";
+import { inspectLifecycleCoherence } from "../scripts/lifecycle-coherence.mjs";
 import {
   describeGeniusCache,
   describeProjectProfile,
@@ -116,7 +117,14 @@ test("live renderer emits source-bound startup authority tiles without mutating 
     const brief = readFileSync(output, "utf8");
     assert.match(brief, /lifecycle-authority-fingerprint/);
     assert.match(brief, /genius-authority-fingerprint/);
-    assert.match(brief, /Lifecycle authority · local FORGE · registry (?:SPARKED · DRIFT|unavailable)/);
+    const authority = inspectLifecycleCoherence(root);
+    const local = authority.localVaultStatus || authority.expectedVaultStatus || "UNKNOWN";
+    const registry = authority.authoritativeVaultStatus || "unavailable";
+    const authorityRow = brief.split("\n").find(line => line.includes("Lifecycle authority ·"));
+    assert.ok(authorityRow?.includes(`Lifecycle authority · local ${local} · registry ${registry}`),
+      "the renderer must report the current local and registry authority, including agreement");
+    assert.equal(authorityRow.includes(" · DRIFT"), authority.authoritativeDrift === true);
+    assert.ok(brief.includes(`<!-- lifecycle-authority-fingerprint: ${lifecycleAuthorityFingerprint(authority)} -->`));
     assert.match(brief, /Profile · (?:game|—) ·/);
     assert.match(brief, /GENIUS HIT LIST/);
     assert.deepEqual({ brief: digest(trackedBrief), status: digest(trackedStatus) }, before);

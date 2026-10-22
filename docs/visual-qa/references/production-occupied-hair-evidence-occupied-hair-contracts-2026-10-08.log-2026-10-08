@@ -1,0 +1,30 @@
+[Public-safe diagnostic derivative: only the absolute local workspace prefix was redacted; results and timings are unchanged. Original SHA-256: 16edc8a9a8d7ca2958bab94b9241ecf9fee74adbabda5505fcc6c536c430fd8a]
+✖ occupied groups preserve finite geometry, saved person and existing maximum mesh budget in all 56 combinations (3797.1259ms)
+✔ all non-hair surfaces remain exact for every changed style and six grooming choices (10347.6267ms)
+✔ cluster volume and density are independently saved while grouped grooming conceals loose texture (805.0883ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15563.0522
+
+✖ failing tests:
+
+test at .cache\occupied-hair-contracts.test.mjs:9:1
+✖ occupied groups preserve finite geometry, saved person and existing maximum mesh budget in all 56 combinations (3797.1259ms)
+  AssertionError [ERR_ASSERTION]: short-curls straight 1704696
+      at TestContext.<anonymous> (file:///[workspace]/.cache/occupied-hair-contracts.test.mjs:13:10)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.start (node:internal/test_runner/test:1015:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

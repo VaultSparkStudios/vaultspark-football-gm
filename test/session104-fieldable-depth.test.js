@@ -23,6 +23,26 @@ import { RNG } from "../src/utils/rng.js";
 const sum = (object, selector = (value) => value) =>
   Object.values(object).reduce((total, value) => total + selector(value), 0);
 
+test("cap enforcement below 53 retains position minimums and excludes the controlled club", () => {
+  const players = Object.entries(FIELDABLE_DEPTH).flatMap(([position, band]) =>
+    Array.from({ length: band.min }, (_, i) => ({ id: `${position}${i}`, teamId: 'CPU', status: 'active',
+      rosterSlot: 'active', position, overall: 70, contract: { capHit: 1_000_000, signingBonus: 0, yearsRemaining: 1 } })));
+  players.push({ id: 'surplusOL', teamId: 'CPU', status: 'active', rosterSlot: 'active', position: 'OL',
+    overall: 60, contract: { capHit: 5_000_000, signingBonus: 0, yearsRemaining: 1 } });
+  const own = players.map(p => ({ ...structuredClone(p), id: `OWN-${p.id}`, teamId: 'BUF' }));
+  const league = { sportId: 'football', teams: [{ id: 'CPU' }, { id: 'BUF' }], players: [...players, ...own],
+    capLedger: {}, teamCapOverride: { CPU: 42_000_000, BUF: 42_000_000 } };
+  assert.equal(players.length, 42);
+  assert.ok(capSpaceForTeam(league, 'CPU') < 0);
+  const result = enforceRosterAndCapCompliance(league, { excludeTeamIds: ['BUF'] });
+  assert.equal(result.released.length, 1);
+  assert.ok(capSpaceForTeam(league, 'CPU') >= 0);
+  const after = league.players.filter(p => p.teamId === 'CPU');
+  for (const [position, band] of Object.entries(FIELDABLE_DEPTH)) assert.equal(after.filter(p => p.position === position).length, band.min);
+  assert.deepEqual(league.players.filter(p => p.teamId === 'BUF'), own);
+  assert.ok(capSpaceForTeam(league, 'BUF') < 0, 'controlled GM retains decision authority');
+});
+
 /**
  * The arithmetic that binds three constants to each other.
  *
@@ -324,8 +344,10 @@ test("neither release path can cut a club below a fieldable roster", () => {
   for (const player of roster) {
     const expensive = player.position === "OL" || player.position === "DL";
     const capHit = expensive ? 18_000_000 : 900_000;
+    // This negative control deliberately prices every player on an annual
+    // active contract; do not retain a weekly practice discriminator/ledger.
+    player.rosterSlot = 'active';
     player.contract = {
-      ...(player.contract || {}),
       salary: capHit,
       baseSalary: capHit,
       capHit,
@@ -337,6 +359,10 @@ test("neither release path can cut a club below a fieldable roster", () => {
       restructureCount: 0
     };
   }
+  // Bind the pressure to this fixture, independently of dated league caps and
+  // generated carryover. The control must exhaust its sixteen surplus cuts.
+  league.teamCapOverride[target.id] = 100_000_000;
+  league.capLedger[target.id].rollover = 0;
 
   const countByPosition = (players, position) => players.filter((p) => p.position === position).length;
 

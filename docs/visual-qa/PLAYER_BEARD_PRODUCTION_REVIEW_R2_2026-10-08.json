@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 2,
+  "verdict": "PASS",
+  "scope": "Final permitted round for fitted shared beard volume and repaired lip-clearance component; full facial-hair craft remains open.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_BEARD_PRODUCTION_R2_2026-10-08.json",
+  "primaryReceiptSha256": "3bca01afbb722c44051017d0d653b188e1e81446014781d6a67b2c1e0995ed6f",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "c2366cbf0e1f234531e8e55209568f8e11c6612b2256da9aca4dccc1e34a87c0",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerPortrait.js": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+    "public/lib/playerMotion.js": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "test/player-beard-volume.test.js": "f1aa9c54e0a0fe98120091df171a818a4bbad74e3af6c00438aa041845cf519f",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-whole-head-form.test.js": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf",
+    "test/player-surface-lighting.test.js": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4",
+    "tests-ui/player-beard-gallery.spec.js": "302ee99c78deb76af515f12b518c5863700f1f2956a60600269fe85664b034e8",
+    "tests-ui/player-beard-production.spec.js": "b8b3d3335baa0d762b868e469cfa52818caccea54c5dce5a8f9b60faf70c3d8f",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+  },
+  "priorReview": {
+    "path": "docs/visual-qa/PLAYER_BEARD_PRODUCTION_REVIEW_R1_2026-10-08.json",
+    "sha256": "a02a925fb85a4f1992b9b61bb12c6294a2fc09df775f499ebb6cab81a787b9cd",
+    "verdict": "FIX preserved unchanged"
+  },
+  "bindingChecks": {
+    "frozenEntriesVerified": 78,
+    "sources": 18,
+    "inputs": 2,
+    "evidence": 2,
+    "captureCopies": 56,
+    "normalizedBuiltSourcePairs": 8,
+    "R1PrimaryAndReviewUnchanged": true
+  },
+  "findings": [],
+  "findingDisposition": [
+    {
+      "id": "P2-BEARD-FIBER-LIP-OVERHANG",
+      "status": "FIXED",
+      "evidence": "Identical48-case probe reproduces856 outward lip-positive fiber vertices on frozen R1 and zero on current R2. Test now includes fibers and actual saved lip-width/curve/fullness/upper-lower scales."
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-beard-volume.test.js test/player-shared-head.test.js test/player-surface-lighting.test.js",
+      "result": "PASS",
+      "tests": 10,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 11393.1043,
+      "terminalChunk": "c33599",
+      "includes": "96 long-style valid face/width/curve cases at max fullness and upper/lower scales;24 volume/clearance extreme cases; exact precomponent non-beard semantic indexed geometry, saved input and payload bounds."
+    },
+    {
+      "command": "Node stdin identical actual shader lip-mask/analytic-skin-residual probe, frozen R1 vs current R2",
+      "result": "PASS repair; original defect reproduced",
+      "casesPerVersion": 48,
+      "fiberVertexSamplesPerVersion": 57600,
+      "R1Violations": 856,
+      "R2Violations": 0,
+      "terminalChunk": "51b9ab"
+    },
+    {
+      "command": "Node stdin actual triangle centroid and three interior barycentric samples against actual lip mask, max fullness/scales and both curves",
+      "result": "PASS",
+      "cases": 32,
+      "triangleInteriorSamples": 430080,
+      "lipMaskAboveQuarter": 0,
+      "maxLipMask": 0.10608705101918348,
+      "terminalChunk": "15b267"
+    },
+    {
+      "command": "Python stdin frozen source/input/evidence/capture/current source SHA and eight normalized built comparisons",
+      "result": "PASS"
+    }
+  ],
+  "sourceAssessment": [
+    "lipBorder uses the same saved width/fullness, upper/lower scale, curvature and face-length transform as the shader, with an explicit clearance margin.",
+    "Mustache roots moved above upper lip; longer mustache fibers are trimmed at the upper border while beard volumes/nonmustache fibers use the lower border. This changes grooming geometry only.",
+    "Vertex tests are strengthened by independent triangle-interior sampling; no new clipping/discard shader shortcut introduced.",
+    "Non-beard indexed positions/normals/RGB/material fields and original decoder inputs remain exact in focused compatibility tests."
+  ],
+  "imagesActuallyInspected": [
+    "docs/visual-qa/captures/production-beard-r2-component-beard-gallery-5-desktop-dark.png",
+    "docs/visual-qa/captures/production-beard-r2-component-beard-gallery-3-mobile-light.png",
+    "docs/visual-qa/captures/production-beard-r2-component-production-beard-after-desktop-light-portrait.png",
+    "docs/visual-qa/captures/production-beard-r2-component-production-beard-after-mobile-dark-portrait.png"
+  ],
+  "imageHashes": {
+    "docs/visual-qa/captures/production-beard-r2-component-beard-gallery-5-desktop-dark.png": "1f7022609dc1d23ed5bb59a84f22aa79dd3ee94215bc4e537dbb49ea603a8096",
+    "docs/visual-qa/captures/production-beard-r2-component-beard-gallery-3-mobile-light.png": "1ed9d36dc5b04dd0bc4751e421c197adec8b6d2bb5f08001bec2e99aa6f6f08c",
+    "docs/visual-qa/captures/production-beard-r2-component-production-beard-after-desktop-light-portrait.png": "791e19e59357334ba1a09e650d502831e9ac984b5a3eaef6180ff48dc6ccb5ee",
+    "docs/visual-qa/captures/production-beard-r2-component-production-beard-after-mobile-dark-portrait.png": "0d7d6751149dd7829a7a97697c501adc6f622725ae7f01235fc163a02a66b6ed"
+  },
+  "visualAssessment": [
+    "Fitted full-beard silhouette is visibly distinct in front and profile compared with stippled historical coverage.",
+    "Mouth region is separated from beard volume in inspected current gallery and actual desktop/mobile dossier. Sparse small mustache and rigid smooth/striated lower-face surface remain artificial.",
+    "These four originals, together with R1 matched images, support scoped progress only; reviewer did not inspect all56 R2 copies."
+  ],
+  "primaryAttribution": "Primary14 focused tests, browser3 cases35.1s, final build/cache/fallback/actual DTO proofs are verified source-bound primary evidence, not independent browser execution.",
+  "limits": [
+    "No universal all-triangle or arbitrary unsupported malformed-DTO guarantee; independent sampling covers stated valid boundaries.",
+    "Normal/fiber roots retain the existing bounded artistic skin-surface basis; no measured follicle anatomy or fitted beard prevalence.",
+    "Complete mannequin-like face/body, cap hair, painted/smooth beard craft remains open.",
+    "Historical core predates current ear/beard changes; no current complete core/all-suite, full-career, empirical calibration, full NFL, release or overall-goal acceptance.",
+    "R1 FIX preserved; only owned R2 review artifact written."
+  ]
+}

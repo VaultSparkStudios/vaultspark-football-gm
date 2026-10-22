@@ -12,9 +12,14 @@
   "islandBudgets": {
     "roster": {
       "roots": [
-        "lib/tabRoster.js"
+        "lib/tabRoster.js",
+        "lib/rosterActions.js"
       ],
       "maxBytes": 22000
+    },
+    "injuryClaims": {
+      "roots": ["lib/injurySalaryClaimsPanel.js"],
+      "maxBytes": 6000
     },
     "contracts": {
       "roots": [
@@ -56,9 +61,12 @@
     }
   },
   "lazyRoots": [
+    "lib/playerPortrait.js",
     "lib/tutorialCampaign.js",
     "lib/betaFeedback.js",
     "lib/tabRoster.js",
+    "lib/rosterActions.js",
+    "lib/injurySalaryClaimsPanel.js",
     "lib/tabContracts.js",
     "lib/tabDraft.js",
     "lib/tabStats.js",

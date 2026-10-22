@@ -1,0 +1,45 @@
+{
+  "component": "older-admitted-pre-rollover-schema-v2",
+  "round": 1,
+  "verdict": "PASS",
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "abbc44675945a5a555a6363b7cc87bd820c4a7e2a275790136aa17194d6e1f95",
+    "src/domain/elevationInjuryPay.js": "5981d416d81f0701d1e494ebb3a8c6e3b196f14e2b8e9d5279bfa0c46f6b0136",
+    "src/domain/preRolloverMedicalCalendar.js": "e3ed13504cd91d7b2c4103da1eb7488b79adcac31d0f396c431657ade121d318",
+    "src/runtime/GameSession.js": "c4f880051da9f0f273f483cd6c3e75a893c93baddb2d3661ae0f64c54c2fdb52",
+    "test/admitted-pre-rollover-recovery.test.js": "087e0c3a3bb36e51282202e4ae67b92b250926c90c08fcd848a523dbe0d18026",
+    "test/helpers/admittedPreRolloverFixture.js": "0081520cb308e125ecf62809d7557db3d5f02993ca026dd30119e3771b6bbc87"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/admitted-pre-rollover-recovery.test.js test/admitted-injury-payroll.test.js test/pre-rollover-medical-calendar.test.js",
+      "pass": 26,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 59836.8477,
+      "scope": "Eight new component cases, eight earning-ledger cases, ten existing pre-rollover cases. Actual bracket completion, active/retired clearance, late failure atomicity, legacy v1 and fresh v2 compressed restore, direct/import invalid receipts, headless and interactive default refusal."
+    },
+    {
+      "command": "node .cache/admitted-pre-rollover-independent.mjs",
+      "result": "PASS",
+      "checks": [
+        "After explicit calendar pays weeks24 through27 while four injury weeks remain, actual default advance command still refuses before dashboard access with the complete snapshot unchanged.",
+        "An existing v1 postseason earning row and matching v1 cap receipt remain byte-for-byte unchanged on a retry through the new v2 recorder."
+      ]
+    }
+  ],
+  "assessment": [
+    "Fresh pre-rollover earning rows require v2 and a validated completed-final annual calendar receipt; v1 remains restricted to its original phases.",
+    "On the private calendar plan, original-payer/rate wages are recorded before each active/retired recovery interval. The completed plan is validated before medical, wage and cap state is committed.",
+    "Current-source-year wages retain their existing adjustment authority; old admitted sources use the separate earning ledger without a practice employment offset or fabricated claim/service.",
+    "Per-row version reconciles with the corresponding earned cap receipt, and the full planned per-payer cap arrays retain the reviewed safe-cent preflight.",
+    "Explicit admitted-calendar allowances are scoped options. Default annual contract transition does not gain permission to expire a still-active admitted right."
+  ],
+  "limits": [
+    "This is a bounded domain/calendar/schema review, not automatic annual dispatch adoption or cross-year policy completion.",
+    "Four weeks24 through27 are an explicit simulation approximation, not an exact NFL dated calendar or adjudication of salary/Benefits classification.",
+    "No browser/build result is independently certified here; primary reports and later headless-regular changes outside these hashes are not acceptance evidence for this review.",
+    "No whole NFL rules, pension entitlement, full appearance, current thirty-year career or release approval."
+  ]
+}

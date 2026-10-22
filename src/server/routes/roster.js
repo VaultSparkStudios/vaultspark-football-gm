@@ -7,6 +7,16 @@ import { clampQueryInt, readRequestBody } from "../httpHardening.js";
 export async function handleRosterRoutes(req, res, url, ctx) {
   const { assertFields, parseJsonBody, sendJson, toBool, toInt, toNumber } = ctx;
 
+  if (req.method === "GET" && url.pathname === "/api/injury-salary-claims") {
+    const teamId=(url.searchParams.get('team')||ctx.session.controlledTeamId).toUpperCase();
+    sendJson(res,200,{ok:true,teamId,claims:ctx.session.getInjurySalaryClaims(teamId)});return true;
+  }
+  if (req.method === "POST" && url.pathname === "/api/injury-salary-claims/offer") {
+    const body=parseJsonBody(await readRequestBody(req));
+    const result=ctx.session.offerInjurySalaryClaim({...body,teamId:String(body?.teamId||'').toUpperCase()});
+    sendJson(res,result.ok?200:result.status||400,result);return true;
+  }
+
   if (req.method === "GET" && url.pathname === "/api/roster") {
     const teamId = (url.searchParams.get("team") || ctx.session.controlledTeamId).toUpperCase();
     const position = url.searchParams.get("position");
@@ -22,9 +32,32 @@ export async function handleRosterRoutes(req, res, url, ctx) {
       ok: true,
       teamId,
       roster,
+      injuryClaims:ctx.session.getInjurySalaryClaims(teamId),
       windowMap: ctx.session.getRosterWindowMap(teamId),
       cap: ctx.session.getTeamCapSummary(teamId)
     });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/roster/elevation-preview") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body?.teamId || !body?.playerId) {
+      sendJson(res, 400, { ok: false, error: 'teamId and playerId required.' }); return true;
+    }
+    const result = ctx.session.previewPlayerElevation({ teamId: String(body.teamId).toUpperCase(), playerId: String(body.playerId) });
+    sendJson(res, result.ok ? 200 : result.status || 400, result);
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/roster/elevation") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body?.teamId || !body?.playerId) {
+      sendJson(res, 400, { ok: false, error: 'teamId and playerId required.' }); return true;
+    }
+    const result = ctx.session.declarePlayerElevation({ teamId: String(body.teamId).toUpperCase(), playerId: String(body.playerId),
+      expectedGameId: body.expectedGameId });
+    sendJson(res, result.ok ? 200 : result.status || 400, { ...result,
+      roster: ctx.session.getRoster(String(body.teamId).toUpperCase()), state: ctx.session.getDashboardState() });
     return true;
   }
 
@@ -38,7 +71,9 @@ export async function handleRosterRoutes(req, res, url, ctx) {
       teamId: String(body.teamId).toUpperCase(),
       playerId: String(body.playerId),
       designation: String(body.designation),
-      active: body.active !== false
+      active: body.active === undefined ? true : body.active,
+      beginPractice: body.beginPractice === undefined ? false : body.beginPractice,
+      returnEligible: body.returnEligible === undefined ? true : body.returnEligible
     });
     sendJson(res, result.ok ? 200 : 400, {
       ...result,

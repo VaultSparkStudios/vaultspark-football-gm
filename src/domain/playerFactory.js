@@ -6,47 +6,17 @@ import {
   PRACTICE_SQUAD_TEMPLATE,
   ROSTER_TEMPLATE
 } from "../config.js";
-import { calculatePositionOverall, ensureCoverageDepthRatings, ensureQuarterbackDepthRatings } from "./ratings.js";
+import { calculatePositionOverall, ensureCoverageDepthRatings, ensureQuarterbackDepthRatings, positionRatingWeights } from "./ratings.js";
 import { buildContract } from "./contracts.js";
-import { clamp } from "../utils/rng.js";
+import { minimumSalaryForSeason } from "../data/nflSalaryMinimum.js";
+import { clamp, derivedRng } from "../utils/rng.js";
 import { FOOTBALL_STAT_SCHEMA } from "../sport/football/statSchema.js";
-
-const FIRST_NAMES = [
-  "James",
-  "Michael",
-  "William",
-  "David",
-  "John",
-  "Chris",
-  "Aiden",
-  "Malik",
-  "Devin",
-  "Tyler",
-  "Jordan",
-  "Noah",
-  "Liam",
-  "Jaxon",
-  "Caleb",
-  "Ethan"
-];
-const LAST_NAMES = [
-  "Johnson",
-  "Smith",
-  "Brown",
-  "Williams",
-  "Jones",
-  "Davis",
-  "Taylor",
-  "Wilson",
-  "Moore",
-  "Anderson",
-  "Clark",
-  "Thomas",
-  "White",
-  "Harris",
-  "Walker",
-  "Young"
-];
+import { TALENT_DISTRIBUTION, STARTER_COUNTS, drawPlayerTalent, generateTalentAttributes } from "./talentDistribution.js";
+import { createPlayerIdentity, generateFictionalName, assignPlayerFamily } from "./playerIdentity.js";
+import { generatePlayerMeasurements } from "./playerMeasurements.js";
+import { ensurePlayerVisualIdentity } from "./playerVisualIdentity.js";
+import { generatedPlayerService } from './playerService.js';
+import { buildPracticeContract } from './practiceContracts.js';
 
 const POSITION_ATTRIBUTE_BIASES = {
   QB: { throwPower: 18, throwAccuracy: 16, throwAccuracyShort: 18, throwAccuracyMedium: 16, throwAccuracyDeep: 12, throwOnRun: 10, awareness: 10, playRecognition: 8 },
@@ -106,7 +76,7 @@ export function createZeroedCareerStats() {
 }
 
 function randomName(rng) {
-  return `${rng.pick(FIRST_NAMES)} ${rng.pick(LAST_NAMES)}`;
+  return generateFictionalName(rng);
 }
 
 /**
@@ -125,63 +95,56 @@ function randomTrait(rng) {
   return rng.weightedPick(DEV_TRAIT_WEIGHTS);
 }
 
-/**
- * Potential is headroom above the player's own overall (S106 finding, S107 landed).
- *
- * The draw this replaces was position-blind — one band for every room — while
- * `overall` is a position-WEIGHTED average of position-BIASED attributes, so the
- * two numbers every development, reversion, scouting and elite-density
- * calculation compares were not on the same scale. Measured at generation on
- * four seeds and 8,832 rostered players: mean potential ~80 in every room
- * against mean overall 73.1 (TE) to 82.4 (QB); 36.0-37.6% of the league
- * generated ABOVE its own potential (QB up to 55.5%, TE as low as 19.5%); and
- * every 90+ player in a fresh league a quarterback or an offensive lineman.
- * After: 0.0% above own potential on every seed, mean potential tracking the
- * room, and every mean overall unchanged to the decimal — the evidence that the
- * single `rng.int` still occupies the same stream slot. `src/data/pfrAdapter.js`
- * already derived potential this way for imported players.
- *
- * The ceiling taper is load-bearing, not cosmetic. Measured by S106, headroom
- * without it took ten-season elite density to 5.3% and dispersion drift to
- * 0.157, both out-of-range: the old draw's above-potential third had been a
- * standing downward pull in the reversion term, and removing a brake installs
- * an accumulator. The taper runs across most of the rating scale, so a player
- * at 70 keeps about half his drawn room and one at 92 keeps an eighth — see
- * `ceilingTaperSpan` for the measurement that chose its width.
- *
- * S106 refused this change at `test/session90-development-environment.test.js`
- * and recorded the cause as rating-level redistribution. S107 re-measured and
- * that was wrong: the gate read only the players who SURVIVED the offseason,
- * and retirement is rolled on the overall the offseason just produced, so the
- * generator had changed who retires, not how the league develops. The gate now
- * measures every player it progressed; see the note above its tests.
- */
+/** Age- and trait-shaped growth room on the attribute-derived overall scale.
+ * Raw prospects retain large upside; proximity to 99 tapers only elite players.
+ * Generation version intentionally changes seeded content for the overhaul. */
 export const POTENTIAL_HEADROOM_PROFILE = Object.freeze({
-  version: "2026-s107-headroom",
+  version: "attribute-readiness-headroom-v2",
   /** Rating points of growth a 23-year-old far from the ceiling may be drawn, by trait. */
   headroomByTrait: Object.freeze({
-    SUPERSTAR: Object.freeze([6, 18]),
-    HIDDEN: Object.freeze([3, 14]),
-    BUST: Object.freeze([0, 3]),
-    NORMAL: Object.freeze([0, 9])
+    SUPERSTAR: Object.freeze([14, 35]),
+    HIDDEN: Object.freeze([8, 30]),
+    BUST: Object.freeze([0, 6]),
+    NORMAL: Object.freeze([2, 22])
   }),
   /** Headroom is whole at or below this age... */
   fullHeadroomAge: 23,
   /** ...and gone by this one: a veteran's ceiling is the player he already is. */
-  closedHeadroomAge: 31,
-  /**
-   * Headroom tapers linearly over this many points below the 99 ceiling.
-   * Measured, canonical seed over ten seasons, against the old draw (elite 2.8%,
-   * dispersion 0.095, parity +0.043): span 25 read 2.4% / 0.112, span 40 read
-   * 3.0% / 0.101, span 55 read 2.1% / 0.093 / -0.001. Dispersion falls
-   * monotonically as the span widens because a narrow taper makes potential
-   * track overall almost one-for-one, and the trait term then rewards the
-   * players who are already highest.
-   */
-  ceilingTaperSpan: 55
+  closedHeadroomAge: 35,
+  /** Full headroom below 79; progressively less as overall approaches 99. */
+  ceilingTaperSpan: 20,
+  // Fictional design coefficients, not an empirical prediction of careers.
+  readinessSpan: 120,
+  readinessMin: .8,
+  readinessMax: 1.2
 });
 
-/** One draw, in the stream slot the position-blind potential used to occupy. */
+const POTENTIAL_CAPACITY_KEYS = new Set([...PLAYER_ATTRIBUTE_KEYS.physical, "throwPower"]);
+
+/** A raw athlete with physical capacity ahead of position-relevant execution
+ * retains modestly more growth room than an equally rated polished player.
+ * Only actual grading keys participate, using the same grading weights. No
+ * country, appearance, size, name or cosmetic RNG enters this calculation.
+ * Missing/corrupt observations withhold the modifier instead of inventing skill. */
+export function resolvePotentialReadiness(position, ratings = {}) {
+  if (!ratings || typeof ratings !== "object" || Array.isArray(ratings)) return 1;
+  const weights = positionRatingWeights(position);
+  const groups = { physical: { score: 0, weight: 0 }, execution: { score: 0, weight: 0 } };
+  for (const [key, weight] of Object.entries(weights)) {
+    const value = ratings[key];
+    if (typeof value !== "number" || !Number.isFinite(value) || value < 40 || value > 99) return 1;
+    const group = groups[POTENTIAL_CAPACITY_KEYS.has(key) ? "physical" : "execution"];
+    group.score += value * weight;
+    group.weight += weight;
+  }
+  if (!groups.physical.weight || !groups.execution.weight) return 1;
+  const capacity = groups.physical.score / groups.physical.weight;
+  const execution = groups.execution.score / groups.execution.weight;
+  const profile = POTENTIAL_HEADROOM_PROFILE;
+  return clamp(1 + (capacity - execution) / profile.readinessSpan, profile.readinessMin, profile.readinessMax);
+}
+
+/** Individualized trait draw; creation content follows this model version. */
 function drawPotentialHeadroom(trait, rng) {
   const [min, max] = POTENTIAL_HEADROOM_PROFILE.headroomByTrait[trait] || POTENTIAL_HEADROOM_PROFILE.headroomByTrait.NORMAL;
   return rng.int(min, max);
@@ -192,11 +155,11 @@ function drawPotentialHeadroom(trait, rng) {
  * overall plus the drawn headroom, closed by age and by proximity to 99.
  * Never below his overall, so no player is generated past his own ceiling.
  */
-export function resolvePotential({ overall, age, headroom }) {
+export function resolvePotential({ overall, age, headroom, readiness = 1 }) {
   const profile = POTENTIAL_HEADROOM_PROFILE;
   // Validated here, where the value is written: a NaN potential would sail
   // through every downstream `|| overall` and silently stop development applying.
-  const values = { overall: Number(overall), age: Number(age), headroom: Number(headroom) };
+  const values = { overall: Number(overall), age: Number(age), headroom: Number(headroom), readiness: Number(readiness) };
   for (const [label, value] of Object.entries(values)) {
     if (!Number.isFinite(value)) throw new TypeError(`resolvePotential: ${label} must be finite, received ${value}`);
   }
@@ -206,21 +169,19 @@ export function resolvePotential({ overall, age, headroom }) {
     1
   );
   const ceilingRoom = clamp((99 - values.overall) / profile.ceilingTaperSpan, 0, 1);
-  return clamp(values.overall + Math.round(values.headroom * ageRoom * ceilingRoom), values.overall, 99);
+  const individualizedRoom = Math.max(0, values.headroom)
+    * clamp(values.readiness, profile.readinessMin, profile.readinessMax);
+  return clamp(values.overall + Math.round(individualizedRoom * ageRoom * ceilingRoom), values.overall, 99);
 }
 
-function randomAttributeBase(position, rng) {
-  const attrs = {};
+function randomAttributeBase(position, rng, talent, archetype) {
   const allKeys = [
     ...PLAYER_ATTRIBUTE_KEYS.physical,
     ...PLAYER_ATTRIBUTE_KEYS.skill,
     ...PLAYER_ATTRIBUTE_KEYS.mental
   ];
   const bias = POSITION_ATTRIBUTE_BIASES[position] || {};
-  for (const key of allKeys) {
-    attrs[key] = clamp(rng.int(50, 86) + (bias[key] || 0), 40, 99);
-  }
-  return attrs;
+  return generateTalentAttributes({ position, keys: allKeys, bias, archetype, talent, rng });
 }
 
 function randomArchetype(position, rng) {
@@ -243,10 +204,16 @@ function deriveRangeValue(hash, min, max, offset = 0) {
 
 function physicalFrameFromSeed(position, seed) {
   const profile = POSITION_BODY_PROFILES[position] || POSITION_BODY_PROFILES.QB;
-  const hash = hashString(seed);
+  const heightRng = derivedRng(`player-height:${seed}`);
+  const massRng = derivedRng(`player-mass:${seed}`);
+  // Triangular draws put most bodies near the position's centre rather than
+  // distributing every extreme uniformly. Height and mass are related but
+  // independently varied; they no longer share a modulo hash residue.
+  const heightUnit = (heightRng.next() + heightRng.next()) / 2;
+  const massUnit = clamp((massRng.next() + massRng.next()) / 2 + (heightUnit - 0.5) * 0.3, 0, 1);
   return {
-    heightInches: deriveRangeValue(hash, profile.height[0], profile.height[1]),
-    weightLbs: deriveRangeValue(hash, profile.weight[0], profile.weight[1], 17)
+    heightInches: Math.round(profile.height[0] + heightUnit * (profile.height[1] - profile.height[0])),
+    weightLbs: Math.round(profile.weight[0] + massUnit * (profile.weight[1] - profile.weight[0]))
   };
 }
 
@@ -269,38 +236,53 @@ export function jerseyNumberForPlayer(position, seed) {
   return pickFromRange(0, 99);
 }
 
-export function createSyntheticPlayer({ teamId, position, year, rng, draft = false }) {
+export function createSyntheticPlayer({ teamId, position, year, rng, draft = false, initialPractice = false, talentBand = null, familyAnchor = null }) {
   const devTrait = randomTrait(rng);
   const headroom = drawPotentialHeadroom(devTrait, rng);
-  const ratings = randomAttributeBase(position, rng);
+  const archetype = randomArchetype(position, rng);
+  const talent = drawPlayerTalent(rng, { draft, band: talentBand });
+  const ratings = randomAttributeBase(position, rng, talent, archetype);
   if (position === "QB") ensureQuarterbackDepthRatings(ratings);
   if (position === "LB" || position === "DB") ensureCoverageDepthRatings(ratings);
   const overall = calculatePositionOverall(position, ratings);
-  const age = draft ? rng.int(21, 23) : rng.int(22, 33);
-  const potential = resolvePotential({ overall, age, headroom });
+  const age = draft ? rng.int(21, 23) : initialPractice ? rng.int(21, 25) : rng.int(22, 33);
+  // A fictional entering practice cohort, not an observed NFL age/service fit.
+  // Choose before identity/headroom so age, birth year and development agree.
+  const experience = draft || initialPractice ? 0 : Math.max(0, age - 21);
+  const readiness = resolvePotentialReadiness(position, ratings);
+  const adjustedHeadroom = Math.min(POTENTIAL_HEADROOM_PROFILE.headroomByTrait[devTrait][1], headroom * readiness);
+  const potential = resolvePotential({ overall, age, headroom: adjustedHeadroom });
   const id = `P${year}-${teamId}-${position}-${Math.floor(rng.next() * 1e8)}`;
   const frame = physicalFrameFromSeed(position, id);
+  const identity = createPlayerIdentity(id, { birthYear: year - age });
 
-  return {
+  const player = ensurePlayerVisualIdentity({
     id,
-    name: randomName(rng),
+    name: identity.name,
     position,
     teamId,
     age,
     heightInches: frame.heightInches,
     weightLbs: frame.weightLbs,
+    measurements: generatePlayerMeasurements({ id, ...frame, profile: { faceSeed: `face-${hashString(id)}` } }),
+    measurementProvenance: {
+      heightInches: { kind: "fictional-generated", model: "position-frame-v1" },
+      weightLbs: { kind: "fictional-generated", model: "position-frame-v1" }
+    },
     jerseyNumber: jerseyNumberForPlayer(position, id),
-    experience: draft ? 0 : Math.max(0, age - 21),
+    experience,
+    ...generatedPlayerService(experience),
     developmentTrait: DEVELOPMENT_TRAITS[devTrait].label,
     developmentKey: devTrait,
-    archetype: randomArchetype(position, rng),
+    archetype,
     potential,
+    developmentOrigin: { model: POTENTIAL_HEADROOM_PROFILE.version, headroomDraw: headroom, readiness, adjustedHeadroom },
     ratings,
     overall,
     contract: buildContract({
       overall,
       years: rng.int(CONTRACT_RULES.minYears, CONTRACT_RULES.maxYears),
-      minSalary: CONTRACT_RULES.minSalary,
+      year, position, creditedSeasons: experience,
       rng
     }),
     status: "active",
@@ -320,20 +302,22 @@ export function createSyntheticPlayer({ teamId, position, year, rng, draft = fal
       source: draft ? "generated-draft" : "generated-roster",
       pfrId: null,
       college: null,
+      identity,
       faceSeed: `face-${hashString(id)}`
     },
     seasonStats: {},
     careerStats: createZeroedCareerStats()
-  };
+  }, { newPlayer: true });
+  return familyAnchor ? assignPlayerFamily(player, familyAnchor) : player;
 }
 
 /** A one-year deal at the league minimum - what the back of a roster is paid. */
-function minimumDeal(player, rng) {
+function minimumDeal(player, rng, year) {
   return buildContract({
     overall: player.overall,
     years: 1,
-    salary: CONTRACT_RULES.minSalary,
-    minSalary: CONTRACT_RULES.minSalary,
+    salary: minimumSalaryForSeason(year, player.experience).salary,
+    year, position: player.position, creditedSeasons: player.experience,
     rng
   });
 }
@@ -348,8 +332,9 @@ function minimumDeal(player, rng) {
  * the following decade. See the note on `ROSTER_TEMPLATE` for why that made
  * both of this project's candidate gated populations invalid drift statistics.
  *
- * Practice players are created from the same factory and then marked, rather
- * than drawn from a separate quality curve: the slot is decided by
+ * Reserve and provisional practice candidates share a talent intake prior.
+ * Practice candidates retain their entering age/service and weekly terms; the
+ * final slot is decided by
  * `assignFieldableActiveRoster` at the first normalize, exactly as it is for
  * every subsequent season, so generation cannot install a roster shape the
  * running engine would not have produced.
@@ -358,38 +343,53 @@ export function buildSyntheticTeamRoster(teamId, year, rng) {
   const roster = [];
   for (const [position, count] of Object.entries(ROSTER_TEMPLATE)) {
     for (let i = 0; i < count; i += 1) {
-      roster.push(createSyntheticPlayer({ teamId, position, year, rng }));
+      const talentBand = i < STARTER_COUNTS[position]
+        ? (rng.chance(0.04) ? [91, 97] : TALENT_DISTRIBUTION.starter)
+        : i < (FIELDABLE_DEPTH[position]?.min || 1)
+          ? TALENT_DISTRIBUTION.rotation : TALENT_DISTRIBUTION.reserve;
+      roster.push(createSyntheticPlayer({ teamId, position, year, rng, talentBand }));
     }
   }
 
-  // Price the roster by role, not by rating alone.
-  //
-  // S104 - every generated player was paid `marketSalaryForOverall`, which was
-  // survivable while a club held 49 of them and is not at 53. Measured on the
-  // canonical seed: the declared 53-man roster left the median club 10.2M under
-  // a 255M cap and put **six clubs over it before a snap was played**, against
-  // a baseline of zero over-cap clubs and 43.4M median headroom. A generated
-  // league that is illegal at kickoff is fiction, and it is the fiction S89
-  // built the compliance authority to remove.
-  //
-  // The answer is not to shave the salary curve until the number fits - that
-  // would be moving a threshold until it passed, and the curve is bound to
-  // `CONTRACT_RULES.maxSalary` by test. It is that a real roster does not pay
-  // 53 market salaries. It pays its starters and key backups, and fills the
-  // rest of the roster at the minimum. `FIELDABLE_DEPTH[pos].min` is already
-  // this project's declaration of who those players are, so the depth beyond it
-  // signs the deal the depth beyond it actually signs.
+  // Initial contracts reflect actual starting roles, not the minimum depth
+  // required to field a roster. That minimum includes several backups per
+  // position; pricing all of them as established starters makes broad-talent
+  // leagues exceed the cap before kickoff. Reserve contracts represent recent
+  // minimum signings. Key backups get bounded bridge deals. Existing saves and
+  // the free-agent market curve remain authoritative and unchanged.
   for (const [position, band] of Object.entries(FIELDABLE_DEPTH)) {
     const room = roster
       .filter((player) => player.position === position)
       .sort((a, b) => Number(b.overall || 0) - Number(a.overall || 0));
-    for (const player of room.slice(band.min)) {
-      player.contract = minimumDeal(player, rng);
+    for (const player of room.slice(0, STARTER_COUNTS[position])) {
+      // Generation models an existing mix of rookie and veteran deals. Young
+      // starters have not all signed their second contract, and specialists
+      // do not receive the generic elite-field-player salary. These are game
+      // initialization assumptions, not claimed observed NFL salary percentiles.
+      const rookie = player.experience < 4;
+      const salaryCeiling = position === "K" || position === "P" ? 5_000_000 : rookie ? 7_500_000 : Infinity;
+      if (player.contract.salary > salaryCeiling) player.contract = buildContract({
+        overall: player.overall,
+        years: rookie ? Math.max(1, 4 - player.experience) : player.contract.yearsRemaining,
+        salary: salaryCeiling,
+        year, position, creditedSeasons: player.experience,
+        rng
+      });
+    }
+    for (let index = STARTER_COUNTS[position]; index < room.length; index += 1) {
+      const player = room[index];
+      player.contract = index >= band.min ? minimumDeal(player, rng, year) : buildContract({
+        overall: player.overall,
+        years: rng.int(1, 2),
+        salary: Math.max(CONTRACT_RULES.minSalary, Math.min(4_000_000, Math.round(player.contract.salary * 0.4))),
+        year, position, creditedSeasons: player.experience,
+        rng
+      });
     }
   }
   for (const [position, count] of Object.entries(PRACTICE_SQUAD_TEMPLATE)) {
     for (let i = 0; i < count; i += 1) {
-      const player = createSyntheticPlayer({ teamId, position, year, rng });
+      const player = createSyntheticPlayer({ teamId, position, year, rng, initialPractice: true, talentBand: TALENT_DISTRIBUTION.practice });
       player.rosterSlot = "practice";
       // Practice-squad money, not veteran money. The first draft of this gave
       // the sixteen new players ordinary market contracts and put **every one
@@ -397,10 +397,9 @@ export function buildSyntheticTeamRoster(teamId, year, rng) {
       // median space -50.1M, worst -84.7M. A generated league that is illegal
       // at kickoff is the exact fiction S89 built this module to remove, and it
       // would have been laundered by the compliance pass cutting twenty players
-      // per club in the first offseason. A practice-squad deal is one year at
-      // the minimum, which is both what the sport pays and what keeps the
-      // declared cap a real constraint.
-      player.contract = minimumDeal(player, rng);
+      // per club in the first offseason. Weekly terms reserve the remaining
+      // regular-season compensation and carry no bonus or guarantees.
+      player.contract = buildPracticeContract(player, {year});
       roster.push(player);
     }
   }
@@ -458,8 +457,12 @@ export function pickDraftPosition(rng) {
   return rng.weightedPick(DRAFT_POSITION_WEIGHTS);
 }
 
-export function createDraftClass({ size = 256, year, rng }) {
+export function createDraftClass({ size = 256, year, rng, familyAnchors = [] }) {
   const classPlayers = [];
+  const familyCandidates=new Map();
+  const ageGap=(p,prospectAge)=>Number.isInteger(p.profile?.identity?.birthYear)
+    ? year-prospectAge-p.profile.identity.birthYear
+    : p.status==='retired'||p.retiredYear!=null ? NaN : p.age-prospectAge;
   for (let i = 0; i < size; i += 1) {
     const position = pickDraftPosition(rng);
     const prospect = createSyntheticPlayer({
@@ -471,6 +474,23 @@ export function createDraftClass({ size = 256, year, rng }) {
     });
     prospect.contract = { salary: 0, yearsRemaining: 0, capHit: 0 };
     prospect.profile.source = "draft-prospect";
+    // A small fictional legacy cohort. This private channel never consumes
+    // football RNG, selects talent or changes a prospect's measured body.
+    const kinRng = derivedRng(`draft-family:${prospect.id}`);
+    if(!familyCandidates.has(prospect.age))familyCandidates.set(prospect.age,familyAnchors.filter(p=>{
+      if(!p?.profile?.identity)return false;const gap=ageGap(p,prospect.age);
+      return(gap>=2&&gap<=12)||(gap>=18&&gap<=45);
+    }));
+    const anchors=familyCandidates.get(prospect.age);
+    if (anchors.length && kinRng.chance(.035)) {
+      const anchor = kinRng.pick(anchors);
+      assignPlayerFamily(prospect, anchor);
+      const relation = ageGap(anchor,prospect.age) >= 18 ? 'son' : 'brother';
+      prospect.profile.familyRelationship = { anchorId:anchor.id, anchorName:anchor.name, relation };
+      const surname = String(anchor.name || '').trim().split(/\s+/).slice(1).join(' ');
+      if (surname) prospect.name = `${prospect.name.split(' ')[0]} ${surname}`;
+      prospect.profile.identity.name = prospect.name;
+    }
     classPlayers.push(prospect);
   }
   return classPlayers.sort((a, b) => b.potential - a.potential);
@@ -497,4 +517,3 @@ export function mergeStats(into, add) {
   }
   return into;
 }
-

@@ -1,0 +1,37 @@
+import {test,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+test('actual elevation card templates retain theme accent borders',async({page})=>{
+ const markup=await fs.readFile('public/game.html','utf8'),before=await fs.readFile('.cache/elevation-token-before.css','utf8');
+ const captures=[],rows=[];
+ for(const stage of ['before','after']){
+  await page.unroute('**/styles.css*');
+  if(stage==='before')await page.route('**/styles.css*',r=>r.fulfill({body:before,contentType:'text/css'}));
+  await page.goto('/');await expect(page.locator('#setupStatus')).toContainText('Ready');
+  await page.evaluate(({markup,before})=>{
+   const doc=new DOMParser().parseFromString(markup,'text/html'),root=document.createElement('main');root.id='tokenCards';root.style.cssText='padding:18px;max-width:900px;margin:auto';
+   for(const id of ['standardElevationCard','injurySalaryClaimsCard']){const card=doc.getElementById(id).cloneNode(true);card.hidden=false;root.append(card);}
+   root.querySelector('#standardElevationSummary').textContent='Review compensation and cap room before confirming.';
+   document.body.replaceChildren(root);
+  },{markup,before:stage==='before'?before:null});
+  for(const[viewport,width,height]of[['desktop',1440,1000],['mobile',390,844]])for(const theme of['dark','light'])for(const accent of['gold','emerald','azure','crimson','violet']){
+   await page.setViewportSize({width,height});
+   await page.evaluate(async({theme,accent})=>(await import('/lib/themeCustomizer.js')).applyTheme(theme,accent),{theme,accent});
+   for(const disabled of [false,true]){
+    await page.locator('#confirmStandardElevationBtn').evaluate((button,disabled)=>button.disabled=disabled,disabled);
+    await expect.poll(()=>page.locator('#tokenCards').evaluate(root=>{const probe=document.createElement('span');probe.style.color='var(--accent)';root.append(probe);const target=getComputedStyle(probe).color;probe.remove();return[...root.querySelectorAll('.standard-elevation-card')].every(card=>getComputedStyle(card).borderTopColor===target);})).toBe(true);
+    const values=await page.locator('#tokenCards').evaluate(root=>{
+     const accent=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(),probe=document.createElement('span');probe.style.color='var(--accent)';root.append(probe);const resolved=getComputedStyle(probe).color;probe.remove();
+     return{accent:resolved,cards:[...root.querySelectorAll('.standard-elevation-card')].map(card=>{const s=getComputedStyle(card);return{border:s.borderTopColor,width:s.borderTopWidth,ink:s.color,surface:s.backgroundColor}})};
+    });
+    expect(values.cards.every(card=>card.border===values.accent&&card.width==='1px'),JSON.stringify({stage,theme,accent,values})).toBe(true);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    const file=`output/playwright/elevation-token-${stage}-${viewport}-${theme}-${accent}-${disabled?'disabled':'enabled'}.png`;
+    await page.locator('#tokenCards').screenshot({path:file});
+    rows.push({stage,viewport,theme,accent,disabled,...values});captures.push({file,stage,viewport:{width,height},theme,accent,disabled,sha256:crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex')});
+   }
+  }
+ }
+ for(const after of rows.filter(r=>r.stage==='after')){const prior=rows.find(r=>r.stage==='before'&&r.viewport===after.viewport&&r.theme===after.theme&&r.accent===after.accent&&r.disabled===after.disabled);for(let i=0;i<after.cards.length;i++){expect(after.cards[i].border).toBe(prior.cards[i].border);expect(after.cards[i].ink).toBe(prior.cards[i].ink);expect(after.cards[i].surface).not.toBe('rgba(0, 0, 0, 0)');}}
+ await fs.writeFile('output/playwright/elevation-token.json',JSON.stringify({scope:'Actual game.html card templates mounted with production styles and theme API; controlled enabled/disabled state. Does not execute elevation or claim commands.',rows,captures},null,2));
+});

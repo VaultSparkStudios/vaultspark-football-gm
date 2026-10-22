@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T18:57:18.073Z",
+  "component": "Resolved loose long locks",
+  "round": 1,
+  "verdict": "FIX",
+  "primaryReceipt": "docs/visual-qa/PLAYER_LONG_LOCKS_R1_2026-10-08.json",
+  "primaryReceiptSha256": "87b86b980e252350d9d11b8511733e2d16582d4ef60440c50e8af27f35ccd415",
+  "artifactDigest": "2903f9d68ad3df36fc1ae6481e09a13a9ea5a25dc93fd24a247531f2e6ebf64d",
+  "scope": "R1 lock-replacement correctness and ordinary-size profile craft; no complete appearance approval.",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "17fc6df5e50431a80eb73ac3e5364603a6d056755032504cde514205092cabc3",
+    "test/player-long-texture-volume.test.js": "517758776c287d6d576602836b89c4f43c1115ad7f682f554d7c562953a36245",
+    "test/player-hair-volume.test.js": "b7345b5974e339d33e838f12ced36b1ab329a71655f16e7a0cb0e1a94ef284fe",
+    "tests-ui/player-character-variation.spec.js": "869d56131248786fee9fd392e824e43ed952940dd3f87a19c1e7719c8b9f845d",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "d64f17d96bb1e13d7bb986d1a80b70ae93036f03070d7e0406121813f720cf84"
+  },
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "17fc6df5e50431a80eb73ac3e5364603a6d056755032504cde514205092cabc3"
+    }
+  },
+  "bindings": {
+    "frozen": 66,
+    "captures": 52,
+    "sourceEntries": 5
+  },
+  "currentSourceVerificationClaim": false,
+  "qualification": "Root may repair after freeze. This verdict binds the preserved R1 source and images, not later current-source revisions.",
+  "findings": [
+    {
+      "id": "LONG-LOCKS-R1-PROFILE-COVERAGE",
+      "severity": "P2",
+      "disposition": "Repair required for requested visual refinement",
+      "detail": "Across desktop/mobile dark/light ordinary profile originals, straight/wavy locks leave repeated skin-colored vertical slots; curly/coily leave larger exposed cheek/ear patches and read as thick dangling loc-like rods. Broad fabric folds and scattered tails are removed, but coverage and loose-lock craft are insufficient for the declared coherent overlapping-lock outcome. Front improvement alone does not resolve these visible profile defects."
+    },
+    {
+      "severity": "information",
+      "disposition": "Numerical/preservation checks supported",
+      "detail": "Exact tapered poles, finite supported extremes, unchanged non-hair/anatomical geometry and categorical meshes, budget and selected boundary continuity checks pass. These numerical results cannot establish profile coverage or natural hair recognition."
+    },
+    {
+      "severity": "information",
+      "disposition": "Default tip-region qualification",
+      "detail": "The persistent <18 model-unit tip-spread test holds default fixtures. At supported length2 and variation.5, independent extremes produce40.36383 model units of tip-height spread. Common groomed ends is an artistic tendency, not a universal <18 bound across valid controls."
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-long-texture-volume.test.js test/player-portrait-features.test.js",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 20049.3624,
+      "terminalChunk": "f92825"
+    },
+    {
+      "command": "node .cache/long-locks-review/independent-r1.mjs",
+      "terminalChunk": "75abc4",
+      "results": {
+        "categoricalExact": 56,
+        "nonHairExact": 1218,
+        "modernExtremeCases": 14,
+        "maxFullFallbackBytes": 1619336,
+        "tipRangeMax": 40.36383056640625,
+        "polesExact": true,
+        "finite": true,
+        "inputUnchanged": true
+      },
+      "qualification": "56 categorical exact meshes against frozen R2;14 modern extreme cases;1,218 exact non-hair semantic parts; full fallback budget, exact root/tip poles, finite and immutable inputs."
+    },
+    {
+      "command": "node .cache/long-locks-review/boundaries-r1.mjs",
+      "terminalChunk": "c6847b",
+      "results": [
+        {
+          "boundary": 1,
+          "epsilon": 0.001,
+          "maxPositionDelta": 0.004551209509372711
+        },
+        {
+          "boundary": 1,
+          "epsilon": 0.0001,
+          "maxPositionDelta": 0.000453948974609375
+        },
+        {
+          "boundary": 1,
+          "epsilon": 0.00001,
+          "maxPositionDelta": 0.0000457763671875
+        },
+        {
+          "boundary": 1,
+          "epsilon": 0.000001,
+          "maxPositionDelta": 0.00000762939453125
+        },
+        {
+          "boundary": 2,
+          "epsilon": 0.001,
+          "maxPositionDelta": 0.00057220458984375
+        },
+        {
+          "boundary": 2,
+          "epsilon": 0.0001,
+          "maxPositionDelta": 0.00000762939453125
+        },
+        {
+          "boundary": 2,
+          "epsilon": 0.00001,
+          "maxPositionDelta": 0.00000762939453125
+        },
+        {
+          "boundary": 2,
+          "epsilon": 0.000001,
+          "maxPositionDelta": 0
+        }
+      ],
+      "qualification": "Eight selected emitted-position boundary pairs approaching1/2 decay to Float32 resolution; not global normal/frame/manifold certification."
+    },
+    {
+      "check": "Immutable primary66 frozen source/report/capture bindings",
+      "terminalChunk": "243bfd"
+    }
+  ],
+  "scratchHashes": {
+    ".cache/long-locks-review/reviewed-r1-head.js": "17fc6df5e50431a80eb73ac3e5364603a6d056755032504cde514205092cabc3",
+    ".cache/long-locks-review/independent-r1.mjs": "810eaf211e58a1321186eaec245238832734f121fd31f4093c0f9832f5151619",
+    ".cache/long-locks-review/independent-r1.json": "be9fc855dd6578d27f00e01d0d3c354b47b45e134ca2d453250752787266b641",
+    ".cache/long-locks-review/boundaries-r1.mjs": "77ff473d4725bbc0cc7063175ee81e768f19b3cace91787043d884b48cf09f4c",
+    ".cache/long-locks-review/boundaries-r1.json": "844b294f896e64bcbe237a252f380e0bb542ce62c00f12443eb972bb7b443648",
+    ".cache/long-locks-review/inspected-r1.json": "3943d219dbd3547a8940932d055066e278a2e3784e19c9049e382da7b48faf24",
+    ".cache/long-locks-review/bindings-r1.json": "8384c09d0f2f46a58f9cc373c5dab61498a44dbaff6dd1056cd056f940bde296"
+  },
+  "imagesInspected": [
+    {
+      "original": "output/playwright/current-variation-texture-desktop-dark.png",
+      "frozen": ".cache/long-locks-review/inspected-r1-desktop-dark.png",
+      "sha256": "e04529d76aa94e7581db33cf7557248fe67009c34b7f3c420518d50c3874445d",
+      "independentlyInspected": true
+    },
+    {
+      "original": "output/playwright/current-variation-texture-desktop-light.png",
+      "frozen": ".cache/long-locks-review/inspected-r1-desktop-light.png",
+      "sha256": "994f5c322ba345dd1ff0ff0f7d680a0704599d486be682e51166354816997c7f",
+      "independentlyInspected": true
+    },
+    {
+      "original": "output/playwright/current-variation-texture-mobile-dark.png",
+      "frozen": ".cache/long-locks-review/inspected-r1-mobile-dark.png",
+      "sha256": "68ae5756cc19c9420942071b13d7736efad9f3a8ef4bf978020a8c8517175a2a",
+      "independentlyInspected": true
+    },
+    {
+      "original": "output/playwright/current-variation-texture-mobile-light.png",
+      "frozen": ".cache/long-locks-review/inspected-r1-mobile-light.png",
+      "sha256": "4ddf7f0aa330c7107bf246a03449a3296f817e7c90068f7ee8c674b7e1602dd5",
+      "independentlyInspected": true
+    }
+  ],
+  "baselineAuthority": {
+    "file": "PLAYER_LONG_TEXTURE_R2_2026-10-08.json",
+    "sha256": "dbc7c7953f8a795033a2bbc333b62061de3a07d719cdafd17d9f4c3a2d6b0d80"
+  },
+  "baselineInspectionReuse": {
+    "review": "docs/PLAYER_LONG_TEXTURE_REVIEW_R2_2026-10-08.json",
+    "sha256": "41484eb00f88d685bb97444e713a496268ad65760bdd63d7450e7633fd941533",
+    "note": "Prior four R2 texture originals were independently inspected and frozen; comparison reuses that exact historical authority."
+  },
+  "primaryEvidence": {
+    "executionAttribution": "Root executed19domain+1gallery+1generated-dossier cases. Reviewer did not rerun browsers. Final named-save client/lifecycle verification was not completed in this frozen R1.",
+    "checks": {
+      "focusedDomainTests": 19,
+      "galleryBrowserTests": 1,
+      "generatedDossierBrowserTests": 1,
+      "finalNamedSaveClientsVerified": false
+    },
+    "reports": [
+      {
+        "original": ".cache/contours/long-locks-domain-initial.log",
+        "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-initial.log",
+        "sha256": "14ebfa240996f71c584ef9d776df0deb7128fbd7dc93d517358c1ac18cb53c5a"
+      },
+      {
+        "original": ".cache/contours/long-locks-domain-second.log",
+        "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-second.log",
+        "sha256": "f84c71b73bb95904fa3e26e22b67810026386186980b336f9fcb5717ca13e12c"
+      },
+      {
+        "original": ".cache/contours/long-locks-domain-third.log",
+        "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-third.log",
+        "sha256": "c12b41893dcd0187c87d77c85330e9452677813a3d0269af7d966e8f41ba272a"
+      },
+      {
+        "original": ".cache/contours/long-locks-domain-final.log",
+        "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-final.log",
+        "sha256": "8e77418dd326aeb8adbee8b3e43760f7354f18fb7f82d79ecb2ca2094f97a60e"
+      },
+      {
+        "original": ".cache/contours/long-locks-gallery-third.log",
+        "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-gallery-third.log",
+        "sha256": "c3c5b9f6c22e0d0abe7e88f4f249e44775fadadcbd08f54fe478c22493d7cae3"
+      },
+      {
+        "original": ".cache/contours/long-locks-real-dossier.log",
+        "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-real-dossier.log",
+        "sha256": "654e1f6caf724849b18dd46a1484a14e15d2f8d4b79ed4d68cee62300ba6b5c7"
+      },
+      {
+        "original": ".cache/contours/long-locks-build.log",
+        "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-build.log",
+        "sha256": "064b6d6b5959ef4120514c51fb8c16024b04945120160c2a28cd5af9d1ec8f2f"
+      },
+      {
+        "original": "output/playwright/current-character-variation.json",
+        "file": "references/long-locks-r1-2026-10-08-output-playwright-current-character-variation.json",
+        "sha256": "95c55d70ac006cec2a590ed7742593b42c644735fa4a0b92948add7e0d0ae75c"
+      },
+      {
+        "original": "output/playwright/hair-coherence-dossier-after.json",
+        "file": "references/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after.json",
+        "sha256": "19d78e4c407ee77961f6e09d55428489020bce96b6098299e8858a8a0eeeb9c7"
+      }
+    ]
+  },
+  "limits": [
+    "Opaque sheet removal alone is not coherent loose hair or full naturalism; R1 requires coverage/craft repair.",
+    "No full-head normal/manifold certificate, saved grooming-lifecycle proof, complete body union mass or empirical trait fitting.",
+    "Full goal, whole suite/current career/full rules and release remain open."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false,
+  "reviewRecording": "Manual immutable independent JSON; record-review helper unavailable."
+}

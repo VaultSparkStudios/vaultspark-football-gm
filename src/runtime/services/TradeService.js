@@ -5,6 +5,9 @@
  * refusal pipeline succeeds, then refreshes every derived index exactly once.
  */
 import { buildTradePlan } from "./tradePlan.js";
+import { transferableCapHit, retainPracticeChargeOnTrade } from '../../domain/earnedPracticeCap.js';
+import { standardElevationRosterRefusal } from '../../domain/standardElevations.js';
+import { elevationInjuryReleaseRefusal } from '../../domain/elevationInjuryPay.js';
 import { getRivalGmPersona, recordRivalGmMemory } from "../../engine/rivalGmPersona.js";
 import { buildTradeNeedProfile, evaluateTradeValue as evaluateTradeValueDefault, tradeNeedMultiplier } from "../../engine/aiTeamStrategy.js";
 
@@ -100,6 +103,7 @@ export class TradeService {
     ) {
       return { ok: false, error: "Invalid asset in trade package.", reasonCode: "invalid-asset" };
     }
+    for(const player of [...fromA,...fromB]){const elevationRefusal=standardElevationRosterRefusal(player)||elevationInjuryReleaseRefusal(player);if(elevationRefusal)return elevationRefusal;}
 
     const challengeA = session.getChallengeRestrictions(teamA);
     const challengeB = session.getChallengeRestrictions(teamB);
@@ -122,10 +126,10 @@ export class TradeService {
 
     const capA = session.getTeamCapSummary(teamA).capSpace;
     const capB = session.getTeamCapSummary(teamB).capSpace;
-    const outgoingA = fromA.reduce((sum, player) => sum + player.contract.capHit, 0);
-    const incomingA = fromB.reduce((sum, player) => sum + player.contract.capHit, 0);
-    const outgoingB = fromB.reduce((sum, player) => sum + player.contract.capHit, 0);
-    const incomingB = fromA.reduce((sum, player) => sum + player.contract.capHit, 0);
+    const outgoingA = fromA.reduce((sum, player) => sum + transferableCapHit(player.contract), 0);
+    const incomingA = fromB.reduce((sum, player) => sum + transferableCapHit(player.contract), 0);
+    const outgoingB = fromB.reduce((sum, player) => sum + transferableCapHit(player.contract), 0);
+    const incomingB = fromA.reduce((sum, player) => sum + transferableCapHit(player.contract), 0);
 
     if (capA + outgoingA - incomingA < 0 || capB + outgoingB - incomingB < 0) {
       return {
@@ -295,8 +299,8 @@ export class TradeService {
     const picksA = result.picks.fromA;
     const picksB = result.picks.fromB;
 
-    for (const player of fromA) player.teamId = teamB;
-    for (const player of fromB) player.teamId = teamA;
+    for (const player of fromA) { retainPracticeChargeOnTrade(this.session.league, player); player.teamId = teamB; }
+    for (const player of fromB) { retainPracticeChargeOnTrade(this.session.league, player); player.teamId = teamA; }
     for (const pick of picksA) pick.ownerTeamId = teamB;
     for (const pick of picksB) pick.ownerTeamId = teamA;
 

@@ -1,0 +1,167 @@
+{
+  "recordedAt": "2026-10-08T18:17:11.565Z",
+  "scope": "Current shared renderer before long-hair visible-texture refinement; diagnostic gallery only",
+  "fullVisualAcceptance": false,
+  "files": [
+    {
+      "file": "public/lib/playerHead3d.js",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/public__lib__playerHead3d.js",
+      "sha256": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa"
+    },
+    {
+      "file": "test/player-portrait-features.test.js",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/test__player-portrait-features.test.js",
+      "sha256": "d4148600eaf9a35a040e0d35926ce6ec49c63d6f80eb3ec218ed1ef1b6300a55"
+    },
+    {
+      "file": "tests-ui/player-character-variation.spec.js",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/tests-ui__player-character-variation.spec.js",
+      "sha256": "869d56131248786fee9fd392e824e43ed952940dd3f87a19c1e7719c8b9f845d"
+    },
+    {
+      "file": "output/playwright/current-character-variation.json",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-character-variation.json",
+      "sha256": "8938a7f0061c6b324c931b63cd1f461bedaf60dce835214da59d05229fde9f6f"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-hair-desktop-dark.png",
+      "sha256": "34a802ac6f8cbba80735898431954023dfe58c8f2c4b9d43088136fad099b533"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-texture-desktop-dark.png",
+      "sha256": "fe556daf56bf97176525b926e3ea658e2b5eabfee4c81e895c77286188a181be"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-pigment-desktop-dark.png",
+      "sha256": "b86ceebbffeaef522d9e05f2f08808af40758abaa008cbb46bba55fed49e6b98"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-iris-desktop-dark.png",
+      "sha256": "faea15b558201e35c8c19d272eeed45e27194523934ed188ed73ce4151120ab6"
+    },
+    {
+      "file": "output/playwright/current-variation-face-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-face-desktop-dark.png",
+      "sha256": "60431c601a3e8a88f05bca4669874febb5a33aac545a01a7bc8f89dd6a87c82c"
+    },
+    {
+      "file": "output/playwright/current-variation-body-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-body-desktop-dark.png",
+      "sha256": "c3458adfd205116d0d2b48c8fd56a30a165430e6e07200dc24a7f97e2adbeac6"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-capacity-desktop-dark.png",
+      "sha256": "d7958965f83d40ae00d8547b99c646b9979e38a87c251a85a68056d4b3967f8b"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-hair-desktop-light.png",
+      "sha256": "c0ce4007c84b5c1268c155b36afd6d7fd768e203ad15f17f65d084e15dadaf7f"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-texture-desktop-light.png",
+      "sha256": "dc35d6b09fb80063c41d139fb86b6b0e7746781ceaf54f71ea48dbf3bee411b2"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-pigment-desktop-light.png",
+      "sha256": "ae05af52d7f10e9d2642aa6f3ca52d8afd43813238edf6f9ddf113acf1dff3b1"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-iris-desktop-light.png",
+      "sha256": "01d82520af5731b9a04da401bfa3854870d6a5be4be632294ea03135e1d39ed1"
+    },
+    {
+      "file": "output/playwright/current-variation-face-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-face-desktop-light.png",
+      "sha256": "e9fae3b56a807182ffd6bbc7aa8dcb0fccf21d9245b5776e6f02583638aa5357"
+    },
+    {
+      "file": "output/playwright/current-variation-body-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-body-desktop-light.png",
+      "sha256": "5f1c8fc30a2315c3a2a60038b900760ba0e1d244e5e1b75a62b8c6a338d2afba"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-capacity-desktop-light.png",
+      "sha256": "aaa53a5b459a5d8098d24ed0082c35dcc92d6fb57ad8f8bfb9dc848188543722"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-hair-mobile-dark.png",
+      "sha256": "6911cfe05315e76e6773162dba6a55dcdf1129aa2a2fa47d72c5a75d46182a8b"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-texture-mobile-dark.png",
+      "sha256": "b1ef563ed649ce536e943bee194b999c46a39428d75a005101431b81ba71d5f7"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-pigment-mobile-dark.png",
+      "sha256": "7dd435ff003664df67edad1f793008c6c4bb6db087e02b595a0604c4dc383ced"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-iris-mobile-dark.png",
+      "sha256": "087d27e433290269d96e390261ec9ef659952718af6e1a663b2657ffa5ad8f23"
+    },
+    {
+      "file": "output/playwright/current-variation-face-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-face-mobile-dark.png",
+      "sha256": "667ed0bdbb6b88f54443e99f37088cc0e289e4d1b7a1b3508ee80510012d00f4"
+    },
+    {
+      "file": "output/playwright/current-variation-body-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-body-mobile-dark.png",
+      "sha256": "122213d5355bf06357d8079b31d3245db3c9a32389e0ba2324e2b343622b62c3"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-capacity-mobile-dark.png",
+      "sha256": "242da50cd1af31d54d46d1878fa927f4a2fb9e4a9a9a49ffbb1ee96fe8658b65"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-hair-mobile-light.png",
+      "sha256": "16803826c14a025655d9ea9d47afde8cddbb61091ede0d3123abc58eaccc7086"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-texture-mobile-light.png",
+      "sha256": "11758d97229f1dec0249508a318ce85cf12c526a168527488446817e25393cce"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-pigment-mobile-light.png",
+      "sha256": "f9abf2c09ce8f4be79788b0f31830eb5b422cef77682a64270eafc3cf1600a75"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-iris-mobile-light.png",
+      "sha256": "76a5b68f04df8ab0dd3ed634a5fc8be4458ace04dbaff0a504a5ff38a5d02c92"
+    },
+    {
+      "file": "output/playwright/current-variation-face-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-face-mobile-light.png",
+      "sha256": "e9cc280b2d6737d749a3b87e127ea404707c12f83c3b53ff7fbef26142dbf996"
+    },
+    {
+      "file": "output/playwright/current-variation-body-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-body-mobile-light.png",
+      "sha256": "20d09e980275eba4ab4c482b1e5d1bac6d6dbbce2b1ea4ad0b76be346cdf5cbb"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-texture-before-2026-10-08/output__playwright__current-variation-capacity-mobile-light.png",
+      "sha256": "3e7ec48e395f863b1df047f8017f2e97da84921abd61e53f91d712638419c2f0"
+    }
+  ]
+}

@@ -1,0 +1,1996 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T00:02:57.103Z",
+  "sourceRevision": "local-worktree",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "status": "limb-contour-component-verified-full-athlete-open",
+  "scope": "Modern shared asymmetric limb surfaces; saved cross-section widths, volume budget and joint anchors preserved",
+  "sourceHashes": {
+    "public/lib/profiledLimbSurface.js": "f0e9ebd25a40ab1b3f6e39cf5478c5591caa9b44f445d557cbbb54c0ddd32555",
+    "public/lib/playerPortrait.js": "4996c8b87f2595a4c91fe3ae9501d39b0988902516bde56409ae42851c1be753",
+    "public/lib/playerMotion.js": "2669b8da29b8b5d3211a04c29b7b01f93018001faecf492bf631b0ade9ca063b"
+  },
+  "builtHashes": {
+    "static/lib/profiledLimbSurface.js": {
+      "sha256": "f0e9ebd25a40ab1b3f6e39cf5478c5591caa9b44f445d557cbbb54c0ddd32555",
+      "source": "public/lib/profiledLimbSurface.js",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "sha256": "4996c8b87f2595a4c91fe3ae9501d39b0988902516bde56409ae42851c1be753",
+      "source": "public/lib/playerPortrait.js",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "sha256": "2669b8da29b8b5d3211a04c29b7b01f93018001faecf492bf631b0ade9ca063b",
+      "source": "public/lib/playerMotion.js",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "baselineHashes": {
+    ".cache/limb-contour-before/profiledLimbSurface.js": "fbc74ae9113a7c653c1efe71b140753ad3c53d05eba2c01340e59bd16e358bb8",
+    ".cache/limb-contour-before/playerPortrait.js": "3090ae612e28795e098da88df56ee40ac5ced4cdd1b594ba25fa0bd7d79a8307",
+    ".cache/limb-contour-before/playerMotion.js": "96a1df86fe417201e77b7db4be5634f6619200f9a249c7852094a1ba84dc366b"
+  },
+  "artifactDigest": "239efb464c724cff6c927d3dfc60a7d408e92ae3cc8e3a208a0053f13dcb4059",
+  "reports": [
+    {
+      "file": "output/playwright/s117-measured-body-limb-contour-before.json",
+      "sha256": "0f00baa35ce7fd6a54be3f629940aaae0b4ed3113432fd0e9d7fb7661f9c8d76",
+      "phase": "before",
+      "captureOrigin": "Immediate current-source before run fc4ada; phase env was unset in the comparison spec, so originals use baseline filenames."
+    },
+    {
+      "file": "output/playwright/face-relief-dossier-limb-contour-before.json",
+      "sha256": "b4a57dc03126dee63c507f5e342d2092f51d4ae73a80a8b767f007d50405fc7f",
+      "phase": "before",
+      "captureOrigin": "Actual current renderer browser capture"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-limb-contour-after.json",
+      "sha256": "e88dd3bb2ff1307752c8d302018deab9729ff861564e4045b30eb21636a18321",
+      "phase": "after",
+      "captureOrigin": "Actual current renderer browser capture"
+    },
+    {
+      "file": "output/playwright/face-relief-dossier-limb-contour-after.json",
+      "sha256": "8d8da3db8242c7920cfdc1a48ff485d5103788c00df4f160b7cbefc33bfda26e",
+      "phase": "after",
+      "captureOrigin": "Actual current renderer browser capture"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-mass-desktop-dark.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "e00153951b1fe5f79dc1d8327b354b4324a079c79b22db5ee41552a09f412891",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-mass-desktop-dark.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-mass-desktop-light.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "7b1a17f31b4701acedcb2aa83bff0fb62367a7b02811fb6430c0027cba29a13b",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-mass-desktop-light.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-mass-mobile-dark.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "13d9898844c185aa50f0cdd79d11a9ac856278cad86bbba022ea8c48eb761478",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-mass-mobile-dark.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-mass-mobile-light.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "960dc7a1c34bdf6cfa8e66508687113f159bd59d5036440ded4c2f577bcbf117",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-mass-mobile-light.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-stature-desktop-dark.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "1741d83ba2a823c55b42b8f78bf8e1e867bc136f17bcec4c2c1aeebaa636f114",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-stature-desktop-dark.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-stature-desktop-light.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "3a2610a85831cc04fbc1203806d7a81c51fa831e7f70091846221d077df224ce",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-stature-desktop-light.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-stature-mobile-dark.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "e705fe387a4856e2c2ed58826745c6a6f5fe495cda25961c53e0ac5c435f469e",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-stature-mobile-dark.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-stature-mobile-light.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "0b5b46d5c9057269ed3cddc287a1583505c270b0cd996c83be0e149af3d4c7a9",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-stature-mobile-light.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-proportions-desktop-dark.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "d681de2bd22085ccb63e7368f2ebed7ee9a18e8a7fe6547520bf8420383f97e7",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-proportions-desktop-dark.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-proportions-desktop-light.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "1b288ca60e7c0585c23cfd90d30cf1961b1b5e0d3c9ecf4a841ce6e410b31161",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-proportions-desktop-light.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-proportions-mobile-dark.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "f7ee1a3ff6b95c41b83cee8510e35a67155708d818435266e9f0adca09ac61aa",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-proportions-mobile-dark.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-proportions-mobile-light.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "d36fc486645f372f6e59d10c057fad30ed5f3aa63113230c9533c76fb13dade4",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-proportions-mobile-light.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-capacities-desktop-dark.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "99dae9a7f04739562ee30f4dd8658d6ee97d32c4bdbfd46e01ab1b8ff2390bfd",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-capacities-desktop-dark.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-capacities-desktop-light.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "8bc11e1190dd44854a76ee0f45942adefcc6e9458bef3522bd1b5e3c589cc405",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-capacities-desktop-light.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-capacities-mobile-dark.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "1b94d0b347074d65370ba2ab962671dec767885e0dc4ac3143e25de2d14e7c28",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-capacities-mobile-dark.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-capacities-mobile-light.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "750428d25ef45b01f558f77fd47c14f596279dd95081971a30eacc1283d5c3c0",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-capacities-mobile-light.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-heavy-fast-light-slow-desktop-dark.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "b124ae88df3bc604e0432f0c6f25bacd9f989cb2540d6b1a79e96cca2d449ae9",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-heavy-fast-light-slow-desktop-dark.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-heavy-fast-light-slow-desktop-light.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "109e83c5ea6120224fd69279bb5eeaa834a79677b4efafa61377bc1791e7c593",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-heavy-fast-light-slow-desktop-light.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-heavy-fast-light-slow-mobile-dark.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "df986ea4bd5d92b869328d96d6404bc665b40ec3104fe76f84ef3d81d07b970c",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-heavy-fast-light-slow-mobile-dark.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-heavy-fast-light-slow-mobile-light.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "7d937aa02c5f11c9e8e51fad7c83b320816e4d866c4ba705a2e3090ac3f904c4",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-heavy-fast-light-slow-mobile-light.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-recorded-reach-desktop-dark.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "b671cddc3e51be7e7033a17df59e054d71d86d7119b8206b510fc7ef5c636b8f",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-recorded-reach-desktop-dark.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-recorded-reach-desktop-light.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "c689c5aa0f805c77bcdc0cce385c11629ca4f2ce7371b5e2dce63c83260b4dae",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-recorded-reach-desktop-light.png",
+      "phase": "before",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-recorded-reach-mobile-dark.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "e3a0e0f15172f20b236060d9a7d7836f413a0ca282f9466a9d47768a6b01d55f",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-recorded-reach-mobile-dark.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-before-recorded-reach-mobile-light.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "486255f8d09743a22c73b87f530dc549ee89356a58e8d8edb54b94bc26a32d09",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-before-recorded-reach-mobile-light.png",
+      "phase": "before",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-desktop-dark-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-desktop-dark-portrait.png",
+      "sha256": "5a7a2640e31bc8df92b0af225c6b17003c5536f3355fe9f70e6e0678a5457d35",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-desktop-dark-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-desktop-dark-body.png",
+      "sha256": "85c732c2f364b4be02f6dde3d349c11cc1c8a078e3d6227bea38dd8642df524b",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-desktop-light-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-desktop-light-portrait.png",
+      "sha256": "f6705186735ced185a468098917c5bbe828162eaad2b6f98770ca7927b52ffe0",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-desktop-light-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-desktop-light-body.png",
+      "sha256": "ad8c6e5a6cba843539c21416fac734da33d961314153a401643445b203e726dc",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-mobile-dark-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-mobile-dark-portrait.png",
+      "sha256": "0e0af6a5c59007d4ecb28775f319371957e7402bdc2b33e82eb94e83a06d0edc",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-mobile-dark-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-mobile-dark-body.png",
+      "sha256": "6f74f040332b8413e2f0d96822f31ef74d23fb40bbfc931866802accd5c35ee8",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-mobile-light-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-mobile-light-portrait.png",
+      "sha256": "7c3add4199bbc1edf048769bea6e73cb2500c220fee721f8fb4e85ae9ab09856",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-shaved-mobile-light-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-shaved-mobile-light-body.png",
+      "sha256": "1e44599376add4b13f283b0aa1aa791042581e3f999328517cdba2f5727de066",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-desktop-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-desktop-dark-portrait.png",
+      "sha256": "f48b68523d746fc0d5839f99da28f6af66c3d619d2cc06f2c17e0a7d4609d9f3",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-desktop-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-desktop-dark-body.png",
+      "sha256": "9f70ef42693a623a3a7e0f9cc6adb47a42ec64a7b9b2564ef0ab61fbee27bb6a",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-desktop-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-desktop-light-portrait.png",
+      "sha256": "a2d52d31690d68be601a772a4292e1fd5bd107efed11167e3f0535429a173263",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-desktop-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-desktop-light-body.png",
+      "sha256": "271fb251cf67bc7ba830a7157bba3464da93cc949659f8cc79324bd6c99c230d",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-mobile-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-mobile-dark-portrait.png",
+      "sha256": "45cb9f31d8309bee0fde060ab9bc0b6ac8e79d8c4727dcf19bccb97eb6ddb36b",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-mobile-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-mobile-dark-body.png",
+      "sha256": "42a1ed9d72b0df721745679637c19583e273a9e9c12599f281017392bc92cb63",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-mobile-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-mobile-light-portrait.png",
+      "sha256": "c18f67f13e3957c6795b892a6aac22698604c498efe47b9671d5b03e410b5e16",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-afro-mobile-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-afro-mobile-light-body.png",
+      "sha256": "8dd402264a5e9ba463c2e6f8d2cc3be5c177a912400b6a5126fb08f389562d31",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-desktop-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-desktop-dark-portrait.png",
+      "sha256": "aa6ad1b47074c178e03134848c0a9d8fe9ee737b48c646b0321cc69b004e8957",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-desktop-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-desktop-dark-body.png",
+      "sha256": "8fa307c5c41a4981051f04ceec7b1ae56988ffc883aac463c4de53bb2833c248",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-desktop-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-desktop-light-portrait.png",
+      "sha256": "9b1dbe1c898969c5a9448e80fe3dee4c8c399282b643a76d2271e53de9cb1e6a",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-desktop-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-desktop-light-body.png",
+      "sha256": "300cd50db5ba4366f401d1b47a3e011d2bc5f842c80b9917322ba2a69b6c5fcf",
+      "phase": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-mobile-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-mobile-dark-portrait.png",
+      "sha256": "0dac3da39642afc2680091ed855de15140272c0ec4c8b7782c807fc74dd560fd",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-mobile-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-mobile-dark-body.png",
+      "sha256": "627ae610c64206cbcc5ecbdc3a16424d4b77e8c632dd7e40cccc44cac645f7c0",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-mobile-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-mobile-light-portrait.png",
+      "sha256": "3b30928f8aa4c997cc16a729669e20bc881c56762585a945a41319e562680d69",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-before-side-part-mobile-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-before-side-part-mobile-light-body.png",
+      "sha256": "c7beabfed41ad96d76c60ef75b8a47d5bc078ab258dc021146ab68a64a1e8e81",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-mass-desktop-dark.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "b6effe7bf9a3ce54b2b5bba63b48c32e8abda0ad77be2a2347b66391cb4fade7",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-mass-desktop-dark.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-mass-desktop-light.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "774eec9a25a56adf17835b98e3ff8c1c89472030e973e68e2c16a144cd464754",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-mass-desktop-light.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-mass-mobile-dark.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "6c59bf8587aa1b133c22cf489076be06fdea32aa366d293f2e05ff8dac42c61f",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-mass-mobile-dark.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-mass-mobile-light.png",
+      "pair": "mass",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "afa1604a6da6016eee788202f8ddf936a1f701766beac3a16317847aa5461583",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-mass-mobile-light.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "mass",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-stature-desktop-dark.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "7c733fa4e36393bd5640eb9a3bf4f283c903d2b27368d18c6cf2ff8e3bf77db7",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-stature-desktop-dark.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-stature-desktop-light.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "754107ad3316055667552ecb11e6419142d84792c808f6ad003db141eebac627",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-stature-desktop-light.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-stature-mobile-dark.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "f3baebcf37944dedeaf9b73ac41c3ee2d759d762becbfc5558115ab968850e93",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-stature-mobile-dark.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-stature-mobile-light.png",
+      "pair": "stature",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "ecdd6b18e0a2d1be4710bba3d81bff81930572b4e11e66659833e9e6f654b112",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-stature-mobile-light.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "stature",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-proportions-desktop-dark.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "2800529253d8eccf2c870a3cf26898c7e4934edddd940b1cbb24d7b5874988dd",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-proportions-desktop-dark.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-proportions-desktop-light.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "1b590049f0970ab9e2e61dc92919230298edf633f641af3c3d7a253a3253d292",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-proportions-desktop-light.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-proportions-mobile-dark.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "9da200684083b5dbd35e35c68c6ad89a6f55a61eb3f3a04a4ac18ce8f4b9e2cf",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-proportions-mobile-dark.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-proportions-mobile-light.png",
+      "pair": "proportions",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "45696b64ba4294f662756e63066e9c334eb95de0622cc087d3df83bab938916a",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-proportions-mobile-light.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "proportions",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-capacities-desktop-dark.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "5b74cb64636be9aec812b498702855c85a40df0706a8ba72b74f3d1aa77f1718",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-capacities-desktop-dark.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-capacities-desktop-light.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "e8eb0dba15c19a62b221179759d9a28663216c15ef70b86cc26725fb15e5e214",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-capacities-desktop-light.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-capacities-mobile-dark.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "b6322dac613971505f3015923976e0040d81c9cbf2f7467e156cef0258ecc90c",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-capacities-mobile-dark.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-capacities-mobile-light.png",
+      "pair": "capacities",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "fe5ac0aa6ead02ea6ed773038cb33369123e0428df6e4883bab75ceb9ef328d0",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-capacities-mobile-light.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "capacities",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-heavy-fast-light-slow-desktop-dark.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "b5cee0a43833aedd9cd9b87f2fa4ebe3d03c17fe4dff50ace673d4f2dc6d34d0",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-heavy-fast-light-slow-desktop-dark.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-heavy-fast-light-slow-desktop-light.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "f7b16d222db21d3257919798665d87f20748b547f99db705422335cfd310cc19",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-heavy-fast-light-slow-desktop-light.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-heavy-fast-light-slow-mobile-dark.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "d93a45d5838d7b388d9f6b8d4b6d54c18692398913cd29e5360dbe9a4f640fe0",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-heavy-fast-light-slow-mobile-dark.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-heavy-fast-light-slow-mobile-light.png",
+      "pair": "heavy-fast-light-slow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "432cf6fbf807c246030ab0ba52093cc543629c157b89afa2acbe0c8baface321",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-heavy-fast-light-slow-mobile-light.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "heavy-fast-light-slow",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-recorded-reach-desktop-dark.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "7f9c24af98738a71cf4264a25892f5b9393068ab99e6dc47d007f4f42d815626",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-recorded-reach-desktop-dark.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-recorded-reach-desktop-light.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "bcb5d50ceef1962e1e175d1da503de2e4cf95db25fb04db29af98cf966072071",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-recorded-reach-desktop-light.png",
+      "phase": "after",
+      "size": "desktop",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-recorded-reach-mobile-dark.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "4171065912ee429f4f518e079db92c85f9d191266e4583373aefc7752c396306",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-recorded-reach-mobile-dark.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-limb-contour-after-recorded-reach-mobile-light.png",
+      "pair": "recorded-reach",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "24a112b6d305748cd92db0c87d8375424353ef781f515708dfb1bb5c366e28ec",
+      "originalFile": "output/playwright/s117-measured-body-limb-contour-after-recorded-reach-mobile-light.png",
+      "phase": "after",
+      "size": "mobile",
+      "page": "controlled-body-comparisons",
+      "state": "recorded-reach",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-desktop-dark-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-desktop-dark-portrait.png",
+      "sha256": "5a7a2640e31bc8df92b0af225c6b17003c5536f3355fe9f70e6e0678a5457d35",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-desktop-dark-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-desktop-dark-body.png",
+      "sha256": "efabe6d0de4918c31ad3c0289c8b18e4345726d8f2c73476fa9cea8bfdedb1ee",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-desktop-light-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-desktop-light-portrait.png",
+      "sha256": "f6705186735ced185a468098917c5bbe828162eaad2b6f98770ca7927b52ffe0",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-desktop-light-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-desktop-light-body.png",
+      "sha256": "b749a16125a3c06be8511cd3121f7bd954cdf873189ad6c4ab86ccb8df080266",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-mobile-dark-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-mobile-dark-portrait.png",
+      "sha256": "0e0af6a5c59007d4ecb28775f319371957e7402bdc2b33e82eb94e83a06d0edc",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-mobile-dark-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-mobile-dark-body.png",
+      "sha256": "17bd1603f1c74e1e93d809f619e556e98b85c70f1d09ab69585b67715adca95c",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-mobile-light-portrait.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-mobile-light-portrait.png",
+      "sha256": "7c3add4199bbc1edf048769bea6e73cb2500c220fee721f8fb4e85ae9ab09856",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-shaved-mobile-light-body.png",
+      "style": "shaved",
+      "id": "P2026-BUF-QB-75883957",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-shaved-mobile-light-body.png",
+      "sha256": "cb2ea1259d9ce4f70885570c7f1d82a1899f6a1d77a282ba607f66cc3e983e55",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-desktop-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-desktop-dark-portrait.png",
+      "sha256": "f48b68523d746fc0d5839f99da28f6af66c3d619d2cc06f2c17e0a7d4609d9f3",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-desktop-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-desktop-dark-body.png",
+      "sha256": "2fbeb52b6a1562678e7d752adb43873b5c7c360aa764cade7ef749307adbf3a0",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-desktop-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-desktop-light-portrait.png",
+      "sha256": "a2d52d31690d68be601a772a4292e1fd5bd107efed11167e3f0535429a173263",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-desktop-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-desktop-light-body.png",
+      "sha256": "04d73d541f9a196f32f69ae61072889d7800b01e0fabc16e00c74c661b374d11",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-mobile-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-mobile-dark-portrait.png",
+      "sha256": "45cb9f31d8309bee0fde060ab9bc0b6ac8e79d8c4727dcf19bccb97eb6ddb36b",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-mobile-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-mobile-dark-body.png",
+      "sha256": "46b71dc326d4a94b8ff17ef74b6efd0091058b2a9980bdae7e7abe28be9b6841",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-mobile-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-mobile-light-portrait.png",
+      "sha256": "c18f67f13e3957c6795b892a6aac22698604c498efe47b9671d5b03e410b5e16",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-afro-mobile-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-afro-mobile-light-body.png",
+      "sha256": "5beeaa12663809f17f3cbbaca4c5bacdf5479edb1bc550612061291089b685d8",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-desktop-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-desktop-dark-portrait.png",
+      "sha256": "aa6ad1b47074c178e03134848c0a9d8fe9ee737b48c646b0321cc69b004e8957",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-desktop-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-desktop-dark-body.png",
+      "sha256": "3850d9f7e4d666985d7b902e0fff02e16822a301479ba166b354a02cc78b53c3",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-desktop-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-desktop-light-portrait.png",
+      "sha256": "9b1dbe1c898969c5a9448e80fe3dee4c8c399282b643a76d2271e53de9cb1e6a",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-desktop-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-desktop-light-body.png",
+      "sha256": "a6de8c691b95b14131f12d386f6f6d2307d038fddcb692212fadf75261639ac4",
+      "phase": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-mobile-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-mobile-dark-portrait.png",
+      "sha256": "0dac3da39642afc2680091ed855de15140272c0ec4c8b7782c807fc74dd560fd",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-mobile-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-mobile-dark-body.png",
+      "sha256": "30676b7b12adb48a24234662800d398cfbda14af6082e9c18dd86386d24604cd",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-mobile-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-mobile-light-portrait.png",
+      "sha256": "3b30928f8aa4c997cc16a729669e20bc881c56762585a945a41319e562680d69",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-limb-contour-after-side-part-mobile-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "originalFile": "output/playwright/face-relief-dossier-limb-contour-after-side-part-mobile-light-body.png",
+      "sha256": "5058f180a18a8dae102c972897676d27d71297731ca79375d5c6a427f52ad279",
+      "phase": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "primaryInspected": false
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "file": "captures/s117-measured-body-limb-contour-before-mass-desktop-dark.png",
+        "sha256": "e00153951b1fe5f79dc1d8327b354b4324a079c79b22db5ee41552a09f412891"
+      },
+      {
+        "file": "captures/s117-measured-body-limb-contour-before-stature-mobile-light.png",
+        "sha256": "0b5b46d5c9057269ed3cddc287a1583505c270b0cd996c83be0e149af3d4c7a9"
+      },
+      {
+        "file": "captures/face-relief-dossier-limb-contour-before-afro-mobile-dark-body.png",
+        "sha256": "42a1ed9d72b0df721745679637c19583e273a9e9c12599f281017392bc92cb63"
+      },
+      {
+        "file": "captures/face-relief-dossier-limb-contour-before-side-part-desktop-light-body.png",
+        "sha256": "300cd50db5ba4366f401d1b47a3e011d2bc5f842c80b9917322ba2a69b6c5fcf"
+      },
+      {
+        "file": "captures/s117-measured-body-limb-contour-after-mass-desktop-dark.png",
+        "sha256": "b6effe7bf9a3ce54b2b5bba63b48c32e8abda0ad77be2a2347b66391cb4fade7"
+      },
+      {
+        "file": "captures/s117-measured-body-limb-contour-after-stature-mobile-light.png",
+        "sha256": "ecdd6b18e0a2d1be4710bba3d81bff81930572b4e11e66659833e9e6f654b112"
+      },
+      {
+        "file": "captures/face-relief-dossier-limb-contour-after-afro-mobile-dark-body.png",
+        "sha256": "46b71dc326d4a94b8ff17ef74b6efd0091058b2a9980bdae7e7abe28be9b6841"
+      },
+      {
+        "file": "captures/face-relief-dossier-limb-contour-after-side-part-desktop-light-body.png",
+        "sha256": "a6de8c691b95b14131f12d386f6f6d2307d038fddcb692212fadf75261639ac4"
+      }
+    ],
+    "findings": [
+      "Upper arm, forearm and calf contours are distinct in matched neutral and moving views.",
+      "No observed clipping or attachment defect in inspected mass/stature and actual dossier cases.",
+      "Face and complete body remain planar/illustrated and mannequin-like; full naturalism remains unaccepted."
+    ],
+    "fixesApplied": [
+      "One bounded equal-side contour translation preserves regional widths and analytical volume.",
+      "Shared cubic helper resolves static and articulated surfaces, with roots/joints/terminals anchored.",
+      "Front contours mirror by side; profile contours follow the corresponding moving projection."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "verification": {
+    "focused": {
+      "output": "754c92",
+      "pass": 30,
+      "fail": 0,
+      "skip": 0
+    },
+    "beforeBrowser": {
+      "output": "fc4ada",
+      "pass": 2,
+      "fail": 0
+    },
+    "afterBrowser": {
+      "output": "0b831b",
+      "pass": 2,
+      "fail": 0
+    },
+    "builtBrowser": {
+      "output": "f8c11e",
+      "pass": 2,
+      "fail": 0
+    },
+    "build": {
+      "output": "af3e30",
+      "precache": "9c8cfbb1cfd3",
+      "assets": 313,
+      "kb": 3458
+    },
+    "boot": {
+      "output": "3244d3",
+      "bytes": 649321,
+      "maxBytes": 730000,
+      "modules": 51,
+      "maxModules": 58,
+      "lazyLeaks": 0
+    },
+    "reachability": {
+      "output": "27f1cc",
+      "modules": 134,
+      "htmlEntries": 4
+    }
+  },
+  "clients": [
+    {
+      "file": ".cache/player-limb-contour-client/worker.json",
+      "sha256": "756356b88d4ceabd4be58bb3f41041219241531f72f1c3669600b1c7394167f1",
+      "worker": true,
+      "artifactDigest": "239efb464c724cff6c927d3dfc60a7d408e92ae3cc8e3a208a0053f13dcb4059",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": false,
+      "limbContoursRendered": true
+    },
+    {
+      "file": ".cache/player-limb-contour-client/in-page.json",
+      "sha256": "50e796282fb71fa1ffb49355ef99062b67264ad5dec0ffc4008addedcfddff3d",
+      "worker": false,
+      "artifactDigest": "239efb464c724cff6c927d3dfc60a7d408e92ae3cc8e3a208a0053f13dcb4059",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": false,
+      "limbContoursRendered": true
+    }
+  ],
+  "independentReview": {
+    "file": "docs/visual-qa/PLAYER_LIMB_CONTOUR_REVIEW_2026-10-07.json",
+    "sha256": "e00f922ef070b26d45537221c420d3507cc155ad6ff79858bf696c8158b5ab08",
+    "verdict": "PASS",
+    "scope": "Shared limb geometry component; full appearance remains open."
+  },
+  "repairedInitialCheck": {
+    "output": "1a4138",
+    "pass": 0,
+    "fail": 2,
+    "cause": "New expected-SVG reader used strict XML and rejected existing HTML-style boolean attributes, returning no expected paths.",
+    "fix": "Use a browser HTML template; retain exact actual/current equality and actual/legacy inequality for dossier and all six modes.",
+    "finalOutput": "f8c11e"
+  },
+  "limitations": [
+    "Artistic offsets, not fitted NFL regional tissue/composition measurements.",
+    "No demographic, appearance-frequency, saved frame or gameplay coefficients changed.",
+    "Actual before comparison used an unset phase variable; originals named baseline were preserved under explicit current-before filenames and origin metadata.",
+    "Full athlete naturalism, joint athlete fitting, current thirty managed seasons, full-feature and release gates remain required."
+  ]
+}

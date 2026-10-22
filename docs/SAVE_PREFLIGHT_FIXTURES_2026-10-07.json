@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-07",
+  "scope": "Test fixture correction only; explicit league financial-year authority in valid baseline snapshots",
+  "runtimeChanged": false,
+  "sourceHashes": {
+    "test/measurement-provenance-snapshot.test.js": "ec70015cde05dd6f75647fd7a1ee592e4be15224e49515cb397e3a00909bd8de",
+    "test/stat-snapshot.test.js": "312bb79eb578f3537369f062013e69f3f66bd67cff811395cde8122b2e5390c4"
+  },
+  "checks": {
+    "command": "node --test --test-isolation=none --test-force-exit test/measurement-provenance-snapshot.test.js test/snapshot-migration.test.js test/stat-snapshot.test.js test/admitted-injury-payroll.test.js test/offseason-medical-calendar.test.js",
+    "passed": 29,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 30114.5499
+  },
+  "originalFailedRun": {
+    "passed": 28,
+    "failed": 1
+  },
+  "wholeCoreAccepted": false
+}

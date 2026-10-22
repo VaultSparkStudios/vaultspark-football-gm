@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "session": 118,
+  "capturedAt": "2026-10-22T03:09:14.996Z",
+  "status": "partial-character-progress",
+  "completeVisualAcceptance": false,
+  "sourceHashes": {
+    "src/domain/playerFamilyIdentity.js": "7a319e232c58c2c8f50477fb96d81287b2769214f2e8377010eed6707bac5d4d",
+    "src/domain/playerIdentity.js": "7e67d69b1c7e540a7745b4368f32d39e4059a7116f5cb6600b493fa48914ab67",
+    "src/domain/playerVisualIdentity.js": "407b372e5f41b71630356574833f05a455a1d2f31e19182a970dabcab5dff795",
+    "src/domain/playerFactory.js": "616f136e07074d33fa64f21732f50b16c1e22ff9ca8b71f57b9dc22083db47b3",
+    "src/runtime/GameSession.js": "800c7a30778e446bb85cc3c304aee6abc7c9fc0552d5478e0c2663fecf18c3de",
+    "src/engine/offseasonSimulator.js": "848dcd193a1a484b0e1330d074f30f3af56298f94c9e5f0eba57f370be2d3209",
+    "public/lib/playerProfileNarrative.js": "f00e726494fb4df27f43172e1792609edb73abf659787438f3fea3473b490391",
+    "public/lib/playerBody3d.js": "b1714d52bd6627fd0d46b4ba768030700b1083ea2893073347a8382bbed17164",
+    "public/lib/playerBodyAnimation3d.js": "ef6920eb7f435ce19a4119c937de85335e283d1890432592b03aa36a75c15d98",
+    "public/lib/playerFootArticulation.js": "2ca2890c5814109f64a60b5f8443423c124712e01413ab57d3548489175bab7e",
+    "test/player-family-identity.test.js": "c5dd93ecb6874d8002be426822b705cba939a77e7849fe131b5924c2fbab17c5",
+    "test/player-torso-craft-current.test.js": "4bd54f2cf1d9c2f2574713bb84a982bcf0cbb18f9032fe1f8d57960b660fc2c0",
+    "tests-ui/player-character-3d.spec.js": "68f4798d99a50972578f0566636c3ccbc7133dc5fdba66a8b00213687ea499fe",
+    "tests-ui/player-family.spec.js": "1d961fdce51654193ef995bfc06509deaa8de7d29cabf0b7e0c376bf6f5ed26b"
+  },
+  "captures": [
+    {
+      "file": "captures/s118-after-desktop-dark-acceleration.png",
+      "sha256": "d58464d4910489468d64b87bc7994ccc87a46db84a3ff589500112541a85ac33",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-dark-cut.png",
+      "sha256": "95b9b6722b9a9a2d7227fd8c38ccb7735fb59133aa5c2bff037e6d207f473bb7",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-dark-endurance.png",
+      "sha256": "756e37d0780e5c2ee094d536b9f0ca589f71c119fe55de51fb1a50cd5b57f6ee",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-dark-jump.png",
+      "sha256": "b59bc3cfff558d46492bdedd28fd140e31d5a31462d48d816e6f66f0f2801bfe",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-dark-run.png",
+      "sha256": "ad2a4a2eb063c09251e0ced4e06743de48eacd0aed7660f22a9264689b056e8d",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-dark-strength.png",
+      "sha256": "78d6322bb911a32bd551e1122be55c82bf95772c189aa2fde1c11d9aac5231ed",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-light-acceleration.png",
+      "sha256": "fa122d53496b36b811fed090f7b6435e84e5455ef028f501a9995c3dd652837c",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-light-cut.png",
+      "sha256": "beabf59696a4cc105b767d4582d75334fdc3fe5f3f3c61bc0887b62679becdcd",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-light-endurance.png",
+      "sha256": "33c92b259e1d7d9de32f61ec62d42347d9fba1394ab5ec327e6f71b5eca4233d",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-light-jump.png",
+      "sha256": "bfa4be7c319b1305582c6c6751693f0c9e09f267a71ee7c7f398898e1c816b1d",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-desktop-light-run.png",
+      "sha256": "c731970a98798c4aeb8a99ebf1e80134d9ede5cd134a33af48003c6610f90cdd",
+      "phase": "after",
+      "inspected": true
+    },
+    {
+      "file": "captures/s118-after-desktop-light-strength.png",
+      "sha256": "a75e2a8ba73f4ac7cf5c0f6018e9a0873b336577db4698b389cd3dd735d61511",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-acceleration.png",
+      "sha256": "2f5f1ec4010730bd6982e710eb3fd178d2737ab5e7eacc5c953c8a972662c5bb",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-cut.png",
+      "sha256": "fe7848d3b88de9897c0f82828b74cf44037ab4fea6df2796709cb2bc2dd1b8dc",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-endurance.png",
+      "sha256": "28926971dd5470027add247bcabf08079c113e2492b0683b32fc9c38c7465372",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-front.png",
+      "sha256": "dae787483cda2f7e8557ca60851fa0e8c03a484e5efc7a789ca176d45dc674e5",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-jump.png",
+      "sha256": "bf22867a5109a6bb0bcadb2997848d4307edfd136f6a61334ab012c766986b28",
+      "phase": "after",
+      "inspected": true
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-run.png",
+      "sha256": "7c57c30f20ca52625be3bfde71d74dc22ba3f601caf26801a9ea870d7152b0e0",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-side.png",
+      "sha256": "249c0e5e0b510d022e066d6f2fc8ed2e84277229a2ccf8f1d84fb1a9549ccdfa",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-dark-strength.png",
+      "sha256": "544e99260299de273d3510dcf810dd985f0cdcfc9a8b0438b462b5831b8d48a9",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-acceleration.png",
+      "sha256": "5fde4126d6bcd95d7c00da13de92139d7aeda1b2c6627d18dcf0f07e418a5261",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-cut.png",
+      "sha256": "0cafe89829e7cb7be3ed0ae6736da7777d2bcb725208511c3166e5d5b61be354",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-endurance.png",
+      "sha256": "0ad4d54cd9d0b4b115000d35af1e9da69c22550f711f0c494c578fe7be0fca21",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-front.png",
+      "sha256": "415922904712ee637b59de35065ac11cd20501d497782bba3f3bf06ad26611aa",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-jump.png",
+      "sha256": "f66dec50113d548e9a0a8e40dc190f4301028fe5ff68f97bc05998532b89e322",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-run.png",
+      "sha256": "6d364ef7712948e677cd43a166bbc1989db9bf5f9c550e52b47e2d6343b66343",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-side.png",
+      "sha256": "3fe2aff0e9550fc82b891a373b89b2f82034c994562a98c4a46ac1a5433c0f7b",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-after-mobile-light-strength.png",
+      "sha256": "bffd5e468f435e183739652cef54ab9f5e3cd4e92379565215f47b77cc59456e",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-acceleration.png",
+      "sha256": "3c5552da549a5f29ab03c5f12fefff904492a64f6fc9a8437b97fcad2f29bcb9",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-cut.png",
+      "sha256": "515bfbeb005dd896fd17fbdf199766882cdd1276cbf5fce57c30060782e4bbf7",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-endurance.png",
+      "sha256": "c4c1c57ad4c1d8f20dbb4a01fe2308a9487e02f8ec47c9d27efc4a0faf31eefa",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-jump.png",
+      "sha256": "2d960800ab6b0bc4bce0d90961944f1f69c625d2bcdcb4ba3ad96f746344e774",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-run.png",
+      "sha256": "051a8ae10c5232f39f88e8a2749698b16a096deaeb08ba85ee0989fdf875c6ee",
+      "phase": "before",
+      "inspected": true
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-strength.png",
+      "sha256": "6e7fbbfc9014917425842fa30e090dfd81d59d68b4558ca80c549fd3a0714c19",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-light-acceleration.png",
+      "sha256": "c5379f532be1485b39224761c29b1e3df1908607ff74766718326db24a6c527f",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-light-cut.png",
+      "sha256": "20ebbbe2944477ba0db8112f97be72d89e76233762c402385cd78ea6533a79bd",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-light-endurance.png",
+      "sha256": "f03892879bfca60c2c72050b34157f30cc062499334aa6df0a6e0cd9e219e487",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-light-jump.png",
+      "sha256": "ee254d3634097834bd1f7ad6061563829c76b7ffe9b8b4544117e30a356eaa16",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-light-run.png",
+      "sha256": "76f19491252ed27ef985d9fa8c0ab76a302e0d959989883c8fa3132beab7e6f4",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-desktop-light-strength.png",
+      "sha256": "69aa18af2fd51c63dd79164d0c489d504a34b27de5fdc04dd16165d1ac0c9e9b",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-acceleration.png",
+      "sha256": "c5d7b191f1440ab12a991288b6e8275332510c858519bcf014f7fab98e930ee8",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-cut.png",
+      "sha256": "ab0121387df6a378b1025336720b9c7593c8378bfc94eb7bd82f006c99bc8bf7",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-endurance.png",
+      "sha256": "87ef7156de9d77736f9091a104b62841e61fb05575beb6ed2a0bdacc36ffaf21",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-front.png",
+      "sha256": "7fb7df55707d986c68eb17aa545aa67f857274293f616e955e5b8cbe9dcffcf0",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-jump.png",
+      "sha256": "b07c094d777ee83081d059176b22f7b0ae0a00b5408acf6114f123a6cf3b97cb",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-run.png",
+      "sha256": "b21377343eedcc653be1db6e3cd96c300daf3eceddccbe8f9761fe8755e91f49",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-side.png",
+      "sha256": "07f62968de4b772d47b036668398a6d2b2b1375d831fa50aa645c42cc5872887",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-strength.png",
+      "sha256": "fcbac1b164173009a5bb30b5077359f96daf047aa7aa60a2c3f647ebb7b689ae",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-acceleration.png",
+      "sha256": "26717bbea89b48b63f2fd0d64bfe25f52417db7593a6b4086f9cfd3c6342286b",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-cut.png",
+      "sha256": "8d23b0a1eae670d61a2d346e654ee1d9897e399d37a2d67af5af0ec686b18bd1",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-endurance.png",
+      "sha256": "2b980ab1cfbbceb85e8f80de00a38c399aa93e7687210d5741fa393598c9b43c",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-front.png",
+      "sha256": "e0459f7b867cebd432042e3af3be2d3ec10d8bf302744b55ce42d486274cd023",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-jump.png",
+      "sha256": "6a89cf1f89648f75b74fe343f3ea44a120ed2624ff523fa6b97068e1ccc8881b",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-run.png",
+      "sha256": "92c2978927199f1b139ee3f4d98e7f3675e2d35c8db56087e6ac9781a8904863",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-side.png",
+      "sha256": "654a69bcd4a5c0438408b3c683b145c7f27a06743edb267a2932e37d1a406037",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-before-mobile-light-strength.png",
+      "sha256": "96165c50d262bcb8af0e182b71bbedd21f1add27ab70302aba50e26203d5314f",
+      "phase": "before",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-family-desktop-dark-anchor.png",
+      "sha256": "b5e33de8964a13455bcff497646531b3355817fd2876fca4a706dd3fdfb16d1d",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-family-desktop-dark-relative.png",
+      "sha256": "3c374c7fbe2cdb6f4acbf44677efe862a4bd074e0b9e0e7e3706cf50235b5a26",
+      "phase": "after",
+      "inspected": true
+    },
+    {
+      "file": "captures/s118-family-desktop-light-anchor.png",
+      "sha256": "2794e78d3caf9cfec1c2454ed6ebc011e7875183c7314976a46c95e84623af23",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-family-desktop-light-relative.png",
+      "sha256": "daa4c47513d2e0937ac4fdfddd39a7bed993463051a23542db032c36ff54a1f5",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-family-mobile-dark-anchor.png",
+      "sha256": "d46eeb870bb1472c9e4c2e4361cd6df81aae46826b19fd75acdea6e27aa7d22f",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-family-mobile-dark-relative.png",
+      "sha256": "753c4d429918326bc26feeea83bf2c354fc4e3f52ea152ce96605b4adf7a2f9a",
+      "phase": "after",
+      "inspected": false
+    },
+    {
+      "file": "captures/s118-family-mobile-light-anchor.png",
+      "sha256": "d70ceb98c32a96acdace9109ea30651f9149a88d418bb28937d6dcd6a60b6884",
+      "phase": "after",
+      "inspected": true
+    },
+    {
+      "file": "captures/s118-family-mobile-light-relative.png",
+      "sha256": "9f078d8725649171aba9c1e6d36273b2471d69897b6061840500b59413cbf9fa",
+      "phase": "after",
+      "inspected": false
+    }
+  ],
+  "baseline": {
+    "body": "docs/visual-qa/references/person-material-2026-10-08-public-lib-playerBody3d.js",
+    "bodySha256": "f0372ebd1f4886608297f199d5ab673c7b85f5a11bff2002b4b805b43c48330c",
+    "animation": "docs/visual-qa/references/extremities-2026-10-08-public-lib-playerBodyAnimation3d.js",
+    "animationSha256": "9fa6884e93076fb9a58a86808a46904b77d036fd4213536037bac06f2304f60e"
+  },
+  "summary": {
+    "blockingDefectsOpen": 1
+  },
+  "observations": [
+    "Torso relief, collar and side-panel materials improve local contours but remain simplified.",
+    "Saved explicit family authority and relationship text are visible in real dossiers. Individual faces and measured frames remain distinct.",
+    "Swing shoes now articulate; contact soles remain level. Current production geometry tests check floor clearance and cache/construction agreement."
+  ],
+  "limitations": [
+    "Whole-person anatomical and hair/skin naturalism remain below requested final bar.",
+    "Further visual iterations, full current suite, exact staging and production promotion, and arc closeout remain pending.",
+    "The existing core run started before later edits and is diagnostic only; it cannot certify the final candidate."
+  ]
+}

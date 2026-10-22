@@ -1,0 +1,1950 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="vsfgm-runtime-default" content="client" />
+    <meta name="vsfgm-server-available" content="false" />
+    <meta name="vsfgm-server-base-url" content="" />
+    <title>Franchise Architect: Football - Franchise</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="game-body game-booting">
+    <div class="bg-layer"></div>
+    <div id="gameBootOverlay" class="game-boot-overlay" role="status" aria-live="polite" aria-label="Opening franchise">
+      <div class="game-boot-card">
+        <div class="brand-kicker">Opening Contract</div>
+        <h2>Building Your Franchise Command Deck</h2>
+        <p>Loading the league, your owner mandate, and the first decision that will define this franchise.</p>
+        <div class="game-boot-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
+    <header class="game-topbar">
+      <div class="topbar-brand topbar-logo-lockup">
+        <img class="brand-mark" src="./images/franchise-architect-mark.svg" alt="" aria-hidden="true" />
+        <div>
+          <div class="brand-kicker franchise-kicker">Franchise Architect</div>
+          <h1>Football</h1>
+          <p id="topMetaText" class="small">Loading...</p>
+        </div>
+      </div>
+      <div class="topbar-center">
+        <div class="small">User Team Box Scores</div>
+        <div id="boxScoreTicker" class="boxscore-ticker">Loading recent games...</div>
+      </div>
+      <div class="row compact topbar-actions">
+        <button id="mobileNavToggle" class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="sideMenu"><svg class="ui-icon" aria-hidden="true"><use href="#icon-menu"></use></svg></button>
+        <span id="stageChip" class="chip">Stage: Loading...</span>
+        <button id="advanceWeekBtn" data-testid="advance-week-btn">Advance Week</button>
+        <button id="advance4WeeksBtn" data-testid="advance-4-weeks-btn">Advance 4 Weeks</button>
+        <button id="advanceSeasonBtn" data-testid="advance-season-btn">Advance Season</button>
+        <button id="pauseSimBtn" disabled>Pause Sim</button>
+        <button class="inbox-bell-btn" id="openInboxBtn" aria-label="Open GM Inbox" title="GM Inbox">
+          <svg class="ui-icon" aria-hidden="true"><use href="#icon-inbox"></use></svg><span id="inboxBadge" class="inbox-badge" hidden>0</span>
+        </button>
+        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme" aria-label="Switch between light and dark theme">◐</button>
+        <button id="backSetupBtn" data-testid="back-setup-btn">Main Menu</button>
+        <span id="statusChip" data-testid="status-chip" class="chip">Loading...</span>
+      </div>
+    </header>
+
+    <!-- ── Beat Reporter News Ticker ─────────────────────────────────── -->
+    <div id="newsTicker" class="news-ticker" hidden aria-live="polite">
+      <span class="news-ticker-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-news"></use></svg></span>
+      <div id="newsTickerContent" class="news-ticker-content">No league news yet.</div>
+      <button class="news-ticker-close" id="closeNewsTickerBtn" aria-label="Close ticker">✕</button>
+    </div>
+
+    <section id="simCheckpointPanel" class="sim-checkpoint-panel" hidden aria-live="polite" aria-label="Simulation checkpoint">
+      <div>
+        <div class="sim-checkpoint-kicker">Fast Simulation Digest</div>
+        <strong id="simCheckpointTitle">Simulation checkpoint reached</strong>
+        <p id="simCheckpointReason"></p>
+        <ul id="simCheckpointDigest"></ul>
+      </div>
+      <div class="sim-checkpoint-actions">
+        <button id="resumeSimBtn" type="button">Resolve &amp; Resume</button>
+        <button id="dismissSimCheckpointBtn" type="button" class="secondary">Stay Paused</button>
+      </div>
+    </section>
+
+    <div id="mobileNavScrim" class="mobile-nav-scrim" aria-hidden="true"></div>
+
+    <svg class="brand-icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="icon-desk" viewBox="0 0 24 24"><path d="M3 19h18M5 19V9h14v10M8 9V5h8v4M9 13h6M11 16h2"/></symbol>
+      <symbol id="icon-stats" viewBox="0 0 24 24"><path d="M4 20h16M6 17v-5h3v5M11 17V5h3v12M16 17V9h3v8"/></symbol>
+      <symbol id="icon-league" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c-3 4-3 12 0 16M12 4c3 4 3 12 0 16"/></symbol>
+      <symbol id="icon-roster" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 20v-2c0-3 3-5 7-5s7 2 7 5v2H5Z"/></symbol>
+      <symbol id="icon-market" viewBox="0 0 24 24"><path d="M4 8h16v12H4zM3 8l2-4h14l2 4M8 12h8M12 9v7"/></symbol>
+      <symbol id="icon-depth" viewBox="0 0 24 24"><path d="M5 5h14v14H5zM8 9h8M8 12h8M8 15h5"/></symbol>
+      <symbol id="icon-contracts" viewBox="0 0 24 24"><path d="M6 3h9l3 3v15H6zM15 3v4h4M9 11h6M9 15h6M9 18h4"/></symbol>
+      <symbol id="icon-trades" viewBox="0 0 24 24"><path d="M4 8h15l-3-3M19 8l-3 3M20 16H5l3-3M5 16l3 3"/></symbol>
+      <symbol id="icon-scouting" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M7 10h6M10 7v6"/></symbol>
+      <symbol id="icon-draft" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.2.9-4.5 4.4 1.1 6.2L12 17.2l-5.5 2.9 1.1-6.2-4.5-4.4 6.2-.9z"/></symbol>
+      <symbol id="icon-log" viewBox="0 0 24 24"><path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h5"/></symbol>
+      <symbol id="icon-history" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-7.5 5M4 4v5h5M12 7v5l3 2"/></symbol>
+      <symbol id="icon-boardroom" viewBox="0 0 24 24"><path d="M4 19h16M6 19V9l6-4 6 4v10M9 12h6M10 19v-4h4v4"/></symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+      <symbol id="icon-inbox" viewBox="0 0 24 24"><path d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5zM10 20h4"/></symbol>
+      <symbol id="icon-trophy" viewBox="0 0 24 24"><path d="M7 4h10v7a5 5 0 0 1-10 0zM7 6H4v3a4 4 0 0 0 4 4m9-7h3v3a4 4 0 0 1-4 4M12 16v4m-4 0h8"/></symbol>
+      <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="19" r="2"/><path d="m8 11 8-5M8 13l8 5"/></symbol>
+      <symbol id="icon-warning" viewBox="0 0 24 24"><path d="m12 3 10 18H2zM12 9v5m0 3v1"/></symbol>
+      <symbol id="icon-news" viewBox="0 0 24 24"><path d="M4 8h16v10H4zM7 5h10M7 11h5M7 14h10M15 11h2"/></symbol>
+    </svg>
+
+    <main class="game-shell">
+      <aside id="sideMenu" class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
+        <div class="menu-group" data-menu-group="desk"><div class="menu-group-header">Desk</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-desk"><svg class="ui-icon" aria-hidden="true"><use href="#icon-desk"></use></svg><span>Desk</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-desk" class="menu-group-links">
+          <button id="tab-overview" class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview" role="tab" aria-selected="true" aria-controls="overviewTab" tabindex="0"><svg class="ui-icon" aria-hidden="true"><use href="#icon-desk"></use></svg><span>Desk</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="team"><div class="menu-group-header">Team</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-team"><svg class="ui-icon" aria-hidden="true"><use href="#icon-roster"></use></svg><span>Team</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-team" class="menu-group-links">
+          <button id="tab-roster" class="menu-btn" data-tab="rosterTab" data-testid="tab-roster" role="tab" aria-selected="false" aria-controls="rosterTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-roster"></use></svg><span>Team</span></button>
+          <button id="tab-contracts" class="menu-btn" data-tab="contractsTab" data-testid="tab-contracts" role="tab" aria-selected="false" aria-controls="contractsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-contracts"></use></svg><span>Contracts</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="market"><div class="menu-group-header">Market</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-market"><svg class="ui-icon" aria-hidden="true"><use href="#icon-market"></use></svg><span>Market</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-market" class="menu-group-links">
+          <button id="tab-fa" class="menu-btn" data-tab="faTab" data-testid="tab-fa" role="tab" aria-selected="false" aria-controls="faTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-market"></use></svg><span>Free Agents</span></button>
+          <button id="tab-transactions" class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions" role="tab" aria-selected="false" aria-controls="transactionsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-trades"></use></svg><span>Trades</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="draft"><div class="menu-group-header">Draft</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-draft"><svg class="ui-icon" aria-hidden="true"><use href="#icon-draft"></use></svg><span>Draft</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-draft" class="menu-group-links">
+          <button id="tab-scouting" class="menu-btn" data-tab="scoutingTab" data-testid="tab-scouting" role="tab" aria-selected="false" aria-controls="scoutingTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-scouting"></use></svg><span>Scouting</span></button>
+          <button id="tab-draft" class="menu-btn" data-tab="draftTab" data-testid="tab-draft" role="tab" aria-selected="false" aria-controls="draftTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-draft"></use></svg><span>Draft</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="league"><div class="menu-group-header">League</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-league"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg><span>League</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-league" class="menu-group-links">
+          <button id="tab-stats" class="menu-btn" data-tab="statsTab" data-testid="tab-stats" role="tab" aria-selected="false" aria-controls="statsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-stats"></use></svg><span>Statistics</span></button>
+          <button id="tab-calendar" class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar" role="tab" aria-selected="false" aria-controls="calendarTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg><span>League</span></button>
+          <button id="tab-log" class="menu-btn" data-tab="logTab" data-testid="tab-log" role="tab" aria-selected="false" aria-controls="logTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-log"></use></svg><span>League Log</span></button>
+          <button id="tab-history" class="menu-btn" data-tab="historyTab" data-testid="tab-history" role="tab" aria-selected="false" aria-controls="historyTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-history"></use></svg><span>Dynasty</span></button>
+        </div></div>
+        <div class="menu-group" data-menu-group="club"><div class="menu-group-header">Club</div><button class="menu-group-toggle" type="button" aria-expanded="false" aria-controls="menu-group-club"><svg class="ui-icon" aria-hidden="true"><use href="#icon-boardroom"></use></svg><span>Club</span><span class="menu-group-chevron" aria-hidden="true"></span></button><div id="menu-group-club" class="menu-group-links">
+          <button id="tab-boardroom" class="menu-btn" data-tab="boardroomTab" data-testid="tab-boardroom" role="tab" aria-selected="false" aria-controls="boardroomTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-boardroom"></use></svg><span>Boardroom</span></button>
+          <button id="tab-settings" class="menu-btn" data-tab="settingsTab" data-testid="tab-settings" role="tab" aria-selected="false" aria-controls="settingsTab" tabindex="-1"><svg class="ui-icon" aria-hidden="true"><use href="#icon-settings"></use></svg><span>Settings</span></button>
+          <button id="mobileCommissionerNav" class="menu-destination" type="button"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg><span>Commissioner Mode</span></button>
+        </div></div>
+      </aside>
+
+      <section class="tab-panels">
+        <section id="overviewTab" class="tab-panel active" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
+          <div class="panel overview-hero-panel">
+            <div class="overview-hero-grid">
+              <div class="overview-hero-copy">
+                <div class="brand-kicker franchise-kicker">Franchise Architect Command Deck</div>
+                <h2>Franchise Command</h2>
+                <div id="overviewTeamSpotlight" class="overview-team-spotlight">
+                  <div class="small">Select your club to review its identity, mandate, and current competitive outlook.</div>
+                </div>
+                <div id="weeklyPlanSummaryText" class="small">The weekly game plan and organizational pressure summary will appear here.</div>
+                <section id="situationalCallsCard" class="situational-calls" aria-labelledby="situationalCallsTitle" hidden></section>
+                <section id="openingContractCard" class="opening-contract-card" aria-live="polite" hidden></section>
+                <!-- S63 — the post-game podium, where the GM answers the room. -->
+                <section id="pressRoomCard" class="press-room-card" aria-live="polite" aria-label="Post-game press conference" hidden></section>
+              </div>
+              <div class="overview-hero-side">
+                <div class="row">
+                  <label>Controlled Team
+                    <select id="teamSelect" data-testid="team-select"></select>
+                  </label>
+                  <button id="refreshBtn" data-testid="refresh-btn">Refresh</button>
+                </div>
+                <div class="cards overview-summary-cards">
+                  <article><h3>Phase</h3><p id="phaseCard">-</p></article>
+                  <article><h3>Year / Week</h3><p id="yearCard">-</p></article>
+                  <article><h3>Seasons</h3><p id="seasonsCard">-</p></article>
+                  <article><h3>Cap Space</h3><p id="capCard">-</p></article>
+                  <article><h3>Dead Cap</h3><p id="deadCapCard">-</p></article>
+                  <article><h3>Team OVR</h3><p id="ovrCard">-</p></article>
+                  <article class="gm-legacy-card" id="gmLegacyCardWrap" title="Career arc across all seasons">
+                    <h3>GM Legacy <span id="gmLegacyGradeVal" class="gm-grade-badge"></span></h3>
+                    <p id="gmLegacyCard">-</p>
+                    <span id="gmLegacyLabel" class="small" style="color:var(--muted)"></span>
+                    <div id="gmMasteryPortfolio" class="gm-mastery-portfolio" aria-label="Architect mastery portfolio"></div>
+                    <div id="gmPersonaTier" class="gm-persona-tier"></div>
+                    <p id="gmReputationLabel" class="small" aria-live="polite" hidden></p>
+                  </article>
+                </div>
+                <div id="overviewPulseBar" class="overview-pulse-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- S113: one "next move" lead — the ranked calls and the Advisor's read
+               sit side by side, and the progress tracks share one rail below. -->
+          <div class="desk-lead">
+          <section id="franchiseCommandCenter" class="panel franchise-command-center" aria-live="polite"></section>
+          <section id="frontOfficeAdvisorPanel" class="panel front-office-advisor" aria-labelledby="frontOfficeAdvisorTitle" aria-live="polite" hidden>
+            <div class="franchise-command-head">
+              <div><span class="brand-kicker">Front Office Advisor</span><h3 id="frontOfficeAdvisorTitle">The room's read on this week</h3></div>
+              <span id="frontOfficeAdvisorTally" class="small">No calls scored yet</span>
+            </div>
+            <div id="frontOfficeAdvisorContent"></div>
+          </section>
+          </div>
+          <div class="desk-rail">
+          <section id="firstSeasonContract" class="panel first-season-contract" aria-labelledby="firstSeasonContractTitle" aria-live="polite" hidden>
+            <div class="franchise-command-head">
+              <div><span class="brand-kicker">First Season Contract</span><h3 id="firstSeasonContractTitle">Five things a first-year GM gets judged on</h3></div>
+              <span id="firstSeasonContractProgress" class="small">0 of 5</span>
+            </div>
+            <ol id="firstSeasonContractList" class="first-season-contract-list"></ol>
+            <div class="row compact"><button id="firstSeasonContractDismissBtn" type="button" class="btn-sm">I know the job</button></div>
+          </section>
+          <section id="trophyRoadPanel" class="panel trophy-road-panel" aria-labelledby="trophyRoadTitle">
+            <div class="trophy-road-head"><div><span class="brand-kicker">Trophy Road</span><h3 id="trophyRoadTitle">The next marks within reach</h3></div><span class="small">Real progress only</span></div>
+            <div id="trophyRoadContent" aria-live="polite"></div>
+          </section>
+          </div>
+          <section id="franchiseArchitecture" class="panel franchise-architecture" aria-labelledby="franchiseArchitectureTitle">
+            <div class="franchise-architecture-head">
+              <div><span class="brand-kicker">The Week Room</span><h3 id="franchiseArchitectureTitle">This week, this season, your legacy</h3></div>
+              <span class="small">The call that matters now; the detail when you want it</span>
+            </div>
+            <div id="franchiseArchitectureContent" aria-live="polite"></div>
+          </section>
+          <div id="tacticalFilmRoom" class="panel tactical-film-room" hidden></div>
+          <div id="gmCommitmentBoard" class="panel gm-commitment-board" hidden></div>
+
+          <!-- ── Season Preview Hype Panel ────────────────────────────────── -->
+          <div class="panel season-preview-panel" id="seasonPreviewPanel" hidden>
+            <div class="season-preview-header">
+              <span class="season-preview-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-league"></use></svg></span>
+              <div>
+                <h2 id="seasonPreviewTitle">Season Preview</h2>
+                <div class="small" id="seasonPreviewSub">Pre-season outlook and media projections.</div>
+              </div>
+            </div>
+            <div id="seasonPreviewContent" class="season-preview-grid"></div>
+          </div>
+
+          <!-- S109: standings, results, leaders, schedule, news and story feeds
+               moved to the League tab so the Desk carries decisions, not the
+               whole league. The Schedule and the Franchise Story stay here
+               because the week's game and the club's own beats are the Desk. -->
+          <div class="panel split">
+            <div>
+              <h2>Schedule</h2>
+              <div class="row compact">
+                <button id="prevScheduleWeekBtn" data-testid="prev-schedule-week-btn">Prev Week</button>
+                <button id="nextScheduleWeekBtn" data-testid="next-schedule-week-btn">Next Week</button>
+                <span id="scheduleWeekText" class="small"></span>
+              </div>
+              <div id="rivalryStrip" hidden></div>
+              <div id="rivalCoachIntelContainer" hidden></div>
+              <div class="table-wrap"><table id="scheduleTable" data-testid="schedule-table"></table></div>
+              <div id="weeklyPredictionsPanel" class="weekly-predictions-mount" aria-live="polite" data-testid="weekly-predictions-panel"></div>
+            </div>
+            <div>
+              <h2>Roster Needs</h2>
+              <div class="table-wrap"><table id="needsTable" data-testid="needs-table"></table></div>
+              <h3>Injuries / Suspensions</h3>
+              <div id="injuryOverlayCard" hidden></div>
+              <div class="table-wrap"><table id="injuryTable" data-testid="injury-table"></table></div>
+              <section id="rehabCommandCenter" class="rehab-command-center" aria-live="polite" hidden></section>
+            </div>
+          </div>
+
+          <div class="panel" id="narrativePanel">
+            <div class="narrative-panel-header">
+              <h2>Franchise Story</h2>
+              <span class="narrative-panel-kicker">Live events from your simulation</span>
+            </div>
+            <div id="narrativeEventsFeed" class="narrative-feed">
+              <div class="narrative-empty">Simulate weeks to generate franchise story events.</div>
+            </div>
+          </div>
+
+          <!-- ── Owner Ultimatum Banner ──────────────────────────────────── -->
+          <div id="ownerUltimatumBanner" hidden></div>
+
+          <!-- ── World-State Pulse Row (Fan Sentiment, Stat Leaders). S113: injuries
+               live once, beside Roster Needs, instead of three times on the Desk. ─ -->
+          <div class="panel split">
+            <div>
+              <h3>Fan Pulse</h3>
+              <div id="fanSentimentCard" hidden></div>
+            </div>
+            <div>
+              <h3>Stat Leaders</h3>
+              <div id="statLeadersStrip" hidden></div>
+            </div>
+          </div>
+
+          <div class="panel" id="tradeDeadlinePanel" hidden>
+            <div class="trade-deadline-alert">
+              <span class="trade-deadline-icon">&#9874;</span>
+              <div>
+                <strong>Trade Deadline Active</strong>
+                <div class="small" id="tradeDeadlineStatus">Deadline approaching — evaluate your roster.</div>
+              </div>
+              <div id="tradeDeadlineBuyerSeller" class="trade-deadline-role"></div>
+            </div>
+            <div id="tradeDeadlineFrenzy"></div>
+          </div>
+
+          <details class="panel desk-more">
+            <summary><span class="brand-kicker">Bring your own AI</span> Co-GM Brief</summary>
+            <section id="coGmBriefPanel" aria-labelledby="coGmBriefTitle">
+              <div class="franchise-command-head">
+                <div><h3 id="coGmBriefTitle">Co-GM Brief</h3></div>
+                <span id="coGmBriefStatus" class="small">Your franchise this week</span>
+              </div>
+              <div id="coGmBriefContent" aria-live="polite"></div>
+              <div class="row compact">
+                <button id="coGmCopyBtn" type="button" class="btn-sm">Copy for your AI assistant</button>
+                <button id="coGmDownloadBtn" type="button" class="btn-sm">Download brief</button>
+              </div>
+              <p class="small muted">Paste this into any AI chat for a second opinion. It contains only your franchise summary: no save file, passwords, full ratings, personal details, or hidden simulation data. The game itself never calls an AI service.</p>
+            </section>
+          </details>
+
+        </section>
+
+        <section id="rosterTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-roster" tabindex="0">
+          <nav class="team-mode-switch" aria-label="Team workspace">
+            <button type="button" data-team-mode="rosterTab" aria-pressed="true">Roster</button>
+            <button type="button" data-team-mode="depthTab" aria-pressed="false">Depth Chart</button>
+          </nav>
+          <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Roster Window Map</h2>
+              <span class="narrative-panel-kicker">Age curve × potential × contract horizon</span>
+            </div>
+            <div id="rosterWindowSummary" class="small">Load a roster to map rising rooms and succession pressure.</div>
+            <div class="table-wrap"><table id="rosterWindowTable" data-testid="roster-window-table"></table></div>
+          </div>
+          <div class="panel">
+            <h2>Roster</h2>
+            <div class="row">
+              <label>Team <select id="rosterTeamSelect"></select></label>
+              <button id="loadRosterBtn" data-testid="load-roster-btn">Load Roster</button>
+            </div>
+            <div class="row">
+              <label>Pos
+                <select id="rosterPosFilter">
+                  <option value="">ALL</option>
+                  <option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>OL</option>
+                  <option>DL</option><option>LB</option><option>DB</option><option>K</option><option>P</option>
+                </select>
+              </label>
+              <label>Min OVR <input id="rosterMinOverallFilter" type="number" min="0" max="99" /></label>
+              <label>Min Age <input id="rosterMinAgeFilter" type="number" min="18" max="45" /></label>
+              <label>Max Age <input id="rosterMaxAgeFilter" type="number" min="18" max="45" /></label>
+            </div>
+            <div class="row">
+              <span id="designationSelectedPlayerText" class="chip">Selected: None</span>
+              <label>Designation
+                <select id="designationType">
+                  <option value="gameDayInactive">Game-Day Inactive</option>
+                  <option value="ir">Injured Reserve (IR)</option>
+                  <option value="ps-injured">Practice Squad/Injured</option>
+                  <option value="pup">Physically Unable to Perform (PUP)</option>
+                  <option value="nfi">Non-Football Injury (NFI)</option>
+                </select>
+              </label>
+              <button id="applyDesignationBtn" disabled>Apply Designation</button>
+              <button id="clearDesignationBtn" class="warn" disabled>Clear Designation</button>
+              <button id="beginReservePracticeBtn" disabled>Begin Return Practice</button>
+            </div>
+            <label class="small reserve-return-option"><input id="reserveReturnEligible" type="checkbox" checked /> Eligible to return this season. Uncheck for a season-ending placement.</label>
+            <p id="reserveDesignationGuidance" class="small" role="status"
+              data-active-ready="Healed with an active-roster opening; activation is available."
+              data-practice-ready="Healed with an eligible practice-squad opening; return is available."
+              data-practice-pay="Weekly practice terms remain in place; qualifying injury pay continues. This returns the player to practice, without an active-contract promotion."
+              data-legacy="This legacy reserve placement has no verified return history. A flag alone cannot establish eligibility."
+              data-practice-placement="Practice Squad/Injured requires a recorded injury and frees a practice place while retaining weekly contract terms and qualifying injury pay. Return requires healing, an eligible practice-squad opening and the reserve return process. To Active is a separate permanent promotion."
+              data-active-placement="Reserve placement requires a recorded injury and frees an active-roster place while retaining salary. PUP requires preseason physical and practice history; NFI requires a recorded non-football origin.">Select a player to view reserve eligibility. Reserve placement requires a recorded injury; salary remains charged.</p>
+            <div class="small">Use Select in the roster table to choose a player for designation changes.</div>
+            <p id="practiceRosterGuidance" class="small">Practice players use separate weekly contracts. To move an active player to practice, release him first, wait for any required waivers to clear, then sign him from Free Agents. To Active is a permanent promotion and requires a roster opening and cap room.</p>
+            <p class="small">Elevate for Game keeps the practice contract and adds eligibility for the scheduled game. Review compensation and cap room before confirming; the player returns to practice after the game.</p>
+            <section id="standardElevationCard" class="standard-elevation-card" aria-labelledby="standardElevationTitle" hidden>
+              <h3 id="standardElevationTitle">Game elevation</h3>
+              <div id="standardElevationSummary" role="status"></div>
+              <div class="row">
+                <button id="confirmStandardElevationBtn">Confirm Game Elevation</button>
+                <button id="cancelStandardElevationBtn">Cancel</button>
+              </div>
+            </section>
+            <section id="injurySalaryClaimsCard" class="standard-elevation-card" aria-labelledby="injurySalaryClaimsTitle" hidden>
+              <h3 id="injurySalaryClaimsTitle">Retained injury salary claims</h3>
+              <p class="small">Review claims owed by this club, including former players. Settlement resolves salary only; injury recovery, employment and separate benefit review remain unchanged.</p>
+              <div id="injurySalaryClaimsList"></div>
+            </section>
+            <div class="table-wrap"><table id="rosterTable" data-testid="roster-table"></table></div>
+          </div>
+
+          <!-- ── Veteran Mentorship Panel ────────────────────────────────── -->
+          <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Veteran Mentorship</h2>
+              <span class="narrative-panel-kicker">Veterans accelerate young player development each offseason</span>
+            </div>
+            <div id="mentorshipPanel"><div class="narrative-empty">Load roster to see mentorship pairings.</div></div>
+          </div>
+        </section>
+
+        <section id="faTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-fa" tabindex="0">
+          <div class="panel">
+            <h2>Free Agents</h2>
+            <div class="row">
+              <label>Position
+                <select id="faPositionFilter">
+                  <option value="">ALL</option>
+                  <option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>OL</option>
+                  <option>DL</option><option>LB</option><option>DB</option><option>K</option><option>P</option>
+                </select>
+              </label>
+              <button id="loadFaBtn" data-testid="load-fa-btn">Load Pool</button>
+            </div>
+            <div class="row compact">
+              <label>Min OVR <input id="faMinOverallFilter" type="number" min="0" max="99" /></label>
+              <label>Min Age <input id="faMinAgeFilter" type="number" min="18" max="45" /></label>
+              <label>Max Age <input id="faMaxAgeFilter" type="number" min="18" max="45" /></label>
+            </div>
+            <div id="faMarketBanner" class="chip" hidden>Market stage loading…</div>
+            <p id="practiceSigningGuidance" class="small">Sign to practice uses the player's scheduled weekly rate for the remaining regular-season weeks, with no signing bonus or guarantee. Practice squads permit 16 players, subject to service limits. Players awaiting waivers must clear before signing. Premium players pursue active-roster offers.</p>
+            <div class="table-wrap"><table id="faTable" data-testid="fa-table"></table></div>
+          </div>
+          <div class="panel">
+            <h2>Waiver Wire</h2>
+            <div class="table-wrap"><table id="waiverTable" data-testid="waiver-table"></table></div>
+          </div>
+        </section>
+
+        <section id="depthTab" class="tab-panel" role="tabpanel" aria-label="Depth Chart" tabindex="0">
+          <nav class="team-mode-switch" aria-label="Team workspace">
+            <button type="button" data-team-mode="rosterTab" aria-pressed="false">Roster</button>
+            <button type="button" data-team-mode="depthTab" aria-pressed="true">Depth Chart</button>
+          </nav>
+          <div class="panel">
+            <h2>Depth Chart</h2>
+            <div class="row">
+              <label>Team <select id="depthTeamSelect"></select></label>
+              <label>Position
+                <select id="depthPositionSelect">
+                  <option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>OL</option>
+                  <option>DL</option><option>LB</option><option>DB</option><option>K</option><option>P</option>
+                </select>
+              </label>
+              <button id="loadDepthBtn" data-testid="load-depth-btn">Load Depth</button>
+            </div>
+            <div class="row">
+              <span id="depthStatusText" class="chip">Use move controls to change playing-time order</span>
+              <button id="saveDepthBtn" data-testid="save-depth-btn">Save Depth Chart</button>
+            </div>
+            <div class="small">Automatic shares blend overall, potential, scheme fit, morale, personnel packages, and depth intent. Healthy QB1, K1, and P1 own 100% of their role; backups inherit it while the starter is unavailable. Other rooms can still use manual targets.</div>
+            <div class="table-wrap"><table id="depthTable" data-testid="depth-table"></table></div>
+          </div>
+        </section>
+
+        <section id="transactionsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-transactions" tabindex="0">
+          <div class="panel league-identity" aria-label="Your club in the trade market">
+            <div class="overview-team-crest" data-trade-team-crest aria-hidden="true"></div>
+            <div><span class="narrative-panel-kicker">Your club at the market</span><strong id="tradeTeamIdentityLabel">Trade context</strong></div>
+          </div>
+          <div class="panel" id="inboundTradeOffersPanel">
+            <div class="narrative-panel-header">
+              <h2>Incoming Trade Offers</h2>
+              <span class="narrative-panel-kicker" id="inboundTradeOffersKicker">Rival front offices call — answer or let the window close.</span>
+            </div>
+            <div id="inboundTradeOffersList" class="inbound-offers-list">
+              <div class="narrative-empty">No rival offers on the table this week.</div>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>Trades</h2>
+            <div class="row">
+              <label>Team A <select id="tradeTeamA"></select></label>
+              <label>Team B <select id="tradeTeamB"></select></label>
+              <button id="clearTradePackageBtn">Clear Packages</button>
+            </div>
+            <div class="row">
+              <span id="tradeSelectedAText" class="chip">Team A Assets: None</span>
+              <span id="tradeSelectedBText" class="chip">Team B Assets: None</span>
+            </div>
+            <div class="row">
+              <button id="evaluateTradeBtn">Evaluate Trade</button>
+              <button id="tradeBtn" data-testid="trade-btn">Execute Trade</button>
+              <span id="tradeEvalText" class="small">Use evaluate to see cap/value impact.</span>
+            </div>
+            <div class="cards">
+              <article><h3>Fairness</h3><p id="tradeFairnessScore">-</p></article>
+              <article><h3>Team A Cap Change</h3><p id="tradeCapDeltaA">-</p></article>
+              <article><h3>Team B Cap Change</h3><p id="tradeCapDeltaB">-</p></article>
+            </div>
+            <!-- ── Trade Breakdown Card (Session 8) ──────────────────────── -->
+            <div id="tradeBreakdownCard" hidden></div>
+          </div>
+
+          <div class="panel split">
+            <div>
+              <h3>Team A Package Board</h3>
+              <div class="table-wrap"><table id="tradeTeamARosterTable" data-testid="trade-team-a-table"></table></div>
+            </div>
+            <div>
+              <h3>Team B Package Board</h3>
+              <div class="table-wrap"><table id="tradeTeamBRosterTable" data-testid="trade-team-b-table"></table></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Draft Pick Assets</h3>
+            <div class="table-wrap"><table id="pickAssetsTable" data-testid="trade-picks-table"></table></div>
+          </div>
+
+          <div class="panel">
+            <h2>Comeback Targets</h2>
+            <div class="row">
+              <label>Position
+                <select id="retiredPosFilter">
+                  <option value="">ALL</option>
+                  <option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>OL</option>
+                  <option>DL</option><option>LB</option><option>DB</option><option>K</option><option>P</option>
+                </select>
+              </label>
+              <label>Min OVR <input id="retiredMinOverallFilter" type="number" min="0" max="99" /></label>
+              <label>Min Age <input id="retiredMinAgeFilter" type="number" min="20" max="60" /></label>
+              <label>Max Age <input id="retiredMaxAgeFilter" type="number" min="20" max="60" /></label>
+              <button id="loadRetiredBtn">Load Retired Pool</button>
+            </div>
+            <div class="row">
+              <span id="retirementOverrideSelectedPlayerText" class="chip">Selected: None</span>
+              <label>Team <select id="retirementOverrideTeamSelect"></select></label>
+              <label>Min Team Win %
+                <input id="retirementOverrideWinPct" type="number" step="0.01" value="0.55" min="0.30" max="0.90" />
+              </label>
+              <button id="retirementOverrideBtn" disabled>Convince Comeback</button>
+            </div>
+            <div class="small">Use Select in the retired table to choose a comeback target.</div>
+            <div class="table-wrap"><table id="retiredTable"></table></div>
+          </div>
+        </section>
+
+        <section id="contractsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-contracts" tabindex="0">
+          <div class="panel control-hero-panel contracts-hero-panel">
+            <div class="control-hero-grid">
+              <div class="control-hero-copy">
+                <div class="brand-kicker">Contract Operations</div>
+                <h2>Cap Command</h2>
+                <div id="contractsSpotlight" class="control-spotlight">
+                  <div class="small">Select a team or player to load cap posture, negotiation leverage, and action context.</div>
+                </div>
+                <div class="small" id="contractPreviewText">Select a player row to stage a contract action or queue a trade package.</div>
+              </div>
+              <div class="control-hero-side">
+                <div class="row">
+                  <label>Team <select id="contractsTeamSelect"></select></label>
+                  <button id="loadContractsBtn">Load Contracts</button>
+                  <span id="contractsSelectedPlayerText" class="chip">Selected: None</span>
+                </div>
+                <div class="cards">
+                  <article><h3>Cap Space</h3><p id="contractsCapSpaceCard">-</p></article>
+                  <article><h3>Active Cap</h3><p id="contractsActiveCapCard">-</p></article>
+                  <article><h3>Dead Cap</h3><p id="contractsDeadCapCard">-</p></article>
+                  <article><h3>Avg Salary</h3><p id="contractsAvgSalaryCard">-</p></article>
+                  <article><h3>Avg Years Left</h3><p id="contractsAvgYearsCard">-</p></article>
+                  <article><h3>Trade Block</h3><p id="contractsTradeBlockCard">-</p></article>
+                </div>
+                <div id="contractsPulseBar" class="control-pulse-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Contract Actions</h2>
+            <div class="row">
+              <label>Years <input id="contractYearsInput" type="number" value="3" min="1" max="5" /></label>
+              <label>Salary <input id="contractSalaryInput" type="number" placeholder="optional" /></label>
+              <button id="contractsResignBtn" data-testid="resign-btn">Re-sign</button>
+              <button id="contractsNegotiateBtn">Negotiate</button>
+              <button id="contractsRestructureBtn" data-testid="restructure-btn">Restructure</button>
+            </div>
+            <div class="row">
+              <button id="franchiseTagBtn" data-testid="franchise-tag-btn">Apply Tag</button>
+              <button id="fifthOptionBtn" data-testid="fifth-option-btn">Exercise Option</button>
+              <button id="contractsTradeBtn">Trade Player</button>
+              <button id="contractsTradeBlockBtn">Toggle Trade Block</button>
+            </div>
+            <div id="contractActionText" class="small">Negotiations can now be accepted, rejected, or countered and affect morale/motivation.</div>
+          </div>
+
+          <div class="panel">
+            <h2>Team Contract Board</h2>
+            <div class="table-wrap"><table id="contractsRosterTable"></table></div>
+          </div>
+
+          <div class="panel split">
+            <div>
+              <h2>Negotiation Targets</h2>
+              <div class="table-wrap"><table id="negotiationTable"></table></div>
+            </div>
+            <div>
+              <h2>Trade Block</h2>
+              <div class="table-wrap"><table id="tradeBlockTable"></table></div>
+            </div>
+          </div>
+
+          <div class="panel split">
+            <div>
+              <h3>Tag Eligible</h3>
+              <div class="table-wrap"><table id="tagEligibleTable" data-testid="tag-eligible-table"></table></div>
+            </div>
+            <div>
+              <h3>Option Eligible</h3>
+              <div class="table-wrap"><table id="optionEligibleTable" data-testid="option-eligible-table"></table></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Expiring Contracts</h2>
+            <div class="table-wrap"><table id="expiringTable" data-testid="expiring-table"></table></div>
+          </div>
+
+          <!-- ── Cap Alert Banner ────────────────────────────────────────── -->
+          <div id="capAlertBanner" class="hidden"></div>
+
+          <!-- ── Cap Casualty Predictor ──────────────────────────────────── -->
+          <div class="panel" id="capCasualtyPanel">
+            <div class="narrative-panel-header">
+              <h2>Cap Casualty Predictor</h2>
+              <span class="narrative-panel-kicker">Players most at risk of pre-season cut</span>
+            </div>
+            <div class="row compact">
+              <label>Team <select id="capCasualtyTeamSelect"></select></label>
+              <button id="runCapCasualtyBtn">Run Analysis</button>
+            </div>
+            <div id="capCasualtyContent" class="cap-casualty-list">
+              <div class="narrative-empty">Choose a team and run to see cut risk analysis.</div>
+            </div>
+          </div>
+
+          <!-- ── Multi-Year Cap Projection ──────────────────────────────── -->
+          <div class="panel" id="capProjectionPanel">
+            <div class="narrative-panel-header">
+              <h2>3-Year Cap Projection</h2>
+              <span class="narrative-panel-kicker">Obligations + expiring + projected space</span>
+            </div>
+            <div class="row compact">
+              <!-- S101: this carried a permanently empty team dropdown. The
+                   projection is derived from the controlled club's cap summary,
+                   so a team selector promised a capability the panel does not
+                   have; the control is removed rather than faked. -->
+              <button id="runCapProjectionBtn">Calculate</button>
+            </div>
+            <div id="capProjectionContent" class="cap-projection-bars">
+              <div class="narrative-empty">Run to see 3-year cap outlook.</div>
+            </div>
+          </div>
+
+          <!-- ── Cap War Room (Session 8) ──────────────────────────────── -->
+          <div class="panel" id="capWarRoomPanel" hidden>
+            <div class="narrative-panel-header">
+              <h2>Cap War Room</h2>
+              <span class="narrative-panel-kicker">4-year cap trajectory · color-coded risk zones</span>
+            </div>
+            <div id="capWarRoomBars"></div>
+            <div id="capWarRoomHint"></div>
+          </div>
+        </section>
+
+        <section id="scoutingTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-scouting" tabindex="0">
+          <div class="panel control-hero-panel scouting-hero-panel">
+            <div class="control-hero-grid">
+              <div class="control-hero-copy">
+                <div class="brand-kicker">Draft Intelligence</div>
+                <h2>Scouting Room</h2>
+                <div id="scoutingSpotlight" class="control-spotlight">
+                  <div class="small">Load the board to surface confidence, scheme fit, and board pressure.</div>
+                </div>
+              </div>
+              <div class="control-hero-side">
+                <div class="cards">
+                  <article><h3>Weekly Points</h3><p id="scoutingPointsCard">-</p></article>
+                  <article><h3>Board Slots</h3><p id="scoutingBoardCard">-</p></article>
+                  <article><h3>Board State</h3><p id="scoutingLockCard">-</p></article>
+                  <article><h3>Top Prospect</h3><p id="scoutingTopProspectCard">-</p></article>
+                </div>
+                <div id="scoutingPulseBar" class="control-pulse-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Scouting</h2>
+            <div class="row">
+              <button id="loadScoutingBtn" data-testid="load-scouting-btn">Load Scouting Board</button>
+              <span id="scoutingPointsText" class="chip">Points: 0</span>
+              <span id="scoutingLockText" class="chip">Board: Unlocked</span>
+            </div>
+            <div class="row">
+              <label>Points <input id="scoutPointsInput" type="number" value="10" /></label>
+              <span id="scoutingBoardText" class="chip">Board: 0 / 20</span>
+              <button id="lockBoardBtn" data-testid="lock-board-btn">Lock Board</button>
+            </div>
+            <div class="small">Use the table buttons to scout prospects and build a top-20 board without typing raw IDs.</div>
+            <div id="scoutingInsightText" class="small">Load the board to surface fit, confidence, and weekly scouting guidance.</div>
+            <div class="table-wrap"><table id="scoutingTable" data-testid="scouting-table"></table></div>
+            <h3>Weekly Scouting Report</h3>
+            <div class="table-wrap"><table id="scoutingReportTable" data-testid="scouting-report-table"></table></div>
+          </div>
+
+          <!-- ── AI GM Archetypes (Session 8) ──────────────────────────── -->
+          <div class="panel" id="teamArchetypesPanel">
+            <div class="narrative-panel-header">
+              <h2>League GM Archetypes</h2>
+              <span class="narrative-panel-kicker">How rival front offices think and act</span>
+            </div>
+            <div class="table-wrap"><table id="teamArchetypesTable"></table></div>
+          </div>
+        </section>
+
+        <section id="draftTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-draft" tabindex="0">
+          <!-- ── Draft Combine Panel ───────────────────────────────────────── -->
+          <div class="panel" id="draftCombinePanel">
+            <div class="narrative-panel-header">
+              <h2>Draft Combine</h2>
+              <span class="narrative-panel-kicker">Pre-draft measurables — narrows scouting confidence</span>
+            </div>
+            <div class="row compact">
+              <button id="runCombineBtn">Run Combine Week</button>
+              <button id="loadCombineResultsBtn">Load Results</button>
+              <span id="combineStatusText" class="chip">Combine not yet run</span>
+            </div>
+            <div id="combineResultsContent" class="table-wrap">
+              <table id="combineResultsTable"></table>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Draft Room</h2>
+            <div class="row">
+              <button id="prepareDraftBtn" data-testid="prepare-draft-btn">Prepare Draft</button>
+              <button id="cpuDraftOneBtn">Sim One Pick</button>
+              <button id="cpuDraftBtn" data-testid="cpu-draft-btn">CPU Until User Pick</button>
+              <button id="cpuDraftAllBtn" data-testid="cpu-draft-all-btn">CPU Finish Draft</button>
+            </div>
+            <div class="row">
+              <span id="draftStatusText" class="chip">No active draft</span>
+              <span id="draftSelectedText" class="chip">Selected Prospect: None</span>
+              <button id="userPickBtn" data-testid="user-pick-btn">Draft Selected Prospect</button>
+            </div>
+            <div class="cards">
+              <article><h3>Stage</h3><p id="draftStageText">-</p></article>
+              <article><h3>On The Clock</h3><p id="draftOnClockText">-</p></article>
+              <article><h3>User Window</h3><p id="draftUserWindowText">-</p></article>
+            </div>
+            <div class="panel-inner" id="draftWarRoomPanel" hidden>
+              <div class="small">Draft pressure will appear after a draft board loads.</div>
+            </div>
+            <h3>Recent Selections</h3>
+            <div class="table-wrap"><table id="draftTable" data-testid="draft-table"></table></div>
+            <h3>Available Prospects</h3>
+            <div class="table-wrap"><table id="draftAvailableTable"></table></div>
+          </div>
+        </section>
+
+        <section id="statsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-stats" tabindex="0">
+          <div class="panel">
+            <h2>Statistics</h2>
+            <div class="row">
+              <label>Scope
+                <select id="scopeFilter">
+                  <option value="season">Player Season</option>
+                  <option value="career">Player Career</option>
+                  <option value="team">Team Season</option>
+                </select>
+              </label>
+              <label>Category
+                <select id="categoryFilter">
+                  <option value="passing">Passing</option>
+                  <option value="rushing">Rushing</option>
+                  <option value="receiving">Receiving</option>
+                  <option value="defense">Defense</option>
+                  <option value="blocking">Blocking</option>
+                  <option value="kicking">Kicking</option>
+                  <option value="punting">Punting</option>
+                  <option value="snaps">Snaps</option>
+                </select>
+              </label>
+              <label>Year <input id="yearFilter" type="number" /></label>
+              <label>Team <select id="statsTeamFilter"></select></label>
+              <label>Pos
+                <select id="positionFilter">
+                  <option value="">ALL</option>
+                  <option>QB</option><option>RB</option><option>WR</option><option>TE</option><option>OL</option>
+                  <option>DL</option><option>LB</option><option>DB</option><option>K</option><option>P</option>
+                </select>
+              </label>
+              <button id="loadStatsBtn" data-testid="load-stats-btn">Load Stats</button>
+            </div>
+            <div class="row compact">
+              <label><input id="statsVirtualizedToggle" type="checkbox" checked /> Virtualized Table</label>
+              <label>Season Type
+                <select id="statsSeasonTypeFilter">
+                  <option value="regular">Regular Season</option>
+                  <option value="playoffs">Playoffs</option>
+                  <option value="all">Combined</option>
+                </select>
+              </label>
+              <label>Compare Players <input id="comparePlayerSearchInput" type="text" placeholder="search by player name" /></label>
+              <button id="searchComparePlayersBtn">Search</button>
+              <button id="comparePlayersBtn">Compare Selected</button>
+              <span id="compareSelectedPlayersText" class="chip">Selected: 0 / 8</span>
+            </div>
+            <div class="row compact">
+              <details>
+                <summary>Column Visibility</summary>
+                <div id="statsColumnFilters" class="row compact"></div>
+              </details>
+            </div>
+            <div id="statsBenchmarkText" class="small">
+              Starter-qualified benchmark hints will update here based on the current stats filters.
+            </div>
+            <div class="row">
+              <button id="prevStatsPageBtn">Prev</button>
+              <button id="nextStatsPageBtn">Next</button>
+              <span id="statsPageText" class="small"></span>
+            </div>
+            <div class="table-wrap"><table id="statsTable" data-testid="stats-table"></table></div>
+            <div class="table-wrap"><table id="comparePlayerSearchTable" data-testid="compare-player-search-table"></table></div>
+            <div class="table-wrap"><table id="comparePlayersTable" data-testid="compare-players-table"></table></div>
+          </div>
+          <div class="panel">
+            <h2>Advanced Analytics</h2>
+            <div class="row">
+              <label>Year <input id="analyticsYearFilter" type="number" /></label>
+              <label>Team <select id="analyticsTeamFilter"></select></label>
+              <button id="loadAnalyticsBtn">Load Analytics</button>
+            </div>
+            <div class="table-wrap"><table id="analyticsSummaryTable"></table></div>
+            <div class="table-wrap"><table id="analyticsPlaymakersTable"></table></div>
+          </div>
+        </section>
+
+        <section id="calendarTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-calendar" tabindex="0">
+          <div class="panel league-identity" aria-label="Your club in the league">
+            <div class="overview-team-crest" data-league-team-crest aria-hidden="true"></div>
+            <div><span class="narrative-panel-kicker">Your club in the league</span><strong id="leagueTeamIdentityLabel">League context</strong></div>
+          </div>
+          <section id="leagueLensPanel" class="panel league-lens" aria-labelledby="leagueLensTitle" aria-live="polite" hidden></section>
+          <div class="panel split">
+            <div>
+              <h2>Standings</h2>
+              <div class="table-wrap"><table id="standingsTable" data-testid="standings-table"></table></div>
+            </div>
+            <div>
+              <h2>Week Results</h2>
+              <div class="table-wrap"><table id="weekTable" data-testid="week-table"></table></div>
+              <h3>League Leaders</h3>
+              <div class="row compact">
+                <label>Category
+                  <select id="leadersCategory" data-testid="leaders-category">
+                    <option value="passing">Passing</option>
+                    <option value="rushing">Rushing</option>
+                    <option value="receiving">Receiving</option>
+                  </select>
+                </label>
+              </div>
+              <div class="table-wrap"><table id="leadersTable" data-testid="leaders-table"></table></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>League News Feed</h2>
+            <div class="table-wrap"><table id="newsTable"></table></div>
+          </div>
+
+          <div class="panel" id="seasonArcsPanel" hidden>
+            <div class="narrative-panel-header">
+              <h2>Season Story Threads</h2>
+              <span class="narrative-panel-kicker">3 narrative arcs defining your season</span>
+            </div>
+            <div id="seasonArcsContent"></div>
+          </div>
+
+          <div class="panel split">
+            <div>
+              <h2>League Charts</h2>
+              <canvas id="analyticsChart" height="160"></canvas>
+            </div>
+            <div class="dev-only" data-dev-surface hidden aria-hidden="true">
+              <h2>Long Sim Jobs</h2>
+              <div class="row compact">
+                <label>Seasons <input id="jobSeasonsInput" type="number" value="10" min="1" max="200" /></label>
+                <button id="startSimJobBtn">Start Job</button>
+                <button id="refreshJobsBtn">Refresh Jobs</button>
+              </div>
+              <div class="table-wrap"><table id="simJobsTable"></table></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Season Calendar</h2>
+            <div class="row">
+              <label>Year <select id="calendarYearFilter"></select></label>
+              <label>Week <select id="calendarWeekFilter"></select></label>
+              <button id="loadCalendarBtn" data-testid="load-calendar-btn">Load Calendar</button>
+            </div>
+            <div class="split">
+              <div>
+                <h3>Weeks Summary</h3>
+                <div class="table-wrap"><table id="calendarWeeksTable" data-testid="calendar-weeks-table"></table></div>
+              </div>
+              <div>
+                <h3>Selected Week Games</h3>
+                <div class="table-wrap"><table id="calendarGamesTable" data-testid="calendar-games-table"></table></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <h2>Playoff Bracket</h2>
+            <div class="split">
+              <div>
+                <h3>AFC</h3>
+                <div class="table-wrap"><table id="afcBracketTable" data-testid="afc-bracket-table"></table></div>
+              </div>
+              <div>
+                <h3>NFC</h3>
+                <div class="table-wrap"><table id="nfcBracketTable" data-testid="nfc-bracket-table"></table></div>
+              </div>
+            </div>
+            <h3>Championship Game</h3>
+            <div class="table-wrap"><table id="sbBracketTable" data-testid="sb-bracket-table"></table></div>
+          </div>
+        </section>
+
+        <section id="logTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-log" tabindex="0">
+          <div class="panel">
+            <h2>Transaction Log</h2>
+            <div class="row">
+              <label>Team <select id="txTeamFilter"></select></label>
+              <label>Type
+                <select id="txTypeFilter">
+                  <option value="">ALL</option>
+                  <option value="signing">Signing</option>
+                  <option value="release">Release</option>
+                  <option value="trade">Trade</option>
+                  <option value="waiver-claim">Waiver Claim</option>
+                  <option value="waiver-award">Waiver Award</option>
+                  <option value="re-sign">Re-sign</option>
+                  <option value="restructure">Restructure</option>
+                  <option value="franchise-tag">Franchise Tag</option>
+                  <option value="fifth-year-option">5th-Year Option</option>
+                  <option value="negotiation">Negotiation</option>
+                  <option value="designation">Designation</option>
+                  <option value="fa-offer">FA Offer</option>
+                  <option value="fa-signing">FA Signing</option>
+                  <option value="staff-update">Staff Update</option>
+                  <option value="owner-update">Owner Update</option>
+                  <option value="practice-squad-move">Practice Squad</option>
+                  <option value="standard-elevation">Game Elevation</option>
+                  <option value="retirement-override">Retirement Override</option>
+                  <option value="championship">Championship</option>
+                </select>
+              </label>
+              <label>Year <input id="txYearFilter" type="number" /></label>
+              <label>Limit <input id="txLimitFilter" type="number" value="300" /></label>
+              <button id="loadTxBtn" data-testid="load-tx-btn">Load Log</button>
+            </div>
+            <div class="table-wrap"><table id="txTable" data-testid="tx-table"></table></div>
+          </div>
+        </section>
+
+        <section id="historyTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-history" tabindex="0">
+          <div class="panel control-hero-panel history-hero-panel">
+            <div class="control-hero-grid">
+              <div class="control-hero-copy">
+                <div class="brand-kicker">League Legacy Archive</div>
+                <h2>History Command</h2>
+                <div id="historySpotlight" class="control-spotlight">
+                  <div class="small">Season honors, Hall of Fame resumes, and retired numbers will load here.</div>
+                </div>
+              </div>
+              <div class="control-hero-side">
+                <div class="cards">
+                  <article><h3>Hall Inductees</h3><p id="historyHallCountCard">-</p></article>
+                  <article><h3>Retired Numbers</h3><p id="historyRetiredCountCard">-</p></article>
+                  <article><h3>Award Years</h3><p id="historyAwardYearsCard">-</p></article>
+                  <article><h3>Latest Champion</h3><p id="historyChampionCard">-</p></article>
+                </div>
+                <div id="historyPulseBar" class="control-pulse-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Offseason Development Report (Session 108) ───────────── -->
+        <div class="panel" id="offseasonDevelopmentPanel" data-testid="offseason-development-panel">
+          <div class="narrative-panel-header">
+            <h2>Offseason Development Report</h2>
+            <span class="narrative-panel-kicker">Who grew into his potential this offseason, and who did not</span>
+          </div>
+          <div id="offseasonDevelopmentSummary" class="small">Advance the retirements stage of an offseason to see your club's risers and fallers.</div>
+          <div class="table-wrap"><table id="offseasonDevelopmentTable"></table></div>
+        </div>
+
+        <!-- ── Dynasty Records Board (Session 8) ────────────────────── -->
+          <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Franchise Records Board</h2>
+              <span class="narrative-panel-kicker">All-time franchise bests — your legacy in numbers</span>
+            </div>
+            <div class="row compact">
+              <button id="loadRecordsBoardBtn">Load Records</button>
+            </div>
+            <div id="dynastyRecordsBoard"></div>
+          </div>
+
+          <div class="panel">
+            <div class="subtab-bar history-subtab-bar">
+              <button class="subtab-btn active" data-history-view="season-awards">Season Awards</button>
+              <button class="subtab-btn" data-history-view="hall-of-fame">Hall of Fame</button>
+              <button class="subtab-btn" data-history-view="decision-archive">Decision Archive</button>
+            </div>
+
+            <div id="historySeasonAwardsPanel" class="history-subpanel active">
+              <div class="split">
+                <div>
+                  <h2>Records & Annual Winners</h2>
+                  <div id="recordsBox" class="stack"></div>
+                  <details class="history-data-drawer">
+                    <summary>Open Annual Winner Tables</summary>
+                    <div class="table-wrap"><table id="awardsTable" data-testid="awards-table"></table></div>
+                    <div class="table-wrap"><table id="championsTable" data-testid="champions-table"></table></div>
+                  </details>
+                </div>
+                <div>
+                  <h2>Season Awards Detail</h2>
+                  <div class="row">
+                    <label>Award Year <select id="historyAwardYearSelect"></select></label>
+                  </div>
+                  <div id="seasonAwardsSpotlight" class="history-spotlight"></div>
+                  <div id="awardWinnerGallery" class="history-gallery compact"></div>
+                  <h3>All-Pro First Team</h3>
+                  <div id="allPro1Gallery" class="history-gallery compact"></div>
+                  <h3>All-Pro Second Team</h3>
+                  <div id="allPro2Gallery" class="history-gallery compact"></div>
+                  <h3>All-Pro Third Team</h3>
+                  <div id="allPro3Gallery" class="history-gallery compact"></div>
+                  <h3>All-Star Roster</h3>
+                  <div id="proBowlGallery" class="history-gallery compact"></div>
+                  <details class="history-data-drawer">
+                    <summary>Open Award Lookup Tables</summary>
+                    <div class="table-wrap"><table id="awardDetailTable"></table></div>
+                    <div class="table-wrap"><table id="allPro1Table"></table></div>
+                    <div class="table-wrap"><table id="allPro2Table"></table></div>
+                    <div class="table-wrap"><table id="allPro3Table"></table></div>
+                    <div class="table-wrap"><table id="proBowlTable"></table></div>
+                  </details>
+                </div>
+              </div>
+            </div>
+
+            <div id="historyHallOfFamePanel" class="history-subpanel hidden">
+              <div class="split">
+                <div>
+                  <h2>Hall Of Fame Resume</h2>
+                  <div id="hallOfFameSpotlight" class="history-spotlight"></div>
+                  <h3>Ballot Watch</h3>
+                  <div class="small">Best retired resumes still outside the Hall, ranked against your commissioner threshold.</div>
+                  <div class="table-wrap"><table id="hallOfFameBallotTable" data-testid="hall-of-fame-ballot-table"></table></div>
+                  <div id="hallOfFameGallery" class="history-gallery"></div>
+                  <h3>Franchise Legends</h3>
+                  <div id="franchiseLegendsContainer" class="history-gallery" aria-live="polite"></div>
+                  <div class="row">
+                    <label>Team <select id="teamHistorySelect"></select></label>
+                    <button id="loadTeamHistoryBtn">Load Team History</button>
+                    <button id="retireSelectedJerseyBtn" disabled>Retire Selected Player Jersey</button>
+                  </div>
+                  <div class="small">Select a player below, then choose a team they played for to retire that jersey number.</div>
+                  <div id="teamHistorySpotlight" class="history-spotlight"></div>
+                  <div id="retiredNumbersGallery" class="history-gallery compact"></div>
+                  <div class="table-wrap"><table id="teamHistoryTable" data-testid="team-history-table"></table></div>
+                </div>
+                <div>
+                  <h2>Player & Team History</h2>
+                  <div class="row">
+                    <label>Player Search <input id="playerTimelineSearchInput" type="text" placeholder="search by player name" /></label>
+                    <button id="searchPlayerTimelineBtn">Search</button>
+                    <span id="playerTimelineSelectedPlayerText" class="chip">Selected: None</span>
+                    <button id="loadPlayerTimelineBtn">Load Player History</button>
+                  </div>
+                  <div id="playerHistorySpotlight" class="history-spotlight"></div>
+                  <div class="table-wrap"><table id="playerTimelineSearchTable" data-testid="player-timeline-search-table"></table></div>
+                  <div id="playerTimelineGallery" class="history-gallery"></div>
+                  <div class="table-wrap"><table id="playerTimelineTable" data-testid="player-timeline-table"></table></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="historyDecisionArchivePanel" class="history-subpanel hidden">
+              <div class="narrative-panel-header">
+                <div>
+                  <div class="brand-kicker">General Manager Memory</div>
+                  <h2>Decision Archive</h2>
+                </div>
+                <label>Season volume
+                  <select id="decisionArchiveYearSelect" aria-label="Decision Archive season volume"></select>
+                </label>
+              </div>
+              <p class="small">Revisit the calls you actually made, the evidence stored beside them, and what remained unknown. Editorial rank is never a claim that a decision caused the result.</p>
+              <div id="decisionArchiveContent" aria-live="polite">
+                <div class="history-empty">Loading receipted decision volumes…</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+
+        <section id="boardroomTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-boardroom" tabindex="0">
+          <!-- ── BOARDROOM (S94) ──
+               Owner Controls, the Facilities Market, the Coaching Staff sheet and
+               the Brand Builder all used to live in Settings. They are not
+               settings. They spend the owner's cash, they feed the development
+               environment, injury probability and draft scouting, and after S93
+               they are one of the most consequential decisions in the game.
+
+               Filing them under Settings is not a cosmetic mistake -- it is the
+               structural reason two god-mode surfaces survived thirty sessions.
+               S63 closed the Coaching Staff panel's three free number boxes;
+               S93 closed the byte-identical Owner Facilities panel eight lines
+               away in the same file. Both lived here, in a tab that mixed
+               trophies with live economy inputs and debug tables, and that
+               nobody design-reviews as gameplay. Giving the economy its own
+               surface is what makes it get looked at. -->
+          <div class="panel boardroom-intro">
+            <div class="brand-kicker franchise-kicker">The Front Office</div>
+            <h2>Boardroom</h2>
+            <p class="small">Capital, staff and identity. Everything here is bought with the owner's money and charged against it every year afterward.</p>
+          </div>
+          <div class="panel split settings-owner-grid">
+            <div>
+              <h2>Owner Controls</h2>
+              <div id="ownerSpotlight" class="control-spotlight owner-spotlight">
+                <div class="small">Load an owner profile to review mandate, market pressure, and budget posture.</div>
+              </div>
+              <div class="row">
+                <label>Team <select id="ownerTeamSelect"></select></label>
+                <button id="loadOwnerBtn">Load Owner</button>
+              </div>
+              <div class="row">
+                <label>Ticket Price <input id="ownerTicketPriceInput" type="number" /></label>
+                <label>Staff Budget <input id="ownerStaffBudgetInput" type="number" /></label>
+              </div>
+              <div class="row">
+                <button id="saveOwnerBtn">Save Owner</button>
+              </div>
+              <h3>Facilities Market</h3>
+              <p class="small">Facility level is bought, not typed in. Each wing costs club cash, gets more expensive the higher it goes, and can only be built a few points per league year.</p>
+              <div id="facilitiesMarket" class="control-spotlight facilities-market">
+                <div class="small">Load an owner profile to review facility investment.</div>
+              </div>
+              <div class="row">
+                <label>Facility
+                  <select id="facilityInvestSelect">
+                    <option value="training">Training</option>
+                    <option value="rehab">Rehab</option>
+                    <option value="analytics">Analytics</option>
+                  </select>
+                </label>
+                <label>Points <input id="facilityInvestPoints" type="number" min="1" max="3" value="1" /></label>
+                <button id="investFacilityBtn">Break Ground</button>
+              </div>
+              <section id="operatingStatementPanel" class="operating-statement" aria-label="Operating statement" hidden></section>
+              <div class="table-wrap"><table id="ownerTable"></table></div>
+            </div>
+            <div class="panel">
+            <h2>Coaching Staff</h2>
+            <div class="row">
+              <label>Team <select id="staffTeamSelect"></select></label>
+              <label>Role
+                <select id="staffRoleSelect">
+                  <option value="headCoach">Head Coach</option>
+                  <option value="offensiveCoordinator">Offensive Coordinator</option>
+                  <option value="defensiveCoordinator">Defensive Coordinator</option>
+                  <option value="scoutingDirector">Scouting Director</option>
+                  <option value="capAnalyst">Cap Analyst</option>
+                  <option value="strengthCoach">Strength Coach</option>
+                  <option value="medicalDirector">Medical Director</option>
+                </select>
+              </label>
+              <label>Name <input id="staffNameInput" type="text" placeholder="name" /></label>
+              <button id="updateStaffBtn">Rename</button>
+            </div>
+            <!-- S63 — coaching ability is hired, not typed. The numeric editor
+                 that used to live here wrote straight into the simulation for any
+                 team, at no cost; the market below replaces it. -->
+            <section id="coachingMarketPanel" class="coaching-market" aria-label="Coaching market" aria-live="polite"></section>
+            <div class="table-wrap"><table id="staffTable"></table></div>
+            <!-- ── Coaching DNA Card ─────────────────────────────────────── -->
+            <div id="coachingDnaCard" class="coaching-dna-card" hidden>
+              <div class="coaching-dna-header">
+                <span class="coaching-dna-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-boardroom"></use></svg></span>
+                <div>
+                  <div class="coaching-dna-title">Coaching Tree DNA</div>
+                  <div class="coaching-dna-sub" id="coachingDnaSub">Load a team to see scheme lineage.</div>
+                </div>
+              </div>
+              <div id="coachingDnaBody" class="coaching-dna-body"></div>
+            </div>
+          </div>
+          </div>
+          <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Franchise Brand Builder</h2>
+              <span class="narrative-panel-kicker">Customize your franchise identity — name, city, colors</span>
+            </div>
+            <div class="brand-builder-card">
+              <div class="brand-builder-title">Custom Identity Overrides</div>
+              <div class="form-grid">
+                <label>Team Name
+                  <input id="brandNameInput" type="text" placeholder="e.g. Wolves" maxlength="30" />
+                </label>
+                <label>City
+                  <input id="brandCityInput" type="text" placeholder="e.g. Atlanta" maxlength="24" />
+                </label>
+                <label>Abbreviation (3 chars)
+                  <input id="brandAbbrevInput" type="text" placeholder="e.g. ATL" maxlength="3" />
+                </label>
+                <label>Primary Color (hex)
+                  <input id="brandPrimaryInput" type="color" value="#4f8ef7" />
+                </label>
+                <label>Secondary Color (hex)
+                  <input id="brandSecondaryInput" type="color" value="#7c5cbf" />
+                </label>
+              </div>
+              <div class="row compact" style="margin-top:10px">
+                <button id="applyBrandBtn">Apply Brand Override</button>
+                <span class="small muted">Changes apply to your controlled team's display name and color theme.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="settingsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-settings" tabindex="0">
+          <!-- ── Commissioner / Multiplayer Mode Panel ─────────────────────── -->
+          <div class="panel" id="commissionerPanel">
+            <div class="narrative-panel-header">
+              <h2>Commissioner Mode</h2>
+              <span class="narrative-panel-kicker">Async multiplayer — up to 4 GMs in one league</span>
+            </div>
+            <div id="commissionerLobbyStatus" class="commissioner-lobby-status">
+              <div class="narrative-empty">No active lobby. Create one to play with others.</div>
+            </div>
+            <div class="row compact" id="commissionerCreateRow">
+              <label>Your ID <input id="commissionerIdInput" type="text" placeholder="your name" /></label>
+              <label>League Name <input id="commissionerLeagueNameInput" type="text" placeholder="My League" /></label>
+              <label>Max GMs
+                <select id="commissionerMaxPlayersSelect">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                </select>
+              </label>
+              <button id="createLobbyBtn">Create Lobby</button>
+            </div>
+            <div class="row compact" id="commissionerJoinRow">
+              <label>Your ID <input id="joinUserIdInput" type="text" placeholder="your name" /></label>
+              <label>Team <select id="joinTeamSelect"></select></label>
+              <button id="joinLobbyBtn">Join Lobby</button>
+              <button id="markReadyBtn" disabled>Mark Ready</button>
+              <button id="advanceLobbyBtn" disabled>Force Advance (Commissioner)</button>
+            </div>
+            <div class="row compact" id="commissionerQueueRow">
+              <label>Request
+                <select id="intentTypeSelect">
+                  <option value="depth-reorder">Depth Reorder</option>
+                  <option value="restructure">Restructure</option>
+                </select>
+              </label>
+              <!-- S101: this Intent Type select had no submit control and was read
+                   by no JavaScript, while POST /api/commissioner/intent is fully
+                   implemented on both the server and the local runtime and is
+                   registered in the API contract. The control now invokes it. -->
+              <button id="queueIntentBtn">Send to Commissioner</button>
+              <button id="refreshLobbyBtn">Refresh Lobby</button>
+              <button id="disbandLobbyBtn" class="danger-text">Disband Lobby</button>
+            </div>
+          </div>
+
+          <!-- ── Speedrun Challenge ──────────────────────────────────────── -->
+          <div class="panel" id="speedrunPanel">
+            <div class="narrative-panel-header">
+              <h2>Speedrun Challenge</h2>
+              <span class="narrative-panel-kicker">Win the Championship Game in the fewest seasons possible</span>
+            </div>
+            <div id="speedrunStatus"></div>
+            <div id="speedrunActions" class="row compact" style="margin-top:10px"></div>
+            <div id="speedrunLeaderboard" style="margin-top:14px"></div>
+          </div>
+
+          <!-- ── Trophy Case + Game Feel ──────────────────────────────────── -->
+          <div class="panel" id="trophyCasePanel">
+            <div class="narrative-panel-header">
+              <h2>Trophy Case</h2>
+              <span class="narrative-panel-kicker">Permanent achievements — earned across every franchise in this browser</span>
+            </div>
+            <div id="trophyCaseContent"><div class="narrative-empty">Loading trophies...</div></div>
+            <div class="row compact" style="margin-top:12px">
+              <label><input id="soundEnabledInput" type="checkbox" checked /> Sound effects</label>
+              <label><input id="hapticsEnabledInput" type="checkbox" checked /> Haptics (mobile)</label>
+              <span class="small muted">All audio is synthesized in-browser — nothing downloads, nothing tracks.</span>
+            </div>
+          </div>
+
+          <!-- ── Franchise Brand Builder ──────────────────────────────────── -->
+          
+
+          <div class="panel control-hero-panel">
+            <div class="control-hero-grid">
+              <div class="control-hero-copy">
+                <div class="brand-kicker">League Operations</div>
+                <h2>Commissioner Deck</h2>
+                <div id="settingsSpotlight" class="control-spotlight">
+                  <div class="small">Save health, simulation policy, and runtime posture will appear here after the settings load.</div>
+                </div>
+              </div>
+            <div class="control-hero-side">
+                <div id="settingsPulseBar" class="control-pulse-bar"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="panel" id="onboardingPanel">
+            <h2>Onboarding</h2>
+            <p class="small">Skipped the Opening Contract? Declare your franchise's founding mandate any time before it's earned.</p>
+            <button id="runOpeningContractBtn" type="button">Run Opening Contract</button>
+          </div>
+          <div class="panel" id="rewindPanel">
+            <div class="narrative-panel-header">
+              <h2>Rewind Timeline</h2>
+              <span class="narrative-panel-kicker">Auto-snapshots at key decision points</span>
+            </div>
+            <div id="rewindTimelineList" class="rewind-timeline-list">
+              <div class="narrative-empty">Open this tab to load your snapshot history.</div>
+            </div>
+            <div class="row" style="margin-top:.75rem;">
+              <button id="refreshRewindBtn">Refresh Snapshots</button>
+              <button id="manualRewindSnapshotBtn" class="secondary">Take Manual Snapshot</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2>Saves & QA</h2>
+            <div class="row">
+              <label>Save Slot <input id="saveSlotInput" type="text" value="slot1" /></label>
+              <button id="saveBtn" data-testid="save-btn">Save</button>
+              <button id="loadBtn" data-testid="load-btn">Load</button>
+              <button id="deleteSaveBtn" data-testid="delete-save-btn" class="warn">Delete</button>
+              <button id="exportSnapshotBtn">Export Snapshot</button>
+              <button id="importSnapshotBtn">Import Snapshot</button>
+              <input id="snapshotImportInput" type="file" accept="application/json" hidden />
+            </div>
+            <div class="row small" id="saveListText"></div>
+            <div class="row dev-only" data-dev-surface hidden aria-hidden="true">
+              <button id="loadQaBtn" data-testid="load-qa-btn">Load QA Report</button>
+            </div>
+
+            <!-- ── GitHub Gist Cloud Sync ──────────────────────────────────── -->
+            <div class="panel cloud-sync-panel" style="margin-top:16px;">
+              <h3>Cloud Save Sync <span class="small muted">(GitHub Gist)</span></h3>
+              <p class="small muted" style="margin:6px 0 12px;">
+                Sync saves to a private GitHub Gist — play from any device.
+                Requires a GitHub Personal Access Token with <code>gist</code> scope.
+                Your token is kept only for this tab session and is removed from persistent browser storage.
+                The checksum detects accidental corruption but does not prove who changed a save; an optional passphrase adds local Web Crypto authentication, not encryption.
+              </p>
+              <div class="row compact">
+                <label style="flex:1">
+                  GitHub Token
+                  <input id="gistTokenInput" type="password" placeholder="Paste token for this tab" autocomplete="off" style="width:100%" />
+                </label>
+                <button id="gistSyncSaveTokenBtn">Use Token This Tab</button>
+              </div>
+              <div class="row compact" style="margin-top:8px;">
+                <label style="flex:1">
+                  Optional Save Passphrase
+                  <input id="gistPassphraseInput" type="password" minlength="12" placeholder="12+ characters; never stored or sent" autocomplete="new-password" style="width:100%" />
+                </label>
+              </div>
+              <div class="row compact" style="margin-top:8px;">
+                <button id="gistExportBtn">Export to Gist</button>
+                <label style="flex:1">
+                  <input id="gistIdInput" placeholder="Gist ID (auto-filled after first export)" style="width:100%" />
+                </label>
+                <button id="gistImportBtn">Import from Gist</button>
+              </div>
+              <div id="gistSyncStatus" class="small" style="margin-top:6px;color:var(--muted)"></div>
+              <div class="row compact" style="margin-top:8px;">
+                <button id="gistListBtn">List My Cloud Saves</button>
+              </div>
+              <div id="gistSaveList" style="margin-top:8px;"></div>
+            </div>
+            <div class="table-wrap dev-only" data-dev-surface hidden aria-hidden="true"><table id="qaTable" data-testid="qa-table"></table></div>
+          </div>
+          <div class="panel">
+            <h2>Commissioner Controls</h2>
+            <div class="toggle-grid">
+              <label><input id="settingAllowInjuries" type="checkbox" checked /> Allow Injuries</label>
+              <label><input id="settingAutoOffseason" type="checkbox" /> Auto Progress Offseason</label>
+              <label><input id="settingEnableOwnerMode" type="checkbox" checked /> Owner Mode</label>
+              <label><input id="settingEnableNarratives" type="checkbox" checked /> Narratives</label>
+              <label><input id="settingEnableCompPicks" type="checkbox" checked /> Comp Picks</label>
+              <label><input id="settingEnableChemistry" type="checkbox" checked /> Chemistry</label>
+              <label><input id="settingRetirementWinningRetention" type="checkbox" checked /> Winning Team Retirement Retention</label>
+              <label><input id="settingRetiredNumberRequireRetiredPlayer" type="checkbox" checked /> Retired Numbers Require Retired Players</label>
+              <label><input id="settingRetiredNumberRequireHallOfFame" type="checkbox" /> Retired Numbers Require Hall Of Fame</label>
+            </div>
+            <div class="inline-form-grid">
+              <label>Difficulty
+                <select id="settingDifficultyPreset">
+                  <option value="relaxed">Relaxed</option>
+                  <option value="standard" selected>Standard</option>
+                  <option value="hard">Hard</option>
+                  <option value="brutal">Brutal</option>
+                </select>
+              </label>
+              <label><input id="settingAdaptiveDifficulty" type="checkbox" /> Adaptive League (bounded, announced)</label>
+              <label>Injury Rate Multiplier <input id="settingInjuryRate" type="number" step="0.1" value="1" /></label>
+              <label>Cap Growth Rate <input id="settingCapGrowth" type="number" step="0.005" value="0.045" /></label>
+              <label>CPU Trade Aggression <input id="settingTradeAggression" type="number" step="0.05" value="0.5" /></label>
+              <label>Retirement Override Min Win %
+                <input id="settingRetirementMinWinPct" type="number" step="0.01" min="0.30" max="0.90" value="0.55" />
+              </label>
+              <label>Hall Of Fame Induction Score
+                <input id="settingHallOfFameInductionScoreMin" type="number" step="5" min="120" max="800" value="450" />
+              </label>
+              <label>Hall Of Fame Class Size
+                <input id="settingHallOfFameMaxClassSize" type="number" step="1" min="1" max="40" value="6" />
+              </label>
+              <label>Hall Of Fame Years Retired
+                <input id="settingHallOfFameYearsRetiredMin" type="number" step="1" min="0" max="10" value="0" />
+              </label>
+              <label>Retired Number Career AV Floor
+                <input id="settingRetiredNumberCareerAvMin" type="number" step="5" min="0" max="200" value="0" />
+              </label>
+              <label>Era
+                <select id="settingEraProfile">
+                  <option value="modern">Modern</option>
+                  <option value="balanced">Balanced</option>
+                  <option value="legacy">Legacy</option>
+                </select>
+              </label>
+              <button id="saveSettingsBtn">Save Settings</button>
+            </div>
+          </div>
+          
+          
+
+          <!-- ── Mobile & Community Links ──────────────────────────────────── -->
+          <div class="panel">
+            <h2>Mobile &amp; Community</h2>
+            <div class="row compact" style="flex-wrap:wrap;gap:1rem;">
+              <label>
+                <input type="checkbox" id="mobileLoopToggle" />
+                Enable Mobile Core Loop Mode
+              </label>
+              <a href="https://discord.gg/vaultspark" target="_blank" rel="noopener noreferrer"
+                 class="btn-discord" id="discordLink">
+                🎮 Join the VaultSpark Discord
+              </a>
+              <button id="shareDynastyBtn">📤 Share My Dynasty Timeline</button>
+              <button id="leagueStoryCardBtn">🗞️ League Story Card</button>
+              <button id="franchiseNewsletterBtn">📰 Season Newsletter</button>
+            </div>
+            <div class="small" style="color:var(--muted);margin-top:.5rem;">
+              Mobile mode shows a simplified daily-decision view optimized for narrow screens.
+              Dynasty share generates a downloadable HTML card of your franchise history.
+              League Story Card downloads a season snapshot with the champion, leaders, cap, legacy, and how your predictions held up.
+              Season Newsletter generates a shareable season-end card with headlines, GM legacy, and quotes.
+            </div>
+            <div id="dynastyTimelineContainer" style="margin-top:1rem;" aria-live="polite"></div>
+          </div>
+        <div class="panel dev-only" data-dev-surface hidden aria-hidden="true">
+            <!-- ── DEVELOPER DIAGNOSTICS (S94) ──
+                 Launch Readiness, System Health, the 10-20 year Realism
+                 Verification runner, League Progression Parity, Finite-Number
+                 Integrity and the Offseason Pipeline shipped to every consumer,
+                 ungated, inside the Settings tab. One of them offers a "Run
+                 Verification" button with a seasons input accepting up to 30,
+                 which a curious player can use to lock the tab on a long
+                 synchronous run.
+
+                 They are genuinely useful and they are not for players. They now
+                 require ?dev=1. The player-facing answer to "is this simulation
+                 honest?" is /simulation.html, which publishes the same anchor
+                 these panels verify against, in language written for a reader
+                 rather than for a maintainer. -->
+            <div class="dev-surface-banner">Developer diagnostics · enabled by <code>?dev=1</code></div>
+            <div class="panel" id="launchReadinessPanel">
+            <h2>Launch Readiness</h2>
+            <div class="table-wrap"><table id="launchReadinessTable"></table></div>
+          </div>
+            <div>
+              <h2>System Health</h2>
+              <div class="row compact">
+                <button id="loadObservabilityBtn">Load Metrics</button>
+                <button id="loadPersistenceBtn">Persistence Info</button>
+                <button id="runCalibrationJobBtn">Run Calibration Job</button>
+                <button id="retryClientDiagnosticsBtn" type="button">Retry Degraded Panels</button>
+                <button id="clearClientDiagnosticsBtn" type="button" class="secondary">Clear Client Ledger</button>
+              </div>
+              <div class="table-wrap"><table id="observabilityTable"></table></div>
+              <div class="table-wrap"><table id="persistenceTable"></table></div>
+              <div class="table-wrap"><table id="calibrationJobsTable"></table></div>
+              <h3>Realism Verification (10-20 Year)</h3>
+              <div class="row compact">
+                <label>Seasons <input id="realismVerifyYearsInput" type="number" min="1" max="30" value="12" /></label>
+                <button id="runRealismVerifyBtn">Run Verification</button>
+              </div>
+              <div class="table-wrap"><table id="realismVerifySummaryTable"></table></div>
+              <h3>League Progression Parity</h3>
+              <div class="table-wrap"><table id="realismVerifyProgressionTable"></table></div>
+              <h4>Position-Room Verdicts</h4>
+              <div id="realismRoomWatch" class="room-watch" role="status" aria-live="polite" hidden></div>
+              <div class="table-wrap"><table id="realismVerifyRoomTable"></table></div>
+              <h4>Seed Comparison History</h4>
+              <div class="table-wrap"><table id="realismVerifyHistoryTable"></table></div>
+              <h3>Finite-Number Integrity</h3>
+              <div class="table-wrap"><table id="realismVerifyIntegrityTable"></table></div>
+              <div class="table-wrap"><table id="realismVerifySeasonTable"></table></div>
+              <div class="table-wrap"><table id="realismVerifyCareerTable"></table></div>
+              <h3>Offseason Pipeline</h3>
+              <div class="row compact">
+                <button id="loadPipelineBtn">Load Pipeline</button>
+                <button id="advancePipelineBtn">Advance Stage</button>
+              </div>
+              <div class="table-wrap"><table id="pipelineTable"></table></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="game-footer">
+      <div class="panel footer-guide-panel">
+        <div>
+          <h2>Game Guide</h2>
+          <div class="small">Open the step-by-step guide in a focused submenu instead of keeping it expanded in the footer.</div>
+        </div>
+        <button id="openGuideBtn" data-testid="open-guide-btn">Open Game Guide</button>
+      </div>
+      <div style="text-align:center;padding:8px 0;font-size:11px;color:#7a8299">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit;text-decoration:none">VaultSpark Studios</a> Game · <a href="./about.html">About</a> · <a href="./status.html">Status &amp; Updates</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></div>
+          <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span>
+</footer>
+
+    <div id="playerModal" data-testid="player-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="playerModalTitle">
+      <div class="modal-card player-modal-card">
+        <div class="row compact player-modal-header">
+          <h2 id="playerModalTitle">Player</h2>
+          <button id="closePlayerModalBtn" data-testid="close-player-modal-btn" class="warn">Close</button>
+        </div>
+        <div id="playerModalMeta" class="small"></div>
+        <div class="row compact">
+          <label>Season Type
+            <select id="playerSeasonTypeFilter">
+              <option value="regular">Regular Season</option>
+              <option value="playoffs">Playoffs</option>
+              <option value="all">Combined</option>
+            </select>
+          </label>
+        </div>
+        <div class="panel profile-hero-panel">
+          <div id="playerProfileSummary" class="stack"></div>
+        </div>
+        <div class="split">
+          <div>
+            <h3>Ratings</h3>
+            <div class="table-wrap"><table id="playerRatingsTable"></table></div>
+            <h3>Contract</h3>
+            <div class="table-wrap"><table id="playerContractTable"></table></div>
+          </div>
+          <div>
+            <h3>Career Summary</h3>
+            <div class="table-wrap"><table id="playerCareerTable"></table></div>
+            <h3>Season By Season</h3>
+            <div class="table-wrap"><table id="playerSeasonTable"></table></div>
+          </div>
+        </div>
+        <div class="split">
+          <div>
+            <h3>Team Splits / Championships</h3>
+            <div class="table-wrap"><table id="playerTeamSplitTable"></table></div>
+          </div>
+          <div>
+            <h3>Awards / Notes</h3>
+            <div class="table-wrap"><table id="playerAccoladesTable"></table></div>
+          </div>
+        </div>
+        <h3>Recent Transactions</h3>
+        <div class="table-wrap"><table id="playerTxTable"></table></div>
+      </div>
+    </div>
+
+    <div id="boxScoreModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="boxScoreModalTitle">
+      <div class="modal-card boxscore-modal-card">
+        <div class="row" style="justify-content: space-between">
+          <div>
+            <h2 id="boxScoreModalTitle">Box Score</h2>
+            <p id="boxScoreModalMeta" class="small"></p>
+          </div>
+          <button id="closeBoxScoreModalBtn" class="warn">Close</button>
+        </div>
+        <div id="boxScoreBroadcastStrip" class="boxscore-broadcast-strip"></div>
+        <div id="boxScoreImpactStrip" class="boxscore-impact-strip"></div>
+        <div class="subtab-bar boxscore-subtabs">
+          <button class="subtab-btn active" data-boxscore-tab="boxScoreStatsPanel">Player Stats</button>
+          <button class="subtab-btn" data-boxscore-tab="boxScoreSummaryPanel">Summary</button>
+          <button class="subtab-btn" data-boxscore-tab="boxScorePlayPanel">Play By Play</button>
+        </div>
+
+        <section id="boxScoreStatsPanel" class="subtab-panel active">
+          <div class="panel split">
+            <div>
+              <h3 id="boxScoreAwayTitle">Away Player Stats</h3>
+              <div class="table-wrap"><table id="boxScoreAwayPassingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayRushingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayReceivingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayDefenseTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayKickingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayPuntingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayBlockingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwaySnapsTable"></table></div>
+            </div>
+            <div>
+              <h3 id="boxScoreHomeTitle">Home Player Stats</h3>
+              <div class="table-wrap"><table id="boxScoreHomePassingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeRushingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeReceivingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeDefenseTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeKickingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomePuntingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeBlockingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeSnapsTable"></table></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="boxScoreSummaryPanel" class="subtab-panel">
+          <div class="panel">
+            <h3>Team Stats</h3>
+            <div class="table-wrap"><table id="boxScoreTeamStatsTable"></table></div>
+          </div>
+          <div class="panel">
+            <h3>Scoring Summary</h3>
+            <div class="table-wrap"><table id="boxScoreScoringTable"></table></div>
+          </div>
+        </section>
+
+        <section id="boxScorePlayPanel" class="subtab-panel">
+          <div class="panel">
+            <h3>Play By Play</h3>
+            <div class="table-wrap"><table id="boxScorePlayTable"></table></div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="guideModal" class="modal hidden" data-testid="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+      <div class="modal-card guide-card">
+        <div class="row" style="justify-content: space-between">
+          <div>
+            <h2 id="guideModalTitle">Game Guide</h2>
+            <p class="small">Core loop, league tools, and the fastest path through a full franchise season.</p>
+          </div>
+          <button id="closeGuideModalBtn" class="warn">Close</button>
+        </div>
+        <!-- ── ONE PLACE TO LEARN THE GAME (S94) ──
+             There were four: "How To Play" and "Game Guide" rendered the SAME
+             GUIDE_SECTIONS array into two different elements, and "VaultSpark
+             Rulebook" and "Buttons & Features" sat beside them in a top-level
+             Rules tab whose entire panel was 773 bytes. Four explanations of one
+             game is worse than one, not because of the bytes but because a new
+             player cannot tell which is authoritative and every future feature
+             has to be documented four times or the four drift apart -- prose
+             failing the same way a shape declared twice fails.
+
+             They are now three views of one surface, reached from one place. -->
+          <div class="row compact guide-subtabs" role="tablist" aria-label="Game guide sections">
+            <button class="subtab-btn active" data-guide-view="guideHowToPanel" role="tab" aria-selected="true" aria-controls="guideHowToPanel">How To Play</button>
+            <button class="subtab-btn" data-guide-view="guideRulesPanel" role="tab" aria-selected="false" aria-controls="guideRulesPanel">Rules</button>
+            <button class="subtab-btn" data-guide-view="guideActionsPanel" role="tab" aria-selected="false" aria-controls="guideActionsPanel">Buttons &amp; Features</button>
+          </div>
+          <div id="guideHowToPanel" class="guide-view" role="tabpanel">
+            <div id="guideModalContent" class="stack small"></div>
+          </div>
+          <div id="guideRulesPanel" class="guide-view" role="tabpanel" hidden>
+            <p class="small">Core simulation rules, roster and contract constraints, snap-share depth chart logic, and feature behavior.</p>
+            <div class="table-wrap"><table id="rulesCoreTable"></table></div>
+          </div>
+          <div id="guideActionsPanel" class="guide-view" role="tabpanel" hidden>
+            <p class="small">Every control in the game, what it does, and where it lives.</p>
+            <div class="table-wrap"><table id="rulesActionsTable"></table></div>
+          </div>
+      </div>
+    </div>
+
+    <div id="commandPalette" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="commandPaletteTitle">
+      <div class="modal-card command-card">
+        <div class="row compact">
+          <h2 id="commandPaletteTitle">Command Palette</h2>
+          <button id="closeCommandPaletteBtn" class="warn">Close</button>
+        </div>
+        <label>Search
+          <input id="commandInput" type="text" placeholder="type command..." />
+        </label>
+        <div class="table-wrap"><table id="commandTable"></table></div>
+      </div>
+    </div>
+
+    <!-- ── Agent Negotiation Drama Modal ─────────────────────────────────── -->
+    <div id="agentNegotiationModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="agentNegotiationTitle">
+      <div class="modal-card agent-modal-card">
+        <div class="row compact" style="justify-content:space-between">
+          <h2 id="agentNegotiationTitle">Agent Negotiation</h2>
+          <button id="closeAgentModalBtn" class="warn">Close</button>
+        </div>
+        <div id="agentModalHeader" class="agent-modal-header"></div>
+        <div class="agent-modal-body">
+          <div id="agentPersonalityBox" class="agent-personality-box"></div>
+          <div id="agentDemandBar" class="agent-demand-bar"></div>
+          <div class="agent-offer-form">
+            <label>Offer Salary (per year)
+              <input id="agentOfferSalaryInput" type="number" placeholder="e.g. 18000000" min="500000" />
+            </label>
+            <label>Years
+              <input id="agentOfferYearsInput" type="number" value="3" min="1" max="5" />
+            </label>
+            <div class="row compact">
+              <button id="submitAgentOfferBtn">Submit Offer</button>
+            </div>
+          </div>
+          <div id="agentResponseBox" class="agent-response-box hidden"></div>
+          <div id="agentHistoryBox" class="agent-history-box">
+            <div class="small" style="color:var(--muted)">Offer history will appear here.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Keyboard Shortcuts Modal ──────────────────────────────────────── -->
+    <div id="shortcutsModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+      <div class="modal-card shortcuts-card">
+        <div class="row" style="justify-content:space-between">
+          <h2>Keyboard Shortcuts</h2>
+          <button id="closeShortcutsModalBtn" class="warn">Close</button>
+        </div>
+        <table class="shortcuts-table">
+          <thead><tr><th>Key</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>R</kbd></td><td>Refresh overview</td></tr>
+            <tr><td><kbd>?</kbd></td><td>Open this shortcuts panel</td></tr>
+            <tr><td><kbd>Escape</kbd></td><td>Close any modal</td></tr>
+            <tr><td><kbd>1</kbd>–<kbd>9</kbd></td><td>Jump to tab 1–9 in the side menu</td></tr>
+            <tr><td><kbd>N</kbd></td><td>Toggle news ticker</td></tr>
+            <tr><td><kbd>W</kbd></td><td>Advance one week (when no input focused)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Mobile Loop Overlay ────────────────────────────────────────────── -->
+    <div id="mobileLoopOverlay" class="mobile-loop-overlay hidden" role="region" aria-label="Mobile core loop view">
+      <div class="ml-loading">Loading franchise data…</div>
+    </div>
+
+    <div id="toastStack" class="toast-stack"></div>
+
+    <!-- ── Persona Tier Unlock Toast ─────────────────────────────────────── -->
+    <div id="personaTierToast" hidden>
+      <div class="persona-toast-kicker">GM Arc Unlocked</div>
+      <div class="persona-toast-name"></div>
+      <div class="persona-toast-tier"></div>
+    </div>
+
+    <!-- ── Season Review Modal ────────────────────────────────────────────── -->
+    <div id="seasonReviewModal" hidden role="dialog" aria-modal="true" aria-label="Season review">
+      <div class="season-review-card">
+        <div class="season-review-body"></div>
+        <div class="season-review-actions">
+          <button id="closeSeasonReviewBtn" class="btn-primary">Start New Season</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Halftime / Pre-Game Tactical Modal ─────────────────────────────── -->
+    <div id="halftimeAdjustModal" hidden role="dialog" aria-modal="true" aria-labelledby="halftimeAdjustTitle">
+      <div class="halftime-modal-card">
+        <div class="halftime-modal-title" id="halftimeAdjustTitle">Pre-Game Tactical Brief</div>
+        <div class="halftime-modal-sub">Choose your team's focus for this week's matchup.</div>
+        <div id="tacticalMatchupBrief" class="tactical-matchup-brief"></div>
+        <div class="tactic-options-grid" role="radiogroup" aria-labelledby="halftimeAdjustTitle">
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="0" aria-describedby="runHeavyTacticDesc" data-tactic="run-heavy">
+            <div class="to-icon">🏃</div>
+            <div class="to-label">Run-Heavy</div>
+            <div class="to-desc" id="runHeavyTacticDesc">Control the clock, grind yards, wear down the defense.</div>
+          </button>
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="-1" aria-describedby="passHeavyTacticDesc" data-tactic="pass-heavy">
+            <div class="to-icon">🎯</div>
+            <div class="to-label">Pass-Heavy</div>
+            <div class="to-desc" id="passHeavyTacticDesc">Open up the field, attack downfield, tempo offense.</div>
+          </button>
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="-1" aria-describedby="blitzHeavyTacticDesc" data-tactic="blitz-heavy">
+            <div class="to-icon">⚡</div>
+            <div class="to-label">Blitz Package</div>
+            <div class="to-desc" id="blitzHeavyTacticDesc">Bring pressure, disrupt the QB, force quick decisions.</div>
+          </button>
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="-1" aria-describedby="preventTacticDesc" data-tactic="prevent">
+            <div class="to-icon">🛡️</div>
+            <div class="to-label">Prevent Defense</div>
+            <div class="to-desc" id="preventTacticDesc">Protect the lead, concede short gains, stop the big play.</div>
+          </button>
+        </div>
+        <div class="halftime-actions">
+          <button class="tactic-confirm-btn btn-primary" disabled>Confirm Tactic</button>
+          <button class="tactic-skip-btn btn-sm">No Adjustment</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Draft Pick Reveal Modal ─────────────────────────────────────────── -->
+    <div id="architectPlanRehearsalModal" hidden role="dialog" aria-modal="true" aria-labelledby="architectRehearsalTitle">
+      <div class="architect-rehearsal-card">
+        <div class="architect-rehearsal-kicker">Pre-commit review · no mutation yet</div>
+        <h2 id="architectRehearsalTitle">Architect's Red Team</h2>
+        <div class="architect-rehearsal-grid">
+          <section><span>General Manager call</span><strong id="architectRehearsalDecision"></strong></section>
+          <section><span>Football identity</span><strong id="architectRehearsalTactic"></strong><small id="architectRehearsalIntent"></small></section>
+          <section><span>Matchup read</span><strong id="architectRehearsalMatchup"></strong></section>
+          <section><span>Opening promise</span><strong id="architectRehearsalPromise"></strong></section>
+          <section><span>Owner pressure</span><strong id="architectRehearsalPressure"></strong></section>
+          <section><span>Identity path</span><strong id="architectRehearsalIdentity"></strong></section>
+          <section><span>Architect thesis</span><strong id="architectRehearsalThesis"></strong></section>
+        </div>
+        <aside class="architect-counter-signal">
+          <span id="architectRehearsalCounterSource">Strongest counter-signal</span>
+          <strong id="architectRehearsalCounter"></strong>
+        </aside>
+        <p id="architectRehearsalDisclaimer" class="architect-rehearsal-disclaimer"></p>
+        <div class="architect-rehearsal-actions">
+          <button id="commitArchitectPlanBtn" class="btn-primary">Commit Plan & Advance</button>
+          <button id="reviseArchitectPlanBtn" class="btn-sm">Revise Tactic</button>
+          <button id="deferArchitectPlanBtn" class="btn-sm">Defer Week</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="draftPickRevealModal" hidden role="dialog" aria-modal="true" aria-label="Draft pick reveal">
+      <div class="draft-reveal-card">
+        <div class="draft-reveal-body"></div>
+      </div>
+    </div>
+
+    <div id="onClockTradeReviewModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="onClockTradeReviewTitle" aria-describedby="onClockTradeReviewBoundary">
+      <div class="modal-card on-clock-trade-review-card">
+        <div id="onClockTradeReviewContent"></div>
+        <div class="on-clock-trade-review-actions">
+          <button id="confirmOnClockTradeBtn" type="button" class="btn-primary">Confirm live-pick trade</button>
+          <button id="cancelOnClockTradeBtn" type="button" class="btn-sm">Keep the pick</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Feedback Widget ────────────────────────────────────────────────── -->
+    <div id="feedbackWidget" class="feedback-widget" title="Send feedback or report a bug">
+      <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions/new?category=feedback"
+         target="_blank" rel="noopener" aria-label="Send feedback">
+        <span class="feedback-icon">💬</span>
+        <span class="feedback-label">Feedback</span>
+      </a>
+    </div>
+
+    <!-- ── Priority Inbox Drawer (Session 8) ────────────────────────────── -->
+    <div id="inboxDrawer" role="dialog" aria-label="GM Inbox" aria-modal="true">
+      <div class="inbox-drawer-header">
+        <span class="inbox-drawer-title">GM Inbox</span>
+        <button class="inbox-close-btn" id="closeInboxBtn" aria-label="Close inbox">✕</button>
+      </div>
+      <div id="inboxList" role="list"></div>
+    </div>
+
+    <!-- ── Franchise Moment Card (Session 8) ────────────────────────────── -->
+    <div id="franchiseMomentModal" hidden role="dialog" aria-modal="true" aria-label="Franchise moment" aria-live="polite">
+      <div class="fm-kicker">Franchise Moment</div>
+      <div id="fmHeadline"></div>
+      <div class="fm-score-row">
+        <span id="fmScore"></span>
+        <span id="fmWeek"></span>
+      </div>
+      <div class="fm-highlight-label">Key Play</div>
+      <div id="fmHighlight"></div>
+      <div id="fmTopPlay" hidden></div>
+      <div class="fm-actions">
+        <button class="fm-share-btn" id="fmShareBtn">Share This Moment</button>
+        <button class="fm-close-btn" id="fmCloseBtn">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- ── GM Decision Modal (Session 8) ────────────────────────────────── -->
+    <div id="gmDecisionModal" hidden role="dialog" aria-modal="true" aria-labelledby="gmDecisionTitle">
+      <div class="gm-decision-card">
+        <div class="gm-decision-kicker">GM Decision Required</div>
+        <h2 class="gm-decision-title" id="gmDecisionTitle">Strategic Choice</h2>
+        <p id="gmDecisionPrompt"></p>
+        <div id="gmDecisionOptions"></div>
+        <button class="gm-decision-dismiss" id="gmDecisionDismissBtn">Skip this decision</button>
+      </div>
+    </div>
+
+    <!-- ── Sim-Watch Overlay (Session 8) ─────────────────────────────────── -->
+    <div id="simWatchOverlay" hidden role="dialog" aria-modal="true" aria-live="polite" aria-label="Sim-Watch broadcast director">
+      <div class="sw-header-bar">
+        <span class="sw-kicker">Live Sim</span>
+        <div class="sw-ctrl">
+          <button class="sw-reel-btn" id="simWatchReelBtn" title="Replay the receipted high-impact plays">Final Reel</button>
+          <button class="sw-skip-btn" id="simWatchSkipBtn">Skip to Final</button>
+          <button class="sw-close-btn" id="simWatchCloseBtn" aria-label="Close Sim-Watch">✕</button>
+        </div>
+      </div>
+      <div id="simWatchHeader"></div>
+      <div class="sw-director" role="group" aria-label="Broadcast playback controls">
+        <button id="simWatchPreviousBtn" type="button" aria-label="Previous key play">←</button>
+        <button id="simWatchPlayPauseBtn" type="button" aria-pressed="false">Pause</button>
+        <button id="simWatchNextBtn" type="button" aria-label="Next key play">→</button>
+        <label class="sw-speed-label" for="simWatchSpeedSelect">Speed</label>
+        <select id="simWatchSpeedSelect" aria-label="Playback speed">
+          <option value="0.5">0.5×</option><option value="1" selected>1×</option>
+          <option value="2">2×</option><option value="4">4×</option>
+        </select>
+      </div>
+      <div class="sw-progress-wrap">
+        <progress id="simWatchProgress" value="0" max="1" aria-label="Broadcast progress"></progress>
+        <span id="simWatchProgressLabel">Pregame</span>
+      </div>
+      <div class="sw-swipe-hint" aria-hidden="true">Swipe the play log left or right for the next or previous key play.</div>
+      <div id="simWatchField" class="sw-field" aria-hidden="true"><span id="simWatchBall" class="sw-ball"></span><div class="sw-field-meta"><span id="simWatchPossession">Possession</span><span id="simWatchDownDistance"></span><span id="simWatchYardLine">50</span></div></div>
+      <svg id="simWatchFlow" class="sw-flow" viewBox="0 0 300 40" preserveAspectRatio="none" role="img" aria-label="Score margin through the game"></svg>
+      <div id="simWatchFeed" role="log"></div>
+      <div id="simWatchFinal" hidden></div>
+    </div>
+
+
+    <div id="hofCeremonyOverlay" class="hof-ceremony-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="hofCeremonyTitle" aria-describedby="hofCeremonyCopy">
+      <div class="hof-ceremony-card">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <div class="brand-kicker franchise-kicker">Franchise Architect Hall of Fame</div>
+            <h2 id="hofCeremonyTitle">Induction Ceremony</h2>
+          </div>
+          <button id="hofCeremonyCloseBtn" class="warn">Close</button>
+        </div>
+        <canvas id="hofCeremonyCanvas" class="hof-card-canvas" width="1200" height="630"></canvas>
+        <div id="hofCeremonyCopy" class="small"></div>
+        <div id="hofCeremonyStatus" class="hof-ceremony-status" role="status" aria-live="polite"></div>
+        <div class="hof-actions">
+          <button id="hofCeremonyCopyBtn">Copy Share Text</button>
+          <button id="hofCeremonyDownloadBtn">Download Card</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

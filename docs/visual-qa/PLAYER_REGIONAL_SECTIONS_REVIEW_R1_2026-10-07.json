@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "component": "Shared saved regional torso sections",
+  "reviewRound": 1,
+  "verdict": "FIX",
+  "reviewedAt": "2026-10-08T00:56:12.331Z",
+  "findings": [
+    {
+      "id": "P2-optional-sections-can-remove-torso",
+      "priority": "P2",
+      "description": "Optional first-section width/depth can disagree with canonical chest dimensions while passing projectedTorsoSections. The surface endpoint check then returns null and removes the torso in static and moving views. Canonical 45-inch anchors also pass the original projection guard but conflict with the motion 40-inch clamp.",
+      "evidence": ".cache/regional-sections-independent-result.json",
+      "correction": "Reject inconsistent optional anchors and dimensions outside the shared renderer limits, retaining the existing fallback torso."
+    }
+  ],
+  "sourceHashes": {
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "public/lib/torsoSurface.js": "8971b60b0cf3f5bdf82dce214b039577978da6195eb4116abaef6ce5552e53f7",
+    "public/lib/playerPortrait.js": "235296bec8e08b921bb753eec1d3ba91b7d91e6edcb7dbf3e5bf2a790c912742",
+    "public/lib/playerMotion.js": "ce306007bfd025e4b7eebcdde00d83d44aa7e5861adbac88db6ed952fb304e87"
+  },
+  "historicalBinding": {
+    "originalHelperByteHashAvailable": false,
+    "reason": "Primary repaired the helper before historical byte hashes were captured. No independent pre-repair copy/hash exists.",
+    "preservedOriginalText": ".cache/regional-sections-reviewed-original-helper-text.js",
+    "preservedTextSha256": "9bd5f5249fc8859a76151fac6602e34674dd428ba7dd445fa1858ea3220f42ce",
+    "qualification": "Reconstructed from current helper by removing only the subsequently added guard block; original reviewed function text is retained in tool output. This digest is a retained-text artifact, not asserted to be an independently recorded historical source digest.",
+    "currentRepairedHelperSha256": "7933eac75ae2797d0de88d06bb8c359d17e557f6399e9d516dd4c0498f7453d3",
+    "repairNotAcceptedInThisRound": true,
+    "testFileChangedAfterExecution": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-regional-sections.test.js test/player-regional-body-shape.test.js test/player-torso-envelope.test.js",
+      "result": "16/16 passed, zero skips, 10.246 seconds, before primary repair"
+    },
+    {
+      "command": "node .cache/regional-sections-independent.mjs",
+      "result": "Four missing-torso/inconsistent-static-motion counterexamples reproduced without DTO mutation; 40 independent numerical integrals agree within 1e-8."
+    },
+    {
+      "command": "node .cache/regional-sections-legacy-independent.mjs",
+      "result": "Nine baseline frame comparisons and 72 exact original-render hashes pass; tracked fixture equals preserved original fixture."
+    }
+  ],
+  "inspectedImages": [
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-before-mass-desktop-dark.png",
+      "sha256": "b99f2be36e918c3f62e8bad777b757fe25a78a6716f2477e29a74b23e0b0ffd7"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-after-mass-desktop-dark.png",
+      "sha256": "57075428f61997d8ad1b5ee824bf3e434ab094cddaeb1e88b5b0112d1d1d1067"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-before-heavy-fast-light-slow-mobile-light.png",
+      "sha256": "0af56d6660b9be39740fb49770e2e45959ed0381e06c1e56e6da0d0daa94efed"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-after-heavy-fast-light-slow-mobile-light.png",
+      "sha256": "1677ba085991291e473c561e833ddcb6aa3573f7460c64beedcaac936da7c1c5"
+    }
+  ],
+  "observations": [
+    "Heavy-body abdomen/hip presentation is less globally tapered in the matched after images.",
+    "Smoothstep cross-section integration and original v1 frame/render compatibility independently passed."
+  ],
+  "limits": [
+    "Boundary finding uses malformed resolved presentation DTOs, not a generated-career reproduction.",
+    "Source was repaired during R1 after the finding; fixed-source acceptance requires R2.",
+    "Original executed test file was subsequently strengthened by primary; its historical byte hash was not captured.",
+    "Four original PNGs inspected; no claim all captures or built clients independently inspected.",
+    "Artistic volume allocation is not empirical composition calibration. Whole-player naturalism, demographic fitting and release remain open."
+  ]
+}

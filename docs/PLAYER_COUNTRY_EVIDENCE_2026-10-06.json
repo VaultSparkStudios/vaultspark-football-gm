@@ -1,0 +1,1416 @@
+{
+  "schemaVersion": 1,
+  "checkedDate": "2026-10-06",
+  "modelVersion": "fictional-joint-country-v3",
+  "purpose": "Research inventory and current fictional model export; not an empirical country-by-race or phenotype fit.",
+  "leagueSurvey": {
+    "version": "tides-2023-fictional-identity-v1",
+    "year": 2023,
+    "source": "https://www.tidesport.org/_files/ugd/326b62_f8ae68d67f744fdbba5962c84b43f3bf.pdf",
+    "counts": {
+      "Black": 821,
+      "White": 375,
+      "Multiracial": 167,
+      "Undisclosed": 136,
+      "PacificIslander": 27,
+      "HispanicLatino": 7,
+      "Asian": 2,
+      "Indigenous": 1
+    }
+  },
+  "recruitment": {
+    "internationalBirthShare": 0.04,
+    "evidence": "illustrative football-pathway prior; not measured country frequencies",
+    "status": "simulation-assumption"
+  },
+  "sourceHashes": [
+    {
+      "path": "src/data/playerDemographicBaseline.js",
+      "sha256": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699"
+    },
+    {
+      "path": "src/domain/playerDemographicModel.js",
+      "sha256": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370"
+    }
+  ],
+  "maxFittedMarginError": 3.0897506775318107e-13,
+  "countries": [
+    {
+      "country": "United States",
+      "recruitmentWeight": null,
+      "modelBirthShare": 0.96,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2020,
+        "url": "https://www.census.gov/newsroom/press-releases/2023/2020-census-detailed-dhc-file-a.html",
+        "basis": "US census detailed self-reported groups; overlapping detailed responses must retain their table definitions."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.5372573708418796,
+        "White": 0.24355879604675357,
+        "Multiracial": 0.1081362915887649,
+        "Undisclosed": 0.0909835055557623,
+        "PacificIslander": 0.014713432683336735,
+        "HispanicLatino": 0.004232340426599857,
+        "Asian": 0.0004968339924203284,
+        "Indigenous": 0.0006214288644826113
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Canada",
+      "recruitmentWeight": 18,
+      "modelBirthShare": 0.00677966101694915,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2021,
+        "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/221026/dq221026b-eng.htm",
+        "basis": "Resident ethnic/cultural origins; multiple responses; not exclusive categories or a birthplace conditional."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.4765687951269889,
+        "White": 0.3240696031569459,
+        "Multiracial": 0.14388182923727302,
+        "Undisclosed": 0.04035300581469417,
+        "PacificIslander": 0.006525701895063936,
+        "HispanicLatino": 0.0018771276925538568,
+        "Asian": 0.0017628465610428855,
+        "Indigenous": 0.0049610905154374284
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Nigeria",
+      "recruitmentWeight": 14,
+      "modelBirthShare": 0.005273069679849339,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "url": "https://fmino.gov.ng/culture/culture/",
+        "basis": "Qualitative government cultural overview, no sampled population denominator or dated ethnic cross-tab",
+        "evidenceKind": "qualitative-government-context",
+        "checkedDate": "2026-10-06",
+        "familyExamples": [
+          "Hausa",
+          "Fulani",
+          "Igbo",
+          "Yoruba",
+          "Edo",
+          "Ibibio",
+          "Annang",
+          "Efik",
+          "Ijaw"
+        ],
+        "limitation": "No numerical population, NFL recruitment or phenotype shares inferred. Statistical annual abstract direct fetch exceeded size limit."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045679,
+        "White": 0.004855670446488168,
+        "Multiracial": 0.02155841643919111,
+        "Undisclosed": 0.009069389531721156,
+        "PacificIslander": 0.0002933319650387702,
+        "HispanicLatino": 0.00021094342169614244,
+        "Asian": 0.00001485757549899585,
+        "Indigenous": 0.0000123890157975805
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Australia",
+      "recruitmentWeight": 10,
+      "modelBirthShare": 0.0037664783427495277,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2021,
+        "url": "https://www.abs.gov.au/articles/cultural-diversity-australia",
+        "basis": "Resident birthplace and up to two ancestries; ancestry totals may exceed100%."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.23320331226536278,
+        "White": 0.528598778277007,
+        "Multiracial": 0.14081374817665315,
+        "Undisclosed": 0.039492533762486765,
+        "PacificIslander": 0.051092402602810075,
+        "HispanicLatino": 0.0018371005400466948,
+        "Asian": 0.0017252562956467203,
+        "Indigenous": 0.0032368680799869255
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "American Samoa",
+      "recruitmentWeight": 9,
+      "modelBirthShare": 0.003389830508474575,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2020,
+        "url": "https://www.census.gov/newsroom/press-releases/2022/2020-island-areas-american-samoa.html",
+        "basis": "Territory-specific resident detailed race reporting; distinct from Samoa."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.028990384503125754,
+        "White": 0.026284844209580344,
+        "Multiracial": 0.2042260366657806,
+        "Undisclosed": 0.02454733013127999,
+        "PacificIslander": 0.7145425723320488,
+        "HispanicLatino": 0.0005709422661013809,
+        "Asian": 0.0006702285187785475,
+        "Indigenous": 0.00016766137330476814
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "United Kingdom",
+      "recruitmentWeight": 6,
+      "modelBirthShare": 0.0022598870056497163,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2021,
+        "url": "https://www.ons.gov.uk/datasets/RM010/editions/2021/versions/1",
+        "basis": "England/Wales residents, country-of-birth by ethnicity; not all UK or a census of each foreign birth country.",
+        "geographyCoverage": "partial-England-and-Wales"
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498304,
+        "White": 0.6028938502605226,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141184,
+        "PacificIslander": 0.0015608970385890045,
+        "HispanicLatino": 0.0014966477187570136,
+        "Asian": 0.0003513826329675469,
+        "Indigenous": 0.0000659252327543637
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Germany",
+      "recruitmentWeight": 5,
+      "modelBirthShare": 0.0018832391713747639,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "resultsYear": 2025,
+        "publicationYear": 2026,
+        "url": "https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Migration-Integration/migrationshintergrund.html",
+        "basis": "Immigration history: self or both parents migrated since 1950; migration background: self or at least one parent born without German citizenship.",
+        "tableRetrieval": "Publisher-indexed definitions reviewed; direct page retrieval failed. No numeric table adopted.",
+        "limitation": "Definitions are not race, phenotype or NFL recruitment frequencies. Preserve one-parent and later-generation family histories separately."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605226,
+        "Multiracial": 0.07647869396516742,
+        "Undisclosed": 0.03217374840141182,
+        "PacificIslander": 0.001560897038589005,
+        "HispanicLatino": 0.0014966477187570134,
+        "Asian": 0.00035138263296754683,
+        "Indigenous": 0.00006592523275436372
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Jamaica",
+      "recruitmentWeight": 4,
+      "modelBirthShare": 0.001506591337099811,
+      "contextStatus": "reviewed-indexed-table-limited-retrieval",
+      "contextSource": {
+        "year": 2011,
+        "url": "https://census.statinja.gov.jm/wp-content/themes/futurio-child/Census2011Reports/Population%20and%20Housing%20Census%202011%20Jamaica%20General%20Report%20Vol%201.pdf",
+        "basis": "Ethnic-origin Table3.1, source denominator2683707; dated resident responses, not birth-country NFL recruits",
+        "evidenceKind": "official-search-indexed-census-table",
+        "checkedDate": "2026-10-06",
+        "counts": {
+          "Black": 2471946,
+          "Mixed": 162718,
+          "East Indian": 20066,
+          "Chinese": 5228,
+          "White": 4365,
+          "Other": 1898,
+          "Not Reported": 17486
+        },
+        "denominator": 2683707,
+        "limitation": "Direct General Report PDF exceeded browsing size limit; ethnic-origin Volume6 link404. Questionnaire/table-universe verification still required before numerical adoption."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9183287123473942,
+        "White": 0.020815632106080898,
+        "Multiracial": 0.04620907352891355,
+        "Undisclosed": 0.012959767210971973,
+        "PacificIslander": 0.0004191587503374101,
+        "HispanicLatino": 0.0012057162746428394,
+        "Asian": 0.00003538472630249996,
+        "Indigenous": 0.000026555055356503218
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Mexico",
+      "recruitmentWeight": 3,
+      "modelBirthShare": 0.0011299435028248581,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2020,
+        "url": "https://www.inegi.org.mx/rnm/index.php/catalog/632/datafile/F15/V491",
+        "basis": "Afro-Mexican/African-descendant self-identification among usual residents; instructions distinguish identity from skin color and hair texture. Indigenous identification and language are separate questionnaire fields.",
+        "evidenceKind": "official-definition-context",
+        "checkedDate": "2026-10-06",
+        "limitation": "Resident classification context only; no NFL recruitment, race crosswalk or phenotype frequencies are fitted."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.40931232022320785,
+        "White": 0.18555653459802982,
+        "Multiracial": 0.20596048938878736,
+        "Undisclosed": 0.03465812828469365,
+        "PacificIslander": 0.0016814257738225575,
+        "HispanicLatino": 0.16122152752148244,
+        "Asian": 0.00018925777964168248,
+        "Indigenous": 0.001420316430334716
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "New Zealand",
+      "recruitmentWeight": 2,
+      "modelBirthShare": 0.0007532956685499055,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2023,
+        "url": "https://www.stats.govt.nz/assets/Infographics/2023-Census-infographics/2023-Census-infographics-National.pdf",
+        "basis": "Usually resident ethnicity, multiple groups; Maori descent and ethnicity distinct."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.22797350255220494,
+        "White": 0.3100466638093911,
+        "Multiracial": 0.22942643958395006,
+        "Undisclosed": 0.038606875515775234,
+        "PacificIslander": 0.18729977281448373,
+        "HispanicLatino": 0.0017959017845270867,
+        "Asian": 0.0016865657554266367,
+        "Indigenous": 0.003164278184241091
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance",
+        "Single/combination and age/sex background evidence; retain observed overlapping NZ-born ethnicity indicators separately from fictional NFL survey probabilities"
+      ],
+      "contextObservations": [
+        "docs/PLAYER_NZ_BIRTH_ETHNIC_OBSERVATIONS_2026-10-07.json"
+      ]
+    },
+    {
+      "country": "Tonga",
+      "recruitmentWeight": 2,
+      "modelBirthShare": 0.0007532956685499055,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2021,
+        "url": "https://tongastats.gov.to/census-2/population-census-3/census-metadata/",
+        "basis": "All persons present in Tonga on2021-11-30; ethnicity question is multi-select",
+        "evidenceKind": "official-census-metadata",
+        "checkedDate": "2026-10-06",
+        "multipleResponses": true,
+        "limitation": "Factsheet timed out, microdata access403; no numerical ethnic shares adopted. Not a Tongan-born worldwide or NFL recruitment distribution."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.028990384503125757,
+        "White": 0.02628484420958034,
+        "Multiracial": 0.20422603666578065,
+        "Undisclosed": 0.02454733013127997,
+        "PacificIslander": 0.7145425723320484,
+        "HispanicLatino": 0.0005709422661013809,
+        "Asian": 0.0006702285187785472,
+        "Indigenous": 0.00016766137330476814
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Ireland",
+      "recruitmentWeight": 2,
+      "modelBirthShare": 0.0007532956685499055,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2022,
+        "url": "https://www.cso.ie/en/releasesandpublications/ep/p-cpp5/censusofpopulation2022profile5-diversitymigrationethnicityirishtravellersreligion/ethnicgroupbackground/",
+        "basis": "Usually resident and present population; changed2022 ethnicity categories; citizenship cross-tab is not birthplace."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605224,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141183,
+        "PacificIslander": 0.0015608970385890047,
+        "HispanicLatino": 0.0014966477187570138,
+        "Asian": 0.00035138263296754694,
+        "Indigenous": 0.00006592523275436369
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Austria",
+      "recruitmentWeight": 2,
+      "modelBirthShare": 0.0007532956685499055,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "resultsYear": 2025,
+        "publicationYear": 2026,
+        "url": "https://www.statistik.at/statistiken/bevoelkerung-und-soziales/bevoelkerung/migration-und-einbuergerung/migrationshintergrund",
+        "basis": "Private-household residents with both parents born abroad; first/second generation distinguished by own birthplace. Microcensus annual estimates from quarterly samples.",
+        "tableRetrieval": "Definition page directly inspected; no numeric tabulation adopted.",
+        "limitation": "Migration background is not race, pigment or NFL recruitment frequency. Retain one-parent and later-generation families outside this reporting definition."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605224,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141183,
+        "PacificIslander": 0.0015608970385890047,
+        "HispanicLatino": 0.0014966477187570138,
+        "Asian": 0.00035138263296754694,
+        "Indigenous": 0.00006592523275436369
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Brazil",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2022,
+        "url": "https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18319-cor-ou-raca.html",
+        "basis": "Self-declared local color/race labels; not Hispanic identity or measured complexion.",
+        "retrieval": "official-search-result-reviewed; direct-fetch-failed"
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.5236108446468725,
+        "White": 0.23737231695747074,
+        "Multiracial": 0.21077918349281402,
+        "Undisclosed": 0.022168123127996618,
+        "PacificIslander": 0.0035849265794643927,
+        "HispanicLatino": 0.00103120937276879,
+        "Asian": 0.00024210711712790083,
+        "Indigenous": 0.0012112887054850725
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Cameroon",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "source-located-table-unverified",
+      "contextSource": {
+        "year": 2017,
+        "url": "https://bucrep.org/download/25474/?tmstv=1781772204",
+        "basis": "Publisher-indexed population-report text includes an ethnicity question.",
+        "tableRetrieval": "Direct retrieval timed out; report, survey universe and numeric table unverified.",
+        "limitation": "Located report candidate only; no race/phenotype/NFL recruitment calibration."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045679,
+        "White": 0.004855670446488166,
+        "Multiracial": 0.021558416439191104,
+        "Undisclosed": 0.009069389531721156,
+        "PacificIslander": 0.00029333196503877,
+        "HispanicLatino": 0.0002109434216961425,
+        "Asian": 0.000014857575498995845,
+        "Indigenous": 0.000012389015797580501
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Ghana",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2021,
+        "url": "https://statsbank.statsghana.gov.gh/pxweb/en/PHC%202021%20StatsBank/PHC%202021%20StatsBank__Population/ethnic_table.px/",
+        "basis": "Major ethnic groups defined only for Ghanaians; citizenship-restricted census universe, not every Ghana-born person.",
+        "evidenceKind": "official-table-metadata-and-microdata-variable",
+        "populationBasis": "Ghanaians in the 2021 census ethnicity table; separate 10% de-facto microdata case counts are not population summary statistics.",
+        "retrieval": "table metadata and variable reviewed; no population totals exported",
+        "additionalSource": "https://microdata.statsghana.gov.gh/index.php/catalog/110/variable/V1088",
+        "numericalAdoption": false
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045679,
+        "White": 0.004855670446488166,
+        "Multiracial": 0.021558416439191104,
+        "Undisclosed": 0.009069389531721156,
+        "PacificIslander": 0.00029333196503877,
+        "HispanicLatino": 0.0002109434216961425,
+        "Asian": 0.000014857575498995845,
+        "Indigenous": 0.000012389015797580501
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Côte d’Ivoire",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045679,
+        "White": 0.004855670446488166,
+        "Multiracial": 0.021558416439191104,
+        "Undisclosed": 0.009069389531721156,
+        "PacificIslander": 0.00029333196503877,
+        "HispanicLatino": 0.0002109434216961425,
+        "Asian": 0.000014857575498995845,
+        "Indigenous": 0.000012389015797580501
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Liberia",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "source-located-table-unverified",
+      "contextSource": {
+        "year": 2022,
+        "url": "https://update.lisgis.gov.lr/censusreport/thematic/ThematicReportonPopulationSizeDistributionandStructure.pdf",
+        "basis": "Publisher-indexed Table 4.1 locates ethnic groups by county in 2022 census thematic report.",
+        "tableRetrieval": "Direct PDF retrieval failed (502); alternative report URL returned no inspectable report. Table universe/questionnaire/values unverified.",
+        "limitation": "Do not adopt indexed cell fragments as population, phenotype or NFL recruitment probabilities."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045679,
+        "White": 0.004855670446488166,
+        "Multiracial": 0.021558416439191104,
+        "Undisclosed": 0.009069389531721156,
+        "PacificIslander": 0.00029333196503877,
+        "HispanicLatino": 0.0002109434216961425,
+        "Asian": 0.000014857575498995845,
+        "Indigenous": 0.000012389015797580501
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "South Africa",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2022,
+        "url": "https://www.statssa.gov.za/?p=16716",
+        "basis": "Resident population-group definitions; South African Coloured category is not automatically NFL Multiracial."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.7310759923036322,
+        "White": 0.14203885844331854,
+        "Multiracial": 0.10510504830090098,
+        "Undisclosed": 0.017686616778741546,
+        "PacificIslander": 0.0028601980521677783,
+        "HispanicLatino": 0.0008227401521319625,
+        "Asian": 0.0002897441367942764,
+        "Indigenous": 0.00012080183231252033
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Zimbabwe",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045679,
+        "White": 0.004855670446488166,
+        "Multiracial": 0.021558416439191104,
+        "Undisclosed": 0.009069389531721156,
+        "PacificIslander": 0.00029333196503877,
+        "HispanicLatino": 0.0002109434216961425,
+        "Asian": 0.000014857575498995845,
+        "Indigenous": 0.000012389015797580501
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Guinea",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045679,
+        "White": 0.004855670446488166,
+        "Multiracial": 0.021558416439191104,
+        "Undisclosed": 0.009069389531721156,
+        "PacificIslander": 0.00029333196503877,
+        "HispanicLatino": 0.0002109434216961425,
+        "Asian": 0.000014857575498995845,
+        "Indigenous": 0.000012389015797580501
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "South Korea",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.12035801957181368,
+        "White": 0.10912555483621283,
+        "Multiracial": 0.32300025042794334,
+        "Undisclosed": 0.06794133275598827,
+        "PacificIslander": 0.04394863529670196,
+        "HispanicLatino": 0.0015802361510681017,
+        "Asian": 0.3339067565883653,
+        "Indigenous": 0.00013921437190649673
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Japan",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2020,
+        "url": "https://www.stat.go.jp/english/info/news/20211228.html",
+        "basis": "Census citizenship and foreign-resident nationality; nationality is not racial ancestry or phenotype.",
+        "evidenceKind": "official-definition-context",
+        "checkedDate": "2026-10-06",
+        "limitation": "Resident classification context only; no NFL recruitment, race crosswalk or phenotype frequencies are fitted."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.12035801957181368,
+        "White": 0.10912555483621283,
+        "Multiracial": 0.32300025042794334,
+        "Undisclosed": 0.06794133275598827,
+        "PacificIslander": 0.04394863529670196,
+        "HispanicLatino": 0.0015802361510681017,
+        "Asian": 0.3339067565883653,
+        "Indigenous": 0.00013921437190649673
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "China",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2020,
+        "publicationYear": 2021,
+        "url": "https://www.stats.gov.cn/english/PressRelease/202105/t20210510_1817187.html",
+        "basis": "Han/minority national-population denominator excludes Hong Kong, Macao, Taiwan and foreign residents of mainland China; headline total has a different scope.",
+        "evidenceKind": "official-census-communique",
+        "populationBasis": "31 mainland provinces/autonomous regions/municipalities and servicemen; exclusions retained from note 6.",
+        "retrieval": "full official English communiqué reviewed; detailed minority breakdown not adopted",
+        "numericalAdoption": false
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.12035801957181368,
+        "White": 0.10912555483621283,
+        "Multiracial": 0.32300025042794334,
+        "Undisclosed": 0.06794133275598827,
+        "PacificIslander": 0.04394863529670196,
+        "HispanicLatino": 0.0015802361510681017,
+        "Asian": 0.3339067565883653,
+        "Indigenous": 0.00013921437190649673
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Taiwan",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.12035801957181368,
+        "White": 0.10912555483621283,
+        "Multiracial": 0.32300025042794334,
+        "Undisclosed": 0.06794133275598827,
+        "PacificIslander": 0.04394863529670196,
+        "HispanicLatino": 0.0015802361510681017,
+        "Asian": 0.3339067565883653,
+        "Indigenous": 0.00013921437190649673
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Hong Kong",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2021,
+        "url": "https://www.census2021.gov.hk/en/terms_and_definitions.html",
+        "basis": "Self-identified ethnicity; local ethnic-minority definition is non-Chinese ethnicity, not an NFL classification.",
+        "evidenceKind": "official-definition-context",
+        "checkedDate": "2026-10-06",
+        "limitation": "Resident classification context only; no NFL recruitment, race crosswalk or phenotype frequencies are fitted."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.12035801957181368,
+        "White": 0.10912555483621283,
+        "Multiracial": 0.32300025042794334,
+        "Undisclosed": 0.06794133275598827,
+        "PacificIslander": 0.04394863529670196,
+        "HispanicLatino": 0.0015802361510681017,
+        "Asian": 0.3339067565883653,
+        "Indigenous": 0.00013921437190649673
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Italy",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "url": "https://demo.istat.it/app/?i=RCS&l=en",
+        "basis": "Separate resident-population tables by citizenship and country of birth; not race or phenotype.",
+        "evidenceKind": "directly-inspected-official-table-description",
+        "tableYears": "2002–2025",
+        "checkedDate": "2026-10-06",
+        "populationBasis": "Resident population on January 1 by municipality and sex; source changes from intercensal reconstruction to census from 2019.",
+        "limitation": "Public citizenship-by-birthplace cross-tabulation is not released. Separate margins do not identify a joint distribution, family ancestry, appearance or NFL recruitment. No numeric cells adopted.",
+        "additionalSources": [
+          {
+            "year": 2024,
+            "url": "https://www.istat.it/en/press-release/births-and-fertility-of-the-resident-population-year-2024/",
+            "basis": "Directly inspected release published2025-10-30 distinguishes births to two Italian, two foreign and mixed-citizenship parents. Parental citizenship is not ancestry or phenotype; no numerical generation weights adopted."
+          }
+        ]
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605224,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141183,
+        "PacificIslander": 0.0015608970385890047,
+        "HispanicLatino": 0.0014966477187570138,
+        "Asian": 0.00035138263296754694,
+        "Indigenous": 0.00006592523275436369
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Denmark",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "resultsYear": 2026,
+        "url": "https://www.dst.dk/en/Statistik/emner/borgere/befolkning/indvandrere-og-efterkommere",
+        "basis": "Registered resident immigrant/descendant classifications combine personal birthplace and whether a parent is both Denmark-born and a Danish citizen.",
+        "tableRetrieval": "Definition page directly inspected; no numerical tabulation adopted.",
+        "limitation": "Administrative origin may change with parental citizenship; preserve stable family history separately. Not race, appearance or NFL recruitment frequencies."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605224,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141183,
+        "PacificIslander": 0.0015608970385890047,
+        "HispanicLatino": 0.0014966477187570138,
+        "Asian": 0.00035138263296754694,
+        "Indigenous": 0.00006592523275436369
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Belgium",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2025,
+        "url": "https://statbel.fgov.be/fr/nouvelles/36-de-la-population-belge-est-dorigine-etrangere",
+        "basis": "Published June12 2025; origin uses current nationality, first recorded nationality and both parents first recorded nationalities. Birthplace is a separate migration indicator.",
+        "limitation": "Resident nationality-origin categories are not NFL race categories, ethnic self-identification, football recruitment or phenotype frequencies. Current 2026 summary page challenged retrieval; no 2026 numbers are asserted."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605224,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141183,
+        "PacificIslander": 0.0015608970385890047,
+        "HispanicLatino": 0.0014966477187570138,
+        "Asian": 0.00035138263296754694,
+        "Indigenous": 0.00006592523275436369
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Netherlands",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "publicationYear": 2022,
+        "url": "https://www.cbs.nl/en-gb/longread/statistische-trends/2022/new-classification-of-population-by-origin/4-the-new-classification-born-in-the-netherlands-or-abroad-and-country-of-origin-",
+        "basis": "Methodology separates personal/parental birthplace; Netherlands-born single origin field can prioritize maternal birthplace when both parents were born abroad.",
+        "limitation": "Migration classification, not race or NFL recruitment/phenotype evidence. Preserve both fictional family origins; no numerical table cells adopted."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605224,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141183,
+        "PacificIslander": 0.0015608970385890047,
+        "HispanicLatino": 0.0014966477187570138,
+        "Asian": 0.00035138263296754694,
+        "Indigenous": 0.00006592523275436369
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Greece",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2021,
+        "url": "https://www.statistics.gr/en/2021-census-res-pop-results",
+        "basis": "Official resident-census index distinguishes citizenship tablesA02/A03 from birthplace tableA04.",
+        "evidenceKind": "directly-inspected-official-table-index",
+        "checkedDate": "2026-10-06",
+        "populationBasis": "2021 Population-Housing Census resident population; listed release2023-08-31.",
+        "limitation": "The linked full booklet exceeded the retrieval content limit. Table cells and detailed questionnaire definitions remain unverified. The inspected index is not a race, family-ancestry, phenotype or NFL recruitment distribution; no numeric cells adopted."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.2849788547498303,
+        "White": 0.6028938502605224,
+        "Multiracial": 0.07647869396516739,
+        "Undisclosed": 0.03217374840141183,
+        "PacificIslander": 0.0015608970385890047,
+        "HispanicLatino": 0.0014966477187570138,
+        "Asian": 0.00035138263296754694,
+        "Indigenous": 0.00006592523275436369
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Haiti",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9183287123473942,
+        "White": 0.020815632106080898,
+        "Multiracial": 0.04620907352891355,
+        "Undisclosed": 0.012959767210971973,
+        "PacificIslander": 0.0004191587503374101,
+        "HispanicLatino": 0.0012057162746428394,
+        "Asian": 0.00003538472630249996,
+        "Indigenous": 0.000026555055356503218
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Bahamas",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9183287123473942,
+        "White": 0.020815632106080898,
+        "Multiracial": 0.04620907352891355,
+        "Undisclosed": 0.012959767210971973,
+        "PacificIslander": 0.0004191587503374101,
+        "HispanicLatino": 0.0012057162746428394,
+        "Asian": 0.00003538472630249996,
+        "Indigenous": 0.000026555055356503218
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Dominican Republic",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.40931232022320785,
+        "White": 0.18555653459802968,
+        "Multiracial": 0.2059604893887874,
+        "Undisclosed": 0.03465812828469364,
+        "PacificIslander": 0.0016814257738225564,
+        "HispanicLatino": 0.1612215275214824,
+        "Asian": 0.00018925777964168245,
+        "Indigenous": 0.0014203164303347152
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Puerto Rico",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only-limited",
+      "contextSource": {
+        "year": 2020,
+        "checkedDate": "2026-10-06",
+        "url": "https://cdn.www.census.gov/data/tables/2023/dec/2020-census-dhc.html",
+        "basis": "DHC race/Hispanic-origin guidance and linked Puerto Rico reporting table.",
+        "extractionLocation": "Race and Hispanic Origin; Note for Data Users; Supplemental Table1 link",
+        "limitation": "Guidance reviewed; Puerto Rico table cells not extracted. Question/coding changes limit2010–2020 comparisons. No birthplace/phenotype/NFL recruitment fit.",
+        "numericalAdoption": false
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.40931232022320785,
+        "White": 0.18555653459802968,
+        "Multiracial": 0.2059604893887874,
+        "Undisclosed": 0.03465812828469364,
+        "PacificIslander": 0.0016814257738225564,
+        "HispanicLatino": 0.1612215275214824,
+        "Asian": 0.00018925777964168245,
+        "Indigenous": 0.0014203164303347152
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Panama",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.40931232022320785,
+        "White": 0.18555653459802968,
+        "Multiracial": 0.2059604893887874,
+        "Undisclosed": 0.03465812828469364,
+        "PacificIslander": 0.0016814257738225564,
+        "HispanicLatino": 0.1612215275214824,
+        "Asian": 0.00018925777964168245,
+        "Indigenous": 0.0014203164303347152
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Belize",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2022,
+        "publicationDate": "2026-02",
+        "checkedDate": "2026-10-06",
+        "url": "https://sib.org.bz/wp-content/uploads/CensusKeyFindingsReport_2022.pdf",
+        "basis": "Resident census ethnicity; local categories with unknown/not-stated responses.",
+        "extractionLocation": "Sections1.2–1.3,3.1 and Table3.1, printed pages37–39,52–53",
+        "limitation": "Weighting/imputation and cross-tabulation limits; table/prose/chart Maya totals differ. Questionnaire response rules and numerical reconciliation pending.",
+        "numericalAdoption": false
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.40931232022320785,
+        "White": 0.18555653459802968,
+        "Multiracial": 0.2059604893887874,
+        "Undisclosed": 0.03465812828469364,
+        "PacificIslander": 0.0016814257738225564,
+        "HispanicLatino": 0.1612215275214824,
+        "Asian": 0.00018925777964168245,
+        "Indigenous": 0.0014203164303347152
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Saint Lucia",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9183287123473942,
+        "White": 0.020815632106080898,
+        "Multiracial": 0.04620907352891355,
+        "Undisclosed": 0.012959767210971973,
+        "PacificIslander": 0.0004191587503374101,
+        "HispanicLatino": 0.0012057162746428394,
+        "Asian": 0.00003538472630249996,
+        "Indigenous": 0.000026555055356503218
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Egypt",
+      "recruitmentWeight": 1,
+      "modelBirthShare": 0.00037664783427495275,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.6098315431975556,
+        "White": 0.1843062493739081,
+        "Multiracial": 0.16365817738812224,
+        "Undisclosed": 0.034424600827501504,
+        "PacificIslander": 0.0055669875966226955,
+        "HispanicLatino": 0.0016013521226932977,
+        "Asian": 0.0003759651106457175,
+        "Indigenous": 0.00023512438295082342
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "India",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.14314574897409607,
+        "White": 0.0865244062939129,
+        "Multiracial": 0.2881161113992552,
+        "Undisclosed": 0.08080486035125674,
+        "PacificIslander": 0.0026134778298599927,
+        "HispanicLatino": 0.0015035414388194896,
+        "Asian": 0.39712628148416534,
+        "Indigenous": 0.000165572228634283
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Philippines",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": 2020,
+        "publicationYear": 2023,
+        "url": "https://psa.gov.ph/content/ethnicity-philippines-2020-census-population-and-housing",
+        "tableUrl": "https://psa.gov.ph/system/files/phcd/PR%20on%20Ethnicity.pdf",
+        "statisticalWorkbookUrl": "https://psa.gov.ph/system/files/phcd/Ethnicity_Statistical%20Table.xlsx",
+        "tableRetrieval": "Official indexed PDF Table 1; direct final re-open failed. Statistical workbook not inspected; numeric adoption pending.",
+        "basis": "Household residents; respondent-reported ethnicity by descent; Table 1 denominator 108667043; local/foreign ethnicities and missing responses.",
+        "limitation": "Not a worldwide ancestry, NFL recruitment, race crosswalk or phenotype distribution; numerical model adoption pending."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.12035801957181365,
+        "White": 0.10912555483621285,
+        "Multiracial": 0.3230002504279432,
+        "Undisclosed": 0.06794133275598828,
+        "PacificIslander": 0.04394863529670197,
+        "HispanicLatino": 0.001580236151068101,
+        "Asian": 0.3339067565883654,
+        "Indigenous": 0.00013921437190649673
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "France",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "url": "https://www.insee.fr/en/metadonnees/definition/c1655",
+        "basis": "Separate nationality, immigrant and immigrant-descendant definitions; not racial proportions.",
+        "evidenceKind": "official-statistical-metadata-definitions",
+        "checkedDate": "2026-10-06",
+        "additionalSources": [
+          "https://www.insee.fr/en/metadonnees/definition/c1328",
+          "https://www.insee.fr/en/metadonnees/definition/c1676"
+        ],
+        "populationBasis": "Concept definitions for residents and France-born descendants; no numerical population table adopted.",
+        "limitation": "Immigrant means foreign nationality at birth and born abroad; current foreign nationality is distinct. A France-born person with an immigrant parent is a descendant, not automatically an immigrant. No race/appearance mapping."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.28497885474983037,
+        "White": 0.6028938502605221,
+        "Multiracial": 0.0764786939651674,
+        "Undisclosed": 0.03217374840141181,
+        "PacificIslander": 0.0015608970385890045,
+        "HispanicLatino": 0.001496647718757013,
+        "Asian": 0.0003513826329675469,
+        "Indigenous": 0.00006592523275436373
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Argentina",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.40931232022320796,
+        "White": 0.1855565345980298,
+        "Multiracial": 0.20596048938878725,
+        "Undisclosed": 0.03465812828469365,
+        "PacificIslander": 0.001681425773822558,
+        "HispanicLatino": 0.1612215275214825,
+        "Asian": 0.00018925777964168245,
+        "Indigenous": 0.0014203164303347156
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Kenya",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "source-located-table-unverified",
+      "contextSource": {
+        "year": 2019,
+        "url": "https://repository.knbs.or.ke/entities/publication/82d05ee4-9412-4eb5-bca2-40a5566b3bdd/full",
+        "basis": "Official census Volume IV identity and collection period verified; ethnicity table/questionnaire universe not inspected.",
+        "evidenceKind": "official-repository-metadata-only",
+        "populationBasis": "Unverified for any ethnicity table; repository dates census enumeration to August 2019.",
+        "retrieval": "repository entry reviewed; direct report retrieval failed",
+        "numericalAdoption": false
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045685,
+        "White": 0.00485567044648817,
+        "Multiracial": 0.02155841643919111,
+        "Undisclosed": 0.00906938953172116,
+        "PacificIslander": 0.0002933319650387703,
+        "HispanicLatino": 0.00021094342169614253,
+        "Asian": 0.000014857575498995854,
+        "Indigenous": 0.000012389015797580506
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Senegal",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.9639850016045685,
+        "White": 0.00485567044648817,
+        "Multiracial": 0.02155841643919111,
+        "Undisclosed": 0.00906938953172116,
+        "PacificIslander": 0.0002933319650387703,
+        "HispanicLatino": 0.00021094342169614253,
+        "Asian": 0.000014857575498995854,
+        "Indigenous": 0.000012389015797580506
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Pakistan",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "matching-national-evidence-not-yet-reviewed",
+      "contextSource": null,
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.14314574897409607,
+        "White": 0.0865244062939129,
+        "Multiracial": 0.2881161113992552,
+        "Undisclosed": 0.08080486035125674,
+        "PacificIslander": 0.0026134778298599927,
+        "HispanicLatino": 0.0015035414388194896,
+        "Asian": 0.39712628148416534,
+        "Indigenous": 0.000165572228634283
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    },
+    {
+      "country": "Sweden",
+      "recruitmentWeight": 0.4,
+      "modelBirthShare": 0.0001506591337099811,
+      "contextStatus": "reviewed-context-only",
+      "contextSource": {
+        "year": null,
+        "url": "https://www.statistikdatabasen.scb.se/pxweb/en/ssd/START__BE__BE0101__BE0101Q/UtlSvBakgGrov/",
+        "basis": "Background defined from own and parental birthplaces; not race or phenotype.",
+        "evidenceKind": "official-statistical-table-definitions",
+        "tableYears": "2002–2024",
+        "checkedDate": "2026-10-06",
+        "populationBasis": "Persons in Swedish population statistics; definitions inspected, no numeric cells extracted.",
+        "limitation": "Sweden-born with one Sweden-born parent is Swedish-background. This does not exclude mixed family origins or supply NFL reporting-category probabilities."
+      },
+      "conditionalStatus": "fictional-affinities-fitted-to-dated-league-and-assumed-birth-margins",
+      "categoryProbabilities": {
+        "Black": 0.28497885474983037,
+        "White": 0.6028938502605221,
+        "Multiracial": 0.0764786939651674,
+        "Undisclosed": 0.03217374840141181,
+        "PacificIslander": 0.0015608970385890045,
+        "HispanicLatino": 0.001496647718757013,
+        "Asian": 0.0003513826329675469,
+        "Indigenous": 0.00006592523275436373
+      },
+      "outstanding": [
+        "Empirical recruitment/heritage joint evidence or documented assumption review",
+        "Local/diaspora/mixed naming-context review",
+        "Phenotype evidence or separately labeled artistic priors",
+        "Visible within-country individual diversity acceptance"
+      ]
+    }
+  ]
+}

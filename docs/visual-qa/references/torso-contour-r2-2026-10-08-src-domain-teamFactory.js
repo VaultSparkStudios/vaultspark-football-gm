@@ -1,0 +1,555 @@
+import { CONTRACT_RULES, ROSTER_TEMPLATE } from "../config.js";
+import { FOOTBALL_RULES } from "../sport/football/rules.js";
+import { buildSyntheticTeamRoster, createSyntheticPlayer } from "./playerFactory.js";
+import { assignFieldableActiveRoster, capSpaceForTeam } from "../engine/capCompliance.js";
+import { STARTER_COUNTS } from "./talentDistribution.js";
+import { buildContract, normalizeContract, restructureContract, contractMarketOptions, contractBaseMinimum } from "./contracts.js";
+import { calcTeamOffenseDefense } from "./ratings.js";
+import { derivedRng } from "../utils/rng.js";
+import { createSalaryCapModel } from "../data/nflSalaryCap.js";
+import { buildPracticeContract } from './practiceContracts.js';
+
+/** A contract already at the minimum cannot be demoted any further. */
+const generatedContract = player => ["generated-roster", "generated-draft"].includes(player.profile?.source);
+
+/**
+ * The one shape of a team's in-season record.
+ *
+ * S71: this existed twice — once in `createTeam` and once in
+ * `resetTeamSeasonState` — and the two drifted. The reset copy omitted
+ * `drivesFor` / `drivesAgainst`, so the first `season.drivesFor += n` of every
+ * season ran against `undefined` and pinned the field at `NaN` for the rest of
+ * the year. Because every reader took it as `drivesFor || 0`, the NaN was
+ * laundered into a zero denominator rather than raised, and the approximate-value
+ * authority silently lost the whole offensive side of the league (see
+ * `src/stats/approximateValue.js`). Declared once, it cannot drift again.
+ *
+ * @param {number} year — the season this record covers
+ */
+export function createTeamSeasonState(year) {
+  return {
+    year,
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    pointsFor: 0,
+    pointsAgainst: 0,
+    yardsFor: 0,
+    yardsAgainst: 0,
+    drivesFor: 0,
+    drivesAgainst: 0,
+    turnovers: 0,
+    weekResults: []
+  };
+}
+
+const TEAM_ID_ALIASES = {
+  JAC: "JAX",
+  LA: "LAR",
+  STL: "LAR",
+  SD: "LAC",
+  OAK: "LV",
+  LVR: "LV",
+  GNB: "GB",
+  KAN: "KC",
+  NWE: "NE",
+  TAM: "TB",
+  NOR: "NO",
+  SFO: "SF",
+  ARZ: "ARI",
+  WAS: "WAS",
+  WSH: "WAS"
+};
+
+function normalizeTeamId(teamId) {
+  const value = (teamId || "FA").toUpperCase();
+  return TEAM_ID_ALIASES[value] || value;
+}
+
+const TEAM_NAME_PARTS = {
+  city: [
+    "Austin",
+    "Boise",
+    "Boulder",
+    "Buffalo",
+    "Charleston",
+    "Cincinnati",
+    "Cleveland",
+    "Columbus",
+    "Dayton",
+    "Denver",
+    "Des Moines",
+    "Detroit",
+    "El Paso",
+    "Fresno",
+    "Grand Rapids",
+    "Honolulu",
+    "Indianapolis",
+    "Jackson",
+    "Knoxville",
+    "Louisville",
+    "Madison",
+    "Milwaukee",
+    "Nashville",
+    "Norfolk",
+    "Oklahoma City",
+    "Omaha",
+    "Orlando",
+    "Portland",
+    "Raleigh",
+    "Salt Lake City",
+    "San Antonio",
+    "Tucson"
+  ],
+  mascot: [
+    "Guardians",
+    "Outlaws",
+    "Sentinels",
+    "Phantoms",
+    "Comets",
+    "Marauders",
+    "Titans",
+    "Voyagers",
+    "Stallions",
+    "Vipers",
+    "Dragons",
+    "Cyclones",
+    "Wolves",
+    "Knights",
+    "Raiders",
+    "Thunder",
+    "Reapers",
+    "Warhawks",
+    "Bandits",
+    "Bulls",
+    "Ravens",
+    "Sharks",
+    "Mustangs",
+    "Pioneers",
+    "Sabers",
+    "Storm",
+    "Blaze",
+    "Giants",
+    "Coyotes",
+    "Aces",
+    "Kings",
+    "Pilots"
+  ]
+};
+
+function hashString(value) {
+  let hash = 0;
+  for (const char of String(value || "")) {
+    hash = (hash * 33 + char.charCodeAt(0)) >>> 0;
+  }
+  return hash;
+}
+
+function splitIdentityWords(value) {
+  return String(value || "")
+    .toUpperCase()
+    .split(/[^A-Z0-9]+/)
+    .filter(Boolean);
+}
+
+function sanitizeAbbreviation(value) {
+  return String(value || "")
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "")
+    .slice(0, 4);
+}
+
+function buildAbbreviationCandidates(city, mascot) {
+  const cityWords = splitIdentityWords(city);
+  const mascotWords = splitIdentityWords(mascot);
+  const cityInitials = cityWords.map((word) => word[0]).join("");
+  const mascotInitials = mascotWords.map((word) => word[0]).join("");
+  const cityCompact = cityWords.join("");
+  const mascotCompact = mascotWords.join("");
+  const candidates = [
+    `${cityInitials.slice(0, 2)}${mascotInitials.slice(0, 1)}`,
+    `${cityCompact.slice(0, 2)}${mascotInitials.slice(0, 1)}`,
+    `${cityInitials.slice(0, 1)}${mascotCompact.slice(0, 2)}`,
+    `${cityCompact.slice(0, 1)}${mascotCompact.slice(0, 2)}`,
+    `${cityCompact.slice(0, 2)}${mascotCompact.slice(0, 1)}`,
+    `${cityInitials.slice(0, 1)}${mascotCompact.slice(0, 3)}`,
+    `${cityInitials}${mascotInitials}`,
+    cityCompact.slice(0, 3),
+    mascotCompact.slice(0, 3)
+  ];
+  return [...new Set(candidates.map(sanitizeAbbreviation).filter((candidate) => candidate.length >= 2))];
+}
+
+function resolveTeamAbbreviation(city, mascot, used, seedKey) {
+  for (const candidate of buildAbbreviationCandidates(city, mascot)) {
+    if (!used.has(candidate)) {
+      used.add(candidate);
+      return candidate;
+    }
+  }
+
+  const base = sanitizeAbbreviation(`${city[0] || "T"}${mascot.slice(0, 2) || "M"}`).slice(0, 3) || "TM";
+  const hash = hashString(seedKey).toString(36).toUpperCase();
+  for (let index = 0; index < hash.length; index += 1) {
+    const fallback = sanitizeAbbreviation(`${base.slice(0, 2)}${hash[index]}`);
+    if (fallback.length >= 3 && !used.has(fallback)) {
+      used.add(fallback);
+      return fallback;
+    }
+  }
+
+  let serial = 0;
+  while (serial < 100) {
+    const fallback = sanitizeAbbreviation(`${base.slice(0, 2)}${serial}`);
+    if (fallback.length >= 3 && !used.has(fallback)) {
+      used.add(fallback);
+      return fallback;
+    }
+    serial += 1;
+  }
+
+  used.add(base);
+  return base;
+}
+
+function buildRandomizedTeamIdentities(year) {
+  const cities = [...TEAM_NAME_PARTS.city];
+  const mascots = [...TEAM_NAME_PARTS.mascot];
+  const usedAbbreviations = new Set();
+  const identities = new Map();
+  for (const meta of FOOTBALL_RULES.teams) {
+    const cityIndex = hashString(`${year}-${meta.id}-city`) % cities.length;
+    const mascotIndex = hashString(`${year}-${meta.id}-mascot`) % mascots.length;
+    const city = cities.splice(cityIndex, 1)[0];
+    const mascot = mascots.splice(mascotIndex, 1)[0];
+    identities.set(meta.id, {
+      city,
+      nickname: mascot,
+      name: `${city} ${mascot}`,
+      abbrev: resolveTeamAbbreviation(city, mascot, usedAbbreviations, `${year}-${meta.id}-${city}-${mascot}`)
+    });
+  }
+  return identities;
+}
+
+export function ensureTeamIdentity(team) {
+  if (!team || typeof team !== "object") return team;
+  const name = String(team.name || "").trim();
+  const words = name.split(/\s+/).filter(Boolean);
+  const city = team.city || (words.length > 1 ? words.slice(0, -1).join(" ") : name || team.id);
+  const nickname = team.nickname || words.at(-1) || name || team.id;
+  return {
+    ...team,
+    city,
+    nickname,
+    abbrev: sanitizeAbbreviation(team.abbrev) || sanitizeAbbreviation(team.id) || sanitizeAbbreviation(`${city[0]}${nickname[0]}`)
+  };
+}
+
+function createTeam(meta, year, randomizedIdentities = null) {
+  const identity = randomizedIdentities?.get(meta.id) || {
+    city: meta.name.split(" ").slice(0, -1).join(" "),
+    nickname: meta.name.split(" ").at(-1),
+    name: meta.name,
+    abbrev: meta.id
+  };
+  return {
+    id: meta.id,
+    name: identity.name,
+    city: identity.city,
+    nickname: identity.nickname,
+    abbrev: identity.abbrev,
+    conference: meta.conference,
+    division: meta.division,
+    salaryCap: FOOTBALL_RULES.structure.salaryCap,
+    season: createTeamSeasonState(year),
+    offenseRating: 60,
+    defenseRating: 60,
+    overallRating: 60,
+    playoffSeed: null,
+    coaching: {
+      offense: 72,
+      defense: 72,
+      discipline: 72
+    },
+    scheme: {
+      passRate: 0.54,
+      aggression: 0.5
+    },
+    chemistry: 70,
+    owner: buildFranchiseEconomics(meta.id)
+  };
+}
+
+/**
+ * Starting franchise economics, differentiated per club (S63 second-order).
+ *
+ * Every team used to be born with byte-identical owner economics — market size
+ * 1, ticket price 120, cash 150M, staff budget 28M, facilities 72 — and the
+ * owner-profile builder preserves whatever is already present, so those
+ * constants survived every later generation step. The result was a league with
+ * no big-market/small-market axis at all: the revenue model
+ * (`marketSize × ticketPrice × attendance`) returned the same number for all
+ * thirty-two clubs, the owner-pressure loop had nothing to differentiate, and
+ * every front office shopped the coaching market with the same budget.
+ *
+ * Values are derived from the team id, so they are stable across reloads,
+ * saves and both adapters without consuming any RNG stream. Each band is
+ * centred on the previous constant, so the league average is unchanged and this
+ * adds spread rather than shifting balance.
+ */
+export function buildFranchiseEconomics(teamId) {
+  const rng = derivedRng(`economics|${teamId}`);
+  return {
+    marketSize: Number(rng.float(0.82, 1.24).toFixed(3)),
+    ticketPrice: rng.int(96, 148),
+    fanInterest: rng.int(62, 80),
+    cash: rng.int(112, 190) * 1_000_000,
+    staffBudget: rng.int(22, 35) * 1_000_000,
+    facilities: {
+      training: rng.int(64, 82),
+      rehab: rng.int(64, 82),
+      analytics: rng.int(64, 82)
+    },
+    finances: {
+      revenueYtd: 0,
+      expensesYtd: 0
+    }
+  };
+}
+
+export function createLeagueBase(year, rng = null) {
+  const randomizedIdentities = buildRandomizedTeamIdentities(year);
+  const capModel = createSalaryCapModel(year);
+  return {
+    year,
+    capModel,
+    rulesModelVersion: "nfl-2026-weekly-v1",
+    teams: FOOTBALL_RULES.teams.map((meta) => ({ ...createTeam(meta, year, randomizedIdentities), salaryCap: capModel.baseCap })),
+    players: [],
+    retiredPlayers: [],
+    retiredNumbers: [],
+    champions: [],
+    history: [],
+    weeklyHistory: [],
+    gameArchive: [],
+    awards: [],
+    capLedger: {},
+    teamCapOverride: Object.fromEntries(FOOTBALL_RULES.teams.map(team => [team.id, capModel.baseCap])),
+    depthCharts: {},
+    depthChartSnapShares: {},
+    waiverWire: [],
+    pendingWaiverClaims: [],
+    pendingDraft: null
+  };
+}
+
+function allocateImportedPlayers(teams, importedPlayers, year, rng) {
+  if (!importedPlayers.length) {
+    const generated = [];
+    for (const team of teams) generated.push(...buildSyntheticTeamRoster(team.id, year, rng));
+    return generated;
+  }
+
+  const playersByTeam = new Map();
+  for (const p of importedPlayers) {
+    const teamId = normalizeTeamId(p.teamId);
+    if (!playersByTeam.has(teamId)) playersByTeam.set(teamId, []);
+    playersByTeam.get(teamId).push({ ...p, teamId });
+  }
+
+  const assigned = [];
+  for (const team of teams) {
+    const incoming = playersByTeam.get(team.id) || [];
+    const byPosition = {};
+    for (const p of incoming) {
+      if (!byPosition[p.position]) byPosition[p.position] = [];
+      byPosition[p.position].push(p);
+    }
+    for (const [position, count] of Object.entries(ROSTER_TEMPLATE)) {
+      const existing = (byPosition[position] || []).sort((a, b) => b.overall - a.overall);
+      for (let i = 0; i < count; i += 1) {
+        const player = existing[i] || createSyntheticPlayer({ teamId: team.id, position, year, rng });
+        player.teamId = team.id;
+        assigned.push(player);
+      }
+    }
+  }
+
+  return assigned;
+}
+
+export function initializeLeagueRoster({ league, importedPlayers, rng }) {
+  const players = allocateImportedPlayers(league.teams, importedPlayers || [], league.year, rng);
+  league.players = players;
+  for (const team of league.teams) {
+    const teamPlayers = players
+      .filter((player) => player.teamId === team.id && player.status === "active")
+      .sort((a, b) => b.overall - a.overall);
+    // Final initial slots, not the factory's provisional roles, choose pay basis.
+    const {activeIds}=assignFieldableActiveRoster(teamPlayers,{practiceSettings:league.settings||{}});
+    for(const player of teamPlayers) {
+      player.rosterSlot=activeIds.has(player.id)?'active':'practice';
+      if(!generatedContract(player)) continue;
+      if(player.rosterSlot==='practice') player.contract=buildPracticeContract(player,{year:league.year});
+      else if(player.contract.kind==='weekly-practice-contract-v1') player.contract=buildContract({overall:player.overall,
+        years:1,salary:contractBaseMinimum(contractMarketOptions(league,player)),...contractMarketOptions(league,player),rng});
+    }
+    // S104 - the last bare `53` in the engine, and it was also the last
+    // position-blind slotting. Generation now assigns the active roster through
+    // the same authority every subsequent season uses, so a league cannot be
+    // created in a shape the running engine would never produce.
+    // A generated club must be able to afford the roster it is generated with.
+    //
+    // S104 - pricing the roster by role (see `buildSyntheticTeamRoster`) took
+    // the canonical seed from six over-cap clubs at kickoff to one, over by
+    // 0.5M of 255M. The remaining club is not a rounding error to wave through:
+    // the baseline was zero, and "the cap binds from the first snap" is the
+    // property S89 built the compliance authority to establish.
+    //
+    // It is closed with more of the same rule rather than a new one. A club
+    // that cannot afford its roster signs another minimum deal - dearest
+    // contract outside the fieldable minimum first, since that is the one whose
+    // holder is most obviously being paid above his role. No threshold moves,
+    // no salary curve is shaved, and the loop is bounded by the number of
+    // players who could be demoted, so it either reaches legality or leaves the
+    // club visibly over and lets the compliance pass see it.
+    // The existing initialization-only affordability pass protects actual
+    // starters. Minimum fieldable depth also includes backups and must not
+    // protect every bridge salary from this generation-time contract choice.
+    const affordable = new Set(Object.entries(STARTER_COUNTS).flatMap(([position, count]) =>
+      teamPlayers.filter(player => player.position === position).slice(0, count).map(player => player.id)
+    ));
+    let demotions = 0;
+    while (capSpaceForTeam(league, team.id) < 0 && demotions < teamPlayers.length) {
+      const candidate = teamPlayers
+        .filter((player) => generatedContract(player) && !affordable.has(player.id) && Number(player.contract?.capHit || 0) > contractBaseMinimum(contractMarketOptions(league, player)))
+        .sort(
+          (a, b) =>
+            Number(b.contract?.capHit || 0) - Number(a.contract?.capHit || 0) ||
+            String(a.id).localeCompare(String(b.id))
+        )[0];
+      if (!candidate) break;
+      candidate.contract = buildContract({
+        overall: candidate.overall,
+        years: 1,
+        salary: contractBaseMinimum(contractMarketOptions(league, candidate)),
+        ...contractMarketOptions(league, candidate),
+        rng
+      });
+      demotions += 1;
+    }
+
+    // A few expensive starting units also need ordinary bonus conversion.
+    // Preserve total compensation and account for the deferred obligation
+    // through the existing contract authority, once per multi-year deal.
+    for (const player of teamPlayers.slice().sort((a, b) => Number(b.contract?.capHit || 0) - Number(a.contract?.capHit || 0))) {
+      if (capSpaceForTeam(league, team.id) >= 0) break;
+      if (!generatedContract(player) || player.contract?.yearsRemaining <= 1) continue;
+      const updated = restructureContract(player.contract, rng, { minBaseSalary: contractBaseMinimum(contractMarketOptions(league, player), player.contract.yearsRemaining) });
+      if (updated.capHit < player.contract.capHit) player.contract = updated;
+    }
+
+    // Generation assembles an existing fictional roster, before any contract
+    // is signed in a live franchise. Expensive combinations negotiate their
+    // initial excess compensation within the available team budget. Imported
+    // and subsequently persisted contracts never participate in this step.
+    const buffer = (league.teamCapOverride?.[team.id] || FOOTBALL_RULES.structure.salaryCap)
+      * derivedRng(`initial-budget:${team.id}:${league.year}`).float(.03, .07);
+    if (capSpaceForTeam(league, team.id) < buffer) {
+      const candidates = teamPlayers.filter(generatedContract).map(player => ({ player,
+        contract: normalizeContract(player.contract),
+        floor: contractBaseMinimum(contractMarketOptions(league, player), player.contract.yearsRemaining) }));
+      const excess = candidates.reduce((sum, { contract, floor }) => sum + Math.max(0, contract.capHit - floor), 0);
+      const factor = Math.max(0, 1 - (buffer - capSpaceForTeam(league, team.id)) / Math.max(1, excess));
+      for (const { player, contract, floor } of candidates) {
+        if (contract.capHit <= floor) continue;
+        const baseSalary = Math.round(floor + Math.max(0, contract.baseSalary - floor) * factor);
+        const signingBonus = Math.round(contract.signingBonus * factor);
+        const guaranteed = Math.round(baseSalary * .42 + signingBonus);
+        player.contract = normalizeContract({ ...contract, salary: baseSalary + signingBonus, baseSalary, signingBonus, guaranteed,
+          capHit: Math.round(baseSalary + signingBonus / contract.prorationYears),
+          deadCapRemaining: Math.round(signingBonus + guaranteed * .35) });
+      }
+    }
+
+    teamPlayers.forEach((player, index) => {
+      player.rosterSlot = activeIds.has(player.id) ? "active" : "practice";
+      player.depthChartOrder = index + 1;
+    });
+    league.depthCharts[team.id] = buildDefaultDepthChart(teamPlayers);
+    league.capLedger[team.id] = {
+      rollover: 0,
+      deadCapCurrentYear: 0,
+      deadCapNextYear: 0
+    };
+    team.coaching = {
+      offense: rng.int(64, 92),
+      defense: rng.int(64, 92),
+      discipline: rng.int(64, 92)
+    };
+    team.scheme = {
+      passRate: Number((rng.float(0.42, 0.64)).toFixed(2)),
+      aggression: Number((rng.float(0.35, 0.75)).toFixed(2))
+    };
+  }
+  recalculateAllTeamRatings(league);
+  return league;
+}
+
+function buildDefaultDepthChart(teamPlayers) {
+  const chart = {};
+  const positions = ["QB", "RB", "WR", "TE", "OL", "DL", "LB", "DB", "K", "P"];
+  for (const position of positions) {
+    chart[position] = teamPlayers
+      .filter((player) => player.position === position)
+      .sort((a, b) => b.overall - a.overall)
+      .map((player) => player.id);
+  }
+  return chart;
+}
+
+export function getTeamPlayers(league, teamId) {
+  return league.players.filter(
+    (p) =>
+      p.teamId === teamId &&
+      p.status === "active" &&
+      (p.rosterSlot || "active") === "active" &&
+      p.designations?.ir !== true &&
+      p.designations?.pup !== true &&
+      p.designations?.nfi !== true &&
+      p.designations?.gameDayInactive !== true &&
+      (!p.injury || p.injury.weeksRemaining <= 0) &&
+      (p.suspensionWeeks || 0) <= 0
+  );
+}
+
+export function getAllTeamPlayers(league, teamId) {
+  return league.players.filter((p) => p.teamId === teamId && p.status === "active");
+}
+
+// Reserve employees still carry contracts but cannot occupy active/practice
+// places or be reassigned by an automatic roster-quality sort.
+export function getRosterCandidates(league, teamId) {
+  return getAllTeamPlayers(league, teamId).filter(p => p.rosterSlot !== 'reserve');
+}
+
+export function recalculateAllTeamRatings(league) {
+  for (const team of league.teams) {
+    const roster = getTeamPlayers(league, team.id);
+    const ratings = calcTeamOffenseDefense(roster);
+    team.offenseRating = ratings.offenseRating;
+    team.defenseRating = ratings.defenseRating;
+    team.runDefenseRating = ratings.runDefenseRating;
+    team.passDefenseRating = ratings.passDefenseRating;
+    team.overallRating = ratings.overallRating;
+  }
+}
+
+export function resetTeamSeasonState(league, year) {
+  league.year = year;
+  for (const team of league.teams) {
+    team.season = createTeamSeasonState(year);
+    team.playoffSeed = null;
+  }
+}

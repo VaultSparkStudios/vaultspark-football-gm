@@ -1,0 +1,87 @@
+{
+  "kind": "annual-readiness-and-post-final-compensation-verification",
+  "recordedAt": "2026-10-07T10:00:14.610Z",
+  "status": "scoped-pass",
+  "sourceHashes": {
+    "src/runtime/GameSession.js": "8bb5e85f4ed74dc389ea391e095a5509b53083065001d4f2255bcbd7a63f1a3f",
+    "src/runtime/advanceWeekCommand.js": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007",
+    "src/domain/elevationInjuryPay.js": "c641423c38a7b3e49cc115daec447f6e69294e4df0c2397f87b45107c61ff69c",
+    "src/domain/preRolloverMedicalCalendar.js": "2b9773c39f097448ddbbdaa88c0a9bf6305139c55198acfb983003151e8412e6"
+  },
+  "evidence": [
+    {
+      "kind": "focused",
+      "file": ".cache/logs/applied-annual-command-cap-v2-focused.log",
+      "sha256": "4e23622d1d73f297631cc1c2d2147e7c0b068d5eef12800ec62868e5d3ecef13",
+      "tests": 43
+    },
+    {
+      "kind": "saveServiceCap",
+      "file": ".cache/logs/applied-annual-cap-v2-save-service.log",
+      "sha256": "1faa28f86ba33651b23f2b4215b8fd8199a915121ffeffde9fe0df4da34d2beb",
+      "tests": 42
+    },
+    {
+      "kind": "builtWorkerAndInPage",
+      "file": ".cache/logs/applied-annual-cap-v2-built-final.log",
+      "sha256": "3f0eb4096e79b4538c571b69bcbd1f0aba9cebc08ed1a1df93b7786767093e15",
+      "tests": 4
+    },
+    {
+      "kind": "actualSavedFailure",
+      "file": ".cache/current-annual-calendar-cap-v2-repair.json",
+      "sha256": "521f4a6b5a7001470be4e5202045c1fca5e1bfd7f0efd3daaf7b2d89db9452e4"
+    },
+    {
+      "kind": "pagesBuild",
+      "file": ".cache/logs/applied-annual-cap-v2-build.log",
+      "sha256": "85aae29f40d30fdd5d07eae5fcd1e1c56ea5be73ab9ec3a6edb427d4bc268161"
+    }
+  ],
+  "testHashes": {
+    "test/annual-injury-command-readiness.test.js": "fca4387a964d47c17a01281f0022b88ecc00252b8e35bdb02c473bb58c702dac",
+    "test/advance-week-command.test.js": "5ee77d3e1f897f797f9a98d6a54ad9e4a5b7678a17c90d83aed5905f97869777",
+    "test/pre-rollover-medical-calendar.test.js": "1a89505d8318c8013c6e3bd752f2196556dc260c62f1a2714e0bd7172c6ec68e",
+    "test/elevation-injury-pay.test.js": "e3d286b06c8087dd67a03d39ca0f02337fdd3e017ca0e70e9144a9e9d5574470",
+    "test/practice-postseason-pay.test.js": "335f36e8dc1b455c1bd7068b4224c392fc2ddb60ef5c2f62153c12c3b267df21",
+    "test/practice-squad-injured.test.js": "56f6ff7007e71bfdd5970803dc211753529e8bc72ee1e5cc5635c06e69e6c277",
+    "tests-ui/pre-rollover-medical-client.spec.js": "2390a95c40155de2a96387aa89abbb496930581fdf4d001f04cdf982c2ba9e62"
+  },
+  "deployManifestSha256": "473d24cca0373b9aba60e46f58bcee0de82196276a4344a86ac6956b45ded39d",
+  "review": {
+    "subject": "Exact reviewed runtime application and new built annual-refusal coverage",
+    "rounds": [
+      {
+        "round": 1,
+        "verdict": "fix",
+        "findings": 1,
+        "fixed": 1,
+        "detail": "Serialized whole-save comparison incorrectly included legitimate API request telemetry; exact reviewed source application passed."
+      },
+      {
+        "round": 2,
+        "verdict": "pass",
+        "findings": 0,
+        "tests": 4,
+        "detail": "All saved fields compared structurally except anchored named API-request telemetry; independent negative controls retain changes to RNG, injuries, payroll, pipeline and unrelated telemetry."
+      }
+    ],
+    "testSha256": "2390a95c40155de2a96387aa89abbb496930581fdf4d001f04cdf982c2ba9e62",
+    "reviewer": "/root/studio_reviewer",
+    "limits": [
+      "Not current-source30, full NFL rules, long rights, complete appearance or release acceptance"
+    ]
+  },
+  "earlierCareer": {
+    "file": "docs/MANAGED_CAREER_2026-10-07.json",
+    "sha256": "ea93b728c520416ee5e73cbf8dfee0783b7e4345096b753f9ca99598f61788d9",
+    "scope": "Frozen previous runtime: 30 actual managed seasons; does not verify these later corrections"
+  },
+  "limits": [
+    "Four modeled pre-rollover medical weeks, not exact dated NFL scheduling",
+    "Long unresolved continuation and agreed settlement remain incomplete",
+    "Browser refusal preserves saved franchise fields except specifically named API request counters/timings and lastUpdated",
+    "Post-final classification is a disclosed CBA-derived simulation inference; untagged historical receipts retain their prior policy",
+    "Not full-feature, current-source30, complete appearance, visual naturalism or release acceptance"
+  ]
+}

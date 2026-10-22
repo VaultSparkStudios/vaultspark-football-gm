@@ -1,0 +1,54 @@
+{
+  "component": "headless-regular-medical-pay-before-recovery",
+  "round": 1,
+  "verdict": "PASS",
+  "sourceHashes": {
+    "src/engine/seasonSimulator.js": "a92300d41a4c5af2e3c8262ddc4d42d4f3f11802a717c72e196f9634650d8fd8",
+    "src/domain/regularMedicalRecovery.js": "642fc8735d95687b6a8ea522c61ee3e52954bdf595482410731d0500454eb3a4",
+    "src/engine/weeklySimulator.js": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+    "src/runtime/GameSession.js": "c4f880051da9f0f273f483cd6c3e75a893c93baddb2d3661ae0f64c54c2fdb52",
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "test/headless-regular-medical.test.js": "8795fa161d22e01f792fa7ab8cc451c973d4415ae004d82f5a206f67bb53d5a9",
+    "test/helpers/regularMedicalFixture.js": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/headless-regular-medical.test.js test/regular-medical-recovery.test.js test/regular-injury-accrual.test.js",
+      "pass": 21,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 32946.8744,
+      "scope": "Seven new headless cases plus six regular recovery and eight current-year accrual cases. Actual complete 2027 season, retired/active original-source clearance, base/top-up reconciliation, readiness refusal, source/year pre-schedule refusal, incident timing, bye/personnel/restore cases."
+    },
+    {
+      "command": "node --test test/nfl-game-day-roster.test.js test/nfl-player-service.test.js test/sport-registry.test.js",
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 25527.7975,
+      "scope": "Actual roster/refusal/service outcomes, full headless scheduled service, default/restored sport resolution."
+    },
+    {
+      "command": "node .cache/headless-regular-independent.mjs",
+      "result": "PASS",
+      "checks": [
+        "Direct shared weekly simulation does not heal a retired old-source injury or add admitted wages; recovery remains caller-owned.",
+        "Registered non-football pack bypasses the football medical/year authority even with a mismatched football-style financial year; no injury or league state changes."
+      ]
+    }
+  ],
+  "assessment": [
+    "Modern football headless facade captures current-year continuation eligibility, privately previews old-source wage/recovery and CPU readiness, then applies recovery before the shared actual weekly game path and reconciles current-year wages after actual base payroll.",
+    "Full season validates medical/source authority before schedule RNG; refusal regressions preserve complete snapshots, statistics and RNG.",
+    "A current-year active source at or after the requested incident week is excluded from premature recovery; prior-year and retired sources remain eligible.",
+    "Interactive GameSession continues using shared weeklySimulator directly after its own maintenance, so the newly extracted headless wrapper does not duplicate interactive recovery.",
+    "The new medical path is explicitly football and year2023-or-later; earlier years retain the prior weekly behavior."
+  ],
+  "limits": [
+    "Scoped PASS for this headless regular medical integration; not an assertion that every unexpected runtime failure after an applied game rolls back an entire week or season.",
+    "The helper does not make a repeated weekly simulation command idempotent; wage receipt retries remain separately validated.",
+    "Annual default adoption, postseason integration and Salary/Benefits/pension legal policy are separate authorities, not completed by this component.",
+    "No independently certified current browser/build receipt, full NFL rules, full appearance, current thirty-year run or release approval."
+  ]
+}

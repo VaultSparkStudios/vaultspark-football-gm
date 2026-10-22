@@ -1,0 +1,61 @@
+import {test,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+import {createSession} from '../src/runtime/bootstrap.js';
+import {declareStandardElevation,settleStandardElevationGame,standardElevationGame} from '../src/domain/standardElevations.js';
+import {canonicalFootballGame} from '../src/domain/footballGameReference.js';
+import {applyInjury} from '../src/engine/injurySystem.js';
+import {startStaticClientHost,configureClient,createClientLeague,readClient,assertRuntime,saveSlot,waitGameReady} from './helpers/static-client.js';
+let host;
+test.beforeAll(async()=>{host=await startStaticClientHost();});
+test.afterAll(async()=>{await host?.close();});
+for(const worker of [true,false])test(`built ${worker?'worker':'in-page'} retains explicitly earned cross-year injury wages through franchise replacement/load/reload`,async({page})=>{
+ test.setTimeout(180000);
+ const session=createSession({seed:117,startYear:2026,controlledTeamId:'BUF'}),league=session.league;
+ const p=league.players.find(p=>p.teamId==='BUF'&&p.rosterSlot==='practice'&&p.experience===0&&!p.injury?.weeksRemaining&&!p.suspensionWeeks);
+ const playerId=p.id,game=standardElevationGame({year:2026,week:18,homeTeamId:'BUF',awayTeamId:'MIA'});
+ expect(declareStandardElevation({league,player:p,teamId:'BUF',game,capSpace:1e8}).ok).toBe(true);
+ settleStandardElevationGame({league,result:{...game,winnerId:'BUF'}});
+ applyInjury(p,{type:'Controlled qualifying injury',weeksRemaining:20},{gameId:game.gameId});
+ const final=canonicalFootballGame({year:2026,homeTeamId:'BUF',awayTeamId:'MIA',seasonType:'playoffs',label:'super-bowl',round:'super-bowl'});
+ league.gameArchive.push({...final,homeScore:21,awayScore:14,winnerId:'BUF'});session.phase='offseason';session.currentWeek=19;
+ await configureClient(page,worker);await createClientLeague(page,host.origin,{seed:117,year:2026,team:'BUF',mode:'play'});await assertRuntime(page,worker);
+ const result=await page.evaluate(async({snapshot,playerId})=>{
+  const {advancePreRolloverMedicalCalendar}=await import('./src/domain/preRolloverMedicalCalendar.js');
+  const {applyCapRollover}=await import('./src/engine/offseasonSimulator.js');
+  const {openNextFinancialYear}=await import('./src/data/nflSalaryCap.js');
+  const {recordAdmittedInjuryPeriodPay}=await import('./src/domain/admittedInjuryPayroll.js');
+  advancePreRolloverMedicalCalendar(snapshot.league,{completedYear:2026,preserveAdmittedRights:true,getTeamModifiers:()=>({extraRecoveryWeeks:0})});
+  applyCapRollover(snapshot.league,{completedYear:2026});openNextFinancialYear(snapshot.league,2026);
+  const p=snapshot.league.players.find(p=>p.id===playerId);
+  p.practiceContractHistory=[structuredClone(p.contract)];p.teamId='FA';p.rosterSlot='active';
+  p.contract={salary:0,yearsRemaining:0,capHit:0,baseSalary:0,signingBonus:0,guaranteed:0,deadCapRemaining:0,restructureCount:0};
+  // Explicit built domain earning period; automatic calendar dispatch remains
+  // unchanged and is not claimed as repaired by this component.
+  recordAdmittedInjuryPeriodPay(snapshot.league,{earningYear:2027,phase:'offseason',week:1});
+  const {api}=await import('./lib/appState.js');
+  await api('/api/snapshot/import',{method:'POST',body:{snapshot}});
+  await (await import('./lib/gameFlow.js')).loadState();
+  return (await api('/api/snapshot/export')).snapshot;
+ },{snapshot:session.toSnapshot(),playerId});
+ expect(result.league.admittedInjuryPayroll).toHaveLength(1);
+ const earned=result.league.admittedInjuryPayroll[0];expect(earned.injuryYear).toBe(2026);expect(earned.earningYear).toBe(2027);expect(earned.teamId).toBe('BUF');
+ expect(result.league.injurySalaryClaims?.length||0).toBe(0);
+ if(await page.locator('#closeSeasonReviewBtn').isVisible())await page.locator('#closeSeasonReviewBtn').click();
+ await expect(page.locator('#seasonReviewModal')).not.toBeVisible();
+ const slot=`admitted-earning-${worker?'worker':'in-page'}`;await saveSlot(page,slot);
+ await page.evaluate(async()=>{const {api}=await import('./lib/appState.js');await api('/api/new-league',{method:'POST',body:{seed:118,startYear:2026,controlledTeamId:'MIA',mode:'play'}});await(await import('./lib/gameFlow.js')).loadState();});
+ expect((await readClient(page,'/api/state')).controlledTeamId).toBe('MIA');
+ await page.locator('[data-testid="tab-settings"]').click();await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy','true');
+ await page.locator('#saveSlotInput').fill(slot);await page.locator('#loadBtn').click();
+ await expect.poll(async()=>(await readClient(page,'/api/state')).controlledTeamId).toBe('BUF');
+ await page.reload();await waitGameReady(page);await assertRuntime(page,worker);
+ const restored=(await readClient(page,'/api/snapshot/export')).snapshot;
+ expect(restored.league.admittedInjuryPayroll).toEqual(result.league.admittedInjuryPayroll);
+ expect(restored.league.capLedger.BUF.admittedInjuryCharges).toEqual(result.league.capLedger.BUF.admittedInjuryCharges);
+ expect(restored.league.admittedInjuryContinuations).toEqual(result.league.admittedInjuryContinuations);
+ expect(restored.league.players.find(p=>p.id===playerId).elevationInjuryPay).toEqual(result.league.players.find(p=>p.id===playerId).elevationInjuryPay);
+ const manifest=JSON.parse(await fs.readFile('static/deploy-manifest.json','utf8'));
+ await fs.mkdir('.cache/admitted-earning-client',{recursive:true});
+ await fs.writeFile(`.cache/admitted-earning-client/${worker?'worker':'in-page'}.json`,JSON.stringify({worker,playerId,artifactDigest:manifest.artifactFingerprint.digest,
+  explicitBuiltEarningPeriod:true,namedSaveReplacementLoadReload:true,injuryYear:2026,earningYear:2027,amountCents:earned.amountCents,originalPayer:'BUF',wagesAndCapRestored:true,claimsCreated:0,liveAnnualPolicyChanged:false},null,2)+'\n');
+});

@@ -1,13 +1,42 @@
+import { validateSnapshotAdmittedInjuryPayroll,previewAdmittedRegularAccrual,commitAdmittedRegularAccrual } from '../domain/admittedInjuryPayroll.js';
+import { recordAdmittedPensionGameService } from '../domain/pensionService.js';
+import {previewRegularMedicalRecovery,applyRegularMedicalRecovery} from '../domain/regularMedicalRecovery.js';
+import {startOffseasonMedicalCalendar,advanceOffseasonMedicalCalendar,validateSnapshotOffseasonMedicalCalendar} from '../domain/offseasonMedicalCalendar.js';
 
 import { teamLabel } from "../domain/teamLabel.js";
+import { recordDevelopmentInjury } from "../domain/livingPotential.js";
+import { playerAppearance, playerFrame } from "../domain/playerIdentity.js";
+import { ensurePlayerVisualIdentity, validateSnapshotVisualIdentity } from "../domain/playerVisualIdentity.js";
+import { resolvePlayerMeasurements } from "../domain/playerMeasurements.js";
+import { validatePracticeSquadAddition, selectEligiblePracticeSquad, practiceEligibilityGroup } from "../domain/practiceSquadEligibility.js";
+import { practiceSalaryForSeason } from '../data/nflPracticeSalary.js';
+import { transitionReserveList, validateReserveListState, resetReserveListsForYear, describeReserveReturn } from '../domain/reserveLists.js';
+import { footballGameMedicalWeek } from '../domain/footballGameReference.js';
+import { activatePracticePlayer,validateSnapshotPracticeContracts,buildPracticeContract } from '../domain/practiceContracts.js';
+import { validateSnapshotStandardElevations,standardElevationRosterRefusal,recordElevationPracticeRejoin,recordPermanentElevationActivation,recordElevationActiveRelease,standardElevationGame,previewStandardElevation,declareStandardElevation,pendingStandardElevation,standardElevationPracticeEligibility } from '../domain/standardElevations.js';
+import { previewCpuStandardElevations } from '../engine/cpuStandardElevations.js';
+import { recordElevationFootballInjury,elevationInjuryReleaseRefusal,assertAnnualElevationInjuryContractTransition } from '../domain/elevationInjuryPay.js';
+import { advancePreRolloverMedicalCalendar } from '../domain/preRolloverMedicalCalendar.js';
+import {previewInjuryClaimNegotiation,offerInjuryClaimSettlement,settleCpuInjuryClaims} from '../domain/injuryClaimNegotiation.js';
+import { validateSnapshotPostseasonRecovery, previewPostseasonClubAvailability, finishPostseasonRecovery } from '../domain/postseasonMedicalClock.js';
+import { validateSnapshotAdmittedInjuryContinuations } from '../domain/admittedInjuryContinuation.js';
+import { previewRegularInjuryAccrual,commitRegularInjuryAccrual } from '../domain/regularInjuryAccrual.js';
+import { validateActiveInactiveHistory, priorActiveInactiveGames } from '../domain/activeInactiveHistory.js';
+import { postseasonElevationSalaryForSeason } from '../data/nflPostseasonSalary.js';
+import { admitUndraftedFreeAgents } from '../domain/undraftedFreeAgency.js';
+import { DRAFT_COHORT_POLICY, draftCohortSize, validateDraftCohortPolicy } from '../domain/draftCohort.js';
+import { generatePlayerWorkout } from "../domain/playerWorkouts.js";
+import { legacySalaryCapModel, salaryCapForSeason, financialYearForLeague, openNextFinancialYear } from "../data/nflSalaryCap.js";
 import {
   COACHING_TENDENCY_ARCHETYPES,
   CONTRACT_RULES,
+  ROSTER_STRUCTURE,
   DEPTH_CHART_ROLE_NAMES,
   GAME_NAME,
   POSITION_MAX_AGE_LIMITS,
   TEAM_STRATEGY_PRESETS,
-  ROSTER_TEMPLATE
+  ROSTER_TEMPLATE,
+  FULL_ROSTER_TEMPLATE
 } from "../config.js";
 import {
   DEFAULT_LEAGUE_SETTINGS,
@@ -24,6 +53,8 @@ import {
   applyFifthYearOption,
   applyFranchiseTag,
   buildContract,
+  contractMarketOptions,
+  contractBaseMinimum,
   computeReleaseDeadCap,
   marketSalaryForOverall,
   normalizeContract,
@@ -35,6 +66,7 @@ import {
   createTeamSeasonState,
   ensureTeamIdentity,
   getAllTeamPlayers,
+  getRosterCandidates,
   getTeamPlayers,
   initializeLeagueRoster,
   recalculateAllTeamRatings,
@@ -45,10 +77,13 @@ import {
   applyCapRollover,
   expireContracts,
   normalizeRosterSlots,
-  runFreeAgencyBackstop
+  runFreeAgencyBackstop,
+  replenishCpuPracticeSquads,
+  rosterDepthShortfalls,
+  reconcileLegacyCapBoundary
 } from "../engine/offseasonSimulator.js";
 import { buildOffseasonDevelopmentReport } from "../engine/offseasonDevelopmentReport.js";
-import { enforceRosterAndCapCompliance } from "../engine/capCompliance.js";
+import { enforceRosterAndCapCompliance, capSpaceForTeam } from "../engine/capCompliance.js";
 import {
   FOURTH_DOWN_POSTURES,
   TWO_MINUTE_POSTURES,
@@ -60,7 +95,7 @@ import {
   resolveDepthChartRoomShares,
   rotationMeritScore
 } from "../engine/depthChartUsage.js";
-import { coverageDepthRating, GROWTH_WINDOW_MAX_AGE, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
+import { coverageDepthRating, positionRatingKeys, GROWTH_WINDOW_MAX_AGE, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
 import {
   DEVELOPMENT_ENVIRONMENT_PROFILE,
   developmentEnvironmentTilt,
@@ -106,6 +141,7 @@ import {
   sortStandings
 } from "../engine/seasonSimulator.js";
 import { simulateRegularSeasonWeek } from "../engine/weeklySimulator.js";
+import { MatchReadinessError } from "../sport/matchReadiness.js";
 import { StatBook } from "../stats/statBook.js";
 import { DEFENSIVE_AV_POSITIONS } from "../stats/approximateValue.js";
 import { championScoreline } from "../stats/scoreline.js";
@@ -137,8 +173,13 @@ import {
   captureArchitectFocusBaseline
 } from "../engine/architectFocusReview.js";
 import { LATEST_SNAPSHOT_SCHEMA_VERSION } from "./snapshotMigration.js";
+import { compactSnapshotStats, expandSnapshotStats } from "./statSnapshot.js";
+import { compactSnapshotMeasurementProvenance, expandSnapshotMeasurementProvenance } from './measurementProvenanceSnapshot.js';
+import { compactSnapshotPensionService, expandSnapshotPensionService } from './pensionServiceSnapshot.js';
+import {compactSnapshotIdentityMetadata,expandSnapshotIdentityMetadata} from './identityMetadataSnapshot.js';
 import {
   advanceInjuryRecovery,
+  teamRecoveryModifiers,
   getInjuryReport,
   rollGameInjuries,
   setPlayerRehabPlan
@@ -185,6 +226,8 @@ import { derivedStaffRng, staffSeedKey } from "../engine/staffGeneration.js";
 import { ensureLeagueIdentity } from "../domain/leagueIdentity.js";
 import { applyArchiveRetention, pruneWeeklyHistory, toLeanWeekResult } from "./weekResultProjection.js";
 import { consumePendingWeeklyTactic } from "./weeklyTactic.js";
+import { playerServiceCount, validateSnapshotPlayerService } from '../domain/playerService.js';
+import { pensionServiceCount } from '../domain/pensionService.js';
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 import { buildLeagueLens, buildSeasonRecordBook } from "../stats/leagueLens.js";
 import { buildOperatingStatement } from "../domain/operatingStatement.js";
@@ -223,7 +266,6 @@ const FREE_AGENCY_WAVES = 3;
 // The real formula caps a club at four compensatory selections in a draft.
 const COMP_PICKS_PER_TEAM_MAX = 4;
 const COMP_PICK_QUALIFYING_NET = 350;
-const MAX_GAME_DAY_INACTIVES = 7;
 const PICK_ASSET_HORIZON_YEARS = 3;
 const STAFF_ROLE_KEYS = [
   "headCoach",
@@ -293,18 +335,18 @@ function scoutingConfidence(pointsSpent, hasReveal, bonus = 0) {
   return clamp(Math.round(base + pointsSpent * 1.9 + bonus), hasReveal ? 55 : 20, 99);
 }
 
-function rookieContract(round, overall, rng) {
+function rookieContract(round, overall, rng, options = {}) {
   const base = 4_900_000 - (round - 1) * 480_000;
   const salary = clamp(Math.round(base + overall * 11_000 + rng.int(-220_000, 220_000)), 850_000, 7_500_000);
-  return buildContract({ overall, years: 4, salary, minSalary: 850_000, maxSalary: 7_500_000, rng });
+  return buildContract({ overall, years: 4, salary, minSalary: 850_000, maxSalary: 7_500_000, ...options, rng });
 }
 
-function veteranContract(overall, rng) {
+function veteranContract(overall, rng, options = {}) {
   return buildContract({
     overall,
     years: rng.int(1, 4),
     minSalary: CONTRACT_RULES.minSalary,
-    maxSalary: CONTRACT_RULES.maxSalary,
+    ...options,
     rng
   });
 }
@@ -395,11 +437,7 @@ function teamWorldStateModifiers(team, roster = []) {
       (culture.identity === "disciplined" ? 0.008 : 0)
     ).toFixed(4)
   );
-  const extraRecoveryWeeks = clamp(
-    Math.floor(Math.max(0, Number(medical.discipline || 72) - 80) / 14) + Math.floor(Math.max(0, rehab - 84) / 14),
-    0,
-    2
-  );
+  const { extraRecoveryWeeks } = teamRecoveryModifiers(team);
   const negotiationLeverageDelta = Number(((Number(capAnalyst.discipline || 72) - 72) / 400).toFixed(3));
   const fanInterestWeeklyDelta = Number(
     (
@@ -498,9 +536,18 @@ const COMBINE_WEIGHTS = {
 };
 const COMBINE_BASE = { speed: 10, agility: 4, bench: 0.5, vertical: 0.35, broad: 0.05 };
 
-function computeCombineGrade(prospect) {
+export function computeCombineGrade(prospect) {
   const combine = prospect.scouting?.combine;
-  if (!combine) return prospect.scouting?.combineGrade ?? 50;
+  if (!combine) {
+    const recordedGrade = prospect.scouting?.combineGrade;
+    return recordedGrade !== null && recordedGrade !== undefined && recordedGrade !== ""
+      && Number.isFinite(Number(recordedGrade)) && Number(recordedGrade) >= 45 && Number(recordedGrade) <= 99
+      ? Number(recordedGrade) : null;
+  }
+  // A missing test is not a zero performance. Withhold the aggregate rather
+  // than fabricate a measurement or present an incomplete grade as complete.
+  if (["forty", "shuttle", "cone", "bench", "vertical", "broad"].some(key =>
+    combine[key] === null || combine[key] === undefined || combine[key] === "" || !Number.isFinite(Number(combine[key])))) return null;
   const w = COMBINE_WEIGHTS[prospect.position] || COMBINE_WEIGHTS.WR;
   const speedScore = (5.2 - combine.forty) * COMBINE_BASE.speed * w.speed;
   const agilityScore = ((4.8 - combine.shuttle) + (8.1 - combine.cone)) * COMBINE_BASE.agility * w.agility;
@@ -1413,6 +1460,7 @@ function pickAssetValue(pick) {
 }
 
 function ensurePlayerRuntime(player, rng = null) {
+  ensurePlayerVisualIdentity(player);
   if (!player.rosterSlot) player.rosterSlot = "active";
   if (!Number.isFinite(player.depthChartOrder)) player.depthChartOrder = 99;
   if (!Number.isFinite(player.jerseyNumber)) {
@@ -1467,6 +1515,7 @@ function ensureLeagueRuntime(league) {
   if (!league.waiverWire) league.waiverWire = [];
   if (!league.pendingWaiverClaims) league.pendingWaiverClaims = [];
   if (!league.pendingDraft) league.pendingDraft = null;
+  for (const prospect of league.pendingDraft?.available || []) ensurePlayerVisualIdentity(prospect);
   if (!Array.isArray(league.draftHistory)) league.draftHistory = [];
   if (!league.transactionLog) league.transactionLog = [];
   if (!Number.isFinite(league.transactionSeq)) league.transactionSeq = league.transactionLog.length;
@@ -1518,6 +1567,12 @@ function ensureLeagueRuntime(league) {
     ...DEFAULT_LEAGUE_SETTINGS,
     ...league.settings
   };
+  if (league.capModel) {
+    const projectedCap = salaryCapForSeason(league.capModel, financialYearForLeague(league), Number(league.settings.capGrowthRate));
+    for (const team of league.teams) {
+      if (!Object.hasOwn(league.teamCapOverride, team.id)) league.teamCapOverride[team.id] = projectedCap;
+    }
+  }
   for (const team of league.teams) {
     // S101 — the third declaration site of `team.season`, and the one that had
     // drifted. `createTeamSeasonState` (teamFactory.js) declares twelve keys;
@@ -1599,7 +1654,7 @@ function toDashboardTeam(team) {
 function ensureDepthCharts(league) {
   const positions = Object.keys(ROSTER_TEMPLATE);
   for (const team of league.teams) {
-    const roster = teamPlayersAll(league, team.id);
+    const roster = getRosterCandidates(league, team.id);
     if (!league.depthCharts[team.id]) league.depthCharts[team.id] = {};
     for (const position of positions) {
       if (!Array.isArray(league.depthCharts[team.id][position])) {
@@ -1616,13 +1671,21 @@ function ensureDepthCharts(league) {
   }
 }
 
+function reserveContextForSession(session) {
+  const campCuts = session.phase === 'offseason' && session.league.offseasonPipeline?.stage === 'camp-cuts';
+  const upcoming = session.phase === 'postseason' && session.postseasonState?.status !== 'completed'
+    ? session.getStandardElevationGame(session.controlledTeamId) : null;
+  return { year: campCuts ? financialYearForLeague(session.league) : session.currentYear,
+    week: campCuts ? 1 : upcoming ? footballGameMedicalWeek(upcoming) : session.currentWeek, phase: session.phase, campCuts };
+}
+
 function ensureDepthChartSnapShares(league) {
   const positions = Object.keys(ROSTER_TEMPLATE);
   if (!league.depthChartSnapShares || typeof league.depthChartSnapShares !== "object") {
     league.depthChartSnapShares = {};
   }
   for (const team of league.teams) {
-    const roster = teamPlayersAll(league, team.id);
+    const roster = getRosterCandidates(league, team.id);
     if (!league.depthChartSnapShares[team.id] || typeof league.depthChartSnapShares[team.id] !== "object") {
       league.depthChartSnapShares[team.id] = {};
     }
@@ -1934,7 +1997,18 @@ function estimateAwards(session, year, playoffResult = null) {
   return award;
 }
 
+// Snapshot restoration constructs sessions through Object.create; an external
+// WeakMap gives restored sessions the same default without a private-field brand
+// or any persistent/forgeable grant of front-office authority.
+const wholeSeasonManagementDepth = new WeakMap();
+function managementExclusions(session, { freeAgency = false } = {}) {
+  if (!session.controlledTeamId) return [];
+  const prohibited = freeAgency && !session.getChallengeRestrictions(session.controlledTeamId).allowUserFreeAgency;
+  return !wholeSeasonManagementDepth.get(session) || prohibited ? [session.controlledTeamId] : [];
+}
+
 export class GameSession {
+
   constructor({
     rng,
     rngStreams = null,
@@ -2006,8 +2080,28 @@ export class GameSession {
   }
 
   static fromSnapshot(snapshot, rngFactory) {
+    snapshot=expandSnapshotIdentityMetadata(snapshot);
+    // Direct transaction/what-if restores also use this seam, not only imports
+    // routed through migrateSnapshot. StatBook always sees complete live stats.
+    validateSnapshotVisualIdentity(snapshot);
+    if ((snapshot.league?.sportId || 'football') === 'football') validateSnapshotPostseasonRecovery(snapshot);
+    validateSnapshotPlayerService(snapshot);
+    validateSnapshotPracticeContracts(snapshot);
+    validateSnapshotStandardElevations(snapshot);
+    validateSnapshotAdmittedInjuryContinuations(snapshot);
+    validateSnapshotAdmittedInjuryPayroll(snapshot);
+    validateSnapshotOffseasonMedicalCalendar(snapshot);
+    validateActiveInactiveHistory(snapshot.league);
+    validateReserveListState(snapshot);
+    snapshot = expandSnapshotStats(expandSnapshotMeasurementProvenance(expandSnapshotPensionService(snapshot)));
     const session = Object.create(GameSession.prototype);
     Object.assign(session, snapshot);
+    // Freeze old saves on their original economic basis and deadline before
+    // normalizers merge the new-game defaults. Explicit saved rules win.
+    if (!session.league.capModel) session.league.capModel = legacySalaryCapModel(session.startYear);
+    if (!session.league.rulesModelVersion && session.league.settings?.tradeDeadlineWeek == null) {
+      session.league.settings = { ...(session.league.settings || {}), tradeDeadlineWeek: 11 };
+    }
     // S101 — the constructor normalizes the league BEFORE building the StatBook
     // (see above); this path did it after, so `new StatBook(session.league)`
     // reached `reindexPlayers` first and threw `retiredPlayers is not iterable`
@@ -2058,6 +2152,17 @@ export class GameSession {
     ensureDepthCharts(session.league);
     ensureDepthChartSnapShares(session.league);
     session.rebuildLookupIndexes();
+    // Repair a legacy in-season save once. Existing upcoming/frozen boards
+    // remain authoritative; ordinary restoration must not reroll prospects.
+    if (['regular-season', 'postseason', 'season-awards'].includes(session.phase)
+      && (!session.league.pendingDraft || Number(session.league.pendingDraft.year) < session.currentYear + 1)) {
+      session.prepareDraft({ scoutingOnly: true });
+    } else if (['regular-season', 'postseason', 'season-awards'].includes(session.phase)
+      && session.league.pendingDraft?.scoutingOnly == null) {
+      // Older saves can already contain this year's upcoming class. Preserve
+      // that class (including any frozen picks) but do not open its clock.
+      session.league.pendingDraft.scoutingOnly = true;
+    }
     return session;
   }
 
@@ -2103,7 +2208,7 @@ export class GameSession {
 
   toSnapshot() {
     const controlledTeam = this.getControlledTeam();
-    return {
+    return compactSnapshotIdentityMetadata(compactSnapshotPensionService(compactSnapshotMeasurementProvenance(compactSnapshotStats({
       schemaVersion: LATEST_SNAPSHOT_SCHEMA_VERSION,
       rngSeed: this.rng.seed,
       rngStreams: this.rngStreams?.toSnapshot?.() || { baseSeed: this.rng.seed, streamSeeds: {} },
@@ -2135,7 +2240,7 @@ export class GameSession {
       lastAwardSummary: this.lastAwardSummary,
       pendingSeasonWrap: this.pendingSeasonWrap,
       teamSeasonArchive: this.statBook.teamSeasonArchive
-    };
+    }))));
   }
 
   initializeLeagueSystems() {
@@ -2447,7 +2552,7 @@ export class GameSession {
     ) || null;
     const game = resultWeek?.games?.find((entry) => entry.homeTeamId === this.controlledTeamId || entry.awayTeamId === this.controlledTeamId) || null;
     const tacticalFilm = (this.league.tacticalFilmLog || []).find((entry) =>
-      entry.teamId === this.controlledTeamId && Number(entry.year) === appliedYear && Number(entry.week) >= appliedWeek
+      entry.teamId === this.controlledTeamId && Number(entry.year) === appliedYear && Number(entry.week) === Number(resultWeek?.week)
     ) || null;
     const weeklyPlan = team?.weeklyPlan || null;
     const currentWeek = Math.max(appliedWeek, Number(this.currentWeek) || appliedWeek);
@@ -2487,7 +2592,9 @@ export class GameSession {
       appliedAt: { year: appliedYear, week: appliedWeek },
       steps: [
         { id: "pressure", label: "Accept the pressure", complete: true, detail: receipt.effects?.pressure?.mandate || ownerExpectation?.mandate || "Owner mandate accepted" },
-        { id: "plan", label: "Set the weekly intent", complete: Boolean(weeklyPlan), detail: weeklyPlan?.summary || "Matchup plan pending" },
+        { id: "plan", label: "Set the weekly intent", complete: Boolean(weeklyPlan), detail: result
+          ? receipt.effects?.weeklyPlan?.summary || tacticalFilm?.label || 'Opening plan applied'
+          : weeklyPlan?.summary || "Matchup plan pending" },
         { id: "receipt", label: "Earn the first receipt", complete: Boolean(result), detail: result ? `${result.verdict} ${result.teamScore}-${result.opponentScore} vs ${result.opponentId}` : waitingDetail }
       ],
       nextAction: result ? "Review the evidence and choose the next franchise decision." : waitingAction,
@@ -2686,10 +2793,31 @@ export class GameSession {
    * either double-aging the league or never aging it at all.
    */
   runRosterYearRollover() {
+    // Medical/refusal preflight precedes even legacy pipeline initialization.
+    if(this.league.offseasonPipeline?.rosterRolloverYear!==this.currentYear){
+      advancePreRolloverMedicalCalendar(this.league,{completedYear:this.currentYear,preserveAdmittedRights:true,annualTransition:true});
+      assertAnnualElevationInjuryContractTransition(this.league);
+    }
     const pipeline = this.getOffseasonPipeline();
     if (pipeline.rosterRolloverYear === this.currentYear) {
+      assertAnnualElevationInjuryContractTransition(this.league);
+      const stages = this.sportRules.calendar.offseasonStages.map(stage => stage.id);
+      const backstopIndex = stages.indexOf('udfa'), currentIndex = stages.indexOf(pipeline.stage);
+      const backstopRecorded = (pipeline.history || []).some(row => row.stage === 'udfa' && (row.year == null || row.year === this.currentYear));
+      const priorBoundary = backstopRecorded || (currentIndex > backstopIndex && backstopIndex >= 0) ? true
+        : currentIndex >= 0 && currentIndex <= backstopIndex ? false : null;
+      reconcileLegacyCapBoundary(this.league, this.currentYear, priorBoundary);
+      openNextFinancialYear(this.league, this.currentYear);
       return { ok: true, alreadyRun: true, retired: 0, expired: 0 };
     }
+    // Close prior-year cap funding before expirations or new market deals.
+    // Roster repairs later in this offseason must never advance these balances.
+    const priorMedicalRollover=this.league.teams.some(team=>this.league.capLedger?.[team.id]?.rolloverAppliedThroughYear>=this.currentYear);
+    applyCapRollover(this.league, { completedYear: this.currentYear });
+    openNextFinancialYear(this.league, this.currentYear);
+    if(!priorMedicalRollover)startOffseasonMedicalCalendar(this.league,{completedYear:this.currentYear});
+    settleCpuInjuryClaims(this.league,{controlledTeamId:this.controlledTeamId});
+    resetReserveListsForYear(this.league, this.currentYear + 1);
     const settings = this.getLeagueSettings();
     const pendingExpiry = new Set(
       this.league.players
@@ -2760,11 +2888,41 @@ export class GameSession {
    * board became an undifferentiated 295-player pile, and the compensatory
    * formula saw every club as a catastrophic net loser.
    *
-   * The controlled franchise is deliberately excluded. Deciding who to keep is
+   * Interactive management excludes the controlled franchise. Deciding who to keep is
    * the GM's job, and `listExpiringContracts` plus the Re-sign action have
    * existed for that purpose since S8 — before S67 nothing was ever actually at
-   * stake there, because no contract ran out.
+   * stake there, because no contract ran out. Explicit whole-season delegation
+   * temporarily includes the club, subject to its challenge restrictions.
    */
+  getCpuRosterSpendingPlan(teamId) {
+    const financialYear = financialYearForLeague(this.league);
+    const rookieOptions = this.league.capModel?.version === 'nfl-modern-cap-v1'
+      ? { year: financialYear, creditedSeasons: 0 } : {};
+    const quoteRng = { int: (_min, max) => max, float: min => min };
+    const draftYear = this.currentYear + 1;
+    const draft = this.league.pendingDraft;
+    let slots;
+    if (draft?.year === draftYear && draft.completed === true) slots = [];
+    else if (draft?.year === draftYear && draft.currentPick > 1 && Array.isArray(draft.slots)) {
+      // In a partially completed board, selected compensatory picks must not
+      // reappear merely because their historical asset rows remain available.
+      slots = draft.slots.slice(draft.currentPick - 1);
+    } else slots = this.buildDraftOrder(draftYear).slots;
+    const ownedPicks = slots.filter(slot => slot.teamId === teamId);
+    const rookieReserve = ownedPicks.reduce((sum, slot) =>
+      sum + rookieContract(slot.round, 99, quoteRng, rookieOptions).capHit, 0);
+    const roster = getRosterCandidates(this.league, teamId);
+    const activeCount = roster.filter(row => row.rosterSlot !== 'practice').length;
+    const practiceCount = roster.length - activeCount;
+    const activeVacancies = Math.max(0,
+      ROSTER_STRUCTURE.activeLimit - activeCount - 1 - ownedPicks.length);
+    const practiceVacancies = Math.max(0, ROSTER_STRUCTURE.practiceLimit - practiceCount);
+    const depthReserve = activeVacancies * contractBaseMinimum(rookieOptions)
+      + practiceVacancies * practiceSalaryForSeason(financialYear).minimum
+        * this.sportRules.structure.regularSeasonWeeks;
+    return { rookieReserve, depthReserve, reserved: rookieReserve + depthReserve };
+  }
+
   runRetentionWindow() {
     const pipeline = this.getOffseasonPipeline();
     if (pipeline.retentionYear === this.currentYear) return { ok: true, alreadyRun: true, retained: 0 };
@@ -2773,7 +2931,7 @@ export class GameSession {
     for (const player of this.league.players) {
       if (player.status !== "active" || player.teamId !== "FA") continue;
       const former = player.lastTeamId;
-      if (!former || former === this.controlledTeamId) continue;
+      if (!former || managementExclusions(this, { freeAgency: true }).includes(former)) continue;
       if (!byFormerTeam.has(former)) byFormerTeam.set(former, []);
       byFormerTeam.get(former).push(player);
     }
@@ -2798,13 +2956,17 @@ export class GameSession {
           overall: player.overall,
           years: this.rng.int(2, 4),
           minSalary: CONTRACT_RULES.minSalary,
-          maxSalary: 32_000_000,
+          ...contractMarketOptions(this.league, player),
           rng: this.rng
         });
-        if (this.getTeamCapSummary(teamId).capSpace < contract.capHit) continue;
+        // Re-signing must leave enough room to pay the incoming draft class
+        // and fill remaining roster vacancies. This is a spending plan, not an
+        // extra ledger charge; actual contracts remain the only commitments.
+        if (this.getTeamCapSummary(teamId).capSpace < contract.capHit + this.getCpuRosterSpendingPlan(teamId).reserved) continue;
         player.teamId = teamId;
         player.contract = contract;
         player.rosterSlot = "active";
+        recordPermanentElevationActivation(player,{teamId,year:financialYearForLeague(this.league)});
         retained += 1;
         this.logTransaction({
           type: "re-sign",
@@ -2919,7 +3081,8 @@ export class GameSession {
   /**
    * Phase 3 of the offseason calendar: keep the league legal, and only that.
    *
-   * The controlled franchise is excluded by construction — the S63 authority
+   * Outside explicit whole-season delegation the controlled franchise is
+   * excluded by construction — the S63 authority
    * boundary guards the command seam, and this engine is not a command, so the
    * exclusion has to be explicit here or the offseason writes a roster the GM
    * owns. What the backstop does for CPU clubs is logged; what it declines to do
@@ -2929,7 +3092,12 @@ export class GameSession {
     const signingsByTeam = new Map();
     const releasesByTeam = [];
     const backstop = runFreeAgencyBackstop(this.league, this.currentYear, this.rng, {
-      excludeTeamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
+      excludeTeamIds: managementExclusions(this, { freeAgency: true }),
+      onRelease: ({ teamId, player, deadMoney, reason }) => {
+        this.registerFreeAgencyMove({ teamId, direction: 'losses', playerId: player.id,
+          value: compGainValue({ salary: player.contract?.salary || 0, overall: player.overall }) });
+        releasesByTeam.push({ teamId, playerId: player.id, player: player.name, overall: player.overall, deadMoney, reason });
+      },
       onSigning: ({ teamId, player, contract, emergency }) => {
         // A replacement signed off the street is still a free-agency gain. Not
         // crediting it made every club look like a catastrophic net loser to
@@ -2956,10 +3124,11 @@ export class GameSession {
 
     // Roster and cap legality, on the same authority boundary as the backstop
     // above: CPU clubs are trimmed to the declared roster structure and back
-    // under their cap, and the controlled franchise is never touched, so an
+    // under their cap. Outside whole-season delegation the controlled franchise
+    // is never touched, so an
     // over-cap GM keeps their roster, their cap alerts and their own decision.
     const compliance = enforceRosterAndCapCompliance(this.league, {
-      excludeTeamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
+      excludeTeamIds: managementExclusions(this),
       onRelease: ({ teamId, player, deadMoney, reason }) => {
         this.registerFreeAgencyMove({
           teamId,
@@ -2971,8 +3140,19 @@ export class GameSession {
       }
     });
 
-    normalizeRosterSlots(this.league);
-    applyCapRollover(this.league);
+    normalizeRosterSlots(this.league, { excludeTeamIds: managementExclusions(this) });
+    const practice = replenishCpuPracticeSquads(this.league, {
+      excludeTeamIds: managementExclusions(this, { freeAgency: true }),
+      onSigning: ({ teamId, player, contract }) => {
+        // Weekly practice contracts do not enter the active free-agent
+        // compensatory ledger. Preserve their distinct payroll receipt.
+        if (!signingsByTeam.has(teamId)) signingsByTeam.set(teamId, []);
+        signingsByTeam.get(teamId).push({ playerId: player.id, player: player.name,
+          pos: player.position, overall: player.overall, capHit: contract.capHit,
+          weeklySalary: contract.weeklySalary, eligibilityGroup: contract.eligibilityGroup,
+          rosterSlot: 'practice', emergency: false });
+      }
+    });
     recalculateAllTeamRatings(this.league);
     this.statBook.reindexPlayers();
     this.rebuildLookupIndexes();
@@ -3017,12 +3197,13 @@ export class GameSession {
             count: rows.length,
             capCuts: rows.filter((row) => row.reason === "cap").length,
             rosterCuts: rows.filter((row) => row.reason === "roster-limit").length,
+            depthFundingCuts: rows.filter((row) => row.reason === 'minimum-depth-funding').length,
             deadMoney: rows.reduce((sum, row) => sum + Number(row.deadMoney || 0), 0),
             players: rows
           }
         });
       }
-      this.logNews(`${releasesByTeam.length} players released league-wide to meet roster and cap limits`, {
+      this.logNews(`${releasesByTeam.length} players released league-wide to meet roster depth and cap requirements`, {
         year: this.currentYear,
         clubs: byTeam.size
       });
@@ -3035,7 +3216,8 @@ export class GameSession {
       this.league.capComplianceUnresolved = [];
     }
 
-    const ownShortfall = backstop.shortfalls.find((row) => row.teamId === this.controlledTeamId) || null;
+    const depthShortfalls = rosterDepthShortfalls(this.league);
+    const ownShortfall = depthShortfalls.find((row) => row.teamId === this.controlledTeamId) || null;
     if (ownShortfall) {
       const summary = ownShortfall.positions
         .map((row) => `${row.missing}× ${row.position}`)
@@ -3046,20 +3228,29 @@ export class GameSession {
         teamIds: [this.controlledTeamId],
         headline: `Your roster is short: ${summary}`,
         detail:
-          "The league's depth backstop does not sign for your franchise. Fill these holes from free agency, the waiver wire, or the draft before camp breaks."
+          wholeSeasonManagementDepth.get(this) > 0
+            ? "Delegated management could not fill these holes within available players, funding and challenge rules. Review the roster before camp breaks."
+            : "The league's depth backstop does not sign for your franchise. Fill these holes from free agency, the waiver wire, or the draft before camp breaks."
       });
     }
     this.league.rosterShortfall = ownShortfall;
+    this.league.rosterDepthShortfalls = depthShortfalls;
+    const cpuShortfalls = depthShortfalls.filter(row => row.teamId !== this.controlledTeamId);
+    const unresolvedCap = compliance.stillOverCap.length;
 
     return {
       ok: true,
       signings: total,
       clubs: signingsByTeam.size,
       shortfall: ownShortfall,
-      remainingFreeAgents: backstop.remainingFreeAgents,
+      depthShortfalls,
+      unresolvedCapClubs: unresolvedCap,
+      remainingFreeAgents: this.league.players.filter(player => player.status === 'active' && player.teamId === 'FA').length,
+      practiceSignings: practice.signings.length,
+      practiceShortfalls: practice.shortfalls,
       message: ownShortfall
-        ? `Roster legality closed for 31 clubs (${total} depth signings). Your roster is still short ${ownShortfall.positions.reduce((sum, row) => sum + row.missing, 0)} spot(s).`
-        : `Roster legality closed (${total} depth signings). Every roster is legal.`
+        ? `Depth pass completed (${total} signings). Your roster remains below depth targets by ${ownShortfall.positions.reduce((sum, row) => sum + row.missing, 0)} spot(s); ${cpuShortfalls.length} other clubs have depth shortfalls; ${unresolvedCap} clubs remain over cap.`
+        : `Depth pass completed (${total} signings). ${cpuShortfalls.length} clubs remain below depth targets; ${unresolvedCap} clubs remain over cap.`
     };
   }
 
@@ -3072,8 +3263,9 @@ export class GameSession {
    * free-agency stage examines a league that the rest of the offseason then
    * changes underneath it; this one examines the league that comes to rest.
    *
-   * Same authority boundary as every other automated roster move: the controlled
-   * franchise is never touched, so an over-cap GM keeps their roster, their cap
+   * Same interactive authority boundary as every other automated roster move:
+   * outside whole-season delegation the controlled franchise is never touched,
+   * so an over-cap GM keeps their roster, their cap
    * alerts and their own decision. `capComplianceUnresolved` is refreshed from
    * this pass rather than the earlier one, because a club that is genuinely
    * trapped is trapped against the final roster, not an intermediate one.
@@ -3081,7 +3273,7 @@ export class GameSession {
   enforceLeagueLegality() {
     const releases = [];
     const compliance = enforceRosterAndCapCompliance(this.league, {
-      excludeTeamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
+      excludeTeamIds: managementExclusions(this),
       onRelease: ({ teamId, player, deadMoney, reason }) => {
         releases.push({ teamId, playerId: player.id, name: player.name, pos: player.position, deadMoney, reason });
         this.registerFreeAgencyMove({
@@ -3092,7 +3284,7 @@ export class GameSession {
         });
       }
     });
-    normalizeRosterSlots(this.league);
+    normalizeRosterSlots(this.league, { excludeTeamIds: managementExclusions(this) });
 
     if (releases.length) {
       const byTeam = new Map();
@@ -3133,6 +3325,7 @@ export class GameSession {
     // Each stage handler reports only its message; the stage that follows is
     // the calendar's, so the order lives in one declaration (calendar.js).
     const next = (outcome) => {
+      advanceOffseasonMedicalCalendar(this.league,{completedYear:this.currentYear,stage});
       const value = { nextStage: nextOffseasonStageId(calendar, stage), ...outcome };
       pipeline.history.push({ stage, week: this.currentWeek, year: this.currentYear, result: value });
       pipeline.stage = value.nextStage;
@@ -3141,6 +3334,11 @@ export class GameSession {
     };
 
     const declared = offseasonStage(calendar, stage);
+    // Refuse malformed/closed interval authority before the stage mutates
+    // market, draft or roster state. Waiting stages do not commit this preview.
+    if(declared&&!declared.terminal&&this.league.offseasonMedicalCalendar?.some(row=>row.sourceYear===this.currentYear)){
+      advanceOffseasonMedicalCalendar(structuredClone(this.league),{completedYear:this.currentYear,stage});
+    }
     if (declared && !declared.terminal) return this[declared.handler](pipeline, next);
     // The terminal stage, or a stage this calendar does not declare (a legacy save).
     pipeline.completed = true;
@@ -3149,6 +3347,7 @@ export class GameSession {
   }
 
   runOffseasonRetirementsStage(pipeline, next) {
+    if(pipeline.rosterRolloverYear!==this.currentYear)advancePreRolloverMedicalCalendar(this.league,{completedYear:this.currentYear,preserveAdmittedRights:true,annualTransition:true});
     this.processStaffLifecycle();
     const rollover = this.runRosterYearRollover();
     const retention = this.runRetentionWindow();
@@ -3266,7 +3465,9 @@ export class GameSession {
     // entry to the draft: the awards have to be selections, and any pick
     // traded during the offseason has to be honoured, but once the draft
     // stage owns the board nothing may re-sort it underneath the clock.
-    this.refreshDraftOrder();
+    // Legacy/direct offseason entry can bypass awards preparation. Open the
+    // existing scouted class when the calendar hands ownership to the draft.
+    this.prepareDraft();
     return next({
       message: comp.length
         ? `${market.message} ${comp.length} compensatory pick${comp.length === 1 ? "" : "s"} awarded.`
@@ -3307,6 +3508,13 @@ export class GameSession {
     this.runRosterYearRollover();
     this.runRetentionWindow();
     this.runFreeAgencyWindow();
+    const undrafted = admitUndraftedFreeAgents(this.league, this.league.pendingDraft,
+      { year: financialYearForLeague(this.league) });
+    if (undrafted.admitted.length) {
+      this.logTransaction({ type: 'undrafted-free-agent-admission', teamId: null,
+        details: { year: undrafted.year, count: undrafted.admitted.length,
+          playerIds: undrafted.admitted.map(player=>player.id) } });
+    }
     const backstop = this.runRosterLegalityBackstop();
     return next({
       message: backstop.message
@@ -3335,7 +3543,12 @@ export class GameSession {
     // for the moment a real club cuts to the roster limit is the right place
     // to hold that limit, so it now does.
     this.enforceLeagueLegality();
-    return next({ message: "Training camp cuts and roster normalization complete." });
+    // Maintenance can stop at an unaffordable market leader, and camp cuts
+    // can free room after the earlier UDFA depth pass. Fill the final funded
+    // minimums on the actual camp boundary, after cuts, while retaining the
+    // controlled GM's authority. The shared receipt reports any open holes.
+    const finalDepth = this.runRosterLegalityBackstop();
+    return next({ message: `Training camp cuts complete. ${finalDepth.message}` });
   }
 
   getLeagueAnalytics({ year = this.currentYear, teamId = null } = {}) {
@@ -3831,6 +4044,9 @@ export class GameSession {
   registerOwnerUltimatumPressure() {
     const team = teamById(this.league, this.controlledTeamId);
     if (!team?.owner) return null;
+    // The final regular-season advance resolves this year's mandate before
+    // updating owner pressure. Never issue another already-expired mandate.
+    if (this.currentWeek > this.sportRules.structure.regularSeasonWeeks) return null;
     const roster = teamPlayersAll(this.league, team.id);
     // Recompute with post-drift patience so the ultimatum gate sees live truth.
     team.owner.expectation = buildOwnerExpectation(team, roster, this.league.transactionLog || [], {
@@ -3843,7 +4059,6 @@ export class GameSession {
       (entry) =>
         entry.teamId === team.id &&
         entry.choiceId === "owner-ultimatum" &&
-        entry.status === "active" &&
         entry.createdYear === this.currentYear
     );
     if (existing) return existing;
@@ -3979,10 +4194,10 @@ export class GameSession {
   startSeason(year) {
     this.currentYear = year;
     resetTeamSeasonState(this.league, year);
+    if (this.league.capModel?.version === 'nfl-modern-cap-v1') this.league.financialYear = year;
     const settings = this.getLeagueSettings();
     const era = this.getEraProfile();
-    const growthYears = Math.max(0, year - this.startYear);
-    const scaledCap = Math.round(this.sportRules.structure.salaryCap * Math.pow(1 + settings.capGrowthRate, growthYears));
+    const scaledCap = salaryCapForSeason(this.league.capModel || legacySalaryCapModel(this.startYear), year, settings.capGrowthRate);
     for (const team of this.league.teams) {
       this.league.teamCapOverride[team.id] = scaledCap;
       if (!team.scheme) team.scheme = { passRate: 0.54, aggression: 0.5 };
@@ -4025,6 +4240,7 @@ export class GameSession {
       kind: "time-capsule",
       lines: this.league.timeCapsule.predictions.map((p) => p.text)
     });
+    this.prepareDraft({ scoutingOnly: true });
   }
   setControlledTeam(teamId) {
     const next = teamById(this.league, teamId);
@@ -4100,14 +4316,20 @@ export class GameSession {
     }));
   }
 
-  refreshTeamDepthChart(teamId) {
+  refreshTeamDepthChart(teamId, { preserveOrder = false } = {}) {
     const team = teamById(this.league, teamId);
     if (!team) return;
-    const roster = teamPlayersAll(this.league, teamId).filter((player) => player.status === "active");
+    const roster = getRosterCandidates(this.league, teamId);
     const chart = defaultDepthChartForTeam(roster, team);
     if (!this.league.depthCharts[teamId]) this.league.depthCharts[teamId] = {};
     for (const [position, ids] of Object.entries(chart)) {
-      this.league.depthCharts[teamId][position] = ids;
+      const existing = this.league.depthCharts[teamId][position];
+      // Interactive maintenance reconciles membership without replacing the
+      // GM's order. Unlisted arrivals go after incumbents; CPU clubs retain
+      // their ordinary merit-based depth rebuild.
+      const retained = preserveOrder && Array.isArray(existing)
+        ? [...new Set(existing.filter(id => ids.includes(id)))] : [];
+      this.league.depthCharts[teamId][position] = [...retained, ...ids.filter(id => !retained.includes(id))];
     }
   }
 
@@ -4165,7 +4387,7 @@ export class GameSession {
 
     for (const team of this.league.teams) {
       if (team.id === this.controlledTeamId) {
-        this.refreshTeamDepthChart(team.id);
+        this.refreshTeamDepthChart(team.id, { preserveOrder: true });
         continue;
       }
 
@@ -4173,7 +4395,7 @@ export class GameSession {
         const movable = practicePlayers(this.league, team.id).length < MAX_PRACTICE_SQUAD
           ? activeRosterPlayers(this.league, team.id)
               .slice()
-              .filter((player) => player.experience <= 3)
+              .filter((player) => validatePracticeSquadAddition({ players: practicePlayers(this.league, team.id), player, settings: this.getLeagueSettings() }).ok)
               .sort((a, b) => a.overall - b.overall || b.age - a.age)[0]
           : null;
 
@@ -4227,8 +4449,7 @@ export class GameSession {
         for (let i = 0; i < missing; i += 1) {
           const promote = findBestPracticePlayer(team.id, need.position);
           if (promote && activeRosterPlayers(this.league, team.id).length < MAX_ACTIVE_ROSTER) {
-            promote.rosterSlot = "active";
-            continue;
+            if(activatePracticePlayer(this.league,promote).ok) continue;
           }
           if (activeRosterPlayers(this.league, team.id).length >= MAX_ACTIVE_ROSTER) break;
           const candidates = sortPlayersForDepth(
@@ -4251,8 +4472,7 @@ export class GameSession {
       while (activeRosterPlayers(this.league, team.id).length < MAX_ACTIVE_ROSTER) {
         const promote = findBestPracticePlayer(team.id);
         if (promote) {
-          promote.rosterSlot = "active";
-          continue;
+          if(activatePracticePlayer(this.league,promote).ok) continue;
         }
         const bestOverallFa = sortPlayersForDepth(freeAgentPool(), team)[0];
         if (!bestOverallFa) break;
@@ -4261,10 +4481,10 @@ export class GameSession {
         consumeFreeAgent(bestOverallFa);
       }
 
-      while (practicePlayers(this.league, team.id).length > MAX_PRACTICE_SQUAD) {
-        const practiceCut = practicePlayers(this.league, team.id)
-          .slice()
-          .sort((a, b) => a.overall - b.overall || b.age - a.age)[0];
+      while (true) {
+        const practice = practicePlayers(this.league, team.id).slice().sort((a, b) => b.overall - a.overall || a.age - b.age);
+        const { rejected } = selectEligiblePracticeSquad(practice, this.getLeagueSettings());
+        const practiceCut = rejected.at(-1);
         if (!practiceCut) break;
         const released = this.releasePlayer({ teamId: team.id, playerId: practiceCut.id, toWaivers: false, deferReindex: true });
         if (released.ok) invalidateFreeAgentPool();
@@ -4350,6 +4570,7 @@ export class GameSession {
       appliedAt: { year: this.currentYear, week: this.currentWeek },
       selections: validation.value.selections,
       effects: {
+        weeklyPlan: { summary: team.weeklyPlan?.summary || null, opponentTeamId: team.weeklyPlan?.opponentTeamId || null },
         identity: {
           id: plan.identity.id,
           label: plan.identity.label,
@@ -4492,7 +4713,11 @@ export class GameSession {
 
   getScoutingBoard({ teamId = this.controlledTeamId, limit = 120 } = {}) {
     const draft = this.league.pendingDraft;
-    if (!draft) return { active: false, teamId, points: 0, locked: false, weeklyReports: [], prospects: [] };
+    if (!draft || (draft.completed && !Array.isArray(draft.available))) {
+      // Legacy completed receipts can contain selections only. Their history
+      // is valid, but they do not provide a live prospect board to display.
+      return { active: false, teamId, points: 0, locked: false, weeklyReports: [], prospects: [] };
+    }
     const state = this.ensureScoutingTeamState(teamId);
     const safeLimit = normalizeCount(limit, 10, 300, 120);
     const team = teamById(this.league, teamId);
@@ -4640,6 +4865,68 @@ export class GameSession {
     return { ok: true, teamId, locked: true, board };
   }
 
+  getStandardElevationGame(teamId = this.controlledTeamId) {
+    if (this.league.sportId && this.league.sportId !== 'football') return null;
+    if (this.phase === 'regular-season') {
+      const matchup = this.seasonSchedule?.find(row => row.week === this.currentWeek)?.games
+        ?.find(game => [game.homeTeamId, game.awayTeamId].includes(teamId));
+      return matchup ? standardElevationGame({ ...matchup, year: this.currentYear, week: this.currentWeek }) : null;
+    }
+    if (this.phase !== 'postseason' || !this.postseasonState) return null;
+    const next = nextPostseasonGame(this.postseasonState, this.league);
+    if (!next || ![next.homeTeamId, next.awayTeamId].includes(teamId)) return null;
+    return standardElevationGame({ ...next, year: this.currentYear, seasonType: 'playoffs', week: 0,
+      label: next.round === 'super-bowl' ? 'super-bowl' : `${next.conference.toLowerCase()}-${next.round}` });
+  }
+
+  previewPlayerElevation({ teamId = this.controlledTeamId, playerId, expectedGameId } = {}) {
+    const game = this.getStandardElevationGame(teamId);
+    const refuse = (reasonCode, error) => ({ ok: false, status: 409, reasonCode, error });
+    if (!game) return refuse('ELEVATION_NO_SCHEDULED_GAME', 'This club has no game ready for elevation. Byes and offseason stages do not use elevations.');
+    if (expectedGameId !== undefined && expectedGameId !== game.gameId)
+      return refuse('ELEVATION_GAME_CHANGED', 'The scheduled game changed. Review the current elevation before confirming.');
+    if (this.league.gameArchive?.some(row => row.gameId === game.gameId)
+      || this.weekResultsCurrentSeason?.some(row => row.games?.some(result => result.gameId === game.gameId)))
+      return refuse('ELEVATION_GAME_ALREADY_PLAYED', 'This scheduled game has already been played.');
+    const player = this.getPlayerById(playerId);
+    try {
+      const result = previewStandardElevation({ league: this.league, player, teamId, game, capSpace: this.getTeamCapSummary(teamId).capSpace });
+      if (!result.ok) return result;
+      let compensation = { kind: 'regular-elevation-adjustment', minimumCents: result.elevation.payCents,
+        maximumCents: result.elevation.payCents, additionalCapCents: result.elevation.capChargeCents };
+      if (game.seasonType === 'playoffs') {
+        const team = teamById(this.league, teamId), seed = this.postseasonState.seeds?.[team.conference]?.find(row => row.teamId === teamId)?.seed;
+        if (!Number.isInteger(seed) || seed < 1 || seed > 7) return refuse('ELEVATION_POSTSEASON_SEEDS_REQUIRED', 'Current playoff qualification must be known before elevation.');
+        const priorClubListGames = priorActiveInactiveGames({ league: this.league, player, teamId, year: game.year,
+          gameId: game.gameId, postseasonState: this.postseasonState, thresholdRequired: ['conference', 'super-bowl'].includes(game.round) });
+        const quote = won => postseasonElevationSalaryForSeason(game.year, { round: game.round, divisionWinner: seed <= 4, priorClubListGames, won });
+        compensation = { kind: quote(false).kind, minimumCents: quote(false).amountCents, maximumCents: quote(true).amountCents,
+          additionalCapCents: 0, priorClubListGames };
+      }
+      const cycle = player.standardElevations?.cycles?.[teamId] || 0;
+      const uses = result.uses ?? (player.standardElevations?.games || []).filter(row => row.teamId === teamId
+        && row.cycle === cycle && row.game.year === game.year && row.game.seasonType === 'regular').length;
+      const remainingRegular = result.remainingRegular ?? Math.max(0, 3 - uses);
+      return { ...result, teamId, playerId, playerName: player.name, game, compensation, uses, remainingRegular,
+        remainingAfterDeclaration: Math.max(0, remainingRegular - (!result.unchanged && game.seasonType === 'regular' ? 1 : 0)) };
+    } catch (error) {
+      return { ok: false, status: error.status || 400, reasonCode: error.reasonCode || 'ELEVATION_ENTITLEMENT_INVALID', error: error.message };
+    }
+  }
+
+  declarePlayerElevation(input = {}) {
+    const preview = this.previewPlayerElevation(input);
+    if (!preview.ok || preview.unchanged) return preview;
+    const player = this.getPlayerById(preview.playerId);
+    const result = declareStandardElevation({ league: this.league, player, teamId: preview.teamId, game: preview.game,
+      capSpace: this.getTeamCapSummary(preview.teamId).capSpace });
+    if (!result.ok || result.unchanged) return result;
+    this.logTransaction({ type: 'standard-elevation', teamId: preview.teamId, playerId: player.id, playerName: player.name,
+      details: { gameId: preview.game.gameId, week: preview.game.week, round: preview.game.round,
+        capChargeCents: result.elevation.capChargeCents, remainingRegular: result.remainingRegular - (preview.game.seasonType === 'regular' ? 1 : 0) } });
+    return { ...preview, ...result };
+  }
+
   setPracticeSquad({ teamId, playerId, moveToPractice = true }) {
     const player = this.getPlayerById(playerId);
     if (player && (player.teamId !== teamId || player.status !== "active")) {
@@ -4648,23 +4935,21 @@ export class GameSession {
     if (!player) return { ok: false, error: "Player not found on team." };
 
     const previousSlot = player.rosterSlot || "active";
+    if (previousSlot === 'reserve') return { ok: false, reasonCode: 'RESERVE_ACTIVATION_REQUIRED', error: 'Activate the player through the reserve return process first.' };
+    if (previousSlot === (moveToPractice ? "practice" : "active")) return { ok: true, teamId, playerId, rosterSlot: previousSlot, unchanged: true };
+    let practiceEligibility = null;
     if (moveToPractice) {
-      const expLimit = Number(this.getLeagueSettings().practiceSquadExperienceLimit || 2);
-      if (player.experience > expLimit) {
-        return { ok: false, error: `Player not practice-squad eligible (>${expLimit} years experience).` };
-      }
-      if (normalizeContract(player.contract).salary > 4_500_000) {
-        return { ok: false, error: "Veteran salary too high for practice squad designation." };
-      }
-      if (practicePlayers(this.league, teamId).length >= MAX_PRACTICE_SQUAD) {
-        return { ok: false, error: "Practice squad full." };
-      }
-      player.rosterSlot = "practice";
+      const eligibility = validatePracticeSquadAddition({ players: practicePlayers(this.league, teamId), player, settings: this.getLeagueSettings() });
+      if (!eligibility.ok) return eligibility;
+      practiceEligibility = eligibility;
+      return { ok: false, reasonCode: 'PRACTICE_RELEASE_REQUIRED',
+        error: 'Release the active player first. After any required waivers clear, sign a weekly practice contract from Free Agents.' };
     } else {
       if (activeRosterPlayers(this.league, teamId).length >= MAX_ACTIVE_ROSTER) {
         return { ok: false, error: "Active roster full (53)." };
       }
-      player.rosterSlot = "active";
+      const activation=activatePracticePlayer(this.league,player);
+      if(!activation.ok) return activation;
     }
 
     this.statBook.reindexPlayers();
@@ -4676,40 +4961,35 @@ export class GameSession {
       playerName: player.name,
       details: {
         from: previousSlot,
-        to: player.rosterSlot
+        to: player.rosterSlot,
+        practiceEligibility
       }
     });
-    return { ok: true, teamId, playerId, rosterSlot: player.rosterSlot };
+    return { ok: true, teamId, playerId, rosterSlot: player.rosterSlot, practiceEligibility };
   }
 
-  setPlayerDesignation({ teamId, playerId, designation, active = true }) {
+  setPlayerDesignation({ teamId, playerId, designation, active = true, beginPractice = false, returnEligible = true }) {
+    if (typeof active !== 'boolean' || typeof beginPractice !== 'boolean' || typeof returnEligible !== 'boolean')
+      return { ok: false, reasonCode: 'RESERVE_OPTIONS_INVALID', error: 'Designation options require boolean values.' };
     const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
-    if (!["ir", "pup", "nfi", "gameDayInactive"].includes(designation)) {
+    if (!["ir", "pup", "nfi", "ps-injured", "gameDayInactive"].includes(designation)) {
       return { ok: false, error: "Invalid designation." };
     }
 
     const isActive = active === true;
-    if (designation === "gameDayInactive" && isActive) {
-      const current = activeRosterPlayers(this.league, teamId).filter((entry) => entry.designations?.gameDayInactive).length;
-      if (current >= MAX_GAME_DAY_INACTIVES && !player.designations?.gameDayInactive) {
-        return { ok: false, error: `Maximum ${MAX_GAME_DAY_INACTIVES} game-day inactives reached.` };
-      }
-    }
 
-    if (!player.designations || typeof player.designations !== "object") {
-      player.designations = { ir: false, pup: false, nfi: false, gameDayInactive: false };
-    }
-    player.designations[designation] = isActive;
-
-    if (designation === "ir" && isActive) {
-      player.injury = player.injury || {
-        type: "reserve/injured",
-        severity: "moderate",
-        weeksRemaining: this.rng.int(3, 8),
-        startedWeek: this.currentWeek,
-        year: this.currentYear
-      };
+    if (designation !== 'gameDayInactive') {
+      const elevationRefusal=standardElevationRosterRefusal(player);if(elevationRefusal)return elevationRefusal;
+      const result = transitionReserveList(this.league, player, { ...reserveContextForSession(this), practiceSettings: this.getLeagueSettings() },
+        { designation, active: isActive, beginPractice, returnEligible });
+      if (!result.ok || result.unchanged) return result;
+      this.refreshTeamDepthChart(teamId, { preserveOrder: teamId === this.controlledTeamId });
+    } else {
+      if (player.rosterSlot === 'reserve') return { ok: false, reasonCode: 'RESERVE_NOT_GAME_DAY_ACTIVE', error: 'A reserve player is already unavailable for games.' };
+      if (!player.designations || typeof player.designations !== 'object')
+        player.designations = { ir: false, pup: false, nfi: false, gameDayInactive: false };
+      player.designations[designation] = isActive;
     }
 
     this.logTransaction({
@@ -4717,7 +4997,7 @@ export class GameSession {
       teamId,
       playerId,
       playerName: player.name,
-      details: { designation, active: isActive }
+      details: { designation, active: isActive, beginPractice, rosterSlot: player.rosterSlot }
     });
     return { ok: true, teamId, playerId, designations: player.designations };
   }
@@ -4788,7 +5068,7 @@ export class GameSession {
     if (!this.getTeamById(teamId)) return { ok: false, error: "Invalid team." };
     const team = teamById(this.league, teamId);
     const allowed = new Set(
-      teamPlayersAll(this.league, teamId)
+      getRosterCandidates(this.league, teamId)
         .filter((player) => player.position === position)
         .map((player) => player.id)
     );
@@ -4832,7 +5112,41 @@ export class GameSession {
     };
   }
 
-  signFreeAgent({ teamId, playerId, deferReindex = false }) {
+  signPracticeFreeAgent({ teamId, playerId, weeklySalary = null, deferReindex = false }) {
+    if (!this.getTeamById(teamId)) return { ok: false, error: 'Invalid team.' };
+    if (!this.getChallengeRestrictions(teamId).allowUserFreeAgency) return { ok: false,
+      reasonCode: 'challenge-free-agency', error: 'This challenge mode disables user free-agent signings.' };
+    const player = this.getPlayerById(playerId);
+    if (!player || player.status !== 'active' || player.teamId !== 'FA') return { ok: false,
+      reasonCode: 'PRACTICE_FREE_AGENT_REQUIRED', error: 'Practice contracts require a free agent. Players awaiting waivers must clear first.' };
+    const eligible = validatePracticeSquadAddition({ players: practicePlayers(this.league, teamId), player, settings: this.getLeagueSettings() });
+    if (!eligible.ok) return eligible;
+    if (this.phase !== 'regular-season' && !(this.phase === 'offseason' && this.league.offseasonPipeline?.stage === 'camp-cuts')) return { ok: false,
+      reasonCode: 'PRACTICE_SIGNING_WINDOW', error: 'Practice signing opens after camp cuts and during the regular season.' };
+    if (teamId === this.controlledTeamId && player.overall >= PREMIUM_FA_OVERALL) return { ok: false,
+      reasonCode: 'market-pursuit', error: `${player.name} is pursuing active-roster offers. Submit an active contract offer in Free Agents.` };
+    let contract;
+    try { contract = buildPracticeContract(player, { year: financialYearForLeague(this.league),
+      startWeek: this.phase === 'regular-season' ? this.currentWeek : 1, weeklySalary }); }
+    catch(error) { return { ok: false, reasonCode: 'PRACTICE_PAY_INVALID', error: error.message }; }
+    if (this.getTeamCapSummary(teamId).capSpace < contract.capHit) return { ok: false,
+      reasonCode: 'PRACTICE_SIGNING_CAP', error: 'Insufficient cap space for the remaining weekly practice salary.' };
+    player.teamId = teamId;
+    player.rosterSlot = 'practice';
+    player.contract = contract;
+    recordElevationPracticeRejoin(player,{teamId});
+    if (!deferReindex) {
+      recalculateAllTeamRatings(this.league);this.statBook.reindexPlayers();this.rebuildLookupIndexes();
+    }
+    this.logTransaction({ type: 'practice-signing', teamId, playerId, playerName: player.name,
+      details: { weeklySalary: contract.weeklySalary, startWeek: contract.startWeek,
+        regularWeeks: contract.regularWeeks, capHit: contract.capHit, eligibilityGroup: contract.eligibilityGroup } });
+    return { ok: true, teamId, playerId, rosterSlot: 'practice', contract };
+  }
+
+  signFreeAgent({ teamId, playerId, deferReindex = false, rosterSlot = 'active', weeklySalary = null }) {
+    if (rosterSlot === 'practice') return this.signPracticeFreeAgent({ teamId, playerId, weeklySalary, deferReindex });
+    if (rosterSlot !== 'active') return { ok: false, error: 'Invalid signing roster slot.' };
     if (!this.getTeamById(teamId)) return { ok: false, error: "Invalid team." };
     const restrictions = this.getChallengeRestrictions(teamId);
     if (!restrictions.allowUserFreeAgency) {
@@ -4860,7 +5174,7 @@ export class GameSession {
     if (activeRosterPlayers(this.league, teamId).length >= MAX_ACTIVE_ROSTER) {
       return { ok: false, error: "Active roster full (53)." };
     }
-    const contract = veteranContract(player.overall, this.rng);
+    const contract = veteranContract(player.overall, this.rng, contractMarketOptions(this.league, player));
     if (this.getTeamCapSummary(teamId).capSpace < contract.capHit) {
       return { ok: false, error: "Insufficient cap space." };
     }
@@ -4868,6 +5182,7 @@ export class GameSession {
     player.teamId = teamId;
     player.contract = contract;
     player.rosterSlot = "active";
+    recordPermanentElevationActivation(player,{teamId,year:financialYearForLeague(this.league)});
     this.league.waiverWire = this.league.waiverWire.filter((entry) => entry.playerId !== playerId);
     if (!deferReindex) {
       recalculateAllTeamRatings(this.league);
@@ -4900,12 +5215,20 @@ export class GameSession {
       return { ok: false, error: "Player not found on team." };
     }
     if (!player) return { ok: false, error: "Player not found on team." };
+    const injuryPayRefusal=elevationInjuryReleaseRefusal(player);if(injuryPayRefusal)return injuryPayRefusal;
+    const elevationRefusal=standardElevationRosterRefusal(player);if(elevationRefusal)return elevationRefusal;
+    if (player.contract?.kind === 'weekly-practice-contract-v1') toWaivers = false;
     const capLedger = this.league.capLedger[teamId] || {
       rollover: 0,
       deadCapCurrentYear: 0,
       deadCapNextYear: 0
     };
     const deadCap = computeReleaseDeadCap(player.contract, { june1 });
+    recordElevationActiveRelease(player,{teamId});
+    if(player.contract?.kind==='weekly-practice-contract-v1') {
+      player.practiceContractHistory||=[];
+      player.practiceContractHistory.push(structuredClone(player.contract));
+    }
     capLedger.deadCapCurrentYear += deadCap.currentYearDeadCap;
     capLedger.deadCapNextYear += deadCap.nextYearDeadCap;
     this.league.capLedger[teamId] = capLedger;
@@ -5006,11 +5329,12 @@ export class GameSession {
       const player = this.getPlayerById(claim.playerId);
       if (!player || player.teamId !== "WAIVER") continue;
       if (activeRosterPlayers(this.league, claim.teamId).length >= MAX_ACTIVE_ROSTER) continue;
-      const offerContract = veteranContract(player.overall, this.rng);
+      const offerContract = veteranContract(player.overall, this.rng, contractMarketOptions(this.league, player));
       if (this.getTeamCapSummary(claim.teamId).capSpace < offerContract.capHit) continue;
       player.teamId = claim.teamId;
       player.contract = offerContract;
       player.rosterSlot = "active";
+      recordPermanentElevationActivation(player,{teamId:claim.teamId,year:financialYearForLeague(this.league)});
       this.logTransaction({
         type: "waiver-award",
         teamId: claim.teamId,
@@ -5329,19 +5653,33 @@ export class GameSession {
   }
 
   resignPlayer({ teamId, playerId, years = 3, salary = null }) {
+    if (!Number.isInteger(Number(years)) || Number(years) < 1 || Number(years) > CONTRACT_RULES.maxYears
+      || (salary !== null && (salary === '' || !Number.isFinite(Number(salary)) || Number(salary) <= 0))) {
+      return { ok: false, error: 'Contract requires an integer term of 1–5 years and a finite positive salary.' };
+    }
     const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
+    if (player.contract?.kind === 'weekly-practice-contract-v1') {
+      return { ok: false, reasonCode: 'practice-contract-requires-activation', error: 'Promote this practice player before negotiating an active contract.' };
+    }
+    const previousContract = normalizeContract(player.contract);
+    const quoteRng = new this.rng.constructor(this.rng.seed);
     const contract = buildContract({
       overall: player.overall,
       years: clamp(Number(years), 1, 5),
       salary: salary == null ? undefined : Number(salary),
       minSalary: CONTRACT_RULES.minSalary,
-      maxSalary: 25_000_000,
-      rng: this.rng
+      ...contractMarketOptions(this.league, player),
+      rng: quoteRng
     });
-    if (this.getTeamCapSummary(teamId).capSpace < contract.capHit) {
+    if (previousContract.practiceEarnedCharge) {
+      contract.practiceEarnedCharge = previousContract.practiceEarnedCharge;
+      contract.capHit += previousContract.practiceEarnedCharge;
+    }
+    if (this.getTeamCapSummary(teamId).capSpace + previousContract.capHit < contract.capHit) {
       return { ok: false, error: "Insufficient cap space." };
     }
+    this.rng.seed = quoteRng.seed;
     player.contract = contract;
     this.statBook.reindexPlayers();
     this.logTransaction({
@@ -5362,7 +5700,7 @@ export class GameSession {
     const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
     const oldContract = normalizeContract(player.contract);
-    player.contract = restructureContract(player.contract, this.rng);
+    player.contract = restructureContract(player.contract, this.rng, { minBaseSalary: contractBaseMinimum(contractMarketOptions(this.league, player), player.contract.yearsRemaining) });
     this.logTransaction({
       type: "restructure",
       teamId,
@@ -5428,7 +5766,7 @@ export class GameSession {
     });
     return { ok: true, teamId, playerId, contract: updated };
   }
-  decrementAvailability() {
+  decrementAvailability({deferAdmittedPay=false}={}) {
     const modifierCache = new Map();
     const recoveryModifiers = (teamId) => {
       if (modifierCache.has(teamId)) return modifierCache.get(teamId);
@@ -5437,26 +5775,48 @@ export class GameSession {
       modifierCache.set(teamId, modifiers);
       return modifiers;
     };
-    const recovery = advanceInjuryRecovery(this.league, {
-      getTeamModifiers: recoveryModifiers,
-      onRecovered: (receipt) => {
+    const scheduledFootballWeek=(this.league.sportId||'football')==='football'
+      &&this.currentYear>=2023&&this.phase==='regular-season'&&this.seasonSchedule[this.currentWeek-1];
+    const recovery = scheduledFootballWeek
+      ?applyRegularMedicalRecovery(this.league,{year:this.currentYear,week:this.currentWeek,getTeamModifiers:recoveryModifiers,deferAdmittedPay})
+      :advanceInjuryRecovery(this.league,{getTeamModifiers:recoveryModifiers});
+    for(const receipt of recovery.receipts){
         if (!Array.isArray(this.league.rehabReceipts)) this.league.rehabReceipts = [];
         const stamped = { ...receipt, year: this.currentYear, week: this.currentWeek };
         this.league.rehabReceipts.unshift(stamped);
         this.league.rehabReceipts = this.league.rehabReceipts.slice(0, 80);
         this.appendEvent("rehab-complete", stamped);
         reportRehabClearance(this.league, stamped, this.currentYear, this.currentWeek);
-      }
-    });
+    }
     const recoveredPlayerIds = new Set(recovery.receipts.map((entry) => entry.playerId));
     for (const player of this.league.players) {
       if (!player.injury && Number(player.reinjuryRisk || 0) > 0 && !recoveredPlayerIds.has(player.id)) {
         const modifiers = recoveryModifiers(player.teamId);
         player.reinjuryRisk = clamp(player.reinjuryRisk - (0.02 + modifiers.extraRecoveryWeeks * 0.01), 0, 0.55);
       }
-      if ((player.suspensionWeeks || 0) > 0) player.suspensionWeeks -= 1;
     }
     return recovery;
+  }
+
+  postseasonRecoveryOptions() {
+    const cache = new Map();
+    return {
+      excludeElevationTeamIds: [this.controlledTeamId],
+      getTeamModifiers: teamId => {
+        if (!cache.has(teamId)) {
+          const team = teamById(this.league, teamId);
+          cache.set(teamId, teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []));
+        }
+        return cache.get(teamId);
+      },
+      onRecovered: stamped => {
+        this.league.rehabReceipts ||= [];
+        this.league.rehabReceipts.unshift(stamped);
+        this.league.rehabReceipts = this.league.rehabReceipts.slice(0, 80);
+        this.appendEvent('rehab-complete', stamped);
+        reportRehabClearance(this.league, stamped, stamped.year, stamped.week);
+      }
+    };
   }
 
   setRehabPlan({ teamId = this.controlledTeamId, playerId, plan }) {
@@ -5478,12 +5838,6 @@ export class GameSession {
     this.logTransaction({ type: "rehab-plan", teamId, playerId, playerName: player.name, details: receipt });
     this.appendEvent("rehab-plan", receipt);
     return { ...result, receipt };
-  }
-
-  resetGameDayInactives() {
-    for (const player of this.league.players) {
-      if (player.designations) player.designations.gameDayInactive = false;
-    }
   }
 
   runStaffAndStrategyRefresh() {
@@ -5540,13 +5894,21 @@ export class GameSession {
     return result;
   }
 
+  gameDressedPlayers(game, teamId) {
+    const side = game.homeTeamId === teamId ? "home" : "away";
+    const ids = game.boxScore?.gameDayRosters?.[side]?.playerIds;
+    if (!Array.isArray(ids)) return getTeamPlayers(this.league, teamId);
+    const selected = new Set(ids);
+    return this.league.players.filter(p => p.teamId === teamId && selected.has(p.id));
+  }
+
   generateWeekEvents(weekResult) {
     const injuries = [];
     const suspensions = [];
     const settings = this.getLeagueSettings();
     for (const game of weekResult.games) {
       for (const teamId of [game.homeTeamId, game.awayTeamId]) {
-        const roster = activeRosterPlayers(this.league, teamId);
+        const roster = this.gameDressedPlayers(game, teamId);
         if (!roster.length) continue;
 
         const injuryRolls = this.rng.int(0, 2);
@@ -5588,6 +5950,8 @@ export class GameSession {
             reinjuryRisk
           };
           player.reinjuryRisk = reinjuryRisk;
+          recordDevelopmentInjury(player, player.injury);
+          recordElevationFootballInjury(player,{gameId:game.gameId});
           injuries.push({
             playerId: player.id,
             player: player.name,
@@ -5677,6 +6041,10 @@ export class GameSession {
 
   preparePostseasonControlledGate() {
     const state = this.initializePostseasonRoundFlow();
+    // Week18 can enter postseason while a qualifying bye club still carries
+    // manual inactives. Keep the completed regular week; defer all playoff
+    // simulation until its own advance can report the readiness refusal.
+    if (!this.getAdvanceReadiness().ok) return null;
     let next = nextPostseasonGame(state, this.league);
     while (next && next.homeTeamId !== this.controlledTeamId && next.awayTeamId !== this.controlledTeamId) {
       simulateNextPostseasonGame({
@@ -5685,7 +6053,8 @@ export class GameSession {
         statBook: this.statBook,
         year: this.currentYear,
         rng: this.rng,
-        mode: this.mode
+        mode: this.mode,
+        ...this.postseasonRecoveryOptions()
       });
       next = nextPostseasonGame(state, this.league);
     }
@@ -5728,7 +6097,121 @@ export class GameSession {
    */
   advanceWeek() {
     const phase = calendarPhase(this.sportRules.calendar, this.phase);
+    const readiness = this.getAdvanceReadiness();
+    if (!readiness.ok) return readiness;
     return this[phase.handler]();
+  }
+
+  getAdvanceReadiness() {
+    // Preview annual medical/rights authority before command validation reads
+    // dashboard state or applies a GM choice/tactic. Recovery is not committed
+    // until the actual annual stage succeeds.
+    if ((this.league.sportId || 'football') === 'football' && this.phase === 'offseason') {
+      const preview = structuredClone(this.league);
+      try {
+        validateSnapshotOffseasonMedicalCalendar(preview);
+        if (this.league.offseasonPipeline?.rosterRolloverYear !== this.currentYear)
+          advancePreRolloverMedicalCalendar(preview, { completedYear: this.currentYear,preserveAdmittedRights:true,annualTransition:true });
+        assertAnnualElevationInjuryContractTransition(preview);
+        const stage=this.league.offseasonPipeline?.stage;
+        if(stage&&offseasonStage(this.sportRules.calendar,stage)?.handler)
+          advanceOffseasonMedicalCalendar(preview,{completedYear:this.currentYear,stage});
+      } catch (error) {
+        if ([400,409].includes(error.status) && /^(ELEVATION_INJURY_|PRE_ROLLOVER_MEDICAL_|OFFSEASON_MEDICAL_|ADMITTED_INJURY_)/.test(error.reasonCode || '')) {
+          return { ok:false, status:error.status, reasonCode:error.reasonCode, error:error.message,
+            ...(error.playerId ? { playerId:error.playerId } : {}) };
+        }
+        throw error;
+      }
+    }
+    if (!this.sportRules.match.checkReadiness) return { ok: true };
+    let teamIds = [];
+    let readinessContext={};
+    let league = this.league;
+    if (this.phase === "regular-season") {
+      readinessContext={year:this.currentYear,weekBlock:this.seasonSchedule[this.currentWeek-1]};
+      if ((league.sportId||'football')==='football'&&this.currentYear>=2023&&readinessContext.weekBlock) {
+        try {
+          // Validate source wages and recovery before dashboard/GM effects,
+          // regardless of whether the current roster already passes readiness.
+          previewRegularMedicalRecovery(league,{year:this.currentYear,week:this.currentWeek,
+            getTeamModifiers:teamId=>{
+              const team=teamById(league,teamId);
+              return teamWorldStateModifiers(team,team?teamPlayersAll(league,teamId):[]);
+            }});
+        } catch(error) {
+          if(error.status===400&&/^(ADMITTED_INJURY_|REGULAR_MEDICAL_RECOVERY_)/.test(error.reasonCode||''))
+            return {ok:false,status:error.status,reasonCode:error.reasonCode,error:error.message};
+          throw error;
+        }
+      }
+      teamIds = (this.seasonSchedule[this.currentWeek - 1]?.games || [])
+        .flatMap(game => [game.homeTeamId, game.awayTeamId]);
+      // Preview the same deterministic recovery used at week entry. Copies
+      // prevent rehab counters, receipts and suspensions changing on refusal.
+      if (this.sportRules.match.checkReadiness({ league, teamIds,...readinessContext }).ok === false) {
+        league = { ...league, players: league.players.map(player => ({ ...player,
+          injury: player.injury ? { ...player.injury } : null,
+          developmentHealth: player.developmentHealth ? { ...player.developmentHealth } : undefined,
+          // Recovery closes qualifying elevation injury-pay episodes. Those
+          // nested records belong to the preview as well as the injury counter.
+          elevationInjuryPay: player.elevationInjuryPay ? structuredClone(player.elevationInjuryPay) : undefined,
+          suspensionWeeks: player.suspensionWeeks || 0
+        })) };
+        advanceInjuryRecovery(league, { getTeamModifiers: teamId => {
+          const team = teamById(this.league, teamId);
+          return teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
+        } });
+      }
+    } else if (this.phase === "postseason") {
+      // The command can play other clubs' games before/after the controlled
+      // gate. Check all surviving clubs before applying any of those results.
+      const state = this.postseasonState || createPostseasonState({
+        league: { ...league, teams: league.teams.map(team => ({ ...team, season: { ...team.season } })) },
+        year: this.currentYear
+      });
+      if (state.status === "completed") return { ok: true };
+      const eliminated = new Set((state.gameArchiveEntries || []).map(game =>
+        game.winnerId === game.homeTeamId ? game.awayTeamId : game.homeTeamId));
+      teamIds = Object.values(state.seeds || {}).flat().map(entry => entry.teamId).filter(id => !eliminated.has(id));
+      if ((league.sportId || 'football') === 'football') {
+        try {
+          league = previewPostseasonClubAvailability({state, league, teamIds, year: this.currentYear,
+            getTeamModifiers: this.postseasonRecoveryOptions().getTeamModifiers});
+        } catch(error) {
+          if(error.status===400&&/^(ADMITTED_POSTSEASON_|ADMITTED_INJURY_)/.test(error.reasonCode||''))
+            return {ok:false,status:error.status,reasonCode:error.reasonCode,error:error.message};
+          throw error;
+        }
+      }
+      if ((league.sportId || 'football') === 'football' && this.currentYear >= 2022) {
+        const next = nextPostseasonGame(state, league);
+        const game = standardElevationGame({ ...next, year: this.currentYear, week: 0, seasonType: 'playoffs',
+          label: this.sportRules.competition.postseason.gameLabel(next) });
+        league = previewCpuStandardElevations({ league, games: [game], excludeTeamIds: [this.controlledTeamId] }).league;
+        const knownIds = [game.homeTeamId, game.awayTeamId];
+        const knownReadiness = this.sportRules.match.checkReadiness({ league, teamIds: knownIds, game, postseasonState: state });
+        if (!knownReadiness.ok) return knownReadiness;
+        // A future round's opponent may not be known yet. Do not manufacture
+        // its game or reserve pay during this all-survivor preflight. A CPU
+        // club with healthy eligible practice depth can make its legal choice
+        // at its own actual game boundary; that engine preflight remains final.
+        teamIds = teamIds.filter(teamId => !knownIds.includes(teamId)).filter(teamId => teamId === this.controlledTeamId
+          || (league.financialYear ?? league.year) !== this.currentYear
+          || league.capLedger?.[teamId]?.rolloverAppliedThroughYear >= this.currentYear
+          || capSpaceForTeam(league, teamId) < 0
+          || !league.players.some(player => player.teamId === teamId && player.rosterSlot === 'practice'
+            && player.designations?.gameDayInactive !== true
+            && !pendingStandardElevation(player)
+            && standardElevationPracticeEligibility(player, {teamId,year:this.currentYear}).ok));
+      }
+    }
+    if ((league.sportId || 'football') === 'football' && this.phase === 'regular-season' && readinessContext.weekBlock) {
+      league = previewCpuStandardElevations({ league, excludeTeamIds: [this.controlledTeamId],
+        games: readinessContext.weekBlock.games.map(game => ({ ...game, year: this.currentYear,
+          week: readinessContext.weekBlock.week, seasonType: 'regular' })) }).league;
+    }
+    return this.sportRules.match.checkReadiness({ league, teamIds,...readinessContext });
   }
 
   /** Moves to the phase the calendar declares after the current one. */
@@ -5738,7 +6221,10 @@ export class GameSession {
   }
 
   advanceRegularSeasonPhase() {
-    this.resetGameDayInactives();
+    const admittedAccrual=(this.league.sportId||'football')==='football'&&this.currentYear>=2023&&this.seasonSchedule[this.currentWeek-1]
+      ?previewAdmittedRegularAccrual(this.league,{year:this.currentYear,week:this.currentWeek}):[];
+    const injuryAccrual=(this.league.sportId||'football')==='football'&&this.seasonSchedule[this.currentWeek-1]
+      ?previewRegularInjuryAccrual(this.league,{year:this.currentYear,week:this.currentWeek}):[];
     this.runStaffAndStrategyRefresh();
     // S86 [audit #1] — runStaffAndStrategyRefresh rebuilds every team's
     // weeklyPlan wholesale, which is what silently erased the player's chosen
@@ -5746,7 +6232,7 @@ export class GameSession {
     // the simulator actually observes the decision. Consumed exactly once.
     consumePendingWeeklyTactic(this);
     this.grantWeeklyScoutingPoints();
-    this.decrementAvailability();
+    this.decrementAvailability({deferAdmittedPay:true});
     this.processWaivers();
     this.runAiTeamMaintenance();
     // Premium free agency is a live weekly market (S62): rivals bid, then
@@ -5781,8 +6267,15 @@ export class GameSession {
       weekBlock,
       rng: this.rng,
       mode: this.mode,
-      restedTeamIds
+      restedTeamIds,
+      excludeElevationTeamIds: [this.controlledTeamId]
     });
+    if((this.league.sportId||'football')==='football')commitRegularInjuryAccrual(this.league,
+      {year:this.currentYear,week:this.currentWeek,receipts:injuryAccrual});
+    if((this.league.sportId||'football')==='football'&&this.currentYear>=2023)commitAdmittedRegularAccrual(this.league,
+      {year:this.currentYear,week:this.currentWeek,receipts:admittedAccrual});
+    if((this.league.sportId||'football')==='football'&&this.currentYear>=2023)
+      for(const game of weekResult.games)recordAdmittedPensionGameService({league:this.league,result:game});
     this.trackTiming("simulate-week", Date.now() - simStart);
     this.trackCounter("weeks-simulated", 1);
     applyWeekMorale(this.league, weekResult);
@@ -5794,7 +6287,7 @@ export class GameSession {
 
     // ── Engine hooks ──────────────────────────────────────────────────────
     // Injury rolls for every game this week
-    const injuryMultiplier = this.league.settings?.injuryRateMultiplier ?? 1.0;
+    const injuryMultiplier = this.league.settings?.allowInjuries === false ? 0 : this.league.settings?.injuryRateMultiplier ?? 1.0;
     const injuryModifierCache = new Map();
     const injuryModifiers = (teamId) => {
       if (injuryModifierCache.has(teamId)) return injuryModifierCache.get(teamId);
@@ -5807,9 +6300,10 @@ export class GameSession {
       // Injury exposure is limited to players who actually dressed: the same
       // dressed-roster authority that builds lineups (active slot, not IR/PUP/NFI,
       // not game-day inactive, not already out) owns candidate selection.
-      const homePlayers = getTeamPlayers(this.league, game.homeTeamId);
-      const awayPlayers = getTeamPlayers(this.league, game.awayTeamId);
+      const homePlayers = this.gameDressedPlayers(game, game.homeTeamId);
+      const awayPlayers = this.gameDressedPlayers(game, game.awayTeamId);
       const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier, {
+        gameId:game.gameId,
         getTeamModifiers: injuryModifiers
       });
       for (const { player } of injured) {
@@ -5894,7 +6388,8 @@ export class GameSession {
         statBook: this.statBook,
         year: this.currentYear,
         rng: this.rng,
-        mode: this.mode
+        mode: this.mode,
+        ...this.postseasonRecoveryOptions()
       });
       controlledGame = resolved?.game || null;
       gate = this.preparePostseasonControlledGate();
@@ -5911,6 +6406,8 @@ export class GameSession {
       };
     }
 
+    if ((this.league.sportId || 'football') === 'football') finishPostseasonRecovery({
+      state, league: this.league, year: this.currentYear, ...this.postseasonRecoveryOptions() });
     const playoffResult = postseasonResultFromState(state, this.league);
 
     const calibration = applySeasonRealismCalibration({
@@ -6114,29 +6611,49 @@ export class GameSession {
   }
 
   simulateOneSeason({ runOffseasonAfter = true } = {}) {
-    while (this.phase === "regular-season") this.advanceWeek();
-    // Interactive postseason advancement is deliberately one controlled-team
-    // game per command. This method is the explicit whole-season delegation
-    // path, so it must consume every persisted round gate before returning.
-    let post = null;
-    while (this.phase === "postseason") post = this.advanceWeek();
-    if (runOffseasonAfter) {
-      let guard = 0;
-      while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 32) {
-        if (this.getOffseasonPipeline().stage === "draft" && this.getDraftAuthority().userActionRequired) {
-          // simulateOneSeason is the explicit whole-season delegation command; interactive advance remains blocked.
-          this.runCpuDraft({ untilUserPick: false });
+    const previousDepth = wholeSeasonManagementDepth.get(this) || 0;
+    wholeSeasonManagementDepth.set(this, previousDepth + 1);
+    try {
+      const seasonYear = this.currentYear;
+      // A saved awards/offseason session already completed its games. Capture
+      // that result before startSeason clears the wrap and postseason fields.
+      const completedPhase = this.phase === "season-awards" || this.phase === "offseason";
+      const completedWrap = this.pendingSeasonWrap?.year === seasonYear ? this.pendingSeasonWrap : null;
+      let post = completedPhase ? {
+        year: seasonYear,
+        superBowl: completedWrap?.superBowl || this.latestPostseason?.superBowl || null
+      } : null;
+      const advance = () => {
+        const result = this.advanceWeek();
+        if (result?.ok === false) throw new MatchReadinessError(result);
+        return result;
+      };
+      while (this.phase === "regular-season") advance();
+      // Interactive postseason advancement is deliberately one controlled-team
+      // game per command. This method is the explicit whole-season delegation
+      // path, so it must consume every persisted round gate before returning.
+      while (this.phase === "postseason") post = advance();
+      if (runOffseasonAfter) {
+        let guard = 0;
+        while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 32) {
+          if (this.getOffseasonPipeline().stage === "draft" && this.getDraftAuthority().userActionRequired) {
+            // simulateOneSeason is the explicit whole-season delegation command; interactive advance remains blocked.
+            this.runCpuDraft({ untilUserPick: false });
+          }
+          advance();
+          guard += 1;
         }
-        this.advanceWeek();
-        guard += 1;
       }
+      return {
+        year: post?.year ?? seasonYear,
+        superBowl: post?.superBowl ?? null,
+        championTeamId: post?.superBowl?.championTeamId,
+        calibrationSummary: this.lastCalibrationReport
+      };
+    } finally {
+      if (previousDepth) wholeSeasonManagementDepth.set(this, previousDepth);
+      else wholeSeasonManagementDepth.delete(this);
     }
-    return {
-      year: post.year,
-      superBowl: post.superBowl,
-      championTeamId: post?.superBowl?.championTeamId,
-      calibrationSummary: this.lastCalibrationReport
-    };
   }
 
   simulateSeasons(count = 1, { runOffseasonAfterLast = true } = {}) {
@@ -6152,8 +6669,22 @@ export class GameSession {
     return summaries;
   }
 
-  prepareDraft() {
+  createScoutedDraftProspects({ size, year, rankOffset = 0 }) {
+    return createDraftClass({ size, year, rng: this.rng, familyAnchors:[...this.league.players,...(this.league.retiredPlayers || [])] }).map((player,index)=>({
+      ...player,
+      scouting: {
+        rank: rankOffset + index + 1,
+        projectedRound: Math.min(7,Math.floor((rankOffset+index)/32)+1),
+        combine: generatePlayerWorkout(player,{year}),
+        proDayBoost: this.rng.int(-2,4),
+        scoutedOverall: clamp(player.overall+this.rng.int(-6,7),50,95)
+      }
+    }));
+  }
+
+  prepareDraft({ scoutingOnly = false } = {}) {
     const previousDraft = this.league.pendingDraft;
+    const draftYear = this.currentYear + 1;
     if (previousDraft?.completed && Array.isArray(previousDraft.selections) && previousDraft.selections.length) {
       if (!Array.isArray(this.league.draftHistory)) this.league.draftHistory = [];
       const receipt = {
@@ -6167,27 +6698,21 @@ export class GameSession {
         ...this.league.draftHistory.filter((entry) => Number(entry.year) !== receipt.year)
       ].slice(0, 12);
     }
-    const draftYear = this.currentYear + 1;
-    const prospects = createDraftClass({ size: 256, year: draftYear, rng: this.rng }).map((player, index) => ({
-      ...player,
-      scouting: {
-        rank: index + 1,
-        projectedRound: Math.min(7, Math.floor(index / 32) + 1),
-        combine: {
-          forty: Number(this.rng.float(4.25, 5.25).toFixed(2)),
-          bench: this.rng.int(10, 40),
-          shuttle: Number(this.rng.float(3.8, 4.8).toFixed(2)),
-          cone: Number(this.rng.float(6.6, 8.1).toFixed(2)),
-          vertical: this.rng.int(26, 44),
-          broad: this.rng.int(106, 140)
-        },
-        proDayBoost: this.rng.int(-2, 4),
-        scoutedOverall: clamp(player.overall + this.rng.int(-6, 7), 50, 95)
+    if (Number(previousDraft?.year) === draftYear) {
+      // Archive a completed board even when retaining the same-year class.
+      // The season's investment is in these athletes, not a replacement class.
+      // Update live ownership/capacity only before the first selection. Do not
+      // reinitialize private reads, points, flags or a locked preference board.
+      if (scoutingOnly) previousDraft.scoutingOnly = true;
+      if (!previousDraft.completed) {
+        this.refreshDraftOrder();
+        if (previousDraft.scoutingOnly === true && !scoutingOnly) previousDraft.scoutingOnly = false;
       }
-    }));
-
+      return previousDraft;
+    }
     this.ensureDraftPickAssets();
     const { slots, source } = this.buildDraftOrder(draftYear);
+    const prospects = this.createScoutedDraftProspects({ size: draftCohortSize(slots.length), year: draftYear });
     // `order` stays a flat team-per-selection list so every consumer indexes it
     // the same way; before S67 it held 32 entries and was walked with `% 32`,
     // which silently discarded pick ownership and broke any consumer that tried
@@ -6203,6 +6728,8 @@ export class GameSession {
 
     this.league.pendingDraft = {
       year: draftYear,
+      scoutingOnly,
+      cohort: { ...DRAFT_COHORT_POLICY, generatedCount: prospects.length },
       available: prospects,
       order,
       slots,
@@ -6231,6 +6758,18 @@ export class GameSession {
     if ((draft.currentPick || 1) > 1) return draft;
     const { slots, source } = this.buildDraftOrder(draft.year);
     if (!slots.length) return draft;
+    // Only newly marked cohorts can grow before selection. Historical saved
+    // boards remain authoritative, and the first pick freezes the whole board.
+    if (draft.cohort != null) {
+      validateDraftCohortPolicy(draft.cohort);
+      if (!Array.isArray(draft.available) || draft.available.length!==draft.cohort.generatedCount)
+        throw new TypeError('Draft cohort population does not match its receipt');
+      const needed=draftCohortSize(slots.length)-draft.available.length;
+      if (needed>0) {
+        draft.available.push(...this.createScoutedDraftProspects({size:needed,year:draft.year,rankOffset:draft.available.length}));
+        draft.cohort.generatedCount=draft.available.length;
+      }
+    }
     draft.slots = slots;
     draft.order = slots.map((slot) => slot.teamId);
     draft.orderSource = source;
@@ -6247,7 +6786,7 @@ export class GameSession {
 
   getDraftState() {
     const draft = this.league.pendingDraft;
-    if (!draft) return null;
+    if (!draft || draft.scoutingOnly === true) return null;
     return {
       ...draft,
       // S108 — the draft surface used to ship every prospect's true overall
@@ -6265,7 +6804,7 @@ export class GameSession {
 
   getOnClockTradeMarket() {
     const draft = this.league.pendingDraft;
-    if (!draft || draft.completed) return { active: false, fingerprint: null, offers: [] };
+    if (!draft || draft.completed || draft.scoutingOnly === true) return { active: false, fingerprint: null, offers: [] };
     const slot = draftSlotForPick(draft);
     const livePick = slot?.pickId ? this.getDraftPickById(slot.pickId) : null;
     const scoutingBoard = this.controlledTeamId
@@ -6627,11 +7166,16 @@ export class GameSession {
   }
 
   getPlayerProfile(playerId, { seasonType = "regular" } = {}) {
-    const player = this.getPlayerById(playerId, { includeRetired: true });
+    const rosterPlayer = this.getPlayerById(playerId, { includeRetired: true });
+    const prospect = rosterPlayer ? null : this.league.pendingDraft?.available?.find(player => player.id === playerId);
+    const player = rosterPlayer || prospect;
     if (!player) return null;
+    const scouting = prospect ? scoutedProspectView(prospect, this.league.pendingDraft.year).scouting : null;
+    const visibleOverall = prospect ? (Number.isFinite(scouting?.scoutedOverall) ? scouting.scoutedOverall : null) : player.overall;
     const team = this.getTeamById(player.teamId);
     const roster = team ? this.getTeamPlayersById(player.teamId) : [];
     const normalizedSeasonType = normalizeSeasonType(seasonType, "regular");
+    const visiblePotential = prospect ? scouting.scoutedPotential : this.visiblePotential(player);
 
     const seasonRows = Object.fromEntries(
       TABLE_CATEGORIES.map((category) => [
@@ -6662,32 +7206,44 @@ export class GameSession {
         age: player.age,
         heightInches: player.heightInches || null,
         weightLbs: player.weightLbs || null,
+        bodyMeasurements: resolvePlayerMeasurements(player),
         jerseyNumber: player.jerseyNumber ?? null,
         experience: player.experience,
-        overall: player.overall,
+        service: { accrued: playerServiceCount(player, 'accrued'), salaryCredited: playerServiceCount(player, 'credited'), pension: pensionServiceCount(player) },
+        overall: visibleOverall,
+        ...(prospect ? { isDraftProspect: true, overallIsEstimate: true, scouting, draftYear: this.league.pendingDraft.year } : {}),
         schemeFit: player.schemeFit || null,
         motivation: player.motivation,
         reinjuryRisk: player.reinjuryRisk || 0,
-        developmentTrait: player.developmentTrait,
-        potential: this.visiblePotential(player),
+        developmentTrait: prospect ? 'Unknown' : player.developmentTrait,
+        potentialRevision: !prospect && (player.status === "retired" || player.teamId === this.controlledTeamId)
+          ? player.lastPotentialRevision || null : null,
+        potential: visiblePotential,
         // S108 — the runway in growth seasons: offseasons left before the
         // declared development curve turns negative (`GROWTH_WINDOW_MAX_AGE`,
         // the curve's own boundary — not the generation-time headroom constant,
         // which never moves a rating). Projected here so the browser narrative
         // does not re-declare the age.
-        developmentHeadroom: Number.isFinite(Number(this.visiblePotential(player))) ? Number(this.visiblePotential(player)) - Number(player.overall || 0) : null,
-        developmentRunwaySeasons: Math.max(0, GROWTH_WINDOW_MAX_AGE + 1 - Number(player.age || 0)),
-        status: player.status,
+        developmentHeadroom: !prospect && visiblePotential != null && Number.isFinite(Number(visiblePotential)) && visibleOverall != null ? Number(visiblePotential) - Number(visibleOverall) : null,
+        developmentRunwaySeasons: prospect ? null : Math.max(0, GROWTH_WINDOW_MAX_AGE + 1 - Number(player.age || 0)),
+        status: prospect ? 'draft-prospect' : player.status,
         rosterSlot: player.rosterSlot,
         designations: player.designations || { ir: false, pup: false, nfi: false, gameDayInactive: false },
         morale: player.morale,
         injury: player.injury,
         suspensionWeeks: player.suspensionWeeks,
         profile: player.profile,
-        ratings: player.ratings,
-        contract: normalizeContract(player.contract)
+        appearance: playerAppearance(player),
+        // Unsigned prospects share the board's neutral presentation strength.
+        // The cosmetic definition formula is invertible; using true strength
+        // here would disclose a hidden rating despite the empty ratings DTO.
+        visualFrame: playerFrame(prospect ? { ...player, ratings: { strength: 70 } } : player),
+        ratings: prospect ? {} : player.ratings,
+        positionRatingKeys: positionRatingKeys(player.position),
+        contract: prospect ? { salary: 0, baseSalary: 0, signingBonus: 0, guaranteed: 0, yearsRemaining: 0 } : normalizeContract(player.contract)
       },
-      developmentOutlook: buildPlayerDevelopmentOutlook(player, team, roster, this.developmentEnvironmentCentres()),
+      developmentOutlook: prospect ? { trajectory: 'scouting estimate', headroom: null, fit: null, fitLabel: 'unknown', developmentBonus: 0, focusRatings: [] }
+        : buildPlayerDevelopmentOutlook({ ...player, potential: visiblePotential }, team, roster, this.developmentEnvironmentCentres()),
       seasonType: normalizedSeasonType,
       timeline: this.getPlayerTimeline(playerId, { seasonType: normalizedSeasonType })?.timeline || [],
       career,
@@ -6700,7 +7256,7 @@ export class GameSession {
 
   draftUserPick({ playerId }) {
     const draft = this.league.pendingDraft;
-    if (!draft || draft.completed) return { ok: false, error: "No active draft." };
+    if (!draft || draft.completed || draft.scoutingOnly === true) return { ok: false, error: "No active draft." };
     const teamOnClock = draftTeamOnClock(draft);
     if (teamOnClock !== this.controlledTeamId) return { ok: false, error: "User team is not on the clock." };
     const restrictions = this.getChallengeRestrictions(teamOnClock);
@@ -6717,7 +7273,7 @@ export class GameSession {
 
     const prospect = draft.available.splice(pickIndex, 1)[0];
     prospect.teamId = teamOnClock;
-    prospect.contract = rookieContract(round, prospect.overall, this.rng);
+    prospect.contract = rookieContract(round, prospect.overall, this.rng, contractMarketOptions(this.league, prospect));
     prospect.rosterSlot = "active";
     prospect.profile.source = "drafted";
     this.league.players.push(prospect);
@@ -6748,7 +7304,7 @@ export class GameSession {
 
   runCpuDraft({ picks = 9999, untilUserPick = true } = {}) {
     const draft = this.league.pendingDraft;
-    if (!draft || draft.completed) return { ok: false, error: "No active draft." };
+    if (!draft || draft.completed || draft.scoutingOnly === true) return { ok: false, error: "No active draft." };
     let completed = 0;
     while (!draft.completed && completed < picks) {
       const teamOnClock = draftTeamOnClock(draft);
@@ -6766,9 +7322,13 @@ export class GameSession {
         .filter((item) => item.delta < 0)
         .sort((a, b) => a.delta - b.delta);
       const needMap = new Map(needs.map((item) => [item.position, Math.abs(item.delta)]));
-      const currentCounts = {};
-      for (const player of activeRosterPlayers(this.league, teamOnClock)) {
-        currentCounts[player.position] = (currentCounts[player.position] || 0) + 1;
+      const heldRooms = new Map();
+      // A retained practice player is real competition for a development
+      // place, not invisible depth. The active need boost remains separate.
+      for (const player of teamPlayersAll(this.league, teamOnClock)) {
+        const room = heldRooms.get(player.position) || [];
+        room.push(player);
+        heldRooms.set(player.position, room);
       }
 
       // One archetype read per pick (real roster, rating and cap), CPU clubs only.
@@ -6778,8 +7338,14 @@ export class GameSession {
       for (let i = 0; i < draft.available.length; i += 1) {
         const prospect = draft.available[i];
         const needBoost = (needMap.get(prospect.position) || 0) * 13;
-        const depthPenalty =
-          (currentCounts[prospect.position] || 0) > (ROSTER_TEMPLATE[prospect.position] || 2) + 2 ? 18 : 0;
+        const room = heldRooms.get(prospect.position) || [];
+        const plannedDepth = FULL_ROSTER_TEMPLATE[prospect.position] || 2;
+        // The roster is sorted best-first. Penalize a filled room only when
+        // this prospect does not improve its last planned place. This is a
+        // soft CPU preference, never a position eligibility ban: upgrades and
+        // a specialist-only remaining board still remain draftable.
+        const depthPenalty = room.length >= plannedDepth
+          && prospect.overall <= room[plannedDepth - 1].overall ? 18 : 0;
         const projectionBonus = Math.max(0, 9 - (prospect.scouting?.projectedRound || 9)) * 2;
         const personaTilt = clubArchetype ? draftPersonaTilt(prospect, clubArchetype) : 0;
         const score = prospect.overall * 2 + needBoost + projectionBonus - depthPenalty + personaTilt + this.rng.int(-4, 4);
@@ -6796,7 +7362,7 @@ export class GameSession {
         break;
       }
       prospect.teamId = teamOnClock;
-      prospect.contract = rookieContract(round, prospect.overall, this.rng);
+      prospect.contract = rookieContract(round, prospect.overall, this.rng, contractMarketOptions(this.league, prospect));
       prospect.rosterSlot = "active";
       prospect.profile.source = "drafted";
       this.league.players.push(prospect);
@@ -6838,7 +7404,7 @@ export class GameSession {
 
   getDraftAuthority() {
     const draft = this.league.pendingDraft;
-    if (!draft) return null;
+    if (!draft || draft.scoutingOnly === true) return null;
     const teamOnClock = draft.completed ? null : draftTeamOnClock(draft);
     const slot = draft.completed ? null : draftSlotForPick(draft);
     return {
@@ -7153,6 +7719,15 @@ export class GameSession {
     return result.ok ? { ...result, thesis: this.getArchitectThesisReview() } : result;
   }
 
+  getInjurySalaryClaims(teamId = this.controlledTeamId) {
+    return (this.league.injurySalaryClaims || []).filter(claim => claim.teamId === teamId)
+      .map(claim => previewInjuryClaimNegotiation(this.league, { teamId, claimId: claim.claimId }));
+  }
+
+  offerInjurySalaryClaim(args) {
+    return offerInjuryClaimSettlement(this.league, args);
+  }
+
   getRoster(teamId = this.controlledTeamId) {
     return this.getTeamPlayersById(teamId).map((player) => ({
       id: player.id,
@@ -7170,6 +7745,13 @@ export class GameSession {
       reinjuryRisk: Number((player.reinjuryRisk || 0).toFixed(2)),
       devTrait: player.developmentTrait,
       rosterSlot: player.rosterSlot,
+      reserveStatus: describeReserveReturn(this.league, player, { ...reserveContextForSession(this), practiceSettings: this.getLeagueSettings() }),
+      standardElevation: player.rosterSlot === 'practice' || player.standardElevations ? {
+        pending: pendingStandardElevation(player) ? structuredClone(pendingStandardElevation(player)) : null,
+        remainingRegular: Math.max(0, 3 - (player.standardElevations?.games || []).filter(row =>
+          row.teamId === teamId && row.game.year === this.currentYear && row.game.seasonType === 'regular'
+          && row.cycle === (player.standardElevations?.cycles?.[teamId] || 0)).length)
+      } : null,
       designations: player.designations || { ir: false, pup: false, nfi: false, gameDayInactive: false },
       injury: player.injury,
       suspensionWeeks: player.suspensionWeeks,
@@ -7202,6 +7784,7 @@ export class GameSession {
         potential: this.visiblePotential(player),
         schemeFit: player.schemeFit || null,
         devTrait: player.developmentTrait,
+        practiceWeeklySalary: practiceSalaryForSeason(financialYearForLeague(this.league), practiceEligibilityGroup(player).group).minimum,
         source: player.teamId === "WAIVER" ? "waiver" : "free-agent"
       }));
   }
@@ -7311,7 +7894,7 @@ export class GameSession {
         years: 1,
         salary: Math.max(1_200_000, Math.round((player.overall || 70) * 140_000)),
         minSalary: CONTRACT_RULES.minSalary,
-        maxSalary: 35_000_000,
+        ...contractMarketOptions(this.league, player),
         rng: this.rng
       });
       if (this.getTeamCapSummary(destinationTeam).capSpace < contract.capHit) {
@@ -7404,6 +7987,10 @@ export class GameSession {
   }
 
   submitFreeAgencyOffer({ teamId, playerId, years = 2, salary = null, initiator = "player" }) {
+    if (!Number.isInteger(Number(years)) || Number(years) < 1 || Number(years) > CONTRACT_RULES.maxYears
+      || (salary !== null && (salary === '' || !Number.isFinite(Number(salary)) || Number(salary) <= 0))) {
+      return { ok: false, error: 'Contract requires an integer term of 1–5 years and a finite positive salary.' };
+    }
     if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
     const restrictions = this.getChallengeRestrictions(teamId);
     if (!restrictions.allowUserFreeAgency) {
@@ -7416,11 +8003,11 @@ export class GameSession {
         (entry.teamId === "FA" || entry.teamId === "WAIVER")
     );
     if (!player) return { ok: false, error: "Player not in free agency pool." };
-    const proposedSalary = Math.max(
-      850_000,
-      Math.round(Number(salary ?? marketSalaryForOverall(player.overall)))
-    );
     const proposedYears = clamp(Math.round(Number(years || 2)), 1, 5);
+    const proposedSalary = Math.max(
+      contractBaseMinimum(contractMarketOptions(this.league, player), proposedYears),
+      Math.round(Number(salary ?? marketSalaryForOverall(player.overall, contractMarketOptions(this.league, player))))
+    );
     const expectedCap = Math.round(proposedSalary * 0.92);
     if (this.getTeamCapSummary(teamId).capSpace < expectedCap) {
       return { ok: false, error: "Insufficient cap space for this offer." };
@@ -7497,7 +8084,7 @@ export class GameSession {
     for (const player of premium) {
       if (submitted >= maxOffers) break;
       const bidders = this.league.teams
-        .filter((team) => team.id !== this.controlledTeamId)
+        .filter((team) => !managementExclusions(this, { freeAgency: true }).includes(team.id))
         .map((team) => {
           const bestAtPosition = bestAtPositionByTeam.get(team.id)?.get(player.position) || 0;
           const gap = (player.overall || 0) - bestAtPosition;
@@ -7517,7 +8104,7 @@ export class GameSession {
       for (const { team, strategy } of bidders.slice(0, 2)) {
         const bidChance = strategy === "contender" ? 0.55 : strategy === "rebuild" ? 0.3 : 0.4;
         if (!this.rng.chance(bidChance)) continue;
-        const baseSalary = marketSalaryForOverall(player.overall);
+        const baseSalary = marketSalaryForOverall(player.overall, contractMarketOptions(this.league, player));
         const salary =
           strategy === "contender"
             ? Math.round(baseSalary * 1.08)
@@ -7566,13 +8153,17 @@ export class GameSession {
           years: offer.years,
           salary: offer.salary,
           minSalary: CONTRACT_RULES.minSalary,
-          maxSalary: 35_000_000,
+          ...contractMarketOptions(this.league, player),
           rng: this.rng
         });
-        if (this.getTeamCapSummary(offer.teamId).capSpace < contract.capHit) continue;
+        const reserve = this.phase === 'offseason'
+          && (offer.origin === 'cpu' || offer.teamId !== this.controlledTeamId)
+          ? this.getCpuRosterSpendingPlan(offer.teamId).reserved : 0;
+        if (this.getTeamCapSummary(offer.teamId).capSpace < contract.capHit + reserve) continue;
         player.teamId = offer.teamId;
         player.contract = contract;
         player.rosterSlot = "active";
+        recordPermanentElevationActivation(player,{teamId:offer.teamId,year:financialYearForLeague(this.league)});
         player.designations = { ir: false, pup: false, nfi: false, gameDayInactive: false };
         signed += 1;
         this.logTransaction({
@@ -7754,10 +8345,22 @@ export class GameSession {
     const settings = this.getLeagueSettings();
     const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
     const candidates = [];
+    // Career AV uses full-league seasonal contexts. Share the authoritative
+    // table within this pass instead of rebuilding it for every retiree.
+    // Keep this local so later stats, awards and archive changes are visible.
+    const careerValuesByCategory = new Map();
     for (const player of this.league.retiredPlayers) {
       const retiredYear = Number(player.retiredYear || this.currentYear);
       if (this.currentYear - retiredYear < yearsRetiredMin) continue;
-      candidates.push(this.scoreHallOfFameCandidate(player));
+      const category = primaryCategoryForPosition(player.position);
+      if (!careerValuesByCategory.has(category)) {
+        careerValuesByCategory.set(category, new Map(
+          this.statBook.getPlayerCareerTable(category, { seasonType: "all" })
+            .map((row) => [row.playerId, row.av || 0])
+        ));
+      }
+      const careerAv = careerValuesByCategory.get(category).get(player.id) || 0;
+      candidates.push(this.scoreHallOfFameCandidate(player, { careerAv }));
     }
     return candidates;
   }
@@ -7823,10 +8426,10 @@ export class GameSession {
     return this.league.hallOfFame;
   }
 
-  scoreHallOfFameCandidate(player) {
+  scoreHallOfFameCandidate(player, { careerAv = null } = {}) {
     const awardCounts = this.getPlayerAwardCounts(player.id);
     const legacyScore = hallOfFameLegacyScore(player);
-    const careerAv = this.getPlayerCareerApproximateValue(player.id);
+    careerAv ??= this.getPlayerCareerApproximateValue(player.id);
     const championships = this.getPlayerChampionships(player.id);
     const inductionScore =
       legacyScore +

@@ -40,7 +40,27 @@ test("staging authority rejects receipts that collapse any independent proof", (
 test("staging authority updates PROJECT_STATUS only from the exact verified receipt", () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "franchise-staging-authority-"));
   fs.mkdirSync(path.join(root, "context"));
+  fs.copyFileSync(new URL("../context/PROJECT_STATUS.schema.json", import.meta.url), path.join(root, "context", "PROJECT_STATUS.schema.json"));
   fs.writeFileSync(path.join(root, "context", "PROJECT_STATUS.json"), JSON.stringify({
+    schemaVersion: "1.7",
+    slug: "staging-authority-fixture",
+    name: "Staging authority fixture",
+    status: "FORGE",
+    health: "healthy",
+    lastUpdated: "2026-08-03",
+    currentSession: 1,
+    lastSession: 1,
+    silLastSession: 1,
+    currentFocus: "Verify staging authority",
+    nextMilestone: "Verify receipt reconciliation",
+    lastSessionSummary: "Prepared staging authority fixture",
+    sessionState: {
+      version: 1,
+      durableSession: 1,
+      currentFocus: "Verify staging authority",
+      nextMilestone: "Verify receipt reconciliation",
+      lastSessionSummary: "Prepared staging authority fixture"
+    },
     silMax: 1000,
     silScore: 1000,
     silCategoriesV3: {

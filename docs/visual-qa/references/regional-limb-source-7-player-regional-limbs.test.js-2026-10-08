@@ -1,0 +1,81 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';
+import {ensurePlayerVisualIdentity} from '../src/domain/playerVisualIdentity.js';
+import {playerFrame,playerAppearance} from '../src/domain/playerIdentity.js';
+import {projectedLimbSections} from '../public/lib/physiqueGeometryContract.js';
+import {buildPlayerPhysiqueSvg,buildPlayerMotionSvg} from '../public/lib/playerPortrait.js';
+import {createSession,createSessionFromSnapshot} from '../src/runtime/bootstrap.js';
+const make=(seed='regional-limb',h=74,w=225)=>{
+ const p=ensurePlayerVisualIdentity({id:'regional-limb-control',age:24,heightInches:h,weightLbs:w,
+  ratings:{speed:80,acceleration:75,agility:70,jumping:70,strength:70,stamina:70},profile:{regionalBodyShapeRecipe:{version:'regional-body-shape-v4',seed}}},{newPlayer:true});
+ return {...p,appearance:playerAppearance(p),visualFrame:playerFrame(p)};
+};
+// Independent piecewise integration; do not call the production integrator.
+const sample=(sections,t,index)=>{
+ for(let i=1;i<sections.length;i++)if(t<=sections[i][0]){
+  const a=sections[i-1],b=sections[i],u=(t-a[0])/(b[0]-a[0]);return a[index]+(b[index]-a[index])*u*u*(3-2*u);
+ }return sections.at(-1)[index];
+};
+const geometry=svg=>[...svg.matchAll(/<path class="(?:physique-arm|physique-leg|motion-upper-surface|motion-lower-surface)"[^>]* d="([^"]+)"/g)].map(m=>m[1]);
+
+test('independent breadth/depth integration reconstructs both regional limb budgets across supported body tails',()=>{
+ for(const h of [62,74,87,96])for(const mass of [100,130,225,410,650]){
+  const p=make('limb-budget',h,mass),f=p.visualFrame,before=structuredClone(p);
+  for(const kind of ['arm','leg']){
+   const sections=f[kind+'Sections'],length=f[kind==='arm'?'armSegmentLengthInches':'legLengthInches'],budget=f[kind==='arm'?'armsVolumeInches3':'legsVolumeInches3'];
+   let volume=0;for(let i=0;i<20000;i++){const t=(i+.5)/20000;volume+=2*Math.PI/4*sample(sections,t,1)*sample(sections,t,2)*length/20000;}
+   assert.ok(Math.abs(volume/budget-1)<1e-7);
+   assert.equal(sections[2][0],f[kind==='arm'?'upperArmShare':'upperLegShare']);
+   assert.notDeepEqual(projectedLimbSections(f,kind,'front'),projectedLimbSections(f,kind,'side'));
+  }
+  assert.deepEqual(p,before);
+ }
+});
+
+test('individual region controls visibly reach static and all articulated surfaces without ratings-driven anatomy',()=>{
+ const signatures=new Set();
+ for(let i=0;i<40;i++){
+  const p=make('limb-'+i),f=p.visualFrame,base=make('limb-'+i),before=structuredClone(p);
+  signatures.add(JSON.stringify([f.armSections,f.legSections]));
+  assert.deepEqual(playerFrame({...p,ratings:{speed:40,strength:99,acceleration:40}}),f);
+  assert.deepEqual(playerAppearance(p),playerAppearance(base));
+  for(const view of ['front','side'])assert.ok(geometry(buildPlayerPhysiqueSvg(p,{view})).length>0);
+  for(const mode of ['run','acceleration','cut','jump','strength','endurance']){
+   const svg=buildPlayerMotionSvg(p,{mode,phase:.37});assert.equal(geometry(svg).length,8);assert.doesNotMatch(svg,/NaN|Infinity|undefined/);
+  }
+  // Concealing the optional sections must change actual visible paths while
+  // leaving the measured rig, pigments and regional budgets intact.
+  const fallback={...p,visualFrame:{...f,limbSectionVersion:null}};
+  assert.notDeepEqual(geometry(buildPlayerPhysiqueSvg(p)),geometry(buildPlayerPhysiqueSvg(fallback)));
+  assert.notDeepEqual(geometry(buildPlayerPhysiqueSvg(p,{view:'side'})),geometry(buildPlayerPhysiqueSvg(fallback,{view:'side'})));
+  for(const mode of ['run','acceleration','cut','jump','strength','endurance'])
+   assert.notDeepEqual(geometry(buildPlayerMotionSvg(p,{mode,phase:.37})),geometry(buildPlayerMotionSvg(fallback,{mode,phase:.37})));
+  assert.deepEqual(p,before);
+ }
+ assert.equal(signatures.size,40);
+});
+
+test('malformed optional limb sections conceal controls together and retain finite fallback',()=>{
+ const p=make();
+ for(const value of [NaN,Infinity,.2,.8])for(const kind of ['arm','leg'])
+  assert.equal(projectedLimbSections({...p.visualFrame,[kind==='arm'?'upperArmShare':'upperLegShare']:value},kind),null);
+ for(const value of [null,[],[[0,1,1],[.2,1,1],[.53,1,1],[.7,1,1],[1,NaN,1]],[[0,1,1],[.2,1,1],[.53,1,1],[.4,1,1],[1,1,1]]]){
+  const f={...p.visualFrame,armSections:value,legSections:value},before=structuredClone(f);
+  for(const kind of ['arm','leg'])for(const view of ['front','side'])assert.equal(projectedLimbSections(f,kind,view),null);
+  const d={...p,visualFrame:f};for(const view of ['front','side'])assert.doesNotMatch(buildPlayerPhysiqueSvg(d,{view}),/NaN|Infinity|undefined/);
+  for(const mode of ['run','cut','jump'])assert.doesNotMatch(buildPlayerMotionSvg(d,{mode}),/NaN|Infinity|undefined/);
+  assert.deepEqual(f,before);
+ }
+});
+
+test('new default and all five frozen v3 tail frames/silhouettes survive both recipe generations',()=>{
+ const session=createSession({seed:20261008,startYear:2026,controlledTeamId:'BUF'}),p=session.league.players[0];
+ assert.equal(p.profile.regionalBodyShapeRecipe.version,'regional-body-shape-v4');
+ const rng=structuredClone(session.rng),restored=createSessionFromSnapshot(session.toSnapshot()),q=restored.league.players.find(x=>x.id===p.id);
+ assert.deepEqual(playerFrame(q),playerFrame(p));assert.deepEqual(structuredClone(session.rng),rng);
+ const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
+ for(const row of JSON.parse(fs.readFileSync(new URL('./fixtures/player-regional-limbs-v3.json',import.meta.url),'utf8'))){
+  const d={...row.player,appearance:playerAppearance(row.player),visualFrame:playerFrame(row.player)};assert.deepEqual(d.visualFrame,row.frame);
+  for(const [i,view]of ['front','side'].entries())assert.equal(hash(buildPlayerPhysiqueSvg(d,{view,idSuffix:'limb-legacy'})),row.static[i]);
+  for(const [i,mode]of ['run','acceleration','cut','jump','strength','endurance'].entries())assert.equal(hash(buildPlayerMotionSvg(d,{mode,phase:.37,idSuffix:'limb-legacy'})),row.motion[i]);
+ }
+});

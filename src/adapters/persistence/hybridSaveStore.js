@@ -80,6 +80,7 @@ function idbRequest(mode, run, timeoutMs) {
         let request;
         let result;
         let settled = false;
+        let timedOut = false;
         const finish = (error) => {
           if (settled) return;
           settled = true;
@@ -89,13 +90,14 @@ function idbRequest(mode, run, timeoutMs) {
           else resolve(result);
         };
         const timer = setTimeout(() => {
+          timedOut = true;
           try { tx?.abort(); } catch { /* Already finished. */ }
           finish(new Error("IndexedDB transaction timed out."));
         }, timeoutMs);
         try {
           tx = db.transaction(IDB_STORE, mode);
           tx.oncomplete = () => finish();
-          tx.onabort = () => finish(tx.error || request?.error || new Error("IndexedDB transaction aborted."));
+          tx.onabort = () => finish(timedOut ? new Error("IndexedDB transaction timed out.") : (tx.error || request?.error || new Error("IndexedDB transaction aborted.")));
           tx.onerror = () => finish(tx.error || request?.error || new Error("IndexedDB transaction failed."));
           request = run(tx.objectStore(IDB_STORE));
           // A successful request can still be rolled back by a later abort.
@@ -135,7 +137,17 @@ export function createHybridBrowserSaveStore({
   const metaPrefix = `${namespace}:meta:`;
   let idbHealthy = isIndexedDbUsable();
   const timeoutMs = Number.isFinite(idbTimeoutMs) && idbTimeoutMs > 0 ? idbTimeoutMs : 5000;
-  const request = (mode, run) => idbRequest(mode, run, timeoutMs);
+  const request = async (mode, run) => {
+    try { return await idbRequest(mode, run, timeoutMs); }
+    catch (error) {
+      // A long synchronous snapshot operation can delay delivery of an open
+      // or completed transaction. Retry once after yielding; put/delete/get
+      // operations here are idempotent and a live timed-out transaction aborts.
+      if (!/^IndexedDB (open|transaction) timed out\.$/.test(error?.message || '')) throw error;
+      await new Promise(resolve => setTimeout(resolve, 0));
+      return idbRequest(mode, run, timeoutMs);
+    }
+  };
   const setItem = (key, value) => typeof storage.setItemAsync === "function"
     ? storage.setItemAsync(key, value) : storage.setItem(key, value);
   const removeItem = (key) => typeof storage.removeItemAsync === "function"

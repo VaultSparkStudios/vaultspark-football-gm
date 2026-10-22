@@ -1,0 +1,34 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {playerAppearance,playerFrame} from '../src/domain/playerIdentity.js';
+import {buildPlayerPortraitSvg} from '../public/lib/playerPortraitFace.js';
+import {buildPlayerSideHead} from '../public/lib/playerSideAppearance.js';
+import {HAIR_STYLE_RULES} from '../public/lib/portraitAppearanceContract.js';
+const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
+const sourceFile='.cache/regional-sections-before/playerVisualIdentity.js',source=fs.readFileSync(sourceFile);
+const expectedSource='fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935';
+if(hash(source)!==expectedSource)throw Error('Historical generator bytes mismatch');
+const historical=await import('data:text/javascript;base64,'+source.toString('base64'));
+const fixtureFile='test/fixtures/whole-head-legacy-hashes.json',fixtureBytes=fs.readFileSync(fixtureFile),fixture=JSON.parse(fixtureBytes);
+const expectedFixture='0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a';
+if(hash(fixtureBytes)!==expectedFixture)throw Error('Original expectations changed');
+const inputs=[],observed=[];
+for(const version of ['portrait-identity-v2','portrait-identity-v3'])for(const detail of [false,true]){
+ const player=historical.ensurePlayerVisualIdentity({id:'legacy-'+version,age:39,heightInches:76,weightLbs:245,profile:{}},{newPlayer:true});
+ player.profile.appearanceRecipe.version=version;delete player.profile.fineFaceRecipe;if(!detail)delete player.profile.appearanceDetailRecipe;
+ inputs.push({version,detail,player,decodedAppearance:playerAppearance(player),decodedFrame:playerFrame(player)});
+ for(const [hairstyle,rule]of Object.entries(HAIR_STYLE_RULES))for(const hairTexture of rule.textures){
+  const dto={...player,appearance:{...playerAppearance(player),hairstyle,hairTexture},visualFrame:playerFrame(player)};
+  const expected=fixture.cases.find(row=>row.version===version&&row.detail===detail&&row.hairstyle===hairstyle&&row.hairTexture===hairTexture);
+  const front=hash(buildPlayerPortraitSvg(dto)),side=hash(buildPlayerSideHead(dto));
+  if(!expected||front!==expected.front||side!==expected.side)throw Error('Original legacy render mismatch: '+JSON.stringify({version,detail,hairstyle,hairTexture,front,side,expected}));
+  observed.push({version,detail,hairstyle,hairTexture,front,side});
+ }
+}
+if(observed.length!==192)throw Error('Unexpected case count');
+const target='test/fixtures/whole-head-legacy-inputs.json';
+if(fs.existsSync(target))throw Error('Recovered fixture already exists');
+const receipt={schemaVersion:1,scope:'Historical raw saved inputs recovered from the hash-verified original recipe generator; all 384 original render hashes must match before freezing. No current generation or expected render hashes are substituted.',historicalAuthority:{generatorSource:sourceFile,generatorSourceSha256:expectedSource,priorReceipt:'docs/visual-qa/PLAYER_WHOLE_HEAD_2026-10-07.json',renderExpectations:fixtureFile,renderExpectationsSha256:expectedFixture},inputs};
+fs.writeFileSync(target,JSON.stringify(receipt,null,2)+'\n');
+fs.writeFileSync('.cache/whole-head-legacy-input-recovery.json',JSON.stringify({target,sha256:hash(fs.readFileSync(target)),generatorSourceSha256:expectedSource,renderExpectationsSha256:expectedFixture,inputs:inputs.length,originalHashComparisons:384,allOriginalHashesMatched:true,observed},null,2)+'\n');
+console.log(JSON.stringify({target,inputs:inputs.length,originalHashComparisons:384,expectedHashesUnchanged:true}));

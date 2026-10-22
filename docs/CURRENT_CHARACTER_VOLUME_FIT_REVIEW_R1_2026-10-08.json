@@ -1,0 +1,692 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T18:00:01.599Z",
+  "component": "Current character volume research adapter",
+  "round": 1,
+  "verdict": "PASS",
+  "primaryReceipt": "docs/CURRENT_CHARACTER_VOLUME_FIT_2026-10-08.json",
+  "primaryReceiptSha256": "f4be4063063e361d741c8be864e5c45b9f13b99e3970890e979f2284a9351e44",
+  "scope": "Selected numerical proxy and unadopted fit only, using production body and actual physical-camera head-skin placement; no complete mass, anatomy, calibrated tissue or production acceptance.",
+  "sourceHashes": {
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/continuousHairTexture.js": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f",
+    "public/lib/croppedHairVolume.js": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    "public/lib/gameOutcome.js": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd",
+    "public/lib/gameplayNavigation.js": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/longHairFlow.js": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+    "public/lib/partedHairFlow.js": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "public/lib/playerBody3d.js": "be4f53ce4daaee23693b5cb9ceda2e9f0ae4e3fd721a30875b44539ae96c7e51",
+    "public/lib/playerBodyAnimation3d.js": "9fa6884e93076fb9a58a86808a46904b77d036fd4213536037bac06f2304f60e",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+    "public/lib/playerCharacter3d.js": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+    "public/lib/playerFootwear.js": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerHead3d.js": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerLimbSweep3d.js": "726f2d17b7234ca00b589d83b89dd0d0cbd779ce2d4a099f643ebfddc089244d",
+    "public/lib/playerMotion.js": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerPortraitMotion.js": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/playerTorsoSurface3d.js": "9c69ad1c48d087205161c97f5acbd7aff164a47e7901923f9044afeb4015b70d",
+    "public/lib/playerTrainingKit.js": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/portraitEyeSurface.js": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+    "public/lib/portraitSurfaceLighting.js": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+    "public/lib/profiledLimbSurface.js": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07",
+    "public/lib/startScenarioContract.js": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/tacticalFilmRoom.js": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f",
+    "public/lib/torsoSurface.js": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc",
+    "src/config.js": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d",
+    "src/config/leagueSetup.js": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88",
+    "src/data/nflElevationSalary.js": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e",
+    "src/data/nflEliteDensityBaseline.js": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d",
+    "src/data/nflPostseasonSalary.js": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267",
+    "src/data/nflPracticeSalary.js": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54",
+    "src/data/nflSalaryCap.js": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d",
+    "src/data/nflSalaryMinimum.js": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44",
+    "src/data/pfrAdapter.js": "1813bc06622043df34c7ba1c5694c0e395e1f685a6f3223e4853c4af857fb109",
+    "src/data/playerDemographicBaseline.js": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699",
+    "src/data/playerFamilyHeritage.js": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8",
+    "src/domain/activeInactiveHistory.js": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e",
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/domain/admittedInjuryPayroll.js": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426",
+    "src/domain/admittedPostseasonRecovery.js": "c96bd53ba247ccaaaa9ce579332097821c9df65fb4e2eee7be6c89468a7c6d86",
+    "src/domain/annualElevationInjuryResolution.js": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da",
+    "src/domain/capCarryover.js": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524",
+    "src/domain/contracts.js": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568",
+    "src/domain/developmentEnvironment.js": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1",
+    "src/domain/draftCohort.js": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf",
+    "src/domain/earnedPracticeCap.js": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4",
+    "src/domain/elevationInjuryPay.js": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0",
+    "src/domain/facilityInvestment.js": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb",
+    "src/domain/footballGameReference.js": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a",
+    "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+    "src/domain/injurySalaryClaims.js": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141",
+    "src/domain/leagueIdentity.js": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40",
+    "src/domain/livingPotential.js": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9",
+    "src/domain/offseasonMedicalCalendar.js": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714",
+    "src/domain/operatingStatement.js": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381",
+    "src/domain/ownerEconomy.js": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec",
+    "src/domain/pensionService.js": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015",
+    "src/domain/playerDemographicModel.js": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370",
+    "src/domain/playerFactory.js": "3065bc39f7d8ba1cf5743235094e81bd54a93fb4e70df250ec152e68b26c4323",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "src/domain/playerService.js": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerWorkouts.js": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4",
+    "src/domain/postseasonMedicalClock.js": "01850182d8b292c9cdec395f193a83a2bda739f86ae778c3f10499fed9a107a9",
+    "src/domain/potentialReversion.js": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87",
+    "src/domain/practiceContractTerm.js": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+    "src/domain/practiceContracts.js": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934",
+    "src/domain/practiceSquadEligibility.js": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c",
+    "src/domain/preRolloverMedicalCalendar.js": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47",
+    "src/domain/ratings.js": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd",
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "src/domain/regularMedicalRecovery.js": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+    "src/domain/reserveLists.js": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e",
+    "src/domain/standardElevations.js": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53",
+    "src/domain/talentDistribution.js": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050",
+    "src/domain/teamFactory.js": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad",
+    "src/domain/teamLabel.js": "40b964d54436a4fc91afb83715a7fc866488fed172f5fd1d633cd7974996173c",
+    "src/domain/ticketDemand.js": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174",
+    "src/domain/undraftedFreeAgency.js": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6",
+    "src/engine/adaptiveDifficulty.js": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763",
+    "src/engine/aiTeamStrategy.js": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020",
+    "src/engine/architectFocusReview.js": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704",
+    "src/engine/architectMasteryPortfolio.js": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4",
+    "src/engine/architectThesis.js": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0",
+    "src/engine/beatReporter.js": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6",
+    "src/engine/capAlerts.js": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03",
+    "src/engine/capCompliance.js": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168",
+    "src/engine/coachingMarket.js": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011",
+    "src/engine/coachingTree.js": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73",
+    "src/engine/continuityLedger.js": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896",
+    "src/engine/cpuStandardElevations.js": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3",
+    "src/engine/cpuTradeMarket.js": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2",
+    "src/engine/depthChartUsage.js": "7a6022425e0f801c8cf2778957a66c27f41230099b43bcadc650b37723888ee1",
+    "src/engine/facilityMarket.js": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097",
+    "src/engine/fanSentiment.js": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58",
+    "src/engine/gameDayRoster.js": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36",
+    "src/engine/gameSimulator.js": "a42c6ed86bb2732f23a7713b11e994c3fcc61fc6dacd86bd86d918d9fd0b0ea5",
+    "src/engine/gmArchetype.js": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23",
+    "src/engine/gmDecisionAuthority.js": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1",
+    "src/engine/gmDecisionConsequences.js": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a",
+    "src/engine/gmLegacyScore.js": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3",
+    "src/engine/injurySystem.js": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1",
+    "src/engine/matchupEdge.js": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b",
+    "src/engine/narrativeEvents.js": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc",
+    "src/engine/offseasonDevelopmentReport.js": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705",
+    "src/engine/offseasonSimulator.js": "fb7023a75dc65f8cc3414b6aa5c8fc1b006846b414dd178da088a3afadea2a46",
+    "src/engine/onClockTradeMarket.js": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7",
+    "src/engine/overtime.js": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64",
+    "src/engine/ownerConfidence.js": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b",
+    "src/engine/playCalling.js": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23",
+    "src/engine/playerAgentAI.js": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d",
+    "src/engine/pressConference.js": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f",
+    "src/engine/pressRoom.js": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa",
+    "src/engine/rivalFrontOffice.js": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76",
+    "src/engine/rivalGmPersona.js": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8",
+    "src/engine/rivalTradeOffers.js": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7",
+    "src/engine/rivalryDNA.js": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962",
+    "src/engine/schedule.js": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec",
+    "src/engine/seasonSimulator.js": "0d78babe22ab2ccf9d4f0e54c3fde04c91aafe5c0907e6922570d04c907cac49",
+    "src/engine/situationalCalls.js": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db",
+    "src/engine/staffGeneration.js": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038",
+    "src/engine/standings.js": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2",
+    "src/engine/timeCapsule.js": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61",
+    "src/engine/veteranMentorship.js": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b",
+    "src/engine/weeklySimulator.js": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+    "src/engine/whatIfReplay.js": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a",
+    "src/runtime/GameSession.js": "e2b268cc3c6e5b88ea22c05c55888b9483e0c5b971217b15948e99f647ff01e4",
+    "src/runtime/architectLedger.js": "00ad683337da86d0d760bff5a2770ae36a7551754d2748f5df0a750f0f01eb48",
+    "src/runtime/bootstrap.js": "96ae7089f30ebbf7c0eb70a4484d5e110a978c8c372e144c01781323f7724db5",
+    "src/runtime/measurementProvenanceSnapshot.js": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e",
+    "src/runtime/modules/sessionModules.js": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63",
+    "src/runtime/pensionServiceSnapshot.js": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd",
+    "src/runtime/profileLoader.js": "7984d0270aa2ad8dee2dea7e8761d41d60c9d10f5b69afdc1f2ceccd6559497b",
+    "src/runtime/services/CoachingService.js": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf",
+    "src/runtime/services/ContractService.js": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97",
+    "src/runtime/services/TradeService.js": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be",
+    "src/runtime/services/index.js": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6",
+    "src/runtime/services/tradePlan.js": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04",
+    "src/runtime/snapshotMigration.js": "1709584d0c1ea23a51e22513cca236d7ab52b6240d8fe8b276f954fe6da534e9",
+    "src/runtime/statSnapshot.js": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86",
+    "src/runtime/weekResultProjection.js": "54f8dc1512afbd6dcc1dc46d8e3b884faafe9f17357444636ff026203bc67117",
+    "src/runtime/weeklyTactic.js": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f",
+    "src/sport/calendarContract.js": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179",
+    "src/sport/competitionContract.js": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76",
+    "src/sport/football/calendar.js": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8",
+    "src/sport/football/competition.js": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55",
+    "src/sport/football/index.js": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84",
+    "src/sport/football/postseason.js": "6007428021bb6258e375f4a9a7b8ac5787a0992436f155970130090fd7d6c318",
+    "src/sport/football/rules.js": "334b007f5f991bb44c9f2355b1fcd9ad443605ed2d7f939613b2f6772ccc67ad",
+    "src/sport/football/statSchema.js": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f",
+    "src/sport/matchReadiness.js": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5",
+    "src/sport/registry.js": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5",
+    "src/stats/applyGameStats.js": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f",
+    "src/stats/approximateValue.js": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486",
+    "src/stats/gameImpact.js": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5",
+    "src/stats/gmReportCard.js": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca",
+    "src/stats/leagueLens.js": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f",
+    "src/stats/profiles/pfrCareerWeightedProfile.js": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0",
+    "src/stats/profiles/pfrRecentWeightedProfile.js": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866",
+    "src/stats/progressionParity.js": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1",
+    "src/stats/realismCalibrator.js": "c7b747175495c06191ecc27add45fbb25ebea64dc1c9872614559c0061f0bb32",
+    "src/stats/scoreline.js": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b",
+    "src/stats/statBook.js": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683",
+    "src/stats/teamRecord.js": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51",
+    "src/utils/rng.js": "f6a657984fd920ab21f879a41d82d44ca35026b9aacac3f4ac8f69f402979b8e",
+    "src/utils/rngStreams.js": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181",
+    "test-support/appearance/currentCharacterMassFit3d.js": "db6e7f7d8d203419d84dc16229fb1c5bc5dd880b75ead2b8c5f72f93f3227ef1",
+    "test-support/appearance/playerBody3d.js": "fb8500dda75b26bd7d31cab0467e1162a6860b75ce059a1697deb760708636c0",
+    "test-support/appearance/playerBodyMassFit3d.js": "757cfb49182ef9fa336f7fd5dfc2d34324a7900dcfa60228163a244dfa944305",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    "test/current-character-mass-fit.test.js": "737564816dec9c621b826b1f0a25b1ac2a411c6d564c48948b68c29988584be0",
+    "test/fixtures/player-head-pole-case.json": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1",
+    "test/triangle-solid-volume.test.js": "5260c2a4f13fb10c18a47809f2ca7b727621da2cffde7c001525808091c6a49f"
+  },
+  "artifactDigest": "b66dee3ddd1fe1731dea7dab7102c6cdc52bd4dda677211f66006405e14fc0ab",
+  "bindings": {
+    "currentSources": 184,
+    "frozenSourcesAndReports": 197,
+    "reports": 13,
+    "artifactDigest": "b66dee3ddd1fe1731dea7dab7102c6cdc52bd4dda677211f66006405e14fc0ab"
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/current-character-mass-fit.test.js test/triangle-solid-volume.test.js",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 12369.8282,
+      "terminalChunk": "855b3d",
+      "coverage": "Current shader-placement bounds, immutable person/head/skeleton, selected convergence, invalid option/nonconvergence cleanup, analytic overlapping/nested/coincident/disjoint boxes across axes, oblique octahedron, open/reversed refusal and body closure/refinement."
+    },
+    {
+      "command": "node .cache/current-volume-final-independent.mjs",
+      "terminalChunk": "cabd28",
+      "results": {
+        "headVerticesChecked": 100880,
+        "tails": [
+          {
+            "heightInches": 62,
+            "weightLbs": 100,
+            "converged": true,
+            "residual": -0.0016759623987143701,
+            "iterations": 2,
+            "bulkScale": 1.0055619150429773
+          },
+          {
+            "heightInches": 62,
+            "weightLbs": 650,
+            "converged": true,
+            "residual": -0.004292326540863645,
+            "iterations": 3,
+            "bulkScale": 1.1246314540617848
+          },
+          {
+            "heightInches": 96,
+            "weightLbs": 100,
+            "converged": true,
+            "residual": 0.0012704088502009103,
+            "iterations": 3,
+            "bulkScale": 0.9858028937449761
+          },
+          {
+            "heightInches": 96,
+            "weightLbs": 650,
+            "converged": true,
+            "residual": -0.002204680108133128,
+            "iterations": 3,
+            "bulkScale": 1.081778586837064
+          }
+        ],
+        "invalidOptionFailures": 16,
+        "oneIterationNonconvergenceHonest": true,
+        "inputUnchanged": true,
+        "disposedCountersZero": true
+      },
+      "qualification": "Corrected oracle independently follows the physical vertex shader: subtract [0,151-anatomy.crownY,0], apply column-major bodyAxes, scale and origin. Skin material0 bypasses lid deformation. 100,880 distinct-per-case vertex checks across four stature/mass tails and four selected modes agree within1e-12 inches."
+    },
+    {
+      "check": "Frozen current source/report and artifact bindings",
+      "terminalChunk": "b52b26",
+      "results": {
+        "currentSources": 184,
+        "frozenSourcesAndReports": 197,
+        "reports": 13,
+        "artifactDigest": "b66dee3ddd1fe1731dea7dab7102c6cdc52bd4dda677211f66006405e14fc0ab"
+      }
+    },
+    {
+      "check": "Four observed fits and two-axis128 quadrature report arithmetic",
+      "terminalChunk": "0286fc",
+      "caseCount": 4,
+      "checks": 8,
+      "maxAbsResidual128": 0.0034139565132709215,
+      "negativeRays": 0,
+      "unbalancedRays": 0
+    }
+  ],
+  "scratchHashes": {
+    ".cache/current-volume-initial-independent.mjs": "c498c2c11fc808e4289383e2e4d60c6d20893f8bae998775ee81fb23a4c6802e",
+    ".cache/current-volume-initial-independent.json": "1b2f0be0fd69a70c33c3f3548947a3c994322ccea170b0185a38b15d0512cf64",
+    ".cache/current-volume-final-independent.mjs": "1b232f9b25ce257d0e6a21ddf79e059d6b31235a2613b32b2e97b010d7df31e1",
+    ".cache/current-volume-final-independent.json": "88cb2fc395803814b4f4e4331319468a3c1fef3430acab90b6f47bad1e74d17f",
+    ".cache/current-volume-bindings.json": "286b6ad4bb507e2e48095a26d42ad4598195924867ecbef06662fb8effdcf4bb"
+  },
+  "findings": [
+    {
+      "severity": "information",
+      "disposition": "Resolved before freeze",
+      "detail": "Initial adapter omitted production crownHeight subtraction. The first reviewer oracle shared that omission and could not establish actual shader placement. Both original oracle and output remain preserved as superseded. Current source, head crown/chin bounds and corrected independent per-vertex shader oracle repair this error; initial fit numbers are not final evidence."
+    },
+    {
+      "severity": "information",
+      "disposition": "Proxy scope supported",
+      "detail": "The adapter indexes current body components, excludes external sole components, and appends only the full-head skin shell using production physical placement. Open eye/ear/lid, hair and beard-detail surfaces are explicitly omitted. Numerical closed-shell volume does not apply shader apertures as Boolean cutouts."
+    },
+    {
+      "severity": "information",
+      "disposition": "Selected fitting and cleanup supported",
+      "detail": "Final tests and independent tail probes retain person/pose/head, dispose temporary models on failures and incomplete fits, and report nonconvergence honestly. Bulk scaling changes estimated regional soft breadth/depth in the experimental mesh; it is not a measurement-qualified runtime update."
+    },
+    {
+      "severity": "information",
+      "disposition": "Numerical limitations retained",
+      "detail": "Neutral grid64 fitting and axis0/2 grid128 rechecks are selected quadrature evidence, not a rigorous true-volume error bound, self-intersection proof, all-phase preservation, biological mass or visual naturalism."
+    }
+  ],
+  "primaryEvidence": {
+    "executionAttribution": "Root executed and recorded observed four-case grid64 fit and grid128 axis rechecks; reviewer inspected bound reports and arithmetic but did not rerun that exact higher-resolution observer.",
+    "checks": {
+      "domainTests": 8,
+      "visualTests": 0,
+      "runtimeAdoptionAccepted": false,
+      "physicalDensityAccepted": false
+    },
+    "reports": [
+      {
+        "original": ".cache/contours/current-character-volume.json",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-volume.json",
+        "sha256": "d86ac6b6199921e7ee7870c47865e2bed67f7014159674793524b1bd84e009ad"
+      },
+      {
+        "original": ".cache/contours/current-character-volume.log",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-volume.log",
+        "sha256": "5c1dbc058a6e0b78e6c157b870f1c549e28effced69ccfc929377cfb4c52a7b5"
+      },
+      {
+        "original": ".cache/contours/current-character-volume.mjs",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-volume.mjs",
+        "sha256": "eb2ece2b65e1fdce46ce25630bdc92e1d8d4ce2b8e78609cd8ebb8c480a1ca86"
+      },
+      {
+        "original": ".cache/contours/current-character-volume-initial.json",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-volume-initial.json",
+        "sha256": "54f3fef761b182f9f46ee4058b5d23100d027796977f774977813cd910bcfbb2"
+      },
+      {
+        "original": ".cache/contours/current-character-volume-initial.log",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-volume-initial.log",
+        "sha256": "a5f95ad3929dc940f9be0d183bc16a099ec9de1025f80defc5adbc6a5651d100"
+      },
+      {
+        "original": ".cache/contours/current-character-volume-initial.mjs",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-volume-initial.mjs",
+        "sha256": "0fcb4fbbdaa98c6cce879b566015588735efc6c560ab62cd1f28311f5356995d"
+      },
+      {
+        "original": ".cache/contours/current-character-fit-domain-initial.log",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-fit-domain-initial.log",
+        "sha256": "1e5157965567df0df06dd0792d56c093e3f993b340bb067b49969f236fb01270"
+      },
+      {
+        "original": ".cache/contours/current-character-fit-domain-final.log",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-fit-domain-final.log",
+        "sha256": "940a9dd82c777b90b857a47a2ac241ca19d952125b4836bf7a7aa08a626a1c11"
+      },
+      {
+        "original": ".cache/contours/current-character-fit-domain-r2.log",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-fit-domain-r2.log",
+        "sha256": "c5bfa11f469a73d71eddaa5e218195825aa96025b7fa7fdaf1bfbb397d5a04c8"
+      },
+      {
+        "original": ".cache/contours/current-character-fit-domain-final8.log",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-fit-domain-final8.log",
+        "sha256": "284536859df86a620ad81b063186a0126d2cd47f8cfe309e7736a7b5a5ee15dc"
+      },
+      {
+        "original": ".cache/contours/current-character-fit-observer.json",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-fit-observer.json",
+        "sha256": "d2442dc604db6a524e42c42879fad352be38153f7d683a289fcd321db81091c9"
+      },
+      {
+        "original": ".cache/contours/current-character-fit-observer.log",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-character-fit-observer.log",
+        "sha256": "83f6f9d1e2aedf8f959028b4255eff00c15c4293f3282399ee6814834a2cc3d3"
+      },
+      {
+        "original": ".cache/contours/current-fit-observer.mjs",
+        "file": "visual-qa/references/current-volume-2026-10-08-.cache-contours-current-fit-observer.mjs",
+        "sha256": "6bec180806f5716ee61a7bb593146ded0d4e270043754fbeeaf879b86a395fab"
+      }
+    ],
+    "baseline": {
+      "schemaVersion": 1,
+      "recordedAt": "2026-10-08T17:53:27.343Z",
+      "scope": "Current production neutral body plus actual complete-head skin shell; no external soles. Artistic 1kg/litre proxy, not measured tissue. Open eye/lid/ear details and hair are excluded; shader apertures are not solid booleans. This is not complete rendered-body or physical-mass acceptance.",
+      "sourceHashes": {
+        "public/lib/playerBody3d.js": "be4f53ce4daaee23693b5cb9ceda2e9f0ae4e3fd721a30875b44539ae96c7e51",
+        "public/lib/playerBodyAnimation3d.js": "9fa6884e93076fb9a58a86808a46904b77d036fd4213536037bac06f2304f60e",
+        "public/lib/playerCharacter3d.js": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+        "public/lib/playerHead3d.js": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+        "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+        "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+        ".cache/contours/current-character-volume.mjs": "eb2ece2b65e1fdce46ce25630bdc92e1d8d4ce2b8e78609cd8ebb8c480a1ca86"
+      },
+      "cases": [
+        {
+          "heightInches": 80,
+          "weightLbs": 180,
+          "targetArtisticVolumeInches3": 4982.382847836562,
+          "estimates": [
+            {
+              "axis": 0,
+              "resolution": 96,
+              "unionVolume": 4734.013752955055,
+              "grossVolume": 5168.7956959903695,
+              "residual": -0.04984946008100388,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            },
+            {
+              "axis": 2,
+              "resolution": 96,
+              "unionVolume": 4732.86005286235,
+              "grossVolume": 5168.7956959903695,
+              "residual": -0.05008101597061321,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            }
+          ]
+        },
+        {
+          "heightInches": 80,
+          "weightLbs": 240,
+          "targetArtisticVolumeInches3": 6643.177130448749,
+          "estimates": [
+            {
+              "axis": 0,
+              "resolution": 96,
+              "unionVolume": 6177.805197036749,
+              "grossVolume": 6792.065961499636,
+              "residual": -0.07005261552924524,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            },
+            {
+              "axis": 2,
+              "resolution": 96,
+              "unionVolume": 6177.728153556788,
+              "grossVolume": 6792.065961499636,
+              "residual": -0.07006421291381704,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            }
+          ]
+        },
+        {
+          "heightInches": 80,
+          "weightLbs": 350,
+          "targetArtisticVolumeInches3": 9687.966648571093,
+          "estimates": [
+            {
+              "axis": 0,
+              "resolution": 96,
+              "unionVolume": 8754.084116396645,
+              "grossVolume": 9777.11316127025,
+              "residual": -0.09639613409612524,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            },
+            {
+              "axis": 2,
+              "resolution": 96,
+              "unionVolume": 8755.686818391558,
+              "grossVolume": 9777.11316127025,
+              "residual": -0.09623070185909866,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            }
+          ]
+        },
+        {
+          "heightInches": 80,
+          "weightLbs": 500,
+          "targetArtisticVolumeInches3": 13839.95235510156,
+          "estimates": [
+            {
+              "axis": 0,
+              "resolution": 96,
+              "unionVolume": 12083.98842448396,
+              "grossVolume": 13862.531915619984,
+              "residual": -0.1268764433260735,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            },
+            {
+              "axis": 2,
+              "resolution": 96,
+              "unionVolume": 12087.580035953863,
+              "grossVolume": 13862.531915619984,
+              "residual": -0.12661693293342546,
+              "invalidRays": 0,
+              "negativeWindingRays": 0,
+              "componentCount": 28
+            }
+          ]
+        }
+      ],
+      "wholeUnionMassVerified": false,
+      "fullVisualAcceptance": false
+    },
+    "fitSummary": [
+      {
+        "heightInches": 80,
+        "weightLbs": 180,
+        "bulkScale": 1.028894132345082,
+        "iterations": [
+          {
+            "bulkScale": 1,
+            "volumeInches3": 4739.525681580743,
+            "residual": -0.04874317644242687
+          },
+          {
+            "bulkScale": 1.0253003543388512,
+            "volumeInches3": 4947.63815148405,
+            "residual": -0.006973509947674761
+          },
+          {
+            "bulkScale": 1.028894132345082,
+            "volumeInches3": 4977.088391657775,
+            "residual": -0.0010626353575149405
+          }
+        ],
+        "fitResidual": -0.0010626353575149405,
+        "checks": [
+          {
+            "axis": 0,
+            "resolution": 128,
+            "unionVolume": 4971.804016974608,
+            "residual": -0.002123247286496155,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          },
+          {
+            "axis": 2,
+            "resolution": 128,
+            "unionVolume": 4970.99216124021,
+            "residual": -0.0022861925597101873,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          }
+        ]
+      },
+      {
+        "heightInches": 80,
+        "weightLbs": 240,
+        "bulkScale": 1.0417793540344873,
+        "iterations": [
+          {
+            "bulkScale": 1,
+            "volumeInches3": 6184.703284746372,
+            "residual": -0.06901424374204612
+          },
+          {
+            "bulkScale": 1.0364025712137352,
+            "volumeInches3": 6574.781178615329,
+            "residual": -0.010295668847956851
+          },
+          {
+            "bulkScale": 1.0417793540344873,
+            "volumeInches3": 6632.916447987397,
+            "residual": -0.0015445444641725148
+          }
+        ],
+        "fitResidual": -0.0015445444641725148,
+        "checks": [
+          {
+            "axis": 0,
+            "resolution": 128,
+            "unionVolume": 6631.5619205031135,
+            "residual": -0.0017484420056177452,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          },
+          {
+            "axis": 2,
+            "resolution": 128,
+            "unionVolume": 6632.63118437918,
+            "residual": -0.0015874853044686166,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          }
+        ]
+      },
+      {
+        "heightInches": 80,
+        "weightLbs": 350,
+        "bulkScale": 1.0587859377093718,
+        "iterations": [
+          {
+            "bulkScale": 1,
+            "volumeInches3": 8768.283895564604,
+            "residual": -0.09493042104373228
+          },
+          {
+            "bulkScale": 1.0511362560696917,
+            "volumeInches3": 9548.482097950317,
+            "residual": -0.014397711685077863
+          },
+          {
+            "bulkScale": 1.0587859377093718,
+            "volumeInches3": 9665.522576829946,
+            "residual": -0.0023166958098950197
+          }
+        ],
+        "fitResidual": -0.0023166958098950197,
+        "checks": [
+          {
+            "axis": 0,
+            "resolution": 128,
+            "unionVolume": 9659.638609149195,
+            "residual": -0.002924043862813752,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          },
+          {
+            "axis": 2,
+            "resolution": 128,
+            "unionVolume": 9659.581758974906,
+            "residual": -0.00292991198523318,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          }
+        ]
+      },
+      {
+        "heightInches": 80,
+        "weightLbs": 500,
+        "bulkScale": 1.080798570284205,
+        "iterations": [
+          {
+            "bulkScale": 1,
+            "volumeInches3": 12093.848135879562,
+            "residual": -0.12616403398082265
+          },
+          {
+            "bulkScale": 1.0697567663033978,
+            "volumeInches3": 13558.60960581327,
+            "residual": -0.020328303311288876
+          },
+          {
+            "bulkScale": 1.080798570284205,
+            "volumeInches3": 13806.164864460668,
+            "residual": -0.002441301080667202
+          }
+        ],
+        "fitResidual": -0.002441301080667202,
+        "checks": [
+          {
+            "axis": 0,
+            "resolution": 128,
+            "unionVolume": 13793.354026402347,
+            "residual": -0.003366942855264732,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          },
+          {
+            "axis": 2,
+            "resolution": 128,
+            "unionVolume": 13792.703359615503,
+            "residual": -0.0034139565132709215,
+            "invalidRays": 0,
+            "negativeWindingRays": 0
+          }
+        ]
+      }
+    ],
+    "productionArtifactUnchangedByThisAdapter": true
+  },
+  "imagesInspected": [],
+  "visualReviewPerformed": false,
+  "limits": [
+    "One kg/litre is an artistic proxy density, not clinical or population evidence.",
+    "Excluded detail surfaces, shader aperture cutouts, biological tissue/clothing distinctions and complete rendered-union mass remain unresolved.",
+    "Fit modifies estimated section breadth/depth, and has not been validated against observed girths, anatomy or a joint empirical distribution.",
+    "Selected tail convergence at32 and four ordinary case rechecks at128 do not establish arbitrary controls, all poses, all-axis agreement or a certified integration error bound.",
+    "Offline CPU cost does not imply an acceptable live runtime fitter, physical-device performance or production adoption.",
+    "Full character naturalism, mass acceptance, demographic calibration, whole testing/current career and release remain open."
+  ],
+  "wholeRenderedMassVerified": false,
+  "runtimeAdoptionAccepted": false,
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false,
+  "reviewRecording": "Manual immutable independent review JSON; record-review helper unavailable."
+}

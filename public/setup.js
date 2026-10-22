@@ -30,7 +30,7 @@ let navigationInFlight = false;
 let pendingNavigation = false;
 
 function setNavigationControlsDisabled(disabled) {
-  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, [data-resume], [data-backup-resume]")
+  document.querySelectorAll("#runtimeModeSelect, #instantStartBtn, #createLeagueBtn, #presetModernBtn, #presetBalancedBtn, #presetLegacyBtn, #continueActiveBtn, #resumeLatestBtn, #applyChallengeCodeBtn, #teamSelect, #eraProfileInput, #franchiseArchetypeInput, #rulesPresetInput, #difficultyPresetInput, #challengeModeInput, #ownerModeInput, #narrativesInput, #compPicksInput, #chemistryInput, [data-resume], [data-backup-resume]")
     .forEach((button) => { button.disabled = disabled; });
 }
 
@@ -146,6 +146,7 @@ function updateModeHelp() {
 function renderTeams() {
   const select = document.getElementById("teamSelect");
   if (!select) return;
+  const chosen = select.value;
 
   if (!state.teams.length) {
     select.innerHTML = `<option value="${RANDOM_TEAM_VALUE}">🎲 Surprise me — random team</option>`;
@@ -157,7 +158,7 @@ function renderTeams() {
     state.teams
       .map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(teamCode(team))} - ${escapeHtml(team.name)}</option>`)
       .join("");
-  select.value = RANDOM_TEAM_VALUE;
+  select.value = state.teams.some(team => team.id === chosen) ? chosen : RANDOM_TEAM_VALUE;
 }
 
 function resolveControlledTeamId() {
@@ -249,6 +250,14 @@ function applySettingsToForm(settings = {}) {
 }
 
 function renderConfigCatalog(catalog = null, settings = {}) {
+  // Reloading runtime data must not reset a user's already available choices.
+  if (state.configCatalog) {
+    settings = { ...settings };
+    for (const key of ["eraProfile", "franchiseArchetype", "rulesPreset", "difficultyPreset", "challengeMode"])
+      settings[key] = document.getElementById(`${key}Input`).value;
+    for (const [key, id] of [["enableOwnerMode", "ownerModeInput"], ["enableNarratives", "narrativesInput"], ["enableCompPicks", "compPicksInput"], ["enableChemistry", "chemistryInput"]])
+      settings[key] = document.getElementById(id).checked;
+  }
   state.configCatalog = catalog;
   if (!catalog) return;
   renderConfigSelect("eraProfileInput", catalog.eraProfiles, settings.eraProfile);
@@ -383,6 +392,8 @@ async function loadSetup(retryCount = 0) {
   const MAX_RETRIES = 2;
   const loadVersion = ++setupLoadVersion;
   const started = performance.now();
+  setNavigationControlsDisabled(true);
+  setStatus(retryCount > 0 ? 'Retrying league data...' : 'Loading league data...');
   applyRuntimeModeUi();
   if (getRuntimeMode() === "client") {
     observeBackgroundTask(warmLocalRuntime, {
@@ -416,6 +427,9 @@ async function loadSetup(retryCount = 0) {
     }
     if (activeText) activeText.textContent = clientMode ? `Could not load league data. ${err.message}` : `Could not reach the dev server. ${err.message}`;
     setStatus(clientMode ? "Local runtime failed to load — refresh the page to retry." : "Dev server unavailable — start it or switch to browser mode.");
+    // Allow changing runtime after failure; league creation still requires a
+    // successful initialization rather than stale team/catalog data.
+    document.getElementById('runtimeModeSelect').disabled = false;
     return;
   }
 
@@ -432,8 +446,10 @@ async function loadSetup(retryCount = 0) {
     clientInitMs: Math.round(performance.now() - started)
   };
 
-  document.getElementById("seedInput").value = Date.now();
-  document.getElementById("startYearInput").value = init.currentYear;
+  const seedInput = document.getElementById("seedInput");
+  const startYearInput = document.getElementById("startYearInput");
+  if (!seedInput.value) seedInput.value = Date.now();
+  if (!startYearInput.value) startYearInput.value = init.currentYear;
 
   renderTeams();
   renderActiveLeague(init.activeLeague);
@@ -557,7 +573,6 @@ function bindEvents() {
       });
     }
     loadSetup()
-      .then(() => setStatus(setupStatusText("Ready")))
       .catch((error) => {
         setStatus(`Error: ${error.message}`);
       });

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "status": "primary-source-policy-input-not-implemented",
+  "source": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+  "observations": [
+    {"locator": "Article 13 section 5(c), PDF page 123", "rule": "Practice Squad contract salaries enter Team Salary, subject to Article 33 section 6."},
+    {"locator": "Article 13 section 5(e), PDF pages 123–124", "rule": "The 40-percent grievance attribution requires a filed player salary grievance and has resolution/year reconciliation rules."},
+    {"locator": "Article 13 section 6(a), PDF pages 124–125", "rule": "Paragraph 5 salary attribution uses the year earned; deferred salary has separate valuation rules."},
+    {"locator": "Article 33 section 5(i), PDF page 214", "rule": "Elevation/continuation amounts do not constitute Paragraph 5 salary for Article 30 termination-pay purposes. That qualification is scoped to Article 30."}
+  ],
+  "requiredImplementation": [
+    "Separate admitted compensation from filed disputes and retained legacy claims.",
+    "Record source injury year, earning interval and payment/accounting year separately.",
+    "Reconcile postseason Benefits provisions before selecting salary/cap treatment; do not infer zero cap or grievance reserve solely from employment expiry."
+  ],
+  "limits": [
+    "These provisions alone do not establish post-expiry interval classification or future-year rate changes.",
+    "No runtime payroll or accounting coefficient changed."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "observedAt": "2026-10-08T10:31:47.183Z",
+  "status": "pre-freeze component R1 finding; not final review",
+  "finding": {
+    "id": "R1-P2-admitted-reference-length",
+    "severity": "P2",
+    "source": "src/domain/pensionService.js",
+    "sourceSha256": "1dcfaacc19f55d514cd356c5ffd5e1345e1ed2e76c808d4202cbdcb323a62c81",
+    "frozenSource": ".cache/admitted-pension-pre-freeze-r1-pensionService.js",
+    "frozenSourceSha256": "1dcfaacc19f55d514cd356c5ffd5e1345e1ed2e76c808d4202cbdcb323a62c81",
+    "description": "Valid imported player identity yields nested admitted wage reference beyond generic180-character text limit. Pension hook fails after actual game/payroll mutation.",
+    "probe": {
+      "terminalChunks": [
+        "a1e6d2",
+        "ffedca"
+      ],
+      "fixture": "test/helpers/regularMedicalFixture.js",
+      "steps": [
+        "Set source player.id to imported-player- followed by120X (136characters).",
+        "Update retained right.playerId and right.rightId=JSON.stringify([player.id,right.gameId]); keep genuine source/term evidence.",
+        "Snapshot compatibility passes and createSessionFromSnapshot succeeds.",
+        "restored.advanceWeek() throws PENSION_SERVICE_INVALID game proof; snapshot differs, one admitted wage already committed."
+      ],
+      "sourceRefLength": 213,
+      "compatibilityAccepted": true,
+      "actualRestorationAccepted": true,
+      "actualAdvanceFailedAfterMutation": true
+    },
+    "requiredCorrection": "Apply admitted-source schema authority to admitted reference, separate from canonical gameId length constraint; exercise actual long imported identity command and compressed restore, preserving malformed-reference refusal.",
+    "qualification": "Not observed on generated short IDs. This is an accepted import identity/source-schema compatibility issue."
+  },
+  "independentTests": {
+    "command": "node --test test/admitted-pension-service.test.js test/nfl-pension-service.test.js",
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 86571.7277,
+    "terminalChunks": [
+      "360e99",
+      "e073ac",
+      "2c825d",
+      "c4fc4a"
+    ]
+  },
+  "limits": [
+    "Primary receipt not frozen at discovery; no final R1 source binding or acceptance verdict yet.",
+    "Full goal, annual defaults, Benefits, active/new employer, dispute and release remain open."
+  ]
+}

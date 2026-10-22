@@ -1,0 +1,504 @@
+{
+  "samples": [
+    {
+      "pigment": "#382420",
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "gpu": [
+        55,
+        36,
+        32
+      ],
+      "cpu": [
+        55,
+        36,
+        32
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#382420",
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "gpu": [
+        45,
+        29,
+        26
+      ],
+      "cpu": [
+        45,
+        29,
+        26
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#382420",
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "gpu": [
+        33,
+        21,
+        19
+      ],
+      "cpu": [
+        33,
+        21,
+        19
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#382420",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "gpu": [
+        47,
+        30,
+        27
+      ],
+      "cpu": [
+        47,
+        30,
+        27
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#382420",
+      "normal": [
+        0.8,
+        -0.2,
+        0.5
+      ],
+      "gpu": [
+        33,
+        21,
+        19
+      ],
+      "cpu": [
+        33,
+        21,
+        19
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#593629",
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "gpu": [
+        87,
+        53,
+        41
+      ],
+      "cpu": [
+        87,
+        53,
+        41
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#593629",
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "gpu": [
+        72,
+        44,
+        33
+      ],
+      "cpu": [
+        72,
+        44,
+        33
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#593629",
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "gpu": [
+        53,
+        32,
+        24
+      ],
+      "cpu": [
+        53,
+        32,
+        24
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#593629",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "gpu": [
+        75,
+        46,
+        35
+      ],
+      "cpu": [
+        75,
+        46,
+        35
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#593629",
+      "normal": [
+        0.8,
+        -0.2,
+        0.5
+      ],
+      "gpu": [
+        53,
+        32,
+        24
+      ],
+      "cpu": [
+        53,
+        32,
+        24
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#8e634b",
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "gpu": [
+        138,
+        96,
+        73
+      ],
+      "cpu": [
+        138,
+        96,
+        73
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#8e634b",
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "gpu": [
+        115,
+        80,
+        61
+      ],
+      "cpu": [
+        115,
+        80,
+        61
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#8e634b",
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "gpu": [
+        85,
+        59,
+        45
+      ],
+      "cpu": [
+        85,
+        59,
+        45
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#8e634b",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "gpu": [
+        120,
+        84,
+        63
+      ],
+      "cpu": [
+        120,
+        84,
+        63
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#8e634b",
+      "normal": [
+        0.8,
+        -0.2,
+        0.5
+      ],
+      "gpu": [
+        85,
+        59,
+        45
+      ],
+      "cpu": [
+        85,
+        59,
+        45
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#d4bea0",
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "gpu": [
+        206,
+        184,
+        155
+      ],
+      "cpu": [
+        206,
+        184,
+        155
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#d4bea0",
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "gpu": [
+        172,
+        154,
+        129
+      ],
+      "cpu": [
+        172,
+        154,
+        129
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#d4bea0",
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "gpu": [
+        126,
+        113,
+        95
+      ],
+      "cpu": [
+        126,
+        113,
+        95
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#d4bea0",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "gpu": [
+        179,
+        160,
+        135
+      ],
+      "cpu": [
+        179,
+        160,
+        135
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#d4bea0",
+      "normal": [
+        0.8,
+        -0.2,
+        0.5
+      ],
+      "gpu": [
+        126,
+        113,
+        95
+      ],
+      "cpu": [
+        126,
+        113,
+        95
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#f0ceb4",
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "gpu": [
+        233,
+        200,
+        175
+      ],
+      "cpu": [
+        233,
+        200,
+        175
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#f0ceb4",
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "gpu": [
+        194,
+        167,
+        146
+      ],
+      "cpu": [
+        194,
+        167,
+        146
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#f0ceb4",
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "gpu": [
+        143,
+        123,
+        107
+      ],
+      "cpu": [
+        143,
+        123,
+        107
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#f0ceb4",
+      "normal": [
+        0,
+        1,
+        0
+      ],
+      "gpu": [
+        203,
+        174,
+        152
+      ],
+      "cpu": [
+        203,
+        174,
+        152
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    },
+    {
+      "pigment": "#f0ceb4",
+      "normal": [
+        0.8,
+        -0.2,
+        0.5
+      ],
+      "gpu": [
+        143,
+        123,
+        107
+      ],
+      "cpu": [
+        143,
+        123,
+        107
+      ],
+      "maxChannelError": 0,
+      "opaque": true
+    }
+  ]
+}

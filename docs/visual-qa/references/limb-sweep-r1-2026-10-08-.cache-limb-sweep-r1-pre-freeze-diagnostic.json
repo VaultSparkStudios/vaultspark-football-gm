@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "component": "Continuous production limb sweeps",
+  "reviewRound": 1,
+  "verdict": "FIX",
+  "status": "pre-freeze diagnostic; primary evidence binding awaited",
+  "finding": {
+    "id": "LIMB-SWEEP-R1-P1",
+    "severity": "correctness",
+    "summary": "Inner bent sweep reverses local surface Jacobian at a supported ordinary generated physical case",
+    "case": "80in/350lb capacity85 strength phase0.275 arm0 t0.55 angularpi/2",
+    "evidence": {
+      "playerId": "P2026-BUF-OL-48032446",
+      "height": 80,
+      "mass": 350,
+      "capacity": 85,
+      "mode": "strength",
+      "phase": 0.275,
+      "limb": {
+        "root": [
+          -8.9375,
+          58.37118976393587,
+          6.860816366610739
+        ],
+        "joint": [
+          -8.9375,
+          52.548708108049134,
+          18.021428112548744
+        ],
+        "end": [
+          -8.9375,
+          44.646189763935865,
+          11.435816366610737
+        ],
+        "hand": [
+          -8.9375,
+          36.646189763935865,
+          11.435816366610737
+        ]
+      },
+      "t": 0.55,
+      "angle": 1.5707963267948966,
+      "joint": 0.5502999494085089,
+      "sections": [
+        [
+          0,
+          5.464810550077583,
+          5.724632753062955
+        ],
+        [
+          0.17609598381072286,
+          6.210011988724527,
+          5.907171851355481
+        ],
+        [
+          0.5502999494085089,
+          3.700625879989323,
+          4.209170498625661
+        ],
+        [
+          0.6942039655977861,
+          4.942178220756912,
+          5.929906062501887
+        ],
+        [
+          1,
+          2.7152236672078263,
+          2.6126006513706574
+        ]
+      ],
+      "derivatives": [
+        {
+          "epsilon": 0.001,
+          "outwardCosine": -0.9999997652341368,
+          "longitudinalTangentDot": -6.075365512563858,
+          "centerlineSpeed": 14.35610082376604
+        },
+        {
+          "epsilon": 0.0001,
+          "outwardCosine": -0.9999971972625261,
+          "longitudinalTangentDot": -4.605673166294781,
+          "centerlineSpeed": 14.356110058478361
+        },
+        {
+          "epsilon": 0.00001,
+          "outwardCosine": -0.9999971980103085,
+          "longitudinalTangentDot": -4.605679152526308,
+          "centerlineSpeed": 14.356110060158134
+        },
+        {
+          "epsilon": 0.000001,
+          "outwardCosine": -0.9999971980177762,
+          "longitudinalTangentDot": -4.605679213812154,
+          "centerlineSpeed": 14.356110059896427
+        }
+      ],
+      "sources": {
+        "playerLimbSweep3d": "0802fe73cb3e52b8190a591cad64d8f816ad935f2ede0c4ca45e5f4477e1a209",
+        "playerBody3d": "cea7af724cf1a37d9cb00ab831c77a9e21b5138f4577f3306e99f732c12dbf89",
+        "playerBodyAnimation3d": "29d48f5bfa3bf414e01057d31037e44cc59b8c973125254858bb7e9b0bce06e1"
+      }
+    },
+    "interpretation": "Centered finite-difference normal inversion independently agrees with epsilon-converged differential; simply flipping normals would hide folded geometry. Closed oriented edge incidence is not a self-intersection or local embedding proof.",
+    "requiredCorrection": "Avoid inverted inner bend surface using coherent bend envelope/centerline or explicitly qualified safe fallback, preserve joint/root/end and saved section authority; add independent differential and actual-pose regression."
+  },
+  "commands": [
+    {
+      "command": "node --test test/player-limb-sweep.test.js test/player-body-animation-3d.test.js",
+      "pass": 6,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 11418.0325,
+      "terminalChunk": "bbfe7f"
+    },
+    {
+      "command": "node .cache/limb-sweep-r1-inversion-counterexample.mjs",
+      "exitCode": 0,
+      "terminalChunk": "002b1c"
+    }
+  ],
+  "sourceAndProbeHashes": {
+    ".cache/limb-sweep-r1-reviewed-playerLimbSweep3d.js": "0802fe73cb3e52b8190a591cad64d8f816ad935f2ede0c4ca45e5f4477e1a209",
+    ".cache/limb-sweep-r1-reviewed-playerBody3d.js": "cea7af724cf1a37d9cb00ab831c77a9e21b5138f4577f3306e99f732c12dbf89",
+    ".cache/limb-sweep-r1-reviewed-playerBodyAnimation3d.js": "29d48f5bfa3bf414e01057d31037e44cc59b8c973125254858bb7e9b0bce06e1",
+    ".cache/limb-sweep-r1-inversion-counterexample.mjs": "04f8533a6427c8b2127ad9dbf9e84fb11d93b22e0f78e8129ba4cd954d1237cf",
+    ".cache/limb-sweep-r1-inversion-counterexample.json": "52a6093a9911ec19147fc5d3f38d165ad7e0b94fefb1b78307e494ea45dc450a",
+    "test/player-limb-sweep.test.js": "7af13130ef4eddb4774d0820fdbb47c16674fd8e47e46136f629baef7cebeff8"
+  },
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-strength.png",
+      "sha256": "8e7de4fbe6c40cee3a70ebbce391fb570284b90a6d70ac95d8509f90c5482db0"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-jump.png",
+      "sha256": "3570a2ade5f48721b7a901325cfb560bb50a5b3be31c6cee736b3f43cf7b9b43"
+    }
+  ],
+  "visualObservation": "Visible cap rings removed and outer bends rounded in inspected pairs, while head and body still stylized/slab-like; scoped improvement does not overrule differential defect.",
+  "limits": [
+    "No independent Playwright run",
+    "Primary final browser/build bindings not yet received",
+    "No union/part-volume invariance, all-phase or full naturalism acceptance",
+    "No production changes by reviewer"
+  ]
+}

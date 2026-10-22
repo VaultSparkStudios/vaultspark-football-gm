@@ -1,0 +1,1611 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-07T09:29:42.197Z",
+  "dataset": "2024 ACS 1-Year PUMS",
+  "scope": "U.S. residents; birthplace codes are not populations in birth countries or NFL recruitment cohorts",
+  "sourceDefinition": "Original POBP, RAC1P, HISP and ancestry code systems retained separately; no inference of pigment or athleticism",
+  "sourceMetadata": {
+    "POBP": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/POBP.json",
+      "sha256": "079565e6273b57967587cc84c48b81daa1feb02c514a3313da08c1383ec7f58d",
+      "label": "Place of birth (Recode)",
+      "values": {
+        "item": {
+          "100": "Albania",
+          "102": "Austria",
+          "103": "Belgium",
+          "104": "Bulgaria",
+          "105": "Czechoslovakia",
+          "106": "Denmark",
+          "108": "Finland",
+          "109": "France",
+          "110": "Germany",
+          "116": "Greece",
+          "117": "Hungary",
+          "118": "Iceland",
+          "119": "Ireland",
+          "120": "Italy",
+          "126": "Netherlands",
+          "127": "Norway",
+          "128": "Poland",
+          "129": "Portugal",
+          "130": "Azores Islands",
+          "132": "Romania",
+          "134": "Spain",
+          "136": "Sweden",
+          "137": "Switzerland",
+          "138": "United Kingdom, Not Specified",
+          "139": "England",
+          "140": "Scotland",
+          "142": "Northern Ireland",
+          "147": "Yugoslavia",
+          "148": "Czech Republic",
+          "149": "Slovakia",
+          "150": "Bosnia and Herzegovina",
+          "151": "Croatia",
+          "152": "Macedonia",
+          "154": "Serbia",
+          "156": "Latvia",
+          "157": "Lithuania",
+          "158": "Armenia",
+          "159": "Azerbaijan",
+          "160": "Belarus",
+          "161": "Georgia",
+          "162": "Moldova",
+          "163": "Russia",
+          "164": "Ukraine",
+          "165": "USSR",
+          "166": "Europe",
+          "167": "Kosovo",
+          "168": "Montenegro",
+          "169": "Other Europe, Not Specified",
+          "200": "Afghanistan",
+          "202": "Bangladesh",
+          "203": "Bhutan",
+          "205": "Myanmar",
+          "206": "Cambodia",
+          "207": "China",
+          "209": "Hong Kong",
+          "210": "India",
+          "211": "Indonesia",
+          "212": "Iran",
+          "213": "Iraq",
+          "214": "Israel",
+          "215": "Japan",
+          "216": "Jordan",
+          "217": "Korea",
+          "218": "Kazakhstan",
+          "219": "Kyrgyzstan",
+          "222": "Kuwait",
+          "223": "Laos",
+          "224": "Lebanon",
+          "226": "Malaysia",
+          "228": "Mongolia",
+          "229": "Nepal",
+          "231": "Pakistan",
+          "233": "Philippines",
+          "235": "Saudi Arabia",
+          "236": "Singapore",
+          "238": "Sri Lanka",
+          "239": "Syria",
+          "240": "Taiwan",
+          "242": "Thailand",
+          "243": "Turkey",
+          "245": "United Arab Emirates",
+          "246": "Uzbekistan",
+          "247": "Vietnam",
+          "248": "Yemen",
+          "249": "Asia",
+          "253": "South Central Asia, Not Specified",
+          "254": "Other Asia, Not Specified",
+          "300": "Bermuda",
+          "301": "Canada",
+          "303": "Mexico",
+          "310": "Belize",
+          "311": "Costa Rica",
+          "312": "El Salvador",
+          "313": "Guatemala",
+          "314": "Honduras",
+          "315": "Nicaragua",
+          "316": "Panama",
+          "321": "Antigua and Barbuda",
+          "323": "Bahamas",
+          "324": "Barbados",
+          "327": "Cuba",
+          "328": "Dominica",
+          "329": "Dominican Republic",
+          "330": "Grenada",
+          "332": "Haiti",
+          "333": "Jamaica",
+          "338": "St. Kitts-Nevis",
+          "339": "St. Lucia",
+          "340": "St. Vincent and the Grenadines",
+          "341": "Trinidad and Tobago",
+          "343": "West Indies",
+          "344": "Caribbean, Not Specified",
+          "360": "Argentina",
+          "361": "Bolivia",
+          "362": "Brazil",
+          "363": "Chile",
+          "364": "Colombia",
+          "365": "Ecuador",
+          "368": "Guyana",
+          "369": "Paraguay",
+          "370": "Peru",
+          "372": "Uruguay",
+          "373": "Venezuela",
+          "374": "South America",
+          "399": "Americas, Not Specified",
+          "400": "Algeria",
+          "407": "Cameroon",
+          "408": "Cabo Verde",
+          "412": "Congo",
+          "414": "Egypt",
+          "416": "Ethiopia",
+          "417": "Eritrea",
+          "420": "Gambia",
+          "421": "Ghana",
+          "423": "Guinea",
+          "425": "Ivory Coast",
+          "427": "Kenya",
+          "429": "Liberia",
+          "430": "Libya",
+          "436": "Morocco",
+          "440": "Nigeria",
+          "442": "Rwanda",
+          "444": "Senegal",
+          "447": "Sierra Leone",
+          "448": "Somalia",
+          "449": "South Africa",
+          "451": "Sudan",
+          "453": "Tanzania",
+          "454": "Togo",
+          "457": "Uganda",
+          "459": "Democratic Republic of the Congo",
+          "460": "Zambia",
+          "461": "Zimbabwe",
+          "462": "Africa",
+          "464": "Northern Africa, Not Specified",
+          "467": "Western Africa, Not Specified",
+          "468": "Other Africa, Not Specified",
+          "469": "Eastern Africa, Not Specified",
+          "501": "Australia",
+          "508": "Fiji",
+          "511": "Marshall Islands",
+          "512": "Micronesia",
+          "515": "New Zealand",
+          "523": "Tonga",
+          "527": "Samoa",
+          "554": "Other US Island Areas, Oceania, Not Specified, or at Sea",
+          "005": "Arkansas/AR",
+          "010": "Delaware/DE",
+          "034": "New Jersey/NJ",
+          "036": "New York/NY",
+          "042": "Pennsylvania/PA",
+          "044": "Rhode Island/RI",
+          "054": "West Virginia/WV",
+          "015": "Hawaii/HI",
+          "016": "Idaho/ID",
+          "021": "Kentucky/KY",
+          "072": "Puerto Rico",
+          "009": "Connecticut/CT",
+          "018": "Indiana/IN",
+          "028": "Mississippi/MS",
+          "045": "South Carolina/SC",
+          "048": "Texas/TX",
+          "066": "Guam",
+          "002": "Alaska/AK",
+          "011": "District of Columbia/DC",
+          "013": "Georgia/GA",
+          "022": "Louisiana/LA",
+          "025": "Massachusetts/MA",
+          "026": "Michigan/MI",
+          "027": "Minnesota/MN",
+          "030": "Montana/MT",
+          "053": "Washington/WA",
+          "001": "Alabama/AL",
+          "008": "Colorado/CO",
+          "019": "Iowa/IA",
+          "033": "New Hampshire/NH",
+          "037": "North Carolina/NC",
+          "039": "Ohio/OH",
+          "055": "Wisconsin/WI",
+          "078": "US Virgin Islands",
+          "004": "Arizona/AZ",
+          "012": "Florida/FL",
+          "017": "Illinois/IL",
+          "024": "Maryland/MD",
+          "038": "North Dakota/ND",
+          "046": "South Dakota/SD",
+          "049": "Utah/UT",
+          "050": "Vermont/VT",
+          "056": "Wyoming/WY",
+          "006": "California/CA",
+          "023": "Maine/ME",
+          "041": "Oregon/OR",
+          "047": "Tennessee/TN",
+          "060": "American Samoa",
+          "020": "Kansas/KS",
+          "029": "Missouri/MO",
+          "031": "Nebraska/NE",
+          "032": "Nevada/NV",
+          "035": "New Mexico/NM",
+          "040": "Oklahoma/OK",
+          "051": "Virginia/VA",
+          "069": "Commonwealth of the Northern Mariana Islands"
+        }
+      }
+    },
+    "RAC1P": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/RAC1P.json",
+      "sha256": "4025e02f1c25c7492b47f7c81e829d1e2dcc5c74d8339b203b5b5cff479359a9",
+      "label": "Recoded detailed race code",
+      "values": {
+        "item": {
+          "1": "White alone",
+          "2": "Black or African American alone",
+          "3": "American Indian alone",
+          "4": "Alaska Native alone",
+          "5": "American Indian and Alaska Native tribes specified; or American Indian or Alaska Native, not specified and no other races",
+          "6": "Asian alone",
+          "7": "Native Hawaiian and Other Pacific Islander alone",
+          "8": "Some other race alone",
+          "9": "Two or More Races"
+        }
+      }
+    },
+    "HISP": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/HISP.json",
+      "sha256": "9fc0668aadfde7311518940de75f12b083b4a57e8ea3ba85e5f7633fe5f29bc3",
+      "label": "Recoded detailed Hispanic origin",
+      "values": {
+        "item": {
+          "10": "Panamanian",
+          "11": "Salvadoran",
+          "12": "Other Central American",
+          "13": "Argentinean",
+          "14": "Bolivian",
+          "15": "Chilean",
+          "16": "Colombian",
+          "17": "Ecuadorian",
+          "18": "Paraguayan",
+          "19": "Peruvian",
+          "20": "Uruguayan",
+          "21": "Venezuelan",
+          "22": "Other South American",
+          "23": "Spaniard",
+          "24": "All Other Spanish/Hispanic/Latino",
+          "01": "Not Spanish/Hispanic/Latino",
+          "04": "Cuban",
+          "06": "Costa Rican",
+          "07": "Guatemalan",
+          "09": "Nicaraguan",
+          "02": "Mexican",
+          "05": "Dominican",
+          "08": "Honduran",
+          "03": "Puerto Rican"
+        }
+      }
+    },
+    "ANC1P": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/ANC1P.json",
+      "sha256": "1bab134c5ac1cea70802b872422d908bfc3a59153e49377da57f807d5174c006",
+      "label": "Recoded Detailed Ancestry - first entry",
+      "values": {
+        "item": {
+          "100": "Albanian",
+          "101": "Azerbaijani",
+          "102": "Belorussian",
+          "103": "Bulgarian",
+          "109": "Croatian",
+          "111": "Czech",
+          "112": "Bohemian",
+          "114": "Czechoslovakian",
+          "115": "Estonian",
+          "122": "German Russian",
+          "124": "Rom",
+          "125": "Hungarian",
+          "128": "Latvian",
+          "129": "Lithuanian",
+          "130": "Macedonian",
+          "131": "Montenegrin",
+          "142": "Polish",
+          "144": "Romanian",
+          "146": "Moldavian",
+          "148": "Russian",
+          "152": "Serbian",
+          "153": "Slovak",
+          "154": "Slovene",
+          "168": "Turkestani",
+          "169": "Uzbeg",
+          "170": "Georgia CIS",
+          "171": "Ukrainian",
+          "176": "Yugoslavian",
+          "177": "Bosnian and Herzegovinian",
+          "178": "Slavic",
+          "180": "Tajik",
+          "181": "Central European",
+          "183": "Northern European",
+          "185": "Southern European",
+          "187": "Western European",
+          "190": "Eastern European",
+          "194": "Germanic",
+          "195": "European",
+          "200": "Spaniard",
+          "210": "Mexican",
+          "211": "Mexican American",
+          "212": "Mexicano",
+          "213": "Chicano",
+          "215": "Mexican American Indian",
+          "218": "Mexican State",
+          "219": "Mexican Indian",
+          "221": "Costa Rican",
+          "222": "Guatemalan",
+          "223": "Honduran",
+          "224": "Nicaraguan",
+          "225": "Panamanian",
+          "226": "Salvadoran",
+          "227": "Central American",
+          "231": "Argentinean",
+          "232": "Bolivian",
+          "233": "Chilean",
+          "234": "Colombian",
+          "235": "Ecuadorian",
+          "236": "Paraguayan",
+          "237": "Peruvian",
+          "238": "Uruguayan",
+          "239": "Venezuelan",
+          "249": "South American",
+          "250": "Latin American",
+          "251": "Latin",
+          "252": "Latino",
+          "261": "Puerto Rican",
+          "271": "Cuban",
+          "275": "Dominican",
+          "290": "Hispanic",
+          "291": "Spanish",
+          "295": "Spanish American",
+          "300": "Bahamian",
+          "301": "Barbadian",
+          "302": "Belizean",
+          "308": "Jamaican",
+          "310": "Dutch West Indian",
+          "314": "Trinidadian Tobagonian",
+          "322": "British West Indian",
+          "325": "Antigua and Barbuda",
+          "329": "Grenadian",
+          "330": "Vincent-Grenadine Islander",
+          "331": "St Lucia Islander",
+          "335": "West Indian",
+          "336": "Haitian",
+          "359": "Other West Indian",
+          "360": "Brazilian",
+          "370": "Guyanese",
+          "400": "Algerian",
+          "402": "Egyptian",
+          "404": "Libyan",
+          "406": "Moroccan",
+          "408": "Tunisian",
+          "411": "North African",
+          "416": "Iranian",
+          "417": "Iraqi",
+          "419": "Israeli",
+          "421": "Jordanian",
+          "425": "Lebanese",
+          "427": "Saudi Arabian",
+          "429": "Syrian",
+          "431": "Armenian",
+          "434": "Turkish",
+          "435": "Yemeni",
+          "442": "Kurdish",
+          "465": "Palestinian",
+          "483": "Assyrian",
+          "484": "Chaldean",
+          "490": "Mideast",
+          "495": "Arab",
+          "496": "Arabic",
+          "499": "Other Arab",
+          "508": "Cameroonian",
+          "510": "Cape Verdean",
+          "515": "Congolese",
+          "522": "Ethiopian",
+          "523": "Eritrean",
+          "527": "Gambian",
+          "529": "Ghanaian",
+          "530": "Guinean",
+          "532": "Ivorian",
+          "534": "Kenyan",
+          "541": "Liberian",
+          "553": "Nigerian",
+          "556": "Igbo",
+          "558": "Yoruba",
+          "561": "Rwandan",
+          "564": "Senegalese",
+          "566": "Sierra Leonean",
+          "568": "Somali",
+          "570": "South African",
+          "576": "Sudanese",
+          "582": "Tanzanian",
+          "586": "Togo",
+          "587": "Other Subsaharan African",
+          "588": "Ugandan",
+          "593": "Zimbabwean",
+          "598": "Western African",
+          "599": "African",
+          "600": "Afghan",
+          "603": "Bangladeshi",
+          "607": "Bhutanese",
+          "609": "Nepali",
+          "615": "Asian Indian",
+          "618": "Bengali",
+          "620": "East Indian",
+          "650": "Punjabi",
+          "680": "Pakistani",
+          "690": "Sri Lankan",
+          "700": "Burmese",
+          "703": "Cambodian",
+          "706": "Chinese",
+          "707": "Cantonese",
+          "712": "Mongolian",
+          "714": "Tibetan",
+          "716": "Hong Kong",
+          "720": "Filipino",
+          "730": "Indonesian",
+          "740": "Japanese",
+          "748": "Okinawan",
+          "750": "Korean",
+          "765": "Laotian",
+          "768": "Hmong",
+          "770": "Malaysian",
+          "774": "Singaporean",
+          "776": "Thai",
+          "782": "Taiwanese",
+          "785": "Vietnamese",
+          "795": "Asian",
+          "799": "Other Asian",
+          "800": "Australian",
+          "803": "New Zealander",
+          "808": "Polynesian",
+          "811": "Hawaiian",
+          "814": "Samoan",
+          "815": "Tongan",
+          "820": "Micronesian",
+          "821": "Guamanian",
+          "822": "Chamorro",
+          "825": "Marshallese",
+          "841": "Fijian",
+          "850": "Pacific Islander",
+          "899": "Other Pacific",
+          "900": "Afro American",
+          "901": "Afro",
+          "902": "African American",
+          "903": "Black",
+          "904": "Negro",
+          "907": "Creole",
+          "913": "Central American Indian",
+          "914": "South American Indian",
+          "917": "Native American",
+          "918": "Indian",
+          "919": "Cherokee",
+          "920": "American Indian",
+          "921": "Aleut",
+          "922": "Eskimo",
+          "924": "White",
+          "925": "Anglo",
+          "927": "Appalachian",
+          "929": "Pennsylvania German",
+          "931": "Canadian",
+          "935": "French Canadian",
+          "937": "Cajun",
+          "939": "American",
+          "940": "United States",
+          "983": "Texas",
+          "994": "North American",
+          "995": "Mixture",
+          "996": "Uncodable entries",
+          "997": "Other groups",
+          "998": "Other responses",
+          "999": "Not reported",
+          "021": "Dutch",
+          "049": "Icelander",
+          "050": "Irish",
+          "084": "Portuguese",
+          "001": "Alsatian",
+          "026": "French",
+          "040": "Prussian",
+          "077": "Luxembourger",
+          "089": "Swedish",
+          "051": "Italian",
+          "088": "Scottish",
+          "008": "Belgian",
+          "022": "English",
+          "046": "Greek",
+          "078": "Maltese",
+          "087": "Scotch Irish",
+          "091": "Swiss",
+          "098": "Scandinavian",
+          "003": "Austrian",
+          "011": "British",
+          "012": "British Isles",
+          "020": "Danish",
+          "032": "German",
+          "082": "Norwegian",
+          "005": "Basque",
+          "024": "Finnish",
+          "068": "Sicilian",
+          "097": "Welsh",
+          "099": "Celtic"
+        }
+      }
+    },
+    "ANC2P": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/ANC2P.json",
+      "sha256": "4accfa8a4e611f3d744948d4e5ba31e7c0760d057a434130ec19639470961fea",
+      "label": "Recoded Detailed Ancestry - second entry",
+      "values": {
+        "item": {
+          "100": "Albanian",
+          "101": "Azerbaijani",
+          "102": "Belorussian",
+          "103": "Bulgarian",
+          "109": "Croatian",
+          "111": "Czech",
+          "112": "Bohemian",
+          "114": "Czechoslovakian",
+          "115": "Estonian",
+          "122": "German Russian",
+          "124": "Rom",
+          "125": "Hungarian",
+          "128": "Latvian",
+          "129": "Lithuanian",
+          "130": "Macedonian",
+          "131": "Montenegrin",
+          "142": "Polish",
+          "144": "Romanian",
+          "146": "Moldavian",
+          "148": "Russian",
+          "152": "Serbian",
+          "153": "Slovak",
+          "154": "Slovene",
+          "168": "Turkestani",
+          "169": "Uzbeg",
+          "170": "Georgia CIS",
+          "171": "Ukrainian",
+          "176": "Yugoslavian",
+          "177": "Bosnian and Herzegovinian",
+          "178": "Slavic",
+          "180": "Tajik",
+          "181": "Central European",
+          "183": "Northern European",
+          "185": "Southern European",
+          "187": "Western European",
+          "190": "Eastern European",
+          "194": "Germanic",
+          "195": "European",
+          "200": "Spaniard",
+          "210": "Mexican",
+          "211": "Mexican American",
+          "212": "Mexicano",
+          "213": "Chicano",
+          "215": "Mexican American Indian",
+          "218": "Mexican State",
+          "219": "Mexican Indian",
+          "221": "Costa Rican",
+          "222": "Guatemalan",
+          "223": "Honduran",
+          "224": "Nicaraguan",
+          "225": "Panamanian",
+          "226": "Salvadoran",
+          "227": "Central American",
+          "231": "Argentinean",
+          "232": "Bolivian",
+          "233": "Chilean",
+          "234": "Colombian",
+          "235": "Ecuadorian",
+          "236": "Paraguayan",
+          "237": "Peruvian",
+          "238": "Uruguayan",
+          "239": "Venezuelan",
+          "249": "South American",
+          "250": "Latin American",
+          "251": "Latin",
+          "252": "Latino",
+          "261": "Puerto Rican",
+          "271": "Cuban",
+          "275": "Dominican",
+          "290": "Hispanic",
+          "291": "Spanish",
+          "295": "Spanish American",
+          "300": "Bahamian",
+          "301": "Barbadian",
+          "302": "Belizean",
+          "308": "Jamaican",
+          "310": "Dutch West Indian",
+          "314": "Trinidadian Tobagonian",
+          "322": "British West Indian",
+          "325": "Antigua and Barbuda",
+          "329": "Grenadian",
+          "330": "Vincent-Grenadine Islander",
+          "331": "St Lucia Islander",
+          "335": "West Indian",
+          "336": "Haitian",
+          "359": "Other West Indian",
+          "360": "Brazilian",
+          "370": "Guyanese",
+          "400": "Algerian",
+          "402": "Egyptian",
+          "404": "Libyan",
+          "406": "Moroccan",
+          "408": "Tunisian",
+          "411": "North African",
+          "416": "Iranian",
+          "417": "Iraqi",
+          "419": "Israeli",
+          "421": "Jordanian",
+          "425": "Lebanese",
+          "427": "Saudi Arabian",
+          "429": "Syrian",
+          "431": "Armenian",
+          "434": "Turkish",
+          "435": "Yemeni",
+          "442": "Kurdish",
+          "465": "Palestinian",
+          "483": "Assyrian",
+          "484": "Chaldean",
+          "490": "Mideast",
+          "495": "Arab",
+          "496": "Arabic",
+          "499": "Other Arab",
+          "508": "Cameroonian",
+          "510": "Cape Verdean",
+          "515": "Congolese",
+          "522": "Ethiopian",
+          "523": "Eritrean",
+          "527": "Gambian",
+          "529": "Ghanaian",
+          "530": "Guinean",
+          "532": "Ivorian",
+          "534": "Kenyan",
+          "541": "Liberian",
+          "553": "Nigerian",
+          "556": "Igbo",
+          "558": "Yoruba",
+          "561": "Rwandan",
+          "564": "Senegalese",
+          "566": "Sierra Leonean",
+          "568": "Somali",
+          "570": "South African",
+          "576": "Sudanese",
+          "582": "Tanzanian",
+          "586": "Togo",
+          "587": "Other Subsaharan African",
+          "588": "Ugandan",
+          "593": "Zimbabwean",
+          "598": "Western African",
+          "599": "African",
+          "600": "Afghan",
+          "603": "Bangladeshi",
+          "607": "Bhutanese",
+          "609": "Nepali",
+          "615": "Asian Indian",
+          "618": "Bengali",
+          "620": "East Indian",
+          "650": "Punjabi",
+          "680": "Pakistani",
+          "690": "Sri Lankan",
+          "700": "Burmese",
+          "703": "Cambodian",
+          "706": "Chinese",
+          "707": "Cantonese",
+          "712": "Mongolian",
+          "714": "Tibetan",
+          "716": "Hong Kong",
+          "720": "Filipino",
+          "730": "Indonesian",
+          "740": "Japanese",
+          "748": "Okinawan",
+          "750": "Korean",
+          "765": "Laotian",
+          "768": "Hmong",
+          "770": "Malaysian",
+          "774": "Singaporean",
+          "776": "Thai",
+          "782": "Taiwanese",
+          "785": "Vietnamese",
+          "795": "Asian",
+          "799": "Other Asian",
+          "800": "Australian",
+          "803": "New Zealander",
+          "808": "Polynesian",
+          "811": "Hawaiian",
+          "814": "Samoan",
+          "815": "Tongan",
+          "820": "Micronesian",
+          "821": "Guamanian",
+          "822": "Chamorro",
+          "825": "Marshallese",
+          "841": "Fijian",
+          "850": "Pacific Islander",
+          "899": "Other Pacific",
+          "900": "Afro American",
+          "901": "Afro",
+          "902": "African American",
+          "903": "Black",
+          "904": "Negro",
+          "907": "Creole",
+          "913": "Central American Indian",
+          "914": "South American Indian",
+          "917": "Native American",
+          "918": "Indian",
+          "919": "Cherokee",
+          "920": "American Indian",
+          "921": "Aleut",
+          "922": "Eskimo",
+          "924": "White",
+          "925": "Anglo",
+          "927": "Appalachian",
+          "929": "Pennsylvania German",
+          "931": "Canadian",
+          "935": "French Canadian",
+          "937": "Cajun",
+          "939": "American",
+          "940": "United States",
+          "983": "Texas",
+          "994": "North American",
+          "995": "Mixture",
+          "996": "Uncodable entries",
+          "997": "Other groups",
+          "998": "Other responses",
+          "999": "Not reported",
+          "001": "Alsatian",
+          "020": "Danish",
+          "022": "English",
+          "032": "German",
+          "091": "Swiss",
+          "005": "Basque",
+          "012": "British Isles",
+          "049": "Icelander",
+          "050": "Irish",
+          "089": "Swedish",
+          "003": "Austrian",
+          "008": "Belgian",
+          "021": "Dutch",
+          "024": "Finnish",
+          "051": "Italian",
+          "077": "Luxembourger",
+          "078": "Maltese",
+          "082": "Norwegian",
+          "046": "Greek",
+          "068": "Sicilian",
+          "098": "Scandinavian",
+          "026": "French",
+          "084": "Portuguese",
+          "097": "Welsh",
+          "099": "Celtic",
+          "011": "British",
+          "040": "Prussian",
+          "087": "Scotch Irish",
+          "088": "Scottish"
+        }
+      }
+    },
+    "FPOBP": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/FPOBP.json",
+      "sha256": "624c348d244be92c59b24fa8cc032742699570fd564dc05f83155c66fd6e5fef",
+      "label": "Place of birth allocation flag",
+      "values": {
+        "item": {
+          "0": "No",
+          "1": "Yes"
+        }
+      }
+    },
+    "FRACP": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/FRACP.json",
+      "sha256": "88a609822bdfd98507b7d34ae44f4de70c041a8ab99ea24f095c0acf046f2a4f",
+      "label": "Detailed race allocation flag",
+      "values": {
+        "item": {
+          "0": "No",
+          "1": "Yes"
+        }
+      }
+    },
+    "FHISP": {
+      "url": "https://api.census.gov/data/2024/acs/acs1/pums/variables/FHISP.json",
+      "sha256": "125a4a5119e4be3aceec565d27cf269a23b746459fdb02d25cd828405b0d2010",
+      "label": "Detailed Hispanic origin allocation flag",
+      "values": {
+        "item": {
+          "0": "No",
+          "1": "Yes"
+        }
+      }
+    }
+  },
+  "countries": [
+    {
+      "country": "United States",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "005",
+          "label": "Arkansas/AR"
+        },
+        {
+          "code": "010",
+          "label": "Delaware/DE"
+        },
+        {
+          "code": "034",
+          "label": "New Jersey/NJ"
+        },
+        {
+          "code": "036",
+          "label": "New York/NY"
+        },
+        {
+          "code": "042",
+          "label": "Pennsylvania/PA"
+        },
+        {
+          "code": "044",
+          "label": "Rhode Island/RI"
+        },
+        {
+          "code": "054",
+          "label": "West Virginia/WV"
+        },
+        {
+          "code": "015",
+          "label": "Hawaii/HI"
+        },
+        {
+          "code": "016",
+          "label": "Idaho/ID"
+        },
+        {
+          "code": "021",
+          "label": "Kentucky/KY"
+        },
+        {
+          "code": "009",
+          "label": "Connecticut/CT"
+        },
+        {
+          "code": "018",
+          "label": "Indiana/IN"
+        },
+        {
+          "code": "028",
+          "label": "Mississippi/MS"
+        },
+        {
+          "code": "045",
+          "label": "South Carolina/SC"
+        },
+        {
+          "code": "048",
+          "label": "Texas/TX"
+        },
+        {
+          "code": "002",
+          "label": "Alaska/AK"
+        },
+        {
+          "code": "011",
+          "label": "District of Columbia/DC"
+        },
+        {
+          "code": "013",
+          "label": "Georgia/GA"
+        },
+        {
+          "code": "022",
+          "label": "Louisiana/LA"
+        },
+        {
+          "code": "025",
+          "label": "Massachusetts/MA"
+        },
+        {
+          "code": "026",
+          "label": "Michigan/MI"
+        },
+        {
+          "code": "027",
+          "label": "Minnesota/MN"
+        },
+        {
+          "code": "030",
+          "label": "Montana/MT"
+        },
+        {
+          "code": "053",
+          "label": "Washington/WA"
+        },
+        {
+          "code": "001",
+          "label": "Alabama/AL"
+        },
+        {
+          "code": "008",
+          "label": "Colorado/CO"
+        },
+        {
+          "code": "019",
+          "label": "Iowa/IA"
+        },
+        {
+          "code": "033",
+          "label": "New Hampshire/NH"
+        },
+        {
+          "code": "037",
+          "label": "North Carolina/NC"
+        },
+        {
+          "code": "039",
+          "label": "Ohio/OH"
+        },
+        {
+          "code": "055",
+          "label": "Wisconsin/WI"
+        },
+        {
+          "code": "004",
+          "label": "Arizona/AZ"
+        },
+        {
+          "code": "012",
+          "label": "Florida/FL"
+        },
+        {
+          "code": "017",
+          "label": "Illinois/IL"
+        },
+        {
+          "code": "024",
+          "label": "Maryland/MD"
+        },
+        {
+          "code": "038",
+          "label": "North Dakota/ND"
+        },
+        {
+          "code": "046",
+          "label": "South Dakota/SD"
+        },
+        {
+          "code": "049",
+          "label": "Utah/UT"
+        },
+        {
+          "code": "050",
+          "label": "Vermont/VT"
+        },
+        {
+          "code": "056",
+          "label": "Wyoming/WY"
+        },
+        {
+          "code": "006",
+          "label": "California/CA"
+        },
+        {
+          "code": "023",
+          "label": "Maine/ME"
+        },
+        {
+          "code": "041",
+          "label": "Oregon/OR"
+        },
+        {
+          "code": "047",
+          "label": "Tennessee/TN"
+        },
+        {
+          "code": "020",
+          "label": "Kansas/KS"
+        },
+        {
+          "code": "029",
+          "label": "Missouri/MO"
+        },
+        {
+          "code": "031",
+          "label": "Nebraska/NE"
+        },
+        {
+          "code": "032",
+          "label": "Nevada/NV"
+        },
+        {
+          "code": "035",
+          "label": "New Mexico/NM"
+        },
+        {
+          "code": "040",
+          "label": "Oklahoma/OK"
+        },
+        {
+          "code": "051",
+          "label": "Virginia/VA"
+        }
+      ],
+      "interpretation": "50 states and District of Columbia source codes; territories remain separate",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Canada",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "301",
+          "label": "Canada"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Nigeria",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "440",
+          "label": "Nigeria"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Australia",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "501",
+          "label": "Australia"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "American Samoa",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "060",
+          "label": "American Samoa"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "United Kingdom",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "138",
+          "label": "United Kingdom, Not Specified"
+        },
+        {
+          "code": "139",
+          "label": "England"
+        },
+        {
+          "code": "140",
+          "label": "Scotland"
+        },
+        {
+          "code": "142",
+          "label": "Northern Ireland"
+        }
+      ],
+      "interpretation": "England, Scotland, Northern Ireland and United Kingdom Not Specified; Wales has no separately enumerated code in retrieved metadata",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Germany",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "110",
+          "label": "Germany"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Jamaica",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "333",
+          "label": "Jamaica"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Mexico",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "303",
+          "label": "Mexico"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "New Zealand",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "515",
+          "label": "New Zealand"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Tonga",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "523",
+          "label": "Tonga"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Ireland",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "119",
+          "label": "Ireland"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Austria",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "102",
+          "label": "Austria"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Brazil",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "362",
+          "label": "Brazil"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Cameroon",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "407",
+          "label": "Cameroon"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Ghana",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "421",
+          "label": "Ghana"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Côte d’Ivoire",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "425",
+          "label": "Ivory Coast"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Liberia",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "429",
+          "label": "Liberia"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "South Africa",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "449",
+          "label": "South Africa"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Zimbabwe",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "461",
+          "label": "Zimbabwe"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Guinea",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "423",
+          "label": "Guinea"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "South Korea",
+      "status": "scope-review-required",
+      "sourceCodes": [
+        {
+          "code": "217",
+          "label": "Korea"
+        }
+      ],
+      "interpretation": "Source Korea recode requires dictionary scope review before treating as South Korea",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Japan",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "215",
+          "label": "Japan"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "China",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "207",
+          "label": "China"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Taiwan",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "240",
+          "label": "Taiwan"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Hong Kong",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "209",
+          "label": "Hong Kong"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Italy",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "120",
+          "label": "Italy"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Denmark",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "106",
+          "label": "Denmark"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Belgium",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "103",
+          "label": "Belgium"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Netherlands",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "126",
+          "label": "Netherlands"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Greece",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "116",
+          "label": "Greece"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Haiti",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "332",
+          "label": "Haiti"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Bahamas",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "323",
+          "label": "Bahamas"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Dominican Republic",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "329",
+          "label": "Dominican Republic"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Puerto Rico",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "072",
+          "label": "Puerto Rico"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Panama",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "316",
+          "label": "Panama"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Belize",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "310",
+          "label": "Belize"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Saint Lucia",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "339",
+          "label": "St. Lucia"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Egypt",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "414",
+          "label": "Egypt"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "India",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "210",
+          "label": "India"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Philippines",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "233",
+          "label": "Philippines"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "France",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "109",
+          "label": "France"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Argentina",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "360",
+          "label": "Argentina"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Kenya",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "427",
+          "label": "Kenya"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Senegal",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "444",
+          "label": "Senegal"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Pakistan",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "231",
+          "label": "Pakistan"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    },
+    {
+      "country": "Sweden",
+      "status": "matched-source-codes",
+      "sourceCodes": [
+        {
+          "code": "136",
+          "label": "Sweden"
+        }
+      ],
+      "interpretation": "Original source label retained",
+      "fitStatus": "metadata-only-no-observations-or-weights"
+    }
+  ],
+  "limits": [
+    "No person records, cross-tab observations, sampling weights or confidence intervals retrieved",
+    "No runtime demographic or appearance coefficient changed",
+    "Unresolved or aggregate source codes must not be converted into individual-country counts",
+    "Race, Hispanic origin and ancestry require original response semantics and allocation flags",
+    "U.S. diaspora observations are not worldwide or NFL conditional distributions"
+  ]
+}

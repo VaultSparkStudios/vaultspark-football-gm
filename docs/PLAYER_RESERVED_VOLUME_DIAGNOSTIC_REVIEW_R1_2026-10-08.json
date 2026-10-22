@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T13:30:49.576Z",
+  "reviewRound": 1,
+  "verdict": "PASS",
+  "scope": "Reproducible closed-skin shell volume diagnostic and fixed-reserve accounting gap only; no production body or whole rendered mass acceptance.",
+  "primaryReceipt": "docs/PLAYER_RESERVED_VOLUME_DIAGNOSTIC_2026-10-08.json",
+  "primaryReceiptSha256": "f71618e60aea9f60572348175fa4c7505e81a0d97160c5e47970361d1868e4ba",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerFootwear.js": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    ".cache/observe-skull-reserve.mjs": "3bf58b620f62a7787e97f1f11ea7368904e7635936db56a27683fa8ad05e1f6a"
+  },
+  "frozenSources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-0-playerHead3d.js-2026-10-08",
+      "sha256": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-1-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-2-playerSideAppearance.js-2026-10-08",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-3-playerPortrait.js-2026-10-08",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-4-playerMotion.js-2026-10-08",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "original": "public/lib/playerHand.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-5-playerHand.js-2026-10-08",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca"
+    },
+    {
+      "original": "public/lib/playerFootwear.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-6-playerFootwear.js-2026-10-08",
+      "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+    },
+    {
+      "original": "public/lib/physiqueGeometryContract.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-7-physiqueGeometryContract.js-2026-10-08",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-8-playerIdentity.js-2026-10-08",
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "docs/visual-qa/references/reserved-volume-source-9-playerMeasurements.js-2026-10-08",
+      "sha256": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293"
+    },
+    {
+      "original": ".cache/observe-skull-reserve.mjs",
+      "file": "docs/visual-qa/references/reserved-volume-source-10-observe-skull-reserve.mjs-2026-10-08",
+      "sha256": "3bf58b620f62a7787e97f1f11ea7368904e7635936db56a27683fa8ad05e1f6a"
+    }
+  ],
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node .cache/reserved-volume-independent-probe.mjs",
+      "probeSha256": "86808e62a7d54676ff813497af8d0d4ddadf40164351d740bd45ccd53a5010c1",
+      "result": {
+        "knownSolid": {
+          "volume": 24,
+          "translatedVolume": 24,
+          "reversedOrientationVolume": -24
+        },
+        "players": 9,
+        "levels": 27,
+        "maxReportedError": 0,
+        "maxTranslatedRelativeError": 5.6926223103056095e-11,
+        "playersUnchanged": true,
+        "rngUnchanged": true
+      },
+      "terminalChunk": "4dce6f",
+      "qualification": "Independent implementation of scalar triple-product summation. Rectangular solid2x3x4 gives signed24, translated24, reversed winding-24. All27 actual reported skull levels reproduced exactly; translated skin shell relative difference5.69e-11. Complete player pool and cloned RNG seed state remained unchanged."
+    },
+    {
+      "command": "node .cache/reserved-volume-mass-probe.mjs",
+      "probeSha256": "66f0e11f5e21ee71fab6209f80235930d66acee4ba885fc5e093fd4951a856fc",
+      "result": "PASS",
+      "controlledCases": 4,
+      "terminalChunk": "10c507",
+      "qualification": "Actual same saved OL at80in and180/240/350/500lb reproduces skull volume, allocated reserve and hand/foot dimensions."
+    },
+    {
+      "check": "Primary hash,11 frozen files and11 current source bindings;9 population rows/27 levels and4 controlled rows",
+      "result": "PASS",
+      "terminalChunk": "d79693"
+    }
+  ],
+  "sourceTrace": [
+    "Shared image draw uses fitSkull175/(chinY-crownY). Front body nested head scales skullHeight/175; side builder uses height/175. Motion uses the same skeletal skullHeight formula. Therefore the net mesh-to-inch scale is skullHeight/(chinY-crownY), matching the observer. Camera translation and rotation do not change scalar volume.",
+    "The diagnostic integrates only actual skin triangles. Hair, beard, lids and open ear surfaces are excluded rather than incorrectly added as independent closed tissue solids.",
+    "Skull height is9.4+(stature-74)*.035. At fixed saved appearance/stature it does not depend on mass. The fixed12.5% artistic reserve scales with mass; the four controlled values therefore expose a real mismatch between an allocation and independently reconstructed head geometry.",
+    "Reserved hand/foot lengths do not define their depth or sealed volume. Root caps, overlaps and head/neck union remain unreconciled. The unexplained reserve is a bookkeeping residual, not measured missing tissue."
+  ],
+  "numericalObservations": {
+    "maximumLastRefinementRelativeDelta": 0.0053318269615982095,
+    "maximumOrientedAreaResidual": 1.7742155963305744e-9,
+    "controlledSkullInches3": 185.8126816194998,
+    "controlledReserveRange": [
+      622.7978559795703,
+      1729.994044387695
+    ]
+  },
+  "qualifications": [
+    "The oriented-area residual supports consistency and translation invariance but does not alone prove manifold watertightness, non-self-intersection or correct biological anatomy.",
+    "The last refinement delta is a successive-mesh change, not a certified bound on true continuum volume error.",
+    "Nine examples are selected actual generated positions, not a fitted league or population distribution.",
+    "Observer records primary RNG seed-state invariance; the independent probe additionally checks all league players. This is not full command-outcome or all-feature invariance.",
+    "No PNG or visual naturalism inspection was needed or claimed for this numerical diagnostic."
+  ],
+  "requiredNext": [
+    "Define matched camera-independent hand/foot solids distinct from footwear.",
+    "Include actual head/neck/torso/limb solids and root caps with intersection subtraction.",
+    "Fit and test the union at controlled physical scale; publish numerical convergence and mass residuals instead of treating allocation sums as proof."
+  ],
+  "recordingMethod": "Manual immutable review JSON; review helper absent. Original observer/primary were not rerun or overwritten.",
+  "fullBodyAcceptance": false,
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

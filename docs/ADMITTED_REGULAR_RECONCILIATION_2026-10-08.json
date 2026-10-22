@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T10:07:25.086Z",
+  "status": "scoped-regular-reconciliation-review-pending",
+  "scope": "Actual interactive/headless regular wages for previously admitted injuries: pre-recovery gross capture, actually paid same-club practice/elevation coverage, additional cash and cap, versioned restoration. Not pension/benefits or complete annual default policy.",
+  "sources": [
+    {
+      "original": "src/domain/admittedInjuryPayroll.js",
+      "file": "references/admitted-regular-source-0-admittedInjuryPayroll.js-2026-10-08",
+      "sha256": "c73f0bda9dbc412a59e2c97b170c3577b40d79dcab4eba6f8cc2ca3bc094699f"
+    },
+    {
+      "original": "src/domain/regularMedicalRecovery.js",
+      "file": "references/admitted-regular-source-1-regularMedicalRecovery.js-2026-10-08",
+      "sha256": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2"
+    },
+    {
+      "original": "src/runtime/GameSession.js",
+      "file": "references/admitted-regular-source-2-GameSession.js-2026-10-08",
+      "sha256": "6b135d51dcc79cbcee67041c4eb000527781b195444b18ee2eaa5f98cf559c55"
+    },
+    {
+      "original": "src/engine/seasonSimulator.js",
+      "file": "references/admitted-regular-source-3-seasonSimulator.js-2026-10-08",
+      "sha256": "4affc02d23c8c40ad749ac39b89f4a2dc173e2dc8c8b7098cd5719edcad571d3"
+    },
+    {
+      "original": "test/admitted-regular-reconciliation.test.js",
+      "file": "references/admitted-regular-source-4-admitted-regular-reconciliation.test.js-2026-10-08",
+      "sha256": "a9599e989b7c9761136cdf0c34aaf3cf88850be6fcc363548de2780aed602255"
+    },
+    {
+      "original": "test/admitted-injury-payroll.test.js",
+      "file": "references/admitted-regular-source-5-admitted-injury-payroll.test.js-2026-10-08",
+      "sha256": "9bb663d97896351ab2e1488e2033a336789278a8a9125b910543fdf55a8f74a7"
+    },
+    {
+      "original": "test/regular-medical-recovery.test.js",
+      "file": "references/admitted-regular-source-6-regular-medical-recovery.test.js-2026-10-08",
+      "sha256": "fa1c259fdbc177d456e40932d42f7bb49843201e5fcde228dd8e2534d42556db"
+    },
+    {
+      "original": "test/headless-regular-medical.test.js",
+      "file": "references/admitted-regular-source-7-headless-regular-medical.test.js-2026-10-08",
+      "sha256": "8795fa161d22e01f792fa7ab8cc451c973d4415ae004d82f5a206f67bb53d5a9"
+    },
+    {
+      "original": "test/helpers/regularMedicalFixture.js",
+      "file": "references/admitted-regular-source-8-regularMedicalFixture.js-2026-10-08",
+      "sha256": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba"
+    },
+    {
+      "original": "tests-ui/admitted-regular-reconciliation-client.spec.js",
+      "file": "references/admitted-regular-source-9-admitted-regular-reconciliation-client.spec.js-2026-10-08",
+      "sha256": "54a2d7865c88e3fdba07f73beb693f7def2ff58921a7aded2001563a2acdb3f6"
+    },
+    {
+      "original": "tests-ui/regular-medical-recovery-client.spec.js",
+      "file": "references/admitted-regular-source-10-regular-medical-recovery-client.spec.js-2026-10-08",
+      "sha256": "fa1216d3be738e9da427e44bc0e4a59ab1c7fbb2d220df302091975a6653331e"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/admitted-regular-source-11-run-test-shard.mjs-2026-10-08",
+      "sha256": "623958eed20fed88026af44eb6fe490614717fae8ae091f63660de2bceeed6d6"
+    }
+  ],
+  "builtPairs": [
+    {
+      "source": "src/domain/admittedInjuryPayroll.js",
+      "built": "static/src/domain/admittedInjuryPayroll.js",
+      "sourceSha256": "c73f0bda9dbc412a59e2c97b170c3577b40d79dcab4eba6f8cc2ca3bc094699f",
+      "builtSha256": "c73f0bda9dbc412a59e2c97b170c3577b40d79dcab4eba6f8cc2ca3bc094699f"
+    },
+    {
+      "source": "src/domain/regularMedicalRecovery.js",
+      "built": "static/src/domain/regularMedicalRecovery.js",
+      "sourceSha256": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+      "builtSha256": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2"
+    },
+    {
+      "source": "src/runtime/GameSession.js",
+      "built": "static/src/runtime/GameSession.js",
+      "sourceSha256": "6b135d51dcc79cbcee67041c4eb000527781b195444b18ee2eaa5f98cf559c55",
+      "builtSha256": "6b135d51dcc79cbcee67041c4eb000527781b195444b18ee2eaa5f98cf559c55"
+    },
+    {
+      "source": "src/engine/seasonSimulator.js",
+      "built": "static/src/engine/seasonSimulator.js",
+      "sourceSha256": "4affc02d23c8c40ad749ac39b89f4a2dc173e2dc8c8b7098cd5719edcad571d3",
+      "builtSha256": "4affc02d23c8c40ad749ac39b89f4a2dc173e2dc8c8b7098cd5719edcad571d3"
+    }
+  ],
+  "evidence": [
+    {
+      "original": ".cache/admitted-reconciled-client/worker.json",
+      "file": "references/admitted-regular-client-0-2026-10-08.json",
+      "sha256": "ba742bcf63a96123f6675c4e205698a9530e1fbb0d66b20a794997b3b969630a"
+    },
+    {
+      "original": ".cache/admitted-reconciled-client/in-page.json",
+      "file": "references/admitted-regular-client-1-2026-10-08.json",
+      "sha256": "404baa21b225625f711e3e0b054c32ad8c2d3807dc4ae29ded66c3a6967fe3a0"
+    },
+    {
+      "original": ".cache/regular-medical-client/worker.json",
+      "file": "references/admitted-regular-client-2-2026-10-08.json",
+      "sha256": "8849fb18075df8c975aebbb72b3c174e9aee55248268c27dc86c7f2917a8a11a"
+    },
+    {
+      "original": ".cache/regular-medical-client/in-page.json",
+      "file": "references/admitted-regular-client-3-2026-10-08.json",
+      "sha256": "1fb71db2684eee8454f10cebed5935efd532f002da17955ce278fca4d709313e"
+    }
+  ],
+  "originalDiagnostic": {
+    "file": "docs/ADMITTED_PRACTICE_PAY_OVERLAP_2026-10-08.json",
+    "sha256": "879481875bf5769383864f3ba0dea4e55253c4da9a5034cbc9c5370b18f01671"
+  },
+  "repairedProbe": {
+    "terminal": "a1728b",
+    "commands": {
+      "release": true,
+      "signing": true,
+      "advance": true
+    },
+    "playerId": "P2026-BUF-QB-87221813",
+    "accounting": {
+      "grossEntitlementCents": 2861111,
+      "baseCents": 1450000,
+      "admittedCents": 1411111,
+      "totalCents": 2861111,
+      "aboveReplacementRateCents": 0
+    },
+    "base": {
+      "teamId": "BUF",
+      "amount": 14500,
+      "year": 2027,
+      "week": 1
+    },
+    "row": {
+      "version": "admitted-injury-earning-period-v3",
+      "payId": "[\"[\\\"P2026-BUF-QB-87221813\\\",\\\"2026-regular-regular-season-18-MIA-BUF\\\"]\",2027,\"regular-season\",1]",
+      "rightId": "[\"P2026-BUF-QB-87221813\",\"2026-regular-regular-season-18-MIA-BUF\"]",
+      "playerId": "P2026-BUF-QB-87221813",
+      "gameId": "2026-regular-regular-season-18-MIA-BUF",
+      "teamId": "BUF",
+      "injuryYear": 2026,
+      "earningYear": 2027,
+      "phase": "regular-season",
+      "week": 1,
+      "amountCents": 1411111,
+      "grossCents": 2861111,
+      "practiceCents": 1450000,
+      "elevationCents": 0
+    },
+    "sourceHashes": {
+      "src/domain/admittedInjuryPayroll.js": "c73f0bda9dbc412a59e2c97b170c3577b40d79dcab4eba6f8cc2ca3bc094699f",
+      "src/domain/regularMedicalRecovery.js": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+      "src/domain/practiceContracts.js": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934",
+      "src/runtime/GameSession.js": "6b135d51dcc79cbcee67041c4eb000527781b195444b18ee2eaa5f98cf559c55",
+      "src/domain/pensionService.js": "a253b3f3449798c6b39757d646687d0bc9e5a254176742102962c9c19f4a0e23"
+    }
+  },
+  "verification": {
+    "focused": {
+      "passed": 8,
+      "terminal": "c8460d",
+      "durationMs": 17772.2363
+    },
+    "adjacent": {
+      "runPassed": 61,
+      "terminal": "73ad8e",
+      "durationMs": 60750.1085,
+      "distinctAdjacentChecks": 54,
+      "note": "Includes prior seven-test reconciliation file before final test-only expansion; final eight-test file is separately verified above. Runtime sources unchanged across both."
+    },
+    "browser": {
+      "passed": 4,
+      "terminal": "a0dc48",
+      "actualClientSeams": [
+        "built-worker",
+        "built-in-page"
+      ],
+      "publicReleaseSignAdvance": true,
+      "namedSaveReplacementLoadReload": true
+    },
+    "build": {
+      "passed": true,
+      "terminal": "679f84",
+      "assets": 319,
+      "kilobytes": 3559,
+      "precache": "707fb5891747",
+      "artifactDigest": "722ead0a35f039e40a902e299adf7dff8931f688e1209f69f87d2c154c1e9645"
+    },
+    "budgets": {
+      "passed": true,
+      "terminal": "89326f",
+      "modules": 139,
+      "bootBytes": 649321,
+      "bootBudget": 730000,
+      "diffCheck": true
+    }
+  },
+  "semantics": [
+    "v3 retains grossCents, practiceCents and settled elevationCents; amountCents is additional cash and cap attribution.",
+    "An elevation already includes ordinary practice pay, so coverage is their maximum, not their sum.",
+    "Duplicate retained contract copies count once; conflicting paid copies or missing claimed evidence refuse. Unpaid reservations and other clubs do not offset the original payer.",
+    "A zero-additional receipt retains eligibility and a zero charge; it does not erase the source right.",
+    "v1/v2 historical receipts and direct legacy/calendar earning behavior remain unchanged."
+  ],
+  "authority": {
+    "source": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+    "reviewed": "Article33 section5(k/l), printed198/PDF214; modern minimum/divisor schedules retain their existing authorities"
+  },
+  "limits": [
+    "Active-contract base/other-employer offset policy is not established by this practice/elevation repair.",
+    "Pension games/benefits and explicit dispute election remain required; all four annual callers still use legacy claims.",
+    "Final current all-feature/shard testing and managed career, whole-player naturalism/calibration, closeout and release remain incomplete."
+  ]
+}

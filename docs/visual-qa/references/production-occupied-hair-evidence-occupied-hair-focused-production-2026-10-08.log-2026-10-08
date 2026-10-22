@@ -1,0 +1,30 @@
+✔ all long-grooming vertices clear the rendered lip mask across valid mouth proportions and curves (6423.9739ms)
+✔ frozen grooming refinement preserves all non-beard surfaces; current scalp refinement preserves its remaining anatomy (5052.1306ms)
+✔ facial grooming has fitted camera-independent volume while preserving anatomy and the mouth aperture (6401.539ms)
+{"maximumCases":56,"maxBytes":1635576}
+✔ occupied groups preserve finite geometry, saved person and existing maximum mesh budget in all 56 combinations (13123.7146ms)
+✔ all non-hair surfaces remain exact for every changed style and six grooming choices (9272.0306ms)
+✔ cluster volume and density are independently saved while grouped grooming conceals loose texture (649.5323ms)
+✔ all supported style/texture combinations remain finite and within the existing maximum head-mesh budget (12975.2981ms)
+✔ braids and locs preserve concealed loose texture while saved thickness still changes their physical volume (777.5773ms)
+✔ scalp coverage tapers at the hairline and fade; sparse coverage is separate from strand counts (629.4464ms)
+✔ scalp refinement preserves every skin, ear, eye and beard mesh part against the frozen production baseline (2830.6015ms)
+✔ eye and closing lid polygons share lateral samples with an opaque meeting margin (172.7497ms)
+✔ saved blink phase remains periodic, bounded and returns to the open pose (1.6886ms)
+✔ head-only projection removes fixed prototype anatomy while retaining every head surface (563.5442ms)
+✔ server or non-graphical consumers retain fallback without creating a renderer (0.6134ms)
+✔ saved ear size and shape retain a folded surface attached to the same skull (176.3441ms)
+✔ surface lighting preserves pigment order, normal scale and coherent occlusion (2.9083ms)
+✔ curved surface ramps follow section direction without changing their albedo (2.2617ms)
+✔ actual cubic hair paths follow continuous waves, including the tightest curls and reversed flow (23.9149ms)
+✔ grouped cropped locks share bounded recipe controls without changing the saved person (8.0947ms)
+✔ legacy eye apertures expose pigment with fixed width, joined corners and increasing clear opening (2.0123ms)
+✔ every legacy style and texture retains exact immediate-baseline front and profile output (352.1759ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24882.3538

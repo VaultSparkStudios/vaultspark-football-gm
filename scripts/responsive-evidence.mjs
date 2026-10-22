@@ -501,7 +501,7 @@ async function main() {
   await fs.rm(outputDir, { recursive: true, force: true });
   await fs.mkdir(outputDir, { recursive: true });
   const { server, baseUrl, artifactHeaderRules, policyWitnesses } = await createServer();
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
   const records = [];
   const runtimeErrors = [];
 

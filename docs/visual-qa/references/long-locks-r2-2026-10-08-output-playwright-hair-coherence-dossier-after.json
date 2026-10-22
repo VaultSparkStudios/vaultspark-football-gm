@@ -1,0 +1,260 @@
+{
+  "scope": "Real generated player dossiers and renderer change; no grooming commands or empirical population approval",
+  "phase": "after",
+  "cases": [
+    {
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610"
+    },
+    {
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397"
+    },
+    {
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491"
+    }
+  ],
+  "captures": [
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-desktop-dark-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-desktop-dark-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-desktop-light-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-desktop-light-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-mobile-dark-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-mobile-dark-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-mobile-light-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-long-mobile-light-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-desktop-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-desktop-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-desktop-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-desktop-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-mobile-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-mobile-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-mobile-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-afro-mobile-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-desktop-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-desktop-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-desktop-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-desktop-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-mobile-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-mobile-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-mobile-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait"
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-after-side-part-mobile-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body"
+    }
+  ]
+}

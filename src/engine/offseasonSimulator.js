@@ -1,22 +1,118 @@
 import { teamLabel } from "../domain/teamLabel.js";
+import { measureDevelopmentPerformance, revisePlayerPotential } from "../domain/livingPotential.js";
 import { getSportRules } from "../sport/registry.js";
 import {
   CONTRACT_RULES,
   FREE_AGENCY_RULES,
+  FIELDABLE_DEPTH,
+  ROSTER_TEMPLATE,
   FULL_ROSTER_TEMPLATE,
+  ROSTER_STRUCTURE,
+  PRACTICE_SQUAD_TEMPLATE,
   POSITION_MAX_AGE_LIMITS
 } from "../config.js";
 import { createDraftClass, createSyntheticPlayer } from "../domain/playerFactory.js";
-import { advanceContractYear, buildContract } from "../domain/contracts.js";
-import { calculatePositionOverall, developmentDelta, positionRatingKeys } from "../domain/ratings.js";
+import { TALENT_DISTRIBUTION } from "../domain/talentDistribution.js";
+import { advanceContractYear, buildContract, contractMarketOptions } from "../domain/contracts.js";
+import { calculatePositionOverall, developmentDelta, positionRatingKeys, GROWTH_WINDOW_MAX_AGE } from "../domain/ratings.js";
 import {
   measurePotentialCentre,
   measurePotentialGapCentre,
   potentialReversionFor
 } from "../domain/potentialReversion.js";
-import { getAllTeamPlayers, recalculateAllTeamRatings } from "../domain/teamFactory.js";
-import { enforceRosterAndCapCompliance, normalizeRosterSlots } from "./capCompliance.js";
+import { getAllTeamPlayers, getRosterCandidates, recalculateAllTeamRatings } from "../domain/teamFactory.js";
+import { enforceRosterAndCapCompliance, normalizeRosterSlots, selectReleasable, releaseRanking, currentYearCapSaving, releaseToFreeAgency, capSpaceForTeam } from "./capCompliance.js";
 import { clamp } from "../utils/rng.js";
+import { finalizeFootballServiceSeason } from '../domain/playerService.js';
+import { finalizePensionPlanYear } from '../domain/pensionService.js';
+import { projectCapCarryover } from '../domain/capCarryover.js';
+import { retainedRosterCompensationCap } from '../domain/earnedPracticeCap.js';
+import { openNextFinancialYear, financialYearForLeague } from '../data/nflSalaryCap.js';
+import {settleCpuInjuryClaims} from '../domain/injuryClaimNegotiation.js';
+import { minimumSalaryForSeason } from '../data/nflSalaryMinimum.js';
+import { practiceSalaryForSeason } from '../data/nflPracticeSalary.js';
+import { buildPracticeContract } from '../domain/practiceContracts.js';
+import { validatePracticeSquadAddition } from '../domain/practiceSquadEligibility.js';
+import { admitUndraftedFreeAgents } from '../domain/undraftedFreeAgency.js';
+import { draftCohortSize } from '../domain/draftCohort.js';
+import { resetReserveListsForYear } from '../domain/reserveLists.js';
+import { recordElevationPracticeRejoin,recordPermanentElevationActivation } from '../domain/standardElevations.js';
+import { assertAnnualElevationInjuryContractTransition } from '../domain/elevationInjuryPay.js';
+import { advancePreRolloverMedicalCalendar } from '../domain/preRolloverMedicalCalendar.js';
+import {startOffseasonMedicalCalendar,advanceOffseasonMedicalCalendar,validateSnapshotOffseasonMedicalCalendar} from '../domain/offseasonMedicalCalendar.js';
+
+// Fictional CPU development preference, not an expected future rating or an
+// observed NFL coefficient. Current position grade stays dominant: upside
+// can bridge at most six points and expires with the canonical growth window.
+// Revised ceilings already account for setbacks; do not debit injuries twice.
+function practiceDevelopmentValue(player) {
+  const overall = Number(player.overall);
+  if (!Number.isFinite(overall)) return 0;
+  const age = Number(player.age), potential = Number(player.potential);
+  if (!Number.isFinite(age) || age < 18 || age > GROWTH_WINDOW_MAX_AGE
+    || !Number.isFinite(potential)) return overall;
+  const remaining = Math.min(1, (GROWTH_WINDOW_MAX_AGE - age + 1) / 5);
+  return overall + Math.min(6, Math.max(0, potential - overall) * .25) * remaining;
+}
+
+// Run after active-roster compliance and slot assignment. This is optional
+// development depth, so it never cuts an incumbent or fabricates a player to
+// fill a quota. Existing contracts remain authoritative. No football RNG draw
+// is needed to price the scheduled weekly minimum.
+export function replenishCpuPracticeSquads(league, { excludeTeamIds = [], onSigning = null } = {}) {
+  const excluded = new Set(excludeTeamIds);
+  const { activeLimit, practiceLimit } = ROSTER_STRUCTURE;
+  const year = financialYearForLeague(league);
+  const signings = [], shortfalls = [];
+  const available = league.players.filter(player => player.status === 'active' && player.teamId === 'FA')
+    // Premium free agents pursue active offers. A cheap practice contract must
+    // not become an alternative path to acquire them after the market closes.
+    .filter(player => player.overall < 74)
+    .sort((a, b) => b.overall - a.overall || String(a.id).localeCompare(String(b.id)));
+  const teams = [...league.teams].sort((a, b) =>
+    (a.season?.wins || 0) - (b.season?.wins || 0) ||
+    (b.season?.losses || 0) - (a.season?.losses || 0) || String(a.id).localeCompare(String(b.id)));
+  for (const team of teams) {
+    if (excluded.has(team.id)) continue;
+    const roster = getRosterCandidates(league, team.id);
+    const practice = roster.filter(player => player.rosterSlot === 'practice');
+    // Active depth comes first; do not turn an unfinished active roster into
+    // a practice squad while the mandatory depth pass reports a shortage.
+    if (roster.filter(player => player.rosterSlot !== 'practice').length < activeLimit) continue;
+    const active = roster.filter(player => player.rosterSlot !== 'practice');
+    if (Object.entries(FIELDABLE_DEPTH).some(([position, band]) => active.filter(player => player.position === position).length < band.min)) continue;
+    let budget = capSpaceForTeam(league, team.id);
+    while (practice.length < practiceLimit) {
+      // Development-room targets are preferences, not eligibility rules. They
+      // stop a high-rated specialist pool monopolizing practice depth while
+      // permitting other available positions when a preferred room is empty.
+      const gap = position => Math.max(0, (PRACTICE_SQUAD_TEMPLATE[position] || 0) - practice.filter(player => player.position === position).length);
+      const ranked = available.filter(player => player.teamId === 'FA')
+        .sort((a, b) => gap(b.position) - gap(a.position)
+          || practiceDevelopmentValue(b) - practiceDevelopmentValue(a)
+          || b.overall - a.overall || String(a.id).localeCompare(String(b.id)));
+      let player = null, contract = null;
+      for (const candidate of ranked) {
+        if (!validatePracticeSquadAddition({ players: practice, player: candidate, settings: league.settings || {}, capacity: practiceLimit }).ok) continue;
+        const offer = buildPracticeContract(candidate, { year });
+        if (offer.capHit > budget) continue;
+        player = candidate; contract = offer; break;
+      }
+      if (!player) break;
+      player.teamId = team.id;
+      player.rosterSlot = 'practice';
+      player.contract = contract;
+      recordElevationPracticeRejoin(player,{teamId:team.id});
+      practice.push(player);
+      budget -= contract.capHit;
+      const receipt = { teamId: team.id, player, contract, emergency: false, practice: true };
+      signings.push(receipt);
+      if (typeof onSigning === 'function') onSigning(receipt);
+    }
+    if (practice.length < practiceLimit) shortfalls.push({ teamId: team.id, missing: practiceLimit - practice.length });
+  }
+  return { signings, shortfalls };
+}
 
 function activePlayers(league) {
   return league.players.filter((p) => p.status === "active");
@@ -153,15 +249,21 @@ export function progressPlayer(player, rng, context = {}) {
   if (rawCentre !== null && !Number.isFinite(Number(rawCentre))) {
     throw new TypeError(`progressPlayer: potential centre must be finite, received ${rawCentre}`);
   }
-  const delta = developmentDelta(player, rng, {
+  const proposedDelta = developmentDelta(player, rng, {
     environmentTilt,
     potentialReversion,
+    potentialHeadroomCentre: context.potentialHeadroomCentre ?? null,
     ...(rawCentre === null ? {} : { potentialCentre: Number(rawCentre) })
   });
   // S108 — the overall this player carried into the offseason. Returned with
   // the result so the caller can record the move; until S108 the only record
   // of a player's annual development was the ratings it had already overwritten.
   const before = Number(player.overall);
+  // Potential is an actionable ceiling. Existing saves can already be above
+  // it; those players decline through the normal curve rather than being
+  // instantly rewritten. Positive growth cannot cross the current projection.
+  const delta = proposedDelta > 0 && Number.isFinite(Number(player.potential))
+    ? Math.min(proposedDelta, Math.max(0, Math.floor(Number(player.potential) - before))) : proposedDelta;
   const ratingKeys = Object.keys(player.ratings);
   const focusRatings = (context.focusRatings || []).filter((key) => ratingKeys.includes(key));
   // rng.shuffle is called unconditionally and identically to before, so the RNG
@@ -192,7 +294,12 @@ export function progressPlayer(player, rng, context = {}) {
 }
 
 export function expireContracts(league) {
+  assertAnnualElevationInjuryContractTransition(league);
   for (const player of activePlayers(league)) {
+    if(player.contract?.kind==='weekly-practice-contract-v1') {
+      player.practiceContractHistory||=[];
+      player.practiceContractHistory.push(structuredClone(player.contract));
+    }
     player.contract = advanceContractYear(player.contract);
     if (player.contract.yearsRemaining <= 0) {
       // Remember where he played: the incumbent club gets first refusal in the
@@ -217,7 +324,14 @@ export function expireContracts(league) {
 }
 
 export function applyAgingProgressionAndRetirements(league, year, rng, options = {}) {
+  assertAnnualElevationInjuryContractTransition(league);
+  if ((league.sportId || 'football') === 'football') {
+    finalizePensionPlanYear(league, year);
+    finalizeFootballServiceSeason(league, year);
+  }
   const keep = [];
+  const performance = measureDevelopmentPerformance(league, year);
+  for (const player of activePlayers(league)) revisePlayerPotential(player, { year, performance: performance.get(player.id) ?? null });
   const teamsById = new Map(league.teams.map((team) => [team.id, team]));
   // S91 — measured once per offseason, from the league actually being simulated,
   // BEFORE any player is progressed, so every player this offseason is reverted
@@ -248,6 +362,7 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
     const context = {
       ...supplied,
       potentialCentre,
+      potentialHeadroomCentre: -reversionCentres.gapCentre,
       potentialReversion: potentialReversionFor(player, reversionCentres)
     };
     const move = progressPlayer(player, rng, context);
@@ -261,6 +376,7 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
       after: move.after,
       change: move.after - move.before,
       potential: Number.isFinite(Number(player.potential)) ? Number(player.potential) : null,
+      potentialRevision: player.lastPotentialRevision || null,
       trait: player.developmentTrait || null,
       retired: false
     };
@@ -330,17 +446,24 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
  * That is the S103 moving-denominator defect with its sign flipped, installed
  * by the fix for it. The floor has to be the roster a club actually carries.
  */
-function teamNeeds(league, teamId) {
-  const roster = getAllTeamPlayers(league, teamId);
+function teamNeeds(league, teamId, template = FULL_ROSTER_TEMPLATE) {
+  const roster = getRosterCandidates(league, teamId);
   const counts = {};
   for (const p of roster) counts[p.position] = (counts[p.position] || 0) + 1;
-  return Object.entries(FULL_ROSTER_TEMPLATE)
-    .map(([position, need]) => ({ position, missing: Math.max(0, need - (counts[position] || 0)) }))
+  return Object.entries(template)
+    .map(([position, need]) => ({ position, missing: Math.max(0, need - (counts[position] || 0)),
+      fieldableMissing: Math.max(0, (FIELDABLE_DEPTH[position]?.min || 0) - (counts[position] || 0)) }))
     .filter((x) => x.missing > 0)
-    .sort((a, b) => b.missing - a.missing);
+    .sort((a, b) => b.fieldableMissing - a.fieldableMissing || b.missing - a.missing);
 }
 
-function rookieContract(round, overall, rng) {
+export function rosterDepthShortfalls(league) {
+  return league.teams.map(team => ({ teamId: team.id,
+    positions: teamNeeds(league, team.id).map(need => ({ position: need.position, missing: need.missing }))
+  })).filter(row => row.positions.length);
+}
+
+function rookieContract(round, overall, rng, options = {}) {
   const base = 4_900_000 - (round - 1) * 480_000;
   const salary = clamp(Math.round(base + overall * 11_000 + rng.int(-220_000, 220_000)), 850_000, 7_500_000);
   return buildContract({
@@ -349,16 +472,17 @@ function rookieContract(round, overall, rng) {
     salary,
     minSalary: CONTRACT_RULES.minSalary,
     maxSalary: 7_500_000,
+    ...options,
     rng
   });
 }
 
-function veteranContract(overall, rng) {
+function veteranContract(overall, rng, options = {}) {
   return buildContract({
     overall,
     years: rng.int(CONTRACT_RULES.minYears, CONTRACT_RULES.maxYears),
     minSalary: CONTRACT_RULES.minSalary,
-    maxSalary: CONTRACT_RULES.maxSalary,
+    ...options,
     rng
   });
 }
@@ -369,11 +493,11 @@ function capSpace(league, teamId) {
   const capLedger = league.capLedger?.[teamId] || {};
   const capForYear = (league.teamCapOverride?.[teamId] || getSportRules(league.sportId).structure.salaryCap) + (capLedger.rollover || 0);
   const deadCapCurrentYear = capLedger.deadCapCurrentYear || 0;
-  return capForYear - used - deadCapCurrentYear;
+  return capForYear - used - deadCapCurrentYear - retainedRosterCompensationCap(capLedger);
 }
 
 function runDraft(league, year, rng) {
-  const draftClass = createDraftClass({ size: 256, year, rng });
+  const draftClass = createDraftClass({ size: draftCohortSize(league.teams.length*getSportRules(league.sportId).draft.rounds), year, rng, familyAnchors:[...league.players,...(league.retiredPlayers || [])] });
   const order = league.teams
     .slice()
     .sort((a, b) => teamWinPct(a) - teamWinPct(b) || a.season.pointsFor - b.season.pointsFor);
@@ -387,11 +511,13 @@ function runDraft(league, year, rng) {
       const prospect = draftClass.splice(pickIndex, 1)[0];
       if (!prospect) continue;
       prospect.teamId = team.id;
-      prospect.contract = rookieContract(round, prospect.overall, rng);
+      prospect.contract = rookieContract(round, prospect.overall, rng, contractMarketOptions(league, prospect));
       prospect.profile.source = "drafted";
       league.players.push(prospect);
     }
   }
+  return admitUndraftedFreeAgents(league, { year: financialYearForLeague(league),
+    completed: true, available: draftClass, selections: [] }, { year: financialYearForLeague(league) });
 }
 
 /**
@@ -411,7 +537,7 @@ function runDraft(league, year, rng) {
  *   - Every signing it does make is announced through `onSigning`, so 200+
  *     league-wide moves stop being invisible to the transaction ledger.
  */
-export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], onSigning = null } = {}) {
+export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], onSigning = null, onRelease = null } = {}) {
   const excluded = new Set(excludeTeamIds.filter(Boolean));
   const faPool = league.players
     .filter((p) => p.status === "active" && p.teamId === "FA")
@@ -431,7 +557,7 @@ export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], 
   );
   const shortfalls = [];
   for (const team of shoppingOrder) {
-    const needs = teamNeeds(league, team.id);
+    const needs = teamNeeds(league, team.id, ROSTER_TEMPLATE);
     if (excluded.has(team.id)) {
       // The GM owns this roster. Report the hole; do not fill it for them.
       if (needs.length) {
@@ -442,11 +568,124 @@ export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], 
       }
       continue;
     }
-    for (const need of needs) {
+    // Plan a complete funded minimum before releasing anyone. Surplus may
+    // finance essential depth, but a trapped club must not lose players for a
+    // signing it still cannot afford. Use the same minimum/dead-money authority
+    // as ordinary compliance; no cap balances or contract terms are forgiven.
+    const fundingReleases = new Set();
+    const quotedOffers = new Map();
+    const quote = player => {
+      if (!quotedOffers.has(player.id)) quotedOffers.set(player.id,
+        veteranContract(player.overall, rng, contractMarketOptions(league, player)));
+      return quotedOffers.get(player.id);
+    };
+    const remainingMinimumCost = signing => teamNeeds(league, team.id, ROSTER_TEMPLATE)
+      .reduce((total, need) => {
+        const remaining = Math.max(0, need.fieldableMissing - (need.position === signing.position ? 1 : 0));
+        if (!remaining) return total;
+        const costs = faPool.filter(p => p.id !== signing.id && p.position === need.position && !fundingReleases.has(p.id))
+          .map(p => quote(p).capHit).sort((a,b)=>a-b);
+        // Missing market supply stays an estimate until an emergency player
+        // receives real terms; no salary or cap charge is fabricated here.
+        const floor = minimumSalaryForSeason(financialYearForLeague(league), 0).salary;
+        return total + Array.from({length:remaining},(_,i)=>costs[i]??floor).reduce((sum,cost)=>sum+cost,0);
+      },0);
+    const fundMinimum = cost => {
+      const room = capSpace(league, team.id);
+      if (room >= cost) return true;
+      const roster = getRosterCandidates(league, team.id);
+      const releasable = selectReleasable(roster,
+        // Preserve scarce talent when a weaker surplus player can finance the
+        // hole. Value density breaks quality ties; it cannot make a star the
+        // first cut solely because his contract is larger.
+        releaseRanking(roster).filter(player => currentYearCapSaving(player) > 0)
+          .sort((a,b)=>a.overall-b.overall), roster.length);
+      const plan = [];
+      let funded = room;
+      for (const player of releasable) {
+        plan.push(player);
+        funded += currentYearCapSaving(player);
+        if (funded >= cost) break;
+      }
+      if (funded < cost) return false;
+      for (const player of plan) {
+        releaseToFreeAgency(league, player, { onRelease, reason: 'minimum-depth-funding' });
+        fundingReleases.add(player.id);
+        faPool.push(player);
+      }
+      faPool.sort((a,b)=>b.overall-a.overall);
+      return capSpace(league, team.id) >= cost;
+    };
+    // Complete every room's fieldable minimum before buying optional depth.
+    // Sorting rooms alone is insufficient: a room's extras can spend the
+    // salary budget needed for another room's missing starter/specialist.
+    for (const minimumPass of [true, false]) {
+      // Annual active offers fill the active depth template. Buying all69
+      // places here spends practice funding on annual contracts before the
+      // separate eligible weekly practice market can run. Count owned depth
+      // across slots so an existing candidate is not purchased twice; slot
+      // assignment and funded activation remain their own authority below.
+      const currentNeeds = teamNeeds(league, team.id, ROSTER_TEMPLATE);
+      if (!minimumPass && currentNeeds.some(need => need.fieldableMissing > 0)) break;
+      const passNeeds = currentNeeds.map(need => ({ ...need,
+        missing: minimumPass ? need.fieldableMissing : need.missing
+      })).filter(need => need.missing > 0);
+      for (const need of passNeeds) {
       for (let slot = 0; slot < need.missing; slot += 1) {
-        let candidateIndex = faPool.findIndex((p) => p.position === need.position && p.contract.capHit === 0);
-        if (candidateIndex < 0) candidateIndex = faPool.findIndex((p) => p.position === need.position);
-        if (candidateIndex < 0) {
+        // Positional preferences may differ from the generated53-player
+        // shape. Once owned depth reaches the active limit, only an unmet
+        // fieldable minimum justifies another annual signing.
+        if (!minimumPass && getRosterCandidates(league, team.id).length >= ROSTER_STRUCTURE.activeLimit) break;
+        const market = faPool.filter(p => p.position === need.position);
+        const available = market.filter(p=>!fundingReleases.has(p.id));
+        // An expensive first choice must not hide affordable remaining depth.
+        // Draw each considered player's ordinary offer once, then select the
+        // first affordable offer in the existing quality order.
+        let candidate = null, contract = null;
+        let budget = capSpace(league, team.id);
+        let offerBudget = budget;
+        let prioritizeAffordableDepth = false;
+        if (!minimumPass) {
+          // Discretionary depth should not spend the last dollars on one
+          // optional player when cheaper depth can fund the whole structure.
+          // These are salary-floor planning estimates, not reserved cap charges.
+          const held = getRosterCandidates(league, team.id).length + 1;
+          const financialYear = financialYearForLeague(league);
+          const activeFloor = minimumSalaryForSeason(financialYear, 0).salary;
+          const missingActive = Math.max(0, ROSTER_STRUCTURE.activeLimit - held);
+          const missingPractice = Math.min(ROSTER_STRUCTURE.practiceLimit,
+            Math.max(0, ROSTER_STRUCTURE.activeLimit + ROSTER_STRUCTURE.practiceLimit - held));
+          const practiceFloor = practiceSalaryForSeason(financialYear).minimum
+            * getSportRules(league.sportId).structure.regularSeasonWeeks;
+          const reserve = missingActive * activeFloor + missingPractice * practiceFloor;
+          // If the full structure is unaffordable, shop for the cheapest real
+          // depth instead. Salary floors alone understate offered service and
+          // bonus terms and cannot protect the next active signing.
+          if (budget >= reserve + activeFloor) offerBudget = budget - reserve;
+          else prioritizeAffordableDepth = true;
+        }
+        const quotes = [];
+        for (const player of available) {
+          const offer = quote(player);
+          quotes.push({ player, offer });
+          const remainingMinimum = minimumPass ? remainingMinimumCost(player) : 0;
+          if (!prioritizeAffordableDepth && offer.capHit + remainingMinimum <= offerBudget) { candidate = player; contract = offer; break; }
+        }
+        if (!candidate && !minimumPass) {
+          // Available service/bonus terms may exceed the planning floors.
+          // Complete active depth with the cheapest real affordable quote;
+          // never invent cheap terms or report the planned squad as funded.
+          const cheapest = quotes.filter(row=>row.offer.capHit<=budget)
+            .sort((a,b)=>a.offer.capHit-b.offer.capHit)[0];
+          if (cheapest) { candidate=cheapest.player;contract=cheapest.offer; }
+        }
+        if (!candidate && minimumPass && quotes.length &&
+          fundMinimum(Math.min(...quotes.map(row=>row.offer.capHit)))) {
+          budget = capSpace(league, team.id);
+          const funded = quotes.filter(row=>row.offer.capHit<=budget).sort((a,b)=>a.offer.capHit-b.offer.capHit)[0];
+          candidate = funded.player; contract = funded.offer;
+        }
+        if (!candidate && market.length === 0) {
           // Fabricating a player is a last resort for roster legality only,
           // and it leaves an explicit receipt instead of silently conjuring
           // talent out of thin air.
@@ -454,10 +693,12 @@ export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], 
             teamId: team.id,
             position: need.position,
             year,
-            rng
+            rng,
+            talentBand: TALENT_DISTRIBUTION.reserve
           });
-          replacement.overall = clamp(replacement.overall - rng.int(4, 14), 52, 78);
-          replacement.contract = veteranContract(replacement.overall, rng);
+          replacement.contract = veteranContract(replacement.overall, rng, contractMarketOptions(league, replacement));
+          if (replacement.contract.capHit > budget &&
+            !(minimumPass && fundMinimum(replacement.contract.capHit))) continue;
           replacement.provenance = "emergency-depth-signing";
           league.players.push(replacement);
           if (Array.isArray(league.newsLog)) {
@@ -473,15 +714,19 @@ export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], 
           announce({ teamId: team.id, player: replacement, contract: replacement.contract, emergency: true });
           continue;
         }
-        const candidate = faPool[candidateIndex];
-        const contract = veteranContract(candidate.overall, rng);
-        if (capSpace(league, team.id) < contract.capHit) continue;
+        if (!candidate) continue;
         candidate.teamId = team.id;
         candidate.contract = contract;
-        faPool.splice(candidateIndex, 1);
+        candidate.rosterSlot = 'active';
+        recordPermanentElevationActivation(candidate,{teamId:team.id,year:financialYearForLeague(league)});
+        faPool.splice(faPool.indexOf(candidate), 1);
         announce({ teamId: team.id, player: candidate, contract, emergency: false });
       }
     }
+    }
+    const remaining = teamNeeds(league, team.id);
+    if (remaining.length) shortfalls.push({ teamId: team.id,
+      positions: remaining.map(need => ({ position: need.position, missing: need.missing })) });
   }
   return { shortfalls, remainingFreeAgents: faPool.length };
 }
@@ -491,7 +736,30 @@ export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], 
 // upper bound, which is what let the practice population grow without limit.
 export { normalizeRosterSlots } from "./capCompliance.js";
 
-export function applyCapRollover(league) {
+export function reconcileLegacyCapBoundary(league, completedYear, previousBoundaryApplied = null) {
+  if (!Number.isInteger(completedYear)) throw new TypeError('Cap reconciliation requires a completed league year');
+  if (!league.capLedger) league.capLedger = {};
+  for (const team of league.teams) {
+    const current = league.capLedger[team.id] || { rollover: 0, deadCapCurrentYear: 0, deadCapNextYear: 0 };
+    if (Number.isInteger(current.rolloverAppliedThroughYear) && current.rolloverAppliedThroughYear >= completedYear) continue;
+    // Aging/expiry may already have changed payroll. Preserve published cap
+    // funding rather than reconstructing historical unused room from it.
+    league.capLedger[team.id] = { ...current,
+      ...(previousBoundaryApplied === false ? { deadCapCurrentYear: current.deadCapNextYear || 0, deadCapNextYear: 0, earnedPracticeCurrentYear: 0,
+        ...(current.elevationCharges ? {elevationCharges:[]} : {}),
+        ...(current.elevationInjuryCharges ? {elevationInjuryCharges:[]} : {}),
+        ...(current.injurySalaryClaimCharges ? {injurySalaryClaimCharges:[]} : {}),
+      ...(current.admittedInjuryCharges ? {admittedInjuryCharges:[]} : {}) } : {}),
+      rolloverAppliedThroughYear: completedYear,
+      rolloverPolicy: 'legacy-resume-preserved-funding-v1',
+      rolloverReconciliation: previousBoundaryApplied === false ? 'pending-charge-transition-applied'
+        : previousBoundaryApplied === true ? 'completed-balances-preserved' : 'unknown-history-balances-preserved'
+    };
+  }
+}
+
+export function applyCapRollover(league, { completedYear = league.year } = {}) {
+  if (!Number.isInteger(completedYear)) throw new TypeError('Cap rollover requires a completed league year');
   if (!league.capLedger) league.capLedger = {};
   for (const team of league.teams) {
     const roster = getAllTeamPlayers(league, team.id);
@@ -501,6 +769,7 @@ export function applyCapRollover(league) {
       deadCapCurrentYear: 0,
       deadCapNextYear: 0
     };
+    if (Number.isInteger(current.rolloverAppliedThroughYear) && current.rolloverAppliedThroughYear >= completedYear) continue;
     // S101 — this was the only cap reader in the engine that ignored the grown
     // cap. `GameSession.startSeason` raises the cap 4.5%/yr into
     // `league.teamCapOverride`; computing rollover against the flat base meant
@@ -511,12 +780,22 @@ export function applyCapRollover(league) {
     // headless `runOffseason` path never calls `startSeason` and so has no
     // override, which is why line 264 already reads it exactly this way.
     const capForYear = (league.teamCapOverride?.[team.id] || getSportRules(league.sportId).structure.salaryCap) + (current.rollover || 0);
-    const capSpace = capForYear - used - (current.deadCapCurrentYear || 0);
-    const nextRollover = clamp(Math.round(Math.max(0, capSpace) * 0.48), 0, 35_000_000);
+    const capSpace = capForYear - used - (current.deadCapCurrentYear || 0) - retainedRosterCompensationCap(current);
+    // Modern fictional clubs elect full carryover of unused prior-year room.
+    // Older saved economies retain their declared fractional/capped policy.
+    const carryover = projectCapCarryover(league, capSpace);
     league.capLedger[team.id] = {
-      rollover: nextRollover,
+      ...current,
+      rollover: carryover.amount,
       deadCapCurrentYear: current.deadCapNextYear || 0,
-      deadCapNextYear: 0
+      deadCapNextYear: 0,
+      rolloverAppliedThroughYear: completedYear,
+      earnedPracticeCurrentYear: 0,
+      ...(current.elevationCharges ? {elevationCharges:[]} : {}),
+      ...(current.elevationInjuryCharges ? {elevationInjuryCharges:[]} : {}),
+      ...(current.injurySalaryClaimCharges ? {injurySalaryClaimCharges:[]} : {}),
+      ...(current.admittedInjuryCharges ? {admittedInjuryCharges:[]} : {}),
+      rolloverPolicy: carryover.policy
     };
   }
 }
@@ -541,19 +820,33 @@ export function runOffseason({
   onSigning = null,
   onRelease = null
 }) {
+  // Validate and preview an anchored summer interval before any expiry,
+  // aging, market activity or RNG use. A refused calendar is not a season.
+  validateSnapshotOffseasonMedicalCalendar(league);
+  if(league.offseasonMedicalCalendar?.some(row=>row.sourceYear===year))
+    advanceOffseasonMedicalCalendar(structuredClone(league),{completedYear:year,stage:'camp-cuts'});
+  advancePreRolloverMedicalCalendar(league,{completedYear:year,preserveAdmittedRights:true,annualTransition:true});
+  const priorRolloverApplied=league.teams.some(team=>league.capLedger?.[team.id]?.rolloverAppliedThroughYear>=year);
+  assertAnnualElevationInjuryContractTransition(league);
+  applyCapRollover(league, { completedYear: year });
+  openNextFinancialYear(league, year);
+  if(!priorRolloverApplied)startOffseasonMedicalCalendar(league,{completedYear:year});
+  settleCpuInjuryClaims(league,{excludeTeamIds});
+  resetReserveListsForYear(league, year + 1);
   expireContracts(league);
   applyAgingProgressionAndRetirements(league, year, rng, {
     ...retirementSettings,
     developmentContext
   });
-  if (!skipDraft) runDraft(league, year, rng);
-  const backstop = runFreeAgencyBackstop(league, year, rng, { excludeTeamIds, onSigning });
+  const undrafted = skipDraft ? null : runDraft(league, year, rng);
+  const backstop = runFreeAgencyBackstop(league, year, rng, { excludeTeamIds, onSigning, onRelease });
+  advanceOffseasonMedicalCalendar(league,{completedYear:year,stage:'camp-cuts'});
   // Compliance runs after the market has closed and before slots are assigned:
   // the backstop may legitimately push a club over its limits while filling a
   // hole, and re-slotting a roster we are about to trim would be wasted work.
   const compliance = enforceRosterAndCapCompliance(league, { excludeTeamIds, onRelease });
-  normalizeRosterSlots(league);
-  applyCapRollover(league);
+  normalizeRosterSlots(league, { excludeTeamIds });
+  const practice = replenishCpuPracticeSquads(league, { excludeTeamIds, onSigning });
   recalculateAllTeamRatings(league);
-  return { ...backstop, compliance };
+  return { ...backstop, remainingFreeAgents: league.players.filter(player => player.status === 'active' && player.teamId === 'FA').length, compliance, practice, undrafted };
 }

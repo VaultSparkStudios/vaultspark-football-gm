@@ -1,0 +1,2617 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T17:30:08.546Z",
+  "status": "extremities-review-pending",
+  "scope": "Continuous wrist/palm, thenar and tapered relaxed fingers through the saved hand authority, plus external footwear soles within the saved footprint/contact. Full anatomical craft, complete mass, demographic calibration, final career and release remain open.",
+  "doneCondition": [
+    "Saved distal wrist dimensions, estimated palm breadth, longest fingertip, foot length and bottom contact stay exact within Float32 tolerances.",
+    "New surfaces pass selected closed-oriented incidence and cache/reference parity including mirrored hand frames; complete head/palette/pose/RNG remain unchanged.",
+    "Ordinary and inspection before/after themed desktop/mobile captures show coherent extremity progress; actual motion/pause/reduced/fallback/lifecycle and both built save/load/reload clients pass.",
+    "Palm depth and relaxed curl remain artistic estimates. External soles are explicitly separate from biological mass accounting; no full craft/union mass or physical-device performance acceptance."
+  ],
+  "sourceHashes": {
+    "public/lib/actionCoordinator.js": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a",
+    "public/lib/api/createApiClient.js": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605",
+    "public/lib/apiContract.js": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba",
+    "public/lib/appCore.js": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863",
+    "public/lib/appState.js": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/audioFeedback.js": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe",
+    "public/lib/clientDiagnostics.js": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c",
+    "public/lib/continuousHairTexture.js": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f",
+    "public/lib/croppedHairVolume.js": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+    "public/lib/engagementFeatures.js": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660",
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    "public/lib/franchiseScope.js": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178",
+    "public/lib/gameOutcome.js": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd",
+    "public/lib/gameplayNavigation.js": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/longHairFlow.js": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+    "public/lib/marqueeBadge.js": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e",
+    "public/lib/modalManager.js": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9",
+    "public/lib/partedHairFlow.js": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "public/lib/playerBody3d.js": "8279159b7c174b7afb0ecad88a7674198616aa2c1b20a916539251957d0ac479",
+    "public/lib/playerBodyAnimation3d.js": "9fa6884e93076fb9a58a86808a46904b77d036fd4213536037bac06f2304f60e",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+    "public/lib/playerCharacter3d.js": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+    "public/lib/playerFootwear.js": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerHead3d.js": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerLimbSweep3d.js": "726f2d17b7234ca00b589d83b89dd0d0cbd779ce2d4a099f643ebfddc089244d",
+    "public/lib/playerMotion.js": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerPortraitMotion.js": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+    "public/lib/playerProfileNarrative.js": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/playerTorsoSurface3d.js": "9c69ad1c48d087205161c97f5acbd7aff164a47e7901923f9044afeb4015b70d",
+    "public/lib/playerTrainingKit.js": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/portraitEyeSurface.js": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+    "public/lib/portraitSurfaceLighting.js": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+    "public/lib/profiledLimbSurface.js": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07",
+    "public/lib/scoreline.js": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003",
+    "public/lib/simWatchDirector.js": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00",
+    "public/lib/simWatchPlayback.js": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3",
+    "public/lib/startScenarioContract.js": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/tacticalFilmRoom.js": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f",
+    "public/lib/teamRecord.js": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6",
+    "public/lib/torsoSurface.js": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc",
+    "public/styles.css": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db",
+    "scripts/lib/edge-security-policy.mjs": "b696838009e21f67c13e94ed67f1ecd83d0326728c3a7322439c570e9ce86a55",
+    "scripts/run-test-shard.mjs": "3f4b414a28dd748c37cffd5101133cdbd34ada102c6d46e04d4a3691d0935560",
+    "src/config.js": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d",
+    "src/config/leagueSetup.js": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88",
+    "src/data/nflElevationSalary.js": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e",
+    "src/data/nflEliteDensityBaseline.js": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d",
+    "src/data/nflPostseasonSalary.js": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267",
+    "src/data/nflPracticeSalary.js": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54",
+    "src/data/nflSalaryCap.js": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d",
+    "src/data/nflSalaryMinimum.js": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44",
+    "src/data/pfrAdapter.js": "1813bc06622043df34c7ba1c5694c0e395e1f685a6f3223e4853c4af857fb109",
+    "src/data/playerDemographicBaseline.js": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699",
+    "src/data/playerFamilyHeritage.js": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8",
+    "src/domain/activeInactiveHistory.js": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e",
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/domain/admittedInjuryPayroll.js": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426",
+    "src/domain/admittedPostseasonRecovery.js": "c96bd53ba247ccaaaa9ce579332097821c9df65fb4e2eee7be6c89468a7c6d86",
+    "src/domain/annualElevationInjuryResolution.js": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da",
+    "src/domain/capCarryover.js": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524",
+    "src/domain/contracts.js": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568",
+    "src/domain/developmentEnvironment.js": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1",
+    "src/domain/draftCohort.js": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf",
+    "src/domain/earnedPracticeCap.js": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4",
+    "src/domain/elevationInjuryPay.js": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0",
+    "src/domain/facilityInvestment.js": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb",
+    "src/domain/footballGameReference.js": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a",
+    "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+    "src/domain/injurySalaryClaims.js": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141",
+    "src/domain/leagueIdentity.js": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40",
+    "src/domain/livingPotential.js": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9",
+    "src/domain/offseasonMedicalCalendar.js": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714",
+    "src/domain/operatingStatement.js": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381",
+    "src/domain/ownerEconomy.js": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec",
+    "src/domain/pensionService.js": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015",
+    "src/domain/playerDemographicModel.js": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370",
+    "src/domain/playerFactory.js": "3065bc39f7d8ba1cf5743235094e81bd54a93fb4e70df250ec152e68b26c4323",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "src/domain/playerService.js": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerWorkouts.js": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4",
+    "src/domain/postseasonMedicalClock.js": "01850182d8b292c9cdec395f193a83a2bda739f86ae778c3f10499fed9a107a9",
+    "src/domain/potentialReversion.js": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87",
+    "src/domain/practiceContractTerm.js": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+    "src/domain/practiceContracts.js": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934",
+    "src/domain/practiceSquadEligibility.js": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c",
+    "src/domain/preRolloverMedicalCalendar.js": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47",
+    "src/domain/ratings.js": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd",
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "src/domain/regularMedicalRecovery.js": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+    "src/domain/reserveLists.js": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e",
+    "src/domain/standardElevations.js": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53",
+    "src/domain/talentDistribution.js": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050",
+    "src/domain/teamFactory.js": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad",
+    "src/domain/teamLabel.js": "40b964d54436a4fc91afb83715a7fc866488fed172f5fd1d633cd7974996173c",
+    "src/domain/ticketDemand.js": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174",
+    "src/domain/undraftedFreeAgency.js": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6",
+    "src/engine/adaptiveDifficulty.js": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763",
+    "src/engine/aiTeamStrategy.js": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020",
+    "src/engine/architectFocusReview.js": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704",
+    "src/engine/architectMasteryPortfolio.js": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4",
+    "src/engine/architectThesis.js": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0",
+    "src/engine/beatReporter.js": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6",
+    "src/engine/capAlerts.js": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03",
+    "src/engine/capCompliance.js": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168",
+    "src/engine/coachingMarket.js": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011",
+    "src/engine/coachingTree.js": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73",
+    "src/engine/continuityLedger.js": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896",
+    "src/engine/cpuStandardElevations.js": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3",
+    "src/engine/cpuTradeMarket.js": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2",
+    "src/engine/depthChartUsage.js": "7a6022425e0f801c8cf2778957a66c27f41230099b43bcadc650b37723888ee1",
+    "src/engine/facilityMarket.js": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097",
+    "src/engine/fanSentiment.js": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58",
+    "src/engine/gameDayRoster.js": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36",
+    "src/engine/gameSimulator.js": "a42c6ed86bb2732f23a7713b11e994c3fcc61fc6dacd86bd86d918d9fd0b0ea5",
+    "src/engine/gmArchetype.js": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23",
+    "src/engine/gmDecisionAuthority.js": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1",
+    "src/engine/gmDecisionConsequences.js": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a",
+    "src/engine/gmLegacyScore.js": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3",
+    "src/engine/injurySystem.js": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1",
+    "src/engine/matchupEdge.js": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b",
+    "src/engine/narrativeEvents.js": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc",
+    "src/engine/offseasonDevelopmentReport.js": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705",
+    "src/engine/offseasonSimulator.js": "fb7023a75dc65f8cc3414b6aa5c8fc1b006846b414dd178da088a3afadea2a46",
+    "src/engine/onClockTradeMarket.js": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7",
+    "src/engine/overtime.js": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64",
+    "src/engine/ownerConfidence.js": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b",
+    "src/engine/playCalling.js": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23",
+    "src/engine/playerAgentAI.js": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d",
+    "src/engine/pressConference.js": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f",
+    "src/engine/pressRoom.js": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa",
+    "src/engine/rivalFrontOffice.js": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76",
+    "src/engine/rivalGmPersona.js": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8",
+    "src/engine/rivalTradeOffers.js": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7",
+    "src/engine/rivalryDNA.js": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962",
+    "src/engine/schedule.js": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec",
+    "src/engine/seasonSimulator.js": "0d78babe22ab2ccf9d4f0e54c3fde04c91aafe5c0907e6922570d04c907cac49",
+    "src/engine/situationalCalls.js": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db",
+    "src/engine/staffGeneration.js": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038",
+    "src/engine/standings.js": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2",
+    "src/engine/timeCapsule.js": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61",
+    "src/engine/veteranMentorship.js": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b",
+    "src/engine/weeklySimulator.js": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+    "src/engine/whatIfReplay.js": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a",
+    "src/runtime/GameSession.js": "e2b268cc3c6e5b88ea22c05c55888b9483e0c5b971217b15948e99f647ff01e4",
+    "src/runtime/architectLedger.js": "00ad683337da86d0d760bff5a2770ae36a7551754d2748f5df0a750f0f01eb48",
+    "src/runtime/bootstrap.js": "96ae7089f30ebbf7c0eb70a4484d5e110a978c8c372e144c01781323f7724db5",
+    "src/runtime/measurementProvenanceSnapshot.js": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e",
+    "src/runtime/modules/sessionModules.js": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63",
+    "src/runtime/pensionServiceSnapshot.js": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd",
+    "src/runtime/profileLoader.js": "7984d0270aa2ad8dee2dea7e8761d41d60c9d10f5b69afdc1f2ceccd6559497b",
+    "src/runtime/services/CoachingService.js": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf",
+    "src/runtime/services/ContractService.js": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97",
+    "src/runtime/services/TradeService.js": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be",
+    "src/runtime/services/index.js": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6",
+    "src/runtime/services/tradePlan.js": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04",
+    "src/runtime/snapshotMigration.js": "1709584d0c1ea23a51e22513cca236d7ab52b6240d8fe8b276f954fe6da534e9",
+    "src/runtime/statSnapshot.js": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86",
+    "src/runtime/weekResultProjection.js": "54f8dc1512afbd6dcc1dc46d8e3b884faafe9f17357444636ff026203bc67117",
+    "src/runtime/weeklyTactic.js": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f",
+    "src/sport/calendarContract.js": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179",
+    "src/sport/competitionContract.js": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76",
+    "src/sport/football/calendar.js": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8",
+    "src/sport/football/competition.js": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55",
+    "src/sport/football/index.js": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84",
+    "src/sport/football/postseason.js": "6007428021bb6258e375f4a9a7b8ac5787a0992436f155970130090fd7d6c318",
+    "src/sport/football/rules.js": "334b007f5f991bb44c9f2355b1fcd9ad443605ed2d7f939613b2f6772ccc67ad",
+    "src/sport/football/statSchema.js": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f",
+    "src/sport/matchReadiness.js": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5",
+    "src/sport/registry.js": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5",
+    "src/stats/applyGameStats.js": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f",
+    "src/stats/approximateValue.js": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486",
+    "src/stats/gameImpact.js": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5",
+    "src/stats/gmReportCard.js": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca",
+    "src/stats/leagueLens.js": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f",
+    "src/stats/profiles/pfrCareerWeightedProfile.js": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0",
+    "src/stats/profiles/pfrRecentWeightedProfile.js": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866",
+    "src/stats/progressionParity.js": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1",
+    "src/stats/realismCalibrator.js": "c7b747175495c06191ecc27add45fbb25ebea64dc1c9872614559c0061f0bb32",
+    "src/stats/scoreline.js": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b",
+    "src/stats/statBook.js": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683",
+    "src/stats/teamRecord.js": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51",
+    "src/utils/rng.js": "f6a657984fd920ab21f879a41d82d44ca35026b9aacac3f4ac8f69f402979b8e",
+    "src/utils/rngStreams.js": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    "test/fixtures/player-head-pole-case.json": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1",
+    "test/player-body-batching.test.js": "2d0fea8061e81e80ed9172ec97039772fa4dbec2260f58fbbbad6c52d584b932",
+    "test/player-body-measurement-tails.test.js": "f623ed33f632120dd90f288cfe5a3b1e32f14c0f06f255e9faf7feb684fc3701",
+    "test/player-character-3d.test.js": "e3a92f0c6e8a05ef4963eea7a353b7f932fd7305ab5bb7f03affd79e5256b00e",
+    "test/player-extremities-3d.test.js": "b9fb1d75be13e7c8539434812e0e59bf652af26b7439a9ede33efc9db8835974",
+    "test/player-limb-sweep-cpu.test.js": "956cca7bad83bd73f6dcc2180f6d4f9039743c662eccdabecbefd6d9276409ba",
+    "test/player-limb-sweep.test.js": "b7bec0695914b8f74bb8d2d56dd4e8d8d22fe51b43e6bff49fec3ea1f1d01642",
+    "test/player-torso-surface-3d.test.js": "ab2905ebf741796ca8f94275337f9c11574cf36e3f97b68c10d15245d30339da",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+    "tests-ui/helpers/weekly-scenarios.js": "e2293d23d4a12703c6740c2d749b55bb09065e3adc49016998c334494aabbd0d",
+    "tests-ui/player-character-3d.spec.js": "90de82455be14783d6fe39b3409ce203537886fc366247ce4131dacc39a7d458",
+    "tests-ui/player-character-client.spec.js": "b0d2b957835de020ba7eadd8d1564ba76d3d363d5f8dedda45c74446154eaa37",
+    "tests-ui/player-extremities.spec.js": "61a480176751ff4a01dd1ebf8f70eeaefaf5948eadc80b3441a3b0a703e14881"
+  },
+  "builtHashes": {
+    "static/lib/playerCharacter3d.js": {
+      "source": "public/lib/playerCharacter3d.js",
+      "sha256": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerBodyAnimation3d.js": {
+      "source": "public/lib/playerBodyAnimation3d.js",
+      "sha256": "9fa6884e93076fb9a58a86808a46904b77d036fd4213536037bac06f2304f60e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerBody3d.js": {
+      "source": "public/lib/playerBody3d.js",
+      "sha256": "8279159b7c174b7afb0ecad88a7674198616aa2c1b20a916539251957d0ac479",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/physiqueGeometryContract.js": {
+      "source": "public/lib/physiqueGeometryContract.js",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerCapacityStudy.js": {
+      "source": "public/lib/playerCapacityStudy.js",
+      "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/structuredHair.js": {
+      "source": "public/lib/structuredHair.js",
+      "sha256": "9022287ee0d777c9459607719fa3aabb1addd4cc3445ed5ea2831bedb8f7e755",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/hairGrayFibers.js": {
+      "source": "public/lib/hairGrayFibers.js",
+      "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitAppearanceContract.js": {
+      "source": "public/lib/portraitAppearanceContract.js",
+      "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/hairArrangement.js": {
+      "source": "public/lib/hairArrangement.js",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/fineFaceGeometry.js": {
+      "source": "public/lib/fineFaceGeometry.js",
+      "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitSurfaceLighting.js": {
+      "source": "public/lib/portraitSurfaceLighting.js",
+      "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/longHairFlow.js": {
+      "source": "public/lib/longHairFlow.js",
+      "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/continuousHairTexture.js": {
+      "source": "public/lib/continuousHairTexture.js",
+      "sha256": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/croppedHairVolume.js": {
+      "source": "public/lib/croppedHairVolume.js",
+      "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/partedHairFlow.js": {
+      "source": "public/lib/partedHairFlow.js",
+      "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitEyeSurface.js": {
+      "source": "public/lib/portraitEyeSurface.js",
+      "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitMotion.js": {
+      "source": "public/lib/playerPortraitMotion.js",
+      "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/profiledLimbSurface.js": {
+      "source": "public/lib/profiledLimbSurface.js",
+      "sha256": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerFootwear.js": {
+      "source": "public/lib/playerFootwear.js",
+      "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHand.js": {
+      "source": "public/lib/playerHand.js",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/torsoSurface.js": {
+      "source": "public/lib/torsoSurface.js",
+      "sha256": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerTrainingKit.js": {
+      "source": "public/lib/playerTrainingKit.js",
+      "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerLimbSweep3d.js": {
+      "source": "public/lib/playerLimbSweep3d.js",
+      "sha256": "726f2d17b7234ca00b589d83b89dd0d0cbd779ce2d4a099f643ebfddc089244d",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerTorsoSurface3d.js": {
+      "source": "public/lib/playerTorsoSurface3d.js",
+      "sha256": "9c69ad1c48d087205161c97f5acbd7aff164a47e7901923f9044afeb4015b70d",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appCore.js": {
+      "source": "public/lib/appCore.js",
+      "sha256": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appState.js": {
+      "source": "public/lib/appState.js",
+      "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/api/createApiClient.js": {
+      "source": "public/lib/api/createApiClient.js",
+      "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/apiContract.js": {
+      "source": "public/lib/apiContract.js",
+      "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/clientDiagnostics.js": {
+      "source": "public/lib/clientDiagnostics.js",
+      "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerProfileNarrative.js": {
+      "source": "public/lib/playerProfileNarrative.js",
+      "sha256": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/actionCoordinator.js": {
+      "source": "public/lib/actionCoordinator.js",
+      "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/franchiseScope.js": {
+      "source": "public/lib/franchiseScope.js",
+      "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/engagementFeatures.js": {
+      "source": "public/lib/engagementFeatures.js",
+      "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/modalManager.js": {
+      "source": "public/lib/modalManager.js",
+      "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/simWatchDirector.js": {
+      "source": "public/lib/simWatchDirector.js",
+      "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/simWatchPlayback.js": {
+      "source": "public/lib/simWatchPlayback.js",
+      "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/audioFeedback.js": {
+      "source": "public/lib/audioFeedback.js",
+      "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/marqueeBadge.js": {
+      "source": "public/lib/marqueeBadge.js",
+      "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/teamRecord.js": {
+      "source": "public/lib/teamRecord.js",
+      "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/scoreline.js": {
+      "source": "public/lib/scoreline.js",
+      "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/styles.css": {
+      "source": "public/styles.css",
+      "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/tacticalFilmRoom.js": {
+      "source": "public/lib/tacticalFilmRoom.js",
+      "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/startScenarioContract.js": {
+      "source": "public/lib/startScenarioContract.js",
+      "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/gameOutcome.js": {
+      "source": "public/lib/gameOutcome.js",
+      "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/gameplayNavigation.js": {
+      "source": "public/lib/gameplayNavigation.js",
+      "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "6bf4442734b1dd235e8bcd9270c40f37278c0f440760e09dc28a5f78527a95e0",
+  "frozenSources": [
+    {
+      "original": "public/lib/actionCoordinator.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-actionCoordinator.js",
+      "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/api/createApiClient.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-api-createApiClient.js",
+      "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/apiContract.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-apiContract.js",
+      "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/appCore.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-appCore.js",
+      "sha256": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/appState.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-appState.js",
+      "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/audioFeedback.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-audioFeedback.js",
+      "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/clientDiagnostics.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-clientDiagnostics.js",
+      "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/continuousHairTexture.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-continuousHairTexture.js",
+      "sha256": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/croppedHairVolume.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-croppedHairVolume.js",
+      "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/engagementFeatures.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-engagementFeatures.js",
+      "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/fineFaceGeometry.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-fineFaceGeometry.js",
+      "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/franchiseScope.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-franchiseScope.js",
+      "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/gameOutcome.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-gameOutcome.js",
+      "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/gameplayNavigation.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-gameplayNavigation.js",
+      "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/hairArrangement.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-hairArrangement.js",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/hairGrayFibers.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-hairGrayFibers.js",
+      "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/longHairFlow.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-longHairFlow.js",
+      "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/marqueeBadge.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-marqueeBadge.js",
+      "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/modalManager.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-modalManager.js",
+      "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/partedHairFlow.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-partedHairFlow.js",
+      "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/physiqueGeometryContract.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-physiqueGeometryContract.js",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerBody3d.js",
+      "file": "references/extremities-2026-10-08-public-lib-playerBody3d.js",
+      "sha256": "8279159b7c174b7afb0ecad88a7674198616aa2c1b20a916539251957d0ac479"
+    },
+    {
+      "original": "public/lib/playerBodyAnimation3d.js",
+      "file": "references/extremities-2026-10-08-public-lib-playerBodyAnimation3d.js",
+      "sha256": "9fa6884e93076fb9a58a86808a46904b77d036fd4213536037bac06f2304f60e"
+    },
+    {
+      "original": "public/lib/playerCapacityStudy.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerCapacityStudy.js",
+      "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerCharacter3d.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerCharacter3d.js",
+      "sha256": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerFootwear.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerFootwear.js",
+      "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerHand.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerHand.js",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerHead3d.js",
+      "sha256": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerLimbSweep3d.js",
+      "file": "references/limb-cpu-2026-10-08-public-lib-playerLimbSweep3d.js",
+      "sha256": "726f2d17b7234ca00b589d83b89dd0d0cbd779ce2d4a099f643ebfddc089244d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerMotion.js",
+      "sha256": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerPortrait.js",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerPortraitFace.js",
+      "sha256": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerPortraitMotion.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerPortraitMotion.js",
+      "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerProfileNarrative.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerProfileNarrative.js",
+      "sha256": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerSideAppearance.js",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerTorsoSurface3d.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerTorsoSurface3d.js",
+      "sha256": "9c69ad1c48d087205161c97f5acbd7aff164a47e7901923f9044afeb4015b70d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/playerTrainingKit.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-playerTrainingKit.js",
+      "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/portraitAppearanceContract.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-portraitAppearanceContract.js",
+      "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/portraitEyeSurface.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-portraitEyeSurface.js",
+      "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/portraitSurfaceLighting.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-portraitSurfaceLighting.js",
+      "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/profiledLimbSurface.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-profiledLimbSurface.js",
+      "sha256": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/scoreline.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-scoreline.js",
+      "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/simWatchDirector.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-simWatchDirector.js",
+      "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/simWatchPlayback.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-simWatchPlayback.js",
+      "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/startScenarioContract.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-startScenarioContract.js",
+      "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/structuredHair.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-structuredHair.js",
+      "sha256": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/tacticalFilmRoom.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-tacticalFilmRoom.js",
+      "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/teamRecord.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-teamRecord.js",
+      "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/lib/torsoSurface.js",
+      "file": "references/torso-contour-r2-2026-10-08-public-lib-torsoSurface.js",
+      "sha256": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "public/styles.css",
+      "file": "references/torso-contour-r2-2026-10-08-public-styles.css",
+      "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "scripts/lib/edge-security-policy.mjs",
+      "file": "references/torso-contour-r2-2026-10-08-scripts-lib-edge-security-policy.mjs",
+      "sha256": "b696838009e21f67c13e94ed67f1ecd83d0326728c3a7322439c570e9ce86a55",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/extremities-2026-10-08-scripts-run-test-shard.mjs",
+      "sha256": "3f4b414a28dd748c37cffd5101133cdbd34ada102c6d46e04d4a3691d0935560"
+    },
+    {
+      "original": "src/config.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-config.js",
+      "sha256": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/config/leagueSetup.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-config-leagueSetup.js",
+      "sha256": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/nflElevationSalary.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-nflElevationSalary.js",
+      "sha256": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/nflEliteDensityBaseline.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-nflEliteDensityBaseline.js",
+      "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/nflPostseasonSalary.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-nflPostseasonSalary.js",
+      "sha256": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/nflPracticeSalary.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-nflPracticeSalary.js",
+      "sha256": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/nflSalaryCap.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-nflSalaryCap.js",
+      "sha256": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/nflSalaryMinimum.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-nflSalaryMinimum.js",
+      "sha256": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/pfrAdapter.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-pfrAdapter.js",
+      "sha256": "1813bc06622043df34c7ba1c5694c0e395e1f685a6f3223e4853c4af857fb109",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/playerDemographicBaseline.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-playerDemographicBaseline.js",
+      "sha256": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/data/playerFamilyHeritage.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-data-playerFamilyHeritage.js",
+      "sha256": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/activeInactiveHistory.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-activeInactiveHistory.js",
+      "sha256": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/admittedInjuryContinuation.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-admittedInjuryContinuation.js",
+      "sha256": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/admittedInjuryPayroll.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-admittedInjuryPayroll.js",
+      "sha256": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/admittedPostseasonRecovery.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-admittedPostseasonRecovery.js",
+      "sha256": "c96bd53ba247ccaaaa9ce579332097821c9df65fb4e2eee7be6c89468a7c6d86",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/annualElevationInjuryResolution.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-annualElevationInjuryResolution.js",
+      "sha256": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/capCarryover.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-capCarryover.js",
+      "sha256": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/contracts.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-contracts.js",
+      "sha256": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/developmentEnvironment.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-developmentEnvironment.js",
+      "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/draftCohort.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-draftCohort.js",
+      "sha256": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/earnedPracticeCap.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-earnedPracticeCap.js",
+      "sha256": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/elevationInjuryPay.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-elevationInjuryPay.js",
+      "sha256": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/facilityInvestment.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-facilityInvestment.js",
+      "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/footballGameReference.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-footballGameReference.js",
+      "sha256": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/injuryClaimNegotiation.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-injuryClaimNegotiation.js",
+      "sha256": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/injurySalaryClaims.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-injurySalaryClaims.js",
+      "sha256": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/leagueIdentity.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-leagueIdentity.js",
+      "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/livingPotential.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-livingPotential.js",
+      "sha256": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/offseasonMedicalCalendar.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-offseasonMedicalCalendar.js",
+      "sha256": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/operatingStatement.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-operatingStatement.js",
+      "sha256": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/ownerEconomy.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-ownerEconomy.js",
+      "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/pensionService.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-pensionService.js",
+      "sha256": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/playerDemographicModel.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-playerDemographicModel.js",
+      "sha256": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/playerFactory.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-playerFactory.js",
+      "sha256": "3065bc39f7d8ba1cf5743235094e81bd54a93fb4e70df250ec152e68b26c4323",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-playerIdentity.js",
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-playerMeasurements.js",
+      "sha256": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/playerService.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-playerService.js",
+      "sha256": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-playerVisualIdentity.js",
+      "sha256": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/playerWorkouts.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-playerWorkouts.js",
+      "sha256": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/postseasonMedicalClock.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-postseasonMedicalClock.js",
+      "sha256": "01850182d8b292c9cdec395f193a83a2bda739f86ae778c3f10499fed9a107a9",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/potentialReversion.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-potentialReversion.js",
+      "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/practiceContractTerm.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-practiceContractTerm.js",
+      "sha256": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/practiceContracts.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-practiceContracts.js",
+      "sha256": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/practiceSquadEligibility.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-practiceSquadEligibility.js",
+      "sha256": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/preRolloverMedicalCalendar.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-preRolloverMedicalCalendar.js",
+      "sha256": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/ratings.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-ratings.js",
+      "sha256": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/regularInjuryAccrual.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-regularInjuryAccrual.js",
+      "sha256": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/regularMedicalRecovery.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-regularMedicalRecovery.js",
+      "sha256": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/reserveLists.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-reserveLists.js",
+      "sha256": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/standardElevations.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-standardElevations.js",
+      "sha256": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/talentDistribution.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-talentDistribution.js",
+      "sha256": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/teamFactory.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-teamFactory.js",
+      "sha256": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/teamLabel.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-teamLabel.js",
+      "sha256": "40b964d54436a4fc91afb83715a7fc866488fed172f5fd1d633cd7974996173c",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/ticketDemand.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-ticketDemand.js",
+      "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/domain/undraftedFreeAgency.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-domain-undraftedFreeAgency.js",
+      "sha256": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/adaptiveDifficulty.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-adaptiveDifficulty.js",
+      "sha256": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/aiTeamStrategy.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-aiTeamStrategy.js",
+      "sha256": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/architectFocusReview.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-architectFocusReview.js",
+      "sha256": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/architectMasteryPortfolio.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-architectMasteryPortfolio.js",
+      "sha256": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/architectThesis.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-architectThesis.js",
+      "sha256": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/beatReporter.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-beatReporter.js",
+      "sha256": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/capAlerts.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-capAlerts.js",
+      "sha256": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/capCompliance.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-capCompliance.js",
+      "sha256": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/coachingMarket.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-coachingMarket.js",
+      "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/coachingTree.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-coachingTree.js",
+      "sha256": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/continuityLedger.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-continuityLedger.js",
+      "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/cpuStandardElevations.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-cpuStandardElevations.js",
+      "sha256": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/cpuTradeMarket.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-cpuTradeMarket.js",
+      "sha256": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/depthChartUsage.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-depthChartUsage.js",
+      "sha256": "7a6022425e0f801c8cf2778957a66c27f41230099b43bcadc650b37723888ee1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/facilityMarket.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-facilityMarket.js",
+      "sha256": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/fanSentiment.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-fanSentiment.js",
+      "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/gameDayRoster.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-gameDayRoster.js",
+      "sha256": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/gameSimulator.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-gameSimulator.js",
+      "sha256": "a42c6ed86bb2732f23a7713b11e994c3fcc61fc6dacd86bd86d918d9fd0b0ea5",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/gmArchetype.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-gmArchetype.js",
+      "sha256": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/gmDecisionAuthority.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-gmDecisionAuthority.js",
+      "sha256": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/gmDecisionConsequences.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-gmDecisionConsequences.js",
+      "sha256": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/gmLegacyScore.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-gmLegacyScore.js",
+      "sha256": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/injurySystem.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-injurySystem.js",
+      "sha256": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/matchupEdge.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-matchupEdge.js",
+      "sha256": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/narrativeEvents.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-narrativeEvents.js",
+      "sha256": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/offseasonDevelopmentReport.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-offseasonDevelopmentReport.js",
+      "sha256": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/offseasonSimulator.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-offseasonSimulator.js",
+      "sha256": "fb7023a75dc65f8cc3414b6aa5c8fc1b006846b414dd178da088a3afadea2a46",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/onClockTradeMarket.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-onClockTradeMarket.js",
+      "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/overtime.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-overtime.js",
+      "sha256": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/ownerConfidence.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-ownerConfidence.js",
+      "sha256": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/playCalling.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-playCalling.js",
+      "sha256": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/playerAgentAI.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-playerAgentAI.js",
+      "sha256": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/pressConference.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-pressConference.js",
+      "sha256": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/pressRoom.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-pressRoom.js",
+      "sha256": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/rivalFrontOffice.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-rivalFrontOffice.js",
+      "sha256": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/rivalGmPersona.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-rivalGmPersona.js",
+      "sha256": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/rivalTradeOffers.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-rivalTradeOffers.js",
+      "sha256": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/rivalryDNA.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-rivalryDNA.js",
+      "sha256": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/schedule.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-schedule.js",
+      "sha256": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/seasonSimulator.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-seasonSimulator.js",
+      "sha256": "0d78babe22ab2ccf9d4f0e54c3fde04c91aafe5c0907e6922570d04c907cac49",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/situationalCalls.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-situationalCalls.js",
+      "sha256": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/staffGeneration.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-staffGeneration.js",
+      "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/standings.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-standings.js",
+      "sha256": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/timeCapsule.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-timeCapsule.js",
+      "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/veteranMentorship.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-veteranMentorship.js",
+      "sha256": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/weeklySimulator.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-weeklySimulator.js",
+      "sha256": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/engine/whatIfReplay.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-engine-whatIfReplay.js",
+      "sha256": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/GameSession.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-GameSession.js",
+      "sha256": "e2b268cc3c6e5b88ea22c05c55888b9483e0c5b971217b15948e99f647ff01e4",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/architectLedger.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-architectLedger.js",
+      "sha256": "00ad683337da86d0d760bff5a2770ae36a7551754d2748f5df0a750f0f01eb48",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/bootstrap.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-bootstrap.js",
+      "sha256": "96ae7089f30ebbf7c0eb70a4484d5e110a978c8c372e144c01781323f7724db5",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/measurementProvenanceSnapshot.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-measurementProvenanceSnapshot.js",
+      "sha256": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/modules/sessionModules.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-modules-sessionModules.js",
+      "sha256": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/pensionServiceSnapshot.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-pensionServiceSnapshot.js",
+      "sha256": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/profileLoader.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-profileLoader.js",
+      "sha256": "7984d0270aa2ad8dee2dea7e8761d41d60c9d10f5b69afdc1f2ceccd6559497b",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/services/CoachingService.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-services-CoachingService.js",
+      "sha256": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/services/ContractService.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-services-ContractService.js",
+      "sha256": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/services/TradeService.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-services-TradeService.js",
+      "sha256": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/services/index.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-services-index.js",
+      "sha256": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/services/tradePlan.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-services-tradePlan.js",
+      "sha256": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/snapshotMigration.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-snapshotMigration.js",
+      "sha256": "1709584d0c1ea23a51e22513cca236d7ab52b6240d8fe8b276f954fe6da534e9",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/statSnapshot.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-statSnapshot.js",
+      "sha256": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/weekResultProjection.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-weekResultProjection.js",
+      "sha256": "54f8dc1512afbd6dcc1dc46d8e3b884faafe9f17357444636ff026203bc67117",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/runtime/weeklyTactic.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-runtime-weeklyTactic.js",
+      "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/calendarContract.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-calendarContract.js",
+      "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/competitionContract.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-competitionContract.js",
+      "sha256": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/football/calendar.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-football-calendar.js",
+      "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/football/competition.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-football-competition.js",
+      "sha256": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/football/index.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-football-index.js",
+      "sha256": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/football/postseason.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-football-postseason.js",
+      "sha256": "6007428021bb6258e375f4a9a7b8ac5787a0992436f155970130090fd7d6c318",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/football/rules.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-football-rules.js",
+      "sha256": "334b007f5f991bb44c9f2355b1fcd9ad443605ed2d7f939613b2f6772ccc67ad",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/football/statSchema.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-football-statSchema.js",
+      "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/matchReadiness.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-matchReadiness.js",
+      "sha256": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/sport/registry.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-sport-registry.js",
+      "sha256": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/applyGameStats.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-applyGameStats.js",
+      "sha256": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/approximateValue.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-approximateValue.js",
+      "sha256": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/gameImpact.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-gameImpact.js",
+      "sha256": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/gmReportCard.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-gmReportCard.js",
+      "sha256": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/leagueLens.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-leagueLens.js",
+      "sha256": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/profiles/pfrCareerWeightedProfile.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-profiles-pfrCareerWeightedProfile.js",
+      "sha256": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/profiles/pfrRecentWeightedProfile.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-profiles-pfrRecentWeightedProfile.js",
+      "sha256": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/progressionParity.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-progressionParity.js",
+      "sha256": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/realismCalibrator.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-realismCalibrator.js",
+      "sha256": "c7b747175495c06191ecc27add45fbb25ebea64dc1c9872614559c0061f0bb32",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/scoreline.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-scoreline.js",
+      "sha256": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/statBook.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-statBook.js",
+      "sha256": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/stats/teamRecord.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-stats-teamRecord.js",
+      "sha256": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/utils/rng.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-utils-rng.js",
+      "sha256": "f6a657984fd920ab21f879a41d82d44ca35026b9aacac3f4ac8f69f402979b8e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "src/utils/rngStreams.js",
+      "file": "references/torso-contour-r2-2026-10-08-src-utils-rngStreams.js",
+      "sha256": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "test-support/appearance/triangleSolidVolume.js",
+      "file": "references/torso-contour-r2-2026-10-08-test-support-appearance-triangleSolidVolume.js",
+      "sha256": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "test/fixtures/player-head-pole-case.json",
+      "file": "references/torso-contour-r2-2026-10-08-test-fixtures-player-head-pole-case.json",
+      "sha256": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "test/player-body-batching.test.js",
+      "file": "references/extremities-2026-10-08-test-player-body-batching.test.js",
+      "sha256": "2d0fea8061e81e80ed9172ec97039772fa4dbec2260f58fbbbad6c52d584b932"
+    },
+    {
+      "original": "test/player-body-measurement-tails.test.js",
+      "file": "references/torso-contour-r2-2026-10-08-test-player-body-measurement-tails.test.js",
+      "sha256": "f623ed33f632120dd90f288cfe5a3b1e32f14c0f06f255e9faf7feb684fc3701",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "test/player-character-3d.test.js",
+      "file": "references/torso-contour-r2-2026-10-08-test-player-character-3d.test.js",
+      "sha256": "e3a92f0c6e8a05ef4963eea7a353b7f932fd7305ab5bb7f03affd79e5256b00e",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "test/player-extremities-3d.test.js",
+      "file": "references/extremities-2026-10-08-test-player-extremities-3d.test.js",
+      "sha256": "b9fb1d75be13e7c8539434812e0e59bf652af26b7439a9ede33efc9db8835974"
+    },
+    {
+      "original": "test/player-limb-sweep-cpu.test.js",
+      "file": "references/limb-cpu-2026-10-08-test-player-limb-sweep-cpu.test.js",
+      "sha256": "956cca7bad83bd73f6dcc2180f6d4f9039743c662eccdabecbefd6d9276409ba",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "test/player-limb-sweep.test.js",
+      "file": "references/torso-contour-r2-2026-10-08-test-player-limb-sweep.test.js",
+      "sha256": "b7bec0695914b8f74bb8d2d56dd4e8d8d22fe51b43e6bff49fec3ea1f1d01642",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "test/player-torso-surface-3d.test.js",
+      "file": "references/torso-contour-r2-2026-10-08-test-player-torso-surface-3d.test.js",
+      "sha256": "ab2905ebf741796ca8f94275337f9c11574cf36e3f97b68c10d15245d30339da",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "tests-ui/helpers/static-client.js",
+      "file": "references/torso-contour-r2-2026-10-08-tests-ui-helpers-static-client.js",
+      "sha256": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "tests-ui/helpers/weekly-scenarios.js",
+      "file": "references/torso-contour-r2-2026-10-08-tests-ui-helpers-weekly-scenarios.js",
+      "sha256": "e2293d23d4a12703c6740c2d749b55bb09065e3adc49016998c334494aabbd0d",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "tests-ui/player-character-3d.spec.js",
+      "file": "references/torso-contour-r2-2026-10-08-tests-ui-player-character-3d.spec.js",
+      "sha256": "90de82455be14783d6fe39b3409ce203537886fc366247ce4131dacc39a7d458",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "tests-ui/player-character-client.spec.js",
+      "file": "references/torso-contour-r2-2026-10-08-tests-ui-player-character-client.spec.js",
+      "sha256": "b0d2b957835de020ba7eadd8d1564ba76d3d363d5f8dedda45c74446154eaa37",
+      "reusedFrom": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json"
+    },
+    {
+      "original": "tests-ui/player-extremities.spec.js",
+      "file": "references/extremities-2026-10-08-tests-ui-player-extremities.spec.js",
+      "sha256": "61a480176751ff4a01dd1ebf8f70eeaefaf5948eadc80b3441a3b0a703e14881"
+    }
+  ],
+  "reports": [
+    {
+      "original": ".cache/contours/extremities-domain-final.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-domain-final.log",
+      "sha256": "2cd0f72c0e6ff7838664f89ed190f1909c20b0e9ad30bf614a8c261751fb4ceb"
+    },
+    {
+      "original": ".cache/contours/extremities-browser-initial.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-browser-initial.log",
+      "sha256": "a3feb7a49c1c0326f625889a9377186aa0c37a329456863e4bc0af0b08e2c92d"
+    },
+    {
+      "original": ".cache/contours/extremities-browser-final.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-browser-final.log",
+      "sha256": "6469725b290c59998138e50579bb5fa8c3bb685826903c96eb3feb3cda8357d6"
+    },
+    {
+      "original": ".cache/contours/extremities-build.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-build.log",
+      "sha256": "d6399e2ee2c35e794922a83c95d04479242b04f5fdaaba537a242ea061eb0ea4"
+    },
+    {
+      "original": ".cache/contours/extremities-boot.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-boot.log",
+      "sha256": "cd91255904627b55ad57ba5bf41226c9f6f6c2951876e332d31a16f3403891fd"
+    },
+    {
+      "original": ".cache/contours/extremities-reachability.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-reachability.log",
+      "sha256": "6812965e7858b90228174a495355008e0e3ca98db0a1c38892d315615d762143"
+    },
+    {
+      "original": ".cache/contours/extremities-premises.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-premises.log",
+      "sha256": "e1b7e6815f3e2c457d6e48fa1db12996e81079f41adcdd6e8fb45d1bb52682ed"
+    },
+    {
+      "original": ".cache/contours/extremities-paired-browser.json",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-paired-browser.json",
+      "sha256": "43a0dbc3419e0fed5b026943b3d001813a418c59d27ff7d728f7332275dab844"
+    },
+    {
+      "original": "output/playwright/character-production-observations.json",
+      "file": "references/extremities-2026-10-08-output-playwright-character-production-observations.json",
+      "sha256": "b1aba9e76210ab6b0d0719391e01bdc3fc922da11dfde67b4910c1c02bf87c0d"
+    },
+    {
+      "original": ".cache/contours/extremities-initial-domain.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-initial-domain.log",
+      "sha256": "8d3de444c36b728f736af7c172dd0274692b14a526b080d26d77739214498fb0"
+    },
+    {
+      "original": ".cache/contours/extremities-repair-domain.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-repair-domain.log",
+      "sha256": "69447e3fae30910a5d8fe41c8f801c47ed819950245ddc873799155b320776b1"
+    },
+    {
+      "original": ".cache/contours/extremities-browser-crop-failed.log",
+      "file": "references/extremities-2026-10-08-.cache-contours-extremities-browser-crop-failed.log",
+      "sha256": "8af2ad08c704b883362712da398b73b7452ea2b5c3ef73f9244552ed26735082"
+    }
+  ],
+  "clients": [
+    {
+      "original": ".cache/character/client/worker.json",
+      "file": "references/extremities-2026-10-08-.cache-character-client-worker.json",
+      "sha256": "55a32aabf384d6bf3aca89075d76b3b1e08334b8966ce7cb7245eef851ebbd45"
+    },
+    {
+      "original": ".cache/character/client/in-page.json",
+      "file": "references/extremities-2026-10-08-.cache-character-client-in-page.json",
+      "sha256": "38f63fa70c7f789bd0fbae29f75c9ad63c367d99e17c52bedec16d625eaaf69c"
+    }
+  ],
+  "captures": [
+    {
+      "original": "output/playwright/extremities-desktop-dark-front.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-front.png",
+      "sha256": "1ea52e1eeca6ff95f39379f4c7527e9efda21867b0d075d7228d1594a488316e",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-dark-side.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-side.png",
+      "sha256": "d77ca924f318d53bce4fe7d623327df71cee07595081354b77b1440e548e36be",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-dark-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-cut.png",
+      "sha256": "cade89bc9751ee1d0345fe5e96618193b2f0e9f90ee705d985f8a552ab2fdd3d",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-dark-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-strength.png",
+      "sha256": "ba120f5fea5891418987a3dfd8766cca14e3ddedfdc27252e838b46c93af517d",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-dark-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-run.png",
+      "sha256": "31b084ebf79fcee47d82db13e77cb0961865fbb094e0167abfc13abd7a284680",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-dark-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-jump.png",
+      "sha256": "0136ca446531a679b7b215fd370a0348f77ad2935c6fbda5d76083fbf1abcaf8",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-dark-hand-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-hand-detail.png",
+      "sha256": "8ba22229cc8305b209b2299199d10a3e0589cb0267d4228603c15582ba09b6aa",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-dark-foot-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-foot-detail.png",
+      "sha256": "1e6988be07109f9ddbea53d253bada648f0a04132e188fc4d71e286843b889e8",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-front.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-front.png",
+      "sha256": "96cf13f9305cfdbfb3ae5720558bae76c97a79797cff983d8a21b1985f72f75c",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-side.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-side.png",
+      "sha256": "92a51ab8beeb15cf3d14488e267352e7c5be421f3b7ebb6d19cab7320f6eedb5",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-cut.png",
+      "sha256": "58d5fc6ed574bd707df09d8deefb499ff76a4e38fb611e1fc441a29e8034e308",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-strength.png",
+      "sha256": "031e51a3dc27239ce372f986722e9e0d863253a161a138d35ea34b139eff9929",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-run.png",
+      "sha256": "698db0073077c5a26214eabd820782c0e1692a9619108e6bddd71cf653e65891",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-jump.png",
+      "sha256": "41b3fc3060f684fe76d65b5c6e1214f630e49cff7d7df6de9b05ac68d62a7c12",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-hand-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-hand-detail.png",
+      "sha256": "03fbfb54404ad01cdf0fbb41f85e0d03964f185acc9a9f9fc0dbb6f873937679",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-desktop-light-foot-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-foot-detail.png",
+      "sha256": "08ac2b971f91a35ad890ef358fc6cc2072461ea41baf06f897fe0620bb623e0d",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-front.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-front.png",
+      "sha256": "3a48fe6aeb2c9989dc00448e8374bcee931676a2fdcc6d775e4b5cf06e5cfcb0",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-side.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-side.png",
+      "sha256": "c0c6613d334e8a004b7b5235f1525d2ee71a3fe5be75a8779f77bc1531565b43",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-cut.png",
+      "sha256": "d94d675c6e6097084c4885bdee7b9cca58a64d8ae7c50c01fe4c76c823094825",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-strength.png",
+      "sha256": "06dadc94dd7df35206968a59f8117fdc151b5509537a089a270bd3de1f1e2762",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-run.png",
+      "sha256": "4f9c1bc915ed6200835c425daf8510a9b0151e3f86644afbbeb7dcd2508666ed",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-jump.png",
+      "sha256": "acaa22dbdbe5c74e8d93d986dca3eb511d830ec729ae4cea6b7a20f18337baea",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-hand-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-hand-detail.png",
+      "sha256": "cf4d3146122ced53c842314fc7d9587e0ccd530df9d58392929abd3704adb49f",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-dark-foot-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-foot-detail.png",
+      "sha256": "be1c48e9b2f9bbfe8b70ea1f7924e4f3925f1e0fa09542ed3f6f0db69610ef54",
+      "page": "matched-batched-characters",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-front.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-front.png",
+      "sha256": "d87f2ce214cfcc60636c7aab222cb769a6d5fb77b54850ffbc7cb816cd5f32f0",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-side.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-side.png",
+      "sha256": "1d8fddb3e058bd5e60dc8dd918533e98a268cb7fd06e0dd666b12a36d3364530",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-cut.png",
+      "sha256": "571971942c9ec3ae9a558b7100931275696fc6ad97aeeeedb0e4be82ab743ef6",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-strength.png",
+      "sha256": "34155151b7a54dc0dd807486c1c7cf4a177d5d83c06b2675d6ceb779dd8447cc",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-run.png",
+      "sha256": "c586540826983e58b6b2fe194dcbd025a546e412b109132cb6479c3d3eb031a0",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-jump.png",
+      "sha256": "48ef13a12c2557d35529a4e883c1e5c46d39b9eda59ee2d599bcfa5b48be9f56",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-hand-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-hand-detail.png",
+      "sha256": "10332717cf87b80384075612dbb7f9e959785a2003056b5e1393bf7ce1ba0241",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/extremities-mobile-light-foot-detail.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-foot-detail.png",
+      "sha256": "33f14723cf39ec376c473fc9d507c04d65c22c1c3bec940e7c919a0f0d118e16",
+      "page": "matched-batched-characters",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-dark-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-dark-run.png",
+      "sha256": "752a0cd729de44b0a2e9689edaebe9f7577ae2d31aeb22e8c1c60d8f1e1dbc4d",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-dark-acceleration.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-dark-acceleration.png",
+      "sha256": "2601ba2b5a0a325d3d4d2d4cf03334a075185aff83bc5d1fb048fc7b8b8490a3",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-dark-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-dark-cut.png",
+      "sha256": "19faf68e888454a447319f2f55d74b7acf72f6ca7bcabc8fef7693b9ef94ead7",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-dark-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-dark-jump.png",
+      "sha256": "7560a40ab27234fa5291b4367b1517f241431fee71164aba05896077d71b340b",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-dark-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-dark-strength.png",
+      "sha256": "c53baa749c5bdb29cc8060bc057a262fb3b9f7fe982296230cc98014186a9edb",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-dark-endurance.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-dark-endurance.png",
+      "sha256": "f31660e865cd6a4138629ea011e0c225f1d95d4777fe419d508c98ca3dcf81df",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-light-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-light-run.png",
+      "sha256": "798ee8d1a383c11dcaf4ad16296b6b0f3f4905dc68cc5a0deb895f93a07ccceb",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-light-acceleration.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-light-acceleration.png",
+      "sha256": "1d8480cd99e35b80a2ba42d4efb0bfbc617d539a6ecfeb5861d279303260af4f",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-light-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-light-cut.png",
+      "sha256": "30d2ade56e1ab93fb4887d14364b637dd4bedc4dd08be3c2edb26795974640bc",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-light-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-light-jump.png",
+      "sha256": "12aa37de0785e02c328057d3eedccff78458450f82181d909ae92b56a5e8691c",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-light-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-light-strength.png",
+      "sha256": "1c18eff2c4582a8623283307dd99bfa79e4d87615b466b020a050e3a52843fd0",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-desktop-light-endurance.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-light-endurance.png",
+      "sha256": "e11ea5e018bed73ae98ed676c99628187feefaa97e80d0a1b10ce0f3fa063fe6",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-run.png",
+      "sha256": "f2b81f01dbfa834d18ff5dbb771074cee49e1ec21a3246b500446825f072e0bf",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-acceleration.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-acceleration.png",
+      "sha256": "9626b7d1b28d1a5b2303cec09d69544afa931ca61676b6f8ad64d4e9928a8678",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-cut.png",
+      "sha256": "126a8bd4d030d8f9490707ddac15d592c1c5f890e99e9fb4ee21898be3147e8d",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-jump.png",
+      "sha256": "7a358028b0932e8f6741602ab2c5865253ec97df4b41b170dead791b4e29199c",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-strength.png",
+      "sha256": "0c1f4b308b819117c4bb9cf8b6f30f5da6c51782815a3dbc091e02f8f4ed1694",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-endurance.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-endurance.png",
+      "sha256": "89508509333c290a6abc4561f9e5aab0cefd002fe4132f8c52051839c315e187",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-front.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-front.png",
+      "sha256": "5af06202ea4e56892967f918a3eaa2e897d0203180a7a96cdfc387fea427c79a",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-dark-side.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-dark-side.png",
+      "sha256": "2ba004db92e015c3d0a43fdbf0f29a74ff0c8ba2822cdeea69717802d9670bde",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-run.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-run.png",
+      "sha256": "58649a6b119ab07f7b2d0dc2d7f88dc62b74165348992aee3083059da4dc107d",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-acceleration.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-acceleration.png",
+      "sha256": "ef1af670cda42e609e77979bfdf91a175954f7ca81544a4e1b32ee203560da91",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-cut.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-cut.png",
+      "sha256": "7566794b1f42a00446ee0bb23085dd9ff3580f4a983d4e8f247c0849ad2e0cdf",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-jump.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-jump.png",
+      "sha256": "37f15e74ad00adc99cf5a3866b77da2878c70e62cf257930998f2385684357c2",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-strength.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-strength.png",
+      "sha256": "4f7323f4f5c29519b0553e1ea228ff9fe228a324b9754735b1b4a16f1202562a",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-endurance.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-endurance.png",
+      "sha256": "2973b5ed5c8c135cf980588e1d3a793e2ea5c8cb133f1d789d358d07c60e91ca",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-front.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-front.png",
+      "sha256": "1ff8576dee78c7214f546b7b4f63d9aa5060eac4b0ec6c8a8a1cc5b7c85008ef",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/character-final-mobile-light-side.png",
+      "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-side.png",
+      "sha256": "73e78dfc8ff7c627261286671e71d67dd9de7b163df3c45df141c4c1f9bd6a75",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "timing": {
+    "samples": 60,
+    "medianMs": 3,
+    "p95Ms": 5.699999809265137,
+    "maxMs": 45.90000009536743,
+    "hardware": "local headless Chromium; emulated viewport, no physical mobile claim",
+    "gpuCompletionSynchronized": true,
+    "includesCpuAndDriverOverhead": true
+  },
+  "checks": {
+    "domainTests": 15,
+    "browserTests": 6,
+    "physicalMobileDeviceTested": false,
+    "renderingPerformanceAccepted": false,
+    "wholeUnionMassVerified": false
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "original": "output/playwright/extremities-desktop-dark-strength.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-dark-strength.png",
+        "sha256": "ba120f5fea5891418987a3dfd8766cca14e3ddedfdc27252e838b46c93af517d",
+        "page": "matched-batched-characters",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/extremities-desktop-light-front.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-front.png",
+        "sha256": "96cf13f9305cfdbfb3ae5720558bae76c97a79797cff983d8a21b1985f72f75c",
+        "page": "matched-batched-characters",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/extremities-desktop-light-hand-detail.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-extremities-desktop-light-hand-detail.png",
+        "sha256": "03fbfb54404ad01cdf0fbb41f85e0d03964f185acc9a9f9fc0dbb6f873937679",
+        "page": "matched-batched-characters",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/extremities-mobile-dark-side.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-side.png",
+        "sha256": "c0c6613d334e8a004b7b5235f1525d2ee71a3fe5be75a8779f77bc1531565b43",
+        "page": "matched-batched-characters",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/extremities-mobile-dark-foot-detail.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-dark-foot-detail.png",
+        "sha256": "be1c48e9b2f9bbfe8b70ea1f7924e4f3925f1e0fa09542ed3f6f0db69610ef54",
+        "page": "matched-batched-characters",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/extremities-mobile-light-jump.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-extremities-mobile-light-jump.png",
+        "sha256": "48ef13a12c2557d35529a4e883c1e5c46d39b9eda59ee2d599bcfa5b48be9f56",
+        "page": "matched-batched-characters",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/character-final-desktop-dark-cut.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-character-final-desktop-dark-cut.png",
+        "sha256": "19faf68e888454a447319f2f55d74b7acf72f6ca7bcabc8fef7693b9ef94ead7",
+        "page": "actual-player-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/character-final-mobile-light-strength.png",
+        "file": "captures/extremities-2026-10-08-output-playwright-character-final-mobile-light-strength.png",
+        "sha256": "4f7323f4f5c29519b0553e1ea228ff9fe228a324b9754735b1b4a16f1202562a",
+        "page": "actual-player-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "findings": [
+      "Continuous wrist/palm and thenar volume replace the disconnected oval palm; tapered fingers preserve the measured longest endpoint.",
+      "External sole stays within footprint/contact and uses a distinct garment material, not a natural identity trait.",
+      "The first cached/direct check caught a mirrored palm basis mismatch; the corrected palm uses the actual hand frame, and failed/passing logs are preserved.",
+      "The original batching regression now uses its frozen mesh/material schema; new sole material has current-surface checks. No historical golden is regenerated.",
+      "Hands, footwear and complete anatomy/materials still need further craft; component closure does not certify union/self-intersection or physical mass."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "pairedBeforeAuthority": {
+    "primary": "docs/visual-qa/PLAYER_LIMB_CPU_2026-10-08.json",
+    "sha256": "94336f387fbf4edd6e6f1ca828915537a8bfc03e0e85e0639f3f4bcc601eb3cf",
+    "freshReconstructionFromFrozenSource": true,
+    "matchedPersonAndPhysicalCamera": true
+  },
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

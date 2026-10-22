@@ -1,0 +1,79 @@
+{
+  "height": 62,
+  "weight": 650,
+  "sameHeadPaletteAndPose": true,
+  "captures": [
+    {
+      "path": "output/playwright/torso-sleeve-tail-desktop-dark-jump.png",
+      "sha256": "0e9d82b68bdbb9c2ce1a07f0372f75c9b2369aa960c33e009df4813e090b7989",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-sleeve-tail-desktop-dark-strength.png",
+      "sha256": "c7d065979110bc3283e82fb6851002e79be0747acbe62d42e756083beee9d16e",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-sleeve-tail-desktop-light-jump.png",
+      "sha256": "9ab4ba5c6e300bf83bb9fea9aafd4900dcdddd1fb98ed7605639c0466e78a240",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-sleeve-tail-desktop-light-strength.png",
+      "sha256": "6281749699ff0ca5082d60235d89bb7ce9c35eacc97bb727e21b60789dbbb41b",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-sleeve-tail-mobile-dark-jump.png",
+      "sha256": "b58ed160dcf62e6a1c21da9b06680c49bb687bd049af7082aa52f17efb77237b",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-sleeve-tail-mobile-dark-strength.png",
+      "sha256": "ed7c46156efa309311e0decb32a2f8312f97d9114dfd2a8f32d4eaf0d276c681",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-sleeve-tail-mobile-light-jump.png",
+      "sha256": "915440c514f73e4e3586ad44f652ef6c56e4a2b45cc28047a3ce8e5d8bd68130",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-sleeve-tail-mobile-light-strength.png",
+      "sha256": "3a18c517a80f5d4623e51f02603bf390440d4490f62e88da91459a8e6d27558d",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    }
+  ]
+}

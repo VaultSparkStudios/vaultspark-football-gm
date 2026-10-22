@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "round": 1,
+  "reviewedAt": "2026-10-08T09:22:29.902718+00:00",
+  "reviewer": "independent studio_reviewer",
+  "verdict": "PASS",
+  "scope": "Versioned engineering stature/mass support, shared measured rig/camera and disclosed unsupported observations; not complete rendered mass reconstruction or naturalism.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_BODY_MEASUREMENT_TAILS_2026-10-08.json",
+  "primaryReceiptSha256": "f0d0edced4e0ebcf47fd94460f615b1e51a71be04f25897f9748b12d62770518",
+  "supplementReceipt": "docs/visual-qa/PLAYER_BODY_MEASUREMENT_TAILS_SUPPLEMENT_2026-10-08.json",
+  "supplementReceiptSha256": "25723ce0cbf4c610032981be380c7203907fafa7d198cc3909c55ee0e72a8039",
+  "reviewedPrimarySourceHashes": {
+    "src/domain/playerIdentity.js": "c4ccb5a08c39e7297588358b16d246b9a41d8cd7a99c561316438f010ecbbfb1",
+    "src/domain/playerVisualIdentity.js": "a1863243ba9f210d1d2088d1a58710eab75e759057264dab2d4767b03318a87b",
+    "src/domain/playerMeasurements.js": "1cae00496fef36d91ae98a38aabce3c5b348595d87758a2afb698c5c3b1e0b3d",
+    "public/lib/physiqueGeometryContract.js": "a7f839a664bb6d181cb784070b4ae258b02d4140bf84da8c839725c85b793989",
+    "public/lib/playerPortrait.js": "2fb2fa4df8564ec2968e1dc01ccee71e5a7b8c17769ba2fb607bbd8380c8fe44",
+    "public/lib/playerMotion.js": "e68a052eeade89b94fc1684729b4b8e2db54af75459cfa2e90dc0481bc9485bc",
+    "test/player-body-measurement-tails.test.js": "c52e01b9953cbc3556bd568a9d4c33d9bcff8ddfbbb039a921d8487417458a0b",
+    "test/player-regional-sections.test.js": "49e0d1c38f538a7d21d0b832a5b9d4908e33f9de9ca43835ac5ecd286e33fb06",
+    "test/player-regional-body-shape.test.js": "e69fba2134a0d9f680e67c3a0eacc1ce1bdf10f60ba4bcfbc27a9f22b42f7af2",
+    "tests-ui/player-body-measurement-tails.spec.js": "a1d0209063c7f208da3d6888b045edb610c9861ba84f9403f21a7b1ed1e2b2a3",
+    "tests-ui/player-capacity-client.spec.js": "cd1bb025d1fac8066846d0080d4aef81d1f99e38b39685408872b826b5e5ff0c",
+    "tests-ui/player-regional-body-shape.spec.js": "569a516de85087e6a0ce2516c302de427c71aeca7d22f1999c6204dfbfdf1eeb"
+  },
+  "supplementCurrentSourceHashes": {
+    "scripts/run-test-shard.mjs": "cfab39130d333af78a3040a1ff50e50ac86469a5072c99d72ab41b4d1d75154f",
+    "tests-ui/player-capacity-client.spec.js": "9316694df67ca2803e0ea37bdf7c56ef437409b23030f26501d58816beed9dc2"
+  },
+  "currentSourceQualification": "All six product sources and remaining primary sources retain primary hashes. tests-ui/player-capacity-client.spec.js intentionally changed after primary; supplement records its final source instead of rewriting the historical binding. Core shard newly registered the test and is separately bound.",
+  "bindingVerification": {
+    "primaryFrozenFiles": 25,
+    "supplementFrozenFiles": 2,
+    "primaryBuiltPairs": 3,
+    "allFrozenHashesMatch": true,
+    "supplementCurrentSourceHashesMatch": true,
+    "primaryVerificationBeforeSupplementEdit": "9f37d8",
+    "supplementVerification": "3b33b8",
+    "additionalDomainBuiltPairs": [
+      {
+        "source": "src/domain/playerIdentity.js",
+        "built": "static/src/domain/playerIdentity.js",
+        "sha256": "c4ccb5a08c39e7297588358b16d246b9a41d8cd7a99c561316438f010ecbbfb1",
+        "normalizedTextMatch": true
+      },
+      {
+        "source": "src/domain/playerMeasurements.js",
+        "built": "static/src/domain/playerMeasurements.js",
+        "sha256": "1cae00496fef36d91ae98a38aabce3c5b348595d87758a2afb698c5c3b1e0b3d",
+        "normalizedTextMatch": true
+      },
+      {
+        "source": "src/domain/playerVisualIdentity.js",
+        "built": "static/src/domain/playerVisualIdentity.js",
+        "sha256": "a1863243ba9f210d1d2088d1a58710eab75e759057264dab2d4767b03318a87b",
+        "normalizedTextMatch": true
+      }
+    ]
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-body-measurement-tails.test.js test/player-regional-sections.test.js test/player-regional-body-shape.test.js test/player-measured-rig.test.js test/player-capacity-study.test.js",
+      "exitCode": 0,
+      "tests": 18,
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 7338.8365,
+      "terminalChunk": "890442",
+      "coverage": [
+        "20 stature/mass combinations include62/96 inches and100/650 pounds, exact shared3D segment lengths across six modes and three phases, finite static and motion markup and raw input purity.",
+        "Supported defaults and actual snapshot restoration; retained v1/v2 clamps and positive unsupported source observations.",
+        "Nine fixed legacy frames and72 exact static/movement hashes remain unchanged.",
+        "Regional volume/profile, malformed optional sections, rig and capacity contracts remain covered."
+      ]
+    },
+    {
+      "probe": "Reduced-motion mounted-motion mock with private DOM/observer stand-ins; all-six-mode camera fixed for96/650, followed by87/100 supported frame replacement and change event.",
+      "terminalChunk": "f33ff1",
+      "initialViewBox": "-107 0 539 800",
+      "changedViewBox": "-81 0 487 800",
+      "allSixModesFixedCamera": true,
+      "viewBoxAndBackgroundUpdated": true,
+      "inputUnchangedBeforeMount": true,
+      "qualification": "Independent unit-level lifecycle probe, not an independent real-browser execution."
+    },
+    {
+      "probe": "Unknown/nonfinite observations versus epsilon outside engineering bounds.",
+      "terminalChunk": "0179a4",
+      "unknownInputEstimatesDisclosed": 3,
+      "outsideBoundsRefusals": 4,
+      "rawInputUnchanged": true,
+      "qualification": "Unknown/nonfinite values retain existing unknown measurement semantics and explicit estimates. Positive out-of-range observations refuse full-body views and remain canonical."
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/body-tails-body-tail-desktop-dark-case-4.png",
+      "sha256": "f65bc0bfb9fd94e3f6699705a5e5a9aea65b4a833208831b70758505a7e1b207"
+    },
+    {
+      "file": "docs/visual-qa/captures/body-tails-body-tail-mobile-light-case-1.png",
+      "sha256": "9b96230f53919d6be5a6b07fd5bc576ded4e228c88e398a758a0d03bb2e00e2b"
+    },
+    {
+      "file": "docs/visual-qa/captures/body-tails-body-tail-desktop-light-gallery.png",
+      "sha256": "92d245d98975c4eabd192070c54108819f756290fc39bb464b1b77a74cdc9795"
+    },
+    {
+      "file": "docs/visual-qa/captures/body-tails-body-tail-mobile-dark-case-4.png",
+      "sha256": "cba70102965ff40776973766fcc2dea92d756f58e359b88a54b78957665710be"
+    }
+  ],
+  "visualObservations": [
+    "At common2.1CSS-pixel-per-inch scale, modern96-inch/650-pound example is visibly taller and broader than retained86-inch/400-pound decoder; head and feet fit in inspected static and motion cameras.",
+    "74-inch/410-pound modern case shows a subtle increase over retained400-pound clamp.",
+    "The full-gallery original includes tall/light and short/heavy comparisons, but native tail panels provide stronger visibility than the downscaled complete gallery.",
+    "Bodies remain simplified/mannequin-like, and heavy-body shape/complete region mass fidelity is not accepted."
+  ],
+  "supplementTestAssessment": {
+    "pngPayloadCorrection": "Appropriate test-only fix: cloned image href/xlink:href data PNG payloads require base64 syntax and eight-byte PNG signature, then only those validated attribute values are replaced before nonfinite-markup scanning. Actual SVG geometry and all other attributes remain scanned. Valid base64 may contain literal NaN.",
+    "limits": "Signature validation is not a full PNG decoder/CRC validator; primary browser render/save evidence supplies separate integration proof. No production errors are suppressed.",
+    "coreRegistration": "New bounded tail test included in existing core shard; no claim a fresh whole-core run was performed."
+  },
+  "primaryEvidenceAttribution": {
+    "focused": "Primary24 checks and supplemental25 additional checks are root-executed, separate from independent18.",
+    "browser": "Primary3 cases1305d2 and supplemental built worker/in-page2 cases66d8cb are root-executed, not independently rerun. Supplemental scope is actual named save, different franchise replacement, load/reload and six modes.",
+    "build": "Primarya0c1b513f383,319assets3547KB; six canonical source/built pairs independently verified.",
+    "budgets": "Root-reported boot649321/730000,51modules and reach139; not relabeled full-suite proof."
+  },
+  "limits": [
+    "Engineering envelope62..96 inches and100..650 pounds is not biological limits or athlete prevalence.",
+    "Measurement-fit status explicitly covers stature and mass; separate limb/foot endpoint reconciliation and projection bounds are retained, not newly certified universally.",
+    "Cameras sample six artistic studies with conservative margins; neither proof of all continuous phases nor all malformed/future poses is claimed.",
+    "Legacy equivalence evidence is the fixed9-frame72-output set and retained decoder tests, not every historical imported player.",
+    "Only four original PNGs independently inspected, not all12.",
+    "Reserved skull/hands/feet volume and1kg/litre density remain artistic assumptions; complete renderer mass reconstruction and joint body calibration remain open.",
+    "No full appearance, current whole-suite/career, NFL policy or release acceptance."
+  ],
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

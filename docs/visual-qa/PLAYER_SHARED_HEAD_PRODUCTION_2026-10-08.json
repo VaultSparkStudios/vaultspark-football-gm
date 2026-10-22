@@ -1,0 +1,476 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T05:17:07.347Z",
+  "sourceRevision": "local-worktree",
+  "scope": "Actual dossier before/after production head projection; no career or demographic calibration claim",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "productionRendererChanged": true,
+  "sources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/production-head-playerHead3d.js-2026-10-08",
+      "sha256": "750bd30ff92a2822c5df8bc6e6266a5f00738a69150bea000ecaa91d19cc9372"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/production-head-playerHeadImage.js-2026-10-08",
+      "sha256": "5e430722f19fa7f344b8bc023d1d50616b705887003770cd115362d57d6e84c6"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/production-head-playerPortraitFace.js-2026-10-08",
+      "sha256": "590272f10a3f402f0e8aacc3cc60b35700f649ebf81f23dad9f0f321a6bb0060"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/production-head-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/production-head-playerPortrait.js-2026-10-08",
+      "sha256": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/production-head-playerMotion.js-2026-10-08",
+      "sha256": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/production-head-appearancePalette.js-2026-10-08",
+      "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/production-head-player-shared-head.test.js-2026-10-08",
+      "sha256": "0a8468cf2c41f4da248c28ea90f17082ff0ffe0079dc8bfe15ab40fae319e593"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/production-head-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/production-head-run-test-shard.mjs-2026-10-08",
+      "sha256": "df7be5c981868af1c27008f2832171475aeac0add2198894d833404092d7e2eb"
+    },
+    {
+      "original": "prototypes/playerHead3d.mjs",
+      "file": "references/production-head-playerHead3d.mjs-2026-10-08",
+      "sha256": "efaeebd535efb60ba95ae2a2994c54044d16355931d647914bc437ebba01d0d9"
+    },
+    {
+      "original": "prototypes/playerHead3d.test.mjs",
+      "file": "references/production-head-playerHead3d.test.mjs-2026-10-08",
+      "sha256": "38cb110a6171c21649a23f4c4a23d65f3f7708a84176a75a2772e117a641ae33"
+    },
+    {
+      "original": ".cache/production-head-contracts.test.mjs",
+      "file": "references/production-head-production-head-contracts.test.mjs-2026-10-08",
+      "sha256": "5e9a14b34db1c115f74f029fa144e34fb8b7285f9ae775c731897d5d924e83e7"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/shared-head-production-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cd10bc0498b1ef252c5e4b287cb5ae4535c5f077ae68706f85f78b7dc5df9263",
+      "page": "Actual dossier before portrait",
+      "inspected": true
+    },
+    {
+      "file": "captures/shared-head-production-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "028596c31b119406a8430c9eae5dd938f6a421e2e9793b924277c124e55e2966",
+      "page": "Actual dossier before body",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f5082b6d06ef61bdf013e72f5df53a605ab01bebc548e8328e9ee993f77d293f",
+      "page": "Actual dossier before motion",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7f5d3bba750f525a47a8fa9f83a1f2d87419a40a7ec0bbf62c457113744d9b6e",
+      "page": "Actual dossier before portrait",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "4fd0770e8e63a4f7d1a994d237259727072555cda7d3dd6001ded79eeecfacf8",
+      "page": "Actual dossier before body",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "98d926f4ada9b7091d21e1f5c7e93f987c0424519948bcb0184eba4dca386d00",
+      "page": "Actual dossier before motion",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c12f96c390e2eb37cb16e0c8e59cce0bb4009e56c6a253d11d8af5d05bdba356",
+      "page": "Actual dossier before portrait",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "42a08a5d944314d637a396ffc4a33573686e858b7d14d3ec91187beea928d833",
+      "page": "Actual dossier before body",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "cebe28d8241bcb2cbb726425d96b33c01e90b39beadc900e981f4e36b24d2e52",
+      "page": "Actual dossier before motion",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "25a9205517618affe5d60a8aa4fd793552e0da625841988616afa39d3859ed44",
+      "page": "Actual dossier before portrait",
+      "inspected": true
+    },
+    {
+      "file": "captures/shared-head-production-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "20c38afeb5cd8724ad4be2a9e740dd5ab18a15fc39704fedae2e00991f3d4c5f",
+      "page": "Actual dossier before body",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "adad8405efd4b5562bc535a92c38fbea26dbc61a31318fa21d1841413bfaa3d3",
+      "page": "Actual dossier before motion",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e351c3a1972cae3d4c7f43251b647ccb3c137a35893b81b6b64eab5ebefc792b",
+      "page": "Actual dossier after portrait",
+      "inspected": true
+    },
+    {
+      "file": "captures/shared-head-production-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "db5e87ff9c0569846442c3476a400467565d98a3e48406e12ff39288ec2ad086",
+      "page": "Actual dossier after body",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "bf11bad6beabcddc0d53f4daa97e607aadd37a21292fa42ab652129978b232bb",
+      "page": "Actual dossier after motion",
+      "inspected": true
+    },
+    {
+      "file": "captures/shared-head-production-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "364aa060fcaec2b3490471481d9ddcea554adaaf23e85074b295a9ee9b1b05d9",
+      "page": "Actual dossier after portrait",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "026590d1c84952b096e6f0178e27de1bcf7b3300feca367ae12b527866ba590b",
+      "page": "Actual dossier after body",
+      "inspected": true
+    },
+    {
+      "file": "captures/shared-head-production-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b9bb1db280995dd04707e4a6467b60d50b12d5ac80e6ba1bed7aacf9395f4311",
+      "page": "Actual dossier after motion",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d0ab5dad62b8a8b9c85263d77ba340565b3169de775284e05acb802f0dab3935",
+      "page": "Actual dossier after portrait",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b4fcf7fda9f061eb86d7bb07b70cb3679212bdd831fd983bbee8d2ef1039952c",
+      "page": "Actual dossier after body",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a6287901a2de341717d8fbec3f9463c39d0cfadde3ae9e75f5433c8468e1793a",
+      "page": "Actual dossier after motion",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0b8fd5b84bd385ceaf386a261f4b2ecf191d3f33c1e56413975ff02bc9e66f8f",
+      "page": "Actual dossier after portrait",
+      "inspected": true
+    },
+    {
+      "file": "captures/shared-head-production-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "56e3b58b28fccd2aa22cdcce259a07e967381a048d7b016ef5432c00a5e1e8de",
+      "page": "Actual dossier after body",
+      "inspected": false
+    },
+    {
+      "file": "captures/shared-head-production-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "03ba68c6bd94f62c87390a639cfa6bf2d322d4bce5bbe6d20cb6d8be36ef4b6a",
+      "page": "Actual dossier after motion",
+      "inspected": false
+    }
+  ],
+  "checks": {
+    "focusedPassed": 16,
+    "focusedDurationMs": 5656.6471,
+    "geometryContractsPassed": 17,
+    "geometryDurationMs": 12886.5926,
+    "browserPassed": 2,
+    "browserTerminal": "2 passed (30.1s)",
+    "browserSession": 15567,
+    "browserTerminalChunk": "7bf843",
+    "matchedBeforeAfterStates": 12,
+    "headProjectionAgreement": [
+      {
+        "mode": "run",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "acceleration",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "cut",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "jump",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "strength",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "endurance",
+        "frontBody": true,
+        "sideMotion": true
+      }
+    ],
+    "cache": {
+      "bounded": {
+        "cacheEntries": 32,
+        "cacheLimit": 32,
+        "draws": 37,
+        "unavailable": false,
+        "contexts": 1
+      },
+      "restored": true,
+      "malformed": true,
+      "malformedSkin": true,
+      "healthy": true
+    },
+    "playerUnchanged": true,
+    "webglUnavailableFallbackExact": true
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 6,
+    "findings": [
+      "Actual portraits, measured front/profile body and all six movement modes now use one saved shared-head mesh, through front/profile camera projections.",
+      "Head-only geometry excludes fixed prototype neck and training top; production measured SVG neck/jersey remain authoritative. Camera fit places crown/chin at canonical mounting landmarks.",
+      "Before captures route the image helper to null, exercising unchanged legacy builders; after captures use current production helper. Mobile waits use actual mode authority to account for the 150ms debounced resize.",
+      "Selected-person renders show anatomical volume but remain mannequin-like, with shallow eyes, simplified lips, broad beard coverage and weak neck/body material continuity. Complete naturalism is not accepted.",
+      "Cached modern PNG heads currently lose the former automatic CSS eye blink; explicit blink poses are supported, but automatic presentation remains required.",
+      "A draw/context error selects legacy fallback for the session. Malformed iris/complexion are rejected without disabling a healthy renderer; full recovery/device testing remains required."
+    ],
+    "fixesApplied": [
+      "Connected shared head to actual production portrait/profile/body/movement builders",
+      "Removed fixed prototype neck/top from mounted head",
+      "Added transparent shared camera and canonical skull fitting",
+      "Extended image bounds for hanging hair",
+      "Bounded one WebGL context and 32-image LRU; preserved exact legacy/unsupported fallback"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

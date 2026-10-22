@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-07",
+  "status": "observed-general-population-reference-not-adopted-as-nfl-coefficients",
+  "source": {
+    "title": "Anthropometric Reference Data for Children and Adults: United States, August 2021–August 2023",
+    "publisher": "National Center for Health Statistics",
+    "published": "2025-06",
+    "url": "https://www.cdc.gov/nchs/data/series/sr_03/sr03-050.pdf",
+    "doi": "10.15620/cdc/174595",
+    "population": "United States NHANES examined population, source-defined male age groups",
+    "sampleSizeAuthority": "Unweighted examined people; means, standard errors and percentiles are weighted",
+    "extraction": "Four manually transcribed published rows; source text checked, no participant-level joint fit"
+  },
+  "measurementMethods": {
+    "source": "https://wwwn.cdc.gov/nchs/data/nhanes/public/2021/manuals/2021-Anthropometry-Procedures-Manual-508.pdf",
+    "upper-arm-length": {"section": "3.4.6", "pdfPageIndices": [40, 41, 42, 43, 44], "method": "Posterior arm tape from the marked scapular/acromial landmark to the elbow's olecranon tip, elbow bent90degrees; retain protocol comments", "renderingMapping": "Not automatically shoulder-joint-center to elbow-joint-center"},
+    "upper-leg-length": {"section": "3.4.5", "pdfPageIndices": [38, 39, 40], "method": "Seated anterior thigh tape from inguinal crease to marked proximal patellar border", "renderingMapping": "Not automatically hip-joint-center to knee-joint-center"}
+  },
+  "observations": [
+    {"table": 18, "pdfPageIndex": 19, "measure": "upper-arm-length", "units": "cm", "sex": "male", "ageMin": 20, "ageMax": 29, "examined": 285, "mean": 39.4, "meanStandardError": 0.2, "percentiles": {"5": 35.7, "50": 39.4, "95": 43.2}},
+    {"table": 18, "pdfPageIndex": 19, "measure": "upper-arm-length", "units": "cm", "sex": "male", "ageMin": 30, "ageMax": 39, "examined": 381, "mean": 39.3, "meanStandardError": 0.1, "percentiles": {"5": 36.0, "50": 39.1, "95": 42.8}},
+    {"table": 20, "pdfPageIndex": 20, "measure": "upper-leg-length", "units": "cm", "sex": "male", "ageMin": 20, "ageMax": 29, "examined": 277, "mean": 42.3, "meanStandardError": 0.3, "percentiles": {"5": 38.1, "50": 42.0, "95": 46.4}},
+    {"table": 20, "pdfPageIndex": 20, "measure": "upper-leg-length", "units": "cm", "sex": "male", "ageMin": 30, "ageMax": 39, "examined": 374, "mean": 41.9, "meanStandardError": 0.2, "percentiles": {"5": 37.5, "50": 41.7, "95": 46.2}}
+  ],
+  "plannedUse": [
+    "Check plausible segment variability and source measurement endpoints independently of NFL stature/full-arm measurements",
+    "Preserve source uncertainty and general-population cohort distinction",
+    "Require compatible participant-level data before estimating covariance or conditioning on stature/mass"
+  ],
+  "limits": [
+    "No NFL, position, country or race-specific distributions",
+    "Marginal percentiles are not hard physiological limits or conditional distributions at equal height/weight",
+    "Upper-arm length is not full arm length, wingspan or automatically a skeletal joint-to-joint dimension",
+    "No inferred muscle mass, body fat or athletic ability",
+    "No runtime generator coefficients changed"
+  ]
+}

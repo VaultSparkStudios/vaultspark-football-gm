@@ -1,0 +1,67 @@
+{
+  "component": "regular-medical-pay-before-recovery",
+  "round": 2,
+  "verdict": "PASS",
+  "reviewedAt": "2026-10-07T22:52:10.742Z",
+  "sourceHashes": {
+    "src/domain/regularMedicalRecovery.js": "14eeb075b4f203c905a7051fdfb06178d3965a6d7defc582dc8224e7d22681ca",
+    "src/runtime/GameSession.js": "53b40edd070f0368a2891d343a617e7ff63aef44e5e159b7b0a02a491c153d41",
+    "test/regular-medical-recovery.test.js": "129e6710e76bf7c37b94c99318b29597d8958284c280117ebd448edbc39e6672",
+    "test/helpers/regularMedicalFixture.js": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba",
+    "src/domain/admittedInjuryPayroll.js": "1d36c51391320b77334e1a5778bed84d0eb952e75507ef20ab5d1e339abe52a8",
+    "src/engine/injurySystem.js": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/regular-medical-recovery.test.js test/regular-injury-accrual.test.js",
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 8911.1691
+    },
+    {
+      "command": "node .cache/regular-medical-independent-check.mjs",
+      "sha256": "bbf03052f0ff70ec0461b2e35246061acbae3c627ee4238010622c70e2b78918",
+      "result": "PASS",
+      "checks": [
+        "Closed original payer wage/recovery refusal leaves snapshot unchanged",
+        "Ordinary current-year recovery matches existing recovery",
+        "Private nested preview mutations do not leak"
+      ]
+    },
+    {
+      "command": "node .cache/regular-medical-open-year-check.mjs",
+      "sha256": "e2ffbbcbaa5174498f42e8edc3de52ef4a1027c3e3ac56278ac1d6f31b5dd028",
+      "result": "PASS",
+      "checks": [
+        "Ordinary no-admitted-right injury refuses wrong year before recovery",
+        "Actual command with unopened financial year returns structured400 REGULAR_MEDICAL_RECOVERY_INVALID before dashboard",
+        "Complete snapshot/RNG invariant on both refusals"
+      ]
+    }
+  ],
+  "assessment": [
+    "Actual scheduled modern football regular weeks invoke the helper before medical clearance. Original injury payer/rate and earning year remain separately attributed.",
+    "Readiness previews and validates admitted authority even when current rosters already pass readiness, before dashboard/GM command effects.",
+    "Complete helper plan is cloned; late recovery failures cannot commit wages or medical changes.",
+    "Live and retired people recover; helper commits only injury/developmentHealth/reinjuryRisk/elevationInjuryPay, cap attribution and admitted payroll.",
+    "Actual scheduled command and compressed restoration tests preserve retired clearance wages and leave that player service/pension unchanged.",
+    "Historical or unscheduled/session nonregular paths retain the existing recovery decoder; current-year accrual tests remain passing.",
+    "R2 requires requested year equal both league.year and financialYearForLeague before cloning/payment/recovery, and readiness propagates its structured refusal. Ordinary no-right injuries cannot consume a mismatched financial-year interval."
+  ],
+  "verificationLimits": [
+    "Final guard-version build and built client follow-through were pending. Earlier built client jobs loaded the prior guard version and are not current-source evidence.",
+    "Helper does not make the entire weekly command retryable or establish new employment/service/claims.",
+    "Fixture deliberately retains a valid prior-year admitted source and imports it into an actual2027 session; this is not proof of live annual dispatch adoption.",
+    "Annual preservePostTermClaims defaults and postseason integration remain outside scope.",
+    "Benefits/cap/legal entitlement/pension/full NFL/appearance/current-career/release acceptance remains open."
+  ],
+  "imagesInspected": [],
+  "priorReview": {
+    "path": ".cache/regular-medical-review-round1.json",
+    "sha256": "a0f13f02df2eca0ff56fce5a928c0c4a18dab9f6e9748a5a944b7c2fc7453878",
+    "verdict": "PASS",
+    "preserved": true
+  }
+}

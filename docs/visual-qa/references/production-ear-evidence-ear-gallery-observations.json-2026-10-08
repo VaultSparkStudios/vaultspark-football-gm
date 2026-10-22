@@ -1,0 +1,94 @@
+{
+  "observations": [
+    {
+      "id": "art-benchmark-0",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 30182,
+          "triangles": 49976
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 30182,
+          "triangles": 49976
+        },
+        {
+          "state": "before",
+          "clay": true,
+          "vertices": 8835,
+          "triangles": 16560
+        },
+        {
+          "state": "candidate",
+          "clay": true,
+          "vertices": 8835,
+          "triangles": 16560
+        }
+      ]
+    },
+    {
+      "id": "art-benchmark-2",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 23966,
+          "triangles": 39776
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 23966,
+          "triangles": 39776
+        },
+        {
+          "state": "before",
+          "clay": true,
+          "vertices": 8835,
+          "triangles": 16560
+        },
+        {
+          "state": "candidate",
+          "clay": true,
+          "vertices": 8835,
+          "triangles": 16560
+        }
+      ]
+    },
+    {
+      "id": "art-benchmark-4",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 27264,
+          "triangles": 45920
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 27264,
+          "triangles": 45920
+        },
+        {
+          "state": "before",
+          "clay": true,
+          "vertices": 8835,
+          "triangles": 16560
+        },
+        {
+          "state": "candidate",
+          "clay": true,
+          "vertices": 8835,
+          "triangles": 16560
+        }
+      ]
+    }
+  ]
+}

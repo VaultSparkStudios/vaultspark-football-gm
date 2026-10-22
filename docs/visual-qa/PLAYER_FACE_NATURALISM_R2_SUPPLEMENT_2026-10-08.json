@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T11:12:19.179Z",
+  "scope": "Test-only repair separating historical scalp/beard invariants from current face anatomy; production and primary evidence unchanged",
+  "primary": {
+    "file": "docs/visual-qa/PLAYER_FACE_NATURALISM_2026-10-08.json",
+    "sha256": "73f0325c586a5d395814e177cd6ed2c591499383b6cb4fb2b75643c8d97ebdef"
+  },
+  "sources": [
+    {
+      "file": "test/player-beard-volume.test.js",
+      "sha256": "ffa2b8c1fb97f9a92cc0bba3fede1809e1a15e94e5142698537da4c32e428027",
+      "frozen": {
+        "file": "docs/visual-qa/references/face-naturalism-r2-player-beard-volume.test.js-2026-10-08",
+        "sha256": "ffa2b8c1fb97f9a92cc0bba3fede1809e1a15e94e5142698537da4c32e428027"
+      }
+    },
+    {
+      "file": "docs/visual-qa/references/face-naturalism-before-playerHead3d.js-2026-10-08",
+      "sha256": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7"
+    }
+  ],
+  "repair": "Retain frozen beard/scalp-only comparisons against the exact pre-face source. Separately prove all six current grooming variants preserve current skin, eye, ear and hair vertices, anatomy, eye depth and input identity.",
+  "verification": {
+    "focused": {
+      "output": "28930e",
+      "pass": 25,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 15554.5664
+    },
+    "runtimeSourcesUnchanged": true,
+    "browserEvidenceInheritedFromPrimary": true
+  },
+  "independentReview": "pending-r2",
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

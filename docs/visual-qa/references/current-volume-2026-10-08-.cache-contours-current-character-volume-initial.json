@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T17:46:38.655Z",
+  "scope": "Current production neutral body plus actual complete-head skin shell; no external soles. Artistic 1kg/litre proxy, not measured tissue. Open eye/lid/ear details and hair are excluded; shader apertures are not solid booleans. This is not complete rendered-body or physical-mass acceptance.",
+  "sourceHashes": {
+    "public/lib/playerBody3d.js": "be4f53ce4daaee23693b5cb9ceda2e9f0ae4e3fd721a30875b44539ae96c7e51",
+    "public/lib/playerBodyAnimation3d.js": "9fa6884e93076fb9a58a86808a46904b77d036fd4213536037bac06f2304f60e",
+    "public/lib/playerCharacter3d.js": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+    "public/lib/playerHead3d.js": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    ".cache/contours/current-character-volume.mjs": "0fcb4fbbdaa98c6cce879b566015588735efc6c560ab62cd1f28311f5356995d"
+  },
+  "cases": [
+    {
+      "heightInches": 80,
+      "weightLbs": 180,
+      "targetArtisticVolumeInches3": 4982.382847836562,
+      "estimates": [
+        {
+          "axis": 0,
+          "resolution": 96,
+          "unionVolume": 4735.529789232177,
+          "grossVolume": 5168.7956959903695,
+          "residual": -0.049545180718413295,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        },
+        {
+          "axis": 2,
+          "resolution": 96,
+          "unionVolume": 4734.619714610441,
+          "grossVolume": 5168.7956959903695,
+          "residual": -0.0497278392273095,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        }
+      ]
+    },
+    {
+      "heightInches": 80,
+      "weightLbs": 240,
+      "targetArtisticVolumeInches3": 6643.177130448749,
+      "estimates": [
+        {
+          "axis": 0,
+          "resolution": 96,
+          "unionVolume": 6181.945483706131,
+          "grossVolume": 6792.065961499636,
+          "residual": -0.06942937658979176,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        },
+        {
+          "axis": 2,
+          "resolution": 96,
+          "unionVolume": 6181.933719832855,
+          "grossVolume": 6792.065961499636,
+          "residual": -0.06943114741014544,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        }
+      ]
+    },
+    {
+      "heightInches": 80,
+      "weightLbs": 350,
+      "targetArtisticVolumeInches3": 9687.966648571093,
+      "estimates": [
+        {
+          "axis": 0,
+          "resolution": 96,
+          "unionVolume": 8761.278248503473,
+          "grossVolume": 9777.11316127025,
+          "residual": -0.09565354977809504,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        },
+        {
+          "axis": 2,
+          "resolution": 96,
+          "unionVolume": 8764.140329892763,
+          "grossVolume": 9777.11316127025,
+          "residual": -0.09535812334929827,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        }
+      ]
+    },
+    {
+      "heightInches": 80,
+      "weightLbs": 500,
+      "targetArtisticVolumeInches3": 13839.95235510156,
+      "estimates": [
+        {
+          "axis": 0,
+          "resolution": 96,
+          "unionVolume": 12088.024365803016,
+          "grossVolume": 13862.531915619984,
+          "residual": -0.12658482806501603,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        },
+        {
+          "axis": 2,
+          "resolution": 96,
+          "unionVolume": 12091.776825049796,
+          "grossVolume": 13862.531915619984,
+          "residual": -0.12631369568316242,
+          "invalidRays": 0,
+          "negativeWindingRays": 0,
+          "componentCount": 28
+        }
+      ]
+    }
+  ],
+  "wholeUnionMassVerified": false,
+  "fullVisualAcceptance": false
+}

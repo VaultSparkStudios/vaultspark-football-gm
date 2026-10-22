@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "scope": "Legacy absent/empty admitted wage financial-clock validation compatibility only",
+  "primaryReceiptPath": "docs/ADMITTED_PAYROLL_LEGACY_2026-10-08.json",
+  "primaryReceiptSha256": "c60ac2b6b5537194b68502cf0f24046db98e2a27db22427b38929cf140286811",
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "91b120345e249767c2d5e83bbd140951844de71d89413d457530dda08f743449",
+    "test/admitted-injury-payroll.test.js": "9bb663d97896351ab2e1488e2033a336789278a8a9125b910543fdf55a8f74a7",
+    "test/browser-save-store.test.js": "4cfc1bcee0abb7006cd631e8e149fd08089fe2918f5daa788def6febc6130c1d",
+    "test/save-integrity.test.js": "c9006cee1088cca529bc6ad491ffaa988b05f81bedb24949e735b6af19a5aeb0",
+    "test/session112-worker-durability.test.js": "3fdc82dfddb5bff5d97bf19912a7e8207d041c989ad6fcec056639b0979c037c"
+  },
+  "checks": [
+    {
+      "command": "node --test test/admitted-injury-payroll.test.js test/session109-css-tokens.test.js test/theme-customizer.test.js",
+      "independent": true,
+      "passed": 17,
+      "failed": 0,
+      "durationMs": 8975.0388,
+      "qualification": "Nine admitted payroll cases, eight token/theme cases"
+    },
+    {
+      "check": "Independent minimal absent/empty and null/object/string/number collection refusal/purity probes",
+      "cases": 6,
+      "result": "PASS"
+    },
+    {
+      "check": "Frozen/current sources",
+      "bindings": 5,
+      "result": "PASS"
+    }
+  ],
+  "sourceObservations": [
+    "Financial authority is skipped only when validated wage array is empty; source continuation and pre-rollover validation still run first",
+    "Cap collections always validated and reconciled against expected wage rows, including empty-payroll orphan refusal",
+    "Nonempty wages still invoke financialYearForLeague and validate original payer/rate/period and current charge equality"
+  ],
+  "primaryExecution": "Primary48/48PASS7064.1432ms attributed to recorded ed1dc9; not independently rerun full persistence set",
+  "findings": [],
+  "limits": [
+    "No runtime/fullsuite rerun or completed current-suite claim",
+    "Does not alter earning rates, source rights, annual default policy, cap classification or NFL entitlement",
+    "Scope is save compatibility, not complete medical/payroll acceptance"
+  ]
+}

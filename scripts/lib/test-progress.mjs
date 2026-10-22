@@ -4,17 +4,19 @@ import path from "node:path";
 export const TEST_PROGRESS_SCHEMA_VERSION = "1.0";
 export const TEST_PROGRESS_RELATIVE_PATH = path.join(".cache", "test-progress.json");
 /**
- * S90 — raised from 20 to 45 minutes when `long` joined the canonical shards.
- * The career-realism decade alone runs ~12 minutes and the whole `long` shard
- * lands near 16-18; a 20-minute ceiling made an honest slow shard a coin flip,
- * and a timeout reads as a failure. A generous ceiling that never lies is worth
- * more than a tight one that sometimes does.
+ * S118 — the expanded core executed 713 assertions in 44m23s, close to the
+ * former 45-minute ceiling. Runtime has also reached that bound on this host.
+ * Keep a finite 90-minute budget for the complete current shards; no test or
+ * assertion is omitted. CI job budgets leave room for this runner to finish.
  */
-export const DEFAULT_SHARD_TIMEOUT_MS = 45 * 60 * 1000;
+export const DEFAULT_SHARD_TIMEOUT_MS = 90 * 60 * 1000;
+// The expanded contract shard exceeded 90 minutes with tests still completing
+// on the S118 host. Keep its larger budget separate from the other shards.
+export const SIM_CONTRACT_TIMEOUT_MS = 150 * 60 * 1000;
 
-export function resolveShardTimeoutMs(value = process.env.TEST_SHARD_TIMEOUT_MS) {
+export function resolveShardTimeoutMs(value = process.env.TEST_SHARD_TIMEOUT_MS, shardName = null) {
   const parsed = Number(value);
-  return Number.isFinite(parsed) && parsed >= 1000 ? Math.floor(parsed) : DEFAULT_SHARD_TIMEOUT_MS;
+  return Number.isFinite(parsed) && parsed >= 1000 ? Math.floor(parsed) : shardName === 'sim-contract' ? SIM_CONTRACT_TIMEOUT_MS : DEFAULT_SHARD_TIMEOUT_MS;
 }
 
 export function buildTestProgress({

@@ -1,0 +1,358 @@
+{
+  "version": "planned-player-trait-authority-v1",
+  "reviewDate": "2026-10-08",
+  "status": "implementation-contract-not-completion-evidence",
+  "purpose": "Complete individual appearance and measurement-compatible bodies requested by the user.",
+  "existingAuthorities": {
+    "savedIdentity": "src/domain/playerVisualIdentity.js",
+    "measurements": "src/domain/playerMeasurements.js",
+    "resolvedPerson": "src/domain/playerIdentity.js",
+    "evidence": "docs/PLAYER_APPEARANCE_EVIDENCE_2026-10-06.json"
+  },
+  "channelSemantics": "Logical requirements for extending existing versions; these names do not assert an implemented save schema.",
+  "groups": [
+    {
+      "id": "background",
+      "channels": [
+        "birth country",
+        "upbringing",
+        "citizenship",
+        "multiple family origins",
+        "source-defined identity responses",
+        "recruitment pathway"
+      ],
+      "authority": "Dated compatible NFL cohorts and country/diaspora observations; separate original categories and denominators.",
+      "provenance": "Observed aggregate context or explicitly assumed conditional sampling; never infer a real individual's race from birthplace.",
+      "acceptance": "background-overlap",
+      "constraint": "No race-derived ratings, potential, personality, intelligence or injury modifiers; no per-team quotas.",
+      "calibrationSupplement": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json"
+    },
+    {
+      "id": "natural-pigmentation",
+      "channels": [
+        "skin pigment",
+        "skin undertone",
+        "natural scalp pigment",
+        "beard pigment",
+        "brow pigment",
+        "iris pigment"
+      ],
+      "authority": "Saved natural identity with supported correlations and individual residuals.",
+      "provenance": "Research supports separate continuous channels; national joint frequencies and renderer color conversions require separate validation.",
+      "sources": [
+        "https://medlineplus.gov/genetics/understanding/traits/eyecolor/",
+        "https://medlineplus.gov/genetics/understanding/traits/haircolor/",
+        "https://www.nature.com/articles/s41467-018-08147-0"
+      ],
+      "jointReference": "docs/PLAYER_PIGMENT_JOINT_REFERENCE_2026-10-07.json",
+      "acceptance": [
+        "iris-only",
+        "undertone-equal-light",
+        "within-color-pigment-variation",
+        "grooming-only"
+      ]
+    },
+    {
+      "id": "natural-hair",
+      "channels": [
+        "curl geometry",
+        "strand thickness",
+        "density",
+        "hairline",
+        "beard growth",
+        "brow density"
+      ],
+      "authority": "Saved natural recipe; grooming and chemical treatments resolve visible state separately.",
+      "provenance": "Texture/thickness distinctions researched; unsupported occurrence rates remain artistic assumptions.",
+      "sources": [
+        "https://medlineplus.gov/genetics/understanding/traits/hairtexture/"
+      ],
+      "acceptance": [
+        "style-texture-matrix",
+        "grooming-only"
+      ],
+      "calibrationSupplement": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json"
+    },
+    {
+      "id": "grooming",
+      "channels": [
+        "cut",
+        "length",
+        "part",
+        "arrangement",
+        "dye",
+        "treatment",
+        "gray-fiber coverage",
+        "separate dated scalp/brow/beard aging and density trajectories",
+        "facial-hair style"
+      ],
+      "authority": "Separate mutable saved grooming state, resolved through the same natural person.",
+      "provenance": "Style inventory is a design choice; prevalence requires dated evidence or a declared assumption.",
+      "acceptance": [
+        "grooming-only",
+        "style-texture-matrix",
+        "career-continuity",
+        "shaving-dye-and-follicle-aging-distinct"
+      ]
+    },
+    {
+      "id": "surface-individuality",
+      "channels": [
+        "restrained freckle coverage",
+        "stable small cosmetic skin marks",
+        "dated cosmetic scars",
+        "optional cosmetic adornment"
+      ],
+      "authority": "Stable anatomical-surface coordinates for natural marks; separately dated cosmetic presentation.",
+      "provenance": "Pigment association evidence supports variation, not compulsory bundles or national/NFL prevalence; unobserved frequencies remain artistic assumptions.",
+      "sources": [
+        "https://medlineplus.gov/genetics/gene/mc1r/"
+      ],
+      "acceptance": [
+        "skin-marks-follow-anatomical-surface",
+        "career-continuity",
+        "view-consistency"
+      ],
+      "constraint": "No inferred medical condition, injury history, background or football modifier from cosmetic marks. Preserve existing save decoders and football RNG."
+    },
+    {
+      "id": "face",
+      "channels": [
+        "orbital region",
+        "nose",
+        "lips",
+        "cheeks",
+        "jaw",
+        "chin",
+        "ears",
+        "asymmetry"
+      ],
+      "authority": "Stable regional facial recipe shared by front, side and moving views.",
+      "provenance": "Research supports individual regional variation; unsupported shape frequencies remain artistic assumptions.",
+      "acceptance": [
+        "background-overlap",
+        "career-continuity",
+        "view-consistency"
+      ]
+    },
+    {
+      "id": "skeleton",
+      "channels": [
+        "standing height",
+        "source-defined arm length",
+        "wingspan",
+        "hand span versus length",
+        "foot length",
+        "shoulder breadth",
+        "pelvic breadth",
+        "torso and leg segment lengths"
+      ],
+      "authority": "Recorded measurements first, followed by stable compatible estimates for absent dimensions.",
+      "provenance": "Each dimension retains units, source, date, endpoint/method and observed versus estimated status. Do not equate hand span with hand length.",
+      "acceptance": [
+        "equal-height-different-weight",
+        "equal-height-weight-different-proportions",
+        "view-consistency"
+      ],
+      "constraint": "Resolve contradictory inputs explicitly. Validate source endpoints and standing segment reconstruction independently of pose, hair and footwear."
+    },
+    {
+      "id": "regional-build",
+      "channels": [
+        "dated weight",
+        "measured or estimated composition",
+        "neck",
+        "chest",
+        "waist",
+        "hips",
+        "upper/lower arms",
+        "thighs",
+        "calves",
+        "trunk depth"
+      ],
+      "authority": "Dated mass and available composition observations constrain compatible regional volume around the saved skeleton.",
+      "provenance": "Height/weight do not uniquely determine composition or girths. Fixed tissue-density and regional-allocation proxies remain artistic until externally validated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/41369529/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3392155/"
+      ],
+      "acceptance": [
+        "equal-height-different-weight",
+        "equal-height-weight-different-proportions",
+        "career-continuity",
+        "dated-physical-transitions"
+      ],
+      "developmentReference": "docs/PLAYER_PHYSICAL_DEVELOPMENT_REFERENCE_2026-10-07.json",
+      "calibrationSupplement": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json"
+    },
+    {
+      "id": "physical-motion",
+      "channels": [
+        "speed",
+        "acceleration",
+        "direction change",
+        "jumping",
+        "strength",
+        "endurance"
+      ],
+      "authority": "Separate physical capacities drive movement through the measurement-constrained skeleton.",
+      "provenance": "Workout observations and game-motion estimates retain distinct provenance. Neither overall rating nor race establishes anatomy.",
+      "acceptance": [
+        "equal-anatomy-different-capacities",
+        "heavy-fast-light-slow",
+        "view-consistency",
+        "dated-physical-transitions"
+      ],
+      "constraint": "Preserve bone lengths, joint bounds, ground contact and reach while varying motion. Cosmetic randomness remains independent of football simulation.",
+      "developmentReference": "docs/PLAYER_PHYSICAL_DEVELOPMENT_REFERENCE_2026-10-07.json"
+    }
+  ],
+  "fixtures": {
+    "pacific-diaspora-and-territory-scope": "Keep American Samoa, independent Samoa and U.S. residence/birth distinct. U.S.-born players can retain detailed Pacific family identities and mixed responses. Resident census counts are not NFL birthplace-conditioned frequencies or anatomy coefficients.",
+    "alone-and-combination-counts-overlap": "Retain source-defined race-alone and alone/in-any-combination universes. Never add overlapping detailed Pacific identity counts or normalize them as mutually exclusive player probabilities. Preserve affected Island Areas table exclusions; absent ACS coverage is not zero population.",
+    "dxa-ratio-is-not-skeletal-breadth": "The reviewed 553-player college DXA abstract supplies regional lean/fat/mineral evidence, not individual external contours. Bone mineral content is not total bone mass or shoulder breadth; DXA lean mass is not exclusively muscle. Ratios cannot instantiate a measured frame.",
+    "games-played-outcome-is-not-innate-ability": "Preserve the 2025 combine study's games-per-season grouping and reviewed abstract scope. Opportunity/availability-selected outcomes and marginal significance cannot become causal talent, physique or demographic modifiers; coefficient adoption requires full methods and held-out validation.",
+    "within-birthplace-complete-person-variation": "Hold birthplace, position and age fixed. Inspect recognizable variation in compatible backgrounds, face, pigmentation, grooming and frame across common-scale and ordinary views. Deliberate coverage cases are not equal-frequency population targets; retain source-conditioned sampling uncertainty.",
+    "joint-fit-reports-physical-unit-residuals": "Reconstruct supported stature, reach, limb segments and girths from the shared mesh before projection. Preserve observation precision, endpoints and original values. Tolerances follow source precision and declared fit uncertainty; incompatible observations produce explicit physical-unit residuals or refusal without template replacement.",
+    "split-timed-motion-preserves-anatomy": "At fixed saved anatomy, constrain cumulative movement at supported sprint distances using measured split times and timing protocol. Preserve bone lengths, joint limits and foot contacts. Missing reactive agility, endurance or force measures remain unknown; speed improvements cannot inflate tissue.",
+    "constant-mass-regional-career-change": "At unchanged recorded mass and stature, resolve supported dated regional composition changes through all views and actual save/load while preserving natural identity and provenance. Different measurement methods cannot masquerade as observed development. The 188-player college abstract is mechanism evidence, not an NFL seasonal-rate or shape-coefficient authority.",
+    "country-category-crosswalk-retains-meaning": "Keep South African population-group and Brazilian self-reported color/race instruments alongside original labels and years. No automatic genetic mixture, pigment or U.S. survey-category conversion. Resident national shares do not supply birthplace-conditioned NFL probabilities.",
+    "partial-rounded-margins-preserve-gap": "The four reviewed South African Census 2022 shares total 99.6 percent. Retain the unclassified excerpt gap without assigning it to unknown or another identity; retrieve compatible complete counts before normalization. Partial Brazilian indexed figures remain partial, not an invented full probability vector.",
+    "incoming-pathway-class-is-not-roster-stock": "Keep 13 incoming 2026 pathway athletes from ten countries distinct from 20 pathway roster players from eleven countries or territories entering Week 1, including four active. Preserve intake year, observation date and roster universe; no mixed-denominator shares.",
+    "league-and-country-calibration-reconcile-jointly": "When adopting country/background conditionals, report their implied league margins alongside dated NFL targets, missing responses, unsupported cells, smoothing and residual error. Preserve incompatible constraints explicitly; validate independent league seeds with uncertainty rather than enforcing identical team quotas.",
+    "historical-nfl-margin-is-not-current": "Retain 2023 TIDES counts, original category definitions and nondisclosure denominator as historical evidence. Refuse a current-year label or country-conditioned fit without a compatible dated source cohort.",
+    "pigment-label-is-not-a-fixed-swatch": "Hold natural person and lighting fixed; inspect neighboring continuous skin, hair and iris controls under the same displayed color label at ordinary portrait size. Named labels cannot collapse individual visible variation or impose a fixed background palette.",
+    "neutral-rig-preserves-measured-segments": "Independently reconstruct actual shoulder/hip bone centers and upper/lower limb lengths across neutral, profile and all six moving views. Bulk changes preserve skeletal roots and lengths; pose clearance changes angles only. Preserve versioned legacy rendering.",
+    "unobserved-grooming-is-not-natural-color": "Dated grooming observations retain eligible cohort, unknowns, occlusion and visible dye status. Unknown natural pigment is not filled from dyed visible hair; style eligibility is not uniform measured prevalence. Saved natural identity survives presentation changes.",
+    "regional-section-not-global-taper": "New-version shared chest, abdomen and pelvic soft-tissue sections support compatible straight, tapered and fuller forms without forcing lower sections narrower than chest. Recorded stature, reach and source dimensions survive. Front/profile/bust/motion consume the same sections; common-scale and ordinary-size inspection must reject a merely widened lighter-body template. Existing saved recipe decoders remain stable.",
+    "girth-site-is-not-interchangeable": "Retain chest, minimal-waist, umbilical and hip circumference sites, units, date, posture, method and uncertainty. Unknown sites cannot silently constrain a different anatomical section. Circumference alone cannot supply unique width and depth; compatible missing dimensions remain jointly estimated.",
+    "composition-method-continuity": "Dated DXA, BIA and anthropometric composition estimates retain method and instrument. Do not interpret a method change as observed regional tissue development. Capacity-only changes preserve the saved body; actual measured/estimated physical transitions and their uncertainty persist through named-save replacement/load/reload.",
+    "joint-shape-reconstruction": "Evaluate held-out athlete reconstruction and conditional covariance for linked segments, breadths, depths and girths. Report source endpoints, residual units, uncertainty, supported strata and extrapolation; marginal means alone cannot qualify the fit.",
+    "reference-tail-preserves-player": "Valid recorded measurements outside fitted reference support stay unchanged through generation, view resolution and named-save replacement/load/reload. Statistical rarity is distinct from conflicting measurements; preserve a compatible heavy-fast athlete.",
+    "boundary-model-is-not-prevalence": "Deterministic accommodation boundary examples remain visual stress cases. Player generation uses an explicitly supported joint sampling distribution with individual residuals and cohort denominators; boundary exemplars cannot become uniformly weighted body templates.",
+    "source-total-conflict": "Validate subtotals and denominators before adopting observations. Preserve a contradictory source cell with its location and disposition; do not silently choose it or repair it into fitted authority.",
+    "within-color-pigment-variation": "Matched natural persons within the same named eye or hair color retain visibly different saved pigment values and iris patterns under identical lighting. Front/profile agree; small parameter steps remain bounded and coherent. Color-space conversion and frequency assumptions retain separate provenance.",
+    "background-overlap": "Same birthplace and position, different compatible backgrounds and recognizable individuals; no rigid national face preset.",
+    "iris-only": "Same saved person and lighting with different iris pigments, legible at dossier size.",
+    "undertone-equal-light": "Isolate skin undertone under identical reference lighting, then verify consistency across themes.",
+    "grooming-only": "Same natural person before/after cut, dye, beard and treatment changes; natural pigment and skeletal identity preserved.",
+    "style-texture-matrix": "Inspect every supported legal style/texture pair, including shaved, sparse, receding, braided, loc and long-hair states, for geometry and clipping.",
+    "equal-height-different-weight": "Common-scale equal-stature bodies show compatible mass differences without arbitrary height changes.",
+    "equal-height-weight-different-proportions": "Compatible equal-height/equal-weight people retain different segment proportions and regional builds.",
+    "equal-anatomy-different-capacities": "Identical skeleton and build exhibit different movement timing/displacement without body inflation.",
+    "heavy-fast-light-slow": "Valid capacity/build combinations survive generation and rendering instead of being forced into positional stereotypes.",
+    "view-consistency": "Roster, scouting, draft, dossier, front/side and motion resolve the same saved person.",
+    "career-continuity": "Trade, named-save replacement/load/reload, aging, grooming and dated weight changes preserve recognizable identity and simulation independence.",
+    "dated-physical-transitions": "Actual dated weight gain, observed composition redistribution at constant mass, and capacity-only improvement preserve stable stature/reach and natural identity. Front/side/motion and named-save replacement/load/reload agree. Missing composition stays estimated.",
+    "conditional-denominator-direction": "Reject an attempted inversion of a birthplace-within-group observation into group-within-birthplace weights; require a compatible denominator and cohort.",
+    "hair-continuity-boundaries": "Hold person, grooming and lighting fixed; inspect neighboring curl values across texture-label boundaries for smooth geometry and bounded strand variation in front and side views.",
+    "composition-method-and-cohort-overlap": "Flag incompatible measurement methods and unresolved overlapping cohorts before fitting; preserve estimated-versus-measured status and source observations.",
+    "dated-observed-athletic-outliers": "Use the dated Sadiq/Cruz/Jones regression inputs with measurement precision intact. Preserve unknown dimensions and provenance for any estimated completion. Render compatible bulk and the recorded performance context without fitting population prevalence, race, composition or gait from these cases.",
+    "grooming-sampling-frame": "Require one dated observation per eligible player, distinct roster/prospect cohorts, trait-level occlusion/unknowns and an explicit denominator. Missing dye/texture visibility must not count as a measured natural trait; supported styles do not imply uniform prevalence. Save natural identity through cut/dye changes.",
+    "measurement-conflict-preserves-observation": "Inconsistent stature/reach/segment observations produce a disclosed residual or refusal without silently overwriting recorded values. Source endpoints, precision and estimates survive actual save replacement/load/reload.",
+    "unknown-drill-remains-unknown": "A missing endurance, reactive agility, jump or strength observation remains unknown. A measured 40-yard time cannot invent these observations or morphology; an illustrative animation retains its separate authority.",
+    "regional-girth-constraint": "Compatible observed regional girths constrain the saved surface while preserving stature, reach and mass authority. Missing dimensions retain estimated status, joint residuals and fitting provenance.",
+    "equal-girth-different-depth": "Matched circumference can resolve to different compatible front widths and profile depths under explicit cross-section assumptions. Every body and movement view consumes the same saved sections.",
+    "skeleton-versus-soft-tissue": "Dated bulk changes preserve recorded skeletal breadth and bone lengths. Mass changes cannot reroll the skeleton; source-defined breadth and girth endpoints remain distinct.",
+    "athleticism-without-body-fat-invention": "Capacity-only development changes the corresponding motion without fabricating composition observations. Preserve heavy-fast cases and exclude identity, skin, eye and hair labels from performance modifiers.",
+    "household-is-not-ancestry": "Reject household-level diversity as an individual mixed-ancestry weight. Preserve observational unit, original identity schema, compatible person denominator and birthplace conditional.",
+    "exploratory-summary-is-not-joint-fit": "Published univariate summaries or in-sample classification cannot supply individual covariance, body-performance relationships or current NFL frequencies. Preserve unresolved participant/protocol contradictions and estimated tissue status before fitting.",
+    "stature-allometry-preserves-observation": "Compare a stature-dependent joint segment model with uniform scaling on held-out compatible observations. Recorded stature, reach and segment endpoints remain unchanged; missing anatomy retains estimated status and residual variation.",
+    "ancestry-response-order-is-not-dominance": "Source ancestry response processing order cannot choose dominant biological ancestry, pigment, facial structure or a genetic mixture. Preserve original multiple-response semantics and source limits; counts of responses are not mutually exclusive counts of people.",
+    "international-born-is-not-ipp": "Keep birth country, citizenship, residence, upbringing and International Player Pathway participation separate. Foreign birth alone cannot establish program eligibility or participation; imported source-defined fields survive persistence.",
+    "season-cohort-is-not-opening-share": "Do not divide distinct season-wide international participants by nominal opening-roster capacity to claim a measured opening-day share. Require matching date, roster scope, territory definition and total-person denominator before calibrating recruitment weights.",
+    "declared-geography-total-conflict": "Retain the official 2025 overview's stated 38 countries/territories and its 39 displayed entries as an unresolved source discrepancy. Reconcile definitions before adopting geography totals; a location list cannot establish per-country recruitment weights.",
+    "pigment-study-sample-is-not-country-frequency": "Preserve recruitment frame, site, illumination, sex/age coverage and natural-versus-dyed measurement eligibility. A convenience sample or study association cannot become national/NFL pigment occurrence probabilities.",
+    "race-instrument-version-continuity": "Keep historical 2020 separate-question categories and original counts; record the 2024 combined standard and MENA category separately. Do not silently recode historical NFL cohorts or treat a reporting change as a new biological appearance type.",
+    "ethnicity-combinations-count-people-once": "Use compatible person-level combination outputs. Total-response ethnicity may exceed the person denominator; preserve detailed Samoan/Tongan responses without duplicating a Pacific-level person. Administrative response limits do not establish genetic mixture shares.",
+    "appearance-detail-preserves-football-rng": "Changing visual channels or renderer detail preserves football RNG, talent, potential, personality and injury probabilities. Each changed trait must have inspected visible effects at roster/draft/dossier size and preserve the natural person through save restoration.",
+    "repeated-scans-are-not-independent-people": "Preserve person and scan counts separately; repeated measurements are longitudinal observations rather than extra sampled athletes. Retain selection rule, cohort and season when fitting body distributions.",
+    "marginal-extremes-are-not-a-joint-person": "Published regional minima, maxima and position averages cannot be combined as an observed individual. Validate a joint fit using compatible records or record covariance as an explicit assumption, then inspect complete front, three-quarter, profile and motion views.",
+    "census-metadata-is-not-conditional-counts": "A reviewed birthplace/population-group table definition does not supply fitted probabilities until compatible cells, person denominators, uncertainty and missingness are extracted and verified. Canadian-resident counts do not describe all Canadian-born people worldwide.",
+    "equal-capacity-different-bodies": "Different compatible measured bodies demonstrate equal saved capacity without silently changing bones, mass or pigmentation. Compare actual timed travel and contacts; record artistic animation mappings separately from football simulation outcomes.",
+    "equipment-is-not-anatomy": "The same saved player resolves unpadded and uniform/pad/helmet views coherently. Equipment width does not overwrite measured skeletal breadth, and helmet removal restores grooming without rerolling natural identity.",
+    "small-cohort-regression-is-not-anatomy": "The 2025 selected 39-player draft-camp abstract supplies contextual biomechanics evidence, not validated league coefficients or causal body reconstruction. Never invert performance regression into asserted muscle, fat or limb observations; retain measurement-method and reviewed-scope provenance.",
+    "hair-curvature-thickness-independent": "Change curvature at fixed strand thickness, and thickness at fixed curvature, while preserving face, pigment, football attributes and RNG. A population association cannot become a universal causal mapping or national prevalence. Inspect continuous geometry across named texture boundaries; record the 140-person selected study and treatment/measurement context separately from simulation assumptions.",
+    "pathway-and-foreign-birth-cohorts-distinct": "Keep the 2026 Week 1 program cohort (20 participants, four active) separate from the 2025 foreign-born season cohort (126 participants, 61 active). Do not divide mismatched dates or roster universes, infer racial identity from pathway eligibility, or adopt country weights without compatible counts.",
+    "grouped-birthplace-does-not-create-country-counts": "Preserve RM010 grouped birthplace/ethnicity dimensions and England/Wales resident selection. Reviewed metadata is not extracted joint counts; regional groups cannot be split into observed country frequencies or transported directly to NFL recruitment. Require compatible cell denominators before fitting.",
+    "skin-marks-follow-anatomical-surface": "Saved restrained freckles and small cosmetic marks remain attached to one person's surface through front, profile, blink, expression and body poses. Matched pigment/mark comparisons preserve anatomy, identity and football RNG. Pigment associations supply no compulsory bundle or national prevalence; scars/adornment remain separate dated cosmetic state.",
+    "shaving-dye-and-follicle-aging-distinct": "At fixed natural identity compare shaved versus thinning, dyed versus underlying gray, and independently timed scalp/brow/beard progression. Save/reload and trades preserve natural pigment, density trajectory and dated presentation. Source mechanism evidence cannot become unverified NFL onset/rate coefficients.",
+    "iris-pigment-and-pattern-distinct": "Hold face, lighting and pupil fixed; vary iris pigment and radial/central/rim pattern independently as controlled rendering comparisons. Inspect ordinary dossier size and close-up, preserve front/profile/blink continuity, and report occlusion at smaller sizes. Cosmetic variation cannot imply a medical condition, vision rating or injury.",
+    "separate-channels-not-independent-populations": "Separate saved skin, scalp, brow, beard and iris controls retain individually variable natural traits. Fitted correlation uses compatible joint observations or declared assumptions; no mandatory bundle, country-to-color rule or single-gene dominance rule. A selected pigmentation cohort cannot supply national or NFL frequencies.",
+    "pads-and-clothes-preserve-measured-anatomy": "Compare one saved person with clothing/pads and without their added thickness. Underlying measured shoulder breadth, chest depth, stature, mass and skeletal endpoints remain exact; helmet occlusion preserves head and hair. Equipment volume is presentation, not a physique measurement.",
+    "extracted-table-is-not-validated-generator": "Advance source-specific acquisition status when retained observations exist, without claiming a fitted population model or finished rendering. ONS RM010 retained 31776 cells aggregate to 96 grouped cells, not country-specific NFL conditionals. Record discovered/reviewed/extracted/fitted/generated/visually inspected stages separately.",
+    "modern-measurement-tails-all-views": "Preserve supported canonical height/mass across modern frame, skeleton, static body and motion, including the demonstrated 410-pound, 87-inch and 130-pound cases. Report unsupported fits rather than substituting source measurements. Preserve legacy version decoding; common-scale anatomy must not clip or be concealed by individual zoom.",
+    "whole-rendered-region-mass-accounting": "Reconstruct every drawn region with physical units and explicit tissue assumptions; report recorded-mass residual and unmodeled regions. A reserved head/hands/feet percentage and exact torso integration do not prove complete rendered-body mass.",
+    "source-nativity-is-not-geographic-birthplace": "Keep citizenship-at-birth, source-defined nativity and geographical birthplace distinct, including U.S. citizens born abroad. Reconcile source universes, dates and residence selection before transporting demographic probabilities.",
+    "cross-sectional-cohort-not-career-trajectory": "College age/position groups, BIA/DXA summaries and split-based performance estimates cannot establish an individual NFL growth trajectory, visible muscle dimensions or unobserved athletic capacities. Retain method and selection scope; longitudinal changes require dated observations or declared game estimates."
+  },
+  "acceptancePolicy": "Actual-size and common-scale image inspection on touched views, desktop/mobile and all themes, plus measurement reconstruction, compatible population diagnostics and save continuity. Numeric uniqueness is insufficient.",
+  "runtimeCoefficientsChanged": false,
+  "calibrationSupplement": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json",
+  "measuredCaseReference": "docs/PLAYER_APPEARANCE_MEASURED_CASES_2026-10-07.json",
+  "regionalBodyReference": "docs/PLAYER_REGIONAL_BODY_REFERENCE_2026-10-07.json",
+  "jointBodyFittingReference": "docs/PLAYER_JOINT_BODY_FITTING_REFERENCE_2026-10-07.json",
+  "researchFollowthrough": "docs/PLAYER_APPEARANCE_RESEARCH_FOLLOWTHROUGH_2026-10-07.json",
+  "completeAppearanceCalibration": "docs/PLAYER_COMPLETE_APPEARANCE_CALIBRATION_2026-10-07.json",
+  "demographicsExpansion": "docs/PLAYER_APPEARANCE_DEMOGRAPHICS_EXPANSION_2026-10-07.md",
+  "completePersonFollowup": {
+    "reviewDate": "2026-10-08",
+    "status": "planned-requirements-not-runtime-completion",
+    "reference": "docs/PLAYER_APPEARANCE_DEMOGRAPHICS_EXPANSION_2026-10-07.md#complete-person-priority-and-additional-athlete-evidence--october-8",
+    "reviewedScope": "Indexed primary abstracts/methods and official Census guidance; no individual joint records or new fitted coefficients.",
+    "sources": [
+      "https://pubmed.ncbi.nlm.nih.gov/37160263/",
+      "https://pubmed.ncbi.nlm.nih.gov/39316792/",
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC11042886/",
+      "https://www.census.gov/topics/population/foreign-born/guidance/acs-guidance/acs-by-table-number.html",
+      "https://www.census.gov/topics/population/foreign-born.html"
+    ],
+    "requirements": {
+      "modern-measurement-tails-all-views": "Preserve supported canonical height/mass across modern frame, skeleton, static body and motion, including the demonstrated 410-pound, 87-inch and 130-pound cases. Report unsupported fits rather than substituting source measurements. Preserve legacy version decoding; common-scale anatomy must not clip or be concealed by individual zoom.",
+      "whole-rendered-region-mass-accounting": "Reconstruct every drawn region with physical units and explicit tissue assumptions; report recorded-mass residual and unmodeled regions. A reserved head/hands/feet percentage and exact torso integration do not prove complete rendered-body mass.",
+      "source-nativity-is-not-geographic-birthplace": "Keep citizenship-at-birth, source-defined nativity and geographical birthplace distinct, including U.S. citizens born abroad. Reconcile source universes, dates and residence selection before transporting demographic probabilities.",
+      "cross-sectional-cohort-not-career-trajectory": "College age/position groups, BIA/DXA summaries and split-based performance estimates cannot establish an individual NFL growth trajectory, visible muscle dimensions or unobserved athletic capacities. Retain method and selection scope; longitudinal changes require dated observations or declared game estimates."
+    }
+  },
+  "appearanceChannelCohortContract": {
+    "reviewDate": "2026-10-08",
+    "status": "plan-only-not-runtime-calibration",
+    "reference": "docs/PLAYER_APPEARANCE_DEMOGRAPHICS_EXPANSION_2026-10-07.md#appearance-channel-and-cohort-contract--october-8",
+    "runtimeCoefficientsChanged": false,
+    "sourceScopes": [
+      "2020 US census reporting categories and multiple responses",
+      "2021 Canadian private-household sample metadata, no selected cell counts",
+      "2021 Australian resident cultural diversity analysis",
+      "NHGRI descriptor guidance",
+      "MedlinePlus pigmentation and hair mechanisms, no country-conditioned frequencies",
+      "2014 NFL 411-player composition indexed abstract, no raw joint records"
+    ],
+    "requiredChannels": [
+      "skin pigment and undertone",
+      "iris pigment and stable pattern",
+      "natural scalp brow beard pigment",
+      "curl geometry strand thickness density hairline",
+      "dated cut arrangement length dye treatment facial hair",
+      "persistent facial anatomy and surface individuality",
+      "linked measured skeleton",
+      "regional breadth depth and dated physical state",
+      "separate athletic motion capacities"
+    ],
+    "requiredComparisons": [
+      "within-birthplace background and appearance variation",
+      "within-background face and pigment variation",
+      "fixed natural hair with changed grooming",
+      "fixed height and weight with different regional build",
+      "fixed anatomy with changed athletic capacities",
+      "dated physical change with persistent identity"
+    ],
+    "calibrationLimits": [
+      "world resident shares are not NFL selection shares",
+      "multiple responses cannot be summed as exclusive people",
+      "birthplace is distinct from ancestry and upbringing",
+      "newer compatible NFL player race table remains unverified",
+      "height and weight do not uniquely define shape",
+      "no race or pigment modifiers for football capacity or potential"
+    ]
+  }
+}

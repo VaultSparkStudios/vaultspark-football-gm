@@ -1,0 +1,24 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const read=async file=>{const source=fs.readFileSync(file,'utf8').replace("'./playerSurfaceLighting.js'",JSON.stringify(new URL('../public/lib/playerSurfaceLighting.js',import.meta.url).href));return import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));};
+// The earlier continuous-hair reference predates the independently accepted
+// face/chin overhaul. Preserve that file; compare current hair compatibility
+// against the frozen renderer containing the accepted face, before this work.
+const before=await read('docs/visual-qa/references/player-hair-volume-before-2026-10-08.js'),after=await read('public/lib/playerHead3d.js');
+const colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'};
+const mesh=(module,a)=>module.buildHeadMesh3d(a,colors,{identitySeed:'continuous-fixed-person',headOnly:true});
+test('all 56 legacy combinations remain exact',()=>{for(const hairstyle of ['shaved','buzz','fade','crew','waves','short-curls','coils','afro','side-part','swept','long','locs','braids','receding'])for(const hairTexture of ['straight','wavy','curly','coily']){const a={hairstyle,hairTexture};assert.deepEqual(mesh(after,a),mesh(before,a));}});
+test('all continuous label boundaries keep fixed topology and bounded neighboring geometry',()=>{
+ for(const hairstyle of ['crew','fade','side-part','long','afro'])for(const boundary of [1,2]){
+  const base={hairstyle,hairTextureVersion:'continuous-hair-texture-v1',hairDensity:.4},a=mesh(after,{...base,hairTexturePosition:boundary-.0001,hairTexture:boundary===1?'straight':'wavy'}),b=mesh(after,{...base,hairTexturePosition:boundary+.0001,hairTexture:boundary===1?'wavy':'curly'});
+  assert.deepEqual(a.indices,b.indices);assert.equal(a.vertices.length,b.vertices.length);let delta=0;for(let i=0;i<a.vertices.length;i++)if(i%10<3)delta=Math.max(delta,Math.abs(a.vertices[i]-b.vertices[i]));assert.ok(delta<.01,hairstyle+' '+boundary+' '+delta);
+ }
+});
+test('continuous positions remain finite and bounded, independent of label, while arranged grooming hides loose texture',()=>{
+ for(const hairstyle of ['crew','side-part','long','afro','locs','braids'])for(const position of [0,.5,1,1.5,2,2.5,3]){
+  const a={hairstyle,hairTextureVersion:'continuous-hair-texture-v1',hairTexturePosition:position,hairTexture:'straight',hairDensity:1,hairLength:2,hairStrandWidth:1.5,hairCurvature:1.45},input=structuredClone(a),m=mesh(after,a);
+  assert.ok(m.vertices.every(Number.isFinite));assert.ok(m.vertices.byteLength+m.indices.byteLength<1650000);assert.deepEqual(a,input);assert.deepEqual(m.vertices,mesh(after,{...a,hairTexture:'coily'}).vertices);
+  if(['locs','braids'].includes(hairstyle))assert.deepEqual(m.vertices,mesh(after,{...a,hairTexturePosition:0}).vertices);
+ }
+});

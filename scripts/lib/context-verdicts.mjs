@@ -17,15 +17,33 @@
 //   WARN_COMPACT_SOON → 0   soft warn; compaction predicted soon, autosave but continue
 //   CONSIDER_CLOSEOUT → 2   wrap up soon
 //   CLOSEOUT          → 3   stop now; continuation risks truncation
+//   UNMEASURED        → 4   the gauge could not read anything — honest dark
 //
 // A non-zero exit is a ROUTING SIGNAL, not a failure — callers that only want the
 // JSON must read stdout regardless of exit status (spawnSync, not execSync).
-
+//
+// ── UNMEASURED (S262, reported by vaultsparkstudios-website S302) ─────────────
+// The meter used to fall through to a byte-count heuristic when NOTHING was
+// readable — no Stop-hook ledger entry, no interactive turn, no live transcript —
+// and then emit a percentage and a confident CONTINUE from it. In the field that
+// produced "1.5% used · CONTINUE" for a session actually sitting at ~154% of its
+// window: the one gauge whose whole purpose is to stop an agent from overrunning
+// told it to keep going, and every downstream gate that consumed the reading
+// inherited the lie.
+//
+// The byte heuristic was never a context measurement — it sums context FILE sizes,
+// git churn, and hook metrics, none of which is the agent's window usage.
+//
+// UNMEASURED is deliberately neither 0 nor 3: an unreadable gauge must not be able
+// to say "you're fine", exactly as it must not be able to say "you're broken".
+// Consumers treat it as honest-dark — proceed if they have other grounds, but they
+// may NOT report a context percentage, and they may NOT substitute 0.
 export const VERDICTS = Object.freeze([
   'CONTINUE',
   'WARN_COMPACT_SOON',
   'CONSIDER_CLOSEOUT',
   'CLOSEOUT',
+  'UNMEASURED',
 ]);
 
 export const VERDICT_EXITS = Object.freeze({
@@ -33,7 +51,13 @@ export const VERDICT_EXITS = Object.freeze({
   WARN_COMPACT_SOON: 0,
   CONSIDER_CLOSEOUT: 2,
   CLOSEOUT: 3,
+  UNMEASURED: 4,
 });
+
+/** True when the verdict carries no usable context reading. */
+export function isUnmeasured(v) {
+  return v === 'UNMEASURED';
+}
 
 export function isValidVerdict(v) {
   return VERDICTS.includes(v);

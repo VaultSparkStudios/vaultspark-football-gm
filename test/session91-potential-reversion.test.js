@@ -229,10 +229,11 @@ test("camp cuts hold the cap against the league that comes to rest, not an inter
   // club held 49 — below the floor — and without donors this test would have
   // been measuring the trapped path while claiming to measure enforcement.)
   const donorId = league.teams.find((team) => team.id !== target.id && team.id !== session.controlledTeamId).id;
-  const donors = league.players.filter((player) => player.teamId === donorId && player.status === "active").slice(0, 12);
+  const donors = league.players.filter((player) => player.teamId === donorId && player.status === "active" && player.rosterSlot === "active").slice(0, 12);
   for (const player of donors) player.teamId = target.id;
 
-  const roster = league.players.filter((player) => player.teamId === target.id && player.status === "active");
+  // Annual cap-pressure fixtures must not overwrite weekly practice terms.
+  const roster = league.players.filter((player) => player.teamId === target.id && player.status === "active" && player.rosterSlot === "active");
   assert.ok(roster.length > 53, `fixture needs a club above the active-roster floor, got ${roster.length}`);
   for (const player of roster.slice(0, 3)) {
     player.contract = { ...(player.contract || {}), capHit: 40_000_000, signingBonus: 0, capYears: 1, yearsRemaining: 2, deadCapRemaining: 0 };
@@ -255,7 +256,7 @@ test("camp cuts never touch the controlled franchise", () => {
   // cut the player's roster would be the worst possible place to break it.
   const session = createSession({ seed: 20260817, startYear: 2026, controlledTeamId: "BUF" });
   const league = session.league;
-  const mine = league.players.filter((player) => player.teamId === "BUF" && player.status === "active");
+  const mine = league.players.filter((player) => player.teamId === "BUF" && player.status === "active" && player.rosterSlot === "active");
   for (const player of mine.slice(0, 12)) {
     player.contract = { ...(player.contract || {}), capHit: 40_000_000, signingBonus: 0, capYears: 1, yearsRemaining: 2, deadCapRemaining: 0 };
   }
@@ -263,7 +264,7 @@ test("camp cuts never touch the controlled franchise", () => {
 
   session.enforceLeagueLegality();
 
-  const after = league.players.filter((player) => player.teamId === "BUF" && player.status === "active").length;
+  const after = league.players.filter((player) => player.teamId === "BUF" && player.status === "active" && player.rosterSlot === "active").length;
   assert.equal(after, before, "the controlled franchise must keep its roster and its own decision");
   assert.ok(capSpaceForTeam(league, "BUF") < 0, "and must remain visibly over the cap rather than silently trimmed");
 });

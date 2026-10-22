@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-07",
+  "scope": "Bounded core verification diagnostics; not canonical all-suite or full-feature acceptance",
+  "firstGroup": {
+    "files": [
+      "test/headless-regular-medical.test.js",
+      "test/admitted-pre-rollover-recovery.test.js",
+      "test/admitted-postseason-recovery.test.js",
+      "test/regular-medical-recovery.test.js",
+      "test/regular-injury-accrual.test.js",
+      "test/admitted-injury-payroll.test.js"
+    ],
+    "range": [
+      0,
+      6
+    ],
+    "passed": 43,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 110875.7946,
+    "qualification": "Observed terminal result from resumed session60139; no pre-run source digest captured"
+  },
+  "groups": [
+    {
+      "schemaVersion": 1,
+      "scope": "Bounded core partition diagnostics, not canonical all-suite receipt",
+      "partition": {
+        "start": 6,
+        "end": 12,
+        "completeFiles": 96,
+        "files": [
+          "test/offseason-medical-calendar.test.js",
+          "test/admitted-injury-continuation.test.js",
+          "test/player-capacity-study.test.js",
+          "test/player-structured-hair.test.js",
+          "test/player-static-definition.test.js",
+          "test/injury-claim-negotiation.test.js"
+        ]
+      },
+      "sourceDigestBefore": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceDigestAfter": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceStable": true,
+      "result": {
+        "name": "core",
+        "status": 0,
+        "timedOut": false,
+        "durationMs": 38599,
+        "summary": {
+          "valid": true,
+          "reason": null,
+          "tests": 29,
+          "pass": 29,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "durationMs": 38599
+        }
+      },
+      "wholeCoreAccepted": false,
+      "artifact": ".cache/core-group-6-12.json",
+      "sha256": "6141cdbb40cfdb8e331576c0eb6142e81ecd85d96eae63fc933d047fa5c6cea0"
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "Bounded core partition diagnostics, not canonical all-suite receipt",
+      "partition": {
+        "start": 12,
+        "end": 18,
+        "completeFiles": 96,
+        "files": [
+          "test/practice-contract-term.test.js",
+          "test/injury-salary-claims.test.js",
+          "test/annual-injury-command-readiness.test.js",
+          "test/pre-rollover-medical-calendar.test.js",
+          "test/elevation-injury-pay.test.js",
+          "test/standard-elevation-games.test.js"
+        ]
+      },
+      "sourceDigestBefore": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceDigestAfter": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceStable": true,
+      "result": {
+        "name": "core",
+        "status": 0,
+        "timedOut": false,
+        "durationMs": 71230,
+        "summary": {
+          "valid": true,
+          "reason": null,
+          "tests": 49,
+          "pass": 49,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "durationMs": 71230
+        }
+      },
+      "wholeCoreAccepted": false,
+      "artifact": ".cache/core-group-12-18.json",
+      "sha256": "a17f10b8d32c2b74c49d7c2414b62977b48ebb462053b36082edbfe7f18fdb99"
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "Bounded core partition diagnostics, not canonical all-suite receipt",
+      "partition": {
+        "start": 18,
+        "end": 30,
+        "completeFiles": 96,
+        "files": [
+          "test/standard-elevation-commands.test.js",
+          "test/standard-elevations.test.js",
+          "test/player-recorded-anatomy.test.js",
+          "test/measurement-provenance-snapshot.test.js",
+          "test/nfl-elevation-salary.test.js",
+          "test/hall-of-fame-batch.test.js",
+          "test/cpu-market-funding.test.js",
+          "test/cpu-retention-funding.test.js",
+          "test/player-cut-motion.test.js",
+          "test/player-gray-fibers.test.js",
+          "test/player-facial-pigment.test.js",
+          "test/player-torso-envelope.test.js"
+        ]
+      },
+      "sourceDigestBefore": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceDigestAfter": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceStable": true,
+      "result": {
+        "name": "core",
+        "status": 0,
+        "timedOut": false,
+        "durationMs": 64602,
+        "summary": {
+          "valid": true,
+          "reason": null,
+          "tests": 55,
+          "pass": 55,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "durationMs": 64602
+        }
+      },
+      "wholeCoreAccepted": false,
+      "artifact": ".cache/core-group-18-30.json",
+      "sha256": "0076a40d1d24f44e3f89490bf47982a221ba9da7eff587221a345beb38da28ef"
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "Bounded core partition diagnostics, not canonical all-suite receipt",
+      "partition": {
+        "start": 30,
+        "end": 48,
+        "completeFiles": 96,
+        "files": [
+          "test/player-limb-contours.test.js",
+          "test/player-hair-arrangement.test.js",
+          "test/player-individual-anatomy.test.js",
+          "test/player-regional-body-shape.test.js",
+          "test/player-regional-sections.test.js",
+          "test/player-measured-rig.test.js",
+          "test/player-fine-face.test.js",
+          "test/player-face-lighting.test.js",
+          "test/player-side-grooming.test.js",
+          "test/cpu-draft-depth.test.js",
+          "test/practice-contract-pay.test.js",
+          "test/player-portrait-features.test.js",
+          "test/player-iris-rendering.test.js",
+          "test/player-physique-side.test.js",
+          "test/nfl-roster-backstop-affordability.test.js",
+          "test/nfl-cap-year-boundary.test.js",
+          "test/player-visual-identity.test.js",
+          "test/stat-snapshot.test.js"
+        ]
+      },
+      "sourceDigestBefore": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceDigestAfter": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceStable": true,
+      "result": {
+        "name": "core",
+        "status": 0,
+        "timedOut": false,
+        "durationMs": 42935,
+        "summary": {
+          "valid": true,
+          "reason": null,
+          "tests": 90,
+          "pass": 90,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "durationMs": 42935
+        }
+      },
+      "wholeCoreAccepted": false,
+      "artifact": ".cache/core-group-30-48.json",
+      "sha256": "6857847de827fe45be2ca2d6ed62e51d8ddc4604cce87664c2ea302b31a1cd7f"
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "Bounded core partition diagnostics, not canonical all-suite receipt",
+      "partition": {
+        "start": 48,
+        "end": 66,
+        "completeFiles": 96,
+        "files": [
+          "test/player-talent-distribution.test.js",
+          "test/player-identity.test.js",
+          "test/player-measurements.test.js",
+          "test/player-hand-length.test.js",
+          "test/player-motion.test.js",
+          "test/player-side-appearance.test.js",
+          "test/player-motion-surfaces.test.js",
+          "test/player-workouts.test.js",
+          "test/nfl-season-economics.test.js",
+          "test/nfl-contract-market.test.js",
+          "test/living-potential.test.js",
+          "test/session109-moment-card.test.js",
+          "test/session109-first-season-contract.test.js",
+          "test/session109-team-crest.test.js",
+          "test/session101-cap-authority.test.js",
+          "test/session101-league-economy.test.js",
+          "test/session102-contract-proration.test.js",
+          "test/session102-gated-population.test.js"
+        ]
+      },
+      "sourceDigestBefore": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceDigestAfter": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceStable": true,
+      "result": {
+        "name": "core",
+        "status": 0,
+        "timedOut": false,
+        "durationMs": 9003,
+        "summary": {
+          "valid": true,
+          "reason": null,
+          "tests": 109,
+          "pass": 109,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "durationMs": 9003
+        }
+      },
+      "wholeCoreAccepted": false,
+      "artifact": ".cache/core-group-48-66.json",
+      "sha256": "67ecb3a4f6c9036ab9a413652bd147240ef72b4fbc5836334e70ffad999cf683"
+    },
+    {
+      "schemaVersion": 1,
+      "scope": "Bounded core partition diagnostics, not canonical all-suite receipt",
+      "partition": {
+        "start": 66,
+        "end": 84,
+        "completeFiles": 96,
+        "files": [
+          "test/session102-potential-centre.test.js",
+          "test/session104-fieldable-depth.test.js",
+          "test/session107-position-relative-potential.test.js",
+          "test/session108-development-outlook.test.js",
+          "test/session108-draft-board-fog.test.js",
+          "test/session108-elite-composition.test.js",
+          "test/session108-offseason-development-report.test.js",
+          "test/api.test.js",
+          "test/architect-mastery-portfolio.test.js",
+          "test/calibration.test.js",
+          "test/coverage-depth-ratings.test.js",
+          "test/generated-league-presentation.test.js",
+          "test/offseason-calendar.test.js",
+          "test/offseason-surfaces.test.js",
+          "test/pass-structure-regression.test.js",
+          "test/progression-parity.test.js",
+          "test/progression-watch.test.js",
+          "test/quarterback-depth-ratings.test.js"
+        ]
+      },
+      "sourceDigestBefore": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceDigestAfter": "a722d13d163355b5ec001cb7dd034251f6fc97a0feea206e0109b08475e65918",
+      "sourceStable": true,
+      "result": {
+        "name": "core",
+        "status": 124,
+        "timedOut": true,
+        "durationMs": 480399,
+        "summary": {
+          "valid": false,
+          "reason": "Shard exceeded the bounded 480000ms timeout.",
+          "tests": null,
+          "pass": null,
+          "fail": null,
+          "cancelled": null,
+          "skipped": null,
+          "todo": null,
+          "durationMs": 480399
+        }
+      },
+      "wholeCoreAccepted": false,
+      "artifact": ".cache/core-group-66-84.json",
+      "sha256": "5e08cf12861c676ab4ebcd8788887488bc0094adc3e83a0b676688c64eb47511"
+    }
+  ],
+  "distinctObservedTests": 375,
+  "distinctObservedFiles": 66,
+  "attemptedCoreFiles": 84,
+  "totalCoreFiles": 96,
+  "sourceStablePartitionTests": 332,
+  "wholeCoreAccepted": false,
+  "canonicalReceiptChanged": false,
+  "qualification": "Separate-process partitions retain the canonical file list but do not prove the single-process full shard or all-feature/career/UI acceptance. Failed, skipped or source-drifted partitions remain explicit.",
+  "remaining": "Complete canonical suite, current30GM, full UI/NFL/appearance and release checks"
+}

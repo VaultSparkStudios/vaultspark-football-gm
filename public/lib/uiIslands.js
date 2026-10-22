@@ -3,13 +3,19 @@ const preloadedIslands = new Set();
 
 export const UI_ISLAND_MANIFEST = Object.freeze({
   roster: Object.freeze({
-    tabs: Object.freeze(["rosterTab", "faTab", "depthTab"]),
+    tabs: Object.freeze(["rosterTab", "depthTab"]),
     source: "./tabRoster.js",
     preload: Object.freeze(["./tabRoster.js"]),
     budgetBytes: 22_000
   }),
+  injuryClaims: Object.freeze({
+    tabs: Object.freeze([]),
+    source: "./injurySalaryClaimsPanel.js",
+    preload: Object.freeze(["./injurySalaryClaimsPanel.js"]),
+    budgetBytes: 6_000
+  }),
   contracts: Object.freeze({
-    tabs: Object.freeze(["contractsTab", "transactionsTab"]),
+    tabs: Object.freeze(["contractsTab", "transactionsTab", "faTab"]),
     source: "./tabContracts.js",
     preload: Object.freeze(["./tabContracts.js"]),
     budgetBytes: 46_000
@@ -33,8 +39,7 @@ export const UI_ISLAND_MANIFEST = Object.freeze({
     budgetBytes: 72_000
   }),
   settings: Object.freeze({
-    // S94: boardroomTab carries the owner economy out of Settings; it is the
-    // same module, so it belongs to the same island rather than duplicating one.
+    // Boardroom and Settings share the owner economy.
     tabs: Object.freeze(["logTab", "settingsTab", "boardroomTab"]),
     source: "./tabSettings.js",
     preload: Object.freeze(["./tabSettings.js"]),
@@ -65,6 +70,7 @@ function assertIsland(name) {
 
 async function importIsland(name) {
   if (name === "roster") return import("./tabRoster.js");
+  if (name === "injuryClaims") return import("./injurySalaryClaimsPanel.js");
   if (name === "contracts") return import("./tabContracts.js");
   if (name === "draft") return import("./tabDraft.js");
   if (name === "stats") return import("./tabStats.js");
@@ -135,7 +141,7 @@ export function queueIdleUiIslandPreloads({
 } = {}) {
   const preload = () => {
     for (const name of Object.keys(UI_ISLAND_MANIFEST)) {
-      if (name !== "exports") preloadUiIsland(name, { documentRef });
+      if (name !== "exports" && name !== "injuryClaims") preloadUiIsland(name, { documentRef });
     }
   };
   if (typeof requestIdle === "function") return requestIdle(preload, { timeout: 5_000 });

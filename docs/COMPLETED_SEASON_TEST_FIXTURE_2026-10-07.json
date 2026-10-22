@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-07",
+  "scope": "Observed calendar/surface test fixture optimization; no production behavior change or whole-suite acceptance",
+  "sourceHashes": {
+    "test/helpers/completedSeasonFixture.js": "7f70277eadf8663383eb873ce759b792710d78650c2f02ce02f380d202f567b2",
+    "test/offseason-calendar.test.js": "c5140ff8b9628ed74179141725c929ed8c01916aeac0c654132f5b7595ca1bd4",
+    "test/offseason-surfaces.test.js": "16f5120e8987b24c94f4f895a33fc5a1e6ef8eecca12dfe63f1dca5ce8c0b620"
+  },
+  "fixture": "One actual completed starting season cached as a snapshot per seed/year/team; every call restores a separately cloned snapshot. Distinct pre-season modifications and actual multi-season simulations retain their original simulation paths.",
+  "primary": {
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 426506.3331,
+    "evidence": "Terminal session80914 chunk0a30e8 exit0 observed before this receipt; source hashes recorded after completion, not a pre-run digest guarantee.",
+    "includes": "New player/pick/RNG isolation assertion; original traded-pick season and actual three-season pick-ledger test retained."
+  },
+  "independentReview": "pending",
+  "wholeCoreAccepted": false,
+  "canonicalReceiptChanged": false
+}

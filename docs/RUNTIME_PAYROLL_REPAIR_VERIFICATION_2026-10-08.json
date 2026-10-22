@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T05:08:28.233Z",
+  "command": "node scripts/run-test-shard.mjs runtime",
+  "testFiles": 142,
+  "passed": 1057,
+  "total": 1057,
+  "failed": 0,
+  "skipped": 0,
+  "cancelled": 0,
+  "durationMs": 1385323.8212,
+  "exitCode": 0,
+  "terminalSession": 30686,
+  "terminalChunk": "fadb9e",
+  "log": {
+    "file": ".cache/logs/runtime-repair-2026-10-08.log",
+    "sha256": "3cdc689d90885c70c4e09d8f4839f8e5fe08ed612204d7fd6ac85a51d29db8fc",
+    "retained": true
+  },
+  "scope": "Runtime regression run following absent-payroll legacy compatibility repair",
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "91b120345e249767c2d5e83bbd140951844de71d89413d457530dda08f743449",
+    "test/admitted-injury-payroll.test.js": "9bb663d97896351ab2e1488e2033a336789278a8a9125b910543fdf55a8f74a7"
+  },
+  "limitations": [
+    "Rendering sources changed during this run; this is not a final whole-source freeze or whole-suite receipt.",
+    "Auto-backup negative fixtures emitted reset club/year and quota diagnostics; all tests passed.",
+    "This run does not validate newly added production shared-head browser cases, current 30-season GM proof or annual medical-policy adoption."
+  ],
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

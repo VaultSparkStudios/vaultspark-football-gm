@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T13:55:20.981Z",
+  "reviewRound": 1,
+  "verdict": "PASS",
+  "scope": "Unintegrated measured clay body diagnostic plus leading source/delivery refinement and cross-country comparability section. No production body, full appearance or whole-goal acceptance.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_BODY_3D_PROTOTYPE_2026-10-08.json",
+  "primaryReceiptSha256": "11f1656d80d5a9f117f0bdb4095c963e0d5b0cba3630ab032f10b51925f6ba47",
+  "inputHashes": {
+    "docs/IMPLEMENT_PLAN.md": "43e059be51416c5ead35648e3fe2fd3ff2b29def524536f2238c3fec6caac249",
+    "docs/PLAYER_APPEARANCE_DEMOGRAPHICS_EXPANSION_2026-10-07.md": "9f87dea1e48a39f715cb3fdafea8a56a915585eb000ca3de6e7a70b561e9487a",
+    "public/lib/playerBody3d.js": "69f10b7d72425433c4282282852d14099aaf383edeb58926fe516eec493ca725",
+    "test/player-body-3d.test.js": "6885da7e73d7c2287bc7ec77fda7b926e1866d96d07c029e9a80e64d87321b2d",
+    "tests-ui/player-body-3d-prototype.spec.js": "58e5799bbc06d6256830422d11be97d91d73ebd329e66612b613fc3812022230",
+    "docs/PLAYER_BODY_SOLID_TOPOLOGY_DIAGNOSTIC_2026-10-08.json": "12eb8a700f40b1034ebdd44b39357edfa7f922b890ea431e3053e95fdb971f76",
+    ".cache/audit-body-solids.mjs": "2661ecfb89537fb451cbee055ce137a2bb3ccb0c1e581bcd860263e1072183e3",
+    "scripts/run-test-shard.mjs": "19f9f970f90f2e36640f1bc2b564d6031c8b2102cf3e26438e7f393d101a238e"
+  },
+  "primaryInputs": [
+    {
+      "path": "public/lib/playerBody3d.js",
+      "bytes": 12520,
+      "sha256": "69f10b7d72425433c4282282852d14099aaf383edeb58926fe516eec493ca725"
+    },
+    {
+      "path": "public/lib/playerHead3d.js",
+      "bytes": 47405,
+      "sha256": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6"
+    },
+    {
+      "path": "public/lib/playerMotion.js",
+      "bytes": 33893,
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "path": "test/player-body-3d.test.js",
+      "bytes": 3838,
+      "sha256": "6885da7e73d7c2287bc7ec77fda7b926e1866d96d07c029e9a80e64d87321b2d"
+    },
+    {
+      "path": "tests-ui/player-body-3d-prototype.spec.js",
+      "bytes": 4261,
+      "sha256": "58e5799bbc06d6256830422d11be97d91d73ebd329e66612b613fc3812022230"
+    },
+    {
+      "path": "src/domain/playerIdentity.js",
+      "bytes": 26343,
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba"
+    },
+    {
+      "path": "src/domain/playerVisualIdentity.js",
+      "bytes": 11420,
+      "sha256": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1"
+    },
+    {
+      "path": ".cache/body-3d/domain.log",
+      "bytes": 448,
+      "sha256": "1578ecc07d70863207904ab14abf6fd6ca0f35851026660c2b43064e07005b1d"
+    },
+    {
+      "path": ".cache/body-3d/browser.log",
+      "bytes": 559,
+      "sha256": "4548ac831aa05e14bb36d474ab6f005c733d51c3d1ea93596a9571eb13ceef2f"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-observations.json",
+      "bytes": 882,
+      "sha256": "dd39167c9222c934b50b2a94cc83745d2832b528441b39dd9b1f7eef94013f7d"
+    },
+    {
+      "path": "docs/PLAYER_BODY_SOLID_TOPOLOGY_DIAGNOSTIC_2026-10-08.json",
+      "bytes": 57123,
+      "sha256": "12eb8a700f40b1034ebdd44b39357edfa7f922b890ea431e3053e95fdb971f76"
+    },
+    {
+      "path": ".cache/audit-body-solids.mjs",
+      "bytes": 4430,
+      "sha256": "2661ecfb89537fb451cbee055ce137a2bb3ccb0c1e581bcd860263e1072183e3"
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-body-3d.test.js",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 5595.0868,
+      "terminalChunk": "8ad52b",
+      "finalExitChunk": "aafe0a"
+    },
+    {
+      "command": "node .cache/body-prototype-r1-independent-probe.mjs",
+      "probeSha256": "30e1a194e5706c08b194d7f23dc0cabcaa6ff1306b01336443cb2afa0142cd8e",
+      "result": "PASS",
+      "terminalChunk": "881c77",
+      "cases": 84,
+      "controls": "Four stature/mass tail cases; neutral plus six modes; phases0,.27,.81.",
+      "maxBoneErrorInches": 2.4868995751603507e-14,
+      "maxFingertipErrorInches": 0.000003136839199896049,
+      "maxNeutralStatureErrorInches": 0,
+      "personAndRngSeedStateUnchanged": true
+    },
+    {
+      "check": "12 primary input/log/report and16 capture byte bindings, topology input hash bindings and assembled counts",
+      "result": "PASS",
+      "terminalChunk": "87b93a"
+    },
+    {
+      "check": "No current production consumer of playerBody3d outside its own module under public/src",
+      "result": "PASS",
+      "terminalChunk": "bed3ba"
+    }
+  ],
+  "sourceObservations": [
+    {
+      "url": "https://w3.unece.org/recs2030census/webpage24.html",
+      "observed": "Paragraphs1339–1350 distinguish ethnicity from birthplace/citizenship; classifications vary nationally; responses may include mixed affiliations and nondisclosure. The plan correctly treats source categories as instruments rather than compulsory appearance or ancestry fractions.",
+      "independentRetrieval": true
+    },
+    {
+      "url": "https://w3.unece.org/pub/censuspractices2020/webpage23.html",
+      "observed": "Table86 has47 responding UNECE countries: ethnicity collected27, not collected20. Paragraph466 reports race collection in3, distinct from ethnicity. These count census practices, not people or NFL recruit shares.",
+      "independentRetrieval": true
+    }
+  ],
+  "documentAssessment": "Leading plan separates saved natural appearance, grooming/body state, contextual country evidence, measured endpoints and capacity-specific motion. It makes union accounting, integration and image acceptance explicit future requirements. No new demographic weights, body composition fit or appearance-to-ability effect is claimed. Older NFL-count passages were outside independent source verification here.",
+  "geometryAssessment": [
+    "One inch-based mesh serves multiple cameras. Neutral/moving poses reuse the measured rig and motion solver, preserving articulated center lengths and longest finger endpoint. Neutral foot floor/length and crown height are covered by tests and additional tail cases.",
+    "Skull skin is copied and transformed at physical scale; facial recipes are retained but the clay experiment omits production eye/ear/grooming/material appearance. Hand depth .28 palm breadth and foot height2.5in are disclosed artistic placeholders.",
+    "The mesh contains gross overlapping solids and an uncapped shoulder yoke. This is architecture evidence, not a connected, watertight tissue surface or calibrated total mass.",
+    "The renderer is a fixed160-inch vertical physical camera. Contextual SVG screenshots use a different camera and do not establish matched scale; the plan explicitly discloses this."
+  ],
+  "topologyAssessment": {
+    "status": "accurate bounded diagnostic",
+    "assembledComponents": 37,
+    "edgeIncidencePassingComponents": 36,
+    "openComponent": "shoulder-yoke",
+    "boundaryEdges": 64,
+    "collapsedTrianglesOmittedPerMass": 2324,
+    "qualification": "Tube sides are grouped with their cap parts before auditing. Grid welding and omitted degenerates are disclosed. Signed values of open parts are not accepted or summed. Edge incidence does not prove absence of self-intersection or correct union volume."
+  },
+  "inspectedOriginals": [
+    {
+      "path": "output/playwright/body-3d-prototype-0-desktop-light.png",
+      "sha256": "ff5c2fa7713491510a890a4224cee18b2b785550695f4192ae160d06b46731b2"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-3-desktop-dark.png",
+      "sha256": "8f62dd31ab110cb2177cce17bd4bb7e6cc9c9f473db490bfc36d23c8e5c7ac80"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-2-mobile-dark.png",
+      "sha256": "37b286b88e93123462082b8319083a1b36d506743054dcd92dc211631ea60ebe"
+    }
+  ],
+  "openFindings": [
+    {
+      "severity": "acceptance-limit",
+      "description": "Visible abrupt shoulder/elbow/knee/pelvic transitions and slab-like torso are not convincing complete adult anatomy. Heavy cases mostly inflate torso/limbs, with incomplete abdomen/pelvis form."
+    },
+    {
+      "severity": "acceptance-limit",
+      "description": "Hands/feet remain simplified overlapping placeholder solids; moving feet keep a world-oriented illustrative foot form without a fully articulated anatomical ankle/toe system."
+    },
+    {
+      "severity": "acceptance-limit",
+      "description": "Clay heads omit eye/ear/hair appearance. No actual dossier integration, unsupported-device fallback, lifecycle/cache, full union mass or empirical sampling acceptance is demonstrated."
+    }
+  ],
+  "primaryExecution": {
+    "domainPassed": 3,
+    "browserPassed": 1,
+    "attribution": "Primary browser evidence only; reviewer independently ran Node checks and inspected three original screenshots, including mobile-dark. No browser was rerun."
+  },
+  "recordingMethod": "Manual immutable review JSON, record-review helper absent. Primary/canonical/prototype sources were not altered.",
+  "fullVisualAcceptance": false,
+  "completeBodyUnionMassVerified": false,
+  "productionDossierIntegrated": false,
+  "releaseAccepted": false
+}

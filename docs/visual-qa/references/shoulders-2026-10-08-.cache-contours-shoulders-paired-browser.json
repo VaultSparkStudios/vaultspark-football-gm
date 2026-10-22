@@ -1,0 +1,325 @@
+{
+  "sameSavedCompleteHead": true,
+  "samePalette": true,
+  "playerId": "P2026-BUF-OL-75203022",
+  "cases": 6,
+  "captures": [
+    {
+      "path": "output/playwright/shoulders-desktop-dark-front.png",
+      "sha256": "85f1d1468b568a511072d493e94900c36c41da2debd46d9b501ed426b421c579",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-dark-side.png",
+      "sha256": "6c207081f1d1171b98d6dc31afb90507d47711440686691aa961f56ac0a58730",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-dark-cut.png",
+      "sha256": "d0d752ed8d0152d2413d024483682b1356b856c697a8a1250cb159563611a647",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-dark-strength.png",
+      "sha256": "96bb967de81b724d12e48fcc058de9e49a96987b36fa6fb36fcb0ebda676766b",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-dark-run.png",
+      "sha256": "c5afa9b1b9eece9fcea151301f0b0f73d250a8cd114320e71e2c6bad20faf31c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-dark-jump.png",
+      "sha256": "bb011abd49b4f14725e71e554727b14395e40e4a3ec9ae4d81ca327cc9e6ee15",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-dark-shoulder-detail.png",
+      "sha256": "82f147c3cdd69bdb5345a9a99ee1226d6b419f4b9cc3555fb2529c72aabf7a86",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-dark-profile-detail.png",
+      "sha256": "3983d0975504941859b427070710b31d7f343bfbd4a5e236290545c2e1906ea9",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-front.png",
+      "sha256": "254ea2f01623a49f3d44cc06caae066c6f63d580c42e1229ee7d0a8a90627846",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-side.png",
+      "sha256": "566353aacfe382fd17ce7e44be850e48fced3c32a2e2ef5ae12b660712e87d02",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-cut.png",
+      "sha256": "e7d8866ea80d025ee632f779a052636feb6e0d13220d28af99a7c7f16345009a",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-strength.png",
+      "sha256": "ef48879dd741fff09401ee302718d51cffab3a04ba9744352220679967715d90",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-run.png",
+      "sha256": "245cace0d922001a9f9753f408bfd0edb37514ef1edde468cd90d2d0747268f2",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-jump.png",
+      "sha256": "b1b27b7be81ed1f4036a4bdeae6a965529f323b2560aabe3889bd91eb0e800de",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-shoulder-detail.png",
+      "sha256": "5d8727d0a9d4feb8e18e43e9ecb2f5ae562b569bc0d5231e82e7dcda1a62d00e",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/shoulders-desktop-light-profile-detail.png",
+      "sha256": "db96e9317e873baf5bddaaba51ad75873bd92d0f107678ce5e08a7b43d4133e9",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-front.png",
+      "sha256": "b8b6250d9465c7a499abaa34fa9a2906f5754a08bc71259459e0e01f576ec757",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-side.png",
+      "sha256": "3a47ad673f40f25fefcff40accb2a66b4dc77e46965a9b1c17f7201a63b2526b",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-cut.png",
+      "sha256": "db1803a829d28e127ed672ee5ec5b6c5580f43a02cf59276c02fa7d7eaa1d15e",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-strength.png",
+      "sha256": "f46d48de756d55eca03bab648e702e352fc7e1eba6904d569eae8c32a9b55a94",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-run.png",
+      "sha256": "8a1b213db900f71b3e180915c47aac87d762cb6ad174f08d92fd2247fb5e079c",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-jump.png",
+      "sha256": "01f5790b888c293a60f2d190b144bbd26a42a316f41af9dd7c7bbc64ffb3cd7a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-shoulder-detail.png",
+      "sha256": "a6ddada777b279c5b757c96b6ec8bfee6a50461fc3bf94cc6c3fe55255c0d099",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-dark-profile-detail.png",
+      "sha256": "5089279f8d23b2348917c6f84015488bddfffe6afbc01c4a95e5e530417ba673",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-front.png",
+      "sha256": "83c010d19bfc2ebd7e36c46f57c2eab945e124e298df4a9e80f8a358090cff9e",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-side.png",
+      "sha256": "5eb3b0eef94b804e02e032369308316396d560ff5e402dbbbe6a9608349d4a91",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-cut.png",
+      "sha256": "44f63a254e50ef7e469c9aeb0c3c7839f272c42ee926167dd5e1b44eb12230ca",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-strength.png",
+      "sha256": "e4c37644cdef828616fafa6445110ef269ffb78ae984704adca4e7f14a5cc015",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-run.png",
+      "sha256": "16b464cbfa68cbad2c5d61d5a5b20825872f70aeac4defb18279d492fab65f7a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-jump.png",
+      "sha256": "d2fa65f3ee2581e4a8d7114ce206c66529dcdb135225a84ebd65382313506775",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-shoulder-detail.png",
+      "sha256": "412d9ce66bcabb0434cc73362a0bed392605a231e62cacfa77541f60f5ddcb40",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/shoulders-mobile-light-profile-detail.png",
+      "sha256": "63ea2a259dc53388a4485dee3cbfbffa67c720b701efc2f1baeb59ca5aef9121",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "inspectionScale": true
+    }
+  ],
+  "timing": {
+    "samples": 60,
+    "medianMs": 3.1000001430511475,
+    "p95Ms": 5.5,
+    "maxMs": 35,
+    "hardware": "local headless Chromium; emulated viewport, no physical mobile claim",
+    "gpuCompletionSynchronized": true,
+    "includesCpuAndDriverOverhead": true
+  },
+  "disposed": [
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    },
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    }
+  ],
+  "fullVisualAcceptance": false,
+  "wholeUnionMassVerified": false
+}

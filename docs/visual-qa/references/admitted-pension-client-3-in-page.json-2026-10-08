@@ -1,0 +1,12 @@
+{
+  "worker": false,
+  "playerId": "P2026-BUF-QB-87221813",
+  "artifactDigest": "865e93df22387166b89d287e076424ff3ef9b5c485b581f8cce91cff78c92cca",
+  "actualAdvanceWeekCommands": true,
+  "earningYear": 2027,
+  "phase": "regular-season",
+  "week": 1,
+  "retiredClearancePaid": true,
+  "namedSaveReplacementLoadReload": true,
+  "annualDefaultChanged": false
+}

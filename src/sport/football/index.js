@@ -10,6 +10,7 @@ import { FOOTBALL_STAT_SCHEMA } from "./statSchema.js";
 import { FOOTBALL_CALENDAR } from "./calendar.js";
 import { FOOTBALL_COMPETITION } from "./competition.js";
 import { simulateMatch } from "../../engine/gameSimulator.js";
+import { applyFootballPostGame, checkFootballReadiness } from "../../engine/gameDayRoster.js";
 
 export const FOOTBALL_PACK = Object.freeze({
   ...FOOTBALL_RULES,
@@ -20,5 +21,5 @@ export const FOOTBALL_PACK = Object.freeze({
   // Regular-season schedule and postseason format (competition.js; contract in src/sport/competitionContract.js).
   competition: FOOTBALL_COMPETITION,
   // Returns a MatchOutput (src/sport/matchEngineContract.js); never writes stats.
-  match: Object.freeze({ simulate: simulateMatch })
+  match: Object.freeze({ simulate: simulateMatch, afterGame: applyFootballPostGame, checkReadiness: checkFootballReadiness })
 });

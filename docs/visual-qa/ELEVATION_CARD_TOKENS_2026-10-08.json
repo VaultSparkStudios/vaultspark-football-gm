@@ -1,0 +1,2871 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T04:37:49.826Z",
+  "sourceRevision": "local-worktree",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "scope": "Actual game.html card templates mounted with production styles and theme API; controlled enabled/disabled state. Does not execute elevation or claim commands.",
+  "sources": [
+    {
+      "original": "public/styles.css",
+      "file": "references/elevation-token-styles.css-2026-10-08",
+      "sha256": "43b277303fbaae70b1ff7c9e260d2f1ff46db72dcdc6844123116a632aa7a4ee"
+    },
+    {
+      "original": "public/game.html",
+      "file": "references/elevation-token-game.html-2026-10-08",
+      "sha256": "d4d12b3dc0134587de44c835f3628df40d7c0a2f48abc28e66439b7f7bdd7221"
+    },
+    {
+      "original": "public/lib/themeCustomizer.js",
+      "file": "references/elevation-token-themeCustomizer.js-2026-10-08",
+      "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
+    },
+    {
+      "original": ".cache/elevation-token.spec.mjs",
+      "file": "references/elevation-token-elevation-token.spec.mjs-2026-10-08",
+      "sha256": "4504e7bbf8451783b4452ff29b231e4889a59c1c642200eada4b708c803f26f8"
+    },
+    {
+      "original": ".cache/elevation-token.config.mjs",
+      "file": "references/elevation-token-elevation-token.config.mjs-2026-10-08",
+      "sha256": "0d5c0d92ebba3934671a0d0f5d99fc589f84a9c181a9926c4fd65643dee580a8"
+    },
+    {
+      "original": ".cache/elevation-token-before.css",
+      "file": "references/elevation-token-elevation-token-before.css-2026-10-08",
+      "sha256": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/elevation-token-before-desktop-dark-gold-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "9911b9a422a0227a29817bda421fd638ae3b04023586a90bd6886a028072a9e1",
+      "page": "Actual card template, before, gold, enabled",
+      "inspected": true
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-gold-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "788db6c46736d13029fb7f681b2972168c31dcfcfe9adb6515b45d95d2554d5e",
+      "page": "Actual card template, before, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-emerald-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "66866cd3f6ded9813ca349fa56ca8b8cb483de36b7f1d1a21e4c339362590d2a",
+      "page": "Actual card template, before, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-emerald-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "3dfa357bc22e901f3a5b74af8ee2c1f8dc969d57c2e6dfa689f3be7f993f4235",
+      "page": "Actual card template, before, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-azure-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "790f2b73f6eb5bcaa44ba33cb6ff5c8f55b52bb019c9c99110dfe9e23a9d750c",
+      "page": "Actual card template, before, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-azure-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "1d0f9402ae7e411bfa0d1cc73bd0be270ccc9794bc3a5198d5507b891b9a3019",
+      "page": "Actual card template, before, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-crimson-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "1f0d1a02db78ede582ab1b56f0f1ed228d4bfca79c796f9256295c513fc00f60",
+      "page": "Actual card template, before, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-crimson-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "6377c304514eeaa2e81191493f8b36d5e5449b7399674fd7f7d059141b164878",
+      "page": "Actual card template, before, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-violet-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "dc529f72c499432c1ff66e579d3e5d597b28a6d2528f539bf95df235a864cbfc",
+      "page": "Actual card template, before, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-dark-violet-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "d030d09dc451bd447d941200be06c6ab0d033d2d8c91c70d7d05ac65f51bcea4",
+      "page": "Actual card template, before, violet, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-gold-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "148612c7206679df0f9b5f58449cb3784d374e3ca41e257a6c5ecbd8e7b32c09",
+      "page": "Actual card template, before, gold, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-gold-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "0b1c98814817b652645d6e74438065c2fd400a6cd53d98f854528de5dbc02d9f",
+      "page": "Actual card template, before, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-emerald-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "f2f0aeca135d405af62259d66e49af6ee707d034444c14940ce67b2e9de82c51",
+      "page": "Actual card template, before, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-emerald-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "0b1c98814817b652645d6e74438065c2fd400a6cd53d98f854528de5dbc02d9f",
+      "page": "Actual card template, before, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-azure-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "5a0b8291aefe179e5b258fc67a6bcc3286ad9c665dcc6eedf02bccc59d26f016",
+      "page": "Actual card template, before, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-azure-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "0b1c98814817b652645d6e74438065c2fd400a6cd53d98f854528de5dbc02d9f",
+      "page": "Actual card template, before, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-crimson-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "5a0b8291aefe179e5b258fc67a6bcc3286ad9c665dcc6eedf02bccc59d26f016",
+      "page": "Actual card template, before, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-crimson-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "0b1c98814817b652645d6e74438065c2fd400a6cd53d98f854528de5dbc02d9f",
+      "page": "Actual card template, before, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-violet-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "5a0b8291aefe179e5b258fc67a6bcc3286ad9c665dcc6eedf02bccc59d26f016",
+      "page": "Actual card template, before, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-desktop-light-violet-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "0b1c98814817b652645d6e74438065c2fd400a6cd53d98f854528de5dbc02d9f",
+      "page": "Actual card template, before, violet, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-gold-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "94f347d77bd6e336b37b342a3104813c0bf551009cd04c94d5ebe6197cd19ed2",
+      "page": "Actual card template, before, gold, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-gold-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "b9c21c4e6bd91ffac20a38a123389bd8106677b276bab7b187207c0d4b2c4e4d",
+      "page": "Actual card template, before, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-emerald-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "d4fab04b456bd0fc4e8e66e303db04dcc6fc95dbee55083ac9d8961c70b5664c",
+      "page": "Actual card template, before, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-emerald-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "66c12c19e94cae5a33c28ef4a942edf962d3a8e66ad4e01f11fc5f88a4b55227",
+      "page": "Actual card template, before, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-azure-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "97f24ac899d37e733ee4758774ad441c6f876aa17897e8f2547ddf77a7754f36",
+      "page": "Actual card template, before, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-azure-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "a069dbfdaaf1eefb20f39f77140a39eed37bcf192d5345d4154d0c0936253ec5",
+      "page": "Actual card template, before, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-crimson-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "ed4f0a310a5a23c23b54506e473d7868fb97eedb02aa5e3b3665af818989b4e5",
+      "page": "Actual card template, before, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-crimson-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "4220fe0ad5d9c930d0ea3b51071af7568a2c308901e828279610502089f39e68",
+      "page": "Actual card template, before, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-violet-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "1edc0575c250627da7dd95a6e9764d7756808b4a9d1a08460aee0e41ace04eb6",
+      "page": "Actual card template, before, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-dark-violet-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "66bd4aea73e7d760acae83397bb4b67c9d972bc18c3ae43887f5210a083a8b07",
+      "page": "Actual card template, before, violet, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-gold-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "c05b69ee87501207dbe61e1cad5ab4d67aa6ad6dcfcb9dd7614907a81733c03c",
+      "page": "Actual card template, before, gold, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-gold-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "607145931c9cdd4d5d86961b880e5fc19c6b2aa43f30a809413e0df454a8a888",
+      "page": "Actual card template, before, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-emerald-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "8b306141ea27ebe0db81e8d53f49d1306839090d601d137c511ab2583dd38c9c",
+      "page": "Actual card template, before, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-emerald-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "607145931c9cdd4d5d86961b880e5fc19c6b2aa43f30a809413e0df454a8a888",
+      "page": "Actual card template, before, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-azure-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "859cb0dd0f3f9a01b131efe796c2ef54fcc39ae1ff0873f114e2d99c4b47858e",
+      "page": "Actual card template, before, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-azure-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "607145931c9cdd4d5d86961b880e5fc19c6b2aa43f30a809413e0df454a8a888",
+      "page": "Actual card template, before, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-crimson-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "859cb0dd0f3f9a01b131efe796c2ef54fcc39ae1ff0873f114e2d99c4b47858e",
+      "page": "Actual card template, before, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-crimson-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "607145931c9cdd4d5d86961b880e5fc19c6b2aa43f30a809413e0df454a8a888",
+      "page": "Actual card template, before, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-violet-enabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "859cb0dd0f3f9a01b131efe796c2ef54fcc39ae1ff0873f114e2d99c4b47858e",
+      "page": "Actual card template, before, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-before-mobile-light-violet-disabled.png",
+      "stage": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "607145931c9cdd4d5d86961b880e5fc19c6b2aa43f30a809413e0df454a8a888",
+      "page": "Actual card template, before, violet, disabled",
+      "inspected": true
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-gold-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "5166dd0e13b5bebbe961d6d81b3e117f5c756b638bbbb0a1b361fd60b257dabb",
+      "page": "Actual card template, after, gold, enabled",
+      "inspected": true
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-gold-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "c34d256d98cc5f9eb1419907e48fa3b04e983216b1ba3f2a51d14a9ca7574430",
+      "page": "Actual card template, after, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-emerald-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "ad21cb96cdbbce311ecfe2611e1e6eba970a198e07acbacdb115f368db544a69",
+      "page": "Actual card template, after, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-emerald-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "5050dcd921bbfe3e365c3dbfcd1edc360415075eecd4daadb10cb59ecafd2f24",
+      "page": "Actual card template, after, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-azure-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "d5d6c7505688f0397238d11e892c7e8523fe5b3f2465eab72afc8c989f5c99a5",
+      "page": "Actual card template, after, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-azure-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "481f59a5884257ca7a5df1608e52fc1a8eaccec85b58f102c5f3b24f3f97c7bd",
+      "page": "Actual card template, after, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-crimson-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "bb60de8efbd8e05edd839f0191fe1ce937638bac71222654a864349cd1b05c30",
+      "page": "Actual card template, after, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-crimson-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "8633c0145464227ef2abd82189db38ad3f1c07eaf4aa4e4d37bc53345ea998d0",
+      "page": "Actual card template, after, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-violet-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "db6250e357bcd2dbc6e2289dd28f33476b248361962307a5da8bbcf6e67b9f4a",
+      "page": "Actual card template, after, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-dark-violet-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "a0ea58cda0dff1a064bc0d65f190deed0b529e53b3f737d25f74c3bcebf591f7",
+      "page": "Actual card template, after, violet, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-gold-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "12ce02513c318691ae0cb034b4df4e45a661e28c0cead12a9bf1b4f95ecbec13",
+      "page": "Actual card template, after, gold, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-gold-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "7b40f8139f372f91e341d0dbb77626c449dec4d8c58ea9036cc3542ffea6ae79",
+      "page": "Actual card template, after, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-emerald-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "9ab8290ce5e2253563db92930c938e5b403d80e9da1444c59f05ce050b1ae082",
+      "page": "Actual card template, after, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-emerald-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "7b40f8139f372f91e341d0dbb77626c449dec4d8c58ea9036cc3542ffea6ae79",
+      "page": "Actual card template, after, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-azure-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "c0df2da1b2e814edd7c46885e260f26cb56e58bcd7b6e9af229b97b81151d3d9",
+      "page": "Actual card template, after, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-azure-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "7b40f8139f372f91e341d0dbb77626c449dec4d8c58ea9036cc3542ffea6ae79",
+      "page": "Actual card template, after, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-crimson-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "c0df2da1b2e814edd7c46885e260f26cb56e58bcd7b6e9af229b97b81151d3d9",
+      "page": "Actual card template, after, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-crimson-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "7b40f8139f372f91e341d0dbb77626c449dec4d8c58ea9036cc3542ffea6ae79",
+      "page": "Actual card template, after, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-violet-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "c0df2da1b2e814edd7c46885e260f26cb56e58bcd7b6e9af229b97b81151d3d9",
+      "page": "Actual card template, after, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-desktop-light-violet-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "7b40f8139f372f91e341d0dbb77626c449dec4d8c58ea9036cc3542ffea6ae79",
+      "page": "Actual card template, after, violet, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-gold-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "1128be851ac636d85d4321cbb259fbcd8f37f407a7fa95d4eadb8676fcc29f94",
+      "page": "Actual card template, after, gold, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-gold-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "3012bacf3b6a51b0a25b0fe5d4ee4bff26bfb42b511761344d8ce3aeea10a39b",
+      "page": "Actual card template, after, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-emerald-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "c96edf176ebe6a855e0a6cbe294bd1eda9c7634aac2cc9dc3cc8049d1dd48929",
+      "page": "Actual card template, after, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-emerald-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "7f91b4807ffd497ba1aa8e0b7c02c2f08fbb61525d8b50ddbd6f247697e1c04c",
+      "page": "Actual card template, after, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-azure-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "6382a1250bc6b6f6712f29e709ed91b471766a8a6e68dc04ed81bb8f0a4bef8a",
+      "page": "Actual card template, after, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-azure-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "831cf5bed0a8ef9b7e2485eff32ac293efa4cf88fb729e8b1ed247794a8ff278",
+      "page": "Actual card template, after, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-crimson-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "206997ba8a7343b03299649cbba3e8e5e64454fa4e7e5312e02533030532426d",
+      "page": "Actual card template, after, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-crimson-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "c87e72c8d4a9ff77fd6fa0bb658f17b7a0509d05e9d7a06ff28b01fd4726752b",
+      "page": "Actual card template, after, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-violet-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "aa4b69d13e7d978b4d5202c9024ffe05dbe106a9abd08463f0d25ee8c518a762",
+      "page": "Actual card template, after, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-dark-violet-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "5f1fd92a39de24970ec9a91c06dd9feb587e21e0295cbbaa098cec5fc07936d8",
+      "page": "Actual card template, after, violet, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-gold-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": false,
+      "sha256": "715ee797f870bf7cb96d5bb90793b17b968a8fb4946315b939d6fda33215949e",
+      "page": "Actual card template, after, gold, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-gold-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "disabled": true,
+      "sha256": "fe430db1db01c122add9b069f4a5a1f756491fbb9cd91060fed0b8780ad03895",
+      "page": "Actual card template, after, gold, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-emerald-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": false,
+      "sha256": "08b0b1913f2cfc16072ee737ab6752956f73b19ab3af1775e344adbf6bd72b9f",
+      "page": "Actual card template, after, emerald, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-emerald-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "disabled": true,
+      "sha256": "fe430db1db01c122add9b069f4a5a1f756491fbb9cd91060fed0b8780ad03895",
+      "page": "Actual card template, after, emerald, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-azure-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": false,
+      "sha256": "23e4a99d31c48e8934f30e8777aa4477ac0facb5fc37f92eb384f2ee3625ad32",
+      "page": "Actual card template, after, azure, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-azure-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "disabled": true,
+      "sha256": "fe430db1db01c122add9b069f4a5a1f756491fbb9cd91060fed0b8780ad03895",
+      "page": "Actual card template, after, azure, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-crimson-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": false,
+      "sha256": "23e4a99d31c48e8934f30e8777aa4477ac0facb5fc37f92eb384f2ee3625ad32",
+      "page": "Actual card template, after, crimson, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-crimson-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "disabled": true,
+      "sha256": "fe430db1db01c122add9b069f4a5a1f756491fbb9cd91060fed0b8780ad03895",
+      "page": "Actual card template, after, crimson, disabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-violet-enabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": false,
+      "sha256": "23e4a99d31c48e8934f30e8777aa4477ac0facb5fc37f92eb384f2ee3625ad32",
+      "page": "Actual card template, after, violet, enabled",
+      "inspected": false
+    },
+    {
+      "file": "captures/elevation-token-after-mobile-light-violet-disabled.png",
+      "stage": "after",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "disabled": true,
+      "sha256": "fe430db1db01c122add9b069f4a5a1f756491fbb9cd91060fed0b8780ad03895",
+      "page": "Actual card template, after, violet, disabled",
+      "inspected": true
+    }
+  ],
+  "checks": {
+    "focusedPassed": 8,
+    "browserPassed": 1,
+    "controlledStates": 80,
+    "matchedBeforeAfterPairs": 40,
+    "localTokenChecksPassed": true
+  },
+  "observations": [
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "before",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(215, 162, 74)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(215, 162, 74)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(63, 191, 135)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(63, 191, 135)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(79, 158, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(79, 158, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(224, 100, 95)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(224, 100, 95)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "rgb(169, 140, 240)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        },
+        {
+          "border": "rgb(169, 140, 240)",
+          "width": "1px",
+          "ink": "rgb(255, 249, 239)",
+          "surface": "rgba(16, 24, 27, 0.9)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": false,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    },
+    {
+      "stage": "after",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "rgb(160, 109, 28)",
+      "disabled": true,
+      "cards": [
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        },
+        {
+          "border": "rgb(160, 109, 28)",
+          "width": "1px",
+          "ink": "rgb(8, 16, 21)",
+          "surface": "rgba(255, 255, 255, 0.94)"
+        }
+      ]
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 4,
+    "findings": [
+      "Card backgrounds previously used undefined --surface and were transparent; --panel supplies coherent visible backgrounds.",
+      "Border and text colors preserve the locally inherited tokens. Enabled/disabled controls and wrapping remain readable in inspected desktop/mobile originals.",
+      "Existing light-theme body token overrides root accent presets, so light non-gold selections still inherit gold. This is a separate verified defect, not fixed or hidden by the local token checks."
+    ],
+    "fixesApplied": [
+      "Removed stray hexadecimal border fallback",
+      "Replaced undefined surface token with declared panel token"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "productionCssChanged": true
+}

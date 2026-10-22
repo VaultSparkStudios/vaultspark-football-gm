@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "scope": "Bounded production shared-head mounting/cache/fallback integration, not full-person craft or release acceptance",
+  "primaryReceiptPath": "docs/visual-qa/PLAYER_SHARED_HEAD_PRODUCTION_2026-10-08.json",
+  "primaryReceiptSha256": "81fe75c909dd17b0740333810599cabbd050a79fa0edc86c8b4d3af886e88fab",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "750bd30ff92a2822c5df8bc6e6266a5f00738a69150bea000ecaa91d19cc9372",
+    "public/lib/playerHeadImage.js": "5e430722f19fa7f344b8bc023d1d50616b705887003770cd115362d57d6e84c6",
+    "public/lib/playerPortraitFace.js": "590272f10a3f402f0e8aacc3cc60b35700f649ebf81f23dad9f0f321a6bb0060",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/playerPortrait.js": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219",
+    "public/lib/playerMotion.js": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "test/player-shared-head.test.js": "0a8468cf2c41f4da248c28ea90f17082ff0ffe0079dc8bfe15ab40fae319e593",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+    "scripts/run-test-shard.mjs": "df7be5c981868af1c27008f2832171475aeac0add2198894d833404092d7e2eb",
+    "prototypes/playerHead3d.mjs": "efaeebd535efb60ba95ae2a2994c54044d16355931d647914bc437ebba01d0d9",
+    "prototypes/playerHead3d.test.mjs": "38cb110a6171c21649a23f4c4a23d65f3f7708a84176a75a2772e117a641ae33",
+    ".cache/production-head-contracts.test.mjs": "5e9a14b34db1c115f74f029fa144e34fb8b7285f9ae775c731897d5d924e83e7"
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-shared-head.test.js test/player-fine-face.test.js test/player-portrait-features.test.js test/player-static-definition.test.js",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4083.9018,
+      "qualification": "Node has no WebGL document; renderer/fallback geometry and domain identity tests, not independent GPU execution"
+    },
+    {
+      "check": "Production head-only emitted triangles compared against frozen v10 prototype",
+      "cases": 3,
+      "parts": 501,
+      "result": "Exact coordinates/normals/materials; excluded fixed prototype neck/top only",
+      "frozenBeforePath": "docs/visual-qa/references/head-clumps-playerHead3d.mjs-2026-10-08.mjs",
+      "frozenBeforeSha256": "efaeebd535efb60ba95ae2a2994c54044d16355931d647914bc437ebba01d0d9"
+    },
+    {
+      "check": "Frozen/current sources and capture bindings",
+      "sources": 13,
+      "captures": 24,
+      "result": "PASS"
+    }
+  ],
+  "primaryBrowser": {
+    "attribution": "Primary executed actual browser, not independently rerun",
+    "passed": 2,
+    "terminal": "2 passed (30.1s)",
+    "session": 15567,
+    "terminalChunk": "7bf843",
+    "checks": [
+      "Six-mode front/body and side/motion exact PNG projection agreement",
+      "32-entry LRU stress and exact regeneration",
+      "Malformed iris/complexion refusal preserves healthy renderer",
+      "No-WebGL fallback exactly equals legacy builder",
+      "Selected complete profile DTO remains equal before/after"
+    ]
+  },
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/shared-head-production-before-desktop-dark-portrait.png",
+      "sha256": "cd10bc0498b1ef252c5e4b287cb5ae4535c5f077ae68706f85f78b7dc5df9263"
+    },
+    {
+      "path": "docs/visual-qa/captures/shared-head-production-after-desktop-dark-portrait.png",
+      "sha256": "e351c3a1972cae3d4c7f43251b647ccb3c137a35893b81b6b64eab5ebefc792b"
+    },
+    {
+      "path": "docs/visual-qa/captures/shared-head-production-before-mobile-light-body.png",
+      "sha256": "20c38afeb5cd8724ad4be2a9e740dd5ab18a15fc39704fedae2e00991f3d4c5f"
+    },
+    {
+      "path": "docs/visual-qa/captures/shared-head-production-after-mobile-light-body.png",
+      "sha256": "56e3b58b28fccd2aa22cdcce259a07e967381a048d7b016ef5432c00a5e1e8de"
+    },
+    {
+      "path": "docs/visual-qa/captures/shared-head-production-after-desktop-light-motion.png",
+      "sha256": "b9bb1db280995dd04707e4a6467b60d50b12d5ac80e6ba1bed7aacf9395f4311"
+    }
+  ],
+  "sourceObservations": [
+    "One shared context and 32-entry cache of presentation-only PNGs; cache keys include saved appearance, stable identity, age and pose",
+    "Head-only geometry excludes prototype neck/jersey; canonical camera fit mounts crown/chin and preserves production measured SVG neck/body authority",
+    "Legacy/version-ineligible and unsupported-WebGL paths return original builders; no football RNG or saved-person write in renderer/cache",
+    "New color/finite complexion guards avoid passing malformed selected inputs into healthy mesh rendering; this is not full arbitrary/cyclic DTO validation"
+  ],
+  "findings": [
+    {
+      "severity": "OPEN quality",
+      "description": "Inspected current portrait/body/motion heads are visibly mannequin-like, with weak eye/lip anatomy, painted beard and discontinuous head-to-neck shading. Integration works but does not meet convincing full-person quality."
+    },
+    {
+      "severity": "OPEN presentation regression",
+      "description": "Modern PNG heads no longer run previous automatic CSS blinking. Explicit blink poses are supported, but automatic animation remains absent and required separately."
+    },
+    {
+      "severity": "OPEN lifecycle",
+      "description": "A draw/context error clears the cache and permanently chooses legacy fallback for that session. Exact unsupported fallback tested; full device/context recovery remains unverified."
+    }
+  ],
+  "limits": [
+    "Five current frozen originals independently inspected, not all24",
+    "Primary browser proof is current development-source integration, not a new built-client/career or deployment receipt",
+    "Selected saved person only; no all-trait/all-country calibration or complete roster visual acceptance",
+    "No whole-suite/NFL/release or full appearance acceptance"
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

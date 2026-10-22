@@ -1,0 +1,99 @@
+{
+  "version": "independent-adult-face-form-review-v1",
+  "round": 1,
+  "reviewedAt": "2026-10-08T00:21:52.794Z",
+  "verdict": "PASS",
+  "scope": "Modern shared front jaw/chin landmarks, front/profile eye aperture and side iris clipping, front lighting and bust junction. Bounded illustrated projection improvement, not full naturalism.",
+  "sourceHashes": {
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    "public/lib/playerPortraitFace.js": "0b146360e1c160165e8a3a81816e9a24dff0a3e5bc3fc80ef4ed0ccfcc74f7e5",
+    "public/lib/playerSideAppearance.js": "28bf2c3bcc24d353a83a1568c08afc40e4e94a60131371eff93edd33b4bb1c75",
+    "public/lib/portraitSurfaceLighting.js": "a2d755946d9cc59bfff4a1deb9b71d0fcb238f7b7bc4b288e42d7ff6dc599ff8",
+    "tests-ui/player-capacity-client.spec.js": "04c63e8099e67f1349622fc06a643009a2ce55bf7aa4132ac81082b227820c3a",
+    "test/player-fine-face.test.js": "1f7075aec4635cee19d5eb8d5336e85c9eddeae12dee5e71211e4ada711f76c4",
+    "test/player-face-lighting.test.js": "95f3951303089cceffcb657eed6d51ec517f83f2cb66115a619da630d76ae43e",
+    "test/player-portrait-features.test.js": "d4148600eaf9a35a040e0d35926ce6ec49c63d6f80eb3ec218ed1ef1b6300a55"
+  },
+  "baselineHashes": {
+    ".cache/adult-form-before/fineFaceGeometry.js": "4c1e26c18c3994038b353d4f8e7d0a1a2783ad75871f8e927304117c6b91c8f1",
+    ".cache/adult-form-before/playerPortraitFace.js": "10056934ec4b22463b0ff7ac8c7147809ffb6e77a8cb5d9fc7530d2d220046c4",
+    ".cache/adult-form-before/playerSideAppearance.js": "e972d5e9fb8fee5c1879cb8e76c180a557d6b8b10eed4cd6167324e34c4745ad",
+    ".cache/adult-form-before/portraitSurfaceLighting.js": "83bb95a8c86f3c070be9ae6209c4ad82f66500d67724253a15b34d23e796f7bf"
+  },
+  "artifactHashes": {
+    ".cache/adult-form-before/BASELINE.json": "568a28297627dcd622f672dea18ccf22bb15b8523a1a3b0095b7ce8b01525863",
+    "output/playwright/face-relief-adult-form-before.json": "d858880efe6a2082e51f4e58fd526aecbea8880e958d049a9ab79f75d4c97676",
+    "output/playwright/face-relief-adult-form-after.json": "34182dbe57e9f1c01d5570326b94f826cd44cea31319a23d4473e4d6a8cd0936",
+    "output/playwright/face-relief-dossier-adult-form-before.json": "9c40f0051719ba7d6c86a0115db327a38451893ac4db2ffa8f241d36388fe04e",
+    "output/playwright/face-relief-dossier-adult-form-after.json": "d212cf9d47310b17819978f67514a942610913aea2254b463d2cf97dc6867a18",
+    "static/deploy-manifest.json": "ddd52d0d150469056137500647d072f7b908b225a65dad6efc7afe8d30eb39ed",
+    ".cache/player-adult-form-client/worker.json": "e3b4d577719b4a4cb594d01cc2ab84007e643491f86dc73af703e626ff9334f3",
+    ".cache/player-adult-form-client/in-page.json": "e726f7b5660d70b62304c404c7deab547d0a4e3eceb839624d36e7182a34fb67"
+  },
+  "imagesInspected": [
+    {
+      "path": "output/playwright/face-relief-adult-form-before-0-desktop-light.png",
+      "sha256": "9eabb6bf413ed835d888f9b36bdd19363e30ac45d0ad0320cd81524f8c8268e5"
+    },
+    {
+      "path": "output/playwright/face-relief-adult-form-before-4-mobile-dark.png",
+      "sha256": "2db4f03cb6a26e9f5a380bdbe0a8779effbbd5886e5a809ebdae349005ba27dd"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-adult-form-before-afro-mobile-light-portrait.png",
+      "sha256": "c18f67f13e3957c6795b892a6aac22698604c498efe47b9671d5b03e410b5e16"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-adult-form-before-side-part-desktop-dark-body.png",
+      "sha256": "3850d9f7e4d666985d7b902e0fff02e16822a301479ba166b354a02cc78b53c3"
+    },
+    {
+      "path": "output/playwright/face-relief-adult-form-after-0-desktop-light.png",
+      "sha256": "8a1fcada6aabba620ba57db195ee5bfef0b350b26ab7badb92fcea15f64d0522"
+    },
+    {
+      "path": "output/playwright/face-relief-adult-form-after-4-mobile-dark.png",
+      "sha256": "23ca81645664d526eacc9c54dcc5697a2fce9d833cc310691c70f7fd4d952890"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-adult-form-after-afro-mobile-light-portrait.png",
+      "sha256": "a90835a533c5765232fe6e0f73bac4f7e321366ba4bb6ada6ba787b055da672f"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-adult-form-after-side-part-desktop-dark-body.png",
+      "sha256": "75d180c80a1517be1d9ffff1f4e81cbbaa0abe286aa564c5b673cf24796c293a"
+    }
+  ],
+  "findings": [],
+  "checks": [
+    {
+      "command": "node --test test/player-fine-face.test.js test/player-face-lighting.test.js test/player-portrait-features.test.js",
+      "result": "15/15 PASS, zero skips, 9.832 seconds."
+    },
+    {
+      "command": "node .cache/adult-form-independent.mjs",
+      "result": "48 exact immediate-baseline legacy front/head-only/side SVG comparisons PASS; 32 valid-extreme finite/resource-unique/resource-complete/DTO-immutable outputs; eight actual gallery DTOs exact before/after; side iris and pupil contained in eye clip; four malformed-value helper fallback combinations finite."
+    },
+    {
+      "command": "Independent normalized public/static module equality and both built receipt freshness probe",
+      "result": "PASS: all four module texts equal after CRLF normalization; worker and in-page artifactDigest equals current manifest, six modes, named replacement/load/reload, unchanged appearance/frame and adult contours flags true."
+    }
+  ],
+  "sourceAssessment": "The jaw width is bounded against front face width; contour, shading and bust attachment reuse the same landmarks. Saved individual jaw/chin/cheek and aperture controls remain inputs. The side eye definition and clipped iris/pupil share one contour. Gating preserves no-fine and fine-without-natural-detail output exactly in the inspected cases. No domain, RNG, mass/frame or saved-recipe changes occur in these deltas.",
+  "visualAssessment": "Four matched original pairs across desktop/mobile and both themes show a broader lower jaw and narrower eyelid openings. No new contour, neck attachment, iris leak, resource or visible clipping defect found. At body scale the change is subtle. Faces remain flat, illustrated and mannequin-like; this component does not close that broader quality defect.",
+  "clientTestAssessment": "Optional proof compares actual displayed contour/eye paths to current renderer paths after real named-save, franchise replacement, load and reload; each of six reduced-motion modes is checked. Side iris elements must have a clip-path parent. Source reviewed only; no current built-client execution or build identity certified here. Final primary browser run reported 2/2 PASS in 59.1 seconds; both current receipt bindings independently verified, without rerunning browser.",
+  "inheritedLimitations": [
+    {
+      "issue": "Direct malformed resolved appearance DTO with faceWidth=NaN emits NaN ear coordinates.",
+      "evidence": "Independent initial broad malformed-render probe failed; exact targeted baseline/current reproduction confirms the same old ear-coordinate boundary problem. New landmark and eye helper fallbacks are finite. Valid saved schema outputs and legal extremes pass.",
+      "classification": "Inherited boundary limitation, not a component regression; do not claim all arbitrary malformed full DTOs are renderer-safe."
+    }
+  ],
+  "limits": [
+    "Eight original PNGs independently inspected, not all 64 captures.",
+    "Primary reported 18 focused tests and before/after browser runs are attributed primary evidence, not independent reruns.",
+    "47.5 jaw, 24.8 chin and eye projection coefficients are artistic, not measured anatomy or empirical cohort calibration.",
+    "Whole appearance naturalism, worldwide phenotype fitting, complete application/career/NFL policy and release remain open.",
+    "Primary final browser terminal result is attributed; independent review verifies source/build equality and receipt freshness, not browser re-execution."
+  ]
+}

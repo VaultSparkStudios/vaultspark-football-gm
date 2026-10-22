@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-08T10:15:18.213Z",
+  "round": 2,
+  "verdict": "PASS",
+  "scope": "Prior-year admitted regular gross captured before healing and net reconciled after actual same-payer base/elevation receipts; not complete NFL policy.",
+  "primaryReceipt": "docs/ADMITTED_REGULAR_RECONCILIATION_R2_2026-10-08.json",
+  "primaryReceiptSha256": "86788dc965a3e4b96b37d3b53d77a37b2b57dff0afc19a6c8ba184d1d65eda5c",
+  "priorReview": {
+    "file": "docs/ADMITTED_REGULAR_RECONCILIATION_REVIEW_R1_2026-10-08.json",
+    "sha256": "cf7e6261ffe1d20411cf3e5b89bc014e157e3e8b30cf35bee34d8ee8b5ee62be",
+    "verdict": "FIX",
+    "unchanged": true
+  },
+  "priorPrimary": {
+    "file": "docs/ADMITTED_REGULAR_RECONCILIATION_2026-10-08.json",
+    "sha256": "75ac9a6ec5ca340ce5f2686a33f7d73bfdc1122e7760e65755609c5787654d0b",
+    "unchanged": true
+  },
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426",
+    "src/domain/regularMedicalRecovery.js": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+    "src/runtime/GameSession.js": "6b135d51dcc79cbcee67041c4eb000527781b195444b18ee2eaa5f98cf559c55",
+    "src/engine/seasonSimulator.js": "4affc02d23c8c40ad749ac39b89f4a2dc173e2dc8c8b7098cd5719edcad571d3",
+    "test/admitted-regular-reconciliation.test.js": "65b394d3d6e6c8397c18eb9115c748b139f7c085de66a51db47cd1117d67f989",
+    "test/admitted-injury-payroll.test.js": "9bb663d97896351ab2e1488e2033a336789278a8a9125b910543fdf55a8f74a7",
+    "test/regular-medical-recovery.test.js": "fa1c259fdbc177d456e40932d42f7bb49843201e5fcde228dd8e2534d42556db",
+    "test/headless-regular-medical.test.js": "8795fa161d22e01f792fa7ab8cc451c973d4415ae004d82f5a206f67bb53d5a9",
+    "test/helpers/regularMedicalFixture.js": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba",
+    "tests-ui/admitted-regular-reconciliation-client.spec.js": "54a2d7865c88e3fdba07f73beb693f7def2ff58921a7aded2001563a2acdb3f6",
+    "tests-ui/regular-medical-recovery-client.spec.js": "fa1216d3be738e9da427e44bc0e4a59ab1c7fbb2d220df302091975a6653331e",
+    "scripts/run-test-shard.mjs": "623958eed20fed88026af44eb6fe490614717fae8ae091f63660de2bceeed6d6"
+  },
+  "bindingChecks": {
+    "terminalChunk": "66458d",
+    "sources": 12,
+    "frozenClientEvidence": 4,
+    "builtPairs": 4,
+    "allFrozenCurrentSourceAndClientHashesMatch": true,
+    "allBuiltHashesAndNormalizedSourceMatch": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/admitted-regular-reconciliation.test.js test/admitted-injury-payroll.test.js test/regular-medical-recovery.test.js",
+      "terminalChunks": [
+        "618ff8",
+        "5f5d78"
+      ],
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 18402.02,
+      "coverage": "Actual public release/sign/advance and headless weekly reconciliation; same-payer current/history copies, conflicting base restore, zero additional cash, settled elevation total coverage, bye, clearance/released/retired source, closed-year refusal and legacy earned rows."
+    },
+    {
+      "command": "Independent Node ESM original exploit and six authority variants",
+      "terminalChunk": "66458d",
+      "rejectedWithoutMutation": 6,
+      "variants": [
+        "copied",
+        "serialized",
+        "relabeled week/payId",
+        "original wrong period",
+        "cross-league",
+        "mutated original amount"
+      ],
+      "legitimateOriginalClearanceCents": 2861111,
+      "exactEarnedRetryPure": true
+    }
+  ],
+  "findingDisposition": [
+    {
+      "id": "R1-P2-captured-period-authority",
+      "status": "repaired",
+      "evidence": "Module-private WeakMap binds exact ephemeral batch object, originating league object, year/week and original JSON signature. Commit validates witness before clone/write, so copied or relabeled captures cannot manufacture a recovered later interval."
+    }
+  ],
+  "findings": [],
+  "primaryExecutedEvidence": {
+    "focused": {
+      "passed": 24,
+      "terminal": "67281f",
+      "includes": "Final nine reconciliation checks plus admitted-payroll and regular-medical contracts"
+    },
+    "adjacent": {
+      "runPassed": 63,
+      "terminal": "6b8e9f",
+      "includes": "Final nine reconciliation checks and 54 adjacent calendar/accounting checks, including actual full headless season",
+      "durationMs": 53704.2331
+    },
+    "browser": {
+      "passed": 4,
+      "terminal": "363497",
+      "actualClientSeams": [
+        "built-worker",
+        "built-in-page"
+      ],
+      "publicReleaseSignAdvance": true,
+      "namedSaveReplacementLoadReload": true
+    },
+    "build": {
+      "passed": true,
+      "terminal": "5bcc8c",
+      "assets": 319,
+      "kilobytes": 3559,
+      "precache": "3532b165c520",
+      "artifactDigest": "e02b1e3630bdee03f680cb009154c0319acb8bdd3272cf4efa3b62669a617a61"
+    },
+    "budgets": {
+      "passed": true,
+      "terminal": "1970b6",
+      "modules": 139,
+      "bootBytes": 649321,
+      "bootBudget": 730000,
+      "diffCheck": true
+    }
+  },
+  "attribution": "Four built worker/in-page command/save-replacement/load/reload receipts are primary-executed evidence inspected/hash-bound, not independently rerun. No UI rendering changes, screenshots or visual acceptance claimed.",
+  "limits": [
+    "The witness is an ephemeral in-process plan, deliberately not serializable. It authorizes this synchronous preview/recovery/base/commit sequence; it does not establish arbitrary resumed half-command execution.",
+    "Current receipt/import numerical reconciliation is not an adjudication of legal entitlement; CBA Article33§5k/l adjustment distinction reviewed in preserved R1, without adopting excluded policy conclusions.",
+    "Active-contract/other-employer treatment, pension, Benefits/cap classification, dispute election and four annual defaults remain open.",
+    "Full appearance/full suite/final current-source GM career/release and whole goal are not accepted."
+  ]
+}

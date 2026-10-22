@@ -29,6 +29,7 @@ function mover(row) {
     after: row.after,
     change: row.change,
     potential: row.potential ?? null,
+    potentialRevision: row.potentialRevision ?? null,
     trait: row.trait ?? null,
     retired: Boolean(row.retired)
   };
@@ -65,6 +66,9 @@ export function buildOffseasonDevelopmentReport({ progressed = [], teamId = null
   const byChangeAsc = (a, b) => a.change - b.change || b.after - a.after || String(a.name).localeCompare(String(b.name));
   const risers = active.filter((row) => row.change > 0).sort(byChangeDesc).slice(0, MOVERS_KEPT).map(mover);
   const fallers = active.filter((row) => row.change < 0).sort(byChangeAsc).slice(0, MOVERS_KEPT).map(mover);
+  const ceilingChanges = active.filter(row => Number(row.potentialRevision?.change) !== 0 && Number.isFinite(Number(row.potentialRevision?.change)))
+    .sort((a, b) => Math.abs(b.potentialRevision.change) - Math.abs(a.potentialRevision.change) || String(a.playerId).localeCompare(String(b.playerId)))
+    .slice(0, MOVERS_KEPT).map(mover);
   const clubSummary = summarize(active);
   const leagueSummary = summarize(rows.filter((row) => !row.retired));
 
@@ -82,6 +86,7 @@ export function buildOffseasonDevelopmentReport({ progressed = [], teamId = null
     league: leagueSummary,
     risers,
     fallers,
+    ceilingChanges,
     summaryLine,
     headline: active.length
       ? risers[0]

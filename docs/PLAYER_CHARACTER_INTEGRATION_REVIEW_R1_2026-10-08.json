@@ -1,0 +1,1038 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T15:54:53.808Z",
+  "component": "Production shared complete head and cached measured body integration",
+  "round": 1,
+  "verdict": "PASS",
+  "acceptanceScope": "Scoped shared character composition, saved identity, physical projection, fallback/lifecycle and build integration only. Not full anatomical/naturalistic appearance, demographic calibration, rendered union mass, physical-mobile performance, whole-goal completion or release acceptance.",
+  "primaryReceiptPath": "docs/visual-qa/PLAYER_CHARACTER_INTEGRATION_2026-10-08.json",
+  "primaryReceiptSha256": "d5286508d30bd22f6568131bb233162233c9fc796f11af57f34bdcc4a8f9504d",
+  "reusedBeforeReceipt": {
+    "path": "docs/visual-qa/PLAYER_CHARACTER_INTEGRATION_BEFORE_2026-10-08.json",
+    "sha256": "5111482975e0d41da2f29f4e280b8a271fa8e4eca2ec305ec2a814fbeb777490",
+    "baseline": {
+      "file": "docs/visual-qa/PLAYER_HEAD_POLE_REPAIR_2026-10-08.json",
+      "sha256": "8fc423bc7bdc83d8f1e1ceacb4896b452faa228466ffe0623ff303b5ce9e95f2",
+      "artifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18",
+      "review": "docs/PLAYER_HEAD_POLE_REPAIR_REVIEW_R1_2026-10-08.json",
+      "reviewSha256": "c99e0ad2681d2110e22f984ea68a9dade57c877f113a9c24fef7334c7a5f3d27"
+    },
+    "qualification": "Reuse the immediately preceding accepted dossier body/motion renders as pre-integration evidence; no fresh recreation or pixel-equality comparison is claimed.",
+    "captureComparability": "Both historical and current actual dossier captures show Christopher Reid (OL), jersey56, height80in and reach82.5in in the seeded Balanced scenario. Matched camera families and viewport/theme are identified, but current element crops differ from historical full-page captures.",
+    "captures": [
+      {
+        "original": "output/playwright/production-head-poles-after-desktop-dark-body.png",
+        "file": "captures/production-head-poles-after-desktop-dark-body.png",
+        "sha256": "82e41b48b8b0e0e35984671eb7648ae2e27b96b42a8536fb27d94a544c9fa3b4",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-desktop-dark-motion.png",
+        "file": "captures/production-head-poles-after-desktop-dark-motion.png",
+        "sha256": "fa449af6956646ada53323a894f2058d73137dd385add7fb61c172061456b391",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-desktop-light-body.png",
+        "file": "captures/production-head-poles-after-desktop-light-body.png",
+        "sha256": "bbaa40afc2bcf74cb929dce20e94338ab943804c2b39cb6333d3a5dd6def4be0",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-desktop-light-motion.png",
+        "file": "captures/production-head-poles-after-desktop-light-motion.png",
+        "sha256": "dec41fefa56cd48c0069d39818afccdefa7466818ef3a36c9c0fe19f9122aaad",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-mobile-dark-body.png",
+        "file": "captures/production-head-poles-after-mobile-dark-body.png",
+        "sha256": "de77f918b7baa8b861a1e2c17e29e81cddf3be4cc6776282a17a7d730d8f29f4",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-mobile-dark-motion.png",
+        "file": "captures/production-head-poles-after-mobile-dark-motion.png",
+        "sha256": "896b523c7c630d92df5a6097ff94a808ab0fb06470ef567dfcdf420f505fbadf",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-mobile-light-body.png",
+        "file": "captures/production-head-poles-after-mobile-light-body.png",
+        "sha256": "fd0e869141df7c71930eba28f21bc9979e629a1170ad9f0f3a8296206c402b9b",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-mobile-light-motion.png",
+        "file": "captures/production-head-poles-after-mobile-light-motion.png",
+        "sha256": "400840e1eb251755b79dfd1eb6deb5824e6a765d28aa4d266dc9a942f2b46866",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "role": "reused-pre-integration-dossier",
+        "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+      }
+    ]
+  },
+  "sourceHashes": {
+    "docs/visual-qa/references/player-head-before-physical-camera-2026-10-08.js": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6",
+    "public/lib/actionCoordinator.js": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a",
+    "public/lib/api/createApiClient.js": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605",
+    "public/lib/apiContract.js": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba",
+    "public/lib/appCore.js": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863",
+    "public/lib/appState.js": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/audioFeedback.js": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe",
+    "public/lib/clientDiagnostics.js": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c",
+    "public/lib/continuousHairTexture.js": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f",
+    "public/lib/croppedHairVolume.js": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+    "public/lib/engagementFeatures.js": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660",
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    "public/lib/franchiseScope.js": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/longHairFlow.js": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+    "public/lib/marqueeBadge.js": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e",
+    "public/lib/modalManager.js": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9",
+    "public/lib/partedHairFlow.js": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "public/lib/playerBody3d.js": "6aed8a0c156bb064238ea5a198a79d139a0cbca2d68a58b6d4cb8bbd5b3cd7aa",
+    "public/lib/playerBodyAnimation3d.js": "d4c57f5f9e9b3ff9d4d9c65ec3ddf3f42dea18a6b49f1ae2b06d31b1a9cdbe94",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+    "public/lib/playerCharacter3d.js": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+    "public/lib/playerFootwear.js": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerHead3d.js": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerMotion.js": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerPortraitMotion.js": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+    "public/lib/playerProfileNarrative.js": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/playerTrainingKit.js": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/portraitEyeSurface.js": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+    "public/lib/portraitSurfaceLighting.js": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+    "public/lib/profiledLimbSurface.js": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07",
+    "public/lib/scoreline.js": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003",
+    "public/lib/simWatchDirector.js": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00",
+    "public/lib/simWatchPlayback.js": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/teamRecord.js": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6",
+    "public/lib/torsoSurface.js": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc",
+    "public/styles.css": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db",
+    "scripts/lib/edge-security-policy.mjs": "b696838009e21f67c13e94ed67f1ecd83d0326728c3a7322439c570e9ce86a55",
+    "scripts/run-test-shard.mjs": "f08fe9b052db0f6f1d26f6ff9ac0b1a16a53fc9171c8f7e7506318b8985173da",
+    "src/data/playerDemographicBaseline.js": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699",
+    "src/data/playerFamilyHeritage.js": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8",
+    "src/domain/playerDemographicModel.js": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/utils/rng.js": "f6a657984fd920ab21f879a41d82d44ca35026b9aacac3f4ac8f69f402979b8e",
+    "test-support/appearance/playerBody3d.js": "fb8500dda75b26bd7d31cab0467e1162a6860b75ce059a1697deb760708636c0",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    "test/fixtures/player-head-pole-case.json": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1",
+    "test/player-character-3d.test.js": "e3a92f0c6e8a05ef4963eea7a353b7f932fd7305ab5bb7f03affd79e5256b00e",
+    "test/player-crown-surface.test.js": "979be39c6afb942f40bca7b7a911a2c86abc9d17f54db79f916f19a34133e519",
+    "test/player-facial-hair-form.test.js": "52d7fd2b09d1c24c62c202e5ad7c4c9e512cf69fca06308b153b1236a448e271",
+    "test/player-hair-volume.test.js": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99",
+    "test/player-head-poles.test.js": "6effbaf69c5653cb7058faa18850859a79205e5cb002e45f530074f90965941b",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+    "tests-ui/helpers/weekly-scenarios.js": "e2293d23d4a12703c6740c2d749b55bb09065e3adc49016998c334494aabbd0d",
+    "tests-ui/player-character-3d.spec.js": "90de82455be14783d6fe39b3409ce203537886fc366247ce4131dacc39a7d458",
+    "tests-ui/player-character-client.spec.js": "b0d2b957835de020ba7eadd8d1564ba76d3d363d5f8dedda45c74446154eaa37",
+    "tests-ui/player-character-head-compat.spec.js": "8a824d4e251a84a42d77abb8c65b419f9f714f7fa7d26e4e2ab8eb00ae9ae220"
+  },
+  "frozenSources": [
+    {
+      "original": "docs/visual-qa/references/player-head-before-physical-camera-2026-10-08.js",
+      "file": "references/character-integration-2026-10-08-docs-visual-qa-references-player-head-before-physical-camera-2026-10-08.js",
+      "sha256": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6"
+    },
+    {
+      "original": "public/lib/actionCoordinator.js",
+      "file": "references/character-integration-2026-10-08-public-lib-actionCoordinator.js",
+      "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a"
+    },
+    {
+      "original": "public/lib/api/createApiClient.js",
+      "file": "references/character-integration-2026-10-08-public-lib-api-createApiClient.js",
+      "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605"
+    },
+    {
+      "original": "public/lib/apiContract.js",
+      "file": "references/character-integration-2026-10-08-public-lib-apiContract.js",
+      "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba"
+    },
+    {
+      "original": "public/lib/appCore.js",
+      "file": "references/character-integration-2026-10-08-public-lib-appCore.js",
+      "sha256": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863"
+    },
+    {
+      "original": "public/lib/appState.js",
+      "file": "references/character-integration-2026-10-08-public-lib-appState.js",
+      "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/character-integration-2026-10-08-public-lib-appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/audioFeedback.js",
+      "file": "references/character-integration-2026-10-08-public-lib-audioFeedback.js",
+      "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe"
+    },
+    {
+      "original": "public/lib/clientDiagnostics.js",
+      "file": "references/character-integration-2026-10-08-public-lib-clientDiagnostics.js",
+      "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c"
+    },
+    {
+      "original": "public/lib/continuousHairTexture.js",
+      "file": "references/character-integration-2026-10-08-public-lib-continuousHairTexture.js",
+      "sha256": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f"
+    },
+    {
+      "original": "public/lib/croppedHairVolume.js",
+      "file": "references/character-integration-2026-10-08-public-lib-croppedHairVolume.js",
+      "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e"
+    },
+    {
+      "original": "public/lib/engagementFeatures.js",
+      "file": "references/character-integration-2026-10-08-public-lib-engagementFeatures.js",
+      "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660"
+    },
+    {
+      "original": "public/lib/fineFaceGeometry.js",
+      "file": "references/character-integration-2026-10-08-public-lib-fineFaceGeometry.js",
+      "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025"
+    },
+    {
+      "original": "public/lib/franchiseScope.js",
+      "file": "references/character-integration-2026-10-08-public-lib-franchiseScope.js",
+      "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178"
+    },
+    {
+      "original": "public/lib/hairArrangement.js",
+      "file": "references/character-integration-2026-10-08-public-lib-hairArrangement.js",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+    },
+    {
+      "original": "public/lib/hairGrayFibers.js",
+      "file": "references/character-integration-2026-10-08-public-lib-hairGrayFibers.js",
+      "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49"
+    },
+    {
+      "original": "public/lib/longHairFlow.js",
+      "file": "references/character-integration-2026-10-08-public-lib-longHairFlow.js",
+      "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba"
+    },
+    {
+      "original": "public/lib/marqueeBadge.js",
+      "file": "references/character-integration-2026-10-08-public-lib-marqueeBadge.js",
+      "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e"
+    },
+    {
+      "original": "public/lib/modalManager.js",
+      "file": "references/character-integration-2026-10-08-public-lib-modalManager.js",
+      "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
+    },
+    {
+      "original": "public/lib/partedHairFlow.js",
+      "file": "references/character-integration-2026-10-08-public-lib-partedHairFlow.js",
+      "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35"
+    },
+    {
+      "original": "public/lib/physiqueGeometryContract.js",
+      "file": "references/character-integration-2026-10-08-public-lib-physiqueGeometryContract.js",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+    },
+    {
+      "original": "public/lib/playerBody3d.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerBody3d.js",
+      "sha256": "6aed8a0c156bb064238ea5a198a79d139a0cbca2d68a58b6d4cb8bbd5b3cd7aa"
+    },
+    {
+      "original": "public/lib/playerBodyAnimation3d.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerBodyAnimation3d.js",
+      "sha256": "d4c57f5f9e9b3ff9d4d9c65ec3ddf3f42dea18a6b49f1ae2b06d31b1a9cdbe94"
+    },
+    {
+      "original": "public/lib/playerCapacityStudy.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerCapacityStudy.js",
+      "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7"
+    },
+    {
+      "original": "public/lib/playerCharacter3d.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerCharacter3d.js",
+      "sha256": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58"
+    },
+    {
+      "original": "public/lib/playerFootwear.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerFootwear.js",
+      "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+    },
+    {
+      "original": "public/lib/playerHand.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerHand.js",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerHead3d.js",
+      "sha256": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerMotion.js",
+      "sha256": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerPortraitFace.js",
+      "sha256": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb"
+    },
+    {
+      "original": "public/lib/playerPortraitMotion.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerPortraitMotion.js",
+      "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9"
+    },
+    {
+      "original": "public/lib/playerProfileNarrative.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerProfileNarrative.js",
+      "sha256": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerSideAppearance.js",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "public/lib/playerTrainingKit.js",
+      "file": "references/character-integration-2026-10-08-public-lib-playerTrainingKit.js",
+      "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec"
+    },
+    {
+      "original": "public/lib/portraitAppearanceContract.js",
+      "file": "references/character-integration-2026-10-08-public-lib-portraitAppearanceContract.js",
+      "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+    },
+    {
+      "original": "public/lib/portraitEyeSurface.js",
+      "file": "references/character-integration-2026-10-08-public-lib-portraitEyeSurface.js",
+      "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f"
+    },
+    {
+      "original": "public/lib/portraitSurfaceLighting.js",
+      "file": "references/character-integration-2026-10-08-public-lib-portraitSurfaceLighting.js",
+      "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72"
+    },
+    {
+      "original": "public/lib/profiledLimbSurface.js",
+      "file": "references/character-integration-2026-10-08-public-lib-profiledLimbSurface.js",
+      "sha256": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07"
+    },
+    {
+      "original": "public/lib/scoreline.js",
+      "file": "references/character-integration-2026-10-08-public-lib-scoreline.js",
+      "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003"
+    },
+    {
+      "original": "public/lib/simWatchDirector.js",
+      "file": "references/character-integration-2026-10-08-public-lib-simWatchDirector.js",
+      "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00"
+    },
+    {
+      "original": "public/lib/simWatchPlayback.js",
+      "file": "references/character-integration-2026-10-08-public-lib-simWatchPlayback.js",
+      "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3"
+    },
+    {
+      "original": "public/lib/structuredHair.js",
+      "file": "references/character-integration-2026-10-08-public-lib-structuredHair.js",
+      "sha256": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1"
+    },
+    {
+      "original": "public/lib/teamRecord.js",
+      "file": "references/character-integration-2026-10-08-public-lib-teamRecord.js",
+      "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6"
+    },
+    {
+      "original": "public/lib/torsoSurface.js",
+      "file": "references/character-integration-2026-10-08-public-lib-torsoSurface.js",
+      "sha256": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc"
+    },
+    {
+      "original": "public/styles.css",
+      "file": "references/character-integration-2026-10-08-public-styles.css",
+      "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
+    },
+    {
+      "original": "scripts/lib/edge-security-policy.mjs",
+      "file": "references/character-integration-2026-10-08-scripts-lib-edge-security-policy.mjs",
+      "sha256": "b696838009e21f67c13e94ed67f1ecd83d0326728c3a7322439c570e9ce86a55"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/character-integration-2026-10-08-scripts-run-test-shard.mjs",
+      "sha256": "f08fe9b052db0f6f1d26f6ff9ac0b1a16a53fc9171c8f7e7506318b8985173da"
+    },
+    {
+      "original": "src/data/playerDemographicBaseline.js",
+      "file": "references/character-integration-2026-10-08-src-data-playerDemographicBaseline.js",
+      "sha256": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699"
+    },
+    {
+      "original": "src/data/playerFamilyHeritage.js",
+      "file": "references/character-integration-2026-10-08-src-data-playerFamilyHeritage.js",
+      "sha256": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8"
+    },
+    {
+      "original": "src/domain/playerDemographicModel.js",
+      "file": "references/character-integration-2026-10-08-src-domain-playerDemographicModel.js",
+      "sha256": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/character-integration-2026-10-08-src-domain-playerIdentity.js",
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/character-integration-2026-10-08-src-domain-playerMeasurements.js",
+      "sha256": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/character-integration-2026-10-08-src-domain-playerVisualIdentity.js",
+      "sha256": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1"
+    },
+    {
+      "original": "src/utils/rng.js",
+      "file": "references/character-integration-2026-10-08-src-utils-rng.js",
+      "sha256": "f6a657984fd920ab21f879a41d82d44ca35026b9aacac3f4ac8f69f402979b8e"
+    },
+    {
+      "original": "test-support/appearance/playerBody3d.js",
+      "file": "references/character-integration-2026-10-08-test-support-appearance-playerBody3d.js",
+      "sha256": "fb8500dda75b26bd7d31cab0467e1162a6860b75ce059a1697deb760708636c0"
+    },
+    {
+      "original": "test-support/appearance/triangleSolidVolume.js",
+      "file": "references/character-integration-2026-10-08-test-support-appearance-triangleSolidVolume.js",
+      "sha256": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b"
+    },
+    {
+      "original": "test/fixtures/player-head-pole-case.json",
+      "file": "references/character-integration-2026-10-08-test-fixtures-player-head-pole-case.json",
+      "sha256": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1"
+    },
+    {
+      "original": "test/player-character-3d.test.js",
+      "file": "references/character-integration-2026-10-08-test-player-character-3d.test.js",
+      "sha256": "e3a92f0c6e8a05ef4963eea7a353b7f932fd7305ab5bb7f03affd79e5256b00e"
+    },
+    {
+      "original": "test/player-crown-surface.test.js",
+      "file": "references/character-integration-2026-10-08-test-player-crown-surface.test.js",
+      "sha256": "979be39c6afb942f40bca7b7a911a2c86abc9d17f54db79f916f19a34133e519"
+    },
+    {
+      "original": "test/player-facial-hair-form.test.js",
+      "file": "references/character-integration-2026-10-08-test-player-facial-hair-form.test.js",
+      "sha256": "52d7fd2b09d1c24c62c202e5ad7c4c9e512cf69fca06308b153b1236a448e271"
+    },
+    {
+      "original": "test/player-hair-volume.test.js",
+      "file": "references/character-integration-2026-10-08-test-player-hair-volume.test.js",
+      "sha256": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99"
+    },
+    {
+      "original": "test/player-head-poles.test.js",
+      "file": "references/character-integration-2026-10-08-test-player-head-poles.test.js",
+      "sha256": "6effbaf69c5653cb7058faa18850859a79205e5cb002e45f530074f90965941b"
+    },
+    {
+      "original": "tests-ui/helpers/static-client.js",
+      "file": "references/character-integration-2026-10-08-tests-ui-helpers-static-client.js",
+      "sha256": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe"
+    },
+    {
+      "original": "tests-ui/helpers/weekly-scenarios.js",
+      "file": "references/character-integration-2026-10-08-tests-ui-helpers-weekly-scenarios.js",
+      "sha256": "e2293d23d4a12703c6740c2d749b55bb09065e3adc49016998c334494aabbd0d"
+    },
+    {
+      "original": "tests-ui/player-character-3d.spec.js",
+      "file": "references/character-integration-2026-10-08-tests-ui-player-character-3d.spec.js",
+      "sha256": "90de82455be14783d6fe39b3409ce203537886fc366247ce4131dacc39a7d458"
+    },
+    {
+      "original": "tests-ui/player-character-client.spec.js",
+      "file": "references/character-integration-2026-10-08-tests-ui-player-character-client.spec.js",
+      "sha256": "b0d2b957835de020ba7eadd8d1564ba76d3d363d5f8dedda45c74446154eaa37"
+    },
+    {
+      "original": "tests-ui/player-character-head-compat.spec.js",
+      "file": "references/character-integration-2026-10-08-tests-ui-player-character-head-compat.spec.js",
+      "sha256": "8a824d4e251a84a42d77abb8c65b419f9f714f7fa7d26e4e2ab8eb00ae9ae220"
+    }
+  ],
+  "builtHashes": {
+    "static/lib/playerCharacter3d.js": {
+      "source": "public/lib/playerCharacter3d.js",
+      "sha256": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerBodyAnimation3d.js": {
+      "source": "public/lib/playerBodyAnimation3d.js",
+      "sha256": "d4c57f5f9e9b3ff9d4d9c65ec3ddf3f42dea18a6b49f1ae2b06d31b1a9cdbe94",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerBody3d.js": {
+      "source": "public/lib/playerBody3d.js",
+      "sha256": "6aed8a0c156bb064238ea5a198a79d139a0cbca2d68a58b6d4cb8bbd5b3cd7aa",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/physiqueGeometryContract.js": {
+      "source": "public/lib/physiqueGeometryContract.js",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "15675c81e36e9ab1c7b9d0fac64c346f1ec28186c67c6abe7c80e9f9fa5945aa",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "6653b51b8f97115986d69fdc3c9c34d3cd9dfc628a3a0136b5af8cb0933f1df5",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerCapacityStudy.js": {
+      "source": "public/lib/playerCapacityStudy.js",
+      "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/structuredHair.js": {
+      "source": "public/lib/structuredHair.js",
+      "sha256": "9022287ee0d777c9459607719fa3aabb1addd4cc3445ed5ea2831bedb8f7e755",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/hairGrayFibers.js": {
+      "source": "public/lib/hairGrayFibers.js",
+      "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitAppearanceContract.js": {
+      "source": "public/lib/portraitAppearanceContract.js",
+      "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/hairArrangement.js": {
+      "source": "public/lib/hairArrangement.js",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/fineFaceGeometry.js": {
+      "source": "public/lib/fineFaceGeometry.js",
+      "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitSurfaceLighting.js": {
+      "source": "public/lib/portraitSurfaceLighting.js",
+      "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/longHairFlow.js": {
+      "source": "public/lib/longHairFlow.js",
+      "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/continuousHairTexture.js": {
+      "source": "public/lib/continuousHairTexture.js",
+      "sha256": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/croppedHairVolume.js": {
+      "source": "public/lib/croppedHairVolume.js",
+      "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/partedHairFlow.js": {
+      "source": "public/lib/partedHairFlow.js",
+      "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitEyeSurface.js": {
+      "source": "public/lib/portraitEyeSurface.js",
+      "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitMotion.js": {
+      "source": "public/lib/playerPortraitMotion.js",
+      "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/profiledLimbSurface.js": {
+      "source": "public/lib/profiledLimbSurface.js",
+      "sha256": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerFootwear.js": {
+      "source": "public/lib/playerFootwear.js",
+      "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHand.js": {
+      "source": "public/lib/playerHand.js",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/torsoSurface.js": {
+      "source": "public/lib/torsoSurface.js",
+      "sha256": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerTrainingKit.js": {
+      "source": "public/lib/playerTrainingKit.js",
+      "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appCore.js": {
+      "source": "public/lib/appCore.js",
+      "sha256": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appState.js": {
+      "source": "public/lib/appState.js",
+      "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/api/createApiClient.js": {
+      "source": "public/lib/api/createApiClient.js",
+      "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/apiContract.js": {
+      "source": "public/lib/apiContract.js",
+      "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/clientDiagnostics.js": {
+      "source": "public/lib/clientDiagnostics.js",
+      "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerProfileNarrative.js": {
+      "source": "public/lib/playerProfileNarrative.js",
+      "sha256": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/actionCoordinator.js": {
+      "source": "public/lib/actionCoordinator.js",
+      "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/franchiseScope.js": {
+      "source": "public/lib/franchiseScope.js",
+      "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/engagementFeatures.js": {
+      "source": "public/lib/engagementFeatures.js",
+      "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/modalManager.js": {
+      "source": "public/lib/modalManager.js",
+      "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/simWatchDirector.js": {
+      "source": "public/lib/simWatchDirector.js",
+      "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/simWatchPlayback.js": {
+      "source": "public/lib/simWatchPlayback.js",
+      "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/audioFeedback.js": {
+      "source": "public/lib/audioFeedback.js",
+      "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/marqueeBadge.js": {
+      "source": "public/lib/marqueeBadge.js",
+      "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/teamRecord.js": {
+      "source": "public/lib/teamRecord.js",
+      "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/scoreline.js": {
+      "source": "public/lib/scoreline.js",
+      "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/styles.css": {
+      "source": "public/styles.css",
+      "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "7f6cb10917b6d2ff802f878fb7d8401e92311871222942511ed6cca26070e666",
+  "frozenArtifactHashes": {
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-domain-reviewed.log": "5fd3646424bbb5de185926069f0a4eb1965e51897f067e925f8edc782289d0cf",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-browser-reviewed.log": "e8ab2bf5139dc87a1990e899e219a0aba37ddbf579293a7fe27492e014f579dc",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-browser-initial-failure.log": "b7689f154a145aa1bbbde464ce6ee90781dacc97296e49b0868dd800dcee514a",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-build-reviewed.log": "ce83118b918d2ac2464fd5eab260f9dfb1bb26dcac1bf3f65a18b484ee5d303b",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-reachability-reviewed.log": "c0c43173e91c4bf9d1351f62db52c94cae49a328284052631b35d4a29ccd7efd",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-boot-reviewed.log": "cd91255904627b55ad57ba5bf41226c9f6f6c2951876e332d31a16f3403891fd",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-premises-reviewed.log": "e1b7e6815f3e2c457d6e48fa1db12996e81079f41adcdd6e8fb45d1bb52682ed",
+    "docs/visual-qa/references/character-integration-2026-10-08-output-playwright-character-production-observations.json": "1df4a631c8933d02863c1db7505d2dc3d3e122a6e7565ff183b82716280ad3ca",
+    "docs/visual-qa/references/character-integration-2026-10-08-output-playwright-character-head-compat.json": "a3851f762faf0b992fafb0ab8e6665989b20ad360853d1f28a4d92f28e32fab0",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-client-worker.json": "6d20747c9a5a77ddfdaa2df85e3771cc6c303e13bba206b65559a025bc64179b",
+    "docs/visual-qa/references/character-integration-2026-10-08-.cache-character-client-in-page.json": "6ffef91a62e54ad6b30ada11274fc7f69c54c8d228175e5bc85cb213cb9128f8",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-dark-run.png": "48e006f4d5c56eec7b7a748d1d4192debd854828371f1e00b0d1b9529473b372",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-dark-acceleration.png": "d9b4811b4a982921fd420deb4fa78e1f03db77c1d5751fff4a1f2243b79ad2e5",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-dark-cut.png": "786675856880c80703a94406630d46cc1b1c38cf2d587cf9ecccbb3432ef2b70",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-dark-jump.png": "9ed8cd440b268a5da0779337cc8f7081cf65ae1ecf10aee9be0df32ad4e4ca6d",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-dark-strength.png": "66c852bfcd5f566c318d09077ebcacc55fcb3d26bf75c61de99d659a77d84d54",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-dark-endurance.png": "9b492b1d69596a4745a391747c0a827308e8ff0f0d08cf8b673662836cedc518",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-light-run.png": "62d383a5c922f595491bb00358a48bf97e63d7134bd90f40315550f5b44a7218",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-light-acceleration.png": "ef3347730ade9671636c4782aa1048cc058b750f6cfae27479d6ae277aed9799",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-light-cut.png": "c2eb455df0bd6be5ea425a6599dca20a4b2ec28fb1f19d8fc99b98776c71246e",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-light-jump.png": "e1edc3854fe51352d7eb70a3f7153e8da68b81884b9c89b10415760edeef0d3a",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-light-strength.png": "67bad84627a3c0b9ae8570a14efd46cc5af30446edcdfd281ecee92d7d1fadc8",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-desktop-light-endurance.png": "ebaa7a906d3b83ae3a74e862cd6f7c23fb8d9580640f8778538ee37342bd7384",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-run.png": "78228cb32fea3342a8dd91c46b131a2fae710647ceb1e747e148313a88b5194b",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-acceleration.png": "e92fb03ed9583b7a4b9d65b9576bef791fda0b05df4602f60e152e881a018771",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-cut.png": "75d55bd19d3ec830646bca3b2fda308cd6f19761fa79461021ad3e85cd804bab",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-jump.png": "ba7a290f83f2be974e662962336d930f0ab9e98340b846d0850123b53686e231",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-strength.png": "cd45250f07fccbf06159e0019968e202b8bbe75b0c86181d08053133691d5000",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-endurance.png": "70114ec181b6a330a6f67586c9e4edd1ae8d1b6e5d545acbd915a3b5d784a44b",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-front.png": "b1f3180df57b12a713f3e4a64d8933b203a88530d0903380178f9bb60923e6d4",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-dark-side.png": "ac8a58818cfe21b61bb31299a5ce88613e0f3a682cb0f33d4adb5264abc3532b",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-run.png": "839702fc21640afc910e2072c8f90a9c5a83e257066ccd6a179faeff1bda514d",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-acceleration.png": "67d9dd58479853be4bc47a7c74c23a978e6e6f9147ac31ce7d7913ebfff689af",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-cut.png": "4586eef1f452ef557e5a926ad58feb7f4eff49fcc7cbce1ec35bc296b135067f",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-jump.png": "36fd38a381e6df3ef8ab994036e3de07ca5ddcccc31a6af5069a657a8b0df5be",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-strength.png": "356906445bb482408b2c1e24ad94a19456c8e57d25e918985852949012a2561d",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-endurance.png": "81ad1979f223bfeb878056154e422ffe958390eb109333437c2e4517eaf949e6",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-front.png": "fac6a5a934a92994ed94aac1d1ac6a5965c859695f9d5966d6411567160d3f40",
+    "docs/visual-qa/captures/character-integration-2026-10-08-output-playwright-character-final-mobile-light-side.png": "094abef47781f63a60f03ee940beee997ad6a8df18c1ed32afbe382aac38942a"
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-character-3d.test.js test/player-body-animation-3d.test.js test/player-body-3d.test.js test/triangle-solid-volume.test.js",
+      "sessionId": 56483,
+      "terminalChunk": "e1cc2b",
+      "exitCode": 0,
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 10140.4341,
+      "qualification": "First inspected production version before the pre-freeze id/age authority repair; final character tests and adverse source probe rerun below."
+    },
+    {
+      "command": "node --test test/player-character-3d.test.js",
+      "terminalChunk": "dcd360",
+      "exitCode": 0,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 5440.4546,
+      "qualification": "Current frozen repaired authority version; complete head/body/no duplicate skull, measured placement, input preservation and disposal tests."
+    },
+    {
+      "command": "Independent original id/age counterexample recheck",
+      "terminalChunk": "9ebef5",
+      "exitCode": 0,
+      "qualification": "Unchanged saved person matches; changed identity seed or age now refuses; disposed model count0."
+    },
+    {
+      "command": "node .cache/character-integration-independent-geometry.mjs",
+      "sessionId": 8251,
+      "terminalChunk": "72dd4d",
+      "exitCode": 0,
+      "results": {
+        "checks": 84,
+        "maxPositionError": 0.00000762939453125,
+        "maxNormalError": 5.960464477539063e-8,
+        "maxSkullError": 0,
+        "inputUnchanged": true,
+        "noDuplicateSkull": true,
+        "activeModelsAfterDisposal": 0
+      },
+      "qualification": "Four62/96in,100/650lb,40/99capacity tails ×seven modes ×three phases. Same retained head/body buffers, no proxy skull, exact measured poses, orthonormal head placement, zero skull-height error, bounded position/normal errors, input purity, authority and final disposal."
+    },
+    {
+      "command": "node .cache/character-integration-independent-bindings.mjs",
+      "terminalChunk": "0eee00",
+      "exitCode": 0,
+      "results": {
+        "primaryReceiptSha256": "d5286508d30bd22f6568131bb233162233c9fc796f11af57f34bdcc4a8f9504d",
+        "checks": 331,
+        "currentSources": 69,
+        "sourceBuildPairs": 46,
+        "captures": 28,
+        "clients": [
+          {
+            "worker": true,
+            "artifactDigest": "7f6cb10917b6d2ff802f878fb7d8401e92311871222942511ed6cca26070e666",
+            "playerId": "P2026-BUF-OL-48032446",
+            "namedSaveReplacementLoadReload": true,
+            "frontProfileMotionImagesExact": true,
+            "personAndMeasurementsExact": true,
+            "rngExact": true,
+            "completeVisualAcceptance": false
+          },
+          {
+            "worker": false,
+            "artifactDigest": "7f6cb10917b6d2ff802f878fb7d8401e92311871222942511ed6cca26070e666",
+            "playerId": "P2026-BUF-OL-48032446",
+            "namedSaveReplacementLoadReload": true,
+            "frontProfileMotionImagesExact": true,
+            "personAndMeasurementsExact": true,
+            "rngExact": true,
+            "completeVisualAcceptance": false
+          }
+        ],
+        "artifactDigest": "7f6cb10917b6d2ff802f878fb7d8401e92311871222942511ed6cca26070e666"
+      },
+      "qualification": "331 hash/content checks:69 current sources and frozen copies,46 normalized source/build pairs,28 final captures, report/client originals and copies; both client fingerprints and required restoration flags match current artifact. Reused-before supplement additionally verifies baseline primary/review and all eight historical capture pairs."
+    }
+  ],
+  "preFreezeFinding": {
+    "status": "RESOLVED",
+    "finding": "Character matchesPlayer originally ignored identitySeed and age, admitting changed heads/materials with identical body frame/appearance/ratings. Root added exact id/age guard before frozen primary; independent original counterexamples now refuse.",
+    "diagnosticPath": ".cache/character-integration-authority-before.json",
+    "diagnosticSha256": "c225ce7d26c841a449001a68e81216b23185492192b0b7f2b329b097502a6112",
+    "frozenSourcePath": ".cache/character-integration-authority-before.js",
+    "frozenSourceSha256": "846e59e6eb01bfb6e03b89cbb35c2297dc39a2073bb80891cbfd2e4a8c20f501",
+    "originalProbeChunk": "8cc4f3",
+    "repairProbeChunk": "9ebef5"
+  },
+  "scratchEvidenceHashes": {
+    ".cache/character-integration-independent-geometry.mjs": "333964f619d64a6a6f33f4da20d65fb12db8ae6410987f53ecb3db197044e4fc",
+    ".cache/character-integration-independent-geometry-results.json": "5e87dc9357398787078b58ed4f00d845466976ca1e021c2b702e6cf2ff3808cd",
+    ".cache/character-integration-independent-bindings.mjs": "0b85a15ff2c256aa073ce1ad0eba823c52a371fb9832608a513a7c90d00bd9d2",
+    ".cache/character-integration-independent-bindings.json": "d2f91fd33398379c5afeed05a1e8ee7731bdfe10e1870b7f2fe5743c20e599e3"
+  },
+  "imagesActuallyInspected": {
+    "current": [
+      {
+        "path": "output/playwright/character-final-desktop-dark-run.png",
+        "sha256": "48e006f4d5c56eec7b7a748d1d4192debd854828371f1e00b0d1b9529473b372"
+      },
+      {
+        "path": "output/playwright/character-final-desktop-light-jump.png",
+        "sha256": "e1edc3854fe51352d7eb70a3f7153e8da68b81884b9c89b10415760edeef0d3a"
+      },
+      {
+        "path": "output/playwright/character-final-mobile-dark-front.png",
+        "sha256": "b1f3180df57b12a713f3e4a64d8933b203a88530d0903380178f9bb60923e6d4"
+      },
+      {
+        "path": "output/playwright/character-final-mobile-light-side.png",
+        "sha256": "094abef47781f63a60f03ee940beee997ad6a8df18c1ed32afbe382aac38942a"
+      },
+      {
+        "path": "output/playwright/character-final-mobile-dark-strength.png",
+        "sha256": "cd45250f07fccbf06159e0019968e202b8bbe75b0c86181d08053133691d5000"
+      }
+    ],
+    "reusedBefore": [
+      {
+        "path": "output/playwright/production-head-poles-after-desktop-dark-body.png",
+        "sha256": "82e41b48b8b0e0e35984671eb7648ae2e27b96b42a8536fb27d94a544c9fa3b4",
+        "role": "Historical immediately preceding accepted SVG dossier reference; not a fresh recreation."
+      },
+      {
+        "path": "output/playwright/production-head-poles-after-desktop-light-body.png",
+        "sha256": "bbaa40afc2bcf74cb929dce20e94338ab943804c2b39cb6333d3a5dd6def4be0",
+        "role": "Historical immediately preceding accepted SVG dossier reference; not a fresh recreation."
+      },
+      {
+        "path": "output/playwright/production-head-poles-after-mobile-dark-body.png",
+        "sha256": "de77f918b7baa8b861a1e2c17e29e81cddf3be4cc6776282a17a7d730d8f29f4",
+        "role": "Historical immediately preceding accepted SVG dossier reference; not a fresh recreation."
+      },
+      {
+        "path": "output/playwright/production-head-poles-after-mobile-light-body.png",
+        "sha256": "fd0e869141df7c71930eba28f21bc9979e629a1170ad9f0f3a8296206c402b9b",
+        "role": "Historical immediately preceding accepted SVG dossier reference; not a fresh recreation."
+      }
+    ]
+  },
+  "methodAssessment": "Public body helper excludes its nominal skull when composed with complete saved head. One retained character model supplies static front/profile and motion; opt-in physical head shader uses the same camera extent, origin, inch-to-display scale and depth convention as measured body. Existing ordinary portrait path remains separate/default. Source review confirms renderer disposal on failure and close; actual browser lifecycle/fallback evidence is primary execution, not independently rerun.",
+  "primaryExecutionAttribution": {
+    "checks": {
+      "domainTests": 16,
+      "browserTests": 6,
+      "standaloneHeadPixelComparisons": 252,
+      "actualRuntimes": [
+        "worker",
+        "in-page"
+      ],
+      "physicalMobileDeviceTested": false,
+      "gpuCompletionTimed": false,
+      "wholeUnionMassVerified": false
+    },
+    "browserIndependentlyRerun": false,
+    "ordinaryHeadPixelComparisons": 252,
+    "actualClientProofs": [
+      {
+        "worker": true,
+        "artifactDigest": "7f6cb10917b6d2ff802f878fb7d8401e92311871222942511ed6cca26070e666",
+        "playerId": "P2026-BUF-OL-48032446",
+        "namedSaveReplacementLoadReload": true,
+        "frontProfileMotionImagesExact": true,
+        "personAndMeasurementsExact": true,
+        "rngExact": true,
+        "completeVisualAcceptance": false
+      },
+      {
+        "worker": false,
+        "artifactDigest": "7f6cb10917b6d2ff802f878fb7d8401e92311871222942511ed6cca26070e666",
+        "playerId": "P2026-BUF-OL-48032446",
+        "namedSaveReplacementLoadReload": true,
+        "frontProfileMotionImagesExact": true,
+        "personAndMeasurementsExact": true,
+        "rngExact": true,
+        "completeVisualAcceptance": false
+      }
+    ],
+    "build": "Passing primary build/loading receipts hash-verified; current artifact and normalized source/build equality independently verified.",
+    "lifecycle": "Primary actual animation advance/pause/reduced-motion/same-canvas/close, plus unavailable-WebGL measured SVG fallback; test source and terminal report inspected."
+  },
+  "findings": [
+    {
+      "severity": "scope-limit",
+      "status": "OPEN",
+      "finding": "Complete head/body share saved identity and projection, but artwork remains slab/mannequin-like with blunt shoulders, rigid joint transitions, simplified hands, smooth faces and coarse hair/beard. Numerical/projection agreement is not full visual acceptance."
+    },
+    {
+      "severity": "numerical-limit",
+      "status": "OPEN",
+      "finding": "No complete anatomical union, self-intersection-free body, pose-preserving rendered mass, all-phase guarantee or empirical tissue/population fit is established."
+    },
+    {
+      "severity": "evidence-qualification",
+      "status": "QUALIFIED",
+      "finding": "Before evidence is reused from accepted preceding head-pole dossier captures. Same displayed ChristopherReid/#56 scenario, themes and viewport families are visible; current element crops differ from prior full-page screenshots. No fresh controlled before-run or exact before/after pixel claim is made."
+    },
+    {
+      "severity": "device-limit",
+      "status": "OPEN",
+      "finding": "Headless Chromium/emulated viewports and bounded context/buffer lifecycle evidence do not establish physical-mobile GPU performance, device-wide graphics compatibility or universal context behavior."
+    }
+  ],
+  "limits": [
+    "Only selected valid measurement/capacity tails, saved person fixtures and inspected originals; not all player/pigment/grooming/pose combinations.",
+    "Models use cloned state; callers rebuild on saved identity/material/body changes and must respect retained buffer ownership.",
+    "Body-view blink defaults neutral; ordinary portrait automatic blink remains separate. No new automatic whole-character blink/lip movement acceptance is claimed.",
+    "Historical test-support numerical receipts do not certify the new public production artifact.",
+    "No full suite/current career, NFL-policy, complete appearance, population calibration or release certification."
+  ],
+  "fullVisualAcceptance": false,
+  "wholeGoalComplete": false,
+  "releaseAccepted": false,
+  "recordReviewHelper": "record-review.mjs unavailable; immutable independent review JSON written directly."
+}

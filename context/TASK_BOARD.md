@@ -4,6 +4,12 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
+- [ ] S118: Verify smoother measured characters, articulated movement and refined faces against compatibility, mesh-memory and rendered-pixel checks.
+- [ ] S118: Verify saved family background/coloring and relationship narratives in both draft paths and browser restoration.
+- [ ] S118: Finish the complete test inventory, inspect final captures, verify the exact candidate on staging and hosted checks, deploy Pages/backend, and record readback and rollback evidence.
+
+### Later — existing independent work
+
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
@@ -15,6 +21,16 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 S112 evidence correction to the older CPU–CPU market task: test/session111-cpu-trade-market.test.js proves a matched-seed single-week enabled/disabled transaction control, plus a separate three-year market-volume bound. It does not contain a matched three-season disabled-market comparison. The older wording remains historical and is superseded by this correction.
 <!-- /s112-closeout:cpu-market-evidence-correction -->
+
+## S117 carried scope — explicit partial closeout
+
+- [ ] Now: fix the reproducible 16.2 MB save-payload regression without raising the 16 MB bar; rerun current required checks.
+- [ ] Now: finish whole-person appearance craft and clear the existing visual defect through rendered evidence.
+- [ ] Next: complete remaining NFL policy scope and a fresh source-bound 30-season managed GM verification.
+- [ ] Next: exact-candidate stable staging, release gates, authorized production promotion and readback.
+- [ ] Deploy deferred: test and visual gates nonpassing; no credential/permission dependency.
+- Scoped demographic research and plan expansion complete; full demographic runtime calibration remains partial.
+- Prototype trunk source preserved outside release files. No selected audit item newly labeled wholly shipped at closeout. [SIL:117] preserve historical accepted fixture authority separately from current deliberate anatomy changes.
 
 ## Session 116 — Multi-sport platform: guardrails and the first six seams (2026-10-04)
 
@@ -169,19 +185,6 @@ Public launch remains HOLD for actual project-domain receive/reply-as evidence, 
 - [ ] Elite density `watch` at 2.1% / 2.7% (canonical / 2026) against 1.53%; dispersion `watch` at 0.093 / 0.108 against 0.08. Do not widen `stdDevDrift*`.
 - [ ] The history island sits at 15.2% headroom against a 15% floor; the next History-tab change goes behind a dynamic import, never a raised `maxBytes`.
 - [ ] Run `node scripts/ledger-roll.mjs --apply` at every closeout after appending; the live gate tolerates one session of debt, not two.
-
-## Session 107 — Full arc: the gate measured who survived, and potential lands on the scale overall uses (2026-09-13)
-
-- [x] **Re-derive S106's refused gate instead of inheriting its diagnosis.** `session90-development-environment` read the players who SURVIVED the offseason, and retirement is rolled on the overall that offseason just produced — selection on the outcome. Unchanged S106 tree, four seeds: survivor reading **+0.149 to +0.238** above the curve, full progressed population **±0.022**. The gate now measures every progressed player at the engine's measured centre, isolates the environment with a matched seeded offseason, and is **tightened 0.25 → 0.10**. Negative controls: the pre-S90 environment (+0.82 to +0.90) and the survivor reading itself.
-- [x] **Land position-relative potential.** Trait-sized headroom above the player's own overall, closed by 31, tapered over the 55 points below 99, same RNG slot, finite inputs asserted. Above own potential **36.0-37.6% → 0.0%**, overalls unchanged to the decimal on four seeds. Focused test with a position-blind negative control; POT and the profile's development runway reflect it; release note written.
-- [x] **Measure the calibration as a cost before believing it.** Taper 25 read dispersion 0.112 against the old draw's 0.095 and was rejected. Sweep 25/40/55 read dispersion 0.112/0.101/0.093 (monotone) and elite 2.4/3.0/2.1% (not), so the width was chosen on dispersion and confirmed against a restored old draw on seed 2026 (3.4%/0.125 → 2.7%/0.108). Canonical seed: **elite 2.1%, dispersion 0.093, parity -0.001**, all better than the old draw; no threshold moved.
-- [x] Correct the S106 record: DECISIONS S107 Decision 1 supersedes the causal claim (S106 entry untouched), the source comment describes the landed code, and TRUTH_AUDIT names the contradiction.
-- [x] **Home-field advantage asserts a population claim over a population.** One league at 220 games cannot resolve a 1.2-point boost (edge 0.705 vs neutral 0.714 there; +0.028 at 2,000 games; 7 of 8 leagues positive at 220). Pooled across three leagues; the per-league "stays small" bound is kept.
-- [ ] Never export `TEST_SHARD_TIMEOUT_MS` for a canonical run: `test-shard-progress` asserts the default and the child tests inherit the environment. If a shard needs a longer bound under load, remove the load.
-- [x] **Stop re-pinning the rival-offer negative control to one seed.** Third move (S103, S104, S107), each from a legitimate change to how leagues develop. Re-scanned 620101-620120; the control now walks 620111 / 620108 / 620114 / 620115 and requires one to surface an offer past the deadline.
-- [~] **Elite density's position-blind cut — measured, still a question.** End-of-window QB+OL share of the 90+ cohort: canonical **97%** (35/36); seed 2026 old draw 72% (41/57) → span 55 **91%** (42/46). Position-relative potential made the cohort smaller and more concentrated. State the declared-population question in DECISIONS before any per-position arm; never as a route to a green gate.
-- [ ] Elite density `watch` at 2.1% against the sourced 1.53% ceiling; dispersion `watch` at 0.093 against 0.08. Do not widen `stdDevDrift*` or move the elite ceiling.
-- [x] Ledger retention by session number (carried from S106) — its own session. **S108.**
 
 <!-- ledger-roll:pointer -->
 ---

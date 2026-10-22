@@ -130,6 +130,10 @@ test("theme customizer changes appearance and accent, and persists", async ({ pa
     getComputedStyle(document.documentElement).getPropertyValue("--accent").trim().toLowerCase()
   );
   expect(light).toBe("#12795d");
+  // A correct root token can still be shadowed by body's light palette.
+  // Components inherit from body, so verify the actual downstream authority.
+  expect(await page.evaluate(() => getComputedStyle(document.body).getPropertyValue("--accent").trim().toLowerCase())).toBe(light);
+  expect(await page.evaluate(() => getComputedStyle(document.body).getPropertyValue("--accent-strong").trim().toLowerCase())).toBe("#0c5c46");
 
   // Persist across reload (pre-paint boot must restore both).
   await page.reload();
@@ -140,6 +144,21 @@ test("theme customizer changes appearance and accent, and persists", async ({ pa
   }));
   expect(afterReload.theme).toBe("light");
   expect(afterReload.accent).toBe("emerald");
+  expect(await page.evaluate(() => getComputedStyle(document.body).getPropertyValue("--accent").trim().toLowerCase())).toBe("#12795d");
+});
+
+test("mobile advance action remains readable across all theme accents", async ({page})=>{
+  await page.setViewportSize({width:390,height:844});await createLeague(page);
+  await expect(page.locator('#mlAdvanceWeekBtn')).toBeVisible();
+  for(const theme of ['dark','light'])for(const accent of ['gold','emerald','azure','crimson','violet']){
+    await page.evaluate(async({theme,accent})=>(await import('/lib/themeCustomizer.js')).applyTheme(theme,accent),{theme,accent});
+    await page.screenshot({animations:'disabled'});
+    const contrast=await page.locator('#mlAdvanceWeekBtn').evaluate(button=>{
+      const s=getComputedStyle(button),l=rgb=>{const c=rgb.match(/[\d.]+/g).slice(0,3).map(Number).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;});return c[0]*.2126+c[1]*.7152+c[2]*.0722;};
+      const a=l(s.color),b=l(s.backgroundColor);return(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+    });
+    expect(contrast,`${theme}/${accent} mobile advance text`).toBeGreaterThanOrEqual(4.5);
+  }
 });
 
 test("gold accent is the default and clears the data-accent attribute", async ({ page }) => {

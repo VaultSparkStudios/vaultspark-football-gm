@@ -1,0 +1,117 @@
+{
+  "component": "offseason-medical-calendar",
+  "round": 2,
+  "verdict": "PASS",
+  "reviewedAt": "2026-10-07T22:43:23.124Z",
+  "primaryReceiptPath": ".cache/offseason-medical-reviewed-primary-round2.json",
+  "primaryReceiptSha256": "d51b4e55a18034fe94b27f6074c5500e7f794cb58ba2c1f5122f899b2d464f72",
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "1d36c51391320b77334e1a5778bed84d0eb952e75507ef20ab5d1e339abe52a8",
+    "src/domain/earnedPracticeCap.js": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4",
+    "src/runtime/GameSession.js": "0db292d7093123fb3e654591bef714f35724f459c8cfda1ab61206f4ba69d35d",
+    "src/runtime/snapshotMigration.js": "1709584d0c1ea23a51e22513cca236d7ab52b6240d8fe8b276f954fe6da534e9",
+    "src/engine/offseasonSimulator.js": "1bb6eef8b390533d93cd4bdb1508cd5fec99eff3946d9783a3f5b56ca7a11071",
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/domain/elevationInjuryPay.js": "ccf938fa7a3b2d8542bc86f958f0f50de76c5b2b1888e5534d02ac4673a596a0",
+    "src/domain/injurySalaryClaims.js": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2",
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "src/domain/preRolloverMedicalCalendar.js": "a3b438c0f34f6fa19b376c233d577276523de8b896fdbea89eab5ab48648abb8",
+    "src/data/nflElevationSalary.js": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e",
+    "src/data/nflSalaryCap.js": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d",
+    "src/domain/practiceContractTerm.js": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+    "src/domain/footballGameReference.js": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a",
+    "test/admitted-injury-payroll.test.js": "4b9b05ddffb0073b4ca8650160741ebd5aaef8e03d6e970950305e758579b2a9",
+    "test/admitted-injury-continuation.test.js": "b5e34596b0ca20c380a88fb5643a35bd6b49c05c8d14300ac3425eb9d0486f75",
+    "test/admitted-source-year-payroll.test.js": "3847ecf5d8d075e2bfb523873f58d8b9c8cc727e9bbe495d2a0a06765b0b4155",
+    "test/regular-injury-accrual.test.js": "8432ad763c7217cb6318f64ba8c4f2684c95d037c9059d2a11fb70e4fbcc6840",
+    "test/pre-rollover-medical-calendar.test.js": "e261bd3fcfe639270f33edb2b8eeb535a6fecd9f662af6ecceded0ff9de38a43",
+    "test/injury-salary-claims.test.js": "b141fb05530c9f389a11b20129d1b9638716fb309e127773d007e4138dc78da1",
+    "test/nfl-cap-year-boundary.test.js": "a3c4cc815a4834900c8bddf127014fa9108edcd68c6b691e5905a31be996e7dd",
+    "test/session101-cap-authority.test.js": "0bac36b9e90d4175bddf562377bdc59936efb8f3c7a5b1749095a74c6ab4fee0",
+    "test/practice-contract-pay.test.js": "31c3034c3f1c606ac382380add0eab9e0ef64a1a7c8e57acd21e7c0629440305",
+    "test/practice-postseason-pay.test.js": "335f36e8dc1b455c1bd7068b4224c392fc2ddb60ef5c2f62153c12c3b267df21",
+    "tests-ui/admitted-injury-payroll-client.spec.js": "0daf3ce9ccd6045324f4f6fb0dbf03d9a6aced3a0ac6f0e9f8522f76fb1807c2",
+    "src/domain/offseasonMedicalCalendar.js": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714",
+    "src/engine/injurySystem.js": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1",
+    "src/sport/football/calendar.js": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8",
+    "test/offseason-medical-calendar.test.js": "1ac5ae16a404b3f78f43bc78fbd5a95f6e69ff81f3dc38dc8b94f6de9bf2e34d",
+    "tests-ui/offseason-medical-calendar-client.spec.js": "f2874f28991472e78c26742c17c2e5f75c698b11fe7588fa105388c222edb7f2"
+  },
+  "findings": [],
+  "priorFinding": {
+    "id": "headless-calendar-refusal-after-mutation",
+    "status": "FIXED",
+    "priorReview": ".cache/offseason-medical-review-round1.json",
+    "priorSha256": "b66db3cd40e170193bf3b993c1e756f5f3e835eb345d5181d8c7137172f8655d",
+    "evidence": "runOffseason validates the saved calendar and privately previews the existing camp interval before pre-rollover recovery, cap, expiry, development, draft, market or RNG writes."
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/offseason-medical-calendar.test.js",
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 22549.6146,
+      "scope": "Pre-recovery wages through clearance, actual retired recovery/pay, late clinical failure atomicity, missing-marker legacy no-backfill, both restore validation authorities and compressed restoration, interactive successful/waiting stages, actual headless calendar, readiness and headless refusal invariance, partial preclosed-ledger interactive/headless cases."
+    },
+    {
+      "command": "node .cache/offseason-calendar-headless-refusal-probe.mjs",
+      "scriptSha256": "89e68b310a821740d73c01de03412d2666626061ceddc161f4413b8bcc5ff506",
+      "result": {
+        "reasonCode": "OFFSEASON_MEDICAL_CALENDAR_INVALID",
+        "snapshotUnchanged": true,
+        "rngUnchanged": true,
+        "beforeSeed": 2252859699,
+        "afterSeed": 2252859699
+      },
+      "scope": "Exact unchanged R1 probe against repaired source."
+    },
+    {
+      "command": "node .cache/record-offseason-medical-review-round2.mjs",
+      "checks": [
+        "Frozen R2 primary SHA",
+        "R1 FIX receipt unchanged",
+        "30 source hashes",
+        "4 built hashes plus normalized LF equivalence",
+        "344 static artifact entries",
+        "4 current browser receipt byte hashes/content/artifact bindings"
+      ]
+    }
+  ],
+  "assessment": [
+    "Both annual paths inspect whether any club already closed the source year and suppress absent summer-marker creation for partial legacy boundaries.",
+    "The complete helper plan pays beginning-of-period incapacity before recovery, handles live/retired people, and commits only after complete medical/pay/clock validation.",
+    "Interactive successful stage boundaries advance0/6/7/8/25 modeled weeks; waiting and repeat stage calls remain inert.",
+    "Saved receipt anchors source final and financial year; legacy absence does not invent historical recovery/pay."
+  ],
+  "browserEvidence": {
+    "independentlyRerun": false,
+    "primaryReportedPass": 4,
+    "artifactDigest": "43c618c8c1368f7140928ed08fe132691a5dcd2753a1645e9d18b5d1d40365c6",
+    "receipts": [
+      {
+        "path": ".cache/offseason-medical-client/worker.json",
+        "sha256": "3b801f2ce45ce1822e22f6e5b025db2d691256be2e0b8ba319a331bf60e8f44d"
+      },
+      {
+        "path": ".cache/offseason-medical-client/in-page.json",
+        "sha256": "6dce67a9083997de4effa6464a0958cb0c41beb817d3c6127a88385505f76c91"
+      },
+      {
+        "path": ".cache/admitted-earning-client/worker.json",
+        "sha256": "2729b5f9bc25bd92767a58f8eafa5d829e62e47f30103a751b26e46455323d61"
+      },
+      {
+        "path": ".cache/admitted-earning-client/in-page.json",
+        "sha256": "266b22fd0f2a71885664cfbb690f0bf571d20e0011a999f597bd4ae0beaa6365"
+      }
+    ],
+    "scope": "Actual built worker/in-page offseason API advance through week6 and named Settings save/replacement/load/reload, plus adjacent explicit admitted earning helper restoration. No independent browser rerun or visual inspection."
+  },
+  "limits": [
+    "Explicit25-week simulated offseason and stage boundaries are not exact official event dates or clinical prognosis.",
+    "Four preservePostTermClaims:true annual defaults remain; live admitted annual default, full regular/postseason continuity, actual paid-base reconciliation, Benefits/service and explicit dispute policy remain open.",
+    "No full NFL, appearance, current-source30-career, whole-suite or release acceptance."
+  ],
+  "imagesInspected": []
+}

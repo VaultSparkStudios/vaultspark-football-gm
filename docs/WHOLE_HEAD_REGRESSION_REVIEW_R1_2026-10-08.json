@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T06:38:10.683Z",
+  "reviewer": "/root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Test-only historical saved-input compatibility and fallback eye-aperture assertion repair; no production renderer/decoder or original expected SVG hash alteration.",
+  "primaryReceipt": "docs/WHOLE_HEAD_REGRESSION_2026-10-08.json",
+  "primaryReceiptSha256": "932aa29c54b9d42cc17d9a74946bf6c738b475477e186bedee6a88e6e079eb6c",
+  "sourceHashes": {
+    "test/player-whole-head-form.test.js": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf",
+    "test/fixtures/whole-head-legacy-inputs.json": "97f287f6239776b4cf9d74c57be2977eaa1464248f791dbdee41c6520f78b662",
+    "test/fixtures/whole-head-legacy-hashes.json": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/croppedHairVolume.js": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5",
+    "public/lib/longHairFlow.js": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/portraitSurfaceLighting.js": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/partedHairFlow.js": "be4c479ad8251c593a0b3287672b1f368573da0081a75f4c4b62ae047b539de0",
+    "public/lib/portraitEyeSurface.js": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+    "public/lib/playerHead3d.js": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+  },
+  "historicalGenerator": {
+    "file": "docs/visual-qa/references/whole-head-regression-original-playerVisualIdentity-2026-10-08.js",
+    "sha256": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "priorReceipt": "docs/visual-qa/PLAYER_WHOLE_HEAD_2026-10-07.json"
+  },
+  "originalExpectationsSha256": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a",
+  "portableInputsSha256": "97f287f6239776b4cf9d74c57be2977eaa1464248f791dbdee41c6520f78b662",
+  "bindings": {
+    "currentSources": 22,
+    "evidenceFiles": 3,
+    "durableHistoricalGenerator": 1,
+    "allFrozenAndCurrentHashesMatch": true,
+    "priorReceiptGeneratorHashMatches": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-whole-head-form.test.js",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 1851.2921,
+      "terminalChunk": "b776f3"
+    },
+    {
+      "command": "Read-only Node stdin reconstruction from hash-verified durable original playerVisualIdentity source; render current decoder outputs against original expected hashes.",
+      "terminalChunk": "306fd8",
+      "rawInputsReconstructed": 4,
+      "rawInputsExactlyEqualPortableFixture": true,
+      "decodedAppearanceFramePairsExactlyEqual": 4,
+      "originalFrontProfileComparisons": 384,
+      "allOriginalHashesMatch": true,
+      "rawSavedInputPurity": true,
+      "bodyRecipeVersions": [
+        "regional-body-shape-v1",
+        "regional-body-shape-v1",
+        "regional-body-shape-v1",
+        "regional-body-shape-v1"
+      ],
+      "qualification": "Executed reconstruction/assertions in memory; did not invoke recovery writer or overwrite fixtures."
+    },
+    {
+      "check": "Metadata-only portable source-path transition",
+      "terminalChunk": "07b128",
+      "oldRecoveryTargetSha256": "e11a542fe1795a869f16e8bd6b09dd5472a9358e21695992d80ce3d809c4dea8",
+      "result": "Reverting only historicalAuthority.generatorSource to original.cache path and deleting recoveredFrom reproduces the exact old recovery target hash. Current portable fixture is separately bound97f287f6...; old receipt is not mislabeled current."
+    },
+    {
+      "check": "Aperture assertion semantics",
+      "result": "Checks21-unit lateral width, both exact joined corners, closed path, upper/lower clearance around the center, midpoint gap4..12 and strictly increasing opening for.7/.85/1/1.2 on both sides. Replacement removes obsolete absolute upper-midpoint threshold while retaining stronger bounded geometry behavior; it does not assert naturalism or WebGL closure."
+    },
+    {
+      "check": "Primary/frozen source/evidence/durable generator SHA verification",
+      "terminalChunk": "07b128",
+      "result": "Primary932aa29c... matches;22 source and3 evidence entries plus original generator allmatch; original expectations remain0d0b256f...."
+    }
+  ],
+  "primaryObservedEvidence": {
+    "attribution": "Root-executed reported checks; independently reran only the4-test target and in-memory reconstruction.",
+    "checks": {
+      "reproducedFailure": {
+        "tests": 4,
+        "passed": 2,
+        "failed": 2,
+        "durationMs": 303.2492,
+        "terminalChunk": "a62a5f"
+      },
+      "originalInputRecovery": {
+        "inputs": 4,
+        "renderHashComparisons": 384,
+        "allOriginalHashesMatch": true,
+        "terminalChunk": "c6b104"
+      },
+      "combinedFocused": {
+        "tests": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 4360.0855,
+        "terminalChunk": "ac1163"
+      },
+      "finalPortableFixture": {
+        "tests": 4,
+        "passed": 4,
+        "failed": 0,
+        "skipped": 0,
+        "durationMs": 459.3463,
+        "terminalChunk": "943bed"
+      },
+      "legacyContract": {
+        "rawInputs": 4,
+        "styleTextureCases": 192,
+        "originalFrontProfileHashes": 384,
+        "decodedAppearanceExact": true,
+        "decodedFrameExact": true,
+        "rawSaveInputUnchanged": true
+      },
+      "apertureContract": {
+        "sides": 2,
+        "apertures": [
+          0.7,
+          0.85,
+          1,
+          1.2
+        ],
+        "fixedWidth": 21,
+        "joinedCorners": true,
+        "clearOpeningBounds": [
+          4,
+          12
+        ],
+        "increasingClearOpening": true
+      }
+    },
+    "coreStatus": "Canonical core session8254 was still live when primary frozen; no terminal core result accepted."
+  },
+  "findings": [
+    {
+      "status": "RESOLVED",
+      "finding": "Current new-player generation used regional-body-shape-v2 while the old compatibility fixture represented saved v1 inputs.",
+      "disposition": "Fixed portable historical raw inputs reproduce all384 untouched hashes, preserving actual prior decoder/render expectations without rebaselining or altering current new-player defaults."
+    },
+    {
+      "status": "RESOLVED",
+      "finding": "Original recovery receipt bytehash differs from current fixture after durable-source metadata relocation.",
+      "disposition": "Disclosure and separate current binding are accurate; independently reproduced original pre-metadata bytehash by reversing only declared metadata fields."
+    },
+    {
+      "status": "PASS",
+      "finding": "Raw recipe purity and decoded appearance/frame exactness are explicitly asserted across all legal style/texture pairs.",
+      "disposition": "No material test-coverage weakening found. Rendering-specific temporary appearance/frame DTO fields are deleted before raw-save equality; independent reconstruction confirms raw inputs originally lack both fields."
+    }
+  ],
+  "limits": [
+    "No browser/pixel inspection required or performed for these test-only changes; prior visual receipts remain historical.",
+    "384 hashes cover four historical saved recipes and all legal style-textures, not all persons/version combinations or every future import.",
+    "Aperture contract is bounded fallback SVG geometry, not complete eye anatomy/perceptual acceptance or GPU blink proof.",
+    "No production source changes or expectation refresh authorized; full player craft, calibration, current full-suite/career and release remain open."
+  ],
+  "productionSourcesChanged": false,
+  "fullVisualAcceptance": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

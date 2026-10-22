@@ -1,0 +1,44 @@
+{
+  "session": 117,
+  "date": "2026-10-08",
+  "intent": "Partial — explicit founder closeout",
+  "deployment": "Deferred — applicable release checks are nonpassing",
+  "core": {
+    "tests": 713,
+    "passed": 712,
+    "failed": 1,
+    "fullRerun": false
+  },
+  "runtime": {
+    "status": "timed-out",
+    "timeoutMs": 2700000,
+    "observedAssertionFailure": "save-payload-budget: six-week raw snapshot 16.2 MB exceeds unchanged 16 MB bar"
+  },
+  "focusedGrooming": {
+    "passed": 3,
+    "total": 3,
+    "historicalFixtureCorrection": true
+  },
+  "fullVisualAcceptance": false,
+  "blockingDefectsOpen": 1,
+  "fullGoalComplete": false,
+  "productionTrunkAdoption": false,
+  "reviewer": "/root/studio_reviewer",
+  "remaining": [
+    "Adult whole-person visual craft and matching-body continuity",
+    "Current complete required tests and source-bound 30-season managed GM run",
+    "Remaining NFL benefits/policy validation",
+    "Current exact-candidate staging and production promotion"
+  ],
+  "prototypeArchive": ".cache/contours/unfinished-trunk-2026-10-08",
+  "reports": [
+    {
+      "path": "docs/visual-qa/references/closeout-save-budget-2026-10-08.log",
+      "sha256": "85396d6007a7a4fc764ca350eef58b7c35e24026a5ba3f0baed828ace125976a"
+    },
+    {
+      "path": "docs/visual-qa/references/closeout-facial-grooming-2026-10-08.log",
+      "sha256": "3ae03ec53a284b612b55049a0a7c03bc6236a63d48a07ab23bf2d04c1cb548c9"
+    }
+  ]
+}

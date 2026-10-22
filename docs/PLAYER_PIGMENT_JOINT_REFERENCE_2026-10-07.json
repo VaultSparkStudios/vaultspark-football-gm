@@ -1,0 +1,31 @@
+{
+  "version": "player-pigment-joint-reference-v1",
+  "reviewDate": "2026-10-07",
+  "status": "extracted-reference-not-adopted-runtime-calibration",
+  "source": {
+    "title": "A GWAS in Latin Americans highlights the convergent evolution of lighter skin pigmentation in Eurasia",
+    "url": "https://www.nature.com/articles/s41467-018-08147-0",
+    "publicationDate": "2019-01-21",
+    "locator": "Results: Pigmentation features examined",
+    "cohort": "CANDELA volunteers recruited in Brazil, Chile, Colombia, Mexico and Peru",
+    "pigmentationObservationCount": 6357,
+    "geneticAnalysisCount": 6236,
+    "populationProbabilitySample": false
+  },
+  "observations": {
+    "skinMelaninIndex": {"method": "reflectometry", "minimum": 20, "maximum": 65, "mean": 34.98, "standardDeviation": 5.34},
+    "reportedCorrelations": [
+      {"first": "categorical natural hair color", "second": "categorical eye color", "r": 0.50},
+      {"first": "categorical natural hair color", "second": "skin melanin index", "r": 0.30},
+      {"first": "categorical eye color", "second": "skin melanin index", "r": 0.31}
+    ],
+    "eyeMeasurement": "Ordinal categories plus photographic hue, chroma and lightness; categories omit within-brown variation."
+  },
+  "implementationUse": {
+    "supports": "Separate correlated pigment channels with individual variation.",
+    "doesNotEstablish": ["NFL frequencies", "national census frequencies", "conditional ancestry distributions", "renderer RGB values", "a universal latent correlation matrix"],
+    "runtimeCoefficientsChanged": false,
+    "nextExtraction": "Preserve coding, recruitment, age/sex coverage, exclusions and supplementary joint observations before fitting."
+  },
+  "validation": "Numbers transcribed from the publisher's HTML; independent extraction review remains pending."
+}

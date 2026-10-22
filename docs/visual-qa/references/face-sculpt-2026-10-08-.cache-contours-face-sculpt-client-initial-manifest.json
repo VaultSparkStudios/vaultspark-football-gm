@@ -1,0 +1,20 @@
+{
+  "status": "initial-worker-opening-timeout-six-adjacent-tests-passed",
+  "rows": [
+    {
+      "original": "test-results/player-character-client-bu-5fb82-med-replacement-load-reload/trace.zip",
+      "file": ".cache/contours/face-sculpt-client-initial/trace.zip",
+      "sha256": "05466c262c90738622a323c55b47e46aeb7d2822d73b788a2a969d9ace208b9c"
+    },
+    {
+      "original": "test-results/player-character-client-bu-5fb82-med-replacement-load-reload/error-context.md",
+      "file": ".cache/contours/face-sculpt-client-initial/error-context.md",
+      "sha256": "682f75a3bc08fe3afdc7d578116411ba019f46f7b0ee85b58e7f60a4d900b615"
+    },
+    {
+      "original": ".cache/contours/face-sculpt-browser-final.log",
+      "file": ".cache/contours/face-sculpt-client-initial/face-sculpt-browser-final.log",
+      "sha256": "3a30930fc87e967892fd01dc5d9d3095761b29fa27371de98e11f9413832e9c3"
+    }
+  ]
+}

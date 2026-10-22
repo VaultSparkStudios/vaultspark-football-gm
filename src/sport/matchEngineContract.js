@@ -1,6 +1,13 @@
 /**
  * Match engine contract (multi-sport Phase 1 step 2).
  *
+ * A sport pack may provide match.afterGame({ league, result }) for its own
+ * one-game availability instructions. Applied games call it after stat writes;
+ * previews never call it. The hook must not be required by unrelated packs.
+ * Optional match.checkReadiness({ league, teamIds }) is pure and returns an
+ * { ok: false, reasonCode, error } refusal for simulator prerequisites. Bulk
+ * callers must stop on refusal; this hook does not define an NFL roster minimum.
+ *
  * A sport pack's match engine plays one game and RETURNS what happened. It
  * never writes the season stat book: the core applies the returned records
  * through src/stats/applyGameStats.js. That split is what lets a second sport

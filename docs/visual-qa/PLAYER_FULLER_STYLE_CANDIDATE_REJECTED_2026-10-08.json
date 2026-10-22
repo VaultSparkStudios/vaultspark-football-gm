@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T07:57:39.782Z",
+  "status": "VISUAL_REJECT",
+  "productionAdopted": false,
+  "scope": "Unadopted larger afro and thicker grouped locks, same saved identity seed across first twelve style rows",
+  "sources": [
+    {
+      "original": ".cache/fuller-style-before.mjs",
+      "file": "references/rejected-fuller-style-fuller-style-before.mjs-2026-10-08",
+      "sha256": "3113c97b5a9f603c723f2f9cdeb10fcc6347be4bd8f1a069d5ea28e9a071d32c"
+    },
+    {
+      "original": ".cache/fuller-style-candidate.mjs",
+      "file": "references/rejected-fuller-style-fuller-style-candidate.mjs-2026-10-08",
+      "sha256": "b3fdc0f32af7167497311aefd3e7b7bfcc18969add95e85a9af979a5f9a99214"
+    },
+    {
+      "original": ".cache/fuller-style.spec.mjs",
+      "file": "references/rejected-fuller-style-fuller-style.spec.mjs-2026-10-08",
+      "sha256": "cb67ca71d91679bc4243beced96e979f4c5cad459fe38388bf994a419696bc0e"
+    }
+  ],
+  "evidence": [
+    {
+      "original": ".cache/logs/fuller-style-candidate-2026-10-08.log",
+      "file": "references/rejected-fuller-style-fuller-style-candidate-2026-10-08.log-2026-10-08",
+      "sha256": "4821ff44a91195bb6c2e1599477d34e1e070137cbf18846ae16927aa29035630"
+    },
+    {
+      "original": "output/playwright/fuller-style-gallery-observations.json",
+      "file": "references/rejected-fuller-style-fuller-style-gallery-observations.json-2026-10-08",
+      "sha256": "eb17fdf351ac3334d6be4879d9cd934cea1e24bd154dad931d805845bf77d63d"
+    }
+  ],
+  "captures": [
+    {
+      "original": "output/playwright/fuller-style-gallery-8-desktop-light.png",
+      "file": "captures/rejected-fuller-style-8-desktop-light-2026-10-08.png",
+      "sha256": "9d66fc58e959f844ab0c1bcda166e5766122fc1970997eef20cf0129e04724f2",
+      "inspected": true
+    },
+    {
+      "original": "output/playwright/fuller-style-gallery-10-desktop-dark.png",
+      "file": "captures/rejected-fuller-style-10-desktop-dark-2026-10-08.png",
+      "sha256": "de63dbeb24c256e1ff38b5e418d9cf15e4fcfb790007db3be7e316ac4bdb1210",
+      "inspected": true
+    },
+    {
+      "original": "output/playwright/fuller-style-gallery-11-mobile-light.png",
+      "file": "captures/rejected-fuller-style-11-mobile-light-2026-10-08.png",
+      "sha256": "183c3fea80b8ae4297c48c1a99817cd8f2fbd7eaf814877a2710e91ad5adcf37",
+      "inspected": true
+    }
+  ],
+  "checks": {
+    "browser": {
+      "passed": 1,
+      "terminalChunk": "232de4",
+      "durationSeconds": 17.4
+    },
+    "maximumMeshes": {
+      "passed": 56,
+      "maxBytes": 1635576,
+      "byteLimit": 1650000,
+      "finite": true,
+      "inputUnchanged": true,
+      "terminalChunk": "14edb1"
+    }
+  },
+  "inspection": {
+    "reviewer": "root",
+    "originalsInspected": 3,
+    "findings": [
+      "Larger afro shell remains smooth and helmet-like; greater size does not create convincing curl groups.",
+      "Thicker loc ends are more visible but remain sparse beneath a smooth cap.",
+      "Braid rows remain subtle at ordinary mobile scale."
+    ],
+    "decision": "Keep production unchanged; replace broad smooth hair surfaces with overlapping occupied curl/lock groups and coherent rooted flow before claiming style recognition."
+  },
+  "fullVisualAcceptance": false
+}

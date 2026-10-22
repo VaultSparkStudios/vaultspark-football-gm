@@ -1,0 +1,14 @@
+[WebServer] (node:61488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:14000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests-ui\physique-anatomy.spec.js:5:1 › actual heavy-player dossier and common-scale anatomy comparisons (9.2s)
+  ✓  2 tests-ui\player-dossier-layout.spec.js:5:1 › dossier keeps portrait, body comparisons and movement readable across sizes/themes (10.0s)
+  ✓  3 tests-ui\player-torso-envelope.spec.js:9:1 › common-scale measured body comparisons preserve torso dimensions in all projections (1.6s)
+  ✓  4 tests-ui\player-torso-envelope.spec.js:38:34 › built worker dossier keeps solved torso through actual save and restoration (13.6s)
+  ✓  5 tests-ui\player-torso-envelope.spec.js:38:34 › built in-page dossier keeps solved torso through actual save and restoration (12.9s)
+
+  5 passed (49.5s)

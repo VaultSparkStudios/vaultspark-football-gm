@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Unadopted bounded shared-surface facial fibers, pigment isolation and diagnostic evidence; not full beard or person craft acceptance",
+  "primaryReceipt": ".cache/head-beard-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "5b5e29cb8c663aa35f1b36cf39d855d411d0dc24d31593ca90d2c2a40c2fc24c",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "f54fd9e84a8786292da13057ba936cc9e503c0166c7ac1b957a273dfdbe36a13",
+    "prototypes/playerHead3d.test.mjs": "70715ac95f5e87fcb534ca9aac2a56023e1776a899e1ad1d16257ba32decd222",
+    ".cache/shared-head-3d.spec.mjs": "4642ff035f107c172d7645d2568c6481cd3fa87f36fb2ca92d02f2b673931645",
+    ".cache/head-grooming.spec.mjs": "4f178cfcf93cbc77e604fb2803dea08c78dd0adf1edf9933ddde6d2328633118",
+    ".cache/head-face.spec.mjs": "8491302c695aff482de94d2e50703de2228ea446c8400afac85f60f326f0b922",
+    ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+  },
+  "beforeSource": {
+    "original": ".cache/head-beard-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-beard-before-2026-10-07.mjs",
+    "sha256": "bc66a0ea2b19df4d439db0947142c467a4644e48a2a7a4bc69e0905ad0e2a93f"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 9719.6965
+    },
+    {
+      "command": "node .cache/head-beard-r1-independent.mjs",
+      "exitCode": 0,
+      "extremePigmentPureMeshes": 10,
+      "outwardFiberNormalSamples": 8640,
+      "minOutwardDot": 0.014519221666399414,
+      "maxCombinedBytes": 1631792,
+      "captureHashesVerified": 36,
+      "sourceHashes": {
+        "prototypes/playerHead3d.mjs": "f54fd9e84a8786292da13057ba936cc9e503c0166c7ac1b957a273dfdbe36a13",
+        "prototypes/playerHead3d.test.mjs": "70715ac95f5e87fcb534ca9aac2a56023e1776a899e1ad1d16257ba32decd222",
+        ".cache/shared-head-3d.spec.mjs": "4642ff035f107c172d7645d2568c6481cd3fa87f36fb2ca92d02f2b673931645",
+        ".cache/head-grooming.spec.mjs": "4f178cfcf93cbc77e604fb2803dea08c78dd0adf1edf9933ddde6d2328633118",
+        ".cache/head-face.spec.mjs": "8491302c695aff482de94d2e50703de2228ea446c8400afac85f60f326f0b922",
+        ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+      },
+      "primaryReceiptSha256": "5b5e29cb8c663aa35f1b36cf39d855d411d0dc24d31593ca90d2c2a40c2fc24c"
+    }
+  ],
+  "rootAssessment": "Follicle positions use nominal face coordinates transformed by saved faceLength; lower roots use local breadth and all roots invert through bounded asin into the existing skin surface. Root tangent cross product supplies outward direction and fiber basis. Mustache roots lie above nominal lips; goatee/lower beard roots lie below them. Surface remains unchanged by grooming and pigments in focused tests. Tubes start0.5artistic units outside skin to avoid overlap, not a connected follicle/skin manifold; geometric root attachment means surface-derived anchors, not watertight integration.",
+  "normalAssessment": "8640 independently sampled tube normals have positive dot product with radial vectors reconstructed from each unique triangular ring centroid across10extremeface/style meshes. Minimum0.014519. All sampled mesh positions/normals finite and unit-normal, no dye-induced coordinate changes. Combined long/coily/full beard retained1.65MB ceiling; maximum independently observed1631792bytes.",
+  "materialAssessment": "Beard material6 excludes both hair1 and scalp5 branches, so scalp graying does not silver beard vertices. Separate beard color changes RGB only; explicit identity seed controls follicle pattern without including face dimensions or football RNG. Existing painted beard mask remains in addition to sparse geometry.",
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/head-grooming-facial-desktop-light.png",
+      "sha256": "3956ef88d135be9e6f74bed2f5ed25ee03955a33be44f1c25bf88326aef48eb4"
+    },
+    {
+      "path": "output/playwright/head-grooming-facial-mobile-dark.png",
+      "sha256": "fca5f159e1c22672d5bf3b7aabcd1f9b40781a043fdca7daa33a62cac5aacab9"
+    },
+    {
+      "path": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "sha256": "2ada53f75430f3e170d98f85c20220d4dc30516648954b2cc2d86ae8275c48f6"
+    }
+  ],
+  "visualAssessment": "Sparse fiber detail appears along goatee/chin/full-beard margins and profile. At ordinary96px, coverage remains predominantly painted, with little convincing beard volume. Mannequin anatomy, cap silhouettes, sparse scalp locks and high-contrast gray material remain unresolved. Useful bounded detail, not finished naturalism.",
+  "primaryExecutionOnly": {
+    "focused": {
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 7572.1836
+    },
+    "browser": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 25.8
+    },
+    "qualification": "Primary14focused and3browser25.8sec; browser not independently rerun. Six current/frozen source and36 original/copy capture hashes independently verified."
+  },
+  "limits": [
+    "No observed follicle count/distribution, empirically fitted beard length or race/country model.32/64fibers and shape coefficients are explicit artistic estimates.",
+    "No exhaustive self-intersection, lip collision at arbitrary unsupported DTOs, watertight topology or backface-culling acceptance.",
+    "Pixel-response135grooming/17face pairs is wiring evidence, not perceptual recognition or full trait/craft quality.",
+    "No production integration, real career/save/trade/aging lifecycle, device performance, WebGL fallback/cache/context-loss/accessibility acceptance.",
+    "Full adult-person appearance, overall goal, NFL and release remain OPEN."
+  ]
+}

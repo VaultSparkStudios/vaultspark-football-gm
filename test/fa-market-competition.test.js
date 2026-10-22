@@ -94,7 +94,14 @@ test("instant signing of a premium free agent is refused toward the market", () 
 
 test("CPU teams submit archetype-shaped offers into the shared market", () => {
   const session = createSession({ seed: 620092, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
-  ensurePremiumFa(session, 84);
+  const fa = ensurePremiumFa(session, 84);
+  // Construct an affordable position need; a random84-rated QB need not be an
+  // upgrade on a broad-talent roster, and its modern market can exceed room.
+  const rival = session.league.teams.find(team => team.id !== 'BUF' && team.strategyProfile !== 'rebuild');
+  session.league.capLedger[rival.id].rollover += 60_000_000;
+  for (const p of session.getRoster(rival.id).filter(p => p.position === fa.position)) {
+    assert.equal(session.releasePlayer({ teamId: rival.id, playerId: p.id, toWaivers: false }).ok, true);
+  }
   let submitted = 0;
   for (let i = 0; i < 6 && !submitted; i += 1) {
     submitted = session.submitCpuFreeAgencyOffers().submitted;
@@ -174,8 +181,10 @@ test("greedy CPU maintenance never touches the premium tier", () => {
 test("player offers carry chosen years instead of a hardcoded 2", () => {
   const session = createSession({ seed: 620096, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
   const fa = ensurePremiumFa(session, 78);
+  // Isolate offered term persistence from the independently tested cap gate.
+  session.league.capLedger.BUF.rollover += 60_000_000;
   const offer = session.submitFreeAgencyOffer({ teamId: "BUF", playerId: fa.id, years: 5 });
-  assert.equal(offer.ok, true);
+  assert.equal(offer.ok, true, JSON.stringify(offer));
   assert.equal(offer.offer.years, 5);
   const market = session.getFreeAgencyMarket({ teamId: "BUF" });
   assert.equal(market.offers[0].years, 5);

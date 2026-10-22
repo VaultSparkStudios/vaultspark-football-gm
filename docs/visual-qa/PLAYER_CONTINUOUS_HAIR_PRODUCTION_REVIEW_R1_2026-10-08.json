@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-08T08:32:23.538466+00:00",
+  "round": 1,
+  "reviewer": "independent studio_reviewer",
+  "verdict": "PASS",
+  "scope": "Versioned continuous loose-hair texture coordinate, cosmetic isolation, legacy preservation and saved validation. Full hair craft and all-fallback texture fidelity remain incomplete.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_CONTINUOUS_HAIR_PRODUCTION_2026-10-08.json",
+  "primaryReceiptSha256": "fc1d558ed7ecced67f23dd37e2d7c4acfc7303b0531cf05d3380e5eba409c248",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerPortrait.js": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerMotion.js": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "src/domain/playerIdentity.js": "c192777620fc80dba87b308f741f1559d8bef866e8a059f05da33c738dfeba71",
+    "src/domain/playerVisualIdentity.js": "1f8e7c260756da9a255981afded0db5e96445205631407a1517d1374367d16cb",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "test/player-continuous-hair.test.js": "b2b6e787b518323e1254b1dcd244396bb5b171bcbd2dbca576cf236b5d8b1b16",
+    "test/player-continuous-hair-identity.test.js": "225a744f0b736810235c317a6b712c0bdbb53611be0e64abb59dc2f5aa387f78",
+    "test/player-visual-identity.test.js": "18e56f9a1742cf2f64555b7fface4cea3aa5a16260b07aec295b2fbf43afd766",
+    "test/player-occupied-hair.test.js": "07fa2c5807e20f7235e848aeb54bd9f0fb83b4ad92e60cc669a21d1f0d4567b5",
+    "test/player-scalp-volume.test.js": "46d8e408f3449b12365c6753febb14aaf271c3a299c3c1cb46ba59dc6ce25e30",
+    "test/player-beard-volume.test.js": "272b028c071667710cff0580504629457e9daaa700ab134c2b4c921b001f8c73",
+    "tests-ui/player-continuous-hair-gallery.spec.js": "8a8a69ed0ad15c19f22e7d52d7e9bed60591868f32de5c5356a8d9cb2f61a4a5",
+    "tests-ui/player-continuous-hair-production.spec.js": "3a806569f205acb8a3ae0b1d3f97c5a680942208c4aaa25a27e58f5b8f4d5d49",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+  },
+  "bindingVerification": {
+    "frozenFiles": 107,
+    "sources": 20,
+    "inputs": 1,
+    "evidence": 2,
+    "captures": 84,
+    "allFrozenHashesMatch": true,
+    "allCurrentSourceHashesMatch": true,
+    "builtPairs": 8,
+    "builtHashesAndNormalizedTextMatch": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-continuous-hair.test.js test/player-continuous-hair-identity.test.js test/player-occupied-hair.test.js test/player-scalp-volume.test.js test/player-beard-volume.test.js test/player-visual-identity.test.js",
+      "exitCode": 0,
+      "tests": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 35180.1419,
+      "terminalChunk": "14df4c",
+      "coverage": [
+        "All56 immediate-before legacy meshes deep-equal, including metadata.",
+        "10 hairstyle/boundary neighborhoods retain indices and bounded coordinates.",
+        "Continuous0..3 position fixtures remain finite, budgeted and independent of the discrete label; arranged locs/braids conceal loose texture.",
+        "Saved recipes, grooming, active/retired/prospect validation and non-hair compatibility remain covered."
+      ]
+    },
+    {
+      "probe": "Actual seed11902 football session, both bootstrap and direct GameSession restore authorities, malformed recipe refusal, raw DTO texture sanitization, and unchanged frame when optional texture recipe is absent.",
+      "terminalChunk": "e08906",
+      "actualPlayer": "P2026-BUF-QB-29031896",
+      "exactAppearanceAndFrameRestores": 2,
+      "atomicMalformedRestoreRefusals": 2,
+      "wrongTypeOrNonfinitePositionLegacyFallbacks": 8,
+      "finiteEndpointClamps": 2,
+      "frameUnchanged": true,
+      "snapshotInputUnchanged": true,
+      "probeCorrection": "Initial scratch call omitted the direct restore RNG factory (80bbc9). Corrected call supplies seed => new RNG(seed); no product defect or source change."
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/continuous-hair-continuous-hair-candidate-gallery-5-desktop-light.png",
+      "sha256": "3b2d9173d0e881b4221aa67389c64bb55210481dbf4a7a59c86dfa69082e3569"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-hair-continuous-hair-candidate-gallery-6-mobile-dark.png",
+      "sha256": "2184908c30c20ff13f5fe746a3f2289974a45d25fe646140e1db6e3791d6deb4"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-hair-production-continuous-hair-before-desktop-light-portrait.png",
+      "sha256": "f3743c9f807bb9611715bb385fb3d39c0ccb6862505fc500a26acf6b19ea3bfd"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-hair-production-continuous-hair-after-desktop-light-portrait.png",
+      "sha256": "8f2e7e04c06442d600dcf464292e1b73e1657faee4bd1abd8757e57110d4a2a3"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-hair-continuous-hair-candidate-gallery-11-mobile-light.png",
+      "sha256": "39aed0ec9f386189404a20f64def1bb1f01ee196089beec53eb251c0bec5a016"
+    }
+  ],
+  "findings": [],
+  "observations": [
+    "Smooth bounded interpolation is used for curl amplitude, cycle count, radius and radial emergence; new fields are emitted only for the supported saved recipe.",
+    "New-player creation records the private seed; legacy restoration does not create the optional recipe. Grooming retains the natural coordinate while explicit texture treatment selects a categorical styled coordinate.",
+    "Current gallery keeps the same saved fixture ID across controlled rows, avoiding cross-row seed confounding.",
+    "Side-part positions immediately below/above2 look coherent in inspected ordinary and native renders. They still resemble sculpted caps.",
+    "Long position2.5 remains sparse hanging strands; convincing long-hair mass and all-style recognition are not accepted.",
+    "Actual Miles Bell dossier before/after remains the same visible person; no clipping observed in inspected portrait pair. The visual change is subtle there."
+  ],
+  "primaryEvidenceAttribution": {
+    "browserExecution": "Root reports3 passed44.3sec, terminal8f764f; not independently rerun. Actual generated recipe, shared body/motion head agreement, cache stress and fallback proof are primary-attributed.",
+    "namedSlotBrowserSaveProof": false,
+    "saveEvidence": "Independent actual snapshot restoration in both authorities plus serialized recipe/unit coverage; this review does not claim a new named-slot UI or long-career persistence run.",
+    "build": "Root build9a561a384dd0,318assets3536KB; eight source/built pairs independently verified.",
+    "metadata": "LATEST page/viewport labels were repaired separately by root; frozen primary and capture hashes remain unchanged and independently verified."
+  },
+  "limits": [
+    "Only five original PNGs independently inspected; hash verification is not inspection of all84.",
+    "Natural coordinate is a bounded artistic residual around an existing category, not an empirically fitted continuous distribution or national prevalence.",
+    "Discrete styled-texture overrides and existing style concealment remain deliberate presentation choices, not proof all hairstyle/texture combinations are naturally recognizable.",
+    "Continuous texture is not consumed by every SVG fallback surface; fallback remains compatible while new texture fidelity is partial.",
+    "No all-vertex normal, all-frame curvature, actual football outcome counterfactual, full save-budget or long-career claim from these focused checks.",
+    "Cap-like forms, sparse tips and mannequin head/body quality remain open. No full appearance, calibration, current whole-suite or release acceptance."
+  ],
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

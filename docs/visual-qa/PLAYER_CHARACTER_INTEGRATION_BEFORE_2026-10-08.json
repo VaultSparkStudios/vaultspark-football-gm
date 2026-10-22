@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T15:53:09.654Z",
+  "scope": "Reuse the immediately preceding accepted dossier body/motion renders as pre-integration evidence; no fresh recreation or pixel-equality comparison is claimed.",
+  "primary": {
+    "file": "docs/visual-qa/PLAYER_CHARACTER_INTEGRATION_2026-10-08.json",
+    "sha256": "d5286508d30bd22f6568131bb233162233c9fc796f11af57f34bdcc4a8f9504d"
+  },
+  "baseline": {
+    "file": "docs/visual-qa/PLAYER_HEAD_POLE_REPAIR_2026-10-08.json",
+    "sha256": "8fc423bc7bdc83d8f1e1ceacb4896b452faa228466ffe0623ff303b5ce9e95f2",
+    "artifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18",
+    "review": "docs/PLAYER_HEAD_POLE_REPAIR_REVIEW_R1_2026-10-08.json",
+    "reviewSha256": "c99e0ad2681d2110e22f984ea68a9dade57c877f113a9c24fef7334c7a5f3d27"
+  },
+  "captures": [
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-dark-body.png",
+      "file": "captures/production-head-poles-after-desktop-dark-body.png",
+      "sha256": "82e41b48b8b0e0e35984671eb7648ae2e27b96b42a8536fb27d94a544c9fa3b4",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-dark-motion.png",
+      "file": "captures/production-head-poles-after-desktop-dark-motion.png",
+      "sha256": "fa449af6956646ada53323a894f2058d73137dd385add7fb61c172061456b391",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-light-body.png",
+      "file": "captures/production-head-poles-after-desktop-light-body.png",
+      "sha256": "bbaa40afc2bcf74cb929dce20e94338ab943804c2b39cb6333d3a5dd6def4be0",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-light-motion.png",
+      "file": "captures/production-head-poles-after-desktop-light-motion.png",
+      "sha256": "dec41fefa56cd48c0069d39818afccdefa7466818ef3a36c9c0fe19f9122aaad",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-dark-body.png",
+      "file": "captures/production-head-poles-after-mobile-dark-body.png",
+      "sha256": "de77f918b7baa8b861a1e2c17e29e81cddf3be4cc6776282a17a7d730d8f29f4",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-dark-motion.png",
+      "file": "captures/production-head-poles-after-mobile-dark-motion.png",
+      "sha256": "896b523c7c630d92df5a6097ff94a808ab0fb06470ef567dfcdf420f505fbadf",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-light-body.png",
+      "file": "captures/production-head-poles-after-mobile-light-body.png",
+      "sha256": "fd0e869141df7c71930eba28f21bc9979e629a1170ad9f0f3a8296206c402b9b",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-light-motion.png",
+      "file": "captures/production-head-poles-after-mobile-light-motion.png",
+      "sha256": "400840e1eb251755b79dfd1eb6deb5824e6a765d28aa4d266dc9a942f2b46866",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reused-pre-integration-dossier",
+      "sourceArtifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18"
+    }
+  ],
+  "identity": "Both historical and current actual dossier captures show Christopher Reid (OL), jersey56, height80in and reach82.5in in the seeded Balanced scenario. Matched camera families and viewport/theme are identified, but current element crops differ from historical full-page captures.",
+  "inspectedByPrimary": [
+    "captures/production-head-poles-after-desktop-dark-body.png",
+    "captures/production-head-poles-after-mobile-light-body.png"
+  ],
+  "fullVisualAcceptance": false
+}

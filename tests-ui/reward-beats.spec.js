@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { createPlayScenario, readDashboard, WEEKLY_SCENARIOS } from "./helpers/weekly-scenarios.js";
+import { createPlayScenario, readDashboard, reachScenarioWeek, WEEKLY_SCENARIOS } from "./helpers/weekly-scenarios.js";
 
 // S70 reward-layer contract: advancing a week produces a visible recap beat,
 // the trophy case renders in settings, and the sound toggle persists.
@@ -25,6 +25,7 @@ async function createLeague(page, scenario = WEEKLY_SCENARIOS[0]) {
   await createPlayScenario(page, scenario);
   await expect(page.locator("#tutSkipBtn")).toBeVisible();
   await dismissTutorialIfVisible(page);
+  await reachScenarioWeek(page, scenario);
 }
 
 async function drainWeeklyPlanModals(page, dashboard) {
@@ -50,11 +51,13 @@ for (const scenario of WEEKLY_SCENARIOS) {
     const before = await readDashboard(page);
     expect(before.controlledTeamId).toBe(scenario.teamId);
     expect(before.phase).toBe("regular-season");
-    expect(before.currentWeek).toBe(1);
+    if(!scenario.onBye) expect(before.currentWeek).toBe(1);
     expect(before.controlledOnBye).toBe(scenario.onBye);
     expect(before.currentWeekSchedule.byeTeams.includes(scenario.teamId)).toBe(scenario.onBye);
     expect(before.currentWeekSchedule.games.some((game) => [game.homeTeamId, game.awayTeamId].includes(scenario.teamId))).toBe(!scenario.onBye);
     expect(Array.isArray(before.gmDecisionQueue)).toBe(true);
+    const priorBoxScores=await page.locator('#boxScoreTicker [data-boxscore-id]').evaluateAll(
+      nodes=>nodes.map(node=>node.dataset.boxscoreId));
 
     const advances = [];
     const isAdvance = (request) => new URL(request.url()).pathname === "/api/advance-week" && request.method() === "POST";
@@ -87,8 +90,10 @@ for (const scenario of WEEKLY_SCENARIOS) {
       await card.locator(".wr-close").click();
       await expect(page.locator("#weekRecapCard.wr-visible")).toHaveCount(0);
     } else {
-      // A scheduled opening bye stays honestly silent.
-      await expect(page.locator("#boxScoreTicker [data-boxscore-id]")).toHaveCount(0);
+      // The actual midseason bye produces no new game recap.
+      // Prior games remain available; the bye must add no invented game.
+      await expect.poll(()=>page.locator('#boxScoreTicker [data-boxscore-id]').evaluateAll(
+        nodes=>nodes.map(node=>node.dataset.boxscoreId))).toEqual(priorBoxScores);
       await expect(page.locator(".weekly-plan-receipt")).toContainText("Bye week");
       await expect(page.locator("#halftimeAdjustModal")).toBeHidden();
       await expect(page.locator("#architectPlanRehearsalModal")).toBeHidden();

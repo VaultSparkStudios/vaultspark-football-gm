@@ -62,7 +62,10 @@ test("GameSession delegates exact cap-ledger authority to ContractService", () =
     deadCap: 7_000_000,
     capSpace: 255_000_000 - usedCap - 7_000_000,
     deadCapNextYear: 3_000_000,
-    rolloverNextYearEstimate: 5_000_000
+    rolloverCurrentYear: 5_000_000,
+    rolloverNextYearEstimate: Math.round(Math.max(0, 255_000_000 - usedCap - 7_000_000)),
+    rolloverPolicy: 'full-unused-room-election-v1',
+    capProvenance: {...session.league.capModel,year:2026,kind:session.league.capModel.kind}
   });
   assert.deepEqual(summary, session.services.contracts.getCapSummary(teamId));
 });

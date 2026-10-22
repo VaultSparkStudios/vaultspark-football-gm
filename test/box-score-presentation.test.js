@@ -49,3 +49,25 @@ test("source-derived Impact Index ranks the game's strongest contributions", () 
   assert.match(leaders[0].summary, /132 yds/);
   assert.ok(leaders.every((leader) => leader.score > 0));
 });
+
+test("all reported overtime periods and scoreless logged overtime remain visible", () => {
+  const second = buildQuarterScoreboard({ ...boxScore, quarterScores: { away: [7, 0, 7, 0, 7, 0], home: [7, 0, 7, 0, 7, 3] } });
+  assert.deepEqual(second.labels, ["Q1", "Q2", "Q3", "Q4", "OT", "OT2"]);
+  assert.equal(second.rows[1].quarters[5], 3);
+  const tied = buildQuarterScoreboard({ ...boxScore, playByPlay: [{ quarter: 5 }] });
+  assert.equal(tied.labels.at(-1), "OT");
+  const archived = buildQuarterScoreboard({ ...boxScore, quarterScores: { away: [7, 0, 7, 0, 0, 0, 0], home: [7, 0, 7, 0, 0, 0, 3] }, scoringSummary: [{ quarter: 7 }], playByPlayTrimmed: true });
+  assert.equal(archived.labels.at(-1), "OT3");
+});
+
+test("trimmed scoreless overtime keeps its receipt and malformed period metadata stays bounded", () => {
+  const archived = { ...boxScore, overtime: { elapsedSeconds: 600, periodSeconds: 600 }, playByPlayTrimmed: true };
+  assert.equal(buildQuarterScoreboard(archived).labels.at(-1), "OT");
+  for (const quarter of [Number.MAX_SAFE_INTEGER, 1000000, Infinity, -1, 5.5, "5"]) {
+    assert.equal(buildQuarterScoreboard({ ...boxScore, playByPlay: [{ quarter }] }).labels.length, 4);
+  }
+  assert.equal(buildQuarterScoreboard({ ...boxScore, overtime: { elapsedSeconds: Number.MAX_SAFE_INTEGER, periodSeconds: 900 } }).labels.length, 4);
+  const malformed = buildQuarterScoreboard({ ...boxScore, quarterScores: { home: { length: Number.MAX_SAFE_INTEGER }, away: null }, playByPlay: [null], scoringSummary: { quarter: 6 } });
+  assert.equal(malformed.labels.length, 4);
+  assert.deepEqual(malformed.rows[0].quarters, [0, 0, 0, 0]);
+});

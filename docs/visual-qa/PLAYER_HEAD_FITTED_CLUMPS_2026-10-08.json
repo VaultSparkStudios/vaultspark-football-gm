@@ -1,0 +1,2639 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "scope": "Unadopted scalp-following tapered hair clumps. Complete-head quality and production adoption remain open.",
+  "productionChanged": false,
+  "fullAppearanceAccepted": false,
+  "sources": [
+    {
+      "original": "prototypes/playerHead3d.mjs",
+      "path": "docs/visual-qa/references/head-clumps-playerHead3d.mjs-2026-10-08.mjs",
+      "sha256": "efaeebd535efb60ba95ae2a2994c54044d16355931d647914bc437ebba01d0d9"
+    },
+    {
+      "original": "prototypes/playerHead3d.test.mjs",
+      "path": "docs/visual-qa/references/head-clumps-playerHead3d.test.mjs-2026-10-08.mjs",
+      "sha256": "38cb110a6171c21649a23f4c4a23d65f3f7708a84176a75a2772e117a641ae33"
+    },
+    {
+      "original": ".cache/head-clumps.spec.mjs",
+      "path": "docs/visual-qa/references/head-clumps-head-clumps.spec.mjs-2026-10-08.mjs",
+      "sha256": "34d409ca09bedeb4c238e91de7f5cc87d785004ea527b9c62bb30cbe382b0348"
+    },
+    {
+      "original": ".cache/head-clumps.config.mjs",
+      "path": "docs/visual-qa/references/head-clumps-head-clumps.config.mjs-2026-10-08.mjs",
+      "sha256": "d7f35fdb1eaba7cf814ecdff150dd54fd17bbabac7deb36f006bcc5737a81caa"
+    },
+    {
+      "original": ".cache/head-clumps-grooming.spec.mjs",
+      "path": "docs/visual-qa/references/head-clumps-head-clumps-grooming.spec.mjs-2026-10-08.mjs",
+      "sha256": "4fb4823fd276a18ffd5259ea3e470793793028bdad24ea8d07135ab5013ffffb"
+    },
+    {
+      "original": ".cache/head-clumps-grooming.config.mjs",
+      "path": "docs/visual-qa/references/head-clumps-head-clumps-grooming.config.mjs-2026-10-08.mjs",
+      "sha256": "a563580bd41faa371ae821ae08eefa080f0d83adf5ab49679ecf510111683ff6"
+    },
+    {
+      "original": ".cache/head-clumps-baseline-grooming.spec.mjs",
+      "path": "docs/visual-qa/references/head-clumps-head-clumps-baseline-grooming.spec.mjs-2026-10-08.mjs",
+      "sha256": "d59b5219e0bd8d2267897bc99a54b7b1f825e357cf20d8e05d1e75f4847e35e2"
+    },
+    {
+      "original": ".cache/head-clumps-baseline-grooming.config.mjs",
+      "path": "docs/visual-qa/references/head-clumps-head-clumps-baseline-grooming.config.mjs-2026-10-08.mjs",
+      "sha256": "cf843b2418c2e6bdcfcaedbff98854b8ccaf4b4af75bbb1660d1f8b17ddbbf6e"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "path": "docs/visual-qa/references/head-clumps-appearancePalette.js-2026-10-08.mjs",
+      "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+    },
+    {
+      "original": "output/playwright/player-art-benchmark.json",
+      "path": "docs/visual-qa/references/head-clumps-player-art-benchmark.json-2026-10-08.json",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    }
+  ],
+  "beforeSource": {
+    "original": ".cache/head-clumps-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-clumps-before-2026-10-08.mjs",
+    "sha256": "c6f328a1b74b0cd79e1f40403a71cf03a92f92d5cb34b08a35d087ae012b2052"
+  },
+  "checks": {
+    "focused": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "currentPosePassed": 1,
+      "currentGroomingPassed": 1,
+      "baselineGroomingPassed": 1
+    },
+    "closedEyeRemovalComparisons": 18,
+    "maximumExposedNativePixels": 0,
+    "exactReopenAndUnchangedInput": true,
+    "maximumDefaultFullHairAndBeardMeshBytes": 1649520,
+    "meshBudgetBytes": 1650000,
+    "groomingGroups": {
+      "styles": [
+        {
+          "label": "buzz",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "fade",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "crew",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "short-curls",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "coils",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "locs",
+          "meshBytes": 759664
+        },
+        {
+          "label": "braids",
+          "meshBytes": 759664
+        },
+        {
+          "label": "waves",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "side-part",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "swept",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "long",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "shaved",
+          "meshBytes": 529864
+        },
+        {
+          "label": "receding",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "afro",
+          "meshBytes": 1450864
+        }
+      ],
+      "textures": [
+        {
+          "label": "straight",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "wavy",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "curly",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "coily",
+          "meshBytes": 1450864
+        }
+      ],
+      "facial": [
+        {
+          "label": "clean",
+          "meshBytes": 529864
+        },
+        {
+          "label": "stubble",
+          "meshBytes": 590280
+        },
+        {
+          "label": "mustache",
+          "meshBytes": 560072
+        },
+        {
+          "label": "goatee",
+          "meshBytes": 590280
+        },
+        {
+          "label": "short-beard",
+          "meshBytes": 590280
+        },
+        {
+          "label": "full-beard",
+          "meshBytes": 590280
+        }
+      ],
+      "controls": [
+        {
+          "label": "hairLength 0.5",
+          "pair": "hairLength",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairLength 2",
+          "pair": "hairLength",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairDensity 0.15",
+          "pair": "hairDensity",
+          "meshBytes": 805744
+        },
+        {
+          "label": "hairDensity 1",
+          "pair": "hairDensity",
+          "meshBytes": 1589104
+        },
+        {
+          "label": "hairline 0",
+          "pair": "hairline",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairline 1",
+          "pair": "hairline",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairPart 0.1",
+          "pair": "hairPart",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairPart 0.9",
+          "pair": "hairPart",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairStrandWidth 0.65",
+          "pair": "hairStrandWidth",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairStrandWidth 1.5",
+          "pair": "hairStrandWidth",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairCurvature 0.65",
+          "pair": "hairCurvature",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairCurvature 1.45",
+          "pair": "hairCurvature",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairWaveScale 0.65",
+          "pair": "hairWaveScale",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairWaveScale 1.5",
+          "pair": "hairWaveScale",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairStrandVariation 0",
+          "pair": "hairStrandVariation",
+          "meshBytes": 1450864
+        },
+        {
+          "label": "hairStrandVariation 0.5",
+          "pair": "hairStrandVariation",
+          "meshBytes": 1450864
+        }
+      ],
+      "pigments": [
+        {
+          "label": "gray 0",
+          "meshBytes": 1511280
+        },
+        {
+          "label": "gray 0.2",
+          "meshBytes": 1511280
+        },
+        {
+          "label": "gray 0.65",
+          "meshBytes": 1511280
+        },
+        {
+          "label": "scalp dye",
+          "meshBytes": 1511280
+        },
+        {
+          "label": "brow dye",
+          "meshBytes": 1511280
+        },
+        {
+          "label": "beard dye",
+          "meshBytes": 1511280
+        }
+      ]
+    },
+    "groomingPixelComparisons": [
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "fade",
+        "changedPixels": 1764,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "crew",
+        "changedPixels": 2212,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "short-curls",
+        "changedPixels": 2432,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "coils",
+        "changedPixels": 2644,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "locs",
+        "changedPixels": 2647,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "braids",
+        "changedPixels": 1559,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "waves",
+        "changedPixels": 1555,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "side-part",
+        "changedPixels": 2301,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "swept",
+        "changedPixels": 2525,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "long",
+        "changedPixels": 4033,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "shaved",
+        "changedPixels": 1599,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "receding",
+        "changedPixels": 1601,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "afro",
+        "changedPixels": 3567,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "crew",
+        "changedPixels": 2202,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "short-curls",
+        "changedPixels": 2426,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "coils",
+        "changedPixels": 2645,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "locs",
+        "changedPixels": 2661,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "braids",
+        "changedPixels": 1761,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "waves",
+        "changedPixels": 1713,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "side-part",
+        "changedPixels": 2291,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "swept",
+        "changedPixels": 2511,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "long",
+        "changedPixels": 4027,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "shaved",
+        "changedPixels": 1825,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "receding",
+        "changedPixels": 1770,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "afro",
+        "changedPixels": 3566,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "short-curls",
+        "changedPixels": 2331,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "coils",
+        "changedPixels": 2584,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "locs",
+        "changedPixels": 2932,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "braids",
+        "changedPixels": 2202,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "waves",
+        "changedPixels": 2202,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "side-part",
+        "changedPixels": 2238,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "swept",
+        "changedPixels": 2491,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "long",
+        "changedPixels": 3954,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "shaved",
+        "changedPixels": 2213,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "receding",
+        "changedPixels": 2196,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "afro",
+        "changedPixels": 3537,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "coils",
+        "changedPixels": 2539,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "locs",
+        "changedPixels": 3149,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "braids",
+        "changedPixels": 2415,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "waves",
+        "changedPixels": 2425,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "side-part",
+        "changedPixels": 1911,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "swept",
+        "changedPixels": 2504,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "long",
+        "changedPixels": 4000,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "shaved",
+        "changedPixels": 2432,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "receding",
+        "changedPixels": 2420,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "afro",
+        "changedPixels": 3527,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "locs",
+        "changedPixels": 3359,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "braids",
+        "changedPixels": 2632,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "waves",
+        "changedPixels": 2647,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "side-part",
+        "changedPixels": 2568,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "swept",
+        "changedPixels": 2581,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "long",
+        "changedPixels": 4151,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "shaved",
+        "changedPixels": 2639,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "receding",
+        "changedPixels": 2634,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "afro",
+        "changedPixels": 3523,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "braids",
+        "changedPixels": 2619,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "waves",
+        "changedPixels": 2648,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "side-part",
+        "changedPixels": 3018,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "swept",
+        "changedPixels": 3249,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "long",
+        "changedPixels": 4311,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "shaved",
+        "changedPixels": 2638,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "receding",
+        "changedPixels": 2634,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "afro",
+        "changedPixels": 4275,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "waves",
+        "changedPixels": 1221,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "side-part",
+        "changedPixels": 2266,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "swept",
+        "changedPixels": 2490,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "long",
+        "changedPixels": 4011,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "shaved",
+        "changedPixels": 1501,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "receding",
+        "changedPixels": 1364,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "afro",
+        "changedPixels": 3541,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "side-part",
+        "changedPixels": 2302,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "swept",
+        "changedPixels": 2521,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "long",
+        "changedPixels": 4036,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "shaved",
+        "changedPixels": 1652,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "receding",
+        "changedPixels": 1003,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "afro",
+        "changedPixels": 3565,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "swept",
+        "changedPixels": 2411,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "long",
+        "changedPixels": 3954,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "shaved",
+        "changedPixels": 2280,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "receding",
+        "changedPixels": 2279,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "afro",
+        "changedPixels": 3529,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "long",
+        "changedPixels": 4090,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "shaved",
+        "changedPixels": 2502,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "receding",
+        "changedPixels": 2499,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "afro",
+        "changedPixels": 3526,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "long",
+        "b": "shaved",
+        "changedPixels": 4015,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "long",
+        "b": "receding",
+        "changedPixels": 4008,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "long",
+        "b": "afro",
+        "changedPixels": 5012,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "shaved",
+        "b": "receding",
+        "changedPixels": 1411,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "shaved",
+        "b": "afro",
+        "changedPixels": 3561,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "receding",
+        "b": "afro",
+        "changedPixels": 3550,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "straight",
+        "b": "wavy",
+        "changedPixels": 3727,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "straight",
+        "b": "curly",
+        "changedPixels": 4082,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "straight",
+        "b": "coily",
+        "changedPixels": 3984,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "wavy",
+        "b": "curly",
+        "changedPixels": 4072,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "wavy",
+        "b": "coily",
+        "changedPixels": 4036,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "curly",
+        "b": "coily",
+        "changedPixels": 3900,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "stubble",
+        "changedPixels": 1388,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "mustache",
+        "changedPixels": 46,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "goatee",
+        "changedPixels": 347,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "short-beard",
+        "changedPixels": 1206,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "full-beard",
+        "changedPixels": 1498,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "mustache",
+        "changedPixels": 1417,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "goatee",
+        "changedPixels": 1439,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "short-beard",
+        "changedPixels": 1430,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "full-beard",
+        "changedPixels": 1487,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "mustache",
+        "b": "goatee",
+        "changedPixels": 338,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "mustache",
+        "b": "short-beard",
+        "changedPixels": 1206,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "mustache",
+        "b": "full-beard",
+        "changedPixels": 1485,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "goatee",
+        "b": "short-beard",
+        "changedPixels": 1136,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "goatee",
+        "b": "full-beard",
+        "changedPixels": 1414,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "short-beard",
+        "b": "full-beard",
+        "changedPixels": 789,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairLength 0.5",
+        "b": "hairLength 2",
+        "changedPixels": 6768,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairDensity 0.15",
+        "b": "hairDensity 1",
+        "changedPixels": 4234,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairline 0",
+        "b": "hairline 1",
+        "changedPixels": 4016,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairPart 0.1",
+        "b": "hairPart 0.9",
+        "changedPixels": 3208,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairStrandWidth 0.65",
+        "b": "hairStrandWidth 1.5",
+        "changedPixels": 3131,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairCurvature 0.65",
+        "b": "hairCurvature 1.45",
+        "changedPixels": 4161,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairWaveScale 0.65",
+        "b": "hairWaveScale 1.5",
+        "changedPixels": 3163,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairStrandVariation 0",
+        "b": "hairStrandVariation 0.5",
+        "changedPixels": 3358,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0",
+        "b": "gray 0.2",
+        "changedPixels": 1094,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0",
+        "b": "gray 0.65",
+        "changedPixels": 2045,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0",
+        "b": "scalp dye",
+        "changedPixels": 2214,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0",
+        "b": "brow dye",
+        "changedPixels": 97,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0",
+        "b": "beard dye",
+        "changedPixels": 1496,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0.2",
+        "b": "gray 0.65",
+        "changedPixels": 1766,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0.2",
+        "b": "scalp dye",
+        "changedPixels": 2214,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0.2",
+        "b": "brow dye",
+        "changedPixels": 1191,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0.2",
+        "b": "beard dye",
+        "changedPixels": 2590,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0.65",
+        "b": "scalp dye",
+        "changedPixels": 2214,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0.65",
+        "b": "brow dye",
+        "changedPixels": 2142,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "gray 0.65",
+        "b": "beard dye",
+        "changedPixels": 3541,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "scalp dye",
+        "b": "brow dye",
+        "changedPixels": 2311,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "scalp dye",
+        "b": "beard dye",
+        "changedPixels": 3710,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "pigments",
+        "a": "brow dye",
+        "b": "beard dye",
+        "changedPixels": 1593,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      }
+    ]
+  },
+  "captures": [
+    {
+      "file": "output/playwright/head-clumps-person-0-desktop-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f7eef7bd4fd009803eefa089eff47f72ab336e977ab04aee6e8da0db55f02446",
+      "original": "output/playwright/head-clumps-person-0-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-0-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-native-0-open.png",
+      "person": 0,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "4bc41169f1793ddb6dee59c2b72291d0426ddfb11ee01108e44d3550dadf264e",
+      "original": "output/playwright/head-clumps-native-0-open.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-0-open.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-clumps-native-0-closed.png",
+      "person": 0,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "eef2606d8e612af85972147dfd7bcf243f1f6f50614714dbfd1b1e4583a4b01f",
+      "original": "output/playwright/head-clumps-native-0-closed.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-0-closed.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-native-0-clay-closed.png",
+      "person": 0,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d4ce7e392845d60f2dfb8ade842e0fbd6c62c44c15ec7d796838a4248b7a3ff3",
+      "original": "output/playwright/head-clumps-native-0-clay-closed.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-0-clay-closed.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b7f0b45f3c4777823967a3d010c0d61bb683280314da7b5ca38bc4bbc5b9d949",
+      "original": "output/playwright/head-clumps-person-1-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-1-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-native-1-open.png",
+      "person": 1,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "aaf3ce301ea89bd50087b1c09535261e490c4ca7c81233d7d9caf6d93b1e10f0",
+      "original": "output/playwright/head-clumps-native-1-open.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-1-open.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-clumps-native-1-closed.png",
+      "person": 1,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "033fe3665e2f9a337b4815f1679c4e1978777f7d5cb252d5a2d1ac71cb0a990b",
+      "original": "output/playwright/head-clumps-native-1-closed.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-1-closed.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-native-1-clay-closed.png",
+      "person": 1,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "defb92c5273006ca67a5aad6093311a6351411267f4bb7bfd9025a0a202ddf52",
+      "original": "output/playwright/head-clumps-native-1-clay-closed.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-1-clay-closed.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "63d189ba9516732bc2151ef704941883edec51aed87df5c88686b15ca9f5ca63",
+      "original": "output/playwright/head-clumps-person-2-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-2-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-native-2-open.png",
+      "person": 2,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e303bd75092e416e1417b34ca798f5d2d47487b3f589f5b0748afc06017e6399",
+      "original": "output/playwright/head-clumps-native-2-open.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-2-open.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-clumps-native-2-closed.png",
+      "person": 2,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "67a007f23ca30f13cdfb52430568ac145edf0c915b79be58918ead74df0468a7",
+      "original": "output/playwright/head-clumps-native-2-closed.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-2-closed.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-native-2-clay-closed.png",
+      "person": 2,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "dd6b8b50db44634f003c6a3ab8159e0d67e6b7b5836ede0cd07255ceffb4175d",
+      "original": "output/playwright/head-clumps-native-2-clay-closed.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-2-clay-closed.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-0-desktop-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "bb1966acbf103e36a6a9336d44a2ea7c96daec18d6675b4a242e6cc6e8bbc36e",
+      "original": "output/playwright/head-clumps-person-0-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-0-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "fe68d63bfabe6c9e09b4587d7cb534eae3384f980ee646626f465e42eff14a24",
+      "original": "output/playwright/head-clumps-person-1-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-1-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-2-desktop-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "1bf89056427056dcd4ffcf62ff9dbf749bce58db738a310bf731c7cff09ac0e7",
+      "original": "output/playwright/head-clumps-person-2-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-2-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-0-mobile-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b2d74ee69c7da7079d01fe7a09fe491a95dfac63e60d5167bb9a90c9e7992b0a",
+      "original": "output/playwright/head-clumps-person-0-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-0-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "2b574e1ba2c52bff64c5b7d8c942319bb42029d7ab3c2b5aa49e7e735c98e191",
+      "original": "output/playwright/head-clumps-person-1-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-1-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-2-mobile-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "bd64fa041e1ddb007c7a6cb6b0fb9fa343d54f63f1a650bbe0bdad9af410af0b",
+      "original": "output/playwright/head-clumps-person-2-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-2-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-0-mobile-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "af5e046e1333c3ad734d64ec33a8c86ee728de566b87076260f762a81ec1ac2d",
+      "original": "output/playwright/head-clumps-person-0-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-0-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "2c9c4c3d3264a5b22902b96837e114b20a1f2499a086a327dc248779d31bc893",
+      "original": "output/playwright/head-clumps-person-1-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-1-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-person-2-mobile-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d52f63c7d80847563828e8ddeda41284fbb6d6ee9a3aaff971a3fd7293296a59",
+      "original": "output/playwright/head-clumps-person-2-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-person-2-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-styles-desktop-dark.png",
+      "group": "styles",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "e353fb2ccc19ef0fc97568d91604eed7702594e9d3e8c495fdd630707d8b7fe0",
+      "original": "output/playwright/head-clumps-grooming-styles-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-styles-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-textures-desktop-dark.png",
+      "group": "textures",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "103efe2c180bc802006ebf53e1fa75c968316395d8773f31a21b943b92f427c4",
+      "original": "output/playwright/head-clumps-grooming-textures-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-textures-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-facial-desktop-dark.png",
+      "group": "facial",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "982c506b486210f447cb2c53c718704234a7d3846d4146bed03d2a5ff4ddb958",
+      "original": "output/playwright/head-clumps-grooming-facial-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-facial-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-controls-desktop-dark.png",
+      "group": "controls",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "c13718054afa99e3d91a1f42fbb33577db98789b20e0d5356cf071b787c9278f",
+      "original": "output/playwright/head-clumps-grooming-controls-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-controls-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-pigments-desktop-dark.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "038f33e3cc6c85d256abce23db24dcd71ae35b78b9f210021e8d1d08d18c6b6c",
+      "original": "output/playwright/head-clumps-grooming-pigments-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-pigments-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-styles-desktop-light.png",
+      "group": "styles",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "d9abd4d185c0ce5d6e242357845ad18dc99df895cb1e08808fbdf23f8d2f304f",
+      "original": "output/playwright/head-clumps-grooming-styles-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-styles-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-textures-desktop-light.png",
+      "group": "textures",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "38109234e2733913499e7b6be1a22dbf22399b9b22f14e4c703d5c89e33359da",
+      "original": "output/playwright/head-clumps-grooming-textures-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-textures-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-facial-desktop-light.png",
+      "group": "facial",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "1223fe01184321ff9edcf84c00aaadb8f793a6c426855d8692b8fb0028ca70a4",
+      "original": "output/playwright/head-clumps-grooming-facial-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-facial-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-controls-desktop-light.png",
+      "group": "controls",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "ecf45c52a6a4fb8fc4fecf30c7ee1c13a7998970cd9e235191286105567bdef8",
+      "original": "output/playwright/head-clumps-grooming-controls-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-controls-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-pigments-desktop-light.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "2a3cfe0780a0c17d929f0657aefde8ab302766dcd390edb8f6dcb5ea8dfa5444",
+      "original": "output/playwright/head-clumps-grooming-pigments-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-pigments-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-styles-mobile-dark.png",
+      "group": "styles",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "ac91e5e59b00c6602c35e3b34744f96a10cd6f0aad4e1773208a10cc95d8a4c1",
+      "original": "output/playwright/head-clumps-grooming-styles-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-styles-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-textures-mobile-dark.png",
+      "group": "textures",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "8124e7da7d3e1c861390cf313e9b9f1c18f96a27177779c300cb6563f472a495",
+      "original": "output/playwright/head-clumps-grooming-textures-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-textures-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-facial-mobile-dark.png",
+      "group": "facial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "5b8e91a697355138b3b3f35e060ec9736d740346dd3265cc067f35a28e267147",
+      "original": "output/playwright/head-clumps-grooming-facial-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-facial-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-controls-mobile-dark.png",
+      "group": "controls",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "fb25ecf88149ffdb6f54a55ee9ff417e7e9308e04353b94d40b50ef8a584db49",
+      "original": "output/playwright/head-clumps-grooming-controls-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-controls-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-pigments-mobile-dark.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "79bb17aaa41cac3a86438216cb87afc58e9db4086cee392c78d5730ee18681a1",
+      "original": "output/playwright/head-clumps-grooming-pigments-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-pigments-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-styles-mobile-light.png",
+      "group": "styles",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "dbe6840dd13995bf445faba40cdc019df963d09e903edd79cba44a5f4a128c23",
+      "original": "output/playwright/head-clumps-grooming-styles-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-styles-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-textures-mobile-light.png",
+      "group": "textures",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "a12437a50a2c121eef751662532fc20c7796d7cc395d107a1c7c4ea0ca1552d0",
+      "original": "output/playwright/head-clumps-grooming-textures-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-textures-mobile-light.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-facial-mobile-light.png",
+      "group": "facial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "20ac54e1cfa085fad7b8ac58d6f1a023137558af0c2cc5faebfbc9d91cf828c6",
+      "original": "output/playwright/head-clumps-grooming-facial-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-facial-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-controls-mobile-light.png",
+      "group": "controls",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "ac51a867b8fcd324082210f3d443abcd8c1f4bf1d764dc74b463b645e928a618",
+      "original": "output/playwright/head-clumps-grooming-controls-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-controls-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-grooming-pigments-mobile-light.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "5c54f543258e4600f235a020ba321a20bfe1aef94644dfceef3eec273fc197c6",
+      "original": "output/playwright/head-clumps-grooming-pigments-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-pigments-mobile-light.png",
+      "primaryInspected": true
+    }
+  ],
+  "baselineCaptures": [
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-styles-desktop-dark.png",
+      "group": "styles",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "2e48dcb56f438c1ee22b6a61bcad88bfd728145587ff2cdbd476b16d8ae64764",
+      "original": "output/playwright/head-clumps-baseline-grooming-styles-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-styles-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-textures-desktop-dark.png",
+      "group": "textures",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "77070df2a264543e61780b88183e0cbebc43031d22ecdabf57d36f7ebe9f2da3",
+      "original": "output/playwright/head-clumps-baseline-grooming-textures-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-textures-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-facial-desktop-dark.png",
+      "group": "facial",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "982c506b486210f447cb2c53c718704234a7d3846d4146bed03d2a5ff4ddb958",
+      "original": "output/playwright/head-clumps-baseline-grooming-facial-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-facial-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-controls-desktop-dark.png",
+      "group": "controls",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "69bc01479698e7947229257055f7dc08b46a940ac26c6b6d0912045d848ff60c",
+      "original": "output/playwright/head-clumps-baseline-grooming-controls-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-controls-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-pigments-desktop-dark.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "7a47dbd9b29dc8bee262b9dc0965c53d05494171f04b8cc152e0ad39d49f838f",
+      "original": "output/playwright/head-clumps-baseline-grooming-pigments-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-pigments-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-styles-desktop-light.png",
+      "group": "styles",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "4a06ab3332888c6ad39f76d5ab54da828c4fbeb38453e86fa85c7c1a46d18551",
+      "original": "output/playwright/head-clumps-baseline-grooming-styles-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-styles-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-textures-desktop-light.png",
+      "group": "textures",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "5c395ba6c7537e0e4924f17a885af4a706435997d6438ea29300b4a12b8e0abf",
+      "original": "output/playwright/head-clumps-baseline-grooming-textures-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-textures-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-facial-desktop-light.png",
+      "group": "facial",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "1223fe01184321ff9edcf84c00aaadb8f793a6c426855d8692b8fb0028ca70a4",
+      "original": "output/playwright/head-clumps-baseline-grooming-facial-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-facial-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-controls-desktop-light.png",
+      "group": "controls",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "7fcfced70252039ff87b109d95205d6dc05749c71e8c649aaded64066eec8fbe",
+      "original": "output/playwright/head-clumps-baseline-grooming-controls-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-controls-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-pigments-desktop-light.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "43ec92dc3bb8a231a8cf3b6440ca08c6261ff99ce26fc0b3ef19b9a859e4c2ae",
+      "original": "output/playwright/head-clumps-baseline-grooming-pigments-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-pigments-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-styles-mobile-dark.png",
+      "group": "styles",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "e9cca3714a0f48c198ee67a726b24b48cdf95ea811502f88289bc43d9e94d29f",
+      "original": "output/playwright/head-clumps-baseline-grooming-styles-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-styles-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-textures-mobile-dark.png",
+      "group": "textures",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "5fad957443de62e991293806fc253f8d7e7e86cee60b8981b0f5a2513f34f440",
+      "original": "output/playwright/head-clumps-baseline-grooming-textures-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-textures-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-facial-mobile-dark.png",
+      "group": "facial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "5b8e91a697355138b3b3f35e060ec9736d740346dd3265cc067f35a28e267147",
+      "original": "output/playwright/head-clumps-baseline-grooming-facial-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-facial-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-controls-mobile-dark.png",
+      "group": "controls",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "f99e499394a59a35ce5fc0c94cd1483648eafd3387d17717a8c28e69389c4ad3",
+      "original": "output/playwright/head-clumps-baseline-grooming-controls-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-controls-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-pigments-mobile-dark.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "3081a7137d0f0269e2b5dc587a39d78d5bdcb549f27bd9a84c2edd24419d307d",
+      "original": "output/playwright/head-clumps-baseline-grooming-pigments-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-pigments-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-styles-mobile-light.png",
+      "group": "styles",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "b1f93db07c4e52e5c5a154e284abac8e9c6186c917bacddaf41f57833ebede2a",
+      "original": "output/playwright/head-clumps-baseline-grooming-styles-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-styles-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-textures-mobile-light.png",
+      "group": "textures",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "3f5c8e76e21acd0eaa3f5bcaa8bd8903a2d493af325a8086c7d9a2caf7f63d7f",
+      "original": "output/playwright/head-clumps-baseline-grooming-textures-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-textures-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-facial-mobile-light.png",
+      "group": "facial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "20ac54e1cfa085fad7b8ac58d6f1a023137558af0c2cc5faebfbc9d91cf828c6",
+      "original": "output/playwright/head-clumps-baseline-grooming-facial-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-facial-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-controls-mobile-light.png",
+      "group": "controls",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "8dbb015fce6ba0676d611519e98d500c077df10f7e8649c0c0ee1f370563cd38",
+      "original": "output/playwright/head-clumps-baseline-grooming-controls-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-controls-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-clumps-baseline-grooming-pigments-mobile-light.png",
+      "group": "pigments",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "7b06f67c3b8bea8204be860f8c592b8d12eb7625c369dc332d1d082d527f0303",
+      "original": "output/playwright/head-clumps-baseline-grooming-pigments-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-pigments-mobile-light.png",
+      "primaryInspected": false
+    }
+  ],
+  "inspection": {
+    "findings": [
+      "Surface-tangent normals replace offsets from the world origin. Short/swept clumps follow the scalp; cross-sections taper to closed root/tip points and follow the curved path.",
+      "Loose long hair uses thicker flattened clumps and a skull-side path rather than a sparse curtain across the face. Locs retain a distinct falling form.",
+      "An outward-normal check exposed a near-crown path fold. Continued scalp travel, a stable root reference and curvature-bounded thickness repair the sampled fold. Center samples are memoized during construction.",
+      "Front/three-quarter/profile saved-person comparisons and ordinary96x120 controlled galleries show the selected changes. Broad cap silhouette, sparse locs/long-hair ends, patterned gray contrast, painted beard, rigid mouth and mannequin-like anatomy remain craft defects."
+    ],
+    "qualification": "Controlled raw DTO style/texture comparisons do not prove all combinations are generator-eligible. No empirical grooming frequencies, measured hair coefficients, production performance, watertight manifold or all-device proof."
+  },
+  "independentReview": "pending",
+  "blockingDefectsOpen": 1,
+  "remaining": [
+    "Complete coherent scalp/facial hair craft and full-person anatomy/materials",
+    "Measured body/neck integration and all saved trait coverage",
+    "Production lifecycle, fallback/accessibility/cache/device performance",
+    "Compatible population/body calibration, NFL policies and current full-feature/30-season/release acceptance"
+  ]
+}

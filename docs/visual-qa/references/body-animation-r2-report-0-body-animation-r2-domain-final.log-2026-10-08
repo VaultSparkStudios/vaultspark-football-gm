@@ -1,0 +1,20 @@
+✔ one physical body retains measured segments and fingertip endpoints across all six modes (2260.8319ms)
+✔ neutral modeled skull and feet agree with stature and foot dimensions at common physical scale (381.1273ms)
+✔ mass changes bulk without changing saved face, segment lengths or skeletal root anchors (182.22ms)
+✔ cached body articulates one constructed mesh through measured poses with bounded reference error (3839.081ms)
+✔ rigid component volumes and closed incidence survive articulation; union invariance is not claimed (4022.9966ms)
+✔ physical-state and capacity changes invalidate cached person authority; disposal is final (145.9855ms)
+✔ singular cap and joint normals follow bone axes without changing prior vertex positions or topology (1422.7989ms)
+✔ ray union matches analytic boxes, overlaps, nested and coincident solids in every axis (126.5433ms)
+✔ experimental mass fitting reconciles union volume while preserving person and every measured pose endpoint (3543.8078ms)
+✔ open, reversed and malformed geometry refuses rather than yielding accepted mass (2.2931ms)
+✔ oblique octahedron quadrature approaches its analytic volume, including rays through projected vertices (112.584ms)
+✔ complete modeled body components close and ray refinement remains stable with overlap removed (1236.0407ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11596.7743

@@ -1,6 +1,22 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { buildPlayerProfileNarrative } from "../public/lib/playerProfileNarrative.js";
+import { createSession } from "../src/runtime/bootstrap.js";
+import { positionRatingKeys } from "../src/domain/ratings.js";
+
+test('actual dossier signature uses positional grading traits rather than unrelated high ratings',()=>{
+ const session=createSession({seed:20260306,startYear:2026,controlledTeamId:'BUF'});
+ for(const position of ['OL','K','DB']){
+  const player=session.league.players.find(p=>p.position===position&&p.teamId==='BUF');
+  const relevant=positionRatingKeys(position);
+  for(const key of Object.keys(player.ratings))player.ratings[key]=relevant.includes(key)?75:99;
+  const profile=session.getPlayerProfile(player.id);
+  const result=buildPlayerProfileNarrative(profile);
+  assert.equal(result.signature.length,3);
+  assert.ok(result.signature.every(trait=>trait.value===75),`${position} excludes unrelated99 ratings`);
+  assert.deepEqual(profile.player.positionRatingKeys,relevant);
+ }
+});
 
 const positions = ["QB", "RB", "WR", "TE", "OL", "DL", "LB", "DB", "K", "P"];
 

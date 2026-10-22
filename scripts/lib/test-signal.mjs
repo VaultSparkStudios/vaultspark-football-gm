@@ -45,6 +45,39 @@ function countList(v) {
   return Array.isArray(v) ? v.length : 0;
 }
 
+// ── S369 (ATLAS 01K2GTIT6L1DECB5157909E4FD): read the fields the runner writes ──
+//
+// S263 moved the runner's deferral record to an assertion-scoped name so a red run could
+// not re-date the file-level counts: run-tests.mjs now writes `testsAssertionsDeferred`,
+// `testsBudgetExhausted` and `testsInconclusive`. This library kept reading `testsDeferred`
+// alone. The writer changed its field; the reader did not follow; a full run that stopped
+// at its budget, or carried files with no clean verdict, rendered green.
+//
+// `testsDeferred` (file-level surface, refresh-test-count) and `testsAssertionsDeferred`
+// (assertion surface, run-tests) can name the same file, so the count is of DISTINCT files.
+
+/** Distinct files either test surface recorded as deferred. */
+export function deferralCount(status = {}) {
+  const names = new Set();
+  let unnamed = 0;
+  for (const list of [status?.testsDeferred, status?.testsAssertionsDeferred]) {
+    if (!Array.isArray(list)) continue;
+    for (const entry of list) {
+      const name = typeof entry === 'string' ? entry : entry?.file;
+      if (name) names.add(String(name).replace(/\\/g, '/'));
+      else unnamed += 1;
+    }
+  }
+  return names.size + unnamed;
+}
+
+/** Files recorded with no clean verdict. The field is a list from run-tests and a number from the reconciler. */
+export function inconclusiveCount(status = {}) {
+  const v = status?.testsInconclusive;
+  if (Array.isArray(v)) return v.length;
+  return typeof v === 'number' && Number.isFinite(v) && v > 0 ? v : 0;
+}
+
 // ── S283 [audit #2]: was the file-level run BOUNDED? ─────────────────────────
 //
 // S263 (above) reconciled the two surfaces this module was built for. A third
@@ -81,7 +114,11 @@ const NOTE_CLAIMS_DEFERRAL = /(\d+)\s+files?\s+(?:remained\s+)?(?:budget[- ]?)?d
  * the empty-array-beside-a-note shape that made the green unfalsifiable.
  */
 export function describeBound(status = {}) {
-  const structuredDeferred = countList(status.testsDeferred);
+  // S369 — both deferral fields, plus the two assertion-run facts nothing read (see
+  // deferralCount / inconclusiveCount above).
+  const structuredDeferred = deferralCount(status);
+  const budgetExhausted = status.testsBudgetExhausted === true;
+  const inconclusive = inconclusiveCount(status);
   const mode = String(status.testsLastRunMode ?? '');
   const note = String(status.testsDeferredNote ?? '');
 
@@ -90,11 +127,15 @@ export function describeBound(status = {}) {
   const claimedDeferred = noteMatch && noteMatch[1] ? Number(noteMatch[1]) : (noteMatch ? null : 0);
   const noteBounded = Boolean(noteMatch);
 
-  const bounded = structuredDeferred > 0 || modeBounded || noteBounded;
-  const writerDefect = structuredDeferred === 0 && (modeBounded || noteBounded);
+  const bounded = structuredDeferred > 0 || budgetExhausted || inconclusive > 0 || modeBounded || noteBounded;
+  // A structured record of the bound (a file list, the budget flag, inconclusive files)
+  // means the writer DID say so; the defect is prose claiming a bound nothing structured carries.
+  const writerDefect = structuredDeferred === 0 && !budgetExhausted && inconclusive === 0 && (modeBounded || noteBounded);
 
   const reasons = [];
   if (structuredDeferred > 0) reasons.push(`${structuredDeferred} deferred file(s)`);
+  if (budgetExhausted) reasons.push('suite budget exhausted before every file ran');
+  if (inconclusive > 0) reasons.push(`${inconclusive} inconclusive file(s) with no clean verdict`);
   if (modeBounded) reasons.push(`run mode "${mode}"`);
   if (noteBounded && claimedDeferred) reasons.push(`${claimedDeferred} file(s) named as deferred in testsDeferredNote`);
   else if (noteBounded) reasons.push('testsDeferredNote records deferrals');
@@ -123,7 +164,7 @@ export function describeBound(status = {}) {
 export function resolveTestSignal(status = {}) {
   const passing = status.testsPassing;
   const total = status.testsTotal;
-  const deferred = countList(status.testsDeferred);
+  const deferred = deferralCount(status);   // S369 — both surfaces, not testsDeferred alone
   const lastRun = status.testsLastRun || null;
 
   const aPass = status.testsAssertionsPassing;
@@ -175,11 +216,98 @@ export function resolveTestSignal(status = {}) {
     };
   }
 
+  // ── S315 [audit #2]: a file-level deficit with NO NAMED FAILURE is not RED ──
+  //
+  // Observed live at S315 start. PROJECT_STATUS.json held:
+  //
+  //   testsPassing 535 / testsTotal 537      →  a deficit of 2
+  //   testsFailures []                       →  and not one file named
+  //   testsAssertionsFiles 557               →  covering TWENTY MORE files than testsTotal
+  //   testsAssertions 3533/3533              →  green
+  //
+  // The newest complete run ended `3533/3533 assertions · 555/557 files` at exit 0,
+  // and both files the older run had recorded as failed passed on direct re-run.
+  // The counts came from one run and the failure list from another, written into
+  // one record as if they were a single measurement — so the record asserted that
+  // two files failed while being unable to say which.
+  //
+  // The startup brief then published `⛔ Tests suite RED — 535/537 files` as the
+  // founder's first signal of the session. That is the S313 class ("an empty array
+  // is not an explanation") landing in the one number every session opens on.
+  //
+  // A deficit nothing can attribute is UNEXPLAINED, not red. It is still not green —
+  // ok stays false and it still blocks a clean reading — but it sends the reader to
+  // the record's own contradiction instead of to a suite that is passing. An
+  // assertion-level red is real evidence and always outranks this: when the
+  // assertions are red too, the branch below still says RED.
+  // The state requires a CONTRADICTING GREEN HALF, not merely a nameless deficit.
+  // Without a known assertion-level run there is nothing to contradict the file
+  // count, so an unattributed deficit is simply a red whose detail is thin — and it
+  // must stay red. Dropping this condition turned three long-standing contract
+  // fixtures ('file-level red reads red on its own'; the S263 deferred-counted-into-
+  // the-total rule; 'a real red still reads red') into false passes, which is the
+  // precise shape of a fix that greens an assertion by removing its meaning.
+  const namedFailures = countList(status.testsFailures);
+  const coveredFiles = Number(status.testsAssertionsFiles);
+
+  // S321 [audit #4] — THE EXPLANATION WAS TRAPPED IN THE BRANCH THAT NEEDS IT LEAST.
+  //
+  // This evidence — the two halves came from different runs — used to be computed
+  // only inside the `unexplained` branch below, and that branch requires a
+  // CONTRADICTING GREEN HALF (`!assertionsRed`). So the moment the assertion half
+  // goes red too, the drift that EXPLAINS the reading becomes invisible, exactly
+  // when a reader is trying to explain a red. Measured at S321: testsAssertionsFiles
+  // 582 against testsTotal 566 — the file-level half sixteen files narrower — with
+  // both halves red, and not a word of it printed anywhere.
+  //
+  // Computed once, here, so every branch below can carry it.
+  const staleHalf = [];
+  if (Number.isFinite(coveredFiles) && coveredFiles > total) {
+    staleHalf.push(
+      `the assertion run covered ${coveredFiles} files against testsTotal ${total}, so the file-level half is the narrower, older run`,
+    );
+  }
+  if (Number.isFinite(fileMs) && Number.isFinite(aMs) && fileMs !== aMs) {
+    staleHalf.push(fileMs < aMs
+      ? `file-level stamp ${lastRun} predates the assertion stamp ${aLastRun}`
+      : `file-level stamp ${lastRun} postdates the assertion stamp ${aLastRun}`);
+  }
+
+  if (fileRed && assertionsKnown && !assertionsRed && namedFailures === 0) {
+    return {
+      ...base,
+      state: 'unexplained',
+      ok: false,
+      namedFailures,
+      detail:
+        `file-level ${passing}/${total}${lastRun ? ` (${lastRun})` : ''} is short by ${total - passing}, but ` +
+        `testsFailures names NONE of them and the assertion run is green at ${aPass}/${aTotal}` +
+        `${aLastRun ? ` (${aLastRun})` : ''} — the two halves came from different runs, so this is ` +
+        `UNEXPLAINED, not red` +
+        (staleHalf.length ? ` · ${staleHalf.join(' · ')}` : '') +
+        ' · re-derive from one run: node scripts/run-tests.mjs',
+    };
+  }
+
   if (assertionsRed || fileRed) {
+    // S293 — the two halves come from SEPARATE runs with separate stamps, and
+    // this branch used to concatenate them bare: "386/390 files · 3005/3007
+    // assertions" read as one measurement while the file count was from an
+    // older run than the assertion count. The contradiction branch above is
+    // careful to print both stamps; this one dropped them, so the staler half
+    // borrowed the fresher half's credibility. Date each side whenever they did
+    // not come from the same run.
+    const sameRun = lastRun && aLastRun && lastRun === aLastRun;
     const parts = [];
-    if (fileRed) parts.push(`${passing}/${total} files`);
-    if (assertionsRed) parts.push(`${aPass}/${aTotal} assertions`);
-    return { ...base, state: 'red', ok: false, detail: `suite RED — ${parts.join(' · ')}` };
+    if (fileRed) parts.push(`${passing}/${total} files${!sameRun && lastRun ? ` (${lastRun})` : ''}`);
+    if (assertionsRed) parts.push(`${aPass}/${aTotal} assertions${!sameRun && aLastRun ? ` (${aLastRun})` : ''}`);
+    // S321 [audit #4] — carry the cross-run drift into the red reading too.
+    return {
+      ...base, state: 'red', ok: false,
+      detail: `suite RED — ${parts.join(' · ')}`
+        + (staleHalf.length ? ` · ⚠ ${staleHalf.join(' · ')}` : '')
+        + (fileRed && namedFailures === 0 ? ' · testsFailures names none of them' : ''),
+    };
   }
 
   // Nothing is red — but a bounded run is not green either. It is a run that
@@ -227,6 +355,12 @@ const SEVERITY = {
   unknown:      'warn',
   red:          'bad',
   contradicted: 'bad',
+  // S315 [audit #2] — an unattributable file-level deficit is NOT-GREEN, like
+  // `bounded` and `unknown`: the record contradicts itself and must be repaired,
+  // but the suite it describes is passing. Listed EXPLICITLY rather than left to
+  // the fail-closed default, because the default would print ⛔ and re-create the
+  // false RED this state exists to end.
+  unexplained:  'warn',
 };
 
 export function testSignalSeverity(signal = {}) {

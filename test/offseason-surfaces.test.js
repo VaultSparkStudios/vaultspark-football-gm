@@ -13,15 +13,10 @@ import test from "node:test";
 import { buildSeasonChapter } from "../public/lib/seasonChapters.js";
 import { buildDraftPressureModel } from "../public/lib/tabDraft.js";
 import { createSession } from "../src/runtime/bootstrap.js";
+import { completedSeasonFixture } from './helpers/completedSeasonFixture.js';
 
 function sessionAtStage(stage, { seed = 4242 } = {}) {
-  const session = createSession({ seed, startYear: 2026, controlledTeamId: "BUF" });
-  session.simulateOneSeason({ runOffseasonAfter: false });
-  let guard = 0;
-  while (session.phase !== "offseason" && guard < 12) {
-    session.advanceWeek();
-    guard += 1;
-  }
+  const session = completedSeasonFixture({ seed, startYear: 2026, controlledTeamId: "BUF" });
   for (let i = 0; i < 16; i += 1) {
     const pipeline = session.getOffseasonPipeline();
     if (pipeline.completed || pipeline.stage === stage) break;

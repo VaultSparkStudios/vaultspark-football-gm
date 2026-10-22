@@ -1,0 +1,30 @@
+{
+  "constructionMs": 143.79999995231628,
+  "rebuild": {
+    "samples": 12,
+    "medianMs": 77.09999990463257,
+    "p95Ms": 99.40000009536743,
+    "maxMs": 99.40000009536743
+  },
+  "cached": {
+    "samples": 120,
+    "medianMs": 0.5999999046325684,
+    "p95Ms": 0.8999998569488525,
+    "maxMs": 1
+  },
+  "updateAndDrawCpu": {
+    "samples": 120,
+    "medianMs": 1,
+    "p95Ms": 1.4000000953674316,
+    "maxMs": 1.7999999523162842
+  },
+  "maxPositionError": 0.00000762939453125,
+  "stableBuffers": true,
+  "neutralPixelsRestored": true,
+  "inputUnchanged": true,
+  "disposed": true,
+  "hardware": "local headless Chromium, emulated viewport; no physical mobile hardware claim",
+  "gpuCompletionTimed": false,
+  "wholeUnionMassVerified": false,
+  "productionDossierIntegrated": false
+}

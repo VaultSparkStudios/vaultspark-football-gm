@@ -1,0 +1,71 @@
+{
+  "component": "admitted-postseason-pay-before-recovery",
+  "round": 2,
+  "verdict": "PASS",
+  "reviewedAt": "2026-10-07T23:08:44.993Z",
+  "sourceHashes": {
+    "src/domain/admittedPostseasonRecovery.js": "c96bd53ba247ccaaaa9ce579332097821c9df65fb4e2eee7be6c89468a7c6d86",
+    "src/domain/postseasonMedicalClock.js": "01850182d8b292c9cdec395f193a83a2bda739f86ae778c3f10499fed9a107a9",
+    "src/domain/elevationInjuryPay.js": "b8fcb82f5714b34869098a461dc62d871ce7cddd7edc29df5137b3829581dce0",
+    "src/runtime/GameSession.js": "c4f880051da9f0f273f483cd6c3e75a893c93baddb2d3661ae0f64c54c2fdb52",
+    "src/sport/football/postseason.js": "6007428021bb6258e375f4a9a7b8ac5787a0992436f155970130090fd7d6c318",
+    "test/admitted-postseason-recovery.test.js": "f57967421760e250a322dfd7077a32ab90e94c72e982cefda6413208b0201db2",
+    "test/helpers/admittedPostseasonFixture.js": "09f286aa6c63b2a247925c6802af72b852283eefe1e8edc0a6b0467a329ce966",
+    "test/regular-medical-recovery.test.js": "fa1c259fdbc177d456e40932d42f7bb49843201e5fcde228dd8e2534d42556db",
+    "test/helpers/regularMedicalFixture.js": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba",
+    "scripts/run-test-shard.mjs": "1937ea38a30405b107107e91cf9b5a9db06999157c64c8405e8f8ac17a5f7a8d"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/admitted-postseason-recovery.test.js test/postseason-medical-clock.test.js test/postseason-recovery-completion.test.js test/regular-medical-recovery.test.js",
+      "pass": 32,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 75640.5621,
+      "scope": "New6 malformed-label/archive and actual bracket tests, old10 medical-clock cases,10 completion/payment/restore cases with original error reason,6 regular cases including actual ongoing activeFA source."
+    },
+    {
+      "command": "node .cache/admitted-postseason-round-probe.mjs",
+      "sha256": "a0fe14b0d74e3157469511d2664cfc8283cca0370aad9526eb7ba152e88a7e04",
+      "result": "PASS",
+      "checks": [
+        "Exact unchanged R1 constructor/toString/__proto__ inputs now all refuse",
+        "Complete snapshots unchanged; no clock/wages/healing committed"
+      ]
+    },
+    {
+      "command": "node --input-type=module (direct validateSnapshotPostseasonRecovery probe)",
+      "result": "PASS",
+      "checks": [
+        "Latest admittedMedicalClock without medicalRecovery refuses ADMITTED_POSTSEASON_CLOCK_INVALID before input mutation"
+      ]
+    }
+  ],
+  "positiveAssessment": [
+    "Global admitted earning intervals apply once per new round week independent of current club/employment.",
+    "Pay is staged before recovery; retired sources participate and same round repeated games remain inert.",
+    "Current-year compensation branch skips recognized prior-year admitted episodes, leaving them to separate original-rate/original-payer earning ledger.",
+    "Club recovery excludes ongoing admitted source people, preventing second recovery in the same medical interval.",
+    "Completed result projection retains admitted clock and actual compressed restoration tests pass."
+  ],
+  "limits": [
+    "Final guard build and built-client evidence pending/excluded at review; no current browser or source/static equivalence claim.",
+    "Controlled retained prior-year source fixtures prove cross-year integration seam, not live annual default adoption.",
+    "Missing legacy clocks derive only already applied archive weeks; no retrospective wage/healing claim.",
+    "Annual four preservePostTermClaims defaults, postemployment offsets, Salary/Benefits/pension/service/full calendar policy remain open.",
+    "No full NFL, appearance, current30-career, full-suite or release acceptance."
+  ],
+  "imagesInspected": [],
+  "priorReview": {
+    "path": ".cache/admitted-postseason-review-round1.json",
+    "sha256": "b7793b78cf95b2b2c023d989eedd5966c1dbd42e93d721efdd4d79a79af306fe",
+    "verdict": "FIX",
+    "preserved": true
+  },
+  "repair": {
+    "finding": "inherited-archive-round-key",
+    "status": "FIXED",
+    "evidence": "appliedThrough rejects nonarray archives, null entries and keys absent from the own round table, and requires a safe integer mapped week before any clone planning or committed state. Existing latest completion/bracket validation runs before new admitted-clock validation so legacy completion errors retain POSTSEASON_MEDICAL_CLOCK_INVALID; missing completion plus admitted clock still refuses."
+  }
+}

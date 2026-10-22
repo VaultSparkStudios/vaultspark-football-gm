@@ -16,6 +16,8 @@ function openingRequest() {
 
 test("opening contract becomes a source-derived playable prologue", () => {
   const session = createSession({ seed: 52031, startYear: 2026, controlledTeamId: "BUF" });
+  assert.ok(session.seasonSchedule.find(entry => Number(entry.week) === 1).games.some(game =>
+    game.homeTeamId === session.controlledTeamId || game.awayTeamId === session.controlledTeamId), 'new seasons must schedule the controlled club in Week 1');
   assert.equal(session.getOpeningContractProgress(), null);
   assert.equal(session.applyStartScenario(openingRequest()).ok, true);
 
@@ -41,6 +43,20 @@ test("opening prologue evidence survives save and restore without tutorial flags
   executeAdvanceWeekCommand(session, { count: 1, weeklyTacticOverride: "run-heavy" });
   const restored = createSessionFromSnapshot(session.toSnapshot());
   assert.deepEqual(restored.getOpeningContractProgress(), session.getOpeningContractProgress());
+  const evidence = restored.getOpeningContractProgress().steps.find(step => step.id === 'plan').detail;
+  restored.getControlledTeam().weeklyPlan.summary = 'A different upcoming matchup plan';
+  assert.equal(restored.getOpeningContractProgress().steps.find(step => step.id === 'plan').detail, evidence,
+    'completed opening evidence is independent of upcoming plans');
+  const completed = restored.getOpeningContractProgress();
+  const firstFilm = restored.league.tacticalFilmLog[0];
+  restored.league.tacticalFilmLog.unshift({ ...firstFilm, week: Number(firstFilm.week) + 1, label: 'Later Week Pass-Heavy', observed: 'Later game evidence' });
+  assert.deepEqual(restored.getOpeningContractProgress(), completed, 'later film cannot replace the opening game tactic');
+  delete restored.league.startScenarioReceipt.effects.weeklyPlan;
+  const legacy = restored.getOpeningContractProgress();
+  assert.equal(legacy.steps.find(step => step.id === 'plan').detail, firstFilm.label);
+  assert.equal(legacy.result.tactic, firstFilm.label);
+  assert.equal(legacy.result.tacticalVerdict, firstFilm.observed);
+  assert.deepEqual(createSessionFromSnapshot(restored.toSnapshot()).getOpeningContractProgress(), legacy);
 });
 
 test("opening prologue advances honestly when the controlled team starts on a bye", () => {

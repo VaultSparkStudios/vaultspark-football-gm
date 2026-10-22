@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Terminal historical core evidence integrity only, not current-source implementation approval.",
+  "primaryReceipt": "docs/CORE_AFTER_WHOLE_HEAD_REGRESSION_2026-10-08.json",
+  "primaryReceiptSha256": "b49cdd2695c05a03d26fa023607e3bc1ada70266d9ff30a1c362c13df72a9418",
+  "artifactHashes": {
+    "docs/CORE_AFTER_WHOLE_HEAD_REGRESSION_2026-10-08.json": "b49cdd2695c05a03d26fa023607e3bc1ada70266d9ff30a1c362c13df72a9418",
+    "docs/visual-qa/references/core-after-whole-head-regression-log-2026-10-08.txt": "aebe44c98ec302ac70ef9aa517bb88e66d4925f996856b825ca6defe8716b0fe",
+    "scripts/run-test-shard.mjs": "d300a7813c0dd8d78def8621590a21ceada8b012f12438c7faafdff838544c19",
+    "scripts/lib/test-receipt.mjs": "03ad400c65794f41e48d388222c4f5b66f7c5771914c5b656ce76406603ef843",
+    "docs/visual-qa/references/production-ear-before-2026-10-08.js": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8",
+    "docs/visual-qa/references/skin-continuity-player-shared-head.test.js-2026-10-08": "7443c5846ad5cd316083b4ca103d89b7cd7fafff19c7435e201ea4da13c83aed"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "check": "Retained log SHA and independently parsed terminal summary",
+      "result": "PASS",
+      "tests": 626,
+      "passed": 626,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "durationMs": 1004512.1197
+    },
+    {
+      "check": "Canonical runner SHA and ordered declared core list",
+      "result": "PASS",
+      "uniqueFiles": 98
+    },
+    {
+      "check": "All after-run source hashes and reconstructed sorted path-NUL-content-NUL digest",
+      "result": "PASS",
+      "sourceBindings": 972,
+      "digest": "a6eddc415fe4c0912d2e55c41f55bd2fbad4c72651964ae667a7dd97a0d216bf",
+      "historicalSubstitutions": [
+        {
+          "path": "public/lib/playerHead3d.js",
+          "frozenPriorSource": "docs/visual-qa/references/production-ear-before-2026-10-08.js",
+          "priorSha256": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8",
+          "currentSha256AtReview": "98d7dd5ecb35211b762ff85d46dada1bd0644561137b2fec5e9ebcdf5523df09"
+        },
+        {
+          "path": "test/player-shared-head.test.js",
+          "frozenPriorSource": "docs/visual-qa/references/skin-continuity-player-shared-head.test.js-2026-10-08",
+          "priorSha256": "7443c5846ad5cd316083b4ca103d89b7cd7fafff19c7435e201ea4da13c83aed",
+          "currentSha256AtReview": "39b3a61161c3f2ef3a212c5f1882b52fe00e04c92b1675c1fa0c30224d1edf4e"
+        }
+      ]
+    }
+  ],
+  "executionAttribution": {
+    "command": "node scripts/run-test-shard.mjs core",
+    "terminalSession": 8254,
+    "terminalChunk": "702957",
+    "exitCode": 0,
+    "qualification": "Exit code and actual execution are primary tool observations. Reviewer independently verifies retained log totals, runner list and historical bytes; did not rerun core."
+  },
+  "limits": [
+    "After-run binding only; no whole-surface pre-run digest claim. Unchanged execution inputs during run are primary attestation.",
+    "Later ear source adoption and shared-head attachment-test addition are not covered. Exact prior bytes allow historical digest reconstruction; current source is not certified by it.",
+    "Canonical --test-isolation=none and --test-force-exit; separate partition counts cannot be added as unique tests.",
+    "Original October 2 all-suite 1752 receipt was not modified. No current all-source/core or full-suite acceptance inferred.",
+    "No browser/visual, demographic or body calibration, career, full NFL, release or overall-goal acceptance."
+  ],
+  "commands": [
+    "Python stdin SHA256/terminal log summary/ordered runner-list checks",
+    "Python stdin historical 972-file source-byte digest reconstruction"
+  ],
+  "probeQualification": "Initial final digest attempt observed newly added shared-head test and refused rather than silently using current bytes. Located exact prior matching test in frozen skin-continuity references; reconstruction then passed."
+}

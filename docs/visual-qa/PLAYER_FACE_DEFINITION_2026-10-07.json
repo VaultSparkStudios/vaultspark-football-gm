@@ -1,0 +1,1124 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07T23:42:44.401Z",
+  "sourceRevision": "local-worktree",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "status": "face-surface-component-verified-full-athlete-open",
+  "scope": "Modern fine/natural facial contact and lighting; saved pigment/frame/contours preserved",
+  "sourceHashes": {
+    "public/lib/playerPortraitFace.js": "10056934ec4b22463b0ff7ac8c7147809ffb6e77a8cb5d9fc7530d2d220046c4",
+    "public/lib/fineFaceGeometry.js": "4c1e26c18c3994038b353d4f8e7d0a1a2783ad75871f8e927304117c6b91c8f1",
+    "public/lib/portraitSurfaceLighting.js": "83bb95a8c86f3c070be9ae6209c4ad82f66500d67724253a15b34d23e796f7bf",
+    "public/lib/playerSideAppearance.js": "e972d5e9fb8fee5c1879cb8e76c180a557d6b8b10eed4cd6167324e34c4745ad",
+    "public/lib/portraitEyeSurface.js": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+    "test/player-fine-face.test.js": "1f7075aec4635cee19d5eb8d5336e85c9eddeae12dee5e71211e4ada711f76c4",
+    "test/player-face-lighting.test.js": "95f3951303089cceffcb657eed6d51ec517f83f2cb66115a619da630d76ae43e",
+    "test/player-portrait-features.test.js": "d4148600eaf9a35a040e0d35926ce6ec49c63d6f80eb3ec218ed1ef1b6300a55"
+  },
+  "builtHashes": {
+    "static/lib/playerPortraitFace.js": {
+      "sha256": "0a5594468e0478a1537d4552e7ddfb0ad9b7b313e9db46127cfad7d0ee27b1f8",
+      "source": "public/lib/playerPortraitFace.js",
+      "sourceSha256": "10056934ec4b22463b0ff7ac8c7147809ffb6e77a8cb5d9fc7530d2d220046c4",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "sha256": "50fce766c33e26d588036ae2ad2032d09d5dba529be55a39fbde50289332a598",
+      "source": "public/lib/playerSideAppearance.js",
+      "sourceSha256": "e972d5e9fb8fee5c1879cb8e76c180a557d6b8b10eed4cd6167324e34c4745ad",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/fineFaceGeometry.js": {
+      "sha256": "4c1e26c18c3994038b353d4f8e7d0a1a2783ad75871f8e927304117c6b91c8f1",
+      "source": "public/lib/fineFaceGeometry.js",
+      "sourceSha256": "4c1e26c18c3994038b353d4f8e7d0a1a2783ad75871f8e927304117c6b91c8f1",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitSurfaceLighting.js": {
+      "sha256": "83bb95a8c86f3c070be9ae6209c4ad82f66500d67724253a15b34d23e796f7bf",
+      "source": "public/lib/portraitSurfaceLighting.js",
+      "sourceSha256": "83bb95a8c86f3c070be9ae6209c4ad82f66500d67724253a15b34d23e796f7bf",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitEyeSurface.js": {
+      "sha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+      "source": "public/lib/portraitEyeSurface.js",
+      "sourceSha256": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "f19aac6812ea17bcef604307d6001982956c56c00482ad438b124cba252c7cb3",
+  "reports": [
+    {
+      "file": "output/playwright/face-relief-definition-before.json",
+      "sha256": "5ecb73847a9bde902afd56176033ea4860f43ed64fe174894b57b1571b088985"
+    },
+    {
+      "file": "output/playwright/face-relief-dossier-definition-before.json",
+      "sha256": "4af56a92aafa60e9a648f4cbafe4529cff2c4fbda47431a1b2aee40f5d75e69e"
+    },
+    {
+      "file": "output/playwright/face-relief-definition-final.json",
+      "sha256": "266a0905d4b877772cfad0cb5a70e7ac567f3c7cc75fdb51c6f25a65cc5c1cce"
+    },
+    {
+      "file": "output/playwright/face-relief-dossier-definition-final.json",
+      "sha256": "746d9b6358d4f9c1ac30fea81c68ea0705d5231f1a7adb0d3f097eb9b8f71c0f"
+    }
+  ],
+  "captures": [
+    {
+      "file": "face-definition-face-relief-definition-before-0-desktop-dark.png",
+      "sha256": "5f5fa3c75913156c3bb8abe39bef1a95d4ff9deb6d417d1a3303954e5c6036ec",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-0-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-definition-before-0-desktop-light.png",
+      "sha256": "694b9586ead08cf4771302470ba4ab1c73afbebd50cf1108e48116f287a8301b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-0-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-before-0-mobile-dark.png",
+      "sha256": "c6643c46c87e3a626721d0d874cdcb736e47081004e004a47a4c2d73a6ed3341",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-0-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-before-0-mobile-light.png",
+      "sha256": "5bc65c007a1d0e43da936a0c23dfb9808fd8cc9e09281ca18224acaef9a462da",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-0-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-before-4-desktop-dark.png",
+      "sha256": "812db7ebd5911b97bc52140011706d28d8feac51db215247670ea89110679c81",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-4-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-before-4-desktop-light.png",
+      "sha256": "b0fa8aa9bba64761b795ab7903caed8c99b733b8b98b9c4edffd6782a8a288ed",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-4-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-before-4-mobile-dark.png",
+      "sha256": "07985c8b2995fd5199102c0028a94d69c94bd345bfd9d4196c87d4cc103c1cf4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-4-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-before-4-mobile-light.png",
+      "sha256": "05e6605c3d24de1dc3874d8e2cd1fd82d7022508653b21f9f977c0083c7171a0",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-definition-before-4-mobile-light.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-desktop-dark-portrait.png",
+      "sha256": "e873718611a66c2ddad06f2d1549aeaa99ee4ca8138be89bbb9a9fd04709271e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-desktop-dark-body.png",
+      "sha256": "c84f0f24f037f011a566167c15058e4b1df8f0efe570424360fdee48351fb281",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-desktop-light-portrait.png",
+      "sha256": "9340040998a9d1b42c11ccc5322c0ceab8b19353dee873767980ffbb3e1527d1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-desktop-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-desktop-light-body.png",
+      "sha256": "e891cac4b4bd022e1bc4fe386f0e92e542934d1537084da3a289303f62d136a8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-mobile-dark-portrait.png",
+      "sha256": "c5acca7de3ddc55e7d6422b18c807b11603cff8631c5e16a3f573e0586001220",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-mobile-dark-body.png",
+      "sha256": "68665f86411382c5ad912060995e98bd422ee57e04a83218c136d62accc0c1e9",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-mobile-light-portrait.png",
+      "sha256": "55e65930a1a58819c79c45a4e313a9993e52badc5a5395990bdba78b8bbde227",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-shaved-mobile-light-body.png",
+      "sha256": "0fb9157a082560eae30040ca58ddcb026cd8c11f3d31a1f39fbc7211b2a0fe0f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-shaved-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-desktop-dark-portrait.png",
+      "sha256": "d5203049b94005ebe54dc01855b647eaa7dc4d49a24cefea03c1ef8d6ce12434",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-desktop-dark-body.png",
+      "sha256": "2d54fd05cd34a0163c4f00b13346a4637a321093e2830a7454a25295102f8656",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-desktop-light-portrait.png",
+      "sha256": "a5b31f97bf3b7bd21dc938b7ddc018f68c22b8d81a0fe648a0f46f35c533e0e5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-desktop-light-portrait.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-desktop-light-body.png",
+      "sha256": "8b84da4c4bc13705818a739ca6f145b7f44e8939458439b04cd91f560f6065e6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-mobile-dark-portrait.png",
+      "sha256": "e93203d8088e9fe6367db6eb7179a0c908251e21f31fc3733f863de2c31fec44",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-mobile-dark-body.png",
+      "sha256": "63f78f2e8fa1de8450d701eb267ca253a5e26c75b314f4d77196d970813bc635",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-mobile-light-portrait.png",
+      "sha256": "132864ed57aefece464ae007d8dcfcfe25f057b48785aa80c6839c6e625c9a25",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-afro-mobile-light-body.png",
+      "sha256": "2cc428b6a654b100b61a5ccb82ded34acebe957d555dcb506b4fba255f6c63db",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-afro-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-desktop-dark-portrait.png",
+      "sha256": "d138b19092cdbee77afdb3932348765c92017bea6a9e7cc0184e19b3f82ea9fc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-desktop-dark-body.png",
+      "sha256": "239efee09a3fd9f6853f73772c101bc62aa97a8015ed556929109744fb4c8659",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-desktop-light-portrait.png",
+      "sha256": "5616eb9522a76361830e535564125fbe9fa5fcb43dbc5c70add3bb6ca2573065",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-desktop-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-desktop-light-body.png",
+      "sha256": "cf7547ae10aeea7aef32ecba62a79add2b5c7c4290fa3ba554bc5362a53f5193",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-mobile-dark-portrait.png",
+      "sha256": "bf55286eb6fe640e7e09b34c6e979fd7dffcfe33fdfed316bca00e33d35f9d69",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-mobile-dark-body.png",
+      "sha256": "939ef28d9469d946d0c79e74a56311e511f325b0dbd72ea229c93b2cfc7f21c2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-mobile-light-portrait.png",
+      "sha256": "8ddf621228b00c304bb5d64fe7df815e2fb5b56afbb25af388c836daabe4429d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-before-side-part-mobile-light-body.png",
+      "sha256": "0e04817c03a8b01d33feb2c65be0ef8ca52deb3626dee190dc6bf005d20290ff",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-before",
+      "original": "output/playwright/face-relief-dossier-definition-before-side-part-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-0-desktop-dark.png",
+      "sha256": "141419a56a7e5ab8442befc3392f4ec05b0b874729054a086370f1e80e86d815",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-0-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-0-desktop-light.png",
+      "sha256": "9eabb6bf413ed835d888f9b36bdd19363e30ac45d0ad0320cd81524f8c8268e5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-0-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-0-mobile-dark.png",
+      "sha256": "bb39ad417a9a20aadebd1e6a4a7d4f800969b3c4fb8c2f8eae50a975c1c7a6e9",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-0-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-0-mobile-light.png",
+      "sha256": "14c2ba202db1c9c2a564d3e1a8ce9d8b884af67c6d81d9cacac9c2796c06ac4a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-0-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-4-desktop-dark.png",
+      "sha256": "d8ca727a75f353931dc30e4c86db500f037b900a2b3bcf93ceeaf9b34dc288c4",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-4-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-4-desktop-light.png",
+      "sha256": "33725056916f1b39721ea44ce02d776944a493f74137900830211d7eaf993131",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-4-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-4-mobile-dark.png",
+      "sha256": "2db4f03cb6a26e9f5a380bdbe0a8779effbbd5886e5a809ebdae349005ba27dd",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-4-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-definition-final-4-mobile-light.png",
+      "sha256": "20d61731081b47ba15cc863f85e492f3b0b5cc46a7219b52b30d61e78411ea51",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-definition-final-4-mobile-light.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-desktop-dark-portrait.png",
+      "sha256": "5a7a2640e31bc8df92b0af225c6b17003c5536f3355fe9f70e6e0678a5457d35",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-desktop-dark-body.png",
+      "sha256": "85c732c2f364b4be02f6dde3d349c11cc1c8a078e3d6227bea38dd8642df524b",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-desktop-light-portrait.png",
+      "sha256": "f6705186735ced185a468098917c5bbe828162eaad2b6f98770ca7927b52ffe0",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-desktop-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-desktop-light-body.png",
+      "sha256": "ad8c6e5a6cba843539c21416fac734da33d961314153a401643445b203e726dc",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-mobile-dark-portrait.png",
+      "sha256": "0e0af6a5c59007d4ecb28775f319371957e7402bdc2b33e82eb94e83a06d0edc",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-mobile-dark-body.png",
+      "sha256": "6f74f040332b8413e2f0d96822f31ef74d23fb40bbfc931866802accd5c35ee8",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-mobile-dark-body.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-mobile-light-portrait.png",
+      "sha256": "7c3add4199bbc1edf048769bea6e73cb2500c220fee721f8fb4e85ae9ab09856",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-shaved-mobile-light-body.png",
+      "sha256": "1e44599376add4b13f283b0aa1aa791042581e3f999328517cdba2f5727de066",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-shaved-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-desktop-dark-portrait.png",
+      "sha256": "f48b68523d746fc0d5839f99da28f6af66c3d619d2cc06f2c17e0a7d4609d9f3",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-desktop-dark-body.png",
+      "sha256": "9f70ef42693a623a3a7e0f9cc6adb47a42ec64a7b9b2564ef0ab61fbee27bb6a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-desktop-light-portrait.png",
+      "sha256": "a2d52d31690d68be601a772a4292e1fd5bd107efed11167e3f0535429a173263",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-desktop-light-portrait.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-desktop-light-body.png",
+      "sha256": "271fb251cf67bc7ba830a7157bba3464da93cc949659f8cc79324bd6c99c230d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-mobile-dark-portrait.png",
+      "sha256": "45cb9f31d8309bee0fde060ab9bc0b6ac8e79d8c4727dcf19bccb97eb6ddb36b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-mobile-dark-body.png",
+      "sha256": "42a1ed9d72b0df721745679637c19583e273a9e9c12599f281017392bc92cb63",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-mobile-light-portrait.png",
+      "sha256": "c18f67f13e3957c6795b892a6aac22698604c498efe47b9671d5b03e410b5e16",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-afro-mobile-light-body.png",
+      "sha256": "8dd402264a5e9ba463c2e6f8d2cc3be5c177a912400b6a5126fb08f389562d31",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-afro-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-desktop-dark-portrait.png",
+      "sha256": "aa6ad1b47074c178e03134848c0a9d8fe9ee737b48c646b0321cc69b004e8957",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-desktop-dark-body.png",
+      "sha256": "8fa307c5c41a4981051f04ceec7b1ae56988ffc883aac463c4de53bb2833c248",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-desktop-light-portrait.png",
+      "sha256": "9b1dbe1c898969c5a9448e80fe3dee4c8c399282b643a76d2271e53de9cb1e6a",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-desktop-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-desktop-light-body.png",
+      "sha256": "300cd50db5ba4366f401d1b47a3e011d2bc5f842c80b9917322ba2a69b6c5fcf",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-mobile-dark-portrait.png",
+      "sha256": "0dac3da39642afc2680091ed855de15140272c0ec4c8b7782c807fc74dd560fd",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-mobile-dark-portrait.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-mobile-dark-body.png",
+      "sha256": "627ae610c64206cbcc5ecbdc3a16424d4b77e8c632dd7e40cccc44cac645f7c0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-mobile-light-portrait.png",
+      "sha256": "3b30928f8aa4c997cc16a729669e20bc881c56762585a945a41319e562680d69",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "face-definition-face-relief-dossier-definition-final-side-part-mobile-light-body.png",
+      "sha256": "c7beabfed41ad96d76c60ef75b8a47d5bc078ab258dc021146ab68a64a1e8e81",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "definition-final",
+      "original": "output/playwright/face-relief-dossier-definition-final-side-part-mobile-light-body.png",
+      "primaryInspected": false
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "file": "face-definition-face-relief-definition-before-0-desktop-dark.png",
+        "sha256": "5f5fa3c75913156c3bb8abe39bef1a95d4ff9deb6d417d1a3303954e5c6036ec"
+      },
+      {
+        "file": "face-definition-face-relief-definition-before-4-mobile-light.png",
+        "sha256": "05e6605c3d24de1dc3874d8e2cd1fd82d7022508653b21f9f977c0083c7171a0"
+      },
+      {
+        "file": "face-definition-face-relief-dossier-definition-before-afro-desktop-light-portrait.png",
+        "sha256": "a5b31f97bf3b7bd21dc938b7ddc018f68c22b8d81a0fe648a0f46f35c533e0e5"
+      },
+      {
+        "file": "face-definition-face-relief-definition-final-0-desktop-dark.png",
+        "sha256": "141419a56a7e5ab8442befc3392f4ec05b0b874729054a086370f1e80e86d815"
+      },
+      {
+        "file": "face-definition-face-relief-definition-final-4-mobile-light.png",
+        "sha256": "20d61731081b47ba15cc863f85e492f3b0b5cc46a7219b52b30d61e78411ea51"
+      },
+      {
+        "file": "face-definition-face-relief-dossier-definition-final-shaved-mobile-dark-body.png",
+        "sha256": "6f74f040332b8413e2f0d96822f31ef74d23fb40bbfc931866802accd5c35ee8"
+      },
+      {
+        "file": "face-definition-face-relief-dossier-definition-final-afro-desktop-light-portrait.png",
+        "sha256": "a2d52d31690d68be601a772a4292e1fd5bd107efed11167e3f0535429a173263"
+      },
+      {
+        "file": "face-definition-face-relief-dossier-definition-final-side-part-mobile-dark-portrait.png",
+        "sha256": "0dac3da39642afc2680091ed855de15140272c0ec4c8b7782c807fc74dd560fd"
+      }
+    ],
+    "findings": [
+      "Upper lids, nostrils and mouth seams remain more legible at ordinary portrait size in matched captures.",
+      "Reduced white keylight avoids some powdered surface appearance while retaining base pigment.",
+      "Full person remains planar, illustrated and mannequin-like; side-head details are small and full naturalism is unaccepted."
+    ],
+    "fixesApplied": [
+      "Shared modern eyelid surface uses existing closed lid/iris authority and contact shadow.",
+      "Modern nasal and lip contact plus perioral form improve local definition without changing saved contours.",
+      "Profile contacts follow the same modern material boundary.",
+      "Legacy whitespace and existing eye-rotation marker repaired after initial focused failures."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "verification": {
+    "focused": {
+      "output": "ebcbae",
+      "pass": 18,
+      "fail": 0,
+      "skip": 0
+    },
+    "beforeBrowser": {
+      "output": "5ba908",
+      "pass": 2,
+      "fail": 0
+    },
+    "finalBrowser": {
+      "output": "5a24f8",
+      "pass": 2,
+      "fail": 0
+    },
+    "builtBrowser": {
+      "output": "4d6fd3",
+      "pass": 2,
+      "fail": 0
+    },
+    "build": {
+      "output": "b0bece",
+      "precache": "2bc67e701900",
+      "assets": 313,
+      "kb": 3456
+    },
+    "boot": {
+      "output": "4a085f",
+      "bytes": 649321,
+      "maxBytes": 730000,
+      "modules": 51,
+      "maxModules": 58,
+      "lazyLeaks": 0
+    },
+    "reachability": {
+      "output": "bf05db",
+      "modules": 134,
+      "htmlEntries": 4
+    }
+  },
+  "clients": [
+    {
+      "file": ".cache/player-face-definition-client/worker.json",
+      "sha256": "00ba086fb25c0e25e4e1d4fe472f379089b91fa554298350c8a46353a01f13bf",
+      "worker": true,
+      "artifactDigest": "f19aac6812ea17bcef604307d6001982956c56c00482ad438b124cba252c7cb3",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": true
+    },
+    {
+      "file": ".cache/player-face-definition-client/in-page.json",
+      "sha256": "188b65ac220c8a28aab938062f9b6a7fce26021603697ec5dc229a925c545f57",
+      "worker": false,
+      "artifactDigest": "f19aac6812ea17bcef604307d6001982956c56c00482ad438b124cba252c7cb3",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": true
+    }
+  ],
+  "independentReview": {
+    "file": "docs/visual-qa/PLAYER_FACE_DEFINITION_REVIEW_2026-10-07.json",
+    "sha256": "fe2f62ffd29afe820fdc2b5453278d9b41e0868e972645813ff86f6ff94f2c1a",
+    "verdict": "PASS",
+    "scope": "Facial surface component; full naturalism remains open."
+  },
+  "limitations": [
+    "Artistic contact/material estimates, not measured normal maps, physiology or country-specific pigment frequencies.",
+    "No population calibration, saved anatomy, hair prevalence or gameplay coefficients changed.",
+    "Whole body/face naturalism, empirical measurement-compatible fitting and complete demographic calibration remain open.",
+    "Current thirty managed seasons, full-feature and staging/production gates remain required."
+  ],
+  "repairedInitialCheck": {
+    "output": "c3c322",
+    "pass": 16,
+    "fail": 2,
+    "causes": [
+      "Added legacy-only empty line in side markup",
+      "Whitespace interrupted existing rotation marker"
+    ],
+    "finalCheck": "ebcbae18/18PASS"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "version": "appearance-measured-cases-v1",
+  "reviewDate": "2026-10-07",
+  "status": "planned-regression-inputs-not-runtime-fit-or-visual-acceptance",
+  "sources": [
+    {
+      "id": "nfl-2026-sadiq-measured-speed-size",
+      "url": "https://www.nfl.com/news/2026-nfl-combine-oregon-s-kenyon-sadiq-runs-fastest-40-by-tight-end-since-at-least-2003",
+      "retrieval": "Direct official NFL report, measurement paragraph and official sprint result",
+      "collectionPeriod": "2026 NFL Scouting Combine",
+      "cohort": "One selected prospect; not population prevalence",
+      "cases": [{"label": "Sadiq", "position": "TE", "heightInches": 75.125, "weightPounds": 241, "fortySeconds": 4.39}],
+      "allowedUse": "Dated measurement/performance regression fixture; preserve a compatible fast athlete at this mass",
+      "limitations": ["No composition or regional dimensions", "No measured gait", "No race or natural appearance inference", "No distribution fit or career development rates"]
+    },
+    {
+      "id": "nfl-2026-selected-heavy-sprint-cases",
+      "url": "https://amp.nfl.com/news/2026-all-combine-team-offense-nfl-draft",
+      "retrieval": "Direct official NFL report, guard and center sections",
+      "collectionPeriod": "2026 NFL Scouting Combine",
+      "cohort": "Two editorially selected prospects; not representative sampling",
+      "cases": [
+        {"label": "Cruz", "position": "G", "heightInches": null, "weightPounds": 313, "fortySeconds": 4.94},
+        {"label": "Jones", "position": "C", "heightInches": null, "weightPounds": 299, "fortySeconds": 4.9}
+      ],
+      "allowedUse": "Partial dated regression inputs; unknown stature must remain unobserved, with any fixture completion explicitly estimated",
+      "limitations": ["Editorial position labels", "Unknown stature/segment dimensions in extracted records", "No body-fat or strength observations", "No mass-to-speed regression, national frequency or racial classification"]
+    },
+    {
+      "id": "robbins-young-2012-position-sprint-jump-mass",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22240551/",
+      "retrieval": "Primary research abstract indexed by PubMed search; direct PubMed and DOI full-page retrieval unsuccessful",
+      "collectionPeriod": "2005–2009 NFL Scouting Combines",
+      "cohort": "1136 elite college football prospects",
+      "allowedUse": "Research target for distinct sprint/jump capacities and method-aware positional covariance; no fitted coefficients",
+      "limitations": ["Full methods and tables unreviewed", "Historical selected prospect cohort", "No individual joint observations extracted", "No endurance, reactive agility, appearance or anatomical shape fit"]
+    }
+  ],
+  "implementationDecisions": {
+    "grooming": "Current uniform eligible-style selection is an artistic prior. Define a dated nonduplicated NFL grooming sample with trait-level occlusion and unknowns before replacing it with observed weights.",
+    "body": "Observed dimensions take precedence. Retain conflicts/residuals and estimates explicitly; incomplete reported dimensions cannot silently become observed values.",
+    "athleticism": "Selected cases establish permitted test inputs, not their likelihood. Separate measured drills, evaluation ratings, fitted initial covariance and illustrative animation.",
+    "persistence": "Version new generation and preserve existing player decoders, natural traits and measurement precision.",
+    "runtimeCoefficientsChanged": false
+  }
+}

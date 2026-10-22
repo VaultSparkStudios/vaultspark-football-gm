@@ -1,0 +1,325 @@
+{
+  "sameSavedCompleteHead": true,
+  "samePalette": true,
+  "playerId": "P2026-BUF-OL-75203022",
+  "cases": 6,
+  "captures": [
+    {
+      "path": "output/playwright/extremities-desktop-dark-front.png",
+      "sha256": "1ea52e1eeca6ff95f39379f4c7527e9efda21867b0d075d7228d1594a488316e",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-dark-side.png",
+      "sha256": "d77ca924f318d53bce4fe7d623327df71cee07595081354b77b1440e548e36be",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-dark-cut.png",
+      "sha256": "cade89bc9751ee1d0345fe5e96618193b2f0e9f90ee705d985f8a552ab2fdd3d",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-dark-strength.png",
+      "sha256": "ba120f5fea5891418987a3dfd8766cca14e3ddedfdc27252e838b46c93af517d",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-dark-run.png",
+      "sha256": "31b084ebf79fcee47d82db13e77cb0961865fbb094e0167abfc13abd7a284680",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-dark-jump.png",
+      "sha256": "0136ca446531a679b7b215fd370a0348f77ad2935c6fbda5d76083fbf1abcaf8",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-dark-hand-detail.png",
+      "sha256": "8ba22229cc8305b209b2299199d10a3e0589cb0267d4228603c15582ba09b6aa",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/extremities-desktop-dark-foot-detail.png",
+      "sha256": "1e6988be07109f9ddbea53d253bada648f0a04132e188fc4d71e286843b889e8",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-front.png",
+      "sha256": "96cf13f9305cfdbfb3ae5720558bae76c97a79797cff983d8a21b1985f72f75c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-side.png",
+      "sha256": "92a51ab8beeb15cf3d14488e267352e7c5be421f3b7ebb6d19cab7320f6eedb5",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-cut.png",
+      "sha256": "58d5fc6ed574bd707df09d8deefb499ff76a4e38fb611e1fc441a29e8034e308",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-strength.png",
+      "sha256": "031e51a3dc27239ce372f986722e9e0d863253a161a138d35ea34b139eff9929",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-run.png",
+      "sha256": "698db0073077c5a26214eabd820782c0e1692a9619108e6bddd71cf653e65891",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-jump.png",
+      "sha256": "41b3fc3060f684fe76d65b5c6e1214f630e49cff7d7df6de9b05ac68d62a7c12",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-hand-detail.png",
+      "sha256": "03fbfb54404ad01cdf0fbb41f85e0d03964f185acc9a9f9fc0dbb6f873937679",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/extremities-desktop-light-foot-detail.png",
+      "sha256": "08ac2b971f91a35ad890ef358fc6cc2072461ea41baf06f897fe0620bb623e0d",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-front.png",
+      "sha256": "3a48fe6aeb2c9989dc00448e8374bcee931676a2fdcc6d775e4b5cf06e5cfcb0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-side.png",
+      "sha256": "c0c6613d334e8a004b7b5235f1525d2ee71a3fe5be75a8779f77bc1531565b43",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-cut.png",
+      "sha256": "d94d675c6e6097084c4885bdee7b9cca58a64d8ae7c50c01fe4c76c823094825",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-strength.png",
+      "sha256": "06dadc94dd7df35206968a59f8117fdc151b5509537a089a270bd3de1f1e2762",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-run.png",
+      "sha256": "4f9c1bc915ed6200835c425daf8510a9b0151e3f86644afbbeb7dcd2508666ed",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-jump.png",
+      "sha256": "acaa22dbdbe5c74e8d93d986dca3eb511d830ec729ae4cea6b7a20f18337baea",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-hand-detail.png",
+      "sha256": "cf4d3146122ced53c842314fc7d9587e0ccd530df9d58392929abd3704adb49f",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/extremities-mobile-dark-foot-detail.png",
+      "sha256": "be1c48e9b2f9bbfe8b70ea1f7924e4f3925f1e0fa09542ed3f6f0db69610ef54",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-front.png",
+      "sha256": "d87f2ce214cfcc60636c7aab222cb769a6d5fb77b54850ffbc7cb816cd5f32f0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-side.png",
+      "sha256": "1d8fddb3e058bd5e60dc8dd918533e98a268cb7fd06e0dd666b12a36d3364530",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-cut.png",
+      "sha256": "571971942c9ec3ae9a558b7100931275696fc6ad97aeeeedb0e4be82ab743ef6",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-strength.png",
+      "sha256": "34155151b7a54dc0dd807486c1c7cf4a177d5d83c06b2675d6ceb779dd8447cc",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-run.png",
+      "sha256": "c586540826983e58b6b2fe194dcbd025a546e412b109132cb6479c3d3eb031a0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-jump.png",
+      "sha256": "48ef13a12c2557d35529a4e883c1e5c46d39b9eda59ee2d599bcfa5b48be9f56",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-hand-detail.png",
+      "sha256": "10332717cf87b80384075612dbb7f9e959785a2003056b5e1393bf7ce1ba0241",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "inspectionScale": true
+    },
+    {
+      "path": "output/playwright/extremities-mobile-light-foot-detail.png",
+      "sha256": "33f14723cf39ec376c473fc9d507c04d65c22c1c3bec940e7c919a0f0d118e16",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "inspectionScale": true
+    }
+  ],
+  "timing": {
+    "samples": 60,
+    "medianMs": 3,
+    "p95Ms": 5.699999809265137,
+    "maxMs": 45.90000009536743,
+    "hardware": "local headless Chromium; emulated viewport, no physical mobile claim",
+    "gpuCompletionSynchronized": true,
+    "includesCpuAndDriverOverhead": true
+  },
+  "disposed": [
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    },
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    }
+  ],
+  "fullVisualAcceptance": false,
+  "wholeUnionMassVerified": false
+}

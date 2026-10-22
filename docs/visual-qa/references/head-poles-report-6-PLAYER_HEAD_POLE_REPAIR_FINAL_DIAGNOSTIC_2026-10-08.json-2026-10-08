@@ -1,0 +1,649 @@
+{
+  "schemaVersion": 1,
+  "status": "modern-pole-closure-posed-ray-progress-full-body-open",
+  "hashes": {
+    "public/lib/playerHead3d.js": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6",
+    "test-support/appearance/playerBody3d.js": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    ".cache/head-poles/observe-final.mjs": "1a8e46210da789515972e8f4942fafecfaddacd288704df73a812bb52ea07d1e"
+  },
+  "cases": [
+    {
+      "weightLbs": 180,
+      "bulkScale": 1.0288935802765609,
+      "rows": [
+        {
+          "mode": "neutral",
+          "phase": 0,
+          "unionVolumeInches3": 4977.618229428792,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.4,
+          "unionVolumeInches3": 4977.618229428792,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.75,
+          "unionVolumeInches3": 4977.618229428792,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0,
+          "unionVolumeInches3": 4992.5670988889,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.4,
+          "unionVolumeInches3": 4966.247651665091,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.75,
+          "unionVolumeInches3": 4970.6335012501695,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0,
+          "unionVolumeInches3": 4958.936023769905,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.4,
+          "unionVolumeInches3": 4963.866464998424,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.75,
+          "unionVolumeInches3": 4958.699326674848,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0,
+          "unionVolumeInches3": 5001.752475990905,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.4,
+          "unionVolumeInches3": 5003.307545106394,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.75,
+          "unionVolumeInches3": 4980.578275131423,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0,
+          "unionVolumeInches3": 4929.71809035494,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.4,
+          "unionVolumeInches3": 4970.541351541825,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.75,
+          "unionVolumeInches3": 4965.999960594398,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0,
+          "unionVolumeInches3": 5009.649000340732,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.4,
+          "unionVolumeInches3": 5012.429971982836,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.75,
+          "unionVolumeInches3": 5013.0908792335,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0,
+          "unionVolumeInches3": 4992.5670988889,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.4,
+          "unionVolumeInches3": 4964.363045460641,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.75,
+          "unionVolumeInches3": 4964.752010372315,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        }
+      ]
+    },
+    {
+      "weightLbs": 240,
+      "bulkScale": 1.0408829915353588,
+      "rows": [
+        {
+          "mode": "neutral",
+          "phase": 0,
+          "unionVolumeInches3": 6633.945761671826,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.4,
+          "unionVolumeInches3": 6633.945761671826,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.75,
+          "unionVolumeInches3": 6633.945761671826,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0,
+          "unionVolumeInches3": 6630.164136708327,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.4,
+          "unionVolumeInches3": 6582.216417936871,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.75,
+          "unionVolumeInches3": 6599.385292481441,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0,
+          "unionVolumeInches3": 6569.032928918717,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.4,
+          "unionVolumeInches3": 6587.270658380471,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.75,
+          "unionVolumeInches3": 6587.042765353295,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0,
+          "unionVolumeInches3": 6661.255597865225,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.4,
+          "unionVolumeInches3": 6667.105570367158,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.75,
+          "unionVolumeInches3": 6623.200837434607,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0,
+          "unionVolumeInches3": 6536.103546121093,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.4,
+          "unionVolumeInches3": 6612.165673266145,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.75,
+          "unionVolumeInches3": 6603.607451208951,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0,
+          "unionVolumeInches3": 6683.82476447275,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.4,
+          "unionVolumeInches3": 6661.641258994312,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.75,
+          "unionVolumeInches3": 6678.0803759467835,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0,
+          "unionVolumeInches3": 6630.164136708327,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.4,
+          "unionVolumeInches3": 6581.771624014402,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.75,
+          "unionVolumeInches3": 6587.906164892973,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        }
+      ]
+    },
+    {
+      "weightLbs": 350,
+      "bulkScale": 1.057834573330589,
+      "rows": [
+        {
+          "mode": "neutral",
+          "phase": 0,
+          "unionVolumeInches3": 9667.905918645229,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.4,
+          "unionVolumeInches3": 9667.905918645229,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.75,
+          "unionVolumeInches3": 9667.905918645229,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0,
+          "unionVolumeInches3": 9502.772668516522,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.4,
+          "unionVolumeInches3": 9496.040920081034,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.75,
+          "unionVolumeInches3": 9524.364185356115,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0,
+          "unionVolumeInches3": 9399.331644930722,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.4,
+          "unionVolumeInches3": 9515.838905867007,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.75,
+          "unionVolumeInches3": 9499.417600355784,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0,
+          "unionVolumeInches3": 9685.567547092658,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.4,
+          "unionVolumeInches3": 9707.167816741536,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.75,
+          "unionVolumeInches3": 9599.056460854437,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0,
+          "unionVolumeInches3": 9392.916515873645,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.4,
+          "unionVolumeInches3": 9587.60563608548,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.75,
+          "unionVolumeInches3": 9547.387668774909,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0,
+          "unionVolumeInches3": 9761.802043650127,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.4,
+          "unionVolumeInches3": 9697.536386902213,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.75,
+          "unionVolumeInches3": 9735.85507272183,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0,
+          "unionVolumeInches3": 9502.772668516522,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.4,
+          "unionVolumeInches3": 9495.270218203117,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.75,
+          "unionVolumeInches3": 9516.056422378835,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        }
+      ]
+    },
+    {
+      "weightLbs": 500,
+      "bulkScale": 1.0810895487546168,
+      "rows": [
+        {
+          "mode": "neutral",
+          "phase": 0,
+          "unionVolumeInches3": 13832.938387468206,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.4,
+          "unionVolumeInches3": 13832.938387468206,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "neutral",
+          "phase": 0.75,
+          "unionVolumeInches3": 13832.938387468206,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0,
+          "unionVolumeInches3": 13344.133539011877,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.4,
+          "unionVolumeInches3": 13442.145516376457,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "run",
+          "phase": 0.75,
+          "unionVolumeInches3": 13524.270364869513,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0,
+          "unionVolumeInches3": 13224.394919971755,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.4,
+          "unionVolumeInches3": 13487.747433898528,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "acceleration",
+          "phase": 0.75,
+          "unionVolumeInches3": 13380.607116439787,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0,
+          "unionVolumeInches3": 13741.879041523349,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.4,
+          "unionVolumeInches3": 13806.72373990434,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "cut",
+          "phase": 0.75,
+          "unionVolumeInches3": 13618.824134540251,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0,
+          "unionVolumeInches3": 13264.858077982153,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.4,
+          "unionVolumeInches3": 13682.582062521027,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "jump",
+          "phase": 0.75,
+          "unionVolumeInches3": 13581.125630575549,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0,
+          "unionVolumeInches3": 14018.283123290565,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.4,
+          "unionVolumeInches3": 13959.751121203726,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "strength",
+          "phase": 0.75,
+          "unionVolumeInches3": 14030.091038396626,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0,
+          "unionVolumeInches3": 13344.133539011877,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.4,
+          "unionVolumeInches3": 13449.174741576742,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        },
+        {
+          "mode": "endurance",
+          "phase": 0.75,
+          "unionVolumeInches3": 13515.908738071921,
+          "invalidRays": 0,
+          "negativeWindingRays": 0
+        }
+      ]
+    }
+  ],
+  "poleSpans": [
+    {
+      "row": 0,
+      "spans": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "row": 32,
+      "spans": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "rayEstimatorChanged": false,
+  "inputUnchanged": true,
+  "limits": [
+    "84 selected pose/mass quadratures are not a whole-head intersection proof or all-phase guarantee.",
+    "No volume-preserving deformation or finished body art.",
+    "Modern pole positions/normals change; legacy decoding and middle-face controls are preserved."
+  ]
+}

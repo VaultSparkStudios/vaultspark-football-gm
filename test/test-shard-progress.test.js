@@ -68,6 +68,8 @@ test("shard timeout resolution is bounded and rejects unsafe values", () => {
   assert.equal(resolveShardTimeoutMs("999"), DEFAULT_SHARD_TIMEOUT_MS);
   assert.equal(resolveShardTimeoutMs("not-a-number"), DEFAULT_SHARD_TIMEOUT_MS);
   assert.equal(resolveShardTimeoutMs(undefined), DEFAULT_SHARD_TIMEOUT_MS);
+  assert.equal(resolveShardTimeoutMs(undefined, 'sim-contract'), 150 * 60 * 1000);
+  assert.equal(resolveShardTimeoutMs('45000', 'sim-contract'), 45000);
 
   // And the default itself must stay sane: long enough for the slowest canonical
   // shard (the realism decade alone runs ~12 minutes) and not absurd.

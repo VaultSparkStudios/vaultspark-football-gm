@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-07T19:02:15.130Z",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Modern nasal/lip relief and ear proportion; no empirical trait calibration or whole-player visual acceptance",
+  "primaryReceiptPath": ".cache/face-relief-reviewed-primary.json",
+  "primaryReceiptSha256": "c27a47fd4a4b496483be91507a18d1bc28fc06812b46dc25bff9101a0d42b8be",
+  "sourceHashes": {
+    "public/lib/fineFaceGeometry.js": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+    "public/lib/playerPortraitFace.js": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+    "public/lib/playerSideAppearance.js": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+    "public/lib/portraitSurfaceLighting.js": "2ae38a234a5acfd802b4453f982fdd069326bd64495b4a80d9f461934bd73fc7",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "public/lib/appCore.js": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+    "public/styles.css": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce",
+    "tests-ui/player-face-relief.spec.js": "814cca4c8d28c5af608f28df5fc7ca3c4b26dd4e006701ec5ee490f137e106e8",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "98276d20821cf73dfb562cc260d561a39c521daa8f52858db102b8718427097f"
+  },
+  "beforeHashes": {
+    "public/lib/fineFaceGeometry.js": "851b45188f6c7cd5ac8969c66afbcd509cefe2487044c673464cd07164d007df",
+    "public/lib/playerPortraitFace.js": "38894b92998e7e2f52956b05bbdb0adb937276fae660e840f4e696d62dbd5c00",
+    "public/lib/playerSideAppearance.js": "c2cc5a2ca7f536d95909d22b02df229680d709ed13072e3ba93f449193014790",
+    "public/lib/portraitSurfaceLighting.js": "2ae38a234a5acfd802b4453f982fdd069326bd64495b4a80d9f461934bd73fc7"
+  },
+  "builtSources": {
+    "static/lib/fineFaceGeometry.js": {
+      "sha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+      "sourceSha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/playerPortraitFace.js": {
+      "sha256": "010733c653b58d0ac5af708288a861895d8019f0fbff0d1cc87b17e043d76e16",
+      "sourceSha256": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/playerSideAppearance.js": {
+      "sha256": "16d469d30fd7fb36ad437352c35d8980aa9533c52725092a6611801873faa1d5",
+      "sourceSha256": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/portraitSurfaceLighting.js": {
+      "sha256": "2ae38a234a5acfd802b4453f982fdd069326bd64495b4a80d9f461934bd73fc7",
+      "sourceSha256": "2ae38a234a5acfd802b4453f982fdd069326bd64495b4a80d9f461934bd73fc7",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    }
+  },
+  "artifactFingerprintDigest": "4c773b31b8c077aa98348049a8f7e0bd66f028e22dfd4ab62f701c7cd338f434",
+  "build": "d9f2ce6b1ee6",
+  "checks": [
+    {
+      "command": "node --test test/player-fine-face.test.js test/player-face-lighting.test.js test/player-portrait-features.test.js",
+      "result": "15/15 PASS, zero skipped",
+      "durationMs": 2941.8608
+    },
+    {
+      "command": "node --test test/player-hair-arrangement.test.js",
+      "result": "6/6 PASS",
+      "durationMs": 2212.4412
+    },
+    {
+      "command": "node .cache/face-relief-independent-probe.mjs",
+      "result": "PASS: frozen receipt; 10 current source, 4 baseline, 4 built and 64 capture SHA bindings; normalized built text exact; 96 immediate-baseline no-fine legacy SVG comparisons; 32 input-immutability checks"
+    }
+  ],
+  "checkHashes": {
+    "test/player-fine-face.test.js": "1f7075aec4635cee19d5eb8d5336e85c9eddeae12dee5e71211e4ada711f76c4",
+    "test/player-face-lighting.test.js": "95f3951303089cceffcb657eed6d51ec517f83f2cb66115a619da630d76ae43e",
+    "test/player-portrait-features.test.js": "d4148600eaf9a35a040e0d35926ce6ec49c63d6f80eb3ec218ed1ef1b6300a55",
+    "test/player-hair-arrangement.test.js": "a88fc26bb2cf98c583cd963c953bea6834339b78ff0977739a12bc0942743fc9",
+    ".cache/face-relief-independent-probe.mjs": "b6ca9b471c461b916cd76fb43712e5755c79f64d2ba0f0d9989ad4817da5d4c2"
+  },
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/face-relief-before-0-desktop-light.png",
+      "sha256": "cc0765c14cb36bd1b3fe7dfac241cf36478e7b3bcc456632904e41e38a0b7c34"
+    },
+    {
+      "path": "output/playwright/face-relief-after-0-desktop-light.png",
+      "sha256": "50c15d6b74eab851edd0f3f18918313ccea8c1e5a0b900b1c3fc9a9d2a81845a"
+    },
+    {
+      "path": "output/playwright/face-relief-before-4-mobile-dark.png",
+      "sha256": "4bc0320f340e2b637a9c85e01d75c658479ebd86037a4f7e7210ea7369ee563e"
+    },
+    {
+      "path": "output/playwright/face-relief-after-4-mobile-dark.png",
+      "sha256": "6d4022547f4d277afe0fbd043a01da831b72e213724af043d050a788a954c9f2"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-before-shaved-mobile-light-portrait.png",
+      "sha256": "76d8b1ea73ad144c40a378bde6bdf9a90a78c03588f45ea8a0ee3ad358ad9b22"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-after-shaved-mobile-light-portrait.png",
+      "sha256": "b817a70d4f51b98ea60d99644b64e0f8998e116492e6d4ca8906a3c6c4310646"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-before-shaved-desktop-dark-portrait.png",
+      "sha256": "8f1f22f2bbbcd2f87f1a5a44f0430f784bea82eae40fd3f5a510017514123b47"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-after-shaved-desktop-dark-portrait.png",
+      "sha256": "f84aec934f47784ce06cc7bae0713fd2f0feeca5189857fe89b1d0f3bd492dd3"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-before-shaved-desktop-dark-body.png",
+      "sha256": "b82380e2fbe0c4a5579354e68af20951bf15bb9719fdb4f8554a3021b34fe96e"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-after-shaved-desktop-dark-body.png",
+      "sha256": "42eb997debab8a042d63ab157830d49696d448236418d05407011d6440f696b7"
+    }
+  ],
+  "pixelFindings": [
+    "Matched gallery and actual dossier nose/lips show modest relief; changes remain subtle at normal mobile and body-head sizes.",
+    "Ear projection remains bounded in inspected front/side/motion integration; no new clipping or feature obstruction observed.",
+    "Body, silhouette, identity and dossier structure remain visually unchanged in inspected pairs."
+  ],
+  "componentFindings": [],
+  "openBroaderFindings": [
+    {
+      "severity": "P2",
+      "scope": "Whole-player visual quality outside this component",
+      "finding": "Faces remain stylized and relatively flat; hair caps and plastic torso presentation remain open. This component does not close broader naturalism acceptance or CANON-053 blockingDefectsOpen1."
+    }
+  ],
+  "sourceAssessment": [
+    "Nasal/lip relief is gated to fine-face-v1 plus natural-detail-v1; non-fine and fine-without-detail preserve fallback.",
+    "Side ear change is separately gated to modern fine/natural detail. Lighting source unchanged.",
+    "No saved identity schema, country prior, measured frame, gameplay generation or simulation RNG changes in reviewed component."
+  ],
+  "primaryEvidenceObserved": {
+    "focused": "19/19 PASS; final source run bafd4d,4.808seconds",
+    "browser": "2 PASS 27781,27.2seconds",
+    "builtClient": "2 PASS a6df5e,20.3seconds; worker and in-page Settings named save/load/reload, strength/endurance rendered",
+    "qualification": "Primary terminal evidence read from frozen artifact; no independent Playwright rerun."
+  },
+  "limits": [
+    "Only the ten explicitly listed originals were independently inspected; all64 captures were hash-verified, not all visually inspected.",
+    "No empirical anatomical proportions or demographic frequencies validated.",
+    "Gallery front/side scales differ; mobile body shows front only.",
+    "No new grooming-command, population, long-career, full appearance, full NFL, or release acceptance.",
+    "Do not mutate frozen primary to attach this verdict; bind later canonical metadata separately."
+  ]
+}

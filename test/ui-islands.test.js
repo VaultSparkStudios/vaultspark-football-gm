@@ -21,7 +21,8 @@ test("every non-Overview tab has one primary code island", () => {
     if (tabId === "overviewTab") assert.equal(uiIslandForTab(tabId), null);
     else assert.ok(uiIslandForTab(tabId), `${tabId} must resolve to a UI island`);
   }
-  assert.deepEqual(Object.keys(UI_ISLAND_MANIFEST), ["roster", "contracts", "draft", "stats", "history", "settings", "exports"]);
+  assert.deepEqual(Object.keys(UI_ISLAND_MANIFEST), ["roster", "injuryClaims", "contracts", "draft", "stats", "history", "settings", "exports"]);
+  assert.deepEqual(UI_ISLAND_MANIFEST.injuryClaims.tabs, [], "claims must not take ownership of roster hydration");
 });
 
 test("pointer, focus, and idle hints emit modulepreload links without importing islands", () => {

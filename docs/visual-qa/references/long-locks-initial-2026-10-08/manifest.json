@@ -1,0 +1,177 @@
+{
+  "recordedAt": "2026-10-08T18:45:14.222Z",
+  "status": "diagnostic-prototype-sparse-profile-coverage-and-one-envelope-assertion-failure",
+  "files": [
+    {
+      "file": "public/lib/playerHead3d.js",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/public__lib__playerHead3d.js",
+      "sha256": "a6a955e3e8aa8a3587dfd871239d90d06bf32d150ffa56fda3e5cb6525b0ac25"
+    },
+    {
+      "file": "test/player-long-texture-volume.test.js",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/test__player-long-texture-volume.test.js",
+      "sha256": "9d97cbf39c40336bb0484feaf095e1d31232ce6a144646f89597616d21d4239f"
+    },
+    {
+      "file": "test/player-hair-volume.test.js",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/test__player-hair-volume.test.js",
+      "sha256": "b7345b5974e339d33e838f12ced36b1ab329a71655f16e7a0cb0e1a94ef284fe"
+    },
+    {
+      "file": ".cache/contours/long-locks-domain-initial.log",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/.cache__contours__long-locks-domain-initial.log",
+      "sha256": "14ebfa240996f71c584ef9d776df0deb7128fbd7dc93d517358c1ac18cb53c5a"
+    },
+    {
+      "file": ".cache/contours/long-locks-gallery-initial.log",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/.cache__contours__long-locks-gallery-initial.log",
+      "sha256": "f4915f47b4e5ae6ad8aa7360bf7ebcf060470d92be19f9dc47755dcb8c2d14a2"
+    },
+    {
+      "file": "output/playwright/current-character-variation.json",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-character-variation.json",
+      "sha256": "e66ad44c060560c02f5d4e88e5e7781f0f625779a5ce27bb7709cc325ac17ead"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-hair-desktop-dark.png",
+      "sha256": "a6e43828b012258a061e97f636ff1e16fbcd2c57ebfbc0703ad51cf7e147a91a"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-texture-desktop-dark.png",
+      "sha256": "d38dbd1a2e944f4fcb33a09160d45f6440bc6a4c46fc1b6b68b0d74beb555ebf"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-pigment-desktop-dark.png",
+      "sha256": "b86ceebbffeaef522d9e05f2f08808af40758abaa008cbb46bba55fed49e6b98"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-iris-desktop-dark.png",
+      "sha256": "faea15b558201e35c8c19d272eeed45e27194523934ed188ed73ce4151120ab6"
+    },
+    {
+      "file": "output/playwright/current-variation-face-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-face-desktop-dark.png",
+      "sha256": "60431c601a3e8a88f05bca4669874febb5a33aac545a01a7bc8f89dd6a87c82c"
+    },
+    {
+      "file": "output/playwright/current-variation-body-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-body-desktop-dark.png",
+      "sha256": "c3458adfd205116d0d2b48c8fd56a30a165430e6e07200dc24a7f97e2adbeac6"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-desktop-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-capacity-desktop-dark.png",
+      "sha256": "d7958965f83d40ae00d8547b99c646b9979e38a87c251a85a68056d4b3967f8b"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-hair-desktop-light.png",
+      "sha256": "ebb7bddf48640aa3a60d930c1a505d20488e84d55fee258c6d6779923cef0392"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-texture-desktop-light.png",
+      "sha256": "3e30b40abb56332b2c27b148eaa8d7368b1d2e02292cf2c023adada792d81f48"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-pigment-desktop-light.png",
+      "sha256": "ae05af52d7f10e9d2642aa6f3ca52d8afd43813238edf6f9ddf113acf1dff3b1"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-iris-desktop-light.png",
+      "sha256": "01d82520af5731b9a04da401bfa3854870d6a5be4be632294ea03135e1d39ed1"
+    },
+    {
+      "file": "output/playwright/current-variation-face-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-face-desktop-light.png",
+      "sha256": "e9fae3b56a807182ffd6bbc7aa8dcb0fccf21d9245b5776e6f02583638aa5357"
+    },
+    {
+      "file": "output/playwright/current-variation-body-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-body-desktop-light.png",
+      "sha256": "5f1c8fc30a2315c3a2a60038b900760ba0e1d244e5e1b75a62b8c6a338d2afba"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-desktop-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-capacity-desktop-light.png",
+      "sha256": "aaa53a5b459a5d8098d24ed0082c35dcc92d6fb57ad8f8bfb9dc848188543722"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-hair-mobile-dark.png",
+      "sha256": "7256457c1e47ebb5edaf6ede8f6e772798997500a7a081a9efba12f49341592e"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-texture-mobile-dark.png",
+      "sha256": "85fdbad09df6b90c945bbeffd0b9bad44204c2fa92c5cfeb76fe19e85409bd6f"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-pigment-mobile-dark.png",
+      "sha256": "7dd435ff003664df67edad1f793008c6c4bb6db087e02b595a0604c4dc383ced"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-iris-mobile-dark.png",
+      "sha256": "087d27e433290269d96e390261ec9ef659952718af6e1a663b2657ffa5ad8f23"
+    },
+    {
+      "file": "output/playwright/current-variation-face-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-face-mobile-dark.png",
+      "sha256": "667ed0bdbb6b88f54443e99f37088cc0e289e4d1b7a1b3508ee80510012d00f4"
+    },
+    {
+      "file": "output/playwright/current-variation-body-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-body-mobile-dark.png",
+      "sha256": "122213d5355bf06357d8079b31d3245db3c9a32389e0ba2324e2b343622b62c3"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-mobile-dark.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-capacity-mobile-dark.png",
+      "sha256": "242da50cd1af31d54d46d1878fa927f4a2fb9e4a9a9a49ffbb1ee96fe8658b65"
+    },
+    {
+      "file": "output/playwright/current-variation-hair-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-hair-mobile-light.png",
+      "sha256": "67f69d796bdc992cf479bd951ce5a3f3d7817cdabd66e744fa92a09ea961b377"
+    },
+    {
+      "file": "output/playwright/current-variation-texture-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-texture-mobile-light.png",
+      "sha256": "01bc10a9a2ebd7009cca2c362caefdf7673cc00683488b8605e14dc882e93269"
+    },
+    {
+      "file": "output/playwright/current-variation-pigment-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-pigment-mobile-light.png",
+      "sha256": "f9abf2c09ce8f4be79788b0f31830eb5b422cef77682a64270eafc3cf1600a75"
+    },
+    {
+      "file": "output/playwright/current-variation-iris-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-iris-mobile-light.png",
+      "sha256": "76a5b68f04df8ab0dd3ed634a5fc8be4458ace04dbaff0a504a5ff38a5d02c92"
+    },
+    {
+      "file": "output/playwright/current-variation-face-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-face-mobile-light.png",
+      "sha256": "e9cc280b2d6737d749a3b87e127ea404707c12f83c3b53ff7fbef26142dbf996"
+    },
+    {
+      "file": "output/playwright/current-variation-body-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-body-mobile-light.png",
+      "sha256": "20d09e980275eba4ab4c482b1e5d1bac6d6dbbce2b1ea4ad0b76be346cdf5cbb"
+    },
+    {
+      "file": "output/playwright/current-variation-capacity-mobile-light.png",
+      "frozenFile": "docs/visual-qa/references/long-locks-initial-2026-10-08/output__playwright__current-variation-capacity-mobile-light.png",
+      "sha256": "3e7ec48e395f863b1df047f8017f2e97da84921abd61e53f91d712638419c2f0"
+    }
+  ],
+  "fullVisualAcceptance": false
+}

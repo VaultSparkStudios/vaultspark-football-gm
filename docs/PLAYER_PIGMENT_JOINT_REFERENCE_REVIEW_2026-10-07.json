@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-07T18:11:43.224Z",
+  "reviewer": "/root/studio_reviewer",
+  "scope": "Published pigmentation extraction and latest Correlated individuality plan subsection only",
+  "verdict": "PASS_WITH_SCOPE_LIMITS",
+  "findings": [],
+  "sourceHashes": {
+    "docs/PLAYER_PIGMENT_JOINT_REFERENCE_2026-10-07.json": "1bb2a2ec8af56ee3b4bce78f8a250002f1073225ae6b77d1260335ff83961145",
+    "docs/IMPLEMENT_PLAN.md": "c33791fc4330c18017c7a9c8e63b8c2eb06591c4c71769a16da08dc89644c378",
+    "docs/PLAYER_TRAIT_AUTHORITY_2026-10-07.json": "5fe60fefa9092d9a54afebe13e2213b2d036639503ea3f1685b10ce1fd77d491"
+  },
+  "sectionSha256": "69037dee9c33261941dc106c88afca5fe20bec1781b0d93f86410b775048c3d9",
+  "source": {
+    "url": "https://www.nature.com/articles/s41467-018-08147-0",
+    "independentRetrieval": "Direct publisher HTML obtained despite cookie-error query redirect; complete Results and relevant Methods text readable. No supplementary-data extraction or figure pixel inspection claimed.",
+    "locators": [
+      "Results: Pigmentation features examined",
+      "Methods: Study subjects",
+      "Methods: Phenotype data",
+      "Methods: Statistical genetic analyses"
+    ]
+  },
+  "actualObservations": {
+    "pigmentationCount": 6357,
+    "geneticAnalysisCount": 6236,
+    "melaninIndex": {
+      "range": [
+        20,
+        65
+      ],
+      "mean": 34.98,
+      "SD": 5.34
+    },
+    "reportedCorrelations": {
+      "hairCategoricalEye": 0.5,
+      "hairSkin": 0.3,
+      "categoricalEyeSkin": 0.31
+    },
+    "cohortCountries": [
+      "Brazil",
+      "Chile",
+      "Colombia",
+      "Mexico",
+      "Peru"
+    ]
+  },
+  "checks": [
+    "Requested numerical values, publication date, country scope and separate observation/genetic counts match publisher text.",
+    "Ordinal-color correlations are retained as reported cohort statistics, not universal continuous pigment parameters.",
+    "Photographic HCL analysis captures variation not fully represented by categorical eyes; plan requires within-category visible variation.",
+    "Plan distinguishes observed correlations from creative assumptions and specifies actual-size comparison fixtures without claiming implementation complete.",
+    "Natural-pigmentation group source/jointReference pointers resolve to reviewed source/artifact; its plan-only status and separate-validation caveat are preserved. Other trait-authority groups were outside this review."
+  ],
+  "limits": [
+    "Volunteer cohort is not a national, NFL or worldwide probability sample; no conditional ancestry, brow/beard distribution or renderer RGB calibration is established.",
+    "Do not assign6357 or6236 as the per-correlation effective sample count without supplementary pairwise missingness checks. Methods separately report5513 retained iris images and red-hair exclusion before analyses.",
+    "Raw categorical Pearson coefficients are not a portable latent correlation matrix; coding, recruitment, age/sex and exclusions must precede any fitting.",
+    "No production changes or runtime coefficient adoption, gameplay checks, visual approval or overall appearance acceptance."
+  ]
+}

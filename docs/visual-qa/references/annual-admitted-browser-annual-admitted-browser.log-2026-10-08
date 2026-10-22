@@ -1,0 +1,21 @@
+[WebServer] (node:42428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:23740) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests-ui\admitted-pre-rollover-recovery-client.spec.js:9:34 › built worker annual command pays older retired clearance and restores v2 wages (25.0s)
+  ✓   2 tests-ui\admitted-pre-rollover-recovery-client.spec.js:9:34 › built in-page annual command pays older retired clearance and restores v2 wages (23.3s)
+  ✓   3 tests-ui\annual-admitted-injury-client.spec.js:9:67 › built worker annual admitted continuation survives replacement and reload (17.4s)
+  ✓   4 tests-ui\annual-admitted-injury-client.spec.js:9:67 › built worker annual explicit dispute survives replacement and reload (18.8s)
+  ✓   5 tests-ui\annual-admitted-injury-client.spec.js:9:67 › built in-page annual admitted continuation survives replacement and reload (17.3s)
+  ✓   6 tests-ui\annual-admitted-injury-client.spec.js:9:67 › built in-page annual explicit dispute survives replacement and reload (17.6s)
+  ✓   7 tests-ui\offseason-medical-calendar-client.spec.js:10:34 › built worker actual offseason intervals survive named franchise replacement/load/reload (25.5s)
+  ✓   8 tests-ui\offseason-medical-calendar-client.spec.js:10:34 › built in-page actual offseason intervals survive named franchise replacement/load/reload (23.0s)
+  ✓   9 tests-ui\pre-rollover-medical-client.spec.js:14:34 › built worker annual medical advance retains actual saved injury pay (16.7s)
+  ✓  10 tests-ui\pre-rollover-medical-client.spec.js:14:34 › built in-page annual medical advance retains actual saved injury pay (15.6s)
+  ✓  11 tests-ui\pre-rollover-medical-client.spec.js:70:34 › built worker unproved injury contract term refuses with its reason and preserves franchise state (7.2s)
+  ✓  12 tests-ui\pre-rollover-medical-client.spec.js:70:34 › built in-page unproved injury contract term refuses with its reason and preserves franchise state (7.1s)
+
+  12 passed (3.6m)

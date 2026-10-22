@@ -130,7 +130,7 @@ export async function measureHostedPerformance({ baseUrl, output, route: routeIn
   const manifest = await jsonAt(`${origin}/deploy-manifest.json`);
   const health = await jsonAt(`${origin}/_health`);
   if (manifest.sourceRevision !== health.sourceRevision) throw new Error("Hosted manifest and health source revisions disagree.");
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
   let profiles;
   try {
     profiles = await Promise.all([

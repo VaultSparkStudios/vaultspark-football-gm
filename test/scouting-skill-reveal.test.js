@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createSession } from "../src/runtime/bootstrap.js";
+import { computeCombineGrade } from "../src/runtime/GameSession.js";
 
 function advanceToStage(session, stageName) {
   let result = session.advanceOffseasonPipeline();
@@ -11,24 +12,6 @@ function advanceToStage(session, stageName) {
   }
   assert.equal(result?.stage, stageName, `offseason pipeline did not reach ${stageName} within the guard`);
   return result;
-}
-
-function pearson(xs, ys) {
-  const n = xs.length;
-  const meanX = xs.reduce((s, v) => s + v, 0) / n;
-  const meanY = ys.reduce((s, v) => s + v, 0) / n;
-  let cov = 0;
-  let varX = 0;
-  let varY = 0;
-  for (let i = 0; i < n; i += 1) {
-    const dx = xs[i] - meanX;
-    const dy = ys[i] - meanY;
-    cov += dx * dy;
-    varX += dx * dx;
-    varY += dy * dy;
-  }
-  if (varX === 0 || varY === 0) return 0;
-  return cov / Math.sqrt(varX * varY);
 }
 
 test("combine grade is position-weighted and bounded, not one flat formula for every position", () => {
@@ -44,28 +27,18 @@ test("combine grade is position-weighted and bounded, not one flat formula for e
     );
   }
 
-  // Statistical proof of position weighting across the real 256-prospect class:
-  // bench press should correlate far more strongly with an OL/DL's combine grade
-  // than with a WR/DB's, and forty speed should correlate far more strongly with
-  // a WR/DB's grade than with an OL/DL's. A single flat formula (the pre-fix
-  // behavior) would produce nearly identical correlations for both groups.
-  const powerGroup = prospects.filter((p) => p.position === "OL" || p.position === "DL");
-  const speedGroup = prospects.filter((p) => p.position === "WR" || p.position === "DB");
-  assert.ok(powerGroup.length >= 15 && speedGroup.length >= 15, "need a sizeable sample of each position group");
-
-  const benchCorrPower = pearson(powerGroup.map((p) => p.scouting.combine.bench), powerGroup.map((p) => p.scouting.combineGrade));
-  const benchCorrSpeed = pearson(speedGroup.map((p) => p.scouting.combine.bench), speedGroup.map((p) => p.scouting.combineGrade));
-  const speedCorrPower = pearson(powerGroup.map((p) => -p.scouting.combine.forty), powerGroup.map((p) => p.scouting.combineGrade));
-  const speedCorrSpeed = pearson(speedGroup.map((p) => -p.scouting.combine.forty), speedGroup.map((p) => p.scouting.combineGrade));
-
-  assert.ok(
-    benchCorrPower > benchCorrSpeed + 0.15,
-    `bench should correlate more with OL/DL grade than WR/DB grade: power=${benchCorrPower.toFixed(2)} speed=${benchCorrSpeed.toFixed(2)}`
-  );
-  assert.ok(
-    speedCorrSpeed > speedCorrPower + 0.15,
-    `forty speed should correlate more with WR/DB grade than OL/DL grade: speed=${speedCorrSpeed.toFixed(2)} power=${speedCorrPower.toFixed(2)}`
-  );
+  // S117 workouts now share the athlete's physical capacities. Marginal
+  // correlations cannot isolate a drill's weight when speed and strength
+  // covary with talent. Hold other drills fixed to test the actual positional
+  // response, including a negative control against a flat grading function.
+  const baseline = { forty: 4.8, bench: 10, shuttle: 4.4, cone: 7.4, vertical: 30, broad: 110 };
+  const grade = (position, changes = {}) => computeCombineGrade({ position, scouting: { combine: { ...baseline, ...changes } } });
+  const benchDelta = position => grade(position, { bench: 20 }) - grade(position);
+  const sprintDelta = position => grade(position, { forty: 4.5 }) - grade(position);
+  assert.ok(benchDelta("OL") > benchDelta("WR") + 2);
+  assert.ok(benchDelta("DL") > benchDelta("DB") + 2);
+  assert.ok(sprintDelta("WR") > sprintDelta("OL"));
+  assert.ok(sprintDelta("DB") > sprintDelta("DL"));
 });
 
 test("pro-day precision scales with scouting investment: invested prospects converge toward truth", () => {

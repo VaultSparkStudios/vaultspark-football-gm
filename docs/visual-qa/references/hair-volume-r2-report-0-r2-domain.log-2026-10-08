@@ -1,0 +1,34 @@
+✔ new texture recipe persists through serialized saves and grooming while legacy decoding stays exact (4.3926ms)
+✔ malformed texture recipes fail closed before identity mutation and in all snapshot player pools (0.838ms)
+✔ new texture coordinate changes no gameplay fields and has individual residual variation (9.5884ms)
+✔ all 56 legacy combinations remain exact (15708.5888ms)
+✔ all continuous label boundaries keep fixed topology and bounded neighboring geometry (2317.8714ms)
+✔ continuous positions remain finite and bounded, independent of label, while arranged grooming hides loose texture (13632.1363ms)
+✔ saved regional face controls affect the visible outline independently of pigment (29.5806ms)
+✔ front face projection handles malformed and extreme inputs inside its canvas (4.2448ms)
+✔ fine facial structure persists across actual saves, grooming and identity changes without gameplay draws (763.7662ms)
+✔ isolated facial controls change visible geometry only in appropriate projections and survive moving heads (497.6881ms)
+✔ fine face imports validate active, retired and prospective recipes before any mutation (1.4578ms)
+✔ an optional fine recipe on v2/v3 imports has complete SVG resources with or without natural detail (30.1802ms)
+✔ legacy facial renderers retain frozen October 8 geometry and appearance without a fine recipe (282.4391ms)
+✔ modern combed volume changes hair while preserving every non-hair surface and saved input (2598.5051ms)
+✔ all hair styles retain legacy geometry and changed modern styles remain within the mesh budget (8688.1559ms)
+✔ part location changes the modern hair volume without changing facial anatomy (527.5086ms)
+✔ modern asymmetric support joins actual rear mesh positions and normals at every row (2807.8928ms)
+{"maximumCases":56,"maxBytes":1635576}
+✔ occupied groups preserve finite geometry, saved person and existing maximum mesh budget in all 56 combinations (11477.1871ms)
+✔ all non-hair surfaces remain exact for every changed style and six grooming choices (7381.0382ms)
+✔ cluster volume and density are independently saved while grouped grooming conceals loose texture (628.9914ms)
+✔ eye and closing lid polygons share lateral samples with an opaque meeting margin (257.9897ms)
+✔ saved blink phase remains periodic, bounded and returns to the open pose (1.5406ms)
+✔ head-only projection removes fixed prototype anatomy while retaining every head surface (586.7634ms)
+✔ server or non-graphical consumers retain fallback without creating a renderer (0.8934ms)
+✔ saved ear size and shape retain a folded surface attached to the same skull (159.4575ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32504.7205

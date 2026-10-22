@@ -1,0 +1,32 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {buildHeadMesh3d} from '../public/lib/playerHead3d.js';
+import {tryPlayerHeadImage,playerHeadImageDiagnostics} from '../public/lib/playerHeadImage.js';
+import {portraitBlinkPose} from '../public/lib/playerPortraitMotion.js';
+const colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'};
+test('saved blink phase remains periodic, bounded and returns to the open pose',()=>{
+ for(const delay of[-7,0,2.7,40])for(let tick=-100;tick<=1000;tick++){
+  const time=tick/20,pose=portraitBlinkPose(time,delay);assert.ok([0,.25,.5,.75,1].includes(pose));assert.equal(pose,portraitBlinkPose(time+5.6,delay));
+ }
+ assert.equal(portraitBlinkPose(0),0);assert.equal(portraitBlinkPose(5.4),1);assert.equal(portraitBlinkPose(5.6),0);assert.equal(portraitBlinkPose(NaN),0);
+});
+test('head-only projection removes fixed prototype anatomy while retaining every head surface',()=>{
+ const appearance={hairstyle:'long',hairTexture:'wavy',hairDensity:.6,facialHair:'full-beard',faceLength:1.09};
+ const before=structuredClone(appearance),full=buildHeadMesh3d(appearance,colors,{identitySeed:'same-person'}),head=buildHeadMesh3d(appearance,colors,{identitySeed:'same-person',headOnly:true});
+ assert.deepEqual(appearance,before);assert.ok(!head.parts.some(p=>['neck','training-top'].includes(p.name)));
+ assert.equal(head.parts.length,full.parts.length-2);
+ // Compare emitted triangle coordinates, normals and materials after index
+ // offsets change; camera mounting must not create a second head recipe.
+ for(const part of head.parts){
+  const original=full.parts.find(p=>p.name===part.name);assert.equal(part.indexCount,original.indexCount);
+  for(let k=0;k<part.indexCount;k++){
+   const left=head.indices[part.firstIndex+k]*10,right=full.indices[original.firstIndex+k]*10;
+   assert.deepEqual(head.vertices.subarray(left,left+10),full.vertices.subarray(right,right+10));
+  }
+ }
+ assert.ok(head.vertices.byteLength+head.indices.byteLength<1650000);
+});
+test('server or non-graphical consumers retain fallback without creating a renderer',()=>{
+ assert.equal(tryPlayerHeadImage({appearance:{version:'portrait-identity-v3',fineFaceVersion:'fine-face-v1'},visualFrame:{}}),null);
+ assert.deepEqual(playerHeadImageDiagnostics(),{cacheEntries:0,cacheLimit:32,draws:0,meshBuilds:0,unavailable:false,contexts:0});
+});

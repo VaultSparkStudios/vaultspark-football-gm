@@ -68,6 +68,8 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { scopeSemanticFindings } from './lib/execution-contract.mjs';
+import { isControlPlane as sharedIsControlPlane } from './lib/control-plane.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const PROTOCOL = path.join(ROOT, 'docs', 'SESSION_PROTOCOL.md');
@@ -81,6 +83,12 @@ const BINDINGS = [
     heading: /^## §1 — /,
     skill: 'studio-start',
     command: '/start',
+  },
+  {
+    section: '§2C',
+    heading: /^## §2C — /,
+    skill: 'implement',
+    command: '/implement',
   },
   {
     section: '§3',
@@ -107,6 +115,33 @@ const GATES = {
     because: 'SESSION_PROTOCOL §1 step 2 (CANON-049): "This checks the machine radar every start" — and AGENTS.md '
       + 'restates it as "at every /start".',
   },
+  // S315 [audit #5] — registered together, because they are two halves of one gate.
+  //
+  // Between S301 and S315 the maintenance session lane worked and simply was not run.
+  // Asked directly it answered `2 due · 2 runnable`, while the fingerprint court sat
+  // 7.1 days past its own 7-day promise. The lane's cadences are the only thing
+  // keeping seven networked jobs defendable, and a protocol LINE runs only when the
+  // agent performing the ceremony runs it — so `run-maintenance` earns the same
+  // unconditional standing as the radar it was explicitly modelled on, and
+  // `check-maintenance-lane-ran` is what makes its absence visible the same session
+  // rather than seven days later through a downstream symptom.
+  'run-maintenance': {
+    section: '§1',
+    because: 'SESSION_PROTOCOL §1 step 2 (S301 · CANON-031): the session lane is the ONLY execution path for eight '
+      + 'networked registry jobs — "--auto excludes networked risk by design, the ops-daemon is not running, and every '
+      + 'hosted cron was retired" — so without this line their declared cadences are undefendable bounds.',
+  },
+  'check-maintenance-lane-ran': {
+    section: '§1',
+    because: 'SESSION_PROTOCOL §1 step 2 (S315): "the lane is now MEASURED, because obliged was not enough" — the '
+      + 'liveness assertion for the line above, on the S314 rule that a gate inside a ceremony is only as alive as the '
+      + 'ceremony that runs it.',
+  },
+  'start-sync': {
+    section: '§1',
+    because: 'SESSION_PROTOCOL §1 step 0 (S305): the sync classifies receipt residue with the closeout allowlist; a bare '
+      + '`git pull --rebase` refuses the receipts every closeout leaves behind and was being resolved by hand.',
+  },
   'write-session-lock': {
     section: '§1',
     because: 'SESSION_PROTOCOL §1 step 1 — the session lock is what makes cross-repo write safety and stale-session '
@@ -121,6 +156,13 @@ const GATES = {
     section: '§1',
     because: 'SESSION_PROTOCOL §1 step 2 credentials-gateway health — CANON-019 forbids labelling anything blocked '
       + 'before secrets discovery has run.',
+  },
+  // §2C gate — S347 [audit #3], closes [SIL:2⛔][S317 #2]. The strict premise check
+  // existed with zero callers; its only consumer passed --json and discarded the exit.
+  'check-audit-premises': {
+    section: '§2C',
+    because: 'SESSION_PROTOCOL §2C step 2.5: "check-audit-premises.mjs --strict --audit <sidecar> BEFORE item 1. '
+      + 'Exit non-zero ... = STOP" — a stop that no skill copy runs cannot stop anything.',
   },
   // §3 gates — added S280 [SIL][S280 #1], closing the blind spot this checker
   // published about itself on its first run. Same bar as §1: each cites the
@@ -172,6 +214,14 @@ const GATES = {
 // oversight six months later.
 const EXEMPT = {
   'session-beacon': 'optional — AGENTS.md states the Hub beacon is "not required for normal operation"',
+  // S288 [audit item 3]. Deliberately EXEMPT rather than promoted: this is a
+  // bounded self-heal, not a gate. A gate's absence must block; this script's
+  // failure must NOT block a session — it is allowed to fail, leaving the
+  // doctor warning standing, which is the correct outcome when a resume cannot
+  // complete. Promoting it to a gate would make an unreachable Anthropic batch
+  // API able to stop a session from starting, which is strictly worse than the
+  // stall it exists to clear.
+  'start-stalled-remediation-resume': 'conditional self-heal — Studio-Ops-only, acts only on a stalled batch verdict, and is designed to be allowed to fail (a failed resume must leave the doctor warning standing, never block /start)',
   'start-recovery-preflight': 'conditional — recovery-only path, runs when a prior session was cut off',
   'install-git-window-guard': 'conditional — Codex/CLI window-storm guard, marked "(Codex/CLI)" in the protocol',
   'render-startup-brief': 'delegated — reached through check-brief-staleness, which re-renders on stale',
@@ -203,8 +253,12 @@ const EXEMPT = {
 // hand all 27 repos an unfixable red on the checker's first run — a propagated
 // false positive is worse than no detector, because it teaches the fleet to
 // ignore the probe. The live copies are machine-global and are checked everywhere.
+// S373 — the rule lives in lib/control-plane.mjs. What this checker needs is narrower
+// than "is this Studio Ops": it asks whether a tracked skill snapshot EXISTS to compare,
+// so a control plane whose skills tree is missing must still be asked for it. The shared
+// rule answers true there (declared slug), and the missing snapshot is then reported.
 function isControlPlane(root = ROOT) {
-  return fs.existsSync(path.join(root, 'plugins', 'studio-os', 'skills'));
+  return sharedIsControlPlane(root);
 }
 
 function skillCopies(skill, { controlPlane = isControlPlane() } = {}) {
@@ -292,6 +346,22 @@ export function evaluate({ protocolText, bindings = BINDINGS, readSkill, control
       }
     }
   }
+  // Presence parity cannot catch a skill that retains the gates but instructs
+  // unauthorized expansion after they pass. Check the known conflicting
+  // directives in all execution skills, including /go and /arc.
+  let scopeCopiesChecked = 0;
+  for (const skill of ['go', 'implement', 'arc']) {
+    for (const copy of skillCopies(skill, { controlPlane })) {
+      const text = readSkill(copy.file);
+      if (text == null) continue;
+      scopeCopiesChecked++;
+      for (const finding of scopeSemanticFindings(text)) results.push({
+        section: 'Scope', skill, copy: copy.role, file: copy.file,
+        script: 'execution-contract', status: 'gap', because: 'Budgets are ceilings; new work requires scope',
+        detail: `conflicting expansion directive at line ${finding.line}: ${finding.text}`,
+      });
+    }
+  }
   const gaps = results.filter((r) => r.status === 'gap');
   const missingCopies = results.filter((r) => r.status === 'copy-missing');
   const exempt = results.filter((r) => r.status === 'exempt');
@@ -308,6 +378,7 @@ export function evaluate({ protocolText, bindings = BINDINGS, readSkill, control
     missingCopies,
     summary: {
       gapCount: gaps.length,
+      scopeCopiesChecked,
       exemptCount: exempt.length,
       missingCopyCount: missingCopies.length,
       // Published so a reader can tell "clean" from "checked almost nothing".

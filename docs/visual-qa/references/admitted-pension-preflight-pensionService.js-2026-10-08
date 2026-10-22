@@ -1,0 +1,231 @@
+// Pension service is distinct from salary-minimum credit and free-agency
+// accrual. Season labels map to the April–March Plan Year. Keep three physical
+// game proofs per year: sufficient credit evidence, not a full appearance log.
+import { canonicalFootballGame } from './footballGameReference.js';
+import { validateSnapshotAdmittedInjuryPayroll } from './admittedInjuryPayroll.js';
+export const PENSION_SERVICE_VERSION = 'football-pension-service-v1';
+const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
+const count = value => Number.isSafeInteger(value) && value >= 0;
+const text = value => typeof value === 'string' && value.length > 0 && value.length <= 180;
+const reasons = new Set(['active-inactive', 'football-reserve', 'standard-elevation', 'elevation-injury-continuation', 'admitted-injury-continuation']);
+const fail = message => { const error = new TypeError(`Invalid pension service: ${message}`); error.reasonCode = 'PENSION_SERVICE_INVALID'; error.status = 400; throw error; };
+
+function physicalGame(gameId) {
+  const match = /^(\d{4})-(regular|playoffs)-(regular-season|(?:afc|nfc)-(?:wildcard|divisional|conference)|super-bowl)-(\d+)-([^-]+)-([^-]+)$/.exec(gameId);
+  if (!match) fail('canonical game reference');
+  const [, year, seasonType, label, week, awayTeamId, homeTeamId] = match;
+  const round = seasonType === 'regular' ? null : label.replace(/^(afc|nfc)-/, '');
+  let game;
+  try { game = canonicalFootballGame({ year: Number(year), week: Number(week), seasonType, label, round, awayTeamId, homeTeamId }); }
+  catch { fail('canonical game reference'); }
+  if (game.gameId !== gameId) fail('canonical game reference');
+  return game;
+}
+const physicalKey = game => JSON.stringify([game.year, game.seasonType, game.week, game.round, ...[game.awayTeamId, game.homeTeamId].sort()]);
+
+// A saved source reference identifies the earned period, not current roster
+// membership or current medical status. Clearing/releasing the player cannot
+// erase an already earned qualifying game. Full payroll authority is joined
+// when league context is available; standalone counters still validate the
+// original player/elevation identity and the exact encoded earning period.
+function admittedSource(player, game, physical, context) {
+  let period, right;
+  try { period = JSON.parse(game.sourceRef); right = JSON.parse(period[0]); }
+  catch { fail('admitted earning reference'); }
+  const phase = physical.seasonType === 'regular' ? 'regular-season' : 'postseason';
+  if (!Array.isArray(period) || period.length !== 4 || !Array.isArray(right) || right.length !== 2
+    || right[0] !== player.id || period[1] !== physical.year || period[2] !== phase
+    || period[3] !== pensionGameWeek(physical)
+    || game.sourceRef !== JSON.stringify(period) || period[0] !== JSON.stringify(right)) fail('admitted earning reference');
+  const elevation = player.standardElevations?.games?.find(row => row.game.gameId === right[1]);
+  const episode = player.elevationInjuryPay?.episodes?.find(row => row.gameId === right[1]);
+  if (!elevation || elevation.status !== 'reverted' || elevation.teamId !== game.teamId
+    || elevation.game.year >= physical.year || !episode || episode.teamId !== game.teamId
+    || episode.year !== elevation.game.year) fail('admitted original source');
+  if (context) {
+    const league = context.league || context;
+    const wage = league.admittedInjuryPayroll?.find(row => row.payId === game.sourceRef);
+    const authority = league.admittedInjuryContinuations?.find(row => row.rightId === period[0]);
+    if (!wage || !authority || wage.playerId !== player.id || wage.teamId !== game.teamId
+      || wage.rightId !== authority.rightId || wage.gameId !== right[1]
+      || authority.playerId !== player.id || authority.teamId !== game.teamId
+      || (wage.grossCents ?? wage.amountCents) <= 0) fail('missing admitted wage source');
+  }
+}
+
+function validateGameProof(game, year, context) {
+  const physical = physicalGame(game.gameId);
+  if (physical.year !== Number(year) || (game.seasonType !== undefined && physical.seasonType !== game.seasonType)
+    || (game.week !== undefined && pensionGameWeek(physical) !== game.week)
+    || ![physical.homeTeamId, physical.awayTeamId].includes(game.teamId)) fail('mismatched physical game');
+  if (context) {
+    const league = context.league || context;
+    // Session snapshots own currentYear; the live league's legacy currentYear
+    // field can remain at its opening year after an actual annual transition.
+    const maxYear = (context.league ? context.currentYear : undefined) ?? league.financialYear ?? league.year;
+    if (!Number.isInteger(maxYear) || physical.year > maxYear
+      || ![physical.homeTeamId, physical.awayTeamId].every(id => league.teams?.some(team => team.id === id))) fail('unknown club or future game');
+  }
+  return physical;
+}
+
+export function pensionGameWeek(result) {
+  if (result.seasonType !== 'playoffs' || result.week >= 19) return result.week;
+  // Native playoff match IDs retain week zero; payroll has a distinct week.
+  const round = result.round || ['wildcard', 'divisional', 'conference', 'super-bowl'].find(round => String(result.label).endsWith(round));
+  return { wildcard: 19, divisional: 20, conference: 21, 'super-bowl': 23 }[round];
+}
+
+export function generatedPensionService(experience) {
+  return { version: PENSION_SERVICE_VERSION, baseline: { seasons: experience, provenance: 'fictional-prior-service' }, planYears: {} };
+}
+
+export function validatePensionService(player, context) {
+  const state = player.pensionService;
+  if (state === undefined) return;
+  if (!object(state) || state.version !== PENSION_SERVICE_VERSION || !object(state.baseline) || !object(state.planYears)
+    || (state.baseline.seasons !== null && !count(state.baseline.seasons))
+    || !['fictional-prior-service', 'declared-prior-service', 'unknown-prior-service'].includes(state.baseline.provenance)
+    || (state.baseline.seasons === null) !== (state.baseline.provenance === 'unknown-prior-service')) fail('baseline or version');
+  if (context && Object.values(state.planYears).some(row => Array.isArray(row?.games)
+    && row.games.some(game => game?.reason === 'admitted-injury-continuation'))) validateSnapshotAdmittedInjuryPayroll(context);
+  for (const [year, row] of Object.entries(state.planYears)) {
+    if (!/^\d{4}$/.test(year) || Number(year) < 1900 || !object(row) || !Array.isArray(row.games) || row.games.length > 3
+      || typeof row.finalized !== 'boolean' || typeof row.awarded !== 'boolean'
+      || row.awarded !== (row.finalized && row.games.length === 3)) fail('Plan Year');
+    const ids = new Set();
+    for (const game of row.games) {
+      if (!object(game) || !text(game.gameId) || !text(game.teamId) || !reasons.has(game.reason)
+        || (game.seasonType !== undefined && !['regular', 'playoffs'].includes(game.seasonType))
+        || (game.week !== undefined && !Number.isInteger(game.week))
+        || (game.sourceRef !== undefined && !text(game.sourceRef))) fail('game proof');
+      const physical = validateGameProof(game, year, context), key = physicalKey(physical);
+      if (ids.has(key)) fail('duplicate physical game');
+      ids.add(key);
+      const sourceRef = game.sourceRef ?? game.gameId;
+      if (['active-inactive', 'football-reserve'].includes(game.reason) && sourceRef !== game.gameId) fail('membership game source');
+      if (game.reason === 'admitted-injury-continuation') admittedSource(player, game, physical, context);
+      if (game.reason === 'standard-elevation' || game.reason === 'elevation-injury-continuation') {
+        const elevation = player.standardElevations?.games?.find(row => row.game.gameId === sourceRef);
+        if (!elevation || elevation.teamId !== game.teamId || elevation.game.year !== Number(year)) fail('missing elevation source');
+        if (game.reason === 'standard-elevation' && sourceRef !== game.gameId) fail('elevation physical game');
+        if (game.reason === 'standard-elevation' && physicalKey(elevation.game) !== key) fail('elevation physical game');
+        if (game.reason === 'elevation-injury-continuation' && !player.elevationInjuryPay?.payroll?.some(row =>
+          row.gameId === sourceRef && row.teamId === game.teamId && row.year === Number(year) && row.week === pensionGameWeek(physical))) fail('missing injury-pay source');
+      }
+    }
+  }
+}
+
+// Called after admitted regular payroll has reconciled actual base pay, or
+// after an applied postseason game (its elapsed-period payroll is already
+// committed). Wage-only calendars never call this physical-game seam.
+export function recordAdmittedPensionGameService({ league, result }) {
+  if (!league.admittedInjuryPayroll?.length || !['regular', 'playoffs'].includes(result.seasonType)
+    || /pro.?bowl|all.?star/i.test(result.label || '')) return [];
+  result = { ...result, week: pensionGameWeek(result) };
+  const physical = validateGameProof({ ...result, teamId: result.homeTeamId }, result.year, league);
+  if (physical.homeTeamId !== result.homeTeamId || physical.awayTeamId !== result.awayTeamId
+    || physical.label !== result.label || pensionGameWeek(physical) !== pensionGameWeek(result)) fail('mismatched applied game');
+  validateSnapshotAdmittedInjuryPayroll(league);
+  const phase = physical.seasonType === 'regular' ? 'regular-season' : 'postseason';
+  const people = new Map([...(league.players || []), ...(league.retiredPlayers || [])].map(player => [player.id, player]));
+  const updates = new Map();
+  for (const wage of league.admittedInjuryPayroll) {
+    if (wage.earningYear !== physical.year || wage.phase !== phase || wage.week !== pensionGameWeek(physical)
+      || ![physical.homeTeamId, physical.awayTeamId].includes(wage.teamId)) continue;
+    const player = people.get(wage.playerId);
+    if (!player) fail('missing admitted person');
+    validatePensionService(player, league);
+    const state = updates.get(player) || structuredClone(player.pensionService || priorState(player));
+    const row = state.planYears[physical.year] ||= { games: [], finalized: false, awarded: false };
+    if (row.finalized || row.games.length === 3 || row.games.some(game => physicalKey(physicalGame(game.gameId)) === physicalKey(physical))) continue;
+    row.games.push({ gameId: physical.gameId, teamId: wage.teamId, reason: 'admitted-injury-continuation', sourceRef: wage.payId });
+    validatePensionService({ ...player, pensionService: state }, league);
+    updates.set(player, state);
+  }
+  for (const [player, state] of updates) player.pensionService = state;
+  return [...updates.keys()].map(player => player.id);
+}
+
+export function pensionServiceCount(player) {
+  validatePensionService(player);
+  const state = player.pensionService;
+  const observedSeasons = state ? Object.values(state.planYears).filter(row => row.awarded).length : 0;
+  const prior = state ? state.baseline.seasons : (count(player.pensionSeasons) ? player.pensionSeasons : null);
+  return { seasons: prior === null ? null : prior + observedSeasons, observedSeasons, completeHistory: prior !== null,
+    provenance: state?.baseline.provenance || (prior === null ? 'unknown-prior-service' : 'declared-prior-service') };
+}
+
+function priorState(player) {
+  const seasons = count(player.pensionSeasons) ? player.pensionSeasons : null;
+  return { version: PENSION_SERVICE_VERSION, baseline: { seasons, provenance: seasons === null ? 'unknown-prior-service' : 'declared-prior-service' }, planYears: {} };
+}
+
+function proof(player, result, elevated) {
+  if (player.status !== 'active') return null;
+  const elevation = elevated.has(player.id) && player.standardElevations?.games?.find(row => row.game.gameId === result.gameId);
+  if (elevation) return { reason: 'standard-elevation', sourceRef: result.gameId };
+  const flags = player.designations || {};
+  if ((player.suspensionWeeks || 0) <= 0 && !flags.exemptCommissioner && !flags.nfi) {
+    if ((player.rosterSlot || 'active') === 'active' && !flags.pup && !flags.ir)
+      return { reason: 'active-inactive', sourceRef: result.gameId };
+    // Native football IR/PUP placement is separate from imported flag-only or
+    // nonfootball reserve history. Exceptional benefit statuses remain unknown.
+    if (player.rosterSlot === 'reserve' && ['ir', 'pup'].includes(player.reserveStatus?.kind)
+      && player.reserveStatus.year === result.year && player.injury?.origin !== 'nonfootball')
+      return { reason: 'football-reserve', sourceRef: result.gameId };
+  }
+  const pay = player.elevationInjuryPay?.payroll?.find(row => row.year === result.year && row.week === result.week && row.teamId === player.teamId);
+  const episode = pay && player.elevationInjuryPay?.episodes?.find(row => row.gameId === pay.gameId && row.status === 'active');
+  if (pay && pay.payCents > 0 && episode && player.injury?.weeksRemaining > 0)
+    return { reason: 'elevation-injury-continuation', sourceRef: pay.gameId };
+  return null;
+}
+
+// Called only by the applied-game hook, after continuation payroll is joined.
+// Preview, bye, preparation pay and Pro Bowl cannot call this a physical game.
+export function recordPensionGameService({ league, result, elevatedPlayerIds = [] }) {
+  if (!['regular', 'playoffs'].includes(result.seasonType) || /pro.?bowl|all.?star/i.test(result.label || '')) return [];
+  if (!Array.isArray(league.teams)) return [];
+  result = { ...result, week: pensionGameWeek(result) };
+  // Old standalone callers may provide only a matchup or default week zero.
+  // Keep their existing behavior without manufacturing pension game evidence.
+  if (!text(result.gameId) || !Number.isInteger(result.week)
+    || (result.seasonType === 'regular' ? result.week < 1 || result.week > 18 : result.week < 19 || result.week > 23)) return [];
+  if (!Number.isInteger(result.year) || result.year < 1900 || result.year > 9999
+    || result.homeTeamId === result.awayTeamId || ![result.homeTeamId, result.awayTeamId].every(id => league.teams.some(team => team.id === id))) fail('physical game');
+  const physical = validateGameProof({ ...result, teamId: result.homeTeamId }, result.year, league);
+  if (physical.homeTeamId !== result.homeTeamId || physical.awayTeamId !== result.awayTeamId
+    || physical.label !== result.label) fail('mismatched applied game');
+  const teams = new Set([result.homeTeamId, result.awayTeamId]), elevated = new Set(elevatedPlayerIds), updates = [];
+  for (const player of league.players) {
+    if (!teams.has(player.teamId)) continue;
+    validatePensionService(player, league);
+    const qualification = proof(player, result, elevated);
+    if (!qualification) continue;
+    const existing = player.pensionService?.planYears?.[result.year];
+    if (existing?.finalized || existing?.games.length === 3 || existing?.games.some(row => physicalKey(physicalGame(row.gameId)) === physicalKey(physical))) continue;
+    const state = structuredClone(player.pensionService || priorState(player));
+    const row = state.planYears[result.year] ||= { games: [], finalized: false, awarded: false };
+    // Year, phase, week and self-referencing membership/elevation sources are
+    // losslessly recoverable from gameId. Only continuation needs a second ID.
+    row.games.push({ gameId: result.gameId, teamId: player.teamId, reason: qualification.reason,
+      ...(qualification.reason === 'elevation-injury-continuation' ? { sourceRef: qualification.sourceRef } : {}) });
+    validatePensionService({ ...player, pensionService: state }, league);
+    updates.push({ player, state });
+  }
+  for (const { player, state } of updates) player.pensionService = state;
+  return updates.map(({ player }) => player.id);
+}
+
+export function finalizePensionPlanYear(league, year) {
+  const players = [...league.players, ...(league.retiredPlayers || [])];
+  for (const player of players) validatePensionService(player, league);
+  for (const player of players) {
+    const row = player.pensionService?.planYears?.[year];
+    if (!row || row.finalized) continue;
+    row.finalized = true;
+    row.awarded = row.games.length === 3;
+  }
+}

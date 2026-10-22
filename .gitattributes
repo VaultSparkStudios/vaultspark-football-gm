@@ -1,0 +1,2 @@
+# Hash-bound historical references must retain their exact recorded bytes.
+docs/visual-qa/references/** -text

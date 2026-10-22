@@ -1,0 +1,39 @@
+// One bounded WebGL context projects the same saved head for every SVG view.
+// Images are presentation-only and never enter saves or football RNG.
+import {buildHeadMesh3d,createHeadRenderer3d} from './playerHead3d.js';
+import {appearanceSkinColor,appearanceHairColors,blendAppearanceColor} from './appearancePalette.js';
+const LIMIT=32;
+const cache=new Map();let canvas,renderer,unavailable=false,draws=0,meshBuilds=0,meshKey,mesh;
+const color=value=>typeof value==='string'&&/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value)?value.length===4?'#'+[...value.slice(1)].map(c=>c+c).join(''):value:null;
+export function playerHeadImageDiagnostics(){return{cacheEntries:cache.size,cacheLimit:LIMIT,draws,meshBuilds,unavailable,contexts:renderer?1:0};}
+export function tryPlayerHeadImage(player,{angle=.12,blink=0}={}){
+ const a=player?.appearance;
+ if(unavailable||typeof document==='undefined'||a?.version!=='portrait-identity-v3'||a.fineFaceVersion!=='fine-face-v1'||!player?.visualFrame)return null;
+ if(!Number.isFinite(angle)||!Number.isFinite(blink))return null;
+ if(!color(a.eyeColor)||!color(a.hairColor)||!Number.isFinite(a.complexion))return null;
+ const age=Number.isFinite(player.age)?player.age:23;
+ const geometryKey=JSON.stringify([player.id||player.profile?.appearanceRecipe?.seed||'',a,age]);
+ const key=JSON.stringify([geometryKey,angle,blink]);
+ if(cache.has(key)){const result=cache.get(key);cache.delete(key);cache.set(key,result);return result;}
+ try{
+  if(!renderer){
+   if(!canvas){
+    canvas=document.createElement('canvas');canvas.width=440;canvas.height=880;
+    canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();renderer?.dispose();renderer=null;cache.clear();unavailable=true;});
+    canvas.addEventListener('webglcontextrestored',()=>{unavailable=false;});
+   }
+   renderer=createHeadRenderer3d(canvas,{transparent:true});
+  }
+  const pigments=appearanceHairColors(a,age),skin=appearanceSkinColor(a);
+  const colors={skin,scalp:color(pigments.scalp),brow:color(pigments.brow),beard:color(pigments.face),iris:color(a.eyeColor),mouth:blendAppearanceColor(skin,'#8a4550',.42),grayShare:pigments.grayShare};
+  if(!color(skin)||!colors.scalp||!colors.brow||!colors.beard)return null;
+  if(meshKey!==geometryKey){mesh=buildHeadMesh3d(a,colors,{identitySeed:player.id||player.profile?.appearanceRecipe?.seed,headOnly:true});meshKey=geometryKey;meshBuilds++;}
+  renderer.draw(mesh,a,colors,angle,{blink,fitSkull:true});
+  const result={src:canvas.toDataURL('image/png'),renderer:'shared-head-3d-v1',skullTop:65,skullBottom:240};
+  if(!result.src.startsWith('data:image/png;base64,'))throw Error('Invalid portrait image');
+  draws++;cache.set(key,result);while(cache.size>LIMIT)cache.delete(cache.keys().next().value);
+  return result;
+ }catch{
+  renderer?.dispose();renderer=null;cache.clear();unavailable=true;return null;
+ }
+}

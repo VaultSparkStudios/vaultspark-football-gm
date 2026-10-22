@@ -1,0 +1,2078 @@
+import { DEPTH_CHART_ROLE_NAMES, DRIVE_OUTCOMES } from "../config.js";
+import { FOOTBALL_RULES } from "../sport/football/rules.js";
+import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js";
+import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings.js";
+import { clamp, mean } from "../utils/rng.js";
+import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
+import { matchupEdgeFromContexts } from "./matchupEdge.js";
+import { fourthDownAggressionAdjustment, isTwoMinuteDrill, twoMinuteAdjustment } from "./situationalCalls.js";
+import { applyGameStats } from "../stats/applyGameStats.js";
+import { runOvertime } from "./overtime.js";
+import { selectGameDayRoster, applyFootballPostGame, checkFootballReadiness,getGameTeamPlayers } from "./gameDayRoster.js";
+import { MatchReadinessError } from "../sport/matchReadiness.js";
+import {
+  buildMeritAdjustedRoomShares,
+  buildTeamUsageProfile,
+  depthOrderedPlayers,
+  resolveDepthChartRoomShares
+} from "./depthChartUsage.js";
+
+export function mergeGameStatDelta(target, source) {
+  for (const [key, value] of Object.entries(source)) {
+    if (value && typeof value === "object" && !Array.isArray(value)) {
+      if (!target[key]) target[key] = {};
+      mergeGameStatDelta(target[key], value);
+    } else if (typeof value === "number") {
+      target[key] = key === "long"
+        ? Math.max(target[key] || 0, value)
+        : (target[key] || 0) + value;
+    }
+  }
+  return target;
+}
+
+function addDelta(deltaMap, playerId, delta) {
+  if (!deltaMap.has(playerId)) deltaMap.set(playerId, {});
+  const current = deltaMap.get(playerId);
+  mergeGameStatDelta(current, delta);
+}
+
+function topPlayers(players, position, count) {
+  return players
+    .filter((player) => player.position === position)
+    .sort((a, b) => b.overall - a.overall)
+    .slice(0, count);
+}
+
+function buildRotation(players, shares = []) {
+  const rotation = [];
+  for (let i = 0; i < players.length; i += 1) {
+    const player = players[i];
+    const snapShare = shares[i] ?? 0.02;
+    const talentBoost = 0.85 + ((player.overall || 70) - 70) / 260;
+    const fitBoost = 0.88 + ((player.schemeFit || 70) - 70) / 250;
+    const moraleBoost = 0.9 + ((player.morale || 70) - 70) / 320;
+    rotation.push({
+      player,
+      rank: i + 1,
+      snapShare: Number(clamp(snapShare, 0, 1).toFixed(3)),
+      usageWeight: clamp(snapShare * talentBoost * fitBoost * moraleBoost, 0, 2)
+    });
+  }
+  return rotation;
+}
+
+function sumUsage(rotation) {
+  return rotation.reduce((sum, row) => sum + row.usageWeight, 0);
+}
+
+function chooseFromRotation(rng, rotation) {
+  if (!rotation.length) return null;
+  const total = sumUsage(rotation);
+  let roll = rng.float(0, total);
+  for (const row of rotation) {
+    roll -= row.usageWeight;
+    if (roll <= 0) return row.player;
+  }
+  return rotation[rotation.length - 1].player;
+}
+
+/**
+ * The engine no longer writes season stats itself (multi-sport Phase 1 step 2).
+ * It records every season-stat write as a plain record, in the exact order the
+ * old inline code made them, and the core applies them afterwards through
+ * src/stats/applyGameStats.js. One shared sequence number across the three
+ * record lists keeps that order recoverable: blocking pressures (a stat delta)
+ * land after the snap counts, and bench appearances after both, and a season's
+ * per-team game tally depends on call order when two teams tie.
+ */
+function createGameStatRecorder() {
+  let seq = 0;
+  const records = { statDeltas: [], appearances: [], snapCounts: [] };
+  return {
+    records,
+    appearance(playerId, year, started, teamId, position, seasonType) {
+      records.appearances.push({ seq: seq++, playerId, year, started, teamId, position, seasonType });
+    },
+    statDelta(playerId, year, delta, meta) {
+      records.statDeltas.push({ seq: seq++, playerId, year, delta, meta });
+    },
+    snapCount(playerId, year, delta, meta) {
+      records.snapCounts.push({ seq: seq++, playerId, year, delta, meta });
+    }
+  };
+}
+
+function applySnapCounts(recorder, statBook, year, rotation, unitSnaps, key, seasonType = "regular", gameStats = null) {
+  const playersWithSnaps = new Set();
+  if (!rotation?.length || !unitSnaps) return playersWithSnaps;
+  const boundedSnaps = Math.max(0, Math.round(unitSnaps));
+  for (const row of rotation) {
+    const snaps = Math.max(0, Math.round(boundedSnaps * row.snapShare));
+    if (!snaps) continue;
+    playersWithSnaps.add(row.player.id);
+    recorder.snapCount(
+      row.player.id,
+      year,
+      { snaps: { [key]: snaps } },
+      { teamId: row.player.teamId, position: row.player.position, seasonType }
+    );
+    if (gameStats) {
+      collectGamePlayerStats(gameStats, statBook, new Map([[row.player.id, { snaps: { [key]: snaps } }]]));
+    }
+    if (key === "offense" && row.player.position === "OL") {
+      const blockingSnaps = { passBlock: Math.round(snaps * 0.58), runBlock: Math.round(snaps * 0.42) };
+      recorder.snapCount(
+        row.player.id,
+        year,
+        { snaps: blockingSnaps },
+        { teamId: row.player.teamId, position: row.player.position, seasonType }
+      );
+      if (gameStats) {
+        collectGamePlayerStats(gameStats, statBook, new Map([[row.player.id, { snaps: blockingSnaps }]]));
+      }
+    }
+  }
+  return playersWithSnaps;
+}
+
+function applyBlockingNoise(recorder, statBook, year, olRotation, offSnaps, rng, seasonType = "regular", gameStats = null) {
+  for (const row of olRotation.slice(0, 5)) {
+    const snaps = Math.max(1, Math.round(offSnaps * row.snapShare));
+    const pressureChance = clamp(0.015 + (78 - (row.player.overall || 70)) * 0.0012, 0.004, 0.07);
+    const penaltyChance = clamp(0.01 + (76 - (row.player.ratings?.discipline || 70)) * 0.0009, 0.003, 0.06);
+    let pressures = 0;
+    for (let i = 0; i < snaps; i += 1) {
+      if (rng.chance(pressureChance)) pressures += 1;
+    }
+    const penalties = rng.chance(penaltyChance * Math.min(3, snaps / 25)) ? 1 : 0;
+    if (pressures || penalties) {
+      const delta = { blocking: { pressuresAllowed: pressures, penalties } };
+      recorder.statDelta(
+        row.player.id,
+        year,
+        delta,
+        { teamId: row.player.teamId, position: row.player.position, seasonType }
+      );
+      if (gameStats) collectGamePlayerStats(gameStats, statBook, new Map([[row.player.id, delta]]));
+    }
+  }
+}
+
+function choosePlayer(rng, players) {
+  if (!players.length) return null;
+  const weights = players.map((p, i) => Math.max(1, (players.length - i) * 1.5));
+  const total = weights.reduce((a, b) => a + b, 0);
+  let roll = rng.float(0, total);
+  for (let i = 0; i < players.length; i += 1) {
+    roll -= weights[i];
+    if (roll <= 0) return players[i];
+  }
+  return players[players.length - 1];
+}
+
+function chooseWeightedEntity(rng, entries) {
+  const clean = entries.filter((entry) => entry?.player && entry.weight > 0);
+  if (!clean.length) return null;
+  const total = clean.reduce((sum, entry) => sum + entry.weight, 0);
+  let roll = rng.float(0, total);
+  for (const entry of clean) {
+    roll -= entry.weight;
+    if (roll <= 0) return entry.player;
+  }
+  return clean[clean.length - 1].player;
+}
+
+function rating(player, key, fallback = 68) {
+  return player?.ratings?.[key] ?? fallback;
+}
+
+function averageRatingFromRotation(rotation, keys, fallback = 68) {
+  const players = (rotation || []).map((row) => row.player).filter(Boolean);
+  if (!players.length) return fallback;
+  return mean(
+    players.map((player) =>
+      mean(keys.map((key) => rating(player, key, fallback)))
+    )
+  );
+}
+
+function averageRatingFromPlayers(players, keys, fallback = 68) {
+  const clean = (players || []).filter(Boolean);
+  if (!clean.length) return fallback;
+  return mean(clean.map((player) => mean(keys.map((key) => rating(player, key, fallback)))));
+}
+
+function averageCoverageDepthFromRotation(rotation, bucket = "medium", fallback = 68) {
+  const players = (rotation || []).map((row) => row.player).filter(Boolean);
+  if (!players.length) return fallback;
+  return mean(players.map((player) => coverageDepthRating(player?.ratings || {}, bucket)));
+}
+
+const PASS_DEPTH_PROFILES = {
+  short: {
+    completionBase: 0.1,
+    sackDelta: -0.02,
+    intDelta: -0.009,
+    pbuChance: 0.48,
+    airYards: [-1, 8],
+    yac: [0, 11],
+    maxCompletion: 0.84
+  },
+  medium: {
+    completionBase: 0,
+    sackDelta: 0.008,
+    intDelta: 0.002,
+    pbuChance: 0.62,
+    airYards: [7, 17],
+    yac: [-1, 8],
+    maxCompletion: 0.76
+  },
+  deep: {
+    completionBase: -0.13,
+    sackDelta: 0.03,
+    intDelta: 0.012,
+    pbuChance: 0.76,
+    airYards: [16, 33],
+    yac: [-2, 5],
+    maxCompletion: 0.61
+  }
+};
+
+const ROUTE_FAMILY_PROFILES = {
+  quick: {
+    depthWeights: { short: 0.74, medium: 0.24, deep: 0.02 },
+    vsMan: -0.006,
+    vsZone: 0.028,
+    vsMiddleOpen: 0.004,
+    vsMiddleClosed: 0.002,
+    yacBonus: 2,
+    airYardsDelta: -2,
+    pbuDelta: -0.05
+  },
+  breaker: {
+    depthWeights: { short: 0.2, medium: 0.68, deep: 0.12 },
+    vsMan: 0.02,
+    vsZone: 0.008,
+    vsMiddleOpen: 0.012,
+    vsMiddleClosed: -0.002,
+    yacBonus: 1,
+    airYardsDelta: 1,
+    pbuDelta: 0
+  },
+  seam: {
+    depthWeights: { short: 0.08, medium: 0.56, deep: 0.36 },
+    vsMan: 0.016,
+    vsZone: -0.012,
+    vsMiddleOpen: 0.024,
+    vsMiddleClosed: -0.012,
+    yacBonus: 0,
+    airYardsDelta: 3,
+    pbuDelta: 0.03
+  },
+  vertical: {
+    depthWeights: { short: 0.04, medium: 0.24, deep: 0.72 },
+    vsMan: 0.022,
+    vsZone: -0.018,
+    vsMiddleOpen: -0.01,
+    vsMiddleClosed: 0.014,
+    yacBonus: -1,
+    airYardsDelta: 4,
+    pbuDelta: 0.05
+  },
+  space: {
+    depthWeights: { short: 0.82, medium: 0.17, deep: 0.01 },
+    vsMan: 0.01,
+    vsZone: 0.02,
+    vsMiddleOpen: 0.006,
+    vsMiddleClosed: 0.004,
+    yacBonus: 3,
+    airYardsDelta: -3,
+    pbuDelta: -0.04
+  }
+};
+
+function routeProfile(routeFamily = "breaker") {
+  return ROUTE_FAMILY_PROFILES[routeFamily] || ROUTE_FAMILY_PROFILES.breaker;
+}
+
+function buildCoverageShell(team, weeklyPlan = null) {
+  const tendencies = team?.coaching?.tendencies || {};
+  const blitzRate = Number(tendencies.blitzRate || 1);
+  const aggression = Number(team?.scheme?.aggression ?? 0.5);
+  const aggressionDelta = weeklyPlanUnitAggression(weeklyPlan, "defense");
+  const defenseStyle = team?.schemeIdentity?.defense || "multiple";
+  const defenseFocus = weeklyPlan?.defenseFocus || "stay-multiple";
+  const manRate = clamp(
+    0.22 +
+      (blitzRate - 1) * 0.24 +
+      aggressionDelta * 0.34 +
+      (defenseFocus === "pressure-pocket" ? 0.05 : 0) +
+      (defenseFocus === "flood-coverage" ? -0.04 : 0) +
+      (defenseStyle === "contain-shell" ? -0.03 : 0),
+    0.11,
+    0.38
+  );
+  const middleOpenRate = clamp(
+    0.48 -
+      aggression * 0.08 -
+      (blitzRate - 1) * 0.12 +
+      (defenseFocus === "flood-coverage" ? 0.12 : 0) +
+      (defenseFocus === "load-box" ? -0.1 : 0) +
+      (defenseStyle === "contain-shell" ? 0.08 : 0),
+    0.28,
+    0.72
+  );
+  return {
+    manRate,
+    zoneRate: Number((1 - manRate).toFixed(3)),
+    middleOpenRate,
+    middleClosedRate: Number((1 - middleOpenRate).toFixed(3)),
+    primary: manRate >= 0.26 ? "man" : "zone",
+    shell: middleOpenRate >= 0.5 ? "split-safety" : "single-high"
+  };
+}
+
+export function weeklyPlanUnitAggression(weeklyPlan = null, unit = "offense") {
+  const base = Number(weeklyPlan?.aggressionDelta || 0);
+  const scopedKey = unit === "defense" ? "defenseAggressionDelta" : "offenseAggressionDelta";
+  const scoped = Number(weeklyPlan?.[scopedKey] || 0);
+  return (Number.isFinite(base) ? base : 0) + (Number.isFinite(scoped) ? scoped : 0);
+}
+
+function choosePassDepthBucket(rng, receiver, qb, routeFamily = "breaker", coverageShell = null) {
+  const receiverPosition = receiver?.position || "WR";
+  const routeSkill = mean([
+    rating(receiver, "routeRunning", rating(receiver, "catching")),
+    rating(receiver, "release", rating(receiver, "catching")),
+    rating(receiver, "speed")
+  ]);
+  const qbArm = mean([rating(qb, "throwPower"), rating(qb, "throwOnRun"), rating(qb, "awareness")]);
+  const shell = coverageShell || { middleOpenRate: 0.5, middleClosedRate: 0.5 };
+  const profile = routeProfile(routeFamily);
+  const weights = {
+    short: Number(profile.depthWeights.short || 0.2) + (receiverPosition === "RB" ? 0.08 : 0),
+    medium: Number(profile.depthWeights.medium || 0.6) + (receiverPosition === "TE" ? 0.04 : 0),
+    deep: Number(profile.depthWeights.deep || 0.2)
+  };
+
+  weights.short += clamp((72 - routeSkill) / 60 + (73 - qbArm) / 90, -0.1, 0.18);
+  weights.deep += clamp((routeSkill - 72) / 52 + (qbArm - 74) / 42, -0.08, 0.2);
+  weights.medium += receiverPosition === "TE" ? 0.02 : 0;
+  if (routeFamily === "seam") {
+    weights.medium += shell.middleOpenRate * 0.08;
+    weights.deep += shell.middleOpenRate * 0.05;
+  }
+  if (routeFamily === "vertical") {
+    weights.deep += shell.middleClosedRate * 0.06;
+  }
+  if (routeFamily === "quick" || routeFamily === "space") {
+    weights.short += 0.08;
+  }
+
+  return rng.weightedPick(
+    Object.fromEntries(Object.entries(weights).map(([key, value]) => [key, Math.max(0.05, Number(value || 0))]))
+  );
+}
+
+function chooseRouteFamily(rng, receiver, offenseContext, defenseContext, coverageShell, qb) {
+  const position = receiver?.position || "WR";
+  const routeSkill = mean([
+    rating(receiver, "routeRunning", rating(receiver, "catching")),
+    rating(receiver, "release", rating(receiver, "catching"))
+  ]);
+  const burstSkill = mean([rating(receiver, "speed"), rating(receiver, "release", rating(receiver, "speed"))]);
+  const shortAreaSkill = mean([rating(receiver, "catching"), rating(receiver, "agility", rating(receiver, "speed"))]);
+  const yacSkill = mean([
+    rating(receiver, "elusiveness", rating(receiver, "agility", rating(receiver, "speed"))),
+    rating(receiver, "agility", rating(receiver, "speed"))
+  ]);
+  const qbArm = mean([rating(qb, "throwPower"), rating(qb, "throwAccuracyDeep"), rating(qb, "awareness")]);
+  const deepShotRate = Number(offenseContext.team?.coaching?.tendencies?.deepShotRate || 1);
+  const offenseFocus = offenseContext.weeklyPlan?.focus || "balanced-script";
+  const defenseFocus = defenseContext.weeklyPlan?.defenseFocus || "stay-multiple";
+  const weights =
+    position === "RB"
+      ? { quick: 0.18, breaker: 0.08, seam: 0.03, vertical: 0.03, space: 0.68 }
+      : position === "TE"
+        ? { quick: 0.22, breaker: 0.2, seam: 0.32, vertical: 0.06, space: 0.2 }
+        : { quick: 0.18, breaker: 0.32, seam: 0.12, vertical: 0.22, space: 0.16 };
+
+  weights.quick += clamp((shortAreaSkill - 70) / 180, -0.04, 0.08) + coverageShell.zoneRate * 0.08;
+  weights.breaker += clamp((routeSkill - 70) / 150, -0.04, 0.09) + coverageShell.manRate * 0.1;
+  weights.seam +=
+    (position === "TE" ? 0.08 : 0) + clamp((routeSkill + burstSkill - 140) / 220, -0.03, 0.08) + coverageShell.middleOpenRate * 0.08;
+  weights.vertical +=
+    clamp((burstSkill - 70) / 145, -0.03, 0.1) +
+    clamp((qbArm - 72) / 180, -0.03, 0.07) +
+    (deepShotRate - 1) * 0.14 +
+    coverageShell.middleClosedRate * 0.03;
+  weights.space += clamp((yacSkill - 70) / 150, -0.03, 0.08) + coverageShell.zoneRate * 0.06;
+
+  if (offenseFocus === "attack-secondary") {
+    weights.vertical += 0.08;
+    weights.breaker += 0.04;
+  } else if (offenseFocus === "protect-front") {
+    weights.quick += 0.08;
+    weights.space += 0.06;
+  } else if (offenseFocus === "tempo-script") {
+    weights.breaker += 0.05;
+    weights.quick += 0.03;
+  }
+
+  if (defenseFocus === "pressure-pocket") {
+    weights.quick += 0.06;
+    weights.space += 0.04;
+  } else if (defenseFocus === "load-box") {
+    weights.seam += 0.06;
+    weights.vertical += 0.03;
+  } else if (defenseFocus === "flood-coverage") {
+    weights.quick += 0.04;
+    weights.breaker -= 0.02;
+    weights.vertical -= 0.02;
+  }
+
+  return rng.weightedPick(
+    Object.fromEntries(Object.entries(weights).map(([key, value]) => [key, Math.max(0.04, Number(value || 0))]))
+  );
+}
+
+function choosePassTargetProfile(rng, offenseContext, defenseContext, qb) {
+  const receiver = chooseReceiver(rng, offenseContext);
+  const coverageShell = defenseContext.coverageShell || buildCoverageShell(defenseContext.team, defenseContext.weeklyPlan);
+  const routeFamily = chooseRouteFamily(rng, receiver, offenseContext, defenseContext, coverageShell, qb);
+  return {
+    receiver,
+    routeFamily,
+    depthBucket: choosePassDepthBucket(rng, receiver, qb, routeFamily, coverageShell),
+    coverageShell
+  };
+}
+
+function matchupCoverageRating(player, bucket = "medium", coverageShell = null) {
+  const shell = coverageShell || { manRate: 0.22, zoneRate: 0.78 };
+  const depth = coverageDepthRating(player?.ratings || {}, bucket);
+  const man = rating(player, "manCoverage", rating(player, "coverage"));
+  const zone = rating(player, "zoneCoverage", rating(player, "coverage"));
+  const awareness = rating(player, "awareness");
+  return depth * 0.6 + man * shell.manRate * 0.22 + zone * shell.zoneRate * 0.22 + awareness * 0.08;
+}
+
+function chooseCoverageDefender(rng, defenseContext, bucket = "medium", coverageShell = null, takeaway = false) {
+  const shell = coverageShell || defenseContext.coverageShell || buildCoverageShell(defenseContext.team, defenseContext.weeklyPlan);
+  const dbBase = bucket === "deep" ? 1.32 : bucket === "short" ? 1.04 : 1.18;
+  const lbBase = bucket === "short" ? 0.56 : bucket === "medium" ? 0.4 : 0.18;
+  return chooseWeightedEntity(rng, [
+    ...defenseContext.dbRotation.map((row) => {
+      const coverageBoost = clamp(matchupCoverageRating(row.player, bucket, shell) / 70, 0.72, 1.45);
+      const takeawayBoost = takeaway
+        ? clamp((rating(row.player, "playRecognition") + rating(row.player, "awareness")) / 140, 0.86, 1.35)
+        : 1;
+      return { player: row.player, weight: row.usageWeight * dbBase * coverageBoost * takeawayBoost };
+    }),
+    ...defenseContext.lbRotation.map((row) => {
+      const coverageBoost = clamp(matchupCoverageRating(row.player, bucket, shell) / 70, 0.68, 1.25);
+      const takeawayBoost = takeaway
+        ? clamp((rating(row.player, "playRecognition") + rating(row.player, "awareness")) / 142, 0.82, 1.22)
+        : 1;
+      return { player: row.player, weight: row.usageWeight * lbBase * coverageBoost * takeawayBoost };
+    })
+  ]);
+}
+
+const GAME_MISS_CHANCE_BY_POSITION = {
+  QB: 0.025,
+  RB: 0.1,
+  WR: 0.085,
+  TE: 0.08,
+  OL: 0.07,
+  DL: 0.065,
+  LB: 0.065,
+  DB: 0.06,
+  K: 0.01,
+  P: 0.01
+};
+
+const MIN_GAME_READY_BY_POSITION = {
+  QB: 1,
+  RB: 2,
+  WR: 3,
+  TE: 1,
+  OL: 5,
+  DL: 4,
+  LB: 2,
+  DB: 4,
+  K: 1,
+  P: 1
+};
+
+function gameMissChance(player, team) {
+  const base = GAME_MISS_CHANCE_BY_POSITION[player.position] ?? 0.05;
+  const agePenalty = Math.max(0, (player.age || 26) - 28) * 0.004;
+  const durabilityBoost = Math.max(0, ((player.ratings?.strength || 70) - 70) * 0.0012);
+  const disciplineBoost = Math.max(0, ((team?.coaching?.discipline || 72) - 72) * 0.0005);
+  const moraleBoost = Math.max(0, ((player.morale || 70) - 70) * 0.0006);
+  const capped = base + agePenalty - durabilityBoost - disciplineBoost - moraleBoost;
+  return clamp(capped, 0.004, player.position === "K" || player.position === "P" ? 0.035 : 0.18);
+}
+
+function buildGameReadyRoster(roster, team, rng) {
+  const ready = [];
+  const reserves = {};
+  for (const player of roster) {
+    if (rng.chance(gameMissChance(player, team))) {
+      if (!reserves[player.position]) reserves[player.position] = [];
+      reserves[player.position].push(player);
+      continue;
+    }
+    ready.push(player);
+  }
+
+  for (const [position, minimum] of Object.entries(MIN_GAME_READY_BY_POSITION)) {
+    const current = ready.filter((player) => player.position === position).length;
+    const pool = reserves[position] || [];
+    for (let index = current; index < minimum && pool.length; index += 1) {
+      ready.push(pool.shift());
+    }
+  }
+
+  return ready;
+}
+
+function buildTeamContext(league, teamId, rng,game) {
+  const team = league.teams.find((t) => t.id === teamId);
+  const ready = buildGameReadyRoster(getGameTeamPlayers(league, teamId,game), team, rng);
+  const selection = selectGameDayRoster({ league, teamId, roster: ready });
+  const roster = selection.players;
+  const usageProfile = buildTeamUsageProfile(team);
+  const manualSharesByPosition = league.depthChartSnapShares?.[teamId] || {};
+  const qbs = depthOrderedPlayers(league, teamId, "QB", roster).slice(0, 2);
+  const rbs = depthOrderedPlayers(league, teamId, "RB", roster).slice(0, 4);
+  const wrs = depthOrderedPlayers(league, teamId, "WR", roster).slice(0, 6);
+  const tes = depthOrderedPlayers(league, teamId, "TE", roster).slice(0, 3);
+  const ol = depthOrderedPlayers(league, teamId, "OL", roster).slice(0, 9);
+  const dls = depthOrderedPlayers(league, teamId, "DL", roster).slice(0, 8);
+  const lbs = depthOrderedPlayers(league, teamId, "LB", roster).slice(0, 7);
+  const dbs = depthOrderedPlayers(league, teamId, "DB", roster).slice(0, 8);
+  const ks = depthOrderedPlayers(league, teamId, "K", roster).slice(0, 1);
+  const ps = depthOrderedPlayers(league, teamId, "P", roster).slice(0, 1);
+
+  const resolveShares = (position, players) =>
+    resolveDepthChartRoomShares({
+      position,
+      playerIds: players.map((player) => player.id),
+      baseShares: buildMeritAdjustedRoomShares({
+        position,
+        players,
+        baseShares: usageProfile.sharesByPosition[position] || []
+      }),
+      manualSharesByPlayer: ["QB", "K", "P"].includes(position)
+        ? {}
+        : manualSharesByPosition[position] || {}
+    }).map((row) => row.snapShare);
+
+  const shares = {
+    ...usageProfile.sharesByPosition,
+    QB: resolveShares("QB", qbs),
+    RB: resolveShares("RB", rbs),
+    WR: resolveShares("WR", wrs),
+    TE: resolveShares("TE", tes),
+    OL: resolveShares("OL", ol),
+    DL: resolveShares("DL", dls),
+    LB: resolveShares("LB", lbs),
+    DB: resolveShares("DB", dbs),
+    K: resolveShares("K", ks.length ? ks : topPlayers(roster, "K", 1)),
+    P: resolveShares("P", ps.length ? ps : topPlayers(roster, "P", 1))
+  };
+  usageProfile.sharesByPosition = shares;
+
+  const qbRotation = buildRotation(qbs, shares.QB);
+  const rbRotation = buildRotation(rbs, shares.RB);
+  const wrRotation = buildRotation(wrs, shares.WR);
+  const teRotation = buildRotation(tes, shares.TE);
+  const olRotation = buildRotation(ol, shares.OL);
+  const dlRotation = buildRotation(dls, shares.DL);
+  const lbRotation = buildRotation(lbs, shares.LB);
+  const dbRotation = buildRotation(dbs, shares.DB);
+  const kRotation = buildRotation(ks.length ? ks : topPlayers(roster, "K", 1), shares.K);
+  const pRotation = buildRotation(ps.length ? ps : topPlayers(roster, "P", 1), shares.P);
+
+  const qb = qbRotation[0]?.player || choosePlayer(rng, roster);
+  const rb = rbRotation[0]?.player || choosePlayer(rng, roster);
+  const k = kRotation[0]?.player || choosePlayer(rng, roster);
+  const p = pRotation[0]?.player || choosePlayer(rng, roster);
+
+  const basePassLean = team.scheme?.passRate ?? 0.54;
+  const coachingDelta = ((team.coaching?.offense || 72) - 72) / 180;
+  const weeklyPlan = team.weeklyPlan || null;
+  const passLean = clamp(
+    basePassLean + (qb.overall - rb.overall) * 0.0035 + coachingDelta + (weeklyPlan?.passLeanDelta || 0),
+    0.3,
+    0.78
+  );
+  const chemistry = team.chemistry || 70;
+  const schemeFit = roster.length
+    ? roster.reduce((sum, player) => sum + (player.schemeFit || 70), 0) / roster.length
+    : 70;
+  const unitRatings = {
+    passBlocking: averageRatingFromRotation(olRotation.slice(0, 5), ["passBlocking", "awareness", "strength"], 70),
+    runBlocking: averageRatingFromRotation(olRotation.slice(0, 5), ["runBlocking", "strength", "awareness"], 70),
+    passRush: mean([
+      averageRatingFromRotation(dlRotation, ["passRush", "blockShedding", "playRecognition"], 68),
+      averageRatingFromRotation(lbRotation, ["passRush", "blockShedding", "pursuit"], 66)
+    ]),
+    runDefense: mean([
+      averageRatingFromRotation(dlRotation, ["tackle", "blockShedding", "strength"], 68),
+      averageRatingFromRotation(lbRotation, ["tackle", "pursuit", "hitPower"], 68)
+    ]),
+    coverageShort:
+      averageCoverageDepthFromRotation(dbRotation, "short", 68) * 0.62 +
+      averageCoverageDepthFromRotation(lbRotation, "short", 65) * 0.38,
+    coverageMedium:
+      averageCoverageDepthFromRotation(dbRotation, "medium", 68) * 0.7 +
+      averageCoverageDepthFromRotation(lbRotation, "medium", 64) * 0.3,
+    coverageDeep:
+      averageCoverageDepthFromRotation(dbRotation, "deep", 68) * 0.82 +
+      averageCoverageDepthFromRotation(lbRotation, "deep", 62) * 0.18,
+    tackling: mean([
+      averageRatingFromRotation(lbRotation, ["tackle", "pursuit", "hitPower"], 68),
+      averageRatingFromRotation(dbRotation, ["tackle", "pursuit", "coverage"], 66)
+    ])
+  };
+  unitRatings.coverage = mean([unitRatings.coverageShort, unitRatings.coverageMedium, unitRatings.coverageDeep]);
+  return {
+    team,
+    roster,
+    gameDayRoster: selection.receipt,
+    qb,
+    rb,
+    wrs,
+    tes,
+    ol,
+    dls,
+    lbs,
+    dbs,
+    qbRotation,
+    rbRotation,
+    wrRotation,
+    teRotation,
+    olRotation,
+    dlRotation,
+    lbRotation,
+    dbRotation,
+    kRotation,
+    pRotation,
+    k,
+    p,
+    passLean,
+    weeklyPlan,
+    // Standing game-day posture; set only on the controlled team. Read through
+    // the situationalCalls.js normalizer, so an unset value is exactly neutral.
+    situationalCalls: team.situationalCalls || null,
+    chemistry,
+    schemeFit,
+    roleNames: DEPTH_CHART_ROLE_NAMES,
+    usageProfile,
+    unitRatings,
+    coverageShell: buildCoverageShell(team, weeklyPlan)
+  };
+}
+
+function chooseReceiver(rng, offenseContext) {
+  const targetRbRate = offenseContext.team?.coaching?.tendencies?.targetRbRate || 1;
+  const targetTeRate = offenseContext.team?.coaching?.tendencies?.targetTeRate || 1;
+  const entries = [
+    ...offenseContext.wrRotation.map((row, index) => ({
+      player: row.player,
+      weight: row.usageWeight * (index === 0 ? 1.18 : index === 1 ? 1.08 : index === 2 ? 0.98 : 0.58)
+    })),
+    ...offenseContext.teRotation.map((row, index) => ({
+      player: row.player,
+      weight: row.usageWeight * (index === 0 ? 0.96 : 0.54) * targetTeRate
+    })),
+    ...offenseContext.rbRotation.map((row, index) => ({
+      player: row.player,
+      weight: row.usageWeight * (index === 0 ? 0.24 : index === 1 ? 0.13 : 0.06) * targetRbRate
+    }))
+  ];
+  return chooseWeightedEntity(rng, entries);
+}
+
+function recordTeamTackle(deltaMap, rng, defenseContext) {
+  const tackler = chooseFromRotation(rng, [
+    ...defenseContext.lbRotation,
+    ...defenseContext.dbRotation,
+    ...defenseContext.dlRotation
+  ]);
+  if (!tackler) return null;
+  const solo = rng.chance(0.62) ? 1 : 0;
+  const ast = solo ? 0 : 1;
+  addDelta(deltaMap, tackler.id, { defense: { tackles: 1, solo, ast } });
+  return tackler;
+}
+
+function maybeRecordPassDefended(deltaMap, rng, defenseContext, bucket = "medium", coverageShell = null, chance = 0.62) {
+  if (!rng.chance(chance)) return;
+  const defender = chooseCoverageDefender(rng, defenseContext, bucket, coverageShell, false);
+  if (!defender) return;
+  addDelta(deltaMap, defender.id, { defense: { passDefended: 1 } });
+}
+
+function simulateDrive(offenseContext, defenseContext, rng, mode, situational = {}) {
+  const driveDeltas = new Map();
+  // Two-minute drill (end of either half, offense trailing or tied). The
+  // posture shifts the play-budget range and pass lean only — the budget is
+  // still exactly one draw, and the default posture shifts nothing.
+  const twoMinuteDrill = isTwoMinuteDrill(situational.elapsedSeconds || 0, situational.scoreDifferential || 0);
+  const twoMinuteCall = twoMinuteDrill ? twoMinuteAdjustment(offenseContext.situationalCalls) : null;
+  const playBudgetShift = twoMinuteCall?.playBudget || 0;
+  const situationalLean = twoMinuteCall?.passLean || 0;
+  const plays = mode === "play"
+    ? rng.int(Math.max(2, 6 + playBudgetShift), 10 + playBudgetShift)
+    : rng.int(Math.max(2, 3 + playBudgetShift), 7 + playBudgetShift);
+  const fourthDownAggression =
+    weeklyPlanUnitAggression(offenseContext.weeklyPlan, "offense") +
+    fourthDownAggressionAdjustment(offenseContext.situationalCalls);
+  let driveYards = 0;
+  let turnover = false;
+  let turnoverType = null;
+  let passPlays = 0;
+  let rushPlays = 0;
+  const playLog = [];
+  let lastReceiver = null;
+  let lastRunner = offenseContext.rb;
+
+  // ── Situational play-calling state (S29) ──────────────────────────────────
+  // Down/distance/field-position are a real, tracked-within-the-drive state
+  // machine now (see playCalling.js) — a synthetic per-drive estimate, not a
+  // full cross-drive field-position engine (this abstraction doesn't track
+  // possessions' starting spot; 25 is a plausible average).
+  const scoreDifferential = situational.scoreDifferential || 0;
+  const elapsedSeconds = situational.elapsedSeconds || 0;
+  let down = 1;
+  let distance = 10;
+  let fieldPosition = 25;
+  let forcedFourthDownOutcome = null;
+  const timedDrive = situational.overtime === true;
+  const availableSeconds = situational.secondsRemaining ?? Infinity;
+  let timedSeconds = 0;
+  let executedPlays = 0;
+  let clockExpired = false;
+  const consumeTime = (seconds) => {
+    if (!timedDrive) return true;
+    if (timedSeconds + seconds > availableSeconds) {
+      timedSeconds = availableSeconds;
+      clockExpired = true;
+      return false;
+    }
+    timedSeconds += seconds;
+    return true;
+  };
+  const driveSeconds = (min, max) => timedDrive ? timedSeconds : rng.int(min, max);
+  const applyDownProgression = (yardsThisPlay) => {
+    fieldPosition = clamp(fieldPosition + yardsThisPlay, 1, 99);
+    if (yardsThisPlay >= distance) {
+      down = 1;
+      distance = 10;
+    } else if (down === 4) {
+      turnover = true;
+      turnoverType = "DOWNS";
+    } else {
+      down += 1;
+      distance = Math.max(1, distance - yardsThisPlay);
+    }
+  };
+
+  const qb = offenseContext.qb;
+  const qbArm = mean([rating(qb, "throwPower"), rating(qb, "throwOnRun"), rating(qb, "discipline")]);
+  const linePass = offenseContext.unitRatings?.passBlocking || 70;
+  const lineRun = offenseContext.unitRatings?.runBlocking || 70;
+  const passRush = defenseContext.unitRatings?.passRush || 70;
+  const runDefense = defenseContext.unitRatings?.runDefense || 70;
+  const coverage = defenseContext.unitRatings?.coverage || 70;
+  const tackling = defenseContext.unitRatings?.tackling || 70;
+
+  // ── Opponent-aware gameplanning (S63) ───────────────────────────────────────
+  // These unit ratings already decided how well a play *worked*; until now they
+  // never decided which play was *called*. The edge is relative (where is this
+  // defense soft, not how good is it), bounded, and gated on coaching quality —
+  // see src/engine/matchupEdge.js.
+  const matchupEdge = matchupEdgeFromContexts(offenseContext, defenseContext);
+  const matchupLean = matchupEdge.delta;
+
+  const addPlay = (entry) => {
+    playLog.push({
+      offenseTeamId: offenseContext.team.id,
+      defenseTeamId: defenseContext.team.id,
+      down,
+      distance,
+      fieldPosition,
+      ...(twoMinuteDrill ? { twoMinute: true } : null),
+      ...entry
+    });
+  };
+
+  for (let i = 0; i < plays; i += 1) {
+    if (turnover) break;
+    // Synthetic per-play clock costs apply only to overtime. Refuse the next
+    // snap before generating its outcomes/stats when the period has expired.
+    if (!consumeTime(timedDrive ? rng.int(8, 35) : 0)) break;
+
+    // ── Fourth-down decision (S29) — the real go/kick/punt brain ───────────
+    if (down === 4) {
+      const decision = chooseFourthDownDecision(
+        {
+          distance,
+          fieldPosition,
+          scoreDifferential,
+          elapsedSeconds,
+          aggressionDelta: fourthDownAggression
+        },
+        rng
+      );
+      if (decision === "field-goal") {
+        forcedFourthDownOutcome = "field-goal";
+        break;
+      }
+      if (decision === "punt") {
+        forcedFourthDownOutcome = "punt";
+        break;
+      }
+      // decision === "go" falls through to a real play attempt below.
+    }
+
+    executedPlays += 1;
+    const yardsBeforePlay = driveYards;
+    const playType = choosePlayType(
+      { down, distance, fieldPosition, scoreDifferential, elapsedSeconds, matchupLean, situationalLean },
+      offenseContext,
+      rng
+    );
+    if (playType === "pass") {
+      passPlays += 1;
+      const qbSpeed = rating(qb, "speed");
+      const scrambleChance = clamp(0.055 + (qbSpeed - 70) / 520, 0.03, 0.12);
+      if (rng.chance(scrambleChance)) {
+        const scrambleYards = clamp(
+          rng.int(-1, 12) + Math.round((qbSpeed - defenseContext.team.defenseRating) / 18),
+          -2,
+          18
+        );
+        driveYards += scrambleYards;
+        addDelta(driveDeltas, offenseContext.qb.id, {
+          rushing: { att: 1, yards: scrambleYards, firstDowns: scrambleYards >= 10 ? 1 : 0 }
+        });
+        if (scrambleYards > 0) addDelta(driveDeltas, offenseContext.qb.id, { rushing: { long: scrambleYards } });
+        if (scrambleYards < 0) {
+          const tackler = recordTeamTackle(driveDeltas, rng, defenseContext);
+          if (tackler) addDelta(driveDeltas, tackler.id, { defense: { tfl: 1 } });
+        } else {
+          recordTeamTackle(driveDeltas, rng, defenseContext);
+        }
+        addPlay({
+          type: "scramble",
+          yards: scrambleYards,
+          playerId: qb.id,
+          player: qb.name,
+          description: `${qb.name} scrambles for ${scrambleYards} yards`
+        });
+        if (!turnover) applyDownProgression(scrambleYards);
+        continue;
+      }
+      const targetProfile = choosePassTargetProfile(rng, offenseContext, defenseContext, qb);
+      const receiver = targetProfile.receiver;
+      const routeFamily = targetProfile.routeFamily;
+      const routeTraits = routeProfile(routeFamily);
+      const depthBucket = targetProfile.depthBucket;
+      const depthProfile = PASS_DEPTH_PROFILES[depthBucket];
+      const depthAccuracy = quarterbackDepthAccuracy(qb?.ratings, depthBucket);
+      const coverageShell = targetProfile.coverageShell;
+      const depthCoverage =
+        depthBucket === "short"
+          ? defenseContext.unitRatings?.coverageShort || coverage
+          : depthBucket === "deep"
+            ? defenseContext.unitRatings?.coverageDeep || coverage
+            : defenseContext.unitRatings?.coverageMedium || coverage;
+      const receiverHands = mean([
+        rating(receiver, "catching"),
+        rating(receiver, "spectacularCatch", rating(receiver, "catching")),
+        rating(receiver, "discipline", rating(receiver, "catching"))
+      ]);
+      const receiverSeparation = mean([
+        rating(receiver, "routeRunning", rating(receiver, "catching")),
+        rating(receiver, "release", rating(receiver, "catching")),
+        rating(receiver, "speed")
+      ]);
+      const routeModifier =
+        routeTraits.vsMan * coverageShell.manRate +
+        routeTraits.vsZone * coverageShell.zoneRate +
+        routeTraits.vsMiddleOpen * coverageShell.middleOpenRate +
+        routeTraits.vsMiddleClosed * coverageShell.middleClosedRate;
+      const completionChance = clamp(
+        0.44 +
+          depthProfile.completionBase +
+          routeModifier +
+          (depthAccuracy - 70) / 245 +
+          (receiverHands - 70) / 420 +
+          (receiverSeparation - depthCoverage) / 520 +
+          (linePass - passRush) / 360 +
+          (offenseContext.team.offenseRating - defenseContext.team.defenseRating) / 430 -
+          (depthCoverage - 70) / 370,
+        depthBucket === "deep" ? 0.24 : depthBucket === "medium" ? 0.42 : 0.52,
+        depthProfile.maxCompletion
+      );
+      addDelta(driveDeltas, qb.id, { passing: { att: 1 } });
+
+      if (rng.chance(completionChance)) {
+        const airYards = clamp(
+          rng.int(depthProfile.airYards[0], depthProfile.airYards[1]) +
+            Math.round(routeTraits.airYardsDelta || 0) +
+            Math.round((qbArm - 70) / 7) +
+            Math.round((receiverSeparation - 70) / 10) +
+            Math.round((receiverSeparation - depthCoverage) / 16),
+          depthProfile.airYards[0],
+          depthProfile.airYards[1] + (depthBucket === "deep" ? 9 : 5)
+        );
+        const yac = clamp(
+          rng.int(depthProfile.yac[0], depthProfile.yac[1]) +
+            Math.round(routeTraits.yacBonus || 0) +
+            Math.round((rating(receiver, "elusiveness", rating(receiver, "agility")) - tackling) / 10) +
+            Math.round((rating(receiver, "speed") - 70) / 12),
+          depthProfile.yac[0] - 1,
+          depthBucket === "short" ? 24 : depthBucket === "medium" ? 18 : 10
+        );
+        const yards = Math.max(0, airYards + yac);
+        const firstDown = yards >= 10 ? 1 : 0;
+        driveYards += yards;
+        addDelta(driveDeltas, qb.id, {
+          passing: {
+            cmp: 1,
+            yards,
+            firstDowns: firstDown,
+            long: yards
+          }
+        });
+        if (receiver) {
+          lastReceiver = receiver;
+          addDelta(driveDeltas, receiver.id, {
+            receiving: { targets: 1, rec: 1, yards, yac, firstDowns: firstDown, long: yards }
+          });
+        }
+        recordTeamTackle(driveDeltas, rng, defenseContext);
+        addPlay({
+          type: "pass",
+          yards,
+          playerId: qb.id,
+          targetId: receiver?.id || null,
+          player: qb.name,
+          target: receiver?.name || "receiver",
+          routeFamily,
+          depthBucket,
+          coveragePrimary: coverageShell.primary,
+          coverageShell: coverageShell.shell,
+          description: `${qb.name} hits ${receiver?.name || "receiver"} on a ${routeFamily} ${depthBucket} concept for ${yards} yards`
+        });
+      } else {
+        const sackChance = clamp(
+          0.07 +
+            (passRush - linePass) / 310 +
+            (defenseContext.team.defenseRating - offenseContext.team.offenseRating) / 520 +
+            depthProfile.sackDelta +
+            weeklyPlanUnitAggression(defenseContext.weeklyPlan, "defense") * 0.08 -
+            (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.008,
+          0.05,
+          0.24
+        );
+        const intChance = clamp(
+          0.018 +
+            (depthCoverage - depthAccuracy) / 360 +
+            (defenseContext.team.defenseRating - qb.overall) / 640 -
+            completionChance * 0.015 +
+            depthProfile.intDelta -
+            (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.003,
+          0.01,
+          0.07
+        );
+        if (rng.chance(intChance)) {
+          turnover = true;
+          turnoverType = "INT";
+          const defender = chooseCoverageDefender(rng, defenseContext, depthBucket, coverageShell, true);
+          addDelta(driveDeltas, qb.id, { passing: { int: 1 } });
+          if (defender) {
+            addDelta(driveDeltas, defender.id, { defense: { int: 1, passDefended: 1 } });
+          }
+          addPlay({
+            type: "interception",
+            yards: 0,
+            playerId: qb.id,
+            targetId: defender?.id || null,
+            player: qb.name,
+            target: defender?.name || "defense",
+            routeFamily,
+            depthBucket,
+            coveragePrimary: coverageShell.primary,
+            coverageShell: coverageShell.shell,
+            description: `${qb.name} is intercepted by ${defender?.name || "the defense"}`
+          });
+        } else if (rng.chance(sackChance)) {
+          const sackYards = rng.int(5, 11);
+          driveYards -= sackYards;
+          addDelta(driveDeltas, qb.id, { passing: { sacks: 1, sackYards } });
+          const sacker = chooseWeightedEntity(rng, [
+            ...defenseContext.dlRotation.map((row) => ({ player: row.player, weight: row.usageWeight * 1.18 })),
+            ...defenseContext.lbRotation.map((row) => ({ player: row.player, weight: row.usageWeight * 0.76 })),
+            ...defenseContext.dbRotation.map((row) => ({ player: row.player, weight: row.usageWeight * 0.12 }))
+          ]);
+          if (sacker) addDelta(driveDeltas, sacker.id, { defense: { sacks: 1, tackles: 1, qbHits: 1, tfl: 1 } });
+          const pressureLinemen = offenseContext.olRotation.slice(0, 5).map((row) => row.player);
+          const beaten = choosePlayer(rng, pressureLinemen);
+          if (beaten) addDelta(driveDeltas, beaten.id, { blocking: { sacksAllowed: 1, pressuresAllowed: 1 } });
+          addPlay({
+            type: "sack",
+            yards: -sackYards,
+            playerId: sacker?.id || null,
+            player: sacker?.name || "Defense",
+            description: `${sacker?.name || "Defense"} sacks ${qb.name} for ${sackYards} yards`
+          });
+        } else {
+          if (receiver) {
+            addDelta(driveDeltas, receiver.id, { receiving: { targets: 1 } });
+            const dropChance = clamp(
+              0.032 +
+                (depthBucket === "deep" ? 0.018 : depthBucket === "medium" ? 0.008 : 0) +
+                (routeTraits.pbuDelta > 0 ? 0.004 : -0.002) -
+                (receiverHands - 70) / 500,
+              0.01,
+              0.08
+            );
+            if (rng.chance(dropChance)) addDelta(driveDeltas, receiver.id, { receiving: { drops: 1 } });
+          }
+          maybeRecordPassDefended(
+            driveDeltas,
+            rng,
+            defenseContext,
+            depthBucket,
+            coverageShell,
+            clamp(depthProfile.pbuChance + (routeTraits.pbuDelta || 0), 0.28, 0.9)
+          );
+          addPlay({
+            type: "incomplete",
+            yards: 0,
+            playerId: qb.id,
+            targetId: receiver?.id || null,
+            player: qb.name,
+            target: receiver?.name || "receiver",
+            routeFamily,
+            depthBucket,
+            coveragePrimary: coverageShell.primary,
+            coverageShell: coverageShell.shell,
+            description: `${qb.name} incomplete ${depthBucket} to ${receiver?.name || "receiver"} on a ${routeFamily} concept`
+          });
+        }
+      }
+    } else {
+      rushPlays += 1;
+      const runner = chooseFromRotation(rng, offenseContext.rbRotation) || offenseContext.rb;
+      lastRunner = runner;
+      const runnerVision = mean([
+        rating(runner, "speed"),
+        rating(runner, "acceleration"),
+        rating(runner, "elusiveness"),
+        rating(runner, "breakTackle"),
+        rating(runner, "trucking")
+      ]);
+      const yards = clamp(
+        rng.int(-3, 8) +
+          Math.round((runnerVision - 70) / 7) +
+          Math.round((lineRun - runDefense) / 9) -
+          Math.round((tackling - 70) / 18),
+        -4,
+        27
+      );
+      const brokenTackleChance = clamp(
+        0.08 + (mean([rating(runner, "breakTackle"), rating(runner, "trucking"), rating(runner, "elusiveness")]) - tackling) / 260,
+        0.04,
+        0.42
+      );
+      const brokenTackles = yards > 2 && rng.chance(brokenTackleChance) ? 1 : 0;
+      const firstDown = yards >= 10 ? 1 : 0;
+      driveYards += yards;
+      addDelta(driveDeltas, runner.id, {
+        rushing: { att: 1, yards, firstDowns: firstDown, brokenTackles, long: yards }
+      });
+      const tackler = recordTeamTackle(driveDeltas, rng, defenseContext);
+      if (yards < 0 && tackler) addDelta(driveDeltas, tackler.id, { defense: { tfl: 1 } });
+
+      const fumbleChance = clamp(
+        0.018 -
+          (rating(runner, "carrying") - 70) / 520 -
+          (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.0015,
+        0.004,
+        0.028
+      );
+      if (rng.chance(fumbleChance)) {
+        turnover = true;
+        turnoverType = "FUMBLE";
+        addDelta(driveDeltas, runner.id, { rushing: { fumbles: 1 } });
+        const recoverer = chooseFromRotation(rng, [
+          ...defenseContext.dlRotation,
+          ...defenseContext.lbRotation,
+          ...defenseContext.dbRotation
+        ]);
+        if (recoverer) addDelta(driveDeltas, recoverer.id, { defense: { ff: 1, fr: 1 } });
+        addPlay({
+          type: "fumble",
+          yards,
+          playerId: runner.id,
+          targetId: recoverer?.id || null,
+          player: runner.name,
+          target: recoverer?.name || "defense",
+          description: `${runner.name} runs for ${yards} yards and fumbles`
+        });
+      } else {
+        addPlay({
+          type: "run",
+          yards,
+          playerId: runner.id,
+          player: runner.name,
+          description: `${runner.name} rushes for ${yards} yards`
+        });
+      }
+    }
+
+    // ── Down/distance/field-position progression (S29) ──────────────────────
+    // A single generic delta read (post-play minus pre-play driveYards) works
+    // for every remaining play type — pass completion/incompletion, sack,
+    // run — without touching any of the yardage formulas above. Scrambles
+    // apply this same progression inline above (they `continue` early).
+    if (!turnover) {
+      applyDownProgression(driveYards - yardsBeforePlay);
+    }
+  }
+
+  // Terminal aggregate scoring/kicking is another timed event. Keep partial
+  // yardage and stats but never generate a score beyond the available clock.
+  if (!turnover && !clockExpired) consumeTime(timedDrive ? rng.int(4, 8) : 0);
+  if (clockExpired) return {
+    outcome: "clock-expired", points: 0, yards: Math.max(-12, driveYards),
+    turnover: false, turnoverType: null, seconds: timedSeconds,
+    deltas: driveDeltas, plays: executedPlays, passPlays, rushPlays, playLog,
+    scoringEvent: null, possessionEnded: false
+  };
+  driveYards = Math.max(-12, driveYards);
+  const offensePower = offenseContext.team.offenseRating + driveYards * 0.15 + rng.int(-6, 6);
+  const offenseCoachBoost = ((offenseContext.team.coaching?.offense || 72) - 72) * 0.12;
+  const defenseCoachBoost = ((defenseContext.team.coaching?.defense || 72) - 72) * 0.12;
+  const offenseMorale = clamp(
+    offenseContext.roster.slice(0, 22).reduce((sum, p) => sum + (p.morale || 70), 0) / 22,
+    45,
+    98
+  );
+  const defenseMorale = clamp(
+    defenseContext.roster.slice(0, 22).reduce((sum, p) => sum + (p.morale || 70), 0) / 22,
+    45,
+    98
+  );
+  const moraleOffset = (offenseMorale - defenseMorale) * 0.06;
+  const fitOffset = ((offenseContext.schemeFit || 70) - (defenseContext.schemeFit || 70)) * 0.035;
+  const chemistryOffset = ((offenseContext.chemistry || 70) - (defenseContext.chemistry || 70)) * 0.03;
+  const offenseStrategyBoost =
+    (offenseContext.weeklyPlan?.offenseBoost || 0) +
+    (offenseContext.weeklyPlan?.tempoDelta || 0) * 8 +
+    (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.25;
+  const defenseStrategyBoost =
+    (defenseContext.weeklyPlan?.defenseBoost || 0) +
+    weeklyPlanUnitAggression(defenseContext.weeklyPlan, "defense") * 8 +
+    (defenseContext.weeklyPlan?.disciplineBoost || 0) * 0.18;
+  const defensePower = defenseContext.team.defenseRating + rng.int(-5, 5);
+  const adjustedOffensePower = offensePower + offenseCoachBoost + moraleOffset + fitOffset + chemistryOffset + offenseStrategyBoost;
+  const adjustedDefensePower = defensePower + defenseCoachBoost + defenseStrategyBoost;
+
+  if (turnover) {
+    return {
+      outcome: DRIVE_OUTCOMES.TURNOVER,
+      points: 0,
+      yards: driveYards,
+      turnover: true,
+      turnoverType,
+      seconds: driveSeconds(70, 185),
+      deltas: driveDeltas,
+      plays: timedDrive ? executedPlays : plays,
+      passPlays,
+      rushPlays,
+      playLog,
+      scoringEvent: null
+    };
+  }
+
+  // ── Fourth-down-forced kick/punt (S29) ────────────────────────────────────
+  // The fourth-down decision model chose to kick or punt rather than go for
+  // it — attempt it now, at the real in-drive field position, instead of
+  // falling into the aggregate power-differential cascade below (which is
+  // reserved for drives that never hit a real fourth down within their
+  // rolled play budget).
+  if (forcedFourthDownOutcome === "field-goal") {
+    const fgYards = fieldGoalDistanceFromPosition(fieldPosition);
+    addDelta(driveDeltas, offenseContext.k.id, { kicking: { fga: 1 } });
+    const fgGood = rng.chance(clamp(0.75 - Math.max(0, fgYards - 35) * 0.013 + (offenseContext.k.overall - 75) / 360, 0.3, 0.95));
+    if (fgGood) {
+      const short = fgYards < 40 ? 1 : 0;
+      const deep = fgYards >= 50 ? 1 : 0;
+      addDelta(driveDeltas, offenseContext.k.id, {
+        kicking: { fgm: 1, long: fgYards, fgM40: short, fgA40: short, fgM50: deep, fgA50: deep }
+      });
+      addPlay({
+        type: "field-goal",
+        yards: 0,
+        playerId: offenseContext.k.id,
+        player: offenseContext.k.name,
+        description: `${offenseContext.k.name} hits a ${fgYards}-yard field goal on fourth down`
+      });
+      return {
+        outcome: DRIVE_OUTCOMES.FIELD_GOAL,
+        points: 3,
+        yards: driveYards,
+        turnover: false,
+        turnoverType: null,
+        seconds: driveSeconds(70, 180),
+        deltas: driveDeltas,
+        plays: timedDrive ? executedPlays : plays,
+        passPlays,
+        rushPlays,
+        playLog,
+        scoringEvent: { teamId: offenseContext.team.id, type: "FG", points: 3, description: `${offenseContext.k.name} makes a ${fgYards}-yard field goal` }
+      };
+    }
+    const short = fgYards < 40 ? 1 : 0;
+    const deep = fgYards >= 50 ? 1 : 0;
+    addDelta(driveDeltas, offenseContext.k.id, { kicking: { fgA40: short, fgA50: deep } });
+    addPlay({
+      type: "missed-field-goal",
+      yards: 0,
+      playerId: offenseContext.k.id,
+      player: offenseContext.k.name,
+      description: `${offenseContext.k.name} misses from ${fgYards} yards on fourth down`
+    });
+    return {
+      outcome: DRIVE_OUTCOMES.TURNOVER,
+      points: 0,
+      yards: driveYards,
+      turnover: true,
+      turnoverType: "MISSED_FG",
+      seconds: driveSeconds(70, 180),
+      deltas: driveDeltas,
+      plays: timedDrive ? executedPlays : plays,
+      passPlays,
+      rushPlays,
+      playLog,
+      scoringEvent: null
+    };
+  }
+  if (forcedFourthDownOutcome === "punt") {
+    const puntYards = rng.int(38, 53);
+    addDelta(driveDeltas, offenseContext.p.id, { punting: { punts: 1, yards: puntYards } });
+    if (rng.chance(0.37)) addDelta(driveDeltas, offenseContext.p.id, { punting: { in20: 1 } });
+    if (rng.chance(0.08)) addDelta(driveDeltas, offenseContext.p.id, { punting: { touchbacks: 1 } });
+    addPlay({
+      type: "punt",
+      yards: puntYards,
+      playerId: offenseContext.p.id,
+      player: offenseContext.p.name,
+      description: `${offenseContext.p.name} punts ${puntYards} yards on fourth down`
+    });
+    return {
+      outcome: DRIVE_OUTCOMES.PUNT,
+      points: 0,
+      yards: driveYards,
+      turnover: false,
+      turnoverType: null,
+      seconds: driveSeconds(65, 165),
+      deltas: driveDeltas,
+      plays: timedDrive ? executedPlays : plays,
+      passPlays,
+      rushPlays,
+      playLog,
+      scoringEvent: null
+    };
+  }
+
+  if (adjustedOffensePower > adjustedDefensePower + 12 || driveYards >= 66) {
+    const passingTd = passPlays >= rushPlays ? rng.chance(offenseContext.passLean) : rng.chance(0.35);
+    let description = "";
+    if (passingTd) {
+      const receiver = lastReceiver || chooseReceiver(rng, offenseContext);
+      addDelta(driveDeltas, qb.id, { passing: { td: 1 } });
+      if (receiver) addDelta(driveDeltas, receiver.id, { receiving: { td: 1 } });
+      description = `${qb.name} finds ${receiver?.name || "a receiver"} for the touchdown`;
+    } else {
+      const runner = lastRunner || offenseContext.rb;
+      addDelta(driveDeltas, runner.id, { rushing: { td: 1 } });
+      description = `${runner.name} punches in the touchdown`;
+    }
+    const skipTry = situational.skipTouchdownTry === true;
+    if (!skipTry) addDelta(driveDeltas, offenseContext.k.id, { kicking: { xpa: 1 } });
+    const xpGood = !skipTry && rng.chance(clamp(0.93 + (offenseContext.k.overall - 75) / 320, 0.86, 0.99));
+    if (xpGood) addDelta(driveDeltas, offenseContext.k.id, { kicking: { xpm: 1 } });
+    addPlay({
+      type: "score",
+      yards: 0,
+      playerId: passingTd ? qb.id : (lastRunner || offenseContext.rb)?.id || null,
+      player: passingTd ? qb.name : (lastRunner || offenseContext.rb)?.name || offenseContext.rb.name,
+      description
+    });
+    return {
+      outcome: DRIVE_OUTCOMES.TOUCHDOWN,
+      points: xpGood ? 7 : 6,
+      yards: driveYards,
+      turnover: false,
+      turnoverType: null,
+      seconds: driveSeconds(95, 225),
+      deltas: driveDeltas,
+      plays: timedDrive ? executedPlays : plays,
+      passPlays,
+      rushPlays,
+      playLog,
+      scoringEvent: {
+        teamId: offenseContext.team.id,
+        type: "TD",
+        points: xpGood ? 7 : 6,
+        description: skipTry ? description : xpGood ? `${description} (XP good)` : `${description} (XP missed)`
+      }
+    };
+  }
+
+  if (adjustedOffensePower > adjustedDefensePower + 2 || driveYards >= 42) {
+    const distance = clamp(22 + rng.int(0, 36), 18, 58);
+    addDelta(driveDeltas, offenseContext.k.id, { kicking: { fga: 1 } });
+    const fgGood = rng.chance(clamp(0.75 - Math.max(0, distance - 35) * 0.013 + (offenseContext.k.overall - 75) / 360, 0.3, 0.95));
+    if (fgGood) {
+      const short = distance < 40 ? 1 : 0;
+      const deep = distance >= 50 ? 1 : 0;
+      addDelta(driveDeltas, offenseContext.k.id, {
+        kicking: { fgm: 1, long: distance, fgM40: short, fgA40: short, fgM50: deep, fgA50: deep }
+      });
+      addPlay({
+        type: "field-goal",
+        yards: 0,
+        playerId: offenseContext.k.id,
+        player: offenseContext.k.name,
+        description: `${offenseContext.k.name} hits a ${distance}-yard field goal`
+      });
+      return {
+        outcome: DRIVE_OUTCOMES.FIELD_GOAL,
+        points: 3,
+        yards: driveYards,
+        turnover: false,
+        turnoverType: null,
+        seconds: driveSeconds(70, 180),
+        deltas: driveDeltas,
+        plays: timedDrive ? executedPlays : plays,
+        passPlays,
+        rushPlays,
+        playLog,
+        scoringEvent: {
+          teamId: offenseContext.team.id,
+          type: "FG",
+          points: 3,
+          description: `${offenseContext.k.name} makes a ${distance}-yard field goal`
+        }
+      };
+    }
+    const short = distance < 40 ? 1 : 0;
+    const deep = distance >= 50 ? 1 : 0;
+    addDelta(driveDeltas, offenseContext.k.id, { kicking: { fgA40: short, fgA50: deep } });
+    addPlay({
+      type: "missed-field-goal",
+      yards: 0,
+      playerId: offenseContext.k.id,
+      player: offenseContext.k.name,
+      description: `${offenseContext.k.name} misses from ${distance} yards`
+    });
+    return {
+      outcome: DRIVE_OUTCOMES.TURNOVER,
+      points: 0,
+      yards: driveYards,
+      turnover: true,
+      turnoverType: "MISSED_FG",
+      seconds: driveSeconds(70, 180),
+      deltas: driveDeltas,
+      plays: timedDrive ? executedPlays : plays,
+      passPlays,
+      rushPlays,
+      playLog,
+      scoringEvent: null
+    };
+  }
+
+  const puntYards = rng.int(38, 53);
+  addDelta(driveDeltas, offenseContext.p.id, { punting: { punts: 1, yards: puntYards } });
+  if (rng.chance(0.37)) addDelta(driveDeltas, offenseContext.p.id, { punting: { in20: 1 } });
+  if (rng.chance(0.08)) addDelta(driveDeltas, offenseContext.p.id, { punting: { touchbacks: 1 } });
+  addPlay({
+    type: "punt",
+    yards: puntYards,
+    playerId: offenseContext.p.id,
+    player: offenseContext.p.name,
+    description: `${offenseContext.p.name} punts ${puntYards} yards`
+  });
+
+  return {
+    outcome: DRIVE_OUTCOMES.PUNT,
+    points: 0,
+    yards: driveYards,
+    turnover: false,
+    turnoverType: null,
+    seconds: driveSeconds(65, 165),
+    deltas: driveDeltas,
+    plays: timedDrive ? executedPlays : plays,
+    passPlays,
+    rushPlays,
+    playLog,
+    scoringEvent: null
+  };
+}
+
+function collectStarters(teamContext) {
+  const dbStarterCount = (teamContext.usageProfile?.sharesByPosition?.DB || []).filter((share) => share >= 0.55).length;
+  const lbStarterCount = Math.max(
+    2,
+    (teamContext.usageProfile?.sharesByPosition?.LB || []).filter((share) => share >= 0.52).length
+  );
+  const wrStarterCount = Math.max(
+    2,
+    (teamContext.usageProfile?.sharesByPosition?.WR || []).filter((share) => share >= 0.58).length
+  );
+  return [
+    ...(teamContext.qbRotation.slice(0, 1).map((row) => row.player)),
+    ...(teamContext.olRotation.slice(0, 5).map((row) => row.player)),
+    ...(teamContext.rbRotation.slice(0, 1).map((row) => row.player)),
+    ...(teamContext.wrRotation.slice(0, wrStarterCount).map((row) => row.player)),
+    ...(teamContext.teRotation.slice(0, 1).map((row) => row.player)),
+    ...(teamContext.dlRotation.slice(0, 4).map((row) => row.player)),
+    ...(teamContext.lbRotation.slice(0, lbStarterCount).map((row) => row.player)),
+    ...(teamContext.dbRotation.slice(0, Math.max(4, dbStarterCount)).map((row) => row.player)),
+    teamContext.k,
+    teamContext.p
+  ].filter(Boolean);
+}
+
+function applyDriveDeltas(recorder, statBook, year, deltaMap, seasonType = "regular") {
+  for (const [playerId, delta] of deltaMap.entries()) {
+    const player = statBook.getPlayerById(playerId);
+    recorder.statDelta(
+      playerId,
+      year,
+      delta,
+      player ? { teamId: player.teamId, position: player.position, seasonType } : { seasonType }
+    );
+  }
+}
+
+function buildGameId({ year, week = 0, seasonType = "regular", homeTeamId, awayTeamId, label = "game" }) {
+  return `${year}-${seasonType}-${label}-${week}-${awayTeamId}-${homeTeamId}`;
+}
+
+function resolveClock(elapsedSeconds, overtimePeriodSeconds = 600) {
+  if (elapsedSeconds < 3600) {
+    const quarter = Math.min(4, Math.floor(elapsedSeconds / 900) + 1);
+    const quarterElapsed = elapsedSeconds % 900;
+    const remaining = Math.max(0, 900 - quarterElapsed);
+    return {
+      quarter,
+      clock: `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`,
+      label: `Q${quarter}`
+    };
+  }
+  const overtimeElapsed = elapsedSeconds - 3600;
+  const periodIndex = Math.floor(overtimeElapsed / overtimePeriodSeconds);
+  const remaining = overtimePeriodSeconds - (overtimeElapsed % overtimePeriodSeconds);
+  return {
+    quarter: 5 + periodIndex,
+    clock: `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`,
+    label: periodIndex === 0 ? "OT" : `OT${periodIndex + 1}`
+  };
+}
+
+function stampDriveLog(playLog, elapsedStart, driveSeconds, overtimePeriodSeconds = 600, regulation = false) {
+  if (!playLog?.length) return [];
+  return playLog.map((entry, index) => {
+    const elapsedAtPlay = elapsedStart + Math.round(((index + 1) / (playLog.length + 1)) * driveSeconds);
+    const clock = resolveClock(regulation ? Math.min(3599, elapsedAtPlay) : elapsedAtPlay, overtimePeriodSeconds);
+    return {
+      ...entry,
+      quarter: clock.quarter,
+      quarterLabel: clock.label,
+      clock: clock.clock
+    };
+  });
+}
+
+function collectGamePlayerStats(playerGameStats, statBook, deltaMap) {
+  for (const [playerId, delta] of deltaMap.entries()) {
+    const player = statBook.getPlayerById(playerId);
+    if (!player) continue;
+    if (!playerGameStats.has(playerId)) {
+      playerGameStats.set(playerId, {
+        playerId,
+        player: player.name,
+        teamId: player.teamId,
+        pos: player.position,
+        stats: createZeroedSeasonStats()
+      });
+    }
+    mergeStats(playerGameStats.get(playerId).stats, delta);
+  }
+}
+
+function teamGameSummary(
+  teamId,
+  score,
+  totalYards,
+  turnovers,
+  passPlays,
+  rushPlays,
+  playerEntries,
+  playByPlay,
+  drives,
+  possessionSeconds
+) {
+  const teamPlayers = playerEntries.filter((entry) => entry.teamId === teamId);
+  const teamPlays = (playByPlay || []).filter((entry) => entry.offenseTeamId === teamId);
+  const passingYards = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.yards || 0), 0);
+  const rushingYards = teamPlayers.reduce((sum, entry) => sum + (entry.stats.rushing?.yards || 0), 0);
+  const firstDownPlays = teamPlays.filter(
+    (entry) =>
+      !["field-goal", "missed-field-goal", "punt"].includes(entry.type) &&
+      (Number(entry.yards || 0) >= Number(entry.distance || 10) ||
+        Number(entry.fieldPosition || 0) + Number(entry.yards || 0) >= 100)
+  );
+  const firstDowns = firstDownPlays.length;
+  const passingFirstDowns = firstDownPlays.filter((entry) => entry.type === "pass").length;
+  const rushingFirstDowns = firstDownPlays.filter((entry) =>
+    ["run", "scramble"].includes(entry.type)
+  ).length;
+  const thirdDownPlays = teamPlays.filter((entry) => entry.down === 3);
+  const fourthDownPlays = teamPlays.filter(
+    (entry) => entry.down === 4 && !["field-goal", "missed-field-goal", "punt"].includes(entry.type)
+  );
+  const converted = (entry) => Number(entry.yards || 0) >= Number(entry.distance || 10);
+  const passAttempts = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.att || 0), 0);
+  const completions = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.cmp || 0), 0);
+  const sacks = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.sacks || 0), 0);
+  const redZoneDrives = new Set(
+    teamPlays
+      .filter((entry) => Number(entry.fieldPosition || 0) >= 80)
+      .map((entry) => entry.driveNumber)
+      .filter(Boolean)
+  );
+  return {
+    teamId,
+    score,
+    totalYards,
+    passingYards,
+    rushingYards,
+    firstDowns,
+    passingFirstDowns,
+    rushingFirstDowns,
+    turnovers,
+    passPlays,
+    rushPlays,
+    plays: passPlays + rushPlays,
+    drives,
+    yardsPerPlay: Number((totalYards / Math.max(1, passPlays + rushPlays)).toFixed(1)),
+    passAttempts,
+    completions,
+    completionPct: Number(((completions / Math.max(1, passAttempts)) * 100).toFixed(1)),
+    sacks,
+    thirdDowns: thirdDownPlays.length,
+    thirdDownConversions: thirdDownPlays.filter(converted).length,
+    fourthDowns: fourthDownPlays.length,
+    fourthDownConversions: fourthDownPlays.filter(converted).length,
+    redZoneTrips: redZoneDrives.size,
+    possessionSeconds: Math.max(0, Math.round(possessionSeconds || 0))
+  };
+}
+
+function gamePasserRating(passing = {}) {
+  const att = Number(passing.att || 0);
+  if (!att) return 0;
+  const a = clamp((Number(passing.cmp || 0) / att - 0.3) * 5, 0, 2.375);
+  const b = clamp((Number(passing.yards || 0) / att - 3) * 0.25, 0, 2.375);
+  const c = clamp((Number(passing.td || 0) / att) * 20, 0, 2.375);
+  const d = clamp(2.375 - (Number(passing.int || 0) / att) * 25, 0, 2.375);
+  return Number((((a + b + c + d) / 6) * 100).toFixed(1));
+}
+
+function buildPlayerStatGroups(entries) {
+  return {
+    passing: entries
+      .filter((entry) => (entry.stats.passing?.att || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        cmp: entry.stats.passing.cmp,
+        att: entry.stats.passing.att,
+        cmpPct: Number(((entry.stats.passing.cmp / Math.max(1, entry.stats.passing.att)) * 100).toFixed(1)),
+        yds: entry.stats.passing.yards,
+        td: entry.stats.passing.td,
+        int: entry.stats.passing.int,
+        ypa: Number((entry.stats.passing.yards / Math.max(1, entry.stats.passing.att)).toFixed(1)),
+        rate: gamePasserRating(entry.stats.passing),
+        sacks: entry.stats.passing.sacks,
+        sackYds: entry.stats.passing.sackYards,
+        firstDowns: entry.stats.passing.firstDowns,
+        lng: entry.stats.passing.long,
+        offSn: entry.stats.snaps?.offense || 0
+      }))
+      .sort((a, b) => b.yds - a.yds || b.att - a.att),
+    rushing: entries
+      .filter((entry) => (entry.stats.rushing?.att || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        att: entry.stats.rushing.att,
+        yds: entry.stats.rushing.yards,
+        td: entry.stats.rushing.td,
+        ypa: Number((entry.stats.rushing.yards / Math.max(1, entry.stats.rushing.att)).toFixed(1)),
+        lng: entry.stats.rushing.long,
+        firstDowns: entry.stats.rushing.firstDowns,
+        fmb: entry.stats.rushing.fumbles,
+        brkTkl: entry.stats.rushing.brokenTackles,
+        offSn: entry.stats.snaps?.offense || 0
+      }))
+      .sort((a, b) => b.yds - a.yds || b.att - a.att),
+    receiving: entries
+      .filter((entry) => (entry.stats.receiving?.targets || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        tgt: entry.stats.receiving.targets,
+        rec: entry.stats.receiving.rec,
+        yds: entry.stats.receiving.yards,
+        td: entry.stats.receiving.td,
+        ypr: Number((entry.stats.receiving.yards / Math.max(1, entry.stats.receiving.rec)).toFixed(1)),
+        catchPct: Number(((entry.stats.receiving.rec / Math.max(1, entry.stats.receiving.targets)) * 100).toFixed(1)),
+        yac: entry.stats.receiving.yac,
+        drops: entry.stats.receiving.drops,
+        firstDowns: entry.stats.receiving.firstDowns,
+        lng: entry.stats.receiving.long,
+        offSn: entry.stats.snaps?.offense || 0
+      }))
+      .sort((a, b) => b.yds - a.yds || b.rec - a.rec),
+    defense: entries
+      .filter(
+        (entry) =>
+          (entry.stats.defense?.tackles || 0) > 0 ||
+          (entry.stats.defense?.sacks || 0) > 0 ||
+          (entry.stats.defense?.int || 0) > 0
+      )
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        tkl: entry.stats.defense.tackles,
+        solo: entry.stats.defense.solo,
+        ast: entry.stats.defense.ast,
+        sacks: entry.stats.defense.sacks,
+        tfl: entry.stats.defense.tfl,
+        qbHits: entry.stats.defense.qbHits,
+        int: entry.stats.defense.int,
+        pd: entry.stats.defense.passDefended,
+        ff: entry.stats.defense.ff,
+        fr: entry.stats.defense.fr,
+        defSn: entry.stats.snaps?.defense || 0
+      }))
+      .sort((a, b) => b.tkl - a.tkl || b.sacks - a.sacks),
+    kicking: entries
+      .filter((entry) => (entry.stats.kicking?.fga || 0) + (entry.stats.kicking?.xpa || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        fgm: entry.stats.kicking.fgm,
+        fga: entry.stats.kicking.fga,
+        fgPct: Number(((entry.stats.kicking.fgm / Math.max(1, entry.stats.kicking.fga)) * 100).toFixed(1)),
+        xpm: entry.stats.kicking.xpm,
+        xpa: entry.stats.kicking.xpa,
+        xpPct: Number(((entry.stats.kicking.xpm / Math.max(1, entry.stats.kicking.xpa)) * 100).toFixed(1)),
+        lng: entry.stats.kicking.long,
+        stSn: entry.stats.snaps?.special || 0
+      })),
+    punting: entries
+      .filter((entry) => (entry.stats.punting?.punts || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        punts: entry.stats.punting.punts,
+        yds: entry.stats.punting.yards,
+        avg: Number((entry.stats.punting.yards / Math.max(1, entry.stats.punting.punts)).toFixed(1)),
+        lng: entry.stats.punting.long,
+        in20: entry.stats.punting.in20,
+        tb: entry.stats.punting.touchbacks,
+        blk: entry.stats.punting.blocks,
+        stSn: entry.stats.snaps?.special || 0
+      })),
+    blocking: entries
+      .filter((entry) => (entry.stats.snaps?.passBlock || 0) + (entry.stats.snaps?.runBlock || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        passBlkSn: entry.stats.snaps.passBlock,
+        runBlkSn: entry.stats.snaps.runBlock,
+        sacksAllowed: entry.stats.blocking?.sacksAllowed || 0,
+        pressuresAllowed: entry.stats.blocking?.pressuresAllowed || 0,
+        penalties: entry.stats.blocking?.penalties || 0,
+        offSn: entry.stats.snaps?.offense || 0
+      })),
+    snaps: entries
+      .filter((entry) => (entry.stats.snaps?.offense || 0) + (entry.stats.snaps?.defense || 0) + (entry.stats.snaps?.special || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        offSn: entry.stats.snaps?.offense || 0,
+        defSn: entry.stats.snaps?.defense || 0,
+        stSn: entry.stats.snaps?.special || 0,
+        totalSn: (entry.stats.snaps?.offense || 0) + (entry.stats.snaps?.defense || 0) + (entry.stats.snaps?.special || 0)
+      }))
+  };
+}
+
+// ── Venue effects (S62) ───────────────────────────────────────────────────────
+// Home-field advantage and bye-week rest enter as small calibrated boosts to a
+// context's per-game unit ratings (never the shared team object). Boosting both
+// sides of the home team's game keeps league-wide scoring/yardage distributions
+// neutral while shifting win share toward the calibrated NFL home band.
+export const VENUE_EDGE = Object.freeze({ homeRatingBoost: 1.2, restRatingBoost: 0.8 });
+
+function applyVenueRatingEdge(context, boost) {
+  if (!boost || !context?.unitRatings) return;
+  for (const key of Object.keys(context.unitRatings)) {
+    if (typeof context.unitRatings[key] === "number") context.unitRatings[key] += boost;
+  }
+}
+
+/**
+ * Football's match engine. Plays one game and returns what happened without
+ * touching season stats; see src/sport/matchEngineContract.js for the shape.
+ */
+export function simulateMatch({
+  league,
+  statBook,
+  homeTeamId,
+  awayTeamId,
+  year,
+  week = 0,
+  rng,
+  mode = "drive",
+  allowTie = true,
+  seasonType = "regular",
+  label = "game",
+  neutralSite = false,
+  homeRested = false,
+  awayRested = false,
+  postseasonState=null
+}) {
+  const gameId = buildGameId({ year, week, seasonType, homeTeamId, awayTeamId, label });
+  const game={gameId,year,week,seasonType,homeTeamId,awayTeamId,label};
+  const readiness = checkFootballReadiness({ league, teamIds: [homeTeamId, awayTeamId],game,postseasonState });
+  if (!readiness.ok) throw new MatchReadinessError(readiness);
+  const homeContext = buildTeamContext(league, homeTeamId, rng,game);
+  const awayContext = buildTeamContext(league, awayTeamId, rng,game);
+  if (!neutralSite) applyVenueRatingEdge(homeContext, VENUE_EDGE.homeRatingBoost);
+  if (homeRested) applyVenueRatingEdge(homeContext, VENUE_EDGE.restRatingBoost);
+  if (awayRested) applyVenueRatingEdge(awayContext, VENUE_EDGE.restRatingBoost);
+  const venue = {
+    neutralSite: Boolean(neutralSite),
+    homeEdgeApplied: !neutralSite,
+    homeRested: Boolean(homeRested),
+    awayRested: Boolean(awayRested)
+  };
+  const homeTeam = homeContext.team;
+  const awayTeam = awayContext.team;
+
+  const homeStarters = collectStarters(homeContext);
+  const awayStarters = collectStarters(awayContext);
+  const starterIds = new Set([...homeStarters, ...awayStarters].map((player) => player.id));
+  const playerGameStats = new Map();
+  const scoringSummary = [];
+  const playByPlay = [];
+  const homeByQuarter = [0, 0, 0, 0, 0];
+  const awayByQuarter = [0, 0, 0, 0, 0];
+  const overtimePeriodSeconds = allowTie ? 600 : 900;
+  let inOvertime = false;
+  let elapsedSeconds = 0;
+  let homeDriveSequence = 0;
+  let awayDriveSequence = 0;
+  let homePossessionSeconds = 0;
+  let awayPossessionSeconds = 0;
+
+  // statBook is only read here (player lookups for the box score); every
+  // season-stat write goes through the recorder and is applied by the core.
+  const recorder = createGameStatRecorder();
+  for (const player of homeStarters) recorder.appearance(player.id, year, true, homeTeamId, player.position, seasonType);
+  for (const player of awayStarters) recorder.appearance(player.id, year, true, awayTeamId, player.position, seasonType);
+
+  const homePossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
+  const awayPossessions = rng.int(...FOOTBALL_RULES.structure.possessionsPerTeamRange);
+  let homeScore = 0;
+  let awayScore = 0;
+  let homeYards = 0;
+  let awayYards = 0;
+  let homeTurnovers = 0;
+  let awayTurnovers = 0;
+  let homeDrives = 0;
+  let awayDrives = 0;
+  let homeOffSnaps = 0;
+  let awayOffSnaps = 0;
+  let homePassPlays = 0;
+  let awayPassPlays = 0;
+  let homeRushPlays = 0;
+  let awayRushPlays = 0;
+  let homeKOps = 0;
+  let awayKOps = 0;
+  let homePOps = 0;
+  let awayPOps = 0;
+  const snappedPlayerIds = new Set();
+  let homeBall = rng.chance(0.5);
+
+  const finalizeDrive = (drive, offenseTeamId) => {
+    collectGamePlayerStats(playerGameStats, statBook, drive.deltas);
+    const driveNumber = offenseTeamId === homeTeamId ? ++homeDriveSequence : ++awayDriveSequence;
+    if (offenseTeamId === homeTeamId) homePossessionSeconds += drive.seconds || 0;
+    else awayPossessionSeconds += drive.seconds || 0;
+    const stampedLog = stampDriveLog(drive.playLog || [], elapsedSeconds, drive.seconds || 0, overtimePeriodSeconds, !inOvertime)
+      .map((entry) => ({ ...entry, driveNumber }));
+    playByPlay.push(...stampedLog);
+    elapsedSeconds += drive.seconds || 0;
+    if (drive.scoringEvent) {
+      const scoreTime = Math.max(0, elapsedSeconds - 1);
+      const clock = resolveClock(inOvertime ? scoreTime : Math.min(3599, scoreTime), overtimePeriodSeconds);
+      const summary = {
+        teamId: offenseTeamId,
+        quarter: clock.quarter,
+        quarterLabel: clock.label,
+        clock: clock.clock,
+        type: drive.scoringEvent.type,
+        points: drive.scoringEvent.points,
+        description: drive.scoringEvent.description
+      };
+      while (homeByQuarter.length < clock.quarter) { homeByQuarter.push(0); awayByQuarter.push(0); }
+      (offenseTeamId === homeTeamId ? homeByQuarter : awayByQuarter)[clock.quarter - 1] += drive.points;
+      scoringSummary.push(summary);
+    }
+  };
+
+  while (homeDrives < homePossessions || awayDrives < awayPossessions) {
+    if (homeBall && homeDrives < homePossessions) {
+      const drive = simulateDrive(homeContext, awayContext, rng, mode, {
+        scoreDifferential: homeScore - awayScore,
+        elapsedSeconds
+      });
+      homeDrives += 1;
+      homeScore += drive.points;
+      homeYards += drive.yards;
+      if (drive.turnover) homeTurnovers += 1;
+      homeOffSnaps += drive.plays || 0;
+      homePassPlays += drive.passPlays || 0;
+      homeRushPlays += drive.rushPlays || 0;
+      if (drive.outcome === DRIVE_OUTCOMES.PUNT) homePOps += 1;
+      if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) homeKOps += 1;
+      applyDriveDeltas(recorder, statBook, year, drive.deltas, seasonType);
+      finalizeDrive(drive, homeTeamId);
+      homeBall = false;
+      continue;
+    }
+    if (!homeBall && awayDrives < awayPossessions) {
+      const drive = simulateDrive(awayContext, homeContext, rng, mode, {
+        scoreDifferential: awayScore - homeScore,
+        elapsedSeconds
+      });
+      awayDrives += 1;
+      awayScore += drive.points;
+      awayYards += drive.yards;
+      if (drive.turnover) awayTurnovers += 1;
+      awayOffSnaps += drive.plays || 0;
+      awayPassPlays += drive.passPlays || 0;
+      awayRushPlays += drive.rushPlays || 0;
+      if (drive.outcome === DRIVE_OUTCOMES.PUNT) awayPOps += 1;
+      if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
+      applyDriveDeltas(recorder, statBook, year, drive.deltas, seasonType);
+      finalizeDrive(drive, awayTeamId);
+      homeBall = true;
+      continue;
+    }
+    if (homeDrives >= homePossessions) homeBall = false;
+    if (awayDrives >= awayPossessions) homeBall = true;
+  }
+
+  let overtime = null;
+  if (homeScore === awayScore) {
+    // Regulation has its own synthetic drive budget. OT starts at a fresh,
+    // authoritative period boundary, independent of that budget's duration.
+    elapsedSeconds = 3600;
+    inOvertime = true;
+    overtime = runOvertime({ allowTie, firstHome: rng.chance(0.5),
+      simulatePossession: (situational) => {
+        const drive = simulateDrive(
+          situational.homeBall ? homeContext : awayContext,
+          situational.homeBall ? awayContext : homeContext,
+          rng, mode, { ...situational, overtime: true }
+        );
+        applyDriveDeltas(recorder, statBook, year, drive.deltas, seasonType);
+        finalizeDrive(drive, situational.homeBall ? homeTeamId : awayTeamId);
+        if (situational.homeBall) {
+          homeScore += drive.points;
+          homeYards += drive.yards;
+          if (drive.turnover) homeTurnovers += 1;
+          homeOffSnaps += drive.plays || 0;
+          homePassPlays += drive.passPlays || 0;
+          homeRushPlays += drive.rushPlays || 0;
+          if (drive.outcome === DRIVE_OUTCOMES.PUNT) homePOps += 1;
+          if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) homeKOps += 1;
+        } else {
+          awayScore += drive.points;
+          awayYards += drive.yards;
+          if (drive.turnover) awayTurnovers += 1;
+          awayOffSnaps += drive.plays || 0;
+          awayPassPlays += drive.passPlays || 0;
+          awayRushPlays += drive.rushPlays || 0;
+          if (drive.outcome === DRIVE_OUTCOMES.PUNT) awayPOps += 1;
+          if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
+        }
+        return drive;
+      }
+    });
+  }
+
+  const trackSnaps = (set) => {
+    for (const playerId of set) snappedPlayerIds.add(playerId);
+  };
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.qbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.rbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.wrRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.teRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.olRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.qbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.rbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.wrRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.teRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.olRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.dlRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.lbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.dbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.dlRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.lbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.dbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+
+  const homeSpecialSnaps = homeKOps + homePOps + awayKOps;
+  const awaySpecialSnaps = awayKOps + awayPOps + homeKOps;
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.kRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, homeContext.pRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.kRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(recorder, statBook, year, awayContext.pRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
+  applyBlockingNoise(recorder, statBook, year, homeContext.olRotation, homeOffSnaps, rng, seasonType, playerGameStats);
+  applyBlockingNoise(recorder, statBook, year, awayContext.olRotation, awayOffSnaps, rng, seasonType, playerGameStats);
+
+  for (const playerId of snappedPlayerIds) {
+    if (starterIds.has(playerId)) continue;
+    const player = statBook.getPlayerById(playerId);
+    if (!player) continue;
+    recorder.appearance(playerId, year, false, player.teamId, player.position, seasonType);
+  }
+
+  const playerEntries = [...playerGameStats.values()];
+  const boxScore = {
+    gameId,
+    overtime,
+    gameDayRosters: { home: homeContext.gameDayRoster, away: awayContext.gameDayRoster },
+    year,
+    week,
+    seasonType,
+    label,
+    venue,
+    homeTeam: teamGameSummary(
+      homeTeamId, homeScore, homeYards, homeTurnovers, homePassPlays, homeRushPlays,
+      playerEntries, playByPlay, homeDriveSequence, homePossessionSeconds
+    ),
+    awayTeam: teamGameSummary(
+      awayTeamId, awayScore, awayYards, awayTurnovers, awayPassPlays, awayRushPlays,
+      playerEntries, playByPlay, awayDriveSequence, awayPossessionSeconds
+    ),
+    quarterScores: {
+      home: homeByQuarter,
+      away: awayByQuarter
+    },
+    scoringSummary,
+    playByPlay,
+    playerStats: {
+      home: buildPlayerStatGroups(playerEntries.filter((entry) => entry.teamId === homeTeamId)),
+      away: buildPlayerStatGroups(playerEntries.filter((entry) => entry.teamId === awayTeamId))
+    }
+  };
+
+  const result = {
+    gameId,
+    year,
+    week,
+    seasonType,
+    label,
+    homeTeamId,
+    awayTeamId,
+    homeScore,
+    awayScore,
+    homeYards,
+    awayYards,
+    homePassPlays,
+    homeRushPlays,
+    awayPassPlays,
+    awayRushPlays,
+    homeOffSnaps,
+    awayOffSnaps,
+    homeDrives,
+    awayDrives,
+    homeTurnovers,
+    awayTurnovers,
+    homeStrategy: homeContext.weeklyPlan || null,
+    awayStrategy: awayContext.weeklyPlan || null,
+    // S63 receipt: the opponent read each offense actually gameplanned around.
+    // Derived from the same unit ratings the drive engine used — no hidden math.
+    matchupEdges: {
+      home: matchupEdgeFromContexts(homeContext, awayContext),
+      away: matchupEdgeFromContexts(awayContext, homeContext)
+    },
+    venue,
+    overtime,
+    isTie: homeScore === awayScore,
+    winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId,
+    boxScore
+  };
+
+  // The stat records ride beside the result, never inside it: callers spread
+  // the result into week results and the game archive, which are saved.
+  return {
+    result,
+    boxScore,
+    statDeltas: recorder.records.statDeltas,
+    appearances: recorder.records.appearances,
+    snapCounts: recorder.records.snapCounts
+  };
+}
+
+/**
+ * Plays a game and applies its season stats straight away: the pre-split
+ * behaviour, kept for tests and tools that want one call. The season engines
+ * call simulateMatch and apply the records themselves.
+ */
+export function simulateGame(context) {
+  const output = simulateMatch(context);
+  applyGameStats(context.statBook, output);
+  applyFootballPostGame({ league: context.league, result: output.result,postseasonState:context.postseasonState });
+  return output.result;
+}

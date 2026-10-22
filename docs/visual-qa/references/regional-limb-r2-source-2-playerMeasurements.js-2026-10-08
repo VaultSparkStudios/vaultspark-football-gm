@@ -1,0 +1,217 @@
+import { clamp, derivedRng } from "../utils/rng.js";
+import { resolveSkeletonRecipe, resolveIndividualAnatomyRecipe, resolveRegionalBodyShapeRecipe } from "./playerVisualIdentity.js";
+import { limbSectionProfile, squaredProfileIntegral, torsoSectionIntegral, TORSO_SECTION_VERSION, LIMB_SECTION_VERSION, EXTENDED_BODY_MEASUREMENT_VERSION, bodyMeasurementBounds } from "../../public/lib/physiqueGeometryContract.js";
+
+export const MEASUREMENT_MODEL_VERSION = "fictional-physique-v1";
+export const BODY_VOLUME_MODEL_VERSION = "visual-regional-anatomy-v2";
+
+// A visual proxy, NOT measured tissue density or body-fat percentage. All
+// regions share an explicit 1 kg/litre design assumption. Each cross-section
+// solves its allocated volume; athletic ratings never change this budget.
+export function resolveBodyVolume({ height, weight, shoulderSpan, torsoShare, armLength, handLength = height * .10, individuality, anatomy, bodyShape }) {
+  const volumeBudgetInches3 = weight * .45359237 * 1000 / 16.387064;
+  const headHeight = 9.4 + (height - 74) * .035;
+  const neckLengthInches = 3;
+  const torsoLengthInches = height * torsoShare;
+  // Shoes/feet occupy the last 2.5 inches and belong to the reserved budget.
+  const legLengthInches = height - headHeight - 1.5 - torsoLengthInches - 2.5;
+  // Arm length ends at the fingertip; a recorded longitudinal hand length
+  // locates the wrist. Spread hand span cannot supply this dimension.
+  const armSegmentLengthInches = armLength - handLength;
+  const trunkShare = bodyShape?.trunkShare ?? (.45 + individuality * .18);
+  const armsShare = bodyShape?.armsShare ?? .10;
+  const neckShare = bodyShape?.neckShare ?? .015;
+  // Legs receive the residual: regional draws compete for one budget rather
+  // than each independently inventing volume. The legacy calculation remains
+  // byte-compatible when no new saved recipe is present.
+  const legsShare = bodyShape ? 1 - .125 - trunkShare - armsShare - neckShare : .31 - individuality * .18;
+  const torsoVolumeInches3 = volumeBudgetInches3 * trunkShare;
+  const legsVolumeInches3 = volumeBudgetInches3 * legsShare;
+  const armsVolumeInches3 = volumeBudgetInches3 * armsShare;
+  const neckVolumeInches3 = volumeBudgetInches3 * neckShare;
+  const reservedVolumeInches3 = volumeBudgetInches3 * .125; // skull, hands, feet
+  const regionalSections = bodyShape?.torsoRatios;
+  const waistRatio = regionalSections ? regionalSections.at(-1)[1] : bodyShape
+    ? clamp(bodyShape.waistBaseline + (weight / ((height / 74) ** 2) - 210) * .0007, .63, .97)
+    : clamp(.75 + (weight / ((height / 74) ** 2) - 210) * .0009 + individuality, .63, .97);
+  const taper = regionalSections ? torsoSectionIntegral(regionalSections) : (1 + waistRatio + waistRatio ** 2) / 3;
+  const nominalDepthRatio = bodyShape?.depthRatio ?? .70;
+  const chestWidthInches = Math.max(shoulderSpan * .94,
+    Math.sqrt(torsoVolumeInches3 / (Math.PI / 4 * nominalDepthRatio * torsoLengthInches * taper)));
+  // A long skeletal shoulder span can set the frontal-width floor. Solve
+  // depth instead of inventing additional volume to satisfy that skeleton.
+  const chestDepthInches = torsoVolumeInches3 / (Math.PI / 4 * torsoLengthInches * taper * chestWidthInches);
+  const regionalLimbs = bodyShape?.limbRatios ? Object.fromEntries(['arm','leg'].map(kind=>{
+    const joint=anatomy?.[kind==='arm'?'upperArmShare':'upperLegShare']??(kind==='arm'?.53:.51);
+    const t=[0,joint*(kind==='arm'?.32:.34),joint,joint+(1-joint)*(kind==='arm'?.32:.34),1];
+    return [kind,bodyShape.limbRatios[kind].map(([width,depth],i)=>[t[i],width,depth])];
+  })) : null;
+  const limbDiameter = (volume, length, kind) => Math.sqrt(volume / (2 * Math.PI / 4 * length * (regionalLimbs
+    ? torsoSectionIntegral(regionalLimbs[kind])
+    : squaredProfileIntegral(limbSectionProfile(kind, individuality, anatomy?.[kind === 'arm' ? 'upperArmShare' : 'upperLegShare'])))));
+  const armDiameter=limbDiameter(armsVolumeInches3,armSegmentLengthInches,'arm');
+  const legDiameter=limbDiameter(legsVolumeInches3,legLengthInches,'leg');
+  return { volumeBudgetInches3, torsoVolumeInches3, legsVolumeInches3, armsVolumeInches3,
+    neckVolumeInches3, reservedVolumeInches3, torsoLengthInches, legLengthInches,
+    armSegmentLengthInches, neckLengthInches, chestWidthInches, chestDepthInches,
+    waistRatio, limbShapeVariation: individuality,
+    ...(regionalSections ? {torsoSectionVersion: TORSO_SECTION_VERSION,
+      torsoSections: regionalSections.map(([t,w,d])=>[t,w*chestWidthInches,d*chestDepthInches])} : {}),
+    ...(regionalLimbs ? {limbSectionVersion:LIMB_SECTION_VERSION,
+      armSections:regionalLimbs.arm.map(([t,w,d])=>[t,w*armDiameter,d*armDiameter]),
+      legSections:regionalLimbs.leg.map(([t,w,d])=>[t,w*legDiameter,d*legDiameter])} : {}),
+    upperArmWidth: armDiameter,
+    thighWidth: legDiameter,
+    neckDiameterInches: Math.sqrt(neckVolumeInches3 / (Math.PI / 4 * neckLengthInches)) };
+}
+
+// Regional surface allocation under a fixed artistic density. These are NOT
+// lean/fat measurements, country/position frequencies or strength estimates.
+// Separate channels allow different builds on the same saved skeleton.
+export function resolveRegionalBodyShape(player) {
+  const recipe = resolveRegionalBodyShapeRecipe(player);
+  if (!recipe) return null;
+  const channel = key => derivedRng(`regional-body-shape:${recipe.seed}:${key}`);
+  const shape = {
+    trunkShare: channel('trunk').float(.43, .49),
+    armsShare: channel('arms').float(.08, .12),
+    neckShare: channel('neck').float(.012, .018),
+    waistBaseline: channel('waist').float(.68, .86),
+    depthRatio: channel('depth').float(.62, .78),
+    surfaceDefinition: channel('surface-definition').float(.12, .82)
+  };
+  if(['regional-body-shape-v2','regional-body-shape-v3','regional-body-shape-v4'].includes(recipe.version)){
+    // Missing external dimensions remain artistic estimates. A shared latent
+    // abdominal draw links width/depth while allowing independent residuals.
+    // Mass scales the volume; it never assigns fat %, a body class or ratings.
+    const abdomen=channel('abdomen').float(0,1),pelvis=channel('pelvic-surface').float(0,1);
+    shape.torsoRatios=[
+      [0,1,1],
+      [.28,channel('rib-width').float(.97,1.04),channel('rib-depth').float(.99,1.07)],
+      [.65,.86+abdomen*.22+channel('abdomen-width-residual').float(-.025,.025),.91+abdomen*.25+channel('abdomen-depth-residual').float(-.04,.04)],
+      [1,.88+pelvis*.15,channel('pelvic-depth').float(.88,1.08)]
+    ];
+  }
+  if(recipe.version==='regional-body-shape-v4'){
+    // Individual external breadth/depth, not measured muscle/fat or ability.
+    // Calf depth may differ from frontal breadth; each landmark is seeded
+    // independently, then reconciled against one shared regional volume.
+    const ranges={arm:[[.88,.88],[1,1],[.52,.70],[.70,.85],[.34,.44]],leg:[[.90,.90],[1,1],[.48,.64],[.70,.90],[.28,.38]]};
+    const depth={arm:[[.80,1.05],[.90,1.20],[.85,1.20],[.90,1.20],[.70,1.05]],leg:[[.80,1.15],[.80,1.10],[1,1.30],[1.05,1.40],[.95,1.20]]};
+    shape.limbRatios=Object.fromEntries(['arm','leg'].map(kind=>[kind,ranges[kind].map(([lo,hi],i)=>{
+      const w=channel(`${kind}-breadth-${i}`).float(lo,hi);
+      return [w,w*channel(`${kind}-depth-${i}`).float(...depth[kind][i])];
+    })]));
+  }
+  return shape;
+}
+
+// Stable, explicitly artistic proportions, not inferred from identity or
+// performance. Bone-length shares preserve total shoulder-to-wrist / hip-to-
+// ankle distances; footwear dimensions are external visual estimates.
+export function resolveIndividualAnatomy(player, height) {
+  const recipe = resolveIndividualAnatomyRecipe(player);
+  if (!recipe) return null;
+  const channel = key => derivedRng(`individual-anatomy:${recipe.seed}:${key}`);
+  const footLengthInches = height * channel('foot-length').float(.135, .17);
+  return {
+    upperArmShare: channel('upper-arm').float(.49, .56),
+    upperLegShare: channel('upper-leg').float(.47, .55),
+    pelvicBreadthInches: height * channel('pelvis').float(.115, .155),
+    footLengthInches,
+    footWidthInches: footLengthInches * channel('foot-width').float(.32, .40)
+  };
+}
+const finite = value => value !== null && value !== undefined && value !== "" && Number.isFinite(Number(value));
+const rounded = value => Math.round(value * 8) / 8;
+const LIMB_KEYS = ["armLengthInches", "wingspanInches", "handSizeInches"];
+// Hip-joint-center spacing is NOT biiliocristal (pelvic crest) breadth.
+// These inputs describe barefoot external dimensions / skeletal endpoints;
+// the renderer's shoes are an artistic fitted covering of those dimensions.
+export const RECORDED_ANATOMY_DIMENSIONS = Object.freeze({
+  hipJointSpanInches: Object.freeze({ frameKey: 'hipJointSpanInches', minimum: 5, maximum: 12, endpoint: 'hip-joint-center-to-center' }),
+  footLengthInches: Object.freeze({ frameKey: 'footLengthInches', minimum: 7, maximum: 16, endpoint: 'heel-to-longest-toe' }),
+  footWidthInches: Object.freeze({ frameKey: 'footWidthInches', minimum: 2.5, maximum: 6, endpoint: 'maximum-barefoot-transverse-breadth' })
+});
+
+// Reconcile source observations before applying optional geometry. Unsupported
+// methods and bounds keep the source value, with an explicit estimate fallback.
+export function resolveRecordedAnatomy(player, estimated) {
+  const record = resolvePlayerMeasurements(player), applied = {}, reconciliation = [];
+  for (const [key, definition] of Object.entries(RECORDED_ANATOMY_DIMENSIONS)) {
+    const observed = record.values[key];
+    if (observed === null) continue;
+    const provenance = record.provenance[key];
+    const endpoint = provenance.endpoint || provenance.method;
+    const reason = endpoint && endpoint !== definition.endpoint ? 'incompatible-endpoint'
+      : observed < definition.minimum || observed > definition.maximum ? 'outside-rendering-bounds' : null;
+    if (!reason) applied[definition.frameKey] = observed;
+    reconciliation.push({ measurement: key, observed, units: 'inches', endpoint: definition.endpoint,
+      status: reason || 'applied', rendered: reason ? estimated?.[definition.frameKey] ?? null : observed });
+  }
+  const anatomy = Object.keys(applied).length ? { ...estimated, ...applied } : estimated;
+  // The shared footwear outline needs both dimensions. Legacy imports have
+  // no new anatomy recipe; do not claim a lone supplied dimension was drawn.
+  if (anatomy && (!Number.isFinite(anatomy.footLengthInches) || !Number.isFinite(anatomy.footWidthInches))) {
+    for (const row of reconciliation.filter(row => row.status === 'applied' && row.measurement.startsWith('foot'))) {
+      delete applied[row.measurement];
+      row.status = 'companion-dimension-missing';
+      row.rendered = null;
+    }
+  }
+  return { anatomy: Object.keys(applied).length ? { ...estimated, ...applied } : estimated, reconciliation };
+}
+
+// These are explicit fictional anthropometric priors, not fitted NFL percentiles.
+// A shared skeleton makes estimated arm length and wingspan coherent. Never
+// sample or modify the simulation stream to create visual individuality.
+export function estimatePlayerSkeleton(player) {
+  // Retained v1 decoder; saved seed is authority even if names/seeds change.
+  const { seed } = resolveSkeletonRecipe(player);
+  const extended = ['regional-body-shape-v3','regional-body-shape-v4'].includes(resolveRegionalBodyShapeRecipe(player)?.version);
+  const bounds = bodyMeasurementBounds(extended ? {bodyMeasurementVersion:EXTENDED_BODY_MEASUREMENT_VERSION} : null);
+  const observedHeight = finite(player?.heightInches) ? Number(player.heightInches) : null;
+  const height = extended && observedHeight != null && (observedHeight < bounds.height[0] || observedHeight > bounds.height[1])
+    ? 74 : observedHeight != null ? clamp(observedHeight, ...bounds.height) : 74;
+  const rng = channel => derivedRng(`skeleton:${seed}:${channel}`);
+  const shoulderSpanInches = height * rng("shoulders").float(.205, .23);
+  const wingspanInches = rounded(height + rng("reach").float(-2, 7));
+  return {
+    shoulderSpanInches,
+    torsoShare: rng("torso").float(.285, .315),
+    armLengthInches: rounded((wingspanInches - shoulderSpanInches) / 2),
+    wingspanInches,
+    handSizeInches: rounded(height * rng("hands").float(.117, .137))
+  };
+}
+
+export function generatePlayerMeasurements(player) {
+  const skeleton = estimatePlayerSkeleton(player);
+  return {
+    version: MEASUREMENT_MODEL_VERSION,
+    ...Object.fromEntries(LIMB_KEYS.map(key => [key, skeleton[key]])),
+    provenance: Object.fromEntries(LIMB_KEYS.map(key => [key, { kind: "fictional-estimate", model: MEASUREMENT_MODEL_VERSION }]))
+  };
+}
+
+// The existing top-level height/mass are authoritative; no duplicate copy can
+// silently disagree with combine displays. Missing imported limb measurements
+// stay null in the dossier, even though the renderer can use a stable estimate.
+export function resolvePlayerMeasurements(player) {
+  const values = {}, provenance = {};
+  const fictional = player?.profile?.identity?.source === "fictional-generated"
+    || ["generated-roster", "generated-draft"].includes(player?.profile?.source);
+  // Optional recorded dimension, deliberately absent from legacy generation.
+  const recordedLimbKeys = [...LIMB_KEYS, "handLengthInches", ...Object.keys(RECORDED_ANATOMY_DIMENSIONS)];
+  for (const key of ["heightInches", "weightLbs", ...recordedLimbKeys]) {
+    const top = player?.[key];
+    const stored = player?.measurements?.[key];
+    const value = finite(top) && Number(top) > 0 ? Number(top)
+      : recordedLimbKeys.includes(key) && finite(stored) && Number(stored) > 0 ? Number(stored) : null;
+    values[key] = value;
+    provenance[key] = value === null ? { kind: "unknown" }
+      : finite(top) && Number(top) > 0 ? (player?.measurementProvenance?.[key] || { kind: fictional ? "fictional-generated" : "recorded", ...(fictional ? { model: "legacy-fictional-frame" } : {}) })
+        : (player?.measurements?.provenance?.[key] || { kind: fictional ? "fictional-estimate" : "recorded" });
+  }
+  return { values, provenance };
+}

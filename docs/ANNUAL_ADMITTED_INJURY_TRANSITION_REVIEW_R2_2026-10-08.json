@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T11:40:52.153Z",
+  "component": "Annual admitted injury continuation rollover integration",
+  "round": 2,
+  "verdict": "PASS",
+  "scope": "Four modeled live annual callers preserve admitted qualifying continuation and earned compensation; separately elected disputes remain claims. No comprehensive NFL or whole-goal acceptance.",
+  "primaryReceipt": {
+    "file": "docs/ANNUAL_ADMITTED_INJURY_TRANSITION_2026-10-08.json",
+    "sha256": "8ae17c6cf37053f94894aec7f304b23831279ef032fab19e59228803d64e2cdd"
+  },
+  "previousReview": {
+    "file": "docs/ANNUAL_ADMITTED_INJURY_TRANSITION_REVIEW_R1_2026-10-08.json",
+    "sha256": "0ad40dfb39530ea80f2e607075949458b5b456ed737ed407b604a2a2523507e6"
+  },
+  "sourceHashes": {
+    "src/domain/elevationInjuryPay.js": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0",
+    "src/domain/preRolloverMedicalCalendar.js": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47",
+    "src/domain/injurySalaryClaims.js": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141",
+    "src/runtime/GameSession.js": "e2b268cc3c6e5b88ea22c05c55888b9483e0c5b971217b15948e99f647ff01e4",
+    "src/engine/offseasonSimulator.js": "fb7023a75dc65f8cc3414b6aa5c8fc1b006846b414dd178da088a3afadea2a46",
+    "src/domain/offseasonMedicalCalendar.js": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714",
+    "src/domain/admittedInjuryPayroll.js": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426",
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/domain/pensionService.js": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015",
+    "test/annual-admitted-injury-transition.test.js": "d5f74da51d2eeb742ad311563a88d11d3b940aadb6f84f0ad8408dd8a180b7bd",
+    "test/helpers/annualAdmittedFixture.js": "e0eacc1f09d9101aec510bba0733661306ef4cb7f86bd121887810bcecd93a8d",
+    "test/annual-injury-command-readiness.test.js": "33ca469fd4df06060ad7600a6791ba142047d30c54095be6e9764a6628b94e8c",
+    "test/pre-rollover-medical-calendar.test.js": "18c23a9e82bc350b746263ea2eb85fc3f18f31ae95c6cfcd923f0381684f94d1",
+    "test/admitted-source-year-payroll.test.js": "1c9dccdf1ce9193128402e42a38b263b08eb413d06d93b82e40297d9ee346c55",
+    "test/admitted-pre-rollover-recovery.test.js": "d2be883ed3f0279fcc632c13269abd1aedec75fd3d42c1286cc426cf4bce93cf",
+    "tests-ui/annual-admitted-injury-client.spec.js": "37747758037d47b40da29ae838a4e10b08571b5139897deba1afce7dd908eb98",
+    "tests-ui/pre-rollover-medical-client.spec.js": "c940bc9437a0d630ad0556f91dada3840973771a5676f98bf76a2a9bd42cf489",
+    "tests-ui/admitted-pre-rollover-recovery-client.spec.js": "77774c1f26bc2bbb0164f8400d03e26554cbcc6374054d36f9fcc248f0a47a59",
+    "tests-ui/offseason-medical-calendar-client.spec.js": "f2874f28991472e78c26742c17c2e5f75c698b11fe7588fa105388c222edb7f2",
+    "scripts/run-test-shard.mjs": "0b38f483209ccc1d7c3df6a92686a37055ef72d8c290d15bcde4b8e1b3cb39b5"
+  },
+  "frozenSourceBindings": [
+    {
+      "original": "src/domain/elevationInjuryPay.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-0-elevationInjuryPay.js-2026-10-08",
+      "sha256": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0"
+    },
+    {
+      "original": "src/domain/preRolloverMedicalCalendar.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-1-preRolloverMedicalCalendar.js-2026-10-08",
+      "sha256": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47"
+    },
+    {
+      "original": "src/domain/injurySalaryClaims.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-2-injurySalaryClaims.js-2026-10-08",
+      "sha256": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141"
+    },
+    {
+      "original": "src/runtime/GameSession.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-3-GameSession.js-2026-10-08",
+      "sha256": "e2b268cc3c6e5b88ea22c05c55888b9483e0c5b971217b15948e99f647ff01e4"
+    },
+    {
+      "original": "src/engine/offseasonSimulator.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-4-offseasonSimulator.js-2026-10-08",
+      "sha256": "fb7023a75dc65f8cc3414b6aa5c8fc1b006846b414dd178da088a3afadea2a46"
+    },
+    {
+      "original": "src/domain/offseasonMedicalCalendar.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-5-offseasonMedicalCalendar.js-2026-10-08",
+      "sha256": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714"
+    },
+    {
+      "original": "src/domain/admittedInjuryPayroll.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-6-admittedInjuryPayroll.js-2026-10-08",
+      "sha256": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426"
+    },
+    {
+      "original": "src/domain/admittedInjuryContinuation.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-7-admittedInjuryContinuation.js-2026-10-08",
+      "sha256": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945"
+    },
+    {
+      "original": "src/domain/pensionService.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-8-pensionService.js-2026-10-08",
+      "sha256": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015"
+    },
+    {
+      "original": "test/annual-admitted-injury-transition.test.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-9-annual-admitted-injury-transition.test.js-2026-10-08",
+      "sha256": "d5f74da51d2eeb742ad311563a88d11d3b940aadb6f84f0ad8408dd8a180b7bd"
+    },
+    {
+      "original": "test/helpers/annualAdmittedFixture.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-10-annualAdmittedFixture.js-2026-10-08",
+      "sha256": "e0eacc1f09d9101aec510bba0733661306ef4cb7f86bd121887810bcecd93a8d"
+    },
+    {
+      "original": "test/annual-injury-command-readiness.test.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-11-annual-injury-command-readiness.test.js-2026-10-08",
+      "sha256": "33ca469fd4df06060ad7600a6791ba142047d30c54095be6e9764a6628b94e8c"
+    },
+    {
+      "original": "test/pre-rollover-medical-calendar.test.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-12-pre-rollover-medical-calendar.test.js-2026-10-08",
+      "sha256": "18c23a9e82bc350b746263ea2eb85fc3f18f31ae95c6cfcd923f0381684f94d1"
+    },
+    {
+      "original": "test/admitted-source-year-payroll.test.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-13-admitted-source-year-payroll.test.js-2026-10-08",
+      "sha256": "1c9dccdf1ce9193128402e42a38b263b08eb413d06d93b82e40297d9ee346c55"
+    },
+    {
+      "original": "test/admitted-pre-rollover-recovery.test.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-14-admitted-pre-rollover-recovery.test.js-2026-10-08",
+      "sha256": "d2be883ed3f0279fcc632c13269abd1aedec75fd3d42c1286cc426cf4bce93cf"
+    },
+    {
+      "original": "tests-ui/annual-admitted-injury-client.spec.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-15-annual-admitted-injury-client.spec.js-2026-10-08",
+      "sha256": "37747758037d47b40da29ae838a4e10b08571b5139897deba1afce7dd908eb98"
+    },
+    {
+      "original": "tests-ui/pre-rollover-medical-client.spec.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-16-pre-rollover-medical-client.spec.js-2026-10-08",
+      "sha256": "c940bc9437a0d630ad0556f91dada3840973771a5676f98bf76a2a9bd42cf489"
+    },
+    {
+      "original": "tests-ui/admitted-pre-rollover-recovery-client.spec.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-17-admitted-pre-rollover-recovery-client.spec.js-2026-10-08",
+      "sha256": "77774c1f26bc2bbb0164f8400d03e26554cbcc6374054d36f9fcc248f0a47a59"
+    },
+    {
+      "original": "tests-ui/offseason-medical-calendar-client.spec.js",
+      "file": "docs/visual-qa/references/annual-admitted-source-18-offseason-medical-calendar-client.spec.js-2026-10-08",
+      "sha256": "f2874f28991472e78c26742c17c2e5f75c698b11fe7588fa105388c222edb7f2"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "docs/visual-qa/references/annual-admitted-source-19-run-test-shard.mjs-2026-10-08",
+      "sha256": "0b38f483209ccc1d7c3df6a92686a37055ef72d8c290d15bcde4b8e1b3cb39b5"
+    }
+  ],
+  "sourceBuildPairs": [
+    {
+      "source": "src/domain/elevationInjuryPay.js",
+      "built": "static/src/domain/elevationInjuryPay.js",
+      "sha256": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0"
+    },
+    {
+      "source": "src/domain/preRolloverMedicalCalendar.js",
+      "built": "static/src/domain/preRolloverMedicalCalendar.js",
+      "sha256": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47"
+    },
+    {
+      "source": "src/domain/injurySalaryClaims.js",
+      "built": "static/src/domain/injurySalaryClaims.js",
+      "sha256": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141"
+    },
+    {
+      "source": "src/runtime/GameSession.js",
+      "built": "static/src/runtime/GameSession.js",
+      "sha256": "e2b268cc3c6e5b88ea22c05c55888b9483e0c5b971217b15948e99f647ff01e4"
+    },
+    {
+      "source": "src/engine/offseasonSimulator.js",
+      "built": "static/src/engine/offseasonSimulator.js",
+      "sha256": "fb7023a75dc65f8cc3414b6aa5c8fc1b006846b414dd178da088a3afadea2a46"
+    }
+  ],
+  "artifactFingerprint": "c5c7e2ee4b3ee601a803c4171935b2564c0c6feb030a96133e0193f35a1ae49e",
+  "independentChecks": [
+    {
+      "command": "node --test test/annual-admitted-injury-transition.test.js test/annual-injury-command-readiness.test.js",
+      "tests": 16,
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 15669.8016,
+      "terminalChunk": "8f3aee",
+      "evidence": "Actual interactive/headless admission and explicit-dispute paths, earned payments, clearance, missing wage refusals, compressed restore, legacy no-backfill, guarded annual retry and expected typed refusal."
+    },
+    {
+      "command": "Independent reproduction and extension of both R1 probes",
+      "terminalChunk": "53ead9",
+      "partialCapCases": 12,
+      "crossProduct": "Active/retired source × paid/unpaid pre-rollover calendar × interactive/headless/public caller",
+      "readinessPure": true,
+      "allAnnualRefusalsPure": true,
+      "retiredMissing26ActualRestoreThenGuardReadinessPublicAndDirectRefusalPure": true,
+      "qualification": "Whole-snapshot comparisons include saved RNG; raw ledger perturbations exercise accepted-state boundaries, not normal retirement or cap-closing causation."
+    },
+    {
+      "command": "Exact frozen/current/source/build/client/log binding validation",
+      "terminalChunk": "932eed",
+      "sources": 20,
+      "identicalSourceBuildPairs": 5,
+      "clientReceipts": 4,
+      "logs": 2,
+      "priorR1Unchanged": true,
+      "currentManifestMatches": true
+    }
+  ],
+  "findingDisposition": [
+    {
+      "id": "R1-F1",
+      "status": "fixed",
+      "evidence": "Annual-mode helper rejects source-year partially/already closed cap boundary while active or retired unresolved sources remain, before pay/recovery commit. All four callers opt into annualTransition. Clone-planned annual proof guard executes before helper commit; prefinancial annual authority requires every club unrolled. Readiness/public/direct/headless original counterexamples now refuse with unchanged snapshot."
+    },
+    {
+      "id": "R1-F2",
+      "status": "fixed",
+      "evidence": "Transition guard includes league.players and retiredPlayers. Actual restored retired retained source with earned26 absent rejects before transition/readiness mutation."
+    }
+  ],
+  "implementationAssessment": [
+    "The source-year annual anchor must be the validated completed final calendar through27 and all required source-year receipts. Postfinancial authority additionally requires matching summer anchor, earning year and every club cap rollover marker. A retained right alone cannot authorize transition.",
+    "Existing elected claims retain amount/status and separate claim authority. Filing an overlapping admitted-source claim rejects before mutation. Legacy nonannual helper modes remain explicitly available.",
+    "Interactive summer anchor is established after cap/financial opening and before expiry. Headless sequencing uses the same authority; elapsed summer pay remains separate from employment and no new service is created by annual recovery."
+  ],
+  "primaryObservedEvidence": {
+    "attribution": "Root execution; retained terminal logs and receipt bytes independently checked, browser not rerun.",
+    "domain": {
+      "tests": 102,
+      "passed": 102,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 53402.1815,
+      "log": {
+        "original": ".cache/annual-admitted-repaired-domain.log",
+        "file": "docs/visual-qa/references/annual-admitted-domain-annual-admitted-repaired-domain.log-2026-10-08",
+        "sha256": "c360cde474658066db358b1760ee688bc3d81a8ec01ee2bec0dfb0fceaadfaee"
+      }
+    },
+    "built": {
+      "passed": 12,
+      "reportedDuration": "3.6m",
+      "log": {
+        "original": ".cache/annual-admitted-browser.log",
+        "file": "docs/visual-qa/references/annual-admitted-browser-annual-admitted-browser.log-2026-10-08",
+        "sha256": "3c921e065e27b248b56af4632c3d4d6aa3e112aff401a0eed091102bf286a188"
+      }
+    },
+    "newClientProofs": [
+      {
+        "file": "docs/visual-qa/references/annual-admitted-client-worker-admitted-worker-admitted.json-2026-10-08",
+        "sha256": "900ab74d723f45420252528a0c4765dd8c3b84c0e363bea176f1dab1cb41760d",
+        "mode": "worker",
+        "disputed": false,
+        "namedSaveReplacementLoadReload": true,
+        "artifactDigest": "c5c7e2ee4b3ee601a803c4171935b2564c0c6feb030a96133e0193f35a1ae49e"
+      },
+      {
+        "file": "docs/visual-qa/references/annual-admitted-client-worker-disputed-worker-disputed.json-2026-10-08",
+        "sha256": "7f2e0b94cc2ef28dbbb15783d44175212d94c2c8020aa78649a86c2340e90151",
+        "mode": "worker",
+        "disputed": true,
+        "namedSaveReplacementLoadReload": true,
+        "artifactDigest": "c5c7e2ee4b3ee601a803c4171935b2564c0c6feb030a96133e0193f35a1ae49e"
+      },
+      {
+        "file": "docs/visual-qa/references/annual-admitted-client-in-page-admitted-in-page-admitted.json-2026-10-08",
+        "sha256": "e945c481493b0cd469b0f25b930f7ca76c819ea7f24ea5f4de2c4d77cbfabc13",
+        "mode": "in-page",
+        "disputed": false,
+        "namedSaveReplacementLoadReload": true,
+        "artifactDigest": "c5c7e2ee4b3ee601a803c4171935b2564c0c6feb030a96133e0193f35a1ae49e"
+      },
+      {
+        "file": "docs/visual-qa/references/annual-admitted-client-in-page-disputed-in-page-disputed.json-2026-10-08",
+        "sha256": "aadfaac70959329d34b3491e7c9e69f1f033a719225b59483fa27bd3b2c52405",
+        "mode": "in-page",
+        "disputed": true,
+        "namedSaveReplacementLoadReload": true,
+        "artifactDigest": "c5c7e2ee4b3ee601a803c4171935b2564c0c6feb030a96133e0193f35a1ae49e"
+      }
+    ],
+    "qualification": "Four new client cases check modeled admission or explicit dispute, original payer cap/calendar/pay records and selected saved player identity/medical fields through actual API advance and Settings named replacement/load/reload. This is functional persistence evidence, not image or entire-career acceptance."
+  },
+  "legalBasis": {
+    "source": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+    "article": "33 section 5(k/l)",
+    "qualification": "Qualifying salary continuation and separate dispute procedure; default modeled club admission is a disclosed simulation decision, not a legal mandate to admit all claims.",
+    "independentSourceReview": "Executed CBA Article33§5(k/l), PDF214 text directly reviewed during R1 Oct8; continuation and grievance procedure are distinct. Default model admission is a disclosed simulation election rather than a mandate to admit every allegation."
+  },
+  "limitations": [
+    "Other-employer and permanent active-contract policy",
+    "Full benefit eligibility and Summary Plan Description integration",
+    "Complete NFL rules acceptance",
+    "Complete player naturalism and demographic calibration",
+    "Final all-feature and thirty-season verification on final runtime",
+    "Release and deployment",
+    "No new browser execution or screenshot/visual acceptance claimed by this review.",
+    "The required weekly calendars and original payer accounting remain modeled authorities; this does not adjudicate all post-employment, other-employer, statutory benefit or real-date scenarios.",
+    "R1 primary did not exist before findings; exact pre-repair source/diagnostic chain remains in immutable R1 receipt, which has not been rewritten."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

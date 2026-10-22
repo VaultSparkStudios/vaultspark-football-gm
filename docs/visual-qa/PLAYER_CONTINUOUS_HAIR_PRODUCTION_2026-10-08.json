@@ -1,0 +1,1091 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T08:28:51.133Z",
+  "status": "continuous-hair-production-progress-independent-review-pending",
+  "scope": "Versioned continuous loose-hair texture coordinate for new generated players; retained legacy decoders. Artistic mapping, not empirical national hair prevalence.",
+  "sources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/continuous-hair-source-playerHead3d.js-2026-10-08",
+      "sha256": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/continuous-hair-source-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/continuous-hair-source-playerPortrait.js-2026-10-08",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/continuous-hair-source-playerPortraitFace.js-2026-10-08",
+      "sha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/continuous-hair-source-playerMotion.js-2026-10-08",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/continuous-hair-source-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/continuous-hair-source-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/continuous-hair-source-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/continuous-hair-source-playerIdentity.js-2026-10-08",
+      "sha256": "c192777620fc80dba87b308f741f1559d8bef866e8a059f05da33c738dfeba71"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/continuous-hair-source-playerVisualIdentity.js-2026-10-08",
+      "sha256": "1f8e7c260756da9a255981afded0db5e96445205631407a1517d1374367d16cb"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/continuous-hair-source-playerMeasurements.js-2026-10-08",
+      "sha256": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3"
+    },
+    {
+      "original": "test/player-continuous-hair.test.js",
+      "file": "references/continuous-hair-source-player-continuous-hair.test.js-2026-10-08",
+      "sha256": "b2b6e787b518323e1254b1dcd244396bb5b171bcbd2dbca576cf236b5d8b1b16"
+    },
+    {
+      "original": "test/player-continuous-hair-identity.test.js",
+      "file": "references/continuous-hair-source-player-continuous-hair-identity.test.js-2026-10-08",
+      "sha256": "225a744f0b736810235c317a6b712c0bdbb53611be0e64abb59dc2f5aa387f78"
+    },
+    {
+      "original": "test/player-visual-identity.test.js",
+      "file": "references/continuous-hair-source-player-visual-identity.test.js-2026-10-08",
+      "sha256": "18e56f9a1742cf2f64555b7fface4cea3aa5a16260b07aec295b2fbf43afd766"
+    },
+    {
+      "original": "test/player-occupied-hair.test.js",
+      "file": "references/continuous-hair-source-player-occupied-hair.test.js-2026-10-08",
+      "sha256": "07fa2c5807e20f7235e848aeb54bd9f0fb83b4ad92e60cc669a21d1f0d4567b5"
+    },
+    {
+      "original": "test/player-scalp-volume.test.js",
+      "file": "references/continuous-hair-source-player-scalp-volume.test.js-2026-10-08",
+      "sha256": "46d8e408f3449b12365c6753febb14aaf271c3a299c3c1cb46ba59dc6ce25e30"
+    },
+    {
+      "original": "test/player-beard-volume.test.js",
+      "file": "references/continuous-hair-source-player-beard-volume.test.js-2026-10-08",
+      "sha256": "272b028c071667710cff0580504629457e9daaa700ab134c2b4c921b001f8c73"
+    },
+    {
+      "original": "tests-ui/player-continuous-hair-gallery.spec.js",
+      "file": "references/continuous-hair-source-player-continuous-hair-gallery.spec.js-2026-10-08",
+      "sha256": "8a8a69ed0ad15c19f22e7d52d7e9bed60591868f32de5c5356a8d9cb2f61a4a5"
+    },
+    {
+      "original": "tests-ui/player-continuous-hair-production.spec.js",
+      "file": "references/continuous-hair-source-player-continuous-hair-production.spec.js-2026-10-08",
+      "sha256": "3a806569f205acb8a3ae0b1d3f97c5a680942208c4aaa25a27e58f5b8f4d5d49"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/continuous-hair-source-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    }
+  ],
+  "built": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "39a07707a1d0ea1e5dd2a5ff796c567b857718f843ec366d40ce0a3e46e587d1",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "ef04ff6954e17b232880268a43f71191dcfcf459f4d8ad47bfa79141aff7305e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "evidence": [
+    {
+      "original": "output/playwright/production-continuous-hair.json",
+      "file": "references/continuous-hair-evidence-production-continuous-hair.json-2026-10-08",
+      "sha256": "afbacf7fa52cfcba936424237ec6161cbc7a9d9f7285e75a1e904097b88648ac"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-observations.json",
+      "file": "references/continuous-hair-evidence-continuous-hair-candidate-gallery-observations.json-2026-10-08",
+      "sha256": "a570dedfe4e4de1a952516589616287b8954a92f6c6eff2dbf76d2f4ab2e6eb4"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "references/production-continuous-hair-before-2026-10-08.js",
+      "sha256": "4bc5216f4219601e354e7adf1d47466e1a43fabea79aa8d44a6c676deff194b7"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0b8c0361cee4bdcb46888873b50ab70fc981517f95f9ec0d723bef7502b45f41",
+      "original": "output/playwright/production-continuous-hair-before-desktop-dark-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "042a23a874df0e378c2e980c42c8c1eb2a5e9b23d140901450c743240dd960f4",
+      "original": "output/playwright/production-continuous-hair-before-desktop-dark-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d7dd16dfd6702ecd898676174aef04b71a5a4cf7d70ab8061fe61af0f023fd78",
+      "original": "output/playwright/production-continuous-hair-before-desktop-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f3743c9f807bb9611715bb385fb3d39c0ccb6862505fc500a26acf6b19ea3bfd",
+      "original": "output/playwright/production-continuous-hair-before-desktop-light-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "78f6daf3dad299e4eff1716b837234d37179d8b4f18736dd29068a902eebb0ac",
+      "original": "output/playwright/production-continuous-hair-before-desktop-light-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "33b65a3b04b1dde67be6594b8582f6319a6135b122fc563412e8a22041e5a192",
+      "original": "output/playwright/production-continuous-hair-before-desktop-light-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "548c4d9a9cb4b3471f8d6dff8b8117e8cc32b85a74f8072894ca15d4dca9d2a9",
+      "original": "output/playwright/production-continuous-hair-before-mobile-dark-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ec3b9ed3b911852d5aed57ce192bbac95417b67dabe99291a22313beacb06873",
+      "original": "output/playwright/production-continuous-hair-before-mobile-dark-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7b60e4b8d5275086d9eeac05fdce946f4c04cdb261b96c1634ce6cc54c8722f1",
+      "original": "output/playwright/production-continuous-hair-before-mobile-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d96fe46ef814aa5d180bdc5953ba16b280ab2f18f320db4903a01707615862f0",
+      "original": "output/playwright/production-continuous-hair-before-mobile-light-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "89b168d2c4ba5d4b8769f501d133755548758f46d836df52d52d6aff06052dc2",
+      "original": "output/playwright/production-continuous-hair-before-mobile-light-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "71ea038c1d53e2e359f6e6f10f66b39419ef9a305921af40119da1df1715a3b2",
+      "original": "output/playwright/production-continuous-hair-before-mobile-light-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "75d9f8740f6acde9abe0d180425238f73a950b1261e0fc84e17ebfc5debdcd0c",
+      "original": "output/playwright/production-continuous-hair-after-desktop-dark-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cd699928e007810e2664e9be191e848229d9fe15fc82082f2f42c2745c5b27a4",
+      "original": "output/playwright/production-continuous-hair-after-desktop-dark-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d31a520c7169b2c258f50aab3c9d43b3abbb4f66a32fa0d5c4dbac0562aa7220",
+      "original": "output/playwright/production-continuous-hair-after-desktop-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8f2e7e04c06442d600dcf464292e1b73e1657faee4bd1abd8757e57110d4a2a3",
+      "original": "output/playwright/production-continuous-hair-after-desktop-light-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ebe2d693e348cbe50aca3cc93b011c3f9a27dc926eda2ce45d283b04794d7870",
+      "original": "output/playwright/production-continuous-hair-after-desktop-light-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0dbea5c1914764eec5097113d15a4d945236e9d775ddb7a5eee9ce51fb4bb4ab",
+      "original": "output/playwright/production-continuous-hair-after-desktop-light-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "9032b9ded5703f29680f62086299c4621e591ca45c2bb5b72787b408eba2c9ec",
+      "original": "output/playwright/production-continuous-hair-after-mobile-dark-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "72c9c240faed5ad57f2eff6eeb7138d95130fb8ef42c25be258cad454e30f140",
+      "original": "output/playwright/production-continuous-hair-after-mobile-dark-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ea196213a6ccb84e26e2c40d0a9e710123fdc8a4c10a15a522a8088879e9212c",
+      "original": "output/playwright/production-continuous-hair-after-mobile-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8197ec2759da8a6473ab835ea43ce0e9b1cfc86d74a58f78c22b513717184af0",
+      "original": "output/playwright/production-continuous-hair-after-mobile-light-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "75c455b6424f7cd5014652e64ba4c259caa0b2f487fdfe593bc25cbee4c401e3",
+      "original": "output/playwright/production-continuous-hair-after-mobile-light-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-hair-production-continuous-hair-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e2013e6d7209f07232687597313ddc956866c3b34f3ce8f9f2261e17fe562ce5",
+      "original": "output/playwright/production-continuous-hair-after-mobile-light-motion.png",
+      "inspected": false
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-0-desktop-dark.png",
+      "sha256": "eff1f41e94e82c86ec2c3b4b89df55f1df8f5ad280a47931599cd5af765ddb9b",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-0-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-1-desktop-dark.png",
+      "sha256": "f4f04592449806b390513eb3c2c8369d394e94aaa568f17f7a6cfc6f63d964db",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-1-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-2-desktop-dark.png",
+      "sha256": "2cb865d41d52804950800019b8352d3ac0eb52d8051e9d45f6cd6a0460170701",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-2-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-3-desktop-dark.png",
+      "sha256": "895c23d1ba44bd720d02a0819da4cf53391cfca18c357064d9b68ab27e0ba5c4",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-3-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-4-desktop-dark.png",
+      "sha256": "daee1f2983c1f3de710262a1515a48265a9a31f55d9522916b83452dff8189b4",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-4-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-5-desktop-dark.png",
+      "sha256": "f50f1e2c3512768c33419fa55b76173da634f98685d57fd4a1388052d316b6c8",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-5-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-6-desktop-dark.png",
+      "sha256": "acce111ea464d5015cf7184326e4a1f372f1bdb8551161b7295b3250b39444a8",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-6-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-7-desktop-dark.png",
+      "sha256": "099eac9910d8f65876ce0fcf2148d1d6c81d34277016676b08c79d0a8814f262",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-7-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-8-desktop-dark.png",
+      "sha256": "08e8941e1506dbd1dfd7dc2a4c50ea52350e1b724cd6c83929289400824e6cde",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-8-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-9-desktop-dark.png",
+      "sha256": "a58cea4e17c9b2eeb68b28c06462b40e0c5fe7bb29eb339db354ebeadedccb8d",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-9-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-10-desktop-dark.png",
+      "sha256": "8402e151e8d9e6e8e150b629e806dfbf242ee16375ae9d586b864ba97a887206",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-10-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-11-desktop-dark.png",
+      "sha256": "b2ea69e62e639134b1b2899415782d04e2f72e41df38a64a768d5f0e8729a747",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-11-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-12-desktop-dark.png",
+      "sha256": "dd476d2b5264d63024f263bceb7150b1578587e2494dbffbec1ed9d079da57c4",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-12-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-13-desktop-dark.png",
+      "sha256": "f04d5cc778ef119e26dbf9af76bbb632e1d88496a973aa61317dd466925f4d24",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-13-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-14-desktop-dark.png",
+      "sha256": "e43c5391763690119ee525a35420cd36b35c414610778e6d06eb3bd83e677cec",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-14-desktop-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-0-desktop-light.png",
+      "sha256": "3b1fca85d1e8e4d79188feabaaacf58f880567146246564c3e070a658b2078f8",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-0-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-1-desktop-light.png",
+      "sha256": "7f4ddf8f75aaf03754d237d769ad6cf853b65e633a686e3e0fc6ec6e0bf2ca29",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-1-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-2-desktop-light.png",
+      "sha256": "771d83599c353adaab76407f5eccb4a4692395a175d0c53bf05e28c2dc8cc042",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-2-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-3-desktop-light.png",
+      "sha256": "a22690cec9acbbd1434e9b896b24d6e4be759f2a073c115362b1b519270f6b53",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-3-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-4-desktop-light.png",
+      "sha256": "72a9127023cec35e30e77de89b5668bf5e1363be9ec71d15ede8b8deab139546",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-4-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-5-desktop-light.png",
+      "sha256": "3b2d9173d0e881b4221aa67389c64bb55210481dbf4a7a59c86dfa69082e3569",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-5-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-6-desktop-light.png",
+      "sha256": "bd7b85c43684cff525d976931a9f63f1be209fd484ffef88135403c0a4bda87a",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": true,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-6-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-7-desktop-light.png",
+      "sha256": "138b70bb85f2f1c0e7764b88094e6f0c84f39502fcfc9ca630c0c69d0d9c39ef",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-7-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-8-desktop-light.png",
+      "sha256": "8d190e26d00937096ddf6269e3e968ec952c64187c0fae9ed3a06cda28b27efe",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-8-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-9-desktop-light.png",
+      "sha256": "49d2c02181e1088c3f03620ea7bd8d7dc1fbcdfb3a915244daca6e3608dd3c59",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-9-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-10-desktop-light.png",
+      "sha256": "ffbfa83fe9388ca3742c9e211273f86b0fab1a4afc25651fd8f73fa33752947c",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-10-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-11-desktop-light.png",
+      "sha256": "5540a1ac2efc0f0586467e4c0fa97bcd82ec9dea8b392112e9379e6d6c93a314",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-11-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-12-desktop-light.png",
+      "sha256": "4cd959ac757e49d7a909f9becb555501a43876d57e68971beb0f9fa9c37f6370",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-12-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-13-desktop-light.png",
+      "sha256": "4003248e4001e6ee19472a101afea70c6b55b96a4e43df4970bb3a830d19dae3",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-13-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-14-desktop-light.png",
+      "sha256": "02e9eb67974fc9a530c7a86617f441ef339dcf98626bca4854734edddabdde18",
+      "size": "desktop",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-14-desktop-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-0-mobile-dark.png",
+      "sha256": "2ae40ca02b5ff9b57236893f978fe95dea701db5b8b4e39ff264cdeeda7b11f0",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-0-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-1-mobile-dark.png",
+      "sha256": "c3e4b6eb510b7b0fbd62f9915085d723f35e9470d5bca9f4823e135fa14740bb",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-1-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-2-mobile-dark.png",
+      "sha256": "778c76daced65da1dedc9d78e2311888e51190e295155b5ea301de4581a2b7c9",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-2-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-3-mobile-dark.png",
+      "sha256": "48f4a6d759f0f854030aedb188a5e36532931029f364a5739f447328ae8b693e",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-3-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-4-mobile-dark.png",
+      "sha256": "b969a9e1d88ac0d33823498a110a1d7b740ea2afbca2766f179b9acef3eaccb4",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-4-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-5-mobile-dark.png",
+      "sha256": "99ad98dbae0e4f77a6a21533342c70c7ffa1045154833f7c8778328d3e529f72",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-5-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-6-mobile-dark.png",
+      "sha256": "2184908c30c20ff13f5fe746a3f2289974a45d25fe646140e1db6e3791d6deb4",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-6-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-7-mobile-dark.png",
+      "sha256": "ded1528f626cf5eea2a1b53bab24f775ff80aba6ed1923a9a92b4605c8c36696",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-7-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-8-mobile-dark.png",
+      "sha256": "34cd2c1e8f7d955a88db9583020a498d21d5c695ec4094ba8dd3c9fb9ca346f5",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-8-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-9-mobile-dark.png",
+      "sha256": "a3d91d8f4d580d994f8a632af434087845ed63e883f963fab3934e7107b84557",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-9-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-10-mobile-dark.png",
+      "sha256": "a6832a304593093e26fe4404b3a29c7f3214248b958d8a9e0ea701588b812565",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-10-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-11-mobile-dark.png",
+      "sha256": "e5b4dbf48f8a474b84a5130610dddd70f9720e344aeca850e596b931c33ee9d6",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-11-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-12-mobile-dark.png",
+      "sha256": "c3c54788884098cecfd50dbdd3b3a1242d7fce29c3d485cd41c167adbba16ba5",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-12-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-13-mobile-dark.png",
+      "sha256": "c34cd5c5f81e53e084ec5f018a8b85f7b4fbdf34be94b9fb0ece6533b6235fb6",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-13-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-14-mobile-dark.png",
+      "sha256": "76ff58c488a6ae5be3569c0624a7abb9db1e7f80d37135d14af2478f6415e805",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-14-mobile-dark.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-0-mobile-light.png",
+      "sha256": "70c816323ea7e3bbffc239c7f4f8f43fa8a04aa594b00ca2d6f881ab0e88d0ee",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-0-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-1-mobile-light.png",
+      "sha256": "2e39a00d0c451468d8f52eccd64611749c22eab8174598b1784f32a602acdb86",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-1-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-2-mobile-light.png",
+      "sha256": "a2e8daba73b8d3a0979c80f7afaebc1378d18c52ef76622e9d8118aae693861b",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-2-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-3-mobile-light.png",
+      "sha256": "b1511dbb361b073aa5c2f63755aad5038aa24ba3505c110111b92ca1f218dcde",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-3-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-4-mobile-light.png",
+      "sha256": "3b118d3f98b97cd8793c98b1fb7bcd23e19f166dd029ae6cfda0586d15841857",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-4-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-5-mobile-light.png",
+      "sha256": "031a991aef396d8002be0942c563239be6b1c1fe67d89eae71e9bb11c7eac1e1",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-5-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-6-mobile-light.png",
+      "sha256": "6b29a4346236153e33caeb21c3181463065d676e8800a48fe153726687204822",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-6-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-7-mobile-light.png",
+      "sha256": "65347d7dfaddfb8049011d8c94785aea72257c3078f98c2303320e4e0e14881d",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-7-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-8-mobile-light.png",
+      "sha256": "9fbfe320f318d94360d6bad7abc68bcfd4525e60890a859a93c2901f0a8d7157",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-8-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-9-mobile-light.png",
+      "sha256": "55b840b235057574811cb69060a3de10e65e6dbf9c7be91c31fb99623b795b44",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-9-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-10-mobile-light.png",
+      "sha256": "ce551cfddaafb8f473766840ce9843bf55f06187c705f15f021671db162ccd5a",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-10-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-11-mobile-light.png",
+      "sha256": "39aed0ec9f386189404a20f64def1bb1f01ee196089beec53eb251c0bec5a016",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-11-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-12-mobile-light.png",
+      "sha256": "bdefd337656835b2c13f1797f8922a49501fb3c5332d9f0b21db5f28e209d580",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-12-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-13-mobile-light.png",
+      "sha256": "70889673f07880c0b87f0134f2f2c655605f5a113e7ec1c37a7a9932c2ec46f4",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-13-mobile-light.png"
+    },
+    {
+      "original": "output/playwright/continuous-hair-candidate-gallery-14-mobile-light.png",
+      "sha256": "3e96b15d9fdc1252a13d5ac34d2c6c5db087a1ab2755ecc36a4e9c44e895d844",
+      "size": "mobile",
+      "theme": "light",
+      "state": "Fixed identity across first fourteen rows; front/oblique/profile; before/after",
+      "inspected": false,
+      "file": "captures/continuous-hair-continuous-hair-candidate-gallery-14-mobile-light.png"
+    }
+  ],
+  "checks": {
+    "focused": [
+      {
+        "passed": 15,
+        "failed": 0,
+        "durationMs": 19326.27,
+        "terminalChunk": "230e9a"
+      },
+      {
+        "passed": 6,
+        "failed": 0,
+        "durationMs": 30874.2766,
+        "terminalChunk": "21b585"
+      }
+    ],
+    "browser": {
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 44.3,
+      "terminalChunk": "8f764f",
+      "newRecipeActualDossier": true,
+      "legacyNoHairPixelsExact": true,
+      "unavailableWebGLFallback": true
+    },
+    "build": {
+      "passed": true,
+      "assets": 318,
+      "sizeKB": 3536,
+      "precacheVersion": "9a561a384dd0",
+      "terminalChunk": "2af546"
+    },
+    "loading": {
+      "passed": true,
+      "modules": 138,
+      "bootBytes": 649321,
+      "bootModules": 51,
+      "lazyLeaks": 0,
+      "terminalChunk": "e47a58"
+    }
+  },
+  "iteration": {
+    "initialLegacyCheck": {
+      "passed": 2,
+      "failed": 1,
+      "terminalChunk": "55f4d7",
+      "reason": "Legacy mesh metadata gained additional fields; corrected by emitting continuous fields only for the new version."
+    },
+    "revisedCandidate": {
+      "passed": 3,
+      "failed": 0,
+      "terminalChunk": "68cc5e"
+    }
+  },
+  "inspection": {
+    "reviewer": "root",
+    "originalsInspected": 2,
+    "findings": [
+      "Root inspected two final originals: desktop light boundary-gallery row and desktop dark actual body. Earlier candidate/dossier originals were inspected before the last recapture and are not claimed as final frozen inspections.",
+      "Boundary transitions are coherent but cap-like hair, sparse hanging ends and mannequin faces remain.",
+      "Actual Miles Bell DL, 77 inches and 308 pounds, retains matching heads across views. His visible torso remains too simplified/slender for complete measurement-compatible naturalism acceptance; further regional body fitting is required.",
+      "Continuous coordinate is not yet consumed by every SVG fallback surface; legacy fallback remains complete but natural-texture fidelity is partial.",
+      "Full demographic calibration, full visual craft, final current whole-suite/career and release remain open."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

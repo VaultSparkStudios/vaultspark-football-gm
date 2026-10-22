@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T15:09:36.692Z",
+  "component": "Cached measured-body rigid articulation experimental foundation",
+  "round": 1,
+  "verdict": "FIX",
+  "acceptanceScope": "Unintegrated CPU caching/rigid-part numerical foundation only; no full body quality, union-volume invariant, production integration, GPU/FPS or physical-mobile acceptance.",
+  "primaryReceiptPath": "docs/visual-qa/PLAYER_BODY_CACHED_ANIMATION_2026-10-08.json",
+  "primaryReceiptSha256": "c4cb12c1dc94f6b151b5c57e9acfc778a258b5d8c9c710427e1b9f9f2aefcf12",
+  "sourceHashes": {
+    "test-support/appearance/playerBodyAnimation3d.js": "2f1a384f3983cec1faeac284afab29ae9a80f18aadb9449882fadd69e8554410",
+    "test-support/appearance/playerBody3d.js": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "public/lib/playerHead3d.js": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "test/player-body-animation-3d.test.js": "c2316fcad4e8929325c107167eda110fe50f015063fda1ad337c3f45321a7bd3",
+    "test/fixtures/player-head-pole-case.json": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1",
+    "tests-ui/player-body-animation-3d.spec.js": "8843d7332327dd2fae0da77010959bda5d9692022bbae4553ef4abbbefbbe27a",
+    "scripts/run-test-shard.mjs": "3dbef5e3f62b21985602126b9ae06fc47ae9795774841f5bb5471a2faf5bf33c"
+  },
+  "frozenSources": [
+    {
+      "original": "test-support/appearance/playerBodyAnimation3d.js",
+      "file": "references/body-animation-source-0-playerBodyAnimation3d.js-2026-10-08",
+      "sha256": "2f1a384f3983cec1faeac284afab29ae9a80f18aadb9449882fadd69e8554410"
+    },
+    {
+      "original": "test-support/appearance/playerBody3d.js",
+      "file": "references/body-animation-source-1-playerBody3d.js-2026-10-08",
+      "sha256": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425"
+    },
+    {
+      "original": "test-support/appearance/triangleSolidVolume.js",
+      "file": "references/body-animation-source-2-triangleSolidVolume.js-2026-10-08",
+      "sha256": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/body-animation-source-3-playerMotion.js-2026-10-08",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "original": "public/lib/playerCapacityStudy.js",
+      "file": "references/body-animation-source-4-playerCapacityStudy.js-2026-10-08",
+      "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7"
+    },
+    {
+      "original": "public/lib/physiqueGeometryContract.js",
+      "file": "references/body-animation-source-5-physiqueGeometryContract.js-2026-10-08",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/body-animation-source-6-playerHead3d.js-2026-10-08",
+      "sha256": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6"
+    },
+    {
+      "original": "public/lib/playerHand.js",
+      "file": "references/body-animation-source-7-playerHand.js-2026-10-08",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/body-animation-source-8-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "test/player-body-animation-3d.test.js",
+      "file": "references/body-animation-source-9-player-body-animation-3d.test.js-2026-10-08",
+      "sha256": "c2316fcad4e8929325c107167eda110fe50f015063fda1ad337c3f45321a7bd3"
+    },
+    {
+      "original": "test/fixtures/player-head-pole-case.json",
+      "file": "references/body-animation-source-10-player-head-pole-case.json-2026-10-08",
+      "sha256": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1"
+    },
+    {
+      "original": "tests-ui/player-body-animation-3d.spec.js",
+      "file": "references/body-animation-source-11-player-body-animation-3d.spec.js-2026-10-08",
+      "sha256": "8843d7332327dd2fae0da77010959bda5d9692022bbae4553ef4abbbefbbe27a"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/body-animation-source-12-run-test-shard.mjs-2026-10-08",
+      "sha256": "3dbef5e3f62b21985602126b9ae06fc47ae9795774841f5bb5471a2faf5bf33c"
+    }
+  ],
+  "frozenArtifactHashes": {
+    "docs/visual-qa/captures/body-animation-acceleration-desktop-dark.png": "13f77c7782dd60355c5b23c42ded57c92587bb1e2a38acd0dae6c2bae5af2d72",
+    "docs/visual-qa/captures/body-animation-acceleration-desktop-light.png": "51671383bc55409f421c2849c9ff3221586dc9a6e62071cab59e9c8f7d9566da",
+    "docs/visual-qa/captures/body-animation-acceleration-mobile-dark.png": "f1ef8d9134d4842601ce99b6abde4a9a8483164260feeb270692b2a21a50d137",
+    "docs/visual-qa/captures/body-animation-acceleration-mobile-light.png": "1f559f9b5dcdf7cf413e4f22709765747073ca05ecdb971bf4cf52bb7096f6d0",
+    "docs/visual-qa/captures/body-animation-cut-desktop-dark.png": "f469cff937c8a0f052ee3adbed8bb8ca0d4a0ebf12960c2348bf65c10cdbdf3c",
+    "docs/visual-qa/captures/body-animation-cut-desktop-light.png": "bea1b2c9e922fe82dad3bb3eeec403cbf8b52abf5ddc713e015cd12fe2bf0195",
+    "docs/visual-qa/captures/body-animation-cut-mobile-dark.png": "cb49dffb35846f8ffff220464039becd2c4dd609b7c06d064b78f687fec56a7e",
+    "docs/visual-qa/captures/body-animation-cut-mobile-light.png": "1ba892359a9fe81e328d8bee40f414a575cb4522eff75def850430032b07586d",
+    "docs/visual-qa/captures/body-animation-endurance-desktop-dark.png": "4562a988b06cf573cedfe2fb767e76234c555d78023d8aa2b24374dba313bbc9",
+    "docs/visual-qa/captures/body-animation-endurance-desktop-light.png": "90011508b62f729fce1a8704cb80f95e7de4232d50b82d2b877a5764cc2e0949",
+    "docs/visual-qa/captures/body-animation-endurance-mobile-dark.png": "396ba8413cc86f8a7889ad51c99001cf8ac3efb03ede4a424ffec81e1dcdb491",
+    "docs/visual-qa/captures/body-animation-endurance-mobile-light.png": "3ec9fce91a6d8beed6f8d091d0402937b6c8f98b1b29d8cd1efe31c71bff91b5",
+    "docs/visual-qa/captures/body-animation-jump-desktop-dark.png": "191b3fc38c694f194415fe8be814f52134c54a7e81abf9dd60b98645a4ae2082",
+    "docs/visual-qa/captures/body-animation-jump-desktop-light.png": "1ff1e556bb7c04e8bc033dc1e2ce1a69013ef7a9563306bd5486f0dd75e64644",
+    "docs/visual-qa/captures/body-animation-jump-mobile-dark.png": "10620ae144c5491b08021c51c8e2943ce4a09695ddff4ffbf2eb6385e6b3aa25",
+    "docs/visual-qa/captures/body-animation-jump-mobile-light.png": "173f754178a2156d98d9d70facc36a4ea7e51fff147557194b29d04499803b2a",
+    "docs/visual-qa/captures/body-animation-run-desktop-dark.png": "8ad7fef76c90ac121fdc8b320b5128cb012d901ecf28d58af040df5b37a06e7d",
+    "docs/visual-qa/captures/body-animation-run-desktop-light.png": "42650e1a0037cf50c5388ea2bf0d0906e6a4228883b1b610463c7c93cec3c155",
+    "docs/visual-qa/captures/body-animation-run-mobile-dark.png": "d9286bd2f090f4dc9502bde43a6aad2cbbbec98b94389fd1f2efee95d4f5259a",
+    "docs/visual-qa/captures/body-animation-run-mobile-light.png": "b28aa0c6b7ba1b7ef201176fa6e45f4fbf353de01bafb022b26aa9733a771a1f",
+    "docs/visual-qa/captures/body-animation-strength-desktop-dark.png": "061161f6a6c9bd1d367ea3a3dbc3badce6e958ec482262e30ecd74a1332f1174",
+    "docs/visual-qa/captures/body-animation-strength-desktop-light.png": "f9e02e26c5a23ff346a882ffcb96210793d2e369c13ee977d0436a286fbee3e7",
+    "docs/visual-qa/captures/body-animation-strength-mobile-dark.png": "eaef90eea2066f61f78c48b449d28c6cb8514ed592ff8aaf4b10fa10e6cee492",
+    "docs/visual-qa/captures/body-animation-strength-mobile-light.png": "59d220c64a57da0ab392415cd9d7e18a3b960871789d40af487e7d7e934b11d9",
+    "docs/visual-qa/references/body-animation-report-0-body-animation-domain-final.log-2026-10-08": "b1be0b3a28c27f96b73fd7e1fa48095d9461264ad453cd2d48301175867ce1ca",
+    "docs/visual-qa/references/body-animation-report-1-body-animation-browser.log-2026-10-08": "c2aa8f031a21884293fe7627a39bf7952ca520159601c1f6df58d837b68a9a8e",
+    "docs/visual-qa/references/body-animation-report-2-body-animation-observations.json-2026-10-08": "56231da6c9203cf55df73ee1fee96eab2f29da0c7271ac89c1a1df73a396903f",
+    "docs/visual-qa/references/body-animation-report-3-deploy-manifest.json-2026-10-08": "54d616fdcd0186688caf0e731ef493b5b184479fe5a497853f15aa5f90c4ba41"
+  },
+  "artifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18",
+  "currentManifestSha256": "54d616fdcd0186688caf0e731ef493b5b184479fe5a497853f15aa5f90c4ba41",
+  "independentChecks": [
+    {
+      "command": "node --test test/player-body-animation-3d.test.js",
+      "sessionId": 90430,
+      "terminalChunk": "2d03e7",
+      "exitCode": 0,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 8046.8025,
+      "coverage": "35 constructed references,21 closed/component-volume poses, retained buffers, input/cache authority, exact neutral restoration and disposal."
+    },
+    {
+      "command": "node .cache/body-animation-independent-review.mjs",
+      "sessionId": 31068,
+      "terminalChunk": "33aff6",
+      "exitCode": 0,
+      "bindingChecks": 95,
+      "posedChecks": 120,
+      "cases": [
+        {
+          "height": 62,
+          "mass": 100,
+          "capacity": 40
+        },
+        {
+          "height": 62,
+          "mass": 650,
+          "capacity": 99
+        },
+        {
+          "height": 96,
+          "mass": 100,
+          "capacity": 99
+        },
+        {
+          "height": 96,
+          "mass": 650,
+          "capacity": 40
+        },
+        {
+          "height": 80,
+          "mass": 350,
+          "capacity": 70
+        }
+      ],
+      "maxPositionErrorInches": 0.00000762939453125,
+      "maxNormalLengthError": 8.388545125193048e-8,
+      "maxComponentVolumeRelativeError": 0.0000017324995713607905,
+      "coverage": "Five independent measurement/mass/capacity combinations, six modes,four phases each. Compare every actual vertex, measured pose and buffer identities, including hand/thumb/wrist and world-frame feet. Thirty sampled component audits retain closed orientation and bounded volume. Original player remains unchanged; hand/foot/stature/face/capacity authority edits invalidate, neutral restoration exact, disposed buffer zeroed and methods refuse."
+    },
+    {
+      "command": "Independent normal discrepancy localization against rebuilt run phase .62",
+      "terminalChunk": "dc9532",
+      "exitCode": 0,
+      "coverage": "Large normal differences occur at collapsed cap-center/ellipsoid-pole rows inheriting construction fallback; finite unit-normal contract passes but exact all-normal equality is not established."
+    }
+  ],
+  "scratchEvidenceHashes": {
+    ".cache/body-animation-independent-review.mjs": "ebc7a888b0a9612ca0f05f3630d3df9b204fd2e599f14ed916fb936fa4d6c333",
+    ".cache/body-animation-independent-review-results.json": "1a5ec3091544a3083a81f2549f3280557fbd97d964bf96451ac49e0777e4dcbe"
+  },
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/body-animation-run-desktop-dark.png",
+      "sha256": "8ad7fef76c90ac121fdc8b320b5128cb012d901ecf28d58af040df5b37a06e7d"
+    },
+    {
+      "path": "output/playwright/body-animation-cut-desktop-light.png",
+      "sha256": "bea1b2c9e922fe82dad3bb3eeec403cbf8b52abf5ddc713e015cd12fe2bf0195"
+    },
+    {
+      "path": "output/playwright/body-animation-strength-mobile-dark.png",
+      "sha256": "eaef90eea2066f61f78c48b449d28c6cb8514ed592ff8aaf4b10fa10e6cee492"
+    },
+    {
+      "path": "output/playwright/body-animation-jump-mobile-light.png",
+      "sha256": "173f754178a2156d98d9d70facc36a4ea7e51fff147557194b29d04499803b2a"
+    }
+  ],
+  "methodAssessment": "One cloned neutral mesh supplies retained Float32 output, indices and parts. Local Float64 coordinates/normals are expressed in orthonormal part frames, then transformed into shared measured poses. Hand mirroring/thumb bases and globally oriented foot/ankle frames reproduce construction positions on tested tails. The original cloned person is authority; matchesPlayer checks saved appearance/frame/ratings at state boundaries. Callers must replace controller after mismatch; update intentionally uses immutable snapshot.",
+  "findings": [
+    {
+      "severity": "correctness",
+      "status": "OPEN",
+      "finding": "Cached normal components are not universally identical to freshly constructed normals (expanded probe max component difference1.5757412). Construction uses arbitrary global fallback normals at collapsed cap/ellipsoid singular rows, while cache rotates neutral normals. Finite near-unit normals are verified; neither all-vertex outwardness nor repaired singular shading is claimed. Root requests coherent outward singular fallback as required follow-through before accepting the foundation; replace builder global-direction fallback with analytic center-to-surface direction where differential is degenerate and outward vector nonzero, then verify rigid cached/reference normals and renewed pixels. This is an inherited builder issue, not failed finite/unit-normal or position tests."
+    },
+    {
+      "severity": "numerical-limit",
+      "status": "OPEN",
+      "finding": "Per-component rigid volume preservation is supported by sampled tests, but intersections change with articulation. No union-volume invariant, self-intersection-free anatomy, manifoldness or all-phase validity follows."
+    },
+    {
+      "severity": "visual-limit",
+      "status": "OPEN",
+      "finding": "Inspected paired front/oblique captures agree at displayed scales. Slab torso, abrupt limb/joint connections, simplified extremities/head and mannequin anatomy remain visibly unresolved."
+    },
+    {
+      "severity": "performance-limit",
+      "status": "OPEN",
+      "finding": "Primary headless browser records median0.6ms cached update versus77.1ms reconstruction and1ms update-plus-CPU-render-submission. Twelve construction and120 update samples are local diagnostic evidence, not equivalent warm-up benchmark distributions, GPU completion, sustained FPS or physical-device/mobile timings."
+    }
+  ],
+  "primaryEvidenceAttribution": {
+    "domainPassed": 3,
+    "browserPassed": 1,
+    "browserIndependentlyRerun": false,
+    "capturesBound": 24,
+    "primaryReferencePoses": 35,
+    "primaryComponentVolumePoses": 21,
+    "timingExecution": "Primary headless Chromium; persistent browser report and test inspected, not independently rerun.",
+    "timings": {
+      "domainPassed": 3,
+      "browserPassed": 1,
+      "referencePoses": 35,
+      "componentVolumePoses": 21,
+      "constructionMs": 143.79999995231628,
+      "rebuild": {
+        "samples": 12,
+        "medianMs": 77.09999990463257,
+        "p95Ms": 99.40000009536743,
+        "maxMs": 99.40000009536743
+      },
+      "cached": {
+        "samples": 120,
+        "medianMs": 0.5999999046325684,
+        "p95Ms": 0.8999998569488525,
+        "maxMs": 1
+      },
+      "updateAndDrawCpu": {
+        "samples": 120,
+        "medianMs": 1,
+        "p95Ms": 1.4000000953674316,
+        "maxMs": 1.7999999523162842
+      },
+      "maxPositionError": 0.00000762939453125,
+      "stableBuffers": true,
+      "neutralPixelsRestored": true,
+      "inputUnchanged": true,
+      "disposed": true,
+      "hardware": "local headless Chromium, emulated viewport; no physical mobile hardware claim",
+      "gpuCompletionTimed": false,
+      "wholeUnionMassVerified": false,
+      "productionDossierIntegrated": false,
+      "timingViewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    }
+  },
+  "limits": [
+    "Five generated measurement tails and selected phases only; not exhaustive control/pose coverage.",
+    "Controller returns mutable retained mesh buffers; consumers must respect ownership and check authority at player-state changes.",
+    "Unsupported/malformed geometry is not broadly certified; present source contracts and valid saved frames determine accepted inputs.",
+    "No production body adoption, saved recipe change, demographic fitting, full suite/current career, complete naturalism or release acceptance."
+  ],
+  "fullVisualAcceptance": false,
+  "productionIntegrationAccepted": false,
+  "wholeGoalComplete": false,
+  "releaseAccepted": false,
+  "recordReviewHelper": "record-review.mjs unavailable; immutable independent receipt written directly.",
+  "disposition": "R1 FIX frozen before root repair; original unaccepted unit-normal-contract PASS draft retained in scratch, never accepted as component completion.",
+  "preacceptanceDraft": {
+    "path": ".cache/body-animation-review-preacceptance-unit-normal-draft.json",
+    "sha256": "1318f151ddfb9599a322d3cb0caa5ee4f35b9d2a2e5fc08e5ab465634671d276"
+  }
+}

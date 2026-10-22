@@ -1,0 +1,70 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {applyInjury} from '../src/engine/injurySystem.js';
+import {previewRegularMedicalRecovery,applyRegularMedicalRecovery} from '../src/domain/regularMedicalRecovery.js';
+import {validateSnapshotAdmittedInjuryPayroll} from '../src/domain/admittedInjuryPayroll.js';
+import {executeAdvanceWeekCommand} from '../src/runtime/advanceWeekCommand.js';
+import {encodeSnapshot,decodeSnapshot} from '../src/adapters/persistence/snapshotCodec.js';
+
+import {createSessionFromSnapshot} from '../src/runtime/bootstrap.js';
+import {fixture} from './helpers/regularMedicalFixture.js';
+
+const options={year:2027,week:1,getTeamModifiers:()=>({extraRecoveryWeeks:0})};
+
+test('regular preview is pure; clearance interval earns old payer/rate without service or employment',()=>{
+ const {s,l,p}=fixture(),before=JSON.stringify(s.toSnapshot()),service=structuredClone([p.serviceHistory,p.pensionService]);
+ const preview=previewRegularMedicalRecovery(l,options);
+ assert.equal(JSON.stringify(s.toSnapshot()),before);assert.equal(preview.recovery.recovered,1);
+ const recovery=applyRegularMedicalRecovery(l,options);assert.equal(recovery.recovered,1);assert.equal(p.injury,null);
+ assert.equal(l.admittedInjuryPayroll.length,1);const row=l.admittedInjuryPayroll[0],right=l.admittedInjuryContinuations[0];
+ assert.equal(row.teamId,'BUF');assert.equal(row.earningYear,2027);assert.equal(row.injuryYear,2026);
+ assert.equal(row.phase,'regular-season');assert.equal(row.amountCents,right.weeklyRateCents);
+ assert.equal(p.teamId,'FA');assert.equal(p.contract.salary,0);assert.equal(l.injurySalaryClaims,undefined);
+ assert.deepEqual([p.serviceHistory,p.pensionService],service);validateSnapshotAdmittedInjuryPayroll(l);
+ applyRegularMedicalRecovery(l,{...options,week:2});assert.equal(l.admittedInjuryPayroll.length,1,'healthy next interval unpaid');
+});
+
+test('retired sources heal and earn; late callback failure commits neither wage nor recovery',()=>{
+ const {l,p}=fixture({retired:true}),other=l.players.find(row=>row.teamId==='MIA');
+ applyInjury(other,{type:'Separate medical case',weeksRemaining:3});const before=JSON.stringify(l);
+ assert.throws(()=>applyRegularMedicalRecovery(l,{...options,getTeamModifiers:(_id,player)=>{
+  if(player.id===p.id)throw new Error('late clinical failure');return {extraRecoveryWeeks:0};
+ }}),/late clinical failure/);assert.equal(JSON.stringify(l),before);
+ applyRegularMedicalRecovery(l,options);assert.equal(p.injury,null);assert.equal(l.admittedInjuryPayroll.length,1);
+ assert.equal(other.injury.weeksRemaining,2);
+});
+
+test('actual scheduled weekly command pays the retired clearance interval and compressed restoration retains it',async()=>{
+ const {s,l,p}=fixture({retired:true}),service=structuredClone([p.serviceHistory,p.pensionService]);
+ assert.equal(s.advanceWeek().ok,true);assert.equal(p.injury,null);assert.equal(s.currentWeek,2);
+ assert.equal(l.admittedInjuryPayroll.length,1);assert.equal(l.admittedInjuryPayroll[0].week,1);
+ assert.deepEqual([p.serviceHistory,p.pensionService],service);
+ const restored=createSessionFromSnapshot(await decodeSnapshot(await encodeSnapshot(s.toSnapshot())));
+ assert.deepEqual(restored.league.admittedInjuryPayroll,l.admittedInjuryPayroll);
+ assert.equal(restored.league.retiredPlayers.find(row=>row.id===p.id).injury,null);
+ assert.equal(restored.advanceWeek().ok,true);assert.equal(restored.league.admittedInjuryPayroll.length,1);
+});
+
+test('actual command rejects corrupt source authority before dashboard, GM, medical or RNG effects',()=>{
+ const {s,l}=fixture();l.admittedInjuryContinuations[0].weeklyRateCents++;
+ const before=JSON.stringify(s.toSnapshot());s.getDashboardState=()=>{throw new Error('dashboard must not read');};
+ const result=executeAdvanceWeekCommand(s,{count:1});assert.equal(result.ok,false);
+ assert.equal(result.reasonCode,'ADMITTED_INJURY_CONTINUATION_INVALID');assert.equal(JSON.stringify(s.toSnapshot()),before);
+});
+
+test('a mismatched season or unopened financial year cannot consume a medical interval',()=>{
+ const {l}=fixture(),before=JSON.stringify(l);
+ assert.throws(()=>applyRegularMedicalRecovery(l,{...options,year:2028}),e=>e.reasonCode==='REGULAR_MEDICAL_RECOVERY_INVALID');
+ assert.equal(JSON.stringify(l),before);
+ l.financialYear=2028;const closed=JSON.stringify(l);
+ assert.throws(()=>applyRegularMedicalRecovery(l,options),e=>e.reasonCode==='REGULAR_MEDICAL_RECOVERY_INVALID');
+ assert.equal(JSON.stringify(l),closed);
+});
+
+test('actual active free agent with ongoing prior-year incapacity uses the separate earning ledger',()=>{
+ const {s,l,p}=fixture();p.injury.weeksRemaining=3;
+ assert.equal(s.advanceWeek().ok,true);assert.ok(p.injury.weeksRemaining>0);
+ assert.equal(l.admittedInjuryPayroll.length,1);assert.equal(l.admittedInjuryPayroll[0].phase,'regular-season');
+ assert.ok(!p.elevationInjuryPay.payroll.some(row=>row.year===2027));
+ assert.equal(p.teamId,'FA');assert.equal(p.contract.salary,0);
+});

@@ -5,6 +5,7 @@ import {
   registerCoordinator,
   registerRootHeadCoach
 } from "../../engine/coachingTree.js";
+import { derivedRng } from "../../utils/rng.js";
 
 const COORDINATOR_ROLES = Object.freeze([
   ["offensiveCoordinator", "OC"],
@@ -76,7 +77,14 @@ export class CoachingService {
       for (const [staffKey, role] of COORDINATOR_ROLES) {
         const staffer = team.staff?.[staffKey];
         if (staffer && !nodeForStaff(this.league.coachingTree, team.id, staffer, role)) {
-          registerCoordinator(this.league, team, staffer.name, role, this.session?.rng);
+          // Filling missing lineage is normalization, including the first
+          // dashboard read and legacy restores. It must not draw from gameplay
+          // randomness. Actual hires/promotions below still use the live RNG.
+          const identityRng = derivedRng(JSON.stringify([
+            'coaching-lineage', this.session?.rngStreams?.baseSeed ?? this.league.id ?? 'legacy',
+            this.currentYear(), team.id, role, staffer.name
+          ]));
+          registerCoordinator(this.league, team, staffer.name, role, identityRng);
         }
       }
     }

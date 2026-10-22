@@ -1,0 +1,10 @@
+[WebServer] (node:67056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:36700) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests-ui\player-proximal-joins-gallery.spec.js:5:1 › current saved body sections keep attached joins at a fixed physical screen scale (2.2s)
+
+  1 passed (4.3s)

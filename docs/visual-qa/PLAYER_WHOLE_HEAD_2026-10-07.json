@@ -1,0 +1,4829 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07T21:33:28.872Z",
+  "sourceRevision": "local-worktree",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "status": "whole-head-candidate-scoped-verification-full-player-open",
+  "scope": "Continuous long hair, grouped cropped locks and shared landmark facial form; not complete player acceptance",
+  "doneCondition": "Bounded continuous curl paths and shared cropped surface groups; readable saved eye pigment and coherent facial planes; preserve identity/frame, exact legacy output and actual built restoration.",
+  "sourceHashes": {
+    "public/lib/fineFaceGeometry.js": "b3b748cdb8025d8755c590448f4a7b270a1791f5c6b097240bb61c7a1bbb55d2",
+    "public/lib/portraitSurfaceLighting.js": "da4dd1985cdfe11408d08f39a3941506f58f7e2678b6880afaf750ac3477f11e",
+    "public/lib/playerPortraitFace.js": "7d42ca1feb258ee2110b7ca603dc40e43fee5d2c658933b4f498832895923c97",
+    "public/lib/playerSideAppearance.js": "52c1c2a13645792df501008deb9017e7c6e00b62a4d8da4a784cf30c9afebed5",
+    "public/lib/longHairFlow.js": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622",
+    "public/lib/croppedHairVolume.js": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/partedHairFlow.js": "be4c479ad8251c593a0b3287672b1f368573da0081a75f4c4b62ae047b539de0",
+    "public/lib/playerPortrait.js": "d5460bcfaf782f443b1177d9aa4dd22e91359dfb21d75700e6e673868afd7ba8",
+    "public/lib/playerMotion.js": "d804595cbf93db0f41a17ddc6abd859129a3ac9370030933074ec8627eb56a20",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerMeasurements.js": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "d64f17d96bb1e13d7bb986d1a80b70ae93036f03070d7e0406121813f720cf84",
+    "tests-ui/portrait-combinations.spec.js": "87a942dda3516ee973cb67ad3306caf01c1aed516f959c3587ddccae44fe452d",
+    "tests-ui/portrait-natural-detail.spec.js": "fbbd716f66b279e1bf12461be06cb31b11eeba2a90e138d47c3f1d8d2840c638",
+    "tests-ui/player-capacity-client.spec.js": "fe7917574da9c2543efc6319e4dc033cb30f13e8f1034539933808bf47af1dd1",
+    "test/player-whole-head-form.test.js": "93c3db4cec3e90446b3a7c50d5b3bd6cb61359eea39af9fa155a53de12eff5e5",
+    "test/player-fine-face.test.js": "1f7075aec4635cee19d5eb8d5336e85c9eddeae12dee5e71211e4ada711f76c4",
+    "test/player-face-lighting.test.js": "95f3951303089cceffcb657eed6d51ec517f83f2cb66115a619da630d76ae43e",
+    "test/fixtures/whole-head-legacy-hashes.json": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a"
+  },
+  "beforeHashes": {
+    "public/lib/fineFaceGeometry.js": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+    "public/lib/portraitSurfaceLighting.js": "2ae38a234a5acfd802b4453f982fdd069326bd64495b4a80d9f461934bd73fc7",
+    "public/lib/playerPortraitFace.js": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+    "public/lib/playerSideAppearance.js": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+    "public/lib/longHairFlow.js": "ef5b73247a8ff0ff99bfaa971124459447357bf1bce5aad6e97bc6991fa4a76b"
+  },
+  "builtSources": {
+    "static/lib/fineFaceGeometry.js": {
+      "sha256": "b3b748cdb8025d8755c590448f4a7b270a1791f5c6b097240bb61c7a1bbb55d2",
+      "sourceSha256": "b3b748cdb8025d8755c590448f4a7b270a1791f5c6b097240bb61c7a1bbb55d2"
+    },
+    "static/lib/portraitSurfaceLighting.js": {
+      "sha256": "da4dd1985cdfe11408d08f39a3941506f58f7e2678b6880afaf750ac3477f11e",
+      "sourceSha256": "da4dd1985cdfe11408d08f39a3941506f58f7e2678b6880afaf750ac3477f11e"
+    },
+    "static/lib/playerPortraitFace.js": {
+      "sha256": "7c6c5e30efd260abe890b71e4c6d8f89d37c01d596054625410c95547336a4ad",
+      "sourceSha256": "7d42ca1feb258ee2110b7ca603dc40e43fee5d2c658933b4f498832895923c97"
+    },
+    "static/lib/playerSideAppearance.js": {
+      "sha256": "e86293b5372f11a773dd7f1625da9e515dec9426aa41ccf985b35511832927e6",
+      "sourceSha256": "52c1c2a13645792df501008deb9017e7c6e00b62a4d8da4a784cf30c9afebed5"
+    },
+    "static/lib/longHairFlow.js": {
+      "sha256": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622",
+      "sourceSha256": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622"
+    },
+    "static/lib/croppedHairVolume.js": {
+      "sha256": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5",
+      "sourceSha256": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5"
+    }
+  },
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "30102f7a3091a5f12327fd0aaf05fd3c38851864aaaa3fb61d80993a191d6f3f",
+    "files": 342,
+    "entries": [
+      {
+        "path": ".well-known/llms.txt",
+        "bytes": 1838,
+        "sha256": "e3e0b6523eacd499b63c718a9c877a79f6cc3cad7fa9f66621aeb225d6e5610c"
+      },
+      {
+        "path": ".well-known/security.txt",
+        "bytes": 231,
+        "sha256": "2e4ef4346b5df79a5d2800b3fd9c782aeebc5c5150b490820496c0af50bc0996"
+      },
+      {
+        "path": "404.html",
+        "bytes": 4275,
+        "sha256": "c6c5338b7accdaac88183ae2f710698a9eb4bae71b3203a979199c27ffa92a8f"
+      },
+      {
+        "path": "_headers",
+        "bytes": 1133,
+        "sha256": "ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c"
+      },
+      {
+        "path": "_redirects",
+        "bytes": 252,
+        "sha256": "d2980cf6098ee6d141e080c2d9bc3a0f17ab80b703088c60bcde5b2dc84b1c56"
+      },
+      {
+        "path": "about.html",
+        "bytes": 6379,
+        "sha256": "0b18754088f7ef3bb1e12ba070922d22a9b2246428b424e144b3ce5028c882a3"
+      },
+      {
+        "path": "agents.json",
+        "bytes": 2445,
+        "sha256": "f5ddfb29615054c7e9e2483fd180d02efb302f1a6be3164e169f11a2efa399b1"
+      },
+      {
+        "path": "app.js",
+        "bytes": 113911,
+        "sha256": "53c1929107beb0335a44f0f870e5498e3f5a1a1334c0e59f471424bb1922c612"
+      },
+      {
+        "path": "boot-manifest.json",
+        "bytes": 2001,
+        "sha256": "d0c14a86963f91513789b80b46216740ebdc18557bab89c86610e1f5f196071b"
+      },
+      {
+        "path": "changelog.xml",
+        "bytes": 25064,
+        "sha256": "1956f322d60ae4cfbb88c5c2182587209d448f9d6fd75f1efa6fd952ff476a71"
+      },
+      {
+        "path": "community-stats.25f97e0a1e.js",
+        "bytes": 22015,
+        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
+      },
+      {
+        "path": "community-stats.js",
+        "bytes": 22015,
+        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
+      },
+      {
+        "path": "contact.html",
+        "bytes": 5482,
+        "sha256": "581e76f8c7626b8187d2e04677531e7d258a535a4904fdfc11488b912edf3b6c"
+      },
+      {
+        "path": "content/claims.json",
+        "bytes": 11531,
+        "sha256": "2f6d661d428fde3a81d10263f67bec98c5c98ff8d415353afe64f574c67b0c89"
+      },
+      {
+        "path": "faq.html",
+        "bytes": 10553,
+        "sha256": "9582ccf026704640e1ce0b20263f426f0a8a103691325cb27adf818a954b46aa"
+      },
+      {
+        "path": "favicon.ico",
+        "bytes": 1427,
+        "sha256": "918642e9f38003862ef7b74417a6d7854972b34d82a2073c147c81690a0a7eac"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 301,
+        "sha256": "f450f64990cfefe57bfb9bd3689d901edba654d09e8dddfa579eb1e794940cf3"
+      },
+      {
+        "path": "features.html",
+        "bytes": 13819,
+        "sha256": "bfbd11684eb7e7d1e30fdaf4340817c0a4a942de5986a491e9f8b93ee481d272"
+      },
+      {
+        "path": "footer-manifest.json",
+        "bytes": 1895,
+        "sha256": "ed7c5b5165d31484f28998878c9294ea94b25bb69e0a22344c0c98f2f36f4c25"
+      },
+      {
+        "path": "game.html",
+        "bytes": 116778,
+        "sha256": "416e6453baf360bf8d314d3ec0232849435c790bc4a9633e39f9ab40227c082d"
+      },
+      {
+        "path": "how-to-play.html",
+        "bytes": 8526,
+        "sha256": "600b5c42a63e60f939e1b8510825bf53752ce59c89e64a8d3dacb244ec912f74"
+      },
+      {
+        "path": "images/apple-touch-icon.png",
+        "bytes": 3077,
+        "sha256": "039ede3f2768ba639095bb83ef58e95f4190c0d9f8e059875de03b04de2198f7"
+      },
+      {
+        "path": "images/cover.png",
+        "bytes": 378376,
+        "sha256": "409df9ab5dfc016bc04e16ef3bee6edbe837f0da0f9c803928a31a3834dbf0a6"
+      },
+      {
+        "path": "images/cover.webp",
+        "bytes": 28418,
+        "sha256": "68584f71803e58ee0e9ce8f21d2b9390bad9eb3d2b2985a9e4af5824ce1383c3"
+      },
+      {
+        "path": "images/franchise-architect-logo.svg",
+        "bytes": 1001,
+        "sha256": "2e30a473a7fff7c7a11fda90e7b3e5eb56de572afcfd8aca464ff54bcf84f754"
+      },
+      {
+        "path": "images/franchise-architect-mark.svg",
+        "bytes": 599,
+        "sha256": "64a966830119196ac799e00b8dc58d3970460ba2d6b82fb324fa6ae848d9ad3d"
+      },
+      {
+        "path": "images/icon-192.png",
+        "bytes": 3082,
+        "sha256": "51dff9db397d1c13c5d06c8a69543678acafaec5ef215ec236e976a6a9819c66"
+      },
+      {
+        "path": "images/icon-512.png",
+        "bytes": 8341,
+        "sha256": "b7b5a916704a3a11868fe31d7dbb86ece3d371aab2fd872d5ff7f3fb5e65f1a7"
+      },
+      {
+        "path": "images/screens/boardroom.jpg",
+        "bytes": 152963,
+        "sha256": "6255f9c371e31178db42af10f520e80f634930729a06c1d6903af274dc9e9f66"
+      },
+      {
+        "path": "images/screens/contracts.jpg",
+        "bytes": 138297,
+        "sha256": "282107d77478dfa9f0d8820a28363f38a5d0a909143c4603ce45a796b1257d9f"
+      },
+      {
+        "path": "images/screens/desk.jpg",
+        "bytes": 103191,
+        "sha256": "cd66e490aedb12d6da6bb39134ccb81d1ab300c331fef20b7c5922bf96b15847"
+      },
+      {
+        "path": "images/screens/hero.jpg",
+        "bytes": 154408,
+        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+      },
+      {
+        "path": "images/screens/trade.jpg",
+        "bytes": 125476,
+        "sha256": "51bed8fcb5bb28d7aa98bd52e4d258a23bcb94d71789398192cb55a2ee133108"
+      },
+      {
+        "path": "index.html",
+        "bytes": 21743,
+        "sha256": "0416ba6cdbd50612d07558726c0706f7599fe432e07708f9a6d5b92fd8e2f15f"
+      },
+      {
+        "path": "lib/achievements.js",
+        "bytes": 20801,
+        "sha256": "dcacc93c2af840afae41de2a892915c9bcaa7e6b90c894d6c9f56080fc976dc1"
+      },
+      {
+        "path": "lib/actionCoordinator.js",
+        "bytes": 762,
+        "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a"
+      },
+      {
+        "path": "lib/api/clientSessionRecovery.js",
+        "bytes": 25582,
+        "sha256": "90cece6bd4990b54b19fee769d55a8b692217086e20378fcbca2344e6c6987e3"
+      },
+      {
+        "path": "lib/api/createApiClient.js",
+        "bytes": 12700,
+        "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605"
+      },
+      {
+        "path": "lib/api/localRuntimeWorker.js",
+        "bytes": 13705,
+        "sha256": "4e76d369959eb57c14fd69c80f44c97bcd4f6b99918d0e29b6745b75544f23ce"
+      },
+      {
+        "path": "lib/api/recoverySnapshotState.js",
+        "bytes": 1059,
+        "sha256": "8951e759850a18e52e83fb53635a5b74519eee907fde50e35a4fe0238d6506d9"
+      },
+      {
+        "path": "lib/api/workerTransport.js",
+        "bytes": 7528,
+        "sha256": "7335d20537d8a268b588d9099a8d0c6cfb9b3aa97fcbfe1ae4b7002c7a016ab8"
+      },
+      {
+        "path": "lib/apiContract.js",
+        "bytes": 8804,
+        "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba"
+      },
+      {
+        "path": "lib/appCore.js",
+        "bytes": 60521,
+        "sha256": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51"
+      },
+      {
+        "path": "lib/appState.js",
+        "bytes": 12455,
+        "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78"
+      },
+      {
+        "path": "lib/appearancePalette.js",
+        "bytes": 2520,
+        "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+      },
+      {
+        "path": "lib/architectCut.js",
+        "bytes": 6574,
+        "sha256": "5edb460f761619cef360a87293f212c7b4fc280432398304f47009f3c0c1d963"
+      },
+      {
+        "path": "lib/architectPlanRehearsal.js",
+        "bytes": 6938,
+        "sha256": "dc7987a06cf65f9c2ab2483fc73d897664e172008f00f44d436ffcbfe440a1c3"
+      },
+      {
+        "path": "lib/audioFeedback.js",
+        "bytes": 4117,
+        "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe"
+      },
+      {
+        "path": "lib/authorityEpoch.js",
+        "bytes": 1348,
+        "sha256": "fd8619500e7fd5f7484dbcc25f952252311ecda9e5723e6586b2f6727c257371"
+      },
+      {
+        "path": "lib/betaFeedback.js",
+        "bytes": 16195,
+        "sha256": "f2e2050e4788c12378ff4d73e2ec50d7f0c945b6a78c81844d544aad4d73a080"
+      },
+      {
+        "path": "lib/boxScorePresentation.js",
+        "bytes": 5404,
+        "sha256": "cde2ae34bac10813b2b0a2cafe0136a1e6e0ae182f09d5c70fd1047d26589f8f"
+      },
+      {
+        "path": "lib/challengeCodes.js",
+        "bytes": 5945,
+        "sha256": "d2f3d5d98aeb8880311aa273ca9e3dd49579cacecff8cabbd58feb9a9b8ed24f"
+      },
+      {
+        "path": "lib/clientDiagnostics.js",
+        "bytes": 5996,
+        "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c"
+      },
+      {
+        "path": "lib/clientRecoveryUi.js",
+        "bytes": 5660,
+        "sha256": "59e6c1f894b9b7aade41e35ed283c4d94faea9a479d98804dfc0c54188aa4999"
+      },
+      {
+        "path": "lib/coGmBriefPanel.js",
+        "bytes": 2304,
+        "sha256": "f15230f9ee51344d8150d1be39b0d1919dc54074bb67b80c8c5def11a19311a5"
+      },
+      {
+        "path": "lib/coGmBriefing.js",
+        "bytes": 5314,
+        "sha256": "db4231955adc35ac8a04a1f4a373d7c6e33d75a6d3e02ad003aac4565016d5f0"
+      },
+      {
+        "path": "lib/coachingMarketPanel.js",
+        "bytes": 4655,
+        "sha256": "1165e0d0bffb1b0dc6af84b303e9c7ec31ac1605989656b52313dcbaa0880eae"
+      },
+      {
+        "path": "lib/communityEventContract.js",
+        "bytes": 4634,
+        "sha256": "1466f7970beb27da0b33f767386ed19bce77de3e69737ac2be228bd2e8bb3354"
+      },
+      {
+        "path": "lib/communityTelemetry.js",
+        "bytes": 14177,
+        "sha256": "db4f14553a6d4dcdb55fe565e27219bf69f0491c287bb84f6163c070904ba84f"
+      },
+      {
+        "path": "lib/contextualFeedback.js",
+        "bytes": 7864,
+        "sha256": "f4798ea71e9bc3c8f8a56437f4239b947415a3eb106d8ec7e82c8f7afb9e2edf"
+      },
+      {
+        "path": "lib/croppedHairVolume.js",
+        "bytes": 2191,
+        "sha256": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5"
+      },
+      {
+        "path": "lib/decisionAnthology.js",
+        "bytes": 1679,
+        "sha256": "96a791b4dc4af5b9444618a18773d2d58d9c51fea38004bb6a88d28aa9a28951"
+      },
+      {
+        "path": "lib/decisionArchive.js",
+        "bytes": 4377,
+        "sha256": "f1733d13e24ebc7d51b656082a789c2bd2a0df08dafb658dae08d4f701aaf76f"
+      },
+      {
+        "path": "lib/deskIslands.js",
+        "bytes": 4533,
+        "sha256": "84d6649422ad0b2c91144055427c7db20f270b6653ade47d43d59e4e42f79f14"
+      },
+      {
+        "path": "lib/devSurfaces.js",
+        "bytes": 1377,
+        "sha256": "c19928d9eada8145f5cc688bafc38cf57949e8e6aa75cf5411fd7e2b927df2f4"
+      },
+      {
+        "path": "lib/draftPickReveal.js",
+        "bytes": 4661,
+        "sha256": "71757db9aa7cdce68712047479ca8e50fffd511f5f71a602660137f31f372300"
+      },
+      {
+        "path": "lib/dynastyTimeline.js",
+        "bytes": 6267,
+        "sha256": "17658196cf6e9fbaa45a2824192e41df11986a85b8ec5775deacc5b7b650968d"
+      },
+      {
+        "path": "lib/engagementFeatures.js",
+        "bytes": 32794,
+        "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660"
+      },
+      {
+        "path": "lib/exactSurfaceNavigation.js",
+        "bytes": 3114,
+        "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
+      },
+      {
+        "path": "lib/extractCommunityEvents.js",
+        "bytes": 8329,
+        "sha256": "e1c507fc40fb87675e17797951ff7a36bcb80e2d9a41e9a2c8583fc483c62a64"
+      },
+      {
+        "path": "lib/facilitiesPanel.js",
+        "bytes": 6563,
+        "sha256": "2d1cbd0dcfb79c441d939c06359a2912a3eeb04f0ef00a5b5ee9f9fb6ad1e352"
+      },
+      {
+        "path": "lib/fastSimulationPolicy.js",
+        "bytes": 2071,
+        "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
+      },
+      {
+        "path": "lib/fineFaceGeometry.js",
+        "bytes": 12352,
+        "sha256": "b3b748cdb8025d8755c590448f4a7b270a1791f5c6b097240bb61c7a1bbb55d2"
+      },
+      {
+        "path": "lib/firstDebriefPulse.js",
+        "bytes": 8641,
+        "sha256": "ce6751727604018d54d6b98689ce3b6c88c480b871e8b0cb6dc28236c6a4cea0"
+      },
+      {
+        "path": "lib/firstSeasonContract.js",
+        "bytes": 13577,
+        "sha256": "f2bcbebc9fac5bf2942b4840a95bdc8c2676ff70d6b75456fdb578f72f489c8d"
+      },
+      {
+        "path": "lib/franchiseArchitecture.js",
+        "bytes": 7220,
+        "sha256": "0035be48f9b922bfa88a5122fd04ef5aecd3d82c585a820264cb71b14302e03a"
+      },
+      {
+        "path": "lib/franchiseCommandCenter.js",
+        "bytes": 8509,
+        "sha256": "6a2ad885ad8fd686b5b933f739e236850b63749bc76d9e0629f53df4b204f762"
+      },
+      {
+        "path": "lib/franchiseNewsletter.js",
+        "bytes": 8147,
+        "sha256": "124c0b8893d87ad3ae0e35f178bbea2d678c1638d93133c7ef2d53354733a81b"
+      },
+      {
+        "path": "lib/franchiseScope.js",
+        "bytes": 1553,
+        "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178"
+      },
+      {
+        "path": "lib/frontOfficeAdvisor.js",
+        "bytes": 26769,
+        "sha256": "4f2308ae806d01c8f5a43d7eeb30a0e4305fa372665c39ce93fabe8599d1e188"
+      },
+      {
+        "path": "lib/gameFlow.js",
+        "bytes": 62528,
+        "sha256": "da2a58aeb925a6b113e1ca7d8a8052781bdfb94839c697fcae74f603dc8a3492"
+      },
+      {
+        "path": "lib/gameOutcome.js",
+        "bytes": 2085,
+        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+      },
+      {
+        "path": "lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "lib/gistAuthentication.js",
+        "bytes": 3215,
+        "sha256": "737be150b40d767dff6f1d43b7e4c2e5f96eff106aed193d4cc7fba192c7f359"
+      },
+      {
+        "path": "lib/gistCredentials.js",
+        "bytes": 1631,
+        "sha256": "789a78e5ecfce53ee06aa4dc93f1938c4a17573d3f4511f146c8fdf32917c828"
+      },
+      {
+        "path": "lib/gistSync.js",
+        "bytes": 8867,
+        "sha256": "10409f97753e6323fe7ce0574ab7305f0306b1bf2ff0426dceaf4350d039b429"
+      },
+      {
+        "path": "lib/gistVerification.js",
+        "bytes": 2018,
+        "sha256": "11f6ac5bd9a7a6461d75c4d6734bdad435d84fc566b91d930adfcf8c6b1d517a"
+      },
+      {
+        "path": "lib/hairArrangement.js",
+        "bytes": 1659,
+        "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+      },
+      {
+        "path": "lib/hairGrayFibers.js",
+        "bytes": 1012,
+        "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49"
+      },
+      {
+        "path": "lib/hallOfFameCeremony.js",
+        "bytes": 6068,
+        "sha256": "7ca70ec97ef3f38add573af53d780174827f381779cf4dfc23f7f4bb8348fe3d"
+      },
+      {
+        "path": "lib/historyFormatting.js",
+        "bytes": 2289,
+        "sha256": "aa6d22845a7fdfd0ec88680880458002cbabd613e32a0cfdbeee6631550833a5"
+      },
+      {
+        "path": "lib/injurySalaryClaimsPanel.js",
+        "bytes": 3151,
+        "sha256": "7bccd36c6ce7e1a67447080ec48c3afc17f49c8ce916b7ab1a7fa1f6847a9886"
+      },
+      {
+        "path": "lib/launchReadiness.js",
+        "bytes": 2771,
+        "sha256": "a3644f95686596e6025c7b30ebc11254f102eef6f573900060dbabed3a3a106c"
+      },
+      {
+        "path": "lib/leagueLensPanel.js",
+        "bytes": 4686,
+        "sha256": "dc9fe60927b67a7e0dbc354719a44afb56ab1129d9e024026b48f68a59b33505"
+      },
+      {
+        "path": "lib/leagueStoryExport.js",
+        "bytes": 12078,
+        "sha256": "43ef55dba1382f058532e82a8cf4b4379fef1bec2c49ea3f4364b83ff0220058"
+      },
+      {
+        "path": "lib/longHairFlow.js",
+        "bytes": 4136,
+        "sha256": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622"
+      },
+      {
+        "path": "lib/lookAhead.js",
+        "bytes": 1963,
+        "sha256": "f5f83462192dff00d60831ca69223dcfa5d4177e419672ab580937831f0deb40"
+      },
+      {
+        "path": "lib/marqueeBadge.js",
+        "bytes": 4158,
+        "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e"
+      },
+      {
+        "path": "lib/mentorshipPanel.js",
+        "bytes": 5148,
+        "sha256": "f944718618e8d51af9909908364058bf99acd4f071b28a9d533f73c49e4e2050"
+      },
+      {
+        "path": "lib/mobileLoop.js",
+        "bytes": 20052,
+        "sha256": "0c59f1121cdca3e3d1cc9af5901371f4a96fe582ff76ce9e980e7e3b1f603650"
+      },
+      {
+        "path": "lib/mobileNavigation.js",
+        "bytes": 5813,
+        "sha256": "a563a6432cd9f387fccc9ec8a55606889362355261b48e778d72f7abfe82980f"
+      },
+      {
+        "path": "lib/modalManager.js",
+        "bytes": 6529,
+        "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
+      },
+      {
+        "path": "lib/momentCard.js",
+        "bytes": 17407,
+        "sha256": "dfdb3f2c5d15cf6d1903cb2b780e355a0f3bdb5bb2a4b8ad385c4559e7cf2550"
+      },
+      {
+        "path": "lib/offseasonDevelopmentReport.js",
+        "bytes": 5709,
+        "sha256": "c644c99eb069256885075c85ed9119ce0881022c5ec17077c20be5afa8f85bbc"
+      },
+      {
+        "path": "lib/onClockTradeMarketPanel.js",
+        "bytes": 5155,
+        "sha256": "c9944026c098d9b62670359dea2ac3601111a18c99e44bf1260c985b2a6755b6"
+      },
+      {
+        "path": "lib/operatingStatementPanel.js",
+        "bytes": 2653,
+        "sha256": "9f685f33c5e2301bef562091e70bc7ed8a5aa43b3dd5beaaea5c25f066ff57dd"
+      },
+      {
+        "path": "lib/partedHairFlow.js",
+        "bytes": 2288,
+        "sha256": "be4c479ad8251c593a0b3287672b1f368573da0081a75f4c4b62ae047b539de0"
+      },
+      {
+        "path": "lib/physiqueGeometryContract.js",
+        "bytes": 2053,
+        "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1"
+      },
+      {
+        "path": "lib/playerCapacityStudy.js",
+        "bytes": 2506,
+        "sha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30"
+      },
+      {
+        "path": "lib/playerFootwear.js",
+        "bytes": 989,
+        "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+      },
+      {
+        "path": "lib/playerHand.js",
+        "bytes": 1243,
+        "sha256": "9b5cb671691759539108530209c3226e584dd53feeec09a6846fcab56698b927"
+      },
+      {
+        "path": "lib/playerMotion.js",
+        "bytes": 29388,
+        "sha256": "d804595cbf93db0f41a17ddc6abd859129a3ac9370030933074ec8627eb56a20"
+      },
+      {
+        "path": "lib/playerPortrait.js",
+        "bytes": 16818,
+        "sha256": "d5460bcfaf782f443b1177d9aa4dd22e91359dfb21d75700e6e673868afd7ba8"
+      },
+      {
+        "path": "lib/playerPortraitFace.js",
+        "bytes": 52217,
+        "sha256": "7c6c5e30efd260abe890b71e4c6d8f89d37c01d596054625410c95547336a4ad"
+      },
+      {
+        "path": "lib/playerProfileNarrative.js",
+        "bytes": 11170,
+        "sha256": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527"
+      },
+      {
+        "path": "lib/playerSideAppearance.js",
+        "bytes": 13112,
+        "sha256": "e86293b5372f11a773dd7f1625da9e515dec9426aa41ccf985b35511832927e6"
+      },
+      {
+        "path": "lib/playerTrainingKit.js",
+        "bytes": 1536,
+        "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec"
+      },
+      {
+        "path": "lib/playtestJourney.js",
+        "bytes": 4111,
+        "sha256": "a07965f79cb3fbecde479ba1e991625381d380c83c136ec0e286440e778c96c4"
+      },
+      {
+        "path": "lib/playtestReceipts.js",
+        "bytes": 4557,
+        "sha256": "51d34f651a7d55074b9bd1b5f2d5b154b342ae99a6447752866ad13e79c5ebb5"
+      },
+      {
+        "path": "lib/portraitAppearanceContract.js",
+        "bytes": 964,
+        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+      },
+      {
+        "path": "lib/portraitSurfaceLighting.js",
+        "bytes": 5294,
+        "sha256": "da4dd1985cdfe11408d08f39a3941506f58f7e2678b6880afaf750ac3477f11e"
+      },
+      {
+        "path": "lib/postCommitHydration.js",
+        "bytes": 2027,
+        "sha256": "7bf28b18ec26dc059ae17537a00566a2efe3684558ad0b989ab34a69f7f62bfe"
+      },
+      {
+        "path": "lib/predictionPanel.js",
+        "bytes": 7619,
+        "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+      },
+      {
+        "path": "lib/pressRoomPanel.js",
+        "bytes": 4316,
+        "sha256": "cf807f96e9ff510ff84a4afaee24cf0363dd4f8f6226a16975830573ab0a9bcc"
+      },
+      {
+        "path": "lib/profiledLimbSurface.js",
+        "bytes": 1874,
+        "sha256": "fbc74ae9113a7c653c1efe71b140753ad3c53d05eba2c01340e59bd16e358bb8"
+      },
+      {
+        "path": "lib/progressionWatch.js",
+        "bytes": 1949,
+        "sha256": "8254616bd7d5987eafdb4f41b198cb843f6475414363951844de0e5aebc4630c"
+      },
+      {
+        "path": "lib/prospectNarratives.js",
+        "bytes": 4627,
+        "sha256": "124e0becdc00bb020287e1bc7a724628c250eea3f1614342d63fa79d8af4fc7a"
+      },
+      {
+        "path": "lib/returnDigest.js",
+        "bytes": 11792,
+        "sha256": "7cd5dc692287d2ba5f006fa3aa3ef25d567984948ea75eff03924177f18c7351"
+      },
+      {
+        "path": "lib/rewardBeats.js",
+        "bytes": 7590,
+        "sha256": "0f06ee560442b7fcc6506c46cee53fd8a5db715b1019ae9b5dccec0964699405"
+      },
+      {
+        "path": "lib/rivalCoachIntel.js",
+        "bytes": 2496,
+        "sha256": "f7885fa55083a9038cc830ecf1e47574a5de0fc077916b2ad930b26249e3f870"
+      },
+      {
+        "path": "lib/rivalFrontOfficeCard.js",
+        "bytes": 1983,
+        "sha256": "9a3a1321ddd8db463507385cc402b2b9b03492db6b62be7719fe9c9ce435a289"
+      },
+      {
+        "path": "lib/rosterActions.js",
+        "bytes": 4598,
+        "sha256": "e18e5d4a29242291e9b9afac77ac0c67043fda94b34e1300bf9879a6bb01c35b"
+      },
+      {
+        "path": "lib/scoreline.js",
+        "bytes": 1280,
+        "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003"
+      },
+      {
+        "path": "lib/seasonChapters.js",
+        "bytes": 17256,
+        "sha256": "d7c3e69b653169d9d37f04535f744049037e97fa5315686c29a52742638380ad"
+      },
+      {
+        "path": "lib/seasonEpilogue.js",
+        "bytes": 14718,
+        "sha256": "f832da600d35aca6aa56b15d4e1f32fa7784e7ce84913472d485bb6ab60d76cd"
+      },
+      {
+        "path": "lib/seasonReviewTransition.js",
+        "bytes": 343,
+        "sha256": "373f0b73cd6cfacdb72f97a5c62e5e4ddb54c3f123e97425fc7df87cac8479d8"
+      },
+      {
+        "path": "lib/simWatchDirector.js",
+        "bytes": 16252,
+        "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00"
+      },
+      {
+        "path": "lib/simWatchPlayback.js",
+        "bytes": 9334,
+        "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3"
+      },
+      {
+        "path": "lib/simulationCheckpoints.js",
+        "bytes": 5298,
+        "sha256": "f371488ebc68a78a1350e01320bfbbcc5ce735dd6c4621ecfbd2714b178d6eca"
+      },
+      {
+        "path": "lib/situationalCallsPanel.js",
+        "bytes": 4081,
+        "sha256": "630cf0715481a00d2e6fb41ba370eba8c76ccf252a90f9077471b0f298c026ca"
+      },
+      {
+        "path": "lib/spreadPredictions.js",
+        "bytes": 8724,
+        "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
+      },
+      {
+        "path": "lib/startScenarioContract.js",
+        "bytes": 4454,
+        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+      },
+      {
+        "path": "lib/structuredHair.js",
+        "bytes": 3570,
+        "sha256": "9022287ee0d777c9459607719fa3aabb1addd4cc3445ed5ea2831bedb8f7e755"
+      },
+      {
+        "path": "lib/tabContracts.js",
+        "bytes": 38414,
+        "sha256": "ecf9d696b3c36a3dbe80834f0cb486137b4b692b9fd55bbfb8bf16b2e1169bdf"
+      },
+      {
+        "path": "lib/tabDraft.js",
+        "bytes": 23489,
+        "sha256": "8d849daf90776d7b65dbf17c1e2a619c2f243f6300ae05cfd37769b8622a6619"
+      },
+      {
+        "path": "lib/tabHistory.js",
+        "bytes": 42347,
+        "sha256": "7b582bd4aeb1f7d608a34a9e67bf9910c4aefe350ac79092467312e3e053015b"
+      },
+      {
+        "path": "lib/tabHydration.js",
+        "bytes": 6294,
+        "sha256": "4a623ab5b7b900cf34ff8cfa6531ac95bf6c70dec3e2cad107d9373718c24b65"
+      },
+      {
+        "path": "lib/tabKeyboardNavigation.js",
+        "bytes": 770,
+        "sha256": "88f0a334c69c5e7ee3f6781cd207fd0206a0215b12bdc261c5a24ed99dd1a026"
+      },
+      {
+        "path": "lib/tabOverview.js",
+        "bytes": 70154,
+        "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+      },
+      {
+        "path": "lib/tabRoster.js",
+        "bytes": 13930,
+        "sha256": "39a4173ccaf752e785ae8303f98b895489229629b8d6e752ccf123f0e4f6814a"
+      },
+      {
+        "path": "lib/tabSettings.js",
+        "bytes": 43134,
+        "sha256": "aa67445c86a84b8ae97defccf73116fdb838d60a1f3f446a2df4aae2f1d5f3e8"
+      },
+      {
+        "path": "lib/tabStats.js",
+        "bytes": 9270,
+        "sha256": "7037408e4624feef2fc29ca3a11f58aa41423d4a1d635763f509af82a42b4c5c"
+      },
+      {
+        "path": "lib/tacticalFilmRoom.js",
+        "bytes": 15126,
+        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+      },
+      {
+        "path": "lib/teamCrest.js",
+        "bytes": 5789,
+        "sha256": "8ab745aacd1fda86da8406eee04282cf7910b3b8d8dba02fcebcbcff5f48e0ec"
+      },
+      {
+        "path": "lib/teamDisplay.js",
+        "bytes": 262,
+        "sha256": "adf9834822fb376d8324eba63177071ca3458e79b85d386677179bea87af1595"
+      },
+      {
+        "path": "lib/teamRecord.js",
+        "bytes": 1811,
+        "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6"
+      },
+      {
+        "path": "lib/themeBoot.js",
+        "bytes": 1644,
+        "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+      },
+      {
+        "path": "lib/themeCustomizer.js",
+        "bytes": 8390,
+        "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
+      },
+      {
+        "path": "lib/torsoSurface.js",
+        "bytes": 4812,
+        "sha256": "b820d669e76f55f5cdd59d86e001623dafa2d3815bdbf23ed3185c1bf49867eb"
+      },
+      {
+        "path": "lib/tradeDeadlineFrenzy.js",
+        "bytes": 9802,
+        "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
+      },
+      {
+        "path": "lib/tradeWindow.js",
+        "bytes": 1486,
+        "sha256": "ae3cd16bbad79e54d94dda978ebdab22af87a037d0c4848f7dcc9a39448f316c"
+      },
+      {
+        "path": "lib/tutorialCampaign.js",
+        "bytes": 12856,
+        "sha256": "719b7fafc70d0721f197b13039c72903140967ad7ea2fede6abd3356a27f147f"
+      },
+      {
+        "path": "lib/uiIslands.js",
+        "bytes": 6424,
+        "sha256": "de2089084e7baf56d214e0190c8232c96dad2c2d6fa2733a9e3a5489a3eaa0ba"
+      },
+      {
+        "path": "lib/weeklyPlanComposer.js",
+        "bytes": 7650,
+        "sha256": "7c257e23dace7197745fd6b5928707bea18e4d974f4e2e512a61c15df94afca6"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "bytes": 600,
+        "sha256": "07e5426cdaf6094a5c9de2e141b27521ef1e1c64fff95fbfc5991362d439cc64"
+      },
+      {
+        "path": "precache-manifest.json",
+        "bytes": 24353,
+        "sha256": "58797ffb73fe627f3a00f33115d57e8bdac27e13f5b5242e81ede46504e028d1"
+      },
+      {
+        "path": "press.html",
+        "bytes": 10946,
+        "sha256": "c3ce6aaf56e9e048f51b4333ab2ff71496fd2b4c2750ff910c22f3c3ae8dab2d"
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 7429,
+        "sha256": "67ed5198c0f0d72a29323d894dfeac0458ab619545bae93241f726f3f1110a0e"
+      },
+      {
+        "path": "public-identity.json",
+        "bytes": 584,
+        "sha256": "39a81c7ebeead641bc7aeef0087798797a6f2a960f99eb8ba0e1c29db299ac3e"
+      },
+      {
+        "path": "public/lib/appearancePalette.js",
+        "bytes": 2520,
+        "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+      },
+      {
+        "path": "public/lib/gameOutcome.js",
+        "bytes": 2085,
+        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+      },
+      {
+        "path": "public/lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "public/lib/physiqueGeometryContract.js",
+        "bytes": 2053,
+        "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1"
+      },
+      {
+        "path": "public/lib/portraitAppearanceContract.js",
+        "bytes": 964,
+        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+      },
+      {
+        "path": "public/lib/startScenarioContract.js",
+        "bytes": 4454,
+        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+      },
+      {
+        "path": "public/lib/tacticalFilmRoom.js",
+        "bytes": 15126,
+        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+      },
+      {
+        "path": "roadmap.html",
+        "bytes": 6313,
+        "sha256": "645a83129196184cb2d98505d070698606c29672c4607ad60bd661bcb9e9e83c"
+      },
+      {
+        "path": "robots.txt",
+        "bytes": 80,
+        "sha256": "d129cfd34a4621cf972482cd0164f3dae6efe89688a6c243cfc3dd5c5b313019"
+      },
+      {
+        "path": "setup.js",
+        "bytes": 30439,
+        "sha256": "253a3ca138e93b951850bae7f07ffac8288f4afd68abf078070d90897362bf3c"
+      },
+      {
+        "path": "showcase-league.json",
+        "bytes": 1342,
+        "sha256": "0fcd055662bda952fa32d977df135f7ac949bc044ebc327a0258f70451bcc4dd"
+      },
+      {
+        "path": "simulation.html",
+        "bytes": 11282,
+        "sha256": "69b215ee8664a521afbd0240d04f3545819f4148b33f6f35646a8bf845087fb4"
+      },
+      {
+        "path": "site.11e8faac8d.css",
+        "bytes": 10999,
+        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      },
+      {
+        "path": "site.css",
+        "bytes": 10999,
+        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      },
+      {
+        "path": "sitemap.xml",
+        "bytes": 1844,
+        "sha256": "4c1f679180b59affe80c65626adac112271059d41ac3838f1846b185ef906f29"
+      },
+      {
+        "path": "src/adapters/persistence/browserSaveStore.js",
+        "bytes": 10036,
+        "sha256": "ec8f692dbf53e14e20bcd675138984f0f7f99991a565bd66f73fe4315e43d342"
+      },
+      {
+        "path": "src/adapters/persistence/hybridSaveStore.js",
+        "bytes": 16167,
+        "sha256": "a39c082678bbf4fcd505b8411cdbb32bb5c03aa8d96333099c7dde19e9bd464f"
+      },
+      {
+        "path": "src/adapters/persistence/jsonLayouts.js",
+        "bytes": 2156,
+        "sha256": "ad74c2748791f529e7d9b49851dca246be5c666a5a11fe2a561b5e633db4f435"
+      },
+      {
+        "path": "src/adapters/persistence/saveStoreShared.js",
+        "bytes": 4579,
+        "sha256": "8881f866cae3ee2e4d5ba0a6706453dcaa87a4719b5f0967a646c1d13394f8da"
+      },
+      {
+        "path": "src/adapters/persistence/snapshotCodec.js",
+        "bytes": 5386,
+        "sha256": "15e0996f3b8660a8f144d1f0f9e9e54b4201ea88de2e4dfa2e1eb3a53c270903"
+      },
+      {
+        "path": "src/app/api/localApiRuntime.js",
+        "bytes": 97319,
+        "sha256": "d01ae657f3781996a5610892def880f5c909f30a779bb0c327821c8b0194d939"
+      },
+      {
+        "path": "src/config.js",
+        "bytes": 16689,
+        "sha256": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d"
+      },
+      {
+        "path": "src/config/leagueSetup.js",
+        "bytes": 17122,
+        "sha256": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88"
+      },
+      {
+        "path": "src/data/nflElevationSalary.js",
+        "bytes": 2967,
+        "sha256": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e"
+      },
+      {
+        "path": "src/data/nflEliteDensityBaseline.js",
+        "bytes": 8606,
+        "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d"
+      },
+      {
+        "path": "src/data/nflPostseasonSalary.js",
+        "bytes": 2188,
+        "sha256": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267"
+      },
+      {
+        "path": "src/data/nflPracticeSalary.js",
+        "bytes": 1031,
+        "sha256": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54"
+      },
+      {
+        "path": "src/data/nflSalaryCap.js",
+        "bytes": 3133,
+        "sha256": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d"
+      },
+      {
+        "path": "src/data/nflSalaryMinimum.js",
+        "bytes": 1302,
+        "sha256": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44"
+      },
+      {
+        "path": "src/data/playerDemographicBaseline.js",
+        "bytes": 2145,
+        "sha256": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699"
+      },
+      {
+        "path": "src/data/playerFamilyHeritage.js",
+        "bytes": 7097,
+        "sha256": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8"
+      },
+      {
+        "path": "src/domain/activeInactiveHistory.js",
+        "bytes": 6614,
+        "sha256": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e"
+      },
+      {
+        "path": "src/domain/admittedInjuryContinuation.js",
+        "bytes": 7551,
+        "sha256": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945"
+      },
+      {
+        "path": "src/domain/annualElevationInjuryResolution.js",
+        "bytes": 7778,
+        "sha256": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da"
+      },
+      {
+        "path": "src/domain/capCarryover.js",
+        "bytes": 510,
+        "sha256": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524"
+      },
+      {
+        "path": "src/domain/contracts.js",
+        "bytes": 17014,
+        "sha256": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568"
+      },
+      {
+        "path": "src/domain/developmentEnvironment.js",
+        "bytes": 9551,
+        "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1"
+      },
+      {
+        "path": "src/domain/draftCohort.js",
+        "bytes": 1074,
+        "sha256": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf"
+      },
+      {
+        "path": "src/domain/earnedPracticeCap.js",
+        "bytes": 1418,
+        "sha256": "a26eda958dde8fa97c9b368537d99cc842428f4b69a513c45a2e04aff8f325bf"
+      },
+      {
+        "path": "src/domain/elevationInjuryPay.js",
+        "bytes": 15342,
+        "sha256": "ccf938fa7a3b2d8542bc86f958f0f50de76c5b2b1888e5534d02ac4673a596a0"
+      },
+      {
+        "path": "src/domain/facilityInvestment.js",
+        "bytes": 15900,
+        "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
+      },
+      {
+        "path": "src/domain/footballGameReference.js",
+        "bytes": 1627,
+        "sha256": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a"
+      },
+      {
+        "path": "src/domain/injuryClaimNegotiation.js",
+        "bytes": 4567,
+        "sha256": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6"
+      },
+      {
+        "path": "src/domain/injurySalaryClaims.js",
+        "bytes": 8543,
+        "sha256": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2"
+      },
+      {
+        "path": "src/domain/leagueIdentity.js",
+        "bytes": 6966,
+        "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
+      },
+      {
+        "path": "src/domain/livingPotential.js",
+        "bytes": 5626,
+        "sha256": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9"
+      },
+      {
+        "path": "src/domain/operatingStatement.js",
+        "bytes": 3005,
+        "sha256": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381"
+      },
+      {
+        "path": "src/domain/ownerEconomy.js",
+        "bytes": 6571,
+        "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
+      },
+      {
+        "path": "src/domain/pensionService.js",
+        "bytes": 11338,
+        "sha256": "a253b3f3449798c6b39757d646687d0bc9e5a254176742102962c9c19f4a0e23"
+      },
+      {
+        "path": "src/domain/playerDemographicModel.js",
+        "bytes": 5382,
+        "sha256": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370"
+      },
+      {
+        "path": "src/domain/playerFactory.js",
+        "bytes": 22780,
+        "sha256": "3065bc39f7d8ba1cf5743235094e81bd54a93fb4e70df250ec152e68b26c4323"
+      },
+      {
+        "path": "src/domain/playerIdentity.js",
+        "bytes": 24043,
+        "sha256": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe"
+      },
+      {
+        "path": "src/domain/playerMeasurements.js",
+        "bytes": 10796,
+        "sha256": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9"
+      },
+      {
+        "path": "src/domain/playerService.js",
+        "bytes": 8894,
+        "sha256": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e"
+      },
+      {
+        "path": "src/domain/playerVisualIdentity.js",
+        "bytes": 10550,
+        "sha256": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935"
+      },
+      {
+        "path": "src/domain/playerWorkouts.js",
+        "bytes": 3652,
+        "sha256": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4"
+      },
+      {
+        "path": "src/domain/postseasonMedicalClock.js",
+        "bytes": 13405,
+        "sha256": "17b2e945c9f9c53732816a3c944ee2bc8bc923b17b415a0da61cc5e274662737"
+      },
+      {
+        "path": "src/domain/potentialReversion.js",
+        "bytes": 11659,
+        "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87"
+      },
+      {
+        "path": "src/domain/practiceContractTerm.js",
+        "bytes": 4951,
+        "sha256": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238"
+      },
+      {
+        "path": "src/domain/practiceContracts.js",
+        "bytes": 8284,
+        "sha256": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934"
+      },
+      {
+        "path": "src/domain/practiceSquadEligibility.js",
+        "bytes": 2820,
+        "sha256": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c"
+      },
+      {
+        "path": "src/domain/preRolloverMedicalCalendar.js",
+        "bytes": 5438,
+        "sha256": "a3b438c0f34f6fa19b376c233d577276523de8b896fdbea89eab5ab48648abb8"
+      },
+      {
+        "path": "src/domain/ratings.js",
+        "bytes": 16983,
+        "sha256": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd"
+      },
+      {
+        "path": "src/domain/regularInjuryAccrual.js",
+        "bytes": 5482,
+        "sha256": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13"
+      },
+      {
+        "path": "src/domain/reserveLists.js",
+        "bytes": 16532,
+        "sha256": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e"
+      },
+      {
+        "path": "src/domain/standardElevations.js",
+        "bytes": 19437,
+        "sha256": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53"
+      },
+      {
+        "path": "src/domain/talentDistribution.js",
+        "bytes": 3804,
+        "sha256": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050"
+      },
+      {
+        "path": "src/domain/teamFactory.js",
+        "bytes": 20005,
+        "sha256": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad"
+      },
+      {
+        "path": "src/domain/teamLabel.js",
+        "bytes": 567,
+        "sha256": "3fd9f4306747ff9d5bfd0a823305f92fc027eac943a037d39c902f180be760df"
+      },
+      {
+        "path": "src/domain/ticketDemand.js",
+        "bytes": 7685,
+        "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174"
+      },
+      {
+        "path": "src/domain/undraftedFreeAgency.js",
+        "bytes": 3151,
+        "sha256": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6"
+      },
+      {
+        "path": "src/engine/adaptiveDifficulty.js",
+        "bytes": 3761,
+        "sha256": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763"
+      },
+      {
+        "path": "src/engine/aiTeamStrategy.js",
+        "bytes": 13834,
+        "sha256": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020"
+      },
+      {
+        "path": "src/engine/architectFocusReview.js",
+        "bytes": 3519,
+        "sha256": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704"
+      },
+      {
+        "path": "src/engine/architectMasteryPortfolio.js",
+        "bytes": 8565,
+        "sha256": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4"
+      },
+      {
+        "path": "src/engine/architectThesis.js",
+        "bytes": 7247,
+        "sha256": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0"
+      },
+      {
+        "path": "src/engine/beatReporter.js",
+        "bytes": 14751,
+        "sha256": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6"
+      },
+      {
+        "path": "src/engine/capAlerts.js",
+        "bytes": 6315,
+        "sha256": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03"
+      },
+      {
+        "path": "src/engine/capCompliance.js",
+        "bytes": 25500,
+        "sha256": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168"
+      },
+      {
+        "path": "src/engine/coachingMarket.js",
+        "bytes": 16734,
+        "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011"
+      },
+      {
+        "path": "src/engine/coachingTree.js",
+        "bytes": 9579,
+        "sha256": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73"
+      },
+      {
+        "path": "src/engine/continuityLedger.js",
+        "bytes": 8621,
+        "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896"
+      },
+      {
+        "path": "src/engine/cpuStandardElevations.js",
+        "bytes": 4878,
+        "sha256": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3"
+      },
+      {
+        "path": "src/engine/cpuTradeMarket.js",
+        "bytes": 5196,
+        "sha256": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2"
+      },
+      {
+        "path": "src/engine/depthChartUsage.js",
+        "bytes": 11825,
+        "sha256": "6137615931198349196ee514370eee3888cddcd50132e1b09e22f75a705471fb"
+      },
+      {
+        "path": "src/engine/draftCombine.js",
+        "bytes": 5974,
+        "sha256": "68c9f6b2928c7f513849becbdfb2c407911dec67edce7080f51cc14c61cc639b"
+      },
+      {
+        "path": "src/engine/facilityMarket.js",
+        "bytes": 12906,
+        "sha256": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097"
+      },
+      {
+        "path": "src/engine/fanSentiment.js",
+        "bytes": 3641,
+        "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58"
+      },
+      {
+        "path": "src/engine/gameDayRoster.js",
+        "bytes": 7554,
+        "sha256": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36"
+      },
+      {
+        "path": "src/engine/gameSimulator.js",
+        "bytes": 83851,
+        "sha256": "e1f7afbc06e9ca32b3c11811c7feb1424f7cddc55ef8123e556df31246e52a78"
+      },
+      {
+        "path": "src/engine/gmArchetype.js",
+        "bytes": 3240,
+        "sha256": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23"
+      },
+      {
+        "path": "src/engine/gmDecisionAuthority.js",
+        "bytes": 17267,
+        "sha256": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1"
+      },
+      {
+        "path": "src/engine/gmDecisionConsequences.js",
+        "bytes": 23253,
+        "sha256": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a"
+      },
+      {
+        "path": "src/engine/gmLegacyScore.js",
+        "bytes": 19007,
+        "sha256": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3"
+      },
+      {
+        "path": "src/engine/injurySystem.js",
+        "bytes": 10427,
+        "sha256": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1"
+      },
+      {
+        "path": "src/engine/matchupEdge.js",
+        "bytes": 5305,
+        "sha256": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b"
+      },
+      {
+        "path": "src/engine/narrativeEvents.js",
+        "bytes": 13267,
+        "sha256": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc"
+      },
+      {
+        "path": "src/engine/offseasonDevelopmentReport.js",
+        "bytes": 4426,
+        "sha256": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705"
+      },
+      {
+        "path": "src/engine/offseasonSimulator.js",
+        "bytes": 44814,
+        "sha256": "1336e016c9a76d40970fda9378dca841e815c29de2bf7d163cb238c1253e8e09"
+      },
+      {
+        "path": "src/engine/onClockTradeMarket.js",
+        "bytes": 5121,
+        "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7"
+      },
+      {
+        "path": "src/engine/overtime.js",
+        "bytes": 2077,
+        "sha256": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64"
+      },
+      {
+        "path": "src/engine/ownerConfidence.js",
+        "bytes": 5471,
+        "sha256": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b"
+      },
+      {
+        "path": "src/engine/playCalling.js",
+        "bytes": 5136,
+        "sha256": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23"
+      },
+      {
+        "path": "src/engine/playerAgentAI.js",
+        "bytes": 6901,
+        "sha256": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d"
+      },
+      {
+        "path": "src/engine/pressConference.js",
+        "bytes": 14480,
+        "sha256": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f"
+      },
+      {
+        "path": "src/engine/pressRoom.js",
+        "bytes": 14828,
+        "sha256": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa"
+      },
+      {
+        "path": "src/engine/rivalFrontOffice.js",
+        "bytes": 3052,
+        "sha256": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76"
+      },
+      {
+        "path": "src/engine/rivalGmPersona.js",
+        "bytes": 6110,
+        "sha256": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8"
+      },
+      {
+        "path": "src/engine/rivalTradeOffers.js",
+        "bytes": 13031,
+        "sha256": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7"
+      },
+      {
+        "path": "src/engine/rivalryDNA.js",
+        "bytes": 4936,
+        "sha256": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962"
+      },
+      {
+        "path": "src/engine/schedule.js",
+        "bytes": 15539,
+        "sha256": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec"
+      },
+      {
+        "path": "src/engine/seasonSimulator.js",
+        "bytes": 11268,
+        "sha256": "6b6e4af72eab0c5de36a70d2a82238d6153ed1d8643b0e29b2798473b22af48e"
+      },
+      {
+        "path": "src/engine/situationalCalls.js",
+        "bytes": 3887,
+        "sha256": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db"
+      },
+      {
+        "path": "src/engine/speedrunChallenge.js",
+        "bytes": 3881,
+        "sha256": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb"
+      },
+      {
+        "path": "src/engine/staffGeneration.js",
+        "bytes": 3565,
+        "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
+      },
+      {
+        "path": "src/engine/standings.js",
+        "bytes": 3867,
+        "sha256": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2"
+      },
+      {
+        "path": "src/engine/timeCapsule.js",
+        "bytes": 13128,
+        "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
+      },
+      {
+        "path": "src/engine/veteranMentorship.js",
+        "bytes": 14005,
+        "sha256": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b"
+      },
+      {
+        "path": "src/engine/weeklySimulator.js",
+        "bytes": 3305,
+        "sha256": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65"
+      },
+      {
+        "path": "src/engine/whatIfReplay.js",
+        "bytes": 4072,
+        "sha256": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a"
+      },
+      {
+        "path": "src/runtime/GameSession.js",
+        "bytes": 397353,
+        "sha256": "e040e65a56bab2a1a4e73e8244147d0330bb737b804d295c3c27dc8f5515e7d8"
+      },
+      {
+        "path": "src/runtime/advanceWeekCommand.js",
+        "bytes": 7514,
+        "sha256": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007"
+      },
+      {
+        "path": "src/runtime/applyLeagueSetup.js",
+        "bytes": 6269,
+        "sha256": "43d627b8de1fa10394acb255e9394a50ca892ccf8ff8ec1bb384777c673c309a"
+      },
+      {
+        "path": "src/runtime/architectLedger.js",
+        "bytes": 3897,
+        "sha256": "8a1b2aa18052c46c17ff3de07fccae3520726d4d97804bf2ed6dc73eb0d54563"
+      },
+      {
+        "path": "src/runtime/franchiseAuthority.js",
+        "bytes": 10941,
+        "sha256": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2"
+      },
+      {
+        "path": "src/runtime/handlers/architectThesisHandler.js",
+        "bytes": 1264,
+        "sha256": "f4e591fbe4c76b9583e6229ce55fefdf202a7cf9c2f810c2038ea097a7a249cb"
+      },
+      {
+        "path": "src/runtime/handlers/franchiseMomentHandler.js",
+        "bytes": 4492,
+        "sha256": "dd9104a2e6597bb6276e720e50f850df23fcadb295ea050de23653d0469b315a"
+      },
+      {
+        "path": "src/runtime/handlers/tradeOffersHandler.js",
+        "bytes": 1342,
+        "sha256": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2"
+      },
+      {
+        "path": "src/runtime/measurementProvenanceSnapshot.js",
+        "bytes": 3310,
+        "sha256": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e"
+      },
+      {
+        "path": "src/runtime/modules/sessionModules.js",
+        "bytes": 1255,
+        "sha256": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63"
+      },
+      {
+        "path": "src/runtime/multiplayerSession.js",
+        "bytes": 9525,
+        "sha256": "834151078c7990d52fbcdd4f203527b991939b7aa86f5a42dc39ca50acdb55a7"
+      },
+      {
+        "path": "src/runtime/pensionServiceSnapshot.js",
+        "bytes": 2536,
+        "sha256": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd"
+      },
+      {
+        "path": "src/runtime/services/CoachingService.js",
+        "bytes": 7251,
+        "sha256": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf"
+      },
+      {
+        "path": "src/runtime/services/ContractService.js",
+        "bytes": 2398,
+        "sha256": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97"
+      },
+      {
+        "path": "src/runtime/services/TradeService.js",
+        "bytes": 15372,
+        "sha256": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be"
+      },
+      {
+        "path": "src/runtime/services/index.js",
+        "bytes": 1835,
+        "sha256": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6"
+      },
+      {
+        "path": "src/runtime/services/tradePlan.js",
+        "bytes": 2022,
+        "sha256": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04"
+      },
+      {
+        "path": "src/runtime/snapshotMigration.js",
+        "bytes": 6943,
+        "sha256": "5e4e7bfb4d8a9ec686d6085c4b0a2dc423a6c52d6f78e70ce235da2a4df86cb2"
+      },
+      {
+        "path": "src/runtime/statSnapshot.js",
+        "bytes": 5886,
+        "sha256": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86"
+      },
+      {
+        "path": "src/runtime/weekResultProjection.js",
+        "bytes": 10497,
+        "sha256": "89ddf5d63abb22222d3a0a86cb3a234b122f06d9c69b22ccb5daa97a3838b983"
+      },
+      {
+        "path": "src/runtime/weeklyTactic.js",
+        "bytes": 3178,
+        "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
+      },
+      {
+        "path": "src/sport/calendarContract.js",
+        "bytes": 5261,
+        "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179"
+      },
+      {
+        "path": "src/sport/competitionContract.js",
+        "bytes": 5371,
+        "sha256": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76"
+      },
+      {
+        "path": "src/sport/football/calendar.js",
+        "bytes": 1774,
+        "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8"
+      },
+      {
+        "path": "src/sport/football/competition.js",
+        "bytes": 570,
+        "sha256": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55"
+      },
+      {
+        "path": "src/sport/football/index.js",
+        "bytes": 1393,
+        "sha256": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84"
+      },
+      {
+        "path": "src/sport/football/postseason.js",
+        "bytes": 12106,
+        "sha256": "0e569605acba20068ac76592eb800f8a74d701a6451026f93b85bb1b08b85c0c"
+      },
+      {
+        "path": "src/sport/football/rules.js",
+        "bytes": 609,
+        "sha256": "64fef4a35a808ee4ca33f504b5ff774ee08b24803a3157ca167d419a0af87de1"
+      },
+      {
+        "path": "src/sport/football/statSchema.js",
+        "bytes": 13775,
+        "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
+      },
+      {
+        "path": "src/sport/matchReadiness.js",
+        "bytes": 491,
+        "sha256": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5"
+      },
+      {
+        "path": "src/sport/registry.js",
+        "bytes": 1823,
+        "sha256": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5"
+      },
+      {
+        "path": "src/stats/applyGameStats.js",
+        "bytes": 1593,
+        "sha256": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f"
+      },
+      {
+        "path": "src/stats/approximateValue.js",
+        "bytes": 12713,
+        "sha256": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486"
+      },
+      {
+        "path": "src/stats/gameImpact.js",
+        "bytes": 3136,
+        "sha256": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5"
+      },
+      {
+        "path": "src/stats/gmReportCard.js",
+        "bytes": 10017,
+        "sha256": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca"
+      },
+      {
+        "path": "src/stats/leagueLens.js",
+        "bytes": 12467,
+        "sha256": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f"
+      },
+      {
+        "path": "src/stats/profiles/pfrCareerWeightedProfile.js",
+        "bytes": 4418,
+        "sha256": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0"
+      },
+      {
+        "path": "src/stats/profiles/pfrRecentWeightedProfile.js",
+        "bytes": 2383,
+        "sha256": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866"
+      },
+      {
+        "path": "src/stats/progressionParity.js",
+        "bytes": 41570,
+        "sha256": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1"
+      },
+      {
+        "path": "src/stats/realismCalibrator.js",
+        "bytes": 25821,
+        "sha256": "e9d51c5555059430201a8fd31dabee7eb71b75f895f754cdbffe64afb5c17d58"
+      },
+      {
+        "path": "src/stats/scoreline.js",
+        "bytes": 2928,
+        "sha256": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b"
+      },
+      {
+        "path": "src/stats/statBook.js",
+        "bytes": 24640,
+        "sha256": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683"
+      },
+      {
+        "path": "src/stats/teamRecord.js",
+        "bytes": 765,
+        "sha256": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51"
+      },
+      {
+        "path": "src/utils/rng.js",
+        "bytes": 5535,
+        "sha256": "12b630dea99627b266aef906d5344ba17ce77316b336ca2dab113c655d41d089"
+      },
+      {
+        "path": "src/utils/rngStreams.js",
+        "bytes": 1408,
+        "sha256": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181"
+      },
+      {
+        "path": "stats-surface.json",
+        "bytes": 3191,
+        "sha256": "e75c35e7f59e1c1c3a84bff2d581a238835b6710ac791b34802b80680f3dd67a"
+      },
+      {
+        "path": "stats.html",
+        "bytes": 8090,
+        "sha256": "fe1cd26c7a7eb57ff37f8b784484945594516da31d84315654dd17465c6da1e1"
+      },
+      {
+        "path": "status-archive.html",
+        "bytes": 23230,
+        "sha256": "f42c8fcdb09cf15e2b08cfdf7e880829a3c2a601e675a20320e0b058469a6974"
+      },
+      {
+        "path": "status.html",
+        "bytes": 8639,
+        "sha256": "18ae7a1a3ca6025dcbd3dcba219e2682b93be44724d7f6a1ede193b67cfda56c"
+      },
+      {
+        "path": "styles.6a02088c41.css",
+        "bytes": 217169,
+        "sha256": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce"
+      },
+      {
+        "path": "styles.css",
+        "bytes": 217169,
+        "sha256": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 12296,
+        "sha256": "7762b754872bfbdd444ba0c9c3b5dfb57e88c2c496af1a14dcd23df003efa160"
+      },
+      {
+        "path": "terms.html",
+        "bytes": 6025,
+        "sha256": "35eb73b279ca52c808a0f7833a06a413c0396166e8ea7d409a8842166b86c9e6"
+      }
+    ],
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "captures": [
+    {
+      "file": "whole-head-dossier-before-long-desktop-dark-portrait.png",
+      "sha256": "aaeae5400f43594ca616a487a31cd5793e848d963295853bd38dc570b0fc1355",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "whole-head-dossier-before-long-desktop-dark-body.png",
+      "sha256": "6da09a18af32cb075555a930fc2e4c5fdf4488f73260110edb50495ac69259e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-long-desktop-light-portrait.png",
+      "sha256": "ef7c2c917fd9a10112baec33e51e07ef2fc05b447197f4d37b8caa89f99bdf19",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-long-desktop-light-body.png",
+      "sha256": "28c6bbef67e39bfc1aac93b9784a1b4906ad9f62b93a2ba725c30a9ef7eed7aa",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-long-mobile-dark-portrait.png",
+      "sha256": "df40c67d45a2d70e0c1823e298b845d1d40c519c2fa2be25645fba8f90da62d3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-long-mobile-dark-body.png",
+      "sha256": "49a4c8e1fdb2f094b060f4546b80e18e9faa1ccf073390cce3415472dae228a2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-long-mobile-light-portrait.png",
+      "sha256": "eefe3818f08cbe3a97f4c9c1423c047104964b84257be3c88af95ecbb8fa94b3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-long-mobile-light-body.png",
+      "sha256": "a4e24c21b3c44d8d75421010dc058b2442933dcf6f212998e29d972f26b11034",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/long",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-afro-desktop-dark-portrait.png",
+      "sha256": "3bfe67e93c1bd32d47c8a938e2d77a6759e17194013dbe02d5205f58ea102c13",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-afro-desktop-dark-body.png",
+      "sha256": "099f473a6d962dba9fd61b37a2ee4b318ee85952c3e8fb36f0ae393f62d64ea3",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-afro-desktop-light-portrait.png",
+      "sha256": "fc0ba04288d7b3c4de8a5fcbb9105af8f69ec5e5847c0bd1b5953f594e7ad730",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "whole-head-dossier-before-afro-desktop-light-body.png",
+      "sha256": "54bbd0d52b7e516b13c47bff7f2ab16c0797a53b5909efd39dc1a7c08c6b765e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-afro-mobile-dark-portrait.png",
+      "sha256": "ec45784ed83a20ec3f0bace188478a0334a005ca42762380f6a3c128aabb3a51",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-afro-mobile-dark-body.png",
+      "sha256": "6b5fd6b1bde71a74c62b3fc56bff4e56c6283c8eb8e67babd71cc164506a74e3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-afro-mobile-light-portrait.png",
+      "sha256": "d3679f6d56fba4bb59bc0900183986535dfa8826b65b0bfca07c7cc80fc6a158",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-afro-mobile-light-body.png",
+      "sha256": "8ed13d85d57565af406fb0febf5c8baeadbab2ad481abb05b3df72f47e39425f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/afro",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-desktop-dark-portrait.png",
+      "sha256": "cbf199c98aec2b88508a383699c6a93fc001d7ab785d9eb8d0858653a2778181",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-desktop-dark-body.png",
+      "sha256": "58b47bc9f0b3fd987d5481d4c163ec84517825897d54add5947de65edc228b13",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-desktop-light-portrait.png",
+      "sha256": "b130eadd0a3a294c099a0f212584e1872332341fa362a5610533c14dad3ab8ac",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-desktop-light-body.png",
+      "sha256": "8b76b6a7bc4146eb3bb243bbbfd6fd6bdc3093ae666f7b2f526b921d4aae4998",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-mobile-dark-portrait.png",
+      "sha256": "4e9d48ec5df1ced35cebc39cf6af7a22f46bd07e91067f0e6e93e007695d5d54",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-mobile-dark-body.png",
+      "sha256": "a429a3e6c0fd51ec276be0f2ddffdf2ea8e390f749eb02406251edcbd55b1b99",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-mobile-light-portrait.png",
+      "sha256": "5f48210927ea6ccbd5c99139300b8410f76f90a412dcaba6c7fca26b11700cd6",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-before-side-part-mobile-light-body.png",
+      "sha256": "1e28b98e5b5967d2daee78d93e1a37b749faad63efc3a198da63de572034ddab",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/side-part",
+      "phase": "before",
+      "report": "output/playwright/whole-head-dossier-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-desktop-dark-portrait.png",
+      "sha256": "d990a21bfddca3323b8599e01aae1bfb5774d2632bfc172c417f2cf0934e5096",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-desktop-dark-body.png",
+      "sha256": "2b18eb43cf26acc57d439165276de9979adcd142618b538bdb4ca43283d9b2a3",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-desktop-light-portrait.png",
+      "sha256": "607a4d3e87055cb85b7cab9b45d5167f3e7e69f1cc37fde9f4be30f16a30ae79",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-desktop-light-body.png",
+      "sha256": "54614e1a005d0ad487acff63c0dcd0349dd2afe7d44dabe4428c1f01ab8dc8c6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-mobile-dark-portrait.png",
+      "sha256": "f7dc0091dd802f46e798e8b0b617eebeccb14405e9ee21968eab8bde1a8540e9",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-mobile-dark-body.png",
+      "sha256": "451c1a0f9c642bafc9c7f3dc93036aed8bbea221684150a4ab0589f950d0986a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-mobile-light-portrait.png",
+      "sha256": "c634f7db0f9f6109222f72c261d3c72c269bd9ed6cabbc03ff3a62e6d59ed2e7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-long-mobile-light-body.png",
+      "sha256": "1e31023351e74751e9c5dec9c9e871cfcba2e4c3d925d0d5cf9ca86664cb0233",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/long",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-desktop-dark-portrait.png",
+      "sha256": "d5203049b94005ebe54dc01855b647eaa7dc4d49a24cefea03c1ef8d6ce12434",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-desktop-dark-body.png",
+      "sha256": "d8bf517227bf54b3b30a994927a2a1bef5e3207440a88317b94de801770c86d4",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-desktop-light-portrait.png",
+      "sha256": "a5b31f97bf3b7bd21dc938b7ddc018f68c22b8d81a0fe648a0f46f35c533e0e5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-desktop-light-body.png",
+      "sha256": "d033156550fbb96b5ac8e7a49c24bc75faa873d9a03b26d8ff402b397f3bab36",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-mobile-dark-portrait.png",
+      "sha256": "e93203d8088e9fe6367db6eb7179a0c908251e21f31fc3733f863de2c31fec44",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-mobile-dark-body.png",
+      "sha256": "2122527db54ee57b210cbd75f6f86758c66988ffe1c1e992ef71e57d63829b0b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-mobile-light-portrait.png",
+      "sha256": "132864ed57aefece464ae007d8dcfcfe25f057b48785aa80c6839c6e625c9a25",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "whole-head-dossier-candidate-afro-mobile-light-body.png",
+      "sha256": "8d013088656b31db006ca9b7b670110b4940d0f2b41fdf3c1a6828e0208f5bdd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/afro",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-desktop-dark-portrait.png",
+      "sha256": "d138b19092cdbee77afdb3932348765c92017bea6a9e7cc0184e19b3f82ea9fc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-desktop-dark-body.png",
+      "sha256": "64a48384090414247fa417d6e6abb44a8f28a5654a35edfc6e2750c712154642",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-desktop-light-portrait.png",
+      "sha256": "5616eb9522a76361830e535564125fbe9fa5fcb43dbc5c70add3bb6ca2573065",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/portrait/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-desktop-light-body.png",
+      "sha256": "5604b5b3359cd1b9ca413306f357ca1fdead3edb595d5979895f0675a9f821f4",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/body/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-mobile-dark-portrait.png",
+      "sha256": "bf55286eb6fe640e7e09b34c6e979fd7dffcfe33fdfed316bca00e33d35f9d69",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-mobile-dark-body.png",
+      "sha256": "91cf4ac2cbeb2a64870dea9dadb09e6f5c0669dc23bb2e0a77700e5a66ddb3f4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-mobile-light-portrait.png",
+      "sha256": "8ddf621228b00c304bb5d64fe7df815e2fb5b56afbb25af388c836daabe4429d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/portrait/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "whole-head-dossier-candidate-side-part-mobile-light-body.png",
+      "sha256": "a2fec0c31d5a766d36b1ee6fbd2052c9969d671205ab53f7ae3fe3b7bc82b4ff",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/body/side-part",
+      "phase": "candidate",
+      "report": "output/playwright/whole-head-dossier-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-0-desktop-dark.png",
+      "sha256": "5f36aaa27fb8c6a84b5463a2dcc888e3e9eaf0abd3915c58d35a7674f1233bfe",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy,buzz/curly,buzz/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-0-desktop-light.png",
+      "sha256": "66ffed2940e956b0b2eedef945e07bccc6c61a6c0f0b0a1007dadce195015aac",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy,buzz/curly,buzz/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-4-desktop-dark.png",
+      "sha256": "1a24c1312fec5b20ebdaa1257d15ff9f16f55e229bbafcc1bb5054d0097f9d94",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/fade/straight,fade/wavy,fade/curly,fade/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-4-desktop-light.png",
+      "sha256": "11e6c22efd8488d2bd5cb3f6ea3c45d36e48ea99cd19cc979ffe9fd0b49a99de",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/fade/straight,fade/wavy,fade/curly,fade/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-8-desktop-dark.png",
+      "sha256": "00fa0b8acf9951711a95845299a28c9d0860c29143956bc27831c216623a1745",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/crew/straight,crew/wavy,crew/curly,crew/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-8-desktop-light.png",
+      "sha256": "1669ea6b2b7cb97184ae296ba25beedb3101407523549ba9ee4e457813e73bc7",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/crew/straight,crew/wavy,crew/curly,crew/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-12-desktop-dark.png",
+      "sha256": "fb1d3f78f830e66261520d513557d2b4f6c39285a35d97c9e5027dad874eb59d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily,coils/coily,afro/curly",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-before-legal-12-desktop-light.png",
+      "sha256": "f2ee4cbd1c7e2250fbe32d32652587b08c88411f432a6e1da297e03b23206d57",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily,coils/coily,afro/curly",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-16-desktop-dark.png",
+      "sha256": "4e96ea743b91e05308c1fb1cc6e963225cd1e208e01362971269c0c9ff4a6339",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/afro/coily,waves/wavy,waves/curly,waves/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-16-desktop-light.png",
+      "sha256": "8af714094f45e7f2ff27b588e7d82bb5e2972530a74ef1d698ff7bcda13702f3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/afro/coily,waves/wavy,waves/curly,waves/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-20-desktop-dark.png",
+      "sha256": "c3e8335d28e855c65ae32d9a1f40bb070e7c827291f38d7e5dec11c71cb5fe5b",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy,side-part/curly,side-part/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-20-desktop-light.png",
+      "sha256": "6a033c7622a997b069994e79617ed5537586fb68c764a7375f5dc3b3a30d3780",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy,side-part/curly,side-part/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-24-desktop-dark.png",
+      "sha256": "a98bf7dc6b64aad82ad4d8feef85113b5353816c2d0b827c4a5235dae46b3471",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/swept/straight,swept/wavy,swept/curly,swept/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-24-desktop-light.png",
+      "sha256": "86627210877aa71a576916fabf107ac536fd04d62478871fb61b0d07d967b584",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/swept/straight,swept/wavy,swept/curly,swept/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-28-desktop-dark.png",
+      "sha256": "53c7b45a8cc6f822d2946599f11000a0aaead1ac64ae0f55e319391acac3a8b1",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/long/straight,long/wavy,long/curly,long/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-28-desktop-light.png",
+      "sha256": "fa27161749fcafa1175efea1af7ef8c854dd6d0230101969a215efcf3e30d5ea",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/long/straight,long/wavy,long/curly,long/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-before-legal-32-desktop-dark.png",
+      "sha256": "aade6d43d094442475f63005dc20649dacb274f487a7c949164c9eb6f5fa5dfc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/locs/straight,locs/wavy,locs/curly,locs/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-32-desktop-light.png",
+      "sha256": "abb28ae27f727650ea11ec02ce61008735977c65cdf93e2f46ab10aa20377c49",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/locs/straight,locs/wavy,locs/curly,locs/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-36-desktop-dark.png",
+      "sha256": "4c750d38e04ed6c04825c7fb27f7e79fa3691a3a8d2d6126f33c5da32c7b3782",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/braids/straight,braids/wavy,braids/curly,braids/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-36-desktop-light.png",
+      "sha256": "444452dc0eb512834e01ad3f7d7805c651721e47cf0f7e54ecd194c360a0e254",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/braids/straight,braids/wavy,braids/curly,braids/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-40-desktop-dark.png",
+      "sha256": "a22892d5ea7e2a8bd0a480a075cc25642c549382168f7d08f2316e366dc9734f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/receding/straight,receding/wavy,receding/curly,receding/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-40-desktop-light.png",
+      "sha256": "1f06fc35ab668956c10d9e3abe429f12c63c7236ebde1f0a0329a35344ec827a",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/receding/straight,receding/wavy,receding/curly,receding/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-44-desktop-dark.png",
+      "sha256": "57836210341f2005e6555062e0fd83b6b21d4e376ced1eb4cde6eb290da886c4",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy,shaved/curly,shaved/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-44-desktop-light.png",
+      "sha256": "9c76cb0317b749ceabb2af133852fd0638490ed1952a57420f97fbb71054213c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy,shaved/curly,shaved/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-0-mobile-dark.png",
+      "sha256": "f7580089922f3d7dd112b5afffef892ff10004064698d3634857027707ce566c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-0-mobile-light.png",
+      "sha256": "244c2a2e864667189c72163c858558a44790af34791d3c25a1f3ada517de18c6",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-2-mobile-dark.png",
+      "sha256": "341d8785faa8680f73a47b885833769721a52a3f7f727e7899ec151b8d9ad66b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/curly,buzz/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-2-mobile-light.png",
+      "sha256": "f7b1da5a794cbe8a9873a7809296edea4edd7f10ace06c347c5c0b939e068dba",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/curly,buzz/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-4-mobile-dark.png",
+      "sha256": "81574437afe6260feeceb0ad8cffcdd372e97dfb481b24816b5d60453d970213",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/straight,fade/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-4-mobile-light.png",
+      "sha256": "1f39cb87300f3ce03ec8e6f32370aaf24330069023637e53178bcc5055225e07",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/straight,fade/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-6-mobile-dark.png",
+      "sha256": "d262e28bdaabd7ba423e1b25d0facd0b2c554e6e79342a2ca6c86110a82b7307",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/curly,fade/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-6-mobile-light.png",
+      "sha256": "9e3e2d36278e4a0c33c1decd64188d3f9725f257af263e015b506893f5d72c97",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/curly,fade/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-8-mobile-dark.png",
+      "sha256": "3cbd953455f59aae095b3f7c14c0e6c261f690443664bfacafad8638a12be937",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/straight,crew/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-8-mobile-light.png",
+      "sha256": "31263c8b25ac7c4838e7dddc0583469cfb662e9ad3f44365a7c039c712686c4e",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/straight,crew/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-10-mobile-dark.png",
+      "sha256": "06d2258188f9febc55d9785293314fa473ef2d780e443776d704fc15b266c40a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/curly,crew/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-10-mobile-light.png",
+      "sha256": "ed51d4680dc0198d8afa206853a126bbe5f3f9db7ec8ae95bf9d3f0a7bc04024",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/curly,crew/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-12-mobile-dark.png",
+      "sha256": "2960e538ede36f1a6968d45eb59f6d5710930c5dc2842cda226d3644642e4ebe",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-12-mobile-light.png",
+      "sha256": "0be036b518ae7efd68e240836f06cf7b62f780f93234d76672901796b41e3654",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-14-mobile-dark.png",
+      "sha256": "7981a060409ef0fdb5beda5f7ad110a239ac489a281a09639f1de94486fd9a9d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/coils/coily,afro/curly",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-14-mobile-light.png",
+      "sha256": "0ff657903a5a367eb6a6fc962e648675ff0b749041d1c13ccba925378e0d7951",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/coils/coily,afro/curly",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-16-mobile-dark.png",
+      "sha256": "e1f6a935d7178c8150ffb382c03f4ff976bdaa68439dfd9148929d443d029ebd",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/afro/coily,waves/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-16-mobile-light.png",
+      "sha256": "0b3d9ad35b32266ef033b1bb7c15a73566db0d9620fc27b708ca6e74fad75dfd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/afro/coily,waves/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-18-mobile-dark.png",
+      "sha256": "abde2daf441aac3e63d0cad6f087df55083b367239e8a9e5e72cadff1450e645",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/waves/curly,waves/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-18-mobile-light.png",
+      "sha256": "e0e8b1405325ce285410a3c1efd4683ef4b372ae4dbe3f5760a10e998b85ac62",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/waves/curly,waves/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-20-mobile-dark.png",
+      "sha256": "8f7b9b7aee8e3e7d4f05c52d6ab6bc9561e2a4fde4a75e5971f4c46b72d77e16",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-20-mobile-light.png",
+      "sha256": "fff97d08eb6838c23ff8163388594d2750fbc8121eed543c38c69c63c66d3295",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-22-mobile-dark.png",
+      "sha256": "a9a5f730e57bd3ab0bdebc0d18e12cbb06ba6ad460ffb07d414e314c788f4ce7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/curly,side-part/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-22-mobile-light.png",
+      "sha256": "feddf7ea2294ee0ecc408bd7351e53083e80432414e1e48caf4843c1ee25cd25",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/curly,side-part/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-24-mobile-dark.png",
+      "sha256": "69f637c328925850064a7b33badb1dff24b21d250772cd45c382e2992d56d99d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/straight,swept/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-24-mobile-light.png",
+      "sha256": "f813c3c40bee9ec5104efaa812d623641423c07a10f8d164eeb8ee2d19f07296",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/straight,swept/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-26-mobile-dark.png",
+      "sha256": "ed2427bb2f7b4f736c95643face159cce86183d9f4273e5f72973b154748db81",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/curly,swept/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-26-mobile-light.png",
+      "sha256": "d5955e2d1341a18a8d9b10d44b190e3f32145906bd81781401c57f6ece3244e5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/curly,swept/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-28-mobile-dark.png",
+      "sha256": "986d67c6cdc8abe270114254f3f1ae4fb363c85cdf00d5d56a402c2a4c92eb86",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/straight,long/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-28-mobile-light.png",
+      "sha256": "db193a39fa24bcce5abe1cde463387a39cc8172d192252ad7cc0f51b8b3cacfe",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/straight,long/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-30-mobile-dark.png",
+      "sha256": "a4cdd26d476c80e1f21a4ff7329f7c73110b6c558222ec0b868656408f5c241d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/curly,long/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-30-mobile-light.png",
+      "sha256": "3f997d839aa4a806c5dda5197689a38f1b44a3db4bc4b6664e6cd5eb25dcbbb7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/curly,long/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-32-mobile-dark.png",
+      "sha256": "d968ceb4c0aa04c8964c524935a00a72d3fb8345af435f6280e9802e4a68de49",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/straight,locs/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-32-mobile-light.png",
+      "sha256": "4bfc511ba0866eb09e68ff44e4f031a34e0e7ea2920ccd828f6e2f3fce58f7bf",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/straight,locs/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-34-mobile-dark.png",
+      "sha256": "1181a4963e1d5a39f094946e12e868e6de798960505bad4718ef471ab7c4297d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/curly,locs/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-34-mobile-light.png",
+      "sha256": "e5d471b9f3c68d6ac876c8401a4c3fea6e2c608e7406e4f89d77985e72193e5a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/curly,locs/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-36-mobile-dark.png",
+      "sha256": "7ffdf32dec3bae693a620d8f44fb54379eff5a00cd50cd911a75ce672f66adfb",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/straight,braids/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-36-mobile-light.png",
+      "sha256": "9d7299743ffff16d735ebfbb092e97a5ba0d5527fbfd14cc2b8ef32411263a85",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/straight,braids/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-38-mobile-dark.png",
+      "sha256": "b9513fab81885cc78173f413e5bc949978c8081ca12b767e1bb87297bf889a34",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/curly,braids/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-38-mobile-light.png",
+      "sha256": "f0075d9ece1f7253935edc9a4896b491603a85cf050aed4674c95bb872d7953f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/curly,braids/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-40-mobile-dark.png",
+      "sha256": "652a11dd2e88b20516edc1653be2b8829374b90b1f863be2eaa9158139471077",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/straight,receding/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-40-mobile-light.png",
+      "sha256": "f18e68847e1d4d8301069d9ebe29fbcb5222f72460edb0d8fc933163afdaadb5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/straight,receding/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-42-mobile-dark.png",
+      "sha256": "0e42f1f0f4c30e5d381268c6aa2824700786f91ec6d51d87073ce5e4dd0ae2e8",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/curly,receding/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-42-mobile-light.png",
+      "sha256": "86ebf3ed3860b39e9daac7a55ff1c5ea93dfa8f73cef6aa2e1697b783e18524f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/curly,receding/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-44-mobile-dark.png",
+      "sha256": "dfbd3827465e98d773e9968befdcec887a0425251e3ec2206d9aa2b8b54a3b13",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-44-mobile-light.png",
+      "sha256": "83fb648074d7454db6a3aaca73fc230ce78b2470738f74e8d9b7850b1eacec3f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-46-mobile-dark.png",
+      "sha256": "4c526c5b4ab02e97005780ac541e4e1f6148c3cd708400aa1739854d3ab837f2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/curly,shaved/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-legal-46-mobile-light.png",
+      "sha256": "c52ce1900e2008a9f38dde43a92b7ac773353b475de4ca0eff975021d77ee074",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/curly,shaved/coily",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-0-desktop-dark.png",
+      "sha256": "f57c9afac5f87c129d8df24c05b93a50f095b8ce73d7f6a8e93b58961616aa3e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache,Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-0-desktop-light.png",
+      "sha256": "c79719fac26150eca62439ed1b735269664b1bb40fddacb4f52668bcff4f606e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache,Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-4-desktop-dark.png",
+      "sha256": "c96e239a4abeb65409c6e908025f5cd73bd4cd456193a294ff395e7bb1a5fdb4",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture,Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-4-desktop-light.png",
+      "sha256": "5759d180776959abffdacf33ade216258d513e9b7558531f5aeea080a4d3e2fa",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture,Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-0-mobile-dark.png",
+      "sha256": "13f647ec50e14e07169290b7e50f250525c72010cbcdedf130b8877e6f890c24",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-before-interaction-0-mobile-light.png",
+      "sha256": "22f1ae7028a7f9057732f342d2c201d1766e860174cde59055780dc0af5ccb84",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-2-mobile-dark.png",
+      "sha256": "e5d3a7a29ee803f6c2f262d83cbdc4d6aaaa30a21418af88961aae6eca128d4a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-2-mobile-light.png",
+      "sha256": "250906f049fa1db61acaf799ba5789b59199463b43aacd942215bc639cc67e0c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-4-mobile-dark.png",
+      "sha256": "0b8aaceea9de1db94288db1606e66209ca50872b3f8befa992e12cdefe235e3e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-4-mobile-light.png",
+      "sha256": "0b7e167a00659f33d10873a9427e48b05f39d3774290b6a270e46ce9e94b11e2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-6-mobile-dark.png",
+      "sha256": "c115e90979281fea7125cbfb7a3eab1dc23514cf20bad5f3632e6cd412e1e25e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-before-interaction-6-mobile-light.png",
+      "sha256": "6dafd70fa4ef2506b2643f9b4473a470a9e7acc86e1fc65d687036b94d723d53",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "before",
+      "report": "output/playwright/s117-whole-head-before.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-0-desktop-dark.png",
+      "sha256": "4ce811d5f14e52350d95ec176e65c22265f9e72765178a13c6a9433251c8d7fe",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy,buzz/curly,buzz/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-0-desktop-light.png",
+      "sha256": "3690ad4f1d75636c50df6b8f68f25a3e5c15470a92b8007a2cfdbff8abde40ba",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy,buzz/curly,buzz/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-4-desktop-dark.png",
+      "sha256": "32c221f065221cbd1bdf01f3966257513889d632151e58c585c5b2630df66a6e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/fade/straight,fade/wavy,fade/curly,fade/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-4-desktop-light.png",
+      "sha256": "f510d7c8d877077f21aaad1a71797be87329728ce8655ab76db90ac6c10f5c88",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/fade/straight,fade/wavy,fade/curly,fade/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-8-desktop-dark.png",
+      "sha256": "16faa807c940fd8a633e3f01097018964cfa58886c656e5decb2141019495162",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/crew/straight,crew/wavy,crew/curly,crew/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-8-desktop-light.png",
+      "sha256": "0d89d3d1e6258887bf1a44b1657159d0cff82e645c993e5f3504ad67d72352ff",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/crew/straight,crew/wavy,crew/curly,crew/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-12-desktop-dark.png",
+      "sha256": "44cd7c9006796dbcee3b68a7c9cfdfb2dbcce3980661a6f4a6384ce208955917",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily,coils/coily,afro/curly",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-12-desktop-light.png",
+      "sha256": "e0b5180ff5d9bb65a95a11304aab7559587b602b58863340e8e3f538e6cd8b33",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily,coils/coily,afro/curly",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-16-desktop-dark.png",
+      "sha256": "4b6757fe6f2c4458235c837cddf149fa4c221e1c587dbcc65f9102fd71661f2e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/afro/coily,waves/wavy,waves/curly,waves/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-16-desktop-light.png",
+      "sha256": "a61ed7a284be46140eda43115bfdb3d0952c621b5b448cd3fea945c1ae8abe82",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/afro/coily,waves/wavy,waves/curly,waves/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-20-desktop-dark.png",
+      "sha256": "bff167024e97d6b3d0c73cbc0df81584a56f5ce38455b2fa49e32cc31c851e0f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy,side-part/curly,side-part/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-20-desktop-light.png",
+      "sha256": "7835904c9e5f3608d4df674396aca53aba387f277c05ab66acff4384944f371b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy,side-part/curly,side-part/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-24-desktop-dark.png",
+      "sha256": "3586f26b538f582b35c0e2f7e3a56f5c2808a3f3188866465f21b28b0393a419",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/swept/straight,swept/wavy,swept/curly,swept/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-24-desktop-light.png",
+      "sha256": "f9a7c6f198f13d3d9df461121aa687f8b037a58bcafe8abd77ff28ce930ad47b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/swept/straight,swept/wavy,swept/curly,swept/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-28-desktop-dark.png",
+      "sha256": "e29abad698991a23b1e80d36a62996f7d51b4334958353aea93a395f009e4b40",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/long/straight,long/wavy,long/curly,long/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-28-desktop-light.png",
+      "sha256": "7b4ac77cdf132bd568d9b83e079bf7d932ecddbd969a1175d0e9ec458b62fb1d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/long/straight,long/wavy,long/curly,long/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-32-desktop-dark.png",
+      "sha256": "b261ce5c36bf1c491bc79e7ccbd4ea598915464ea0359c8900dbc5424d0a1d9d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/locs/straight,locs/wavy,locs/curly,locs/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-32-desktop-light.png",
+      "sha256": "3774b02c341f6468f8b1d2297c6d8745e8b90f646f9ccafffc11178ee17316ca",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/locs/straight,locs/wavy,locs/curly,locs/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-36-desktop-dark.png",
+      "sha256": "202166f8e58cd10b6e8d4e0818a0d60bfed3b7e1f12a7edf8734013fdf1f8dc5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/braids/straight,braids/wavy,braids/curly,braids/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-36-desktop-light.png",
+      "sha256": "d65d8d4935904e6ff38ee4b9a5371df3bfeb595f1ef9dc1f883b2c910f16a3a1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/braids/straight,braids/wavy,braids/curly,braids/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-40-desktop-dark.png",
+      "sha256": "e25e9bb4ec34c44684be66d10f8b66c579cb4f50815dc2d907612c167c07b1ed",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/receding/straight,receding/wavy,receding/curly,receding/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-40-desktop-light.png",
+      "sha256": "120ca07e88b5c950f5f099449850eb438961eb6d74cc4c3f24a5d121f02c5ec1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/receding/straight,receding/wavy,receding/curly,receding/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-44-desktop-dark.png",
+      "sha256": "24cbb088866b5f5c486082f150d4f2e8b79cf71ee5a0dbe72841a2d7b7d8f5f9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy,shaved/curly,shaved/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-44-desktop-light.png",
+      "sha256": "95f0c677192417ad0a1b791e04a38e218da56e1deb87ff85f00cf2278281760d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy,shaved/curly,shaved/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-0-mobile-dark.png",
+      "sha256": "985a5b2ffe10a00bc555e744468ae4accf996f516f87c0a61ec4a3ce49424e09",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-0-mobile-light.png",
+      "sha256": "b8153e710dbfb34da622c16d2e79e2466ce14ff8a7868a8ff1780d83f0525b8d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/straight,buzz/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-2-mobile-dark.png",
+      "sha256": "dac67312b53237265068f2d60c7ec527058ee4b50e918f4600dac6008b0c6286",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/curly,buzz/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-2-mobile-light.png",
+      "sha256": "b247727fde0a353f4106ada1348187a4cadfc36cd30552060127d84f80f207cf",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/buzz/curly,buzz/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-4-mobile-dark.png",
+      "sha256": "c5ab36ecbda8306594d7eb8de769275bd6ca479ab3c1b73f0bef36bac01f5054",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/straight,fade/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-4-mobile-light.png",
+      "sha256": "e3ed1672edc2cbdc48b8db952ea5f7804b21c8b6a5e23d3fe980fb950f319d2d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/straight,fade/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-6-mobile-dark.png",
+      "sha256": "7c730ca26051c46e51ae24c45c369f040b9bd58856060afbd2e61b68097ff3e2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/curly,fade/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-6-mobile-light.png",
+      "sha256": "1b2a85dde98c902d9df2624c0c4cfc58befa422539faed2b250054709ee10ee2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/fade/curly,fade/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-8-mobile-dark.png",
+      "sha256": "060a90acc75f1bcef970c0754096083f6de61f6f067985b27dbce4e5d652a9bd",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/straight,crew/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-8-mobile-light.png",
+      "sha256": "27e229b37dc43e2be88788a8bd407517ca4998dac305f9aafeabe29858ad1050",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/straight,crew/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-10-mobile-dark.png",
+      "sha256": "8335655c1427cfb4a38963f291f73dc5ba9fa3a67baafbc22d3014236dd67051",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/curly,crew/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-10-mobile-light.png",
+      "sha256": "3ed680dae2687f92bc5b09ab4cfdc5ac75ca87f92a3569643aa4f1dc818b3d9d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/crew/curly,crew/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-12-mobile-dark.png",
+      "sha256": "2d2edceda923aea6bfc3a7d413c3010ac2f6a319cf4ae396dac1595c33871bde",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-12-mobile-light.png",
+      "sha256": "b8c75df853c7b3b21336acc524bc534c522f702a5cc0b181d1868fdcbf924a46",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/short-curls/curly,short-curls/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-14-mobile-dark.png",
+      "sha256": "7510ddd7d397a8b106a6a980e9345c51e2f5c65a844615f554973e704273e3e5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/coils/coily,afro/curly",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-14-mobile-light.png",
+      "sha256": "853ac3b917c0a4d8f86f985230123949ee06739fb94e9047a7d682f561a41c08",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/coils/coily,afro/curly",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-16-mobile-dark.png",
+      "sha256": "3838e655003e9e9bae24e30a64ddc900f87630de70efb09d816065c63c00c9cd",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/afro/coily,waves/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-16-mobile-light.png",
+      "sha256": "cd2dd02385828189a1fb19d9f296c530c5e34473224e30625a7f4c3d3669cab5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/afro/coily,waves/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-18-mobile-dark.png",
+      "sha256": "acb1f79f5ee8c745afbbf006d40e8118d612ea9581991e9afe570a634cb57ea9",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/waves/curly,waves/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-18-mobile-light.png",
+      "sha256": "affd63390b87235598a3a1fa1eee14ffa91a6a550328e3c1a22190f2ccf4784f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/waves/curly,waves/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-20-mobile-dark.png",
+      "sha256": "93575ef5934843c60d0607ab74f4f8b23d6eef4074053688bfcbcb535825b6f5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-20-mobile-light.png",
+      "sha256": "62c9bb7a330a58be8c0cd903e4f900ee7fce1e61ccb7f63f1458ed5f4ad1d9bf",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/straight,side-part/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-22-mobile-dark.png",
+      "sha256": "0ab5ec0af022aef14ead071a431bba858497fc33f70182b1fe899964de01fa3e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/curly,side-part/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-22-mobile-light.png",
+      "sha256": "3063ee944440bcb6b9912e8e7a9e4bdc55b114eeaac370c0814b3ee2e52e1ed5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/side-part/curly,side-part/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-24-mobile-dark.png",
+      "sha256": "1b5be0382126da97e4eecf5f07e37d13579b55ef7c245bd85fe189f729d2f9d7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/straight,swept/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-24-mobile-light.png",
+      "sha256": "7bf57be5c957772e71b2b7e870b4cae6c954caeed0a78d3e059a391d4a5e720c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/straight,swept/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-26-mobile-dark.png",
+      "sha256": "a38b510133509dd92a67a092364275e7b923c684173ce4f9d9c6da8d61de8a9b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/curly,swept/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-26-mobile-light.png",
+      "sha256": "d4b34cf200caf44e65244299792adff44db247e598f224a1d9afad252f229757",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/swept/curly,swept/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-28-mobile-dark.png",
+      "sha256": "2dd333c6aec7088fbb4583b92d1c52df40927e00db6bb93068b663e4396181d5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/straight,long/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-28-mobile-light.png",
+      "sha256": "6c44cb49bf0cdd8528376288e1e470e62ce0bf23abeb0682d64ecb1c6cbcebc5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/straight,long/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-30-mobile-dark.png",
+      "sha256": "e6e21b793709ff2f96befe1a6b52ad4a9d718b30e1e5104aa147c9a6a2ee7202",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/curly,long/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-30-mobile-light.png",
+      "sha256": "96c5c76bbe2d3e1f959ca6e2598e7fc478e93d2a4aeb29705b777bf43fb9b6f6",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/long/curly,long/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-32-mobile-dark.png",
+      "sha256": "2ce6ba5fc930e602f804ac0b99e2c4e4ff376462a9f044702fcd2b3564eecc20",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/straight,locs/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-32-mobile-light.png",
+      "sha256": "c2e16b7fc49e6db97dc35afcb024c967c242a5d01ac0a0ea44e7cc8eb1a56684",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/straight,locs/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-34-mobile-dark.png",
+      "sha256": "faa5fbf5983b3dccd190cf014d2ba46ac25f7a8391a8f4ea79e6655c52a991a4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/curly,locs/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-34-mobile-light.png",
+      "sha256": "e7afd35b567557a8d0af63d445baebf1062e27363e94ab72826e46e13c1457dc",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/locs/curly,locs/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-36-mobile-dark.png",
+      "sha256": "ef419cad2235874968b26af3e429386c1d19f6e1f67a21682b366a8dc5300c4e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/straight,braids/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-36-mobile-light.png",
+      "sha256": "f76c30e3b1474d0862ba18948d4bb9504075e65b5e352865914bb2712732536c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/straight,braids/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-38-mobile-dark.png",
+      "sha256": "1b16b017a55597704b0a2410a8c66b24bcbaa211ce652722689af82dd4aae594",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/curly,braids/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-38-mobile-light.png",
+      "sha256": "d3e2b4595a6db293f11e5a7d6c5ab8480a110effef52686d61c3ab9f7411b002",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/braids/curly,braids/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-40-mobile-dark.png",
+      "sha256": "d48872da39d7a00af49d590c891cc49c5ae922afbf3d4fe851fa60cfa891f6c0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/straight,receding/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-40-mobile-light.png",
+      "sha256": "54d4e6ca75c1f0aeeedd944f0fe9c5ecaf9922627456de578b31c1e6fed283d8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/straight,receding/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-42-mobile-dark.png",
+      "sha256": "96f8e03eb8c8190c7a7ab17167c6bf303bf94505d632b8fe6660f2dd1660a2df",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/curly,receding/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-42-mobile-light.png",
+      "sha256": "0aeab2d2ac256066638e5dc51b31df683f130d520b7e839874c3837c97a89a09",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/receding/curly,receding/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-44-mobile-dark.png",
+      "sha256": "df703aca4c1277f936c2d49e80943120c1a9cc431c9d3e863c2785515e61d5da",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-44-mobile-light.png",
+      "sha256": "81879f6a2389b701cfdc1949b43fe980b0f31cec4c41073929a4b4f65adb05b2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/straight,shaved/wavy",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-46-mobile-dark.png",
+      "sha256": "0577d5314ad787b892588fe6ebf080d6001b8d6d7a97a459fd20329d9390e998",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/curly,shaved/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-legal-46-mobile-light.png",
+      "sha256": "0f409f0c1f75855f345800d6bbefc488fb9a927c485272e1e96e3d96864fdc52",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/legal/shaved/curly,shaved/coily",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-0-desktop-dark.png",
+      "sha256": "22555b63ed4dcaed59c7242f529240e2e2e694a974058088ceb6bad843a2f2e2",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache,Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-0-desktop-light.png",
+      "sha256": "12d425d92d9c4fc8e22c30f4c509cab12b2202a26ee965a1583265e7159d593e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache,Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-4-desktop-dark.png",
+      "sha256": "d05c2e693666b591fb9d45ce1e850abf6a8e77966d334f1981b310ae04f9abb8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture,Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-4-desktop-light.png",
+      "sha256": "46db0cd2d9546ca92376d108d7c2e28cc94197bc5ff68168bb6ce6db954e1bf4",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture,Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-0-mobile-dark.png",
+      "sha256": "eebfb17882bf19d6e825ff5657c82329e30783c7ba9b9e6356bde55d1e4bbab8",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-0-mobile-light.png",
+      "sha256": "b40d5160b694d46e892c88dac9b9af42ca99822e1e9c906ee3e3cf9de8b6e960",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Pale / black coils / full beard,Deep / blond straight long / mustache",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-2-mobile-dark.png",
+      "sha256": "58337548c2467295af539ef5f194715e4fabbd5f9114f124dbc1b6a839431e2a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-2-mobile-light.png",
+      "sha256": "f7862ce481cce4ec928118daf259ce8653f1b99f58d0db0e29d0d865ed287c6f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Sparse red waves / goatee,Zero density / full natural beard",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-4-mobile-dark.png",
+      "sha256": "cbe3f0a11d82af7a706357f43d4b2a26807e27d6a21ad3190627740440fd367e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-4-mobile-light.png",
+      "sha256": "1a9bef471814a406c96f0e528ea947293735d35fad6fc66014c00d49948e7f13",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Purple locs / natural dark beard,Gray receding / age42 artistic fixture",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-6-mobile-dark.png",
+      "sha256": "59657b7cd567161c8406e269926bc8088a12564af1d02afb79011b3442142168",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-interaction-6-mobile-light.png",
+      "sha256": "990e920d83463823350b38ef817c6c1de53c27bda48931d0889ef3c601a4e466",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/interaction/Shaved / narrow jaw / broad nose,Braids / wide chin / tilted eyes",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-desktop-0-dark.png",
+      "sha256": "163b047a32203edf4460a2ab2fccafdbc9edad8b62e5a7d62a643f845f501e7c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/controlled-detail/desktop",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-desktop-0-light.png",
+      "sha256": "1b3c5bc79d52480bd7febae27eb96a8e334a6cd8acd2290803142ab044ebff96",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/controlled-detail/desktop",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-mobile-0-dark.png",
+      "sha256": "ca68bbfaa494c236e19242d567545ad7919c956dd0f725f1cce9f82f6da41bbc",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/controlled-detail/mobile",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-mobile-0-light.png",
+      "sha256": "8e3de3e5c8981e95bfc206832df5b16c346717f8fba4c06a24db1992215e117f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/controlled-detail/mobile",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-desktop-3-dark.png",
+      "sha256": "858fb5fe87470cd5f294c499e5b02194c3f18b5ff7d3ed7cdda1d24b8ec802ab",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/controlled-detail/desktop",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-desktop-3-light.png",
+      "sha256": "04012f049811b5ef80d5cc54833af4b74f451c3c83eb8b924cb2a2d85ffe3b69",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "player/controlled-detail/desktop",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": true
+    },
+    {
+      "file": "s117-whole-head-candidate-mobile-3-dark.png",
+      "sha256": "05ea4148c033dcbc21978f58e8fa44963a92c11153ff5855d4551dc486cb0c4a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/controlled-detail/mobile",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": false
+    },
+    {
+      "file": "s117-whole-head-candidate-mobile-3-light.png",
+      "sha256": "219cb706ed2f43e62f70886fa853a0872a448432c4c23ef029b52e46c0f03050",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "player/controlled-detail/mobile",
+      "phase": "candidate",
+      "report": "output/playwright/s117-whole-head-candidate-natural-details.json",
+      "primaryInspected": false
+    }
+  ],
+  "clientEvidence": {
+    "worker": {
+      "file": ".cache/player-capacity-client/worker.json",
+      "sha256": "1e389409507fc9173f9f9350d85ce2596d348cce1b40cf90a46f1e99006813e6",
+      "worker": true,
+      "artifactDigest": "30102f7a3091a5f12327fd0aaf05fd3c38851864aaaa3fb61d80993a191d6f3f",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true
+    },
+    "in-page": {
+      "file": ".cache/player-capacity-client/in-page.json",
+      "sha256": "7cfa1b5a52ac076f5973a63f2a5f72f20653bd5add2662a703e428e07b2eb146",
+      "worker": false,
+      "artifactDigest": "30102f7a3091a5f12327fd0aaf05fd3c38851864aaaa3fb61d80993a191d6f3f",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true
+    }
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      "whole-head-dossier-before-long-desktop-dark-portrait.png",
+      "whole-head-dossier-before-afro-desktop-light-portrait.png",
+      "s117-whole-head-before-legal-12-desktop-dark.png",
+      "s117-whole-head-before-legal-28-desktop-light.png",
+      "s117-whole-head-before-interaction-0-mobile-dark.png",
+      "s117-whole-head-candidate-legal-0-desktop-dark.png",
+      "s117-whole-head-candidate-legal-4-desktop-dark.png",
+      "s117-whole-head-candidate-legal-8-desktop-dark.png",
+      "s117-whole-head-candidate-legal-12-desktop-dark.png",
+      "s117-whole-head-candidate-legal-16-desktop-dark.png",
+      "s117-whole-head-candidate-legal-20-desktop-dark.png",
+      "s117-whole-head-candidate-legal-24-desktop-dark.png",
+      "s117-whole-head-candidate-legal-28-desktop-dark.png",
+      "s117-whole-head-candidate-legal-32-desktop-dark.png",
+      "s117-whole-head-candidate-legal-36-desktop-dark.png",
+      "s117-whole-head-candidate-legal-40-desktop-dark.png",
+      "s117-whole-head-candidate-legal-44-desktop-dark.png",
+      "s117-whole-head-candidate-legal-12-mobile-light.png",
+      "s117-whole-head-candidate-legal-28-mobile-light.png",
+      "s117-whole-head-candidate-interaction-0-mobile-dark.png",
+      "whole-head-dossier-candidate-long-desktop-dark-portrait.png",
+      "whole-head-dossier-candidate-afro-mobile-light-portrait.png",
+      "whole-head-dossier-candidate-side-part-mobile-dark-portrait.png",
+      "whole-head-dossier-candidate-long-desktop-dark-body.png",
+      "s117-whole-head-candidate-desktop-3-light.png"
+    ],
+    "findings": [
+      "Long curls retain individual grouped variation with lower strand contrast; hairstyle silhouettes remain stylized.",
+      "Eye pigment has more visible aperture; front/profile share saved individual controls.",
+      "Rounded cheek highlight prototype produced swollen form; final directional shading reduces that defect.",
+      "Bright cropped-lock spots identified in the expanded dark-hair gallery; directional subdued lock bands replace them.",
+      "Whole faces, beard/stubble and regional body/hand form still need craft; full naturalism and empirical calibration remain open."
+    ],
+    "fixesApplied": [
+      "Analytic cubic interpolation with bounded per-lock variation and no final straight segment.",
+      "Shared clipped low-frequency cropped hair groups under fine fibers; restrained directional material.",
+      "Saved eyelid aperture projected with unchanged horizontal width, iris controls and a proportionate pupil.",
+      "Landmark orbital/malar/muzzle/jaw planes under shared front/profile lighting."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "verification": {
+    "focused": "35/35 PASS0f6c95,zero skipped,4.406seconds;384 portable exact legacy render hashes",
+    "build": "f7d59e99e1a1,308assets3423KB",
+    "boot": "649321/730000bytes51/58modules0leaks PASSf3f90e",
+    "reachability": "133modules4HTML PASS1e657e",
+    "browser": "5/5 PASS10d35f: actual worker/in-page named replacement/load/reload, actual dossier, legal48 pairs and controlled natural traits. Reports initially collided; distinct report names corrected and both gallery checks rerun2/2 PASSbc67f2 with final sources."
+  },
+  "limitations": [
+    "Artistic renderer geometry and light are not measured 3D anatomy, hair prevalence or fitted racial/country traits.",
+    "Capture coverage does not mean every viewport/theme image or motion cycle was inspected.",
+    "Six built modes verify actual commands/resources/persistence, not complete athletic or body naturalism.",
+    "No annual rules repair, current final30GM, full-feature or release acceptance."
+  ],
+  "artifactVerification": {
+    "canonicalDigest": "30102f7a3091a5f12327fd0aaf05fd3c38851864aaaa3fb61d80993a191d6f3f",
+    "canonicalFiles": 342,
+    "postMirrorDigest": "b6aba50945e02e27cc4f76b24dff26a026f7fb242ff0bebbe17abc9065fea11d",
+    "postMirrorFiles": 3447,
+    "byteIdenticalMirrors": [
+      "franchise-architect",
+      "franchise-architect-football",
+      "games/franchise-architect",
+      "games/franchise-architect-football",
+      "games/vaultspark-football-gm",
+      "vaultspark-football-gm"
+    ],
+    "note": "Build fingerprints canonical files before adding compatibility mirrors; canonical bytes and all mirror bytes independently checked."
+  },
+  "primaryProof": {
+    "file": ".cache/whole-head-reviewed-primary.json",
+    "sha256": "e80f273eeb5f646f5f74e63f0a84a96f4c4d5caefeab6e3d3907427b2c476ef6"
+  },
+  "independentReview": {
+    "file": "docs/visual-qa/PLAYER_WHOLE_HEAD_REVIEW_2026-10-07.json",
+    "sha256": "af0ead335955193c859904c6e34184c73a583d99355b9d674a28d4d9953ea747",
+    "verdict": "PASS",
+    "scope": "Head rendering component only; full appearance and athlete quality remain open."
+  }
+}

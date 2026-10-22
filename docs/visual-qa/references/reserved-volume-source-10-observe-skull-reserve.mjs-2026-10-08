@@ -1,0 +1,39 @@
+import fs from 'node:fs';import crypto from 'node:crypto';import assert from 'node:assert/strict';
+import {createSession} from '../src/runtime/bootstrap.js';
+import {playerAppearance,playerFrame} from '../src/domain/playerIdentity.js';
+import {buildHeadMesh3d} from '../public/lib/playerHead3d.js';
+const hash=b=>crypto.createHash('sha256').update(b).digest('hex'),colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'};
+// Signed tetrahedra integrate the actual closed skin triangles. Cosmetic hair,
+// eyelids and open ear patches cannot be added as separate sealed body solids.
+function skullVolume(a,height,rings,slices){
+ const m=buildHeadMesh3d({...a,hairstyle:'shaved',facialHair:'clean'},colors,{headOnly:true,rings,slices});
+ const part=m.parts.find(p=>p.name==='skin');let signed=0,totalArea=0;const orientedArea=[0,0,0];
+ for(let j=part.firstIndex;j<part.firstIndex+part.indexCount;j+=3){
+  const triangle=[0,1,2].map(k=>m.vertices.subarray(m.indices[j+k]*10,m.indices[j+k]*10+3)),[p,q,r]=triangle;
+  signed+=(p[0]*(q[1]*r[2]-q[2]*r[1])+p[1]*(q[2]*r[0]-q[0]*r[2])+p[2]*(q[0]*r[1]-q[1]*r[0]))/6;
+  const u=q.map((x,i)=>x-p[i]),v=r.map((x,i)=>x-p[i]),cross=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+  totalArea+=Math.hypot(...cross)/2;for(let k=0;k<3;k++)orientedArea[k]+=cross[k]/2;
+ }
+ const skullHeight=9.4+(height-74)*.035,scale=skullHeight/(m.anatomy.chinY-m.anatomy.crownY);
+ const volume=Math.abs(signed)*scale**3;assert.ok(Number.isFinite(volume)&&volume>0);
+ const orientedAreaResidual=Math.hypot(...orientedArea)/totalArea;assert.ok(orientedAreaResidual<1e-8,'closed skin oriented area '+orientedAreaResidual);
+ return {rings,slices,skinTriangles:part.indexCount/3,modelSignedVolume:signed,orientedAreaResidual,skullHeightInches:skullHeight,uniformInchScale:scale,volumeInches3:volume};
+}
+const session=createSession({seed:117,startYear:2026,controlledTeamId:'BUF'}),rng=structuredClone(session.rng),players=[];
+for(const position of ['QB','RB','WR','TE','OL','DL','LB','CB','S','K','P']){
+ const p=session.league.players.find(p=>p.position===position);if(p)players.push(p);
+}
+const rows=players.map(p=>{
+ const original=structuredClone(p),a=playerAppearance(p),f=playerFrame(p),levels=[[16,24],[32,48],[64,96]].map(([r,s])=>skullVolume(a,f.heightInches,r,s)),head=levels.at(-1).volumeInches3;
+ assert.deepEqual(p,original);return{playerId:p.id,position:p.position,heightInches:f.heightInches,weightLbs:f.weightLbs,levels,lastRefinementRelativeDelta:Math.abs(head-levels[1].volumeInches3)/head,allocatedReserveInches3:f.reservedVolumeInches3,skullOnlyShareOfReserve:head/f.reservedVolumeInches3,unexplainedReserveAfterSkullInches3:f.reservedVolumeInches3-head,wholeBodyMassVerified:false};
+});
+const base=players.find(p=>p.position==='OL'),pairs=[];
+for(const weightLbs of [180,240,350,500]){
+ const p={...structuredClone(base),heightInches:80,weightLbs},a=playerAppearance(p),f=playerFrame(p),head=skullVolume(a,80,64,96);
+ pairs.push({weightLbs,heightInches:80,appearanceSha256:hash(JSON.stringify(a)),reservedVolumeInches3:f.reservedVolumeInches3,skullVolumeInches3:head.volumeInches3,skullHeightInches:head.skullHeightInches,handSizeInches:f.handSizeInches,handLengthInches:f.handLengthInches??80*.1,footLengthInches:f.footLengthInches,footWidthInches:f.footWidthInches});
+}
+assert.deepEqual(structuredClone(session.rng),rng);assert.equal(new Set(pairs.map(p=>p.appearanceSha256)).size,1);assert.equal(new Set(pairs.map(p=>p.skullVolumeInches3)).size,1);assert.equal(new Set(pairs.map(p=>p.reservedVolumeInches3)).size,4);
+const sources=['public/lib/playerHead3d.js','public/lib/playerHeadImage.js','public/lib/playerSideAppearance.js','public/lib/playerPortrait.js','public/lib/playerMotion.js','public/lib/playerHand.js','public/lib/playerFootwear.js','public/lib/physiqueGeometryContract.js','src/domain/playerIdentity.js','src/domain/playerMeasurements.js','.cache/observe-skull-reserve.mjs'];
+const report={schemaVersion:1,recordedAt:new Date().toISOString(),status:'diagnostic-complete-body-accounting-unverified',scope:'Closed skull mesh volume at the actual fitSkull physical scale versus fixed reserved budget; not complete body union or measured tissue mass.',method:'Absolute signed tetrahedron sum over actual skin triangles, scaled by the same skull-height/span ratio used by fitSkull and physical head placement.',density:'Current1kg/litre artistic assumption only; not biological density.',sourceHashes:Object.fromEntries(sources.map(p=>[p,hash(fs.readFileSync(p))])),rows,controlledMassPairs:pairs,simulationRngUnchanged:true,findings:['The closed skull has measurable volume and a tessellation refinement residual.','Identical saved face/stature gives identical skull volume across four masses, while the reserved volume changes linearly with total mass.','Remaining reserve has no rendered hand/foot depth or complete cap/overlap reconciliation. It cannot certify complete rendered mass.'],requiredNext:['Define matched camera-independent hand/foot solids distinct from footwear.','Include actual head/neck/torso/limb solids and root caps with intersection subtraction.','Fit and test the union at controlled physical scale; publish numerical convergence and mass residuals instead of treating allocation sums as proof.'],fullBodyAcceptance:false,releaseAccepted:false};
+fs.mkdirSync('.cache/body-volume',{recursive:true});fs.writeFileSync('.cache/body-volume/skull-reserve-observations.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({players:rows.length,maxLastRefinementRelativeDelta:Math.max(...rows.map(r=>r.lastRefinementRelativeDelta)),skullReserveShareRange:[Math.min(...rows.map(r=>r.skullOnlyShareOfReserve)),Math.max(...rows.map(r=>r.skullOnlyShareOfReserve))],controlledMassPairs:pairs}));

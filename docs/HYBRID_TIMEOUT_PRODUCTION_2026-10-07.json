@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-07T16:09:08.947Z",
+  "status": "production-proof-with-independent-review",
+  "input": {
+    "file": ".cache/current-managed-browser-proof/input.json",
+    "sha256": "67ea4130fd989ca69d10ff992a70ef66e48bfabf3cf0f3173481528c3161382c",
+    "saveSha256": "ffd871a6444830f4dd124c4e74d41466ac8c6fd22178d029744f73101c03a748",
+    "completedHistoryYears": 22
+  },
+  "sourceHashes": {
+    "src/adapters/persistence/hybridSaveStore.js": "a39c082678bbf4fcd505b8411cdbb32bb5c03aa8d96333099c7dde19e9bd464f",
+    "test/hybrid-save-store.test.js": "2b018278c3e6d337003709f8bcb601c144a5fe0580d19b63e5f27916e6dc71a7",
+    "tests-ui/managed-career-persistence.spec.js": "aeb8d95cc4b1eff7feff06f1e8fa20a7a24b49992f0c412372c4b7d80febe99c",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerMeasurements.js": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9",
+    "src/adapters/persistence/snapshotCodec.js": "15e0996f3b8660a8f144d1f0f9e9e54b4201ea88de2e4dfa2e1eb3a53c270903"
+  },
+  "transition": {
+    "file": ".cache/hybrid-timeout-source-transition.json",
+    "sha256": "b4e5d05f62b85b02efbda8189553d3a2ab341db187629210a7913d16bac0ac0e",
+    "driverQualification": {
+      "declaredFiles": 187,
+      "unchangedFiles": 186,
+      "changed": [
+        "src/adapters/persistence/hybridSaveStore.js"
+      ],
+      "targetOutsideDriverImportGraph": true,
+      "graphFile": ".cache/managed-import-scope-2026-10-07.json",
+      "graphSha256": "7f411cb73913705e45d42d4143ca814ebe687d75ce49d3beaedf64833a71de9c"
+    }
+  },
+  "builtAdapterSha256": "a39c082678bbf4fcd505b8411cdbb32bb5c03aa8d96333099c7dde19e9bd464f",
+  "verification": {
+    "portable": "25/25 PASS",
+    "browser": "2/2 PASS",
+    "browserSession": 81362,
+    "workerDuration": "3.1m",
+    "inPageDuration": "2.3m",
+    "pagesBuild": "v862ce115eb28",
+    "bootBytes": 649156,
+    "bootModules": 51,
+    "lazyLeaks": 0,
+    "reachableModules": 131
+  },
+  "browser": [
+    {
+      "runtime": "worker",
+      "file": ".cache/hybrid-timeout-production-browser/worker-receipt.json",
+      "sha256": "c8f0d688e82c43b67cf8007bcef7e1ab88561a75c9b85725e1613f021bf57bec",
+      "year": 2048,
+      "historyYears": [
+        2026,
+        2027,
+        2028,
+        2029,
+        2030,
+        2031,
+        2032,
+        2033,
+        2034,
+        2035,
+        2036,
+        2037,
+        2038,
+        2039,
+        2040,
+        2041,
+        2042,
+        2043,
+        2044,
+        2045,
+        2046,
+        2047
+      ],
+      "people": 9213,
+      "personSha256": "9591c858ef8555ac9fa1c5d1dafca1ba976baa2c857260f2234227f14adbcf01"
+    },
+    {
+      "runtime": "in-page",
+      "file": ".cache/hybrid-timeout-production-browser/in-page-receipt.json",
+      "sha256": "98610f0a2d135cb487e0799918d32ec3915832b47cede6c834a70dae99c0dc1d",
+      "year": 2048,
+      "historyYears": [
+        2026,
+        2027,
+        2028,
+        2029,
+        2030,
+        2031,
+        2032,
+        2033,
+        2034,
+        2035,
+        2036,
+        2037,
+        2038,
+        2039,
+        2040,
+        2041,
+        2042,
+        2043,
+        2044,
+        2045,
+        2046,
+        2047
+      ],
+      "people": 9213,
+      "personSha256": "9591c858ef8555ac9fa1c5d1dafca1ba976baa2c857260f2234227f14adbcf01"
+    }
+  ],
+  "independentReview": {
+    "file": ".cache/hybrid-timeout-production-review-round2.json",
+    "sha256": "f4814663f7c8496f28fd99bc58273b36d73013789a9a0c9b0f301e25d1c6c207",
+    "verdict": "PASS_WITH_SCOPE_LIMITS",
+    "rounds": 2
+  },
+  "limitations": [
+    "One actual 22-year managed checkpoint, not final 30-year acceptance",
+    "Person recipes, supplied physical records and resolved appearance/frame/measurements plus history years; not every league field",
+    "Permanent storage failures remain fail-closed and may exceed localStorage capacity",
+    "Worker/in-page test blocks service workers for frozen-fixture transfer; no production adapter override",
+    "Not visual naturalism, country calibration, all-feature/NFL correctness or deployment acceptance"
+  ]
+}

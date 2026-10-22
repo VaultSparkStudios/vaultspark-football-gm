@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T05:34:23.177Z",
+  "sourceRevision": "local-worktree",
+  "scope": "Saved portrait automatic blinking, reduced-motion opening during actual closed-pose WebGL loss, bounded CPU mesh reuse and same-canvas GPU recovery; production shared-head regression.",
+  "sources": [
+    {
+      "original": "public/lib/playerPortraitMotion.js",
+      "file": "references/portrait-motion-playerPortraitMotion.js-2026-10-08",
+      "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/portrait-motion-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/portrait-motion-playerMotion.js-2026-10-08",
+      "sha256": "0e8f825f0ee195607b19ec517ac75755497a589b27ea955dfe997c34d0a673c2"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/portrait-motion-playerHead3d.js-2026-10-08",
+      "sha256": "750bd30ff92a2822c5df8bc6e6266a5f00738a69150bea000ecaa91d19cc9372"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/portrait-motion-playerPortraitFace.js-2026-10-08",
+      "sha256": "590272f10a3f402f0e8aacc3cc60b35700f649ebf81f23dad9f0f321a6bb0060"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/portrait-motion-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/portrait-motion-player-shared-head.test.js-2026-10-08",
+      "sha256": "ba8cbf3acdd7f741814a8e1334b7f29770d5897d3aebcde110ee8eef24d5d8b6"
+    },
+    {
+      "original": "test/player-static-definition.test.js",
+      "file": "references/portrait-motion-player-static-definition.test.js-2026-10-08",
+      "sha256": "aa63ec3361eb0b869d5c4185e6c6afa7acdc62a6ac56a94e8b55d121ebca103d"
+    },
+    {
+      "original": "tests-ui/player-portrait-motion.spec.js",
+      "file": "references/portrait-motion-player-portrait-motion.spec.js-2026-10-08",
+      "sha256": "499447dade5d1079f1410ba8382549bd92a88a23c2141b5aa58a467f83558a90"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/portrait-motion-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    },
+    {
+      "original": "tests-ui/helpers/weekly-scenarios.js",
+      "file": "references/portrait-motion-weekly-scenarios.js-2026-10-08",
+      "sha256": "e2293d23d4a12703c6740c2d749b55bb09065e3adc49016998c334494aabbd0d"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/portrait-motion-desktop-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "90a2625d83ac2f25a5f81a702dc1ad730845df5f212937ffa96a4f678e8b4469",
+      "page": "Actual player dossier portrait 0",
+      "inspected": true
+    },
+    {
+      "file": "captures/portrait-motion-desktop-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5b6884227687bf3aee9e5e441b71e1010dee6b4571c2a47913ec499eba1d2b9d",
+      "page": "Actual player dossier portrait 1",
+      "inspected": true
+    },
+    {
+      "file": "captures/portrait-motion-desktop-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9fa78a8fc1ee9787d02db1b3136f14121245e0501f45041107e2887e3644de21",
+      "page": "Actual player dossier portrait 0",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-desktop-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8569820e074634e66526c4b51c4203b6fdd5193fac77d8d0a354892e1c0f71e2",
+      "page": "Actual player dossier portrait 1",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-mobile-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "2b220d3af241fbe68c0a553e2614a0ba800fc55bc2258937656e6cf259b5e953",
+      "page": "Actual player dossier portrait 0",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-mobile-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4ca28afdc63817bdde4ee1a4958ca9c044b9d41cf2162cdbbfd827a8e8ecd11e",
+      "page": "Actual player dossier portrait 1",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-mobile-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b1f17eaa82d44d2d5d6eb46df6c80f125fc31e2fcbd9ab6faec559aeb179879c",
+      "page": "Actual player dossier portrait 0",
+      "inspected": true
+    },
+    {
+      "file": "captures/portrait-motion-mobile-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "1a28187ca2227d2a6a8d4bc1aca34bb74cb251f0a5cea71530b08ea644a8a664",
+      "page": "Actual player dossier portrait 1",
+      "inspected": true
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cd10bc0498b1ef252c5e4b287cb5ae4535c5f077ae68706f85f78b7dc5df9263",
+      "page": "Actual player dossier portrait before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "028596c31b119406a8430c9eae5dd938f6a421e2e9793b924277c124e55e2966",
+      "page": "Actual player dossier body before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f5082b6d06ef61bdf013e72f5df53a605ab01bebc548e8328e9ee993f77d293f",
+      "page": "Actual player dossier motion before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7f5d3bba750f525a47a8fa9f83a1f2d87419a40a7ec0bbf62c457113744d9b6e",
+      "page": "Actual player dossier portrait before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9f29b0608b8d8510a45feb27163634f876c37e9f6b792824c6faee6f6e4cf873",
+      "page": "Actual player dossier body before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "98d926f4ada9b7091d21e1f5c7e93f987c0424519948bcb0184eba4dca386d00",
+      "page": "Actual player dossier motion before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c12f96c390e2eb37cb16e0c8e59cce0bb4009e56c6a253d11d8af5d05bdba356",
+      "page": "Actual player dossier portrait before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "42a08a5d944314d637a396ffc4a33573686e858b7d14d3ec91187beea928d833",
+      "page": "Actual player dossier body before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "cebe28d8241bcb2cbb726425d96b33c01e90b39beadc900e981f4e36b24d2e52",
+      "page": "Actual player dossier motion before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "25a9205517618affe5d60a8aa4fd793552e0da625841988616afa39d3859ed44",
+      "page": "Actual player dossier portrait before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "20c38afeb5cd8724ad4be2a9e740dd5ab18a15fc39704fedae2e00991f3d4c5f",
+      "page": "Actual player dossier body before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "adad8405efd4b5562bc535a92c38fbea26dbc61a31318fa21d1841413bfaa3d3",
+      "page": "Actual player dossier motion before",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e351c3a1972cae3d4c7f43251b647ccb3c137a35893b81b6b64eab5ebefc792b",
+      "page": "Actual player dossier portrait after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "db5e87ff9c0569846442c3476a400467565d98a3e48406e12ff39288ec2ad086",
+      "page": "Actual player dossier body after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "224365ddabe3a74a0c4d7aba337e94ee74ad859c55bd906010e5dd450b1c6023",
+      "page": "Actual player dossier motion after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "bb790acef0d84af8d3a53afd1743c6b5643a1804efdb981e97ac59cf6e724155",
+      "page": "Actual player dossier portrait after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ec9240299ad8314a0d8d9b41755c9ba792c4b632f5e8b0dd07cc44a214a2887d",
+      "page": "Actual player dossier body after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "896b5c0f592498781bdc96b0612568e02cfc97c40434d33e62f9302aa9452ba8",
+      "page": "Actual player dossier motion after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d0ab5dad62b8a8b9c85263d77ba340565b3169de775284e05acb802f0dab3935",
+      "page": "Actual player dossier portrait after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b4fcf7fda9f061eb86d7bb07b70cb3679212bdd831fd983bbee8d2ef1039952c",
+      "page": "Actual player dossier body after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a6287901a2de341717d8fbec3f9463c39d0cfadde3ae9e75f5433c8468e1793a",
+      "page": "Actual player dossier motion after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0b8fd5b84bd385ceaf386a261f4b2ecf191d3f33c1e56413975ff02bc9e66f8f",
+      "page": "Actual player dossier portrait after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "56e3b58b28fccd2aa22cdcce259a07e967381a048d7b016ef5432c00a5e1e8de",
+      "page": "Actual player dossier body after",
+      "inspected": false
+    },
+    {
+      "file": "captures/portrait-motion-regression-shared-head-production-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f108252bd4492f0baf01ab826107e0de166d662a32c19be98af95e2fb93447bb",
+      "page": "Actual player dossier motion after",
+      "inspected": false
+    }
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "checks": {
+    "focusedPassed": 5,
+    "focusedDurationMs": 3296.9759,
+    "focusedTerminalChunk": "ccf70f",
+    "browserPassed": 3,
+    "browserTerminal": "3 passed (32.3s)",
+    "browserSession": 52459,
+    "browserTerminalChunk": "d3d8b2",
+    "actualAutomaticClosedPoseBeforeFault": true,
+    "reducedMotionExactOpenDuringContextLoss": true,
+    "disconnectCleanupPassed": true,
+    "contextRecoveryExactOpen": true,
+    "legacyFallbackDuringLossExact": true,
+    "playerUnchanged": true,
+    "geometryReuse": {
+      "cacheEntries": 1,
+      "cacheLimit": 32,
+      "draws": 4,
+      "meshBuilds": 1,
+      "unavailable": false,
+      "contexts": 1
+    },
+    "projectionAgreement": [
+      {
+        "mode": "run",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "acceleration",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "cut",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "jump",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "strength",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "endurance",
+        "frontBody": true,
+        "sideMotion": true
+      }
+    ]
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 4,
+    "findings": [
+      "Fresh actual desktop dark and mobile light open/closed originals inspected; screenshots use controlled poses, while separate assertions verify the live automatic controller and fault during its fully closed pose.",
+      "Eye closure and exact reopening are visible; complete head retains shallow eyes, puffy closed folds, simplified anatomy and weak head/body material continuity.",
+      "One retained CPU mesh serves multiple projections and blink poses; one canvas/context is retained and GPU state is recreated after restoration.",
+      "Reduced motion restores the original neutral PNG even while graphics is unavailable; hidden/offscreen/detached controllers stop scheduling.",
+      "This selected-person browser proof does not establish population frequencies, all hairstyles, cross-device behavior, full career continuity or convincing complete-player craft."
+    ],
+    "fixesApplied": [
+      "Automatic quantized saved-phase blink with a short closed hold",
+      "Neutral PNG retained for reduced-motion recovery during context loss",
+      "One bounded CPU mesh reused across camera/blink poses",
+      "Same-canvas context restoration with recreated GPU resources",
+      "Detached/replaced portrait lifecycle cleanup"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

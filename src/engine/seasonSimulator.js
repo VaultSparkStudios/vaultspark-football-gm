@@ -6,7 +6,17 @@
  * stats. Nothing here names a conference, a round or a seed.
  */
 import { getSportRules } from "../sport/registry.js";
+import { assertMatchReadiness } from "../sport/matchReadiness.js";
 import { applyGameStats } from "../stats/applyGameStats.js";
+import { recordPracticePostseasonPay, validateSnapshotPracticeContracts } from '../domain/practiceContracts.js';
+import { previewPostseasonGameRecovery, applyPostseasonGameRecovery, finishPostseasonRecovery, previewPostseasonCompletionRecovery, commitPostseasonInjuryAccrual } from '../domain/postseasonMedicalClock.js';
+import { previewCpuStandardElevations, applyCpuStandardElevations } from './cpuStandardElevations.js';
+import { simulateRegularSeasonWeek } from './weeklySimulator.js';
+import { previewRegularMedicalRecovery, applyRegularMedicalRecovery } from '../domain/regularMedicalRecovery.js';
+import { previewAdmittedRegularAccrual,commitAdmittedRegularAccrual } from '../domain/admittedInjuryPayroll.js';
+import { recordAdmittedPensionGameService } from '../domain/pensionService.js';
+import { previewRegularInjuryAccrual, commitRegularInjuryAccrual } from '../domain/regularInjuryAccrual.js';
+import { teamRecoveryModifiers } from './injurySystem.js';
 
 // Standings live in ./standings.js (no registry import, so a pack can rank
 // teams without a cycle back through here); re-exported for existing callers.
@@ -92,11 +102,37 @@ export function nextPostseasonGame(state = {}, league = null) {
  * plays it, the core applies the stat records, and the pack records the result
  * in its bracket state.
  */
-export function simulateNextPostseasonGame({ state, league, statBook, year, rng, mode = "drive" }) {
+export function simulateNextPostseasonGame({ state, league, statBook, year, rng, mode = "drive", getTeamModifiers, onRecovered, excludeElevationTeamIds = [] }) {
   const rules = getSportRules(league.sportId);
   const postseason = rules.competition.postseason;
   const next = postseason.nextGame(state);
   if (!next) return null;
+  const football=(league.sportId||'football')==='football';
+  let practiceTeamIds;
+  const injuryAccrual = [];
+  if(football) {
+    validateSnapshotPracticeContracts({league});
+    practiceTeamIds=next.round==='wildcard' ? state.seeds[next.conference].map(row=>row.teamId)
+      : next.round==='super-bowl' ? [next.homeTeamId,next.awayTeamId]
+      : [...new Set(state.matchups.flat())];
+    if(practiceTeamIds.some(id=>!league.teams.some(team=>team.id===id))) throw new TypeError('Invalid postseason practice payroll club');
+    const recovery = { state, league, next, year, getTeamModifiers };
+    const recovered = previewPostseasonGameRecovery({...recovery,onInjuryAccrualPreview:receipts=>injuryAccrual.push(...receipts)});
+    const label = postseason.gameLabel(next);
+    const elevationGame = { ...next, year, week: 0, label, seasonType: 'playoffs' };
+    const preview = previewCpuStandardElevations({ league: recovered, games: [elevationGame], excludeTeamIds: excludeElevationTeamIds }).league;
+    assertMatchReadiness(rules, { league: preview, teamIds: [next.homeTeamId, next.awayTeamId], postseasonState: state,
+      game: { ...next, year, week: 0, label, seasonType: 'playoffs',
+        gameId: `${year}-playoffs-${label}-0-${next.awayTeamId}-${next.homeTeamId}` } });
+    previewPostseasonCompletionRecovery(recovery);
+    applyPostseasonGameRecovery({ ...recovery, onRecovered, onPeriod: ({ week, teamIds }) => {
+      // Preserve prep-week continuation before the final's second recovery
+      // step can close an entitlement. Normal round pay follows applied play.
+      if (week === 22 && state.practicePayrollVersion === 'postseason-practice-weeks-v1')
+        recordPracticePostseasonPay(league, { year, week, teamIds });
+    } });
+    applyCpuStandardElevations({ league, games: [elevationGame], excludeTeamIds: excludeElevationTeamIds });
+  }
   const match = rules.match.simulate({
     league,
     statBook,
@@ -108,11 +144,25 @@ export function simulateNextPostseasonGame({ state, league, statBook, year, rng,
     mode,
     allowTie: false,
     seasonType: "playoffs",
+    postseasonState:state,
     label: postseason.gameLabel(next),
     neutralSite: Boolean(next.neutralSite)
   });
   applyGameStats(statBook, match);
+  rules.match.afterGame?.({ league, result: match.result,postseasonState:state });
+  if (football) recordAdmittedPensionGameService({ league, result: match.result });
   const winnerId = postseason.recordResult({ state, league, next, result: match.result });
+  if(football) {
+    // A conference's entire surviving round population earns that week's pay,
+    // including its wildcard bye. Repeated individual games deduplicate on
+    // each contract. Pay only after the game is successfully applied.
+    const payrollWeek={wildcard:19,divisional:20,conference:21,'super-bowl':23}[next.round];
+    if(next.round==='super-bowl'&&state.practicePayrollVersion==='postseason-practice-weeks-v1')
+      recordPracticePostseasonPay(league,{year,week:22,teamIds:practiceTeamIds});
+    recordPracticePostseasonPay(league,{year,week:payrollWeek,teamIds:practiceTeamIds});
+    commitPostseasonInjuryAccrual({league,year,receipts:injuryAccrual});
+    if (state.status === 'completed') finishPostseasonRecovery({ state, league, year, getTeamModifiers, onRecovered });
+  }
   return { game: match.result, winnerId, conference: next.conference, round: next.round };
 }
 
@@ -130,6 +180,28 @@ export function runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode = "d
   return postseasonResultFromState(state, league);
 }
 
+// The headless path owns elapsed medical time; the interactive path already
+// applies it during maintenance before calling the shared weekly simulator.
+export function simulateHeadlessRegularSeasonWeek({league,statBook,year,weekBlock,rng,mode='drive',restedTeamIds=[]}) {
+  const medical=(league.sportId||'football')==='football'&&year>=2023;
+  const getTeamModifiers=teamId=>teamRecoveryModifiers(league.teams.find(team=>team.id===teamId));
+  const options={year,week:weekBlock.week,getTeamModifiers};
+  const receipts=medical?previewRegularInjuryAccrual(league,options):[];
+  const admittedReceipts=medical?previewAdmittedRegularAccrual(league,options):[];
+  if(medical) {
+    const recovered=previewRegularMedicalRecovery(league,options).planned;
+    const ready=previewCpuStandardElevations({league:recovered,games:weekBlock.games.map(game=>({...game,year,week:weekBlock.week,seasonType:'regular'}))}).league;
+    assertMatchReadiness(getSportRules(league.sportId),{league:ready,year,weekBlock,
+      teamIds:weekBlock.games.flatMap(game=>[game.homeTeamId,game.awayTeamId])});
+    applyRegularMedicalRecovery(league,{...options,deferAdmittedPay:true});
+  }
+  const result=simulateRegularSeasonWeek({league,statBook,year,weekBlock,rng,mode,restedTeamIds});
+  if(medical)commitRegularInjuryAccrual(league,{year,week:weekBlock.week,receipts});
+  if(medical)commitAdmittedRegularAccrual(league,{year,week:weekBlock.week,receipts:admittedReceipts});
+  if(medical)for(const game of result.games)recordAdmittedPensionGameService({league,result:game});
+  return result;
+}
+
 export function simulateSeason({
   league,
   statBook,
@@ -138,6 +210,11 @@ export function simulateSeason({
   previousDivisionRanks = null,
   mode = "drive"
 }) {
+  // Validate medical/source authority before schedule construction consumes RNG.
+  if((league.sportId||'football')==='football'&&year>=2023) {
+    previewRegularInjuryAccrual(league,{year,week:1});
+    previewRegularMedicalRecovery(league,{year,week:1});
+  }
   const schedule = getSportRules(league.sportId).competition.buildSchedule({ league, year, previousDivisionRanks, rng });
 
   let previousBlock = null;
@@ -153,23 +230,7 @@ export function simulateSeason({
             )
         : []
     );
-    for (const matchup of weekBlock.games) {
-      const match = getSportRules(league.sportId).match.simulate({
-        league,
-        statBook,
-        homeTeamId: matchup.homeTeamId,
-        awayTeamId: matchup.awayTeamId,
-        year,
-        rng,
-        mode,
-        allowTie: true,
-        seasonType: "regular",
-        homeRested: rested.has(matchup.homeTeamId),
-        awayRested: rested.has(matchup.awayTeamId)
-      });
-      applyGameStats(statBook, match);
-      applyRegularSeasonResult(league, weekBlock.week, match.result);
-    }
+    simulateHeadlessRegularSeasonWeek({league,statBook,year,weekBlock,rng,mode,restedTeamIds:rested});
     previousBlock = weekBlock;
   }
 

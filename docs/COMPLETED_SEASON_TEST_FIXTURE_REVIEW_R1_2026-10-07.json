@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "verdict": "PASS",
+  "scope": "Completed starting-season fixture caching and test coverage preservation",
+  "primaryReceiptPath": ".cache/completed-season-fixture-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "9c1c5f75df1683dd307daf4ab8abba1dfba9a4d153f9b2b0f0ec65cfb0d16629",
+  "sourceHashes": {
+    "test/helpers/completedSeasonFixture.js": "7f70277eadf8663383eb873ce759b792710d78650c2f02ce02f380d202f567b2",
+    "test/offseason-calendar.test.js": "c5140ff8b9628ed74179141725c929ed8c01916aeac0c654132f5b7595ca1bd4",
+    "test/offseason-surfaces.test.js": "16f5120e8987b24c94f4f895a33fc5a1e6ef8eecca12dfe63f1dca5ce8c0b620"
+  },
+  "independentChecks": [
+    {
+      "command": "node --test --test-name-pattern=\"completed-season fixtures isolate\" test/offseason-calendar.test.js",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 44355.169
+    }
+  ],
+  "sourceReview": [
+    "Cache keys include seed/year/controlled team; only deep-cloned actual completed snapshots are cached; each caller performs independent canonical save restore",
+    "Diff changes only identical starting-season setup and adds player/pick/RNG isolation assertions; existing calendar assertions retained",
+    "Actual modified preseason traded-pick path and three-season pick-ledger simulation remain uncached and retained"
+  ],
+  "primaryExecution": "Observed parent30/30PASS426506.3331ms. Hashes recorded after completion, not pre-run frozen digest. Not independently rerun.",
+  "findings": [],
+  "limits": [
+    "Focused same-key isolation tested independently; no whole-suite or production behavior approval",
+    "Restore cost and cache growth not benchmarked; cache scoped to test process"
+  ]
+}

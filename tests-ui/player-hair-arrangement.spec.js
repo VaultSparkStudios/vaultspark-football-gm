@@ -1,0 +1,116 @@
+import { test, expect } from '@playwright/test';
+import fs from 'node:fs/promises';
+import { playerAppearance, playerFrame } from '../src/domain/playerIdentity.js';
+import { createPlayScenario } from './helpers/weekly-scenarios.js';
+
+test('saved part and individual fiber widths appear in shared front and side heads', async ({ page }) => {
+  const phase = process.env.HAIR_ARRANGEMENT_CAPTURE_PHASE || 'after';
+  if (phase === 'before') for (const file of ['playerPortraitFace.js', 'playerSideAppearance.js']) {
+    await page.route(`**/lib/${file}`, async route => route.fulfill({ contentType: 'text/javascript',
+      body: await fs.readFile(`.cache/hair-arrangement-before/${file}.txt`, 'utf8') }));
+  }
+  await page.goto('/');
+  await expect(page.locator('#setupStatus')).toContainText('Ready');
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  const base = { id: 'arrangement-comparison', age: 24, heightInches: 74, weightLbs: 225,
+    ratings: { strength: 70 }, profile: {
+      appearanceRecipe: { version: 'portrait-identity-v3', seed: 'arrangement-comparison', complexionBand: [0, 1] },
+      appearanceDetailRecipe: { version: 'natural-appearance-detail-v1', seed: 'arrangement-comparison' }
+    } };
+  const appearance = { ...playerAppearance(base), hairArrangementVersion: 'hair-arrangement-v1',
+    hairColor: '#38251c', naturalHairColor: '#38251c', dyedHairColor: null, hairDensity: 1,
+    facialHair: 'clean', hairPart: .25, hairStrandVariation: .1 };
+  const cases = [
+    ['Left part', 'side-part', 'straight', .25, .1], ['Right part', 'side-part', 'straight', .75, .1],
+    ['Central part', 'long', 'wavy', .5, .1], ['Offset part', 'long', 'wavy', .25, .1],
+    ['Uniform curly fibers', 'crew', 'curly', .25, 0], ['Varied curly fibers', 'crew', 'curly', .25, .5]
+  ];
+  const fixtures = cases.map(([name, hairstyle, hairTexture, hairPart, hairStrandVariation]) => ({ ...base,
+    name, appearance: { ...appearance, hairstyle, hairTexture, hairTexturePosition:['straight','wavy','curly','coily'].indexOf(hairTexture), hairPart, hairStrandVariation }, visualFrame: playerFrame(base) }));
+  await page.evaluate(async fixtures => {
+    const { buildPlayerPortraitSvg } = await import('/lib/playerPortrait.js');
+    const { buildPlayerSideHead } = await import('/lib/playerSideAppearance.js');
+    const gallery = document.createElement('section'); gallery.id = 'hairArrangementGallery';
+    gallery.style.cssText = 'display:grid;gap:16px;padding:16px;max-width:1000px;margin:auto;background:var(--surface);color:var(--ink-strong)';
+    for (const [i, player] of fixtures.entries()) {
+      const card = document.createElement('article'); card.dataset.case = String(i);
+      card.innerHTML = `<h3>${player.name}</h3><div style="display:flex;align-items:center">${buildPlayerPortraitSvg(player, { headOnly: true, idSuffix: `-part-${i}` })}<svg viewBox="-70 -30 130 170">${buildPlayerSideHead(player, { idSuffix: `-part-${i}` })}</svg></div>`;
+      card.querySelectorAll('svg').forEach(svg => svg.style.cssText = 'display:block;width:50%;height:auto');
+      gallery.append(card);
+    }
+    document.body.replaceChildren(gallery);
+  }, fixtures);
+  if (phase === 'after') {
+    for (const [i, , , part] of cases.map((entry, i) => [i, ...entry.slice(1)]).slice(0, 4)) {
+      await expect(page.locator(`[data-case="${i}"] .portrait-hair-part[data-hair-part="${part}"]`)).toHaveCount(1);
+      await expect(page.locator(`[data-case="${i}"] .side-hair-part[data-hair-part="${part}"]`)).toHaveCount(1);
+    }
+    await expect(page.locator('[data-case="5"] [data-fiber-variation]')).not.toHaveCount(0);
+  }
+  await fs.mkdir('output/playwright', { recursive: true });
+  for (const [viewport, width, height] of [['desktop', 1440, 1000], ['mobile', 390, 844]]) {
+    await page.setViewportSize({ width, height });
+    await page.locator('#hairArrangementGallery').evaluate((gallery, columns) =>
+      gallery.style.gridTemplateColumns = `repeat(${columns},minmax(0,1fr))`, viewport === 'desktop' ? 3 : 1);
+    for (const theme of ['dark', 'light']) {
+      await page.evaluate(async theme => (await import('/lib/themeCustomizer.js')).applyTheme(theme), theme);
+      await page.locator('#hairArrangementGallery').screenshot({ path: `output/playwright/s117-hair-arrangement-${phase}-${viewport}-${theme}.png` });
+    }
+  }
+});
+
+test('a generated player retains saved hair part and fibers on actual dossier and movement surfaces', async ({ page }) => {
+  const capturePrefix=process.env.PLAYER_DOSSIER_CAPTURE_PREFIX || 's117-hair-arrangement';
+  if(process.env.PLAYER_DOSSIER_LAYOUT_PHASE==='before') await page.route('**/styles.css',async route=>route.fulfill({contentType:'text/css',body:await fs.readFile('.cache/profile-layout-before/styles.css.txt','utf8')}));
+  await createPlayScenario(page);
+  await page.emulateMedia({reducedMotion:'reduce'});
+  for (const id of ['#firstDebriefDecline', '#tutSkipBtn']) if (await page.locator(id).isVisible()) await page.locator(id).click();
+  const playerId='P2026-BUF-LB-33468504';
+  const response=await page.request.get(`/api/player?playerId=${playerId}`);
+  expect(response.ok()).toBe(true);
+  const {profile}=await response.json(),part=String(profile.player.appearance.hairPart);
+  expect(profile.player.appearance.hairstyle).toBe('side-part');
+  expect(profile.player.profile.hairArrangementRecipe.version).toBe('hair-arrangement-v1');
+  await page.click('[data-testid="tab-roster"]');await page.click('#loadRosterBtn');
+  await page.locator(`#rosterTable button[data-player-id="${playerId}"]`).click();
+  await expect(page.locator('.player-portrait-svg')).toHaveAttribute('data-head-renderer','shared-head-3d-v1');
+  await expect(page.locator('.player-portrait-card .player-shared-head-image')).toHaveAttribute('data-blink-pose','0');
+  await page.locator('.player-physique > summary').click();
+  await page.locator('.player-physique-side > summary').click();
+  await expect(page.locator('.player-physique-side-svg')).toHaveAttribute('data-character-renderer','shared-3d');
+  await page.locator('.player-movement > summary').click();
+  const movement=page.locator('.player-movement');
+  await movement.scrollIntoViewIfNeeded();
+  await expect(movement.locator('.player-motion-svg')).toHaveAttribute('data-character-renderer','shared-3d');
+  const rasterProof=await page.evaluate(async person=>{
+    const {tryPlayerHeadImage}=await import('/lib/playerHeadImage.js');
+    const actual=tryPlayerHeadImage(person)?.src;
+    const displayed=document.querySelector('.player-portrait-card .player-shared-head-image')?.getAttribute('href');
+    const variants=[{hairPart:person.appearance.hairPart<.5?.8:.2},{hairStrandVariation:person.appearance.hairStrandVariation<.3?.5:0}];
+    return{displayed:Boolean(actual)&&actual===displayed,changes:variants.map(change=>{
+      const image=tryPlayerHeadImage({...person,appearance:{...person.appearance,...change}});return Boolean(image)&&image.src!==actual;
+    })};
+  },profile.player);
+  expect(Number(part)).toBeGreaterThanOrEqual(.1);
+  expect(Number(part)).toBeLessThanOrEqual(.9);
+  expect(rasterProof).toEqual({displayed:true,changes:[true,true]});
+  await page.emulateMedia({reducedMotion:'reduce'});
+  for(const [viewport,width,height]of[['desktop',1440,1000],['mobile',390,844]]){
+    await page.setViewportSize({width,height});
+    if(viewport==='mobile'){await expect(page.locator('#mlFullViewBtn')).toBeVisible();await page.locator('#mlFullViewBtn').click();}
+    for(const theme of ['dark','light']){
+      await page.evaluate(async t=>(await import('/lib/themeCustomizer.js')).applyTheme(t),theme);
+      await expect(page.locator('#mobileLoopOverlay')).toBeHidden();
+      await expect(page.locator('#toastStack .toast')).toHaveCount(0,{timeout:10000});
+      await page.locator('.player-portrait-card').scrollIntoViewIfNeeded();
+      await page.screenshot({path:`output/playwright/${capturePrefix}-${viewport}-${theme}-portrait.png`});
+      await movement.scrollIntoViewIfNeeded();
+      await page.screenshot({path:`output/playwright/${capturePrefix}-${viewport}-${theme}-dossier.png`});
+    }
+  }
+  await page.reload();await expect(page.locator('#statusChip')).toContainText('Ready',{timeout:60000});
+  const restored=await page.request.get(`/api/player?playerId=${playerId}`);
+  const restoredPlayer=(await restored.json()).profile.player;
+  expect(restoredPlayer.appearance).toEqual(profile.player.appearance);
+  expect(restoredPlayer.visualFrame).toEqual(profile.player.visualFrame);
+});

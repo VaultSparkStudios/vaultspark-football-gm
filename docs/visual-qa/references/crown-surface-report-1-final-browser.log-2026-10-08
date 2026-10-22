@@ -1,0 +1,17 @@
+
+[WebServer] (node:48800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:38672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+[1/6] tests-ui\player-crown-surface-client.spec.js:9:34 › built worker dossier keeps modern crown and solved torso through actual save and restoration
+[2/6] tests-ui\player-crown-surface-client.spec.js:9:34 › built in-page dossier keeps modern crown and solved torso through actual save and restoration
+[3/6] tests-ui\player-crown-surface-production.spec.js:6:1 › production crown and eye surface before/after retains one saved head across actual dossier views
+[4/6] tests-ui\player-facial-hair-gallery.spec.js:3:1 › facial hair refinement: saved people and grooming
+[5/6] tests-ui\player-hair-volume-gallery.spec.js:3:1 › hair volume refinement: fixed saved person across styles
+[6/6] tests-ui\player-skin-surface-candidate.spec.js:3:1 › modern crown and eye surface: matched saved people
+  6 passed (1.7m)

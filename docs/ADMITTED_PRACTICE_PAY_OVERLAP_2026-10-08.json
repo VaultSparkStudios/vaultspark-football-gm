@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T09:54:50.428Z",
+  "status": "reproduced-integration-gap-not-repaired",
+  "scope": "Controlled prior-year admitted source through actual public release/signing/weekly commands; not whole annual adoption",
+  "terminal": "0a7431",
+  "playerId": "P2026-BUF-QB-87221813",
+  "commands": {
+    "release": {
+      "ok": true,
+      "teamId": "BUF"
+    },
+    "signPracticeFreeAgent": {
+      "ok": true,
+      "teamId": "BUF",
+      "playerId": "P2026-BUF-QB-87221813",
+      "weeklySalary": 14500
+    },
+    "advanceWeek": {
+      "ok": true
+    }
+  },
+  "injuryBefore": {
+    "type": "Qualifying previous-year injury",
+    "weeksRemaining": 3
+  },
+  "injuryAfter": {
+    "type": "Qualifying previous-year injury",
+    "weeksRemaining": 2
+  },
+  "originalRight": {
+    "version": "admitted-elevation-continuation-v1",
+    "rightId": "[\"P2026-BUF-QB-87221813\",\"2026-regular-regular-season-18-MIA-BUF\"]",
+    "playerId": "P2026-BUF-QB-87221813",
+    "gameId": "2026-regular-regular-season-18-MIA-BUF",
+    "teamId": "BUF",
+    "injuryYear": 2026,
+    "creditedSeasons": 0,
+    "authority": "modeled-qualifying-injury-admission",
+    "term": {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "BUF",
+      "lastGameId": "2026-playoffs-super-bowl-0-MIA-BUF",
+      "lastGameMedicalWeek": 23,
+      "endsAfterMedicalWeek": 24,
+      "proof": "completed-final",
+      "finalGameId": "2026-playoffs-super-bowl-0-MIA-BUF"
+    },
+    "termEvidence": {
+      "version": "retained-club-term-games-v1",
+      "games": [
+        {
+          "gameId": "2026-playoffs-super-bowl-0-MIA-BUF",
+          "year": 2026,
+          "week": 0,
+          "seasonType": "playoffs",
+          "label": "super-bowl",
+          "round": "super-bowl",
+          "homeTeamId": "BUF",
+          "awayTeamId": "MIA",
+          "homeScore": 21,
+          "awayScore": 14,
+          "winnerId": "BUF"
+        }
+      ]
+    },
+    "weeklyRateCents": 2861111
+  },
+  "base": {
+    "teamId": "BUF",
+    "amount": 14500,
+    "year": 2027,
+    "week": 1
+  },
+  "admitted": [
+    {
+      "version": "admitted-injury-earning-period-v2",
+      "payId": "[\"[\\\"P2026-BUF-QB-87221813\\\",\\\"2026-regular-regular-season-18-MIA-BUF\\\"]\",2027,\"regular-season\",1]",
+      "rightId": "[\"P2026-BUF-QB-87221813\",\"2026-regular-regular-season-18-MIA-BUF\"]",
+      "playerId": "P2026-BUF-QB-87221813",
+      "gameId": "2026-regular-regular-season-18-MIA-BUF",
+      "teamId": "BUF",
+      "injuryYear": 2026,
+      "earningYear": 2027,
+      "phase": "regular-season",
+      "week": 1,
+      "amountCents": 2861111
+    }
+  ],
+  "accounting": {
+    "grossEntitlementCents": 2861111,
+    "baseCents": 1450000,
+    "admittedCents": 2861111,
+    "totalCents": 4311111,
+    "aboveReplacementRateCents": 1450000
+  },
+  "pensionUnchanged": true,
+  "sources": {
+    "src/domain/admittedInjuryPayroll.js": "91b120345e249767c2d5e83bbd140951844de71d89413d457530dda08f743449",
+    "src/domain/regularMedicalRecovery.js": "642fc8735d95687b6a8ea522c61ee3e52954bdf595482410731d0500454eb3a4",
+    "src/domain/practiceContracts.js": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934",
+    "src/runtime/GameSession.js": "c4f880051da9f0f273f483cd6c3e75a893c93baddb2d3661ae0f64c54c2fdb52",
+    "src/domain/pensionService.js": "a253b3f3449798c6b39757d646687d0bc9e5a254176742102962c9c19f4a0e23"
+  },
+  "authority": {
+    "source": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+    "reviewedPages": [
+      214,
+      386
+    ],
+    "scope": "Article33 section5(k/l) and practice-contract salary-continuation language; current regular divisor amendments remain separate authority",
+    "inference": "Qualifying same-club continuation replaces the ordinary weekly practice rate while incapacity lasts. A second independent practice paycheck cannot establish correctly reconciled continuation. This diagnosis does not decide other-employer offsets or Article45 benefits."
+  },
+  "nextRequiredOutcome": "Capture admitted regular entitlement before recovery; reconcile against actually paid same-payer base without deleting original receipts; persist gross/base/additional accounting and cap attribution; join qualifying pension games separately. Then verify actual public commands and named saves before annual default adoption."
+}

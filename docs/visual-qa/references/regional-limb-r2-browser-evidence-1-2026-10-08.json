@@ -1,0 +1,22 @@
+{
+  "worker": true,
+  "artifactDigest": "67e334f63678e8c2fbbe0085871b0fc97f870adf44c364795817899d8c6b9f3a",
+  "playerId": "P2026-BUF-LB-33468504",
+  "namedSaveReplacementLoadReload": true,
+  "modes": [
+    "run",
+    "acceleration",
+    "cut",
+    "jump",
+    "strength",
+    "endurance"
+  ],
+  "appearanceUnchanged": true,
+  "frameUnchanged": true,
+  "faceContactRendered": false,
+  "limbContoursRendered": false,
+  "adultFaceContoursRendered": false,
+  "facialPlanesRendered": false,
+  "regionalSectionPathsRendered": true,
+  "measuredRigRendered": true
+}

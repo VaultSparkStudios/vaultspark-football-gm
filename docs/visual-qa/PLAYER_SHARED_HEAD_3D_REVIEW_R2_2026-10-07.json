@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 2,
+  "verdict": "PASS",
+  "scope": "Shared indexed 3D head foundation, unadopted prototype; not production or full appearance acceptance",
+  "primaryReceipt": ".cache/shared-head-3d-reviewed-r2-primary.json",
+  "primaryReceiptSha256": "9cda55bd974b6932abcdd23682718073712b659b43d751382e9a63372849c03a",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "c8c590fae051f30e52cae35588ce8fa4e390e456d011c2ff7c47fac5e603638b",
+    "prototypes/playerHead3d.test.mjs": "cec5f6266c675e7894324c08e0b24deabebf70b336f80b7d43131d035071bfd2",
+    ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883"
+  },
+  "priorReview": {
+    "path": ".cache/shared-head-3d-review-r1.json",
+    "sha256": "0434ad8b3d8ad63201804320ca27b043008a09333249d85d1cde4fbc78068130",
+    "verdict": "FIX"
+  },
+  "findings": [],
+  "findingDisposition": {
+    "id": "P2-angular-relief-discontinuity",
+    "status": "fixed",
+    "evidence": "Full relief is multiplied by cubic smoothstep of clamp(cos(angle)*3,0,1). Weight and its first derivative meet the zero and saturated branches continuously. Independent tests cover both hemisphere boundaries and both saturation boundaries.",
+    "originalJump": 1.6867652997065252,
+    "repairedJump": 0.0000010879309470379703
+  },
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 430.7368
+    },
+    {
+      "command": "node .cache/shared-head-3d-r2-independent.mjs",
+      "exitCode": 0,
+      "sourceHashes": {
+        "prototypes/playerHead3d.mjs": "c8c590fae051f30e52cae35588ce8fa4e390e456d011c2ff7c47fac5e603638b",
+        "prototypes/playerHead3d.test.mjs": "cec5f6266c675e7894324c08e0b24deabebf70b336f80b7d43131d035071bfd2",
+        ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883"
+      },
+      "cases": 84,
+      "maxValueGap": 0.00011456021897909422,
+      "maxTangentGap": 0.00009742225959621978,
+      "originalJump": 1.6867652997065252,
+      "repairedJump": 0.0000010879309470379703,
+      "captureHashesVerified": 8
+    }
+  ],
+  "imagesActuallyInspected": [
+    "docs/visual-qa/captures/player-shared-head-3d-desktop-dark-post-r1.png",
+    "docs/visual-qa/captures/player-shared-head-3d-desktop-light-post-r1.png",
+    "docs/visual-qa/captures/player-shared-head-3d-mobile-dark-post-r1.png",
+    "docs/visual-qa/captures/player-shared-head-3d-mobile-light-post-r1.png"
+  ],
+  "priorPixelEvidence": "R1 inspected original before desktop dark plus all four original final viewport/theme captures. R2 freshly inspected all four repaired originals. All eight current canonical capture and original hashes verified.",
+  "visualAssessment": "Profile cheek shading is smoother at the repaired boundary. Front and side still resemble low-detail mannequins with simplified eyes, solid hair caps and painted beard patterns. This is a viable shared-geometry prototype foundation, not the requested finished adult-person art quality.",
+  "primaryExecutionOnly": {
+    "focused": {
+      "passed": 5,
+      "failed": 0,
+      "output": "db21e1",
+      "durationMs": 557.3493
+    },
+    "browser": {
+      "passed": 1,
+      "failed": 0,
+      "output": "db21e1",
+      "terminalOutput": "ea804b",
+      "durationSeconds": 6
+    },
+    "qualification": "Browser executed by primary, not independently rerun; original report binds current source and repaired captures."
+  },
+  "limits": [
+    "All original R1 limitations remain: incomplete saved trait/gray/dye/arrangement/grooming coverage, simplified shader eyes, no real dossier/roster/save/moving-body adoption or production fallback.",
+    "Indexed head parts are not evidence of a watertight connected whole-anatomy mesh.",
+    "Performance is a single local observation; no device, context-loss, cache or lifecycle production acceptance.",
+    "Artistic anatomy only, no empirical or population calibration. Full adult-person naturalism remains OPEN; no whole audit or release approval."
+  ]
+}

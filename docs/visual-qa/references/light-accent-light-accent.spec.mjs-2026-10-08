@@ -1,0 +1,32 @@
+import {test,expect} from '@playwright/test';import fs from 'node:fs/promises';import crypto from 'node:crypto';
+test('selected accents reach actual setup and game descendants in both themes',async({page})=>{
+ test.setTimeout(180000);const before=await fs.readFile('.cache/light-accent-before.css','utf8'),rows=[],captures=[];let created=false;
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const stage of['before','after']){
+  await page.unroute('**/styles.css*');if(stage==='before')await page.route('**/styles.css*',r=>r.fulfill({body:before,contentType:'text/css'}));
+  for(const surface of['setup','game']){
+   if(surface==='setup'){await page.goto('/');await expect(page.locator('#setupStatus')).toContainText('Ready');}
+   else if(!created){await page.selectOption('#teamSelect','BUF');await page.click('#createLeagueBtn');await expect(page).toHaveURL(/\/game\.html$/,{timeout:90000});created=true;}
+   else await page.goto('/game.html');
+   if(surface==='game'){await expect(page.locator('#statusChip')).toContainText('Ready',{timeout:60000});const skip=page.locator('#tutSkipBtn');if(await skip.isVisible())await skip.click();}
+   for(const[viewport,width,height]of[['desktop',1440,1000],['mobile',390,844]])for(const theme of['dark','light'])for(const accent of['gold','emerald','azure','crimson','violet']){
+    await page.setViewportSize({width,height});
+    if(surface==='game'){if(viewport==='mobile')await expect(page.locator('body')).toHaveClass(/mobile-loop-active/);else await expect(page.locator('body')).not.toHaveClass(/mobile-loop-active/);}
+    await page.evaluate(async({theme,accent})=>(await import('/lib/themeCustomizer.js')).applyTheme(theme,accent),{theme,accent});
+    const values=await page.evaluate(()=>{const props=node=>['--accent','--accent-strong'].map(key=>getComputedStyle(node).getPropertyValue(key).trim().toLowerCase());return{root:props(document.documentElement),body:props(document.body),descendant:props(document.querySelector('main')||document.querySelector('.game-shell')||document.body)};});
+    if(stage==='after'||theme==='dark'||accent==='gold'){expect(values.body).toEqual(values.root);expect(values.descendant).toEqual(values.root);}
+    else expect(values.body).not.toEqual(values.root);
+    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+    await page.evaluate(()=>window.scrollTo(0,0));
+    const file=`output/playwright/light-accent-${stage}-${surface}-${viewport}-${theme}-${accent}.png`;await page.screenshot({path:file,animations:'disabled'});
+    let primary=null;
+    if(surface==='game'&&viewport==='mobile')primary=await page.locator('#mlAdvanceWeekBtn').evaluate(button=>{const s=getComputedStyle(button),l=rgb=>{const a=rgb.match(/[\d.]+/g).slice(0,3).map(Number).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;});return a[0]*.2126+a[1]*.7152+a[2]*.0722;};const ink=l(s.color),bg=l(s.backgroundColor);return{ink:s.color,background:s.backgroundColor,contrast:(Math.max(ink,bg)+.05)/(Math.min(ink,bg)+.05)};});
+    if(stage==='after'&&primary)expect(primary.contrast).toBeGreaterThanOrEqual(4.5);
+    rows.push({stage,surface,viewport,theme,accent,...values,primary});captures.push({file,stage,surface,viewport:{width,height},theme,accent,sha256:crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex')});
+   }
+  }
+ }
+ await page.reload();await expect(page.locator('#statusChip')).toContainText('Ready',{timeout:60000});
+ expect(await page.evaluate(()=>({theme:document.body.dataset.theme,accent:document.body.dataset.accent,value:getComputedStyle(document.body).getPropertyValue('--accent').trim()}))).toEqual({theme:'light',accent:'violet',value:'#6d4fc0'});
+ await fs.writeFile('output/playwright/light-accent.json',JSON.stringify({scope:'Actual setup and BUF game overview, CSS baseline/current, ten palettes, desktop/mobile; final saved selection restored on game reload',rows,captures,reloadPassed:true},null,2));
+});

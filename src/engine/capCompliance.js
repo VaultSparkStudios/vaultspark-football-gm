@@ -1,6 +1,13 @@
 import { CONTRACT_RULES, FIELDABLE_DEPTH, ROSTER_STRUCTURE } from "../config.js";
 import { getSportRules } from "../sport/registry.js";
-import { getAllTeamPlayers } from "../domain/teamFactory.js";
+import { retainedRosterCompensationCap } from '../domain/earnedPracticeCap.js';
+import { getAllTeamPlayers, getRosterCandidates } from "../domain/teamFactory.js";
+import { selectEligiblePracticeSquad } from "../domain/practiceSquadEligibility.js";
+import { activatePracticePlayer, practicePaidSalary, practiceActivationContract } from '../domain/practiceContracts.js';
+import { normalizeContract } from '../domain/contracts.js';
+import { financialYearForLeague } from '../data/nflSalaryCap.js';
+import {pendingStandardElevation,standardElevationRosterRefusal,recordElevationActiveRelease} from '../domain/standardElevations.js';
+import {elevationInjuryReleaseRefusal} from '../domain/elevationInjuryPay.js';
 
 /**
  * Roster and salary-cap compliance authority.
@@ -40,7 +47,7 @@ import { getAllTeamPlayers } from "../domain/teamFactory.js";
 /** Cap charge a club currently carries, counting practice contracts and dead money. */
 export function capUsedByTeam(league, teamId) {
   const roster = getAllTeamPlayers(league, teamId);
-  return roster.reduce((sum, player) => sum + Number(player.contract?.capHit || 0), 0);
+  return roster.reduce((sum, player) => sum + Number(player.contract?.capHit || 0), retainedRosterCompensationCap(league.capLedger?.[teamId]));
 }
 
 /** The club's cap for this year, including any rollover and per-team override. */
@@ -94,6 +101,7 @@ export function releaseRanking(roster) {
  * predicts it in order to choose a release worth making.
  */
 function currentYearProration(contract = {}) {
+  if(contract.kind==='weekly-practice-contract-v1') return practicePaidSalary(normalizeContract(contract));
   // S102 — read the persisted amortization schedule.
   //
   // This read `contract.capYears`, which was never a field on a persisted
@@ -112,7 +120,7 @@ function currentYearProration(contract = {}) {
   const schedule = Number(
     contract.prorationYears || contract.capYears || contract.yearsRemaining || 1
   );
-  return Math.max(0, Math.round(Number(contract.signingBonus || 0) / Math.max(1, schedule)));
+  return Math.max(0, Math.round(Number(contract.signingBonus || 0) / Math.max(1, schedule)))+Number(contract.practiceEarnedCharge||0);
 }
 
 /**
@@ -134,6 +142,8 @@ export function currentYearCapSaving(player) {
 }
 
 export function releaseToFreeAgency(league, player, { onRelease = null, reason = "cap" } = {}) {
+  const elevationRefusal=standardElevationRosterRefusal(player)||elevationInjuryReleaseRefusal(player);
+  if(elevationRefusal){const error=new Error(elevationRefusal.error);Object.assign(error,{reasonCode:elevationRefusal.reasonCode,status:409});throw error;}
   const teamId = player.teamId;
   const contract = player.contract || {};
   const capHit = Math.max(0, Number(contract.capHit || 0));
@@ -162,9 +172,14 @@ export function releaseToFreeAgency(league, player, { onRelease = null, reason =
   ledger.deadCapNextYear = Number(ledger.deadCapNextYear || 0) + deadNext;
   league.capLedger[teamId] = ledger;
 
+  recordElevationActiveRelease(player,{teamId});
   player.teamId = "FA";
   player.rosterSlot = "active";
-  if (player.contract) player.contract.yearsRemaining = 0;
+  if(player.contract?.kind==='weekly-practice-contract-v1') {
+    player.practiceContractHistory||=[];
+    player.practiceContractHistory.push(structuredClone(player.contract));
+    player.contract=normalizeContract({salary:0,baseSalary:0,signingBonus:0,guaranteed:0,capHit:0,yearsRemaining:0,deadCapRemaining:0});
+  } else if (player.contract) player.contract.yearsRemaining = 0;
   if (typeof onRelease === "function") onRelease({ teamId, player, deadMoney, reason });
   return { teamId, playerId: player.id, deadMoney, reason };
 }
@@ -186,9 +201,14 @@ export function enforceRosterAndCapCompliance(league, { excludeTeamIds = [], onR
   for (const team of league.teams) {
     if (excluded.has(team.id)) continue;
 
+    if(league.players.some(p=>p.teamId===team.id&&(pendingStandardElevation(p)||elevationInjuryReleaseRefusal(p)))){
+      if(capSpaceForTeam(league,team.id)<0)stillOverCap.push(team.id);
+      continue;
+    }
+
     // ── roster structure ────────────────────────────────────────────────────
     const limit = ROSTER_STRUCTURE.activeLimit + ROSTER_STRUCTURE.practiceLimit;
-    let roster = getAllTeamPlayers(league, team.id);
+    let roster = getRosterCandidates(league, team.id);
     if (roster.length > limit) {
       // Keep the best `limit` players, except that a player the club needs to
       // field a legal offensive line is not "surplus" merely because a backup
@@ -206,10 +226,12 @@ export function enforceRosterAndCapCompliance(league, { excludeTeamIds = [], onR
     let guard = 0;
     while (capSpaceForTeam(league, team.id) < 0 && guard < 200) {
       guard += 1;
-      roster = getAllTeamPlayers(league, team.id);
-      if (roster.length <= ROSTER_STRUCTURE.activeLimit) break; // never field an illegal team
+      roster = getRosterCandidates(league, team.id);
+      // 53 is a roster ceiling. A club below it may still hold releasable
+      // surplus. selectReleasable protects each position's fieldable minimum;
+      // a headcount floor here falsely trapped otherwise repairable clubs.
       // S91 — cut someone whose release actually frees money. The loop has a
-      // bounded number of releases (down to the 53-man floor and no further), so
+      // bounded number of releases (preserving every position minimum), so
       // a zero-saving cut is not merely useless, it spends one of them. Among
       // releases that do free space, the existing worst-value-per-dollar order
       // still decides who goes, so the front office's judgement is unchanged;
@@ -229,6 +251,12 @@ export function enforceRosterAndCapCompliance(league, { excludeTeamIds = [], onR
       if (!candidate) break;
       released.push(releaseToFreeAgency(league, candidate, { onRelease, reason: "cap" }));
     }
+    // Eligibility is a second roster ceiling: an all-veteran surplus cannot
+    // become sixteen practice players just because total headcount is69.
+    roster = getRosterCandidates(league, team.id);
+    const { activeIds } = assignFieldableActiveRoster(roster, { practiceSettings: league.settings || {} });
+    const { rejected } = selectEligiblePracticeSquad(roster.filter(player => !activeIds.has(player.id)).sort(byQualityThenId), league.settings);
+    for (const player of rejected) released.push(releaseToFreeAgency(league, player, { onRelease, reason: "practice-eligibility" }));
     if (capSpaceForTeam(league, team.id) < 0) stillOverCap.push(team.id);
   }
 
@@ -276,8 +304,8 @@ function byQualityThenId(a, b) {
  * Pure and exported so the property can be asserted directly on a roster,
  * without simulating a decade to observe it.
  */
-export function assignFieldableActiveRoster(roster, { activeLimit = ROSTER_STRUCTURE.activeLimit } = {}) {
-  const ranked = roster.slice().sort(byQualityThenId);
+export function assignFieldableActiveRoster(roster, { activeLimit = ROSTER_STRUCTURE.activeLimit, comparePlayers = byQualityThenId, practiceSettings = null } = {}) {
+  const ranked = roster.slice().sort(comparePlayers);
   const active = [];
   const taken = new Set();
   const countByPosition = {};
@@ -314,6 +342,35 @@ export function assignFieldableActiveRoster(roster, { activeLimit = ROSTER_STRUC
     claim(player);
   }
 
+  if (practiceSettings) {
+    // Prefer the merit roster, then swap only where it leaves an ineligible
+    // surplus. Same-position swaps preserve structure; cross-room swaps must
+    // leave the outgoing room above its fieldable floor. No player's service
+    // history, ability or contract is rewritten to force an eligibility fit.
+    for (let guard = 0; guard < roster.length; guard++) {
+      const surplus = ranked.filter(player => !taken.has(player.id));
+      const rejected = selectEligiblePracticeSquad(surplus, practiceSettings).rejected;
+      if (!rejected.length) break;
+      let swap = null;
+      for (const incoming of rejected) {
+        const candidates = active.slice().sort((a, b) => Number(a.position !== incoming.position) - Number(b.position !== incoming.position) || comparePlayers(b, a));
+        for (const outgoing of candidates) {
+          if (outgoing.position !== incoming.position && (countByPosition[outgoing.position] || 0) <= (FIELDABLE_DEPTH[outgoing.position]?.min || 0)) continue;
+          if (outgoing.position !== incoming.position && (countByPosition[incoming.position] || 0) >= (FIELDABLE_DEPTH[incoming.position]?.max ?? Infinity)) continue;
+          const proposed = [...surplus.filter(player => player.id !== incoming.id), outgoing].sort(comparePlayers);
+          if (selectEligiblePracticeSquad(proposed, practiceSettings).rejected.length < rejected.length) {
+            swap = { incoming, outgoing }; break;
+          }
+        }
+        if (swap) break;
+      }
+      if (!swap) break;
+      taken.delete(swap.outgoing.id);
+      active.splice(active.findIndex(player => player.id === swap.outgoing.id), 1);
+      countByPosition[swap.outgoing.position] -= 1;
+      claim(swap.incoming);
+    }
+  }
   return { active, activeIds: taken, countByPosition };
 }
 
@@ -387,12 +444,25 @@ export function selectReleasable(roster, order, count) {
  * the practice population grew without limit. S104 replaced the *ranking* it
  * used with a fieldable depth chart; see `assignFieldableActiveRoster`.
  */
-export function normalizeRosterSlots(league) {
+export function normalizeRosterSlots(league, { excludeTeamIds = [] } = {}) {
+  const excluded = new Set(excludeTeamIds);
   for (const team of league.teams) {
-    const roster = getAllTeamPlayers(league, team.id);
-    const { activeIds } = assignFieldableActiveRoster(roster);
+    if (excluded.has(team.id)) continue;
+    if(league.players.some(p=>p.teamId===team.id&&(pendingStandardElevation(p)||elevationInjuryReleaseRefusal(p))))continue;
+    const roster = getRosterCandidates(league, team.id);
+    const { activeIds } = assignFieldableActiveRoster(roster, { practiceSettings: league.settings || {} });
+    const { selected } = selectEligiblePracticeSquad(roster.filter(player => !activeIds.has(player.id)).sort(byQualityThenId), league.settings);
+    const practiceIds = new Set(selected.map(player => player.id));
+    // Price the complete reassignment before demoting any incumbent. A refused
+    // promotion must not destroy an already fieldable53/16 arrangement.
+    const activationCost=roster.filter(player=>!practiceIds.has(player.id)&&player.contract?.kind==='weekly-practice-contract-v1')
+      .reduce((sum,player)=>sum+practiceActivationContract(player,{year:financialYearForLeague(league)}).contract.capHit-player.contract.capHit,0);
+    if(activationCost>0&&activationCost>capSpaceForTeam(league,team.id)) continue;
     for (const player of roster) {
-      player.rosterSlot = activeIds.has(player.id) ? "active" : "practice";
+      // Unplaced controlled-team players remain active overflow for the GM to
+      // resolve; never silently label an ineligible player as practice depth.
+      if(practiceIds.has(player.id)) player.rosterSlot='practice';
+      else activatePracticePlayer(league,player);
     }
   }
 }

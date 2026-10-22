@@ -1,0 +1,144 @@
+{
+  "observations": [
+    {
+      "id": "art-benchmark-0",
+      "inputUnchanged": true,
+      "closedIrisOccluded": true,
+      "blinkOpenRestored": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        }
+      ]
+    },
+    {
+      "id": "art-benchmark-0",
+      "inputUnchanged": true,
+      "closedIrisOccluded": true,
+      "blinkOpenRestored": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 31425,
+          "triangles": 52216
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 31425,
+          "triangles": 52216
+        }
+      ]
+    },
+    {
+      "id": "art-benchmark-2",
+      "inputUnchanged": true,
+      "closedIrisOccluded": true,
+      "blinkOpenRestored": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        }
+      ]
+    },
+    {
+      "id": "art-benchmark-2",
+      "inputUnchanged": true,
+      "closedIrisOccluded": true,
+      "blinkOpenRestored": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 25209,
+          "triangles": 42016
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 25209,
+          "triangles": 42016
+        }
+      ]
+    },
+    {
+      "id": "art-benchmark-4",
+      "inputUnchanged": true,
+      "closedIrisOccluded": true,
+      "blinkOpenRestored": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        }
+      ]
+    },
+    {
+      "id": "art-benchmark-4",
+      "inputUnchanged": true,
+      "closedIrisOccluded": true,
+      "blinkOpenRestored": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28836,
+          "triangles": 48016
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28836,
+          "triangles": 48016
+        }
+      ]
+    },
+    {
+      "id": "legacy-face-control",
+      "inputUnchanged": true,
+      "closedIrisOccluded": true,
+      "blinkOpenRestored": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 8835,
+          "triangles": 16560
+        }
+      ]
+    }
+  ]
+}

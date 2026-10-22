@@ -1,0 +1,188 @@
+{
+  "cases": 10,
+  "findings": [
+    {
+      "index": 0,
+      "vertices": 30182,
+      "nonEarPartsExact": 295,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.7250797225248107,
+          "maximumSkullResidual": 6.7751718996801955
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.7320821834906681,
+          "maximumSkullResidual": 6.7751718996801955
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 1,
+      "vertices": 14738,
+      "nonEarPartsExact": 97,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.8837568342113897,
+          "maximumSkullResidual": 6.958196997951269
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.88607527986413,
+          "maximumSkullResidual": 6.958196997951269
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 2,
+      "vertices": 23966,
+      "nonEarPartsExact": 279,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.8131461351141667,
+          "maximumSkullResidual": 8.261140038296809
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.8171076613605806,
+          "maximumSkullResidual": 8.261140038296809
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 3,
+      "vertices": 25208,
+      "nonEarPartsExact": 302,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.9312811106503389,
+          "maximumSkullResidual": 8.700596807781643
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.9369097719131005,
+          "maximumSkullResidual": 8.700596807781643
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 4,
+      "vertices": 27264,
+      "nonEarPartsExact": 210,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.8101152931835998,
+          "maximumSkullResidual": 7.870709377744703
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.8026620909349376,
+          "maximumSkullResidual": 7.870709377744703
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 5,
+      "vertices": 25748,
+      "nonEarPartsExact": 312,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.7144898754568842,
+          "maximumSkullResidual": 7.139066611677357
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.7152686798226853,
+          "maximumSkullResidual": 7.139066611677357
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 6,
+      "vertices": 8835,
+      "nonEarPartsExact": 7,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.762445928473042,
+          "maximumSkullResidual": 5.573132302551407
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.762445928473042,
+          "maximumSkullResidual": 5.573132302551407
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 7,
+      "vertices": 8835,
+      "nonEarPartsExact": 7,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.5712801765105056,
+          "maximumSkullResidual": 10.95952498908246
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.5712801765105056,
+          "maximumSkullResidual": 10.95952498908246
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 8,
+      "vertices": 8835,
+      "nonEarPartsExact": 7,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.7106526343903283,
+          "maximumSkullResidual": 5.538476366015757
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.7106526343903283,
+          "maximumSkullResidual": 5.538476366015757
+        }
+      ],
+      "rawInputUnchanged": true
+    },
+    {
+      "index": 9,
+      "vertices": 8835,
+      "nonEarPartsExact": 7,
+      "contacts": [
+        {
+          "part": "ear--1",
+          "minimumSkullResidual": -0.8200534397136536,
+          "maximumSkullResidual": 10.711118413091562
+        },
+        {
+          "part": "ear-1",
+          "minimumSkullResidual": -0.8200534397136536,
+          "maximumSkullResidual": 10.711118413091562
+        }
+      ],
+      "rawInputUnchanged": true
+    }
+  ],
+  "indicesExact": true,
+  "nonEarGeometryExact": true,
+  "productionChanged": false
+}

@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Rounded attached shared production ear component only. No full-person craft or empirical anatomy acceptance.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_EAR_PRODUCTION_2026-10-08.json",
+  "primaryReceiptSha256": "7a5a5dab0ff0f802648f47e5d39cc531a16a720c8df1b35eb355511457f3062e",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "98d7dd5ecb35211b762ff85d46dada1bd0644561137b2fec5e9ebcdf5523df09",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerPortrait.js": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+    "public/lib/playerMotion.js": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-whole-head-form.test.js": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf",
+    "test/player-surface-lighting.test.js": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4",
+    "tests-ui/player-ear-gallery.spec.js": "1045b4101ac1147ae9a435c23cdb2ff6032720210867746f66a8325fdc2cfbfd",
+    "tests-ui/player-ear-production.spec.js": "a90899fdb212ce2d59653f730170c96594f4e37209bb6a3583e60b18507c105f",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+    ".cache/production-ear-contracts.test.mjs": "dbf57e8b1e8868ddbc5d89ed08f01d9541796f0c60f04b3cba74b12de6931e8d",
+    ".cache/check-ear-candidate.mjs": "e9c557fd0876b12db5df1cfa8839d9a01ee769166f8b5bc37d914a8e46593001"
+  },
+  "bindingChecks": {
+    "frozenSourceInputEvidenceCaptureHashesVerified": 60,
+    "sourceFiles": 19,
+    "inputs": 2,
+    "supportingEvidence": 3,
+    "captures": 36,
+    "normalizedBuiltSourcePairsVerified": 8
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-shared-head.test.js .cache/production-ear-contracts.test.mjs",
+      "result": "PASS",
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 12322.9422,
+      "terminalChunk": "b3ae68"
+    },
+    {
+      "command": "Read-only Node stdin imports exact frozen immediate-before and current mesh; compare each indexed semantic part across saved fixtures, independent size/shape and head extremes, nonfinite controls",
+      "result": "PASS",
+      "cases": 19,
+      "exactNonEarParts": 1586,
+      "attachedShells": 38,
+      "detachedNegativeControlsRejected": 38,
+      "indicesAnatomyEyeDepthsPartsExact": true,
+      "inputPure": true,
+      "terminalChunk": "e0ff03"
+    },
+    {
+      "command": "Python stdin primary/source/input/evidence/capture SHA256 and built normalized-byte comparisons",
+      "result": "PASS"
+    }
+  ],
+  "normalTestAssessment": "The .56-radian transform rotates the auricle outward reference from world x to [side*cos(.56),0,sin(.56)]. Keeping dot>.9 in this local plane tests the intended facing orientation; a world-x>.9 threshold would reject the deliberate inclination since cos(.56)<.9. This is an appropriate coordinate correction rather than relaxing the numeric bound. Existing tests sample selected shell/cartilage points and do not prove every surface triangle orientation. Finite/unit-normal contracts remain.",
+  "attachmentAssessment": "Both saved-size/shape and head extremes require sampled shell points inside and outside the same analytic skull. Independent 15-unit lateral-detachment negative control fails the overlap predicate for every38 shell case, showing the check detects separation. This is a sampled surface overlap proof, not a closed watertight-manifold or measured cartilage reconstruction claim.",
+  "imagesActuallyInspected": [
+    "docs/visual-qa/captures/production-ear-component-ear-gallery-0-desktop-dark.png",
+    "docs/visual-qa/captures/production-ear-component-ear-gallery-2-mobile-light.png",
+    "docs/visual-qa/captures/production-ear-component-production-ear-before-desktop-light-portrait.png",
+    "docs/visual-qa/captures/production-ear-component-production-ear-after-desktop-light-portrait.png",
+    "docs/visual-qa/captures/production-ear-component-production-ear-before-mobile-dark-body.png",
+    "docs/visual-qa/captures/production-ear-component-production-ear-after-mobile-dark-body.png",
+    "docs/visual-qa/captures/production-ear-component-ear-gallery-1-desktop-light.png"
+  ],
+  "imageHashes": {
+    "docs/visual-qa/captures/production-ear-component-ear-gallery-0-desktop-dark.png": "db89c1e65812be440dc2e3d127721e35e72bc07bb65429afa76b785851f3d4b2",
+    "docs/visual-qa/captures/production-ear-component-ear-gallery-2-mobile-light.png": "085c24b774d3f5967b4e1c890a496f8e22a9ee6530b459b2424f6595d65b3edb",
+    "docs/visual-qa/captures/production-ear-component-production-ear-before-desktop-light-portrait.png": "cec2e590922ace0176250909279346ba70fcfa2dca7d15c8bd96f745d65a9671",
+    "docs/visual-qa/captures/production-ear-component-production-ear-after-desktop-light-portrait.png": "8ba66f8adf532cecb45a52b2eb9551fc6f4873724813faaaf4d01ff9fe5ad8e3",
+    "docs/visual-qa/captures/production-ear-component-production-ear-before-mobile-dark-body.png": "f2dd3cf5d5e28f3a7fa075d0204e83b3fb9edda218ce20c4d999a5533e745749",
+    "docs/visual-qa/captures/production-ear-component-production-ear-after-mobile-dark-body.png": "ac1fe6cb0355c3eb5fe1c03c171b0d56912d5e8f3755a64a6b46eaaf294f4759",
+    "docs/visual-qa/captures/production-ear-component-ear-gallery-1-desktop-light.png": "9a22da9f3431fb16eee5476ec30db03e3d2283c5ff3c2d9028ba0853c007f400"
+  },
+  "visualAssessment": [
+    "Actual desktop portrait front auricles have a rounded external edge instead of thin parallel bars. Existing individual color/face remains coherent.",
+    "Matched color/clay gallery shows retained front/oblique/profile identity; profile interior remains a stylized outline with limited visible relief, consistent with primary open limitation.",
+    "At mobile body-view head scale, ear detail is subtle; the inspected mobile body pair does not establish ear recognizability or body naturalism.",
+    "No obvious new clipping or detached external ear seen in these seven original images."
+  ],
+  "primaryExecutionAttribution": "30 initial Node checks, final22 geometry checks, gallery+actual browser2, unavailable-WebGL1, build/boot/reach/cache/DTO proofs are primary execution and frozen evidence. Independent execution is only the22 tests and19 mesh comparisons above; no browser rerun.",
+  "limits": [
+    "Artistic cartilage dimensions/inclination, not measured ear anatomy or prevalence.",
+    "Skull-sampling and selected-normal tests are not global manifold/intersection proof.",
+    "Profile folds remain line-like; cap hair, painted beard, rigid expression and mannequin body/neck quality remain open.",
+    "Historical626/626 core predates this ear source and attachment test; no current complete core/all-suite acceptance.",
+    "No broader saved-career, device coverage, calibrated demographics, full appearance, NFL or release/goal acceptance."
+  ],
+  "productionChangedByReviewer": false
+}

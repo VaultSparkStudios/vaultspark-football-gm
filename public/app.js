@@ -322,15 +322,16 @@ function loadedIslandActions(name, exportNames) {
 }
 
 const {
-  renderRoster, renderRetiredPool, updateDepthShare, renderDepthChart, renderVeteranMentorshipPanel,
+  updateDepthShare, renderDepthChart, renderVeteranMentorshipPanel,
   assignMentorshipFromPanel, clearMentorshipFromPanel,
-  getSelectedDesignationPlayer, setSelectedDesignationPlayer,
-  getSelectedRetirementOverridePlayer, setSelectedRetirementOverridePlayer
+  getSelectedDesignationPlayer, setSelectedDesignationPlayer
 } = loadedIslandActions("roster", [
-  "renderRoster", "renderRetiredPool", "updateDepthShare", "renderDepthChart", "renderVeteranMentorshipPanel",
+  "updateDepthShare", "renderDepthChart", "renderVeteranMentorshipPanel",
   "assignMentorshipFromPanel", "clearMentorshipFromPanel",
-  "getSelectedDesignationPlayer", "setSelectedDesignationPlayer",
-  "getSelectedRetirementOverridePlayer", "setSelectedRetirementOverridePlayer"
+  "getSelectedDesignationPlayer", "setSelectedDesignationPlayer"
+]);
+const { renderRetiredPool, getSelectedRetirementOverridePlayer, setSelectedRetirementOverridePlayer } = loadedIslandActions('settings', [
+  'renderRetiredPool', 'getSelectedRetirementOverridePlayer', 'setSelectedRetirementOverridePlayer'
 ]);
 const {
   getSelectedContractPlayer, setSelectedContractPlayer, updateContractPreview, setContractActionText,
@@ -826,27 +827,6 @@ function bindEvents() {
     document.getElementById(id).addEventListener("change", () => runAction(loadRetiredPool, "Filtering retired pool..."));
   });
 
-  document.getElementById("rosterTable").addEventListener("click", (event) => {
-    const selectButton = event.target.closest("button[data-designation-select]");
-    if (selectButton) {
-      setSelectedDesignationPlayer(selectButton.dataset.designationSelect || "");
-      renderRoster();
-      return;
-    }
-    const button = event.target.closest("button[data-act]");
-    if (!button) return;
-    const teamId = (document.getElementById("rosterTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
-    const playerId = button.dataset.id;
-    const act = button.dataset.act;
-
-    runAction(async () => {
-      if (act === "release") await api("/api/release", { method: "POST", body: { teamId, playerId } });
-      if (act === "ps") await api("/api/practice-squad", { method: "POST", body: { teamId, playerId, moveToPractice: true } });
-      if (act === "active") await api("/api/practice-squad", { method: "POST", body: { teamId, playerId, moveToPractice: false } });
-      await Promise.all([loadState(), loadRoster(), loadFreeAgency(), loadDepthChart(), loadCalendar(), loadTransactionLog()]);
-    }, "Applying roster move...");
-  });
-
   document.getElementById("faTable").addEventListener("click", (event) => {
     const button = event.target.closest("button[data-act]");
     if (!button) return;
@@ -857,6 +837,9 @@ function bindEvents() {
       if (button.dataset.act === "sign") {
         await api("/api/sign", { method: "POST", body: { teamId, playerId } });
         await markFirstSeasonObjective("sign-starter");
+      } else if (button.dataset.act === 'sign-practice') {
+        const result = await api('/api/sign', { method: 'POST', body: { teamId, playerId, rosterSlot: 'practice' } });
+        showToast(`Practice contract signed: $${result.contract.weeklySalary.toLocaleString()}/week for ${result.contract.regularWeeks} regular-season weeks.`);
       } else if (button.dataset.act === "offer") {
         const yearsSelect = button.parentElement?.querySelector("[data-offer-years]");
         const years = Number(yearsSelect?.value || 3);
@@ -915,12 +898,16 @@ function bindEvents() {
           teamId,
           playerId: player.id,
           designation: document.getElementById("designationType").value,
-          active: true
+          active: true,
+          returnEligible: document.getElementById('reserveReturnEligible').checked
         }
       });
-      await Promise.all([loadState(), loadRoster(), loadTransactionLog()]);
+      await loadState();
+      await Promise.all([loadRoster(), loadTransactionLog()]);
     }, "Applying designation...")
   );
+
+  document.getElementById('designationType').addEventListener('change', () => setSelectedDesignationPlayer(state.selectedDesignationPlayerId));
 
   document.getElementById("clearDesignationBtn").addEventListener("click", () =>
     runAction(async () => {
@@ -936,8 +923,22 @@ function bindEvents() {
           active: false
         }
       });
-      await Promise.all([loadState(), loadRoster(), loadTransactionLog()]);
+      await loadState();
+      await Promise.all([loadRoster(), loadTransactionLog()]);
     }, "Clearing designation...")
+  );
+
+  document.getElementById('beginReservePracticeBtn').addEventListener('click', () =>
+    runAction(async () => {
+      const player = getSelectedDesignationPlayer();
+      if (!player?.reserveStatus) throw new Error('Select a player with verified reserve placement history.');
+      const teamId = (document.getElementById('rosterTeamSelect').value || state.dashboard?.controlledTeamId || 'BUF').toUpperCase();
+      await api('/api/roster/designation', { method: 'POST', body: {
+        teamId, playerId: player.id, designation: player.reserveStatus.kind, active: false, beginPractice: true
+      } });
+      await loadState();
+      await Promise.all([loadRoster(), loadTransactionLog()]);
+    }, 'Beginning return practice...')
   );
 
   const buildTradePayload = ({ includeAuthority = false } = {}) => ({
@@ -1047,10 +1048,30 @@ function bindEvents() {
     runAction(async () => {
       const payload = buildTradePayload();
       if (payload.teamA === payload.teamB) throw new Error("Select two different teams.");
-      const result = await api("/api/trade/evaluate", { method: "POST", body: payload });
+      // An evaluated refusal is useful feedback, not an execution receipt.
+      // Clear any earlier authority before requesting a fresh read.
+      state.tradePlanFingerprint = null;
+      let result;
+      try {
+        result = await api("/api/trade/evaluate", { method: "POST", body: payload });
+      } catch (error) {
+        const refusal = error?.payload;
+        if (!refusal || !["cap-failed", "valuation-failed"].includes(refusal.reasonCode)) throw error;
+        result = refusal;
+      }
       const { isDeliberateTradeEvaluation } = await import("./lib/firstSeasonContract.js");
       if (isDeliberateTradeEvaluation({ ...payload, controlledTeamId: state.dashboard?.controlledTeamId })) {
         await markFirstSeasonObjective("answer-the-phone");
+      }
+      if (result.ok === false) {
+        const capRead = result.capAfter
+          ? [payload.teamA, payload.teamB].map(team => `${team}: ${fmtMoney(result.capAfter[team])} remaining cap room`).join(" | ")
+          : "Revise the package before asking the other club again.";
+        setTradeEvalText(`Cannot execute: ${result.error} ${capRead}`);
+        setTradeEvalCards();
+        const breakdown = document.getElementById("tradeBreakdownCard");
+        if (breakdown) breakdown.hidden = true;
+        return;
       }
       state.tradePlanFingerprint = result.plan?.fingerprint || null;
       const a = result.valuation?.[payload.teamA] || {};
@@ -2015,7 +2036,7 @@ function bindEvents() {
     if (event.target === agentModal) { closeAgentModal(); return; }
     const shortcutsModal = document.getElementById("shortcutsModal");
     if (event.target === shortcutsModal) { callAppIsland("settings", "closeShortcutsModal"); return; }
-    const playerButton = event.target.closest("button[data-player-id]");
+    const playerButton = event.target.closest("button.link-btn[data-player-id]");
     if (playerButton) {
       runAction(() => loadPlayerModal(playerButton.dataset.playerId), "Loading player...");
       return;

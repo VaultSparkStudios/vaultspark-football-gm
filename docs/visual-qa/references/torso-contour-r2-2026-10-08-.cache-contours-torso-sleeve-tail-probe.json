@@ -1,0 +1,231 @@
+{
+  "poses": 1722,
+  "vertices": 2273040,
+  "findings": [
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.2537458161671664
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.24565336897097576
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23964027969661805
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23593721510650173
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23468701490778404
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23593721510650173
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23964027969661805
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.24565336897097576
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 0,
+      "t": 1,
+      "projection": 0.2537458161671664
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.2537458161671664
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.24565336897097576
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.23964027969661805
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.23593721510650173
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.23468701490778404
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.23593721510650173
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.23964027969661805
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.24565336897097576
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0,
+      "side": 1,
+      "t": 1,
+      "projection": 0.2537458161671664
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0.025,
+      "side": 0,
+      "t": 1,
+      "projection": 0.2537457740275796
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0.025,
+      "side": 0,
+      "t": 1,
+      "projection": 0.24565352217495476
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0.025,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23964017041308153
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0.025,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23593725811461314
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0.025,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23468690804624945
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0.025,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23593725811461314
+    },
+    {
+      "height": 62,
+      "weight": 650,
+      "mode": "jump",
+      "phase": 0.025,
+      "side": 0,
+      "t": 1,
+      "projection": 0.23964017041308153
+    }
+  ]
+}

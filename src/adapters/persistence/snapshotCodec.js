@@ -37,11 +37,15 @@
  * exactly what it always meant: "the bytes on disk are the bytes we wrote".
  */
 
-/** Marks a payload as gzip+base64 rather than plain JSON. */
-export const ENCODED_PREFIX = "vsfgz1:";
+/** Current payloads gzip a lossless object-layout dictionary; v1 gzip JSON is
+ * retained for legacy saves. Both remain self-describing and integrity-stamped
+ * over their exact stored strings. No floating-point values are rounded. */
+export const ENCODED_PREFIX = "vsfgz2:";
+export const LEGACY_ENCODED_PREFIX = "vsfgz1:";
+import { packJsonLayouts, unpackJsonLayouts } from './jsonLayouts.js';
 
 export function isEncodedSnapshot(text) {
-  return typeof text === "string" && text.startsWith(ENCODED_PREFIX);
+  return typeof text === "string" && (text.startsWith(ENCODED_PREFIX) || text.startsWith(LEGACY_ENCODED_PREFIX));
 }
 
 export function compressionAvailable() {
@@ -77,7 +81,10 @@ export async function encodeSnapshot(snapshot) {
   const json = JSON.stringify(snapshot);
   if (!compressionAvailable()) return json;
   try {
-    const deflated = await streamThrough(new CompressionStream("gzip"), new TextEncoder().encode(json));
+    // Normalize through JSON first, retaining precisely the legacy serializer's
+    // date, undefined, nonfinite-number and toJSON behavior without rounding.
+    const packed = JSON.stringify(packJsonLayouts(JSON.parse(json)));
+    const deflated = await streamThrough(new CompressionStream("gzip"), new TextEncoder().encode(packed));
     const encoded = `${ENCODED_PREFIX}${bytesToBase64(deflated)}`;
     // Guard against pathological inputs where the encoded form is somehow
     // larger; storing the smaller of the two is always correct.
@@ -99,7 +106,9 @@ export async function decodeSnapshot(text) {
       "This save is compressed, but this browser cannot decompress it. Open it in a current browser to recover the franchise."
     );
   }
-  const bytes = base64ToBytes(text.slice(ENCODED_PREFIX.length));
+  const currentFormat = text.startsWith(ENCODED_PREFIX);
+  const bytes = base64ToBytes(text.slice(currentFormat ? ENCODED_PREFIX.length : LEGACY_ENCODED_PREFIX.length));
   const inflated = await streamThrough(new DecompressionStream("gzip"), bytes);
-  return JSON.parse(new TextDecoder().decode(inflated));
+  const decoded = JSON.parse(new TextDecoder().decode(inflated));
+  return currentFormat ? unpackJsonLayouts(decoded) : decoded;
 }

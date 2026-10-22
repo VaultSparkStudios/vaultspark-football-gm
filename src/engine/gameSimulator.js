@@ -6,8 +6,10 @@ import { clamp, mean } from "../utils/rng.js";
 import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
 import { matchupEdgeFromContexts } from "./matchupEdge.js";
 import { fourthDownAggressionAdjustment, isTwoMinuteDrill, twoMinuteAdjustment } from "./situationalCalls.js";
-import { getTeamPlayers } from "../domain/teamFactory.js";
 import { applyGameStats } from "../stats/applyGameStats.js";
+import { runOvertime } from "./overtime.js";
+import { selectGameDayRoster, applyFootballPostGame, checkFootballReadiness,getGameTeamPlayers } from "./gameDayRoster.js";
+import { MatchReadinessError } from "../sport/matchReadiness.js";
 import {
   buildMeritAdjustedRoomShares,
   buildTeamUsageProfile,
@@ -537,9 +539,11 @@ function buildGameReadyRoster(roster, team, rng) {
   return ready;
 }
 
-function buildTeamContext(league, teamId, rng) {
+function buildTeamContext(league, teamId, rng,game) {
   const team = league.teams.find((t) => t.id === teamId);
-  const roster = buildGameReadyRoster(getTeamPlayers(league, teamId), team, rng);
+  const ready = buildGameReadyRoster(getGameTeamPlayers(league, teamId,game), team, rng);
+  const selection = selectGameDayRoster({ league, teamId, roster: ready });
+  const roster = selection.players;
   const usageProfile = buildTeamUsageProfile(team);
   const manualSharesByPosition = league.depthChartSnapShares?.[teamId] || {};
   const qbs = depthOrderedPlayers(league, teamId, "QB", roster).slice(0, 2);
@@ -639,6 +643,7 @@ function buildTeamContext(league, teamId, rng) {
   return {
     team,
     roster,
+    gameDayRoster: selection.receipt,
     qb,
     rb,
     wrs,
@@ -748,6 +753,22 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
   let distance = 10;
   let fieldPosition = 25;
   let forcedFourthDownOutcome = null;
+  const timedDrive = situational.overtime === true;
+  const availableSeconds = situational.secondsRemaining ?? Infinity;
+  let timedSeconds = 0;
+  let executedPlays = 0;
+  let clockExpired = false;
+  const consumeTime = (seconds) => {
+    if (!timedDrive) return true;
+    if (timedSeconds + seconds > availableSeconds) {
+      timedSeconds = availableSeconds;
+      clockExpired = true;
+      return false;
+    }
+    timedSeconds += seconds;
+    return true;
+  };
+  const driveSeconds = (min, max) => timedDrive ? timedSeconds : rng.int(min, max);
   const applyDownProgression = (yardsThisPlay) => {
     fieldPosition = clamp(fieldPosition + yardsThisPlay, 1, 99);
     if (yardsThisPlay >= distance) {
@@ -793,6 +814,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
 
   for (let i = 0; i < plays; i += 1) {
     if (turnover) break;
+    // Synthetic per-play clock costs apply only to overtime. Refuse the next
+    // snap before generating its outcomes/stats when the period has expired.
+    if (!consumeTime(timedDrive ? rng.int(8, 35) : 0)) break;
 
     // ── Fourth-down decision (S29) — the real go/kick/punt brain ───────────
     if (down === 4) {
@@ -817,6 +841,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       // decision === "go" falls through to a real play attempt below.
     }
 
+    executedPlays += 1;
     const yardsBeforePlay = driveYards;
     const playType = choosePlayType(
       { down, distance, fieldPosition, scoreDifferential, elapsedSeconds, matchupLean, situationalLean },
@@ -1125,6 +1150,15 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
     }
   }
 
+  // Terminal aggregate scoring/kicking is another timed event. Keep partial
+  // yardage and stats but never generate a score beyond the available clock.
+  if (!turnover && !clockExpired) consumeTime(timedDrive ? rng.int(4, 8) : 0);
+  if (clockExpired) return {
+    outcome: "clock-expired", points: 0, yards: Math.max(-12, driveYards),
+    turnover: false, turnoverType: null, seconds: timedSeconds,
+    deltas: driveDeltas, plays: executedPlays, passPlays, rushPlays, playLog,
+    scoringEvent: null, possessionEnded: false
+  };
   driveYards = Math.max(-12, driveYards);
   const offensePower = offenseContext.team.offenseRating + driveYards * 0.15 + rng.int(-6, 6);
   const offenseCoachBoost = ((offenseContext.team.coaching?.offense || 72) - 72) * 0.12;
@@ -1161,9 +1195,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       yards: driveYards,
       turnover: true,
       turnoverType,
-      seconds: rng.int(70, 185),
+      seconds: driveSeconds(70, 185),
       deltas: driveDeltas,
-      plays,
+      plays: timedDrive ? executedPlays : plays,
       passPlays,
       rushPlays,
       playLog,
@@ -1200,9 +1234,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
         yards: driveYards,
         turnover: false,
         turnoverType: null,
-        seconds: rng.int(70, 180),
+        seconds: driveSeconds(70, 180),
         deltas: driveDeltas,
-        plays,
+        plays: timedDrive ? executedPlays : plays,
         passPlays,
         rushPlays,
         playLog,
@@ -1225,9 +1259,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       yards: driveYards,
       turnover: true,
       turnoverType: "MISSED_FG",
-      seconds: rng.int(70, 180),
+      seconds: driveSeconds(70, 180),
       deltas: driveDeltas,
-      plays,
+      plays: timedDrive ? executedPlays : plays,
       passPlays,
       rushPlays,
       playLog,
@@ -1252,9 +1286,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       yards: driveYards,
       turnover: false,
       turnoverType: null,
-      seconds: rng.int(65, 165),
+      seconds: driveSeconds(65, 165),
       deltas: driveDeltas,
-      plays,
+      plays: timedDrive ? executedPlays : plays,
       passPlays,
       rushPlays,
       playLog,
@@ -1275,8 +1309,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       addDelta(driveDeltas, runner.id, { rushing: { td: 1 } });
       description = `${runner.name} punches in the touchdown`;
     }
-    addDelta(driveDeltas, offenseContext.k.id, { kicking: { xpa: 1 } });
-    const xpGood = rng.chance(clamp(0.93 + (offenseContext.k.overall - 75) / 320, 0.86, 0.99));
+    const skipTry = situational.skipTouchdownTry === true;
+    if (!skipTry) addDelta(driveDeltas, offenseContext.k.id, { kicking: { xpa: 1 } });
+    const xpGood = !skipTry && rng.chance(clamp(0.93 + (offenseContext.k.overall - 75) / 320, 0.86, 0.99));
     if (xpGood) addDelta(driveDeltas, offenseContext.k.id, { kicking: { xpm: 1 } });
     addPlay({
       type: "score",
@@ -1291,9 +1326,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       yards: driveYards,
       turnover: false,
       turnoverType: null,
-      seconds: rng.int(95, 225),
+      seconds: driveSeconds(95, 225),
       deltas: driveDeltas,
-      plays,
+      plays: timedDrive ? executedPlays : plays,
       passPlays,
       rushPlays,
       playLog,
@@ -1301,7 +1336,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
         teamId: offenseContext.team.id,
         type: "TD",
         points: xpGood ? 7 : 6,
-        description: xpGood ? `${description} (XP good)` : `${description} (XP missed)`
+        description: skipTry ? description : xpGood ? `${description} (XP good)` : `${description} (XP missed)`
       }
     };
   }
@@ -1329,9 +1364,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
         yards: driveYards,
         turnover: false,
         turnoverType: null,
-        seconds: rng.int(70, 180),
+        seconds: driveSeconds(70, 180),
         deltas: driveDeltas,
-        plays,
+        plays: timedDrive ? executedPlays : plays,
         passPlays,
         rushPlays,
         playLog,
@@ -1359,9 +1394,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
       yards: driveYards,
       turnover: true,
       turnoverType: "MISSED_FG",
-      seconds: rng.int(70, 180),
+      seconds: driveSeconds(70, 180),
       deltas: driveDeltas,
-      plays,
+      plays: timedDrive ? executedPlays : plays,
       passPlays,
       rushPlays,
       playLog,
@@ -1387,9 +1422,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
     yards: driveYards,
     turnover: false,
     turnoverType: null,
-    seconds: rng.int(65, 165),
+    seconds: driveSeconds(65, 165),
     deltas: driveDeltas,
-    plays,
+    plays: timedDrive ? executedPlays : plays,
     passPlays,
     rushPlays,
     playLog,
@@ -1437,7 +1472,7 @@ function buildGameId({ year, week = 0, seasonType = "regular", homeTeamId, awayT
   return `${year}-${seasonType}-${label}-${week}-${awayTeamId}-${homeTeamId}`;
 }
 
-function resolveClock(elapsedSeconds) {
+function resolveClock(elapsedSeconds, overtimePeriodSeconds = 600) {
   if (elapsedSeconds < 3600) {
     const quarter = Math.min(4, Math.floor(elapsedSeconds / 900) + 1);
     const quarterElapsed = elapsedSeconds % 900;
@@ -1449,19 +1484,20 @@ function resolveClock(elapsedSeconds) {
     };
   }
   const overtimeElapsed = elapsedSeconds - 3600;
-  const remaining = Math.max(0, 600 - overtimeElapsed);
+  const periodIndex = Math.floor(overtimeElapsed / overtimePeriodSeconds);
+  const remaining = overtimePeriodSeconds - (overtimeElapsed % overtimePeriodSeconds);
   return {
-    quarter: 5,
+    quarter: 5 + periodIndex,
     clock: `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`,
-    label: "OT"
+    label: periodIndex === 0 ? "OT" : `OT${periodIndex + 1}`
   };
 }
 
-function stampDriveLog(playLog, elapsedStart, driveSeconds) {
+function stampDriveLog(playLog, elapsedStart, driveSeconds, overtimePeriodSeconds = 600, regulation = false) {
   if (!playLog?.length) return [];
   return playLog.map((entry, index) => {
     const elapsedAtPlay = elapsedStart + Math.round(((index + 1) / (playLog.length + 1)) * driveSeconds);
-    const clock = resolveClock(elapsedAtPlay);
+    const clock = resolveClock(regulation ? Math.min(3599, elapsedAtPlay) : elapsedAtPlay, overtimePeriodSeconds);
     return {
       ...entry,
       quarter: clock.quarter,
@@ -1739,10 +1775,15 @@ export function simulateMatch({
   label = "game",
   neutralSite = false,
   homeRested = false,
-  awayRested = false
+  awayRested = false,
+  postseasonState=null
 }) {
-  const homeContext = buildTeamContext(league, homeTeamId, rng);
-  const awayContext = buildTeamContext(league, awayTeamId, rng);
+  const gameId = buildGameId({ year, week, seasonType, homeTeamId, awayTeamId, label });
+  const game={gameId,year,week,seasonType,homeTeamId,awayTeamId,label};
+  const readiness = checkFootballReadiness({ league, teamIds: [homeTeamId, awayTeamId],game,postseasonState });
+  if (!readiness.ok) throw new MatchReadinessError(readiness);
+  const homeContext = buildTeamContext(league, homeTeamId, rng,game);
+  const awayContext = buildTeamContext(league, awayTeamId, rng,game);
   if (!neutralSite) applyVenueRatingEdge(homeContext, VENUE_EDGE.homeRatingBoost);
   if (homeRested) applyVenueRatingEdge(homeContext, VENUE_EDGE.restRatingBoost);
   if (awayRested) applyVenueRatingEdge(awayContext, VENUE_EDGE.restRatingBoost);
@@ -1754,7 +1795,6 @@ export function simulateMatch({
   };
   const homeTeam = homeContext.team;
   const awayTeam = awayContext.team;
-  const gameId = buildGameId({ year, week, seasonType, homeTeamId, awayTeamId, label });
 
   const homeStarters = collectStarters(homeContext);
   const awayStarters = collectStarters(awayContext);
@@ -1764,6 +1804,8 @@ export function simulateMatch({
   const playByPlay = [];
   const homeByQuarter = [0, 0, 0, 0, 0];
   const awayByQuarter = [0, 0, 0, 0, 0];
+  const overtimePeriodSeconds = allowTie ? 600 : 900;
+  let inOvertime = false;
   let elapsedSeconds = 0;
   let homeDriveSequence = 0;
   let awayDriveSequence = 0;
@@ -1804,12 +1846,13 @@ export function simulateMatch({
     const driveNumber = offenseTeamId === homeTeamId ? ++homeDriveSequence : ++awayDriveSequence;
     if (offenseTeamId === homeTeamId) homePossessionSeconds += drive.seconds || 0;
     else awayPossessionSeconds += drive.seconds || 0;
-    const stampedLog = stampDriveLog(drive.playLog || [], elapsedSeconds, drive.seconds || 0)
+    const stampedLog = stampDriveLog(drive.playLog || [], elapsedSeconds, drive.seconds || 0, overtimePeriodSeconds, !inOvertime)
       .map((entry) => ({ ...entry, driveNumber }));
     playByPlay.push(...stampedLog);
     elapsedSeconds += drive.seconds || 0;
     if (drive.scoringEvent) {
-      const clock = resolveClock(Math.max(0, elapsedSeconds - 1));
+      const scoreTime = Math.max(0, elapsedSeconds - 1);
+      const clock = resolveClock(inOvertime ? scoreTime : Math.min(3599, scoreTime), overtimePeriodSeconds);
       const summary = {
         teamId: offenseTeamId,
         quarter: clock.quarter,
@@ -1819,11 +1862,8 @@ export function simulateMatch({
         points: drive.scoringEvent.points,
         description: drive.scoringEvent.description
       };
-      if (offenseTeamId === homeTeamId) {
-        homeByQuarter[Math.min(homeByQuarter.length - 1, clock.quarter - 1)] += drive.points;
-      } else {
-        awayByQuarter[Math.min(awayByQuarter.length - 1, clock.quarter - 1)] += drive.points;
-      }
+      while (homeByQuarter.length < clock.quarter) { homeByQuarter.push(0); awayByQuarter.push(0); }
+      (offenseTeamId === homeTeamId ? homeByQuarter : awayByQuarter)[clock.quarter - 1] += drive.points;
       scoringSummary.push(summary);
     }
   };
@@ -1871,70 +1911,43 @@ export function simulateMatch({
     if (awayDrives >= awayPossessions) homeBall = true;
   }
 
+  let overtime = null;
   if (homeScore === awayScore) {
-    let overtimeRounds = 0;
-    while (homeScore === awayScore && overtimeRounds < (allowTie ? 1 : 10)) {
-      const firstHome = rng.chance(0.5);
-      const otSituational = {
-        scoreDifferential: 0,
-        elapsedSeconds: Math.max(elapsedSeconds, 3600)
-      };
-      const firstDrive = firstHome
-        ? simulateDrive(homeContext, awayContext, rng, mode, otSituational)
-        : simulateDrive(awayContext, homeContext, rng, mode, otSituational);
-      applyDriveDeltas(recorder, statBook, year, firstDrive.deltas, seasonType);
-      finalizeDrive(firstDrive, firstHome ? homeTeamId : awayTeamId);
-      if (firstHome) {
-        homeScore += firstDrive.points;
-        homeYards += firstDrive.yards;
-        if (firstDrive.turnover) homeTurnovers += 1;
-        homeOffSnaps += firstDrive.plays || 0;
-        homePassPlays += firstDrive.passPlays || 0;
-        homeRushPlays += firstDrive.rushPlays || 0;
-        if (firstDrive.outcome === DRIVE_OUTCOMES.PUNT) homePOps += 1;
-        if (firstDrive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || firstDrive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) homeKOps += 1;
-      } else {
-        awayScore += firstDrive.points;
-        awayYards += firstDrive.yards;
-        if (firstDrive.turnover) awayTurnovers += 1;
-        awayOffSnaps += firstDrive.plays || 0;
-        awayPassPlays += firstDrive.passPlays || 0;
-        awayRushPlays += firstDrive.rushPlays || 0;
-        if (firstDrive.outcome === DRIVE_OUTCOMES.PUNT) awayPOps += 1;
-        if (firstDrive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || firstDrive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
+    // Regulation has its own synthetic drive budget. OT starts at a fresh,
+    // authoritative period boundary, independent of that budget's duration.
+    elapsedSeconds = 3600;
+    inOvertime = true;
+    overtime = runOvertime({ allowTie, firstHome: rng.chance(0.5),
+      simulatePossession: (situational) => {
+        const drive = simulateDrive(
+          situational.homeBall ? homeContext : awayContext,
+          situational.homeBall ? awayContext : homeContext,
+          rng, mode, { ...situational, overtime: true }
+        );
+        applyDriveDeltas(recorder, statBook, year, drive.deltas, seasonType);
+        finalizeDrive(drive, situational.homeBall ? homeTeamId : awayTeamId);
+        if (situational.homeBall) {
+          homeScore += drive.points;
+          homeYards += drive.yards;
+          if (drive.turnover) homeTurnovers += 1;
+          homeOffSnaps += drive.plays || 0;
+          homePassPlays += drive.passPlays || 0;
+          homeRushPlays += drive.rushPlays || 0;
+          if (drive.outcome === DRIVE_OUTCOMES.PUNT) homePOps += 1;
+          if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) homeKOps += 1;
+        } else {
+          awayScore += drive.points;
+          awayYards += drive.yards;
+          if (drive.turnover) awayTurnovers += 1;
+          awayOffSnaps += drive.plays || 0;
+          awayPassPlays += drive.passPlays || 0;
+          awayRushPlays += drive.rushPlays || 0;
+          if (drive.outcome === DRIVE_OUTCOMES.PUNT) awayPOps += 1;
+          if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
+        }
+        return drive;
       }
-
-      const secondDriveSituational = {
-        scoreDifferential: firstHome ? awayScore - homeScore : homeScore - awayScore,
-        elapsedSeconds: otSituational.elapsedSeconds
-      };
-      const secondDrive = firstHome
-        ? simulateDrive(awayContext, homeContext, rng, mode, secondDriveSituational)
-        : simulateDrive(homeContext, awayContext, rng, mode, secondDriveSituational);
-      applyDriveDeltas(recorder, statBook, year, secondDrive.deltas, seasonType);
-      finalizeDrive(secondDrive, firstHome ? awayTeamId : homeTeamId);
-      if (firstHome) {
-        awayScore += secondDrive.points;
-        awayYards += secondDrive.yards;
-        if (secondDrive.turnover) awayTurnovers += 1;
-        awayOffSnaps += secondDrive.plays || 0;
-        awayPassPlays += secondDrive.passPlays || 0;
-        awayRushPlays += secondDrive.rushPlays || 0;
-        if (secondDrive.outcome === DRIVE_OUTCOMES.PUNT) awayPOps += 1;
-        if (secondDrive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || secondDrive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
-      } else {
-        homeScore += secondDrive.points;
-        homeYards += secondDrive.yards;
-        if (secondDrive.turnover) homeTurnovers += 1;
-        homeOffSnaps += secondDrive.plays || 0;
-        homePassPlays += secondDrive.passPlays || 0;
-        homeRushPlays += secondDrive.rushPlays || 0;
-        if (secondDrive.outcome === DRIVE_OUTCOMES.PUNT) homePOps += 1;
-        if (secondDrive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || secondDrive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) homeKOps += 1;
-      }
-      overtimeRounds += 1;
-      if (allowTie && overtimeRounds >= 1) break;
-    }
+    });
   }
 
   const trackSnaps = (set) => {
@@ -1977,6 +1990,8 @@ export function simulateMatch({
   const playerEntries = [...playerGameStats.values()];
   const boxScore = {
     gameId,
+    overtime,
+    gameDayRosters: { home: homeContext.gameDayRoster, away: awayContext.gameDayRoster },
     year,
     week,
     seasonType,
@@ -2033,6 +2048,7 @@ export function simulateMatch({
       away: matchupEdgeFromContexts(awayContext, homeContext)
     },
     venue,
+    overtime,
     isTie: homeScore === awayScore,
     winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId,
     boxScore
@@ -2057,5 +2073,6 @@ export function simulateMatch({
 export function simulateGame(context) {
   const output = simulateMatch(context);
   applyGameStats(context.statBook, output);
+  applyFootballPostGame({ league: context.league, result: output.result,postseasonState:context.postseasonState });
   return output.result;
 }

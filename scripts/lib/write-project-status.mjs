@@ -22,13 +22,86 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { types } from 'node:util';
+import { acquirePendingQueueLock } from './pending-queue-lock.mjs';
 
 // S156 #21: canonical list lives in lib/sil-categories.mjs (policy-drift extraction)
 import { V3_CATS as CATS } from './sil-categories.mjs';
+import { describeBound } from './test-signal.mjs';
 // S196: SIL v6 dual-axis. Single write path — the Impact-axis invariant runs here
 // too (non-breaking: fires only when silImpactCategories is present), so there is
 // never a second divergent write path for the new fields.
 import { enforceSilV6Invariant } from './sil-v6.mjs';
+import {
+  LEGACY_SESSION_FIELDS,
+  STRUCTURED_SESSION_SCHEMA_VERSION,
+  validateProjectStatusShape,
+} from './project-status-contract.mjs';
+
+const SESSION_NARRATIVES = ['currentFocus', 'nextMilestone', 'lastSessionSummary'];
+
+function sessionNumber(value) {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed >= 0 ? parsed : null;
+}
+
+/** Build the structured session truth and compatibility view together. */
+export function applySessionProjection(status, {
+  durableSession,
+  currentFocus,
+  nextMilestone,
+  lastSessionSummary,
+} = {}) {
+  const durable = sessionNumber(durableSession);
+  if (durable == null) throw new Error('session projection requires a non-negative integer durableSession');
+  const narratives = { currentFocus, nextMilestone, lastSessionSummary };
+  for (const [field, value] of Object.entries(narratives)) {
+    if (typeof value !== 'string' || !value.trim()) throw new Error(`session projection requires non-empty ${field}`);
+  }
+
+  const next = {
+    ...status,
+    schemaVersion: STRUCTURED_SESSION_SCHEMA_VERSION,
+    currentSession: durable,
+    lastSession: durable,
+    silLastSession: durable,
+    ...narratives,
+    sessionState: {
+      version: 1,
+      durableSession: durable,
+      ...narratives,
+    },
+  };
+  for (const field of LEGACY_SESSION_FIELDS) delete next[field];
+  return next;
+}
+
+// Existing readers retain the top-level view. Once adopted, every canonical
+// write refreshes the nested projection before the single atomic replacement.
+function refreshSessionProjection(status) {
+  if (!status.sessionState && Number.parseFloat(String(status.schemaVersion ?? '0')) < Number.parseFloat(STRUCTURED_SESSION_SCHEMA_VERSION)) {
+    return status;
+  }
+  const legacy = LEGACY_SESSION_FIELDS.filter((field) => status[field] !== undefined);
+  if (legacy.length) {
+    throw new Error(`PROJECT_STATUS carries forbidden legacy session field(s): ${legacy.join(', ')}; migrate explicitly with applySessionProjection`);
+  }
+  return applySessionProjection(status, {
+    durableSession: sessionNumber(status.currentSession),
+    ...Object.fromEntries(SESSION_NARRATIVES.map((field) => [field, status[field]])),
+  });
+}
+
+function atomicWriteJson(file, value, assertHeld) {
+  const temp = `${file}.${process.pid}.${Date.now()}.tmp`;
+  try {
+    fs.writeFileSync(temp, JSON.stringify(value, null, 2) + '\n');
+    assertHeld();
+    fs.renameSync(temp, file);
+  } finally {
+    if (fs.existsSync(temp)) fs.unlinkSync(temp);
+  }
+}
 
 /**
  * Pure invariant pass. Returns { status, violations } — status is a new object
@@ -68,28 +141,165 @@ export function enforceSilInvariant(status) {
   // SIL v6 Impact-axis invariant (non-breaking — no-op unless silImpactCategories present).
   const v6 = enforceSilV6Invariant(out);
   for (const v of v6.violations) violations.push(v);
+
+  // ── S283 [audit #2] · structured-vs-prose test deferral ────────────────────
+  // testsDeferredNote and testsLastRunMode are hand-authored at closeout;
+  // testsDeferred is machine-owned. When the prose says "30 files remained
+  // budget-deferred and are not counted green" and the array beside it is [],
+  // every consumer reads zero deferrals and renders a checkmark — the S283
+  // unfalsifiable green. This is a WRITER defect, so it is reported here, at the
+  // write path, and NOT auto-"fixed": the honest file list is knowable only to
+  // the run that deferred them, and fabricating placeholder entries to clear a
+  // violation would be exactly the invented measurement CANON-031 forbids.
+  const bound = describeBound(v6.status);
+  if (bound.writerDefect) {
+    violations.push({
+      field: 'testsDeferred',
+      value: v6.status.testsDeferred,
+      fix: `NOT auto-fixed — record the ${bound.claimedDeferred ?? 'deferred'} file(s) the run actually skipped (${bound.reason}). An empty array beside a deferral note makes the green unfalsifiable; never fabricate entries to clear this.`,
+      unfixable: true,
+    });
+  }
+
+  // ── S321 [audit #4] · the test record must not contradict itself ───────────
+  // Closes [SIL][S315 #2]. The `unexplained` DETECTOR in lib/test-signal.mjs is
+  // real, and it is unreachable in the case that matters: it requires a
+  // CONTRADICTING GREEN HALF, so it only speaks when the assertion run is green.
+  // Live at S321 both halves were red, and the record read
+  //
+  //     testsPassing 565 / testsTotal 566 · testsFailures []  · testsAssertionsFiles 582
+  //
+  // — one failure the record cannot name, and a file-level half measured over 16
+  // FEWER files than the assertion half, so the two numbers printed side by side
+  // came from different runs. Nothing stopped that record being WRITTEN, which is
+  // where the SIL commitment says the assertion belongs.
+  //
+  // Neither is auto-fixed, for the S283 reason directly above: the failing file's
+  // name is knowable only to the run that failed it, and a plausible placeholder
+  // would be the invented measurement CANON-031 exists to forbid. An honest run
+  // clears these; so does one sentence saying what the deficit is.
+  for (const v of testRecordCoherenceViolations(v6.status)) violations.push(v);
+
   return { status: v6.status, violations };
 }
 
 /**
- * Validate + write context/PROJECT_STATUS.json under the invariant.
- * Returns { written, violations }. Throws only on I/O failure.
+ * The escape hatch is a SENTENCE, not a flag: a human note naming what the deficit
+ * is. That keeps the record honest under a genuinely unattributable failure (a host
+ * that could not spawn a worker) without letting a boolean wave the check away.
  */
-export function writeProjectStatus(repoRoot, status, { touchLastUpdated = true } = {}) {
-  const { status: fixed, violations } = enforceSilInvariant(status);
+const COHERENCE_NOTE = 'testsCoherenceNote';
+
+export function testRecordCoherenceViolations(status = {}) {
+  const out = [];
+  const note = typeof status[COHERENCE_NOTE] === 'string' && status[COHERENCE_NOTE].trim()
+    ? status[COHERENCE_NOTE].trim() : null;
+  const num = (v) => (Number.isFinite(Number(v)) ? Number(v) : null);
+  const passing = num(status.testsPassing);
+  const total = num(status.testsTotal);
+  const files = num(status.testsAssertionsFiles);
+  const named = Array.isArray(status.testsFailures) ? status.testsFailures.length : null;
+
+  if (passing != null && total != null && named != null) {
+    const deficit = total - passing;
+    if (deficit > 0 && named === 0 && !note) {
+      out.push({
+        field: 'testsFailures',
+        value: status.testsFailures,
+        fix: `NOT auto-fixed — the record is short by ${deficit} file(s) and names none of them. Re-derive from ONE run (node scripts/run-tests.mjs), or set ${COHERENCE_NOTE} to the sentence that explains the deficit. Never invent a filename to clear this.`,
+        unfixable: true,
+      });
+    }
+  }
+
+  if (files != null && total != null && files > total && !note) {
+    out.push({
+      field: 'testsAssertionsFiles',
+      value: files,
+      fix: `NOT auto-fixed — the assertion half covered ${files} files against testsTotal ${total}, so the file-level half is the narrower, OLDER run and the two numbers beside each other came from different runs. Re-derive from one run, or set ${COHERENCE_NOTE} to say which half is stale.`,
+      unfixable: true,
+    });
+  }
+  return out;
+}
+
+/**
+ * Validate + write context/PROJECT_STATUS.json under the invariant.
+ * Returns { written, violations }. Throws on schema-contract or I/O failure.
+ */
+function writeProjectStatusHeld(repoRoot, status, { touchLastUpdated = true } = {}, lock) {
+  const { status: invariantStatus, violations } = enforceSilInvariant(status);
+  const fixed = refreshSessionProjection(invariantStatus);
   if (touchLastUpdated) fixed.lastUpdated = new Date().toISOString().slice(0, 10);
+  const shape = validateProjectStatusShape(fixed, repoRoot);
+  if (!shape.ok) throw new Error(`PROJECT_STATUS contract invalid:\n${shape.errors.map((error) => `  - ${error}`).join('\n')}`);
   const p = path.join(repoRoot, 'context', 'PROJECT_STATUS.json');
   fs.mkdirSync(path.dirname(p), { recursive: true });
-  fs.writeFileSync(p, JSON.stringify(fixed, null, 2) + '\n');
+  atomicWriteJson(p, fixed, lock.assertHeld);
   return { written: p, violations };
 }
 
-/** Read-modify-write helper: apply a mutator fn under the invariant. */
+// Reuse the same owner-token/PID/host admission contract as the propagation
+// queue. Age does not prove a writer dead. Unknown owners stay held.
+const activeStatusWrites = new Set();
+function withStatusLock(repoRoot, opts, action) {
+  const context = path.resolve(repoRoot, 'context');
+  fs.mkdirSync(context, { recursive: true });
+  const canonical = fs.realpathSync(context);
+  const key = process.platform === 'win32' ? canonical.toLowerCase() : canonical;
+  if (activeStatusWrites.has(key)) throw new Error('PROJECT_STATUS reentrant canonical write refused');
+  activeStatusWrites.add(key);
+  let lock;
+  try {
+    lock = acquirePendingQueueLock(path.join(canonical, 'PROJECT_STATUS.json.lock'), {
+      ...opts.lockOptions, resourceName: 'PROJECT_STATUS',
+    });
+    return action(lock);
+  } finally {
+    try { lock?.release(); }
+    finally { activeStatusWrites.delete(key); }
+  }
+}
+
+/**
+ * Whole-snapshot replacement takes the canonical writer lock. A caller that
+ * read an earlier snapshot still requests replacement; use updateProjectStatus
+ * for a read-modify-write transaction. Raw filesystem writers do not cooperate.
+ * lockOptions bounds synchronous contention waiting (timeoutMs, pollMs).
+ */
+export function writeProjectStatus(repoRoot, status, opts = {}) {
+  return withStatusLock(repoRoot, opts, lock => writeProjectStatusHeld(repoRoot, status, opts, lock));
+}
+
+/**
+ * Synchronous read-modify-write under the invariant. Mutate the draft and return
+ * undefined, or return a plain replacement object. Invalid/async results fail
+ * before writing; an omitted return must never silently discard the draft.
+ * Cooperating canonical writers serialize across processes from read through
+ * publication. Nested writes to the same status fail before waiting on itself.
+ */
 export function updateProjectStatus(repoRoot, mutate, opts = {}) {
-  const p = path.join(repoRoot, 'context', 'PROJECT_STATUS.json');
-  const current = JSON.parse(fs.readFileSync(p, 'utf8'));
-  const next = mutate({ ...current }) || current;
-  return writeProjectStatus(repoRoot, next, opts);
+  if (typeof mutate !== 'function' || types.isAsyncFunction(mutate)) {
+    throw new TypeError('PROJECT_STATUS mutator must be a synchronous function');
+  }
+  return withStatusLock(repoRoot, opts, lock => {
+    const p = path.join(repoRoot, 'context', 'PROJECT_STATUS.json');
+    const current = JSON.parse(fs.readFileSync(p, 'utf8'));
+    const draft = structuredClone(current);
+    const result = mutate(draft);
+    if (result !== undefined && (
+      result === null || typeof result !== 'object' ||
+      typeof result.then === 'function' ||
+      ![Object.prototype, null].includes(Object.getPrototypeOf(result))
+    )) {
+      // Consume a native rejected promise so refusing an async wrapper does not
+      // also create an unhandled rejection. Arbitrary thenables are never invoked.
+      if (types.isPromise(result)) result.catch(() => {});
+      throw new TypeError('PROJECT_STATUS mutator must return undefined or a synchronous plain object');
+    }
+    const next = result === undefined ? draft : result;
+    return writeProjectStatusHeld(repoRoot, next, opts, lock);
+  });
 }
 
 // ── CLI ──────────────────────────────────────────────────────────────────────
@@ -104,13 +314,31 @@ if (isMain) {
   if (!fs.existsSync(p)) { console.error(`⛔ no PROJECT_STATUS.json at ${p}`); process.exit(2); }
   const current = JSON.parse(fs.readFileSync(p, 'utf8'));
   const { status: fixed, violations } = enforceSilInvariant(current);
+  const shape = validateProjectStatusShape(fixed, repoRoot);
+  if (!shape.ok) {
+    console.error(`⛔ PROJECT_STATUS contract invalid (${shape.errors.length}):`);
+    for (const error of shape.errors) console.error(`  - ${error}`);
+    process.exit(shape.schemaMissing ? 2 : 1);
+  }
+  // S283: some violations are deliberately NOT auto-fixable — the honest value
+  // is knowable only to the run that produced it, and inventing one to clear the
+  // check is the exact lie the check exists to catch. Counting those as "fixed"
+  // would make --fix itself a dishonest heal, so they are reported separately and
+  // still fail the exit code.
+  const fixable = violations.filter(v => !v.unfixable);
+  const unfixable = violations.filter(v => v.unfixable);
   if (args.includes('--fix')) {
-    if (violations.length) {
-      fs.writeFileSync(p, JSON.stringify(fixed, null, 2) + '\n');
-      console.log(`✓ fixed ${violations.length} violation(s):`);
-      for (const v of violations) console.log(`  - ${v.field}=${JSON.stringify(v.value)} → ${v.fix}`);
-    } else {
+    if (fixable.length) {
+      writeProjectStatus(repoRoot, fixed, { touchLastUpdated: false });
+      console.log(`✓ fixed ${fixable.length} violation(s):`);
+      for (const v of fixable) console.log(`  - ${v.field}=${JSON.stringify(v.value)} → ${v.fix}`);
+    } else if (!unfixable.length) {
       console.log('✓ invariant clean — no changes');
+    }
+    if (unfixable.length) {
+      console.error(`⛔ ${unfixable.length} violation(s) --fix cannot honestly repair:`);
+      for (const v of unfixable) console.error(`  - ${v.field}=${JSON.stringify(v.value)} → ${v.fix}`);
+      process.exit(1);
     }
     process.exit(0);
   }
@@ -124,4 +352,4 @@ if (isMain) {
   process.exit(0);
 }
 
-export default { enforceSilInvariant, writeProjectStatus, updateProjectStatus };
+export default { applySessionProjection, enforceSilInvariant, testRecordCoherenceViolations, writeProjectStatus, updateProjectStatus };

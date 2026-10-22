@@ -1,0 +1,332 @@
+import {enduranceStudy,solveStrengthStudy} from './playerCapacityStudy.js';
+// Bounded artistic movement study, not motion capture or a fitted NFL model.
+// The same measured frame drives every pose. No identity/demographic channel,
+// overall, potential or simulation RNG participates in these calculations.
+import {appearanceSkinColor,blendAppearanceColor as blend,bodySkinStops,bodyClothStops} from './appearancePalette.js';
+import {buildPlayerSideHead} from './playerSideAppearance.js';
+import {buildPlayerPortraitSvg} from './playerPortraitFace.js';
+import {REGIONAL_ANATOMY_VERSION,renderableIndividualAnatomy,projectedTorsoSections,measuredBodyRig} from './physiqueGeometryContract.js';
+import {profiledLimbSurface,limbProfileSample} from './profiledLimbSurface.js';
+import {buildIndividualFootwear} from './playerFootwear.js';
+import {playerHandMarkup,estimatedPalmBreadth} from './playerHand.js';
+import {torsoSurfaceMarkup} from './torsoSurface.js';
+import {trainingShortsPath,trainingShortsYoke,TRAINING_KIT_COLOR,TRAINING_KIT_FAR_COLOR} from './playerTrainingKit.js';
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const finite = (v, fallback) => v != null && v !== '' && Number.isFinite(Number(v)) ? Number(v) : fallback;
+const round = v => Math.round(v * 100) / 100;
+const point = (x, y) => ({ x, y });
+const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+const smooth = t => t * t * (3 - 2 * t);
+const escape = v => String(v ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+export const PLAYER_MOTION_VERSION = 'articulated-athlete-study-v2';
+
+function buildCutHead(player, pose, instance) {
+  const a = player?.appearance;
+  const validColor = value => typeof value === 'string' && /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(value);
+  // Older/incomplete motion DTOs are accepted by the existing side renderer.
+  // The frontal portrait requires its full recipe; keep its decoder unchanged.
+  const usable = player?.visualFrame && a &&
+    ['complexion', 'faceWidth', 'jawWidth', 'faceLength', 'eyeSpacing', 'noseWidth', 'lipFullness', 'browWeight', 'earSize']
+      .every(key => typeof a[key] === 'number' && Number.isFinite(a[key])) &&
+    validColor(a.hairColor) && validColor(a.eyeColor) &&
+    (!a.naturalHairColor || validColor(a.naturalHairColor)) &&
+    (!a.dyedHairColor || validColor(a.dyedHairColor));
+  if (!usable) return buildPlayerSideHead(player, {x:0,y:-pose.torso-9-pose.skull,height:pose.skull,idSuffix:`-motion-${instance}`});
+  return buildPlayerPortraitSvg(player, {headOnly:true,idSuffix:`-cut-${instance}`})
+    .replace('<svg ', `<svg x="${round(-110*pose.skull/175)}" y="${round(-pose.torso-9-240*pose.skull/175)}" width="${round(220*pose.skull/175)}" height="${round(270*pose.skull/175)}" `);
+}
+
+export function playerMovementProfile(player) {
+  const physical = key => (clamp(finite(player?.ratings?.[key], 70), 40, 99) - 40) / 59;
+  return { cadence: 1.15 + physical('speed') * .65,
+    strideFraction: .28 + physical('speed') * .16,
+    launchLean: 5 + physical('acceleration') * 10,
+    accelerationRamp: .30 - physical('acceleration') * .18,
+    jumpInches: 5 + physical('jumping') * 13 };
+}
+
+// A repeatable treadmill build-up, not a measured sprint. The ramp integrates
+// belt distance so planted feet and belt share velocity even as speed changes.
+// Four complete gait cycles return to the same resting stance at each loop.
+export function accelerationStudy(profile,phase) {
+  const start=.08, ramp=profile.accelerationRamp, brake=.24, end=.92;
+  const cruiseEnd=end-brake, area=cruiseEnd-start-ramp/2+brake/2;
+  const duration=4/(profile.cadence*area);
+  const integral=t=>t*t*t-.5*t*t*t*t;
+  let speedFraction=0,travel=0;
+  if(phase>start&&phase<start+ramp){const t=(phase-start)/ramp;speedFraction=smooth(t);travel=ramp*integral(t);}
+  else if(phase>=start+ramp&&phase<cruiseEnd){speedFraction=1;travel=ramp/2+phase-start-ramp;}
+  else if(phase>=cruiseEnd&&phase<end){const t=(phase-cruiseEnd)/brake;speedFraction=1-smooth(t);travel=area-brake/2+brake*(t-integral(t));}
+  else if(phase>=end)travel=area;
+  return {speedFraction,cycles:4*travel/area,duration,rampSeconds:ramp*duration,
+    stage:phase<start?'Ready':phase<start+ramp?'Building speed':phase<cruiseEnd?'Steady pace':phase<end?'Slowing':'Rest'};
+}
+
+// Exact two-segment inverse kinematics. Callers keep endpoints within reach;
+// projection also makes this primitive finite for unusual imported frames.
+export function solveLimb(root, target, upper, lower, bend = 1) {
+  const dx = target.x - root.x, dy = target.y - root.y;
+  const raw = Math.hypot(dx, dy), d = clamp(raw, Math.abs(upper-lower)+.001, upper+lower-.001);
+  const ux = raw > 0 ? dx/raw : 0, uy = raw > 0 ? dy/raw : 1;
+  const end = point(root.x+ux*d, root.y+uy*d);
+  const along = (upper*upper-lower*lower+d*d)/(2*d);
+  const across = Math.sqrt(Math.max(0, upper*upper-along*along))*bend;
+  return { root, joint:point(root.x+ux*along-uy*across, root.y+uy*along+ux*across), end };
+}
+
+// Planned lateral step/plant/redirection, viewed from the front. This is an
+// artistic capacity study, not a reactive agility test or a force simulation.
+// World-space ankle anchors remain fixed during contact; one leg swings to
+// the next outside plant while the other supports the measured body.
+function solveLateralCut(player, dimensions, phase) {
+  const {floor,skull,torso,legLength,armLength,handLength,profile,upperLegShare,upperArmShare,pelvicBreadthInches,hipJointSpanInches}=dimensions;
+  const physical=key=>(clamp(finite(player?.ratings?.[key],70),40,99)-40)/59;
+  const agility=physical('agility'), acceleration=physical('acceleration');
+  const p=((finite(phase,0)%1)+1)%1, half=p<.5?0:1, q=(p-half*.5)*2;
+  const duration=3.4-.9*agility+.35*(1-acceleration);
+  const plantStart=.74+.10*agility, liftStart=.10;
+  const travel=legLength*.10, spread=legLength*.18;
+  const hip=point(160-travel*Math.cos(p*2*Math.PI),
+    floor-15-legLength*(.82-.06*Math.cos(p*2*Math.PI)**6));
+  const lean=Math.sin(p*2*Math.PI)*7*Math.PI/180;
+  const shoulder=point(hip.x+Math.sin(lean)*torso,hip.y-Math.cos(lean)*torso);
+  const hipHalf=hipJointSpanInches != null ? hipJointSpanInches*6/2 : pelvicBreadthInches != null ? pelvicBreadthInches*6*.38 : legLength*.075;
+  const feet=[-1,1].map(side=>{
+    const moving=(half===0&&side===1)||(half===1&&side===-1);
+    const t=clamp((q-liftStart)/(plantStart-liftStart),0,1);
+    // Each outside plant repeats at the same floor target. The unloaded foot
+    // recovers inward and returns, with zero velocity at lift-off/touchdown.
+    // This keeps both feet continuous when support changes at each reversal.
+    const lift=Math.sin(Math.PI*t)**2;
+    const x=160+side*(travel+spread)-(moving?side*travel*lift:0);
+    return {point:point(x,floor-15-(moving?lift*legLength*.10:0)),
+      contact:!moving||q<=liftStart||q>=plantStart};
+  });
+  const legs=feet.map((foot,i)=>{
+    const root=point(hip.x+(i===0?-1:1)*hipHalf,hip.y);
+    const solved=solveLimb(root,foot.point,legLength*upperLegShare,legLength*(1-upperLegShare));
+    const d=distance(root,solved.end),ux=(solved.end.x-root.x)/d,uy=(solved.end.y-root.y)/d;
+    const upper=legLength*upperLegShare,lower=legLength*(1-upperLegShare);
+    const along=(upper*upper-lower*lower+d*d)/(2*d),across=Math.sqrt(Math.max(0,upper*upper-along*along));
+    // In the frontal view most knee flexion points toward the camera, not
+    // sideways. Keep exact 3D bone lengths while projecting that depth onto
+    // the screen; a flat 2D IK solve would create a wide, bow-legged squat.
+    const lateral=(i===0?1:-1)*.10;
+    return {root:{...root,z:0},joint:{x:root.x+ux*along-uy*across*lateral,
+      y:root.y+uy*along+ux*across*lateral,z:across*Math.sqrt(1-lateral*lateral)},
+      end:{...solved.end,z:0},contact:foot.contact};
+  });
+  const shoulderHalf=dimensions.rig?.shoulderHalf??clamp(finite(player.visualFrame.shoulderSpanInches,17),12,24)*3;
+  const arms=[-1,1].map(side=>{
+    const root=point(shoulder.x+side*shoulderHalf*Math.cos(lean),shoulder.y+side*shoulderHalf*Math.sin(lean));
+    const angle=side*(.17+.05*Math.sin(p*2*Math.PI)), foreAngle=side*.55;
+    const joint=point(root.x+Math.sin(angle)*armLength*upperArmShare,root.y+Math.cos(angle)*armLength*upperArmShare);
+    const end=point(joint.x+Math.sin(foreAngle)*armLength*(1-upperArmShare),joint.y+Math.cos(foreAngle)*armLength*(1-upperArmShare));
+    const hand=point(end.x+Math.sin(foreAngle)*handLength,end.y+Math.cos(foreAngle)*handLength);
+    return {root,joint,end,hand};
+  });
+  const drill={duration,plantDuration:duration*(1-plantStart)/2,plantStart,
+    stage:q<liftStart?'Push-off':q<plantStart-.12?'Lateral step':q<plantStart?'Braking':'Plant & redirect'};
+  return {version:'articulated-lateral-cut-v1',mode:'cut',phase:p,profile,drill,hip,shoulder,legs,arms,
+    floor,skull,torso,lean,legLength,armLength,handLength,flight:false,beltOffset:0};
+}
+
+export function solvePlayerMotion(player, { phase = 0, mode = 'run' } = {}) {
+  const rawFrame = player?.visualFrame;
+  const f = rawFrame ? { ...rawFrame, ...renderableIndividualAnatomy(rawFrame) } : rawFrame;
+  if (!f) return null;
+  const height = clamp(finite(f.heightInches,74),62,86), unit = 6, floor = 750,rig=measuredBodyRig(f,{unit,floor});
+  const skull = rig?.skull??(9.4+(height-74)*.035)*unit;
+  const torso = rig?.torso??height*clamp(finite(f.torsoShare,.3),.25,.36)*unit;
+  const legLength = rig?.legLength??height*unit-skull-9-torso-15;
+  const handLength = rig?.handLength??clamp(finite(f.handLengthInches,height*.1),4,12)*unit;
+  const armLength = rig?.armLength??Math.max(12,clamp(finite(f.armLengthInches,33),22,42)*unit-handLength);
+  const profile = playerMovementProfile(player);
+  const upperLegShare=clamp(finite(f.upperLegShare,.51),.45,.58),upperArmShare=clamp(finite(f.upperArmShare,.53),.45,.58);
+  if(mode==='cut')return solveLateralCut(player,{floor,skull,torso,legLength,armLength,handLength,profile,upperLegShare,upperArmShare,pelvicBreadthInches:f.pelvicBreadthInches,hipJointSpanInches:f.hipJointSpanInches,rig},phase);
+  if(mode==='strength')return solveStrengthStudy(player,{floor,skull,torso,legLength,armLength,handLength,profile,upperLegShare,upperArmShare,rig},phase,{solveLimb});
+  const endurance=mode==='endurance'?enduranceStudy(player,profile,Math.max(0,finite(phase,0))*60):null;
+  const p = ((finite(phase,0)%1)+1)%1, jump = mode === 'jump', acceleration=mode==='acceleration';
+  const drill=acceleration?accelerationStudy(profile,p):endurance;
+  const effectiveProfile=endurance?{...profile,cadence:endurance.cadence,strideFraction:endurance.strideFraction}:profile;
+  const gait=drill?drill.cycles%1:p;
+  const moving=endurance?endurance.paceFraction:drill?drill.speedFraction:1;
+  const stride = legLength*effectiveProfile.strideFraction;
+  const hip = point(160, floor-15-legLength*.90+legLength*.012*moving*Math.cos(gait*4*Math.PI));
+  const flight = jump && p>=.25 && p<=.75;
+  if (jump) {
+    // Both feet remain grounded through loading/landing. Flight lifts the
+    // entire skeleton; it never stretches legs to imitate greater power.
+    const rise = flight ? Math.sin((p-.25)*2*Math.PI)*profile.jumpInches*unit : 0;
+    const crouch = !flight ? Math.sin((p<.25?p:p-.75)*4*Math.PI)*legLength*.12 : 0;
+    hip.y = floor-15-legLength*.93+crouch-rise;
+  }
+  const settle=acceleration?1-.55*smooth(clamp((p-.08-profile.accelerationRamp)/.12,0,1)):1;
+  const lean = (jump ? 3 : drill ? 3+moving*(profile.launchLean-3)*settle : profile.launchLean)*Math.PI/180;
+  const shoulder = point(hip.x+Math.sin(lean)*torso,hip.y-Math.cos(lean)*torso);
+  const feet = [0,.5].map(offset => {
+    const t = (gait+offset)%1;
+    if (jump) return { point:point(160+(offset===0?-1:1)*legLength*.12,
+      floor-15-(flight?Math.sin((p-.25)*2*Math.PI)*profile.jumpInches*unit:0)), contact:!flight };
+    const stance = .58, swing = (t-stance)/(1-stance);
+    return { point:point(160+stride*(t<stance?.5-t/stance:-.5+smooth(swing)),
+      floor-15-(t<stance?0:Math.sin(Math.PI*swing)*legLength*.26)), contact:t<stance };
+  });
+  // Side projection conceals transverse skeletal spacing. Keep it in the
+  // solved pose rather than merging the two anatomical bone centers.
+  const transverse=(limb,depth)=>Object.fromEntries(Object.entries(limb).map(([key,value])=>[key,value&&typeof value==='object'?{...value,z:depth}:value]));
+  const legs = feet.map((foot,i) => {const limb={ ...solveLimb(hip,foot.point,legLength*upperLegShare,legLength*(1-upperLegShare),-1), contact:foot.contact };return rig?transverse(limb,(i===0?-1:1)*rig.hipHalf):limb;});
+  const arms = [0,.5].map((offset,i) => {
+    const angle = (jump ? 20+35*Math.sin(p*Math.PI) : 15+25*moving*Math.sin((gait+offset)*2*Math.PI))*Math.PI/180;
+    const elbow = point(shoulder.x+Math.sin(angle)*armLength*upperArmShare,shoulder.y+Math.cos(angle)*armLength*upperArmShare);
+    const foreAngle = angle-(jump?2.6:.7);
+    const wrist = point(elbow.x+Math.sin(foreAngle)*armLength*(1-upperArmShare),elbow.y+Math.cos(foreAngle)*armLength*(1-upperArmShare));
+    const hand = point(wrist.x+Math.sin(foreAngle)*handLength,wrist.y+Math.cos(foreAngle)*handLength);
+    const limb={root:shoulder,joint:elbow,end:wrist,hand};return rig?transverse(limb,(i===0?-1:1)*rig.shoulderHalf):limb;
+  });
+  return { version:PLAYER_MOTION_VERSION,mode:jump?'jump':acceleration?'acceleration':endurance?'endurance':'run',phase:p,profile,drill,hip,shoulder,legs,arms,
+    floor,skull,torso,lean,legLength,armLength,handLength,flight,
+    // Running is a treadmill study: stance feet move with the belt while
+    // remaining on its surface. Jumping uses a stationary training floor.
+    // Carry completed drill cycles through the repeating belt texture. Local
+    // gait resets at rest, but belt markings must not jump backwards there.
+    beltOffset:endurance?-(endurance.cycles*legLength*profile.strideFraction/.58)%24:jump?0:-((drill?drill.cycles+Math.floor(finite(phase,0))*4:p)*stride/.58)%24 };
+}
+
+function segment(a,b,startWidth,endWidth) {
+  const len = distance(a,b)||1, nx = -(b.y-a.y)/len, ny = (b.x-a.x)/len;
+  const at = (p,width,side) => `${round(p.x+nx*width*side/2)} ${round(p.y+ny*width*side/2)}`;
+  const first=point(a.x+(b.x-a.x)/3,a.y+(b.y-a.y)/3),second=point(a.x+(b.x-a.x)*2/3,a.y+(b.y-a.y)*2/3);
+  return `M${at(a,startWidth,1)} C${at(first,startWidth,1)} ${at(second,startWidth*.4+endWidth*.6,1)} ${at(b,endWidth,1)} Q${round(b.x)} ${round(b.y)} ${at(b,endWidth,-1)} C${at(second,startWidth*.4+endWidth*.6,-1)} ${at(first,startWidth,-1)} ${at(a,startWidth,-1)} Q${round(a.x)} ${round(a.y)} ${at(a,startWidth,1)}Z`;
+}
+
+function motionMarkup(player,pose,instance='') {
+  const craft=player.appearance?.fineFaceVersion==='fine-face-v1';
+  const f={...player.visualFrame,...renderableIndividualAnatomy(player.visualFrame)}, width=clamp(finite(f.thighWidth,6),3,16)*6;
+  const armWidth=clamp(finite(f.upperArmWidth,4),2,12)*6;
+  const chest=pose.mode==='cut'?clamp(finite(f.chestWidthInches,20),craft?1:10,40)*6:clamp(finite(f.chestDepthInches,10),craft?1:5,craft?40:28)*6;
+  const projection=pose.mode==='cut'?'front':'side',sections=craft?projectedTorsoSections(f,projection):null;
+  const waist=sections?sections.at(-1)[1]:chest*clamp(finite(f.waistRatio,.8),.6,1);
+  const neck=clamp(finite(f.neckDiameterInches,5),3,12)*6;
+  const handWidth=craft?estimatedPalmBreadth(f.handSizeInches,6):clamp(finite(f.handSizeInches,9),6,12)*2.1;
+  const a=player.appearance||{},skin=appearanceSkinColor({...a,complexion:clamp(finite(a.complexion,.5),0,1)});
+  const shade=blend(skin,'#241a19',.3);
+  const surfaceId=`motion-surface-${[...String(instance)].map(c=>c.codePointAt(0).toString(16)).join('-')}`;
+  const variation=clamp(finite(f.limbShapeVariation,0),-.12,.12);
+  const limb=(l,kind,far) => {
+   const diameter=kind==='leg'?width:armWidth,split=kind==='leg'?(f.upperLegShare ?? .51):(f.upperArmShare ?? .53);
+   const jointShare=kind==='leg'?f.upperLegShare:f.upperArmShare;
+   const contourDirection=craft?(pose.mode==='cut'?(far?-1:1):-1):0;
+   const jointWidth=diameter*limbProfileSample(kind,variation,split,jointShare).ratio;
+   const limbId=`${surfaceId}-${kind}-${far?'far':'near'}`;
+   const length=distance(l.root,l.end)||1,nx=-(l.end.y-l.root.y)/length,ny=(l.end.x-l.root.x)/length;
+   const cx=(l.root.x+l.end.x)/2,cy=(l.root.y+l.end.y)/2;
+   // One world-space gradient is shared by both bones and their joint cap.
+   // Object-bounding-box gradients restart at each path and expose a seam.
+   const litSkin=far?blend(skin,'#241a19',.16):skin;
+   const crossLight=(a,b,name,centerOverride=null)=>{
+     const boneLength=distance(a,b)||1,normal={x:-(b.y-a.y)/boneLength,y:(b.x-a.x)/boneLength};
+     // Orient every cross-section toward the same scene light. A hip-to-foot
+     // chord misses a bent knee entirely and clamps its surface to one color.
+     if(normal.x*(-1)+normal.y*(-.5)<0){normal.x*=-1;normal.y*=-1;}
+     const center=centerOverride||{x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+     return `<linearGradient class="motion-articulated-light" data-bone="${name}" id="${limbId}-${name}" gradientUnits="userSpaceOnUse" x1="${round(center.x-normal.x*diameter/2)}" y1="${round(center.y-normal.y*diameter/2)}" x2="${round(center.x+normal.x*diameter/2)}" y2="${round(center.y+normal.y*diameter/2)}">${bodySkinStops(litSkin)}</linearGradient>`;
+   };
+   // The joint keeps the same light ramp and full-profile width as its bones.
+   // A dark-edged radial cap makes knees look like separate ball joints.
+   const lighting=craft?`<defs>${crossLight(l.root,l.joint,'upper')}${crossLight(l.joint,l.end,'lower')}${crossLight(l.root,l.end,'joint',l.joint)}</defs>`:(far?'':`<defs><linearGradient class="motion-surface-light" id="${limbId}" gradientUnits="userSpaceOnUse" x1="${round(cx-nx*diameter/2)}" y1="${round(cy-ny*diameter/2)}" x2="${round(cx+nx*diameter/2)}" y2="${round(cy+ny*diameter/2)}"><stop stop-color="${shade}"/><stop offset=".35" stop-color="${skin}"/><stop offset=".63" stop-color="${blend(skin,'#ffe9d4',.16)}"/><stop offset="1" stop-color="${blend(skin,'#241a19',.12)}"/></linearGradient></defs>`);
+   return `<g class="motion-${kind}${far?' motion-far':''}" data-skin-color="${skin}" data-regional-anatomy="${REGIONAL_ANATOMY_VERSION}" fill="${craft?litSkin:far?shade:`url(#${limbId})`}">${lighting}
+    <path class="motion-upper-surface" d="${profiledLimbSurface(l.root,l.joint,diameter,kind,variation,[0,split],jointShare,contourDirection)}"${craft?` fill="url(#${limbId}-upper)"`:''}/>
+    ${craft?'':`<circle cx="${round(l.joint.x)}" cy="${round(l.joint.y)}" r="${round(jointWidth/2)}"/>`}
+    <path class="motion-lower-surface" d="${profiledLimbSurface(l.joint,l.end,diameter,kind,variation,[split,1],jointShare,contourDirection)}"${craft?` fill="url(#${limbId}-lower)"`:''}/>${craft?`\n    <circle class="motion-joint-surface" cx="${round(l.joint.x)}" cy="${round(l.joint.y)}" r="${round(jointWidth/2)}" fill="url(#${limbId}-joint)"/>`:''}
+    ${kind==='leg'?`<path${craft?' class="player-training-shorts"':''} d="${craft?trainingShortsPath(l.root,l.joint,width):segment(l.root,point(l.root.x+(l.joint.x-l.root.x)*.48,l.root.y+(l.joint.y-l.root.y)*.48),width*1.03,width*.82)}" fill="${craft?`url(#${surfaceId}-${far?'far-':''}shorts)`:far?'#29495b':'#466c80'}"/>`:''}
+    ${kind==='leg'?(buildIndividualFootwear(f,l.end,{view:pose.mode==='cut'?'front':'side'}) ?? `<path d="M${round(l.end.x-8)} ${round(l.end.y-4)} Q${round(l.end.x+12)} ${round(l.end.y-5)} ${round(l.end.x+23)} ${round(l.end.y+10)} L${round(l.end.x+23)} ${round(l.end.y+15)} H${round(l.end.x-8)}Z" fill="#243640"/>`)
+      :(craft?`<g class="motion-hand" transform="translate(${round(l.end.x)} ${round(l.end.y)}) rotate(${round(Math.atan2(l.hand.y-l.end.y,l.hand.x-l.end.x)*180/Math.PI-90)})">${playerHandMarkup({width:handWidth,length:pose.handLength,wristWidth:armWidth*.40,fill:litSkin,shade})}</g>`: `<g class="motion-hand" fill="${far?shade:skin}" transform="translate(${round(l.end.x)} ${round(l.end.y)}) rotate(${round(Math.atan2(l.hand.y-l.end.y,l.hand.x-l.end.x)*180/Math.PI-90)})"><path d="M${-armWidth*.2} 0 Q${-handWidth*.45} ${pose.handLength*.3} ${-handWidth*.3} ${pose.handLength*.84} Q${-handWidth*.15} ${pose.handLength} 0 ${pose.handLength} Q${handWidth*.15} ${pose.handLength} ${handWidth*.3} ${pose.handLength*.84} Q${handWidth*.42} ${pose.handLength*.35} ${armWidth*.2} 0Z"/><path d="M${-handWidth*.3} ${pose.handLength*.24} Q${-handWidth*.6} ${pose.handLength*.34} ${-handWidth*.52} ${pose.handLength*.5} Q${-handWidth*.39} ${pose.handLength*.56} ${-handWidth*.25} ${pose.handLength*.46}Z"/><path d="M0 ${pose.handLength*.57} V${pose.handLength*.85}" fill="none" stroke="${shade}" stroke-width=".8" opacity=".3"/></g>`)}</g>`;
+  };
+  const body=`<g class="motion-trunk" transform="translate(${round(pose.hip.x)} ${round(pose.hip.y)}) rotate(${round(pose.lean*180/Math.PI)})">
+    <path d="M${-Math.min(neck/2,pose.skull*.17)} ${-pose.torso-12} H${Math.min(neck/2,pose.skull*.17)} Q${neck/2} ${-pose.torso} ${neck/2} ${-pose.torso+12} H${-neck/2} Q${-neck/2} ${-pose.torso} ${-Math.min(neck/2,pose.skull*.17)} ${-pose.torso-12}Z" fill="${skin}"/>
+    ${sections?`<path class="player-training-pelvis" d="${trainingShortsYoke({x:0,y:0,waistHalf:waist/2,hipHalf:projection==='front'?Math.abs(pose.legs[0].root.x-pose.legs[1].root.x)/2:0,thighWidth:width,upperLegLength:pose.legLength*(f.upperLegShare??.51)})}" fill="url(#${surfaceId}-shorts)"/>`:''}${craft ? torsoSurfaceMarkup({y:-pose.torso,length:pose.torso,chest,waist,neck,sections},{projection,fill:`url(#${surfaceId}-jersey)`,stroke:'#a2bdc5',id:surfaceId}) : `<path d="${pose.mode==='cut'
+      ?`M${-neck/2} ${-pose.torso-3} Q${-chest*.28} ${-pose.torso-5} ${-chest/2} ${-pose.torso+5} L${-chest/2} ${-pose.torso+20} Q${-chest*.47} ${-pose.torso*.4} ${-waist/2} 0 Q0 12 ${waist/2} 0 Q${chest*.47} ${-pose.torso*.4} ${chest/2} ${-pose.torso+20} L${chest/2} ${-pose.torso+5} Q${chest*.28} ${-pose.torso-5} ${neck/2} ${-pose.torso-3}Z`
+      :`M${-neck/2} ${-pose.torso} Q${-chest/2} ${-pose.torso+12} ${-chest/2} ${-pose.torso*.6} L${-waist/2} 0 Q0 12 ${waist/2} 0 L${chest/2} ${-pose.torso*.6} Q${chest/2} ${-pose.torso+12} ${neck/2} ${-pose.torso}Z`}" fill="url(#${surfaceId}-jersey)" stroke="#a2bdc5" stroke-width=".7"/>`}
+    ${pose.mode==='cut'?buildCutHead(player,pose,instance)
+      :buildPlayerSideHead(player,{x:0,y:-pose.torso-9-pose.skull,height:pose.skull,idSuffix:`-motion-${instance}`})}
+    <text x="0" y="${-pose.torso*.4}" text-anchor="middle" fill="#e0eaed" font-size="20" font-family="system-ui">${escape(player.jerseyNumber??'')}</text></g>`;
+  return `<defs><linearGradient id="${surfaceId}-jersey"><stop stop-color="#29495b"/><stop offset=".55" stop-color="#537d91"/><stop offset="1" stop-color="#466c80"/></linearGradient>${craft?`<linearGradient id="${surfaceId}-shorts">${bodyClothStops(TRAINING_KIT_COLOR)}</linearGradient><linearGradient id="${surfaceId}-far-shorts">${bodyClothStops(TRAINING_KIT_FAR_COLOR)}</linearGradient>`:''}</defs><g data-motion-frame>${limb(pose.legs[1],'leg',true)}${limb(pose.arms[1],'arm',true)}${limb(pose.legs[0],'leg',false)}${body}${limb(pose.arms[0],'arm',false)}${pose.mode==='strength'?pose.arms.map(arm=>`<g data-resistance-prop transform="translate(${round(arm.hand.x)} ${round(arm.hand.y-8)})" fill="#829aa6" stroke="#d8e4ea"><rect x="-14" y="-3" width="28" height="6" rx="2"/><rect x="-20" y="-10" width="8" height="20" rx="3"/><rect x="12" y="-10" width="8" height="20" rx="3"/></g>`).join(''):''}</g>
+    <g data-motion-belt transform="translate(${round(pose.beltOffset)} 0)" stroke="#78939d" opacity=".7">${Array.from({length:12},(_,i)=>`<path d="M${32+i*24} ${pose.floor+8} h12"/>`).join('')}</g>`;
+}
+
+const motionLabel=mode=>mode==='strength'?'Resistance squat':mode==='endurance'?'Sustained running':mode==='cut'?'Lateral plant & cut':mode==='acceleration'?'Acceleration build-up':mode==='jump'?'Controlled jump':'Treadmill running';
+const motionCaption=pose=>pose.mode==='strength'?`Resistance squat · ${pose.drill.stage}`:pose.mode==='endurance'?`Sustained running · ${Math.floor(pose.drill.seconds)}s · ${Math.round(pose.drill.paceFraction*100)}% cadence`: `${motionLabel(pose.mode)} · ${pose.mode==='cut'?pose.drill.stage:pose.drill?`${pose.drill.stage} (${Math.round(pose.drill.speedFraction*100)}%)`:'movement study'}`;
+
+let motionInstance=0; // SVG resource namespace only; never seeds appearance.
+export function buildPlayerMotionSvg(player,{mode='run',phase=0,idSuffix=''}={}) {
+  const pose=solvePlayerMotion(player,{mode,phase});
+  if(!pose)return '<div class="portrait-unavailable">Movement unavailable</div>';
+  const instance=idSuffix||`instance-${++motionInstance}`;
+  return `<svg class="player-motion-svg" viewBox="${pose.mode==='cut'?'-60 0 440 800':'0 0 320 800'}" role="img" aria-label="${escape(player.name||'Player')} ${motionLabel(pose.mode)} movement study" data-mode="${pose.mode}" data-motion-instance="${escape(instance)}">
+    <rect ${pose.mode==='cut'?'x="-60" width="440"':'width="320"'} height="800" rx="12" fill="#14232c"/><path d="M32 54 V${pose.floor} H294" fill="none" stroke="#779099"/>
+    ${[24,48,72,84].map(h=>`<path d="M28 ${pose.floor-h*6} H37" stroke="#a5b8bf"/><text x="24" y="${pose.floor+3-h*6}" text-anchor="end" fill="#c2d0d5" font-size="9">${h}″</text>`).join('')}
+    <g data-motion-content>${motionMarkup(player,pose,instance)}</g>
+    <text data-motion-caption x="160" y="790" text-anchor="middle" fill="#c2d0d5" font-size="10">${motionCaption(pose)}</text></svg>`;
+}
+
+const mountedMovement=new WeakMap();
+export function mountPlayerMovement(root,player) {
+  mountedMovement.get(root)?.();
+  const details=root.querySelector('.player-movement');
+  if(!details)return;
+  const svg=details.querySelector('.player-motion-svg'), content=svg?.querySelector('[data-motion-content]');
+  const select=details.querySelector('[data-motion-mode]'), button=details.querySelector('[data-motion-toggle]');
+  if(!content||!select||!button)return;
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  let paused=false,handle=null,elapsed=0,previous=null,lastPaint=0,visible=false,disposed=false;
+  const stop=()=>{if(handle!=null)cancelAnimationFrame(handle);handle=null;previous=null;};
+  const render=phase=>{
+    const pose=solvePlayerMotion(player,{mode:select.value,phase});
+    content.innerHTML=motionMarkup(player,pose,svg.dataset.motionInstance);
+    svg.dataset.mode=pose.mode;
+    svg.setAttribute('viewBox',pose.mode==='cut'?'-60 0 440 800':'0 0 320 800');
+    const background=svg.querySelector(':scope > rect');
+    background.setAttribute('x',pose.mode==='cut'?'-60':'0');
+    background.setAttribute('width',pose.mode==='cut'?'440':'320');
+    svg.setAttribute('aria-label',`${player.name||'Player'} ${motionLabel(pose.mode)} movement study`);
+    svg.querySelector('[data-motion-caption]').textContent=motionCaption(pose);
+    const status=details.querySelector('[data-motion-status]');
+    if(status)status.textContent=motionCaption(pose);
+  };
+  const frame=time=>{
+    handle=null;
+    if(disposed||!details.isConnected||!details.open||!visible||paused||reduced.matches||document.hidden){previous=null;return;}
+    if(previous!=null)elapsed+=Math.min(100,time-previous);
+    previous=time;
+    if(time-lastPaint>=40){const profile=playerMovementProfile(player);const rate=select.value==='strength'?1/solvePlayerMotion(player,{mode:'strength',phase:0}).drill.duration:select.value==='endurance'?1/60:select.value==='cut'?1/solvePlayerMotion(player,{mode:'cut',phase:0}).drill.duration:select.value==='jump'?.65:select.value==='acceleration'?1/accelerationStudy(profile,0).duration:profile.cadence;render(elapsed/1000*rate);lastPaint=time;}
+    handle=requestAnimationFrame(frame);
+  };
+  const sync=()=>{
+    if(disposed)return;
+    stop();button.disabled=reduced.matches;button.textContent=reduced.matches?'Motion reduced':paused?'Play':'Pause';
+    if(reduced.matches)render(0);
+    if(details.isConnected&&details.open&&visible&&!paused&&!reduced.matches&&!document.hidden)handle=requestAnimationFrame(frame);
+  };
+  details.addEventListener('toggle',sync);
+  const togglePause=()=>{paused=!paused;sync();};
+  const changeMode=()=>{elapsed=0;render(0);sync();};
+  button.addEventListener('click',togglePause);
+  select.addEventListener('change',changeMode);
+  // Visibility/media listeners are removed when the dossier is replaced.
+  const cleanup=()=>{if(disposed)return;disposed=true;stop();observer.disconnect();intersection.disconnect();details.removeEventListener('toggle',sync);button.removeEventListener('click',togglePause);select.removeEventListener('change',changeMode);reduced.removeEventListener('change',sync);document.removeEventListener('visibilitychange',sync);mountedMovement.delete(root);};
+  const observer=new MutationObserver(()=>{if(!details.isConnected)cleanup();});
+  const intersection=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting===true;sync();});
+  intersection.observe(details);
+  observer.observe(document.body,{childList:true,subtree:true});
+  reduced.addEventListener('change',sync);document.addEventListener('visibilitychange',sync);
+  sync();
+  mountedMovement.set(root,cleanup);
+  return cleanup;
+}
+
+// Loaded with the portrait island, keeping movement presentation out of boot.
+export function buildPlayerMovementControls(player) {
+  const pose=solvePlayerMotion(player);
+  return `<details class="player-movement"><summary>Movement study</summary><div class="row"><label>Movement <select data-motion-mode><option value="run">Treadmill running</option><option value="acceleration">Acceleration build-up</option><option value="cut">Lateral plant &amp; cut</option><option value="jump">Controlled jump</option><option value="strength">Resistance squat</option><option value="endurance">Sustained running</option></select></label><button type="button" data-motion-toggle>Pause</button></div>${buildPlayerMotionSvg(player)}<p class="small" data-motion-status>${pose?escape(motionCaption(pose)):'Movement unavailable'}</p><p class="small">Estimated motion using this player's dimensions and physical attributes. Build-up percentages show this illustrative drill's pace, not a measured sprint. The lateral drill shows planned planting and redirection, not reaction time. Resistance tempo reflects strength. Sustained-running percentages compare cadence with the start of this illustrative drill. These studies are not motion capture or measured workouts.</p></details>`;
+}

@@ -13,7 +13,7 @@ export const CLIENT_SCENARIO = Object.freeze({ seed: 20260306, year: 2024, team:
 
 // Same artifact/header parser as responsive-evidence; there is no API server
 // or HTML runtime-meta rewrite. Emulate Pages' canonical .html redirects too.
-export async function startStaticClientHost() {
+export async function startStaticClientHost({ sourceOverrides = {} } = {}) {
   await fs.access(path.join(artifact, "lib/api/clientSessionRecovery.js"));
   const headers = parseArtifactHeaderRules(await fs.readFile(path.join(artifact, "_headers"), "utf8"));
   const server = http.createServer(async (req, res) => {
@@ -30,7 +30,7 @@ export async function startStaticClientHost() {
         res.writeHead(403).end();
         return;
       }
-      const body = await fs.readFile(target);
+      const body = await fs.readFile(Object.hasOwn(sourceOverrides, relative) ? sourceOverrides[relative] : target);
       res.writeHead(200, { ...resolveArtifactHeaders(headers, url.pathname), "content-type": types[path.extname(target)] || "application/octet-stream" });
       res.end(body);
     } catch (error) {

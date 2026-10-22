@@ -1,0 +1,245 @@
+{
+  "sameSavedCompleteHead": true,
+  "samePalette": true,
+  "playerId": "P2026-BUF-OL-75203022",
+  "cases": 6,
+  "captures": [
+    {
+      "path": "output/playwright/limb-sweep-desktop-dark-front.png",
+      "sha256": "9cf77fc465eca96bd22c9df7f4ca4c21fb1c59839bf02f5ea7f40a695e723495",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-dark-side.png",
+      "sha256": "d9274b412f062db30af8a88488d94d0beef516df49e3f36de56ea96f4a310629",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-dark-cut.png",
+      "sha256": "b0531e968a3228b5ecc61111cfdcab71228b62444e772cb32f5461374a9b7ea9",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-dark-strength.png",
+      "sha256": "782f8eb99c8d5ec7e65c7dd641b78340b0835175cd06e3c3966bb9fa387fbe15",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-dark-run.png",
+      "sha256": "c58f4909bd35f3230e8e6f7af598ee90fc9c6baf7e157e37aeb110c33fae04bc",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-dark-jump.png",
+      "sha256": "936b7498d0469b39e92a183508a30f4f747eedbdea62f641420879b0b98383cc",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-front.png",
+      "sha256": "fa653cf3e4ce5f49b8801fe0a1e1dd14cb0f2955d3a2dac20cc9f3efaf30bacb",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-side.png",
+      "sha256": "7b61d9c6c47431122ae6754550f605d0b88b99eec57aae692ac55f43c2e4ce8e",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-cut.png",
+      "sha256": "33ca1d5dccff52dcfce98c24c6d7272e52d3776728984cb25cbc0e808b0220a6",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-strength.png",
+      "sha256": "2dfa3956c3d5b17be90614d0436acb079b2d195ec25864da13656cd500534f32",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-run.png",
+      "sha256": "2e7370f083bf9fd2685d81018caace4520a6951fa0b5028d324ad03e00c49a8c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-jump.png",
+      "sha256": "b44e0e6a041f446a1b2825144e339666aabbf43c56e5bd47ed439dfdc931e2ba",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-dark-front.png",
+      "sha256": "91481f0a1152fd22add4e017d0315025eed40d389f3a501296deeb835d70f754",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-dark-side.png",
+      "sha256": "c62ed7d2b190a8aa95ffa1753de1251de426c84f8c4e1cfbf4f72172a20c2ced",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-dark-cut.png",
+      "sha256": "08cf7c7c2c067d0fbbf224301830a50824edd330a8b48383ac69c34c67c99478",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-dark-strength.png",
+      "sha256": "735c3d8556ff2e5ed813714d1582eb2696b882ad004450cc12c767db63803345",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-dark-run.png",
+      "sha256": "904f3b3a1827f54cc89560d3f5c0a51b5721b5f87d3da56510622790e690958d",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-dark-jump.png",
+      "sha256": "0c3dc0339603ddf52909298d78979bf35b106be614a4845650d137088d82444a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-front.png",
+      "sha256": "1bb62ad67f5a6e7a7490d44837579b51b5077e0a6ed3edcdf1a22fd3d88e432e",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-side.png",
+      "sha256": "8c29b661b391934b0c4bcfac08046b90f3605619eafb80a8251d9e3ca69c004a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-cut.png",
+      "sha256": "354524da6f362cc834061796a23dd4a54d3683e17db9a4bfea201d3fe682593a",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-strength.png",
+      "sha256": "c28c43d4476eb7f1db454b1e0537dc7ea86c04118d8931d9e17c29405fe5380c",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-run.png",
+      "sha256": "e21da73d455f95e309dbba9d184eefebf2b289a2e4c6ed5ffb3c0a1cda3e9a23",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-jump.png",
+      "sha256": "3202656057c830a013d6315d760ebaa74bb54743a4a55fbebfabbe78eb135f2b",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    }
+  ],
+  "timing": {
+    "samples": 60,
+    "medianMs": 7.1000001430511475,
+    "p95Ms": 20.799999952316284,
+    "maxMs": 32.799999952316284,
+    "hardware": "local headless Chromium; emulated viewport, no physical mobile claim",
+    "gpuCompletionSynchronized": true,
+    "includesCpuAndDriverOverhead": true
+  },
+  "disposed": [
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    },
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    }
+  ],
+  "fullVisualAcceptance": false,
+  "wholeUnionMassVerified": false
+}

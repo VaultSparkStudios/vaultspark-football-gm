@@ -664,6 +664,14 @@ export function createLocalApiRuntime({
         }));
       }
 
+      if (method === "GET" && pathname === "/api/injury-salary-claims") {
+        const teamId=(url.searchParams.get('team')||session.controlledTeamId).toUpperCase();
+        return finish(jsonResponse(200,{ok:true,teamId,claims:session.getInjurySalaryClaims(teamId)}));
+      }
+      if (method === "POST" && pathname === "/api/injury-salary-claims/offer") {
+        const result=session.offerInjurySalaryClaim({...body,teamId:String(body?.teamId||'').toUpperCase()});
+        return finish(jsonResponse(result.ok?200:result.status||400,result));
+      }
       if (method === "GET" && pathname === "/api/roster") {
         const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
         const position = url.searchParams.get("position");
@@ -679,9 +687,24 @@ export function createLocalApiRuntime({
           ok: true,
           teamId,
           roster,
+          injuryClaims:session.getInjurySalaryClaims(teamId),
           windowMap: session.getRosterWindowMap(teamId),
           cap: session.getTeamCapSummary(teamId)
         }));
+      }
+
+      if (method === "POST" && pathname === "/api/roster/elevation-preview") {
+        if (!body?.teamId || !body?.playerId) return finish(jsonResponse(400, { ok: false, error: 'teamId and playerId required.' }));
+        const result = session.previewPlayerElevation({ teamId: String(body.teamId).toUpperCase(), playerId: String(body.playerId) });
+        return finish(jsonResponse(result.ok ? 200 : result.status || 400, result));
+      }
+
+      if (method === "POST" && pathname === "/api/roster/elevation") {
+        if (!body?.teamId || !body?.playerId) return finish(jsonResponse(400, { ok: false, error: 'teamId and playerId required.' }));
+        const result = session.declarePlayerElevation({ teamId: String(body.teamId).toUpperCase(), playerId: String(body.playerId),
+          expectedGameId: body.expectedGameId });
+        return finish(jsonResponse(result.ok ? 200 : result.status || 400, { ...result,
+          roster: session.getRoster(String(body.teamId).toUpperCase()), state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/roster/designation") {
@@ -692,7 +715,9 @@ export function createLocalApiRuntime({
           teamId: String(body.teamId).toUpperCase(),
           playerId: String(body.playerId),
           designation: String(body.designation),
-          active: body.active !== false
+          active: body.active === undefined ? true : body.active,
+          beginPractice: body.beginPractice === undefined ? false : body.beginPractice,
+          returnEligible: body.returnEligible === undefined ? true : body.returnEligible
         });
         return finish(
           jsonResponse(result.ok ? 200 : 400, {
@@ -775,7 +800,9 @@ export function createLocalApiRuntime({
         }
         const result = session.signFreeAgent({
           teamId: String(body.teamId).toUpperCase(),
-          playerId: String(body.playerId)
+          playerId: String(body.playerId),
+          rosterSlot: body.rosterSlot ?? 'active',
+          weeklySalary: body.weeklySalary ?? null
         });
         return finish(
           jsonResponse(result.ok ? 200 : 400, {
@@ -987,7 +1014,7 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/draft/prepare") {
         // S108 — every draft response carries the scout's view, never the truth.
-        const draft = scoutedDraftResult(session.prepareDraft());
+        const draft = scoutedDraftResult(session.prepareDraft({ scoutingOnly: session.phase !== 'offseason' }));
         return finish(jsonResponse(200, { ok: true, draft, state: getAugmentedState(session) }));
       }
 

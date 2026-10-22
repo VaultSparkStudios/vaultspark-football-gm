@@ -53,7 +53,9 @@ export async function handleFreeAgencyRoutes(req, res, url, ctx) {
     }
     const result = ctx.session.signFreeAgent({
       teamId: String(body.teamId).toUpperCase(),
-      playerId: String(body.playerId)
+      playerId: String(body.playerId),
+      rosterSlot: body.rosterSlot ?? 'active',
+      weeklySalary: body.weeklySalary ?? null
     });
     sendJson(res, result.ok ? 200 : 400, {
       ...result,

@@ -71,7 +71,14 @@ const REQUIRED_BLOCKS = [
     label: 'Project title header (Studio OS box)',
     // S358 — grouped (Atlas report, 4th template revert): the ungrouped form
     // matched a bare SPARKED/VAULTED anywhere, so a brief with no title box passed.
-    pattern: /╔═+╗[\s\S]{0,400}?\b(?:FORGE|SPARKED|VAULTED)\b/,
+    // S370 [audit #5]: the canonical v5 brief titles the box INSIDE its top border
+    // (`╔══ STUDIO OPS ═══╗`), which the plain-border form reported as missing on
+    // every /start. Both borders open a title box; a brief with no box still fails.
+    // S370 review #2: in v5 EVERY section box has a titled border, so "any box near a
+    // lifecycle word" let SIGNALS (whose IGNIS row says FORGE) stand in for a deleted
+    // title box. The title box is the FIRST box in the brief, and the lifecycle word
+    // must sit on one of its own `║` rows — the match cannot cross that box's `╚`.
+    pattern: /^[^╔]*╔[^\n]*╗\r?\n(?:[ \t]*║[^\n]*\r?\n){0,8}?[ \t]*║[^\n]*\b(?:FORGE|SPARKED|VAULTED)\b/,
     severity: 'recommended',
   },
   {

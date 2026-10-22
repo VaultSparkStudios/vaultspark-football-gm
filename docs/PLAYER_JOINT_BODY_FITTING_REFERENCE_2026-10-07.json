@@ -1,0 +1,39 @@
+{
+  "version": "joint-body-fitting-research-v1",
+  "reviewDate": "2026-10-07",
+  "status": "method-reviewed-athlete-fit-pending",
+  "runtimeCoefficientsChanged": false,
+  "references": [
+    {
+      "id": "guan-2012-multivariate-body-models",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4698842/",
+      "officialRepository": "https://stacks.cdc.gov/view/cdc/37219",
+      "doi": "10.1177/0018720812442685",
+      "retrieval": "Direct full article; Methods/Multivariate anthropometric accommodation and Results/Multivariate anthropometric models reviewed.",
+      "cohort": "Historical US truck drivers; not an athlete or NFL cohort.",
+      "participants": {"male": 1779, "female": 171, "total": 1950},
+      "methodObservation": "Twelve linked dimensions reduced to three principal components; male explained variation 88%. Male inputs log-transformed after normality checks; one outlier removed. Fifteen boundary/center models describe accommodation, not population prevalence.",
+      "sourceConflict": "Rendered Table 1 grand total says 1995; sex totals, abstract and Table 2 support 1950. Preserve this conflict; never adopt the grand-total cell silently.",
+      "limitation": "No coefficients, participant values or frequencies transferred into football generation. Accommodation boundary models are not a random player generator."
+    },
+    {
+      "id": "ansur-ii-public-release-rechecked",
+      "url": "https://www.army.mil/article/188601/for_good_measure_natick_releases_raw_data_from_army_wide_anthropometric_survey",
+      "retrieval": "Direct official release reviewed; raw records and measurement handbook remain unreviewed.",
+      "observations": "Official public release describes 93 body measures from 4082 men and 1986 women, separately from surface scans.",
+      "candidateArchive": "https://mreed.umtri.umich.edu/mreed/downloads/anthro/ANSUR2Distribution.zip",
+      "archiveDisposition": "Not downloaded. Package-trust output 0e55e8: BLOCK; checksum/signature and official-source verification required.",
+      "limitation": "Historical soldier sample supplies neither world demographics nor NFL body-shape frequencies. No raw-record covariance or endpoint map verified."
+    }
+  ],
+  "implementationInferences": {
+    "jointFitting": "Select a reproducible conditional multivariate model or compatible nearest-neighbor residual model after comparing held-out athlete reconstruction. Retain source units, landmarks, posture and measurement error before normalizing.",
+    "conditioning": "Condition on compatible stature, dated mass and recorded measurements; retain residual covariance among missing breadths, depths, segment lengths and girths. Race, hair, skin and eyes are not performance or physique inputs.",
+    "modelSelection": "Compare reconstruction error and conditional covariance, not only marginal means. Validate heavy/tall/short and position strata; disclose effective sample size, unsupported cells and extrapolation. A reference model cannot silently narrow measured athlete tails.",
+    "tails": "Save observations outside fitted reference coverage unchanged. Separate a source outlier flag from measurement error or geometry conflict; only conflicting evidence triggers a disclosed residual/refusal. Never discard a valid heavy-fast player solely for being statistically rare.",
+    "sampling": "Sample a supported joint interior distribution with saved individual residuals. Boundary representatives are deterministic stress cases, never equally likely player templates. No universal normality assumption or imported truck-driver coefficients.",
+    "rendering": "Resolve the same saved shape in front, side and motion. Preserve bones and measurement endpoints; reallocate compatible soft-tissue bulk through dated physical changes. Artistic density/surface assumptions retain separate provenance."
+  },
+  "requiredFixtures": ["joint-shape-reconstruction", "reference-tail-preserves-player", "boundary-model-is-not-prevalence", "source-total-conflict"],
+  "adoptionEvidenceRequired": ["athlete-compatible records and measurement dictionary", "source hashes and population/period definitions", "held-out reconstruction and conditional covariance diagnostics", "explicit supported-range and extrapolation report", "saved individual residuals and decoder version", "actual-size/common-scale image inspection and named-save restoration"]
+}

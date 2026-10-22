@@ -37,6 +37,7 @@
 
 /** Commands that act on behalf of one franchise, and the body field naming it. */
 export const TEAM_SCOPED_COMMANDS = {
+  '/api/injury-salary-claims/offer': {field:'teamId',action:'offer settlement of an original-club injury salary claim'},
   "/api/staff": { field: "teamId", action: "change coaching staff" },
   "/api/owner": { field: "teamId", action: "change owner-facing franchise settings" },
   "/api/depth-chart": { field: "teamId", action: "set the depth chart" },
@@ -45,6 +46,8 @@ export const TEAM_SCOPED_COMMANDS = {
   "/api/practice-squad": { field: "teamId", action: "move a player to or from the practice squad" },
   "/api/waiver-claim": { field: "teamId", action: "claim a player off waivers" },
   "/api/roster/designation": { field: "teamId", action: "change a roster designation" },
+  "/api/roster/elevation-preview": { field: "teamId", action: "preview an elevation" },
+  "/api/roster/elevation": { field: "teamId", action: "declare a game elevation" },
   "/api/free-agency/offer": { field: "teamId", action: "make a free-agency offer" },
   "/api/retirement/override": { field: "teamId", action: "override a retirement" },
   "/api/injuries/rehab-plan": { field: "teamId", action: "set a rehab plan" },

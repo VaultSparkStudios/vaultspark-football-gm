@@ -1,0 +1,274 @@
+{
+  "observations": [
+    {
+      "id": "matched-scalp-0",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 23550,
+          "triangles": 39520
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 23550,
+          "triangles": 39520
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-1",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 23550,
+          "triangles": 39520
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 23550,
+          "triangles": 39520
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-2",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-3",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-4",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-5",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-6",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 23550,
+          "triangles": 39520
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 23550,
+          "triangles": 39520
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-7",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-8",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-9",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 28902,
+          "triangles": 48440
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-10",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 13536,
+          "triangles": 24800
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 13536,
+          "triangles": 24800
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-11",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 13536,
+          "triangles": 24800
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 13536,
+          "triangles": 24800
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-12",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 27654,
+          "triangles": 46520
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 27654,
+          "triangles": 46520
+        }
+      ]
+    },
+    {
+      "id": "matched-scalp-13",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 27264,
+          "triangles": 45920
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 27264,
+          "triangles": 45920
+        }
+      ]
+    },
+    {
+      "id": "no-scalp-bearded-control",
+      "inputUnchanged": true,
+      "meshes": [
+        {
+          "state": "before",
+          "clay": false,
+          "vertices": 11358,
+          "triangles": 20336
+        },
+        {
+          "state": "candidate",
+          "clay": false,
+          "vertices": 11358,
+          "triangles": 20336
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+import {validateSnapshotAdmittedInjuryContinuations,validateAdmittedInjuryContinuation} from './admittedInjuryContinuation.js';
+import {financialYearForLeague} from '../data/nflSalaryCap.js';
+import {validatePreRolloverMedicalCalendar} from './elevationInjuryPay.js';
+
+// Earning year and injury year are separate authorities. These are admitted
+// wages, never a filed grievance, settlement, employment extension or service.
+export const LEGACY_ADMITTED_PAYROLL_VERSION='admitted-injury-earning-period-v1';
+export const ADMITTED_PAYROLL_VERSION='admitted-injury-earning-period-v2';
+const supportedVersion=version=>[LEGACY_ADMITTED_PAYROLL_VERSION,ADMITTED_PAYROLL_VERSION].includes(version);
+const keys=['version','payId','rightId','playerId','gameId','teamId','injuryYear','earningYear','phase','week','amountCents'];
+const chargeKeys=['version','payId','year','amountCents'];
+const exact=(v,k)=>v!==null&&typeof v==='object'&&!Array.isArray(v)&&Object.keys(v).length===k.length&&k.every(key=>Object.hasOwn(v,key));
+const fail=m=>{throw Object.assign(new TypeError(`Invalid admitted injury payroll: ${m}`),{status:400,reasonCode:'ADMITTED_INJURY_PAYROLL_INVALID'});};
+const identity=(rightId,year,phase,week)=>JSON.stringify([rightId,year,phase,week]);
+function period(year,phase,week,version=ADMITTED_PAYROLL_VERSION){
+ if(!Number.isSafeInteger(year)||year<2023||year>2200||!Number.isSafeInteger(week)
+  ||!(phase==='offseason'&&week>=1&&week<=25||phase==='regular-season'&&week>=1&&week<=18||phase==='postseason'&&week>=19&&week<=23
+   ||version===ADMITTED_PAYROLL_VERSION&&phase==='pre-rollover'&&week>=24&&week<=27))fail('earning period');
+}
+export function retainedAdmittedInjuryCap(ledger={}){
+ const rows=ledger.admittedInjuryCharges;if(rows===undefined)return 0;
+ if(!Array.isArray(rows))fail('cap charges');
+ let total=0n;const seen=new Set();
+ for(const r of rows){
+  if(!exact(r,chargeKeys)||!supportedVersion(r.version)||typeof r.payId!=='string'||!r.payId
+   ||!Number.isSafeInteger(r.year)||r.year<2023||r.year>2200||!Number.isSafeInteger(r.amountCents)||r.amountCents<0||seen.has(r.payId))fail('cap charge');
+  seen.add(r.payId);total+=BigInt(r.amountCents);
+ }
+ if(total>BigInt(Number.MAX_SAFE_INTEGER))fail('cap sum');
+ return Number(total)/100;
+}
+// Arithmetic preflight only: the caller validates wage/source authority first.
+// Build every payer's complete proposed attribution before committing any wage.
+export function prepareAdmittedInjuryCapCharges(capLedger={},changes=[]){
+ const planned=new Map();
+ for(const row of changes){
+  if(!planned.has(row.teamId))planned.set(row.teamId,[...(capLedger[row.teamId]?.admittedInjuryCharges||[])]);
+  planned.get(row.teamId).push({version:row.version??ADMITTED_PAYROLL_VERSION,payId:row.payId,year:row.earningYear,amountCents:row.amountCents});
+ }
+ for(const rows of planned.values())retainedAdmittedInjuryCap({admittedInjuryCharges:rows});
+ return planned;
+}
+export function validateSnapshotAdmittedInjuryPayroll(snapshot){
+ const league=snapshot.league||snapshot;
+ validateSnapshotAdmittedInjuryContinuations(league);
+ validatePreRolloverMedicalCalendar(league);
+ const rows=league.admittedInjuryPayroll===undefined?[]:league.admittedInjuryPayroll;
+ if(!Array.isArray(rows))fail('payroll');
+ // Legacy storage-only snapshots can omit the league's financial clock.
+ // Require it for actual wage rows; absent/empty payroll still validates every
+ // cap collection below, so an orphan charge cannot bypass source matching.
+ const current=rows.length?financialYearForLeague(league):undefined,seen=new Set(),expected=new Map();
+ const rights=new Map((league.admittedInjuryContinuations||[]).map(r=>[r.rightId,r]));
+ for(const r of rows){
+  if(!exact(r,keys)||!supportedVersion(r.version))fail('row');
+  period(r.earningYear,r.phase,r.week,r.version);
+  if(r.phase==='pre-rollover'&&!league.preRolloverMedicalCalendar?.some(row=>row.year===r.earningYear&&row.throughWeek>=r.week))fail('unproved pre-rollover period');
+  const right=rights.get(r.rightId);
+  if(!right||r.payId!==identity(r.rightId,r.earningYear,r.phase,r.week)||seen.has(r.payId)
+   ||r.playerId!==right.playerId||r.gameId!==right.gameId||r.teamId!==right.teamId||r.injuryYear!==right.injuryYear
+   ||r.earningYear<=right.injuryYear||r.earningYear>current||r.phase!=='offseason'&&r.earningYear>league.year
+   ||!Number.isSafeInteger(r.amountCents)||r.amountCents<=0||r.amountCents!==right.weeklyRateCents)fail('source/rate/period');
+  seen.add(r.payId);
+  const ledger=league.capLedger?.[r.teamId];
+  if(r.earningYear===current&&!(ledger?.rolloverAppliedThroughYear>=r.earningYear))expected.set(r.payId,r);
+ }
+ const matched=new Set();
+ for(const [teamId,ledger]of Object.entries(league.capLedger||{})){
+  retainedAdmittedInjuryCap(ledger);
+  for(const charge of ledger.admittedInjuryCharges||[]){
+   const r=expected.get(charge.payId);
+   if(!r||r.teamId!==teamId||charge.version!==r.version||charge.year!==r.earningYear||charge.amountCents!==r.amountCents||matched.has(charge.payId))fail('unmatched cap attribution');
+   matched.add(charge.payId);
+  }
+ }
+ if(matched.size!==expected.size)fail('missing current cap charge');
+}
+
+// Call BEFORE recovery for the elapsed period. It validates the entire batch
+// before writing. An exact earned retry is inert, even after recovery or closure.
+// Calendar callers must prove which periods elapsed; this ledger does not
+// advance time and cannot replace an offseason/recovery calendar.
+export function recordAdmittedInjuryPeriodPay(league,{earningYear,phase,week}={}){
+ period(earningYear,phase,week);validateSnapshotAdmittedInjuryPayroll(league);
+ if(phase==='pre-rollover'&&!league.preRolloverMedicalCalendar?.some(row=>row.year===earningYear&&row.throughWeek>=week))fail('unproved pre-rollover period');
+ const current=financialYearForLeague(league);
+ const matchingPhase=phase==='offseason'?earningYear===league.year+1:earningYear===league.year;
+ const people=new Map([...(league.players||[]),...(league.retiredPlayers||[])].map(p=>[p.id,p]));
+ const existing=new Set((league.admittedInjuryPayroll||[]).map(r=>r.payId)),changes=[];
+ for(const right of league.admittedInjuryContinuations||[]){
+  // The source year's own adjustment remains in elevationInjuryPay. This
+  // annual interval bridges only injuries retained from earlier years.
+  if(phase==='pre-rollover'&&right.injuryYear===earningYear)continue;
+  const payId=identity(right.rightId,earningYear,phase,week);
+  if(existing.has(payId))continue;
+  const source=validateAdmittedInjuryContinuation(league,right),player=people.get(right.playerId);
+  if(!source.injuryOngoing||source.episodeStatus!=='active')continue;
+  if(!matchingPhase||earningYear<=right.injuryYear||earningYear!==current||league.capLedger?.[right.teamId]?.rolloverAppliedThroughYear>=earningYear)fail('earning phase/year closed or not post-source');
+  if(!player)fail('missing injured person');
+  changes.push({version:ADMITTED_PAYROLL_VERSION,payId,rightId:right.rightId,playerId:right.playerId,gameId:right.gameId,
+   teamId:right.teamId,injuryYear:right.injuryYear,earningYear,phase,week,amountCents:right.weeklyRateCents});
+ }
+ if(changes.length){
+  const planned=prepareAdmittedInjuryCapCharges(league.capLedger,changes);
+  league.admittedInjuryPayroll||=[];league.capLedger||={};
+  for(const row of changes)league.admittedInjuryPayroll.push(row);
+  for(const [teamId,charges]of planned){
+   const ledger=league.capLedger[teamId]||={};ledger.admittedInjuryCharges=charges;
+  }
+ }
+ return structuredClone(changes);
+}

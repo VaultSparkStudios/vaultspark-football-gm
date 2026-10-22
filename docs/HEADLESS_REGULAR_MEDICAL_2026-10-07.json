@@ -1,0 +1,111 @@
+{
+  "kind": "headless-regular-medical-and-clearance-pay",
+  "status": "component-verified-whole-year-policy-incomplete",
+  "recordedAt": "2026-10-07T23:33:46.418Z",
+  "sourceHashes": {
+    "src/engine/seasonSimulator.js": "a92300d41a4c5af2e3c8262ddc4d42d4f3f11802a717c72e196f9634650d8fd8",
+    "src/domain/regularMedicalRecovery.js": "642fc8735d95687b6a8ea522c61ee3e52954bdf595482410731d0500454eb3a4",
+    "src/engine/weeklySimulator.js": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+    "src/runtime/GameSession.js": "c4f880051da9f0f273f483cd6c3e75a893c93baddb2d3661ae0f64c54c2fdb52",
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "test/headless-regular-medical.test.js": "8795fa161d22e01f792fa7ab8cc451c973d4415ae004d82f5a206f67bb53d5a9",
+    "test/helpers/regularMedicalFixture.js": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba"
+  },
+  "builtHashes": {
+    "static/src/engine/seasonSimulator.js": {
+      "sha256": "a92300d41a4c5af2e3c8262ddc4d42d4f3f11802a717c72e196f9634650d8fd8",
+      "source": "src/engine/seasonSimulator.js",
+      "sourceSha256": "a92300d41a4c5af2e3c8262ddc4d42d4f3f11802a717c72e196f9634650d8fd8",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/src/engine/weeklySimulator.js": {
+      "sha256": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+      "source": "src/engine/weeklySimulator.js",
+      "sourceSha256": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/src/domain/regularMedicalRecovery.js": {
+      "sha256": "642fc8735d95687b6a8ea522c61ee3e52954bdf595482410731d0500454eb3a4",
+      "source": "src/domain/regularMedicalRecovery.js",
+      "sourceSha256": "642fc8735d95687b6a8ea522c61ee3e52954bdf595482410731d0500454eb3a4",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/src/domain/regularInjuryAccrual.js": {
+      "sha256": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+      "source": "src/domain/regularInjuryAccrual.js",
+      "sourceSha256": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/src/domain/admittedInjuryPayroll.js": {
+      "sha256": "abbc44675945a5a555a6363b7cc87bd820c4a7e2a275790136aa17194d6e1f95",
+      "source": "src/domain/admittedInjuryPayroll.js",
+      "sourceSha256": "abbc44675945a5a555a6363b7cc87bd820c4a7e2a275790136aa17194d6e1f95",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "d7f8ba2d67e76b230cf1aea8ea6e871cec21a35988fadad9a9a3f362bc19ba04",
+  "verification": {
+    "focused": {
+      "output": "7233f8",
+      "pass": 29,
+      "fail": 0,
+      "skip": 0,
+      "note": "Initial six headless cases plus interactive/accrual and sport competition tests."
+    },
+    "completeSeasonRosterService": {
+      "output": "e16d23",
+      "pass": 23,
+      "fail": 0,
+      "skip": 0,
+      "note": "Final seven headless cases including actual complete season; legal game-day roster and service coverage."
+    },
+    "wholeSeasonManagement": {
+      "output": "1b55bc",
+      "pass": 9,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 118178.8978,
+      "scope": "test/whole-season-management.test.js; actual complete season and restored annual continuation, not thirty seasons."
+    },
+    "browserBoot": {
+      "output": "a7319d",
+      "pass": true
+    },
+    "browserReachability": {
+      "output": "86d14a",
+      "pass": true
+    },
+    "scopedDiff": {
+      "output": "1a9cf0",
+      "pass": true
+    },
+    "auditPremises": {
+      "output": "1a9cf0",
+      "verified": 6,
+      "contradicted": 0,
+      "unknown": 0
+    }
+  },
+  "independentReview": {
+    "receipt": "docs/HEADLESS_REGULAR_MEDICAL_REVIEW_2026-10-07.json",
+    "sha256": "4cbf1e1073b0d87bcc7c1e6d3c4ca3945e071734527ee41f986f3884b22f289b",
+    "verdict": "PASS",
+    "round": 1
+  },
+  "behavior": [
+    "Headless regular weeks use the shared weekly simulator and CPU standard-elevation rules.",
+    "Private medical and source-pay previews precede readiness; apply recovery only after readiness succeeds.",
+    "Current-year entitlement is captured before clearance and reconciled against actual practice base or settled elevation.",
+    "Older active/retired admitted sources earn before recovery; recovery stops new wages without fabricating employment or service.",
+    "Source incidents in the current or a future recorded week do not heal before that incident.",
+    "Full-season source/year validation precedes schedule RNG consumption.",
+    "Interactive maintenance remains the sole interactive recovery owner; registered nonfootball paths bypass football medical policy."
+  ],
+  "limits": [
+    "This receipt does not certify an arbitrary whole-season transaction or retry after every possible later simulation failure.",
+    "Medical intervals are simulation approximations; no new salary/Benefits/service legal policy is adopted.",
+    "Automatic annual admission, actual new-employer/base offsets and dispute policy remain incomplete.",
+    "Browser runtime annual evidence is in the separate admitted pre-rollover receipt; no headless browser flow is claimed here.",
+    "Full appearance/body/demographic calibration, current thirty managed seasons, all-feature gates and staging/production release remain required."
+  ]
+}

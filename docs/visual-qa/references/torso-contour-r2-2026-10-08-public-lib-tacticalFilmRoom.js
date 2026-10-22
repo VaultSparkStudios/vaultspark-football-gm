@@ -1,0 +1,325 @@
+export const TACTIC_MODEL_VERSION = "2.0";
+
+const TACTICS = Object.freeze({
+  "run-heavy": {
+    label: "Run-Heavy",
+    unit: "offense",
+    summary: "Ground game focus",
+    intent: "control possession and force the defense to fit the run",
+    tradeoff: "Fewer downfield attempts if the box stays light.",
+    target: "rush share",
+    modifiers: Object.freeze({ passLeanDelta: -0.15, offenseAggressionDelta: 0.05 })
+  },
+  "pass-heavy": {
+    label: "Pass-Heavy",
+    unit: "offense",
+    summary: "Air attack tempo",
+    intent: "stress coverage horizontally and vertically",
+    tradeoff: "More dropbacks expose protection and turnover risk.",
+    target: "pass share",
+    modifiers: Object.freeze({ passLeanDelta: 0.15, offenseAggressionDelta: 0.05 })
+  },
+  "blitz-heavy": {
+    label: "Blitz Package",
+    unit: "defense",
+    summary: "Pressure package",
+    intent: "speed up the opposing quarterback",
+    tradeoff: "Extra rushers leave fewer defenders behind the pressure.",
+    target: "pressure outcomes",
+    modifiers: Object.freeze({ defenseAggressionDelta: 0.2 })
+  },
+  prevent: {
+    label: "Prevent Defense",
+    unit: "defense",
+    summary: "Prevent defense",
+    intent: "limit explosive passes and keep the game in front",
+    tradeoff: "Short completions and long drives remain available.",
+    target: "explosive passes allowed",
+    modifiers: Object.freeze({ defenseAggressionDelta: -0.15 })
+  }
+});
+
+function teamId(team = {}) {
+  return team.id || team.teamId || team.abbrev || null;
+}
+
+function rivalryForPair(rivalries = {}, teamA, teamB) {
+  return Object.values(rivalries || {}).find((entry) =>
+    Array.isArray(entry?.teams)
+      && entry.teams.includes(teamA)
+      && entry.teams.includes(teamB)
+  ) || null;
+}
+
+export function buildRematchMemory(dashboard = {}, opponentId = null) {
+  const controlled = dashboard.controlledTeamId || teamId(dashboard.controlledTeam);
+  if (!controlled || !opponentId) return { available: false };
+  const controlledLabel = dashboard.controlledTeam?.abbrev || controlled;
+  const opponentTeam = (dashboard.teams || []).find((entry) => teamId(entry) === opponentId);
+  const opponentLabel = opponentTeam?.abbrev || opponentId;
+  const rivalry = rivalryForPair(dashboard.rivalries, controlled, opponentId);
+  const history = Array.isArray(rivalry?.history) ? rivalry.history : [];
+  const game = history[0];
+  if (!game) return { available: false };
+  const homeScore = Number(game.homeScore);
+  const awayScore = Number(game.awayScore);
+  if (!Number.isFinite(homeScore) || !Number.isFinite(awayScore)) return { available: false };
+  const controlledWasHome = game.homeTeamId === controlled;
+  const controlledScore = controlledWasHome ? homeScore : awayScore;
+  const opponentScore = controlledWasHome ? awayScore : homeScore;
+  const result = controlledScore > opponentScore ? "won" : controlledScore < opponentScore ? "lost" : "tied";
+  const sample = history.slice(0, 5);
+  const controlledWins = sample.filter((entry) => entry?.winner === controlled).length;
+  const opponentWins = sample.filter((entry) => entry?.winner === opponentId).length;
+  return {
+    available: true,
+    result,
+    controlledScore,
+    opponentScore,
+    headline: `Rematch memory: ${controlledLabel} ${controlledScore}, ${opponentLabel} ${opponentScore}.`,
+    detail: `You ${result} the last meeting${game.week != null ? ` in Week ${game.week}` : ""}. Recent meetings: ${controlledWins}-${opponentWins}${sample.length > controlledWins + opponentWins ? `-${sample.length - controlledWins - opponentWins}` : ""}.`,
+    disclaimer: "Prior meetings are context, not a prediction or a causal claim."
+  };
+}
+
+export function buildTacticalMatchupBrief(dashboard = {}) {
+  const controlled = dashboard.controlledTeamId || teamId(dashboard.controlledTeam);
+  const game = (dashboard.currentWeekSchedule?.games || []).find(
+    (entry) => entry.homeTeamId === controlled || entry.awayTeamId === controlled
+  );
+  if (!game) {
+    return {
+      available: false,
+      headline: "Your team has no game this week.",
+      read: "A tactical override would have no matchup to affect.",
+      options: Object.entries(TACTICS).map(([id, tactic]) => ({ id, ...tactic, matchup: tactic.intent }))
+    };
+  }
+  const opponentId = game.homeTeamId === controlled ? game.awayTeamId : game.homeTeamId;
+  const opponent = (dashboard.teams || []).find((entry) => teamId(entry) === opponentId) || { id: opponentId };
+  const passRate = Number(opponent.scheme?.passRate ?? 0.54);
+  const aggression = Number(opponent.scheme?.aggression ?? 0.5);
+  const injured = (dashboard.injuryReport || []).filter((entry) => entry.teamId === opponentId).length;
+  const identity = passRate >= 0.59 ? "pass-forward" : passRate <= 0.47 ? "run-forward" : "balanced";
+  const pressure = aggression >= 0.62 ? "aggressive" : aggression <= 0.4 ? "conservative" : "measured";
+  const opponentLabel = opponent.abbrev || opponentId;
+  const opponentName = opponent.name || opponent.nickname || opponentId;
+  const optionReads = {
+    "run-heavy": passRate >= 0.59
+      ? `Keep ${opponentLabel}'s pass-forward offense on the sideline.`
+      : `Test a ${identity} opponent's front and control variance.`,
+    "pass-heavy": Number(opponent.overallRating || 0) >= 84
+      ? `Create scoring volume against an ${opponent.overallRating} OVR opponent.`
+      : `Attack an opponent without an elite overall rating through space.`,
+    "blitz-heavy": aggression >= 0.62
+      ? `Challenge an aggressive offense before longer concepts develop.`
+      : `Force a ${pressure} offense to make faster decisions.`,
+    prevent: passRate >= 0.59
+      ? `Prioritize explosive-pass prevention against a ${Math.round(passRate * 100)}% pass tendency.`
+      : `Trade short gains for lower explosive-play exposure.`
+  };
+  // S63 — the opponent read the drive engine actually gameplans around.
+  // Source-derived from the same split unit ratings the sim uses, so the brief
+  // states the edge rather than implying one. Absent ratings render nothing at
+  // all: an empty state is honest, an invented edge is not.
+  const matchupEdge = buildMatchupEdgeRead(opponent, dashboard.controlledTeam);
+  const rematchMemory = buildRematchMemory(dashboard, opponentId);
+
+  return {
+    available: true,
+    opponentId,
+    headline: `Week ${dashboard.currentWeek ?? "?"}: ${dashboard.controlledTeam?.abbrev || controlled} vs ${opponentName}`,
+    read: `${opponentLabel} profiles as ${identity}, ${pressure}, ${opponent.overallRating ?? "?"} OVR${injured ? `, with ${injured} listed injur${injured === 1 ? "y" : "ies"}` : ""}.`,
+    matchupEdge,
+    rematchMemory,
+    options: Object.entries(TACTICS).map(([id, tactic]) => ({ id, ...tactic, matchup: optionReads[id] }))
+  };
+}
+
+/**
+ * The soft-side read, mirrored from src/engine/matchupEdge.js.
+ *
+ * The engine owns the number that changes play calling; this states the same
+ * comparison in words so the player can see why their offense leans the way it
+ * does. Both read the opponent's split run/pass defense ratings, which come from
+ * one source-of-truth computation in src/domain/ratings.js.
+ */
+export function buildMatchupEdgeRead(opponent = {}, controlledTeam = {}) {
+  const runDefense = Number(opponent.runDefenseRating);
+  const coverage = Number(opponent.passDefenseRating);
+  if (!Number.isFinite(runDefense) || !Number.isFinite(coverage)) {
+    return { available: false, direction: "none", label: "" };
+  }
+  const gap = coverage - runDefense;
+  if (Math.abs(gap) < 2) {
+    return {
+      available: true,
+      direction: "none",
+      gap: 0,
+      label: "Even front and secondary — no soft side to attack. Your call, not theirs."
+    };
+  }
+  const attackRun = gap > 0;
+  const staff = Number(controlledTeam?.coaching?.offense);
+  const staffNote = Number.isFinite(staff)
+    ? staff >= 85
+      ? " Your staff is good enough to lean into it hard."
+      : staff <= 66
+        ? " Your staff will only partly exploit it."
+        : ""
+    : "";
+  return {
+    available: true,
+    direction: attackRun ? "run" : "pass",
+    gap: Math.abs(Math.round(gap)),
+    label: attackRun
+      ? `Soft side: their run defense grades ${Math.abs(Math.round(gap))} below their coverage.${staffNote}`
+      : `Soft side: their coverage grades ${Math.abs(Math.round(gap))} below their front.${staffNote}`
+  };
+}
+
+function controlledGame(results = [], controlledTeamId) {
+  for (let resultIndex = results.length - 1; resultIndex >= 0; resultIndex -= 1) {
+    const result = results[resultIndex];
+    const game = (result?.games || []).find(
+      (entry) => entry.homeTeamId === controlledTeamId || entry.awayTeamId === controlledTeamId
+    );
+    if (game) return { result, game };
+  }
+  return null;
+}
+
+export function buildTacticalFilmReceipt({ tactic, results = [], controlledTeamId, year = null } = {}) {
+  const meta = TACTICS[tactic];
+  const located = controlledGame(results, controlledTeamId);
+  if (!meta || !located) return null;
+  const { result, game } = located;
+  const isHome = game.homeTeamId === controlledTeamId;
+  const box = game.boxScore || {};
+  const own = isHome ? box.homeTeam : box.awayTeam;
+  const opponent = isHome ? box.awayTeam : box.homeTeam;
+  const ownScore = Number(isHome ? game.homeScore : game.awayScore) || 0;
+  const opponentScore = Number(isHome ? game.awayScore : game.homeScore) || 0;
+  const opponentId = isHome ? game.awayTeamId : game.homeTeamId;
+  const passPlays = Number(own?.passPlays || 0);
+  const rushPlays = Number(own?.rushPlays || 0);
+  const playTotal = Math.max(1, passPlays + rushPlays);
+  const passShare = passPlays / playTotal;
+  const rushShare = rushPlays / playTotal;
+  const defensiveSacks = Number(opponent?.sacks || 0);
+  const forcedTurnovers = Number(opponent?.turnovers || 0);
+  const explosivePassesAllowed = (box.playByPlay || []).filter(
+    (play) => play.offenseTeamId === opponentId && play.type === "pass" && Number(play.yards || 0) >= 20
+  ).length;
+  let aligned = false;
+  let observed = "No matching box-score signal was recorded.";
+  if (tactic === "run-heavy") {
+    aligned = rushShare >= 0.48;
+    observed = `${Math.round(rushShare * 100)}% rush share · ${Number(own?.rushingYards || 0)} rushing yards`;
+  } else if (tactic === "pass-heavy") {
+    aligned = passShare >= 0.58;
+    observed = `${Math.round(passShare * 100)}% pass share · ${Number(own?.passingYards || 0)} passing yards`;
+  } else if (tactic === "blitz-heavy") {
+    aligned = defensiveSacks >= 3 || forcedTurnovers >= 2;
+    observed = `${defensiveSacks} sacks · ${forcedTurnovers} forced turnovers`;
+  } else if (tactic === "prevent") {
+    aligned = explosivePassesAllowed <= 2;
+    observed = `${explosivePassesAllowed} explosive passes allowed · ${Number(opponent?.passingYards || 0)} opponent passing yards`;
+  }
+  return {
+    id: `film-${year ?? result.year ?? "?"}-${result.week ?? "?"}-${controlledTeamId}-${tactic}`,
+    tactic,
+    definitionVersion: TACTIC_MODEL_VERSION,
+    tacticAuthorityId: `tactical-plan@${TACTIC_MODEL_VERSION}:${tactic}`,
+    unit: meta.unit,
+    label: meta.label,
+    intent: meta.intent,
+    target: meta.target,
+    teamId: controlledTeamId,
+    opponentId,
+    year: year ?? result.year ?? null,
+    week: result.week ?? null,
+    result: ownScore > opponentScore ? "win" : ownScore < opponentScore ? "loss" : "tie",
+    score: `${ownScore}-${opponentScore}`,
+    aligned,
+    observed,
+    disclaimer: "Alignment compares the chosen intent with observed game telemetry; it does not claim the tactic alone caused the result."
+  };
+}
+
+function tacticalIdentityTier(repetitions) {
+  return repetitions >= 6 ? "Signature" : repetitions >= 3 ? "Established" : "Installing";
+}
+
+export function previewTacticalIdentity(receipts = [], tactic) {
+  const definition = TACTICS[tactic];
+  if (!definition) return null;
+  const valid = receipts.filter((receipt) => receipt && TACTICS[receipt.tactic]).slice(0, 12);
+  const currentRepetitions = valid.filter((receipt) => receipt.tactic === tactic).length;
+  const projectedRepetitions = Math.min(12, currentRepetitions + 1);
+  const currentTier = tacticalIdentityTier(currentRepetitions);
+  const projectedTier = tacticalIdentityTier(projectedRepetitions);
+  const nextThreshold = projectedRepetitions < 3 ? 3 : projectedRepetitions < 6 ? 6 : null;
+  return {
+    tactic,
+    label: definition.label,
+    currentRepetitions,
+    projectedRepetitions,
+    currentTier,
+    projectedTier,
+    tierChange: currentRepetitions > 0 && currentTier !== projectedTier,
+    remainingToNext: nextThreshold == null ? 0 : nextThreshold - projectedRepetitions,
+    copy: currentRepetitions === 0
+      ? `First recorded ${definition.label} call would begin an Installing identity.`
+      : currentTier !== projectedTier
+        ? `If executed, this call would move ${definition.label} from ${currentTier} to ${projectedTier}.`
+        : nextThreshold == null
+          ? `If executed, this call would reinforce a Signature ${definition.label} identity.`
+          : `If executed, ${nextThreshold - projectedRepetitions} more ${definition.label} call${nextThreshold - projectedRepetitions === 1 ? "" : "s"} would remain before ${tacticalIdentityTier(nextThreshold)}.`,
+    disclaimer: "Only a call you actually run changes your team identity; the preview does not predict results."
+  };
+}
+export function buildTacticalIdentityLedger(receipts = []) {
+  const valid = receipts
+    .filter((receipt) => receipt && TACTICS[receipt.tactic])
+    .slice(0, 12);
+  if (!valid.length) return null;
+
+  const counts = new Map();
+  for (const receipt of valid) {
+    const current = counts.get(receipt.tactic) || { tactic: receipt.tactic, count: 0, aligned: 0, firstIndex: valid.length };
+    current.count += 1;
+    current.aligned += receipt.aligned === true ? 1 : 0;
+    current.firstIndex = Math.min(current.firstIndex, valid.indexOf(receipt));
+    counts.set(receipt.tactic, current);
+  }
+  const ranked = [...counts.values()].sort((left, right) =>
+    right.count - left.count || left.firstIndex - right.firstIndex || left.tactic.localeCompare(right.tactic)
+  );
+  const dominant = ranked[0];
+  const definition = TACTICS[dominant.tactic];
+  const tier = tacticalIdentityTier(dominant.count);
+  return {
+    version: 1,
+    tactic: dominant.tactic,
+    label: definition.label,
+    tier,
+    repetitions: dominant.count,
+    alignedRepetitions: dominant.aligned,
+    sampleSize: valid.length,
+    variety: ranked.length,
+    ledger: ranked.map((entry) => ({
+      tactic: entry.tactic,
+      label: TACTICS[entry.tactic].label,
+      repetitions: entry.count,
+      alignedRepetitions: entry.aligned
+    })),
+    summary: `${tier} ${definition.label} identity · ${dominant.count} of ${valid.length} recent calls`,
+    disclaimer: "Identity reflects repeated tactical choices and observed alignment. It does not claim those choices caused game results."
+  };
+}
+export function tacticDefinition(id) {
+  return TACTICS[id]
+    ? { id, definitionVersion: TACTIC_MODEL_VERSION, authorityId: `tactical-plan@${TACTIC_MODEL_VERSION}:${id}`, ...TACTICS[id] }
+    : null;
+}

@@ -40,9 +40,18 @@ function walk(dir, out = []) {
  * shim's test (which intentionally use the raw module). Pure fs — no spawns —
  * so it is safe to call in-process from a /start propagation hook. Idempotent:
  * a file already importing safe-spawn.mjs is left untouched.
- * Returns { changed: [{file, rel}], scanned }.
+ * Returns { changed: [{file, rel}], scanned, held: [{rel, verdict}], wrapperMissing }.
+ *
+ * S369 — two guards. This transform edits the RECIPIENT's own scripts, which is the one
+ * propagation write that never passed through the ownership guard (D-S367.1):
+ *   - wrapperMissing: when lib/safe-spawn.mjs is not in the tree (the recipient holds or
+ *     declined the protocol-scripts copy), nothing is rewired. Pointing every script's
+ *     import at a file that is not there breaks all of them at once.
+ *   - isHeld(relFromRepoRoot): a file the recipient declared its own is reported as held
+ *     and left byte-identical. The caller supplies the predicate, because this file is
+ *     propagated and the ownership library is not.
  */
-export function rewireToSafeSpawn(scriptsDir, { apply = false } = {}) {
+export function rewireToSafeSpawn(scriptsDir, { apply = false, isHeld = null, repoRoot = dirname(scriptsDir) } = {}) {
   const wrapperAbs = join(scriptsDir, 'lib', 'safe-spawn.mjs');
   const skip = new Set([
     join(scriptsDir, 'lib', 'safe-spawn.mjs'),
@@ -51,8 +60,10 @@ export function rewireToSafeSpawn(scriptsDir, { apply = false } = {}) {
     join(scriptsDir, 'codemod-safe-spawn.mjs'), // never rewrite our own descriptive comments
   ]);
   const changed = [];
-  if (!existsSync(scriptsDir)) return { changed, scanned: 0 };
+  const held = [];
+  if (!existsSync(scriptsDir)) return { changed, scanned: 0, held, wrapperMissing: false };
   const files = walk(scriptsDir);
+  if (!existsSync(wrapperAbs)) return { changed, scanned: files.length, held, wrapperMissing: true };
   for (const file of files) {
     if (skip.has(file)) continue;
     const src = readFileSync(file, 'utf8');
@@ -62,11 +73,13 @@ export function rewireToSafeSpawn(scriptsDir, { apply = false } = {}) {
     if (!rel.startsWith('.')) rel = './' + rel;
     const next = src.replace(IMPORT_RE, `$1${rel}$2`);
     if (next !== src) {
+      const fromRoot = relative(repoRoot, file).replace(/\\/g, '/');
+      if (typeof isHeld === 'function' && isHeld(fromRoot)) { held.push({ rel: fromRoot, verdict: 'owned' }); continue; }
       changed.push({ file, rel });
       if (apply) writeFileSync(file, next);
     }
   }
-  return { changed, scanned: files.length };
+  return { changed, scanned: files.length, held, wrapperMissing: false };
 }
 
 // CLI entry — only when run directly.
@@ -74,8 +87,10 @@ const INVOKED_DIRECTLY = process.argv[1] && process.argv[1].endsWith('codemod-sa
 if (INVOKED_DIRECTLY) {
   const ROOT = join(fileURLToPath(new URL('.', import.meta.url)), '..');
   const APPLY = process.argv.includes('--apply');
-  const { changed } = rewireToSafeSpawn(join(ROOT, 'scripts'), { apply: APPLY });
-  console.log(`${APPLY ? 'APPLIED' : 'DRY-RUN'}: ${changed.length} file(s) rewired to lib/safe-spawn.mjs`);
+  const { changed, held, wrapperMissing } = rewireToSafeSpawn(join(ROOT, 'scripts'), { apply: APPLY });
+  // S369: "0 rewired" because the wrapper is absent is not "0 rewired" because all is hardened.
+  if (wrapperMissing) console.log('HELD: scripts/lib/safe-spawn.mjs is absent — nothing rewired (imports would point at a missing file).');
+  console.log(`${APPLY ? 'APPLIED' : 'DRY-RUN'}: ${changed.length} file(s) rewired to lib/safe-spawn.mjs${held.length ? ` · ${held.length} held` : ''}`);
   for (const c of changed.slice(0, 12)) console.log(`  ${relative(ROOT, c.file).replace(/\\/g, '/')} → ${c.rel}`);
   if (changed.length > 12) console.log(`  … and ${changed.length - 12} more`);
   if (!APPLY) console.log('Run with --apply to write.');

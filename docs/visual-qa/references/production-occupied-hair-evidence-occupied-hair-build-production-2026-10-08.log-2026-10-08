@@ -1,0 +1,9 @@
+[Public-safe diagnostic derivative: only the absolute local workspace prefix was redacted; results and timings are unchanged. Original SHA-256: 7b82ace1a5e2c4e03892e15010abf7ea5a2b6708988524f15f0572a7c691141b]
+
+> franchise-architect-football@1.0.0 build:pages
+> node scripts/build-pages.mjs
+
+retired routes served as 301s: 4
+sitemap lastmod refreshed from git history: 17 URL(s)
+Service worker precache v8ed8036de02d: 318 assets · 3534 KB (repeat loads serve from cache)
+Built Pages bundle in [workspace]\static

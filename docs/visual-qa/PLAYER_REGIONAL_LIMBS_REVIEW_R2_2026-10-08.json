@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-08T09:53:27.314Z",
+  "round": 2,
+  "component": "Regional body shape v4 shared elliptical limb sections",
+  "verdict": "PASS",
+  "scope": "Bounded saved sectional core solver/projection and optional DTO safety; not complete appearance or complete rendered-union mass.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_REGIONAL_LIMBS_R2_2026-10-08.json",
+  "primaryReceiptSha256": "a984df2fac75da57be8f5480a81b4780b9c31ff5a6a1f5150abe7048d224d216",
+  "priorReview": {
+    "file": "docs/visual-qa/PLAYER_REGIONAL_LIMBS_REVIEW_R1_2026-10-08.json",
+    "sha256": "afcc5a40a29d67f9b2a7f2e710f67985c39adcbfe5311925c75384a6461cad6c",
+    "verdict": "FIX",
+    "preserved": true
+  },
+  "priorPrimary": {
+    "file": "docs/visual-qa/PLAYER_REGIONAL_LIMBS_2026-10-08.json",
+    "sha256": "4806209b694708d35c964baae3c6b9edb1d8b25303e3838b8e702f7ab3049a48"
+  },
+  "sourceHashes": {
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "public/lib/profiledLimbSurface.js": "0773e916392106337475116c46645abc421db12d26c1893cfea8f67742b4a3fa",
+    "public/lib/playerPortrait.js": "1be3edc453ad1ca05b850a999e34bdb6d125203f4fa00be33919359c58c20733",
+    "public/lib/playerMotion.js": "7d4dc2569fe43feaf45cedc0eadbe756c8f3a0a82a4c1c66ba23ae66b5eda6c7",
+    "test/player-regional-limbs.test.js": "e375c40965fc56b2d6a47abce78e8ba8c42d79b20613971f61f4beb31d5b1b52",
+    "test/fixtures/player-regional-limbs-v3.json": "7c026588cb7a176cdc1a8546c1c457b7b4f473727c6d47955d81c50bc26961f0",
+    "test/player-measured-rig.test.js": "f2fdcfacbb0d8de56408628ee6319a3368915d94e1d720e43b9f5fab62134a46",
+    "test/player-measurements.test.js": "2cb306578e32773b50c2a0f4645c5a38df34021f587bcab002414c2b682e19b6",
+    "test/player-regional-sections.test.js": "91d954d9595b65b77d68fae89617551a508d6245d3f79a3f211da0001d8dce81",
+    "test/player-regional-body-shape.test.js": "4f1d6f1ee1185f8e4059137687ff37694da80f8d8bfcd25379b9b4b9ef1ae5c8",
+    "test/player-body-measurement-tails.test.js": "f623ed33f632120dd90f288cfe5a3b1e32f14c0f06f255e9faf7feb684fc3701",
+    "tests-ui/player-regional-limbs.spec.js": "51f94ad5c92c9785e283fa32d558ba2a48cb4958d0def0117a0f827f6baf55fa",
+    "tests-ui/player-capacity-client.spec.js": "bcbb8c6776f7c1947a78caf01c242828d25f220c1df220afda4a4319e9777d77",
+    "tests-ui/player-regional-body-shape.spec.js": "314128eea1d4b6dd762519fe5b9fa10e7c68e71c5dc6b909351397d0785ef641",
+    "scripts/run-test-shard.mjs": "71aee73fc3abda3c73b757a43b38e322c7104b9a7deb809c8361302ef4ff6b27"
+  },
+  "bindingChecks": {
+    "terminalChunk": "ca3b0d",
+    "sources": 18,
+    "captures": 12,
+    "evidence": 3,
+    "frozenFiles": 33,
+    "allFrozenAndCurrentSourceHashesMatch": true,
+    "builtPairs": 7,
+    "allBuiltHashesAndNormalizedSourceMatch": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-regional-limbs.test.js test/player-body-measurement-tails.test.js test/player-measured-rig.test.js test/player-regional-sections.test.js test/player-regional-body-shape.test.js test/player-measurements.test.js",
+      "terminalChunk": "39c5c2",
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 6362.4889,
+      "contracts": "Independent section volume integration; v4 actual session restoration; 5 v3 frames and 40 exact historical SVGs; retained earlier-version fixtures."
+    },
+    {
+      "command": "Independent Node ESM raw DTO adversarial probe",
+      "terminalChunk": "ca3b0d",
+      "cases": 110,
+      "renderChecks": 880,
+      "result": "All outer holes at every row, inner holes at every coordinate, nonfinite/undefined/null/string coordinates for arm/leg/torso rejected with finite two-static/six-mode fallback; DTO deep equality retained."
+    }
+  ],
+  "findingDisposition": [
+    {
+      "id": "R1-P2-optional-section-density",
+      "status": "repaired",
+      "evidence": "denseRows checks own entries at every outer/inner index before finiteTuple and predecessor/max operations; real inherited rows are rejected, JSON materialized inherited numeric entries are correctly accepted as dense numeric values by the regression."
+    }
+  ],
+  "findings": [],
+  "inspectedOriginals": [
+    {
+      "file": "docs/visual-qa/captures/regional-limb-r2-desktop-dark-case-2.png",
+      "sha256": "479d01bdca587c5181d42bccce6d9b5fb43dd476094af6651a709968e8f2c645"
+    },
+    {
+      "file": "docs/visual-qa/captures/regional-limb-r2-desktop-light-case-3.png",
+      "sha256": "00a48c711447b0a0a2a69ef00eb3d72e090dd7133ed5ef91e9e73d7b309cc9b0"
+    },
+    {
+      "file": "docs/visual-qa/captures/regional-limb-r2-mobile-dark-case-2.png",
+      "sha256": "d0557ad57b7e2f14c546fd4bc30e1045b4d1aa903038fc327da3b7a6860b76a0"
+    },
+    {
+      "file": "docs/visual-qa/captures/regional-limb-r2-mobile-light-case-3.png",
+      "sha256": "ba59542fdf9074efc88bf1d1f496f632505860cc621f886088437e50deed97d8"
+    }
+  ],
+  "pixelObservations": [
+    "77-inch/308-pound front/profile/run/cut projections remain attached and consistent with R1 inspected valid geometry; no new validator-induced visible change.",
+    "62-inch/650-pound stress remains exaggerated with interpenetrating tissue/clothing; this is explicitly open rather than accepted naturalistic anatomy.",
+    "Four fresh original captures inspected across both themes and desktop/mobile; no claim of inspection of all twelve."
+  ],
+  "primaryExecutedEvidence": {
+    "node": {
+      "passed": 29,
+      "terminal": "c3f9de",
+      "durationMs": 6396.052
+    },
+    "browser": {
+      "passed": 3,
+      "terminal": "aad6d6",
+      "actualClientSeams": [
+        "built-worker",
+        "built-in-page"
+      ],
+      "namedSaveReplacementLoadReload": true
+    },
+    "build": {
+      "passed": true,
+      "terminal": "acdaeb",
+      "assets": 319,
+      "kilobytes": 3552,
+      "precache": "12136661d32a"
+    },
+    "budgets": {
+      "passed": true,
+      "terminal": "68d9b4",
+      "modules": 139,
+      "bootBytes": 649321,
+      "bootBudget": 730000
+    },
+    "legacy": {
+      "v3Frames": 5,
+      "exactStaticAndMotionHashes": 40,
+      "earlierVersions": "Existing v1/v2 fixture checks also pass"
+    },
+    "diffCheck": {
+      "passed": true,
+      "terminal": "f65960"
+    }
+  },
+  "attribution": "Browser three-case result, build and budgets are primary-executed evidence inspected and hash-bound, not independently rerun.",
+  "limits": [
+    "Section-core elliptical volume does not prove mass of visible caps, overlaps, reserved12.5%, skull, hands or feet.",
+    "Artistic regional ratios and fixed density are not empirical physiology/population calibration.",
+    "Full-person naturalism/whole appearance, full suite, current career source qualification and release are not accepted."
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 2,
+  "verdict": "PASS",
+  "scope": "Ordinary-size raster evidence correction for unadopted grooming prototype; no renderer change or full art acceptance",
+  "primaryReceipt": ".cache/head-grooming-reviewed-r2-primary.json",
+  "primaryReceiptSha256": "7682b038d4ac5cb8190bf5c8ce36f4002701138c39a2cab1f112d3738dc6be84",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "78be835432db42889ae54b05e352f649187db03aa0010e2e9416fa751a790c87",
+    "prototypes/playerHead3d.test.mjs": "564c17ab4be7d2e8054f325e29deeb52aa8523417364ec8779500624ef948295",
+    ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+    ".cache/head-grooming.spec.mjs": "bf1da56a7126d116e175d8010dfd24520be033caaeb37e1096ed1e18744505b7",
+    ".cache/shared-head-3d.config.mjs": "fd6c39f46a70265d1177e7e25426df6220a9c9d0d34ef288e7218ecd2c779e8c"
+  },
+  "priorReview": {
+    "path": ".cache/head-grooming-review-r1.json",
+    "sha256": "76294f526266fea6c8a90b385cdada19e2de4fe28e86ded6d22f0969d871cbea",
+    "verdict": "PASS",
+    "scopePreserved": true
+  },
+  "findings": [],
+  "verification": {
+    "rendererAndTestUnchangedFromR1": true,
+    "all5SourceAndFrozenCopiesMatch": true,
+    "captureOriginalAndCopyHashesMatched": 24,
+    "pixelComparisons": 120,
+    "minimumCombinedChangedPixels": 43,
+    "raster": {
+      "width": 96,
+      "height": 120,
+      "views": 2
+    },
+    "sourceAssessment": "drawImage downsamples each240x300 WebGL view to96x120 before getImageData; displayed PNG is generated from that same96x120 canvas and CSS displays at intrinsic size. Pixel arrays are independent getImageData snapshots. The comparison now uses the actual ordinary-size raster, not the larger source render.",
+    "qualification": "Count combines front and profile. Twenty changed RGB pixels does not prove perceptual recognition, correctness in each angle, naturalism, production legal grooming eligibility or empirical calibration."
+  },
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/head-grooming-styles-desktop-dark.png",
+      "sha256": "2f243e27c9d9167b921f978eb8c6e1ccf70bf5864acb143559f9d52c3758a601"
+    },
+    {
+      "path": "output/playwright/head-grooming-textures-mobile-light.png",
+      "sha256": "f8a3be645dfb5269310d6aebb797059d2cb277300bb39823de8dcb5c9e2e0ec4"
+    },
+    {
+      "path": "output/playwright/head-grooming-facial-mobile-light.png",
+      "sha256": "a66519d2768d67197ea598f2232248d76c3c0c6c49aa53f86aaa56498a2ad00a"
+    },
+    {
+      "path": "output/playwright/head-grooming-controls-desktop-dark.png",
+      "sha256": "fdd3fc41cb5feaee92d24073a0a1ab782d7b5d629af39a9dac2e16d8aec02da9"
+    }
+  ],
+  "visualAssessment": "Ordinary-size outputs retain visible broad style/length responses, subtle straight/wavy and short-cut differences, sparse long locks, solid caps and a hard profile beard boundary. Complete adult-person quality remains OPEN.",
+  "independentAncillaryChecks": {
+    "command": "node --test test/measurement-provenance-snapshot.test.js test/stat-snapshot.test.js",
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 9336.8357,
+    "sourceHashes": {
+      "test/measurement-provenance-snapshot.test.js": "ec70015cde05dd6f75647fd7a1ee592e4be15224e49515cb397e3a00909bd8de",
+      "test/stat-snapshot.test.js": "312bb79eb578f3537369f062013e69f3f66bd67cff811395cde8122b2e5390c4"
+    },
+    "assessment": "Valid preflight baselines carry league.year2026; malformed stat cases preserve the rest of league with spread. Exact reason-code assertions, migration refusals and input nonmutation checks remain. The year repair isolates intended malformed encodings instead of triggering unrelated missing-year validation. No evidence of weakening these assertions."
+  },
+  "primaryExecutionOnly": {
+    "browser": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 18.6
+    },
+    "qualification": "Primary2/2 browser18.6sec; not independently rerun. Prior R1 independent8tests and56extreme meshes apply to identical renderer/test hashes."
+  },
+  "limits": [
+    "All R1 prototype/visual/persistence/lifecycle/malformed DTO limitations retained.",
+    "No production or domain changes reviewed here; ancillary fixture verification is not whole save-suite acceptance.",
+    "No full appearance, user-goal, empirical anatomy/demographic or release acceptance."
+  ]
+}

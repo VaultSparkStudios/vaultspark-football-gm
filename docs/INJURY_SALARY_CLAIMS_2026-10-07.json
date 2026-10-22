@@ -1,0 +1,92 @@
+{
+  "kind": "source-bound-injury-salary-claim-foundation",
+  "status": "scoped-pass",
+  "recordedAt": "2026-10-07T10:17:58.192Z",
+  "sourceHashes": {
+    "src/domain/injurySalaryClaims.js": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2",
+    "src/domain/earnedPracticeCap.js": "a26eda958dde8fa97c9b368537d99cc842428f4b69a513c45a2e04aff8f325bf",
+    "src/domain/practiceContracts.js": "e3eda886e44085ae017094d69b3f645b6bd4bf329f43fc3f6fcfec04636321e6",
+    "src/engine/offseasonSimulator.js": "7f117f5fefbe028a058ea4a4c9d192550cae720937ea0cd2f41ad818b4939dc4"
+  },
+  "testHashes": {
+    "test/injury-salary-claims.test.js": "b141fb05530c9f389a11b20129d1b9638716fb309e127773d007e4138dc78da1",
+    "tests-ui/injury-salary-claims.spec.js": "9c2939bc53cd9ac0f835c505068befe79b118ef6e0566e7aeb74b61d0c4aa058"
+  },
+  "review": {
+    "subject": "Injury salary claim foundation, shared cap readers, rollover and actual snapshot validation",
+    "reviewer": "/root/studio_reviewer",
+    "rounds": [
+      {
+        "round": 1,
+        "verdict": "fix",
+        "findings": 1,
+        "fixed": 1,
+        "tests": 6,
+        "detail": "Matching corrupted game IDs could file a claim; repaired canonical game/source/payer validation with atomic adversarial regression."
+      },
+      {
+        "round": 2,
+        "verdict": "pass",
+        "findings": 0,
+        "tests": 7,
+        "builtTests": 6,
+        "detail": "Independent canonical-source adversarial cases and final built named-slot/cap/consent cases pass."
+      }
+    ],
+    "sourceHashes": {
+      "src/domain/injurySalaryClaims.js": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2",
+      "src/domain/earnedPracticeCap.js": "a26eda958dde8fa97c9b368537d99cc842428f4b69a513c45a2e04aff8f325bf",
+      "src/domain/practiceContracts.js": "e3eda886e44085ae017094d69b3f645b6bd4bf329f43fc3f6fcfec04636321e6",
+      "src/engine/offseasonSimulator.js": "7f117f5fefbe028a058ea4a4c9d192550cae720937ea0cd2f41ad818b4939dc4"
+    },
+    "testHashes": {
+      "test/injury-salary-claims.test.js": "b141fb05530c9f389a11b20129d1b9638716fb309e127773d007e4138dc78da1",
+      "tests-ui/injury-salary-claims.spec.js": "9c2939bc53cd9ac0f835c505068befe79b118ef6e0566e7aeb74b61d0c4aa058"
+    },
+    "limits": [
+      "Annual resolution workflow, pension treatment and full NFL conformance remain open"
+    ]
+  },
+  "evidence": [
+    {
+      "kind": "primary",
+      "file": ".cache/logs/injury-salary-claims-repaired-primary.log",
+      "sha256": "f9eab9438c123c3743602da946d24105c7f4923827e2ee615e8d5cabf55ac466",
+      "tests": 7
+    },
+    {
+      "kind": "combined",
+      "file": ".cache/logs/injury-salary-claims-repaired-adjacent.log",
+      "sha256": "d7ad80f7a12a96e62ac66704516b91f127ec6b9ee73cc78de24d663daaaa59b6",
+      "tests": 92
+    },
+    {
+      "kind": "builtWorkerAndInPage",
+      "file": ".cache/logs/injury-salary-claims-built.log",
+      "sha256": "b077299fad329dfc4e5bc47630b30bc6821ccec971d4455553d54d02ae52cdaf",
+      "tests": 6
+    },
+    {
+      "kind": "pagesBuild",
+      "file": ".cache/logs/injury-salary-claims-repaired-build.log",
+      "sha256": "2d701f3aff684893bb816c7e0e87067366f92c6ebd2cb790e594cb34e534fd40"
+    }
+  ],
+  "deployManifestSha256": "df4eefbb3708a99bde6c32c05858f7be71c03a36f16c0eb4ddf08bd24607bdb4",
+  "behaviors": [
+    "Qualifying canonical injury source is required before any claim/cap mutation",
+    "Filed disputed amount and provisional 40% attribution are separate from actual cash",
+    "Mutual settlement records payment and regular-game equivalents without healing or granting service",
+    "Later-year payment records signed difference from original attribution",
+    "Claim/pay/cap restoration through actual named Settings load after replacement, both built modes",
+    "Malformed consent/source/cap receipts reject import without replacing the valid franchise"
+  ],
+  "limits": [
+    "Seven primary cases are included within the combined92; counts are not additive",
+    "Browser claim cases use controlled imported records, not a user/CPU resolution command or the actual managed career",
+    "Contract-end calendar and automatic continuation/pay resolution are not complete",
+    "Annual guard remains; filing alone does not permit expiry, release, trade or retirement",
+    "Pension/service and statutory-benefit adjudication remain separate required integration",
+    "Same-year net-grievance/end-year adjustments, complete NFL conformance, full appearance, current-source30 and release acceptance remain incomplete"
+  ]
+}

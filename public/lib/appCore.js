@@ -15,7 +15,6 @@ export function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
-// Turns an internal id or reason code ("draft-authority", "CAP_PRESSURE") into readable words.
 export function humanizeId(value) {
   const words = String(value ?? "").trim().replace(/[_-]+/g, " ").toLowerCase();
   return words ? words[0].toUpperCase() + words.slice(1) : "";
@@ -56,117 +55,57 @@ export function playerBodyTypeLabel(player) {
   return "Pro-caliber frame";
 }
 
-export function buildPlayerPortraitSvg(player) {
-  const seed = hashStringLocal(player?.profile?.faceSeed || `${player?.id || ""}-${player?.name || ""}`);
-  const height = Number(player?.heightInches || 75);
-  const weight = Number(player?.weightLbs || 225);
-  const position = String(player?.position || "QB").toUpperCase();
-  const skin = portraitChoice(seed, ["#f2d6bf", "#e6c1a1", "#d6a57f", "#b97d58", "#8c5a3d"]);
-  const hair = portraitChoice(seed, ["#2a1e1a", "#3c2d25", "#5d4938", "#1f2528", "#5b5d61"], 7);
-  const eyes = portraitChoice(seed, ["#2d3d4e", "#3f4b2f", "#5b422d", "#2b2a30"], 11);
-  const jersey = portraitChoice(seed, ["#375e56", "#6d4b28", "#4d5b77", "#6b3535", "#34516f"], 17);
-  const jerseyStripe = portraitChoice(seed, ["#f4c97a", "#7bc4d7", "#d8ede8", "#f5efe0"], 23);
-  const shadowTone = "#081014";
-  const sternSet = position === "OL" || position === "DL" || position === "LB";
-  const mouth =
-    sternSet
-      ? "M86 157 Q110 155 134 157"
-      : position === "DB" || position === "WR"
-        ? "M88 156 Q110 152 132 156"
-        : portraitChoice(seed, ["M85 156 Q110 158 135 156", "M87 157 Q110 154 133 157", "M88 155 Q110 153 132 155"], 29);
-  const browTilt = sternSet ? -2 + (seed % 3) : (seed % 5) - 2;
-  const jawWidth = 44 + (seed % 10) + Math.round((weight - 205) / 18) + (sternSet ? 4 : 0);
-  const faceHeight = 56 + ((seed >> 3) % 8) + Math.max(0, Math.round((height - 74) / 3));
-  const eyeY = 106 + ((seed >> 5) % 6);
-  const noseY = 123 + ((seed >> 7) % 5);
-  const hairVariant = seed % 4;
-  const facialHairVariant = (seed >> 4) % 5;
-  const portraitId = `portrait-${seed}`;
-  const sizeBias =
-    position === "OL" || position === "DL"
-      ? 18
-      : position === "LB" || position === "TE"
-        ? 12
-        : position === "RB"
-          ? 8
-          : position === "WR" || position === "DB"
-            ? 2
-            : 6;
-  const shoulderWidth = Math.max(66, Math.min(92, Math.round(62 + (weight - 190) / 4 + sizeBias)));
-  const chestWidth = Math.max(54, shoulderWidth - (position === "WR" || position === "DB" ? 12 : 8));
-  const waistWidth = Math.max(42, chestWidth - (position === "OL" || position === "DL" ? 3 : position === "RB" || position === "LB" ? 8 : 12));
-  const neckWidth = Math.max(22, Math.min(42, Math.round(22 + (weight - 190) / 9 + sizeBias / 5)));
-  const trapRise = Math.max(8, Math.min(22, Math.round((weight - 185) / 10 + 8)));
-  const chestY = 194;
-  const waistY = 224;
-  const torsoBottom = 252;
-  const shoulderY = 170 - Math.max(0, Math.round((height - 74) / 2));
-  const padRise = sternSet ? 15 : position === "RB" || position === "TE" ? 12 : 9;
-  const torsoShadow = sternSet ? 0.38 : 0.28;
-  const leftShoulder = 110 - shoulderWidth;
-  const rightShoulder = 110 + shoulderWidth;
-  const leftChest = 110 - chestWidth;
-  const rightChest = 110 + chestWidth;
-  const leftWaist = 110 - waistWidth;
-  const rightWaist = 110 + waistWidth;
-  const jerseyShadow = `${jersey}cc`;
-  const eyeRx = sternSet ? 10.5 : position === "WR" || position === "DB" ? 12.5 : 11.5;
-  const eyeRy = sternSet ? 5.4 : 7.4;
-  const pupilRadius = sternSet ? 4.8 : 4;
-  const noseStroke = sternSet ? "#7d4a35" : "#8c5e45";
-  const hairPaths = [
-    `<path d="M58 95 C66 48, 154 44, 162 96 C149 76, 132 68, 110 66 C88 68, 70 76, 58 95 Z" fill="${hair}" />`,
-    `<path d="M52 101 C62 42, 158 40, 170 103 C146 84, 132 77, 111 75 C90 77, 73 86, 52 101 Z" fill="${hair}" />`,
-    `<path d="M58 97 C70 54, 151 48, 164 98 C155 82, 143 71, 128 67 C102 59, 79 70, 58 97 Z" fill="${hair}" />`,
-    `<path d="M50 101 C62 58, 160 49, 169 105 C156 89, 136 76, 110 74 C84 76, 66 87, 50 101 Z" fill="${hair}" />`
-  ];
-  const facialHair = [
-    "",
-    `<path d="M86 160 Q110 168 134 160" fill="none" stroke="${hair}" stroke-width="5" stroke-linecap="round" />`,
-    `<path d="M85 164 Q110 186 135 164" fill="${hair}" opacity="0.92" />`,
-    `<path d="M89 149 Q110 156 131 149" fill="none" stroke="${hair}" stroke-width="4" stroke-linecap="round" />`,
-    `<path d="M82 161 Q110 173 138 161" fill="none" stroke="${hair}" stroke-width="6" stroke-linecap="round" opacity="0.84" />`
-  ];
-  const beard = sternSet && facialHairVariant === 0 ? facialHair[4] : facialHair[facialHairVariant];
+let portraitRenderer;
+let physiqueRenderer;
+let movementControls;
+let mountMovement;
+let playerMovementCleanup=null;
+let portraitRendererPromise;
+async function ensurePortraitRenderer() {
+  portraitRendererPromise ||= import("./playerPortrait.js");
+  const module = await portraitRendererPromise;
+  portraitRenderer = module.buildPlayerPortraitSvg;
+  physiqueRenderer = module.buildPlayerPhysiqueSvg;
+  movementControls = module.buildPlayerMovementControls;
+  mountMovement = module.mountPlayerMovement;
+}
 
-  return `
-    <svg class="player-portrait-svg" viewBox="0 0 220 260" aria-label="${escapeHtml(player?.name || "Player")} portrait">
-      <defs>
-        <linearGradient id="${portraitId}-bg" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#24343b" />
-          <stop offset="100%" stop-color="#10181c" />
-        </linearGradient>
-        <linearGradient id="${portraitId}-skin" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="${skin}" />
-          <stop offset="100%" stop-color="${skin}dd" />
-        </linearGradient>
-      </defs>
-      <rect x="0" y="0" width="220" height="260" rx="28" fill="url(#${portraitId}-bg)" />
-      <circle cx="46" cy="38" r="26" fill="${jersey}" opacity="0.1" />
-      <circle cx="186" cy="52" r="18" fill="${jerseyStripe}" opacity="0.08" />
-      <path d="M${leftShoulder - 8} ${shoulderY + padRise} Q110 ${shoulderY - 22} ${rightShoulder + 8} ${shoulderY + padRise} L${rightChest + 2} ${chestY - 6} Q110 ${chestY - 26} ${leftChest - 2} ${chestY - 6} Z" fill="${shadowTone}" opacity="0.45" />
-      <path d="M${leftShoulder} ${shoulderY + trapRise} Q110 ${shoulderY - 12} ${rightShoulder} ${shoulderY + trapRise} L${rightChest} ${chestY} L${rightWaist} ${waistY} Q110 ${torsoBottom + 4} ${leftWaist} ${waistY} L${leftChest} ${chestY} Z" fill="${jersey}" />
-      <path d="M${leftShoulder + 8} ${shoulderY + trapRise + 4} Q110 ${shoulderY - 4} ${rightShoulder - 8} ${shoulderY + trapRise + 4}" fill="none" stroke="${jerseyStripe}" stroke-width="9" opacity="0.95" stroke-linecap="round" />
-      <path d="M${leftChest + 6} ${chestY + 4} Q110 ${chestY - 10} ${rightChest - 6} ${chestY + 4}" fill="none" stroke="${jerseyShadow}" stroke-width="18" opacity="${torsoShadow}" stroke-linecap="round" />
-      <path d="M82 188 Q110 207 138 188" fill="none" stroke="${shadowTone}" stroke-width="9" opacity="0.28" stroke-linecap="round" />
-      <rect x="${110 - neckWidth / 2}" y="154" width="${neckWidth}" height="34" rx="12" fill="${skin}" opacity="0.95" />
-      <ellipse cx="110" cy="112" rx="${jawWidth}" ry="${faceHeight}" fill="url(#${portraitId}-skin)" />
-      <ellipse cx="61" cy="118" rx="8" ry="14" fill="${skin}" opacity="0.92" />
-      <ellipse cx="159" cy="118" rx="8" ry="14" fill="${skin}" opacity="0.92" />
-      ${hairPaths[hairVariant]}
-      <path d="M69 ${92 + browTilt} Q86 ${84 + browTilt} 98 ${91 + browTilt}" fill="none" stroke="${hair}" stroke-width="4" stroke-linecap="round" />
-      <path d="M122 ${91 - browTilt} Q135 ${84 - browTilt} 151 ${92 - browTilt}" fill="none" stroke="${hair}" stroke-width="4" stroke-linecap="round" />
-      <ellipse cx="86" cy="${eyeY}" rx="${eyeRx}" ry="${eyeRy}" fill="#f4f1eb" />
-      <ellipse cx="134" cy="${eyeY}" rx="${eyeRx}" ry="${eyeRy}" fill="#f4f1eb" />
-      <circle cx="86" cy="${eyeY}" r="${pupilRadius}" fill="${eyes}" />
-      <circle cx="134" cy="${eyeY}" r="${pupilRadius}" fill="${eyes}" />
-      <circle cx="84" cy="${eyeY - 2}" r="1.4" fill="#ffffff" opacity="0.85" />
-      <circle cx="132" cy="${eyeY - 2}" r="1.4" fill="#ffffff" opacity="0.85" />
-      <path d="M110 ${noseY} Q101 ${noseY + 17} 110 ${noseY + 23} Q119 ${noseY + 17} 110 ${noseY}" fill="none" stroke="${noseStroke}" stroke-width="3" stroke-linecap="round" />
-      <path d="${mouth}" fill="none" stroke="#7d453f" stroke-width="3" stroke-linecap="round" />
-      ${beard}
-    </svg>
-  `;
+export function buildPlayerPortraitSvg(player) {
+  return portraitRenderer ? portraitRenderer(player) : '<div class="portrait-unavailable">Loading portrait…</div>';
+}
+
+function renderPlayerPhysique(player) {
+  const record = player.bodyMeasurements || { values: {}, provenance: {} };
+  const rows = [["Height", "heightInches"], ["Weight", "weightLbs"], ["Arm length", "armLengthInches"], ["Wingspan", "wingspanInches"], ["Hand span", "handSizeInches"]];
+  if (record.values.handLengthInches != null) rows.push(["Hand length", "handLengthInches"]);
+  for (const [label, key] of [["Hip joint spacing", "hipJointSpanInches"], ["Foot length", "footLengthInches"], ["Foot width", "footWidthInches"]]) {
+    if (record.values[key] != null) rows.push([label, key]);
+  }
+  return `<details class="player-physique"><summary>Physique &amp; measurables</summary>
+    <div class="player-body-comparisons">
+    <div class="player-physique-front"><strong class="player-body-view-label">Front silhouette</strong>${physiqueRenderer ? physiqueRenderer(player) : ""}</div>
+    <details class="player-physique-side"><summary>Side silhouette</summary>${physiqueRenderer ? physiqueRenderer(player, { view: "side", idSuffix: "-dossier-side" }) : ""}</details>
+    ${movementControls ? movementControls(player) : ""}
+    </div>
+    <dl>${rows.map(([label, key]) => {
+      const value = record.values[key];
+      const source = record.provenance[key] || {};
+      const display = value == null ? "Not recorded" : `${value}${key === "weightLbs" ? " lb" : "″"}${source.kind === "fictional-estimate" ? " · estimated" : ""}`;
+      const reconciliation = player.visualFrame?.measurementReconciliation?.find(row => row.measurement === key);
+      const note = reconciliation?.status === 'incompatible-endpoint' ? ' · different measurement method; visual estimate used'
+        : reconciliation?.status === 'outside-rendering-bounds' ? ' · outside supported visual range; estimate used'
+          : reconciliation?.status === 'companion-dimension-missing' ? ' · companion foot dimension missing; visual estimate used' : '';
+      return `<div><dt>${label}</dt><dd>${escapeHtml(display + note)}</dd></div>`;
+    }).join("")}</dl>
+    <p class="small">Training kit without pads. Front and side share a height scale. Body shape and missing limb measurements are visual estimates.</p>
+  </details>`;
+}
+
+function renderPotentialRevision(revision) {
+  if (!revision || !Array.isArray(revision.reasons) || !revision.reasons.length) return "";
+  const signed = Number(revision.change) > 0 ? `+${revision.change}` : String(revision.change);
+  return `<div class="player-potential-revision"><strong>${escapeHtml(revision.year)} ceiling update: ${escapeHtml(revision.before)} → ${escapeHtml(revision.after)} (${escapeHtml(signed)})</strong>
+    <ul>${revision.reasons.map(reason => `<li>${escapeHtml(reason)}</li>`).join("")}</ul></div>`;
 }
 
 export function buildProfileLatestSeasonSummary(position, entry) {
@@ -206,18 +145,24 @@ export function renderPlayerProfileHero(profile) {
     : "No active long-term deal";
   const latestSeasonSummary = buildProfileLatestSeasonSummary(player.position, latestSeason);
   const narrative = buildPlayerProfileNarrative(profile);
+  const identity = player.profile?.identity;
+  const identityFacts = identity ? [
+    identity.birthCountry ? `Born in ${identity.birthCountry}` : null,
+    identity.footballUpbringing ? `Football upbringing: ${identity.footballUpbringing}` : null,
+    identity.heritage?.length ? `Family heritage: ${identity.heritage.join(" · ")}` : "Family heritage not disclosed"
+  ].filter(Boolean) : [];
   const badges = [
     `${teamCode(player.teamId)} ${player.position}`,
     `#${player.jerseyNumber ?? "--"}`,
-    `OVR ${player.overall ?? "-"}`,
-    `Potential ${player.potential ?? "-"}${player.teamId && player.teamId !== state.dashboard?.controlledTeamId && player.status !== "retired" ? " (scouted)" : ""}`,
+    `OVR ${player.overall ?? "-"}${player.overallIsEstimate ? " (scouted)" : ""}`,
+    `Potential ${player.potential ?? "-"}${player.isDraftProspect || (player.teamId && player.teamId !== state.dashboard?.controlledTeamId && player.status !== "retired") ? " (scouted)" : ""}`,
     `${player.developmentTrait || "Steady"} Dev`,
-    `${player.rosterSlot || "active"} Slot`
+    player.isDraftProspect ? "Unsigned Prospect" : `${player.rosterSlot || "active"} Slot`
   ];
 
   return `
     <div class="player-hero">
-      <div class="player-portrait-card">${buildPlayerPortraitSvg(player)}</div>
+      <div class="player-visuals"><div class="player-portrait-card">${buildPlayerPortraitSvg(player)}</div></div>
       <div class="player-overview">
         <div class="player-nameplate">
           <div class="brand-kicker">Player Dossier</div>
@@ -242,6 +187,7 @@ export function renderPlayerProfileHero(profile) {
             <strong>Development</strong>
             <div>${escapeHtml(outlook.trajectory || "steady")}</div>
             <div class="small">Weekly focus ${escapeHtml(outlook.weeklyPlan || "-")}</div>
+            ${renderPotentialRevision(player.potentialRevision)}
           </div>
           <div class="player-meta-card">
             <strong>Availability</strong>
@@ -270,7 +216,7 @@ export function renderPlayerProfileHero(profile) {
           </article>
           <article class="player-story-card">
             <div class="brand-kicker">Personal File</div>
-            <ul>${narrative.facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul>
+            <ul>${[...identityFacts, ...narrative.facts].map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul>
           </article>
           <article class="player-story-card player-story-card--achievements">
             <div class="brand-kicker">Achievements</div>
@@ -291,6 +237,7 @@ export function renderPlayerProfileHero(profile) {
           Focus ratings: ${escapeHtml((outlook.focusRatings || []).map((rating) => toTitleCaseKey(rating)).join(", ") || "-")}
         </div>
       </div>
+      ${renderPlayerPhysique(player)}
     </div>
   `;
 }
@@ -1089,6 +1036,7 @@ export function formatTransactionDetails(entry) {
   if (entry.type === "staff-update") return `${d.role || ""} ${d.name || ""}`;
   if (entry.type === "owner-update") return `ticket ${d.ticketPrice || "-"} | staff budget ${fmtMoney(d.staffBudget || 0)}`;
   if (entry.type === "practice-squad-move") return `${d.from || "active"} -> ${d.to || "active"}`;
+  if (entry.type === 'standard-elevation') return `Game elevation · ${d.round || `Week ${d.week}`} · ${d.remainingRegular} regular uses left`;
   if (entry.type === "retirement-override") return `team ${teamCode(d.teamId || "FA")} | min win ${Math.round((d.minWinningPct || 0.55) * 100)}%`;
   if (entry.type === "championship") return `beat ${teamCode(d.runnerUp || "-")} | ${orientWinnerFirst(d.score || "")}`;
   const text = JSON.stringify(d);
@@ -1300,12 +1248,15 @@ export async function loadPlayerModal(playerId) {
   );
   const profile = payload.profile;
   const player = profile.player;
+  await ensurePortraitRenderer();
   document.getElementById("playerSeasonTypeFilter").value = profile.seasonType || seasonType;
 
   document.getElementById("playerModalTitle").textContent = `${player.name} (${player.position})`;
   document.getElementById("playerModalMeta").textContent =
       `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | POT ${player.potential ?? "-"}${player.teamId && player.teamId !== state.dashboard?.controlledTeamId && player.status !== "retired" ? " (scouted)" : ""} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
+  playerMovementCleanup?.();
   document.getElementById("playerProfileSummary").innerHTML = renderPlayerProfileHero(profile);
+  playerMovementCleanup=mountMovement?.(document.getElementById("playerProfileSummary"), profile.player);
   attachPlayerMentorshipBadge(player);
 
   const ratingRows = Object.entries(player.ratings || {})
@@ -1376,6 +1327,7 @@ async function attachPlayerMentorshipBadge(player) {
 }
 
 export function closePlayerModal() {
+  playerMovementCleanup?.();playerMovementCleanup=null;
   state.activePlayerId = null;
   document.getElementById("playerModal").classList.add("hidden");
 }

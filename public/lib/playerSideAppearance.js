@@ -1,0 +1,132 @@
+import {structuredHairMarkup} from './structuredHair.js';
+import {appearanceSkinColor,appearanceHairColors,blendAppearanceColor as blend} from './appearancePalette.js';
+import {HAIR_STYLE_RULES} from './portraitAppearanceContract.js';
+import {grayHairFiberAttributes} from './hairGrayFibers.js';
+import {hairPartPosition,hairFiberAttributes,hairFiberShapeScale} from './hairArrangement.js';
+import {fineFaceGeometry,fineFaceSideEyeContours} from './fineFaceGeometry.js';
+import {portraitSurfaceLighting} from './portraitSurfaceLighting.js';
+import {longHairFlowPath,longHairSideOutline} from './longHairFlow.js';
+import {croppedHairVolume} from './croppedHairVolume.js';
+import {continuousHairStrandPath} from './continuousHairTexture.js';
+import {tryPlayerHeadImage} from './playerHeadImage.js';
+const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
+const number=(v,f=1,lo=.5,hi=1.5)=>v!=null&&v!==''&&Number.isFinite(Number(v))?clamp(Number(v),lo,hi):f;
+const n=v=>Math.round(v*100)/100;
+const hash=s=>{let h=2166136261;for(const c of String(s))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;};
+const color=(v,f)=>/^#[0-9a-f]{6}$/i.test(v||'')?v:f;
+
+// The side projection is an artistic interpretation of the saved face recipe,
+// not a 3D scan. It preserves the modeled skull height; hair sits outside it.
+export function buildPlayerSideHead(player,{x=0,y=0,height=57,idSuffix=''}={}) {
+  const image=tryPlayerHeadImage(player,{angle:Math.PI/2});
+  if(image&&[x,y,height].every(Number.isFinite)&&height>0){
+    const scale=height/175;
+    return `<g class="player-side-head" data-head-renderer="${image.renderer}" data-skin-color="${appearanceSkinColor(player.appearance)}"><image class="player-shared-head-image" x="${n(x-110*scale)}" y="${n(y-65*scale)}" width="${n(220*scale)}" height="${n(440*scale)}" href="${image.src}"/></g>`;
+  }
+  const original=player?.appearance||{};
+  const a={...original,complexion:number(original.complexion,.5,0,1),hairColor:color(original.hairColor,'#29201b'),
+    naturalHairColor:color(original.naturalHairColor,color(original.hairColor,'#29201b')),
+    dyedHairColor:original.dyedHairColor?color(original.dyedHairColor,null):null,eyeColor:color(original.eyeColor,'#57412c')};
+  const id=`side-face-${hash(`${player?.id||player?.name}:${JSON.stringify(a)}:${idSuffix}`)}`;
+  // Resource instance names must never reroll strand placement or identity.
+  const textureSeed=hash(player?.profile?.appearanceRecipe?.seed
+    ||[a.version,a.faceWidth,a.jawWidth,a.faceLength,a.noseWidth,a.blinkDelay].join(':'));
+  const skin=appearanceSkinColor(a),shade=blend(skin,'#241a19',.3),light=blend(skin,'#fff1db',.18);
+  const surfaceLighting=portraitSurfaceLighting(a,{id,skin,view:'side'});
+  const hair=appearanceHairColors(a,player?.age);
+  const faceWidth=number(a.faceWidth),jaw=number(a.jawWidth),cheek=number(a.cheekFullness);
+  const back=-40*faceWidth,chin=21*number(a.chinWidth)*jaw;
+  const nose=29+9*number(a.noseTip)*number(a.noseWidth),noseY=59+(number(a.noseLength)-1)*12;
+  const lip=26+3*number(a.lipFullness),eyeY=44+(number(a.faceLength)-1)*12;
+  const fine=fineFaceGeometry(a);
+  const fineChin=chin+(fine?.chinProjection||0)*7;
+  const forehead=24-(fine?.foreheadSlope||0)*7;
+  const ridge=26+(fine?(fine.browRidge-.5)*5:0);
+  const upperLip=lip+(fine?(fine.upperLipScale-1)*4:0),lowerLip=lip+(fine?(fine.lowerLipScale-1)*4:0);
+  const face=fine?`M-8 0 C${n(back*.8)} 0 ${n(back*1.06)} 19 ${n(back)} 49 C${n(back)} 73 ${n(back*.7)} 91 -14 97 Q-2 100 7 100 Q${n(fineChin)} 100 ${n(fineChin+2)} 93 Q${n(fineChin+7)} ${n(86-(number(a.chinLength)-1)*8)} ${n(lowerLip-2)} 83 Q${n(lowerLip+2)} 80 ${n(lowerLip)} 79 Q${n(upperLip+2)} 77 ${n(upperLip)} 74 Q${n(upperLip)} 71 26 71 L26 ${n(noseY+8)} Q${n(nose+2)} ${n(noseY+8)} ${n(nose)} ${n(noseY+3)} L${n(26+(number(a.noseBridge)-1)*5)} 47 Q${n(ridge)} 36 ${n(forehead)} 28 Q${n(forehead-3)} 0 -8 0Z`
+    :`M-8 0 C${n(back*.8)} 0 ${n(back*1.06)} 19 ${n(back)} 49 C${n(back)} 73 ${n(back*.7)} 91 -14 97 Q-2 100 7 100 Q${n(chin)} 100 ${n(chin+2)} 93 Q${n(chin+7)} ${n(86-(number(a.chinLength)-1)*8)} ${n(lip-2)} 83 Q${n(lip+2)} 80 ${n(lip)} 77 Q${n(lip+2)} 74 26 71 L26 ${n(noseY+8)} Q${n(nose+2)} ${n(noseY+8)} ${n(nose)} ${n(noseY+3)} L${n(26+(number(a.noseBridge)-1)*5)} 47 Q25 36 24 28 Q21 0 -8 0Z`;
+  const length=number(a.hairLength,1,.8,1.2),style=HAIR_STYLE_RULES[a.hairstyle]?a.hairstyle:'buzz';
+  const hairline=number(a.hairline,0,0,1),curve=number(a.hairCurvature,1,.65,1.45),wave=number(a.hairWaveScale,1,.65,1.5);
+  const tops={buzz:1,fade:4,crew:6,'short-curls':12,coils:9,afro:23,waves:2,'side-part':5,swept:10,long:5,locs:3,braids:2};
+  const top=tops[style]??1;
+  // A broad elliptical crown follows the skull instead of a pointed cap.
+  // Fine curls modulate its boundary; individual marks cover the entire crown.
+  const crownY=t=>17-Math.sqrt(Math.max(0,1-(2*t-1)**2))*(17+top*length)
+    +(style==='swept'?-3*Math.sin(Math.PI*t)*t:0);
+  const crop=()=>{
+    const ripple=['short-curls','coils','afro'].includes(style)?1.4*curve:0;
+    const points=Array.from({length:25},(_,i)=>{const t=i/24;return [back+(25-back)*t,crownY(t)+Math.sin(i*2.7)*ripple];});
+    let crown=`M${n(back-1)} 57 Q${n(back-5)} 34 ${n(points[0][0])} ${n(points[0][1])}`;
+    for(let i=0;i<points.length-1;i++){const p=points[i],q=points[i+1];crown+=` Q${n(p[0])} ${n(p[1])} ${n((p[0]+q[0])/2)} ${n((p[1]+q[1])/2)}`;}
+    const end=points.at(-1);
+    return `${crown} Q${n(end[0])} ${n(end[1])} 25 25 L25 ${n(31+hairline*4)} Q11 ${n(18+hairline*3)} -5 ${n(22+hairline*2)} Q${n(back*.7)} 29 ${n(back*.8)} 60Z`;
+  };
+  const modern=a.fineFaceVersion==='fine-face-v1';
+  const afroLeft=back-13,afroRight=32;
+  const afroCap=()=>{
+    const points=Array.from({length:33},(_,i)=>{const t=i/32;return [afroLeft+(afroRight-afroLeft)*t,crownY(t)+(hash(`${textureSeed}:afro-lock:${Math.floor(i/2)}`)%997/997-.5)*5*curve];});
+    let d=`M${n(points[0][0])} ${n(points[0][1])}`;
+    for(let i=0;i<points.length-1;i++){const p=points[i],q=points[i+1];d+=` Q${n(p[0])} ${n(p[1])} ${n((p[0]+q[0])/2)} ${n((p[1]+q[1])/2)}`;}
+    return `${d} Q${n(afroRight+3)} 45 25 60 L23 ${n(31+hairline*4)} Q5 ${n(18+hairline*3)} -7 ${n(22+hairline*2)} Q${n(back*.7)} 29 ${n(back*.8)} 61 Q${n(afroLeft-3)} 67 ${n(afroLeft)} 17Z`;
+  };
+  const cap=modern&&style==='afro'?afroCap():crop();
+  const styles={buzz:cap,fade:cap,crew:cap,'short-curls':cap,coils:cap,afro:cap,waves:cap,
+    'side-part':cap,swept:cap,long:`${cap} M${n(back-1)} 24 C${n(back-12)} 52 ${n(back-13)} 96 ${n(back-8)} ${n(100+17*length)} Q${n(back-5)} ${n(108+17*length)} ${n(back+1)} ${n(100+17*length)} Q${n(back+7)} 90 ${n(back+6)} 44Z`,
+    shaved:'',receding:`M${n(back-1)} 61 Q${n(back-4)} 26 ${n(back+11)} 16 L${n(back+17)} 24 Q${n(back+5)} 37 ${n(back+8)} 65Z`,locs:cap,braids:cap};
+  const silhouette=modern&&style==='long'?`${cap} ${longHairSideOutline(a,textureSeed,back)}`:styles[style];
+  const strandCount=style==='locs'?8:style==='braids'?6:64;
+  const density=number(a.hairDensity,1,0,1);
+  const strands=Array.from({length:strandCount},(_,i)=>{
+    const gray=grayHairFiberAttributes(a,player?.age,textureSeed,`side:${i}`);
+    const fiber=hairFiberAttributes(a,textureSeed,`side:${i}`,.65*number(a.hairStrandWidth));
+    const v=hash(`${textureSeed}:strand:${i}`),t=.04+.92*((v%997)/997),sx=modern&&style==='afro'?afroLeft+(afroRight-afroLeft)*t:back+(25-back)*t;
+    const sy=crownY(t)+2+((v>>>10)%997)/997*(28-crownY(t));
+    if(style==='locs'){
+      const d=`M${n(sx)} ${n(sy)} Q${n(sx-6)} 36 ${n(sx-11)} ${n(43+(i%4)*13*length)}`;
+      return `<path d="${d}" stroke-width="4"/>${gray?`<path${gray} d="${d}" stroke-width=".65"/>`:''}`;
+    }
+    if(style==='braids')return `<path${gray} d="M${n(back+5+i*10)} 23 Q-10 -9 ${n(20-i*3)} 29" stroke-width="2.5" stroke-dasharray="2 1"/>`;
+    if(style==='long'&&i%3===0){
+      const d=a.fineFaceVersion==='fine-face-v1'
+        ?longHairFlowPath(a,textureSeed,`side:${i}`,back-8+(i%21)*1.4,36,back-5+(i%21)*1.5,102*clamp(1+((a.hairLength??1)-1)*.08,.94,1.08),.65)
+        :`M${n(back-6+i%7)} 35 Q${n(back-11+i%5)} 72 ${n(back-6+i%6)} ${n(104+12*length)}`;
+      return `<path${gray}${fiber} d="${d}"/>`;
+    }
+    const scale=hairFiberShapeScale(a,textureSeed,`side:${i}`);
+    const width=2.8*curve*scale,height=5*wave*scale;
+    const continuous=continuousHairStrandPath(a,sx,sy,height,scale);
+    if(continuous)return `<path${gray}${fiber} d="${continuous}"/>`;
+    if(a.hairTexture==='coily')return `<path${gray}${fiber} d="M${n(sx)} ${n(sy)} c${n(width)} ${n(-height*.4)} ${n(width)} ${n(height*.55)} 0 ${n(height*.55)} c${n(-width)} 0 ${n(-width)} ${n(height*.7)} 1 ${n(height*.7)}"/>`;
+    if(a.hairTexture==='curly')return `<path${gray}${fiber} d="M${n(sx)} ${n(sy)} c${n(width*1.6)} ${n(-height*.7)} ${n(width*1.6)} ${n(height)} 0 ${n(height)} q${n(-width)} ${n(height*.7)} 1 ${n(height*1.1)}"/>`;
+    if(a.hairTexture==='wavy'||style==='waves')return `<path${gray}${fiber} d="M${n(sx)} ${n(sy)} q${n(width)} ${n(height*.5)} 0 ${n(height)} t0 ${n(height)}"/>`;
+    return `<path${gray}${fiber} d="M${n(sx)} ${n(sy)} q${n((style==='swept'?8:2)*scale)} ${n(4*scale)} ${n((style==='swept'?11:3)*scale)} ${n(11*scale)}"/>`;
+  }).join('');
+  const part=['side-part','swept','long'].includes(style)?hairPartPosition(a):null;
+  const partX=part===null?0:-10+20*part;
+  const partMarkup=part!==null?`<path class="side-hair-part" data-hair-part="${part}" d="M${n(partX+5)} 0 Q${n(partX-2)} 10 ${n(partX+2)} 24" fill="none" stroke-width="1" stroke="${skin}"/>`
+    :style==='side-part'?'<path d="M8 3 Q1 12 4 24" fill="none" stroke-width="1" stroke="'+skin+'"/>':'';
+  const arranged=a.fineFaceVersion==='fine-face-v1'&&['locs','braids'].includes(style);
+  const arrangedMarks=arranged?structuredHairMarkup({...a,hairstyle:style,hairColor:hair.scalp},textureSeed,{projection:'side',back,age:player?.age}):'';
+  const hairVolume=croppedHairVolume({...a,hairstyle:style,hairColor:hair.scalp},textureSeed,{id,clip:`${id}-hair`,x:style==='afro'?afroLeft:back-5,y:-top*length,width:style==='afro'?afroRight-afroLeft:30-back,height:top*length+61});
+  const hairMarks=style==='shaved'?'':`<defs><clipPath id="${id}-hair"><path d="${silhouette}"/></clipPath><linearGradient id="${id}-hair-depth" x1="0" y1="0" x2="1" y2=".3"><stop stop-color="${blend(hair.scalp,'#171512',.28)}"/><stop offset=".56" stop-color="${blend(hair.scalp,light,.10)}"/><stop offset="1" stop-color="${hair.scalp}"/></linearGradient></defs><g class="side-scalp-hair" data-hairstyle="${style}" data-hair-color="${hair.scalp}" fill="url(#${id}-hair-depth)" opacity="${n(density)}"><path class="side-hair-contour" d="${silhouette}"/>${hairVolume}<g fill="none" stroke="${style==='locs'?hair.scalp:blend(hair.scalp,light,.24)}" stroke-width="${n(.65*number(a.hairStrandWidth))}" stroke-linecap="round" ${style==='locs'?'':`clip-path="url(#${id}-hair)"`}>${arranged?'':strands}</g>${arrangedMarks}${style==='fade'?`<path d="M${n(back-1)} 34 Q${n(back*.7)} 35 -20 35 L-22 52 L${n(back*.8)} 61Z" fill="${skin}" opacity=".55" clip-path="url(#${id}-hair)"/>`:''}${partMarkup}</g>`;
+  const mustache=`M25 ${n(noseY+10)} Q31 ${n(noseY+8)} 30 76 L25 76Z`;
+  const beards={clean:'',stubble:`M-3 68 Q14 73 27 77 L26 94 Q17 104 -5 95Z`,mustache,
+    goatee:`${mustache} M19 86 L27 86 Q29 105 11 100 L8 92Z`,
+    'short-beard':`M-4 63 Q3 65 9 72 Q18 73 26 76 Q30 85 26 95 Q15 103 2 100 Q-8 96 -9 87 Q-7 75 -4 63Z ${mustache}`,
+    'full-beard':`M-4 60 Q2 66 9 73 Q19 74 27 76 Q34 87 26 102 Q22 112 10 113 Q-4 112 -11 98 Q-15 89 -9 75 Q-5 67 -4 60Z ${mustache}`};
+  const beard=beards[a.facialHair]||'';
+  const aperture=number(a.eyeAperture,1,.7,1.2),brow=number(a.browWeight);
+  const eyeForm=fineFaceSideEyeContours(a,eyeY);
+  return `<g class="player-side-head" data-skin-color="${skin}" transform="translate(${n(x)} ${n(y)}) scale(${height/100})">
+    <defs><linearGradient id="${id}-skin"><stop stop-color="${shade}"/><stop offset=".42" stop-color="${skin}"/><stop offset=".75" stop-color="${light}"/><stop offset="1" stop-color="${skin}"/></linearGradient><clipPath id="${id}-face"><path d="${face}"/></clipPath></defs>
+    ${surfaceLighting?.defs ? `<defs>${surfaceLighting.defs}</defs>` : ''}<path class="side-face-contour" d="${face}" fill="${surfaceLighting?.fill || `url(#${id}-skin)`}"/>
+    <g clip-path="url(#${id}-face)">${surfaceLighting?.surfaces || `<ellipse cx="${n(-6+(cheek-1)*8)}" cy="67" rx="${n(18*cheek)}" ry="20" fill="${light}" opacity=".2"/>`}
+    <ellipse cx="-12" cy="55" rx="${n(7*number(a.earSize))}" ry="${n((modern&&a.detailVersion==='natural-appearance-detail-v1'?13:12)*number(a.earShape))}" fill="${skin}" stroke="${shade}" stroke-width=".8"/><path d="M-14 48 Q-4 47 -9 59 Q-12 65 -14 59" fill="none" stroke="${shade}" opacity=".5"/>
+    ${eyeForm?`<defs><clipPath id="${id}-eye"><path d="${eyeForm.shape}"/></clipPath></defs>`:''}<path d="${eyeForm?.shape || `M15 ${n(eyeY)} Q19 ${n(eyeY-3*aperture)} 24 ${n(eyeY)} Q20 ${n(eyeY+2.5*aperture)} 15 ${n(eyeY)}Z`}" fill="#e7dfd4"/>
+    ${eyeForm?`<g clip-path="url(#${id}-eye)">`:''}<ellipse class="side-eye" cx="21" cy="${n(eyeY)}" rx="1.9" ry="${n(2*aperture)}" fill="${a.eyeColor}"/><ellipse cx="21.5" cy="${n(eyeY)}" rx=".6" ry="${n(1.3*aperture)}" fill="#171819"/>${eyeForm?'</g>':''}${modern&&a.detailVersion==='natural-appearance-detail-v1'?`<path class="side-lid-contact" d="${eyeForm.upper}" fill="none" stroke="${blend(shade,'#211a19',.48)}" stroke-width=".8" stroke-linecap="round"/><path d="M21 79 Q26 ${n(79+number(a.lipFullness))} 29 79" fill="none" stroke="${blend(shade,'#2b171a',.4)}" stroke-width=".65" opacity=".85"/>`:''}
+    <path d="M13 ${n(eyeY-6)} Q18 ${n(eyeY-8*number(a.browArch))} 24 ${n(eyeY-5)}" fill="none" stroke="${hair.brow}" stroke-width="${n(1.6*brow)}" stroke-linecap="round"/>
+    <path d="M27 ${n(noseY+6)} h4 M21 79 Q26 ${n(79+number(a.lipFullness))} 29 79" fill="none" stroke="${shade}" stroke-width=".8"/>
+    ${a.freckles?Array.from({length:7},(_,i)=>`<circle cx="${3+i*2}" cy="${61+i%3*2}" r=".5" fill="${shade}" opacity=".45"/>`).join(''):''}</g>
+    ${beard?`<path class="side-facial-hair" data-hair-color="${hair.face}" d="${beard}" fill="${hair.face}" opacity="${a.facialHair==='stubble'?'.4':'.92'}"/>`:''}${hairMarks}
+  </g>`;
+}

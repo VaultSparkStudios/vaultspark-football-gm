@@ -1,0 +1,48 @@
+✔ all long-grooming vertices clear the rendered lip mask across valid mouth proportions and curves (10639.5726ms)
+✔ frozen grooming and scalp refinements preserve their reviewed non-grooming anatomy (7240.7843ms)
+✔ current grooming variations preserve the current shared face, eyes and ears (3948.4356ms)
+✔ facial grooming has fitted camera-independent volume while preserving anatomy and the mouth aperture (6903.3807ms)
+✔ all 56 legacy combinations remain exact (26347.9535ms)
+✔ all continuous label boundaries keep fixed topology and bounded neighboring geometry (3060.3322ms)
+✔ continuous positions remain finite and bounded, independent of label, while arranged grooming hides loose texture (17395.1523ms)
+✔ modern upper crown is rounder while lower face and eye/lid attachment stay exact (23.2583ms)
+✔ categorical older faces retain exact mesh across all supported hair and facial grooming (43623.8647ms)
+✔ modern crown grooming never changes the saved face or unrelated visible surfaces (1027.4701ms)
+✔ rounded crown retains continuous station normals and bounded extreme modern hair (4336.8126ms)
+✔ face lighting follows saved landmarks across complexions and grooming with complete resources (3713.3182ms)
+✔ surface lighting bounds its estimates and retains legacy fallback (5.2548ms)
+✔ pigment and grooming changes preserve saved anatomical contours (1841.2739ms)
+✔ modern facial grooming preserves the saved person, every other mesh surface and the resource budget (4340.044ms)
+✔ older facial pigment geometry remains exact; modern crown is separately covered (10271.0848ms)
+✔ modern beard and relocated mustache vertices clear the actual curved lip mask (3688.7666ms)
+✔ new facial pigments have independent residuals and saved identity across demographic or grooming changes (40.4964ms)
+✔ isolated beard/brow dyes reach front, side and motion without changing saved facial paths or frame (99.3907ms)
+✔ legacy recipes keep identical decoded appearance and their undyed pigment fallback (1.9754ms)
+✔ compact seed aliases remain compact and explicit independent pigment seeds remain intact (1.5006ms)
+✔ grooming versions upgrade monotonically and invalid facial dye changes are atomic (1.4992ms)
+✔ actual session and draft snapshots preserve pigment recipes/dyes and corrupt imports refuse without mutation (4244.3205ms)
+✔ pigment edits and rendering leave actual match results and every simulation random stream identical (22861.5845ms)
+✔ saved regional face controls affect the visible outline independently of pigment (98.4591ms)
+✔ front face projection handles malformed and extreme inputs inside its canvas (18.029ms)
+✔ fine facial structure persists across actual saves, grooming and identity changes without gameplay draws (1373.0121ms)
+✔ isolated facial controls change visible geometry only in appropriate projections and survive moving heads (747.9371ms)
+✔ fine face imports validate active, retired and prospective recipes before any mutation (2.2763ms)
+✔ an optional fine recipe on v2/v3 imports has complete SVG resources with or without natural detail (48.9397ms)
+✔ legacy facial renderers retain frozen October 8 geometry and appearance without a fine recipe (113.8903ms)
+✔ modern combed volume changes hair while preserving every non-hair surface and saved input (4834.1292ms)
+✔ all hair styles retain legacy geometry and changed modern styles remain within the mesh budget (14923.9355ms)
+✔ part location changes the modern hair volume without changing facial anatomy (815.8098ms)
+✔ modern asymmetric support joins actual rear mesh positions and normals at every row (4203.6292ms)
+✔ eye and closing lid polygons share lateral samples with an opaque meeting margin (391.5817ms)
+✔ saved blink phase remains periodic, bounded and returns to the open pose (2.7161ms)
+✔ head-only projection removes fixed prototype anatomy while retaining every head surface (1155.5982ms)
+✔ server or non-graphical consumers retain fallback without creating a renderer (0.8739ms)
+✔ saved ear size and shape retain a folded surface attached to the same skull (349.4976ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 50008.3515

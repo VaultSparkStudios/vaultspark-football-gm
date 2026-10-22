@@ -14,6 +14,7 @@ export const state = {
   weeklyPlanReceipt: null,
   roster: [],
   rosterWindow: null,
+  elevationPreview: null,
   freeAgents: [],
   contractRoster: [],
   contractTeamId: null,

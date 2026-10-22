@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "command": "node ../vaultspark-studio-ops/scripts/check-visual-qa.mjs --project . --changed --json",
+  "outputReference": "e9430e",
+  "recordType": "bounded-summary-of-actual-command-output",
+  "exitCode": 1,
+  "ok": false,
+  "applies": true,
+  "detail": "1 visual QA evidence defect(s)",
+  "ageHours": 0,
+  "errors": ["blockingDefectsOpen must be 0"],
+  "receipt": "docs/visual-qa/PLAYER_FACIAL_PLANES_2026-10-07.json",
+  "receiptSha256": "402d8f06a5e58c885a3a8dd57460d319d2c3d60d359fd47ae9de9b1b6e6afa73",
+  "disposition": "Facial-lighting component verified; full-person quality remains open. Gate is not overridden."
+}

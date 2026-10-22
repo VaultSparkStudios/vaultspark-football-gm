@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Useful bounded grooming controls and honest diagnostic evidence in an unadopted shared-head prototype; not full adult-person quality or production acceptance",
+  "primaryReceipt": ".cache/head-grooming-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "146145ac21ed3594496aefc2e3afb0ce6958931ad8e46976da8315917f8ee2a0",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "78be835432db42889ae54b05e352f649187db03aa0010e2e9416fa751a790c87",
+    "prototypes/playerHead3d.test.mjs": "564c17ab4be7d2e8054f325e29deeb52aa8523417364ec8779500624ef948295",
+    ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+    ".cache/head-grooming.spec.mjs": "fe9a7a5ff60c78a902cf8649d379ec09cb77013bcd37bec619349d5e4f015e60",
+    ".cache/shared-head-3d.config.mjs": "fd6c39f46a70265d1177e7e25426df6220a9c9d0d34ef288e7218ecd2c779e8c"
+  },
+  "beforeSource": {
+    "original": ".cache/head-grooming-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-grooming-before-2026-10-07.mjs",
+    "sha256": "c8c590fae051f30e52cae35588ce8fa4e390e456d011c2ff7c47fac5e603638b"
+  },
+  "priorFoundationQualification": "Prior foundation R2 applies only to frozen c8c590 before source. This review separately executes current grooming source; prior receipts remain unchanged.",
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 5502.359
+    },
+    {
+      "command": "node .cache/head-grooming-r1-independent.mjs",
+      "exitCode": 0,
+      "sourceHashes": {
+        "prototypes/playerHead3d.mjs": "78be835432db42889ae54b05e352f649187db03aa0010e2e9416fa751a790c87",
+        "prototypes/playerHead3d.test.mjs": "564c17ab4be7d2e8054f325e29deeb52aa8523417364ec8779500624ef948295",
+        ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+        ".cache/head-grooming.spec.mjs": "fe9a7a5ff60c78a902cf8649d379ec09cb77013bcd37bec619349d5e4f015e60",
+        ".cache/shared-head-3d.config.mjs": "fd6c39f46a70265d1177e7e25426df6220a9c9d0d34ef288e7218ecd2c779e8c"
+      },
+      "extremeMeshCases": 56,
+      "maxVertices": 37968,
+      "nonfiniteNumericCases": 32,
+      "maxCrownTangentGap": 3.82982534574694e-7,
+      "captureHashesVerified": 24,
+      "pixelComparisonGroups": {
+        "styles": 91,
+        "textures": 6,
+        "facial": 15,
+        "controls": 8
+      }
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "path": ".cache/head-grooming-before/player-shared-head-3d-desktop-dark.png",
+      "sha256": "330e6d35d7269b383a2ebccae89290cdc239bb0bf68e1633c1c3bae7e4e275e3"
+    },
+    {
+      "path": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "sha256": "50bc0384696132f6f8e08b647b2f59e4502e5dcad1b144e791cf53d22685dcf4"
+    },
+    {
+      "path": "output/playwright/head-grooming-styles-desktop-light.png",
+      "sha256": "920591bfc2e590a60728e14ad52084c92c063d7a024ed710c6b4615ebbf773a0"
+    },
+    {
+      "path": "output/playwright/head-grooming-facial-desktop-dark.png",
+      "sha256": "f680e3b10e894d1b4902bdd643ff2219dd97223dbf6c9989a206c344033c48ab"
+    },
+    {
+      "path": "output/playwright/head-grooming-textures-mobile-light.png",
+      "sha256": "20c22daed87dbe1242f7106b3a7e8d6de0cc69ddfbd280a3f48484ccceb64b6a"
+    },
+    {
+      "path": "output/playwright/head-grooming-controls-mobile-dark.png",
+      "sha256": "5b47599112fab8b645590910d7152a9d973e04e1e0e4e760c716eee7035b26f4"
+    }
+  ],
+  "visualAssessment": {
+    "usefulProgress": "Rounded crown, separate facial-style masks and length/texture/density responses are exposed in the controlled front/profile views. Current actual-person gallery also responds to saved hairstyle inputs.",
+    "remaining": "At the actual 96px controlled gallery size many short cuts still look very similar. Long hair is sparse with a solid cap above loose locks; straight/wavy distinction is subtle. Short/full beard retain a conspicuous hard rectangular rear edge in profile. Skin, anatomy and eyes remain mannequin-like. These remain full-person quality blockers, consistent with the primary record."
+  },
+  "evidenceInterpretation": "120 browser pixel comparisons are 91 style pairs,6 texture pairs,15 facial-style pairs and8 min/max control pairs. They show aggregate front/profile pixel response at native240x300 raster size, not that each control is equally readable at displayed96px, visually natural, empirically calibrated or proven in production UI. All14x4 mesh tests include combinations outside the production legal48 contract as prototype stress cases; this is not evidence of changing production legal combinations.",
+  "primaryExecutionOnly": {
+    "focused": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4270.5059
+    },
+    "browser": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 14.6
+    },
+    "qualification": "Primary browser execution not independently rerun. Browser source read and all24 original/copy hashes independently verified."
+  },
+  "limits": [
+    "56 independently generated maximal-tessellation/extreme numeric-control meshes bounded at37968 vertices;32 nonfinite numeric-control cases default safely. No complete arbitrary DTO/color/style validation or production import schema acceptance.",
+    "Crown test verifies first-station rounded growth and tangent join. It does not establish globally watertight skin/hair/beard topology.",
+    "No new gray/dye/full iris authority, production integration, career save restoration, WebGL context-loss/cache/fallback or accessibility acceptance.",
+    "Seeded prototype controls are cosmetic and tested skin anatomy remains unchanged by hair inputs; no simulation execution or gameplay outcome proof was added.",
+    "No empirical anatomy/frequency fitting, adult-person art completion, full goal or release acceptance. Full quality remains OPEN."
+  ]
+}

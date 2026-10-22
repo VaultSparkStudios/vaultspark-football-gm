@@ -1,0 +1,326 @@
+{
+  "scope": "Actual dossier before/after occupied curl and lock geometry; no complete craft or population acceptance",
+  "playerId": "P2026-BUF-OL-75203022",
+  "hairstyle": "locs",
+  "captures": [
+    {
+      "file": "output/playwright/production-occupied-hair-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "14c3a399c2c36a2947e31420ab552fceb4672b2575f5899770d74dec598b6eef"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "36778b17f327214bd5f7376dce6b6b3d9d28eb7e1f6251b1e33655ca32cce867"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0e06cbbd680c3cdcb2044e6fc77b878e5cb3969ca564c104c0face5423c73554"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "90b5dbd057cae0b736734fdff8de26f0bb356fa71cf035e86066440531dff581"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "535290979033f072450082e9a3fd63d2a6f1097ef4325b4cbcc788120abfd759"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ce1a238cc582703fea8da6b4294f9834ba8077005eb497985dfa23dec8ea0116"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c56f895f0015a85a1a8e4fb98f636495f80c69a0aa1316808a742724a1447d00"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c34a7178b13ca7ed2aead6366622be2e9f40d8c07831fed473e58677a401534a"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4cf29aa09da5666eea49ba5c725b2ac42a6e574694956799d2bd7969a4d2c9aa"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7afa9de9bca3aa2446523aace178f7e27d21fffe14a934d23acce29484ad30ae"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "627c5e9935f64cbb9b10e76ca15b395d8a14ac054276ceb70de0f6f00f07d46c"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "3fbe4e1ec1b4825c3fcc73894d8f3212a7ab19bf8f26ebff6e0c67b6da24ec68"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "baabf3fce8786dc20ac9079d89179f46f241b7ba43b39c39f21ceeb30f46694e"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5436fa0958aacf730e01875a5a28d74a1896f64ddd6b905a1d9dfdd5ed5ddd34"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "945fb047fc70ce81e853d8c08c7da24032a13d5264e82d213ffa67053f926a2d"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "6da537ac653dc29e960eb1838727502c01f38f8bd5378c2a3334796da35451fc"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "64007b06439437a4a157c5cd157b1cb3fd4bb87894a27abe90dc926268ee0f27"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "38dc1e33eee8f9f6cf92198e0950b5c961054f93d93f7620583385d8397831f1"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "78803a9fb47336f33f5f2ae6ee3f99f8ec9bf5e1bf371464009199f5a2e1f657"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "95fd2ab3b6ed3bdbd39b5399545a9fa3cf7abc7cabf3f416848370116367ab5d"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ee405309f82c0d9aec933cd407453088768e0986daa3ea58595fee20ea940fa6"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4f26b436fd9bb08a226c947f22f339dac38cc36108763e8584a78f8aa1c67891"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "41a2f76271009480c6d1672d1c66178e19eed0571a42cf09878f1cc56a144154"
+    },
+    {
+      "file": "output/playwright/production-occupied-hair-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "eff14a46a18b125af5f85ab086b8fb35c91201257c9ef9df7278f0df33f992f9"
+    }
+  ],
+  "agreement": [
+    {
+      "mode": "run",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "acceleration",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "cut",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "jump",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "strength",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "endurance",
+      "frontBody": true,
+      "sideMotion": true
+    }
+  ],
+  "diagnostics": {
+    "cacheEntries": 2,
+    "cacheLimit": 32,
+    "draws": 2,
+    "meshBuilds": 1,
+    "unavailable": false,
+    "contexts": 1
+  },
+  "cacheProof": {
+    "bounded": {
+      "cacheEntries": 32,
+      "cacheLimit": 32,
+      "draws": 37,
+      "meshBuilds": 36,
+      "unavailable": false,
+      "contexts": 1
+    },
+    "restored": true,
+    "malformed": true,
+    "malformedSkin": true,
+    "healthy": true
+  },
+  "playerUnchanged": true
+}

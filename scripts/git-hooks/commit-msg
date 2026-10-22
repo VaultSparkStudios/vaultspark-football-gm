@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# hook-version: 1   # S389 — stamps editor commits from the marker prepare-commit-msg leaves
+#
+# WHY. prepare-commit-msg runs before the editor, so it cannot stamp an editor commit
+# without making an untouched (empty) message non-empty — git would then commit a
+# trailers-only message instead of aborting. commit-msg runs AFTER the editor and before
+# git's empty-message check (measured, git 2.53), so it can stamp what the author actually
+# wrote and leave an empty or comment-only message empty, which still aborts.
+#
+# It stamps ONLY when prepare-commit-msg marked this commit as a fresh editor commit of the
+# session (the marker carries "S<n> <start> <hash of the pre-editor message>"). -m/-F
+# commits are stamped by prepare-commit-msg itself; replays, -c/-C/--amend, merges and
+# squashes leave no marker. The marker is consumed here and cleared by every
+# prepare-commit-msg run, so a stale one never binds a later commit. Never blocks a
+# commit: any missing piece leaves the message as it is. Like every commit-msg hook it is
+# skipped under --no-verify, so such an editor commit stays unbound (identity rule).
+MSG_FILE="$1"
+MARKER="$(git rev-parse --git-path studio-session-pending 2>/dev/null)" || exit 0
+[ -n "$MARKER" ] && [ -f "$MARKER" ] || exit 0
+read -r SESSION START BASE < "$MARKER" 2>/dev/null
+rm -f "$MARKER" 2>/dev/null
+[ -n "$MSG_FILE" ] && [ -f "$MSG_FILE" ] || exit 0
+[ -n "$SESSION" ] && [ -n "$START" ] && [ -n "$BASE" ] || exit 0
+
+[ -n "$(git stripspace --strip-comments < "$MSG_FILE" 2>/dev/null)" ] || exit 0
+# Unchanged since prepare-commit-msg (an untouched -t/commit.template): git aborts it as
+# unedited only if it stays unchanged, so it is never stamped.
+NOW="$(git stripspace --strip-comments < "$MSG_FILE" 2>/dev/null | git hash-object --stdin 2>/dev/null)"
+[ -n "$NOW" ] && [ "$NOW" != "$BASE" ] || exit 0
+if git interpret-trailers --parse "$MSG_FILE" 2>/dev/null | grep -qi '^Studio-Session:'; then exit 0; fi
+
+git interpret-trailers --in-place --trailer "Studio-Session: $SESSION" --trailer "Studio-Session-Start: $START" "$MSG_FILE" 2>/dev/null || true
+exit 0

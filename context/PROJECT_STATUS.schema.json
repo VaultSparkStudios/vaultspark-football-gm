@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vaultsparkstudios.com/schemas/project-status.schema.json",
+  "title": "Studio OS PROJECT_STATUS",
+  "description": "Canonical machine-readable project status contract. Additional project-specific signals are allowed; shared observability fields are typed and required.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "slug",
+    "name",
+    "status",
+    "health",
+    "currentFocus",
+    "lastUpdated",
+    "silScore",
+    "silMax",
+    "silCategoriesV3"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "slug": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "minLength": 1 },
+    "health": { "type": "string", "minLength": 1 },
+    "currentFocus": { "type": "string", "minLength": 1 },
+    "lastUpdated": {
+      "anyOf": [
+        { "type": "string", "format": "date" },
+        { "type": "string", "format": "date-time" }
+      ]
+    },
+    "currentSession": { "type": "integer", "minimum": 0 },
+    "lastSession": { "type": "integer", "minimum": 0 },
+    "sessionState": {
+      "type": "object",
+      "required": ["version", "durableSession", "currentFocus", "nextMilestone", "lastSessionSummary"],
+      "additionalProperties": false,
+      "properties": {
+        "version": { "const": 1 },
+        "durableSession": { "type": "integer", "minimum": 0 },
+        "currentFocus": { "type": "string", "minLength": 1 },
+        "nextMilestone": { "type": "string", "minLength": 1 },
+        "lastSessionSummary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "silScore": { "type": "number", "minimum": 0, "maximum": 1000 },
+    "silMax": { "const": 1000 },
+    "silCategoriesV3": {
+      "type": "object",
+      "required": ["devHealth", "creativeAlignment", "momentum", "engagement", "processQuality", "crossRepoCoherence", "securityPosture", "ecosystemIntegration", "capitalEfficiency", "automationCoverage"],
+      "additionalProperties": true,
+      "properties": {
+        "devHealth": { "type": "number", "minimum": 0, "maximum": 100 },
+        "creativeAlignment": { "type": "number", "minimum": 0, "maximum": 100 },
+        "momentum": { "type": "number", "minimum": 0, "maximum": 100 },
+        "engagement": { "type": "number", "minimum": 0, "maximum": 100 },
+        "processQuality": { "type": "number", "minimum": 0, "maximum": 100 },
+        "crossRepoCoherence": { "type": "number", "minimum": 0, "maximum": 100 },
+        "securityPosture": { "type": "number", "minimum": 0, "maximum": 100 },
+        "ecosystemIntegration": { "type": "number", "minimum": 0, "maximum": 100 },
+        "capitalEfficiency": { "type": "number", "minimum": 0, "maximum": 100 },
+        "automationCoverage": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "doctorScore": {
+      "type": "object",
+      "required": ["passing", "total"],
+      "additionalProperties": true,
+      "properties": {
+        "passing": { "type": "integer", "minimum": 0 },
+        "total": { "type": "integer", "minimum": 0 },
+        "warning": { "type": "integer", "minimum": 0 },
+        "failing": { "type": "integer", "minimum": 0 },
+        "blockingFailing": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "truthGenome": {
+      "anyOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "integer", "minimum": 0, "maximum": 25 },
+        {
+          "type": "object",
+          "required": ["score", "max"],
+          "additionalProperties": true,
+          "properties": {
+            "score": { "type": "integer", "minimum": 0 },
+            "max": { "type": "integer", "minimum": 1 }
+          }
+        }
+      ]
+    }
+  }
+}

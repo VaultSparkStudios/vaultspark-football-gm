@@ -1,6 +1,20 @@
+import { validateSnapshotAdmittedInjuryPayroll } from '../domain/admittedInjuryPayroll.js';
+import {validateSnapshotOffseasonMedicalCalendar} from '../domain/offseasonMedicalCalendar.js';
 import { leanifySnapshot } from "./weekResultProjection.js";
+import { expandSnapshotStats } from "./statSnapshot.js";
+import { expandSnapshotMeasurementProvenance } from './measurementProvenanceSnapshot.js';
+import { expandSnapshotPensionService } from './pensionServiceSnapshot.js';
+import {expandSnapshotIdentityMetadata} from './identityMetadataSnapshot.js';
+import { validateSnapshotVisualIdentity } from "../domain/playerVisualIdentity.js";
+import { validateSnapshotPlayerService } from "../domain/playerService.js";
+import { validateSnapshotPracticeContracts } from '../domain/practiceContracts.js';
+import { validateSnapshotStandardElevations } from '../domain/standardElevations.js';
+import { validateSnapshotAdmittedInjuryContinuations } from '../domain/admittedInjuryContinuation.js';
+import { validateActiveInactiveHistory } from '../domain/activeInactiveHistory.js';
+import { validateSnapshotPostseasonRecovery } from '../domain/postseasonMedicalClock.js';
+import { validateReserveListState } from '../domain/reserveLists.js';
 
-export const LATEST_SNAPSHOT_SCHEMA_VERSION = 2;
+export const LATEST_SNAPSHOT_SCHEMA_VERSION = 4;
 
 export class SnapshotCompatibilityError extends Error {
   constructor(reasonCode, message, { status = 400, details = null } = {}) {
@@ -56,6 +70,23 @@ export function inspectSnapshotCompatibility(snapshot) {
       details: { missing }
     };
   }
+  try {
+    // Preflight rejects an unsupported/malformed encoding before replacing a
+    // live league. Expansion returns a copy and never edits imported input.
+    expandSnapshotStats(expandSnapshotMeasurementProvenance(expandSnapshotIdentityMetadata(snapshot)));
+    validateSnapshotVisualIdentity(snapshot);
+    if ((snapshot.league?.sportId || 'football') === 'football') validateSnapshotPostseasonRecovery(snapshot);
+    validateSnapshotPlayerService(snapshot);
+    validateSnapshotPracticeContracts(snapshot);
+    validateSnapshotStandardElevations(snapshot);
+    validateSnapshotAdmittedInjuryContinuations(snapshot);
+    validateSnapshotAdmittedInjuryPayroll(snapshot);
+    validateSnapshotOffseasonMedicalCalendar(snapshot);
+    validateActiveInactiveHistory(snapshot.league);
+    validateReserveListState(snapshot);
+  } catch (error) {
+    return { ok: false, status: error.status || 400, reasonCode: error.reasonCode || "SNAPSHOT_STAT_ENCODING_INVALID", error: error.message };
+  }
   return { ok: true, version, targetVersion: LATEST_SNAPSHOT_SCHEMA_VERSION, legacy: version < LATEST_SNAPSHOT_SCHEMA_VERSION };
 }
 
@@ -99,6 +130,18 @@ export function migrateSnapshot(snapshot) {
       version = 2;
       continue;
     }
+    if (version === 2) {
+      current.schemaVersion = 3;
+      version = 3;
+      continue;
+    }
+    if (version === 3) {
+      // Versioned face/skeleton recipes and grooming must not be silently
+      // ignored by older builds. Runtime restore freezes missing legacy recipes.
+      current.schemaVersion = 4;
+      version = 4;
+      continue;
+    }
     break;
   }
 
@@ -110,6 +153,7 @@ export function migrateSnapshot(snapshot) {
   // readable by builds that predate this change. Loading is simply the moment a
   // legacy franchise can shed history it was never going to read again.
   // `leanifySnapshot` is idempotent, so re-loading a lean save is a no-op.
+  current = expandSnapshotIdentityMetadata(expandSnapshotStats(expandSnapshotMeasurementProvenance(expandSnapshotPensionService(current))));
   leanifySnapshot(current);
 
   current.schemaVersion = LATEST_SNAPSHOT_SCHEMA_VERSION;

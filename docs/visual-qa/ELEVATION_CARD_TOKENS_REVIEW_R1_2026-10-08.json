@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "scope": "Two-line elevation and injury-claim card token repair, actual mounted template evidence only",
+  "primaryReceiptPath": ".cache/elevation-token-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "1d661861a714bc8e086617f32abc0b7b2d703bb00ec99bdf366285f8ac4c08c0",
+  "sourceHashes": {
+    "public/styles.css": "43b277303fbaae70b1ff7c9e260d2f1ff46db72dcdc6844123116a632aa7a4ee",
+    "public/game.html": "d4d12b3dc0134587de44c835f3628df40d7c0a2f48abc28e66439b7f7bdd7221",
+    "public/lib/themeCustomizer.js": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe",
+    ".cache/elevation-token.spec.mjs": "4504e7bbf8451783b4452ff29b231e4889a59c1c642200eada4b708c803f26f8",
+    ".cache/elevation-token.config.mjs": "0d5c0d92ebba3934671a0d0f5d99fc589f84a9c181a9926c4fd65643dee580a8",
+    ".cache/elevation-token-before.css": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce"
+  },
+  "cssDiff": [
+    {
+      "line": 6164,
+      "before": "  border: 1px solid var(--accent, #37d6a3);",
+      "after": "  border: 1px solid var(--accent);"
+    },
+    {
+      "line": 6166,
+      "before": "  background: var(--surface);",
+      "after": "  background: var(--panel);"
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/session109-css-tokens.test.js test/theme-customizer.test.js",
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 473.969
+    },
+    {
+      "check": "Frozen/current source and capture hashes",
+      "sourceBindings": 6,
+      "captureBindings": 80,
+      "result": "PASS"
+    },
+    {
+      "check": "80 primary report rows: local border/ink preserved and after panel nontransparent",
+      "result": "PASS",
+      "qualification": "Recorded primary browser values, not independently recomputed browser styles"
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/elevation-token-before-desktop-dark-gold-enabled.png",
+      "sha256": "9911b9a422a0227a29817bda421fd638ae3b04023586a90bd6886a028072a9e1"
+    },
+    {
+      "path": "docs/visual-qa/captures/elevation-token-after-desktop-dark-gold-enabled.png",
+      "sha256": "5166dd0e13b5bebbe961d6d81b3e117f5c756b638bbbb0a1b361fd60b257dabb"
+    },
+    {
+      "path": "docs/visual-qa/captures/elevation-token-before-mobile-light-violet-disabled.png",
+      "sha256": "607145931c9cdd4d5d86961b880e5fc19c6b2aa43f30a809413e0df454a8a888"
+    },
+    {
+      "path": "docs/visual-qa/captures/elevation-token-after-mobile-light-violet-disabled.png",
+      "sha256": "fe430db1db01c122add9b069f4a5a1f756491fbb9cd91060fed0b8780ad03895"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "OPEN separate issue",
+      "description": "Light violet disabled pair still shows inherited gold border. The test intentionally checks actual locally inherited --accent, not requested accent identity. This component does not fix the known root/body light-theme accent override."
+    }
+  ],
+  "visualAssessment": "Both cards gain defined panel surfaces while text, borders and disabled control remain legible; no new clipping seen in four inspected desktop/mobile originals.",
+  "primaryBrowser": "Primary1/1PASS9.9s; not independently rerun",
+  "limits": [
+    "Controlled actual game.html templates, not live elevation/claim command behavior",
+    "Four images independently inspected, not all80",
+    "Known global accent problem remains blocking and full visual acceptance false",
+    "No whole UI/NFL/production release acceptance"
+  ],
+  "fullVisualAcceptance": false
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "facial": true,
+    "regional": "existing",
+    "anatomy": true,
+    "current": "c7cee487f9c161245cd323e707f0c8a6829d14f53ab79b53a465921e957dfd9e",
+    "before": "c7cee487f9c161245cd323e707f0c8a6829d14f53ab79b53a465921e957dfd9e",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": true,
+    "regional": "existing",
+    "anatomy": false,
+    "current": "c7cee487f9c161245cd323e707f0c8a6829d14f53ab79b53a465921e957dfd9e",
+    "before": "c7cee487f9c161245cd323e707f0c8a6829d14f53ab79b53a465921e957dfd9e",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": true,
+    "regional": "regional-body-shape-v1",
+    "anatomy": true,
+    "current": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "before": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": true
+  },
+  {
+    "facial": true,
+    "regional": "regional-body-shape-v1",
+    "anatomy": false,
+    "current": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "before": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": true
+  },
+  {
+    "facial": true,
+    "regional": "none",
+    "anatomy": true,
+    "current": "9da5f50c2b155cf454ba4f877dc7e8d2c4901ef48c93eb3e979d2088438eb006",
+    "before": "9da5f50c2b155cf454ba4f877dc7e8d2c4901ef48c93eb3e979d2088438eb006",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": true,
+    "regional": "none",
+    "anatomy": false,
+    "current": "9da5f50c2b155cf454ba4f877dc7e8d2c4901ef48c93eb3e979d2088438eb006",
+    "before": "9da5f50c2b155cf454ba4f877dc7e8d2c4901ef48c93eb3e979d2088438eb006",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": false,
+    "regional": "existing",
+    "anatomy": true,
+    "current": "2e172f022cf260e5adf9de98baec05894389d5c98ce82af2655f1247ca0a7582",
+    "before": "2e172f022cf260e5adf9de98baec05894389d5c98ce82af2655f1247ca0a7582",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": false,
+    "regional": "existing",
+    "anatomy": false,
+    "current": "2e172f022cf260e5adf9de98baec05894389d5c98ce82af2655f1247ca0a7582",
+    "before": "2e172f022cf260e5adf9de98baec05894389d5c98ce82af2655f1247ca0a7582",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": false,
+    "regional": "regional-body-shape-v1",
+    "anatomy": true,
+    "current": "41214c9ceb5df3e1b59054a681bde04f9ed17a4fc2172297aaaaed22321645b1",
+    "before": "41214c9ceb5df3e1b59054a681bde04f9ed17a4fc2172297aaaaed22321645b1",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": false,
+    "regional": "regional-body-shape-v1",
+    "anatomy": false,
+    "current": "41214c9ceb5df3e1b59054a681bde04f9ed17a4fc2172297aaaaed22321645b1",
+    "before": "41214c9ceb5df3e1b59054a681bde04f9ed17a4fc2172297aaaaed22321645b1",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": false,
+    "regional": "none",
+    "anatomy": true,
+    "current": "a0e3f87488b8b6fcdb2c362d94fd61399e8f0d7e33a2d29318c68ab2f51daefa",
+    "before": "a0e3f87488b8b6fcdb2c362d94fd61399e8f0d7e33a2d29318c68ab2f51daefa",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  },
+  {
+    "facial": false,
+    "regional": "none",
+    "anatomy": false,
+    "current": "a0e3f87488b8b6fcdb2c362d94fd61399e8f0d7e33a2d29318c68ab2f51daefa",
+    "before": "a0e3f87488b8b6fcdb2c362d94fd61399e8f0d7e33a2d29318c68ab2f51daefa",
+    "expected": "d3092f53e4feb19f744260c07c5151adc748b31d5beb57a36c9ef1cc00d6e261",
+    "match": false
+  }
+]

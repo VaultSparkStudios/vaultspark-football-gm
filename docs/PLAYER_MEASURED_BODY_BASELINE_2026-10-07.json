@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-07T12:33:50.042Z",
+  "status": "diagnostic-baseline-not-appearance-acceptance",
+  "sourceHashes": {
+    "tests-ui/player-measured-body-comparisons.spec.js": "b95f0812281619c6442b2227f10f197af3940d97f0d94684eecefdf64924f366",
+    "src/domain/playerIdentity.js": "7e1dcf529ea6170e5606b7bf9572e843c9c7b5edee7a15d4d5078f9345ca6754",
+    "src/domain/playerMeasurements.js": "2d8ccd15fa403a7991a70fe0d5f2e00a29fd4dd47ba3e860ed1ccddf95e38124",
+    "public/lib/playerPortrait.js": "67ecf040cc8a3ad4e18119716559dbc80b1c94fc2d5db46d7c1ceb028d9c8195",
+    "public/lib/playerMotion.js": "7bb7590609d26bf8e69221fe29ad90309e0b7b365c9e730b1963576cac35423f",
+    "public/lib/torsoSurface.js": "bd557a1ee9f5d1fec6951f413342bc437437774c97cdda47cb0d9b6231da6d97"
+  },
+  "browser": {
+    "tests": 1,
+    "terminalExit": 0,
+    "outputChunk": "7fae92",
+    "runtime": "development sources",
+    "modernProjectionMarkersAsserted": true
+  },
+  "comparisons": [
+    {
+      "name": "mass",
+      "players": [
+        {
+          "name": "74 in / 180 lb",
+          "frame": {
+            "heightInches": 74,
+            "weightLbs": 180,
+            "volumeBudgetInches3": 4982.382847836562,
+            "torsoVolumeInches3": 2387.6959679083184,
+            "legsVolumeInches3": 1411.058660712738,
+            "armsVolumeInches3": 496.041118374157,
+            "neckVolumeInches3": 64.78924486177863,
+            "reservedVolumeInches3": 622.7978559795703,
+            "torsoLengthInches": 21.287652302077035,
+            "legLengthInches": 39.31234769792296,
+            "armSegmentLengthInches": 22.1,
+            "neckLengthInches": 3,
+            "chestWidthInches": 17.118031300472218,
+            "chestDepthInches": 11.926910683866824,
+            "waistRatio": 0.6612324222186581,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 4.975448155459504,
+            "thighWidth": 6.383245297945147,
+            "neckDiameterInches": 5.243797244731023,
+            "upperArmShare": 0.49958674298599365,
+            "upperLegShare": 0.5403312446549535,
+            "pelvicBreadthInches": 10.702995391152799,
+            "footLengthInches": 9.990170967231972,
+            "footWidthInches": 3.7463974250920327,
+            "shoulderWidth": 68.47212520188887,
+            "neckWidth": 26.218986223655115,
+            "torsoLength": 65,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 16.53276985894656,
+            "torsoShare": 0.2876709770550951,
+            "armLengthInches": 29.5,
+            "wingspanInches": 75.53276985894655,
+            "handSizeInches": 9.125
+          },
+          "ratings": {
+            "speed": 70,
+            "acceleration": 70,
+            "agility": 70,
+            "jumping": 70,
+            "strength": 70,
+            "stamina": 70
+          }
+        },
+        {
+          "name": "74 in / 330 lb",
+          "frame": {
+            "heightInches": 74,
+            "weightLbs": 330,
+            "volumeBudgetInches3": 9134.36855436703,
+            "torsoVolumeInches3": 4377.442607831917,
+            "legsVolumeInches3": 2586.940877973353,
+            "armsVolumeInches3": 909.4087170192878,
+            "neckVolumeInches3": 118.78028224659417,
+            "reservedVolumeInches3": 1141.7960692958789,
+            "torsoLengthInches": 21.287652302077035,
+            "legLengthInches": 39.31234769792296,
+            "armSegmentLengthInches": 22.1,
+            "neckLengthInches": 3,
+            "chestWidthInches": 21.88679648874498,
+            "chestDepthInches": 15.249526203987626,
+            "waistRatio": 0.7662324222186581,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 6.736788649204693,
+            "thighWidth": 8.642954991119716,
+            "neckDiameterInches": 7.100135033719845,
+            "upperArmShare": 0.49958674298599365,
+            "upperLegShare": 0.5403312446549535,
+            "pelvicBreadthInches": 10.702995391152799,
+            "footLengthInches": 9.990170967231972,
+            "footWidthInches": 3.7463974250920327,
+            "shoulderWidth": 87.54718595497992,
+            "neckWidth": 35.50067516859922,
+            "torsoLength": 65,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 16.53276985894656,
+            "torsoShare": 0.2876709770550951,
+            "armLengthInches": 29.5,
+            "wingspanInches": 75.53276985894655,
+            "handSizeInches": 9.125
+          },
+          "ratings": {
+            "speed": 70,
+            "acceleration": 70,
+            "agility": 70,
+            "jumping": 70,
+            "strength": 70,
+            "stamina": 70
+          }
+        }
+      ]
+    },
+    {
+      "name": "stature",
+      "players": [
+        {
+          "name": "64 in / 225 lb",
+          "frame": {
+            "heightInches": 64,
+            "weightLbs": 225,
+            "volumeBudgetInches3": 6227.978559795703,
+            "torsoVolumeInches3": 2984.619959885398,
+            "legsVolumeInches3": 1763.8233258909227,
+            "armsVolumeInches3": 620.0513979676963,
+            "neckVolumeInches3": 80.9865560772233,
+            "reservedVolumeInches3": 778.4973199744629,
+            "torsoLengthInches": 18.410942531526086,
+            "legLengthInches": 32.539057468473914,
+            "armSegmentLengthInches": 19.225,
+            "neckLengthInches": 3,
+            "chestWidthInches": 19.64860152032843,
+            "chestDepthInches": 13.690074009233903,
+            "waistRatio": 0.745796387062408,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 5.964172203285419,
+            "thighWidth": 7.844378598804705,
+            "neckDiameterInches": 5.862743549722334,
+            "upperArmShare": 0.49958674298599365,
+            "upperLegShare": 0.5403312446549535,
+            "pelvicBreadthInches": 9.256644662618637,
+            "footLengthInches": 8.640147863551976,
+            "footWidthInches": 3.240127502782298,
+            "shoulderWidth": 78.59440608131372,
+            "neckWidth": 29.313717748611673,
+            "torsoLength": 48,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 14.298611769899725,
+            "torsoShare": 0.2876709770550951,
+            "armLengthInches": 25.625,
+            "wingspanInches": 65.54861176989972,
+            "handSizeInches": 7.875
+          },
+          "ratings": {
+            "speed": 70,
+            "acceleration": 70,
+            "agility": 70,
+            "jumping": 70,
+            "strength": 70,
+            "stamina": 70
+          }
+        },
+        {
+          "name": "84 in / 225 lb",
+          "frame": {
+            "heightInches": 84,
+            "weightLbs": 225,
+            "volumeBudgetInches3": 6227.978559795703,
+            "torsoVolumeInches3": 2984.619959885398,
+            "legsVolumeInches3": 1763.8233258909227,
+            "armsVolumeInches3": 620.0513979676963,
+            "neckVolumeInches3": 80.9865560772233,
+            "reservedVolumeInches3": 778.4973199744629,
+            "torsoLengthInches": 24.164362072627988,
+            "legLengthInches": 46.08563792737201,
+            "armSegmentLengthInches": 24.975,
+            "neckLengthInches": 3,
+            "chestWidthInches": 18.00076554951108,
+            "chestDepthInches": 12.541951768970247,
+            "waistRatio": 0.657464565075801,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 5.23275739492329,
+            "thighWidth": 6.591408518118377,
+            "neckDiameterInches": 5.862743549722334,
+            "upperArmShare": 0.49958674298599365,
+            "upperLegShare": 0.5403312446549535,
+            "pelvicBreadthInches": 12.14934611968696,
+            "footLengthInches": 11.340194070911968,
+            "footWidthInches": 4.252667347401767,
+            "shoulderWidth": 72.00306219804432,
+            "neckWidth": 29.313717748611673,
+            "torsoLength": 83,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 18.76692794799339,
+            "torsoShare": 0.2876709770550951,
+            "armLengthInches": 33.375,
+            "wingspanInches": 85.5169279479934,
+            "handSizeInches": 10.25
+          },
+          "ratings": {
+            "speed": 70,
+            "acceleration": 70,
+            "agility": 70,
+            "jumping": 70,
+            "strength": 70,
+            "stamina": 70
+          }
+        }
+      ]
+    },
+    {
+      "name": "proportions",
+      "players": [
+        {
+          "name": "74 in / 225 lb / proportions A",
+          "frame": {
+            "heightInches": 74,
+            "weightLbs": 225,
+            "volumeBudgetInches3": 6227.978559795703,
+            "torsoVolumeInches3": 2984.619959885398,
+            "legsVolumeInches3": 1763.8233258909227,
+            "armsVolumeInches3": 620.0513979676963,
+            "neckVolumeInches3": 80.9865560772233,
+            "reservedVolumeInches3": 778.4973199744629,
+            "torsoLengthInches": 23.140178524008952,
+            "legLengthInches": 37.45982147599104,
+            "armSegmentLengthInches": 22.35,
+            "neckLengthInches": 3,
+            "chestWidthInches": 18.040510718029132,
+            "chestDepthInches": 12.569644034903709,
+            "waistRatio": 0.692732422218658,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 5.537632063431386,
+            "thighWidth": 7.396822317874905,
+            "neckDiameterInches": 5.862743549722334,
+            "upperArmShare": 0.4962191361072473,
+            "upperLegShare": 0.5084242131561041,
+            "pelvicBreadthInches": 8.636154937315732,
+            "footLengthInches": 12.300368453827687,
+            "footWidthInches": 4.8024953294684956,
+            "shoulderWidth": 72.16204287211653,
+            "neckWidth": 29.313717748611673,
+            "torsoLength": 65,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 16.10944569393061,
+            "torsoShare": 0.31270511518931016,
+            "armLengthInches": 29.75,
+            "wingspanInches": 75.60944569393061,
+            "handSizeInches": 9.5
+          },
+          "ratings": {
+            "speed": 70,
+            "acceleration": 70,
+            "agility": 70,
+            "jumping": 70,
+            "strength": 70,
+            "stamina": 70
+          }
+        },
+        {
+          "name": "74 in / 225 lb / proportions B",
+          "frame": {
+            "heightInches": 74,
+            "weightLbs": 225,
+            "volumeBudgetInches3": 6227.978559795703,
+            "torsoVolumeInches3": 2984.619959885398,
+            "legsVolumeInches3": 1763.8233258909227,
+            "armsVolumeInches3": 620.0513979676963,
+            "neckVolumeInches3": 80.9865560772233,
+            "reservedVolumeInches3": 778.4973199744629,
+            "torsoLengthInches": 21.368574825190006,
+            "legLengthInches": 39.231425174809985,
+            "armSegmentLengthInches": 23.6,
+            "neckLengthInches": 3,
+            "chestWidthInches": 18.77346345884177,
+            "chestDepthInches": 13.080325533361222,
+            "waistRatio": 0.692732422218658,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 5.3756859141785736,
+            "thighWidth": 7.196904254628754,
+            "neckDiameterInches": 5.862743549722334,
+            "upperArmShare": 0.5037649240274914,
+            "upperLegShare": 0.5200833506695927,
+            "pelvicBreadthInches": 10.61314723365009,
+            "footLengthInches": 11.158089474460576,
+            "footWidthInches": 3.865811412408118,
+            "shoulderWidth": 75.09385383536709,
+            "neckWidth": 29.313717748611673,
+            "torsoLength": 65,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 15.493264976358041,
+            "torsoShare": 0.2887645246647298,
+            "armLengthInches": 31,
+            "wingspanInches": 77.49326497635803,
+            "handSizeInches": 9.25
+          },
+          "ratings": {
+            "speed": 70,
+            "acceleration": 70,
+            "agility": 70,
+            "jumping": 70,
+            "strength": 70,
+            "stamina": 70
+          }
+        }
+      ]
+    },
+    {
+      "name": "capacities",
+      "players": [
+        {
+          "name": "225 lb / low speed, acceleration and jump",
+          "frame": {
+            "heightInches": 74,
+            "weightLbs": 225,
+            "volumeBudgetInches3": 6227.978559795703,
+            "torsoVolumeInches3": 2984.619959885398,
+            "legsVolumeInches3": 1763.8233258909227,
+            "armsVolumeInches3": 620.0513979676963,
+            "neckVolumeInches3": 80.9865560772233,
+            "reservedVolumeInches3": 778.4973199744629,
+            "torsoLengthInches": 21.287652302077035,
+            "legLengthInches": 39.31234769792296,
+            "armSegmentLengthInches": 22.1,
+            "neckLengthInches": 3,
+            "chestWidthInches": 18.809112176352045,
+            "chestDepthInches": 13.105163615631097,
+            "waistRatio": 0.692732422218658,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 5.562720147066696,
+            "thighWidth": 7.136685201630625,
+            "neckDiameterInches": 5.862743549722334,
+            "upperArmShare": 0.49958674298599365,
+            "upperLegShare": 0.5403312446549535,
+            "pelvicBreadthInches": 10.702995391152799,
+            "footLengthInches": 9.990170967231972,
+            "footWidthInches": 3.7463974250920327,
+            "shoulderWidth": 75.23644870540818,
+            "neckWidth": 29.313717748611673,
+            "torsoLength": 65,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 16.53276985894656,
+            "torsoShare": 0.2876709770550951,
+            "armLengthInches": 29.5,
+            "wingspanInches": 75.53276985894655,
+            "handSizeInches": 9.125
+          },
+          "ratings": {
+            "speed": 45,
+            "acceleration": 45,
+            "agility": 45,
+            "jumping": 45,
+            "strength": 70,
+            "stamina": 70
+          }
+        },
+        {
+          "name": "225 lb / high speed, acceleration and jump",
+          "frame": {
+            "heightInches": 74,
+            "weightLbs": 225,
+            "volumeBudgetInches3": 6227.978559795703,
+            "torsoVolumeInches3": 2984.619959885398,
+            "legsVolumeInches3": 1763.8233258909227,
+            "armsVolumeInches3": 620.0513979676963,
+            "neckVolumeInches3": 80.9865560772233,
+            "reservedVolumeInches3": 778.4973199744629,
+            "torsoLengthInches": 21.287652302077035,
+            "legLengthInches": 39.31234769792296,
+            "armSegmentLengthInches": 22.1,
+            "neckLengthInches": 3,
+            "chestWidthInches": 18.809112176352045,
+            "chestDepthInches": 13.105163615631097,
+            "waistRatio": 0.692732422218658,
+            "limbShapeVariation": -0.10682668732479214,
+            "upperArmWidth": 5.562720147066696,
+            "thighWidth": 7.136685201630625,
+            "neckDiameterInches": 5.862743549722334,
+            "upperArmShare": 0.49958674298599365,
+            "upperLegShare": 0.5403312446549535,
+            "pelvicBreadthInches": 10.702995391152799,
+            "footLengthInches": 9.990170967231972,
+            "footWidthInches": 3.7463974250920327,
+            "shoulderWidth": 75.23644870540818,
+            "neckWidth": 29.313717748611673,
+            "torsoLength": 65,
+            "muscleDefinition": 0.299952973692157,
+            "shoulderSpanInches": 16.53276985894656,
+            "torsoShare": 0.2876709770550951,
+            "armLengthInches": 29.5,
+            "wingspanInches": 75.53276985894655,
+            "handSizeInches": 9.125
+          },
+          "ratings": {
+            "speed": 95,
+            "acceleration": 95,
+            "agility": 95,
+            "jumping": 95,
+            "strength": 70,
+            "stamina": 70
+          }
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "file": "output/playwright/s117-measured-body-mass-desktop-dark.png",
+      "pair": "mass",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "d5b58d884eb3484210f7ff35e01366f1900afabd97fd31317e7ca3831a033c74"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-mass-desktop-light.png",
+      "pair": "mass",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "8c049a8acc568af86b7fa51c7f08fa3ee3472514fd2b29198f0fdcd0bc2295e5"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-mass-mobile-dark.png",
+      "pair": "mass",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "89cffa2003cf383affe5830da7ebf7925d6d7e7dc3014903ce0ec1da87fb0c95"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-mass-mobile-light.png",
+      "pair": "mass",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "420f5686c8371f34ad6aad85a9f63896e6862aef521f73b713fed1bac3b52ffb"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-stature-desktop-dark.png",
+      "pair": "stature",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "03c821b3161a9bc90e3418a88aa8bc3ab093aabf491f858b4880c4e2580e028c"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-stature-desktop-light.png",
+      "pair": "stature",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "47a850a283e1d982ee4f47c746562c464c0aa712610017eac61b86e6111243cf"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-stature-mobile-dark.png",
+      "pair": "stature",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "f09f09e0079b1161f2a137478d0454eba5aa30fa099b0edbd50630898378f48b"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-stature-mobile-light.png",
+      "pair": "stature",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "90a10a09113c4aad87c5de38310bcb07eca8ce19192a6f525e8d147b1ba48ffd"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-proportions-desktop-dark.png",
+      "pair": "proportions",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "b211192863958761a9bea682257094a2fa61d4522ef4e31d31e325c05ee766be"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-proportions-desktop-light.png",
+      "pair": "proportions",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "2b845ff25b14566a7ff6bc3572b8c753f905386ea0be3f899e645385bebfa3dd"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-proportions-mobile-dark.png",
+      "pair": "proportions",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "11ead6ee3bf269cac1733208e7854762452e7cfc6c93833df64410624abb3c94"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-proportions-mobile-light.png",
+      "pair": "proportions",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "2ccc14ab20c4ef8ce69bcfa815250e923dd45b3d854ae998286ed88d6affbb6e"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-capacities-desktop-dark.png",
+      "pair": "capacities",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sha256": "a1c99f4df7bb7af7f40fd0a97cd290793594e05ab1cd1aa812c1d7fa91ff8ca1"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-capacities-desktop-light.png",
+      "pair": "capacities",
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sha256": "10e344b7b10d278047e8b6bd9fd7594d00c9e210515fe9ec0c87ea252346937b"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-capacities-mobile-dark.png",
+      "pair": "capacities",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sha256": "b14c69a5eb1e208143bd73eb8045c2409b33a8ba3089e5ab0a5eaa5588fefe0b"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-capacities-mobile-light.png",
+      "pair": "capacities",
+      "viewport": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sha256": "331d536a362a21d1ba8651380bfc9940905988cc8eb2c9f8a77c97329013a1cb"
+    }
+  ],
+  "inspection": {
+    "reviewer": "codex-primary",
+    "imagesInspected": [
+      {
+        "file": "output/playwright/s117-measured-body-mass-desktop-light.png",
+        "pair": "mass",
+        "viewport": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "theme": "light",
+        "sha256": "8c049a8acc568af86b7fa51c7f08fa3ee3472514fd2b29198f0fdcd0bc2295e5"
+      },
+      {
+        "file": "output/playwright/s117-measured-body-stature-desktop-light.png",
+        "pair": "stature",
+        "viewport": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "theme": "light",
+        "sha256": "47a850a283e1d982ee4f47c746562c464c0aa712610017eac61b86e6111243cf"
+      },
+      {
+        "file": "output/playwright/s117-measured-body-proportions-desktop-light.png",
+        "pair": "proportions",
+        "viewport": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "theme": "light",
+        "sha256": "2b845ff25b14566a7ff6bc3572b8c753f905386ea0be3f899e645385bebfa3dd"
+      },
+      {
+        "file": "output/playwright/s117-measured-body-capacities-desktop-light.png",
+        "pair": "capacities",
+        "viewport": "desktop",
+        "width": 1440,
+        "height": 1000,
+        "theme": "light",
+        "sha256": "10e344b7b10d278047e8b6bd9fd7594d00c9e210515fe9ec0c87ea252346937b"
+      }
+    ],
+    "observations": [
+      "Mass pair shows increased arm/leg/torso bulk at fixed stature",
+      "64/84-inch pair shows expected vertical differences with fixed mass at shared image scale",
+      "Equal-height/mass proportion seeds change torso/leg balance and reach, while keeping face fixed",
+      "Capacity pair retains exactly equal frames; single running phase differs modestly",
+      "Side torso is visibly flat/trapezoidal; heavy builds and transitions need stronger regional surface form"
+    ],
+    "nextAction": "Improve static torso and shoulder surface presentation while retaining measured silhouette endpoints and the existing volume/taper authority"
+  },
+  "limitations": [
+    "Only four desktop-light images visually inspected; remaining twelve captures are availability, not visual approval",
+    "No runtime rendering or generation coefficients changed",
+    "Estimated anatomy/one-kilogram-per-litre volume proxy is artistic, not empirically calibrated body composition",
+    "One running phase does not validate acceleration/cutting/jump/endurance or animated cycle quality",
+    "No population, career, complete feature or release acceptance"
+  ]
+}

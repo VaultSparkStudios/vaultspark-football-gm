@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "component": "Unadopted facial-depth architecture diagnostic",
+  "reviewRound": 1,
+  "reviewedAt": "2026-10-08T01:53:13.356Z",
+  "verdict": "PASS",
+  "verdictScope": "Source-bound diagnostic evidence and honest rejection of candidate as completed adult-person overhaul;notproduction implementation approval.",
+  "artifact": {
+    "path": ".cache/face-architecture-reviewed-primary-r1.json",
+    "sha256": "5a947dc771b8a5893198d7c387f7e291d4e87525eebd43a2e5a734f1f7a7944b",
+    "canonicalPath": "docs/visual-qa/PLAYER_FACE_ARCHITECTURE_EXPERIMENT_2026-10-07.json"
+  },
+  "sourceHashes": {
+    "public/lib/playerPortraitFace.js": "0b146360e1c160165e8a3a81816e9a24dff0a3e5bc3fc80ef4ed0ccfcc74f7e5",
+    "public/lib/playerSideAppearance.js": "28bf2c3bcc24d353a83a1568c08afc40e4e94a60131371eff93edd33b4bb1c75",
+    "public/lib/portraitSurfaceLighting.js": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    ".cache/portrait-art-benchmark.spec.mjs": "770e63bf6bb59904e512477dbaa42b3e9464e21286a1ef164b053b0b7e0def13",
+    ".cache/face-depth-candidate.spec.mjs": "0a15e0b195d7efe540383779c4195ab887a65e7302f514855e1d48011058e5fd",
+    "docs/visual-qa/references/player-face-depth-candidate-2026-10-07.mjs": "57560ecb24200fb1c08cf7d50215727025e599267332014aa9ac95b2cf87587a",
+    "docs/visual-qa/references/player-portrait-art-target-2026-10-07.png": "b8af6c7aa2b746a49a915e760d1d960ceb297ab40aea8987bd62829f6dca49e2"
+  },
+  "checkedCaptureHashes": [
+    {
+      "path": "docs/visual-qa/captures/player-art-benchmark-desktop-dark.png",
+      "original": "output/playwright/player-art-benchmark-desktop-dark.png",
+      "sha256": "8ebed5a6490584652d05da9eba78146044c1764e92afa01f6b06d1f123e6581c",
+      "originalMatches": true
+    },
+    {
+      "path": "docs/visual-qa/captures/player-art-benchmark-desktop-light.png",
+      "original": "output/playwright/player-art-benchmark-desktop-light.png",
+      "sha256": "b3bfc65eb65db03976f42825abfa992b9c70ff7f59c70054a2f90e3699c47569",
+      "originalMatches": true
+    },
+    {
+      "path": "docs/visual-qa/captures/player-art-benchmark-mobile-dark.png",
+      "original": "output/playwright/player-art-benchmark-mobile-dark.png",
+      "sha256": "95db45e7ba3b0195a9880f8af79d5f416a49bd2b296b980f5d4f32a7cb6640cd",
+      "originalMatches": true
+    },
+    {
+      "path": "docs/visual-qa/captures/player-art-benchmark-mobile-light.png",
+      "original": "output/playwright/player-art-benchmark-mobile-light.png",
+      "sha256": "17a5ac396e72cb7362aec795afc92f00836fe9b0456232f23af7a090d8a182e3",
+      "originalMatches": true
+    },
+    {
+      "path": "docs/visual-qa/captures/player-depth-candidate-desktop-dark.png",
+      "original": "output/playwright/player-depth-candidate-desktop-dark.png",
+      "sha256": "65022b08fccbb7edc488defc98e70fa6e152332242ab582755dfded6025e090b",
+      "originalMatches": true
+    },
+    {
+      "path": "docs/visual-qa/captures/player-depth-candidate-desktop-light.png",
+      "original": "output/playwright/player-depth-candidate-desktop-light.png",
+      "sha256": "bf546c469627d8c8be26eabc74992396f02559432cfa3ea86963b126fb481896",
+      "originalMatches": true
+    },
+    {
+      "path": "docs/visual-qa/captures/player-depth-candidate-mobile-dark.png",
+      "original": "output/playwright/player-depth-candidate-mobile-dark.png",
+      "sha256": "e94111cec6ad1373358db0da0fc7f8a831c5766f90c8eb139e92e969100e7a82",
+      "originalMatches": true
+    },
+    {
+      "path": "docs/visual-qa/captures/player-depth-candidate-mobile-light.png",
+      "original": "output/playwright/player-depth-candidate-mobile-light.png",
+      "sha256": "8c1faddc47d8c1194aa260753fabff2c8339b534181e43a45e8d77dc330f28dc",
+      "originalMatches": true
+    }
+  ],
+  "inspectedImages": [
+    {
+      "path": "docs/visual-qa/references/player-portrait-art-target-2026-10-07.png",
+      "sha256": "b8af6c7aa2b746a49a915e760d1d960ceb297ab40aea8987bd62829f6dca49e2"
+    },
+    {
+      "path": "output/playwright/player-art-benchmark-desktop-dark.png",
+      "sha256": "8ebed5a6490584652d05da9eba78146044c1764e92afa01f6b06d1f123e6581c"
+    },
+    {
+      "path": "output/playwright/player-depth-candidate-desktop-dark.png",
+      "sha256": "65022b08fccbb7edc488defc98e70fa6e152332242ab582755dfded6025e090b"
+    },
+    {
+      "path": "output/playwright/player-depth-candidate-desktop-light.png",
+      "sha256": "bf546c469627d8c8be26eabc74992396f02559432cfa3ea86963b126fb481896"
+    },
+    {
+      "path": "output/playwright/player-depth-candidate-mobile-dark.png",
+      "sha256": "e94111cec6ad1373358db0da0fc7f8a831c5766f90c8eb139e92e969100e7a82"
+    },
+    {
+      "path": "output/playwright/player-depth-candidate-mobile-light.png",
+      "sha256": "8c1faddc47d8c1194aa260753fabff2c8339b534181e43a45e8d77dc330f28dc"
+    }
+  ],
+  "checks": [
+    {
+      "check": "Exact source/prototype/artreference and all8 copied/originalcapturebindings",
+      "result": "PASS;prototype copiedmodule equals executed .cache prototype;primaryInspectedCount6 matchescaptureflags."
+    },
+    {
+      "check": "Numerical candidate probes",
+      "result": "120 sampledfront/profile depthpoints andunitnormals finite;12 smallrasterbuffers sizedcorrectly;allinputDTOs unchanged."
+    },
+    {
+      "check": "Performance report reconciliation",
+      "result": "Recorded650ms and489108dataURIcharacters matchprimary output report;notanindependent timing benchmark."
+    },
+    {
+      "check": "Harness semantics",
+      "result": "Baseline report appearance/frame DTOs reused for bothrows;exactinmemorycomparison and12candidateoverlays asserted. No actual roster/dossier/save workflow orshared3D reconstruction asserted."
+    }
+  ],
+  "findings": [
+    {
+      "id": "timing-scope-qualification",
+      "severity": "nonblocking-metadata-clarification",
+      "description": "rasterCreationMs timer starts before both baseline andcandidate loops, so includes24SVG constructions,DOMwork and12 raster creations/PNG encodings. Treat650ms ascombinedgallerycreation;do not attribute it entirely torastermath ordeclare a repeatableproductioncost.",
+      "suggestedCorrection": "Rename/qualify timing as combined gallery construction andencoding;isolated/repeated profiling remainsfuturework.",
+      "disposition": "Corrected andverified byreviewer duringR1."
+    },
+    {
+      "id": "candidate-does-not-meet-adult-person-art-target",
+      "severity": "retained-quality-finding",
+      "description": "Candidatecontinuous shading subtly smooths forehead/cheek fill but stillreads asflat masks withsmall simplifiedeyes,blocklikeprofile features,solid hair/beard shapes. It lacks coherent adult anatomical depth/material relative to separatefictional artreference.",
+      "controllingSources": [
+        "docs/visual-qa/references/player-face-depth-candidate-2026-10-07.mjs",
+        "public/lib/playerPortraitFace.js",
+        "public/lib/playerSideAppearance.js"
+      ],
+      "disposition": "Alreadyhonestlyretained byprimary;agreewithreject-as-completed-overhaul decision."
+    }
+  ],
+  "primaryExecution": {
+    "baseline": "f709a0primary1/1PASS10.3s",
+    "candidate": "aee188primary1/1PASS13s",
+    "attribution": "Primaryexecution;reviewer didnotrunPlaywright."
+  },
+  "limits": [
+    "Six imagefiles inspected includingreference,fourcandidate originals andonebaselineoriginal;notallfourbaselineimages.",
+    "Referencepeople aredifferentfictionalidentities;notpairedempiricalsubjects orruntimeidentitytemplates.",
+    "Front/profileexisting coordinate scales differ;comparability isqualitative.",
+    "Puredepths areindependentartisticrelief estimates,notasingle3Dhead orpopulationfit.",
+    "No productionadoption,coefficientchange,performancebudgetacceptance,persistenceproof orfullappearance/releaseapproval.",
+    "Fulladult-person craft remainsopen;retainblockingDefectsOpen1."
+  ],
+  "initialArtifactDigestBeforeTimingCorrection": "da76638e354d86b162fa1cd1980346ad151204c801a2498c4b0a4cadf6b39730",
+  "metadataCorrectionStatus": "Verified duringR1:canonicalcombinedGalleryCreationMs650 andexplicitoriginalreportmislabeled scope. Sources/captures unchanged;corrected reviewedpayload frozen toprevent laterstamp hash drift."
+}

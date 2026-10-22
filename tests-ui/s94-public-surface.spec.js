@@ -133,8 +133,11 @@ async function startFranchise(page) {
   }
   await expect(page).toHaveURL(/game\.html/, { timeout: 60_000 });
   await expect(page.locator("#tab-overview")).toBeVisible({ timeout: 60_000 });
+  // Onboarding mounts before the product releases its boot overlay. The shell
+  // tab can exist sooner; isVisible() does not wait for a later tutorial mount.
+  await expect(page.locator('body')).not.toHaveClass(/game-booting/, { timeout: 60_000 });
   const skip = page.locator("#tutSkipBtn");
-  if (await skip.isVisible({ timeout: 3_000 }).catch(() => false)) {
+  if (await skip.isVisible()) {
     await skip.click();
     await expect(page.locator(".tutorial-overlay")).toHaveCount(0);
   }
@@ -171,7 +174,7 @@ test("shared gameplay routes resolve to an exact target inside their declared ta
 
 test("developer diagnostics do not ship to players, and open for ?dev=1", async ({ page }) => {
   await startFranchise(page);
-  await page.locator('[data-tab="settingsTab"]').first().click();
+  await page.getByRole('tab', { name: 'Settings', exact: true }).click();
   // S113: several surfaces carry the flag now (sim jobs, QA report); every one stays hidden.
   const dev = page.locator("[data-dev-surface]");
   await expect(dev.first()).toBeAttached({ timeout: 30_000 });
@@ -182,7 +185,8 @@ test("developer diagnostics do not ship to players, and open for ?dev=1", async 
   url.searchParams.set("dev", "1");
   await page.goto(url.toString());
   await expect(page.locator("#tab-overview")).toBeAttached({ timeout: 40_000 });
-  await page.locator('[data-tab="settingsTab"]').first().click();
+  await expect(page.locator('body')).not.toHaveClass(/game-booting/, { timeout: 60_000 });
+  await page.getByRole('tab', { name: 'Settings', exact: true }).click();
   await expect(page.locator(".panel.dev-only[data-dev-surface]")).toBeVisible({ timeout: 30_000 });
 });
 

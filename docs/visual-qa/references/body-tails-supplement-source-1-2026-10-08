@@ -1,0 +1,136 @@
+import {test,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+import {startStaticClientHost,configureClient,createClientLeague,readClient,assertRuntime,saveSlot,waitGameReady} from './helpers/static-client.js';
+let host;
+async function assertMeasuredRig(locator,player,mode=null){
+ const actual=await locator.locator(mode?'.motion-upper-surface,.motion-lower-surface':'.physique-arm,.physique-leg').evaluateAll(elements=>elements.map(el=>el.getAttribute('d')));
+ const expected=await locator.page().evaluate(async({player,mode})=>{
+  const svg=mode?(await import('./lib/playerMotion.js')).buildPlayerMotionSvg(player,{mode,phase:0}):(await import('./lib/playerPortrait.js')).buildPlayerPhysiqueSvg(player);
+  const template=document.createElement('template');template.innerHTML=svg;
+  if(mode){
+   const pose=(await import('./lib/playerMotion.js')).solvePlayerMotion(player,{mode,phase:0});
+   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y,(a.z??0)-(b.z??0));
+   const f=player.visualFrame;
+   if(Math.abs(distance(pose.arms[0].root,pose.arms[1].root)-f.shoulderSpanInches*6)>1e-8)throw Error('Shoulder spacing');
+   for(const [limbs,total,share]of [[pose.arms,f.armSegmentLengthInches*6,f.upperArmShare],[pose.legs,f.legLengthInches*6,f.upperLegShare]])for(const limb of limbs){
+    if(Math.abs(distance(limb.root,limb.joint)-total*share)>1e-8||Math.abs(distance(limb.joint,limb.end)-total*(1-share))>1e-8)throw Error('Bone length');
+   }
+  }
+  return [...template.content.querySelectorAll(mode?'.motion-upper-surface,.motion-lower-surface':'.physique-arm,.physique-leg')].map(el=>el.getAttribute('d'));
+ },{player,mode});
+ expect(actual).toEqual(expected);expect(actual).toHaveLength(mode?8:4);
+ if(!mode)await expect(locator.locator('[data-rig="measured-body-rig-v1"]')).toHaveCount(4);
+}
+async function assertRegionalTorso(locator,player,mode=null){
+ expect(player.profile.regionalBodyShapeRecipe.version).toBe('regional-body-shape-v3');
+ expect(player.visualFrame.torsoSections).toHaveLength(4);
+ const actual=await locator.locator('path.player-torso-surface').evaluateAll(elements=>elements.map(el=>({path:el.getAttribute('d'),model:el.getAttribute('data-envelope')})));
+ const expected=await locator.page().evaluate(async({player,mode})=>{
+  const svg=mode?(await import('./lib/playerMotion.js')).buildPlayerMotionSvg(player,{mode,phase:0})
+   :(await import('./lib/playerPortrait.js')).buildPlayerPhysiqueSvg(player);
+  const template=document.createElement('template');template.innerHTML=svg;
+  return [...template.content.querySelectorAll('path.player-torso-surface')].map(el=>({path:el.getAttribute('d'),model:el.getAttribute('data-envelope')}));
+ },{player,mode});
+ expect(actual).toHaveLength(1);expect(actual).toEqual(expected);expect(actual[0].model).toBe('artistic-regional-sections-v1');
+}
+async function assertAdultHead(locator,player,mode=null){
+ const selectors='clipPath[id$="-face"] > path,.portrait-eye clipPath > path,.side-lid-contact';
+ const actual=await locator.locator(selectors).evaluateAll(elements=>elements.map(el=>el.getAttribute('d')));
+ const expected=await locator.page().evaluate(async({player,mode,selectors})=>{
+  const svg=mode?(await import('./lib/playerMotion.js')).buildPlayerMotionSvg(player,{mode,phase:0})
+   :(await import('./lib/playerPortraitFace.js')).buildPlayerPortraitSvg(player);
+  const template=document.createElement('template');template.innerHTML=svg;
+  return [...template.content.querySelectorAll(selectors)].map(el=>el.getAttribute('d'));
+ },{player,mode,selectors});
+ expect(actual.length).toBeGreaterThan(0);expect(actual).toEqual(expected);
+ for(const eye of await locator.locator('.side-eye').all())expect(await eye.evaluate(el=>el.parentElement.hasAttribute('clip-path'))).toBe(true);
+}
+// Encoded PNG bytes can contain the literal letters NaN. Validate that payload
+// separately, then keep the non-finite check on every remaining SVG attribute.
+async function motionGeometryMarkup(locator){
+ return locator.evaluate(element=>{
+  const clone=element.cloneNode(true);
+  for(const image of clone.querySelectorAll('image'))for(const name of ['href','xlink:href']){
+   const value=image.getAttribute(name);
+   if(!value?.startsWith('data:image/png;base64,'))continue;
+   if(!/^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(value))throw Error('Malformed encoded head image');
+   const bytes=atob(value.slice('data:image/png;base64,'.length));
+   if([...bytes.slice(0,8)].map(c=>c.charCodeAt(0)).join(',')!=='137,80,78,71,13,10,26,10')throw Error('Invalid PNG signature');
+   image.setAttribute(name,'validated-encoded-png');
+  }
+  return clone.innerHTML;
+ });
+}
+test.beforeAll(async()=>{host=await startStaticClientHost();});
+test.afterAll(async()=>{await host?.close();});
+for(const worker of [true,false])test(`built ${worker?'worker':'in-page'} exposes all six movement modes after named save, franchise replacement, load and reload`,async({page})=>{
+ test.setTimeout(180000);
+ await configureClient(page,worker);
+ await createClientLeague(page,host.origin,{seed:20260306,year:2026,team:'BUF',mode:'play'});
+ await assertRuntime(page,worker);
+ const id='P2026-BUF-LB-33468504';
+ const before=(await readClient(page,`/api/player?playerId=${id}`)).profile.player;
+ await saveSlot(page,'capacity-mode-proof');
+ await page.evaluate(async()=>{
+  const {api}=await import('./lib/appState.js');
+  await api('/api/new-league',{method:'POST',body:{seed:118,startYear:2026,controlledTeamId:'MIA',mode:'play'}});
+  await (await import('./lib/gameFlow.js')).loadState();
+ });
+ expect((await readClient(page,'/api/state')).controlledTeamId).toBe('MIA');
+ await page.locator('[data-testid="tab-settings"]').click();
+ await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy','true');
+ await page.locator('#saveSlotInput').fill('capacity-mode-proof');
+ await page.locator('#loadBtn').click();
+ await expect.poll(async()=>(await readClient(page,'/api/state')).controlledTeamId).toBe('BUF');
+ await expect(page.locator('#statusChip')).toContainText('Ready',{timeout:60000});
+ await page.reload();await waitGameReady(page);await assertRuntime(page,worker);
+ const after=(await readClient(page,`/api/player?playerId=${id}`)).profile.player;
+ expect(after.appearance).toEqual(before.appearance);expect(after.visualFrame).toEqual(before.visualFrame);
+ for(const selector of ['#firstDebriefDecline','#tutSkipBtn'])if(await page.locator(selector).isVisible())await page.locator(selector).click();
+ await page.locator('[data-testid="tab-roster"]').click();await page.locator('#loadRosterBtn').click();
+  await page.locator(`#rosterTable button[data-player-id="${id}"]`).click();
+ if(process.env.PLAYER_FACE_SURFACE_PROOF==='1')await expect(page.locator('.player-portrait-card [data-eye-surface="lid-contact-v1"]')).toHaveCount(2);
+ if(process.env.PLAYER_FACIAL_PLANE_PROOF==='1')await expect(page.locator('.player-portrait-card [data-surface-model="directional-plane-v1"]')).toHaveCount(1);
+ if(process.env.PLAYER_ADULT_FORM_PROOF==='1')await assertAdultHead(page.locator('.player-portrait-card'),after);
+ await page.locator('.player-physique > summary').click();
+ if(process.env.PLAYER_REGIONAL_SECTION_PROOF==='1')await assertRegionalTorso(page.locator('.player-physique-svg'),after);
+ if(process.env.PLAYER_MEASURED_RIG_PROOF==='1')await assertMeasuredRig(page.locator('.player-physique-svg'),after);
+ if(process.env.PLAYER_LIMB_CONTOUR_PROOF==='1'){
+  const actual=await page.locator('.player-physique-svg .physique-arm,.player-physique-svg .physique-leg').evaluateAll(elements=>elements.map(el=>el.getAttribute('d')));
+  const expected=await page.evaluate(async player=>{
+   const {buildPlayerPhysiqueSvg}=await import('./lib/playerPortrait.js');
+   const read=svg=>{const template=document.createElement('template');template.innerHTML=svg;return [...template.content.querySelectorAll('.physique-arm,.physique-leg')].map(el=>el.getAttribute('d'));};
+   return {current:read(buildPlayerPhysiqueSvg(player)),legacy:read(buildPlayerPhysiqueSvg({...player,appearance:{...player.appearance,fineFaceVersion:null}}))};
+  },after);
+  expect(actual).toEqual(expected.current);expect(actual).not.toEqual(expected.legacy);
+ }
+ const detail=page.locator('.player-movement');await detail.locator(':scope > summary').click();
+ await detail.scrollIntoViewIfNeeded();
+ await expect(detail.locator('[data-motion-mode] option')).toHaveCount(6);
+ await page.emulateMedia({reducedMotion:'reduce'});
+ for(const mode of ['run','acceleration','cut','jump','strength','endurance']){
+  await detail.locator('[data-motion-mode]').selectOption(mode);
+  await expect(detail.locator('svg.player-motion-svg')).toHaveAttribute('data-mode',mode);
+  await expect(detail.locator('[data-motion-toggle]')).toBeDisabled();
+  expect(await motionGeometryMarkup(detail.locator('[data-motion-content]'))).not.toMatch(/NaN|Infinity|undefined/);
+  if(process.env.PLAYER_FACE_SURFACE_PROOF==='1')expect(await detail.locator('[data-eye-surface="lid-contact-v1"],.side-lid-contact').count()).toBeGreaterThan(0);
+  if(process.env.PLAYER_FACIAL_PLANE_PROOF==='1')expect(await detail.locator('[data-surface-model="directional-plane-v1"]').count()).toBeGreaterThan(0);
+  if(process.env.PLAYER_ADULT_FORM_PROOF==='1')await assertAdultHead(detail.locator('svg.player-motion-svg'),after,mode);
+  if(process.env.PLAYER_REGIONAL_SECTION_PROOF==='1')await assertRegionalTorso(detail.locator('svg.player-motion-svg'),after,mode);
+  if(process.env.PLAYER_MEASURED_RIG_PROOF==='1')await assertMeasuredRig(detail.locator('svg.player-motion-svg'),after,mode);
+  if(process.env.PLAYER_LIMB_CONTOUR_PROOF==='1'){
+   const actual=await detail.locator('.motion-upper-surface,.motion-lower-surface').evaluateAll(elements=>elements.map(el=>el.getAttribute('d')));
+   const expected=await page.evaluate(async({player,mode})=>{
+    const {buildPlayerMotionSvg}=await import('./lib/playerMotion.js');
+    const read=svg=>{const template=document.createElement('template');template.innerHTML=svg;return [...template.content.querySelectorAll('.motion-upper-surface,.motion-lower-surface')].map(el=>el.getAttribute('d'));};
+    return {current:read(buildPlayerMotionSvg(player,{mode,phase:0})),legacy:read(buildPlayerMotionSvg({...player,appearance:{...player.appearance,fineFaceVersion:null}},{mode,phase:0}))};
+   },{player:after,mode});
+   expect(actual).toEqual(expected.current);expect(actual).not.toEqual(expected.legacy);
+  }
+ }
+ expect((await readClient(page,`/api/player?playerId=${id}`)).profile.player.appearance).toEqual(before.appearance);
+ const manifest=JSON.parse(await fs.readFile('static/deploy-manifest.json','utf8'));
+ const proofDir=process.env.PLAYER_MEASURED_RIG_PROOF==='1'?'.cache/player-measured-rig-client':process.env.PLAYER_REGIONAL_SECTION_PROOF==='1'?'.cache/player-regional-section-client':process.env.PLAYER_FACIAL_PLANE_PROOF==='1'?'.cache/player-facial-plane-client':process.env.PLAYER_ADULT_FORM_PROOF==='1'?'.cache/player-adult-form-client':process.env.PLAYER_LIMB_CONTOUR_PROOF==='1'?'.cache/player-limb-contour-client':process.env.PLAYER_FACE_SURFACE_PROOF==='1'?'.cache/player-face-definition-client':'.cache/player-capacity-client';
+ await fs.mkdir(proofDir,{recursive:true});
+ await fs.writeFile(`${proofDir}/${worker?'worker':'in-page'}.json`,JSON.stringify({worker,artifactDigest:manifest.artifactFingerprint.digest,playerId:id,namedSaveReplacementLoadReload:true,modes:['run','acceleration','cut','jump','strength','endurance'],appearanceUnchanged:true,frameUnchanged:true,faceContactRendered:process.env.PLAYER_FACE_SURFACE_PROOF==='1',limbContoursRendered:process.env.PLAYER_LIMB_CONTOUR_PROOF==='1',adultFaceContoursRendered:process.env.PLAYER_ADULT_FORM_PROOF==='1',facialPlanesRendered:process.env.PLAYER_FACIAL_PLANE_PROOF==='1',regionalSectionPathsRendered:process.env.PLAYER_REGIONAL_SECTION_PROOF==='1',measuredRigRendered:process.env.PLAYER_MEASURED_RIG_PROOF==='1'},null,2));
+});

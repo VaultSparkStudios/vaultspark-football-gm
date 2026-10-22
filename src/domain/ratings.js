@@ -232,6 +232,12 @@ export function positionRatingKeys(position) {
     .map(([key]) => key);
 }
 
+/** Shared grading weights for models that distinguish physical capacity from
+ * current learned execution. Return a copy so callers cannot alter grading. */
+export function positionRatingWeights(position) {
+  return { ...(POSITION_FORMULAS[position] || {}) };
+}
+
 export function calculatePositionOverall(position, ratings) {
   const formula = POSITION_FORMULAS[position];
   if (!formula) return 60;
@@ -363,7 +369,7 @@ export const PLAYER_DEVELOPMENT_PROFILE = Object.freeze({
 export function developmentDelta(
   player,
   rng,
-  { environmentTilt = 0, potentialReversion = 0, potentialCentre = LEAGUE_AVERAGE_POTENTIAL } = {}
+  { environmentTilt = 0, potentialReversion = 0, potentialCentre = LEAGUE_AVERAGE_POTENTIAL, potentialHeadroomCentre = null } = {}
 ) {
   let ageFactor;
   if (player.age <= GROWTH_WINDOW_MAX_AGE) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.developing25AndUnder;
@@ -384,7 +390,18 @@ export function developmentDelta(
   if (!Number.isFinite(centre)) {
     throw new TypeError(`developmentDelta: potentialCentre must be finite, received ${potentialCentre}`);
   }
-  const traitFactor = (player.potential - centre) / 20;
+  // S117: a league's growth signal differentiates remaining upside, not an
+  // already-good player's absolute rating. The old absolute-potential term
+  // kept rewarding polished stars even when their remaining room was ordinary.
+  // Standalone legacy callers without a measured league retain their contract.
+  let traitFactor = (player.potential - centre) / 20;
+  if (potentialHeadroomCentre !== null && potentialHeadroomCentre !== undefined) {
+    const roomCentre = Number(potentialHeadroomCentre), overall = Number(player.overall);
+    if (!Number.isFinite(roomCentre) || !Number.isFinite(overall)) {
+      throw new TypeError("developmentDelta: headroom centre and player overall must be finite");
+    }
+    traitFactor = (Number(player.potential) - overall - roomCentre) / 20;
+  }
   // Never `Number(x || 0)` here: NaN is falsy, so that idiom launders a NaN into
   // a silent zero and the curve quietly stops applying. Validate, then use.
   const tilt = environmentTilt === undefined || environmentTilt === null ? 0 : Number(environmentTilt);

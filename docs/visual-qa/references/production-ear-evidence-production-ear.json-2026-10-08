@@ -1,0 +1,325 @@
+{
+  "scope": "Actual dossier before/after folded attached auricle geometry/material; no complete craft or population acceptance",
+  "playerId": "P2026-BUF-LB-33468504",
+  "captures": [
+    {
+      "file": "output/playwright/production-ear-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8c15373c261c910a5f45854df55bb2055a1e0136ac4d585acf04c55f31962d88"
+    },
+    {
+      "file": "output/playwright/production-ear-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9bc360cf70fe9f114bd719290236d4cfbb2739fd64380fa73bad4ebd08c0adc7"
+    },
+    {
+      "file": "output/playwright/production-ear-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "805742655c12980294323cdd257527017af0e473a7d3a1071287cfbadec08efc"
+    },
+    {
+      "file": "output/playwright/production-ear-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cec2e590922ace0176250909279346ba70fcfa2dca7d15c8bd96f745d65a9671"
+    },
+    {
+      "file": "output/playwright/production-ear-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7d64c310c4831499e019f76742decbd6945e15e46a5c9aeb5ceab001a5db3bd2"
+    },
+    {
+      "file": "output/playwright/production-ear-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5a414154239b8641de28517a0f44a9b4c77022289c9e31337b87777e9d2e21e8"
+    },
+    {
+      "file": "output/playwright/production-ear-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "63b66587e22cda24b89d2e7e25cf012114a18a401ce169cb479bdb96c8842153"
+    },
+    {
+      "file": "output/playwright/production-ear-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f2dd3cf5d5e28f3a7fa075d0204e83b3fb9edda218ce20c4d999a5533e745749"
+    },
+    {
+      "file": "output/playwright/production-ear-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "286dd96ea4a0455a64ba566f2e68018b5677cedf40eaf8253f1e7121d5fd4f01"
+    },
+    {
+      "file": "output/playwright/production-ear-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c11538df0ff2c2973efdabcb3e1b5b841ddf01c7b1138360d7d5525c28daec87"
+    },
+    {
+      "file": "output/playwright/production-ear-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "9bc9e02b31fec7067eb472be365e858dc0712b7da29b0aea79db55155a644cc2"
+    },
+    {
+      "file": "output/playwright/production-ear-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7ba4b1dd7dc1a2b397886c25bf89b553c068fcf1d6a8f18f22ac4d4bcfd20449"
+    },
+    {
+      "file": "output/playwright/production-ear-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "3deee3a2795c2cb26a8165604660b7b7861f474c91cf20159c815f4bde9d96d6"
+    },
+    {
+      "file": "output/playwright/production-ear-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "463ba0642d619f51c6cfe064cd13bcd55e597e4f1934e0bf92f75dfa0c79e46d"
+    },
+    {
+      "file": "output/playwright/production-ear-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7f06670796562b6c4f65f73613bd42b3969e8e6f7dbfa02ecf9a68fc6e8502cb"
+    },
+    {
+      "file": "output/playwright/production-ear-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8ba66f8adf532cecb45a52b2eb9551fc6f4873724813faaaf4d01ff9fe5ad8e3"
+    },
+    {
+      "file": "output/playwright/production-ear-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "59c4a9a2d86d6f11bb546e9f1c7c5ec7bcbb5babb97be0985c6cc09695c9e6a7"
+    },
+    {
+      "file": "output/playwright/production-ear-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "1c6e91eebc43902317a5533a06e0113813f7458a223a3e771ce9620139b0113a"
+    },
+    {
+      "file": "output/playwright/production-ear-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "97a603cc490e7d72aefad3696ff08c838b94239d34fdccf2fea29d9766b82545"
+    },
+    {
+      "file": "output/playwright/production-ear-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ac1fe6cb0355c3eb5fe1c03c171b0d56912d5e8f3755a64a6b46eaaf294f4759"
+    },
+    {
+      "file": "output/playwright/production-ear-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4f67c1c19ee6bfa17da85ec57a262c377edaf02a8d71614e3cbdbd4b2aa5d1d0"
+    },
+    {
+      "file": "output/playwright/production-ear-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e066bde47b465f0ead9512b47e82ba6ddd84abfcefd286722c5dd251a245fb81"
+    },
+    {
+      "file": "output/playwright/production-ear-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c6f20def9302e93763ba7c7544ab60f56d85ba1b21fb93ca44e9be9d30bbe1eb"
+    },
+    {
+      "file": "output/playwright/production-ear-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8bfd528a3e3ba89cdcd833739cfceb6adbcd7c371b155f9eb613aa1a891c4f2e"
+    }
+  ],
+  "agreement": [
+    {
+      "mode": "run",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "acceleration",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "cut",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "jump",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "strength",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "endurance",
+      "frontBody": true,
+      "sideMotion": true
+    }
+  ],
+  "diagnostics": {
+    "cacheEntries": 2,
+    "cacheLimit": 32,
+    "draws": 2,
+    "meshBuilds": 1,
+    "unavailable": false,
+    "contexts": 1
+  },
+  "cacheProof": {
+    "bounded": {
+      "cacheEntries": 32,
+      "cacheLimit": 32,
+      "draws": 37,
+      "meshBuilds": 36,
+      "unavailable": false,
+      "contexts": 1
+    },
+    "restored": true,
+    "malformed": true,
+    "malformedSkin": true,
+    "healthy": true
+  },
+  "playerUnchanged": true
+}

@@ -40,10 +40,11 @@ concurrency:
 jobs:
   gate:
     runs-on: ubuntu-latest
-    # S114: the four shards ran serially in ~23 of 25 minutes and a slower runner
-    # cancelled a promotion (run 37050905781) with no failing test. Each shard is
-    # now its own parallel leg with the same budget; `build` still needs all four.
-    timeout-minutes: 25
+    # Expanded S118 shards include the inherited policy/identity regressions.
+    # Keep every assertion; the expanded contract leg has a measured larger
+    # finite budget, while the other legs retain their 90-minute bound.
+    # `build` still requires all four parallel legs.
+    timeout-minutes: ${{ matrix.shard == 'sim contract' && 160 || 100 }}
     strategy:
       fail-fast: true
       matrix:
@@ -75,15 +76,21 @@ jobs:
       # playfranchisearchitect.com with nothing on the publish path having
       # exercised it -- full CI runs in parallel and is not a `needs:` of this
       # job. These are the behavior shards covering `src/**`; `long` stays out
-      # deliberately (weekly, ~45 min) so the publish path stays fast.
+      # here to avoid repeating the separately required candidate CI long leg.
       - name: Run ${{ matrix.shard }} shard
         run: ${{ matrix.command }}
 
   build:
     needs: gate
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 300
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      actions: read
     env:
+      PLAYWRIGHT_CHANNEL: chrome
       # S70: pre-rebrand values shipped legacy vaultspark-football-gm canonicals
       # on playfranchisearchitect.com for every deploy since S25. Root mount +
       # canonical brand host; legacy mounts remain published as mirrors.
@@ -119,35 +126,17 @@ jobs:
       - name: Build Pages bundle
         run: npm run build:pages
 
-      - name: Cache Playwright browsers
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0, Node 24
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-
-      # The install step has hung indefinitely after a completed Chromium download
-      # (run 26918582803 burned the full 25m job budget). Bounded attempt + one retry.
-      - name: Install Playwright browser
-        id: pw-install
-        timeout-minutes: 6
-        continue-on-error: true
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: npx playwright install --with-deps chromium
-
-      - name: Retry Playwright browser install
-        if: steps.pw-install.outcome != 'success'
-        timeout-minutes: 6
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: npx playwright install --with-deps chromium
+      # Use the supported Chrome channel supplied by the hosted runner image.
+      - name: Verify installed browser
+        run: google-chrome --version
 
       - name: Smoke static Pages client
         timeout-minutes: 5
         run: npm run smoke:pages
 
       - name: Run browser release gate
-        timeout-minutes: 15
+        # Same complete suite and finite budget as the candidate CI job.
+        timeout-minutes: 180
         run: npm run test:ui
 
       - name: Capture responsive artifact evidence
@@ -196,6 +185,13 @@ jobs:
       # Publishing the *same* `static/` directory that was just uploaded above
       # keeps both origins byte-identical, and --commit-hash stamps the real
       # revision into the health receipt instead of "local-worktree".
+      - name: Require complete exact-candidate CI before production publication
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CANDIDATE_REVISION: ${{ inputs.candidate_revision }}
+        run: node scripts/wait-for-candidate-ci.mjs --repository "$GITHUB_REPOSITORY" --sha "$CANDIDATE_REVISION" --max-wait-minutes 90
+
       - name: Publish to Cloudflare Pages (live origin)
         if: ${{ github.event_name == 'workflow_dispatch' }}
         env:

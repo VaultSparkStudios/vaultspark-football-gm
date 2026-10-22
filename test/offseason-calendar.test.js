@@ -13,6 +13,7 @@ import test from "node:test";
 import { createSession } from "../src/runtime/bootstrap.js";
 import { advanceContractYear, normalizeContract } from "../src/domain/contracts.js";
 import { expireContracts } from "../src/engine/offseasonSimulator.js";
+import { completedSeasonFixture } from './helpers/completedSeasonFixture.js';
 
 const CANONICAL_STAGES = [
   "retirements",
@@ -27,13 +28,7 @@ const CANONICAL_STAGES = [
 ];
 
 function sessionAtOffseason({ seed = 4242, controlledTeamId = "BUF" } = {}) {
-  const session = createSession({ seed, startYear: 2026, controlledTeamId });
-  session.simulateOneSeason({ runOffseasonAfter: false });
-  let guard = 0;
-  while (session.phase !== "offseason" && guard < 12) {
-    session.advanceWeek();
-    guard += 1;
-  }
+  const session = completedSeasonFixture({ seed, startYear: 2026, controlledTeamId });
   assert.equal(session.phase, "offseason", "session should reach the offseason");
   return session;
 }
@@ -59,6 +54,13 @@ function drivePipeline(session, { stopAt = null, limit = 16 } = {}) {
 }
 
 // ── Contract expiry ─────────────────────────────────────────────────────────
+
+test('completed-season fixtures isolate player, pick and RNG mutations across restorations',()=>{
+ const first=sessionAtOffseason(),second=sessionAtOffseason(),original=second.toSnapshot();
+ first.league.players[0].age+=1;first.league.draftPicks[0].ownerTeamId='MIA';first.rng.next();
+ assert.deepEqual(second.toSnapshot(),original,'a sibling restoration cannot observe another test mutation');
+ assert.deepEqual(sessionAtOffseason().toSnapshot(),original,'later callers retain the original completed season and RNG');
+});
 
 test("a contract with zero years remaining normalizes to zero, not one", () => {
   // `|| 1` resurrected every expired deal on read, so nothing ever ran out.

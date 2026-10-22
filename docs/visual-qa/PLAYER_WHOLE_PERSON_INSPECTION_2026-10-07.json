@@ -1,0 +1,368 @@
+{
+  "kind": "whole-person-current-primary-inspection",
+  "recordedAt": "2026-10-07T21:03:30.227Z",
+  "status": "whole-player-quality-not-accepted",
+  "scope": "Fresh server-runtime generated dossiers, three individuals, desktop1440/mobile390 and both themes. Body state opens side/movement controls; five screenshots explicitly inspected. No renderer edits or new visual acceptance.",
+  "functionalCheck": {
+    "spec": "tests-ui/player-hair-coherence-dossier.spec.js",
+    "pass": 1,
+    "fail": 0,
+    "outputChunk": "abcaf2",
+    "appearanceAndFrameUnchanged": true
+  },
+  "sourceHashes": {
+    "public/lib/torsoSurface.js": "b820d669e76f55f5cdd59d86e001623dafa2d3815bdbf23ed3185c1bf49867eb",
+    "public/lib/playerPortrait.js": "d5460bcfaf782f443b1177d9aa4dd22e91359dfb21d75700e6e673868afd7ba8",
+    "public/lib/playerMotion.js": "d804595cbf93db0f41a17ddc6abd859129a3ac9370030933074ec8627eb56a20",
+    "public/lib/playerCapacityStudy.js": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+    "public/lib/physiqueGeometryContract.js": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+    "public/lib/playerPortraitFace.js": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+    "public/lib/playerSideAppearance.js": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+    "public/lib/fineFaceGeometry.js": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+    "public/lib/appCore.js": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+    "public/styles.css": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "public/lib/playerTrainingKit.js": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "36f1b252fc83afb8d63e80a871ae9f7bb2a5972cdf84a12ee537a364abf92ff7",
+    "tests-ui/helpers/weekly-scenarios.js": "e2293d23d4a12703c6740c2d749b55bb09065e3adc49016998c334494aabbd0d"
+  },
+  "report": {
+    "file": "output/playwright/hair-coherence-dossier-whole-player-current.json",
+    "sha256": "776441ca740bac8c632b55ccef7afeb162cd31f1009e9d09231e1f5f4e7f8b26"
+  },
+  "cases": [
+    {
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610"
+    },
+    {
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397"
+    },
+    {
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491"
+    }
+  ],
+  "captures": [
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-desktop-dark-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "sha256": "aaeae5400f43594ca616a487a31cd5793e848d963295853bd38dc570b0fc1355",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-desktop-dark-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "sha256": "6da09a18af32cb075555a930fc2e4c5fdf4488f73260110edb50495ac69259e0",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-desktop-light-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "sha256": "ef7c2c917fd9a10112baec33e51e07ef2fc05b447197f4d37b8caa89f99bdf19",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-desktop-light-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "sha256": "28c6bbef67e39bfc1aac93b9784a1b4906ad9f62b93a2ba725c30a9ef7eed7aa",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-mobile-dark-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "sha256": "df40c67d45a2d70e0c1823e298b845d1d40c519c2fa2be25645fba8f90da62d3",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-mobile-dark-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "sha256": "49a4c8e1fdb2f094b060f4546b80e18e9faa1ccf073390cce3415472dae228a2",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-mobile-light-portrait.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "sha256": "eefe3818f08cbe3a97f4c9c1423c047104964b84257be3c88af95ecbb8fa94b3",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-long-mobile-light-body.png",
+      "style": "long",
+      "id": "P2026-BUF-OL-13981610",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "sha256": "a4e24c21b3c44d8d75421010dc058b2442933dcf6f212998e29d972f26b11034",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-desktop-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "sha256": "3bfe67e93c1bd32d47c8a938e2d77a6759e17194013dbe02d5205f58ea102c13",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-desktop-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "sha256": "099f473a6d962dba9fd61b37a2ee4b318ee85952c3e8fb36f0ae393f62d64ea3",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-desktop-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "sha256": "fc0ba04288d7b3c4de8a5fcbb9105af8f69ec5e5847c0bd1b5953f594e7ad730",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-desktop-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "sha256": "54bbd0d52b7e516b13c47bff7f2ab16c0797a53b5909efd39dc1a7c08c6b765e",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-mobile-dark-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "sha256": "ec45784ed83a20ec3f0bace188478a0334a005ca42762380f6a3c128aabb3a51",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-mobile-dark-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "sha256": "6b5fd6b1bde71a74c62b3fc56bff4e56c6283c8eb8e67babd71cc164506a74e3",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-mobile-light-portrait.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "sha256": "d3679f6d56fba4bb59bc0900183986535dfa8826b65b0bfca07c7cc80fc6a158",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-afro-mobile-light-body.png",
+      "style": "afro",
+      "id": "P2026-BUF-TE-98883397",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "sha256": "8ed13d85d57565af406fb0febf5c8baeadbab2ad481abb05b3df72f47e39425f",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-desktop-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "portrait",
+      "sha256": "cbf199c98aec2b88508a383699c6a93fc001d7ab785d9eb8d0858653a2778181",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-desktop-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "state": "body",
+      "sha256": "58b47bc9f0b3fd987d5481d4c163ec84517825897d54add5947de65edc228b13",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-desktop-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "portrait",
+      "sha256": "b130eadd0a3a294c099a0f212584e1872332341fa362a5610533c14dad3ab8ac",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-desktop-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "state": "body",
+      "sha256": "8b76b6a7bc4146eb3bb243bbbfd6fd6bdc3093ae666f7b2f526b921d4aae4998",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-mobile-dark-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "portrait",
+      "sha256": "4e9d48ec5df1ced35cebc39cf6af7a22f46bd07e91067f0e6e93e007695d5d54",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-mobile-dark-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "state": "body",
+      "sha256": "a429a3e6c0fd51ec276be0f2ddffdf2ea8e390f749eb02406251edcbd55b1b99",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-mobile-light-portrait.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "portrait",
+      "sha256": "5f48210927ea6ccbd5c99139300b8410f76f90a412dcaba6c7fca26b11700cd6",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/hair-coherence-dossier-whole-player-current-side-part-mobile-light-body.png",
+      "style": "side-part",
+      "id": "P2026-BUF-LB-42751491",
+      "size": "mobile",
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "state": "body",
+      "sha256": "1e28b98e5b5967d2daee78d93e1a37b749faad63efc3a198da63de572034ddab",
+      "primaryInspected": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "whole-person-face-form",
+      "status": "open",
+      "basis": "Visual judgment at normal dossier size",
+      "observation": "The generated faces still read as doll-like: narrow exposed eye regions, broad smooth cheek gradients and weak local anatomical structure around the mouth. Darker skin obscures finer mouth/cheek detail.",
+      "requiredResult": "Coherent eye/orbit, cheek/jaw and mouth form under shared lighting, with visibly distinct individual anatomy across pigments and front/side/motion."
+    },
+    {
+      "id": "whole-person-hair-form",
+      "status": "open",
+      "basis": "Visual judgment at normal dossier size",
+      "observation": "Long curls form repeated angular ridges; the afro reads as a textured cap with insufficient visible curl grouping. Fine strand marks alone do not establish natural hair volume.",
+      "requiredResult": "Continuous coherent hair masses, grouped curls and strand flow matching natural texture, density and grooming; preserve natural pigment and saved identity."
+    },
+    {
+      "id": "whole-person-body-form",
+      "status": "open",
+      "basis": "Visual judgment, not an empirical body-composition conclusion",
+      "observation": "The 334-pound OL and251-pound TE remain mannequin-like in neutral view. Strong waist taper, simple hanging hand forms and smooth tubular limb surfaces weaken the intended credible athlete presentation.",
+      "requiredResult": "Review compatible chest/waist/pelvis depth and regional bulk jointly at common scale, then articulate elbow/wrist/hand/knee transitions and all movement modes. Preserve measured endpoints; do not infer body fat solely from weight."
+    }
+  ],
+  "limitations": [
+    "No new renderer implementation.",
+    "Only five of24 fresh captures visually inspected; no claim of complete matrix or six-mode inspection.",
+    "Server-runtime proof does not replace built client restoration evidence.",
+    "Previous scoped geometry/material receipts remain historical; existing broader quality failure stays open."
+  ]
+}

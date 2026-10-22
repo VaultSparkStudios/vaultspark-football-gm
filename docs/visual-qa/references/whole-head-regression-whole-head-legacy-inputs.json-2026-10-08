@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "scope": "Historical raw saved inputs recovered from the hash-verified original recipe generator; all 384 original render hashes must match before freezing. No current generation or expected render hashes are substituted.",
+  "historicalAuthority": {
+    "generatorSource": "docs/visual-qa/references/whole-head-regression-original-playerVisualIdentity-2026-10-08.js",
+    "recoveredFrom": ".cache/regional-sections-before/playerVisualIdentity.js",
+    "generatorSourceSha256": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "priorReceipt": "docs/visual-qa/PLAYER_WHOLE_HEAD_2026-10-07.json",
+    "renderExpectations": "test/fixtures/whole-head-legacy-hashes.json",
+    "renderExpectationsSha256": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a"
+  },
+  "inputs": [
+    {
+      "version": "portrait-identity-v2",
+      "detail": false,
+      "player": {
+        "id": "legacy-portrait-identity-v2",
+        "age": 39,
+        "heightInches": 76,
+        "weightLbs": 245,
+        "profile": {
+          "appearanceRecipe": {
+            "version": "portrait-identity-v2",
+            "seed": "legacy-portrait-identity-v2",
+            "complexionBand": [
+              0,
+              1
+            ]
+          },
+          "skeletonRecipe": {
+            "version": "fictional-physique-v1",
+            "seed": "legacy-portrait-identity-v2"
+          },
+          "facialPigmentRecipe": "facial-pigment-v1",
+          "hairArrangementRecipe": {
+            "version": "hair-arrangement-v1",
+            "seed": "legacy-portrait-identity-v2"
+          },
+          "individualAnatomyRecipe": {
+            "version": "individual-anatomy-v1",
+            "seed": "legacy-portrait-identity-v2"
+          },
+          "regionalBodyShapeRecipe": {
+            "version": "regional-body-shape-v1",
+            "seed": "legacy-portrait-identity-v2"
+          }
+        }
+      },
+      "decodedAppearance": {
+        "version": "portrait-identity-v2",
+        "complexion": 0.12639229092746973,
+        "hairstyle": "crew",
+        "hairColor": "#b58c58",
+        "naturalHairColor": "#b58c58",
+        "dyedHairColor": null,
+        "hairTexture": "wavy",
+        "eyeColor": "#57412c",
+        "hairLength": 1.0691362068988384,
+        "hairDensity": 0.9678447034675628,
+        "hairline": 0.7792074207682163,
+        "grayOnsetAge": 44,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "full-beard",
+        "faceWidth": 0.9307221412379295,
+        "jawWidth": 0.8074002083018422,
+        "faceLength": 0.9637043993640692,
+        "eyeSpacing": 0.8957808090327307,
+        "noseWidth": 1.1379927759990096,
+        "lipFullness": 0.8526589138200507,
+        "browWeight": 1.3241447362583132,
+        "earSize": 0.8635593873681501,
+        "expression": "calm",
+        "blinkDelay": 5.0855738264508545,
+        "buildVariation": -0.10752179313451052,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.41069024670869114,
+        "hairStrandVariation": 0.4673603648087009,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#775c3c",
+        "naturalBrowColor": "#816441"
+      },
+      "decodedFrame": {
+        "heightInches": 76,
+        "weightLbs": 245,
+        "volumeBudgetInches3": 6781.576653999766,
+        "torsoVolumeInches3": 3262.9812971582837,
+        "legsVolumeInches3": 1794.2499172771127,
+        "armsVolumeInches3": 778.8166732738862,
+        "neckVolumeInches3": 97.83168454051257,
+        "reservedVolumeInches3": 847.6970817499707,
+        "torsoLengthInches": 21.69777613772079,
+        "legLengthInches": 40.83222386227921,
+        "armSegmentLengthInches": 24.775,
+        "neckLengthInches": 3,
+        "chestWidthInches": 17.903371077118916,
+        "chestDepthInches": 13.321598640015326,
+        "waistRatio": 0.7878123945971239,
+        "limbShapeVariation": -0.10752179313451052,
+        "upperArmWidth": 5.846465608727078,
+        "thighWidth": 7.194227951770626,
+        "neckDiameterInches": 6.443683457077333,
+        "upperArmShare": 0.5216225250996649,
+        "upperLegShare": 0.49039551496505734,
+        "pelvicBreadthInches": 8.861929799802601,
+        "footLengthInches": 11.157352410024032,
+        "footWidthInches": 4.114800648129376,
+        "shoulderWidth": 71.61348430847566,
+        "neckWidth": 32.218417285386664,
+        "torsoLength": 68.6,
+        "muscleDefinition": 0.45223048758227374,
+        "shoulderSpanInches": 16.448666910589672,
+        "torsoShare": 0.2854970544436946,
+        "armLengthInches": 32.375,
+        "wingspanInches": 81.19866691058968,
+        "handSizeInches": 9.5
+      }
+    },
+    {
+      "version": "portrait-identity-v2",
+      "detail": true,
+      "player": {
+        "id": "legacy-portrait-identity-v2",
+        "age": 39,
+        "heightInches": 76,
+        "weightLbs": 245,
+        "profile": {
+          "appearanceRecipe": {
+            "version": "portrait-identity-v2",
+            "seed": "legacy-portrait-identity-v2",
+            "complexionBand": [
+              0,
+              1
+            ]
+          },
+          "skeletonRecipe": {
+            "version": "fictional-physique-v1",
+            "seed": "legacy-portrait-identity-v2"
+          },
+          "appearanceDetailRecipe": {
+            "version": "natural-appearance-detail-v1",
+            "seed": "legacy-portrait-identity-v2"
+          },
+          "facialPigmentRecipe": "facial-pigment-v1",
+          "hairArrangementRecipe": {
+            "version": "hair-arrangement-v1",
+            "seed": "legacy-portrait-identity-v2"
+          },
+          "individualAnatomyRecipe": {
+            "version": "individual-anatomy-v1",
+            "seed": "legacy-portrait-identity-v2"
+          },
+          "regionalBodyShapeRecipe": {
+            "version": "regional-body-shape-v1",
+            "seed": "legacy-portrait-identity-v2"
+          }
+        }
+      },
+      "decodedAppearance": {
+        "version": "portrait-identity-v2",
+        "complexion": 0.12639229092746973,
+        "hairstyle": "crew",
+        "hairColor": "#b58c58",
+        "naturalHairColor": "#b58c58",
+        "dyedHairColor": null,
+        "hairTexture": "wavy",
+        "eyeColor": "#57412c",
+        "hairLength": 1.0691362068988384,
+        "hairDensity": 0.9678447034675628,
+        "hairline": 0.7792074207682163,
+        "grayOnsetAge": 44,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "full-beard",
+        "faceWidth": 0.9307221412379295,
+        "jawWidth": 0.8074002083018422,
+        "faceLength": 0.9637043993640692,
+        "eyeSpacing": 0.8957808090327307,
+        "noseWidth": 1.1379927759990096,
+        "lipFullness": 0.8526589138200507,
+        "browWeight": 1.3241447362583132,
+        "earSize": 0.8635593873681501,
+        "expression": "calm",
+        "blinkDelay": 5.0855738264508545,
+        "buildVariation": -0.10752179313451052,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 1.3997420560568572,
+        "hairWaveScale": 0.714675755170174,
+        "hairStrandWidth": 1.4241029784898274,
+        "irisShade": -0.1964770902413875,
+        "irisInnerMix": 0.5799178960616701,
+        "irisPattern": 0.40008491866756235,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.41069024670869114,
+        "hairStrandVariation": 0.4673603648087009,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#775c3c",
+        "naturalBrowColor": "#816441"
+      },
+      "decodedFrame": {
+        "heightInches": 76,
+        "weightLbs": 245,
+        "volumeBudgetInches3": 6781.576653999766,
+        "torsoVolumeInches3": 3262.9812971582837,
+        "legsVolumeInches3": 1794.2499172771127,
+        "armsVolumeInches3": 778.8166732738862,
+        "neckVolumeInches3": 97.83168454051257,
+        "reservedVolumeInches3": 847.6970817499707,
+        "torsoLengthInches": 21.69777613772079,
+        "legLengthInches": 40.83222386227921,
+        "armSegmentLengthInches": 24.775,
+        "neckLengthInches": 3,
+        "chestWidthInches": 17.903371077118916,
+        "chestDepthInches": 13.321598640015326,
+        "waistRatio": 0.7878123945971239,
+        "limbShapeVariation": -0.10752179313451052,
+        "upperArmWidth": 5.846465608727078,
+        "thighWidth": 7.194227951770626,
+        "neckDiameterInches": 6.443683457077333,
+        "upperArmShare": 0.5216225250996649,
+        "upperLegShare": 0.49039551496505734,
+        "pelvicBreadthInches": 8.861929799802601,
+        "footLengthInches": 11.157352410024032,
+        "footWidthInches": 4.114800648129376,
+        "shoulderWidth": 71.61348430847566,
+        "neckWidth": 32.218417285386664,
+        "torsoLength": 68.6,
+        "muscleDefinition": 0.45223048758227374,
+        "shoulderSpanInches": 16.448666910589672,
+        "torsoShare": 0.2854970544436946,
+        "armLengthInches": 32.375,
+        "wingspanInches": 81.19866691058968,
+        "handSizeInches": 9.5
+      }
+    },
+    {
+      "version": "portrait-identity-v3",
+      "detail": false,
+      "player": {
+        "id": "legacy-portrait-identity-v3",
+        "age": 39,
+        "heightInches": 76,
+        "weightLbs": 245,
+        "profile": {
+          "appearanceRecipe": {
+            "version": "portrait-identity-v3",
+            "seed": "legacy-portrait-identity-v3",
+            "complexionBand": [
+              0,
+              1
+            ]
+          },
+          "skeletonRecipe": {
+            "version": "fictional-physique-v1",
+            "seed": "legacy-portrait-identity-v3"
+          },
+          "facialPigmentRecipe": "facial-pigment-v1",
+          "hairArrangementRecipe": {
+            "version": "hair-arrangement-v1",
+            "seed": "legacy-portrait-identity-v3"
+          },
+          "individualAnatomyRecipe": {
+            "version": "individual-anatomy-v1",
+            "seed": "legacy-portrait-identity-v3"
+          },
+          "regionalBodyShapeRecipe": {
+            "version": "regional-body-shape-v1",
+            "seed": "legacy-portrait-identity-v3"
+          }
+        }
+      },
+      "decodedAppearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.45726280752569437,
+        "hairstyle": "short-curls",
+        "hairColor": "#151210",
+        "naturalHairColor": "#151210",
+        "dyedHairColor": null,
+        "hairTexture": "coily",
+        "eyeColor": "#746047",
+        "hairLength": 1.1412948357872665,
+        "hairDensity": 0.7521408812142909,
+        "hairline": 0.4200376723892987,
+        "grayOnsetAge": 47,
+        "freckles": true,
+        "mole": null,
+        "facialHair": "stubble",
+        "faceWidth": 0.9000607543531806,
+        "jawWidth": 1.0451759167667478,
+        "faceLength": 0.9637840722221882,
+        "eyeSpacing": 1.0465495369024576,
+        "noseWidth": 1.0127670824527741,
+        "lipFullness": 0.8652093313867226,
+        "browWeight": 1.2409945320803673,
+        "earSize": 0.9478546841302886,
+        "expression": "confident",
+        "blinkDelay": 5.737932919757441,
+        "buildVariation": 0.021685712244361638,
+        "naturalHairTexture": "coily",
+        "skinUndertone": -0.13232231233268976,
+        "eyeAperture": 0.9870158568257466,
+        "eyeTilt": 0.9837548611685634,
+        "eyelidCrease": 0.7452636776492001,
+        "browArch": 1.3062375635257923,
+        "browAngle": 0.36979807261377573,
+        "noseBridge": 1.0855754064396024,
+        "noseTip": 1.046255407622084,
+        "noseLength": 0.9445801271451637,
+        "cheekbone": 1.1901036951458082,
+        "cheekFullness": 1.1818068694556132,
+        "chinWidth": 0.8105844111181796,
+        "chinLength": 0.884983566282317,
+        "lipWidth": 1.005027758469805,
+        "lipCurve": -0.26019432581961155,
+        "earShape": 0.9212780157104135,
+        "facialAsymmetry": 0.08931618882343173,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.4937882979866118,
+        "hairStrandVariation": 0.44297790407435966,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#151210",
+        "naturalBrowColor": "#151210",
+        "textureTreatment": false
+      },
+      "decodedFrame": {
+        "heightInches": 76,
+        "weightLbs": 245,
+        "volumeBudgetInches3": 6781.576653999766,
+        "torsoVolumeInches3": 3191.317111963553,
+        "legsVolumeInches3": 2061.0454011277006,
+        "armsVolumeInches3": 574.685780658839,
+        "neckVolumeInches3": 106.83127849970236,
+        "reservedVolumeInches3": 847.6970817499707,
+        "torsoLengthInches": 22.992308035651224,
+        "legLengthInches": 39.53769196434878,
+        "armSegmentLengthInches": 22.65,
+        "neckLengthInches": 3,
+        "chestWidthInches": 17.803436012263486,
+        "chestDepthInches": 12.551536027744657,
+        "waistRatio": 0.7737993074669722,
+        "limbShapeVariation": 0.021685712244361638,
+        "upperArmWidth": 5.176761926324448,
+        "thighWidth": 7.712968851754997,
+        "neckDiameterInches": 6.733543108954265,
+        "upperArmShare": 0.5344281313288957,
+        "upperLegShare": 0.50178378675133,
+        "pelvicBreadthInches": 11.04949113573879,
+        "footLengthInches": 11.130302772438155,
+        "footWidthInches": 3.861887098074775,
+        "shoulderWidth": 71.21374404905394,
+        "neckWidth": 33.667715544771326,
+        "torsoLength": 68.6,
+        "muscleDefinition": 0.1958233431028202,
+        "shoulderSpanInches": 16.069674998191182,
+        "torsoShare": 0.30253036889014767,
+        "armLengthInches": 30.25,
+        "wingspanInches": 76.56967499819118,
+        "handSizeInches": 9.625
+      }
+    },
+    {
+      "version": "portrait-identity-v3",
+      "detail": true,
+      "player": {
+        "id": "legacy-portrait-identity-v3",
+        "age": 39,
+        "heightInches": 76,
+        "weightLbs": 245,
+        "profile": {
+          "appearanceRecipe": {
+            "version": "portrait-identity-v3",
+            "seed": "legacy-portrait-identity-v3",
+            "complexionBand": [
+              0,
+              1
+            ]
+          },
+          "skeletonRecipe": {
+            "version": "fictional-physique-v1",
+            "seed": "legacy-portrait-identity-v3"
+          },
+          "appearanceDetailRecipe": {
+            "version": "natural-appearance-detail-v1",
+            "seed": "legacy-portrait-identity-v3"
+          },
+          "facialPigmentRecipe": "facial-pigment-v1",
+          "hairArrangementRecipe": {
+            "version": "hair-arrangement-v1",
+            "seed": "legacy-portrait-identity-v3"
+          },
+          "individualAnatomyRecipe": {
+            "version": "individual-anatomy-v1",
+            "seed": "legacy-portrait-identity-v3"
+          },
+          "regionalBodyShapeRecipe": {
+            "version": "regional-body-shape-v1",
+            "seed": "legacy-portrait-identity-v3"
+          }
+        }
+      },
+      "decodedAppearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.45726280752569437,
+        "hairstyle": "short-curls",
+        "hairColor": "#151210",
+        "naturalHairColor": "#151210",
+        "dyedHairColor": null,
+        "hairTexture": "coily",
+        "eyeColor": "#746047",
+        "hairLength": 1.1412948357872665,
+        "hairDensity": 0.7521408812142909,
+        "hairline": 0.4200376723892987,
+        "grayOnsetAge": 47,
+        "freckles": true,
+        "mole": null,
+        "facialHair": "stubble",
+        "faceWidth": 0.9000607543531806,
+        "jawWidth": 1.0451759167667478,
+        "faceLength": 0.9637840722221882,
+        "eyeSpacing": 1.0465495369024576,
+        "noseWidth": 1.0127670824527741,
+        "lipFullness": 0.8652093313867226,
+        "browWeight": 1.2409945320803673,
+        "earSize": 0.9478546841302886,
+        "expression": "confident",
+        "blinkDelay": 5.737932919757441,
+        "buildVariation": 0.021685712244361638,
+        "naturalHairTexture": "coily",
+        "skinUndertone": -0.13232231233268976,
+        "eyeAperture": 0.9870158568257466,
+        "eyeTilt": 0.9837548611685634,
+        "eyelidCrease": 0.7452636776492001,
+        "browArch": 1.3062375635257923,
+        "browAngle": 0.36979807261377573,
+        "noseBridge": 1.0855754064396024,
+        "noseTip": 1.046255407622084,
+        "noseLength": 0.9445801271451637,
+        "cheekbone": 1.1901036951458082,
+        "cheekFullness": 1.1818068694556132,
+        "chinWidth": 0.8105844111181796,
+        "chinLength": 0.884983566282317,
+        "lipWidth": 1.005027758469805,
+        "lipCurve": -0.26019432581961155,
+        "earShape": 0.9212780157104135,
+        "facialAsymmetry": 0.08931618882343173,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 0.915903702005744,
+        "hairWaveScale": 1.2947682054596954,
+        "hairStrandWidth": 0.832442959130276,
+        "irisShade": 0.1948315518675372,
+        "irisInnerMix": 0.4420630676904693,
+        "irisPattern": 0.700907599250786,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.4937882979866118,
+        "hairStrandVariation": 0.44297790407435966,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#151210",
+        "naturalBrowColor": "#151210",
+        "textureTreatment": false
+      },
+      "decodedFrame": {
+        "heightInches": 76,
+        "weightLbs": 245,
+        "volumeBudgetInches3": 6781.576653999766,
+        "torsoVolumeInches3": 3191.317111963553,
+        "legsVolumeInches3": 2061.0454011277006,
+        "armsVolumeInches3": 574.685780658839,
+        "neckVolumeInches3": 106.83127849970236,
+        "reservedVolumeInches3": 847.6970817499707,
+        "torsoLengthInches": 22.992308035651224,
+        "legLengthInches": 39.53769196434878,
+        "armSegmentLengthInches": 22.65,
+        "neckLengthInches": 3,
+        "chestWidthInches": 17.803436012263486,
+        "chestDepthInches": 12.551536027744657,
+        "waistRatio": 0.7737993074669722,
+        "limbShapeVariation": 0.021685712244361638,
+        "upperArmWidth": 5.176761926324448,
+        "thighWidth": 7.712968851754997,
+        "neckDiameterInches": 6.733543108954265,
+        "upperArmShare": 0.5344281313288957,
+        "upperLegShare": 0.50178378675133,
+        "pelvicBreadthInches": 11.04949113573879,
+        "footLengthInches": 11.130302772438155,
+        "footWidthInches": 3.861887098074775,
+        "shoulderWidth": 71.21374404905394,
+        "neckWidth": 33.667715544771326,
+        "torsoLength": 68.6,
+        "muscleDefinition": 0.1958233431028202,
+        "shoulderSpanInches": 16.069674998191182,
+        "torsoShare": 0.30253036889014767,
+        "armLengthInches": 30.25,
+        "wingspanInches": 76.56967499819118,
+        "handSizeInches": 9.625
+      }
+    }
+  ]
+}

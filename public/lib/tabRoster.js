@@ -1,34 +1,65 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable } from "./appCore.js";
 
+const elevationGameLabel = game => game.seasonType === 'regular' ? `${game.year} Week ${game.week}` : `${game.year} ${game.round.replaceAll('-', ' ')}`;
+
+export function clearStandardElevationPreview() {
+  state.elevationPreview = null;
+  document.getElementById('standardElevationCard')?.setAttribute('hidden', '');
+}
+
 export function getSelectedDesignationPlayer() {
   return state.roster.find((player) => player.id === state.selectedDesignationPlayerId) || null;
 }
 
 export function setSelectedDesignationPlayer(playerId) {
+  const previousId = state.selectedDesignationPlayerId;
+  if (previousId !== playerId) clearStandardElevationPreview();
   state.selectedDesignationPlayerId = playerId || null;
   const player = getSelectedDesignationPlayer();
   if (!player) state.selectedDesignationPlayerId = null;
   const label = document.getElementById("designationSelectedPlayerText");
   if (label) label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
   const applyBtn = document.getElementById("applyDesignationBtn");
-  if (applyBtn) applyBtn.disabled = !player;
+  const reserve = player?.reserveStatus;
+  if (applyBtn) applyBtn.disabled = !player || player.rosterSlot === 'reserve';
   const clearBtn = document.getElementById("clearDesignationBtn");
-  if (clearBtn) clearBtn.disabled = !player;
-}
-
-export function getSelectedRetirementOverridePlayer() {
-  return (state.retiredPool || []).find((player) => player.id === state.selectedRetirementOverridePlayerId) || null;
-}
-
-export function setSelectedRetirementOverridePlayer(playerId) {
-  state.selectedRetirementOverridePlayerId = playerId || null;
-  const player = getSelectedRetirementOverridePlayer();
-  if (!player) state.selectedRetirementOverridePlayerId = null;
-  const label = document.getElementById("retirementOverrideSelectedPlayerText");
-  if (label) label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
-  const button = document.getElementById("retirementOverrideBtn");
-  if (button) button.disabled = !player;
+  if (clearBtn) {
+    clearBtn.textContent = reserve?.kind === 'ps-injured' ? 'Return to Practice Squad' : reserve ? 'Activate from Reserve' : 'Clear Designation';
+    clearBtn.disabled = !player || (player.rosterSlot === 'reserve' && !reserve?.activation.ok);
+  }
+  const practiceBtn = document.getElementById('beginReservePracticeBtn');
+  if (practiceBtn) practiceBtn.disabled = !reserve?.practice.ok || reserve.practiceStartedWeek !== null;
+  const type = document.getElementById('designationType');
+  if (type) {
+    type.disabled = player?.rosterSlot === 'reserve';
+    if (reserve) type.value = reserve.kind;
+    else if (previousId !== playerId) {
+      if (player?.rosterSlot === 'practice') type.value = 'ps-injured';
+      else if (type.value === 'ps-injured') type.value = 'ir';
+    }
+    for (const option of type.options) option.disabled = !reserve && (option.value === 'ps-injured'
+      ? player?.rosterSlot !== 'practice' : player?.rosterSlot === 'practice' && ['ir','pup','nfi'].includes(option.value));
+  }
+  const returnOption = document.getElementById('reserveReturnEligible');
+  if (returnOption) {
+    returnOption.disabled = !player || player.rosterSlot === 'reserve';
+    if (reserve) returnOption.checked = reserve.returnEligible;
+    else if (previousId !== playerId) returnOption.checked = true;
+    returnOption.closest('label').hidden = type?.value === 'gameDayInactive';
+  }
+  const guidance = document.getElementById('reserveDesignationGuidance');
+  if (!guidance) return;
+  const copy = guidance.dataset;
+  const practiceReserve = reserve?.kind === 'ps-injured';
+  const reasons = reserve ? [...new Set([reserve.activation.ok ? practiceReserve
+    ? copy.practiceReady : copy.activeReady : reserve.activation.error,
+    reserve.practiceStartedWeek === null && !reserve.practice.ok ? reserve.practice.error : null].filter(Boolean))].join(' ') : '';
+  if (guidance) guidance.textContent = reserve
+    ? `${practiceReserve ? 'Practice Squad/Injured' : reserve.kind.toUpperCase()}: ${reserve.gamesMissed} of 4 team games missed for return. ${reserve.returnEligible ? 'Eligible for a return.' : 'Season-ending placement.'} ${reserve.practiceStartedWeek === null ? 'Return practice has not begun.' : `Practice window: week ${reserve.practiceStartedWeek} through ${reserve.practiceWindowEndWeek}.`} ${reasons} ${practiceReserve ? copy.practicePay : 'Salary remains charged.'}`
+    : player?.rosterSlot === 'reserve' ? copy.legacy
+      : player?.rosterSlot === 'practice'
+        ? copy.practicePlacement : copy.activePlacement;
 }
 
 export function renderRoster() {
@@ -39,12 +70,10 @@ export function renderRoster() {
     age: player.age,
     ovr: player.overall,
     pot: player.potential,
-    // S108 — the DTO has carried the trait since S8; the free-agent table
-    // showed it and the GM's own roster did not.
     dev: player.devTrait ?? "-",
     fit: player.schemeFit ?? "-",
     morale: player.morale,
-    slot: player.rosterSlot,
+    slot: player.standardElevation?.pending ? `practice · Elevated for ${elevationGameLabel(player.standardElevation.pending.game)}` : player.reserveStatus?.kind === 'ps-injured' ? 'practice/injured' : player.rosterSlot,
     designations: Object.entries(player.designations || {})
       .filter(([, value]) => value === true)
       .map(([name]) => name)
@@ -61,13 +90,12 @@ export function renderRoster() {
   const tr = table.querySelectorAll("tr");
   for (let i = 1; i < tr.length; i += 1) {
     const player = rows[i - 1];
+    const source = state.roster[i - 1], pending = Boolean(source.standardElevation?.pending);
     const isSelected = player.id === state.selectedDesignationPlayerId;
-    const actions = [
-      `<button data-designation-select="${escapeHtml(player.id)}">${isSelected ? "Selected" : "Select"}</button>`,
-      `<button data-act="release" data-id="${escapeHtml(player.id)}" class="warn">Release</button>`
-    ];
-    if (player.slot === "active") actions.push(`<button data-act="ps" data-id="${escapeHtml(player.id)}">To PS</button>`);
-    if (player.slot === "practice") actions.push(`<button data-act="active" data-id="${escapeHtml(player.id)}">To Active</button>`);
+    const id = escapeHtml(player.id);
+    const move = (act, label) => `<button data-act="${act}" data-id="${id}" ${pending ? 'disabled' : ''} ${act === 'release' ? 'class="warn"' : ''}>${label}</button>`;
+    const actions = [`<button data-designation-select="${id}">${isSelected ? 'Selected' : 'Select'}</button>`, move('release', 'Release')];
+    if (source.rosterSlot === 'practice') actions.push(move('active', 'To Active'), move('elevate', pending ? 'Elevation pending' : 'Elevate for Game'));
     tr[i].lastElementChild.innerHTML = actions.join(" ");
   }
   decoratePlayerColumnFromRows("rosterTable", rows, { idKeys: ["id"] });
@@ -90,100 +118,6 @@ export function renderRoster() {
     const aging = state.rosterWindow?.agingRooms || [];
     windowSummary.textContent = `Rising: ${ascending.join(", ") || "none"} · Succession watch: ${aging.join(", ") || "none"}`;
   }
-}
-
-export function renderFreeAgency() {
-  const market = state.faMarket || {};
-  const pursuit = market.pursuit || {};
-  const myOffers = new Set((market.offers || []).map((offer) => offer.playerId));
-  const premiumOverall = Number(market.premiumOverall || 74);
-  const banner = document.getElementById("faMarketBanner");
-  if (banner) {
-    const pending = (market.offers || []).length;
-    banner.textContent = `Market stage: ${market.stage || "open-market"} · resolves on advance · ${pending} live offer${pending === 1 ? "" : "s"} out`;
-    banner.hidden = false;
-  }
-  const rows = state.freeAgents.map((player) => ({
-    id: player.id,
-    player: player.name,
-    pos: player.pos,
-    age: player.age,
-    ovr: player.overall,
-    pot: player.potential,
-    fit: player.schemeFit ?? "-",
-    dev: player.devTrait,
-    market: pursuit[player.id]
-      ? `🔥 ${pursuit[player.id]} rival${pursuit[player.id] === 1 ? "" : "s"} in pursuit`
-      : myOffers.has(player.id)
-        ? "📨 your offer pending"
-        : (player.overall || 0) >= premiumOverall && player.source !== "waiver"
-          ? "open market"
-          : "—",
-    source: player.source,
-    action: ""
-  }));
-  renderTable("faTable", rows);
-
-  const table = document.getElementById("faTable");
-  const tr = table.querySelectorAll("tr");
-  for (let i = 1; i < tr.length; i += 1) {
-    const row = rows[i - 1];
-    const premium = (row.ovr || 0) >= premiumOverall;
-    const yearsSelect = `<select data-offer-years aria-label="Offer years">${[1, 2, 3, 4, 5]
-      .map((year) => `<option value="${year}" ${year === 3 ? "selected" : ""}>${year}yr</option>`)
-      .join("")}</select>`;
-    tr[i].lastElementChild.innerHTML =
-      row.source === "waiver"
-        ? `<button data-act="claim" data-id="${escapeHtml(row.id)}">Claim</button>`
-        : premium
-          ? `${yearsSelect} <button data-act="offer" data-id="${escapeHtml(row.id)}">${myOffers.has(row.id) ? "Re-bid" : "Offer"}</button>`
-          : `<button data-act="sign" data-id="${escapeHtml(row.id)}">Sign</button> ${yearsSelect} <button data-act="offer" data-id="${escapeHtml(row.id)}">Offer</button>`;
-  }
-
-  const waiverRows = (state.dashboard?.waiverWire || []).map((entry) => ({
-    id: entry.id || entry.playerId,
-    playerId: entry.playerId,
-    player: entry.player || "Unavailable player",
-    pos: entry.pos || "—",
-    ovr: entry.overall ?? "—",
-    pot: entry.potential ?? "—",
-    releasedBy: entry.releasedBy,
-    week: entry.week,
-    expires: entry.expiresWeek
-  }));
-  renderTable("waiverTable", waiverRows);
-  decoratePlayerColumnFromRows("waiverTable", waiverRows, { idKeys: ["id", "playerId"] });
-  decoratePlayerColumnFromRows("faTable", rows, { idKeys: ["id"] });
-}
-
-export function renderRetiredPool() {
-  const rows = (state.retiredPool || []).map((player) => ({
-    id: player.id,
-    player: player.name,
-    pos: player.pos,
-    age: player.age,
-    ovr: player.overall,
-    pot: player.potential,
-    retiredYear: player.retiredYear,
-    maxAge: player.maxAge,
-    seasons: player.seasonsPlayed,
-    eligible: player.canOverride ? "Yes" : "No",
-    action: ""
-  }));
-  renderTable("retiredTable", rows);
-  const table = document.getElementById("retiredTable");
-  table?.querySelectorAll("tr").forEach((tr, index) => {
-    if (index === 0) return;
-    const row = rows[index - 1];
-    if (!row) return;
-    const cell = tr.lastElementChild;
-    if (!cell) return;
-    const isSelected = row.id === state.selectedRetirementOverridePlayerId;
-    cell.innerHTML = row.eligible === "Yes"
-      ? `<button data-retired-override-id="${escapeHtml(row.id)}">${isSelected ? "Selected" : "Select"}</button>`
-      : "";
-  });
-  decoratePlayerColumnFromRows("retiredTable", rows, { idKeys: ["id"] });
 }
 
 export function depthManualShareMap(position) {
@@ -288,80 +222,48 @@ export function renderDepthChart() {
     return;
   }
   table.innerHTML = `
-    <tr>
-      <th>Rank</th>
-      <th>Role</th>
-      <th>Player</th>
-      <th>Pos</th>
-      <th>OVR</th>
-      <th>POT</th>
-      <th>Merit</th>
-      <th>Available</th>
-      <th>Mode</th>
-      <th>Snap Share</th>
-      <th>Default</th>
-      <th>Move</th>
-    </tr>
-    ${ids
-      .map((playerId, index) => {
-        const player = rosterById.get(playerId);
-        const defaultShare = defaults[index] ?? shareRows[index]?.defaultSnapShare ?? shareRows[index]?.snapShare ?? 0.02;
-        const manualShare = manualShares[playerId];
-        const effectiveShare = resolvedShares[index] ?? shareRows[index]?.snapShare ?? defaultShare;
-        return `
-          <tr>
-            <td>${index + 1}</td>
-            <td>${escapeHtml(shareRows[index]?.role || `${position}${index + 1}`)}</td>
-            <td><button class="link-btn" data-player-id="${escapeHtml(playerId)}">${escapeHtml(player?.name || "Unknown")}</button></td>
-            <td>${escapeHtml(player?.pos || position)}</td>
-            <td>${escapeHtml(player?.overall ?? "")}</td>
-            <td>${escapeHtml(player?.potential ?? shareRows[index]?.potential ?? "")}</td>
-            <td>${escapeHtml(shareRows[index]?.meritScore ?? "-")}</td>
-            <td>${shareRows[index]?.available === false ? "Out" : "Ready"}</td>
-            <td>${exclusiveRole ? "Auto locked" : Number.isFinite(manualShare) ? "Manual" : "Auto"}</td>
-            <td>
-              <div class="depth-share-cell">
-                <input
-                  class="depth-share-input"
-                  type="number"
-                  min="0"
-                  max="100"
-                  step="1"
-                  value="${escapeHtml(Math.round(effectiveShare * 100))}"
-                  data-depth-share-input="${escapeHtml(playerId)}"
-                  ${exclusiveRole ? "disabled" : ""}
-                />
-                <span class="small">%</span>
-                <button data-depth-share-reset="${escapeHtml(playerId)}" ${exclusiveRole ? "disabled" : ""}>Auto</button>
-              </div>
-            </td>
-            <td>${escapeHtml(formatDepthSharePercent(defaultShare))}</td>
-            <td>
-              <div class="depth-action-group">
-                <button data-depth-move="up" data-depth-player-id="${escapeHtml(playerId)}" ${index === 0 ? "disabled" : ""}>Up</button>
-                <button data-depth-move="down" data-depth-player-id="${escapeHtml(playerId)}" ${index === ids.length - 1 ? "disabled" : ""}>Down</button>
-              </div>
-            </td>
-          </tr>`;
-      })
-      .join("")}
+  <tr>${['Rank', 'Role', 'Player', 'Pos', 'OVR', 'POT', 'Merit', 'Available', 'Mode', 'Snap Share', 'Default', 'Move'].map(label => `<th>${label}</th>`).join('')}</tr>
+  ${ids
+  .map((playerId, index) => {
+  const player = rosterById.get(playerId);
+  const defaultShare = defaults[index] ?? shareRows[index]?.defaultSnapShare ?? shareRows[index]?.snapShare ?? 0.02;
+  const manualShare = manualShares[playerId];
+  const effectiveShare = resolvedShares[index] ?? shareRows[index]?.snapShare ?? defaultShare;
+  return `
+  <tr>
+  <td>${index + 1}</td>
+  <td>${escapeHtml(shareRows[index]?.role || `${position}${index + 1}`)}</td>
+  <td><button class="link-btn" data-player-id="${escapeHtml(playerId)}">${escapeHtml(player?.name || "Unknown")}</button></td>
+  <td>${escapeHtml(player?.pos || position)}</td>
+  <td>${escapeHtml(player?.overall ?? "")}</td>
+  <td>${escapeHtml(player?.potential ?? shareRows[index]?.potential ?? "")}</td>
+  <td>${escapeHtml(shareRows[index]?.meritScore ?? "-")}</td>
+  <td>${shareRows[index]?.available === false ? "Out" : "Ready"}</td>
+  <td>${exclusiveRole ? "Auto locked" : Number.isFinite(manualShare) ? "Manual" : "Auto"}</td>
+  <td>
+  <div class="depth-share-cell">
+  <input class="depth-share-input" type="number" min="0" max="100" step="1"
+  value="${escapeHtml(Math.round(effectiveShare * 100))}" data-depth-share-input="${escapeHtml(playerId)}" ${exclusiveRole ? "disabled" : ""} />
+  <span class="small">%</span>
+  <button data-depth-share-reset="${escapeHtml(playerId)}" ${exclusiveRole ? "disabled" : ""}>Auto</button>
+  </div>
+  </td>
+  <td>${escapeHtml(formatDepthSharePercent(defaultShare))}</td>
+  <td>
+  <div class="depth-action-group">
+  <button data-depth-move="up" data-depth-player-id="${escapeHtml(playerId)}" ${index === 0 ? "disabled" : ""}>Up</button>
+  <button data-depth-move="down" data-depth-player-id="${escapeHtml(playerId)}" ${index === ids.length - 1 ? "disabled" : ""}>Down</button>
+  </div>
+  </td>
+  </tr>`;
+  })
+  .join("")}
   `;
   document.getElementById("depthStatusText").textContent = ids.length
     ? exclusiveRole
       ? `${position} is availability-locked: the healthy ${position}1 receives 100%, and the next ready player inherits the role during injury.`
       : `Adjusting ${position} for ${document.getElementById("depthTeamSelect")?.value || state.dashboard?.controlledTeamId || "BUF"} · auto shares blend OVR, POT, fit, and morale.`
     : "No players loaded for this position";
-}
-
-export function moveIdWithinList(list, playerId, delta) {
-  const index = list.indexOf(playerId);
-  if (index < 0) return list;
-  const nextIndex = Math.max(0, Math.min(list.length - 1, index + delta));
-  if (nextIndex === index) return list;
-  const next = [...list];
-  const [row] = next.splice(index, 1);
-  next.splice(nextIndex, 0, row);
-  return next;
 }
 
 export async function renderVeteranMentorshipPanel() {

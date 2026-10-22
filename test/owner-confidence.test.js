@@ -97,6 +97,42 @@ test("an active ultimatum enters the commitment board and fails with its consequ
   assert.ok(resolution, "the ultimatum resolves at the deadline");
   assert.equal(resolution.status, "failed");
   assert.match(resolution.evidence, /consequence/i);
+
+  // The real weekly pipeline resolves first, then registers owner pressure.
+  // A failed mandate must not be recreated with the same ID and charged twice.
+  const resolved = structuredClone(session.league.gmCommitments);
+  const recordedReceipts = structuredClone(session.league.gmCommitmentReceipts);
+  const beforeRetry = JSON.stringify(session.toSnapshot());
+  assert.equal(session.registerOwnerUltimatumPressure(), null);
+  assert.deepEqual(resolveGmDecisionCommitments(session), []);
+  assert.deepEqual(session.league.gmCommitments, resolved);
+  assert.deepEqual(session.league.gmCommitmentReceipts, recordedReceipts);
+  assert.equal(JSON.stringify(session.toSnapshot()), beforeRetry);
+
+  // Even an earlier resolved mandate remains the season's sole authority.
+  session.currentWeek = 8;
+  assert.equal(session.registerOwnerUltimatumPressure(), session.league.gmCommitments[0]);
+  assert.equal(session.league.gmCommitments.length, 1);
+
+  // The retained historical entry does not suppress a later season's demand.
+  session.currentYear += 1;
+  const next = session.registerOwnerUltimatumPressure();
+  assert.ok(next);
+  assert.notEqual(next.id, commitment.id);
+  assert.equal(session.league.gmCommitments.length, 2);
+  assert.deepEqual(session.league.gmCommitments[0], resolved[0]);
+});
+
+test("postseason owner pressure cannot create a new already-expired mandate", () => {
+  const session = createSession({ seed: 620052, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
+  const team = session.league.teams.find((entry) => entry.id === "BUF");
+  team.owner.patience = 0.2;
+  team.season.wins = 0;
+  team.season.losses = 18;
+  session.currentWeek = session.sportRules.structure.regularSeasonWeeks + 1;
+  const before = JSON.stringify(session.toSnapshot());
+  assert.equal(session.registerOwnerUltimatumPressure(), null);
+  assert.equal(JSON.stringify(session.toSnapshot()), before);
 });
 
 test("confidence summary bands are source-derived", () => {

@@ -1,0 +1,2438 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07T12:28:13.369Z",
+  "sourceRevision": "local-worktree",
+  "scope": "Modern swept and side-part rounded front crown and saved strand flow",
+  "sourceHashes": {
+    "public/lib/partedHairFlow.js": "f4cb8ae1a5da780b1180bb826b3d23a0e3be3cf1c8ef9273cd1f09b92a762d42",
+    "public/lib/playerPortraitFace.js": "400353a1aba55ba84e91f0c99807da74f949ceec02cbba7383616e61a7ec969c",
+    "public/lib/playerSideAppearance.js": "edd306f6494caf2fe131f626cbeba20026ccfc61a114bf652574a01d685944d2",
+    "public/lib/playerPortrait.js": "67ecf040cc8a3ad4e18119716559dbc80b1c94fc2d5db46d7c1ceb028d9c8195",
+    "public/lib/playerMotion.js": "7bb7590609d26bf8e69221fe29ad90309e0b7b365c9e730b1963576cac35423f",
+    "tests-ui/portrait-combinations.spec.js": "902c37241083049e5f3ebb0fa5802323579c5a07828479507044222fd57ae74d",
+    "tests-ui/whole-player-craft.spec.js": "5595e151dca88ab70f34075beb7fc471b996d2bf374a5b4f2ae8937b94a17d5c",
+    "test/player-hair-arrangement.test.js": "a88fc26bb2cf98c583cd963c953bea6834339b78ff0977739a12bc0942743fc9"
+  },
+  "beforeHashes": {
+    "public/lib/playerPortraitFace.js": "ec9b2020980457c94fe62048bc290df179dd5de33afef466a8e60a21ce63c4f7",
+    "public/lib/playerSideAppearance.js": "edd306f6494caf2fe131f626cbeba20026ccfc61a114bf652574a01d685944d2"
+  },
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "659613f19b69788f576be8f2aada8d11be7aeccf31d40eb725a334ebe1bdce06",
+    "files": 336,
+    "entries": [
+      {
+        "path": ".well-known/llms.txt",
+        "bytes": 1838,
+        "sha256": "e3e0b6523eacd499b63c718a9c877a79f6cc3cad7fa9f66621aeb225d6e5610c"
+      },
+      {
+        "path": ".well-known/security.txt",
+        "bytes": 231,
+        "sha256": "2e4ef4346b5df79a5d2800b3fd9c782aeebc5c5150b490820496c0af50bc0996"
+      },
+      {
+        "path": "404.html",
+        "bytes": 4275,
+        "sha256": "e6e7945f6913aeaf8b60fbb95bf7bf950e0cb370bb67385e88ed658bbbe6b1b9"
+      },
+      {
+        "path": "_headers",
+        "bytes": 1133,
+        "sha256": "ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c"
+      },
+      {
+        "path": "_redirects",
+        "bytes": 252,
+        "sha256": "d2980cf6098ee6d141e080c2d9bc3a0f17ab80b703088c60bcde5b2dc84b1c56"
+      },
+      {
+        "path": "about.html",
+        "bytes": 6379,
+        "sha256": "0d351d1d998a5c05ba4e4afbd6b3c040cdb37ed063126ecd95e86e67fc274523"
+      },
+      {
+        "path": "agents.json",
+        "bytes": 2445,
+        "sha256": "f5ddfb29615054c7e9e2483fd180d02efb302f1a6be3164e169f11a2efa399b1"
+      },
+      {
+        "path": "app.js",
+        "bytes": 113911,
+        "sha256": "53c1929107beb0335a44f0f870e5498e3f5a1a1334c0e59f471424bb1922c612"
+      },
+      {
+        "path": "boot-manifest.json",
+        "bytes": 2001,
+        "sha256": "d0c14a86963f91513789b80b46216740ebdc18557bab89c86610e1f5f196071b"
+      },
+      {
+        "path": "changelog.xml",
+        "bytes": 25064,
+        "sha256": "1956f322d60ae4cfbb88c5c2182587209d448f9d6fd75f1efa6fd952ff476a71"
+      },
+      {
+        "path": "community-stats.25f97e0a1e.js",
+        "bytes": 22015,
+        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
+      },
+      {
+        "path": "community-stats.js",
+        "bytes": 22015,
+        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
+      },
+      {
+        "path": "contact.html",
+        "bytes": 5482,
+        "sha256": "de7731962f10bb42e860c7d8188610a7e8cbaf83285b0b69cd6c59b48315e3cc"
+      },
+      {
+        "path": "content/claims.json",
+        "bytes": 11531,
+        "sha256": "2f6d661d428fde3a81d10263f67bec98c5c98ff8d415353afe64f574c67b0c89"
+      },
+      {
+        "path": "faq.html",
+        "bytes": 10553,
+        "sha256": "90773aaa3ae15aded7386017a4e4d18363e7f34f62b5448564f149b31d0685df"
+      },
+      {
+        "path": "favicon.ico",
+        "bytes": 1427,
+        "sha256": "918642e9f38003862ef7b74417a6d7854972b34d82a2073c147c81690a0a7eac"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 301,
+        "sha256": "f450f64990cfefe57bfb9bd3689d901edba654d09e8dddfa579eb1e794940cf3"
+      },
+      {
+        "path": "features.html",
+        "bytes": 13819,
+        "sha256": "db9fb43d1e454d1e0c1c416d299efc6c55bf69be3ba6645301ef215bb21c028f"
+      },
+      {
+        "path": "footer-manifest.json",
+        "bytes": 1895,
+        "sha256": "ed7c5b5165d31484f28998878c9294ea94b25bb69e0a22344c0c98f2f36f4c25"
+      },
+      {
+        "path": "game.html",
+        "bytes": 116778,
+        "sha256": "143bf32149f46ac82732ba193128c02709ae885f027ce429c4b99f1a90b1d043"
+      },
+      {
+        "path": "how-to-play.html",
+        "bytes": 8526,
+        "sha256": "8902ed2d6f6ba3ed639720f9f20c5b72cb17f2250eb0e5ce5d3456f3ccf3f0b0"
+      },
+      {
+        "path": "images/apple-touch-icon.png",
+        "bytes": 3077,
+        "sha256": "039ede3f2768ba639095bb83ef58e95f4190c0d9f8e059875de03b04de2198f7"
+      },
+      {
+        "path": "images/cover.png",
+        "bytes": 378376,
+        "sha256": "409df9ab5dfc016bc04e16ef3bee6edbe837f0da0f9c803928a31a3834dbf0a6"
+      },
+      {
+        "path": "images/cover.webp",
+        "bytes": 28418,
+        "sha256": "68584f71803e58ee0e9ce8f21d2b9390bad9eb3d2b2985a9e4af5824ce1383c3"
+      },
+      {
+        "path": "images/franchise-architect-logo.svg",
+        "bytes": 1001,
+        "sha256": "2e30a473a7fff7c7a11fda90e7b3e5eb56de572afcfd8aca464ff54bcf84f754"
+      },
+      {
+        "path": "images/franchise-architect-mark.svg",
+        "bytes": 599,
+        "sha256": "64a966830119196ac799e00b8dc58d3970460ba2d6b82fb324fa6ae848d9ad3d"
+      },
+      {
+        "path": "images/icon-192.png",
+        "bytes": 3082,
+        "sha256": "51dff9db397d1c13c5d06c8a69543678acafaec5ef215ec236e976a6a9819c66"
+      },
+      {
+        "path": "images/icon-512.png",
+        "bytes": 8341,
+        "sha256": "b7b5a916704a3a11868fe31d7dbb86ece3d371aab2fd872d5ff7f3fb5e65f1a7"
+      },
+      {
+        "path": "images/screens/boardroom.jpg",
+        "bytes": 152963,
+        "sha256": "6255f9c371e31178db42af10f520e80f634930729a06c1d6903af274dc9e9f66"
+      },
+      {
+        "path": "images/screens/contracts.jpg",
+        "bytes": 138297,
+        "sha256": "282107d77478dfa9f0d8820a28363f38a5d0a909143c4603ce45a796b1257d9f"
+      },
+      {
+        "path": "images/screens/desk.jpg",
+        "bytes": 103191,
+        "sha256": "cd66e490aedb12d6da6bb39134ccb81d1ab300c331fef20b7c5922bf96b15847"
+      },
+      {
+        "path": "images/screens/hero.jpg",
+        "bytes": 154408,
+        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+      },
+      {
+        "path": "images/screens/trade.jpg",
+        "bytes": 125476,
+        "sha256": "51bed8fcb5bb28d7aa98bd52e4d258a23bcb94d71789398192cb55a2ee133108"
+      },
+      {
+        "path": "index.html",
+        "bytes": 21743,
+        "sha256": "54ee8ab805c765c3ff79ab1ed9475cb9c9f2c3353171310fd67310eb3606cfa0"
+      },
+      {
+        "path": "lib/achievements.js",
+        "bytes": 20801,
+        "sha256": "dcacc93c2af840afae41de2a892915c9bcaa7e6b90c894d6c9f56080fc976dc1"
+      },
+      {
+        "path": "lib/actionCoordinator.js",
+        "bytes": 762,
+        "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a"
+      },
+      {
+        "path": "lib/api/clientSessionRecovery.js",
+        "bytes": 25582,
+        "sha256": "90cece6bd4990b54b19fee769d55a8b692217086e20378fcbca2344e6c6987e3"
+      },
+      {
+        "path": "lib/api/createApiClient.js",
+        "bytes": 12700,
+        "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605"
+      },
+      {
+        "path": "lib/api/localRuntimeWorker.js",
+        "bytes": 13705,
+        "sha256": "4e76d369959eb57c14fd69c80f44c97bcd4f6b99918d0e29b6745b75544f23ce"
+      },
+      {
+        "path": "lib/api/recoverySnapshotState.js",
+        "bytes": 1059,
+        "sha256": "8951e759850a18e52e83fb53635a5b74519eee907fde50e35a4fe0238d6506d9"
+      },
+      {
+        "path": "lib/api/workerTransport.js",
+        "bytes": 7528,
+        "sha256": "7335d20537d8a268b588d9099a8d0c6cfb9b3aa97fcbfe1ae4b7002c7a016ab8"
+      },
+      {
+        "path": "lib/apiContract.js",
+        "bytes": 8804,
+        "sha256": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba"
+      },
+      {
+        "path": "lib/appCore.js",
+        "bytes": 61073,
+        "sha256": "a13954492317e4f03dbb8868e9b7725ab4275c66edc81f3a06e342df5bab7c60"
+      },
+      {
+        "path": "lib/appState.js",
+        "bytes": 12455,
+        "sha256": "8bffb177795afba3db3e497434380fcfa232aebd87df0de4ef74eddb26f8bc78"
+      },
+      {
+        "path": "lib/appearancePalette.js",
+        "bytes": 1622,
+        "sha256": "777f97ac4e30b6f678160f7f6181b4ccac941a428764918791eecfae50548c4b"
+      },
+      {
+        "path": "lib/architectCut.js",
+        "bytes": 6574,
+        "sha256": "5edb460f761619cef360a87293f212c7b4fc280432398304f47009f3c0c1d963"
+      },
+      {
+        "path": "lib/architectPlanRehearsal.js",
+        "bytes": 6938,
+        "sha256": "dc7987a06cf65f9c2ab2483fc73d897664e172008f00f44d436ffcbfe440a1c3"
+      },
+      {
+        "path": "lib/audioFeedback.js",
+        "bytes": 4117,
+        "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe"
+      },
+      {
+        "path": "lib/authorityEpoch.js",
+        "bytes": 1348,
+        "sha256": "fd8619500e7fd5f7484dbcc25f952252311ecda9e5723e6586b2f6727c257371"
+      },
+      {
+        "path": "lib/betaFeedback.js",
+        "bytes": 16195,
+        "sha256": "f2e2050e4788c12378ff4d73e2ec50d7f0c945b6a78c81844d544aad4d73a080"
+      },
+      {
+        "path": "lib/boxScorePresentation.js",
+        "bytes": 5404,
+        "sha256": "cde2ae34bac10813b2b0a2cafe0136a1e6e0ae182f09d5c70fd1047d26589f8f"
+      },
+      {
+        "path": "lib/challengeCodes.js",
+        "bytes": 5945,
+        "sha256": "d2f3d5d98aeb8880311aa273ca9e3dd49579cacecff8cabbd58feb9a9b8ed24f"
+      },
+      {
+        "path": "lib/clientDiagnostics.js",
+        "bytes": 5996,
+        "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c"
+      },
+      {
+        "path": "lib/clientRecoveryUi.js",
+        "bytes": 5660,
+        "sha256": "59e6c1f894b9b7aade41e35ed283c4d94faea9a479d98804dfc0c54188aa4999"
+      },
+      {
+        "path": "lib/coGmBriefPanel.js",
+        "bytes": 2304,
+        "sha256": "f15230f9ee51344d8150d1be39b0d1919dc54074bb67b80c8c5def11a19311a5"
+      },
+      {
+        "path": "lib/coGmBriefing.js",
+        "bytes": 5314,
+        "sha256": "db4231955adc35ac8a04a1f4a373d7c6e33d75a6d3e02ad003aac4565016d5f0"
+      },
+      {
+        "path": "lib/coachingMarketPanel.js",
+        "bytes": 4655,
+        "sha256": "1165e0d0bffb1b0dc6af84b303e9c7ec31ac1605989656b52313dcbaa0880eae"
+      },
+      {
+        "path": "lib/communityEventContract.js",
+        "bytes": 4634,
+        "sha256": "1466f7970beb27da0b33f767386ed19bce77de3e69737ac2be228bd2e8bb3354"
+      },
+      {
+        "path": "lib/communityTelemetry.js",
+        "bytes": 14177,
+        "sha256": "db4f14553a6d4dcdb55fe565e27219bf69f0491c287bb84f6163c070904ba84f"
+      },
+      {
+        "path": "lib/contextualFeedback.js",
+        "bytes": 7864,
+        "sha256": "f4798ea71e9bc3c8f8a56437f4239b947415a3eb106d8ec7e82c8f7afb9e2edf"
+      },
+      {
+        "path": "lib/decisionAnthology.js",
+        "bytes": 1679,
+        "sha256": "96a791b4dc4af5b9444618a18773d2d58d9c51fea38004bb6a88d28aa9a28951"
+      },
+      {
+        "path": "lib/decisionArchive.js",
+        "bytes": 4377,
+        "sha256": "f1733d13e24ebc7d51b656082a789c2bd2a0df08dafb658dae08d4f701aaf76f"
+      },
+      {
+        "path": "lib/deskIslands.js",
+        "bytes": 4533,
+        "sha256": "84d6649422ad0b2c91144055427c7db20f270b6653ade47d43d59e4e42f79f14"
+      },
+      {
+        "path": "lib/devSurfaces.js",
+        "bytes": 1377,
+        "sha256": "c19928d9eada8145f5cc688bafc38cf57949e8e6aa75cf5411fd7e2b927df2f4"
+      },
+      {
+        "path": "lib/draftPickReveal.js",
+        "bytes": 4661,
+        "sha256": "71757db9aa7cdce68712047479ca8e50fffd511f5f71a602660137f31f372300"
+      },
+      {
+        "path": "lib/dynastyTimeline.js",
+        "bytes": 6267,
+        "sha256": "17658196cf6e9fbaa45a2824192e41df11986a85b8ec5775deacc5b7b650968d"
+      },
+      {
+        "path": "lib/engagementFeatures.js",
+        "bytes": 32794,
+        "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660"
+      },
+      {
+        "path": "lib/exactSurfaceNavigation.js",
+        "bytes": 3114,
+        "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
+      },
+      {
+        "path": "lib/extractCommunityEvents.js",
+        "bytes": 8329,
+        "sha256": "e1c507fc40fb87675e17797951ff7a36bcb80e2d9a41e9a2c8583fc483c62a64"
+      },
+      {
+        "path": "lib/facilitiesPanel.js",
+        "bytes": 6563,
+        "sha256": "2d1cbd0dcfb79c441d939c06359a2912a3eeb04f0ef00a5b5ee9f9fb6ad1e352"
+      },
+      {
+        "path": "lib/fastSimulationPolicy.js",
+        "bytes": 2071,
+        "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
+      },
+      {
+        "path": "lib/fineFaceGeometry.js",
+        "bytes": 9213,
+        "sha256": "851b45188f6c7cd5ac8969c66afbcd509cefe2487044c673464cd07164d007df"
+      },
+      {
+        "path": "lib/firstDebriefPulse.js",
+        "bytes": 8641,
+        "sha256": "ce6751727604018d54d6b98689ce3b6c88c480b871e8b0cb6dc28236c6a4cea0"
+      },
+      {
+        "path": "lib/firstSeasonContract.js",
+        "bytes": 13577,
+        "sha256": "f2bcbebc9fac5bf2942b4840a95bdc8c2676ff70d6b75456fdb578f72f489c8d"
+      },
+      {
+        "path": "lib/franchiseArchitecture.js",
+        "bytes": 7220,
+        "sha256": "0035be48f9b922bfa88a5122fd04ef5aecd3d82c585a820264cb71b14302e03a"
+      },
+      {
+        "path": "lib/franchiseCommandCenter.js",
+        "bytes": 8509,
+        "sha256": "6a2ad885ad8fd686b5b933f739e236850b63749bc76d9e0629f53df4b204f762"
+      },
+      {
+        "path": "lib/franchiseNewsletter.js",
+        "bytes": 8147,
+        "sha256": "124c0b8893d87ad3ae0e35f178bbea2d678c1638d93133c7ef2d53354733a81b"
+      },
+      {
+        "path": "lib/franchiseScope.js",
+        "bytes": 1553,
+        "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178"
+      },
+      {
+        "path": "lib/frontOfficeAdvisor.js",
+        "bytes": 26769,
+        "sha256": "4f2308ae806d01c8f5a43d7eeb30a0e4305fa372665c39ce93fabe8599d1e188"
+      },
+      {
+        "path": "lib/gameFlow.js",
+        "bytes": 62528,
+        "sha256": "da2a58aeb925a6b113e1ca7d8a8052781bdfb94839c697fcae74f603dc8a3492"
+      },
+      {
+        "path": "lib/gameOutcome.js",
+        "bytes": 2085,
+        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+      },
+      {
+        "path": "lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "lib/gistAuthentication.js",
+        "bytes": 3215,
+        "sha256": "737be150b40d767dff6f1d43b7e4c2e5f96eff106aed193d4cc7fba192c7f359"
+      },
+      {
+        "path": "lib/gistCredentials.js",
+        "bytes": 1631,
+        "sha256": "789a78e5ecfce53ee06aa4dc93f1938c4a17573d3f4511f146c8fdf32917c828"
+      },
+      {
+        "path": "lib/gistSync.js",
+        "bytes": 8867,
+        "sha256": "10409f97753e6323fe7ce0574ab7305f0306b1bf2ff0426dceaf4350d039b429"
+      },
+      {
+        "path": "lib/gistVerification.js",
+        "bytes": 2018,
+        "sha256": "11f6ac5bd9a7a6461d75c4d6734bdad435d84fc566b91d930adfcf8c6b1d517a"
+      },
+      {
+        "path": "lib/hairArrangement.js",
+        "bytes": 1659,
+        "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+      },
+      {
+        "path": "lib/hairGrayFibers.js",
+        "bytes": 1012,
+        "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49"
+      },
+      {
+        "path": "lib/hallOfFameCeremony.js",
+        "bytes": 6068,
+        "sha256": "7ca70ec97ef3f38add573af53d780174827f381779cf4dfc23f7f4bb8348fe3d"
+      },
+      {
+        "path": "lib/historyFormatting.js",
+        "bytes": 2289,
+        "sha256": "aa6d22845a7fdfd0ec88680880458002cbabd613e32a0cfdbeee6631550833a5"
+      },
+      {
+        "path": "lib/injurySalaryClaimsPanel.js",
+        "bytes": 3151,
+        "sha256": "7bccd36c6ce7e1a67447080ec48c3afc17f49c8ce916b7ab1a7fa1f6847a9886"
+      },
+      {
+        "path": "lib/launchReadiness.js",
+        "bytes": 2771,
+        "sha256": "a3644f95686596e6025c7b30ebc11254f102eef6f573900060dbabed3a3a106c"
+      },
+      {
+        "path": "lib/leagueLensPanel.js",
+        "bytes": 4686,
+        "sha256": "dc9fe60927b67a7e0dbc354719a44afb56ab1129d9e024026b48f68a59b33505"
+      },
+      {
+        "path": "lib/leagueStoryExport.js",
+        "bytes": 12078,
+        "sha256": "43ef55dba1382f058532e82a8cf4b4379fef1bec2c49ea3f4364b83ff0220058"
+      },
+      {
+        "path": "lib/longHairFlow.js",
+        "bytes": 2507,
+        "sha256": "cf41a2bae772fdbea65111cb91b878decb67c4bea90474e196645b6bc24dc8fd"
+      },
+      {
+        "path": "lib/lookAhead.js",
+        "bytes": 1963,
+        "sha256": "f5f83462192dff00d60831ca69223dcfa5d4177e419672ab580937831f0deb40"
+      },
+      {
+        "path": "lib/marqueeBadge.js",
+        "bytes": 4158,
+        "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e"
+      },
+      {
+        "path": "lib/mentorshipPanel.js",
+        "bytes": 5148,
+        "sha256": "f944718618e8d51af9909908364058bf99acd4f071b28a9d533f73c49e4e2050"
+      },
+      {
+        "path": "lib/mobileLoop.js",
+        "bytes": 20052,
+        "sha256": "0c59f1121cdca3e3d1cc9af5901371f4a96fe582ff76ce9e980e7e3b1f603650"
+      },
+      {
+        "path": "lib/mobileNavigation.js",
+        "bytes": 5813,
+        "sha256": "a563a6432cd9f387fccc9ec8a55606889362355261b48e778d72f7abfe82980f"
+      },
+      {
+        "path": "lib/modalManager.js",
+        "bytes": 6529,
+        "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
+      },
+      {
+        "path": "lib/momentCard.js",
+        "bytes": 17407,
+        "sha256": "dfdb3f2c5d15cf6d1903cb2b780e355a0f3bdb5bb2a4b8ad385c4559e7cf2550"
+      },
+      {
+        "path": "lib/offseasonDevelopmentReport.js",
+        "bytes": 5709,
+        "sha256": "c644c99eb069256885075c85ed9119ce0881022c5ec17077c20be5afa8f85bbc"
+      },
+      {
+        "path": "lib/onClockTradeMarketPanel.js",
+        "bytes": 5155,
+        "sha256": "c9944026c098d9b62670359dea2ac3601111a18c99e44bf1260c985b2a6755b6"
+      },
+      {
+        "path": "lib/operatingStatementPanel.js",
+        "bytes": 2653,
+        "sha256": "9f685f33c5e2301bef562091e70bc7ed8a5aa43b3dd5beaaea5c25f066ff57dd"
+      },
+      {
+        "path": "lib/partedHairFlow.js",
+        "bytes": 2287,
+        "sha256": "f4cb8ae1a5da780b1180bb826b3d23a0e3be3cf1c8ef9273cd1f09b92a762d42"
+      },
+      {
+        "path": "lib/physiqueGeometryContract.js",
+        "bytes": 2053,
+        "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1"
+      },
+      {
+        "path": "lib/playerFootwear.js",
+        "bytes": 989,
+        "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+      },
+      {
+        "path": "lib/playerHand.js",
+        "bytes": 1243,
+        "sha256": "9b5cb671691759539108530209c3226e584dd53feeec09a6846fcab56698b927"
+      },
+      {
+        "path": "lib/playerMotion.js",
+        "bytes": 26799,
+        "sha256": "7bb7590609d26bf8e69221fe29ad90309e0b7b365c9e730b1963576cac35423f"
+      },
+      {
+        "path": "lib/playerPortrait.js",
+        "bytes": 15804,
+        "sha256": "67ecf040cc8a3ad4e18119716559dbc80b1c94fc2d5db46d7c1ceb028d9c8195"
+      },
+      {
+        "path": "lib/playerPortraitFace.js",
+        "bytes": 48368,
+        "sha256": "400353a1aba55ba84e91f0c99807da74f949ceec02cbba7383616e61a7ec969c"
+      },
+      {
+        "path": "lib/playerProfileNarrative.js",
+        "bytes": 11170,
+        "sha256": "28e9d7225419c4ea4f38732811e6d7d17a58117c0b0bf0e2e40cdb3f51b77527"
+      },
+      {
+        "path": "lib/playerSideAppearance.js",
+        "bytes": 11368,
+        "sha256": "edd306f6494caf2fe131f626cbeba20026ccfc61a114bf652574a01d685944d2"
+      },
+      {
+        "path": "lib/playtestJourney.js",
+        "bytes": 4111,
+        "sha256": "a07965f79cb3fbecde479ba1e991625381d380c83c136ec0e286440e778c96c4"
+      },
+      {
+        "path": "lib/playtestReceipts.js",
+        "bytes": 4557,
+        "sha256": "51d34f651a7d55074b9bd1b5f2d5b154b342ae99a6447752866ad13e79c5ebb5"
+      },
+      {
+        "path": "lib/portraitAppearanceContract.js",
+        "bytes": 964,
+        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+      },
+      {
+        "path": "lib/portraitSurfaceLighting.js",
+        "bytes": 3970,
+        "sha256": "2ae38a234a5acfd802b4453f982fdd069326bd64495b4a80d9f461934bd73fc7"
+      },
+      {
+        "path": "lib/postCommitHydration.js",
+        "bytes": 2027,
+        "sha256": "7bf28b18ec26dc059ae17537a00566a2efe3684558ad0b989ab34a69f7f62bfe"
+      },
+      {
+        "path": "lib/predictionPanel.js",
+        "bytes": 7619,
+        "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+      },
+      {
+        "path": "lib/pressRoomPanel.js",
+        "bytes": 4316,
+        "sha256": "cf807f96e9ff510ff84a4afaee24cf0363dd4f8f6226a16975830573ab0a9bcc"
+      },
+      {
+        "path": "lib/profiledLimbSurface.js",
+        "bytes": 1874,
+        "sha256": "fbc74ae9113a7c653c1efe71b140753ad3c53d05eba2c01340e59bd16e358bb8"
+      },
+      {
+        "path": "lib/progressionWatch.js",
+        "bytes": 1949,
+        "sha256": "8254616bd7d5987eafdb4f41b198cb843f6475414363951844de0e5aebc4630c"
+      },
+      {
+        "path": "lib/prospectNarratives.js",
+        "bytes": 4627,
+        "sha256": "124e0becdc00bb020287e1bc7a724628c250eea3f1614342d63fa79d8af4fc7a"
+      },
+      {
+        "path": "lib/returnDigest.js",
+        "bytes": 11792,
+        "sha256": "7cd5dc692287d2ba5f006fa3aa3ef25d567984948ea75eff03924177f18c7351"
+      },
+      {
+        "path": "lib/rewardBeats.js",
+        "bytes": 7590,
+        "sha256": "0f06ee560442b7fcc6506c46cee53fd8a5db715b1019ae9b5dccec0964699405"
+      },
+      {
+        "path": "lib/rivalCoachIntel.js",
+        "bytes": 2496,
+        "sha256": "f7885fa55083a9038cc830ecf1e47574a5de0fc077916b2ad930b26249e3f870"
+      },
+      {
+        "path": "lib/rivalFrontOfficeCard.js",
+        "bytes": 1983,
+        "sha256": "9a3a1321ddd8db463507385cc402b2b9b03492db6b62be7719fe9c9ce435a289"
+      },
+      {
+        "path": "lib/rosterActions.js",
+        "bytes": 4598,
+        "sha256": "e18e5d4a29242291e9b9afac77ac0c67043fda94b34e1300bf9879a6bb01c35b"
+      },
+      {
+        "path": "lib/scoreline.js",
+        "bytes": 1280,
+        "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003"
+      },
+      {
+        "path": "lib/seasonChapters.js",
+        "bytes": 17256,
+        "sha256": "d7c3e69b653169d9d37f04535f744049037e97fa5315686c29a52742638380ad"
+      },
+      {
+        "path": "lib/seasonEpilogue.js",
+        "bytes": 14718,
+        "sha256": "f832da600d35aca6aa56b15d4e1f32fa7784e7ce84913472d485bb6ab60d76cd"
+      },
+      {
+        "path": "lib/seasonReviewTransition.js",
+        "bytes": 343,
+        "sha256": "373f0b73cd6cfacdb72f97a5c62e5e4ddb54c3f123e97425fc7df87cac8479d8"
+      },
+      {
+        "path": "lib/simWatchDirector.js",
+        "bytes": 16252,
+        "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00"
+      },
+      {
+        "path": "lib/simWatchPlayback.js",
+        "bytes": 9334,
+        "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3"
+      },
+      {
+        "path": "lib/simulationCheckpoints.js",
+        "bytes": 5298,
+        "sha256": "f371488ebc68a78a1350e01320bfbbcc5ce735dd6c4621ecfbd2714b178d6eca"
+      },
+      {
+        "path": "lib/situationalCallsPanel.js",
+        "bytes": 4081,
+        "sha256": "630cf0715481a00d2e6fb41ba370eba8c76ccf252a90f9077471b0f298c026ca"
+      },
+      {
+        "path": "lib/spreadPredictions.js",
+        "bytes": 8724,
+        "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
+      },
+      {
+        "path": "lib/startScenarioContract.js",
+        "bytes": 4454,
+        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+      },
+      {
+        "path": "lib/tabContracts.js",
+        "bytes": 38414,
+        "sha256": "ecf9d696b3c36a3dbe80834f0cb486137b4b692b9fd55bbfb8bf16b2e1169bdf"
+      },
+      {
+        "path": "lib/tabDraft.js",
+        "bytes": 23489,
+        "sha256": "8d849daf90776d7b65dbf17c1e2a619c2f243f6300ae05cfd37769b8622a6619"
+      },
+      {
+        "path": "lib/tabHistory.js",
+        "bytes": 42347,
+        "sha256": "7b582bd4aeb1f7d608a34a9e67bf9910c4aefe350ac79092467312e3e053015b"
+      },
+      {
+        "path": "lib/tabHydration.js",
+        "bytes": 6294,
+        "sha256": "4a623ab5b7b900cf34ff8cfa6531ac95bf6c70dec3e2cad107d9373718c24b65"
+      },
+      {
+        "path": "lib/tabKeyboardNavigation.js",
+        "bytes": 770,
+        "sha256": "88f0a334c69c5e7ee3f6781cd207fd0206a0215b12bdc261c5a24ed99dd1a026"
+      },
+      {
+        "path": "lib/tabOverview.js",
+        "bytes": 70154,
+        "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+      },
+      {
+        "path": "lib/tabRoster.js",
+        "bytes": 13930,
+        "sha256": "39a4173ccaf752e785ae8303f98b895489229629b8d6e752ccf123f0e4f6814a"
+      },
+      {
+        "path": "lib/tabSettings.js",
+        "bytes": 43134,
+        "sha256": "aa67445c86a84b8ae97defccf73116fdb838d60a1f3f446a2df4aae2f1d5f3e8"
+      },
+      {
+        "path": "lib/tabStats.js",
+        "bytes": 9270,
+        "sha256": "7037408e4624feef2fc29ca3a11f58aa41423d4a1d635763f509af82a42b4c5c"
+      },
+      {
+        "path": "lib/tacticalFilmRoom.js",
+        "bytes": 15126,
+        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+      },
+      {
+        "path": "lib/teamCrest.js",
+        "bytes": 5789,
+        "sha256": "8ab745aacd1fda86da8406eee04282cf7910b3b8d8dba02fcebcbcff5f48e0ec"
+      },
+      {
+        "path": "lib/teamDisplay.js",
+        "bytes": 262,
+        "sha256": "adf9834822fb376d8324eba63177071ca3458e79b85d386677179bea87af1595"
+      },
+      {
+        "path": "lib/teamRecord.js",
+        "bytes": 1811,
+        "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6"
+      },
+      {
+        "path": "lib/themeBoot.js",
+        "bytes": 1644,
+        "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+      },
+      {
+        "path": "lib/themeCustomizer.js",
+        "bytes": 8390,
+        "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
+      },
+      {
+        "path": "lib/torsoSurface.js",
+        "bytes": 1307,
+        "sha256": "bd557a1ee9f5d1fec6951f413342bc437437774c97cdda47cb0d9b6231da6d97"
+      },
+      {
+        "path": "lib/tradeDeadlineFrenzy.js",
+        "bytes": 9802,
+        "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
+      },
+      {
+        "path": "lib/tradeWindow.js",
+        "bytes": 1486,
+        "sha256": "ae3cd16bbad79e54d94dda978ebdab22af87a037d0c4848f7dcc9a39448f316c"
+      },
+      {
+        "path": "lib/tutorialCampaign.js",
+        "bytes": 12856,
+        "sha256": "719b7fafc70d0721f197b13039c72903140967ad7ea2fede6abd3356a27f147f"
+      },
+      {
+        "path": "lib/uiIslands.js",
+        "bytes": 6424,
+        "sha256": "de2089084e7baf56d214e0190c8232c96dad2c2d6fa2733a9e3a5489a3eaa0ba"
+      },
+      {
+        "path": "lib/weeklyPlanComposer.js",
+        "bytes": 7650,
+        "sha256": "7c257e23dace7197745fd6b5928707bea18e4d974f4e2e512a61c15df94afca6"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "bytes": 600,
+        "sha256": "07e5426cdaf6094a5c9de2e141b27521ef1e1c64fff95fbfc5991362d439cc64"
+      },
+      {
+        "path": "precache-manifest.json",
+        "bytes": 23871,
+        "sha256": "872a31667f87b42091bdc78a59a2b0f71587c392aa2afd5357b7b37e38305484"
+      },
+      {
+        "path": "press.html",
+        "bytes": 10946,
+        "sha256": "261f6e1faa3607992b28e3abacd4835df8916d3280b1687fc76d2a9a008be76d"
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 7429,
+        "sha256": "d8df42e5cd5e1c3bd6184e3c080bbe4aacb0ec5e37b6b9811c9caf78376366e3"
+      },
+      {
+        "path": "public-identity.json",
+        "bytes": 584,
+        "sha256": "39a81c7ebeead641bc7aeef0087798797a6f2a960f99eb8ba0e1c29db299ac3e"
+      },
+      {
+        "path": "public/lib/appearancePalette.js",
+        "bytes": 1622,
+        "sha256": "777f97ac4e30b6f678160f7f6181b4ccac941a428764918791eecfae50548c4b"
+      },
+      {
+        "path": "public/lib/gameOutcome.js",
+        "bytes": 2085,
+        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
+      },
+      {
+        "path": "public/lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "public/lib/physiqueGeometryContract.js",
+        "bytes": 2053,
+        "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1"
+      },
+      {
+        "path": "public/lib/portraitAppearanceContract.js",
+        "bytes": 964,
+        "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+      },
+      {
+        "path": "public/lib/startScenarioContract.js",
+        "bytes": 4454,
+        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
+      },
+      {
+        "path": "public/lib/tacticalFilmRoom.js",
+        "bytes": 15126,
+        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
+      },
+      {
+        "path": "roadmap.html",
+        "bytes": 6313,
+        "sha256": "72aa1ee710f5a5ae0e1a66e458f07edd1562b1515f515140539083ca081e9b0f"
+      },
+      {
+        "path": "robots.txt",
+        "bytes": 80,
+        "sha256": "d129cfd34a4621cf972482cd0164f3dae6efe89688a6c243cfc3dd5c5b313019"
+      },
+      {
+        "path": "setup.js",
+        "bytes": 30439,
+        "sha256": "253a3ca138e93b951850bae7f07ffac8288f4afd68abf078070d90897362bf3c"
+      },
+      {
+        "path": "showcase-league.json",
+        "bytes": 1342,
+        "sha256": "0fcd055662bda952fa32d977df135f7ac949bc044ebc327a0258f70451bcc4dd"
+      },
+      {
+        "path": "simulation.html",
+        "bytes": 11282,
+        "sha256": "cb789e03d7821e7ee3fb9a943b16d5e3aeac54d9c8d79f6ad7cf1cc25126f939"
+      },
+      {
+        "path": "site.11e8faac8d.css",
+        "bytes": 10999,
+        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      },
+      {
+        "path": "site.css",
+        "bytes": 10999,
+        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+      },
+      {
+        "path": "sitemap.xml",
+        "bytes": 1844,
+        "sha256": "4c1f679180b59affe80c65626adac112271059d41ac3838f1846b185ef906f29"
+      },
+      {
+        "path": "src/adapters/persistence/browserSaveStore.js",
+        "bytes": 10036,
+        "sha256": "ec8f692dbf53e14e20bcd675138984f0f7f99991a565bd66f73fe4315e43d342"
+      },
+      {
+        "path": "src/adapters/persistence/hybridSaveStore.js",
+        "bytes": 15546,
+        "sha256": "b7cb1b7f74fca3cc07d5e647216840cedb87cf7570712b967a706d5a74ba0c98"
+      },
+      {
+        "path": "src/adapters/persistence/jsonLayouts.js",
+        "bytes": 2156,
+        "sha256": "ad74c2748791f529e7d9b49851dca246be5c666a5a11fe2a561b5e633db4f435"
+      },
+      {
+        "path": "src/adapters/persistence/saveStoreShared.js",
+        "bytes": 4579,
+        "sha256": "8881f866cae3ee2e4d5ba0a6706453dcaa87a4719b5f0967a646c1d13394f8da"
+      },
+      {
+        "path": "src/adapters/persistence/snapshotCodec.js",
+        "bytes": 5386,
+        "sha256": "15e0996f3b8660a8f144d1f0f9e9e54b4201ea88de2e4dfa2e1eb3a53c270903"
+      },
+      {
+        "path": "src/app/api/localApiRuntime.js",
+        "bytes": 97319,
+        "sha256": "d01ae657f3781996a5610892def880f5c909f30a779bb0c327821c8b0194d939"
+      },
+      {
+        "path": "src/config.js",
+        "bytes": 16689,
+        "sha256": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d"
+      },
+      {
+        "path": "src/config/leagueSetup.js",
+        "bytes": 17122,
+        "sha256": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88"
+      },
+      {
+        "path": "src/data/nflElevationSalary.js",
+        "bytes": 2967,
+        "sha256": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e"
+      },
+      {
+        "path": "src/data/nflEliteDensityBaseline.js",
+        "bytes": 8606,
+        "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d"
+      },
+      {
+        "path": "src/data/nflPostseasonSalary.js",
+        "bytes": 2188,
+        "sha256": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267"
+      },
+      {
+        "path": "src/data/nflPracticeSalary.js",
+        "bytes": 1031,
+        "sha256": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54"
+      },
+      {
+        "path": "src/data/nflSalaryCap.js",
+        "bytes": 3133,
+        "sha256": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d"
+      },
+      {
+        "path": "src/data/nflSalaryMinimum.js",
+        "bytes": 1302,
+        "sha256": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44"
+      },
+      {
+        "path": "src/data/playerDemographicBaseline.js",
+        "bytes": 2145,
+        "sha256": "8df1f33b181a01ea3f76afb28e2f2f8f3ee1f567f7a578e8010141790173f699"
+      },
+      {
+        "path": "src/data/playerFamilyHeritage.js",
+        "bytes": 7097,
+        "sha256": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8"
+      },
+      {
+        "path": "src/domain/activeInactiveHistory.js",
+        "bytes": 6614,
+        "sha256": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e"
+      },
+      {
+        "path": "src/domain/annualElevationInjuryResolution.js",
+        "bytes": 7778,
+        "sha256": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da"
+      },
+      {
+        "path": "src/domain/capCarryover.js",
+        "bytes": 510,
+        "sha256": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524"
+      },
+      {
+        "path": "src/domain/contracts.js",
+        "bytes": 17014,
+        "sha256": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568"
+      },
+      {
+        "path": "src/domain/developmentEnvironment.js",
+        "bytes": 9551,
+        "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1"
+      },
+      {
+        "path": "src/domain/draftCohort.js",
+        "bytes": 1074,
+        "sha256": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf"
+      },
+      {
+        "path": "src/domain/earnedPracticeCap.js",
+        "bytes": 1418,
+        "sha256": "a26eda958dde8fa97c9b368537d99cc842428f4b69a513c45a2e04aff8f325bf"
+      },
+      {
+        "path": "src/domain/elevationInjuryPay.js",
+        "bytes": 14359,
+        "sha256": "6aa83a9a5b37b55b89352b95bf4b6d1560f9aacab49d75f0098d65fb4c4d230b"
+      },
+      {
+        "path": "src/domain/facilityInvestment.js",
+        "bytes": 15900,
+        "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
+      },
+      {
+        "path": "src/domain/footballGameReference.js",
+        "bytes": 1627,
+        "sha256": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a"
+      },
+      {
+        "path": "src/domain/injuryClaimNegotiation.js",
+        "bytes": 4567,
+        "sha256": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6"
+      },
+      {
+        "path": "src/domain/injurySalaryClaims.js",
+        "bytes": 8543,
+        "sha256": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2"
+      },
+      {
+        "path": "src/domain/leagueIdentity.js",
+        "bytes": 6966,
+        "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
+      },
+      {
+        "path": "src/domain/livingPotential.js",
+        "bytes": 5626,
+        "sha256": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9"
+      },
+      {
+        "path": "src/domain/operatingStatement.js",
+        "bytes": 3005,
+        "sha256": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381"
+      },
+      {
+        "path": "src/domain/ownerEconomy.js",
+        "bytes": 6571,
+        "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
+      },
+      {
+        "path": "src/domain/pensionService.js",
+        "bytes": 11338,
+        "sha256": "a253b3f3449798c6b39757d646687d0bc9e5a254176742102962c9c19f4a0e23"
+      },
+      {
+        "path": "src/domain/playerDemographicModel.js",
+        "bytes": 5382,
+        "sha256": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370"
+      },
+      {
+        "path": "src/domain/playerFactory.js",
+        "bytes": 22780,
+        "sha256": "3065bc39f7d8ba1cf5743235094e81bd54a93fb4e70df250ec152e68b26c4323"
+      },
+      {
+        "path": "src/domain/playerIdentity.js",
+        "bytes": 23795,
+        "sha256": "7e1dcf529ea6170e5606b7bf9572e843c9c7b5edee7a15d4d5078f9345ca6754"
+      },
+      {
+        "path": "src/domain/playerMeasurements.js",
+        "bytes": 10731,
+        "sha256": "2d8ccd15fa403a7991a70fe0d5f2e00a29fd4dd47ba3e860ed1ccddf95e38124"
+      },
+      {
+        "path": "src/domain/playerService.js",
+        "bytes": 8894,
+        "sha256": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e"
+      },
+      {
+        "path": "src/domain/playerVisualIdentity.js",
+        "bytes": 10550,
+        "sha256": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935"
+      },
+      {
+        "path": "src/domain/playerWorkouts.js",
+        "bytes": 3652,
+        "sha256": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4"
+      },
+      {
+        "path": "src/domain/postseasonMedicalClock.js",
+        "bytes": 10755,
+        "sha256": "3311bdfb7e5c12e23f14bead23dfe6b8c2676c6435f73b6d948069bcfacd6a68"
+      },
+      {
+        "path": "src/domain/potentialReversion.js",
+        "bytes": 11659,
+        "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87"
+      },
+      {
+        "path": "src/domain/practiceContractTerm.js",
+        "bytes": 4951,
+        "sha256": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238"
+      },
+      {
+        "path": "src/domain/practiceContracts.js",
+        "bytes": 8284,
+        "sha256": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934"
+      },
+      {
+        "path": "src/domain/practiceSquadEligibility.js",
+        "bytes": 2820,
+        "sha256": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c"
+      },
+      {
+        "path": "src/domain/preRolloverMedicalCalendar.js",
+        "bytes": 4564,
+        "sha256": "fbf72b88730a0594ee6979e5c099d41c6a05f0ab1113eeabf16981c35840b019"
+      },
+      {
+        "path": "src/domain/ratings.js",
+        "bytes": 16983,
+        "sha256": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd"
+      },
+      {
+        "path": "src/domain/reserveLists.js",
+        "bytes": 16532,
+        "sha256": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e"
+      },
+      {
+        "path": "src/domain/standardElevations.js",
+        "bytes": 19437,
+        "sha256": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53"
+      },
+      {
+        "path": "src/domain/talentDistribution.js",
+        "bytes": 3804,
+        "sha256": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050"
+      },
+      {
+        "path": "src/domain/teamFactory.js",
+        "bytes": 20005,
+        "sha256": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad"
+      },
+      {
+        "path": "src/domain/teamLabel.js",
+        "bytes": 567,
+        "sha256": "3fd9f4306747ff9d5bfd0a823305f92fc027eac943a037d39c902f180be760df"
+      },
+      {
+        "path": "src/domain/ticketDemand.js",
+        "bytes": 7685,
+        "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174"
+      },
+      {
+        "path": "src/domain/undraftedFreeAgency.js",
+        "bytes": 3151,
+        "sha256": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6"
+      },
+      {
+        "path": "src/engine/adaptiveDifficulty.js",
+        "bytes": 3761,
+        "sha256": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763"
+      },
+      {
+        "path": "src/engine/aiTeamStrategy.js",
+        "bytes": 13834,
+        "sha256": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020"
+      },
+      {
+        "path": "src/engine/architectFocusReview.js",
+        "bytes": 3519,
+        "sha256": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704"
+      },
+      {
+        "path": "src/engine/architectMasteryPortfolio.js",
+        "bytes": 8565,
+        "sha256": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4"
+      },
+      {
+        "path": "src/engine/architectThesis.js",
+        "bytes": 7247,
+        "sha256": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0"
+      },
+      {
+        "path": "src/engine/beatReporter.js",
+        "bytes": 14751,
+        "sha256": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6"
+      },
+      {
+        "path": "src/engine/capAlerts.js",
+        "bytes": 6315,
+        "sha256": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03"
+      },
+      {
+        "path": "src/engine/capCompliance.js",
+        "bytes": 25500,
+        "sha256": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168"
+      },
+      {
+        "path": "src/engine/coachingMarket.js",
+        "bytes": 16734,
+        "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011"
+      },
+      {
+        "path": "src/engine/coachingTree.js",
+        "bytes": 9579,
+        "sha256": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73"
+      },
+      {
+        "path": "src/engine/continuityLedger.js",
+        "bytes": 8621,
+        "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896"
+      },
+      {
+        "path": "src/engine/cpuStandardElevations.js",
+        "bytes": 4878,
+        "sha256": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3"
+      },
+      {
+        "path": "src/engine/cpuTradeMarket.js",
+        "bytes": 5196,
+        "sha256": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2"
+      },
+      {
+        "path": "src/engine/depthChartUsage.js",
+        "bytes": 11825,
+        "sha256": "6137615931198349196ee514370eee3888cddcd50132e1b09e22f75a705471fb"
+      },
+      {
+        "path": "src/engine/draftCombine.js",
+        "bytes": 5974,
+        "sha256": "68c9f6b2928c7f513849becbdfb2c407911dec67edce7080f51cc14c61cc639b"
+      },
+      {
+        "path": "src/engine/facilityMarket.js",
+        "bytes": 12906,
+        "sha256": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097"
+      },
+      {
+        "path": "src/engine/fanSentiment.js",
+        "bytes": 3641,
+        "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58"
+      },
+      {
+        "path": "src/engine/gameDayRoster.js",
+        "bytes": 7554,
+        "sha256": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36"
+      },
+      {
+        "path": "src/engine/gameSimulator.js",
+        "bytes": 83851,
+        "sha256": "e1f7afbc06e9ca32b3c11811c7feb1424f7cddc55ef8123e556df31246e52a78"
+      },
+      {
+        "path": "src/engine/gmArchetype.js",
+        "bytes": 3240,
+        "sha256": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23"
+      },
+      {
+        "path": "src/engine/gmDecisionAuthority.js",
+        "bytes": 17267,
+        "sha256": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1"
+      },
+      {
+        "path": "src/engine/gmDecisionConsequences.js",
+        "bytes": 23253,
+        "sha256": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a"
+      },
+      {
+        "path": "src/engine/gmLegacyScore.js",
+        "bytes": 19007,
+        "sha256": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3"
+      },
+      {
+        "path": "src/engine/injurySystem.js",
+        "bytes": 10427,
+        "sha256": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1"
+      },
+      {
+        "path": "src/engine/matchupEdge.js",
+        "bytes": 5305,
+        "sha256": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b"
+      },
+      {
+        "path": "src/engine/narrativeEvents.js",
+        "bytes": 13267,
+        "sha256": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc"
+      },
+      {
+        "path": "src/engine/offseasonDevelopmentReport.js",
+        "bytes": 4426,
+        "sha256": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705"
+      },
+      {
+        "path": "src/engine/offseasonSimulator.js",
+        "bytes": 44814,
+        "sha256": "1336e016c9a76d40970fda9378dca841e815c29de2bf7d163cb238c1253e8e09"
+      },
+      {
+        "path": "src/engine/onClockTradeMarket.js",
+        "bytes": 5121,
+        "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7"
+      },
+      {
+        "path": "src/engine/overtime.js",
+        "bytes": 2077,
+        "sha256": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64"
+      },
+      {
+        "path": "src/engine/ownerConfidence.js",
+        "bytes": 5471,
+        "sha256": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b"
+      },
+      {
+        "path": "src/engine/playCalling.js",
+        "bytes": 5136,
+        "sha256": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23"
+      },
+      {
+        "path": "src/engine/playerAgentAI.js",
+        "bytes": 6901,
+        "sha256": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d"
+      },
+      {
+        "path": "src/engine/pressConference.js",
+        "bytes": 14480,
+        "sha256": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f"
+      },
+      {
+        "path": "src/engine/pressRoom.js",
+        "bytes": 14828,
+        "sha256": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa"
+      },
+      {
+        "path": "src/engine/rivalFrontOffice.js",
+        "bytes": 3052,
+        "sha256": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76"
+      },
+      {
+        "path": "src/engine/rivalGmPersona.js",
+        "bytes": 6110,
+        "sha256": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8"
+      },
+      {
+        "path": "src/engine/rivalTradeOffers.js",
+        "bytes": 13031,
+        "sha256": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7"
+      },
+      {
+        "path": "src/engine/rivalryDNA.js",
+        "bytes": 4936,
+        "sha256": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962"
+      },
+      {
+        "path": "src/engine/schedule.js",
+        "bytes": 15539,
+        "sha256": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec"
+      },
+      {
+        "path": "src/engine/seasonSimulator.js",
+        "bytes": 11066,
+        "sha256": "69c51daccf9a643c7204f7b2e68897506adfb20f9b002bcefa93b8002244ed0b"
+      },
+      {
+        "path": "src/engine/situationalCalls.js",
+        "bytes": 3887,
+        "sha256": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db"
+      },
+      {
+        "path": "src/engine/speedrunChallenge.js",
+        "bytes": 3881,
+        "sha256": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb"
+      },
+      {
+        "path": "src/engine/staffGeneration.js",
+        "bytes": 3565,
+        "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
+      },
+      {
+        "path": "src/engine/standings.js",
+        "bytes": 3867,
+        "sha256": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2"
+      },
+      {
+        "path": "src/engine/timeCapsule.js",
+        "bytes": 13128,
+        "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
+      },
+      {
+        "path": "src/engine/veteranMentorship.js",
+        "bytes": 14005,
+        "sha256": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b"
+      },
+      {
+        "path": "src/engine/weeklySimulator.js",
+        "bytes": 3305,
+        "sha256": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65"
+      },
+      {
+        "path": "src/engine/whatIfReplay.js",
+        "bytes": 4072,
+        "sha256": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a"
+      },
+      {
+        "path": "src/runtime/GameSession.js",
+        "bytes": 396702,
+        "sha256": "97a3be103e1783b73b6b2a2f36cc678c9431f8b9d8a3d18faeec2264828868fb"
+      },
+      {
+        "path": "src/runtime/advanceWeekCommand.js",
+        "bytes": 7514,
+        "sha256": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007"
+      },
+      {
+        "path": "src/runtime/applyLeagueSetup.js",
+        "bytes": 6269,
+        "sha256": "43d627b8de1fa10394acb255e9394a50ca892ccf8ff8ec1bb384777c673c309a"
+      },
+      {
+        "path": "src/runtime/architectLedger.js",
+        "bytes": 3897,
+        "sha256": "8a1b2aa18052c46c17ff3de07fccae3520726d4d97804bf2ed6dc73eb0d54563"
+      },
+      {
+        "path": "src/runtime/franchiseAuthority.js",
+        "bytes": 10941,
+        "sha256": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2"
+      },
+      {
+        "path": "src/runtime/handlers/architectThesisHandler.js",
+        "bytes": 1264,
+        "sha256": "f4e591fbe4c76b9583e6229ce55fefdf202a7cf9c2f810c2038ea097a7a249cb"
+      },
+      {
+        "path": "src/runtime/handlers/franchiseMomentHandler.js",
+        "bytes": 4492,
+        "sha256": "dd9104a2e6597bb6276e720e50f850df23fcadb295ea050de23653d0469b315a"
+      },
+      {
+        "path": "src/runtime/handlers/tradeOffersHandler.js",
+        "bytes": 1342,
+        "sha256": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2"
+      },
+      {
+        "path": "src/runtime/measurementProvenanceSnapshot.js",
+        "bytes": 3310,
+        "sha256": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e"
+      },
+      {
+        "path": "src/runtime/modules/sessionModules.js",
+        "bytes": 1255,
+        "sha256": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63"
+      },
+      {
+        "path": "src/runtime/multiplayerSession.js",
+        "bytes": 9525,
+        "sha256": "834151078c7990d52fbcdd4f203527b991939b7aa86f5a42dc39ca50acdb55a7"
+      },
+      {
+        "path": "src/runtime/pensionServiceSnapshot.js",
+        "bytes": 2536,
+        "sha256": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd"
+      },
+      {
+        "path": "src/runtime/services/CoachingService.js",
+        "bytes": 7251,
+        "sha256": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf"
+      },
+      {
+        "path": "src/runtime/services/ContractService.js",
+        "bytes": 2398,
+        "sha256": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97"
+      },
+      {
+        "path": "src/runtime/services/TradeService.js",
+        "bytes": 15372,
+        "sha256": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be"
+      },
+      {
+        "path": "src/runtime/services/index.js",
+        "bytes": 1835,
+        "sha256": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6"
+      },
+      {
+        "path": "src/runtime/services/tradePlan.js",
+        "bytes": 2022,
+        "sha256": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04"
+      },
+      {
+        "path": "src/runtime/snapshotMigration.js",
+        "bytes": 6781,
+        "sha256": "78fbd503bf3575f3108bd01d0e3935b1eafc8140981312f74c3b67708189159b"
+      },
+      {
+        "path": "src/runtime/statSnapshot.js",
+        "bytes": 5886,
+        "sha256": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86"
+      },
+      {
+        "path": "src/runtime/weekResultProjection.js",
+        "bytes": 10497,
+        "sha256": "89ddf5d63abb22222d3a0a86cb3a234b122f06d9c69b22ccb5daa97a3838b983"
+      },
+      {
+        "path": "src/runtime/weeklyTactic.js",
+        "bytes": 3178,
+        "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
+      },
+      {
+        "path": "src/sport/calendarContract.js",
+        "bytes": 5261,
+        "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179"
+      },
+      {
+        "path": "src/sport/competitionContract.js",
+        "bytes": 5371,
+        "sha256": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76"
+      },
+      {
+        "path": "src/sport/football/calendar.js",
+        "bytes": 1774,
+        "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8"
+      },
+      {
+        "path": "src/sport/football/competition.js",
+        "bytes": 570,
+        "sha256": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55"
+      },
+      {
+        "path": "src/sport/football/index.js",
+        "bytes": 1393,
+        "sha256": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84"
+      },
+      {
+        "path": "src/sport/football/postseason.js",
+        "bytes": 12106,
+        "sha256": "0e569605acba20068ac76592eb800f8a74d701a6451026f93b85bb1b08b85c0c"
+      },
+      {
+        "path": "src/sport/football/rules.js",
+        "bytes": 609,
+        "sha256": "64fef4a35a808ee4ca33f504b5ff774ee08b24803a3157ca167d419a0af87de1"
+      },
+      {
+        "path": "src/sport/football/statSchema.js",
+        "bytes": 13775,
+        "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
+      },
+      {
+        "path": "src/sport/matchReadiness.js",
+        "bytes": 491,
+        "sha256": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5"
+      },
+      {
+        "path": "src/sport/registry.js",
+        "bytes": 1823,
+        "sha256": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5"
+      },
+      {
+        "path": "src/stats/applyGameStats.js",
+        "bytes": 1593,
+        "sha256": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f"
+      },
+      {
+        "path": "src/stats/approximateValue.js",
+        "bytes": 12713,
+        "sha256": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486"
+      },
+      {
+        "path": "src/stats/gameImpact.js",
+        "bytes": 3136,
+        "sha256": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5"
+      },
+      {
+        "path": "src/stats/gmReportCard.js",
+        "bytes": 10017,
+        "sha256": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca"
+      },
+      {
+        "path": "src/stats/leagueLens.js",
+        "bytes": 12467,
+        "sha256": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f"
+      },
+      {
+        "path": "src/stats/profiles/pfrCareerWeightedProfile.js",
+        "bytes": 4418,
+        "sha256": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0"
+      },
+      {
+        "path": "src/stats/profiles/pfrRecentWeightedProfile.js",
+        "bytes": 2383,
+        "sha256": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866"
+      },
+      {
+        "path": "src/stats/progressionParity.js",
+        "bytes": 41570,
+        "sha256": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1"
+      },
+      {
+        "path": "src/stats/realismCalibrator.js",
+        "bytes": 25821,
+        "sha256": "e9d51c5555059430201a8fd31dabee7eb71b75f895f754cdbffe64afb5c17d58"
+      },
+      {
+        "path": "src/stats/scoreline.js",
+        "bytes": 2928,
+        "sha256": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b"
+      },
+      {
+        "path": "src/stats/statBook.js",
+        "bytes": 24640,
+        "sha256": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683"
+      },
+      {
+        "path": "src/stats/teamRecord.js",
+        "bytes": 765,
+        "sha256": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51"
+      },
+      {
+        "path": "src/utils/rng.js",
+        "bytes": 5535,
+        "sha256": "12b630dea99627b266aef906d5344ba17ce77316b336ca2dab113c655d41d089"
+      },
+      {
+        "path": "src/utils/rngStreams.js",
+        "bytes": 1408,
+        "sha256": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181"
+      },
+      {
+        "path": "stats-surface.json",
+        "bytes": 3191,
+        "sha256": "e75c35e7f59e1c1c3a84bff2d581a238835b6710ac791b34802b80680f3dd67a"
+      },
+      {
+        "path": "stats.html",
+        "bytes": 8090,
+        "sha256": "5383bee05dea5a81ac08e7674d5e2bb4233f0bf1e49361740777af78a23b0a06"
+      },
+      {
+        "path": "status-archive.html",
+        "bytes": 23230,
+        "sha256": "ece9bd78ba6abcf77de000488f7113159f5e87e12f60d234636e6fd3cc94cf39"
+      },
+      {
+        "path": "status.html",
+        "bytes": 8639,
+        "sha256": "6e4bb2faaa3d273ba4ef5e46c26490d3c5a8329dfb6f698531d66013d45c45e9"
+      },
+      {
+        "path": "styles.css",
+        "bytes": 216257,
+        "sha256": "fb10edd294e5a1b8b0ccb9fb529081f2bf99788afa4a2e50f727982bc7115c0c"
+      },
+      {
+        "path": "styles.fb10edd294.css",
+        "bytes": 216257,
+        "sha256": "fb10edd294e5a1b8b0ccb9fb529081f2bf99788afa4a2e50f727982bc7115c0c"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 12097,
+        "sha256": "47aa3a55abda90bed646746c9bd525421d48d557a7bf4643d7b44c31e87eb96c"
+      },
+      {
+        "path": "terms.html",
+        "bytes": 6025,
+        "sha256": "701ccf21f4feef6618e8a74a3b897c13437b67e33409cdbad0bd9366c51337fb"
+      }
+    ],
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s117-parted-hair-before-legal-20-desktop-dark.png",
+      "sha256": "c4fc221005b34d3ba070998b3c162b42a510cdb55faa7bed6fe2228b25617892",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-20",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-24-desktop-dark.png",
+      "sha256": "0a93d79e349a217f9b21c7e5d383c4e388821219159478bd2579b0cd7ececde3",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-24",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-20-desktop-light.png",
+      "sha256": "18bd9e0b784d828d7a96e3df972c60a70cfe1f5792089f227bbe658e77a60bf9",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-20",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-24-desktop-light.png",
+      "sha256": "786b728ad151b98854c42edcd9a6a5ea46809ba621cc02cf2eaa9138e55bffd1",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-24",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-20-mobile-dark.png",
+      "sha256": "fe22cb9ef56382eca6bc949e922b3b14478c584acb16bbcc8017fdcfd18cc1dd",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-20",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-22-mobile-dark.png",
+      "sha256": "1cdbeec5128cada0da3484d694e1d83edfa135526a23d8069001c4deaf8575c2",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-22",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-24-mobile-dark.png",
+      "sha256": "4c6725fd5d79dcbdb5e92ae43b53cdd1779a3dcd13cabc28d46cde584f3dc37e",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-24",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-26-mobile-dark.png",
+      "sha256": "12545407e5b18f627a03f3d9d3e6fc949a89d5ff201a84d04544d2a5dfb7ee37",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-26",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-20-mobile-light.png",
+      "sha256": "cb139c74ec54b09f09b34bfd9273133b6d8323b5e99927d4157dddea2d602896",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-20",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-22-mobile-light.png",
+      "sha256": "8fd32d24d78da9d1623540f668ba7b6b88235fa8253d1a4cc96f4c8781009098",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-22",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-24-mobile-light.png",
+      "sha256": "1a31ff1d190bc87cf52687d07bfbba76cd2f34b0fc0e97d7c819428b264f9c8e",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-24",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-before-legal-26-mobile-light.png",
+      "sha256": "46de3040b23028f7222ede58ab53478728892417341cb4f9208c5a0d03f7469c",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "before-parted-26",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-20-desktop-dark.png",
+      "sha256": "0b4e1136b8e64a3f67723f74adfe02ebb4192828e2113a8b6dc1178e9f2d57f6",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-20",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-24-desktop-dark.png",
+      "sha256": "3720c494b43c693829e8c21d324fc32e20313273056c06af9d0aec353a790627",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-24",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-20-desktop-light.png",
+      "sha256": "6087e4aba76c9c069560701f2f30d12438a2003f86e42da941c90e57274db174",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-20",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-24-desktop-light.png",
+      "sha256": "670e0fa9700b85db3f8715150eae80ac2aea29158333c84f2812416beaca20df",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-24",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-20-mobile-dark.png",
+      "sha256": "1676a38f1d55612d29d432798fab07e470cb268478352f2dbbf29251728911f7",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-20",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-22-mobile-dark.png",
+      "sha256": "00d76cdc353b3cc7587d322d6689bad736cfea3337cdc8dde960a87394d3ed36",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-22",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-24-mobile-dark.png",
+      "sha256": "738b7a3de05601e0f162ceb56a5f366e0af73fcb40b36676cc668878e1b678e7",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-24",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-26-mobile-dark.png",
+      "sha256": "cdb34ab7b38a713f89e6a49786c96bc59d5902cc73402a19b0cfc47b621d77c6",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-26",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-20-mobile-light.png",
+      "sha256": "8c71081601943305334fee921ebccdf5cbca2d74ba3910d2a6ed4dfe7e815453",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-20",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-22-mobile-light.png",
+      "sha256": "088d043dbffae344e0495d9a4cb6f4828fd1c8c5fe46cc63b7f57a6edd1ca66e",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-22",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-24-mobile-light.png",
+      "sha256": "2d54e12655811e4e9bbd7ea25177c63d2af998c902ed4d30589db35addc19f63",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-24",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-parted-hair-final-legal-26-mobile-light.png",
+      "sha256": "ff66471f51e1f3ee9aeef7ff1d7bd5084c79457f9edf4e745d11133ee7e8b916",
+      "page": "controlled-profile-size-hair-gallery",
+      "state": "final-parted-26",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-dark-gallery.png",
+      "sha256": "ff4a59856b2d7b0af5878c29d3f30913176659243b6a7fc2aa4117602f3ba1c6",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-dark-head.png",
+      "sha256": "94127af91ce623b1d8a2a4375303d1960caa4b1bb3a03b63e2f8121fcdce3454",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-dark-body.png",
+      "sha256": "f92cdb7efafb4733196a0910ba75d109432c288647c134551432eec2d88fd65b",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-dark-motion.png",
+      "sha256": "9365b326fb040f6d5948dbcbd3d6bc1f3bdda95151d1c4f28e2f9bb1620c4c1c",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-light-gallery.png",
+      "sha256": "fa8669278f3ea7415f6967f207025dea64ecd7a52f9f4f148f3991ee08ad449b",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-light-head.png",
+      "sha256": "57e659267e7bd6826d37b27f6ee26e3ff91433589f3ffd686fddeec18ed37361",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-light-body.png",
+      "sha256": "9a8f44464962f1e67cf9f21e52f3322f6f8d2b7430d56ea1dae354dd920bad46",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-desktop-light-motion.png",
+      "sha256": "a2076f376c131197d5791c83c3b966a4670e9aa8ff4d64b3691e8d9c1a8518ee",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-dark-gallery.png",
+      "sha256": "b1d2346e4edfecb6028aab4552e47fa8e125b70f267727685cd8523812fae0d6",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-dark-head.png",
+      "sha256": "ec7566ee64f5ebb31dcc5a18b41efe60b44864767a622e207e11069317373bf2",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-dark-body.png",
+      "sha256": "9de9a9602f24cc07fb46e1a65471d34b314413a842af8e421f38acec02c6422e",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-dark-motion.png",
+      "sha256": "2cf46d1658b8df6e341978089a899a648a01bb5784b65d47ce76d3c4e49131ec",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-light-gallery.png",
+      "sha256": "2db29ab7cd3ac5ad39e7ffedc7dcd695857bf1731b39f376dab273a05678a32f",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-light-head.png",
+      "sha256": "304e20e7944ce320400700e17c950ca9c276069cc1bc16180f2a1ef398f66ad1",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-light-body.png",
+      "sha256": "4ea25735d42f9af4d07af6b0977cf179ece5eb73e0b366867db5a1b4fcac661c",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-long-hair-final-mobile-light-motion.png",
+      "sha256": "0af7d1e6d1187848bd6aee22d4891b8f0f59c6bfcfaeb20a95dd3f03b30dbd0d",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "before"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-dark-gallery.png",
+      "sha256": "86961bf2b8738f362a44ae15e66fb4e8d3f26a75b7c48084abefeb57c0e15d93",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-dark-head.png",
+      "sha256": "7854050d2db272bc3b044d6d3a16b2fbbeb80d483364f12fba54e38d4123b8e5",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-dark-body.png",
+      "sha256": "2e7987a410da8350142949fdab0c5ba183aff1d53bea0597f24df8356331192d",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-dark-motion.png",
+      "sha256": "acd1562348b6124992868a6887c52833ad6addd6ce18d60ca188a716ed4e7325",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-light-gallery.png",
+      "sha256": "e4d665e3085c65941734b0d8b0316c59ed0d2554d07a160238d75beae4ec7873",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-light-head.png",
+      "sha256": "7c4a3174f3081fd04089c7083485a01323e0f9ed77a90a5428e47b13bb4203db",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-light-body.png",
+      "sha256": "1e42e34757bd8a63309248cb1606b5926aa906c5f9a63092696856bf1bad70f9",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-desktop-light-motion.png",
+      "sha256": "db0c7ae4b0208e70f9f3958e078e1fb4bfa49c0789cfc4966d1efdc7e3fccae9",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-dark-gallery.png",
+      "sha256": "c4efac7576a23f15562aaceb286d90ab7b5f8e77350a3b087f978eb1a0b2f347",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-dark-head.png",
+      "sha256": "06c3fc5561d141e9d62326efbf768c2de8f8a5b422d014e45edf459451faa6f6",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-dark-body.png",
+      "sha256": "814368c1bb74cb8eba4ce8f85e13e6366a5e144ccaeb08bd2687c0e36d495561",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-dark-motion.png",
+      "sha256": "2cf46d1658b8df6e341978089a899a648a01bb5784b65d47ce76d3c4e49131ec",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-light-gallery.png",
+      "sha256": "4a9bb7b2891ea2d03e72b907c7b7919109fe1c61c3f794bd4948b126e5edd6dc",
+      "page": "controlled-common-scale-player-gallery",
+      "state": "gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-light-head.png",
+      "sha256": "a72a1b9bd97b0e4bd8e755adde800a7ae44d95b6452d48ec1b2eadcff7066843",
+      "page": "actual-player-dossier",
+      "state": "head",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-light-body.png",
+      "sha256": "ec3a2e0b3fefc37651002c05d34e5627e5b4859fc807ba2adac46a1cb9b5c024",
+      "page": "actual-player-dossier",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    },
+    {
+      "file": "s117-whole-craft-parted-hair-final-mobile-light-motion.png",
+      "sha256": "0af7d1e6d1187848bd6aee22d4891b8f0f59c6bfcfaeb20a95dd3f03b30dbd0d",
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourcePhase": "after"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary; studio_reviewer inspected ten selected captures",
+    "findings": [
+      "All eight changed style/texture pairs inspected before/after in both themes and viewports through profile-size contact sheets",
+      "Pointed overlapping swept cap replaced by one rounded continuous crown; side-part stray point removed",
+      "Saved part, texture-dependent crown lift and bounded strand curves remain visible, with modest texture differences",
+      "Four final whole-player galleries inspected directly; 12 final actual dossier views inspected via overview sheets; prior 16 source-bound long-hair-final baseline views reused",
+      "No material new clipping/resource defect observed; portraits and styled cuts remain illustrated and fairly solid"
+    ],
+    "fixesApplied": [
+      "Single rounded contour fitted to saved face width and part",
+      "Directional strands curve toward temples with saved curvature, wave, shape residual and width",
+      "Gated new render path to fine/natural detail, preserving exact no-fine legacy output"
+    ],
+    "blockingDefectsOpen": 0
+  },
+  "independentReview": {
+    "file": ".cache/parted-hair-review-round1.json",
+    "sha256": "4fdd67ba82b92e4530130bdee456ad09c4ddac3e785ca402ae882300e1895e9c",
+    "verdict": "PASS",
+    "rounds": 1
+  },
+  "verification": {
+    "primaryFocusedTests": 21,
+    "independentFocusedTests": 21,
+    "exactLegacyComparisons": 32,
+    "independentAdverseProbes": 80,
+    "browserTests": 3,
+    "browserSession": 3702,
+    "beforeBrowserTests": 1,
+    "beforeBrowserSession": 7768,
+    "pagesBuild": "2024a1441c0c",
+    "buildSession": 74303,
+    "bootBytes": 649873,
+    "bootModules": 51,
+    "lazyLeaks": 0,
+    "reachableModules": 129,
+    "legalPairRenderChecks": 48
+  },
+  "limitations": [
+    "Bounded illustrated refinement, not whole portrait naturalism, demographic calibration, career or release acceptance",
+    "Only touched eight cut/texture pairs and whole-player continuity have canonical visual acceptance here; remaining matrix capture availability is not a full review claim",
+    "Side renderer, saved schema, body and motion capacity authority unchanged",
+    "Development-browser evidence and built module equality do not replace final built-runtime browser verification",
+    "Texture lift and fiber geometry are artistic interpretations, not ancestry frequencies or measured anatomy",
+    "Locs, braids, thinning hair and broader face/body quality remain open"
+  ]
+}

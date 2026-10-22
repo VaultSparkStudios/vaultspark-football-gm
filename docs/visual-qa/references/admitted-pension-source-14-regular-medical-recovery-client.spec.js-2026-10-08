@@ -1,0 +1,35 @@
+import {test,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+import {fixture} from '../test/helpers/regularMedicalFixture.js';
+import {expandSnapshotPensionService} from '../src/runtime/pensionServiceSnapshot.js';
+import {startStaticClientHost,configureClient,createClientLeague,readClient,assertRuntime,saveSlot,waitGameReady} from './helpers/static-client.js';
+let host;
+test.beforeAll(async()=>{host=await startStaticClientHost();});
+test.afterAll(async()=>{await host?.close();});
+for(const worker of [true,false])test(`built ${worker?'worker':'in-page'} regular command pays retired clearance and restores the same person`,async({page})=>{
+ test.setTimeout(180000);
+ const {s,p}=fixture({retired:true});
+ await configureClient(page,worker);await createClientLeague(page,host.origin,{seed:118,year:2027,team:'BUF',mode:'play'});await assertRuntime(page,worker);
+ const result=await page.evaluate(async snapshot=>{
+  const {api}=await import('./lib/appState.js');await api('/api/snapshot/import',{method:'POST',body:{snapshot}});
+  await api('/api/advance-week',{method:'POST',body:{count:1}});await(await import('./lib/gameFlow.js')).loadState();
+  return (await api('/api/snapshot/export')).snapshot;
+ },s.toSnapshot());
+ expect(result.currentWeek).toBe(2);expect(result.league.retiredPlayers.find(row=>row.id===p.id).injury).toBeNull();
+ expect(result.league.admittedInjuryPayroll).toHaveLength(1);
+ const pay=result.league.admittedInjuryPayroll[0];
+ expect(pay).toMatchObject({playerId:p.id,teamId:'BUF',injuryYear:2026,earningYear:2027,phase:'regular-season',week:1,amountCents:s.league.admittedInjuryContinuations[0].weeklyRateCents});
+ expect(result.league.injurySalaryClaims).toBeUndefined();
+ expect(expandSnapshotPensionService(result).league.retiredPlayers.find(row=>row.id===p.id).pensionService.planYears[2027].games[0]).toMatchObject({reason:'admitted-injury-continuation',teamId:'BUF',sourceRef:pay.payId});
+ const slot=`regular-medical-${worker?'worker':'in-page'}`;await saveSlot(page,slot);
+ await page.evaluate(async()=>{const {api}=await import('./lib/appState.js');await api('/api/new-league',{method:'POST',body:{seed:118,startYear:2027,controlledTeamId:'MIA',mode:'play'}});await(await import('./lib/gameFlow.js')).loadState();});
+ expect((await readClient(page,'/api/state')).controlledTeamId).toBe('MIA');
+ await page.locator('[data-testid="tab-settings"]').click();await expect(page.locator('#settingsTab')).not.toHaveAttribute('aria-busy','true');
+ await page.locator('#saveSlotInput').fill(slot);await page.locator('#loadBtn').click();await expect.poll(async()=>(await readClient(page,'/api/state')).controlledTeamId).toBe('BUF');
+ await page.reload();await waitGameReady(page);await assertRuntime(page,worker);
+ const restored=(await readClient(page,'/api/snapshot/export')).snapshot;
+ expect(restored.league.admittedInjuryPayroll).toEqual(result.league.admittedInjuryPayroll);
+ expect(restored.league.retiredPlayers.find(row=>row.id===p.id)).toEqual(result.league.retiredPlayers.find(row=>row.id===p.id));
+ const manifest=JSON.parse(await fs.readFile('static/deploy-manifest.json','utf8'));
+ await fs.mkdir('.cache/regular-medical-client',{recursive:true});await fs.writeFile(`.cache/regular-medical-client/${worker?'worker':'in-page'}.json`,JSON.stringify({worker,playerId:p.id,artifactDigest:manifest.artifactFingerprint.digest,actualAdvanceWeekCommands:true,earningYear:2027,phase:'regular-season',week:1,retiredClearancePaid:true,namedSaveReplacementLoadReload:true,annualDefaultChanged:false},null,2)+'\n');
+});

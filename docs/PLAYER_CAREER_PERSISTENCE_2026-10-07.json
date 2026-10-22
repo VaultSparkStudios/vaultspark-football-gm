@@ -1,0 +1,74 @@
+{
+  "kind": "actual-managed-career-built-persistence",
+  "recordedAt": "2026-10-07T09:31:57.283Z",
+  "status": "passed",
+  "frozenSave": {
+    "path": ".cache/managed-browser-frozen-save.txt",
+    "sha256": "a83f09e74591980d30a77cac97bb5bf9a755453f4dbf3536ae6d7716d0d9c007",
+    "encodedBytes": 8140963,
+    "currentYear": 2043,
+    "historyYears": [
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037,
+      2038,
+      2039,
+      2040,
+      2041,
+      2042
+    ]
+  },
+  "builtManifestSha256": "58be3e88e81b8eb88a118bd3adfe10715503c3c757f00829e9211b41c5e1a0ae",
+  "criticalSourceHashes": {
+    "src/runtime/GameSession.js": "d872aa77c4d8a29c7115328b14bb514a610619a512cafbd9b8c2a01fdfb97490",
+    "src/runtime/advanceWeekCommand.js": "50fb18a9992005c3ae377a233f1572b0f6bc8fb77624908a87dcfbf6fc4be74f",
+    "src/domain/elevationInjuryPay.js": "d188bf428416fcbe7e730fbde04ff2a141d74405f33d48f19efc931398f1b906",
+    "src/adapters/persistence/snapshotCodec.js": "15e0996f3b8660a8f144d1f0f9e9e54b4201ea88de2e4dfa2e1eb3a53c270903"
+  },
+  "sourceFreeze": {
+    "matchedFiles": 183,
+    "liveRunStatus": "running",
+    "completedSeasonsAtReceipt": 25
+  },
+  "review": {
+    "rounds": [
+      {
+        "round": 1,
+        "verdict": "fix",
+        "finding": "Named slot existence did not prove named slot payload restoration"
+      },
+      {
+        "round": 2,
+        "verdict": "pass",
+        "findings": 0
+      }
+    ],
+    "reviewedHarnessSha256": "e182486dd0e9510367161bffe75971d7ce82245522f68d70c14ac0dde12b66de"
+  },
+  "modes": [
+    "worker",
+    "in-page"
+  ],
+  "assertions": [
+    "Exact saved history years, active and retired counts",
+    "Eight saved identity/appearance/skeleton recipes",
+    "Every post-final injury payroll receipt",
+    "Medical calendar receipts",
+    "Actual Settings save, replace live/checkpoint franchise, named-slot UI load, then page reload"
+  ],
+  "log": ".cache/logs/managed-long-save-named-slot-client.log",
+  "limits": [
+    "Frozen mid-career save; not final30 result",
+    "No source accounting/readiness correction applied",
+    "No full-history, all-identity, full-feature, naturalism, localStorage-only capacity or release claim"
+  ]
+}

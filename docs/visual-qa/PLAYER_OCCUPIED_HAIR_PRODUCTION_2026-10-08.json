@@ -1,0 +1,1528 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T08:06:45.037Z",
+  "status": "occupied-hair-production-progress-full-craft-open",
+  "scope": "Overlapping volume groups for afro/coils/short curls; fuller fitted loc paths and braid row volume; artistic shapes, no demographic or measurement sampling changes",
+  "sources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/production-occupied-hair-source-playerHead3d.js-2026-10-08",
+      "sha256": "4bc5216f4219601e354e7adf1d47466e1a43fabea79aa8d44a6c676deff194b7"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/production-occupied-hair-source-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/production-occupied-hair-source-playerPortraitFace.js-2026-10-08",
+      "sha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/production-occupied-hair-source-playerPortrait.js-2026-10-08",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/production-occupied-hair-source-playerMotion.js-2026-10-08",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/production-occupied-hair-source-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/production-occupied-hair-source-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/production-occupied-hair-source-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/production-occupied-hair-source-playerIdentity.js-2026-10-08",
+      "sha256": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/production-occupied-hair-source-playerVisualIdentity.js-2026-10-08",
+      "sha256": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/production-occupied-hair-source-playerMeasurements.js-2026-10-08",
+      "sha256": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3"
+    },
+    {
+      "original": "test/player-scalp-volume.test.js",
+      "file": "references/production-occupied-hair-source-player-scalp-volume.test.js-2026-10-08",
+      "sha256": "46d8e408f3449b12365c6753febb14aaf271c3a299c3c1cb46ba59dc6ce25e30"
+    },
+    {
+      "original": "test/player-beard-volume.test.js",
+      "file": "references/production-occupied-hair-source-player-beard-volume.test.js-2026-10-08",
+      "sha256": "272b028c071667710cff0580504629457e9daaa700ab134c2b4c921b001f8c73"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/production-occupied-hair-source-player-shared-head.test.js-2026-10-08",
+      "sha256": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f"
+    },
+    {
+      "original": "test/player-whole-head-form.test.js",
+      "file": "references/production-occupied-hair-source-player-whole-head-form.test.js-2026-10-08",
+      "sha256": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf"
+    },
+    {
+      "original": "test/player-surface-lighting.test.js",
+      "file": "references/production-occupied-hair-source-player-surface-lighting.test.js-2026-10-08",
+      "sha256": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4"
+    },
+    {
+      "original": "tests-ui/player-occupied-hair-gallery.spec.js",
+      "file": "references/production-occupied-hair-source-player-occupied-hair-gallery.spec.js-2026-10-08",
+      "sha256": "8cc8f9055adb6c2a3e193a54f2ef863178e48aff50edaeaf6a08e3502430acb8"
+    },
+    {
+      "original": "tests-ui/player-occupied-hair-production.spec.js",
+      "file": "references/production-occupied-hair-source-player-occupied-hair-production.spec.js-2026-10-08",
+      "sha256": "98b17cb4ce4489cc341d416ff256457516a2e539b66b6334ee6e242dc97884f4"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/production-occupied-hair-source-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    },
+    {
+      "original": "test/player-occupied-hair.test.js",
+      "file": "references/production-occupied-hair-source-player-occupied-hair.test.js-2026-10-08",
+      "sha256": "07fa2c5807e20f7235e848aeb54bd9f0fb83b4ad92e60cc669a21d1f0d4567b5"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "references/production-occupied-hair-before-2026-10-08.js",
+      "sha256": "3113c97b5a9f603c723f2f9cdeb10fcc6347be4bd8f1a069d5ea28e9a071d32c"
+    },
+    {
+      "file": "references/production-head-anatomy-fixtures-2026-10-08.json",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    }
+  ],
+  "evidence": [
+    {
+      "original": "output/playwright/production-occupied-hair.json",
+      "file": "references/production-occupied-hair-evidence-production-occupied-hair.json-2026-10-08",
+      "sha256": "34240d6be07d845673e29cd6aba3b94eb1ddfb4ee73adb83520f1cad8fea223e"
+    },
+    {
+      "original": "output/playwright/occupied-hair-gallery-observations.json",
+      "file": "references/production-occupied-hair-evidence-occupied-hair-gallery-observations.json-2026-10-08",
+      "sha256": "9ffa10f636e49a4619467ee99323f0abeddd8269fa5f30e24cc44e9d6fcae8e5"
+    },
+    {
+      "original": ".cache/logs/occupied-hair-focused-production-2026-10-08.log",
+      "file": "references/production-occupied-hair-evidence-occupied-hair-focused-production-2026-10-08.log-2026-10-08",
+      "sha256": "b3ac9cc224089106bd3f592a664647173969acabb64d525296c731ece829a769"
+    },
+    {
+      "original": ".cache/logs/occupied-hair-browser-production-2026-10-08.log",
+      "file": "references/production-occupied-hair-evidence-occupied-hair-browser-production-2026-10-08.log-2026-10-08",
+      "sha256": "2672b17668aebf3b3860d31a0b70ff747898788b39abe0df98755a5e6146d17e"
+    },
+    {
+      "original": ".cache/logs/occupied-hair-build-production-2026-10-08.log",
+      "file": "references/production-occupied-hair-evidence-occupied-hair-build-production-2026-10-08.log-2026-10-08",
+      "sha256": "de7949406c859da94c9e1723582444e2c57d18857ccd3f2d7d4cd2389c09272c",
+      "originalSha256": "7b82ace1a5e2c4e03892e15010abf7ea5a2b6708988524f15f0572a7c691141b",
+      "publicSafeDerivative": true
+    },
+    {
+      "original": ".cache/logs/occupied-hair-contracts-2026-10-08.log",
+      "file": "references/production-occupied-hair-evidence-occupied-hair-contracts-2026-10-08.log-2026-10-08",
+      "sha256": "64c521c04d27c835501ba9d2f9f47198353114f86199e6800fe933be1be2ce0c",
+      "originalSha256": "16edc8a9a8d7ca2958bab94b9241ecf9fee74adbabda5505fcc6c536c430fd8a",
+      "publicSafeDerivative": true
+    }
+  ],
+  "built": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "4bc5216f4219601e354e7adf1d47466e1a43fabea79aa8d44a6c676deff194b7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "39a07707a1d0ea1e5dd2a5ff796c567b857718f843ec366d40ce0a3e46e587d1",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "ef04ff6954e17b232880268a43f71191dcfcf459f4d8ad47bfa79141aff7305e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "captures": [
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "14c3a399c2c36a2947e31420ab552fceb4672b2575f5899770d74dec598b6eef",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-desktop-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "36778b17f327214bd5f7376dce6b6b3d9d28eb7e1f6251b1e33655ca32cce867",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-desktop-dark-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0e06cbbd680c3cdcb2044e6fc77b878e5cb3969ca564c104c0face5423c73554",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-desktop-dark-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "90b5dbd057cae0b736734fdff8de26f0bb356fa71cf035e86066440531dff581",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-desktop-light-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "535290979033f072450082e9a3fd63d2a6f1097ef4325b4cbcc788120abfd759",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-desktop-light-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ce1a238cc582703fea8da6b4294f9834ba8077005eb497985dfa23dec8ea0116",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-desktop-light-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c56f895f0015a85a1a8e4fb98f636495f80c69a0aa1316808a742724a1447d00",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-mobile-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c34a7178b13ca7ed2aead6366622be2e9f40d8c07831fed473e58677a401534a",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-mobile-dark-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4cf29aa09da5666eea49ba5c725b2ac42a6e574694956799d2bd7969a4d2c9aa",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-mobile-dark-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7afa9de9bca3aa2446523aace178f7e27d21fffe14a934d23acce29484ad30ae",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-mobile-light-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "627c5e9935f64cbb9b10e76ca15b395d8a14ac054276ceb70de0f6f00f07d46c",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-mobile-light-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "3fbe4e1ec1b4825c3fcc73894d8f3212a7ab19bf8f26ebff6e0c67b6da24ec68",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-before-mobile-light-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "baabf3fce8786dc20ac9079d89179f46f241b7ba43b39c39f21ceeb30f46694e",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-after-desktop-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5436fa0958aacf730e01875a5a28d74a1896f64ddd6b905a1d9dfdd5ed5ddd34",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-occupied-hair-after-desktop-dark-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "945fb047fc70ce81e853d8c08c7da24032a13d5264e82d213ffa67053f926a2d",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-after-desktop-dark-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "6da537ac653dc29e960eb1838727502c01f38f8bd5378c2a3334796da35451fc",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-after-desktop-light-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "64007b06439437a4a157c5cd157b1cb3fd4bb87894a27abe90dc926268ee0f27",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-occupied-hair-after-desktop-light-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "38dc1e33eee8f9f6cf92198e0950b5c961054f93d93f7620583385d8397831f1",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-after-desktop-light-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "78803a9fb47336f33f5f2ae6ee3f99f8ec9bf5e1bf371464009199f5a2e1f657",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-occupied-hair-after-mobile-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "95fd2ab3b6ed3bdbd39b5399545a9fa3cf7abc7cabf3f416848370116367ab5d",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-after-mobile-dark-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ee405309f82c0d9aec933cd407453088768e0986daa3ea58595fee20ea940fa6",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-occupied-hair-after-mobile-dark-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4f26b436fd9bb08a226c947f22f339dac38cc36108763e8584a78f8aa1c67891",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-occupied-hair-after-mobile-light-portrait.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "41a2f76271009480c6d1672d1c66178e19eed0571a42cf09878f1cc56a144154",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-occupied-hair-after-mobile-light-body.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-production-occupied-hair-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "eff14a46a18b125af5f85ab086b8fb35c91201257c9ef9df7278f0df33f992f9",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-occupied-hair-after-mobile-light-motion.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-0-desktop-dark.png",
+      "sha256": "fede487a41fb163eec51f501b6c7459c43f556c98ff8489adf51b1fcdb3aa80b",
+      "theme": "dark",
+      "person": 0,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-0-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-1-desktop-dark.png",
+      "sha256": "d1291bba00be023f4b14c0f9df1d8a2b03889e80bfb00dde489a968f3004f5d2",
+      "theme": "dark",
+      "person": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-1-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-2-desktop-dark.png",
+      "sha256": "e6df661e530416309c05b8d05f0a24c5a9578c79325031ee81f843a7a384b2cb",
+      "theme": "dark",
+      "person": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-2-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-3-desktop-dark.png",
+      "sha256": "83cf0e52681b8f402d8fd7cb5644997bd42f9995e6fd65ce201479b17b46cea6",
+      "theme": "dark",
+      "person": 3,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-3-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-4-desktop-dark.png",
+      "sha256": "d2592f03cd27da3db853bb8116c9070b92a1fcc19a9235c71fabe36faaf1a071",
+      "theme": "dark",
+      "person": 4,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-4-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-5-desktop-dark.png",
+      "sha256": "84848cef7150f83b0913100a6a750fa1165d5dbdb342059efa4f1bf6e8a1a8ea",
+      "theme": "dark",
+      "person": 5,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-5-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-6-desktop-dark.png",
+      "sha256": "f81d8bf944701213f796467876ce975a87a3a6f640b1c5f28942c199e28fcb26",
+      "theme": "dark",
+      "person": 6,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-6-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-7-desktop-dark.png",
+      "sha256": "bef95d639b1520756c41bbf5c4d279cd6f42d1b5a219aa43575946d91627c1d8",
+      "theme": "dark",
+      "person": 7,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-7-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-8-desktop-dark.png",
+      "sha256": "e3a929476840034c213046792a358aae8e83f7095583dd92df12df623b46f21b",
+      "theme": "dark",
+      "person": 8,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": true,
+      "original": "output/playwright/occupied-hair-gallery-8-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-9-desktop-dark.png",
+      "sha256": "46015640430a66947601800d4a06b69fa6e63cd6c47c129b9a4afe0828f32af0",
+      "theme": "dark",
+      "person": 9,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-9-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-10-desktop-dark.png",
+      "sha256": "dcc87ec8711b904890d24ecc29fd9ce4da8d6448c5d84d85153a912495a90486",
+      "theme": "dark",
+      "person": 10,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": true,
+      "original": "output/playwright/occupied-hair-gallery-10-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-11-desktop-dark.png",
+      "sha256": "c694c4973d59f2867b3bc350e6660947c2676c7b14cd139a533d48165cb01c44",
+      "theme": "dark",
+      "person": 11,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-11-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-12-desktop-dark.png",
+      "sha256": "22f3b548a5c968f76322b9079a773d903e65208481f381d117d99b3f9b0255ce",
+      "theme": "dark",
+      "person": 12,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-12-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-13-desktop-dark.png",
+      "sha256": "bf643afb4cd6b862fb63993b082a879f9420e4cbaf5fa84a9eb23e688347d77b",
+      "theme": "dark",
+      "person": 13,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-13-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-14-desktop-dark.png",
+      "sha256": "f88294cdba9351597222302f64d9a730fb2ff4c8b7c591bf8caf4e6100c9bbba",
+      "theme": "dark",
+      "person": 14,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-14-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-0-desktop-light.png",
+      "sha256": "ab9207c9c359955620862fd3afc36b40fbad4bb45d6809270b4603cde9f2c40d",
+      "theme": "light",
+      "person": 0,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-0-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-1-desktop-light.png",
+      "sha256": "9332649dd679a097dbb2d8fb6714f3edbf8a722381bc9ea38a21ee71740efa97",
+      "theme": "light",
+      "person": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-1-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-2-desktop-light.png",
+      "sha256": "ceb3b5d9295b1dbf5f62a7baac1e378e0dcc91701966f87ec8422379fbe2e672",
+      "theme": "light",
+      "person": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-2-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-3-desktop-light.png",
+      "sha256": "98fba99cd9c1d55c275caec6d65cd6b78a210ae8e479ac383a0289221b25a08e",
+      "theme": "light",
+      "person": 3,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-3-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-4-desktop-light.png",
+      "sha256": "1a740cc7d9443eee027667a1d15fea42022252c78ef0c8ea8407ae92bd0cb0d8",
+      "theme": "light",
+      "person": 4,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-4-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-5-desktop-light.png",
+      "sha256": "271eabd6f4da8aaae0e10e8423c41e2b4599d006cf51a545ea4f903c521a017c",
+      "theme": "light",
+      "person": 5,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-5-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-6-desktop-light.png",
+      "sha256": "aa4afdcdfbb21f71596d62bef297e40fb7921ba96e889da2f4bb2b1d8f5981da",
+      "theme": "light",
+      "person": 6,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-6-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-7-desktop-light.png",
+      "sha256": "8af417aa8edbdbfdb8a7c23cf2d9af577ddd9ce7822d3967b5cbc90fe4238cec",
+      "theme": "light",
+      "person": 7,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-7-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-8-desktop-light.png",
+      "sha256": "adc29e9ee9e3ac2851bcf0e084b8d198a6a7a9d3bdc380a011cfe1e8aa845a97",
+      "theme": "light",
+      "person": 8,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": true,
+      "original": "output/playwright/occupied-hair-gallery-8-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-9-desktop-light.png",
+      "sha256": "5cc8f12057dd6ece51e2ca75aaa7038d365cbb798c327ec7c0399939dfbc5644",
+      "theme": "light",
+      "person": 9,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-9-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-10-desktop-light.png",
+      "sha256": "37fbd0d04ccb52e9d0a172ba8daa052f7fef122ee029b4b31f5e334b3c87a17b",
+      "theme": "light",
+      "person": 10,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-10-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-11-desktop-light.png",
+      "sha256": "ba3a43eba0d9a0496251ffdf966a10327601f6d0eaec53e41b168a96cc5fdc1e",
+      "theme": "light",
+      "person": 11,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": true,
+      "original": "output/playwright/occupied-hair-gallery-11-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-12-desktop-light.png",
+      "sha256": "9888961901e19609f67051ef48acdf8cf6f77877fd942bcb5687c490cc8b87aa",
+      "theme": "light",
+      "person": 12,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-12-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-13-desktop-light.png",
+      "sha256": "8b8e3eaac4ac8a5f46573b60bbb2ceb701f81de9da3af6b39cc28a1b27192536",
+      "theme": "light",
+      "person": 13,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-13-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-14-desktop-light.png",
+      "sha256": "7b18a0a8e96c3116d87318daf1ec508c96aba59c4e22c5f2798675b27454e0e7",
+      "theme": "light",
+      "person": 14,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-14-desktop-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-0-mobile-dark.png",
+      "sha256": "69890d42c83694d3ec0de22348294f444b2299d789aade95d231b59f01162a12",
+      "theme": "dark",
+      "person": 0,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-0-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-1-mobile-dark.png",
+      "sha256": "ca46e7e185abc72d35b5c0e814c3f07cf2d6810ef384b97e02e32426cec63d06",
+      "theme": "dark",
+      "person": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-1-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-2-mobile-dark.png",
+      "sha256": "01f3b466e6d12544046cb8775468df3ca157d5bdf7e4268681b49c16b268b6b6",
+      "theme": "dark",
+      "person": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-2-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-3-mobile-dark.png",
+      "sha256": "136a6362b66ae95001ae413aef1354093b9bea9228734d1332acd143a7ed67ba",
+      "theme": "dark",
+      "person": 3,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-3-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-4-mobile-dark.png",
+      "sha256": "58e1de2339cb15146c87d51a76a1101c8c9eb46e54c902b76200862ccc77c27d",
+      "theme": "dark",
+      "person": 4,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-4-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-5-mobile-dark.png",
+      "sha256": "393dca7f86907b47f88da6b8354f6de9a3cf3d01a450446af0a4f4f576b21f4b",
+      "theme": "dark",
+      "person": 5,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-5-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-6-mobile-dark.png",
+      "sha256": "722c25c02589f90a11676a8054073d568f6272ced667b2be9fe8b7ba5da808ad",
+      "theme": "dark",
+      "person": 6,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-6-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-7-mobile-dark.png",
+      "sha256": "0918a90c3ec80d626f5384259eddfcb9641a5ceba1fd35d8fb7ee21cf6cb1ff6",
+      "theme": "dark",
+      "person": 7,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-7-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-8-mobile-dark.png",
+      "sha256": "49cce9878ba6d598b9c2ba281d23905d04ccda29dfdd5e963e2099cb7eaeff59",
+      "theme": "dark",
+      "person": 8,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-8-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-9-mobile-dark.png",
+      "sha256": "b89f44e987e785a3c5052bb05adf6365b562c01de6d3583c99ed98fe41dda0d0",
+      "theme": "dark",
+      "person": 9,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": true,
+      "original": "output/playwright/occupied-hair-gallery-9-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-10-mobile-dark.png",
+      "sha256": "79d1ae75a0dc91d26e55d19f0034e5e0435308db6e23db889c0ddd9a0abf11e9",
+      "theme": "dark",
+      "person": 10,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-10-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-11-mobile-dark.png",
+      "sha256": "3f09a56b7c6e68474bfbccde7727125c7d0d1758b63fbb89a17d2554d8be716e",
+      "theme": "dark",
+      "person": 11,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-11-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-12-mobile-dark.png",
+      "sha256": "82771af4b04f6dfec84b1bb786197a46e4293ecd3b6ece7de0351c7b80ed5001",
+      "theme": "dark",
+      "person": 12,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-12-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-13-mobile-dark.png",
+      "sha256": "ec2239657fd40fc10e70470db3c4a9de3b195043d54b754b45fe07b379112476",
+      "theme": "dark",
+      "person": 13,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-13-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-14-mobile-dark.png",
+      "sha256": "5b21c51e23609c264cff1d9fa5a73666101ef518115cf11856a80db1b09d5050",
+      "theme": "dark",
+      "person": 14,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-14-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-0-mobile-light.png",
+      "sha256": "88f0d5c76a27d2478674f75f4bdde286b6077283849c7632e733e91268f0419e",
+      "theme": "light",
+      "person": 0,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-0-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-1-mobile-light.png",
+      "sha256": "0032fbd96646615a4e7b0d5b3fdc5314de8e1da2b156017be4be5f0c8c557ad2",
+      "theme": "light",
+      "person": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-1-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-2-mobile-light.png",
+      "sha256": "d23edd3c23980e7bf939b03afcc40e2cf7eb3092b340e2958f2e4614a6ecb3db",
+      "theme": "light",
+      "person": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-2-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-3-mobile-light.png",
+      "sha256": "7b59b10ab844c38e350b9a5a6ade7ae1d5c9d12063c1a6ac91c29122eb956bc1",
+      "theme": "light",
+      "person": 3,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-3-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-4-mobile-light.png",
+      "sha256": "d0862bd9a996f16f3b75930a1de378d24c4c512cfc90d143d501ff0f459a0230",
+      "theme": "light",
+      "person": 4,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-4-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-5-mobile-light.png",
+      "sha256": "6dd569c31ad58a52aab81f4d6337059f57ee6091918b08d806b9e99bb75da1dc",
+      "theme": "light",
+      "person": 5,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-5-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-6-mobile-light.png",
+      "sha256": "a5468e38e37ebcfb5cab16df3a0eccb0412c0c224b70932464002567ed13823b",
+      "theme": "light",
+      "person": 6,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-6-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-7-mobile-light.png",
+      "sha256": "b156c41c7b5e0b99ab1b93105bf1493a0ad3af9016b952980727e43207e44c0c",
+      "theme": "light",
+      "person": 7,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-7-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-8-mobile-light.png",
+      "sha256": "89e1bda8377275e66f441b2c15a603b87f41464eac36e7952434dd2cfb26c2bd",
+      "theme": "light",
+      "person": 8,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-8-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-9-mobile-light.png",
+      "sha256": "8334a8e7276ad959cc5a365bacdf22742f893ae8d420842721dab2ab8a78fdc3",
+      "theme": "light",
+      "person": 9,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-9-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-10-mobile-light.png",
+      "sha256": "6f9b69765f648448994487eac9fe055cda1ff02933d67f5854aab8a774ed55da",
+      "theme": "light",
+      "person": 10,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": true,
+      "original": "output/playwright/occupied-hair-gallery-10-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-11-mobile-light.png",
+      "sha256": "254c8a59e0588b4f78271ac3d08cda512b0b1a21b8e271199abc9b4da04167b1",
+      "theme": "light",
+      "person": 11,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-11-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-12-mobile-light.png",
+      "sha256": "d13c3475a87c36aa5d8203abf62aaf484fbbd013ac577a36d9ea9270eed8cfc6",
+      "theme": "light",
+      "person": 12,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-12-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-13-mobile-light.png",
+      "sha256": "ac4c0d1ce6d0de64a20e88116ffed78c00722c28ea5678f390a2dbd0d8a1e447",
+      "theme": "light",
+      "person": 13,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-13-mobile-light.png"
+    },
+    {
+      "file": "captures/production-occupied-hair-occupied-hair-gallery-14-mobile-light.png",
+      "sha256": "85c1c0fbb116f665217eaaa364cb0f9e951429004388439b89ee4d8c34775747",
+      "theme": "light",
+      "person": 14,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-fixed-seed-hair-gallery",
+      "state": "same saved person before/after; first twelve rows retain identical identity seed; front/oblique/profile",
+      "inspected": false,
+      "original": "output/playwright/occupied-hair-gallery-14-mobile-light.png"
+    }
+  ],
+  "checks": {
+    "focused": {
+      "passed": 21,
+      "failed": 0,
+      "durationMs": 24882.3538,
+      "terminalChunk": "abe397",
+      "styleTextureMaximumCases": 56,
+      "maxMeshBytes": 1635576,
+      "meshByteLimit": 1650000,
+      "nonHairPreservationCases": 30,
+      "nonHairGeometryExact": true,
+      "legacySvgHashesUnchanged": 384
+    },
+    "browser": {
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 43.1,
+      "terminalChunk": "0f8ded",
+      "galleryPeople": 15,
+      "firstTwelveRowsFixedIdentitySeed": true,
+      "noHairCompiledPixelsExact": true,
+      "actualDtoUnchanged": true,
+      "motionProjectionAgreements": 6,
+      "unavailableWebGLFallback": true
+    },
+    "actualDossier": {
+      "playerId": "P2026-BUF-OL-75203022",
+      "hairstyle": "locs",
+      "projectionAgreement": [
+        {
+          "mode": "run",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "acceleration",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "cut",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "jump",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "strength",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "endurance",
+          "frontBody": true,
+          "sideMotion": true
+        }
+      ],
+      "diagnostics": {
+        "cacheEntries": 2,
+        "cacheLimit": 32,
+        "draws": 2,
+        "meshBuilds": 1,
+        "unavailable": false,
+        "contexts": 1
+      },
+      "cacheProof": {
+        "bounded": {
+          "cacheEntries": 32,
+          "cacheLimit": 32,
+          "draws": 37,
+          "meshBuilds": 36,
+          "unavailable": false,
+          "contexts": 1
+        },
+        "restored": true,
+        "malformed": true,
+        "malformedSkin": true,
+        "healthy": true
+      }
+    },
+    "build": {
+      "passed": true,
+      "terminalChunk": "3fa1d4",
+      "precacheVersion": "8ed8036de02d",
+      "assets": 318,
+      "sizeKB": 3534
+    },
+    "reachabilityAndBoot": {
+      "passed": true,
+      "terminalChunk": "499683",
+      "modules": 138,
+      "entries": 4,
+      "bootBytes": 649321,
+      "byteLimit": 730000,
+      "bootModules": 51,
+      "moduleLimit": 58,
+      "lazyLeaks": 0
+    }
+  },
+  "iterationEvidence": {
+    "rejectedLargerShell": "docs/visual-qa/PLAYER_FULLER_STYLE_CANDIDATE_REJECTED_2026-10-08.json",
+    "firstOccupiedFailure": {
+      "terminalChunk": "dd265f",
+      "reason": "320 curl groups exceeded existing memory limit for short-curls straight at 1704696 bytes",
+      "passed": 2,
+      "failed": 1
+    },
+    "repair": "280 occupied groups retain visible volume and existing 1.65MB budget; reduced cluster pigment contrast",
+    "candidateFinal": {
+      "focusedPassed": 3,
+      "durationMs": 21011.1778,
+      "terminalChunk": "ddec73",
+      "browserPassed": 1
+    },
+    "productionFinalPassed": true
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 12,
+    "findings": [
+      "Six fixed-seed gallery originals and six actual changed-style player originals inspected across both themes and viewport sizes; remaining 72 retained originals explicitly uninspected.",
+      "Afro/coils/curls now show occupied rounded groups rather than only a smooth cap and wires. Surface remains granular/bead-like, with a swept profile and limited fine naturalism.",
+      "Loc paths now sweep from roots around the sides before hanging; more groups occupy the head surface, but ends taper sharply and the profile retains smooth patches.",
+      "Braid rows have greater visible thickness; broad cap-like areas and simplified braid construction remain.",
+      "Actual generated Christopher Reid, P2026-BUF-OL-75203022, has saved locs; shared portrait/body/movement consume that changed geometry without altering player DTO, measurement authority or cache/fallback behavior. Asynchronous captures do not prove synchronized pose equality.",
+      "Faces, facial hair and measured bodies remain mannequin-like. Full appearance, continuous natural texture calibration, style prevalence and final career/release remain open."
+    ],
+    "fixesApplied": [
+      "Occupied overlapping curl groups with separate saved thickness and curvature",
+      "Fitted root-to-side hanging loc paths with fuller coverage",
+      "Thicker braid rows",
+      "Fixed identity seed across the first twelve style comparisons",
+      "Retained resource ceiling and current non-hair/legacy preservation"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false,
+  "publicSafeEvidenceRedactions": {
+    "receipt": "docs/visual-qa/PUBLIC_SAFE_DIAGNOSTICS_S118.json",
+    "originalManifestSha256": "db612590d36a5783231f18f5161f547ba819e7b0c97e4db1e51737a2d1a16323",
+    "files": [
+      "docs/visual-qa/references/production-occupied-hair-evidence-occupied-hair-build-production-2026-10-08.log-2026-10-08",
+      "docs/visual-qa/references/production-occupied-hair-evidence-occupied-hair-contracts-2026-10-08.log-2026-10-08"
+    ],
+    "originalManifestPreservedPrivately": true
+  }
+}

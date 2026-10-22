@@ -1,0 +1,49 @@
+{
+  "version": "independent-regional-section-plan-review-v1",
+  "round": 1,
+  "reviewedAt": "2026-10-08T00:42:21.032Z",
+  "verdict": "PASS",
+  "scope": "Only leading Full appearance and regional silhouette section, three new fixture definitions and three new reference rows/bindings. Research/planned adoption, not runtime implementation approval.",
+  "artifactHashes": {
+    "docs/IMPLEMENT_PLAN.md": "e69af83ac96b62ddace64b749e2f7b7db8229a0ef2cf76961535a7ca0e271962",
+    "docs/PLAYER_TRAIT_AUTHORITY_2026-10-07.json": "e741742f6124b3366fb5e42ae0852ee4b45e305f75a00de9eb43fd59dba37eb2",
+    "docs/PLAYER_APPEARANCE_RESEARCH_FOLLOWTHROUGH_2026-10-07.json": "4a1e2775a3b657c68ddd8a88c954362fd245180ec4ecd249d507ba4aa73b83e7"
+  },
+  "findings": [],
+  "checks": [
+    {
+      "command": "node .cache/review-regional-section-plan.mjs",
+      "result": "PASS: JSON parsing; three unique new source IDs with adoption false and valid URL syntax; three fixtures exist in dictionary/research list/plan; authority pointer resolves; integration files exist; runtime-change flags false; compatibility and rating/weight inference limits retained."
+    }
+  ],
+  "sourceObservations": [
+    {
+      "url": "https://www.genome.gov/about-genomics/policy-issues/population-descriptors-in-genomics",
+      "retrieval": "Direct official page and targeted definitions/variation text inspected.",
+      "assessment": "Supports distinctions and differing measurement of population descriptors, including substantial within-group variation; no national phenotype-frequency table supplied."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3392155/",
+      "retrieval": "Direct full page challenged; primary indexed abstract/selected methods/results retrieved through search.",
+      "assessment": "157 Division IA football athletes; listed circumferences include distinct waist, umbilical, hip, chest and limb sites alongside skinfolds and DXA. Supports preserving endpoints, not current NFL coefficients or individual shape reconstruction."
+    },
+    {
+      "url": "https://mdpi-res.com/d_attachment/sports/sports-09-00112/article_deploy/sports-09-00112.pdf?version=1629363716",
+      "retrieval": "Independent alternate publisher PDF retrieval succeeded. Abstract, cohort description and selected agreement-results text inspected; no complete measurement-protocol or screenshot certification.",
+      "assessment": "29 Division III players, seven offseason weeks, Hologic Horizon DXA and InBody770 BIA. Trunk FM/FFM changes were not correlated between methods. Some whole-body/other regional measures were correlated, so this does not mean all methods or all outcomes universally disagree."
+    }
+  ],
+  "imageInspected": {
+    "path": "output/playwright/s117-measured-body-limb-contour-after-mass-desktop-dark.png",
+    "sha256": "b6effe7bf9a3ce54b2b5bba63b48c32e8abda0ad77be2a2347b66391cb4fade7",
+    "assessment": "Original common-scale 74-inch 180/330-pound front/profile/motion image inspected. The heavy case remains notably chest-dominant and tapered. This corroborates the described current visual limitation without inferring a mandatory body-fat shape from weight."
+  },
+  "planAssessment": "Actionable endpoint-aware shared chest/abdomen/pelvic soft-tissue sections, jointly estimated width/depth/location and uncertainty, versioned decoder preserving old save outputs, and actual-size/common-scale cross-view persistence acceptance. Distinguishes skeletal pelvis from external hip width and circumference from cross-sectional solution. No fixed country/race palette, demographic talent modifier, automatic rating-to-muscle update, fitted prevalence, gait or completed visual implementation claim found.",
+  "limits": [
+    "No runtime or generator changes reviewed/approved.",
+    "Source-appropriate conditional fitting, full protocols, compatible NFL records and empirical validation remain pending.",
+    "Independent publisher PDF access supplements the recorded primary failed retrieval; it does not invalidate truthful historical access limitations.",
+    "One cited existing visual original inspected, not a new screenshot/renderer or whole appearance acceptance.",
+    "Full naturalism, demographic fitting, body-composition calibration, career, NFL and release remain open."
+  ]
+}

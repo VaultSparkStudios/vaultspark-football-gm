@@ -123,6 +123,28 @@ function readNumber(raw, fallback, ...keys) {
   return fallback;
 }
 
+function importedMeasurements(raw) {
+  const height = readNumber(raw, null, "heightInches", "height_inches");
+  const feetInches = String(raw.height || "").match(/^(\d)[-'′]\s*(\d+(?:\.\d+)?)\s*(?:["″])?$/);
+  const values = {
+    heightInches: height ?? (feetInches ? Number(feetInches[1]) * 12 + Number(feetInches[2]) : null),
+    weightLbs: readNumber(raw, null, "weightLbs", "weight_lbs", "weight", "wt"),
+    armLengthInches: readNumber(raw, null, "armLengthInches", "arm_length_inches"),
+    wingspanInches: readNumber(raw, null, "wingspanInches", "wingspan_inches"),
+    handSizeInches: readNumber(raw, null, "handSizeInches", "hand_size_inches"),
+    handLengthInches: readNumber(raw, null, "handLengthInches", "hand_length_inches"),
+    hipJointSpanInches: readNumber(raw, null, "hipJointSpanInches", "hip_joint_span_inches"),
+    footLengthInches: readNumber(raw, null, "footLengthInches", "foot_length_inches"),
+    footWidthInches: readNumber(raw, null, "footWidthInches", "foot_width_inches")
+  };
+  const present = Object.fromEntries(Object.entries(values).filter(([, value]) => Number.isFinite(value) && value > 0));
+  return {
+    ...present,
+    measurementProvenance: Object.fromEntries(Object.keys(present).map(key => [key,
+      raw.measurementProvenance?.[key] || { kind: "recorded", source: "imported-player-data" }]))
+  };
+}
+
 export function normalizePfrPlayers(rawPlayers, rng, year) {
   if (!Array.isArray(rawPlayers)) return [];
   return rawPlayers
@@ -144,6 +166,7 @@ export function normalizePfrPlayers(rawPlayers, rng, year) {
         position,
         teamId,
         age,
+        ...importedMeasurements(raw),
         experience,
         developmentTrait: DEVELOPMENT_TRAITS[key].label,
         developmentKey: key,

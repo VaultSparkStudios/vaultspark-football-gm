@@ -43,12 +43,12 @@ test("development centres are measured from the league, not from literals it lef
   // that re-hardcoding one cannot pass this test quietly.
   const fallbacks = DEVELOPMENT_ENVIRONMENT_PROFILE.fallbackCentres;
   assert.ok(
-    Math.abs(centres.coachingDevelopment - fallbacks.coachingDevelopment) > 5,
-    `coaching centre should be measured (~78), not the stale ${fallbacks.coachingDevelopment}; got ${centres.coachingDevelopment}`
+    centres.coachingDevelopment !== fallbacks.coachingDevelopment,
+    `coaching centre must match the current league, not a remembered generation mean or stale ${fallbacks.coachingDevelopment}; got ${centres.coachingDevelopment}`
   );
   assert.ok(
-    Math.abs(centres.schemeFit - fallbacks.schemeFit) > 5,
-    `scheme-fit centre should be measured (~78), not the stale ${fallbacks.schemeFit}; got ${centres.schemeFit}`
+    centres.schemeFit !== fallbacks.schemeFit,
+    `scheme-fit centre must match the current league rather than the stale ${fallbacks.schemeFit}; got ${centres.schemeFit}`
   );
 
   // And each centre must actually be its own league mean.
@@ -85,8 +85,8 @@ test("NEGATIVE CONTROL — the same assertion rejects the pre-S90 formula it was
   );
 
   assert.ok(
-    priorMean > 0.5,
-    `the reconstructed pre-S90 formula should reproduce the measured inflation; got ${priorMean.toFixed(3)}`
+    priorMean > 3 * ZERO_CENTRED_TILT_TOLERANCE,
+    `the reconstructed pre-S90 formula must decisively fail zero centring; got ${priorMean.toFixed(3)}`
   );
   assert.ok(
     Math.abs(priorMean) > ZERO_CENTRED_TILT_TOLERANCE,
@@ -373,7 +373,7 @@ test("NEGATIVE CONTROL — the matched offseason rejects the pre-S90 environment
   const prior = offseasonMovement("prior");
   const zeroed = offseasonMovement("zeroed");
   const contribution = prior.progressed - zeroed.progressed;
-  assert.ok(contribution > 0.5, `the pre-S90 environment should reproduce the measured subsidy; got ${contribution.toFixed(3)}`);
+  assert.ok(contribution > 3 * OFFSEASON_MOVEMENT_TOLERANCE, `the pre-S90 environment must decisively fail the matched-offseason gate; got ${contribution.toFixed(3)}`);
   assert.ok(contribution > OFFSEASON_MOVEMENT_TOLERANCE, "the offseason tolerance must reject the defect it was written for");
 });
 

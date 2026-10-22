@@ -1,0 +1,741 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T18:55:57.316Z",
+  "status": "review-fix-required-profile-coverage",
+  "scope": "Resolved loose long-hair locks; visible coverage remains insufficient and integration acceptance incomplete.",
+  "doneCondition": [
+    "Eliminate broad folded curtain and scattered tails with coherent overlapping loose locks in front/profile at ordinary size.",
+    "Preserve saved person, scalp/non-hair geometry, other modern hair and categorical legacy; continuous boundaries and full-beard mesh budget stay valid.",
+    "Verify actual dossier motion/lifecycle and both built named-save clients on the final source."
+  ],
+  "beforeAuthority": {
+    "file": "PLAYER_LONG_TEXTURE_R2_2026-10-08.json",
+    "sha256": "dbc7c7953f8a795033a2bbc333b62061de3a07d719cdafd17d9f4c3a2d6b0d80"
+  },
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "17fc6df5e50431a80eb73ac3e5364603a6d056755032504cde514205092cabc3",
+    "test/player-long-texture-volume.test.js": "517758776c287d6d576602836b89c4f43c1115ad7f682f554d7c562953a36245",
+    "test/player-hair-volume.test.js": "b7345b5974e339d33e838f12ced36b1ab329a71655f16e7a0cb0e1a94ef284fe",
+    "tests-ui/player-character-variation.spec.js": "869d56131248786fee9fd392e824e43ed952940dd3f87a19c1e7719c8b9f845d",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "d64f17d96bb1e13d7bb986d1a80b70ae93036f03070d7e0406121813f720cf84"
+  },
+  "frozenSources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/long-locks-r1-2026-10-08-public-lib-playerHead3d.js",
+      "sha256": "17fc6df5e50431a80eb73ac3e5364603a6d056755032504cde514205092cabc3"
+    },
+    {
+      "original": "test/player-long-texture-volume.test.js",
+      "file": "references/long-locks-r1-2026-10-08-test-player-long-texture-volume.test.js",
+      "sha256": "517758776c287d6d576602836b89c4f43c1115ad7f682f554d7c562953a36245"
+    },
+    {
+      "original": "test/player-hair-volume.test.js",
+      "file": "references/long-locks-r1-2026-10-08-test-player-hair-volume.test.js",
+      "sha256": "b7345b5974e339d33e838f12ced36b1ab329a71655f16e7a0cb0e1a94ef284fe"
+    },
+    {
+      "original": "tests-ui/player-character-variation.spec.js",
+      "file": "references/long-locks-r1-2026-10-08-tests-ui-player-character-variation.spec.js",
+      "sha256": "869d56131248786fee9fd392e824e43ed952940dd3f87a19c1e7719c8b9f845d"
+    },
+    {
+      "original": "tests-ui/player-hair-coherence-dossier.spec.js",
+      "file": "references/long-locks-r1-2026-10-08-tests-ui-player-hair-coherence-dossier.spec.js",
+      "sha256": "d64f17d96bb1e13d7bb986d1a80b70ae93036f03070d7e0406121813f720cf84"
+    }
+  ],
+  "reports": [
+    {
+      "original": ".cache/contours/long-locks-domain-initial.log",
+      "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-initial.log",
+      "sha256": "14ebfa240996f71c584ef9d776df0deb7128fbd7dc93d517358c1ac18cb53c5a"
+    },
+    {
+      "original": ".cache/contours/long-locks-domain-second.log",
+      "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-second.log",
+      "sha256": "f84c71b73bb95904fa3e26e22b67810026386186980b336f9fcb5717ca13e12c"
+    },
+    {
+      "original": ".cache/contours/long-locks-domain-third.log",
+      "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-third.log",
+      "sha256": "c12b41893dcd0187c87d77c85330e9452677813a3d0269af7d966e8f41ba272a"
+    },
+    {
+      "original": ".cache/contours/long-locks-domain-final.log",
+      "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-domain-final.log",
+      "sha256": "8e77418dd326aeb8adbee8b3e43760f7354f18fb7f82d79ecb2ca2094f97a60e"
+    },
+    {
+      "original": ".cache/contours/long-locks-gallery-third.log",
+      "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-gallery-third.log",
+      "sha256": "c3c5b9f6c22e0d0abe7e88f4f249e44775fadadcbd08f54fe478c22493d7cae3"
+    },
+    {
+      "original": ".cache/contours/long-locks-real-dossier.log",
+      "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-real-dossier.log",
+      "sha256": "654e1f6caf724849b18dd46a1484a14e15d2f8d4b79ed4d68cee62300ba6b5c7"
+    },
+    {
+      "original": ".cache/contours/long-locks-build.log",
+      "file": "references/long-locks-r1-2026-10-08-.cache-contours-long-locks-build.log",
+      "sha256": "064b6d6b5959ef4120514c51fb8c16024b04945120160c2a28cd5af9d1ec8f2f"
+    },
+    {
+      "original": "output/playwright/current-character-variation.json",
+      "file": "references/long-locks-r1-2026-10-08-output-playwright-current-character-variation.json",
+      "sha256": "95c55d70ac006cec2a590ed7742593b42c644735fa4a0b92948add7e0d0ae75c"
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after.json",
+      "file": "references/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after.json",
+      "sha256": "19d78e4c407ee77961f6e09d55428489020bce96b6098299e8858a8a0eeeb9c7"
+    }
+  ],
+  "captures": [
+    {
+      "original": "output/playwright/current-variation-hair-desktop-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-hair-desktop-dark.png",
+      "sha256": "de99e0871f10105858c9b98957ab832fa907cdc19f5267306a3d0c0ef3a91a20",
+      "page": "controlled-hair",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-texture-desktop-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-desktop-dark.png",
+      "sha256": "e04529d76aa94e7581db33cf7557248fe67009c34b7f3c420518d50c3874445d",
+      "page": "controlled-texture",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-pigment-desktop-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-pigment-desktop-dark.png",
+      "sha256": "b86ceebbffeaef522d9e05f2f08808af40758abaa008cbb46bba55fed49e6b98",
+      "page": "controlled-pigment",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-iris-desktop-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-iris-desktop-dark.png",
+      "sha256": "faea15b558201e35c8c19d272eeed45e27194523934ed188ed73ce4151120ab6",
+      "page": "controlled-iris",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-face-desktop-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-face-desktop-dark.png",
+      "sha256": "60431c601a3e8a88f05bca4669874febb5a33aac545a01a7bc8f89dd6a87c82c",
+      "page": "controlled-face",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-body-desktop-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-body-desktop-dark.png",
+      "sha256": "c3458adfd205116d0d2b48c8fd56a30a165430e6e07200dc24a7f97e2adbeac6",
+      "page": "controlled-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-capacity-desktop-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-capacity-desktop-dark.png",
+      "sha256": "d7958965f83d40ae00d8547b99c646b9979e38a87c251a85a68056d4b3967f8b",
+      "page": "controlled-capacity",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-hair-desktop-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-hair-desktop-light.png",
+      "sha256": "b39f15f516e9dc759fbda5905fd9922da80e5127a091838fb871c071a7675985",
+      "page": "controlled-hair",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-texture-desktop-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-desktop-light.png",
+      "sha256": "994f5c322ba345dd1ff0ff0f7d680a0704599d486be682e51166354816997c7f",
+      "page": "controlled-texture",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-pigment-desktop-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-pigment-desktop-light.png",
+      "sha256": "ae05af52d7f10e9d2642aa6f3ca52d8afd43813238edf6f9ddf113acf1dff3b1",
+      "page": "controlled-pigment",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-iris-desktop-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-iris-desktop-light.png",
+      "sha256": "01d82520af5731b9a04da401bfa3854870d6a5be4be632294ea03135e1d39ed1",
+      "page": "controlled-iris",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-face-desktop-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-face-desktop-light.png",
+      "sha256": "e9fae3b56a807182ffd6bbc7aa8dcb0fccf21d9245b5776e6f02583638aa5357",
+      "page": "controlled-face",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-body-desktop-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-body-desktop-light.png",
+      "sha256": "5f1c8fc30a2315c3a2a60038b900760ba0e1d244e5e1b75a62b8c6a338d2afba",
+      "page": "controlled-body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-capacity-desktop-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-capacity-desktop-light.png",
+      "sha256": "aaa53a5b459a5d8098d24ed0082c35dcc92d6fb57ad8f8bfb9dc848188543722",
+      "page": "controlled-capacity",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-hair-mobile-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-hair-mobile-dark.png",
+      "sha256": "71718d50397411a9b0f34b65b7a1b56bc4576da8c2bef2df88a2c2fee874c743",
+      "page": "controlled-hair",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-texture-mobile-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-mobile-dark.png",
+      "sha256": "68ae5756cc19c9420942071b13d7736efad9f3a8ef4bf978020a8c8517175a2a",
+      "page": "controlled-texture",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-pigment-mobile-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-pigment-mobile-dark.png",
+      "sha256": "7dd435ff003664df67edad1f793008c6c4bb6db087e02b595a0604c4dc383ced",
+      "page": "controlled-pigment",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-iris-mobile-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-iris-mobile-dark.png",
+      "sha256": "087d27e433290269d96e390261ec9ef659952718af6e1a663b2657ffa5ad8f23",
+      "page": "controlled-iris",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-face-mobile-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-face-mobile-dark.png",
+      "sha256": "667ed0bdbb6b88f54443e99f37088cc0e289e4d1b7a1b3508ee80510012d00f4",
+      "page": "controlled-face",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-body-mobile-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-body-mobile-dark.png",
+      "sha256": "122213d5355bf06357d8079b31d3245db3c9a32389e0ba2324e2b343622b62c3",
+      "page": "controlled-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-capacity-mobile-dark.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-capacity-mobile-dark.png",
+      "sha256": "242da50cd1af31d54d46d1878fa927f4a2fb9e4a9a9a49ffbb1ee96fe8658b65",
+      "page": "controlled-capacity",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-hair-mobile-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-hair-mobile-light.png",
+      "sha256": "91c6352d70451994473c9771808ae7dcbf8fdbcad5580e199b7937f48de2b67e",
+      "page": "controlled-hair",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-texture-mobile-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-mobile-light.png",
+      "sha256": "4ddf7f0aa330c7107bf246a03449a3296f817e7c90068f7ee8c674b7e1602dd5",
+      "page": "controlled-texture",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-pigment-mobile-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-pigment-mobile-light.png",
+      "sha256": "f9abf2c09ce8f4be79788b0f31830eb5b422cef77682a64270eafc3cf1600a75",
+      "page": "controlled-pigment",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-iris-mobile-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-iris-mobile-light.png",
+      "sha256": "76a5b68f04df8ab0dd3ed634a5fc8be4458ace04dbaff0a504a5ff38a5d02c92",
+      "page": "controlled-iris",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-face-mobile-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-face-mobile-light.png",
+      "sha256": "e9cc280b2d6737d749a3b87e127ea404707c12f83c3b53ff7fbef26142dbf996",
+      "page": "controlled-face",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-body-mobile-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-body-mobile-light.png",
+      "sha256": "20d09e980275eba4ab4c482b1e5d1bac6d6dbbce2b1ea4ad0b76be346cdf5cbb",
+      "page": "controlled-body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/current-variation-capacity-mobile-light.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-capacity-mobile-light.png",
+      "sha256": "3e7ec48e395f863b1df047f8017f2e97da84921abd61e53f91d712638419c2f0",
+      "page": "controlled-capacity",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-desktop-dark-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-desktop-dark-portrait.png",
+      "sha256": "0f2c61bd75ebdb5c00a688c514493d10521e3bd204dd259c8dd7052762f21b14",
+      "page": "generated-long-portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-desktop-dark-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-desktop-dark-body.png",
+      "sha256": "6ff5ac60062a7d54c28af0562c019711ec3e3faf8238515af6c106836dd4aef5",
+      "page": "generated-long-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-desktop-light-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-desktop-light-portrait.png",
+      "sha256": "5cfb22af5ef1b5e8e1a9e676679cff1fcfeeceb8d83222f7ebf1a847b48c715c",
+      "page": "generated-long-portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-desktop-light-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-desktop-light-body.png",
+      "sha256": "aa5956cca628acdb6497f1f890fe8b5ed1d77dd11b1a71a949d19a357c29bbc0",
+      "page": "generated-long-body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-mobile-dark-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-mobile-dark-portrait.png",
+      "sha256": "bcbfd108ca5b41364b67d5060455e9e9bc2ff3e7ea431a6ec821c266fcae8222",
+      "page": "generated-long-portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-mobile-dark-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-mobile-dark-body.png",
+      "sha256": "29ce4ab93956777c771f9db765ee04ca07ba453948fd00caeb0fc6a6ae8cc7b6",
+      "page": "generated-long-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-mobile-light-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-mobile-light-portrait.png",
+      "sha256": "644329f783c83fb5c51bb22c1111d86f0d33c58c792c1e2c316e22440fc17c5c",
+      "page": "generated-long-portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-long-mobile-light-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-long-mobile-light-body.png",
+      "sha256": "06e34fda0def954374c4b7471089b27541aa9c32a81e5a21eb90ab76c9f398c2",
+      "page": "generated-long-body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-desktop-dark-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-desktop-dark-portrait.png",
+      "sha256": "4ff96025dc43f07f42e361ef03d87c270c7c2c0ceb41e1fb242d899142e1a33c",
+      "page": "generated-afro-portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-desktop-dark-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-desktop-dark-body.png",
+      "sha256": "22610a71cda030e10a55870ac98b4acb3ca5aea04d841addedf1b8a2a82e245a",
+      "page": "generated-afro-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-desktop-light-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-desktop-light-portrait.png",
+      "sha256": "cbc54e75dcc3db678eac36c67468a94702564a83e09a3b7ae0d3d2d7237adc01",
+      "page": "generated-afro-portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-desktop-light-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-desktop-light-body.png",
+      "sha256": "e7e6e95c31da7fc3ea8a8387d7229d0f9baa81a9900a42298c79e67a6e73de5e",
+      "page": "generated-afro-body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-mobile-dark-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-mobile-dark-portrait.png",
+      "sha256": "3f5acc47c3487bd4685ac94f92e888bba63646dc190515e38ca6e130c965db47",
+      "page": "generated-afro-portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-mobile-dark-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-mobile-dark-body.png",
+      "sha256": "7cd040b7d7b7c904e1fa98ac6970aafa03f3e7ab739c8c548e77b7c675daaf96",
+      "page": "generated-afro-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-mobile-light-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-mobile-light-portrait.png",
+      "sha256": "165df0d23aad10006042b4c7bf9b85286e01093059d3cd6d19bbe1583c3ef720",
+      "page": "generated-afro-portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-afro-mobile-light-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-afro-mobile-light-body.png",
+      "sha256": "acf8944c42ee1f3491e571621f40822764c73269fb8479234e6dc426a7632654",
+      "page": "generated-afro-body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-desktop-dark-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-desktop-dark-portrait.png",
+      "sha256": "d619a7430e459bc311ca4cf21de1166734b9a28fafa7fab5e89c46e95545661c",
+      "page": "generated-side-part-portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-desktop-dark-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-desktop-dark-body.png",
+      "sha256": "c8ac9e1e5baa80f0103a2c1d9d9a2a1bdfd4968fc913aa4f049994d512e9127b",
+      "page": "generated-side-part-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-desktop-light-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-desktop-light-portrait.png",
+      "sha256": "165084fd82460cfc793c8b69e1979c40298e8aa7f68d2d14ac8e461fe85fd0da",
+      "page": "generated-side-part-portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-desktop-light-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-desktop-light-body.png",
+      "sha256": "ec3a85533140d9c79a4d17c3f2dafd67d80414408754b4302f3a16c39698b2b1",
+      "page": "generated-side-part-body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-mobile-dark-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-mobile-dark-portrait.png",
+      "sha256": "622ce90a712a175a6def58f405b5669ff249b9d826df2455ecb370730dd244af",
+      "page": "generated-side-part-portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-mobile-dark-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-mobile-dark-body.png",
+      "sha256": "2749f8c9b52b4ea687b3ea07a741b5373f878dafa801966bda39ac4cac4401ca",
+      "page": "generated-side-part-body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-mobile-light-portrait.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-mobile-light-portrait.png",
+      "sha256": "a304609ae76ecb96697f416dc86d74319cf8a7c5e443f8c90ccf6097a46fcf96",
+      "page": "generated-side-part-portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/hair-coherence-dossier-after-side-part-mobile-light-body.png",
+      "file": "captures/long-locks-r1-2026-10-08-output-playwright-hair-coherence-dossier-after-side-part-mobile-light-body.png",
+      "sha256": "b7aa041d0be56e2cdcf6dc529de616dd0c258acd8c67b44eef6ee3a2e61b6933",
+      "page": "generated-side-part-body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "17fc6df5e50431a80eb73ac3e5364603a6d056755032504cde514205092cabc3"
+    }
+  },
+  "artifactDigest": "2903f9d68ad3df36fc1ae6481e09a13a9ea5a25dc93fd24a247531f2e6ebf64d",
+  "checks": {
+    "focusedDomainTests": 19,
+    "galleryBrowserTests": 1,
+    "generatedDossierBrowserTests": 1,
+    "finalNamedSaveClientsVerified": false
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary and independent reviewer",
+    "inspectedOriginals": [
+      {
+        "original": "output/playwright/current-variation-texture-desktop-dark.png",
+        "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-desktop-dark.png",
+        "sha256": "e04529d76aa94e7581db33cf7557248fe67009c34b7f3c420518d50c3874445d",
+        "page": "controlled-texture",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/current-variation-texture-desktop-light.png",
+        "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-desktop-light.png",
+        "sha256": "994f5c322ba345dd1ff0ff0f7d680a0704599d486be682e51166354816997c7f",
+        "page": "controlled-texture",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/current-variation-texture-mobile-dark.png",
+        "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-mobile-dark.png",
+        "sha256": "68ae5756cc19c9420942071b13d7736efad9f3a8ef4bf978020a8c8517175a2a",
+        "page": "controlled-texture",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/current-variation-texture-mobile-light.png",
+        "file": "captures/long-locks-r1-2026-10-08-output-playwright-current-variation-texture-mobile-light.png",
+        "sha256": "4ddf7f0aa330c7107bf246a03449a3296f817e7c90068f7ee8c674b7e1602dd5",
+        "page": "controlled-texture",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "findings": [
+      "Folded sheet and disparate trailing tips removed.",
+      "Profile skin slots and rod/loc-like loose locks remain a visible coverage/craft failure.",
+      "Root/tip cap equality now exact; previous numerical pole failure and first width-assertion failure retained."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

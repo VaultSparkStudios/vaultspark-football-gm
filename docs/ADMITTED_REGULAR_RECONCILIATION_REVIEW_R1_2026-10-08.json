@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-08T10:10:10.625Z",
+  "round": 1,
+  "verdict": "FIX",
+  "scope": "Prior-year admitted regular interval capture and post-base cash/cap reconciliation; not full NFL policy or annual default adoption.",
+  "primaryReceipt": "docs/ADMITTED_REGULAR_RECONCILIATION_2026-10-08.json",
+  "primaryReceiptSha256": "75ac9a6ec5ca340ce5f2686a33f7d73bfdc1122e7760e65755609c5787654d0b",
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "c73f0bda9dbc412a59e2c97b170c3577b40d79dcab4eba6f8cc2ca3bc094699f",
+    "src/domain/regularMedicalRecovery.js": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+    "src/runtime/GameSession.js": "6b135d51dcc79cbcee67041c4eb000527781b195444b18ee2eaa5f98cf559c55",
+    "src/engine/seasonSimulator.js": "4affc02d23c8c40ad749ac39b89f4a2dc173e2dc8c8b7098cd5719edcad571d3",
+    "test/admitted-regular-reconciliation.test.js": "a9599e989b7c9761136cdf0c34aaf3cf88850be6fcc363548de2780aed602255",
+    "test/admitted-injury-payroll.test.js": "9bb663d97896351ab2e1488e2033a336789278a8a9125b910543fdf55a8f74a7",
+    "test/regular-medical-recovery.test.js": "fa1c259fdbc177d456e40932d42f7bb49843201e5fcde228dd8e2534d42556db",
+    "test/headless-regular-medical.test.js": "8795fa161d22e01f792fa7ab8cc451c973d4415ae004d82f5a206f67bb53d5a9",
+    "test/helpers/regularMedicalFixture.js": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba",
+    "tests-ui/admitted-regular-reconciliation-client.spec.js": "54a2d7865c88e3fdba07f73beb693f7def2ff58921a7aded2001563a2acdb3f6",
+    "tests-ui/regular-medical-recovery-client.spec.js": "fa1216d3be738e9da427e44bc0e4a59ab1c7fbb2d220df302091975a6653331e",
+    "scripts/run-test-shard.mjs": "623958eed20fed88026af44eb6fe490614717fae8ae091f63660de2bceeed6d6"
+  },
+  "bindings": {
+    "sources": 12,
+    "evidence": 4,
+    "builtPairs": 4,
+    "currentAndFrozenSourceAndClientHashesMatch": true,
+    "normalizedBuiltPairsExact": true,
+    "terminalChunk": "d97ca3"
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/admitted-regular-reconciliation.test.js test/admitted-injury-payroll.test.js test/regular-medical-recovery.test.js test/headless-regular-medical.test.js",
+      "terminalChunks": [
+        "477d50",
+        "e61457",
+        "e30a42"
+      ],
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 38739.0342,
+      "includes": "Actual command and headless season; same-payer/history dedup, other-payer exclusion, settled elevation max coverage, zero additional cash, bye no pension, malformed restore and closed earning refusal."
+    },
+    {
+      "command": "Independent forged captured-period Node ESM probe",
+      "terminalChunk": "9b05a0",
+      "result": "After legitimate week1 pre-healing capture and deferred recovery, legitimate week2 preview returns[]; altering copied capture week/payId to2 is nevertheless committed as2861111cents plus cap and accepted by snapshot validator."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1-P2-captured-period-authority",
+      "severity": "P2",
+      "file": "src/domain/admittedInjuryPayroll.js",
+      "function": "commitAdmittedRegularAccrual",
+      "line": 164,
+      "description": "Captured receipt validation proves right/source/rate and self-consistent identity, but not actual eligibility of the claimed pre-recovery interval. Recovered source accepts forged later interval.",
+      "reproduction": [
+        "fixture(); previewAdmittedRegularAccrual(league,{year:2027,week:1});",
+        "applyRegularMedicalRecovery(league,{year:2027,week:1,deferAdmittedPay:true}); legitimate week2 preview is empty.",
+        "Copy captured row; set week=2 and payId=JSON.stringify([rightId,2027,\"regular-season\",2]); commitAdmittedRegularAccrual(...week:2) accepts new2861111cents."
+      ],
+      "requiredCorrection": "Bind the captured plan to an independently retained or nonforgeable pre-recovery eligible-period authority, checking exact year/week/source and preventing stale-period repurposing before writes. Preserve legitimate clearance capture, exact earned retries and legacy receipts.",
+      "qualification": "Normal interactive/headless callers pass unmodified in-memory preview rows; this is an exported helper/forged captured-plan boundary defect, not an observed normal scheduled command overpayment."
+    }
+  ],
+  "sourceAuthority": {
+    "url": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+    "observations": "Direct executed CBA PDF214 Article33§5(k/l) read: incapacitating qualifying injury adjusts weekly compensation to down rate while inability continues, and recovery returns practice-contract compensation. This supports the adjustment interpretation; does not adjudicate excluded other-employer/active-contract, cross-year or Benefits policy.",
+    "retrieval": "Independent web open/find/direct text at lines7449–7477; no PDF screenshot claimed."
+  },
+  "primaryExecutedEvidence": {
+    "focused": {
+      "passed": 8,
+      "terminal": "c8460d",
+      "durationMs": 17772.2363
+    },
+    "adjacent": {
+      "runPassed": 61,
+      "terminal": "73ad8e",
+      "durationMs": 60750.1085,
+      "distinctAdjacentChecks": 54,
+      "note": "Includes prior seven-test reconciliation file before final test-only expansion; final eight-test file is separately verified above. Runtime sources unchanged across both."
+    },
+    "browser": {
+      "passed": 4,
+      "terminal": "a0dc48",
+      "actualClientSeams": [
+        "built-worker",
+        "built-in-page"
+      ],
+      "publicReleaseSignAdvance": true,
+      "namedSaveReplacementLoadReload": true
+    },
+    "build": {
+      "passed": true,
+      "terminal": "679f84",
+      "assets": 319,
+      "kilobytes": 3559,
+      "precache": "707fb5891747",
+      "artifactDigest": "722ead0a35f039e40a902e299adf7dff8931f688e1209f69f87d2c154c1e9645"
+    },
+    "budgets": {
+      "passed": true,
+      "terminal": "89326f",
+      "modules": 139,
+      "bootBytes": 649321,
+      "bootBudget": 730000,
+      "diffCheck": true
+    }
+  },
+  "attribution": "Primary four built browser results and named replacement/load/reload client evidence verified by frozen hashes, not independently rerun. No UI rendering changes and no screenshot acceptance claimed.",
+  "limits": [
+    "Active-contract and other-employer treatment, pension, Benefits/cap classification, dispute election, four annual defaults and complete NFL workflow remain open.",
+    "Legacy v1/v2 earned money is preserved; scoped tests do not establish all source/legal configurations.",
+    "Full appearance/full suite/final current-source GM career/release and whole goal are not accepted."
+  ]
+}

@@ -1,0 +1,335 @@
+import { api, state } from "./appState.js";
+import { escapeHtml, showToast, teamCode } from "./appCore.js";
+import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
+import { buildGameFlow, buildScoringTimeline, createSimWatchPlayback, deriveFieldState, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
+import { playSound } from "./audioFeedback.js";
+import { deriveMarqueeBadge } from "./marqueeBadge.js";
+import { closeModal, openModal } from "./modalManager.js";
+
+let active = false;
+let controller = null;
+let context = null;
+
+// Pure/testable: the td-flourish cue should fire once per touchdown play as
+// the viewer advances *forward* through the broadcast (a "tick" from
+// autoplay or an explicit "next" step) — never on replay/scrub-back
+// ("previous"), speed changes, or pause/resume, so scrubbing across an
+// already-seen touchdown never re-fires the cue. playSound() itself already
+// gates on the sound-enabled setting, so this only decides *whether* to ask.
+export function shouldPlayTdFlourish(snapshot) {
+  if (!snapshot || (snapshot.reason !== "tick" && snapshot.reason !== "next")) return false;
+  const description = String(snapshot.play?.description || "").toLowerCase();
+  return description.includes("touchdown");
+}
+
+function renderHeader(boxScore) {
+  const header = document.getElementById("simWatchHeader");
+  if (!header) return;
+  header.innerHTML = `
+    <div class="sw-matchup">
+      <span class="sw-team">${escapeHtml(boxScore.awayTeamName || boxScore.awayTeamId || boxScore.awayTeam?.teamId || "Away")}</span>
+      <span class="sw-score" id="swAwayScore">0</span>
+      <span class="sw-vs">@</span>
+      <span class="sw-score" id="swHomeScore">0</span>
+      <span class="sw-team">${escapeHtml(boxScore.homeTeamName || boxScore.homeTeamId || boxScore.homeTeam?.teamId || "Home")}</span>
+    </div>
+    <div class="sw-meta">${escapeHtml(String(boxScore.year || ""))} · Week ${escapeHtml(String(boxScore.week || ""))} · ${escapeHtml(boxScore.seasonType || "regular")}</div>`;
+
+  const teamIds = resolveBoxScoreTeamIds(boxScore);
+  const marquee = deriveMarqueeBadge(
+    { awayTeamId: teamIds.away, homeTeamId: teamIds.home },
+    state.dashboard?.latestStandings || [],
+    boxScore.week
+  );
+  if (marquee) {
+    const banner = document.createElement("div");
+    banner.className = "sw-marquee-banner";
+    banner.innerHTML = `<span class="marquee-badge">🏈 ${escapeHtml(marquee.label)}</span>`;
+    header.appendChild(banner);
+  }
+}
+
+async function decorateRivalry(boxScore) {
+  const header = document.getElementById("simWatchHeader");
+  const teamIds = resolveBoxScoreTeamIds(boxScore);
+  if (!header || !teamIds.home || !teamIds.away) return;
+  const response = await api(`/api/rivalry?teamA=${encodeURIComponent(teamIds.home)}&teamB=${encodeURIComponent(teamIds.away)}`);
+  const rivalry = response?.rivalry || null;
+  if (!rivalry || (rivalry.heat || 0) < 60 || !active) return;
+  const banner = document.createElement("div");
+  banner.className = "sw-rivalry-banner";
+  banner.innerHTML = `<span class="rivalry-week-badge">RIVALRY WEEK</span> ${escapeHtml(rivalry.heatLabel || "")} · Series ${rivalry.teamAWins}-${rivalry.teamBWins}${rivalry.streak?.count > 1 ? ` · ${escapeHtml(teamCode(rivalry.streak.team))} won last ${rivalry.streak.count}` : ""}`;
+  header.appendChild(banner);
+}
+
+function playKind(play, scoringSet) {
+  const description = String(play?.description || "");
+  const lower = description.toLowerCase();
+  const scoring = scoringSet.has(description) || lower.includes("touchdown") || lower.includes("field goal") || lower.includes("safety");
+  const turnover = lower.includes("interception") || lower.includes("fumble");
+  const fourth = play?.clock?.startsWith?.("4th") || play?.quarterLabel?.includes?.("4");
+  return { description, scoring, turnover, highlight: scoring || turnover || (fourth && lower.includes("stop")) };
+}
+
+function appendPlay(play, scoringSet) {
+  const feed = document.getElementById("simWatchFeed");
+  if (!feed) return;
+  const kind = playKind(play, scoringSet);
+  const row = document.createElement("div");
+  row.className = `sw-play${kind.highlight ? " sw-highlight" : ""}${kind.scoring ? " sw-scoring" : ""}${kind.turnover ? " sw-turnover" : ""}`;
+  row.innerHTML = `
+    <span class="sw-play-qtr">${escapeHtml(play.quarterLabel || play.clock || "")}</span>
+    <span class="sw-play-team">${escapeHtml(play.offenseTeamId ? teamCode(play.offenseTeamId) : "")}</span>
+    <span class="sw-play-desc">${escapeHtml(kind.description.slice(0, 120))}</span>
+    ${kind.highlight ? `<span class="sw-play-tag">${kind.scoring ? "SCORE" : kind.turnover ? "TURNOVER" : "4TH"}</span>` : ""}${play.twoMinute === true ? `<span class="sw-play-tag sw-two-minute" title="Two-minute drill">2-MIN</span>` : ""}`;
+  feed.appendChild(row);
+}
+
+export function planSimWatchFeedUpdate(renderedIndex = -1, nextIndex = -1) {
+  const previous = Number.isInteger(renderedIndex) ? renderedIndex : -1;
+  const next = Number.isInteger(nextIndex) ? nextIndex : -1;
+  return {
+    removeCount: Math.max(0, previous - next),
+    appendFrom: next > previous ? previous + 1 : null,
+    appendThrough: next
+  };
+}
+
+function prefersReducedMotion() {
+  return Boolean(globalThis.window?.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+}
+
+function updateField(boxScore, play, index) {
+  const field = document.getElementById("simWatchField");
+  const possession = document.getElementById("simWatchPossession");
+  const yardLine = document.getElementById("simWatchYardLine");
+  const downDistance = document.getElementById("simWatchDownDistance");
+  if (!field) return;
+  const teamIds = resolveBoxScoreTeamIds(boxScore);
+  const spot = deriveFieldState(play, teamIds);
+  const offense = play?.offenseTeamId || "";
+  // Older saves may lack a recorded spot; fall back to midfield rather than invent one.
+  field.style.setProperty("--ball-x", String(spot ? spot.x : 50));
+  field.classList.toggle("red-zone", Boolean(spot?.redZone));
+  if (possession) possession.textContent = offense ? `${teamCode(offense)} ball` : "Live drive";
+  if (yardLine) yardLine.textContent = spot?.spotLabel || "—";
+  if (downDistance) downDistance.textContent = spot?.downLabel || "";
+  renderGameFlow(index);
+}
+
+function renderGameFlow(index) {
+  const svg = document.getElementById("simWatchFlow");
+  if (!svg || !context?.flow?.length) return;
+  const flow = context.flow;
+  const limit = Math.max(1, ...flow.map((value) => Math.abs(value)), 7);
+  const width = 300;
+  const height = 40;
+  const through = Math.max(0, Math.min(flow.length - 1, index));
+  const step = width / Math.max(1, flow.length - 1);
+  const points = flow.slice(0, through + 1).map((margin, i) => `${(i * step).toFixed(1)},${(height / 2 - (margin / limit) * (height / 2 - 2)).toFixed(1)}`).join(" ");
+  const homeCode = teamCode(context.teamIds.home);
+  const awayCode = teamCode(context.teamIds.away);
+  svg.innerHTML = `
+    <line x1="0" y1="${height / 2}" x2="${width}" y2="${height / 2}" class="sw-flow-axis"></line>
+    <polyline points="${points}" class="sw-flow-line"></polyline>
+    <text x="2" y="9" class="sw-flow-label">${escapeHtml(homeCode)} ahead</text>
+    <text x="2" y="${height - 2}" class="sw-flow-label">${escapeHtml(awayCode)} ahead</text>`;
+}
+function scoringThrough(index) {
+  const totals = { away: 0, home: 0 };
+  for (const score of context.scoreTimeline) {
+    if (score.playIndex == null || score.playIndex > index) continue;
+    if (score.teamId === context.teamIds.away) totals.away += Number(score.points || 0);
+    if (score.teamId === context.teamIds.home) totals.home += Number(score.points || 0);
+  }
+  return totals;
+}
+
+function showFinal() {
+  const { boxScore } = context;
+  const away = boxScore.awayTeam?.score ?? 0;
+  const home = boxScore.homeTeam?.score ?? 0;
+  document.getElementById("swAwayScore").textContent = String(away);
+  document.getElementById("swHomeScore").textContent = String(home);
+  const banner = document.getElementById("simWatchFinal");
+  if (!banner) return;
+  const winner = away > home ? boxScore.awayTeamName : home > away ? boxScore.homeTeamName : null;
+  banner.textContent = winner ? `Final — ${winner} wins ${Math.max(away, home)}-${Math.min(away, home)}` : `Final — Tie ${away}-${home}`;
+  banner.hidden = false;
+}
+
+function renderDirector(snapshot) {
+  const play = document.getElementById("simWatchPlayPauseBtn");
+  const speed = document.getElementById("simWatchSpeedSelect");
+  const progress = document.getElementById("simWatchProgress");
+  const label = document.getElementById("simWatchProgressLabel");
+  if (play) {
+    const playing = snapshot.status === "playing";
+    play.textContent = playing ? "Pause" : snapshot.status === "complete" ? "Replay" : "Play";
+    play.setAttribute("aria-pressed", playing ? "true" : "false");
+  }
+  if (speed) speed.value = String(snapshot.speed);
+  if (progress) {
+    progress.value = snapshot.played;
+    progress.max = Math.max(1, snapshot.total);
+    progress.setAttribute("aria-valuetext", `${snapshot.progressPct}% · ${snapshot.quarter} · drive ${snapshot.drive || 0} of ${snapshot.driveTotal || 0}`);
+  }
+  if (label) {
+    const mode = context?.mode === "reel" ? "Final Reel · " : "";
+    label.textContent = snapshot.total
+      ? `${mode}${snapshot.quarter} · play ${snapshot.quarterPlay}/${snapshot.quarterTotal} · drive ${snapshot.drive}/${snapshot.driveTotal} · ${snapshot.played}/${snapshot.total}`
+      : "Pregame · no plays yet";
+  }
+}
+
+function renderFrame(snapshot) {
+  renderDirector(snapshot);
+  if (shouldPlayTdFlourish(snapshot)) playSound("td-flourish");
+  if (!context) return;
+  if (snapshot.index < 0) {
+    const feed = document.getElementById("simWatchFeed");
+    if (feed) feed.replaceChildren();
+    context.renderedIndex = -1;
+    return;
+  }
+  const feed = document.getElementById("simWatchFeed");
+  const update = planSimWatchFeedUpdate(context.renderedIndex, snapshot.index);
+  if (feed) {
+    for (let count = 0; count < update.removeCount; count += 1) feed.lastElementChild?.remove?.();
+    if (update.appendFrom != null) {
+      for (let index = update.appendFrom; index <= update.appendThrough; index += 1) appendPlay(context.plays[index], context.scoringSet);
+    }
+  }
+  context.renderedIndex = snapshot.index;
+  if (update.appendFrom != null) {
+    feed?.lastElementChild?.scrollIntoView?.({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "nearest" });
+  }
+  const totals = scoringThrough(snapshot.play?.reelSourceIndex ?? snapshot.index);
+  document.getElementById("swAwayScore").textContent = String(totals.away);
+  document.getElementById("swHomeScore").textContent = String(totals.home);
+  updateField(context.boxScore, snapshot.play, snapshot.play?.reelSourceIndex ?? snapshot.index);
+  const final = document.getElementById("simWatchFinal");
+  if (snapshot.status === "complete") showFinal();
+  else if (final) final.hidden = true;
+}
+
+export async function runSimWatch(gameId) {
+  const overlay = document.getElementById("simWatchOverlay");
+  if (!overlay || active) return null;
+  try {
+    const response = await api(`/api/boxscore?gameId=${encodeURIComponent(gameId)}`);
+    const boxScore = response?.boxScore;
+    if (!boxScore) throw new Error("This game has no play-by-play to watch.");
+    const plays = boxScore.playByPlay || [];
+    const scoring = boxScore.scoringSummary || [];
+    context = { boxScore, teamIds: resolveBoxScoreTeamIds(boxScore), plays, fullPlays: plays, scoring, scoreTimeline: buildScoringTimeline(plays, scoring), scoringSet: new Set(scoring.map((entry) => entry.description)), mode: "full", renderedIndex: -1 };
+  context.flow = buildGameFlow(plays, context.scoreTimeline, context.teamIds);
+    active = true;
+    renderHeader(boxScore);
+    overlay.hidden = false;
+    overlay.classList.add("sim-watch-open");
+    openModal(overlay, { onClose: closeSimWatch });
+    document.getElementById("simWatchFeed").innerHTML = "";
+    document.getElementById("simWatchFinal").hidden = true;
+    observeBackgroundTask(() => decorateRivalry(boxScore), {
+      surface: "sim-watch", operation: "rivalry-context", authorityKey: boxScore.gameId || gameId
+    });
+    controller = createSimWatchPlayback({ plays, onChange: renderFrame });
+    resolveClientDiagnostic({ surface: "sim-watch", operation: "playback" });
+    controller.play();
+    return controller.snapshot("opened");
+  } catch (error) {
+    overlay.classList.remove("sim-watch-open");
+    overlay.hidden = true;
+    closeModal(overlay);
+    active = false;
+    controller = null;
+    context = null;
+    recordClientDiagnostic({
+      surface: "sim-watch", operation: "playback", error, authorityKey: gameId, retry: () => runSimWatch(gameId)
+    });
+    showToast("Sim-Watch could not open. The failure is recorded in Client Diagnostics.");
+    throw error;
+  }
+}
+
+export function playSimWatchFinalReel() {
+  if (!active || !context) return null;
+  const reel = deriveFinalReel(context.fullPlays || context.plays, context.scoring, 8);
+  if (!reel.length) {
+    showToast("Final Reel is unavailable because this game had no big plays.");
+    return null;
+  }
+  controller?.stop();
+  context.plays = reel;
+  context.mode = "reel";
+  context.renderedIndex = -1;
+  const feed = document.getElementById("simWatchFeed");
+  if (feed) feed.innerHTML = "";
+  const final = document.getElementById("simWatchFinal");
+  if (final) final.hidden = true;
+  controller = createSimWatchPlayback({ plays: reel, baseDelayMs: 520, onChange: renderFrame });
+  controller.play();
+  return controller.snapshot("final-reel");
+}
+
+export function toggleSimWatchPlayback() { return controller?.toggle() || null; }
+export function stepSimWatch(direction = 1) { return direction < 0 ? controller?.previous() || null : controller?.next() || null; }
+export function setSimWatchSpeed(speed) { return controller?.setSpeed(Number(speed)) || null; }
+export function skipSimWatch() { return controller?.skip() || null; }
+
+export function resolveSimWatchSwipe(start, end, { threshold = 56, offAxisRatio = 0.7 } = {}) {
+  const dx = Number(end?.x) - Number(start?.x);
+  const dy = Number(end?.y) - Number(start?.y);
+  if (!Number.isFinite(dx) || !Number.isFinite(dy)) return 0;
+  if (Math.abs(dx) < threshold || Math.abs(dy) > Math.abs(dx) * offAxisRatio) return 0;
+  return dx < 0 ? 1 : -1;
+}
+
+export function bindSimWatchSwipeTransport(element = document.getElementById("simWatchFeed")) {
+  if (!element || element.dataset.swipeTransportBound === "true") return false;
+  element.dataset.swipeTransportBound = "true";
+  let gesture = null;
+  element.addEventListener("pointerdown", (event) => {
+    if (!active || !["touch", "pen"].includes(event.pointerType)) return;
+    gesture = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+  });
+  element.addEventListener("pointerup", (event) => {
+    if (!gesture || gesture.pointerId !== event.pointerId) return;
+    const direction = resolveSimWatchSwipe(gesture, { x: event.clientX, y: event.clientY });
+    gesture = null;
+    if (direction) stepSimWatch(direction);
+  });
+  element.addEventListener("pointercancel", () => { gesture = null; });
+  return true;
+}
+
+export function handleSimWatchKeyboard(event) {
+  if (!active || event?.target?.matches?.("input, textarea, select")) return false;
+  if (event.key === " " && !event?.target?.matches?.("button, a[href], [role='button']")) {
+    event.preventDefault?.();
+    toggleSimWatchPlayback();
+    return true;
+  }
+  if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault?.(); stepSimWatch(event.key === "ArrowLeft" ? -1 : 1); return true;
+  }
+  const speedIndex = Number(event.key) - 1;
+  if (Number.isInteger(speedIndex) && SIM_WATCH_SPEEDS[speedIndex]) {
+    setSimWatchSpeed(SIM_WATCH_SPEEDS[speedIndex]); return true;
+  }
+  return false;
+}
+
+export function closeSimWatch() {
+  controller?.stop();
+  controller = null;
+  context = null;
+  active = false;
+  const overlay = document.getElementById("simWatchOverlay");
+  if (overlay) {
+    overlay.classList.remove("sim-watch-open");
+    overlay.hidden = true;
+    closeModal(overlay);
+  }
+}

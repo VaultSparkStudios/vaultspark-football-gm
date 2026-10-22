@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-08T09:42:03.218Z",
+  "component": "regional-body-shape-v4 elliptical limb sections",
+  "round": 1,
+  "verdict": "FIX",
+  "primaryReceipt": "docs/visual-qa/PLAYER_REGIONAL_LIMBS_2026-10-08.json",
+  "primaryReceiptSha256": "4806209b694708d35c964baae3c6b9edb1d8b25303e3838b8e702f7ab3049a48",
+  "scope": "Versioned saved sections, sectional core proxy volume, shared projections, optional-control safety and retained legacy rendering; not complete human craft or rendered-union mass.",
+  "sourceHashes": {
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "public/lib/physiqueGeometryContract.js": "50bd0ff42b6a12e7e7ce00079d54831e0a914f86d933e2254b5048f13f4ed284",
+    "public/lib/profiledLimbSurface.js": "0773e916392106337475116c46645abc421db12d26c1893cfea8f67742b4a3fa",
+    "public/lib/playerPortrait.js": "1be3edc453ad1ca05b850a999e34bdb6d125203f4fa00be33919359c58c20733",
+    "public/lib/playerMotion.js": "7d4dc2569fe43feaf45cedc0eadbe756c8f3a0a82a4c1c66ba23ae66b5eda6c7",
+    "test/player-regional-limbs.test.js": "03dcc8fe254af3d4c5503b2766ec8c8ee2a46889968ddf9f9d04cf09ee1d28fe",
+    "test/fixtures/player-regional-limbs-v3.json": "7c026588cb7a176cdc1a8546c1c457b7b4f473727c6d47955d81c50bc26961f0",
+    "test/player-measured-rig.test.js": "f2fdcfacbb0d8de56408628ee6319a3368915d94e1d720e43b9f5fab62134a46",
+    "test/player-measurements.test.js": "2cb306578e32773b50c2a0f4645c5a38df34021f587bcab002414c2b682e19b6",
+    "test/player-regional-sections.test.js": "91d954d9595b65b77d68fae89617551a508d6245d3f79a3f211da0001d8dce81",
+    "test/player-regional-body-shape.test.js": "4f1d6f1ee1185f8e4059137687ff37694da80f8d8bfcd25379b9b4b9ef1ae5c8",
+    "test/player-body-measurement-tails.test.js": "f623ed33f632120dd90f288cfe5a3b1e32f14c0f06f255e9faf7feb684fc3701",
+    "tests-ui/player-regional-limbs.spec.js": "51f94ad5c92c9785e283fa32d558ba2a48cb4958d0def0117a0f827f6baf55fa",
+    "tests-ui/player-capacity-client.spec.js": "bcbb8c6776f7c1947a78caf01c242828d25f220c1df220afda4a4319e9777d77",
+    "tests-ui/player-regional-body-shape.spec.js": "314128eea1d4b6dd762519fe5b9fa10e7c68e71c5dc6b909351397d0785ef641",
+    "scripts/run-test-shard.mjs": "71aee73fc3abda3c73b757a43b38e322c7104b9a7deb809c8361302ef4ff6b27"
+  },
+  "bindings": {
+    "frozenSources": 18,
+    "captures": 12,
+    "evidence": 3,
+    "all33FrozenFilesHashVerified": true,
+    "builtPairs": [
+      {
+        "source": "src/domain/playerVisualIdentity.js",
+        "built": "static/src/domain/playerVisualIdentity.js",
+        "sourceMatch": true,
+        "builtMatch": true,
+        "normalizedExact": true
+      },
+      {
+        "source": "src/domain/playerIdentity.js",
+        "built": "static/src/domain/playerIdentity.js",
+        "sourceMatch": true,
+        "builtMatch": true,
+        "normalizedExact": true
+      },
+      {
+        "source": "src/domain/playerMeasurements.js",
+        "built": "static/src/domain/playerMeasurements.js",
+        "sourceMatch": true,
+        "builtMatch": true,
+        "normalizedExact": true
+      },
+      {
+        "source": "public/lib/physiqueGeometryContract.js",
+        "built": "static/lib/physiqueGeometryContract.js",
+        "sourceMatch": true,
+        "builtMatch": true,
+        "normalizedExact": true
+      },
+      {
+        "source": "public/lib/profiledLimbSurface.js",
+        "built": "static/lib/profiledLimbSurface.js",
+        "sourceMatch": true,
+        "builtMatch": true,
+        "normalizedExact": true
+      },
+      {
+        "source": "public/lib/playerPortrait.js",
+        "built": "static/lib/playerPortrait.js",
+        "sourceMatch": true,
+        "builtMatch": true,
+        "normalizedExact": true
+      },
+      {
+        "source": "public/lib/playerMotion.js",
+        "built": "static/lib/playerMotion.js",
+        "sourceMatch": true,
+        "builtMatch": true,
+        "normalizedExact": true
+      }
+    ]
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-regional-limbs.test.js test/player-body-measurement-tails.test.js test/player-measured-rig.test.js test/player-regional-sections.test.js test/player-regional-body-shape.test.js test/player-measurements.test.js",
+      "terminalChunk": "438841",
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 6189.4712,
+      "includes": "20 independent 20000-sample elliptical integration cases; 40 section variation seeds; 5 legacy v3 frames/40 exact SVG hashes and existing v1/v2 contracts."
+    },
+    {
+      "command": "Independent raw-DTO sparse-array probes via Node ESM",
+      "terminalChunks": [
+        "db8e1f",
+        "6f8f1a"
+      ],
+      "results": "Outer section index1 hole throws in projection and front/side/run/cut. Inner row1 breadth hole is accepted, projects NaN and emits NaN in front/cut; side/run remain finite."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1-P2-optional-section-density",
+      "severity": "P2",
+      "file": "public/lib/physiqueGeometryContract.js",
+      "function": "projectedLimbSections",
+      "line": 16,
+      "description": "Array.some/every skip holes. Outer missing row crashes predecessor access; missing breadth is accepted because undefined comparisons and NaN tolerance checks do not reject.",
+      "reproduction": "Generate valid v4 frame; delete frame.armSections[1] OR delete frame.armSections[1][1]; call projectedLimbSections and static/motion builders.",
+      "requiredCorrection": "Validate every own outer index and all three own numeric row entries densely before predecessor/max checks; malformed optional controls must return null and render finite fallback without DTO mutation. Add outer and inner sparse cases for both arm/leg and front/side/all movement modes.",
+      "qualification": "Raw DTO boundary; normal generated records are dense. JSON serialization converts array holes to null, which existing rejection handles, so this does not establish malformed saved JSON acceptance."
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "file": "docs/visual-qa/captures/regional-limb-desktop-dark-gallery.png",
+      "sha256": "267f6f160411c07e8cfb2c489d922e2861202d8751b68de4c59afe0b5a0178a1"
+    },
+    {
+      "file": "docs/visual-qa/captures/regional-limb-desktop-light-case-2.png",
+      "sha256": "5f0e545febf8573daad24ba6001f07f6c5ced86f3339bcdfaac67949b82667aa"
+    },
+    {
+      "file": "docs/visual-qa/captures/regional-limb-mobile-light-case-3.png",
+      "sha256": "ba59542fdf9074efc88bf1d1f496f632505860cc621f886088437e50deed97d8"
+    },
+    {
+      "file": "docs/visual-qa/captures/regional-limb-mobile-dark-case-2.png",
+      "sha256": "d0557ad57b7e2f14c546fd4bc30e1045b4d1aa903038fc327da3b7a6860b76a0"
+    }
+  ],
+  "pixelObservations": [
+    "Valid v4 rows visibly alter side/front widths and articulated regional limb shape; normal 77-inch/308-pound examples remain coherent with attached wrists and shorts.",
+    "62-inch/650-pound stress remains exaggerated with tissue/garment overlap, consistent with explicitly open engineering-envelope craft limitations.",
+    "Body/head materials and proportions remain stylized; inspection is four original captures, not all twelve."
+  ],
+  "primaryExecutedEvidence": {
+    "node": {
+      "passed": 28,
+      "terminal": "86d2dc"
+    },
+    "browser": {
+      "passed": 3,
+      "terminal": "2e4176",
+      "actualClientSeams": [
+        "built-worker",
+        "built-in-page"
+      ],
+      "namedSaveReplacementLoadReload": true
+    },
+    "build": {
+      "passed": true,
+      "terminal": "c81a47",
+      "assets": 319,
+      "kilobytes": 3552,
+      "precache": "3a1056a792a7"
+    },
+    "budgets": {
+      "passed": true,
+      "terminal": "d61475",
+      "modules": 139,
+      "bootBytes": 649321,
+      "bootBudget": 730000
+    },
+    "legacy": {
+      "v3Frames": 5,
+      "exactStaticAndMotionHashes": 40,
+      "earlierVersions": "Existing v1/v2 fixture checks also pass"
+    }
+  },
+  "attribution": "Primary browser/build/budget receipts were inspected and hash-bound; no independent browser rerun.",
+  "limits": [
+    "Only elliptical section cores are integrated; rounded caps, overlapping surfaces, reserved 12.5%, skull/hands/feet and complete visible union are not a whole-body mass proof.",
+    "Ratios and density are artistic engineering assumptions, not observed joint population fitting.",
+    "Full appearance craft, empirical calibration, all-suite, current 30-year career qualification and release are not accepted."
+  ]
+}

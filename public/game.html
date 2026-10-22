@@ -335,15 +335,40 @@
               <label>Designation
                 <select id="designationType">
                   <option value="gameDayInactive">Game-Day Inactive</option>
-                  <option value="ir">IR</option>
-                  <option value="pup">PUP</option>
-                  <option value="nfi">NFI</option>
+                  <option value="ir">Injured Reserve (IR)</option>
+                  <option value="ps-injured">Practice Squad/Injured</option>
+                  <option value="pup">Physically Unable to Perform (PUP)</option>
+                  <option value="nfi">Non-Football Injury (NFI)</option>
                 </select>
               </label>
               <button id="applyDesignationBtn" disabled>Apply Designation</button>
               <button id="clearDesignationBtn" class="warn" disabled>Clear Designation</button>
+              <button id="beginReservePracticeBtn" disabled>Begin Return Practice</button>
             </div>
+            <label class="small reserve-return-option"><input id="reserveReturnEligible" type="checkbox" checked /> Eligible to return this season. Uncheck for a season-ending placement.</label>
+            <p id="reserveDesignationGuidance" class="small" role="status"
+              data-active-ready="Healed with an active-roster opening; activation is available."
+              data-practice-ready="Healed with an eligible practice-squad opening; return is available."
+              data-practice-pay="Weekly practice terms remain in place; qualifying injury pay continues. This returns the player to practice, without an active-contract promotion."
+              data-legacy="This legacy reserve placement has no verified return history. A flag alone cannot establish eligibility."
+              data-practice-placement="Practice Squad/Injured requires a recorded injury and frees a practice place while retaining weekly contract terms and qualifying injury pay. Return requires healing, an eligible practice-squad opening and the reserve return process. To Active is a separate permanent promotion."
+              data-active-placement="Reserve placement requires a recorded injury and frees an active-roster place while retaining salary. PUP requires preseason physical and practice history; NFI requires a recorded non-football origin.">Select a player to view reserve eligibility. Reserve placement requires a recorded injury; salary remains charged.</p>
             <div class="small">Use Select in the roster table to choose a player for designation changes.</div>
+            <p id="practiceRosterGuidance" class="small">Practice players use separate weekly contracts. To move an active player to practice, release him first, wait for any required waivers to clear, then sign him from Free Agents. To Active is a permanent promotion and requires a roster opening and cap room.</p>
+            <p class="small">Elevate for Game keeps the practice contract and adds eligibility for the scheduled game. Review compensation and cap room before confirming; the player returns to practice after the game.</p>
+            <section id="standardElevationCard" class="standard-elevation-card" aria-labelledby="standardElevationTitle" hidden>
+              <h3 id="standardElevationTitle">Game elevation</h3>
+              <div id="standardElevationSummary" role="status"></div>
+              <div class="row">
+                <button id="confirmStandardElevationBtn">Confirm Game Elevation</button>
+                <button id="cancelStandardElevationBtn">Cancel</button>
+              </div>
+            </section>
+            <section id="injurySalaryClaimsCard" class="standard-elevation-card" aria-labelledby="injurySalaryClaimsTitle" hidden>
+              <h3 id="injurySalaryClaimsTitle">Retained injury salary claims</h3>
+              <p class="small">Review claims owed by this club, including former players. Settlement resolves salary only; injury recovery, employment and separate benefit review remain unchanged.</p>
+              <div id="injurySalaryClaimsList"></div>
+            </section>
             <div class="table-wrap"><table id="rosterTable" data-testid="roster-table"></table></div>
           </div>
 
@@ -376,6 +401,7 @@
               <label>Max Age <input id="faMaxAgeFilter" type="number" min="18" max="45" /></label>
             </div>
             <div id="faMarketBanner" class="chip" hidden>Market stage loading…</div>
+            <p id="practiceSigningGuidance" class="small">Sign to practice uses the player's scheduled weekly rate for the remaining regular-season weeks, with no signing bonus or guarantee. Practice squads permit 16 players, subject to service limits. Players awaiting waivers must clear before signing. Premium players pursue active-roster offers.</p>
             <div class="table-wrap"><table id="faTable" data-testid="fa-table"></table></div>
           </div>
           <div class="panel">
@@ -910,6 +936,7 @@
                   <option value="staff-update">Staff Update</option>
                   <option value="owner-update">Owner Update</option>
                   <option value="practice-squad-move">Practice Squad</option>
+                  <option value="standard-elevation">Game Elevation</option>
                   <option value="retirement-override">Retirement Override</option>
                   <option value="championship">Championship</option>
                 </select>
@@ -1506,7 +1533,7 @@
 
     <div id="playerModal" data-testid="player-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="playerModalTitle">
       <div class="modal-card player-modal-card">
-        <div class="row compact">
+        <div class="row compact player-modal-header">
           <h2 id="playerModalTitle">Player</h2>
           <button id="closePlayerModalBtn" data-testid="close-player-modal-btn" class="warn">Close</button>
         </div>

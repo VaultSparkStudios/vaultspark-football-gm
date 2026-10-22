@@ -1,0 +1,44 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {buildHeadMesh3d,headPoint3d} from '../public/lib/playerHead3d.js';
+const colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'};
+const styles=['clean','stubble','mustache','goatee','short-beard','full-beard'];
+test('grooming refinement preserves every non-beard surface and saved input against the frozen production baseline',async()=>{
+ const url=new URL('../public/lib/playerSurfaceLighting.js',import.meta.url).href;
+ const source=fs.readFileSync(new URL('../docs/visual-qa/references/production-beard-before-2026-10-08.js',import.meta.url),'utf8').replace("'./playerSurfaceLighting.js'",JSON.stringify(url));
+ const baseline=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+ for(const facialHair of styles){
+  const a={hairstyle:'swept',hairTexture:'wavy',hairDensity:.8,facialHair,faceWidth:1.1,faceLength:1.09};
+  const raw=structuredClone(a),before=baseline.buildHeadMesh3d(a,colors,{identitySeed:'same-person',headOnly:true}),after=buildHeadMesh3d(a,colors,{identitySeed:'same-person',headOnly:true});
+  assert.deepEqual(after.anatomy,before.anatomy);assert.deepEqual(after.eyeDepths,before.eyeDepths);assert.deepEqual(a,raw);
+  for(const part of after.parts.filter(p=>!p.name.startsWith('beard-')&&!p.name.startsWith('mustache-'))){
+   const old=before.parts.find(p=>p.name===part.name);assert.equal(part.indexCount,old.indexCount);
+   for(let k=0;k<part.indexCount;k++){
+    const p=after.indices[part.firstIndex+k]*10,q=before.indices[old.firstIndex+k]*10;
+    assert.deepEqual(after.vertices.subarray(p,p+10),before.vertices.subarray(q,q+10),part.name);
+   }
+  }
+ }
+});
+test('facial grooming has fitted camera-independent volume while preserving anatomy and the mouth aperture',()=>{
+ for(const extremes of[{faceLength:.92,faceWidth:.88,chinLength:.85},{faceLength:1.09,faceWidth:1.10,chinLength:1.12}])for(const facialHair of styles){
+  const a={...extremes,hairstyle:'long',hairTexture:'coily',hairDensity:1,hairLength:2,facialHair};
+  const raw=structuredClone(a),mesh=buildHeadMesh3d(a,colors,{identitySeed:'volume-proof',headOnly:true});
+  assert.deepEqual(a,raw);assert.ok(mesh.vertices.every(Number.isFinite));assert.ok(mesh.vertices.byteLength+mesh.indices.byteLength<1650000);
+  const volume=mesh.parts.filter(p=>p.name==='beard-volume'||p.name.startsWith('mustache-volume'));
+  assert.equal(volume.length,facialHair==='clean'||facialHair==='stubble'?0:facialHair==='mustache'?2:3);
+  for(const part of volume){
+   let nearest=Infinity,farthest=0;
+   for(const i of new Set(mesh.indices.subarray(part.firstIndex,part.firstIndex+part.indexCount))){
+    const p=Array.from(mesh.vertices.subarray(i*10,i*10+3));
+    const nominalY=141+((151-p[1])-141)/mesh.anatomy.faceControls.length;
+    assert.ok(!(Math.abs(p[0])<mesh.anatomy.mouthWidth*.75&&nominalY>202&&nominalY<210),'Lip aperture remains clear '+JSON.stringify({facialHair,part:part.name,p,nominalY}));
+    const surface=headPoint3d(a,Math.atan2(p[0],p[2]),151-p[1]);
+    const residual=Math.hypot(p[0],p[2])-Math.hypot(surface[0],surface[2]);
+    nearest=Math.min(nearest,residual);farthest=Math.max(farthest,residual);
+   }
+   assert.ok(nearest<1.5,'Grooming roots remain at skin');assert.ok(farthest>.3,'Grooming has physical relief');
+  }
+ }
+});

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "component": "Measured neutral/shared body rig",
+  "reviewRound": 1,
+  "verdict": "FIX",
+  "reviewedAt": "2026-10-08T01:23:21.652Z",
+  "sourceHashes": {
+    "public/lib/physiqueGeometryContract.js": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241",
+    "public/lib/playerPortrait.js": "7ac33ac518278bbfdda18322f8afe5ce7d62c1c8d2912595c403d51f0901945b",
+    "public/lib/playerMotion.js": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+    "test/player-measured-rig.test.js": "822a939a87af58c3dd6dccded5fbcb92dbb1b544629e5cfbf185b1ac36352b7c",
+    "test/player-limb-contours.test.js": "65529573e8c20140711cf2c48ec2cbf2c4d302a4fc2a03ecc31fa82ef2e0453b",
+    "test/player-capacity-study.test.js": "8f9ebe834afeee694c1c3a3e93859cefeeaaa71eb5e05b27a2e9bdd0bc255abb",
+    "scripts/run-test-shard.mjs": "b13f126584029694db22cdf4ef2ec00db6af05c9d9de3123cbb6b658fd56a60f"
+  },
+  "findings": [
+    {
+      "id": "P2-neutral-front-missing-footwear-fallback",
+      "priority": "P2",
+      "description": "The new measured neutral front leg branch concatenates buildIndividualFootwear without retaining its null fallback. A valid independent optional-channel combination (regional-body-shape-v2 with no individualAnatomyRecipe) yields no foot dimensions, removes both shoes and emits literal null twice. Side rendering retains a fallback.",
+      "evidence": ".cache/neutral-rig-r1-footwear-probe-result.json",
+      "requestedCorrection": "Retain estimated footwear at the solved measured ankle when optional foot dimensions are absent/unusable; do not invent saved measurements."
+    },
+    {
+      "id": "stale-capacity-pose-fixture",
+      "priority": "verification",
+      "description": "An adjacent exact baseline pose assertion compares new v2 hidden transverse z coordinates to old poses without z. Original x/y agree; this is an intentional pose-authority addition requiring a correctly scoped legacy fixture rather than fixture regeneration.",
+      "requestedCorrection": "Pin the historical fixture person to its true v1 decoder and retain exact comparisons; separately verify new v2 3D segment/spacing authority."
+    }
+  ],
+  "executedChecks": [
+    {
+      "command": "node --test test/player-measured-rig.test.js test/player-limb-contours.test.js test/player-regional-sections.test.js test/player-capacity-study.test.js",
+      "result": "14 cases:13PASS1FAIL,zero skips,6.094seconds. Newrig3,limb4,regional5 andresistance1 passed; legacycapacityposecomparison failed only on addedz keys."
+    },
+    {
+      "command": "node .cache/regional-sections-legacy-independent.mjs",
+      "result": "9 authentic original frame comparisons and72 exact original SVG hashes passed;tracked fixture equalspreserved fixture."
+    },
+    {
+      "command": "node .cache/neutral-rig-r1-footwear-probe.mjs",
+      "result": "Original reviewed renderer reproduces2 literalnull values,zero footwear,measuredrig active,DTO unchanged with absent optionalanatomy recipe."
+    }
+  ],
+  "sourceRetention": {
+    "copies": [
+      {
+        "path": ".cache/neutral-rig-r1-reviewed-physiqueGeometryContract.js",
+        "sha256": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241"
+      },
+      {
+        "path": ".cache/neutral-rig-r1-reviewed-playerPortrait.js",
+        "sha256": "7ac33ac518278bbfdda18322f8afe5ce7d62c1c8d2912595c403d51f0901945b"
+      },
+      {
+        "path": ".cache/neutral-rig-r1-reviewed-playerMotion.js",
+        "sha256": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1"
+      },
+      {
+        "path": ".cache/neutral-rig-r1-reviewed-playerCapacityStudy.js",
+        "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7"
+      }
+    ],
+    "qualification": "Exact reviewed R1 copies preserved before primary repairs. Primary has subsequently changed source; this verdict does not accept those revisions."
+  },
+  "inspectedImages": [],
+  "primaryFollowup": "Primary reports footwear repair,legacy fixture correction and shared per-limb gradients/rounded cap addressing observed seams. These changes remain unreviewed for R2.",
+  "limits": [
+    "R1 source/geometry/refusal finding is sufficient forFIX;no rendered-pixel acceptance claimed before final captures.",
+    "Shared proportions use artistic assumptions;not a measured anatomical scan or calibrated physiology.",
+    "Exact hand projection includes ordinary SVG quantization;no full malformed resolved-DTO guarantee.",
+    "Full-player naturalism,empirical fitting,career/rules and release remain open."
+  ]
+}

@@ -1,0 +1,14 @@
+[WebServer] (node:66940) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:33464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests-ui\player-facial-hair-client.spec.js:9:34 › built worker dossier keeps facial hair and solved torso through actual save and restoration (13.5s)
+  ✓  2 tests-ui\player-facial-hair-client.spec.js:9:34 › built in-page dossier keeps facial hair and solved torso through actual save and restoration (12.5s)
+  ✓  3 tests-ui\player-facial-hair-gallery.spec.js:3:1 › facial hair refinement: saved people and grooming (12.5s)
+  ✓  4 tests-ui\player-facial-hair-production.spec.js:6:1 › production facial hair before/after retains one saved head across actual dossier views (20.7s)
+  ✓  5 tests-ui\player-hair-volume-gallery.spec.js:3:1 › hair volume refinement: fixed saved person across styles (14.7s)
+
+  5 passed (1.3m)

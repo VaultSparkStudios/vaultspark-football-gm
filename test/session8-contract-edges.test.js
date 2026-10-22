@@ -8,14 +8,15 @@ test("multiple restructures increment restructureCount and mutate capHit each ti
   const session = createSession({ seed: 8100, startYear: 2026, controlledTeamId: "BUF" });
 
   // Find a player with at least 3 years remaining so we can restructure twice
-  const player = session.getRoster("BUF").find((p) => (p.contract?.yearsRemaining || 0) >= 3);
+  const player = session.getRoster("BUF").find((p) => (p.contract?.yearsRemaining || 0) >= 3 && p.contract.baseSalary > 3_000_000);
   assert.ok(player, "need a multi-year contract for this test");
 
   const capHit0 = player.contract.capHit;
+  const restructuresBefore = player.contract.restructureCount;
 
   const r1 = session.restructurePlayerContract({ teamId: "BUF", playerId: player.id });
   assert.equal(r1.ok, true);
-  assert.equal(r1.contract.restructureCount, 1);
+  assert.equal(r1.contract.restructureCount, restructuresBefore + 1);
   const capHit1 = r1.contract.capHit;
   assert.notEqual(capHit1, capHit0, "cap hit must change after first restructure");
 
@@ -59,19 +60,27 @@ test("releasing to waivers keeps player in waiver pool", () => {
 test("evaluateTradePackage returns valuation for a 1-for-1 player swap", () => {
   const session = createSession({ seed: 8200, startYear: 2026, controlledTeamId: "BUF" });
 
-  const bufRoster = session.getRoster("BUF");
-  const miaRoster = session.getRoster("MIA");
+  const bufRoster = session.getRoster("BUF").filter(p => p.rosterSlot === "active");
+  const miaRoster = session.getRoster("MIA").filter(p => p.rosterSlot === "active");
+  session.league.capLedger.BUF.rollover = 5_000_000;
+  session.league.capLedger.MIA.rollover = 5_000_000;
+  // Choose a cap-neutral pair of minimum deals. Expensive arbitrary players
+  // can be correctly refused under the now-binding cap before valuation.
+  const outgoing = bufRoster.find(a => a.contract.signingBonus === 0 && miaRoster.some(b =>
+    b.position === a.position && b.contract.capHit === a.contract.capHit && b.contract.signingBonus === 0));
+  assert.ok(outgoing, 'need a same-position cap-neutral pair');
+  const incoming = miaRoster.find(b => b.position === outgoing.position && b.contract.capHit === outgoing.contract.capHit && b.contract.signingBonus === 0);
 
   const result = session.evaluateTradePackage({
     teamA: "BUF",
     teamB: "MIA",
-    teamAPlayerIds: [bufRoster[1].id],
-    teamBPlayerIds: [miaRoster[1].id],
+    teamAPlayerIds: [outgoing.id],
+    teamBPlayerIds: [incoming.id],
     teamAPickIds: [],
     teamBPickIds: []
   });
 
-  assert.equal(result.ok, true, "evaluateTradePackage must succeed for valid players");
+  assert.equal(result.ok, true, JSON.stringify(result));
   assert.ok(result.valuation, "valuation must be present");
   assert.ok(typeof result.valuation["BUF"].outgoingValue === "number");
   assert.ok(typeof result.valuation["MIA"].outgoingValue === "number");
@@ -161,6 +170,9 @@ test("getBoxScore returns play-by-play for a recent game", () => {
 
 test("signing a free agent with max roster triggers an error or roster cap", () => {
   const session = createSession({ seed: 8500, startYear: 2026, controlledTeamId: "BUF" });
+  // This fixture isolates the roster-slot round trip. Cap refusal has its own
+  // authority tests; a realistic rollover leaves room for the new depth deal.
+  session.league.capLedger.BUF.rollover = 20_000_000;
 
   // Fill the roster to the limit by releasing one player then signing someone
   // (just verify the sign flow works when there's room)
@@ -174,7 +186,8 @@ test("signing a free agent with max roster triggers an error or roster cap", () 
   // refused with "Active roster full (53)". Selecting an active player keeps
   // this measuring the round trip it is named for.
   const activeRoster = session.getRoster("BUF").filter((entry) => (entry.rosterSlot || "active") === "active");
-  const releasable = activeRoster.find((entry) => (entry.overall || 0) < 74) || activeRoster.at(-1);
+  const releasable = activeRoster.filter(entry => entry.overall < 74).sort((a, b) => a.overall - b.overall)[0];
+  assert.ok(releasable, 'need an affordable depth player for the round trip');
   session.releasePlayer({ teamId: "BUF", playerId: releasable.id, toWaivers: false });
 
   const signed = session.signFreeAgent({ teamId: "BUF", playerId: releasable.id });

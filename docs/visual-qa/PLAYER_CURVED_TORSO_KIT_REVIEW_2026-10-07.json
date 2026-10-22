@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-07T19:59:56.267Z",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Curved volume-preserving modern torso and shared static/moving training shorts",
+  "doneCondition": "Replace rigid linear torso with an actually curved envelope retaining endpoint sections and numerically integrated saved volume; coherent kit across neutral front/side and all six motion modes; preserve saved person/frame/pose and exact legacy render output.",
+  "primaryReceiptPath": ".cache/curved-kit-reviewed-primary.json",
+  "primaryReceiptSha256": "bcd23482c107df21849b9568ae4320eb3dbf47b349ca0a2bf6cf9fde55192bd9",
+  "sourceHashes": {
+    "public/lib/torsoSurface.js": "b820d669e76f55f5cdd59d86e001623dafa2d3815bdbf23ed3185c1bf49867eb",
+    "public/lib/playerPortrait.js": "d5460bcfaf782f443b1177d9aa4dd22e91359dfb21d75700e6e673868afd7ba8",
+    "public/lib/playerMotion.js": "d804595cbf93db0f41a17ddc6abd859129a3ac9370030933074ec8627eb56a20",
+    "public/lib/playerCapacityStudy.js": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+    "public/lib/physiqueGeometryContract.js": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+    "public/lib/playerPortraitFace.js": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+    "public/lib/playerSideAppearance.js": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+    "public/lib/fineFaceGeometry.js": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+    "public/lib/appCore.js": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+    "public/styles.css": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerMeasurements.js": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9",
+    "tests-ui/player-measured-body-comparisons.spec.js": "8a000cefa8fc2b6318309005536cd02db1815eca7bcb15ef6b79d0fa8a790fdb",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "36f1b252fc83afb8d63e80a871ae9f7bb2a5972cdf84a12ee537a364abf92ff7",
+    "tests-ui/player-capacity-client.spec.js": "fe7917574da9c2543efc6319e4dc033cb30f13e8f1034539933808bf47af1dd1",
+    "test/player-torso-envelope.test.js": "41ed47f7d00e737770490a28cd341617ab4c532c4bc5653ba3022a09c7c069fd",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "public/lib/playerTrainingKit.js": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec"
+  },
+  "beforeHashes": {
+    "public/lib/playerPortrait.js": "826e18b137bdc6c45533b12a529d1ba0c8302975f0632bf19ec457e0914a5496",
+    "public/lib/playerMotion.js": "5efbfe2d8f69432df81ec12b2f10234ab621b552d66c08e3146d8889ee6cbeb1",
+    "public/lib/torsoSurface.js": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18"
+  },
+  "builtSources": {
+    "static/lib/torsoSurface.js": {
+      "sha256": "b820d669e76f55f5cdd59d86e001623dafa2d3815bdbf23ed3185c1bf49867eb",
+      "sourceSha256": "b820d669e76f55f5cdd59d86e001623dafa2d3815bdbf23ed3185c1bf49867eb"
+    },
+    "static/lib/playerPortrait.js": {
+      "sha256": "d5460bcfaf782f443b1177d9aa4dd22e91359dfb21d75700e6e673868afd7ba8",
+      "sourceSha256": "d5460bcfaf782f443b1177d9aa4dd22e91359dfb21d75700e6e673868afd7ba8"
+    },
+    "static/lib/playerMotion.js": {
+      "sha256": "d804595cbf93db0f41a17ddc6abd859129a3ac9370030933074ec8627eb56a20",
+      "sourceSha256": "d804595cbf93db0f41a17ddc6abd859129a3ac9370030933074ec8627eb56a20"
+    },
+    "static/lib/playerCapacityStudy.js": {
+      "sha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+      "sourceSha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30"
+    },
+    "static/lib/physiqueGeometryContract.js": {
+      "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+      "sourceSha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1"
+    },
+    "static/lib/playerPortraitFace.js": {
+      "sha256": "010733c653b58d0ac5af708288a861895d8019f0fbff0d1cc87b17e043d76e16",
+      "sourceSha256": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f"
+    },
+    "static/lib/playerSideAppearance.js": {
+      "sha256": "16d469d30fd7fb36ad437352c35d8980aa9533c52725092a6611801873faa1d5",
+      "sourceSha256": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a"
+    },
+    "static/lib/fineFaceGeometry.js": {
+      "sha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+      "sourceSha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0"
+    },
+    "static/lib/appCore.js": {
+      "sha256": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+      "sourceSha256": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51"
+    },
+    "static/lib/appearancePalette.js": {
+      "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+      "sourceSha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+    },
+    "static/lib/playerTrainingKit.js": {
+      "sha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+      "sourceSha256": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec"
+    }
+  },
+  "artifactFingerprintDigest": "a1397f8edd200c448a4ca6a529c0f120926deaccd3ba228a2ac8d817e57a7d27",
+  "checks": [
+    {
+      "command": "node --test test/player-torso-envelope.test.js test/player-motion.test.js test/player-motion-surfaces.test.js test/player-capacity-study.test.js",
+      "result": "17/17 PASS, zero skipped; actual SVG volume/endpoint integration, shared six-mode shorts hem, resource isolation, saved-frame purity, articulation/capacity and legacy parity",
+      "durationMs": 2035.5753
+    },
+    {
+      "command": "node .cache/curved-kit-independent-probe.mjs",
+      "result": "PASS:19 source/3 baseline/11 built bindings,96 capture hashes;54 direct actual rounded cubic polynomial squared-integral/endpoint/positivity cases;252 exact immediate-baseline legacy renders;216 exact modern poses;18 input-immutability checks"
+    }
+  ],
+  "probeSha256": "e25e0370a604f68fd7981bbc55004163db9f07fef8dbdeaee2e360ace0486e55",
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/s117-measured-body-body-light-after-mass-desktop-light.png",
+      "sha256": "c98a97dcb5922a2a02d1dee8c24c13ee2e79d8d27429c7653b6920f37789a649"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-curved-kit-after-mass-desktop-light.png",
+      "sha256": "d5c4774d23e3a21ebcdb35ba51797477da5b995e8e7fccbb6ff6ed38f887e6dd"
+    },
+    {
+      "path": "output/playwright/body-light-dossier-after-afro-desktop-dark-body.png",
+      "sha256": "d9e7ff646a48178e23268f7902f80e87236f5d50e6f9224b0afa0e07312027d2"
+    },
+    {
+      "path": "output/playwright/curved-kit-dossier-after-afro-desktop-dark-body.png",
+      "sha256": "099f473a6d962dba9fd61b37a2ee4b318ee85952c3e8fb36f0ae393f62d64ea3"
+    },
+    {
+      "path": "output/playwright/body-light-dossier-after-afro-mobile-light-body.png",
+      "sha256": "a547917f0177fcfea9e6aa612847effa00958a08582a9a66474837107adeb765"
+    },
+    {
+      "path": "output/playwright/curved-kit-dossier-after-afro-mobile-light-body.png",
+      "sha256": "8ed13d85d57565af406fb0febf5c8baeadbab2ad481abb05b3df72f47e39425f"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-body-light-after-mass-mobile-dark.png",
+      "sha256": "36b6eb3826f692dcdd868ecd59614814b848ec2a8821279c64ec01a95ee72ed7"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-curved-kit-after-mass-mobile-dark.png",
+      "sha256": "d22ceeb34c2ed44c8f36f4bc3cffdda3b626caccc07891e8c6e629c920c6a1b7"
+    }
+  ],
+  "findings": [],
+  "pixelAssessment": [
+    "Torso sidewalls now visibly curve in matched mass and actual dossier pairs; saved chest/waist endpoint sizes and stature remain stable.",
+    "Static front and side now expose saved leg skin and wear shorts, matching moving training-kit convention; former leggings/bare-leg/shorts mismatch is materially improved.",
+    "Matched actual desktop dark and mobile light bodies remain readable; no new clipping or exposed garment gap observed in inspected originals.",
+    "Shape and kit remain illustrated; pronounced waist shaping and flat limb lighting are artistic estimates, not anatomical calibration."
+  ],
+  "sourceAssessment": [
+    "Cubic q(t) uses antisymmetric chest/abdominal curvature and stable compensating root; correct integral equation preserves solver linear-taper ellipse volume before .01-pixel rounding. Independent polynomial integration of actual path controls confirms it within rounding allowance.",
+    "Shared hip-to-knee hem share .48 is a cosmetic garment policy, not a measured anatomical endpoint. Tests bind actual movement path hem to saved joints in all six modes.",
+    "Fine-face gate retains legacy static/moving branches. Domain generation, saved recipe/frame and pose solver sources remain unchanged.",
+    "Modern kit helper validates finite paths and uses renderer-owned color constants; malformed existing torso inputs retain refusal."
+  ],
+  "harnessAssessment": [
+    "Before images reuse prior final body-light captures; baseline hashes agree with prior reviewed lighting source, while new frozen receipt binds all unchanged dependencies.",
+    "Built-client harness now performs BUF named save, actual MIA new-league replacement, BUF named UI load, reload, saved appearance/frame equality and all six mode selections. This closes previous checkpoint-discrimination gap in this narrow client proof.",
+    "Primary final evidence includes corrected final yoke; initial rectangular-yoke diagnostic is historical and not acceptance evidence."
+  ],
+  "primaryEvidence": {
+    "focusedTests": "25/25 PASS46cb22,10.103seconds,zero skipped; initial24 run failed only exact legacy side blank line, corrected before final",
+    "galleryFinal": "1PASSb6d42e,15.4seconds",
+    "dossierFinal": "1PASSf9e980,34.3seconds",
+    "builtClient": "2PASS5366f2,29.4seconds worker/in-page actual BUF save → MIA new-league command → BUF named load → reload → six mode controls",
+    "pagesBuild": "c77c7a6c7457,306assets,3411KB",
+    "boot": "649321/730000 bytes,51/58modules,0lazyleaks PASS612054",
+    "reachability": "132modules,4HTMLentries PASS612054"
+  },
+  "limits": [
+    "Eight listed originals independently pixel-inspected;96 capture hashes verified, not all capture pixels reviewed. Tall mobile galleries inspected as overview strips, not native-scale every small feature.",
+    "Primary25 and browser worker/in-page terminal counts read from frozen artifact; no independent Playwright rerun.",
+    "Whole face/hair/body naturalism remains OPEN1; this does not establish fitted body-fat/lean-mass distribution, empirical cohort, regional muscle anatomy, physics or medical correctness.",
+    "No whole appearance, all animation behavior, current career, full NFL or release approval."
+  ]
+}

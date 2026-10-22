@@ -9,6 +9,9 @@
 import { getSportRules } from "../../sport/registry.js";
 import { normalizeContract } from "../../domain/contracts.js";
 import { getAllTeamPlayers } from "../../domain/teamFactory.js";
+import { projectCapCarryover } from '../../domain/capCarryover.js';
+import { retainedRosterCompensationCap } from '../../domain/earnedPracticeCap.js';
+import { financialYearForLeague } from '../../data/nflSalaryCap.js';
 
 export class ContractService {
   constructor(sessionOrLeague) {
@@ -26,18 +29,27 @@ export class ContractService {
     };
     const usedCap = getAllTeamPlayers(this.league, teamId).reduce(
       (sum, player) => sum + normalizeContract(player.contract).capHit,
-      0
+      retainedRosterCompensationCap(capLedger)
     );
     const salaryCapBase = this.league.teamCapOverride?.[teamId] || getSportRules(this.league.sportId).structure.salaryCap;
     const salaryCap = salaryCapBase + (capLedger.rollover || 0);
     const deadCap = capLedger.deadCapCurrentYear || 0;
+    const capSpace = salaryCap - usedCap - deadCap;
+    const carryover = projectCapCarryover(this.league, capSpace);
     return {
       salaryCap,
       usedCap,
       deadCap,
-      capSpace: salaryCap - usedCap - deadCap,
+      capSpace,
       deadCapNextYear: capLedger.deadCapNextYear || 0,
-      rolloverNextYearEstimate: capLedger.rollover || 0
+      rolloverCurrentYear: capLedger.rollover || 0,
+      rolloverNextYearEstimate: carryover.amount,
+      rolloverPolicy: carryover.policy,
+      capProvenance: this.league.capModel ? {
+        ...this.league.capModel,
+        year: financialYearForLeague(this.league),
+        kind: financialYearForLeague(this.league) > this.league.capModel.baseYear ? "simulation-projection" : this.league.capModel.kind
+      } : null
     };
   }
 

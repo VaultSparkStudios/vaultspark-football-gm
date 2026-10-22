@@ -1,0 +1,52 @@
+{
+  "component": "modern-shared-limb-contour",
+  "round": 2,
+  "scope": "Final built evidence and test parser correction; no production geometry changes",
+  "verdict": "PASS",
+  "priorReview": {"path":".cache/limb-contour-review-round1.json","sha256":"f377d66aa20307562b50be8494a2c1f676d3e20b1187fd03819718de125a6526"},
+  "sourceHashes": {
+    "public/lib/profiledLimbSurface.js": "f0e9ebd25a40ab1b3f6e39cf5478c5591caa9b44f445d557cbbb54c0ddd32555",
+    "public/lib/playerPortrait.js": "4996c8b87f2595a4c91fe3ae9501d39b0988902516bde56409ae42851c1be753",
+    "public/lib/playerMotion.js": "2669b8da29b8b5d3211a04c29b7b01f93018001faecf492bf631b0ade9ca063b",
+    "test/player-limb-contours.test.js": "69455c4c4ea52bdc035efd0224377854bbd4269887048fe99c693b7892426b5f",
+    "tests-ui/player-capacity-client.spec.js": "5f5cf15a12c28e8963eef6d76e043555c67008ddffaaec1dc8ccba90af7d33b8",
+    "scripts/run-test-shard.mjs": "8292f2eec721b35745f07ae8670414c69417f41024ff105d73b4849f1be9da6d"
+  },
+  "artifactHashes": {
+    ".cache/player-limb-contour-client/worker.json": "756356b88d4ceabd4be58bb3f41041219241531f72f1c3669600b1c7394167f1",
+    ".cache/player-limb-contour-client/in-page.json": "50e796282fb71fa1ffb49355ef99062b67264ad5dec0ffc4008addedcfddff3d",
+    "static/deploy-manifest.json": "132a21abf8e683cbfe8ad80a3f91b5aee5e5c1402243133366ef30cc392f68e6"
+  },
+  "findings": [],
+  "checks": [
+    "Production three modules and core numerical test hashes match R1 exactly.",
+    "Only expected-SVG parsing changes from strict XML DOMParser to template.innerHTML. Exact mounted paths equal current built-renderer paths and differ from fine-disabled fallback remain asserted for static and all six reduced-motion modes.",
+    "Test still creates BUF, saves named slot, actually replaces franchise with MIA, loads BUF through Settings, reloads, compares full appearance/frame and opens the real dossier.",
+    "Independently executed Node normalized-text comparison: all three built modules equal current source after CRLF-to-LF normalization.",
+    "Independently checked both receipt flags, six-mode lists and artifactDigest equality with current static manifest."
+  ],
+  "primaryBrowserObservation": {
+    "terminalRun": "f8c11e",
+    "pass": 2,
+    "fail": 0,
+    "durationSeconds": 44.5,
+    "workerSeconds": 20.9,
+    "inPageSeconds": 18.3,
+    "artifactDigest": "239efb464c724cff6c927d3dfc60a7d408e92ae3cc8e3a208a0053f13dcb4059",
+    "qualification": "Primary terminal result and local per-mode receipts checked; no independent browser rerun. Initial1a4138 both-case expected-paths-empty XML parsing failure remains historical evidence."
+  },
+  "inheritedIndependentEvidence": {
+    "review": "R1",
+    "testsPass": 13,
+    "testsSkipped": 0,
+    "actualCubicWidthSamples": 2970,
+    "anchorChecks": 90,
+    "inspectedOriginalImages": 8,
+    "qualification": "Source-identical evidence inherited, not rerun or reinspected in R2; exact paths and commands remain in immutable R1 receipt."
+  },
+  "limits": [
+    "Scoped contour/component evidence only. Full appearance naturalism, rigid torso and empirical anatomical calibration remain open.",
+    "Fine-disabled comparison proves current integration differs from fallback, not that each byte difference independently establishes anatomical realism.",
+    "No full application, NFL rules, current thirty-year career or release acceptance."
+  ]
+}

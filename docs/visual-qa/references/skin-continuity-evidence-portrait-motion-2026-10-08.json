@@ -1,0 +1,106 @@
+{
+  "scope": "Actual blink cycle and reduced-motion reopening; controlled pose screenshots; explicit browser context loss/restoration",
+  "captures": [
+    {
+      "file": "output/playwright/portrait-motion-desktop-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "a7e4f6083d8cd8d3b53e7e6f3efce1b5c4c610ddfd055f7673f54674e98b93ff"
+    },
+    {
+      "file": "output/playwright/portrait-motion-desktop-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "27cf1c986b1c3118addca349573c7402a70e3f3ab1dc332f4aa30b19c3298fd8"
+    },
+    {
+      "file": "output/playwright/portrait-motion-desktop-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ce0a37d6d9878f96031afaa31a08075191251d71ac0c3770f2dc5d8a1fb6e132"
+    },
+    {
+      "file": "output/playwright/portrait-motion-desktop-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "147ac79850cea4e936549d2a9d8e706ba33b54e8e4bc298eb47ece13e4e40f32"
+    },
+    {
+      "file": "output/playwright/portrait-motion-mobile-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "26a30a386eba4919e3c718c5a68b1f9c518c17a77089d169d17bfa984e3ac46b"
+    },
+    {
+      "file": "output/playwright/portrait-motion-mobile-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f89f41c257be3698dc1f0ccb04c9b8389617966b0ca6bc3da192453f34e7fd90"
+    },
+    {
+      "file": "output/playwright/portrait-motion-mobile-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0f15bd691832547b034175ef3d4c828a3165bc6360418f08e9a3820337e683d5"
+    },
+    {
+      "file": "output/playwright/portrait-motion-mobile-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "35ac7cc1cebbc4bce8fb9427e11e168b392b43c4beda717bae18b6c0f9f8d860"
+    }
+  ],
+  "geometryReuse": {
+    "cacheEntries": 1,
+    "cacheLimit": 32,
+    "draws": 4,
+    "meshBuilds": 1,
+    "unavailable": false,
+    "contexts": 1
+  },
+  "actualCyclePassed": true,
+  "reducedMotionExactOpen": true,
+  "disconnectCleanupPassed": true,
+  "contextRecoveryExactOpen": true,
+  "playerUnchanged": true
+}

@@ -1,0 +1,56 @@
+[Public-safe diagnostic derivative: only the absolute local workspace prefix was redacted; results and timings are unchanged. Original SHA-256: 0860691bdeafc03a77dbc95525b5dddf009cde1ed13facf79d0cdccdc4ecd942]
+✔ one physical body retains measured segments and fingertip endpoints across all six modes (4133.9222ms)
+✔ neutral modeled skull and feet agree with stature and foot dimensions at common physical scale (653.2339ms)
+✔ mass changes bulk without changing saved face, segment lengths or skeletal root anchors (268.1529ms)
+✔ modern upper crown is rounder while lower face and eye/lid attachment stay exact (31.2653ms)
+✔ categorical older faces retain exact mesh across all supported hair and facial grooming (53746.0205ms)
+✔ modern crown grooming never changes the saved face or unrelated visible surfaces (2162.3786ms)
+✔ rounded crown retains continuous station normals and bounded extreme modern hair (8654.582ms)
+✔ modern facial grooming preserves the saved person, every other mesh surface and the resource budget (4877.8382ms)
+✖ older facial pigment geometry remains exact; modern crown is separately covered (7701.2351ms)
+✔ modern beard and relocated mustache vertices clear the actual curved lip mask (4388.6567ms)
+✔ modern combed volume changes hair while preserving every non-hair surface and saved input (4899.7867ms)
+✔ all hair styles retain legacy geometry and changed modern styles remain within the mesh budget (17377.2761ms)
+✔ part location changes the modern hair volume without changing facial anatomy (860.2484ms)
+✔ modern asymmetric support joins actual rear mesh positions and normals at every row (4434.0637ms)
+✔ modern top and bottom poles collapse to a single point at every angle and preserve measured skull span (8254.784ms)
+✔ pole repair leaves the middle head and all eyelids exact, and categorical decoding unchanged (8568.5961ms)
+✔ previous negative skull ray is repaired without changing the ray estimator or measured pose (6698.4164ms)
+✔ ray union matches analytic boxes, overlaps, nested and coincident solids in every axis (202.1761ms)
+✔ experimental mass fitting reconciles union volume while preserving person and every measured pose endpoint (5455.9343ms)
+✔ open, reversed and malformed geometry refuses rather than yielding accepted mass (3.7018ms)
+✔ oblique octahedron quadrature approaches its analytic volume, including rays through projected vertices (365.3082ms)
+✔ complete modeled body components close and ray refinement remains stable with overlap removed (2344.266ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 21
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 67577.8584
+
+✖ failing tests:
+
+test at test\player-facial-hair-form.test.js:25:1
+✖ older facial pigment geometry remains exact; modern crown is separately covered (7701.2351ms)
+  AssertionError [ERR_ASSERTION]: goatee beard-volume
+  + actual - expected
+  
+  + '5f5a64063c87829e09ca6c624ff58692025fb135fb09f6c5da0e25fd49aa0fae'
+  - 'c7fdbaaed93315ff4c0382ad5732643703359f1977aae2bc394575d9fd49d9eb'
+  
+      at TestContext.<anonymous> (file:///[workspace]/test/player-facial-hair-form.test.js:30:130)
+      at Test.runInAsyncScope (node:async_hooks:228:14)
+      at Test.run (node:internal/test_runner/test:1118:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:787:18)
+      at Test.postRun (node:internal/test_runner/test:1247:19)
+      at Test.run (node:internal/test_runner/test:1175:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '5f5a64063c87829e09ca6c624ff58692025fb135fb09f6c5da0e25fd49aa0fae',
+    expected: 'c7fdbaaed93315ff4c0382ad5732643703359f1977aae2bc394575d9fd49d9eb',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

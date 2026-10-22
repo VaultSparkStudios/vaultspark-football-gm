@@ -1,0 +1,302 @@
+{
+  "sameSavedCompleteHead": true,
+  "samePalette": true,
+  "playerId": "P2026-BUF-OL-75203022",
+  "cases": 6,
+  "captures": [
+    {
+      "path": "output/playwright/body-batch-desktop-dark-front.png",
+      "sha256": "a4470d1035c944678e3242cbbcb08f80d4aa02cfbdf9befc97be5934d3ac6c39",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-dark-side.png",
+      "sha256": "943cf0a6df6f156ccdc50a736b9a23c9990130f3382c66a53be45cf61b276aca",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-dark-cut.png",
+      "sha256": "0341959d3d2d6b8ff2a147d7aadb8cb0a06a0e271dee10f0c85656b41e32e143",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-dark-strength.png",
+      "sha256": "ee4de2035817618ec4d033abb467e4ecf9de084b2e28815e1fd21be6644d8455",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-dark-run.png",
+      "sha256": "c1ea6e977423859d591604da9d050e7ef8eb2cbbd51f37d8f75bf6b1ef3a008a",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-dark-jump.png",
+      "sha256": "50076c407c28e5c847c0340ca12155b49d598d95f17a3935bc1376d7b5d62145",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-light-front.png",
+      "sha256": "3079a4f98ec23b6dc8f2f881acda72c58b521e3964a356b72d5f2d27fa59e8a5",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-light-side.png",
+      "sha256": "17a74e33ed296972d07416c747d93ea063330df435326acb579274394603b340",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-light-cut.png",
+      "sha256": "859d9ce39304bd093e77cb8b2667313e369567ba535bb35b319f2906f20be503",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-light-strength.png",
+      "sha256": "b1b0210b995e5a61c82f6dd379d9bfedea376889f61549d6d4ec19522f3a57c2",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-light-run.png",
+      "sha256": "0096e52a4d594e12adba5dc1198428007d56be35e40459e57eb4c2708e03e1d9",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-desktop-light-jump.png",
+      "sha256": "6ca72e66077ae1818b6ca889d6441570b300c13038af1567d6b45cfaeaf8e4fa",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-dark-front.png",
+      "sha256": "5ab57e0321eeaa91651c5c28d1fc11074f56949dcfbb52b74f3334d99d5458b0",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-dark-side.png",
+      "sha256": "c9d0642038f6d56556efc319ef9f085f98dde4cf6f25f81b7cd074341603bedf",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-dark-cut.png",
+      "sha256": "b1990918f88b56aa0cdef780a44c6a9d886c3191c69d7d6d87a8b6599337705c",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-dark-strength.png",
+      "sha256": "034c97c9ad0557d22ddea3105a672e26f6e1a307997f5a109306cbdf6b063d48",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-dark-run.png",
+      "sha256": "5c1a9f363dbbddad60bef3d42dfc3ae3f7af14c262e53681c0e6a48f98852c98",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-dark-jump.png",
+      "sha256": "5a7d4efd474319911347f17f9d8ff17cc464ebf6eae7e2804f87b135804bc6d5",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-light-front.png",
+      "sha256": "09484639ee1252827fce64faf6c8748d1f59c86c0750a35969e9e5b6ed68b991",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-light-side.png",
+      "sha256": "fb0a6e777888af30755141061b8ebd881faf0b9072ebbe4a6f935c15c33f30ad",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-light-cut.png",
+      "sha256": "d1cffa0e5d6fb7e6efb26f99c9c8f2973371b5510d8682a3e009f326a0f9e73d",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-light-strength.png",
+      "sha256": "8ca78c8b71dcf55fee379666628fb0b4e794b54bb8b5203564db5f0e8e458297",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-light-run.png",
+      "sha256": "4e24acac348862315b664eb4bc4e255e8e32f6e148cd65ad612076d8bbf1f151",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/body-batch-mobile-light-jump.png",
+      "sha256": "e55c228d6c1d6d4502d87afc271b0f89aad697b3737f1334845c6f04f1ad87d5",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    }
+  ],
+  "timing": {
+    "blocks": [
+      [
+        {
+          "samples": 60,
+          "medianMs": 8.799999952316284,
+          "p95Ms": 24.200000047683716,
+          "maxMs": 34
+        },
+        {
+          "samples": 60,
+          "medianMs": 9,
+          "p95Ms": 18.899999856948853,
+          "maxMs": 21.09999990463257
+        }
+      ],
+      [
+        {
+          "samples": 60,
+          "medianMs": 9,
+          "p95Ms": 22.799999952316284,
+          "maxMs": 31.09999990463257
+        },
+        {
+          "samples": 60,
+          "medianMs": 8.700000047683716,
+          "p95Ms": 12.400000095367432,
+          "maxMs": 16.90000009536743
+        }
+      ],
+      [
+        {
+          "samples": 60,
+          "medianMs": 8.599999904632568,
+          "p95Ms": 30.299999952316284,
+          "maxMs": 61.299999952316284
+        },
+        {
+          "samples": 60,
+          "medianMs": 8.899999856948853,
+          "p95Ms": 20.5,
+          "maxMs": 57.90000009536743
+        }
+      ]
+    ],
+    "updateTiming": [
+      {
+        "samples": 217,
+        "medianMs": 7.700000047683716,
+        "p95Ms": 18.299999952316284,
+        "maxMs": 58.90000009536743
+      },
+      {
+        "samples": 217,
+        "medianMs": 7.799999952316284,
+        "p95Ms": 13.400000095367432,
+        "maxMs": 52.80000019073486
+      }
+    ],
+    "drawCallsBefore": 46,
+    "drawCallsAfter": 21,
+    "exactPixelComparisons": 24,
+    "hardware": "local headless Chromium; alternating contexts, no physical mobile claim",
+    "gpuCompletionSynchronized": true,
+    "includesCpuAndDriverOverhead": true
+  },
+  "disposed": [
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    },
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    }
+  ],
+  "fullVisualAcceptance": false,
+  "wholeUnionMassVerified": false
+}

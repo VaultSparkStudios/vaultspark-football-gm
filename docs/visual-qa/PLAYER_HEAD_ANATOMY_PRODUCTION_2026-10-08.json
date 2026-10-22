@@ -1,0 +1,934 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T06:05:04.982Z",
+  "sourceRevision": "local-worktree",
+  "scope": "Coordinated production orbital, nose and perioral refinement with fully opaque closed-eye presentation; scoped progress, not complete adult-head craft.",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "sources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/production-anatomy-playerHead3d.js-2026-10-08",
+      "sha256": "bbe52d5863bfaa02607ff2f9e1c71095942bc32aa9bfc644d34f53392d360831"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/production-anatomy-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/production-anatomy-playerPortraitFace.js-2026-10-08",
+      "sha256": "590272f10a3f402f0e8aacc3cc60b35700f649ebf81f23dad9f0f321a6bb0060"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/production-anatomy-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/playerPortraitMotion.js",
+      "file": "references/production-anatomy-playerPortraitMotion.js-2026-10-08",
+      "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/production-anatomy-playerMotion.js-2026-10-08",
+      "sha256": "0e8f825f0ee195607b19ec517ac75755497a589b27ea955dfe997c34d0a673c2"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/production-anatomy-appearancePalette.js-2026-10-08",
+      "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/production-anatomy-player-shared-head.test.js-2026-10-08",
+      "sha256": "7443c5846ad5cd316083b4ca103d89b7cd7fafff19c7435e201ea4da13c83aed"
+    },
+    {
+      "original": "test/player-motion.test.js",
+      "file": "references/production-anatomy-player-motion.test.js-2026-10-08",
+      "sha256": "0c5c03760db3af198c2710a0af86cce9b88c357e52c1258ae11ccf50d210fb7f"
+    },
+    {
+      "original": ".cache/production-head-contracts.test.mjs",
+      "file": "references/production-anatomy-production-head-contracts.test.mjs-2026-10-08",
+      "sha256": "d312efa8d182a9f37b511a0004412018a9c90727a86dee249303e553c4d48ca7"
+    },
+    {
+      "original": "tests-ui/player-head-anatomy-gallery.spec.js",
+      "file": "references/production-anatomy-player-head-anatomy-gallery.spec.js-2026-10-08",
+      "sha256": "76edc8cdf5c42dbbf63979666bdc4a64082b702e85242c888c1a8e217a6be26b"
+    },
+    {
+      "original": "tests-ui/player-head-anatomy-production.spec.js",
+      "file": "references/production-anatomy-player-head-anatomy-production.spec.js-2026-10-08",
+      "sha256": "1ad3e874fb5e0a11800cccb66b8c536d1284a07b75a7168362611513b65b96ea"
+    },
+    {
+      "original": "tests-ui/player-portrait-motion.spec.js",
+      "file": "references/production-anatomy-player-portrait-motion.spec.js-2026-10-08",
+      "sha256": "499447dade5d1079f1410ba8382549bd92a88a23c2141b5aa58a467f83558a90"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "references/player-head-anatomy-production-before-2026-10-08.js",
+      "sha256": "750bd30ff92a2822c5df8bc6e6266a5f00738a69150bea000ecaa91d19cc9372"
+    },
+    {
+      "file": "references/production-head-anatomy-fixtures-2026-10-08.json",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/production-anatomy-gallery-person-0-desktop-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c7d5541e014b67c125704dd7768f9142073d6016a1cef3fbe66f685a635673a0",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-0-open.png",
+      "person": 0,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9b4c64d244e4677a7f58d585be251f0c312230e61ffdf304625ccdd88f4bd091",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-0-closed.png",
+      "person": 0,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ca7d7fa2204ac6b797bc7333bd734f129312bd2b23cb22ee5caee9dcf5f12d06",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-0-clay-closed.png",
+      "person": 0,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b31e26466b7108dd1b26c306ed085290327d60ec3fd62590183bd8d0f097cb13",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "da274bd52e5141a5bbda1073f6dc24312e1e579e49028bc17b12235285c4c192",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-1-open.png",
+      "person": 1,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "470ff91ef06c4328ad47d353c2e4a0d6e4bddf4503fd30353f835ecfe5046e6b",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-1-closed.png",
+      "person": 1,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "403f202348d01d64fb7e791b8ac3f0992bf00fa0d1fa26d8e69aea12a2c23af6",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-1-clay-closed.png",
+      "person": 1,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "02c7848f1f8251a101f053df6171ce9c2b7b3b44cc5dd7975005ac7fd6eed2cd",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5a12752e815143ac3076d5f41577b913f76b54901075b8ca3ce33bf82329c40f",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-2-open.png",
+      "person": 2,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8136626bb633e54279edb5ce57bd2b77290f768081cb4a7ddb6efd6dd7fb9f49",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-2-closed.png",
+      "person": 2,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "fd0adf92fe3b5aac24f31b86d904d28464f256eab543aa38d8151b68d2463437",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-native-2-clay-closed.png",
+      "person": 2,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "70d6d7d09ef2f297b8c4e2e7ac59d5ac1d25efc2097407e4cec1ce2e068cad31",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-0-desktop-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f91cb1c42a0dd0bdf9353dd955a165ece24f896cae88f6bc279f49f0540fd80d",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8f80aa3f70c282894081b62f03935ef4b68e24e5bb3ee68a3241359251904bf3",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-2-desktop-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "408bf939f549d23600e124a001767b634508ee866ed49bcb9dca17aaabe4259f",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-0-mobile-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8100d597f40f977a045aa822789894e7090967e7850ccfae3ee4d1273c1725a8",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "11f121cc1c37d6b54e2b403720149c85c081b1ec0f1c068588ff915e8d8a8e8e",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-2-mobile-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e75c07005991f281bb2a8288935f04ad2802784ce974d79ae0a05f04ebe8cfab",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-0-mobile-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "2270ed8f55ad893bacfe21f16e3bd285680b16a481606a145b232c1859233622",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "282c33dea11c4b1e0fc59226b2276b5ef8f5da7c0910ed0f669f2fb658a6b05d",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-anatomy-gallery-person-2-mobile-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "75d0c5a4f41bd8ae34068635f54d42eff7cad55a3600649a1935b236c29cf5ac",
+      "page": "Controlled fictional face diagnostic",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-head-anatomy-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e351c3a1972cae3d4c7f43251b647ccb3c137a35893b81b6b64eab5ebefc792b",
+      "page": "Actual player dossier",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-head-anatomy-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "db5e87ff9c0569846442c3476a400467565d98a3e48406e12ff39288ec2ad086",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "224365ddabe3a74a0c4d7aba337e94ee74ad859c55bd906010e5dd450b1c6023",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "bb790acef0d84af8d3a53afd1743c6b5643a1804efdb981e97ac59cf6e724155",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ec9240299ad8314a0d8d9b41755c9ba792c4b632f5e8b0dd07cc44a214a2887d",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "fd35e569bd573cd9695896a35564e7fea7012b4f60312a97bccddaa563a217c3",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d0ab5dad62b8a8b9c85263d77ba340565b3169de775284e05acb802f0dab3935",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b4fcf7fda9f061eb86d7bb07b70cb3679212bdd831fd983bbee8d2ef1039952c",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a6287901a2de341717d8fbec3f9463c39d0cfadde3ae9e75f5433c8468e1793a",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0b8fd5b84bd385ceaf386a261f4b2ecf191d3f33c1e56413975ff02bc9e66f8f",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "56e3b58b28fccd2aa22cdcce259a07e967381a048d7b016ef5432c00a5e1e8de",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f108252bd4492f0baf01ab826107e0de166d662a32c19be98af95e2fb93447bb",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "66d17b90ebbd28133dc2ff9a803d98d8e8d60492c3abdaac3fd890379230df06",
+      "page": "Actual player dossier",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-head-anatomy-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b92cbd2f254980db21cc030ca32dbdbc1f4be424dac42da2cc2b279fb61c24ea",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0468f4c1854a65ee9f3f7d3c152162000963c7f30c04bb0d2e8524be4aff5eff",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "91f4582da2eabef0a9da9dba2d9b4d0e232391ae58094fcb69000b610bc039a0",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e48facc438d2a911cb5101131eb6ea1be385fd7a3c2179e987a88ad87913209e",
+      "page": "Actual player dossier",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-head-anatomy-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cd3a97f65e5b6bfb283a7b8b33f2c005cb1e30370d31f5b1a3ce0a1559fe44db",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7c63ab167cd50f93e79aa5f7cc174aed594d91c005324a14709ef1253165f420",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4005470099fae0e52ecf2d79f8b14fd99cce65a1d440ada20c53f6d3d7289d80",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "326795afda13dde83d813b6eb9196644b7d017ff30bd61a3afd11dadaadb8776",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "30ba46c5cdd1a722d9e17d5cdb871788fd2f97a3907353f5f5240c55629a82a9",
+      "page": "Actual player dossier",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-head-anatomy-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a5002a781e45494db7292800cf0e648c4880fc3b3b5b00bdb3e97feafbc08818",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-head-anatomy-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "9eef9ffd1ef8a0cd9ad127a52c4c5fbd36ea776524bfc7d3c13611ca03b18067",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-desktop-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "344cbbb1eb008093f2247e8305f629fef0c53f2b9dade3d6e2a13c3c8d7aa7e2",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-desktop-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cf827686d2e7c296fc4da2535a1c8971f39dbafd52fc0c378d6ac36ecb881a15",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-desktop-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7d9aaefd7faae4200f197443f5181e958ace09566901856fb4eb9fc63ec3384e",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-desktop-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "991fc00c5f73f3082fac589e6eb9838ea1826317e26dfd47b627c5159f73ee42",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-mobile-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a234398f075e89b734153face7180f588c1ea093222c18bfd77fd9fef04a4a0d",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-mobile-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "59d0162ca7130fc569eed5f6801e403713c1e5e37ee34412fda74de4b7625af2",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-mobile-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "32c0882e788152cef732068ea5da3790f372c286535c0e3146730fdfbc9907c3",
+      "page": "Actual player dossier",
+      "inspected": false
+    },
+    {
+      "file": "captures/production-anatomy-portrait-motion-mobile-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "78b1301247877f12764f61b5ae46707ade07a4a088795d0c944e19988f3cc371",
+      "page": "Actual player dossier",
+      "inspected": false
+    }
+  ],
+  "diagnostics": [
+    {
+      "original": ".cache/eye-leak-diagnostic.json",
+      "file": "references/production-anatomy-eye-leak-diagnostic.json-2026-10-08",
+      "sha256": "04fb684c3d7e464c7b88686a9d728679b14f40c555758aa24bcddead7945f86e",
+      "qualification": "Historical intermediate-source isolated reviewer diagnosis; not final-source whole-population acceptance."
+    },
+    {
+      "original": ".cache/eye-leak-no-aa-diagnostic.json",
+      "file": "references/production-anatomy-eye-leak-no-aa-diagnostic.json-2026-10-08",
+      "sha256": "9e4162a302d68f6a4e1cbf8fda332d637e52f7472210409ccca54bf1b8dbc9c5",
+      "qualification": "Historical intermediate-source isolated reviewer diagnosis; not final-source whole-population acceptance."
+    },
+    {
+      "original": ".cache/eye-leak-no-aa-4x-diagnostic.json",
+      "file": "references/production-anatomy-eye-leak-no-aa-4x-diagnostic.json-2026-10-08",
+      "sha256": "9e4162a302d68f6a4e1cbf8fda332d637e52f7472210409ccca54bf1b8dbc9c5",
+      "qualification": "Historical intermediate-source isolated reviewer diagnosis; not final-source whole-population acceptance."
+    }
+  ],
+  "checks": {
+    "focusedPassed": 25,
+    "focusedDurationMs": 14554.7684,
+    "focusedTerminalChunk": "c311f8",
+    "browserPassed": 3,
+    "browserTerminal": "3 passed (39.6s)",
+    "browserSession": 87505,
+    "browserTerminalChunk": "e89332",
+    "closedEyeRemovalComparisons": 18,
+    "closedEyeExposedPixels": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "galleryStates": 18,
+    "galleryPeople": 3,
+    "matchedDossierStates": 12,
+    "projectionAgreement": [
+      {
+        "mode": "run",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "acceleration",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "cut",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "jump",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "strength",
+        "frontBody": true,
+        "sideMotion": true
+      },
+      {
+        "mode": "endurance",
+        "frontBody": true,
+        "sideMotion": true
+      }
+    ],
+    "playerUnchanged": true,
+    "automaticBlinkAndReducedMotionDuringLoss": true,
+    "contextRecoveryExactOpen": true,
+    "build": {
+      "terminalChunk": "ea7f70",
+      "precacheVersion": "a7cbffb48094",
+      "assets": 316,
+      "sizeKB": 3523
+    },
+    "browserReachability": {
+      "modules": 137,
+      "entries": 4,
+      "terminalChunk": "32a7e4"
+    },
+    "bootBudget": {
+      "bytes": 649321,
+      "byteLimit": 730000,
+      "modules": 51,
+      "moduleLimit": 58,
+      "lazyLeaks": 0,
+      "terminalChunk": "291c72"
+    }
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 8,
+    "findings": [
+      "Softer connected eye/cheek/nasal/perioral relief and a Cupid-shaped lip mask reduce the older exaggerated ridges and oval mouth marks. Nose wings and nostril shading are less isolated.",
+      "Final three-person color/clay front, three-quarter and profile comparisons contain zero exposed globe pixels on full closure and exact reopening. Actual dossier and movement projection remain coherent.",
+      "Intermediate multisample edge runs failed on small oblique/profile globe contributions. Reviewer isolated exact triangles; single-sample 240 and 960 probes were zero for one person. Final rendering uses single-sample depth; the production PNG atlas remains 440x880, twice its SVG dimensions, with display resampling. Final actual dossier edges were inspected as acceptable for scoped progress.",
+      "Lids/globe now share lateral samples and closed vertical knots; GPU margins resolve identical saved coordinates. A small radial shell clearance preserves outer attachments. Reduced tessellation of the unused linear prototype neck keeps the established mesh budget; measured production body remains authoritative.",
+      "Complete faces still look planar/mannequin-like, with cap-like hair, sparse beard volume, simplified ear form, rigid expression and weak measured neck/body material continuity. Full craft is not accepted.",
+      "Controlled fixture colors and artistic geometry are not empirical demographic or body calibration. This selected-person game proof is not final current career, all-device or whole-suite evidence."
+    ],
+    "fixesApplied": [
+      "Coordinated softer face relief and lip/nostril presentation",
+      "Aligned eye/lid polygon grid and exact closed-margin GPU coordinates",
+      "Opaque closed-eye presentation through high-resolution single-sample atlas rendering",
+      "Retained saved traits, measured body authority, bounded resources and actual motion/recovery behavior"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

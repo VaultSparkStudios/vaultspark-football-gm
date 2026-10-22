@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T11:32:45.937Z",
+  "component": "Annual admitted injury continuation rollover integration",
+  "round": 1,
+  "verdict": "FIX",
+  "scope": "Four annual/admission callers, elapsed-wage guard and explicit-dispute separation; not full NFL policy, appearance or release acceptance",
+  "primaryQualification": "Primary not frozen before findings. Owner authorized immutable R1 binding to independently captured exact pre-repair source copies and diagnostics. No pending broader/build/browser result claimed.",
+  "sourceHashes": {
+    "src/domain/elevationInjuryPay.js": "725a9b63f04856fde7ae0981b8bbce8650bc4a05c0fb592414365a49ea040abc",
+    "src/domain/preRolloverMedicalCalendar.js": "f01ac7b04826be213a8a951f6d2601a2096685e500e8b79e7f11005452b6ace6",
+    "src/domain/injurySalaryClaims.js": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141",
+    "src/runtime/GameSession.js": "2b5a1116adf17bb3470ddab5ee01b414ae927344e1865de166e00c113c110889",
+    "src/engine/offseasonSimulator.js": "c03ffa868f0c30bb08b20cace6237b87305daf3e98ee47890030d59d66c5ba46",
+    "test/annual-admitted-injury-transition.test.js": "90b1480bb71a64d8c2988c2cfaa9c1733a5551db8c0d4410891801b56f41956b",
+    "test/helpers/annualAdmittedFixture.js": "e0eacc1f09d9101aec510bba0733661306ef4cb7f86bd121887810bcecd93a8d"
+  },
+  "frozenSourceCopies": [
+    {
+      "file": "src/domain/elevationInjuryPay.js",
+      "sha256": "725a9b63f04856fde7ae0981b8bbce8650bc4a05c0fb592414365a49ea040abc",
+      "frozen": ".cache/annual-admitted-r1-elevationInjuryPay.js"
+    },
+    {
+      "file": "src/domain/preRolloverMedicalCalendar.js",
+      "sha256": "f01ac7b04826be213a8a951f6d2601a2096685e500e8b79e7f11005452b6ace6",
+      "frozen": ".cache/annual-admitted-r1-preRolloverMedicalCalendar.js"
+    },
+    {
+      "file": "src/domain/injurySalaryClaims.js",
+      "sha256": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141",
+      "frozen": ".cache/annual-admitted-r1-injurySalaryClaims.js"
+    },
+    {
+      "file": "src/runtime/GameSession.js",
+      "sha256": "2b5a1116adf17bb3470ddab5ee01b414ae927344e1865de166e00c113c110889",
+      "frozen": ".cache/annual-admitted-r1-GameSession.js"
+    },
+    {
+      "file": "src/engine/offseasonSimulator.js",
+      "sha256": "c03ffa868f0c30bb08b20cace6237b87305daf3e98ee47890030d59d66c5ba46",
+      "frozen": ".cache/annual-admitted-r1-offseasonSimulator.js"
+    },
+    {
+      "file": "test/annual-admitted-injury-transition.test.js",
+      "sha256": "90b1480bb71a64d8c2988c2cfaa9c1733a5551db8c0d4410891801b56f41956b",
+      "frozen": ".cache/annual-admitted-r1-annual-admitted-injury-transition.test.js"
+    },
+    {
+      "file": "test/helpers/annualAdmittedFixture.js",
+      "sha256": "e0eacc1f09d9101aec510bba0733661306ef4cb7f86bd121887810bcecd93a8d",
+      "frozen": ".cache/annual-admitted-r1-annualAdmittedFixture.js"
+    }
+  ],
+  "diagnostics": [
+    {
+      "file": ".cache/annual-admitted-r1-partial-ledger-diagnostic.json",
+      "sha256": "09a1e505ad48a72ae3ab1fe682cbde7559cfa5e68c12a244d50ae46b1d4cc30e"
+    },
+    {
+      "file": ".cache/annual-admitted-r1-retired-earned-diagnostic.json",
+      "sha256": "88a01780a36c36c08a8eeeb753151ea77621b54f23e1958e2ff1c6c1ef85a96b"
+    },
+    {
+      "file": ".cache/annual-admitted-r1-public-restore-diagnostic.json",
+      "sha256": "2bad7de5ab2fb69516d31f41fab52ceaaaa15f05cf80b6b401d7f187c9119207"
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/annual-admitted-injury-transition.test.js",
+      "tests": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 9109.5922,
+      "terminalChunk": "68ae14"
+    },
+    {
+      "terminalChunk": "642555",
+      "case": "Interactive direct rollover and headless runOffseason with active admitted source, earned24–27, and only MIA cap rollover already applied",
+      "bothRefused": true,
+      "bothSnapshotsChanged": true,
+      "financialYearAfter": 2027,
+      "BUFrolloverAfter": 2026
+    },
+    {
+      "terminalChunk": "f64137",
+      "case": "Same partial-ledger actual public command",
+      "readinessPassed": true,
+      "commandReasonCode": "ELEVATION_INJURY_YEAR_TRANSITION_REQUIRED",
+      "snapshotUnchanged": false
+    },
+    {
+      "terminalChunks": [
+        "481e38",
+        "9df900"
+      ],
+      "case": "Retired retained source with missing26 wage and matching charge removed",
+      "snapshotRestoreAccepted": true,
+      "annualGuardPassed": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1-F1",
+      "severity": "P2",
+      "locations": [
+        "src/runtime/GameSession.js:runRosterYearRollover",
+        "src/engine/offseasonSimulator.js:runOffseason",
+        "src/runtime/GameSession.js:getAdvanceReadiness"
+      ],
+      "finding": "Pre-financial annual authority passes despite a partially applied cap boundary. Both annual paths mutate remaining cap ledgers and open next financial year, suppress the summer anchor under legacy no-backfill, and then refuse in expiry. Actual public readiness reports ready and command also mutates before throwing.",
+      "requiredRepair": "Validate prospective post-boundary authority before any premedical/cap/pipeline/financial/staff/RNG commits; refuse incompatible partial legacy boundaries while preserving no-backfill."
+    },
+    {
+      "id": "R1-F2",
+      "severity": "P2",
+      "location": "src/domain/elevationInjuryPay.js:assertElevationInjuryContractTransition",
+      "finding": "Annual earned-wage checks loop only league.players. An incapacitated retained source moved to retiredPlayers with a missing elapsed week26 and its charge removed is accepted through actual snapshot restoration and annual guard.",
+      "requiredRepair": "Apply promised elapsed compensation proof to active and retired retained qualifying sources before crossing the boundary.",
+      "qualification": "Accepted ledger/import boundary probe, not a claim normal retirement produces missing wages or a legal entitlement adjudication."
+    }
+  ],
+  "sourceAuthority": {
+    "url": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+    "reviewed": "Executed Article33§5(k/l), PDF page214 text directly retrieved Oct8. Down-rate continuation and separate Article43/44 dispute processes support disclosed modeled admission; they do not mandate admission of every injury allegation."
+  },
+  "limits": [
+    "No browser/build execution independently performed or pending results claimed.",
+    "Default admission is a simulation election; source-specific Benefits/cap classification, active contracts/other employers and full statutory entitlement remain separate policies.",
+    "Existing explicit claims remain separately represented in the seven focused passing cases.",
+    "Source copies bind exact pre-repair implementation; subsequent fixes require final round2 review.",
+    "Full goal, complete-player quality, release and comprehensive NFL conformance remain open."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

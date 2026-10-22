@@ -1,0 +1,105 @@
+{
+  "version": "appearance-calibration-supplement-v1",
+  "reviewDate": "2026-10-07",
+  "status": "research-and-implementation-requirements",
+  "runtimeCoefficientsChanged": false,
+  "nflEvidenceRecheck": {
+    "date": "2026-10-07",
+    "internationalRosterSource": "https://edge-operations.nfl.com/programs-initiatives/international-growth/international-player-pathway",
+    "retrieval": "Direct official page, International-born players on NFL rosters section.",
+    "season": 2025,
+    "internationalBornSeasonRosterParticipants": 126,
+    "internationalBornActiveRosterParticipants": 61,
+    "countriesAndTerritories": 38,
+    "limitation": "Distinct season-wide cohorts; no compatible total league denominator or country-by-identity joint observations extracted.",
+    "racialReportingReference": "docs/PLAYER_COUNTRY_EVIDENCE_2026-10-06.json",
+    "racialReportingRecheck": "Original 2023 TIDES PDF unavailable in this attempt; retain previously verified historical counts, not a new 2026 census."
+  },
+  "references": [
+    {
+      "id": "norton-2016-continuous-pigmentation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27435525/",
+      "doi": "10.1002/ajpa.22861",
+      "retrieval": "Direct indexed abstract retrieved on 2026-10-07; full methods and tables unreviewed. Earlier partial retrieval remains historical evidence.",
+      "publicationYear": 2016,
+      "observations": {"participants": 1450, "selfIdentifiedGroups": 5, "skinMethod": "Melanin Index", "hairMethod": "CIELab", "irisMethod": "CIELab from high-resolution photographs in a subset"},
+      "limitations": ["No representative national or NFL joint frequencies extracted.", "Iris subset size and full sampling methods not reviewed."],
+      "implementationInference": "Preserve continuous pigment variation beneath color labels and inspect nearby values; renderer conversion remains a separately validated artistic mapping."
+    },
+    {
+      "id": "mkentane-2017-hair-classification-reliability",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0172834",
+      "retrieval": "Direct publisher full text: Methods, Results and Discussion.",
+      "publicationYear": 2017,
+      "observations": {
+        "repeatedRaterParticipants": 48,
+        "additionalSingleRaterParticipants": 80,
+        "participantAgeRangeYears": [18, 55],
+        "femaleSharePercentInRepeatedRaterSample": 87,
+        "interRaterKappaReportedInAbstract": {"eightGroups": 0.418, "sixGroups": 0.671}
+      },
+      "limitations": ["Selected volunteers; neither country nor NFL prevalence.", "Observed within-person strand variation may include measurement error.", "Classification agreement is not a renderer accuracy score."],
+      "implementationInference": "Save a continuous curl recipe with bounded strand variation. Texture labels summarize it; styling and treatment remain separate. Inspect intermediate shapes rather than treating categorical boundaries as anatomical discontinuities."
+    },
+    {
+      "id": "statcan-2021-black-population-birthplace",
+      "url": "https://www150.statcan.gc.ca/n1/pub/89-657-x/89-657-x2024005-eng.htm",
+      "retrieval": "Direct official analysis: Chart 1, Table A.3 and Data sources.",
+      "collectionYear": 2021,
+      "population": "Source-defined Black population in Canadian private households; long-form census sample.",
+      "observations": {"total": 1547870, "bornInCanada": 633785, "bornOutsideCanada": 914085},
+      "conditionalDirection": "P(born in Canada | source-defined Black population resident in Canada)",
+      "limitations": ["Cannot reverse this into P(Black | born in Canada) without the compatible birthplace denominator.", "All ages and sexes; no athlete recruitment or phenotype observations.", "Retain source rounding and classification."],
+      "implementationInference": "Support locally born diaspora backgrounds and verify conditioning direction in every calibration table."
+    },
+    {
+      "id": "dengel-2014-nfl-dxa-regional-build",
+      "url": "https://experts.umn.edu/en/publications/body-composition-and-bone-mineral-density-of-national-football-le/",
+      "doi": "10.1519/JSC.0000000000000299",
+      "retrieval": "Direct author-institution abstract; publisher full text unavailable.",
+      "publicationYear": 2014,
+      "observations": {"playersMeasured": 411, "method": "DXA", "channels": ["height", "weight", "lean mass", "fat mass", "bone mass", "regional composition"]},
+      "limitations": ["Historical cohort; raw records, covariance and full sampling methods not reviewed.", "Possible overlap with later 411-scan research must be resolved before pooling.", "Lean mass does not directly specify muscle shape, surface girths or joint lengths."],
+      "implementationInference": "Reconcile regional composition with recorded dimensions; retain individual residual variation instead of one position silhouette."
+    }
+  ],
+  "implementationRequirements": {
+    "calibration": [
+      "Every probability names its outcome, conditioning variables, population, period and denominator.",
+      "Separate NFL recruitment weights, national or diaspora background context, phenotype observations and grooming assumptions.",
+      "Keep original overlapping responses alongside a versioned reporting projection. Undisclosed identity is missing information, not an appearance preset.",
+      "Fit compatible joint observations where available. Marginals alone do not identify a unique joint distribution; fallback priors require an explicit assumption and sensitivity comparison.",
+      "Check cohort overlap, selection, source measurement definitions and sparse cells before fitting. Hold out observations for evaluation when fitting is possible."
+    ],
+    "appearance": [
+      "Persist separate natural scalp, eyebrow and beard pigment; skin shade and undertone; iris pigment and pattern; curl, thickness, density and hairline; facial dimensions and bounded asymmetry.",
+      "Resolve haircuts, fades, parts, braids, locs, length, beard styles, dye and treatment through the same natural recipe. Build coherent geometry rather than changing metadata alone.",
+      "Keep continuous variation beneath user-facing color and texture names. Model rare or unusual combinations without requiring one of every combination on every team.",
+      "Keep hairstyle inventory and frequency assumptions explicit; census categories do not supply a haircut survey."
+    ],
+    "physique": [
+      "Use stature, dated mass, reach, source-defined arm length and hand measurements as hard inputs after validating their precision and endpoints.",
+      "Estimate missing torso/leg shares, breadths, depths and regional bulk jointly with a stable individual residual recipe; distinguish estimates from measurements.",
+      "Preserve original conflicting measurements, report fitting residuals and choose a documented reconciliation. Do not silently clamp measured outliers to a position average.",
+      "Condition estimates on compatible athlete measurements and training state where supported. Overall, potential or racial labels cannot substitute for composition measurements.",
+      "Drive separate speed, acceleration, cutting, jump, strength and endurance demonstrations through the resolved skeleton. Physical updates retain dated history and natural identity."
+    ]
+  },
+  "requiredAcceptanceFixtures": [
+    "within-color-pigment-variation",
+    "conditional-denominator-direction",
+    "hair-continuity-boundaries",
+    "composition-method-and-cohort-overlap",
+    "background-overlap",
+    "style-texture-matrix",
+    "iris-only",
+    "undertone-equal-light",
+    "equal-height-different-weight",
+    "equal-height-weight-different-proportions",
+    "equal-anatomy-different-capacities",
+    "heavy-fast-light-slow",
+    "dated-physical-transitions",
+    "career-continuity"
+  ],
+  "completionPolicy": "Research and planned acceptance only. Require normal-size image inspection, measured-frame reconstruction, demographic calibration diagnostics and actual career/save commands before complete-player acceptance."
+}

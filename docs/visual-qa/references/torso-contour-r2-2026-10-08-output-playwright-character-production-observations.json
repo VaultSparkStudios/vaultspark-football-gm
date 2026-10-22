@@ -1,0 +1,119 @@
+{
+  "playerId": "P2026-BUF-OL-75203022",
+  "captures": [
+    {
+      "path": "output/playwright/character-final-desktop-dark-run.png",
+      "sha256": "141a34ebed0083eeb05d98d2805cc6202962a3ad2f445e73fc1cc30355c64cdf"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-dark-acceleration.png",
+      "sha256": "84a094a0fcf3b91d2671071afbb6f771bfb009e798a3ff68ef4f67792a2420e3"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-dark-cut.png",
+      "sha256": "817fb9e7c5f536b840eabfabbe6b8f65867004e953a28bc2c36702b925f0be50"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-dark-jump.png",
+      "sha256": "5a8b63d2c22d7c7a658b8ade303a52d600b46a1e3c908b370350dc6451bbb281"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-dark-strength.png",
+      "sha256": "ba6a963841bb01c84ef0a91717ff00fb8794ee99c1eb949cbec1736085ee0d40"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-dark-endurance.png",
+      "sha256": "1ce0069affdcbdc5135d69722ac3d29e2ccc49b3cfaf190a81bc0d45eb5571d7"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-light-run.png",
+      "sha256": "c707eb39e21f1e7d8d34b16e567f08f435ba5030a59a4e894ccd67a53b049e10"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-light-acceleration.png",
+      "sha256": "cfd3092c4e2eb7a1fe5f4b38c388cf161f27af0904bc5179ed2f9f2c74782526"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-light-cut.png",
+      "sha256": "af5460382a9aa37fce8866e6ec49d7f86e216cbe4667511f266fb2bd24dc8d17"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-light-jump.png",
+      "sha256": "b0b48fd277ac6210363e67dbe89c49cf7554cd7b6aeb8c01fd884d47567d2348"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-light-strength.png",
+      "sha256": "3a1d3b3cee5ed308103a1ecf284ddb866f89cd3c4ff572efbfcca8d644843358"
+    },
+    {
+      "path": "output/playwright/character-final-desktop-light-endurance.png",
+      "sha256": "3edd2353e99b347803b8e76b20c9359cfac4b9207bee13c055a6278471f21ffc"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-run.png",
+      "sha256": "ff253fcd84c24e26d9d9ed4358423524d586245ac7bbc4214ddafede4ae46ec4"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-acceleration.png",
+      "sha256": "24739218e2eca8dbc09c51f136045f0274d22ed92fb0252a9fc43102873710ff"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-cut.png",
+      "sha256": "7c9261a418646050cc6e3f3617e92511676bfb3818806c23b0e65f27999abe7c"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-jump.png",
+      "sha256": "b1629b7b9bbbde0af2152a1877a38f8f7d4e65c19fbca5dcc3811057f28768f8"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-strength.png",
+      "sha256": "c871e24b7cc7375ae092aa01f1e9302d79eaeea98f378e50f166fd7e0834b405"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-endurance.png",
+      "sha256": "ca816be26b7349173aef5b66ebafea91fcd0406cca017d0bd5e2ba41fc1de2da"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-front.png",
+      "sha256": "e47de99bfd9fe854278011c8d12329582ab5509281b0e2565a6e03a5bbbe4343"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-dark-side.png",
+      "sha256": "6390614837717a2cbf607ce06c52bf02ec70d22bf6fc582acd5ec04c6d88b6f3"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-run.png",
+      "sha256": "c41a948e60038c125e025889821c4269558e56dc0934519f298d30c93aa7b7e3"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-acceleration.png",
+      "sha256": "c9bce1520ad826f5b602e4b36648e04b402b0777cde5be0c18f477dd98f5adcf"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-cut.png",
+      "sha256": "6467cf97d8da37195aacb7a17018913e21a32b58fc6ccae92f7aa5610e35679a"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-jump.png",
+      "sha256": "47997b8d57e3b3960c30a05b8793293f3b9925b97013e88afa71cff9f4409409"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-strength.png",
+      "sha256": "1db611c49a97c23282031f9446ca2430fddeec0e3addc7a08286c1525598d359"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-endurance.png",
+      "sha256": "dc000ec22d8678b462bff49cea55c961ad74a8ed661cd448c127b8ef977ddc00"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-front.png",
+      "sha256": "12f54164b764dc3f9c10fffdd4eda204dbb48c65de101b03900b5e05c17e06a7"
+    },
+    {
+      "path": "output/playwright/character-final-mobile-light-side.png",
+      "sha256": "5c6e1e0aa0d3a6bd1b29ed35eee1de9918f8436f85e30309e15238c4834140d3"
+    }
+  ],
+  "inputIdentityAndFrameUnchanged": true,
+  "completeVisualAcceptance": false
+}

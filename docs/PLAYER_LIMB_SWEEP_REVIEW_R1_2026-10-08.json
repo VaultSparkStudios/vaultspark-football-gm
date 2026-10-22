@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T16:18:00.815Z",
+  "component": "Continuous production limb sweeps",
+  "reviewRound": 1,
+  "owner": "independent reviewer",
+  "verdict": "FIX",
+  "scope": "Continuous limb proposal and its compatibility/geometry evidence; rejects local bent-skin inversion, not a whole-player or release review",
+  "primaryReceipt": "docs/visual-qa/PLAYER_LIMB_SWEEP_R1_2026-10-08.json",
+  "primaryReceiptSha256": "5d481749771eb1d235928d88db29621aeaaa24cfbbef7c9ad1c62f7164b303ed",
+  "sourceHashes": {
+    "public/lib/playerLimbSweep3d.js": "0802fe73cb3e52b8190a591cad64d8f816ad935f2ede0c4ca45e5f4477e1a209",
+    "public/lib/playerBody3d.js": "cea7af724cf1a37d9cb00ab831c77a9e21b5138f4577f3306e99f732c12dbf89",
+    "public/lib/playerBodyAnimation3d.js": "29d48f5bfa3bf414e01057d31037e44cc59b8c973125254858bb7e9b0bce06e1",
+    "test/player-limb-sweep.test.js": "7af13130ef4eddb4774d0820fdbb47c16674fd8e47e46136f629baef7cebeff8",
+    "test/player-character-3d.test.js": "e3a92f0c6e8a05ef4963eea7a353b7f932fd7305ab5bb7f03affd79e5256b00e",
+    "tests-ui/player-limb-sweep.spec.js": "a6bf946ac446a75882bc45e593b34537cfcaec471af889dcf1752c954b947592",
+    "tests-ui/player-character-3d.spec.js": "90de82455be14783d6fe39b3409ce203537886fc366247ce4131dacc39a7d458",
+    "tests-ui/player-character-client.spec.js": "b0d2b957835de020ba7eadd8d1564ba76d3d363d5f8dedda45c74446154eaa37",
+    "scripts/run-test-shard.mjs": "c69c4139336fd43a3fdcfb9eecde8f7c4361a705b1cad130dbcc1266619432a8"
+  },
+  "frozenSourceAuthority": [
+    {
+      "original": "public/lib/playerLimbSweep3d.js",
+      "file": "references/limb-sweep-r1-2026-10-08-public-lib-playerLimbSweep3d.js",
+      "sha256": "0802fe73cb3e52b8190a591cad64d8f816ad935f2ede0c4ca45e5f4477e1a209"
+    },
+    {
+      "original": "public/lib/playerBody3d.js",
+      "file": "references/limb-sweep-r1-2026-10-08-public-lib-playerBody3d.js",
+      "sha256": "cea7af724cf1a37d9cb00ab831c77a9e21b5138f4577f3306e99f732c12dbf89"
+    },
+    {
+      "original": "public/lib/playerBodyAnimation3d.js",
+      "file": "references/limb-sweep-r1-2026-10-08-public-lib-playerBodyAnimation3d.js",
+      "sha256": "29d48f5bfa3bf414e01057d31037e44cc59b8c973125254858bb7e9b0bce06e1"
+    },
+    {
+      "original": "test/player-limb-sweep.test.js",
+      "file": "references/limb-sweep-r1-2026-10-08-test-player-limb-sweep.test.js",
+      "sha256": "7af13130ef4eddb4774d0820fdbb47c16674fd8e47e46136f629baef7cebeff8"
+    },
+    {
+      "original": "test/player-character-3d.test.js",
+      "file": "references/limb-sweep-r1-2026-10-08-test-player-character-3d.test.js",
+      "sha256": "e3a92f0c6e8a05ef4963eea7a353b7f932fd7305ab5bb7f03affd79e5256b00e"
+    },
+    {
+      "original": "tests-ui/player-limb-sweep.spec.js",
+      "file": "references/limb-sweep-r1-2026-10-08-tests-ui-player-limb-sweep.spec.js",
+      "sha256": "a6bf946ac446a75882bc45e593b34537cfcaec471af889dcf1752c954b947592"
+    },
+    {
+      "original": "tests-ui/player-character-3d.spec.js",
+      "file": "references/limb-sweep-r1-2026-10-08-tests-ui-player-character-3d.spec.js",
+      "sha256": "90de82455be14783d6fe39b3409ce203537886fc366247ce4131dacc39a7d458"
+    },
+    {
+      "original": "tests-ui/player-character-client.spec.js",
+      "file": "references/limb-sweep-r1-2026-10-08-tests-ui-player-character-client.spec.js",
+      "sha256": "b0d2b957835de020ba7eadd8d1564ba76d3d363d5f8dedda45c74446154eaa37"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/limb-sweep-r1-2026-10-08-scripts-run-test-shard.mjs",
+      "sha256": "c69c4139336fd43a3fdcfb9eecde8f7c4361a705b1cad130dbcc1266619432a8"
+    }
+  ],
+  "independentBindingChecks": 70,
+  "preFreezeDiagnostic": {
+    "path": ".cache/limb-sweep-r1-pre-freeze-diagnostic.json",
+    "sha256": "4d33b091b35ad74dbfc6e23306b1727677803f46a4b8cab21e06927058d2a338"
+  },
+  "findings": [
+    {
+      "id": "LIMB-SWEEP-R1-P1",
+      "severity": "correctness",
+      "summary": "Inner bent sweep reverses local surface Jacobian at a supported ordinary generated physical case",
+      "case": "80in/350lb capacity85 strength phase0.275 arm0 t0.55 angularpi/2",
+      "evidence": {
+        "playerId": "P2026-BUF-OL-48032446",
+        "height": 80,
+        "mass": 350,
+        "capacity": 85,
+        "mode": "strength",
+        "phase": 0.275,
+        "limb": {
+          "root": [
+            -8.9375,
+            58.37118976393587,
+            6.860816366610739
+          ],
+          "joint": [
+            -8.9375,
+            52.548708108049134,
+            18.021428112548744
+          ],
+          "end": [
+            -8.9375,
+            44.646189763935865,
+            11.435816366610737
+          ],
+          "hand": [
+            -8.9375,
+            36.646189763935865,
+            11.435816366610737
+          ]
+        },
+        "t": 0.55,
+        "angle": 1.5707963267948966,
+        "joint": 0.5502999494085089,
+        "sections": [
+          [
+            0,
+            5.464810550077583,
+            5.724632753062955
+          ],
+          [
+            0.17609598381072286,
+            6.210011988724527,
+            5.907171851355481
+          ],
+          [
+            0.5502999494085089,
+            3.700625879989323,
+            4.209170498625661
+          ],
+          [
+            0.6942039655977861,
+            4.942178220756912,
+            5.929906062501887
+          ],
+          [
+            1,
+            2.7152236672078263,
+            2.6126006513706574
+          ]
+        ],
+        "derivatives": [
+          {
+            "epsilon": 0.001,
+            "outwardCosine": -0.9999997652341368,
+            "longitudinalTangentDot": -6.075365512563858,
+            "centerlineSpeed": 14.35610082376604
+          },
+          {
+            "epsilon": 0.0001,
+            "outwardCosine": -0.9999971972625261,
+            "longitudinalTangentDot": -4.605673166294781,
+            "centerlineSpeed": 14.356110058478361
+          },
+          {
+            "epsilon": 0.00001,
+            "outwardCosine": -0.9999971980103085,
+            "longitudinalTangentDot": -4.605679152526308,
+            "centerlineSpeed": 14.356110060158134
+          },
+          {
+            "epsilon": 0.000001,
+            "outwardCosine": -0.9999971980177762,
+            "longitudinalTangentDot": -4.605679213812154,
+            "centerlineSpeed": 14.356110059896427
+          }
+        ],
+        "sources": {
+          "playerLimbSweep3d": "0802fe73cb3e52b8190a591cad64d8f816ad935f2ede0c4ca45e5f4477e1a209",
+          "playerBody3d": "cea7af724cf1a37d9cb00ab831c77a9e21b5138f4577f3306e99f732c12dbf89",
+          "playerBodyAnimation3d": "29d48f5bfa3bf414e01057d31037e44cc59b8c973125254858bb7e9b0bce06e1"
+        }
+      },
+      "interpretation": "Centered finite-difference normal inversion independently agrees with epsilon-converged differential; simply flipping normals would hide folded geometry. Closed oriented edge incidence is not a self-intersection or local embedding proof.",
+      "requiredCorrection": "Avoid inverted inner bend surface using coherent bend envelope/centerline or explicitly qualified safe fallback, preserve joint/root/end and saved section authority; add independent differential and actual-pose regression.",
+      "disposition": "unresolved in this reviewed R1 source; root has begun separate R2 repair",
+      "frozenSourceSha256": "0802fe73cb3e52b8190a591cad64d8f816ad935f2ede0c4ca45e5f4477e1a209"
+    }
+  ],
+  "independentCommands": [
+    {
+      "command": "node --test test/player-limb-sweep.test.js test/player-body-animation-3d.test.js",
+      "pass": 6,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 11418.0325,
+      "terminalChunk": "bbfe7f"
+    },
+    {
+      "command": "node .cache/limb-sweep-r1-inversion-counterexample.mjs",
+      "exitCode": 0,
+      "terminalChunk": "002b1c"
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/limb-sweep-desktop-light-strength.png",
+      "sha256": "8e7de4fbe6c40cee3a70ebbce391fb570284b90a6d70ac95d8509f90c5482db0",
+      "frozenPath": "docs/visual-qa/captures/limb-sweep-r1-2026-10-08-output-playwright-limb-sweep-desktop-light-strength.png"
+    },
+    {
+      "path": "output/playwright/limb-sweep-mobile-light-jump.png",
+      "sha256": "3570a2ade5f48721b7a901325cfb560bb50a5b3be31c6cee736b3f43cf7b9b43",
+      "frozenPath": "docs/visual-qa/captures/limb-sweep-r1-2026-10-08-output-playwright-limb-sweep-mobile-light-jump.png"
+    }
+  ],
+  "visualObservation": "Visible cap rings removed and outer bends rounded in inspected pairs, while head and body still stylized/slab-like; scoped improvement does not overrule differential defect.",
+  "primaryExecution": {
+    "attribution": "Executed by root, retained logs inspected as artifacts; not independently rerun",
+    "domainPass": 7,
+    "browserPass": 6,
+    "artifactDigest": "2c5fc1d39cf0d070e1c429c0748ee6c205b58ed0368abe70ccc1eb8150e7db1d",
+    "timing": {
+      "samples": 60,
+      "medianMs": 4.3999998569488525,
+      "p95Ms": 5.5,
+      "maxMs": 6.299999952316284,
+      "hardware": "local headless Chromium; emulated viewport, no physical mobile claim",
+      "gpuCompletionSynchronized": true,
+      "includesCpuAndDriverOverhead": true
+    },
+    "timingLimit": "Local headless CPU/driver/GPU-finish synchronized sample only; not device FPS or physical mobile"
+  },
+  "limits": [
+    "No independent Playwright run",
+    "No union/part-volume invariance, all-phase or full naturalism acceptance",
+    "No production changes by reviewer",
+    "No production source changes by reviewer; current repair is excluded from R1 verdict",
+    "Passing unit normal/closed-edge checks do not establish embedded surface correctness",
+    "Full anatomy/craft, part/union mass preservation, population calibration, career and release acceptance remain open"
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

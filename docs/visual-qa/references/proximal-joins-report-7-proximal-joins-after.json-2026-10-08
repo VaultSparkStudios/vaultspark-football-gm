@@ -1,0 +1,1555 @@
+{
+  "phase": "after",
+  "players": [
+    {
+      "id": "proximal-join-control",
+      "name": "Controlled comparison",
+      "age": 24,
+      "heightInches": 74,
+      "weightLbs": 190,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 80,
+        "stamina": 75
+      },
+      "profile": {
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "proximal-join-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "proximal-join-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "proximal-join-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "proximal-join-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "proximal-join-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "proximal-join-control"
+        },
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v4",
+          "seed": "proximal-join-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "proximal-join-control"
+        }
+      },
+      "appearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.7567092559766024,
+        "hairstyle": "long",
+        "hairColor": "#473126",
+        "naturalHairColor": "#473126",
+        "dyedHairColor": null,
+        "hairTexture": "curly",
+        "eyeColor": "#746047",
+        "hairLength": 0.841120472829789,
+        "hairDensity": 0.7969021426513792,
+        "hairline": 0.1528711912687868,
+        "grayOnsetAge": 42,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "goatee",
+        "faceWidth": 0.9275346793141216,
+        "jawWidth": 1.0055284034926444,
+        "faceLength": 0.9520744926994666,
+        "eyeSpacing": 0.9053975261515007,
+        "noseWidth": 1.0625622855499386,
+        "lipFullness": 1.1386161550180987,
+        "browWeight": 0.8864597040228546,
+        "earSize": 0.8802232654299587,
+        "expression": "warm",
+        "blinkDelay": 4.855647841235623,
+        "buildVariation": 0.031087605971843013,
+        "naturalHairTexture": "curly",
+        "skinUndertone": 0.18861129507422447,
+        "eyeAperture": 1.08800844643265,
+        "eyeTilt": 1.3538169441744685,
+        "eyelidCrease": 0.9798366207629443,
+        "browArch": 1.1421725913300178,
+        "browAngle": -0.9770320672541857,
+        "noseBridge": 0.9826901686843484,
+        "noseTip": 0.8404107734095305,
+        "noseLength": 1.0992295826831833,
+        "cheekbone": 0.8618518479634076,
+        "cheekFullness": 0.8044841916998848,
+        "chinWidth": 1.0927588016726077,
+        "chinLength": 0.9844574850262143,
+        "lipWidth": 0.8682408921420574,
+        "lipCurve": -0.40929834824055433,
+        "earShape": 0.8064126023091376,
+        "facialAsymmetry": 0.36408619675785303,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 1.315904713794589,
+        "hairWaveScale": 1.2774865829618647,
+        "hairStrandWidth": 1.3564488784177229,
+        "irisShade": 0.07320466497913003,
+        "irisInnerMix": 0.43308777876663956,
+        "irisPattern": 0.25731860161758957,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.2993619782384485,
+        "hairStrandVariation": 0.4348087520687841,
+        "fineFaceVersion": "fine-face-v1",
+        "nasalRootWidth": 1.0940921009751037,
+        "nasalWingWidth": 1.0338308184873313,
+        "upperLipScale": 0.8096830182825215,
+        "lowerLipScale": 1.195510000840295,
+        "chinProjection": -0.19003056921064854,
+        "foreheadSlope": -0.14177514812909064,
+        "browRidge": 0.743485010927543,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#453025",
+        "naturalBrowColor": "#35261e",
+        "textureTreatment": false,
+        "hairTextureVersion": "continuous-hair-texture-v1",
+        "naturalHairTexturePosition": 2.08291093679145,
+        "hairTexturePosition": 2.08291093679145
+      },
+      "visualFrame": {
+        "bodyMeasurementVersion": "extended-body-measurements-v1",
+        "measurementFit": {
+          "scope": "stature-and-mass",
+          "status": "supported",
+          "unsupported": [],
+          "authority": "artistic-rendering-support-not-population",
+          "estimated": []
+        },
+        "heightInches": 74,
+        "weightLbs": 190,
+        "volumeBudgetInches3": 5259.181894938593,
+        "torsoVolumeInches3": 2377.5976362265624,
+        "legsVolumeInches3": 1605.8660227397113,
+        "armsVolumeInches3": 537.5227284621334,
+        "neckVolumeInches3": 80.79777064286215,
+        "reservedVolumeInches3": 657.3977368673242,
+        "torsoLengthInches": 22.56030815636739,
+        "legLengthInches": 38.0396918436326,
+        "armSegmentLengthInches": 24.35,
+        "neckLengthInches": 3,
+        "chestWidthInches": 14.90202686337703,
+        "chestDepthInches": 9.094347226634099,
+        "waistRatio": 1.0281951122521422,
+        "limbShapeVariation": 0.031087605971843013,
+        "torsoSectionVersion": "artistic-regional-sections-v1",
+        "torsoSections": [
+          [
+            0,
+            14.90202686337703,
+            9.094347226634099
+          ],
+          [
+            0.28,
+            15.129888755052082,
+            9.25788950205454
+          ],
+          [
+            0.65,
+            13.987053306595469,
+            9.396183332059492
+          ],
+          [
+            1,
+            15.322191183574384,
+            8.318288005279348
+          ]
+        ],
+        "limbSectionVersion": "artistic-limb-sections-v1",
+        "armSections": [
+          [
+            0,
+            4.706811253239527,
+            4.106693065070549
+          ],
+          [
+            0.15748738329038023,
+            5.348649151408553,
+            5.072407312442382
+          ],
+          [
+            0.4921480727824382,
+            3.0109060838212525,
+            2.653962069132004
+          ],
+          [
+            0.654660689492058,
+            3.7930874675848596,
+            3.9726136053742844
+          ],
+          [
+            1,
+            1.9761778333310276,
+            1.5175659152730718
+          ]
+        ],
+        "legSections": [
+          [
+            0,
+            6.298923318143754,
+            5.701775450624056
+          ],
+          [
+            0.1863343796785921,
+            6.998803686826394,
+            6.234381204752645
+          ],
+          [
+            0.5480422931723297,
+            3.869790726798889,
+            4.577193160033819
+          ],
+          [
+            0.7017079134937376,
+            5.117310934616991,
+            6.170825233391404
+          ],
+          [
+            1,
+            1.9999186383491803,
+            2.152818941048459
+          ]
+        ],
+        "upperArmWidth": 5.348649151408553,
+        "thighWidth": 6.998803686826394,
+        "neckDiameterInches": 5.855906326349318,
+        "upperArmShare": 0.4921480727824382,
+        "upperLegShare": 0.5480422931723297,
+        "pelvicBreadthInches": 9.607959999777378,
+        "footLengthInches": 11.774299101270735,
+        "footWidthInches": 4.0960861171583485,
+        "shoulderWidth": 59.60810745350812,
+        "neckWidth": 29.279531631746593,
+        "torsoLength": 65,
+        "muscleDefinition": 0.5480415051616728,
+        "shoulderSpanInches": 15.853220067422372,
+        "torsoShare": 0.3048690291400999,
+        "armLengthInches": 31.75,
+        "wingspanInches": 79.35322006742237,
+        "handSizeInches": 9.25
+      }
+    },
+    {
+      "id": "proximal-join-control",
+      "name": "Controlled comparison",
+      "age": 24,
+      "heightInches": 74,
+      "weightLbs": 330,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 80,
+        "stamina": 75
+      },
+      "profile": {
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "proximal-join-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "proximal-join-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "proximal-join-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "proximal-join-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "proximal-join-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "proximal-join-control"
+        },
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v4",
+          "seed": "proximal-join-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "proximal-join-control"
+        }
+      },
+      "appearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.7567092559766024,
+        "hairstyle": "long",
+        "hairColor": "#473126",
+        "naturalHairColor": "#473126",
+        "dyedHairColor": null,
+        "hairTexture": "curly",
+        "eyeColor": "#746047",
+        "hairLength": 0.841120472829789,
+        "hairDensity": 0.7969021426513792,
+        "hairline": 0.1528711912687868,
+        "grayOnsetAge": 42,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "goatee",
+        "faceWidth": 0.9275346793141216,
+        "jawWidth": 1.0055284034926444,
+        "faceLength": 0.9520744926994666,
+        "eyeSpacing": 0.9053975261515007,
+        "noseWidth": 1.0625622855499386,
+        "lipFullness": 1.1386161550180987,
+        "browWeight": 0.8864597040228546,
+        "earSize": 0.8802232654299587,
+        "expression": "warm",
+        "blinkDelay": 4.855647841235623,
+        "buildVariation": 0.031087605971843013,
+        "naturalHairTexture": "curly",
+        "skinUndertone": 0.18861129507422447,
+        "eyeAperture": 1.08800844643265,
+        "eyeTilt": 1.3538169441744685,
+        "eyelidCrease": 0.9798366207629443,
+        "browArch": 1.1421725913300178,
+        "browAngle": -0.9770320672541857,
+        "noseBridge": 0.9826901686843484,
+        "noseTip": 0.8404107734095305,
+        "noseLength": 1.0992295826831833,
+        "cheekbone": 0.8618518479634076,
+        "cheekFullness": 0.8044841916998848,
+        "chinWidth": 1.0927588016726077,
+        "chinLength": 0.9844574850262143,
+        "lipWidth": 0.8682408921420574,
+        "lipCurve": -0.40929834824055433,
+        "earShape": 0.8064126023091376,
+        "facialAsymmetry": 0.36408619675785303,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 1.315904713794589,
+        "hairWaveScale": 1.2774865829618647,
+        "hairStrandWidth": 1.3564488784177229,
+        "irisShade": 0.07320466497913003,
+        "irisInnerMix": 0.43308777876663956,
+        "irisPattern": 0.25731860161758957,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.2993619782384485,
+        "hairStrandVariation": 0.4348087520687841,
+        "fineFaceVersion": "fine-face-v1",
+        "nasalRootWidth": 1.0940921009751037,
+        "nasalWingWidth": 1.0338308184873313,
+        "upperLipScale": 0.8096830182825215,
+        "lowerLipScale": 1.195510000840295,
+        "chinProjection": -0.19003056921064854,
+        "foreheadSlope": -0.14177514812909064,
+        "browRidge": 0.743485010927543,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#453025",
+        "naturalBrowColor": "#35261e",
+        "textureTreatment": false,
+        "hairTextureVersion": "continuous-hair-texture-v1",
+        "naturalHairTexturePosition": 2.08291093679145,
+        "hairTexturePosition": 2.08291093679145
+      },
+      "visualFrame": {
+        "bodyMeasurementVersion": "extended-body-measurements-v1",
+        "measurementFit": {
+          "scope": "stature-and-mass",
+          "status": "supported",
+          "unsupported": [],
+          "authority": "artistic-rendering-support-not-population",
+          "estimated": []
+        },
+        "heightInches": 74,
+        "weightLbs": 330,
+        "volumeBudgetInches3": 9134.36855436703,
+        "torsoVolumeInches3": 4129.511683972451,
+        "legsVolumeInches3": 2789.1357237058146,
+        "armsVolumeInches3": 933.5921073289685,
+        "neckVolumeInches3": 140.33297006391848,
+        "reservedVolumeInches3": 1141.7960692958789,
+        "torsoLengthInches": 22.56030815636739,
+        "legLengthInches": 38.0396918436326,
+        "armSegmentLengthInches": 24.35,
+        "neckLengthInches": 3,
+        "chestWidthInches": 17.91958253721144,
+        "chestDepthInches": 13.1355821458888,
+        "waistRatio": 1.0281951122521422,
+        "limbShapeVariation": 0.031087605971843013,
+        "torsoSectionVersion": "artistic-regional-sections-v1",
+        "torsoSections": [
+          [
+            0,
+            17.91958253721144,
+            13.1355821458888
+          ],
+          [
+            0.28,
+            18.193584860008954,
+            13.37179733974234
+          ],
+          [
+            0.65,
+            16.8193332677374,
+            13.57154449245491
+          ],
+          [
+            1,
+            18.424827178359642,
+            12.014667208495021
+          ]
+        ],
+        "limbSectionVersion": "artistic-limb-sections-v1",
+        "armSections": [
+          [
+            0,
+            6.203073863350815,
+            5.412182270791135
+          ],
+          [
+            0.15748738329038023,
+            7.0489475719895625,
+            6.6848903708269605
+          ],
+          [
+            0.4921480727824382,
+            3.9680522180915916,
+            3.497638179994256
+          ],
+          [
+            0.654660689492058,
+            4.998883631754971,
+            5.235479881996244
+          ],
+          [
+            1,
+            2.60439104262614,
+            1.9999895807301449
+          ]
+        ],
+        "legSections": [
+          [
+            0,
+            8.301307296980777,
+            7.514330269376859
+          ],
+          [
+            0.1863343796785921,
+            9.223674774423085,
+            8.216247693966896
+          ],
+          [
+            0.5480422931723297,
+            5.099970324393623,
+            6.032251078471072
+          ],
+          [
+            0.7017079134937376,
+            6.744068542649634,
+            8.132487720685742
+          ],
+          [
+            1,
+            2.6356788846872923,
+            2.837185131771141
+          ]
+        ],
+        "upperArmWidth": 7.0489475719895625,
+        "thighWidth": 9.223674774423085,
+        "neckDiameterInches": 7.717458280105715,
+        "upperArmShare": 0.4921480727824382,
+        "upperLegShare": 0.5480422931723297,
+        "pelvicBreadthInches": 9.607959999777378,
+        "footLengthInches": 11.774299101270735,
+        "footWidthInches": 4.0960861171583485,
+        "shoulderWidth": 71.67833014884576,
+        "neckWidth": 38.58729140052858,
+        "torsoLength": 65,
+        "muscleDefinition": 0.5480415051616728,
+        "shoulderSpanInches": 15.853220067422372,
+        "torsoShare": 0.3048690291400999,
+        "armLengthInches": 31.75,
+        "wingspanInches": 79.35322006742237,
+        "handSizeInches": 9.25
+      }
+    },
+    {
+      "id": "proximal-join-control",
+      "name": "Controlled comparison",
+      "age": 24,
+      "heightInches": 68,
+      "weightLbs": 225,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 80,
+        "stamina": 75
+      },
+      "profile": {
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "proximal-join-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "proximal-join-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "proximal-join-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "proximal-join-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "proximal-join-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "proximal-join-control"
+        },
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v4",
+          "seed": "proximal-join-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "proximal-join-control"
+        }
+      },
+      "appearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.7567092559766024,
+        "hairstyle": "long",
+        "hairColor": "#473126",
+        "naturalHairColor": "#473126",
+        "dyedHairColor": null,
+        "hairTexture": "curly",
+        "eyeColor": "#746047",
+        "hairLength": 0.841120472829789,
+        "hairDensity": 0.7969021426513792,
+        "hairline": 0.1528711912687868,
+        "grayOnsetAge": 42,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "goatee",
+        "faceWidth": 0.9275346793141216,
+        "jawWidth": 1.0055284034926444,
+        "faceLength": 0.9520744926994666,
+        "eyeSpacing": 0.9053975261515007,
+        "noseWidth": 1.0625622855499386,
+        "lipFullness": 1.1386161550180987,
+        "browWeight": 0.8864597040228546,
+        "earSize": 0.8802232654299587,
+        "expression": "warm",
+        "blinkDelay": 4.855647841235623,
+        "buildVariation": 0.031087605971843013,
+        "naturalHairTexture": "curly",
+        "skinUndertone": 0.18861129507422447,
+        "eyeAperture": 1.08800844643265,
+        "eyeTilt": 1.3538169441744685,
+        "eyelidCrease": 0.9798366207629443,
+        "browArch": 1.1421725913300178,
+        "browAngle": -0.9770320672541857,
+        "noseBridge": 0.9826901686843484,
+        "noseTip": 0.8404107734095305,
+        "noseLength": 1.0992295826831833,
+        "cheekbone": 0.8618518479634076,
+        "cheekFullness": 0.8044841916998848,
+        "chinWidth": 1.0927588016726077,
+        "chinLength": 0.9844574850262143,
+        "lipWidth": 0.8682408921420574,
+        "lipCurve": -0.40929834824055433,
+        "earShape": 0.8064126023091376,
+        "facialAsymmetry": 0.36408619675785303,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 1.315904713794589,
+        "hairWaveScale": 1.2774865829618647,
+        "hairStrandWidth": 1.3564488784177229,
+        "irisShade": 0.07320466497913003,
+        "irisInnerMix": 0.43308777876663956,
+        "irisPattern": 0.25731860161758957,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.2993619782384485,
+        "hairStrandVariation": 0.4348087520687841,
+        "fineFaceVersion": "fine-face-v1",
+        "nasalRootWidth": 1.0940921009751037,
+        "nasalWingWidth": 1.0338308184873313,
+        "upperLipScale": 0.8096830182825215,
+        "lowerLipScale": 1.195510000840295,
+        "chinProjection": -0.19003056921064854,
+        "foreheadSlope": -0.14177514812909064,
+        "browRidge": 0.743485010927543,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#453025",
+        "naturalBrowColor": "#35261e",
+        "textureTreatment": false,
+        "hairTextureVersion": "continuous-hair-texture-v1",
+        "naturalHairTexturePosition": 2.08291093679145,
+        "hairTexturePosition": 2.08291093679145
+      },
+      "visualFrame": {
+        "bodyMeasurementVersion": "extended-body-measurements-v1",
+        "measurementFit": {
+          "scope": "stature-and-mass",
+          "status": "supported",
+          "unsupported": [],
+          "authority": "artistic-rendering-support-not-population",
+          "estimated": []
+        },
+        "heightInches": 68,
+        "weightLbs": 225,
+        "volumeBudgetInches3": 6227.978559795703,
+        "torsoVolumeInches3": 2815.5761481630348,
+        "legsVolumeInches3": 1901.6834479812374,
+        "armsVolumeInches3": 636.5400731788422,
+        "neckVolumeInches3": 95.68157049812625,
+        "reservedVolumeInches3": 778.4973199744629,
+        "torsoLengthInches": 20.731093981526794,
+        "legLengthInches": 34.078906018473205,
+        "armSegmentLengthInches": 22.575,
+        "neckLengthInches": 3,
+        "chestWidthInches": 15.43560230540483,
+        "chestDepthInches": 11.314751425312362,
+        "waistRatio": 1.0281951122521422,
+        "limbShapeVariation": 0.031087605971843013,
+        "torsoSectionVersion": "artistic-regional-sections-v1",
+        "torsoSections": [
+          [
+            0,
+            15.43560230540483,
+            11.314751425312362
+          ],
+          [
+            0.28,
+            15.671622920096992,
+            11.518222894764616
+          ],
+          [
+            0.65,
+            14.487867606499488,
+            11.690281457206328
+          ],
+          [
+            1,
+            15.870810845085144,
+            10.349215696125082
+          ]
+        ],
+        "limbSectionVersion": "artistic-limb-sections-v1",
+        "armSections": [
+          [
+            0,
+            5.319573880986826,
+            4.641328489886505
+          ],
+          [
+            0.15748738329038023,
+            6.044970319303211,
+            5.732765560638028
+          ],
+          [
+            0.4921480727824382,
+            3.4028849894025655,
+            2.999471732453153
+          ],
+          [
+            0.654660689492058,
+            4.286895720956596,
+            4.489793713282456
+          ],
+          [
+            1,
+            2.2334492336265983,
+            1.7151322989648845
+          ]
+        ],
+        "legSections": [
+          [
+            0,
+            7.241965517016175,
+            6.555415761333199
+          ],
+          [
+            0.1863343796785921,
+            8.046628352240194,
+            7.16776049244834
+          ],
+          [
+            0.5480422931723297,
+            4.449155766164374,
+            5.262466830514719
+          ],
+          [
+            0.7017079134937376,
+            5.883448242908153,
+            7.094689249991271
+          ],
+          [
+            1,
+            2.299336106226935,
+            2.4751278509049484
+          ]
+        ],
+        "upperArmWidth": 6.044970319303211,
+        "thighWidth": 8.046628352240194,
+        "neckDiameterInches": 6.372481443953097,
+        "upperArmShare": 0.4921480727824382,
+        "upperLegShare": 0.5480422931723297,
+        "pelvicBreadthInches": 8.828936216011645,
+        "footLengthInches": 10.819626201167702,
+        "footWidthInches": 3.763971026577942,
+        "shoulderWidth": 61.74240922161932,
+        "neckWidth": 31.862407219765487,
+        "torsoLength": 54.2,
+        "muscleDefinition": 0.5480415051616728,
+        "shoulderSpanInches": 14.567823845739476,
+        "torsoShare": 0.3048690291400999,
+        "armLengthInches": 29.375,
+        "wingspanInches": 73.31782384573947,
+        "handSizeInches": 8.5
+      }
+    },
+    {
+      "id": "proximal-join-control",
+      "name": "Controlled comparison",
+      "age": 24,
+      "heightInches": 80,
+      "weightLbs": 361,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 80,
+        "stamina": 75
+      },
+      "profile": {
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "proximal-join-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "proximal-join-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "proximal-join-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "proximal-join-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "proximal-join-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "proximal-join-control"
+        },
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v4",
+          "seed": "proximal-join-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "proximal-join-control"
+        }
+      },
+      "appearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.7567092559766024,
+        "hairstyle": "long",
+        "hairColor": "#473126",
+        "naturalHairColor": "#473126",
+        "dyedHairColor": null,
+        "hairTexture": "curly",
+        "eyeColor": "#746047",
+        "hairLength": 0.841120472829789,
+        "hairDensity": 0.7969021426513792,
+        "hairline": 0.1528711912687868,
+        "grayOnsetAge": 42,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "goatee",
+        "faceWidth": 0.9275346793141216,
+        "jawWidth": 1.0055284034926444,
+        "faceLength": 0.9520744926994666,
+        "eyeSpacing": 0.9053975261515007,
+        "noseWidth": 1.0625622855499386,
+        "lipFullness": 1.1386161550180987,
+        "browWeight": 0.8864597040228546,
+        "earSize": 0.8802232654299587,
+        "expression": "warm",
+        "blinkDelay": 4.855647841235623,
+        "buildVariation": 0.031087605971843013,
+        "naturalHairTexture": "curly",
+        "skinUndertone": 0.18861129507422447,
+        "eyeAperture": 1.08800844643265,
+        "eyeTilt": 1.3538169441744685,
+        "eyelidCrease": 0.9798366207629443,
+        "browArch": 1.1421725913300178,
+        "browAngle": -0.9770320672541857,
+        "noseBridge": 0.9826901686843484,
+        "noseTip": 0.8404107734095305,
+        "noseLength": 1.0992295826831833,
+        "cheekbone": 0.8618518479634076,
+        "cheekFullness": 0.8044841916998848,
+        "chinWidth": 1.0927588016726077,
+        "chinLength": 0.9844574850262143,
+        "lipWidth": 0.8682408921420574,
+        "lipCurve": -0.40929834824055433,
+        "earShape": 0.8064126023091376,
+        "facialAsymmetry": 0.36408619675785303,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 1.315904713794589,
+        "hairWaveScale": 1.2774865829618647,
+        "hairStrandWidth": 1.3564488784177229,
+        "irisShade": 0.07320466497913003,
+        "irisInnerMix": 0.43308777876663956,
+        "irisPattern": 0.25731860161758957,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.2993619782384485,
+        "hairStrandVariation": 0.4348087520687841,
+        "fineFaceVersion": "fine-face-v1",
+        "nasalRootWidth": 1.0940921009751037,
+        "nasalWingWidth": 1.0338308184873313,
+        "upperLipScale": 0.8096830182825215,
+        "lowerLipScale": 1.195510000840295,
+        "chinProjection": -0.19003056921064854,
+        "foreheadSlope": -0.14177514812909064,
+        "browRidge": 0.743485010927543,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#453025",
+        "naturalBrowColor": "#35261e",
+        "textureTreatment": false,
+        "hairTextureVersion": "continuous-hair-texture-v1",
+        "naturalHairTexturePosition": 2.08291093679145,
+        "hairTexturePosition": 2.08291093679145
+      },
+      "visualFrame": {
+        "bodyMeasurementVersion": "extended-body-measurements-v1",
+        "measurementFit": {
+          "scope": "stature-and-mass",
+          "status": "supported",
+          "unsupported": [],
+          "authority": "artistic-rendering-support-not-population",
+          "estimated": []
+        },
+        "heightInches": 80,
+        "weightLbs": 361,
+        "volumeBudgetInches3": 9992.445600383327,
+        "torsoVolumeInches3": 4517.435508830468,
+        "legsVolumeInches3": 3051.1454432054516,
+        "armsVolumeInches3": 1021.2931840780534,
+        "neckVolumeInches3": 153.5157642214381,
+        "reservedVolumeInches3": 1249.055700047916,
+        "torsoLengthInches": 24.389522331207992,
+        "legLengthInches": 42.00047766879201,
+        "armSegmentLengthInches": 26,
+        "neckLengthInches": 3,
+        "chestWidthInches": 18.025834746104504,
+        "chestDepthInches": 13.21346814659215,
+        "waistRatio": 1.0281951122521422,
+        "limbShapeVariation": 0.031087605971843013,
+        "torsoSectionVersion": "artistic-regional-sections-v1",
+        "torsoSections": [
+          [
+            0,
+            18.025834746104504,
+            13.21346814659215
+          ],
+          [
+            0.28,
+            18.301461735770154,
+            13.451083952656882
+          ],
+          [
+            0.65,
+            16.919061668669432,
+            13.652015484310855
+          ],
+          [
+            1,
+            18.534075180209488,
+            12.085906866414884
+          ]
+        ],
+        "limbSectionVersion": "artistic-limb-sections-v1",
+        "armSections": [
+          [
+            0,
+            6.278651708254154,
+            5.47812394442929
+          ],
+          [
+            0.15748738329038023,
+            7.134831486652447,
+            6.766338636440433
+          ],
+          [
+            0.4921480727824382,
+            4.01639870593194,
+            3.5402531740631495
+          ],
+          [
+            0.654660689492058,
+            5.059789701895902,
+            5.299268625324591
+          ],
+          [
+            1,
+            2.6361227721885085,
+            2.024357322541793
+          ]
+        ],
+        "legSections": [
+          [
+            0,
+            8.262938151936472,
+            7.479598579812566
+          ],
+          [
+            0.1863343796785921,
+            9.181042391040524,
+            8.178271699558834
+          ],
+          [
+            0.5480422931723297,
+            5.076397952705916,
+            6.004369648680164
+          ],
+          [
+            0.7017079134937376,
+            6.712897049432443,
+            8.094898869946592
+          ],
+          [
+            1,
+            2.623496617268574,
+            2.8240714902754136
+          ]
+        ],
+        "upperArmWidth": 7.134831486652447,
+        "thighWidth": 9.181042391040524,
+        "neckDiameterInches": 8.071809829007256,
+        "upperArmShare": 0.4921480727824382,
+        "upperLegShare": 0.5480422931723297,
+        "pelvicBreadthInches": 10.386983783543112,
+        "footLengthInches": 12.72897200137377,
+        "footWidthInches": 4.428201207738756,
+        "shoulderWidth": 72.10333898441802,
+        "neckWidth": 40.35904914503628,
+        "torsoLength": 75.8,
+        "muscleDefinition": 0.5480415051616728,
+        "shoulderSpanInches": 17.138616289105265,
+        "torsoShare": 0.3048690291400999,
+        "armLengthInches": 34,
+        "wingspanInches": 85.13861628910527,
+        "handSizeInches": 10
+      }
+    },
+    {
+      "id": "proximal-join-control",
+      "name": "Controlled comparison",
+      "age": 24,
+      "heightInches": 86,
+      "weightLbs": 185,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 80,
+        "stamina": 75
+      },
+      "profile": {
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "proximal-join-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "proximal-join-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "proximal-join-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "proximal-join-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "proximal-join-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "proximal-join-control"
+        },
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v4",
+          "seed": "proximal-join-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "proximal-join-control"
+        }
+      },
+      "appearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.7567092559766024,
+        "hairstyle": "long",
+        "hairColor": "#473126",
+        "naturalHairColor": "#473126",
+        "dyedHairColor": null,
+        "hairTexture": "curly",
+        "eyeColor": "#746047",
+        "hairLength": 0.841120472829789,
+        "hairDensity": 0.7969021426513792,
+        "hairline": 0.1528711912687868,
+        "grayOnsetAge": 42,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "goatee",
+        "faceWidth": 0.9275346793141216,
+        "jawWidth": 1.0055284034926444,
+        "faceLength": 0.9520744926994666,
+        "eyeSpacing": 0.9053975261515007,
+        "noseWidth": 1.0625622855499386,
+        "lipFullness": 1.1386161550180987,
+        "browWeight": 0.8864597040228546,
+        "earSize": 0.8802232654299587,
+        "expression": "warm",
+        "blinkDelay": 4.855647841235623,
+        "buildVariation": 0.031087605971843013,
+        "naturalHairTexture": "curly",
+        "skinUndertone": 0.18861129507422447,
+        "eyeAperture": 1.08800844643265,
+        "eyeTilt": 1.3538169441744685,
+        "eyelidCrease": 0.9798366207629443,
+        "browArch": 1.1421725913300178,
+        "browAngle": -0.9770320672541857,
+        "noseBridge": 0.9826901686843484,
+        "noseTip": 0.8404107734095305,
+        "noseLength": 1.0992295826831833,
+        "cheekbone": 0.8618518479634076,
+        "cheekFullness": 0.8044841916998848,
+        "chinWidth": 1.0927588016726077,
+        "chinLength": 0.9844574850262143,
+        "lipWidth": 0.8682408921420574,
+        "lipCurve": -0.40929834824055433,
+        "earShape": 0.8064126023091376,
+        "facialAsymmetry": 0.36408619675785303,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 1.315904713794589,
+        "hairWaveScale": 1.2774865829618647,
+        "hairStrandWidth": 1.3564488784177229,
+        "irisShade": 0.07320466497913003,
+        "irisInnerMix": 0.43308777876663956,
+        "irisPattern": 0.25731860161758957,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.2993619782384485,
+        "hairStrandVariation": 0.4348087520687841,
+        "fineFaceVersion": "fine-face-v1",
+        "nasalRootWidth": 1.0940921009751037,
+        "nasalWingWidth": 1.0338308184873313,
+        "upperLipScale": 0.8096830182825215,
+        "lowerLipScale": 1.195510000840295,
+        "chinProjection": -0.19003056921064854,
+        "foreheadSlope": -0.14177514812909064,
+        "browRidge": 0.743485010927543,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#453025",
+        "naturalBrowColor": "#35261e",
+        "textureTreatment": false,
+        "hairTextureVersion": "continuous-hair-texture-v1",
+        "naturalHairTexturePosition": 2.08291093679145,
+        "hairTexturePosition": 2.08291093679145
+      },
+      "visualFrame": {
+        "bodyMeasurementVersion": "extended-body-measurements-v1",
+        "measurementFit": {
+          "scope": "stature-and-mass",
+          "status": "supported",
+          "unsupported": [],
+          "authority": "artistic-rendering-support-not-population",
+          "estimated": []
+        },
+        "heightInches": 86,
+        "weightLbs": 185,
+        "volumeBudgetInches3": 5120.782371387579,
+        "torsoVolumeInches3": 2315.0292773784954,
+        "legsVolumeInches3": 1563.6063905623507,
+        "armsVolumeInches3": 523.3773935026036,
+        "neckVolumeInches3": 78.67151352068159,
+        "reservedVolumeInches3": 640.0977964234473,
+        "torsoLengthInches": 26.21873650604859,
+        "legLengthInches": 45.96126349395142,
+        "armSegmentLengthInches": 27.775,
+        "neckLengthInches": 3,
+        "chestWidthInches": 17.31857176014087,
+        "chestDepthInches": 6.556260426271629,
+        "waistRatio": 1.0281951122521422,
+        "limbShapeVariation": 0.031087605971843013,
+        "torsoSectionVersion": "artistic-regional-sections-v1",
+        "torsoSections": [
+          [
+            0,
+            17.31857176014087,
+            6.556260426271629
+          ],
+          [
+            0.28,
+            17.58338422884431,
+            6.674160669317253
+          ],
+          [
+            0.65,
+            16.25522411307041,
+            6.7738589040848485
+          ],
+          [
+            1,
+            17.806870834964823,
+            5.996786916561084
+          ]
+        ],
+        "limbSectionVersion": "artistic-limb-sections-v1",
+        "armSections": [
+          [
+            0,
+            4.348688458788111,
+            3.7942309081474117
+          ],
+          [
+            0.15748738329038023,
+            4.941691430441034,
+            4.686467748777618
+          ],
+          [
+            0.4921480727824382,
+            2.7818180574367863,
+            2.452032511852336
+          ],
+          [
+            0.654660689492058,
+            3.5044863297008613,
+            3.6703530282897083
+          ],
+          [
+            1,
+            1.8258182183117597,
+            1.4021002810886205
+          ]
+        ],
+        "legSections": [
+          [
+            0,
+            5.654548072233803,
+            5.118487994570071
+          ],
+          [
+            0.1863343796785921,
+            6.282831191370892,
+            5.596608569810849
+          ],
+          [
+            0.5480422931723297,
+            3.47391396735043,
+            4.1089496493407385
+          ],
+          [
+            0.7017079134937376,
+            4.593813770840874,
+            5.539554327809764
+          ],
+          [
+            1,
+            1.795328425181461,
+            1.9325871388066584
+          ]
+        ],
+        "upperArmWidth": 4.941691430441034,
+        "thighWidth": 6.282831191370892,
+        "neckDiameterInches": 5.778341228492794,
+        "upperArmShare": 0.4921480727824382,
+        "upperLegShare": 0.5480422931723297,
+        "pelvicBreadthInches": 11.166007567308844,
+        "footLengthInches": 13.683644901476802,
+        "footWidthInches": 4.760316298319163,
+        "shoulderWidth": 69.27428704056348,
+        "neckWidth": 28.891706142463967,
+        "torsoLength": 85,
+        "muscleDefinition": 0.5480415051616728,
+        "shoulderSpanInches": 18.42401251078816,
+        "torsoShare": 0.3048690291400999,
+        "armLengthInches": 36.375,
+        "wingspanInches": 91.17401251078816,
+        "handSizeInches": 10.75
+      }
+    },
+    {
+      "id": "proximal-join-control",
+      "name": "Controlled comparison",
+      "age": 24,
+      "heightInches": 96,
+      "weightLbs": 650,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 80,
+        "stamina": 75
+      },
+      "profile": {
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "proximal-join-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "proximal-join-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "proximal-join-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "proximal-join-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "proximal-join-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "proximal-join-control"
+        },
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v4",
+          "seed": "proximal-join-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "proximal-join-control"
+        }
+      },
+      "appearance": {
+        "version": "portrait-identity-v3",
+        "complexion": 0.7567092559766024,
+        "hairstyle": "long",
+        "hairColor": "#473126",
+        "naturalHairColor": "#473126",
+        "dyedHairColor": null,
+        "hairTexture": "curly",
+        "eyeColor": "#746047",
+        "hairLength": 0.841120472829789,
+        "hairDensity": 0.7969021426513792,
+        "hairline": 0.1528711912687868,
+        "grayOnsetAge": 42,
+        "freckles": false,
+        "mole": null,
+        "facialHair": "goatee",
+        "faceWidth": 0.9275346793141216,
+        "jawWidth": 1.0055284034926444,
+        "faceLength": 0.9520744926994666,
+        "eyeSpacing": 0.9053975261515007,
+        "noseWidth": 1.0625622855499386,
+        "lipFullness": 1.1386161550180987,
+        "browWeight": 0.8864597040228546,
+        "earSize": 0.8802232654299587,
+        "expression": "warm",
+        "blinkDelay": 4.855647841235623,
+        "buildVariation": 0.031087605971843013,
+        "naturalHairTexture": "curly",
+        "skinUndertone": 0.18861129507422447,
+        "eyeAperture": 1.08800844643265,
+        "eyeTilt": 1.3538169441744685,
+        "eyelidCrease": 0.9798366207629443,
+        "browArch": 1.1421725913300178,
+        "browAngle": -0.9770320672541857,
+        "noseBridge": 0.9826901686843484,
+        "noseTip": 0.8404107734095305,
+        "noseLength": 1.0992295826831833,
+        "cheekbone": 0.8618518479634076,
+        "cheekFullness": 0.8044841916998848,
+        "chinWidth": 1.0927588016726077,
+        "chinLength": 0.9844574850262143,
+        "lipWidth": 0.8682408921420574,
+        "lipCurve": -0.40929834824055433,
+        "earShape": 0.8064126023091376,
+        "facialAsymmetry": 0.36408619675785303,
+        "detailVersion": "natural-appearance-detail-v1",
+        "hairCurvature": 1.315904713794589,
+        "hairWaveScale": 1.2774865829618647,
+        "hairStrandWidth": 1.3564488784177229,
+        "irisShade": 0.07320466497913003,
+        "irisInnerMix": 0.43308777876663956,
+        "irisPattern": 0.25731860161758957,
+        "hairArrangementVersion": "hair-arrangement-v1",
+        "hairPart": 0.2993619782384485,
+        "hairStrandVariation": 0.4348087520687841,
+        "fineFaceVersion": "fine-face-v1",
+        "nasalRootWidth": 1.0940921009751037,
+        "nasalWingWidth": 1.0338308184873313,
+        "upperLipScale": 0.8096830182825215,
+        "lowerLipScale": 1.195510000840295,
+        "chinProjection": -0.19003056921064854,
+        "foreheadSlope": -0.14177514812909064,
+        "browRidge": 0.743485010927543,
+        "facialPigmentVersion": "facial-pigment-v1",
+        "naturalFacialHairColor": "#453025",
+        "naturalBrowColor": "#35261e",
+        "textureTreatment": false,
+        "hairTextureVersion": "continuous-hair-texture-v1",
+        "naturalHairTexturePosition": 2.08291093679145,
+        "hairTexturePosition": 2.08291093679145
+      },
+      "visualFrame": {
+        "bodyMeasurementVersion": "extended-body-measurements-v1",
+        "measurementFit": {
+          "scope": "stature-and-mass",
+          "status": "supported",
+          "unsupported": [],
+          "authority": "artistic-rendering-support-not-population",
+          "estimated": []
+        },
+        "heightInches": 96,
+        "weightLbs": 650,
+        "volumeBudgetInches3": 17991.93806163203,
+        "torsoVolumeInches3": 8133.886650248766,
+        "legsVolumeInches3": 5493.752183056908,
+        "armsVolumeInches3": 1838.8935447388774,
+        "neckVolumeInches3": 276.4134258834758,
+        "reservedVolumeInches3": 2248.992257704004,
+        "torsoLengthInches": 29.267426797449588,
+        "legLengthInches": 52.56257320255041,
+        "armSegmentLengthInches": 30.775,
+        "neckLengthInches": 3,
+        "chestWidthInches": 22.080445910869656,
+        "chestDepthInches": 16.185617632430482,
+        "waistRatio": 1.0281951122521422,
+        "limbShapeVariation": 0.031087605971843013,
+        "torsoSectionVersion": "artistic-regional-sections-v1",
+        "torsoSections": [
+          [
+            0,
+            22.080445910869656,
+            16.185617632430482
+          ],
+          [
+            0.28,
+            22.41807059913567,
+            16.476681154718335
+          ],
+          [
+            0.65,
+            20.7247226716342,
+            16.722808886330462
+          ],
+          [
+            1,
+            22.70300656190398,
+            14.804430230636205
+          ]
+        ],
+        "limbSectionVersion": "artistic-limb-sections-v1",
+        "armSections": [
+          [
+            0,
+            7.743853226039288,
+            6.756512345467825
+          ],
+          [
+            0.15748738329038023,
+            8.799833211408282,
+            8.345347968480198
+          ],
+          [
+            0.4921480727824382,
+            4.95367533050172,
+            4.366415312848726
+          ],
+          [
+            0.654660689492058,
+            6.240554601013534,
+            6.535918911686109
+          ],
+          [
+            1,
+            3.251294829240317,
+            2.4967662981230236
+          ]
+        ],
+        "legSections": [
+          [
+            0,
+            9.911203316762201,
+            8.97160560676772
+          ],
+          [
+            0.1863343796785921,
+            11.012448129735779,
+            9.809647864186646
+          ],
+          [
+            0.5480422931723297,
+            6.089022004149032,
+            7.202102603553732
+          ],
+          [
+            0.7017079134937376,
+            8.051964843259249,
+            9.7096440822163
+          ],
+          [
+            1,
+            3.146823550711555,
+            3.387408474627349
+          ]
+        ],
+        "upperArmWidth": 8.799833211408282,
+        "thighWidth": 11.012448129735779,
+        "neckDiameterInches": 10.831135744241587,
+        "upperArmShare": 0.4921480727824382,
+        "upperLegShare": 0.5480422931723297,
+        "pelvicBreadthInches": 12.464380540251733,
+        "footLengthInches": 15.274766401648522,
+        "footWidthInches": 5.313841449286507,
+        "shoulderWidth": 88.32178364347862,
+        "neckWidth": 54.155678721207934,
+        "torsoLength": 85,
+        "muscleDefinition": 0.5480415051616728,
+        "shoulderSpanInches": 20.56633954692632,
+        "torsoShare": 0.3048690291400999,
+        "armLengthInches": 40.375,
+        "wingspanInches": 101.31633954692632,
+        "handSizeInches": 12
+      }
+    }
+  ],
+  "captures": [
+    {
+      "file": "output/playwright/proximal-joins-after-desktop-dark-0.png",
+      "size": "desktop",
+      "theme": "dark",
+      "group": 0,
+      "width": 1440,
+      "height": 1000,
+      "cssPixelsPerInch": 2.4
+    },
+    {
+      "file": "output/playwright/proximal-joins-after-desktop-dark-1.png",
+      "size": "desktop",
+      "theme": "dark",
+      "group": 1,
+      "width": 1440,
+      "height": 1000,
+      "cssPixelsPerInch": 2.4
+    },
+    {
+      "file": "output/playwright/proximal-joins-after-desktop-light-0.png",
+      "size": "desktop",
+      "theme": "light",
+      "group": 0,
+      "width": 1440,
+      "height": 1000,
+      "cssPixelsPerInch": 2.4
+    },
+    {
+      "file": "output/playwright/proximal-joins-after-desktop-light-1.png",
+      "size": "desktop",
+      "theme": "light",
+      "group": 1,
+      "width": 1440,
+      "height": 1000,
+      "cssPixelsPerInch": 2.4
+    },
+    {
+      "file": "output/playwright/proximal-joins-after-mobile-dark-0.png",
+      "size": "mobile",
+      "theme": "dark",
+      "group": 0,
+      "width": 390,
+      "height": 844,
+      "cssPixelsPerInch": 2.4
+    },
+    {
+      "file": "output/playwright/proximal-joins-after-mobile-dark-1.png",
+      "size": "mobile",
+      "theme": "dark",
+      "group": 1,
+      "width": 390,
+      "height": 844,
+      "cssPixelsPerInch": 2.4
+    },
+    {
+      "file": "output/playwright/proximal-joins-after-mobile-light-0.png",
+      "size": "mobile",
+      "theme": "light",
+      "group": 0,
+      "width": 390,
+      "height": 844,
+      "cssPixelsPerInch": 2.4
+    },
+    {
+      "file": "output/playwright/proximal-joins-after-mobile-light-1.png",
+      "size": "mobile",
+      "theme": "light",
+      "group": 1,
+      "width": 390,
+      "height": 844,
+      "cssPixelsPerInch": 2.4
+    }
+  ]
+}

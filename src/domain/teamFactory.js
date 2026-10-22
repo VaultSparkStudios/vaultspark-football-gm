@@ -1,13 +1,16 @@
 import { CONTRACT_RULES, ROSTER_TEMPLATE } from "../config.js";
 import { FOOTBALL_RULES } from "../sport/football/rules.js";
 import { buildSyntheticTeamRoster, createSyntheticPlayer } from "./playerFactory.js";
-import { assignFieldableActiveRoster, capSpaceForTeam, fieldableProtectedIds } from "../engine/capCompliance.js";
-import { buildContract } from "./contracts.js";
+import { assignFieldableActiveRoster, capSpaceForTeam } from "../engine/capCompliance.js";
+import { STARTER_COUNTS } from "./talentDistribution.js";
+import { buildContract, normalizeContract, restructureContract, contractMarketOptions, contractBaseMinimum } from "./contracts.js";
 import { calcTeamOffenseDefense } from "./ratings.js";
 import { derivedRng } from "../utils/rng.js";
+import { createSalaryCapModel } from "../data/nflSalaryCap.js";
+import { buildPracticeContract } from './practiceContracts.js';
 
 /** A contract already at the minimum cannot be demoted any further. */
-const MIN_SALARY_FLOOR = CONTRACT_RULES.minSalary;
+const generatedContract = player => ["generated-roster", "generated-draft"].includes(player.profile?.source);
 
 /**
  * The one shape of a team's in-season record.
@@ -317,9 +320,12 @@ export function buildFranchiseEconomics(teamId) {
 
 export function createLeagueBase(year, rng = null) {
   const randomizedIdentities = buildRandomizedTeamIdentities(year);
+  const capModel = createSalaryCapModel(year);
   return {
     year,
-    teams: FOOTBALL_RULES.teams.map((meta) => createTeam(meta, year, randomizedIdentities)),
+    capModel,
+    rulesModelVersion: "nfl-2026-weekly-v1",
+    teams: FOOTBALL_RULES.teams.map((meta) => ({ ...createTeam(meta, year, randomizedIdentities), salaryCap: capModel.baseCap })),
     players: [],
     retiredPlayers: [],
     retiredNumbers: [],
@@ -329,7 +335,7 @@ export function createLeagueBase(year, rng = null) {
     gameArchive: [],
     awards: [],
     capLedger: {},
-    teamCapOverride: {},
+    teamCapOverride: Object.fromEntries(FOOTBALL_RULES.teams.map(team => [team.id, capModel.baseCap])),
     depthCharts: {},
     depthChartSnapShares: {},
     waiverWire: [],
@@ -380,6 +386,15 @@ export function initializeLeagueRoster({ league, importedPlayers, rng }) {
     const teamPlayers = players
       .filter((player) => player.teamId === team.id && player.status === "active")
       .sort((a, b) => b.overall - a.overall);
+    // Final initial slots, not the factory's provisional roles, choose pay basis.
+    const {activeIds}=assignFieldableActiveRoster(teamPlayers,{practiceSettings:league.settings||{}});
+    for(const player of teamPlayers) {
+      player.rosterSlot=activeIds.has(player.id)?'active':'practice';
+      if(!generatedContract(player)) continue;
+      if(player.rosterSlot==='practice') player.contract=buildPracticeContract(player,{year:league.year});
+      else if(player.contract.kind==='weekly-practice-contract-v1') player.contract=buildContract({overall:player.overall,
+        years:1,salary:contractBaseMinimum(contractMarketOptions(league,player)),...contractMarketOptions(league,player),rng});
+    }
     // S104 - the last bare `53` in the engine, and it was also the last
     // position-blind slotting. Generation now assigns the active roster through
     // the same authority every subsequent season uses, so a league cannot be
@@ -399,11 +414,16 @@ export function initializeLeagueRoster({ league, importedPlayers, rng }) {
     // no salary curve is shaved, and the loop is bounded by the number of
     // players who could be demoted, so it either reaches legality or leaves the
     // club visibly over and lets the compliance pass see it.
-    const affordable = fieldableProtectedIds(teamPlayers);
+    // The existing initialization-only affordability pass protects actual
+    // starters. Minimum fieldable depth also includes backups and must not
+    // protect every bridge salary from this generation-time contract choice.
+    const affordable = new Set(Object.entries(STARTER_COUNTS).flatMap(([position, count]) =>
+      teamPlayers.filter(player => player.position === position).slice(0, count).map(player => player.id)
+    ));
     let demotions = 0;
     while (capSpaceForTeam(league, team.id) < 0 && demotions < teamPlayers.length) {
       const candidate = teamPlayers
-        .filter((player) => !affordable.has(player.id) && Number(player.contract?.capHit || 0) > MIN_SALARY_FLOOR)
+        .filter((player) => generatedContract(player) && !affordable.has(player.id) && Number(player.contract?.capHit || 0) > contractBaseMinimum(contractMarketOptions(league, player)))
         .sort(
           (a, b) =>
             Number(b.contract?.capHit || 0) - Number(a.contract?.capHit || 0) ||
@@ -413,14 +433,46 @@ export function initializeLeagueRoster({ league, importedPlayers, rng }) {
       candidate.contract = buildContract({
         overall: candidate.overall,
         years: 1,
-        salary: CONTRACT_RULES.minSalary,
-        minSalary: CONTRACT_RULES.minSalary,
+        salary: contractBaseMinimum(contractMarketOptions(league, candidate)),
+        ...contractMarketOptions(league, candidate),
         rng
       });
       demotions += 1;
     }
 
-    const { activeIds } = assignFieldableActiveRoster(teamPlayers);
+    // A few expensive starting units also need ordinary bonus conversion.
+    // Preserve total compensation and account for the deferred obligation
+    // through the existing contract authority, once per multi-year deal.
+    for (const player of teamPlayers.slice().sort((a, b) => Number(b.contract?.capHit || 0) - Number(a.contract?.capHit || 0))) {
+      if (capSpaceForTeam(league, team.id) >= 0) break;
+      if (!generatedContract(player) || player.contract?.yearsRemaining <= 1) continue;
+      const updated = restructureContract(player.contract, rng, { minBaseSalary: contractBaseMinimum(contractMarketOptions(league, player), player.contract.yearsRemaining) });
+      if (updated.capHit < player.contract.capHit) player.contract = updated;
+    }
+
+    // Generation assembles an existing fictional roster, before any contract
+    // is signed in a live franchise. Expensive combinations negotiate their
+    // initial excess compensation within the available team budget. Imported
+    // and subsequently persisted contracts never participate in this step.
+    const buffer = (league.teamCapOverride?.[team.id] || FOOTBALL_RULES.structure.salaryCap)
+      * derivedRng(`initial-budget:${team.id}:${league.year}`).float(.03, .07);
+    if (capSpaceForTeam(league, team.id) < buffer) {
+      const candidates = teamPlayers.filter(generatedContract).map(player => ({ player,
+        contract: normalizeContract(player.contract),
+        floor: contractBaseMinimum(contractMarketOptions(league, player), player.contract.yearsRemaining) }));
+      const excess = candidates.reduce((sum, { contract, floor }) => sum + Math.max(0, contract.capHit - floor), 0);
+      const factor = Math.max(0, 1 - (buffer - capSpaceForTeam(league, team.id)) / Math.max(1, excess));
+      for (const { player, contract, floor } of candidates) {
+        if (contract.capHit <= floor) continue;
+        const baseSalary = Math.round(floor + Math.max(0, contract.baseSalary - floor) * factor);
+        const signingBonus = Math.round(contract.signingBonus * factor);
+        const guaranteed = Math.round(baseSalary * .42 + signingBonus);
+        player.contract = normalizeContract({ ...contract, salary: baseSalary + signingBonus, baseSalary, signingBonus, guaranteed,
+          capHit: Math.round(baseSalary + signingBonus / contract.prorationYears),
+          deadCapRemaining: Math.round(signingBonus + guaranteed * .35) });
+      }
+    }
+
     teamPlayers.forEach((player, index) => {
       player.rosterSlot = activeIds.has(player.id) ? "active" : "practice";
       player.depthChartOrder = index + 1;
@@ -474,6 +526,12 @@ export function getTeamPlayers(league, teamId) {
 
 export function getAllTeamPlayers(league, teamId) {
   return league.players.filter((p) => p.teamId === teamId && p.status === "active");
+}
+
+// Reserve employees still carry contracts but cannot occupy active/practice
+// places or be reassigned by an automatic roster-quality sort.
+export function getRosterCandidates(league, teamId) {
+  return getAllTeamPlayers(league, teamId).filter(p => p.rosterSlot !== 'reserve');
 }
 
 export function recalculateAllTeamRatings(league) {

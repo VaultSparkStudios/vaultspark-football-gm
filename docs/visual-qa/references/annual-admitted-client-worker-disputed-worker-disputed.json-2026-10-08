@@ -1,0 +1,15 @@
+{
+  "worker": true,
+  "disputed": true,
+  "playerId": "P2026-BUF-QB-87221813",
+  "artifactDigest": "c5c7e2ee4b3ee601a803c4171935b2564c0c6feb030a96133e0193f35a1ae49e",
+  "actualAnnualCommand": true,
+  "namedSaveReplacementLoadReload": true,
+  "financialYear": 2027,
+  "summerThroughWeek": 0,
+  "sourceWeeks": [
+    24
+  ],
+  "explicitDisputePreserved": true,
+  "automaticAdmission": false
+}

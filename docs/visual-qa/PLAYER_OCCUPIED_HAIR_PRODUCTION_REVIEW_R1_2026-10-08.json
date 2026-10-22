@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T08:12:17.092809+00:00",
+  "reviewer": "independent studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Occupied scalp volume refinement and compatibility only; complete hair recognition, naturalism and full appearance acceptance remain open.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_OCCUPIED_HAIR_PRODUCTION_2026-10-08.json",
+  "primaryReceiptSha256": "db612590d36a5783231f18f5161f547ba819e7b0c97e4db1e51737a2d1a16323",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "4bc5216f4219601e354e7adf1d47466e1a43fabea79aa8d44a6c676deff194b7",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerPortrait.js": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+    "public/lib/playerMotion.js": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "test/player-scalp-volume.test.js": "46d8e408f3449b12365c6753febb14aaf271c3a299c3c1cb46ba59dc6ce25e30",
+    "test/player-beard-volume.test.js": "272b028c071667710cff0580504629457e9daaa700ab134c2b4c921b001f8c73",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-whole-head-form.test.js": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf",
+    "test/player-surface-lighting.test.js": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4",
+    "tests-ui/player-occupied-hair-gallery.spec.js": "8cc8f9055adb6c2a3e193a54f2ef863178e48aff50edaeaf6a08e3502430acb8",
+    "tests-ui/player-occupied-hair-production.spec.js": "98b17cb4ce4489cc341d416ff256457516a2e539b66b6334ee6e242dc97884f4",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+    "test/player-occupied-hair.test.js": "07fa2c5807e20f7235e848aeb54bd9f0fb83b4ad92e60cc669a21d1f0d4567b5"
+  },
+  "baselineSha256": "3113c97b5a9f603c723f2f9cdeb10fcc6347be4bd8f1a069d5ea28e9a071d32c",
+  "bindingVerification": {
+    "frozenFiles": 112,
+    "sources": 20,
+    "inputs": 2,
+    "evidence": 6,
+    "captures": 84,
+    "currentSourceHashesMatch": true,
+    "builtPairs": 8,
+    "builtByteHashesMatch": true,
+    "builtNormalizedLineEndingContentsMatch": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-occupied-hair.test.js test/player-scalp-volume.test.js test/player-beard-volume.test.js test/player-shared-head.test.js test/player-whole-head-form.test.js test/player-surface-lighting.test.js",
+      "exitCode": 0,
+      "tests": 21,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 22680.1795,
+      "terminalChunk": "e2e3ac",
+      "coverage": "56 maximum head-only style/texture meshes; 30 changed-style/grooming non-hair semantic comparisons; frozen beard non-beard comparison; exact 384 historical renderer hashes; fitted roots/skin lighting/blink/cache fallback contracts.",
+      "maximumMeshBytes": 1635576,
+      "maximumAllowedBytesExclusive": 1650000
+    },
+    {
+      "probe": "12 adverse clustered scalp meshes at width .6/1.5 and curvature .65/1.45, all three clustered styles, fixed identity seed and narrow/long face. Radial normal direction evaluated against each puff bounding-box center.",
+      "terminalChunk": "7cc8ff",
+      "nonpolarSamples": 30240,
+      "nonpolarInwardSamples": 0,
+      "minimumNonpolarRadialDot": 0.5501387480563947,
+      "maximumUnitNormalError": 3.342443344322987e-08,
+      "poleSamples": 12096,
+      "minimumPoleRadialDot": -0.07814651067927063,
+      "qualification": "Radial proxy is a diagnostic, not proof of every face orientation. Duplicate ellipsoid poles are singular parameter endpoints; initial overstrict all-point dot>.2 probe failed there (ef0ca8). Interior samples reveal no folded/inward puff normals."
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/production-occupied-hair-occupied-hair-gallery-8-mobile-light.png",
+      "sha256": "89e1bda8377275e66f441b2c15a603b87f41464eac36e7952434dd2cfb26c2bd"
+    },
+    {
+      "file": "docs/visual-qa/captures/production-occupied-hair-occupied-hair-gallery-10-desktop-dark.png",
+      "sha256": "dcc87ec8711b904890d24ecc29fd9ce4da8d6448c5d84d85153a912495a90486"
+    },
+    {
+      "file": "docs/visual-qa/captures/production-occupied-hair-occupied-hair-gallery-11-desktop-light.png",
+      "sha256": "ba3a43eba0d9a0496251ffdf966a10327601f6d0eaec53e41b168a96cc5fdc1e"
+    },
+    {
+      "file": "docs/visual-qa/captures/production-occupied-hair-production-occupied-hair-before-desktop-light-portrait.png",
+      "sha256": "90b5dbd057cae0b736734fdff8de26f0bb356fa71cf035e86066440531dff581"
+    },
+    {
+      "file": "docs/visual-qa/captures/production-occupied-hair-production-occupied-hair-after-desktop-light-portrait.png",
+      "sha256": "6da537ac653dc29e960eb1838727502c01f38f8bd5378c2a3334796da35451fc"
+    },
+    {
+      "file": "docs/visual-qa/captures/production-occupied-hair-production-occupied-hair-after-mobile-dark-portrait.png",
+      "sha256": "78803a9fb47336f33f5f2ae6ee3f99f8ec9bf5e1bf371464009199f5a2e1f657"
+    }
+  ],
+  "findings": [],
+  "observations": [
+    "Afro coverage is visibly occupied rather than isolated radial wires; puffs remain granular/beadlike.",
+    "Loc roots and side-hanging paths are fuller in matched ordinary/native galleries and the actual saved Christopher Reid dossier, with no observed clipping.",
+    "Braids have thicker visible rows but still read as smooth cap ridges; natural braid interlacing and full hairstyle recognition are not accepted.",
+    "First 12 current gallery rows now retain the same fixture person ID, so across-row style changes no longer also reroll identitySeed; matched before/after comparison remains valid.",
+    "Previous beard-only frozen all-non-beard comparison remains intact, alongside new current non-scalp preservation checks."
+  ],
+  "limitations": [
+    "Ellipsoid pole normals can be tangent or slightly inward at duplicate zero-area parameter endpoints; this local shading limitation is retained, not an all-vertex outward-normal certification.",
+    "Only six original PNGs were independently inspected; hash verification of all84 captures is not visual inspection of all84.",
+    "Browser execution, 3 PASS43.1sec, resource/cache/projection and saved DTO proof are primary-attributed; no independent browser rerun.",
+    "candidateFinal iterationEvidence shared terminal chunk is not independently certified as two separate focused/browser observations; final focused/browser/build evidence is separately bound.",
+    "96px raster differences establish wiring, not perceptual recognition or population calibration.",
+    "No grooming lifecycle, complete roster coverage, empirical distribution, current whole-suite, full appearance, release or whole-goal approval."
+  ],
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

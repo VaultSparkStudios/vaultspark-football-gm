@@ -3,6 +3,8 @@ export function createSessionModules(session) {
     roster: {
       get: (teamId) => session.getRoster(teamId),
       setDesignation: (payload) => session.setPlayerDesignation(payload),
+      previewElevation: (payload) => session.previewPlayerElevation(payload),
+      declareElevation: (payload) => session.declarePlayerElevation(payload),
       setPracticeSquad: (payload) => session.setPracticeSquad(payload)
     },
     transactions: {

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "status": "observed-national-context-not-generator-fit",
+  "sourceYear": 2023,
+  "geography": "New Zealand",
+  "subjectPopulation": "Census usually resident population, all ages and sexes",
+  "denominator": 4993923,
+  "responseType": "multiple-response ethnicity",
+  "sources": {
+    "counts": "https://www.stats.govt.nz/assets/Infographics/2023-Census-infographics/2023-Census-infographics-National.pdf",
+    "definitions": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/1f1ca131-a9aa-483b-98ab-d22bf84ae944"
+  },
+  "observations": [
+    {"sourceCategory": "European", "count": 3383742, "publishedPercent": 67.8},
+    {"sourceCategory": "Māori", "count": 887493, "publishedPercent": 17.8},
+    {"sourceCategory": "Pacific peoples", "count": 442632, "publishedPercent": 8.9},
+    {"sourceCategory": "Asian", "count": 861576, "publishedPercent": 17.3},
+    {"sourceCategory": "Middle Eastern/Latin American/African", "count": 92760, "publishedPercent": 1.9},
+    {"sourceCategory": "Other", "count": 56133, "publishedPercent": 1.1}
+  ],
+  "separateDescentObservation": {"sourceCategory": "Māori descent", "count": 978246, "publishedPercent": 19.6},
+  "implementationRequirements": [
+    "Preserve original ethnicity categories and multiple responses; do not normalize these overlapping margins into an exclusive race draw.",
+    "Use compatible single/combination observations before fitting mixed-background probabilities; marginal totals alone do not identify combinations.",
+    "Keep ethnicity, descent and birthplace separate; national residents are not a New-Zealand-born or NFL recruitment cohort.",
+    "Do not translate reported identity or these counts directly into skin, eye, hair or athletic distributions."
+  ],
+  "limitations": [
+    "No age-by-sex-by-birthplace-by-ethnicity joint extraction has been adopted from this source.",
+    "Source combines census responses, earlier censuses, administrative data and imputation; it is not entirely direct current self-response.",
+    "Rounded published percentages and overlapping categories do not sum to 100 percent.",
+    "No runtime coefficients or existing saved player identities changed."
+  ]
+}

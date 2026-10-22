@@ -1,0 +1,1506 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T07:50:46.150Z",
+  "status": "scoped-scalp-refinement-progress-full-craft-open",
+  "scope": "Head-rooted hairline coverage, thinner parted clumps, crown volume, braid paths and loc curvature; artistic geometry, not completed style naturalism or population calibration",
+  "sources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/production-scalp-source-playerHead3d.js-2026-10-08",
+      "sha256": "3113c97b5a9f603c723f2f9cdeb10fcc6347be4bd8f1a069d5ea28e9a071d32c"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/production-scalp-source-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/production-scalp-source-playerPortraitFace.js-2026-10-08",
+      "sha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/production-scalp-source-playerPortrait.js-2026-10-08",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/production-scalp-source-playerMotion.js-2026-10-08",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/production-scalp-source-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/production-scalp-source-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/production-scalp-source-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/production-scalp-source-playerIdentity.js-2026-10-08",
+      "sha256": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/production-scalp-source-playerVisualIdentity.js-2026-10-08",
+      "sha256": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/production-scalp-source-playerMeasurements.js-2026-10-08",
+      "sha256": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3"
+    },
+    {
+      "original": "test/player-scalp-volume.test.js",
+      "file": "references/production-scalp-source-player-scalp-volume.test.js-2026-10-08",
+      "sha256": "46d8e408f3449b12365c6753febb14aaf271c3a299c3c1cb46ba59dc6ce25e30"
+    },
+    {
+      "original": "test/player-beard-volume.test.js",
+      "file": "references/production-scalp-source-player-beard-volume.test.js-2026-10-08",
+      "sha256": "272b028c071667710cff0580504629457e9daaa700ab134c2b4c921b001f8c73"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/production-scalp-source-player-shared-head.test.js-2026-10-08",
+      "sha256": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f"
+    },
+    {
+      "original": "test/player-whole-head-form.test.js",
+      "file": "references/production-scalp-source-player-whole-head-form.test.js-2026-10-08",
+      "sha256": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf"
+    },
+    {
+      "original": "test/player-surface-lighting.test.js",
+      "file": "references/production-scalp-source-player-surface-lighting.test.js-2026-10-08",
+      "sha256": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4"
+    },
+    {
+      "original": "tests-ui/player-scalp-gallery.spec.js",
+      "file": "references/production-scalp-source-player-scalp-gallery.spec.js-2026-10-08",
+      "sha256": "98f7343e239f5ffcd7f4762ce199bc30d782492c66b263a50c703c55e5ca5165"
+    },
+    {
+      "original": "tests-ui/player-scalp-production.spec.js",
+      "file": "references/production-scalp-source-player-scalp-production.spec.js-2026-10-08",
+      "sha256": "1882d620d13bbde13b2ea8c5b8873112628c0d6b5f4261e621c6f6d726b44ec7"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/production-scalp-source-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "references/production-scalp-before-2026-10-08.js",
+      "sha256": "c2366cbf0e1f234531e8e55209568f8e11c6612b2256da9aca4dccc1e34a87c0"
+    },
+    {
+      "file": "references/production-head-anatomy-fixtures-2026-10-08.json",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    }
+  ],
+  "evidence": [
+    {
+      "original": "output/playwright/production-scalp.json",
+      "file": "references/production-scalp-evidence-production-scalp.json-2026-10-08",
+      "sha256": "d8c373c646b2d85e2e91167529aa3f11b9674a0aab4ae29d2f5c1e2f793e0bcd"
+    },
+    {
+      "original": "output/playwright/scalp-gallery-observations.json",
+      "file": "references/production-scalp-evidence-scalp-gallery-observations.json-2026-10-08",
+      "sha256": "e6f5df963131f3f75374b9e1dac08528fd19dfe01a71b1156c15e2195f0456cf"
+    },
+    {
+      "original": ".cache/logs/scalp-focused-current-r2-2026-10-08.log",
+      "file": "references/production-scalp-evidence-scalp-focused-current-r2-2026-10-08.log-2026-10-08",
+      "sha256": "c4acd6692416f661440a1fc9079fdbeb47dab46c75f40d7f999e26185e2e9f42"
+    },
+    {
+      "original": ".cache/logs/scalp-browser-current-2026-10-08.log",
+      "file": "references/production-scalp-evidence-scalp-browser-current-2026-10-08.log-2026-10-08",
+      "sha256": "5b70b28b9e65652e35f16bb1db6ffae70910ad57a6dcda6cbc618feab7e43a10"
+    },
+    {
+      "original": ".cache/logs/scalp-build-current-2026-10-08.log",
+      "file": "references/production-scalp-evidence-scalp-build-current-2026-10-08.log-2026-10-08",
+      "sha256": "0b7f39bb80eae8c3aeaa888dcf8081626e951919ffff93cfaa069b12514eba35",
+      "originalSha256": "e98f9cd1ce3aaf337846d65356a6a221e7ed4efc8487e09e6ea0b11ffd7156fe",
+      "publicSafeDerivative": true
+    }
+  ],
+  "built": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "3113c97b5a9f603c723f2f9cdeb10fcc6347be4bd8f1a069d5ea28e9a071d32c",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "39a07707a1d0ea1e5dd2a5ff796c567b857718f843ec366d40ce0a3e46e587d1",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "ef04ff6954e17b232880268a43f71191dcfcf459f4d8ad47bfa79141aff7305e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "captures": [
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5f51be573d23e99a6285df4f0f250149b67eae0af31a66f6f0244bf2391272fe",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-desktop-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "529edffe3747a9f43575874eabb415d12a9e22ce859071b16eb83d6f74e3d2d0",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-desktop-dark-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "a8e71d4cc77886e83c4c3fcdc86a1fc2b48b5356155c72f1d85ac40a0094e4c6",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-desktop-dark-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e7c7d8c75c35d4955796c2798fd0850f68abac8409ca503417f8b6a6d4afe731",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-desktop-light-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "779d63990be4d549c60b709b972b57faf1843784c60a652a25fc802345e641eb",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-desktop-light-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7ea0491ea209fb63ddffe01e56303e8b825c070b8fdef4f0e54c0514d13da6b6",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-desktop-light-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0d7d6751149dd7829a7a97697c501adc6f622725ae7f01235fc163a02a66b6ed",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-mobile-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ad249c5be4515592012545bae786a52e352e7c3841a1701244109dbc21037ab6",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-mobile-dark-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "bc6f1af2370008b35413a04a34609689be36797ff7881611a54cf3742b754eef",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-mobile-dark-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "1b64bf967e2cdc9f6e71f5790dccaf110bdb30c8741d75829bde3f4d1e15ccf5",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-mobile-light-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6f4b478dae1479ba5cebf4a33df7e70763853938198ad5bd079d7384d978a88b",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-mobile-light-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "02bc6f2ebf85faec53638fb36f85d6daf8fd07a75de09a08caae94b33ac6ad66",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-before-mobile-light-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "eaa401b834a553d7e49021fd84eae96f7e034e5798ebd95c5e733941d860596b",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-after-desktop-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c404853cdf79e3da9640cad55459711bc70f23f46c8da157d0648a45ecb2f561",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-scalp-after-desktop-dark-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "11c575d0ccd17273ce5349e19f600ecf3602dff7c0a0e667f251eda7510c6b0b",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-after-desktop-dark-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "62d86deb3a7f25e1319a66f6fd929554c05b318175faca57ff422133485e2e7a",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-after-desktop-light-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c8a96e78f9bfe109972c8beb706213af2cd73c00e95e6e0aef74cef358541905",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-scalp-after-desktop-light-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "05972c595761a759450ba572493f11d1e94136f2fc3b8dfa6d385a7e8240ba33",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-after-desktop-light-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d08219ca9314994f86cbbdf184309fe3db7c26ecf7b8c520e9dc20eb398d4ba1",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-scalp-after-mobile-dark-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "527232b3464e1a371596ac02559db1d77b75e7b9c78daca53e73b140fa652d62",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-after-mobile-dark-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f2b0b2736c27c49cf916cba57c8b549ab873304f1ce4ac867ce7e7f37f9b4d7d",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-scalp-after-mobile-dark-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "3862b9e48f118cefa14b0253e989efa694a0a9191c1ed1e994bf5db1d8e68c23",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-scalp-after-mobile-light-portrait.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b4da79245b48fa7f246a43595d62e33c81b956903454de52b9101a558afb86c7",
+      "page": "actual-player-dossier",
+      "inspected": false,
+      "original": "output/playwright/production-scalp-after-mobile-light-body.png"
+    },
+    {
+      "file": "captures/production-scalp-component-production-scalp-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a532d7475e23c97df806d286670305f783cc1f9e2bce529c6e2a389c5caae8bb",
+      "page": "actual-player-dossier",
+      "inspected": true,
+      "original": "output/playwright/production-scalp-after-mobile-light-motion.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-0-desktop-dark.png",
+      "sha256": "3dff4deb404c91b939f18b1bed2baa17df2658d631ca5132b0ae6c4aaaf9e6da",
+      "theme": "dark",
+      "person": 0,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": true,
+      "original": "output/playwright/scalp-gallery-0-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-1-desktop-dark.png",
+      "sha256": "a805edf908957d98f018961f0be78de84f0955ae7a2a5c1c7aac9aa5fe38f556",
+      "theme": "dark",
+      "person": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-1-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-2-desktop-dark.png",
+      "sha256": "17b1646532d15536673f8342f8e32d8d0a63bb8f24179f6802901a99dbab7cfd",
+      "theme": "dark",
+      "person": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-2-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-3-desktop-dark.png",
+      "sha256": "e26da24d61c53e568610d34999ce8444aae196ca36d9c3bc4c284de2662f9e45",
+      "theme": "dark",
+      "person": 3,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-3-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-4-desktop-dark.png",
+      "sha256": "44017fbff66b2d7fa6ae5c1055cfa2a2b37238498b5c7c02aeb86aa2325086da",
+      "theme": "dark",
+      "person": 4,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-4-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-5-desktop-dark.png",
+      "sha256": "0acb4e72858b55d2caa27982440a9d3fa842429cec9dc3e941d774706e8dcaef",
+      "theme": "dark",
+      "person": 5,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-5-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-6-desktop-dark.png",
+      "sha256": "6d0c574a68220b6248f10a5c8780138f182e650ff2b2822d50db098000f40378",
+      "theme": "dark",
+      "person": 6,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-6-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-7-desktop-dark.png",
+      "sha256": "c3a4081739671438253fbb0846239bd726c5ce909e2295a1c3e51370f9684922",
+      "theme": "dark",
+      "person": 7,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-7-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-8-desktop-dark.png",
+      "sha256": "f4aa8a326f709a11b21056717d4a8a454983d642990c5697803aebf157f55c03",
+      "theme": "dark",
+      "person": 8,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-8-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-9-desktop-dark.png",
+      "sha256": "bd7baa3977070a4e972503d8e4463ce5a4c007983e15c7f1ad901db3b9f33ca1",
+      "theme": "dark",
+      "person": 9,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-9-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-10-desktop-dark.png",
+      "sha256": "da8cd9c64b0dcda2b80cada8d1efbca7bd88c2dcc01656b9e77bfcb7631a190d",
+      "theme": "dark",
+      "person": 10,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": true,
+      "original": "output/playwright/scalp-gallery-10-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-11-desktop-dark.png",
+      "sha256": "98591e92362fd968373dd25f785575db87ffd2a9cd140f43dfbb397df6dee59e",
+      "theme": "dark",
+      "person": 11,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-11-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-12-desktop-dark.png",
+      "sha256": "c2cfb0b581a67e6d3fa41d428f0d292429757a2d1e7f6681bb63e34625e4b11b",
+      "theme": "dark",
+      "person": 12,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-12-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-13-desktop-dark.png",
+      "sha256": "33c2e7f7f4b76d1340e20bd67fb8860aea52e4a0f799feba06b5d3c614490bd6",
+      "theme": "dark",
+      "person": 13,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-13-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-14-desktop-dark.png",
+      "sha256": "f88294cdba9351597222302f64d9a730fb2ff4c8b7c591bf8caf4e6100c9bbba",
+      "theme": "dark",
+      "person": 14,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-14-desktop-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-0-desktop-light.png",
+      "sha256": "764e7898208848025064e5d8cbf26205bb1b389826e35b9d39554049df564b05",
+      "theme": "light",
+      "person": 0,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-0-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-1-desktop-light.png",
+      "sha256": "ff7f19ba9f8021a1cae8c6f1a9033f178b4ccdf5526806196e91aeff9677e8f9",
+      "theme": "light",
+      "person": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-1-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-2-desktop-light.png",
+      "sha256": "145f5d1a81e0ac5222566a7cb6c1b25ae0cd6963148b3702d2535c71a2e80524",
+      "theme": "light",
+      "person": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-2-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-3-desktop-light.png",
+      "sha256": "305df6fb0e3f2d1e3d2fc0fc03d4493ab81d699730251280b21041e3725faec0",
+      "theme": "light",
+      "person": 3,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-3-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-4-desktop-light.png",
+      "sha256": "31c7cfeab8542888c138ef5c278711df0bbff46a460def3b837332138b10f0a9",
+      "theme": "light",
+      "person": 4,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-4-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-5-desktop-light.png",
+      "sha256": "31f6a10b7db1317828505d81f294e78e4cddb995650d1cd8fb3b65c5df38db07",
+      "theme": "light",
+      "person": 5,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-5-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-6-desktop-light.png",
+      "sha256": "7f65f23e4ba1d74476e1ed498867c6add603e1455a2e0410eb7908378e04ce5c",
+      "theme": "light",
+      "person": 6,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-6-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-7-desktop-light.png",
+      "sha256": "d0e41836354fef8bcd712c44e9fcfb5dffcf332801465198cb12a662cb200698",
+      "theme": "light",
+      "person": 7,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-7-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-8-desktop-light.png",
+      "sha256": "4c97d276ce4bc2d9e7c229dbd088ff1fe4e2489875f861ce6d09b9f49e062e9d",
+      "theme": "light",
+      "person": 8,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": true,
+      "original": "output/playwright/scalp-gallery-8-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-9-desktop-light.png",
+      "sha256": "6cdd6b2d5afdefd8a4b48383ee98a014ca752a623ac966c7ccf05570f3a9da06",
+      "theme": "light",
+      "person": 9,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-9-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-10-desktop-light.png",
+      "sha256": "21fefce7493d0c06736a9bba491884e7b952d1272d14d3247dee8f2633d28313",
+      "theme": "light",
+      "person": 10,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-10-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-11-desktop-light.png",
+      "sha256": "e54c48b5beef5675e10c1e0fd473f1e2073f964e4db4e53c52932005ef7062f6",
+      "theme": "light",
+      "person": 11,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": true,
+      "original": "output/playwright/scalp-gallery-11-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-12-desktop-light.png",
+      "sha256": "645a8fb9e95d2cf960038ce10a4c5f239e435f528ca206894f23b31bbbdc8bbc",
+      "theme": "light",
+      "person": 12,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-12-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-13-desktop-light.png",
+      "sha256": "3d7d379c50d429ed08bee4796e2d559e4b8864be8bef8010a0746e7b785194d5",
+      "theme": "light",
+      "person": 13,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-13-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-14-desktop-light.png",
+      "sha256": "7b18a0a8e96c3116d87318daf1ec508c96aba59c4e22c5f2798675b27454e0e7",
+      "theme": "light",
+      "person": 14,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-14-desktop-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-0-mobile-dark.png",
+      "sha256": "462715fcf4c6a41534c971696509e3451eecfa9533206ec69523d4b511a8cdd9",
+      "theme": "dark",
+      "person": 0,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-0-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-1-mobile-dark.png",
+      "sha256": "2c4070a52374fdfad2bb16210155e6a122b6fcd2047fe155523a428ace540b08",
+      "theme": "dark",
+      "person": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-1-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-2-mobile-dark.png",
+      "sha256": "401c67eabaf7f2b672cab0502f6d62ed964aaa2d79f52c445ab22f5904a34ca5",
+      "theme": "dark",
+      "person": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-2-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-3-mobile-dark.png",
+      "sha256": "5e407e9e32d3bb11e0a42cae5c96635ebaf82bfcd1b9e50796cae3997099c117",
+      "theme": "dark",
+      "person": 3,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-3-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-4-mobile-dark.png",
+      "sha256": "7677e05092063aacbbd0ac38205225c762f7148314d80368bea78650434e8cba",
+      "theme": "dark",
+      "person": 4,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-4-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-5-mobile-dark.png",
+      "sha256": "9377ef7ee73f7e9d071cf141cb8718baf0663574631842b82ea558add63b44f6",
+      "theme": "dark",
+      "person": 5,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-5-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-6-mobile-dark.png",
+      "sha256": "3f66b8117d54daf83b363412e7a2f29bbd6a0bf45d6e788618c4f0182e9c0c0b",
+      "theme": "dark",
+      "person": 6,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-6-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-7-mobile-dark.png",
+      "sha256": "25e65700722def5c332e69c45af0e05c26f81c34530a405399c88f6737eff78f",
+      "theme": "dark",
+      "person": 7,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-7-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-8-mobile-dark.png",
+      "sha256": "f6b450d4e18217e929a8fe535f01d1f17d7a38e0538fa0afa03f97ea232112c3",
+      "theme": "dark",
+      "person": 8,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-8-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-9-mobile-dark.png",
+      "sha256": "b60754a80a77469062bf7d1224db4e7040eab183b3f5fb58b91bb756c999c690",
+      "theme": "dark",
+      "person": 9,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-9-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-10-mobile-dark.png",
+      "sha256": "5e00a8b2afb83ccab6d0c657cfca97e49a9859e32ed90bfb875de602f18f0177",
+      "theme": "dark",
+      "person": 10,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-10-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-11-mobile-dark.png",
+      "sha256": "a7a6c49eafad22d92c389f89fc8c445ac2c32e651e6ba7baaaebbbe8f1846962",
+      "theme": "dark",
+      "person": 11,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-11-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-12-mobile-dark.png",
+      "sha256": "d778aad7eb3a1937757e781bc084a3131a3dd1c2dd72e93a0e98031f2e2053af",
+      "theme": "dark",
+      "person": 12,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-12-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-13-mobile-dark.png",
+      "sha256": "0eeac4f1efe4585c985b0d8e9c793966229b0ebb8516e6f75e57b4538676a872",
+      "theme": "dark",
+      "person": 13,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": true,
+      "original": "output/playwright/scalp-gallery-13-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-14-mobile-dark.png",
+      "sha256": "5b21c51e23609c264cff1d9fa5a73666101ef518115cf11856a80db1b09d5050",
+      "theme": "dark",
+      "person": 14,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-14-mobile-dark.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-0-mobile-light.png",
+      "sha256": "0c9ec0caee37fada88b8376f0f131a52d6062401109d995a0d59df0de31aeadb",
+      "theme": "light",
+      "person": 0,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-0-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-1-mobile-light.png",
+      "sha256": "10f89978f84355f65ce63c8d22bc985c4c16bb214de102184b1639a08449afde",
+      "theme": "light",
+      "person": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-1-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-2-mobile-light.png",
+      "sha256": "aac4e06497f902d0f7bffa6f06d6fa5dcf20093b6b97c3955425f8662737634d",
+      "theme": "light",
+      "person": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-2-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-3-mobile-light.png",
+      "sha256": "5e0cc4fe20d9f8e56ac50b6b39548712bff221766c6dba08e68cffed6d0cda6a",
+      "theme": "light",
+      "person": 3,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": true,
+      "original": "output/playwright/scalp-gallery-3-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-4-mobile-light.png",
+      "sha256": "5e84a175d5563589b57a4849c61d9c58cf0c962fda734863f3427b9f2d570eb9",
+      "theme": "light",
+      "person": 4,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-4-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-5-mobile-light.png",
+      "sha256": "f46ca9d5833225fa3d911af49de00965ffd193c936f27918c1323996f14ee4d8",
+      "theme": "light",
+      "person": 5,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-5-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-6-mobile-light.png",
+      "sha256": "b98e25707c2fdfaa9a5d85d0895d1cdef5e5d2e30bd88169339bedd986b2283d",
+      "theme": "light",
+      "person": 6,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-6-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-7-mobile-light.png",
+      "sha256": "8beccb654e7d98d6376e3190828d63a623d55f2763fe9989a0633b95143b716a",
+      "theme": "light",
+      "person": 7,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-7-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-8-mobile-light.png",
+      "sha256": "9799908b79960c431acd223b0a094a15501c4343972cd9f96bb43b1949bf6572",
+      "theme": "light",
+      "person": 8,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-8-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-9-mobile-light.png",
+      "sha256": "882330e3dcfa775145406a947a35ba32889ed060aebebb4f302cac02092272ed",
+      "theme": "light",
+      "person": 9,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-9-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-10-mobile-light.png",
+      "sha256": "c26f0084a147ba7736149f8e8a8af9748aacd7097c98a54ee9741a0268ae42b4",
+      "theme": "light",
+      "person": 10,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-10-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-11-mobile-light.png",
+      "sha256": "e3211f07d87a56f3dea71c1f800d9c8aaeb7c5d4a9547004cdd0f409501760c7",
+      "theme": "light",
+      "person": 11,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-11-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-12-mobile-light.png",
+      "sha256": "8fe30b3b9438da7b57878a0ec55b57248350bd7d973ad6b78915d1962d7869c5",
+      "theme": "light",
+      "person": 12,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-12-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-13-mobile-light.png",
+      "sha256": "4554010d5df6c11406e32e9b105dc484cd3db59d52741282c13b9e211fb9b5e7",
+      "theme": "light",
+      "person": 13,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-13-mobile-light.png"
+    },
+    {
+      "file": "captures/production-scalp-component-scalp-gallery-14-mobile-light.png",
+      "sha256": "85c1c0fbb116f665217eaaa364cb0f9e951429004388439b89ee4d8c34775747",
+      "theme": "light",
+      "person": 14,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-scalp-gallery",
+      "state": "same saved person before/after; front/oblique/profile; color",
+      "inspected": false,
+      "original": "output/playwright/scalp-gallery-14-mobile-light.png"
+    }
+  ],
+  "checks": {
+    "focused": {
+      "passed": 18,
+      "failed": 0,
+      "durationMs": 22239.3729,
+      "terminalChunk": "af0627",
+      "styleTextureMaximumCases": 56,
+      "meshByteLimit": 1650000,
+      "nonScalpGeometryExact": true,
+      "legacySvgHashesUnchanged": 384
+    },
+    "browser": {
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 60,
+      "terminalChunk": "b91f41",
+      "galleryPeople": 15,
+      "nonScalpCompiledPixelsExact": true,
+      "actualDtoUnchanged": true,
+      "motionProjectionAgreements": 6,
+      "unavailableWebGLFallback": true
+    },
+    "actualDossier": {
+      "playerId": "P2026-BUF-LB-33468504",
+      "projectionAgreement": [
+        {
+          "mode": "run",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "acceleration",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "cut",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "jump",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "strength",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "endurance",
+          "frontBody": true,
+          "sideMotion": true
+        }
+      ],
+      "diagnostics": {
+        "cacheEntries": 2,
+        "cacheLimit": 32,
+        "draws": 2,
+        "meshBuilds": 1,
+        "unavailable": false,
+        "contexts": 1
+      },
+      "cacheProof": {
+        "bounded": {
+          "cacheEntries": 32,
+          "cacheLimit": 32,
+          "draws": 37,
+          "meshBuilds": 36,
+          "unavailable": false,
+          "contexts": 1
+        },
+        "restored": true,
+        "malformed": true,
+        "malformedSkin": true,
+        "healthy": true
+      }
+    },
+    "build": {
+      "passed": true,
+      "terminalChunk": "3be2f3",
+      "precacheVersion": "e4a31c475a4b",
+      "assets": 318,
+      "sizeKB": 3533
+    },
+    "reachabilityAndBoot": {
+      "passed": true,
+      "terminalChunk": "b6136c",
+      "modules": 138,
+      "entries": 4,
+      "bootBytes": 649321,
+      "byteLimit": 730000,
+      "bootModules": 51,
+      "moduleLimit": 58,
+      "lazyLeaks": 0
+    }
+  },
+  "iterationEvidence": {
+    "initialDenseCoverageVisualRejected": true,
+    "initialCaptures": ".cache/scalp-first-candidate-captures",
+    "repair": "Opaque dense core with coverage taper at roots; sparse density remains separate",
+    "firstFocusedFailure": {
+      "terminalChunk": "624058",
+      "passed": 17,
+      "failed": 1,
+      "reason": "Historical beard-only comparison inadvertently required subsequently changed scalp to match pre-beard version"
+    },
+    "testRepair": "Preserved exact frozen beard-only all-non-beard comparison and added current non-scalp comparison; no historical hash or geometry expectations removed"
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 12,
+    "findings": [
+      "Six gallery originals and six actual dossier originals inspected across desktop/mobile and dark/light; remaining 72 retained originals are explicitly uninspected.",
+      "Hairline edge is less uniform; braid paths now run from crown and loc tips are less tightly curled. Dark hair has subtle strand contrast.",
+      "Afro silhouette still reads swept/cap-like, braids remain smooth cap with thin rows, locs retain a broad cap and sparse dangling ends, and long hair remains visibly sparse. These style-recognition/naturalism defects remain open.",
+      "Face, beard and measured body remain mannequin-like; current improvement does not meet complete-person craft.",
+      "Actual dossier remains readable with shared head in front/profile/movement. Asynchronous screenshots do not prove synchronized pose equality.",
+      "All geometry and coverage thresholds remain artistic assumptions, not country/NFL prevalence or measured anatomy."
+    ],
+    "fixesApplied": [
+      "Head-fixed coverage taper with opaque dense core",
+      "Reduced loose-hair width and broad fiber contrast",
+      "Crown volume and crown-to-border braid paths",
+      "Grouped grooming conceals loose texture; thicker gentle loc paths",
+      "Preserved current skin/eye/ear/beard geometry and no-scalp compiled pixels"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false,
+  "publicSafeEvidenceRedactions": {
+    "receipt": "docs/visual-qa/PUBLIC_SAFE_DIAGNOSTICS_S118.json",
+    "originalManifestSha256": "4ee7a2175d03cce1df6d6b7c24aeb69f8df0a0afa64c1cda252e97e9f1ee827e",
+    "files": [
+      "docs/visual-qa/references/production-scalp-evidence-scalp-build-current-2026-10-08.log-2026-10-08"
+    ],
+    "originalManifestPreservedPrivately": true
+  }
+}

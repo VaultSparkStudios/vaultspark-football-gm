@@ -1,0 +1,10 @@
+{
+  "worker": true,
+  "artifactDigest": "f6abc1ea2c559214d42dbdff627cb1577e6d6dcfe5feafa6ef1d0749984deecb",
+  "playerId": "P2026-BUF-OL-48032446",
+  "namedSaveReplacementLoadReload": true,
+  "frontProfileMotionImagesExact": true,
+  "personAndMeasurementsExact": true,
+  "rngExact": true,
+  "completeVisualAcceptance": false
+}

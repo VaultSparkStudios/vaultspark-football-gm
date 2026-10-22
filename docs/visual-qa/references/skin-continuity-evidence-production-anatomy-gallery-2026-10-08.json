@@ -1,0 +1,750 @@
+{
+  "productionChanged": true,
+  "fullAppearanceAccepted": false,
+  "scope": "Coordinated production geometry/material comparison. Closed eyes must hide all globe pixels and reopen exactly. Clay removes grooming; controlled fictional fixtures establish neither population prevalence nor actual career continuity.",
+  "observations": [
+    {
+      "id": "art-benchmark-0",
+      "state": "before",
+      "blink": 0,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4449,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 3972,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3635,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-0",
+      "state": "open",
+      "blink": 0,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4435,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 3991,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3677,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-0",
+      "state": "half",
+      "blink": 0.5,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4435,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 3991,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3677,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-0",
+      "state": "closed",
+      "blink": 1,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4435,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 3991,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3677,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-0",
+      "state": "clay-open",
+      "blink": 0,
+      "clay": true,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4412,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4051,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3846,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-0",
+      "state": "clay-closed",
+      "blink": 1,
+      "clay": true,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4412,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4051,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3846,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "state": "before",
+      "blink": 0,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 5098,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4641,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 4311,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "state": "open",
+      "blink": 0,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 5065,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4639,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 4326,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "state": "half",
+      "blink": 0.5,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 5065,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4639,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 4326,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "state": "closed",
+      "blink": 1,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 5065,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4639,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 4326,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "state": "clay-open",
+      "blink": 0,
+      "clay": true,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4370,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4024,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3866,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-2",
+      "state": "clay-closed",
+      "blink": 1,
+      "clay": true,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4370,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4024,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3866,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "state": "before",
+      "blink": 0,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4643,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4212,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3921,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "state": "open",
+      "blink": 0,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4665,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4241,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3970,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "state": "half",
+      "blink": 0.5,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4665,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4241,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3970,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "state": "closed",
+      "blink": 1,
+      "clay": false,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4665,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 4241,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3970,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "state": "clay-open",
+      "blink": 0,
+      "clay": true,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4234,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 3861,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3683,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": null
+        }
+      ],
+      "inputUnchanged": true
+    },
+    {
+      "id": "art-benchmark-4",
+      "state": "clay-closed",
+      "blink": 1,
+      "clay": true,
+      "views": [
+        {
+          "angle": 0,
+          "ordinaryColoredPixels": 4234,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 0.7853981633974483,
+          "ordinaryColoredPixels": 3861,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        },
+        {
+          "angle": 1.5707963267948966,
+          "ordinaryColoredPixels": 3683,
+          "nativePixels": 72000,
+          "closedEyeExposedPixels": 0
+        }
+      ],
+      "inputUnchanged": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-0-desktop-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c7d5541e014b67c125704dd7768f9142073d6016a1cef3fbe66f685a635673a0"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-0-open.png",
+      "person": 0,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9b4c64d244e4677a7f58d585be251f0c312230e61ffdf304625ccdd88f4bd091"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-0-closed.png",
+      "person": 0,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ca7d7fa2204ac6b797bc7333bd734f129312bd2b23cb22ee5caee9dcf5f12d06"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-0-clay-closed.png",
+      "person": 0,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b31e26466b7108dd1b26c306ed085290327d60ec3fd62590183bd8d0f097cb13"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "da274bd52e5141a5bbda1073f6dc24312e1e579e49028bc17b12235285c4c192"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-1-open.png",
+      "person": 1,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "470ff91ef06c4328ad47d353c2e4a0d6e4bddf4503fd30353f835ecfe5046e6b"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-1-closed.png",
+      "person": 1,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "403f202348d01d64fb7e791b8ac3f0992bf00fa0d1fa26d8e69aea12a2c23af6"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-1-clay-closed.png",
+      "person": 1,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "02c7848f1f8251a101f053df6171ce9c2b7b3b44cc5dd7975005ac7fd6eed2cd"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5a12752e815143ac3076d5f41577b913f76b54901075b8ca3ce33bf82329c40f"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-2-open.png",
+      "person": 2,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8136626bb633e54279edb5ce57bd2b77290f768081cb4a7ddb6efd6dd7fb9f49"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-2-closed.png",
+      "person": 2,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "fd0adf92fe3b5aac24f31b86d904d28464f256eab543aa38d8151b68d2463437"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-native-2-clay-closed.png",
+      "person": 2,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "70d6d7d09ef2f297b8c4e2e7ac59d5ac1d25efc2097407e4cec1ce2e068cad31"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-0-desktop-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f91cb1c42a0dd0bdf9353dd955a165ece24f896cae88f6bc279f49f0540fd80d"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8f80aa3f70c282894081b62f03935ef4b68e24e5bb3ee68a3241359251904bf3"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-2-desktop-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "408bf939f549d23600e124a001767b634508ee866ed49bcb9dca17aaabe4259f"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-0-mobile-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8100d597f40f977a045aa822789894e7090967e7850ccfae3ee4d1273c1725a8"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "11f121cc1c37d6b54e2b403720149c85c081b1ec0f1c068588ff915e8d8a8e8e"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-2-mobile-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e75c07005991f281bb2a8288935f04ad2802784ce974d79ae0a05f04ebe8cfab"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-0-mobile-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "2270ed8f55ad893bacfe21f16e3bd285680b16a481606a145b232c1859233622"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "282c33dea11c4b1e0fc59226b2276b5ef8f5da7c0910ed0f669f2fb658a6b05d"
+    },
+    {
+      "file": "output/playwright/production-anatomy-gallery-person-2-mobile-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "75d0c5a4f41bd8ae34068635f54d42eff7cad55a3600649a1935b236c29cf5ac"
+    }
+  ]
+}

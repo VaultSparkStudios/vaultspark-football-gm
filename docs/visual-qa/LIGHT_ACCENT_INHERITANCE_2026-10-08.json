@@ -1,0 +1,2886 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T04:53:14.675Z",
+  "sourceRevision": "local-worktree",
+  "scope": "Actual setup/landing and created fictional Orlando Stallions game overview, before/after CSS, ten palettes, desktop/mobile; saved selection restored on game reload",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "sources": [
+    {
+      "original": "public/styles.css",
+      "file": "references/light-accent-styles.css-2026-10-08",
+      "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
+    },
+    {
+      "original": "public/game.html",
+      "file": "references/light-accent-game.html-2026-10-08",
+      "sha256": "d4d12b3dc0134587de44c835f3628df40d7c0a2f48abc28e66439b7f7bdd7221"
+    },
+    {
+      "original": "public/index.html",
+      "file": "references/light-accent-index.html-2026-10-08",
+      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "original": "public/lib/themeCustomizer.js",
+      "file": "references/light-accent-themeCustomizer.js-2026-10-08",
+      "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
+    },
+    {
+      "original": "tests-ui/theme.spec.js",
+      "file": "references/light-accent-theme.spec.js-2026-10-08",
+      "sha256": "72d929b565cdc3311fb4ac3cce00e7dbb4979df5dc859f854fbcdfc6669a6e9a"
+    },
+    {
+      "original": ".cache/light-accent.spec.mjs",
+      "file": "references/light-accent-light-accent.spec.mjs-2026-10-08",
+      "sha256": "6b4c1d991e4691edaaa505cc79943296c2a65a1478a3332f0c460c48548154f8"
+    },
+    {
+      "original": ".cache/light-accent.config.mjs",
+      "file": "references/light-accent-light-accent.config.mjs-2026-10-08",
+      "sha256": "a0dab7d71752ff0edb936317fae03537559864de97de5c20162278fdb7478fc2"
+    },
+    {
+      "original": ".cache/light-accent-before.css",
+      "file": "references/light-accent-light-accent-before.css-2026-10-08",
+      "sha256": "43b277303fbaae70b1ff7c9e260d2f1ff46db72dcdc6844123116a632aa7a4ee"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/light-accent-before-setup-desktop-dark-gold.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "0785d7c7f01ddf6e447ede5390703164554daf682ee5236c5862561df0aa2738",
+      "page": "setup, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-dark-emerald.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "be12478a54e6e86494d0244ccafcd57a1316fed6386abb8c40c5e67039b66afa",
+      "page": "setup, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-dark-azure.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "21a59bef55a73e4ced21395a079a40588bd646001de49b063a63d2af955e0d4f",
+      "page": "setup, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-dark-crimson.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "15ef23402c5dfc0148bf3250a18d7250415c127f66220d17b4ebca12228efea3",
+      "page": "setup, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-dark-violet.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "b9c696a126e1ae28094520d80a71ed9213ed0c6ae36e49be4ad061bef7b6f006",
+      "page": "setup, before, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-light-gold.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "487a5023361976375dd923b4cc95a84c81bc697628584d4296e13d10dc75f6a6",
+      "page": "setup, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-light-emerald.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "c73660db7366a10af2eeabf7d011baf0af095914bb3a981467e121157ab2e78a",
+      "page": "setup, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-light-azure.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "c73660db7366a10af2eeabf7d011baf0af095914bb3a981467e121157ab2e78a",
+      "page": "setup, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-light-crimson.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "c73660db7366a10af2eeabf7d011baf0af095914bb3a981467e121157ab2e78a",
+      "page": "setup, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-desktop-light-violet.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "c73660db7366a10af2eeabf7d011baf0af095914bb3a981467e121157ab2e78a",
+      "page": "setup, before, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-dark-gold.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "bf38d563a496e5b899909357710017e89e87cd4cecd5efe8285726c177c064af",
+      "page": "setup, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-dark-emerald.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "b06c07ea909351ad1a32043f5b5c522ec103ba2d780e029d8a66601d8d277e2d",
+      "page": "setup, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-dark-azure.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "c296f61b8a1739668301bf330bc269ecc603b0dcb4abd2889ed0c1605934f6c3",
+      "page": "setup, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-dark-crimson.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "a75d3d6f7309d48bee25db38a97cabc25e7eb2e9d9ecae6f1d90baef40cde3fa",
+      "page": "setup, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-dark-violet.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "8babcd86748fe8fc32f277157ffa31ac82f526b47da7c4f2e12f11991440d73b",
+      "page": "setup, before, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-light-gold.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "e78f0bbc975d7fdb95c30d00e63cc66da319d5aff3e0026a65e6f007c190294e",
+      "page": "setup, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-light-emerald.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "4c2aac82b8e7769c407147281ca58ce89f83f2f79440c79c4bf5d228d4a1e0c0",
+      "page": "setup, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-light-azure.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "4c2aac82b8e7769c407147281ca58ce89f83f2f79440c79c4bf5d228d4a1e0c0",
+      "page": "setup, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-light-crimson.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "4c2aac82b8e7769c407147281ca58ce89f83f2f79440c79c4bf5d228d4a1e0c0",
+      "page": "setup, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-setup-mobile-light-violet.png",
+      "stage": "before",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "4c2aac82b8e7769c407147281ca58ce89f83f2f79440c79c4bf5d228d4a1e0c0",
+      "page": "setup, before, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-dark-gold.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "cfd540c84e4a0680e6e21ebd41630f05f0c28d982fee0b1bdb3e8e08652b4b21",
+      "page": "game, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-dark-emerald.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "896baf917ff79406ffcebfc803716cb3e4fe9687c3f13ed724320fafcfc82dda",
+      "page": "game, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-dark-azure.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "0ad80f3dd2e1cbc99743749e09bbb6b0e9589fad7162466d65e4564708a1c62d",
+      "page": "game, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-dark-crimson.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "167030b9a6bf4ad7ece331a506bc8ddd9b3d9dc436b79ab2469d1e305c5227ea",
+      "page": "game, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-dark-violet.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "01be54b3152365d1b60e770675083daddf64c1f0f07da8508d5e6b2b9023caa7",
+      "page": "game, before, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-light-gold.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "2c91d2ba9c92f9a956e3147f7e41187e239226fb3e841a0231a6b3952bf6c9d7",
+      "page": "game, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-light-emerald.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "404cf074ffd935f4424ac8d67a5abee28e54d5d965691366ace2766ea7c369f6",
+      "page": "game, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-light-azure.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "6c6bc1c5896fd927d16e9a36b13116e1ec7498fcd8cc3d6a5b5d43dae80c620e",
+      "page": "game, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-light-crimson.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "404cf074ffd935f4424ac8d67a5abee28e54d5d965691366ace2766ea7c369f6",
+      "page": "game, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-desktop-light-violet.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "6c6bc1c5896fd927d16e9a36b13116e1ec7498fcd8cc3d6a5b5d43dae80c620e",
+      "page": "game, before, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-dark-gold.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "6819932dadf63a71e224d438f7613511a712eacb5277477e02aa144948f0f29a",
+      "page": "game, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-dark-emerald.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "9486ee1da69ae764386c417ad0c49e5e6139269b25a284d88fff46c134b47a36",
+      "page": "game, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-dark-azure.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "e3176f0cb8be15d7a43b9131e23090764bc6de3ac43cbaade17ddb4fcc398c83",
+      "page": "game, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-dark-crimson.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "bacfa14fd0e025832a59d2609b184494135942552ab152f6ab2854e013f9a2df",
+      "page": "game, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-dark-violet.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "7cf40f5b55283fbe620388ee9ddfed5e16b3cd199cb5bbb73ab202f765f7ceac",
+      "page": "game, before, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-light-gold.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "1dc17065a65499bfae476c795124fa3fd7dc2b97da88b7635fa2d33a02f13d52",
+      "page": "game, before, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-light-emerald.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "fbb792711b515550de8399de45a654f7f158addcb843d00031a4a9eac892ebf6",
+      "page": "game, before, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-light-azure.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "fbb792711b515550de8399de45a654f7f158addcb843d00031a4a9eac892ebf6",
+      "page": "game, before, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-light-crimson.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "fbb792711b515550de8399de45a654f7f158addcb843d00031a4a9eac892ebf6",
+      "page": "game, before, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-before-game-mobile-light-violet.png",
+      "stage": "before",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "fbb792711b515550de8399de45a654f7f158addcb843d00031a4a9eac892ebf6",
+      "page": "game, before, violet",
+      "inspected": true
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-dark-gold.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "0785d7c7f01ddf6e447ede5390703164554daf682ee5236c5862561df0aa2738",
+      "page": "setup, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-dark-emerald.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "be12478a54e6e86494d0244ccafcd57a1316fed6386abb8c40c5e67039b66afa",
+      "page": "setup, after, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-dark-azure.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "21a59bef55a73e4ced21395a079a40588bd646001de49b063a63d2af955e0d4f",
+      "page": "setup, after, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-dark-crimson.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "15ef23402c5dfc0148bf3250a18d7250415c127f66220d17b4ebca12228efea3",
+      "page": "setup, after, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-dark-violet.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "b9c696a126e1ae28094520d80a71ed9213ed0c6ae36e49be4ad061bef7b6f006",
+      "page": "setup, after, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-light-gold.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "487a5023361976375dd923b4cc95a84c81bc697628584d4296e13d10dc75f6a6",
+      "page": "setup, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-light-emerald.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "b9f3d0b35801660de1a40c6d75e85ffd8706a03ee54769a3001e71a7cb77758f",
+      "page": "setup, after, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-light-azure.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "9b6a116ae9e9632eddad678e864c670af9fc041d3e8bd3e760f4a0435e04468c",
+      "page": "setup, after, azure",
+      "inspected": true
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-light-crimson.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "e01e2b9351353009f3d75c79bac62fbc80c2fe8c470db0af2a77902af3883917",
+      "page": "setup, after, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-desktop-light-violet.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "361080d153a5d44588ee780664ea0957755ef1f84e0df7f95512b82228d04ede",
+      "page": "setup, after, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-dark-gold.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "bf38d563a496e5b899909357710017e89e87cd4cecd5efe8285726c177c064af",
+      "page": "setup, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-dark-emerald.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "e3850c9ba2ff83c8773a1efca6d2c094a4e51c7ad8bdfee8b87e6f0c56513697",
+      "page": "setup, after, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-dark-azure.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "c296f61b8a1739668301bf330bc269ecc603b0dcb4abd2889ed0c1605934f6c3",
+      "page": "setup, after, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-dark-crimson.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "a75d3d6f7309d48bee25db38a97cabc25e7eb2e9d9ecae6f1d90baef40cde3fa",
+      "page": "setup, after, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-dark-violet.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "8babcd86748fe8fc32f277157ffa31ac82f526b47da7c4f2e12f11991440d73b",
+      "page": "setup, after, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-light-gold.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "e78f0bbc975d7fdb95c30d00e63cc66da319d5aff3e0026a65e6f007c190294e",
+      "page": "setup, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-light-emerald.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "9269f673c5dc9c00dd10d3446837f90a15f78e1c19ddc676b3f9131b592dc8b4",
+      "page": "setup, after, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-light-azure.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "bfcba1f8080100c081745a106a4a70324b2b1b73766672a8d08d14233d991d0d",
+      "page": "setup, after, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-light-crimson.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "b061d78fac612a45561b3787f93e584398d7321211c37ab565ad3ae33fc2b57e",
+      "page": "setup, after, crimson",
+      "inspected": true
+    },
+    {
+      "file": "captures/light-accent-after-setup-mobile-light-violet.png",
+      "stage": "after",
+      "surface": "setup",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "6b99a04aee5a651962285f3b6b5cc1e216d5dbc6dee86e2589f4c51bee712a8d",
+      "page": "setup, after, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-dark-gold.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "2fff5efe5aaefaa71d55f3197bea835b084f71753b6f08292421f59f372e1670",
+      "page": "game, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-dark-emerald.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "dc3acee14c998f711b2f1958d7c6baade2d578c4ceb4646612cff227e3d7f303",
+      "page": "game, after, emerald",
+      "inspected": true
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-dark-azure.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "7d897d2924838527bd72f53e3a3b0df07a5c6004b0644af0e165483845289c40",
+      "page": "game, after, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-dark-crimson.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "426e058103b915cdb1ddc53dbcb427a76351df9c5b360ea8beee797b1a6ebaf3",
+      "page": "game, after, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-dark-violet.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "e15230351e99574db8e63e0ef69fa9be9154819ff18aca4ba07701c99acab368",
+      "page": "game, after, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-light-gold.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "2b84463a8060fb19897a88aeac5de8dee5167e6cb6d1b2fae0cbd876c90cd96c",
+      "page": "game, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-light-emerald.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "dcd369a912bf957c29bdf89b647767350abd41d94868e46f333b5adf2a1581d8",
+      "page": "game, after, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-light-azure.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "12526966622cb802420f46dcd21ec1ac5b6af7a1e72736c8f290d987f7c1378e",
+      "page": "game, after, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-light-crimson.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "265ee54af91afbe12f16fe376142c6aafbc4a95037eb80d227d7b9cf2e6b6c58",
+      "page": "game, after, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-desktop-light-violet.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "1f00a8a9111020d42785c7c9de4b2be77365261100b9465756dbcd7a42b3d516",
+      "page": "game, after, violet",
+      "inspected": true
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-dark-gold.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "gold",
+      "sha256": "59ecced1ee00eb0ca4b56664d1741589bfed78ec5937eb94b0fa93675e5b17b5",
+      "page": "game, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-dark-emerald.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "emerald",
+      "sha256": "cbfaa17c739211aa1dd1d6e1e251afff4e16a582adf948d9d130e82388908bb8",
+      "page": "game, after, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-dark-azure.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "azure",
+      "sha256": "91e77bc6798256f59a46edd0abca0d153943da79e2aeb87dbb05360563b2baff",
+      "page": "game, after, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-dark-crimson.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "crimson",
+      "sha256": "316b7a580c0e4b8b4e0bdc09e64d8d0b8e3b8924c7c29d43b5cd6c9bbce18f29",
+      "page": "game, after, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-dark-violet.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "accent": "violet",
+      "sha256": "95c5c0fca504fe4d92dade52e5e2c0f0316fe99c39fc26ac7e3b118f65b11522",
+      "page": "game, after, violet",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-light-gold.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "gold",
+      "sha256": "7279203bb0639143955ef580c3374f8d50b611b757467c0dffa99eead2b94595",
+      "page": "game, after, gold",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-light-emerald.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "emerald",
+      "sha256": "60d9dfe605483d52974277bea3a96a58df661f00c84ae7eab54d68d5b2ef21b7",
+      "page": "game, after, emerald",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-light-azure.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "azure",
+      "sha256": "bd20743b688c063182bbba1ac6cdc7504afb704d55b9cc0e958a69ce0382c779",
+      "page": "game, after, azure",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-light-crimson.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "crimson",
+      "sha256": "e676c8957c91eec67b0cfe416d602e67516c90e35491082a8f71349800d80f09",
+      "page": "game, after, crimson",
+      "inspected": false
+    },
+    {
+      "file": "captures/light-accent-after-game-mobile-light-violet.png",
+      "stage": "after",
+      "surface": "game",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "accent": "violet",
+      "sha256": "d831812aa747697b3a89f99caee62cb677a846490e4d577cc72c23730c1dab0d",
+      "page": "game, after, violet",
+      "inspected": true
+    }
+  ],
+  "checks": {
+    "focusedPassed": 8,
+    "galleryBrowserPassed": 1,
+    "themeBrowserLastRunStatus": "passed",
+    "themeBrowserDefinedChecks": 9,
+    "themeBrowserTerminalOutputRetained": false,
+    "controlledStates": 80,
+    "matchedBeforeAfterPairs": 40,
+    "rootBodyDescendantAgreement": true,
+    "mobilePrimaryMinimumContrast": 6.590807208321267,
+    "savedSelectionReloadPassed": true
+  },
+  "observations": [
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(215, 162, 74)",
+        "contrast": 9.156429236158546
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(63, 191, 135)",
+        "contrast": 9.013526938519853
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(79, 158, 240)",
+        "contrast": 7.4814509715322
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(224, 100, 95)",
+        "contrast": 6.157571959723378
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(169, 140, 240)",
+        "contrast": 7.696490766473204
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(160, 109, 28)",
+        "contrast": 4.69894037326835
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(160, 109, 28)",
+        "contrast": 4.69894037326835
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(160, 109, 28)",
+        "contrast": 4.69894037326835
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(160, 109, 28)",
+        "contrast": 4.69894037326835
+      }
+    },
+    {
+      "stage": "before",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": {
+        "ink": "rgb(0, 0, 0)",
+        "background": "rgb(160, 109, 28)",
+        "contrast": 4.69894037326835
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "descendant": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "descendant": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "descendant": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "descendant": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "descendant": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "descendant": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "descendant": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "setup",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "descendant": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "descendant": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "descendant": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "descendant": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "desktop",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "descendant": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "primary": null
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "gold",
+      "root": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "body": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "descendant": [
+        "#d7a24a",
+        "#f4c97a"
+      ],
+      "primary": {
+        "ink": "rgb(10, 14, 7)",
+        "background": "rgb(244, 201, 122)",
+        "contrast": 12.497627050566784
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "emerald",
+      "root": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "body": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "descendant": [
+        "#3fbf87",
+        "#7ee0b0"
+      ],
+      "primary": {
+        "ink": "rgb(10, 14, 7)",
+        "background": "rgb(126, 224, 176)",
+        "contrast": 12.21397431006106
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "azure",
+      "root": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "body": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "descendant": [
+        "#4f9ef0",
+        "#8fc4f8"
+      ],
+      "primary": {
+        "ink": "rgb(10, 14, 7)",
+        "background": "rgb(143, 196, 248)",
+        "contrast": 10.585349906307462
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "crimson",
+      "root": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "body": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "descendant": [
+        "#e0645f",
+        "#f2a09b"
+      ],
+      "primary": {
+        "ink": "rgb(10, 14, 7)",
+        "background": "rgb(242, 160, 155)",
+        "contrast": 9.526497787068273
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "dark",
+      "accent": "violet",
+      "root": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "body": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "descendant": [
+        "#a98cf0",
+        "#cbb8f8"
+      ],
+      "primary": {
+        "ink": "rgb(10, 14, 7)",
+        "background": "rgb(203, 184, 248)",
+        "contrast": 10.892730517416373
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "gold",
+      "root": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "body": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "descendant": [
+        "#a06d1c",
+        "#7a5210"
+      ],
+      "primary": {
+        "ink": "rgb(255, 249, 239)",
+        "background": "rgb(122, 82, 16)",
+        "contrast": 6.590807208321267
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "emerald",
+      "root": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "body": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "descendant": [
+        "#12795d",
+        "#0c5c46"
+      ],
+      "primary": {
+        "ink": "rgb(255, 249, 239)",
+        "background": "rgb(12, 92, 70)",
+        "contrast": 7.608805400590887
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "azure",
+      "root": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "body": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "descendant": [
+        "#1a6a9a",
+        "#12507a"
+      ],
+      "primary": {
+        "ink": "rgb(255, 249, 239)",
+        "background": "rgb(18, 80, 122)",
+        "contrast": 8.169086836024338
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "crimson",
+      "root": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "body": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "descendant": [
+        "#b23b36",
+        "#8a2a26"
+      ],
+      "primary": {
+        "ink": "rgb(255, 249, 239)",
+        "background": "rgb(138, 42, 38)",
+        "contrast": 8.21724601805309
+      }
+    },
+    {
+      "stage": "after",
+      "surface": "game",
+      "viewport": "mobile",
+      "theme": "light",
+      "accent": "violet",
+      "root": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "body": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "descendant": [
+        "#6d4fc0",
+        "#523a92"
+      ],
+      "primary": {
+        "ink": "rgb(255, 249, 239)",
+        "background": "rgb(82, 58, 146)",
+        "contrast": 8.427159003272905
+      }
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 6,
+    "findings": [
+      "Light body tokens previously shadowed selected non-gold accents; actual descendant values now agree with root in all ten palettes.",
+      "Mobile Advance Week previously inherited black ink; primary theme ink and stronger fill retain at least 4.5:1 contrast in all ten measured palettes.",
+      "Representative actual game/landing desktop/mobile originals show readable controls and intact layout. Landing can show Continue Franchise after league creation; it is not a screenshot of a fresh blank setup form."
+    ],
+    "fixesApplied": [
+      "Light accent presets target body as well as root",
+      "Mobile primary buttons use primary text and strong accent tokens"
+    ],
+    "blockingDefectsOpen": 0
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "productionCssChanged": true
+}

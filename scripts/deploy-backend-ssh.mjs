@@ -15,16 +15,15 @@ DEPLOY_SHA="$2"
 GHCR_USER="$3"
 IFS= read -r GHCR_TOKEN
 cd "$DEPLOY_PATH"
-if [ ! -f .env ]; then
-  umask 077
-  printf 'POSTGRES_PASSWORD=%s\\n' "$(openssl rand -hex 32)" > .env
-fi
+# This promotes the existing API, rather than provisioning a database.
+test -f .env || { echo 'Existing database configuration is required.' >&2; exit 1; }
+test "$(docker inspect --format '{{.State.Running}}/{{.State.Health.Status}}' franchise-architect-community-postgres)" = 'true/healthy' || { echo 'Existing database must be running and healthy.' >&2; exit 1; }
 export IMAGE_TAG="$DEPLOY_SHA"
 printf '%s' "$GHCR_TOKEN" | docker login ghcr.io --username "$GHCR_USER" --password-stdin
 unset GHCR_TOKEN
 trap 'docker logout ghcr.io >/dev/null 2>&1 || true' EXIT
-docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml pull
-docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml up -d
+docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml pull community-stats
+docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml up -d --no-deps community-stats
 CADDY_FRAGMENT=/etc/caddy/conf.d/franchise-architect-football.caddy
 if cmp -s ops/Caddyfile "$CADDY_FRAGMENT"; then
   echo 'Caddy route unchanged; reload not required.'

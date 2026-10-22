@@ -5,11 +5,13 @@ import http from "node:http";
 import net from "node:net";
 import os from "node:os";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { PassThrough } from "node:stream";
 import { spawn } from "../scripts/lib/safe-spawn.mjs";
 import { readServerSource } from "../scripts/lib/server-source.mjs";
 import {
   BUFFERED_BODY,
+  MAX_SNAPSHOT_BODY_BYTES,
   SECURITY_HEADERS,
   clampQueryInt,
   isPathInsideBaseDir,
@@ -84,11 +86,14 @@ test("stopOversizeUpload drains only a bounded remainder, then destroys the requ
   const req = fakeRequest();
   req.pause();
   const res = { writableFinished: true };
-  stopOversizeUpload(req, res, { graceMs: 5_000, maxDiscardBytes: 1024 });
+  stopOversizeUpload(req, res, { graceMs: 30, maxDiscardBytes: 1024 });
   req.write(Buffer.alloc(800));
   req.write(Buffer.alloc(800));
   await new Promise((resolve) => setImmediate(resolve));
-  assert.equal(req.destroyed, true, "exceeding the discard cap must destroy the request");
+  assert.equal(req.isPaused(), true, "the discard cap must stop further consumption");
+  assert.equal(req.destroyed, false, "the peer retains the grace window to receive the flushed 413");
+  await new Promise(resolve => setTimeout(resolve, 60));
+  assert.equal(req.destroyed, true, "the original grace deadline still bounds the paused upload");
 
   const slow = fakeRequest();
   stopOversizeUpload(slow, { writableFinished: true }, { graceMs: 20, maxDiscardBytes: 1 << 30 });
@@ -252,6 +257,80 @@ test("live: an oversize declared body is answered 413 and the upload is cut off"
   assert.equal(result.status, 413, JSON.stringify(result));
   assert.equal(JSON.parse(result.body).ok, false);
   assert.ok(result.written < totalBytes, `server must stop reading; client wrote ${result.written} of ${totalBytes}`);
+});
+
+test('live: server-exported franchises can be inspected and imported without losing their identity', async () => {
+  const exported = await (await realFetch(`${base}/api/snapshot/export`)).json();
+  assert.equal(exported.ok, true);
+  const encoded = JSON.stringify({ snapshot: exported.snapshot });
+  assert.ok(Buffer.byteLength(encoded) > 1_000_000, 'the actual generated franchise exceeds the ordinary command limit');
+  console.log(`Snapshot round-trip request: ${Buffer.byteLength(encoded)} bytes`);
+  const inspect = await realFetch(`${base}/api/snapshot/inspect`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: encoded });
+  assert.equal(inspect.status, 200);
+  assert.equal((await inspect.json()).activeLeaguePreserved, true);
+  const imported = await realFetch(`${base}/api/snapshot/import`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: encoded });
+  assert.equal(imported.status, 200);
+  assert.equal((await imported.json()).ok, true);
+  const restored = (await (await realFetch(`${base}/api/snapshot/export`)).json()).snapshot;
+  assert.equal(restored.rngSeed, exported.snapshot.rngSeed);
+  assert.deepEqual(restored.rngStreams, exported.snapshot.rngStreams);
+  assert.equal(restored.currentYear, exported.snapshot.currentYear);
+  assert.equal(restored.currentWeek, exported.snapshot.currentWeek);
+  assert.deepEqual(restored.league.players.map(p => p.id), exported.snapshot.league.players.map(p => p.id));
+  const invalid = { ...restored, schemaVersion: 9999 };
+  const refused = await realFetch(`${base}/api/snapshot/import`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ snapshot: invalid }) });
+  assert.equal(refused.status, 409);
+  const after = (await (await realFetch(`${base}/api/snapshot/export`)).json()).snapshot;
+  assert.equal(after.rngSeed, restored.rngSeed);
+  assert.deepEqual(after.league.players.map(p => p.id), restored.league.players.map(p => p.id));
+});
+
+test('live: snapshot uploads still reject oversized declared and chunked bodies without replacing the league', async () => {
+  const before = (await (await realFetch(`${base}/api/snapshot/export`)).json()).snapshot;
+  for (const [route, declareLength] of [['/api/snapshot/import', true], ['/api/snapshot/inspect', false]]) {
+    const totalBytes = MAX_SNAPSHOT_BODY_BYTES * 2;
+    const result = await streamOversizeBody(route, { totalBytes, declareLength });
+    assert.equal(result.status, 413, JSON.stringify(result));
+    assert.ok(result.written < totalBytes, 'the server must stop an upload beyond the snapshot ceiling');
+  }
+  const after = (await (await realFetch(`${base}/api/snapshot/export`)).json()).snapshot;
+  assert.equal(after.rngSeed, before.rngSeed);
+  assert.equal(after.currentYear, before.currentYear);
+  assert.equal(after.currentWeek, before.currentWeek);
+  assert.deepEqual(after.league.players.map(p => p.id), before.league.players.map(p => p.id));
+});
+
+test('live: interrupted valid snapshot uploads leave all active franchise gameplay state untouched', async () => {
+  const before = (await (await realFetch(`${base}/api/snapshot/export`)).json()).snapshot;
+  const encoded = Buffer.from(JSON.stringify({ snapshot: before }));
+  // Every successful export increments persisted API counters/timings after
+  // forming its response. Exclude only that explicitly identified telemetry;
+  // compare all remaining saved state, including every player and RNG stream.
+  const digest = snapshot => createHash('sha256').update(JSON.stringify({
+    ...snapshot, league: { ...snapshot.league, observability: undefined }
+  })).digest('hex');
+  for (const declareLength of [true, false]) {
+    await new Promise((resolve, reject) => {
+      const req = http.request(`${base}/api/snapshot/import`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', ...(declareLength ? { 'content-length': encoded.length } : {}) }
+      });
+      const timer = setTimeout(() => { req.destroy(); reject(new Error('partial upload did not flush')); }, 5000);
+      req.on('error', error => { if (!req.destroyed) reject(error); });
+      req.once('response', res => { res.resume(); reject(new Error(`unexpected partial-upload response ${res.statusCode}`)); });
+      req.write(encoded.subarray(0, 128 * 1024), () => {
+        clearTimeout(timer);
+        req.destroy();
+        resolve();
+      });
+    });
+    const exported = await realFetch(`${base}/api/snapshot/export`);
+    assert.equal(exported.status, 200, 'the server remains responsive after a disconnected upload');
+    const after = (await exported.json()).snapshot;
+    assert.equal(digest(after), digest(before), 'no partial upload may mutate any saved gameplay state');
+    assert.ok(after.league.observability.counters['api-request'] > before.league.observability.counters['api-request'],
+      'successful export reads are still recorded separately as request telemetry');
+  }
 });
 
 test("live: an oversize chunked body is answered 413 and the upload is cut off", async () => {

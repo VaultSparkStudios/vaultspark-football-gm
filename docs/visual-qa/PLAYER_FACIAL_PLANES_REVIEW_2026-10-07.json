@@ -1,0 +1,93 @@
+{
+  "version": "independent-directional-facial-plane-review-v1",
+  "round": 1,
+  "reviewedAt": "2026-10-08T00:33:14.222Z",
+  "verdict": "PASS",
+  "scope": "Modern fine-face plus natural-detail directional facial lighting only; malformed helper coverage and optional built-client rendered-plane proof. No person geometry, frame or pigment authority replacement.",
+  "sourceHashes": {
+    "public/lib/portraitSurfaceLighting.js": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+    "test/player-face-lighting.test.js": "43276a6f633a76a5b94db8b712f157d87abc12c24310e95441760be36db2d8eb",
+    "tests-ui/player-capacity-client.spec.js": "48f653a32bf9dd21a667374095e62d60d9908866bdd6e55752c884e6e6735667",
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    "public/lib/playerPortraitFace.js": "0b146360e1c160165e8a3a81816e9a24dff0a3e5bc3fc80ef4ed0ccfcc74f7e5",
+    "public/lib/playerSideAppearance.js": "28bf2c3bcc24d353a83a1568c08afc40e4e94a60131371eff93edd33b4bb1c75"
+  },
+  "artifactHashes": {
+    ".cache/facial-plane-before/portraitSurfaceLighting.js": "a2d755946d9cc59bfff4a1deb9b71d0fcb238f7b7bc4b288e42d7ff6dc599ff8",
+    "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json": "b9262f09c5813e418404ad9532eb26fec92346b11afda351da82e3005fbe440c",
+    "output/playwright/face-relief-adult-form-after.json": "34182dbe57e9f1c01d5570326b94f826cd44cea31319a23d4473e4d6a8cd0936",
+    "output/playwright/face-relief-facial-plane-final2.json": "8e7d28dd0503e51953701852895613e88ed503b96ec80b702f353c19f8a7c0a8",
+    "output/playwright/face-relief-dossier-facial-plane-final2.json": "840b9c37c4ec07f3157c6ea6d2512ee71f6229d52a9e325b05b6c0a3ef43e061",
+    "static/deploy-manifest.json": "fa37bf379b67b11767e670cf44f221a7f93e2fc50c48bd3db534e1cdeef2aaf4",
+    ".cache/player-facial-plane-client/worker.json": "d41edd67a87723ddd22f1370be37a4a3cad901d6c4169daf3f3c5fa58c299f01",
+    ".cache/player-facial-plane-client/in-page.json": "80f3f372aa3e4a850be3cd76443e7471fa0f9791a69b19249c303e784ef03e53"
+  },
+  "imagesInspected": [
+    {
+      "path": "output/playwright/face-relief-adult-form-after-0-desktop-light.png",
+      "sha256": "8a1fcada6aabba620ba57db195ee5bfef0b350b26ab7badb92fcea15f64d0522"
+    },
+    {
+      "path": "output/playwright/face-relief-adult-form-after-4-mobile-dark.png",
+      "sha256": "23ca81645664d526eacc9c54dcc5697a2fce9d833cc310691c70f7fd4d952890"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-adult-form-after-afro-mobile-light-portrait.png",
+      "sha256": "a90835a533c5765232fe6e0f73bac4f7e321366ba4bb6ada6ba787b055da672f"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-adult-form-after-side-part-desktop-dark-body.png",
+      "sha256": "75d180c80a1517be1d9ffff1f4e81cbbaa0abe286aa564c5b673cf24796c293a"
+    },
+    {
+      "path": "output/playwright/face-relief-facial-plane-final2-0-desktop-light.png",
+      "sha256": "aa27fbcf82765515561cf6cef69b9d3ff1b58fafb2f19c0b112749a2e4893f9a"
+    },
+    {
+      "path": "output/playwright/face-relief-facial-plane-final2-4-mobile-dark.png",
+      "sha256": "1d76492f24fb1cadbc30a2cefeee35d0f0ae24da9995c87398cf8c9d7dda5de0"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-facial-plane-final2-afro-mobile-light-portrait.png",
+      "sha256": "7225c531e16ad53c3a7702a9166794b5ca8a0aef4d4a950ae4d7d08bf57bb06f"
+    },
+    {
+      "path": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-desktop-dark-body.png",
+      "sha256": "291b16dd3b66ea7dc4ac2d659a68e82b121d2f30d309e38a58db584afdf9fd4e"
+    }
+  ],
+  "findings": [],
+  "checks": [
+    {
+      "command": "node --test test/player-face-lighting.test.js test/player-fine-face.test.js test/player-portrait-features.test.js",
+      "result": "15/15 independent PASS, zero skips, 8.953 seconds."
+    },
+    {
+      "command": "node .cache/facial-plane-independent.mjs",
+      "result": "48 exact immediate legacy front/head-only/side comparisons, 16 unchanged modern front/profile contour paths, 16 finite unique complete-resource outputs; lighting-only fallback deep equality and DTO nonmutation."
+    },
+    {
+      "command": "node .cache/record-facial-plane-review.mjs",
+      "result": "Baseline lighting SHA equals prior source-qualified adult receipt; three other face modules unchanged; all eight actual gallery DTOs exactly equal; four current source/static module texts equal after CRLF normalization."
+    },
+    {
+      "command": "Independent final built receipt and unchanged source/manifest binding probe",
+      "result": "PASS: source hashes and reviewed static manifest unchanged; both runtime receipts match current artifact 3d88aae655258e7b475fdba3b5aa2d70d304bd66541f0520d2234f9d8182044f; rendered directional planes/adult contours, six modes, actual named replacement/load/reload and appearance/frame equality flags verified."
+    }
+  ],
+  "visualAssessment": "Eight original images inspected as four matched pairs at normal desktop/mobile sizes across both themes. Front forehead/right cheek/jaw lighting now has a clearer directional gradient and softened local accents. No new visible forehead mask cutoff, beard overlay, neck junction or clipping defect found. Profile/body-size changes are subtle. Bodies and faces remain planar and illustrated; full naturalism/mannequin quality finding stays open.",
+  "sourceAssessment": "One gated helper supplies front/profile plane gradients and bounded cheek/jaw/orbit positions. Surfaces remain under existing face clips, resource IDs remain caller-prefixed. Missing fine-face returns null and fine-without-natural-detail retains immediate prior output. The helper reads saved landmarks without writing appearance/frame/recipes or invoking RNG.",
+  "primaryEvidence": {
+    "focused": "Primary reported final 18/18, zero skips (8c1ed5).",
+    "finalDevBrowser": "Primary reported final2 2/2, 45.6 seconds (62f880). Only final2 current-source images used; intermediate facial-plane-after/facial-plane-final excluded.",
+    "build": "Primary reported 5a2ee4 / precache033b4fd6b34c; independent normalized module equality verified.",
+    "builtClient": "Primary terminal7362bc: 2/2 PASS,40.9 seconds (worker19.5,in-page17.3). Execution attributed to primary; not independently rerun. Both current artifact-bound receipts independently inspected."
+  },
+  "limits": [
+    "Eight originals inspected, not all 64 baseline/final captures.",
+    "Lighting is an artistic approximation, not measured physical normals, tissue, ethnicity or empirical calibration.",
+    "Resource/legacy tests do not prove complete naturalism or whole application/release acceptance.",
+    "Inherited arbitrary malformed full appearance DTO ear-coordinate limitation from adult-form review is not repaired or certified here.",
+    "No new browser run, full simulation, current 30-career or full NFL policy certification."
+  ]
+}

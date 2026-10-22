@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "observedAt": "2026-10-08T10:35:16.756Z",
+  "status": "pre-freeze second R1 finding",
+  "source": "src/domain/pensionService.js",
+  "sourceSha256": "75f07911dea90b06bffdb1780bf919ac02a2455fb173e1df22fc878533d26d9b",
+  "frozenSource": ".cache/admitted-pension-period-reuse-r1-pensionService.js",
+  "finding": {
+    "id": "R1-P2-one-period-many-games",
+    "severity": "P2",
+    "description": "One admitted earning receipt/sourceRef can be reused for different canonical games involving same original payer/year/week, manufacturing three pension proofs and a finalized season from one actual game/wage.",
+    "probes": [
+      {
+        "terminal": "84a247",
+        "result": "Actual BUF-ARI week1 plus invented BUF-MIA/BUF-NYJ week1 accepted by hook, validatePensionService and finalized award."
+      },
+      {
+        "terminal": "73c328",
+        "result": "Expand actual snapshot pension dictionary; append copies of genuine proof with different known opponent canonical IDs, set finalized/awarded true. Compatibility returnsok, createSessionFromSnapshot succeeds; only1wage exists."
+      }
+    ],
+    "requiredCorrection": "Deduplicate/reject incompatible physical game reuse of a single admitted earning sourceRef in recorder and saved proof validation; preserve legitimate repeated samegame idempotence and independent different earned periods.",
+    "qualification": "Normal scheduled callers supply actual games. This is forged/incompatible earned-period-to-game authority acceptance, not observed routine gameplay producing extra games."
+  }
+}

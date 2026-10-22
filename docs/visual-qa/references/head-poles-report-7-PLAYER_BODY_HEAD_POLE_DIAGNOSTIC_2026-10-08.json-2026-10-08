@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "status": "targeted-head-pole-diagnostic-repair-required",
+  "scope": "One180lb fitted strength pose at phase0.4;32-ring48-slice nominal skin only.",
+  "sourceCoordinateUnits": "head-rendering-units-not-physical-inches",
+  "bodyCoordinateUnits": "inches",
+  "hashes": {
+    "test-support/appearance/playerBody3d.js": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    "public/lib/playerHead3d.js": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6",
+    ".cache/body-union/fixtures.json": "65ce3bed9faa4cab46a616c20ef45482f7c45916ca9301078177abfc024ee070",
+    ".cache/body-union/trace-negative-ray.mjs": "2d3d442a6f18237c7c95902bf21b6e34823ac73f73ca3ba30dbc039d7d6159ad",
+    ".cache/body-union/check-trace-intersections.mjs": "091ed5523d6b90cbc277329d3aced935e2171f6585e183684d7c5227f6537da4",
+    ".cache/body-union/negative-ray-trace.jsonl": "5ce7771b840a55036891a5601c1f4ca95f001db91681e9fbccacf1734d8b44b3",
+    ".cache/body-union/trace-intersections-source.json": "7bb5dc7b29fcc162c4225b4762ce57392dbe9e848c7a9d6e5add5e7ce4039ebd",
+    ".cache/body-union/head-pole-spans.json": "a2398d216eb60ed88ce90fbcc43d8b2d10ca50dcac64362bcef3336eadad57c6"
+  },
+  "ray": {
+    "u": -0.9646884649991989,
+    "v": 65.87435200810432,
+    "axis": 2
+  },
+  "rayEvents": [
+    {
+      "z": 10.914303507928112,
+      "delta": 1,
+      "solid": "skull-skin",
+      "points": [
+        [
+          -0.9285178780555725,
+          65.9169921875,
+          10.990873336791992
+        ],
+        [
+          -0.8722752332687378,
+          65.74742126464844,
+          10.559029579162598
+        ],
+        [
+          -1.1396825313568115,
+          65.71504211425781,
+          10.653593063354492
+        ]
+      ]
+    },
+    {
+      "z": 12.28681582014097,
+      "delta": -1,
+      "solid": "skull-skin",
+      "points": [
+        [
+          0,
+          66.08272552490234,
+          12.36097526550293
+        ],
+        [
+          -1.2990329265594482,
+          65.84220886230469,
+          12.136340141296387
+        ],
+        [
+          -1.3102421760559082,
+          65.7986068725586,
+          12.263692855834961
+        ]
+      ]
+    },
+    {
+      "z": 12.286966180574764,
+      "delta": -1,
+      "solid": "skull-skin",
+      "points": [
+        [
+          0,
+          66.08595275878906,
+          12.351551055908203
+        ],
+        [
+          -1.3102421760559082,
+          65.7986068725586,
+          12.263692855834961
+        ],
+        [
+          -1.2990329265594482,
+          65.75811004638672,
+          12.381963729858398
+        ]
+      ]
+    },
+    {
+      "z": 12.286973070081112,
+      "delta": 1,
+      "solid": "skull-skin",
+      "points": [
+        [
+          0,
+          66.08272552490234,
+          12.36097526550293
+        ],
+        [
+          -1.3102421760559082,
+          65.7986068725586,
+          12.263692855834961
+        ],
+        [
+          0,
+          66.08595275878906,
+          12.351551055908203
+        ]
+      ]
+    }
+  ],
+  "bodySpaceIntersections": [
+    {
+      "edgeTriangleEvent": 2,
+      "targetTriangleEvent": 1,
+      "edge": [
+        2,
+        0
+      ],
+      "point": [
+        -0.048113173959699385,
+        66.07381022326842,
+        12.352677470983933
+      ],
+      "segmentFraction": 0.9629623137520236,
+      "barycentric": [
+        0.9629637934322255,
+        0.03686472735296744,
+        0.00017147921480708606
+      ]
+    }
+  ],
+  "sourceHeadTriangles": [
+    [
+      {
+        "index": 102,
+        "ring": 2,
+        "slice": 4,
+        "point": [
+          -17.231769561767578,
+          76.8957748413086,
+          -23.059450149536133
+        ]
+      },
+      {
+        "index": 150,
+        "ring": 3,
+        "slice": 3,
+        "point": [
+          -16.187997817993164,
+          71.32246398925781,
+          -29.622224807739258
+        ]
+      },
+      {
+        "index": 151,
+        "ring": 3,
+        "slice": 4,
+        "point": [
+          -21.150638580322266,
+          71.32246398925781,
+          -27.767255783081055
+        ]
+      }
+    ],
+    [
+      {
+        "index": 48,
+        "ring": 0,
+        "slice": 48,
+        "point": [
+          0,
+          88.04238891601562,
+          0
+        ]
+      },
+      {
+        "index": 60,
+        "ring": 1,
+        "slice": 11,
+        "point": [
+          -24.107921600341797,
+          82.46907806396484,
+          -2.4981656074523926
+        ]
+      },
+      {
+        "index": 61,
+        "ring": 1,
+        "slice": 12,
+        "point": [
+          -24.315946578979492,
+          82.46907806396484,
+          1.1719374216456312e-15
+        ]
+      }
+    ],
+    [
+      {
+        "index": 35,
+        "ring": 0,
+        "slice": 35,
+        "point": [
+          0,
+          88.04238891601562,
+          -0.18486446142196655
+        ]
+      },
+      {
+        "index": 61,
+        "ring": 1,
+        "slice": 12,
+        "point": [
+          -24.315946578979492,
+          82.46907806396484,
+          1.1719374216456312e-15
+        ]
+      },
+      {
+        "index": 62,
+        "ring": 1,
+        "slice": 13,
+        "point": [
+          -24.107921600341797,
+          82.46907806396484,
+          2.3200018405914307
+        ]
+      }
+    ],
+    [
+      {
+        "index": 48,
+        "ring": 0,
+        "slice": 48,
+        "point": [
+          0,
+          88.04238891601562,
+          0
+        ]
+      },
+      {
+        "index": 61,
+        "ring": 1,
+        "slice": 12,
+        "point": [
+          -24.315946578979492,
+          82.46907806396484,
+          1.1719374216456312e-15
+        ]
+      },
+      {
+        "index": 35,
+        "ring": 0,
+        "slice": 35,
+        "point": [
+          0,
+          88.04238891601562,
+          -0.18486446142196655
+        ]
+      }
+    ]
+  ],
+  "sourceHeadTargetedStrictIntersections": [],
+  "poleSpans": [
+    {
+      "row": 0,
+      "coordinateSpans": [
+        0,
+        0,
+        0.543851912021637
+      ]
+    },
+    {
+      "row": 32,
+      "coordinateSpans": [
+        0,
+        0,
+        0.9595279693603516
+      ]
+    }
+  ],
+  "findings": [
+    "All four captured crossings belong to skull-skin, not body joints.",
+    "A strict segment-interior/triangle-interior crossing is reproduced after Float32 body placement.",
+    "Both nominal pole rows have zero x/y span but nonzero angular z span; they are lines rather than single collapsed pole points.",
+    "No strict crossing found among those same four native-coordinate triangles; this is not a whole-head self-intersection proof."
+  ],
+  "nextRequiredAction": "Repair modern skin pole closure while preserving legacy decoding, standing skull scale and lower-face measurements; recheck transformed topology/rays, current hair/lid attachment and actual production renders before acceptance.",
+  "limits": [
+    "Targeted four-triangle floating-point check, not robust exact-predicate whole-head validation.",
+    "No production source changed by this diagnostic.",
+    "No complete anatomical validity, visual completion or release acceptance."
+  ]
+}

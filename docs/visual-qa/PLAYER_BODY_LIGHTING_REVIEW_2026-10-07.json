@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-07T19:40:27.591Z",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Diffuse limb and matte trouser/shorts materials; remove artificial modern jersey chest line",
+  "doneCondition": "Reduce metallic body glare while retaining modern static/moving anatomy, pose, saved person and legacy render output; scoped material improvement only.",
+  "primaryReceiptPath": ".cache/body-light-reviewed-primary.json",
+  "primaryReceiptSha256": "1bc5142b7257b79cfd5fbf1c710ac3a6625f2161d1d91e78f1f70aef195ab6e0",
+  "sourceHashes": {
+    "public/lib/torsoSurface.js": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18",
+    "public/lib/playerPortrait.js": "826e18b137bdc6c45533b12a529d1ba0c8302975f0632bf19ec457e0914a5496",
+    "public/lib/playerMotion.js": "5efbfe2d8f69432df81ec12b2f10234ab621b552d66c08e3146d8889ee6cbeb1",
+    "public/lib/playerCapacityStudy.js": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+    "public/lib/physiqueGeometryContract.js": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+    "public/lib/playerPortraitFace.js": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+    "public/lib/playerSideAppearance.js": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+    "public/lib/fineFaceGeometry.js": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+    "public/lib/appCore.js": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+    "public/styles.css": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerMeasurements.js": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9",
+    "tests-ui/player-measured-body-comparisons.spec.js": "8cc2b3f8e7d67e3a7181583f3eb393ee29b901c711e3ad96099c2bf9af80efac",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "687892377134f5fdc05781e144589fbb4d326a9e53348b24eaa84aded1bba8f9",
+    "tests-ui/player-capacity-client.spec.js": "9027080884c2ad1516693408cff54bf2f4c890f21fe8112279389a479514345c",
+    "test/player-torso-envelope.test.js": "1006c1355a6706e8d8d3de3c6c8f65b8fa4cef8f47db3fbd0d1a299c4bc23c2c",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+  },
+  "beforeHashes": {
+    "public/lib/playerPortrait.js": "6f4af4f3e20310016ab3007fc0426f399bfd56f737f12437245155e9138664a0",
+    "public/lib/playerMotion.js": "2b031050f4757b84b9fed1864cb0e914ad466f2aa2f9674d86fc41fa35fcb7ad",
+    "public/lib/appearancePalette.js": "777f97ac4e30b6f678160f7f6181b4ccac941a428764918791eecfae50548c4b"
+  },
+  "builtSources": {
+    "static/lib/torsoSurface.js": {
+      "sha256": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18",
+      "sourceSha256": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18"
+    },
+    "static/lib/playerPortrait.js": {
+      "sha256": "7c8bc885bd22b8043b6487ba5bb2255d78eec080758673ec71d9c54da2a10611",
+      "sourceSha256": "826e18b137bdc6c45533b12a529d1ba0c8302975f0632bf19ec457e0914a5496"
+    },
+    "static/lib/playerMotion.js": {
+      "sha256": "74d7cd88df3646faadf9667a586d38b83e04e96c7d0859fefb9a7cb43d513982",
+      "sourceSha256": "5efbfe2d8f69432df81ec12b2f10234ab621b552d66c08e3146d8889ee6cbeb1"
+    },
+    "static/lib/playerCapacityStudy.js": {
+      "sha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+      "sourceSha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30"
+    },
+    "static/lib/physiqueGeometryContract.js": {
+      "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+      "sourceSha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1"
+    },
+    "static/lib/playerPortraitFace.js": {
+      "sha256": "010733c653b58d0ac5af708288a861895d8019f0fbff0d1cc87b17e043d76e16",
+      "sourceSha256": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f"
+    },
+    "static/lib/playerSideAppearance.js": {
+      "sha256": "16d469d30fd7fb36ad437352c35d8980aa9533c52725092a6611801873faa1d5",
+      "sourceSha256": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a"
+    },
+    "static/lib/fineFaceGeometry.js": {
+      "sha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+      "sourceSha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0"
+    },
+    "static/lib/appCore.js": {
+      "sha256": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+      "sourceSha256": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51"
+    },
+    "static/lib/appearancePalette.js": {
+      "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+      "sourceSha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+    }
+  },
+  "artifactFingerprintDigest": "c68df72d831cb9a11d46073bf416429492019c6a87748216843e514bbe4595c4",
+  "build": "76f1a149ff1a",
+  "checks": [
+    {
+      "command": "node --test test/player-torso-envelope.test.js test/player-motion.test.js test/player-motion-surfaces.test.js test/player-capacity-study.test.js",
+      "result": "16/16 PASS; zero skipped",
+      "durationMs": 1190.3688
+    },
+    {
+      "command": "node .cache/body-light-independent-probe.mjs",
+      "result": "PASS:18 source,3 retained baseline,10 built normalized-text/byte bindings and96 capture hashes;126 exact immediate legacy render outputs;126 modern geometric SVG comparisons (excluding only explicitly removed chest decorative path);216 exact solved poses;18 DTO-immutability checks; complete moving resources across stature/mass extremes and three complexion inputs"
+    }
+  ],
+  "probeSha256": "de03d00a9c62d5b4e41041c140fda81d06df12397e5b16f4bff3974a7e52ed8b",
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-after-mass-desktop-light.png",
+      "sha256": "0f26f3b767a9ea490dfdd70c4b258b576cb259d97ff120f46207bbdcca7a8a8c"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-body-light-after-mass-desktop-light.png",
+      "sha256": "c98a97dcb5922a2a02d1dee8c24c13ee2e79d8d27429c7653b6920f37789a649"
+    },
+    {
+      "path": "output/playwright/torso-matte-dossier-after-afro-desktop-dark-body.png",
+      "sha256": "0e30002e2c7fcdc6d05dee3a7939e8293469446335009c21310ada018b7df692"
+    },
+    {
+      "path": "output/playwright/body-light-dossier-after-afro-desktop-dark-body.png",
+      "sha256": "d9e7ff646a48178e23268f7902f80e87236f5d50e6f9224b0afa0e07312027d2"
+    },
+    {
+      "path": "output/playwright/torso-matte-dossier-after-afro-mobile-light-body.png",
+      "sha256": "3f778f8992420898238cc7ffbc733abafbe86fef8b72d20ffd01eda848aaa761"
+    },
+    {
+      "path": "output/playwright/body-light-dossier-after-afro-mobile-light-body.png",
+      "sha256": "a547917f0177fcfea9e6aa612847effa00958a08582a9a66474837107adeb765"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-after-heavy-fast-light-slow-mobile-dark.png",
+      "sha256": "9838113d4319ed14d4fd30380ee7d1484762a2654786c2dc584dbc939425afc1"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-body-light-after-heavy-fast-light-slow-mobile-dark.png",
+      "sha256": "6c9def8431b6632255ff3a4a1b8e73d4e140fcba6ae161060ec2321dfba1f445"
+    }
+  ],
+  "findings": [],
+  "pixelAssessment": [
+    "Reduced limb and trouser highlight is directly visible in matched controlled mass pairs and actual dossier originals. Modern artificial chest line is removed.",
+    "Moving limbs now read substantially flatter, sacrificing some rounded form contrast. This is not full naturalism or whole-body quality acceptance.",
+    "Static front leggings, bare-leg side and moving shorts remain inconsistent; torso remains rigid. These inherited/open cross-view issues are not resolved by this material component.",
+    "No new clipping or geometry/pose changes observed in the selected views."
+  ],
+  "openBroaderFindings": [
+    {
+      "severity": "P2",
+      "finding": "Flattened moving-limb presentation and static-front/side/motion clothing mismatch remain open alongside rigid torso and broader whole-player naturalism."
+    }
+  ],
+  "sourceAssessment": [
+    "New palette helpers are additive; existing appearanceSkinColor and shared blend output remain unchanged.",
+    "Static new lighting/chest-line removal is fine-face-v1 gated. Motion crossLight helper is used only by the modern crafted branch; legacy material branches retain exact markup.",
+    "Lighting gradient endpoints, path coordinates, skeleton, solver, saved pigmentation/measurement recipes and domain source are unchanged."
+  ],
+  "baselineQualification": "Before captures reuse prior torso-matte final originals; this review independently binds the preserved old appearancePalette byte hash as well as old static/motion source copies. The former torso-matte receipt alone did not bind palette, so it is not presented as sufficient dependency proof.",
+  "primaryEvidence": {
+    "focusedTests": "24/24 PASS d6920c, 6.040 seconds, zero skipped",
+    "galleryAfter": "1PASS39c0b6,13.7seconds",
+    "dossierAfter": "1PASSe4b483,21.7seconds",
+    "builtClient": "2PASS9c8283,19.3seconds; worker/in-page named save/load/reload all six modes",
+    "pagesBuild": "76f1a149ff1a,305assets,3408KB",
+    "boot": "649321/730000bytes,51/58modules,0lazyleaks PASS f0db5d",
+    "reachability": "131modules,4HTMLentries PASS f0db5d"
+  },
+  "limits": [
+    "Eight listed originals independently inspected,96 hashes checked; no all-capture pixel claim. Tall mobile gallery originals reviewed as complete overview strips, not every small feature at native scale.",
+    "Primary24 tests and built worker/in-page terminal evidence read from frozen artifact; no independent browser rerun.",
+    "Named save/load test does not replace the live franchise first and does not prove full-history or named-slot discrimination against a different checkpoint.",
+    "No empirical material/skin calibration, body composition, physics, medical, population, whole appearance or release approval.",
+    "No recommendation to continue small material polish as a substitute for resolving whole-body geometry/clothing requirements."
+  ]
+}

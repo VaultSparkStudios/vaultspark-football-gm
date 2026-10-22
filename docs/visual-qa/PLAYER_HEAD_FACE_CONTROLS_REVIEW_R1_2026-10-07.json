@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Unadopted shared-head face-control coordinate/geometry/material wiring and evidence honesty; not full craft or production acceptance",
+  "primaryReceipt": ".cache/head-face-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "0a8b01cc6cdafa6207628f97cb2518c94e7a539faa527c31eac1c3de32ce83c2",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "c71de2f091c98ff6908bd2742a3bbdd31d7616ad6eb0930f06805ff0e02641f7",
+    "prototypes/playerHead3d.test.mjs": "b6e5033b8339d378c93690c4997628d479c715524b30196a74aadf2b132a051f",
+    ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+    ".cache/head-grooming.spec.mjs": "bf1da56a7126d116e175d8010dfd24520be033caaeb37e1096ed1e18744505b7",
+    ".cache/head-face.spec.mjs": "c41218097328b73621ce144bf2d09a5abb4773bc275e5e32ee067a2a453290da",
+    ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+  },
+  "beforeSource": {
+    "original": ".cache/head-face-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-face-before-2026-10-07.mjs",
+    "sha256": "78be835432db42889ae54b05e352f649187db03aa0010e2e9416fa751a790c87"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 5092.9017
+    },
+    {
+      "command": "node .cache/head-face-r1-independent.mjs",
+      "exitCode": 0,
+      "primaryReceiptSha256": "0a8b01cc6cdafa6207628f97cb2518c94e7a539faa527c31eac1c3de32ce83c2",
+      "sourceHashes": {
+        "prototypes/playerHead3d.mjs": "c71de2f091c98ff6908bd2742a3bbdd31d7616ad6eb0930f06805ff0e02641f7",
+        "prototypes/playerHead3d.test.mjs": "b6e5033b8339d378c93690c4997628d479c715524b30196a74aadf2b132a051f",
+        ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+        ".cache/head-grooming.spec.mjs": "bf1da56a7126d116e175d8010dfd24520be033caaeb37e1096ed1e18744505b7",
+        ".cache/head-face.spec.mjs": "c41218097328b73621ce144bf2d09a5abb4773bc275e5e32ee067a2a453290da",
+        ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+      },
+      "finiteUnitNormalAndInputPurityMeshes": 65,
+      "normalizedCoordinateCases": 30,
+      "C1AngularCases": 48,
+      "pigmentOnlyVertexEqualCases": 6,
+      "captureHashesVerified": 32,
+      "faceComparisons": 15
+    }
+  ],
+  "coordinateAssessment": "Face length transforms authored station heights and scalp border about fixed eyeY141. Surface relief maps transformed y back to nominal y, while fragment markings use the inverse faceScale; nose pigment uses nominalNoseY. Matching normalized points preserve x/z across both length extremes and multiple camera angles. Eyelid tilt/asymmetry and brow/lip controls use consistent local coordinates. Both hemisphere and transition-saturation tangents remain bounded in independent extreme probes.",
+  "pigmentAssessment": "Iris shade/inner mix/pattern, freckles, mole and browWeight preserve mesh vertices in independent counterfactuals; other pigment tests preserve geometry/normals/topology. New face controls are bounded estimates and do not use demographics, ratings or simulation RNG. No full gameplay execution was newly tested.",
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/head-face-geometry-desktop-light.png",
+      "sha256": "0c01c2707d62aa5172a513525da6d4a465c868f6457026ed39fa80cc3c4ea0ff"
+    },
+    {
+      "path": "output/playwright/head-face-material-desktop-dark.png",
+      "sha256": "b0311b3ae6712e097aee7cbb2a595c2569b97e0da8b9e3b9265270c10c4131a1"
+    },
+    {
+      "path": "output/playwright/head-face-geometry-mobile-dark.png",
+      "sha256": "2ce1c6a0626018b88bb566caafd4074239906f106f404f99cf4583b2b1068c5c"
+    },
+    {
+      "path": "output/playwright/head-face-material-mobile-light.png",
+      "sha256": "c4a9f23b4823fa9e588abcb25a1b014b15e806f4cd33cbc08c82bade17d9c774"
+    },
+    {
+      "path": ".cache/head-face-before/player-shared-head-3d-desktop-dark.png",
+      "sha256": "50bc0384696132f6f8e08b647b2f59e4502e5dcad1b144e791cf53d22685dcf4"
+    },
+    {
+      "path": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "sha256": "a7314531e55a80e7d24a68082621c43be0eccc721eaed202ef8a634d6d9378bc"
+    }
+  ],
+  "visualAssessment": "Length, tilt and broad facial-control responses are visible in matched controls; profile beard rear edge is softer. Fine iris detail and mole remain very subtle at96px. Adult faces still look like plastic mannequins with solid cap hair, sparse locks, simplified ears and painted facial hair. The full adult-person target remains unmet; this scoped PASS does not approve overall quality.",
+  "evidenceInterpretation": "Fifteen min/max pairs separately measure native240x300 and actual96x120 rasters for front/profile. At least one changed pixel is deliberately only a wiring criterion. In particular the recorded mole response of two ordinary pixels is not proof of meaningful recognizability. JSON reconstruction and immutable exported appearance/frame DTO checks are not actual franchise save/trade/aging integration.",
+  "primaryExecutionOnly": {
+    "focused": {
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 5403.1477
+    },
+    "browser": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 27.7
+    },
+    "qualification": "Primary3/3 browser27.7sec; not independently rerun. Six source hashes/frozen copies and32 original/copy capture hashes independently verified."
+  },
+  "limits": [
+    "Previous grooming R2 applies only to frozen v3 before source; this v4 correctness review is separate.",
+    "Artistic bounded landmarks/head coefficients, not measured head anthropometry or fitted race/country frequencies. No ability, development or valuation modifiers.",
+    "No exhaustive arbitrary invalid color/style/object/prototype DTO boundary acceptance or watertight connected topology assertion.",
+    "Incomplete full gray/dye/expression/age/trait consumption; no production roster/draft/dossier/body adoption, career save lifecycle, accessibility, WebGL fallback/cache/context-loss or device performance acceptance.",
+    "Full appearance/whole goal/NFL/current full-suite/current30-career/release remain OPEN."
+  ]
+}

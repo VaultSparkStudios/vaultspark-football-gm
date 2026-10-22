@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T12:07:25.814Z",
+  "component": "Shared proximal arm joins, static section lighting and garment opening",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Current regional-limb body version: rounded proximal arm dome, section-oriented static light and garment neck opening; legacy render hashes remain unchanged. Not complete naturalism or mass reconstruction.",
+  "primaryReceipt": {
+    "file": "docs/visual-qa/PLAYER_PROXIMAL_JOINS_2026-10-08.json",
+    "sha256": "c69fceed8407ab640593f1579efefbf9881b378a8f6c04d6d698c5256e4eb2f3"
+  },
+  "sourceHashes": {
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "public/lib/profiledLimbSurface.js": "b57c17eccd20af15caa442b5f500cbd2a46dc2d413a2c8460063a7aeac36aa07",
+    "public/lib/torsoSurface.js": "15657b25856bf96ea4cf5f0c1abea43e666534908d1ca771ff3ce55de35d40fc",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "test/player-proximal-joins.test.js": "bd2f6107c5ee237b322b798ac846e0e865f9416e2cf93ea7a2c942dee44a060a",
+    "test/player-measured-rig.test.js": "b3094fc73a3455080031335f4244a96fc1027c1d605f0d2abe42fdbbbe6282af",
+    "test/player-regional-limbs.test.js": "e375c40965fc56b2d6a47abce78e8ba8c42d79b20613971f61f4beb31d5b1b52",
+    "test/player-regional-sections.test.js": "91d954d9595b65b77d68fae89617551a508d6245d3f79a3f211da0001d8dce81",
+    "test/fixtures/player-regional-limbs-v3.json": "7c026588cb7a176cdc1a8546c1c457b7b4f473727c6d47955d81c50bc26961f0",
+    "test/fixtures/player-regional-sections-v1.json": "9f976ee5026ab12a018e24e2121e4027daa45b6ed6fc56c3547dd73712c4ada6",
+    "tests-ui/player-proximal-joins-gallery.spec.js": "b0059063e8888edc8090b960578a1579e845f5a00876b413089bba21379760e0",
+    "tests-ui/player-torso-envelope.spec.js": "2db683ae13b7924f637db38ddcf3e051191141afa7135f4c861787ac6d5d1222",
+    "tests-ui/player-dossier-layout.spec.js": "11beeabf6820dc22bf1b9b1b84cfe1e50112da564263f722adedc48b9a10b841",
+    "tests-ui/physique-anatomy.spec.js": "f52ce993e76642ea2467ef8d54c3a33eef7e3c3febcb2130f801a65e3e08451c",
+    "scripts/run-test-shard.mjs": "0d2621bb40548318353f2f99395d40a047d52b006b4ea486bc5ea459684afece"
+  },
+  "baselineSources": [
+    {
+      "original": ".cache/shoulder-before/playerPortrait.js",
+      "file": "references/proximal-joins-before-playerPortrait.js-2026-10-08",
+      "sha256": "1be3edc453ad1ca05b850a999e34bdb6d125203f4fa00be33919359c58c20733"
+    },
+    {
+      "original": ".cache/shoulder-before/playerMotion.js",
+      "file": "references/proximal-joins-before-playerMotion.js-2026-10-08",
+      "sha256": "7d4dc2569fe43feaf45cedc0eadbe756c8f3a0a82a4c1c66ba23ae66b5eda6c7"
+    },
+    {
+      "original": ".cache/shoulder-before/profiledLimbSurface.js",
+      "file": "references/proximal-joins-before-profiledLimbSurface.js-2026-10-08",
+      "sha256": "0773e916392106337475116c46645abc421db12d26c1893cfea8f67742b4a3fa"
+    },
+    {
+      "original": ".cache/shoulder-before/torsoSurface.js",
+      "file": "references/proximal-joins-before-torsoSurface.js-2026-10-08",
+      "sha256": "8971b60b0cf3f5bdf82dce214b039577978da6195eb4116abaef6ce5552e53f7"
+    }
+  ],
+  "bindings": {
+    "frozenFilesVerified": 92,
+    "currentSourcesVerified": 21,
+    "normalizedSourceBuildPairsVerified": 7,
+    "allCaptureHashesVerified": 56,
+    "clientReceiptsVerified": 2,
+    "currentArtifactDigest": "ea521495efeb63bf72941798a39a190e0f343b943812ee9d356c62f1a1112c52",
+    "priorTorsoAuthorityMatches": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-proximal-joins.test.js test/player-measured-rig.test.js test/player-regional-limbs.test.js test/player-regional-sections.test.js",
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4636.3762,
+      "terminalChunk": "23ea0a",
+      "evidence": "Exact72 legacy v1 and40 v3 SVG fixture hashes, measured neutral/3D six-mode rig and restoration, regional section integrals, optional sparse/malformed fallbacks, current joins/resources/input purity."
+    },
+    {
+      "command": "Independent rotated cap cubic sampling",
+      "cases": 576,
+      "sampledPoints": 93312,
+      "terminalChunk": "acf12b",
+      "parameters": "48 bone rotations ×4 section diameters ×3 proximal profile ratios, translated root, contour direction-1",
+      "corePathExact": true,
+      "transformedProximalEnvelopeBound": true,
+      "returnWallClosure": true,
+      "zeroLengthUnchanged": true,
+      "qualification": "Checks planar shallow dome geometry, not complete3D tissue or union volume."
+    },
+    {
+      "command": "Frozen/current/source/build/client/log binding verification",
+      "terminalChunk": "28043e",
+      "frozenBindings": 92,
+      "currentSources": 21,
+      "buildPairs": 7,
+      "clientReceipts": 2,
+      "priorTorsoAuthorityMatch": true
+    }
+  ],
+  "sourceAssessment": [
+    "roundedLimbRootSurface appends two cubic quarter-ellipse segments to the exact section-core path and closes at the original proximal return-wall endpoint. Root/joint/terminal anchors and section widths remain unchanged; no cap is appended to the lower articulated segment.",
+    "The shallow dome extends0.55 proximal radius along the negative actual bone tangent. Its volume is outside the existing section-core budget and this limitation is explicitly retained.",
+    "Static gradient uses a world-space axis normal to the actual projected limb instead of the horizontal path bounding box. Modern limb-section gating retains older rendered versions.",
+    "The quadratic garment opening touches but does not remove the integrated section span at y; collar stroke is cosmetic decoration. Historical measured-rig endpoint reader correctly locates section return-wall anchors instead of appended cap endpoints."
+  ],
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-proximal-joins-before-desktop-dark-1.png",
+      "sha256": "cb31073a63e9c6400af2691d3fbcd52ecdb7e4f99d39d56f0001018c087ce263"
+    },
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-proximal-joins-after-desktop-dark-1.png",
+      "sha256": "505b7a16a33a69f6bbbc22315771a6945879a9e6460a1ee7a1d9d1f1678540b8"
+    },
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-dossier-layout-shoulder-before-desktop-light-body.png",
+      "sha256": "6d5ce62d8c814243c43d7002a752ce454307491dd142b94fabcc1e3621acf926"
+    },
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-dossier-layout-shoulder-final-desktop-light-body.png",
+      "sha256": "8da01aa46c74ad687d8d74fc34bc7d2d7bcf8b4f994cfe19d78d958057e7ffcb"
+    },
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-proximal-joins-before-mobile-light-0.png",
+      "sha256": "3407763548a75db93119fc8412e6056cb1faffc8b23208f43006c4a85256cf72"
+    },
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-proximal-joins-after-mobile-light-0.png",
+      "sha256": "a86ce118be67df031d63db7f7f6a76b49acbacd6a2151d7b2478d2db179c4386"
+    },
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-dossier-layout-shoulder-before-mobile-dark-body.png",
+      "sha256": "eba45b6177eba738cfe42581eacce0bb6ab32304d4c0516d8b32437f242f1b46"
+    },
+    {
+      "file": "docs/visual-qa/captures/proximal-joins-dossier-layout-shoulder-final-mobile-dark-body.png",
+      "sha256": "fc7c5e81159c4d4520789af00ddc822138077caa5ba3506bd1904c00eb314750"
+    }
+  ],
+  "visualAssessment": [
+    "The collar reads as a restrained garment opening instead of the previous heavy white ring. Shallow proximal arm caps are coherent across static/profile/moving views and avoid the rejected ball-like shoulder shape.",
+    "Changes are modest at fixed physical screen scale. Bodies remain stylized/mannequin-like, with simplified shoulder/arm/neck anatomy, rigid torso and broad material surfaces; complete player craft is not accepted."
+  ],
+  "findings": [],
+  "primaryObservedEvidence": {
+    "attribution": "Root executed browser/build checks. Frozen terminal reports and client receipt bindings independently verified; no reviewer browser rerun.",
+    "domainPassed": 49,
+    "domainDurationMs": 8888.4826,
+    "builtPassed": 5,
+    "builtReportedDuration": "49.5s",
+    "clients": [
+      {
+        "file": "docs/visual-qa/references/proximal-joins-client-worker-2026-10-08.json",
+        "sha256": "cf12378e63f10879ec29013327f1238b526f2808d7b18f72bad5fd62a28da3e8",
+        "worker": true,
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "rngExact": true
+      },
+      {
+        "file": "docs/visual-qa/references/proximal-joins-client-in-page-2026-10-08.json",
+        "sha256": "a007d48c5cccc28f0ac2309e626ba0896f34a0329d31ab6b5af3fdd6429ec293",
+        "worker": false,
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "rngExact": true
+      }
+    ],
+    "controlledGalleryCasesPassed": {
+      "before": 1,
+      "after": 1
+    }
+  },
+  "limits": [
+    "Eight listed original screenshots inspected; all56 hashes checked, not all56 images inspected.",
+    "No measured shoulder soft-tissue anatomy, population fit or biomechanical calibration is established.",
+    "Appended caps, overlaps, head/hands/feet and fixed reserved mass are not a complete rendered-union mass reconstruction.",
+    "Low-level geometry helper accepts renderer-owned validated controls; this review does not certify every malformed raw helper invocation.",
+    "Whole-person naturalism, comprehensive NFL policies, full final suite/current career and release remain open."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

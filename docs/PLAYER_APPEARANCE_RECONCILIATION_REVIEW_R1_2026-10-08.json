@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Documentation-only reconciliation: new October 8 evidence reconciliation and eye/body acceptance section; first two latest-clarification paragraphs; four final fixture definitions. Full-file hashes bind bytes but do not enlarge reviewed scope.",
+  "artifactHashes": {
+    "docs/PLAYER_APPEARANCE_DEMOGRAPHICS_EXPANSION_2026-10-07.md": "aff37b80b4b0ea8bf4b257c15ed72f230405d758cb467ac3603d143cd4214408",
+    "docs/IMPLEMENT_PLAN.md": "b4a3b3d0259fee5b663933f7e24867ac574400ad73168113af06b1c8aaa5e563",
+    "docs/PLAYER_TRAIT_AUTHORITY_2026-10-07.json": "14f6af4aad30905241e4b4b2b9a59f216ce19d9a03b34e553a47d232f8d3df98",
+    "docs/PLAYER_ONS_BIRTH_ETHNIC_OBSERVATIONS_2026-10-07.json": "f5fd198a1b5da6480a70d63e744400423ad275ede2c292eeaf135f2f94dca5b0",
+    ".cache/ons-rm010-2021.csv": "abce09839c2e197887af779f389f517876005166d4dbd3d99e21d5a340f52fa2",
+    "docs/WHOLE_HEAD_REGRESSION_REVIEW_R1_2026-10-08.json": "43b435d444a2c3b5e9ddd2b50fabd88d8eab690243b49f9ff0ceeacd7057c85e",
+    "docs/WHOLE_HEAD_REGRESSION_2026-10-08.json": "932aa29c54b9d42cc17d9a74946bf6c738b475477e186bedee6a88e6e079eb6c",
+    "docs/visual-qa/PLAYER_SKIN_CONTINUITY_REVIEW_R1_2026-10-08.json": "b36dceaeb9bf0f1f8c577c9705a1fde2c867b138eaa91dafb40abbd057df6ccb"
+  },
+  "findings": [],
+  "fixtureIds": [
+    "iris-pigment-and-pattern-distinct",
+    "separate-channels-not-independent-populations",
+    "pads-and-clothes-preserve-measured-anatomy",
+    "extracted-table-is-not-validated-generator"
+  ],
+  "independentChecks": [
+    {
+      "check": "Python standard-library CSV reaggregation from retained bytes, without running or modifying extractor",
+      "result": "PASS",
+      "rawUniqueNonnegativeCells": 31776,
+      "localAuthorities": 331,
+      "groupedCells": 96,
+      "birthDenominators": 12,
+      "publishedCellSum": 59597524,
+      "allCountsDenominatorsAndSharesMatch": true,
+      "zeroDenominatorSharesNull": true
+    },
+    {
+      "check": "JSON parse and all group acceptance references resolve",
+      "result": "PASS",
+      "groups": 9,
+      "fixtureDefinitions": 61,
+      "referencesChecked": 27
+    },
+    {
+      "check": "Scoped local document links resolve",
+      "result": "PASS",
+      "links": [
+        "PLAYER_ONS_BIRTH_ETHNIC_OBSERVATIONS_2026-10-07.json",
+        "PLAYER_PIGMENT_JOINT_REFERENCE_2026-10-07.json",
+        "PLAYER_TRAIT_AUTHORITY_2026-10-07.json",
+        "PLAYER_APPEARANCE_DEMOGRAPHICS_EXPANSION_2026-10-07.md#october-8-evidence-reconciliation-and-eyebody-acceptance",
+        "WHOLE_HEAD_REGRESSION_REVIEW_R1_2026-10-08.json"
+      ]
+    },
+    {
+      "check": "Existing regression primary and independent review SHA match accepted frozen records",
+      "result": "PASS",
+      "qualification": "The 30/30 and final 4/4 are attributed primary execution; independent 4/4 and 384 comparisons are previously recorded review evidence, not rerun in this documentation review."
+    }
+  ],
+  "sourceObservations": [
+    {
+      "url": "https://www.ons.gov.uk/datasets/RM010/editions/2021/versions/1",
+      "review": "Direct official page: 2021 usual residents of England/Wales, released April 18 2023; 309 England plus 22 Wales local authorities; birthplace and self-described ethnic-group definitions. Local retained CSV supplies separately verified grouped counts. No independent national-total certification or fresh CSV download claimed."
+    },
+    {
+      "url": "https://medlineplus.gov/genetics/understanding/traits/eyecolor/",
+      "review": "Direct page: iris continuum, multiple melanin-related genes, overlapping skin/hair pathways and overly simple single-gene dominance model. Mechanism evidence does not supply NFL/country prevalence or artistic iris-pattern coefficients."
+    },
+    {
+      "url": "https://operations.nfl.com/programs-initiatives/international-growth/international-player-pathway",
+      "review": "Official overview previously directly read in this scoped review session: Faalele born in Melbourne with Samoan father and Tongan mother supports distinction between birthplace and family origins, not population frequency."
+    }
+  ],
+  "assessment": [
+    "Explicit reconciliation supersedes metadata-only acquisition status while retaining historical wording; extracted observations do not establish country-specific NFL fitting.",
+    "Independent cosmetic comparison controls are distinguished from statistically independent population draws; joint correlation remains observation- or assumption-bound.",
+    "Clothing/pads are presentation and cannot overwrite measured anatomy; acceptance is prospective, not runtime-delivery evidence.",
+    "Regression repair claim accurately limits itself to historical saved-input compatibility and aperture tests; core is described as running with no terminal acceptance.",
+    "Earlier skin-review failures remain historical in immutable review; test-only repair does not establish complete visual craft."
+  ],
+  "limits": [
+    "No production/runtime changes reviewed or adopted.",
+    "No browser/image inspection, visual completion, empirical fitting, medical inference, full-suite terminal result, release or full-goal acceptance.",
+    "Core 8254 remained live per parent; not independently executed or certified.",
+    "Published-cell sum is not an independently certified national marginal.",
+    "ONS perturbation caveat is preserved; no fresh disclosure-method audit was performed here."
+  ],
+  "commands": [
+    "Python stdin CSV counts/denominators/shares and fixture-reference checks",
+    "Python stdin full-file SHA256 and scoped local-link checks",
+    "Official ONS and MedlinePlus web reads"
+  ],
+  "checkCorrections": [
+    "Initial local-link probe used default cp1252 and failed decoding the plan; rerun explicitly UTF-8 passed. No reviewed artifact was altered."
+  ]
+}

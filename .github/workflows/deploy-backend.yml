@@ -34,7 +34,22 @@ permissions:
 jobs:
   gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: ${{ matrix.shard == 'sim-contract' && 160 || 100 }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - shard: studio
+            command: npm run test:studio
+          - shard: runtime
+            command: npm run test:runtime
+          - shard: core
+            command: npm run test:core
+          - shard: sim-contract
+            command: npm run test:sim:contract
+          - shard: sim-realism
+            command: npm run test:sim:realism
+    name: gate (${{ matrix.shard }})
     steps:
       - uses: actions/checkout@v5
 
@@ -46,23 +61,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run studio shard (protocol truth)
-        run: npm run test:studio
-
-      - name: Run runtime shard (backend behavior)
-        run: npm run test:runtime
-
-      # S101: see deploy-pages.yml -- the backend publish path also accepted
-      # `src/**` changes with no engine-behavior shard between the push and
-      # the deployed runtime.
-      - name: Run core shard (engine + domain behavior)
-        run: npm run test:core
-
-      - name: Run sim contract shard
-        run: npm run test:sim:contract
-
-      - name: Run sim realism shard
-        run: npm run test:sim:realism
+      # Keep every backend prerequisite; run independent shards in parallel
+      # so the expanded core/runtime cannot consume each other's job budget.
+      - name: Run ${{ matrix.shard }} shard
+        run: ${{ matrix.command }}
 
   build-images:
     needs: gate
@@ -107,13 +109,23 @@ jobs:
     needs: build-images
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.deploy_to_server }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 220
+    permissions:
+      contents: read
+      packages: read
+      actions: read
     steps:
       - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v5
         with:
           node-version: "24.14.0"
+
+      - name: Require complete exact-candidate CI before production deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CANDIDATE_REVISION: ${{ github.sha }}
+        run: node scripts/wait-for-candidate-ci.mjs --repository "$GITHUB_REPOSITORY" --sha "$CANDIDATE_REVISION" --max-wait-minutes 195
 
       - name: Copy ops and deploy backend with bounded pinned SSH
         run: node scripts/deploy-backend-ssh.mjs

@@ -1,0 +1,1181 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T00:34:54.878Z",
+  "sourceRevision": "local-worktree",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "status": "facial-plane-component-verified-full-athlete-open",
+  "scope": "Modern directional facial lighting; saved front/profile contours and individual pigment/frame retained",
+  "sourceHashes": {
+    "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+    "public/lib/playerPortraitFace.js": "0b146360e1c160165e8a3a81816e9a24dff0a3e5bc3fc80ef4ed0ccfcc74f7e5",
+    "public/lib/playerSideAppearance.js": "28bf2c3bcc24d353a83a1568c08afc40e4e94a60131371eff93edd33b4bb1c75",
+    "public/lib/portraitSurfaceLighting.js": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72"
+  },
+  "builtHashes": {
+    "static/lib/fineFaceGeometry.js": {
+      "source": "public/lib/fineFaceGeometry.js",
+      "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "ffeac2dbf3942c41830b05d62fa05a7652fd54ca133dd1afa2a2ae5d5a2f4f39",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "88db8a3dba54c65c4fe461b10dc4739e5bb6d4684e81f509c198617e0ff2859a",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/portraitSurfaceLighting.js": {
+      "source": "public/lib/portraitSurfaceLighting.js",
+      "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "3d88aae655258e7b475fdba3b5aa2d70d304bd66541f0520d2234f9d8182044f",
+  "baseline": {
+    "file": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json",
+    "sha256": "b9262f09c5813e418404ad9532eb26fec92346b11afda351da82e3005fbe440c",
+    "qualifiedSourceHashes": {
+      "public/lib/fineFaceGeometry.js": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025",
+      "public/lib/playerPortraitFace.js": "0b146360e1c160165e8a3a81816e9a24dff0a3e5bc3fc80ef4ed0ccfcc74f7e5",
+      "public/lib/playerSideAppearance.js": "28bf2c3bcc24d353a83a1568c08afc40e4e94a60131371eff93edd33b4bb1c75",
+      "public/lib/portraitSurfaceLighting.js": "a2d755946d9cc59bfff4a1deb9b71d0fcb238f7b7bc4b288e42d7ff6dc599ff8"
+    },
+    "preservedChangedModule": {
+      "file": ".cache/facial-plane-before/portraitSurfaceLighting.js",
+      "sha256": "a2d755946d9cc59bfff4a1deb9b71d0fcb238f7b7bc4b288e42d7ff6dc599ff8"
+    },
+    "scope": "Reuse32 actual post-adult-form images as this component before state; other three face sources unchanged."
+  },
+  "reports": [
+    {
+      "file": "output/playwright/face-relief-facial-plane-final2.json",
+      "sha256": "8e7d28dd0503e51953701852895613e88ed503b96ec80b702f353c19f8a7c0a8"
+    },
+    {
+      "file": "output/playwright/face-relief-dossier-facial-plane-final2.json",
+      "sha256": "840b9c37c4ec07f3157c6ea6d2512ee71f6229d52a9e325b05b6c0a3ef43e061"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/face-relief-adult-form-after-0-desktop-dark.png",
+      "sha256": "25b4b19e9ff9355d6185af2a5100869737262ba92fdb985747ddb5e901ccb64c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-0-desktop-dark.png",
+      "primaryInspected": true,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-adult-form-after-0-desktop-light.png",
+      "sha256": "8a1fcada6aabba620ba57db195ee5bfef0b350b26ab7badb92fcea15f64d0522",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-0-desktop-light.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-adult-form-after-0-mobile-dark.png",
+      "sha256": "219a3fe686006174cfe924563136d3d5eb551b044934124d283c139f598690bb",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-0-mobile-dark.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-adult-form-after-0-mobile-light.png",
+      "sha256": "a43088e6295cb98341e93adcdb31e9b76906e95b16280e8b66d006b571c291f7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-0-mobile-light.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-adult-form-after-4-desktop-dark.png",
+      "sha256": "0e09250ec7217ae6b231e519c6c934629a8918b0e64f2893c349789f6a36ed1e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-4-desktop-dark.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-adult-form-after-4-desktop-light.png",
+      "sha256": "b818a55f9e90be2683f472cb4c0c8d9ac5144238008ae2bc9fc1e3589968a0ab",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-4-desktop-light.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-adult-form-after-4-mobile-dark.png",
+      "sha256": "23ca81645664d526eacc9c54dcc5697a2fce9d833cc310691c70f7fd4d952890",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-4-mobile-dark.png",
+      "primaryInspected": true,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-adult-form-after-4-mobile-light.png",
+      "sha256": "5947079d3c006bab9bbcd59626c55da5e006950085b83d012e923b305f4d5588",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "phase": "before",
+      "state": "front-profile",
+      "original": "output/playwright/face-relief-adult-form-after-4-mobile-light.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-desktop-dark-portrait.png",
+      "sha256": "07ef1b275b371fc8d5acb0b4538e822655df473cca076dd46010b55255fb88b6",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-desktop-dark-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-desktop-dark-body.png",
+      "sha256": "226dcb42e753c83dde44e0ed0cf78e5cfb9072f0509c3694514b2775d6c08c7a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-desktop-dark-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-desktop-light-portrait.png",
+      "sha256": "2000381b6b35cd228b3e889c74188c985b7a94360cd8c212f47f899e01e5aeba",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-desktop-light-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-desktop-light-body.png",
+      "sha256": "aef09c7dcaa390e6a81290848604668e17029a00d65ae817350d68d439771b1e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-desktop-light-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-mobile-dark-portrait.png",
+      "sha256": "c95cb8d78ce438900296737bd1cb3da43e6a67f0d27ec255acc74e632ddc4112",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-mobile-dark-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-mobile-dark-body.png",
+      "sha256": "077435873481b1a598984ccd8dc08d23503a7261acb496dda3a7b9ad118a0098",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-mobile-dark-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-mobile-light-portrait.png",
+      "sha256": "323564cca29e89fe7e67b23b0ca9733bcd689c9ba3c74bac02f00b52664e3d56",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-mobile-light-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-shaved-mobile-light-body.png",
+      "sha256": "37ed8015221b8677274e9ad731c9fa4b7d2244c04c1dfd03f204f71e23707a48",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-shaved-mobile-light-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-desktop-dark-portrait.png",
+      "sha256": "e510d28e006eae88d49969db0993fcc2ee00b33a553c8569a66b8612279fdd56",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-desktop-dark-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-desktop-dark-body.png",
+      "sha256": "4a16275a404edee8caf2e049d1944810ff34b468a664574c9966ead09bb9e13d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-desktop-dark-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-desktop-light-portrait.png",
+      "sha256": "f700438ca77ca26bedf3c6128d3413aacd7dcb1001da4ef5668eecf2dccd3869",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-desktop-light-portrait.png",
+      "primaryInspected": true,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-desktop-light-body.png",
+      "sha256": "75955bd132fa0436fca1b0feb60249cb439849ec92bf6663cc26b767f71622db",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-desktop-light-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-mobile-dark-portrait.png",
+      "sha256": "4833848e8d2594dd17a3f70745bc939a49e6aaa1acba3c051f1f60ac638f4470",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-mobile-dark-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-mobile-dark-body.png",
+      "sha256": "117320ca0625f87a0887aa3376b9d7e91b3a7eb354309cd48883fdaddc2417eb",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-mobile-dark-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-mobile-light-portrait.png",
+      "sha256": "a90835a533c5765232fe6e0f73bac4f7e321366ba4bb6ada6ba787b055da672f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-mobile-light-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-afro-mobile-light-body.png",
+      "sha256": "dda0ab54aa75e96155f9e1f221820c156eab2734cbd2d9f3ff2d51375883cb9e",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-afro-mobile-light-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-desktop-dark-portrait.png",
+      "sha256": "e0f64d82203f02e8b5ac34c6a5c161209ae19456dd7cc6ff543e1033ea689eed",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-desktop-dark-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-desktop-dark-body.png",
+      "sha256": "75d180c80a1517be1d9ffff1f4e81cbbaa0abe286aa564c5b673cf24796c293a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-desktop-dark-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-desktop-light-portrait.png",
+      "sha256": "6ef03fb5329a50c361a3469850c5e9ac48f342f56ed1c92f8663b63c25ad4295",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-desktop-light-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-desktop-light-body.png",
+      "sha256": "06802011fae7cd1355651e6a412006b0970dca39d6ab3661a4ffd6864ad5bdd0",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-desktop-light-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-mobile-dark-portrait.png",
+      "sha256": "ce05c2678a4621823b9723b671997baa52aa5d5696e5fb34b36cb2f2541b6020",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-mobile-dark-portrait.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-mobile-dark-body.png",
+      "sha256": "9e2b3fb578b47703659e08861951becebd5123ca5a0d4522748158d00650101b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-mobile-dark-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-mobile-light-portrait.png",
+      "sha256": "a86342e03e3bc33d0c3b59404a6a2630cfd57e01dce9dc9b4c778a094b5d291a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "portrait",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-mobile-light-portrait.png",
+      "primaryInspected": true,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-dossier-adult-form-after-side-part-mobile-light-body.png",
+      "sha256": "b401f3d89b391a75bf0bea8401888aae95f33c8a3b78bd7af9890a2830a5644c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "phase": "before",
+      "state": "body",
+      "original": "output/playwright/face-relief-dossier-adult-form-after-side-part-mobile-light-body.png",
+      "primaryInspected": false,
+      "originalCapturedPhase": "adult-form-after",
+      "sourceOriginReceipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json"
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-0-desktop-dark.png",
+      "sha256": "ba39c50a305f9d95a60e797b72f9dfb8545926bc902977e9c71b158fc94237c3",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-0-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-0-desktop-light.png",
+      "sha256": "aa27fbcf82765515561cf6cef69b9d3ff1b58fafb2f19c0b112749a2e4893f9a",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-0-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-0-mobile-dark.png",
+      "sha256": "5429bc7f2855fce846c4eeefe2f0edd1b8efbd491724806a62dc7da29dee4fe0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-0-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-0-mobile-light.png",
+      "sha256": "b6bf8f3ac66c694feb0a0c23c6207058225d33c8f6f3c12858d17b814b2b3ece",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-0-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-4-desktop-dark.png",
+      "sha256": "56b886d0e04796345a0e445b53da0f00cdef2c74383ab7aadb522891997902bb",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-4-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-4-desktop-light.png",
+      "sha256": "2793173dbdb1c4316a5307aeb5ec701e7b0f546f1fb31660a87b9ea95628a0c6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-4-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-4-mobile-dark.png",
+      "sha256": "1d76492f24fb1cadbc30a2cefeee35d0f0ae24da9995c87398cf8c9d7dda5de0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-4-mobile-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-facial-plane-final2-4-mobile-light.png",
+      "sha256": "85b2e896284c74c90e1cf0cdb97dd5763b45a7c0cafe4296524d6609bd42861b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "generated-face-gallery",
+      "state": "front-profile",
+      "phase": "after",
+      "original": "output/playwright/face-relief-facial-plane-final2-4-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-desktop-dark-portrait.png",
+      "sha256": "33d7d0ad1317217fefa3073361b3a86e3e2b1219d190ace79ef9d0e2bdb922ba",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-desktop-dark-body.png",
+      "sha256": "e92d1022220d64ac619a7891a2578a7e53024614c9f92a3aa781523cbd3e2f88",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-desktop-light-portrait.png",
+      "sha256": "024fefe3fc50439883c339dad8047ddea4ef6aeee219dfefd38230ad850ac2df",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-desktop-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-desktop-light-body.png",
+      "sha256": "25b3f109f730ccc07842dcb62a3c3e944bf57f7cf950f65837e4082378d7e572",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-mobile-dark-portrait.png",
+      "sha256": "0738f883428ae57c076edbe0d68d208d4896491cf9e6633524396fae3be89b9a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-mobile-dark-body.png",
+      "sha256": "a69cb37a9570a96797932d9d44f7e030383b5e2fd802cfe768ab85b267dfa965",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-mobile-light-portrait.png",
+      "sha256": "a4a064056f54c0c6e9029fd4dd2c693032d82629519f5ed64b275e46c25b9ccd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-shaved-mobile-light-body.png",
+      "sha256": "15c07d25b3520846f57d32cacbd0ab79cb19be199a6dfcb5d3fb04347ed6c026",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-shaved-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-desktop-dark-portrait.png",
+      "sha256": "85a53521a9880e7633670ce808618eb48ecbae8b23805723df057536e37bff77",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-desktop-dark-body.png",
+      "sha256": "906e3d6d57c04aaea356cf6c17632558f7434595abc042648481885a377aed10",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-desktop-light-portrait.png",
+      "sha256": "73e127a0fd05a2a1116c916dd038f1681d6182fb2c71bef51d31a50dd467c1b2",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-desktop-light-portrait.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-desktop-light-body.png",
+      "sha256": "9c689bad086e31c3fd7b6f78ea770ff7aa9c70bf2fc09b0a0c3353cf88e46876",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-mobile-dark-portrait.png",
+      "sha256": "686e6672d911e60fb68b6842193f20836492d1dcade688313458cdf6fae95164",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-mobile-dark-body.png",
+      "sha256": "7cd84ff9de23f91607711dc5e1043077d2fc2c758df385053d41a7ef40b3b140",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-mobile-light-portrait.png",
+      "sha256": "7225c531e16ad53c3a7702a9166794b5ca8a0aef4d4a950ae4d7d08bf57bb06f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-mobile-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-afro-mobile-light-body.png",
+      "sha256": "6402299c20e5e8286ad0c749dabbbe70b80757ded63478c5ec033bac62cd43ea",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-afro-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-desktop-dark-portrait.png",
+      "sha256": "5eea9613bf61c4e70ca04041075eac1c5cb3171aa7d411fcc97c9605d022a258",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-desktop-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-desktop-dark-body.png",
+      "sha256": "291b16dd3b66ea7dc4ac2d659a68e82b121d2f30d309e38a58db584afdf9fd4e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-desktop-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-desktop-light-portrait.png",
+      "sha256": "a9eb9a5db2a567701c1d427ddc22ef6658d03d975d9566863859c44c38285b3e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-desktop-light-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-desktop-light-body.png",
+      "sha256": "1d4aafeffbf284319b73bf9f940c1d359081186130c497bce6b87cd7be94cc9c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-mobile-dark-portrait.png",
+      "sha256": "fe65a4fdab369a295c937c5422c3fc10ddd60b11c461a596e7c123395102631c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-mobile-dark-portrait.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-mobile-dark-body.png",
+      "sha256": "7323a03fd8a8b2415a188449217e562eca551bcab050e49b5d091b65bc1bd260",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-mobile-light-portrait.png",
+      "sha256": "116347263890b0d6717b91925845b2f351b438b9d24eb97512e249cd24de535b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "portrait",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-mobile-light-portrait.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/face-relief-dossier-facial-plane-final2-side-part-mobile-light-body.png",
+      "sha256": "1149cbed32ca74fbfce7566e1aa58b1597fce591a7f8014bf17e04e5d363d082",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "after",
+      "original": "output/playwright/face-relief-dossier-facial-plane-final2-side-part-mobile-light-body.png",
+      "primaryInspected": false
+    }
+  ],
+  "clients": [
+    {
+      "file": ".cache/player-facial-plane-client/worker.json",
+      "sha256": "d41edd67a87723ddd22f1370be37a4a3cad901d6c4169daf3f3c5fa58c299f01",
+      "worker": true,
+      "artifactDigest": "3d88aae655258e7b475fdba3b5aa2d70d304bd66541f0520d2234f9d8182044f",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": false,
+      "limbContoursRendered": false,
+      "adultFaceContoursRendered": true,
+      "facialPlanesRendered": true
+    },
+    {
+      "file": ".cache/player-facial-plane-client/in-page.json",
+      "sha256": "80f3f372aa3e4a850be3cd76443e7471fa0f9791a69b19249c303e784ef03e53",
+      "worker": false,
+      "artifactDigest": "3d88aae655258e7b475fdba3b5aa2d70d304bd66541f0520d2234f9d8182044f",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": false,
+      "limbContoursRendered": false,
+      "adultFaceContoursRendered": true,
+      "facialPlanesRendered": true
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "file": "captures/face-relief-adult-form-after-0-desktop-dark.png",
+        "sha256": "25b4b19e9ff9355d6185af2a5100869737262ba92fdb985747ddb5e901ccb64c"
+      },
+      {
+        "file": "captures/face-relief-adult-form-after-4-mobile-dark.png",
+        "sha256": "23ca81645664d526eacc9c54dcc5697a2fce9d833cc310691c70f7fd4d952890"
+      },
+      {
+        "file": "captures/face-relief-dossier-adult-form-after-afro-desktop-light-portrait.png",
+        "sha256": "f700438ca77ca26bedf3c6128d3413aacd7dcb1001da4ef5668eecf2dccd3869"
+      },
+      {
+        "file": "captures/face-relief-dossier-adult-form-after-side-part-mobile-light-portrait.png",
+        "sha256": "a86342e03e3bc33d0c3b59404a6a2630cfd57e01dce9dc9b4c778a094b5d291a"
+      },
+      {
+        "file": "captures/face-relief-facial-plane-final2-0-desktop-dark.png",
+        "sha256": "ba39c50a305f9d95a60e797b72f9dfb8545926bc902977e9c71b158fc94237c3"
+      },
+      {
+        "file": "captures/face-relief-facial-plane-final2-4-mobile-dark.png",
+        "sha256": "1d76492f24fb1cadbc30a2cefeee35d0f0ae24da9995c87398cf8c9d7dda5de0"
+      },
+      {
+        "file": "captures/face-relief-dossier-facial-plane-final2-afro-desktop-light-portrait.png",
+        "sha256": "73e127a0fd05a2a1116c916dd038f1681d6182fb2c71bef51d31a50dd467c1b2"
+      },
+      {
+        "file": "captures/face-relief-dossier-facial-plane-final2-side-part-mobile-light-portrait.png",
+        "sha256": "116347263890b0d6717b91925845b2f351b438b9d24eb97512e249cd24de535b"
+      }
+    ],
+    "findings": [
+      "Final2 comparisons show directional cheek/jaw and orbital shading at ordinary portrait size.",
+      "Hard draft forehead/cheek highlight edges softened; draft cap-like forehead shadow boundary removed from the visible skull.",
+      "The full person remains illustrated/mannequin-like, especially body form and small profile heads."
+    ],
+    "fixesApplied": [
+      "Shared modern front/profile light treatment follows saved jaw/cheek/eye landmarks.",
+      "Soft gradients preserve readable individual pigment instead of broad white highlight blobs.",
+      "Modern and retained legacy lighting estimates now both receive malformed-value checks."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "verification": {
+    "focused": {
+      "output": "8c1ed5",
+      "pass": 18,
+      "fail": 0,
+      "skip": 0
+    },
+    "finalBrowser": {
+      "output": "62f880",
+      "pass": 2,
+      "fail": 0,
+      "seconds": 45.6
+    },
+    "builtBrowser": {
+      "pass": 2,
+      "fail": 0,
+      "evidence": [
+        ".cache/player-facial-plane-client/worker.json",
+        ".cache/player-facial-plane-client/in-page.json"
+      ]
+    },
+    "build": {
+      "output": "5a2ee4",
+      "precache": "033b4fd6b34c",
+      "assets": 313,
+      "kb": 3464
+    },
+    "boot": {
+      "output": "452cd2",
+      "bytes": 649321,
+      "maxBytes": 730000,
+      "modules": 51,
+      "maxModules": 58,
+      "lazyLeaks": 0
+    },
+    "reachability": {
+      "output": "0bcafb",
+      "modules": 134,
+      "htmlEntries": 4
+    }
+  },
+  "independentReview": {
+    "file": "docs/visual-qa/PLAYER_FACIAL_PLANES_REVIEW_2026-10-07.json",
+    "sha256": "84646ad714fb9759010417da42dbbfe5d654a3bfa82ba09f8f71b9489a34c1e7",
+    "verdict": "PASS",
+    "scope": "Directional facial-lighting component only."
+  },
+  "intermediateEvidence": {
+    "phases": [
+      "facial-plane-after",
+      "facial-plane-final"
+    ],
+    "disposition": "Draft images excluded from final evidence; source revised during their runs."
+  },
+  "limitations": [
+    "Artistic light/plane estimates, not empirical 3D normals or demographic coefficients.",
+    "No saved contours, identity recipe, natural pigment, measured frame, athletic capacities or gameplay changed.",
+    "Full naturalism, physique/demographic fitting, current30 managed seasons, all-feature testing and staging/production delivery remain required."
+  ]
+}

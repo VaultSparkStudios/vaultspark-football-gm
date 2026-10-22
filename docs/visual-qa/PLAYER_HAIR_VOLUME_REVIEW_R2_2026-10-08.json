@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T12:37:13.994Z",
+  "reviewRound": 2,
+  "verdict": "PASS",
+  "scope": "Scoped modern continuous hair-volume repair and preservation. Full adult-person visual acceptance remains open.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_HAIR_VOLUME_R2_SUPPLEMENT_2026-10-08.json",
+  "primaryReceiptSha256": "e50148eff7b50b608932da1b8897fc4030202c59c2cb8a4cd73b95e352816e8c",
+  "previousPrimary": {
+    "path": "docs/visual-qa/PLAYER_HAIR_VOLUME_2026-10-08.json",
+    "sha256": "682bf2c0d0dbbab68649d277e8470f1d6ed7206a0979cc6e2a695287c1ea4af9"
+  },
+  "previousReview": {
+    "path": "docs/visual-qa/PLAYER_HAIR_VOLUME_REVIEW_R1_2026-10-08.json",
+    "sha256": "6bc1034869875b7bf5e808570cbd156f88aa038c06a009c70fef75d94b182710",
+    "verdict": "FIX"
+  },
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "4bdfeacb0c6aaf5589d6c3824561a5d84bd80e4354153a8292a3701d7dedcf84",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "test/player-hair-volume.test.js": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99",
+    "test/player-continuous-hair.test.js": "099d96880eccece3af9436c7c126e08f555200b8cf06124a1ce3b4e55b40bc6d",
+    "test/player-occupied-hair.test.js": "919c929c997f269757a51dc8faa6ee4c40462d6e1f6c6413e7e70fb4a4a7d20c",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-fine-face.test.js": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459",
+    "test/player-continuous-hair-identity.test.js": "225a744f0b736810235c317a6b712c0bdbb53611be0e64abb59dc2f5aa387f78",
+    "tests-ui/player-hair-volume-gallery.spec.js": "375a62ce4bdd27de9007078cd11f26345ff62cc3e32775939847f609aa767bf4",
+    "tests-ui/player-hair-volume-production.spec.js": "dbb9d7580bf95f67c6e24ebbf60992492bb2b3bd2ffc306ab54312a4d543c252",
+    "tests-ui/player-hair-volume-client.spec.js": "7490fbb687772820bcc85b91f8a2a58e9128cfb89ab3bf8d9e599e358ddd5435",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+    "scripts/run-test-shard.mjs": "a1914511c47de0eed0da69d78c6932b4fa9a9c07d59acd6203b4c94533a77e0f"
+  },
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "4bdfeacb0c6aaf5589d6c3824561a5d84bd80e4354153a8292a3701d7dedcf84",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f",
+  "findings": [
+    {
+      "id": "P2-hair-support-periodicity",
+      "status": "repaired",
+      "description": "Modern support normalizes angular coordinates and attenuates asymmetry to zero at the rear. Actual emitted rear XYZ/normals meet; equivalent wrapped curtain roots now agree."
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-hair-volume.test.js test/player-continuous-hair.test.js test/player-occupied-hair.test.js test/player-shared-head.test.js test/player-fine-face.test.js test/player-continuous-hair-identity.test.js",
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 32635.179,
+      "terminalChunk": "45305b"
+    },
+    {
+      "command": "node .cache/hair-volume-r2-independent-probe.mjs",
+      "terminalChunk": "af7fea",
+      "result": "PASS",
+      "cases": 120,
+      "controls": "Three hairstyles, four parts, five texture coordinates, two lengths; six support heights per case and65 curtain root columns for long style.",
+      "maxPeriodicPositionError": 1.6722947649514823e-14,
+      "maxCentralDifferenceTangentError": 0.000003433342573329044,
+      "maxFloat32CurtainRootError": 0.000004129781795420087,
+      "probeSha256": "9dbd1c6dd5e4e55e71467d1053b930b52a4ec457ab7955355c4c451eb0c4da02",
+      "qualification": "The first probe used an unnecessarily tight1e-6 finite-difference tangent threshold and failed at3.43e-6; the result was measured before using1e-5. This is numerical differentiation error, with actual emitted endpoint normals independently asserted by the focused regression."
+    },
+    {
+      "check": "117 frozen byte bindings,22 current source hashes,8 built hashes and normalized source/build pairs",
+      "result": "PASS",
+      "terminalChunk": "37d9c9"
+    },
+    {
+      "check": "Both frozen client artifact digests match current static/deploy-manifest artifactFingerprint.digest",
+      "result": "PASS",
+      "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f"
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/hair-volume-r2-hair-volume-gallery-0-desktop-light.png",
+      "sha256": "05d8327c93ce87289e2c0eb2f61c68d92b0f95f8bc001cc4837594ee76e63052"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-r2-hair-volume-gallery-4-desktop-dark.png",
+      "sha256": "2a3d7102b3808c2b737872228310eed8940e367e3b1e7dd9cb12ae2732dfbeba"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-r2-hair-volume-gallery-13-mobile-light.png",
+      "sha256": "56263af0c3d2ecb8224b3bacfe463147340356397735319dd10f36f6731327ef"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-r2-production-hair-volume-after-mobile-dark-motion.png",
+      "sha256": "4fb888bf9669a701ddad62eabb10f3adce831044f6cdd11e1d1ad8696fd064fa"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-r2-production-hair-volume-after-desktop-light-portrait.png",
+      "sha256": "91bf5233f2cbb24524471b5789a177d5d67cf0a04a23dd7914f5467ef229dab8"
+    }
+  ],
+  "visualObservations": [
+    "The matched large rear views have continuous combed support and connected long back coverage. Front/profile views retain the same person and stronger swept or hanging occupancy.",
+    "Normal mobile comparison and actual reduced-motion dossier remain legible. The long curtain still reads as a blunt dark sheet, fine ends remain wire-like, and the face/beard/body still have mannequin-like quality. These are retained full-craft limits."
+  ],
+  "testCorrectionAssessment": "Current hair-isolation tests appropriately compare against the accepted immediate pre-hair face baseline. Historical references and384 original legacy SVG hashes remain untouched; focused legacy comparisons pass. This does not re-certify every historical component against current anatomy.",
+  "primaryExecution": {
+    "domainPassed": 25,
+    "browserPassed": 4,
+    "attribution": "Primary executed browser/build/loading checks; reviewer inspected frozen reports, client spec assertions and bindings without browser rerun.",
+    "clients": [
+      {
+        "original": ".cache/hair-volume/client/worker.json",
+        "file": "references/hair-volume-r2-client-worker-2026-10-08.json",
+        "sha256": "78d9de2af4a1fa972f749246fbe1f249ef5d2a4e0fc1c95edc6e7891a1073a0c",
+        "proof": {
+          "worker": true,
+          "playerId": "P2026-BUF-RB-82079160",
+          "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f",
+          "namedSaveReplacementLoadReload": true,
+          "personRecipeAndMeasurementsExact": true,
+          "frontSideMotionDimensionsExact": true,
+          "threeActualCollars": true,
+          "sixActualSectionLights": true,
+          "rngExact": true
+        }
+      },
+      {
+        "original": ".cache/hair-volume/client/in-page.json",
+        "file": "references/hair-volume-r2-client-in-page-2026-10-08.json",
+        "sha256": "6c75ade334982f7dc479c4c851d4449c5d23bf3b0562c47884bc25e2cbb2c9d7",
+        "proof": {
+          "worker": false,
+          "playerId": "P2026-BUF-RB-82079160",
+          "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f",
+          "namedSaveReplacementLoadReload": true,
+          "personRecipeAndMeasurementsExact": true,
+          "frontSideMotionDimensionsExact": true,
+          "threeActualCollars": true,
+          "sixActualSectionLights": true,
+          "rngExact": true
+        }
+      }
+    ]
+  },
+  "limits": [
+    "Five frozen originals inspected, not all84.",
+    "Instrumented private support oracle only adds exposure to a scratch-imported copy; production source was not edited.",
+    "Scope is hair support/volume correctness and saved person compatibility, not full hairstyle recognition, population calibration, whole body rendered mass, full suite, whole NFL policy, current final career or release."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

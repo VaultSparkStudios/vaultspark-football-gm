@@ -7,6 +7,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseSilSessions } from './sil-ledger.mjs';
 
 const CATEGORIES = [
   'Dev Health', 'Creative Alignment', 'Momentum',
@@ -23,30 +24,15 @@ const CATEGORY_ALIASES = {
 };
 
 export function parseSilHistory(silText, maxSessions = 5) {
-  const sessionRe = /^## (\d{4}-\d{2}-\d{2}) — Session (\d+)[^\n]*Total: (\d+)\/1000/gm;
-  const sessions = [];
-  let m;
-  while ((m = sessionRe.exec(silText)) !== null) {
-    sessions.push({ date: m[1], session: Number(m[2]), total: Number(m[3]), idx: m.index });
-    if (sessions.length >= maxSessions) break;
-  }
-  // Extract category scores from each session block
-  for (let i = 0; i < sessions.length; i++) {
-    const start = sessions[i].idx;
-    const end = i + 1 < sessions.length ? sessions[i + 1].idx : silText.length;
-    const block = silText.slice(start, end);
-    const cats = {};
-    // table rows: | N | Category Name | score | Δ | notes |
-    const rowRe = /^\|\s*\d+\s*\|\s*([A-Za-z][^|]+?)\s*\|\s*(\d+)\s*\|/gm;
-    let rm;
-    while ((rm = rowRe.exec(block)) !== null) {
-      const raw = rm[1].trim();
-      const canonical = CATEGORY_ALIASES[raw] || raw;
-      cats[canonical] = Number(rm[2]);
-    }
-    sessions[i].categories = cats;
-  }
-  return sessions;
+  return parseSilSessions(silText)
+    .filter((entry) => entry.total != null)
+    .slice(0, maxSessions)
+    .map((entry) => ({
+      date: entry.date,
+      session: entry.session,
+      total: entry.totalNormalized,
+      categories: Object.fromEntries(Object.entries(entry.categories).map(([raw, value]) => [CATEGORY_ALIASES[raw] || raw, value])),
+    }));
 }
 
 export function forecastNext(sessions, signals = {}) {
@@ -77,10 +63,14 @@ export function forecastNext(sessions, signals = {}) {
       confidence: series.length >= 3 ? 'medium' : 'low'
     };
   }
-  // Aggregate total
-  const totalPred = Object.values(forecast)
-    .filter(f => f.predicted != null)
-    .reduce((sum, f) => sum + f.predicted, 0);
+  // S372 [Vorn S386] — a forecast is a total only when EVERY category has a
+  // prediction. A sum over the categories that happened to parse reads as a real
+  // score (it was 0 when none parsed) and was scored against the actual as if it
+  // were one: Vorn's calibration ledger took five 0/1000 forecasts, MAE 498.9.
+  // No forecast is null — never 0 and never a partial sum.
+  const predictions = Object.values(forecast).filter(f => f.predicted != null);
+  if (predictions.length !== CATEGORIES.length) return null;
+  const totalPred = predictions.reduce((sum, f) => sum + f.predicted, 0);
   return { categories: forecast, totalPredicted: totalPred, basis: sessions.length };
 }
 
@@ -113,7 +103,7 @@ export function renderForecastBlock(forecast, currentTotal = null) {
 }
 
 // CLI entry
-if (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || process.argv[1].endsWith('sil-forecaster.mjs')) {
+if (process.argv[1] && (import.meta.url === `file://${process.argv[1].replace(/\\/g, '/')}` || process.argv[1].endsWith('sil-forecaster.mjs'))) {
   const root = process.cwd();
   const silPath = path.join(root, 'context', 'SELF_IMPROVEMENT_LOOP.md');
   const sil = fs.readFileSync(silPath, 'utf8');

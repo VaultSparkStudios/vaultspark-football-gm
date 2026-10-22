@@ -1,0 +1,667 @@
+[
+  {
+    "player": {
+      "id": "limb-legacy-control",
+      "age": 24,
+      "heightInches": 62,
+      "weightLbs": 100,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 70,
+        "stamina": 70
+      },
+      "profile": {
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v3",
+          "seed": "limb-legacy"
+        },
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "limb-legacy-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "limb-legacy-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "limb-legacy-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "limb-legacy-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "limb-legacy-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "limb-legacy-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "limb-legacy-control"
+        }
+      }
+    },
+    "frame": {
+      "bodyMeasurementVersion": "extended-body-measurements-v1",
+      "measurementFit": {
+        "scope": "stature-and-mass",
+        "status": "supported",
+        "unsupported": [],
+        "authority": "artistic-rendering-support-not-population",
+        "estimated": []
+      },
+      "heightInches": 62,
+      "weightLbs": 100,
+      "volumeBudgetInches3": 2767.9904710203123,
+      "torsoVolumeInches3": 1290.7949515388077,
+      "legsVolumeInches3": 837.7991908211966,
+      "armsVolumeInches3": 252.98760203277084,
+      "neckVolumeInches3": 40.40991774999807,
+      "reservedVolumeInches3": 345.99880887753903,
+      "torsoLengthInches": 18.828489661356432,
+      "legLengthInches": 30.191510338643567,
+      "armSegmentLengthInches": 17.05,
+      "neckLengthInches": 3,
+      "chestWidthInches": 13.057364336402946,
+      "chestDepthInches": 6.65930879192138,
+      "waistRatio": 0.952228855395224,
+      "limbShapeVariation": 0.09354375600814818,
+      "torsoSectionVersion": "artistic-regional-sections-v1",
+      "torsoSections": [
+        [
+          0,
+          13.057364336402946,
+          6.65930879192138
+        ],
+        [
+          0.28,
+          13.498746829111619,
+          6.897168616273546
+        ],
+        [
+          0.65,
+          12.516307084154162,
+          6.787755346973757
+        ],
+        [
+          1,
+          12.433599096531395,
+          6.563096087666584
+        ]
+      ],
+      "upperArmWidth": 3.9558239299597426,
+      "thighWidth": 5.604414350438611,
+      "neckDiameterInches": 4.141316428335034,
+      "upperArmShare": 0.5159452099213376,
+      "upperLegShare": 0.49431636720895766,
+      "pelvicBreadthInches": 7.682546405214817,
+      "footLengthInches": 10.115682483981365,
+      "footWidthInches": 3.4735086513586446,
+      "shoulderWidth": 52.229457345611785,
+      "neckWidth": 20.70658214167517,
+      "torsoLength": 48,
+      "muscleDefinition": 0.17734586648177356,
+      "shoulderSpanInches": 13.890813123832922,
+      "torsoShare": 0.30368531711865215,
+      "armLengthInches": 23.25,
+      "wingspanInches": 60.39081312383292,
+      "handSizeInches": 8.375
+    },
+    "static": [
+      "94f66717c0e668991dda45056e38bef916b669e6f27085c5972807ebe176f646",
+      "fc3636569f6f34bb198d5d9195650441d3ebc98c3875d9f15c65188a5a676c52"
+    ],
+    "motion": [
+      "e1624d8c9e70b02e73f0249f90a506242b289b08692667e696efc759742bb62f",
+      "81c4aef8cceb1e44ebea1e3b99afb030350e782782e562d98664837cbda27c91",
+      "7e5c13a59574e4d5958b4da301e618a5e17f23cdeaf11f76bc3ba1166f7e0ca9",
+      "fae50bdcec6267df48535c50c5b4e45817a16552c7e49d90e56451d62238a301",
+      "ee626879de92718eed65ee8d03f02293683fc710e59fe0e9a6983620b4e2513c",
+      "c0d486b10bc13a24f8565267e26c9efa716af086b6c500023112d65035b4c9c1"
+    ]
+  },
+  {
+    "player": {
+      "id": "limb-legacy-control",
+      "age": 24,
+      "heightInches": 74,
+      "weightLbs": 225,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 70,
+        "stamina": 70
+      },
+      "profile": {
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v3",
+          "seed": "limb-legacy"
+        },
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "limb-legacy-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "limb-legacy-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "limb-legacy-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "limb-legacy-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "limb-legacy-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "limb-legacy-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "limb-legacy-control"
+        }
+      }
+    },
+    "frame": {
+      "bodyMeasurementVersion": "extended-body-measurements-v1",
+      "measurementFit": {
+        "scope": "stature-and-mass",
+        "status": "supported",
+        "unsupported": [],
+        "authority": "artistic-rendering-support-not-population",
+        "estimated": []
+      },
+      "heightInches": 74,
+      "weightLbs": 225,
+      "volumeBudgetInches3": 6227.978559795703,
+      "torsoVolumeInches3": 2904.288640962318,
+      "legsVolumeInches3": 1885.0481793476927,
+      "armsVolumeInches3": 569.2221045737344,
+      "neckVolumeInches3": 90.92231493749567,
+      "reservedVolumeInches3": 778.4973199744629,
+      "torsoLengthInches": 22.47271346678026,
+      "legLengthInches": 38.12728653321973,
+      "armSegmentLengthInches": 20.6,
+      "neckLengthInches": 3,
+      "chestWidthInches": 15.584596143448678,
+      "chestDepthInches": 10.517962334062824,
+      "waistRatio": 0.952228855395224,
+      "limbShapeVariation": 0.09354375600814818,
+      "torsoSectionVersion": "artistic-regional-sections-v1",
+      "torsoSections": [
+        [
+          0,
+          15.584596143448678,
+          10.517962334062824
+        ],
+        [
+          0.28,
+          16.11140750571387,
+          10.893647071247244
+        ],
+        [
+          0.65,
+          14.93881813270013,
+          10.720835645722431
+        ],
+        [
+          1,
+          14.840102147472956,
+          10.366000376593918
+        ]
+      ],
+      "upperArmWidth": 5.398297239128138,
+      "thighWidth": 7.480764206588184,
+      "neckDiameterInches": 6.21197464250255,
+      "upperArmShare": 0.5159452099213376,
+      "upperLegShare": 0.49431636720895766,
+      "pelvicBreadthInches": 9.169490870740265,
+      "footLengthInches": 12.073556513139048,
+      "footWidthInches": 4.145800648395801,
+      "shoulderWidth": 62.33838457379471,
+      "neckWidth": 31.059873212512752,
+      "torsoLength": 65,
+      "muscleDefinition": 0.17734586648177356,
+      "shoulderSpanInches": 16.579357599413488,
+      "torsoShare": 0.30368531711865215,
+      "armLengthInches": 28,
+      "wingspanInches": 72.57935759941348,
+      "handSizeInches": 10
+    },
+    "static": [
+      "4e455d64d30bcea752c3fafb31874c48cead83b88e8ea6a3e7c2842dcaf6ddef",
+      "0705e9105224b9e1a33ff3de29e2d6b8ddce9b7eed5e375ee6e1345641ac5c9c"
+    ],
+    "motion": [
+      "c3f699ad622a1f2f63e9256a17070c6006508cbb34f7a8be476039d958dbb35f",
+      "296a7a1b164fa2292bbf7cdfbea5d6cbaba9f6363194420cf4f9e46b9b852732",
+      "aceafab6abf41bedf3460a37050113269e686dd7a28dcf7f66c8d7e1778eac0c",
+      "4101b9e4d40dd0b06f237fcfccd47bfcdbcead6e780c1095515d930594f2b275",
+      "8d0d7ad952be10e4cafbcba0e214f18a185449a88f0bf7b48a3294fa96a4dd1d",
+      "b4ced1f07046a646339607159b658c4333a3e1eac3a1b869e24a23f61d3ad58a"
+    ]
+  },
+  {
+    "player": {
+      "id": "limb-legacy-control",
+      "age": 24,
+      "heightInches": 77,
+      "weightLbs": 308,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 70,
+        "stamina": 70
+      },
+      "profile": {
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v3",
+          "seed": "limb-legacy"
+        },
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "limb-legacy-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "limb-legacy-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "limb-legacy-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "limb-legacy-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "limb-legacy-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "limb-legacy-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "limb-legacy-control"
+        }
+      }
+    },
+    "frame": {
+      "bodyMeasurementVersion": "extended-body-measurements-v1",
+      "measurementFit": {
+        "scope": "stature-and-mass",
+        "status": "supported",
+        "unsupported": [],
+        "authority": "artistic-rendering-support-not-population",
+        "estimated": []
+      },
+      "heightInches": 77,
+      "weightLbs": 308,
+      "volumeBudgetInches3": 8525.410650742564,
+      "torsoVolumeInches3": 3975.648450739529,
+      "legsVolumeInches3": 2580.421507729286,
+      "armsVolumeInches3": 779.2018142609344,
+      "neckVolumeInches3": 124.4625466699941,
+      "reservedVolumeInches3": 1065.6763313428205,
+      "torsoLengthInches": 23.383769418136215,
+      "legLengthInches": 40.11123058186379,
+      "armSegmentLengthInches": 21.425,
+      "neckLengthInches": 3,
+      "chestWidthInches": 17.216375355028514,
+      "chestDepthInches": 12.525487388746024,
+      "waistRatio": 0.952228855395224,
+      "limbShapeVariation": 0.09354375600814818,
+      "torsoSectionVersion": "artistic-regional-sections-v1",
+      "torsoSections": [
+        [
+          0,
+          17.216375355028514,
+          12.525487388746024
+        ],
+        [
+          0.28,
+          17.798346300606344,
+          12.972877699558264
+        ],
+        [
+          0.65,
+          16.502981403286984,
+          12.767082388423493
+        ],
+        [
+          1,
+          16.393929398373345,
+          12.34452100748397
+        ]
+      ],
+      "upperArmWidth": 6.193185494533103,
+      "thighWidth": 8.533260844108208,
+      "neckDiameterInches": 7.267980835112373,
+      "upperArmShare": 0.5159452099213376,
+      "upperLegShare": 0.49431636720895766,
+      "pelvicBreadthInches": 9.541226987121627,
+      "footLengthInches": 12.56302502042847,
+      "footWidthInches": 4.3138736476550905,
+      "shoulderWidth": 68.86550142011406,
+      "neckWidth": 36.33990417556186,
+      "torsoLength": 70.4,
+      "muscleDefinition": 0.17734586648177356,
+      "shoulderSpanInches": 17.25149371830863,
+      "torsoShare": 0.30368531711865215,
+      "armLengthInches": 29.125,
+      "wingspanInches": 75.50149371830864,
+      "handSizeInches": 10.375
+    },
+    "static": [
+      "7716ecd0f283ebe5ab086207c5c99b63b663b24e8250770f8d1d3ff555a9ffa2",
+      "f9802560e1ae5a82756bfe29c3f31eaa72be3f8c51be57d2761e5770c6e97ade"
+    ],
+    "motion": [
+      "5b8020593c5e8ae00fcf6f48e0c8c62544b2660393ab5f51b79bad86fb87b73f",
+      "1269e8d19a59896abfd7f8ae0fc4013bcf1ca121f9a8fc701f1333e0ad3f8d3d",
+      "cf269950afc3766dba665e6f226d3a0ee0835ffcf08b250b3bf38db89450d8ee",
+      "fbac12f27454006d60406b3d3552fa52c74fe4912fb85e6fef35fa7473dc3b41",
+      "7f33e78c9ffa313bfcedf71c854ec739bd3c72acdd5d154781979fcf4aaff44e",
+      "08e72e2918e966a4ebf8d083fe693f7840217e8f630d989d28892bb6c2c9fd36"
+    ]
+  },
+  {
+    "player": {
+      "id": "limb-legacy-control",
+      "age": 24,
+      "heightInches": 87,
+      "weightLbs": 410,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 70,
+        "stamina": 70
+      },
+      "profile": {
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v3",
+          "seed": "limb-legacy"
+        },
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "limb-legacy-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "limb-legacy-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "limb-legacy-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "limb-legacy-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "limb-legacy-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "limb-legacy-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "limb-legacy-control"
+        }
+      }
+    },
+    "frame": {
+      "bodyMeasurementVersion": "extended-body-measurements-v1",
+      "measurementFit": {
+        "scope": "stature-and-mass",
+        "status": "supported",
+        "unsupported": [],
+        "authority": "artistic-rendering-support-not-population",
+        "estimated": []
+      },
+      "heightInches": 87,
+      "weightLbs": 410,
+      "volumeBudgetInches3": 11348.760931183282,
+      "torsoVolumeInches3": 5292.259301309113,
+      "legsVolumeInches3": 3434.9766823669065,
+      "armsVolumeInches3": 1037.2491683343605,
+      "neckVolumeInches3": 165.68066277499213,
+      "reservedVolumeInches3": 1418.5951163979103,
+      "torsoLengthInches": 26.420622589322736,
+      "legLengthInches": 46.72437741067726,
+      "armSegmentLengthInches": 24.299999999999997,
+      "neckLengthInches": 3,
+      "chestWidthInches": 18.68719119606046,
+      "chestDepthInches": 13.59555497777734,
+      "waistRatio": 0.952228855395224,
+      "limbShapeVariation": 0.09354375600814818,
+      "torsoSectionVersion": "artistic-regional-sections-v1",
+      "torsoSections": [
+        [
+          0,
+          18.68719119606046,
+          13.59555497777734
+        ],
+        [
+          0.28,
+          19.318880625821212,
+          14.08116638581227
+        ],
+        [
+          0.65,
+          17.91285113321946,
+          13.857789731486191
+        ],
+        [
+          1,
+          17.79448268317636,
+          13.399128418936343
+        ]
+      ],
+      "upperArmWidth": 6.70946569219827,
+      "thighWidth": 9.122057864792165,
+      "neckDiameterInches": 8.385526650983248,
+      "upperArmShare": 0.5159452099213376,
+      "upperLegShare": 0.49431636720895766,
+      "pelvicBreadthInches": 10.7803473750595,
+      "footLengthInches": 14.194586711393205,
+      "footWidthInches": 4.874116978519388,
+      "shoulderWidth": 74.74876478424184,
+      "neckWidth": 41.927633254916245,
+      "torsoLength": 85,
+      "muscleDefinition": 0.17734586648177356,
+      "shoulderSpanInches": 19.491947447959102,
+      "torsoShare": 0.30368531711865215,
+      "armLengthInches": 33,
+      "wingspanInches": 85.4919474479591,
+      "handSizeInches": 11.75
+    },
+    "static": [
+      "2e254e40310ed390c1e2bbf51369210761cedd18678a72aaa43b2abc02e770ef",
+      "018f78652cb72c47b4f938ce0487d7294eb9b8687bbb061f9973ac0a18a8bb8a"
+    ],
+    "motion": [
+      "4b3c3a1d60c1619c6c7cb0a478138ef20d84dbb033cb8079d8579c68325ca2be",
+      "dfba20353fe2b95726e6f675c2c65c8994d8eebb9cb0819263ffa2f8a607900f",
+      "16a88ff4a8b7614e75ef0dfc096013dfded5c58ca1cd533fc51186b6887268b7",
+      "8a2c65f048a9d1cfb64ec477ca9631f042c3fa8a1fa6247015900bd676b03253",
+      "40417eec4ff5af26b89b1cfa44228e7988a2c7da8f9a7420c2a0a45c01fb1e3a",
+      "2023c3fe7065579cdf0035533ed75f532180047aa0e06ede0fb72167f68f822c"
+    ]
+  },
+  {
+    "player": {
+      "id": "limb-legacy-control",
+      "age": 24,
+      "heightInches": 96,
+      "weightLbs": 650,
+      "ratings": {
+        "speed": 80,
+        "acceleration": 75,
+        "agility": 70,
+        "jumping": 70,
+        "strength": 70,
+        "stamina": 70
+      },
+      "profile": {
+        "regionalBodyShapeRecipe": {
+          "version": "regional-body-shape-v3",
+          "seed": "limb-legacy"
+        },
+        "appearanceRecipe": {
+          "version": "portrait-identity-v3",
+          "seed": "limb-legacy-control",
+          "complexionBand": [
+            0,
+            1
+          ]
+        },
+        "skeletonRecipe": {
+          "version": "fictional-physique-v1",
+          "seed": "limb-legacy-control"
+        },
+        "hairTextureRecipe": {
+          "version": "continuous-hair-texture-v1",
+          "seed": "limb-legacy-control"
+        },
+        "appearanceDetailRecipe": {
+          "version": "natural-appearance-detail-v1",
+          "seed": "limb-legacy-control"
+        },
+        "facialPigmentRecipe": "facial-pigment-v1",
+        "hairArrangementRecipe": {
+          "version": "hair-arrangement-v1",
+          "seed": "limb-legacy-control"
+        },
+        "individualAnatomyRecipe": {
+          "version": "individual-anatomy-v1",
+          "seed": "limb-legacy-control"
+        },
+        "fineFaceRecipe": {
+          "version": "fine-face-v1",
+          "seed": "limb-legacy-control"
+        }
+      }
+    },
+    "frame": {
+      "bodyMeasurementVersion": "extended-body-measurements-v1",
+      "measurementFit": {
+        "scope": "stature-and-mass",
+        "status": "supported",
+        "unsupported": [],
+        "authority": "artistic-rendering-support-not-population",
+        "estimated": []
+      },
+      "heightInches": 96,
+      "weightLbs": 650,
+      "volumeBudgetInches3": 17991.93806163203,
+      "torsoVolumeInches3": 8390.16718500225,
+      "legsVolumeInches3": 5445.694740337778,
+      "armsVolumeInches3": 1644.4194132130106,
+      "neckVolumeInches3": 262.66446537498746,
+      "reservedVolumeInches3": 2248.992257704004,
+      "torsoLengthInches": 29.153790443390605,
+      "legLengthInches": 52.67620955660939,
+      "armSegmentLengthInches": 26.9,
+      "neckLengthInches": 3,
+      "chestWidthInches": 22.399214506630955,
+      "chestDepthInches": 16.29617576493402,
+      "waistRatio": 0.952228855395224,
+      "limbShapeVariation": 0.09354375600814818,
+      "torsoSectionVersion": "artistic-regional-sections-v1",
+      "torsoSections": [
+        [
+          0,
+          22.399214506630955,
+          16.29617576493402
+        ],
+        [
+          0.28,
+          23.15638271293503,
+          16.87824901400179
+        ],
+        [
+          0.65,
+          21.471059548152752,
+          16.610500825227533
+        ],
+        [
+          1,
+          21.32917839140129,
+          16.060731038109243
+        ]
+      ],
+      "upperArmWidth": 8.029336947997912,
+      "thighWidth": 10.81737974799583,
+      "neckDiameterInches": 10.558326640021356,
+      "upperArmShare": 0.5159452099213376,
+      "upperLegShare": 0.49431636720895766,
+      "pelvicBreadthInches": 11.895555724203588,
+      "footLengthInches": 15.662992233261468,
+      "footWidthInches": 5.378335976297256,
+      "shoulderWidth": 89.59685802652382,
+      "neckWidth": 52.79163320010678,
+      "torsoLength": 85,
+      "muscleDefinition": 0.17734586648177356,
+      "shoulderSpanInches": 21.508355804644527,
+      "torsoShare": 0.30368531711865215,
+      "armLengthInches": 36.5,
+      "wingspanInches": 94.50835580464452,
+      "handSizeInches": 13
+    },
+    "static": [
+      "c738ac6106d5ec48bd2d0779e452d395806fbbeafe5f4a7bc9762d4a9616937a",
+      "85accb968f11d7eae14f48bed2e900c349da05782fb0b6bc74bb0f307f132245"
+    ],
+    "motion": [
+      "1e3f93bddaba744a764383423d83ae17f55ced572e7cfd83f5603135c367074e",
+      "76615661fc269d0dac5dd2d5e9eedca09de16214f480eef42206334e155710b3",
+      "b81995c0e2a7a0e5e8ba1e18fdfe3a3943b9dd16a3a1ea6bfbfa9e5e43a57d7e",
+      "6d25b11af89922a5cc10195efbb3c6c3cc57331eac6a87ebde4c3884f5d45979",
+      "f6a7a19458af3731ae8df5402a88b007b8320da3f065f552f8912ff3aa71c9c9",
+      "8c0a8d90cfcda9ea7b5fc8c4e7a6196747dabb88efdaa5b3577605b128c4ffa0"
+    ]
+  }
+]

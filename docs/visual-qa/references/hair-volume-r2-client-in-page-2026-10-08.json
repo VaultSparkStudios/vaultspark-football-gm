@@ -1,0 +1,11 @@
+{
+  "worker": false,
+  "playerId": "P2026-BUF-RB-82079160",
+  "artifactDigest": "bf03c618f92fad2b59d410228b0899b35433cc79e12964cfae9d78850fe0126f",
+  "namedSaveReplacementLoadReload": true,
+  "personRecipeAndMeasurementsExact": true,
+  "frontSideMotionDimensionsExact": true,
+  "threeActualCollars": true,
+  "sixActualSectionLights": true,
+  "rngExact": true
+}

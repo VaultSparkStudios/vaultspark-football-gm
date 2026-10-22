@@ -1,0 +1,17 @@
+import fs from 'node:fs/promises';import crypto from 'node:crypto';
+import {buildPlayerBodyMesh3d} from '../../test-support/appearance/playerBody3d.js';import {estimateTriangleUnionVolume,inspectTriangleSolids} from '../../test-support/appearance/triangleSolidVolume.js';
+import {buildHeadMesh3d} from '../../public/lib/playerHead3d.js';
+const fixtures=JSON.parse(await fs.readFile('.cache/body-union/fixtures.json','utf8')),cases=[];
+for(const{player,bulkScale}of fixtures){
+ const before=JSON.stringify(player),rows=[];
+ for(const mode of['neutral','run','acceleration','cut','jump','strength','endurance'])for(const phase of[0,.4,.75]){
+  const mesh=buildPlayerBodyMesh3d(player,{mode,phase,bulkScale}),r=estimateTriangleUnionVolume(mesh,{resolution:128});
+  if(!inspectTriangleSolids(mesh).allComponentsClosedOriented||r.invalidRays||r.negativeWindingRays)throw Error('Invalid posed solid ray: '+player.weightLbs+' '+mode+' '+phase);
+  rows.push({mode,phase,unionVolumeInches3:r.unionVolume,invalidRays:r.invalidRays,negativeWindingRays:r.negativeWindingRays});
+ }
+ if(before!==JSON.stringify(player))throw Error('Observer mutated player');cases.push({weightLbs:player.weightLbs,bulkScale,rows});console.log(JSON.stringify({mass:player.weightLbs,posedChecks:rows.length,negativeRays:0,unbalancedRays:0}));
+}
+const colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'},head=buildHeadMesh3d({...fixtures[0].player.appearance,hairstyle:'shaved',facialHair:'clean'},colors,{rings:32,slices:48,headOnly:true}),poleSpans=[];
+for(const row of[0,32])poleSpans.push({row,spans:[0,1,2].map(k=>{const p=Array.from({length:49},(_,c)=>head.vertices[(row*49+c)*10+k]);return Math.max(...p)-Math.min(...p);})});
+const hashes={};for(const path of['public/lib/playerHead3d.js','test-support/appearance/playerBody3d.js','test-support/appearance/triangleSolidVolume.js','.cache/head-poles/observe-final.mjs'])hashes[path]=crypto.createHash('sha256').update(await fs.readFile(path)).digest('hex');
+await fs.writeFile('docs/PLAYER_HEAD_POLE_REPAIR_FINAL_DIAGNOSTIC_2026-10-08.json',JSON.stringify({schemaVersion:1,status:'modern-pole-closure-posed-ray-progress-full-body-open',hashes,cases,poleSpans,rayEstimatorChanged:false,inputUnchanged:true,limits:['84 selected pose/mass quadratures are not a whole-head intersection proof or all-phase guarantee.','No volume-preserving deformation or finished body art.','Modern pole positions/normals change; legacy decoding and middle-face controls are preserved.']},null,2)+'\n',{flag:'wx'});

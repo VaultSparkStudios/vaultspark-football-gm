@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T09:18:46.159Z",
+  "primaryReceipt": "docs/visual-qa/PLAYER_BODY_MEASUREMENT_TAILS_2026-10-08.json",
+  "primaryReceiptSha256": "f0d0edced4e0ebcf47fd94460f615b1e51a71be04f25897f9748b12d62770518",
+  "sources": [
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/body-tails-supplement-source-0-2026-10-08",
+      "sha256": "cfab39130d333af78a3040a1ff50e50ac86469a5072c99d72ab41b4d1d75154f"
+    },
+    {
+      "original": "tests-ui/player-capacity-client.spec.js",
+      "file": "references/body-tails-supplement-source-1-2026-10-08",
+      "sha256": "9316694df67ca2803e0ea37bdf7c56ef437409b23030f26501d58816beed9dc2"
+    }
+  ],
+  "changes": [
+    "New adverse body-tail test is included in the core shard.",
+    "Actual capacity-client finite-geometry assertion validates PNG base64 and signature separately; encoded pixels cannot masquerade as a NaN coordinate. Remaining SVG markup retains the non-finite assertion."
+  ],
+  "evidence": {
+    "focusedAdditional": {
+      "passed": 25,
+      "terminal": "e4f10b"
+    },
+    "actualClients": {
+      "passed": 2,
+      "terminal": "66d8cb",
+      "scope": "Built worker and in-page named save, replacement franchise, load/reload and all six modes"
+    },
+    "firstClientFailure": {
+      "terminal": "46a858",
+      "cause": "Literal NaN occurred inside valid encoded PNG bytes, confirmed in trace b47886; not a non-finite coordinate."
+    }
+  },
+  "limitations": [
+    "Primary remains immutable. Current capacity-client source intentionally differs from its primary binding; this supplement binds its repaired final source.",
+    "Full whole-suite/career proof and complete-player craft remain open."
+  ]
+}

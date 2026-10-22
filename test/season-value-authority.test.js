@@ -294,9 +294,9 @@ test("Rookie of the Year is decided among actual rookies, and the Hall stays sca
   ).length;
   const scoreCandidate = session.scoreHallOfFameCandidate.bind(session);
   let dashboardScores = 0;
-  session.scoreHallOfFameCandidate = (player) => {
+  session.scoreHallOfFameCandidate = (...args) => {
     dashboardScores += 1;
-    return scoreCandidate(player);
+    return scoreCandidate(...args);
   };
   session.getDashboardState();
   assert.equal(

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "scope": "Publication privacy correction for nine historical diagnostic logs",
+  "status": "public-safe derivatives; original evidence preserved privately",
+  "changes": [
+    {
+      "file": "docs/visual-qa/references/crown-surface-report-2-build.log-2026-10-08",
+      "originalSha256": "699894a427847d0be61af7f863870e7494093e194a09a17ec14f8ac4c409dfcd",
+      "publishedSha256": "25b3c2536b91b9148d2a3adae3cb4fa8c0c8f32e10c09814c19d75dc19193c59",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/facial-hair-report-2-build.log-2026-10-08",
+      "originalSha256": "252df7dd2d2989fad109400b53405665b9880878e710806a7f87677f2ee1210a",
+      "publishedSha256": "983af7d8f29551f75203bb3006840d652ac2fb6ece6483d3309bbdd3716ea1e7",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/hair-volume-r2-report-2-r2-build.log-2026-10-08",
+      "originalSha256": "603595fa2fdd6e8a87519d1274d3017cd3e4fcd8f71623e4a4667fa6381de871",
+      "publishedSha256": "1402dd299757665fb6ed5e14b0dead6b5a8bac70bde6bb497c82aa76a0dc623d",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/hair-volume-report-2-build.log-2026-10-08",
+      "originalSha256": "cff0e0aff63e05bb21c47a02cfc1d103f5ab87fdeb75ac00551fe908b79fe17f",
+      "publishedSha256": "f2a0fec18fe7bc7c66800b1567e8d3a9387e8db9ba2de3f836f1d3278ba47028",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/head-poles-report-1-domain-final.log-2026-10-08",
+      "originalSha256": "0860691bdeafc03a77dbc95525b5dddf009cde1ed13facf79d0cdccdc4ecd942",
+      "publishedSha256": "c11515c4cbd9630d5b4b06f78b5bb40197da04510fe5df86a1046d487c694a50",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/head-poles-report-3-build-final.log-2026-10-08",
+      "originalSha256": "17c497b8eed415f19b796fc6594901d4472fbffd56e9ed3016104e9e3b063a0b",
+      "publishedSha256": "416ea7abeb3fe5dcfb612ab92ea788e5b47158de68c464c74420ec9281816729",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/production-occupied-hair-evidence-occupied-hair-build-production-2026-10-08.log-2026-10-08",
+      "originalSha256": "7b82ace1a5e2c4e03892e15010abf7ea5a2b6708988524f15f0572a7c691141b",
+      "publishedSha256": "de7949406c859da94c9e1723582444e2c57d18857ccd3f2d7d4cd2389c09272c",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/production-occupied-hair-evidence-occupied-hair-contracts-2026-10-08.log-2026-10-08",
+      "originalSha256": "16edc8a9a8d7ca2958bab94b9241ecf9fee74adbabda5505fcc6c536c430fd8a",
+      "publishedSha256": "64c521c04d27c835501ba9d2f9f47198353114f86199e6800fe933be1be2ce0c",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    },
+    {
+      "file": "docs/visual-qa/references/production-scalp-evidence-scalp-build-current-2026-10-08.log-2026-10-08",
+      "originalSha256": "e98f9cd1ce3aaf337846d65356a6a221e7ed4efc8487e09e6ea0b11ffd7156fe",
+      "publishedSha256": "0b7f39bb80eae8c3aeaa888dcf8081626e951919ffff93cfaa069b12514eba35",
+      "redaction": "absolute local workspace prefix only",
+      "originalPreservedPrivately": true
+    }
+  ],
+  "manifests": [
+    "docs/PLAYER_HEAD_POLE_REPAIR_REVIEW_R1_2026-10-08.json",
+    "docs/visual-qa/PLAYER_CROWN_SURFACE_2026-10-08.json",
+    "docs/visual-qa/PLAYER_FACIAL_HAIR_FORM_2026-10-08.json",
+    "docs/visual-qa/PLAYER_HAIR_VOLUME_2026-10-08.json",
+    "docs/visual-qa/PLAYER_HAIR_VOLUME_R2_SUPPLEMENT_2026-10-08.json",
+    "docs/visual-qa/PLAYER_HEAD_POLE_REPAIR_2026-10-08.json",
+    "docs/visual-qa/PLAYER_OCCUPIED_HAIR_PRODUCTION_2026-10-08.json",
+    "docs/visual-qa/PLAYER_SCALP_PRODUCTION_2026-10-08.json"
+  ],
+  "rendererSourceFilesChanged": 0,
+  "testResultsChanged": false,
+  "timingsChanged": false,
+  "note": "These derivatives redact local directory prefixes only. Original diagnostic bytes and original authority manifests remain private. Frozen renderer source, simulation fixtures and image captures are unchanged."
+}

@@ -17,8 +17,11 @@ const signed = (value) => `${Number(value) > 0 ? "+" : ""}${Number(value)}`;
 
 export function developmentReportRows(report) {
   const rows = [];
-  for (const [verdict, list] of [["Riser", report?.risers || []], ["Faller", report?.fallers || []]]) {
+  const seen = new Set();
+  for (const [verdict, list] of [["Riser", report?.risers || []], ["Faller", report?.fallers || []], ["Ceiling", report?.ceilingChanges || []]]) {
     for (const mover of list) {
+      if (seen.has(mover.playerId)) continue;
+      seen.add(mover.playerId);
       const potential = Number.isFinite(Number(mover.potential)) ? Number(mover.potential) : null;
       rows.push({
         playerId: mover.playerId,
@@ -30,7 +33,9 @@ export function developmentReportRows(report) {
         change: signed(mover.change),
         pot: potential ?? "-",
         runway: potential == null ? "-" : signed(potential - Number(mover.after)),
-        dev: mover.trait || "-"
+        dev: mover.trait || "-",
+        ceiling: mover.potentialRevision?.reasons?.length ? `${mover.potentialRevision.before} → ${mover.potentialRevision.after}` : "Held",
+        reason: mover.potentialRevision?.reasons?.join(" ") || "No ceiling revision."
       });
     }
   }

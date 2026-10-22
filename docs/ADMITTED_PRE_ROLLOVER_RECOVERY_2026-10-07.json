@@ -1,0 +1,132 @@
+{
+  "kind": "older-admitted-pre-rollover-pay-before-recovery",
+  "status": "component-verified-annual-policy-incomplete",
+  "recordedAt": "2026-10-07T23:30:50.306Z",
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "abbc44675945a5a555a6363b7cc87bd820c4a7e2a275790136aa17194d6e1f95",
+    "src/domain/elevationInjuryPay.js": "5981d416d81f0701d1e494ebb3a8c6e3b196f14e2b8e9d5279bfa0c46f6b0136",
+    "src/domain/preRolloverMedicalCalendar.js": "e3ed13504cd91d7b2c4103da1eb7488b79adcac31d0f396c431657ade121d318",
+    "src/runtime/GameSession.js": "c4f880051da9f0f273f483cd6c3e75a893c93baddb2d3661ae0f64c54c2fdb52",
+    "test/admitted-pre-rollover-recovery.test.js": "087e0c3a3bb36e51282202e4ae67b92b250926c90c08fcd848a523dbe0d18026",
+    "test/helpers/admittedPreRolloverFixture.js": "0081520cb308e125ecf62809d7557db3d5f02993ca026dd30119e3771b6bbc87"
+  },
+  "builtHashes": {
+    "static/src/domain/admittedInjuryPayroll.js": {
+      "sha256": "abbc44675945a5a555a6363b7cc87bd820c4a7e2a275790136aa17194d6e1f95",
+      "source": "src/domain/admittedInjuryPayroll.js",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/src/domain/elevationInjuryPay.js": {
+      "sha256": "5981d416d81f0701d1e494ebb3a8c6e3b196f14e2b8e9d5279bfa0c46f6b0136",
+      "source": "src/domain/elevationInjuryPay.js",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/src/domain/preRolloverMedicalCalendar.js": {
+      "sha256": "e3ed13504cd91d7b2c4103da1eb7488b79adcac31d0f396c431657ade121d318",
+      "source": "src/domain/preRolloverMedicalCalendar.js",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/src/runtime/GameSession.js": {
+      "sha256": "c4f880051da9f0f273f483cd6c3e75a893c93baddb2d3661ae0f64c54c2fdb52",
+      "source": "src/runtime/GameSession.js",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "d7f8ba2d67e76b230cf1aea8ea6e871cec21a35988fadad9a9a3f362bc19ba04",
+  "verification": {
+    "primary": {
+      "output": "92201f",
+      "pass": 8,
+      "fail": 0,
+      "skip": 0
+    },
+    "related": {
+      "output": "218a80",
+      "pass": 59,
+      "fail": 0,
+      "skip": 0
+    },
+    "builtClients": {
+      "output": "5ba452",
+      "pass": 2,
+      "fail": 0
+    },
+    "browserBoot": {
+      "output": "a7319d",
+      "pass": true,
+      "bytes": 649321,
+      "maxBytes": 730000,
+      "modules": 51,
+      "maxModules": 58
+    },
+    "browserReachability": {
+      "output": "86d14a",
+      "pass": true,
+      "modules": 133,
+      "htmlEntries": 4
+    }
+  },
+  "clients": [
+    {
+      "file": ".cache/admitted-pre-rollover-client/worker.json",
+      "sha256": "73e8cc163c80ce9dea879f7598adc8b331b729be02af012eb59424971ec2959b",
+      "worker": true,
+      "playerId": "P2026-BUF-QB-87221813",
+      "artifactDigest": "d7f8ba2d67e76b230cf1aea8ea6e871cec21a35988fadad9a9a3f362bc19ba04",
+      "actualAnnualCommand": true,
+      "weeks": [
+        24,
+        25,
+        26
+      ],
+      "retiredClearancePaid": true,
+      "namedSaveReplacementLoadReload": true,
+      "automaticActiveAnnualAdoption": false
+    },
+    {
+      "file": ".cache/admitted-pre-rollover-client/in-page.json",
+      "sha256": "3539de332a30a409aa7482e8f520dc488132f2a6f7621023ee48413804fed4a2",
+      "worker": false,
+      "playerId": "P2026-BUF-QB-87221813",
+      "artifactDigest": "d7f8ba2d67e76b230cf1aea8ea6e871cec21a35988fadad9a9a3f362bc19ba04",
+      "actualAnnualCommand": true,
+      "weeks": [
+        24,
+        25,
+        26
+      ],
+      "retiredClearancePaid": true,
+      "namedSaveReplacementLoadReload": true,
+      "automaticActiveAnnualAdoption": false
+    }
+  ],
+  "independentReview": {
+    "receipt": "docs/ADMITTED_PRE_ROLLOVER_RECOVERY_REVIEW_2026-10-07.json",
+    "sha256": "f4f29a414b50ed29e39289edd136f9258108a3b8470eb8c7a7c67e62d3aa3f5b",
+    "round": 1,
+    "verdict": "PASS"
+  },
+  "schema": {
+    "legacy": "admitted-injury-earning-period-v1",
+    "fresh": "admitted-injury-earning-period-v2",
+    "newPhase": "pre-rollover",
+    "weeks": [
+      24,
+      25,
+      26,
+      27
+    ],
+    "legacyReceiptsPreserved": true
+  },
+  "limits": [
+    "Default unresolved active annual transition still refuses; explicit medical calendar permission is not automatic contract-expiry adoption.",
+    "Simulation medical intervals are approximations, not official dated clinical or legal findings.",
+    "Actually paid base/new employer, Salary/Benefits classification and pension/service reconciliation remain open.",
+    "Headless regular changes have separate primary evidence and pending independent review.",
+    "Full appearance/naturalism/calibration, final current thirty managed seasons, full-feature gates and staging/production release remain incomplete."
+  ],
+  "reviewLogging": {
+    "localRecorderMissing": true,
+    "siblingRecorderNotExecuted": "It writes directly into another repository; canonical project receipt preserves the actual review instead."
+  }
+}

@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+# hook-version: 4   # S389 — editor commits hand a marker to commit-msg instead of going unstamped
+#
+# WHY. The premise-gate timing check tells "this session's commits" from other writers by
+# git author identity, so two sessions under one identity in separate checkouts or
+# worktrees (Codex beside Claude) convicted each other. Two terminals in ONE checkout share
+# one lock, stamp the same value and still do (fail closed). This hook appends
+#   Studio-Session: S<n>
+#   Studio-Session-Start: <session_start>
+# read from context/.session-lock by the REPO-LOCAL scripts/lib/session-trailer.mjs, and
+# check-premise-gate-timing prefers that binding over identity.
+#
+# v2 (S388): v1 wrote one `Studio-Session: S<n> @ <start>` value. The key's fleet grammar
+# is a bare or S-prefixed number — the /start drain commit writes it and Vorn's
+# external-write-audit parses /^S?(\d+)$/ — so the start instant moved to its own key.
+#
+# Never blocks a commit: no lock (CI routines), no node, no local lib, or any error →
+# the message is left as it is. A message that already carries a Studio-Session trailer
+# (a drain commit, amend, cherry-pick, an explicit one) is left whole, so a commit never
+# pairs one session's number with another's start. Also runs under --no-verify.
+MSG_FILE="$1"
+# S389 — one rev-parse for every path this hook reads (was five spawns; a git spawn
+# measured ~0.5s on a loaded Windows host, and this runs on every commit).
+PATHS="$(git rev-parse --show-toplevel --git-path studio-session-pending --git-path rebase-merge --git-path rebase-apply --git-path CHERRY_PICK_HEAD 2>/dev/null)" || exit 0
+{ read -r REPO_ROOT; read -r MARKER; read -r REBASE_MERGE; read -r REBASE_APPLY; read -r CHERRY_PICK; } <<EOF
+$PATHS
+EOF
+# S389 — the editor-commit marker is per-commit: cleared on every run, so one left behind
+# by an aborted or hook-bypassing commit never binds the next one.
+[ -n "$MARKER" ] && rm -f "$MARKER" 2>/dev/null
+[ -n "$REPO_ROOT" ] || exit 0
+LOCK="$REPO_ROOT/context/.session-lock"
+LIB="$REPO_ROOT/scripts/lib/session-trailer.mjs"
+[ -n "$MSG_FILE" ] && [ -f "$MSG_FILE" ] && [ -f "$LOCK" ] && [ -f "$LIB" ] || exit 0
+command -v node >/dev/null 2>&1 || exit 0
+
+# Review S388 #1 — a replayed or reused message is not this session's authorship: rebase
+# (/start's pull --rebase), cherry-pick, and -c/-C/--amend ($2 = commit) would otherwise
+# bind an earlier session's or another writer's commit to this session's start.
+[ "$2" = "commit" ] && exit 0
+for state in "$REBASE_MERGE" "$REBASE_APPLY" "$CHERRY_PICK"; do
+  [ -n "$state" ] && [ -e "$state" ] && exit 0
+done
+# Review S388 #2 — an empty message must still abort the commit; trailers would make it non-empty.
+# This hook runs BEFORE the editor. Measured (review r2): stamping an editor commit here
+# turns an untouched message into a commit whose subject is the trailer — git does not
+# abort a trailers-only message — and an untouched -t template would no longer read as
+# unedited. S389: an editor commit ($2 empty or template) instead leaves a marker carrying
+# the session fields; commit-msg runs AFTER the editor (measured, git 2.53) and stamps only
+# a message that is non-empty once comments are stripped, so the abort is kept.
+EDITOR_COMMIT=""
+case "$2" in ""|template) EDITOR_COMMIT=1 ;; esac
+if [ -z "$EDITOR_COMMIT" ]; then
+  [ -n "$(git stripspace --strip-comments < "$MSG_FILE" 2>/dev/null)" ] || exit 0
+  if git interpret-trailers --parse "$MSG_FILE" 2>/dev/null | grep -qi '^Studio-Session:'; then exit 0; fi
+fi
+
+FIELDS="$(node --input-type=module -e 'import fs from "node:fs"; import { pathToFileURL } from "node:url"; const [lib, lock] = process.argv.slice(1); const { sessionTrailerFields } = await import(pathToFileURL(lib).href); const f = sessionTrailerFields?.(fs.readFileSync(lock, "utf8")); if (f) console.log(f.session + " " + f.start);' "$LIB" "$LOCK" 2>/dev/null || true)"
+SESSION="${FIELDS%% *}"
+START="${FIELDS#* }"
+[ -n "$FIELDS" ] && [ -n "$SESSION" ] && [ -n "$START" ] && [ "$SESSION" != "$START" ] || exit 0
+
+if [ -n "$EDITOR_COMMIT" ]; then
+  # The pre-editor content's hash rides along: commit-msg leaves an UNCHANGED message
+  # (an untouched template) unstamped, so git's "you did not edit the message" abort holds.
+  BASE="$(git stripspace --strip-comments < "$MSG_FILE" 2>/dev/null | git hash-object --stdin 2>/dev/null)"
+  [ -n "$MARKER" ] && [ -n "$BASE" ] && printf '%s %s %s\n' "$SESSION" "$START" "$BASE" > "$MARKER" 2>/dev/null
+  exit 0
+fi
+git interpret-trailers --in-place --trailer "Studio-Session: $SESSION" --trailer "Studio-Session-Start: $START" "$MSG_FILE" 2>/dev/null || true
+exit 0

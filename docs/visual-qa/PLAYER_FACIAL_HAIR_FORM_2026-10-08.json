@@ -1,0 +1,1571 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T12:58:31.762Z",
+  "status": "scoped-facial-hair-review-pending",
+  "scope": "Modern facial-pigment-v1 beard/mustache geometry and material only; complete portrait/body naturalism and population calibration remain open.",
+  "doneCondition": [
+    "Modern facial hair has visible rooted growth and curved tapered mustache form in matched front/three-quarter/profile views.",
+    "Non-beard surfaces and saved inputs remain exact; older facial-pigment recipes preserve exact full geometry and legacy material.",
+    "Actual curved lip aperture stays clear across extreme fine-face cases; existing mesh limits remain satisfied.",
+    "Both built runtimes retain exact front/profile head images, person recipe, measurements, skeleton and RNG through actual named-save replacement/load/reload."
+  ],
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "c93cc6f60654021113ffce81ca4c26f5fabc56c2fc00c48eb782e4433ba41f38",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "test/player-facial-hair-form.test.js": "84e29b7d94a3a413c9cd829929654d98eed550e249388e333d6bbed74162e7fb",
+    "test/player-beard-volume.test.js": "ffa2b8c1fb97f9a92cc0bba3fede1809e1a15e94e5142698537da4c32e428027",
+    "test/player-hair-volume.test.js": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-facial-pigment.test.js": "91352c86a54d225d8b261c67e2f5b99343b01b985d5bc0d1300c147359e056fa",
+    "test/player-fine-face.test.js": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459",
+    "test/player-face-lighting.test.js": "43276a6f633a76a5b94db8b712f157d87abc12c24310e95441760be36db2d8eb",
+    "test/player-continuous-hair.test.js": "099d96880eccece3af9436c7c126e08f555200b8cf06124a1ce3b4e55b40bc6d",
+    "tests-ui/player-facial-hair-gallery.spec.js": "6ae55b3d5f17999dd1a8ba1c9fb8a02f661d7cf919514a7b26dfc089874c301a",
+    "tests-ui/player-facial-hair-production.spec.js": "3759e204303f69c6f48c488cee02ca0dd59f157048a589c5c7a8a91ff33e41d0",
+    "tests-ui/player-facial-hair-client.spec.js": "e9d9ab09c50c7f12dfdece509b5f7abcfb144f4796bd984dec817ae6775cd52e",
+    "tests-ui/player-hair-volume-gallery.spec.js": "549d40d28af6d001507744a6f9c45e28e5f92382a7b30f1b4d8e48b6e501c2d9",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+    "scripts/run-test-shard.mjs": "cb5769f10d2d302b6d69fe93f305eb748ca94becc8ca1a74f1f6f81f31648f23"
+  },
+  "frozenSources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/facial-hair-source-0-playerHead3d.js-2026-10-08",
+      "sha256": "c93cc6f60654021113ffce81ca4c26f5fabc56c2fc00c48eb782e4433ba41f38"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/facial-hair-source-1-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/facial-hair-source-2-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/facial-hair-source-3-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/facial-hair-source-4-playerPortraitFace.js-2026-10-08",
+      "sha256": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/facial-hair-source-5-playerSideAppearance.js-2026-10-08",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/facial-hair-source-6-playerPortrait.js-2026-10-08",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/facial-hair-source-7-playerMotion.js-2026-10-08",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/facial-hair-source-8-playerIdentity.js-2026-10-08",
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/facial-hair-source-9-playerVisualIdentity.js-2026-10-08",
+      "sha256": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/facial-hair-source-10-playerMeasurements.js-2026-10-08",
+      "sha256": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293"
+    },
+    {
+      "original": "test/player-facial-hair-form.test.js",
+      "file": "references/facial-hair-source-11-player-facial-hair-form.test.js-2026-10-08",
+      "sha256": "84e29b7d94a3a413c9cd829929654d98eed550e249388e333d6bbed74162e7fb"
+    },
+    {
+      "original": "test/player-beard-volume.test.js",
+      "file": "references/facial-hair-source-12-player-beard-volume.test.js-2026-10-08",
+      "sha256": "ffa2b8c1fb97f9a92cc0bba3fede1809e1a15e94e5142698537da4c32e428027"
+    },
+    {
+      "original": "test/player-hair-volume.test.js",
+      "file": "references/facial-hair-source-13-player-hair-volume.test.js-2026-10-08",
+      "sha256": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/facial-hair-source-14-player-shared-head.test.js-2026-10-08",
+      "sha256": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f"
+    },
+    {
+      "original": "test/player-facial-pigment.test.js",
+      "file": "references/facial-hair-source-15-player-facial-pigment.test.js-2026-10-08",
+      "sha256": "91352c86a54d225d8b261c67e2f5b99343b01b985d5bc0d1300c147359e056fa"
+    },
+    {
+      "original": "test/player-fine-face.test.js",
+      "file": "references/facial-hair-source-16-player-fine-face.test.js-2026-10-08",
+      "sha256": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459"
+    },
+    {
+      "original": "test/player-face-lighting.test.js",
+      "file": "references/facial-hair-source-17-player-face-lighting.test.js-2026-10-08",
+      "sha256": "43276a6f633a76a5b94db8b712f157d87abc12c24310e95441760be36db2d8eb"
+    },
+    {
+      "original": "test/player-continuous-hair.test.js",
+      "file": "references/facial-hair-source-18-player-continuous-hair.test.js-2026-10-08",
+      "sha256": "099d96880eccece3af9436c7c126e08f555200b8cf06124a1ce3b4e55b40bc6d"
+    },
+    {
+      "original": "tests-ui/player-facial-hair-gallery.spec.js",
+      "file": "references/facial-hair-source-19-player-facial-hair-gallery.spec.js-2026-10-08",
+      "sha256": "6ae55b3d5f17999dd1a8ba1c9fb8a02f661d7cf919514a7b26dfc089874c301a"
+    },
+    {
+      "original": "tests-ui/player-facial-hair-production.spec.js",
+      "file": "references/facial-hair-source-20-player-facial-hair-production.spec.js-2026-10-08",
+      "sha256": "3759e204303f69c6f48c488cee02ca0dd59f157048a589c5c7a8a91ff33e41d0"
+    },
+    {
+      "original": "tests-ui/player-facial-hair-client.spec.js",
+      "file": "references/facial-hair-source-21-player-facial-hair-client.spec.js-2026-10-08",
+      "sha256": "e9d9ab09c50c7f12dfdece509b5f7abcfb144f4796bd984dec817ae6775cd52e"
+    },
+    {
+      "original": "tests-ui/player-hair-volume-gallery.spec.js",
+      "file": "references/facial-hair-source-22-player-hair-volume-gallery.spec.js-2026-10-08",
+      "sha256": "549d40d28af6d001507744a6f9c45e28e5f92382a7b30f1b4d8e48b6e501c2d9"
+    },
+    {
+      "original": "tests-ui/helpers/static-client.js",
+      "file": "references/facial-hair-source-23-static-client.js-2026-10-08",
+      "sha256": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/facial-hair-source-24-run-test-shard.mjs-2026-10-08",
+      "sha256": "cb5769f10d2d302b6d69fe93f305eb748ca94becc8ca1a74f1f6f81f31648f23"
+    }
+  ],
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "c93cc6f60654021113ffce81ca4c26f5fabc56c2fc00c48eb782e4433ba41f38",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "baseline": {
+    "file": "references/player-facial-hair-before-2026-10-08.js",
+    "sha256": "4bdfeacb0c6aaf5589d6c3824561a5d84bd80e4354153a8292a3701d7dedcf84",
+    "authority": "Exact independently accepted hair-volume R2 head source before modern beard changes"
+  },
+  "artifactDigest": "22ddb6eb5bb5c0e94d69dc0cea80ebdb751073739a09f20834bf4eb64d6500cf",
+  "clients": [
+    {
+      "original": ".cache/facial-hair/client/worker.json",
+      "file": "references/facial-hair-client-0-2026-10-08.json",
+      "sha256": "29ab95d007f50cdc4578f42872e6ef57c610a6e855445c96cc4b529349cf75e2",
+      "proof": {
+        "worker": true,
+        "playerId": "P2026-BUF-QB-9487479",
+        "facialHair": "full-beard",
+        "artifactDigest": "22ddb6eb5bb5c0e94d69dc0cea80ebdb751073739a09f20834bf4eb64d6500cf",
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "frontProfileHeadImagesExact": true,
+        "frontSideMotionDimensionsExact": true,
+        "threeActualCollars": true,
+        "sixActualSectionLights": true,
+        "rngExact": true
+      }
+    },
+    {
+      "original": ".cache/facial-hair/client/in-page.json",
+      "file": "references/facial-hair-client-1-2026-10-08.json",
+      "sha256": "240cdc9ea254713d0381bf9692571daf4ab4aabf280a486acc8bd1435aa3c8f6",
+      "proof": {
+        "worker": false,
+        "playerId": "P2026-BUF-QB-9487479",
+        "facialHair": "full-beard",
+        "artifactDigest": "22ddb6eb5bb5c0e94d69dc0cea80ebdb751073739a09f20834bf4eb64d6500cf",
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "frontProfileHeadImagesExact": true,
+        "frontSideMotionDimensionsExact": true,
+        "threeActualCollars": true,
+        "sixActualSectionLights": true,
+        "rngExact": true
+      }
+    }
+  ],
+  "captures": [
+    {
+      "original": "output/playwright/facial-hair-gallery-0-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-0-desktop-dark.png",
+      "sha256": "f19d1c4508aac0d220efb48f010911a9728a1575ebdbe289f1bd15c83ff02547",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-0-desktop-light.png",
+      "file": "captures/facial-hair-gallery-0-desktop-light.png",
+      "sha256": "2e0facfbee8e5849d3ad2787b0aba1f9fabdc91076c011e43dcc54ee70a9f8b5",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-0-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-0-mobile-dark.png",
+      "sha256": "5760533f4a34938ea5978eb0818cddf843b49e8273753c2a2b5d0c9fa0ce7dd3",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-0-mobile-light.png",
+      "file": "captures/facial-hair-gallery-0-mobile-light.png",
+      "sha256": "07ca2a6c2cd3a4e31d2962769fa4b3f1ccca6211f23bc5982b011a0ac2f7bafe",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-1-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-1-desktop-dark.png",
+      "sha256": "b4562d66feaaff0aaac2b2d45f52a992f5d3c00cfbdbcdcb517a0840b32a5387",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-1-desktop-light.png",
+      "file": "captures/facial-hair-gallery-1-desktop-light.png",
+      "sha256": "9443f31b0e9b359cb25e1bb0ba92495fa0b1ad57bdce8220487d29597b908f5c",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-1-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-1-mobile-dark.png",
+      "sha256": "35b1d396a611d95fd697b5bd269c7007aac4add2df88c92f2ed72444d2acbc63",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-1-mobile-light.png",
+      "file": "captures/facial-hair-gallery-1-mobile-light.png",
+      "sha256": "89a7eac186a243cd8bcea4e23e9f472d05a3d60608ce30bb162f93e262880195",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-10-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-10-desktop-dark.png",
+      "sha256": "80723513ecff4c2e697ccb4e5d120027414c4becfebe3efbe82ba94080950fb8",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-10-desktop-light.png",
+      "file": "captures/facial-hair-gallery-10-desktop-light.png",
+      "sha256": "5ec2cf8aed664ac21f9aef119da67841eff5b31deb5bfeaff475453a3eb6283c",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-10-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-10-mobile-dark.png",
+      "sha256": "624426b4c029ac10d84e10cfe1fd18e912354c77f8c54d82f247589c4e597e01",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-10-mobile-light.png",
+      "file": "captures/facial-hair-gallery-10-mobile-light.png",
+      "sha256": "28993234c8ac73658edf3b3cd11e5656c8eb7ee9295068a698147b8bbdefb898",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-11-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-11-desktop-dark.png",
+      "sha256": "e0cfce2222fc49e91235102e3cf031215ea6369d3b8b8baa551cff5c27b158f6",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-11-desktop-light.png",
+      "file": "captures/facial-hair-gallery-11-desktop-light.png",
+      "sha256": "c988b749b6b6a8ede71eb50c27ecf95c9bd8b10c78370095580f68e9c57d5fc3",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-11-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-11-mobile-dark.png",
+      "sha256": "fcbb85cf467c37658e13f69dd2968216863d339ac5f0b5bba358f33667cf82f9",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-11-mobile-light.png",
+      "file": "captures/facial-hair-gallery-11-mobile-light.png",
+      "sha256": "bfac4ccd8a5e855fad5c35397d79f2f1bba6bab6d07410012550f2cd48398c37",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-12-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-12-desktop-dark.png",
+      "sha256": "ad6422c4b2ad23c965a90a3a26bc159bb00e65a868e58f23e5d88ed823995657",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-12-desktop-light.png",
+      "file": "captures/facial-hair-gallery-12-desktop-light.png",
+      "sha256": "eb5c3585b1de980d35d72811ebe59b49b82d4cd3674673cb9f1da3a6f67e917c",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-12-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-12-mobile-dark.png",
+      "sha256": "1be43f29cc421dce6e2703f304281b6520d1991118dd6a07a70c382deffc72b3",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-12-mobile-light.png",
+      "file": "captures/facial-hair-gallery-12-mobile-light.png",
+      "sha256": "b74dbb7ea78a98b96bebf107c34eacbc73fc0e1f94d979b9ef425d59531bb44e",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-13-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-13-desktop-dark.png",
+      "sha256": "21caee912eddbb7391a96e8223dd7add85d88898712c66e8b22787e1908017a6",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-13-desktop-light.png",
+      "file": "captures/facial-hair-gallery-13-desktop-light.png",
+      "sha256": "22ee030306a49c05a6e0f3792e288e62c95e947997889a53a088ee83400a6e29",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-13-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-13-mobile-dark.png",
+      "sha256": "3c8c4b9b8d8acdf488f2effdf48c29b65f56f2b172e2685c99b36bbd1ca4ba57",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-13-mobile-light.png",
+      "file": "captures/facial-hair-gallery-13-mobile-light.png",
+      "sha256": "d7443858b253385a1fff2557a4b44f2674e7fd71d7f763254eff62cdf1afeba5",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-14-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-14-desktop-dark.png",
+      "sha256": "4925a663416a2501c71d4fa342902d7c08505d4701c3468117ed352bd4984b1b",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-14-desktop-light.png",
+      "file": "captures/facial-hair-gallery-14-desktop-light.png",
+      "sha256": "58df697566f0f176c3564ef92af7c78a6a8261bcc70e6f87e12fff0db0e7c11a",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-14-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-14-mobile-dark.png",
+      "sha256": "5089e194f0312a8fc4c7a2d43f7279992ba64195bd3e217e15aa40ab43c99aaf",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-14-mobile-light.png",
+      "file": "captures/facial-hair-gallery-14-mobile-light.png",
+      "sha256": "405a394d649eebfa4bf2a01a0f8fc052c8eed0245cc85e7e4890895738ce1c9a",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-15-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-15-desktop-dark.png",
+      "sha256": "62c20f31227ca81c351400c7888deb3179b332bda5558cb15f5883e6635dbce7",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-15-desktop-light.png",
+      "file": "captures/facial-hair-gallery-15-desktop-light.png",
+      "sha256": "2606d63283d234761beda19db93285f92d75329cabbe298b7607dd223b4cae9f",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-15-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-15-mobile-dark.png",
+      "sha256": "08b766928e737c09f54c9d5c72a69fdc5a26ae75507432229ba471dd07cfb93d",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-15-mobile-light.png",
+      "file": "captures/facial-hair-gallery-15-mobile-light.png",
+      "sha256": "c67e2d9e404d4116692c4bdb10d0b8a1392e6398e09bb45c43bfd497f859580a",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-16-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-16-desktop-dark.png",
+      "sha256": "6f8b9f8b7d6bf93b37bec50535ac88de39019c2f45ea2ba8776c791a7fed4e45",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-16-desktop-light.png",
+      "file": "captures/facial-hair-gallery-16-desktop-light.png",
+      "sha256": "822a4031497d35d0774dd601e0bd3b3ea319d2b7c7cda8aa97b8c67c26aba8b7",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-16-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-16-mobile-dark.png",
+      "sha256": "76679751932cdb77dc479ed1d6488d73b71a2d3df242e437dd390165ebce77c0",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-16-mobile-light.png",
+      "file": "captures/facial-hair-gallery-16-mobile-light.png",
+      "sha256": "3b33e6b07e0b62172374a1d98d8adac32c3d275f80cfa1af26c258ed6425e297",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-17-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-17-desktop-dark.png",
+      "sha256": "2c03a4f82955133fa94e34810f279ade24ab9420bcf93149d771fe74260b9aab",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-17-desktop-light.png",
+      "file": "captures/facial-hair-gallery-17-desktop-light.png",
+      "sha256": "f124e5c0878217422c057dd6847d735127c26feddc633ca4fd0fe740f0ab8e9e",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-17-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-17-mobile-dark.png",
+      "sha256": "3d00d2c653dda908f570868183c5fb78a35cae3dc14ce9ce9faeb5544e7cb00a",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-17-mobile-light.png",
+      "file": "captures/facial-hair-gallery-17-mobile-light.png",
+      "sha256": "939a3e544f8078a6837f6bd5316e49e58b63cb955132de53db63a3e917451042",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-2-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-2-desktop-dark.png",
+      "sha256": "5f9132bd10928324fb61b36ddac64e2b576fdbf13ffe1b12ad7792f7dfd7a761",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-2-desktop-light.png",
+      "file": "captures/facial-hair-gallery-2-desktop-light.png",
+      "sha256": "d0e20062d8f067c61c8e57caeee95b5e73d23f3f976ebb9f33390b3bf0f85c40",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-2-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-2-mobile-dark.png",
+      "sha256": "74e3794494f5e9703db230cdd6ab641950bf8a8b951ec064a22a47a75a704f9f",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-2-mobile-light.png",
+      "file": "captures/facial-hair-gallery-2-mobile-light.png",
+      "sha256": "d68ce854027683921439e9d18e9e588fc1ebfcb55c9110e681336a841045ca48",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-3-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-3-desktop-dark.png",
+      "sha256": "7072e525471c1e34f2d3f1b31c4994f8fa76b99df03e8e639f1ffa3af673c18e",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-3-desktop-light.png",
+      "file": "captures/facial-hair-gallery-3-desktop-light.png",
+      "sha256": "4178666317c70f9e04916c1337d181e7b12db0d2a3866dbf42e12bc96de23e9b",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-3-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-3-mobile-dark.png",
+      "sha256": "2fa541d1342116940236b68474ba129429791f68966d011ab341818f211d6abb",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-3-mobile-light.png",
+      "file": "captures/facial-hair-gallery-3-mobile-light.png",
+      "sha256": "ec9b4c28f37718b43e90fbe9f9f814320ec1420c292a9790b48f89ab971b6843",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-4-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-4-desktop-dark.png",
+      "sha256": "9305774800fa442811cbe9245d9770b2310669e34ad6db39aa46c5b0b60ec3d8",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-4-desktop-light.png",
+      "file": "captures/facial-hair-gallery-4-desktop-light.png",
+      "sha256": "4d2537de8d55806eabaae5808b02c1aa26d03913bee13f0cf9dbb009181abd0a",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-4-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-4-mobile-dark.png",
+      "sha256": "cd88152b8ba5fac38d48ea5b32b58be08feefa843ca98741ec46027870a6dd74",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-4-mobile-light.png",
+      "file": "captures/facial-hair-gallery-4-mobile-light.png",
+      "sha256": "8057fac5036a93323ffd90012a3b02e650f2b9a171bebbaade0582d0c96df0d9",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-5-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-5-desktop-dark.png",
+      "sha256": "32ebe8e82573b91cc645e1762ca84ce80c390d789bf069ccdbce49e3a789b3f5",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-5-desktop-light.png",
+      "file": "captures/facial-hair-gallery-5-desktop-light.png",
+      "sha256": "4c3d4fc72e1c139b051802cacd874e1e99528810cec516608df2b59fe6073782",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-5-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-5-mobile-dark.png",
+      "sha256": "99f4a0d0e76dd9af1756e3433ee1bb27019910b8cc4be7fbbcb866d4e26bc244",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-5-mobile-light.png",
+      "file": "captures/facial-hair-gallery-5-mobile-light.png",
+      "sha256": "7a8eb0450c5cfb8050e0c678f48fdc446a3efdd29d5177cbd63ee4b4f2dbe963",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-6-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-6-desktop-dark.png",
+      "sha256": "dd28f1de34b57e46d13d45214c0dc14bdf928824fc2119d39341f9310ca0454c",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-6-desktop-light.png",
+      "file": "captures/facial-hair-gallery-6-desktop-light.png",
+      "sha256": "be58706ff064fb104d03ba859926418b5a68946f264e68f5b7aac17acafc57de",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-6-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-6-mobile-dark.png",
+      "sha256": "40dcc46eb3375b9d017cc7836959c5af8ec2c7db2a4fd28c8b864251226d3fc5",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-6-mobile-light.png",
+      "file": "captures/facial-hair-gallery-6-mobile-light.png",
+      "sha256": "be038e44ec3e85677049a4455c18575d94e6df3aebc0a865f048cdf93fa17991",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-7-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-7-desktop-dark.png",
+      "sha256": "a37c63d5960a4e497230de059084ffbfbd57d72334ae8b3633298f0162b85f0e",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-7-desktop-light.png",
+      "file": "captures/facial-hair-gallery-7-desktop-light.png",
+      "sha256": "6d789cfc3ec51a6d9b2a01b77739018fb7731d2ffb80109e3a8bead1cfbec2df",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-7-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-7-mobile-dark.png",
+      "sha256": "bc31d80feeded5716d9395110905b817581a7a829f7b85f9fd87e7a627589a25",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-7-mobile-light.png",
+      "file": "captures/facial-hair-gallery-7-mobile-light.png",
+      "sha256": "ac0c6c27117c0251037d6215d00ab77768614b0720748e43775d717de28c061f",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-8-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-8-desktop-dark.png",
+      "sha256": "6b71757f9d71669072c3e5f73e4ba8938056c12ef98b44a14b810f043e7a376d",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-8-desktop-light.png",
+      "file": "captures/facial-hair-gallery-8-desktop-light.png",
+      "sha256": "4d28fa36b77d68a733e7ade78227798de261e29d92e6c239c49b65249e3b932b",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-8-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-8-mobile-dark.png",
+      "sha256": "e495d6afea88c6f4c528d13df331fd51a04e369fe26f8fa6130601a50901195a",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-8-mobile-light.png",
+      "file": "captures/facial-hair-gallery-8-mobile-light.png",
+      "sha256": "35afef12572b6474126b591cb41e8bfa60bd10a8702c65ead052953f671b6554",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-9-desktop-dark.png",
+      "file": "captures/facial-hair-gallery-9-desktop-dark.png",
+      "sha256": "9ffb890fe1a53210d3b6e0995135ee08623b0a93eea390e9123cb810412a7882",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-9-desktop-light.png",
+      "file": "captures/facial-hair-gallery-9-desktop-light.png",
+      "sha256": "0f5430d2598d81dbfe173350be8524d14523460932e33aa5c0c65fe4d2e5db42",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-9-mobile-dark.png",
+      "file": "captures/facial-hair-gallery-9-mobile-dark.png",
+      "sha256": "2749fb3c5d0e514ea564b886a550c3aeec1f4fb5073c72a200a9bbd67105caba",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-9-mobile-light.png",
+      "file": "captures/facial-hair-gallery-9-mobile-light.png",
+      "sha256": "8a1cc2b8006134f314cdfe1e17023bd7613e02f2b4554efd53f679799d9721e6",
+      "phase": "comparison",
+      "page": "matched-saved-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-desktop-dark-body.png",
+      "file": "captures/production-facial-hair-after-desktop-dark-body.png",
+      "sha256": "9c0b817dd2eaf3145bf9dcb8aa90f5d3aa30c6a148a6db6d2f3403a9956d3398",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-desktop-dark-motion.png",
+      "file": "captures/production-facial-hair-after-desktop-dark-motion.png",
+      "sha256": "c3e85e7f2097de912e725a768e28fcff339da74a438df652039f5a50e8f2e688",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-desktop-dark-portrait.png",
+      "file": "captures/production-facial-hair-after-desktop-dark-portrait.png",
+      "sha256": "8f0b22dd2d9a2cff4584ed9a3ecc1b2fe8bf7695d46a40b077ff76eaa4e09d88",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-desktop-light-body.png",
+      "file": "captures/production-facial-hair-after-desktop-light-body.png",
+      "sha256": "1bd89199beb077b1f40ac76bd6975dae478146a24ace38a5a1af11cf586eb85e",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-desktop-light-motion.png",
+      "file": "captures/production-facial-hair-after-desktop-light-motion.png",
+      "sha256": "b0172fc25d069091c2f23cf1d74f26aab7ecea3e46f7c3d8214c178701135436",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-desktop-light-portrait.png",
+      "file": "captures/production-facial-hair-after-desktop-light-portrait.png",
+      "sha256": "edbe514c946530aa9d8e3c11ebb7cf58c5584408deab2b8139daa1b2b1858b66",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-mobile-dark-body.png",
+      "file": "captures/production-facial-hair-after-mobile-dark-body.png",
+      "sha256": "b2d357b62d3c50009801c9ba66505d0b08d8f313fbb8970da5bc35784f2f6241",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-mobile-dark-motion.png",
+      "file": "captures/production-facial-hair-after-mobile-dark-motion.png",
+      "sha256": "4f725104f09450fd28c593e436a4de1641096afef651a545105c3f296f555933",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-mobile-dark-portrait.png",
+      "file": "captures/production-facial-hair-after-mobile-dark-portrait.png",
+      "sha256": "6afb468b341b5e7b5f7443a8fce2afaa1c090d3bc5308538c0851f9d90e07989",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-mobile-light-body.png",
+      "file": "captures/production-facial-hair-after-mobile-light-body.png",
+      "sha256": "55316d486c9f965ed628b83c49853f960244daf360cbe1d50826d88e26dc5405",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-mobile-light-motion.png",
+      "file": "captures/production-facial-hair-after-mobile-light-motion.png",
+      "sha256": "bdfe04529dd5fb5e76923f5f2ba1bd436e1e5e3b626cdf9c1396fe32bc92b024",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-after-mobile-light-portrait.png",
+      "file": "captures/production-facial-hair-after-mobile-light-portrait.png",
+      "sha256": "4a7f7b2e6afb1dd150f76945a6db961bc709a210ab1073d5d2ad6d3a7ac0aaf0",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-desktop-dark-body.png",
+      "file": "captures/production-facial-hair-before-desktop-dark-body.png",
+      "sha256": "94c711d1fdb52735dfcc83b00cb2fdf81ef97bec1684a44a22aec802a0ff2b38",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-desktop-dark-motion.png",
+      "file": "captures/production-facial-hair-before-desktop-dark-motion.png",
+      "sha256": "80bcac5baa7be14e52a1570c40f18dfdfff27863aa45dbb3b8d9937197d30ac3",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-desktop-dark-portrait.png",
+      "file": "captures/production-facial-hair-before-desktop-dark-portrait.png",
+      "sha256": "c3145f9de386b56975feffe67453d107d8e907682c4f952124ae1fbf0317a5db",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-desktop-light-body.png",
+      "file": "captures/production-facial-hair-before-desktop-light-body.png",
+      "sha256": "68586944d44fe23e3771e3edd6b6f5fcfc4bcc3805e9a1f1cee30087a62868ac",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-desktop-light-motion.png",
+      "file": "captures/production-facial-hair-before-desktop-light-motion.png",
+      "sha256": "8e904d548a7cd5234ae208e5ca046d7ba05fee4dd24c043802fbb6b395c466e3",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-desktop-light-portrait.png",
+      "file": "captures/production-facial-hair-before-desktop-light-portrait.png",
+      "sha256": "a0c43059485e4a2a33025c4b156b0306b5de2f091fbdc43c917cd5708ff24687",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-mobile-dark-body.png",
+      "file": "captures/production-facial-hair-before-mobile-dark-body.png",
+      "sha256": "7c13829c5b6e5a3ecf40f5880134d967082a438b596d825a811fbd8ae013e5d2",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-mobile-dark-motion.png",
+      "file": "captures/production-facial-hair-before-mobile-dark-motion.png",
+      "sha256": "b994a99fe14798f3df2f5a4b68725b565a60f8217df71e0ec95a82fe9004aa7c",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-mobile-dark-portrait.png",
+      "file": "captures/production-facial-hair-before-mobile-dark-portrait.png",
+      "sha256": "30af9250046b10c716bcba9969bee525979b6207328c788d149dde998c7781da",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-mobile-light-body.png",
+      "file": "captures/production-facial-hair-before-mobile-light-body.png",
+      "sha256": "cffe04451f64128a7b84045eb69f15326baae512bf19537f7f26fbfae541b429",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-mobile-light-motion.png",
+      "file": "captures/production-facial-hair-before-mobile-light-motion.png",
+      "sha256": "9fa02a0fa37427387d21d31a1e121aa5e9df2ca74777cdb2542c791cde726a44",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-facial-hair-before-mobile-light-portrait.png",
+      "file": "captures/production-facial-hair-before-mobile-light-portrait.png",
+      "sha256": "3fd082a5ce2153f06786304c12d26ab93bf0cf8353a98dce6e955c8fc6c01b55",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "reports": [
+    {
+      "original": ".cache/facial-hair/final-domain.log",
+      "file": "references/facial-hair-report-0-final-domain.log-2026-10-08",
+      "sha256": "3c00dededd82bedb96e7bb0711c30c06d94f378027436b51ae8616824cfa8af4"
+    },
+    {
+      "original": ".cache/facial-hair/final-browser.log",
+      "file": "references/facial-hair-report-1-final-browser.log-2026-10-08",
+      "sha256": "91e005fb766f4306c4b4a103e23da4da3288579c1af28b3b2602d51092971a09"
+    },
+    {
+      "original": ".cache/facial-hair/build.log",
+      "file": "references/facial-hair-report-2-build.log-2026-10-08",
+      "sha256": "983af7d8f29551f75203bb3006840d652ac2fb6ece6483d3309bbdd3716ea1e7",
+      "originalSha256": "252df7dd2d2989fad109400b53405665b9880878e710806a7f87677f2ee1210a",
+      "publicSafeDerivative": true
+    },
+    {
+      "original": ".cache/facial-hair/reachability.log",
+      "file": "references/facial-hair-report-3-reachability.log-2026-10-08",
+      "sha256": "2682ba4d9903d47aabe3f8ad7f455cde012eec375d01d0038881cf176c18d866"
+    },
+    {
+      "original": ".cache/facial-hair/boot-budget.log",
+      "file": "references/facial-hair-report-4-boot-budget.log-2026-10-08",
+      "sha256": "7bcff9a51ce60488ae34a4ee230c6d7209292055fa6eda315733c014796c8b30"
+    },
+    {
+      "original": "output/playwright/facial-hair-gallery-observations.json",
+      "file": "references/facial-hair-report-5-facial-hair-gallery-observations.json-2026-10-08",
+      "sha256": "003133e82efc63082703febe2d8b5eb20917f85292920b605a34d3efd85c7663"
+    },
+    {
+      "original": "output/playwright/production-facial-hair.json",
+      "file": "references/facial-hair-report-6-production-facial-hair.json-2026-10-08",
+      "sha256": "4e695b35a8f557bf959ec2e2b1802fea579f90156ce7aade0ed5f15452d83836"
+    },
+    {
+      "original": "static/deploy-manifest.json",
+      "file": "references/facial-hair-report-7-deploy-manifest.json-2026-10-08",
+      "sha256": "e66fc01076f8fc85631dfb1f5e47515d7d34b25a52046a4ee3a490d45b6e3393"
+    },
+    {
+      "original": "docs/visual-qa/references/production-head-anatomy-fixtures-2026-10-08.json",
+      "file": "references/facial-hair-report-8-production-head-anatomy-fixtures-2026-10-08.json-2026-10-08",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    },
+    {
+      "original": "output/playwright/hair-volume-gallery-observations.json",
+      "file": "references/facial-hair-report-9-hair-volume-gallery-observations.json-2026-10-08",
+      "sha256": "21fd004dfbe2d2199e108b40b1ac499d6b5c05bbc2570223524af094f268e1d5"
+    }
+  ],
+  "verification": {
+    "domainPassed": 36,
+    "browserPassed": 5,
+    "reachabilityModules": 139,
+    "htmlEntries": 4,
+    "bootBytes": 649321,
+    "maxBootBytes": 730000,
+    "bootModules": 51,
+    "maxBootModules": 58,
+    "lazyLeaks": 0
+  },
+  "testCorrection": {
+    "file": "tests-ui/player-hair-volume-gallery.spec.js",
+    "reason": "The scalp-only full-beard shader control explicitly uses the legacy facial-pigment recipe. Modern beard changes have separate clean-pixel and non-beard geometry controls.",
+    "exactPixelEqualityRetained": true,
+    "historicalGoldensRegenerated": false
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "original": "output/playwright/facial-hair-gallery-2-desktop-light.png",
+        "file": "captures/facial-hair-gallery-2-desktop-light.png",
+        "sha256": "d0e20062d8f067c61c8e57caeee95b5e73d23f3f976ebb9f33390b3bf0f85c40",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/facial-hair-gallery-5-desktop-light.png",
+        "file": "captures/facial-hair-gallery-5-desktop-light.png",
+        "sha256": "4c3d4fc72e1c139b051802cacd874e1e99528810cec516608df2b59fe6073782",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/facial-hair-gallery-11-desktop-dark.png",
+        "file": "captures/facial-hair-gallery-11-desktop-dark.png",
+        "sha256": "e0cfce2222fc49e91235102e3cf031215ea6369d3b8b8baa551cff5c27b158f6",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/facial-hair-gallery-17-mobile-light.png",
+        "file": "captures/facial-hair-gallery-17-mobile-light.png",
+        "sha256": "939a3e544f8078a6837f6bd5316e49e58b63cb955132de53db63a3e917451042",
+        "phase": "comparison",
+        "page": "matched-saved-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/production-facial-hair-after-desktop-light-portrait.png",
+        "file": "captures/production-facial-hair-after-desktop-light-portrait.png",
+        "sha256": "edbe514c946530aa9d8e3c11ebb7cf58c5584408deab2b8139daa1b2b1858b66",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/production-facial-hair-after-mobile-dark-body.png",
+        "file": "captures/production-facial-hair-after-mobile-dark-body.png",
+        "sha256": "b2d357b62d3c50009801c9ba66505d0b08d8f313fbb8970da5bc35784f2f6241",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "findings": [
+      "Modern cheek roots and mustache taper differ visibly across black, reddish and blond coverage fixtures; these controlled samples do not assert population frequencies.",
+      "Rejected prototype with holes through dense beard core; rejected rectangular mustache bars. Final dense cores retain coverage and lip aperture.",
+      "Faces remain overly smooth/plastic; beard core silhouette, mustache gap and simplified whole bodies still need craft. Complete rendered mass accounting and demographic calibration remain open."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false,
+  "publicSafeEvidenceRedactions": {
+    "receipt": "docs/visual-qa/PUBLIC_SAFE_DIAGNOSTICS_S118.json",
+    "originalManifestSha256": "6de3c0655676663cea3e4a2f5a61be79c93bcb65eea17085cccc10937895bff8",
+    "files": [
+      "docs/visual-qa/references/facial-hair-report-2-build.log-2026-10-08"
+    ],
+    "originalManifestPreservedPrivately": true
+  }
+}

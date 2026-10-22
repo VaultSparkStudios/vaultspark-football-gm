@@ -1,0 +1,75 @@
+import {limbSectionProfile} from './physiqueGeometryContract.js';
+const n=v=>Math.round(v*100)/100;
+
+// A rounded proximal dome joins the measured section core in every view.
+// The cap lies outside the allocated section integral; complete union-volume
+// reconciliation remains a separate requirement. Bone centers never move.
+export function roundedLimbRootSurface(root,end,diameter,kind,variation=0,range=[0,1],jointShare,contourDirection=0,profile) {
+  const path=profiledLimbSurface(root,end,diameter,kind,variation,range,jointShare,contourDirection,profile);
+  if(range[0]!==0)return path;
+  const dx=end.x-root.x,dy=end.y-root.y,length=Math.hypot(dx,dy);
+  if(!Number.isFinite(length)||length===0)return path;
+  const tx=dx/length,ty=dy/length,nx=-ty,ny=tx;
+  const radius=diameter*limbProfileSample(kind,variation,0,jointShare,profile).ratio/2;
+  // The shoulder center is at the acromial landmark, not at the center of a
+  // sphere. An artistic shallow dome avoids ball-like bumps above the shirt.
+  const height=radius*.55;
+  const k=.5522847498307936;
+  const right={x:root.x+nx*radius,y:root.y+ny*radius};
+  const left={x:root.x-nx*radius,y:root.y-ny*radius};
+  const apex={x:root.x-tx*height,y:root.y-ty*height};
+  return path.slice(0,-1)+` C${n(right.x-tx*k*height)} ${n(right.y-ty*k*height)} ${n(apex.x+nx*k*radius)} ${n(apex.y+ny*k*radius)} ${n(apex.x)} ${n(apex.y)} C${n(apex.x-nx*k*radius)} ${n(apex.y-ny*k*radius)} ${n(left.x-tx*k*height)} ${n(left.y-ty*k*height)} ${n(left.x)} ${n(left.y)}Z`;
+}
+
+// Artistic contour placement, not tissue composition or athlete statistics.
+// Shift both sides equally: cross-section width and its volume budget stay
+// unchanged. The saved joint and terminal centers remain exact anchors.
+export function limbContourKnots(kind,jointShare) {
+  const joint=Math.max(.45,Math.min(.58,Number.isFinite(jointShare)?jointShare:kind==='arm'?.53:.51));
+  return kind==='arm'
+    ? [[0,0],[joint*.32,.11],[joint,0],[joint+(1-joint)*.32,-.075],[1,0]]
+    : [[0,0],[joint*.34,.06],[joint,0],[joint+(1-joint)*.34,-.10],[1,0]];
+}
+export function limbContourSample(kind,t,jointShare) {
+  const knots=limbContourKnots(kind,jointShare);
+  t=Math.max(0,Math.min(1,t));
+  for(let i=1;i<knots.length;i++){
+    const [start,a]=knots[i-1],[end,b]=knots[i];
+    if(t<=end){const u=(t-start)/(end-start);return {offset:a+(b-a)*(3*u*u-2*u*u*u),derivative:(b-a)*6*u*(1-u)/(end-start)};}
+  }
+  return {offset:0,derivative:0};
+}
+
+// Restrict the static body's smooth regional profile to one articulated bone.
+// Width derivatives preserve the exact cubic when a joint splits an interval.
+// No new proportions or tissue-composition estimates are introduced here.
+export function limbProfileSample(kind,variation,t,jointShare,profile) {
+  const sections=profile??limbSectionProfile(kind,variation,jointShare);
+  t=Math.max(0,Math.min(1,t));
+  for(let i=1;i<sections.length;i++){
+    const [start,a]=sections[i-1],[end,b]=sections[i];
+    if(t<=end){const u=(t-start)/(end-start);return {ratio:a+(b-a)*(3*u*u-2*u*u*u),derivative:(b-a)*6*u*(1-u)/(end-start)};}
+  }
+  return {ratio:sections.at(-1)[1],derivative:0};
+}
+
+export function profiledLimbSurface(root,end,diameter,kind,variation=0,range=[0,1],jointShare,contourDirection=0,profile) {
+  const [start,stop]=range,dx=end.x-root.x,dy=end.y-root.y;
+  const length=Math.hypot(dx,dy)||1,nx=-dy/length,ny=dx/length;
+  const direction=Number.isFinite(contourDirection)?Math.max(-1,Math.min(1,contourDirection)):0;
+  const landmarks=(profile??limbSectionProfile(kind,variation,jointShare)).map(s=>s[0]);
+  if(direction)landmarks.push(...limbContourKnots(kind,jointShare).map(s=>s[0]));
+  const knots=[start,...new Set(landmarks.filter(t=>t>start&&t<stop).sort((a,b)=>a-b)),stop];
+  const at=(t,side)=>{
+    const f=(t-start)/(stop-start),{ratio,derivative}=limbProfileSample(kind,variation,t,jointShare,profile);
+    if(!direction)return {x:root.x+dx*f+nx*diameter*ratio*side/2,y:root.y+dy*f+ny*diameter*ratio*side/2,
+      tx:dx/(stop-start)+nx*diameter*derivative*side/2,ty:dy/(stop-start)+ny*diameter*derivative*side/2,t};
+    const contour=direction?limbContourSample(kind,t,jointShare):{offset:0,derivative:0};
+    const offset=diameter*(ratio*side/2+direction*contour.offset),slope=diameter*(derivative*side/2+direction*contour.derivative);
+    return {x:root.x+dx*f+nx*offset,y:root.y+dy*f+ny*offset,
+      tx:dx/(stop-start)+nx*slope,ty:dy/(stop-start)+ny*slope,t};
+  };
+  const curve=(a,b)=>{const step=(b.t-a.t)/3;return `C${n(a.x+a.tx*step)} ${n(a.y+a.ty*step)} ${n(b.x-b.tx*step)} ${n(b.y-b.ty*step)} ${n(b.x)} ${n(b.y)}`;};
+  const left=knots.map(t=>at(t,-1)),right=knots.slice().reverse().map(t=>at(t,1));
+  return `M${n(left[0].x)} ${n(left[0].y)} ${left.slice(1).map((p,i)=>curve(left[i],p)).join(' ')} L${n(right[0].x)} ${n(right[0].y)} ${right.slice(1).map((p,i)=>curve(right[i],p)).join(' ')}Z`;
+}

@@ -5,14 +5,14 @@
 > Suggest: `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --suggest` uses conformance evidence to pre-fill safe suggestions.
 > Mark each: **adopted** · **pending** · **review** · **exempt (reason)**. This file is maintained, not auto-trusted.
 
-Audience: public-unlaunched · Live ACTIVE canons: 54 · Pending review: 3
+Audience: public-unlaunched · Live ACTIVE canons: 55 · Pending review: 3
 
 | Canon | Title | Status | Evidence / note |
 |---|---|---|---|
 | CANON-001 | Rolling Status headers use HTML comment markers for programm | adopted (suggested) | Conformance checker passed: rolling-status start+end markers present with content |
 | CANON-002 | Sessions 1–3 are a Calibration Window, excluded from studio- | adopted | Reviewed against live Session 53 evidence; project behavior conforms and no contradictory surface was found. |
 | CANON-003 | prompts/initiate.md is separate from prompts/start.md for to | adopted (suggested) | Conformance checker passed: start.md + initiate.md both present and distinct |
-| CANON-004 | studioOsApplied: true requires Layer 1 SIL format, not just  | exempt (suggested) | studioOsApplied !== true (registry + status) — Layer 1 SIL format not yet required |
+| CANON-004 | studioOsApplied: true requires Layer 1 SIL format, not just  | adopted (suggested) | studioOsApplied !== true (registry + status) — Layer 1 SIL format not yet required |
 | CANON-005 | CDR gap recovery check is mandatory at startup and closeout  | adopted (suggested) | Conformance checker passed: CDR gap-recovery instruction present in prompts/start.md, prompts/closeout.md, docs/SESSION_PROTOCOL.md |
 | CANON-006 | Every public-facing product must display VaultSpark Studios  | adopted | Exact linked VaultSpark branding and footer contract pass on all public routes. |
 | CANON-007 | Every project must have a staging environment before deployi | adopted | GitHub Pages staging and local same-revision build/smoke evidence exist; production flip remains gated. |
@@ -51,7 +51,7 @@ Audience: public-unlaunched · Live ACTIVE canons: 54 · Pending review: 3
 | CANON-041 | Website Mobile Parity + Elite Visual Craft (full desktop↔mob | adopted | Responsive evidence 20/20; mobile active-state contrast was visually found and fixed. |
 | CANON-042 | Studio Branding System: approved usages, DBA rule, and the e | adopted | Exact approved Studio footer is build- and test-enforced on every public HTML route. |
 | CANON-043 | Baseline repository security hygiene (free-tier: Dependabot  | adopted | Secret scanning is clean; exact dependency provenance and post-lock supply-chain scans pass; request, retention, CORS, rate, and payload ceilings are tested. |
-| CANON-044 | In-session task scaffolding (Phase/Wave lists), reconciled a | adopted (suggested) | Conformance checker passed: } |
+| CANON-044 | In-session task scaffolding (Phase/Wave lists), reconciled a | adopted (suggested) | Conformance checker passed: ok=true |
 | CANON-045 | Obelisk is the unified studio identity + auth plane (one stu | pending | Pending: public signup/auth is not yet wired to the unified Obelisk identity plane. |
 | CANON-046 | Canon weighting: tiers + autonomy-first conflict resolution  | adopted (suggested) | Conformance checker passed: matrix integrity ok — no orphan rows, all tiers valid |
 | CANON-047 | Theme system + AI-verified human readability (no unreadable  | adopted | Dark/light themes were AI/manually inspected and computed contrast asserted. |
@@ -63,4 +63,5 @@ Audience: public-unlaunched · Live ACTIVE canons: 54 · Pending review: 3
 | CANON-053 | Rendered-Pixel UI Discipline: look at the real interface whi | adopted | Eight hash-bound homepage/Stats Atlas captures were inspected across dark/light and desktop/mobile; zero overflow, console, or blocking visual defects remained. |
 | CANON-054 | Public Stats Surface: every website reports and analyzes its | adopted | CANON-054 checker passes: six public measures with period, sample, computed-at, methodology, deterministic interpretation, and explicit warming/suppressed/stale states. |
 | CANON-055 | Surface Follow-Through: every project change reaches the thi | adopted | The backend receipt plane reaches users through the homepage Community Pulse and full Stats Atlas; both surfaces passed rendered-pixel, mobile, and theme review. |
+| CANON-056 | AI + SI Hybrid Terminology: keep AI, add Synthetic Intellige | adopted (suggested) | Conformance checker passed: 175 public content file(s) · no CANON-056 findings |
 

@@ -1,0 +1,2076 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-07",
+  "scope": "Unadopted shared-head grooming and rounded crown; not production/full appearance acceptance",
+  "productionChanged": false,
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "78be835432db42889ae54b05e352f649187db03aa0010e2e9416fa751a790c87",
+    "prototypes/playerHead3d.test.mjs": "564c17ab4be7d2e8054f325e29deeb52aa8523417364ec8779500624ef948295",
+    ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+    ".cache/head-grooming.spec.mjs": "bf1da56a7126d116e175d8010dfd24520be033caaeb37e1096ed1e18744505b7",
+    ".cache/shared-head-3d.config.mjs": "fd6c39f46a70265d1177e7e25426df6220a9c9d0d34ef288e7218ecd2c779e8c"
+  },
+  "sources": [
+    {
+      "original": "prototypes/playerHead3d.mjs",
+      "path": "docs/visual-qa/references/head-grooming-r2-playerHead3d.mjs-2026-10-07.mjs",
+      "sha256": "78be835432db42889ae54b05e352f649187db03aa0010e2e9416fa751a790c87"
+    },
+    {
+      "original": "prototypes/playerHead3d.test.mjs",
+      "path": "docs/visual-qa/references/head-grooming-r2-playerHead3d.test.mjs-2026-10-07.mjs",
+      "sha256": "564c17ab4be7d2e8054f325e29deeb52aa8523417364ec8779500624ef948295"
+    },
+    {
+      "original": ".cache/shared-head-3d.spec.mjs",
+      "path": "docs/visual-qa/references/head-grooming-r2-shared-head-3d.spec.mjs-2026-10-07.mjs",
+      "sha256": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883"
+    },
+    {
+      "original": ".cache/head-grooming.spec.mjs",
+      "path": "docs/visual-qa/references/head-grooming-r2-head-grooming.spec.mjs-2026-10-07.mjs",
+      "sha256": "bf1da56a7126d116e175d8010dfd24520be033caaeb37e1096ed1e18744505b7"
+    },
+    {
+      "original": ".cache/shared-head-3d.config.mjs",
+      "path": "docs/visual-qa/references/head-grooming-r2-shared-head-3d.config.mjs-2026-10-07.mjs",
+      "sha256": "fd6c39f46a70265d1177e7e25426df6220a9c9d0d34ef288e7218ecd2c779e8c"
+    }
+  ],
+  "beforeSource": {
+    "original": ".cache/head-grooming-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-grooming-before-2026-10-07.mjs",
+    "sha256": "c8c590fae051f30e52cae35588ce8fa4e390e456d011c2ff7c47fac5e603638b"
+  },
+  "priorFoundationReview": "docs/visual-qa/PLAYER_SHARED_HEAD_3D_REVIEW_R2_2026-10-07.json",
+  "priorReviewAppliesToBeforeSourceOnly": true,
+  "checks": {
+    "focused": {
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4270.5059
+    },
+    "browser": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 18.6
+    },
+    "styleTextureMeshCases": 56,
+    "pixelComparisons": [
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "fade",
+        "changedPixels": 1813,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "crew",
+        "changedPixels": 2322,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "short-curls",
+        "changedPixels": 2701,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "coils",
+        "changedPixels": 3018,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "locs",
+        "changedPixels": 2333,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "braids",
+        "changedPixels": 1506,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "waves",
+        "changedPixels": 1491,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "side-part",
+        "changedPixels": 2292,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "swept",
+        "changedPixels": 2500,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "long",
+        "changedPixels": 4441,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "shaved",
+        "changedPixels": 1740,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "receding",
+        "changedPixels": 1570,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "buzz",
+        "b": "afro",
+        "changedPixels": 4141,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "crew",
+        "changedPixels": 2291,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "short-curls",
+        "changedPixels": 2668,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "coils",
+        "changedPixels": 2985,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "locs",
+        "changedPixels": 2420,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "braids",
+        "changedPixels": 1814,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "waves",
+        "changedPixels": 1772,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "side-part",
+        "changedPixels": 2276,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "swept",
+        "changedPixels": 2474,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "long",
+        "changedPixels": 4471,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "shaved",
+        "changedPixels": 1937,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "receding",
+        "changedPixels": 1820,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "fade",
+        "b": "afro",
+        "changedPixels": 4110,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "short-curls",
+        "changedPixels": 2434,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "coils",
+        "changedPixels": 2792,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "locs",
+        "changedPixels": 2622,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "braids",
+        "changedPixels": 2277,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "waves",
+        "changedPixels": 2298,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "side-part",
+        "changedPixels": 2167,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "swept",
+        "changedPixels": 2298,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "long",
+        "changedPixels": 4460,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "shaved",
+        "changedPixels": 2162,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "receding",
+        "changedPixels": 2184,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "crew",
+        "b": "afro",
+        "changedPixels": 3918,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "coils",
+        "changedPixels": 2716,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "locs",
+        "changedPixels": 3021,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "braids",
+        "changedPixels": 2652,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "waves",
+        "changedPixels": 2676,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "side-part",
+        "changedPixels": 1892,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "swept",
+        "changedPixels": 2494,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "long",
+        "changedPixels": 4825,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "shaved",
+        "changedPixels": 2526,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "receding",
+        "changedPixels": 2553,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "short-curls",
+        "b": "afro",
+        "changedPixels": 3901,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "locs",
+        "changedPixels": 3346,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "braids",
+        "changedPixels": 2973,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "waves",
+        "changedPixels": 3002,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "side-part",
+        "changedPixels": 2777,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "swept",
+        "changedPixels": 2742,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "long",
+        "changedPixels": 5220,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "shaved",
+        "changedPixels": 2825,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "receding",
+        "changedPixels": 2861,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "coils",
+        "b": "afro",
+        "changedPixels": 3883,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "braids",
+        "changedPixels": 2295,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "waves",
+        "changedPixels": 2327,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "side-part",
+        "changedPixels": 2627,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "swept",
+        "changedPixels": 2828,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "long",
+        "changedPixels": 4452,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "shaved",
+        "changedPixels": 2245,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "receding",
+        "changedPixels": 2254,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "locs",
+        "b": "afro",
+        "changedPixels": 4463,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "waves",
+        "changedPixels": 1268,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "side-part",
+        "changedPixels": 2252,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "swept",
+        "changedPixels": 2466,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "long",
+        "changedPixels": 4420,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "shaved",
+        "changedPixels": 1499,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "receding",
+        "changedPixels": 1431,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "braids",
+        "b": "afro",
+        "changedPixels": 4106,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "side-part",
+        "changedPixels": 2271,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "swept",
+        "changedPixels": 2490,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "long",
+        "changedPixels": 4439,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "shaved",
+        "changedPixels": 1764,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "receding",
+        "changedPixels": 1039,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "waves",
+        "b": "afro",
+        "changedPixels": 4125,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "swept",
+        "changedPixels": 2265,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "long",
+        "changedPixels": 4373,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "shaved",
+        "changedPixels": 2152,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "receding",
+        "changedPixels": 2165,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "side-part",
+        "b": "afro",
+        "changedPixels": 3944,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "long",
+        "changedPixels": 4712,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "shaved",
+        "changedPixels": 2315,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "receding",
+        "changedPixels": 2353,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "swept",
+        "b": "afro",
+        "changedPixels": 3892,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "long",
+        "b": "shaved",
+        "changedPixels": 4404,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "long",
+        "b": "receding",
+        "changedPixels": 4399,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "long",
+        "b": "afro",
+        "changedPixels": 6357,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "shaved",
+        "b": "receding",
+        "changedPixels": 1508,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "shaved",
+        "b": "afro",
+        "changedPixels": 3827,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "styles",
+        "a": "receding",
+        "b": "afro",
+        "changedPixels": 3938,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "straight",
+        "b": "wavy",
+        "changedPixels": 2673,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "straight",
+        "b": "curly",
+        "changedPixels": 4703,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "straight",
+        "b": "coily",
+        "changedPixels": 4586,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "wavy",
+        "b": "curly",
+        "changedPixels": 4705,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "wavy",
+        "b": "coily",
+        "changedPixels": 4651,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "textures",
+        "a": "curly",
+        "b": "coily",
+        "changedPixels": 3242,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "stubble",
+        "changedPixels": 1428,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "mustache",
+        "changedPixels": 43,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "goatee",
+        "changedPixels": 320,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "short-beard",
+        "changedPixels": 1225,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "clean",
+        "b": "full-beard",
+        "changedPixels": 1503,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "mustache",
+        "changedPixels": 1459,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "goatee",
+        "changedPixels": 1465,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "short-beard",
+        "changedPixels": 1468,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "stubble",
+        "b": "full-beard",
+        "changedPixels": 1499,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "mustache",
+        "b": "goatee",
+        "changedPixels": 277,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "mustache",
+        "b": "short-beard",
+        "changedPixels": 1222,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "mustache",
+        "b": "full-beard",
+        "changedPixels": 1463,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "goatee",
+        "b": "short-beard",
+        "changedPixels": 1083,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "goatee",
+        "b": "full-beard",
+        "changedPixels": 1324,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "facial",
+        "a": "short-beard",
+        "b": "full-beard",
+        "changedPixels": 624,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairLength 0.5",
+        "b": "hairLength 2",
+        "changedPixels": 9283,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairDensity 0.15",
+        "b": "hairDensity 1",
+        "changedPixels": 4864,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairline 0",
+        "b": "hairline 1",
+        "changedPixels": 4476,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairPart 0.1",
+        "b": "hairPart 0.9",
+        "changedPixels": 3254,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairStrandWidth 0.65",
+        "b": "hairStrandWidth 1.5",
+        "changedPixels": 3365,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairCurvature 0.65",
+        "b": "hairCurvature 1.45",
+        "changedPixels": 4880,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairWaveScale 0.65",
+        "b": "hairWaveScale 1.5",
+        "changedPixels": 3347,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      },
+      {
+        "group": "controls",
+        "a": "hairStrandVariation 0",
+        "b": "hairStrandVariation 0.5",
+        "changedPixels": 3861,
+        "viewPixels": {
+          "width": 96,
+          "height": 120
+        },
+        "views": 2
+      }
+    ],
+    "pixelComparisonQualification": "Each comparison reads both actual96x120 front/profile raster images, also displayed at their intrinsic96x120 size. Pixel response alone does not prove clear recognition or naturalism. Style/texture meshes are raw DTO stress cases, not proof of grooming eligibility.",
+    "groups": {
+      "styles": [
+        {
+          "label": "buzz",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "fade",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "crew",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "short-curls",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "coils",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "locs",
+          "meshBytes": 763136
+        },
+        {
+          "label": "braids",
+          "meshBytes": 763136
+        },
+        {
+          "label": "waves",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "side-part",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "swept",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "long",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "shaved",
+          "meshBytes": 533336
+        },
+        {
+          "label": "receding",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "afro",
+          "meshBytes": 1454336
+        }
+      ],
+      "textures": [
+        {
+          "label": "straight",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "wavy",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "curly",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "coily",
+          "meshBytes": 1454336
+        }
+      ],
+      "facial": [
+        {
+          "label": "clean",
+          "meshBytes": 533336
+        },
+        {
+          "label": "stubble",
+          "meshBytes": 533336
+        },
+        {
+          "label": "mustache",
+          "meshBytes": 533336
+        },
+        {
+          "label": "goatee",
+          "meshBytes": 533336
+        },
+        {
+          "label": "short-beard",
+          "meshBytes": 533336
+        },
+        {
+          "label": "full-beard",
+          "meshBytes": 533336
+        }
+      ],
+      "controls": [
+        {
+          "label": "hairLength 0.5",
+          "pair": "hairLength",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairLength 2",
+          "pair": "hairLength",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairDensity 0.15",
+          "pair": "hairDensity",
+          "meshBytes": 809216
+        },
+        {
+          "label": "hairDensity 1",
+          "pair": "hairDensity",
+          "meshBytes": 1592576
+        },
+        {
+          "label": "hairline 0",
+          "pair": "hairline",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairline 1",
+          "pair": "hairline",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairPart 0.1",
+          "pair": "hairPart",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairPart 0.9",
+          "pair": "hairPart",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairStrandWidth 0.65",
+          "pair": "hairStrandWidth",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairStrandWidth 1.5",
+          "pair": "hairStrandWidth",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairCurvature 0.65",
+          "pair": "hairCurvature",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairCurvature 1.45",
+          "pair": "hairCurvature",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairWaveScale 0.65",
+          "pair": "hairWaveScale",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairWaveScale 1.5",
+          "pair": "hairWaveScale",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairStrandVariation 0",
+          "pair": "hairStrandVariation",
+          "meshBytes": 1454336
+        },
+        {
+          "label": "hairStrandVariation 0.5",
+          "pair": "hairStrandVariation",
+          "meshBytes": 1454336
+        }
+      ]
+    },
+    "gallery": [
+      {
+        "id": "art-benchmark-0",
+        "geometryMs": 137.29999995231628,
+        "parts": 231,
+        "triangles": 51656,
+        "meshBytes": 1527296,
+        "views": [
+          {
+            "angle": 0,
+            "nonBackgroundPixels": 27988,
+            "triangles": 51656,
+            "meshBytes": 1527296
+          },
+          {
+            "angle": 1.5707963267948966,
+            "nonBackgroundPixels": 24048,
+            "triangles": 51656,
+            "meshBytes": 1527296
+          }
+        ],
+        "blinkPixels": 182,
+        "blinkRestored": true,
+        "meshUnchanged": true
+      },
+      {
+        "id": "art-benchmark-1",
+        "geometryMs": 70.39999985694885,
+        "parts": 33,
+        "triangles": 27896,
+        "meshBytes": 766976,
+        "views": [
+          {
+            "angle": 0,
+            "nonBackgroundPixels": 28371,
+            "triangles": 27896,
+            "meshBytes": 766976
+          },
+          {
+            "angle": 1.5707963267948966,
+            "nonBackgroundPixels": 25035,
+            "triangles": 27896,
+            "meshBytes": 766976
+          }
+        ],
+        "blinkPixels": 258,
+        "blinkRestored": true,
+        "meshUnchanged": true
+      },
+      {
+        "id": "art-benchmark-2",
+        "geometryMs": 96.10000014305115,
+        "parts": 215,
+        "triangles": 41456,
+        "meshBytes": 1217456,
+        "views": [
+          {
+            "angle": 0,
+            "nonBackgroundPixels": 30328,
+            "triangles": 41456,
+            "meshBytes": 1217456
+          },
+          {
+            "angle": 1.5707963267948966,
+            "nonBackgroundPixels": 26007,
+            "triangles": 41456,
+            "meshBytes": 1217456
+          }
+        ],
+        "blinkPixels": 180,
+        "blinkRestored": true,
+        "meshUnchanged": true
+      },
+      {
+        "id": "art-benchmark-3",
+        "geometryMs": 152.5,
+        "parts": 238,
+        "triangles": 43296,
+        "meshBytes": 1278176,
+        "views": [
+          {
+            "angle": 0,
+            "nonBackgroundPixels": 28714,
+            "triangles": 43296,
+            "meshBytes": 1278176
+          },
+          {
+            "angle": 1.5707963267948966,
+            "nonBackgroundPixels": 26062,
+            "triangles": 43296,
+            "meshBytes": 1278176
+          }
+        ],
+        "blinkPixels": 224,
+        "blinkRestored": true,
+        "meshUnchanged": true
+      },
+      {
+        "id": "art-benchmark-4",
+        "geometryMs": 161.39999985694885,
+        "parts": 210,
+        "triangles": 49136,
+        "meshBytes": 1446656,
+        "views": [
+          {
+            "angle": 0,
+            "nonBackgroundPixels": 30138,
+            "triangles": 49136,
+            "meshBytes": 1446656
+          },
+          {
+            "angle": 1.5707963267948966,
+            "nonBackgroundPixels": 25934,
+            "triangles": 49136,
+            "meshBytes": 1446656
+          }
+        ],
+        "blinkPixels": 220,
+        "blinkRestored": true,
+        "meshUnchanged": true
+      },
+      {
+        "id": "art-benchmark-5",
+        "geometryMs": 122.09999990463257,
+        "parts": 248,
+        "triangles": 44096,
+        "meshBytes": 1304576,
+        "views": [
+          {
+            "angle": 0,
+            "nonBackgroundPixels": 30128,
+            "triangles": 44096,
+            "meshBytes": 1304576
+          },
+          {
+            "angle": 1.5707963267948966,
+            "nonBackgroundPixels": 25048,
+            "triangles": 44096,
+            "meshBytes": 1304576
+          }
+        ],
+        "blinkPixels": 236,
+        "blinkRestored": true,
+        "meshUnchanged": true
+      }
+    ]
+  },
+  "captures": [
+    {
+      "file": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "330e6d35d7269b383a2ebccae89290cdc239bb0bf68e1633c1c3bae7e4e275e3",
+      "original": ".cache/head-grooming-before/player-shared-head-3d-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-before-player-shared-head-3d-desktop-dark.png",
+      "state": "before",
+      "primaryInspected": true,
+      "inspectionQualification": "Same bound original retained from prior shared-head proof; this turn inspected desktop dark only. Prior receipt records broader inspection."
+    },
+    {
+      "file": "output/playwright/player-shared-head-3d-desktop-light.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "cdbbc39da5dff20f96af78440b9945a1a7f40143cec01c4f656dafbfeaae6f54",
+      "original": ".cache/head-grooming-before/player-shared-head-3d-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-before-player-shared-head-3d-desktop-light.png",
+      "state": "before",
+      "primaryInspected": false,
+      "inspectionQualification": "Same bound original retained from prior shared-head proof; this turn inspected desktop dark only. Prior receipt records broader inspection."
+    },
+    {
+      "file": "output/playwright/player-shared-head-3d-mobile-dark.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "38b04f0c45fcd0b3642a1ac5578043cfd8e2caae4d88c2247b039e68576d2922",
+      "original": ".cache/head-grooming-before/player-shared-head-3d-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-before-player-shared-head-3d-mobile-dark.png",
+      "state": "before",
+      "primaryInspected": false,
+      "inspectionQualification": "Same bound original retained from prior shared-head proof; this turn inspected desktop dark only. Prior receipt records broader inspection."
+    },
+    {
+      "file": "output/playwright/player-shared-head-3d-mobile-light.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "69422d4ee7e1190d83983c071cec5bfef5b2e4b233463dc0d5024c992bd8fa00",
+      "original": ".cache/head-grooming-before/player-shared-head-3d-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-before-player-shared-head-3d-mobile-light.png",
+      "state": "before",
+      "primaryInspected": false,
+      "inspectionQualification": "Same bound original retained from prior shared-head proof; this turn inspected desktop dark only. Prior receipt records broader inspection."
+    },
+    {
+      "file": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "50bc0384696132f6f8e08b647b2f59e4502e5dcad1b144e791cf53d22685dcf4",
+      "original": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-player-shared-head-3d-desktop-dark.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/player-shared-head-3d-desktop-light.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "dc42c29e065ee332826f451cf7d1b43be3612a4db77cca855aee66e632211e47",
+      "original": "output/playwright/player-shared-head-3d-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-player-shared-head-3d-desktop-light.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/player-shared-head-3d-mobile-dark.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "baaf30968965670e1d9a72e0d602e07141936464eaff103c521ad6d3516a3288",
+      "original": "output/playwright/player-shared-head-3d-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-player-shared-head-3d-mobile-dark.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/player-shared-head-3d-mobile-light.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "66d853565e9a16d76c2c6dd9ff838bf9a97e4ce206f1a018cb7721f7fb73fc73",
+      "original": "output/playwright/player-shared-head-3d-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-player-shared-head-3d-mobile-light.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-styles-desktop-dark.png",
+      "group": "styles",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "2f243e27c9d9167b921f978eb8c6e1ccf70bf5864acb143559f9d52c3758a601",
+      "original": "output/playwright/head-grooming-styles-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-styles-desktop-dark.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-textures-desktop-dark.png",
+      "group": "textures",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "4aefff006a1f3ea1e9280c1b29884cd806678836965b6cb8903879b464087d16",
+      "original": "output/playwright/head-grooming-textures-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-textures-desktop-dark.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-facial-desktop-dark.png",
+      "group": "facial",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "9711b7ea097bf3e33b1feffc4ba2b1cec5778ecb28e55b2105a5b1ec82e900bf",
+      "original": "output/playwright/head-grooming-facial-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-facial-desktop-dark.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-controls-desktop-dark.png",
+      "group": "controls",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "fdd3fc41cb5feaee92d24073a0a1ab782d7b5d629af39a9dac2e16d8aec02da9",
+      "original": "output/playwright/head-grooming-controls-desktop-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-controls-desktop-dark.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-styles-desktop-light.png",
+      "group": "styles",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "388d722428296b66615d2473750b5f5d87a42a13ed0d4ebb983d8e3faeb1453b",
+      "original": "output/playwright/head-grooming-styles-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-styles-desktop-light.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-textures-desktop-light.png",
+      "group": "textures",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "f523b8383159c823cb5e6b672afa3bfb09c75b524d218c02717694baffcd74e8",
+      "original": "output/playwright/head-grooming-textures-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-textures-desktop-light.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-facial-desktop-light.png",
+      "group": "facial",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "ae8d2694b2adf2c4139c52717d621c14545feed3e6815e130a7e385e0ecf6c4e",
+      "original": "output/playwright/head-grooming-facial-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-facial-desktop-light.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-controls-desktop-light.png",
+      "group": "controls",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "fb604ed08b0ebbd2369c4d22ec6c5e313e4fd83911f9c85d1b0e09adf7975d31",
+      "original": "output/playwright/head-grooming-controls-desktop-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-controls-desktop-light.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-styles-mobile-dark.png",
+      "group": "styles",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "dbb0e91fb56d2adf9db4c6e0c4f3a599488ca66d1dfd4af139708c7f26bbc71b",
+      "original": "output/playwright/head-grooming-styles-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-styles-mobile-dark.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-textures-mobile-dark.png",
+      "group": "textures",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "759ddc9382bfd9018828c1ab1135d4834d0e67b7a0243cea3e844ae27d1ed2fd",
+      "original": "output/playwright/head-grooming-textures-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-textures-mobile-dark.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-facial-mobile-dark.png",
+      "group": "facial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "27ca11f31d17fa789afb488f884732ac59f872fb6aed597c188412ccf2d1880f",
+      "original": "output/playwright/head-grooming-facial-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-facial-mobile-dark.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-controls-mobile-dark.png",
+      "group": "controls",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "220376d1251dafedf0d570a8f0b4f836158c329697f9e6c82f6aec4eedf0c1fb",
+      "original": "output/playwright/head-grooming-controls-mobile-dark.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-controls-mobile-dark.png",
+      "state": "after",
+      "primaryInspected": false
+    },
+    {
+      "file": "output/playwright/head-grooming-styles-mobile-light.png",
+      "group": "styles",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "c5f531ca28cd6f1c70343cd75261e9f6b39e90f7e9a71070ef2fe48ea7d68bd4",
+      "original": "output/playwright/head-grooming-styles-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-styles-mobile-light.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-textures-mobile-light.png",
+      "group": "textures",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "f8a3be645dfb5269310d6aebb797059d2cb277300bb39823de8dcb5c9e2e0ec4",
+      "original": "output/playwright/head-grooming-textures-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-textures-mobile-light.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-facial-mobile-light.png",
+      "group": "facial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "a66519d2768d67197ea598f2232248d76c3c0c6c49aa53f86aaa56498a2ad00a",
+      "original": "output/playwright/head-grooming-facial-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-facial-mobile-light.png",
+      "state": "after",
+      "primaryInspected": true
+    },
+    {
+      "file": "output/playwright/head-grooming-controls-mobile-light.png",
+      "group": "controls",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "92746d5fcea123d41357896f810cb2a220462ebecff7c62c5f348bf94955f5de",
+      "original": "output/playwright/head-grooming-controls-mobile-light.png",
+      "path": "docs/visual-qa/captures/head-grooming-r2-after-head-grooming-controls-mobile-light.png",
+      "state": "after",
+      "primaryInspected": true
+    }
+  ],
+  "inspection": {
+    "beforeOriginals": 1,
+    "afterOriginals": 12,
+    "findings": [
+      "Distinct long/loc length and texture, density and grooming responses are exposed.",
+      "Crown pole is rounded with matching next-station tangent.",
+      "Facial styles no longer all share full-beard coverage; ear/neck materials exclude face markings.",
+      "Several cuts still have a cap-like silhouette; profile beard has a hard rear boundary, long locks remain sparse and material/anatomy are mannequin-like. These fail full-person craft acceptance."
+    ]
+  },
+  "independentReview": {
+    "round1": "docs/visual-qa/PLAYER_HEAD_GROOMING_REVIEW_R1_2026-10-07.json",
+    "round1Primary": "docs/visual-qa/PLAYER_HEAD_GROOMING_PRE_R2_2026-10-07.json",
+    "round1AppliesToEarlierNative240PixelDiagnostic": true,
+    "round2": "pending"
+  },
+  "fullAppearanceAccepted": false,
+  "blockingDefectsOpen": 1,
+  "remaining": [
+    "Convincing adult anatomy/skin/eyes and volumetric beard/hair materials",
+    "Gray/dye/iris full saved-trait consumption",
+    "Measured body/UI/accessibility/cache/WebGL lifecycle integration",
+    "Actual career/save restoration and current all-feature/GM/release verification"
+  ],
+  "performanceQualification": "Mesh sizes are bytes including indices; single-run build timings are local browser observations, not production or mobile-device benchmarks."
+}

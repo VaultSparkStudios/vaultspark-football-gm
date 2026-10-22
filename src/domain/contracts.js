@@ -1,5 +1,9 @@
 import { CONTRACT_RULES } from "../config.js";
 import { clamp } from "../utils/rng.js";
+import { minimumSalaryForSeason } from "../data/nflSalaryMinimum.js";
+import { NFL_SALARY_CAPS, financialYearForLeague } from "../data/nflSalaryCap.js";
+import { playerServiceCount } from './playerService.js';
+import { practiceSalaryForSeason } from '../data/nflPracticeSalary.js';
 
 const MIN_SALARY = CONTRACT_RULES.minSalary;
 
@@ -11,11 +15,54 @@ export const CONTRACT_MARKET_PROFILE = Object.freeze({
   eliteCoefficient: 130_000
 });
 
+// Fictional market targets, not an empirical salary fit. Position-specific
+// ceilings are annual compensation targets, distinct from actual cap charges.
+export const MODERN_CONTRACT_MARKET = Object.freeze({ version: 'position-market-v1', referenceYear: 2026,
+  ceiling: Object.freeze({ QB: 64000000, WR: 42000000, OL: 36000000, DL: 44000000,
+    DB: 34000000, LB: 30000000, RB: 22000000, TE: 26000000, K: 7000000, P: 6000000 }) });
+
+export function contractMarketOptions(league, player) {
+  // Existing saves retain their legacy market until explicitly migrated.
+  if (league?.capModel?.version !== 'nfl-modern-cap-v1') return {};
+  return { year: financialYearForLeague(league), position: player.position,
+    creditedSeasons: playerServiceCount(player, 'credited').seasons };
+}
+
+export function contractBaseMinimum(options, years = 1) {
+  return Number.isInteger(options?.year) ? minimumSalaryForSeason(options.year + years - 1,
+    (options.creditedSeasons ?? 0) + years - 1).salary : MIN_SALARY;
+}
+
 function rounded(value) {
   return Math.max(0, Math.round(value));
 }
 
 export function normalizeContract(contract = {}) {
+  if(typeof contract.kind==='string'&&contract.kind.startsWith('weekly-practice-contract-')&&contract.kind!=='weekly-practice-contract-v1') throw new TypeError('Unsupported practice contract version');
+  if(contract.kind==='weekly-practice-contract-v1') {
+    if(!Number.isInteger(contract.year)||!Number.isInteger(contract.weeklySalary)||contract.weeklySalary<=0
+      ||!Number.isInteger(contract.startWeek)||contract.startWeek<1||contract.startWeek>18
+      ||contract.regularWeeks!==19-contract.startWeek||contract.yearsRemaining!==1
+      ||contract.signingBonus!==0||contract.guaranteed!==0||contract.deadCapRemaining!==0
+      ||!contract.payLedger||typeof contract.payLedger!=='object'||Array.isArray(contract.payLedger)) throw new TypeError('Invalid weekly practice contract');
+    const salary=contract.weeklySalary*contract.regularWeeks;
+    const schedule=practiceSalaryForSeason(contract.year,contract.eligibilityGroup);
+    if(contract.weeklySalary<schedule.minimum||contract.weeklySalary>schedule.maximum) throw new TypeError('Invalid practice pay schedule');
+    if(contract.salary!==salary||contract.baseSalary!==salary||contract.capHit!==salary) throw new TypeError('Invalid practice contract reservation');
+    for(const [key,row] of Object.entries(contract.payLedger)) {
+      if(!row||row.year!==contract.year||!Number.isInteger(row.week)||row.week<contract.startWeek||row.week>18
+        ||key!==`${row.year}:${row.week}`||row.amount!==contract.weeklySalary||typeof row.teamId!=='string') throw new TypeError('Invalid practice payroll receipt');
+    }
+    if(contract.postseasonPayLedger!=null) {
+      if(typeof contract.postseasonPayLedger!=='object'||Array.isArray(contract.postseasonPayLedger)) throw new TypeError('Invalid postseason practice payroll');
+      for(const [key,row] of Object.entries(contract.postseasonPayLedger)) {
+        if(!row||row.year!==contract.year||!Number.isInteger(row.week)||row.week<19||row.week>23
+          ||key!==`${row.year}:postseason:${row.week}`||row.amount!==contract.weeklySalary
+          ||typeof row.teamId!=='string'||row.kind!=='practice-postseason-benefit-v1'||row.capCharge!==0) throw new TypeError('Invalid postseason practice payroll receipt');
+      }
+    }
+    return {...contract,voidYears:0,prorationYears:1,restructureCount:0,franchiseTagYear:0,optionYear:false};
+  }
   // `|| 1` here meant an expired contract (yearsRemaining 0) was silently
   // resurrected to a one-year deal on every normalize — and normalize runs on
   // every read. The clamp floor of 0 shows 0 was always meant to be legal, but
@@ -24,6 +71,7 @@ export function normalizeContract(contract = {}) {
   // contract in this game had ever run out. Nullish coalescing keeps the
   // "field absent" default while letting zero mean zero. (S67)
   const yearsRemaining = clamp(Number(contract.yearsRemaining ?? 1), 0, 10);
+  if(contract.practiceEarnedCharge!=null&&(!Number.isSafeInteger(contract.practiceEarnedCharge)||contract.practiceEarnedCharge<0)) throw new TypeError('Invalid earned practice charge');
   const voidYears = clamp(Number(contract.voidYears || 0), 0, 4);
   const salary = rounded(contract.salary ?? contract.capHit ?? MIN_SALARY);
   const baseSalary = rounded(contract.baseSalary ?? salary * 0.82);
@@ -52,8 +100,10 @@ export function normalizeContract(contract = {}) {
     CONTRACT_RULES.maxYears + 4
   );
   const capHit = rounded(contract.capHit ?? baseSalary + signingBonus / prorationYears);
+  if ((contract.practiceEarnedCharge || 0) > capHit) throw new TypeError('Earned practice charge exceeds contract cap hit');
   const deadCapRemaining = rounded(contract.deadCapRemaining ?? signingBonus + guaranteed * 0.35);
   return {
+    ...(contract.practiceEarnedCharge!=null?{practiceEarnedCharge:rounded(contract.practiceEarnedCharge)}:{}),
     salary,
     yearsRemaining,
     voidYears,
@@ -71,39 +121,61 @@ export function normalizeContract(contract = {}) {
 
 export function marketSalaryForOverall(overall, {
   minSalary = MIN_SALARY,
-  maxSalary = CONTRACT_RULES.maxSalary,
-  variance = 0
+  maxSalary,
+  variance = 0,
+  year = null, position = null, creditedSeasons = 0
 } = {}) {
   const rating = clamp(Math.round(Number(overall) || 0), 0, 100);
   const marketSteps = Math.max(0, rating - CONTRACT_MARKET_PROFILE.baselineOverall);
   const eliteSteps = Math.max(0, rating - CONTRACT_MARKET_PROFILE.eliteThreshold);
+  if (Number.isInteger(year)) {
+    const floor = Math.max(minSalary, minimumSalaryForSeason(year, creditedSeasons).salary);
+    const scale = NFL_SALARY_CAPS[year] ? NFL_SALARY_CAPS[year] / NFL_SALARY_CAPS[2026] : 1.045 ** (year - MODERN_CONTRACT_MARKET.referenceYear);
+    const ceiling = Math.max(floor, maxSalary ?? (MODERN_CONTRACT_MARKET.ceiling[position] || 36000000) * scale);
+    return Math.round(clamp(floor + (ceiling - floor) * (.85 * (marketSteps / 50) ** 2 + .15 * (eliteSteps / 12) ** 2) + Number(variance || 0), floor, ceiling));
+  }
   const marketValue =
     minSalary +
     marketSteps ** 3 * CONTRACT_MARKET_PROFILE.cubicCoefficient +
     eliteSteps ** 2 * CONTRACT_MARKET_PROFILE.eliteCoefficient +
     Number(variance || 0);
-  return clamp(Math.round(marketValue), minSalary, maxSalary);
+  return clamp(Math.round(marketValue), minSalary, maxSalary ?? CONTRACT_RULES.maxSalary);
 }
 
 export function buildContract({
   overall,
   years,
   salary,
-  minSalary = MIN_SALARY,
-  maxSalary = CONTRACT_RULES.maxSalary,
+  minSalary,
+  maxSalary,
+  year = null, position = null, creditedSeasons = 0,
   rng
 }) {
+  for (const [name, value] of Object.entries({ salary, minSalary, maxSalary })) {
+    if (value !== undefined && (value === null || value === '' || !Number.isFinite(Number(value)) || Number(value) < 0)) throw new TypeError(`Invalid contract ${name}`);
+  }
+  if (years !== undefined && (!Number.isInteger(Number(years)) || Number(years) < 1)) throw new TypeError('Invalid contract term');
   const safeYears = clamp(Number(years || rng?.int(1, 4) || 3), 1, CONTRACT_RULES.maxYears);
-  const computedSalary =
-    salary ??
+  // A flat multi-year base covers the highest plausible scheduled minimum in
+  // its term, even if a credited season is earned each year. Existing deals
+  // are never run through this builder merely to load or advance a save.
+  const baseMinimum = Number.isInteger(year) ? Math.max(minSalary ?? 0,
+    contractBaseMinimum({ year, creditedSeasons }, safeYears)) : minSalary ?? MIN_SALARY;
+  const computedSalary = Number.isInteger(year) ? Math.max(baseMinimum, salary ?? marketSalaryForOverall(overall, {
+    minSalary: baseMinimum, maxSalary, year, position, creditedSeasons,
+    variance: rng ? rng.int(-900_000, 1_200_000) : 0
+  })) : salary ??
     marketSalaryForOverall(overall, {
-      minSalary,
+      minSalary: baseMinimum,
       maxSalary,
+      year, position, creditedSeasons,
       variance: rng ? rng.int(-900_000, 1_200_000) : 0
     });
 
   const signingBonusShare = 0.18 + (rng ? rng.float(0, 0.14) : 0.1);
-  const signingBonus = rounded(computedSalary * signingBonusShare);
+  // A minimum contract must not lose base salary to a fictitious bonus.
+  // Explicit legacy offers retain their declared total compensation.
+  const signingBonus = rounded(Math.min(computedSalary * signingBonusShare, Math.max(0, computedSalary - baseMinimum)));
   const baseSalary = rounded(computedSalary - signingBonus);
   const guaranteed = rounded(baseSalary * 0.42 + signingBonus);
   const capHit = rounded(baseSalary + signingBonus / safeYears);
@@ -147,6 +219,7 @@ export function advanceContractYear(contract) {
     ...normalized,
     yearsRemaining,
     capHit,
+    practiceEarnedCharge: 0,
     deadCapRemaining
   });
 }
@@ -167,6 +240,9 @@ export function advanceContractYear(contract) {
  */
 export function computeReleaseDeadCap(contract, { june1 = false } = {}) {
   const normalized = normalizeContract(contract);
+  if(normalized.kind==='weekly-practice-contract-v1') return {
+    currentYearDeadCap:Object.values(normalized.payLedger).reduce((sum,row)=>sum+row.amount,0),nextYearDeadCap:0};
+  const earnedPractice=normalized.practiceEarnedCharge||0;
   const annualProration = normalized.signingBonus / normalized.prorationYears;
   const unamortized = annualProration * Math.max(0, Math.min(normalized.yearsRemaining, normalized.prorationYears));
   const guaranteeCharge = normalized.guaranteed * 0.24;
@@ -175,20 +251,21 @@ export function computeReleaseDeadCap(contract, { june1 = false } = {}) {
   const total = rounded(unamortized + guaranteeCharge);
   if (june1 && normalized.yearsRemaining > 1) {
     const currentYearDeadCap = Math.min(total, rounded(annualProration + guaranteeCharge));
-    return { currentYearDeadCap, nextYearDeadCap: total - currentYearDeadCap };
+    return { currentYearDeadCap:currentYearDeadCap+earnedPractice, nextYearDeadCap: total - currentYearDeadCap };
   }
-  return { currentYearDeadCap: total, nextYearDeadCap: 0 };
+  return { currentYearDeadCap: total+earnedPractice, nextYearDeadCap: 0 };
 }
 
-export function restructureContract(contract, rng) {
+export function restructureContract(contract, rng, { minBaseSalary = MIN_SALARY * .7 } = {}) {
   const normalized = normalizeContract(contract);
   if (normalized.yearsRemaining <= 1) return normalizeContract(normalized);
   const convertRatio = 0.24 + (rng ? rng.float(0, 0.18) : 0.3);
-  const converted = rounded(normalized.baseSalary * convertRatio);
-  const newBase = rounded(Math.max(MIN_SALARY * 0.7, normalized.baseSalary - converted));
+  const converted = rounded(Math.min(normalized.baseSalary * convertRatio, Math.max(0, normalized.baseSalary - minBaseSalary)));
+  if (converted <= 0) return normalized;
+  const newBase = rounded(normalized.baseSalary - converted);
   const newBonus = rounded(normalized.signingBonus + converted);
   const years = normalized.yearsRemaining;
-  const newCapHit = rounded(newBase + newBonus / years);
+  const newCapHit = rounded(newBase + newBonus / years) + (normalized.practiceEarnedCharge || 0);
   const deadCapRemaining = rounded(normalized.deadCapRemaining + converted * 0.72);
   return normalizeContract({
     ...normalized,
@@ -209,7 +286,7 @@ export function applyFranchiseTag(contract, { year, salary = null } = {}) {
   const normalized = normalizeContract(contract);
   const tagSalary = rounded(
     salary ??
-      Math.max(normalized.salary * 1.2, normalized.capHit * 1.35, 18_000_000)
+      Math.max(normalized.salary * 1.2, (normalized.capHit - (normalized.practiceEarnedCharge || 0)) * 1.35, 18_000_000)
   );
   return normalizeContract({
     ...normalized,
@@ -222,7 +299,7 @@ export function applyFranchiseTag(contract, { year, salary = null } = {}) {
     // on this year, so the schedule collapses to 1 rather than carrying the
     // multi-year term of the contract the tag replaced.
     prorationYears: 1,
-    capHit: tagSalary,
+    capHit: tagSalary + (normalized.practiceEarnedCharge || 0),
     franchiseTagYear: Number(year || 0),
     optionYear: false
   });
@@ -231,7 +308,7 @@ export function applyFranchiseTag(contract, { year, salary = null } = {}) {
 export function applyFifthYearOption(contract, { salary = null } = {}) {
   const normalized = normalizeContract(contract);
   const optionSalary = rounded(
-    salary ?? Math.max(normalized.salary * 1.15, normalized.capHit * 1.2, 7_500_000)
+    salary ?? Math.max(normalized.salary * 1.15, (normalized.capHit - (normalized.practiceEarnedCharge || 0)) * 1.2, 7_500_000)
   );
   return normalizeContract({
     ...normalized,
@@ -241,7 +318,7 @@ export function applyFifthYearOption(contract, { salary = null } = {}) {
     // option raised the salary and the club paid nothing for it against the
     // cap. The option is a guaranteed salary year, not new bonus money, so the
     // hit is the new base against the existing proration schedule.
-    capHit: rounded(optionSalary + normalized.signingBonus / normalized.prorationYears),
+    capHit: rounded(optionSalary + normalized.signingBonus / normalized.prorationYears) + (normalized.practiceEarnedCharge || 0),
     yearsRemaining: Math.max(1, normalized.yearsRemaining) + 1,
     optionYear: true
   });

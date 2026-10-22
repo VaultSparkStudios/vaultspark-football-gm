@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "command": "node ../vaultspark-studio-ops/scripts/check-visual-qa.mjs --project . --changed --json",
+  "outputReference": "6cb40d",
+  "recordType": "bounded-summary-of-actual-command-output",
+  "exitCode": 1,
+  "ok": false,
+  "applies": true,
+  "detail": "1 visual QA evidence defect(s)",
+  "ageHours": 0,
+  "errors": ["blockingDefectsOpen must be 0"],
+  "receipt": "docs/visual-qa/PLAYER_ADULT_FACE_FORM_2026-10-07.json",
+  "receiptSha256": "b9262f09c5813e418404ad9532eb26fec92346b11afda351da82e3005fbe440c",
+  "disposition": "Adult form component verified; full appearance naturalism remains open. Gate is not overridden."
+}

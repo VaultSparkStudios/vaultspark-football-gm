@@ -1,0 +1,5 @@
+[Public-safe diagnostic derivative: only the absolute local workspace prefix was redacted; results and timings are unchanged. Original SHA-256: 699894a427847d0be61af7f863870e7494093e194a09a17ec14f8ac4c409dfcd]
+retired routes served as 301s: 4
+sitemap lastmod refreshed from git history: 17 URL(s)
+Service worker precache v72ddfdad3564: 319 assets · 3577 KB (repeat loads serve from cache)
+Built Pages bundle in [workspace]\static

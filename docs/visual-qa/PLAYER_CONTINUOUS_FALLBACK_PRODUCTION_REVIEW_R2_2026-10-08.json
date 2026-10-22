@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "round": 2,
+  "reviewedAt": "2026-10-08T08:55:10.283906+00:00",
+  "reviewer": "independent studio_reviewer",
+  "verdict": "PASS",
+  "scope": "Repaired continuous SVG front/profile hair texture and instancing; accepted recipe combinations, resource/pigment compatibility and exact legacy output. Not full hairstyle craft or appearance acceptance.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_CONTINUOUS_FALLBACK_PRODUCTION_R2_2026-10-08.json",
+  "primaryReceiptSha256": "aaabf94a5233beb44f0062ae6bbe627bae4a586a623667d4b3d8d22d32d45855",
+  "sourceHashes": {
+    "public/lib/continuousHairTexture.js": "001e26613e82e50c3a4d30a18e634e81b2980ccd37af3b50fcd19309d5e2903f",
+    "public/lib/partedHairFlow.js": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+    "public/lib/longHairFlow.js": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+    "public/lib/croppedHairVolume.js": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerHead3d.js": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "src/domain/playerIdentity.js": "c192777620fc80dba87b308f741f1559d8bef866e8a059f05da33c738dfeba71",
+    "src/domain/playerVisualIdentity.js": "1f8e7c260756da9a255981afded0db5e96445205631407a1517d1374367d16cb",
+    "test/player-continuous-hair-fallback.test.js": "3a728a9fb12025372a1f02b019753abea5d54be528064209662cfd878553eeb0",
+    "test/player-hair-arrangement.test.js": "3a4a1171e86597d7d13b99076ca0a4e2a556d9662138095c880015e0171ed8f0",
+    "test/player-whole-head-form.test.js": "a4783be539eda137edf9881c962f3f22881bc0838ae0ad517575cb96eff538a5",
+    "test/player-side-grooming.test.js": "23729ebf1a4f27cc4e3f6ea65edde97f28a48105972426491f454174ff3006f4",
+    "test/player-structured-hair.test.js": "cd3ca9fff84316cc7a85bc10a319fe979e5c5a28e76994bd3a782b6ce053bdd3",
+    "tests-ui/player-continuous-hair-fallback.spec.js": "e987e4e7851736b059e842293b3e87a60ce47715fa3e56d3677dae9363237d75",
+    "tests-ui/player-hair-arrangement.spec.js": "2028c9337e57205f8b9f6bb041cf3a8d493098e593843f78be2151d36310ab91",
+    "tests-ui/player-legal-hair-gallery.spec.js": "f32015fb2c188fc80ab5cf5a1ffe195ec347b1380d530fdb58a2228d40c831f8",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+  },
+  "priorReview": {
+    "file": "docs/visual-qa/PLAYER_CONTINUOUS_FALLBACK_PRODUCTION_REVIEW_R1_2026-10-08.json",
+    "sha256": "eca939f09a890afe045f0ea053afa88e4873a9ea941259b1e7d517d65c603fb8",
+    "verdict": "FIX",
+    "unchanged": true,
+    "priorPrimarySha256": "265055643226802bc0b3787ebf5a0beea91f63175c78f50c3dbb4975b72d0566",
+    "priorFrozenBindingsVerified": 87
+  },
+  "bindingVerification": {
+    "frozenFiles": 87,
+    "sources": 21,
+    "inputs": 5,
+    "evidence": 1,
+    "captures": 60,
+    "allFrozenHashesMatch": true,
+    "allCurrentSourceHashesMatch": true,
+    "builtPairs": 10,
+    "builtHashesAndNormalizedContentsMatch": true,
+    "terminalChunk": "a7ec53"
+  },
+  "findingDisposition": [
+    {
+      "id": "P2-optional-fine-recipe",
+      "status": "fixed",
+      "evidence": "Modern-only instancing/path blanking is gated consistently. Independent six v2/v3 \u00d7 buzz/crew/afro cases without fine-face recipe contain no empty d paths. New tests cover accepted combination.",
+      "remainingLimit": "The non-fine combination retains categorical fiber fallback; fully continuous texture fidelity there is not claimed."
+    },
+    {
+      "id": "P2-instance-longitudinal-scale",
+      "status": "fixed",
+      "evidence": "Normalized resource uses anisotropic scale(length*shape,length); direct helper explicitly uses shape for lateral amplitude only. Original .8-scale mismatch reproduced using frozen R1 helper, and current terminal is exactly [5,17]. 72 expanded cases \u00d733 points agree within .001025 SVG units."
+    }
+  ],
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-continuous-hair-fallback.test.js test/player-structured-hair.test.js test/player-side-grooming.test.js test/player-whole-head-form.test.js test/player-hair-arrangement.test.js",
+      "exitCode": 0,
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 2627.7182,
+      "terminalChunk": "87438f",
+      "coverage": "Includes 384 unchanged original front/profile hashes; resource resolution/document budgets; new instance and missing-fine tests; continuous boundary response; saved grooming/arrangement authority and arranged concealment."
+    },
+    {
+      "probe": "Independent frozen-R1/current-R2 endpoint comparison; 72 position/scale/length combinations with33 points each at maximum curve/wave; accepted non-fine v2/v3 cases; gray instanced fiber and dye suppression.",
+      "terminalChunk": "a645d3",
+      "r1EndpointMismatchReproduced": true,
+      "currentEndpoint": [
+        5,
+        17
+      ],
+      "equivalenceCases": 72,
+      "pointsPerCase": 33,
+      "maximumCoordinateError": 0.0010250000000011639,
+      "toleranceSvgUnits": 0.002,
+      "nonFineVersionStyleCases": 6,
+      "grayUseElements": 1156,
+      "dyedGrayMarkers": 0,
+      "qualification": "Coordinate difference is expected four-decimal resource/direct quantization. This probes geometry, resource attributes and finite transforms; anisotropic stroke orientation is not pixel-certified at every angle."
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/continuous-fallback-r2-continuous-fallback-8-desktop-dark.png",
+      "sha256": "d47d0e98c0a3ff919a8438392ee7b2d4d1d6b3920dfcbd94f1eac66573f105cb"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-fallback-r2-continuous-fallback-12-mobile-light.png",
+      "sha256": "74d921058325ff51b3d3333bda094f63cf68e4e45db5d275c850c639406cebe8"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-fallback-r2-continuous-fallback-0-mobile-dark.png",
+      "sha256": "1eaa7119f8e9af5d062d1addd697baff3b4cf98f15ac3492a05f20f66dad6794"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-fallback-r2-continuous-fallback-7-desktop-light.png",
+      "sha256": "bcff3ea5556707cd0d2ecdaae97b0ec51359ce6de543ae233c04c91b5ce4805c"
+    }
+  ],
+  "visualObservations": [
+    "Final afro positions1.5 and2.5 show bounded changed fiber material in matching front/profile views.",
+    "Buzz position.5 remains recognizable as short scalp coverage but directional vertical marks still look artificial.",
+    "Long position.5 has coherent flow at mobile size; crowns remain cap-like and face/beard remain simplified illustration.",
+    "No clipping observed in the four inspected originals. These are controlled same-person SVG projections with WebGL deliberately unavailable, not actual roster or named-save UI proof."
+  ],
+  "primaryEvidenceAttribution": {
+    "browser": "Root reports2 passed40sec e40bcc on fresh R2 sources; not independently rerun. Forced unavailable-WebGL and no-context proof are primary-attributed.",
+    "build": "Root65f23627d353,319assets3541KB;10 normalized source/built pairs independently verified.",
+    "inspection": "Independent four originals; primary four originals are separately attributed, not combined into all60 inspection.",
+    "visualGate": "Root reports current verifier fails solely retained blockingDefectsOpen1; no full visual approval."
+  },
+  "limits": [
+    "R2 is scoped correctness PASS. Full natural-looking hair/head/body remains incomplete.",
+    "Non-fine saved recipe combinations are compatible but not certified for full continuous fidelity.",
+    "Instanced width scales depend on strand orientation under anisotropic transformation; no claim every rendered stroke is isotropically identical to a direct path at all angles.",
+    "No empirical phenotype fitting, all-style perceptual recognition, actual football outcome counterfactual, long-career/current whole-suite or release claim."
+  ],
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

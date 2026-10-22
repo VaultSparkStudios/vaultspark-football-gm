@@ -1,0 +1,748 @@
+{
+  "kind": "league-appearance-authority-diagnostic-v1",
+  "recordedAt": "2026-10-07T13:19:16.890Z",
+  "seed": 117,
+  "year": 2026,
+  "scope": "One generated opening league; numerical/SVG diagnostics, not empirical calibration or visual acceptance",
+  "players": 2208,
+  "geometryPreserved": 2208,
+  "strengthShadingChanges": 2208,
+  "volumeConserved": 2208,
+  "countries": {
+    "United States": {
+      "players": 2120,
+      "categories": {
+        "Black": 1128,
+        "Multiracial": 231,
+        "Undisclosed": 187,
+        "White": 535,
+        "PacificIslander": 32,
+        "HispanicLatino": 5,
+        "Asian": 2
+      },
+      "hairstyles": {
+        "shaved": 175,
+        "braids": 175,
+        "locs": 186,
+        "waves": 147,
+        "buzz": 191,
+        "crew": 169,
+        "side-part": 180,
+        "swept": 184,
+        "receding": 170,
+        "long": 182,
+        "short-curls": 94,
+        "afro": 74,
+        "fade": 168,
+        "coils": 25
+      },
+      "skinRange": [
+        0.000348168658092618,
+        0.9995281173614785
+      ],
+      "irisColors": {
+        "#34251d": 972,
+        "#57412c": 440,
+        "#67784f": 147,
+        "#777c83": 80,
+        "#587496": 137,
+        "#746047": 272,
+        "#59818b": 72
+      }
+    },
+    "United Kingdom": {
+      "players": 8,
+      "categories": {
+        "White": 5,
+        "Black": 2,
+        "Undisclosed": 1
+      },
+      "hairstyles": {
+        "long": 2,
+        "shaved": 1,
+        "short-curls": 1,
+        "braids": 1,
+        "side-part": 1,
+        "receding": 1,
+        "buzz": 1
+      },
+      "skinRange": [
+        0.020047478494234383,
+        0.9880840701516718
+      ],
+      "irisColors": {
+        "#777c83": 1,
+        "#746047": 1,
+        "#57412c": 3,
+        "#34251d": 2,
+        "#67784f": 1
+      }
+    },
+    "American Samoa": {
+      "players": 9,
+      "categories": {
+        "PacificIslander": 8,
+        "Multiracial": 1
+      },
+      "hairstyles": {
+        "waves": 3,
+        "shaved": 1,
+        "receding": 1,
+        "side-part": 2,
+        "locs": 1,
+        "buzz": 1
+      },
+      "skinRange": [
+        0.2029535539331846,
+        0.8268664520350284
+      ],
+      "irisColors": {
+        "#34251d": 3,
+        "#746047": 1,
+        "#57412c": 4,
+        "#67784f": 1
+      }
+    },
+    "Canada": {
+      "players": 18,
+      "categories": {
+        "Black": 7,
+        "White": 5,
+        "Multiracial": 6
+      },
+      "hairstyles": {
+        "shaved": 2,
+        "braids": 1,
+        "swept": 2,
+        "long": 2,
+        "short-curls": 2,
+        "locs": 2,
+        "buzz": 1,
+        "crew": 2,
+        "afro": 1,
+        "coils": 1,
+        "side-part": 2
+      },
+      "skinRange": [
+        0.04867204022593796,
+        0.8922929324442521
+      ],
+      "irisColors": {
+        "#34251d": 8,
+        "#57412c": 5,
+        "#746047": 3,
+        "#67784f": 1,
+        "#587496": 1
+      }
+    },
+    "Nigeria": {
+      "players": 8,
+      "categories": {
+        "Black": 8
+      },
+      "hairstyles": {
+        "buzz": 3,
+        "long": 1,
+        "receding": 1,
+        "fade": 2,
+        "shaved": 1
+      },
+      "skinRange": [
+        0.34469038650859146,
+        0.9780301491962746
+      ],
+      "irisColors": {
+        "#34251d": 3,
+        "#67784f": 1,
+        "#57412c": 2,
+        "#59818b": 1,
+        "#746047": 1
+      }
+    },
+    "Austria": {
+      "players": 2,
+      "categories": {
+        "Black": 1,
+        "Undisclosed": 1
+      },
+      "hairstyles": {
+        "waves": 1,
+        "braids": 1
+      },
+      "skinRange": [
+        0.000044414540752768517,
+        0.3022885866696015
+      ],
+      "irisColors": {
+        "#57412c": 1,
+        "#587496": 1
+      }
+    },
+    "Australia": {
+      "players": 7,
+      "categories": {
+        "Multiracial": 1,
+        "White": 3,
+        "Black": 3
+      },
+      "hairstyles": {
+        "side-part": 1,
+        "fade": 1,
+        "long": 1,
+        "swept": 1,
+        "receding": 1,
+        "buzz": 1,
+        "waves": 1
+      },
+      "skinRange": [
+        0.05733869969844818,
+        0.9726399052422494
+      ],
+      "irisColors": {
+        "#34251d": 4,
+        "#777c83": 2,
+        "#746047": 1
+      }
+    },
+    "Argentina": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "coils": 1
+      },
+      "skinRange": [
+        0.33412169707007705,
+        0.33412169707007705
+      ],
+      "irisColors": {
+        "#746047": 1
+      }
+    },
+    "New Zealand": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "shaved": 1
+      },
+      "skinRange": [
+        0.7512569381156936,
+        0.7512569381156936
+      ],
+      "irisColors": {
+        "#57412c": 1
+      }
+    },
+    "Kenya": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "braids": 1
+      },
+      "skinRange": [
+        0.30267439081799236,
+        0.30267439081799236
+      ],
+      "irisColors": {
+        "#746047": 1
+      }
+    },
+    "Germany": {
+      "players": 3,
+      "categories": {
+        "Black": 3
+      },
+      "hairstyles": {
+        "crew": 1,
+        "buzz": 1,
+        "shaved": 1
+      },
+      "skinRange": [
+        0.42217215322889384,
+        0.9013377821538597
+      ],
+      "irisColors": {
+        "#34251d": 2,
+        "#746047": 1
+      }
+    },
+    "Ireland": {
+      "players": 2,
+      "categories": {
+        "Undisclosed": 1,
+        "White": 1
+      },
+      "hairstyles": {
+        "shaved": 1,
+        "side-part": 1
+      },
+      "skinRange": [
+        0.3035728483228013,
+        0.5344625224824995
+      ],
+      "irisColors": {
+        "#57412c": 1,
+        "#34251d": 1
+      }
+    },
+    "Italy": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "swept": 1
+      },
+      "skinRange": [
+        0.7945899143815041,
+        0.7945899143815041
+      ],
+      "irisColors": {
+        "#57412c": 1
+      }
+    },
+    "Mexico": {
+      "players": 1,
+      "categories": {
+        "HispanicLatino": 1
+      },
+      "hairstyles": {
+        "locs": 1
+      },
+      "skinRange": [
+        0.6002788482233882,
+        0.6002788482233882
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Guinea": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "receding": 1
+      },
+      "skinRange": [
+        0.513969051768072,
+        0.513969051768072
+      ],
+      "irisColors": {
+        "#57412c": 1
+      }
+    },
+    "South Korea": {
+      "players": 1,
+      "categories": {
+        "Multiracial": 1
+      },
+      "hairstyles": {
+        "buzz": 1
+      },
+      "skinRange": [
+        0.5701085175434127,
+        0.5701085175434127
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Panama": {
+      "players": 1,
+      "categories": {
+        "Multiracial": 1
+      },
+      "hairstyles": {
+        "buzz": 1
+      },
+      "skinRange": [
+        0.3358310856344179,
+        0.3358310856344179
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Hong Kong": {
+      "players": 1,
+      "categories": {
+        "Multiracial": 1
+      },
+      "hairstyles": {
+        "locs": 1
+      },
+      "skinRange": [
+        0.38052333189174536,
+        0.38052333189174536
+      ],
+      "irisColors": {
+        "#57412c": 1
+      }
+    },
+    "Bahamas": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "braids": 1
+      },
+      "skinRange": [
+        0.4298151157097891,
+        0.4298151157097891
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Saint Lucia": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "shaved": 1
+      },
+      "skinRange": [
+        0.5428148665232584,
+        0.5428148665232584
+      ],
+      "irisColors": {
+        "#59818b": 1
+      }
+    },
+    "Belize": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "afro": 1
+      },
+      "skinRange": [
+        0.6534203163348138,
+        0.6534203163348138
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Jamaica": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "locs": 1
+      },
+      "skinRange": [
+        0.7819872591411694,
+        0.7819872591411694
+      ],
+      "irisColors": {
+        "#57412c": 1
+      }
+    },
+    "Tonga": {
+      "players": 5,
+      "categories": {
+        "White": 1,
+        "PacificIslander": 3,
+        "Black": 1
+      },
+      "hairstyles": {
+        "shaved": 1,
+        "afro": 1,
+        "crew": 1,
+        "swept": 1,
+        "waves": 1
+      },
+      "skinRange": [
+        0.25831102901138364,
+        0.9452250967966391
+      ],
+      "irisColors": {
+        "#67784f": 1,
+        "#57412c": 1,
+        "#746047": 1,
+        "#587496": 1,
+        "#34251d": 1
+      }
+    },
+    "Liberia": {
+      "players": 2,
+      "categories": {
+        "Black": 2
+      },
+      "hairstyles": {
+        "afro": 1,
+        "receding": 1
+      },
+      "skinRange": [
+        0.4981107530649751,
+        0.7552907844306901
+      ],
+      "irisColors": {
+        "#746047": 1,
+        "#34251d": 1
+      }
+    },
+    "Denmark": {
+      "players": 2,
+      "categories": {
+        "Black": 2
+      },
+      "hairstyles": {
+        "buzz": 1,
+        "locs": 1
+      },
+      "skinRange": [
+        0.8587915271287783,
+        0.8814456128515302
+      ],
+      "irisColors": {
+        "#34251d": 1,
+        "#746047": 1
+      }
+    },
+    "Brazil": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "crew": 1
+      },
+      "skinRange": [
+        0.7975825447356328,
+        0.7975825447356328
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Belgium": {
+      "players": 1,
+      "categories": {
+        "White": 1
+      },
+      "hairstyles": {
+        "waves": 1
+      },
+      "skinRange": [
+        0.49172602233011276,
+        0.49172602233011276
+      ],
+      "irisColors": {
+        "#746047": 1
+      }
+    },
+    "Greece": {
+      "players": 1,
+      "categories": {
+        "White": 1
+      },
+      "hairstyles": {
+        "long": 1
+      },
+      "skinRange": [
+        0.3779042987152934,
+        0.3779042987152934
+      ],
+      "irisColors": {
+        "#59818b": 1
+      }
+    },
+    "Egypt": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "crew": 1
+      },
+      "skinRange": [
+        0.6633323773043229,
+        0.6633323773043229
+      ],
+      "irisColors": {
+        "#57412c": 1
+      }
+    },
+    "Pakistan": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "shaved": 1
+      },
+      "skinRange": [
+        0.7878887578146532,
+        0.7878887578146532
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Netherlands": {
+      "players": 1,
+      "categories": {
+        "White": 1
+      },
+      "hairstyles": {
+        "long": 1
+      },
+      "skinRange": [
+        0.48400821234099567,
+        0.48400821234099567
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Ghana": {
+      "players": 1,
+      "categories": {
+        "Black": 1
+      },
+      "hairstyles": {
+        "fade": 1
+      },
+      "skinRange": [
+        0.350014335475862,
+        0.350014335475862
+      ],
+      "irisColors": {
+        "#34251d": 1
+      }
+    },
+    "Dominican Republic": {
+      "players": 2,
+      "categories": {
+        "Multiracial": 1,
+        "Black": 1
+      },
+      "hairstyles": {
+        "buzz": 1,
+        "locs": 1
+      },
+      "skinRange": [
+        0.14712435940280558,
+        0.6444963101996108
+      ],
+      "irisColors": {
+        "#67784f": 1,
+        "#34251d": 1
+      }
+    }
+  },
+  "traits": {
+    "hairstyle": {
+      "shaved": 186,
+      "braids": 180,
+      "locs": 194,
+      "waves": 154,
+      "buzz": 203,
+      "crew": 175,
+      "side-part": 187,
+      "swept": 189,
+      "receding": 176,
+      "long": 190,
+      "short-curls": 97,
+      "afro": 78,
+      "fade": 172,
+      "coils": 27
+    },
+    "hairTexture": {
+      "wavy": 594,
+      "straight": 518,
+      "curly": 556,
+      "coily": 540
+    },
+    "naturalHairColor": {
+      "#8b623f": 156,
+      "#713629": 70,
+      "#66472e": 301,
+      "#29201b": 508,
+      "#151210": 524,
+      "#473126": 459,
+      "#b58c58": 122,
+      "#d2b984": 68
+    },
+    "eyeColor": {
+      "#34251d": 1008,
+      "#57412c": 463,
+      "#67784f": 153,
+      "#777c83": 83,
+      "#587496": 140,
+      "#746047": 286,
+      "#59818b": 75
+    },
+    "facialHair": {
+      "full-beard": 365,
+      "short-beard": 366,
+      "clean": 386,
+      "stubble": 350,
+      "mustache": 352,
+      "goatee": 389
+    }
+  },
+  "issues": [
+    {
+      "id": "P2026-BUF-QB-9487479",
+      "kind": "rating-dependent-shading",
+      "lowDefinition": 0,
+      "highDefinition": 0.7454038038104773
+    },
+    {
+      "id": "P2026-BUF-QB-1124008",
+      "kind": "rating-dependent-shading",
+      "lowDefinition": 0.012980369646102191,
+      "highDefinition": 0.8129803696461022
+    },
+    {
+      "id": "P2026-BUF-QB-98654233",
+      "kind": "rating-dependent-shading",
+      "lowDefinition": 0.003577493838965898,
+      "highDefinition": 0.8035774938389659
+    }
+  ],
+  "comparedRecordedDimensions": [
+    "heightInches",
+    "weightLbs",
+    "armLengthInches",
+    "wingspanInches"
+  ],
+  "sourceHashes": {
+    "src/domain/playerIdentity.js": "7e1dcf529ea6170e5606b7bf9572e843c9c7b5edee7a15d4d5078f9345ca6754",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerMeasurements.js": "2d8ccd15fa403a7991a70fe0d5f2e00a29fd4dd47ba3e860ed1ccddf95e38124",
+    "src/domain/playerDemographicModel.js": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370",
+    "public/lib/playerPortrait.js": "bcd103a42fd6aec5625b41d4a6e35e468bc8f4f1254308a1a4c9acff5ad4701b"
+  },
+  "conclusions": [
+    "Recorded dimension mismatches, if any, require source-bound reconciliation, not silent overwriting.",
+    "Strength dominantly controls static shading together with saved individuality; replace with separately authorized appearance estimates. SVG differences are not pixel visibility acceptance.",
+    "Small foreign-country samples cannot prove conditional population frequencies or adequate appearance coverage."
+  ],
+  "diagnosticScriptSha256": "384cf22f14712eb6ceda96cc2287b0b4f432ef7e1fc4b7616ea7c1650ed27efd",
+  "independentReview": {
+    "verdict": "FIX_DIAGNOSTIC_SCOPE",
+    "sha256": "c028ba947189098f792ad356e316a1e7d9644eeab2504e13995b3f6ff61971af",
+    "result": {
+      "players": 2208,
+      "resourceNormalizedSvgDifferences": 2208,
+      "identicalRenderedPathGeometry": 2208,
+      "snapshotUnchanged": true
+    },
+    "scopeCorrection": "Primary diagnostic subsequently normalized all resource IDs, explicitly listed four compared dimensions and limited conclusions to SVG response. No independent post-correction PASS or implementation approval claimed."
+  }
+}

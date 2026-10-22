@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "status": "unintegrated-clay-prototype-primary-progress-independent-review-pending",
+  "units": "inches",
+  "camera": {
+    "verticalSpanInches": 160,
+    "floorMarginInches": 8,
+    "raster": [
+      320,
+      600
+    ],
+    "sameCameraAcrossPlayers": true,
+    "contextualSvgCameraMatched": false
+  },
+  "tests": {
+    "domainPassed": 3,
+    "browserPassed": 1,
+    "domainMeshCases": 21,
+    "measurementTailCases": 4,
+    "bodyMassCases": [
+      180,
+      240,
+      350,
+      500
+    ]
+  },
+  "inspectedOriginals": [
+    "output/playwright/body-3d-prototype-1-desktop-light.png",
+    "output/playwright/body-3d-prototype-3-desktop-dark.png",
+    "output/playwright/body-3d-prototype-0-mobile-light.png",
+    "output/playwright/body-3d-prototype-2-mobile-dark.png"
+  ],
+  "inputs": [
+    {
+      "path": "public/lib/playerBody3d.js",
+      "bytes": 12520,
+      "sha256": "69f10b7d72425433c4282282852d14099aaf383edeb58926fe516eec493ca725"
+    },
+    {
+      "path": "public/lib/playerHead3d.js",
+      "bytes": 47405,
+      "sha256": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6"
+    },
+    {
+      "path": "public/lib/playerMotion.js",
+      "bytes": 33893,
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "path": "test/player-body-3d.test.js",
+      "bytes": 3838,
+      "sha256": "6885da7e73d7c2287bc7ec77fda7b926e1866d96d07c029e9a80e64d87321b2d"
+    },
+    {
+      "path": "tests-ui/player-body-3d-prototype.spec.js",
+      "bytes": 4261,
+      "sha256": "58e5799bbc06d6256830422d11be97d91d73ebd329e66612b613fc3812022230"
+    },
+    {
+      "path": "src/domain/playerIdentity.js",
+      "bytes": 26343,
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba"
+    },
+    {
+      "path": "src/domain/playerVisualIdentity.js",
+      "bytes": 11420,
+      "sha256": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1"
+    },
+    {
+      "path": ".cache/body-3d/domain.log",
+      "bytes": 448,
+      "sha256": "1578ecc07d70863207904ab14abf6fd6ca0f35851026660c2b43064e07005b1d"
+    },
+    {
+      "path": ".cache/body-3d/browser.log",
+      "bytes": 559,
+      "sha256": "4548ac831aa05e14bb36d474ab6f005c733d51c3d1ea93596a9571eb13ceef2f"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-observations.json",
+      "bytes": 882,
+      "sha256": "dd39167c9222c934b50b2a94cc83745d2832b528441b39dd9b1f7eef94013f7d"
+    },
+    {
+      "path": "docs/PLAYER_BODY_SOLID_TOPOLOGY_DIAGNOSTIC_2026-10-08.json",
+      "bytes": 57123,
+      "sha256": "12eb8a700f40b1034ebdd44b39357edfa7f922b890ea431e3053e95fdb971f76"
+    },
+    {
+      "path": ".cache/audit-body-solids.mjs",
+      "bytes": 4430,
+      "sha256": "2661ecfb89537fb451cbee055ce137a2bb3ccb0c1e581bcd860263e1072183e3"
+    }
+  ],
+  "captures": [
+    {
+      "path": "output/playwright/body-3d-prototype-0-desktop-dark.png",
+      "bytes": 91747,
+      "sha256": "c5d3b7d4d3fe340d4412a02f7f148fb2f3c49655f53332da148a25d50b9e0206"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-0-desktop-light.png",
+      "bytes": 91384,
+      "sha256": "ff5c2fa7713491510a890a4224cee18b2b785550695f4192ae160d06b46731b2"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-0-mobile-dark.png",
+      "bytes": 68209,
+      "sha256": "ef79652ad24e66eef9d5512328a36633aefe8ced2b4e01c3d50e626d9c4be75a"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-0-mobile-light.png",
+      "bytes": 67933,
+      "sha256": "008353d278b89edcf8f71a93fd9f443623997ef7a3bbce1d3c57805fcc678f8d"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-1-desktop-dark.png",
+      "bytes": 95840,
+      "sha256": "07cffea65385867176a3f388b4b220220305d2631b67126634a91f7474bbb6f8"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-1-desktop-light.png",
+      "bytes": 95314,
+      "sha256": "5d6d17298b695a91f4f97fa661f655685ed7c04853a397c6b920b2a986e850d4"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-1-mobile-dark.png",
+      "bytes": 70713,
+      "sha256": "211fe2ec86008490446bad2cdbf0268d27968e1ad5ce3f7074ffbbc8e4a2b9ef"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-1-mobile-light.png",
+      "bytes": 70445,
+      "sha256": "032ff3dec48df9965b8c9c45e81d2f327fd545b50a3d56935c778e042fb05fcb"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-2-desktop-dark.png",
+      "bytes": 102202,
+      "sha256": "94d0cd274f4d932bf893a266da3603d171088995f631632e93991ca9e95bad75"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-2-desktop-light.png",
+      "bytes": 101792,
+      "sha256": "919ccd48ecd8d0ff8f15b813d8a0552b066e4ad55cf94955046d0dd58a3fa06e"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-2-mobile-dark.png",
+      "bytes": 74868,
+      "sha256": "37b286b88e93123462082b8319083a1b36d506743054dcd92dc211631ea60ebe"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-2-mobile-light.png",
+      "bytes": 74615,
+      "sha256": "c553bf7e66eea543cf207215e81cb41287e72631fe9449654699448aa8cc09ef"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-3-desktop-dark.png",
+      "bytes": 109676,
+      "sha256": "8f62dd31ab110cb2177cce17bd4bb7e6cc9c9f473db490bfc36d23c8e5c7ac80"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-3-desktop-light.png",
+      "bytes": 109298,
+      "sha256": "fd6ba5ebcc6dc37c72cacc1d977962e78644dac9c350b6b967b83f7a5a7012f9"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-3-mobile-dark.png",
+      "bytes": 79473,
+      "sha256": "d4f3a1f05b23a3f7f00a899945dc95fa63f34ac19ce5685d968d8fbbda3750a8"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-3-mobile-light.png",
+      "bytes": 79354,
+      "sha256": "7bb239a82d21d2291f6c4479877fd22d64da7042589bc93035a08f9de0430c95"
+    }
+  ],
+  "fullVisualAcceptance": false,
+  "completeBodyUnionMassVerified": false,
+  "productionDossierIntegrated": false,
+  "staticBuildVerified": false,
+  "openFindings": [
+    "Mannequin contours and abrupt joint/intersection seams.",
+    "Heavy-player mass distribution is not convincing.",
+    "Ordinary mobile neutral figures are small within the fixed physical camera.",
+    "Shoulder-yoke has64 boundary edges in assembled-component diagnostic.",
+    "No complete-body overlap subtraction, union volume or mass fit.",
+    "Clay excludes eyes, ears, hair and final skin materials.",
+    "No actual production dossier integration or built persistence evidence for this module."
+  ]
+}

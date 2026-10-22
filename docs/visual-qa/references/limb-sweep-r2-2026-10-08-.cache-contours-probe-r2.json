@@ -1,0 +1,47 @@
+{
+  "cases": [
+    [
+      62,
+      100,
+      40
+    ],
+    [
+      62,
+      650,
+      99
+    ],
+    [
+      96,
+      100,
+      40
+    ],
+    [
+      96,
+      650,
+      99
+    ],
+    [
+      80,
+      180,
+      70
+    ],
+    [
+      80,
+      350,
+      85
+    ],
+    [
+      74,
+      225,
+      85
+    ]
+  ],
+  "poses": 2009,
+  "normalSamples": 11668272,
+  "negativeNormals": 0,
+  "faceSamples": 22115072,
+  "negativeFaces": 0,
+  "minCos": 0.021091662743609164,
+  "allPhaseValidity": false,
+  "wholeUnionMassVerified": false
+}

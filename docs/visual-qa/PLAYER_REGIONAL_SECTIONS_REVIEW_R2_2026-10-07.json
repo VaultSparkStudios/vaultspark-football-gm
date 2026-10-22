@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "component": "Shared saved regional torso sections",
+  "reviewRound": 2,
+  "verdict": "PASS",
+  "reviewedAt": "2026-10-08T01:02:05.600Z",
+  "priorReview": {
+    "path": ".cache/regional-sections-review-round1.json",
+    "sha256": "11c32a13567ee1476f44908f7d2ec896f22d441aa7d52f6534d9d45f73b8d51d",
+    "verdict": "FIX"
+  },
+  "sourceHashes": {
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "public/lib/physiqueGeometryContract.js": "36b6b78c7f175a88eab73da5d8248e02ece2d939ca2a18aaaa10a6e2c354c6df",
+    "public/lib/torsoSurface.js": "8971b60b0cf3f5bdf82dce214b039577978da6195eb4116abaef6ce5552e53f7",
+    "public/lib/playerPortrait.js": "235296bec8e08b921bb753eec1d3ba91b7d91e6edcb7dbf3e5bf2a790c912742",
+    "public/lib/playerMotion.js": "ce306007bfd025e4b7eebcdde00d83d44aa7e5861adbac88db6ed952fb304e87",
+    "test/player-regional-sections.test.js": "2c2fcc5f436cba196f7b9198948b49d8a768a1c77e5916dde42e272b9fbf2f5c",
+    "test/fixtures/player-regional-sections-v1.json": "9f976ee5026ab12a018e24e2121e4027daa45b6ed6fc56c3547dd73712c4ada6",
+    "test/player-torso-envelope.test.js": "19fcb7583c678e92ad10b82a93c7b58a6672b437b83b8f34c7ea1c359ae50a74",
+    "tests-ui/player-capacity-client.spec.js": "2035a7dc8de18991631cc7e21ae952328558c442322b59ebf1080be962e442d3",
+    "scripts/run-test-shard.mjs": "26e479b8d42871b04b8559d6402f41530754dc633c9cac3f640b6db8bb2a6cf6"
+  },
+  "builtEquivalence": [
+    {
+      "source": "public/lib/physiqueGeometryContract.js",
+      "built": "static/lib/physiqueGeometryContract.js",
+      "sourceSha256": "36b6b78c7f175a88eab73da5d8248e02ece2d939ca2a18aaaa10a6e2c354c6df",
+      "builtSha256": "36b6b78c7f175a88eab73da5d8248e02ece2d939ca2a18aaaa10a6e2c354c6df",
+      "normalizedTextEqual": true
+    },
+    {
+      "source": "public/lib/torsoSurface.js",
+      "built": "static/lib/torsoSurface.js",
+      "sourceSha256": "8971b60b0cf3f5bdf82dce214b039577978da6195eb4116abaef6ce5552e53f7",
+      "builtSha256": "8971b60b0cf3f5bdf82dce214b039577978da6195eb4116abaef6ce5552e53f7",
+      "normalizedTextEqual": true
+    },
+    {
+      "source": "public/lib/playerPortrait.js",
+      "built": "static/lib/playerPortrait.js",
+      "sourceSha256": "235296bec8e08b921bb753eec1d3ba91b7d91e6edcb7dbf3e5bf2a790c912742",
+      "builtSha256": "235296bec8e08b921bb753eec1d3ba91b7d91e6edcb7dbf3e5bf2a790c912742",
+      "normalizedTextEqual": true
+    },
+    {
+      "source": "public/lib/playerMotion.js",
+      "built": "static/lib/playerMotion.js",
+      "sourceSha256": "ce306007bfd025e4b7eebcdde00d83d44aa7e5861adbac88db6ed952fb304e87",
+      "builtSha256": "ce306007bfd025e4b7eebcdde00d83d44aa7e5861adbac88db6ed952fb304e87",
+      "normalizedTextEqual": true
+    }
+  ],
+  "findings": [],
+  "resolvedFindings": [
+    {
+      "id": "P2-optional-sections-can-remove-torso",
+      "result": "Gross mismatched anchors and canonical chest bounds outside1..40 now reject optional sections and retain the fallback torso."
+    },
+    {
+      "id": "P2-inch-pixel-tolerance-residual",
+      "result": "R2 reproduced2e-9/5e-9/9e-9-inch residuals accepted by the inch guard but rejected after scaling by the path pixel guard. Final repair canonicalizes accepted first anchors in a new projected copy; all residuals now retain static/moving torso and leave DTO unchanged.",
+      "redProbe": ".cache/regional-sections-r2-tolerance-result.json",
+      "fixedProbe": ".cache/regional-sections-r2-tolerance-fixed-result.json",
+      "reviewedPreRepairSourceHashes": ".cache/regional-sections-r2-reviewed-source-hashes.json"
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-regional-sections.test.js test/player-regional-body-shape.test.js test/player-torso-envelope.test.js",
+      "result": "16/16 passed,zero skips,10.252s before sub-tolerance repair."
+    },
+    {
+      "command": "node --test test/player-regional-sections.test.js",
+      "result": "Final5/5 passed,zero skips,5.662s; gross,bounds,tiny-delta and unit1/6/18 cases included."
+    },
+    {
+      "command": "node .cache/regional-sections-r2-tolerance-fixed.mjs",
+      "result": "Four tiny-delta counterexamples now render staticfront and cut torso; immutable DTO."
+    },
+    {
+      "command": "node .cache/regional-sections-independent-fixed.mjs",
+      "result": "Four gross/45-inch probes retain fallback;40 independent numerical integrals agree within1e-8."
+    },
+    {
+      "command": "node .cache/regional-sections-legacy-independent.mjs",
+      "result": "Nine original frames and72 exact original-render hashes pass;tracked legacyfixture equals preserved source fixture."
+    },
+    {
+      "check": "Before/final2 controlled report reconciliation",
+      "result": "Six pairs/12 players retain18 measurement,skeleton and volume fields plus ratings. Entire frame equality is not expected: v2 intentionally changes chest/waist/section estimates."
+    }
+  ],
+  "inspectedImages": [
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-before-mass-desktop-dark.png",
+      "sha256": "b99f2be36e918c3f62e8bad777b757fe25a78a6716f2477e29a74b23e0b0ffd7"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-before-heavy-fast-light-slow-mobile-light.png",
+      "sha256": "0af56d6660b9be39740fb49770e2e45959ed0381e06c1e56e6da0d0daa94efed"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-final2-mass-desktop-dark.png",
+      "sha256": "57075428f61997d8ad1b5ee824bf3e434ab094cddaeb1e88b5b0112d1d1d1067"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-final2-heavy-fast-light-slow-mobile-light.png",
+      "sha256": "1677ba085991291e473c561e833ddcb6aa3573f7460c64beedcaac936da7c1c5"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-regional-sections-final2-capacities-desktop-light.png",
+      "sha256": "4934b647a04678f8ea7a0e6375cc0f2285fca9c86f9f5c714fd8d7560cb3d5ee"
+    },
+    {
+      "path": "output/playwright/s117-whole-craft-regional-sections-final2-desktop-dark-body.png",
+      "sha256": "6f884d018cf9cc5e60a35714b999886cfa1583d3a974571d3bf9ddf4f163a591"
+    },
+    {
+      "path": "output/playwright/s117-whole-craft-regional-sections-final2-mobile-light-motion.png",
+      "sha256": "c20a9d2d0bba7bd2072ffff4c5f0900b204779babb09017c57818aeb7e63bfa6"
+    }
+  ],
+  "additionalPreResidualImagesInspected": [
+    "output/playwright/s117-measured-body-regional-sections-final-mass-desktop-dark.png",
+    "output/playwright/s117-measured-body-regional-sections-final-heavy-fast-light-slow-mobile-light.png",
+    "output/playwright/s117-measured-body-regional-sections-final-capacities-desktop-light.png",
+    "output/playwright/s117-whole-craft-regional-sections-final-desktop-dark-body.png",
+    "output/playwright/s117-whole-craft-regional-sections-final-mobile-light-motion.png"
+  ],
+  "observations": [
+    "Matched heavy-body renders show fuller abdomen/hip regions instead of a single chest-dominant taper.",
+    "Actual desktop body and mobile movement controls remain readable; no new torso gap or clipping in inspected originals.",
+    "Bodies remain rigid, illustrated and visibly stylized; component geometry acceptance does not establish whole-player naturalism."
+  ],
+  "primaryBrowserEvidence": {
+    "status": "Terminal primary2/2PASS43.2s,f6fcd3; both current receipts verified",
+    "executionAttribution": "Primary browser execution,not independently rerun.",
+    "receipts": [
+      {
+        "path": ".cache/player-regional-section-client/worker.json",
+        "sha256": "35844b8d371ae88bf346bacf6e854280272a4918a1311e427e147ca804ba5527",
+        "artifactDigest": "f78613bc9b354f7ce9b7c636552cbd4f8979713a2a04a32aac2bdbba7f1c3355",
+        "flagsVerified": true
+      },
+      {
+        "path": ".cache/player-regional-section-client/in-page.json",
+        "sha256": "8af2de177cb42bc4f375e2320b0b557cc33f28d4b4646f0946a1df3c583342c0",
+        "artifactDigest": "f78613bc9b354f7ce9b7c636552cbd4f8979713a2a04a32aac2bdbba7f1c3355",
+        "flagsVerified": true
+      }
+    ],
+    "manifest": {
+      "path": "static/deploy-manifest.json",
+      "sha256": "b309ed9cc30ba962890aa778ec101e37cfbad7660470fc751ce01cb9863af076",
+      "artifactDigest": "f78613bc9b354f7ce9b7c636552cbd4f8979713a2a04a32aac2bdbba7f1c3355"
+    },
+    "scope": "Actual BUF named save→actual MIA replacement→BUF named load→reload; unchanged appearance/frame; exact regional path in actualfront and all6 motionmodes."
+  },
+  "limits": [
+    "No full browser suite or career simulation rerun.",
+    "Seven final-qualified/baseline originals inspected;not all captures.",
+    "Artistic density and independent regional controls are not observed girths,lean/fat measures or empirically fitted NFL/country distributions.",
+    "Recorded-girth support,empirical joint fitting,full appearance quality and release remain open."
+  ],
+  "primaryOtherEvidence": {
+    "focused": "32/32PASS bd312e",
+    "finalCapture": "5/5PASS59.8s e10388",
+    "build": "4714cc345fa1/313assets3470KB",
+    "bootReachability": "42f859PASS649321bytes51modules0lazyLeaks134reachable4HTML",
+    "qualification": "Primary terminal reports; reviewer independently checked normalized source/build equality and browser receipt bindings."
+  }
+}

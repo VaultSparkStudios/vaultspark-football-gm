@@ -1,0 +1,78 @@
+{
+  "version": "complete-appearance-calibration-plan-v1",
+  "reviewDate": "2026-10-07",
+  "status": "research-and-implementation-contract",
+  "runtimeCoefficientsChanged": false,
+  "sources": [
+    {
+      "id": "tides-2023-original-retrieval-upgrade",
+      "url": "https://www.tidesport.org/_files/ugd/326b62_f8ae68d67f744fdbba5962c84b43f3bf.pdf",
+      "retrieval": "Original 64-page publisher PDF text retrieved; player Table 1 on PDF page 47 and narrative on PDF page 9 reviewed. Screenshot request returned a reference without an inspectable image; no visual table inspection claimed.",
+      "collectionYear": 2023,
+      "originalCounts": {"BlackOrAfricanAmerican": 821, "White": 375, "TwoOrMoreRaces": 167, "NotDisclosed": 136, "HawaiianOrPacificIslander": 27, "HispanicOrLatino": 7, "Asian": 2, "AmericanIndianOrAlaskaNative": 1},
+      "computedCountSum": 1536,
+      "inference": "Preserve dated reported-cohort categories and nondisclosure. This verifies the existing historical counts again; it does not fit current NFL or country-conditioned appearance frequencies.",
+      "runtimeAdoption": false
+    },
+    {
+      "id": "tides-newer-margin-recheck",
+      "url": "https://www.tidesport.org/nfl",
+      "replacementUrl": "https://www.tidessport.org",
+      "retrieval": "Historical listing retrieved and still labels 2023 latest. Replacement website returned an internal error in this pass.",
+      "inference": "No 2024–2026 racial margin verified. Keep original evidence dates rather than relabeling the report current.",
+      "runtimeAdoption": false
+    },
+    {
+      "id": "continuous-iris-recheck",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/eyecolor/",
+      "retrieval": "Direct official explanation reviewed, including continuous color and complex inheritance.",
+      "inference": "Continuous saved pigment with color labels for presentation; supported correlation plus individual variation. No country/NFL joint frequencies or rare-trait prevalence established.",
+      "runtimeAdoption": false
+    },
+    {
+      "id": "hair-pigment-and-aging-recheck",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/haircolor/",
+      "retrieval": "Direct official explanation reviewed, including eumelanin/pheomelanin, broad shade range and variable graying.",
+      "inference": "Natural scalp/brow/beard pigment remains separate from dye and dated gray coverage. General population explanation does not supply athlete age-specific frequencies or hairstyle prevalence.",
+      "runtimeAdoption": false
+    },
+    {
+      "id": "equal-stature-mass-different-proportions",
+      "url": "https://www.nasa.gov/directorates/esdmd/hhp/anthropometry-and-biomechanics/",
+      "retrieval": "Direct official overview and equal-height/weight proportion statement reviewed.",
+      "inference": "Permit compatible different torso, limb and breadth proportions at equal stature/mass. Overview supplies no athlete distribution or coefficients.",
+      "runtimeAdoption": false
+    },
+    {
+      "id": "landmark-and-segment-model-method",
+      "url": "https://ntrs.nasa.gov/citations/20210022854",
+      "publicationDate": "2021-10-15",
+      "retrieval": "Primary conference abstract methods/results reviewed; full validation data and ANSUR individual records not inspected.",
+      "inference": "Resolve skeletal landmarks, segment endpoints and joint locations consistently. Military-derived theoretical scaling is methodological context, not an NFL body or performance fit.",
+      "runtimeAdoption": false
+    },
+    {
+      "id": "segment-mass-estimation-limits",
+      "url": "https://www.nasa.gov/reference/appendix-e-vol-2/",
+      "retrieval": "Direct official E.5 discussion reviewed: historical regression samples of 31 and 46, ANSUR inputs and homogeneous-density assumption.",
+      "inference": "Separate observed mass from estimated regional volume/density and inertia. Conserved artistic volume cannot certify measured composition or physiological correctness.",
+      "runtimeAdoption": false
+    }
+  ],
+  "unadoptedRetrievals": [
+    {"url": "https://www12.statcan.gc.ca/census-recensement/2021/ref/98-500/008/98-500-x2021008-eng.pdf", "result": "File-not-found redirect; corresponding HTML redirect limit. Indexed references found, but no new source-defined weights adopted."},
+    {"url": "https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/38719-censo-2022-pela-primeira-vez-desde-1991-a-maior-parte-da-populacao-do-brasil-se-declara-parda", "result": "403; English release also failed retrieval. Search snippets and secondary restatements do not establish a reviewed category crosswalk or runtime adoption."},
+    {"url": "https://www.nfl.com/international/international-players", "result": "Indexed page describes an inclusive heritage program involving players and coaches. Do not convert its participants or flags into foreign-born roster probabilities."}
+  ],
+  "existingAuthorities": ["src/data/playerDemographicBaseline.js", "src/domain/playerDemographicModel.js", "src/domain/playerVisualIdentity.js", "src/domain/playerIdentity.js", "src/domain/playerMeasurements.js"],
+  "calibrationFieldsRequired": ["observationYear", "cohort", "ageCoverage", "observationalUnit", "originalResponseSchema", "multipleResponseSemantics", "denominator", "conditionalDirection", "source", "uncertainty", "observedVersusAssumed"],
+  "identifiedRigGap": {
+    "staticSource": "public/lib/playerPortrait.js",
+    "movingSource": "public/lib/playerMotion.js",
+    "observation": "Neutral front arm roots derive from external chest width plus arm-width offset; cut-mode roots derive from skeletal shoulder span. Neutral elbow/wrist lateral offsets can increase centerline lengths beyond stored vertical-length allocation.",
+    "plannedRepair": "Shared skeletal roots and exact segment lengths across views; tissue and clothing independent; clearance through pose angles. Preserve existing versioned decoders.",
+    "status": "source-identified-not-repaired-in-this-pass"
+  },
+  "requiredFixtures": ["historical-nfl-margin-is-not-current", "pigment-label-is-not-a-fixed-swatch", "neutral-rig-preserves-measured-segments", "unobserved-grooming-is-not-natural-color"],
+  "acceptance": "Source-defined compatible calibration; matched trait image pairs at ordinary game size; common-scale measured bodies in every motion mode; desktop/mobile and both themes; actual career and named-save restoration. Numeric uniqueness or component checks do not establish whole-person completion."
+}

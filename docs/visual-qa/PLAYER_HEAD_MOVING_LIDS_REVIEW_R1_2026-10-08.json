@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "scope": "Unadopted moving-lid extension correctness and evidence honesty; full-head craft remains unmet",
+  "primaryReceiptSha256": "170433fdc431d7be5227c2fa2f712ca45e0e5e7cff590fadfccd378c9f2ad17b",
+  "primaryReceiptPath": ".cache/head-lids-reviewed-r1-primary.json",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "c6f328a1b74b0cd79e1f40403a71cf03a92f92d5cb34b08a35d087ae012b2052",
+    "prototypes/playerHead3d.test.mjs": "0c02f48f706010cbd49fbe29ee9986d743169d00ff64b9273bf51634cb8ef2e4",
+    ".cache/head-lids.spec.mjs": "5e98131965d4e99532b4b029c57ebc1c472831903005a8fd8df09efe9d5df84c",
+    ".cache/head-lids.config.mjs": "31daa19a7bb6a5efebb905be9caf9591610dced6a129356a147ffb2414c43a7f",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "output/playwright/player-art-benchmark.json": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+  },
+  "beforeSourceHash": "86d35c68ab0cfbd250f43f7502840fbd8c2d963330d6094d7fb8c1c07a98276f",
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 16,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 7493.2372
+    },
+    {
+      "command": "node .cache/head-lids-review-probe.mjs",
+      "passed": true,
+      "extremeCombinations": 16,
+      "lidPointSamples": 56000,
+      "meshBytes": 1649520,
+      "sourceBindings": 6,
+      "captureBindings": 21
+    }
+  ],
+  "primaryBrowser": {
+    "attribution": "Executed by primary, not independently rerun",
+    "passed": 1,
+    "durationSeconds": 12.1,
+    "physicalClosureComparisons": 18,
+    "maximumExposedNativePixels": 0,
+    "qualification": "Three selected people, front/three-quarter/profile, closed color/clay. Eye-globe-removal test compares actual RGB pixels and proves coverage for these cases, not all possible anatomy or GPUs."
+  },
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/head-lids-final-head-lids-native-0-open.png",
+      "sha256": "96991f9ac69a26f592238cb5aa5e971a8544a434a841ffb63cd0cd84cf34a025"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-lids-final-head-lids-native-0-closed.png",
+      "sha256": "d4fa4044827b242f4ae61ff503005905e0b48a00df407a2af7239752b613ea9a"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-lids-final-head-lids-native-0-clay-closed.png",
+      "sha256": "d4ce7e392845d60f2dfb8ade842e0fbd6c62c44c15ec7d796838a4248b7a3ff3"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-lids-final-head-lids-person-1-mobile-light.png",
+      "sha256": "c0d046dd401b8b129f01c9121bef00a2e53e76cf654e66998f0bf71830c11f36"
+    }
+  ],
+  "sourceObservations": [
+    "GPU moves separate material-encoded lid strips, while the eye feature aperture remains constant; CPU position oracle agrees with encoded GPU deformation in the focused test",
+    "Upper/lower margins meet at blink1; outer v1 folds remain invariant through blink; finite blink is clamped and nonfinite pose refused",
+    "Open/close camera draws do not rewrite saved meshes or person inputs. Reopen pixel equality asserted in primary browser test",
+    "Squared shader expressions use multiplication rather than undefined signed pow bases; no evidence attributes the original corner leak to that separate correction"
+  ],
+  "findings": [
+    {
+      "severity": "OPEN craft",
+      "description": "Native closed/clay images show thick bulged folds rather than convincing soft eyelids; mobile closure is readable but mouth, cap/wire hair, painted beard, thin ear and simple neck remain mannequin-like. Full adult-person target is unmet."
+    },
+    {
+      "severity": "limit",
+      "description": "Pose-fixed outer folds are not a proof of watertight lid-to-head topology. This remains separate overlapping prototype surfaces, with analytic/estimated shading normals rather than measured eyelid anatomy."
+    }
+  ],
+  "historicalEvidence": "Twelve initial incomplete-closure captures are qualified failure evidence; their initial renderer was not frozen. They are not accepted current renders or a source-bound old implementation proof.",
+  "limits": [
+    "No independent WebGL rerun; primary closure evidence verified structurally and hash-bound",
+    "No production integration, animation lifecycle/save-career/accessibility/current suite/release acceptance",
+    "Artistic coefficients; no population/medical or observed-eyelid calibration",
+    "Maximum mesh budget is a tested default full-hair/full-beard case, not a universal extreme-tessellation budget"
+  ],
+  "fullAppearanceAccepted": false,
+  "productionAccepted": false
+}

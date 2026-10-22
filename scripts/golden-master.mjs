@@ -21,7 +21,8 @@ import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.json");
+export const HISTORICAL_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.json");
+export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s118-v2.json");
 export const GOLDEN_MASTER_SCENARIOS = Object.freeze([
   Object.freeze({ id: "drive-20260306-BUF", seed: 20260306, mode: "drive", controlledTeamId: "BUF", seasons: 3 }),
   Object.freeze({ id: "play-4113-CHI", seed: 4113, mode: "play", controlledTeamId: "CHI", seasons: 3 })
@@ -74,6 +75,11 @@ export async function computeGoldenMaster(root = ROOT) {
 
 export function diffGoldenMaster(expected, actual) {
   const differences = [];
+  // A removed fixture scenario must not silently stop verifying that seeded
+  // career. Compare both scenario sets before comparing their sections.
+  for (const id of Object.keys(actual.scenarios || {})) {
+    if (!Object.hasOwn(expected.scenarios || {}, id)) differences.push(`${id}: unexpected scenario`);
+  }
   for (const [id, scenario] of Object.entries(expected.scenarios || {})) {
     const got = actual.scenarios?.[id];
     if (!got) { differences.push(`${id}: scenario missing`); continue; }

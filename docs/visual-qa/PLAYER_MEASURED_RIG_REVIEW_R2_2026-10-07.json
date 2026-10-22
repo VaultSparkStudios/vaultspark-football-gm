@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "component": "Measured neutral/shared body rig",
+  "reviewRound": 2,
+  "verdict": "PASS",
+  "reviewedAt": "2026-10-08T01:27:37.131Z",
+  "priorReview": {
+    "path": ".cache/neutral-rig-review-round1.json",
+    "sha256": "a0a3f1e0d13edfae496300931058ac79b238fe7447106cac7c5850eb0880b0e6",
+    "verdict": "FIX"
+  },
+  "sourceHashes": {
+    "public/lib/physiqueGeometryContract.js": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241",
+    "public/lib/playerPortrait.js": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219",
+    "public/lib/playerMotion.js": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+    "test/player-measured-rig.test.js": "f2fdcfacbb0d8de56408628ee6319a3368915d94e1d720e43b9f5fab62134a46",
+    "test/player-limb-contours.test.js": "65529573e8c20140711cf2c48ec2cbf2c4d302a4fc2a03ecc31fa82ef2e0453b",
+    "test/player-capacity-study.test.js": "8f9ebe834afeee694c1c3a3e93859cefeeaaa71eb5e05b27a2e9bdd0bc255abb",
+    "test/fixtures/player-capacity-baseline-poses.json": "dc5d18547595f700088d7a5fd935211918633ebf51ce16a712f094f41cf05709",
+    "test/fixtures/player-regional-sections-v1.json": "9f976ee5026ab12a018e24e2121e4027daa45b6ed6fc56c3547dd73712c4ada6",
+    "scripts/run-test-shard.mjs": "b13f126584029694db22cdf4ef2ec00db6af05c9d9de3123cbb6b658fd56a60f",
+    "tests-ui/player-capacity-client.spec.js": "feba8471e7ade7c8010be933c57efdf2d76597ff52e7f63a4fa69540e8ad5715"
+  },
+  "builtEquivalence": [
+    {
+      "source": "public/lib/physiqueGeometryContract.js",
+      "built": "static/lib/physiqueGeometryContract.js",
+      "sourceSha256": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241",
+      "builtSha256": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241",
+      "normalizedTextEqual": true
+    },
+    {
+      "source": "public/lib/playerPortrait.js",
+      "built": "static/lib/playerPortrait.js",
+      "sourceSha256": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219",
+      "builtSha256": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219",
+      "normalizedTextEqual": true
+    },
+    {
+      "source": "public/lib/playerMotion.js",
+      "built": "static/lib/playerMotion.js",
+      "sourceSha256": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1",
+      "builtSha256": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1",
+      "normalizedTextEqual": true
+    },
+    {
+      "source": "public/lib/playerCapacityStudy.js",
+      "built": "static/lib/playerCapacityStudy.js",
+      "sourceSha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+      "builtSha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+      "normalizedTextEqual": true
+    }
+  ],
+  "findings": [],
+  "resolvedFindings": [
+    {
+      "id": "P2-neutral-front-missing-footwear-fallback",
+      "result": "Estimated footwear retained at solved ankles for absent anatomyrecipe,missing resolvedfootdimensions andnonfinite optionalfootdimensions;no savedmeasurements invented orDTOmutation."
+    },
+    {
+      "id": "stale-capacity-pose-fixture",
+      "result": "Historical person explicitlypins regionalv1 and exactfixtureposes remainunchanged. Independently authenticated20poses againstpreserved pre-rig motion/capacity modules."
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-measured-rig.test.js test/player-limb-contours.test.js test/player-regional-sections.test.js test/player-capacity-study.test.js",
+      "result": "15/15PASS,zero skips,5.451seconds;actualsplitSVG bonecenters/lengths andskeletalspacing,height/mass extremes,projectedside endpoints,all6mode3Dbones,restore,purity andfallbacks."
+    },
+    {
+      "command": "node .cache/regional-sections-legacy-independent.mjs",
+      "result": "9 authentic baselineframes and72 exact originalSVGhashesPASS;permanentfixture equalspreservedoriginal."
+    },
+    {
+      "command": "node .cache/neutral-rig-r2-independent.mjs",
+      "result": "20 authentic originalcapacityposes;3 meaningful optional-foot fallbackvariants;24 actualstatic/motion finite,unique,complete-resource,immutableSVGsPASS.",
+      "output": ".cache/neutral-rig-r2-independent-result.json"
+    },
+    {
+      "check": "Controlled gallery DTOreconciliation",
+      "result": "All6 before/final2 reported playerpairs exactlyequal,includingframes andratings."
+    }
+  ],
+  "inspectedImages": [
+    {
+      "path": "output/playwright/s117-measured-body-neutral-rig-before-mass-desktop-dark.png",
+      "sha256": "57075428f61997d8ad1b5ee824bf3e434ab094cddaeb1e88b5b0112d1d1d1067"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-neutral-rig-final2-mass-desktop-dark.png",
+      "sha256": "6b25cd7c8a0baab558074053e85ef4b418df94d5138037a12a4b87ea571b12c4"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-neutral-rig-before-recorded-reach-desktop-light.png",
+      "sha256": "ef6872e2b3e8bffd164d6b0055fc9c693028030dedfabd0857b463757764e436"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-neutral-rig-final2-recorded-reach-desktop-light.png",
+      "sha256": "d4f938266fcc7269323f9ce4b6df2d8fd0e0c6df082bd06edd7e39bb1a84b34c"
+    },
+    {
+      "path": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-dark-body.png",
+      "sha256": "e3a0c2a528aae9875f89228cf818910d42e783141b873de16094e00a2155723d"
+    },
+    {
+      "path": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-light-motion.png",
+      "sha256": "c20a9d2d0bba7bd2072ffff4c5f0900b204779babb09017c57818aeb7e63bfa6"
+    },
+    {
+      "path": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-dark-body.png",
+      "sha256": "5314e76992483e33237f52b29f887b5635ac4e333fcb086e9e4d66f9b3f91da8"
+    }
+  ],
+  "observations": [
+    "Front shoulder/hiproots now follow thesaved skeletalspan instead of softtissueoutline;heavybody neutralarms abduct withoutmovingrootcenters.",
+    "Pairedlimb subpaths shareone worldspace material andpaint inone visiblepath;no knee materialreset visible ininspected originals. Shoulderclosure isrounded.",
+    "Shorter/longer recordedreach remainsvisiblydistinct;desktop/mobilebody andmovementcontrols readable.",
+    "People remainrigid,illustrated/mannequin-like;this geometry/fallback acceptance isnot full naturalism."
+  ],
+  "primaryEvidence": {
+    "executionAttribution": "Primary browser/build execution,notindependentlyrerun. Reviewerchecked actualtestsource,receiptflags/artifactbindings andnormalizedbuiltmodules.",
+    "focused": "48/48PASS0fail0skip73fe00",
+    "captures": "Final2controlled+wholegallery/dossier3/3PASS49.6s305003",
+    "build": "5a0717/precache91f260196b7f313assets3481KB",
+    "bootReachability": "926d3bPASS649321bytes51modules0lazy134reachable4HTML",
+    "builtClient": "f63531terminal2/2PASS43.5s actualBUF named save→MIA replacement→BUF named load→reload;actual4neutral/eightmovingpaths and3Dbones all6modes.",
+    "receipts": [
+      {
+        "path": ".cache/player-measured-rig-client/worker.json",
+        "sha256": "11b6ca20ba1a7eda538f6bba1c44b67a0663fef327c42abd8c2349faf3058702",
+        "artifactDigest": "3804ade7a26e9c912891e2f4cdf2ebd6600c34b78ef6e6bc9d0b72ae1d9c314f",
+        "verifiedFlags": true
+      },
+      {
+        "path": ".cache/player-measured-rig-client/in-page.json",
+        "sha256": "bd8b10523a7e023d59a2ec7e6e8e62196ec4cd4d28ba36a7e5e776fb4ef609fb",
+        "artifactDigest": "3804ade7a26e9c912891e2f4cdf2ebd6600c34b78ef6e6bc9d0b72ae1d9c314f",
+        "verifiedFlags": true
+      }
+    ],
+    "manifest": {
+      "path": "static/deploy-manifest.json",
+      "sha256": "4ebd81708d29be8b6f484743210fc4b9e395a84f16d0299811510497cddf9eee",
+      "artifactDigest": "3804ade7a26e9c912891e2f4cdf2ebd6600c34b78ef6e6bc9d0b72ae1d9c314f"
+    }
+  },
+  "limits": [
+    "Seven originalPNGfiles inspected,not all40finalcaptures. Actualdossierafterstates inspected;no nonexistentneutral-rig-before whole-dossier image claimed.",
+    "Neutral abduction,regionalvolume,density andmaterial are artistic assumptions;not fitted anatomicalscan ormotioncapture.",
+    "Projectedlengths can shorten whentransversecomponents arehidden;3Dbone lengths remainauthority.",
+    "OrdinarySVGdecimalquantization retained;no claimfullmalformedrawDTO guarantee orperfectsubpixelhandendpointaccuracy.",
+    "No fullbrowser/career/rules rerun;fullappearance,empiricalfitting and release remainopen."
+  ]
+}

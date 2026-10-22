@@ -1,0 +1,86 @@
+{
+  "kind": "independent-admitted-source-year-payroll-review",
+  "round": 1,
+  "reviewedAt": "2026-10-07T20:27:41.903Z",
+  "verdict": "PASS",
+  "scope": "Explicit source-year admitted continuation calendar/payroll precursor; live annual policy and cross-year rights remain incomplete.",
+  "primaryReceipt": {
+    "file": ".cache/admitted-source-year-reviewed-primary.json",
+    "sha256": "d7eb4343c7579bb005d7f58717c3658c69caaf63de7ceb245deb3d21c7eb3bd4"
+  },
+  "primaryReceiptSha256": "d7eb4343c7579bb005d7f58717c3658c69caaf63de7ceb245deb3d21c7eb3bd4",
+  "sourceHashes": {
+    "src/domain/elevationInjuryPay.js": "ccf938fa7a3b2d8542bc86f958f0f50de76c5b2b1888e5534d02ac4673a596a0",
+    "src/domain/preRolloverMedicalCalendar.js": "a3b438c0f34f6fa19b376c233d577276523de8b896fdbea89eab5ab48648abb8",
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/runtime/GameSession.js": "4192c872265401d4be2dff1fe60ca394b0f61f57b13e1d30e99bbb188a6186ec",
+    "src/engine/offseasonSimulator.js": "1336e016c9a76d40970fda9378dca841e815c29de2bf7d163cb238c1253e8e09",
+    "test/admitted-source-year-payroll.test.js": "3847ecf5d8d075e2bfb523873f58d8b9c8cc727e9bbe495d2a0a06765b0b4155"
+  },
+  "findings": [],
+  "checks": [
+    {
+      "command": "node --test test/admitted-source-year-payroll.test.js test/admitted-injury-continuation.test.js test/pre-rollover-medical-calendar.test.js",
+      "pass": 26,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 12927.718,
+      "independent": true,
+      "source": "Final corrected default-false annual guard"
+    },
+    {
+      "command": "node .cache/admitted-source-year-independent-probe.mjs",
+      "independent": true,
+      "result": {
+        "twoPayerCalendar": true,
+        "lateSecondClubModifierFailureSnapshotAndRngUnchanged": true,
+        "unresolvedAnnualRolloverRefusalSnapshotUnchanged": true,
+        "invalidFlagAtomic": true
+      }
+    },
+    {
+      "command": "node .cache/admitted-source-year-binding-check.mjs",
+      "independent": true,
+      "result": {
+        "sixSourceHashesMatch": true,
+        "staticArtifactEntriesMatch": 340,
+        "sourceBuiltNormalizedEqual": true,
+        "actualCleSourceYearPaidWeeks": [
+          24,
+          25,
+          26
+        ],
+        "actualCleAdditionalCents": 9833334,
+        "actualAnnualAfterRecovery": true,
+        "compressedRestore": true,
+        "longCounterfactualAnnualAtomicRefusal": true,
+        "primaryProbeNotOverwritten": true
+      }
+    }
+  ],
+  "reviewedSemantics": [
+    "Default annual guard refuses active admitted rights. Only explicit source-year calendar mode permits its own completed calendar; recovered rights can advance normally.",
+    "Validated canonical source, retained term proof, original club/service/rate and matching episode govern payment. Post-term source-year pay does not require current employment and uses zero practice offset.",
+    "Flags are literal booleans and mutually exclusive; planning, retained-right creation, payroll and recovery occur on a clone before commit.",
+    "Actual payroll rows deduplicate; imported malformed term/rate, new-year or closed-year pay refuse. Real compressed restoration retains rights and earned pay.",
+    "All four live annual call sites still select preservePostTermClaims:true; this component does not repair the live automatic-dispute policy."
+  ],
+  "sourceAuthority": {
+    "url": "https://nflpaweb.blob.core.windows.net/website/PDFs/CBA/March-15-2020-NFL-NFLPA-Collective-Bargaining-Agreement-Final-Executed-Copy.pdf",
+    "sections": "Article33 section5(k/l), PDF214–215",
+    "observation": "Qualifying incapacitation supports continuing down-rate compensation and separately identifies disputes over entitlement/duration. This is not an endorsement of the unresolved modeled accounting or cross-year policy."
+  },
+  "artifactHashes": {
+    ".cache/admitted-source-year-current-probe.json": "6aa67032600a6e5047861b7730e4a892d2a7c5c2274e8b81ace8af00897916aa",
+    ".cache/probe-admitted-source-year-current.mjs": "78ab36cf52f216582ee165d56a22e6d765af2706322503c2ccc4ace77fac52c3",
+    ".cache/admitted-source-year-independent-probe.mjs": "1f57d3f82c30513884b9e7141bd9e4b85619820c204a562da807fa3c083ddb5e",
+    ".cache/admitted-source-year-binding-check.mjs": "fcb9213587362456f4b437ff832c07411138d8d1ac18ac69a32a8457a858cfec"
+  },
+  "limits": [
+    "No cross-year earning/rate/accounting bridge, injury settlement or complete admitted annual workflow.",
+    "Existing cap-v2 source-year/postseason classification is unchanged and retains its documented legal inference limitations.",
+    "The actual long-injury probe changes injury duration deliberately; it is not a played 20-week injury outcome.",
+    "No independent browser execution, UI delivery, whole NFL rules, current full-suite/career, appearance or release acceptance.",
+    "Primary 48-test/build/boot results are parent evidence; independent evidence here is the final26 group and explicit probes/bindings."
+  ]
+}

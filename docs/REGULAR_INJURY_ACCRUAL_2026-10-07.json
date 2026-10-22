@@ -1,0 +1,175 @@
+{
+  "kind": "regular-week-clearance-payroll-component",
+  "recordedAt": "2026-10-07T20:58:05.047Z",
+  "status": "component-verified-full-rules-item-in-progress",
+  "sourceHashes": {
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "src/runtime/GameSession.js": "e040e65a56bab2a1a4e73e8244147d0330bb737b804d295c3c27dc8f5515e7d8",
+    "test/regular-injury-accrual.test.js": "8432ad763c7217cb6318f64ba8c4f2684c95d037c9059d2a11fb70e4fbcc6840",
+    "src/domain/elevationInjuryPay.js": "ccf938fa7a3b2d8542bc86f958f0f50de76c5b2b1888e5534d02ac4673a596a0",
+    "src/domain/practiceContracts.js": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934"
+  },
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "9c0a181d726153fd2ca678f6a9472831828f149a553560d58fa7b787e3bf78a6",
+    "files": 341
+  },
+  "builtSourceMatches": [
+    {
+      "source": "src/domain/regularInjuryAccrual.js",
+      "artifact": "static/src/domain/regularInjuryAccrual.js",
+      "sha256": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13"
+    },
+    {
+      "source": "src/runtime/GameSession.js",
+      "artifact": "static/src/runtime/GameSession.js",
+      "sha256": "e040e65a56bab2a1a4e73e8244147d0330bb737b804d295c3c27dc8f5515e7d8"
+    },
+    {
+      "source": "src/domain/elevationInjuryPay.js",
+      "artifact": "static/src/domain/elevationInjuryPay.js",
+      "sha256": "ccf938fa7a3b2d8542bc86f958f0f50de76c5b2b1888e5534d02ac4673a596a0"
+    },
+    {
+      "source": "src/domain/practiceContracts.js",
+      "artifact": "static/src/domain/practiceContracts.js",
+      "sha256": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934"
+    }
+  ],
+  "preservedBaseline": {
+    "file": ".cache/regular-clearance-loss-before.json",
+    "sha256": "541991d099a83b37a6b4bc9f27e93268ed500798519cf4bb5dfdd3c87c25d942",
+    "beforeSource": {
+      "file": ".cache/regular-accrual-before.js",
+      "sha256": "4192c872265401d4be2dff1fe60ca394b0f61f57b13e1d30e99bbb188a6186ec"
+    },
+    "sourceSnapshot": {
+      "file": ".cache/regular-clearance-before-snapshot.json",
+      "sha256": "bea759a5325259fa9d06d660ae4d958364b8cb820e13513ecbc5b8ad807ac310"
+    }
+  },
+  "sameFixtureRepair": {
+    "file": ".cache/regular-accrual-current-probe.json",
+    "sha256": "baeeb1a2e201e7e700323ff63570b6b99f2e2039a4131a7f369fa6e39060f9dd",
+    "playerId": "P2026-BUF-QB-87221813",
+    "sourceGameId": "2026-regular-regular-season-1-BUF-IND",
+    "after": {
+      "gameId": "2026-regular-regular-season-1-BUF-IND",
+      "teamId": "BUF",
+      "year": 2026,
+      "week": 2,
+      "payCents": 2861111,
+      "practiceCents": 1375000,
+      "additionalCents": 1486111,
+      "capChargeCents": 1486111,
+      "capTreatmentVersion": "injury-compensation-cap-v2"
+    },
+    "missingCents": 0,
+    "actualRegularAdvance": true,
+    "compressedRestore": true
+  },
+  "primaryChecks": {
+    "focused": {
+      "pass": 57,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 21790.7744,
+      "outputChunk": "3d22c0",
+      "files": [
+        "test/regular-injury-accrual.test.js",
+        "test/elevation-injury-pay.test.js",
+        "test/admitted-source-year-payroll.test.js",
+        "test/admitted-injury-continuation.test.js",
+        "test/pre-rollover-medical-calendar.test.js",
+        "test/postseason-participating-accrual.test.js",
+        "test/postseason-recovery-completion.test.js"
+      ]
+    },
+    "preservedProbeOutputChunk": "5adc2b",
+    "build": {
+      "outputChunk": "e48e9c",
+      "serviceWorkerVersion": "f15c733c0124"
+    },
+    "boot": {
+      "outputChunk": "7551c3",
+      "bytes": 649321,
+      "byteLimit": 730000,
+      "modules": 51,
+      "moduleLimit": 58,
+      "lazyLeaks": 0
+    },
+    "reachability": {
+      "outputChunk": "add51e",
+      "modules": 132,
+      "htmlEntries": 4
+    }
+  },
+  "independentReview": {
+    "file": "docs/REGULAR_INJURY_ACCRUAL_REVIEW_2026-10-07.json",
+    "sha256": "a89ff8b41584bb51e492fb91c56ad817d619df3a9d41b206fb16c085dbc6706f",
+    "verdict": "PASS",
+    "scope": "Regular weekly clearance continuation accrual staging/reconciliation, not annual/cross-year policy or full NFL completion.",
+    "priorReview": {
+      "file": ".cache/regular-accrual-review-round1.json",
+      "sha256": "a85a807cfbf5711866301e5650633528d7410b5a58028cd49e3606a9891961c7",
+      "verdict": "FIX",
+      "preserved": true
+    },
+    "evidenceQualification": "R1 exploit ran before owner repair, but its fresh source hashing occurred after the repair landed; R1 helper hash therefore names receipt-time repaired bytes rather than the vulnerable executed helper. R1 historical FIX/probe is preserved unchanged. This R2 independently executes and accepts the current repaired ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13 source."
+  },
+  "browserFunctionalEvidence": {
+    "outputChunk": "ded1a8",
+    "pass": 2,
+    "fail": 0,
+    "spec": {
+      "file": "tests-ui/regular-injury-accrual-client.spec.js",
+      "sha256": "03c1798684d11d98e4e72467d6a6ef68cd64d683e8aa8b3fdb8c5fc2cf042900"
+    },
+    "results": [
+      {
+        "file": ".cache/regular-injury-accrual-client/worker.json",
+        "sha256": "dc26ced5a175fed306ddd4c18ff27fcefd4c29ec0edf43612d45c96c49b4f856",
+        "worker": true,
+        "playerId": "P2026-BUF-QB-87221813",
+        "artifactDigest": "9c0a181d726153fd2ca678f6a9472831828f149a553560d58fa7b787e3bf78a6",
+        "sourceSnapshotSha256": "bea759a5325259fa9d06d660ae4d958364b8cb820e13513ecbc5b8ad807ac310",
+        "actualRegularAdvance": true,
+        "namedSaveReplacementLoadReload": true,
+        "week": 2,
+        "additionalCents": 1486111,
+        "practiceCents": 1375000,
+        "originalPayer": "BUF",
+        "missingCents": 0,
+        "scope": "Controlled injury fixture, real regular runtime command and restoration; not full NFL policy or visual acceptance."
+      },
+      {
+        "file": ".cache/regular-injury-accrual-client/in-page.json",
+        "sha256": "1e8b64bc92f68bdd506359e8d38e25cf2b62a9113eda6cf28141e75ae26da695",
+        "worker": false,
+        "playerId": "P2026-BUF-QB-87221813",
+        "artifactDigest": "9c0a181d726153fd2ca678f6a9472831828f149a553560d58fa7b787e3bf78a6",
+        "sourceSnapshotSha256": "bea759a5325259fa9d06d660ae4d958364b8cb820e13513ecbc5b8ad807ac310",
+        "actualRegularAdvance": true,
+        "namedSaveReplacementLoadReload": true,
+        "week": 2,
+        "additionalCents": 1486111,
+        "practiceCents": 1375000,
+        "originalPayer": "BUF",
+        "missingCents": 0,
+        "scope": "Controlled injury fixture, real regular runtime command and restoration; not full NFL policy or visual acceptance."
+      }
+    ],
+    "scope": "Primary functional checks of actual built weekly command and Settings named-save replacement/load/reload; no visual-quality acceptance."
+  },
+  "behavior": [
+    "Eligibility captured before elapsed weekly recovery; actual source-club base pay reconciled after successful game/payroll.",
+    "Clearance, actual scheduled byes, release/replacement payer, same-club elevation coverage and exact retries retain correct existing weekly minimum.",
+    "New closed-year writes refuse; exact earned retries remain inert; batch planning commits no partial salary/cap."
+  ],
+  "limits": [
+    "Controlled qualifying injury input; no claim of a played injury outcome or population prevalence.",
+    "Existing cap-v2 classification retained, not a new independent accounting-policy certification.",
+    "Four live annual callers still select legacy auto-claim policy. Cross-year calendar/rate/accounting and explicit dispute election remain required.",
+    "No permanent-active salary proration, pension entitlement, full NFL rules, full appearance, current30GM, all-feature or release completion."
+  ]
+}

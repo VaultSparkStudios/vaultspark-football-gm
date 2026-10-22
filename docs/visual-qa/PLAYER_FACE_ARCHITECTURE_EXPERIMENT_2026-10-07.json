@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "status": "diagnostic-complete-candidate-not-adopted",
+  "scope": "Complete head quality comparison at ordinary UI size; not full appearance acceptance or a population fit",
+  "productionRendererChanged": false,
+  "runtimeCoefficientsChanged": false,
+  "artReference": {
+    "path": "docs/visual-qa/references/player-portrait-art-target-2026-10-07.png",
+    "sha256": "b8af6c7aa2b746a49a915e760d1d960ceb297ab40aea8987bd62829f6dca49e2",
+    "provenance": "Built-in image_gen.imagegen; copied unchanged from generated image artifact",
+    "generationId": "exec-9083c67e-572d-4acc-9f6e-2740725db197",
+    "prompt": "Use case: stylized-concept. Project-bound visual development reference for Franchise Architect, a serious professional American football management game. Create a polished character art reference sheet containing six distinct fictional adult male athletes, ages roughly 22–36, arranged as three columns by two rows on a restrained warm charcoal studio background. Each cell shows the SAME person's front head-and-shoulders portrait and smaller true side profile alongside, with matching facial proportions, haircut, beard and pigment. Human adult proportions, believable skull/jaw/cheek/nose/ear/lid anatomy, small realistic eyes and irises, natural skin material and subtle texture, coherent soft directional studio lighting, excellent premium sports-game character craft. A grounded realistic animated-film / sophisticated 3D sports-game look, readily recognizable individuals, not cartoon caricatures, dolls, mannequins or overly smooth plastic. Varied light, medium and deep skin shades and undertones; broad individual facial variation without assigning nationalities or race labels. Include a dark-skinned athlete with close coily fade and short beard; a medium-brown athlete with locs; a light-skinned red-haired athlete with green eyes and light stubble; a tan athlete with swept wavy dark hair and brown eyes; a deep-brown athlete with short natural coils and clean face; a light/olive athlete with straight dark hair, blue-gray eyes and full beard. Neutral expressions with quiet human warmth. Individual hair fibers grouped into convincing masses, believable hairlines, scalp/brow/beard pigment variation, natural iris color readable without oversized eyes. Plain dark blue athletic training tops, no logos, no names, no text, no flags. Consistent portrait camera and scale, clear cell spacing. This is an art-direction reference for a deterministic variable-trait renderer, not a statistical sample, not celebrity likenesses.",
+    "fictionalIndividuals": true,
+    "demographicSample": false,
+    "productionIdentityTemplates": false
+  },
+  "prototype": {
+    "path": "docs/visual-qa/references/player-face-depth-candidate-2026-10-07.mjs",
+    "sha256": "57560ecb24200fb1c08cf7d50215727025e599267332014aa9ac95b2cf87587a",
+    "authority": "Artistic independent front/profile relief; not a common 3D reconstruction",
+    "combinedGalleryCreationMs": 650,
+    "embeddedDataUriCharacters": 489108,
+    "performanceScope": "One local Chromium evaluation; timer covers both baseline/candidate SVG and DOM construction, twelve raster surfaces and PNG encoding. Original report rasterCreationMs field is mislabeled; no isolated raster timing or repeated production benchmark."
+  },
+  "execution": {
+    "baselineBrowser": {
+      "passed": 1,
+      "durationSeconds": 10.3,
+      "terminalOutput": "f709a0",
+      "initialFailure": "webServer cwd resolved inside .cache; fixed with explicit repository cwd"
+    },
+    "candidateBrowser": {
+      "passed": 1,
+      "durationSeconds": 13,
+      "terminalOutput": "aee188"
+    },
+    "auditPremises": {
+      "verified": 6,
+      "contradicted": 0,
+      "terminalOutput": "147957"
+    }
+  },
+  "captures": [
+    {
+      "file": "docs/visual-qa/captures/player-art-benchmark-desktop-dark.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "8ebed5a6490584652d05da9eba78146044c1764e92afa01f6b06d1f123e6581c",
+      "original": "output/playwright/player-art-benchmark-desktop-dark.png",
+      "primaryImageInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-art-benchmark-desktop-light.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "b3bfc65eb65db03976f42825abfa992b9c70ff7f59c70054a2f90e3699c47569",
+      "original": "output/playwright/player-art-benchmark-desktop-light.png",
+      "primaryImageInspected": false
+    },
+    {
+      "file": "docs/visual-qa/captures/player-art-benchmark-mobile-dark.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "95db45e7ba3b0195a9880f8af79d5f416a49bd2b296b980f5d4f32a7cb6640cd",
+      "original": "output/playwright/player-art-benchmark-mobile-dark.png",
+      "primaryImageInspected": false
+    },
+    {
+      "file": "docs/visual-qa/captures/player-art-benchmark-mobile-light.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "17a5ac396e72cb7362aec795afc92f00836fe9b0456232f23af7a090d8a182e3",
+      "original": "output/playwright/player-art-benchmark-mobile-light.png",
+      "primaryImageInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-depth-candidate-desktop-dark.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sha256": "65022b08fccbb7edc488defc98e70fa6e152332242ab582755dfded6025e090b",
+      "original": "output/playwright/player-depth-candidate-desktop-dark.png",
+      "primaryImageInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-depth-candidate-desktop-light.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sha256": "bf546c469627d8c8be26eabc74992396f02559432cfa3ea86963b126fb481896",
+      "original": "output/playwright/player-depth-candidate-desktop-light.png",
+      "primaryImageInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-depth-candidate-mobile-dark.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sha256": "e94111cec6ad1373358db0da0fc7f8a831c5766f90c8eb139e92e969100e7a82",
+      "original": "output/playwright/player-depth-candidate-mobile-dark.png",
+      "primaryImageInspected": true
+    },
+    {
+      "file": "docs/visual-qa/captures/player-depth-candidate-mobile-light.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sha256": "8c1faddc47d8c1194aa260753fabff2c8339b534181e43a45e8d77dc330f28dc",
+      "original": "output/playwright/player-depth-candidate-mobile-light.png",
+      "primaryImageInspected": true
+    }
+  ],
+  "primaryOriginalsInspected": 6,
+  "sources": [
+    {
+      "path": "public/lib/playerPortraitFace.js",
+      "sha256": "0b146360e1c160165e8a3a81816e9a24dff0a3e5bc3fc80ef4ed0ccfcc74f7e5"
+    },
+    {
+      "path": "public/lib/playerSideAppearance.js",
+      "sha256": "28bf2c3bcc24d353a83a1568c08afc40e4e94a60131371eff93edd33b4bb1c75"
+    },
+    {
+      "path": "public/lib/portraitSurfaceLighting.js",
+      "sha256": "35b8f2cd1b0ad86b0e83740e9e0b748eb1e7bba141f7d42c8a27ecd5d5cf3b72"
+    },
+    {
+      "path": "public/lib/fineFaceGeometry.js",
+      "sha256": "82557815ee93db40a64340701ceac6f14c417f128aab1f5c4a0d575e64ff7025"
+    },
+    {
+      "path": ".cache/portrait-art-benchmark.spec.mjs",
+      "sha256": "770e63bf6bb59904e512477dbaa42b3e9464e21286a1ef164b053b0b7e0def13"
+    },
+    {
+      "path": ".cache/face-depth-candidate.spec.mjs",
+      "sha256": "0a15e0b195d7efe540383779c4195ab887a65e7302f514855e1d48011058e5fd"
+    }
+  ],
+  "comparisonLimits": [
+    "Art target and generated players are different fictional identities.",
+    "Matched baseline/candidate rows use the same exported appearance/frame DTOs; this is not a full save-restoration test.",
+    "Front/profile canvases retain existing different portrait coordinate scales.",
+    "Only selected baseline images were inspected; all four candidate originals were inspected."
+  ],
+  "findings": [
+    "Current heads are planar and illustrated at game size; profile shading shows bounded patches.",
+    "Candidate continuous normals smooth some facial regions but do not repair adult anatomical naturalism, solid hair masses or beard silhouettes.",
+    "Independent profile relief does not prove matching front/profile anatomical depth.",
+    "Prototype raster creation and embedded payload are too costly to adopt without performance redesign."
+  ],
+  "decision": "Reject as the completed overhaul. Preserve as diagnostic evidence; do not ship the raster candidate or six static reference identities.",
+  "nextAcceptance": "Develop a common anatomical head representation with coherent front/profile projection, adult landmarks, hair/beard materials and bounded rendering cost. Prove visible variation and persistence at actual size before adoption.",
+  "blockingDefectsOpen": 1,
+  "globalVisualAcceptance": false,
+  "latestReceiptReplaced": false
+}

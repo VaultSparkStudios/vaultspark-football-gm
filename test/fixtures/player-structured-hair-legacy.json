@@ -1,0 +1,200 @@
+{
+  "scope": "Immediate pre-structured-hair legacy outputs with fixed DTO",
+  "sourceHashes": {
+    "playerPortraitFace": "400353a1aba55ba84e91f0c99807da74f949ceec02cbba7383616e61a7ec969c",
+    "playerSideAppearance": "edd306f6494caf2fe131f626cbeba20026ccfc61a114bf652574a01d685944d2"
+  },
+  "player": {
+    "id": "arranged-hair",
+    "age": 46,
+    "heightInches": 74,
+    "weightLbs": 225,
+    "profile": {
+      "appearanceRecipe": {
+        "version": "portrait-identity-v3",
+        "seed": "arranged-hair",
+        "complexionBand": [
+          0,
+          1
+        ]
+      },
+      "skeletonRecipe": {
+        "version": "fictional-physique-v1",
+        "seed": "arranged-hair"
+      },
+      "appearanceDetailRecipe": {
+        "version": "natural-appearance-detail-v1",
+        "seed": "arranged-hair"
+      },
+      "facialPigmentRecipe": "facial-pigment-v1",
+      "hairArrangementRecipe": {
+        "version": "hair-arrangement-v1",
+        "seed": "arranged-hair"
+      },
+      "individualAnatomyRecipe": {
+        "version": "individual-anatomy-v1",
+        "seed": "arranged-hair"
+      },
+      "regionalBodyShapeRecipe": {
+        "version": "regional-body-shape-v1",
+        "seed": "arranged-hair"
+      },
+      "fineFaceRecipe": {
+        "version": "fine-face-v1",
+        "seed": "arranged-hair"
+      }
+    },
+    "appearance": {
+      "version": "portrait-identity-v3",
+      "complexion": 0.40327695826999843,
+      "hairstyle": "long",
+      "hairColor": "#473126",
+      "naturalHairColor": "#473126",
+      "dyedHairColor": null,
+      "hairTexture": "straight",
+      "eyeColor": "#587496",
+      "hairLength": 0.9640238488093018,
+      "hairDensity": 0.7368674775469117,
+      "hairline": 0.06727414391934872,
+      "grayOnsetAge": 42,
+      "freckles": true,
+      "mole": null,
+      "facialHair": "mustache",
+      "faceWidth": 0.9777597255632282,
+      "jawWidth": 0.805383007247001,
+      "faceLength": 0.9812344754883089,
+      "eyeSpacing": 1.077425626520999,
+      "noseWidth": 0.8802380393259228,
+      "lipFullness": 1.0558349413331598,
+      "browWeight": 0.7720598491374403,
+      "earSize": 0.8751461627660319,
+      "expression": "calm",
+      "blinkDelay": 4.118897045729682,
+      "buildVariation": -0.01484613200649619,
+      "naturalHairTexture": "straight",
+      "skinUndertone": -0.5433205203153193,
+      "eyeAperture": 0.7387506542028859,
+      "eyeTilt": 0.14675581362098455,
+      "eyelidCrease": 0.6644477369263768,
+      "browArch": 1.3038414567126893,
+      "browAngle": 1.9197528446093202,
+      "noseBridge": 1.0488904561381787,
+      "noseTip": 0.7877307030139491,
+      "noseLength": 0.9573666379274801,
+      "cheekbone": 0.9430016005644575,
+      "cheekFullness": 0.9338140714680776,
+      "chinWidth": 1.1891687363386154,
+      "chinLength": 1.0768367077293806,
+      "lipWidth": 1.0111665766919031,
+      "lipCurve": -0.9169855685904622,
+      "earShape": 0.9759318319149315,
+      "facialAsymmetry": -0.5725373141467571,
+      "detailVersion": "natural-appearance-detail-v1",
+      "hairCurvature": 1.1539253881201148,
+      "hairWaveScale": 1.450460242992267,
+      "hairStrandWidth": 0.7355757738812827,
+      "irisShade": 0.16990664741024375,
+      "irisInnerMix": 0.284751253889408,
+      "irisPattern": 0.8468111159745604,
+      "hairArrangementVersion": "hair-arrangement-v1",
+      "hairPart": 0.304618020914495,
+      "hairStrandVariation": 0.4373178865411319,
+      "nasalRootWidth": 0.8532324326224625,
+      "nasalWingWidth": 1.0494551997398958,
+      "upperLipScale": 1.2318095745635218,
+      "lowerLipScale": 1.3084483007900416,
+      "chinProjection": 0.057887688372284196,
+      "foreheadSlope": -0.2526030945125967,
+      "browRidge": 0.607530361507088,
+      "facialPigmentVersion": "facial-pigment-v1",
+      "naturalFacialHairColor": "#392820",
+      "naturalBrowColor": "#3a2920",
+      "textureTreatment": false
+    },
+    "visualFrame": {
+      "heightInches": 74,
+      "weightLbs": 225,
+      "volumeBudgetInches3": 6227.978559795703,
+      "torsoVolumeInches3": 2717.5907576575655,
+      "legsVolumeInches3": 1913.312909702714,
+      "armsVolumeInches3": 706.7963431229828,
+      "neckVolumeInches3": 111.78122933797833,
+      "reservedVolumeInches3": 778.4973199744629,
+      "torsoLengthInches": 23.07834149759263,
+      "legLengthInches": 37.52165850240736,
+      "armSegmentLengthInches": 23.1,
+      "neckLengthInches": 3,
+      "chestWidthInches": 17.004241420280565,
+      "chestDepthInches": 11.621494005060212,
+      "waistRatio": 0.735354775397107,
+      "limbShapeVariation": -0.01484613200649619,
+      "upperArmWidth": 5.7326345667356176,
+      "thighWidth": 7.6864523477544635,
+      "neckDiameterInches": 6.887773746579861,
+      "upperArmShare": 0.5164786939742044,
+      "upperLegShare": 0.4895623313449323,
+      "pelvicBreadthInches": 10.692792153488845,
+      "footLengthInches": 11.304844925885554,
+      "footWidthInches": 4.474888792321581,
+      "shoulderWidth": 68.01696568112226,
+      "neckWidth": 34.43886873289931,
+      "torsoLength": 65,
+      "muscleDefinition": 0.391933529010453,
+      "shoulderSpanInches": 16.049022117645944,
+      "torsoShare": 0.3118694796971977,
+      "armLengthInches": 30.5,
+      "wingspanInches": 77.04902211764595,
+      "handSizeInches": 9.625
+    }
+  },
+  "cases": [
+    {
+      "hairstyle": "locs",
+      "hairTexture": "straight",
+      "frontSha256": "d4138ee65cdea23aae3fb29157adb79667ac143261a374adb5c7f2d146d8d996",
+      "sideSha256": "74362a264ee31173ef269d130cf746189ba40a3dea2deaa9af6d94e3c1a223e8"
+    },
+    {
+      "hairstyle": "locs",
+      "hairTexture": "wavy",
+      "frontSha256": "4bab10b8b024687e113c502703854d38b43b4199fea160fb7673441c0b6054ea",
+      "sideSha256": "4621dde7dcc79100581ce196886b5d5f183f72ac479e10614507d054df2ccbf9"
+    },
+    {
+      "hairstyle": "locs",
+      "hairTexture": "curly",
+      "frontSha256": "22f29dcc0e3ffab6dec43873a1493936083239dc69b6cfddcc8a8a8e850aefd1",
+      "sideSha256": "c4cdb1a962f515f4516c79324202fe40daa182ed1ab63f46d7706c383c3ba62b"
+    },
+    {
+      "hairstyle": "locs",
+      "hairTexture": "coily",
+      "frontSha256": "441248c3597ba2c1df29afd44fbf0da68ec264308e85b43810ef5d0ac91a95e3",
+      "sideSha256": "954935174d4301a4a4fcd61e048f9b795c5b597cd0de19d3b7e8d70ade488872"
+    },
+    {
+      "hairstyle": "braids",
+      "hairTexture": "straight",
+      "frontSha256": "5fe00e85eb4dd8b7725457c970d32466dc8ad148bc6e476376eeb8779bddce58",
+      "sideSha256": "4947cc2c246b8fc17f3ac18693977431eddd78a68b1bbb9336875f7529d36e4e"
+    },
+    {
+      "hairstyle": "braids",
+      "hairTexture": "wavy",
+      "frontSha256": "9dfd91306bd3a1cd80e53ae4dffd95b74de704df17c805a543f236d85f0bc481",
+      "sideSha256": "0e0fad09411b8e295dd2b689277467caca3b470a68bd1e37853f9a83f0efc666"
+    },
+    {
+      "hairstyle": "braids",
+      "hairTexture": "curly",
+      "frontSha256": "0b84498a1bae9ba3b2b65e520b4fc08531ff2928c702b6bee685cbe4d7e34fb6",
+      "sideSha256": "8c845b2b5a7b46de1902710525bd9552557c194b8576cff2bc465ee679c0d933"
+    },
+    {
+      "hairstyle": "braids",
+      "hairTexture": "coily",
+      "frontSha256": "30fd08bf6d7a5ac724c0f318536cbda8b24de13f47a084e14fad1951a41a2435",
+      "sideSha256": "88fa156abefafc1ce2ccd4da0e422de48d663d65d15a89667f98f68d2fb679e1"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "scope": "Unadopted fitted scalp clump geometry and truthful evidence; not complete-head craft or production acceptance",
+  "primaryReceiptPath": ".cache/head-clumps-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "87adfb8450c7f0882c6859fd41875d3ea39df9ca2ee6b6f5fbcb859cc8a1e6c2",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "efaeebd535efb60ba95ae2a2994c54044d16355931d647914bc437ebba01d0d9",
+    "prototypes/playerHead3d.test.mjs": "38cb110a6171c21649a23f4c4a23d65f3f7708a84176a75a2772e117a641ae33",
+    ".cache/head-clumps.spec.mjs": "34d409ca09bedeb4c238e91de7f5cc87d785004ea527b9c62bb30cbe382b0348",
+    ".cache/head-clumps.config.mjs": "d7f35fdb1eaba7cf814ecdff150dd54fd17bbabac7deb36f006bcc5737a81caa",
+    ".cache/head-clumps-grooming.spec.mjs": "4fb4823fd276a18ffd5259ea3e470793793028bdad24ea8d07135ab5013ffffb",
+    ".cache/head-clumps-grooming.config.mjs": "a563580bd41faa371ae821ae08eefa080f0d83adf5ab49679ecf510111683ff6",
+    ".cache/head-clumps-baseline-grooming.spec.mjs": "d59b5219e0bd8d2267897bc99a54b7b1f825e357cf20d8e05d1e75f4847e35e2",
+    ".cache/head-clumps-baseline-grooming.config.mjs": "cf843b2418c2e6bdcfcaedbff98854b8ccaf4b4af75bbb1660d1f8b17ddbbf6e",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "output/playwright/player-art-benchmark.json": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+  },
+  "beforeSourceHash": "c6f328a1b74b0cd79e1f40403a71cf03a92f92d5cb34b08a35d087ae012b2052",
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 13302.2417
+    },
+    {
+      "command": "node .cache/head-clumps-review-probe.mjs",
+      "cases": 32,
+      "styles": 8,
+      "textures": 4,
+      "sampledInteriorNormals": 33800,
+      "minimumOutwardRadialDot": 0.0027014942719208825,
+      "inwardSamples": 0,
+      "qualification": "High length/curvature/wave/strand-width/variation and narrow-long/deep head; sampled discrete mesh rows, not an all-continuous-path proof"
+    }
+  ],
+  "bindingsVerified": {
+    "sources": 10,
+    "currentCaptures": 41,
+    "beforeCaptures": 20
+  },
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/head-clumps-baseline-head-clumps-baseline-grooming-styles-desktop-dark.png",
+      "sha256": "2e48dcb56f438c1ee22b6a61bcad88bfd728145587ff2cdbd476b16d8ae64764"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-styles-desktop-dark.png",
+      "sha256": "e353fb2ccc19ef0fc97568d91604eed7702594e9d3e8c495fdd630707d8b7fe0"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-grooming-textures-mobile-light.png",
+      "sha256": "a12437a50a2c121eef751662532fc20c7796d7cc395d107a1c7c4ea0ca1552d0"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-clumps-final-head-clumps-native-0-open.png",
+      "sha256": "4bc41169f1793ddb6dee59c2b72291d0426ddfb11ee01108e44d3550dadf264e"
+    }
+  ],
+  "sourceObservations": [
+    "Surface-normal root offsets use the actual head tangent derivatives, with explicit crown fallback",
+    "Clump radius vanishes at root/tip; cross-section follows sampled centerline tangent using a stable root reference and secondary fallback; sampled outward normals passed",
+    "Thickness limited to .35 times locally finite-differenced curvature radius; this is numerical local protection, not a guarantee against all self-intersections/frame discontinuities/global overlap",
+    "Existing blink, pigment-only geometry, bounded tessellation and saved-input purity regressions retained and passed"
+  ],
+  "findings": [
+    {
+      "severity": "OPEN craft",
+      "description": "Matched 96px gallery shows long hair no longer hanging across the central face and more fitted scalp/side volume. Broad shared cap silhouettes still make buzz/fade/crew/waves close; long texture distinctions remain subtle and sparse loc ends remain visible."
+    },
+    {
+      "severity": "OPEN craft",
+      "description": "Native complete head remains mannequin-like with painted beard, rigid mouth and simplified ear/neck attachment. Current clumps are a useful local geometry refinement, not convincing complete-person acceptance."
+    }
+  ],
+  "primaryBrowserAttribution": "Primary current grooming1/1 14.8s, pose1/1 10.5s and baseline grooming1/1 9.8s; not independently rerun.135 intrinsic-pixel responses prove wiring only.",
+  "limits": [
+    "Controlled raw DTO pairs do not prove generator eligibility or fitted population frequencies",
+    "No all-device/continuous-frame/global-intersection/watertight proof",
+    "No production/lifecycle/career/persistence/performance or release acceptance",
+    "Full appearance and goal remain open"
+  ],
+  "fullAppearanceAccepted": false,
+  "productionAccepted": false
+}

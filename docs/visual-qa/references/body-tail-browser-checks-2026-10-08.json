@@ -1,0 +1,86 @@
+{
+  "controlledExamples": true,
+  "scaleCssPixelsPerInch": 2.1,
+  "checks": [
+    {
+      "i": 0,
+      "j": 0,
+      "height": 77,
+      "mass": 308,
+      "skull": 57.03,
+      "svgCount": 3
+    },
+    {
+      "i": 0,
+      "j": 1,
+      "height": 77,
+      "mass": 308,
+      "skull": 57.03,
+      "svgCount": 3
+    },
+    {
+      "i": 1,
+      "j": 0,
+      "height": 74,
+      "mass": 400,
+      "skull": 56.400000000000006,
+      "svgCount": 3
+    },
+    {
+      "i": 1,
+      "j": 1,
+      "height": 74,
+      "mass": 410,
+      "skull": 56.400000000000006,
+      "svgCount": 3
+    },
+    {
+      "i": 2,
+      "j": 0,
+      "height": 86,
+      "mass": 225,
+      "skull": 58.92,
+      "svgCount": 3
+    },
+    {
+      "i": 2,
+      "j": 1,
+      "height": 87,
+      "mass": 225,
+      "skull": 59.13,
+      "svgCount": 3
+    },
+    {
+      "i": 3,
+      "j": 0,
+      "height": 74,
+      "mass": 140,
+      "skull": 56.400000000000006,
+      "svgCount": 3
+    },
+    {
+      "i": 3,
+      "j": 1,
+      "height": 74,
+      "mass": 130,
+      "skull": 56.400000000000006,
+      "svgCount": 3
+    },
+    {
+      "i": 4,
+      "j": 0,
+      "height": 86,
+      "mass": 400,
+      "skull": 58.92,
+      "svgCount": 3
+    },
+    {
+      "i": 4,
+      "j": 1,
+      "height": 96,
+      "mass": 650,
+      "skull": 61.019999999999996,
+      "svgCount": 3
+    }
+  ]
+}

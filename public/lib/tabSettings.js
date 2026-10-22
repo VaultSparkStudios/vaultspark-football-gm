@@ -893,3 +893,47 @@ export async function applyBrandIdentity(overrides) {
     presentActionError(e);
   }
 }
+
+export function getSelectedRetirementOverridePlayer() {
+  return (state.retiredPool || []).find((player) => player.id === state.selectedRetirementOverridePlayerId) || null;
+}
+
+export function setSelectedRetirementOverridePlayer(playerId) {
+  state.selectedRetirementOverridePlayerId = playerId || null;
+  const player = getSelectedRetirementOverridePlayer();
+  if (!player) state.selectedRetirementOverridePlayerId = null;
+  const label = document.getElementById("retirementOverrideSelectedPlayerText");
+  if (label) label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
+  const button = document.getElementById("retirementOverrideBtn");
+  if (button) button.disabled = !player;
+}
+
+export function renderRetiredPool() {
+  const rows = (state.retiredPool || []).map((player) => ({
+    id: player.id,
+    player: player.name,
+    pos: player.pos,
+    age: player.age,
+    ovr: player.overall,
+    pot: player.potential,
+    retiredYear: player.retiredYear,
+    maxAge: player.maxAge,
+    seasons: player.seasonsPlayed,
+    eligible: player.canOverride ? "Yes" : "No",
+    action: ""
+  }));
+  renderTable("retiredTable", rows);
+  const table = document.getElementById("retiredTable");
+  table?.querySelectorAll("tr").forEach((tr, index) => {
+    if (index === 0) return;
+    const row = rows[index - 1];
+    if (!row) return;
+    const cell = tr.lastElementChild;
+    if (!cell) return;
+    const isSelected = row.id === state.selectedRetirementOverridePlayerId;
+    cell.innerHTML = row.eligible === "Yes"
+      ? `<button data-retired-override-id="${escapeHtml(row.id)}">${isSelected ? "Selected" : "Select"}</button>`
+      : "";
+  });
+  decoratePlayerColumnFromRows("retiredTable", rows, { idKeys: ["id"] });
+}

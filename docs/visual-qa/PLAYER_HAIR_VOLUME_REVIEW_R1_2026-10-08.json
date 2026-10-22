@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T12:30:43.447Z",
+  "reviewRound": 1,
+  "verdict": "FIX",
+  "scope": "Modern continuous hair volume only; independent implementation review of the frozen pre-repair source. This does not accept complete person naturalism or release.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_HAIR_VOLUME_2026-10-08.json",
+  "primaryReceiptSha256": "682bf2c0d0dbbab68649d277e8470f1d6ed7206a0979cc6e2a695287c1ea4af9",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "64d845393a95f40fbe2da1f589f42b9e72a829f3a3be6ec65749797c9ba62f4e",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "test/player-hair-volume.test.js": "f6d86a7b1b79567e3ccab801841a919f120fc7102b6f955f4789b99eb1bfd1cf",
+    "test/player-continuous-hair.test.js": "099d96880eccece3af9436c7c126e08f555200b8cf06124a1ce3b4e55b40bc6d",
+    "test/player-occupied-hair.test.js": "919c929c997f269757a51dc8faa6ee4c40462d6e1f6c6413e7e70fb4a4a7d20c",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-fine-face.test.js": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459",
+    "test/player-continuous-hair-identity.test.js": "225a744f0b736810235c317a6b712c0bdbb53611be0e64abb59dc2f5aa387f78",
+    "tests-ui/player-hair-volume-gallery.spec.js": "751274af592591e270515e4d30cc9ec3c0d9a6a3709e966f47a3dd323c575df1",
+    "tests-ui/player-hair-volume-production.spec.js": "dbb9d7580bf95f67c6e24ebbf60992492bb2b3bd2ffc306ab54312a4d543c252",
+    "tests-ui/player-hair-volume-client.spec.js": "7490fbb687772820bcc85b91f8a2a58e9128cfb89ab3bf8d9e599e358ddd5435",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+    "scripts/run-test-shard.mjs": "a1914511c47de0eed0da69d78c6932b4fa9a9c07d59acd6203b4c94533a77e0f"
+  },
+  "reviewedSource": "public/lib/playerHead3d.js",
+  "reviewedSourceSha256": "64d845393a95f40fbe2da1f589f42b9e72a829f3a3be6ec65749797c9ba62f4e",
+  "frozenReviewedSource": {
+    "path": ".cache/hair-volume-r1-reviewed-head.js",
+    "sha256": "64d845393a95f40fbe2da1f589f42b9e72a829f3a3be6ec65749797c9ba62f4e"
+  },
+  "baseline": {
+    "original": "public/lib/playerHead3d.js before this work",
+    "file": "references/player-hair-volume-before-2026-10-08.js",
+    "sha256": "8544fcbd7ccc3cce2bc1bbb238564c91a62e1ca45534267197597faacbc8b65a"
+  },
+  "diagnostic": {
+    "path": ".cache/hair-volume-r1-seam-diagnostic.json",
+    "sha256": "7d85e25eb5942c3aa42ac54e849ccd9d4e6797ffe168d26c6051cf520036ac02",
+    "terminalChunk": "00f442"
+  },
+  "findings": [
+    {
+      "id": "P2-hair-support-periodicity",
+      "severity": "P2",
+      "status": "open-in-reviewed-source",
+      "description": "The asymmetric support sweep uses an unwrapped angle. At scalp u=0 and u=1 the same physical rear meridian has different positions, leaving a genuine support seam. Long curtain roots can evaluate u>1 and disagree with equivalent wrapped support.",
+      "reproduction": {
+        "texturePosition": 0.6,
+        "hairLength": 2,
+        "hairDensity": 1,
+        "identitySeed": "seam-proof",
+        "grid": "Actual scalp indexed vertices, row16, columns0/80",
+        "gaps": {
+          "side-part": 11.899999394327898,
+          "swept": 15.899998037064046,
+          "long": 10.899999285454104,
+          "crew": 1.3367227687428613e-14
+        }
+      },
+      "requiredRepair": "Periodic support values and tangents, equivalent wrapped curtain roots, and actual endpoint/normal regression checks across saved controls."
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-hair-volume.test.js test/player-continuous-hair.test.js test/player-occupied-hair.test.js test/player-shared-head.test.js test/player-fine-face.test.js test/player-continuous-hair-identity.test.js",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 31692.5406,
+      "terminalChunk": "d927c2",
+      "qualification": "Completed on the reviewed pre-repair source; these tests do not cover the angular seam."
+    },
+    {
+      "check": "117 frozen source/baseline/capture/report/client byte bindings",
+      "result": "PASS",
+      "terminalChunk": "f159fc"
+    },
+    {
+      "check": "Eight built hashes and normalized source/build comparisons against frozen reviewed sources",
+      "result": "PASS",
+      "terminalChunk": "f159fc"
+    },
+    {
+      "check": "Actual indexed scalp seam probe",
+      "result": "FAIL",
+      "terminalChunk": "00f442"
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/hair-volume-hair-volume-gallery-0-desktop-light.png",
+      "sha256": "7efe8e7d1d7edb7900fee979586fa169ea684216b920ca1efd2e37d3e5a80013"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-hair-volume-gallery-4-desktop-dark.png",
+      "sha256": "ad99409ed9efa8fb58cd1dd2e30b2712cbed7be35bb59382ea42ea488ec51b48"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-hair-volume-gallery-13-mobile-light.png",
+      "sha256": "d462a70584ab7b9a6c924d4b54ee85c5a2bbffe59c62f1243ddc5616f89a0d5b"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-production-hair-volume-after-desktop-light-portrait.png",
+      "sha256": "c86c04b66b0a045d95e174396455256bbcb0026f462dd5c9395132b1acdfe4b4"
+    },
+    {
+      "path": "docs/visual-qa/captures/hair-volume-production-hair-volume-after-mobile-dark-motion.png",
+      "sha256": "f8c660c72e23ae5ef933beb39000d4cc496979a3858a24b304507a72109f9c91"
+    }
+  ],
+  "visualObservations": [
+    "Matched combed hair shows stronger swept occupancy and long hair shows connected side/back volume instead of sparse cheek-height wires.",
+    "At normal mobile scale long hair is visibly fuller; the head and beard still look plastic/painted and long ends remain simplified.",
+    "Rear seam is established by actual geometry, rather than by the front/profile camera images."
+  ],
+  "testCorrectionAssessment": "The two tests now compare scalp changes with the accepted immediate pre-change face renderer. This is appropriate for current hair isolation because older references precede accepted facial anatomy changes. Original reference files and old golden expectations remain preserved. The tests must not be described as re-executing every historical component comparison.",
+  "primaryExecution": {
+    "domainTests": 24,
+    "browserTests": 4,
+    "attribution": "Executed by primary; independently inspected test source and frozen evidence, not independently rerun browser.",
+    "clientClaims": "Both runtime specs explicitly compare front/profile PNGs and saved whole player, measurements and RNG after named save, actual franchise replacement, named load and reload.",
+    "artifactDigest": "523de82a0f7cba88470b32d0fb88e07cfdee514556e3f0fb134ddf18d0aaf37a"
+  },
+  "bindingQualification": "Production repair began only after source/probe were frozen. This R1 receipt remains bound to the original frozen source and immutable primary, not repaired current production.",
+  "limits": [
+    "No independent browser execution. Five original images inspected, not all84.",
+    "Full hairstyle recognition, adult-person naturalism, population calibration, whole body mass reconstruction, full suite, full NFL policy, current long-career equivalence and release are not accepted."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

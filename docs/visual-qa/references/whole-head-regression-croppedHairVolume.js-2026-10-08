@@ -1,0 +1,24 @@
+import {blendAppearanceColor as blend} from './appearancePalette.js';
+const bounded=(v,f,lo,hi)=>Number.isFinite(v)?Math.max(lo,Math.min(hi,v)):f;
+const n=v=>Math.round(v*100)/100;
+function hash(value){let h=2166136261;for(const c of String(value))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
+
+// Low-frequency lock masses precede individual fibers. Both projections use
+// the same saved recipe and lighting; the supplied scalp clip owns the edge.
+// These are artistic surface estimates, not measured follicle distributions.
+export function croppedHairVolume(a,seed,{id,clip,x,y,width,height}={}){
+  if(a.fineFaceVersion!=='fine-face-v1'||a.detailVersion!=='natural-appearance-detail-v1'
+    ||!['crew','short-curls','coils','afro'].includes(a.hairstyle))return '';
+  const curly=a.hairTexture==='curly'||a.hairTexture==='coily';
+  const curve=bounded(a.hairCurvature,1,.65,1.45),wave=bounded(a.hairWaveScale,1,.65,1.5);
+  const light=blend(a.hairColor,'#e5cba6',.10),shadow=blend(a.hairColor,'#100e0c',.24);
+  const locks=Array.from({length:45},(_,i)=>{
+    const h=hash(`${seed}:cropped-lock:${i}`),u=(i%9+.15+(h%997)/997*.55)/9;
+    const v=(Math.floor(i/9)+.2+((h>>>10)%991)/991*.55)/5;
+    const cx=x+u*width,cy=y+v*height;
+    const rx=width*(curly?.074:.045)*curve*(.8+(h%17)/40),ry=height*(curly?.115:.18)*wave;
+    const d=`M${n(cx-rx)} ${n(cy)} C${n(cx-rx*1.15)} ${n(cy-ry*.8)} ${n(cx-rx*.3)} ${n(cy-ry)} ${n(cx+rx*.3)} ${n(cy-ry*.8)} C${n(cx+rx)} ${n(cy-ry*.6)} ${n(cx+rx*1.1)} ${n(cy+ry*.2)} ${n(cx+rx*.55)} ${n(cy+ry*.75)} C${n(cx)} ${n(cy+ry)} ${n(cx-rx*.8)} ${n(cy+ry*.75)} ${n(cx-rx)} ${n(cy)}Z`;
+    return `<path d="${d}" fill="url(#${id}-lock-form)" opacity="${n(.5+(h%11)/30)}"/>`;
+  }).join('');
+  return `<defs><linearGradient id="${id}-lock-form" x1="0" y1="0" x2="1" y2=".7"><stop stop-color="${shadow}" stop-opacity="0"/><stop offset=".2" stop-color="${shadow}" stop-opacity=".5"/><stop offset=".48" stop-color="${a.hairColor}"/><stop offset=".62" stop-color="${light}" stop-opacity=".75"/><stop offset="1" stop-color="${shadow}" stop-opacity="0"/></linearGradient></defs><g data-hair-volume="grouped-locks-v1" clip-path="url(#${clip})">${locks}</g>`;
+}

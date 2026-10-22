@@ -2,7 +2,7 @@ import { createSessionFromSnapshot } from "../../runtime/bootstrap.js";
 import { deleteSaveSlot, listBackupSlots, listSaveSlots, loadSessionFromSlot, saveSessionToSlot } from "../../runtime/saveStore.js";
 import { buildIntegrityStamp, verifyIntegrityStamp } from "../../adapters/persistence/saveStoreShared.js";
 import { inspectSnapshotCompatibility, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
-import { readRequestBody } from "../httpHardening.js";
+import { readRequestBody, MAX_SNAPSHOT_BODY_BYTES } from "../httpHardening.js";
 
 // Save slots, snapshots, rolling backups and rewind.
 // Split verbatim from the handleApi dispatcher in src/server.js. Mutable server
@@ -26,7 +26,7 @@ export async function handleSavesRoutes(req, res, url, ctx) {
   }
 
   if (req.method === "POST" && url.pathname === "/api/snapshot/import") {
-    const body = parseJsonBody(await readRequestBody(req));
+    const body = parseJsonBody(await readRequestBody(req, { limit: MAX_SNAPSHOT_BODY_BYTES }));
     if (!body || !body.snapshot || typeof body.snapshot !== "object") {
       sendJson(res, 400, { ok: false, error: "snapshot object is required." });
       return true;
@@ -41,7 +41,7 @@ export async function handleSavesRoutes(req, res, url, ctx) {
   }
 
   if (req.method === "POST" && url.pathname === "/api/snapshot/inspect") {
-    const body = parseJsonBody(await readRequestBody(req));
+    const body = parseJsonBody(await readRequestBody(req, { limit: MAX_SNAPSHOT_BODY_BYTES }));
     if (!body || !body.snapshot || typeof body.snapshot !== "object") {
       sendJson(res, 400, { ok: false, error: "snapshot object is required." });
       return true;

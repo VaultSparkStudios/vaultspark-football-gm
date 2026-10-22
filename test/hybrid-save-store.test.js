@@ -502,3 +502,27 @@ for (const failedKey of ["meta", "save", "idb", "abort"]) {
     });
   });
 }
+
+test('one delayed open retries without abandoning high capacity or publishing legacy bytes',async()=>{
+ const stalled=createFakeIndexedDB({stallOpen:true}),healthy=createFakeIndexedDB();let attempts=0,degraded=0;
+ const fake={open:()=> (++attempts===1?stalled:healthy).open()};
+ await withFakeIdb(fake,async()=>{
+  const storage=createMemoryStorage(),store=createHybridBrowserSaveStore({storage,idbTimeoutMs:20,onDegrade:()=>degraded++});
+  const saved=await store.saveSessionToSlot('delayed-open',SNAPSHOT);
+  assert.equal(saved.store,'idb');assert.equal(store.isHighCapacity(),true);assert.equal(degraded,0);
+  assert.equal(storage.getItem('vsfgm:save:delayed-open'),null);assert.equal(healthy.records.size,1);
+  assert.equal((await store.loadSessionFromSlot('delayed-open')).currentWeek,3);
+  stalled.lateOpen();assert.equal(stalled.closes,1,'late timed-out connection closes without writing');
+ });
+});
+test('first stalled put aborts and retries the same candidate before metadata publication',async()=>{
+ let writes=0,degraded=0;const options={afterSuccess:({mode})=>{if(mode==='readwrite')writes++;options.stallTransactions=mode==='readwrite'&&writes===1;}};
+ const fake=createFakeIndexedDB(options);
+ await withFakeIdb(fake,async()=>{
+  const storage=createMemoryStorage(),store=createHybridBrowserSaveStore({storage,idbTimeoutMs:20,onDegrade:()=>degraded++});
+  const saved=await store.saveSessionToSlot('delayed-put',SNAPSHOT);
+  assert.equal(saved.store,'idb');assert.equal(writes,2);assert.equal(fake.records.size,1);
+  assert.equal(degraded,0);assert.equal(storage.getItem('vsfgm:save:delayed-put'),null);
+  assert.equal((await store.loadSessionFromSlot('delayed-put')).currentWeek,3);
+ });
+});

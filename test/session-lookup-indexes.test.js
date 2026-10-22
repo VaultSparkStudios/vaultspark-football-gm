@@ -50,13 +50,18 @@ test("GameSession lookup indexes track releases, signings, and trades", () => {
 
   const outgoing = session.getRoster("BUF").find((player) => player.id !== released.id);
   const incoming = mia[0];
+  // This indexes test exchanges arbitrary premium contracts, which can exceed
+  // modern room. Explicit existing-year rollover funds the transaction;
+  // dedicated cap tests retain unfunded trade refusal coverage.
+  session.league.capLedger.BUF.rollover += 30_000_000;
+  session.league.capLedger.MIA.rollover += 30_000_000;
   const result = session.tradePlayers({
     teamA: "BUF",
     teamB: "MIA",
     teamAPlayerIds: [outgoing.id],
     teamBPlayerIds: [incoming.id]
   });
-  assert.equal(result.ok, true);
+  assert.equal(result.ok, true, JSON.stringify(result));
   assert.equal(session.getPlayerById(outgoing.id)?.teamId, "MIA");
   assert.equal(session.getPlayerById(incoming.id)?.teamId, "BUF");
   assert.equal(session.getRoster("BUF").some((player) => player.id === incoming.id), true);

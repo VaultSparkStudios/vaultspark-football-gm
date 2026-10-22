@@ -1,0 +1,2447 @@
+{
+  "schemaVersion": 1,
+  "kind": "code-derived-player-trait-authority-and-consumer-inventory",
+  "checkedDate": "2026-10-06",
+  "generatedAt": "2026-10-07T03:38:05.564Z",
+  "fixture": {
+    "seed": 731,
+    "position": "LB",
+    "age": 22,
+    "hairstyle": "fade",
+    "facialHair": "short-beard"
+  },
+  "scope": "Current generated appearance and frame fields; no demographic fit, calibrated anatomy or visual acceptance claim.",
+  "sourceHashes": [
+    {
+      "path": ".cache/generate-player-trait-manifest.mjs",
+      "sha256": "d820844f0e5ff8f679286f87f775f34cc80bea3c2d7a6b3f27735e5b2f74db31"
+    },
+    {
+      "path": "src/domain/playerFactory.js",
+      "sha256": "3065bc39f7d8ba1cf5743235094e81bd54a93fb4e70df250ec152e68b26c4323"
+    },
+    {
+      "path": "src/utils/rng.js",
+      "sha256": "f6a657984fd920ab21f879a41d82d44ca35026b9aacac3f4ac8f69f402979b8e"
+    },
+    {
+      "path": "src/domain/playerIdentity.js",
+      "sha256": "5aeb5226f1318adb7b9d966ab8f856ed0578f2527aedd86afba3fca62a443c6f"
+    },
+    {
+      "path": "src/domain/playerVisualIdentity.js",
+      "sha256": "7f6a32398cbd00be7d907a888c8dc4e1a11c54fd43bf25f250da10da5e7dce5a"
+    },
+    {
+      "path": "src/domain/playerMeasurements.js",
+      "sha256": "2d8ccd15fa403a7991a70fe0d5f2e00a29fd4dd47ba3e860ed1ccddf95e38124"
+    },
+    {
+      "path": "public/lib/appearancePalette.js",
+      "sha256": "b4af7661ebf17e44bcbc39dc16c3e867ddc0019fd73712e86689ccf3299d32c5"
+    },
+    {
+      "path": "public/lib/fineFaceGeometry.js",
+      "sha256": "6a6be7a62e804e3ef783da1215200ae32f3b5fe5d3a083a5c6ac43d6fcab76fd"
+    },
+    {
+      "path": "public/lib/hairArrangement.js",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+    },
+    {
+      "path": "public/lib/hairGrayFibers.js",
+      "sha256": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49"
+    },
+    {
+      "path": "public/lib/physiqueGeometryContract.js",
+      "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1"
+    },
+    {
+      "path": "public/lib/playerFootwear.js",
+      "sha256": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5"
+    },
+    {
+      "path": "public/lib/playerHand.js",
+      "sha256": "9b5cb671691759539108530209c3226e584dd53feeec09a6846fcab56698b927"
+    },
+    {
+      "path": "public/lib/playerMotion.js",
+      "sha256": "9792a376d299bd793ca1e4338a7a9e1f3b73642cfa10b59df6cdc93bc231b552"
+    },
+    {
+      "path": "public/lib/playerPortrait.js",
+      "sha256": "191d5d523303a5e01c4c2677b08e99ea820ab5d4098b3b74e6bb3564348b4f2d"
+    },
+    {
+      "path": "public/lib/playerPortraitFace.js",
+      "sha256": "6108f4034319b3d159c520adfc9eaaea40c9ad010c9a14e7eb2395a61bf36812"
+    },
+    {
+      "path": "public/lib/playerSideAppearance.js",
+      "sha256": "131a8ce40dfd17de76d2e92f14b88905116b0dd27ec33bcf1b015c0c91e592c3"
+    },
+    {
+      "path": "public/lib/portraitAppearanceContract.js",
+      "sha256": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96"
+    },
+    {
+      "path": "public/lib/portraitSurfaceLighting.js",
+      "sha256": "65b000a6434a97115ba3cd85ea29151089b5c16b0b52cac982246d174950fd63"
+    },
+    {
+      "path": "public/lib/profiledLimbSurface.js",
+      "sha256": "fbc74ae9113a7c653c1efe71b140753ad3c53d05eba2c01340e59bd16e358bb8"
+    }
+  ],
+  "recipeVersions": {
+    "appearanceRecipe": "portrait-identity-v3",
+    "skeletonRecipe": "fictional-physique-v1",
+    "appearanceDetailRecipe": "natural-appearance-detail-v1",
+    "hairArrangementRecipe": "hair-arrangement-v1",
+    "individualAnatomyRecipe": "individual-anatomy-v1",
+    "regionalBodyShapeRecipe": "regional-body-shape-v1",
+    "fineFaceRecipe": "fine-face-v1"
+  },
+  "renderFixture": {
+    "id": "P2026-BUF-LB-74120510",
+    "name": "Lucas Martin",
+    "age": 22,
+    "heightInches": 76,
+    "weightLbs": 226,
+    "jerseyNumber": 31,
+    "profile": {
+      "source": "generated-roster",
+      "pfrId": null,
+      "college": null,
+      "identity": {
+        "version": "tides-2023-fictional-identity-v1",
+        "countryModelVersion": "fictional-joint-country-v3",
+        "familyHistoryModelVersion": "fictional-country-family-v1",
+        "birthYear": 2004,
+        "namingCohort": {
+          "key": "2000s",
+          "source": "https://www.ssa.gov/oact/babynames/decades/names2000s.html",
+          "sourcePeriod": "2000–2009",
+          "extrapolated": false
+        },
+        "namingContext": {
+          "version": "fictional-family-community-names-v1",
+          "kind": "family",
+          "community": "French",
+          "familyHistory": "French",
+          "vocabulary": "curated-fictional",
+          "givenNameSource": "curated-fictional",
+          "assumptions": "creative-vocabulary-and-blend",
+          "fallbackReason": null
+        },
+        "source": "fictional-generated",
+        "surveyCategory": "White",
+        "birthCountry": "United States",
+        "footballUpbringing": "United States",
+        "heritage": [
+          "French"
+        ],
+        "name": "Lucas Martin"
+      },
+      "faceSeed": "face-755642660",
+      "appearanceRecipe": {
+        "version": "portrait-identity-v3",
+        "seed": "face-755642660",
+        "complexionBand": [
+          0,
+          0.5
+        ]
+      },
+      "skeletonRecipe": {
+        "version": "fictional-physique-v1",
+        "seed": "face-755642660"
+      },
+      "appearanceDetailRecipe": {
+        "version": "natural-appearance-detail-v1",
+        "seed": "face-755642660"
+      },
+      "hairArrangementRecipe": {
+        "version": "hair-arrangement-v1",
+        "seed": "face-755642660"
+      },
+      "individualAnatomyRecipe": {
+        "version": "individual-anatomy-v1",
+        "seed": "face-755642660"
+      },
+      "regionalBodyShapeRecipe": {
+        "version": "regional-body-shape-v1",
+        "seed": "face-755642660"
+      },
+      "fineFaceRecipe": {
+        "version": "fine-face-v1",
+        "seed": "face-755642660"
+      }
+    },
+    "ratings": {
+      "speed": 71,
+      "strength": 69,
+      "agility": 67,
+      "acceleration": 68,
+      "jumping": 73,
+      "throwPower": 70,
+      "throwAccuracy": 67,
+      "throwAccuracyShort": 76,
+      "throwAccuracyMedium": 75,
+      "throwAccuracyDeep": 81,
+      "throwOnRun": 64,
+      "catching": 75,
+      "carrying": 69,
+      "breakTackle": 75,
+      "trucking": 81,
+      "elusiveness": 76,
+      "routeRunning": 83,
+      "release": 67,
+      "spectacularCatch": 75,
+      "passBlocking": 79,
+      "runBlocking": 64,
+      "tackle": 80,
+      "coverage": 77,
+      "passRush": 70,
+      "blockShedding": 76,
+      "pursuit": 93,
+      "hitPower": 79,
+      "manCoverage": 72,
+      "zoneCoverage": 75,
+      "awareness": 77,
+      "playRecognition": 79,
+      "discipline": 78,
+      "coverageShort": 78,
+      "coverageMedium": 75,
+      "coverageDeep": 74
+    },
+    "appearance": {
+      "version": "portrait-identity-v3",
+      "complexion": 0.10691628500353545,
+      "hairstyle": "fade",
+      "hairColor": "#66472e",
+      "naturalHairColor": "#66472e",
+      "dyedHairColor": null,
+      "hairTexture": "curly",
+      "eyeColor": "#746047",
+      "hairLength": 1.1532564860768617,
+      "hairDensity": 0.7016563858138397,
+      "hairline": 0.7336166847962886,
+      "grayOnsetAge": 42,
+      "freckles": false,
+      "mole": null,
+      "facialHair": "short-beard",
+      "faceWidth": 0.941677259830758,
+      "jawWidth": 0.9189911611471325,
+      "faceLength": 1.053281713903416,
+      "eyeSpacing": 0.9037853677058593,
+      "noseWidth": 1.1958641064353288,
+      "lipFullness": 0.884620183845982,
+      "browWeight": 0.9580528072547168,
+      "earSize": 0.9659265542868525,
+      "expression": "warm",
+      "blinkDelay": 6.625723052071407,
+      "buildVariation": 0.06753689210861921,
+      "naturalHairTexture": "curly",
+      "skinUndertone": 0.4032510998658836,
+      "eyeAperture": 0.8537180725717917,
+      "eyeTilt": 1.4722999976947904,
+      "eyelidCrease": 0.968029641546309,
+      "browArch": 0.871916624729056,
+      "browAngle": 0.43318221159279346,
+      "noseBridge": 0.922800249280408,
+      "noseTip": 1.1671091249445453,
+      "noseLength": 1.0932136857416481,
+      "cheekbone": 1.1637690184870735,
+      "cheekFullness": 1.126952622900717,
+      "chinWidth": 0.9627602838911116,
+      "chinLength": 1.052232259423472,
+      "lipWidth": 0.8679987207986414,
+      "lipCurve": -0.43830143893137574,
+      "earShape": 0.9667095220647752,
+      "facialAsymmetry": 0.13157050916925073,
+      "detailVersion": "natural-appearance-detail-v1",
+      "hairCurvature": 1.2241116140037773,
+      "hairWaveScale": 1.2866947838221676,
+      "hairStrandWidth": 0.937204157258384,
+      "irisShade": 0.11885690700728446,
+      "irisInnerMix": 0.5952393438783474,
+      "irisPattern": 0.45277194115333264,
+      "hairArrangementVersion": "hair-arrangement-v1",
+      "hairPart": 0.2115719662513584,
+      "hairStrandVariation": 0.36103620529174807,
+      "fineFaceVersion": "fine-face-v1",
+      "nasalRootWidth": 0.8779489643638954,
+      "nasalWingWidth": 1.1584935856517404,
+      "upperLipScale": 0.9269550499506294,
+      "lowerLipScale": 1.0045095319277606,
+      "chinProjection": 0.46018204893916836,
+      "foreheadSlope": 0.10019826716743407,
+      "browRidge": 0.3881334534380585,
+      "textureTreatment": false
+    },
+    "visualFrame": {
+      "heightInches": 76,
+      "weightLbs": 226,
+      "volumeBudgetInches3": 6255.6584645059065,
+      "torsoVolumeInches3": 2889.686670082334,
+      "legsVolumeInches3": 1919.4989435549069,
+      "armsVolumeInches3": 574.826224557738,
+      "neckVolumeInches3": 89.68931824768937,
+      "reservedVolumeInches3": 781.9573080632383,
+      "torsoLengthInches": 22.435474974000826,
+      "legLengthInches": 40.094525025999175,
+      "armSegmentLengthInches": 21.275,
+      "neckLengthInches": 3,
+      "chestWidthInches": 16.166281852242232,
+      "chestDepthInches": 11.877903014522238,
+      "waistRatio": 0.8461445263398786,
+      "limbShapeVariation": 0.06753689210861921,
+      "upperArmWidth": 5.2962227676412805,
+      "thighWidth": 7.379270869492598,
+      "neckDiameterInches": 6.169710601891986,
+      "upperArmShare": 0.5518494551302866,
+      "upperLegShare": 0.4942417707107961,
+      "pelvicBreadthInches": 10.512141770012677,
+      "footLengthInches": 12.685964462314733,
+      "footWidthInches": 4.995505843313166,
+      "shoulderWidth": 64.66512740896893,
+      "neckWidth": 30.84855300945993,
+      "torsoLength": 68.6,
+      "muscleDefinition": 0.4607572310916701,
+      "shoulderSpanInches": 16.75,
+      "torsoShare": 0.29520361807895823,
+      "armLengthInches": 28.875,
+      "wingspanInches": 74.5,
+      "handSizeInches": 9.375
+    }
+  },
+  "recordedAnatomyControls": [
+    {
+      "field": "hipJointSpanInches",
+      "units": "inches",
+      "savedInputs": [
+        "hipJointSpanInches",
+        "measurements.hipJointSpanInches"
+      ],
+      "sourceMetadata": [
+        "measurementProvenance",
+        "measurements.provenance"
+      ],
+      "frameKey": "hipJointSpanInches",
+      "minimum": 5,
+      "maximum": 12,
+      "endpoint": "hip-joint-center-to-center",
+      "decoder": "resolveRecordedAnatomy",
+      "fixtureScope": "Optional imported control, absent from this generated baseline. Scoped test/player-recorded-anatomy.test.js and tests-ui/player-recorded-anatomy.spec.js provide controlled input evidence; not an empirical anatomical distribution."
+    },
+    {
+      "field": "footLengthInches",
+      "units": "inches",
+      "savedInputs": [
+        "footLengthInches",
+        "measurements.footLengthInches"
+      ],
+      "sourceMetadata": [
+        "measurementProvenance",
+        "measurements.provenance"
+      ],
+      "frameKey": "footLengthInches",
+      "minimum": 7,
+      "maximum": 16,
+      "endpoint": "heel-to-longest-toe",
+      "decoder": "resolveRecordedAnatomy",
+      "fixtureScope": "Optional imported control, absent from this generated baseline. Scoped test/player-recorded-anatomy.test.js and tests-ui/player-recorded-anatomy.spec.js provide controlled input evidence; not an empirical anatomical distribution."
+    },
+    {
+      "field": "footWidthInches",
+      "units": "inches",
+      "savedInputs": [
+        "footWidthInches",
+        "measurements.footWidthInches"
+      ],
+      "sourceMetadata": [
+        "measurementProvenance",
+        "measurements.provenance"
+      ],
+      "frameKey": "footWidthInches",
+      "minimum": 2.5,
+      "maximum": 6,
+      "endpoint": "maximum-barefoot-transverse-breadth",
+      "decoder": "resolveRecordedAnatomy",
+      "fixtureScope": "Optional imported control, absent from this generated baseline. Scoped test/player-recorded-anatomy.test.js and tests-ui/player-recorded-anatomy.spec.js provide controlled input evidence; not an empirical anatomical distribution."
+    }
+  ],
+  "latentModelControls": [
+    {
+      "field": "regionalBodyShape.trunkShare",
+      "authority": "profile.regionalBodyShapeRecipe",
+      "version": "regional-body-shape-v1",
+      "decoder": "resolveRegionalBodyShape",
+      "consumer": "resolveBodyVolume → playerFrame → front/side/movement geometry",
+      "units": "dimensionless artistic allocation or shape ratio",
+      "acceptance": "Existing scoped regional-shape tests; no isolated DTO sensitivity claim or fitted composition distribution."
+    },
+    {
+      "field": "regionalBodyShape.armsShare",
+      "authority": "profile.regionalBodyShapeRecipe",
+      "version": "regional-body-shape-v1",
+      "decoder": "resolveRegionalBodyShape",
+      "consumer": "resolveBodyVolume → playerFrame → front/side/movement geometry",
+      "units": "dimensionless artistic allocation or shape ratio",
+      "acceptance": "Existing scoped regional-shape tests; no isolated DTO sensitivity claim or fitted composition distribution."
+    },
+    {
+      "field": "regionalBodyShape.neckShare",
+      "authority": "profile.regionalBodyShapeRecipe",
+      "version": "regional-body-shape-v1",
+      "decoder": "resolveRegionalBodyShape",
+      "consumer": "resolveBodyVolume → playerFrame → front/side/movement geometry",
+      "units": "dimensionless artistic allocation or shape ratio",
+      "acceptance": "Existing scoped regional-shape tests; no isolated DTO sensitivity claim or fitted composition distribution."
+    },
+    {
+      "field": "regionalBodyShape.waistBaseline",
+      "authority": "profile.regionalBodyShapeRecipe",
+      "version": "regional-body-shape-v1",
+      "decoder": "resolveRegionalBodyShape",
+      "consumer": "resolveBodyVolume → playerFrame → front/side/movement geometry",
+      "units": "dimensionless artistic allocation or shape ratio",
+      "acceptance": "Existing scoped regional-shape tests; no isolated DTO sensitivity claim or fitted composition distribution."
+    },
+    {
+      "field": "regionalBodyShape.depthRatio",
+      "authority": "profile.regionalBodyShapeRecipe",
+      "version": "regional-body-shape-v1",
+      "decoder": "resolveRegionalBodyShape",
+      "consumer": "resolveBodyVolume → playerFrame → front/side/movement geometry",
+      "units": "dimensionless artistic allocation or shape ratio",
+      "acceptance": "Existing scoped regional-shape tests; no isolated DTO sensitivity claim or fitted composition distribution."
+    }
+  ],
+  "limits": [
+    "One generated fixture does not cover every supported style or projection.",
+    "Resource identifiers and physical root data attributes are normalized; other markup changes may still be presentation-only.",
+    "Rows marked no response require applicability review or consumer implementation, not automatic deletion.",
+    "Frame-derived mass allocation and composition remain artistic assumptions.",
+    "Actual-size captured evidence, per-state concealed annotations, demographic cohorts and lifetime acceptance remain required."
+  ],
+  "traits": [
+    {
+      "field": "appearance.complexion",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairstyle",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 13,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairColor",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 7,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.naturalHairColor",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 7,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.dyedHairColor",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 8,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairTexture",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.eyeColor",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 6,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairLength",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairDensity",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairline",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.grayOnsetAge",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "age-gated",
+      "applicabilityNote": "Fixture is young; partial gray depends on age and absence of dye.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.freckles",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 1,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.mole",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 2,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.facialHair",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 5,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.faceWidth",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.jawWidth",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.faceLength",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.eyeSpacing",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.noseWidth",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.lipFullness",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.browWeight",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.earSize",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.expression",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 2,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.blinkDelay",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.buildVariation",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Generator input consumed by playerFrame; isolated appearance DTO edit does not recompute frame.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.naturalHairTexture",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-styled-identity",
+      "applicabilityNote": "Natural identity feeds grooming/texture resolution; the resolved styled hairTexture is the renderer input.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.skinUndertone",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.eyeAperture",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.eyeTilt",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.eyelidCrease",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.browArch",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.browAngle",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.noseBridge",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.noseTip",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.noseLength",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.cheekbone",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.cheekFullness",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.chinWidth",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.chinLength",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.lipWidth",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.lipCurve",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.earShape",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.facialAsymmetry",
+      "authority": {
+        "savedField": "profile.appearanceRecipe",
+        "version": "portrait-identity-v3",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairCurvature",
+      "authority": {
+        "savedField": "profile.appearanceDetailRecipe",
+        "version": "natural-appearance-detail-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairWaveScale",
+      "authority": {
+        "savedField": "profile.appearanceDetailRecipe",
+        "version": "natural-appearance-detail-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairStrandWidth",
+      "authority": {
+        "savedField": "profile.appearanceDetailRecipe",
+        "version": "natural-appearance-detail-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.irisShade",
+      "authority": {
+        "savedField": "profile.appearanceDetailRecipe",
+        "version": "natural-appearance-detail-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.irisInnerMix",
+      "authority": {
+        "savedField": "profile.appearanceDetailRecipe",
+        "version": "natural-appearance-detail-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.irisPattern",
+      "authority": {
+        "savedField": "profile.appearanceDetailRecipe",
+        "version": "natural-appearance-detail-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairPart",
+      "authority": {
+        "savedField": "profile.hairArrangementRecipe",
+        "version": "hair-arrangement-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "mutableOverride": "profile.grooming; natural identity retained",
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "style-concealed",
+      "applicabilityNote": "Fixture is fade; part applies to side-part, swept and long styles.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.hairStrandVariation",
+      "authority": {
+        "savedField": "profile.hairArrangementRecipe",
+        "version": "hair-arrangement-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.nasalRootWidth",
+      "authority": {
+        "savedField": "profile.fineFaceRecipe",
+        "version": "fine-face-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.nasalWingWidth",
+      "authority": {
+        "savedField": "profile.fineFaceRecipe",
+        "version": "fine-face-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.upperLipScale",
+      "authority": {
+        "savedField": "profile.fineFaceRecipe",
+        "version": "fine-face-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.lowerLipScale",
+      "authority": {
+        "savedField": "profile.fineFaceRecipe",
+        "version": "fine-face-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.chinProjection",
+      "authority": {
+        "savedField": "profile.fineFaceRecipe",
+        "version": "fine-face-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.foreheadSlope",
+      "authority": {
+        "savedField": "profile.fineFaceRecipe",
+        "version": "fine-face-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "appearance.browRidge",
+      "authority": {
+        "savedField": "profile.fineFaceRecipe",
+        "version": "fine-face-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "artistic control; see decoder",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Single generated fixture; style-dependent concealment and untested combinations remain open."
+    },
+    {
+      "field": "visualFrame.heightInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches"
+        ],
+        "encoding": "canonical input with rendering bounds; source observation retained"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.weightLbs",
+      "authority": {
+        "savedInputs": [
+          "weightLbs"
+        ],
+        "encoding": "canonical input with rendering bounds; source observation retained"
+      },
+      "units": "renderer presentation units",
+      "testedStructuralConsumers": [
+        "frontBody"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.volumeBudgetInches3",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "cubic inches, artistic density proxy",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.torsoVolumeInches3",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "cubic inches, artistic density proxy",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.legsVolumeInches3",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "cubic inches, artistic density proxy",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.armsVolumeInches3",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "cubic inches, artistic density proxy",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.neckVolumeInches3",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "cubic inches, artistic density proxy",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.reservedVolumeInches3",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "cubic inches, artistic density proxy",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.torsoLengthInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.legLengthInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.armSegmentLengthInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.neckLengthInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "downstream-derived",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.chestWidthInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.chestDepthInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.waistRatio",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "dimensionless",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.limbShapeVariation",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "dimensionless",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.upperArmWidth",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.thighWidth",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.neckDiameterInches",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "armLengthInches",
+          "wingspanInches",
+          "handLengthInches",
+          "measurements",
+          "profile.skeletonRecipe",
+          "profile.individualAnatomyRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "resolveBodyVolume derived value; recipe inputs and mass constraints, not an independently saved control"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.upperArmShare",
+      "authority": {
+        "savedField": "profile.individualAnatomyRecipe",
+        "version": "individual-anatomy-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "dimensionless",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.upperLegShare",
+      "authority": {
+        "savedField": "profile.individualAnatomyRecipe",
+        "version": "individual-anatomy-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "dimensionless",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.pelvicBreadthInches",
+      "authority": {
+        "savedField": "profile.individualAnatomyRecipe",
+        "version": "individual-anatomy-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.footLengthInches",
+      "authority": {
+        "savedField": "profile.individualAnatomyRecipe",
+        "version": "individual-anatomy-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "recordedOverride": {
+        "savedInputs": [
+          "footLengthInches",
+          "measurements.footLengthInches"
+        ],
+        "endpoint": "heel-to-longest-toe",
+        "decoder": "resolveRecordedAnatomy; source value retained on explicit fallback"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.footWidthInches",
+      "authority": {
+        "savedField": "profile.individualAnatomyRecipe",
+        "version": "individual-anatomy-v1",
+        "encoding": "versioned seed decoder"
+      },
+      "recordedOverride": {
+        "savedInputs": [
+          "footWidthInches",
+          "measurements.footWidthInches"
+        ],
+        "endpoint": "maximum-barefoot-transverse-breadth",
+        "decoder": "resolveRecordedAnatomy; source value retained on explicit fallback"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.shoulderWidth",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "profile.skeletonRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "legacy presentation alias derived from shared frame; no direct structural consumer in this fixture"
+      },
+      "units": "renderer presentation units",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "legacy-presentation-alias",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.neckWidth",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "profile.skeletonRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "legacy presentation alias derived from shared frame; no direct structural consumer in this fixture"
+      },
+      "units": "renderer presentation units",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "legacy-presentation-alias",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.torsoLength",
+      "authority": {
+        "savedInputs": [
+          "heightInches",
+          "weightLbs",
+          "profile.skeletonRecipe",
+          "profile.regionalBodyShapeRecipe",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "legacy presentation alias derived from shared frame; no direct structural consumer in this fixture"
+      },
+      "units": "renderer presentation units",
+      "testedStructuralConsumers": [],
+      "probeCount": 3,
+      "coverageStatus": "no-response-in-this-fixture",
+      "applicabilityClass": "legacy-presentation-alias",
+      "applicabilityNote": "Derived intermediate or legacy presentation field; verify downstream recomputation/consumers rather than treating isolated no-response as an absent feature.",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.muscleDefinition",
+      "authority": {
+        "savedInputs": [
+          "ratings.strength",
+          "profile.appearanceRecipe"
+        ],
+        "encoding": "bounded artistic definition plus decoded buildVariation; not measured muscle mass"
+      },
+      "units": "dimensionless",
+      "testedStructuralConsumers": [
+        "portrait",
+        "frontBody"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.shoulderSpanInches",
+      "authority": {
+        "savedInputs": [
+          "armLengthInches",
+          "wingspanInches",
+          "measurements",
+          "profile.skeletonRecipe"
+        ],
+        "encoding": "compatible paired reach/arm records or seeded shoulder estimate"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.torsoShare",
+      "authority": {
+        "savedInputs": [
+          "profile.skeletonRecipe"
+        ],
+        "encoding": "versioned fictional torso estimate"
+      },
+      "units": "dimensionless",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.armLengthInches",
+      "authority": {
+        "savedInputs": [
+          "armLengthInches",
+          "measurements.armLengthInches",
+          "profile.skeletonRecipe"
+        ],
+        "encoding": "recorded override or versioned fictional estimate"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.wingspanInches",
+      "authority": {
+        "savedInputs": [
+          "wingspanInches",
+          "measurements.wingspanInches",
+          "profile.skeletonRecipe"
+        ],
+        "encoding": "recorded override or versioned fictional estimate"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    },
+    {
+      "field": "visualFrame.handSizeInches",
+      "authority": {
+        "savedInputs": [
+          "handSizeInches",
+          "measurements.handSizeInches",
+          "profile.skeletonRecipe"
+        ],
+        "encoding": "recorded override or versioned fictional estimate"
+      },
+      "units": "inches",
+      "testedStructuralConsumers": [
+        "frontBody",
+        "sideBody",
+        "run",
+        "acceleration",
+        "jump",
+        "cut"
+      ],
+      "probeCount": 3,
+      "coverageStatus": "structural-response-observed",
+      "actualSizeAcceptance": "open: structural SVG response is not visual readability",
+      "caveat": "Isolated DTO sensitivity probe; dependent dimensions were not recomputed, so this is not a physically coherent measurement counterfactual."
+    }
+  ],
+  "fixtureVerification": {
+    "serializedBaselineParity": "7/7",
+    "unusedFieldNegativeControls": "7/7",
+    "nonfiniteProbes": "none"
+  }
+}

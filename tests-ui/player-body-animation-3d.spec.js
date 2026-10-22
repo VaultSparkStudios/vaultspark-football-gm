@@ -1,0 +1,42 @@
+import {test,expect} from '@playwright/test';import fs from 'node:fs/promises';
+test('cached measured body renders paired poses and records actual browser construction/update costs',async({page})=>{
+ test.setTimeout(180000);
+ const fixture=JSON.parse(await fs.readFile('test/fixtures/player-head-pole-case.json','utf8'));
+ const body=(await fs.readFile('test-support/appearance/playerBody3d.js','utf8')).replaceAll("from '../../public/lib/","from '/lib/");
+ const animation=(await fs.readFile('test-support/appearance/playerBodyAnimation3d.js','utf8')).replace("from './playerBody3d.js'","from '/lib/body-base.js'").replaceAll("from '../../public/lib/","from '/lib/");
+ await page.route('**/lib/body-base.js',r=>r.fulfill({contentType:'text/javascript',body}));
+ await page.route('**/lib/body-animation.js',r=>r.fulfill({contentType:'text/javascript',body:animation}));
+ await page.goto('/');await expect(page.locator('#setupStatus')).toContainText('Ready');
+ const result=await page.evaluate(async({player,bulkScale})=>{
+  const {buildPlayerBodyMesh3d,createBodyRenderer3d}=await import('/lib/body-base.js'),{createPlayerBodyAnimation3d}=await import('/lib/body-animation.js');
+  const saved=JSON.stringify(player),modes=['run','acceleration','cut','jump','strength','endurance'];
+  const begin=performance.now(),controller=createPlayerBodyAnimation3d(player,{bulkScale}),constructionMs=performance.now()-begin;
+  const neutral=controller.update(),vertices=neutral.vertices,indices=neutral.indices;
+  const canvas=document.createElement('canvas');canvas.width=320;canvas.height=600;const renderer=createBodyRenderer3d(canvas);
+  const root=document.createElement('main');root.id='body-animation-gallery';root.innerHTML='<h1>Cached measured-body articulation</h1><p>Same saved person and physical camera. Constructed reference, cached articulation; clay experiment, not finished body art.</p>';
+  let maxPositionError=0,maxNormalError=0;
+  for(const mode of modes){const section=document.createElement('section');section.id='cached-'+mode;section.innerHTML='<h2>'+mode+'</h2>';const pair=document.createElement('div');pair.className='pair';
+   for(const[type,mesh]of[['Constructed',buildPlayerBodyMesh3d(player,{bulkScale,mode,phase:.4})],['Cached',controller.update({mode,phase:.4})]]){
+    renderer.draw(mesh,Math.PI/4);const figure=document.createElement('figure');figure.innerHTML='<figcaption>'+type+'</figcaption>';const image=document.createElement('img');image.src=canvas.toDataURL();figure.append(image);pair.append(figure);
+   }
+   section.append(pair);root.append(section);
+   const reference=buildPlayerBodyMesh3d(player,{bulkScale,mode,phase:.4}),cached=controller.update({mode,phase:.4});
+   for(let i=0;i<vertices.length;i+=6)for(let j=0;j<3;j++){maxPositionError=Math.max(maxPositionError,Math.abs(cached.vertices[i+j]-reference.vertices[i+j]));maxNormalError=Math.max(maxNormalError,Math.abs(cached.vertices[i+3+j]-reference.vertices[i+3+j]));}
+  }
+  const rebuild=[],updates=[],updateAndDraw=[];for(const mode of modes)for(let i=0;i<2;i++){const t=performance.now();buildPlayerBodyMesh3d(player,{bulkScale,mode,phase:i*.4});rebuild.push(performance.now()-t);}
+  for(let i=0;i<12;i++)controller.update({mode:modes[i%6],phase:i/12});
+  for(let i=0;i<120;i++){const mode=modes[i%6],phase=(i%20)/20,t=performance.now(),mesh=controller.update({mode,phase});updates.push(performance.now()-t);const d=performance.now();renderer.draw(mesh,Math.PI/4);updateAndDraw.push(performance.now()-d+updates.at(-1));if(mesh.vertices!==vertices||mesh.indices!==indices)throw Error('Frame allocated geometry');}
+  const sorted=a=>[...a].sort((a,b)=>a-b),stats=a=>{const s=sorted(a);return{samples:a.length,medianMs:s[Math.floor(s.length/2)],p95Ms:s[Math.min(s.length-1,Math.floor(s.length*.95))],maxMs:s.at(-1)};};
+  const referenceStats=stats(rebuild),cachedStats=stats(updates);if(cachedStats.medianMs>=referenceStats.medianMs)throw Error('Cached updates are not faster than construction');
+  controller.update();renderer.draw(controller.update(),0);const neutralImage=canvas.toDataURL();controller.update({mode:'run',phase:.4});renderer.draw(controller.update(),0);if(canvas.toDataURL()!==neutralImage)throw Error('Neutral restoration changed pixels');
+  controller.dispose();renderer.dispose();let disposed=false;try{controller.update();}catch{disposed=true;}if(!disposed||saved!==JSON.stringify(player)||maxPositionError>=2e-5||maxNormalError>=2e-4)throw Error('Cache lifecycle/reference failed');
+  document.body.replaceChildren(root);const style=document.createElement('style');style.textContent='#body-animation-gallery{max-width:740px;padding:12px;margin:auto;background:var(--panel);color:var(--ink-strong)}.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}figure{margin:0}figure img{width:100%;display:block;aspect-ratio:320/600}figcaption{padding:8px}';document.head.append(style);
+  return{constructionMs,rebuild:referenceStats,cached:cachedStats,updateAndDrawCpu:stats(updateAndDraw),maxPositionError,maxNormalError,stableBuffers:true,neutralPixelsRestored:true,inputUnchanged:true,disposed:true,hardware:'local headless Chromium, emulated viewport; no physical mobile hardware claim',gpuCompletionTimed:false,wholeUnionMassVerified:false,productionDossierIntegrated:false};
+ },fixture);
+ await fs.mkdir('output/playwright',{recursive:true});
+ for(const[size,width,height]of[['desktop',1440,1000],['mobile',390,844]])for(const theme of['dark','light']){
+  await page.setViewportSize({width,height});await page.evaluate(async theme=>(await import('/lib/themeCustomizer.js')).applyTheme(theme),theme);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  for(const mode of['run','acceleration','cut','jump','strength','endurance'])await page.locator('#cached-'+mode).screenshot({path:`output/playwright/body-animation-r2-${mode}-${size}-${theme}.png`});
+ }
+ await fs.writeFile('output/playwright/body-animation-r2-observations.json',JSON.stringify(result,null,2)+'\n');
+});

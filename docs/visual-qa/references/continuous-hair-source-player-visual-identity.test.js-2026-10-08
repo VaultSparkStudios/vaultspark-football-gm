@@ -1,0 +1,151 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { createSession, createSessionFromSnapshot } from "../src/runtime/bootstrap.js";
+import { GameSession } from "../src/runtime/GameSession.js";
+import { playerAppearance, playerFrame } from "../src/domain/playerIdentity.js";
+import { estimatePlayerSkeleton } from "../src/domain/playerMeasurements.js";
+import { ensurePlayerVisualIdentity, setPlayerGrooming } from "../src/domain/playerVisualIdentity.js";
+import { inspectSnapshotCompatibility } from "../src/runtime/snapshotMigration.js";
+import { buildPlayerPortraitSvg } from "../public/lib/playerPortrait.js";
+import { RNG } from "../src/utils/rng.js";
+
+const json = value => JSON.parse(JSON.stringify(value));
+
+test("optional natural-detail recipes freeze new appearance and reject unsupported prospect imports", () => {
+  const session = createSession({ seed: 163, startYear: 2026, controlledTeamId: "BUF" });
+  const p = session.league.players[0], before = playerAppearance(p);
+  assert.equal(before.detailVersion, "natural-appearance-detail-v1");
+  const copy = json(p);
+  copy.id = "changed"; copy.name = "Changed"; copy.profile.faceSeed = "changed";
+  copy.age = 48; copy.teamId = "MIA";
+  assert.deepEqual(playerAppearance(copy), before);
+  const restored = createSessionFromSnapshot(json(session.toSnapshot()));
+  assert.deepEqual(playerAppearance(restored.league.players[0]), before);
+  delete copy.profile.appearanceDetailRecipe;
+  assert.equal(playerAppearance(copy).detailVersion, undefined, "older recipes keep their decoder");
+  const legacyBefore = playerAppearance(copy);
+  ensurePlayerVisualIdentity(copy);
+  assert.deepEqual(playerAppearance(copy), legacyBefore);
+  session.prepareDraft();
+  for (const recipe of [{ version: "future", seed: "x" }, { version: "natural-appearance-detail-v1", seed: 3 }, { version: "natural-appearance-detail-v1", seed: "x", injected: true }]) {
+    const snapshot = json(session.toSnapshot());
+    snapshot.league.pendingDraft.available[0].profile.appearanceDetailRecipe = recipe;
+    const input = json(snapshot);
+    assert.equal(inspectSnapshotCompatibility(snapshot).reasonCode, "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+    assert.throws(() => createSessionFromSnapshot(snapshot), error => error.reasonCode === "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+    assert.deepEqual(snapshot, input);
+  }
+});
+
+test("saved recipes freeze face and skeleton while grooming changes only cosmetic controls", () => {
+  const player = { id: "stable-identity", name: "Stored Athlete", age: 23, heightInches: 75, weightLbs: 230,
+    ratings: { strength: 80 }, profile: { faceSeed: "original-face", identity: { surveyCategory: "Black" } } };
+  const before = playerAppearance(player), skeleton = estimatePlayerSkeleton(player);
+  ensurePlayerVisualIdentity(player);
+  assert.deepEqual(playerAppearance(player), before, "freezing the legacy recipe must not reroll it");
+  const copy = json(player);
+  copy.id = "replacement-id";
+  copy.name = "Renamed Athlete";
+  copy.teamId = "MIA";
+  copy.age = 46;
+  copy.profile.faceSeed = "new-model-seed";
+  copy.profile.identity.surveyCategory = "White";
+  assert.deepEqual(playerAppearance(copy), before);
+  assert.deepEqual(estimatePlayerSkeleton(copy), skeleton);
+  const frame = playerFrame(copy);
+  setPlayerGrooming(copy, { hairstyle: "shaved", dyedHairColor: "#693ac0", facialHair: "goatee", hairDensity: 0 });
+  const after = playerAppearance(copy);
+  for (const key of Object.keys(before).filter(key => !["hairstyle", "dyedHairColor", "facialHair", "hairDensity"].includes(key))) assert.deepEqual(after[key], before[key], key);
+  assert.equal(after.naturalHairColor, before.naturalHairColor);
+  assert.deepEqual(playerFrame(copy), frame);
+  const svg = buildPlayerPortraitSvg({ ...copy, appearance: after, visualFrame: frame });
+  assert.match(svg, /data-hairstyle="shaved"/);
+  assert.match(svg, /class="portrait-scalp-hair"[^>]*opacity="0"/);
+  setPlayerGrooming(copy, { hairstyle: "long" });
+  const transparentHair = buildPlayerPortraitSvg({ ...copy, appearance: playerAppearance(copy), visualFrame: frame });
+  assert.match(transparentHair, /class="portrait-scalp-hair"[^>]*opacity="0"/);
+  assert.match(transparentHair.split('class="portrait-scalp-hair"')[1], /<path/, "zero density must also work for a cut that has hair geometry");
+  setPlayerGrooming(copy, { hairstyle: "shaved" });
+  assert.deepEqual(playerAppearance(json(copy)), after);
+  const frozen = json(copy);
+  for (const change of [{ eyeColor: "#ffffff" }, { dyedHairColor: '" onload="bad' }, { hairDensity: NaN }, { hairLength: 8 }, { hairstyle: "unknown" }]) {
+    assert.throws(() => setPlayerGrooming(copy, change), error => error.reasonCode === "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+    assert.deepEqual(copy, frozen, "invalid grooming changes must be atomic");
+  }
+});
+
+test("actual new, legacy and retired saves preserve visual recipes, grooming and unknown imported facts", () => {
+  const session = createSession({ seed: 8354, startYear: 2026, controlledTeamId: "BUF" });
+  const player = session.league.players.find(row => row.teamId === "BUF");
+  const seed = session.rng.seed, streams = json(session.rngStreams.toSnapshot());
+  setPlayerGrooming(player, { hairstyle: "long", dyedHairColor: "#8844aa", facialHair: "stubble" });
+  assert.equal(session.rng.seed, seed);
+  assert.deepEqual(session.rngStreams.toSnapshot(), streams);
+  const snapshot = json(session.toSnapshot());
+  const retired = json(snapshot.league.players[1]);
+  retired.id = "retired-visual-fixture";
+  snapshot.league.retiredPlayers.push(retired);
+  const imported = snapshot.league.players[2];
+  imported.profile = { source: "pro-football-reference", pfrId: "recorded-player" };
+  const importedBefore = playerAppearance(imported);
+  const legacyPlayer = snapshot.league.players[3];
+  delete legacyPlayer.profile.appearanceRecipe;
+  delete legacyPlayer.profile.facialPigmentRecipe;
+  delete legacyPlayer.profile.skeletonRecipe;
+  const legacyBefore = playerAppearance(legacyPlayer);
+  for (const restored of [createSessionFromSnapshot(snapshot), GameSession.fromSnapshot(json(snapshot), seed => new RNG(seed))]) {
+    const actual = restored.league.players.find(row => row.id === player.id);
+    assert.deepEqual(restored.getPlayerProfile(player.id).player.appearance, session.getPlayerProfile(player.id).player.appearance);
+    assert.deepEqual(actual.profile, player.profile);
+    assert.deepEqual(restored.league.retiredPlayers.find(row => row.id === retired.id).profile, retired.profile);
+    const importedAfter = restored.league.players.find(row => row.id === imported.id);
+    assert.equal(importedAfter.profile.identity, undefined);
+    assert.deepEqual(playerAppearance(importedAfter), importedBefore);
+    assert.deepEqual(playerAppearance(restored.league.players.find(row => row.id === legacyPlayer.id)), legacyBefore);
+    assert.equal(restored.rng.seed, seed);
+    assert.deepEqual(restored.rngStreams.toSnapshot(), streams);
+  }
+  assert.equal(snapshot.league.players[3].profile.appearanceRecipe, undefined, "migration must not mutate the imported DTO");
+});
+
+test("unsupported visual recipes and corrupt grooming fail preflight before replacing a franchise", () => {
+  const session = createSession({ seed: 74, startYear: 2026 });
+  const snapshot = json(session.toSnapshot());
+  for (const corrupt of [
+    player => { player.profile.appearanceRecipe.version = "future-face-v9"; },
+    player => { player.profile.appearanceRecipe.complexionBand = [1, 0]; },
+    player => { player.profile.skeletonRecipe.seed = null; },
+    player => { player.profile.grooming = { version: "player-grooming-v1", hairstyle: "unrecognized" }; }
+  ]) {
+    const invalid = json(snapshot);
+    corrupt(invalid.league.players[0]);
+    const before = json(invalid);
+    assert.equal(inspectSnapshotCompatibility(invalid).reasonCode, "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+    assert.throws(() => createSessionFromSnapshot(invalid), error => error.reasonCode === "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+    assert.throws(() => GameSession.fromSnapshot(invalid), error => error.reasonCode === "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+    assert.deepEqual(invalid, before);
+  }
+  assert.deepEqual(json(session.toSnapshot()), snapshot);
+});
+
+test("persisted draft prospects freeze legacy recipes and reject unsupported appearance before loading", () => {
+  const session = createSession({ seed: 561, startYear: 2026 });
+  session.prepareDraft();
+  const snapshot = json(session.toSnapshot());
+  const prospect = snapshot.league.pendingDraft.available[0];
+  delete prospect.profile.appearanceRecipe;
+  delete prospect.profile.facialPigmentRecipe;
+  delete prospect.profile.skeletonRecipe;
+  const before = playerAppearance(prospect), skeleton = estimatePlayerSkeleton(prospect);
+  const restored = createSessionFromSnapshot(snapshot);
+  const actual = restored.league.pendingDraft.available.find(row => row.id === prospect.id);
+  assert.ok(actual.profile.appearanceRecipe && actual.profile.skeletonRecipe);
+  actual.profile.faceSeed = "changed-later";
+  assert.deepEqual(playerAppearance(actual), before);
+  assert.deepEqual(estimatePlayerSkeleton(actual), skeleton);
+  const corrupt = json(restored.toSnapshot());
+  corrupt.league.pendingDraft.available[0].profile.appearanceRecipe.version = "future-v9";
+  assert.equal(inspectSnapshotCompatibility(corrupt).reasonCode, "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+  assert.throws(() => createSessionFromSnapshot(corrupt), error => error.reasonCode === "SNAPSHOT_VISUAL_IDENTITY_INVALID");
+  assert.equal(snapshot.league.pendingDraft.available[0].profile.appearanceRecipe, undefined);
+});

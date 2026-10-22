@@ -18,6 +18,8 @@ export function validateAdvanceWeekCommand(session, payload = {}) {
   if (!session?.league) {
     return { ok: false, status: 409, reasonCode: "ADVANCE_WEEK_NO_SESSION", error: "No active league can advance." };
   }
+  const readiness = session.getAdvanceReadiness?.();
+  if (readiness?.ok === false) return readiness;
   const tactic = payload.weeklyTacticOverride ? String(payload.weeklyTacticOverride) : null;
   const tacticPlan = tactic ? tacticDefinition(tactic) : null;
   if (tactic && !tacticPlan) {
@@ -60,6 +62,7 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     for (let index = 0; index < command.count; index += 1) {
       const before = { year: session.currentYear, week: session.currentWeek, phase: session.phase };
       const result = session.advanceWeek();
+      if (result?.ok === false) return { ...result, results, count: results.length };
       results.push(result);
       afterAdvance?.({ result, before, session, index });
     }
@@ -144,6 +147,10 @@ export function executeAdvanceWeekTransaction(session, payload = {}, options = {
     if (!outcome.ok) return outcome;
     return { ...outcome, committedSession: workingSession };
   } catch (error) {
+    if ([400,409].includes(error.status) && /^(ELEVATION_INJURY_|PRE_ROLLOVER_MEDICAL_)/.test(error.reasonCode || '')) {
+      return { ok:false, status:error.status, reasonCode:error.reasonCode, error:error.message,
+        ...(error.playerId ? { playerId:error.playerId } : {}) };
+    }
     return {
       ok: false,
       status: 500,

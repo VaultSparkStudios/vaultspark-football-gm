@@ -11,7 +11,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { CONTRACT_RULES, NFL_STRUCTURE, ROSTER_STRUCTURE } from "../src/config.js";
+import { CONTRACT_RULES, FIELDABLE_DEPTH, NFL_STRUCTURE, ROSTER_STRUCTURE } from "../src/config.js";
 import { marketSalaryForOverall } from "../src/domain/contracts.js";
 import {
   capSpaceForTeam,
@@ -140,11 +140,16 @@ test("compliance never cuts the controlled franchise — that decision belongs t
 
 test("compliance will not cut a club below a fieldable active roster", () => {
   // Every contract is ruinous, so no amount of trimming can reach legality.
-  const players = Array.from({ length: 55 }, (_, i) => player(`p${String(i).padStart(2, "0")}`, 70, 40));
+  const players = Object.entries(FIELDABLE_DEPTH).flatMap(([position, { min }]) =>
+    Array.from({ length: min + 1 }, (_, i) => ({ ...player(`${position}${i}`, 70, 40), position })));
   const L = league(players);
   const { stillOverCap } = enforceRosterAndCapCompliance(L);
-  const remaining = L.players.filter((p) => p.teamId === "AAA").length;
-  assert.ok(remaining >= ROSTER_STRUCTURE.activeLimit, "a club may never be cut below a fieldable team");
+  const remaining = L.players.filter((p) => p.teamId === "AAA");
+  // 53 is the active ceiling, not the fieldability floor. A WR-only fixture
+  // cannot demonstrate protection of a legal depth chart.
+  for (const [position, { min }] of Object.entries(FIELDABLE_DEPTH)) {
+    assert.equal(remaining.filter(p => p.position === position).length, min, `${position} minimum must survive ruinous contracts`);
+  }
   assert.deepEqual(stillOverCap, ["AAA"], "a genuinely trapped club is reported, not silently accepted");
 });
 

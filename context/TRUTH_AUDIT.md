@@ -1,19 +1,11 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: green
-Last reviewed: 2026-09-29
+Overall status: current candidate verification in progress
+Last reviewed: 2026-10-22
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
-## 2026-09-12 — S106 — A number the whole system compares against, measured on the wrong scale
 
-**What shipped and what did not.** The generator change described below was implemented, measured twice, and **reverted**; `src/` carries only a comment recording it, verified by diff as zero behaviour change. What shipped are three gate and record fixes: the ledger-budget gate's population, the brief's post-heal session authority, and the removal of a doctor remedy prescribing a contractually forbidden file. Every number below is a real measurement of code that was run, not of code that is live — that distinction is the point of recording it here.
-
-**Potential was never comparable to overall, and every reader of their difference inherited that.** The draw was position-blind while overall is position-weighted; measured at generation across four seeds and 8,832 players, 36.8% of the league started above its own potential and all 45 elite players in a fresh league sat in two rooms. Development, reversion, scouting and elite density all read that difference. The scale is corrected; what is claimed is a generation-time measurement across four seeds and a ten-season run on the canonical seed, not a sweep.
-
-**The first version of the fix was worse, and that is recorded rather than absorbed.** Position-aware potential alone read elite 5.3% and dispersion 0.157 — both out-of-range — because the defect had been supplying a downward counterweight. The shipped version damps headroom near the ceiling and reads elite **1.8%**, dispersion **0.083**, parity **+0.034**, each better than the session inherited. Both figures that remain outside their on-target bands are reported as `watch`; no threshold was widened, and the uncalibrated reading is published here rather than omitted.
-
-**What is deliberately not claimed.** Elite density is not closed: 1.8% against a sourced 1.53% All-Pro ceiling is still `watch`, and the residual is the position-blind 90+ cut compared against a per-position honor — a declared-population question, not a tuning target. Dispersion is `watch` at 0.083 against 0.08. The ten-season figures are one seed; the generation figures are four seeds and no simulation. `launchReady` remains false on unchanged evidence.
 
 ## 2026-09-13 — S107 — A recorded cause contradicted by the measurement it rested on
 
@@ -159,6 +151,21 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 
 Inbound football@ delivery is proved: a test was sent from an external Gmail address, delivered with no bounce, and replied to from the founder's Zoho mailbox. The reply came from founder@, so "reply as the project address" is **not** proved, and no email round-trip receipt has been written. The launch evidence report correctly still reads "email: unverified". The registry is still S0/sparked until the founder applies FB.
 <!-- /s116-addendum:truth -->
+
+## S117 — 2026-10-08 — Explicit partial closeout
+
+Founder requested “finish up and /closeout and deploy.” Demographic research and the implementation plan now cover probabilistic birthplace/background, diaspora and mixed heritage; correlated skin, hair and eye appearance; varied grooming; and body proportions tied to saved measurements. Race/background never determines gameplay ability. Population datasets retain their country-specific instruments and limitations.
+
+Accepted portrait changes are scoped foundations, including the face sculpt and modern eyes; they do not establish whole-person naturalism. The unadopted trunk experiment is preserved in agent scratch storage, outside production and portable tests.
+
+Verification: full core attempt 712/713; the historical modern grooming comparison was corrected to its immutable pre-sculpt authority and its focused rerun passed 3/3. No full-core green rerun is claimed. Runtime timed out at 45 minutes and independently reproduces a 16.2 MB six-week raw snapshot against the unchanged 16 MB bar. Visual QA retains one blocking craft defect. Fresh final 30-season GM verification and remaining NFL benefits/policy scope are pending.
+
+Deploy: deferred because applicable checks are nonpassing. Cloudflare credential discovery is READY; this is agent verification work, not a missing-credential or founder-approval dependency. No release gate override, production promotion, public launch, or completed-goal claim. Evidence: docs/visual-qa/PLAYER_PARTIAL_CLOSEOUT_2026-10-08.json.
+
+## 2026-10-22 — S118 — Candidate evidence remains distinct from delivery
+
+Focused character, family and save checks pass; full engine/browser and exact deployment acceptance remain pending. Characters remain stylized, and modeled body volume does not prove complete physical tissue mass or population calibration. Emulated mobile captures do not prove physical-device frame rates. Historical golden and visual records remain historical. New test inventory gaps are repaired without removing assertions; interrupted and failed runs are not counted as full acceptance. The public status preview describes implemented candidate behavior and does not establish production delivery.
+
 <!-- ledger-roll:pointer -->
 ---
 

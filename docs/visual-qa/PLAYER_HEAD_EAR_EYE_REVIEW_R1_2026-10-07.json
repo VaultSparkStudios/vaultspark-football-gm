@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Unadopted folded auricle and eye-material correctness/claim honesty; no production or full naturalism acceptance",
+  "primaryReceipt": ".cache/head-ear-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "13cd64f2ca098e4feefaf7f3e2f97ea729698b9705826ff4aa0c34a943e15438",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "c910d469d03dd914eb5f5c26839f7c5abf1fe10180e54da496a9cc5bf72b58fb",
+    "prototypes/playerHead3d.test.mjs": "6c453eb769ff99b6e6daed279590b4f43627f15ae9eead7b111bc22fc291bb5e",
+    ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+    ".cache/head-grooming.spec.mjs": "bf1da56a7126d116e175d8010dfd24520be033caaeb37e1096ed1e18744505b7",
+    ".cache/head-face.spec.mjs": "8491302c695aff482de94d2e50703de2228ea446c8400afac85f60f326f0b922",
+    ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+  },
+  "beforeSource": {
+    "original": ".cache/head-ear-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-ear-before-2026-10-07.mjs",
+    "sha256": "c71de2f091c98ff6908bd2742a3bbdd31d7616ad6eb0930f06805ff0e02641f7"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4687.6456
+    },
+    {
+      "command": "node .cache/head-ear-r1-independent.mjs",
+      "exitCode": 0,
+      "normalSamples": 12042,
+      "minOutwardDot": 0.15239518161054624,
+      "unchangedSkinPrefixCases": 9,
+      "captureHashesVerified": 32,
+      "sourceHashes": {
+        "prototypes/playerHead3d.mjs": "c910d469d03dd914eb5f5c26839f7c5abf1fe10180e54da496a9cc5bf72b58fb",
+        "prototypes/playerHead3d.test.mjs": "6c453eb769ff99b6e6daed279590b4f43627f15ae9eead7b111bc22fc291bb5e",
+        ".cache/shared-head-3d.spec.mjs": "ccce224fa4d431ddc5df2c6ffe59005d67bac822345042168a47a2fb4dd4b883",
+        ".cache/head-grooming.spec.mjs": "bf1da56a7126d116e175d8010dfd24520be033caaeb37e1096ed1e18744505b7",
+        ".cache/head-face.spec.mjs": "8491302c695aff482de94d2e50703de2228ea446c8400afac85f60f326f0b922",
+        ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+      },
+      "primaryReceiptSha256": "13cd64f2ca098e4feefaf7f3e2f97ea729698b9705826ff4aa0c34a943e15438"
+    }
+  ],
+  "normalAssessment": "12042 independently sampled shell/helix/antihelix normals across mirrored ears and9size/shape combinations have positive outward dot products against independently reconstructed shell/tube center vectors. Minimum dot0.152395. Degenerate shell pole samples excluded. Mirroring normalSign is necessary and correct. Ellipsoid concha/tragus use independently outward ellipsoid orientation. Triangle winding remains unchanged on mirrored patches; current renderer does not enable face culling, so a future culling/manifold integration would need separate winding treatment.",
+  "eyeAssessment": "Corneal-like normal uses eye-local horizontal and negated/face-scaled vertical coordinate, then the same rotation uniform as skin. Wetness and localized specular term apply only inside visible lid aperture. Blink narrows that aperture without modifying indexed geometry; primary open/closed/open restores pixels. This is a shading model on existing skin, not an observed or separate spherical eyeball, physically fitted cornea or view-accurate optics claim.",
+  "preservation": "Nine direct current/before comparisons preserve complete skin prefix geometry,normals,pigment. Existing independent focused pigment invariance and source-only eye shading establish no added geometry mutation. Source contains no simulation RNG or demographic ability modifier; no new football outcome run is claimed.",
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/player-shared-head-3d-desktop-light.png",
+      "sha256": "901f7433003878d2b503568c9f0e404a17a79cf28a0d10a8427adc96700599f2"
+    },
+    {
+      "path": "output/playwright/head-face-geometry-desktop-dark.png",
+      "sha256": "07a6fa5533c1cf38dc38d82ff3af9d69c8d3c094711241bec45afd24b9c5fcbd"
+    },
+    {
+      "path": "output/playwright/head-face-material-mobile-light.png",
+      "sha256": "f588706ddb0a87a85295c9a870623b9eb4cfe4c089c980f05a9a6efcdb5d3cf4"
+    }
+  ],
+  "visualAssessment": "Ear folds now replace the broad pill-like side patch with a finer cartilage outline. New eye material is subtle at ordinary size. Heads still look mannequin-like with cap hair, sparse locks, painted beard, flattened material and simplified feature geometry. These improvements do not meet complete adult-person naturalism.",
+  "primaryExecutionOnly": {
+    "focused": {
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4916.4563
+    },
+    "browser": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 21.3
+    },
+    "qualification": "Primary12focused and3browser21.3sec; browser not independently rerun. Six current/frozen source and32original/copy capture hashes independently verified."
+  },
+  "limits": [
+    "Outward-normal probes cover rendered sampled surface fields, not global watertight topology or every arbitrary input.",
+    "Ear dimensions and cartilage anatomy are artistic estimates, not recorded or empirical population coefficients.",
+    "Seventeen min/max raster response pairs are wiring evidence, not perceptual recognition or complete art quality.",
+    "Earlier face review applies only frozen v4 before source. Incomplete full saved trait/dye/gray/age/expression support and production roster/draft/dossier/body/save adoption remain open.",
+    "No WebGL cache/context-loss/culling/fallback/accessibility/device performance acceptance. Full appearance, overall goal, NFL and release remain OPEN."
+  ]
+}

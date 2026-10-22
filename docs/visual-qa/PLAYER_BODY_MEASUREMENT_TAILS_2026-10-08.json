@@ -1,0 +1,316 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T09:14:36.088Z",
+  "status": "measurement-tail-component-review-pending",
+  "scope": "Versioned stature/mass rendering support and legacy retention; not full joint-anatomy fitting or naturalism",
+  "supportEnvelope": {
+    "heightInches": [
+      62,
+      96
+    ],
+    "weightLbs": [
+      100,
+      650
+    ],
+    "authority": "engineering-support-not-athlete-frequency"
+  },
+  "sources": [
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/body-tails-source-0-playerIdentity.js-2026-10-08",
+      "sha256": "c4ccb5a08c39e7297588358b16d246b9a41d8cd7a99c561316438f010ecbbfb1"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/body-tails-source-1-playerVisualIdentity.js-2026-10-08",
+      "sha256": "a1863243ba9f210d1d2088d1a58710eab75e759057264dab2d4767b03318a87b"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/body-tails-source-2-playerMeasurements.js-2026-10-08",
+      "sha256": "1cae00496fef36d91ae98a38aabce3c5b348595d87758a2afb698c5c3b1e0b3d"
+    },
+    {
+      "original": "public/lib/physiqueGeometryContract.js",
+      "file": "references/body-tails-source-3-physiqueGeometryContract.js-2026-10-08",
+      "sha256": "a7f839a664bb6d181cb784070b4ae258b02d4140bf84da8c839725c85b793989"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/body-tails-source-4-playerPortrait.js-2026-10-08",
+      "sha256": "2fb2fa4df8564ec2968e1dc01ccee71e5a7b8c17769ba2fb607bbd8380c8fe44"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/body-tails-source-5-playerMotion.js-2026-10-08",
+      "sha256": "e68a052eeade89b94fc1684729b4b8e2db54af75459cfa2e90dc0481bc9485bc"
+    },
+    {
+      "original": "test/player-body-measurement-tails.test.js",
+      "file": "references/body-tails-source-6-player-body-measurement-tails.test.js-2026-10-08",
+      "sha256": "c52e01b9953cbc3556bd568a9d4c33d9bcff8ddfbbb039a921d8487417458a0b"
+    },
+    {
+      "original": "test/player-regional-sections.test.js",
+      "file": "references/body-tails-source-7-player-regional-sections.test.js-2026-10-08",
+      "sha256": "49e0d1c38f538a7d21d0b832a5b9d4908e33f9de9ca43835ac5ecd286e33fb06"
+    },
+    {
+      "original": "test/player-regional-body-shape.test.js",
+      "file": "references/body-tails-source-8-player-regional-body-shape.test.js-2026-10-08",
+      "sha256": "e69fba2134a0d9f680e67c3a0eacc1ce1bdf10f60ba4bcfbc27a9f22b42f7af2"
+    },
+    {
+      "original": "tests-ui/player-body-measurement-tails.spec.js",
+      "file": "references/body-tails-source-9-player-body-measurement-tails.spec.js-2026-10-08",
+      "sha256": "a1d0209063c7f208da3d6888b045edb610c9861ba84f9403f21a7b1ed1e2b2a3"
+    },
+    {
+      "original": "tests-ui/player-capacity-client.spec.js",
+      "file": "references/body-tails-source-10-player-capacity-client.spec.js-2026-10-08",
+      "sha256": "cd1bb025d1fac8066846d0080d4aef81d1f99e38b39685408872b826b5e5ff0c"
+    },
+    {
+      "original": "tests-ui/player-regional-body-shape.spec.js",
+      "file": "references/body-tails-source-11-player-regional-body-shape.spec.js-2026-10-08",
+      "sha256": "569a516de85087e6a0ce2516c302de427c71aeca7d22f1999c6204dfbfdf1eeb"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/body-tails-body-tail-desktop-dark-gallery.png",
+      "sha256": "5dfcf715efb33c5126e227dd78a7a39854b3ab629cd8072be4947f50ed9b547a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "gallery",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-desktop-dark-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-desktop-dark-case-1.png",
+      "sha256": "bf3303771c85a4a0b4e83724e5db9a4301f326b93f24426f07491952d2e953e2",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-1",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-desktop-dark-case-1.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/body-tails-body-tail-desktop-dark-case-4.png",
+      "sha256": "f65bc0bfb9fd94e3f6699705a5e5a9aea65b4a833208831b70758505a7e1b207",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-4",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-desktop-dark-case-4.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-desktop-light-gallery.png",
+      "sha256": "92d245d98975c4eabd192070c54108819f756290fc39bb464b1b77a74cdc9795",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "gallery",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-desktop-light-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-desktop-light-case-1.png",
+      "sha256": "ef2e79c8d5da13dc01b558047b3b94ff51ea4bf60203ac584fb7bc359e33c332",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-1",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-desktop-light-case-1.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-desktop-light-case-4.png",
+      "sha256": "e3fce3f497af3d1141304d3ee9635b9399f87e22f84b0f4af8075e378ea06702",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-4",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-desktop-light-case-4.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/body-tails-body-tail-mobile-dark-gallery.png",
+      "sha256": "816cbd2f6ebba96c578ccea404fb01f0851d8438a47ec479728233b6a6541c38",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "gallery",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-mobile-dark-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-mobile-dark-case-1.png",
+      "sha256": "a515ddca04b8cefb1dc08c5177bc86f760409c22801a5d9777e2240e4a1b892a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-1",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-mobile-dark-case-1.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/body-tails-body-tail-mobile-dark-case-4.png",
+      "sha256": "cba70102965ff40776973766fcc2dea92d756f58e359b88a54b78957665710be",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-4",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-mobile-dark-case-4.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-mobile-light-gallery.png",
+      "sha256": "32d9f81f95d6a9b2941400cee7c2afa77833df6766cb6771a0d73169a001c925",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "gallery",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-mobile-light-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-mobile-light-case-1.png",
+      "sha256": "9b96230f53919d6be5a6b07fd5bc576ded4e228c88e398a758a0d03bb2e00e2b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-1",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-mobile-light-case-1.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/body-tails-body-tail-mobile-light-case-4.png",
+      "sha256": "e826a38b5dc1069ac67580d43dae131167b1ded8ea51f021bc9bf69aebf3578c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "body-measurement-tail-comparison",
+      "state": "case-4",
+      "phase": "retained-legacy-and-modern",
+      "original": "output/playwright/body-tail-mobile-light-case-4.png",
+      "primaryInspected": true
+    }
+  ],
+  "builtPairs": [
+    {
+      "source": "public/lib/physiqueGeometryContract.js",
+      "built": "static/lib/physiqueGeometryContract.js",
+      "sourceSha256": "a7f839a664bb6d181cb784070b4ae258b02d4140bf84da8c839725c85b793989",
+      "builtSha256": "a7f839a664bb6d181cb784070b4ae258b02d4140bf84da8c839725c85b793989"
+    },
+    {
+      "source": "public/lib/playerPortrait.js",
+      "built": "static/lib/playerPortrait.js",
+      "sourceSha256": "2fb2fa4df8564ec2968e1dc01ccee71e5a7b8c17769ba2fb607bbd8380c8fe44",
+      "builtSha256": "2fb2fa4df8564ec2968e1dc01ccee71e5a7b8c17769ba2fb607bbd8380c8fe44"
+    },
+    {
+      "source": "public/lib/playerMotion.js",
+      "built": "static/lib/playerMotion.js",
+      "sourceSha256": "e68a052eeade89b94fc1684729b4b8e2db54af75459cfa2e90dc0481bc9485bc",
+      "builtSha256": "e68a052eeade89b94fc1684729b4b8e2db54af75459cfa2e90dc0481bc9485bc"
+    }
+  ],
+  "evidence": [
+    {
+      "original": "output/playwright/body-tail-browser-checks.json",
+      "file": "references/body-tail-browser-checks-2026-10-08.json",
+      "sha256": "1a249a15832348e718adf3d9348e8f21d72908336520630a331241372bda5b2c"
+    }
+  ],
+  "verification": {
+    "node": {
+      "passed": 24,
+      "command": "node --test test/player-body-measurement-tails.test.js test/player-regional-sections.test.js test/player-regional-body-shape.test.js test/player-recorded-anatomy.test.js test/player-measurements.test.js",
+      "terminal": "a4dc01"
+    },
+    "browser": {
+      "passed": 3,
+      "terminal": "1305d2"
+    },
+    "build": {
+      "passed": true,
+      "terminal": "a4f6b7",
+      "precache": "a0c1b513f383",
+      "assets": 319,
+      "kilobytes": 3547
+    },
+    "budgets": {
+      "passed": true,
+      "terminal": "2501a4",
+      "modules": 139,
+      "bootBytes": 649321,
+      "bootBudget": 730000
+    }
+  },
+  "inspection": {
+    "rootInspected": 4,
+    "totalCaptures": 12,
+    "findings": [
+      "Retained legacy and modern measurements visibly differ at common scale; inspected heavy/tall cases retain head and feet in their cameras.",
+      "Frames and regional surfaces remain simplified/mannequin-like; heavy-body naturalism and complete rendered-region mass reconstruction remain unresolved."
+    ]
+  },
+  "limitations": [
+    "Controlled fictional examples are not athlete prevalence.",
+    "Motion camera uses sampled artistic studies plus conservative margins, not a formal bound for every malformed DTO or future animation.",
+    "Measurement fit status covers stature/mass only; recorded limb endpoint conflicts retain existing separate reconciliation.",
+    "Fixed reserved head/hands/feet volume remains an assumption.",
+    "Broader goal, complete appearance, demographic calibration, current whole-suite/career and release remain incomplete."
+  ]
+}

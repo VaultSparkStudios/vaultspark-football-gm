@@ -8,6 +8,7 @@ export const NFL_STRUCTURE = {
   gamesPerTeam: 17,
   playoffTeamsPerConference: 7,
   possessionsPerTeamRange: [10, 12],
+  // Legacy/no-league fallback. New leagues persist a season-specific cap basis.
   salaryCap: 255_000_000
 };
 
@@ -428,4 +429,3 @@ export const OFFENSIVE_PERSONNEL_PACKAGES = {
   "13": { label: "13 Personnel", rb: 1, te: 3, wr: 1, rate: 0.05 },
   "20": { label: "20 Personnel", rb: 2, te: 0, wr: 3, rate: 0.03 }
 };
-

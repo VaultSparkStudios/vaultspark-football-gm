@@ -18,6 +18,14 @@ static/
 .claude/
 docs/CREATIVE_DIRECTION_RECORD.md
 docs/RIGHTS_PROVENANCE.md
+# Private Studio OS reference copies are supplied locally by the control plane.
+docs/AGENT_ACTION_REFERENCE.md
+docs/EXECUTION_CONTRACT.md
+docs/STAGE_DIRECTED_WORK.md
+docs/RELEASE_PROMOTION_PROTOCOL.md
+# Generic Studio entry points are forbidden by the project authority contract.
+scripts/run-tests.mjs
+scripts/check-last-session-summary.mjs
 CODEX_HANDOFF_*.md
 docs/cache-ledger.ndjson
 

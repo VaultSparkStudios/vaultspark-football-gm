@@ -1,0 +1,25 @@
+{
+  "worker": false,
+  "playerId": "P2026-BUF-QB-87221813",
+  "artifactDigest": "e02b1e3630bdee03f680cb009154c0319acb8bdd3272cf4efa3b62669a617a61",
+  "actualReleaseSignAdvanceCommands": true,
+  "namedSaveReplacementLoadReload": true,
+  "row": {
+    "version": "admitted-injury-earning-period-v3",
+    "payId": "[\"[\\\"P2026-BUF-QB-87221813\\\",\\\"2026-regular-regular-season-18-MIA-BUF\\\"]\",2027,\"regular-season\",1]",
+    "rightId": "[\"P2026-BUF-QB-87221813\",\"2026-regular-regular-season-18-MIA-BUF\"]",
+    "playerId": "P2026-BUF-QB-87221813",
+    "gameId": "2026-regular-regular-season-18-MIA-BUF",
+    "teamId": "BUF",
+    "injuryYear": 2026,
+    "earningYear": 2027,
+    "phase": "regular-season",
+    "week": 1,
+    "amountCents": 1411111,
+    "grossCents": 2861111,
+    "practiceCents": 1450000,
+    "elevationCents": 0
+  },
+  "wagesAndCapRestored": true,
+  "annualDefaultChanged": false
+}

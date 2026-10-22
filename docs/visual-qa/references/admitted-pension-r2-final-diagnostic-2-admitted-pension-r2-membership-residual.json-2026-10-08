@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-10-08T10:39:54.954Z",
+  "sourceSha256": "5aa0deda22b66b4abd75d5ba302d942ef59026c00303f028c4e1eaeeae33b680",
+  "frozenSource": ".cache/admitted-pension-r2-membership-residual-source.js",
+  "primaryFile": "docs/ADMITTED_PENSION_SERVICE_2026-10-08.json",
+  "primarySha256": "928e5bf9bb3758c04b47e1b2689562b6d122410f80824ff05518c81fee2d8ce3",
+  "terminal": "cfebd7",
+  "finding": "Existing same-period original-payer active-inactive proof for actualBUF-ARI week1 plus forgedBUF-MIA admittedproof sameweek/wage accepted; unique admittedsourceRef cannotcatchfirstwagejoinwhenactualgamealreadycreditedbymembership.",
+  "reproduction": "fixture(); set player.teamId=BUF,rosterSlot=active; session.advanceWeek(); invoke admittedhook with canonical BUF-MIA week1; bothproofs retained andvalidatePensionService accepts.",
+  "qualification": "Rawhelper/importedforgery boundary, no actualscheduledcommanddoublecredit observed."
+}

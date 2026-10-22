@@ -28,7 +28,8 @@ export function buildTradePlan(session, input = {}) {
     teams: [teamA, teamB],
     players: playerIds.map((id) => {
       const player = session.getPlayerById(id);
-      return { id, teamId: player?.teamId || null, capHit: Number(player?.contract?.capHit || 0) };
+      return { id, teamId: player?.teamId || null, capHit: Number(player?.contract?.capHit || 0),
+        practiceEarnedCharge: Number(player?.contract?.practiceEarnedCharge || 0) };
     }),
     picks: pickIds.map((id) => {
       const pick = session.getDraftPickById(id);

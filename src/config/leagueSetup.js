@@ -39,7 +39,9 @@ export const DEFAULT_LEAGUE_SETTINGS = {
   // or during the playoffs. Declared once here, enforced at the trade command
   // seam so CPU front offices obey the same rule, and read by the UI rather than
   // hand-typed per surface.
-  tradeDeadlineWeek: 11,
+  // Weekly abstraction: deals remain available before Week10 simulation and
+  // close once those games are advanced. NFL2026 cutoff is Nov10, pre-Week10.
+  tradeDeadlineWeek: 10,
   waiverClaimWindowWeeks: 1,
   practiceSquadExperienceLimit: 2,
   onboardingCompleted: false,
@@ -390,6 +392,7 @@ export function resolveLeagueSettings(patch = {}, current = DEFAULT_LEAGUE_SETTI
   }
   if (patch.injuryRateMultiplier != null) next.injuryRateMultiplier = clampNumber(patch.injuryRateMultiplier, 0.1, 3, 1);
   if (patch.capGrowthRate != null) next.capGrowthRate = clampNumber(patch.capGrowthRate, 0, 0.2, 0.045);
+  if (patch.tradeDeadlineWeek != null) next.tradeDeadlineWeek = clampInt(patch.tradeDeadlineWeek, 1, 18, next.tradeDeadlineWeek);
   if (patch.cpuTradeAggression != null) next.cpuTradeAggression = clampNumber(patch.cpuTradeAggression, 0, 1, 0.5);
   if (patch.enableOwnerMode != null) next.enableOwnerMode = normalizeBool(patch.enableOwnerMode, next.enableOwnerMode);
   if (patch.enableNarratives != null) next.enableNarratives = normalizeBool(patch.enableNarratives, next.enableNarratives);

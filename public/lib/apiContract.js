@@ -1,4 +1,5 @@
 const GET_PATHS = [
+  "/api/injury-salary-claims",
   "/api/analytics",
   "/api/architect-thesis",
   "/api/backups",
@@ -62,6 +63,7 @@ const GET_PATHS = [
 ];
 
 const POST_PATHS = [
+  "/api/injury-salary-claims/offer",
   "/api/advance-week",
   "/api/architect-thesis",
   "/api/backups/delete",
@@ -104,6 +106,8 @@ const POST_PATHS = [
   "/api/rewind/restore",
   "/api/rewind/snapshot",
   "/api/roster/designation",
+  "/api/roster/elevation-preview",
+  "/api/roster/elevation",
   "/api/saves/delete",
   "/api/saves/load",
   "/api/saves/save",

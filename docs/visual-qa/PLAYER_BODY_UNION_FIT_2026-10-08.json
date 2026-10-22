@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "status": "neutral-clay-closed-components-and-union-fit-primary-progress-review-pending",
+  "inputs": [
+    {
+      "path": "test-support/appearance/playerBody3d.js",
+      "bytes": 13832,
+      "sha256": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425",
+      "frozen": "docs/visual-qa/references/body-union-source-0-playerBody3d.js-2026-10-08"
+    },
+    {
+      "path": "test-support/appearance/playerBodyMassFit3d.js",
+      "bytes": 1754,
+      "sha256": "757cfb49182ef9fa336f7fd5dfc2d34324a7900dcfa60228163a244dfa944305",
+      "frozen": "docs/visual-qa/references/body-union-source-1-playerBodyMassFit3d.js-2026-10-08"
+    },
+    {
+      "path": "test-support/appearance/triangleSolidVolume.js",
+      "bytes": 6301,
+      "sha256": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+      "frozen": "docs/visual-qa/references/body-union-source-2-triangleSolidVolume.js-2026-10-08"
+    },
+    {
+      "path": "public/lib/playerHead3d.js",
+      "bytes": 47405,
+      "sha256": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6",
+      "frozen": "docs/visual-qa/references/body-union-source-3-playerHead3d.js-2026-10-08"
+    },
+    {
+      "path": "public/lib/playerMotion.js",
+      "bytes": 33893,
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+      "frozen": "docs/visual-qa/references/body-union-source-4-playerMotion.js-2026-10-08"
+    },
+    {
+      "path": "public/lib/physiqueGeometryContract.js",
+      "bytes": 8976,
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+      "frozen": "docs/visual-qa/references/body-union-source-5-physiqueGeometryContract.js-2026-10-08"
+    },
+    {
+      "path": "public/lib/playerHand.js",
+      "bytes": 2081,
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+      "frozen": "docs/visual-qa/references/body-union-source-6-playerHand.js-2026-10-08"
+    },
+    {
+      "path": "public/lib/playerSurfaceLighting.js",
+      "bytes": 2053,
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "frozen": "docs/visual-qa/references/body-union-source-7-playerSurfaceLighting.js-2026-10-08"
+    },
+    {
+      "path": "src/domain/playerIdentity.js",
+      "bytes": 26343,
+      "sha256": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+      "frozen": "docs/visual-qa/references/body-union-source-8-playerIdentity.js-2026-10-08"
+    },
+    {
+      "path": "src/domain/playerMeasurements.js",
+      "bytes": 14072,
+      "sha256": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+      "frozen": "docs/visual-qa/references/body-union-source-9-playerMeasurements.js-2026-10-08"
+    },
+    {
+      "path": "src/domain/playerVisualIdentity.js",
+      "bytes": 11420,
+      "sha256": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+      "frozen": "docs/visual-qa/references/body-union-source-10-playerVisualIdentity.js-2026-10-08"
+    },
+    {
+      "path": "test/player-body-3d.test.js",
+      "bytes": 3851,
+      "sha256": "10fbb54950ddbeaf7182dd98cf45fa1ea1c6cd3f80efa0e01a07e65bcb682dc5",
+      "frozen": "docs/visual-qa/references/body-union-source-11-player-body-3d.test.js-2026-10-08"
+    },
+    {
+      "path": "test/triangle-solid-volume.test.js",
+      "bytes": 7116,
+      "sha256": "5260c2a4f13fb10c18a47809f2ca7b727621da2cffde7c001525808091c6a49f",
+      "frozen": "docs/visual-qa/references/body-union-source-12-triangle-solid-volume.test.js-2026-10-08"
+    },
+    {
+      "path": "tests-ui/player-body-union-fit.spec.js",
+      "bytes": 5280,
+      "sha256": "dcac2a11193df1bbe70d84bd2dcf57533c58f6360b85947ce27ceaf5ace07668",
+      "frozen": "docs/visual-qa/references/body-union-source-13-player-body-union-fit.spec.js-2026-10-08"
+    },
+    {
+      "path": "tests-ui/player-body-3d-prototype.spec.js",
+      "bytes": 4550,
+      "sha256": "028e922ed3f63efcf74dfacbfcbbe5823b13dc85ebde160565776ca630115333",
+      "frozen": "docs/visual-qa/references/body-union-source-14-player-body-3d-prototype.spec.js-2026-10-08"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "bytes": 21096,
+      "sha256": "57dd257146718f6cb992dbf12fe728611f87e8d7b415307ea6a63d57cac5fdc5",
+      "frozen": "docs/visual-qa/references/body-union-source-15-run-test-shard.mjs-2026-10-08"
+    },
+    {
+      "path": ".cache/body-union/observe.mjs",
+      "bytes": 4620,
+      "sha256": "f376414010b7873cc43b321b4460acdaf324209405792ae48e60ece990672e90",
+      "frozen": "docs/visual-qa/references/body-union-source-16-observe.mjs-2026-10-08"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs/PLAYER_BODY_UNION_MASS_DIAGNOSTIC_2026-10-08.json",
+      "bytes": 51162,
+      "sha256": "8f6e8d5b991cf35934c91ec35b6bd6d048061151a6713c506963d5b4b9d9aa79"
+    },
+    {
+      "path": "docs/PLAYER_BODY_UNION_MASS_DIAGNOSTIC_LAYOUT_2026-10-08.json",
+      "bytes": 51201,
+      "sha256": "5ce23c2e4aa723688b0f75937309c7a1db3b82962838b897e288870035af5690"
+    },
+    {
+      "path": ".cache/body-union/fixtures.json",
+      "bytes": 36789,
+      "sha256": "65ce3bed9faa4cab46a616c20ef45482f7c45916ca9301078177abfc024ee070"
+    },
+    {
+      "path": ".cache/body-union/domain-final.log",
+      "bytes": 994,
+      "sha256": "df907d1fbee0c07cee673f929a8e02c9f453e52ad4c00cf0b4fd9091af2b98a4"
+    },
+    {
+      "path": ".cache/body-union/browser-layout.log",
+      "bytes": 354,
+      "sha256": "5a9728e73d0f79d249b65319f339dc15d276a980a35c54a591a87ff885265a1a"
+    },
+    {
+      "path": ".cache/body-union/build-layout.log",
+      "bytes": 266,
+      "sha256": "4befecc16d74d3c56340454d9bf0b6fb5fcb0fb4e839302fb746d85d61f93e1c"
+    },
+    {
+      "path": ".cache/body-union/reachability-layout.log",
+      "bytes": 61,
+      "sha256": "58c937f4b9ad4a0c633f7f7890db46f8444f9eb5ba355e1d9c9d56da5b0f1827"
+    },
+    {
+      "path": ".cache/body-union/boot-layout.log",
+      "bytes": 75,
+      "sha256": "b1471fb083dc073cdc86e4962c0b2374c4405ec5d7c16538af89d61f827e098e"
+    },
+    {
+      "path": "output/playwright/body-union-fit-observations.json",
+      "bytes": 1182,
+      "sha256": "48df5c0728184be480f6ca1f59787d6ff8bdfce3509f3a1df24445284761d48c"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-observations.json",
+      "bytes": 882,
+      "sha256": "9e0fe8f6d479125ab850abf8aa2b65e0d0fd4f9a52cb6befde04feafa70600fb"
+    },
+    {
+      "path": "docs/visual-qa/references/player-body-3d-before-closure-2026-10-08.js",
+      "bytes": 12520,
+      "sha256": "69f10b7d72425433c4282282852d14099aaf383edeb58926fe516eec493ca725"
+    },
+    {
+      "path": "docs/visual-qa/references/player-body-union-before-layout-2026-10-08.js",
+      "bytes": 13757,
+      "sha256": "3c1fdcb85410ee27396ab96cc7c06617bc746ffd5286c35255c711ca93d55fb9"
+    },
+    {
+      "path": "docs/visual-qa/references/triangle-solid-volume-before-layout-2026-10-08.js",
+      "bytes": 6302,
+      "sha256": "7271e1a90d97f00968e894d10e2cb43c6e83ba267b1148e5fcc59dcdab26450b"
+    },
+    {
+      "path": "docs/visual-qa/references/player-body-mass-fit-before-layout-2026-10-08.js",
+      "bytes": 1749,
+      "sha256": "471c6ad47fe48092c4f2414cd38908c32b0137e4bf333f70539358f70d169a8b"
+    },
+    {
+      "path": "docs/visual-qa/references/body-union-observer-before-layout-2026-10-08.mjs",
+      "bytes": 4535,
+      "sha256": "4f40fe606af18f583840693d45713bbbc55e8cd3a4d2a2056eee2374bcd275aa"
+    },
+    {
+      "path": "docs/visual-qa/references/player-body-3d-prototype-domain-original-2026-10-08.js",
+      "bytes": 3838,
+      "sha256": "6885da7e73d7c2287bc7ec77fda7b926e1866d96d07c029e9a80e64d87321b2d"
+    },
+    {
+      "path": "docs/visual-qa/references/player-body-3d-prototype-browser-original-2026-10-08.js",
+      "bytes": 4261,
+      "sha256": "58e5799bbc06d6256830422d11be97d91d73ebd329e66612b613fc3812022230"
+    }
+  ],
+  "captures": [
+    {
+      "path": "output/playwright/body-union-fit-0-desktop-dark.png",
+      "bytes": 141027,
+      "sha256": "740a492bbd324423d42dcdd3af520cd84d7e0989adea04ea6d91aa2e76cefd7e"
+    },
+    {
+      "path": "output/playwright/body-union-fit-0-desktop-light.png",
+      "bytes": 140047,
+      "sha256": "80f033e410ca207a5ddfa41caa6f91facf284b8f94b3d3cafa94c42de367d0bf"
+    },
+    {
+      "path": "output/playwright/body-union-fit-0-mobile-dark.png",
+      "bytes": 95747,
+      "sha256": "4a5392c7d67fae37ecad26662f2b6070f5db6d716b0221bad68b402d5a0fd214"
+    },
+    {
+      "path": "output/playwright/body-union-fit-0-mobile-light.png",
+      "bytes": 95381,
+      "sha256": "76d2a25dc9a67cf589f27b6671bb2dd47a3c249b112139815e48f9982ef83178"
+    },
+    {
+      "path": "output/playwright/body-union-fit-1-desktop-dark.png",
+      "bytes": 148085,
+      "sha256": "e7bf87c92a7b112306849d6a59a3843977bbc412d2553ef8717748474b06c1d4"
+    },
+    {
+      "path": "output/playwright/body-union-fit-1-desktop-light.png",
+      "bytes": 147182,
+      "sha256": "c5888cbf9cd12b584d51a90ac6b37e33c47fe22894cfa45245fa180bf53dd040"
+    },
+    {
+      "path": "output/playwright/body-union-fit-1-mobile-dark.png",
+      "bytes": 99676,
+      "sha256": "46199938c76b1fb9fd9285f451eee9fd78ce7e95e708661fb1174a2e301df3bd"
+    },
+    {
+      "path": "output/playwright/body-union-fit-1-mobile-light.png",
+      "bytes": 99418,
+      "sha256": "9371333d38654795162a6f04963993e10959ba84906fc2b4a322cfa6ffc54190"
+    },
+    {
+      "path": "output/playwright/body-union-fit-2-desktop-dark.png",
+      "bytes": 158419,
+      "sha256": "d744afa696a67ff9e253222abed83530e69d9e3cf8268f479df5953a0f9e6c6f"
+    },
+    {
+      "path": "output/playwright/body-union-fit-2-desktop-light.png",
+      "bytes": 157831,
+      "sha256": "f1df4617f83fa155465bb25f3025aa06cfaaf5855406ca6826a6751012cbb7a9"
+    },
+    {
+      "path": "output/playwright/body-union-fit-2-mobile-dark.png",
+      "bytes": 105883,
+      "sha256": "e129e945cd2d0fec09bad8134b7224728af190738942290679e89cc4f7499687"
+    },
+    {
+      "path": "output/playwright/body-union-fit-2-mobile-light.png",
+      "bytes": 105749,
+      "sha256": "fbe62ea42add5ab28f9f26483c08c03eca9d351402308f8580e84d569559bc58"
+    },
+    {
+      "path": "output/playwright/body-union-fit-3-desktop-dark.png",
+      "bytes": 171276,
+      "sha256": "bce34244f41492fcdabe236bf0c62625f9257bc798a571a7786c0d416760e28d"
+    },
+    {
+      "path": "output/playwright/body-union-fit-3-desktop-light.png",
+      "bytes": 170920,
+      "sha256": "82e62210d648576101a263f55a686cc8b06188834120e29d6615f104764495b9"
+    },
+    {
+      "path": "output/playwright/body-union-fit-3-mobile-dark.png",
+      "bytes": 112280,
+      "sha256": "6afb340e4436511af389a94cf561097e0641de1ef1e65effb0d56e71303d6077"
+    },
+    {
+      "path": "output/playwright/body-union-fit-3-mobile-light.png",
+      "bytes": 112377,
+      "sha256": "ca30520f114e42d0ad811fe58871f72ef856b45ed7eac0b8b2de055d0fee0255"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-0-desktop-dark.png",
+      "bytes": 91747,
+      "sha256": "c5d3b7d4d3fe340d4412a02f7f148fb2f3c49655f53332da148a25d50b9e0206"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-0-desktop-light.png",
+      "bytes": 91384,
+      "sha256": "ff5c2fa7713491510a890a4224cee18b2b785550695f4192ae160d06b46731b2"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-0-mobile-dark.png",
+      "bytes": 68209,
+      "sha256": "ef79652ad24e66eef9d5512328a36633aefe8ced2b4e01c3d50e626d9c4be75a"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-0-mobile-light.png",
+      "bytes": 67933,
+      "sha256": "008353d278b89edcf8f71a93fd9f443623997ef7a3bbce1d3c57805fcc678f8d"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-1-desktop-dark.png",
+      "bytes": 95840,
+      "sha256": "07cffea65385867176a3f388b4b220220305d2631b67126634a91f7474bbb6f8"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-1-desktop-light.png",
+      "bytes": 95314,
+      "sha256": "5d6d17298b695a91f4f97fa661f655685ed7c04853a397c6b920b2a986e850d4"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-1-mobile-dark.png",
+      "bytes": 70713,
+      "sha256": "211fe2ec86008490446bad2cdbf0268d27968e1ad5ce3f7074ffbbc8e4a2b9ef"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-1-mobile-light.png",
+      "bytes": 70445,
+      "sha256": "032ff3dec48df9965b8c9c45e81d2f327fd545b50a3d56935c778e042fb05fcb"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-2-desktop-dark.png",
+      "bytes": 102202,
+      "sha256": "94d0cd274f4d932bf893a266da3603d171088995f631632e93991ca9e95bad75"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-2-desktop-light.png",
+      "bytes": 101792,
+      "sha256": "919ccd48ecd8d0ff8f15b813d8a0552b066e4ad55cf94955046d0dd58a3fa06e"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-2-mobile-dark.png",
+      "bytes": 74868,
+      "sha256": "37b286b88e93123462082b8319083a1b36d506743054dcd92dc211631ea60ebe"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-2-mobile-light.png",
+      "bytes": 74615,
+      "sha256": "c553bf7e66eea543cf207215e81cb41287e72631fe9449654699448aa8cc09ef"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-3-desktop-dark.png",
+      "bytes": 109676,
+      "sha256": "d749e8901feed8b96c3dcb3a5cdfcd0ce8d9a938651aec2e52bf0be8be7e8884"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-3-desktop-light.png",
+      "bytes": 109299,
+      "sha256": "3a68917464ae88519c880e1158a6e72025bfd62d0dc2491c68eca52e51c7e74c"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-3-mobile-dark.png",
+      "bytes": 79475,
+      "sha256": "319d631a9ce69c57a10aa0119f264bd6bf85a97bcde5a5ef5309aad8033b2c37"
+    },
+    {
+      "path": "output/playwright/body-3d-prototype-current-3-mobile-light.png",
+      "bytes": 79354,
+      "sha256": "dd7e72462979dc4de5ec10f06de8f52263689d64a99c74e49db4c58de8a2262d"
+    }
+  ],
+  "inspectedOriginals": [
+    "output/playwright/body-union-fit-0-desktop-light.png",
+    "output/playwright/body-union-fit-3-desktop-dark.png",
+    "output/playwright/body-union-fit-2-mobile-light.png",
+    "output/playwright/body-union-fit-1-mobile-dark.png"
+  ],
+  "tests": {
+    "focusedDomainPassed": 8,
+    "browserPassed": 2,
+    "coreShardRegistration": true,
+    "completeCoreShardRun": false
+  },
+  "sameNumericalResultsAfterPackagingRepair": true,
+  "build": {
+    "passed": true,
+    "browserReachabilityModules": 139,
+    "htmlEntries": 4,
+    "bootBytes": 649321,
+    "bootLimitBytes": 730000,
+    "modules": 51,
+    "moduleLimit": 58,
+    "lazyLeaks": 0,
+    "artifactFingerprint": "5f10ca07c069232a6018dc58f86374dfa2f1c5924aa609f4056da8ca9f2183bf",
+    "experimentIncludedInArtifact": false
+  },
+  "cameras": {
+    "neutralSpanInches": 104,
+    "neutralFloorMarginInches": 4,
+    "motionSpanInches": 160,
+    "motionFloorMarginInches": 8,
+    "samePhysicalCameraForNeutralBeforeAfterAndAllMasses": true,
+    "sameScaleNeutralAndMotion": false
+  },
+  "maxRefinedTargetResidual": 0.0033973866355926363,
+  "maxRefinedAxisDisagreement": 0.000040387461019086857,
+  "maxPoseUnionVolumeChange": 0.028243913743640103,
+  "densityStatus": "artistic1kg-per-litre-proxy-not-measured-tissue",
+  "productionDossierIntegrated": false,
+  "completeAnatomicalBodyUnionVerified": false,
+  "selfIntersectionsVerified": false,
+  "fullVisualAcceptance": false,
+  "openFindings": [
+    "Pose-dependent union change up to2.825% at one checked phase; full pose sweep and volume-preserving deformation unfinished.",
+    "Closed edge incidence does not prove manifold/self-intersection-free valid anatomical solids.",
+    "Numerical quadrature refinement is not a certified true-error bound.",
+    "Nominal clay skull excludes ears, eyes, hair and shader cutouts.",
+    "Slab torso, abrupt joins and simplified extremities remain visibly mannequin-like.",
+    "No finished production integration or population calibration."
+  ]
+}

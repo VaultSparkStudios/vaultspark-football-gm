@@ -8,6 +8,9 @@ import path from "node:path";
  */
 
 export const MAX_REQUEST_BODY_BYTES = 1_000_000;
+// Full franchise JSON contains the league, prospects and retained career
+// records. Only the snapshot import/inspection routes use this larger ceiling.
+export const MAX_SNAPSHOT_BODY_BYTES = 64 * 1024 * 1024;
 
 export const BUFFERED_BODY = Symbol("vsfgm.bufferedBody");
 
@@ -116,9 +119,14 @@ export function stopOversizeUpload(req, res, { graceMs = 1000, maxDiscardBytes =
     timer.unref?.();
     req.on("data", (chunk) => {
       discarded += chunk.length;
-      if (discarded > maxDiscardBytes) close();
+      // A fast uploader can exhaust the discard budget before the client has
+      // read the flushed 413. Immediate destruction then resets TCP and loses
+      // that response. Stop consuming at the byte ceiling, but retain the same
+      // bounded grace deadline so the peer has time to receive the refusal.
+      if (discarded >= maxDiscardBytes) req.pause();
     });
     req.once("end", () => clearTimeout(timer));
+    req.once("close", () => clearTimeout(timer));
     req.resume();
   };
   if (res.writableFinished) begin();

@@ -1,0 +1,865 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T07:06:18.829Z",
+  "status": "scoped-ear-progress-complete-player-craft-open",
+  "scope": "Saved-size/shape folded auricle in shared production head; no altered person recipe, measurement, football simulation, population or complete visual acceptance",
+  "sources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/production-ear-playerHead3d.js-2026-10-08",
+      "sha256": "98d7dd5ecb35211b762ff85d46dada1bd0644561137b2fec5e9ebcdf5523df09"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/production-ear-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/production-ear-playerPortraitFace.js-2026-10-08",
+      "sha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/production-ear-playerPortrait.js-2026-10-08",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/production-ear-playerMotion.js-2026-10-08",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/production-ear-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/production-ear-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/production-ear-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/production-ear-playerIdentity.js-2026-10-08",
+      "sha256": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/production-ear-playerVisualIdentity.js-2026-10-08",
+      "sha256": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012"
+    },
+    {
+      "original": "src/domain/playerMeasurements.js",
+      "file": "references/production-ear-playerMeasurements.js-2026-10-08",
+      "sha256": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/production-ear-player-shared-head.test.js-2026-10-08",
+      "sha256": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f"
+    },
+    {
+      "original": "test/player-whole-head-form.test.js",
+      "file": "references/production-ear-player-whole-head-form.test.js-2026-10-08",
+      "sha256": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf"
+    },
+    {
+      "original": "test/player-surface-lighting.test.js",
+      "file": "references/production-ear-player-surface-lighting.test.js-2026-10-08",
+      "sha256": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4"
+    },
+    {
+      "original": "tests-ui/player-ear-gallery.spec.js",
+      "file": "references/production-ear-player-ear-gallery.spec.js-2026-10-08",
+      "sha256": "1045b4101ac1147ae9a435c23cdb2ff6032720210867746f66a8325fdc2cfbfd"
+    },
+    {
+      "original": "tests-ui/player-ear-production.spec.js",
+      "file": "references/production-ear-player-ear-production.spec.js-2026-10-08",
+      "sha256": "a90899fdb212ce2d59653f730170c96594f4e37209bb6a3583e60b18507c105f"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/production-ear-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    },
+    {
+      "original": ".cache/production-ear-contracts.test.mjs",
+      "file": "references/production-ear-production-ear-contracts.test.mjs-2026-10-08",
+      "sha256": "dbf57e8b1e8868ddbc5d89ed08f01d9541796f0c60f04b3cba74b12de6931e8d"
+    },
+    {
+      "original": ".cache/check-ear-candidate.mjs",
+      "file": "references/production-ear-check-ear-candidate.mjs-2026-10-08",
+      "sha256": "e9c557fd0876b12db5df1cfa8839d9a01ee769166f8b5bc37d914a8e46593001"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "references/production-ear-before-2026-10-08.js",
+      "sha256": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8"
+    },
+    {
+      "file": "references/production-head-anatomy-fixtures-2026-10-08.json",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    }
+  ],
+  "evidence": [
+    {
+      "original": "output/playwright/production-ear.json",
+      "file": "references/production-ear-evidence-production-ear.json-2026-10-08",
+      "sha256": "e58a14af3e853cfba01daaa696c33ba3368c2f17db3808dee3f46f78bce85908"
+    },
+    {
+      "original": "output/playwright/ear-gallery-observations.json",
+      "file": "references/production-ear-evidence-ear-gallery-observations.json-2026-10-08",
+      "sha256": "52ef63bf892a8d5ac417ab4c780556d60d9f8d2224e48e99c6efb3c9cc58c613"
+    },
+    {
+      "original": ".cache/ear-candidate-geometry.json",
+      "file": "references/production-ear-evidence-ear-candidate-geometry.json-2026-10-08",
+      "sha256": "c916420be451339efd8c09e7634d95b1f4fd8e5af36001032944c1e9865bd829"
+    }
+  ],
+  "built": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "98d7dd5ecb35211b762ff85d46dada1bd0644561137b2fec5e9ebcdf5523df09",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "39a07707a1d0ea1e5dd2a5ff796c567b857718f843ec366d40ce0a3e46e587d1",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "ef04ff6954e17b232880268a43f71191dcfcf459f4d8ad47bfa79141aff7305e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "captures": [
+    {
+      "file": "captures/production-ear-component-production-ear-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8c15373c261c910a5f45854df55bb2055a1e0136ac4d585acf04c55f31962d88",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-desktop-dark-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9bc360cf70fe9f114bd719290236d4cfbb2739fd64380fa73bad4ebd08c0adc7",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-desktop-dark-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "805742655c12980294323cdd257527017af0e473a7d3a1071287cfbadec08efc",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-desktop-dark-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cec2e590922ace0176250909279346ba70fcfa2dca7d15c8bd96f745d65a9671",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-desktop-light-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7d64c310c4831499e019f76742decbd6945e15e46a5c9aeb5ceab001a5db3bd2",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-desktop-light-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5a414154239b8641de28517a0f44a9b4c77022289c9e31337b87777e9d2e21e8",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-desktop-light-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "63b66587e22cda24b89d2e7e25cf012114a18a401ce169cb479bdb96c8842153",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-mobile-dark-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f2dd3cf5d5e28f3a7fa075d0204e83b3fb9edda218ce20c4d999a5533e745749",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-mobile-dark-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "286dd96ea4a0455a64ba566f2e68018b5677cedf40eaf8253f1e7121d5fd4f01",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-mobile-dark-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c11538df0ff2c2973efdabcb3e1b5b841ddf01c7b1138360d7d5525c28daec87",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-mobile-light-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "9bc9e02b31fec7067eb472be365e858dc0712b7da29b0aea79db55155a644cc2",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-mobile-light-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7ba4b1dd7dc1a2b397886c25bf89b553c068fcf1d6a8f18f22ac4d4bcfd20449",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-before-mobile-light-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "3deee3a2795c2cb26a8165604660b7b7861f474c91cf20159c815f4bde9d96d6",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-desktop-dark-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "463ba0642d619f51c6cfe064cd13bcd55e597e4f1934e0bf92f75dfa0c79e46d",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-desktop-dark-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7f06670796562b6c4f65f73613bd42b3969e8e6f7dbfa02ecf9a68fc6e8502cb",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-desktop-dark-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8ba66f8adf532cecb45a52b2eb9551fc6f4873724813faaaf4d01ff9fe5ad8e3",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-desktop-light-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "59c4a9a2d86d6f11bb546e9f1c7c5ec7bcbb5babb97be0985c6cc09695c9e6a7",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-desktop-light-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "1c6e91eebc43902317a5533a06e0113813f7458a223a3e771ce9620139b0113a",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-desktop-light-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "97a603cc490e7d72aefad3696ff08c838b94239d34fdccf2fea29d9766b82545",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-mobile-dark-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ac1fe6cb0355c3eb5fe1c03c171b0d56912d5e8f3755a64a6b46eaaf294f4759",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-mobile-dark-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4f67c1c19ee6bfa17da85ec57a262c377edaf02a8d71614e3cbdbd4b2aa5d1d0",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-mobile-dark-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e066bde47b465f0ead9512b47e82ba6ddd84abfcefd286722c5dd251a245fb81",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-mobile-light-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c6f20def9302e93763ba7c7544ab60f56d85ba1b21fb93ca44e9be9d30bbe1eb",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-mobile-light-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-production-ear-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8bfd528a3e3ba89cdcd833739cfceb6adbcd7c371b155f9eb613aa1a891c4f2e",
+      "page": "actual-player-dossier",
+      "original": "output/playwright/production-ear-after-mobile-light-motion.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-0-desktop-dark.png",
+      "sha256": "db89c1e65812be440dc2e3d127721e35e72bc07bb65429afa76b785851f3d4b2",
+      "theme": "dark",
+      "person": 0,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-0-desktop-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-1-desktop-dark.png",
+      "sha256": "702b26cb3ab1f8ea3d68bba35c0fdc84e01e065f0437ac17b91eafdac74fa29c",
+      "theme": "dark",
+      "person": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-1-desktop-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-2-desktop-dark.png",
+      "sha256": "2c75642a8e2e670b953cf4989db4eb5f0abca3afd77fa2f70e1902dd31ee2e4a",
+      "theme": "dark",
+      "person": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-2-desktop-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-0-desktop-light.png",
+      "sha256": "7cfb2a92bc0b98b91b553cf1c94492d2b0653231b11865d94031c2ffad83fd7b",
+      "theme": "light",
+      "person": 0,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-0-desktop-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-1-desktop-light.png",
+      "sha256": "9a22da9f3431fb16eee5476ec30db03e3d2283c5ff3c2d9028ba0853c007f400",
+      "theme": "light",
+      "person": 1,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-1-desktop-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-2-desktop-light.png",
+      "sha256": "eeeb0d63b6760e382bc97e5fb454e206df1b770c059584eb3454483b7afca7b0",
+      "theme": "light",
+      "person": 2,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-2-desktop-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-0-mobile-dark.png",
+      "sha256": "dc3f01f543e68dcf2b527435f0b0015b1f93e803273dce55fc707a0ac716e8b5",
+      "theme": "dark",
+      "person": 0,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-0-mobile-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-1-mobile-dark.png",
+      "sha256": "0d20e9fe6cf8eaa25d86d0fa49bd01c0ab39dcf3522d4aeef4a901e1d12eaf9d",
+      "theme": "dark",
+      "person": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-1-mobile-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-2-mobile-dark.png",
+      "sha256": "bec731f92fc45a997fd767fdd3f181dc9bc5784b2345968a12cb78f8bb55827b",
+      "theme": "dark",
+      "person": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-2-mobile-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-0-mobile-light.png",
+      "sha256": "7c25f418d70c8690f8a2488dcb26a0dad9c6ff9d4ff350a017daa5bfbc389058",
+      "theme": "light",
+      "person": 0,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-0-mobile-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-1-mobile-light.png",
+      "sha256": "b24ab97225c8d3288b554d0bd88115496c633e1921da465d39317299caaff6ec",
+      "theme": "light",
+      "person": 1,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-1-mobile-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/production-ear-component-ear-gallery-2-mobile-light.png",
+      "sha256": "085c24b774d3f5967b4e1c890a496f8e22a9ee6530b459b2424f6595d65b3edb",
+      "theme": "light",
+      "person": 2,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "controlled-player-ear-gallery",
+      "state": "front/three-quarter/profile; color and clay; same-person before/after",
+      "original": "output/playwright/ear-gallery-2-mobile-light.png",
+      "inspected": true
+    }
+  ],
+  "checks": {
+    "initialFocused": {
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 3666.2031,
+      "terminalChunk": "4b0e8b",
+      "qualification": "Production ear already adopted; shared-head test later gained one attachment/local-normal case."
+    },
+    "currentGeometry": {
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 12155.2736,
+      "terminalChunk": "781121",
+      "qualification": "Includes current five shared-head cases plus 17 geometry contracts; original unrotated-normal test kept untouched separately."
+    },
+    "retainedInitialGeometryFailure": {
+      "passed": 21,
+      "failed": 1,
+      "terminalChunk": "c9c3ac",
+      "reason": "Original pure-world-x >.9 normal check is incompatible with newly inclined auricle. Replacement keeps >.9 in outward local plane; original historical script is not rewritten."
+    },
+    "nonEarCompatibility": {
+      "cases": 10,
+      "terminalChunk": "c01146",
+      "indicesExact": true,
+      "nonEarVerticesNormalsMaterialsExact": true,
+      "rawSavedAppearanceUnchanged": true,
+      "skullOverlapAndExternalVolume": true,
+      "qualification": "Candidate check was recorded before adoption; candidate bytes equal production. Its productionChanged:false field refers to that earlier execution."
+    },
+    "actualAndGalleryBrowser": {
+      "passed": 2,
+      "failed": 0,
+      "durationSeconds": 27.5,
+      "terminalChunk": "21d3f4",
+      "captures": 36,
+      "ordinaryRaster": {
+        "width": 96,
+        "height": 120
+      },
+      "inspectionRaster": {
+        "width": 240,
+        "height": 300
+      },
+      "galleryProjections": 3,
+      "qualification": "Gallery desktop element screenshots may exceed one viewport; ordinary images are actual 96x120 rasters. Complete-person legibility/naturalism is not established."
+    },
+    "unavailableGraphicsBrowser": {
+      "passed": 1,
+      "failed": 0,
+      "durationSeconds": 3.8,
+      "terminalChunk": "5becc9"
+    },
+    "actualDossier": {
+      "playerId": "P2026-BUF-LB-33468504",
+      "completePlayerDtoUnchanged": true,
+      "projectionAgreement": [
+        {
+          "mode": "run",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "acceleration",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "cut",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "jump",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "strength",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "endurance",
+          "frontBody": true,
+          "sideMotion": true
+        }
+      ],
+      "diagnostics": {
+        "cacheEntries": 2,
+        "cacheLimit": 32,
+        "draws": 2,
+        "meshBuilds": 1,
+        "unavailable": false,
+        "contexts": 1
+      },
+      "cacheProof": {
+        "bounded": {
+          "cacheEntries": 32,
+          "cacheLimit": 32,
+          "draws": 37,
+          "meshBuilds": 36,
+          "unavailable": false,
+          "contexts": 1
+        },
+        "restored": true,
+        "malformed": true,
+        "malformedSkin": true,
+        "healthy": true
+      }
+    },
+    "build": {
+      "passed": true,
+      "terminalChunk": "779b8f",
+      "precacheVersion": "4d964b636c4b",
+      "assets": 318,
+      "sizeKB": 3529
+    },
+    "reachability": {
+      "passed": true,
+      "terminalChunk": "40fa93",
+      "modules": 138,
+      "entries": 4
+    },
+    "boot": {
+      "passed": true,
+      "terminalChunk": "5d577e",
+      "bytes": 649321,
+      "byteLimit": 730000,
+      "modules": 51,
+      "moduleLimit": 58,
+      "lazyLeaks": 0
+    }
+  },
+  "iterationEvidence": {
+    "initialConfigFailure": {
+      "terminalChunk": "7865a8",
+      "reason": "Scratch config resolved web-server cwd under .cache; explicit repo cwd repaired it."
+    },
+    "firstCandidate": {
+      "terminalChunk": "41cad3",
+      "passed": 1,
+      "visualRejected": true,
+      "reason": "Thin facing-away cartilage and flat profile; captures retained in .cache/ear-first-candidate-captures, not source-bound final proof."
+    },
+    "secondCandidate": {
+      "terminalChunk": "bd647c",
+      "passed": 1,
+      "geometryRejected": true,
+      "geometryTerminalChunk": "6bd61b",
+      "reason": "Positive minimum radial skull clearance around .26; base moved inward by one artistic unit."
+    },
+    "finalCandidate": {
+      "terminalChunk": "e53b90",
+      "passed": 1,
+      "geometryTerminalChunk": "c01146",
+      "geometryPassed": true,
+      "productionCandidateBytesExact": true
+    }
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 36,
+    "findings": [
+      "Front auricles now have a rounded external outline rather than narrow bars; color/clay comparisons preserve the same saved head in front, oblique and profile.",
+      "Actual dossier portrait/front/profile/movement retains source identity and API DTO. Small body-view ears remain subtle; the profile interior is still stylized and line-like.",
+      "All 12 current gallery originals and 24 actual before/after originals were inspected across desktop/mobile and dark/light. Body/motion captures provide integration evidence, not exact synchronized pose-pixel equality.",
+      "Cartilage sizes, inclination, concavity and local shading are artistic assumptions; no measured ear anatomy, population occurrence or medical inference adopted.",
+      "Cap-like hair, painted/sparse beard, rigid expression and mannequin-like bodies remain complete-player craft defects. This ear component does not close them."
+    ],
+    "fixesApplied": [
+      "Outward-facing inclined auricle",
+      "Recessed bowl, raised rim and larger local folds",
+      "Skull-overlapping base with saved size/shape controls",
+      "Bounded local bowl shading; non-ear semantic geometry preserved"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "coreQualification": "Historical 626/626 core receipt froze before ear/test changes; this component does not claim a new complete core or all-suite run.",
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

@@ -1,0 +1,154 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fixture} from './helpers/regularMedicalFixture.js';
+import {previewAdmittedRegularAccrual,commitAdmittedRegularAccrual,validateSnapshotAdmittedInjuryPayroll,
+ RECONCILED_ADMITTED_PAYROLL_VERSION} from '../src/domain/admittedInjuryPayroll.js';
+import {buildPracticeContract,recordPracticeWeekPay} from '../src/domain/practiceContracts.js';
+import {applyRegularMedicalRecovery} from '../src/domain/regularMedicalRecovery.js';
+import {simulateHeadlessRegularSeasonWeek} from '../src/engine/seasonSimulator.js';
+import {encodeSnapshot,decodeSnapshot} from '../src/adapters/persistence/snapshotCodec.js';
+import {createSessionFromSnapshot} from '../src/runtime/bootstrap.js';
+import {inspectSnapshotCompatibility} from '../src/runtime/snapshotMigration.js';
+import {declareStandardElevation,settleStandardElevationGame,standardElevationGame} from '../src/domain/standardElevations.js';
+const options={year:2027,week:1};
+function sign(s,p,teamId='BUF'){
+ s.league.teamCapOverride[teamId]=1e9;
+ const outgoing=s.league.players.find(row=>row.teamId===teamId&&row.rosterSlot==='practice'&&!row.injury?.weeksRemaining);
+ assert.equal(s.releasePlayer({teamId,playerId:outgoing.id}).ok,true);
+ assert.equal(s.signPracticeFreeAgent({teamId,playerId:p.id}).ok,true);
+}
+function settle(f,receipts){return commitAdmittedRegularAccrual(f.l,{...options,receipts});}
+
+test('actual release/sign/weekly commands reconcile old payer with current practice pay and persist',async()=>{
+ const {s,l,p}=fixture();p.injury.weeksRemaining=3;sign(s,p);
+ const gross=l.admittedInjuryContinuations[0].weeklyRateCents;
+ assert.equal(s.advanceWeek().ok,true);
+ const row=l.admittedInjuryPayroll.find(row=>row.playerId===p.id);
+ assert.equal(row.version,RECONCILED_ADMITTED_PAYROLL_VERSION);
+ assert.equal(row.grossCents,gross);assert.equal(row.practiceCents,p.contract.payLedger['2027:1'].amount*100);
+ assert.equal(row.amountCents+row.practiceCents,gross);assert.equal(row.teamId,'BUF');
+ assert.equal(l.capLedger.BUF.admittedInjuryCharges.find(pay=>pay.payId===row.payId).amountCents,row.amountCents);
+ const restored=createSessionFromSnapshot(await decodeSnapshot(await encodeSnapshot(s.toSnapshot())));
+ assert.deepEqual(restored.league.admittedInjuryPayroll,l.admittedInjuryPayroll);
+ assert.deepEqual(restored.getTeamCapSummary('BUF'),s.getTeamCapSummary('BUF'));
+ validateSnapshotAdmittedInjuryPayroll(restored.league);
+});
+
+test('actual headless weekly path applies the same reconciliation',()=>{
+ const {s,l,p}=fixture();p.injury.weeksRemaining=3;sign(s,p);
+ simulateHeadlessRegularSeasonWeek({league:l,statBook:s.statBook,year:2027,weekBlock:s.seasonSchedule[0],rng:s.rng,mode:'stat'});
+ const row=l.admittedInjuryPayroll.find(row=>row.playerId===p.id);
+ assert.equal(row.amountCents+row.practiceCents,row.grossCents);assert.ok(row.practiceCents>0);
+ assert.equal(row.version,RECONCILED_ADMITTED_PAYROLL_VERSION);
+});
+
+test('captured clearance entitlement survives recovery/release and offsets only actually paid same-payer base',()=>{
+ for(const variant of ['no-base','same-payer','other-payer','duplicate-history','after-payment-release']){
+  const f=fixture(),before=JSON.stringify(f.s.toSnapshot()),receipts=previewAdmittedRegularAccrual(f.l,options);
+  assert.equal(JSON.stringify(f.s.toSnapshot()),before);
+  applyRegularMedicalRecovery(f.l,{...options,deferAdmittedPay:true,getTeamModifiers:()=>({extraRecoveryWeeks:0})});
+  assert.equal(f.p.injury,null);assert.equal(f.l.admittedInjuryPayroll,undefined);
+  if(variant!=='no-base'){
+   f.p.teamId=variant==='other-payer'?'MIA':'BUF';f.p.rosterSlot='practice';
+   f.p.contract=buildPracticeContract(f.p,{year:2027});recordPracticeWeekPay(f.l,options);
+   if(variant==='duplicate-history')f.p.practiceContractHistory.push(structuredClone(f.p.contract));
+   if(variant==='after-payment-release'){
+    f.s.rebuildLookupIndexes();
+    const released=f.s.releasePlayer({teamId:'BUF',playerId:f.p.id,toWaivers:false});
+    assert.equal(released.ok,true,JSON.stringify(released));
+   }
+  }
+  const [row]=settle(f,receipts),expected=['same-payer','duplicate-history','after-payment-release'].includes(variant)?1450000:0;
+  assert.equal(row.practiceCents,expected,variant);assert.equal(row.amountCents,row.grossCents-expected,variant);
+  const after=JSON.stringify(f.l);assert.deepEqual(settle(f,receipts),[]);assert.equal(JSON.stringify(f.l),after);
+  validateSnapshotAdmittedInjuryPayroll(f.l);
+ }
+});
+
+test('fully covered continuation retains a zero-additional receipt and zero charge rather than a second wage',()=>{
+ const f=fixture();
+ // A declared later-year salary projection exceeds the fixed 2026 source
+ // rate. This tests full coverage, not a claim about 2027 pay or NFL limits.
+ const year=2045;f.l.year=year;f.l.financialYear=year;
+ const later=previewAdmittedRegularAccrual(f.l,{year,week:1});
+ f.p.teamId='BUF';f.p.rosterSlot='practice';f.p.contract=buildPracticeContract(f.p,{year});
+ recordPracticeWeekPay(f.l,{year,week:1});
+ const [row]=commitAdmittedRegularAccrual(f.l,{year,week:1,receipts:later});
+ assert.ok(row.practiceCents>=row.grossCents);assert.equal(row.amountCents,0);
+ assert.equal(f.l.capLedger.BUF.admittedInjuryCharges.find(pay=>pay.payId===row.payId).amountCents,0);
+ validateSnapshotAdmittedInjuryPayroll(f.l);
+});
+
+test('settled same-club re-elevation covers the captured minimum without adding practice twice',()=>{
+ const f=fixture(),receipts=previewAdmittedRegularAccrual(f.l,options);
+ applyRegularMedicalRecovery(f.l,{...options,deferAdmittedPay:true,getTeamModifiers:()=>({extraRecoveryWeeks:0})});
+ f.p.teamId='BUF';f.p.rosterSlot='practice';f.p.contract=buildPracticeContract(f.p,{year:2027});
+ const game=standardElevationGame({year:2027,week:1,homeTeamId:'BUF',awayTeamId:'MIA'});
+ assert.equal(declareStandardElevation({league:f.l,player:f.p,teamId:'BUF',game,capSpace:1e8}).ok,true);
+ settleStandardElevationGame({league:f.l,result:{...game,winnerId:'BUF'}});recordPracticeWeekPay(f.l,options);
+ const [row]=settle(f,receipts);
+ assert.equal(row.elevationCents,f.p.standardElevations.games.at(-1).payCents);
+ assert.ok(row.elevationCents>row.grossCents);assert.equal(row.amountCents,0);
+ assert.equal(row.practiceCents,1450000);validateSnapshotAdmittedInjuryPayroll(f.l);
+ const invalid=f.s.toSnapshot();invalid.league.admittedInjuryPayroll[0].elevationCents++;
+ assert.equal(inspectSnapshotCompatibility(invalid).reasonCode,'ADMITTED_INJURY_PAYROLL_INVALID');
+});
+
+test('forged gross/base/pay, missing base evidence and conflicting copies refuse import or commit atomically',()=>{
+ const f=fixture(),receipts=previewAdmittedRegularAccrual(f.l,options);
+ f.p.teamId='BUF';f.p.rosterSlot='practice';f.p.contract=buildPracticeContract(f.p,{year:2027});
+ recordPracticeWeekPay(f.l,options);settle(f,receipts);const saved=f.s.toSnapshot();
+ for(const mutate of [s=>s.league.admittedInjuryPayroll[0].grossCents++,s=>s.league.admittedInjuryPayroll[0].practiceCents++,
+  s=>s.league.admittedInjuryPayroll[0].amountCents++,s=>{delete s.league.players.find(p=>p.id===f.p.id).contract.payLedger['2027:1'];},
+  s=>{
+   const person=s.league.players.find(p=>p.id===f.p.id),copy=structuredClone(person.contract);
+   copy.eligibilityGroup='unrestricted';copy.weeklySalary=19200;copy.salary=copy.baseSalary=copy.capHit=19200*18;
+   copy.payLedger['2027:1'].amount=19200;person.practiceContractHistory.push(copy);
+  }]){
+  const invalid=structuredClone(saved);mutate(invalid);const before=JSON.stringify(invalid);
+  assert.equal(inspectSnapshotCompatibility(invalid).reasonCode,'ADMITTED_INJURY_PAYROLL_INVALID');
+  assert.throws(()=>createSessionFromSnapshot(invalid));assert.equal(JSON.stringify(invalid),before);
+ }
+ const fresh=fixture(),capture=previewAdmittedRegularAccrual(fresh.l,options);capture[0].amountCents++;
+ const before=JSON.stringify(fresh.l);assert.throws(()=>settle(fresh,capture));assert.equal(JSON.stringify(fresh.l),before);
+});
+
+test('an unpaid contract reservation is not coverage; a scheduled bye pays but adds no pension game',()=>{
+ const f=fixture(),receipts=previewAdmittedRegularAccrual(f.l,options);
+ f.p.teamId='BUF';f.p.rosterSlot='practice';f.p.contract=buildPracticeContract(f.p,{year:2027});
+ const [row]=settle(f,receipts);assert.equal(row.practiceCents,0);assert.equal(row.amountCents,row.grossCents);
+ const {s,l,p}=fixture();p.injury.weeksRemaining=3;sign(s,p);
+ const bye=s.seasonSchedule.find(block=>!block.games.some(g=>[g.homeTeamId,g.awayTeamId].includes('BUF'))).week;
+ s.currentWeek=bye;const before=structuredClone(p.pensionService);
+ assert.equal(s.advanceWeek().ok,true);
+ const earned=l.admittedInjuryPayroll.find(row=>row.playerId===p.id);
+ assert.equal(earned.week,bye);assert.equal(earned.practiceCents,1450000);
+ assert.equal(earned.amountCents+earned.practiceCents,earned.grossCents);assert.deepEqual(p.pensionService,before);
+});
+
+test('legacy earned payments remain unchanged; closed new earning refuses without mutation',()=>{
+ const f=fixture(),capture=previewAdmittedRegularAccrual(f.l,options);
+ applyRegularMedicalRecovery(f.l,options);const historical=structuredClone(f.l.admittedInjuryPayroll);
+ assert.deepEqual(settle(f,capture),[]);assert.deepEqual(f.l.admittedInjuryPayroll,historical);
+ const g=fixture(),newCapture=previewAdmittedRegularAccrual(g.l,options);g.l.capLedger.BUF.rolloverAppliedThroughYear=2027;
+ const before=JSON.stringify(g.l);assert.throws(()=>settle(g,newCapture));assert.equal(JSON.stringify(g.l),before);
+});
+
+test('copied, relabeled, cross-league or serialized plans cannot manufacture a later recovered interval',()=>{
+ const f=fixture(),capture=previewAdmittedRegularAccrual(f.l,options);
+ applyRegularMedicalRecovery(f.l,{...options,deferAdmittedPay:true,getTeamModifiers:()=>({extraRecoveryWeeks:0})});
+ assert.equal(f.p.injury,null);assert.deepEqual(previewAdmittedRegularAccrual(f.l,{year:2027,week:2}),[]);
+ for(const kind of ['copied','relabeled','serialized','original-with-wrong-period','cross-league']){
+  const receipts=kind==='original-with-wrong-period'||kind==='cross-league'?capture:structuredClone(capture);
+  const week=kind==='relabeled'||kind==='original-with-wrong-period'?2:1;
+  if(kind==='relabeled'){
+   receipts[0].week=2;receipts[0].payId=JSON.stringify([receipts[0].rightId,2027,'regular-season',2]);
+  }
+  const input=kind==='serialized'?JSON.parse(JSON.stringify(receipts)):receipts;
+  const league=kind==='cross-league'?structuredClone(f.l):f.l,before=JSON.stringify(league);
+  assert.throws(()=>commitAdmittedRegularAccrual(league,{year:2027,week,receipts:input}),/unproved captured regular eligibility/);
+  assert.equal(JSON.stringify(league),before,kind);
+ }
+ const [earned]=settle(f,capture);assert.equal(earned.week,1);assert.equal(earned.amountCents,earned.grossCents);
+ const before=JSON.stringify(f.l);assert.deepEqual(settle(f,capture),[]);assert.equal(JSON.stringify(f.l),before);
+});

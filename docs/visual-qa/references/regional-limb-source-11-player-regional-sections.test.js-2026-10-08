@@ -1,0 +1,124 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {playerFrame,playerAppearance} from '../src/domain/playerIdentity.js';
+import {ensurePlayerVisualIdentity} from '../src/domain/playerVisualIdentity.js';
+import {projectedTorsoSections} from '../public/lib/physiqueGeometryContract.js';
+import {buildPlayerPhysiqueSvg,buildPlayerMotionSvg} from '../public/lib/playerPortrait.js';
+import {createSession,createSessionFromSnapshot} from '../src/runtime/bootstrap.js';
+
+const make=(seed='sections',heightInches=74,weightLbs=225)=>{
+ const p=ensurePlayerVisualIdentity({id:'sections-control',age:25,heightInches,weightLbs,ratings:{speed:70,acceleration:70,agility:70,jumping:70,strength:70,stamina:70},profile:{regionalBodyShapeRecipe:{version:'regional-body-shape-v2',seed}}},{newPlayer:true});
+ return {...p,appearance:playerAppearance(p),visualFrame:playerFrame(p)};
+};
+const path=svg=>svg.match(/<path class="player-torso-surface"[^>]* d="([^"]+)"/)[1];
+const cubic=(a,b,c,d,t)=>(1-t)**3*a+3*(1-t)**2*t*b+3*(1-t)*t*t*c+t**3*d;
+// Read actual SVG cubic walls, independently of the production section helper.
+function walls(svg){
+ const d=path(svg),leftStart=d.match(/Q[-\d.]+ [-\d.]+ ([-\d.]+) ([-\d.]+)/).slice(1).map(Number);
+ const left=d.slice(d.indexOf(' C'),d.indexOf(' H'));
+ const right=d.slice(d.indexOf(' H'));
+ const parse=(text,start)=>{const curves=[];for(const m of text.matchAll(/C([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+) ([-\d.]+)/g)){const q=m.slice(1).map(Number);curves.push([start,...q]);start=[q[4],q[5]];}return curves;};
+ const l=parse(left,leftStart),r=parse(right,[Number(right.match(/^ H([-\d.]+)/)[1]),l.at(-1)[6]]).reverse();
+ return l.map((a,i)=>{const b=r[i];return {height:a[6]-a[0][1],width:t=>cubic(b[6-1],b[3],b[1],b[0][0],t)-cubic(a[0][0],a[1],a[3],a[5],t)};});
+}
+
+test('drawn regional width/depth sections independently reconstruct one torso volume',()=>{
+ for(const h of [62,74,86])for(const mass of [140,225,400]){
+  const p=make('sections',h,mass),f=p.visualFrame,before=structuredClone(p);
+  const a=walls(buildPlayerPhysiqueSvg(p)),b=walls(buildPlayerPhysiqueSvg(p,{view:'side'}));
+  assert.equal(a.length,3);assert.equal(b.length,3);
+  let volume=0;
+  for(let i=0;i<a.length;i++)for(let j=0;j<1000;j++){
+   const t=(j+.5)/1000,w=a[i].width(t)/6,d=b[i].width(t)/6;
+   assert.ok(w>0&&d>0);volume+=Math.PI/4*w*d*a[i].height/6/1000;
+  }
+  assert.ok(Math.abs(volume/f.torsoVolumeInches3-1)<.002,`${h}/${mass}: ${volume/f.torsoVolumeInches3}`);
+  const budget=f.torsoVolumeInches3+f.legsVolumeInches3+f.armsVolumeInches3+f.neckVolumeInches3+f.reservedVolumeInches3;
+  assert.ok(Math.abs(budget-f.volumeBudgetInches3)<1e-8);
+  assert.deepEqual(p,before);
+ }
+});
+
+test('actual static and six articulated surfaces use the same saved regional path',()=>{
+ for(const seed of ['sections','fuller','tapered']){
+  const p=make(seed,74,330),before=structuredClone(p);
+  for(const mode of ['run','acceleration','cut','jump','strength','endurance'])for(const phase of [0,.37,.75]){
+   const projection=mode==='cut'?'front':'side',a=walls(buildPlayerPhysiqueSvg(p,{view:projection})),b=walls(buildPlayerMotionSvg(p,{mode,phase,idSuffix:'sections'}));
+   assert.equal(a.length,b.length);
+   for(let i=0;i<a.length;i++)for(const t of [0,.25,.5,.75,1])assert.ok(Math.abs(a[i].width(t)-b[i].width(t))<.021);
+   assert.doesNotMatch(buildPlayerMotionSvg(p,{mode,phase}),/NaN|Infinity|undefined/);
+  }
+  assert.deepEqual(p,before);
+ }
+});
+
+test('new bodies permit fuller and tapered sections with independent depth and stable bones',()=>{
+ let fuller=0,tapered=0;const signatures=new Set();
+ for(let i=0;i<150;i++){
+  const p=make(`section-${i}`),f=p.visualFrame;
+  if(f.torsoSections[2][1]>f.chestWidthInches)fuller++;
+  if(f.torsoSections[2][1]<f.chestWidthInches*.92)tapered++;
+  signatures.add(JSON.stringify(f.torsoSections));
+  assert.notEqual(f.torsoSections[2][1]/f.chestWidthInches,f.torsoSections[2][2]/f.chestDepthInches);
+  const q={...p,weightLbs:330},grown=playerFrame(q);
+  for(const key of ['heightInches','shoulderSpanInches','armLengthInches','wingspanInches','upperArmShare','upperLegShare','pelvicBreadthInches'])assert.equal(grown[key],f[key]);
+  assert.deepEqual(playerFrame({...p,ratings:{strength:99,speed:99,agility:40}}),f);
+ }
+ assert.ok(fuller>10);assert.ok(tapered>10);assert.equal(signatures.size,150);
+});
+
+test('new section decoder persists through actual snapshot restoration, legacy outputs remain exact',()=>{
+ const session=createSession({seed:972,startYear:2026,controlledTeamId:'BUF'}),p=session.league.players[0],rng=structuredClone(session.rng);
+ assert.equal(p.profile.regionalBodyShapeRecipe.version,'regional-body-shape-v4');
+ const restored=createSessionFromSnapshot(session.toSnapshot()),q=restored.league.players.find(x=>x.id===p.id);
+ assert.deepEqual(playerFrame(q),playerFrame(p));assert.deepEqual(structuredClone(session.rng),rng);
+ const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
+ for(const row of JSON.parse(fs.readFileSync(new URL('./fixtures/player-regional-sections-v1.json',import.meta.url),'utf8'))){
+  const old=row.player,dto={...old,appearance:playerAppearance(old),visualFrame:playerFrame(old)};
+  assert.deepEqual(dto.visualFrame,row.frame);
+  for(const [i,view]of ['front','side'].entries())assert.equal(hash(buildPlayerPhysiqueSvg(dto,{view,idSuffix:'legacy-proof'})),row.static[i]);
+  for(const [i,mode]of ['run','acceleration','cut','jump','strength','endurance'].entries())assert.equal(hash(buildPlayerMotionSvg(dto,{mode,phase:.37,idSuffix:'legacy-proof'})),row.motion[i]);
+ }
+});
+
+test('malformed optional section DTOs retain safe fallback without mutating a player',()=>{
+ const p=make();
+ for(const change of [null,[[0,1,1],[.5,NaN,1],[1,1,1]],[[0,1,1],[.5,1,1],[.4,1,1]],[[0,1,1],[.5,1,1],[1,51,1]]]){
+  const f={...p.visualFrame,torsoSections:change},before=structuredClone(f);
+  assert.equal(projectedTorsoSections(f,'front'),null);
+  assert.doesNotMatch(buildPlayerPhysiqueSvg({...p,visualFrame:f}),/NaN|Infinity|undefined/);
+  assert.deepEqual(f,before);
+ }
+ for(const dimension of [1,2]){
+  const f=structuredClone(p.visualFrame);f.torsoSections[0][dimension]+=1;
+  const before=structuredClone(f),dto={...p,visualFrame:f};
+  for(const projection of ['front','side']){
+   assert.equal(projectedTorsoSections(f,projection),null);
+   assert.match(buildPlayerPhysiqueSvg(dto,{view:projection}),/class="player-torso-surface"/);
+  }
+  for(const mode of ['cut','run'])assert.match(buildPlayerMotionSvg(dto,{mode,phase:.37}),/class="player-torso-surface"/);
+  assert.deepEqual(f,before);
+ }
+ for(const dimension of [1,2])for(const limit of [.5,45]){
+  const f=structuredClone(p.visualFrame),key=dimension===1?'chestWidthInches':'chestDepthInches',scale=limit/f[key];
+  f[key]=limit;for(const section of f.torsoSections)section[dimension]*=scale;
+  const before=structuredClone(f),dto={...p,visualFrame:f};
+  assert.equal(projectedTorsoSections(f,'front'),null);
+  assert.equal(projectedTorsoSections(f,'side'),null);
+  for(const view of ['front','side'])assert.match(buildPlayerPhysiqueSvg(dto,{view}),/class="player-torso-surface"/);
+  for(const mode of ['cut','run'])assert.match(buildPlayerMotionSvg(dto,{mode,phase:.37}),/class="player-torso-surface"/);
+  assert.deepEqual(f,before);
+ }
+ for(const dimension of [1,2])for(const delta of [1e-10,2e-9,5e-9,9e-9]){
+  const f=structuredClone(p.visualFrame);f.torsoSections[0][dimension]+=delta;
+  const before=structuredClone(f),dto={...p,visualFrame:f};
+  for(const [projection,key]of [['front','chestWidthInches'],['side','chestDepthInches']]){
+   for(const unit of [1,6,18])assert.equal(projectedTorsoSections(f,projection,unit)[0][1],f[key]*unit);
+   assert.match(buildPlayerPhysiqueSvg(dto,{view:projection}),/class="player-torso-surface"/);
+  }
+  for(const mode of ['cut','run'])assert.match(buildPlayerMotionSvg(dto,{mode,phase:.37}),/class="player-torso-surface"/);
+  assert.deepEqual(f,before);
+ }
+});

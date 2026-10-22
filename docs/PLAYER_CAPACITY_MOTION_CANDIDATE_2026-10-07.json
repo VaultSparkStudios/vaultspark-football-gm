@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-07T14:19:09.745Z",
+  "status": "verified-isolated-candidate-not-integrated",
+  "sourceHashes": {
+    ".cache/playerCapacityStudy.mjs": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+    ".cache/prepare-capacity-motion.mjs": "e71a2f9c39e6eb8dd9de4fd2aca49ccd86b6c22ca2a77a4d063b5e914893190b",
+    ".cache/playerMotion-capacity-candidate.mjs": "1c23f6532660d5d3b9e70cb24b7217d0f3d50bba1892b732b1878b6d1504d54d",
+    ".cache/player-capacity-study.test.mjs": "14235da2190a286a487a864afa4c8fb24ad2ea28876d8c06a549b100052ec7e6",
+    ".cache/capacity-motion-preview.spec.mjs": "394df9d4c74d8b5c98ae87c33b1af7fecb9fefb17e20defe57c1d682b8729c1e",
+    ".cache/capacity-motion.config.mjs": "b06d04cb4f7a4d4a9daabac3be2c961f22cca24fcccde997ee403257a14f971f",
+    "public/lib/playerMotion.js": "9db0639c6b2c849096695a5eb0da759375f965b9b8bd52c82f17f496fdf0f062"
+  },
+  "baselineSource": {
+    "file": "public/lib/playerMotion.js",
+    "sha256": "9db0639c6b2c849096695a5eb0da759375f965b9b8bd52c82f17f496fdf0f062"
+  },
+  "report": {
+    "file": "output/playwright/capacity-motion-preview.json",
+    "sha256": "0fc6b48081bc819f50c06412da926ada0c4a79cf47c2824bc558329ba2a3bfcf"
+  },
+  "captures": [
+    {
+      "stage": "before",
+      "mode": "strength",
+      "viewport": "desktop",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-before-strength-desktop-dark.png",
+      "sha256": "a5a2e9c39c8c6d937b891af534acfec9abb2b72f0d39c5175526ef65eefd115c"
+    },
+    {
+      "stage": "before",
+      "mode": "strength",
+      "viewport": "desktop",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-before-strength-desktop-light.png",
+      "sha256": "b21428ad7e299475a9b69c07c22abb7fc51b8728f42a8f87e61781e49ec349d0"
+    },
+    {
+      "stage": "before",
+      "mode": "strength",
+      "viewport": "mobile",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-before-strength-mobile-dark.png",
+      "sha256": "aa3551c221bc72e5bc5cdfc910d14a3986f00320d83fd0780fa9c932dcfc397f"
+    },
+    {
+      "stage": "before",
+      "mode": "strength",
+      "viewport": "mobile",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-before-strength-mobile-light.png",
+      "sha256": "5edab5f7c5b46987e5cd63a2a8f36c5442e725de0d3121fdfcdaac512d6af963"
+    },
+    {
+      "stage": "before",
+      "mode": "endurance",
+      "viewport": "desktop",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-before-endurance-desktop-dark.png",
+      "sha256": "6695bb21c036d4ce07ef3ac655ae665d610d8cbdf751ee73b8e8a4b09a1f9ae2"
+    },
+    {
+      "stage": "before",
+      "mode": "endurance",
+      "viewport": "desktop",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-before-endurance-desktop-light.png",
+      "sha256": "a5e6fc49848a948139ce5acf77f69782f40d949bdcfa4f20e545bf633fd941b4"
+    },
+    {
+      "stage": "before",
+      "mode": "endurance",
+      "viewport": "mobile",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-before-endurance-mobile-dark.png",
+      "sha256": "17c705a900c74732c6a0fbc8ed940619d77e2137a3e62747fcc3cd29abe6cfca"
+    },
+    {
+      "stage": "before",
+      "mode": "endurance",
+      "viewport": "mobile",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-before-endurance-mobile-light.png",
+      "sha256": "7a1b12140d8670bf3343fd6f5ef5b094c81ff7f95cd58924bd9b8dfea52f6d73"
+    },
+    {
+      "stage": "candidate",
+      "mode": "strength",
+      "viewport": "desktop",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-candidate-strength-desktop-dark.png",
+      "sha256": "6a107513a1782e3ca9b93345db74f2c75566211555380e461751df02fcbbf633"
+    },
+    {
+      "stage": "candidate",
+      "mode": "strength",
+      "viewport": "desktop",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-candidate-strength-desktop-light.png",
+      "sha256": "e0c483191c60572de03aeba8e7eb77b5ba0a8f65ed536f8cad12406218976318"
+    },
+    {
+      "stage": "candidate",
+      "mode": "strength",
+      "viewport": "mobile",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-candidate-strength-mobile-dark.png",
+      "sha256": "f43bd187dc12967eafc79389cad25d1ca029927c70d57e5a5fe702351a8b47fc"
+    },
+    {
+      "stage": "candidate",
+      "mode": "strength",
+      "viewport": "mobile",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-candidate-strength-mobile-light.png",
+      "sha256": "34ecb0a3744df6d1fb31e2b2404de7e0cf4c52dc9d756b505d2566304dba5b24"
+    },
+    {
+      "stage": "candidate",
+      "mode": "endurance",
+      "viewport": "desktop",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-candidate-endurance-desktop-dark.png",
+      "sha256": "50f7079dfe9bd78a7722a7d0e5273ef4b4492eb07fd3c3e3fe9dd4cd47fa6174"
+    },
+    {
+      "stage": "candidate",
+      "mode": "endurance",
+      "viewport": "desktop",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-candidate-endurance-desktop-light.png",
+      "sha256": "653495675ffedab9e83adadd36b04da15b4a8b8e5a42341b93a25bdf3374f561"
+    },
+    {
+      "stage": "candidate",
+      "mode": "endurance",
+      "viewport": "mobile",
+      "theme": "dark",
+      "file": "output/playwright/capacity-motion-candidate-endurance-mobile-dark.png",
+      "sha256": "20a2107b46990487e002ba0544896bab2bfcd5fd0e57762ea25599d7cc6f88a0"
+    },
+    {
+      "stage": "candidate",
+      "mode": "endurance",
+      "viewport": "mobile",
+      "theme": "light",
+      "file": "output/playwright/capacity-motion-candidate-endurance-mobile-light.png",
+      "sha256": "337b2c5dbabe7d92b3de5d23550f04b94123c1a5fbd8770ef2b06e3080ecadbc"
+    }
+  ],
+  "independentReview": {
+    "file": ".cache/capacity-motion-candidate-review-round1.json",
+    "sha256": "4b888f7746a5966ecfe105b48d7294dd5eb1198f7f5cc71e4c92e9882555ec9b",
+    "verdict": "PASS_WITH_SCOPE_LIMITS"
+  },
+  "primaryVerification": {
+    "numericalTests": 2,
+    "browserTests": 1,
+    "capturesInspected": 16,
+    "actualAnimationPauseModesReducedMotion": true
+  },
+  "scope": "Shared-frame resistance squat and sustained cadence candidate; baseline lacks these selector modes and falls back to running for their unsupported values.",
+  "limits": [
+    "Candidate lives only in scratch modules; game selector, normal dossier and built client integration remain absent.",
+    "No fitted physiology, measured resistance/fitness test, whole appearance naturalism, demographic fitting or release acceptance.",
+    "Desktop and mobile gallery originals inspected; long mobile galleries are reduced by the image viewer, so actual-size normal dossier acceptance remains required.",
+    "This preview is not a production visual-QA receipt and does not replace docs/visual-qa/LATEST.json."
+  ]
+}

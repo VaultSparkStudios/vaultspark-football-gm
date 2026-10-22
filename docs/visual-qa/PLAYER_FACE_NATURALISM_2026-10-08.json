@@ -1,0 +1,1148 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T11:06:44.607Z",
+  "status": "scoped-face-progress-review-pending",
+  "scope": "Rounded chin/beard, eye openings and coordinated facial relief on the persistent saved head; not complete-player naturalism or demographic calibration",
+  "baseline": {
+    "sourceHashes": [
+      {
+        "file": "playerHead3d.js",
+        "sha256": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7"
+      },
+      {
+        "file": "playerHeadImage.js",
+        "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+      },
+      {
+        "file": "playerSurfaceLighting.js",
+        "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+      }
+    ],
+    "headCaptures": 21,
+    "dossierCaptures": 12,
+    "beforeTerminal": "f8aff5"
+  },
+  "frozenSources": [
+    {
+      "file": "references/face-naturalism-source-playerHead3d.js-2026-10-08",
+      "sha256": "8544fcbd7ccc3cce2bc1bbb238564c91a62e1ca45534267197597faacbc8b65a",
+      "original": "public/lib/playerHead3d.js"
+    },
+    {
+      "file": "references/face-naturalism-source-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "original": "public/lib/playerHeadImage.js"
+    },
+    {
+      "file": "references/face-naturalism-source-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "original": "public/lib/playerSurfaceLighting.js"
+    },
+    {
+      "file": "references/face-naturalism-source-playerPortraitFace.js-2026-10-08",
+      "sha256": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+      "original": "public/lib/playerPortraitFace.js"
+    },
+    {
+      "file": "references/face-naturalism-source-playerSideAppearance.js-2026-10-08",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+      "original": "public/lib/playerSideAppearance.js"
+    },
+    {
+      "file": "references/face-naturalism-source-playerPortrait.js-2026-10-08",
+      "sha256": "1be3edc453ad1ca05b850a999e34bdb6d125203f4fa00be33919359c58c20733",
+      "original": "public/lib/playerPortrait.js"
+    },
+    {
+      "file": "references/face-naturalism-source-playerMotion.js-2026-10-08",
+      "sha256": "7d4dc2569fe43feaf45cedc0eadbe756c8f3a0a82a4c1c66ba23ae66b5eda6c7",
+      "original": "public/lib/playerMotion.js"
+    },
+    {
+      "file": "references/face-naturalism-source-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "original": "public/lib/appearancePalette.js"
+    },
+    {
+      "file": "references/face-naturalism-source-player-head-anatomy-gallery.spec.js-2026-10-08",
+      "sha256": "c97a8a3dfc5d02b5cc05c1ba2f53ef5386a681e4f3b29ac011b3df5b1f2e9ab8",
+      "original": "tests-ui/player-head-anatomy-gallery.spec.js"
+    },
+    {
+      "file": "references/face-naturalism-source-player-dossier-layout.spec.js-2026-10-08",
+      "sha256": "11beeabf6820dc22bf1b9b1b84cfe1e50112da564263f722adedc48b9a10b841",
+      "original": "tests-ui/player-dossier-layout.spec.js"
+    },
+    {
+      "file": "references/face-naturalism-source-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+      "original": "tests-ui/player-shared-head-production.spec.js"
+    },
+    {
+      "file": "references/face-naturalism-source-player-capacity-client.spec.js-2026-10-08",
+      "sha256": "bcbb8c6776f7c1947a78caf01c242828d25f220c1df220afda4a4319e9777d77",
+      "original": "tests-ui/player-capacity-client.spec.js"
+    },
+    {
+      "file": "references/face-naturalism-source-player-fine-face.test.js-2026-10-08",
+      "sha256": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459",
+      "original": "test/player-fine-face.test.js"
+    }
+  ],
+  "baselineSources": [
+    {
+      "file": "references/face-naturalism-before-playerHead3d.js-2026-10-08",
+      "sha256": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7",
+      "original": ".cache/face-naturalism-before/playerHead3d.js"
+    },
+    {
+      "file": "references/face-naturalism-before-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "original": ".cache/face-naturalism-before/playerHeadImage.js"
+    },
+    {
+      "file": "references/face-naturalism-before-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "original": ".cache/face-naturalism-before/playerSurfaceLighting.js"
+    }
+  ],
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "8544fcbd7ccc3cce2bc1bbb238564c91a62e1ca45534267197597faacbc8b65a",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "1be3edc453ad1ca05b850a999e34bdb6d125203f4fa00be33919359c58c20733",
+    "public/lib/playerMotion.js": "7d4dc2569fe43feaf45cedc0eadbe756c8f3a0a82a4c1c66ba23ae66b5eda6c7",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "tests-ui/player-head-anatomy-gallery.spec.js": "c97a8a3dfc5d02b5cc05c1ba2f53ef5386a681e4f3b29ac011b3df5b1f2e9ab8",
+    "tests-ui/player-dossier-layout.spec.js": "11beeabf6820dc22bf1b9b1b84cfe1e50112da564263f722adedc48b9a10b841",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+    "tests-ui/player-capacity-client.spec.js": "bcbb8c6776f7c1947a78caf01c242828d25f220c1df220afda4a4319e9777d77",
+    "test/player-fine-face.test.js": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459"
+  },
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "8544fcbd7ccc3cce2bc1bbb238564c91a62e1ca45534267197597faacbc8b65a",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "1be3edc453ad1ca05b850a999e34bdb6d125203f4fa00be33919359c58c20733",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "7d4dc2569fe43feaf45cedc0eadbe756c8f3a0a82a4c1c66ba23ae66b5eda6c7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "fce4bd7102e16aa494b134599f9a06f0a4de78b8367c1da5a40d892f5d085add",
+  "captures": [
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-desktop-dark-body.png",
+      "sha256": "3a62c7bd26ce881aeae87e9475bfd3c5c7357257eade620b54bfae7eac59def7",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-desktop-dark-body.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-desktop-dark-motion.png",
+      "sha256": "bfa2d8e4e2efc0e407cff6cc67b0e9f93a6facf31ab7e1daa9bf85390490d350",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-desktop-dark-motion.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-desktop-dark-portrait.png",
+      "sha256": "0ac410232bc98c2d88f7c620da4de407a0c355b415dbb5efa13c3a8c7c3422df",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-desktop-dark-portrait.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-desktop-light-body.png",
+      "sha256": "e963332f62de18c9c590507f7c6eafa80787d75b350a997f76271d091265bc56",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-desktop-light-body.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-desktop-light-motion.png",
+      "sha256": "84e9701b8e74555291b9c7ac6789f6b69fe6884ee016af8bbc04017c0be669fa",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-desktop-light-motion.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-desktop-light-portrait.png",
+      "sha256": "20730d6e887ce358051ef522e075cb25f2c2fad5e1709efc49de210623572c56",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-desktop-light-portrait.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-mobile-dark-body.png",
+      "sha256": "a4ff3cbda3aae44d94af6230c126bf919cd3fd881048767378de6aaa9d0ad742",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-mobile-dark-body.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-mobile-dark-motion.png",
+      "sha256": "18b5ce8a10dec4c195eb0fc0b8e179a31fd211f98f7e9177e4eb0fdd71fc6e55",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-mobile-dark-motion.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-mobile-dark-portrait.png",
+      "sha256": "84628c611f5da5511033c23f2b4e8cf58f7ce4e2c7cae3e065c9ea04124c0982",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-mobile-dark-portrait.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-mobile-light-body.png",
+      "sha256": "4548bb0127fcc882ac53c3939becb6b8bf5fccf812f67b6540c3792cfbedfbf1",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-mobile-light-body.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-mobile-light-motion.png",
+      "sha256": "c961b31c95cbab27e9fd25394c96d229e626a8972f67a0cae90f8f888ffd2a31",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-mobile-light-motion.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-dossier-layout-after-mobile-light-portrait.png",
+      "sha256": "82735040af82959640d8d6f87e7acdac5f59196335ce62d6d3e9fd160ae55cb0",
+      "original": ".cache/face-naturalism-before/dossier-layout-after-mobile-light-portrait.png",
+      "phase": "before",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-0-clay-closed.png",
+      "sha256": "a6205ef10cda9ca1aab581da1a7f5a35c6473a31d9656f669542a2dfb2800fd7",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-0-clay-closed.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-0-closed.png",
+      "sha256": "635b1a647a85f5a54c4b4b019aa79a00322acc619b062bd2954ff5f774ded0bc",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-0-closed.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-0-open.png",
+      "sha256": "ca8dffe9415e4247bc4dec83ef104af308d5e2282a6a8a604d475b08d50f5d53",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-0-open.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-1-clay-closed.png",
+      "sha256": "ca4cbd2ba777ae1bcf95ef65efd7a86a29a97edbb808fac546ecb95e9a1e58bf",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-1-clay-closed.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-1-closed.png",
+      "sha256": "14e1a52400f133b86afa4c3182f3d270cd5735d5ccdbaa332a5358b858ae95a0",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-1-closed.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-1-open.png",
+      "sha256": "52f797dd968c795fee9adc1fdcc374c96ceee44d390d49375f32103038afeb9d",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-1-open.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-2-clay-closed.png",
+      "sha256": "2170276f4489a5f0f963883c0a9f251072f495bbfd0b94597465103d182ed1ff",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-2-clay-closed.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-2-closed.png",
+      "sha256": "ec2e4ede3527dd6d14abfc75a63de3805f62347a0b95871803fc5fce748fec2a",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-2-closed.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-native-2-open.png",
+      "sha256": "a6fdc99765de9989908b2fa25811cc005c540c2765e2e0cafb513032afd7f31e",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-native-2-open.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-0-desktop-dark.png",
+      "sha256": "233e95dd3aa1ae8f35aa3a52e834f0f9700e281579a267a63d9282b7a48b324f",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-0-desktop-dark.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-0-desktop-light.png",
+      "sha256": "20cb023bcd8fdadfe082e10aa80d5bd6bd4ec66fa255e62ebc2bce9bf46589c4",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-0-desktop-light.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-0-mobile-dark.png",
+      "sha256": "c400bb2c7144cc50412b8a6d91e248cc0927bfa361d6c356fed29fa2e59d26f7",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-0-mobile-dark.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-0-mobile-light.png",
+      "sha256": "790a67a20a41392b49552dcd9cd2f9d5c1b7ac2364a9bb9bee92621b36dd85c1",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-0-mobile-light.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-1-desktop-dark.png",
+      "sha256": "58092820bb3150f67a4eb361f9c8ef0b3084d3922976072d4ff63b7bbb858090",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-1-desktop-dark.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-1-desktop-light.png",
+      "sha256": "9144809312061087beea7ae140e4c354c51c2d396ade9e8793f20694663c7cb2",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-1-desktop-light.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-1-mobile-dark.png",
+      "sha256": "7be5adc8dd874cf133a08b65ee9285f9cb0f10a1071722dfc59c54b61a4f90ee",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-1-mobile-dark.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-1-mobile-light.png",
+      "sha256": "953d4c069fe51db46de9e9ed90408fbc93a7b03d768e59d95190cfb51fc4b471",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-1-mobile-light.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-2-desktop-dark.png",
+      "sha256": "9b954ff62c9b130b20b1cbe3c474ac76a54f8a28cb7a70bd3c67e8d6f2ae85e8",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-2-desktop-dark.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-2-desktop-light.png",
+      "sha256": "d22453b9ff30adb0ac4a6c0eff10d1a84ee1dee08c6a82601220cd6e1d73e364",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-2-desktop-light.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-2-mobile-dark.png",
+      "sha256": "8cc0fc643fb405b9db1dbf1f8d5e790f073cbe64906032efd0b7fcc851c584dd",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-2-mobile-dark.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-before-production-anatomy-gallery-person-2-mobile-light.png",
+      "sha256": "c3f98d7bf68c56d14973501a892a2bffe6a358b40a05caa72277f24615acf009",
+      "original": ".cache/face-naturalism-before/production-anatomy-gallery-person-2-mobile-light.png",
+      "phase": "before",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-desktop-dark-body.png",
+      "sha256": "e549870c0c52b43e553b676001cce9f100054342572853d6eb9607b7bf277344",
+      "original": "output/playwright/dossier-layout-after-desktop-dark-body.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-desktop-dark-motion.png",
+      "sha256": "e2f2f351a6cbb1c9f573a2f5c09c42fd8655fe29a94d235adb1bbfe7e6dab65b",
+      "original": "output/playwright/dossier-layout-after-desktop-dark-motion.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-desktop-dark-portrait.png",
+      "sha256": "2b5885e628800ae901800d35d901649a502fc5cf3f907ab281ef398d984fa13f",
+      "original": "output/playwright/dossier-layout-after-desktop-dark-portrait.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-desktop-light-body.png",
+      "sha256": "4d0b78109ff82dedfac764f486d75a0131e2461977fa29e56d3d8c0692d57e93",
+      "original": "output/playwright/dossier-layout-after-desktop-light-body.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-desktop-light-motion.png",
+      "sha256": "79abb479ed851143115786dabf339488ff6418f306529a3000cddd84c7be1653",
+      "original": "output/playwright/dossier-layout-after-desktop-light-motion.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-desktop-light-portrait.png",
+      "sha256": "0c4fd65cb04ce592d7d185c843cb78acb0016beed9844c4825cbf52baa0df56e",
+      "original": "output/playwright/dossier-layout-after-desktop-light-portrait.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-mobile-dark-body.png",
+      "sha256": "eba45b6177eba738cfe42581eacce0bb6ab32304d4c0516d8b32437f242f1b46",
+      "original": "output/playwright/dossier-layout-after-mobile-dark-body.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-mobile-dark-motion.png",
+      "sha256": "a8e1544c9789ac0771fdaa9735ca6878c329d05284fa2a19e3b251f70916dff3",
+      "original": "output/playwright/dossier-layout-after-mobile-dark-motion.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-mobile-dark-portrait.png",
+      "sha256": "960fc3535ff4cff4f15ca7da992ff69b3d60dc9144f0302c275edf677d45bf3b",
+      "original": "output/playwright/dossier-layout-after-mobile-dark-portrait.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-mobile-light-body.png",
+      "sha256": "f379bd864329dae5b23ec411af937e84b960f5426f74f2384556456793d931b4",
+      "original": "output/playwright/dossier-layout-after-mobile-light-body.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-mobile-light-motion.png",
+      "sha256": "6dcec0188c91ee3acdb8b4a2856288167bc3ef4e56e71b89866c6f7cb222eacf",
+      "original": "output/playwright/dossier-layout-after-mobile-light-motion.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-dossier-layout-after-mobile-light-portrait.png",
+      "sha256": "fc7dc121d9d4b084d6c97b7fdb4433619b450fb5bad7794682182b204644f591",
+      "original": "output/playwright/dossier-layout-after-mobile-light-portrait.png",
+      "phase": "after",
+      "page": "actual-player-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-0-clay-closed.png",
+      "sha256": "27e7a89e6113d69afe30ee1f0dca59c30ad57cb9f5872be14594ae488186de95",
+      "original": "output/playwright/production-anatomy-gallery-native-0-clay-closed.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-0-closed.png",
+      "sha256": "e267a577e4dd487c5c60f6e8a653c30cc862bcde84a24a59cceaefbdaa07c48b",
+      "original": "output/playwright/production-anatomy-gallery-native-0-closed.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-0-open.png",
+      "sha256": "86ed8f9735b09852c171fda0965396c608316ae5d0c1dbdc2eb7b61cb7d6c424",
+      "original": "output/playwright/production-anatomy-gallery-native-0-open.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-1-clay-closed.png",
+      "sha256": "fc678881458b6cfa8a75690539471f247dc5dd2fd17170705c14506dec0e9379",
+      "original": "output/playwright/production-anatomy-gallery-native-1-clay-closed.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-1-closed.png",
+      "sha256": "1678fa8fd1a0f0bcf6518889c2a1533d601e20c9571646812ab390fc9cef6d3f",
+      "original": "output/playwright/production-anatomy-gallery-native-1-closed.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-1-open.png",
+      "sha256": "0f42d33b26afd9e30bc16c75391fcf409b7d45171350b67d645bb28de7994ebf",
+      "original": "output/playwright/production-anatomy-gallery-native-1-open.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-2-clay-closed.png",
+      "sha256": "dc898c562ead6e2e28a296bd93c2ed3da72120fbc4ac44dae049890347610020",
+      "original": "output/playwright/production-anatomy-gallery-native-2-clay-closed.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-2-closed.png",
+      "sha256": "454537c8757985b8c71443232951042499689fb9f7e0e413f5762b5cd52f9384",
+      "original": "output/playwright/production-anatomy-gallery-native-2-closed.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-native-2-open.png",
+      "sha256": "d1e4b2cb4b61f4de62886a70b8de1034d48c8ac3f9838c343ae88e6bb8904cba",
+      "original": "output/playwright/production-anatomy-gallery-native-2-open.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-0-desktop-dark.png",
+      "sha256": "41cc06df3088a8a6e1b686a0f5df08e3ed223ea63ce80a888c8cf2c57ca4d77b",
+      "original": "output/playwright/production-anatomy-gallery-person-0-desktop-dark.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-0-desktop-light.png",
+      "sha256": "caeed76dd7455270d4737830f2ab1e349f089a9374271c8a894ab62ea47bcfc6",
+      "original": "output/playwright/production-anatomy-gallery-person-0-desktop-light.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-0-mobile-dark.png",
+      "sha256": "89d03d03d5062b06c3846345b161b50d2f4df9455391938d2af6f85cf8f0ad42",
+      "original": "output/playwright/production-anatomy-gallery-person-0-mobile-dark.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-0-mobile-light.png",
+      "sha256": "422cc45ce885243e5bb79d6a947d4b604c7a1d60e8db8b46518736fb2cffb7a7",
+      "original": "output/playwright/production-anatomy-gallery-person-0-mobile-light.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-1-desktop-dark.png",
+      "sha256": "a4e414b623279d05efb4fb60268ea41f56623f670ee5e99daa3be48634886b8c",
+      "original": "output/playwright/production-anatomy-gallery-person-1-desktop-dark.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-1-desktop-light.png",
+      "sha256": "18d58c2ee9325f5dd57efba1baee13e9a6a70b189cea0c39540e62e1c8323c01",
+      "original": "output/playwright/production-anatomy-gallery-person-1-desktop-light.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-1-mobile-dark.png",
+      "sha256": "917bbe1f0be0e086c8d8c262de037a07644e158c43ede06c2c261928586fa701",
+      "original": "output/playwright/production-anatomy-gallery-person-1-mobile-dark.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-1-mobile-light.png",
+      "sha256": "e7bd30f61afae017e4c5bdf8c1f215a14cd86ccc227dbab4081b9fd8646c26af",
+      "original": "output/playwright/production-anatomy-gallery-person-1-mobile-light.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-2-desktop-dark.png",
+      "sha256": "f357842230554cb587630a2fc8568f65a5a2f44b85fd7ba3e7fc0f933526f0dd",
+      "original": "output/playwright/production-anatomy-gallery-person-2-desktop-dark.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-2-desktop-light.png",
+      "sha256": "4a5ca76ca335da23ccad3a44439f5c3b58f86fc48c2688655ddc91e01ea208f3",
+      "original": "output/playwright/production-anatomy-gallery-person-2-desktop-light.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-2-mobile-dark.png",
+      "sha256": "f61c46420d1ca3bb75827360506d718dfc43d91fd6a607f7977e304800c7ee9e",
+      "original": "output/playwright/production-anatomy-gallery-person-2-mobile-dark.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "captures/face-naturalism-final-production-anatomy-gallery-person-2-mobile-light.png",
+      "sha256": "fab56a7b31a21be03a94f634af818de8936f913e8be5bc9736b901bf4e55e361",
+      "original": "output/playwright/production-anatomy-gallery-person-2-mobile-light.png",
+      "phase": "after",
+      "page": "controlled-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "reports": [
+    {
+      "file": "references/face-naturalism-proof-production-anatomy-gallery.json-2026-10-08",
+      "sha256": "190f3b97ad7cb25dd68f18e11ad740db3cee328c8720621e90486efb44d21749",
+      "original": "output/playwright/production-anatomy-gallery.json"
+    },
+    {
+      "file": "references/face-naturalism-proof-shared-head-production.json-2026-10-08",
+      "sha256": "6af82c61e9696967c028a1128e0e62b25e9def584525d73e0947f7ada0b522fc",
+      "original": "output/playwright/shared-head-production.json"
+    },
+    {
+      "file": "references/face-naturalism-proof-worker.json-2026-10-08",
+      "sha256": "37f058ba0483a4a8ad1b0187cf1f55242fe50540f9727ddb165a12cf737352fd",
+      "original": ".cache/player-capacity-client/worker.json"
+    },
+    {
+      "file": "references/face-naturalism-proof-in-page.json-2026-10-08",
+      "sha256": "d7df1fbdcf791a0215b87ac235bffbf7d5395a19d07f599d0b2db98adf9649fe",
+      "original": ".cache/player-capacity-client/in-page.json"
+    }
+  ],
+  "verification": {
+    "focused": {
+      "output": "ee1f76",
+      "pass": 21,
+      "fail": 0,
+      "skip": 0
+    },
+    "anatomyBrowser": {
+      "output": "53a463",
+      "pass": 1,
+      "fail": 0,
+      "closedEyeViews": 18,
+      "openEyeViews": 9,
+      "minimumOpenEyePixels": 24
+    },
+    "integratedBrowser": {
+      "output": "180534",
+      "pass": 5,
+      "fail": 0
+    },
+    "build": {
+      "output": "ef9c14",
+      "precache": "1a199986fd78",
+      "assets": 319,
+      "kb": 3566
+    },
+    "boot": {
+      "bytes": 649321,
+      "maxBytes": 730000,
+      "modules": 51,
+      "maxModules": 58,
+      "lazyLeaks": 0
+    },
+    "reachability": {
+      "modules": 139,
+      "htmlEntries": 4
+    }
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "file": "captures/face-naturalism-final-production-anatomy-gallery-native-0-open.png",
+        "sha256": "86ed8f9735b09852c171fda0965396c608316ae5d0c1dbdc2eb7b61cb7d6c424",
+        "original": "output/playwright/production-anatomy-gallery-native-0-open.png",
+        "phase": "after",
+        "page": "controlled-head-gallery",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-production-anatomy-gallery-native-1-open.png",
+        "sha256": "0f42d33b26afd9e30bc16c75391fcf409b7d45171350b67d645bb28de7994ebf",
+        "original": "output/playwright/production-anatomy-gallery-native-1-open.png",
+        "phase": "after",
+        "page": "controlled-head-gallery",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-production-anatomy-gallery-native-2-open.png",
+        "sha256": "d1e4b2cb4b61f4de62886a70b8de1034d48c8ac3f9838c343ae88e6bb8904cba",
+        "original": "output/playwright/production-anatomy-gallery-native-2-open.png",
+        "phase": "after",
+        "page": "controlled-head-gallery",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-dossier-layout-after-desktop-light-portrait.png",
+        "sha256": "0c4fd65cb04ce592d7d185c843cb78acb0016beed9844c4825cbf52baa0df56e",
+        "original": "output/playwright/dossier-layout-after-desktop-light-portrait.png",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-dossier-layout-after-mobile-dark-portrait.png",
+        "sha256": "960fc3535ff4cff4f15ca7da992ff69b3d60dc9144f0302c275edf677d45bf3b",
+        "original": "output/playwright/dossier-layout-after-mobile-dark-portrait.png",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-dossier-layout-after-desktop-dark-body.png",
+        "sha256": "e549870c0c52b43e553b676001cce9f100054342572853d6eb9607b7bf277344",
+        "original": "output/playwright/dossier-layout-after-desktop-dark-body.png",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-dossier-layout-after-mobile-light-body.png",
+        "sha256": "f379bd864329dae5b23ec411af937e84b960f5426f74f2384556456793d931b4",
+        "original": "output/playwright/dossier-layout-after-mobile-light-body.png",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-dossier-layout-after-desktop-light-motion.png",
+        "sha256": "79abb479ed851143115786dabf339488ff6418f306529a3000cddd84c7be1653",
+        "original": "output/playwright/dossier-layout-after-desktop-light-motion.png",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "file": "captures/face-naturalism-final-dossier-layout-after-mobile-dark-motion.png",
+        "sha256": "a8e1544c9789ac0771fdaa9735ca6878c329d05284fa2a19e3b251f70916dff3",
+        "original": "output/playwright/dossier-layout-after-mobile-dark-motion.png",
+        "phase": "after",
+        "page": "actual-player-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "findings": [
+      "Chin/beard underside is rounder; facial relief and eye visibility improve at front, angled and profile views.",
+      "Hair still looks cap-like and faces retain smooth mannequin-like surfaces. Complete naturalism remains unfinished."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "limitations": [
+    "All facial dimensions are artistic mappings, not fitted anthropometry or demographic coefficients.",
+    "No player identity, source measurements, capacity, country/race frequencies or recipe generator changed.",
+    "Legacy SVG expected hashes remain unchanged. The stale optional-local test now uses preserved saved inputs and hash-bound October 8 sources.",
+    "Final whole-suite, 30 managed seasons, annual policy integration, calibration and release remain open."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

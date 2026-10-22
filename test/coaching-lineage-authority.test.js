@@ -49,3 +49,20 @@ test("coaching lineage survives snapshot restoration without duplicate staff nod
   assert.deepEqual(after, before);
   assert.equal(new Set(after.currentStaff.map((coach) => coach.id)).size, after.currentStaff.length);
 });
+
+test("first dashboard and restored coaching initialization preserve gameplay randomness", () => {
+  const game = session(117901);
+  const snapshot = JSON.parse(JSON.stringify(game.toSnapshot()));
+  const restored = GameSession.fromSnapshot(snapshot, seed => new RNG(seed));
+  const before = { seed: game.rng.seed, streams: game.rngStreams.toSnapshot() };
+  const restoredBefore = { seed: restored.rng.seed, streams: restored.rngStreams.toSnapshot() };
+  const first = game.getDashboardState().coachingLineage;
+  const restoredFirst = restored.getDashboardState().coachingLineage;
+  assert.deepEqual({ seed: game.rng.seed, streams: game.rngStreams.toSnapshot() }, before);
+  assert.deepEqual({ seed: restored.rng.seed, streams: restored.rngStreams.toSnapshot() }, restoredBefore);
+  assert.deepEqual(restoredFirst, first);
+  const tree = JSON.stringify(restored.league.coachingTree);
+  restored.getDashboardState();
+  assert.equal(JSON.stringify(restored.league.coachingTree), tree, 'repeat views cannot create duplicate coaches');
+  assert.equal(restored.rng.seed, snapshot.rngSeed);
+});

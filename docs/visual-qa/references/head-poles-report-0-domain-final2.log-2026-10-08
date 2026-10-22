@@ -1,0 +1,30 @@
+✔ one physical body retains measured segments and fingertip endpoints across all six modes (2340.1134ms)
+✔ neutral modeled skull and feet agree with stature and foot dimensions at common physical scale (477.4038ms)
+✔ mass changes bulk without changing saved face, segment lengths or skeletal root anchors (218.1012ms)
+✔ modern upper crown is rounder while lower face and eye/lid attachment stay exact (23.0307ms)
+✔ categorical older faces retain exact mesh across all supported hair and facial grooming (46507.0338ms)
+✔ modern crown grooming never changes the saved face or unrelated visible surfaces (1649.7678ms)
+✔ rounded crown retains continuous station normals and bounded extreme modern hair (5709.9261ms)
+✔ modern facial grooming preserves the saved person, every other mesh surface and the resource budget (3405.7406ms)
+✔ older facial pigment geometry remains exact; modern crown is separately covered (11855.5442ms)
+✔ modern beard and relocated mustache vertices clear the actual curved lip mask (3692.9601ms)
+✔ modern combed volume changes hair while preserving every non-hair surface and saved input (3770.3297ms)
+✔ all hair styles retain legacy geometry and changed modern styles remain within the mesh budget (16071.3191ms)
+✔ part location changes the modern hair volume without changing facial anatomy (616.9305ms)
+✔ modern asymmetric support joins actual rear mesh positions and normals at every row (3981.3535ms)
+✔ modern top and bottom poles collapse to a single point at every angle and preserve measured skull span (7961.9728ms)
+✔ pole repair leaves the middle head and all eyelids exact, and categorical decoding unchanged (8273.8438ms)
+✔ previous negative skull ray is repaired without changing the ray estimator or measured pose (5087.3433ms)
+✔ ray union matches analytic boxes, overlaps, nested and coincident solids in every axis (169.3184ms)
+✔ experimental mass fitting reconciles union volume while preserving person and every measured pose endpoint (5087.7491ms)
+✔ open, reversed and malformed geometry refuses rather than yielding accepted mass (3.417ms)
+✔ oblique octahedron quadrature approaches its analytic volume, including rays through projected vertices (293.5438ms)
+✔ complete modeled body components close and ray refinement remains stable with overlap removed (2772.603ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57162.6144

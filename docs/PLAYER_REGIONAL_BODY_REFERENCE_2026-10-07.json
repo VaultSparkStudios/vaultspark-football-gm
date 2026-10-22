@@ -1,0 +1,73 @@
+{
+  "version": "regional-body-research-contract-v1",
+  "reviewDate": "2026-10-07",
+  "status": "research-and-planned-adoption",
+  "runtimeCoefficientsChanged": false,
+  "references": [
+    {
+      "id": "stuempfle-2009-regional-girths",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19387400/",
+      "doi": "10.1519/JSC.0b013e3181a2f156",
+      "retrieval": "Direct indexed abstract; full methods and individual records unreviewed.",
+      "cohort": "Historical Division III college American football players, preseason camp",
+      "participants": 82,
+      "positionCounts": {
+        "offensiveLine": 22,
+        "defensiveLine": 12,
+        "offensiveBacks": 20,
+        "defensiveBacks": 28
+      },
+      "observations": [
+        "stature",
+        "body mass",
+        "regional girths",
+        "body fat by densitometry"
+      ],
+      "limitation": "Cannot establish current NFL frequencies, individual surface geometry or universal muscularity coefficients.",
+      "implementationInference": "Research regional surface constraints with individual residuals; uniform whole-body widening is insufficient."
+    },
+    {
+      "id": "mexican-lfa-regional-anthropometry-candidate",
+      "url": "https://www.mdpi.com/2411-5142/11/1/109",
+      "alternateUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13028333/",
+      "retrieval": "Publisher PDF methods and extracted tables now reviewed; original failed retrieval retained in the historical audit. See follow-through reference for unresolved source contradictions.",
+      "status": "methods-reviewed-fit-not-adopted",
+      "limitation": "No runtime coefficients adopted; compatible records and source-conflict resolution remain required.",
+      "followthroughReference": "docs/PLAYER_APPEARANCE_RESEARCH_FOLLOWTHROUGH_2026-10-07.json"
+    }
+  ],
+  "plannedSolver": {
+    "observedFirst": [
+      "stature",
+      "dated mass",
+      "reach",
+      "source-defined segment endpoints",
+      "available sitting height",
+      "skeletal breadths",
+      "regional girths"
+    ],
+    "missingDimensions": "Joint conditional estimates with saved residuals, uncertainty and fitting version.",
+    "surfaceProjection": "Resolve width and depth jointly under an explicit cross-section model; girth does not uniquely identify either.",
+    "separation": [
+      "skeletal breadth",
+      "soft-tissue circumference",
+      "composition observations",
+      "athletic capacities",
+      "rendering assumptions"
+    ],
+    "adoptionGate": [
+      "compatible athlete records and full methods",
+      "cohort and method compatibility",
+      "measurement-error bounds",
+      "within-position residual checks",
+      "held-out reconstruction",
+      "actual rendered and persistence inspection"
+    ]
+  },
+  "requiredFixtures": [
+    "regional-girth-constraint",
+    "equal-girth-different-depth",
+    "skeleton-versus-soft-tissue",
+    "athleticism-without-body-fat-invention"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "version": "independent-appearance-followthrough-review-v1",
+  "reviewedAt": "2026-10-08T00:14:32.406Z",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Only the new leading appearance research follow-through plan section, four-reference JSON, three fixture definitions and regional candidate retrieval upgrade. Documentation/methods review; no runtime or visual acceptance.",
+  "artifactHashes": {
+    "docs/PLAYER_APPEARANCE_RESEARCH_FOLLOWTHROUGH_2026-10-07.json": "2ddd0edaede743243f107bde4657ea08827013d717c3e1d14f601a517b654e36",
+    "docs/IMPLEMENT_PLAN.md": "f8e7f82357b88f3f72b967eaf144021ba8e289960f025daa18991efaf39f8571",
+    "docs/PLAYER_TRAIT_AUTHORITY_2026-10-07.json": "9aecf68d377dc637379a3bdedb8974f8d7e6fbf5efa8c1aa38962f7a2a6d107e",
+    "docs/PLAYER_REGIONAL_BODY_REFERENCE_2026-10-07.json": "7e748d0a74c28f7738ee840937f32b12cda142545fc0131f5c1f12c3177752a0"
+  },
+  "findings": [],
+  "checks": [
+    {
+      "command": "node .cache/review-appearance-followthrough.mjs",
+      "result": "PASS: JSON parsing; unique four references and valid URL syntax; all adoption flags false; 188 positional sum differs from reported 189; 1357+673=2030; three fixture keys and plan mentions; regional reference resolves."
+    }
+  ],
+  "sourceObservations": [
+    {
+      "url": "https://mdpi-res.com/d_attachment/jfmk/jfmk-11-00109/article_deploy/jfmk-11-00109.pdf?version=1772725107",
+      "review": "Direct publisher PDF text inspected: sections 2.3–2.5, Table 1 dimensional labels and limitations. The reported 189 and seven counts totaling 188 coexist; section 2.4 attributes database measures to three measurers while 2.5 says one. Ross–Kerr composition is estimated; no cross-validation and no direct performance inference. These conflicts and limitations are retained.",
+      "access": "19-page PDF text retrieved; no independent screenshot inspection."
+    },
+    {
+      "url": "https://www.tidesport.org/nfl",
+      "review": "Direct listing labels the 2023 report latest and links the moved site; direct new-site fetch returned 404. This verifies listing availability, not current league composition."
+    },
+    {
+      "url": "https://www.statssa.gov.za/?p=19982",
+      "review": "Initial official article retrieval succeeded, subsequent targeted retrieval timed out. Official agency search-index post independently corroborates household/co-residence definition and 11.4% headline. Detailed 1.3/1.7 percentages and article date remain primary-attested rather than independently re-extracted in this review."
+    },
+    {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33906546/",
+      "review": "Initial indexed page retrieval returned header content; subsequent abstract retrieval yielded no body. Cohort counts, date and specific allometry result remain primary-attested, not newly independently certified. Arithmetic and faithful abstract-only/unadopted labeling checked."
+    }
+  ],
+  "assessment": "The plan distinguishes households from individual ancestry, historical athlete evidence from NFL coefficients, observation from missing-dimension estimates, and research requirements from execution. It preserves observed endpoints and excludes demographic appearance labels from football talent. No unsupported runtime fit or implementation completion claim found.",
+  "limits": [
+    "No runtime source or coefficients reviewed/changed.",
+    "No screenshots, phenotype frequencies, empirical joint fit, full-methods certification of the allometry paper, current NFL demographic margin or full appearance acceptance.",
+    "Local hashes bind reviewed artifacts; remote source text has no retained-byte hash. Retrieval limitations above are explicit."
+  ]
+}

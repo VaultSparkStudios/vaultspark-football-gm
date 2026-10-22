@@ -1,0 +1,55 @@
+{
+  "component": "modern-facial-contact-surface-definition",
+  "round": 1,
+  "verdict": "PASS",
+  "sourceHashes": {
+    "public/lib/playerPortraitFace.js": "10056934ec4b22463b0ff7ac8c7147809ffb6e77a8cb5d9fc7530d2d220046c4",
+    "public/lib/fineFaceGeometry.js": "4c1e26c18c3994038b353d4f8e7d0a1a2783ad75871f8e927304117c6b91c8f1",
+    "public/lib/portraitSurfaceLighting.js": "83bb95a8c86f3c070be9ae6209c4ad82f66500d67724253a15b34d23e796f7bf",
+    "public/lib/playerSideAppearance.js": "e972d5e9fb8fee5c1879cb8e76c180a557d6b8b10eed4cd6167324e34c4745ad",
+    "public/lib/portraitEyeSurface.js": "d7b4e22337e95447e1d519936fdae1046d4103e8f020732aff55f49d92546f8f",
+    "test/player-fine-face.test.js": "1f7075aec4635cee19d5eb8d5336e85c9eddeae12dee5e71211e4ada711f76c4",
+    "test/player-face-lighting.test.js": "95f3951303089cceffcb657eed6d51ec517f83f2cb66115a619da630d76ae43e",
+    "test/player-portrait-features.test.js": "d4148600eaf9a35a040e0d35926ce6ec49c63d6f80eb3ec218ed1ef1b6300a55"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-fine-face.test.js test/player-face-lighting.test.js test/player-portrait-features.test.js",
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 3161.2902,
+      "scope": "Saved fine recipes/import/save/gameplay draw isolation, legacy render equality, bounded morphology, 80 complexion/grooming front/side/motion resource and immutable DTO fixtures, cosmetic skull isolation."
+    },
+    {
+      "command": "node .cache/face-definition-independent.mjs",
+      "result": "PASS",
+      "legacyImmediateBaselineComparisons": 32,
+      "modernExtremeResourceAndImmutabilityProbes": 64,
+      "actualEightPlayerDtosExact": true,
+      "scope": "Retained immediate face/fine-geometry/lighting modules against current front/head-only for no-fine and fine-without-detail variants; saved aperture/tilt extremes front/side; complete unique resources, finite markup and no input mutation. Actual eight gallery appearance/frame DTOs exact before/final."
+    }
+  ],
+  "imagesActuallyInspected": [
+    "output/playwright/face-relief-definition-before-0-desktop-light.png",
+    "output/playwright/face-relief-definition-final-0-desktop-light.png",
+    "output/playwright/face-relief-definition-before-4-mobile-dark.png",
+    "output/playwright/face-relief-definition-final-4-mobile-dark.png",
+    "output/playwright/face-relief-dossier-definition-before-afro-mobile-light-portrait.png",
+    "output/playwright/face-relief-dossier-definition-final-afro-mobile-light-portrait.png",
+    "output/playwright/face-relief-dossier-definition-before-shaved-desktop-dark-portrait.png",
+    "output/playwright/face-relief-dossier-definition-final-shaved-desktop-dark-portrait.png"
+  ],
+  "visualAssessment": [
+    "Lid contact and nose/mouth shadows read more clearly in matched originals; forehead keylight is softer. No observed clipping, broken eye resources, skin-color discontinuity or dossier control/layout regression in these inspected pairs.",
+    "Different saved faces and complexions remain visible. Nose/lip marks remain quite schematic and planar face/hair masses remain illustrated; stronger definition does not by itself establish naturalism.",
+    "Side heads are small within these gallery captures; resource/numerical checks support their bounded integration, not full side-face visual acceptance."
+  ],
+  "limits": [
+    "Scope is modern fine plus natural-detail surface rendering only, not a third full portrait review or complete user appearance acceptance.",
+    "Eight originals independently inspected; no claim all gallery/dossier captures or whole population inspected.",
+    "No new browser run, current built artifact equivalence or built persistence independently verified here; primary forthcoming build/client results remain separate evidence.",
+    "No empirical phenotype fit, measured facial surfaces, full naturalism, whole goal or release approval."
+  ]
+}

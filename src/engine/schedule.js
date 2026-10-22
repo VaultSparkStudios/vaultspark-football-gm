@@ -5,8 +5,16 @@
  * (src/sport/football/competition.js); the core never imports this file.
  */
 import { FOOTBALL_RULES } from "../sport/football/rules.js";
+import { validateSchedule } from "../sport/competitionContract.js";
 
 const STRUCTURE = FOOTBALL_RULES.structure;
+
+// Published 2026 byes occupy weeks5–14, excluding Thanksgiving week12.
+// Other generated modern-format seasons use a fictional5–14 template; these
+// are not claimed to reproduce unpublished future or historical NFL calendars.
+export function allowedByeWeeks(year) {
+  return Array.from({ length: 10 }, (_, i) => i + 5).filter(week => year !== 2026 || week !== 12);
+}
 
 function divisionKey(team) {
   return `${team.conference}-${team.division}`;
@@ -229,174 +237,131 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
   return games;
 }
 
-function weekTeamGames(week, teamId) {
-  return week.games.filter((game) => game.homeTeamId === teamId || game.awayTeamId === teamId);
-}
-
-function teamMissingWeeks(teamWeekUsage, totalWeeks, teamId) {
-  const used = teamWeekUsage.get(teamId) || new Set();
-  const missing = [];
-  for (let week = 1; week <= totalWeeks; week += 1) {
-    if (!used.has(week)) missing.push(week);
+// Each formula group is regular and decomposes into perfect matchings:
+// division K4 groups give three rounds; rotation K4,4 groups give four;
+// remaining standing games give two or one. No opponent is manufactured.
+function takePerfectMatching(games, teamIds) {
+  const adjacency=new Map(teamIds.map(id=>[id,[]]));
+  for(const game of games) {
+    adjacency.get(game.homeTeamId).push(game);
+    adjacency.get(game.awayTeamId).push(game);
   }
-  return missing;
-}
-
-function cloneScheduleState(weeks, teamWeekUsage) {
-  return {
-    weeks: weeks.map((week) => ({ week: week.week, games: [...week.games] })),
-    usage: new Map([...teamWeekUsage.entries()].map(([teamId, weeksSet]) => [teamId, new Set(weeksSet)]))
+  const visit=(remaining,chosen)=>{
+    if(!remaining.size) return chosen;
+    let options=null;
+    for(const id of remaining) {
+      const available=adjacency.get(id).filter(g=>remaining.has(g.homeTeamId)&&remaining.has(g.awayTeamId));
+      if(!available.length) return null;
+      if(!options||available.length<options.length) options=available;
+    }
+    for(const game of options) {
+      const next=new Set(remaining);
+      next.delete(game.homeTeamId);next.delete(game.awayTeamId);
+      const result=visit(next,[...chosen,game]);
+      if(result) return result;
+    }
+    return null;
   };
+  return visit(new Set(teamIds),[]);
 }
 
-function stateWeek(state, weekNumber) {
-  return state.weeks.find((week) => week.week === weekNumber) || null;
-}
-
-function stateHasTeamConflict(state, game, weekNumber) {
-  const week = stateWeek(state, weekNumber);
-  if (!week) return true;
-  return week.games.some(
-    (entry) =>
-      [entry.homeTeamId, entry.awayTeamId].includes(game.homeTeamId)
-      || [entry.homeTeamId, entry.awayTeamId].includes(game.awayTeamId)
-  );
-}
-
-function stateRemoveGame(state, game, weekNumber) {
-  const week = stateWeek(state, weekNumber);
-  if (!week) return;
-  week.games = week.games.filter((entry) => entry !== game);
-  if (!week.games.some((entry) => entry.homeTeamId === game.homeTeamId || entry.awayTeamId === game.homeTeamId)) {
-    state.usage.get(game.homeTeamId).delete(weekNumber);
+function packMatchups(rawGames, league, rng) {
+  const teamIds=league.teams.map(t=>t.id), groups=new Map();
+  for(const game of rng.shuffle(rawGames)) {
+    if(!groups.has(game.tag)) groups.set(game.tag,[]);
+    groups.get(game.tag).push(game);
   }
-  if (!week.games.some((entry) => entry.homeTeamId === game.awayTeamId || entry.awayTeamId === game.awayTeamId)) {
-    state.usage.get(game.awayTeamId).delete(weekNumber);
-  }
-}
-
-function stateAddGame(state, game, weekNumber) {
-  const week = stateWeek(state, weekNumber);
-  if (!week) return;
-  week.games.push(game);
-  state.usage.get(game.homeTeamId).add(weekNumber);
-  state.usage.get(game.awayTeamId).add(weekNumber);
-}
-
-function relocateInState(state, game, fromWeekNumber, targetWeekNumber, depth = 2, seen = new Set()) {
-  const visitKey = `${game.homeTeamId}-${game.awayTeamId}-${fromWeekNumber}-${targetWeekNumber}`;
-  if (seen.has(visitKey)) return null;
-  const nextSeen = new Set(seen);
-  nextSeen.add(visitKey);
-
-  const working = cloneScheduleState(state.weeks, state.usage);
-  stateRemoveGame(working, game, fromWeekNumber);
-  if (!stateHasTeamConflict(working, game, targetWeekNumber)) {
-    stateAddGame(working, game, targetWeekNumber);
-    return working;
-  }
-  if (depth <= 0) return null;
-
-  const target = stateWeek(working, targetWeekNumber);
-  const conflicts = target.games.filter(
-    (entry) =>
-      [entry.homeTeamId, entry.awayTeamId].includes(game.homeTeamId)
-      || [entry.homeTeamId, entry.awayTeamId].includes(game.awayTeamId)
-  );
-
-  for (const conflictGame of conflicts) {
-    for (const altWeek of working.weeks) {
-      if (altWeek.week === targetWeekNumber) continue;
-      const moved = relocateInState(working, conflictGame, targetWeekNumber, altWeek.week, depth - 1, nextSeen);
-      if (!moved) continue;
-      if (!stateHasTeamConflict(moved, game, targetWeekNumber)) {
-        stateAddGame(moved, game, targetWeekNumber);
-        return moved;
-      }
+  const rounds=[];
+  for(let games of groups.values()) {
+    while(games.length) {
+      const matching=takePerfectMatching(games,teamIds);
+      if(!matching) throw new Error('Football matchup group cannot form a complete round');
+      rounds.push(matching);
+      const selected=new Set(matching);
+      games=games.filter(g=>!selected.has(g));
     }
   }
-  return null;
+  if(rounds.length!==STRUCTURE.gamesPerTeam) throw new Error('Football formula has an invalid round count');
+  // Keep a complete division round for the finale. Start with an empty week17
+  // and move alternating paths into it to distribute the legal midseason byes.
+  const finaleIndex=rounds.findIndex(round=>round.every(g=>g.tag.startsWith('division-homeaway-')));
+  if(finaleIndex<0) throw new Error('Football formula is missing a division finale');
+  const finale=rounds.splice(finaleIndex,1)[0];
+  const shuffled=rng.shuffle(rounds);
+  const weeks=Array.from({length:STRUCTURE.regularSeasonWeeks},(_,i)=>({week:i+1,games:i<16?shuffled[i]:i===17?finale:[]}));
+  const teamWeekUsage=new Map(teamIds.map(id=>[id,new Set()]));
+  for(const week of weeks) for(const game of week.games) {
+    teamWeekUsage.get(game.homeTeamId).add(week.week);
+    teamWeekUsage.get(game.awayTeamId).add(week.week);
+  }
+  return {weeks,teamWeekUsage};
 }
 
-function repairWeekConflicts(weeks, league, teamWeekUsage) {
-  const weekByNumber = new Map(weeks.map((week) => [week.week, week]));
-  let changed = true;
-  let guard = 0;
-
-  while (changed && guard < 300) {
-    changed = false;
-    guard += 1;
-    for (const team of league.teams) {
-      const missingWeeks = teamMissingWeeks(teamWeekUsage, STRUCTURE.regularSeasonWeeks, team.id);
-      if (!missingWeeks.length) continue;
-      const duplicateWeeks = weeks.filter((week) => weekTeamGames(week, team.id).length > 1);
-      if (!duplicateWeeks.length) continue;
-
-      for (const missingWeekNumber of missingWeeks) {
-        const missingWeek = weekByNumber.get(missingWeekNumber);
-        if (!missingWeek) continue;
-
-        let repaired = false;
-        for (const duplicateWeek of duplicateWeeks) {
-          const duplicateGames = weekTeamGames(duplicateWeek, team.id);
-          for (const game of duplicateGames) {
-            const repairedState = relocateInState(
-              { weeks, usage: teamWeekUsage },
-              game,
-              duplicateWeek.week,
-              missingWeek.week,
-              3
-            );
-            if (repairedState) {
-              for (const week of weeks) {
-                const nextWeek = stateWeek(repairedState, week.week);
-                week.games = [...(nextWeek?.games || [])];
-              }
-              for (const [teamId, weeksSet] of repairedState.usage.entries()) {
-                teamWeekUsage.set(teamId, new Set(weeksSet));
-              }
-              changed = true;
-              repaired = true;
-              break;
-            }
-            if (repaired) break;
-          }
-          if (repaired) break;
+// Swapping all games in a two-week alternating path keeps opponents, venues
+// and every player's one-game-per-week constraint. Only paths with both ends
+// missing the forbidden week are swapped, so each move removes two bad byes
+// without creating a new one. Cycles and paths ending in a legal bye stay put.
+function repairByeWindow(weeks, league, usage, allowed) {
+  const legal = new Set(allowed);
+  for (;;) {
+    const forbidden = weeks.filter(w => !legal.has(w.week) && w.games.length < league.teams.length / 2);
+    if (!forbidden.length) return true;
+    let changed = false;
+    for (const bad of forbidden) {
+      const candidates = weeks.filter(w => legal.has(w.week) && w.games.length > (league.teams.length - 6) / 2).sort((a,b) => b.games.length-a.games.length || a.week-b.week);
+      for (const good of candidates) {
+        const adjacency = new Map(league.teams.map(t => [t.id, []]));
+        for (const game of [...bad.games, ...good.games]) {
+          adjacency.get(game.homeTeamId).push(game);
+          adjacency.get(game.awayTeamId).push(game);
         }
+        for (const team of league.teams) {
+          if (usage.get(team.id).has(bad.week)) continue;
+          const visited = new Set(), edges = new Set(), queue = [team.id];
+          for (let i=0;i<queue.length;i++) {
+            const id=queue[i];
+            if(visited.has(id)) continue;
+            visited.add(id);
+            for(const game of adjacency.get(id)) {
+              edges.add(game);
+              queue.push(game.homeTeamId===id?game.awayTeamId:game.homeTeamId);
+            }
+          }
+          const missingBad=[...visited].filter(id=>!usage.get(id).has(bad.week)).length;
+          const missingGood=[...visited].filter(id=>!usage.get(id).has(good.week)).length;
+          if(missingBad<=missingGood) continue;
+          const fromBad=bad.games.filter(g=>edges.has(g)), fromGood=good.games.filter(g=>edges.has(g));
+          bad.games=[...bad.games.filter(g=>!edges.has(g)),...fromGood];
+          good.games=[...good.games.filter(g=>!edges.has(g)),...fromBad];
+          for(const id of visited) {
+            for(const block of [bad,good]) {
+              if(block.games.some(g=>g.homeTeamId===id||g.awayTeamId===id)) usage.get(id).add(block.week);
+              else usage.get(id).delete(block.week);
+            }
+          }
+          changed=true;
+          break;
+        }
+        if(changed) break;
       }
+      if(changed) break;
     }
+    if(!changed) return false;
   }
 }
 
 /** Football competition: `{ league, year, previousDivisionRanks, rng }` -> `[{ week, games }]`. */
 export function buildSeasonSchedule({ league, year, previousDivisionRanks, rng }) {
-  const rawGames = buildMatchups(league, year, previousDivisionRanks, rng);
-  const games = rng.shuffle(rawGames);
-  const weeks = Array.from({ length: STRUCTURE.regularSeasonWeeks }, (_, index) => ({
-    week: index + 1,
-    games: []
-  }));
-  const teamWeekUsage = new Map(league.teams.map((t) => [t.id, new Set()]));
-  for (const game of games) {
-    let placed = false;
-    const candidateWeeks = weeks.slice().sort((a, b) => a.games.length - b.games.length || a.week - b.week);
-    for (const week of candidateWeeks) {
-      const homeBusy = teamWeekUsage.get(game.homeTeamId).has(week.week);
-      const awayBusy = teamWeekUsage.get(game.awayTeamId).has(week.week);
-      if (homeBusy || awayBusy) continue;
-      week.games.push(game);
-      teamWeekUsage.get(game.homeTeamId).add(week.week);
-      teamWeekUsage.get(game.awayTeamId).add(week.week);
-      placed = true;
-      break;
-    }
-    if (!placed) {
-      const fallback = candidateWeeks[0];
-      fallback.games.push(game);
-      teamWeekUsage.get(game.homeTeamId).add(fallback.week);
-      teamWeekUsage.get(game.awayTeamId).add(fallback.week);
-    }
+  const rawGames=buildMatchups(league,year,previousDivisionRanks,rng);
+  const expected={teamIds:league.teams.map(t=>t.id),gamesPerTeam:STRUCTURE.gamesPerTeam,weeks:STRUCTURE.regularSeasonWeeks};
+  const allowed=allowedByeWeeks(year);
+  // Retry placement of the same matchups, never regenerate an opponent list or
+  // silently return conflicts. Most schedules need only the first placement.
+  for(let attempt=0;attempt<64;attempt++) {
+    const {weeks,teamWeekUsage}=packMatchups(rawGames,league,rng);
+    if(validateSchedule(weeks,expected).length) continue;
+    if(!repairByeWindow(weeks,league,teamWeekUsage,allowed)) continue;
+    if(!validateSchedule(weeks,expected).length) return weeks;
   }
-  repairWeekConflicts(weeks, league, teamWeekUsage);
-  return weeks;
+  throw new Error('Unable to construct a conflict-free football schedule within the bye window');
 }

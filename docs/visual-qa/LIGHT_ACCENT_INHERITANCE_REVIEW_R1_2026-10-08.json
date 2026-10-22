@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "scope": "Light descendant accent inheritance and mobile primary-action contrast",
+  "primaryReceiptPath": "docs/visual-qa/LIGHT_ACCENT_INHERITANCE_2026-10-08.json",
+  "primaryReceiptSha256": "d47911b9930e204c82df6adf7d0358533b5d81800737b353790aa2488edcec58",
+  "sourceHashes": {
+    "public/styles.css": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db",
+    "public/game.html": "d4d12b3dc0134587de44c835f3628df40d7c0a2f48abc28e66439b7f7bdd7221",
+    "public/index.html": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4",
+    "public/lib/themeCustomizer.js": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe",
+    "tests-ui/theme.spec.js": "72d929b565cdc3311fb4ac3cce00e7dbb4979df5dc859f854fbcdfc6669a6e9a",
+    ".cache/light-accent.spec.mjs": "6b4c1d991e4691edaaa505cc79943296c2a65a1478a3332f0c460c48548154f8",
+    ".cache/light-accent.config.mjs": "a0dab7d71752ff0edb936317fae03537559864de97de5c20162278fdb7478fc2",
+    ".cache/light-accent-before.css": "43b277303fbaae70b1ff7c9e260d2f1ff46db72dcdc6844123116a632aa7a4ee"
+  },
+  "checks": [
+    {
+      "command": "npx playwright test tests-ui/theme.spec.js --workers=1 --reporter=line",
+      "independent": true,
+      "passed": 9,
+      "failed": 0,
+      "terminal": "9 passed (25.3s)",
+      "exitCode": 0,
+      "toolSession": 31208,
+      "terminalChunk": "678c25"
+    },
+    {
+      "command": "node --test test/admitted-injury-payroll.test.js test/session109-css-tokens.test.js test/theme-customizer.test.js",
+      "independent": true,
+      "passed": 17,
+      "failed": 0,
+      "durationMs": 8975.0388,
+      "qualification": "Eight token/theme cases plus nine payroll cases"
+    },
+    {
+      "check": "Frozen source/capture bindings and primary observation consistency",
+      "sources": 8,
+      "captures": 80,
+      "afterRows": 40,
+      "result": "PASS"
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/light-accent-before-game-desktop-light-violet.png",
+      "sha256": "6c6bc1c5896fd927d16e9a36b13116e1ec7498fcd8cc3d6a5b5d43dae80c620e"
+    },
+    {
+      "path": "docs/visual-qa/captures/light-accent-after-game-desktop-light-violet.png",
+      "sha256": "1f00a8a9111020d42785c7c9de4b2be77365261100b9465756dbcd7a42b3d516"
+    },
+    {
+      "path": "docs/visual-qa/captures/light-accent-before-game-mobile-light-violet.png",
+      "sha256": "fbb792711b515550de8399de45a654f7f158addcb843d00031a4a9eac892ebf6"
+    },
+    {
+      "path": "docs/visual-qa/captures/light-accent-after-game-mobile-light-violet.png",
+      "sha256": "d831812aa747697b3a89f99caee62cb677a846490e4d577cc72c23730c1dab0d"
+    }
+  ],
+  "findings": [],
+  "visualAssessment": "Actual light violet descendant badges/icons and mobile Advance Week now honor chosen violet; button is readable with light ink. Four originals inspected; retained table/body layout has no new clipping in these pairs.",
+  "limits": [
+    "Primary80 captures verified by hash, only four independently inspected",
+    "Recorded palette contrast observations are primary evidence; nine theme browser cases independently executed",
+    "No whole appearance/global visual/release acceptance"
+  ],
+  "fullVisualAcceptance": false
+}

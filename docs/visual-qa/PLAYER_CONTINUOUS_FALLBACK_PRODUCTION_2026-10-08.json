@@ -1,0 +1,1050 @@
+{
+  "version": 1,
+  "capturedAt": "2026-10-08T08:45:59.963Z",
+  "status": "continuous-fallback-production-progress-review-pending",
+  "scope": "Continuous saved loose-hair coordinate in modern SVG front/profile projections; legacy categorical output retained. Artistic projection, not demographic calibration or finished naturalism.",
+  "sources": [
+    {
+      "original": "public/lib/continuousHairTexture.js",
+      "file": "references/continuous-fallback-source-continuousHairTexture.js-2026-10-08",
+      "sha256": "63ee8ee9657d0fd1965e919ca8893d71d81318ff9244d89e5b3fed4a49304ed3"
+    },
+    {
+      "original": "public/lib/partedHairFlow.js",
+      "file": "references/continuous-fallback-source-partedHairFlow.js-2026-10-08",
+      "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35"
+    },
+    {
+      "original": "public/lib/longHairFlow.js",
+      "file": "references/continuous-fallback-source-longHairFlow.js-2026-10-08",
+      "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba"
+    },
+    {
+      "original": "public/lib/croppedHairVolume.js",
+      "file": "references/continuous-fallback-source-croppedHairVolume.js-2026-10-08",
+      "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/continuous-fallback-source-playerPortraitFace.js-2026-10-08",
+      "sha256": "397b6450f02a8ca80842fc44380d16c37df8fd4d437498306c02cece7d6b70d2"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/continuous-fallback-source-playerSideAppearance.js-2026-10-08",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/continuous-fallback-source-playerHead3d.js-2026-10-08",
+      "sha256": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/continuous-fallback-source-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/continuous-fallback-source-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/hairArrangement.js",
+      "file": "references/continuous-fallback-source-hairArrangement.js-2026-10-08",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26"
+    },
+    {
+      "original": "src/domain/playerIdentity.js",
+      "file": "references/continuous-fallback-source-playerIdentity.js-2026-10-08",
+      "sha256": "c192777620fc80dba87b308f741f1559d8bef866e8a059f05da33c738dfeba71"
+    },
+    {
+      "original": "src/domain/playerVisualIdentity.js",
+      "file": "references/continuous-fallback-source-playerVisualIdentity.js-2026-10-08",
+      "sha256": "1f8e7c260756da9a255981afded0db5e96445205631407a1517d1374367d16cb"
+    },
+    {
+      "original": "test/player-continuous-hair-fallback.test.js",
+      "file": "references/continuous-fallback-source-player-continuous-hair-fallback.test.js-2026-10-08",
+      "sha256": "3d404edcb00bacc7969357ad5464d8da48bd875e5cbbb40c5a6fb25e9c284e34"
+    },
+    {
+      "original": "test/player-hair-arrangement.test.js",
+      "file": "references/continuous-fallback-source-player-hair-arrangement.test.js-2026-10-08",
+      "sha256": "3a4a1171e86597d7d13b99076ca0a4e2a556d9662138095c880015e0171ed8f0"
+    },
+    {
+      "original": "test/player-whole-head-form.test.js",
+      "file": "references/continuous-fallback-source-player-whole-head-form.test.js-2026-10-08",
+      "sha256": "a4783be539eda137edf9881c962f3f22881bc0838ae0ad517575cb96eff538a5"
+    },
+    {
+      "original": "test/player-side-grooming.test.js",
+      "file": "references/continuous-fallback-source-player-side-grooming.test.js-2026-10-08",
+      "sha256": "23729ebf1a4f27cc4e3f6ea65edde97f28a48105972426491f454174ff3006f4"
+    },
+    {
+      "original": "test/player-structured-hair.test.js",
+      "file": "references/continuous-fallback-source-player-structured-hair.test.js-2026-10-08",
+      "sha256": "cd3ca9fff84316cc7a85bc10a319fe979e5c5a28e76994bd3a782b6ce053bdd3"
+    },
+    {
+      "original": "tests-ui/player-continuous-hair-fallback.spec.js",
+      "file": "references/continuous-fallback-source-player-continuous-hair-fallback.spec.js-2026-10-08",
+      "sha256": "e987e4e7851736b059e842293b3e87a60ce47715fa3e56d3677dae9363237d75"
+    },
+    {
+      "original": "tests-ui/player-hair-arrangement.spec.js",
+      "file": "references/continuous-fallback-source-player-hair-arrangement.spec.js-2026-10-08",
+      "sha256": "2028c9337e57205f8b9f6bb041cf3a8d493098e593843f78be2151d36310ab91"
+    },
+    {
+      "original": "tests-ui/player-legal-hair-gallery.spec.js",
+      "file": "references/continuous-fallback-source-player-legal-hair-gallery.spec.js-2026-10-08",
+      "sha256": "f32015fb2c188fc80ab5cf5a1ffe195ec347b1380d530fdb58a2228d40c831f8"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/continuous-fallback-source-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    }
+  ],
+  "built": {
+    "static/lib/continuousHairTexture.js": {
+      "source": "public/lib/continuousHairTexture.js",
+      "sha256": "63ee8ee9657d0fd1965e919ca8893d71d81318ff9244d89e5b3fed4a49304ed3",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/partedHairFlow.js": {
+      "source": "public/lib/partedHairFlow.js",
+      "sha256": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/longHairFlow.js": {
+      "source": "public/lib/longHairFlow.js",
+      "sha256": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/croppedHairVolume.js": {
+      "source": "public/lib/croppedHairVolume.js",
+      "sha256": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "665259271e5e5213ffe4b9de5b3dc35a0bf8c7d5b52b5a9a65bb3f5864400ff6",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/hairArrangement.js": {
+      "source": "public/lib/hairArrangement.js",
+      "sha256": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "inputs": [
+    {
+      "file": "references/continuous-hair-source-playerPortraitFace.js-2026-10-08",
+      "sha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc"
+    },
+    {
+      "file": "references/continuous-hair-source-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "file": "references/whole-head-regression-partedHairFlow.js-2026-10-08",
+      "sha256": "be4c479ad8251c593a0b3287672b1f368573da0081a75f4c4b62ae047b539de0"
+    },
+    {
+      "file": "references/whole-head-regression-longHairFlow.js-2026-10-08",
+      "sha256": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622"
+    },
+    {
+      "file": "references/whole-head-regression-croppedHairVolume.js-2026-10-08",
+      "sha256": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "references/continuous-fallback-observations-2026-10-08.json",
+      "sha256": "fc4d4244f4cb4742ecd8864e358ee08dddd213898dc07c52b0c0a2ed9630993a"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-0-desktop-dark.png",
+      "sha256": "38394efd8df06616dbeea53a4bb83bf299f4f260ce03aeff9bb242106c77527c",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-0-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-1-desktop-dark.png",
+      "sha256": "655dac67dc5526a1048275b5c73910e2d8a17b0f5dc7abd7b3510f7bd6782fc9",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-1-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-2-desktop-dark.png",
+      "sha256": "f08fc7d8071a7b29dff3ece6c9c1bc52cd26c4feb717fd478ab8754abeb59c98",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-2-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-3-desktop-dark.png",
+      "sha256": "2f3e26e8fe7eeb0eabec919191bfb8ae06b7caccad1e96d3f0159e3392426eb8",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-3-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-4-desktop-dark.png",
+      "sha256": "fba3d34724b2b39155a13425e6da030e76ccebef71c1160682cb9fa2363d90d8",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-4-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-5-desktop-dark.png",
+      "sha256": "7b4fa8102f128ad6153caa4b3483682b4f3de33d2bb3905bcc9375561eb0b420",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-5-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-6-desktop-dark.png",
+      "sha256": "03130a9b0b559518cb8431aac11a8665f198b5e5d1181aef1cff324cafa430c8",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-6-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-7-desktop-dark.png",
+      "sha256": "48271df86c740dcb082ac4cd391444acf1d67fd233d6de11a37c669c6065d7ec",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-7-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-8-desktop-dark.png",
+      "sha256": "860c2f95f35ff13051d15946f1e8a1cb3447f6d0fd57c879073f20b00fc920d2",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-8-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-9-desktop-dark.png",
+      "sha256": "c6452d40f8f189159a566596feeb1bc1361ab2f7b6d93c4492c3da4e1bea7c4f",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-9-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-10-desktop-dark.png",
+      "sha256": "f9dde2f63dd0e16b3b51bf8a27274e7fda3f92a830cecfda390f80a97c8374a0",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-10-desktop-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-11-desktop-dark.png",
+      "sha256": "435b5cbcb4ce0d5efee1ab2a81825793a33becac3d053416211ca1a24c4c030e",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-11-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-12-desktop-dark.png",
+      "sha256": "2c8cc030b2b5fc7f0b84b0aabeeaf5be6b4b1a3043f9e900d8de07432440447c",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-12-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-13-desktop-dark.png",
+      "sha256": "7cd04b947f48df0eb35042003d7900c5a3b867f4c2054fef6bcfdf554c7e310f",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-13-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-14-desktop-dark.png",
+      "sha256": "20de884b4b76e33bfaa59dca44ce230082bf9d0bca953a853910d4aeb3a7208d",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-14-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-0-desktop-light.png",
+      "sha256": "f93da2fafda3b031e9ce7e81cad90a2e0446b98524ad30ad0e6cc01ccbd7eece",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-0-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-1-desktop-light.png",
+      "sha256": "d033bcdee0e1b280de0866bfefb434ac4dd8b3141f42efa7dbf91d781fde32c9",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-1-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-2-desktop-light.png",
+      "sha256": "0a74b11f256142c208f173d12920ec4658663101a67a8a66a34c3d8761bc20c8",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-2-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-3-desktop-light.png",
+      "sha256": "df52bea8641127a23f836e45b594336d9c4a59f323908e77b5ce19e5de623cee",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-3-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-4-desktop-light.png",
+      "sha256": "ebb6de304be48f1ef7df85fb30586b2f9acf11246a6c2e97ea20ea7a56ebc602",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-4-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-5-desktop-light.png",
+      "sha256": "d21439608cf28cc985edc481d3f9a276893c511d82eeb1dd2a124b6e986a954a",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-5-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-6-desktop-light.png",
+      "sha256": "a12c87b57c0b741034aa1dfed032f08571302c41cc6e216f5636460d4409f383",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-6-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-7-desktop-light.png",
+      "sha256": "7df0f7561dd2e04525b21d8e2118cdfc92ae459cccf0bd9d08a694f1dce0cdaa",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-7-desktop-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-8-desktop-light.png",
+      "sha256": "57b670fc53112aa4bee73fd323d9b0469960ce7d0af46490b2751ce208a3340f",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-8-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-9-desktop-light.png",
+      "sha256": "775d4c9e349ddc1502378cf87c8e62dd06a4f4985fd32a4fe3eb193e2b027cc2",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-9-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-10-desktop-light.png",
+      "sha256": "7e3e5c1173badf620c7a4a6fdfdc6fdd2dadd48d9789c96ef994bc3495a042e0",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-10-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-11-desktop-light.png",
+      "sha256": "7cdcaacbc8b2eff73687ee6c754e937387f41f180c655b9827c545702fa1dd56",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-11-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-12-desktop-light.png",
+      "sha256": "8421b483777f712647e232940a2904e7ae807ffe8e2aea26b9f0c672d594ac37",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-12-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-13-desktop-light.png",
+      "sha256": "9eab5b3150148f9fce227afe5add9b60fea69dee4b9dc23d3b394240770ee809",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-13-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-14-desktop-light.png",
+      "sha256": "42430b7f3686c792d02775a63b926ad11d49e147ec45eb4e6ecb72fb6cffe846",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "original": "output/playwright/continuous-fallback-14-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-0-mobile-dark.png",
+      "sha256": "d3bd038907a8ba66e87c48221962c3c576b4bd07c6534758a020d7c8daeea217",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-0-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-1-mobile-dark.png",
+      "sha256": "5a0347a511c3e325376877d3fe7f1c53c6ffde0a6a6832daed3a13eedb4b017a",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-1-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-2-mobile-dark.png",
+      "sha256": "3204705a51c1e11141b217203d52650425d1d8d6328b45cd09f9bd202b97e827",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-2-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-3-mobile-dark.png",
+      "sha256": "72fab7fbefc881ac027668ec5ef9c024e73e14b81f8a13e48dca3b2913680f7b",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-3-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-4-mobile-dark.png",
+      "sha256": "74f66ba733ab2c955d09ea1b45aeb3a8ab226306b28391b8ce0be3397fa595c3",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-4-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-5-mobile-dark.png",
+      "sha256": "73d9d0f4a37fd4c6bc7c2e387ae3fcaf6f6acf77a6783b06133ae8869350ab9d",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-5-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-6-mobile-dark.png",
+      "sha256": "45e2eeb1c79cb948dd9cfb79a5159e47b34db3e808c5343a80fb783afadc1a3d",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-6-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-7-mobile-dark.png",
+      "sha256": "3e07ee0816f3be95d4d9473d16b8f5f97680fd04890935f5f605a6acd20ac1cc",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-7-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-8-mobile-dark.png",
+      "sha256": "fadf4f7a9de523c5a36dda8cb34ce2ef1e7b75c75cc2b2341201aaec0d04fb7a",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-8-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-9-mobile-dark.png",
+      "sha256": "01736ac92d8daa8b7c521f4d0a594ef683119590cdad3def3c32c6dcaee2bdc5",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-9-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-10-mobile-dark.png",
+      "sha256": "5cbb13b60b411239ce33200ae4b83d74040db0687b2c0bdbb456ef07dd1474e4",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-10-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-11-mobile-dark.png",
+      "sha256": "98353dc4a33b83b4fd11616fcc1a98d20f42410b5da1afff038099a9060d8930",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-11-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-12-mobile-dark.png",
+      "sha256": "370cf259b7619a3968ed8f3a1f636befc70c53bc6e7cec8e81ab328c38e9db38",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 0.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-12-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-13-mobile-dark.png",
+      "sha256": "f376d1481140f4c640eb50e5aaaf07f00c1fda4eab34ce2d031f679c12f24c0a",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 1.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-13-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-14-mobile-dark.png",
+      "sha256": "d889a71837246f97ccaa9232b580191f0f30504ff55b60831d941460ffa273ea",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 2.5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-14-mobile-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-0-mobile-light.png",
+      "sha256": "46f840d99a186ed631be9d4b6b6d9d543276f8caa3799d7211f11b998a3f1e90",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-0-mobile-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-1-mobile-light.png",
+      "sha256": "b5b056161df44bfc1bbe33bc9911297b7d8be902664e72cbd591055c5c5f1124",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-1-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-2-mobile-light.png",
+      "sha256": "c5c96753952579f3981753cce8d55fdc058ab17e01c5b3b14b59c60272644b48",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "buzz / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-2-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-3-mobile-light.png",
+      "sha256": "c7f0466b6c9d56940a7c132f2621c094e9b8a2284ef1b7b79527103f960fe617",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-3-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-4-mobile-light.png",
+      "sha256": "9c480981869e9c0e2497a8a9f444f612323872e9b1890ec5b57a9cbf2bd98449",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-4-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-5-mobile-light.png",
+      "sha256": "df34489dbff6506a3b6b3dde0279331b1aa12ae1dbb71b303317c102b6d56176",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "crew / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-5-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-6-mobile-light.png",
+      "sha256": "a288ca71f5b7e4e0405d858ef2c38c93b401678187ee51952f0a57a08921c578",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-6-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-7-mobile-light.png",
+      "sha256": "a93d632c494c1fa7f4608bc4f580daebe38ddde527c0a3ff487994b844261d80",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-7-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-8-mobile-light.png",
+      "sha256": "52059951134f84406f530db35895d0c999675e931dd6810e52b7dae088278204",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "afro / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-8-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-9-mobile-light.png",
+      "sha256": "d52e2d658d800e522185999fa437b7dbe948654063a17f4730df5f1f7ed28282",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-9-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-10-mobile-light.png",
+      "sha256": "ecc6a578d4c4a93522b2b62d01a03b440e4e8dd6e7d5652380a28da330879887",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-10-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-11-mobile-light.png",
+      "sha256": "d875e66f632d362ab8267ae5de8b556f5c1f17a91c3eb8fd5cae416f5b5d1b77",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "side-part / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-11-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-12-mobile-light.png",
+      "sha256": "c148fd1a926371ff52a42efa366855ccbb5be661e32231335496a37aa655c9b9",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 0.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-12-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-13-mobile-light.png",
+      "sha256": "3098c3c147f3b48c53cf6d351647a9a5d2f072e967019032f5a90e897b633dd3",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 1.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-13-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/continuous-fallback-continuous-fallback-14-mobile-light.png",
+      "sha256": "71e96e2405a50c4a4c4713cf6167b35d7c1aabd52040752bdfb0429226a1f8dd",
+      "page": "controlled-continuous-fallback-gallery",
+      "state": "long / 2.5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "original": "output/playwright/continuous-fallback-14-mobile-light.png",
+      "inspected": false
+    }
+  ],
+  "checks": {
+    "focused": {
+      "passed": 20,
+      "failed": 0,
+      "durationMs": 2777.6281,
+      "terminalChunk": "fd633c",
+      "legacyFrontProfileHashes": 384,
+      "allNewCoordinateLabelInvariance": true,
+      "instancedFiberResources": true,
+      "fiveStyleDocumentByteCeiling": 1200000
+    },
+    "browser": {
+      "passed": 2,
+      "failed": 0,
+      "durationSeconds": 39.4,
+      "terminalChunk": "dfd638",
+      "forcedWebGLUnavailable": true,
+      "contexts": 0,
+      "savedInputUnchanged": true,
+      "fixedIdentityCases": 15,
+      "captures": 60
+    },
+    "build": {
+      "passed": true,
+      "assets": 319,
+      "sizeKB": 3541,
+      "precacheVersion": "1a78dc6a8b52",
+      "terminalChunk": "eeeb44"
+    },
+    "loading": {
+      "passed": true,
+      "modules": 139,
+      "bootBytes": 649321,
+      "bootModules": 51,
+      "lazyLeaks": 0,
+      "terminalChunk": "c65831"
+    }
+  },
+  "iteration": {
+    "initialFocused": {
+      "passed": 16,
+      "failed": 3,
+      "terminalChunk": "f783d4",
+      "reason": "New-player controlled fixtures changed only displayed categories while retaining the same continuous coordinate. Fixtures now set both category and numeric texture; the existing four-distinct-contour assertions remain."
+    },
+    "firstDocumentProbe": {
+      "terminalChunk": "eb84fb",
+      "afroBytes": 2604521
+    },
+    "repair": "Instanced normalized close/cropped strand resources preserve visible per-strand position/size/pigment variation without repeating every coordinate.",
+    "revisedDocumentProbe": {
+      "terminalChunk": "4b9056",
+      "afroBytes": 715146,
+      "longBytes": 1023802,
+      "buzzBytes": 400085,
+      "crewBytes": 564069,
+      "sidePartBytes": 83471
+    }
+  },
+  "inspection": {
+    "reviewer": "root",
+    "originalsInspected": 4,
+    "findings": [
+      "Final originals inspected across desktop/mobile and dark/light: buzz, afro, side-part and long hair. The remaining 56 originals are retained and uninspected by root.",
+      "Saved coordinate now visibly changes curls in fallback; front/profile consume it independently of displayed label.",
+      "Fallback remains simplified illustration; cap-shaped crowns, vertical stubble marks and face/body naturalism are unresolved. Full visual acceptance remains false.",
+      "Before view uses frozen previous front/profile modules and historical unchanged helper references; it is a controlled same-person comparison, not a representative demographic roster.",
+      "No production demographic, measurement, ability, development or injury formulas change in this component."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

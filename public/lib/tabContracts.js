@@ -218,6 +218,7 @@ export function updateContractPreview() {
 
 export function renderContractsPage() {
   const roster = state.contractRoster || [];
+  const deadCap = state.contractCap?.deadCap ?? state.contractCap?.deadCapCurrentYear ?? 0;
   const totalSalary = roster.reduce((sum, player) => sum + Number(player.contract?.salary || 0), 0);
   const totalYears = roster.reduce((sum, player) => sum + Number(player.contract?.yearsRemaining || 0), 0);
   setMetricCardValue(
@@ -228,8 +229,8 @@ export function renderContractsPage() {
   setMetricCardValue("contractsActiveCapCard", fmtMoney(state.contractCap?.usedCap || 0), "accent");
   setMetricCardValue(
     "contractsDeadCapCard",
-    fmtMoney(state.contractCap?.deadCapCurrentYear || 0),
-    (state.contractCap?.deadCapCurrentYear || 0) > 35_000_000 ? "negative" : "warning"
+    fmtMoney(deadCap),
+    deadCap > 35_000_000 ? "negative" : "warning"
   );
   setMetricCardValue("contractsAvgSalaryCard", roster.length ? fmtMoney(totalSalary / roster.length) : "$0", "accent");
   setMetricCardValue("contractsAvgYearsCard", roster.length ? (totalYears / roster.length).toFixed(1) : "0.0", "info");
@@ -308,6 +309,9 @@ export function renderContractsSpotlight() {
   const roster = state.contractRoster || [];
   const expiring = state.contractTools?.expiring || [];
   const cap = state.contractCap || {};
+  const deadCap = cap.deadCap ?? cap.deadCapCurrentYear ?? 0;
+  const carryoverEstimate = Number.isFinite(cap.rolloverNextYearEstimate)
+    ? fmtMoney(cap.rolloverNextYearEstimate) : 'Load cap sheet';
   const blockCount = roster.filter((player) => state.tradeBlockIds.includes(player.id)).length;
 
   spotlight.innerHTML = `
@@ -335,8 +339,16 @@ export function renderContractsSpotlight() {
       </div>
       <div class="control-spotlight-card">
         <strong>Risk Signal</strong>
-        <div>${escapeHtml((cap.deadCapCurrentYear || 0) > (cap.capSpace || 0) ? "Dead cap pressure is elevated" : "Cap sheet is manageable")}</div>
-        <div class="small">${escapeHtml(`Active cap ${fmtMoney(cap.usedCap || 0)} | Dead cap ${fmtMoney(cap.deadCapCurrentYear || 0)}`)}</div>
+        <div>${escapeHtml(deadCap > (cap.capSpace || 0) ? "Dead cap pressure is elevated" : "Cap sheet is manageable")}</div>
+        <div class="small">${escapeHtml(`Active cap ${fmtMoney(cap.usedCap || 0)} | Dead cap ${fmtMoney(deadCap)}`)}</div>
+      </div>
+      <div id="contractsCarryoverEstimate" class="control-spotlight-card">
+        <strong>Next-year carryover</strong>
+        <div>${escapeHtml(`Estimate: ${carryoverEstimate}`)}</div>
+        <div class="small">${escapeHtml(`Current-year carryover: ${fmtMoney(cap.rolloverCurrentYear || 0)}`)}</div>
+        <div class="small">${escapeHtml(cap.rolloverPolicy === 'legacy-fractional-carryover-v1'
+          ? 'Legacy policy: 48% of unused room, up to $35M. Future moves change this estimate.'
+          : 'Assumes full unused-room election. Future moves change this estimate.')}</div>
       </div>
     </div>
   `;
@@ -740,4 +752,71 @@ export async function applyCounterPrefill(prefill) {
   state.tradePlanFingerprint = null;
   await loadPickAssets();
   setTradeEvalText("Counter loaded from the rival's offer — adjust the packages, then evaluate.");
+}
+
+export function renderFreeAgency() {
+  const market = state.faMarket || {};
+  const pursuit = market.pursuit || {};
+  const myOffers = new Set((market.offers || []).map((offer) => offer.playerId));
+  const premiumOverall = Number(market.premiumOverall || 74);
+  const banner = document.getElementById("faMarketBanner");
+  if (banner) {
+    const pending = (market.offers || []).length;
+    banner.textContent = `Market stage: ${market.stage || "open-market"} · resolves on advance · ${pending} live offer${pending === 1 ? "" : "s"} out`;
+    banner.hidden = false;
+  }
+  const rows = state.freeAgents.map((player) => ({
+    id: player.id,
+    player: player.name,
+    pos: player.pos,
+    age: player.age,
+    ovr: player.overall,
+    pot: player.potential,
+    fit: player.schemeFit ?? "-",
+    dev: player.devTrait,
+    market: pursuit[player.id]
+      ? `🔥 ${pursuit[player.id]} rival${pursuit[player.id] === 1 ? "" : "s"} in pursuit`
+      : myOffers.has(player.id)
+        ? "📨 your offer pending"
+        : (player.overall || 0) >= premiumOverall && player.source !== "waiver"
+          ? "open market"
+          : "—",
+    source: player.source,
+    action: ""
+  }));
+  renderTable("faTable", rows);
+
+  const table = document.getElementById("faTable");
+  const tr = table.querySelectorAll("tr");
+  for (let i = 1; i < tr.length; i += 1) {
+    const row = rows[i - 1];
+    const premium = (row.ovr || 0) >= premiumOverall;
+    const practiceRate = Number(state.freeAgents[i - 1].practiceWeeklySalary);
+    const yearsSelect = `<select data-offer-years aria-label="Offer years">${[1, 2, 3, 4, 5]
+      .map((year) => `<option value="${year}" ${year === 3 ? "selected" : ""}>${year}yr</option>`)
+      .join("")}</select>`;
+    tr[i].lastElementChild.innerHTML =
+      row.source === "waiver"
+        ? `<button data-act="claim" data-id="${escapeHtml(row.id)}">Claim</button>`
+        : premium
+          ? `${yearsSelect} <button data-act="offer" data-id="${escapeHtml(row.id)}">${myOffers.has(row.id) ? "Re-bid" : "Offer"}</button>`
+          : `<button data-act="sign" data-id="${escapeHtml(row.id)}">Sign</button> ${yearsSelect} <button data-act="offer" data-id="${escapeHtml(row.id)}">Offer</button>`;
+    if (row.source !== 'waiver' && !premium) tr[i].lastElementChild.innerHTML +=
+      ` <button data-act="sign-practice" data-id="${escapeHtml(row.id)}">Sign to practice${Number.isFinite(practiceRate) && practiceRate > 0 ? `<br><small>$${practiceRate.toLocaleString()}/week</small>` : ''}</button>`;
+  }
+
+  const waiverRows = (state.dashboard?.waiverWire || []).map((entry) => ({
+    id: entry.id || entry.playerId,
+    playerId: entry.playerId,
+    player: entry.player || "Unavailable player",
+    pos: entry.pos || "—",
+    ovr: entry.overall ?? "—",
+    pot: entry.potential ?? "—",
+    releasedBy: entry.releasedBy,
+    week: entry.week,
+    expires: entry.expiresWeek
+  }));
+  renderTable("waiverTable", waiverRows);
+  decoratePlayerColumnFromRows("waiverTable", waiverRows, { idKeys: ["id", "playerId"] });
+  decoratePlayerColumnFromRows("faTable", rows, { idKeys: ["id"] });
 }

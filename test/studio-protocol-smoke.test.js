@@ -467,7 +467,8 @@ test("Pages publication is gated by the real browser suite", () => {
   const browserGate = workflow.match(
     /- name: Run browser release gate[\s\S]*?(?=\n\s+- name: Capture responsive artifact evidence)/
   )?.[0] || "";
-  assert.match(browserGate, /timeout-minutes:\s*15/);
+  const browserMinutes=Number(browserGate.match(/timeout-minutes:\s*(\d+)/)?.[1]);
+  assert.equal(browserMinutes,180,"complete browser suite retains the measured, finite three-hour release budget");
   assert.match(browserGate, /run:\s*npm run test:ui/);
 
   const browserIndex = workflow.indexOf("- name: Run browser release gate");

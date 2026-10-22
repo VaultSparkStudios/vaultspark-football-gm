@@ -1,0 +1,245 @@
+{
+  "sameSavedCompleteHead": true,
+  "samePalette": true,
+  "playerId": "P2026-BUF-OL-75203022",
+  "cases": 6,
+  "captures": [
+    {
+      "path": "output/playwright/torso-contour-desktop-dark-front.png",
+      "sha256": "5abc2faecfbb2467aad17fc10b0955f87986567ad9bb216723ab9000d186be35",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-dark-side.png",
+      "sha256": "240815e0f778a127c2ceed15c46af680ee17fe3b548e2f27d552b04cab0b404c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-dark-cut.png",
+      "sha256": "fed2663604c03cef626bcdbbd29d9054ca2f6f57d594c457e7c2ff5866440656",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-dark-strength.png",
+      "sha256": "4ada781c14109cd1db95a30b0f95be26aa34fc5c7ee8b3b0b9d2acb2d1552f62",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-dark-run.png",
+      "sha256": "b48b03b64a7658375162f7f55968d806459b00db39ceaa3a5a397f7b4df363db",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-dark-jump.png",
+      "sha256": "8879af817e872090a93094fd6f9f7610456294672e7c0a3b358704612eb70126",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-light-front.png",
+      "sha256": "ab5a63e0d9ef5e2c094fc5e9d74be0d309dbc7036eb407c971997862bcf38f63",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-light-side.png",
+      "sha256": "a0aab7b28c9d76a7d6c554e3dcdd7326678fe8aa8f1d80290961bf4b8b9063fe",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-light-cut.png",
+      "sha256": "d727068bf3afcfc578ed9b19991fb00761cba14243560a16e6127077fc8fd336",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-light-strength.png",
+      "sha256": "e2453fd1ef14d05fc0e3227aae3abed62ab56866ac59a77fe4338769244c75b6",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-light-run.png",
+      "sha256": "a6354ac85e009e0e4fb58c15a57da6535e841dfdabc314a38d171f515295b545",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-desktop-light-jump.png",
+      "sha256": "bbe894f40cf0f27970cc76c1289d7dfcffb16a5d200b3a93b8c00bb8f239f355",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-dark-front.png",
+      "sha256": "563ce6983181228a3bb0a2a6040de6afa3ec31dccfaf828c322f91c8b99c754c",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-dark-side.png",
+      "sha256": "f70eaf709d67967e1a5a65abf09113f85a9a801b96baec8ca8bf151a65267cc1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-dark-cut.png",
+      "sha256": "ce5a326d8cc78c0839d0586869acbcdcf61d27ea0fb990c8ab543574f1464d51",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-dark-strength.png",
+      "sha256": "b85c9bb517069e3a56f93f7f006d161c083afd34e7552b187364f53bee76f5db",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-dark-run.png",
+      "sha256": "81f043883d78e6d723a9f66a99fc0b59adae14c5070297198d503fae627048dd",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-dark-jump.png",
+      "sha256": "a746b5f6b0ed7ac1d5b43b69f82280e1a7059fb035562206e9d6488f19a26532",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-light-front.png",
+      "sha256": "cfab6804ef50975c8f275d9998da61d25f48834c2698492898158c4437f081f8",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-light-side.png",
+      "sha256": "d252f76605952b1f75849199785ad12c9763d063a7442e90013a887ce136edac",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-light-cut.png",
+      "sha256": "1c8fd9262aef9fa9d1e3c6c1db2ca7cd856a257b85ee2599ba6ae6d742a84243",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-light-strength.png",
+      "sha256": "add03340b27f619a2b8e0274208c7e765a0e8a015924d3cfec32e4ba5f3bcb0c",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-light-run.png",
+      "sha256": "0b229038d821804af16a333829f2af46da7377d27fd8f536f1e8abf0da6760b5",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/torso-contour-mobile-light-jump.png",
+      "sha256": "de0219223369c45f12458f5a509fecd7156a4115a4b8573379ef694080ce19c1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    }
+  ],
+  "timing": {
+    "samples": 60,
+    "medianMs": 7.599999904632568,
+    "p95Ms": 14.5,
+    "maxMs": 21.600000143051147,
+    "hardware": "local headless Chromium; emulated viewport, no physical mobile claim",
+    "gpuCompletionSynchronized": true,
+    "includesCpuAndDriverOverhead": true
+  },
+  "disposed": [
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    },
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    }
+  ],
+  "fullVisualAcceptance": false,
+  "wholeUnionMassVerified": false
+}

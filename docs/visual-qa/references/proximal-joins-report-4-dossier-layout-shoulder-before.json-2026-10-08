@@ -1,0 +1,101 @@
+{
+  "captures": [
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-desktop-dark-portrait.png",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "portrait",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-desktop-dark-body.png",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "body",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-desktop-dark-motion.png",
+      "size": "desktop",
+      "theme": "dark",
+      "state": "motion",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-desktop-light-portrait.png",
+      "size": "desktop",
+      "theme": "light",
+      "state": "portrait",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-desktop-light-body.png",
+      "size": "desktop",
+      "theme": "light",
+      "state": "body",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-desktop-light-motion.png",
+      "size": "desktop",
+      "theme": "light",
+      "state": "motion",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-mobile-dark-portrait.png",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "portrait",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-mobile-dark-body.png",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "body",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-mobile-dark-motion.png",
+      "size": "mobile",
+      "theme": "dark",
+      "state": "motion",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-mobile-light-portrait.png",
+      "size": "mobile",
+      "theme": "light",
+      "state": "portrait",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-mobile-light-body.png",
+      "size": "mobile",
+      "theme": "light",
+      "state": "body",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "output/playwright/dossier-layout-shoulder-before-mobile-light-motion.png",
+      "size": "mobile",
+      "theme": "light",
+      "state": "motion",
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "playerId": "P2026-BUF-LB-33468504"
+}

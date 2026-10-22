@@ -10,6 +10,20 @@ async function waitSetupReady(page) {
   await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
 }
 
+async function capturePlayerControlState(page, state, selector) {
+  await page.evaluate(() => localStorage.setItem('vsfgm_mobile_loop', '0'));
+  for (const [size, width, height] of [['desktop',1440,1000],['mobile',390,844]]) {
+    await page.setViewportSize({width,height});
+    if (await page.locator('#mlFullViewBtn').isVisible()) await page.locator('#mlFullViewBtn').click();
+    for (const theme of ['dark','light']) {
+      await page.evaluate(async theme => (await import('./lib/themeCustomizer.js')).applyTheme(theme), theme);
+      await page.locator(selector).scrollIntoViewIfNeeded();
+      await page.screenshot({path:`output/playwright/s118-controls-${state}-${size}-${theme}.png`});
+    }
+  }
+  await page.setViewportSize({width:1440,height:1000});
+}
+
 async function waitGameReady(page, timeout = 60_000) {
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout });
   const decline = page.locator("#firstDebriefDecline");
@@ -250,12 +264,17 @@ test("designation and retirement override flows use table selection", async ({ p
   await waitGameReady(page);
 
   await expect(page.locator("#designationPlayerId")).toHaveCount(0);
-  const designationSelect = page.locator('#rosterTable tr:has(button[data-act="ps"]) button[data-designation-select]').first();
+  // Active players are selected by roster membership. Direct active-to-
+  // practice demotion is no longer a legal transaction or a table action.
+  const designationSelect = page.locator('#rosterTable tr')
+    .filter({ has: page.getByRole('cell', { name: 'active', exact: true }) })
+    .locator('button[data-designation-select]').first();
   const selectedPlayerId = await designationSelect.getAttribute("data-designation-select");
   expect(selectedPlayerId).toBeTruthy();
   await designationSelect.click();
   await expect(page.locator("#designationSelectedPlayerText")).not.toContainText("Selected: None");
 
+  await page.selectOption("#designationType", "gameDayInactive");
   await page.click("#applyDesignationBtn");
   await waitGameReady(page);
   await expect(page.locator(`#rosterTable tr:has(button[data-player-id="${selectedPlayerId}"])`)).toContainText("gameDayInactive");
@@ -370,7 +389,9 @@ test("compare and player history flows use search-driven selection", async ({ pa
 });
 
 test("season awards and hall of fame history render for a populated multi-year league", async ({ page }) => {
-  test.setTimeout(240_000);
+  // This exercises two complete seasons before checking the populated history.
+  // S118 measured the same two-season engine path above five minutes locally.
+  test.setTimeout(600_000);
 
   await createLeagueFromSetup(page, { runtimeMode: "server" });
   const hallPolicy = await page.evaluate(async () => {
@@ -522,8 +543,23 @@ test("scouting lock persists across save and load", async ({ page }) => {
 
   for (const playerId of idsToLock) {
     await page.locator(`#scoutingTable button[data-board-toggle="add"][data-player-id="${playerId}"]`).click();
+    await expect(page.locator("#playerModal")).toHaveClass(/hidden/);
   }
   await expect(page.locator("#scoutingBoardText")).toContainText(`Board: ${idsToLock.length} / 20`);
+  if (idsToLock.length > 1) {
+    const board = await page.evaluate(() => import('./lib/appState.js').then(({state}) => [...state.scoutingBoardDraft]));
+    await page.locator(`#scoutingTable button[data-board-move="up"][data-player-id="${board[1]}"]`).click();
+    await expect.poll(() => page.evaluate(() => import('./lib/appState.js').then(({state}) => state.scoutingBoardDraft[0]))).toBe(board[1]);
+    await expect(page.locator("#playerModal")).toHaveClass(/hidden/);
+    await page.locator(`#scoutingTable button[data-board-move="down"][data-player-id="${board[1]}"]`).click();
+    await expect.poll(() => page.evaluate(() => import('./lib/appState.js').then(({state}) => state.scoutingBoardDraft))).toEqual(board);
+  }
+  const lastId = idsToLock.at(-1);
+  await page.locator(`#scoutingTable button[data-board-toggle="remove"][data-player-id="${lastId}"]`).click();
+  await expect(page.locator("#scoutingBoardText")).toContainText(`Board: ${idsToLock.length - 1} / 20`);
+  await expect(page.locator("#playerModal")).toHaveClass(/hidden/);
+  await page.locator(`#scoutingTable button[data-board-toggle="add"][data-player-id="${lastId}"]`).click();
+  await capturePlayerControlState(page, 'board', '#scoutingBoardText');
   await page.click("#lockBoardBtn");
   await waitGameReady(page);
   await expect(page.locator("#scoutingLockText")).toContainText("Locked");
@@ -547,6 +583,28 @@ test("scouting lock persists across save and load", async ({ page }) => {
   await waitGameReady(page);
   await expect(page.locator("#scoutingLockText")).toContainText("Locked");
   await expect(page.locator("#scoutingBoardText")).toContainText(`Board: ${idsToLock.length} / 20`);
+});
+
+test("contract controls retain their action while player name links open the selected dossier", async ({ page }) => {
+  await createLeagueFromSetup(page);
+  await page.click('[data-testid="tab-contracts"]');
+  await page.click('#loadContractsBtn');
+  await waitGameReady(page);
+  const block = page.locator('#contractsRosterTable button[data-contract-action="block"]').first();
+  const playerId = await block.getAttribute('data-player-id');
+  const link = page.locator(`#contractsRosterTable button.link-btn[data-player-id="${playerId}"]`);
+  const name = await link.textContent();
+  await block.click();
+  await expect(page.locator('#tradeBlockTable button[data-contract-action="block"]')).toHaveCount(1);
+  await expect(page.locator('#playerModal')).toHaveClass(/hidden/);
+  await capturePlayerControlState(page, 'contract', '#contractPreviewText');
+  await page.locator(`#tradeBlockTable button[data-contract-action="block"][data-player-id="${playerId}"]`).click();
+  await expect(page.locator('#tradeBlockTable button[data-contract-action="block"]')).toHaveCount(0);
+  await expect(page.locator('#playerModal')).toHaveClass(/hidden/);
+  await link.click();
+  await expect(page.locator('#playerModal')).not.toHaveClass(/hidden/);
+  await expect(page.locator('#playerModalTitle')).toContainText(name.trim());
+  await capturePlayerControlState(page, 'dossier', '#playerModalTitle');
 });
 
 test("switching runtime mode reloads setup state", async ({ page }) => {

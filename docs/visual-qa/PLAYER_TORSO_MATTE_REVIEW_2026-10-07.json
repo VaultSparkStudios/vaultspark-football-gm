@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-07T19:18:22.555Z",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Matte torso material plus expanded controlled frame/capacity and actual six-mode browser integration evidence",
+  "primaryReceiptPath": ".cache/torso-matte-reviewed-primary.json",
+  "primaryReceiptSha256": "220254a82715c92e8c293f11c7cfea64341a0e6da9eca26afd9b2f9a3aafb69f",
+  "sourceHashes": {
+    "public/lib/torsoSurface.js": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18",
+    "public/lib/playerPortrait.js": "6f4af4f3e20310016ab3007fc0426f399bfd56f737f12437245155e9138664a0",
+    "public/lib/playerMotion.js": "2b031050f4757b84b9fed1864cb0e914ad466f2aa2f9674d86fc41fa35fcb7ad",
+    "public/lib/playerCapacityStudy.js": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+    "public/lib/physiqueGeometryContract.js": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+    "public/lib/playerPortraitFace.js": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+    "public/lib/playerSideAppearance.js": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+    "public/lib/fineFaceGeometry.js": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+    "public/lib/appCore.js": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+    "public/styles.css": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerMeasurements.js": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9",
+    "tests-ui/player-measured-body-comparisons.spec.js": "7be77bda77f70d71b74a3fc805062c015413ff3378f34fb7ceec388ea63870cd",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "4ef2a0f1323a7a71036b61fbeddd57820ac4dab2405818cecab059dd32fb11e1",
+    "tests-ui/player-capacity-client.spec.js": "9027080884c2ad1516693408cff54bf2f4c890f21fe8112279389a479514345c",
+    "test/player-torso-envelope.test.js": "1006c1355a6706e8d8d3de3c6c8f65b8fa4cef8f47db3fbd0d1a299c4bc23c2c"
+  },
+  "beforeHashes": {
+    "public/lib/torsoSurface.js": "b88d274596c467acfd86b88ac373541f130ea4bc2e38329244e65b22393581e5"
+  },
+  "builtSources": {
+    "static/lib/torsoSurface.js": {
+      "sha256": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18",
+      "sourceSha256": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/playerPortrait.js": {
+      "sha256": "9cb940b50cd7abbbfb6083a863b5a3efd032f074e68283ea5f530376ffb67361",
+      "sourceSha256": "6f4af4f3e20310016ab3007fc0426f399bfd56f737f12437245155e9138664a0",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/playerMotion.js": {
+      "sha256": "d1f8e2ca05ef6bac2e66c1c186b736382783a3e3d1135d09e895b11aa65de4f7",
+      "sourceSha256": "2b031050f4757b84b9fed1864cb0e914ad466f2aa2f9674d86fc41fa35fcb7ad",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/playerCapacityStudy.js": {
+      "sha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+      "sourceSha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/physiqueGeometryContract.js": {
+      "sha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+      "sourceSha256": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/playerPortraitFace.js": {
+      "sha256": "010733c653b58d0ac5af708288a861895d8019f0fbff0d1cc87b17e043d76e16",
+      "sourceSha256": "2ddd4498a95ddfceaea345cb6fece6b212f69f58f0f793068e40d0b659d5935f",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/playerSideAppearance.js": {
+      "sha256": "16d469d30fd7fb36ad437352c35d8980aa9533c52725092a6611801873faa1d5",
+      "sourceSha256": "40aa046e818e7baf1232a8ecddbe914f1042440a2d9133e495f7b3dc5e67f97a",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/fineFaceGeometry.js": {
+      "sha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+      "sourceSha256": "5d4d3df1b44ea07ade4bb627978162817740c5364a915defed0825ff41b976d0",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    },
+    "static/lib/appCore.js": {
+      "sha256": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+      "sourceSha256": "9cc96c30dc3e7f47f0fdd0a5684e1736af4e9c5b4d4130f02830b087d761be51",
+      "equivalence": "Exact text after CRLF-to-LF build normalization"
+    }
+  },
+  "build": "6fb8c9a5257a",
+  "artifactFingerprintDigest": "cdf394f69611a2c2bc09200ec2492567e485b30705ec5f6bae0d6f85c3392263",
+  "filesInspected": {
+    "public/lib/torsoSurface.js": "273c8d172a0a26aa9ad98ed8aad08941cafe18243d07d7c0437655076a64bb18",
+    ".cache/torso-matte-before/torsoSurface.js": "b88d274596c467acfd86b88ac373541f130ea4bc2e38329244e65b22393581e5",
+    "test/player-torso-envelope.test.js": "1006c1355a6706e8d8d3de3c6c8f65b8fa4cef8f47db3fbd0d1a299c4bc23c2c",
+    "test/player-capacity-study.test.js": "032460a39ca9dfa56248c33e658d2395429720dce2d0958f5d8406bde5000980",
+    "tests-ui/player-measured-body-comparisons.spec.js": "7be77bda77f70d71b74a3fc805062c015413ff3378f34fb7ceec388ea63870cd",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "4ef2a0f1323a7a71036b61fbeddd57820ac4dab2405818cecab059dd32fb11e1",
+    "tests-ui/player-capacity-client.spec.js": "9027080884c2ad1516693408cff54bf2f4c890f21fe8112279389a479514345c",
+    ".cache/torso-matte-independent-probe.mjs": "8db7e530583a7c0283479a5feb264ee3579cfd5ae3f34c856f0e4072bbf8e80e"
+  },
+  "checks": [
+    {
+      "command": "node --test test/player-torso-envelope.test.js test/player-capacity-study.test.js",
+      "result": "8/8 PASS, zero skipped; actual six-mode dimensions/resources, numerical volume reconstruction, invalid input, legacy renderer parity and capacity invariants",
+      "durationMs": 1115.1086
+    },
+    {
+      "command": "node .cache/torso-matte-independent-probe.mjs",
+      "result": "PASS: frozen primary hash,17 source hashes,1 baseline,9 built byte hashes and normalized text equality,96 capture hashes;54 unchanged envelope paths;108 unchanged base markup paths;324 exact malformed/missing resource-id fallback comparisons;54 input immutability checks"
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-before-mass-desktop-light.png",
+      "sha256": "b1e9c61fe2987e4f87fffcad100b45f6b876258bf267062a017b04111e308652"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-after-mass-desktop-light.png",
+      "sha256": "0f26f3b767a9ea490dfdd70c4b258b576cb259d97ff120f46207bbdcca7a8a8c"
+    },
+    {
+      "path": "output/playwright/torso-matte-dossier-before-long-desktop-dark-body.png",
+      "sha256": "a5a47aef006a1eef5c3183800b98be739960174edd685ef487e132ae04e18e8e"
+    },
+    {
+      "path": "output/playwright/torso-matte-dossier-after-long-desktop-dark-body.png",
+      "sha256": "63596720024bb8ce9bda5ba0c11e464c03b90784fdc6d1e1617db9ed6b60c955"
+    },
+    {
+      "path": "output/playwright/torso-matte-dossier-before-afro-mobile-light-body.png",
+      "sha256": "ce724e2858a18d9fc189826e2dd7f555615d4f6df2752192c7d826c30244fed2"
+    },
+    {
+      "path": "output/playwright/torso-matte-dossier-after-afro-mobile-light-body.png",
+      "sha256": "3f778f8992420898238cc7ffbc733abafbe86fef8b72d20ffd01eda848aaa761"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-before-heavy-fast-light-slow-desktop-dark.png",
+      "sha256": "101df6640088b9d8514732cdf521fb404ada02e117025143ff32b00b89023c85"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-after-heavy-fast-light-slow-desktop-dark.png",
+      "sha256": "a2e6049f910638167c5186df650ca1d79be03ee29836cf9f70e264db9c232b9b"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-before-capacities-mobile-dark.png",
+      "sha256": "a3fc44dc697b9a95018f3f9e3571b8192abba2f01bc990e557fe780c9aa8ffaf"
+    },
+    {
+      "path": "output/playwright/s117-measured-body-torso-matte-after-capacities-mobile-dark.png",
+      "sha256": "37082e0ca772583835f33b01029dc496424d3cafbe050c2b7214c6ab1659d1f4"
+    }
+  ],
+  "pixelFindings": [
+    "Central metallic streak substantially reduced in matched static front/side and moving torso; cloth finish and restrained folds visible.",
+    "Inspected matched mass and heavy-fast/light-slow render silhouettes, joints, reference rulers and head styles remain unchanged.",
+    "Actual desktop dark body dossier preserves front/side/movement presentation; mobile light remains readable with front view.",
+    "Very tall mobile capacity originals were inspected as complete overview strips; this is not a native-size inspection of every small mode detail."
+  ],
+  "findings": [],
+  "harnessAssessment": [
+    "Controlled pairs include mass, stature, saved proportions, capacities, heavy-fast/light-slow and recorded reach. All six poses appear for the capacity pair; these are controlled illustrative comparisons, not calibrated physiology.",
+    "Built-client test executes actual named Settings save/load and reload, compares saved appearance/frame, then selects all six modes; it does not replace the live franchise before load and is not independent proof of named-slot selection against a different checkpoint.",
+    "Production source delta is limited to clipped material markup; torsoSurfacePath and base outline are exactly unchanged. Resource-id validation remains intact."
+  ],
+  "primaryEvidence": {
+    "focusedTests": "24/24 PASS final836c4a,6.709seconds, seven body/motion files",
+    "galleryBefore": "1PASS3c0e6f,14.5seconds",
+    "galleryAfter": "1PASS50800a,10.9seconds",
+    "dossierBefore": "1PASSc7239f,21.4seconds",
+    "dossierAfter": "1PASS3aeb06,22.3seconds",
+    "builtClient": "2PASSae56b9,19.2seconds; worker/in-page Settings named save/load/reload plus all six modes",
+    "pagesBuild": "6fb8c9a5257a",
+    "browserBoot": "649321 bytes,51 modules,0 lazy leaks",
+    "browserReachability": "131 modules,4 HTML entries",
+    "initialBrowserDiagnostic": "73f3ea: both failed strict svg locator at cut because nested head exists; selector fixed only. cb217e rerun refused busy4273 while dossier job live; no restart/kill of that job; later sequential replay passes."
+  },
+  "limits": [
+    "Only ten listed original PNGs independently inspected; all96 captures hash-verified, not all pixel-reviewed.",
+    "Primary24 checks and browser/build terminal counts were read from frozen primary; no independent browser rerun.",
+    "Linear rigid torso, shiny limbs/trousers and broad face/hair naturalism remain open quality findings.",
+    "Matte cloth is artistic material, not measured body fat, lean mass, muscle, fitted cohort or country phenotype proof.",
+    "No whole appearance, comprehensive six-mode animation behavior, current-career, NFL rules or release certification."
+  ]
+}

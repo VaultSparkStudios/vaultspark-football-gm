@@ -1,0 +1,302 @@
+{
+  "sameSavedCompleteHead": true,
+  "samePalette": true,
+  "playerId": "P2026-BUF-OL-75203022",
+  "cases": 6,
+  "captures": [
+    {
+      "path": "output/playwright/limb-cpu-desktop-dark-front.png",
+      "sha256": "397f71c0ea2a0428c10b4355a991a9cb7e8ae83b427c07e51ce8f6c9925583ec",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-dark-side.png",
+      "sha256": "7bccbecd8ba719b7695b9f84eb3db67d20e3e062324842678291426e9f51a4a7",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-dark-cut.png",
+      "sha256": "7919cca723ec96bcd4f31c81d196577b5f1867ce36dc0af8e5a1b000e2086614",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-dark-strength.png",
+      "sha256": "e81f877577c491445860a4d4eed125f9bfd4a96b5bab51f33a59f3abe45f9666",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-dark-run.png",
+      "sha256": "28c6f6cc1a6a717edf036fda74cb1efe953d8f023ab0caa993dc17a7e24c0e5e",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-dark-jump.png",
+      "sha256": "3e8c711af35db07d735bfa6acaa3dc41c20cfb1f908297ef7f65717ddbb09eda",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-light-front.png",
+      "sha256": "c0c1df68c0b4e6918896cbacb50b16d7b64a3e366dfd5873fa14fb02128dba0a",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-light-side.png",
+      "sha256": "c6b037832707c35ae866c4a7b71accf9ff6d2f9421932ca8450e6e9d840534b4",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-light-cut.png",
+      "sha256": "836e191a7d1a4b7be79c42d372c5b1aa21a1b5b6467faa464536255ae9e6e7f5",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-light-strength.png",
+      "sha256": "3b03276b5147642320ca76e2be1dfa7b5cedb561dca11f9434313cc4331aa00f",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-light-run.png",
+      "sha256": "c536cc3ab8d6f9c6d70e594a1020eddc5354a673ae1129e81b26340f0ed0bbb7",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-desktop-light-jump.png",
+      "sha256": "04653ae3a060f336963b1b9847dae20af6dbb770e71d1b579dfd1acfd0de7aaa",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-dark-front.png",
+      "sha256": "519760f35598ec0416c5d67f2898bd22d9e4cd4836d61baf4eb6201ed8eea7ee",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-dark-side.png",
+      "sha256": "df6334b599ac8d44ddec6101eca3a711a60b2884f965e64e01431f0f1a125bb6",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-dark-cut.png",
+      "sha256": "8fa9c888a471edf24d8d420568e2c396b52664c5c69881fc5824aa7e24cd33a4",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-dark-strength.png",
+      "sha256": "2d2bd2cf67c0d93a36101ace7db366f921c4e41969bb4f63af2820d95585713f",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-dark-run.png",
+      "sha256": "3117695237a8150a90a294ea3df003f471b98f08b94dac13fe204301ddcaca86",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-dark-jump.png",
+      "sha256": "158515c901712d34965766df964d8034cb588cdfd0e10c3b74ea8fac7b8f3308",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-light-front.png",
+      "sha256": "2a30c52e92238a7f531253241593bfa8bc5e877dc4f46607e1b719a13ac59f30",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-light-side.png",
+      "sha256": "eaa3168ee7165dcf6924d39bc50812c029f1585e436e9f11d3055ed778ec7d96",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-light-cut.png",
+      "sha256": "56c91d34358f3fb0f1a7f82b3f3bebd9540a66baa37b89cbdaac63052d2177c2",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-light-strength.png",
+      "sha256": "ae66e4a8155b006ce60520cda4133d04cf490b383a6c61a544f4a6bb84a108fe",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-light-run.png",
+      "sha256": "89ec8869b653bd6b51c5529ec6c0702600740de03a7cdeb5d5b6efdd80e36340",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    },
+    {
+      "path": "output/playwright/limb-cpu-mobile-light-jump.png",
+      "sha256": "791068ee1ee814110050fc595aa8bdd1e9d7aa525b68d9f74b54f2f93d945c02",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light"
+    }
+  ],
+  "timing": {
+    "blocks": [
+      [
+        {
+          "samples": 60,
+          "medianMs": 19,
+          "p95Ms": 29.399999856948853,
+          "maxMs": 33.40000009536743
+        },
+        {
+          "samples": 60,
+          "medianMs": 4.400000095367432,
+          "p95Ms": 22.799999952316284,
+          "maxMs": 23.5
+        }
+      ],
+      [
+        {
+          "samples": 60,
+          "medianMs": 19,
+          "p95Ms": 28.09999990463257,
+          "maxMs": 36.59999990463257
+        },
+        {
+          "samples": 60,
+          "medianMs": 7.8999998569488525,
+          "p95Ms": 23,
+          "maxMs": 25.800000190734863
+        }
+      ],
+      [
+        {
+          "samples": 60,
+          "medianMs": 12.5,
+          "p95Ms": 21.5,
+          "maxMs": 22.90000009536743
+        },
+        {
+          "samples": 60,
+          "medianMs": 3.200000047683716,
+          "p95Ms": 4.400000095367432,
+          "maxMs": 6.099999904632568
+        }
+      ]
+    ],
+    "updateTiming": [
+      {
+        "samples": 217,
+        "medianMs": 13.600000143051147,
+        "p95Ms": 26.299999952316284,
+        "maxMs": 41.200000047683716
+      },
+      {
+        "samples": 217,
+        "medianMs": 2.1000001430511475,
+        "p95Ms": 17.200000047683716,
+        "maxMs": 22.40000009536743
+      }
+    ],
+    "drawCallsBefore": 21,
+    "drawCallsAfter": 21,
+    "exactPixelComparisons": 24,
+    "hardware": "local headless Chromium; alternating contexts, no physical mobile claim",
+    "gpuCompletionSynchronized": true,
+    "includesCpuAndDriverOverhead": true
+  },
+  "disposed": [
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    },
+    {
+      "activeModels": 0,
+      "activeViews": 0
+    }
+  ],
+  "fullVisualAcceptance": false,
+  "wholeUnionMassVerified": false
+}

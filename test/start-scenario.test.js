@@ -64,8 +64,8 @@ test("all nine opening choices mutate only their declared live authorities", () 
   }
 
   const scoutingExpected = {
-    "trust-scout": ["pending-draft-class", 0],
-    "wait-more-info": ["pending-draft-class", 6],
+    "trust-scout": ["applied", 0],
+    "wait-more-info": ["applied", 6],
     ignore: ["declined", 0]
   };
   for (const firstCall of START_SCENARIO_CHOICES.firstCall) {
@@ -108,10 +108,10 @@ test("receipt survives snapshot reload and duplicate submission is idempotent", 
   assert.deepEqual(restored.getDashboardState().startScenarioReceipt, first.receipt);
 });
 
-test("scouting directive waits for a real draft class, then uses real prospect state", () => {
+test("scouting directive uses the upcoming class immediately and preparation preserves its work", () => {
   const trusted = createSession({ seed: 5403, startYear: 2026, controlledTeamId: "BUF" });
   trusted.applyStartScenario(requestFor({ firstCall: "trust-scout" }));
-  assert.equal(trusted.league.startScenarioReceipt.effects.scouting.prospectId, null);
+  assert.equal(trusted.league.startScenarioReceipt.effects.scouting.prospectId, trusted.league.pendingDraft.available[0].id);
   trusted.prepareDraft();
   const trustEffect = trusted.league.startScenarioReceipt.effects.scouting;
   const trustState = trusted.ensureScoutingTeamState("BUF");
@@ -128,6 +128,19 @@ test("scouting directive waits for a real draft class, then uses real prospect s
   assert.equal(patientEffect.status, "applied");
   assert.equal(patientState.effort[patientEffect.prospectId], 6);
   assert.equal(patientState.points, 40, "reserved points fund the deeper read without fabricating extra spend");
+});
+
+test("scouting directive still waits safely when a legacy class is absent", () => {
+  const session = createSession({ seed: 5406, startYear: 2026, controlledTeamId: "BUF" });
+  session.league.pendingDraft = null;
+  session.applyStartScenario(requestFor({ firstCall: "trust-scout" }));
+  assert.equal(session.league.startScenarioReceipt.effects.scouting.status, "pending-draft-class");
+  assert.equal(session.league.startScenarioReceipt.effects.scouting.prospectId, null);
+  session.prepareDraft({ scoutingOnly: true });
+  const effect = session.league.startScenarioReceipt.effects.scouting;
+  assert.equal(effect.status, "applied");
+  assert.equal(session.ensureScoutingTeamState("BUF").board[0], effect.prospectId);
+  assert.equal(session.getDraftAuthority(), null);
 });
 
 test("local runtime returns the same authoritative receipt and dashboard shape", async () => {

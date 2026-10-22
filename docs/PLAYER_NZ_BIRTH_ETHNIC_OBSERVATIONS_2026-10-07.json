@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "status": "observed-birthplace-context-not-generator-fit",
+  "recordedAt": "2026-10-07T15:04:22.913Z",
+  "sourceYear": 2023,
+  "geography": "New Zealand",
+  "subjectPopulation": "Census usually resident population with published birthplace categories; all ages and sexes",
+  "responseType": "Overlapping ethnicity responses; birthplace counts use each source ethnicity table",
+  "sourceProof": {
+    "file": ".cache/nz-birthplace-context-source.json",
+    "sha256": "5e1ecfe5fdb4098ccc99a48bcda36146e6cc6f9e2051374e75ae660190607ba5",
+    "pages": [
+      {
+        "url": "https://tools.summaries.stats.govt.nz/ethnic-group/asian",
+        "textFile": ".cache/nz-asian-summary-text.txt",
+        "sha256": "05b48b01313bc2a7d5e628f724bcbe2133f56366bd8d6190081a32f59cc4711b"
+      },
+      {
+        "url": "https://tools.summaries.stats.govt.nz/ethnic-group/pacific-peoples",
+        "textFile": ".cache/nz-pacific-peoples-summary-text.txt",
+        "sha256": "296d74bb307e1214db764770eaf354512955dd76f406234895b97b12957009d5"
+      },
+      {
+        "url": "https://tools.summaries.stats.govt.nz/ethnic-group/maori",
+        "textFile": ".cache/nz-maori-summary-text.txt",
+        "sha256": "cc27b9ed7c2e1b6b3ba677af9ad095f8a53c02037e84248734b94ad0d89d08d1"
+      }
+    ]
+  },
+  "observations": [
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "New Zealand",
+      "publishedPercent": 25.1,
+      "count": 214458,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "Australia",
+      "publishedPercent": 0.4,
+      "count": 3108,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "Pacific Islands",
+      "publishedPercent": 6.5,
+      "count": 55182,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "United Kingdom and Ireland",
+      "publishedPercent": 0.4,
+      "count": 3459,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "Europe (excl United Kingdom and Ireland)",
+      "publishedPercent": 0.2,
+      "count": 1305,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "North America",
+      "publishedPercent": 0.3,
+      "count": 2688,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "Asia",
+      "publishedPercent": 65.9,
+      "count": 563463,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "Middle East and Africa",
+      "publishedPercent": 1.2,
+      "count": 10245,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Asian",
+      "birthplaceCategory": "Other",
+      "publishedPercent": 0.1,
+      "count": 573,
+      "publishedBirthplaceCountSum": 854481
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "New Zealand",
+      "publishedPercent": 67.4,
+      "count": 293583,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "Australia",
+      "publishedPercent": 1.5,
+      "count": 6696,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "Pacific Islands",
+      "publishedPercent": 30.3,
+      "count": 132045,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "United Kingdom and Ireland",
+      "publishedPercent": 0.2,
+      "count": 759,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "Europe (excl United Kingdom and Ireland)",
+      "publishedPercent": 0.1,
+      "count": 342,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "North America",
+      "publishedPercent": 0.3,
+      "count": 1173,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "Asia",
+      "publishedPercent": 0.2,
+      "count": 789,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "Middle East and Africa",
+      "publishedPercent": 0,
+      "count": 210,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Pacific Peoples",
+      "birthplaceCategory": "Other",
+      "publishedPercent": 0,
+      "count": 60,
+      "publishedBirthplaceCountSum": 435657
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "New Zealand",
+      "publishedPercent": 97.5,
+      "count": 854220,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "Australia",
+      "publishedPercent": 1.7,
+      "count": 15057,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "Pacific Islands",
+      "publishedPercent": 0.1,
+      "count": 900,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "United Kingdom and Ireland",
+      "publishedPercent": 0.3,
+      "count": 2445,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "Europe (excl United Kingdom and Ireland)",
+      "publishedPercent": 0.1,
+      "count": 591,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "North America",
+      "publishedPercent": 0.1,
+      "count": 954,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "Asia",
+      "publishedPercent": 0.1,
+      "count": 1167,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "Middle East and Africa",
+      "publishedPercent": 0,
+      "count": 309,
+      "publishedBirthplaceCountSum": 875730
+    },
+    {
+      "sourceEthnicity": "Māori",
+      "birthplaceCategory": "Other",
+      "publishedPercent": 0,
+      "count": 87,
+      "publishedBirthplaceCountSum": 875730
+    }
+  ],
+  "totalBirthplaceObservations": [
+    {
+      "birthplaceCategory": "New Zealand",
+      "publishedPercent": 71.2,
+      "count": 3525744
+    },
+    {
+      "birthplaceCategory": "Australia",
+      "publishedPercent": 1.7,
+      "count": 86427
+    },
+    {
+      "birthplaceCategory": "Pacific Islands",
+      "publishedPercent": 3.8,
+      "count": 188277
+    },
+    {
+      "birthplaceCategory": "United Kingdom and Ireland",
+      "publishedPercent": 5.4,
+      "count": 265860
+    },
+    {
+      "birthplaceCategory": "Europe (excl United Kingdom and Ireland)",
+      "publishedPercent": 1.8,
+      "count": 87687
+    },
+    {
+      "birthplaceCategory": "North America",
+      "publishedPercent": 0.9,
+      "count": 44913
+    },
+    {
+      "birthplaceCategory": "Asia",
+      "publishedPercent": 11.6,
+      "count": 575715
+    },
+    {
+      "birthplaceCategory": "Middle East and Africa",
+      "publishedPercent": 2.9,
+      "count": 145188
+    },
+    {
+      "birthplaceCategory": "Other",
+      "publishedPercent": 0.7,
+      "count": 32913
+    }
+  ],
+  "nzBornContext": {
+    "publishedCount": 3525744,
+    "ethnicityIndicators": [
+      {
+        "sourceEthnicity": "Asian",
+        "count": 214458,
+        "derivedPercentWithinPublishedNzBornCount": 6.08263107020816
+      },
+      {
+        "sourceEthnicity": "Pacific Peoples",
+        "count": 293583,
+        "derivedPercentWithinPublishedNzBornCount": 8.326838250309722
+      },
+      {
+        "sourceEthnicity": "Māori",
+        "count": 854220,
+        "derivedPercentWithinPublishedNzBornCount": 24.228077818468954
+      }
+    ]
+  },
+  "implementationRequirements": [
+    "Retain these overlapping ethnicity indicators and birthplace separately; never normalize them into exclusive race probabilities.",
+    "Use country-born context rather than all-resident margins when testing family-background assumptions, retaining missing birthplace and source rounding.",
+    "Complete single/combination and age/sex observations before constructing a joint background model; football recruitment still requires separate compatible evidence.",
+    "Map Māori ethnicity separately from descent and Pacific identity; source categories do not directly equal NFL survey categories.",
+    "Hair/eye/skin colors, grooming, skeletal geometry and football ability require their own authority; these observations supply none of those frequencies."
+  ],
+  "limitations": [
+    "Counts/percentages retain published census rounding and disclosure controls; sums are published-category sums, not exact questionnaire respondent counts.",
+    "The nine published birthplace categories omit a separate unknown entry; do not replace their denominator with the full4993923 census population.",
+    "Ethnicity indicators overlap; three reviewed groups are not the complete exclusive population.",
+    "Within-birthplace derived ratios are resident-context indicators, not NFL country-conditioned recruitment rates.",
+    "No runtime coefficient or existing saved identity changed."
+  ],
+  "independentReview": {
+    "file": ".cache/nz-birthplace-observations-review.json",
+    "sha256": "55cab4cbd3dc670b37bdaf6e6df7184cc3f7ac7e1b7c9ed9c0138980de842331",
+    "verdict": "PASS_WITH_SOURCE_SCOPE_LIMITS",
+    "scope": "Published2023 New Zealand resident birthplace by three overlapping ethnic indicators; research extraction only",
+    "limits": [
+      "No compatible single/combination ethnic responses or age/sex jointly extracted; three indicators are not a complete population partition.",
+      "Rounded/disclosure-controlled aggregate counts are not exact microdata respondent totals.",
+      "Hashes bind retained artifacts, not independently authenticated browser network provenance. Fresh direct retrieval limitation disclosed.",
+      "No source/weights/runtime modification, production approval, empirical demographic calibration or whole appearance/release claim."
+    ]
+  }
+}

@@ -1,0 +1,1170 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T06:25:47.990Z",
+  "status": "scoped-material-progress-full-player-craft-open",
+  "scope": "Shared production head and measured SVG body lighting; neck presentation; unchanged measured paths and player DTO. No population, body-composition, whole-suite or release acceptance.",
+  "sources": [
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/skin-continuity-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/skin-continuity-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/skin-continuity-playerHead3d.js-2026-10-08",
+      "sha256": "9ee9e3cd77ba4c824c18620828adfdcdac0846998eac8d9045f1127523f23fe8"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/skin-continuity-playerPortraitFace.js-2026-10-08",
+      "sha256": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/skin-continuity-playerPortrait.js-2026-10-08",
+      "sha256": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/skin-continuity-playerMotion.js-2026-10-08",
+      "sha256": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/skin-continuity-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/skin-continuity-playerSideAppearance.js-2026-10-08",
+      "sha256": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819"
+    },
+    {
+      "original": "public/lib/playerPortraitMotion.js",
+      "file": "references/skin-continuity-playerPortraitMotion.js-2026-10-08",
+      "sha256": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9"
+    },
+    {
+      "original": "test/player-surface-lighting.test.js",
+      "file": "references/skin-continuity-player-surface-lighting.test.js-2026-10-08",
+      "sha256": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4"
+    },
+    {
+      "original": "test/player-portrait-features.test.js",
+      "file": "references/skin-continuity-player-portrait-features.test.js-2026-10-08",
+      "sha256": "d4148600eaf9a35a040e0d35926ce6ec49c63d6f80eb3ec218ed1ef1b6300a55"
+    },
+    {
+      "original": "test/player-motion.test.js",
+      "file": "references/skin-continuity-player-motion.test.js-2026-10-08",
+      "sha256": "0c5c03760db3af198c2710a0af86cce9b88c357e52c1258ae11ccf50d210fb7f"
+    },
+    {
+      "original": "test/player-motion-surfaces.test.js",
+      "file": "references/skin-continuity-player-motion-surfaces.test.js-2026-10-08",
+      "sha256": "73d5379f32cacf6e8ebc9d2263c054a0754eab989498a2b0571a6fe8cbebe068"
+    },
+    {
+      "original": "test/player-regional-sections.test.js",
+      "file": "references/skin-continuity-player-regional-sections.test.js-2026-10-08",
+      "sha256": "2c2fcc5f436cba196f7b9198948b49d8a768a1c77e5916dde42e272b9fbf2f5c"
+    },
+    {
+      "original": "test/player-shared-head.test.js",
+      "file": "references/skin-continuity-player-shared-head.test.js-2026-10-08",
+      "sha256": "7443c5846ad5cd316083b4ca103d89b7cd7fafff19c7435e201ea4da13c83aed"
+    },
+    {
+      "original": ".cache/production-head-contracts.test.mjs",
+      "file": "references/skin-continuity-production-head-contracts.test.mjs-2026-10-08",
+      "sha256": "d312efa8d182a9f37b511a0004412018a9c90727a86dee249303e553c4d48ca7"
+    },
+    {
+      "original": "tests-ui/player-skin-continuity.spec.js",
+      "file": "references/skin-continuity-player-skin-continuity.spec.js-2026-10-08",
+      "sha256": "1cbda8988e9c8a66954b8bbd4d5158f64ad2d188ac1c17ff2b8027209bd3a478"
+    },
+    {
+      "original": "tests-ui/player-head-anatomy-gallery.spec.js",
+      "file": "references/skin-continuity-player-head-anatomy-gallery.spec.js-2026-10-08",
+      "sha256": "94f29c693aeb4730a2f2e440f6bb902e8b817fd4504a3c46a6a6f9cd535add16"
+    },
+    {
+      "original": "tests-ui/player-portrait-motion.spec.js",
+      "file": "references/skin-continuity-player-portrait-motion.spec.js-2026-10-08",
+      "sha256": "499447dade5d1079f1410ba8382549bd92a88a23c2141b5aa58a467f83558a90"
+    },
+    {
+      "original": "tests-ui/player-shared-head-production.spec.js",
+      "file": "references/skin-continuity-player-shared-head-production.spec.js-2026-10-08",
+      "sha256": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/skin-continuity-run-test-shard.mjs-2026-10-08",
+      "sha256": "d300a7813c0dd8d78def8621590a21ceada8b012f12438c7faafdff838544c19"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "references/player-skin-continuity-before-appearancePalette-2026-10-08.js",
+      "sha256": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320"
+    },
+    {
+      "file": "references/player-skin-continuity-before-playerHead3d-2026-10-08.js",
+      "sha256": "bbe52d5863bfaa02607ff2f9e1c71095942bc32aa9bfc644d34f53392d360831"
+    },
+    {
+      "file": "references/player-skin-continuity-before-playerPortraitFace-2026-10-08.js",
+      "sha256": "590272f10a3f402f0e8aacc3cc60b35700f649ebf81f23dad9f0f321a6bb0060"
+    },
+    {
+      "file": "references/player-skin-continuity-before-playerPortrait-2026-10-08.js",
+      "sha256": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219"
+    },
+    {
+      "file": "references/player-skin-continuity-before-playerMotion-2026-10-08.js",
+      "sha256": "0e8f825f0ee195607b19ec517ac75755497a589b27ea955dfe997c34d0a673c2"
+    },
+    {
+      "file": "references/production-head-anatomy-fixtures-2026-10-08.json",
+      "sha256": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+    }
+  ],
+  "evidence": [
+    {
+      "original": "output/playwright/skin-continuity.json",
+      "file": "references/skin-continuity-evidence-skin-continuity-2026-10-08.json",
+      "sha256": "19a8038a225df23dba5334c21e8a6c17c1dfdf0ca977084aa2035d71e7b62c57"
+    },
+    {
+      "original": "output/playwright/skin-continuity-gallery.json",
+      "file": "references/skin-continuity-evidence-skin-continuity-gallery-2026-10-08.json",
+      "sha256": "1e3fcc77accc57dd8cc3390c429931a9595dbd6083ead627e038bfed32319e8d"
+    },
+    {
+      "original": "output/playwright/skin-lighting-shader.json",
+      "file": "references/skin-continuity-evidence-skin-lighting-shader-2026-10-08.json",
+      "sha256": "66f7f486c2a0ecf2e5678b8a087899f877fbec69fa419e683b88a23db516affe"
+    },
+    {
+      "original": "output/playwright/production-anatomy-gallery.json",
+      "file": "references/skin-continuity-evidence-production-anatomy-gallery-2026-10-08.json",
+      "sha256": "2a84cc675591b5950c5a5a538fb823cc4277d55d5fe8b1e30e289287236adf21"
+    },
+    {
+      "original": "output/playwright/portrait-motion.json",
+      "file": "references/skin-continuity-evidence-portrait-motion-2026-10-08.json",
+      "sha256": "e482d18bf5330d1828a0720cde5d87fa6ebed4d68efe58c319ce445c62b012b4"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "626799e953e6bfbd891bf32db1c802fa28d9775ef6e98415855bc753e743654f",
+      "original": "output/playwright/skin-continuity-before-desktop-dark-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ed0f08818194cfdf33f2646be293f9f999617cec71f42aafdc2132c04b38ebb1",
+      "original": "output/playwright/skin-continuity-before-desktop-dark-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8160723583a7066a300694b91c2df7036b08530233ed34150129e9549d8dbd96",
+      "original": "output/playwright/skin-continuity-before-desktop-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "91f4582da2eabef0a9da9dba2d9b4d0e232391ae58094fcb69000b610bc039a0",
+      "original": "output/playwright/skin-continuity-before-desktop-light-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e48facc438d2a911cb5101131eb6ea1be385fd7a3c2179e987a88ad87913209e",
+      "original": "output/playwright/skin-continuity-before-desktop-light-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cd3a97f65e5b6bfb283a7b8b33f2c005cb1e30370d31f5b1a3ce0a1559fe44db",
+      "original": "output/playwright/skin-continuity-before-desktop-light-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7c63ab167cd50f93e79aa5f7cc174aed594d91c005324a14709ef1253165f420",
+      "original": "output/playwright/skin-continuity-before-mobile-dark-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4005470099fae0e52ecf2d79f8b14fd99cce65a1d440ada20c53f6d3d7289d80",
+      "original": "output/playwright/skin-continuity-before-mobile-dark-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "326795afda13dde83d813b6eb9196644b7d017ff30bd61a3afd11dadaadb8776",
+      "original": "output/playwright/skin-continuity-before-mobile-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "30ba46c5cdd1a722d9e17d5cdb871788fd2f97a3907353f5f5240c55629a82a9",
+      "original": "output/playwright/skin-continuity-before-mobile-light-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a5002a781e45494db7292800cf0e648c4880fc3b3b5b00bdb3e97feafbc08818",
+      "original": "output/playwright/skin-continuity-before-mobile-light-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "9eef9ffd1ef8a0cd9ad127a52c4c5fbd36ea776524bfc7d3c13611ca03b18067",
+      "original": "output/playwright/skin-continuity-before-mobile-light-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8c15373c261c910a5f45854df55bb2055a1e0136ac4d585acf04c55f31962d88",
+      "original": "output/playwright/skin-continuity-after-desktop-dark-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9bc360cf70fe9f114bd719290236d4cfbb2739fd64380fa73bad4ebd08c0adc7",
+      "original": "output/playwright/skin-continuity-after-desktop-dark-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "805742655c12980294323cdd257527017af0e473a7d3a1071287cfbadec08efc",
+      "original": "output/playwright/skin-continuity-after-desktop-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cec2e590922ace0176250909279346ba70fcfa2dca7d15c8bd96f745d65a9671",
+      "original": "output/playwright/skin-continuity-after-desktop-light-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7d64c310c4831499e019f76742decbd6945e15e46a5c9aeb5ceab001a5db3bd2",
+      "original": "output/playwright/skin-continuity-after-desktop-light-body.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "a5de60f17549cfce42c7c896253870f0468d607ef9e2be987521d06efa307aa8",
+      "original": "output/playwright/skin-continuity-after-desktop-light-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "63b66587e22cda24b89d2e7e25cf012114a18a401ce169cb479bdb96c8842153",
+      "original": "output/playwright/skin-continuity-after-mobile-dark-portrait.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f2dd3cf5d5e28f3a7fa075d0204e83b3fb9edda218ce20c4d999a5533e745749",
+      "original": "output/playwright/skin-continuity-after-mobile-dark-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "286dd96ea4a0455a64ba566f2e68018b5677cedf40eaf8253f1e7121d5fd4f01",
+      "original": "output/playwright/skin-continuity-after-mobile-dark-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c11538df0ff2c2973efdabcb3e1b5b841ddf01c7b1138360d7d5525c28daec87",
+      "original": "output/playwright/skin-continuity-after-mobile-light-portrait.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "9bc9e02b31fec7067eb472be365e858dc0712b7da29b0aea79db55155a644cc2",
+      "original": "output/playwright/skin-continuity-after-mobile-light-body.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7ba4b1dd7dc1a2b397886c25bf89b553c068fcf1d6a8f18f22ac4d4bcfd20449",
+      "original": "output/playwright/skin-continuity-after-mobile-light-motion.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-0-desktop-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "eaab96f82c7ab24b9932e186ef1999e333e20268d649b4322e2c8f6093656858",
+      "original": "output/playwright/skin-continuity-gallery-0-desktop-dark.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "bb7ef69ebb053510f733228ab400b3a747eff926ff66d59dd243e7ade616dfc5",
+      "original": "output/playwright/skin-continuity-gallery-1-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "da71644eabb9ce8f1b466871743c9b8e4069301cb5cbd05f582cd7ba64998db2",
+      "original": "output/playwright/skin-continuity-gallery-2-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-0-desktop-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "a757debe0441e9ab13434955639f49deb325ecd59110f4a1be98bb89f0f7111d",
+      "original": "output/playwright/skin-continuity-gallery-0-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "3e28269a4e129e81faaeada045d9045dcd3406a10f77b0af05b8d95c2e2dd72c",
+      "original": "output/playwright/skin-continuity-gallery-1-desktop-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-2-desktop-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d8a2b2d9474426601142bb88dcf075010a110ecb179f1babc784b0ec4e6da12a",
+      "original": "output/playwright/skin-continuity-gallery-2-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-0-mobile-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6f95194a667295abe31e1981ce3232b89df8e5c23817c62d26e9f28fd6d2c012",
+      "original": "output/playwright/skin-continuity-gallery-0-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6943d3eab8b567858680ee11049ce2a0a224d57ff2df55ac8e7cf965bec27b44",
+      "original": "output/playwright/skin-continuity-gallery-1-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-2-mobile-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "68d4d90978cdcf0255d8e4b71501963b16ee7f233d48d98ae1aa057b580514a8",
+      "original": "output/playwright/skin-continuity-gallery-2-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-0-mobile-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0fbc6c94044c3defdcf3b8d165408a055beb42e276793fdba0dd72225ba00541",
+      "original": "output/playwright/skin-continuity-gallery-0-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "c23916b23280e4a987390131d61da978b4f38b3cf04a8a7398e596c26bc83e52",
+      "original": "output/playwright/skin-continuity-gallery-1-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-skin-continuity-gallery-2-mobile-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8df30275b9a5d161e8360a82f11993749664070c58ce266c8e7e8e80a10173f6",
+      "original": "output/playwright/skin-continuity-gallery-2-mobile-light.png",
+      "inspected": true
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-0-desktop-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c7d5541e014b67c125704dd7768f9142073d6016a1cef3fbe66f685a635673a0",
+      "original": "output/playwright/production-anatomy-gallery-person-0-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-0-open.png",
+      "person": 0,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9b4c64d244e4677a7f58d585be251f0c312230e61ffdf304625ccdd88f4bd091",
+      "original": "output/playwright/production-anatomy-gallery-native-0-open.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-0-closed.png",
+      "person": 0,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ca7d7fa2204ac6b797bc7333bd734f129312bd2b23cb22ee5caee9dcf5f12d06",
+      "original": "output/playwright/production-anatomy-gallery-native-0-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-0-clay-closed.png",
+      "person": 0,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b31e26466b7108dd1b26c306ed085290327d60ec3fd62590183bd8d0f097cb13",
+      "original": "output/playwright/production-anatomy-gallery-native-0-clay-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "da274bd52e5141a5bbda1073f6dc24312e1e579e49028bc17b12235285c4c192",
+      "original": "output/playwright/production-anatomy-gallery-person-1-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-1-open.png",
+      "person": 1,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "470ff91ef06c4328ad47d353c2e4a0d6e4bddf4503fd30353f835ecfe5046e6b",
+      "original": "output/playwright/production-anatomy-gallery-native-1-open.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-1-closed.png",
+      "person": 1,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "403f202348d01d64fb7e791b8ac3f0992bf00fa0d1fa26d8e69aea12a2c23af6",
+      "original": "output/playwright/production-anatomy-gallery-native-1-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-1-clay-closed.png",
+      "person": 1,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "02c7848f1f8251a101f053df6171ce9c2b7b3b44cc5dd7975005ac7fd6eed2cd",
+      "original": "output/playwright/production-anatomy-gallery-native-1-clay-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5a12752e815143ac3076d5f41577b913f76b54901075b8ca3ce33bf82329c40f",
+      "original": "output/playwright/production-anatomy-gallery-person-2-desktop-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-2-open.png",
+      "person": 2,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8136626bb633e54279edb5ce57bd2b77290f768081cb4a7ddb6efd6dd7fb9f49",
+      "original": "output/playwright/production-anatomy-gallery-native-2-open.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-2-closed.png",
+      "person": 2,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "fd0adf92fe3b5aac24f31b86d904d28464f256eab543aa38d8151b68d2463437",
+      "original": "output/playwright/production-anatomy-gallery-native-2-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-native-2-clay-closed.png",
+      "person": 2,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "70d6d7d09ef2f297b8c4e2e7ac59d5ac1d25efc2097407e4cec1ce2e068cad31",
+      "original": "output/playwright/production-anatomy-gallery-native-2-clay-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-0-desktop-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f91cb1c42a0dd0bdf9353dd955a165ece24f896cae88f6bc279f49f0540fd80d",
+      "original": "output/playwright/production-anatomy-gallery-person-0-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8f80aa3f70c282894081b62f03935ef4b68e24e5bb3ee68a3241359251904bf3",
+      "original": "output/playwright/production-anatomy-gallery-person-1-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-2-desktop-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "408bf939f549d23600e124a001767b634508ee866ed49bcb9dca17aaabe4259f",
+      "original": "output/playwright/production-anatomy-gallery-person-2-desktop-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-0-mobile-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8100d597f40f977a045aa822789894e7090967e7850ccfae3ee4d1273c1725a8",
+      "original": "output/playwright/production-anatomy-gallery-person-0-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "11f121cc1c37d6b54e2b403720149c85c081b1ec0f1c068588ff915e8d8a8e8e",
+      "original": "output/playwright/production-anatomy-gallery-person-1-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-2-mobile-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e75c07005991f281bb2a8288935f04ad2802784ce974d79ae0a05f04ebe8cfab",
+      "original": "output/playwright/production-anatomy-gallery-person-2-mobile-dark.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-0-mobile-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "2270ed8f55ad893bacfe21f16e3bd285680b16a481606a145b232c1859233622",
+      "original": "output/playwright/production-anatomy-gallery-person-0-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "282c33dea11c4b1e0fc59226b2276b5ef8f5da7c0910ed0f669f2fb658a6b05d",
+      "original": "output/playwright/production-anatomy-gallery-person-1-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-production-anatomy-gallery-person-2-mobile-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "75d0c5a4f41bd8ae34068635f54d42eff7cad55a3600649a1935b236c29cf5ac",
+      "original": "output/playwright/production-anatomy-gallery-person-2-mobile-light.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-desktop-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "a7e4f6083d8cd8d3b53e7e6f3efce1b5c4c610ddfd055f7673f54674e98b93ff",
+      "original": "output/playwright/portrait-motion-desktop-dark-open.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-desktop-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "27cf1c986b1c3118addca349573c7402a70e3f3ab1dc332f4aa30b19c3298fd8",
+      "original": "output/playwright/portrait-motion-desktop-dark-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-desktop-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ce0a37d6d9878f96031afaa31a08075191251d71ac0c3770f2dc5d8a1fb6e132",
+      "original": "output/playwright/portrait-motion-desktop-light-open.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-desktop-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "147ac79850cea4e936549d2a9d8e706ba33b54e8e4bc298eb47ece13e4e40f32",
+      "original": "output/playwright/portrait-motion-desktop-light-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-mobile-dark-open.png",
+      "theme": "dark",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "26a30a386eba4919e3c718c5a68b1f9c518c17a77089d169d17bfa984e3ac46b",
+      "original": "output/playwright/portrait-motion-mobile-dark-open.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-mobile-dark-closed.png",
+      "theme": "dark",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f89f41c257be3698dc1f0ccb04c9b8389617966b0ca6bc3da192453f34e7fd90",
+      "original": "output/playwright/portrait-motion-mobile-dark-closed.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-mobile-light-open.png",
+      "theme": "light",
+      "pose": 0,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "0f15bd691832547b034175ef3d4c828a3165bc6360418f08e9a3820337e683d5",
+      "original": "output/playwright/portrait-motion-mobile-light-open.png",
+      "inspected": false
+    },
+    {
+      "file": "captures/skin-continuity-component-portrait-motion-mobile-light-closed.png",
+      "theme": "light",
+      "pose": 1,
+      "controlledPose": true,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "35ac7cc1cebbc4bce8fb9427e11e168b392b43c4beda717bae18b6c0f9f8d860",
+      "original": "output/playwright/portrait-motion-mobile-light-closed.png",
+      "inspected": false
+    }
+  ],
+  "checks": {
+    "focusedNode": {
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 3362.5798,
+      "terminalChunk": "205d96"
+    },
+    "geometryNode": {
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 14855.2491,
+      "terminalChunk": "587b9b"
+    },
+    "skinBrowser": {
+      "passed": 3,
+      "failed": 0,
+      "durationSeconds": 29.7,
+      "terminalChunk": "9b061b",
+      "scope": "25 CPU/GPU lighting comparisons; three-person complete-body gallery with six motion modes; actual before/after dossier with equal body path coordinates and complete DTO"
+    },
+    "fallbackBrowser": {
+      "passed": 1,
+      "failed": 0,
+      "durationSeconds": 5.4,
+      "terminalChunk": "277014",
+      "scope": "Real unavailable-WebGL portrait fallback remains exact"
+    },
+    "currentClosureAndRecovery": {
+      "passedCases": 2,
+      "terminalChunk": "cab44d",
+      "qualification": "These two current-source cases passed in a mixed run containing four passes and one failed new gallery assertion. Gallery scanned PNG base64 for NaN; structural assertion was corrected and all three skin cases then passed. This is not a unified five-case green run.",
+      "closedEyeComparisons": 18,
+      "closedEyeExposedPixels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "contextRecoveryExactOpen": true
+    },
+    "shader": {
+      "samples": 25,
+      "maxChannelError": 0,
+      "scope": "Flat controlled diffuse material across five pigments and five camera-space normals; not whole-body anatomical reconstruction"
+    },
+    "actualDossier": {
+      "playerId": "P2026-BUF-LB-33468504",
+      "bodyPathCoordinatesUnchanged": true,
+      "playerUnchanged": true,
+      "projectionAgreement": [
+        {
+          "mode": "run",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "acceleration",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "cut",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "jump",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "strength",
+          "frontBody": true,
+          "sideMotion": true
+        },
+        {
+          "mode": "endurance",
+          "frontBody": true,
+          "sideMotion": true
+        }
+      ]
+    },
+    "build": {
+      "passed": true,
+      "terminalChunk": "131a23",
+      "precacheVersion": "5a1f3da36bb0",
+      "assets": 318,
+      "sizeKB": 3528
+    },
+    "browserReachability": {
+      "passed": true,
+      "terminalChunk": "3fdd57",
+      "modules": 138,
+      "entries": 4
+    },
+    "bootBudget": {
+      "passed": true,
+      "terminalChunk": "1627fd",
+      "bytes": 649321,
+      "byteLimit": 730000,
+      "modules": 51,
+      "moduleLimit": 58,
+      "lazyLeaks": 0
+    }
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "root",
+    "originalsInspected": 8,
+    "findings": [
+      "Head lighting formula is centralized without intentionally changing its numerical model; measured SVG skin uses camera-space curved-section samples from the same diffuse/specular model.",
+      "Actual head, neck and body pigment presentation is closer, and arms/legs read more rounded. The burst under-jaw stroke is replaced by a bounded neck-only occlusion fade. Eight original before/after/gallery captures were inspected across ordinary desktop/mobile sizes and both themes.",
+      "No measured body path or saved player DTO change in the actual dossier comparison. Legacy renderers and graphics-unavailable output remain available. Three gallery fixtures demonstrate material coherence, not a statistically representative population or frame distribution.",
+      "Per-bone SVG normals, far-layer occlusion and neck shadow remain artistic approximations, not a complete 3D body or scanned athlete fit. Complete bodies, hands/joints and faces remain stylized/mannequin-like; cap-like hair, painted/sparse beard volume, simplified ears and rigid expression need further craft.",
+      "Independent reviewer reported two pre-existing whole-head aperture/hash fixture failures while confirming immediate-before fallback equivalence. They remain adjacent verification work; this component does not refresh those expectations or claim whole-suite acceptance."
+    ],
+    "fixesApplied": [
+      "Shared camera-space skin light and gamma model",
+      "Curved-section SVG skin ramps and normal-aware moving limb gradients",
+      "Modern measured neck material/occlusion continuity",
+      "Preserved exact fallback and measured geometry"
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "independentReview": "pending",
+  "fullVisualAcceptance": false,
+  "demographicCalibrationAccepted": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

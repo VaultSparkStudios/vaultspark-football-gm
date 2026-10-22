@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-08",
+  "verdict": "PASS",
+  "scope": "Automatic portrait blink, reduced-motion neutral restoration, bounded shared mesh and graphics context restoration",
+  "primaryReceiptPath": "docs/visual-qa/PLAYER_PORTRAIT_MOTION_2026-10-08.json",
+  "primaryReceiptSha256": "681bfd0ae04386bf6646211e3b149bc3b26a669dc502a336a56e2d1907127b94",
+  "sourceHashes": {
+    "public/lib/playerPortraitMotion.js": "44d7a46274ecc99c71bff3089aadfdccf0555435229e7e45bbe7570a4da091f9",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerMotion.js": "0e8f825f0ee195607b19ec517ac75755497a589b27ea955dfe997c34d0a673c2",
+    "public/lib/playerHead3d.js": "750bd30ff92a2822c5df8bc6e6266a5f00738a69150bea000ecaa91d19cc9372",
+    "public/lib/playerPortraitFace.js": "590272f10a3f402f0e8aacc3cc60b35700f649ebf81f23dad9f0f321a6bb0060",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "test/player-shared-head.test.js": "ba8cbf3acdd7f741814a8e1334b7f29770d5897d3aebcde110ee8eef24d5d8b6",
+    "test/player-static-definition.test.js": "aa63ec3361eb0b869d5c4185e6c6afa7acdc62a6ac56a94e8b55d121ebca103d",
+    "tests-ui/player-portrait-motion.spec.js": "499447dade5d1079f1410ba8382549bd92a88a23c2141b5aa58a467f83558a90",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+    "tests-ui/helpers/weekly-scenarios.js": "e2293d23d4a12703c6740c2d749b55bb09065e3adc49016998c334494aabbd0d"
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-shared-head.test.js test/player-motion.test.js",
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 793.6699,
+      "qualification": "Fresh final source; three shared-head/blink plus four motion tests"
+    },
+    {
+      "check": "Final-source controller mock reduced/hidden/offscreen/disconnect/idempotent cleanup",
+      "result": "PASS",
+      "qualification": "Scheduling and listener accounting, not independent GPU rendering"
+    },
+    {
+      "check": "Source/frozen copy and capture digest bindings",
+      "sources": 11,
+      "captures": 32,
+      "result": "PASS"
+    }
+  ],
+  "primaryBrowser": {
+    "attribution": "Primary execution; not independently rerun",
+    "passed": 3,
+    "terminal": "3 passed (32.3s)",
+    "session": 52459,
+    "terminalChunk": "d3d8b2",
+    "checks": [
+      "Observed actual automatic fully closed pose before graphics fault",
+      "Reduced motion restores exact neutral PNG while GL is unavailable",
+      "Disconnect cleanup mounted0",
+      "Real WEBGL_lose_context fallback and exact same-canvas renderer restoration",
+      "One CPU mesh across selected poses/cameras; six movement projection agreements and unchanged selected player DTO"
+    ]
+  },
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/portrait-motion-desktop-dark-open.png",
+      "sha256": "90a2625d83ac2f25a5f81a702dc1ad730845df5f212937ffa96a4f678e8b4469"
+    },
+    {
+      "path": "docs/visual-qa/captures/portrait-motion-desktop-dark-closed.png",
+      "sha256": "5b6884227687bf3aee9e5e441b71e1010dee6b4571c2a47913ec499eba1d2b9d"
+    },
+    {
+      "path": "docs/visual-qa/captures/portrait-motion-mobile-light-open.png",
+      "sha256": "b1f17eaa82d44d2d5d6eb46df6c80f125fc31e2fcbd9ab6faec559aeb179879c"
+    },
+    {
+      "path": "docs/visual-qa/captures/portrait-motion-mobile-light-closed.png",
+      "sha256": "1a28187ca2227d2a6a8d4bc1aca34bb74cb251f0a5cea71530b08ea644a8a664"
+    }
+  ],
+  "sourceObservations": [
+    "Neutral href retained at mount so reopening does not depend on unavailable graphics; new closed poses use shared rendering/cache",
+    "Five quantized blink poses with explicit80ms plateau; quantization extends time spent at maximum beyond the plateau, so not measured physiology",
+    "Hidden/offscreen/reduced state cancels RAF and opens the portrait; visible phase resumes using elapsed active presentation time, no football RNG",
+    "Loss handler prevents default, disposes renderer, clears PNGs and retains canvas/CPU mesh; restore enables creation of fresh GPU resources",
+    "Cleanup removes observers, media/document listeners and RAF idempotently"
+  ],
+  "findings": [
+    {
+      "severity": "OPEN craft",
+      "description": "Open/closed distinction is readable in inspected real desktop/mobile portraits. Bulged folds, planar/mannequin facial forms, painted beard, simplified lips and neck material discontinuity remain; this functional restoration is not complete appearance acceptance."
+    },
+    {
+      "severity": "limit",
+      "description": "Only explicit graphics-context-loss recovery is covered; unrelated shader/draw failures still choose session fallback. Broader devices, repeated loss/restore stress and all saved heads remain unverified."
+    }
+  ],
+  "limits": [
+    "Four controlled-pose originals inspected; actual automatic-cycle success comes from hash-bound primary browser test, not screenshots alone",
+    "No built deployment/career/all-person or full-suite acceptance",
+    "No physiological blink calibration or demographic/anatomical fitting",
+    "Whole appearance and release remain open"
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

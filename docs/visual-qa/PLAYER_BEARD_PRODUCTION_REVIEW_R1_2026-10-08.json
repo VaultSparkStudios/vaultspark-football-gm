@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewer": "independent /root/studio_reviewer",
+  "round": 1,
+  "verdict": "FIX",
+  "primaryReceipt": "docs/visual-qa/PLAYER_BEARD_PRODUCTION_2026-10-08.json",
+  "primaryReceiptSha256": "251fbf6d9a30a9bedf6132b0761a430d9d05e63f82a161e4c2809f27b6d74882",
+  "scope": "Production fitted beard volume and lip clearance only; frozen R1 bytes, not forthcoming repair.",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "a947f3d2773c926b690203f1ae7a393fd9b712333301c29220368957456cf34f",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerPortraitFace.js": "eb61cabb22dd847df041c93f84017c55c1dfc1f52f79217a49d44bc9097889dc",
+    "public/lib/playerPortrait.js": "7897745c924f68efae8c71d94281e936da3540b2524dbb26738507dabc060f08",
+    "public/lib/playerMotion.js": "0448fc0fbb567e091340d8ad038166c848047882d8e23f11326f10497cc0e079",
+    "public/lib/playerSideAppearance.js": "125d13a9cc396a4e51dc09da60ee79299b4bf11dc1f11b33e3ccdbdc9c5bf819",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "a8be61743e1cc5802afe3169f728df2c3654e904be3463bd42e94dcbb395b012",
+    "src/domain/playerMeasurements.js": "344aa96f6c34746b5ab14883b252f428c8544e95389cb8395f7f09a4c33d2ff3",
+    "test/player-beard-volume.test.js": "2e12f47861092afab59682e4a728a5a71c4e4a258d03c125b58a6db207ff9811",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-whole-head-form.test.js": "adf5ce2a9eadd7faa1ef6fda9ea4b1e35bc24869fb9026365f19f6f22bc3c0cf",
+    "test/player-surface-lighting.test.js": "d62abef8ebb6fa36f0e3f6168b5843ac1cdde53115f03ecb6713c3b06bac2fc4",
+    "tests-ui/player-beard-gallery.spec.js": "302ee99c78deb76af515f12b518c5863700f1f2956a60600269fe85664b034e8",
+    "tests-ui/player-beard-production.spec.js": "b8b3d3335baa0d762b868e469cfa52818caccea54c5dce5a8f9b60faf70c3d8f",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+  },
+  "bindings": {
+    "verifiedFrozenEntries": 78,
+    "sources": 18,
+    "inputs": 2,
+    "evidence": 2,
+    "captures": 56,
+    "builtPairsComparedToFrozenSource": [
+      "static/lib/playerHead3d.js",
+      "static/lib/playerHeadImage.js",
+      "static/lib/playerPortraitFace.js",
+      "static/lib/playerPortrait.js",
+      "static/lib/playerMotion.js",
+      "static/lib/playerSideAppearance.js",
+      "static/lib/appearancePalette.js",
+      "static/lib/playerSurfaceLighting.js"
+    ]
+  },
+  "findings": [
+    {
+      "id": "P2-BEARD-FIBER-LIP-OVERHANG",
+      "severity": "P2",
+      "source": "public/lib/playerHead3d.js:334",
+      "testGap": "test/player-beard-volume.test.js checks beard-volume and mustache-volume only, omitting beard-fiber surfaces from mouth-aperture exclusion.",
+      "behavior": "Mustache fibers on goatee/short/full grooming use the longer beard length and downward extension, placing visible geometry in front of the colored lip.",
+      "evidence": {
+        "cases": 48,
+        "fiberVertexSamples": 57600,
+        "lipMaskPositiveOutwardVertices": 856,
+        "definition": "Actual existing shader lip mask >.25 and fiber radial residual outside analytic skin >.05; valid faceLength .92/1/1.09, faceWidth .88/1.1, lipWidth .85/1.15 across mustache/goatee/short/full.",
+        "example": {
+          "appearance": {
+            "hairstyle": "shaved",
+            "faceLength": 0.92,
+            "faceWidth": 0.88,
+            "lipWidth": 0.85,
+            "facialHair": "goatee"
+          },
+          "seed": "lip-probe",
+          "part": "beard-fiber-4",
+          "x": 14.80516529083252,
+          "nominalY": 203.37469963405442,
+          "z": 47.00248718261719,
+          "lipMask": 0.8450987731275368,
+          "radialSkinResidual": 5.063485739588444
+        },
+        "terminalChunk": "f17c33"
+      },
+      "requiredCorrection": "Bound mustache fiber geometry outside the lip opening for all grooming lengths and valid widths; include fibers and adverse mouth controls in aperture contract. Reverify original non-beard preservation and unchanged budget."
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-beard-volume.test.js test/player-shared-head.test.js test/player-surface-lighting.test.js",
+      "result": "PASS despite gap",
+      "tests": 9,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 4431.7739,
+      "terminalChunk": "1c0f32",
+      "coverage": "Includes exact semantic non-beard part comparison against durable immediate baseline across six grooming states, raw input purity, anatomy and eye depths; volume and payload bounds."
+    },
+    {
+      "command": "Node stdin reconstruct actual shader lip mask and analytic skin residual over valid controls/fiber vertices",
+      "result": "FAIL scoped mouth-clearance condition",
+      "cases": 48,
+      "samples": 57600,
+      "violatingVertices": 856,
+      "terminalChunk": "f17c33"
+    },
+    {
+      "command": "Python stdin all frozen source/input/evidence/capture SHA256 and available built/frozen normalized comparisons",
+      "result": "PASS bindings"
+    }
+  ],
+  "imagesActuallyInspected": [
+    "docs/visual-qa/captures/production-beard-component-beard-gallery-5-desktop-dark.png",
+    "docs/visual-qa/captures/production-beard-component-beard-gallery-3-mobile-light.png",
+    "docs/visual-qa/captures/production-beard-component-production-beard-before-desktop-light-portrait.png",
+    "docs/visual-qa/captures/production-beard-component-production-beard-after-desktop-light-portrait.png"
+  ],
+  "imageHashes": {
+    "docs/visual-qa/captures/production-beard-component-beard-gallery-5-desktop-dark.png": "3b0c4a4ad913daf9b36a7fbb8e83cf7bc9d608ceb3d1269edd8f0a02281c49db",
+    "docs/visual-qa/captures/production-beard-component-beard-gallery-3-mobile-light.png": "018711f4f8b186b90785ab39e040c788e46527e3487a0e7a2520818c444b337f",
+    "docs/visual-qa/captures/production-beard-component-production-beard-before-desktop-light-portrait.png": "f2135fe465907d8e7aa43379eadeb213353d3a499795e222a5a4c4716240abd2",
+    "docs/visual-qa/captures/production-beard-component-production-beard-after-desktop-light-portrait.png": "af04614e7f63338121b8abedb0d4e626208a2b1f52eb59c6a7f9c330a8be4783"
+  },
+  "visualAssessment": [
+    "Fitted full beard adds an obvious front/profile silhouette compared with prior painted/stippled coverage.",
+    "The inspected full-beard front/dossier retains a rigid smooth lower-face cap and striated surface; small mustache is sparse and line-like. This is scoped progress, not convincing natural facial hair.",
+    "The inspected mobile goatee is visible at ordinary raster size; mouth fiber clearance remains a numerical correctness finding rather than an asserted all-image visual occlusion measure."
+  ],
+  "primaryAttribution": "Frozen R1 primary13 focused passes, final browser3 passes42.8s and build/cache/fallback/DTO integration claims attributed to root, not independently rerun.",
+  "limits": [
+    "R1 FIX remains historical even if parent repairs immediately; no approval of later source.",
+    "Shader-mask counterexample is geometry evidence, not an independently rerun browser visibility test.",
+    "Initial exploratory probe used unused mouthWidth input and a broad rectangle; final finding uses actual lipWidth control and existing shader shape, superseding that exploration.",
+    "No calibrated beard prevalence/anatomy, full photoreal/person craft, current core/full-suite, save-career, full NFL or release/goal acceptance.",
+    "Only owned review artifact written; all frozen primary/production sources unchanged by reviewer."
+  ]
+}

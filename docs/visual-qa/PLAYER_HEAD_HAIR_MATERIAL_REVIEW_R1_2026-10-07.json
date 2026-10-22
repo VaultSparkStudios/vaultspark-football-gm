@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-07",
+  "reviewer": "studio_reviewer",
+  "round": 1,
+  "verdict": "PASS",
+  "scope": "Unadopted scalp falloff/strand material and deterministic gray/dye wiring; not full craft or production acceptance",
+  "primaryReceipt": ".cache/head-hair-reviewed-r1-primary.json",
+  "primaryReceiptSha256": "4de79c82456585226fd10d7f97facc808bdb29ba1b1e282f6e662c30b3831613",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "bc66a0ea2b19df4d439db0947142c467a4644e48a2a7a4bc69e0905ad0e2a93f",
+    "prototypes/playerHead3d.test.mjs": "56e01c902be152da8722a54beca7e2388c2a9706ff90c2b82abce279d0aba80a",
+    ".cache/shared-head-3d.spec.mjs": "4642ff035f107c172d7645d2568c6481cd3fa87f36fb2ca92d02f2b673931645",
+    ".cache/head-grooming.spec.mjs": "4f178cfcf93cbc77e604fb2803dea08c78dd0adf1edf9933ddde6d2328633118",
+    ".cache/head-face.spec.mjs": "8491302c695aff482de94d2e50703de2228ea446c8400afac85f60f326f0b922",
+    ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+  },
+  "beforeSource": {
+    "original": ".cache/head-hair-before/playerHead3d.mjs",
+    "path": "docs/visual-qa/references/head-hair-before-2026-10-07.mjs",
+    "sha256": "c910d469d03dd914eb5f5c26839f7c5abf1fe10180e54da496a9cc5bf72b58fb"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 6075.3346
+    },
+    {
+      "command": "node .cache/head-hair-r1-independent.mjs",
+      "exitCode": 0,
+      "grayMonotonicGeometryAndPurityCases": 45,
+      "dyedSeedsSuppressed": 5,
+      "legacyDetailAndDyeExclusions": 3,
+      "captureHashesVerified": 36,
+      "sourceHashes": {
+        "prototypes/playerHead3d.mjs": "bc66a0ea2b19df4d439db0947142c467a4644e48a2a7a4bc69e0905ad0e2a93f",
+        "prototypes/playerHead3d.test.mjs": "56e01c902be152da8722a54beca7e2388c2a9706ff90c2b82abce279d0aba80a",
+        ".cache/shared-head-3d.spec.mjs": "4642ff035f107c172d7645d2568c6481cd3fa87f36fb2ca92d02f2b673931645",
+        ".cache/head-grooming.spec.mjs": "4f178cfcf93cbc77e604fb2803dea08c78dd0adf1edf9933ddde6d2328633118",
+        ".cache/head-face.spec.mjs": "8491302c695aff482de94d2e50703de2228ea446c8400afac85f60f326f0b922",
+        ".cache/shared-head-3d.config.mjs": "ce72b851f83f02b02a8fe4bed1dbf5b3af590994583a3da1cf3e92b3f2482356"
+      },
+      "primaryReceiptSha256": "4de79c82456585226fd10d7f97facc808bdb29ba1b1e282f6e662c30b3831613"
+    }
+  ],
+  "sourceAssessment": {
+    "graying": "Salted avalanche CPU thresholds use stable identitySeed or explicit prototype seed. Same selected lock stays gray as supplied share increases;45 independent cases over5saved IDs verify monotonicity, positions/normals/topology and input purity. Scalp shader thresholds also compare one unchanged seeded field against supplied share. This establishes same-source/runtime monotonic wiring, not identical GPU shader precision across devices.",
+    "exclusions": "GrayShare is accepted only for v3 natural detail and nondyed scalp, finite and capped0..65percent. Legacy/version/detail exclusions prevent additional fiber gray on an already blended legacy palette. Scalp dye suppresses natural scalp silver; separate brow/beard color uniforms do not alter scalp geometry. Saved natural colors/recipe are not mutated.",
+    "edgeAndMaterial": "Cubic smoothstep thickness modifier has continuous first derivative at its transition and tapers to8percent thickness at the border; it does not merge to exactly zero thickness or prove a watertight scalp join. Material5 identifies scalp and material1 strands; ear3/neck4/top2 avoid scalp shading. Local x/y/z strand coordinates are unaffected by camera rotation; geometry and normals still use shared camera transforms."
+  },
+  "imagesActuallyInspected": [
+    {
+      "path": ".cache/head-hair-before/player-shared-head-3d-desktop-dark.png",
+      "sha256": "7d2ca196fae13849f1bcbe7fabbc86f3b3e936e99e664519ac9dcb3d028dcaa9"
+    },
+    {
+      "path": "output/playwright/player-shared-head-3d-desktop-dark.png",
+      "sha256": "3e3f08ba8c148d0c82da21f38468df1401edf0683f9fb9265a57c4ffb1fbd082"
+    },
+    {
+      "path": "output/playwright/head-grooming-pigments-desktop-light.png",
+      "sha256": "f006ff60f817e0ec1b91ef39915f873421e60f1dd30077c67e4e762aebf3e10b"
+    },
+    {
+      "path": "output/playwright/head-grooming-pigments-mobile-dark.png",
+      "sha256": "1854202b347b28c68dee37fdceb95bd36f80a9b3fd49cd8ecdc8757aed3acc46"
+    }
+  ],
+  "visualAssessment": "Scalp edge and directional strands are less like a uniformly solid cap in several gallery cases. Gray0.2/0.65 and separate dye channels visibly respond. Silver strands are excessively high contrast and regular/patterned; cap forms, sparse locks, painted beard and plastic anatomy remain. This is useful prototype wiring, not convincing full-person art.",
+  "evidenceInterpretation": "135grooming comparisons include15pigment pairs, and17face/ear/material pairs retain separate intrinsic96px/native240px observations. Counts establish response only. Actual gallery supplies explicit saved personID because exported appearance has no seed; controlled examples provide a.seed. Gallery palette uses supplied age26; this is not a longitudinal aging/career/trade/save proof.",
+  "primaryExecutionOnly": {
+    "focused": {
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 5675.7628
+    },
+    "browser": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 28.4
+    },
+    "qualification": "Primary13focused and3browser28.4sec; browser not independently rerun. Six current/frozen source and36original/copy capture hashes independently verified."
+  },
+  "limits": [
+    "No new domain/saved schema or empirical aging coefficients; gray share is externally resolved by existing palette, not modeled biological measurement.",
+    "Caller must provide correct resolved colors and stable identitySeed for seedless DTOs. No production adapter, import or migration acceptance is implied.",
+    "Existing shader threshold floating-point and azimuth-seam details are artistic material approximations; no cross-device bitwise or full optical continuity claim.",
+    "Incomplete full gray/dye/age/expression/trait consumption and production body/UI/accessibility/cache/context-loss/fallback/device performance remain open.",
+    "Full adult-person naturalism, empirical demographic fit, overall goal/NFL/current career/release acceptance remain OPEN."
+  ]
+}

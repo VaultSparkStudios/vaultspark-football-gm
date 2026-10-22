@@ -1,0 +1,75 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {buildHeadMesh3d,eyeLidPoint3d,headPoint3d} from '../public/lib/playerHead3d.js';
+import {tryPlayerHeadImage,playerHeadImageDiagnostics} from '../public/lib/playerHeadImage.js';
+import {portraitBlinkPose} from '../public/lib/playerPortraitMotion.js';
+const colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'};
+
+test('eye and closing lid polygons share lateral samples with an opaque meeting margin',()=>{
+ const cases=[{}, {eyeAperture:.7,eyeTilt:-2,faceLength:.92,facialAsymmetry:-1}, {eyeAperture:1.2,eyeTilt:2,faceLength:1.09,facialAsymmetry:1}];
+ for(const appearance of [...cases,...cases.map(a=>({...a,fineFaceVersion:'fine-face-v1'}))]){
+  const mesh=buildHeadMesh3d({...appearance,hairstyle:'shaved'},colors,{headOnly:true});
+  for(const side of[-1,1]){
+   const globe=mesh.parts.find(p=>p.name===`eye-globe-${side}`),eyeStart=mesh.indices[globe.firstIndex];
+   for(const lid of[-1,1]){
+    const fold=mesh.parts.find(p=>p.name===`eye-lid-${side}-${lid}`),foldStart=mesh.indices[fold.firstIndex];
+    for(let column=0;column<=12;column++){
+     assert.equal(mesh.vertices[(eyeStart+column)*10],mesh.vertices[(foldStart+column)*10],'lateral polygon grids align');
+     const point=eyeLidPoint3d(appearance,side,lid,column/12,0,1);
+     assert.deepEqual(point,eyeLidPoint3d(appearance,side,-lid,column/12,0,1),'closed margins meet');
+     const ex=point[0]-side*mesh.anatomy.eyeOffset;
+     assert.ok(point[2]>mesh.eyeDepths[side<0?0:1]+Math.sqrt(Math.max(.01,121-ex*ex)),'closed meeting margin covers the globe');
+    }
+   }
+  }
+ }
+});
+test('saved blink phase remains periodic, bounded and returns to the open pose',()=>{
+ for(const delay of[-7,0,2.7,40])for(let tick=-100;tick<=1000;tick++){
+  const time=tick/20,pose=portraitBlinkPose(time,delay);assert.ok([0,.25,.5,.75,1].includes(pose));assert.equal(pose,portraitBlinkPose(time+5.6,delay));
+ }
+ assert.equal(portraitBlinkPose(0),0);assert.equal(portraitBlinkPose(5.4),1);assert.equal(portraitBlinkPose(5.6),0);assert.equal(portraitBlinkPose(NaN),0);
+});
+test('head-only projection removes fixed prototype anatomy while retaining every head surface',()=>{
+ const appearance={hairstyle:'long',hairTexture:'wavy',hairDensity:.6,facialHair:'full-beard',faceLength:1.09};
+ const before=structuredClone(appearance),full=buildHeadMesh3d(appearance,colors,{identitySeed:'same-person'}),head=buildHeadMesh3d(appearance,colors,{identitySeed:'same-person',headOnly:true});
+ assert.deepEqual(appearance,before);assert.ok(!head.parts.some(p=>['neck','training-top'].includes(p.name)));
+ assert.equal(head.parts.length,full.parts.length-2);
+ // Compare emitted triangle coordinates, normals and materials after index
+ // offsets change; camera mounting must not create a second head recipe.
+ for(const part of head.parts){
+  const original=full.parts.find(p=>p.name===part.name);assert.equal(part.indexCount,original.indexCount);
+  for(let k=0;k<part.indexCount;k++){
+   const left=head.indices[part.firstIndex+k]*10,right=full.indices[original.firstIndex+k]*10;
+   assert.deepEqual(head.vertices.subarray(left,left+10),full.vertices.subarray(right,right+10));
+  }
+ }
+ assert.ok(head.vertices.byteLength+head.indices.byteLength<1650000);
+});
+test('server or non-graphical consumers retain fallback without creating a renderer',()=>{
+ assert.equal(tryPlayerHeadImage({appearance:{version:'portrait-identity-v3',fineFaceVersion:'fine-face-v1'},visualFrame:{}}),null);
+ assert.deepEqual(playerHeadImageDiagnostics(),{cacheEntries:0,cacheLimit:32,draws:0,meshBuilds:0,unavailable:false,contexts:0});
+});
+
+test('saved ear size and shape retain a folded surface attached to the same skull',()=>{
+ for(const extent of[.7,1.3])for(const narrow of[true,false]){
+  const a={hairstyle:'shaved',earSize:extent,earShape:extent,faceWidth:narrow?.88:1.10,faceLength:narrow?.92:1.09,headDepth:narrow?.85:1.15},raw=JSON.stringify(a);
+  const mesh=buildHeadMesh3d(a,colors,{headOnly:true});
+  for(const side of[-1,1]){
+   const outward=[side*Math.cos(.56),0,Math.sin(.56)];
+   for(const name of[`ear-helix-${side}`,`ear-antihelix-${side}`]){
+    const ridge=mesh.parts.find(p=>p.name===name),offset=mesh.indices[ridge.firstIndex]*10;
+    const normal=mesh.vertices.subarray(offset+3,offset+6);
+    assert.ok(normal.reduce((sum,n,i)=>sum+n*outward[i],0)>.9,'folded cartilage normal faces out of its inclined ear plane');
+   }
+   const part=mesh.parts.find(p=>p.name===`ear-${side}`),vertices=[...new Set(mesh.indices.subarray(part.firstIndex,part.firstIndex+part.indexCount))];
+   const residuals=vertices.map(index=>{
+    const [x,worldY,z]=mesh.vertices.subarray(index*10,index*10+3),skull=headPoint3d(a,Math.atan2(x,z),151-worldY);
+    return Math.hypot(x,z)-Math.hypot(skull[0],skull[2]);
+   });
+   assert.ok(Math.min(...residuals)<0,'ear surface overlaps its saved skull');
+   assert.ok(Math.max(...residuals)>0,'ear surface retains external volume');
+  }
+  assert.equal(JSON.stringify(a),raw);
+ }
+});

@@ -1,0 +1,60 @@
+// Artistic hair flow, shared across projections. Saved natural texture and
+// cosmetic seeds supply shape; these controls are not population frequencies.
+import {interpolateHairTexture,continuousHairCoordinate} from './continuousHairTexture.js';
+const n=v=>Math.round(v*100)/100;
+const bounded=(v,f,lo,hi)=>Number.isFinite(v)?Math.max(lo,Math.min(hi,v)):f;
+const waves={straight:[.6,1],wavy:[3.7,2],curly:[5.8,4.5],coily:[4.2,9]};
+const volumes={straight:0,wavy:2.5,curly:6,coily:9};
+function hash(value){let h=2166136261;for(const c of String(value))h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0;}
+function waveParameters(a,seed,fiber){
+  const texture=continuousHairCoordinate(a)!==null?[interpolateHairTexture(a,[.6,3.7,5.8,4.2]),interpolateHairTexture(a,[1,2,4.5,9])]:Object.hasOwn(waves,a.hairTexture)?waves[a.hairTexture]:waves.straight;
+  const match=String(fiber).match(/^(flow:[-\d]+|side):(\d+)$/);
+  const strand=match?Number(match[2]):0,bundle=match?`${match[1]}:${Math.floor(strand/6)}`:fiber;
+  const h=hash(`${seed}:long-flow:${bundle}`),phase=(h%997)/997*Math.PI*2+(strand%6)*.02;
+  const curve=bounded(a.hairCurvature,1,.65,1.45),wave=bounded(a.hairWaveScale,1,.65,1.5);
+  return {amplitude:texture[0]*curve*(.88+((h>>>10)%991)/991*.24),frequency:texture[1]/wave*Math.PI*2*(.88+((h>>>20)%983)/983*.24),phase};
+}
+export function longHairWave(a,seed,fiber,t){
+  const {amplitude,frequency,phase}=waveParameters(a,seed,fiber);
+  const envelope=Math.sin(Math.PI*Math.max(0,Math.min(1,t)))*.8+.2;
+  return amplitude*envelope*Math.sin(t*frequency+phase);
+}
+export function longHairFlowPath(a,seed,fiber,x0,y0,x1,y1,scale=1){
+  const {amplitude,frequency,phase}=waveParameters(a,seed,fiber);
+  // Analytic tangents and at least eight segments per curl retain smooth
+  // locks even at the tightest saved texture. No terminal straight segment.
+  const steps=continuousHairCoordinate(a)!==null?160:Math.max(24,Math.ceil(frequency/Math.PI*4)),dt=1/steps;
+  const precise=v=>Math.round(v*10000)/10000;
+  const point=t=>{
+    const angle=t*frequency+phase,envelope=.8*Math.sin(Math.PI*t)+.2;
+    return {x:x0+(x1-x0)*t+amplitude*envelope*Math.sin(angle)*scale,y:y0+(y1-y0)*t,
+      dx:x1-x0+amplitude*(.8*Math.PI*Math.cos(Math.PI*t)*Math.sin(angle)+envelope*frequency*Math.cos(angle))*scale};
+  };
+  let p=point(0),d=`M${precise(p.x)} ${precise(p.y)}`;
+  for(let i=1;i<=steps;i++){
+    const q=point(i/steps),dy=(y1-y0)*dt/3;
+    d+=` C${precise(p.x+p.dx*dt/3)} ${precise(p.y+dy)} ${precise(q.x-q.dx*dt/3)} ${precise(q.y-dy)} ${precise(q.x)} ${precise(q.y)}`;
+    p=q;
+  }
+  return d;
+}
+export function longHairFrontOutline(a,seed){
+  const volume=interpolateHairTexture(a,[0,2.5,6,9])??(Object.hasOwn(volumes,a.hairTexture)?volumes[a.hairTexture]:0);
+  const right=longHairFlowPath(a,seed,'outline-right',227+volume,110,233+volume,225,.32);
+  // Flow paths run downward; reverse the left by swapping their endpoints.
+  const leftReturn=longHairFlowPath(a,seed,'outline-left-return',85-volume,225,95-volume,110,.32);
+  return `M95 ${110} C87 91 91 74 102 61 C118 41 148 36 166 43 C192 36 222 59 227 90 L${n(227+volume)} 110 ${right.replace(/^M[^C]+/,'')} Q${n(230+volume)} 236 ${n(221+volume)} 229 Q${n(215+volume)} 238 209 228 C205 188 210 154 205 119 C202 94 189 81 171 77 Q157 81 147 83 C127 87 115 100 111 120 C114 157 106 195 112 226 Q106 236 100 229 Q${n(91-volume)} 236 ${n(85-volume)} 225 ${leftReturn.replace(/^M[^C]+/,'')} Q94 123 95 110Z`;
+}
+
+// Jaw-length loose hair forms a curtain behind and beside the ear in profile,
+// with the same saved texture/flow authority as the two front curtains.
+export function longHairSideOutline(a,seed,back){
+  const volume=interpolateHairTexture(a,[0,2.5,6,9])??(Object.hasOwn(volumes,a.hairTexture)?volumes[a.hairTexture]:0);
+  const length=bounded(1+(bounded(a.hairLength,1,.5,2)-1)*.08,1,.94,1.08);
+  const bottom=102*length,left=back-7-volume*.55,right=-5+volume*.2;
+  const down=longHairFlowPath(a,seed,'side-outline-front',right-8,43,right,bottom,.45);
+  const up=longHairFlowPath(a,seed,'side-outline-back',left+3,bottom,left,43,.5);
+  // Match the crown's winding so overlapping subpaths stay filled instead of
+  // cancelling into an artificial hole beside the ear.
+  return `M${n(back-1)} 23 Q${n(right-15)} 24 ${n(right-8)} 43 ${down.replace(/^M[^C]+/,'')} Q${n(left+10)} ${n(bottom+5)} ${n(left+3)} ${n(bottom)} ${up.replace(/^M[^C]+/,'')} C${n(left-4)} 35 ${n(left-3)} 27 ${n(back-1)} 23Z`;
+}

@@ -75,13 +75,40 @@ test("manual depth chart snap shares rebalance the room and influence game usage
   );
 
   session.advanceWeek();
+  assert.deepEqual(session.getDepthChart("BUF").RB.slice(0, rbChart.length), rbChart,
+    "weekly maintenance must preserve the GM's depth order before kickoff");
   session.advanceWeek();
+  assert.deepEqual(session.getDepthChart("BUF").RB.slice(0, rbChart.length), rbChart);
 
   const firstTimeline = session.getPlayerProfile(rbChart[0], { seasonType: "regular" }).timeline;
   const secondTimeline = session.getPlayerProfile(rbChart[1], { seasonType: "regular" }).timeline;
   const firstSnaps = firstTimeline.find((entry) => entry.year === 2026)?.stats?.snaps?.offense || 0;
   const secondSnaps = secondTimeline.find((entry) => entry.year === 2026)?.stats?.snaps?.offense || 0;
   assert.ok(secondSnaps > firstSnaps);
+});
+
+test("controlled depth reconciliation removes departures, appends arrivals and survives restore", () => {
+  const session = createSession({ seed: 102, startYear: 2026, controlledTeamId: "BUF" });
+  const room = session.getDepthChart("BUF").RB.slice();
+  const chosen = [room[2], room[0], room[1], ...room.slice(3)];
+  assert.equal(session.setDepthChart({ teamId: "BUF", position: "RB", playerIds: chosen,
+    snapShares: { [chosen[0]]: .18 } }).ok, true);
+  const departed = session.getPlayerById(chosen[1]);
+  departed.teamId = "FA";
+  const newcomer = structuredClone(session.getPlayerById(chosen[2]));
+  newcomer.id = "DEPTH-ARRIVAL-BUF-RB";
+  newcomer.overall = 99;
+  session.league.players.push(newcomer);
+  session.runAiTeamMaintenance();
+  const expected = [...chosen.filter(id => id !== departed.id), newcomer.id];
+  assert.deepEqual(session.getDepthChart("BUF").RB, expected,
+    "a high-rated arrival does not silently displace the GM's incumbent order");
+  assert.equal(session.league.depthChartSnapShares.BUF.RB[chosen[0]], .18);
+  const restored = session.constructor.fromSnapshot(session.toSnapshot(), seed => new session.rng.constructor(seed));
+  restored.runAiTeamMaintenance();
+  assert.deepEqual(restored.getDepthChart("BUF").RB, expected);
+  assert.equal(restored.league.depthChartSnapShares.BUF.RB[chosen[0]], .18);
+  assert.equal(newcomer.teamId, "BUF", "maintenance does not release the GM's arrival");
 });
 
 test("batch roster maintenance rebuilds post-draft lookups and proves normalization progress", () => {

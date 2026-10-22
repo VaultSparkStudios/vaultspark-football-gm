@@ -1,0 +1,37 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+const load=async file=>{
+ const source=fs.readFileSync(file,'utf8').replace("'./playerSurfaceLighting.js'",JSON.stringify(pathToFileURL(path.resolve('public/lib/playerSurfaceLighting.js')).href));
+ return import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+};
+const before=await load('.cache/player-ear-before.mjs'),after=await load('.cache/player-ear-candidate.mjs');
+const fixtures=JSON.parse(fs.readFileSync('docs/visual-qa/references/production-head-anatomy-fixtures-2026-10-08.json'));
+const colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'};
+const cases=[...fixtures.players.map(p=>p.appearance),...[-1,1].flatMap(extreme=>[.7,1.3].map(earSize=>({hairstyle:'shaved',faceWidth:extreme<0?.88:1.10,faceLength:extreme<0?.92:1.09,headDepth:extreme<0?.85:1.15,earSize,earShape:earSize})))];
+const findings=[];
+for(const[index,a]of cases.entries()){
+ const raw=JSON.stringify(a),old=before.buildHeadMesh3d(a,colors,{identitySeed:'ear-proof',headOnly:true}),next=after.buildHeadMesh3d(a,colors,{identitySeed:'ear-proof',headOnly:true});
+ assert.deepEqual(next.indices,old.indices);assert.deepEqual(next.anatomy,old.anatomy);assert.deepEqual(next.eyeDepths,old.eyeDepths);assert.equal(next.parts.length,old.parts.length);
+ let nonEarParts=0;const contacts=[];
+ for(const part of next.parts){
+  const indices=next.indices.subarray(part.firstIndex,part.firstIndex+part.indexCount),unique=[...new Set(indices)];
+  if(!part.name.startsWith('ear-')){
+   for(const i of unique)assert.deepEqual(next.vertices.subarray(i*10,(i+1)*10),old.vertices.subarray(i*10,(i+1)*10),part.name);
+   nonEarParts++;
+  }else if(part.name==='ear--1'||part.name==='ear-1'){
+   const residuals=unique.map(i=>{
+    const [x,worldY,z]=next.vertices.subarray(i*10,i*10+3),y=151-worldY;
+    const point=after.headPoint3d(a,Math.atan2(x,z),y);
+    return Math.hypot(x,z)-Math.hypot(point[0],point[2]);
+   });
+   contacts.push({part:part.name,minimumSkullResidual:Math.min(...residuals),maximumSkullResidual:Math.max(...residuals)});
+  }
+ }
+ assert.equal(JSON.stringify(a),raw);assert.ok(next.vertices.every(Number.isFinite));
+ assert.ok(contacts.every(c=>c.minimumSkullResidual<0&&c.maximumSkullResidual>0),'Auricle must overlap and extend beyond skull '+JSON.stringify({index,a,contacts}));
+ findings.push({index,vertices:next.vertices.length/10,nonEarPartsExact:nonEarParts,contacts,rawInputUnchanged:true});
+}
+fs.writeFileSync('.cache/ear-candidate-geometry.json',JSON.stringify({cases:cases.length,findings,indicesExact:true,nonEarGeometryExact:true,productionChanged:false},null,2));
+console.log(JSON.stringify({cases:cases.length,nonEarGeometryExact:true,indicesExact:true,skullAttachment:'PASS',rawInputsUnchanged:true}));

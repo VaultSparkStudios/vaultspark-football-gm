@@ -1,0 +1,13 @@
+{
+  "kind": "face-definition-current-visual-gate",
+  "receipt": "docs/visual-qa/PLAYER_FACE_DEFINITION_2026-10-07.json",
+  "receiptSha256": "0e2b0ad28581081c8f542263d8c208549f26b3b06ec77ada1a208b6d8b83261a",
+  "command": "node ../vaultspark-studio-ops/scripts/check-visual-qa.mjs --project . --changed --json",
+  "output": "a229c6",
+  "exitCode": 1,
+  "applies": true,
+  "errors": ["blockingDefectsOpen must be 0"],
+  "interpretation": "Current captures, themes, dimensions and inspection metadata are recorded. Full visual acceptance correctly remains nonpassing because the whole player is still planar, illustrated and mannequin-like.",
+  "nextRequiredOutcome": "Improve complete face/body naturalism and compatible individual proportions, then inspect actual surfaces before a new acceptance decision.",
+  "wholeGoalComplete": false
+}

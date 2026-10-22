@@ -134,7 +134,7 @@ async function assertPublishedMountContract() {
 async function main() {
   const server = await createServer();
   await new Promise((resolve) => server.listen(port, host, resolve));
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
   const page = await browser.newPage();
 
   try {

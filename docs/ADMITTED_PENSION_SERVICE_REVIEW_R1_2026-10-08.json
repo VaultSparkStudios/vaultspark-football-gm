@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "reviewedAt": "2026-10-08T10:36:02.006Z",
+  "round": 1,
+  "verdict": "FIX",
+  "scope": "Admitted earning wages joined to original-payer actual games for pension-only credit; not full NFL policy/goal.",
+  "primaryReceipt": null,
+  "primaryQualification": "R1 defects found before primary freeze. No final primary/build/browser acceptance asserted; two exact source versions and executable diagnostics are preserved below.",
+  "sourceHashes": {
+    "src/domain/pensionService.js": "5aa0deda22b66b4abd75d5ba302d942ef59026c00303f028c4e1eaeeae33b680",
+    "src/engine/seasonSimulator.js": "0d78babe22ab2ccf9d4f0e54c3fde04c91aafe5c0907e6922570d04c907cac49",
+    "src/runtime/GameSession.js": "406766f4a3142a12acba4dc0df7c5d08282dbaa46b2bbeeb614f3827a86a0923",
+    "test/admitted-pension-service.test.js": "2c0ca1a95df11432bbced12e6a9c621dc7f60e7b1b82e941f0653788ca5e3cf4",
+    "test/regular-medical-recovery.test.js": "b7b5aa2755a3938ff0c120082da5e8e62abcabb3cd80dc5a21e6d9e0c72aa855",
+    "test/headless-regular-medical.test.js": "337d6b4d994469bc34253c0e0b07e3252597ac3899a51c7427bb8fc89881ba76",
+    "test/helpers/regularMedicalFixture.js": "361338e3893e6531906bb1dde30de32dc50b53274c2e86f0bcf58412e22b66ba",
+    "tests-ui/admitted-regular-reconciliation-client.spec.js": "c7d8ef4a61680ad51b20d2e711966dcf20f80a0a6aa3bd43f966908df715859e",
+    "tests-ui/regular-medical-recovery-client.spec.js": "fc6575ad6b0d6a77e2bfbbf2e59e1ddd55710bdb98772fb94e61f38273400667"
+  },
+  "historicalFindingBindings": [
+    {
+      "file": ".cache/admitted-pension-pre-freeze-r1-pensionService.js",
+      "sha256": "1dcfaacc19f55d514cd356c5ffd5e1345e1ed2e76c808d4202cbdcb323a62c81",
+      "finding": "R1-P2-admitted-reference-length"
+    },
+    {
+      "file": ".cache/admitted-pension-period-reuse-r1-pensionService.js",
+      "sha256": "75f07911dea90b06bffdb1780bf919ac02a2455fb173e1df22fc878533d26d9b",
+      "finding": "R1-P2-one-period-many-games"
+    }
+  ],
+  "diagnostics": [
+    {
+      "file": ".cache/admitted-pension-long-id-diagnostic-r1.json",
+      "sha256": "978ed4c9c8918f2f5ef7ebac3a35a5a46d0a82cae3a01fb9359da40daae37fa7"
+    },
+    {
+      "file": ".cache/admitted-pension-period-reuse-diagnostic-r1.json",
+      "sha256": "27577fc773d633ab78b6009c148d8033ecc190a8963d9b015fe0d3cf62605280"
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/admitted-pension-service.test.js test/nfl-pension-service.test.js",
+      "passed": 19,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 86571.7277,
+      "terminalChunks": [
+        "360e99",
+        "e073ac",
+        "2c825d",
+        "c4fc4a"
+      ],
+      "qualification": "Initial source before long-reference repair."
+    },
+    {
+      "command": "node --test test/admitted-pension-service.test.js",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 21454.0471,
+      "terminalChunks": [
+        "14bd67",
+        "01fd78"
+      ],
+      "qualification": "After initial long-reference fix, before period-reuse repair."
+    },
+    {
+      "command": "Independent136-character imported player actualcommand/compressed restore",
+      "terminal": "975468",
+      "result": "First defect locally repaired: advanceok, sourceRef213characters, compressedrestoreexact."
+    },
+    {
+      "command": "Independent same earning-period hook and snapshot forgery",
+      "terminalChunks": [
+        "84a247",
+        "73c328"
+      ],
+      "result": "Oneactualweek1game+wage accepts2inventedknown-opponent games withsame sourceRef, awardsseason; actualsnapshot compatibility/directrestoreaccepts."
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1-P2-admitted-reference-length",
+      "severity": "P2",
+      "status": "initial repair independently verified; final component proof pending R2",
+      "description": "Generic180-character sourceRef limit rejects valid imported136-character playerID encoded wageRef213characters aftergame/payroll writes.",
+      "evidence": "a1e6d2 andffedca: accepted snapshot/restore, actualadvance throws PENSION_SERVICE_INVALID andsnapshotmutates with1committedwage.",
+      "requiredCorrection": "Separate admitted source-schema reference from canonicalgame textbound, retaining exactsource validation. Localrepair975468 succeeds."
+    },
+    {
+      "id": "R1-P2-one-period-many-games",
+      "severity": "P2",
+      "status": "unrepaired at R1 freeze",
+      "description": "Same admitted earning receipt supports incompatible different physical opponent games in oneperiod; physical-ID dedup alone cannot protect one earning-period authority.",
+      "evidence": "ActualBUF-ARI week1 proof plus fabricatedBUF-MIA/BUF-NYJ canonicalweek1 proofs sharingexactsourceRef yields3proofs and1awardedseason from1wage; compatibilityandactualrestoreaccept.",
+      "requiredCorrection": "Reject/deduplicate incompatible reuse of admitted sourceRef in Plan Year validator and record hook before any player writes; preserve actual repeatedsamegame idempotence anddifferent genuine periods.",
+      "qualification": "Forged/hook boundary; no normal scheduled command duplicate claim."
+    }
+  ],
+  "sourceReviewObservations": [
+    "Regular interactive/headless callers join after actual base-pay reconciliation; postseason joins after applied game to already-earned admitted payroll.",
+    "Atomic recorder stages all proposed person states before assignment; three-proof storage and salary/free-agency separation remain intentional.",
+    "Zero-net receipts retain positivegross entitlement; wage-only bye/prep/offseason paths do not themselves call physicalgame seam."
+  ],
+  "browserAttribution": "Primary browser/build in progress at discovery; no terminal browser/build receipt bound or independently rerun.",
+  "limits": [
+    "R2 must validate repairedsource andfresh frozenprimary/build/clientbindings; R1 FIX is not completion.",
+    "Annual defaults, full benefit/cash/active-contract/other-employer/dispute policy, complete pensionconformance andfullNFLrules remainopen.",
+    "Appearance/fullsuite/currentGMcareer/release/fullgoal remainopen."
+  ]
+}

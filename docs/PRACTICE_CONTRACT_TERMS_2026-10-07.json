@@ -1,0 +1,454 @@
+{
+  "kind": "actual-save-practice-contract-term-diagnostic",
+  "status": "scoped-weekly-inference-pass",
+  "recordedAt": "2026-10-07T10:27:45.190Z",
+  "year": 2026,
+  "source": {
+    "file": ".cache/managed-franchise-command/current-2026-10-07/failure-snapshot.json",
+    "sha256": "9d3e618fbd9f0ede6d6e3711f6eff8521a1b3c6c0c1f56c1a61d0e3add6387db"
+  },
+  "legacyRepair": {
+    "file": ".cache/current-annual-calendar-cap-v2-repair.json",
+    "sha256": "521f4a6b5a7001470be4e5202045c1fca5e1bfd7f0efd3daaf7b2d89db9452e4"
+  },
+  "sourceHashes": {
+    "src/domain/practiceContractTerm.js": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+    "src/domain/footballGameReference.js": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a"
+  },
+  "proved": 32,
+  "terms": [
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "BUF",
+      "lastGameId": "2026-regular-regular-season-18-NE-BUF",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "MIA",
+      "lastGameId": "2026-regular-regular-season-18-NYJ-MIA",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "NE",
+      "lastGameId": "2026-playoffs-afc-wildcard-0-NE-BAL",
+      "lastGameMedicalWeek": 19,
+      "endsAfterMedicalWeek": 20,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "NYJ",
+      "lastGameId": "2026-playoffs-super-bowl-0-DAL-NYJ",
+      "lastGameMedicalWeek": 23,
+      "endsAfterMedicalWeek": 24,
+      "proof": "completed-final",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "BAL",
+      "lastGameId": "2026-playoffs-afc-divisional-0-BAL-NYJ",
+      "lastGameMedicalWeek": 20,
+      "endsAfterMedicalWeek": 21,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "CIN",
+      "lastGameId": "2026-regular-regular-season-18-PIT-CIN",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "CLE",
+      "lastGameId": "2026-playoffs-afc-wildcard-0-CLE-NYJ",
+      "lastGameMedicalWeek": 19,
+      "endsAfterMedicalWeek": 20,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "PIT",
+      "lastGameId": "2026-regular-regular-season-18-PIT-CIN",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "HOU",
+      "lastGameId": "2026-playoffs-afc-wildcard-0-LAC-HOU",
+      "lastGameMedicalWeek": 19,
+      "endsAfterMedicalWeek": 20,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "IND",
+      "lastGameId": "2026-regular-regular-season-18-JAX-IND",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "JAX",
+      "lastGameId": "2026-regular-regular-season-18-JAX-IND",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "TEN",
+      "lastGameId": "2026-regular-regular-season-18-TEN-HOU",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "DEN",
+      "lastGameId": "2026-regular-regular-season-18-LAC-DEN",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "KC",
+      "lastGameId": "2026-playoffs-afc-conference-0-NYJ-KC",
+      "lastGameMedicalWeek": 21,
+      "endsAfterMedicalWeek": 22,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "LV",
+      "lastGameId": "2026-regular-regular-season-18-LV-KC",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "LAC",
+      "lastGameId": "2026-playoffs-afc-divisional-0-LAC-KC",
+      "lastGameMedicalWeek": 20,
+      "endsAfterMedicalWeek": 21,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "DAL",
+      "lastGameId": "2026-playoffs-super-bowl-0-DAL-NYJ",
+      "lastGameMedicalWeek": 23,
+      "endsAfterMedicalWeek": 24,
+      "proof": "completed-final",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "NYG",
+      "lastGameId": "2026-regular-regular-season-18-PHI-NYG",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "PHI",
+      "lastGameId": "2026-regular-regular-season-18-PHI-NYG",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "WAS",
+      "lastGameId": "2026-regular-regular-season-18-WAS-DAL",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "CHI",
+      "lastGameId": "2026-playoffs-nfc-wildcard-0-CHI-SEA",
+      "lastGameMedicalWeek": 19,
+      "endsAfterMedicalWeek": 20,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "DET",
+      "lastGameId": "2026-regular-regular-season-18-GB-DET",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "GB",
+      "lastGameId": "2026-playoffs-nfc-wildcard-0-ARI-GB",
+      "lastGameMedicalWeek": 19,
+      "endsAfterMedicalWeek": 20,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "MIN",
+      "lastGameId": "2026-regular-regular-season-18-MIN-CHI",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "ATL",
+      "lastGameId": "2026-playoffs-nfc-divisional-0-ATL-SEA",
+      "lastGameMedicalWeek": 20,
+      "endsAfterMedicalWeek": 21,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "CAR",
+      "lastGameId": "2026-regular-regular-season-18-NO-CAR",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "NO",
+      "lastGameId": "2026-regular-regular-season-18-NO-CAR",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "TB",
+      "lastGameId": "2026-regular-regular-season-18-TB-ATL",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "ARI",
+      "lastGameId": "2026-playoffs-nfc-divisional-0-ARI-DAL",
+      "lastGameMedicalWeek": 20,
+      "endsAfterMedicalWeek": 21,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "LAR",
+      "lastGameId": "2026-regular-regular-season-18-LAR-ARI",
+      "lastGameMedicalWeek": 18,
+      "endsAfterMedicalWeek": 19,
+      "proof": "completed-bracket-nonparticipant",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "SF",
+      "lastGameId": "2026-playoffs-nfc-wildcard-0-SF-ATL",
+      "lastGameMedicalWeek": 19,
+      "endsAfterMedicalWeek": 20,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    },
+    {
+      "ok": true,
+      "version": "club-final-game-practice-term-v1",
+      "year": 2026,
+      "teamId": "SEA",
+      "lastGameId": "2026-playoffs-nfc-conference-0-SEA-DAL",
+      "lastGameMedicalWeek": 21,
+      "endsAfterMedicalWeek": 22,
+      "proof": "playoff-elimination",
+      "finalGameId": "2026-playoffs-super-bowl-0-DAL-NYJ"
+    }
+  ],
+  "legacyOutsideTerm": [
+    {
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "year": 2026,
+      "week": 24,
+      "payCents": 3277778,
+      "practiceCents": 0,
+      "additionalCents": 3277778,
+      "capChargeCents": 3277778,
+      "capTreatmentVersion": "injury-compensation-cap-v2"
+    },
+    {
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "year": 2026,
+      "week": 25,
+      "payCents": 3277778,
+      "practiceCents": 0,
+      "additionalCents": 3277778,
+      "capChargeCents": 3277778,
+      "capTreatmentVersion": "injury-compensation-cap-v2"
+    },
+    {
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "year": 2026,
+      "week": 26,
+      "payCents": 3277778,
+      "practiceCents": 0,
+      "additionalCents": 3277778,
+      "capChargeCents": 3277778,
+      "capTreatmentVersion": "injury-compensation-cap-v2"
+    }
+  ],
+  "limits": [
+    "Weekly game-calendar projection of AppendixJ term; no exact ISO contract-end date claim",
+    "Existing payment records are preserved, not removed or retrospectively reclassified",
+    "New salary/claim/annual user-CPU integration remains required",
+    "Not complete NFL rules, long-rights workflow, current-source30, full appearance or release acceptance"
+  ],
+  "review": {
+    "subject": "Pure weekly practice-contract end inference from canonical completed games",
+    "reviewer": "/root/studio_reviewer",
+    "rounds": [
+      {
+        "round": 1,
+        "verdict": "fix",
+        "findings": 1,
+        "fixed": 1,
+        "tests": 5,
+        "detail": "Final-participant branch could bypass earlier playoff elimination; repaired common chronology preflight."
+      },
+      {
+        "round": 2,
+        "verdict": "pass",
+        "findings": 0,
+        "tests": 6,
+        "detail": "Independent finalist/elimination regressions and actual32-club reconstruction pass; CL20 matches."
+      }
+    ],
+    "sourceSha256": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+    "testSha256": "a20f9ee39334a517b75b71810bb6906280d658ee4f9a4ebeb5d16c451602dcbb",
+    "limits": [
+      "Not workflow integration, exact ISO dates or full NFL rules acceptance"
+    ]
+  },
+  "distribution": {
+    "19": 18,
+    "20": 6,
+    "21": 4,
+    "22": 2,
+    "24": 2
+  },
+  "test": {
+    "file": "test/practice-contract-term.test.js",
+    "sha256": "a20f9ee39334a517b75b71810bb6906280d658ee4f9a4ebeb5d16c451602dcbb",
+    "tests": 6,
+    "log": ".cache/logs/practice-contract-term-repaired.log",
+    "logSha256": "60fad4411c471196152c222cf9f071550076215bec3698c3cf7a6b09449601a7"
+  }
+}

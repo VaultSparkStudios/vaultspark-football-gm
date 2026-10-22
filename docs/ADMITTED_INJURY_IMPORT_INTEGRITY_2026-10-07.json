@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-07T17:32:09.914Z",
+  "status": "runtime-import-integrity-verified-policy-still-incomplete",
+  "input": {
+    "file": ".cache/managed-franchise-command/current-2026-10-07/failure-snapshot.json",
+    "sha256": "9d3e618fbd9f0ede6d6e3711f6eff8521a1b3c6c0c1f56c1a61d0e3add6387db"
+  },
+  "sourceHashes": {
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/runtime/gameSession.js": "4192c872265401d4be2dff1fe60ca394b0f61f57b13e1d30e99bbb188a6186ec",
+    "src/runtime/snapshotMigration.js": "ae17f73cac2b21ddb4b2629c52eea8cabc2a2a787e1e7b19f38663d8bb8ea86e",
+    "test/admitted-injury-continuation.test.js": "b5e34596b0ca20c380a88fb5643a35bd6b49c05c8d14300ac3425eb9d0486f75"
+  },
+  "playerId": "P2026-CLE-LB-10032552",
+  "gameId": "2026-regular-regular-season-18-CLE-BAL",
+  "originalPayer": "CLE",
+  "employmentTermEndsAfterMedicalWeek": 20,
+  "verification": {
+    "focusedTests": "9/9 PASS",
+    "realRecordedInjurySource": true,
+    "allOtherSnapshotFieldsUnchanged": true,
+    "compressedCodecActualImport": true,
+    "automaticImportValidation": true,
+    "directTransactionValidation": true,
+    "prunedArchiveRestore": true,
+    "forgedRateRejectedAtomicallyAcrossThreePaths": true
+  },
+  "limitations": [
+    "Tests execute restoration on detached inputs and verify refused snapshots plus active original session unchanged; this is not a new live HTTP/browser/UI command test.",
+    "Existing source-bound rights remain modeled admitted authority, not cryptographic proof against wholesale forged franchise data.",
+    "No reviewed continuation payment, cross-year entitlement, automatic annual claim policy, grievance/settlement or completeNFL implementation claim.",
+    "Historical30GM and browser persistence receipts predate these runtime validator changes and remain historical; no relabeling as full current-source proof.",
+    "Separate current hair work is outside this review."
+  ],
+  "independentReview": {
+    "file": ".cache/admitted-import-review-round1.json",
+    "sha256": "8b2214c53ff57ec6611858581c0b4bafbab77a01c0493a2fd69909bbf53e42b8",
+    "verdict": "PASS_WITH_SCOPE_LIMITS",
+    "round": 1
+  },
+  "reviewedPrimary": {
+    "file": ".cache/admitted-import-reviewed-primary.json",
+    "sha256": "7538ddd52d67d44f8148e85f4f53f7c12a01aca193a1a95c4597b6b75d5ee7cc"
+  },
+  "regressionChecks": "Snapshot migration and codec:12/12 PASS session42604"
+}

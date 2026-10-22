@@ -1,0 +1,189 @@
+// Visual recipes are rendering estimates, never asserted demographic facts.
+// Keep these decoders available when introducing another generation model.
+export const APPEARANCE_RECIPE_VERSION = "portrait-identity-v2";
+export const CURRENT_APPEARANCE_RECIPE_VERSION = "portrait-identity-v3";
+export const SKELETON_RECIPE_VERSION = "fictional-physique-v1";
+export const GROOMING_VERSION = "player-grooming-v1";
+export const CURRENT_GROOMING_VERSION = "player-grooming-v2";
+export const HAIR_ARRANGEMENT_VERSION = "hair-arrangement-v1";
+export const INDIVIDUAL_ANATOMY_VERSION = "individual-anatomy-v1";
+export const REGIONAL_BODY_SHAPE_VERSION = "regional-body-shape-v1";
+export const FINE_FACE_VERSION = "fine-face-v1";
+export const APPEARANCE_DETAIL_VERSION = "natural-appearance-detail-v1";
+export const FACIAL_PIGMENT_VERSION = "facial-pigment-v1";
+export const FACIAL_GROOMING_VERSION = "player-grooming-v3";
+const object = value => value !== null && typeof value === "object" && !Array.isArray(value);
+const bands = {
+  Black: [.30, 1], White: [0, .50], Multiracial: [.08, .90],
+  PacificIslander: [.20, .85], HispanicLatino: [.05, .85],
+  Asian: [.04, .70], Indigenous: [.15, .80], Undisclosed: [0, 1]
+};
+const styles = ["buzz", "fade", "crew", "short-curls", "coils", "locs", "braids", "waves", "side-part", "swept", "long", "shaved", "receding", "afro"];
+const textures = ["straight", "wavy", "curly", "coily"];
+const facialHair = ["clean", "stubble", "mustache", "goatee", "short-beard", "full-beard"];
+const groomingKeys = ["hairstyle", "hairTexture", "dyedHairColor", "hairLength", "hairDensity", "hairline", "facialHair"];
+const currentGroomingKeys = [...groomingKeys, "hairPart"];
+const facialGroomingKeys = [...currentGroomingKeys, "dyedFacialHairColor", "dyedBrowColor"];
+
+function invalid(message) {
+  const error = new Error(`Invalid player visual identity: ${message}`);
+  error.reasonCode = "SNAPSHOT_VISUAL_IDENTITY_INVALID";
+  error.status = 400;
+  throw error;
+}
+function checkRecipe(recipe, version, allowedKeys) {
+  if (!object(recipe) || !(Array.isArray(version) ? version.includes(recipe.version) : recipe.version === version) || typeof recipe.seed !== "string" || !recipe.seed.length || recipe.seed.length > 512
+    || Object.keys(recipe).some(key => !allowedKeys.includes(key))) invalid("unsupported or malformed recipe");
+}
+const visualSeed = player => String(player?.profile?.faceSeed || player?.id || player?.name || "anonymous");
+
+export function resolveAppearanceRecipe(player) {
+  const stored = player?.profile?.appearanceRecipe;
+  if (stored !== undefined) {
+    checkRecipe(stored, [APPEARANCE_RECIPE_VERSION, CURRENT_APPEARANCE_RECIPE_VERSION], ["version", "seed", "complexionBand"]);
+    const band = stored.complexionBand;
+    if (!Array.isArray(band) || band.length !== 2 || !band.every(value => typeof value === "number" && Number.isFinite(value))
+      || band[0] < 0 || band[1] > 1 || band[0] > band[1]) invalid("malformed complexion band");
+    return { ...stored, complexionBand: [...band] };
+  }
+  return { version: APPEARANCE_RECIPE_VERSION, seed: visualSeed(player), complexionBand: [...(bands[player?.profile?.identity?.surveyCategory] || [0, 1])] };
+}
+
+export function resolveSkeletonRecipe(player) {
+  const stored = player?.profile?.skeletonRecipe;
+  if (stored !== undefined) {
+    checkRecipe(stored, SKELETON_RECIPE_VERSION, ["version", "seed"]);
+    return { ...stored };
+  }
+  return { version: SKELETON_RECIPE_VERSION, seed: visualSeed(player) };
+}
+
+export function resolvePlayerGrooming(player) {
+  const stored = player?.profile?.grooming;
+  if (stored === undefined) return {};
+  const keys = stored?.version === FACIAL_GROOMING_VERSION ? facialGroomingKeys : stored?.version === CURRENT_GROOMING_VERSION ? currentGroomingKeys : groomingKeys;
+  if (!object(stored) || ![GROOMING_VERSION, CURRENT_GROOMING_VERSION, FACIAL_GROOMING_VERSION].includes(stored.version) || Object.keys(stored).some(key => key !== "version" && !keys.includes(key))) invalid("unsupported grooming record");
+  const result = {};
+  for (const key of keys) {
+    if (!Object.hasOwn(stored, key)) continue;
+    const value = stored[key];
+    const valid = key === "hairstyle" ? styles.includes(value)
+      : key === "hairTexture" ? textures.includes(value)
+        : key === "facialHair" ? facialHair.includes(value)
+          : ["dyedHairColor", "dyedFacialHairColor", "dyedBrowColor"].includes(key) ? value === null || (typeof value === "string" && /^#[0-9a-f]{6}$/i.test(value))
+            : typeof value === "number" && Number.isFinite(value) && (key === "hairLength" ? value >= .5 && value <= 2 : key === "hairPart" ? value >= .1 && value <= .9 : value >= 0 && value <= 1);
+    if (!valid) invalid(`malformed ${key}`);
+    result[key] = value;
+  }
+  return result;
+}
+
+export function resolveAppearanceDetailRecipe(player) {
+  const stored = player?.profile?.appearanceDetailRecipe;
+  if (stored === undefined) return null;
+  checkRecipe(stored, APPEARANCE_DETAIL_VERSION, ["version", "seed"]);
+  return { ...stored };
+}
+
+export function resolveFacialPigmentRecipe(player) {
+  const stored = player?.profile?.facialPigmentRecipe;
+  if (stored === undefined) return null;
+  // Compact marker aliases the explicitly saved appearance seed, never the
+  // mutable player ID. Full recipes remain readable for independent seeds.
+  if (stored === FACIAL_PIGMENT_VERSION) {
+    if (!player?.profile?.appearanceRecipe) invalid("facial pigment requires a saved appearance seed");
+    return { version: stored, seed: resolveAppearanceRecipe(player).seed };
+  }
+  checkRecipe(stored, FACIAL_PIGMENT_VERSION, ["version", "seed"]);
+  return { ...stored };
+}
+
+export function resolveHairArrangementRecipe(player) {
+  const stored = player?.profile?.hairArrangementRecipe;
+  if (stored === undefined) return null;
+  checkRecipe(stored, HAIR_ARRANGEMENT_VERSION, ["version", "seed"]);
+  return { ...stored };
+}
+
+export function resolveIndividualAnatomyRecipe(player) {
+  const stored = player?.profile?.individualAnatomyRecipe;
+  if (stored === undefined) return null;
+  checkRecipe(stored, INDIVIDUAL_ANATOMY_VERSION, ["version", "seed"]);
+  return { ...stored };
+}
+
+export function resolveRegionalBodyShapeRecipe(player) {
+  const stored = player?.profile?.regionalBodyShapeRecipe;
+  if (stored === undefined) return null;
+  checkRecipe(stored, REGIONAL_BODY_SHAPE_VERSION, ["version", "seed"]);
+  return { ...stored };
+}
+
+export function resolveFineFaceRecipe(player) {
+  const stored = player?.profile?.fineFaceRecipe;
+  if (stored === undefined) return null;
+  checkRecipe(stored, FINE_FACE_VERSION, ["version", "seed"]);
+  return { ...stored };
+}
+
+export function ensurePlayerVisualIdentity(player, { newPlayer = false } = {}) {
+  // Resolve everything before mutating, including on legacy/imported records.
+  const appearanceRecipe = resolveAppearanceRecipe(player);
+  if (newPlayer && player?.profile?.appearanceRecipe === undefined) appearanceRecipe.version = CURRENT_APPEARANCE_RECIPE_VERSION;
+  const skeletonRecipe = resolveSkeletonRecipe(player);
+  const appearanceDetailRecipe = resolveAppearanceDetailRecipe(player)
+    || (newPlayer ? { version: APPEARANCE_DETAIL_VERSION, seed: appearanceRecipe.seed } : null);
+  const resolvedFacialPigment = resolveFacialPigmentRecipe(player);
+  const facialPigmentRecipe = player?.profile?.facialPigmentRecipe === FACIAL_PIGMENT_VERSION ? FACIAL_PIGMENT_VERSION
+    : resolvedFacialPigment || (newPlayer ? FACIAL_PIGMENT_VERSION : null);
+  const hairArrangementRecipe = resolveHairArrangementRecipe(player)
+    || (newPlayer ? { version: HAIR_ARRANGEMENT_VERSION, seed: appearanceRecipe.seed } : null);
+  const individualAnatomyRecipe = resolveIndividualAnatomyRecipe(player)
+    || (newPlayer ? { version: INDIVIDUAL_ANATOMY_VERSION, seed: skeletonRecipe.seed } : null);
+  const regionalBodyShapeRecipe = resolveRegionalBodyShapeRecipe(player)
+    || (newPlayer ? { version: REGIONAL_BODY_SHAPE_VERSION, seed: skeletonRecipe.seed } : null);
+  const fineFaceRecipe = resolveFineFaceRecipe(player)
+    || (newPlayer ? { version: FINE_FACE_VERSION, seed: appearanceRecipe.seed } : null);
+  resolvePlayerGrooming(player);
+  player.profile = { ...(object(player.profile) ? player.profile : {}), appearanceRecipe, skeletonRecipe,
+    ...(appearanceDetailRecipe ? { appearanceDetailRecipe } : {}),
+    ...(facialPigmentRecipe ? { facialPigmentRecipe } : {}),
+    ...(hairArrangementRecipe ? { hairArrangementRecipe } : {}),
+    ...(individualAnatomyRecipe ? { individualAnatomyRecipe } : {}),
+    ...(regionalBodyShapeRecipe ? { regionalBodyShapeRecipe } : {}),
+    ...(fineFaceRecipe ? { fineFaceRecipe } : {}) };
+  return player;
+}
+
+export function setPlayerGrooming(player, changes) {
+  if (!object(changes) || Object.keys(changes).some(key => !facialGroomingKeys.includes(key))) invalid("unsupported grooming change");
+  const version = Object.hasOwn(changes, "dyedFacialHairColor") || Object.hasOwn(changes, "dyedBrowColor") || player?.profile?.grooming?.version === FACIAL_GROOMING_VERSION
+    ? FACIAL_GROOMING_VERSION : Object.hasOwn(changes, "hairPart") || player?.profile?.grooming?.version === CURRENT_GROOMING_VERSION
+    ? CURRENT_GROOMING_VERSION : GROOMING_VERSION;
+  const grooming = { version, ...resolvePlayerGrooming(player), ...changes };
+  resolvePlayerGrooming({ profile: { grooming } });
+  ensurePlayerVisualIdentity(player);
+  if (Object.hasOwn(changes, "hairPart") && !player.profile.hairArrangementRecipe) {
+    player.profile.hairArrangementRecipe = { version: HAIR_ARRANGEMENT_VERSION, seed: player.profile.appearanceRecipe.seed };
+  }
+  player.profile.grooming = grooming;
+  return player;
+}
+
+export function validateSnapshotVisualIdentity(snapshot) {
+  // Other sports own their visual contracts; football is the legacy default.
+  if ((snapshot.sportId || snapshot.league?.sportId || "football") !== "football") return;
+  for (const player of [...(snapshot.league?.players || []),
+    ...(Array.isArray(snapshot.league?.retiredPlayers) ? snapshot.league.retiredPlayers : []),
+    ...(Array.isArray(snapshot.league?.pendingDraft?.available) ? snapshot.league.pendingDraft.available : [])]) {
+    resolveAppearanceRecipe(player);
+    resolveSkeletonRecipe(player);
+    resolveAppearanceDetailRecipe(player);
+    resolveFacialPigmentRecipe(player);
+    resolveHairArrangementRecipe(player);
+    resolveIndividualAnatomyRecipe(player);
+    resolveRegionalBodyShapeRecipe(player);
+    resolveFineFaceRecipe(player);
+    resolvePlayerGrooming(player);
+  }
+}

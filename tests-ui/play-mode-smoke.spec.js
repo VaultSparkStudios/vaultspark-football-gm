@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { createPlayScenario, readDashboard, WEEKLY_SCENARIOS } from "./helpers/weekly-scenarios.js";
+import { createPlayScenario, readDashboard, reachScenarioWeek, WEEKLY_SCENARIOS } from "./helpers/weekly-scenarios.js";
 
 test("create league in play mode reaches the franchise screen", async ({ page }) => {
   await createPlayScenario(page);
@@ -7,7 +7,7 @@ test("create league in play mode reaches the franchise screen", async ({ page })
 });
 
 for (const scenario of WEEKLY_SCENARIOS) {
-test(`first session commits exactly one ${scenario.name} with a durable evidence trail`, async ({ page }) => {
+test(`session commits exactly one ${scenario.name} with a durable evidence trail`, async ({ page }) => {
   test.setTimeout(120_000);
   await createPlayScenario(page, scenario);
   await expect(page.locator(".tutorial-overlay")).toBeVisible();
@@ -26,10 +26,11 @@ test(`first session commits exactly one ${scenario.name} with a durable evidence
 
   await expect(page.locator("#openingContractCard")).toBeVisible();
   await expect(page.locator("#openingContractCard")).toContainText("Opening Contract");
+  await reachScenarioWeek(page, scenario);
   const before = await readDashboard(page);
   expect(before.controlledTeamId).toBe(scenario.teamId);
   expect(before.phase).toBe("regular-season");
-  expect(before.currentWeek).toBe(1);
+  if(!scenario.onBye) expect(before.currentWeek).toBe(1);
   expect(before.controlledOnBye).toBe(scenario.onBye);
   expect(before.currentWeekSchedule.byeTeams.includes(scenario.teamId)).toBe(scenario.onBye);
   expect(before.currentWeekSchedule.games.some((game) => [game.homeTeamId, game.awayTeamId].includes(scenario.teamId))).toBe(!scenario.onBye);
@@ -56,8 +57,15 @@ test(`first session commits exactly one ${scenario.name} with a durable evidence
   const decision = page.locator("#gmDecisionOptions .gm-decision-option").first();
   const tactic = page.locator("#halftimeAdjustModal .tactic-option").first();
   const byeReceipt = page.locator(".weekly-plan-receipt", { hasText: "Bye week" });
-  await expect.poll(async () => (await decision.isVisible()) || (await tactic.isVisible()) || (await byeReceipt.isVisible()), { timeout: 30_000 }).toBe(true);
-  if (await decision.isVisible()) await decision.click();
+  // An existing bye receipt can be visible before the asynchronous decision
+  // modal mounts. The source queue, rather than an instant visibility sample,
+  // determines whether this blocking choice must be handled first.
+  if(before.gmDecisionQueue.length) {
+    await expect(decision).toBeVisible();
+    await decision.click();
+  } else {
+    await expect.poll(async () => (await tactic.isVisible()) || (await byeReceipt.isVisible()), { timeout: 30_000 }).toBe(true);
+  }
   if (!scenario.onBye) {
     await expect(tactic).toBeVisible();
     await tactic.click();
@@ -105,7 +113,16 @@ test(`first session commits exactly one ${scenario.name} with a durable evidence
   await expect(page.locator(".gm-mastery-signature")).toContainText("Strongest signature");
   await expect(page.locator(".gm-mastery-signature")).toContainText(/recorded move|Still taking shape/);
   await expect(page.locator(".architecture-mastery .gm-mastery-disclaimer")).toContainText("not a causal claim");
-  await expect(page.locator(".week-room-horizon").first()).not.toHaveText(beforeSeasonChapter || "");
+  if (scenario.onBye) {
+    // This generated CHI bye is Week 7. Weeks 7 and 8 share the
+    // Identity Test chapter; advancing once must retain that season horizon.
+    expect(before.currentWeek).toBe(7);
+    await expect(page.locator(".week-room-horizon").first().locator("strong"))
+      .toHaveText("Reinforce or counter the first film pattern");
+    await expect(page.locator(".week-room-horizon").first()).toHaveText(beforeSeasonChapter || "");
+  } else {
+    await expect(page.locator(".week-room-horizon").first()).not.toHaveText(beforeSeasonChapter || "");
+  }
   await expect(page.locator("#yearCard")).toContainText(`/ W${before.currentWeek + 1}`);
   const receipt = await page.evaluate(async () => (await import("./lib/appState.js")).state.weeklyPlanReceipt);
   expect(receipt.status).toBe("committed");

@@ -1,0 +1,101 @@
+{
+  "component": "admitted-cross-year-earning-ledger",
+  "round": 2,
+  "verdict": "PASS",
+  "reviewedAt": "2026-10-07T22:25:07.153Z",
+  "primaryReceiptPath": ".cache/admitted-earning-reviewed-primary-round2.json",
+  "primaryReceiptSha256": "ed4ce897037e44322025c7a497485c30bb5243b15d3c255dc278d1848db56380",
+  "sourceHashes": {
+    "src/domain/admittedInjuryPayroll.js": "1d36c51391320b77334e1a5778bed84d0eb952e75507ef20ab5d1e339abe52a8",
+    "src/domain/earnedPracticeCap.js": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4",
+    "src/runtime/GameSession.js": "4316fa74f4af0d74f13fbe82212895b96a2df9a7b4a40b1ba26bdee6e75c314b",
+    "src/runtime/snapshotMigration.js": "53a65121579cbf5b9141a239a7186239a2df53e8843121f0eaa664e260899420",
+    "src/engine/offseasonSimulator.js": "217254d71e88494374147fbd61c0620330e94ff12de709e9ee33813d57b2fdb9",
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/domain/elevationInjuryPay.js": "ccf938fa7a3b2d8542bc86f958f0f50de76c5b2b1888e5534d02ac4673a596a0",
+    "src/domain/injurySalaryClaims.js": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2",
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "src/domain/preRolloverMedicalCalendar.js": "a3b438c0f34f6fa19b376c233d577276523de8b896fdbea89eab5ab48648abb8",
+    "src/data/nflElevationSalary.js": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e",
+    "src/data/nflSalaryCap.js": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d",
+    "src/domain/practiceContractTerm.js": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+    "src/domain/footballGameReference.js": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a",
+    "test/admitted-injury-payroll.test.js": "4b9b05ddffb0073b4ca8650160741ebd5aaef8e03d6e970950305e758579b2a9",
+    "test/admitted-injury-continuation.test.js": "b5e34596b0ca20c380a88fb5643a35bd6b49c05c8d14300ac3425eb9d0486f75",
+    "test/admitted-source-year-payroll.test.js": "3847ecf5d8d075e2bfb523873f58d8b9c8cc727e9bbe495d2a0a06765b0b4155",
+    "test/regular-injury-accrual.test.js": "8432ad763c7217cb6318f64ba8c4f2684c95d037c9059d2a11fb70e4fbcc6840",
+    "test/pre-rollover-medical-calendar.test.js": "fbd34926e384f3466c24ab1db6adbd6aac3f20555f859da43e6d0867949cc9df",
+    "test/injury-salary-claims.test.js": "b141fb05530c9f389a11b20129d1b9638716fb309e127773d007e4138dc78da1",
+    "test/nfl-cap-year-boundary.test.js": "a3c4cc815a4834900c8bddf127014fa9108edcd68c6b691e5905a31be996e7dd",
+    "test/session101-cap-authority.test.js": "0bac36b9e90d4175bddf562377bdc59936efb8f3c7a5b1749095a74c6ab4fee0",
+    "test/practice-contract-pay.test.js": "31c3034c3f1c606ac382380add0eab9e0ef64a1a7c8e57acd21e7c0629440305",
+    "test/practice-postseason-pay.test.js": "335f36e8dc1b455c1bd7068b4224c392fc2ddb60ef5c2f62153c12c3b267df21",
+    "tests-ui/admitted-injury-payroll-client.spec.js": "0daf3ce9ccd6045324f4f6fb0dbf03d9a6aced3a0ac6f0e9f8522f76fb1807c2"
+  },
+  "findings": [],
+  "priorFinding": {
+    "id": "planned-cap-cent-overflow",
+    "priorReview": ".cache/admitted-earning-review-round1.json",
+    "priorSha256": "3329b66837f6d750967416c655db28011dca850e9e629a656649574d64880cd4",
+    "status": "FIXED",
+    "evidence": "prepareAdmittedInjuryCapCharges copies all affected payer arrays, appends every proposed charge, and validates all complete BigInt sums before recordAdmittedInjuryPeriodPay initializes or changes payroll/cap state. Per-row payroll pushes avoid argument-spread batch call-stack limits."
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/admitted-injury-payroll.test.js test/admitted-injury-continuation.test.js test/admitted-source-year-payroll.test.js",
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 15839.4945,
+      "scope": "Actual payer/rate/open earning year/cap summary, phase-qualified retries, closed-year refusal, recovery, rollover, both import seams tampering, compressed restoration and original source authority."
+    },
+    {
+      "command": "node .cache/admitted-earning-round2-check.mjs",
+      "sha256": "252b8e4157f57b180815e4a3219391ec6116a09be2d29b69225f334b44cf2546",
+      "result": "PASS",
+      "checks": [
+        "Actual two-payer source fixture: late second-payer closure refuses without any session snapshot change",
+        "Both original clubs receive exact source-rate attribution once",
+        "Exact earned retry inert",
+        "Exact MAX_SAFE_INTEGER-cent planned sum accepted",
+        "Late second-payer proposed overflow refuses without input mutation",
+        "Duplicate planned charge refuses",
+        "Planned array structure does not alias original charge array",
+        "25 current source hashes,5 built hashes/normalized text equality,343 static artifact entries",
+        "Both final built receipt artifact and named replacement/load/reload/scope flags"
+      ]
+    },
+    {
+      "command": "node .cache/record-admitted-earning-review-round2.mjs",
+      "checks": [
+        "Frozen R2 primary SHA",
+        "R1 FIX receipt unchanged",
+        "Both final client receipt byte hashes and complete parsed content equal frozen primary"
+      ]
+    }
+  ],
+  "browserEvidence": {
+    "independentlyRerun": false,
+    "primaryReportedPass": 2,
+    "artifactDigest": "6a9b1d8bca59b703dc75184e8b58d62c089e01e6788c6fee1f5d1be1fbe88707",
+    "receipts": [
+      {
+        "path": ".cache/admitted-earning-client/worker.json",
+        "sha256": "712d330d54f5f0dd4dd476ae8b35605336b9f220954d3546014e25c4911bd8f5"
+      },
+      {
+        "path": ".cache/admitted-earning-client/in-page.json",
+        "sha256": "d2b8919aee0be28a8387addab35ffed4b0b8057188a4b33599fe6a100c2db54c"
+      }
+    ],
+    "scope": "Explicit built earning helper then actual import and named Settings save, actual MIA franchise replacement, BUF named load and reload. Confirms wages/cap restoration, not automatic live calendar adoption."
+  },
+  "scope": "Ledger, cap readers/annual attribution clearing and both restore authorities only. R1 logical aggregate defect fixed without claiming a huge valid franchise or actual career overflow reproduction.",
+  "limits": [
+    "This helper does not establish elapsed intervals or advance recovery. Calendar integration remains required.",
+    "All four production annual callers remain preservePostTermClaims:true; original annual auto-claim policy is not repaired by this component.",
+    "Admitted earning-year Salary treatment remains an explicit qualified simulation policy; Benefits, pension/service and complete medical/legal accounting remain unresolved.",
+    "No full appearance, current-source30-career, full NFL, whole-suite or release acceptance."
+  ],
+  "imagesInspected": []
+}

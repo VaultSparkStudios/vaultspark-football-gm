@@ -25,8 +25,15 @@ test('community API joins the guarded shared Caddy plane through localhost only'
   assert.match(transport, /\/etc\/caddy\/conf\.d\/franchise-architect-football\.caddy/);
   assert.match(transport, /caddy validate --config \/etc\/caddy\/Caddyfile/);
   assert.match(transport, /systemctl reload caddy/);
-  assert.match(transport, /openssl rand -hex 32/);
+  assert.match(transport, /test -f \.env/);
+  assert.doesNotMatch(transport, /openssl rand|POSTGRES_PASSWORD=%s/);
   assert.equal((transport.match(/docker compose --env-file \.env/g) || []).length, 2);
+  assert.match(transport, /pull community-stats\r?\n/);
+  assert.match(transport, /up -d --no-deps community-stats\r?\n/);
+  assert.doesNotMatch(transport, /\.yml (?:pull|up -d)\r?\n/);
+  const databasePreflight = transport.indexOf("{{.State.Running}}/{{.State.Health.Status}}");
+  assert.ok(databasePreflight > 0 && databasePreflight < transport.indexOf("docker login ghcr.io"));
+  assert.match(transport, /= 'true\/healthy'/);
   assert.match(transport, /IMAGE_TAG="\$DEPLOY_SHA"/);
   assert.match(transport, /docker login ghcr\.io .*--password-stdin/);
   assert.match(transport, /trap 'docker logout ghcr\.io/);

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T13:01:28.100Z",
+  "reviewRound": 1,
+  "verdict": "PASS",
+  "scope": "Modest modern facial-pigment-v1 beard/mustache geometry and material refinement only. Not full adult-person visual acceptance.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_FACIAL_HAIR_FORM_2026-10-08.json",
+  "primaryReceiptSha256": "6de3c0655676663cea3e4a2f5a61be79c93bcb65eea17085cccc10937895bff8",
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "c93cc6f60654021113ffce81ca4c26f5fabc56c2fc00c48eb782e4433ba41f38",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "src/domain/playerIdentity.js": "472a052be249ffb0a89cda8fa14ba6b6526ed99ea26966f5c5994c6841d8d4ba",
+    "src/domain/playerVisualIdentity.js": "d4aeecaab49bd3c2ad78bb3a87cb2f27c3fb2f29942ced8e2c71574e4e6a6df1",
+    "src/domain/playerMeasurements.js": "5e89f6e4cd5118878f910897f85a97ba85270aa60713327d02efc67eb579c293",
+    "test/player-facial-hair-form.test.js": "84e29b7d94a3a413c9cd829929654d98eed550e249388e333d6bbed74162e7fb",
+    "test/player-beard-volume.test.js": "ffa2b8c1fb97f9a92cc0bba3fede1809e1a15e94e5142698537da4c32e428027",
+    "test/player-hair-volume.test.js": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99",
+    "test/player-shared-head.test.js": "98aee1397f53b29dea4991b50e2b4634818024b1e660d2ffa80606e2d63e3d9f",
+    "test/player-facial-pigment.test.js": "91352c86a54d225d8b261c67e2f5b99343b01b985d5bc0d1300c147359e056fa",
+    "test/player-fine-face.test.js": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459",
+    "test/player-face-lighting.test.js": "43276a6f633a76a5b94db8b712f157d87abc12c24310e95441760be36db2d8eb",
+    "test/player-continuous-hair.test.js": "099d96880eccece3af9436c7c126e08f555200b8cf06124a1ce3b4e55b40bc6d",
+    "tests-ui/player-facial-hair-gallery.spec.js": "6ae55b3d5f17999dd1a8ba1c9fb8a02f661d7cf919514a7b26dfc089874c301a",
+    "tests-ui/player-facial-hair-production.spec.js": "3759e204303f69c6f48c488cee02ca0dd59f157048a589c5c7a8a91ff33e41d0",
+    "tests-ui/player-facial-hair-client.spec.js": "e9d9ab09c50c7f12dfdece509b5f7abcfb144f4796bd984dec817ae6775cd52e",
+    "tests-ui/player-hair-volume-gallery.spec.js": "549d40d28af6d001507744a6f9c45e28e5f92382a7b30f1b4d8e48b6e501c2d9",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe",
+    "scripts/run-test-shard.mjs": "cb5769f10d2d302b6d69fe93f305eb748ca94becc8ca1a74f1f6f81f31648f23"
+  },
+  "baseline": {
+    "file": "references/player-facial-hair-before-2026-10-08.js",
+    "sha256": "4bdfeacb0c6aaf5589d6c3824561a5d84bd80e4354153a8292a3701d7dedcf84",
+    "authority": "Exact independently accepted hair-volume R2 head source before modern beard changes"
+  },
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "c93cc6f60654021113ffce81ca4c26f5fabc56c2fc00c48eb782e4433ba41f38",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "22ddb6eb5bb5c0e94d69dc0cea80ebdb751073739a09f20834bf4eb64d6500cf",
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-facial-hair-form.test.js test/player-beard-volume.test.js test/player-hair-volume.test.js test/player-shared-head.test.js test/player-facial-pigment.test.js test/player-fine-face.test.js test/player-face-lighting.test.js",
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 20153.8154,
+      "terminalChunk": "44d2c8"
+    },
+    {
+      "command": "node .cache/facial-hair-r1-triangle-probe.mjs",
+      "probeSha256": "72f5d17ea0e90535a432d50b4f7a71e6228a13d2968e8532bf4426d0a8a3c1f6",
+      "result": "PASS",
+      "terminalChunk": "473181",
+      "cases": 64,
+      "triangleInteriorAndEdgeSamples": 1505280,
+      "maxRenderedLipMask": 0.10368945495422698,
+      "threshold": 0.25,
+      "qualification": "Four long grooming styles, two face lengths, two lip widths, four curves, maximum fullness/upper/lower scales. Seven barycentric samples per triangle, including fibers; finite sampling is not a proof over every point."
+    },
+    {
+      "check": "134 frozen source/baseline/capture/report/client byte bindings,25 current sources,8 build hashes and normalized current source/build pairs",
+      "result": "PASS",
+      "terminalChunk": "4c56a2"
+    },
+    {
+      "check": "Both frozen built-client artifact digests equal current static/deploy-manifest fingerprint",
+      "result": "PASS",
+      "artifactDigest": "22ddb6eb5bb5c0e94d69dc0cea80ebdb751073739a09f20834bf4eb64d6500cf"
+    }
+  ],
+  "sourceAssessment": [
+    "Modern branching requires exact facialPigmentVersion facial-pigment-v1; older categorical/fine records retain old coordinates and material6. New density/strand shader is confined to new material10 range, keeping old shader paths intact.",
+    "Every non-beard semantic mesh part, anatomy, eye depths, input and index topology remain unchanged in focused comparisons. New growth/tip edges and tapered bilateral mustache only affect grooming surfaces.",
+    "Curved lip trim uses saved width, fullness, lip scales and curve; independent triangle-interior samples remain below the existing rendered-mask threshold. Existing resource limits remain unchanged.",
+    "The no-scalp gallery control deliberately clears the new facial pigment version; it tests legacy pixel compatibility, while separate modern gallery/test lanes demonstrate new beard response and non-beard equality. It is not evidence that modern bearded pixels must remain unchanged."
+  ],
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/facial-hair-gallery-2-desktop-light.png",
+      "sha256": "d0e20062d8f067c61c8e57caeee95b5e73d23f3f976ebb9f33390b3bf0f85c40"
+    },
+    {
+      "path": "docs/visual-qa/captures/facial-hair-gallery-11-desktop-dark.png",
+      "sha256": "e0cfce2222fc49e91235102e3cf031215ea6369d3b8b8baa551cff5c27b158f6"
+    },
+    {
+      "path": "docs/visual-qa/captures/facial-hair-gallery-17-mobile-light.png",
+      "sha256": "939a3e544f8078a6837f6bd5316e49e58b63cb955132de53db63a3e917451042"
+    },
+    {
+      "path": "docs/visual-qa/captures/production-facial-hair-after-mobile-dark-body.png",
+      "sha256": "b2d357b62d3c50009801c9ba66505d0b08d8f313fbb8970da5bc35784f2f6241"
+    },
+    {
+      "path": "docs/visual-qa/captures/production-facial-hair-after-desktop-light-portrait.png",
+      "sha256": "edbe514c946530aa9d8e3c11ebb7cf58c5584408deab2b8139daa1b2b1858b66"
+    },
+    {
+      "path": "docs/visual-qa/captures/production-facial-hair-after-mobile-dark-motion.png",
+      "sha256": "4f725104f09450fd28c593e436a4de1641096afef651a545105c3f296f555933"
+    }
+  ],
+  "visualObservations": [
+    "Large matched reddish beard views show softer dotted skin-root transitions and a finer directional core pattern. The mustache changes from small separated bars to broader tapered lobes, with the central gap still conspicuous.",
+    "At normal mobile head sizes the change is subtle; static and moving dossier heads retain the same person and visible grooming.",
+    "Smooth beard cores, simplified ends, plastic face/ear surfaces and mannequin bodies remain unfinished. This review does not accept full hairstyle/beard recognition or naturalism."
+  ],
+  "primaryExecution": {
+    "domainPassed": 36,
+    "browserPassed": 5,
+    "attribution": "Primary executed browser/build/loading checks. Reviewer read frozen evidence, inspected six original PNGs and client assertions, and independently ran33 Node tests rather than rerunning browsers.",
+    "clients": [
+      {
+        "original": ".cache/facial-hair/client/worker.json",
+        "file": "references/facial-hair-client-0-2026-10-08.json",
+        "sha256": "29ab95d007f50cdc4578f42872e6ef57c610a6e855445c96cc4b529349cf75e2",
+        "proof": {
+          "worker": true,
+          "playerId": "P2026-BUF-QB-9487479",
+          "facialHair": "full-beard",
+          "artifactDigest": "22ddb6eb5bb5c0e94d69dc0cea80ebdb751073739a09f20834bf4eb64d6500cf",
+          "namedSaveReplacementLoadReload": true,
+          "personRecipeAndMeasurementsExact": true,
+          "frontProfileHeadImagesExact": true,
+          "frontSideMotionDimensionsExact": true,
+          "threeActualCollars": true,
+          "sixActualSectionLights": true,
+          "rngExact": true
+        }
+      },
+      {
+        "original": ".cache/facial-hair/client/in-page.json",
+        "file": "references/facial-hair-client-1-2026-10-08.json",
+        "sha256": "240cdc9ea254713d0381bf9692571daf4ab4aabf280a486acc8bd1435aa3c8f6",
+        "proof": {
+          "worker": false,
+          "playerId": "P2026-BUF-QB-9487479",
+          "facialHair": "full-beard",
+          "artifactDigest": "22ddb6eb5bb5c0e94d69dc0cea80ebdb751073739a09f20834bf4eb64d6500cf",
+          "namedSaveReplacementLoadReload": true,
+          "personRecipeAndMeasurementsExact": true,
+          "frontProfileHeadImagesExact": true,
+          "frontSideMotionDimensionsExact": true,
+          "threeActualCollars": true,
+          "sixActualSectionLights": true,
+          "rngExact": true
+        }
+      }
+    ]
+  },
+  "recordingMethod": "Manual immutable JSON receipt; the requested record-review helper is absent. No product or canonical evidence was edited.",
+  "limits": [
+    "Six original images inspected, not all96.",
+    "Pixel response, shader pattern and mesh correctness do not establish empirical appearance prevalence or complete craft.",
+    "Whole rendered mass reconstruction, population calibration, all features/full testing, current long-career equivalence, full NFL policy and release are outside this scoped PASS."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

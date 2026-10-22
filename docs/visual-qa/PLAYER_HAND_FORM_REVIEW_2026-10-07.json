@@ -1,0 +1,164 @@
+{
+  "kind": "independent-shared-relaxed-hand-form-review",
+  "round": 1,
+  "reviewedAt": "2026-10-07T21:51:04.983Z",
+  "verdict": "PASS",
+  "findings": [],
+  "primaryReceiptSha256": "5d76050051eb4ae8af31cfd1f679cc5b240b024762fe2ab488206cdb4ba8476c",
+  "primaryReceipt": {
+    "file": ".cache/hand-form-reviewed-primary.json",
+    "sha256": "5d76050051eb4ae8af31cfd1f679cc5b240b024762fe2ab488206cdb4ba8476c"
+  },
+  "scope": "Shared relaxed hand form and explicit artistic palm estimate; preserve fingertip reach and saved person",
+  "sourceHashes": {
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "public/lib/croppedHairVolume.js": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5",
+    "public/lib/fineFaceGeometry.js": "b3b748cdb8025d8755c590448f4a7b270a1791f5c6b097240bb61c7a1bbb55d2",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/longHairFlow.js": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622",
+    "public/lib/partedHairFlow.js": "be4c479ad8251c593a0b3287672b1f368573da0081a75f4c4b62ae047b539de0",
+    "public/lib/physiqueGeometryContract.js": "608c298d27308437ca4a1b926ae50303befbe61302499dd94ee0471cd994bef1",
+    "public/lib/playerCapacityStudy.js": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30",
+    "public/lib/playerFootwear.js": "cae06f6b6ec69582d916990bde2678d41f26d3814482880ad9a4bff4068934e5",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerMotion.js": "96a1df86fe417201e77b7db4be5634f6619200f9a249c7852094a1ba84dc366b",
+    "public/lib/playerPortrait.js": "3090ae612e28795e098da88df56ee40ac5ced4cdd1b594ba25fa0bd7d79a8307",
+    "public/lib/playerPortraitFace.js": "7d42ca1feb258ee2110b7ca603dc40e43fee5d2c658933b4f498832895923c97",
+    "public/lib/playerSideAppearance.js": "52c1c2a13645792df501008deb9017e7c6e00b62a4d8da4a784cf30c9afebed5",
+    "public/lib/playerTrainingKit.js": "4753d3432504266653fdd6e04faba690b9c5e4df999471fc3058d259507a65ec",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/portraitSurfaceLighting.js": "da4dd1985cdfe11408d08f39a3941506f58f7e2678b6880afaf750ac3477f11e",
+    "public/lib/profiledLimbSurface.js": "fbc74ae9113a7c653c1efe71b140753ad3c53d05eba2c01340e59bd16e358bb8",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/torsoSurface.js": "b820d669e76f55f5cdd59d86e001623dafa2d3815bdbf23ed3185c1bf49867eb",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerMeasurements.js": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "test/player-hand-length.test.js": "c5e3d3b3dbb04c72e979ab9d88744b59f830c4bb78bcb4bfd0499ca94d091e5b",
+    "test/player-individual-anatomy.test.js": "af8c6d05c7786c5c2243d4e1edf9fbdd15d8319ff7d6733231c461e64e930b31",
+    "test/player-physique-side.test.js": "67f849fc43252bb579d11bbebc170b02dac76b3d68ba6968e441d1e55c56fbc5",
+    "test/player-relaxed-hand-form.test.js": "d6ea697656aba11025451854925d21f08ed2634013bb75365ea06cd0c8a648a9",
+    "tests-ui/player-capacity-client.spec.js": "fe7917574da9c2543efc6319e4dc033cb30f13e8f1034539933808bf47af1dd1",
+    "tests-ui/whole-player-craft.spec.js": "a60bdde073952214af7a3b375bfd2a6ce608677cee6870b70a26cb1d6a4be4e5"
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-relaxed-hand-form.test.js test/player-hand-length.test.js test/player-individual-anatomy.test.js test/player-physique-side.test.js",
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 2136.2672
+    },
+    {
+      "command": "node .cache/hand-form-independent-check.mjs",
+      "sourceHashes": 30,
+      "beforeHashes": 3,
+      "builtModules": 3,
+      "captureHashes": 32,
+      "clientReceipts": 2,
+      "staticEntries": 342,
+      "immediateBaselineLegacyExactRenders": 288,
+      "unchangedModernPoses": 162,
+      "modernFiniteResourceRenders": 162
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-before-desktop-dark-body.png",
+      "sha256": "d928806be57d90fbc19e77f576d2301085fe859dc3be9336aa77813021e55813"
+    },
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-candidate-desktop-dark-body.png",
+      "sha256": "4e105509c6aca722e2d51c2767c9eed0c25c326e38fd645e6a07bc8edb065998"
+    },
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-before-mobile-light-body.png",
+      "sha256": "9c0a148b71add9863385992ae844ac4727579a831c22ab103c25c99fe36ff30a"
+    },
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-candidate-mobile-light-body.png",
+      "sha256": "8085309666f14efce9f199481dead284114adcea09760af7339fb63e6dacea92"
+    },
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-before-desktop-light-motion.png",
+      "sha256": "dbc7de0374c949551e6da6f2767be388175bfba1c7b44fc9898c49294b586961"
+    },
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-candidate-desktop-light-motion.png",
+      "sha256": "f76c668970e106b47d19ddd5966a3021cbc10e34686a0941615933f53db28f24"
+    },
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-before-mobile-dark-motion.png",
+      "sha256": "85ed5a635a1eb620ececba346883bf553029458416a7e14234aee3e5ce702153"
+    },
+    {
+      "file": "docs/visual-qa/hand-form-s117-whole-craft-hand-form-candidate-mobile-dark-motion.png",
+      "sha256": "7496aab0112b54842d2ee45b24515f6a141135c0e9b0a2e472a15195764f36d3"
+    }
+  ],
+  "visualObservations": [
+    "Matched actual dossier front/side hands show a fuller palm and separated relaxed fingers at desktop/mobile sizes.",
+    "Running hand remains attached and readable in matched dark-mobile/light-desktop states; no new visible clipping or modal/control obstruction.",
+    "The shared side view still presents the same2D hand rather than measured profile-depth anatomy. Whole mannequin-like body/limb craft remains open."
+  ],
+  "reviewedSemantics": [
+    "Palm breadth uses explicit artistic0.38 spread-span estimate with common6pixel/inch camera; stored hand length remains separate.",
+    "Hand outline wrist width is exactly the supplied terminal arm section. Its longitudinal maximum is the supplied hand length, preserving the measured arm endpoint convention within render quantization.",
+    "Front hand mirroring, side placement and articulated rotation reuse the same helper; all six IK mode poses remain exactly unchanged at tested extremes/phases.",
+    "No identity/measurement recipe/generation changes; DTOs remain unchanged by rendering.",
+    "Legacy no-fine static/moving outputs are byte-identical to immediate preserved baseline under288 matched inputs."
+  ],
+  "artifactHashes": {
+    "independentProbe": "b753ed6c1b503c33c96b489c613fc7c3516ed263020c2b00b28018393980ee18"
+  },
+  "builtEvidence": {
+    "artifactDigest": "85c5bbffda39ac08cfbdd9e9172e1cf6359ecc0d83528794f152476692b1326c",
+    "sourceBuiltNormalizedEqual": true,
+    "clientEvidence": {
+      "worker": {
+        "file": ".cache/hand-form-client/worker.json",
+        "sha256": "694295cbd4bd1f351256e1eab29e0848d1633962fa6fa89532ee5d4afdce660d",
+        "worker": true,
+        "artifactDigest": "85c5bbffda39ac08cfbdd9e9172e1cf6359ecc0d83528794f152476692b1326c",
+        "playerId": "P2026-BUF-LB-33468504",
+        "namedSaveReplacementLoadReload": true,
+        "modes": [
+          "run",
+          "acceleration",
+          "cut",
+          "jump",
+          "strength",
+          "endurance"
+        ],
+        "appearanceUnchanged": true,
+        "frameUnchanged": true
+      },
+      "in-page": {
+        "file": ".cache/hand-form-client/in-page.json",
+        "sha256": "4ac83a326740d0d1b345f111c896db01625260d9a321bf9ad6362dddde566804",
+        "worker": false,
+        "artifactDigest": "85c5bbffda39ac08cfbdd9e9172e1cf6359ecc0d83528794f152476692b1326c",
+        "playerId": "P2026-BUF-LB-33468504",
+        "namedSaveReplacementLoadReload": true,
+        "modes": [
+          "run",
+          "acceleration",
+          "cut",
+          "jump",
+          "strength",
+          "endurance"
+        ],
+        "appearanceUnchanged": true,
+        "frameUnchanged": true
+      }
+    },
+    "qualification": "Primary hash-bound worker/in-page named replacement/load/reload receipts checked; no independent browser rerun."
+  },
+  "limits": [
+    "No measured palm breadth/depth, empirical0.38 coefficient or population calibration authority.",
+    "No full-hand articulation, grip physics or exhaustive motion-cycle rendered inspection.",
+    "Only8 originals independently inspected;32 hash checks are not32 visual inspections.",
+    "Full body/appearance naturalism staysOPEN with the primary broader blocking finding; no audit item shipped, annual rule/career/release acceptance."
+  ]
+}

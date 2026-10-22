@@ -1,0 +1,325 @@
+{
+  "scope": "Actual dossier before/after production head projection; no career or demographic calibration claim",
+  "playerId": "P2026-BUF-LB-33468504",
+  "captures": [
+    {
+      "file": "output/playwright/shared-head-production-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "63ca27753e4ac1a5179a350eff1f514c4f46378c8c0f5d1ad0bf4251430135ca"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c7b95ecb035fdcf70815c8185e35aeb1fc4078585b141520273513edd1705068"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "6fb975b180c1e1866f7645c0122b199254441ae1c9833b6abb16d69088d45dae"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "14888a6810f04498c8ed56eb2cb1682cc5b0334226f7b0a92fe9013ae3ac74ec"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "3d9d18cfa38cddfdbb3f3204c35191359496b35fc62970525faf27302575a4a6"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "49d34aee5b829f0fd7f8d867478e3225d37740b14edeadba54d8653dcf27e398"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "492695c14412adbd62d1edae6039240269d331ceeeadbc8ba5a4a9c5ce3f50fb"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "56b4b08ad40e922a2318df679936476906c13f8c3cffd4949f8590e787aa5a04"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "5bf7edde75de63fb0d55e5a55926639e9ce7a36fbf3f3459054c7d99c08d9641"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6b921eda416393fe693554eda2fe5de3bb70abfd9658158e9e28f2a5da122e05"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6c1756d8e598fc7f436f94bdf8cc414936ff4ffcc3a78c1bd894e4d7fc999dab"
+    },
+    {
+      "file": "output/playwright/shared-head-production-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "a6926022c88b7412b684940ef51be204c8afaf33a367ec3aae4447282c4e5dbb"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5a33ac2bd064ddf11fbe205d7a5e1e7c8cba225e1748aff821eacf4769141625"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "839c39de28cb213b919cf15d6c084756a8b9506c1894881dcd9043719eed76c6"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e738e6651ff7b745f7c885da285cfa30495f7fef5fdfc9fc1eb0d201d873a034"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c6b5a3559391b8cc2c9ed2628044ed918c4841de432db93d9bc5f2d9db1c016f"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "624266c225f99c120e57d3888284cf5baf724b3428bdff8b227f203391e53862"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9434636e674775217782cbc15bcab7bcb518cd7510606c111f089a791842cd10"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "98c798ee754ba490c8ce64f89993ff821f6a111b95ff86869ea89876543f1376"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "50fc33dc2a32f749e34b7b2ca7ecd20af62ff96734f9b69922b1b46af7d710dd"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "4a658b09a6e71e14c22c96cab4b29f2d5e0deeb2639b7795cc6189cee4c5293b"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "016cffd6a6822905028f522c5c1b70d994545d671a27d9e68647b756a4323c4c"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f9a76a6a05fb60eb36cc009662a3732ecf9c86fade3f16f5a91884aba1930328"
+    },
+    {
+      "file": "output/playwright/shared-head-production-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b4d394ec799a1c40f0f4fcd8e0a9172561ab904954bab03c80dd481ad54ae89b"
+    }
+  ],
+  "agreement": [
+    {
+      "mode": "run",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "acceleration",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "cut",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "jump",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "strength",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "endurance",
+      "frontBody": true,
+      "sideMotion": true
+    }
+  ],
+  "diagnostics": {
+    "cacheEntries": 2,
+    "cacheLimit": 32,
+    "draws": 2,
+    "meshBuilds": 1,
+    "unavailable": false,
+    "contexts": 1
+  },
+  "cacheProof": {
+    "bounded": {
+      "cacheEntries": 32,
+      "cacheLimit": 32,
+      "draws": 37,
+      "meshBuilds": 36,
+      "unavailable": false,
+      "contexts": 1
+    },
+    "restored": true,
+    "malformed": true,
+    "malformedSkin": true,
+    "healthy": true
+  },
+  "playerUnchanged": true
+}

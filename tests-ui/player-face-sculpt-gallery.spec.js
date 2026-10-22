@@ -1,0 +1,67 @@
+import{test,expect}from '@playwright/test';
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+const capturePrefix=process.env.FACE_CAPTURE_PREFIX||'face-sculpt-gallery';
+test('current facial sculpt compares matched people and hides all closed-eye globe pixels',async({page})=>{
+ const baseline=JSON.parse(await fs.readFile('docs/visual-qa/references/production-head-anatomy-fixtures-2026-10-08.json','utf8'));
+ await page.route('**/lib/head-anatomy-current.mjs',r=>r.fulfill({path:'public/lib/playerHead3d.js',contentType:'text/javascript'}));
+ await page.route('**/lib/head-anatomy-before.mjs',r=>r.fulfill({path:process.env.FACE_CAPTURE_BASELINE==='s118'?'.cache/s118-face-before/playerHead3d.js':'docs/visual-qa/references/person-material-2026-10-08-public-lib-playerHead3d.js',contentType:'text/javascript'}));
+ await page.goto('/');await expect(page.locator('#setupStatus')).toContainText('Ready');
+ const observations=await page.evaluate(async players=>{
+  const current=await import('/lib/head-anatomy-current.mjs'),before=await import('/lib/head-anatomy-before.mjs');
+  const{appearanceSkinColor,appearanceHairColors,blendAppearanceColor}=await import('/lib/appearancePalette.js');
+  const root=document.createElement('main');root.style.cssText='padding:14px;max-width:1240px;margin:auto;color:var(--ink-strong);background:var(--surface);font-family:system-ui';
+  root.innerHTML='<h1>Matched facial sculpt comparison</h1><p>Production mesh diagnostic with controlled fictional saved fixtures. Front / three-quarter / profile. True 96×120 ordinary rasters; 240×300 native inspection rasters on desktop. Clay isolates anatomy with hair shaved and beard clean.</p>';
+  const observations=[],posePixels=new Map();
+  for(const[index,p]of players.entries()){
+   const section=document.createElement('section');section.id=`person-${index}`;section.style.cssText='padding:10px;background:var(--surface);margin-bottom:24px';section.innerHTML=`<h2>Saved person ${p.id}</h2>`;
+   const hair=appearanceHairColors(p.appearance,26),skin=appearanceSkinColor(p.appearance),colors={skin,scalp:hair.scalp,beard:hair.face,brow:hair.brow,grayShare:hair.grayShare,iris:p.appearance.eyeColor,mouth:blendAppearanceColor(skin,'#8e4948',.35)};
+   const original=JSON.stringify(p);
+   for(const[state,module,clay,blink]of[['before',before,false,0],['open',current,false,0],['half',current,false,.5],['closed',current,false,1],['clay-open',current,true,0],['clay-closed',current,true,1]]){
+    const a=clay?{...p.appearance,hairstyle:'shaved',facialHair:'clean'}:p.appearance;
+    const canvas=document.createElement('canvas');canvas.width=240;canvas.height=300;
+    const renderer=module.createHeadRenderer3d(canvas),mesh=module.buildHeadMesh3d(a,colors,{identitySeed:p.id}),saved=new Float32Array(mesh.vertices);
+    const ordinary=document.createElement('canvas');ordinary.width=96;ordinary.height=120;const ctx=ordinary.getContext('2d');
+    const block=document.createElement('div');block.id=`lid-state-${index}-${state}`;block.innerHTML=`<h3>${state}</h3>`;
+    const small=document.createElement('div'),large=document.createElement('div');small.style.cssText=large.style.cssText='display:flex;gap:4px';large.className='native';
+    const views=[];
+    for(const angle of[0,Math.PI/4,Math.PI/2]){
+     renderer.draw(mesh,a,colors,angle,{clay,blink});const pixels=renderer.readPixels();let closedExposed=null,openVisible=null,exposureSamples=[];
+     if(state==='open'||state==='clay-open')posePixels.set(`${p.id}/${clay}/${angle}`,new Uint8Array(pixels));
+     if(state==='closed'||state==='clay-closed'){const opened=posePixels.get(`${p.id}/${clay}/${angle}`);let changed=0;for(let k=0;k<pixels.length;k+=4)if(pixels[k]!==opened[k]||pixels[k+1]!==opened[k+1]||pixels[k+2]!==opened[k+2])changed++;if(changed<4)throw Error('No geometric blink response in '+state+'/'+angle);renderer.draw(mesh,a,colors,angle,{clay,blink:0});if(renderer.readPixels().some((v,k)=>v!==opened[k]))throw Error('Blink failed exact reopen');renderer.draw(mesh,a,colors,angle,{clay,blink});}
+     if(state==='closed'||state==='clay-closed'||state==='open'){
+      const hiddenIndices=new Uint16Array(mesh.parts.filter(p=>!p.name.startsWith('eye-globe-')).flatMap(p=>Array.from(mesh.indices.subarray(p.firstIndex,p.firstIndex+p.indexCount))));
+      const hiddenMesh={...mesh,indices:hiddenIndices,triangles:hiddenIndices.length/3};renderer.draw(hiddenMesh,a,colors,angle,{clay,blink});const hidden=renderer.readPixels();
+      let exposed=0;const exposedSamples=[];for(let k=0;k<pixels.length;k+=4)if(pixels[k]!==hidden[k]||pixels[k+1]!==hidden[k+1]||pixels[k+2]!==hidden[k+2]){exposed++;if(exposedSamples.length<12)exposedSamples.push({x:(k/4)%240,y:299-Math.floor(k/4/240),eye:Array.from(pixels.slice(k,k+3)),covered:Array.from(hidden.slice(k,k+3))});}
+      exposureSamples=exposedSamples;if(state==='open')openVisible=exposed;else closedExposed=exposed;
+      renderer.draw(mesh,a,colors,angle,{clay,blink});
+     }
+     ctx.clearRect(0,0,96,120);ctx.drawImage(canvas,0,0,96,120);
+     const img=document.createElement('img');img.src=ordinary.toDataURL();img.width=96;img.height=120;img.alt=`${state} ${angle} ordinary`;small.append(img);
+     const native=document.createElement('img');native.src=canvas.toDataURL();native.width=240;native.height=300;native.alt=`${state} ${angle} native`;large.append(native);
+     const rgba=ctx.getImageData(0,0,96,120).data;let colored=0;for(let k=0;k<rgba.length;k+=4)if(Math.abs(rgba[k]-17)>8||Math.abs(rgba[k+1]-26)>8||Math.abs(rgba[k+2]-31)>8)colored++;
+     if(colored<500)throw Error('Blank ordinary head');views.push({angle,ordinaryColoredPixels:colored,nativePixels:pixels.length/4,closedEyeExposedPixels:closedExposed,openVisibleEyePixels:openVisible,exposureSamples:closedExposed?exposureSamples:[]});
+    }
+    if(mesh.vertices.some((v,i)=>v!==saved[i])||JSON.stringify(p)!==original)throw Error('Camera changed identity');
+    block.append(small,large);section.append(block);renderer.dispose();observations.push({id:p.id,state,blink,clay,views,inputUnchanged:true});
+   }
+   root.append(section);
+  }
+  document.body.replaceChildren(root);return observations;
+ },[baseline.players[0],baseline.players[2],baseline.players[4]]);
+ expect(observations).toHaveLength(18);
+ const captures=[];
+ for(const[size,width,height]of[['desktop',1440,1000],['mobile',390,844]])for(const theme of['dark','light']){
+  await page.setViewportSize({width,height});await page.evaluate(async({theme,mobile})=>{(await import('/lib/themeCustomizer.js')).applyTheme(theme);document.querySelectorAll('.native').forEach(x=>x.style.display=mobile?'none':'flex');},{theme,mobile:size==='mobile'});
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  for(let person=0;person<3;person++){
+   const file=`output/playwright/${capturePrefix}-person-${person}-${size}-${theme}.png`;await page.locator(`#person-${person}`).screenshot({path:file});captures.push({file,person,theme,viewport:{width,height},sha256:crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex')});
+   if(size==='desktop'&&theme==='dark')for(const state of['open','closed','clay-closed']){
+    const nativeFile=`output/playwright/${capturePrefix}-native-${person}-${state}.png`;await page.locator(`#lid-state-${person}-${state} .native`).screenshot({path:nativeFile});captures.push({file:nativeFile,person,state,intrinsic:{width:240,height:300},theme,viewport:{width,height},sha256:crypto.createHash('sha256').update(await fs.readFile(nativeFile)).digest('hex')});
+   }
+  }
+ }
+ await fs.writeFile('output/playwright/face-sculpt-gallery.json',JSON.stringify({productionChanged:true,fullAppearanceAccepted:false,scope:'Current modern sculpt versus frozen accepted material foundation. Closed eyes must hide all globe pixels and reopen exactly. Clay removes grooming; controlled fictional fixtures establish neither population prevalence nor actual career continuity.',observations,captures},null,2));
+ expect(observations.flatMap(row=>row.views).filter(row=>row.closedEyeExposedPixels!==null).every(row=>row.closedEyeExposedPixels===0),'closed geometry must hide every eye pixel in every camera').toBe(true);
+ expect(observations.filter(row=>row.state==='open').flatMap(row=>row.views).every(row=>row.openVisibleEyePixels>=8),'open sockets must expose real eye geometry in every camera').toBe(true);
+});

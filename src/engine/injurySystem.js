@@ -1,3 +1,6 @@
+import { recordDevelopmentInjury } from "../domain/livingPotential.js";
+import { recordElevationFootballInjury,endElevationInjuryPay } from '../domain/elevationInjuryPay.js';
+
 /**
  * Injury System — Position Contact Rates & Recovery Tracking
  *
@@ -105,10 +108,12 @@ export function getSeverity(rng) {
 
 // ── Apply injury to player ────────────────────────────────────────────────────
 
-export function applyInjury(player, severity) {
+export function applyInjury(player, severity, options = {}) {
   player.injury = { type: severity.type, weeksRemaining: severity.weeksRemaining };
+  recordDevelopmentInjury(player, player.injury);
   // Accumulate re-injury risk slightly with each injury
   player.reinjuryRisk = Math.min(0.5, (player.reinjuryRisk || 0) + 0.04);
+  if(options.gameId)recordElevationFootballInjury(player,{gameId:options.gameId,origin:options.origin||'game'});
 }
 
 // ── Batch roll for all active players in a game ───────────────────────────────
@@ -123,7 +128,7 @@ export function rollGameInjuries(teamAPlayers, teamBPlayers, rng, multiplier = 1
       injuryChanceDelta: modifiers.injuryChanceDelta || 0
     })) continue;
     const severity = getSeverity(rng);
-    applyInjury(player, severity);
+    applyInjury(player, severity,options);
     player.rehabPlan = "standard";
     injured.push({
       player,
@@ -155,6 +160,13 @@ export function projectRehab(player, { extraRecoveryWeeks = 0 } = {}) {
   };
 }
 
+export function teamRecoveryModifiers(team) {
+  const discipline = Number(team?.staff?.medicalDirector?.discipline || 72);
+  const rehab = Number(team?.owner?.facilities?.rehab || 72);
+  return { extraRecoveryWeeks: Math.min(2,
+    Math.floor(Math.max(0, discipline - 80) / 14) + Math.floor(Math.max(0, rehab - 84) / 14)) };
+}
+
 export function advanceInjuryRecovery(league, options = {}) {
   let recovered = 0;
   const receipts = [];
@@ -168,6 +180,11 @@ export function advanceInjuryRecovery(league, options = {}) {
     const modifiers = options.getTeamModifiers?.(player.teamId, player) || {};
     const projection = projectRehab(player, modifiers);
     const before = Number(player.injury.weeksRemaining || 0);
+    // A long injury can span a season boundary after the prior season's
+    // occurrence accumulator was consumed. Continue counting actual missed
+    // weeks without counting the original injury occurrence twice.
+    const health = player.developmentHealth ||= { injuries: 0, majorInjuries: 0, missedWeeks: 0 };
+    health.missedWeeks = Number(health.missedWeeks || 0) + 1;
     const injuryType = player.injury.type;
     player.injury.weeksRemaining = Math.max(0, before - projection.weeklyRecovery);
     const policy = REHAB_PLANS[projection.plan];
@@ -175,6 +192,7 @@ export function advanceInjuryRecovery(league, options = {}) {
     if (player.injury.weeksRemaining === 0) {
       recovered++;
       player.injury = null;
+      endElevationInjuryPay(player);
       const receipt = {
         playerId: player.id,
         player: player.name,

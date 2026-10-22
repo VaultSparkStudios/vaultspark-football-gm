@@ -1,0 +1,1132 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T01:27:56.718Z",
+  "sourceRevision": "local-worktree",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "status": "measured-rig-component-verified-full-athlete-open",
+  "scope": "Current regional v2 measured neutral skeleton and shared static/motion dimensions; legacy decoder preserved",
+  "sourceHashes": {
+    "public/lib/physiqueGeometryContract.js": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241",
+    "public/lib/playerPortrait.js": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219",
+    "public/lib/playerMotion.js": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7"
+  },
+  "builtHashes": {
+    "static/lib/physiqueGeometryContract.js": {
+      "source": "public/lib/physiqueGeometryContract.js",
+      "sha256": "8dc4e28c8e38129c4847b41eab8ce6d08aef8c4db12eb64095710812c8e11241",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "c3ee62006562b920963060b23387e81781bf3da4b6721181b7822f6fbc485219",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "2ce290d52a34da4472f39aaa31ddb394ef5137ffde0006fb240d45167d28eef1",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerCapacityStudy.js": {
+      "source": "public/lib/playerCapacityStudy.js",
+      "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "artifactDigest": "3804ade7a26e9c912891e2f4cdf2ebd6600c34b78ef6e6bc9d0b72ae1d9c314f",
+  "baseline": {
+    "sourceHashes": {
+      "public/lib/physiqueGeometryContract.js": {
+        "file": ".cache/neutral-rig-before/physiqueGeometryContract.js",
+        "sha256": "36b6b78c7f175a88eab73da5d8248e02ece2d939ca2a18aaaa10a6e2c354c6df"
+      },
+      "public/lib/playerPortrait.js": {
+        "file": ".cache/neutral-rig-before/playerPortrait.js",
+        "sha256": "235296bec8e08b921bb753eec1d3ba91b7d91e6edcb7dbf3e5bf2a790c912742"
+      },
+      "public/lib/playerMotion.js": {
+        "file": ".cache/neutral-rig-before/playerMotion.js",
+        "sha256": "ce306007bfd025e4b7eebcdde00d83d44aa7e5861adbac88db6ed952fb304e87"
+      },
+      "public/lib/playerCapacityStudy.js": {
+        "file": ".cache/neutral-rig-before/playerCapacityStudy.js",
+        "sha256": "80a453033a08bfb31db0f8663c3e44f8df6057aaee13157b3856750f5ed4bf30"
+      }
+    },
+    "scope": "Fresh24 controlled before captures taken before mutation; final40 include24 matched controls plus16 final-only gallery/dossier images"
+  },
+  "reports": [
+    {
+      "file": "output/playwright/s117-measured-body-neutral-rig-before.json",
+      "sha256": "68c67450314c69e62cfb126cfe027ffabac63c08c2a832d41d16078cb86435c1"
+    },
+    {
+      "file": "output/playwright/s117-measured-body-neutral-rig-final2.json",
+      "sha256": "e6cf3a55fd50e4174f4061b7cb73e6e13d472c33c0f009e3e321b3b493f5860e"
+    }
+  ],
+  "captures": [
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-mass-desktop-dark.png",
+      "sha256": "57075428f61997d8ad1b5ee824bf3e434ab094cddaeb1e88b5b0112d1d1d1067",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-mass-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-mass-desktop-light.png",
+      "sha256": "be7f740e48d569b9ab917bd0caf8d84a0e25a1749327917ec218424834307553",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-mass-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-mass-mobile-dark.png",
+      "sha256": "b55fd63cf00302a4e8e1124909fb3c44dd7a7595287627e4abc05b9c4c23b572",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-mass-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-mass-mobile-light.png",
+      "sha256": "7df3616c876f112dc8098269faa95eaac7694614a8ea462c90e7eacb2d8b7ea7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-mass-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-stature-desktop-dark.png",
+      "sha256": "2a68ed27cc5bad42f131c2c8ae6f0eaf7ca5ada7d23f7b644f6b689b87d0b193",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-stature-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-stature-desktop-light.png",
+      "sha256": "be14adffecbf84c744c09c8988398635113e1b7ac289fd62c1b22e9ace87b192",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-stature-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-stature-mobile-dark.png",
+      "sha256": "1b177399002905a87f6e984cb0446dbfdb970e9d8f61913b9c2d9733b001403c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-stature-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-stature-mobile-light.png",
+      "sha256": "8fe83375e05f76397857a1ccdd5457a845b853e3c906ab19d12ee04beb221388",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-stature-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-proportions-desktop-dark.png",
+      "sha256": "77dfdbafd89289143f4166a4186203a35c6a8c76f43b0f16b3bc5aa0da6248fa",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-proportions-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-proportions-desktop-light.png",
+      "sha256": "622e40632252edd81f70cf681cf1889be1e3d9dca64928f9f452673e51f4ef63",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-proportions-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-proportions-mobile-dark.png",
+      "sha256": "96829db8be1222d9dc1a3742da704393d0ed253382ad139dacd2cc09ae8abf1d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-proportions-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-proportions-mobile-light.png",
+      "sha256": "4561480be2d7503d31adc305a49bcc874e829dfe0fa68ad4ed11feefd75bf2e5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-proportions-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-capacities-desktop-dark.png",
+      "sha256": "6abedd8a132ab14dc25a89032eb22dc83268ce7fc09164dbcd2cdbde5dd22c70",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-capacities-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-capacities-desktop-light.png",
+      "sha256": "4934b647a04678f8ea7a0e6375cc0f2285fca9c86f9f5c714fd8d7560cb3d5ee",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-capacities-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-capacities-mobile-dark.png",
+      "sha256": "a4d4fd158c0aa217d01d56a7a87ed3845a0a35e707643ad1e601eae76e8509e8",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-capacities-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-capacities-mobile-light.png",
+      "sha256": "55254b26a7b7402fed6013442de9f43f4831a7d765a54bc00ce3c5d1c9af2271",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-capacities-mobile-light.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-desktop-dark.png",
+      "sha256": "2834d5e6e84c8727a01ffdac7a2006ea14d527aad99b6445ad9730302c7ecbb3",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-desktop-light.png",
+      "sha256": "de43a4e0e102c8f1f593799355de1eb1a2d782b20074c73fa3ac6cd8fb45cbe5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-mobile-dark.png",
+      "sha256": "74e547dd8ed43e941c05c6f1d8d022994b03ef7b1f91b13dc1ef00f67c914e8b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-mobile-light.png",
+      "sha256": "1677ba085991291e473c561e833ddcb6aa3573f7460c64beedcaac936da7c1c5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-heavy-fast-light-slow-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-recorded-reach-desktop-dark.png",
+      "sha256": "bf4d210ddba7ad42edb54e3834fcbe77fdddb99d0742c540b664eceb3460d9ce",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-recorded-reach-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-recorded-reach-desktop-light.png",
+      "sha256": "ef6872e2b3e8bffd164d6b0055fc9c693028030dedfabd0857b463757764e436",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-recorded-reach-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-recorded-reach-mobile-dark.png",
+      "sha256": "e8262a73bd8e498692a6675b3f475a91f43c879f9ffa0472011cb22f5bcbab44",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-recorded-reach-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-before-recorded-reach-mobile-light.png",
+      "sha256": "17159775308dbde77e72f9bded04ad9f1d4a3e2996e779e5c475181cd6b4c9ea",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "before",
+      "original": "output/playwright/s117-measured-body-neutral-rig-before-recorded-reach-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-mass-desktop-dark.png",
+      "sha256": "6b25cd7c8a0baab558074053e85ef4b418df94d5138037a12a4b87ea571b12c4",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-mass-desktop-dark.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-mass-desktop-light.png",
+      "sha256": "059ca4dec42439f848e21e808438b9e1e60496ca47ffdee15f9aa8ab83428e8e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-mass-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-mass-mobile-dark.png",
+      "sha256": "08450af51115398b87d5a72c177da2ed95583a31da8a97c39a1fdddd180e1f39",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-mass-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-mass-mobile-light.png",
+      "sha256": "750c4e289b62ff7c03be06f4fa33ddcfa2c5c67c1b50e674cf780854f9f2b799",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "mass",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-mass-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-stature-desktop-dark.png",
+      "sha256": "d544ab09a3fe17e9c1f6908c2e9b0f1e9a4268a5ee0b5bfe0137ce8ca8174dc1",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-stature-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-stature-desktop-light.png",
+      "sha256": "5d89e62efef39f475b55d9ec36766ca1c2af44a5e79773bf5c4d826f84ea0494",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-stature-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-stature-mobile-dark.png",
+      "sha256": "f9bc2892b038b41440cf77a5ae620089b48fff024b956c1164c21556e458c1e7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-stature-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-stature-mobile-light.png",
+      "sha256": "936e007de7ba8408cf813bb46e85988d081cbeb2fad6f5380f56c9835854a027",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "stature",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-stature-mobile-light.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-proportions-desktop-dark.png",
+      "sha256": "5e87882e574c29616b3b5c2b34c09e2cddb4446d8254d65786c6675d642a0051",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-proportions-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-proportions-desktop-light.png",
+      "sha256": "aa26043ad7aa4ef5715ebe7de482aa6011940749059334273fb5469f9b052059",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-proportions-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-proportions-mobile-dark.png",
+      "sha256": "cc617178115ccbed0d8932add89750bf93f934c8704b9bf8e82eb385fcff42fa",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-proportions-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-proportions-mobile-light.png",
+      "sha256": "b9c30163e2bd9d57d7186efec150ce753d3af19604d5965cb70e7d4989b03391",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "proportions",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-proportions-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-capacities-desktop-dark.png",
+      "sha256": "830acfc8f5156998303374fea1297926ad25bf9e60c35fbb1b4f5fbe8bc8b509",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-capacities-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-capacities-desktop-light.png",
+      "sha256": "7d54e3da21d6bb55f64fdc627aeeb7831c28cb099a662e8ff04853e535144728",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-capacities-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-capacities-mobile-dark.png",
+      "sha256": "00b598913fdafd20a05eacfa1a0431b42899c4396e3f90debc10c62066024284",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-capacities-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-capacities-mobile-light.png",
+      "sha256": "824f2d813eed52e0b131317b17636fb60246a646a2fa1b304b93a218dfe84843",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "capacities",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-capacities-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-desktop-dark.png",
+      "sha256": "1768d1be9e7dd86881453793df9a9f19437de168d7bf1e0c7165db89d5a89d3e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-desktop-light.png",
+      "sha256": "f6fda8e314439b1b4a637bc8a2bc28be5e6b07de2d1d89d669a4df52baf95484",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-desktop-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-mobile-dark.png",
+      "sha256": "e5d7141be5a15f40975f8633c6e4f44de5771523e8320d087d910f118f81c53f",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-mobile-light.png",
+      "sha256": "2eecb711fcf5b4ecabc618e9eedac8a1d4bede460fe65e74cf05a3ce411b9a7a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "heavy-fast-light-slow",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-heavy-fast-light-slow-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-recorded-reach-desktop-dark.png",
+      "sha256": "abddca5a3df731306ae3b8e5b0d030af5ea5eca4ce32c2f7bd88b84388ae0906",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-recorded-reach-desktop-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-recorded-reach-desktop-light.png",
+      "sha256": "d4f938266fcc7269323f9ce4b6df2d8fd0e0c6df082bd06edd7e39bb1a84b34c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-recorded-reach-desktop-light.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-recorded-reach-mobile-dark.png",
+      "sha256": "74261fdbd7f3f5c607b36f11b6c215f5e1ca151edea39e36f1b2c206153cb96d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-recorded-reach-mobile-dark.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-measured-body-neutral-rig-final2-recorded-reach-mobile-light.png",
+      "sha256": "7121a628e5d86e7c31693e248beb58d9e67a78fafda8acbdb6c1b0f8a6e14895",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "measured-body-comparison",
+      "state": "recorded-reach",
+      "phase": "final2",
+      "original": "output/playwright/s117-measured-body-neutral-rig-final2-recorded-reach-mobile-light.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-dark-gallery.png",
+      "sha256": "bd501c9a7a37553036368bfc0accacf05a49fa6309cbf7d5f5d2d223062ed5da",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "whole-player-gallery",
+      "state": "gallery",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-dark-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-dark-head.png",
+      "sha256": "39af8e3e54cc70f1a2e0ab4beb9e208e38fc8fa651bf8cf4725f9dfbf3785efd",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "head",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-dark-head.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-dark-body.png",
+      "sha256": "e3a0c2a528aae9875f89228cf818910d42e783141b873de16094e00a2155723d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-dark-body.png",
+      "primaryInspected": true
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-dark-motion.png",
+      "sha256": "e3a0c2a528aae9875f89228cf818910d42e783141b873de16094e00a2155723d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-dark-motion.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-light-gallery.png",
+      "sha256": "f543ca2f34e7ec4e06e05ed38faad84d94847ec1a73b5354f569cefc6985dd8e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "whole-player-gallery",
+      "state": "gallery",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-light-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-light-head.png",
+      "sha256": "3dde950c48704219e5883cf20eac20d92846556c7f1a7df0d31ddf59f7aeb4e8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "head",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-light-head.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-light-body.png",
+      "sha256": "2d68fbf9ab3830f8a13c61cf514af9e602acbc4d85c0bf536de8915d449029d2",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-light-motion.png",
+      "sha256": "2d68fbf9ab3830f8a13c61cf514af9e602acbc4d85c0bf536de8915d449029d2",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-desktop-light-motion.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-dark-gallery.png",
+      "sha256": "dc12b0d8142bbc1c93722c4d9cde7b6eb6203410ed200a0663e153edc8940412",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "whole-player-gallery",
+      "state": "gallery",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-dark-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-dark-head.png",
+      "sha256": "112cd80a7f5720f5c0d0339c6367ec9e73ffb452128d6f98ea183eb8a64e1355",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "head",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-dark-head.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-dark-body.png",
+      "sha256": "5314e76992483e33237f52b29f887b5635ac4e333fcb086e9e4d66f9b3f91da8",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-dark-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-dark-motion.png",
+      "sha256": "478bafa3f38a2a220bef397d992a88b665bee5d364e6a1121731fdf00178fd73",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-dark-motion.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-light-gallery.png",
+      "sha256": "abc1fb335b8f089fe2af6eb4a83c2db37b8c405d4cf6248af1446244513d8d0b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "whole-player-gallery",
+      "state": "gallery",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-light-gallery.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-light-head.png",
+      "sha256": "4ccd2ae57b68ec67222e3e9f1ddeb3b010dbf61ed6f028b68ca12680a62b7258",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "head",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-light-head.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-light-body.png",
+      "sha256": "1840b1d1ac016d733d66ea86d7315be2597bc3b614585c2459a702bdf722fc43",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "body",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-light-body.png",
+      "primaryInspected": false
+    },
+    {
+      "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-light-motion.png",
+      "sha256": "c20a9d2d0bba7bd2072ffff4c5f0900b204779babb09017c57818aeb7e63bfa6",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "actual-player-dossier",
+      "state": "motion",
+      "phase": "final",
+      "original": "output/playwright/s117-whole-craft-neutral-rig-final2-mobile-light-motion.png",
+      "primaryInspected": true
+    }
+  ],
+  "clients": [
+    {
+      "file": ".cache/player-measured-rig-client/worker.json",
+      "sha256": "11b6ca20ba1a7eda538f6bba1c44b67a0663fef327c42abd8c2349faf3058702",
+      "worker": true,
+      "artifactDigest": "3804ade7a26e9c912891e2f4cdf2ebd6600c34b78ef6e6bc9d0b72ae1d9c314f",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": false,
+      "limbContoursRendered": false,
+      "adultFaceContoursRendered": false,
+      "facialPlanesRendered": false,
+      "regionalSectionPathsRendered": true,
+      "measuredRigRendered": true
+    },
+    {
+      "file": ".cache/player-measured-rig-client/in-page.json",
+      "sha256": "bd8b10523a7e023d59a2ec7e6e8e62196ec4cd4d28ba36a7e5e776fb4ef609fb",
+      "worker": false,
+      "artifactDigest": "3804ade7a26e9c912891e2f4cdf2ebd6600c34b78ef6e6bc9d0b72ae1d9c314f",
+      "playerId": "P2026-BUF-LB-33468504",
+      "namedSaveReplacementLoadReload": true,
+      "modes": [
+        "run",
+        "acceleration",
+        "cut",
+        "jump",
+        "strength",
+        "endurance"
+      ],
+      "appearanceUnchanged": true,
+      "frameUnchanged": true,
+      "faceContactRendered": false,
+      "limbContoursRendered": false,
+      "adultFaceContoursRendered": false,
+      "facialPlanesRendered": false,
+      "regionalSectionPathsRendered": true,
+      "measuredRigRendered": true
+    }
+  ],
+  "reviews": [
+    {
+      "file": "docs/visual-qa/PLAYER_MEASURED_RIG_REVIEW_R1_2026-10-07.json",
+      "sha256": "a0a3f1e0d13edfae496300931058ac79b238fe7447106cac7c5850eb0880b0e6",
+      "verdict": "FIX"
+    },
+    {
+      "file": "docs/visual-qa/PLAYER_MEASURED_RIG_REVIEW_R2_2026-10-07.json",
+      "sha256": "4d73f904cebf647e701a52ac1095eb2286833e9814f8122105bbdea88f8650a4",
+      "verdict": "PASS"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "file": "captures/s117-measured-body-neutral-rig-before-mass-desktop-dark.png",
+        "sha256": "57075428f61997d8ad1b5ee824bf3e434ab094cddaeb1e88b5b0112d1d1d1067"
+      },
+      {
+        "file": "captures/s117-measured-body-neutral-rig-before-capacities-mobile-light.png",
+        "sha256": "55254b26a7b7402fed6013442de9f43f4831a7d765a54bc00ce3c5d1c9af2271"
+      },
+      {
+        "file": "captures/s117-measured-body-neutral-rig-final2-mass-desktop-dark.png",
+        "sha256": "6b25cd7c8a0baab558074053e85ef4b418df94d5138037a12a4b87ea571b12c4"
+      },
+      {
+        "file": "captures/s117-measured-body-neutral-rig-final2-stature-mobile-light.png",
+        "sha256": "936e007de7ba8408cf813bb46e85988d081cbeb2fad6f5380f56c9835854a027"
+      },
+      {
+        "file": "captures/s117-measured-body-neutral-rig-final2-recorded-reach-desktop-light.png",
+        "sha256": "d4f938266fcc7269323f9ce4b6df2d8fd0e0c6df082bd06edd7e39bb1a84b34c"
+      },
+      {
+        "file": "captures/s117-whole-craft-neutral-rig-final2-desktop-dark-body.png",
+        "sha256": "e3a0c2a528aae9875f89228cf818910d42e783141b873de16094e00a2155723d"
+      },
+      {
+        "file": "captures/s117-whole-craft-neutral-rig-final2-mobile-light-motion.png",
+        "sha256": "c20a9d2d0bba7bd2072ffff4c5f0900b204779babb09017c57818aeb7e63bfa6"
+      }
+    ],
+    "findings": [
+      "Neutral shoulder/hip centers remain skeletal while compatible bulk and arm clearance vary.",
+      "Split-limb material and antialias seams exposed by primary inspection are repaired with a shared world-space material and one combined visible path.",
+      "The complete person remains illustrated/mannequin-like; full naturalism and empirical body fitting are still open."
+    ],
+    "fixesApplied": [
+      "Shared measured neutral rig and exact articulated bone endpoints.",
+      "Matched front/profile neutral projection and six-mode 3D transverse spacing.",
+      "Rounded shoulder surfaces and continuous joined-limb material.",
+      "Independent optional-footwear finding repaired at measured ankle; historical pose fixture remains scoped to its original decoder."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "verification": {
+    "focused": {
+      "output": "73fe00",
+      "pass": 48,
+      "fail": 0,
+      "skip": 0
+    },
+    "beforeBrowser": {
+      "output": "cf022a",
+      "pass": 1,
+      "fail": 0
+    },
+    "finalBrowser": {
+      "output": "305003",
+      "pass": 3,
+      "fail": 0,
+      "seconds": 49.6
+    },
+    "builtBrowser": {
+      "output": "f63531",
+      "pass": 2,
+      "fail": 0,
+      "seconds": 43.5
+    },
+    "legacy": {
+      "frames": 9,
+      "exactRenderHashes": 72,
+      "fixture": "test/fixtures/player-regional-sections-v1.json",
+      "sha256": "9f976ee5026ab12a018e24e2121e4027daa45b6ed6fc56c3547dd73712c4ada6"
+    },
+    "build": {
+      "output": "5a0717",
+      "precache": "91f260196b7f",
+      "assets": 313,
+      "kb": 3481
+    },
+    "boot": {
+      "output": "926d3b",
+      "bytes": 649321,
+      "maxBytes": 730000,
+      "modules": 51,
+      "maxModules": 58,
+      "lazyLeaks": 0
+    },
+    "reachability": {
+      "modules": 134,
+      "htmlEntries": 4
+    }
+  },
+  "limitations": [
+    "Presentation geometry and density remain artistic estimates, not an empirical NFL anatomy/composition or motion-capture model.",
+    "Absent longitudinal hand measurements retain unknown saved status and use the existing explicit presentation estimate.",
+    "Recorded regional girth fitting, demographic frequency calibration and complete-person naturalism remain required.",
+    "Final current30 actual managed seasons, full feature/NFL checks, closeout, main push and staging/production delivery remain open."
+  ]
+}

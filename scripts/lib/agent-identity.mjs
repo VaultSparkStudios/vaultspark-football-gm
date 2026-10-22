@@ -91,3 +91,58 @@ export function receiptIdentity({ actor = 'studio-ops', repoRoot, explicit, env 
 export function agentLabel(agent) {
   return agent ? String(agent) : 'UNATTRIBUTED';
 }
+
+/**
+ * Caller-side runtime evidence of which agent is executing, resolved WITHOUT
+ * reading the session lock.
+ *
+ * `resolveAgentIdentity()` deliberately falls back to the lock, which is correct
+ * for attribution — the lock IS the session's declared identity. But it also
+ * makes the lock unfalsifiable: a consumer asking "is this lock mine?" gets back
+ * the lock's own answer. This is the independent witness, the process's own
+ * environment, which only the running runtime can set.
+ *
+ * Returns `agent: null` when no runtime signal exists (a plain shell, a CI job, a
+ * spawned helper). That is "cannot corroborate", never "mismatch" — collapsing
+ * the two would make every non-agent caller read as a foreign lock.
+ */
+export function runtimeAgentSignal(env = process.env) {
+  const explicit = (env.STUDIO_AGENT || '').trim();
+  if (explicit) return { agent: explicit, source: 'env:STUDIO_AGENT' };
+  if (env.CLAUDECODE === '1' || env.CLAUDE_CODE_ENTRYPOINT || env.CLAUDE_CODE_SESSION_ID) {
+    return { agent: 'claude-code', source: 'env:CLAUDECODE' };
+  }
+  if (env.CODEX_SESSION_TRIGGER || env.CODEX_CONTEXT_LIMIT || env.CODEX_SANDBOX) {
+    return { agent: 'codex', source: 'env:CODEX_*' };
+  }
+  return { agent: null, source: 'unavailable' };
+}
+
+/**
+ * Decide whether a session lock describes the CALLING process (S342 [SIL #2]).
+ *
+ * S342: `context-meter` read a 52.6h-old lock left by a dead Codex session and
+ * reported `203.8% used · remainingTokens 0 · CLOSEOUT` for a Claude session that
+ * was actually at 33.3% · CONTINUE — a 170-point error on the one signal that
+ * decides whether a session may continue at all. The meter was not wrong about
+ * its subject; it was attached to the wrong subject, and never checked.
+ *
+ * Four states, deliberately — collapsing any pair reintroduces the defect:
+ *   no-lock        nothing to verify against
+ *   uncorroborated no runtime signal; PROCEED, but say the check did not run
+ *   corroborated   lock agent matches the independent witness
+ *   foreign-lock   they disagree; this reading belongs to another session
+ *
+ * `foreign-lock` must never be "repaired" by adopting the runtime agent: the
+ * lock's `context_limit` and `session_start` would still belong to the other
+ * session, so the number would stay wrong while looking fixed. The only correct
+ * response is to refuse a verdict.
+ */
+export function lockSubjectVerdict({ lockAgent = null, env = process.env, signal = null } = {}) {
+  const sig = signal || runtimeAgentSignal(env);
+  const base = { runtimeAgent: sig.agent, runtimeSource: sig.source, lockAgent: lockAgent || null };
+  if (!lockAgent) return { ...base, state: 'no-lock', trustworthy: false };
+  if (!sig.agent) return { ...base, state: 'uncorroborated', trustworthy: true };
+  if (sig.agent === lockAgent) return { ...base, state: 'corroborated', trustworthy: true };
+  return { ...base, state: 'foreign-lock', trustworthy: false };
+}

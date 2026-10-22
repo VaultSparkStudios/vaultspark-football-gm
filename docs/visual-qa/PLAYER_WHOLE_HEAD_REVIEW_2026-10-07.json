@@ -1,0 +1,178 @@
+{
+  "kind": "independent-whole-head-candidate-review",
+  "round": 1,
+  "reviewedAt": "2026-10-07T21:36:24.304Z",
+  "verdict": "PASS",
+  "primaryReceiptSha256": "e80f273eeb5f646f5f74e63f0a84a96f4c4d5caefeab6e3d3907427b2c476ef6",
+  "primaryReceipt": {
+    "file": ".cache/whole-head-reviewed-primary.json",
+    "sha256": "e80f273eeb5f646f5f74e63f0a84a96f4c4d5caefeab6e3d3907427b2c476ef6"
+  },
+  "scope": "Continuous long hair, grouped cropped locks and shared landmark facial form; not complete player acceptance",
+  "sourceHashes": {
+    "public/lib/fineFaceGeometry.js": "b3b748cdb8025d8755c590448f4a7b270a1791f5c6b097240bb61c7a1bbb55d2",
+    "public/lib/portraitSurfaceLighting.js": "da4dd1985cdfe11408d08f39a3941506f58f7e2678b6880afaf750ac3477f11e",
+    "public/lib/playerPortraitFace.js": "7d42ca1feb258ee2110b7ca603dc40e43fee5d2c658933b4f498832895923c97",
+    "public/lib/playerSideAppearance.js": "52c1c2a13645792df501008deb9017e7c6e00b62a4d8da4a784cf30c9afebed5",
+    "public/lib/longHairFlow.js": "cb610f1526f46664b690f538affca0fd0b10385b643bdbe97f59c49f7213c622",
+    "public/lib/croppedHairVolume.js": "4fc2c7305c6be8ec38e98db0b611b404ccae559a304be04c01701d0d728bd2c5",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/partedHairFlow.js": "be4c479ad8251c593a0b3287672b1f368573da0081a75f4c4b62ae047b539de0",
+    "public/lib/playerPortrait.js": "d5460bcfaf782f443b1177d9aa4dd22e91359dfb21d75700e6e673868afd7ba8",
+    "public/lib/playerMotion.js": "d804595cbf93db0f41a17ddc6abd859129a3ac9370030933074ec8627eb56a20",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerMeasurements.js": "e745765eb998468625c98fe508c604db0c59a8dbc594cec0b5af38a06a798be9",
+    "tests-ui/player-hair-coherence-dossier.spec.js": "d64f17d96bb1e13d7bb986d1a80b70ae93036f03070d7e0406121813f720cf84",
+    "tests-ui/portrait-combinations.spec.js": "87a942dda3516ee973cb67ad3306caf01c1aed516f959c3587ddccae44fe452d",
+    "tests-ui/portrait-natural-detail.spec.js": "fbbd716f66b279e1bf12461be06cb31b11eeba2a90e138d47c3f1d8d2840c638",
+    "tests-ui/player-capacity-client.spec.js": "fe7917574da9c2543efc6319e4dc033cb30f13e8f1034539933808bf47af1dd1",
+    "test/player-whole-head-form.test.js": "93c3db4cec3e90446b3a7c50d5b3bd6cb61359eea39af9fa155a53de12eff5e5",
+    "test/player-fine-face.test.js": "1f7075aec4635cee19d5eb8d5336e85c9eddeae12dee5e71211e4ada711f76c4",
+    "test/player-face-lighting.test.js": "95f3951303089cceffcb657eed6d51ec517f83f2cb66115a619da630d76ae43e",
+    "test/fixtures/whole-head-legacy-hashes.json": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a"
+  },
+  "findings": [],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-whole-head-form.test.js test/player-fine-face.test.js test/player-face-lighting.test.js test/player-portrait-features.test.js",
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "durationMs": 3543.1238
+    },
+    {
+      "command": "node .cache/whole-head-independent-check.mjs",
+      "pass": true,
+      "sourceHashes": 25,
+      "beforeHashes": 5,
+      "builtModules": 6,
+      "captureHashes": 224,
+      "clientReceipts": 2,
+      "staticArtifactEntries": 342,
+      "frozenCompleteDependencyLegacyRenders": 384,
+      "modernMalformedResourceRenders": 576
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "file": "output/playwright/s117-whole-head-before-legal-12-desktop-dark.png",
+      "sha256": "fb1d3f78f830e66261520d513557d2b4f6c39285a35d97c9e5027dad874eb59d"
+    },
+    {
+      "file": "output/playwright/s117-whole-head-candidate-legal-12-desktop-dark.png",
+      "sha256": "44cd7c9006796dbcee3b68a7c9cfdfb2dbcce3980661a6f4a6384ce208955917"
+    },
+    {
+      "file": "output/playwright/s117-whole-head-before-legal-28-desktop-light.png",
+      "sha256": "fa27161749fcafa1175efea1af7ef8c854dd6d0230101969a215efcf3e30d5ea"
+    },
+    {
+      "file": "output/playwright/s117-whole-head-candidate-legal-28-desktop-light.png",
+      "sha256": "7b4ac77cdf132bd568d9b83e079bf7d932ecddbd969a1175d0e9ec458b62fb1d"
+    },
+    {
+      "file": "output/playwright/whole-head-dossier-before-afro-mobile-light-portrait.png",
+      "sha256": "d3679f6d56fba4bb59bc0900183986535dfa8826b65b0bfca07c7cc80fc6a158"
+    },
+    {
+      "file": "output/playwright/whole-head-dossier-candidate-afro-mobile-light-portrait.png",
+      "sha256": "132864ed57aefece464ae007d8dcfcfe25f057b48785aa80c6839c6e625c9a25"
+    },
+    {
+      "file": "output/playwright/whole-head-dossier-before-side-part-mobile-dark-portrait.png",
+      "sha256": "4e9d48ec5df1ced35cebc39cf6af7a22f46bd07e91067f0e6e93e007695d5d54"
+    },
+    {
+      "file": "output/playwright/whole-head-dossier-candidate-side-part-mobile-dark-portrait.png",
+      "sha256": "bf55286eb6fe640e7e09b34c6e979fd7dffcfe33fdfed316bca00e33d35f9d69"
+    },
+    {
+      "file": "output/playwright/whole-head-dossier-before-long-desktop-dark-body.png",
+      "sha256": "6da09a18af32cb075555a930fc2e4c5fdf4488f73260110edb50495ac69259e0"
+    },
+    {
+      "file": "output/playwright/whole-head-dossier-candidate-long-desktop-dark-body.png",
+      "sha256": "2b18eb43cf26acc57d439165276de9979adcd142618b538bdb4ca43283d9b2a3"
+    },
+    {
+      "file": "output/playwright/s117-whole-head-before-legal-28-mobile-light.png",
+      "sha256": "db193a39fa24bcce5abe1cde463387a39cc8172d192252ad7cc0f51b8b3cacfe"
+    },
+    {
+      "file": "output/playwright/s117-whole-head-candidate-legal-28-mobile-light.png",
+      "sha256": "6c44cb49bf0cdd8528376288e1e470e62ce0bf23abeb0682d64ecb1c6cbcebc5"
+    }
+  ],
+  "visualObservations": [
+    "Matched cropped galleries show larger visible eye pigment and low-frequency dark lock material; curly/coily short cuts remain subtly differentiated rather than a complete natural-hair result.",
+    "Matched long hair retains distinct straight/wavy/curly/coily flow with lower mesh contrast and continuous group shape; repetitive curls and crown cap appearance remain stylized.",
+    "Actual afro mobile-light and side-part mobile-dark dossiers remain readable without head clipping; eyes are more open and facial light has a visible planar treatment. These illustrated faces are not full naturalism acceptance.",
+    "Matched desktop body views preserve visible frame/kit layout and share the refined head; very small static/moving heads do not establish detailed profile-eye readability or complete motion-cycle craft."
+  ],
+  "reviewedSemantics": [
+    "Long flow uses analytic tangents with bounded segment counts and per-bundle immutable seed jitter; focused actual cubic interpolation verifies approximation and C1 continuity including reverse flow.",
+    "New cropped grouped material is gated by fine-face and natural-detail versions, clipped to existing scalp contour and uses saved hair pigment/curvature/wave fields.",
+    "Eye aperture remains tied to saved control and same horizontal width; pupil change is modern-only.",
+    "No domain identity/frame recipes or pose source changed in this renderer component; no gameplay randomness introduced.",
+    "Frozen five-module dependency reconstruction independently reproduces all384 prior no-fine SVG hashes, alongside current matching outputs."
+  ],
+  "artifactHashes": {
+    "independentProbe": "af136cc086ef1b2dfd5b7ed5bf2ba37f80ceeddfb3877b1894a1d18862eb8bcc",
+    "legacyFixture": "0d0b256f019a39392a2fe07119d340da5f0482e2791178c2ba00e38310c9e93a"
+  },
+  "builtEvidence": {
+    "artifactDigest": "30102f7a3091a5f12327fd0aaf05fd3c38851864aaaa3fb61d80993a191d6f3f",
+    "sourceBuilt": "All six normalized text identities checked; front/side differ only line endings.",
+    "clientEvidence": {
+      "worker": {
+        "file": ".cache/player-capacity-client/worker.json",
+        "sha256": "1e389409507fc9173f9f9350d85ce2596d348cce1b40cf90a46f1e99006813e6",
+        "worker": true,
+        "artifactDigest": "30102f7a3091a5f12327fd0aaf05fd3c38851864aaaa3fb61d80993a191d6f3f",
+        "playerId": "P2026-BUF-LB-33468504",
+        "namedSaveReplacementLoadReload": true,
+        "modes": [
+          "run",
+          "acceleration",
+          "cut",
+          "jump",
+          "strength",
+          "endurance"
+        ],
+        "appearanceUnchanged": true,
+        "frameUnchanged": true
+      },
+      "in-page": {
+        "file": ".cache/player-capacity-client/in-page.json",
+        "sha256": "7cfa1b5a52ac076f5973a63f2a5f72f20653bd5add2662a703e428e07b2eb146",
+        "worker": false,
+        "artifactDigest": "30102f7a3091a5f12327fd0aaf05fd3c38851864aaaa3fb61d80993a191d6f3f",
+        "playerId": "P2026-BUF-LB-33468504",
+        "namedSaveReplacementLoadReload": true,
+        "modes": [
+          "run",
+          "acceleration",
+          "cut",
+          "jump",
+          "strength",
+          "endurance"
+        ],
+        "appearanceUnchanged": true,
+        "frameUnchanged": true
+      }
+    },
+    "qualification": "Hash-bound primary worker/in-page receipts inspected; browser was not independently rerun."
+  },
+  "limitations": [
+    "No full realistic people, population frequencies, worldwide/country calibration or body/hand quality completion.",
+    "Only12 original images independently viewed;224 hash checks do not imply224 visual inspections.",
+    "Primary35 focused and5 browser results remain primary evidence; independent execution here is19 tests plus explicit numerical/resource/baseline and binding probes.",
+    "No current final30GM, full-feature annual/NFL rule or release acceptance.",
+    "Existing blocking broader craft finding remains open; component PASS does not clear CANON053 whole-quality gate."
+  ]
+}

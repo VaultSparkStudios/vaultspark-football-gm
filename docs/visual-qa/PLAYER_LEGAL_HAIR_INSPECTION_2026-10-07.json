@@ -1,0 +1,3542 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-07T16:33:53.962Z",
+  "status": "diagnostic-verified-appearance-defects-open",
+  "scope": "Controlled renderer gallery, not actual roster distribution, naturalism approval or save-command proof",
+  "sourceHashes": {
+    "tests-ui/player-legal-hair-gallery.spec.js": "25ca2841516c8f3b8fa48141aec00325e3baa948b0e054f2e88c54ca29f80cbb",
+    "src/domain/playerVisualIdentity.js": "fa15ca36e3cb1adbd34b32ac223812fc405e1f7791179c6bbb886a917ddd9935",
+    "src/domain/playerIdentity.js": "0ecab6664d3ef4632374fb10cf857bda3d4d471edd3bfdca05a68ae0a4c7a3fe",
+    "public/lib/playerPortraitFace.js": "4afe0b4e411c37b00340419e8c15d2715bb86e45bb306a6f76ca454f0d5b9bc3",
+    "public/lib/playerSideAppearance.js": "ec8ebd40e950a4979e96610553b6498e4c84723b3c07e5c3d336e8006d13c5bb",
+    "public/lib/portraitAppearanceContract.js": "1a9e00be9cc00ecc86e837606fac047d5bf9f7cb444bd89a42e5fe1ef74c8d96",
+    "public/lib/hairGrayFibers.js": "b6b42e70c8c19f76c3554ce5302931c3a0ad679ca9f4e1fb9f6922150936aa49",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "public/lib/fineFaceGeometry.js": "851b45188f6c7cd5ac8969c66afbcd509cefe2487044c673464cd07164d007df",
+    "public/lib/portraitSurfaceLighting.js": "2ae38a234a5acfd802b4453f982fdd069326bd64495b4a80d9f461934bd73fc7",
+    "public/lib/longHairFlow.js": "cf41a2bae772fdbea65111cb91b878decb67c4bea90474e196645b6bc24dc8fd",
+    "public/lib/structuredHair.js": "ce4e9f616ff7018d777fd84c23f9440d5103d682fc5c8e646c430acc4a9a5ea1",
+    "public/lib/partedHairFlow.js": "f4cb8ae1a5da780b1180bb826b3d23a0e3be3cf1c8ef9273cd1f09b92a762d42",
+    "public/lib/appearancePalette.js": "777f97ac4e30b6f678160f7f6181b4ccac941a428764918791eecfae50548c4b",
+    "public/styles.css": "6a02088c4136f7673543d5d7ce6ea371894859d9d7d41263758edecba80fabce"
+  },
+  "report": {
+    "file": "output/playwright/legal-hair-gallery-full-head.json",
+    "sha256": "fb1458c54a8ed96473fbade9233c5292134f4b628c525c650900e6ea8773b582"
+  },
+  "cases": [
+    {
+      "key": "buzz/straight",
+      "textureVisible": true
+    },
+    {
+      "key": "buzz/wavy",
+      "textureVisible": true
+    },
+    {
+      "key": "buzz/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "buzz/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "fade/straight",
+      "textureVisible": true
+    },
+    {
+      "key": "fade/wavy",
+      "textureVisible": true
+    },
+    {
+      "key": "fade/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "fade/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "crew/straight",
+      "textureVisible": true
+    },
+    {
+      "key": "crew/wavy",
+      "textureVisible": true
+    },
+    {
+      "key": "crew/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "crew/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "short-curls/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "short-curls/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "coils/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "afro/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "afro/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "waves/wavy",
+      "textureVisible": true
+    },
+    {
+      "key": "waves/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "waves/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "side-part/straight",
+      "textureVisible": true
+    },
+    {
+      "key": "side-part/wavy",
+      "textureVisible": true
+    },
+    {
+      "key": "side-part/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "side-part/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "swept/straight",
+      "textureVisible": true
+    },
+    {
+      "key": "swept/wavy",
+      "textureVisible": true
+    },
+    {
+      "key": "swept/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "swept/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "long/straight",
+      "textureVisible": true
+    },
+    {
+      "key": "long/wavy",
+      "textureVisible": true
+    },
+    {
+      "key": "long/curly",
+      "textureVisible": true
+    },
+    {
+      "key": "long/coily",
+      "textureVisible": true
+    },
+    {
+      "key": "locs/straight",
+      "textureVisible": false
+    },
+    {
+      "key": "locs/wavy",
+      "textureVisible": false
+    },
+    {
+      "key": "locs/curly",
+      "textureVisible": false
+    },
+    {
+      "key": "locs/coily",
+      "textureVisible": false
+    },
+    {
+      "key": "braids/straight",
+      "textureVisible": false
+    },
+    {
+      "key": "braids/wavy",
+      "textureVisible": false
+    },
+    {
+      "key": "braids/curly",
+      "textureVisible": false
+    },
+    {
+      "key": "braids/coily",
+      "textureVisible": false
+    },
+    {
+      "key": "receding/straight",
+      "textureVisible": false
+    },
+    {
+      "key": "receding/wavy",
+      "textureVisible": false
+    },
+    {
+      "key": "receding/curly",
+      "textureVisible": false
+    },
+    {
+      "key": "receding/coily",
+      "textureVisible": false
+    },
+    {
+      "key": "shaved/straight",
+      "textureVisible": false
+    },
+    {
+      "key": "shaved/wavy",
+      "textureVisible": false
+    },
+    {
+      "key": "shaved/curly",
+      "textureVisible": false
+    },
+    {
+      "key": "shaved/coily",
+      "textureVisible": false
+    }
+  ],
+  "captures": [
+    {
+      "file": "legal-hair-full-head-0-desktop-dark.png",
+      "keys": [
+        "buzz/straight",
+        "buzz/wavy",
+        "buzz/curly",
+        "buzz/coily",
+        "fade/straight",
+        "fade/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "buzz/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "ba5aec00087c6e011af6cf844f34f9b0ede18053c5e47dfed35a0b8729bf3102",
+      "sourceFile": "output/playwright/legal-hair-full-head-0-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-0-desktop-light.png",
+      "keys": [
+        "buzz/straight",
+        "buzz/wavy",
+        "buzz/curly",
+        "buzz/coily",
+        "fade/straight",
+        "fade/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "buzz/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "562d48958af0a284a41983bddc2b719ce5852b7d1c7c6b70d7113740cfc0e937",
+      "sourceFile": "output/playwright/legal-hair-full-head-0-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-0-mobile-dark.png",
+      "keys": [
+        "buzz/straight",
+        "buzz/wavy",
+        "buzz/curly",
+        "buzz/coily",
+        "fade/straight",
+        "fade/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "buzz/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "9b8059f55c68f5d94692901e60c7cacb2badb4c3990609d2e9f338448dd8eab9",
+      "sourceFile": "output/playwright/legal-hair-full-head-0-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-0-mobile-light.png",
+      "keys": [
+        "buzz/straight",
+        "buzz/wavy",
+        "buzz/curly",
+        "buzz/coily",
+        "fade/straight",
+        "fade/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "buzz/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "buzz/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 18.643749952316284,
+          "bottom": 144.99999880790713,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "187d8cdd5b65a275e1eb82d82f3bd1d42809c0c21b22087f62c94cc4455dd068",
+      "sourceFile": "output/playwright/legal-hair-full-head-0-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-6-desktop-dark.png",
+      "keys": [
+        "fade/curly",
+        "fade/coily",
+        "crew/straight",
+        "crew/wavy",
+        "crew/curly",
+        "crew/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "fade/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "7e72d9aa40e79f9746fdf0bf51645cf7ac61b3e9b24224bc2360943ce1010fa5",
+      "sourceFile": "output/playwright/legal-hair-full-head-6-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-6-desktop-light.png",
+      "keys": [
+        "fade/curly",
+        "fade/coily",
+        "crew/straight",
+        "crew/wavy",
+        "crew/curly",
+        "crew/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "fade/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "51d7264f0e2809e330a5b3af75b5d6e4d1287f4ece242793b6df52ca5bc51479",
+      "sourceFile": "output/playwright/legal-hair-full-head-6-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-6-mobile-dark.png",
+      "keys": [
+        "fade/curly",
+        "fade/coily",
+        "crew/straight",
+        "crew/wavy",
+        "crew/curly",
+        "crew/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "fade/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "a2c6c44c3d2a110d7a0cddb2b49faba7de0cf33c8b70b4899255c670c299376f",
+      "sourceFile": "output/playwright/legal-hair-full-head-6-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-6-mobile-light.png",
+      "keys": [
+        "fade/curly",
+        "fade/coily",
+        "crew/straight",
+        "crew/wavy",
+        "crew/curly",
+        "crew/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "fade/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "fade/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 14.524999856948853,
+          "bottom": 144.99999642372134,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "crew/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 11.77500009536743,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "826ab8ad1b5918801617dc133be9bba6c48cfe7330f10be9879c2ef484d74071",
+      "sourceFile": "output/playwright/legal-hair-full-head-6-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-12-desktop-dark.png",
+      "keys": [
+        "short-curls/curly",
+        "short-curls/coily",
+        "coils/coily",
+        "afro/curly",
+        "afro/coily",
+        "waves/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "short-curls/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "short-curls/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "coils/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 7.099753618240355,
+          "bottom": 145.00000119209292,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "8658f7020c3eb15154112f3bb120fc11ace4184b1e8183be72a2e86e3fa3f57e",
+      "sourceFile": "output/playwright/legal-hair-full-head-12-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-12-desktop-light.png",
+      "keys": [
+        "short-curls/curly",
+        "short-curls/coily",
+        "coils/coily",
+        "afro/curly",
+        "afro/coily",
+        "waves/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "short-curls/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "short-curls/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "coils/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 7.099753618240355,
+          "bottom": 145.00000119209292,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "24209ed6f85e11579e1d62f1bf50fec177964df0b38b60550876668a8306df9d",
+      "sourceFile": "output/playwright/legal-hair-full-head-12-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-12-mobile-dark.png",
+      "keys": [
+        "short-curls/curly",
+        "short-curls/coily",
+        "coils/coily",
+        "afro/curly",
+        "afro/coily",
+        "waves/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "short-curls/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "short-curls/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "coils/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 7.099753618240355,
+          "bottom": 145.00000119209292,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "5791193b68c8fafbfd1e1de857021fdebfb9d2964db79b0d747ac97c3dd6040d",
+      "sourceFile": "output/playwright/legal-hair-full-head-12-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-12-mobile-light.png",
+      "keys": [
+        "short-curls/curly",
+        "short-curls/coily",
+        "coils/coily",
+        "afro/curly",
+        "afro/coily",
+        "waves/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "short-curls/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "short-curls/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 2.9879903793334925,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "coils/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 7.099753618240355,
+          "bottom": 145.00000119209292,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "afro/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": -12.081971168518074,
+          "bottom": 144.99999523162845,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "7ba8888a491eedb05becb9820da8bbae0c78d281556db28cc2159414be05d65e",
+      "sourceFile": "output/playwright/legal-hair-full-head-12-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-18-desktop-dark.png",
+      "keys": [
+        "waves/curly",
+        "waves/coily",
+        "side-part/straight",
+        "side-part/wavy",
+        "side-part/curly",
+        "side-part/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "waves/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "aff9b523446d7821b46978bb05a2a8109caa84c51bf060fbc56d9b6bc248f276",
+      "sourceFile": "output/playwright/legal-hair-full-head-18-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-18-desktop-light.png",
+      "keys": [
+        "waves/curly",
+        "waves/coily",
+        "side-part/straight",
+        "side-part/wavy",
+        "side-part/curly",
+        "side-part/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "waves/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "22470c53b543ca4804523b5b3610ef1c9c14cc0d3b90bd7ff98ba85932b8e42f",
+      "sourceFile": "output/playwright/legal-hair-full-head-18-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-18-mobile-dark.png",
+      "keys": [
+        "waves/curly",
+        "waves/coily",
+        "side-part/straight",
+        "side-part/wavy",
+        "side-part/curly",
+        "side-part/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "waves/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "1d80a6b55e04d729ae1fac828d90796cd570714e21fc400b0358f29c58861274",
+      "sourceFile": "output/playwright/legal-hair-full-head-18-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-18-mobile-light.png",
+      "keys": [
+        "waves/curly",
+        "waves/coily",
+        "side-part/straight",
+        "side-part/wavy",
+        "side-part/curly",
+        "side-part/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "waves/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "waves/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "side-part/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 13.149999976158142,
+          "bottom": 145.00000417232516,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "d7ae4a1cf90953e3f0065966e28fd556cd393f6f4b287fda124b65e2070231b0",
+      "sourceFile": "output/playwright/legal-hair-full-head-18-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-24-desktop-dark.png",
+      "keys": [
+        "swept/straight",
+        "swept/wavy",
+        "swept/curly",
+        "swept/coily",
+        "long/straight",
+        "long/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "swept/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/straight",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/wavy",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "9433fb86e99ec66ff6cff308bdb41bcec3d0638cb554d1d16e3f2d3b0add4e72",
+      "sourceFile": "output/playwright/legal-hair-full-head-24-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-24-desktop-light.png",
+      "keys": [
+        "swept/straight",
+        "swept/wavy",
+        "swept/curly",
+        "swept/coily",
+        "long/straight",
+        "long/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "swept/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/straight",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/wavy",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "3ca9d190cef1285d0cb2b902b88a53ead9335d697bdcd26c2a0d0ade63f4dfab",
+      "sourceFile": "output/playwright/legal-hair-full-head-24-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-24-mobile-dark.png",
+      "keys": [
+        "swept/straight",
+        "swept/wavy",
+        "swept/curly",
+        "swept/coily",
+        "long/straight",
+        "long/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "swept/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/straight",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/wavy",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "d356816593432dba278b0a4c31fa09ec4616c119f6136ca99897a5634d5ebdb8",
+      "sourceFile": "output/playwright/legal-hair-full-head-24-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-24-mobile-light.png",
+      "keys": [
+        "swept/straight",
+        "swept/wavy",
+        "swept/curly",
+        "swept/coily",
+        "long/straight",
+        "long/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "swept/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "swept/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 4.3624997138977015,
+          "bottom": 145.00000238418582,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/straight",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/wavy",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "13602d63b18e68414afe98a0f120bda825d8b5acf654dbced7e9c2043588c1b6",
+      "sourceFile": "output/playwright/legal-hair-full-head-24-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-30-desktop-dark.png",
+      "keys": [
+        "long/curly",
+        "long/coily",
+        "locs/straight",
+        "locs/wavy",
+        "locs/curly",
+        "locs/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "long/curly",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/coily",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "d4148883f7ea2735a8ddd893903821b18f54bb667f3da44385cdfb50c71f255f",
+      "sourceFile": "output/playwright/legal-hair-full-head-30-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-30-desktop-light.png",
+      "keys": [
+        "long/curly",
+        "long/coily",
+        "locs/straight",
+        "locs/wavy",
+        "locs/curly",
+        "locs/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "long/curly",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/coily",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "68d8f9b2b78fe08837bf08fa84bc5a6a1c6b4b0c84724b06b514acec55c97383",
+      "sourceFile": "output/playwright/legal-hair-full-head-30-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-30-mobile-dark.png",
+      "keys": [
+        "long/curly",
+        "long/coily",
+        "locs/straight",
+        "locs/wavy",
+        "locs/curly",
+        "locs/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "long/curly",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/coily",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "c82b571ee23a7f102fe119a78d01f5d3ce1a879ac103529320e4a00dd122ee31",
+      "sourceFile": "output/playwright/legal-hair-full-head-30-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-30-mobile-light.png",
+      "keys": [
+        "long/curly",
+        "long/coily",
+        "locs/straight",
+        "locs/wavy",
+        "locs/curly",
+        "locs/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "long/curly",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "long/coily",
+          "left": -9.529008865356452,
+          "right": 100.29012680053711,
+          "top": 13.149999976158142,
+          "bottom": 173.37500989437106,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "locs/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 15.900000035762787,
+          "bottom": 144.9999985098839,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "45458b978aeadd57af81804a4dd78b1e0f3b12da7ee84eaa99f665567f85c177",
+      "sourceFile": "output/playwright/legal-hair-full-head-30-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-36-desktop-dark.png",
+      "keys": [
+        "braids/straight",
+        "braids/wavy",
+        "braids/curly",
+        "braids/coily",
+        "receding/straight",
+        "receding/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "braids/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/straight",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/wavy",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "6d649746054c60c91dc5a5461b6e9147dde793b30dbd7428b78e7098e1c96cb2",
+      "sourceFile": "output/playwright/legal-hair-full-head-36-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-36-desktop-light.png",
+      "keys": [
+        "braids/straight",
+        "braids/wavy",
+        "braids/curly",
+        "braids/coily",
+        "receding/straight",
+        "receding/wavy"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "braids/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/straight",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/wavy",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "f7e4792b10c7fe4919c53ec91126d4c7cfaf65120f5d1dfd397dfc4a489bc24c",
+      "sourceFile": "output/playwright/legal-hair-full-head-36-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-36-mobile-dark.png",
+      "keys": [
+        "braids/straight",
+        "braids/wavy",
+        "braids/curly",
+        "braids/coily",
+        "receding/straight",
+        "receding/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "braids/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/straight",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/wavy",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "216d38ca32b393e02da311ab67ca888fcafdb8667af539145b25b4a3f421ea5b",
+      "sourceFile": "output/playwright/legal-hair-full-head-36-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-36-mobile-light.png",
+      "keys": [
+        "braids/straight",
+        "braids/wavy",
+        "braids/curly",
+        "braids/coily",
+        "receding/straight",
+        "receding/wavy"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "braids/straight",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/wavy",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/curly",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "braids/coily",
+          "left": 0.6027746200561452,
+          "right": 100.29012203216553,
+          "top": 17.268750071525574,
+          "bottom": 144.9999970197678,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/straight",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/wavy",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "a01d35454f4f4a04acc86605ed6d3182e390fa51119a146efe8568c01e763633",
+      "sourceFile": "output/playwright/legal-hair-full-head-36-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-42-desktop-dark.png",
+      "keys": [
+        "receding/curly",
+        "receding/coily",
+        "shaved/straight",
+        "shaved/wavy",
+        "shaved/curly",
+        "shaved/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "receding/curly",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 19.4268399477005,
+          "bottom": 144.99999821186069,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/coily",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/straight",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/wavy",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/curly",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/coily",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "2f36310bb0ef24ddf2bea64353018448b85bf857d6c01739fc0ecd41531d779d",
+      "sourceFile": "output/playwright/legal-hair-full-head-42-desktop-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-42-desktop-light.png",
+      "keys": [
+        "receding/curly",
+        "receding/coily",
+        "shaved/straight",
+        "shaved/wavy",
+        "shaved/curly",
+        "shaved/coily"
+      ],
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "width": 1440,
+      "height": 1000,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "receding/curly",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 19.4268399477005,
+          "bottom": 144.99999821186069,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/coily",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/straight",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/wavy",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/curly",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/coily",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "9959098dca699ddc1d4135c3c08184b920d48924a6d14272c3bea00228cb846d",
+      "sourceFile": "output/playwright/legal-hair-full-head-42-desktop-light.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-42-mobile-dark.png",
+      "keys": [
+        "receding/curly",
+        "receding/coily",
+        "shaved/straight",
+        "shaved/wavy",
+        "shaved/curly",
+        "shaved/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "dark",
+      "sideBounds": [
+        {
+          "key": "receding/curly",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 19.4268399477005,
+          "bottom": 144.99999821186069,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/coily",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/straight",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/wavy",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/curly",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/coily",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "c8000a4373eb3d5ebdad330770d065e0489036167ba3036c491c72fb04c96a17",
+      "sourceFile": "output/playwright/legal-hair-full-head-42-mobile-dark.png",
+      "sourcePhase": "diagnostic"
+    },
+    {
+      "file": "legal-hair-full-head-42-mobile-light.png",
+      "keys": [
+        "receding/curly",
+        "receding/coily",
+        "shaved/straight",
+        "shaved/wavy",
+        "shaved/curly",
+        "shaved/coily"
+      ],
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 390,
+      "height": 844,
+      "theme": "light",
+      "sideBounds": [
+        {
+          "key": "receding/curly",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 19.4268399477005,
+          "bottom": 144.99999821186069,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "receding/coily",
+          "left": 2.199997901916497,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/straight",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/wavy",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/curly",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        },
+        {
+          "key": "shaved/coily",
+          "left": 3.6860322952270437,
+          "right": 100.29012203216553,
+          "top": 20,
+          "bottom": 145.00000000000003,
+          "view": {
+            "left": -20,
+            "right": 120,
+            "top": -25,
+            "bottom": 205
+          }
+        }
+      ],
+      "sha256": "62c529b52756e72ec3aaa0a0307e5c926812fab0b94c8628b4a8adff47220d6c",
+      "sourceFile": "output/playwright/legal-hair-full-head-42-mobile-light.png",
+      "sourcePhase": "diagnostic"
+    }
+  ],
+  "dimensions": {
+    "frontSvgWidth": 220,
+    "sideSvgWidth": 100,
+    "sideViewBox": "-20 -25 140 230",
+    "limitation": "Side canvas width is100px; its140-unit viewBox means head artwork is smaller. Front and side are not common-scale heads."
+  },
+  "inspection": {
+    "primaryInspectedOriginals": [
+      "output/playwright/legal-hair-full-head-0-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-0-desktop-light.png",
+      "output/playwright/legal-hair-full-head-0-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-0-mobile-light.png",
+      "output/playwright/legal-hair-full-head-6-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-6-desktop-light.png",
+      "output/playwright/legal-hair-full-head-6-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-6-mobile-light.png",
+      "output/playwright/legal-hair-full-head-12-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-12-desktop-light.png",
+      "output/playwright/legal-hair-full-head-12-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-12-mobile-light.png",
+      "output/playwright/legal-hair-full-head-18-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-18-desktop-light.png",
+      "output/playwright/legal-hair-full-head-18-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-18-mobile-light.png",
+      "output/playwright/legal-hair-full-head-24-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-24-desktop-light.png",
+      "output/playwright/legal-hair-full-head-24-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-24-mobile-light.png",
+      "output/playwright/legal-hair-full-head-30-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-30-desktop-light.png",
+      "output/playwright/legal-hair-full-head-30-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-30-mobile-light.png",
+      "output/playwright/legal-hair-full-head-36-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-36-desktop-light.png",
+      "output/playwright/legal-hair-full-head-36-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-36-mobile-light.png",
+      "output/playwright/legal-hair-full-head-42-desktop-dark.png",
+      "output/playwright/legal-hair-full-head-42-desktop-light.png",
+      "output/playwright/legal-hair-full-head-42-mobile-dark.png",
+      "output/playwright/legal-hair-full-head-42-mobile-light.png"
+    ],
+    "findings": [
+      {
+        "id": "front-loose-texture-distinction",
+        "status": "open",
+        "finding": "Buzz, fade, crew, waves and parted front textures are weakly distinguishable at normal220px size. Rendered metadata/PNG differences do not establish recognizable texture."
+      },
+      {
+        "id": "long-front-side-coherence",
+        "status": "open",
+        "finding": "Long front hair forms broad jaw-length curtains, while the side projection shows a thin rear strip and exposed ear."
+      },
+      {
+        "id": "afro-front-side-volume",
+        "status": "open",
+        "finding": "Afro front volume substantially exceeds the narrow side crown even in a complete uncropped viewport."
+      }
+    ],
+    "nonDefects": [
+      "Shaved, receding, locs and braids intentionally conceal loose scalp texture under the existing style contract"
+    ],
+    "harnessCorrection": "Original gallery clipped tall/wide side hair; enlarged only test SVG viewport and added transformed whole-head bounds checks. Original baseline report/harness/32PNGs retained."
+  },
+  "verification": {
+    "browser": "1/1 PASS session86003,46.4seconds",
+    "completeSideBounds": "All48pairs in each theme/viewport inside corrected SVG viewport",
+    "caseInputs": "Exact equality after rendering",
+    "rendererChanges": false
+  },
+  "independentReview": {
+    "file": ".cache/legal-hair-gallery-review-round1.json",
+    "sha256": "2df14d37b3f56304a66bcb96d15a1eda930dbf0fe34e35d766c4b12b2488a77d",
+    "verdict": "PASS_WITH_VISUAL_FINDINGS",
+    "round": 1
+  },
+  "baseline": {
+    "report": ".cache/legal-hair-gallery-cropped-baseline.json",
+    "sha256": "34475e15c6c5716253b93edecd1373ccdce7de6849583ebf30f6ac3431bef766",
+    "harness": ".cache/legal-hair-gallery-cropped-baseline.spec.js",
+    "harnessSha256": "7d6aed3f2fcab08a0b8d48d8d4b294fdc80c7d6081b2ea463fefe4d4946e2423"
+  },
+  "limitations": [
+    "Single controlled person/palette, not demographic or roster distribution",
+    "Renderer-gallery evidence, not actual dossier/save-command proof",
+    "No complete color/face/body/motion acceptance or naturalism approval",
+    "Canonical LATEST dossier layout receipt remains separate; no production UI source changed"
+  ]
+}

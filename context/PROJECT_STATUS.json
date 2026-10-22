@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Multi-sport platform Phase 1 (football behind sport packs, golden-master identical). Inbound football@ email verified; reply-as deferred to the email studio project. Public launch remains HOLD.",
-  "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
+  "currentFocus": "S118 implementation and independent visual/source review complete; preparing candidate commit and stable staging. Exact candidate six-shard/browser CI, production deployment and closeout remain pending.",
+  "nextMilestone": "Finish character craft, verify current candidate, stage and promote authorized production update, then complete S118 closeout/push.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
-  "lastUpdated": "2026-10-06",
+  "lastUpdated": "2026-10-22",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -20,14 +20,14 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-10-01",
+  "truthAuditStatus": "partial",
+  "truthAuditLastRun": "2026-10-08",
   "ignisScore": 41119,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
-  "testSuiteStatus": "green",
-  "testsPassing": 1802,
-  "testsTotal": 1802,
+  "testSuiteStatus": "nonpassing",
+  "testsPassing": null,
+  "testsTotal": null,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,21 +66,21 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 858,
+  "silScore": 655,
   "silCategoriesV3": {
-    "devHealth": 97,
-    "creativeAlignment": 96,
-    "momentum": 95,
-    "engagement": 72,
-    "processQuality": 88,
-    "crossRepoCoherence": 88,
-    "securityPosture": 82,
-    "ecosystemIntegration": 76,
-    "capitalEfficiency": 70,
-    "automationCoverage": 94
+    "devHealth": 55,
+    "creativeAlignment": 75,
+    "momentum": 60,
+    "engagement": 50,
+    "processQuality": 55,
+    "crossRepoCoherence": 70,
+    "securityPosture": 75,
+    "ecosystemIntegration": 60,
+    "capitalEfficiency": 90,
+    "automationCoverage": 65
   },
-  "currentSession": 116,
-  "lastAgent": "claude-code",
+  "currentSession": 118,
+  "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "date": "2026-10-01",
@@ -343,17 +343,24 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 858,
+  "silHealth": 626,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 100,
-    "date": "2026-10-06",
-    "passing": 12,
+    "failing": 1,
+    "score": 92,
+    "date": "2026-10-22",
+    "passing": 11,
     "warning": 0,
-    "checks": []
+    "checks": [
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 4d051b9ca02632562daa8ce3f89afa9a518e13f2 is not covered by live production d913b9f9c0043d00131506c0d4271034a15fc169"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
@@ -364,7 +371,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.118,
   "entropyLastComputed": "2026-10-01",
-  "lastSessionSummary": "S116 began the multi-sport platform: a football golden master and sport conformance kit, then six behavior-identical seams (rules, match engine boundary, stat schema, calendar, schedule, postseason) under src/sport/. Source d913b9f9c0043d00131506c0d4271034a15fc169: all shards green, staging 14/14, production 10/10 via run 37200292923, Doctor blockingFailing 0. Launch remains HOLD.",
+  "lastSessionSummary": "S118 is active: character, family and save-size fixes implemented; complete current verification and deployment remain pending.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -385,8 +392,8 @@
       "lastChecked": "2026-10-04"
     }
   ],
-  "lastSession": 116,
-  "silLastSession": 116,
+  "lastSession": 118,
+  "silLastSession": 118,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -1915,7 +1922,7 @@
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
     "observedAt": "2026-10-04T12:21:46.451Z",
-    "status": "verified",
+    "status": "pending-current-candidate",
     "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
     "publicationRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
     "publicationDelta": null,
@@ -1971,7 +1978,7 @@
         "ok": true
       }
     ],
-    "evidenceVerified": true,
+    "evidenceVerified": false,
     "launchReady": false,
     "blockerCodes": [
       "email-delivery-unverified",
@@ -1989,7 +1996,9 @@
       "visualSha256": "72f9a8cb6717b0dec401d7901c7d41ca2656ac676db6a426f8759aaa83dfbcb4",
       "performanceSha256": "4388be3d4f232ea17151dbe7fa6ae0fb1ea6c3f5d9547c4f89b773602cfde804"
     },
-    "receiptSha256": "3eeb1770233ac22adc61da982c1adb140255504f2f002520bfdd023c3011cafd"
+    "receiptSha256": "3eeb1770233ac22adc61da982c1adb140255504f2f002520bfdd023c3011cafd",
+    "previousVerifiedReceipt": "reports/s118-prior-release-authority.json",
+    "pendingReason": "S118 working candidate is not the last verified production source. Preserve prior authority as history; new exact-candidate staging, CI and production evidence are still required."
   },
   "launchReady": false,
   "sil": {
@@ -2046,9 +2055,183 @@
   "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
-    "durableSession": 116,
-    "currentFocus": "Multi-sport platform Phase 1 (football behind sport packs, golden-master identical). Inbound football@ email verified; reply-as deferred to the email studio project. Public launch remains HOLD.",
-    "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
-    "lastSessionSummary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD."
+    "durableSession": 118,
+    "currentFocus": "S118 implementation and independent visual/source review complete; preparing candidate commit and stable staging. Exact candidate six-shard/browser CI, production deployment and closeout remain pending.",
+    "nextMilestone": "Finish character craft, verify current candidate, stage and promote authorized production update, then complete S118 closeout/push.",
+    "lastSessionSummary": "S118 is active: character, family and save-size fixes implemented; complete current verification and deployment remain pending."
+  },
+  "partialCloseout": {
+    "session": 117,
+    "date": "2026-10-08",
+    "intent": "Partial — explicit founder closeout",
+    "deployment": "Deferred — applicable release checks are nonpassing",
+    "core": {
+      "tests": 713,
+      "passed": 712,
+      "failed": 1,
+      "fullRerun": false
+    },
+    "runtime": {
+      "status": "timed-out",
+      "timeoutMs": 2700000,
+      "observedAssertionFailure": "save-payload-budget: six-week raw snapshot 16.2 MB exceeds unchanged 16 MB bar"
+    },
+    "focusedGrooming": {
+      "passed": 3,
+      "total": 3,
+      "historicalFixtureCorrection": true
+    },
+    "fullVisualAcceptance": false,
+    "blockingDefectsOpen": 1,
+    "fullGoalComplete": false,
+    "productionTrunkAdoption": false,
+    "reviewer": "/root/studio_reviewer",
+    "remaining": [
+      "Adult whole-person visual craft and matching-body continuity",
+      "Current complete required tests and source-bound 30-season managed GM run",
+      "Remaining NFL benefits/policy validation",
+      "Current exact-candidate staging and production promotion"
+    ],
+    "prototypeArchive": ".cache/contours/unfinished-trunk-2026-10-08",
+    "reports": [
+      {
+        "path": "docs/visual-qa/references/closeout-save-budget-2026-10-08.log",
+        "sha256": "85396d6007a7a4fc764ca350eef58b7c35e24026a5ba3f0baed828ace125976a"
+      },
+      {
+        "path": "docs/visual-qa/references/closeout-facial-grooming-2026-10-08.log",
+        "sha256": "3ae03ec53a284b612b55049a0a7c03bc6236a63d48a07ab23bf2d04c1cb548c9"
+      }
+    ]
+  },
+  "characterProgress": {
+    "session": 118,
+    "audit": "docs/AUDIT_2026-10-21.json",
+    "receipt": "docs/visual-qa/CHARACTER_PROGRESS_2026-10-21.json",
+    "focusedTests": {
+      "passed": 23,
+      "total": 23
+    },
+    "characterBrowser": {
+      "passed": 3,
+      "total": 3
+    },
+    "familyBrowser": {
+      "passed": 1,
+      "total": 1
+    },
+    "build": "current-preview-passed",
+    "visualAcceptance": "selected-stylized-scope-only",
+    "deployment": "pending",
+    "phase": "candidate-commit-and-staging-preparation",
+    "saveChecks": {
+      "passed": 39,
+      "total": 39
+    },
+    "topologyChecks": {
+      "passed": 12,
+      "total": 12
+    },
+    "strictBlink": {
+      "passed": 1,
+      "total": 1,
+      "closedViews": 18,
+      "globeExposurePixels": 0
+    },
+    "fullSuite": {
+      "status": "not-yet-current-green",
+      "core": {
+        "passed": 723,
+        "total": 723,
+        "binding": "global surface changed during run"
+      },
+      "runtime": {
+        "passed": 1057,
+        "total": 1057
+      },
+      "long": {
+        "passed": 3,
+        "total": 3,
+        "binding": "global surface changed during run"
+      },
+      "realism": {
+        "passed": 9,
+        "total": 9,
+        "binding": "global surface changed during run"
+      },
+      "contract": {
+        "status": "timed-out-at-90-minutes",
+        "nextBudgetMinutes": 150
+      },
+      "studio": {
+        "status": "passed",
+        "passed": 376,
+        "total": 376
+      },
+      "exactCandidateHosted": "pending"
+    },
+    "fullBrowser": {
+      "status": "diagnostic-completed-all-failures-targeted-pass; current-complete-CI-pending",
+      "currentRunDeclared": 266,
+      "currentSourceDeclared": 270,
+      "log": ".cache/s118-release-full-ui.log",
+      "channel": "chrome",
+      "browser": "155.0.8059.80",
+      "playwright": "1.64.0",
+      "diagnostic": {
+        "declared": 266,
+        "passed": 235,
+        "failed": 28,
+        "skipped": 3
+      }
+    },
+    "bodyClient": {
+      "passed": 11,
+      "total": 11
+    },
+    "portraitRegressions": {
+      "passed": 8,
+      "total": 8
+    },
+    "pigment": {
+      "passed": 2,
+      "total": 2
+    },
+    "headBudgetChecks": {
+      "passed": 19,
+      "total": 19,
+      "maximumBytes": 1650000
+    },
+    "correctedBrowser": {
+      "passed": 5,
+      "total": 5,
+      "strictClosedViews": 18,
+      "exposedGlobePixels": 0
+    },
+    "visualReview": {
+      "status": "selected-scope-reviewed",
+      "captures": 105,
+      "receipt": "docs/visual-qa/LATEST.json",
+      "checker": "passed",
+      "releaseVerified": false,
+      "sourceHashes": 19,
+      "freshIdenticalFrames": 36,
+      "independentFreshContextVerdict": "implementation-ready"
+    },
+    "golden": {
+      "status": "versioned-baseline-reviewed-and-canonical-test-passed",
+      "canonicalPassed": 3,
+      "canonicalTotal": 3,
+      "identicalCompleteComputations": 2,
+      "applicationSourceHashesBeforeSelector": 193,
+      "historicalFixturePreserved": true,
+      "report": "docs/GOLDEN_BASELINE_S118.json",
+      "finalCandidateCI": "pending"
+    },
+    "backendTransportChecks": {
+      "passed": 10,
+      "total": 10,
+      "scope": "healthy existing database prerequisite; API-only promotion"
+    }
   }
 }

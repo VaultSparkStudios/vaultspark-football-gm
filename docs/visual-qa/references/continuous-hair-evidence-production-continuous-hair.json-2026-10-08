@@ -1,0 +1,326 @@
+{
+  "scope": "Actual dossier before/after occupied curl and lock geometry; no complete craft or population acceptance",
+  "playerId": "P2026-BUF-DL-84338176",
+  "hairstyle": "fade",
+  "captures": [
+    {
+      "file": "output/playwright/production-continuous-hair-before-desktop-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0b8c0361cee4bdcb46888873b50ab70fc981517f95f9ec0d723bef7502b45f41"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-desktop-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "042a23a874df0e378c2e980c42c8c1eb2a5e9b23d140901450c743240dd960f4"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-desktop-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d7dd16dfd6702ecd898676174aef04b71a5a4cf7d70ab8061fe61af0f023fd78"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-desktop-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "f3743c9f807bb9611715bb385fb3d39c0ccb6862505fc500a26acf6b19ea3bfd"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-desktop-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "78f6daf3dad299e4eff1716b837234d37179d8b4f18736dd29068a902eebb0ac"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-desktop-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "33b65a3b04b1dde67be6594b8582f6319a6135b122fc563412e8a22041e5a192"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-mobile-dark-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "548c4d9a9cb4b3471f8d6dff8b8117e8cc32b85a74f8072894ca15d4dca9d2a9"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-mobile-dark-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ec3b9ed3b911852d5aed57ce192bbac95417b67dabe99291a22313beacb06873"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-mobile-dark-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7b60e4b8d5275086d9eeac05fdce946f4c04cdb261b96c1634ce6cc54c8722f1"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-mobile-light-portrait.png",
+      "stage": "before",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "d96fe46ef814aa5d180bdc5953ba16b280ab2f18f320db4903a01707615862f0"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-mobile-light-body.png",
+      "stage": "before",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "89b168d2c4ba5d4b8769f501d133755548758f46d836df52d52d6aff06052dc2"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-before-mobile-light-motion.png",
+      "stage": "before",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "71ea038c1d53e2e359f6e6f10f66b39419ef9a305921af40119da1df1715a3b2"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-desktop-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "75d9f8740f6acde9abe0d180425238f73a950b1261e0fc84e17ebfc5debdcd0c"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-desktop-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "cd699928e007810e2664e9be191e848229d9fe15fc82082f2f42c2745c5b27a4"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-desktop-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d31a520c7169b2c258f50aab3c9d43b3abbb4f66a32fa0d5c4dbac0562aa7220"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-desktop-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8f2e7e04c06442d600dcf464292e1b73e1657faee4bd1abd8757e57110d4a2a3"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-desktop-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "ebe2d693e348cbe50aca3cc93b011c3f9a27dc926eda2ce45d283b04794d7870"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-desktop-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "0dbea5c1914764eec5097113d15a4d945236e9d775ddb7a5eee9ce51fb4bb4ab"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-mobile-dark-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "9032b9ded5703f29680f62086299c4621e591ca45c2bb5b72787b408eba2c9ec"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-mobile-dark-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "72c9c240faed5ad57f2eff6eeb7138d95130fb8ef42c25be258cad454e30f140"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-mobile-dark-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "ea196213a6ccb84e26e2c40d0a9e710123fdc8a4c10a15a522a8088879e9212c"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-mobile-light-portrait.png",
+      "stage": "after",
+      "state": "portrait",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8197ec2759da8a6473ab835ea43ce0e9b1cfc86d74a58f78c22b513717184af0"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-mobile-light-body.png",
+      "stage": "after",
+      "state": "body",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "75c455b6424f7cd5014652e64ba4c259caa0b2f487fdfe593bc25cbee4c401e3"
+    },
+    {
+      "file": "output/playwright/production-continuous-hair-after-mobile-light-motion.png",
+      "stage": "after",
+      "state": "motion",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e2013e6d7209f07232687597313ddc956866c3b34f3ce8f9f2261e17fe562ce5"
+    }
+  ],
+  "agreement": [
+    {
+      "mode": "run",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "acceleration",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "cut",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "jump",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "strength",
+      "frontBody": true,
+      "sideMotion": true
+    },
+    {
+      "mode": "endurance",
+      "frontBody": true,
+      "sideMotion": true
+    }
+  ],
+  "diagnostics": {
+    "cacheEntries": 2,
+    "cacheLimit": 32,
+    "draws": 2,
+    "meshBuilds": 1,
+    "unavailable": false,
+    "contexts": 1
+  },
+  "cacheProof": {
+    "bounded": {
+      "cacheEntries": 32,
+      "cacheLimit": 32,
+      "draws": 37,
+      "meshBuilds": 36,
+      "unavailable": false,
+      "contexts": 1
+    },
+    "restored": true,
+    "malformed": true,
+    "malformedSkin": true,
+    "healthy": true
+  },
+  "playerUnchanged": true
+}

@@ -237,14 +237,7 @@ export function activateTab(tabId) {
   const loadAndHydrate = async ({ force = false } = {}) => {
     if (islandName) await loadUiIsland(islandName);
     const receipt = await hydrateTab(tabId, { force });
-    // S94: developer diagnostics stay hidden unless ?dev=1 asked for them.
-    //
-    // This runs BEFORE the failure throw on purpose. The island that owns those
-    // panels is lazily imported, so the markup only becomes reachable here — but
-    // if a settings hydration domain is degraded, throwing first would leave the
-    // block hidden precisely when it is worth reading, Retry Degraded Panels
-    // included. A diagnostics surface that disappears on failure is not a
-    // diagnostics surface.
+    // Mount requested diagnostics before throwing so degraded panels retain Retry.
     if (islandName === "settings") {
       await observeBackgroundTask(
         () => import("./devSurfaces.js").then((module) => module.applyDeveloperSurfaceVisibility()),
@@ -418,13 +411,7 @@ export async function loadStaff() {
   callUiIsland("settings", "renderStaff");
   await loadCoachingMarket(teamId);
 }
-/**
- * S63 — the coaching market for the selected role.
- *
- * Only the franchise you control has a market: the authority boundary refuses
- * hires for anyone else, so offering the UI for a rival would be a lie. Viewing
- * a rival's staff sheet stays available.
- */
+// Hiring is controlled-club only; rival staff sheets remain viewable.
 export async function loadCoachingMarket(teamId = null) {
   const team = teamId || document.getElementById("staffTeamSelect")?.value || state.dashboard?.controlledTeamId;
   const role = document.getElementById("staffRoleSelect")?.value || "headCoach";
@@ -535,6 +522,7 @@ export async function searchComparePlayers() {
 
 export async function loadRoster() {
   const roster = await loadUiIsland("roster");
+  const actions=await import('./rosterActions.js');actions.bindRosterActions();
   const teamId = (document.getElementById("rosterTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
   const query = new URLSearchParams({ team: teamId });
   const pos = document.getElementById("rosterPosFilter").value;
@@ -548,6 +536,7 @@ export async function loadRoster() {
   const requestKey = query.toString();
   const token = beginHydration("roster", requestKey);
   const data = await api(`/api/roster?${query.toString()}`);
+  const claims = data.injuryClaims?.length ? await loadUiIsland("injuryClaims") : getLoadedUiIsland("injuryClaims");
   const currentTeamId = (document.getElementById("rosterTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
   const currentKey = new URLSearchParams({ team: currentTeamId });
   const currentPos = document.getElementById("rosterPosFilter").value;
@@ -560,9 +549,11 @@ export async function loadRoster() {
   if (currentMaxAge) currentKey.set("maxAge", currentMaxAge);
   if (!commitHydration(token, currentKey.toString(), () => {
   state.roster = data.roster || [];
+  roster.clearStandardElevationPreview();
   state.rosterWindow = data.windowMap || null;
   roster.setSelectedDesignationPlayer(state.selectedDesignationPlayerId);
   roster.renderRoster();
+  claims?.renderInjurySalaryClaims(data.injuryClaims || []);
   if (!state.contractTeamId || state.contractTeamId === teamId) {
     state.contractTeamId = teamId;
     state.contractRoster = data.roster || [];
@@ -572,7 +563,7 @@ export async function loadRoster() {
 }
 
 export async function loadFreeAgency() {
-  const roster = await loadUiIsland("roster");
+  const market = await loadUiIsland("contracts");
   const position = document.getElementById("faPositionFilter").value;
   const query = new URLSearchParams({ limit: "220" });
   if (position) query.set("position", position);
@@ -591,11 +582,11 @@ export async function loadFreeAgency() {
   } catch {
     state.faMarket = null;
   }
-  roster.renderFreeAgency();
+  market.renderFreeAgency();
 }
 
 export async function loadRetiredPool() {
-  const roster = await loadUiIsland("roster");
+  const settings = await loadUiIsland("settings");
   const query = new URLSearchParams({ limit: "300" });
   const position = document.getElementById("retiredPosFilter").value;
   const minOverall = document.getElementById("retiredMinOverallFilter").value;
@@ -607,8 +598,8 @@ export async function loadRetiredPool() {
   if (maxAge) query.set("maxAge", maxAge);
   const payload = await api(`/api/retired?${query.toString()}`);
   state.retiredPool = payload.retired || [];
-  roster.setSelectedRetirementOverridePlayer(state.selectedRetirementOverridePlayerId);
-  roster.renderRetiredPool();
+  settings.setSelectedRetirementOverridePlayer(state.selectedRetirementOverridePlayerId);
+  settings.renderRetiredPool();
 }
 
 export async function loadStats() {

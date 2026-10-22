@@ -1,0 +1,98 @@
+import {test,expect} from '@playwright/test';
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import {ensurePlayerVisualIdentity} from '../src/domain/playerVisualIdentity.js';
+import {playerAppearance,playerFrame} from '../src/domain/playerIdentity.js';
+import {HAIR_STYLE_RULES} from '../public/lib/portraitAppearanceContract.js';
+
+test('every supported hairstyle and texture has normal-size front and side inspection evidence',async({page})=>{
+ test.setTimeout(240000);
+ const phase=process.env.HAIR_COHERENCE_PHASE||'coherence-after';
+ if(process.env.HAIR_MATERIAL_PHASE==='before')for(const name of ['playerPortraitFace','playerSideAppearance'])
+  await page.route(`**/lib/${name}.js*`,async route=>route.fulfill({contentType:'text/javascript',body:await fs.readFile(`.cache/hair-material-before/${name}.js`,'utf8')}));
+ await page.goto('/');await expect(page.locator('#setupStatus')).toContainText('Ready',{timeout:30000});
+ await page.emulateMedia({reducedMotion:'reduce'});
+ const base=ensurePlayerVisualIdentity({id:'legal-hair-controlled-person',age:27,heightInches:74,weightLbs:225,profile:{}},{newPlayer:true});
+ const natural=playerAppearance(base),frame=playerFrame(base);
+ const cases=Object.entries(HAIR_STYLE_RULES).flatMap(([hairstyle,rule])=>rule.textures.map(hairTexture=>({
+  key:`${hairstyle}/${hairTexture}`,textureVisible:rule.textureVisible,
+  player:{...base,name:`${hairstyle} / ${hairTexture}`,visualFrame:frame,appearance:{...natural,
+   hairstyle,hairTexture,hairTexturePosition:['straight','wavy','curly','coily'].indexOf(hairTexture),hairLength:1.1,hairDensity:.8,hairline:.2,facialHair:'clean',
+   hairColor:'#5d4030',naturalHairColor:'#5d4030',dyedHairColor:null,grayMix:0,complexion:.4}}
+ })));
+ const unchanged=structuredClone(cases);
+ expect(cases).toHaveLength(48);
+ const report={kind:'normal-size-legal-hair-inspection-v1',scope:'Controlled renderer gallery, not actual roster distribution, naturalism approval or save-command proof',
+  portraitWidth:220,sideWidth:100,cases:cases.map(({key,textureVisible})=>({key,textureVisible})),captures:[]};
+ await fs.mkdir('output/playwright',{recursive:true});
+ for(let offset=0;offset<cases.length;offset+=6){
+  const batch=cases.slice(offset,offset+6);
+  await page.evaluate(async batch=>{
+   const {buildPlayerPortraitSvg}=await import('/lib/playerPortraitFace.js');
+   const {buildPlayerSideHead}=await import('/lib/playerSideAppearance.js');
+   const gallery=document.createElement('main');gallery.id='legalHairGallery';
+   gallery.style.cssText='display:grid;gap:12px;padding:12px;max-width:1240px;margin:auto;color:var(--ink-strong);background:var(--surface)';
+   for(const [i,{key,player}]of batch.entries()){
+    const card=document.createElement('article');card.dataset.case=key;
+    const label=document.createElement('h3');label.textContent=key;card.append(label);
+    const views=document.createElement('div');views.style.cssText='display:flex;align-items:center;gap:4px';
+    views.innerHTML=buildPlayerPortraitSvg(player,{headOnly:true,idSuffix:`-legal-front-${i}`})+
+     `<svg class="legal-side" viewBox="-20 -25 140 230" style="width:100px;flex-shrink:0;background:var(--surface-alt);border-radius:12px">${buildPlayerSideHead(player,{x:50,y:20,height:125,idSuffix:`-legal-side-${i}`})}</svg>`;
+    views.firstElementChild.style.cssText='display:block;width:220px;height:auto;flex-shrink:0';card.append(views);gallery.append(card);
+   }
+   document.body.replaceChildren(gallery);
+  },batch);
+  const geometry=await page.locator('#legalHairGallery').evaluate(gallery=>{
+   const clone=gallery.cloneNode(true);
+   for(const image of clone.querySelectorAll('image'))for(const name of ['href','xlink:href']){
+    const src=image.getAttribute(name);if(!src?.startsWith('data:image/png;base64,'))continue;
+    if(!/^data:image\/png;base64,[A-Za-z0-9+/]+={0,2}$/.test(src))throw Error('Malformed legal-hair PNG');
+    const bytes=atob(src.slice('data:image/png;base64,'.length));
+    if([...bytes.slice(0,8)].map(c=>c.charCodeAt(0)).join(',')!=='137,80,78,71,13,10,26,10')throw Error('Invalid legal-hair PNG signature');
+    image.setAttribute(name,'validated-encoded-png');
+   }
+   return clone.innerHTML;
+  });
+  expect(geometry).not.toMatch(/NaN|Infinity|undefined/);
+  for(const [viewport,width,height]of[['desktop',1440,1000],['mobile',390,844]]){
+   await page.setViewportSize({width,height});
+   await page.locator('#legalHairGallery').evaluate((g,columns)=>g.style.gridTemplateColumns=`repeat(${columns},minmax(0,1fr))`,viewport==='desktop'?3:1);
+   for(const theme of ['dark','light']){
+    await page.evaluate(async t=>(await import('/lib/themeCustomizer.js')).applyTheme(t),theme);
+    for(const card of await page.locator('#legalHairGallery article').all()){
+     const bounds=await card.boundingBox();expect(bounds.x).toBeGreaterThanOrEqual(0);expect(bounds.x+bounds.width).toBeLessThanOrEqual(width+1);
+     const front=await card.locator('svg').first().boundingBox();expect(front.width).toBe(220);
+    }
+    const sideBounds=await page.locator('#legalHairGallery .legal-side').evaluateAll(async svgs=>Promise.all(svgs.map(async svg=>{
+     const group=svg.querySelector('.player-side-head'),image=group.querySelector('.player-shared-head-image');
+     let box=group.getBBox(),target=group,boundsKind='legacy SVG geometry';
+     if(image){
+      // A modern head's PNG includes transparent camera padding. Its image
+      // rectangle is not the visible scalp silhouette; inspect actual alpha.
+      const bitmap=await createImageBitmap(await(await fetch(image.getAttribute('href'))).blob()),canvas=document.createElement('canvas');
+      canvas.width=bitmap.width;canvas.height=bitmap.height;const ctx=canvas.getContext('2d');ctx.drawImage(bitmap,0,0);const rgba=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+      let left=canvas.width,right=-1,top=canvas.height,bottom=-1;
+      for(let y=0;y<canvas.height;y++)for(let x=0;x<canvas.width;x++)if(rgba[(y*canvas.width+x)*4+3]){left=Math.min(left,x);right=Math.max(right,x);top=Math.min(top,y);bottom=Math.max(bottom,y);}
+      bitmap.close();if(right<left)throw Error('Blank modern legal-hair profile');
+      box={x:image.x.baseVal.value+left/canvas.width*image.width.baseVal.value,y:image.y.baseVal.value+top/canvas.height*image.height.baseVal.value,
+       width:(right-left+1)/canvas.width*image.width.baseVal.value,height:(bottom-top+1)/canvas.height*image.height.baseVal.value};target=image;boundsKind='modern visible PNG pixels';
+     }
+     const matrix=svg.getCTM().inverse().multiply(target.getCTM());
+     const corners=[[box.x,box.y],[box.x+box.width,box.y],[box.x,box.y+box.height],[box.x+box.width,box.y+box.height]].map(([x,y])=>new DOMPoint(x,y).matrixTransform(matrix));
+     const view=svg.viewBox.baseVal;
+     return {key:svg.closest('article').dataset.case,boundsKind,left:Math.min(...corners.map(p=>p.x)),right:Math.max(...corners.map(p=>p.x)),
+      top:Math.min(...corners.map(p=>p.y)),bottom:Math.max(...corners.map(p=>p.y)),view:{left:view.x,right:view.x+view.width,top:view.y,bottom:view.y+view.height}};
+    })));
+    for(const box of sideBounds){
+     expect(box.left,box.key).toBeGreaterThanOrEqual(box.view.left);expect(box.right,box.key).toBeLessThanOrEqual(box.view.right);
+     expect(box.top,box.key).toBeGreaterThanOrEqual(box.view.top);expect(box.bottom,box.key).toBeLessThanOrEqual(box.view.bottom);
+    }
+    const file=`output/playwright/legal-hair-${phase}-${offset}-${viewport}-${theme}.png`;
+    await page.locator('#legalHairGallery').screenshot({path:file});
+    report.captures.push({file,keys:batch.map(row=>row.key),viewport,width,height,theme,sideBounds,sha256:crypto.createHash('sha256').update(await fs.readFile(file)).digest('hex')});
+   }
+  }
+ }
+ expect(cases).toEqual(unchanged);
+ await fs.writeFile(`output/playwright/legal-hair-gallery-${phase}.json`,JSON.stringify(report,null,2)+'\n');
+});

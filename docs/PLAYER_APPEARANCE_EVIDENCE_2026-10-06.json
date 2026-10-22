@@ -1,0 +1,892 @@
+{
+  "version": "player-appearance-evidence-v1",
+  "reviewDate": "2026-10-06",
+  "purpose": "Research authority for the complete-player implementation plan; not runtime sampling coefficients.",
+  "sources": [
+    {
+      "id": "nfl-2026-international-birthplace-heritage-pathways",
+      "url": "https://operations.nfl.com/programs-initiatives/international-growth/international-player-pathway",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Directly retrieved official NFL Football Operations page",
+      "collectionPeriod": "2025 season roster presence; entering Week1 2026 IPP; 2026 Heritage participation",
+      "cohort": "Distinct international-born roster, IPP and voluntary heritage-participant cohorts",
+      "allowedUse": "Separate birthplace, heritage and recruitment pathway; use dated cohort counts as extraction targets",
+      "limitations": [
+        "No complete same-date league denominator",
+        "Heritage participation is not a birthplace census",
+        "No country-by-race or appearance joint observations",
+        "No numerical generation coefficients adopted"
+      ],
+      "planBinding": "Appearance delivery sequence: recruitment cohort before appearance"
+    },
+    {
+      "id": "census-2020-multiple-race-methodology",
+      "url": "https://www.census.gov/library/stories/2021/08/improved-race-ethnicity-measures-reveal-united-states-population-much-more-multiracial.html",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2021,
+      "retrieval": "Directly retrieved official Census reporting analysis",
+      "collectionPeriod": "2010 and 2020 decennial censuses",
+      "cohort": "United States all-age resident population; source-defined race and Hispanic-origin responses",
+      "allowedUse": "Preserve multiple responses and questionnaire/coding versions; distinguish national margins from athlete cohorts",
+      "limitations": [
+        "Not NFL or phenotype prevalence",
+        "Changes include questionnaire and coding effects",
+        "No country-by-athlete joint coefficients adopted"
+      ],
+      "planBinding": "Appearance delivery sequence: multiple identities and source definitions"
+    },
+    {
+      "id": "hedlund-2018-combine-position-capacities",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30540279/",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2018,
+      "retrieval": "Directly retrieved indexed primary research abstract; full text and raw observations not reviewed",
+      "collectionPeriod": "2002–2016",
+      "cohort": "5506 Combine participants; secondary-source measurements, positions and subsequent elite awards",
+      "allowedUse": "Separate physical capacities and position-specific analysis; distinguish association from talent causation",
+      "limitations": [
+        "Invited prospect cohort differs from active NFL and world populations",
+        "Abstract contains an apparent repeated position label in its final subgroup; do not infer a corrected label",
+        "No individual anatomy, raw covariance or externally validated renderer coefficients adopted"
+      ],
+      "planBinding": "Appearance delivery sequence: animate capacities through the measured frame"
+    },
+    {
+      "id": "nlm-hair-texture-natural-and-treatment",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/hairtexture/",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2022,
+      "retrieval": "directly retrieved National Library of Medicine educational page; last updated July 13, 2022",
+      "cohort": "Educational synthesis; no sampled population frequency table",
+      "allowedUse": "Distinguish natural curvature and strand thickness from styling, chemical treatment and age-related visible changes",
+      "limitations": [
+        "Not a primary population dataset",
+        "No NFL grooming or country-by-texture frequencies",
+        "No age-transition rates or sampling coefficients adopted"
+      ],
+      "planBinding": "Expanded individual appearance and measured-body requirements"
+    },
+    {
+      "id": "loussouarn-2007-worldwide-curliness",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17919196/",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2007,
+      "retrieval": "indexed primary abstract; direct PubMed retrieval returned disclosure footer",
+      "cohort": "2449 participants from 22 countries",
+      "allowedUse": "Independent geometric hair curvature and kinking channels beneath texture labels",
+      "limitations": [
+        "Full tables and raw observations not reviewed",
+        "Not representative country frequencies or grooming prevalence",
+        "Distinct from existing 1442-person hair-shape paper",
+        "No sampling coefficients adopted"
+      ],
+      "planBinding": "Expanded individual appearance and measured-body requirements"
+    },
+    {
+      "id": "jonnalagadda-2019-south-asian-pigmentation",
+      "url": "https://doi.org/10.1093/gbe/evz057",
+      "supportingUrl": "https://pubmed.ncbi.nlm.nih.gov/30895295/",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2019,
+      "retrieval": "indexed publisher methods; direct PubMed retrieval returned disclosure footer",
+      "cohort": "Selected Canadian South Asian diaspora and West Maharashtra populations; iris analysis in Canadian sample",
+      "allowedUse": "Continuous iris pigmentation, regional iris variation and standardized reference lighting",
+      "limitations": [
+        "Not country-wide or NFL frequencies",
+        "No genotypes, individual images, raw measurements or coefficients imported",
+        "Iris and skin samples cannot be treated as interchangeable denominators"
+      ],
+      "planBinding": "Expanded individual appearance and measured-body requirements"
+    },
+    {
+      "id": "raymond-2018-composition-method-agreement",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29120982/",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2018,
+      "retrieval": "directly retrieved primary abstract",
+      "cohort": "44 male Division I collegiate football players",
+      "allowedUse": "Method-specific provenance and uncertainty for total and regional body composition",
+      "limitations": [
+        "Bioelectrical impedance and DXA differ with position",
+        "Not NFL or worldwide body frequencies",
+        "Tissue measurements do not directly specify surface dimensions",
+        "No raw observations or correction equations adopted"
+      ],
+      "planBinding": "Expanded individual appearance and measured-body requirements"
+    },
+    {
+      "id": "nfl-2026-edge-arm-outliers",
+      "url": "https://www.nfl.com/news/top-dl-prospect-rueben-bain-jr-arm-length-measured-at-under-31-inches-at-combine",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2026,
+      "retrieval": "direct official NFL article",
+      "cohort": "Selected 2026 Combine prospects",
+      "allowedUse": "Preserve measured limb-dimension outliers rather than enforcing position templates",
+      "limitations": [
+        "Examples do not establish a league distribution",
+        "No causal performance coefficients adopted"
+      ],
+      "planBinding": "Expanded individual appearance and measured-body requirements"
+    },
+    {
+      "id": "acs-2024-pums-joint-background-schema",
+      "url": "https://www2.census.gov/programs-surveys/acs/tech_docs/pums/data_dict/PUMS_Data_Dictionary_2024.pdf",
+      "supportingUrl": "https://api.census.gov/data/2024/acs/acs1/pums/variables.html",
+      "nativeBirthplaceMetadataUrl": "https://api.census.gov/data/2024/acs/acs1/pums/variables/POBP.json",
+      "relatedArtifact": "PLAYER_ACS_CROSSWALK_2026-10-07.json",
+      "retrieval": "direct official dictionary and variable catalog; eight native variable metadata responses extracted and source-hashed; candidate codes mapped for 47 supported countries with one broader Korea recode requiring scope review; person records and weighted counts not extracted",
+      "reviewDate": "2026-10-07",
+      "collectionPeriod": "2024 ACS one-year PUMS; dictionary dated October 16, 2025",
+      "cohort": "U.S. resident survey microdata, not national birth populations or NFL players",
+      "allowedUse": "Plan weighted joint birthplace/background extraction with original responses, scope, allocation flags and sampling uncertainty",
+      "limitations": [
+        "No individual records, joint counts, frequencies or generator coefficients adopted",
+        "Resident diaspora context cannot substitute for country population or athlete recruitment",
+        "Ancestry responses do not reconstruct complete family ancestry or phenotype",
+        "Sparse cells and source definitions require explicit fallback and crosswalk review"
+      ],
+      "planBinding": "Concrete demographic extraction and whole-appearance acceptance"
+    },
+    {
+      "id": "candille-2012-quantitative-pigmentation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23118974/",
+      "supportingUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3485197/",
+      "retrieval": "indexed primary methods and abstract; direct PMC browser challenge and direct PubMed text unavailable in this attempt",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2012,
+      "collectionPeriod": "Not established in reviewed text",
+      "cohort": "470 participants recruited in Ireland, Poland, Italy and Portugal",
+      "method": "Quantitative skin, hair and eye pigmentation measurements",
+      "allowedUse": "Continuous saved pigment variation beneath broad color labels with separately addressable channels",
+      "limitations": [
+        "Selected four-population study, not representative worldwide or NFL frequencies",
+        "No raw measurements or fitted appearance coefficients adopted",
+        "Association findings do not support genetic simulation or a country-wide cosmetic preset"
+      ],
+      "planBinding": "Concrete demographic extraction and whole-appearance acceptance"
+    },
+    {
+      "id": "dengel-2023-nfl-regional-composition",
+      "url": "https://www.thieme-connect.com/products/ejournals/pdf/10.1055/a-2089-8068.pdf",
+      "retrieval": "direct publisher PDF; methods and regional results reviewed",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2023,
+      "collectionPeriod": "2006–2011",
+      "cohort": "346 of 411 scanned active players, free agents and prospective draft choices; 228 controls",
+      "method": "DXA total and arm/leg/trunk lean mass, fat mass and bone mineral content",
+      "allowedUse": "Separate regional composition from stature and mass; audit positional sample and scanner selection before calibration",
+      "limitations": [
+        "Only participants fitting completely in the scanner field were retained",
+        "Historical mixed roster-status sample, not a 2026 active-player census",
+        "Regional tissue observations are not surface girths or skeletal joint lengths",
+        "No individual records, covariance or renderer coefficients adopted"
+      ],
+      "planBinding": "Measured frame, regional build and calibration acceptance"
+    },
+    {
+      "id": "census-2024-reporting-standard-transition",
+      "url": "https://www.census.gov/about/our-research/race-ethnicity/standards-updates.html",
+      "retrieval": "direct official page",
+      "reviewDate": "2026-10-07",
+      "collectionPeriod": "2024 standard revision; implementation transition",
+      "cohort": "Reporting standard, not a population sample",
+      "allowedUse": "Version reporting categories and preserve multiple responses, detailed identities and source-specific crosswalks",
+      "limitations": [
+        "A changed reporting standard does not retrospectively change old NFL or census observations",
+        "No population frequencies or phenotype probabilities supplied",
+        "Race/ethnicity responses cannot establish a complete cosmetic phenotype"
+      ],
+      "planBinding": "Demographic source schema and migration"
+    },
+    {
+      "id": "ons-2021-birthplace-ethnic-group-joint-table",
+      "url": "https://www.ons.gov.uk/datasets/RM010/editions/2021/versions/1?showAll=country_of_birth_12a",
+      "retrieval": "direct official dataset description; cells not extracted",
+      "reviewDate": "2026-10-07",
+      "collectionPeriod": "2021 Census",
+      "cohort": "Usual residents of England and Wales classified by country of birth and ethnic group",
+      "allowedUse": "Identify a joint-table source for birthplace/background context instead of multiplying unrelated marginal distributions",
+      "limitations": [
+        "England and Wales residents, not all people born in each listed country or all UK residents",
+        "Not NFL recruitment or appearance prevalence",
+        "No cell counts, conditional weights or runtime coefficients imported"
+      ],
+      "planBinding": "Country/background conditional sampling and denominator checks"
+    },
+    {
+      "id": "brooks-2026-seasonal-regional-composition",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41369529/",
+      "retrieval": "direct-primary-study-abstract",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2026,
+      "collectionPeriod": "Not established in reviewed abstract; paired preseason and postseason assessments",
+      "cohort": "188 male NCAA Division I football players aged 18–23, grouped into nine positions",
+      "method": "Paired DXA total and regional composition; season/position comparisons controlling participation status",
+      "allowedUse": "Separate dated total weight from regional lean/fat composition and retain body-history observations",
+      "limitations": [
+        "Collegiate cohort, not an NFL census or professional career trajectory",
+        "Abstract reviewed; individual records, covariance and full methods not retrieved",
+        "Stable group total mass does not imply every individual's mass stayed fixed",
+        "Does not establish weekly rates, injury effects or a deterministic position-specific loss rule",
+        "No numerical generator or aging coefficients adopted"
+      ],
+      "planBinding": "Measured frame, regional body composition and longitudinal continuity"
+    },
+    {
+      "id": "norton-2014-melanesian-pigmentation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24449225/",
+      "retrieval": "direct-primary-study-abstract",
+      "publicationYear": 2014,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "550 individuals across Northern Island Melanesia",
+      "method": "Quantitatively measured skin and hair pigmentation; regional association analysis",
+      "allowedUse": "Separate hair and skin pigmentation channels; include dark-skin/light-natural-hair visual acceptance",
+      "limitations": [
+        "Not an NFL or worldwide frequency sample",
+        "Allele frequencies are not phenotype percentages",
+        "Island-level heterogeneity prevents a universal Pacific distribution",
+        "No genetic simulation or sampling coefficients adopted"
+      ],
+      "planBinding": "Complete saved appearance"
+    },
+    {
+      "id": "kenny-2012-solomon-blond-hair",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22556244/",
+      "retrieval": "primary-study-indexed-abstract; direct page returned disclosure footer",
+      "publicationYear": 2012,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "Solomon Islands study; denominator not established in reviewed text",
+      "allowedUse": "Natural blond hair is not exclusive to a White reporting category",
+      "limitations": [
+        "Not a worldwide or NFL prevalence estimate",
+        "No fitted generator coefficients adopted",
+        "Full text not reviewed"
+      ],
+      "planBinding": "Complete saved appearance"
+    },
+    {
+      "id": "nfl-international-2025-participation",
+      "url": "https://edge-operations.nfl.com/programs-initiatives/international-growth/international-player-pathway",
+      "retrieval": "direct-page",
+      "collectionPeriod": "2025 regular season and playoffs; separate 2026 Week 1 IPP count",
+      "cohort": "International-born NFL roster participants",
+      "observations": {
+        "participants": 126,
+        "activeRosterParticipants": 61,
+        "countriesAndTerritories": 38
+      },
+      "allowedUse": "Birthplace/pathway coverage and cohort definitions",
+      "limitations": [
+        "Season-wide participants are not opening-day prevalence",
+        "No country-by-heritage or appearance frequencies",
+        "IPP membership is distinct from foreign birthplace"
+      ],
+      "planBinding": "Source and population model"
+    },
+    {
+      "id": "tides-nfl-2023-table1",
+      "url": "https://www.tidesport.org/_files/ugd/326b62_f8ae68d67f744fdbba5962c84b43f3bf.pdf",
+      "retrieval": "direct-primary-PDF; Appendix II Table 1 reconfirmed 2026-10-07",
+      "collectionPeriod": "2023 report cohort",
+      "cohort": "NFL players in the report's Table 1",
+      "observations": {
+        "denominator": 1536,
+        "White": 375,
+        "Black": 821,
+        "HispanicOrLatino": 7,
+        "Asian": 2,
+        "HawaiianOrPacificIslander": 27,
+        "AmericanIndianOrAlaskaNative": 1,
+        "TwoOrMoreRaces": 167,
+        "NotDisclosed": 136
+      },
+      "allowedUse": "Dated league reporting margin, preserving original categories",
+      "limitations": [
+        "Not a 2026 demographic census",
+        "Nondisclosure is not a phenotype",
+        "Categories cannot identify conditional country probabilities or pigmentation"
+      ],
+      "planBinding": "Source and population model",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "un-census-ethnicity-definitions",
+      "url": "https://unstats.un.org/unsd/demographic-social/Standards-and-Methods/files/Principles_and_Recommendations/Population-and-Housing-Censuses/Series_M67rev3-E.pdf",
+      "retrieval": "official-indexed-text",
+      "collectionPeriod": "Methods recommendation, not population observations",
+      "cohort": null,
+      "allowedUse": "Separate birthplace, citizenship and ethnic identity; preserve local definitions and mixed identities",
+      "limitations": [
+        "No universal ethnicity classification",
+        "No population or phenotype probabilities"
+      ],
+      "planBinding": "Source and population model"
+    },
+    {
+      "id": "census-separate-demographic-fields",
+      "url": "https://cdn.www.census.gov/data/what-is-data-census-gov/guidance-for-data-users/frequently-asked-questions/data-by-race-hispanic-origin-ancestry-or-country-of-birth.html",
+      "retrieval": "official-indexed-text",
+      "collectionPeriod": "Data-access guidance, not population observations",
+      "cohort": null,
+      "allowedUse": "Keep race/ethnicity, ancestry and country-of-birth observations separately sourced",
+      "limitations": [
+        "Does not provide an NFL sampling distribution",
+        "Reporting instruments must be versioned"
+      ],
+      "planBinding": "Source and population model"
+    },
+    {
+      "id": "lasisi-2021-hair-morphology",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34075066/",
+      "retrieval": "primary-study-indexed-abstract",
+      "publicationYear": 2021,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "140 participants in an admixed African-European sample",
+      "allowedUse": "Separate continuous hair curvature from cross-sectional morphology and hairstyle",
+      "limitations": [
+        "Not representative worldwide or NFL frequencies",
+        "Cross-section and curvature association is not established as causal",
+        "No fitted generator coefficients adopted"
+      ],
+      "planBinding": "Complete saved appearance"
+    },
+    {
+      "id": "edwards-2016-iris-pigmentation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26547379/",
+      "retrieval": "direct-primary-study-abstract",
+      "publicationYear": 2016,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "European, East Asian and South Asian ancestry samples; denominator not established here",
+      "allowedUse": "Continuous iris shade variation beneath broad color labels",
+      "limitations": [
+        "Not representative worldwide or NFL frequencies",
+        "Photo color measurements are not rendered material coefficients",
+        "No genetic simulation or national eye-color weights adopted"
+      ],
+      "planBinding": "Complete saved appearance"
+    },
+    {
+      "id": "dengel-2023-historical-nfl-dxa",
+      "url": "https://www.thieme-connect.de/products/ejournals/pdf/10.1055/a-2089-8068.pdf",
+      "retrieval": "direct-full-text; methods reviewed",
+      "publicationYear": 2023,
+      "collectionPeriod": "2006–2011",
+      "cohort": "Rostered players, free agents and prospective draft choices; 346 included from 411 measured, plus 228 controls",
+      "method": "DXA total and regional lean/fat mass and bone mineral content",
+      "allowedUse": "Separate regional composition from skeletal dimensions; historical positional plausibility",
+      "limitations": [
+        "Scanner fit excluded 65 players, affecting size-tail inference",
+        "Not a current active-roster census",
+        "No individual covariance or render-ready geometry",
+        "DXA bone mineral content is not wet skeletal mass",
+        "No numerical shape coefficients adopted"
+      ],
+      "planBinding": "Measured frame and current body"
+    },
+    {
+      "id": "nfl-2026-fano-measurement-example",
+      "url": "https://www.nfl.com/news/2026-nfl-combine-spencer-fano-expresses-openness-to-position-change-after-arms-measure-32-1-8-inches",
+      "retrieval": "official-indexed-article",
+      "collectionPeriod": "2026 NFL Combine",
+      "cohort": "One offensive-line prospect",
+      "allowedUse": "Concrete heavy-fast and reach/stature comparison case",
+      "limitations": [
+        "A single example supplies neither percentiles nor population correlations",
+        "Measured athletic performance does not determine tissue composition"
+      ],
+      "planBinding": "Athletic expression and body history"
+    },
+    {
+      "id": "ibge-2022-color-race",
+      "url": "https://educa.ibge.gov.br/jovens/conheca-o-brasil/populacao/18319-cor-ou-raca.html",
+      "retrieval": "official-indexed-text; direct fetch failed",
+      "collectionPeriod": "2022 Brazil Census",
+      "cohort": "Brazil resident self-declared color/race responses",
+      "observations": {
+        "percent": {
+          "parda": 45.3,
+          "branca": 43.5,
+          "preta": 10.2,
+          "indigena": 0.6,
+          "amarela": 0.4
+        }
+      },
+      "allowedUse": "Native-category country context; preserve self-report semantics",
+      "limitations": [
+        "Not NFL entrants or pigment frequencies",
+        "Indigenous color/race response differs from broader Indigenous identification",
+        "No country conditional coefficients adopted"
+      ],
+      "planBinding": "Source and population model"
+    },
+    {
+      "id": "statssa-2022-population-groups",
+      "url": "https://www.statssa.gov.za/?p=16716",
+      "retrieval": "direct-official-page",
+      "collectionPeriod": "2022 South Africa Census",
+      "cohort": "South African resident population groups",
+      "observations": {
+        "percent": {
+          "BlackAfrican": 81.4,
+          "coloured": 8.2,
+          "white": 7.3,
+          "IndianAsian": 2.7
+        }
+      },
+      "allowedUse": "Locally defined country context; multiple possible backgrounds per birthplace",
+      "limitations": [
+        "Not complete unrounded margin",
+        "Not NFL recruitment or appearance frequencies",
+        "No coefficients adopted"
+      ],
+      "planBinding": "Source and population model"
+    },
+    {
+      "id": "statsnz-2023-total-response-margin",
+      "url": "https://www.stats.govt.nz/assets/Infographics/2023-Census-infographics/2023-Census-infographics-National.pdf",
+      "retrieval": "direct-official-pdf-text",
+      "collectionPeriod": "2023 New Zealand Census",
+      "cohort": "Census usually resident population; multiple ethnic responses",
+      "observations": {
+        "denominator": 4993923,
+        "responseMode": "multiple",
+        "percent": {
+          "European": 67.8,
+          "Maori": 17.8,
+          "Pacific": 8.9,
+          "Asian": 17.3,
+          "MELAA": 1.9,
+          "Other": 1.1
+        }
+      },
+      "allowedUse": "Validate overlapping country identity margins; distinguish descent and ethnicity",
+      "limitations": [
+        "Percentages must not become exclusive probabilities",
+        "Not athlete recruitment or pigmentation",
+        "Joint combination tables not extracted"
+      ],
+      "planBinding": "Source and population model"
+    },
+    {
+      "id": "provencher-2018-combine-composition",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29351164/",
+      "retrieval": "direct-primary-study-abstract",
+      "publicationYear": 2018,
+      "collectionPeriod": "2010–2016 NFL Combines, per inclusion methods in abstract",
+      "cohort": "1958 participants completing air-displacement plethysmography",
+      "allowedUse": "Separate height/mass/BMI from observed body composition",
+      "limitations": [
+        "Historical invited prospects, not present active roster",
+        "Full text and individual covariance not retrieved",
+        "No body-fat or render coefficients adopted"
+      ],
+      "planBinding": "Measured frame and current body"
+    },
+    {
+      "id": "gillen-2019-developmental-combines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30794113/",
+      "retrieval": "direct-primary-study-abstract",
+      "publicationYear": 2019,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "3666 high-school and 5537 elite college-level NFL Combine participants",
+      "allowedUse": "Separate developmental cohorts and sprint/agility/jump capacities",
+      "limitations": [
+        "Not active NFL census",
+        "Joint individual distributions not retrieved",
+        "No direct animation or generation coefficients adopted"
+      ],
+      "planBinding": "Athletic expression and body history"
+    },
+    {
+      "id": "nfl-2026-styles-heavy-fast-example",
+      "url": "https://www.nfl.com/news/sonny-styles-generates-huge-buzz-with-2026-nfl-scouting-combine-performance",
+      "retrieval": "direct-official-article",
+      "collectionPeriod": "2026 NFL Combine",
+      "cohort": "One linebacker prospect",
+      "observations": {
+        "heightInches": 77,
+        "weightLbs": 244,
+        "fortySeconds": 4.46
+      },
+      "allowedUse": "Concrete tall/heavy/fast compatibility fixture",
+      "limitations": [
+        "Single example, not prevalence or covariance",
+        "Does not establish tissue composition"
+      ],
+      "planBinding": "Athletic expression and body history"
+    },
+    {
+      "id": "ansur-ii-army-release-2017",
+      "url": "https://www.army.mil/article-amp/188601",
+      "retrieval": "direct-official-release-page",
+      "publicationYear": 2017,
+      "collectionPeriod": "2012 survey, per release; exact collection dates not established here",
+      "cohort": "4082 male and1986 female US Army subjects in released data; not NFL/world population",
+      "method": "Official release describes93 direct anthropometric measurements and3D scans",
+      "allowedUse": "Identify separately measured body dimensions and candidate measurement protocols; require dictionary/data inspection before covariance fitting",
+      "limitations": [
+        "No raw data imported or analyzed",
+        "Soldier selection differs from NFL players and general population",
+        "No race-conditioned anatomy or football-talent coefficients"
+      ],
+      "implementationBindings": [
+        "src/domain/playerMeasurements.js",
+        "public/lib/physiqueGeometryContract.js"
+      ],
+      "requiredValidation": [
+        "Verify measurement endpoints/units from actual dictionary",
+        "Separate cohort-specific statistics from football fitting",
+        "Retain observed/estimated anatomy provenance"
+      ]
+    },
+    {
+      "id": "nfl-nextgen-tracking-method",
+      "url": "https://operations.nfl.com/game-operations-logistics/technology/performance-tracking-data-next-gen-stats",
+      "retrieval": "direct-official-method-page",
+      "publicationYear": null,
+      "collectionPeriod": "Live method page accessed2026-10-07; no player cohort downloaded",
+      "cohort": "NFL tracking system method, not a sampled player distribution",
+      "method": "Position/speed/distance/acceleration observations at10Hz",
+      "allowedUse": "Distinguish game tracking observations from drill measurements and rating-derived motion estimates",
+      "limitations": [
+        "No raw tracking or gait observations imported",
+        "Method does not establish individual peak speed or movement frequency",
+        "Forty-yard average cannot be relabeled observed peak game speed"
+      ],
+      "implementationBindings": [
+        "src/domain/playerWorkouts.js",
+        "public/lib/playerMotion.js"
+      ],
+      "requiredValidation": [
+        "Separate observed game/drill/estimated movement provenance",
+        "Independent speed/acceleration/turn controls",
+        "Physical capacities never change saved skeletal dimensions"
+      ]
+    },
+    {
+      "id": "panhard-2012-hair-graying",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22716034/",
+      "retrieval": "direct-primary-study-abstract",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2012,
+      "cohort": "4192 mixed-sex volunteers",
+      "collectionPeriod": "Not established in reviewed abstract",
+      "allowedUse": "Individual aging variation; separate dye and natural gray coverage",
+      "limitations": [
+        "No NFL-age frequency fit",
+        "No raw tables or longitudinal trajectories reviewed"
+      ],
+      "implementationBindings": [
+        "src/domain/playerVisualIdentity.js",
+        "public/lib/hairGrayFibers.js"
+      ],
+      "requiredValidation": [
+        "Identity-preserving partial graying",
+        "Explicit onset/progression assumptions"
+      ]
+    },
+    {
+      "id": "doyle-2026-combine-physical-dimensions",
+      "url": "https://doi.org/10.1519/JSC.0000000000005654",
+      "retrieval": "publisher-indexed-primary-abstract; direct PubMed page returned disclosure footer",
+      "reviewDate": "2026-10-07",
+      "publicationYear": 2026,
+      "cohort": "3681 complete-assessment Combine participants",
+      "collectionPeriod": "Participant years not established in reviewed abstract",
+      "allowedUse": "Separate physical capacities from draft/football-skill predictions",
+      "limitations": [
+        "Complete-case selection",
+        "No raw data or fitted coefficients adopted",
+        "No causal interpretation"
+      ],
+      "implementationBindings": [
+        "src/domain/playerWorkouts.js",
+        "public/lib/playerMotion.js"
+      ],
+      "requiredValidation": [
+        "Capacity-specific movement at fixed dimensions",
+        "No automatic talent or draft-rank assignment from physique"
+      ]
+    },
+    {
+      "id": "cdc-nhanes-2021-2023-body-codebook",
+      "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2021/DataFiles/BMX_L.htm",
+      "retrieval": "direct-primary-codebook",
+      "publicationYear": 2024,
+      "reviewDate": "2026-10-07",
+      "collectionPeriod": "August2021–August2023",
+      "cohort": "NHANES examined participants; not NFL athletes",
+      "allowedUse": "Variable separation, units, missingness, quality flags and weighted-analysis requirements",
+      "limitations": [
+        "No raw observations imported",
+        "No NFL positional fitting",
+        "Adult-cohort restriction and survey weights required before population analysis"
+      ],
+      "implementationBindings": [
+        "src/domain/playerMeasurements.js"
+      ],
+      "requiredValidation": [
+        "Preserve variable-level units and quality/missingness metadata",
+        "Do not substitute circumference for breadth or observed joint length"
+      ]
+    },
+    {
+      "id": "cdc-2021-anthropometry-endpoints",
+      "url": "https://wwwn.cdc.gov/nchs/data/nhanes/public/2021/manuals/2021-Anthropometry-Procedures-Manual-508.pdf",
+      "retrieval": "direct-primary-manual-sections3.4.5–3.4.7",
+      "publicationYear": 2021,
+      "reviewDate": "2026-10-07",
+      "cohort": "Measurement protocol; not a football frequency table",
+      "allowedUse": "Distinguish external limb-measure landmarks from skeleton joint endpoints",
+      "limitations": [
+        "No validated joint-center conversion adopted",
+        "No numerical proportion coefficients adopted"
+      ],
+      "implementationBindings": [
+        "src/domain/playerMeasurements.js"
+      ],
+      "requiredValidation": [
+        "Endpoint metadata and conversion before replacing segment estimates",
+        "Preserve incompatible measurements as separate observations"
+      ]
+    },
+    {
+      "id": "de-la-mettrie-2007-hair-shape",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18078200/",
+      "retrieval": "primary-study-indexed-abstract; direct page returned disclosure footer",
+      "publicationYear": 2007,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "1442 subjects from 18 countries",
+      "allowedUse": "Separate continuous hair geometry from ethnicity and mutable hairstyle",
+      "limitations": [
+        "No representative country/texture frequencies established",
+        "Full tables and raw observations not reviewed",
+        "No coefficients adopted"
+      ],
+      "planBinding": "Complete saved appearance",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "loussouarn-2016-hair-growth",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27019510/",
+      "retrieval": "primary-study-indexed-abstract; direct page returned disclosure footer",
+      "publicationYear": 2016,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "2249 adults aged 18–35, male and female, 24 groups across five continents, without alopecia",
+      "allowedUse": "Separate scalp density, strand diameter, natural pigment, curvature and growth",
+      "limitations": [
+        "Selected mixed-sex sample, not NFL or national prevalence",
+        "Alopecia exclusion prevents fitting baldness prevalence",
+        "Full tables and raw observations not reviewed",
+        "No coefficients adopted"
+      ],
+      "planBinding": "Complete saved appearance",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "lozano-2017-hair-pigment",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27506896/",
+      "retrieval": "direct-primary-study-abstract",
+      "publicationYear": 2017,
+      "collectionPeriod": "Not established in reviewed abstract",
+      "cohort": "2057 male/female volunteers from 23 regions",
+      "allowedUse": "Continuous natural hair pigment, distinct from shine, shape, dye and gray fibers",
+      "limitations": [
+        "Not athlete grooming or country-wide frequencies",
+        "Full tables and raw observations not reviewed",
+        "No color-space conversion or sampling coefficients adopted"
+      ],
+      "planBinding": "Complete saved appearance",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "oliver-2012-collegiate-anthropometry",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3392155/",
+      "retrieval": "direct-primary-full-text; methods and regression cohort reviewed",
+      "publicationYear": 2012,
+      "collectionPeriod": "Not established in reviewed methods",
+      "cohort": "157 players aged 17–23 from two NCAA Division IA universities; incomplete records leave 150 regression observations",
+      "allowedUse": "Separate regional girths, skinfolds and measured composition; require observed inputs and external validation for estimates",
+      "limitations": [
+        "Collegiate sample is not an NFL or world physique census",
+        "Training-fit statistics are not external NFL validation",
+        "Equations require girths/skinfolds absent from ordinary combine records",
+        "No equations or raw observations imported"
+      ],
+      "planBinding": "Measurement reconciliation and regional build",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "xiong-2025-regional-facial-shape",
+      "url": "https://orca.cardiff.ac.uk/id/eprint/180010/1/41467_2025_Article_61761.pdf",
+      "doi": "10.1038/s41467-025-61761-7",
+      "retrieval": "direct university-hosted primary PDF; abstract and results reviewed; publisher redirect and PMC browser challenge recorded",
+      "publicationYear": 2025,
+      "collectionPeriod": "Multiple constituent cohorts; collection dates not established in reviewed sections",
+      "cohort": "11,662 European-descent discovery participants across five cohorts; replication in 9,674 Chinese participants",
+      "allowedUse": "Regional facial geometry controls with individual variation; implementation inference rather than fitted prediction",
+      "limitations": [
+        "Not an NFL or world face census",
+        "Selected ancestry cohorts cannot supply universal national frequencies",
+        "Raw facial observations, images, genotypes and fitted coefficients not imported"
+      ],
+      "planBinding": "Whole-player individuality: separate saved regional face geometry",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "nlm-continuous-iris-color",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/eyecolor/",
+      "retrieval": "direct official educational explanation",
+      "collectionPeriod": "Not a sampled cohort; page last updated July 7, 2022",
+      "cohort": "Educational synthesis, not a prevalence dataset",
+      "allowedUse": "Continuous iris pigmentation and multivariate inheritance context; separate iris from scalp and skin controls",
+      "limitations": [
+        "No country-by-iris or NFL frequency table",
+        "No genetic simulation or sampling coefficients adopted"
+      ],
+      "planBinding": "Whole-player individuality: visible iris variation",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "nlm-natural-hair-pigment",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/haircolor/",
+      "retrieval": "direct official educational explanation",
+      "collectionPeriod": "Not a sampled cohort; page last updated July 8, 2022",
+      "cohort": "Educational synthesis, not a prevalence dataset",
+      "allowedUse": "Continuous natural hair pigment distinguished from dye and variable aging changes",
+      "limitations": [
+        "No representative country-by-hair or NFL-age frequency table",
+        "No sampling coefficients or gray-onset parameters adopted"
+      ],
+      "planBinding": "Whole-player individuality: natural pigment and mutable grooming",
+      "reviewDate": "2026-10-07"
+    },
+    {
+      "id": "morrison-2025-online-2026-collegiate-development",
+      "url": "https://doi.org/10.1177/17479541251367154",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct publisher HTML; abstract, methods and limitations reviewed. No individual observations imported.",
+      "cohort": "512 male NCAA Division I athletes, ages 18–23, one university; 2628 offseason testing observations over 15 years; 11 positional groups.",
+      "allowedUse": "Method-aware dated physical development; separate natural identity, physical observations and evaluated capacities.",
+      "limitations": [
+        "One collegiate programme, not an NFL population or national demographic sample.",
+        "Changing training and early NFL entry may affect later-year summaries.",
+        "No regional composition, external girths or joint body-shape/capacity coefficients adopted.",
+        "Test methods require reconciliation before combining with Combine or other observations."
+      ],
+      "planBinding": "Latest clarification: complete appearance and physically compatible athletes",
+      "extractedReference": "docs/PLAYER_PHYSICAL_DEVELOPMENT_REFERENCE_2026-10-07.json"
+    },
+    {
+      "id": "mcdowell-2021-linebacker-seasonal-maintenance",
+      "url": "https://journal.iusca.org/index.php/Journal/article/view/57",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct publisher abstract, not full methods or individual observations.",
+      "cohort": "Nine NCAA Division I FCS linebackers measured at three seasonal timepoints.",
+      "allowedUse": "Method-aware dated physical development; separate natural identity, physical observations and evaluated capacities.",
+      "limitations": [
+        "Small position-specific sample; null significance does not establish individual equivalence.",
+        "No NFL annual trajectory or anatomy-to-performance equation adopted."
+      ],
+      "planBinding": "Latest clarification: complete appearance and physically compatible athletes",
+      "extractedReference": "docs/PLAYER_PHYSICAL_DEVELOPMENT_REFERENCE_2026-10-07.json"
+    },
+    {
+      "id": "mkentane-2017-hair-classification-reliability",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0172834",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct publisher full text: Methods, Results and Discussion.",
+      "allowedUse": "Method-aware calibration requirements; see extracted reference.",
+      "extractedReference": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json",
+      "planBinding": "Demographic and appearance calibration follow-through"
+    },
+    {
+      "id": "statcan-2021-black-population-birthplace",
+      "url": "https://www150.statcan.gc.ca/n1/pub/89-657-x/89-657-x2024005-eng.htm",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct official analysis: Chart 1, Table A.3 and Data sources.",
+      "allowedUse": "Method-aware calibration requirements; see extracted reference.",
+      "extractedReference": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json",
+      "planBinding": "Demographic and appearance calibration follow-through"
+    },
+    {
+      "id": "dengel-2014-nfl-dxa-regional-build",
+      "url": "https://experts.umn.edu/en/publications/body-composition-and-bone-mineral-density-of-national-football-le/",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct author-institution abstract; publisher full text unavailable.",
+      "allowedUse": "Method-aware calibration requirements; see extracted reference.",
+      "extractedReference": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json",
+      "planBinding": "Demographic and appearance calibration follow-through"
+    },
+    {
+      "id": "norton-2016-continuous-pigmentation",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27435525/",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct indexed abstract retrieved on 2026-10-07; full methods and tables unreviewed. Earlier partial retrieval remains historical evidence.",
+      "extractedReference": "docs/PLAYER_APPEARANCE_CALIBRATION_SUPPLEMENT_2026-10-07.json",
+      "allowedUse": "Continuous trait design; no fitted country or NFL weights.",
+      "planBinding": "Complete appearance: implementation contract"
+    },
+    {
+      "id": "nfl-2026-sadiq-measured-speed-size",
+      "url": "https://www.nfl.com/news/2026-nfl-combine-oregon-s-kenyon-sadiq-runs-fastest-40-by-tight-end-since-at-least-2003",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct official NFL report, measurement paragraph and official sprint result",
+      "collectionPeriod": "2026 NFL Scouting Combine",
+      "cohort": "One selected prospect; not population prevalence",
+      "allowedUse": "Dated measurement/performance regression fixture; preserve a compatible fast athlete at this mass",
+      "limitations": [
+        "No composition or regional dimensions",
+        "No measured gait",
+        "No race or natural appearance inference",
+        "No distribution fit or career development rates"
+      ],
+      "extractedReference": "docs/PLAYER_APPEARANCE_MEASURED_CASES_2026-10-07.json",
+      "planBinding": "Latest appearance clarification: next deliverables"
+    },
+    {
+      "id": "nfl-2026-selected-heavy-sprint-cases",
+      "url": "https://amp.nfl.com/news/2026-all-combine-team-offense-nfl-draft",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Direct official NFL report, guard and center sections",
+      "collectionPeriod": "2026 NFL Scouting Combine",
+      "cohort": "Two editorially selected prospects; not representative sampling",
+      "allowedUse": "Partial dated regression inputs; unknown stature must remain unobserved, with any fixture completion explicitly estimated",
+      "limitations": [
+        "Editorial position labels",
+        "Unknown stature/segment dimensions in extracted records",
+        "No body-fat or strength observations",
+        "No mass-to-speed regression, national frequency or racial classification"
+      ],
+      "extractedReference": "docs/PLAYER_APPEARANCE_MEASURED_CASES_2026-10-07.json",
+      "planBinding": "Latest appearance clarification: next deliverables"
+    },
+    {
+      "id": "robbins-young-2012-position-sprint-jump-mass",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22240551/",
+      "reviewDate": "2026-10-07",
+      "retrieval": "Primary research abstract indexed by PubMed search; direct PubMed and DOI full-page retrieval unsuccessful",
+      "collectionPeriod": "2005–2009 NFL Scouting Combines",
+      "cohort": "1136 elite college football prospects",
+      "allowedUse": "Research target for distinct sprint/jump capacities and method-aware positional covariance; no fitted coefficients",
+      "limitations": [
+        "Full methods and tables unreviewed",
+        "Historical selected prospect cohort",
+        "No individual joint observations extracted",
+        "No endurance, reactive agility, appearance or anatomical shape fit"
+      ],
+      "extractedReference": "docs/PLAYER_APPEARANCE_MEASURED_CASES_2026-10-07.json",
+      "planBinding": "Latest appearance clarification: next deliverables"
+    }
+  ],
+  "adoptionPolicy": {
+    "runtimeCoefficientsChanged": false,
+    "missingFrequencyPolicy": "Explicit versioned simulation assumption; never described as measured national or NFL prevalence",
+    "naturalAppearance": "Overlapping individual variation with separately modeled family history",
+    "grooming": "Mutable cut, arrangement, length, dye and facial-hair state",
+    "bodyAuthority": "Recorded measurements first; stable estimates with provenance for missing dimensions",
+    "athleticAuthority": "Workouts and physical capacities affect movement without replacing the measured frame"
+  },
+  "lastExpandedDate": "2026-10-07",
+  "lastUpdated": "2026-10-07"
+}

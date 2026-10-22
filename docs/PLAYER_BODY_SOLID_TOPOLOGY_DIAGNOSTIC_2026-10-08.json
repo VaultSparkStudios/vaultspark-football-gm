@@ -1,0 +1,1941 @@
+{
+  "schemaVersion": 1,
+  "status": "diagnostic-open-solids-no-union-acceptance",
+  "weldToleranceInches": 0.00001,
+  "method": "Group tube side with its named start/end caps; weld coincident render seams; omit collapsed triangles; audit undirected edge incidence and winding within each assembled component.",
+  "limits": [
+    "Grid welding is tolerance-dependent and can miss nearby points across cell boundaries.",
+    "No intersection, self-intersection or connected-component classification.",
+    "A closed oriented edge-incidence result alone does not prove a valid solid.",
+    "Signed volumes of open parts are not accepted physical volumes and are not summed.",
+    "No complete-body union or mass fitting."
+  ],
+  "inputs": {
+    "public/lib/playerBody3d.js": "69f10b7d72425433c4282282852d14099aaf383edeb58926fe516eec493ca725",
+    "public/lib/playerHead3d.js": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6",
+    ".cache/audit-body-solids.mjs": "2661ecfb89537fb451cbee055ce137a2bb3ccb0c1e581bcd860263e1072183e3"
+  },
+  "cases": [
+    {
+      "heightInches": 80,
+      "weightLbs": 180,
+      "parts": [
+        {
+          "name": "torso",
+          "components": [
+            "torso",
+            "torso-start",
+            "torso-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 2205.9180189463827,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "shoulder-yoke",
+          "components": [
+            "shoulder-yoke"
+          ],
+          "boundaryEdges": 64,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 0,
+          "signedVolumeInches3": 1857.3145139835356,
+          "closedOrientedEdgeIncidence": false
+        },
+        {
+          "name": "pelvic-envelope",
+          "components": [
+            "pelvic-envelope"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 396.4949535791805,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "neck",
+          "components": [
+            "neck",
+            "neck-start",
+            "neck-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 46.21734213173226,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-upper",
+          "components": [
+            "arm-0-upper",
+            "arm-0-upper-start",
+            "arm-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 142.7776906571586,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-lower",
+          "components": [
+            "arm-0-lower",
+            "arm-0-lower-start",
+            "arm-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 77.67710587321261,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-joint",
+          "components": [
+            "arm-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 6.134135951047178,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-root",
+          "components": [
+            "arm-0-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 17.8681281017068,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-palm",
+          "components": [
+            "hand-0-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.251051019050768,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-0",
+          "components": [
+            "hand-0-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764649456930858,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-1",
+          "components": [
+            "hand-0-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.08404877130144,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-2",
+          "components": [
+            "hand-0-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917891325823303,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-3",
+          "components": [
+            "hand-0-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150108332106383,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-thumb",
+          "components": [
+            "hand-0-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.1422599018920123,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-0",
+          "components": [
+            "wrist-0",
+            "wrist-0-start",
+            "wrist-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 5.569284901474679,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-upper",
+          "components": [
+            "arm-1-upper",
+            "arm-1-upper-start",
+            "arm-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 142.7776906571586,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-lower",
+          "components": [
+            "arm-1-lower",
+            "arm-1-lower-start",
+            "arm-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 77.67710587321264,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-joint",
+          "components": [
+            "arm-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 6.134135951047108,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-root",
+          "components": [
+            "arm-1-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 17.86812810170666,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-palm",
+          "components": [
+            "hand-1-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.251051019050768,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-0",
+          "components": [
+            "hand-1-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764649456930858,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-1",
+          "components": [
+            "hand-1-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.08404877130144,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-2",
+          "components": [
+            "hand-1-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917891325823303,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-3",
+          "components": [
+            "hand-1-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150108332106383,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-thumb",
+          "components": [
+            "hand-1-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.1422599018920137,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-1",
+          "components": [
+            "wrist-1",
+            "wrist-1-start",
+            "wrist-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 5.569284901474701,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-upper",
+          "components": [
+            "leg-0-upper",
+            "leg-0-upper-start",
+            "leg-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 510.55897786568164,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-lower",
+          "components": [
+            "leg-0-lower",
+            "leg-0-lower-start",
+            "leg-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 299.9617445820925,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-joint",
+          "components": [
+            "leg-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 12.010463544360363,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-0",
+          "components": [
+            "foot-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877397,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-0",
+          "components": [
+            "ankle-0",
+            "ankle-0-start",
+            "ankle-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 2.6884821046903777,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-upper",
+          "components": [
+            "leg-1-upper",
+            "leg-1-upper-start",
+            "leg-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 510.5589778656819,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-lower",
+          "components": [
+            "leg-1-lower",
+            "leg-1-lower-start",
+            "leg-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 299.9617445820925,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-joint",
+          "components": [
+            "leg-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 12.010463544360366,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-1",
+          "components": [
+            "foot-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877399,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-1",
+          "components": [
+            "ankle-1",
+            "ankle-1-start",
+            "ankle-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 2.6884821046903786,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "skull-skin",
+          "components": [
+            "skull-skin"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 84,
+          "signedVolumeInches3": 184.885747441277,
+          "closedOrientedEdgeIncidence": true
+        }
+      ],
+      "allPartsIndividuallyClosed": false,
+      "unionVolumeVerified": false
+    },
+    {
+      "heightInches": 80,
+      "weightLbs": 240,
+      "parts": [
+        {
+          "name": "torso",
+          "components": [
+            "torso",
+            "torso-start",
+            "torso-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 2941.2240260116378,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "shoulder-yoke",
+          "components": [
+            "shoulder-yoke"
+          ],
+          "boundaryEdges": 64,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 0,
+          "signedVolumeInches3": 2475.5094760693755,
+          "closedOrientedEdgeIncidence": false
+        },
+        {
+          "name": "pelvic-envelope",
+          "components": [
+            "pelvic-envelope"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 528.6599414579667,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "neck",
+          "components": [
+            "neck",
+            "neck-start",
+            "neck-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 61.62312219660102,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-upper",
+          "components": [
+            "arm-0-upper",
+            "arm-0-upper-start",
+            "arm-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 190.3702545908371,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-lower",
+          "components": [
+            "arm-0-lower",
+            "arm-0-lower-start",
+            "arm-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 103.56946832124413,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-joint",
+          "components": [
+            "arm-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 9.444120620124584,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-root",
+          "components": [
+            "arm-0-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 27.509783453942063,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-palm",
+          "components": [
+            "hand-0-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.25105101650305,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-0",
+          "components": [
+            "hand-0-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764648581349903,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-1",
+          "components": [
+            "hand-0-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.0840483453969576,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-2",
+          "components": [
+            "hand-0-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917891838987717,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-3",
+          "components": [
+            "hand-0-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150109385375201,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-thumb",
+          "components": [
+            "hand-0-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.1422599726101863,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-0",
+          "components": [
+            "wrist-0",
+            "wrist-0-start",
+            "wrist-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 6.525890088540788,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-upper",
+          "components": [
+            "arm-1-upper",
+            "arm-1-upper-start",
+            "arm-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 190.37025459083713,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-lower",
+          "components": [
+            "arm-1-lower",
+            "arm-1-lower-start",
+            "arm-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 103.5694683212443,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-joint",
+          "components": [
+            "arm-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 9.444120620124629,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-root",
+          "components": [
+            "arm-1-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 27.509783453942543,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-palm",
+          "components": [
+            "hand-1-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.25105101650305,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-0",
+          "components": [
+            "hand-1-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764648581349903,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-1",
+          "components": [
+            "hand-1-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.0840483453969576,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-2",
+          "components": [
+            "hand-1-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917891838987717,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-3",
+          "components": [
+            "hand-1-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150109385375201,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-thumb",
+          "components": [
+            "hand-1-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.1422599726101976,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-1",
+          "components": [
+            "wrist-1",
+            "wrist-1-start",
+            "wrist-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 6.525890088540775,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-upper",
+          "components": [
+            "leg-0-upper",
+            "leg-0-upper-start",
+            "leg-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 680.7453088804158,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-lower",
+          "components": [
+            "leg-0-lower",
+            "leg-0-lower-start",
+            "leg-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 399.9489914283874,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-joint",
+          "components": [
+            "leg-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 18.491329621269227,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-0",
+          "components": [
+            "foot-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877397,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-0",
+          "components": [
+            "ankle-0",
+            "ankle-0-start",
+            "ankle-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 3.5846427333903974,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-upper",
+          "components": [
+            "leg-1-upper",
+            "leg-1-upper-start",
+            "leg-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 680.7453088804159,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-lower",
+          "components": [
+            "leg-1-lower",
+            "leg-1-lower-start",
+            "leg-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 399.94899142838756,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-joint",
+          "components": [
+            "leg-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 18.491329621269294,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-1",
+          "components": [
+            "foot-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877399,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-1",
+          "components": [
+            "ankle-1",
+            "ankle-1-start",
+            "ankle-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 3.584642733390398,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "skull-skin",
+          "components": [
+            "skull-skin"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 84,
+          "signedVolumeInches3": 184.885747441277,
+          "closedOrientedEdgeIncidence": true
+        }
+      ],
+      "allPartsIndividuallyClosed": false,
+      "unionVolumeVerified": false
+    },
+    {
+      "heightInches": 80,
+      "weightLbs": 350,
+      "parts": [
+        {
+          "name": "torso",
+          "components": [
+            "torso",
+            "torso-start",
+            "torso-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 4289.2850588253805,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "shoulder-yoke",
+          "components": [
+            "shoulder-yoke"
+          ],
+          "boundaryEdges": 64,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 0,
+          "signedVolumeInches3": 3609.5067885726658,
+          "closedOrientedEdgeIncidence": false
+        },
+        {
+          "name": "pelvic-envelope",
+          "components": [
+            "pelvic-envelope"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 770.9624064596333,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "neck",
+          "components": [
+            "neck",
+            "neck-start",
+            "neck-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 89.86705363551394,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-upper",
+          "components": [
+            "arm-0-upper",
+            "arm-0-upper-start",
+            "arm-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 277.62329515971936,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-lower",
+          "components": [
+            "arm-0-lower",
+            "arm-0-lower-start",
+            "arm-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 151.0388248966879,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-joint",
+          "components": [
+            "arm-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 16.63209041455024,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-root",
+          "components": [
+            "arm-0-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 48.44762465212491,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-palm",
+          "components": [
+            "hand-0-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.251050863286626,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-0",
+          "components": [
+            "hand-0-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764649486928299,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-1",
+          "components": [
+            "hand-0-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.0840487828695111,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-2",
+          "components": [
+            "hand-0-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917892870449899,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-3",
+          "components": [
+            "hand-0-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150110971749803,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-thumb",
+          "components": [
+            "hand-0-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.142260407075183,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-0",
+          "components": [
+            "wrist-0",
+            "wrist-0-start",
+            "wrist-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 8.205369040713933,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-upper",
+          "components": [
+            "arm-1-upper",
+            "arm-1-upper-start",
+            "arm-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 277.6232951597191,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-lower",
+          "components": [
+            "arm-1-lower",
+            "arm-1-lower-start",
+            "arm-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 151.03882489668777,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-joint",
+          "components": [
+            "arm-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 16.63209041455011,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-root",
+          "components": [
+            "arm-1-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 48.44762465212564,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-palm",
+          "components": [
+            "hand-1-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.251050863286626,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-0",
+          "components": [
+            "hand-1-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764649486928299,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-1",
+          "components": [
+            "hand-1-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.0840487828695111,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-2",
+          "components": [
+            "hand-1-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917892870449899,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-3",
+          "components": [
+            "hand-1-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150110971749803,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-thumb",
+          "components": [
+            "hand-1-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.142260407075175,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-1",
+          "components": [
+            "wrist-1",
+            "wrist-1-start",
+            "wrist-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 8.20536904071391,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-upper",
+          "components": [
+            "leg-0-upper",
+            "leg-0-upper-start",
+            "leg-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 992.7535788826922,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-lower",
+          "components": [
+            "leg-0-lower",
+            "leg-0-lower-start",
+            "leg-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 583.258944695772,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-joint",
+          "components": [
+            "leg-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 32.56515680784002,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-0",
+          "components": [
+            "foot-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877397,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-0",
+          "components": [
+            "ankle-0",
+            "ankle-0-start",
+            "ankle-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 5.227603867832324,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-upper",
+          "components": [
+            "leg-1-upper",
+            "leg-1-upper-start",
+            "leg-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 992.7535788826923,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-lower",
+          "components": [
+            "leg-1-lower",
+            "leg-1-lower-start",
+            "leg-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 583.2589446957721,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-joint",
+          "components": [
+            "leg-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 32.56515680783997,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-1",
+          "components": [
+            "foot-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877399,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-1",
+          "components": [
+            "ankle-1",
+            "ankle-1-start",
+            "ankle-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 5.22760386783233,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "skull-skin",
+          "components": [
+            "skull-skin"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 84,
+          "signedVolumeInches3": 184.885747441277,
+          "closedOrientedEdgeIncidence": true
+        }
+      ],
+      "allPartsIndividuallyClosed": false,
+      "unionVolumeVerified": false
+    },
+    {
+      "heightInches": 80,
+      "weightLbs": 500,
+      "parts": [
+        {
+          "name": "torso",
+          "components": [
+            "torso",
+            "torso-start",
+            "torso-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 6127.550052352743,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "shoulder-yoke",
+          "components": [
+            "shoulder-yoke"
+          ],
+          "boundaryEdges": 64,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 0,
+          "signedVolumeInches3": 5156.438448621357,
+          "closedOrientedEdgeIncidence": false
+        },
+        {
+          "name": "pelvic-envelope",
+          "components": [
+            "pelvic-envelope"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1101.3748921246545,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "neck",
+          "components": [
+            "neck",
+            "neck-start",
+            "neck-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 128.38150496854445,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-upper",
+          "components": [
+            "arm-0-upper",
+            "arm-0-upper-start",
+            "arm-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 396.60466921369544,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-lower",
+          "components": [
+            "arm-0-lower",
+            "arm-0-lower-start",
+            "arm-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 215.76975129828094,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-joint",
+          "components": [
+            "arm-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 28.398786923371468,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-0-root",
+          "components": [
+            "arm-0-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 82.72281221255852,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-palm",
+          "components": [
+            "hand-0-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.251051254696947,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-0",
+          "components": [
+            "hand-0-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764648446345449,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-1",
+          "components": [
+            "hand-0-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.0840484236441972,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-2",
+          "components": [
+            "hand-0-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917891557299996,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-finger-3",
+          "components": [
+            "hand-0-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150108585882874,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-0-thumb",
+          "components": [
+            "hand-0-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.1422600474218585,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-0",
+          "components": [
+            "wrist-0",
+            "wrist-0-start",
+            "wrist-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.403002373576404,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-upper",
+          "components": [
+            "arm-1-upper",
+            "arm-1-upper-start",
+            "arm-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 396.6046692136952,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-lower",
+          "components": [
+            "arm-1-lower",
+            "arm-1-lower-start",
+            "arm-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 215.76975129828085,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-joint",
+          "components": [
+            "arm-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 28.39878692337129,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "arm-1-root",
+          "components": [
+            "arm-1-root"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 82.72281221255884,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-palm",
+          "components": [
+            "hand-1-palm"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.251051254696947,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-0",
+          "components": [
+            "hand-1-finger-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.8764648446345449,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-1",
+          "components": [
+            "hand-1-finger-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.0840484236441972,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-2",
+          "components": [
+            "hand-1-finger-2"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.9917891557299996,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-finger-3",
+          "components": [
+            "hand-1-finger-3"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 0.7150108585882874,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "hand-1-thumb",
+          "components": [
+            "hand-1-thumb"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1.1422600474218474,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "wrist-1",
+          "components": [
+            "wrist-1",
+            "wrist-1-start",
+            "wrist-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 10.403002373576442,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-upper",
+          "components": [
+            "leg-0-upper",
+            "leg-0-upper-start",
+            "leg-0-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1418.219392488316,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-lower",
+          "components": [
+            "leg-0-lower",
+            "leg-0-lower-start",
+            "leg-0-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 833.2270710688584,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-0-joint",
+          "components": [
+            "leg-0-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 55.6039945949282,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-0",
+          "components": [
+            "foot-0"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877397,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-0",
+          "components": [
+            "ankle-0",
+            "ankle-0-start",
+            "ankle-0-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 7.2121747676561565,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-upper",
+          "components": [
+            "leg-1-upper",
+            "leg-1-upper-start",
+            "leg-1-upper-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 1418.219392488316,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-lower",
+          "components": [
+            "leg-1-lower",
+            "leg-1-lower-start",
+            "leg-1-lower-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 833.2270710688579,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "leg-1-joint",
+          "components": [
+            "leg-1-joint"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 55.60399459492814,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "foot-1",
+          "components": [
+            "foot-1"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 49.42929473877399,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "ankle-1",
+          "components": [
+            "ankle-1",
+            "ankle-1-start",
+            "ankle-1-end"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 64,
+          "signedVolumeInches3": 7.212174767656155,
+          "closedOrientedEdgeIncidence": true
+        },
+        {
+          "name": "skull-skin",
+          "components": [
+            "skull-skin"
+          ],
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "inconsistentEdges": 0,
+          "degenerateTriangles": 84,
+          "signedVolumeInches3": 184.885747441277,
+          "closedOrientedEdgeIncidence": true
+        }
+      ],
+      "allPartsIndividuallyClosed": false,
+      "unionVolumeVerified": false
+    }
+  ],
+  "inputAndSimulationRngUnchanged": true
+}

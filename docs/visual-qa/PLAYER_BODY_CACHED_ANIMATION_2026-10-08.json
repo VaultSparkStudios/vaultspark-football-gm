@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T15:05:17.980Z",
+  "status": "experimental-cached-body-review-pending",
+  "scope": "One-time body construction and cached rigid component articulation; no complete anatomical skin, union-volume invariant or production integration.",
+  "doneCondition": [
+    "Build one body, reuse vertex/index/part buffers over selected modes/phases, reproduce independently constructed positions within2e-5in and restore neutral vertices exactly.",
+    "Retain measured poses, finite near-unit normals and closed oriented edge incidence; per-component signed volume within1e-4relative while acknowledging union variation.",
+    "Saved appearance/frame/ratings changes invalidate authority at state boundaries; no player mutation, deterministic neutral pixels and terminal disposal.",
+    "Measure actual headless Chromium CPU update/render-submission cost separately from expensive construction and inspect paired desktop/mobile themed captures; no physical mobile or GPU frame-rate claim."
+  ],
+  "sourceHashes": {
+    "test-support/appearance/playerBodyAnimation3d.js": "2f1a384f3983cec1faeac284afab29ae9a80f18aadb9449882fadd69e8554410",
+    "test-support/appearance/playerBody3d.js": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "public/lib/playerCapacityStudy.js": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7",
+    "public/lib/physiqueGeometryContract.js": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d",
+    "public/lib/playerHead3d.js": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6",
+    "public/lib/playerHand.js": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "test/player-body-animation-3d.test.js": "c2316fcad4e8929325c107167eda110fe50f015063fda1ad337c3f45321a7bd3",
+    "test/fixtures/player-head-pole-case.json": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1",
+    "tests-ui/player-body-animation-3d.spec.js": "8843d7332327dd2fae0da77010959bda5d9692022bbae4553ef4abbbefbbe27a",
+    "scripts/run-test-shard.mjs": "3dbef5e3f62b21985602126b9ae06fc47ae9795774841f5bb5471a2faf5bf33c"
+  },
+  "frozenSources": [
+    {
+      "original": "test-support/appearance/playerBodyAnimation3d.js",
+      "file": "references/body-animation-source-0-playerBodyAnimation3d.js-2026-10-08",
+      "sha256": "2f1a384f3983cec1faeac284afab29ae9a80f18aadb9449882fadd69e8554410"
+    },
+    {
+      "original": "test-support/appearance/playerBody3d.js",
+      "file": "references/body-animation-source-1-playerBody3d.js-2026-10-08",
+      "sha256": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425"
+    },
+    {
+      "original": "test-support/appearance/triangleSolidVolume.js",
+      "file": "references/body-animation-source-2-triangleSolidVolume.js-2026-10-08",
+      "sha256": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/body-animation-source-3-playerMotion.js-2026-10-08",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "original": "public/lib/playerCapacityStudy.js",
+      "file": "references/body-animation-source-4-playerCapacityStudy.js-2026-10-08",
+      "sha256": "8636b84a1a0f33dacaaf337091f645804796e1c3f61682019a02463627dddaf7"
+    },
+    {
+      "original": "public/lib/physiqueGeometryContract.js",
+      "file": "references/body-animation-source-5-physiqueGeometryContract.js-2026-10-08",
+      "sha256": "98d0033e0120a6e26cd6eec5de7f0405987dd994e48c985bf31bab8c4a418f1d"
+    },
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/body-animation-source-6-playerHead3d.js-2026-10-08",
+      "sha256": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6"
+    },
+    {
+      "original": "public/lib/playerHand.js",
+      "file": "references/body-animation-source-7-playerHand.js-2026-10-08",
+      "sha256": "86ff703c672af0e782638110e9092b1831c7426014242bd6618e3e8840fc14ca"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/body-animation-source-8-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "test/player-body-animation-3d.test.js",
+      "file": "references/body-animation-source-9-player-body-animation-3d.test.js-2026-10-08",
+      "sha256": "c2316fcad4e8929325c107167eda110fe50f015063fda1ad337c3f45321a7bd3"
+    },
+    {
+      "original": "test/fixtures/player-head-pole-case.json",
+      "file": "references/body-animation-source-10-player-head-pole-case.json-2026-10-08",
+      "sha256": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1"
+    },
+    {
+      "original": "tests-ui/player-body-animation-3d.spec.js",
+      "file": "references/body-animation-source-11-player-body-animation-3d.spec.js-2026-10-08",
+      "sha256": "8843d7332327dd2fae0da77010959bda5d9692022bbae4553ef4abbbefbbe27a"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/body-animation-source-12-run-test-shard.mjs-2026-10-08",
+      "sha256": "3dbef5e3f62b21985602126b9ae06fc47ae9795774841f5bb5471a2faf5bf33c"
+    }
+  ],
+  "captures": [
+    {
+      "original": "output/playwright/body-animation-acceleration-desktop-dark.png",
+      "file": "captures/body-animation-acceleration-desktop-dark.png",
+      "sha256": "13f77c7782dd60355c5b23c42ded57c92587bb1e2a38acd0dae6c2bae5af2d72",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-acceleration-desktop-light.png",
+      "file": "captures/body-animation-acceleration-desktop-light.png",
+      "sha256": "51671383bc55409f421c2849c9ff3221586dc9a6e62071cab59e9c8f7d9566da",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-acceleration-mobile-dark.png",
+      "file": "captures/body-animation-acceleration-mobile-dark.png",
+      "sha256": "f1ef8d9134d4842601ce99b6abde4a9a8483164260feeb270692b2a21a50d137",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-acceleration-mobile-light.png",
+      "file": "captures/body-animation-acceleration-mobile-light.png",
+      "sha256": "1f559f9b5dcdf7cf413e4f22709765747073ca05ecdb971bf4cf52bb7096f6d0",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-cut-desktop-dark.png",
+      "file": "captures/body-animation-cut-desktop-dark.png",
+      "sha256": "f469cff937c8a0f052ee3adbed8bb8ca0d4a0ebf12960c2348bf65c10cdbdf3c",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-cut-desktop-light.png",
+      "file": "captures/body-animation-cut-desktop-light.png",
+      "sha256": "bea1b2c9e922fe82dad3bb3eeec403cbf8b52abf5ddc713e015cd12fe2bf0195",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-cut-mobile-dark.png",
+      "file": "captures/body-animation-cut-mobile-dark.png",
+      "sha256": "cb49dffb35846f8ffff220464039becd2c4dd609b7c06d064b78f687fec56a7e",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-cut-mobile-light.png",
+      "file": "captures/body-animation-cut-mobile-light.png",
+      "sha256": "1ba892359a9fe81e328d8bee40f414a575cb4522eff75def850430032b07586d",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-endurance-desktop-dark.png",
+      "file": "captures/body-animation-endurance-desktop-dark.png",
+      "sha256": "4562a988b06cf573cedfe2fb767e76234c555d78023d8aa2b24374dba313bbc9",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-endurance-desktop-light.png",
+      "file": "captures/body-animation-endurance-desktop-light.png",
+      "sha256": "90011508b62f729fce1a8704cb80f95e7de4232d50b82d2b877a5764cc2e0949",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-endurance-mobile-dark.png",
+      "file": "captures/body-animation-endurance-mobile-dark.png",
+      "sha256": "396ba8413cc86f8a7889ad51c99001cf8ac3efb03ede4a424ffec81e1dcdb491",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-endurance-mobile-light.png",
+      "file": "captures/body-animation-endurance-mobile-light.png",
+      "sha256": "3ec9fce91a6d8beed6f8d091d0402937b6c8f98b1b29d8cd1efe31c71bff91b5",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-jump-desktop-dark.png",
+      "file": "captures/body-animation-jump-desktop-dark.png",
+      "sha256": "191b3fc38c694f194415fe8be814f52134c54a7e81abf9dd60b98645a4ae2082",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-jump-desktop-light.png",
+      "file": "captures/body-animation-jump-desktop-light.png",
+      "sha256": "1ff1e556bb7c04e8bc033dc1e2ce1a69013ef7a9563306bd5486f0dd75e64644",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-jump-mobile-dark.png",
+      "file": "captures/body-animation-jump-mobile-dark.png",
+      "sha256": "10620ae144c5491b08021c51c8e2943ce4a09695ddff4ffbf2eb6385e6b3aa25",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-jump-mobile-light.png",
+      "file": "captures/body-animation-jump-mobile-light.png",
+      "sha256": "173f754178a2156d98d9d70facc36a4ea7e51fff147557194b29d04499803b2a",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-run-desktop-dark.png",
+      "file": "captures/body-animation-run-desktop-dark.png",
+      "sha256": "8ad7fef76c90ac121fdc8b320b5128cb012d901ecf28d58af040df5b37a06e7d",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-run-desktop-light.png",
+      "file": "captures/body-animation-run-desktop-light.png",
+      "sha256": "42650e1a0037cf50c5388ea2bf0d0906e6a4228883b1b610463c7c93cec3c155",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-run-mobile-dark.png",
+      "file": "captures/body-animation-run-mobile-dark.png",
+      "sha256": "d9286bd2f090f4dc9502bde43a6aad2cbbbec98b94389fd1f2efee95d4f5259a",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-run-mobile-light.png",
+      "file": "captures/body-animation-run-mobile-light.png",
+      "sha256": "b28aa0c6b7ba1b7ef201176fa6e45f4fbf353de01bafb022b26aa9733a771a1f",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-strength-desktop-dark.png",
+      "file": "captures/body-animation-strength-desktop-dark.png",
+      "sha256": "061161f6a6c9bd1d367ea3a3dbc3badce6e958ec482262e30ecd74a1332f1174",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-strength-desktop-light.png",
+      "file": "captures/body-animation-strength-desktop-light.png",
+      "sha256": "f9e02e26c5a23ff346a882ffcb96210793d2e369c13ee977d0436a286fbee3e7",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-strength-mobile-dark.png",
+      "file": "captures/body-animation-strength-mobile-dark.png",
+      "sha256": "eaef90eea2066f61f78c48b449d28c6cb8514ed592ff8aaf4b10fa10e6cee492",
+      "page": "paired-cached-body-experiment",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/body-animation-strength-mobile-light.png",
+      "file": "captures/body-animation-strength-mobile-light.png",
+      "sha256": "59d220c64a57da0ab392415cd9d7e18a3b960871789d40af487e7d7e934b11d9",
+      "page": "paired-cached-body-experiment",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "reports": [
+    {
+      "original": ".cache/head-poles/body-animation-domain-final.log",
+      "file": "references/body-animation-report-0-body-animation-domain-final.log-2026-10-08",
+      "sha256": "b1be0b3a28c27f96b73fd7e1fa48095d9461264ad453cd2d48301175867ce1ca"
+    },
+    {
+      "original": ".cache/head-poles/body-animation-browser.log",
+      "file": "references/body-animation-report-1-body-animation-browser.log-2026-10-08",
+      "sha256": "c2aa8f031a21884293fe7627a39bf7952ca520159601c1f6df58d837b68a9a8e"
+    },
+    {
+      "original": "output/playwright/body-animation-observations.json",
+      "file": "references/body-animation-report-2-body-animation-observations.json-2026-10-08",
+      "sha256": "56231da6c9203cf55df73ee1fee96eab2f29da0c7271ac89c1a1df73a396903f"
+    },
+    {
+      "original": "static/deploy-manifest.json",
+      "file": "references/body-animation-report-3-deploy-manifest.json-2026-10-08",
+      "sha256": "54d616fdcd0186688caf0e731ef493b5b184479fe5a497853f15aa5f90c4ba41"
+    }
+  ],
+  "artifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18",
+  "verification": {
+    "domainPassed": 3,
+    "browserPassed": 1,
+    "referencePoses": 35,
+    "componentVolumePoses": 21,
+    "constructionMs": 143.79999995231628,
+    "rebuild": {
+      "samples": 12,
+      "medianMs": 77.09999990463257,
+      "p95Ms": 99.40000009536743,
+      "maxMs": 99.40000009536743
+    },
+    "cached": {
+      "samples": 120,
+      "medianMs": 0.5999999046325684,
+      "p95Ms": 0.8999998569488525,
+      "maxMs": 1
+    },
+    "updateAndDrawCpu": {
+      "samples": 120,
+      "medianMs": 1,
+      "p95Ms": 1.4000000953674316,
+      "maxMs": 1.7999999523162842
+    },
+    "maxPositionError": 0.00000762939453125,
+    "stableBuffers": true,
+    "neutralPixelsRestored": true,
+    "inputUnchanged": true,
+    "disposed": true,
+    "hardware": "local headless Chromium, emulated viewport; no physical mobile hardware claim",
+    "gpuCompletionTimed": false,
+    "wholeUnionMassVerified": false,
+    "productionDossierIntegrated": false,
+    "timingViewport": {
+      "width": 1440,
+      "height": 1000
+    }
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-primary",
+    "inspectedOriginals": [
+      {
+        "original": "output/playwright/body-animation-run-desktop-dark.png",
+        "file": "captures/body-animation-run-desktop-dark.png",
+        "sha256": "8ad7fef76c90ac121fdc8b320b5128cb012d901ecf28d58af040df5b37a06e7d",
+        "page": "paired-cached-body-experiment",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/body-animation-cut-desktop-light.png",
+        "file": "captures/body-animation-cut-desktop-light.png",
+        "sha256": "bea1b2c9e922fe82dad3bb3eeec403cbf8b52abf5ddc713e015cd12fe2bf0195",
+        "page": "paired-cached-body-experiment",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/body-animation-strength-mobile-dark.png",
+        "file": "captures/body-animation-strength-mobile-dark.png",
+        "sha256": "eaef90eea2066f61f78c48b449d28c6cb8514ed592ff8aaf4b10fa10e6cee492",
+        "page": "paired-cached-body-experiment",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/body-animation-jump-mobile-light.png",
+        "file": "captures/body-animation-jump-mobile-light.png",
+        "sha256": "173f754178a2156d98d9d70facc36a4ea7e51fff147557194b29d04499803b2a",
+        "page": "paired-cached-body-experiment",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      }
+    ],
+    "findings": [
+      "Paired cached and constructed silhouettes agree at inspected scale; existing rigid joins and slab torso remain visible.",
+      "The clay experiment lacks finished anatomical contours, complete head detail and coherent skin/garments.",
+      "Mobile captures are emulated viewport evidence; CPU profiling runs on local headless Chromium before viewport changes. GPU completion and physical-device timings were not measured."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T11:12:18.561Z",
+  "component": "Persistent shared-head facial naturalism refinement",
+  "round": 1,
+  "verdict": "FIX",
+  "scope": "Bounded chin, eye openings and orbital/nose/lip relief; not complete naturalism or whole-goal acceptance",
+  "primaryReceipt": {
+    "file": "docs/visual-qa/PLAYER_FACE_NATURALISM_2026-10-08.json",
+    "sha256": "73f0325c586a5d395814e177cd6ed2c591499383b6cb4fb2b75643c8d97ebdef"
+  },
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "8544fcbd7ccc3cce2bc1bbb238564c91a62e1ca45534267197597faacbc8b65a",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerPortrait.js": "1be3edc453ad1ca05b850a999e34bdb6d125203f4fa00be33919359c58c20733",
+    "public/lib/playerMotion.js": "7d4dc2569fe43feaf45cedc0eadbe756c8f3a0a82a4c1c66ba23ae66b5eda6c7",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "tests-ui/player-head-anatomy-gallery.spec.js": "c97a8a3dfc5d02b5cc05c1ba2f53ef5386a681e4f3b29ac011b3df5b1f2e9ab8",
+    "tests-ui/player-dossier-layout.spec.js": "11beeabf6820dc22bf1b9b1b84cfe1e50112da564263f722adedc48b9a10b841",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859",
+    "tests-ui/player-capacity-client.spec.js": "bcbb8c6776f7c1947a78caf01c242828d25f220c1df220afda4a4319e9777d77",
+    "test/player-fine-face.test.js": "e63327dda2fc1d5a09c9e1305e2fc2d38644da02eb823bec00ab9b785b124459"
+  },
+  "reviewedRegressionTest": {
+    "file": "test/player-beard-volume.test.js",
+    "sha256": "272b028c071667710cff0580504629457e9daaa700ab134c2b4c921b001f8c73",
+    "qualification": "Exact pre-repair test hash captured independently; root has since applied test-only repair requiring round2."
+  },
+  "bindings": {
+    "frozenFilesVerified": 86,
+    "currentSourcesVerified": 13,
+    "normalizedBuildPairsVerified": 8,
+    "artifactDigest": "fce4bd7102e16aa494b134599f9a06f0a4de78b8367c1da5a40d892f5d085add",
+    "workerAndInPageReceiptDigestsMatchCurrentManifest": true
+  },
+  "independentChecks": [
+    {
+      "command": "node --test test/player-fine-face.test.js test/player-shared-head.test.js",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 1514.7026,
+      "terminalChunk": "966219"
+    },
+    {
+      "command": "node --test test/player-whole-head-form.test.js test/player-beard-volume.test.js",
+      "tests": 7,
+      "passed": 6,
+      "failed": 1,
+      "skipped": 0,
+      "durationMs": 11121.076,
+      "terminalChunk": "b02471",
+      "evidence": "All384 original legacy SVG hashes and long-grooming lip clearance pass; stale current-versus-historical anatomy preservation case fails."
+    },
+    {
+      "command": "Independent headPoint3d underside sampling across24 valid extreme combinations",
+      "sampledPoints": 2424,
+      "finiteNonnegative": true,
+      "exactTerminal": true,
+      "incomingTangentAgreement": true,
+      "terminalChunk": "65ce37"
+    }
+  ],
+  "findings": [
+    {
+      "id": "R1-F1",
+      "severity": "P2",
+      "file": "test/player-beard-volume.test.js:39",
+      "finding": "Current anatomy is asserted equal to the frozen pre-scalp anatomy, although this component intentionally rounds and widens the chin (31 versus24.8). The resulting failure prevents meaningful current preservation verification.",
+      "requiredRepair": "Preserve the historical beard-only and scalp-only exact comparisons against their frozen historical source versions; add a separate current clean-versus-groomed non-beard isolation comparison.",
+      "disposition": "Root reports test-only repair after discovery; not approved in this round."
+    }
+  ],
+  "diagnostic": {
+    "file": ".cache/face-naturalism-beard-regression-diagnostic-r1.json",
+    "sha256": "7c4703381e16480a9cc0062c5c7675666ba8c8908180e5dfa1e4ec3a840e5a65"
+  },
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-final-production-anatomy-gallery-native-0-open.png",
+      "sha256": "86ed8f9735b09852c171fda0965396c608316ae5d0c1dbdc2eb7b61cb7d6c424"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-final-production-anatomy-gallery-native-1-open.png",
+      "sha256": "0f42d33b26afd9e30bc16c75391fcf409b7d45171350b67d645bb28de7994ebf"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-final-production-anatomy-gallery-native-2-open.png",
+      "sha256": "d1e4b2cb4b61f4de62886a70b8de1034d48c8ac3f9838c343ae88e6bb8904cba"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-before-production-anatomy-gallery-native-1-open.png",
+      "sha256": "52f797dd968c795fee9adc1fdcc374c96ceee44d390d49375f32103038afeb9d"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-before-production-anatomy-gallery-native-2-open.png",
+      "sha256": "a6fdc99765de9989908b2fa25811cc005c540c2765e2e0cafb513032afd7f31e"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-final-production-anatomy-gallery-person-1-mobile-light.png",
+      "sha256": "e7bd30f61afae017e4c5bdf8c1f215a14cd86ccc227dbab4081b9fd8646c26af"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-final-dossier-layout-after-desktop-light-portrait.png",
+      "sha256": "0c4fd65cb04ce592d7d185c843cb78acb0016beed9844c4825cbf52baa0df56e"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-final-dossier-layout-after-mobile-dark-portrait.png",
+      "sha256": "960fc3535ff4cff4f15ca7da992ff69b3d60dc9144f0302c275edf677d45bf3b"
+    },
+    {
+      "file": "docs/visual-qa/captures/face-naturalism-final-production-anatomy-gallery-native-2-closed.png",
+      "sha256": "454537c8757985b8c71443232951042499689fb9f7e0e413f5762b5cd52f9384"
+    }
+  ],
+  "visualAssessment": [
+    "Open eyes have clearer visible pigment and the chin/beard underside is less pointed across front, angled and profile projections.",
+    "Cap-like and beaded hair, planar mannequin skin, rigid mouth and simplified ear/neck transitions remain visible. Scoped improvement does not meet complete adult-person craft acceptance."
+  ],
+  "primaryEvidence": {
+    "qualification": "Primary browser/build execution reviewed through frozen reports and bindings; not independently rerun.",
+    "focusedTests": 21,
+    "anatomyBrowserCases": 1,
+    "integratedBrowserCases": 5,
+    "reportedIntegratedTerminal": "180534"
+  },
+  "limitations": [
+    "Gallery BEFORE row is a historical reference; immediate matched native before-phase images supply the one-step comparison.",
+    "Nine listed originals inspected, not all66 captures; all66 capture hashes verified.",
+    "No trait sampling, saved person/frame/measurable or gameplay authority changed in reviewed rendering source.",
+    "Root repair is test-only and follows this reviewed source/test version; round2 must bind it separately.",
+    "Whole-head/body naturalism, population calibration, annual policy, full-suite/current-career verification and release remain open."
+  ],
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false
+}

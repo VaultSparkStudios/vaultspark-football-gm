@@ -1,0 +1,44 @@
+{
+  "version": "player-physical-development-reference-v1",
+  "reviewDate": "2026-10-07",
+  "status": "research-input-not-fitted-runtime-model",
+  "references": [
+    {
+      "id": "morrison-2025-online-2026-collegiate-development",
+      "url": "https://doi.org/10.1177/17479541251367154",
+      "retrieval": "Direct publisher HTML; abstract, methods and limitations reviewed. No individual observations imported.",
+      "firstOnlineDate": "2025-08-29",
+      "issueYear": 2026,
+      "cohort": "512 male NCAA Division I athletes, ages 18–23, one university; 2628 offseason testing observations over 15 years; 11 positional groups.",
+      "methods": "Bench/squat one-repetition maximum or estimate from 2–5 reps; flight-time vertical jump; standing broad jump; touchpad-start electronic 40-yard timing; barefoot mass recorded to one pound.",
+      "finding": "Group improvements diminished over successive collegiate years.",
+      "limitations": [
+        "One collegiate programme, not an NFL population or national demographic sample.",
+        "Changing training and early NFL entry may affect later-year summaries.",
+        "No regional composition, external girths or joint body-shape/capacity coefficients adopted.",
+        "Test methods require reconciliation before combining with Combine or other observations."
+      ]
+    },
+    {
+      "id": "mcdowell-2021-linebacker-seasonal-maintenance",
+      "url": "https://journal.iusca.org/index.php/Journal/article/view/57",
+      "retrieval": "Direct publisher abstract, not full methods or individual observations.",
+      "publicationDate": "2021-09-10",
+      "cohort": "Nine NCAA Division I FCS linebackers measured at three seasonal timepoints.",
+      "methods": "DXA composition, vertical jumps and loaded squat jumps.",
+      "finding": "No statistically significant seasonal composition or power differences reported.",
+      "limitations": [
+        "Small position-specific sample; null significance does not establish individual equivalence.",
+        "No NFL annual trajectory or anatomy-to-performance equation adopted."
+      ]
+    }
+  ],
+  "implementationInferences": [
+    "Persist physical observations and method metadata separately from evaluation ratings and natural appearance.",
+    "Use measured dimensions as constraints; jointly fit estimated build and capacities only from compatible data, preserving residual variation.",
+    "Dated weight/composition events update compatible regional bulk through the stable skeleton. Capacity-only events alter behavior without rerolling anatomy.",
+    "Retain individual training histories and plateaus; validate any proposed professional development rates independently."
+  ],
+  "runtimeCoefficientsChanged": false,
+  "acceptanceStatus": "Three physical-transition fixtures added to plan; execution remains pending."
+}

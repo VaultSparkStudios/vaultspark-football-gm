@@ -1,0 +1,1024 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T14:58:25.817Z",
+  "status": "scoped-modern-pole-repair-review-pending",
+  "scope": "Modern skin poles and endpoint face relief only; complete body/face naturalism and demographic calibration remain open.",
+  "doneCondition": [
+    "Modern crown/chin rows are single points with correct endpoint normals, same nominal skull anatomy and exact categorical legacy meshes.",
+    "Middle face, eyelids, old facial pigment geometry and groom roots remain exact against the preserved baseline; original tests are not weakened.",
+    "Four masses times seven modes times three selected phases have zero negative/unbalanced rays at resolution128 with unchanged ray estimator; no all-phase or self-intersection proof.",
+    "Actual themed desktop/mobile dossier and matched head captures plus both built save/load/reload clients retain identity, measurements and RNG."
+  ],
+  "sourceHashes": {
+    "public/lib/playerHead3d.js": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/playerPortrait.js": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+    "public/lib/playerPortraitFace.js": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerMotion.js": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/playerSurfaceLighting.js": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+    "test-support/appearance/playerBody3d.js": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425",
+    "test-support/appearance/triangleSolidVolume.js": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b",
+    "test/player-head-poles.test.js": "6effbaf69c5653cb7058faa18850859a79205e5cb002e45f530074f90965941b",
+    "test/fixtures/player-head-pole-case.json": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1",
+    "test/player-crown-surface.test.js": "979be39c6afb942f40bca7b7a911a2c86abc9d17f54db79f916f19a34133e519",
+    "test/player-hair-volume.test.js": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99",
+    "test/player-facial-hair-form.test.js": "52d7fd2b09d1c24c62c202e5ad7c4c9e512cf69fca06308b153b1236a448e271",
+    "test/player-body-3d.test.js": "10fbb54950ddbeaf7182dd98cf45fa1ea1c6cd3f80efa0e01a07e65bcb682dc5",
+    "test/triangle-solid-volume.test.js": "5260c2a4f13fb10c18a47809f2ca7b727621da2cffde7c001525808091c6a49f",
+    "tests-ui/player-head-poles-gallery.spec.js": "7fa505990787194560c2042b8e8b96cf780520e4736982d0687cd4da05dc31cf",
+    "tests-ui/player-head-poles-production.spec.js": "9498f0e1b5d5965d8b19bc7e76954d6200c3af419fd4d0fb559ae2156ad58481",
+    "tests-ui/player-head-poles-client.spec.js": "34d538568bfb158433eba2a816c8f507d983f32ab06ce19e406021c3884ef5fa",
+    "scripts/run-test-shard.mjs": "b571e6311d310af6a7014b16f1d3fac9bca97af348b7df5c58d86e7843b02e5a"
+  },
+  "builtHashes": {
+    "static/lib/playerHead3d.js": {
+      "source": "public/lib/playerHead3d.js",
+      "sha256": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerHeadImage.js": {
+      "source": "public/lib/playerHeadImage.js",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortrait.js": {
+      "source": "public/lib/playerPortrait.js",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerPortraitFace.js": {
+      "source": "public/lib/playerPortraitFace.js",
+      "sha256": "42478c4db46954c5cbcb8cf80a140ed3b55b2cf55ea5ad413795be207e8cf774",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSideAppearance.js": {
+      "source": "public/lib/playerSideAppearance.js",
+      "sha256": "1430931336bca32de1221275152cedf59189bcab07268b2be6a4b53739e51e30",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerMotion.js": {
+      "source": "public/lib/playerMotion.js",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/appearancePalette.js": {
+      "source": "public/lib/appearancePalette.js",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+      "normalizedLineEndingContentsMatch": true
+    },
+    "static/lib/playerSurfaceLighting.js": {
+      "source": "public/lib/playerSurfaceLighting.js",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe",
+      "normalizedLineEndingContentsMatch": true
+    }
+  },
+  "frozenSources": [
+    {
+      "original": "public/lib/playerHead3d.js",
+      "file": "references/head-poles-source-0-playerHead3d.js-2026-10-08",
+      "sha256": "c7b2d433db94bf2c31a170e374b4ca00ad9f60157108d2e60872d4ec178becb6"
+    },
+    {
+      "original": "public/lib/playerHeadImage.js",
+      "file": "references/head-poles-source-1-playerHeadImage.js-2026-10-08",
+      "sha256": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7"
+    },
+    {
+      "original": "public/lib/playerPortrait.js",
+      "file": "references/head-poles-source-2-playerPortrait.js-2026-10-08",
+      "sha256": "d22ff0656cdba79769c3ed6c8524e317b0c8d05be9a5f05589d43ebf58f1a445"
+    },
+    {
+      "original": "public/lib/playerPortraitFace.js",
+      "file": "references/head-poles-source-3-playerPortraitFace.js-2026-10-08",
+      "sha256": "852551f636f4dd590118e725655acda539e91973c72444314539f951b3b5bedb"
+    },
+    {
+      "original": "public/lib/playerSideAppearance.js",
+      "file": "references/head-poles-source-4-playerSideAppearance.js-2026-10-08",
+      "sha256": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60"
+    },
+    {
+      "original": "public/lib/playerMotion.js",
+      "file": "references/head-poles-source-5-playerMotion.js-2026-10-08",
+      "sha256": "0d2e5bba254423557764bb2b02e4c643d41d03594a4aa2b23819866e690e250a"
+    },
+    {
+      "original": "public/lib/appearancePalette.js",
+      "file": "references/head-poles-source-6-appearancePalette.js-2026-10-08",
+      "sha256": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305"
+    },
+    {
+      "original": "public/lib/playerSurfaceLighting.js",
+      "file": "references/head-poles-source-7-playerSurfaceLighting.js-2026-10-08",
+      "sha256": "7815994b7be9b5c166d831dc2dbce44cd8d7523d2b44a23be9c2273f96949afe"
+    },
+    {
+      "original": "test-support/appearance/playerBody3d.js",
+      "file": "references/head-poles-source-8-playerBody3d.js-2026-10-08",
+      "sha256": "664ccbfaf6978ba6aee35e8b8a4c230f380131f9b2336e4d89722250105c6425"
+    },
+    {
+      "original": "test-support/appearance/triangleSolidVolume.js",
+      "file": "references/head-poles-source-9-triangleSolidVolume.js-2026-10-08",
+      "sha256": "a538288617fa414f5d73b9a8ed604e9bb599bce4188dbc95d30c60db37b6172b"
+    },
+    {
+      "original": "test/player-head-poles.test.js",
+      "file": "references/head-poles-source-10-player-head-poles.test.js-2026-10-08",
+      "sha256": "6effbaf69c5653cb7058faa18850859a79205e5cb002e45f530074f90965941b"
+    },
+    {
+      "original": "test/fixtures/player-head-pole-case.json",
+      "file": "references/head-poles-source-11-player-head-pole-case.json-2026-10-08",
+      "sha256": "a2c7f7a586c356fd0f8159f228b1048fa068f08489d2d614005dba6d9b6f6ab1"
+    },
+    {
+      "original": "test/player-crown-surface.test.js",
+      "file": "references/head-poles-source-12-player-crown-surface.test.js-2026-10-08",
+      "sha256": "979be39c6afb942f40bca7b7a911a2c86abc9d17f54db79f916f19a34133e519"
+    },
+    {
+      "original": "test/player-hair-volume.test.js",
+      "file": "references/head-poles-source-13-player-hair-volume.test.js-2026-10-08",
+      "sha256": "3ca8857f169ea0c4a3d53ce1350be57f2d531099a66071f15532f9083b614b99"
+    },
+    {
+      "original": "test/player-facial-hair-form.test.js",
+      "file": "references/head-poles-source-14-player-facial-hair-form.test.js-2026-10-08",
+      "sha256": "52d7fd2b09d1c24c62c202e5ad7c4c9e512cf69fca06308b153b1236a448e271"
+    },
+    {
+      "original": "test/player-body-3d.test.js",
+      "file": "references/head-poles-source-15-player-body-3d.test.js-2026-10-08",
+      "sha256": "10fbb54950ddbeaf7182dd98cf45fa1ea1c6cd3f80efa0e01a07e65bcb682dc5"
+    },
+    {
+      "original": "test/triangle-solid-volume.test.js",
+      "file": "references/head-poles-source-16-triangle-solid-volume.test.js-2026-10-08",
+      "sha256": "5260c2a4f13fb10c18a47809f2ca7b727621da2cffde7c001525808091c6a49f"
+    },
+    {
+      "original": "tests-ui/player-head-poles-gallery.spec.js",
+      "file": "references/head-poles-source-17-player-head-poles-gallery.spec.js-2026-10-08",
+      "sha256": "7fa505990787194560c2042b8e8b96cf780520e4736982d0687cd4da05dc31cf"
+    },
+    {
+      "original": "tests-ui/player-head-poles-production.spec.js",
+      "file": "references/head-poles-source-18-player-head-poles-production.spec.js-2026-10-08",
+      "sha256": "9498f0e1b5d5965d8b19bc7e76954d6200c3af419fd4d0fb559ae2156ad58481"
+    },
+    {
+      "original": "tests-ui/player-head-poles-client.spec.js",
+      "file": "references/head-poles-source-19-player-head-poles-client.spec.js-2026-10-08",
+      "sha256": "34d538568bfb158433eba2a816c8f507d983f32ab06ce19e406021c3884ef5fa"
+    },
+    {
+      "original": "scripts/run-test-shard.mjs",
+      "file": "references/head-poles-source-20-run-test-shard.mjs-2026-10-08",
+      "sha256": "b571e6311d310af6a7014b16f1d3fac9bca97af348b7df5c58d86e7843b02e5a"
+    }
+  ],
+  "baseline": {
+    "file": "references/player-head-before-pole-repair-2026-10-08.js",
+    "sha256": "5e1cb43b6bc106bba7c57677a35ff60388ca94cd1df19feec33b74899048ecb6"
+  },
+  "artifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18",
+  "clients": [
+    {
+      "original": ".cache/head-poles/client/worker.json",
+      "file": "references/head-poles-client-0-2026-10-08.json",
+      "sha256": "327b3d181c79ed0b884e075babce4eb96724730b56ba6209197af3c9f4908865",
+      "proof": {
+        "worker": true,
+        "playerId": "P2026-BUF-QB-9487479",
+        "facialHair": "full-beard",
+        "artifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18",
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "frontProfileHeadImagesExact": true,
+        "frontSideMotionDimensionsExact": true,
+        "threeActualCollars": true,
+        "sixActualSectionLights": true,
+        "rngExact": true
+      }
+    },
+    {
+      "original": ".cache/head-poles/client/in-page.json",
+      "file": "references/head-poles-client-1-2026-10-08.json",
+      "sha256": "6ea88152cd6e921184f087ef83b224e5a76277e8e53be5a015c929676e01e576",
+      "proof": {
+        "worker": false,
+        "playerId": "P2026-BUF-QB-9487479",
+        "facialHair": "full-beard",
+        "artifactDigest": "9c026615f7ea8b67b20412ae11a92d5430c299a7630325debc980e13d64fdd18",
+        "namedSaveReplacementLoadReload": true,
+        "personRecipeAndMeasurementsExact": true,
+        "frontProfileHeadImagesExact": true,
+        "frontSideMotionDimensionsExact": true,
+        "threeActualCollars": true,
+        "sixActualSectionLights": true,
+        "rngExact": true
+      }
+    }
+  ],
+  "captures": [
+    {
+      "original": "output/playwright/head-poles-gallery-0-desktop-dark.png",
+      "file": "captures/head-poles-gallery-0-desktop-dark.png",
+      "sha256": "b90f1fed6d0d72122dc563580da2cc48a652333d7e394426b330b57955530315",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-0-desktop-light.png",
+      "file": "captures/head-poles-gallery-0-desktop-light.png",
+      "sha256": "ca988a3cf686abe669a1ced5e15b7d879d353c1347146642fa4259feb05dbe40",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-0-mobile-dark.png",
+      "file": "captures/head-poles-gallery-0-mobile-dark.png",
+      "sha256": "9bc9928f2c89418b4f17099d17766ad1269ba025716c4f07111eb44b2b58cd71",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-0-mobile-light.png",
+      "file": "captures/head-poles-gallery-0-mobile-light.png",
+      "sha256": "a381710b09405af0146a9ed330cc61df9c491c1d5a47cb0512e33bf8c366419e",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-1-desktop-dark.png",
+      "file": "captures/head-poles-gallery-1-desktop-dark.png",
+      "sha256": "79d0f9226babf456249885dd655c9530cb953ae228e77e66c0289fa1db9a2e64",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-1-desktop-light.png",
+      "file": "captures/head-poles-gallery-1-desktop-light.png",
+      "sha256": "ca2409aea4b39798a9b1f7bf46cc98045af850cdf39faefee647e370258448f2",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-1-mobile-dark.png",
+      "file": "captures/head-poles-gallery-1-mobile-dark.png",
+      "sha256": "351cd7ec896bce0b3301946b6e24ca2f1b2b217d6ef4f3ee4763edb53e4974b7",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-1-mobile-light.png",
+      "file": "captures/head-poles-gallery-1-mobile-light.png",
+      "sha256": "6f6228eb832d5bab425ddb1056d430966dca62c45cf42b014f3078ffd841593a",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-2-desktop-dark.png",
+      "file": "captures/head-poles-gallery-2-desktop-dark.png",
+      "sha256": "974d0735791389dc3043b09a7ae149ca30558501ba3df58dcff63d25aabc7dea",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-2-desktop-light.png",
+      "file": "captures/head-poles-gallery-2-desktop-light.png",
+      "sha256": "8f607fcc7bd0f7c94bdee71017f9af9034eff9640548ebe2549aa52b17bd0ffc",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-2-mobile-dark.png",
+      "file": "captures/head-poles-gallery-2-mobile-dark.png",
+      "sha256": "3327ea108d4fb9ceb8adc24f7109ad0ef8b723fc77e8fd7077b273e65abb1bd5",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-2-mobile-light.png",
+      "file": "captures/head-poles-gallery-2-mobile-light.png",
+      "sha256": "d27a706ff4d5f584a9970b5d98589d6c034bd93346586c7a54ccc1280c347193",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-3-desktop-dark.png",
+      "file": "captures/head-poles-gallery-3-desktop-dark.png",
+      "sha256": "5a4ad13d8b050257b2f7b7381ac6218d4323cebcc6a6c4fa5417a6695f71df30",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-3-desktop-light.png",
+      "file": "captures/head-poles-gallery-3-desktop-light.png",
+      "sha256": "e02b1bf6f666149601f8e072b368c62d31aa59a74c549a1bc2971e742cadff29",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-3-mobile-dark.png",
+      "file": "captures/head-poles-gallery-3-mobile-dark.png",
+      "sha256": "19ab1cf873db972b0e151490a5bda9833dbd6dde722f248faf9da65f5808270c",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-3-mobile-light.png",
+      "file": "captures/head-poles-gallery-3-mobile-light.png",
+      "sha256": "bb9a3497b9a9403a5902296a3c09bd58abe0223605b32ce950ecf18d20fd460f",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-4-desktop-dark.png",
+      "file": "captures/head-poles-gallery-4-desktop-dark.png",
+      "sha256": "c2b1364578d5a2799d432d8fbb08ebe67e9919e136a6ba4ec3fcfc751d42e829",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-4-desktop-light.png",
+      "file": "captures/head-poles-gallery-4-desktop-light.png",
+      "sha256": "79ca6278c931161b5a15ef0d54eb2afa041b925e002fec9e7e8a44105c30ef28",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-4-mobile-dark.png",
+      "file": "captures/head-poles-gallery-4-mobile-dark.png",
+      "sha256": "4597de0749b9a9dc4aa7b4dff685615c98c91d1f93e334b9e3072b66eca4fca1",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-4-mobile-light.png",
+      "file": "captures/head-poles-gallery-4-mobile-light.png",
+      "sha256": "c4884bf56f9719a836a8609fce88088705ea99e70f7082c69c10aec6fc634d89",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-5-desktop-dark.png",
+      "file": "captures/head-poles-gallery-5-desktop-dark.png",
+      "sha256": "e4ceeb32e545e2b15636f67b4e71e224d2e56953a62b2e468c334c9b0c9bf6c4",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-5-desktop-light.png",
+      "file": "captures/head-poles-gallery-5-desktop-light.png",
+      "sha256": "7ac81425ff95a03cad7ee802817ad94b726927615d33ed8dd679881db38d5b91",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-5-mobile-dark.png",
+      "file": "captures/head-poles-gallery-5-mobile-dark.png",
+      "sha256": "1904a00fed7c9a3a5215a113cf8dc8f25f00731363d923889d68b9a9bd8572f8",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-5-mobile-light.png",
+      "file": "captures/head-poles-gallery-5-mobile-light.png",
+      "sha256": "075c9571ac4e4b8236a1f4a56020d62c3ee15694ee6c4e01d9de067b9008138f",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-6-desktop-dark.png",
+      "file": "captures/head-poles-gallery-6-desktop-dark.png",
+      "sha256": "6dd1bd450dff2e1b87791d9848ed4e0b6dbc5852775882c8718ffe103d6cc834",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-6-desktop-light.png",
+      "file": "captures/head-poles-gallery-6-desktop-light.png",
+      "sha256": "754208cd5f6e01ad33217b4a33398d6b2dbd22b829c45458534d89de9c2bd64f",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-6-mobile-dark.png",
+      "file": "captures/head-poles-gallery-6-mobile-dark.png",
+      "sha256": "fdcce491d574ee92eb0dc56d162f691c38b18790b6bf8c1c1b2e7c0643837d9c",
+      "page": "matched-head-gallery",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-6-mobile-light.png",
+      "file": "captures/head-poles-gallery-6-mobile-light.png",
+      "sha256": "646f2c9e0a9d0357ce81f01f4b9a8915cf8e338c32a6636c4e15e9bdb6925cc3",
+      "page": "matched-head-gallery",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-dark-body.png",
+      "file": "captures/production-head-poles-after-desktop-dark-body.png",
+      "sha256": "82e41b48b8b0e0e35984671eb7648ae2e27b96b42a8536fb27d94a544c9fa3b4",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-dark-motion.png",
+      "file": "captures/production-head-poles-after-desktop-dark-motion.png",
+      "sha256": "fa449af6956646ada53323a894f2058d73137dd385add7fb61c172061456b391",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-dark-portrait.png",
+      "file": "captures/production-head-poles-after-desktop-dark-portrait.png",
+      "sha256": "e30d1fcf50a4221b19da417ad965e1e461a8fd3050b0f72f16df533910bcaf63",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-light-body.png",
+      "file": "captures/production-head-poles-after-desktop-light-body.png",
+      "sha256": "bbaa40afc2bcf74cb929dce20e94338ab943804c2b39cb6333d3a5dd6def4be0",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-light-motion.png",
+      "file": "captures/production-head-poles-after-desktop-light-motion.png",
+      "sha256": "dec41fefa56cd48c0069d39818afccdefa7466818ef3a36c9c0fe19f9122aaad",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-desktop-light-portrait.png",
+      "file": "captures/production-head-poles-after-desktop-light-portrait.png",
+      "sha256": "90a5d2fe0673d1a400d920c105584ee9dae361011ca17aeefe8c0705dca3755c",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-dark-body.png",
+      "file": "captures/production-head-poles-after-mobile-dark-body.png",
+      "sha256": "de77f918b7baa8b861a1e2c17e29e81cddf3be4cc6776282a17a7d730d8f29f4",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-dark-motion.png",
+      "file": "captures/production-head-poles-after-mobile-dark-motion.png",
+      "sha256": "896b523c7c630d92df5a6097ff94a808ab0fb06470ef567dfcdf420f505fbadf",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-dark-portrait.png",
+      "file": "captures/production-head-poles-after-mobile-dark-portrait.png",
+      "sha256": "863484f77430bb42d14a3e6d0c8957c3213fa4482f60fe531ffdb61c0aa4f732",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-light-body.png",
+      "file": "captures/production-head-poles-after-mobile-light-body.png",
+      "sha256": "fd0e869141df7c71930eba28f21bc9979e629a1170ad9f0f3a8296206c402b9b",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-light-motion.png",
+      "file": "captures/production-head-poles-after-mobile-light-motion.png",
+      "sha256": "400840e1eb251755b79dfd1eb6deb5824e6a765d28aa4d266dc9a942f2b46866",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-after-mobile-light-portrait.png",
+      "file": "captures/production-head-poles-after-mobile-light-portrait.png",
+      "sha256": "752337c3b05aeb3f9b8fb7b80b128d46341512df1585cf2b7641a68382b831f3",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-desktop-dark-body.png",
+      "file": "captures/production-head-poles-before-desktop-dark-body.png",
+      "sha256": "c5048e5741d7d5fb551d956d3846b5390e8b6820eb5831d7124819f1bf5d4fe2",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-desktop-dark-motion.png",
+      "file": "captures/production-head-poles-before-desktop-dark-motion.png",
+      "sha256": "12ae511233b866532cb69def42b6e4a4c95222d01350e48f0ca805617d0f6678",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-desktop-dark-portrait.png",
+      "file": "captures/production-head-poles-before-desktop-dark-portrait.png",
+      "sha256": "c0a728982c2f9248b521f3a916dced2a1d36134f744054d2e084e8e7bb3263a6",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-desktop-light-body.png",
+      "file": "captures/production-head-poles-before-desktop-light-body.png",
+      "sha256": "e608d5fdb4cc15afb8d642b5d01c75cd59ff9b8fa03a8f54c45d5083c42c97ea",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-desktop-light-motion.png",
+      "file": "captures/production-head-poles-before-desktop-light-motion.png",
+      "sha256": "5d31f991124c9e0bdc2d6901d654905db4eaca130cc342c9f8b10199a13962ee",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-desktop-light-portrait.png",
+      "file": "captures/production-head-poles-before-desktop-light-portrait.png",
+      "sha256": "fa930c6faacb85c737694e5b2b2bf1d433fee0b19d1919b7c96904e193c8d66f",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-mobile-dark-body.png",
+      "file": "captures/production-head-poles-before-mobile-dark-body.png",
+      "sha256": "4331d8b7f6adfaf104cc82c7712b7c61f2eed01da17ea86685bd45aa8b924fae",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-mobile-dark-motion.png",
+      "file": "captures/production-head-poles-before-mobile-dark-motion.png",
+      "sha256": "697eb21694a559c1603efe5e5c8ef9ac1943d2f98f2d4bae0f65d923340c1522",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-mobile-dark-portrait.png",
+      "file": "captures/production-head-poles-before-mobile-dark-portrait.png",
+      "sha256": "dffdf1a471f536809f0f2da40da13225b9ff0321118725fd12f3c82c9f0dd61a",
+      "page": "actual-dossier",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-mobile-light-body.png",
+      "file": "captures/production-head-poles-before-mobile-light-body.png",
+      "sha256": "ed7c174d778a4a9f891942b598fd87c79606e6f59b15fa50e9b429ebb5a7062c",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-mobile-light-motion.png",
+      "file": "captures/production-head-poles-before-mobile-light-motion.png",
+      "sha256": "6afbad6a1b9e665492ea2b3d8ec4b37fc220c58f674066cee8d5892b5c6909a6",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "original": "output/playwright/production-head-poles-before-mobile-light-portrait.png",
+      "file": "captures/production-head-poles-before-mobile-light-portrait.png",
+      "sha256": "e11a09df7cedd6288ad227a60a7c391426abe66d1f758f84f2e344899af8b868",
+      "page": "actual-dossier",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "reports": [
+    {
+      "original": ".cache/head-poles/domain-final2.log",
+      "file": "references/head-poles-report-0-domain-final2.log-2026-10-08",
+      "sha256": "260917dca01b3cd6aefd1cf1b6bf11a05547265a21a8c64eedd86ace01370e13"
+    },
+    {
+      "original": ".cache/head-poles/domain-final.log",
+      "file": "references/head-poles-report-1-domain-final.log-2026-10-08",
+      "sha256": "c11515c4cbd9630d5b4b06f78b5bb40197da04510fe5df86a1046d487c694a50",
+      "originalSha256": "0860691bdeafc03a77dbc95525b5dddf009cde1ed13facf79d0cdccdc4ecd942",
+      "publicSafeDerivative": true
+    },
+    {
+      "original": ".cache/head-poles/browser-final.log",
+      "file": "references/head-poles-report-2-browser-final.log-2026-10-08",
+      "sha256": "84c7fa151158854d154049e53a89f3aaa0741b82098b492b5bd9ee5567f0261b"
+    },
+    {
+      "original": ".cache/head-poles/build-final.log",
+      "file": "references/head-poles-report-3-build-final.log-2026-10-08",
+      "sha256": "416ea7abeb3fe5dcfb612ab92ea788e5b47158de68c464c74420ec9281816729",
+      "originalSha256": "17c497b8eed415f19b796fc6594901d4472fbffd56e9ed3016104e9e3b063a0b",
+      "publicSafeDerivative": true
+    },
+    {
+      "original": ".cache/head-poles/reachability-final.log",
+      "file": "references/head-poles-report-4-reachability-final.log-2026-10-08",
+      "sha256": "58c937f4b9ad4a0c633f7f7890db46f8444f9eb5ba355e1d9c9d56da5b0f1827"
+    },
+    {
+      "original": ".cache/head-poles/boot-final.log",
+      "file": "references/head-poles-report-5-boot-final.log-2026-10-08",
+      "sha256": "b1471fb083dc073cdc86e4962c0b2374c4405ec5d7c16538af89d61f827e098e"
+    },
+    {
+      "original": "docs/PLAYER_HEAD_POLE_REPAIR_FINAL_DIAGNOSTIC_2026-10-08.json",
+      "file": "references/head-poles-report-6-PLAYER_HEAD_POLE_REPAIR_FINAL_DIAGNOSTIC_2026-10-08.json-2026-10-08",
+      "sha256": "36e3fd682f4036d0ec65d808d9d65c92af423c8efbda1e7bf5c52348466baed5"
+    },
+    {
+      "original": "docs/PLAYER_BODY_HEAD_POLE_DIAGNOSTIC_2026-10-08.json",
+      "file": "references/head-poles-report-7-PLAYER_BODY_HEAD_POLE_DIAGNOSTIC_2026-10-08.json-2026-10-08",
+      "sha256": "54c5cb71291b034b60259a3eaf60a8e0c0dc61dde243fd27909a3e50ea8e6202"
+    },
+    {
+      "original": ".cache/head-poles/observe-final.mjs",
+      "file": "references/head-poles-report-8-observe-final.mjs-2026-10-08",
+      "sha256": "1a8e46210da789515972e8f4942fafecfaddacd288704df73a812bb52ea07d1e"
+    },
+    {
+      "original": "output/playwright/head-poles-gallery-observations.json",
+      "file": "references/head-poles-report-9-head-poles-gallery-observations.json-2026-10-08",
+      "sha256": "57296492c1181da1f21f376a2c15e8bd2a33ece1338fc6c08b94eb0ad61485c8"
+    },
+    {
+      "original": "output/playwright/production-head-poles.json",
+      "file": "references/head-poles-report-10-production-head-poles.json-2026-10-08",
+      "sha256": "94e219c87c9f865bc1d788160568db507aa64046e5bb2947375afb4e714136b8"
+    },
+    {
+      "original": "static/deploy-manifest.json",
+      "file": "references/head-poles-report-11-deploy-manifest.json-2026-10-08",
+      "sha256": "54d616fdcd0186688caf0e731ef493b5b184479fe5a497853f15aa5f90c4ba41"
+    }
+  ],
+  "verification": {
+    "domainPassed": 22,
+    "browserPassed": 4,
+    "selectedPoses": 84,
+    "rayResolution": 128,
+    "negativeRays": 0,
+    "invalidRays": 0,
+    "allPhaseValidity": false,
+    "selfIntersectionsVerified": false,
+    "productionBuildPassed": true,
+    "reachabilityPassed": true,
+    "bootBudgetPassed": true
+  },
+  "inspection": {
+    "reviewer": "codex-primary",
+    "renderedPixelsReviewed": true,
+    "inspectedOriginals": [
+      {
+        "original": "output/playwright/production-head-poles-before-desktop-dark-portrait.png",
+        "file": "captures/production-head-poles-before-desktop-dark-portrait.png",
+        "sha256": "c0a728982c2f9248b521f3a916dced2a1d36134f744054d2e084e8e7bb3263a6",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-desktop-dark-portrait.png",
+        "file": "captures/production-head-poles-after-desktop-dark-portrait.png",
+        "sha256": "e30d1fcf50a4221b19da417ad965e1e461a8fd3050b0f72f16df533910bcaf63",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-mobile-light-portrait.png",
+        "file": "captures/production-head-poles-after-mobile-light-portrait.png",
+        "sha256": "752337c3b05aeb3f9b8fb7b80b128d46341512df1585cf2b7641a68382b831f3",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/head-poles-gallery-0-desktop-dark.png",
+        "file": "captures/head-poles-gallery-0-desktop-dark.png",
+        "sha256": "b90f1fed6d0d72122dc563580da2cc48a652333d7e394426b330b57955530315",
+        "page": "matched-head-gallery",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/head-poles-gallery-6-mobile-light.png",
+        "file": "captures/head-poles-gallery-6-mobile-light.png",
+        "sha256": "646f2c9e0a9d0357ce81f01f4b9a8915cf8e338c32a6636c4e15e9bdb6925cc3",
+        "page": "matched-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-desktop-light-body.png",
+        "file": "captures/production-head-poles-after-desktop-light-body.png",
+        "sha256": "bbaa40afc2bcf74cb929dce20e94338ab943804c2b39cb6333d3a5dd6def4be0",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-desktop-light-portrait.png",
+        "file": "captures/production-head-poles-after-desktop-light-portrait.png",
+        "sha256": "90a5d2fe0673d1a400d920c105584ee9dae361011ca17aeefe8c0705dca3755c",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-mobile-dark-portrait.png",
+        "file": "captures/production-head-poles-after-mobile-dark-portrait.png",
+        "sha256": "863484f77430bb42d14a3e6d0c8957c3213fa4482f60fe531ffdb61c0aa4f732",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/production-head-poles-before-mobile-light-portrait.png",
+        "file": "captures/production-head-poles-before-mobile-light-portrait.png",
+        "sha256": "e11a09df7cedd6288ad227a60a7c391426abe66d1f758f84f2e344899af8b868",
+        "page": "actual-dossier",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/production-head-poles-after-mobile-dark-motion.png",
+        "file": "captures/production-head-poles-after-mobile-dark-motion.png",
+        "sha256": "896b523c7c630d92df5a6097ff94a808ab0fb06470ef567dfcdf420f505fbadf",
+        "page": "actual-dossier",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        }
+      },
+      {
+        "original": "output/playwright/head-poles-gallery-3-desktop-light.png",
+        "file": "captures/head-poles-gallery-3-desktop-light.png",
+        "sha256": "e02b1bf6f666149601f8e072b368c62d31aa59a74c549a1bc2971e742cadff29",
+        "page": "matched-head-gallery",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        }
+      }
+    ],
+    "findings": [
+      "No obvious new attachment or silhouette defect in the inspected pole-repair captures; visible change is subtle.",
+      "Four-unit fade prototype changed a goatee root: preserved failed log; final one-unit collar passes unchanged groom and historical tests.",
+      "Faces remain overly smooth; beard/mustache and outlined ears remain simplified; whole body silhouettes remain mannequin-like. Full quality is unaccepted."
+    ],
+    "blockingDefectsOpen": 1
+  },
+  "fullVisualAcceptance": false,
+  "releaseAccepted": false,
+  "publicSafeEvidenceRedactions": {
+    "receipt": "docs/visual-qa/PUBLIC_SAFE_DIAGNOSTICS_S118.json",
+    "originalManifestSha256": "8fc423bc7bdc83d8f1e1ceacb4896b452faa228466ffe0623ff303b5ce9e95f2",
+    "files": [
+      "docs/visual-qa/references/head-poles-report-1-domain-final.log-2026-10-08",
+      "docs/visual-qa/references/head-poles-report-3-build-final.log-2026-10-08"
+    ],
+    "originalManifestPreservedPrivately": true
+  }
+}

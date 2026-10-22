@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-07",
+  "scope": "Image-grounded design guidance for complete adult-head craft; no implementation or independent completion approval",
+  "owner": "root",
+  "reviewer": "studio_reviewer",
+  "source": {"path":"prototypes/playerHead3d.mjs","sha256":"f54fd9e84a8786292da13057ba936cc9e503c0166c7ac1b957a273dfdbe36a13"},
+  "primaryReceipt": {"path":"docs/visual-qa/PLAYER_HEAD_BEARD_FIBERS_2026-10-07.json","sha256":"5b5e29cb8c663aa35f1b36cf39d855d411d0dc24d31593ca90d2c2a40c2fc24c"},
+  "imagesActuallyInspected": [
+    "docs/visual-qa/references/player-portrait-art-target-2026-10-07.png",
+    "docs/visual-qa/captures/head-beard-after-player-shared-head-3d-desktop-dark.png",
+    "docs/visual-qa/captures/head-beard-after-player-shared-head-3d-mobile-light.png"
+  ],
+  "assessment": "The shared mesh fixes camera identity coherence, but complete heads still read as mannequins. The principal deficit is feature/plane architecture, followed by hair/beard volume; tiny extra material controls will not resolve these. The separate fictional target demonstrates the desired visual relationships, not measured landmarks or matching people.",
+  "priorities": [
+    {
+      "priority": 1,
+      "outcome": "One coherent adult orbital and mid-face structure",
+      "perceptualEvidence": "Across current people0–5 the eyes look like narrow painted slots, nose tips like isolated cones, and lips like horizontal marks on a broad smooth mask. Reference adults have upper/lower lids wrapping eyes, a distinct orbital rim under the brow, cheeks continuing toward the nose, and a nose with bridge, tip and wings forming one profile.",
+      "controllingSource": "headPointWithAnatomy eye Gaussian relief, nose bridge/tip Gaussians; fragment shader lid/sclera/iris and mouth masks",
+      "correction": "Build linked orbital rim, lid margins/canthi, cheek-to-nasal transition, nasal wings/columella and perioral surface as one coordinated form. A globe/lid surface or equivalent true shared volume should make the eye sit inside the orbit rather than repainting sclera on skin. Nose tip and alar width must affect coherent front/three-quarter/profile surfaces, with a real underside rather than black nostril dots on a cone. Preserve saved eye aperture and pigment; avoid enlarging eyes to manufacture readability.",
+      "acceptance": "Use the same saved people, camera, scale and lighting; front, three-quarter and profile at96px and240px. Neutral untextured clay and shaded views must already show orbital containment and coherent nose/mouth form. Blink closes actual lid area and exactly restores without moving identity. Fine markings cannot be the only proof."
+    },
+    {
+      "priority": 2,
+      "outcome": "Regional cranial, cheek, jaw and chin form instead of an ellipsoidal mask",
+      "perceptualEvidence": "Current light-skinned people2/3/5 are particularly smooth and mask-like. The head's front remains uniformly rounded above an abrupt lower taper, while the profile is nearly a common dome with pasted nose/chin. Reference adults show a temporal recess, malar prominence, cheek fullness below it, mandibular angle and a rounded chin pad, not merely darker patches.",
+      "controllingSource": "headAnatomy3d stations, breadthAt, skullDepth semicircle and linear jawShift",
+      "correction": "Use separate front/side depth and breadth regions for temple, zygomatic arch, cheek, gonial angle and chin pad; keep continuous shared topology/normals. Allow existing saved cheek/jaw/chin controls to reshape those regions in both projections. Shape the brow-to-forehead and cheek-to-jaw transitions as anatomy, with genuine under-jaw depth. Do not simply inflate cheeks, narrow every head or add another hard shadow band.",
+      "acceptance": "Clean-shaven and shaved-head fixtures reveal form without grooming camouflage. Same controls remain distinguishable at ordinary size; no forehead pole, neck ledge, sudden angular band or profile identity change. Preserve canonical head/frame authority and label new shape assumptions artistic."
+    },
+    {
+      "priority": 3,
+      "outcome": "Hair and beard have coherent occupied volume and directional growth",
+      "perceptualEvidence": "Current person1 locs are a small set of wires under a helmet-like cap; people2/3/5 have broad smooth caps with shallow surface lines. Beards remain painted jaw masks with sparse protruding hairs. The target has clumps, gaps, rooted direction, unequal lock thickness and substantial same-person front/profile silhouettes.",
+      "controllingSource": "hairSurface cap/lift and28-or240 locks; beard shader coverage plus32/64 facial fibers",
+      "correction": "Construct fitted clump volumes with root-to-tip flow, clear strand-group overlap and region-specific coverage for fade, curls/coils, locs/braids and parted/long cuts. Make beard coverage a shallow coherent volume following cheek/chin/jaw, with localized density transition and mouth opening; use fibers to finish that form. Increase detail only where it changes the visible silhouette or grouping, rather than multiplying random wires. Reduce bright repetitive silver striping so gray follows the same locks and volume.",
+      "acceptance": "Front/three-quarter/profile paired silhouettes at equal scale must agree on length, density and growth direction. The style must read without its label or hash. Test dark and light pigments, gray, dye, shaved/clean and sparse/dense examples. No floating wire roots, scalp-covering helmet rim or rectangular rear beard boundary. This is craft assessment, not proof of population prevalence."
+    },
+    {
+      "priority": 4,
+      "outcome": "Adult head-to-neck attachment and material response support the new form",
+      "perceptualEvidence": "The current neck is a fixed narrow tube under the mask and skin has one smooth diffuse/specular response. In the target, the underside of jaw continues into an anatomically shaped neck, and skin's roughness/local color variation reinforces form without metallic glare.",
+      "controllingSource": "fixed neck radius23..32, training-top ellipsoid, fragment linear diffuse plus fixed specular",
+      "correction": "During measured-body integration, use the authoritative solved neck dimensions and shared jaw attachment; shape under-chin/neck transition without changing measurements or inferring muscle from strength. Apply restrained broad lighting, contact occlusion at lids/nostrils/lips/hair roots and varied roughness only after geometry works. Keep saved pigment as the base; do not introduce an ancestry palette or use texture noise to simulate anatomical depth.",
+      "acceptance": "Clay and final-material views agree on silhouette and identity. Lighting remains useful in both themes and across complexions; no plastic glare, uniform flat face or excessive contrast needed to reveal form. Show measured head/body attachment and real-size dossier views before integration acceptance."
+    }
+  ],
+  "executionGuidance": "Implement priorities1–2 as one complete-head architecture pass, evaluate whole heads, then finish priority3 and measured attachment/material together. Retain technical invariance/resource/bounds tests, but use a whole-person pixel comparison as the craft gate. Do not substitute another series of tiny wiring passes for visible adult-person quality.",
+  "limits": [
+    "No source edits, runtime adoption or prototype acceptance given by this design assessment.",
+    "Reference people differ from the saved fixtures; do not copy their exact dimensions, ancestry, age or grooming frequencies. It is an art-direction comparison, not calibrated empirical data.",
+    "Recommendations are visual/anatomical design requirements, not newly sourced population coefficients or medical measurement claims.",
+    "Complete appearance, body integration, current career/save/lifecycle and release remain OPEN."
+  ]
+}

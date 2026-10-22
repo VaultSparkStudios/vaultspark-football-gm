@@ -1,0 +1,635 @@
+{
+  "kind": "source-bound-gm-cpu-injury-claim-negotiation",
+  "status": "scoped-verified",
+  "recordedAt": "2026-10-07T11:43:40.768Z",
+  "sourceHashes": {
+    "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+    "src/domain/injurySalaryClaims.js": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2",
+    "src/domain/annualElevationInjuryResolution.js": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da",
+    "src/domain/preRolloverMedicalCalendar.js": "fbf72b88730a0594ee6979e5c099d41c6a05f0ab1113eeabf16981c35840b019",
+    "src/runtime/GameSession.js": "97a3be103e1783b73b6b2a2f36cc678c9431f8b9d8a3d18faeec2264828868fb",
+    "src/engine/offseasonSimulator.js": "1336e016c9a76d40970fda9378dca841e815c29de2bf7d163cb238c1253e8e09",
+    "src/server/routes/roster.js": "e6be7ff150bfbac5ca20a05650835fdc2bdaf1d50a926249d0f7135978f615a1",
+    "src/app/api/localApiRuntime.js": "d01ae657f3781996a5610892def880f5c909f30a779bb0c327821c8b0194d939",
+    "src/runtime/franchiseAuthority.js": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2",
+    "public/lib/apiContract.js": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba",
+    "public/lib/injurySalaryClaimsPanel.js": "7bccd36c6ce7e1a67447080ec48c3afc17f49c8ce916b7ab1a7fa1f6847a9886",
+    "public/lib/rosterActions.js": "e18e5d4a29242291e9b9afac77ac0c67043fda94b34e1300bf9879a6bb01c35b",
+    "public/lib/gameFlow.js": "da2a58aeb925a6b113e1ca7d8a8052781bdfb94839c697fcae74f603dc8a3492",
+    "public/lib/uiIslands.js": "de2089084e7baf56d214e0190c8232c96dad2c2d6fa2733a9e3a5489a3eaa0ba",
+    "public/game.html": "d4d12b3dc0134587de44c835f3628df40d7c0a2f48abc28e66439b7f7bdd7221",
+    "public/boot-manifest.json": "d0c14a86963f91513789b80b46216740ebdc18557bab89c86610e1f5f196071b"
+  },
+  "testHashes": {
+    "test/injury-claim-negotiation.test.js": "ddfcd65f5c35ced0fec3b5911574b8c10fadeb4cbad9987f705994afe373f93f",
+    "test/ui-islands.test.js": "35d130298e51de581d27f238336152381df8217fc62bf19bc0863eb89f9fad34",
+    "tests-ui/injury-claim-negotiation.spec.js": "e30d6b760c8095abf1e56a58a02ed66ee10a5fc0cf84ee3a3be8e652ee7aa996",
+    "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe"
+  },
+  "actualSave": {
+    "file": ".cache/actual-annual-negotiation.json",
+    "sha256": "8ed0d97e6634dedabcb895298435e06635ae9dd080a236c5f1ade1bc44a68f98",
+    "status": "scoped-pass",
+    "recordedAt": "2026-10-07T11:15:41.488Z",
+    "source": {
+      "file": ".cache/managed-franchise-command/current-2026-10-07/failure-snapshot.json",
+      "sha256": "9d3e618fbd9f0ede6d6e3711f6eff8521a1b3c6c0c1f56c1a61d0e3add6387db"
+    },
+    "sourceHashes": {
+      "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+      "src/domain/injurySalaryClaims.js": "57b7f79ce052f4e5e3c7b409a9ef7e0d902401b88da41765623af92d2073cda2",
+      "src/domain/annualElevationInjuryResolution.js": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da",
+      "src/domain/preRolloverMedicalCalendar.js": "fbf72b88730a0594ee6979e5c099d41c6a05f0ab1113eeabf16981c35840b019",
+      "src/runtime/GameSession.js": "97a3be103e1783b73b6b2a2f36cc678c9431f8b9d8a3d18faeec2264828868fb",
+      "src/engine/offseasonSimulator.js": "1336e016c9a76d40970fda9378dca841e815c29de2bf7d163cb238c1253e8e09"
+    },
+    "results": [
+      {
+        "actor": "original-CPU-club",
+        "controlledTeamId": "BUF",
+        "originalPayRows": 5,
+        "newPayRows": 0,
+        "claim": {
+          "version": "elevation-injury-salary-claim-v1",
+          "claimId": "[\"P2026-CLE-LB-10032552\",\"2026-regular-regular-season-18-CLE-BAL\"]",
+          "playerId": "P2026-CLE-LB-10032552",
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "injuryYear": 2026,
+          "filedYear": 2026,
+          "claimedCents": 9833334,
+          "reservedCents": 3933334,
+          "status": "settled",
+          "resolution": {
+            "year": 2027,
+            "paidCents": 8555001,
+            "regularGameEquivalents": 0,
+            "clubAccepted": true,
+            "playerAccepted": true,
+            "statutoryRightsPreserved": true,
+            "pensionTreatment": "separate-review-required"
+          }
+        }
+      },
+      {
+        "actor": "controlled-club-GM",
+        "controlledTeamId": "CLE",
+        "originalPayRows": 5,
+        "newPayRows": 0,
+        "claim": {
+          "version": "elevation-injury-salary-claim-v1",
+          "claimId": "[\"P2026-CLE-LB-10032552\",\"2026-regular-regular-season-18-CLE-BAL\"]",
+          "playerId": "P2026-CLE-LB-10032552",
+          "gameId": "2026-regular-regular-season-18-CLE-BAL",
+          "teamId": "CLE",
+          "injuryYear": 2026,
+          "filedYear": 2026,
+          "claimedCents": 9833334,
+          "reservedCents": 3933334,
+          "status": "settled",
+          "resolution": {
+            "year": 2027,
+            "paidCents": 8555001,
+            "regularGameEquivalents": 0,
+            "clubAccepted": true,
+            "playerAccepted": true,
+            "statutoryRightsPreserved": true,
+            "pensionTreatment": "separate-review-required"
+          }
+        }
+      }
+    ],
+    "limits": [
+      "GM branch explicitly changes the controlled club to CLE to test original-payer authority; original CPU branch preserves original control",
+      "Weekly medical-calendar projection and bargaining assumptions, not exact legal dates or empirical settlement rates",
+      "No pension benefit adjudication, earlier postseason reclassification, final-current-source30 or full release proof"
+    ]
+  },
+  "reviews": [
+    {
+      "file": ".cache/injury-claim-negotiation-review-round1.json",
+      "sha256": "64b7b88b7317284701ddd0fdfca892c95dfb2e33699cb636842267cae13118ed",
+      "scope": "GM and CPU original-club injury salary claim negotiation",
+      "round": 1,
+      "verdict": "PASS",
+      "findings": [],
+      "sourceHashes": {
+        "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+        "src/runtime/GameSession.js": "97a3be103e1783b73b6b2a2f36cc678c9431f8b9d8a3d18faeec2264828868fb",
+        "src/engine/offseasonSimulator.js": "1336e016c9a76d40970fda9378dca841e815c29de2bf7d163cb238c1253e8e09",
+        "src/server/routes/roster.js": "e6be7ff150bfbac5ca20a05650835fdc2bdaf1d50a926249d0f7135978f615a1",
+        "src/app/api/localApiRuntime.js": "d01ae657f3781996a5610892def880f5c909f30a779bb0c327821c8b0194d939",
+        "src/runtime/franchiseAuthority.js": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2",
+        "public/lib/rosterActions.js": "e4e220d72194fd1390c72a8e83fa18d23c542b8d9cbb88ddcb17d5724944c34a",
+        "public/lib/gameFlow.js": "8ceacd94fefa8f2e51d1d3832def7b30c4b3b3d6744aaf5a1f444a0ec90c4ea5",
+        "public/game.html": "d4d12b3dc0134587de44c835f3628df40d7c0a2f48abc28e66439b7f7bdd7221",
+        "test/injury-claim-negotiation.test.js": "ddfcd65f5c35ced0fec3b5911574b8c10fadeb4cbad9987f705994afe373f93f"
+      },
+      "validation": {
+        "independentCommand": "node --test test/injury-claim-negotiation.test.js test/injury-salary-claims.test.js test/franchise-authority.test.js",
+        "passed": 28,
+        "failed": 0,
+        "covered": [
+          "Pure negotiation preview and rejected offer snapshot invariance",
+          "Exact-cent threshold acceptance with player medical/employment/pay/RNG unchanged",
+          "Wrong original payer, invalid amounts, stale financial year and closed year refusal invariance",
+          "Actual restore and same-amount settlement retry invariance",
+          "CPU controlled-club exclusion and next-year original-reserve delta attribution",
+          "Shared adapter route classification and franchise authority refusal tests"
+        ]
+      },
+      "sourceReview": [
+        "Stable 80–100% request is explicitly fictional and depends only on immutable claim ID, using exact integer arithmetic.",
+        "Accepted settlement uses existing atomic clone/validate/commit authority; no medical recovery, employment or game/service/pension proof is synthesized.",
+        "CPU settlement commits its complete planned claims and cap ledger only after all accepted settlements succeed.",
+        "Annual callsites invoke CPU negotiation after opening the next financial year; session excludes controlled club, headless excludes provided clubs.",
+        "Both adapters preserve domain refusals and the new POST route is team-scoped under existing franchise authority.",
+        "UI dollar-to-cents conversion uses BigInt with strict decimal syntax and safe-integer bound; former-player claim discovery follows original payer rather than current roster."
+      ],
+      "limits": [
+        "Backend/source verdict only: current new built negotiation UI screenshots/browser results were pending and not independently inspected here.",
+        "No certification of full NFL/statutory/pension/medical annual continuity, complete release, or broader goal.",
+        "The bargaining fraction is an explicit design assumption, not measured settlement prevalence."
+      ],
+      "writes": "Only this specifically requested cache receipt; shared source unchanged."
+    },
+    {
+      "file": ".cache/injury-claim-negotiation-review-round2.json",
+      "sha256": "53f3004dec6f9347a50b23bfaae7cabe147e6be45a07c9fb745ca35eb8e6c380",
+      "scope": "Original-club GM/CPU salary-claim negotiation and actual roster UI",
+      "round": 2,
+      "verdict": "PASS",
+      "findings": [],
+      "sourceHashes": {
+        "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+        "src/runtime/GameSession.js": "97a3be103e1783b73b6b2a2f36cc678c9431f8b9d8a3d18faeec2264828868fb",
+        "src/engine/offseasonSimulator.js": "1336e016c9a76d40970fda9378dca841e815c29de2bf7d163cb238c1253e8e09",
+        "src/server/routes/roster.js": "e6be7ff150bfbac5ca20a05650835fdc2bdaf1d50a926249d0f7135978f615a1",
+        "src/app/api/localApiRuntime.js": "d01ae657f3781996a5610892def880f5c909f30a779bb0c327821c8b0194d939",
+        "src/runtime/franchiseAuthority.js": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2",
+        "public/lib/apiContract.js": "832adeaec5224b76dd873e0d0fd762018a67a5c34f15576c5e104acfc94049ba",
+        "public/lib/injurySalaryClaimsPanel.js": "7bccd36c6ce7e1a67447080ec48c3afc17f49c8ce916b7ab1a7fa1f6847a9886",
+        "public/lib/rosterActions.js": "e18e5d4a29242291e9b9afac77ac0c67043fda94b34e1300bf9879a6bb01c35b",
+        "public/lib/gameFlow.js": "da2a58aeb925a6b113e1ca7d8a8052781bdfb94839c697fcae74f603dc8a3492",
+        "public/lib/uiIslands.js": "de2089084e7baf56d214e0190c8232c96dad2c2d6fa2733a9e3a5489a3eaa0ba",
+        "public/game.html": "d4d12b3dc0134587de44c835f3628df40d7c0a2f48abc28e66439b7f7bdd7221",
+        "public/boot-manifest.json": "d0c14a86963f91513789b80b46216740ebdc18557bab89c86610e1f5f196071b",
+        "test/injury-claim-negotiation.test.js": "ddfcd65f5c35ced0fec3b5911574b8c10fadeb4cbad9987f705994afe373f93f",
+        "test/ui-islands.test.js": "35d130298e51de581d27f238336152381df8217fc62bf19bc0863eb89f9fad34",
+        "test/tab-hydration.test.js": "4881ccf5ec09e2798ce1f7e19bfef174b7298fdccc7d58de300aadee6f1bf377",
+        "test/browser-boot-budget.test.js": "70a6251a60532ddd9fbfaa850f09538c8d24945e2cb88be21c48f5048b816029",
+        "tests-ui/injury-claim-negotiation.spec.js": "e30d6b760c8095abf1e56a58a02ed66ee10a5fc0cf84ee3a3be8e652ee7aa996",
+        "tests-ui/helpers/static-client.js": "b7f9c3709113b898c7ab7632108755192f430410e1ecf420f6bf8a391c07abfe"
+      },
+      "validation": {
+        "independent": {
+          "command": "node --test test/ui-islands.test.js test/tab-hydration.test.js test/browser-boot-budget.test.js test/injury-claim-negotiation.test.js",
+          "passed": 20,
+          "failed": 0
+        },
+        "primaryReportedTerminal": [
+          {
+            "sessionId": 34413,
+            "passed": 2,
+            "exitCode": 0,
+            "scope": "Corrected preserved pre-card baseline; card absent before and after roster hydration"
+          },
+          {
+            "sessionId": 58827,
+            "passed": 8,
+            "exitCode": 0,
+            "scope": "Final built worker/in-page negotiation, original claim persistence and pre-rollover medical/refusal cases",
+            "duration": "2.4 minutes"
+          }
+        ],
+        "build": {
+          "artifact": "b2fd0cfb0b30",
+          "assets": 300,
+          "staticBytes": 649873,
+          "hardBudget": 730000,
+          "target": 650000,
+          "staticModules": 51,
+          "lazyLeaks": 0,
+          "source": "Primary build report; independent unchanged boot/budget tests also pass"
+        }
+      },
+      "inspection": {
+        "tool": "view_image original detail",
+        "imagesIndependentlyInspected": 20,
+        "inspectedImages": [
+          {
+            "path": "output/playwright/claim-negotiation-before-desktop-dark.png",
+            "sha256": "3b8d19465e7bbf98adb0d612d1064b655af44dbcb8bc49ceb8438d71187f6e8b",
+            "state": "before",
+            "size": "desktop",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-before-desktop-light.png",
+            "sha256": "f642183ce1e9c3b79e72ce581e294f6e3c7766e0d7372f4a1fbcd50d99ccc665",
+            "state": "before",
+            "size": "desktop",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-before-mobile-dark.png",
+            "sha256": "751570c42cbb8bf46dc3435eef7c9b28473f169c395addbc1780a4f369b1c701",
+            "state": "before",
+            "size": "mobile",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-before-mobile-light.png",
+            "sha256": "d02ed2caf84371ab2384656e54cf95f832eafa09a3676d9563c87666a77ac300",
+            "state": "before",
+            "size": "mobile",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-after-desktop-dark.png",
+            "sha256": "affb6b33e2141848383d507a58675c900c5b41675fc1b0b62239bb176bdeedfd",
+            "state": "after",
+            "size": "desktop",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-after-desktop-light.png",
+            "sha256": "2f576bd4031b84c96b94b26aaa75d7ebb2e80a2eecfbfbc0c91e79b61f8dda71",
+            "state": "after",
+            "size": "desktop",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-after-mobile-dark.png",
+            "sha256": "06cd74b2744ee759b5f37fc91b0cc5955d8497933de5247a034fd65413b7032e",
+            "state": "after",
+            "size": "mobile",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-after-mobile-light.png",
+            "sha256": "284309d97bb1ed9311083f4ebfc1ef67c7da873361f3f71b11f6f414ff1f74ee",
+            "state": "after",
+            "size": "mobile",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-invalid-desktop-dark.png",
+            "sha256": "5dc87a26c7c79c8c4c95d918d8eb63c6777e577d2fb9e4b4fc4409dfb192b827",
+            "state": "invalid",
+            "size": "desktop",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-invalid-desktop-light.png",
+            "sha256": "fd9a7e8069c68ad4c91f045dd1984903dde339317df6ef131ba37c1de3e868c8",
+            "state": "invalid",
+            "size": "desktop",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-invalid-mobile-dark.png",
+            "sha256": "36a1a164dd8c0a1f933a4e7803407ea01e42a9f724aca6844257d4309c8a1783",
+            "state": "invalid",
+            "size": "mobile",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-invalid-mobile-light.png",
+            "sha256": "22890d15290334f9494114d8a85979a08fd89bc980ce2e17e3cf51c70d2982dd",
+            "state": "invalid",
+            "size": "mobile",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-counteroffer-desktop-dark.png",
+            "sha256": "2dc3904367f3e6d60084dabc8de4178ec5db9c9559ffb193d5211bc863293510",
+            "state": "counteroffer",
+            "size": "desktop",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-counteroffer-desktop-light.png",
+            "sha256": "a362a7b888aece8253b0b0a143bd6830da8d5e27c18be2d3dfc098fb0047bdf1",
+            "state": "counteroffer",
+            "size": "desktop",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-counteroffer-mobile-dark.png",
+            "sha256": "c7c15657b9d22c52c1c95c6882db58a44e6450ebb53c6a274d0aecf6544da0ad",
+            "state": "counteroffer",
+            "size": "mobile",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-counteroffer-mobile-light.png",
+            "sha256": "b659c63817b4af1f82989be968069e531d841aef8bd45ec6b4fd7de9f32d7673",
+            "state": "counteroffer",
+            "size": "mobile",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-settled-desktop-dark.png",
+            "sha256": "af5af13fd219be330fcf0bdf389ff621c561f1d744a1b302eadd091bed2ac119",
+            "state": "settled",
+            "size": "desktop",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-settled-desktop-light.png",
+            "sha256": "564d3a08a56631ca7ab6203704a1e179f35818b56c110e8399c844482721699e",
+            "state": "settled",
+            "size": "desktop",
+            "theme": "light"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-settled-mobile-dark.png",
+            "sha256": "d3b63299804526a461ffac86e1aae8633b2e2e7a9059e3613fdf04eb503fab38",
+            "state": "settled",
+            "size": "mobile",
+            "theme": "dark"
+          },
+          {
+            "path": "output/playwright/claim-negotiation-settled-mobile-light.png",
+            "sha256": "8838891af8be541edd1c25315e638cfa0e1e3a2897f88e9084afabda6714c6eb",
+            "state": "settled",
+            "size": "mobile",
+            "theme": "light"
+          }
+        ],
+        "assessment": "All four corrected baseline views show roster controls and no retained-claim card. Pending, invalid, counteroffer and settled cards remain readable at1440x1000/390x844 in dark/light themes; amounts/labels/statuses and offered controls are unobstructed. No concrete visual defect found."
+      },
+      "sourceReview": [
+        "Panel import remains demand-driven only for actual roster claims and renders inside existing hydration commit guard. Previously loaded panel is cleared by empty-claim roster response.",
+        "Dynamic-import cycle with gameFlow has no top-level invocation or uninitialized binding use. New island has no tab ownership or idle import, with an explicit6000-byte feature budget and unchanged global targets.",
+        "Exact cent syntax/conversion and saved payment-year guard remain intact; rejected offers preserve franchise gameplay state. API request observability is explicitly outside browser comparison.",
+        "Original payer scope and controlled-club CPU exclusion use unchanged round1 domain/API authority. Existing named-slot tests actually replace the live franchise before UI load/reload.",
+        "Trusted baseline host override follows real .html redirect and normal headers. Object.hasOwn prevents inherited override keys; default host serving remains unchanged.",
+        "Actual-career probe separates original CPU payer from explicitly selected controlled-GM branch and records original5/new0 continuation payroll; no whole-career claim inferred."
+      ],
+      "evidenceLimits": [
+        "Preserved pre-card UI files run on current shared backend; this is not a complete earlier deployment.",
+        "Service workers blocked for controlled visual comparison; offline/cache behavior is not certified here.",
+        "No full statutory benefit, pension, medical continuity, NFL rules, full appearance/goal or release approval."
+      ],
+      "writes": "Only this requested round2 cache receipt; no shared source edits or competing browser launched."
+    }
+  ],
+  "visual": {
+    "file": "docs/visual-qa/INJURY_CLAIM_NEGOTIATION_2026-10-07.json",
+    "sha256": "eb50ad11485121380ade5a910a831642718e7175b093b64ff074ce919665f48a",
+    "captures": 20
+  },
+  "boot": {
+    "schemaVersion": "1.0",
+    "kind": "browser-boot-budget-receipt",
+    "ok": true,
+    "entry": "app.js",
+    "staticBytes": 649873,
+    "staticModules": 51,
+    "budgets": {
+      "staticBytes": 730000,
+      "staticModules": 58
+    },
+    "targets": {
+      "staticBytes": 650000
+    },
+    "lazyRoots": [
+      "lib/playerPortrait.js",
+      "lib/tutorialCampaign.js",
+      "lib/betaFeedback.js",
+      "lib/tabRoster.js",
+      "lib/rosterActions.js",
+      "lib/injurySalaryClaimsPanel.js",
+      "lib/tabContracts.js",
+      "lib/tabDraft.js",
+      "lib/tabStats.js",
+      "lib/tabHistory.js",
+      "lib/tabSettings.js",
+      "lib/gistSync.js",
+      "lib/gistAuthentication.js",
+      "lib/gistVerification.js",
+      "lib/franchiseNewsletter.js",
+      "lib/leagueStoryExport.js",
+      "lib/seasonEpilogue.js",
+      "lib/devSurfaces.js",
+      "lib/tradeDeadlineFrenzy.js",
+      "lib/offseasonDevelopmentReport.js",
+      "lib/momentCard.js",
+      "lib/frontOfficeAdvisor.js",
+      "lib/firstSeasonContract.js",
+      "lib/deskIslands.js",
+      "lib/api/workerTransport.js",
+      "lib/api/localRuntimeWorker.js",
+      "lib/teamCrest.js",
+      "lib/situationalCallsPanel.js"
+    ],
+    "lazyLeaks": [],
+    "minimumIslandHeadroomRatio": 0.15,
+    "islands": {
+      "roster": {
+        "bytes": 18528,
+        "maxBytes": 22000,
+        "headroomRatio": 0.15781818181818183,
+        "roots": [
+          "lib/tabRoster.js",
+          "lib/rosterActions.js"
+        ],
+        "modules": [
+          "lib/rosterActions.js",
+          "lib/tabRoster.js"
+        ]
+      },
+      "injuryClaims": {
+        "bytes": 3151,
+        "maxBytes": 6000,
+        "headroomRatio": 0.47483333333333333,
+        "roots": [
+          "lib/injurySalaryClaimsPanel.js"
+        ],
+        "modules": [
+          "lib/injurySalaryClaimsPanel.js"
+        ]
+      },
+      "contracts": {
+        "bytes": 38414,
+        "maxBytes": 46000,
+        "headroomRatio": 0.16491304347826086,
+        "roots": [
+          "lib/tabContracts.js"
+        ],
+        "modules": [
+          "lib/tabContracts.js"
+        ]
+      },
+      "draft": {
+        "bytes": 28116,
+        "maxBytes": 34000,
+        "headroomRatio": 0.17305882352941176,
+        "roots": [
+          "lib/tabDraft.js"
+        ],
+        "modules": [
+          "lib/prospectNarratives.js",
+          "lib/tabDraft.js"
+        ]
+      },
+      "stats": {
+        "bytes": 9270,
+        "maxBytes": 12000,
+        "headroomRatio": 0.2275,
+        "roots": [
+          "lib/tabStats.js"
+        ],
+        "modules": [
+          "lib/tabStats.js"
+        ]
+      },
+      "history": {
+        "bytes": 61045,
+        "maxBytes": 72000,
+        "headroomRatio": 0.15215277777777778,
+        "roots": [
+          "lib/tabHistory.js"
+        ],
+        "modules": [
+          "lib/architectCut.js",
+          "lib/decisionAnthology.js",
+          "lib/decisionArchive.js",
+          "lib/hallOfFameCeremony.js",
+          "lib/tabHistory.js"
+        ]
+      },
+      "settings": {
+        "bytes": 62506,
+        "maxBytes": 74000,
+        "headroomRatio": 0.15532432432432433,
+        "roots": [
+          "lib/tabSettings.js"
+        ],
+        "modules": [
+          "lib/dynastyTimeline.js",
+          "lib/gistSync.js",
+          "lib/historyFormatting.js",
+          "lib/progressionWatch.js",
+          "lib/tabSettings.js"
+        ]
+      },
+      "exports": {
+        "bytes": 29092,
+        "maxBytes": 36000,
+        "headroomRatio": 0.1918888888888889,
+        "roots": [
+          "lib/gistSync.js",
+          "lib/franchiseNewsletter.js",
+          "lib/leagueStoryExport.js"
+        ],
+        "modules": [
+          "lib/franchiseNewsletter.js",
+          "lib/gistSync.js",
+          "lib/leagueStoryExport.js"
+        ]
+      }
+    },
+    "modules": [
+      "app.js",
+      "lib/achievements.js",
+      "lib/actionCoordinator.js",
+      "lib/api/createApiClient.js",
+      "lib/apiContract.js",
+      "lib/appCore.js",
+      "lib/appState.js",
+      "lib/architectPlanRehearsal.js",
+      "lib/audioFeedback.js",
+      "lib/authorityEpoch.js",
+      "lib/boxScorePresentation.js",
+      "lib/challengeCodes.js",
+      "lib/clientDiagnostics.js",
+      "lib/coachingMarketPanel.js",
+      "lib/contextualFeedback.js",
+      "lib/engagementFeatures.js",
+      "lib/exactSurfaceNavigation.js",
+      "lib/fastSimulationPolicy.js",
+      "lib/franchiseArchitecture.js",
+      "lib/franchiseCommandCenter.js",
+      "lib/franchiseScope.js",
+      "lib/gameFlow.js",
+      "lib/gameplayNavigation.js",
+      "lib/gistCredentials.js",
+      "lib/marqueeBadge.js",
+      "lib/mobileLoop.js",
+      "lib/modalManager.js",
+      "lib/playerProfileNarrative.js",
+      "lib/playtestJourney.js",
+      "lib/playtestReceipts.js",
+      "lib/postCommitHydration.js",
+      "lib/predictionPanel.js",
+      "lib/pressRoomPanel.js",
+      "lib/returnDigest.js",
+      "lib/rivalCoachIntel.js",
+      "lib/scoreline.js",
+      "lib/seasonChapters.js",
+      "lib/seasonReviewTransition.js",
+      "lib/simWatchDirector.js",
+      "lib/simWatchPlayback.js",
+      "lib/simulationCheckpoints.js",
+      "lib/spreadPredictions.js",
+      "lib/tabHydration.js",
+      "lib/tabOverview.js",
+      "lib/tacticalFilmRoom.js",
+      "lib/teamDisplay.js",
+      "lib/teamRecord.js",
+      "lib/themeCustomizer.js",
+      "lib/tradeWindow.js",
+      "lib/uiIslands.js",
+      "lib/weeklyPlanComposer.js"
+    ],
+    "findings": []
+  },
+  "observedChecks": [
+    {
+      "command": "node --test test/injury-claim-negotiation.test.js test/franchise-authority.test.js test/annual-injury-command-readiness.test.js test/pre-rollover-medical-calendar.test.js",
+      "sessionId": 58311,
+      "exitCode": 0,
+      "passed": 38
+    },
+    {
+      "command": "node --test test/browser-boot-budget.test.js test/ui-islands.test.js test/tab-hydration.test.js",
+      "exitCode": 0,
+      "passed": 17
+    },
+    {
+      "command": "CLAIM_UI_PHASE=before npx --no-install playwright test tests-ui/injury-claim-negotiation.spec.js --workers=1",
+      "sessionId": 34413,
+      "exitCode": 0,
+      "passed": 2
+    },
+    {
+      "command": "CLAIM_UI_PHASE=after npx --no-install playwright test tests-ui/injury-claim-negotiation.spec.js tests-ui/injury-salary-claims.spec.js tests-ui/pre-rollover-medical-client.spec.js --workers=1",
+      "sessionId": 58827,
+      "exitCode": 0,
+      "passed": 8
+    },
+    {
+      "command": "npm run build:pages",
+      "sessionId": 21141,
+      "exitCode": 0,
+      "build": "b2fd0cfb0b30",
+      "assets": 300
+    },
+    {
+      "command": "npm run check:browser-modules",
+      "exitCode": 0,
+      "modules": 127
+    }
+  ],
+  "deployManifestSha256": "699ad33dc7835e24abc008cc61ff112a8c0b3e8858bf414995fe54439fd3d01e",
+  "limits": [
+    "80–100% request is an explicit fictional bargaining assumption, not an empirical NFL rate or legal entitlement",
+    "GM actual-career branch explicitly changes controlled club to the original payer; original CPU branch preserves source control",
+    "Salary agreement does not heal injuries, renew employment or award pension/service; regular-game equivalents remain0 pending separate benefit proof",
+    "Earlier-postseason post-term classification, pension/benefit adjudication, complete appearance and empirical demographics remain unfinished",
+    "Historical managed30 and broader core results do not certify final current source; complete all-feature verification and release remain pending"
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "version": "appearance-research-adoption-v1",
+  "reviewDate": "2026-10-07",
+  "status": "source-review-and-context-extraction-not-generator-fit",
+  "runtimeCoefficientsChanged": false,
+  "sources": [
+    {
+      "id": "abs-2021-ancestry-by-generation",
+      "url": "https://www.abs.gov.au/articles/cultural-diversity-australia",
+      "retrieval": "Official article directly reviewed, including Top 5 ancestries by generation, 2021",
+      "collectionYear": 2021,
+      "cohort": "Australian resident census population, all ages; generation categories as defined by ABS",
+      "unit": "Percent of the respective generation population reporting an ancestry",
+      "multiplicity": "Up to two ancestry responses; rows overlap and are not exhaustive",
+      "observations": {
+        "firstGeneration": [
+          {"ancestry": "English", "percent": 20.7},
+          {"ancestry": "Chinese", "percent": 14.0},
+          {"ancestry": "Indian", "percent": 8.3},
+          {"ancestry": "Scottish", "percent": 5.1},
+          {"ancestry": "Irish", "percent": 4.8}
+        ],
+        "secondGeneration": [
+          {"ancestry": "English", "percent": 32.5},
+          {"ancestry": "Australian", "percent": 30.9},
+          {"ancestry": "Italian", "percent": 7.9},
+          {"ancestry": "Scottish", "percent": 7.6},
+          {"ancestry": "Irish", "percent": 6.8}
+        ],
+        "thirdPlusGeneration": [
+          {"ancestry": "Australian", "percent": 48.9},
+          {"ancestry": "English", "percent": 44.2},
+          {"ancestry": "Irish", "percent": 14.6},
+          {"ancestry": "Scottish", "percent": 12.1},
+          {"ancestry": "Australian Aboriginal", "percent": 5.8}
+        ]
+      },
+      "allowedUse": "Demonstrate why family generation and multiple ancestry responses must remain separate from country of birth; extraction reference for a future compatible context model",
+      "limitations": ["Not athlete or male NFL-age frequencies", "Not exclusive racial categories", "No individual joint responses or appearance observations", "Australian Aboriginal response category was added in 2021; question changes affect comparisons", "No generation-specific sampling coefficients adopted"]
+    },
+    {
+      "id": "nlm-natural-hair-pigment-recheck",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/haircolor/",
+      "retrieval": "Official educational explanation directly reviewed",
+      "observation": "Natural hair shades vary with pigment type and amount, involve multiple genes, and can change with age",
+      "allowedUse": "Separate continuous natural pigment from dye and variable graying; preserve correlated but individually varied pigment channels",
+      "limitations": ["No country-by-age-by-athlete joint probabilities", "The worldwide dark-hair estimate is not an NFL recruitment distribution", "Renderer RGB mappings remain design assumptions"]
+    },
+    {
+      "id": "nlm-hair-texture-thickness-recheck",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/hairtexture/",
+      "retrieval": "Official educational explanation directly reviewed",
+      "observation": "Hair texture and strand thickness have multiple influences; they are distinct traits",
+      "allowedUse": "Save curvature and thickness separately from density, length, cut and treatment",
+      "limitations": ["No complete national texture frequency table", "No NFL grooming frequency measurements", "No genotype-based simulator coefficients adopted"]
+    },
+    {
+      "id": "nlm-iris-continuum-recheck",
+      "url": "https://medlineplus.gov/genetics/understanding/traits/eyecolor/",
+      "retrieval": "Official educational explanation directly reviewed",
+      "observation": "Iris color is a continuum influenced by multiple genes, including overlapping pigment influences with other tissues",
+      "allowedUse": "Vary shades within labels and retain supported cross-channel correlations without one fixed national palette",
+      "limitations": ["No national/NFL quantitative shade frequencies", "No rule that all pigment channels must match", "No rare-condition prevalence adopted"]
+    },
+    {
+      "id": "quantitative-iris-method-2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23948321/",
+      "retrieval": "Primary indexed abstract excerpt reviewed; direct retrieval returned a disclosure footer",
+      "publicationYear": 2013,
+      "observation": "Iris-image blue/brown pixel counts produce a quantitative PIE-score rather than only broad color labels",
+      "allowedUse": "Motivate continuous iris variation and equal-lighting image comparisons",
+      "limitations": ["Full methods, sample details and observations not verified in this review", "No PIE-score-to-renderer conversion adopted", "Not world or NFL prevalence evidence"]
+    },
+    {
+      "id": "combine-composition-2018-recheck",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29351164/",
+      "retrieval": "Primary abstract directly reviewed",
+      "publicationYear": 2018,
+      "collectionPeriod": "2010–2016 Combine participants, as stated in the abstract methods",
+      "cohort": "1958 invited Combine participants completing air-displacement composition testing",
+      "observation": "BMI and measured composition classify substantially different obesity rates in this selected athlete sample",
+      "allowedUse": "Keep measured/estimated composition separate from height and weight; permit different compatible tissue distributions at the same size",
+      "limitations": ["Selected prospects rather than current active NFL players", "No individual regional geometry or covariance extracted", "Abstract results also mention 2017 despite methods ending in 2016; preserve discrepancy rather than invent a corrected collection period", "No BMI-to-fat or physique coefficients adopted"]
+    },
+    {
+      "id": "nfl-2025-international-roster-recheck",
+      "url": "https://operations.nfl.com/programs-initiatives/international-growth/international-player-pathway",
+      "retrieval": "Official NFL page directly reviewed",
+      "collectionPeriod": "2025 regular season and playoffs",
+      "observations": {"internationalBornRosterParticipants": 126, "active53ManRosterParticipants": 61, "countriesAndTerritories": 38},
+      "allowedUse": "Separate season-wide participation, active-roster status, birthplace, childhood football location and recruitment pathway",
+      "limitations": ["No matching unique league denominator extracted", "No complete country counts or country-by-identity cross-tab", "No appearance frequencies", "Do not divide season-wide unique participants by a one-week 32-by-53 roster denominator"]
+    }
+  ],
+  "nextEmpiricalDeliverables": [
+    "Compatible individual or published joint birthplace/family-context observations retaining multiple responses and unknowns",
+    "A dated league recruitment cohort with a matching denominator and source-defined racial/ethnic reporting categories",
+    "Compatible natural pigmentation and hair geometry observations; unsupported grooming frequencies remain explicit artistic priors",
+    "Endpoint-aware paired anatomical/composition/workout observations with selected-cohort and missing-data limitations",
+    "Fitted uncertainty and conditional diagnostics before replacing any runtime weights"
+  ]
+}

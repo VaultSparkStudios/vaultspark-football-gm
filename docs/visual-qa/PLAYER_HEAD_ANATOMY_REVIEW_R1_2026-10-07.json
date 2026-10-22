@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "scope": "Unadopted coordinated head anatomy correctness and candid complete-head craft assessment",
+  "verdict": "PASS",
+  "qualification": "Scoped prototype correctness/evidence PASS; complete adult-person craft remains unmet, not production or full appearance acceptance",
+  "primaryReceiptSha256": "74a33f7b3d7f1842ae0b259e96a195a05c63d11b03e9e63a6f25e909c4ce4432",
+  "primaryReceiptPath": ".cache/head-anatomy-reviewed-r1-primary.json",
+  "sourceHashes": {
+    "prototypes/playerHead3d.mjs": "86d35c68ab0cfbd250f43f7502840fbd8c2d963330d6094d7fb8c1c07a98276f",
+    "prototypes/playerHead3d.test.mjs": "7d995b0a8e3d04ce17d7013cd43883e64e89240225ed1add16a6803faa88cb55",
+    ".cache/head-anatomy.spec.mjs": "3cc842077dba367581c65c427a23edd6b5594428c0c1a029277e8eeb58446e2f",
+    ".cache/head-anatomy.config.mjs": "b571625b61d14350432bd8ce39702829bfec914efd30c40a76bfffd383373437",
+    "public/lib/appearancePalette.js": "c35a128c41c318209fbfda4a7d331cb99d8dd6d7ec0a4b2e338384b83f603320",
+    "output/playwright/player-art-benchmark.json": "17ca7bc2aa54379711af2f474b02b2187320c180a71870ab135405e6ab989aff"
+  },
+  "beforeSourceHash": "f54fd9e84a8786292da13057ba936cc9e503c0166c7ac1b957a273dfdbe36a13",
+  "independentChecks": [
+    {
+      "command": "node --test prototypes/playerHead3d.test.mjs",
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 11050.0227
+    },
+    {
+      "command": "node .cache/head-anatomy-review-probe.mjs",
+      "cases": 18,
+      "eyeNormalSamples": 3780,
+      "sourceBindings": 6,
+      "captureBindings": 12,
+      "result": "PASS"
+    }
+  ],
+  "inspectedOriginals": [
+    {
+      "path": "docs/visual-qa/captures/head-anatomy-person-0-desktop-dark.png",
+      "sha256": "277a464d04cf366b473351501d041c13d6dac333925feb704b911cd7caf6e5e7"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-anatomy-person-1-desktop-light.png",
+      "sha256": "78b4b8e93bcd92cadb21dccb30a3b98f59a27839d8dd83d291c8bcb8e9bf5bc1"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-anatomy-person-2-mobile-light.png",
+      "sha256": "0356793a14c61ac8086885bc7efa8a57922a5b0cd535357e93accb7f349943d9"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-anatomy-person-2-desktop-dark.png",
+      "sha256": "725410790c7733c69711c96e1a540517a057f50428ffd8edcb5915e154d0e32e"
+    },
+    {
+      "path": "docs/visual-qa/captures/head-anatomy-person-0-mobile-dark.png",
+      "sha256": "a2a19d58455cbd61b9c4efcf782574b85f69f58dbddf0f1346220382d5d6d672"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "OPEN craft",
+      "description": "Clay reveals stronger orbital basin/malar/nasal/perioral structure and three-quarter depth; it still has a compressed rigid mouth, abrupt chin-to-neck transition, narrow flat ear attachments and mannequin-like surfaces. These remain visible at both 96x120 and native 240x300."
+    },
+    {
+      "severity": "OPEN craft",
+      "description": "Shaded hair remains a cap with sparse wire details and beard coverage remains painted with a hard rear boundary. The coordinated face improvement does not resolve complete-head quality."
+    },
+    {
+      "severity": "limitation",
+      "description": "Separate exposed eye patches have finite forward/outward normals and shared saved coordinate transforms. Blink is shader aperture masking; eyelids do not physically move. Clay suppresses pigment and grooming deliberately and is not another saved person."
+    }
+  ],
+  "browserExecution": "Primary only: 1/1 PASS11.2s; not independently rerun",
+  "limits": [
+    "Three selected saved people; no all-trait/population or perceptual recognition proof",
+    "Artistic coefficients, no measured or demographic fitting",
+    "No production adoption, UI/lifecycle/persistence/current-suite/release acceptance"
+  ],
+  "fullAppearanceAccepted": false
+}

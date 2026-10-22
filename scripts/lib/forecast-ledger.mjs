@@ -39,7 +39,9 @@ export function recordAndResolve(root, { forSession, forecastTotal, actuals = []
   for (const e of ledger.entries) {
     if (e.actual == null && bySession.has(e.forSession)) {
       e.actual = bySession.get(e.forSession);
-      e.absErr = Math.abs(e.actual - e.forecast);
+      // A forecast that was never a number has no error to score: `actual - null`
+      // is the whole actual, which is how five zero forecasts read as MAE 498.9.
+      e.absErr = Number.isFinite(e.forecast) ? Math.abs(e.actual - e.forecast) : null;
       e.resolvedAt = new Date().toISOString().slice(0, 10);
     }
   }
@@ -61,7 +63,7 @@ export function recordAndResolve(root, { forSession, forecastTotal, actuals = []
 
 /** Rolling MAE over the last n resolved forecasts. Returns null when <min samples. */
 export function rollingMae(ledger, n = 10, min = 3) {
-  const resolved = ledger.entries.filter(e => e.absErr != null).slice(-n);
+  const resolved = ledger.entries.filter(e => e.absErr != null && !e.void).slice(-n);
   if (resolved.length < min) return { mae: null, samples: resolved.length };
   const mae = resolved.reduce((s, e) => s + e.absErr, 0) / resolved.length;
   return { mae: Math.round(mae * 10) / 10, samples: resolved.length };

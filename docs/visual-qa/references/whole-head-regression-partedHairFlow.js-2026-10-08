@@ -1,0 +1,30 @@
+import {hairPartPosition} from './hairArrangement.js';
+const n=v=>Math.round(v*100)/100;
+const bounded=(v,f,lo,hi)=>Number.isFinite(v)?Math.max(lo,Math.min(hi,v)):f;
+const textureLift={straight:0,wavy:2,curly:4,coily:6};
+// Artistic cut geometry from saved controls, not ancestry or prevalence data.
+export function partedHairFrontOutline(a){
+ const half=59*bounded(a.faceWidth,1,.7,1.3),lift=Object.hasOwn(textureLift,a.hairTexture)?textureLift[a.hairTexture]:0;
+ const top=(a.hairstyle==='swept'?40:50)-lift,part=hairPartPosition(a)??.5,px=120+80*part;
+ return `M${n(160-half-2)} 137 C${n(151-half)} 104 ${n(151-half)} 75 ${n(160-half*.72)} 61 C${n(160-half*.3)} ${n(top-7)} ${n(160+half*.54)} ${n(top-5)} ${n(160+half*.92)} 68 C${n(166+half)} 85 ${n(167+half)} 115 ${n(160+half+2)} 138 L${n(160+half*.84)} 117 C${n(160+half*.77)} 96 ${n(px+22)} 76 ${n(px)} 79 C${n(px-21)} 83 ${n(160-half*.82)} 92 ${n(160-half*.85)} 118Z`;
+}
+export function partedHairFrontFiber(a,side,t,scale=1){
+ const half=59*bounded(a.faceWidth,1,.7,1.3),part=hairPartPosition(a)??.5,px=120+80*part;
+ const lift=Object.hasOwn(textureLift,a.hairTexture)?textureLift[a.hairTexture]:0;
+ const top=(a.hairstyle==='swept'?40:50)-lift;
+ const rootY=top+5+t*30,rootX=px+(1-t)*4;
+ const endX=160+side*(half+1-11*t),endY=83+48*t;
+ // Fibers leave the part along the rounded crown and turn toward the temple.
+ const bend=(side<0?-1:1)*(a.hairTexture==='straight'?0:a.hairTexture==='wavy'?2:4);
+ const curve=bounded(a.hairCurvature,1,.65,1.45),wave=bounded(a.hairWaveScale,1,.65,1.5),residual=bounded(scale,1,.5,1.5);
+ const amp=(a.hairTexture==='coily'?4.2:a.hairTexture==='curly'?3.3:a.hairTexture==='wavy'?1.8:.1)*curve*residual;
+ const cycles=(a.hairTexture==='coily'?7:a.hairTexture==='curly'?4:2)*wave;
+ const points=Array.from({length:33},(_,i)=>{const u=i/32,v=1-u;
+  const x=v**3*rootX+3*v*v*u*(px+side*25)+3*v*u*u*(endX-side*11)+u**3*endX;
+  const y=v**3*rootY+3*v*v*u*(rootY-9)+3*v*u*u*(endY-36+bend)+u**3*endY;
+  return [x,y+Math.sin(u*Math.PI*2*cycles)*Math.sin(Math.PI*u)*amp];
+ });
+ let d=`M${n(points[0][0])} ${n(points[0][1])}`;
+ for(let i=1;i<points.length-1;i++){const p=points[i],q=points[i+1];d+=` Q${n(p[0])} ${n(p[1])} ${n((p[0]+q[0])/2)} ${n((p[1]+q[1])/2)}`;}
+ return d+` L${n(endX)} ${n(endY)}`;
+}

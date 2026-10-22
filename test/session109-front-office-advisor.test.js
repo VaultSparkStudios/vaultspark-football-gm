@@ -229,7 +229,10 @@ test("renderAdvisorCard escapes a hostile team name and carries the contract cla
   const packet = clone(realPacket());
   packet.authority.teamName = "<script>alert('x')</script> Stallions";
   packet.currentCommand.choices[0].label = "Buy <b>now</b>";
-  const advice = buildAdvice(packet, { lastWeekAdvice: buildAdvice(packet), lastWeekReceipt: receipt({ choiceId: "hold" }) });
+  const previous = buildAdvice(packet);
+  const disagreeingChoice = packet.currentCommand.choices.find(choice => choice.id !== previous.call.choiceId)?.id;
+  assert.ok(disagreeingChoice, 'fixture supplies a choice different from the actual recommendation');
+  const advice = buildAdvice(packet, { lastWeekAdvice: previous, lastWeekReceipt: receipt({ choiceId: disagreeingChoice }) });
   const html = renderAdvisorCard(advice);
   assert.ok(!html.includes("<script>"));
   assert.ok(html.includes("&lt;script&gt;alert(&#39;x&#39;)&lt;/script&gt; Stallions"));

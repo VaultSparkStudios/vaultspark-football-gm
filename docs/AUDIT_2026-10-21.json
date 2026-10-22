@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-21",
+  "scope": "character-realism-and-family-consistency",
+  "source": "current-worktree",
+  "status": "implementation-verified-release-pending",
+  "items": [
+    {
+      "id": "character-anatomy",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Improve surface materials"
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Improve measured torso, collar, material and inspect actual dossier"
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Replace full anatomical asset pipeline"
+        }
+      },
+      "shipped": false,
+      "slug": "character-anatomy",
+      "status": "open",
+      "premises": [
+        {
+          "claim": "Current receipt retains incomplete whole-person craft",
+          "adapter": "file-content",
+          "target": "docs/visual-qa/LATEST.json",
+          "pattern": "blockingDefectsOpen",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 1,
+      "title": "Measured character anatomy, materials and athletic movement",
+      "category": "visual craft",
+      "tier": "HIGH",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 13.5,
+      "premise": "Current receipt retains incomplete whole-person craft",
+      "executionEvidence": "Selected stylized L2 implementation and independent source/pixel review pass.105 preserved reviewed captures,19 current source hashes,36 fresh exact matching body/family frames; current strict blink/crown/memory and six actual movement modes checked. Exact candidate hosted CI/release still pending."
+    },
+    {
+      "id": "family-identity",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Accept shared family category"
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Persist validated family authority and varied resemblance with generation and save tests"
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Full multigeneration family gameplay"
+        }
+      },
+      "shipped": false,
+      "slug": "family-identity",
+      "status": "open",
+      "premises": [
+        {
+          "claim": "Identity draws demographics per individual seed",
+          "adapter": "file-content",
+          "target": "src/domain/playerIdentity.js",
+          "pattern": "identity-demographic",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 2,
+      "title": "Persistent family identity with individual resemblance",
+      "category": "identity continuity",
+      "tier": "HIGH",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 5,
+      "priority": 15,
+      "premise": "Identity draws demographics per individual seed",
+      "executionEvidence": "Saved family authority, shared category/heritage/pigment band, individual face seeds and visible generated relationship pass actual dossier/reload checks. Eight fresh family frames exactly match inspected images. Import/draft/source checks pass; final exact candidate release remains pending."
+    },
+    {
+      "id": "character-release",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Run focused checks"
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Current acceptance, staging, production, rollback and closeout"
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Cross-device performance campaign"
+        }
+      },
+      "shipped": false,
+      "slug": "character-release",
+      "status": "open",
+      "premises": [
+        {
+          "claim": "Current project reports nonpassing suite",
+          "adapter": "file-content",
+          "target": "context/PROJECT_STATUS.json",
+          "pattern": "nonpassing",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 3,
+      "title": "Verify and promote the exact character candidate",
+      "category": "release verification",
+      "tier": "HIGH",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 3,
+      "priority": 7.5,
+      "premise": "Current project reports nonpassing suite",
+      "executionEvidence": "Current canonical versioned golden3/3, Studio376/376, corrected browser checks/public surfaces9/9 and final local build pass; independent source review found no blocker. Full270-case exact candidate CI, stable staging and production acceptance are pending."
+    }
+  ],
+  "schemaVersion": "1.1",
+  "session": 118,
+  "project": "franchise-architect-football",
+  "initialReview": "# Character realism audit — 2026-10-21\n\nScope: improve the visible football characters, preserve measured height/weight, keep related fictional people consistent, and verify the candidate before deployment. This is a fresh audit of the current worktree. Existing S117 work remains partial; historical checks do not certify this candidate.\n\n## Findings and selected outcomes\n\n| Rank | Tier | Category | Finding and implementation | Effort | Impact | Innovation | Acceptance |\n|---|---|---|---|---|---|---|---|\n| 1 | P0 | UI / immersion | The actual dossier's torso is a flat-looking cylinder, with a broad straight shoulder line and abrupt sleeve boundaries. Refine the measured envelope with anatomical front/back relief, a shaped collar and cloth shading; retain saved landmarks and motion articulation. | 4h | 9 | 6 | Inspect before/after desktop/mobile dark/light, front/profile and six motions; finite mesh and measurement regression checks. |\n| 2 | P0 | Features / identity | `createPlayerIdentity` samples each person independently and has no family authority. Add explicit family inheritance, shared category and heritage, individually varied faces and a persistent shared pigmentation anchor. Never infer kinship from surnames. | 3h | 9 | 5 | Related generation shares background and resembles its anchor; unrelated generation unchanged; save restoration stable; ratings independent. |\n| 3 | P0 | Quality / release | Current visual receipt explicitly retains one craft defect; core/runtime acceptance is stale/nonpassing. Verify the current complete candidate, fix regressions at source, deploy staging and inspect the exact artifact before production. | 4h | 10 | 3 | Current suite and browser evidence; hash-bound visual receipt; staging and production readback with rollback. |\n\n## Nine-axis assessment\n\nFeatures/depth: family authority is absent. UI/UX: real screenshot confirms simplified torso and material transitions. Feedback: existing motion selector and measurement guides provide usable feedback. Engagement/immersion: individualized characters can strengthen attachment to roster decisions. Intelligence: deterministic local generation fits this offline game; external AI calls are unnecessary. Security: new identity input requires validation before mutation. Speed/organization: reuse the current cached body rig and renderer; avoid runtime mesh rebuilds. Token/cost: static procedural rendering adds no hosted inference cost. Competitive context: no new market claims made; this audit is bounded to the requested character work.\n\n## Game-loop review\n\nLoop tightness: roster → dossier → development decisions already connects character inspection to management. Progression: measured body and saved identity must remain stable across seasons and restoration. Session engagement: six movement studies exist and their browser test passes 3/3 on the baseline. Retention: family resemblance can make careers recognizable. Soul fidelity: preserve the static browser franchise simulator and fictional-player identity. Next actions are the three selected outcomes above; no unrelated game-economy expansion is selected.\n\n## Execution log\n\n- Baseline: actual dossier browser tests passed 3/3. Inspected `output/playwright/character-final-desktop-dark-run.png`; torso and sleeve contour defects confirmed.\n- Implementation and release acceptance pending.\n- Current progress: explicit family authority reaches real draft cohorts and the actual dossier. Shared category, heritage and pigment anchors persist; faces remain individual. Import conflicts and stale retired-anchor chronology found in independent review are fixed. No football RNG or physical/gameplay attributes change when family links are added.\n- Current production geometry adds measured torso relief, garment collar/panels and swing-foot articulation with contact/floor limits. All six movement modes retain the cached character model.\n- Checks: 23 focused tests pass; current character browser tests 3/3 and family dossier browser test 1/1 pass; Pages build passes. `docs/visual-qa/CHARACTER_PROGRESS_2026-10-21.json` binds 64 before/after captures and 14 source files; only five listed images have been visually inspected so far. Full visual acceptance remains false.\n- Broader core run remains live and diagnostic because later source edits occurred after it started. It must not be used as exact-candidate release proof.\n",
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser franchise game",
+    "rubric": "SIL v3 ten categories /1000",
+    "staging": "independent existing stable origin",
+    "source": "S118 fresh current-worktree review"
+  },
+  "gameLoopReview": {
+    "loopTightness": "roster→dossier→development decisions",
+    "progression": "saved identity through careers",
+    "sessionEngagement": "six athletic studies",
+    "retention": "recognizable people and relatives",
+    "soulFidelity": "fictional players in a static browser simulator",
+    "evidence": "Scoped character audit; no new retention-cohort or market claim."
+  }
+}

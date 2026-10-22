@@ -98,12 +98,39 @@ function careerMilestones(position, row = {}) {
 
 export function buildPlayerProfileNarrative(profile = {}) {
   const player = profile.player || {};
+  const relative = player.profile?.familyRelationship;
+  const familyFacts = relative && ['son','brother'].includes(relative.relation) && typeof relative.anchorName === 'string'
+    ? [`Family: ${relative.relation} of ${relative.anchorName}`] : [];
   const position = player.position || "ATH";
   const identity = POSITION_IDENTITY[position] || { noun: "roster competitor", craft: "turning preparation into dependable snaps" };
   const category = PRIMARY_CATEGORY[position] || "snaps";
   const career = profile.career?.[category] || {};
+  if (player.isDraftProspect) {
+    const readiness = player.overall == null ? "not yet available" : `${player.overall} overall`;
+    const potential = player.potential == null ? "not yet available" : `${player.potential} potential`;
+    return {
+      archetype: identity.noun,
+      phase: "draft-prospect",
+      headline: `Draft Prospect ${titleCase(identity.noun)}`,
+      bio: `${player.name || "This prospect"} is being evaluated for ${identity.craft}. Scouting estimates: ${readiness}, ${potential}. These estimates do not establish a true ceiling or guarantee development.`,
+      signature: [],
+      facts: [
+        ...familyFacts,
+        `Age ${player.age ?? "—"} · Draft class ${player.draftYear ?? "—"}`,
+        `Scouted readiness: ${readiness}`,
+        `Scouted potential: ${potential}`,
+        "Detailed skills and development outlook remain unconfirmed.",
+        player.injury?.type ? `Medical watch: ${player.injury.type}` : "Unsigned prospect; not on an active roster."
+      ],
+      achievements: ["Awaiting entry into the league"],
+      milestones: []
+    };
+  }
+  // The runtime projects the same positional keys used to grade this player.
+  // Older standalone profile payloads keep their existing fallback behavior.
+  const relevantRatings = Array.isArray(player.positionRatingKeys) ? new Set(player.positionRatingKeys) : null;
   const ratings = Object.entries(player.ratings || {})
-    .filter(([, value]) => Number.isFinite(Number(value)))
+    .filter(([key, value]) => (!relevantRatings || relevantRatings.has(key)) && Number.isFinite(Number(value)))
     .sort((a, b) => Number(b[1]) - Number(a[1]) || a[0].localeCompare(b[0]));
   const signature = ratings.slice(0, 3).map(([name, value]) => ({ name: titleCase(name), value: Number(value) }));
   const best = signature[0] || { name: "Competitive Readiness", value: player.overall || 0 };
@@ -144,6 +171,7 @@ export function buildPlayerProfileNarrative(profile = {}) {
     : "Currently healthy and available for the active rotation.";
 
   const facts = [
+    ...familyFacts,
     `Age ${age || "—"} · ${player.experience || 0} years of experience · ${seasonCount} recorded season${seasonCount === 1 ? "" : "s"}`,
     `Signature trait: ${best.name} ${best.value}`,
     `Career production: ${careerLine(position, career)}`,

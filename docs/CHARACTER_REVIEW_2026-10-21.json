@@ -1,0 +1,86 @@
+{
+  "session": 118,
+  "status": "scoped-source-and-visual-review-passed-final-release-evidence-pending",
+  "sourceReviewer": "independent-fresh-release-review",
+  "visualReviewer": "independent-character-review",
+  "sourceVerdict": "PASS",
+  "findingsResolved": [
+    "Conflicting imported family authority and pigment bounds reject before restore.",
+    "Retired anchors without reliable birth chronology are excluded.",
+    "Modern canthal returns fully cover eye globes at closure; strict18view check passes.",
+    "Torso caps match tessellation and contour closure; shader batching preserves torso uniform boundaries."
+  ],
+  "provenanceNote": "Relatives retain original naming-generation context; it is not a fresh derivation of their linked surname or background.",
+  "visualScope": "Selected L2 stylized character improvement. Simplified shoulders, materials and procedural hair remain limitations; no photorealism or whole-tissue-mass claim.",
+  "reviewCorrection": "A reported blank-panel defect was withdrawn after reopening the exact individual images; all three views were present and no source change was warranted.",
+  "completeReleaseAcceptance": false,
+  "pending": [
+    "Exact candidate hosted CI: six canonical shards and complete270-case browser inventory",
+    "Independent stable staging artifact and actual browser verification",
+    "Matching Pages/backend production receipts and rollback/readback",
+    "Canonical closeout"
+  ],
+  "latestReview": {
+    "observedAt": "2026-10-22T05:49:41.939Z",
+    "verdict": "PASS within selected stylized L2 scope",
+    "renderer": "default64x96 skin; reduced redundant canthal subdivisions; preserved1.65MB budget",
+    "headFocused": {
+      "passed": 19,
+      "total": 19
+    },
+    "correctedBrowser": {
+      "passed": 5,
+      "total": 5
+    },
+    "strictBlink": {
+      "closedViews": 18,
+      "exposedGlobePixels": 0,
+      "exactReopening": true
+    },
+    "preservedCurrentCaptures": 41,
+    "faceReportSha256": "88a4a82f5f855429a39d3c41238d90fae63c9603e6c7abaeb50808d04b282aa6",
+    "mandatoryVisualFixesFound": 0,
+    "limits": [
+      "Stylized facial shading",
+      "Procedural hair",
+      "No physical-device frame-rate proof",
+      "No complete physical-tissue mass proof"
+    ],
+    "completeReleaseAcceptance": false
+  },
+  "candidateReview": {
+    "observedAt": "2026-10-22T07:15:30.844Z",
+    "verdict": "Implementation-ready; release unverified",
+    "reviewer": "independent fresh-context read-only reviewer",
+    "blockingSourceFindings": 0,
+    "sourceHashesVerified": 19,
+    "captureHashesVerified": 105,
+    "freshIdenticalBodyFamilyFrames": 36,
+    "canonicalGolden": {
+      "passed": 3,
+      "total": 3,
+      "originalHistoricalFixtureUnchanged": true
+    },
+    "studio": {
+      "passed": 376,
+      "total": 376
+    },
+    "publicSurfaces": {
+      "passed": 9,
+      "total": 9
+    },
+    "fullBrowser": {
+      "diagnostic": {
+        "declared": 266,
+        "passed": 235,
+        "failed": 28,
+        "skipped": 3
+      },
+      "allFailuresTargetedRechecked": true,
+      "currentDeclared": 270,
+      "exactCandidateFull": "pending"
+    },
+    "limits": "Selected L2 stylized character improvement. Simplified shoulders, materials and procedural hair remain limitations; no photorealism or whole-tissue-mass claim.",
+    "releaseAccepted": false
+  }
+}

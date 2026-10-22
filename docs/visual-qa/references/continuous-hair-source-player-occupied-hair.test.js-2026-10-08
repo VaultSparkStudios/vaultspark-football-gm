@@ -1,0 +1,29 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {buildHeadMesh3d} from '../public/lib/playerHead3d.js';
+const source=fs.readFileSync(new URL('../docs/visual-qa/references/production-occupied-hair-before-2026-10-08.js',import.meta.url),'utf8').replace("'./playerSurfaceLighting.js'",JSON.stringify(new URL('../public/lib/playerSurfaceLighting.js',import.meta.url).href));
+const {buildHeadMesh3d:baseline}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+const colors={skin:'#8e634b',scalp:'#29221b',brow:'#29221b',beard:'#29221b',iris:'#624329',mouth:'#93604f'};
+const values=(m,p)=>Array.from(new Set(m.indices.subarray(p.firstIndex,p.firstIndex+p.indexCount))).map(i=>Array.from(m.vertices.subarray(i*10,i*10+10)));
+test('occupied groups preserve finite geometry, saved person and existing maximum mesh budget in all 56 combinations',()=>{
+ let maxBytes=0;
+ for(const hairstyle of ['shaved','buzz','fade','crew','waves','short-curls','coils','afro','side-part','swept','long','locs','braids','receding'])for(const hairTexture of ['straight','wavy','curly','coily']){
+  const a={hairstyle,hairTexture,hairDensity:1,hairLength:2,hairStrandWidth:1.5,hairCurvature:1.45,hairWaveScale:1.5,facialHair:'full-beard'},raw=structuredClone(a),m=buildHeadMesh3d(a,colors,{identitySeed:'max-style-proof',headOnly:true}),bytes=m.vertices.byteLength+m.indices.byteLength;
+  assert.ok(bytes<1650000,hairstyle+' '+hairTexture+' '+bytes);assert.ok(m.vertices.length/10<65535);assert.ok(m.vertices.every(Number.isFinite));assert.deepEqual(a,raw);maxBytes=Math.max(maxBytes,bytes);
+ }console.log(JSON.stringify({maximumCases:56,maxBytes}));
+});
+test('all non-hair surfaces remain exact for every changed style and six grooming choices',()=>{
+ for(const hairstyle of ['afro','coils','short-curls','locs','braids'])for(const facialHair of ['clean','stubble','mustache','goatee','short-beard','full-beard']){
+  const a={hairstyle,facialHair,hairTexture:'coily',faceLength:1.09,faceWidth:.88},old=baseline(a,colors,{identitySeed:'same-person',headOnly:true}),next=buildHeadMesh3d(a,colors,{identitySeed:'same-person',headOnly:true});
+  assert.deepEqual(next.anatomy,old.anatomy);assert.deepEqual(next.eyeDepths,old.eyeDepths);
+  for(const p of next.parts.filter(p=>p.name!=='scalp-hair'&&!p.name.startsWith('hair-lock-')))assert.deepEqual(values(next,p),values(old,old.parts.find(q=>q.name===p.name)),hairstyle+' '+p.name);
+ }
+});
+test('cluster volume and density are independently saved while grouped grooming conceals loose texture',()=>{
+ const make=a=>buildHeadMesh3d(a,colors,{identitySeed:'fixed-person',headOnly:true});
+ const base={hairstyle:'afro',hairDensity:.8,hairStrandWidth:.8,hairCurvature:1};
+ const a=make(base),wide=make({...base,hairStrandWidth:1.4}),sparse=make({...base,hairDensity:.3});
+ assert.notDeepEqual(a.vertices,wide.vertices);assert.ok(a.parts.length>sparse.parts.length);
+ for(const hairstyle of ['locs','braids'])assert.deepEqual(make({hairstyle,hairTexture:'straight',hairCurvature:.65,hairWaveScale:.65}).vertices,make({hairstyle,hairTexture:'coily',hairCurvature:1.45,hairWaveScale:1.5}).vertices);
+});

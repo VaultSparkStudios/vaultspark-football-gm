@@ -1,0 +1,968 @@
+{
+  "schemaVersion": 1,
+  "baselineVersion": "s118-v2",
+  "status": "reviewed-deterministic-baseline; final candidate release evidence pending",
+  "original": {
+    "file": "test/fixtures/football-golden-master.json",
+    "sha256": "4901d3487f119b9fc7485e139135a663738c32062668f7eaa66dc32517de1190",
+    "preservedUnchanged": true
+  },
+  "current": {
+    "file": "test/fixtures/football-golden-master.s118-v2.json",
+    "sha256": "d9b95a052a21e85b789a42d0d7320d55e7b50427f58f923fb5bc8ef832066b26"
+  },
+  "scenarios": [
+    {
+      "id": "drive-20260306-BUF",
+      "seed": 20260306,
+      "mode": "drive",
+      "controlledTeamId": "BUF",
+      "seasons": 3
+    },
+    {
+      "id": "play-4113-CHI",
+      "seed": 4113,
+      "mode": "play",
+      "controlledTeamId": "CHI",
+      "seasons": 3
+    }
+  ],
+  "repeat": {
+    "startedAt": "2026-10-22T06:12:49.747Z",
+    "finishedAt": "2026-10-22T06:46:13.852Z",
+    "identicalObjects": true,
+    "differences": [],
+    "sourceFiles": 193,
+    "sourceUnchanged": true,
+    "reportSha256": "f952d0460ac62de7cd93a434406dac8d7696e3acc3dae01c415801af7995d2b0",
+    "actualPayloadFieldsIndependentlyVerified": 26
+  },
+  "projection": {
+    "selectorOnlyChange": true,
+    "canonicalizationAndExcludedFieldsUnchanged": true,
+    "allOriginalSectionsRetained": true,
+    "computeModuleBeforeSha256": "397eb6bd27720ad4845d00f4da2ebe60473f7a1ae4bbc37193e6a7994547f665",
+    "computeModuleAfterSha256": "092e94899b08b3302e1592044d883915978e9a7556d42ae69e2fc53f0e9246f8"
+  },
+  "review": {
+    "reviewer": "independent-release-review + primary",
+    "verdict": "PASS for baseline adoption; not production acceptance",
+    "ownerFix": "No duplicate or expired active mandate in any of four observed terminal payloads.",
+    "postOwnerFixDiff": "Only commitments/event/news/dashboard changed versus the immediately preceding pair; football outcomes, players, RNG and financial sections stayed exact."
+  },
+  "numericGateEvidence": {
+    "core": "723/723",
+    "runtime": "1057/1057",
+    "long": "3/3",
+    "realism": "9/9 including simulated decade",
+    "limitations": "These runs preceded the final candidate; several global-source wrappers correctly refused a current green receipt. Contract hit90-minute limit. Final exact-candidate CI remains required; no tolerance, projection field, scenario or realism ceiling was removed."
+  },
+  "sourceHashes": {
+    "scripts/golden-master.mjs": "397eb6bd27720ad4845d00f4da2ebe60473f7a1ae4bbc37193e6a7994547f665",
+    "src/adapters/persistence/browserSaveStore.js": "b41e37dfaf8cc7328efa603ac05aacddf4b7fbad1be3f98954b42e67dda81353",
+    "src/adapters/persistence/fileSaveStore.js": "c068e5476f3a7e4e5de5a4c657bd71510674a176ea499ce059f872b8db1e8d23",
+    "src/adapters/persistence/hybridSaveStore.js": "a39c082678bbf4fcd505b8411cdbb32bb5c03aa8d96333099c7dde19e9bd464f",
+    "src/adapters/persistence/indexedDbSaveStore.js": "d025bb91e8c2c09e5fdd00df36499198b2850f64418158b19d116c5cc91221dc",
+    "src/adapters/persistence/jsonLayouts.js": "ad74c2748791f529e7d9b49851dca246be5c666a5a11fe2a561b5e633db4f435",
+    "src/adapters/persistence/saveStoreShared.js": "8881f866cae3ee2e4d5ba0a6706453dcaa87a4719b5f0967a646c1d13394f8da",
+    "src/adapters/persistence/snapshotCodec.js": "15e0996f3b8660a8f144d1f0f9e9e54b4201ea88de2e4dfa2e1eb3a53c270903",
+    "src/app/api/localApiRuntime.js": "d01ae657f3781996a5610892def880f5c909f30a779bb0c327821c8b0194d939",
+    "src/app/devCors.js": "d449fd89df9e4b0ea06281db0d913db3ce0ab21d0b47239ac2c84930fb8f4d3f",
+    "src/community/aggregateCommunitySnapshot.js": "16071bb3f474f0f48bd5f40a2f3e58b52922d5a7b92994c635162c0a59c4d3e6",
+    "src/community/communityStore.js": "caef3b7fcb9c3be83d1487370ee77fa07a8b38beff9fe46324651123de9cb3a4",
+    "src/community/eventContract.js": "98d9501c64fe206481d070c657f38c5236835ae6ef71469c640db8b4b7ddd909",
+    "src/community/extractCommunityEvents.js": "d12f9a19aef23dc7d6e52a49ce7e0c8ca59dfbcfac8c6861d017840900740ec3",
+    "src/community/server.js": "5e1046ddd565b522c4af126ca326799613c46064b4e33556518b1bb4e5672e4d",
+    "src/config.js": "aef7fa9a74de17414e4a7adb200d4556bf8638de409d76d595b1fd12e4585e5d",
+    "src/config/leagueSetup.js": "e0b20a368abee80ead0faf48c29820d52565e0d4ced294ba57c2d37d28157c88",
+    "src/data/nflElevationSalary.js": "ba5e378c60627a7bf9ffd8be8e4833c903d2f941c833d620dda98bc102b84b0e",
+    "src/data/nflEliteDensityBaseline.js": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d",
+    "src/data/nflPostseasonSalary.js": "fcf4c04325de0ddfb926881a876c6213af29f1d456d32e14e267f3440a6a9267",
+    "src/data/nflPracticeSalary.js": "87a9ceaf9dc9009c595889ca7b602c81fdd0fc43c53b8b2c4f878af3a7299a54",
+    "src/data/nflSalaryCap.js": "c0f32cc7f21707c7812eb4bad2394ed9d9b1b33a74a09bedef203e1c6a73f40d",
+    "src/data/nflSalaryMinimum.js": "4ead3c363a28e537dc49076f7c1a33b9055afc140116d92a8e78d5fc637f7a44",
+    "src/data/pfrAdapter.js": "1813bc06622043df34c7ba1c5694c0e395e1f685a6f3223e4853c4af857fb109",
+    "src/data/playerDemographicBaseline.js": "cc25ff5a65990b33aad5881bbc6f5ba1eea69b2350aacf3859217d3765afc294",
+    "src/data/playerFamilyHeritage.js": "2b016c14dd6098bbe98c476a9a0084f5dbb91ea057aa885be898595684bcafe8",
+    "src/data/scripts/buildOfficialNfl2025Baseline.js": "a549e81b0c1319198b5f0e6ddbcc5f944cd449a232c16b74056ff8a0e9ed645c",
+    "src/data/scripts/buildRealismProfile.js": "1c67ee84213eb6e9ad6a0bfe6d0573a381f601d812bf9c510543f9919a416c10",
+    "src/data/scripts/buildStatmuseBaseline.js": "b8c0e196fd53dc58c4e9aa5f5a8e520e0d1f82c0d5a64a795fc8b01b2caad5fa",
+    "src/data/scripts/pfrEtl.js": "9981c85f51dbdf8a95c3c523c7cf66e6c66427ffd9457bd7eb5eb88313569f74",
+    "src/data/scripts/verifyRealism.js": "2377ff90b70680e138fc4dc3cedd3721ecb5aaac239cc13205cc2fe527459fae",
+    "src/domain/activeInactiveHistory.js": "0edc5f38b1d4f7810071837e1c99cc882a1008fb0498452960b240cf4d2da51e",
+    "src/domain/admittedInjuryContinuation.js": "348f0715f17bfee498ac76b99c281a46ae2c1404c19855476555fba78468f945",
+    "src/domain/admittedInjuryPayroll.js": "05bf1c1041947a031d856ddd3da5cd0fdf1e3c63dab3e5887b77755c7f71b426",
+    "src/domain/admittedPostseasonRecovery.js": "c96bd53ba247ccaaaa9ce579332097821c9df65fb4e2eee7be6c89468a7c6d86",
+    "src/domain/annualElevationInjuryResolution.js": "6f62481afa07315cab10d9391d5f6b3fdfc970d5e8cd5b118b2cf14b655e26da",
+    "src/domain/capCarryover.js": "de0824f3edb85ad66491c010a5ca8c1df93f398cfc35e9f495aa33ed12308524",
+    "src/domain/contracts.js": "6548a4b0b8d5cf496beb9fca160a4e9317f8b0c89269898a4667f69c51550568",
+    "src/domain/developmentEnvironment.js": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1",
+    "src/domain/draftCohort.js": "02c84980926cfbe6d9976d6dcf3f35c76bd9c01e6fe9a5cfb805bc042050b8cf",
+    "src/domain/earnedPracticeCap.js": "4076592967650994bf7895e132ee9a9f92c90bac9287e0a21f0f9f4ed91187a4",
+    "src/domain/elevationInjuryPay.js": "e161792266aa35fdbb0454cd139e47dab55c604d1cf7fb5da9f9f490ac3433a0",
+    "src/domain/facilityInvestment.js": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb",
+    "src/domain/footballGameReference.js": "4c8e8b9b2d827807ec7b7798a4bd6710e7e99d85ab5eb3f8fd78bf323bdc157a",
+    "src/domain/injuryClaimNegotiation.js": "3bf9a66372ef6fc95ea1abd2e1c69c600071e0efc96ee09d23b7e45bfc359ce6",
+    "src/domain/injurySalaryClaims.js": "2c37e32bd013865a3e9974fdf7113afbf228ff551ad1dc061fefba3120d42141",
+    "src/domain/leagueIdentity.js": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40",
+    "src/domain/livingPotential.js": "5c1d0a367ae07a541f5dedadaec5267203bc6fbdafffba759787f92ce7957ce9",
+    "src/domain/offseasonMedicalCalendar.js": "8adfc519c3a64fba8e207835f8105d50e04996c1677f05ca0a3e38bb010e4714",
+    "src/domain/operatingStatement.js": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381",
+    "src/domain/ownerEconomy.js": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec",
+    "src/domain/pensionService.js": "9cf7c4c4110f08bedc61b669bd32005d6ad6c067e441fb3cd88e5615071c7015",
+    "src/domain/playerDemographicModel.js": "7d1f12af1ad37b8b8926b5bebce33f4f4113d7e19929d768aca40ccff59fc370",
+    "src/domain/playerFactory.js": "616f136e07074d33fa64f21732f50b16c1e22ff9ca8b71f57b9dc22083db47b3",
+    "src/domain/playerFamilyIdentity.js": "7a319e232c58c2c8f50477fb96d81287b2769214f2e8377010eed6707bac5d4d",
+    "src/domain/playerIdentity.js": "c25aea313929cf1dd9c1890f675a754b2b1f8c501aada635afbf513bb07ff7f7",
+    "src/domain/playerMeasurements.js": "68156e5be124649c7549c02dcbad706fb56dd9cbc95fc52f6bdeb0dcd1cef90e",
+    "src/domain/playerService.js": "865728e63fc6f5725e8c4966efbe928c18cac8e1927ad1220c8ef04308b2f74e",
+    "src/domain/playerVisualIdentity.js": "aee4524633f194c8125221cf7af971015686716d6b7d4618d5a6f0f17cebc6af",
+    "src/domain/playerWorkouts.js": "41714bb1c2f9f2018d6b13d96d70ad8af6788b66ae739e1065d3ef5c80e286d4",
+    "src/domain/postseasonMedicalClock.js": "01850182d8b292c9cdec395f193a83a2bda739f86ae778c3f10499fed9a107a9",
+    "src/domain/potentialReversion.js": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87",
+    "src/domain/practiceContractTerm.js": "c904bcd76c56d6e000c95a1fc68d04c843fbf90b839c2bfdfb9aecb5f46f0238",
+    "src/domain/practiceContracts.js": "26b6420a346b868edeaba4a3ba1f10a4bab27b56ccc09579fa8c8917a20ed934",
+    "src/domain/practiceSquadEligibility.js": "46bd2f55349cdb6035e5fbab6290caa6b63599d0484887325121ab09640d1e4c",
+    "src/domain/preRolloverMedicalCalendar.js": "e474d4b3157835e38f4eeaa653645e821923e9bf2894ae731590de84168d7f47",
+    "src/domain/ratings.js": "6bf4854d8aa7c71dc12bdc400cc6469c5bc0c2776a6f93b7b371e7c63d8a98dd",
+    "src/domain/regularInjuryAccrual.js": "ba833af35c66d48a21132f49fe8ee5b3edb936cd3d4d7f41f0b4f095df07fc13",
+    "src/domain/regularMedicalRecovery.js": "190b0893fd6a499cb4f3f559a0b85fbe2509eef5fa6a137a1f49de7a38c49bf2",
+    "src/domain/reserveLists.js": "3b156889266bd3d0917266e834ce11a29cc6281bd246f0b65b0f7f2986dc5f9e",
+    "src/domain/standardElevations.js": "18e684b4c18491bbebda7b3e08776e7b0cb5b45c079d4d36b04c968ed7655c53",
+    "src/domain/talentDistribution.js": "cbc4d5b0cc7ad80350c833603c6f4aebdcf173959daa10f6abda791d77f96050",
+    "src/domain/teamFactory.js": "0a9b96e90ae387b07e2429e727a1306144ef4c98712339597b568cd8ebe152ad",
+    "src/domain/teamLabel.js": "40b964d54436a4fc91afb83715a7fc866488fed172f5fd1d633cd7974996173c",
+    "src/domain/ticketDemand.js": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174",
+    "src/domain/undraftedFreeAgency.js": "b8962e175408952348a57faa2a55adc23171dda7931ac30d82fb82e16477a1b6",
+    "src/engine/adaptiveDifficulty.js": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763",
+    "src/engine/aiTeamStrategy.js": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020",
+    "src/engine/architectFocusReview.js": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704",
+    "src/engine/architectMasteryPortfolio.js": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4",
+    "src/engine/architectThesis.js": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0",
+    "src/engine/beatReporter.js": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6",
+    "src/engine/capAlerts.js": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03",
+    "src/engine/capCompliance.js": "30370a229f12980503ad255d5489e4ec552fa387a593894f91a316a21f2c0168",
+    "src/engine/coachingMarket.js": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011",
+    "src/engine/coachingTree.js": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73",
+    "src/engine/continuityLedger.js": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896",
+    "src/engine/cpuStandardElevations.js": "e0e0adb0bbd5c0a6a11f8e54b7c9551c6376ec382c96ab8708bf3f2ef2ca36a3",
+    "src/engine/cpuTradeMarket.js": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2",
+    "src/engine/depthChartUsage.js": "7a6022425e0f801c8cf2778957a66c27f41230099b43bcadc650b37723888ee1",
+    "src/engine/draftCombine.js": "68c9f6b2928c7f513849becbdfb2c407911dec67edce7080f51cc14c61cc639b",
+    "src/engine/facilityMarket.js": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097",
+    "src/engine/fanSentiment.js": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58",
+    "src/engine/gameDayRoster.js": "45a2cd077f888261ec8d6198271f3ef6e31bc7f68b77d1adaf25db392065aa36",
+    "src/engine/gameSimulator.js": "a42c6ed86bb2732f23a7713b11e994c3fcc61fc6dacd86bd86d918d9fd0b0ea5",
+    "src/engine/gmArchetype.js": "403bf6342211551353411038896ac1dddbb902a76886c65ab7573efcac836a23",
+    "src/engine/gmDecisionAuthority.js": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1",
+    "src/engine/gmDecisionConsequences.js": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a",
+    "src/engine/gmLegacyScore.js": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3",
+    "src/engine/injurySystem.js": "949d909053d844c91badadc9aad7e99f71241f33e3abb022c637902b053787d1",
+    "src/engine/leagueSimulator.js": "a0829b9e01a34e7a398ba4f5925ccc033eae9526ce48f808802a663740e3c29f",
+    "src/engine/matchupEdge.js": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b",
+    "src/engine/narrativeEvents.js": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc",
+    "src/engine/offseasonDevelopmentReport.js": "471d7720dc1e5d7405cb32a3e0e9d0127ff7a0794137ecd61ef6c3d8894d9705",
+    "src/engine/offseasonSimulator.js": "848dcd193a1a484b0e1330d074f30f3af56298f94c9e5f0eba57f370be2d3209",
+    "src/engine/onClockTradeMarket.js": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7",
+    "src/engine/overtime.js": "76b1026e34db2abfa084c4a5047c8750d9031c72af5caf2f9ad2fc8268788d64",
+    "src/engine/ownerConfidence.js": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b",
+    "src/engine/playCalling.js": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23",
+    "src/engine/playerAgentAI.js": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d",
+    "src/engine/pressConference.js": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f",
+    "src/engine/pressRoom.js": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa",
+    "src/engine/rivalFrontOffice.js": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76",
+    "src/engine/rivalGmPersona.js": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8",
+    "src/engine/rivalTradeOffers.js": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7",
+    "src/engine/rivalryDNA.js": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962",
+    "src/engine/schedule.js": "91a7a994aa673efcc416597f86d37d27723da6301230d1bcfa76ccb8a2f6a6ec",
+    "src/engine/seasonSimulator.js": "0d78babe22ab2ccf9d4f0e54c3fde04c91aafe5c0907e6922570d04c907cac49",
+    "src/engine/situationalCalls.js": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db",
+    "src/engine/speedrunChallenge.js": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb",
+    "src/engine/staffGeneration.js": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038",
+    "src/engine/standings.js": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2",
+    "src/engine/timeCapsule.js": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61",
+    "src/engine/veteranMentorship.js": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b",
+    "src/engine/weeklySimulator.js": "13b0b14246b19bf8ec6c8a24bd22cc2ae9b82e0fc5865da3b6898c23189c4c65",
+    "src/engine/whatIfReplay.js": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a",
+    "src/index.js": "d764b521e6f650456fa0a4fb2bf6dc34776b045fcf0248b6add95461db9a804f",
+    "src/runtime/GameSession.js": "d25af1bf04a7af424fe76456596e8317d0e311d11dec8411eb9d787bfd12fb6d",
+    "src/runtime/advanceWeekCommand.js": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007",
+    "src/runtime/applyLeagueSetup.js": "c42e4a2fc320a2160f340f12f0f044e0b38fb9443e47954a15d49f305d93f957",
+    "src/runtime/architectLedger.js": "00ad683337da86d0d760bff5a2770ae36a7551754d2748f5df0a750f0f01eb48",
+    "src/runtime/bootstrap.js": "96ae7089f30ebbf7c0eb70a4484d5e110a978c8c372e144c01781323f7724db5",
+    "src/runtime/franchiseAuthority.js": "316f0518c1b007282c5b63a8314715c62e1fe57a9b910c688ce14e067d43f0a2",
+    "src/runtime/handlers/architectThesisHandler.js": "f4e591fbe4c76b9583e6229ce55fefdf202a7cf9c2f810c2038ea097a7a249cb",
+    "src/runtime/handlers/franchiseMomentHandler.js": "dd9104a2e6597bb6276e720e50f850df23fcadb295ea050de23653d0469b315a",
+    "src/runtime/handlers/tradeOffersHandler.js": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2",
+    "src/runtime/identityMetadataSnapshot.js": "dfc7d5afcfd0e253350c030f690d4c539c039dbc7d2c1c507bb64684156432ad",
+    "src/runtime/measurementProvenanceSnapshot.js": "0667e36bfece87825a4513b28abc0363383a6b9b0f904e82ad4f1030af10fc5e",
+    "src/runtime/modLoader.js": "a91ee27ea50bec41bf2a87b104313411c95ca0a715a78936a807263ac16073f5",
+    "src/runtime/modules/sessionModules.js": "5fae311b47f28f8a0cd0614fa456c6605e1407a9c1e9ea29f9d62f391790eb63",
+    "src/runtime/multiplayerSession.js": "83edf347a528230f71c533cf18564350129554a3d0a551f564a52ed45a145ef2",
+    "src/runtime/pensionServiceSnapshot.js": "ed70718607ece3bf8ca17f2d7be8e2454fd8dabcdb303e04849fe4508593e4fd",
+    "src/runtime/persistence.js": "fd5e978e9f40995d20a92dbc2c7f4a708fa1e9ff666ede002590e4fadc29d757",
+    "src/runtime/profileLoader.js": "7984d0270aa2ad8dee2dea7e8761d41d60c9d10f5b69afdc1f2ceccd6559497b",
+    "src/runtime/rewindManager.js": "288c6c602f8bf34e84183bedcce5bb534bdbe38bf6e57274de4be5191b047959",
+    "src/runtime/saveStore.js": "9cbccee481afa3a2ed5b72801ad89d6ac035360b1e61bbeb792294d08f58363c",
+    "src/runtime/services/CoachingService.js": "b2abaab4d884b1cc700b7ba3289618bd1efd653c50053899f5e17e005535fbaf",
+    "src/runtime/services/ContractService.js": "9f2309bbcd0013ad6fdac87618c575ce69417735fed37e1eeb1d69c4e4ef5b97",
+    "src/runtime/services/TradeService.js": "4a37748e4940e7cc4fe7920ff8fd6cdc36a5fa45c88e02fa38918eaebdf854be",
+    "src/runtime/services/index.js": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6",
+    "src/runtime/services/tradePlan.js": "b245a3f8c32d033105e40a7bf7d4890634f6441f24215e9084e5878e95501e04",
+    "src/runtime/snapshotMigration.js": "46894a2b069fb4ce3c2b54ecb1717ee893c5e9cd5d485de95f7f6bd587cb3c00",
+    "src/runtime/statSnapshot.js": "5cc463a1929836c5548340ec860cc7dd858d0aa81f1fc5ca8a29c03313dcbf86",
+    "src/runtime/weekResultProjection.js": "54f8dc1512afbd6dcc1dc46d8e3b884faafe9f17357444636ff026203bc67117",
+    "src/runtime/weeklyTactic.js": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f",
+    "src/server.js": "3693a7b18698ef271eb7b0e747a9d5181c38039d4f613bee7e7a2ac55c232c4b",
+    "src/server/httpHardening.js": "b319b0dd3cb9037351bb10d41165766709a084568010ae4fa9b7fa645395eafb",
+    "src/server/routes/commissioner.js": "6a164294b22415e65b96d6d701dea86babcd86391f65a396d4f86ac31d22db6a",
+    "src/server/routes/contracts.js": "71f10428681823c0688ca07f47f64b76ee05fbb670ef63d5027aaad23781f2c7",
+    "src/server/routes/diagnostics.js": "22e3f321e10a094945f01e2706b362fc68302e8a1673ceb06ba36a965ace0c7f",
+    "src/server/routes/draft.js": "5d95e66b9c5c28fb4d49ee0cb81a0ec69cafddfdcff83535d2bd259f54c3714d",
+    "src/server/routes/franchiseOffice.js": "52e49d22838f18e1ab145f1d1e05f265966a1eaa0288cd38db31b6efc711bb12",
+    "src/server/routes/freeAgency.js": "40fc2a1d8067cb070998a804fa296d39e77870db6144ed5bff717a08d658c934",
+    "src/server/routes/league.js": "c67280817b863c274cfae292184b6935e83b8be1e141e76f2d74aad3d7e035d6",
+    "src/server/routes/roster.js": "e6be7ff150bfbac5ca20a05650835fdc2bdaf1d50a926249d0f7135978f615a1",
+    "src/server/routes/saves.js": "ca8f132cfebe9822239e4468b824cc003c2797aded9520287449d6a18f703b03",
+    "src/server/routes/stats.js": "984c18d74fef5f0049ce9301eb474f178a50646c6d5330a2b8cbf2dff6ce2226",
+    "src/server/routes/trades.js": "6e463749f87e2695ffd61d0c8ac514a6e1f23f7c5bd56c34b6292a1b7b85c082",
+    "src/sport/calendarContract.js": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179",
+    "src/sport/competitionContract.js": "9f0df43d7c7801344993d3492a0012965331ab4b955f32e650704596add0cc76",
+    "src/sport/football/calendar.js": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8",
+    "src/sport/football/competition.js": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55",
+    "src/sport/football/index.js": "b72d5900f838814b7ad04ba726d8def5e2073bd7f1c0e47bb5a7dccf0a7e1e84",
+    "src/sport/football/postseason.js": "6007428021bb6258e375f4a9a7b8ac5787a0992436f155970130090fd7d6c318",
+    "src/sport/football/rules.js": "334b007f5f991bb44c9f2355b1fcd9ad443605ed2d7f939613b2f6772ccc67ad",
+    "src/sport/football/statSchema.js": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f",
+    "src/sport/matchEngineContract.js": "51b17a8052bbf0ed9e87618b20a0a940eea5aa6e6a8bf9e9bc7e278778a8fb9b",
+    "src/sport/matchReadiness.js": "3046c80ccd2be7228a958f4e87f6663005217e6c34a4855ec336eca38ff10aa5",
+    "src/sport/registry.js": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5",
+    "src/stats/applyGameStats.js": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f",
+    "src/stats/approximateValue.js": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486",
+    "src/stats/gameImpact.js": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5",
+    "src/stats/gmReportCard.js": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca",
+    "src/stats/leagueLens.js": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f",
+    "src/stats/profiles/pfrCareerWeightedProfile.js": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0",
+    "src/stats/profiles/pfrRecentWeightedProfile.js": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866",
+    "src/stats/progressionParity.js": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1",
+    "src/stats/realismCalibrator.js": "c7b747175495c06191ecc27add45fbb25ebea64dc1c9872614559c0061f0bb32",
+    "src/stats/scoreline.js": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b",
+    "src/stats/statBook.js": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683",
+    "src/stats/teamRecord.js": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51",
+    "src/utils/rng.js": "f6a657984fd920ab21f879a41d82d44ca35026b9aacac3f4ac8f69f402979b8e",
+    "src/utils/rngStreams.js": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181"
+  },
+  "attributions": [
+    {
+      "id": "identity-and-talent",
+      "sections": [
+        "league.players",
+        "league.retiredPlayers",
+        "league.pendingDraft",
+        "league.leagueId",
+        "league.coachingTree"
+      ],
+      "rationale": "Reviewed player talent/headroom, service, naming, appearance/family data and derived player/staff IDs. Initial football RNG context changed before S118; family presentation itself does not consume football RNG."
+    },
+    {
+      "id": "annual-economy",
+      "sections": [
+        "league.capLedger",
+        "league.capModel",
+        "league.financialYear",
+        "league.rulesModelVersion",
+        "league.settings",
+        "league.teamCapOverride",
+        "league.facilityCapitalReceipts"
+      ],
+      "rationale": "Reviewed salary/cap rules, year rollover, deadline week10, affordability and facility accounting. Both final years remain2029."
+    },
+    {
+      "id": "medical-and-participation",
+      "sections": [
+        "league.activeInactiveHistory",
+        "league.reserveGameHistory",
+        "league.offseasonMedicalCalendar",
+        "league.preRolloverMedicalCalendar",
+        "league.rehabReceipts"
+      ],
+      "rationale": "Reviewed actual participation, service and explicit elapsed recovery ledgers; numeric injury/payroll bars remain intact."
+    },
+    {
+      "id": "roster-eligibility",
+      "sections": [
+        "league.depthCharts",
+        "league.rosterDepthShortfalls",
+        "league.rosterShortfall"
+      ],
+      "rationale": "Reviewed eligibility and affordability inputs plus downstream depth/shortfall diagnostics."
+    },
+    {
+      "id": "acquisition",
+      "sections": [
+        "league.compFormulaLedger",
+        "league.compensatoryPicks",
+        "league.draftHistory",
+        "league.draftPicks",
+        "league.freeAgencyMoves",
+        "league.offseasonPipeline",
+        "league.inboundTradeOffers",
+        "league.rivalGmMemory",
+        "league.transactionLog",
+        "league.transactionSeq"
+      ],
+      "rationale": "Reviewed current player IDs, eligibility, cap funding and resulting market/draft transactions. BUF rival memory is the concrete2026week19 KCoutbid for LukeCox."
+    },
+    {
+      "id": "development",
+      "sections": [
+        "league.developmentReport"
+      ],
+      "rationale": "Reviewed revised talent headroom/progression accounting."
+    },
+    {
+      "id": "owner-and-stewardship",
+      "sections": [
+        "league.gmCommitmentReceipts",
+        "league.gmCommitments",
+        "league.gmLegacy",
+        "league.gmStewardshipReports"
+      ],
+      "rationale": "Reviewed mandate resolution and stewardship writers. A newly reached duplicate-owner-mandate defect was fixed and tested before this baseline; both repeat payloads retain one resolved mandate and matching receipt per scenario."
+    },
+    {
+      "id": "football-outcomes",
+      "sections": [
+        "league.awards",
+        "league.champions",
+        "league.gameArchive",
+        "league.history",
+        "league.teams",
+        "statBook.teamSeasonArchive",
+        "seasonTable.defense",
+        "seasonTable.kicking",
+        "seasonTable.passing",
+        "seasonTable.punting",
+        "seasonTable.receiving",
+        "seasonTable.rushing",
+        "session.position"
+      ],
+      "rationale": "Reviewed downstream changed talent, eligible participants, overtime and progression. Both complete three-season scenario outputs and terminal RNG position are still strictly hashed, not excluded."
+    },
+    {
+      "id": "derived-narrative",
+      "sections": [
+        "league.continuityLedger",
+        "league.eventLog",
+        "league.fanSentiment",
+        "league.narrativeLog",
+        "league.newsFeed",
+        "league.newsLog",
+        "league.playerMilestoneReceipts",
+        "league.pressRoom",
+        "league.rivalries",
+        "league.timeCapsule",
+        "league.timeCapsuleLedger",
+        "dashboard"
+      ],
+      "rationale": "Reviewed existing narrative/dashboard writers consuming the changed game, market, owner and player records."
+    }
+  ],
+  "changes": [
+    {
+      "difference": "drive-20260306-BUF: dashboard changed",
+      "section": "dashboard",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.activeInactiveHistory added",
+      "section": "league.activeInactiveHistory",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.awards changed",
+      "section": "league.awards",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.capLedger changed",
+      "section": "league.capLedger",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.capModel added",
+      "section": "league.capModel",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.champions changed",
+      "section": "league.champions",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.coachingTree changed",
+      "section": "league.coachingTree",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.compFormulaLedger changed",
+      "section": "league.compFormulaLedger",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.compensatoryPicks changed",
+      "section": "league.compensatoryPicks",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.continuityLedger changed",
+      "section": "league.continuityLedger",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.depthCharts changed",
+      "section": "league.depthCharts",
+      "attribution": "roster-eligibility"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.developmentReport changed",
+      "section": "league.developmentReport",
+      "attribution": "development"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.draftHistory changed",
+      "section": "league.draftHistory",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.draftPicks changed",
+      "section": "league.draftPicks",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.eventLog changed",
+      "section": "league.eventLog",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.facilityCapitalReceipts changed",
+      "section": "league.facilityCapitalReceipts",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.fanSentiment changed",
+      "section": "league.fanSentiment",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.financialYear added",
+      "section": "league.financialYear",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.freeAgencyMoves changed",
+      "section": "league.freeAgencyMoves",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.gameArchive changed",
+      "section": "league.gameArchive",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.gmCommitmentReceipts added",
+      "section": "league.gmCommitmentReceipts",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.gmCommitments added",
+      "section": "league.gmCommitments",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.gmLegacy changed",
+      "section": "league.gmLegacy",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.gmStewardshipReports changed",
+      "section": "league.gmStewardshipReports",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.history changed",
+      "section": "league.history",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.inboundTradeOffers changed",
+      "section": "league.inboundTradeOffers",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.leagueId changed",
+      "section": "league.leagueId",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.narrativeLog changed",
+      "section": "league.narrativeLog",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.newsFeed changed",
+      "section": "league.newsFeed",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.newsLog changed",
+      "section": "league.newsLog",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.offseasonMedicalCalendar added",
+      "section": "league.offseasonMedicalCalendar",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.offseasonPipeline changed",
+      "section": "league.offseasonPipeline",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.pendingDraft changed",
+      "section": "league.pendingDraft",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.playerMilestoneReceipts changed",
+      "section": "league.playerMilestoneReceipts",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.players changed",
+      "section": "league.players",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.preRolloverMedicalCalendar added",
+      "section": "league.preRolloverMedicalCalendar",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.pressRoom changed",
+      "section": "league.pressRoom",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.rehabReceipts changed",
+      "section": "league.rehabReceipts",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.reserveGameHistory added",
+      "section": "league.reserveGameHistory",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.retiredPlayers changed",
+      "section": "league.retiredPlayers",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.rivalGmMemory added",
+      "section": "league.rivalGmMemory",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.rivalries changed",
+      "section": "league.rivalries",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.rosterDepthShortfalls added",
+      "section": "league.rosterDepthShortfalls",
+      "attribution": "roster-eligibility"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.rosterShortfall changed",
+      "section": "league.rosterShortfall",
+      "attribution": "roster-eligibility"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.rulesModelVersion added",
+      "section": "league.rulesModelVersion",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.settings changed",
+      "section": "league.settings",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.teamCapOverride changed",
+      "section": "league.teamCapOverride",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.teams changed",
+      "section": "league.teams",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.timeCapsule changed",
+      "section": "league.timeCapsule",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.timeCapsuleLedger changed",
+      "section": "league.timeCapsuleLedger",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.transactionLog changed",
+      "section": "league.transactionLog",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: league.transactionSeq changed",
+      "section": "league.transactionSeq",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "drive-20260306-BUF: seasonTable.defense changed",
+      "section": "seasonTable.defense",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: seasonTable.kicking changed",
+      "section": "seasonTable.kicking",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: seasonTable.passing changed",
+      "section": "seasonTable.passing",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: seasonTable.punting changed",
+      "section": "seasonTable.punting",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: seasonTable.receiving changed",
+      "section": "seasonTable.receiving",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: seasonTable.rushing changed",
+      "section": "seasonTable.rushing",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: session.position changed",
+      "section": "session.position",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "drive-20260306-BUF: statBook.teamSeasonArchive changed",
+      "section": "statBook.teamSeasonArchive",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: dashboard changed",
+      "section": "dashboard",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.activeInactiveHistory added",
+      "section": "league.activeInactiveHistory",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "play-4113-CHI: league.awards changed",
+      "section": "league.awards",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: league.capLedger changed",
+      "section": "league.capLedger",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "play-4113-CHI: league.capModel added",
+      "section": "league.capModel",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "play-4113-CHI: league.champions changed",
+      "section": "league.champions",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: league.coachingTree changed",
+      "section": "league.coachingTree",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "play-4113-CHI: league.compFormulaLedger changed",
+      "section": "league.compFormulaLedger",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.compensatoryPicks changed",
+      "section": "league.compensatoryPicks",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.continuityLedger changed",
+      "section": "league.continuityLedger",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.depthCharts changed",
+      "section": "league.depthCharts",
+      "attribution": "roster-eligibility"
+    },
+    {
+      "difference": "play-4113-CHI: league.developmentReport changed",
+      "section": "league.developmentReport",
+      "attribution": "development"
+    },
+    {
+      "difference": "play-4113-CHI: league.draftHistory changed",
+      "section": "league.draftHistory",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.draftPicks changed",
+      "section": "league.draftPicks",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.eventLog changed",
+      "section": "league.eventLog",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.facilityCapitalReceipts changed",
+      "section": "league.facilityCapitalReceipts",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "play-4113-CHI: league.fanSentiment changed",
+      "section": "league.fanSentiment",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.financialYear added",
+      "section": "league.financialYear",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "play-4113-CHI: league.freeAgencyMoves changed",
+      "section": "league.freeAgencyMoves",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.gameArchive changed",
+      "section": "league.gameArchive",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: league.gmCommitmentReceipts added",
+      "section": "league.gmCommitmentReceipts",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "play-4113-CHI: league.gmCommitments added",
+      "section": "league.gmCommitments",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "play-4113-CHI: league.gmLegacy changed",
+      "section": "league.gmLegacy",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "play-4113-CHI: league.gmStewardshipReports changed",
+      "section": "league.gmStewardshipReports",
+      "attribution": "owner-and-stewardship"
+    },
+    {
+      "difference": "play-4113-CHI: league.history changed",
+      "section": "league.history",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: league.inboundTradeOffers changed",
+      "section": "league.inboundTradeOffers",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.leagueId changed",
+      "section": "league.leagueId",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "play-4113-CHI: league.narrativeLog changed",
+      "section": "league.narrativeLog",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.newsFeed changed",
+      "section": "league.newsFeed",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.newsLog changed",
+      "section": "league.newsLog",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.offseasonMedicalCalendar added",
+      "section": "league.offseasonMedicalCalendar",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "play-4113-CHI: league.offseasonPipeline changed",
+      "section": "league.offseasonPipeline",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.pendingDraft changed",
+      "section": "league.pendingDraft",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "play-4113-CHI: league.playerMilestoneReceipts changed",
+      "section": "league.playerMilestoneReceipts",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.players changed",
+      "section": "league.players",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "play-4113-CHI: league.preRolloverMedicalCalendar added",
+      "section": "league.preRolloverMedicalCalendar",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "play-4113-CHI: league.pressRoom changed",
+      "section": "league.pressRoom",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.rehabReceipts changed",
+      "section": "league.rehabReceipts",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "play-4113-CHI: league.reserveGameHistory added",
+      "section": "league.reserveGameHistory",
+      "attribution": "medical-and-participation"
+    },
+    {
+      "difference": "play-4113-CHI: league.retiredPlayers changed",
+      "section": "league.retiredPlayers",
+      "attribution": "identity-and-talent"
+    },
+    {
+      "difference": "play-4113-CHI: league.rivalries changed",
+      "section": "league.rivalries",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.rosterDepthShortfalls added",
+      "section": "league.rosterDepthShortfalls",
+      "attribution": "roster-eligibility"
+    },
+    {
+      "difference": "play-4113-CHI: league.rosterShortfall changed",
+      "section": "league.rosterShortfall",
+      "attribution": "roster-eligibility"
+    },
+    {
+      "difference": "play-4113-CHI: league.rulesModelVersion added",
+      "section": "league.rulesModelVersion",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "play-4113-CHI: league.settings changed",
+      "section": "league.settings",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "play-4113-CHI: league.teamCapOverride changed",
+      "section": "league.teamCapOverride",
+      "attribution": "annual-economy"
+    },
+    {
+      "difference": "play-4113-CHI: league.teams changed",
+      "section": "league.teams",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: league.timeCapsule changed",
+      "section": "league.timeCapsule",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.timeCapsuleLedger changed",
+      "section": "league.timeCapsuleLedger",
+      "attribution": "derived-narrative"
+    },
+    {
+      "difference": "play-4113-CHI: league.transactionLog changed",
+      "section": "league.transactionLog",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: league.transactionSeq changed",
+      "section": "league.transactionSeq",
+      "attribution": "acquisition"
+    },
+    {
+      "difference": "play-4113-CHI: seasonTable.defense changed",
+      "section": "seasonTable.defense",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: seasonTable.kicking changed",
+      "section": "seasonTable.kicking",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: seasonTable.passing changed",
+      "section": "seasonTable.passing",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: seasonTable.punting changed",
+      "section": "seasonTable.punting",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: seasonTable.receiving changed",
+      "section": "seasonTable.receiving",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: seasonTable.rushing changed",
+      "section": "seasonTable.rushing",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: session.position changed",
+      "section": "session.position",
+      "attribution": "football-outcomes"
+    },
+    {
+      "difference": "play-4113-CHI: statBook.teamSeasonArchive changed",
+      "section": "statBook.teamSeasonArchive",
+      "attribution": "football-outcomes"
+    }
+  ]
+}

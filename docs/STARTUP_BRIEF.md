@@ -1,28 +1,34 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-06 (Session 116 closeout) -->
+<!-- generated-at: 2026-10-22 (Session 118 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: a6417cd9214b3b96 -->
-<!-- session-authority: committed=S116 · SIL=S116 · status=S116 · handoff=S116; divergent=false -->
+<!-- genius-authority-fingerprint: 9a598fbae0569828 -->
+<!-- session-authority: committed=S118 · SIL=S117 · status=S118 · handoff=S117; divergent=true -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 116 closeout · 2026-10-06.
+> **Fast-boot brief** — generated at Session 118 closeout · 2026-10-22.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
 
 ```
+╔══ SESSION AUTHORITY ═══════════════════════════════════════════╗
+║  ✓ Monotonic next session: S119; no source moved backward.       ║
+║  committed=S118 · SIL=S117 · status=S118 · handoff=S117          ║
+║  SIL may lag a verified receipt; closeout will reconcile score.  ║
+╚════════════════════════════════════════════════════════════════╝
+
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 117 · 2026-10-06 · BUILDER MODE                         ║
+║  Session 119 · 2026-10-22 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S116) - WHAT SHIPPED ══════════════════════════╗
-║  S116 began the multi-sport platform: a football golden master   ║
+╔══ LAST SESSION (S118) - WHAT SHIPPED ══════════════════════════╗
+║  S118 is active: character, family and save-size fixes implemen  ║
 ║  Tests  Fresh direct six-shard suite 1702/1702, exit0; Clean te  ║
 ║  Deploy 10/10; https://github.com/VaultSparkStudios/vaultspark-  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -34,50 +40,50 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 7d · refresh required              ║
+║  Profile · game · cache stale 23d · refresh required             ║
 ║  ✓ Lifecycle authority · local FORGE · registry FORGE            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    858/1000   ████████████████████░░░░   86%                     ║
-║    SIL v3.0  ·  Avg3: 854  ·  Velocity 4→                        ║
-║    Active 0d · closeout 2d · source: newest SIL/status/handoff   ║
+║    655/1000   ███████████████░░░░░░░░░   66%                     ║
+║    SIL v3.0  ·  Avg3: 790.3  ·  Velocity 0→                      ║
+║    Active 0d · closeout 14d · source: newest SIL/status/handoff  ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        97    ██████████  —        →                ║
-║    Alignment         96    ██████████  —        →                ║
-║    Momentum          95    ██████████  —        →                ║
-║    Engagement        72    ███████░░░  —        →                ║
-║    Process Qual      88    █████████░  —        →                ║
-║    Coherence         88    █████████░  ········ →                ║
-║    Security          82    ████████░░  ········ →                ║
-║    Ecosystem         76    ████████░░  ········ →                ║
-║    Capital           70    ███████░░░  ········ →                ║
-║    Automation        94    █████████░  ········ →                ║
+║    Dev Health        55    ██████░░░░  —        →                ║
+║    Alignment         75    ████████░░  —        →                ║
+║    Momentum          60    ██████░░░░  —        →                ║
+║    Engagement        50    █████░░░░░  —        →                ║
+║    Process Qual      55    ██████░░░░  —        →                ║
+║    Coherence         70    ███████░░░  ········ →                ║
+║    Security          75    ████████░░  ········ →                ║
+║    Ecosystem         60    ██████░░░░  ········ →                ║
+║    Capital           90    █████████░  ········ →                ║
+║    Automation        65    ███████░░░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 116 ═══════════════════════════╗
-║  Shipped:  Multi-sport platform Phase 1 (football behind sport   ║
+╔══ WHERE WE LEFT OFF  ·  Session 118 ═══════════════════════════╗
+║  Shipped:  S118 character visuals reviewed across desktop/mobil  ║
 ║  Tests:    1752/1752 passing  ·  Deploy: 10/10; https://github.  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ██████░░░░░░░░░░░░░░░░░░   25% used                          ║
-║     49,603 / 200,000 tok  ·  unknown  ·  heuristic-stale         ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
+║     46,565 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
 ║  ⚠  Tests         1752/1752 passing (2026-10-02) · STALE — run   ║
-║  ✓  Velocity      4   ·  Debt: →                                 ║
+║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⛔  IGNIS         41119 FORGE  ·  27d old                        ║
-║  ✓  Truth         green  ·  Genome: unmeasured                   ║
+║  ⛔  IGNIS         41119 FORGE  ·  43d old                        ║
+║  ⛔  Truth         current candidate verification in progress  ·  ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
 ║  ✓  Entropy       0.118  (healthy)                               ║
@@ -86,8 +92,8 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-10-06  ✓                 ║
-║  ✓  Cost          Max flat-rate · $0.13/7d notional · no alarm   ║
+║  ⛔  Doctor        11/12 (92%)  ·  1 failing                      ║
+║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -104,16 +110,22 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
-║  Velocity:   ▁▁▁▁▁  4→  (last 5 sessions)                        ║
-║  Intent:     100% achieved last 5                                ║
-║  Streak:     ✓ 10 consecutive achieved-intent sessions           ║
+║  Velocity:   ▁▁▁▁▁  0→  (last 5 sessions)                        ║
+║  Intent:     80% achieved last 5                                 ║
+║  Streak:     — (last intent not achieved)                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-10-01_SESSION113.json                ║
+║  ✓ cache source: AUDIT_2026-10-21.json                           ║
 ║                                                                  ║
-║  #18 · LOW · server-route-split                                  ║
-║  Split src/server.js route table                                 ║
+║  #1 · HIGH · character-anatomy                                   ║
+║  Measured character anatomy, materials and athletic movement     ║
+║                                                                  ║
+║  #2 · HIGH · family-identity                                     ║
+║  Persistent family identity with individual resemblance          ║
+║                                                                  ║
+║  #3 · HIGH · character-release                                   ║
+║  Verify and promote the exact character candidate                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -121,5 +133,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 116 closeout · 2026-10-06*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 118 closeout · 2026-10-22*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

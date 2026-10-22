@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import fs from "node:fs/promises";
 
 // S109 — the Desk carries the Front Office Advisor and the First Season
 // Contract; the league-wide tables moved to the League tab. This spec proves
@@ -97,6 +98,10 @@ test("the Desk shows the advisor's call and the first-season contract; the Leagu
 });
 
 test("a player can work the trade desk for the contract without waiting for a rival call", async ({ page }) => {
+  const capturePhase = process.env.TRADE_EVALUATION_CAPTURE_PHASE || "after";
+  if (capturePhase === "before") await page.route("**/app.js", async route =>
+    route.fulfill({ contentType: "text/javascript", body: await fs.readFile(".cache/trade-evaluation-before/app.js.txt", "utf8") }));
+  await page.addInitScript(() => localStorage.setItem("vsfgm:runtime-mode", "server"));
   await createLeague(page);
   await page.click('[data-testid="tab-transactions"]');
   await expect(page.locator("[data-trade-team-crest] svg")).toBeVisible();
@@ -105,11 +110,42 @@ test("a player can work the trade desk for the contract without waiting for a ri
   const opponent = await page.locator("#tradeTeamB option").evaluateAll((options, controlled) =>
     options.map((option) => option.value).find((value) => value && value !== controlled), teamA);
   await page.locator("#tradeTeamB").selectOption(opponent);
+  await waitGameReady(page);
   await expect(page.locator("#tradeTeamARosterTable button[data-trade-player-id]").first()).toBeVisible();
   await page.locator("#tradeTeamARosterTable button[data-trade-player-id]").first().click();
   await page.locator("#tradeTeamBRosterTable button[data-trade-player-id]").first().click();
+  const responsePromise = page.waitForResponse(response =>
+    new URL(response.url()).pathname === "/api/trade/evaluate" && response.request().method() === "POST");
   await page.click("#evaluateTradeBtn");
-  await expect(page.locator("#tradeEvalText")).not.toContainText("Use evaluate", { timeout: 30_000 });
+  const response = await responsePromise;
+  const evaluation = await response.json();
+  expect(evaluation.ok).toBe(false);
+  expect(evaluation.reasonCode).toBe("cap-failed");
+  if (capturePhase === "before") {
+    await expect(page.locator("#statusChip")).toContainText("Trade failed cap check");
+    await expect(page.locator("#tradeEvalText")).toContainText("Use evaluate");
+  } else {
+    await waitGameReady(page);
+    await expect(page.locator("#tradeEvalText")).toContainText("Cannot execute");
+    await expect(page.locator("#tradeEvalText")).toContainText("remaining cap room");
+  }
+  await fs.mkdir("output/playwright", { recursive: true });
+  for (const [viewport, width, height] of [["desktop", 1440, 1000], ["mobile", 390, 844]]) {
+    await page.setViewportSize({ width, height });
+    const fullView = page.locator("#mlFullViewBtn");
+    if (viewport === "mobile") {
+      await expect(fullView).toBeVisible();
+      await fullView.click();
+      await expect(page.locator("#mobileLoopOverlay")).toBeHidden();
+    }
+    for (const theme of ["dark", "light"]) {
+      await page.evaluate(async theme => (await import("/lib/themeCustomizer.js")).applyTheme(theme), theme);
+      await page.locator("#tradeEvalText").scrollIntoViewIfNeeded();
+      await page.screenshot({ path: `output/playwright/s117-trade-evaluation-${capturePhase}-${viewport}-${theme}.png` });
+    }
+  }
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.click('[data-testid="tab-overview"]');
-  await expect(page.locator('#firstSeasonContract [data-objective="answer-the-phone"]')).toHaveAttribute("data-done", "true");
+  await expect(page.locator('#firstSeasonContract [data-objective="answer-the-phone"]'))
+    .toHaveAttribute("data-done", capturePhase === "before" ? "false" : "true");
 });

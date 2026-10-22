@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "round": 1,
+  "reviewedAt": "2026-10-08T08:49:00.183770+00:00",
+  "reviewer": "independent studio_reviewer",
+  "verdict": "FIX",
+  "scope": "Continuous texture SVG front/profile fallback, normalized strand resources, accepted recipe combinations and legacy output preservation only.",
+  "primaryReceipt": "docs/visual-qa/PLAYER_CONTINUOUS_FALLBACK_PRODUCTION_2026-10-08.json",
+  "primaryReceiptSha256": "265055643226802bc0b3787ebf5a0beea91f63175c78f50c3dbb4975b72d0566",
+  "sourceHashes": {
+    "public/lib/continuousHairTexture.js": "63ee8ee9657d0fd1965e919ca8893d71d81318ff9244d89e5b3fed4a49304ed3",
+    "public/lib/partedHairFlow.js": "d3460fe30217eb67eed58ba4287be9555181f3326a11216fd0c00c455c700d35",
+    "public/lib/longHairFlow.js": "4cdd4c2a3f2fff6709072a9f4ec64dee66bf4585ede6463f58ae055fa71ca0ba",
+    "public/lib/croppedHairVolume.js": "71b3064332890e6edd1f51f2bfc2d9f749a7a18d8a667db4566252dc3ac71d3e",
+    "public/lib/playerPortraitFace.js": "397b6450f02a8ca80842fc44380d16c37df8fd4d437498306c02cece7d6b70d2",
+    "public/lib/playerSideAppearance.js": "6fe363c14175e3857739f5ea7df8f6044909f2a1bc3806a22f22d8e1543d6c60",
+    "public/lib/playerHead3d.js": "411f18467f14162b2fab3fed737f6243568316b0b3b33c220d2d849d687af5f7",
+    "public/lib/playerHeadImage.js": "8f2a0ca7e64dbc75bc08cf8ab03f03ad5905ce4e42e1fbe2918a4b395f9302d7",
+    "public/lib/appearancePalette.js": "7e065e4085bc8544062643b57c5272e5e6d8d5a9cadf0e48a80e090deb48a305",
+    "public/lib/hairArrangement.js": "696367efde09ac238552ab1b5802c0ba4e05659f624bdbf10e07863f053aec26",
+    "src/domain/playerIdentity.js": "c192777620fc80dba87b308f741f1559d8bef866e8a059f05da33c738dfeba71",
+    "src/domain/playerVisualIdentity.js": "1f8e7c260756da9a255981afded0db5e96445205631407a1517d1374367d16cb",
+    "test/player-continuous-hair-fallback.test.js": "3d404edcb00bacc7969357ad5464d8da48bd875e5cbbb40c5a6fb25e9c284e34",
+    "test/player-hair-arrangement.test.js": "3a4a1171e86597d7d13b99076ca0a4e2a556d9662138095c880015e0171ed8f0",
+    "test/player-whole-head-form.test.js": "a4783be539eda137edf9881c962f3f22881bc0838ae0ad517575cb96eff538a5",
+    "test/player-side-grooming.test.js": "23729ebf1a4f27cc4e3f6ea65edde97f28a48105972426491f454174ff3006f4",
+    "test/player-structured-hair.test.js": "cd3ca9fff84316cc7a85bc10a319fe979e5c5a28e76994bd3a782b6ce053bdd3",
+    "tests-ui/player-continuous-hair-fallback.spec.js": "e987e4e7851736b059e842293b3e87a60ce47715fa3e56d3677dae9363237d75",
+    "tests-ui/player-hair-arrangement.spec.js": "2028c9337e57205f8b9f6bb041cf3a8d493098e593843f78be2151d36310ab91",
+    "tests-ui/player-legal-hair-gallery.spec.js": "f32015fb2c188fc80ab5cf5a1ffe195ec347b1380d530fdb58a2228d40c831f8",
+    "tests-ui/player-shared-head-production.spec.js": "838285640552937078e5bc46d5b9211272e2ab85ef45b62c0cbe98ec7ae6d859"
+  },
+  "bindingVerification": {
+    "frozenFiles": 87,
+    "sources": 21,
+    "inputs": 5,
+    "evidence": 1,
+    "captures": 60,
+    "allFrozenHashesMatch": true,
+    "allCurrentSourceHashesMatch": true,
+    "builtPairs": 10,
+    "builtHashesAndNormalizedContentsMatch": true,
+    "terminalChunk": "e225d2"
+  },
+  "findings": [
+    {
+      "id": "P2-optional-fine-recipe",
+      "severity": "P2",
+      "file": "public/lib/playerPortraitFace.js",
+      "locations": [
+        "closeHairTexture",
+        "croppedHairTexture"
+      ],
+      "problem": "A valid saved continuous-hair recipe without optional fineFaceRecipe emits empty fiber paths. Continuous path detection sets d empty regardless of modern status, but instanced use markup only occurs inside the modern branch. The accepted older/non-fine branch then emits d=\"\".",
+      "reproduction": "ensure new saved identity; remove only profile.fineFaceRecipe; resolve appearance; render headOnly front buzz/crew/afro using continuous recipe. These are valid recipe combinations, not malformed raw DTOs.",
+      "observed": {
+        "buzzEmptyPaths": 430,
+        "crewEmptyPaths": 340,
+        "afroEmptyPaths": 500,
+        "useCount": 0,
+        "fineFaceVersion": null,
+        "continuousVersion": "continuous-hair-texture-v1"
+      },
+      "expected": "Accepted non-fine combinations retain visible nonempty fiber paths; either gate modern continuous instancing/path blanking together or implement correct resources in the supported branch. Preserve absent-continuous legacy bytes.",
+      "evidenceChunk": "021f09",
+      "requiredCoverage": "Explicit valid v2/v3 continuous recipe cases with fineFaceRecipe present/absent, checking nonempty paths and resource closure."
+    },
+    {
+      "id": "P2-instance-longitudinal-scale",
+      "severity": "P2",
+      "file": "public/lib/continuousHairTexture.js",
+      "location": "continuousHairStrandUse",
+      "problem": "Normalized resource instancing multiplies both coordinates by length*scale. Direct continuousHairStrandPath uses scale only for amplitude; its longitudinal terminal remains y+length. Callers already multiply length/dy by hairFiberShapeScale, so the instanced route applies individual longitudinal scale again.",
+      "reproduction": {
+        "origin": [
+          5,
+          7
+        ],
+        "length": 10,
+        "scale": 0.8,
+        "position": 1.5,
+        "directTerminal": [
+          5,
+          17
+        ],
+        "instanceTransform": "translate(5 7) scale(8)",
+        "instanceTerminal": [
+          5,
+          15
+        ]
+      },
+      "expected": "Instanced and direct strand geometry agree for the same parameters including individual scale, or establish one explicit consistent parameter contract and adjust all callers. Preserve separate strand-width and pigment authority.",
+      "evidenceChunk": "021f09",
+      "requiredCoverage": "Numerically compare every transformed resource vertex against direct helper points at scale extremes and intermediate positions; include gray/dyed strokes and width behavior."
+    }
+  ],
+  "independentChecks": [
+    {
+      "command": "node --test test/player-continuous-hair-fallback.test.js test/player-structured-hair.test.js test/player-side-grooming.test.js test/player-whole-head-form.test.js test/player-hair-arrangement.test.js",
+      "exitCode": 0,
+      "tests": 20,
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "durationMs": 3642.5773,
+      "terminalChunk": "7c0d55",
+      "coverage": "Includes 384 unchanged historical front/profile hashes, label-independent modern coordinates, boundaries, malformed positions, five-style document budget, resource references and arranged concealment. These checks do not cover the two counterexamples."
+    },
+    {
+      "probe": "Accepted continuous recipe with optional fine-face recipe removed and numerical normalized-strand transformation equivalence.",
+      "terminalChunk": "021f09",
+      "result": "Two concrete counterexamples reproduced; details in findings."
+    }
+  ],
+  "imagesActuallyInspected": [
+    {
+      "file": "docs/visual-qa/captures/continuous-fallback-continuous-fallback-8-desktop-dark.png",
+      "sha256": "860c2f95f35ff13051d15946f1e8a1cb3447f6d0fd57c879073f20b00fc920d2"
+    },
+    {
+      "file": "docs/visual-qa/captures/continuous-fallback-continuous-fallback-12-mobile-light.png",
+      "sha256": "c148fd1a926371ff52a42efa366855ccbb5be661e32231335496a37aa655c9b9"
+    }
+  ],
+  "visualObservations": [
+    "Afro position2.5 shows stronger short texture marks after change in front/profile; crown remains cap-like and face/beard stylized.",
+    "Long position.5 shows coherent directional strokes and unchanged person at mobile size; front/profile still simplify hair mass.",
+    "No clipping observed in these two inspected originals; no claim all60 images were visually reviewed."
+  ],
+  "primaryEvidenceAttribution": {
+    "browser": "Root execution2 passed39.4sec dfd638, forced WebGL unavailable and0 contexts; not independently rerun.",
+    "build": "Root1a78dc6a8b52,319assets3541KB;10 normalized source/built pairs independently verified.",
+    "LATEST": "Root metadata update and verifier failing solely retained full-craft defect are primary-attributed; immutable primary not rewritten."
+  },
+  "limits": [
+    "Review is FIX despite focused green tests and valid hash bindings. No post-repair source is accepted here.",
+    "Interpolation tests establish bounded local response and stable topology, not full hair recognition or empirical calibration.",
+    "The two inspected images use valid modern fine inputs and do not expose the missing-fine defect; source and executable probes establish it.",
+    "No actual user grooming workflow, named-slot UI persistence, whole-suite, full appearance, demographic calibration or release acceptance."
+  ],
+  "fullVisualAcceptance": false,
+  "wholeSuiteAccepted": false,
+  "releaseAccepted": false
+}

@@ -1,0 +1,142 @@
+{
+  "kind": "isolated-admitted-continuation-calendar-prototype",
+  "recordedAt": "2026-10-07T13:39:45.880Z",
+  "scope": "Existing alternative calendar API on disposable restored GM snapshot, then actual annual command/restoration; default dispatch remains unchanged",
+  "source": {
+    "file": ".cache/managed-franchise-command/current-2026-10-07/failure-snapshot.json",
+    "sha256": "9d3e618fbd9f0ede6d6e3711f6eff8521a1b3c6c0c1f56c1a61d0e3add6387db"
+  },
+  "sourceHashes": {
+    "src/domain/preRolloverMedicalCalendar.js": "fbf72b88730a0594ee6979e5c099d41c6a05f0ab1113eeabf16981c35840b019",
+    "src/domain/elevationInjuryPay.js": "6aa83a9a5b37b55b89352b95bf4b6d1560f9aacab49d75f0098d65fb4c4d230b",
+    "src/runtime/advanceWeekCommand.js": "dc0adf1be502804e052d7086483264fe10709945a4187a33045f57b293d47007",
+    "src/runtime/GameSession.js": "97a3be103e1783b73b6b2a2f36cc678c9431f8b9d8a3d18faeec2264828868fb"
+  },
+  "playerId": "P2026-CLE-LB-10032552",
+  "calendar": {
+    "alreadyRun": false,
+    "weeksAdvanced": 4,
+    "recovered": 14
+  },
+  "before": {
+    "injury": {
+      "type": "IR-Long (8W)",
+      "weeksRemaining": 3,
+      "bodyPart": "IR-Long (8W)",
+      "reinjuryRisk": 0
+    },
+    "payroll": [
+      {
+        "gameId": "2026-regular-regular-season-18-CLE-BAL",
+        "teamId": "CLE",
+        "year": 2026,
+        "week": 19,
+        "payCents": 3277778,
+        "practiceCents": 1835000,
+        "additionalCents": 1442778,
+        "capChargeCents": 0
+      },
+      {
+        "gameId": "2026-regular-regular-season-18-CLE-BAL",
+        "teamId": "CLE",
+        "year": 2026,
+        "week": 20,
+        "payCents": 3277778,
+        "practiceCents": 0,
+        "additionalCents": 3277778,
+        "capChargeCents": 0
+      },
+      {
+        "gameId": "2026-regular-regular-season-18-CLE-BAL",
+        "teamId": "CLE",
+        "year": 2026,
+        "week": 21,
+        "payCents": 3277778,
+        "practiceCents": 0,
+        "additionalCents": 3277778,
+        "capChargeCents": 0
+      },
+      {
+        "gameId": "2026-regular-regular-season-18-CLE-BAL",
+        "teamId": "CLE",
+        "year": 2026,
+        "week": 22,
+        "payCents": 3277778,
+        "practiceCents": 0,
+        "additionalCents": 3277778,
+        "capChargeCents": 0
+      },
+      {
+        "gameId": "2026-regular-regular-season-18-CLE-BAL",
+        "teamId": "CLE",
+        "year": 2026,
+        "week": 23,
+        "payCents": 3277778,
+        "practiceCents": 0,
+        "additionalCents": 3277778,
+        "capChargeCents": 0
+      }
+    ]
+  },
+  "additional": [
+    {
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "year": 2026,
+      "week": 24,
+      "payCents": 3277778,
+      "practiceCents": 0,
+      "additionalCents": 3277778,
+      "capChargeCents": 3277778,
+      "capTreatmentVersion": "injury-compensation-cap-v2"
+    },
+    {
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "year": 2026,
+      "week": 25,
+      "payCents": 3277778,
+      "practiceCents": 0,
+      "additionalCents": 3277778,
+      "capChargeCents": 3277778,
+      "capTreatmentVersion": "injury-compensation-cap-v2"
+    },
+    {
+      "gameId": "2026-regular-regular-season-18-CLE-BAL",
+      "teamId": "CLE",
+      "year": 2026,
+      "week": 26,
+      "payCents": 3277778,
+      "practiceCents": 0,
+      "additionalCents": 3277778,
+      "capChargeCents": 3277778,
+      "capTreatmentVersion": "injury-compensation-cap-v2"
+    }
+  ],
+  "totalAdditionalCents": 9833334,
+  "annualCommandPassed": true,
+  "restorationPassed": true,
+  "unresolvedLongCase": {
+    "scope": "Explicit20-week injury-duration counterfactual on a disposable clone, not a played injury outcome",
+    "reasonCode": "ELEVATION_INJURY_YEAR_TRANSITION_REQUIRED",
+    "atomicRefusal": true
+  },
+  "limits": [
+    "No default runtime policy repaired",
+    "Alternative only proves this player recovers within the four-week modeled calendar; unresolved long injuries still need cross-year rights",
+    "Cap classification uses existing source-year salary-period policy, not a newly verified legal ruling",
+    "No retroactive migration or pension/cash adjudication"
+  ],
+  "status": "prototype-verified-default-policy-unchanged",
+  "independentReview": {
+    "file": ".cache/admitted-continuation-calendar-review.json",
+    "sha256": "352ba96a159e9442a5ce58416aab161d10c8637875dca2e9a24a5d1389a467e2",
+    "verdict": "SUPPORTED_WITH_LONG_RIGHTS_LIMIT"
+  },
+  "requiredFollowThrough": [
+    "Preserve admitted obligations across natural employment expiry without inventing a dispute.",
+    "Integrate recovered-within-calendar path with source-bound idempotent compensation and atomic annual transitions.",
+    "Implement retained cross-year entitlement before selecting this path for longer injuries; the current refusal is a demonstrated limitation, not completed functionality.",
+    "Keep genuine claims and legacy modeled settlements authoritative, with separate cash/cap/pension policies."
+  ]
+}

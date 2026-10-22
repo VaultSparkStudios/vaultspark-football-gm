@@ -1,3535 +1,1516 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-10-04T12:01:43.001Z",
-  "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
-  "artifactFingerprint": {
-    "algorithm": "sha256",
-    "digest": "b4acf9865544684fc82cbd6addcdafe0f4e3c357b925edccdf0112d62b9ec280",
-    "files": 272,
-    "entries": [
-      {
-        "path": ".well-known/llms.txt",
-        "bytes": 1838,
-        "sha256": "e3e0b6523eacd499b63c718a9c877a79f6cc3cad7fa9f66621aeb225d6e5610c"
-      },
-      {
-        "path": ".well-known/security.txt",
-        "bytes": 231,
-        "sha256": "2e4ef4346b5df79a5d2800b3fd9c782aeebc5c5150b490820496c0af50bc0996"
-      },
-      {
-        "path": "404.html",
-        "bytes": 4275,
-        "sha256": "925c52bec37637e8b413809e67d696e9f4ab9675229dd1535c13c61aeb92957a"
-      },
-      {
-        "path": "_headers",
-        "bytes": 1133,
-        "sha256": "ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c"
-      },
-      {
-        "path": "_redirects",
-        "bytes": 252,
-        "sha256": "d2980cf6098ee6d141e080c2d9bc3a0f17ab80b703088c60bcde5b2dc84b1c56"
-      },
-      {
-        "path": "about.html",
-        "bytes": 6379,
-        "sha256": "105388889ab4add0311f0b91cdd2a799293974b9b473222b17921adfdbce4bba"
-      },
-      {
-        "path": "agents.json",
-        "bytes": 2445,
-        "sha256": "f5ddfb29615054c7e9e2483fd180d02efb302f1a6be3164e169f11a2efa399b1"
-      },
-      {
-        "path": "app.js",
-        "bytes": 112799,
-        "sha256": "d447f2793380b9e1bf7096e19879960a5ad118ffd303c7c429410090bff95606"
-      },
-      {
-        "path": "boot-manifest.json",
-        "bytes": 1771,
-        "sha256": "70688b03d1fe23c504fee3574a5268534426dad4fab94310f224651b1d31d518"
-      },
-      {
-        "path": "changelog.xml",
-        "bytes": 25064,
-        "sha256": "1956f322d60ae4cfbb88c5c2182587209d448f9d6fd75f1efa6fd952ff476a71"
-      },
-      {
-        "path": "community-stats.25f97e0a1e.js",
-        "bytes": 22015,
-        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
-      },
-      {
-        "path": "community-stats.js",
-        "bytes": 22015,
-        "sha256": "25f97e0a1ef067631cb33d59f5f93b39124898dd07477e85fb0eaa4a1078d6b4"
-      },
-      {
-        "path": "contact.html",
-        "bytes": 5482,
-        "sha256": "873ef461fe4d3450ced7824f7e4fd0b6de0d4e2d5253946e1e37db260658dc9f"
-      },
-      {
-        "path": "content/claims.json",
-        "bytes": 11531,
-        "sha256": "2f6d661d428fde3a81d10263f67bec98c5c98ff8d415353afe64f574c67b0c89"
-      },
-      {
-        "path": "faq.html",
-        "bytes": 10553,
-        "sha256": "5461d1e6d88a7df6fe50b00613cac8feb264d1140fb0ac734c3fb61d9f13ad52"
-      },
-      {
-        "path": "favicon.ico",
-        "bytes": 1427,
-        "sha256": "918642e9f38003862ef7b74417a6d7854972b34d82a2073c147c81690a0a7eac"
-      },
-      {
-        "path": "favicon.svg",
-        "bytes": 301,
-        "sha256": "f450f64990cfefe57bfb9bd3689d901edba654d09e8dddfa579eb1e794940cf3"
-      },
-      {
-        "path": "features.html",
-        "bytes": 13819,
-        "sha256": "d3db602b7c763f6aba032a8b988084154e2a9a85bf666fb1525a1eb9e5485986"
-      },
-      {
-        "path": "footer-manifest.json",
-        "bytes": 1895,
-        "sha256": "ed7c5b5165d31484f28998878c9294ea94b25bb69e0a22344c0c98f2f36f4c25"
-      },
-      {
-        "path": "game.html",
-        "bytes": 113093,
-        "sha256": "aba82651638b74cc3581eb928deabe72af72f58fc44e4a4107a44e38847b691a"
-      },
-      {
-        "path": "how-to-play.html",
-        "bytes": 8526,
-        "sha256": "0c734eb44d4aca70f0d864e0dc3c8c95117d24867c462224ddace55dc40a3752"
-      },
-      {
-        "path": "images/apple-touch-icon.png",
-        "bytes": 3077,
-        "sha256": "039ede3f2768ba639095bb83ef58e95f4190c0d9f8e059875de03b04de2198f7"
-      },
-      {
-        "path": "images/cover.png",
-        "bytes": 378376,
-        "sha256": "409df9ab5dfc016bc04e16ef3bee6edbe837f0da0f9c803928a31a3834dbf0a6"
-      },
-      {
-        "path": "images/cover.webp",
-        "bytes": 28418,
-        "sha256": "68584f71803e58ee0e9ce8f21d2b9390bad9eb3d2b2985a9e4af5824ce1383c3"
-      },
-      {
-        "path": "images/franchise-architect-logo.svg",
-        "bytes": 1001,
-        "sha256": "2e30a473a7fff7c7a11fda90e7b3e5eb56de572afcfd8aca464ff54bcf84f754"
-      },
-      {
-        "path": "images/franchise-architect-mark.svg",
-        "bytes": 599,
-        "sha256": "64a966830119196ac799e00b8dc58d3970460ba2d6b82fb324fa6ae848d9ad3d"
-      },
-      {
-        "path": "images/icon-192.png",
-        "bytes": 3082,
-        "sha256": "51dff9db397d1c13c5d06c8a69543678acafaec5ef215ec236e976a6a9819c66"
-      },
-      {
-        "path": "images/icon-512.png",
-        "bytes": 8341,
-        "sha256": "b7b5a916704a3a11868fe31d7dbb86ece3d371aab2fd872d5ff7f3fb5e65f1a7"
-      },
-      {
-        "path": "images/screens/boardroom.jpg",
-        "bytes": 152963,
-        "sha256": "6255f9c371e31178db42af10f520e80f634930729a06c1d6903af274dc9e9f66"
-      },
-      {
-        "path": "images/screens/contracts.jpg",
-        "bytes": 138297,
-        "sha256": "282107d77478dfa9f0d8820a28363f38a5d0a909143c4603ce45a796b1257d9f"
-      },
-      {
-        "path": "images/screens/desk.jpg",
-        "bytes": 103191,
-        "sha256": "cd66e490aedb12d6da6bb39134ccb81d1ab300c331fef20b7c5922bf96b15847"
-      },
-      {
-        "path": "images/screens/hero.jpg",
-        "bytes": 154408,
-        "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
-      },
-      {
-        "path": "images/screens/trade.jpg",
-        "bytes": 125476,
-        "sha256": "51bed8fcb5bb28d7aa98bd52e4d258a23bcb94d71789398192cb55a2ee133108"
-      },
-      {
-        "path": "index.html",
-        "bytes": 21726,
-        "sha256": "51fbf99fd4c9cd1b405b9bb4e5398a3f9201685fdc3705cb88e49e8de96735df"
-      },
-      {
-        "path": "lib/achievements.js",
-        "bytes": 20801,
-        "sha256": "dcacc93c2af840afae41de2a892915c9bcaa7e6b90c894d6c9f56080fc976dc1"
-      },
-      {
-        "path": "lib/actionCoordinator.js",
-        "bytes": 762,
-        "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a"
-      },
-      {
-        "path": "lib/api/clientSessionRecovery.js",
-        "bytes": 25582,
-        "sha256": "90cece6bd4990b54b19fee769d55a8b692217086e20378fcbca2344e6c6987e3"
-      },
-      {
-        "path": "lib/api/createApiClient.js",
-        "bytes": 12700,
-        "sha256": "77f0da339d494fadf99cea14030111c8628cbfb834f1192fe7db22d48662d605"
-      },
-      {
-        "path": "lib/api/localRuntimeWorker.js",
-        "bytes": 13705,
-        "sha256": "4e76d369959eb57c14fd69c80f44c97bcd4f6b99918d0e29b6745b75544f23ce"
-      },
-      {
-        "path": "lib/api/recoverySnapshotState.js",
-        "bytes": 1059,
-        "sha256": "8951e759850a18e52e83fb53635a5b74519eee907fde50e35a4fe0238d6506d9"
-      },
-      {
-        "path": "lib/api/workerTransport.js",
-        "bytes": 7528,
-        "sha256": "7335d20537d8a268b588d9099a8d0c6cfb9b3aa97fcbfe1ae4b7002c7a016ab8"
-      },
-      {
-        "path": "lib/apiContract.js",
-        "bytes": 8674,
-        "sha256": "a05805bd8e25ca2ccd68e6a197912d3dcd6d196a5aa8d456fa90657e559ae3d9"
-      },
-      {
-        "path": "lib/appCore.js",
-        "bytes": 63946,
-        "sha256": "96e06919d75bdcd82933273624f3da22eac57b737be5e085115ca30b61aa4ae4"
-      },
-      {
-        "path": "lib/appState.js",
-        "bytes": 12429,
-        "sha256": "c8151d6eb27c2bbb8012e7707671bcb6558cc38268dba89bc19fac8092c7cedc"
-      },
-      {
-        "path": "lib/architectCut.js",
-        "bytes": 6574,
-        "sha256": "5edb460f761619cef360a87293f212c7b4fc280432398304f47009f3c0c1d963"
-      },
-      {
-        "path": "lib/architectPlanRehearsal.js",
-        "bytes": 6938,
-        "sha256": "dc7987a06cf65f9c2ab2483fc73d897664e172008f00f44d436ffcbfe440a1c3"
-      },
-      {
-        "path": "lib/audioFeedback.js",
-        "bytes": 4117,
-        "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe"
-      },
-      {
-        "path": "lib/authorityEpoch.js",
-        "bytes": 1348,
-        "sha256": "fd8619500e7fd5f7484dbcc25f952252311ecda9e5723e6586b2f6727c257371"
-      },
-      {
-        "path": "lib/betaFeedback.js",
-        "bytes": 16195,
-        "sha256": "f2e2050e4788c12378ff4d73e2ec50d7f0c945b6a78c81844d544aad4d73a080"
-      },
-      {
-        "path": "lib/boxScorePresentation.js",
-        "bytes": 3897,
-        "sha256": "1b90e1b0beace7f999428a29ca1123049d1916504f93b3d6bd357c099736b743"
-      },
-      {
-        "path": "lib/challengeCodes.js",
-        "bytes": 5945,
-        "sha256": "d2f3d5d98aeb8880311aa273ca9e3dd49579cacecff8cabbd58feb9a9b8ed24f"
-      },
-      {
-        "path": "lib/clientDiagnostics.js",
-        "bytes": 5996,
-        "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c"
-      },
-      {
-        "path": "lib/clientRecoveryUi.js",
-        "bytes": 5660,
-        "sha256": "59e6c1f894b9b7aade41e35ed283c4d94faea9a479d98804dfc0c54188aa4999"
-      },
-      {
-        "path": "lib/coGmBriefPanel.js",
-        "bytes": 2304,
-        "sha256": "f15230f9ee51344d8150d1be39b0d1919dc54074bb67b80c8c5def11a19311a5"
-      },
-      {
-        "path": "lib/coGmBriefing.js",
-        "bytes": 5314,
-        "sha256": "db4231955adc35ac8a04a1f4a373d7c6e33d75a6d3e02ad003aac4565016d5f0"
-      },
-      {
-        "path": "lib/coachingMarketPanel.js",
-        "bytes": 4655,
-        "sha256": "1165e0d0bffb1b0dc6af84b303e9c7ec31ac1605989656b52313dcbaa0880eae"
-      },
-      {
-        "path": "lib/communityEventContract.js",
-        "bytes": 4634,
-        "sha256": "1466f7970beb27da0b33f767386ed19bce77de3e69737ac2be228bd2e8bb3354"
-      },
-      {
-        "path": "lib/communityTelemetry.js",
-        "bytes": 14177,
-        "sha256": "db4f14553a6d4dcdb55fe565e27219bf69f0491c287bb84f6163c070904ba84f"
-      },
-      {
-        "path": "lib/contextualFeedback.js",
-        "bytes": 7864,
-        "sha256": "f4798ea71e9bc3c8f8a56437f4239b947415a3eb106d8ec7e82c8f7afb9e2edf"
-      },
-      {
-        "path": "lib/decisionAnthology.js",
-        "bytes": 1679,
-        "sha256": "96a791b4dc4af5b9444618a18773d2d58d9c51fea38004bb6a88d28aa9a28951"
-      },
-      {
-        "path": "lib/decisionArchive.js",
-        "bytes": 4377,
-        "sha256": "f1733d13e24ebc7d51b656082a789c2bd2a0df08dafb658dae08d4f701aaf76f"
-      },
-      {
-        "path": "lib/deskIslands.js",
-        "bytes": 4533,
-        "sha256": "84d6649422ad0b2c91144055427c7db20f270b6653ade47d43d59e4e42f79f14"
-      },
-      {
-        "path": "lib/devSurfaces.js",
-        "bytes": 1377,
-        "sha256": "c19928d9eada8145f5cc688bafc38cf57949e8e6aa75cf5411fd7e2b927df2f4"
-      },
-      {
-        "path": "lib/draftPickReveal.js",
-        "bytes": 4661,
-        "sha256": "71757db9aa7cdce68712047479ca8e50fffd511f5f71a602660137f31f372300"
-      },
-      {
-        "path": "lib/dynastyTimeline.js",
-        "bytes": 6267,
-        "sha256": "17658196cf6e9fbaa45a2824192e41df11986a85b8ec5775deacc5b7b650968d"
-      },
-      {
-        "path": "lib/engagementFeatures.js",
-        "bytes": 32794,
-        "sha256": "6926211f37551cf4d68b9018b0dd15983dc3ad188cc20078578346876a48e660"
-      },
-      {
-        "path": "lib/exactSurfaceNavigation.js",
-        "bytes": 3114,
-        "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
-      },
-      {
-        "path": "lib/extractCommunityEvents.js",
-        "bytes": 8329,
-        "sha256": "e1c507fc40fb87675e17797951ff7a36bcb80e2d9a41e9a2c8583fc483c62a64"
-      },
-      {
-        "path": "lib/facilitiesPanel.js",
-        "bytes": 6563,
-        "sha256": "2d1cbd0dcfb79c441d939c06359a2912a3eeb04f0ef00a5b5ee9f9fb6ad1e352"
-      },
-      {
-        "path": "lib/fastSimulationPolicy.js",
-        "bytes": 2071,
-        "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
-      },
-      {
-        "path": "lib/firstDebriefPulse.js",
-        "bytes": 8641,
-        "sha256": "ce6751727604018d54d6b98689ce3b6c88c480b871e8b0cb6dc28236c6a4cea0"
-      },
-      {
-        "path": "lib/firstSeasonContract.js",
-        "bytes": 13577,
-        "sha256": "f2bcbebc9fac5bf2942b4840a95bdc8c2676ff70d6b75456fdb578f72f489c8d"
-      },
-      {
-        "path": "lib/franchiseArchitecture.js",
-        "bytes": 7220,
-        "sha256": "0035be48f9b922bfa88a5122fd04ef5aecd3d82c585a820264cb71b14302e03a"
-      },
-      {
-        "path": "lib/franchiseCommandCenter.js",
-        "bytes": 8509,
-        "sha256": "6a2ad885ad8fd686b5b933f739e236850b63749bc76d9e0629f53df4b204f762"
-      },
-      {
-        "path": "lib/franchiseNewsletter.js",
-        "bytes": 8147,
-        "sha256": "124c0b8893d87ad3ae0e35f178bbea2d678c1638d93133c7ef2d53354733a81b"
-      },
-      {
-        "path": "lib/franchiseScope.js",
-        "bytes": 1553,
-        "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178"
-      },
-      {
-        "path": "lib/frontOfficeAdvisor.js",
-        "bytes": 26769,
-        "sha256": "4f2308ae806d01c8f5a43d7eeb30a0e4305fa372665c39ce93fabe8599d1e188"
-      },
-      {
-        "path": "lib/gameFlow.js",
-        "bytes": 62840,
-        "sha256": "2003c9f561319e31950e49d71fd9b359e4305d3507e45b1212d1f5ce3149e539"
-      },
-      {
-        "path": "lib/gameOutcome.js",
-        "bytes": 2085,
-        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
-      },
-      {
-        "path": "lib/gameplayNavigation.js",
-        "bytes": 2767,
-        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
-      },
-      {
-        "path": "lib/gistAuthentication.js",
-        "bytes": 3215,
-        "sha256": "737be150b40d767dff6f1d43b7e4c2e5f96eff106aed193d4cc7fba192c7f359"
-      },
-      {
-        "path": "lib/gistCredentials.js",
-        "bytes": 1631,
-        "sha256": "789a78e5ecfce53ee06aa4dc93f1938c4a17573d3f4511f146c8fdf32917c828"
-      },
-      {
-        "path": "lib/gistSync.js",
-        "bytes": 8867,
-        "sha256": "10409f97753e6323fe7ce0574ab7305f0306b1bf2ff0426dceaf4350d039b429"
-      },
-      {
-        "path": "lib/gistVerification.js",
-        "bytes": 2018,
-        "sha256": "11f6ac5bd9a7a6461d75c4d6734bdad435d84fc566b91d930adfcf8c6b1d517a"
-      },
-      {
-        "path": "lib/hallOfFameCeremony.js",
-        "bytes": 6068,
-        "sha256": "7ca70ec97ef3f38add573af53d780174827f381779cf4dfc23f7f4bb8348fe3d"
-      },
-      {
-        "path": "lib/historyFormatting.js",
-        "bytes": 2289,
-        "sha256": "aa6d22845a7fdfd0ec88680880458002cbabd613e32a0cfdbeee6631550833a5"
-      },
-      {
-        "path": "lib/launchReadiness.js",
-        "bytes": 2771,
-        "sha256": "a3644f95686596e6025c7b30ebc11254f102eef6f573900060dbabed3a3a106c"
-      },
-      {
-        "path": "lib/leagueLensPanel.js",
-        "bytes": 4686,
-        "sha256": "dc9fe60927b67a7e0dbc354719a44afb56ab1129d9e024026b48f68a59b33505"
-      },
-      {
-        "path": "lib/leagueStoryExport.js",
-        "bytes": 12078,
-        "sha256": "43ef55dba1382f058532e82a8cf4b4379fef1bec2c49ea3f4364b83ff0220058"
-      },
-      {
-        "path": "lib/lookAhead.js",
-        "bytes": 1963,
-        "sha256": "f5f83462192dff00d60831ca69223dcfa5d4177e419672ab580937831f0deb40"
-      },
-      {
-        "path": "lib/marqueeBadge.js",
-        "bytes": 4158,
-        "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e"
-      },
-      {
-        "path": "lib/mentorshipPanel.js",
-        "bytes": 5148,
-        "sha256": "f944718618e8d51af9909908364058bf99acd4f071b28a9d533f73c49e4e2050"
-      },
-      {
-        "path": "lib/mobileLoop.js",
-        "bytes": 20052,
-        "sha256": "0c59f1121cdca3e3d1cc9af5901371f4a96fe582ff76ce9e980e7e3b1f603650"
-      },
-      {
-        "path": "lib/mobileNavigation.js",
-        "bytes": 5813,
-        "sha256": "a563a6432cd9f387fccc9ec8a55606889362355261b48e778d72f7abfe82980f"
-      },
-      {
-        "path": "lib/modalManager.js",
-        "bytes": 6529,
-        "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
-      },
-      {
-        "path": "lib/momentCard.js",
-        "bytes": 17407,
-        "sha256": "dfdb3f2c5d15cf6d1903cb2b780e355a0f3bdb5bb2a4b8ad385c4559e7cf2550"
-      },
-      {
-        "path": "lib/offseasonDevelopmentReport.js",
-        "bytes": 5332,
-        "sha256": "c47910970117440d207aac9694b94e94781385215b1610933e3e181cce4fe6f1"
-      },
-      {
-        "path": "lib/onClockTradeMarketPanel.js",
-        "bytes": 5155,
-        "sha256": "c9944026c098d9b62670359dea2ac3601111a18c99e44bf1260c985b2a6755b6"
-      },
-      {
-        "path": "lib/operatingStatementPanel.js",
-        "bytes": 2653,
-        "sha256": "9f685f33c5e2301bef562091e70bc7ed8a5aa43b3dd5beaaea5c25f066ff57dd"
-      },
-      {
-        "path": "lib/playerProfileNarrative.js",
-        "bytes": 9776,
-        "sha256": "2f29b9e4104a48e34eddb23391fde4c9489285428cc3223cda89067fba180445"
-      },
-      {
-        "path": "lib/playtestJourney.js",
-        "bytes": 4111,
-        "sha256": "a07965f79cb3fbecde479ba1e991625381d380c83c136ec0e286440e778c96c4"
-      },
-      {
-        "path": "lib/playtestReceipts.js",
-        "bytes": 4557,
-        "sha256": "51d34f651a7d55074b9bd1b5f2d5b154b342ae99a6447752866ad13e79c5ebb5"
-      },
-      {
-        "path": "lib/postCommitHydration.js",
-        "bytes": 2027,
-        "sha256": "7bf28b18ec26dc059ae17537a00566a2efe3684558ad0b989ab34a69f7f62bfe"
-      },
-      {
-        "path": "lib/predictionPanel.js",
-        "bytes": 7619,
-        "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
-      },
-      {
-        "path": "lib/pressRoomPanel.js",
-        "bytes": 4316,
-        "sha256": "cf807f96e9ff510ff84a4afaee24cf0363dd4f8f6226a16975830573ab0a9bcc"
-      },
-      {
-        "path": "lib/progressionWatch.js",
-        "bytes": 1949,
-        "sha256": "8254616bd7d5987eafdb4f41b198cb843f6475414363951844de0e5aebc4630c"
-      },
-      {
-        "path": "lib/prospectNarratives.js",
-        "bytes": 4627,
-        "sha256": "124e0becdc00bb020287e1bc7a724628c250eea3f1614342d63fa79d8af4fc7a"
-      },
-      {
-        "path": "lib/returnDigest.js",
-        "bytes": 11792,
-        "sha256": "7cd5dc692287d2ba5f006fa3aa3ef25d567984948ea75eff03924177f18c7351"
-      },
-      {
-        "path": "lib/rewardBeats.js",
-        "bytes": 7590,
-        "sha256": "0f06ee560442b7fcc6506c46cee53fd8a5db715b1019ae9b5dccec0964699405"
-      },
-      {
-        "path": "lib/rivalCoachIntel.js",
-        "bytes": 2496,
-        "sha256": "f7885fa55083a9038cc830ecf1e47574a5de0fc077916b2ad930b26249e3f870"
-      },
-      {
-        "path": "lib/rivalFrontOfficeCard.js",
-        "bytes": 1983,
-        "sha256": "9a3a1321ddd8db463507385cc402b2b9b03492db6b62be7719fe9c9ce435a289"
-      },
-      {
-        "path": "lib/scoreline.js",
-        "bytes": 1280,
-        "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003"
-      },
-      {
-        "path": "lib/seasonChapters.js",
-        "bytes": 17256,
-        "sha256": "d7c3e69b653169d9d37f04535f744049037e97fa5315686c29a52742638380ad"
-      },
-      {
-        "path": "lib/seasonEpilogue.js",
-        "bytes": 14718,
-        "sha256": "f832da600d35aca6aa56b15d4e1f32fa7784e7ce84913472d485bb6ab60d76cd"
-      },
-      {
-        "path": "lib/seasonReviewTransition.js",
-        "bytes": 343,
-        "sha256": "373f0b73cd6cfacdb72f97a5c62e5e4ddb54c3f123e97425fc7df87cac8479d8"
-      },
-      {
-        "path": "lib/simWatchDirector.js",
-        "bytes": 16252,
-        "sha256": "46d61ffcd9da4066bee4addf1d41472948c243a40cee0ea08d74171e86790c00"
-      },
-      {
-        "path": "lib/simWatchPlayback.js",
-        "bytes": 9334,
-        "sha256": "df5ad4e3630c29ede0cb91a465d8ad33f2d11cdc90a474c01d878618457504c3"
-      },
-      {
-        "path": "lib/simulationCheckpoints.js",
-        "bytes": 5298,
-        "sha256": "f371488ebc68a78a1350e01320bfbbcc5ce735dd6c4621ecfbd2714b178d6eca"
-      },
-      {
-        "path": "lib/situationalCallsPanel.js",
-        "bytes": 4081,
-        "sha256": "630cf0715481a00d2e6fb41ba370eba8c76ccf252a90f9077471b0f298c026ca"
-      },
-      {
-        "path": "lib/spreadPredictions.js",
-        "bytes": 8724,
-        "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
-      },
-      {
-        "path": "lib/startScenarioContract.js",
-        "bytes": 4454,
-        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
-      },
-      {
-        "path": "lib/tabContracts.js",
-        "bytes": 34520,
-        "sha256": "f37cc90e0d2d72e7c363780af1555d14db4ed8ab5fa90e25a3ed1ab880de00c6"
-      },
-      {
-        "path": "lib/tabDraft.js",
-        "bytes": 23489,
-        "sha256": "8d849daf90776d7b65dbf17c1e2a619c2f243f6300ae05cfd37769b8622a6619"
-      },
-      {
-        "path": "lib/tabHistory.js",
-        "bytes": 42347,
-        "sha256": "7b582bd4aeb1f7d608a34a9e67bf9910c4aefe350ac79092467312e3e053015b"
-      },
-      {
-        "path": "lib/tabHydration.js",
-        "bytes": 6294,
-        "sha256": "4a623ab5b7b900cf34ff8cfa6531ac95bf6c70dec3e2cad107d9373718c24b65"
-      },
-      {
-        "path": "lib/tabKeyboardNavigation.js",
-        "bytes": 770,
-        "sha256": "88f0a334c69c5e7ee3f6781cd207fd0206a0215b12bdc261c5a24ed99dd1a026"
-      },
-      {
-        "path": "lib/tabOverview.js",
-        "bytes": 70154,
-        "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
-      },
-      {
-        "path": "lib/tabRoster.js",
-        "bytes": 16171,
-        "sha256": "5aa4be1726125dba3ed6684e2d693ff375fb122be7c973b0e1b4239ccb83877d"
-      },
-      {
-        "path": "lib/tabSettings.js",
-        "bytes": 41382,
-        "sha256": "bcec0bb549d8671b99d1e4d5d022b603a5fddb1ff18f51a19167b281f2fe39a0"
-      },
-      {
-        "path": "lib/tabStats.js",
-        "bytes": 9270,
-        "sha256": "7037408e4624feef2fc29ca3a11f58aa41423d4a1d635763f509af82a42b4c5c"
-      },
-      {
-        "path": "lib/tacticalFilmRoom.js",
-        "bytes": 15126,
-        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
-      },
-      {
-        "path": "lib/teamCrest.js",
-        "bytes": 5789,
-        "sha256": "8ab745aacd1fda86da8406eee04282cf7910b3b8d8dba02fcebcbcff5f48e0ec"
-      },
-      {
-        "path": "lib/teamDisplay.js",
-        "bytes": 262,
-        "sha256": "adf9834822fb376d8324eba63177071ca3458e79b85d386677179bea87af1595"
-      },
-      {
-        "path": "lib/teamRecord.js",
-        "bytes": 1811,
-        "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6"
-      },
-      {
-        "path": "lib/themeBoot.js",
-        "bytes": 1644,
-        "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
-      },
-      {
-        "path": "lib/themeCustomizer.js",
-        "bytes": 8390,
-        "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
-      },
-      {
-        "path": "lib/tradeDeadlineFrenzy.js",
-        "bytes": 9802,
-        "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
-      },
-      {
-        "path": "lib/tradeWindow.js",
-        "bytes": 1486,
-        "sha256": "ae3cd16bbad79e54d94dda978ebdab22af87a037d0c4848f7dcc9a39448f316c"
-      },
-      {
-        "path": "lib/tutorialCampaign.js",
-        "bytes": 12856,
-        "sha256": "719b7fafc70d0721f197b13039c72903140967ad7ea2fede6abd3356a27f147f"
-      },
-      {
-        "path": "lib/uiIslands.js",
-        "bytes": 6228,
-        "sha256": "0cb27840070920312ec23041398a7f1f5373d8c4ec1fa02a793f10ecef51855f"
-      },
-      {
-        "path": "lib/weeklyPlanComposer.js",
-        "bytes": 7650,
-        "sha256": "7c257e23dace7197745fd6b5928707bea18e4d974f4e2e512a61c15df94afca6"
-      },
-      {
-        "path": "manifest.webmanifest",
-        "bytes": 600,
-        "sha256": "07e5426cdaf6094a5c9de2e141b27521ef1e1c64fff95fbfc5991362d439cc64"
-      },
-      {
-        "path": "precache-manifest.json",
-        "bytes": 18633,
-        "sha256": "ac1b523e4c1f4afad025af299f46da85e215777a8534311c983759b8073a9be3"
-      },
-      {
-        "path": "press.html",
-        "bytes": 10946,
-        "sha256": "6a835db22c6d7fd77ce9b11e46c433df7f921c006dd6c08efccd609372973b8e"
-      },
-      {
-        "path": "privacy.html",
-        "bytes": 7429,
-        "sha256": "a43f864c5827e9d1d72fdc8833fe27e373c2c574468901e2f34951017a985f96"
-      },
-      {
-        "path": "public-identity.json",
-        "bytes": 584,
-        "sha256": "39a81c7ebeead641bc7aeef0087798797a6f2a960f99eb8ba0e1c29db299ac3e"
-      },
-      {
-        "path": "public/lib/gameOutcome.js",
-        "bytes": 2085,
-        "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
-      },
-      {
-        "path": "public/lib/gameplayNavigation.js",
-        "bytes": 2767,
-        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
-      },
-      {
-        "path": "public/lib/startScenarioContract.js",
-        "bytes": 4454,
-        "sha256": "f20d0cc2b5d814b8365e05a17856ecebe868f636778c04388e8bc27c6b27b198"
-      },
-      {
-        "path": "public/lib/tacticalFilmRoom.js",
-        "bytes": 15126,
-        "sha256": "a914fadceef11e8978b64cfc0d451afc258217325652f539c897e210f8d0307f"
-      },
-      {
-        "path": "roadmap.html",
-        "bytes": 6313,
-        "sha256": "197751262e28678423eff7a6b182f51833bb609f2a7e6212fe57778d7830299a"
-      },
-      {
-        "path": "robots.txt",
-        "bytes": 80,
-        "sha256": "d129cfd34a4621cf972482cd0164f3dae6efe89688a6c243cfc3dd5c5b313019"
-      },
-      {
-        "path": "setup.js",
-        "bytes": 29163,
-        "sha256": "a73fc050a4971da043dd5b4e9c8b48c92ece0bf2c9e045e0d0dfb3b0ebe4d3b9"
-      },
-      {
-        "path": "showcase-league.json",
-        "bytes": 1342,
-        "sha256": "0fcd055662bda952fa32d977df135f7ac949bc044ebc327a0258f70451bcc4dd"
-      },
-      {
-        "path": "simulation.html",
-        "bytes": 11282,
-        "sha256": "34d0b2c78e08a27c4404d0a44ccbc161503d5c9fef7381e1c6cc8e3c8ff9ca33"
-      },
-      {
-        "path": "site.11e8faac8d.css",
-        "bytes": 10999,
-        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
-      },
-      {
-        "path": "site.css",
-        "bytes": 10999,
-        "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
-      },
-      {
-        "path": "sitemap.xml",
-        "bytes": 1844,
-        "sha256": "4c1f679180b59affe80c65626adac112271059d41ac3838f1846b185ef906f29"
-      },
-      {
-        "path": "src/adapters/persistence/browserSaveStore.js",
-        "bytes": 10036,
-        "sha256": "ec8f692dbf53e14e20bcd675138984f0f7f99991a565bd66f73fe4315e43d342"
-      },
-      {
-        "path": "src/adapters/persistence/hybridSaveStore.js",
-        "bytes": 15546,
-        "sha256": "b7cb1b7f74fca3cc07d5e647216840cedb87cf7570712b967a706d5a74ba0c98"
-      },
-      {
-        "path": "src/adapters/persistence/saveStoreShared.js",
-        "bytes": 4579,
-        "sha256": "8881f866cae3ee2e4d5ba0a6706453dcaa87a4719b5f0967a646c1d13394f8da"
-      },
-      {
-        "path": "src/adapters/persistence/snapshotCodec.js",
-        "bytes": 4641,
-        "sha256": "272a9f7bf8c19f0ad7b37e71bd55cc27bb5496089c3bb0ace4c45b74fc4c2731"
-      },
-      {
-        "path": "src/app/api/localApiRuntime.js",
-        "bytes": 95310,
-        "sha256": "a311fa96c024ff63b413026ee285111f259b34bc9a2eee00ad5ed6aef2beb293"
-      },
-      {
-        "path": "src/config.js",
-        "bytes": 16609,
-        "sha256": "e876a49daf8cc88774e9f1960dc067f20e99e97eb8429fe7576854bf47e61c71"
-      },
-      {
-        "path": "src/config/leagueSetup.js",
-        "bytes": 16836,
-        "sha256": "a8a98029a13a6f8caf8769390ebe17eb69b2615a850ca1fae3b5a4bf5b3b2c5f"
-      },
-      {
-        "path": "src/data/nflEliteDensityBaseline.js",
-        "bytes": 8606,
-        "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d"
-      },
-      {
-        "path": "src/domain/contracts.js",
-        "bytes": 10451,
-        "sha256": "ba3cca2be6328ce24a7d04b2d3021138a784fb850a847b36bb82c10fdbb8428e"
-      },
-      {
-        "path": "src/domain/developmentEnvironment.js",
-        "bytes": 9551,
-        "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1"
-      },
-      {
-        "path": "src/domain/facilityInvestment.js",
-        "bytes": 15900,
-        "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
-      },
-      {
-        "path": "src/domain/leagueIdentity.js",
-        "bytes": 6966,
-        "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
-      },
-      {
-        "path": "src/domain/operatingStatement.js",
-        "bytes": 3005,
-        "sha256": "1db31770b675d875f8bbbbd5412793b258a9fdd47ce83dbef9274a9aa80dc381"
-      },
-      {
-        "path": "src/domain/ownerEconomy.js",
-        "bytes": 6571,
-        "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
-      },
-      {
-        "path": "src/domain/playerFactory.js",
-        "bytes": 20375,
-        "sha256": "2f7aa232449d1fd813aa94ba8953e85879da879f3d7ab78ba12b1d6baffef515"
-      },
-      {
-        "path": "src/domain/potentialReversion.js",
-        "bytes": 11659,
-        "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87"
-      },
-      {
-        "path": "src/domain/ratings.js",
-        "bytes": 15953,
-        "sha256": "f42c0f2c8598b38a35b36513ac92bb9602ee4a7d203e855a0d401920541c1597"
-      },
-      {
-        "path": "src/domain/teamFactory.js",
-        "bytes": 15635,
-        "sha256": "fe8b4d4a1d30ce54e4670477c6d03c8cccf2a69ec17303b90e84e170fbf579ee"
-      },
-      {
-        "path": "src/domain/teamLabel.js",
-        "bytes": 567,
-        "sha256": "3fd9f4306747ff9d5bfd0a823305f92fc027eac943a037d39c902f180be760df"
-      },
-      {
-        "path": "src/domain/ticketDemand.js",
-        "bytes": 7685,
-        "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174"
-      },
-      {
-        "path": "src/engine/adaptiveDifficulty.js",
-        "bytes": 3761,
-        "sha256": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763"
-      },
-      {
-        "path": "src/engine/aiTeamStrategy.js",
-        "bytes": 13834,
-        "sha256": "71b9499ebfd80293e12962694ef3f269e27761ccf734702948c9c2826ba4d020"
-      },
-      {
-        "path": "src/engine/architectFocusReview.js",
-        "bytes": 3519,
-        "sha256": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704"
-      },
-      {
-        "path": "src/engine/architectMasteryPortfolio.js",
-        "bytes": 8565,
-        "sha256": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4"
-      },
-      {
-        "path": "src/engine/architectThesis.js",
-        "bytes": 7247,
-        "sha256": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0"
-      },
-      {
-        "path": "src/engine/beatReporter.js",
-        "bytes": 14751,
-        "sha256": "a9ba04315cb20a21f9d0c52cc240749c1f107f723d6d51fbab9267675006a2d6"
-      },
-      {
-        "path": "src/engine/capAlerts.js",
-        "bytes": 6315,
-        "sha256": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03"
-      },
-      {
-        "path": "src/engine/capCompliance.js",
-        "bytes": 20058,
-        "sha256": "d748466711a68d14f03ba1769027af828f8b29aa11a07fb36d06bff1ea70cede"
-      },
-      {
-        "path": "src/engine/coachingMarket.js",
-        "bytes": 16734,
-        "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011"
-      },
-      {
-        "path": "src/engine/coachingTree.js",
-        "bytes": 9579,
-        "sha256": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73"
-      },
-      {
-        "path": "src/engine/continuityLedger.js",
-        "bytes": 8621,
-        "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896"
-      },
-      {
-        "path": "src/engine/cpuTradeMarket.js",
-        "bytes": 5196,
-        "sha256": "8a78017fdf15a2f2a5c684150e83f6838fd145a0a1a0268a90a98d3caa6de8d2"
-      },
-      {
-        "path": "src/engine/depthChartUsage.js",
-        "bytes": 11825,
-        "sha256": "6137615931198349196ee514370eee3888cddcd50132e1b09e22f75a705471fb"
-      },
-      {
-        "path": "src/engine/draftCombine.js",
-        "bytes": 5974,
-        "sha256": "68c9f6b2928c7f513849becbdfb2c407911dec67edce7080f51cc14c61cc639b"
-      },
-      {
-        "path": "src/engine/facilityMarket.js",
-        "bytes": 12906,
-        "sha256": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097"
-      },
-      {
-        "path": "src/engine/fanSentiment.js",
-        "bytes": 3641,
-        "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58"
-      },
-      {
-        "path": "src/engine/gameSimulator.js",
-        "bytes": 82312,
-        "sha256": "d86ecae2169357ae8d879c91028edfe7cb3af356dd15bb0dcc1851eb9d55b811"
-      },
-      {
-        "path": "src/engine/gmArchetype.js",
-        "bytes": 2300,
-        "sha256": "21b2991fd81a026119192a441039e4af469f615775cc0c0776fcb534382d4b84"
-      },
-      {
-        "path": "src/engine/gmDecisionAuthority.js",
-        "bytes": 17267,
-        "sha256": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1"
-      },
-      {
-        "path": "src/engine/gmDecisionConsequences.js",
-        "bytes": 23253,
-        "sha256": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a"
-      },
-      {
-        "path": "src/engine/gmLegacyScore.js",
-        "bytes": 19007,
-        "sha256": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3"
-      },
-      {
-        "path": "src/engine/injurySystem.js",
-        "bytes": 9323,
-        "sha256": "ca0a4e9b987e750fb39d7c2200b8cadd07c2a4562e94820914b2f1eed69ef556"
-      },
-      {
-        "path": "src/engine/matchupEdge.js",
-        "bytes": 5305,
-        "sha256": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b"
-      },
-      {
-        "path": "src/engine/narrativeEvents.js",
-        "bytes": 13267,
-        "sha256": "e3db2b41c23aeff62312b7e1bc29806c4e65528b6ac010f321da4793bbfdd6bc"
-      },
-      {
-        "path": "src/engine/offseasonDevelopmentReport.js",
-        "bytes": 4011,
-        "sha256": "965ce7177c18ccad6a834e8cbfb1eb70724bbefa42999700615b749c1a4e7dbe"
-      },
-      {
-        "path": "src/engine/offseasonSimulator.js",
-        "bytes": 26570,
-        "sha256": "3ef37859afbaef53564fb95c1896d5a543aa9f6372bc10a7a5a8dd2638018f86"
-      },
-      {
-        "path": "src/engine/onClockTradeMarket.js",
-        "bytes": 5121,
-        "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7"
-      },
-      {
-        "path": "src/engine/ownerConfidence.js",
-        "bytes": 5471,
-        "sha256": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b"
-      },
-      {
-        "path": "src/engine/playCalling.js",
-        "bytes": 5136,
-        "sha256": "9a16cf10342d08c3e81a0f1d1acacc765ef7fc9d794dea9d056f7156427f3c23"
-      },
-      {
-        "path": "src/engine/playerAgentAI.js",
-        "bytes": 6901,
-        "sha256": "4d27b1842115689ddd0de4f264180acd2d765e44e47118af1c8c5d5d7aea381d"
-      },
-      {
-        "path": "src/engine/pressConference.js",
-        "bytes": 14480,
-        "sha256": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f"
-      },
-      {
-        "path": "src/engine/pressRoom.js",
-        "bytes": 14828,
-        "sha256": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa"
-      },
-      {
-        "path": "src/engine/rivalFrontOffice.js",
-        "bytes": 3052,
-        "sha256": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76"
-      },
-      {
-        "path": "src/engine/rivalGmPersona.js",
-        "bytes": 6110,
-        "sha256": "65a05e12f9fd8e8a405f5b524926e83cf0d4a48f788e6e59294c7d39e757a1c8"
-      },
-      {
-        "path": "src/engine/rivalTradeOffers.js",
-        "bytes": 13031,
-        "sha256": "1110fa18df8986890c93a49b9c32ab7afdb512b64bcccaaca16016afe2411be7"
-      },
-      {
-        "path": "src/engine/rivalryDNA.js",
-        "bytes": 4936,
-        "sha256": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962"
-      },
-      {
-        "path": "src/engine/schedule.js",
-        "bytes": 15255,
-        "sha256": "9f68341d397ff04effc9c4b97153a2f40ce3515476f10b5dc541834e779782e3"
-      },
-      {
-        "path": "src/engine/seasonSimulator.js",
-        "bytes": 7479,
-        "sha256": "6cd5419fb5943a872982190f19d3351ba0c39e2150c3fa0e906a055db92a0173"
-      },
-      {
-        "path": "src/engine/situationalCalls.js",
-        "bytes": 3887,
-        "sha256": "6bb5abc288c544abfbc94af009034c092f112e73a309f53600664e589a9a43db"
-      },
-      {
-        "path": "src/engine/speedrunChallenge.js",
-        "bytes": 3881,
-        "sha256": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb"
-      },
-      {
-        "path": "src/engine/staffGeneration.js",
-        "bytes": 3565,
-        "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
-      },
-      {
-        "path": "src/engine/standings.js",
-        "bytes": 3867,
-        "sha256": "7fdcfe91675c3651993d91b3efaeb5c8860f18703c5cf266d3f0e932603f19f2"
-      },
-      {
-        "path": "src/engine/timeCapsule.js",
-        "bytes": 13128,
-        "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
-      },
-      {
-        "path": "src/engine/veteranMentorship.js",
-        "bytes": 14005,
-        "sha256": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b"
-      },
-      {
-        "path": "src/engine/weeklySimulator.js",
-        "bytes": 2186,
-        "sha256": "fad2ce0a18bc64738937e217fba284affb797a4c9acc96d8c889612eb20fa77a"
-      },
-      {
-        "path": "src/engine/whatIfReplay.js",
-        "bytes": 4072,
-        "sha256": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a"
-      },
-      {
-        "path": "src/runtime/GameSession.js",
-        "bytes": 355252,
-        "sha256": "d409fde9e178d2dd54477d83d13f0de35774cc0b2fe99287a51d2089d31b353b"
-      },
-      {
-        "path": "src/runtime/advanceWeekCommand.js",
-        "bytes": 7037,
-        "sha256": "4989eefa5de67fa778fb5b6759a04401ae4850fbce2e85e6dede5ccf92357d91"
-      },
-      {
-        "path": "src/runtime/applyLeagueSetup.js",
-        "bytes": 6269,
-        "sha256": "43d627b8de1fa10394acb255e9394a50ca892ccf8ff8ec1bb384777c673c309a"
-      },
-      {
-        "path": "src/runtime/architectLedger.js",
-        "bytes": 3897,
-        "sha256": "8a1b2aa18052c46c17ff3de07fccae3520726d4d97804bf2ed6dc73eb0d54563"
-      },
-      {
-        "path": "src/runtime/franchiseAuthority.js",
-        "bytes": 10648,
-        "sha256": "805662347b693f1eaa2e3666614a1390a9953b7642d4aa9d84ddc67e3f7c7f94"
-      },
-      {
-        "path": "src/runtime/handlers/architectThesisHandler.js",
-        "bytes": 1264,
-        "sha256": "f4e591fbe4c76b9583e6229ce55fefdf202a7cf9c2f810c2038ea097a7a249cb"
-      },
-      {
-        "path": "src/runtime/handlers/franchiseMomentHandler.js",
-        "bytes": 4492,
-        "sha256": "dd9104a2e6597bb6276e720e50f850df23fcadb295ea050de23653d0469b315a"
-      },
-      {
-        "path": "src/runtime/handlers/tradeOffersHandler.js",
-        "bytes": 1342,
-        "sha256": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2"
-      },
-      {
-        "path": "src/runtime/modules/sessionModules.js",
-        "bytes": 1099,
-        "sha256": "05316a071da75db231b7d3151b6c8eda874e3eadf7d78e086bbe39d9fe756f40"
-      },
-      {
-        "path": "src/runtime/multiplayerSession.js",
-        "bytes": 9525,
-        "sha256": "834151078c7990d52fbcdd4f203527b991939b7aa86f5a42dc39ca50acdb55a7"
-      },
-      {
-        "path": "src/runtime/services/CoachingService.js",
-        "bytes": 6743,
-        "sha256": "8bc57ca62777f7c8453d77596361fba5c6242fc7283fed57fd193f6781f731c5"
-      },
-      {
-        "path": "src/runtime/services/ContractService.js",
-        "bytes": 1685,
-        "sha256": "e50f791c2f2613e6a875fb4333d0f7890469c5151293c28b3911f10bf39d06c5"
-      },
-      {
-        "path": "src/runtime/services/TradeService.js",
-        "bytes": 14734,
-        "sha256": "60afd1b18db65264393546459f226dac9d60c427cdbbf7c1f9e9c147118d0cd6"
-      },
-      {
-        "path": "src/runtime/services/index.js",
-        "bytes": 1835,
-        "sha256": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6"
-      },
-      {
-        "path": "src/runtime/services/tradePlan.js",
-        "bytes": 1939,
-        "sha256": "b58965b01237848130b36067e8e5f158fd488b1ec1ae0a05fbadccc8938e36a7"
-      },
-      {
-        "path": "src/runtime/snapshotMigration.js",
-        "bytes": 4725,
-        "sha256": "54d632309f363300c2ab503b1567a37801a6d7c67454e4d076d297bf4ca62a12"
-      },
-      {
-        "path": "src/runtime/weekResultProjection.js",
-        "bytes": 10497,
-        "sha256": "89ddf5d63abb22222d3a0a86cb3a234b122f06d9c69b22ccb5daa97a3838b983"
-      },
-      {
-        "path": "src/runtime/weeklyTactic.js",
-        "bytes": 3178,
-        "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
-      },
-      {
-        "path": "src/sport/calendarContract.js",
-        "bytes": 5261,
-        "sha256": "caf5a986143bfbcbf5f7f9295ac36fa39cd3e81259d3c3d52874ec10f98e2179"
-      },
-      {
-        "path": "src/sport/football/calendar.js",
-        "bytes": 1774,
-        "sha256": "6b361650154951e960380cbea28587425aa5fb2945f771b0562455769a53cbf8"
-      },
-      {
-        "path": "src/sport/football/competition.js",
-        "bytes": 570,
-        "sha256": "45f183fe0fbe3ae526092644abd9f0ff14e822259f00f21484411109c0bbce55"
-      },
-      {
-        "path": "src/sport/football/index.js",
-        "bytes": 1224,
-        "sha256": "14da23943698fc27fddce255a00d039a41667291c9391440d08c77472dcc1c0a"
-      },
-      {
-        "path": "src/sport/football/postseason.js",
-        "bytes": 11119,
-        "sha256": "9b8578f5a2b76b684a834e03c4ffd07b1e776fa5c0b444ee4b21c60fc12e4550"
-      },
-      {
-        "path": "src/sport/football/rules.js",
-        "bytes": 609,
-        "sha256": "64fef4a35a808ee4ca33f504b5ff774ee08b24803a3157ca167d419a0af87de1"
-      },
-      {
-        "path": "src/sport/football/statSchema.js",
-        "bytes": 13775,
-        "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
-      },
-      {
-        "path": "src/sport/registry.js",
-        "bytes": 1823,
-        "sha256": "f5958f541d40c6b75dfe420de00061f1a336cfeb62e0171f48b9991916d3a2b5"
-      },
-      {
-        "path": "src/stats/applyGameStats.js",
-        "bytes": 1593,
-        "sha256": "cbc980c05c0d4cf600a0c8c6fbff88311197b9f05a7d49fe79f696750901f64f"
-      },
-      {
-        "path": "src/stats/approximateValue.js",
-        "bytes": 12713,
-        "sha256": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486"
-      },
-      {
-        "path": "src/stats/gameImpact.js",
-        "bytes": 3136,
-        "sha256": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5"
-      },
-      {
-        "path": "src/stats/gmReportCard.js",
-        "bytes": 10017,
-        "sha256": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca"
-      },
-      {
-        "path": "src/stats/leagueLens.js",
-        "bytes": 12467,
-        "sha256": "b2171af8985982f16fce7dff6311011c7a64fb40dc237de7358b8c8edd36a26f"
-      },
-      {
-        "path": "src/stats/profiles/pfrCareerWeightedProfile.js",
-        "bytes": 4418,
-        "sha256": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0"
-      },
-      {
-        "path": "src/stats/profiles/pfrRecentWeightedProfile.js",
-        "bytes": 2383,
-        "sha256": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866"
-      },
-      {
-        "path": "src/stats/progressionParity.js",
-        "bytes": 41570,
-        "sha256": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1"
-      },
-      {
-        "path": "src/stats/realismCalibrator.js",
-        "bytes": 25821,
-        "sha256": "e9d51c5555059430201a8fd31dabee7eb71b75f895f754cdbffe64afb5c17d58"
-      },
-      {
-        "path": "src/stats/scoreline.js",
-        "bytes": 2928,
-        "sha256": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b"
-      },
-      {
-        "path": "src/stats/statBook.js",
-        "bytes": 24640,
-        "sha256": "e891459b0012384c525d15131714e0334a072b7fe3a779152d9b272b4b735683"
-      },
-      {
-        "path": "src/stats/teamRecord.js",
-        "bytes": 765,
-        "sha256": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51"
-      },
-      {
-        "path": "src/utils/rng.js",
-        "bytes": 5535,
-        "sha256": "12b630dea99627b266aef906d5344ba17ce77316b336ca2dab113c655d41d089"
-      },
-      {
-        "path": "src/utils/rngStreams.js",
-        "bytes": 1408,
-        "sha256": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181"
-      },
-      {
-        "path": "stats-surface.json",
-        "bytes": 3191,
-        "sha256": "e75c35e7f59e1c1c3a84bff2d581a238835b6710ac791b34802b80680f3dd67a"
-      },
-      {
-        "path": "stats.html",
-        "bytes": 8090,
-        "sha256": "392b2bdc3f5c243cd8e293990a10149081f0678231c21477a31daa275bc3eebf"
-      },
-      {
-        "path": "status-archive.html",
-        "bytes": 23230,
-        "sha256": "386cb67134826e1fecc1790d2bf24920160880bd477cb8b94a7fbb69232e37fa"
-      },
-      {
-        "path": "status.html",
-        "bytes": 8639,
-        "sha256": "4204644e01b9726c3b5eed621d7887608decc34c3fe5d72de50923045e4d3fae"
-      },
-      {
-        "path": "styles.b8e154d291.css",
-        "bytes": 212862,
-        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
-      },
-      {
-        "path": "styles.css",
-        "bytes": 212862,
-        "sha256": "b8e154d291471dc0b7ff9e0d5e43fbdcda8d475ff1803ef81e68458e08df2c4a"
-      },
-      {
-        "path": "sw.js",
-        "bytes": 9877,
-        "sha256": "cdd12a71cf56b99fc5bc6bbd00dae3f3260ea96344f464137ba4675df92fc785"
-      },
-      {
-        "path": "terms.html",
-        "bytes": 6025,
-        "sha256": "74726d11c99ad2854fa4cebea664d4aa146519dcc90c828c4cf76597882e75dc"
-      }
-    ],
-    "exclusions": [
-      "_health",
-      "deploy-manifest.json",
-      "edge-policy-receipt.json"
-    ]
-  },
-  "artifact": "static responsive-evidence:c826867cc3d4add0c8e045491b81af9cabe5509b75a820c7ba6b58cec2937c29",
+  "capturedAt": "2026-10-22T07:07:17.217Z",
+  "sourceRevision": "local-worktree",
   "themes": [
     "dark",
     "light"
   ],
+  "status": "selected-character-visual-scope-reviewed; exact-candidate-release-pending",
+  "scope": "S118 selected measured-body, face/blink, foot-motion, family identity, dossier controls and status-note improvements.",
+  "sourceHashes": {
+    "public/app.js": "c79e2b07d4300e7aebd0d642618b0ad2e9a24b2fee7a72e57f09357fc9e2ab28",
+    "public/status.html": "96f719ac318b76abd1ed56702fde8e0e50570b67dae4491176199800e92b43fb",
+    "public/lib/playerHead3d.js": "b410c81a2633052a77589cb84d4401358ee490f68f8de737be92276bc0d95abb",
+    "public/lib/playerHeadImage.js": "f4c264f72ba4643abe271fc8298e8395e9096570db18e281666791c998639a0f",
+    "public/lib/playerBody3d.js": "b214af25db170da632d972a039d107137e5bc22bc6c74993b27325e8f001aa8e",
+    "public/lib/playerBodyAnimation3d.js": "ef6920eb7f435ce19a4119c937de85335e283d1890432592b03aa36a75c15d98",
+    "public/lib/playerFootArticulation.js": "2ca2890c5814109f64a60b5f8443423c124712e01413ab57d3548489175bab7e",
+    "public/lib/playerCharacter3d.js": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+    "public/lib/playerProfileNarrative.js": "f00e726494fb4df27f43172e1792609edb73abf659787438f3fea3473b490391",
+    "src/domain/playerFamilyIdentity.js": "7a319e232c58c2c8f50477fb96d81287b2769214f2e8377010eed6707bac5d4d",
+    "src/domain/playerVisualIdentity.js": "aee4524633f194c8125221cf7af971015686716d6b7d4618d5a6f0f17cebc6af",
+    "src/domain/playerIdentity.js": "c25aea313929cf1dd9c1890f675a754b2b1f8c501aada635afbf513bb07ff7f7",
+    "src/domain/playerMeasurements.js": "68156e5be124649c7549c02dcbad706fb56dd9cbc95fc52f6bdeb0dcd1cef90e",
+    "src/domain/playerFactory.js": "616f136e07074d33fa64f21732f50b16c1e22ff9ca8b71f57b9dc22083db47b3",
+    "src/runtime/identityMetadataSnapshot.js": "dfc7d5afcfd0e253350c030f690d4c539c039dbc7d2c1c507bb64684156432ad",
+    "src/engine/offseasonSimulator.js": "848dcd193a1a484b0e1330d074f30f3af56298f94c9e5f0eba57f370be2d3209",
+    "src/runtime/GameSession.js": "d25af1bf04a7af424fe76456596e8317d0e311d11dec8411eb9d787bfd12fb6d",
+    "public/lib/tabContracts.js": "d6a8b92e0e8a79ddbe65afd1c184fc6802b8b75b20727784a1ebc64b1b585f1b",
+    "public/lib/tabSettings.js": "f12a47a79e46e1788abfd69496abdf690120c479a326ba1bd5a19dab4d958e72"
+  },
+  "runtimeCaptureProvenance": {
+    "src/runtime/GameSession.js": "d25af1bf04a7af424fe76456596e8317d0e311d11dec8411eb9d787bfd12fb6d"
+  },
+  "inspection": {
+    "reviewer": "primary + independent-character-review",
+    "renderedPixelsReviewed": true,
+    "findings": [
+      "No new mandatory crown, pole or canthal defect in current optimized head.",
+      "Controls and status readable across desktop/mobile dark/light.",
+      "Stylized face shading and procedural hair remain limitations.",
+      "All 28 current frames independently inspected across desktop/mobile, dark/light and six modes plus mobile front/profile.",
+      "No mandatory visible joint, silhouette, visibility or readability defect.",
+      "Stylized torso/materials remain an art limitation; reduced-motion snapshots do not establish physical mobile frame rate.",
+      "All eight actual family dossiers inspected across both themes and viewports; shared family background/pigment with individual faces and reload consistency.",
+      "Fresh final-build body/family pass: all36 frames exactly hash-identical to independently inspected captures; primary reopened desktop dark running and mobile light jump. Runtime provenance refreshed to current owner-fix source."
+    ],
+    "fixesApplied": [
+      "Closed-eye canthal returns and crown preservation.",
+      "Closed torso caps and correct torso draw batching.",
+      "Gentler measured limb/torso envelopes, clothing relief and articulated swing feet.",
+      "Saved family authority and correct name-only dossier opener."
+    ],
+    "blockingDefectsOpen": 0
+  },
+  "limitations": [
+    "Stylized procedural characters; no photorealism claim.",
+    "Modeled segment volume is not validated tissue mass or closed whole-character union volume.",
+    "Headless emulated viewports do not establish physical mobile frame rate.",
+    "Historical S117 broader naturalism/actual-user 20–30-season evidence remains unselected and unproven."
+  ],
+  "previousReceipt": {
+    "file": "S117-LATEST-preserved.json",
+    "scope": "Broader S117 full-person craft",
+    "accepted": false,
+    "blockingDefectsOpen": 1,
+    "sha256": "8b65ce0dbc3b5d86d7097991cc63dd535b33cfabf1cf8904aa81148d26203554",
+    "note": "Preserved unchanged; its broader open craft claim is not silently promoted by the narrower S118 evidence."
+  },
+  "releaseVerified": false,
   "captures": [
     {
-      "file": "s116-desktop-game-overview-dark.png",
-      "sha256": "763d88dccd30430a4e7fb736cf43b813ae174024e26e844ec3a71ed7f25f236a",
+      "file": "captures/s118-face-budget-person-0-desktop-dark.png",
+      "person": 0,
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
+      "sha256": "b5fe6f7efae679dbf3fc365c0177736590814d9b8e60b7b9380795ca06f567f9",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-game-overview-light.png",
-      "sha256": "0d51a22a440ad314e2aa9fa9a57d4429e619d241fa1c554552ce0163bacb3fd1",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
+      "file": "captures/s118-face-budget-native-0-open.png",
+      "person": 0,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
       },
-      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
-    },
-    {
-      "file": "s116-desktop-game-league-dark.png",
-      "sha256": "d08513093c35cbf1565a7886b9e8b72b79f2b377cd49c0d0a91b286ab2c1fb6a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "League standings and season navigation"
+      "sha256": "c465eac01735686db84dff97892391fd06b49ec82acdd426f01fa4b19c90c56a",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-0-open.png"
     },
     {
-      "file": "s116-desktop-game-league-light.png",
-      "sha256": "bbdaed02eb7792325969df9ee25b13b52544ac795f8e397a16d1490944811092",
-      "theme": "light",
+      "file": "captures/s118-face-budget-native-0-closed.png",
+      "person": 0,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "League standings and season navigation"
+      "sha256": "749104a65b7cd4aadeaacc80030089e68e1b62f311c8e14cbb34de2c40bccb87",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-0-closed.png"
     },
     {
-      "file": "s116-desktop-game-roster-dark.png",
-      "sha256": "c2b01855cdafc406fa46d130d7039738a365ee1eb7bb4dd68195958ac7e6a3ac",
+      "file": "captures/s118-face-budget-native-0-clay-closed.png",
+      "person": 0,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Team workspace roster mode"
+      "sha256": "6cb586cff87614fbe6ee8c50ce2606cad0ceec9d33a773b4fed6326ce161920f",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-0-clay-closed.png"
     },
     {
-      "file": "s116-desktop-game-roster-light.png",
-      "sha256": "5c68d1f09d45d901f50af9ec63f599ea21bc2b365b9f4e0b0793fa22755a5944",
-      "theme": "light",
+      "file": "captures/s118-face-budget-person-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Team workspace roster mode"
+      "sha256": "7e58d6a4e1061c22f256e2d0eae499780fe4fe3f823db66f2f9fd6b6eeb5b012",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-game-depth-dark.png",
-      "sha256": "50d16d525c258d9fbb955cf0cce8bf3dccd2050226c0801d01bca464bf75183a",
+      "file": "captures/s118-face-budget-native-1-open.png",
+      "person": 1,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Team workspace depth mode"
+      "sha256": "51fbdeeb44547edb069967cfd13782c531a2bcbd27880af058b92cd27e70b437",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-1-open.png"
     },
     {
-      "file": "s116-desktop-game-depth-light.png",
-      "sha256": "c164b562b2ddddb129cfd365508d160c0e55a55a8b29c856eda173695b0090ff",
-      "theme": "light",
+      "file": "captures/s118-face-budget-native-1-closed.png",
+      "person": 1,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Team workspace depth mode"
+      "sha256": "c1c781b3d89defe2b4c8bb557df41071b6d006234da5e806578ac35347541da5",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-1-closed.png"
     },
     {
-      "file": "s116-desktop-game-trades-dark.png",
-      "sha256": "8b9a1579afcb6a83928290ef91dd82900f7ee6327d76bcd6739736caaaa883b5",
+      "file": "captures/s118-face-budget-native-1-clay-closed.png",
+      "person": 1,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Trade market and club identity"
+      "sha256": "00113cf44b1cb31e1d8fdd0c5c5d9f22e948619450cd6835b244ead7b94acf50",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-1-clay-closed.png"
     },
     {
-      "file": "s116-desktop-game-trades-light.png",
-      "sha256": "9fa179e516ca08c99fe9bc8fd4f4999f1a8a01eb2516ca536f5ffc8fb5b6160f",
-      "theme": "light",
+      "file": "captures/s118-face-budget-person-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Trade market and club identity"
+      "sha256": "3515fa43d90a387b4e8af41ba7bb66066f39eeeda4188910fd8e87fb64922fdb",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-game-dialog-dark.png",
-      "sha256": "6da4096a9ff1e92b5925dc5ee0b96f651008746e0bbb628e01eb5aed95aaf7e5",
+      "file": "captures/s118-face-budget-native-2-open.png",
+      "person": 2,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "First-run Opening Contract tutorial"
+      "sha256": "abf0d2f46cfa5ee74929597130484caf504a9d42a2fd44d0ad232f91467f34b9",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-2-open.png"
     },
     {
-      "file": "s116-desktop-game-dialog-light.png",
-      "sha256": "9c5036284e5475a7be2e8d58494eb0cc9bcc82c9ca5f5acb63f5e364b340ebac",
-      "theme": "light",
+      "file": "captures/s118-face-budget-native-2-closed.png",
+      "person": 2,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "First-run Opening Contract tutorial"
+      "sha256": "8546cb04aa5880842801a663eee4298bdd5337d7dfd86af955618aaac6710b97",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-2-closed.png"
     },
     {
-      "file": "s116-desktop-tutorial-skip-dark.png",
-      "sha256": "af861848a236521ffbabd93df6df135dc0cf7efcabb98e0920640ba9a6a4c343",
+      "file": "captures/s118-face-budget-native-2-clay-closed.png",
+      "person": 2,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+      "sha256": "37da7e48abb7ad0dc86a4424327f540199ee594eb07478c32d3789697bac74b7",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-2-clay-closed.png"
     },
     {
-      "file": "s116-desktop-tutorial-skip-light.png",
-      "sha256": "b6af68fc85dc75615155543c5224a94c619b1d1093c7ec785c78cd13048a79ca",
+      "file": "captures/s118-face-budget-person-0-desktop-light.png",
+      "person": 0,
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+      "sha256": "9ea82c38cbf93c412fe166bc2b5bb69236cf35e45f3135c6690f92e8b96156a1",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-desktop-light.png"
     },
     {
-      "file": "s116-desktop-tutorial-identity-dark.png",
-      "sha256": "9cfb5aab7dcbb42c060c52f47f8d5d67d7b61e262e28172e74f8a4e8cfd92a4d",
-      "theme": "dark",
+      "file": "captures/s118-face-budget-person-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Opening Contract identity choice under production policy"
+      "sha256": "b51b7bff8b5425d173296e639a0861ed73e07c96ec242e3f112336b4cc66f308",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-desktop-light.png"
     },
     {
-      "file": "s116-desktop-tutorial-identity-light.png",
-      "sha256": "5b40b4059905478e753d17d509135fa5aed5f108a2b017d5bbd40023c95c5bfb",
+      "file": "captures/s118-face-budget-person-2-desktop-light.png",
+      "person": 2,
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Opening Contract identity choice under production policy"
+      "sha256": "b6ab7f671f0c0d7bb19b0e276b94afb7eaa32b5d4fff3a1865a4e99c4d5fc3de",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-desktop-light.png"
     },
     {
-      "file": "s116-desktop-tutorial-pressure-dark.png",
-      "sha256": "9ad2a167c3d14a944ced298341991b804f53c2c20dc88dd5a6d8b4995b6528c0",
+      "file": "captures/s118-face-budget-person-0-mobile-dark.png",
+      "person": 0,
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Opening Contract pressure choice under production policy"
+      "sha256": "283eba5997e5d9045af4f6e124f58536768723c8fed4f6e7509f820d9dcbdf5c",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-tutorial-pressure-light.png",
-      "sha256": "6997a63b2ad2df24d733b567e8ecbf54a33cd3867a44f2757333ad60c68d5507",
-      "theme": "light",
+      "file": "captures/s118-face-budget-person-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Opening Contract pressure choice under production policy"
+      "sha256": "dbf7dc26eb42121bbcea0ed176ebff20537ab29e7ce2c2b2625c59818bbb99a4",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-tutorial-first-call-dark.png",
-      "sha256": "ff0824e1764af57eae20052d14f0d812053b1b14908bdf0c0f107d6c1ac5babe",
+      "file": "captures/s118-face-budget-person-2-mobile-dark.png",
+      "person": 2,
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Opening Contract first call under production policy"
+      "sha256": "8ff27c15c505fa6581291ca7463da4362143e92ae30e09147008eefe820828d5",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-tutorial-first-call-light.png",
-      "sha256": "8e35560d7cb548c64b6c2dc80f4fc311ba4fc53d5f6a83ff36e0f0e99e1df814",
+      "file": "captures/s118-face-budget-person-0-mobile-light.png",
+      "person": 0,
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Opening Contract first call under production policy"
+      "sha256": "f8faeb69b866ef8e952528fbe45d5cf510e17a78fee22748182347789cff5e07",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-mobile-light.png"
     },
     {
-      "file": "s116-desktop-tutorial-receipt-dark.png",
-      "sha256": "828832601db508c518b00496095f5bb7da0c8b6763db9b558456439e75f1572b",
-      "theme": "dark",
+      "file": "captures/s118-face-budget-person-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Committed Opening Contract receipt under production policy"
+      "sha256": "89f6f63b0b78117937d018817208b2aba1dc85ca973cf869040456dc091016a0",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-mobile-light.png"
     },
     {
-      "file": "s116-desktop-tutorial-receipt-light.png",
-      "sha256": "c13512f993197df2c91638ea0bac71f8e1f4b0b81a47fcf16ab9dbc2c53e6507",
+      "file": "captures/s118-face-budget-person-2-mobile-light.png",
+      "person": 2,
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Committed Opening Contract receipt under production policy"
+      "sha256": "08464d55055b70668aeb44d1727e012fb842a904d5ba9ede98ba441f648320c7",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-mobile-light.png"
     },
     {
-      "file": "s116-desktop-advisor-dark.png",
-      "sha256": "970a8eb373c80d318d39e04da928eaa95bca996b0471b8010d7180ef4716109f",
+      "file": "captures/s118-status-before-desktop-dark.png",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
+      },
+      "sha256": "c9160e47ff27cdc24ae8dd1f90283a45e0ba5f20c85110bfa7aa00e0dc7df094",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
       },
-      "page": "Styled Front Office Advisor under production policy"
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-advisor-light.png",
-      "sha256": "155763f9137bfcadb47229f19ec1affb15e525bdb508b92bd0b5f13936c9e41f",
+      "file": "captures/s118-status-before-desktop-light.png",
+      "phase": "before",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Styled Front Office Advisor under production policy"
+      "sha256": "34641600ebc51a7190f0c233e3f3ffd340bf1f8a892793bb0d6e19ee9d33060d",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
+      },
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-desktop-light.png"
     },
     {
-      "file": "s116-desktop-dynasty-timeline-dark.png",
-      "sha256": "0c1499b382c4914b92bf26102fa4efee2fa6a3da25a3586571cc91d6b21ef23a",
+      "file": "captures/s118-status-before-mobile-dark.png",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "090073ba2796e4991957186543b0d23b7ff6736e1bacfed9f0d0c97f434b6985",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
       },
-      "page": "Theme-aware dynasty history fixture under production policy"
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-dynasty-timeline-light.png",
-      "sha256": "b29b15da44cda95d1ea3d9173fa61395fd7f6fd31e5ae65881da6f18a180f15e",
+      "file": "captures/s118-status-before-mobile-light.png",
+      "phase": "before",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Theme-aware dynasty history fixture under production policy"
+      "sha256": "6566cb638da08ae724a9bbd0632f5869c4457d8b1f4f85ad4fa46bad39fd6f4f",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
+      },
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-mobile-light.png"
     },
     {
-      "file": "s116-desktop-first-debrief-dark.png",
-      "sha256": "35abc23338c83770d561c8fe58031e88474179abd548262a6c737b8c73658ac0",
+      "file": "captures/s118-status-after-desktop-dark.png",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
+      },
+      "sha256": "55b686c899ef9857d6b71b3e68e0453b2e584fb8422f365f4364b9d19b7f5319",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
       },
-      "page": "Optional first-debrief feedback under production policy"
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-first-debrief-light.png",
-      "sha256": "506b300782ebb46ced822cebd442de7f57af94342afdb8b6795ad169b109ab89",
+      "file": "captures/s118-status-after-desktop-light.png",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Optional first-debrief feedback under production policy"
+      "sha256": "5a4af2be392fef0fa4b85e41e930f4fa493176a36cd2ddcf3337c68fd4dec321",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
+      },
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-desktop-light.png"
     },
     {
-      "file": "s116-desktop-moment-card-dark.png",
-      "sha256": "be1a4883500008508de32c8bb6622fcef5ebaea4ad5b291507a6e97e6170b893",
+      "file": "captures/s118-status-after-mobile-dark.png",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "37194de430e0c6f3dca389f95c075c544aa535f51c0951d3cb15bcac2578f51d",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
       },
-      "page": "Moment share control under production policy"
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-moment-card-light.png",
-      "sha256": "b7db486efc6427a5b76e7b09a378813415a7e75867485992c3334293587a50fb",
+      "file": "captures/s118-status-after-mobile-light.png",
+      "phase": "after",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Moment share control under production policy"
+      "sha256": "7036365953120c644983a4f35508c5cd7a1e60c72d8dc70c6328357988840b69",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
+      },
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-mobile-light.png"
     },
     {
-      "file": "s116-desktop-return-digest-dark.png",
-      "sha256": "49452e65a1bec8b039fa8b9cc39cdfec4db188c0fbd81b0cbd53415f6905fc1f",
+      "file": "captures/s118-controls-board-desktop-dark.png",
+      "page": "actual board controls",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Return-session digest under production policy"
+      "sha256": "90c8bcc46b1aee8c348150b5c69408fde924737288e6a7989ecb49988210e525",
+      "original": "output/playwright/s118-controls-board-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-return-digest-light.png",
-      "sha256": "453f283c409285527cf388fe2c780c1e3548cba4585ab92bf157c8aea776b5a3",
+      "file": "captures/s118-controls-board-desktop-light.png",
+      "page": "actual board controls",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Return-session digest under production policy"
+      "sha256": "e29d1e16ff6792c60e2bb986302929b2cd9eb742f105eca8438dd2018652bd90",
+      "original": "output/playwright/s118-controls-board-desktop-light.png"
     },
     {
-      "file": "s116-desktop-cap-pressure-dark.png",
-      "sha256": "3e697dc02089f1d2eb87573bc6162913ca57c4db01e951498c7f113c0f6a231f",
+      "file": "captures/s118-controls-board-mobile-dark.png",
+      "page": "actual board controls",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Opening salary-cap pressure and General Manager legacy"
+      "sha256": "72da86db4ba3c8e0756be6a11d32976c8db89f5d97ee21f3c26db694e3aa2f09",
+      "original": "output/playwright/s118-controls-board-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-cap-pressure-light.png",
-      "sha256": "34feaa59ca427cea0d80944ca19ba6166022c33db259aa0fa2c5e50fe8d80803",
+      "file": "captures/s118-controls-board-mobile-light.png",
+      "page": "actual board controls",
+      "phase": "after",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Opening salary-cap pressure and General Manager legacy"
+      "sha256": "57fde4319aa6ab79e284465ca7a1b8d33c0d88f286777cc84902bde11b1783b3",
+      "original": "output/playwright/s118-controls-board-mobile-light.png"
     },
     {
-      "file": "s116-desktop-waiver-identity-dark.png",
-      "sha256": "b0d287f1c44abacdf10194201c332c30226a17914bfeee4edceb45da3d275539",
+      "file": "captures/s118-controls-contract-desktop-dark.png",
+      "page": "actual contract controls",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Named and rated waiver-wire player identity"
+      "sha256": "dffd8770eede0503d97e7f63700c9480b50ca929d6ab336ea90a136010d07cdb",
+      "original": "output/playwright/s118-controls-contract-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-waiver-identity-light.png",
-      "sha256": "a5ae1779f09f00005a638c4bb4161ac847f26be89c0b843207bf986939c56c3f",
+      "file": "captures/s118-controls-contract-desktop-light.png",
+      "page": "actual contract controls",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Named and rated waiver-wire player identity"
+      "sha256": "b6dc55f816f158e6d8c51296cbdd112ec0a46fea63363fa95686ed839d52881d",
+      "original": "output/playwright/s118-controls-contract-desktop-light.png"
     },
     {
-      "file": "s116-desktop-franchise-legends-dark.png",
-      "sha256": "0abb4d130c9c3833c08780715d7901baa01e655ba63d35f3a1e45a86237693c2",
+      "file": "captures/s118-controls-contract-mobile-dark.png",
+      "page": "actual contract controls",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Franchise Legends dynasty memory"
+      "sha256": "092c379f5f771da4da57caf732a68e74a2a203a641fefc7858a422b797b8d549",
+      "original": "output/playwright/s118-controls-contract-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-franchise-legends-light.png",
-      "sha256": "d3f9de36ff8e48e5480c596daf23530b85151ddaa96ab1f2221367519f97a9fb",
+      "file": "captures/s118-controls-contract-mobile-light.png",
+      "page": "actual contract controls",
+      "phase": "after",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Franchise Legends dynasty memory"
+      "sha256": "b66524bde1384356848f6feffdbbff8b5aec2972eadd7521c6bb9ecb9f622736",
+      "original": "output/playwright/s118-controls-contract-mobile-light.png"
     },
     {
-      "file": "s116-desktop-gm-persona-dark.png",
-      "sha256": "a6424fc3e68be9c21674c67e1c97f052c08f030dd9094a7554ad672390fc78c0",
+      "file": "captures/s118-controls-dossier-desktop-dark.png",
+      "page": "actual dossier controls",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "General Manager market reputation"
+      "sha256": "feca4adfff7b0e1b21a2439e2afa24008bb36a8caaf704e05b223940f8bc1a9c",
+      "original": "output/playwright/s118-controls-dossier-desktop-dark.png"
     },
     {
-      "file": "s116-desktop-gm-persona-light.png",
-      "sha256": "ffbcc2f46d099e6aa3ab29460592f9f6de1595f0b1d4a2de76412c5db6f7c61a",
+      "file": "captures/s118-controls-dossier-desktop-light.png",
+      "page": "actual dossier controls",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "General Manager market reputation"
+      "sha256": "d7751eccf990a09c7996774a0f57be33c27125bdb616bd3354860eec75ff545c",
+      "original": "output/playwright/s118-controls-dossier-desktop-light.png"
     },
     {
-      "file": "s116-desktop-trophy-road-dark.png",
-      "sha256": "5f34b51d09a9103345aed49ad003e34ae00a71d072d7e375a34a26b60522cd96",
+      "file": "captures/s118-controls-dossier-mobile-dark.png",
+      "page": "actual dossier controls",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Trophy Road progress and next unlock"
+      "sha256": "1a082c195efc54e194568ed32da0f6fd7b94925cc4fb8630f650fd34cb4b358e",
+      "original": "output/playwright/s118-controls-dossier-mobile-dark.png"
     },
     {
-      "file": "s116-desktop-trophy-road-light.png",
-      "sha256": "1af0ece0b9786917566c5f9eb21318bcdee163ca3a516b99afe7107ef8c2ff54",
+      "file": "captures/s118-controls-dossier-mobile-light.png",
+      "page": "actual dossier controls",
+      "phase": "after",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Trophy Road progress and next unlock"
+      "sha256": "e649eb1c8362907e6e8d3bee738279bee7793df1b0c63706ea0d95c8d74086dc",
+      "original": "output/playwright/s118-controls-dossier-mobile-light.png"
     },
     {
-      "file": "s116-desktop-sim-watch-reel-dark.png",
-      "sha256": "e75e6f8c6abc0093eedac6d95beb05a60bf9a13020e327e235565145f406f3fd",
+      "file": "captures/s118-before-desktop-dark-acceleration.png",
+      "original": "output/playwright/s118-before-desktop-dark-acceleration.png",
+      "sha256": "3c5552da549a5f29ab03c5f12fefff904492a64f6fc9a8437b97fcad2f29bcb9",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Broadcast Director Final Reel"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-sim-watch-reel-light.png",
-      "sha256": "d4deb5c3a640fad46c99505d83716a699eaf996bd82f5f8f464c6f8529b9f157",
-      "theme": "light",
+      "file": "captures/s118-before-desktop-dark-cut.png",
+      "original": "output/playwright/s118-before-desktop-dark-cut.png",
+      "sha256": "515bfbeb005dd896fd17fbdf199766882cdd1276cbf5fce57c30060782e4bbf7",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Broadcast Director Final Reel"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-room-watch-dark.png",
-      "sha256": "321da4aca09935e31e169ed8fac1950c6290cd34a26ac9c336d6c112fb55de26",
+      "file": "captures/s118-before-desktop-dark-endurance.png",
+      "original": "output/playwright/s118-before-desktop-dark-endurance.png",
+      "sha256": "c4c1c57ad4c1d8f20dbb4a01fe2308a9487e02f8ec47c9d27efc4a0faf31eefa",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Position Room Watch parity alerts"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-room-watch-light.png",
-      "sha256": "b83ebef0b856550084a2e0ed7d9e4b3554e383c193ee405aef6ff99b5ec2e0b1",
-      "theme": "light",
+      "file": "captures/s118-before-desktop-dark-jump.png",
+      "original": "output/playwright/s118-before-desktop-dark-jump.png",
+      "sha256": "2d960800ab6b0bc4bce0d90961944f1f69c625d2bcdcb4ba3ad96f746344e774",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Position Room Watch parity alerts"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-architect-cut-dark.png",
-      "sha256": "6f7a2d22d61915bf2577be3ab689ebedee6084ba2ff8def2fa9d1e961dd0e579",
+      "file": "captures/s118-before-desktop-dark-run.png",
+      "original": "output/playwright/s118-before-desktop-dark-run.png",
+      "sha256": "051a8ae10c5232f39f88e8a2749698b16a096deaeb08ba85ee0989fdf875c6ee",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Architect's Cut and Decision Anthology"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-architect-cut-light.png",
-      "sha256": "96265f95085b860ead4e07210a4e352c896e5fef9bb64ac8e42180855e61b934",
-      "theme": "light",
+      "file": "captures/s118-before-desktop-dark-strength.png",
+      "original": "output/playwright/s118-before-desktop-dark-strength.png",
+      "sha256": "6e7fbbfc9014917425842fa30e090dfd81d59d68b4558ca80c549fd3a0714c19",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Architect's Cut and Decision Anthology"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-guide-modal-dark.png",
-      "sha256": "47e28bee72cc091fe2cc484930d7e087bab36c8fd5449f0f08b417ea4c7ab98f",
-      "theme": "dark",
+      "file": "captures/s118-before-desktop-light-acceleration.png",
+      "original": "output/playwright/s118-before-desktop-light-acceleration.png",
+      "sha256": "c5379f532be1485b39224761c29b1e3df1908607ff74766718326db24a6c527f",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
+      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Game Guide populated modal"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-guide-modal-light.png",
-      "sha256": "5906c1024ee2864b235d1512fc14c9f6cb7d87409b95961a175e6b36ff556c90",
+      "file": "captures/s118-before-desktop-light-cut.png",
+      "original": "output/playwright/s118-before-desktop-light-cut.png",
+      "sha256": "20ebbbe2944477ba0db8112f97be72d89e76233762c402385cd78ea6533a79bd",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Game Guide populated modal"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-rival-coaching-dark.png",
-      "sha256": "bf8e1d4b9f3f3d0aac03a2575197eadbb384f18eb26c0abc6e393f2ffc60e836",
-      "theme": "dark",
+      "file": "captures/s118-before-desktop-light-endurance.png",
+      "original": "output/playwright/s118-before-desktop-light-endurance.png",
+      "sha256": "f03892879bfca60c2c72050b34157f30cc062499334aa6df0a6e0cd9e219e487",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
+      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Rival coaching ownership boundary"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-rival-coaching-light.png",
-      "sha256": "7a71a372495502ccdf286a11433631d40728f9d0d6ade88cf70c88ea22d9c462",
+      "file": "captures/s118-before-desktop-light-jump.png",
+      "original": "output/playwright/s118-before-desktop-light-jump.png",
+      "sha256": "ee254d3634097834bd1f7ad6061563829c76b7ffe9b8b4544117e30a356eaa16",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Rival coaching ownership boundary"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-decision-archive-dark.png",
-      "sha256": "25e60d720c5fc67f5916bde5952d1b398713b9efe76263cc3cf02836898e6eab",
-      "theme": "dark",
+      "file": "captures/s118-before-desktop-light-run.png",
+      "original": "output/playwright/s118-before-desktop-light-run.png",
+      "sha256": "76f19491252ed27ef985d9fa8c0ab76a302e0d959989883c8fa3132beab7e6f4",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
+      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Permanent Decision Archive sparse state"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-decision-archive-light.png",
-      "sha256": "1112883a9317e1baf13f5417feeb25fc3ffa2b3932936a07a4f80db13bc3f95b",
+      "file": "captures/s118-before-desktop-light-strength.png",
+      "original": "output/playwright/s118-before-desktop-light-strength.png",
+      "sha256": "69aa18af2fd51c63dd79164d0c489d504a34b27de5fdc04dd16165d1ac0c9e9b",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Permanent Decision Archive sparse state"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-co-gm-brief-dark.png",
-      "sha256": "0c7699d2b48d57a02ec99783e75802903dc15ebe64be71c228056be49b9259e5",
+      "file": "captures/s118-before-mobile-dark-acceleration.png",
+      "original": "output/playwright/s118-before-mobile-dark-acceleration.png",
+      "sha256": "c5d7b191f1440ab12a991288b6e8275332510c858519bcf014f7fab98e930ee8",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Privacy-bounded Co-GM Brief"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-co-gm-brief-light.png",
-      "sha256": "f99afeed34a27fae7721a0e9cf328d82392307127acb7a7c8c195179cf59e6a8",
-      "theme": "light",
+      "file": "captures/s118-before-mobile-dark-cut.png",
+      "original": "output/playwright/s118-before-mobile-dark-cut.png",
+      "sha256": "ab0121387df6a378b1025336720b9c7593c8378bfc94eb7bd82f006c99bc8bf7",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
+      "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Privacy-bounded Co-GM Brief"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-prediction-receipt-dark.png",
-      "sha256": "cde560cba9181e1d2f9154a8c81e89e0c29cbd5953b269153afa898b9d3c0d74",
+      "file": "captures/s118-before-mobile-dark-endurance.png",
+      "original": "output/playwright/s118-before-mobile-dark-endurance.png",
+      "sha256": "87ef7156de9d77736f9091a104b62841e61fb05575beb6ed2a0bdacc36ffaf21",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Prediction winner and margin receipt"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-prediction-receipt-light.png",
-      "sha256": "7a0252ce597e060f82af3b8f703074a57e7468437c0f9f3cf9872170d577ceac",
-      "theme": "light",
+      "file": "captures/s118-before-mobile-dark-front.png",
+      "original": "output/playwright/s118-before-mobile-dark-front.png",
+      "sha256": "7fb7df55707d986c68eb17aa545aa67f857274293f616e955e5b8cbe9dcffcf0",
+      "page": "actual saved OL dossier front",
+      "phase": "before",
+      "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Prediction winner and margin receipt"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-agent-negotiation-dark.png",
-      "sha256": "ba03ed70cbd98f83c81ded3f86457fbbfc8b902a2f162707097b3ff6d512b1b0",
+      "file": "captures/s118-before-mobile-dark-jump.png",
+      "original": "output/playwright/s118-before-mobile-dark-jump.png",
+      "sha256": "b07c094d777ee83081d059176b22f7b0ae0a00b5408acf6114f123a6cf3b97cb",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Canonical contract-year agent negotiation"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-agent-negotiation-light.png",
-      "sha256": "184b2d2fa5547b2637b701b3c7a8b4ab31dd36c09d58a07d0b4aa3f406776e86",
-      "theme": "light",
+      "file": "captures/s118-before-mobile-dark-run.png",
+      "original": "output/playwright/s118-before-mobile-dark-run.png",
+      "sha256": "b21377343eedcc653be1db6e3cd96c300daf3eceddccbe8f9761fe8755e91f49",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
+      "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Canonical contract-year agent negotiation"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-draft-trade-review-dark.png",
-      "sha256": "3adcd794bfcd43c9b8fbe48f714d21a29fd208aa6c8cbd0e25124b6ebaaf557c",
+      "file": "captures/s118-before-mobile-dark-side.png",
+      "original": "output/playwright/s118-before-mobile-dark-side.png",
+      "sha256": "07f62968de4b772d47b036668398a6d2b2b1375d831fa50aa645c42cc5872887",
+      "page": "actual saved OL dossier side",
+      "phase": "before",
       "theme": "dark",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-strength.png",
+      "original": "output/playwright/s118-before-mobile-dark-strength.png",
+      "sha256": "fcbac1b164173009a5bb30b5077359f96daf047aa7aa60a2c3f647ebb7b689ae",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
       },
-      "page": "Irreversible live-pick trade confirmation"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-draft-trade-review-light.png",
-      "sha256": "daafb1a2041f54a5a185bf801fcee46bb8d22dad0b31da5fa21d940ac6df929b",
+      "file": "captures/s118-before-mobile-light-acceleration.png",
+      "original": "output/playwright/s118-before-mobile-light-acceleration.png",
+      "sha256": "26717bbea89b48b63f2fd0d64bfe25f52417db7593a6b4086f9cfd3c6342286b",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Irreversible live-pick trade confirmation"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-hof-ceremony-dark.png",
-      "sha256": "93b4d16d1afb953db858bc3520a96871ba4af69dac931f8dbe3308a8dcbfdbd7",
-      "theme": "dark",
+      "file": "captures/s118-before-mobile-light-cut.png",
+      "original": "output/playwright/s118-before-mobile-light-cut.png",
+      "sha256": "8d23b0a1eae670d61a2d346e654ee1d9897e399d37a2d67af5af0ec686b18bd1",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
+      "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Hall of Fame induction ceremony"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-hof-ceremony-light.png",
-      "sha256": "47af77d7eacf7a47384f2d24e85f542c1d1102aa8c57b010a73236e982384f00",
+      "file": "captures/s118-before-mobile-light-endurance.png",
+      "original": "output/playwright/s118-before-mobile-light-endurance.png",
+      "sha256": "2b980ab1cfbbceb85e8f80de00a38c399aa93e7687210d5741fa393598c9b43c",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Hall of Fame induction ceremony"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-architect-signature-dark.png",
-      "sha256": "a2d7b93b0f2772b4f0f02778aa640b70daed53e437781f0b51f6efedc8931a1e",
-      "theme": "dark",
+      "file": "captures/s118-before-mobile-light-front.png",
+      "original": "output/playwright/s118-before-mobile-light-front.png",
+      "sha256": "e0459f7b867cebd432042e3af3be2d3ec10d8bf302744b55ce42d486274cd023",
+      "page": "actual saved OL dossier front",
+      "phase": "before",
+      "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Architecture Review strongest mastery signature"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-architect-signature-light.png",
-      "sha256": "0d5b3039c58fd83eccc9d93280122b146c762f1eea9682e77319dd749ba441f0",
+      "file": "captures/s118-before-mobile-light-jump.png",
+      "original": "output/playwright/s118-before-mobile-light-jump.png",
+      "sha256": "6a89cf1f89648f75b74fe343f3ea44a120ed2624ff523fa6b97068e1ccc8881b",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
       "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "Architecture Review strongest mastery signature"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-architect-objective-dark.png",
-      "sha256": "244491300e2a4f0a6c6336d8435c5ba7d9a1d577ffd38e1661c038589ae97270",
-      "theme": "dark",
+      "file": "captures/s118-before-mobile-light-run.png",
+      "original": "output/playwright/s118-before-mobile-light-run.png",
+      "sha256": "92c2978927199f1b139ee3f4d98e7f3675e2d35c8db56087e6ac9781a8904863",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
+      "theme": "light",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-side.png",
+      "original": "output/playwright/s118-before-mobile-light-side.png",
+      "sha256": "654a69bcd4a5c0438408b3c683b145c7f27a06743edb267a2932e37d1a406037",
+      "page": "actual saved OL dossier side",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
       },
-      "page": "Player-authored Architect Objective hierarchy"
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
     },
     {
-      "file": "s116-desktop-architect-objective-light.png",
-      "sha256": "f0a4cd9436610104810ddd753a445c96ce6ae5f9e87735c10288154a7a54ed0c",
+      "file": "captures/s118-before-mobile-light-strength.png",
+      "original": "output/playwright/s118-before-mobile-light-strength.png",
+      "sha256": "96165c50d262bcb8af0e182b71bbedd21f1add27ab70302aba50e26203d5314f",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
       "theme": "light",
       "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-release-desktop-dark-acceleration.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-acceleration.png",
+      "sha256": "3c5a21960eb5c441f5d6beac3ec8c8e719b48e0f8625813bf5608d0c71cad646",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Player-authored Architect Objective hierarchy"
+      "recapturedAt": "2026-10-22T07:06:52.226Z"
     },
     {
-      "file": "s116-desktop-exact-command-center-dark.png",
-      "sha256": "22e302b134c7b6e42ac3a1c16cac3f9b06cc58dfa326cf2d010e1e38be0b1449",
+      "file": "captures/s118-release-desktop-dark-cut.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-cut.png",
+      "sha256": "ca3d388233cdb5e3ec3aacc0a3e6b582228c00fae49c9be2be751ba7a2857fb1",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Ranked General Manager command strip"
+      "recapturedAt": "2026-10-22T07:06:52.530Z"
     },
     {
-      "file": "s116-desktop-exact-command-center-light.png",
-      "sha256": "56dd71a7cf40909a96f89572bfd26634ae19919a9f7d2f161a6cf49aac38fded",
-      "theme": "light",
+      "file": "captures/s118-release-desktop-dark-endurance.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-endurance.png",
+      "sha256": "ed61d6bea74f24fea23190690975919ae31e3932ceda3ec2d576e900c172a391",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Ranked General Manager command strip"
+      "recapturedAt": "2026-10-22T07:06:53.393Z"
     },
     {
-      "file": "s116-desktop-exact-command-target-dark.png",
-      "sha256": "b364b3c3d1fc3ad0abba31aa289a3182a212fa13a34a64b0828d5a101d0aecd9",
+      "file": "captures/s118-release-desktop-dark-jump.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-jump.png",
+      "sha256": "13dde938038c452266a37236683ae3afda897a167f26ea90918d81cd160223fb",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Exact command destination and keyboard focus target"
+      "recapturedAt": "2026-10-22T07:06:52.823Z"
     },
     {
-      "file": "s116-desktop-exact-command-target-light.png",
-      "sha256": "15aa7ce76a51f4bcf23ffa1baf3f024768a16ac7b3a316561e46938773e654c6",
-      "theme": "light",
+      "file": "captures/s118-release-desktop-dark-run.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-run.png",
+      "sha256": "ed7c455e4ae2ca6fc45c25f6f4b56db264ff88f63ef1e0a3277ab2fa1d56772e",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Exact command destination and keyboard focus target"
+      "recapturedAt": "2026-10-22T07:06:51.921Z"
     },
     {
-      "file": "s116-desktop-facility-capital-dark.png",
-      "sha256": "091a32774a804d07276bb999ba7f01c79ea5b33849c1989a9d79cefd22b2d592",
+      "file": "captures/s118-release-desktop-dark-strength.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-strength.png",
+      "sha256": "4a981027bcde5853f130919fc0e9854d32e32ba2fe07199024e031eb4c723f06",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+      "recapturedAt": "2026-10-22T07:06:53.112Z"
     },
     {
-      "file": "s116-desktop-facility-capital-light.png",
-      "sha256": "62dbeb478fd9f1fb95ee1b7f452bad39913050fa29b7cb3c92e6526c3e22f690",
+      "file": "captures/s118-release-desktop-light-acceleration.png",
+      "original": "output/playwright/s118-candidate-desktop-light-acceleration.png",
+      "sha256": "40f3104ba01c76088bc91186ec82fd762c6e811b450611d8c7b7ef22eecaf72c",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+      "recapturedAt": "2026-10-22T07:06:54.252Z"
     },
     {
-      "file": "s116-desktop-gist-authentication-dark.png",
-      "sha256": "ae2c12ee9d51c8f2abdcd5c8754163acfc8711ecc4af4308829448503caa547a",
-      "theme": "dark",
+      "file": "captures/s118-release-desktop-light-cut.png",
+      "original": "output/playwright/s118-candidate-desktop-light-cut.png",
+      "sha256": "2fdffe8282aeb1a37e57be5d30c00cea294e1ef4af68515496987c926f9745b1",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
+      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Cloud-save corruption and optional authentication boundary"
+      "recapturedAt": "2026-10-22T07:06:54.541Z"
     },
     {
-      "file": "s116-desktop-gist-authentication-light.png",
-      "sha256": "fd65b29d46d30aa4ecaff7835fdeac6ef2f26fb99731af37d9079f6489090b6c",
+      "file": "captures/s118-release-desktop-light-endurance.png",
+      "original": "output/playwright/s118-candidate-desktop-light-endurance.png",
+      "sha256": "f1d962b1829218263324482f7e3a8d09334df68060a9afa9883fa2f8c56be556",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Cloud-save corruption and optional authentication boundary"
+      "recapturedAt": "2026-10-22T07:06:55.442Z"
     },
     {
-      "file": "s116-mobile-game-overview-dark.png",
-      "sha256": "69e8dbf6ae4fb9fdfc75731eaa0e5cbe2cb044f4fdaa69b44063a11a72a77941",
-      "theme": "dark",
+      "file": "captures/s118-release-desktop-light-jump.png",
+      "original": "output/playwright/s118-candidate-desktop-light-jump.png",
+      "sha256": "e88f10475db3e2af7b2c82976e192c0d017be94949fd806088819e03b7b77323",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
+      "theme": "light",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
+      "recapturedAt": "2026-10-22T07:06:54.840Z"
     },
     {
-      "file": "s116-mobile-game-overview-light.png",
-      "sha256": "e7c3dbb8b4902720d10361aa4009f8ba2aa59cbccd57dfa292fcd6d4d32e39ff",
+      "file": "captures/s118-release-desktop-light-run.png",
+      "original": "output/playwright/s118-candidate-desktop-light-run.png",
+      "sha256": "732f99f516a53be6e6891e4b926ffb22208ca973487ba69b0fc52e6cbc8a603d",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
       "theme": "light",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Franchise Desk, first-season contract, and Front Office Advisor"
+      "recapturedAt": "2026-10-22T07:06:53.973Z"
     },
     {
-      "file": "s116-mobile-game-league-dark.png",
-      "sha256": "9e3945ca64357c247621c2bc07e1d04d90e535e642255d9d3304f756d113c69b",
-      "theme": "dark",
+      "file": "captures/s118-release-desktop-light-strength.png",
+      "original": "output/playwright/s118-candidate-desktop-light-strength.png",
+      "sha256": "1315cebc131b0f635aa62590188114eec1980207d5edc100e6e169c652430f3b",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
+      "theme": "light",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "League standings and season navigation"
+      "recapturedAt": "2026-10-22T07:06:55.142Z"
     },
     {
-      "file": "s116-mobile-game-league-light.png",
-      "sha256": "04bb86fa33d5da268114ad6cd226208176dfdb54d85e44ec7a61f4673ec38c7f",
-      "theme": "light",
+      "file": "captures/s118-release-mobile-dark-acceleration.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-acceleration.png",
+      "sha256": "d8934ce1e64a4bb3c7882a13dcc0ad58d0a9d8ecfcf21192f2e693acffd6f3b8",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
+      "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "League standings and season navigation"
+      "recapturedAt": "2026-10-22T07:06:56.905Z"
     },
     {
-      "file": "s116-mobile-game-roster-dark.png",
-      "sha256": "3900be8ec6b3297d9b866b83776a542fd0fd07ca806c0affaef8b248e0d2d386",
+      "file": "captures/s118-release-mobile-dark-cut.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-cut.png",
+      "sha256": "0066237ed8775451c60453b6036b7354ecf40d1a1bd16a6725e93d0419af2811",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Team workspace roster mode"
+      "recapturedAt": "2026-10-22T07:06:57.200Z"
     },
     {
-      "file": "s116-mobile-game-roster-light.png",
-      "sha256": "60325107d798825a013df65f04092c9bf9e8bf9154b588a0926c836546579ab4",
-      "theme": "light",
+      "file": "captures/s118-release-mobile-dark-endurance.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-endurance.png",
+      "sha256": "c2c49b02363ee95a4d4b10685302d1e2162bbe0edb20dc41669f6d3b25b71681",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
+      "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Team workspace roster mode"
+      "recapturedAt": "2026-10-22T07:06:58.629Z"
     },
     {
-      "file": "s116-mobile-game-depth-dark.png",
-      "sha256": "f526327dfe9a39fa96dc91f01ac21c0f990ef842e7ecf6badceed7a15e889587",
+      "file": "captures/s118-release-mobile-dark-front.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-front.png",
+      "sha256": "70fdbfab4600bbf8684a063d1226ba79108a7a190f3faf27215f3804e5cad89f",
+      "page": "actual saved OL dossier front",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Team workspace depth mode"
+      "recapturedAt": "2026-10-22T07:06:58.786Z"
     },
     {
-      "file": "s116-mobile-game-depth-light.png",
-      "sha256": "962f2ad8f634f835c3a5a27db8d1cf216ff4bf3a7acb5e38841de348107d8ddd",
-      "theme": "light",
+      "file": "captures/s118-release-mobile-dark-jump.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-jump.png",
+      "sha256": "1d5c050a8cf54d1b9b0b06c86d6960e2b864309bd15ca7ce9b953fc7fd0ff76e",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
+      "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Team workspace depth mode"
+      "recapturedAt": "2026-10-22T07:06:57.487Z"
     },
     {
-      "file": "s116-mobile-game-trades-dark.png",
-      "sha256": "96c13b8abe6a5ddea9e03ae5698a7946dd8a6980d999c02426bc00267f9e032d",
+      "file": "captures/s118-release-mobile-dark-run.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-run.png",
+      "sha256": "15f528d17d33096619ac1d0beea6c3d34653e86bcc8911c5d8f31b83e736470f",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Trade market and club identity"
+      "recapturedAt": "2026-10-22T07:06:56.466Z"
     },
     {
-      "file": "s116-mobile-game-trades-light.png",
-      "sha256": "4574702cbd444e0e274073f9ab4edfe0c6d00519c45cac6678279a6bb6b6c2dd",
-      "theme": "light",
+      "file": "captures/s118-release-mobile-dark-side.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-side.png",
+      "sha256": "70b65ea7d77eddd603cfb9df723f2b64c725921f30d67db0ae8163bd5cb0053a",
+      "page": "actual saved OL dossier side",
+      "phase": "after",
+      "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Trade market and club identity"
+      "recapturedAt": "2026-10-22T07:06:58.933Z"
     },
     {
-      "file": "s116-mobile-game-dialog-dark.png",
-      "sha256": "c9ad0c3858dfffbaa0661df51c6db03bcb75240527c4e0110bcd08e99da726fc",
+      "file": "captures/s118-release-mobile-dark-strength.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-strength.png",
+      "sha256": "a10eb1d10982e0898434403290ffbd76b092b04452088779b0f7a2a498cc92c5",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "First-run Opening Contract tutorial"
+      "recapturedAt": "2026-10-22T07:06:58.354Z"
     },
     {
-      "file": "s116-mobile-game-dialog-light.png",
-      "sha256": "32c45ea3a4947b2f7aef4b401b3d23fd935173ca5bce9b65e97c3902eb3aab42",
+      "file": "captures/s118-release-mobile-light-acceleration.png",
+      "original": "output/playwright/s118-candidate-mobile-light-acceleration.png",
+      "sha256": "0bc8c8d3ec097ebd57c8f4875925ad1091d03db752191f9d3b274f36499014c8",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "First-run Opening Contract tutorial"
+      "recapturedAt": "2026-10-22T07:06:59.760Z"
     },
     {
-      "file": "s116-mobile-tutorial-skip-dark.png",
-      "sha256": "45cf8ab9a3fd35187cc3f593f2a9e1ba667984b1c1049b8a92bca16f58793588",
-      "theme": "dark",
+      "file": "captures/s118-release-mobile-light-cut.png",
+      "original": "output/playwright/s118-candidate-mobile-light-cut.png",
+      "sha256": "e28a17d98b87e419e8c7385b6cc109fcda45145812249164a41996420bf71187",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
+      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+      "recapturedAt": "2026-10-22T07:07:00.025Z"
     },
     {
-      "file": "s116-mobile-tutorial-skip-light.png",
-      "sha256": "03f8ca2b873186e7b5e68ff7a8e6bc3108c9bea728f04db95fc3cd115a96a087",
+      "file": "captures/s118-release-mobile-light-endurance.png",
+      "original": "output/playwright/s118-candidate-mobile-light-endurance.png",
+      "sha256": "eceeeaa801af2902d3d683718972f7e0660b3954a6c66819f0bae146740dba05",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Opening Contract above the mobile deck; ordinary Skip action"
+      "recapturedAt": "2026-10-22T07:07:00.814Z"
     },
     {
-      "file": "s116-mobile-tutorial-identity-dark.png",
-      "sha256": "d7f6f06e5768625f44d98150a348f1c6ec81fd1e0281fbcd795b3f42ce1f8f24",
-      "theme": "dark",
+      "file": "captures/s118-release-mobile-light-front.png",
+      "original": "output/playwright/s118-candidate-mobile-light-front.png",
+      "sha256": "3a49e3366b0fe3855502aa093046d9c101433482a98d4bf45b027f13cd89c35f",
+      "page": "actual saved OL dossier front",
+      "phase": "after",
+      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Opening Contract identity choice under production policy"
+      "recapturedAt": "2026-10-22T07:07:00.988Z"
     },
     {
-      "file": "s116-mobile-tutorial-identity-light.png",
-      "sha256": "01b8c780bba7959a159349a486da30b49e88b7dc3f495b76997e4645b2fac025",
+      "file": "captures/s118-release-mobile-light-jump.png",
+      "original": "output/playwright/s118-candidate-mobile-light-jump.png",
+      "sha256": "199a44e010c3e635b1892b36bd11d5039000447d6a4aeb4aedca3c4a0a8a3122",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Opening Contract identity choice under production policy"
+      "recapturedAt": "2026-10-22T07:07:00.290Z"
     },
     {
-      "file": "s116-mobile-tutorial-pressure-dark.png",
-      "sha256": "e7ddf9e5888067318bd258a6a77810586440ed360c194ff743a651dca3293630",
-      "theme": "dark",
+      "file": "captures/s118-release-mobile-light-run.png",
+      "original": "output/playwright/s118-candidate-mobile-light-run.png",
+      "sha256": "5d3f98cb2142d83d3abf693960c56dc8392b65b8acd4b9e91da34c17f30d81de",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
+      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Opening Contract pressure choice under production policy"
+      "recapturedAt": "2026-10-22T07:06:59.491Z"
     },
     {
-      "file": "s116-mobile-tutorial-pressure-light.png",
-      "sha256": "1e61dadc9dda90d03cf806f7cc975258a221de5b502f09c1979f10344fcfcb76",
+      "file": "captures/s118-release-mobile-light-side.png",
+      "original": "output/playwright/s118-candidate-mobile-light-side.png",
+      "sha256": "4a84605a03054ece8bfcddcd90ef5ad4a2fcb4e18aa9d517dc773d0ca1d55151",
+      "page": "actual saved OL dossier side",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Opening Contract pressure choice under production policy"
+      "recapturedAt": "2026-10-22T07:07:01.140Z"
     },
     {
-      "file": "s116-mobile-tutorial-first-call-dark.png",
-      "sha256": "cedc323a9ba4ae3787320b8aa2e245ce8c31edbc01437d4bf1876b9538747419",
-      "theme": "dark",
+      "file": "captures/s118-release-mobile-light-strength.png",
+      "original": "output/playwright/s118-candidate-mobile-light-strength.png",
+      "sha256": "072784ca8ee81367f2098c1f68d1282cef9b81753736943bf4920f3f99d3c7be",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
+      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Opening Contract first call under production policy"
+      "recapturedAt": "2026-10-22T07:07:00.551Z"
     },
     {
-      "file": "s116-mobile-tutorial-first-call-light.png",
-      "sha256": "941d63ef0ad24979de1576750e447e82e3f322afc319c57e35ad853583f3eeb8",
-      "theme": "light",
+      "file": "captures/s118-final-family-desktop-dark-anchor.png",
+      "original": "output/playwright/s118-family-desktop-dark-anchor.png",
+      "sha256": "485616675af2ea6e165e1b38216482fed21cb3ed872ac99a5c86ec8ff8e8c2a4",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
+      "theme": "dark",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Opening Contract first call under production policy"
+      "recapturedAt": "2026-10-22T07:07:07.666Z"
     },
     {
-      "file": "s116-mobile-tutorial-receipt-dark.png",
-      "sha256": "e6153ef1fc0185f9aa8b634e384b6bd446a1549ed63bdf2a616d56c83d15abe2",
+      "file": "captures/s118-final-family-desktop-dark-relative.png",
+      "original": "output/playwright/s118-family-desktop-dark-relative.png",
+      "sha256": "06974be6dba25f04338370499b92172358d6ec0049fd589ceb84c9afe8a6a1f7",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Committed Opening Contract receipt under production policy"
+      "recapturedAt": "2026-10-22T07:07:05.289Z"
     },
     {
-      "file": "s116-mobile-tutorial-receipt-light.png",
-      "sha256": "e0d4d950bc6336c029aee3bce9e9136df83a923da1d75deeb4487951b9bc439d",
+      "file": "captures/s118-final-family-desktop-light-anchor.png",
+      "original": "output/playwright/s118-family-desktop-light-anchor.png",
+      "sha256": "62b13ba5e7f2d8d8ab337ac991c423ba95b669dc0bf5d295712493dffb670d29",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
       "theme": "light",
       "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Committed Opening Contract receipt under production policy"
-    },
-    {
-      "file": "s116-mobile-advisor-dark.png",
-      "sha256": "be5ada46ae88f3d600c749d6c5dcf3c6cdeef6c6f55ae65e80065f3055aa7ed3",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Styled Front Office Advisor under production policy"
-    },
-    {
-      "file": "s116-mobile-advisor-light.png",
-      "sha256": "2d9d162a05e5c7bae756128c76e7eb347f55cfa2f7fbad02998d84faff2920ab",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Styled Front Office Advisor under production policy"
-    },
-    {
-      "file": "s116-mobile-dynasty-timeline-dark.png",
-      "sha256": "0150a548f9a5eb3b01275892faa58c03a117ed2d4ab174592d995e28c5f7b889",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Theme-aware dynasty history fixture under production policy"
-    },
-    {
-      "file": "s116-mobile-dynasty-timeline-light.png",
-      "sha256": "c9e5356e5a40c1a352eaf24c1b7bec82f03708c04b33e56bb6e0f76259f12b9e",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Theme-aware dynasty history fixture under production policy"
-    },
-    {
-      "file": "s116-mobile-first-debrief-dark.png",
-      "sha256": "97317208f4d9dbdf0f86ba2afbf4e17268c66f9a3256cd2f65b5d8c6ab25f533",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional first-debrief feedback under production policy"
-    },
-    {
-      "file": "s116-mobile-first-debrief-light.png",
-      "sha256": "3bd36a5a460a360981cbdc6de0846b89ae5ea0cb866e03c333874ae2e8751ab3",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional first-debrief feedback under production policy"
-    },
-    {
-      "file": "s116-mobile-moment-card-dark.png",
-      "sha256": "52da505e7ef7ba7ac3c0796b2219f51f2a4e40108899d4f3f33ee626116a69d0",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Moment share control under production policy"
-    },
-    {
-      "file": "s116-mobile-moment-card-light.png",
-      "sha256": "c9e5356e5a40c1a352eaf24c1b7bec82f03708c04b33e56bb6e0f76259f12b9e",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Moment share control under production policy"
-    },
-    {
-      "file": "s116-mobile-return-digest-dark.png",
-      "sha256": "086709f5b52829f8641daea46d6c7c898d2f1cbf6f38b18f03c18560ed7c713e",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Return-session digest under production policy"
-    },
-    {
-      "file": "s116-mobile-return-digest-light.png",
-      "sha256": "0600823199fdb4491a7b20ac414fc8949be0f255af2080babff97274af18fd66",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Return-session digest under production policy"
-    },
-    {
-      "file": "s116-mobile-cap-pressure-dark.png",
-      "sha256": "ef7cb89546f82f0e55bdbbc18c88e203de3c50bbe846199a5fabbe3e9fc878d0",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Opening salary-cap pressure and General Manager legacy"
-    },
-    {
-      "file": "s116-mobile-cap-pressure-light.png",
-      "sha256": "d5bbae188d2877c6078a9ab60295227323d89ccb3df161c6d3c42c50d3591834",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Opening salary-cap pressure and General Manager legacy"
-    },
-    {
-      "file": "s116-mobile-waiver-identity-dark.png",
-      "sha256": "2b6d4b3ba98efbf75c7b50c3f8dfedae1de7104132f46d2de69aa891aeb2403a",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Named and rated waiver-wire player identity"
-    },
-    {
-      "file": "s116-mobile-waiver-identity-light.png",
-      "sha256": "30aad354f02a9a1d579a27e02d1057a2b8c3ffe5af6cba282df7c1cb4cc049da",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Named and rated waiver-wire player identity"
-    },
-    {
-      "file": "s116-mobile-franchise-legends-dark.png",
-      "sha256": "00211315603d1ba641448230ac2b94d0280691a7149587919cb182464c7355bb",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Franchise Legends dynasty memory"
-    },
-    {
-      "file": "s116-mobile-franchise-legends-light.png",
-      "sha256": "71350837c15c6fa53218c49d3a59b5679ac2bb8c9f5abbfe8b0e14320bba7bc1",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Franchise Legends dynasty memory"
-    },
-    {
-      "file": "s116-mobile-gm-persona-dark.png",
-      "sha256": "117574e6f577108333ba2303866a3b961d239a429495c89bf6f11048e6415aec",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "General Manager market reputation"
-    },
-    {
-      "file": "s116-mobile-gm-persona-light.png",
-      "sha256": "79141aeef4c579612b5a7914775c81f9e75d495e53694f5173b0ae3a3faec95c",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "General Manager market reputation"
-    },
-    {
-      "file": "s116-mobile-trophy-road-dark.png",
-      "sha256": "eeb1fe8696462ee2a0b187dbbad1bcca954652cd676e187da023406b616b8d92",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Trophy Road progress and next unlock"
-    },
-    {
-      "file": "s116-mobile-trophy-road-light.png",
-      "sha256": "502f8824cc4f3ca0a79496be4a90d0944f30fa43909e47522f2dd460bb9783b5",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Trophy Road progress and next unlock"
-    },
-    {
-      "file": "s116-mobile-sim-watch-reel-dark.png",
-      "sha256": "5f8989e057a44b9527eda517b02484d3abe17572204489ffcd38fa64d16adab8",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Broadcast Director Final Reel"
-    },
-    {
-      "file": "s116-mobile-sim-watch-reel-light.png",
-      "sha256": "c42ca07c831e8b9dd3eb72a207e7618d6ebad513a3c4a8c4ff5a6346c7989ebd",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Broadcast Director Final Reel"
-    },
-    {
-      "file": "s116-mobile-room-watch-dark.png",
-      "sha256": "35c02267bf3a1b4e3b6c021aeba081ced55053d05e5ff9b32614a558dd826ac4",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Position Room Watch parity alerts"
-    },
-    {
-      "file": "s116-mobile-room-watch-light.png",
-      "sha256": "914ad624547dcdd21d6e259a4664679bcf3a148cdfe5af65e938935798818ce8",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Position Room Watch parity alerts"
-    },
-    {
-      "file": "s116-mobile-architect-cut-dark.png",
-      "sha256": "d1d9372c3485233a0c8631a97783d358ac153c8809dfc6708e93d5163b4aab4c",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Architect's Cut and Decision Anthology"
-    },
-    {
-      "file": "s116-mobile-architect-cut-light.png",
-      "sha256": "ab8cd42243ae52e350d246777444f213355f98fc3e88b8420274c54b8669068e",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Architect's Cut and Decision Anthology"
-    },
-    {
-      "file": "s116-mobile-guide-modal-dark.png",
-      "sha256": "ffb96bc953069d354462de0812d78858186d8ecd5f7dd8d08e24610dc9a54c31",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Game Guide populated modal"
-    },
-    {
-      "file": "s116-mobile-guide-modal-light.png",
-      "sha256": "43bbded98369e09c1a5de67c74b3abdfaa84ed48a32ff964b0fb0e6a0c076824",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Game Guide populated modal"
-    },
-    {
-      "file": "s116-mobile-rival-coaching-dark.png",
-      "sha256": "eafbb5e332b93aed492d6f5ad5d2ebf38a8372f6a64f2e0462de2b6dd47ffebf",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Rival coaching ownership boundary"
-    },
-    {
-      "file": "s116-mobile-rival-coaching-light.png",
-      "sha256": "860beb0a02f97380b8d133584ba5b69d2889b15e2895db6a82ede7f435a7ab60",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Rival coaching ownership boundary"
-    },
-    {
-      "file": "s116-mobile-decision-archive-dark.png",
-      "sha256": "03ea1411faf618e2a8e6f941d9d3252f040f61e7ab028e350127b9c6ad6c4de0",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Permanent Decision Archive sparse state"
-    },
-    {
-      "file": "s116-mobile-decision-archive-light.png",
-      "sha256": "1b61724f061c889b18599efbdc039b1fc1584153eaad85c0e047122181681c23",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Permanent Decision Archive sparse state"
-    },
-    {
-      "file": "s116-mobile-co-gm-brief-dark.png",
-      "sha256": "ad6b9001f9032b19577c3119b02bbe4bb794059170f6baa1da51ceac7121a41e",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Privacy-bounded Co-GM Brief"
-    },
-    {
-      "file": "s116-mobile-co-gm-brief-light.png",
-      "sha256": "191fbd7f20b5f2aacaaf61f5a27162171fbea89373dbbf184be6610286305066",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Privacy-bounded Co-GM Brief"
-    },
-    {
-      "file": "s116-mobile-prediction-receipt-dark.png",
-      "sha256": "21cde60116049aa476fe216600521d079228dc41173a7cf74f1ff9cbb13611e9",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Prediction winner and margin receipt"
-    },
-    {
-      "file": "s116-mobile-prediction-receipt-light.png",
-      "sha256": "8f617739667b7df0337bb4ab48b806b430bb8024d9eb2851109c565403a27f0a",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Prediction winner and margin receipt"
-    },
-    {
-      "file": "s116-mobile-agent-negotiation-dark.png",
-      "sha256": "073c3ad8ef755a0e7bc75304a3b6ae8a7a046b52cadaa0dde6f8a21726be454b",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Canonical contract-year agent negotiation"
-    },
-    {
-      "file": "s116-mobile-agent-negotiation-light.png",
-      "sha256": "f974b9fa86ac534e0d48889eb4597a904ab8f43e6fe58ff195881163fe909e12",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Canonical contract-year agent negotiation"
-    },
-    {
-      "file": "s116-mobile-draft-trade-review-dark.png",
-      "sha256": "e08631a672662bb946f56e0cc2a7324bd254a19b0515be6cddb3b92841f80a73",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Irreversible live-pick trade confirmation"
-    },
-    {
-      "file": "s116-mobile-draft-trade-review-light.png",
-      "sha256": "bcca497c0018a9fe19ea7a89f28b75a81d1221d783d6d389aa13307bf0a69665",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Irreversible live-pick trade confirmation"
-    },
-    {
-      "file": "s116-mobile-hof-ceremony-dark.png",
-      "sha256": "7b77c3eb9ca7474684ebfc9e81d7f65716a51019ca417a23c463f854467e46a3",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Hall of Fame induction ceremony"
-    },
-    {
-      "file": "s116-mobile-hof-ceremony-light.png",
-      "sha256": "67d1a1e84c82a7ebf918fa95a028e0722bb36ad93231841fb50dbff8da658fa4",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Hall of Fame induction ceremony"
-    },
-    {
-      "file": "s116-mobile-architect-signature-dark.png",
-      "sha256": "e018dc344bf0c47d5c361622f1369870c09b76aa9f0b958b649f4dbe0efbfbb0",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Architecture Review strongest mastery signature"
-    },
-    {
-      "file": "s116-mobile-architect-signature-light.png",
-      "sha256": "1d0f5379258f940d878bc11152073e6d5c477adc8867bfdf63ba999135d7782e",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Architecture Review strongest mastery signature"
-    },
-    {
-      "file": "s116-mobile-architect-objective-dark.png",
-      "sha256": "54e52a7d12231ea33a821d22e2215306806c07ccefd02d71fcea4171619d947f",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Player-authored Architect Objective hierarchy"
-    },
-    {
-      "file": "s116-mobile-architect-objective-light.png",
-      "sha256": "8a00cb4220700de4170347f5c5b932254c14a1c15a9b5703cdd216561bcddaca",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Player-authored Architect Objective hierarchy"
-    },
-    {
-      "file": "s116-mobile-exact-command-center-dark.png",
-      "sha256": "245ecd34a1b522117eae1d557e248257ea519383f97bc9241114ca908c748d9d",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Ranked General Manager command strip"
-    },
-    {
-      "file": "s116-mobile-exact-command-center-light.png",
-      "sha256": "8f9b50fe10628458ac2551c545aacef6c9338e28df5cfe3f2d58eef80885203a",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Ranked General Manager command strip"
-    },
-    {
-      "file": "s116-mobile-exact-command-target-dark.png",
-      "sha256": "f48a0c4fe5feee7d236b67a5997ec979b721880265d16c0a9d2428c662c82712",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Exact command destination and keyboard focus target"
-    },
-    {
-      "file": "s116-mobile-exact-command-target-light.png",
-      "sha256": "0d3a6d5ac05ba39c3c0e62533aeb27a2d784b43a5370aca2ac44fa81ae96a883",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Exact command destination and keyboard focus target"
-    },
-    {
-      "file": "s116-mobile-facility-capital-dark.png",
-      "sha256": "b047e655c50d9ddc91b5d5b5fb0a1b45024e088a279f2fa0d8ed32784835ab4c",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
-    },
-    {
-      "file": "s116-mobile-facility-capital-light.png",
-      "sha256": "e1eaff55c62eb1ad2bac70811b0ad0c57efc71e6122c9f688459c6fefa19baf9",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
-    },
-    {
-      "file": "s116-mobile-gist-authentication-dark.png",
-      "sha256": "b833305b5605023b495eea9f4f5f47b81c82805749603e44f19ca69329f3d270",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Cloud-save corruption and optional authentication boundary"
-    },
-    {
-      "file": "s116-mobile-gist-authentication-light.png",
-      "sha256": "e62e6022ea120cc7f915de0be025190eb333c87c2939ce8e3a26b74e0ae597fb",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Cloud-save corruption and optional authentication boundary"
-    },
-    {
-      "file": "s116-tablet-nav-drawer-dark.png",
-      "sha256": "1d87e700a8f32137991ed92d5477f14702f12aa2b70da8361848ae6dd058be64",
-      "theme": "dark",
-      "viewport": {
-        "width": 768,
-        "height": 1024
-      },
-      "page": "Notch-safe off-canvas section navigation"
-    },
-    {
-      "file": "s116-tablet-nav-drawer-light.png",
-      "sha256": "82960d44bca24ac3433ca7c3c7fd7cfcc5a7259c50834a04b8742f9c05331c41",
-      "theme": "light",
-      "viewport": {
-        "width": 768,
-        "height": 1024
-      },
-      "page": "Notch-safe off-canvas section navigation"
-    },
-    {
-      "file": "s116-mobile-nav-drawer-dark.png",
-      "sha256": "938ac907cb9cd446057b67100b0484727caab28539a9a705e6417b9c8e7d6d4b",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Notch-safe off-canvas section navigation"
-    },
-    {
-      "file": "s116-mobile-nav-drawer-light.png",
-      "sha256": "aada2ddffd1f8b6b5565a879341cce7205498ad0933fac3ac6b20b05db0d87fc",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Notch-safe off-canvas section navigation"
-    },
-    {
-      "file": "s116-mobile-game-loop-dark.png",
-      "sha256": "b928dacdb7720a71bda07c57c24dded3d39e69f5dc6fc3fd5917f82ade549724",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Mobile weekly decision deck and sticky command dock"
-    },
-    {
-      "file": "s116-mobile-game-loop-light.png",
-      "sha256": "538f2c2d4c17486199f28cc6513ebe9327ff498aaf76346f8daa5fcf91911649",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Mobile weekly decision deck and sticky command dock"
-    },
-    {
-      "file": "s116-public-desktop-dark-index.png",
-      "sha256": "869d570a94fc4d0bc6e49e4e71672a1466158b6716c6812e07514e15388d8b76",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public index.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-features.png",
-      "sha256": "ce10f511cdb9a7674b219bd13a9f4b191611a89bf61d35b6ec935607eb2ba74d",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public features.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-how-to-play.png",
-      "sha256": "72f513a9f50315ca5c7306f4b5aab169a2f224b24cca390f4f63e37cb2c37560",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public how-to-play.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-faq.png",
-      "sha256": "3156b82533d67ee064473cd58a155f8d43ca5f1c2a441c03ba14a2ff84c6264e",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public faq.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-roadmap.png",
-      "sha256": "b0d2e67d5e2e136dd2cb74163e0d46d3a477d6f1b0c4ea8dc12eb6e78e94845d",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public roadmap.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-about.png",
-      "sha256": "174da4cb42c75f5cd0ed177a4404e8e1d9107bc1df52df88e37802e6a5d02cdc",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public about.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-press.png",
-      "sha256": "458c1d5a51cbddc40ade72009f66a340596207f4a3642c069121b9aa428d1c02",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public press.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-status.png",
-      "sha256": "79207f47164877a2443dc19e5587ccee57fc6acce97beccbee60843f3967b87b",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public status.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-status-archive.png",
-      "sha256": "2ae3466b48a845bf9bb289501181cf7f8ba969ee4c77e17f4682061db0a7d9e1",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public status-archive.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-stats.png",
-      "sha256": "cd8517c65de0ef9efdd89dd0da2892fce3e8fef7b8048a7b32a0f16241917de3",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public stats.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-simulation.png",
-      "sha256": "53d6bdfa08a4c7d4fed8bc6a9400a5ef35a1823787f43c8c860192f843d80df2",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public simulation.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-contact.png",
-      "sha256": "a880561e7bc2460d387edecca757d2b11f379d13c3bcf0fa89d8cfe143a6ede6",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public contact.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-privacy.png",
-      "sha256": "9cec7ddefe4ef4a6eff0b772b4c15f57f368b16dc79ea9c753bef2df49f42744",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public privacy.html"
-    },
-    {
-      "file": "s116-public-desktop-dark-terms.png",
-      "sha256": "5a70f31532f758b5b248f08f16e5948c6e97cc0fc58cabc03778d4f99c6bdffb",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public terms.html"
-    },
-    {
-      "file": "s116-public-desktop-light-index.png",
-      "sha256": "83c6412cffbccea778ca17e4ef04b7269e3c1fc12e8c42fe745cb50d926819aa",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public index.html"
-    },
-    {
-      "file": "s116-public-desktop-light-features.png",
-      "sha256": "d455642df5c338ef7383f67037dfda35c34e1dec0d1e87029c1362dd5e348fc2",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public features.html"
-    },
-    {
-      "file": "s116-public-desktop-light-how-to-play.png",
-      "sha256": "4b8b8328aeda6cd776f0a86a2d53a4db4bb0031839855ab70131e5fd1c3f8f40",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public how-to-play.html"
-    },
-    {
-      "file": "s116-public-desktop-light-faq.png",
-      "sha256": "4857e3c9150983d8243935296b551ee0084a2bdbad6f69d3ab3723184233e2d9",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public faq.html"
-    },
-    {
-      "file": "s116-public-desktop-light-roadmap.png",
-      "sha256": "d65c5a59fb2114fffee2428aa3ac1593f938f34af3556a1200e34d03ad3a6bbe",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public roadmap.html"
-    },
-    {
-      "file": "s116-public-desktop-light-about.png",
-      "sha256": "2f5330f1e9e5afb8d3256bda66e820c9bf574d090427cbac958385363a77c458",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public about.html"
-    },
-    {
-      "file": "s116-public-desktop-light-press.png",
-      "sha256": "d316f103d29b71fdb7bbd7c099f744a1fa1e9b461cb3f06b7c8c61a32dfc7763",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public press.html"
-    },
-    {
-      "file": "s116-public-desktop-light-status.png",
-      "sha256": "3a44e80f07987766074b0a6494242b4a20fdc0fc9456d3b337288bedf29edd27",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public status.html"
-    },
-    {
-      "file": "s116-public-desktop-light-status-archive.png",
-      "sha256": "8172c56ba180cd3585dfdd1c754022ccc7b58e3abf9d65ac381319bf3e2e9a9a",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public status-archive.html"
-    },
-    {
-      "file": "s116-public-desktop-light-stats.png",
-      "sha256": "99c76a64af3e9f39eae472aa20922517ca261844811c0187cc67ef94c97dd1a6",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public stats.html"
-    },
-    {
-      "file": "s116-public-desktop-light-simulation.png",
-      "sha256": "f9be4bfb42b9279f3177aefdd4daebc1d15c0fc056547a894f104dd719f74819",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public simulation.html"
-    },
-    {
-      "file": "s116-public-desktop-light-contact.png",
-      "sha256": "293748a8830003a41ecdd61f595bdf17d9fa38e26246707d3f8ce4afde3d3d40",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Public contact.html"
-    },
-    {
-      "file": "s116-public-desktop-light-privacy.png",
-      "sha256": "52fc99aada11632b44916056137faf50743200deeeb8a3efcd542342bbdd97b0",
-      "theme": "light",
-      "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Public privacy.html"
+      "recapturedAt": "2026-10-22T07:07:10.717Z"
     },
     {
-      "file": "s116-public-desktop-light-terms.png",
-      "sha256": "67def8aa1dbca6bfa38bece9b00f0d6e383f6205785679a9f6557ec7f19b6900",
+      "file": "captures/s118-final-family-desktop-light-relative.png",
+      "original": "output/playwright/s118-family-desktop-light-relative.png",
+      "sha256": "479927ee4188ac2bb1e0f14dfea70209b81793a542ebb143d1131f3a98f45cc3",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
-      },
-      "page": "Public terms.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-index.png",
-      "sha256": "e67cf63ed405a09e0270adbb1a07f5ba9281683d817ddebca5730b6af01e04fb",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public index.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-features.png",
-      "sha256": "a3b304bca465a620b6c460623194f41d71e3e23790b044f2bda4896ce978aace",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public features.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-how-to-play.png",
-      "sha256": "32332408a01bf1c0738b5c8d925f85a959a58fabee6d154219d9533cdea2143b",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public how-to-play.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-faq.png",
-      "sha256": "607e55ab7a0de09a149531e418d11f49533f6e0886cc5791e2f356b90174b422",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public faq.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-roadmap.png",
-      "sha256": "621b0dd4c73eec28994f654732625698ccb1f83553be547cdc0f4fd045e34f4f",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public roadmap.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-about.png",
-      "sha256": "b3ac7407a97fea08611656c9eb11a9f292edc448e5675eedcf5f59cc92c9de4a",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public about.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-press.png",
-      "sha256": "81d260a6065b0ce024305d7e91bcb4f8f3b687fe3d17e536252a91767daefc94",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public press.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-status.png",
-      "sha256": "47d3861e5d9b9cd8502f5348eecf2b3a52d301d314ad90436b31e76c82a48d7c",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public status.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-status-archive.png",
-      "sha256": "c67d7b0657a93464991c9956e6ee87c72cecfecf5a199f09d93d2265aa3d22d7",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public status-archive.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-stats.png",
-      "sha256": "9d2ec3f5f2de32d0bf87a0f44ea36b8f07a0a3010ae0afeee308ba5de73bc7c4",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public stats.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-simulation.png",
-      "sha256": "6eb93e3e464b2e37c084b16a65b9bf6f385934efde1579724ce22e98fe4c8eb0",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public simulation.html"
-    },
-    {
-      "file": "s116-public-mobile-dark-contact.png",
-      "sha256": "5d07d40fa85fe3383e1e7504e257a41086fcb7305dd8a50d92b7309587912a4d",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
       },
-      "page": "Public contact.html"
+      "recapturedAt": "2026-10-22T07:07:09.046Z"
     },
     {
-      "file": "s116-public-mobile-dark-privacy.png",
-      "sha256": "6c7548cc0d5994b2f6f00400df3a221b9c9edbe0a4e5b971bb0f26da92c6d021",
+      "file": "captures/s118-final-family-mobile-dark-anchor.png",
+      "original": "output/playwright/s118-family-mobile-dark-anchor.png",
+      "sha256": "6a83e9d5a499901829a70d3d89357fdde435cf0879f0e0fe92365d36b708dcd0",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Public privacy.html"
+      "recapturedAt": "2026-10-22T07:07:14.545Z"
     },
     {
-      "file": "s116-public-mobile-dark-terms.png",
-      "sha256": "3a9db192b17b70b9700d21eeee97db4b34d4f6713327d828fc8d5ea1d89e05e1",
+      "file": "captures/s118-final-family-mobile-dark-relative.png",
+      "original": "output/playwright/s118-family-mobile-dark-relative.png",
+      "sha256": "498db09d111de460dc59f83e9606415c55c112eaa180d11c45780e6b9dd0b582",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
       "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public terms.html"
-    },
-    {
-      "file": "s116-public-mobile-light-index.png",
-      "sha256": "a2cb45abfa840d52b22d177e747af42d31ea19a0e64ebf8392203f337113025d",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public index.html"
-    },
-    {
-      "file": "s116-public-mobile-light-features.png",
-      "sha256": "bfff83274c470e766e3c4bb8631684845c556772cf65937e526f59bda8324069",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public features.html"
-    },
-    {
-      "file": "s116-public-mobile-light-how-to-play.png",
-      "sha256": "22361688efa67b28628a3383addc4f6beef54f5f64d61fc4591339cd0e170e50",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public how-to-play.html"
-    },
-    {
-      "file": "s116-public-mobile-light-faq.png",
-      "sha256": "ddb5aad5a067ac5d8fdf71f94ff775bdf08ac38edcf7feee3d2eafb70d158863",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public faq.html"
-    },
-    {
-      "file": "s116-public-mobile-light-roadmap.png",
-      "sha256": "b52dcd2dc126f5252ebecac288141d8a10873f22c472c905659010decfb4429d",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public roadmap.html"
-    },
-    {
-      "file": "s116-public-mobile-light-about.png",
-      "sha256": "2501d0f2e00add3f26f61dab3e9088080f7a985f41964a93444239b0854ad0f4",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public about.html"
-    },
-    {
-      "file": "s116-public-mobile-light-press.png",
-      "sha256": "9b6a09a5b3238aa2804048614395772308b50cc1c6c7248976ae90ab078a9a7b",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public press.html"
-    },
-    {
-      "file": "s116-public-mobile-light-status.png",
-      "sha256": "31ebab6b4a6ef7102b7aedc4ccc5374c679860e8ac543ea6698688d3558dd86e",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public status.html"
-    },
-    {
-      "file": "s116-public-mobile-light-status-archive.png",
-      "sha256": "d65b7fa50eb9956f702d735b72ae6824b5ac9785f1d382305c6f328673456260",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public status-archive.html"
-    },
-    {
-      "file": "s116-public-mobile-light-stats.png",
-      "sha256": "f0e829baeef33bc7ab81a1330a49326c65dfe573944d77e58756412bc5413f99",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public stats.html"
-    },
-    {
-      "file": "s116-public-mobile-light-simulation.png",
-      "sha256": "6b72faf60e45e88ba9cb9e0748a0a0122f550874fb9e3b92fc0b83375033f696",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Public simulation.html"
-    },
-    {
-      "file": "s116-public-mobile-light-contact.png",
-      "sha256": "bbe7b3949ec4f0b59193092f4f94544c61b3cba9af217fac6e1eb6c07f5f4c79",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Public contact.html"
+      "recapturedAt": "2026-10-22T07:07:12.407Z"
     },
     {
-      "file": "s116-public-mobile-light-privacy.png",
-      "sha256": "897e9b4d9ae909d04aac7ee84489f2dce61b891478f12af6ad458c04f339d0d4",
+      "file": "captures/s118-final-family-mobile-light-anchor.png",
+      "original": "output/playwright/s118-family-mobile-light-anchor.png",
+      "sha256": "85c5287101cd0af1e6aa3a2d3cd1ea3db397e9ab74046a3793c8ff77c6c453f0",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Public privacy.html"
+      "recapturedAt": "2026-10-22T07:07:17.217Z"
     },
     {
-      "file": "s116-public-mobile-light-terms.png",
-      "sha256": "2f5837413a80c5d889952f9fec3bbec2f9fe12dce21f7afcc0600cef7c4bacfc",
+      "file": "captures/s118-final-family-mobile-light-relative.png",
+      "original": "output/playwright/s118-family-mobile-light-relative.png",
+      "sha256": "ef0d71bb52799ff05c972ce16fe834fb46c1bc1a1ba800c048fce222a75ac6de",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Public terms.html"
+      "recapturedAt": "2026-10-22T07:07:15.793Z"
     }
   ],
-  "inspection": {
-    "renderedPixelsReviewed": true,
-    "reviewer": "session-agent",
-    "findings": [
-      "League tab after the competition refactor: standings by conference/division, 18-week calendar with byes, playoff bracket and League Pulse render unchanged (desktop dark).",
-      "Harness passed 327/327 at d913b9f; Phase 1 steps 1-6 are behavior-identical (golden master).",
-      "Follow-up: conference labels display as AFC/NFC; they are also stored ids, so a display alias belongs with the championship-key rename step."
+  "earlierRuntimeCaptureProvenance": {
+    "src/runtime/GameSession.js": "c04fa4f3033d8fe0814abe0aa94dae3117c23c243d1da66065bd99ffa2fb8c50"
+  },
+  "candidateRecapture": {
+    "capturedAt": "2026-10-22T07:07:17.217Z",
+    "build": "final local preview, before candidate commit",
+    "bodyFrames": 28,
+    "familyFrames": 8,
+    "hashIdenticalToIndependentlyReviewed": 36,
+    "bodyAndFamilyTestsPassed": 2,
+    "currentRuntimeBound": true,
+    "formatOnlyChanges": [
+      "public/lib/tabContracts.js EOF whitespace",
+      "public/lib/tabSettings.js EOF whitespace"
     ],
-    "fixesApplied": [],
-    "blockingDefectsOpen": 0
+    "sourceRevision": "local-worktree"
   }
 }

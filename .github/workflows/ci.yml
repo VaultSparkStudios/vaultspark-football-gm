@@ -8,11 +8,11 @@ on:
 jobs:
   unit-shards:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: ${{ matrix.shard == 'sim:contract' && 160 || 100 }}
     strategy:
       fail-fast: false
       matrix:
-        shard: [core, runtime, sim:contract, sim:realism, studio]
+        shard: [core, runtime, sim:contract, sim:realism, long, studio]
 
     steps:
       - name: Checkout
@@ -32,7 +32,9 @@ jobs:
 
   browser-gates:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 205
+    env:
+      PLAYWRIGHT_CHANNEL: chrome
 
     steps:
       - name: Checkout
@@ -47,28 +49,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Cache Playwright browsers
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0, Node 24
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-
-      # The install step has hung indefinitely after a completed Chromium download
-      # (run 26918582829 burned the full 30m job budget). Bounded attempt + one retry.
-      - name: Install Playwright browser
-        id: pw-install
-        timeout-minutes: 6
-        continue-on-error: true
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: npx playwright install --with-deps chromium
-
-      - name: Retry Playwright browser install
-        if: steps.pw-install.outcome != 'success'
-        timeout-minutes: 6
-        env:
-          DEBIAN_FRONTEND: noninteractive
-        run: npx playwright install --with-deps chromium
+      # Use the supported Chrome channel supplied by the hosted runner image.
+      - name: Verify installed browser
+        run: google-chrome --version
 
       - name: Verify Pages build
         run: npm run build:pages
@@ -82,5 +65,7 @@ jobs:
         run: npm run smoke:pages
 
       - name: Run UI tests
-        timeout-minutes: 15
+        # The complete single-worker suite exceeded one hour on the S118 host.
+        # Preserve every case and leave a finite three-hour execution budget.
+        timeout-minutes: 180
         run: npm run test:ui
