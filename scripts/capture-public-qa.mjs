@@ -35,7 +35,9 @@ const server = http.createServer(async (request, response) => {
 });
 await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
 const baseUrl = `http://127.0.0.1:${server.address().port}`;
-const browser = await chromium.launch();
+// Same channel rule as responsive-evidence.mjs, so both captures run on a host
+// that has only an installed browser.
+const browser = await chromium.launch({ ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
 const captures = [];
 try {
   for (const viewport of viewports) {

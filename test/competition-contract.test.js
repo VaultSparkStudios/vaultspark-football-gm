@@ -15,6 +15,7 @@ import {
   simulateSeason,
   sortStandings
 } from "../src/engine/seasonSimulator.js";
+import { simulateRegularSeasonWeek } from "../src/engine/weeklySimulator.js";
 
 const restore = (session) => GameSession.fromSnapshot(JSON.parse(JSON.stringify(session.toSnapshot())), (seed) => new RNG(seed));
 const football = getSportRules("football");
@@ -229,6 +230,26 @@ test("GameSession's postseason flow drives a toy competition without knowing its
   assert.equal(progress.status, "completed");
   assert.equal(progress.controlledStatus, "not-qualified");
   assert.equal(progress.completedGames, 1);
+});
+
+test("weekly standings carry the sport pack's conferences, and none for a pack without them", (t) => {
+  const session = new GameSession({ rng: new RNG(12), startYear: 2026, controlledTeamId: "BUF" });
+  const footballWeek = simulateRegularSeasonWeek({
+    league: session.league, statBook: session.statBook, year: 2026,
+    weekBlock: session.seasonSchedule[0], rng: new RNG(13), mode: "quick"
+  });
+  assert.deepEqual(Object.keys(footballWeek.standings), [...football.structure.conferences, "overall"]);
+  for (const conference of football.structure.conferences) {
+    assert.equal(footballWeek.standings[conference].length, session.league.teams.filter((team) => team.conference === conference).length);
+  }
+
+  const unregister = registerSport(TOY_PACK);
+  t.after(unregister);
+  const league = toyLeague();
+  const [weekBlock] = TOY_PACK.competition.buildSchedule({ league, year: 2032 });
+  const toyWeek = simulateRegularSeasonWeek({ league, statBook: {}, year: 2032, weekBlock, rng: new RNG(14) });
+  assert.deepEqual(Object.keys(toyWeek.standings), ["overall"], "no invented NFL conference tables");
+  assert.equal(toyWeek.standings.overall.length, TOY_TEAMS.length);
 });
 
 test("registerSport refuses duplicates and unregisters cleanly", () => {

@@ -25,7 +25,7 @@ function wrapPngAsIco(png, width = 64, height = 64) {
 }
 
 const svg = await fs.readFile(sourcePath, "utf8");
-const browser = await chromium.launch({ headless: true });
+const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
 try {
   const page = await browser.newPage({ viewport: { width: 64, height: 64 } });
   await page.setContent(`<style>*{box-sizing:border-box}html,body{margin:0;width:64px;height:64px}</style>${svg}`);

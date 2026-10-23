@@ -1,7 +1,20 @@
-<!-- source: docs/AUDIT_2026-10-22.json · Session 119 -->
+<!-- source: docs/AUDIT_2026-10-23.json · Session 120 -->
 # Player identity and franchise development overhaul
 
-## Active work — S119 (mobile Desk layout and stat truth)
+## Active work — S120 (S119 release note and carried truth)
+
+Selected audit: `docs/AUDIT_2026-10-23.json`. Every premise was read on the live tree at c6e9d691 (5/5 verified).
+
+1. **S119 release note.** Add a dated 2026-10-23 note to `public/status.html`: the phone Desk fits the screen, and passer ratings now match the box score, so strong seasons in existing saves read about ten points higher. Before committing, check that no `tests-ui` spec or helper and no `responsive-evidence` check depends on the copy. Acceptance: the built `status-archive.html` and `changelog.xml` carry the note, and the public tests pass.
+2. **Capture channel parity.** `capture-public-qa.mjs` honors `PLAYWRIGHT_CHANNEL` the same way `responsive-evidence.mjs` does. Acceptance: a parity test that goes red on the bare launch.
+3. **Weekly standings from the sport pack.** `weeklySimulator` builds conference tables from `structure.conferences`. Acceptance: football output is unchanged, a pack with no conferences emits only `overall`, and the test goes red on the literal version.
+4. **Stale board item.** Close the Phase 1 passer-rating item with a pointer to the S119 guard.
+
+Deferred, with evidence: conference display names (a naming step with IP weight and test-id dependence) and payload compaction (the S119 measurement stands).
+
+Then: the canonical suite, staging verification of the exact candidate, the authorized production promotion and readback, and the canonical S120 closeout.
+
+## Previous work — S119 (mobile Desk layout and stat truth)
 
 Selected audit: `docs/AUDIT_2026-10-22.json`. Every premise was measured on the live tree (6/6 verified).
 

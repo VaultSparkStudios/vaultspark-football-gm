@@ -54,6 +54,21 @@ test("architecture evidence uses non-mutating, self-validating authorities", () 
   assert.match(responsive, /runtimeErrors/);
 });
 
+test("every script that launches Chromium honors the PLAYWRIGHT_CHANNEL it is given", () => {
+  // S119: public QA launched bare Chromium while responsive evidence honored the
+  // channel, so on a host with only installed Chrome one capture ran and one failed.
+  const scripts = readdirSync(join(repoRoot, "scripts"), { recursive: true })
+    .filter((name) => /\.m?js$/.test(name))
+    .map((name) => [name, readFileSync(join(repoRoot, "scripts", name), "utf8")])
+    .filter(([, source]) => /chromium\.launch\(/.test(source));
+  assert.ok(scripts.some(([name]) => name.endsWith("capture-public-qa.mjs")), "the scan sees capture-public-qa");
+  for (const [name, source] of scripts) {
+    for (const launch of source.match(/chromium\.launch\([^;]*\)/g) || []) {
+      assert.match(launch, /channel: process\.env\.PLAYWRIGHT_CHANNEL/, `${name}: ${launch}`);
+    }
+  }
+});
+
 test("task board parser keeps completed three-column rows out of open queues", () => {
   const markdown = `
 | # | Item | Status |

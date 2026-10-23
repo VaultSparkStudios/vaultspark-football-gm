@@ -55,6 +55,9 @@ export function simulateRegularSeasonWeek({
     });
   }
   const practicePayroll=(league.sportId||'football')==='football'?recordPracticeWeekPay(league,{year,week:weekBlock.week}):[];
+  // Conference tables come from the sport pack, as schedule and postseason
+  // already do; a pack without conferences gets the overall table only.
+  const conferences = getSportRules(league.sportId).structure?.conferences || [];
   return {
     cpuElevations,
     practicePayroll,
@@ -62,18 +65,15 @@ export function simulateRegularSeasonWeek({
     games,
     byeTeams: league.teams.map((team) => team.id).filter((teamId) => !activeTeams.has(teamId)).sort(),
     standings: {
-      AFC: conferenceStandings(league, "AFC").map((team) => ({
-        teamId: team.id,
-        wins: team.season.wins,
-        losses: team.season.losses,
-        ties: team.season.ties
-      })),
-      NFC: conferenceStandings(league, "NFC").map((team) => ({
-        teamId: team.id,
-        wins: team.season.wins,
-        losses: team.season.losses,
-        ties: team.season.ties
-      })),
+      ...Object.fromEntries(conferences.map((conference) => [
+        conference,
+        conferenceStandings(league, conference).map((team) => ({
+          teamId: team.id,
+          wins: team.season.wins,
+          losses: team.season.losses,
+          ties: team.season.ties
+        }))
+      ])),
       overall: sortStandings(league.teams).map((team) => ({
         teamId: team.id,
         wins: team.season.wins,

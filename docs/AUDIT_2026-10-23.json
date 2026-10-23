@@ -1,0 +1,361 @@
+{
+  "date": "2026-10-23",
+  "schemaVersion": "1.1",
+  "session": 120,
+  "source": "c6e9d691",
+  "status": "selected-outcomes-implemented",
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "game"
+  },
+  "scope": "s119-release-note-and-carried-truth",
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser franchise game",
+    "rubric": "SIL v3 ten categories /1000",
+    "staging": "independent existing stable origin",
+    "source": "S120 fresh audit; every premise read against live code at c6e9d691"
+  },
+  "gameLoopReview": "No loop defect was reported or measured since S119's production verification. The player-visible gap is communication: S119 changed passer ratings that existing saves display (strong seasons read about ten points higher) and fixed the phone Desk, and the release notes still end at 2026-10-22. Players who notice a rating jump with no dated note read it as a bug.",
+  "items": [
+    {
+      "id": 1,
+      "slug": "s119-release-note",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "One sentence under the 2026-10-22 note"
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "A dated 2026-10-23 release note on status.html naming both player-visible changes and the existing-save rating shift; sweep tests-ui specs/helpers and responsive-evidence for copy dependence; confirm the generated changelog page and feed carry it"
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "In-game 'what changed since you last played' notice keyed to the save's last-seen build"
+        }
+      },
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-23T13:49:56.529Z",
+          "status": "shipped",
+          "note": "2026-10-23 note on public/status.html: phone Desk fit and the single passer-rating formula, stating that most passers in existing saves read higher (a strong season by up to about ten points) and that near-perfect low-volume backups can read lower; a zero-attempt passer reads 0, not 39.6. Facts checked by the independent review against statSchema.js/appCore.js and statBook.js (ratings are recomputed from stored stats, never persisted). No tests-ui or responsive-evidence copy dependence. check-public-truth OK; public tests 32/33, the 1 red is the known git-ignored private ledger (local only, not tracked)."
+        }
+      ],
+      "premises": [
+        {
+          "claim": "The release notes have no entry after 2026-10-22",
+          "adapter": "grep",
+          "target": "public/status.html",
+          "pattern": "<h3>2026-10-23",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "rank": 1,
+      "title": "Tell players what S119 changed, including the passer-rating shift in existing saves",
+      "category": "Player communication",
+      "tier": "🔥",
+      "effortHours": 0.75,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 7.6,
+      "premise": "status.html's newest note is 2026-10-22; S119 shipped the phone Desk fix and a passer-rating change that moves numbers in existing saves.",
+      "acceptance": "status.html carries a 2026-10-23 note; the built status-archive.html and changelog.xml contain it; public tests pass; no tests-ui spec or responsive-evidence check depends on the replaced copy.",
+      "axis": "ui-ux-feedback",
+      "recipe": "A dated 2026-10-23 release note on status.html naming both player-visible changes and the existing-save rating shift; sweep tests-ui specs/helpers and responsive-evidence for copy dependence; confirm the generated changelog page and feed carry it",
+      "executionEvidence": "2026-10-23 note on public/status.html: phone Desk fit and the single passer-rating formula, stating that most passers in existing saves read higher (a strong season by up to about ten points) and that near-perfect low-volume backups can read lower; a zero-attempt passer reads 0, not 39.6. Facts checked by the independent review against statSchema.js/appCore.js and statBook.js (ratings are recomputed from stored stats, never persisted). No tests-ui or responsive-evidence copy dependence. check-public-truth OK; public tests 32/33, the 1 red is the known git-ignored private ledger (local only, not tracked)."
+    },
+    {
+      "id": 2,
+      "slug": "capture-public-qa-channel-parity",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.1,
+          "recipe": "Pass the channel at the launch call"
+        },
+        "L2": {
+          "effortHours": 0.4,
+          "recipe": "Honor PLAYWRIGHT_CHANNEL exactly as responsive-evidence does, and add a source-level parity test so the two capture scripts cannot diverge again"
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "One shared browser-launch helper for every capture script"
+        }
+      },
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-23T13:49:56.529Z",
+          "status": "shipped",
+          "note": "capture-public-qa, community-stats-evidence, generate-cover-image and generate-favicon now honor PLAYWRIGHT_CHANNEL like responsive-evidence. test/studio-protocol-smoke.test.js scans every script that launches Chromium; passes, and fails with the bare capture-public-qa launch restored (negative control from a backup copy)."
+        }
+      ],
+      "premises": [
+        {
+          "claim": "capture-public-qa launches Chromium with no channel",
+          "adapter": "grep",
+          "target": "scripts/capture-public-qa.mjs",
+          "pattern": "chromium\\.launch\\(\\)",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "responsive-evidence honors PLAYWRIGHT_CHANNEL",
+          "adapter": "grep",
+          "target": "scripts/responsive-evidence.mjs",
+          "pattern": "process\\.env\\.PLAYWRIGHT_CHANNEL",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 2,
+      "title": "Public QA captures use the same browser channel as responsive evidence",
+      "category": "Release tooling",
+      "tier": "⚡",
+      "effortHours": 0.4,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 9.4,
+      "premise": "scripts/capture-public-qa.mjs:38 calls chromium.launch() bare; scripts/responsive-evidence.mjs:504 passes PLAYWRIGHT_CHANNEL. On a host whose bundled Chromium is absent (this one, S119), public QA fails where responsive evidence runs.",
+      "acceptance": "capture-public-qa passes the channel when PLAYWRIGHT_CHANNEL is set; a unit test asserts both scripts honor it and goes red on the bare launch.",
+      "axis": "speed-organization-efficiency",
+      "recipe": "Honor PLAYWRIGHT_CHANNEL exactly as responsive-evidence does, and add a source-level parity test so the two capture scripts cannot diverge again",
+      "executionEvidence": "capture-public-qa, community-stats-evidence, generate-cover-image and generate-favicon now honor PLAYWRIGHT_CHANNEL like responsive-evidence. test/studio-protocol-smoke.test.js scans every script that launches Chromium; passes, and fails with the bare capture-public-qa launch restored (negative control from a backup copy)."
+    },
+    {
+      "id": 3,
+      "slug": "weekly-standings-from-sport-structure",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Loop over a local [\"AFC\",\"NFC\"] array"
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Build weekly conference standings from the league's sport structure (getSportRules(sportId).structure.conferences), football output byte-identical; test football keys equal the structure and the conference-free toy pack emits overall only"
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Conference display names separate from stored ids, with UI and harness sweep"
+        }
+      },
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-23T13:49:56.529Z",
+          "status": "shipped",
+          "note": "weeklySimulator builds conference tables from getSportRules(sportId).structure.conferences; football keys stay AFC, NFC, overall. test/competition-contract.test.js 10/10; the new test fails on the literal version (negative control)."
+        }
+      ],
+      "premises": [
+        {
+          "claim": "weeklySimulator hard-codes the two NFL conference keys",
+          "adapter": "grep",
+          "target": "src/engine/weeklySimulator.js",
+          "pattern": "conferenceStandings\\(league, \"AFC\"\\)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 3,
+      "title": "Weekly standings follow the sport pack's conferences, not literal AFC/NFC",
+      "category": "Multi-sport core",
+      "tier": "⚡",
+      "effortHours": 0.75,
+      "impact": 4,
+      "innovation": 4,
+      "priority": 7.4,
+      "premise": "src/engine/weeklySimulator.js:65,71 build standings under literal AFC/NFC keys, while schedule.js and postseason.js already read STRUCTURE.conferences. A conference-free pack (the toy pack in competition-contract.test.js) gets two empty NFL tables.",
+      "acceptance": "Football weekly standings are unchanged (same keys, same rows, golden master untouched); a pack with conferences [] produces only overall; the test goes red on the literal version.",
+      "axis": "features-depth",
+      "recipe": "Build weekly conference standings from the league's sport structure, football output byte-identical; test football keys equal the structure and the conference-free toy pack emits overall only",
+      "executionEvidence": "weeklySimulator builds conference tables from getSportRules(sportId).structure.conferences; football keys stay AFC, NFC, overall. test/competition-contract.test.js 10/10; the new test fails on the literal version (negative control)."
+    },
+    {
+      "id": 4,
+      "slug": "stale-passer-rating-board-item",
+      "selectedLevel": "L1",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.1,
+          "recipe": "Close the Phase 1 passer-rating item with the S119 evidence pointer"
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Also sweep the Phase 1 list for other items S116-S119 closed"
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "A board lint that fails an open item whose named defect has a passing guard test"
+        }
+      },
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-23T13:49:56.529Z",
+          "status": "shipped",
+          "note": "TASK_BOARD Phase 1 passer-rating item closed with the S119 guard pointer; the weeklySimulator item closed with the S120 evidence."
+        }
+      ],
+      "premises": [
+        {
+          "claim": "The task board still lists the passer-rating clamp as open",
+          "adapter": "grep",
+          "target": "context/TASK_BOARD.md",
+          "pattern": "- \\[ \\] Passer rating clamps before scaling",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 4,
+      "title": "Close the passer-rating item S119 already fixed",
+      "category": "SIL debt",
+      "tier": "💡",
+      "effortHours": 0.1,
+      "impact": 3,
+      "innovation": 2,
+      "priority": 5.4,
+      "premise": "TASK_BOARD Phase 1 still lists 'Passer rating clamps before scaling' as open; S119 fixed it (test/passer-rating.test.js, golden s119-v3).",
+      "acceptance": "The item is checked with a pointer to the S119 guard; no other open item claims the same defect.",
+      "axis": "sil-debt",
+      "recipe": "Close the Phase 1 passer-rating item with the S119 evidence pointer",
+      "executionEvidence": "TASK_BOARD Phase 1 passer-rating item closed with the S119 guard pointer; the weeklySimulator item closed with the S120 evidence."
+    }
+  ],
+  "skipped": [
+    {
+      "id": "conference-display-names",
+      "reason": "Real: game.html:902,906 show AFC/NFC bracket headings to players. Choosing fictional conference names is a naming decision with IP weight, and the copy is load-bearing in tests-ui (afc-bracket-table test ids). Stays on the Phase 1 board for its own step."
+    },
+    {
+      "id": "payload-recipe-compaction",
+      "reason": "S119 measured 15.305 MB raw vs the 16 MB bar, with gzip absorbing the repeated seed; nothing this session adds a per-player field, so the migration stays deferred until one does."
+    }
+  ],
+  "initialReview": "Fresh S120 audit after S119's verified production closeout. The brief's queue was exhausted. Every candidate was read against live code at c6e9d691; four survive, two are deferred with evidence.",
+  "axes": {
+    "features-depth": 1,
+    "ui-ux-feedback": 1,
+    "gamification-immersion": 1,
+    "ai-intelligence": 1,
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [
+        "weekly-standings-from-sport-structure"
+      ],
+      "rejectedOnVerify": []
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "s119-release-note"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "conference-display-names",
+          "premise": "Players see the real league's conference names",
+          "evidence": "Confirmed at public/game.html:902,906; deferred as its own naming step (see skipped)."
+        }
+      ]
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-engagement-mechanic",
+          "premise": "A new mechanic is the highest-value change this session",
+          "evidence": "No measured loop defect since S119; the unannounced rating shift in existing saves is the live player-facing risk, so communication outranks a new mechanic."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "advisor-model-upgrade",
+          "premise": "The advisor needs hosted inference",
+          "evidence": "Deterministic and local by design (static-host-safe success bar)."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-input-surface",
+          "premise": "Selected work adds an input or trust boundary",
+          "evidence": "Static copy, a script launch option and a pure engine function; no request, storage or input path changes."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [
+        "capture-public-qa-channel-parity"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "payload-recipe-compaction",
+          "premise": "Snapshot payload needs compaction now",
+          "evidence": "S119 measurement stands; no new per-player field this session."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "hosted-cost",
+          "premise": "Selected work adds runtime cost",
+          "evidence": "Zero hosted cost."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "rating-shift-unannounced",
+          "premise": "A separate honesty item is needed for the S119 rating shift",
+          "evidence": "Covered by s119-release-note (ui-ux-feedback), which states the shift in existing saves; a second item would duplicate it."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [
+        "stale-passer-rating-board-item"
+      ],
+      "rejectedOnVerify": []
+    }
+  },
+  "totals": {
+    "count": 4,
+    "priority": 29.8,
+    "top3": [
+      "capture-public-qa-channel-parity",
+      "s119-release-note",
+      "weekly-standings-from-sport-structure"
+    ]
+  },
+  "review": {
+    "at": "2026-10-23T13:49:56.529Z",
+    "verdict": "approve",
+    "findings": 3,
+    "fixed": 2,
+    "note": "Fresh-context reviewer: no correctness bugs. Fixed: release-note overclaim (rating gain depends on yards per attempt; some backups read lower) and the parity test now covers every Chromium launch, not two. Not fixed: the football weekly-standings test checks keys and row counts, not row contents. Row equality holds by construction and is covered by the golden master."
+  }
+}

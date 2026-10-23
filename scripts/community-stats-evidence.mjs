@@ -48,7 +48,7 @@ async function main() {
   const snapshot = mockSnapshot();
   const web = await server();
   await new Promise((resolve) => web.listen(port, host, resolve));
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
   const captures = [];
   const errors = [];
   const surfaces = [
