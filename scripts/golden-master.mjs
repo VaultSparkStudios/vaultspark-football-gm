@@ -22,7 +22,11 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 export const HISTORICAL_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.json");
-export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s118-v2.json");
+// Each deliberate behavior change adopts a new versioned fixture and leaves the
+// previous one byte-identical (test/football-golden-master.test.js holds them).
+// S119: the passer rating scales before it clamps; only seasonTable.passing moved.
+export const S118_GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s118-v2.json");
+export const GOLDEN_MASTER_FIXTURE = path.join(ROOT, "test", "fixtures", "football-golden-master.s119-v3.json");
 export const GOLDEN_MASTER_SCENARIOS = Object.freeze([
   Object.freeze({ id: "drive-20260306-BUF", seed: 20260306, mode: "drive", controlledTeamId: "BUF", seasons: 3 }),
   Object.freeze({ id: "play-4113-CHI", seed: 4113, mode: "play", controlledTeamId: "CHI", seasons: 3 })

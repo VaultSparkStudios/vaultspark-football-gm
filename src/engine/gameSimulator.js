@@ -1,5 +1,6 @@
 import { DEPTH_CHART_ROLE_NAMES, DRIVE_OUTCOMES } from "../config.js";
 import { FOOTBALL_RULES } from "../sport/football/rules.js";
+import { passerRating } from "../sport/football/statSchema.js";
 import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js";
 import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings.js";
 import { clamp, mean } from "../utils/rng.js";
@@ -1593,16 +1594,6 @@ function teamGameSummary(
   };
 }
 
-function gamePasserRating(passing = {}) {
-  const att = Number(passing.att || 0);
-  if (!att) return 0;
-  const a = clamp((Number(passing.cmp || 0) / att - 0.3) * 5, 0, 2.375);
-  const b = clamp((Number(passing.yards || 0) / att - 3) * 0.25, 0, 2.375);
-  const c = clamp((Number(passing.td || 0) / att) * 20, 0, 2.375);
-  const d = clamp(2.375 - (Number(passing.int || 0) / att) * 25, 0, 2.375);
-  return Number((((a + b + c + d) / 6) * 100).toFixed(1));
-}
-
 function buildPlayerStatGroups(entries) {
   return {
     passing: entries
@@ -1618,7 +1609,7 @@ function buildPlayerStatGroups(entries) {
         td: entry.stats.passing.td,
         int: entry.stats.passing.int,
         ypa: Number((entry.stats.passing.yards / Math.max(1, entry.stats.passing.att)).toFixed(1)),
-        rate: gamePasserRating(entry.stats.passing),
+        rate: passerRating(entry.stats.passing),
         sacks: entry.stats.passing.sacks,
         sackYds: entry.stats.passing.sackYards,
         firstDowns: entry.stats.passing.firstDowns,

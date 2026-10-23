@@ -575,16 +575,17 @@ export function buildProfileSeasonAvMap(profile) {
   return new Map((profile.seasonRows?.[category] || []).map((row) => [row.year, row.av ?? 0]));
 }
 
+// The browser's copy of src/sport/football/statSchema.js passerRating, held
+// equal by test/passer-rating.test.js: scale each term, then clamp it, and a
+// passer with no attempts has no rating (this read 39.6 before S119).
 export function passerRateFromStats(stats) {
-  const cmp = stats?.cmp || 0;
-  const att = Math.max(1, stats?.att || 0);
-  const yards = stats?.yards || 0;
-  const td = stats?.td || 0;
-  const int = stats?.int || 0;
-  const a = Math.max(0, Math.min(2.375, cmp / att - 0.3)) * 5;
-  const b = Math.max(0, Math.min(2.375, yards / att - 3)) * 0.25;
-  const c = Math.max(0, Math.min(2.375, (td / att) * 20));
-  const d = Math.max(0, Math.min(2.375, 2.375 - (int / att) * 25));
+  const att = Number(stats?.att || 0);
+  if (!att) return 0;
+  const term = (value) => Math.max(0, Math.min(2.375, value));
+  const a = term((Number(stats?.cmp || 0) / att - 0.3) * 5);
+  const b = term((Number(stats?.yards || 0) / att - 3) * 0.25);
+  const c = term((Number(stats?.td || 0) / att) * 20);
+  const d = term(2.375 - (Number(stats?.int || 0) / att) * 25);
   return Number((((a + b + c + d) / 6) * 100).toFixed(1));
 }
 

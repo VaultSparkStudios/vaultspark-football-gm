@@ -24,12 +24,22 @@ function per(numerator, denominator, digits = 1) {
   return Number((numerator / denominator).toFixed(digits));
 }
 
-export function passerRating({ cmp, att, yards, td, int }) {
+const ratingTerm = (value) => Math.max(0, Math.min(2.375, value));
+
+// The NFL passer rating: each term is scaled first and then held to 0..2.375.
+// Until S119 this clamped the completion and yards terms before scaling them,
+// so a 3,500-yard, 7.8 Y/A season read 89.3 instead of 99.3 and a perfect line
+// stopped at 147.4 instead of 158.3, while the box score (which always scaled
+// first) disagreed with the season table. The box score now calls this too;
+// the client's copy (public/lib/appCore.js) is held equal by
+// test/passer-rating.test.js.
+export function passerRating({ cmp = 0, att = 0, yards = 0, td = 0, int = 0 } = {}) {
+  att = Number(att || 0);
   if (!att) return 0;
-  const a = Math.max(0, Math.min(2.375, cmp / att - 0.3)) * 5;
-  const b = Math.max(0, Math.min(2.375, yards / att - 3)) * 0.25;
-  const c = Math.max(0, Math.min(2.375, (td / att) * 20));
-  const d = Math.max(0, Math.min(2.375, 2.375 - (int / att) * 25));
+  const a = ratingTerm((Number(cmp || 0) / att - 0.3) * 5);
+  const b = ratingTerm((Number(yards || 0) / att - 3) * 0.25);
+  const c = ratingTerm((Number(td || 0) / att) * 20);
+  const d = ratingTerm(2.375 - (Number(int || 0) / att) * 25);
   return Number((((a + b + c + d) / 6) * 100).toFixed(1));
 }
 

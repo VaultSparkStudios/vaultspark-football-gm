@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "baselineVersion": "s119-v3",
+  "status": "deliberate attributed behavior change; release evidence recorded separately",
+  "change": "The passer rating scales each NFL term before clamping it to 0..2.375. The season/career tables and the browser profile rows clamped the completion and yards terms first (300/450, 3,500 yds, 25 TD, 10 INT read 89.3 instead of 99.3; a perfect line read 147.4 instead of 158.3). The box score already scaled first and is unchanged.",
+  "previous": {
+    "file": "test/fixtures/football-golden-master.s118-v2.json",
+    "sha256": "d9b95a052a21e85b789a42d0d7320d55e7b50427f58f923fb5bc8ef832066b26",
+    "preservedUnchanged": true
+  },
+  "original": {
+    "file": "test/fixtures/football-golden-master.json",
+    "sha256": "4901d3487f119b9fc7485e139135a663738c32062668f7eaa66dc32517de1190",
+    "preservedUnchanged": true
+  },
+  "current": {
+    "file": "test/fixtures/football-golden-master.s119-v3.json",
+    "sha256": "d1230f6155dfcfc115d2960edc0f6e45be61eda611951f1a435ffe0cdb56a0bb"
+  },
+  "scenarios": ["drive-20260306-BUF", "play-4113-CHI"],
+  "beforeCheck": {
+    "log": ".cache/s119-golden-before.log",
+    "result": "identical to s118-v2 on the unmodified tree (1,087 s)"
+  },
+  "afterCheck": {
+    "log": ".cache/s119-golden-after.log",
+    "result": "2 sections differ",
+    "differences": [
+      "drive-20260306-BUF: seasonTable.passing changed",
+      "play-4113-CHI: seasonTable.passing changed"
+    ]
+  },
+  "attribution": {
+    "seasonTable.passing": "rate column now uses the NFL formula; every other column in the section is unchanged code",
+    "unchanged": "summary, champions, awards, standings, finance, RNG-dependent sections and every other section are byte-identical; the season rate is read elsewhere only as an AV tie-break in award selection, and no award changed in either three-season career"
+  },
+  "guards": [
+    "test/football-golden-master.test.js: S118 fixture hash and the exact two-section diff",
+    "test/passer-rating.test.js: reference lines 99.3, 158.3, 115.1, 0, 0 from both copies",
+    "test/stat-schema-contract.test.js: season row rate 99.3"
+  ]
+}

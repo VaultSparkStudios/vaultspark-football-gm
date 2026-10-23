@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { createHash } from "node:crypto";
-import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
+import { computeGoldenMaster, diffGoldenMaster, GOLDEN_MASTER_FIXTURE, HISTORICAL_GOLDEN_MASTER_FIXTURE, S118_GOLDEN_MASTER_FIXTURE, GOLDEN_MASTER_SCENARIOS } from "../scripts/golden-master.mjs";
 
 // S116 Phase 0: every multi-sport extraction step must leave football byte-identical.
 // A mismatch names the drifted sections. Regenerate the fixture only for an
@@ -33,6 +33,20 @@ test("versioned intentional behavior baseline preserves S116 and every original 
     for (const key of Object.keys(scenario.sections)) assert.ok(Object.hasOwn(next.sections, key), `historical section removed: ${id}: ${key}`);
     assert.ok(Object.values(next.sections).every(value=>/^[a-f0-9]{64}$/.test(value)), 'every current section retains a SHA-256 identity');
   }
+});
+
+test("S119 passer-rating baseline preserves S118 and moves only the season passing tables", () => {
+  const s118Bytes = fs.readFileSync(S118_GOLDEN_MASTER_FIXTURE);
+  assert.equal(createHash('sha256').update(s118Bytes).digest('hex'), 'd9b95a052a21e85b789a42d0d7320d55e7b50427f58f923fb5bc8ef832066b26');
+  const s118 = JSON.parse(s118Bytes), current = JSON.parse(fs.readFileSync(GOLDEN_MASTER_FIXTURE));
+  // The passer rating now scales each term before clamping it. Nothing reads
+  // the season rate except award tie-breaks, so every other section, including
+  // awards, standings and champions, must be byte-identical to S118.
+  assert.deepEqual(diffGoldenMaster(s118, current).sort(), [
+    'drive-20260306-BUF: seasonTable.passing changed',
+    'play-4113-CHI: seasonTable.passing changed'
+  ]);
+  for (const id of Object.keys(s118.scenarios)) assert.deepEqual(current.scenarios[id].summary, s118.scenarios[id].summary);
 });
 
 test("the diff names changed, added and missing sections", () => {

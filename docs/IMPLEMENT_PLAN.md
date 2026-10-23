@@ -1,4 +1,15 @@
+<!-- source: docs/AUDIT_2026-10-22.json · Session 119 -->
 # Player identity and franchise development overhaul
+
+## Active work — S119 (mobile Desk layout and stat truth)
+
+Selected audit: `docs/AUDIT_2026-10-22.json`. Every premise was measured on the live tree (6/6 verified).
+
+1. **Phone Desk column blowout.** `.team-mode-switch { width: max-content }` contributes its single-row width to grid intrinsic sizing, where `max-width: 100%` cannot resolve. The situational-calls switch therefore sets a 356 px minimum on the 321 px Desk column, and every card ends at x 391 on a 390 px phone. Fix it at the switch with a shrink-wrapping width and wrapping. Acceptance: a browser regression at 390 and 320 px that goes red when the old rule is restored.
+2. **One passer rating.** The stat schema and the client clamp the yards term before scaling it; the box score scales first, which is correct. Fix both and hold all three to published reference values (99.3, 158.3, 0, 39.6). Make the golden-master change deliberately and attribute it in a new versioned fixture; the prior fixtures stay byte-identical.
+3. **Stale payload premise.** Close the carried 16.2 MB task with the measured 15.305 MB. Compaction is deferred with its measurement and is not claimed as done.
+
+Then: the canonical suite, staging verification of the exact candidate, the authorized production promotion and readback, and the canonical S119 closeout.
 
 ## Active character work — S118
 

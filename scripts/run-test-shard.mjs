@@ -301,6 +301,7 @@ export const SHARDS = {
     "test/pension-service-snapshot.test.js",
     "test/draft-prospect-profile.test.js",
     "test/stat-schema-contract.test.js",
+    "test/passer-rating.test.js",
     "test/calendar-contract.test.js",
     "test/competition-contract.test.js",
     "test/nfl-schedule-bye-window.test.js",

@@ -24,7 +24,8 @@ S112 evidence correction to the older CPU–CPU market task: test/session111-cpu
 
 ## S117 carried scope — explicit partial closeout
 
-- [ ] Now: fix the reproducible 16.2 MB save-payload regression without raising the 16 MB bar; rerun current required checks.
+- [x] Now: fix the reproducible 16.2 MB save-payload regression without raising the 16 MB bar; rerun current required checks. — CLOSED S119 by measurement, not by a fix: the six-week play snapshot (seed 99, BUF) is 15.305 MB raw against the unchanged 16 MB bar, and test/save-payload-budget.test.js passes. Headroom is only 4.3%; players are 8.7 MB (2,208 × 3.85 KB, profile 2.5 MB) and the game archive 5.4 MB.
+- [ ] Next: restore payload headroom before the next per-player field lands. The nine profile recipes each repeat the same face seed; gzip absorbs that in storage, so compacting it needs a snapshot migration and pays off only in raw-size headroom. Measure again before choosing.
 - [ ] Now: finish whole-person appearance craft and clear the existing visual defect through rendered evidence.
 - [ ] Next: complete remaining NFL policy scope and a fresh source-bound 30-season managed GM verification.
 - [ ] Next: exact-candidate stable staging, release gates, authorized production promotion and readback.

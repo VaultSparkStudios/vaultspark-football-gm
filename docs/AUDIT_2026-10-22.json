@@ -1,0 +1,318 @@
+{
+  "date": "2026-10-22",
+  "schemaVersion": "1.1",
+  "session": 119,
+  "source": "3edb1ed7",
+  "status": "selected-outcomes-implemented; release pending",
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "game"
+  },
+  "scope": "mobile-desk-layout-and-stat-truth",
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser franchise game",
+    "rubric": "SIL v3 ten categories /1000",
+    "staging": "independent existing stable origin",
+    "source": "S119 fresh current-worktree review with live browser measurement"
+  },
+  "gameLoopReview": {
+    "loopTightness": "Desk → weekly plan → game day → box score → season tables",
+    "progression": "season and career passing tables drive how a GM judges a quarterback",
+    "sessionEngagement": "the Desk is the first screen of every week; on a phone its cards ran past the edge",
+    "retention": "trustworthy numbers: a QB's game rating and season rating must agree",
+    "soulFidelity": "static browser franchise simulator; no backend work selected",
+    "evidence": "Measured in installed Chrome at 390x844 against a real seeded league; formula outputs computed from the live modules."
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "mobile-desk-column-blowout",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Hide the overflow with minmax(0,1fr) on the Desk column (clips the switch instead of fixing it)"
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Fix the intrinsic-width source: the shared mode switch stops contributing its single-row max-content width, wraps when narrow; add a browser regression at 390 and 320 px with a negative control"
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Repo-wide horizontal-overflow sweep of every tab at phone widths as a promotion gate"
+        }
+      },
+      "status": "shipped",
+      "shipped": true,
+      "premises": [
+        {
+          "claim": "The shared mode switch declares a max-content width that grid intrinsic sizing cannot cap",
+          "adapter": "grep",
+          "target": "public/styles.css",
+          "pattern": "\\.team-mode-switch \\{[^}]*width: max-content; max-width: 100%",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The situational calls card renders that switch inside the Desk hero column",
+          "adapter": "grep",
+          "target": "public/lib/situationalCallsPanel.js",
+          "pattern": "team-mode-switch situational-calls-switch",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 1,
+      "title": "Phone Desk: one switch props the whole column past the right edge",
+      "category": "UI / mobile",
+      "tier": "🔥",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 21.8,
+      "premise": "At 390 px the Desk hero column resolves to 356.4 px inside a 320.8 px parent; every Desk card sits at x 35-391 and the panel's overflow:hidden clips its right edge. Min-content measurement names #situationalCallsCard (356 px) via .situational-calls-row (326 px), whose .team-mode-switch is width:max-content.",
+      "acceptance": "At 390x844 and 320x700 every Desk card's right edge is within the hero panel's content box; the regression spec goes red with the old rule restored.",
+      "axis": "ui-ux-feedback",
+      "recipe": "Fix the intrinsic-width source: the shared mode switch stops contributing its single-row max-content width, wraps when narrow; add a browser regression at 390 and 320 px with a negative control",
+      "executionLog": [
+        {
+          "at": "2026-10-23T04:03:42.915Z",
+          "status": "shipped",
+          "note": "Shared .team-mode-switch now width:fit-content + flex-wrap:wrap. tests-ui/mobile-desk-width.spec.js passes at 390x844 and 320x700 (installed Chrome); negative control with the old max-content rule fails with Desk cards 35.6 px past the panel edge. Fresh 390/320 captures inspected: cards inside the panel with a right gutter; switch wraps with 44 px targets. Styles-related unit tests 56/57 (the 1 red is a pre-existing ignored private ledger file in the worktree, unrelated, not in git). Boot budget 649,930/730,000; reachability 145 modules. Independent fresh-context review: approve, 0 fix findings."
+        }
+      ],
+      "executionEvidence": "Shared .team-mode-switch now width:fit-content + flex-wrap:wrap. tests-ui/mobile-desk-width.spec.js passes at 390x844 and 320x700 (installed Chrome); negative control with the old max-content rule fails with Desk cards 35.6 px past the panel edge. Fresh 390/320 captures inspected: cards inside the panel with a right gutter; switch wraps with 44 px targets. Styles-related unit tests 56/57 (the 1 red is a pre-existing ignored private ledger file in the worktree, unrelated, not in git). Boot budget 649,930/730,000; reachability 145 modules. Independent fresh-context review: approve, 0 fix findings."
+    },
+    {
+      "id": 2,
+      "slug": "passer-rating-single-formula",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Fix the clamp order in statSchema only"
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "One canonical passerRating in the stat schema; the box score and client use it or are held equal by a contract test with published reference values; deliberate attributed golden-master change"
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "Also migrate stored season rows in old saves and recompute archived leaderboards"
+        }
+      },
+      "status": "shipped",
+      "shipped": true,
+      "premises": [
+        {
+          "claim": "The season/career table clamps the yards term before scaling it",
+          "adapter": "grep",
+          "target": "src/sport/football/statSchema.js",
+          "pattern": "Math\\.min\\(2\\.375, yards / att - 3\\)\\) \\* 0\\.25",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The client keeps a second copy with the same clamp-before-scale order",
+          "adapter": "grep",
+          "target": "public/lib/appCore.js",
+          "pattern": "Math\\.min\\(2\\.375, yards / att - 3\\)\\) \\* 0\\.25",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The box score already scales before clamping, so the two disagree",
+          "adapter": "grep",
+          "target": "src/engine/gameSimulator.js",
+          "pattern": "clamp\\(\\(Number\\(passing\\.yards \\|\\| 0\\) / att - 3\\) \\* 0\\.25, 0, 2\\.375\\)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 2,
+      "title": "Season passer rating disagrees with the box score (89.3 vs 99.3; perfect game 147.4 vs 158.3)",
+      "category": "Simulation truth / stats",
+      "tier": "🔥",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 16,
+      "premise": "Live module output: statSchema.passerRating(300/450, 3500 yds, 25 TD, 10 INT) = 89.3 (correct 99.3); a perfect line returns 147.4 (correct 158.3). gameSimulator.gamePasserRating is already correct, so the same QB shows two ratings.",
+      "acceptance": "Reference values 99.3, 158.3, 0 and 39.6 from all three call sites; season tables equal box-score formula; golden-master diff confined to stat-derived sections and adopted as an attributed versioned fixture.",
+      "axis": "observability-honesty",
+      "recipe": "One canonical passerRating in the stat schema; the box score and client use it or are held equal by a contract test with published reference values; deliberate attributed golden-master change",
+      "executionLog": [
+        {
+          "at": "2026-10-23T04:03:42.915Z",
+          "status": "shipped",
+          "note": "statSchema.passerRating scales before clamping and is the box score's formula too (gameSimulator imports it; private copy removed); client passerRateFromStats matches and returns 0 for zero attempts (was 39.6). test/passer-rating.test.js 8/8 (99.3, 158.3, 115.1, 0, 0); negative control 4/8 fail on the old order. stat-schema-contract 7/7 (row.rate 99.3). Golden master: unmodified tree identical; after the fix exactly seasonTable.passing in both scenarios; adopted as test/fixtures/football-golden-master.s119-v3.json with s118-v2 and the S116 original byte-identical (docs/GOLDEN_BASELINE_S119.json). Light golden tests 3/3. Local sim-contract shard was stopped by host memory pressure, not by a failure; exact-candidate CI is the full receipt. Independent review: approve, 0 fix findings (1.4M-input equivalence of both copies)."
+        }
+      ],
+      "executionEvidence": "statSchema.passerRating scales before clamping and is the box score's formula too (gameSimulator imports it; private copy removed); client passerRateFromStats matches and returns 0 for zero attempts (was 39.6). test/passer-rating.test.js 8/8 (99.3, 158.3, 115.1, 0, 0); negative control 4/8 fail on the old order. stat-schema-contract 7/7 (row.rate 99.3). Golden master: unmodified tree identical; after the fix exactly seasonTable.passing in both scenarios; adopted as test/fixtures/football-golden-master.s119-v3.json with s118-v2 and the S116 original byte-identical (docs/GOLDEN_BASELINE_S119.json). Light golden tests 3/3. Local sim-contract shard was stopped by host memory pressure, not by a failure; exact-candidate CI is the full receipt. Independent review: approve, 0 fix findings (1.4M-input equivalence of both copies)."
+    },
+    {
+      "id": 3,
+      "slug": "stale-payload-premise",
+      "selectedLevel": "L1",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Close the carried 16.2 MB task with the measured value and keep a headroom finding visible"
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Compact repeated per-player recipe seeds behind a snapshot migration"
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "Columnar player storage with codec parity tests"
+        }
+      },
+      "status": "shipped",
+      "shipped": true,
+      "premises": [
+        {
+          "claim": "TASK_BOARD still carries the 16.2 MB regression as Now work",
+          "adapter": "grep",
+          "target": "context/TASK_BOARD.md",
+          "pattern": "16\\.2 MB save-payload regression",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "rank": 3,
+      "title": "The carried 16.2 MB payload regression no longer reproduces (15.3 MB measured)",
+      "category": "Truth / process",
+      "tier": "💡",
+      "effortHours": 0.25,
+      "impact": 4,
+      "innovation": 2,
+      "priority": 4.6,
+      "premise": "Six-week play snapshot, seed 99, BUF: 15.305 MB raw against the unchanged 16 MB bar; players 8.7 MB (2,208 x 3.85 KB, profile 2.5 MB), gameArchive 5.4 MB. The guard test passes. Headroom is 4.3%.",
+      "acceptance": "Task closed with the measured value; L2 compaction recorded as deferred with its measurement, never as done.",
+      "axis": "sil-debt",
+      "recipe": "Close the carried 16.2 MB task with the measured value and keep a headroom finding visible",
+      "executionLog": [
+        {
+          "at": "2026-10-23T04:03:42.915Z",
+          "status": "shipped",
+          "note": "TASK_BOARD S117 carried item closed by measurement: 15.305 MB raw six-week snapshot vs unchanged 16 MB bar; save-payload-budget six-week test passes. Headroom follow-up added as Next; compaction not claimed."
+        }
+      ],
+      "executionEvidence": "TASK_BOARD S117 carried item closed by measurement: 15.305 MB raw six-week snapshot vs unchanged 16 MB bar; save-payload-budget six-week test passes. Headroom follow-up added as Next; compaction not claimed."
+    }
+  ],
+  "skipped": [
+    {
+      "id": "weekly-standings-conference-literals",
+      "reason": "Real (weeklySimulator.js:65,71 use literal AFC/NFC keys) but a multi-sport refactor with no player-visible effect today; stays on the Phase 1 board."
+    },
+    {
+      "id": "payload-recipe-compaction",
+      "reason": "Measured: the repeated face seed across nine recipes is absorbed by gzip in storage; a snapshot migration for raw headroom is not worth a release-gated schema change this session."
+    }
+  ],
+  "initialReview": "# Mobile Desk layout and stat-truth audit — 2026-10-22\n\nScope: a fresh S119 audit of the current worktree after S118's production release. The Genius queue was empty. Every premise below was measured against live code or a live browser, not inherited from the board.\n\n## Findings and selected outcomes\n\n| Rank | Tier | Category | Finding and implementation | Effort | Impact | Innovation | Acceptance |\n|---|---|---|---|---|---|---|---|\n| 1 | P0 | UI / mobile | The long-recorded \"expanded-mobile Desk/card right-edge clipping\" has one cause: `.team-mode-switch { width: max-content }` inside the situational-calls card. Grid intrinsic sizing cannot resolve `max-width: 100%`, so the switch's single-row width (326 px) becomes the column minimum and pushes every Desk card to x 391 on a 390 px phone. Let the switch shrink-wrap and wrap. | 1.5h | 8 | 5 | Desk cards inside the panel at 390 and 320 px; spec red on the old rule. |\n| 2 | P0 | Simulation truth | `passerRating` in the stat schema and its client copy clamp the yards term before scaling it; the box score does it correctly. A 300/450, 3,500-yard, 25 TD, 10 INT season reads 89.3 instead of 99.3, and a perfect line caps at 147.4. One formula, reference-value contract, attributed golden-master change. | 2h | 8 | 4 | 99.3 / 158.3 / 0 / 39.6 from every call site; golden diff confined to stat sections. |\n| 3 | P2 | Truth | The carried 16.2 MB payload regression measures 15.3 MB now; close it with the number and keep the 4.3% headroom visible. | 0.25h | 4 | 2 | Board closed with measurement; compaction deferred. |\n\n## Nine-axis assessment\n\nFeatures/depth: no new feature; correctness of an existing stat a GM reads every week. UI/UX: the phone Desk is the first screen of every week and it was clipped. Feedback: two different ratings for the same QB contradict the box score. Engagement: trustworthy numbers are the game. Intelligence: none needed. Security: CSS and pure-function changes only; no new input. Speed: no runtime cost. Token/cost: none. Competitive context: no market claims.\n",
+  "axes": {
+    "features-depth": 1,
+    "ui-ux-feedback": 2,
+    "gamification-immersion": 3,
+    "ai-intelligence": 1,
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "weekly-standings-conference-literals",
+          "premise": "weeklySimulator builds standings with literal AFC/NFC keys",
+          "evidence": "Confirmed at src/engine/weeklySimulator.js:65,71 but it is a multi-sport refactor with no player-visible effect; stays on the Phase 1 board."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "mobile-desk-column-blowout"
+      ],
+      "rejectedOnVerify": []
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "desk-first-screen-engagement",
+          "premise": "A new engagement mechanic is the highest-value Desk change",
+          "evidence": "Live 390px measurement shows the existing Desk is clipped on phones; fixing the first screen outranks adding to it."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "advisor-model-upgrade",
+          "premise": "The front-office advisor needs hosted inference",
+          "evidence": "Advisor is deterministic and local by design (static-host-safe success bar); no hosted model is warranted."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-input-surface",
+          "premise": "Selected work adds an input or trust boundary",
+          "evidence": "Both changes are CSS and a pure stat function; no request, storage or input path changes."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "payload-recipe-compaction",
+          "premise": "Snapshot payload needs compaction now",
+          "evidence": "Measured 15.305 MB raw vs 16 MB bar; repeated recipe seeds are absorbed by gzip in storage; deferred with measurement."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "hosted-cost",
+          "premise": "Selected work adds runtime or inference cost",
+          "evidence": "Static client and pure functions; zero hosted cost."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [
+        "passer-rating-single-formula"
+      ],
+      "rejectedOnVerify": []
+    },
+    "sil-debt": {
+      "surviving": [
+        "stale-payload-premise"
+      ],
+      "rejectedOnVerify": []
+    }
+  },
+  "totals": {
+    "count": 3,
+    "priority": 42.4,
+    "top3": [
+      "mobile-desk-column-blowout",
+      "passer-rating-single-formula",
+      "stale-payload-premise"
+    ]
+  }
+}
