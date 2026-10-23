@@ -1,21 +1,3 @@
-## 2026-09-14 — Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there
-
-**Triage.** Clean start on `83d6ad0`: tree clean, synced, brief fresh, genius queue exhausted, meter CONTINUE. The founder's goal in one line: full-surface audit, implement the plan in efficiency order, close out, push, deploy.
-
-**Audit** (`docs/AUDIT_2026-09-14_SESSION109.json`, 15 items, combined priority 226.6). Three parallel Explore lanes (site, shell, engine; 211,300 subagent tokens) then every premise re-verified by grep, by running the boot-budget gate and by fetching the live origin (community snapshot: status warming, sampleSize 0). Eight lane phantoms rejected before ranking. The premise checker in this repo knows only three adapters; five count premises were rewritten as multiline grep groups.
-
-**Implementation.** Five agents on isolated lanes (personas, CSS + crests, worker transport, moment cards, advisor logic; ~900,000 subagent tokens) while the website batch and the shell wiring were done directly. Order: website batch (comment strip narrowed to the sitemap; fail-closed CORS; legacy-tier gate; manifest chrome; About/FAQ, press, status archive; showcase league), then visual layer, then shell (Desk/League, First Season Contract, advisor wiring behind `deskIslands.js`), then engine (personas), then transport (worker), then image and lane cache.
-
-**Corrected premises.** Built pages already strip comments; the stat bar was already gated; the pre-cohort atlas already invites. Recorded, not shipped.
-
-**Gates that caught agent output.** Promise observability: four silent `.catch(() => {})` sinks around lazy imports (now `recordClientDiagnostic`). Reachability: the worker entry is reached only through `new Worker(new URL())` and is the one declared allowlist entry. API-contract parity: the CORS methods literal moved files and the gate's population was widened rather than the literal duplicated. Boot target: crossed six times by comment bytes and wiring; the advisor/contract wiring moved into a lazy module and every static comment was cut to a line; final 649,981.
-
-**Found by a spec.** `tests-ui/desk-islands.spec.js` asserted standings rows after a played week and found none: `latestStandings` read `statBook.getTeamSeasonTable`, which is filled at season end, so a franchise's first season showed "No rows" and later seasons showed the previous year. `teamSeasonRow` declared once, `getLiveTeamSeasonTable` for the season in progress, archive preferred when present; 3/3 with the empty archive as the negative control; release note extended.
-
-**Receipts.** Full suite run three times: the first died to the tool's own 600 s timeout, the second went green on core and red on two worker-transport tests under shared-process order (appCore subscribes a DOM renderer at module load; guarded), the third, on the final tree, 1,568/1,568 with a fresh source-bound receipt. Playwright full suite 65 passed, 1 skipped, after the worker bound was re-based on the long-task statistic (worker max 201 ms, in-page 8,100 ms) with a 750 ms wall-clock bound. Boot budget, reachability, observability, public-truth, build all green.
-
-**Deployment.** Recorded in the closeout receipts commit.
-
 ## 2026-09-28 — Session 110 — S109 recovery and exact-candidate release
 
 Recovered the uncommitted S109 implementation above synced `main`, corrected its zero-file closeout claim, and retained the separate public launch HOLD. Completed its remaining player-facing rungs: a six-section mobile drawer with focus and scroll handling; one SVG icon system; and a First Season Contract that credits the GM's own trade evaluation and delivers a season-end owner verdict. The Worker entry is checked through the browser dependency graph without an allowlist. Added a lane-delta command so later audits can start from the recorded lane SHA. The public status entry now uses the release date.
@@ -154,6 +136,16 @@ The shared closeout autopilot was not executed: independent source review found 
 
 <!-- s118-final-publication -->
 S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
+
+## 2026-10-23 — Session 119 — The phone Desk fits, one passer rating, and a red main repaired
+
+Fresh audit (docs/AUDIT_2026-10-22.json, premises 6/6 live-verified, plan admission ok). Shipped:
+1. Phone Desk clipping fixed at source: .team-mode-switch fit-content + wrap (was max-content, which set a 356 px minimum on a 321 px column). Measured with a min-content probe in installed Chrome; guard tests-ui/mobile-desk-width.spec.js at 390/320 px, negative control red (35.6 px).
+2. One NFL passer rating: stat schema scales before clamping; box score imports it; client copy held equal (test/passer-rating.test.js 8/8, negative control 4/8 red). Golden s119-v3: only seasonTable.passing moved; S118/S116 fixtures byte-identical.
+3. Carried 16.2 MB payload task closed by measurement: 15.305 MB raw vs 16 MB bar.
+Unplanned but blocking: S118's closeout reddened CI on main (AGENT_MEMORY.md reached 12 entries, test/session106). Registered it as a newest-first rollable ledger and rolled S72/S74; first candidate f67f9e6c superseded (its CI and backend runs cancelled; Pages39898892606 refused at the studio gate), second candidate c0ce44b4 promoted.
+Verification: CI39900408127 seven jobs green; Pages39900428496 and backend39900432601 success; staging 14/14 and production provenance verified; hosted fix check on staging and production; hosted performance verified; release authority verified; doctor 12/12. Visual receipt: 214 captures inspected on contact sheets, none inherited. Local sim-contract shard was stopped by host memory pressure (not a failure); local studio 373/376 with three reds from git-ignored local files only. Independent fresh-context review approved both fixes, 0 fix findings (reports/s119-reviews.json).
+
 <!-- ledger-roll:pointer -->
 ---
 

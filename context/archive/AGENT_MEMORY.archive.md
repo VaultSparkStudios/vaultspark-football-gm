@@ -2,6 +2,11 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/AGENT_MEMORY.md` for the working set.
 
+## Session 76 durable patterns
+
+- A handler branch reachable only under a failure condition (store rejection, oversized body, malformed input) is not proven by reading the code or by its happy-path siblings passing — it needs its own direct test. `src/community/server.js`'s stale/unavailable snapshot fallback shipped in Session 75 undocumented-as-untested; `test/community-server.test.js` now covers it.
+- When an audit lens is this close to exhausted (75 prior sessions against the same codebase), an honest small item count is the correct report. Do not pad a ranked list to look thorough.
+
 ## Session 74 durable patterns
 
 - Visual fixtures that depend on a naturally occurring game must use a bounded real-runtime resolver. A single-week lookup is chance disguised as determinism; a fabricated fixture is not evidence.

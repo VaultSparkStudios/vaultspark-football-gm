@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "backend-workflow-deployment",
+  "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+  "backendRunId": 39900432601,
+  "ciRunId": 39900408127,
+  "at": "2026-10-23T07:01:48.960Z",
+  "workflowConclusion": "success",
+  "jobs": [
+    {
+      "name": "gate (core)",
+      "conclusion": "success"
+    },
+    {
+      "name": "gate (runtime)",
+      "conclusion": "success"
+    },
+    {
+      "name": "gate (studio)",
+      "conclusion": "success"
+    },
+    {
+      "name": "gate (sim-contract)",
+      "conclusion": "success"
+    },
+    {
+      "name": "gate (sim-realism)",
+      "conclusion": "success"
+    },
+    {
+      "name": "build-images (api)",
+      "conclusion": "success"
+    },
+    {
+      "name": "build-images (play)",
+      "conclusion": "success"
+    },
+    {
+      "name": "deploy-server",
+      "conclusion": "success"
+    }
+  ],
+  "exactCandidateCiGuard": "Exact candidate CI passed: run 39900408127 attempt 1; seven required jobs verified (deploy-server log 06:01:50Z).",
+  "workflowHealth": "deploy-backend-ssh exact-SHA health returned ok, database ready, sourceRevision c0ce44b4 (06:01:58Z).",
+  "externalHealth": {
+    "verified": true,
+    "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 0,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+    "observedAt": "2026-10-23T07:01:48.960Z"
+  },
+  "rollback": {
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "image": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:863ea60e61398fa149d0e5715f15341a57337df5",
+    "note": "previous exact-SHA API image retained in GHCR"
+  },
+  "limitations": "Host-level container, mount and routing identity were not independently re-read over SSH this session; the workflow's pinned-SSH deployer and its exact-SHA health guard are the deployment evidence, plus the external health readback above."
+}

@@ -2,13 +2,13 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-10-22T17:25:30.837Z",
+  "observedAt": "2026-10-23T07:00:51.935Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "digest": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe",
     "files": 361,
     "entries": [
       {
@@ -24,7 +24,7 @@
       {
         "path": "404.html",
         "bytes": 4275,
-        "sha256": "f3a8e864d086aefff602c8279d4a5c60add65946c5d87f04ef26fbe905faf940"
+        "sha256": "8eebe376ecad3bc34d8c09bb5dbfa942ea24ffcbdace1aafc439e697ff9466a3"
       },
       {
         "path": "_headers",
@@ -39,7 +39,7 @@
       {
         "path": "about.html",
         "bytes": 6379,
-        "sha256": "8e4f11e674716b20e892fdf12d6b4c7aa056e5e88bbc268916273f81e075bf06"
+        "sha256": "800b881e51cececa32e44a80213d88db5540b311fd114a196f812e8eb0a0b165"
       },
       {
         "path": "agents.json",
@@ -74,7 +74,7 @@
       {
         "path": "contact.html",
         "bytes": 5482,
-        "sha256": "caaa297ac277503f2d35c8fbe4c3e015559d551c5cbb3868de4c0d8b22ee75d8"
+        "sha256": "f467c094b99f3d784325639f98af84d7b212568a984abf923bb25ad2b779cfcd"
       },
       {
         "path": "content/claims.json",
@@ -84,7 +84,7 @@
       {
         "path": "faq.html",
         "bytes": 10553,
-        "sha256": "2223325ff301be403554e1f34ea813da2cadfd263c935f543330adb2918a7838"
+        "sha256": "b05b58571f84fb933cba4817109e6ac5a5569ccabe3612c00ca2f53dbee1b7bb"
       },
       {
         "path": "favicon.ico",
@@ -99,7 +99,7 @@
       {
         "path": "features.html",
         "bytes": 13819,
-        "sha256": "ede64f0981b2344ea3715eb8dac68ddc2895b9fe24c3ff148a1bf0286a382a54"
+        "sha256": "e78ff6ba7682e2989afc0b97d548684e8b2d536a90958c1ede26dc2636e8dbf1"
       },
       {
         "path": "footer-manifest.json",
@@ -109,12 +109,12 @@
       {
         "path": "game.html",
         "bytes": 116778,
-        "sha256": "069ae2a2926b5a431e8398210a29c8682070cbc3de799e456a3aa786eec5a204"
+        "sha256": "0a583d1f590ad2a3e0a069ab265ad3c9076b0eaed8c07a110c13eda1029e3701"
       },
       {
         "path": "how-to-play.html",
         "bytes": 8526,
-        "sha256": "9f16a9f2c40f39f3711aaf22eeb5ff97ded9170077efef6906fc51366b4319b3"
+        "sha256": "2d0b76b4bc4fa37456f18244af0f606bacf29fbb64972088b6dee5310f894d19"
       },
       {
         "path": "images/apple-touch-icon.png",
@@ -179,7 +179,7 @@
       {
         "path": "index.html",
         "bytes": 21743,
-        "sha256": "1ed1ebdbd6257c2f68e6bba22a57673c2aa14f6b5b01e41d738357675a266b46"
+        "sha256": "c8ee72d249c32ba506bcb2f044ccc92ce3bfff0f78e7ce79d1f92729e9fc64dc"
       },
       {
         "path": "lib/achievements.js",
@@ -223,8 +223,8 @@
       },
       {
         "path": "lib/appCore.js",
-        "bytes": 60660,
-        "sha256": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863"
+        "bytes": 60828,
+        "sha256": "18bff717bb9048602bf841ea566a075640542e00200310adb0a05e34d0c832a0"
       },
       {
         "path": "lib/appState.js",
@@ -899,17 +899,17 @@
       {
         "path": "precache-manifest.json",
         "bytes": 25901,
-        "sha256": "a5c4b060fc0aa2fdc6c3aed174131e5b0c8edd1b97c2a9d112621cd639f4d58b"
+        "sha256": "5468f5203f45a9fb8af17a8a60d89a7020dd645c9955d759e2c9e695d25483de"
       },
       {
         "path": "press.html",
         "bytes": 10946,
-        "sha256": "cfe390568597432baf5169f0c71aaae9cc1e80fff8b9c354e53cd3b8dd475a7a"
+        "sha256": "53ded85451f5ccbb429ec23d6651dc7cd85eb8cdac3539b624e712b1bafa5aed"
       },
       {
         "path": "privacy.html",
         "bytes": 7429,
-        "sha256": "cb043ad29ffcb9ee4f58261b569eb43f89ee1feb26633960285606df72483d86"
+        "sha256": "1dc4f22f0bad23f3f62e139d37e9581a039ac848a79f3bfe7f743aa7fb8284c5"
       },
       {
         "path": "public-identity.json",
@@ -959,7 +959,7 @@
       {
         "path": "roadmap.html",
         "bytes": 6313,
-        "sha256": "b0ba177721d5362b02ee42271fc32aea7f9fe6622f28d92bdc31810c700ac01e"
+        "sha256": "cb397bb665ca548ee027e3ab8281302229a87788f1c65c859c7ba66ac1f81f5e"
       },
       {
         "path": "robots.txt",
@@ -979,7 +979,7 @@
       {
         "path": "simulation.html",
         "bytes": 11282,
-        "sha256": "0dcfcd22ed7779fe3e27a8258816090815e8bdfb98f8abb1b3ccff2c4a7ac236"
+        "sha256": "c36fb4eb8dbd2fbe52c675ba44b3ed399a397ce989ef25b72eb84b3ce04c3ffc"
       },
       {
         "path": "site.11e8faac8d.css",
@@ -1393,8 +1393,8 @@
       },
       {
         "path": "src/engine/gameSimulator.js",
-        "bytes": 83851,
-        "sha256": "e1f7afbc06e9ca32b3c11811c7feb1424f7cddc55ef8123e556df31246e52a78"
+        "bytes": 83453,
+        "sha256": "ff90a03744e95a53f8ef3ea620b4e2132610e3c42a659066e3b3bb3428d3afc8"
       },
       {
         "path": "src/engine/gmArchetype.js",
@@ -1693,8 +1693,8 @@
       },
       {
         "path": "src/sport/football/statSchema.js",
-        "bytes": 13775,
-        "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
+        "bytes": 14365,
+        "sha256": "750b5f9882a0ece690d3c6077b3bd5224d921d3222bfcb1da7fcca7c7f85364c"
       },
       {
         "path": "src/sport/matchReadiness.js",
@@ -1784,37 +1784,37 @@
       {
         "path": "stats.html",
         "bytes": 8090,
-        "sha256": "36c6a2f022778082dfa4283a82d132516b60d84e56467a250059d529a4cc1038"
+        "sha256": "2a525567e6e16ae2de63e7a4683309c5110d91781e51463294e4b458353ca6d0"
       },
       {
         "path": "status-archive.html",
         "bytes": 23884,
-        "sha256": "0ec8978174e3b42fff43f6e955a6c5c002c1dca7d189982755279550fb39d730"
+        "sha256": "4a5dd98975862c6f72c758594a8a6f566814881aa7d0bd37f61f4af34bd10d1f"
       },
       {
         "path": "status.html",
         "bytes": 8778,
-        "sha256": "677bdbc83482530d5a527e51cd9767b79feaed30b9909afe66b15c8bfff99eed"
+        "sha256": "c8dfc07cdcf20743c13ba3a63af2bc02240312602592a0be34506e9d76ce9b00"
       },
       {
-        "path": "styles.3c9bac11ad.css",
-        "bytes": 217536,
-        "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
+        "path": "styles.01d6d3d295.css",
+        "bytes": 217786,
+        "sha256": "01d6d3d2952aaf3c1bc03ac389a9f6a5a60bc0c8342aba285744910e11ab4b9f"
       },
       {
         "path": "styles.css",
-        "bytes": 217536,
-        "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
+        "bytes": 217786,
+        "sha256": "01d6d3d2952aaf3c1bc03ac389a9f6a5a60bc0c8342aba285744910e11ab4b9f"
       },
       {
         "path": "sw.js",
         "bytes": 12948,
-        "sha256": "c1c7644fba85e2e8808e728fa3fdac6720d23ecac0da7d2f13ed0d5909598de7"
+        "sha256": "718ed903bffc6905576f86913bbf1f0a2583ff58b9f02a72158f71a44ac9c3b1"
       },
       {
         "path": "terms.html",
         "bytes": 6025,
-        "sha256": "e175a02b7e10e5e19973c12f6fe0ed5c4a3d468582fe500545cac85daa7ffbdb"
+        "sha256": "2201cb10ba1fd5a2bcb9d98d1e8a95eb0227837b6b22463bc582f659894fcc34"
       }
     ],
     "exclusions": [
@@ -1828,17 +1828,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a4ea339cc8de6060-IAD",
+    "cf-ray": "a4eeddead9b5658c-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Thu, 22 Oct 2026 17:25:29 GMT",
+    "date": "Fri, 23 Oct 2026 07:00:48 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=J5NoYfvm7bKSn1LlJr%2BQrFFBEZH6nTF9o%2BrbMN9dWQCCWjeBWBMZNc%2BEPGfcofdazY1z4g3udbGVOdqiUYB96dRfLpd243s1Ey%2BKTgsqtbpcxbDB56uWyRPvsIKhrOpLhqM1gxBsjIfrh8u4rw%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ZzRUQH3HZOf8%2B3%2FEIINYZQf92vNMvno7yGnItPA0x7N3%2BNYUYFxK11Nv6jtYtqkEI56Qxuf%2BvEUSBW1p%2Bs7OFljunmEyaaspAYKO9jcIQ6ADrwQR9hIRw51ccCnnoOu4fnN4Y6lq3qyK6VlqeA%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1854,13 +1854,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 1488,
-      "inpMs": 32,
+      "lcpMs": 1212,
+      "inpMs": 24,
       "cls": 0.0003,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 1676,
+          "lcpMs": 1348,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1870,7 +1870,78 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 2901,
+              "startTimeMs": 1959,
+              "scrollY": 0,
+              "value": 0.0003,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "site-status-chip",
+                  "previousRect": {
+                    "x": 512.328125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 661.609375,
+                    "bottom": 475.53125,
+                    "left": 512.328125
+                  },
+                  "currentRect": {
+                    "x": 455.453125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 604.734375,
+                    "bottom": 475.53125,
+                    "left": 455.453125
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 675.609375,
+                    "y": 456.125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 928.609375,
+                    "bottom": 469.9375,
+                    "left": 675.609375
+                  },
+                  "currentRect": {
+                    "x": 618.734375,
+                    "y": 456.125,
+                    "width": 366,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 984.734375,
+                    "bottom": 469.9375,
+                    "left": 618.734375
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 952,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0003,
+          "shifts": [
+            {
+              "startTimeMs": 1691,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1931,7 +2002,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 1392,
+          "lcpMs": 1212,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1941,7 +2012,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 2655,
+              "startTimeMs": 2120,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1998,78 +2069,7 @@
               ]
             }
           ],
-          "inpMs": 32,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 1488,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0003,
-          "shifts": [
-            {
-              "startTimeMs": 2713,
-              "scrollY": 0,
-              "value": 0.0003,
-              "sources": [
-                {
-                  "tag": "SPAN",
-                  "id": null,
-                  "className": "site-status-chip",
-                  "previousRect": {
-                    "x": 512.328125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 661.609375,
-                    "bottom": 475.53125,
-                    "left": 512.328125
-                  },
-                  "currentRect": {
-                    "x": 455.453125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 604.734375,
-                    "bottom": 475.53125,
-                    "left": 455.453125
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 675.609375,
-                    "y": 456.125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 928.609375,
-                    "bottom": 469.9375,
-                    "left": 675.609375
-                  },
-                  "currentRect": {
-                    "x": 618.734375,
-                    "y": 456.125,
-                    "width": 366,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 984.734375,
-                    "bottom": 469.9375,
-                    "left": 618.734375
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 32,
+          "inpMs": 24,
           "interactionObserved": true
         }
       ]
@@ -2081,13 +2081,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 1584,
-      "inpMs": 48,
+      "lcpMs": 1152,
+      "inpMs": 32,
       "cls": 0.0131,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 1540,
+          "lcpMs": 1292,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2097,7 +2097,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 2348,
+              "startTimeMs": 1835,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2179,11 +2179,11 @@
               ]
             }
           ],
-          "inpMs": 96,
+          "inpMs": 88,
           "interactionObserved": true
         },
         {
-          "lcpMs": 1584,
+          "lcpMs": 1144,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2193,7 +2193,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 2959,
+              "startTimeMs": 1901,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2275,11 +2275,11 @@
               ]
             }
           ],
-          "inpMs": 48,
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 1588,
+          "lcpMs": 1152,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2289,7 +2289,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 2980,
+              "startTimeMs": 2181,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2383,13 +2383,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "863ea60e61398fa149d0e5715f15341a57337df5",
+        "observed": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+        "observed": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe",
         "expected": "sha256"
       },
       {
@@ -2413,13 +2413,13 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 1488,
+        "observed": 1212,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 32,
+        "observed": 24,
         "expected": "<= 200ms"
       },
       {
@@ -2437,13 +2437,13 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 1584,
+        "observed": 1152,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 48,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
@@ -2479,5 +2479,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "4712551900a775daae510d91654d0599d7d2acc4bd22503187a43a7629e13839"
+  "receiptSha256": "ced6cd6af4543aa380dd89b119d507a32d3dd1ce31c5c0e9c6755b81823ac113"
 }

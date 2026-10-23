@@ -4,6 +4,12 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
+- [x] S119: Fix the expanded-mobile Desk/card right-edge clipping at its source. — DONE: shared .team-mode-switch fit-content + wrap; tests-ui/mobile-desk-width.spec.js (390/320 px, negative control red); live on production c0ce44b4.
+- [x] S119: Make the passer rating one NFL formula across season tables, box score and client. — DONE: reference lines 99.3/158.3/115.1/0; golden s119-v3 moved only seasonTable.passing; live on production c0ce44b4.
+- [x] S119: Restore the studio shard: register AGENT_MEMORY.md as a rollable ledger. — DONE: CI39900408127 all seven jobs green.
+- [ ] Next: publish a player-facing release note for S119 (Desk on phones; passer ratings now match the box score and old saves read about 10 points higher for strong seasons). Copy changes break harnesses: grep tests-ui specs/helpers and responsive-evidence before committing, and it needs its own exact candidate.
+- [ ] Next: capture-public-qa.mjs ignores PLAYWRIGHT_CHANNEL (responsive-evidence honors it); align them in the next code candidate.
+- [ ] Founder: remove three git-ignored local files that redden the local studio shard only (CI is unaffected): docs/CREATIVE_DIRECTION_RECORD.md (preserved copy in .cache/private-records), and the propagated scripts/run-tests.mjs and scripts/check-last-session-summary.mjs this project's authority contract forbids.
 - [x] S118: Verify smoother measured characters, articulated movement and refined faces against compatibility, mesh-memory and rendered-pixel checks. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
 - [x] S118: Verify saved family background/coloring and relationship narratives in both draft paths and browser restoration. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
 - [x] S118: Finish the complete test inventory, inspect final captures, verify the exact candidate on staging and hosted checks, deploy Pages/backend, and record readback and rollback evidence. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.

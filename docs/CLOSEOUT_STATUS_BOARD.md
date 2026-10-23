@@ -1,30 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-22 (Session 118 closeout) -->
+<!-- generated-at: 2026-10-23 (Session 119 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S118 ═════╗
-║  Date: 2026-10-22  ·  SIL: 838/1000  ·  Velocity: 3              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S119 ═════╗
+║  Date: 2026-10-23  ·  SIL: 856/1000  ·  Velocity: 3              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ docs: close out S118 character production delivery [SIL]      ║
-║  ✓ Fix responsive capture renderer ownership for character rele  ║
-║  ✓ chore(deps-dev): bump @playwright/test (#67)                  ║
-║  ✓ Observe actual cut animation phases without polling aliasing  ║
-║  ✓ Record active session identity for preview freshness          ║
+╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
+║  ✓ **Phone Desk clipping (recorded since S117) fixed at its sou  ║
+║  ✓ **One passer rating.** Season/career tables (`src/sport/foot  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 838/1000 ═══════════════════════════════════════╗
-║    Dev Health         90   █████████░                            ║
-║    Alignment          88   █████████░                            ║
-║    Momentum           70   ███████░░░                            ║
-║    Engagement         80   ████████░░                            ║
-║    Process Qual       60   ██████░░░░                            ║
-║    Coherence          90   █████████░                            ║
+╔══ SCORES · SIL 856/1000 ═══════════════════════════════════════╗
+║    Dev Health         92   █████████░                            ║
+║    Alignment          90   █████████░                            ║
+║    Momentum           76   ████████░░                            ║
+║    Engagement         82   ████████░░                            ║
+║    Process Qual       66   ███████░░░                            ║
+║    Coherence          91   █████████░                            ║
 ║    Security           92   █████████░                            ║
-║    Ecosystem          85   █████████░                            ║
+║    Ecosystem          84   ████████░░                            ║
 ║    Capital            95   ██████████                            ║
 ║    Automation         88   █████████░                            ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -35,13 +32,13 @@
 ║  ✓ logs/WORK_LOG.md                                              ║
 ║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
-║  ✓ docs/CREATIVE_DIRECTION_RECORD.md (private, ignored)          ║
+║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes:       pre-receipt snapshot; publication bound below    ║
+║  Changes: 670 files  ·  M:21 A:0 D:428 ?:221                     ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,26 +48,17 @@
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        12/12                                            ║
-║  Compliance:    historical 37/37; separate from current CI       ║
-║  Tests:         7/7 CI jobs; browser 267 pass, 3 opt-in skips    ║
-║  IGNIS:         40,285 FORGE · 2026-10-22                        ║
+║  Compliance:    37/37                                            ║
+║  Tests:         1752/1752 · STALE                                ║
+║  IGNIS:         1d ago                                           ║
 ║  Truth:         partial                                          ║
 ║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: selected arc complete; await new founder scope              ║
+║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
+║      Latest audit has no open ranked items; run /audit for a ne  ║
 ║      ↳ node scripts/ops.mjs genius-list                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
 *Generated by `scripts/render-closeout-board.mjs v1.0`*
-
-S118 scoped evidence (snapshot 2026-10-22T17:45:32.531Z):
-
-- Application source: `863ea60e61398fa149d0e5715f15341a57337df5`; production and staging match. Verified closeout publication; final receipt tail is bound by its successful ordinary push.
-- Actual browser result: 267 passed, zero failed, three existing opt-in skips. All seven CI jobs and test steps passed; aggregate core/runtime case counts remain unmeasured. The renderer's historical shard count is not current acceptance.
-- Responsive evidence: 327 captures, all 312 required, zero runtime errors or failures. Selected visual receipt: 233 preserved/fresh captures, including eight newly inspected production character images. Eight separate production continuity images were also inspected.
-- SCAFFOLD: 3 selected tasks · 3 done · 0 in progress · 0 open. Unselected historical queue remains outside this completed scope.
-- Shells: historical started/closed totals unmeasured; currently owned verification helpers and test runners are terminal. Final process and port enumeration is recorded in the closeout hygiene receipt.
-- Private creative-direction record: updated and intentionally ignored; never force-published. Project and personal agent memory updated.
-- Procedural characters remain stylized. Known expanded-mobile Desk clipping remains recorded; tested restoration controls are readable. Launch and lifecycle approval remain separate.

@@ -2,8 +2,8 @@
   "date": "2026-10-22",
   "schemaVersion": "1.1",
   "session": 119,
-  "source": "3edb1ed7",
-  "status": "selected-outcomes-implemented; release pending",
+  "source": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+  "status": "selected-outcomes-production-verified",
   "project": {
     "slug": "franchise-architect-football",
     "name": "Franchise Architect: Football",
@@ -81,6 +81,11 @@
           "at": "2026-10-23T04:03:42.915Z",
           "status": "shipped",
           "note": "Shared .team-mode-switch now width:fit-content + flex-wrap:wrap. tests-ui/mobile-desk-width.spec.js passes at 390x844 and 320x700 (installed Chrome); negative control with the old max-content rule fails with Desk cards 35.6 px past the panel edge. Fresh 390/320 captures inspected: cards inside the panel with a right gutter; switch wraps with 44 px targets. Styles-related unit tests 56/57 (the 1 red is a pre-existing ignored private ledger file in the worktree, unrelated, not in git). Boot budget 649,930/730,000; reachability 145 modules. Independent fresh-context review: approve, 0 fix findings."
+        },
+        {
+          "at": "2026-10-23T07:06:08.344Z",
+          "status": "shipped",
+          "note": "Live on production c0ce44b4; see finalEvidence."
         }
       ],
       "executionEvidence": "Shared .team-mode-switch now width:fit-content + flex-wrap:wrap. tests-ui/mobile-desk-width.spec.js passes at 390x844 and 320x700 (installed Chrome); negative control with the old max-content rule fails with Desk cards 35.6 px past the panel edge. Fresh 390/320 captures inspected: cards inside the panel with a right gutter; switch wraps with 44 px targets. Styles-related unit tests 56/57 (the 1 red is a pre-existing ignored private ledger file in the worktree, unrelated, not in git). Boot budget 649,930/730,000; reachability 145 modules. Independent fresh-context review: approve, 0 fix findings."
@@ -148,6 +153,11 @@
           "at": "2026-10-23T04:03:42.915Z",
           "status": "shipped",
           "note": "statSchema.passerRating scales before clamping and is the box score's formula too (gameSimulator imports it; private copy removed); client passerRateFromStats matches and returns 0 for zero attempts (was 39.6). test/passer-rating.test.js 8/8 (99.3, 158.3, 115.1, 0, 0); negative control 4/8 fail on the old order. stat-schema-contract 7/7 (row.rate 99.3). Golden master: unmodified tree identical; after the fix exactly seasonTable.passing in both scenarios; adopted as test/fixtures/football-golden-master.s119-v3.json with s118-v2 and the S116 original byte-identical (docs/GOLDEN_BASELINE_S119.json). Light golden tests 3/3. Local sim-contract shard was stopped by host memory pressure, not by a failure; exact-candidate CI is the full receipt. Independent review: approve, 0 fix findings (1.4M-input equivalence of both copies)."
+        },
+        {
+          "at": "2026-10-23T07:06:08.344Z",
+          "status": "shipped",
+          "note": "Live on production c0ce44b4; see finalEvidence."
         }
       ],
       "executionEvidence": "statSchema.passerRating scales before clamping and is the box score's formula too (gameSimulator imports it; private copy removed); client passerRateFromStats matches and returns 0 for zero attempts (was 39.6). test/passer-rating.test.js 8/8 (99.3, 158.3, 115.1, 0, 0); negative control 4/8 fail on the old order. stat-schema-contract 7/7 (row.rate 99.3). Golden master: unmodified tree identical; after the fix exactly seasonTable.passing in both scenarios; adopted as test/fixtures/football-golden-master.s119-v3.json with s118-v2 and the S116 original byte-identical (docs/GOLDEN_BASELINE_S119.json). Light golden tests 3/3. Local sim-contract shard was stopped by host memory pressure, not by a failure; exact-candidate CI is the full receipt. Independent review: approve, 0 fix findings (1.4M-input equivalence of both copies)."
@@ -199,6 +209,11 @@
           "at": "2026-10-23T04:03:42.915Z",
           "status": "shipped",
           "note": "TASK_BOARD S117 carried item closed by measurement: 15.305 MB raw six-week snapshot vs unchanged 16 MB bar; save-payload-budget six-week test passes. Headroom follow-up added as Next; compaction not claimed."
+        },
+        {
+          "at": "2026-10-23T07:06:08.344Z",
+          "status": "shipped",
+          "note": "Closed by measurement; no code change."
         }
       ],
       "executionEvidence": "TASK_BOARD S117 carried item closed by measurement: 15.305 MB raw six-week snapshot vs unchanged 16 MB bar; save-payload-budget six-week test passes. Headroom follow-up added as Next; compaction not claimed."
@@ -314,5 +329,6 @@
       "passer-rating-single-formula",
       "stale-payload-premise"
     ]
-  }
+  },
+  "finalEvidence": "Production c0ce44b4 (artifact 8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe): CI39900408127 seven jobs green, Pages39900428496 and backend39900432601 success, staging/production provenance verified, hosted fix check passed on staging and production (fit-content rule served, client ratings 99.3/158.3/0, Desk 0 overflowing at 390/320 px), hosted performance verified, release authority verified, doctor 12/12. First candidate f67f9e6c superseded: main was red from S118's unregistered AGENT_MEMORY ledger, fixed in c0ce44b4."
 }

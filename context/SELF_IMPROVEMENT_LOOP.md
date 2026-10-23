@@ -3,29 +3,12 @@
 
 
 <!-- rolling-status-start -->
-Last session: 118 (2026-10-22) | Total: 838/1000 | Velocity: 3 | Debt: ↓
-Avgs — 3: 783.7 | 5: 811 | 10: 852.7 | 25: 923.3 | all: 968.8
+Last session: 119 (2026-10-23) | Total: 856/1000 | Velocity: 3 | Debt: ↓
+Avgs — 3: 783 | 5: 813 | 10: 842.5 | 25: 917.9 | all: 967.3
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 655 → 838 (+183). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 72 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 838 → 856 (+18). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 73 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
-
-## 2026-09-14 — Session 109 — Fifteen items in one goal, and the audit's own phantoms caught first
-
-SIL v3.0: **958 / 1000** (Dev Health 96, Creative Alignment 97, Momentum 98, Engagement 93, Process Quality 92, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 98). Intent outcome: **Achieved** — audit, implement, closeout, deploy in one goal.
-
-The founder set one goal and the session ran the whole arc under it. A three-lane audit ranked fifteen items; before any code, three of its own premises were found wrong and recorded, and eight lane phantoms were rejected with file:line evidence. Five agents worked isolated lanes in parallel while the website batch and the shell were done directly; their output went through the repo's gates before wiring, and the gates caught what they shipped wrong.
-
-**What a player now has:** a Desk that carries decisions and a League tab that carries the league; a front office that argues one call a week and keeps score; a first-season contract; rivals that price trades by who they are; a game that keeps answering while a season simulates; shareable moments; a club crest; a public site with one chrome, an FAQ, a press kit, an archive and a showcase decade; and standings from week one, which every first season before this one never had.
-
-Dev Health is 96: 1,568/1,568 on the final tree, every browser gate green, one allowlist entry with its reason. Engagement rises to 93 on the advisor, the contract, the cards and the Desk. Process Quality is 92, not higher, because the checker hang, six boot-target crossings and a receipt invalidated by a late spec edit were all self-inflicted and each cost real time. Automation is 98: the audit-lane cache is L1 only.
-
-- [SIL] An audit that reads source and not the build will report the build's own work as missing. Verify every "ships in the artifact" premise against `static/`, or against the script that writes it, before ranking it.
-- [SIL] Agents told "do not edit X" still ship gate-tripping code in the files they may edit. Run the build gates on agent output before wiring it, not after; the gates are cheaper than the wiring.
-- [SIL] Every byte in a static module is boot. Comments and wiring belong in lazy modules; a one-line static wrapper is the whole budget a feature gets on the boot path.
-- [SIL] A count premise's separator must not overlap its token. The lazy form hangs exactly when the fix succeeds.
-- [SIL] A new spec is an audit of the surface it drives; the standings defect was older than every test that had ever passed around it.
-- [SIL] A 45-minute suite is launched detached with a log and a waiter, and nothing in its digest is edited until it lands.
 
 ## 2026-09-29 — Session 110 — Recovery made the receipts earn their claims
 
@@ -221,6 +204,16 @@ Characters remain stylized procedural art and movement studies; no photorealism,
 
 <!-- s118-final-publication -->
 S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
+
+## 2026-10-23 — Session 119 — Fixes measured to their source, and the red main nobody read
+
+SIL v3.0: **856 / 1000** (Dev Health 92, Creative Alignment 90, Momentum 76, Engagement 82, Process Quality 66, Cross-Repo Coherence 91, Security Posture 92, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 88). Intent outcome: Achieved — three selected outcomes implemented, verified and live on production c0ce44b4. Velocity: 3 selected outcomes plus one unplanned release blocker. Debt: ↓ two long-recorded defects (mobile Desk clipping since S117; passer rating since the stat schema move) and a red main. These are engineering assessments, not measured player retention.
+
+Process quality stays reduced: the session started a candidate without reading main's CI, which had been red since S118's closeout, costing one full candidate cycle. Local suite evidence was partial (memory reaping; ignored local files), so CI is the full receipt.
+
+- [SIL] Read CI on main at /start; a docs-only closeout can redden the next candidate's gate.
+- [SIL] Measure a layout defect with a min-content probe before choosing a fix; the cause was one widget, not the column.
+
 <!-- ledger-roll:pointer -->
 ---
 

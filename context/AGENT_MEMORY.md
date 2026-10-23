@@ -1,5 +1,13 @@
 # Agent Memory
 
+## Session 119 durable patterns
+
+- Read CI on main before cutting a candidate. A docs-only closeout can redden the studio shard for every later candidate, and promotions here wait for all seven exact-candidate jobs.
+- A file that accumulates `## Session N` headings must be registered in `scripts/ledger-roll.mjs` the session it reaches twelve; never raise the population threshold.
+- Find a layout overflow's source with a min-content probe. One `width: max-content` widget can set the minimum width of an entire grid column, because `max-width: 100%` does not resolve during intrinsic sizing.
+- One formula, one owner: the engine imports the stat schema; the browser copy is held equal by published reference values, and a deliberate golden change gets a new versioned fixture.
+- Evidence tools that need a local fix after staging run from a reviewed `.cache` copy, so HEAD stays covered by the publication.
+
 <!-- s118-final:memory -->
 ## Session 118 durable patterns
 
@@ -95,11 +103,6 @@
 - Fixed or scrollable modal screenshots should capture the visible viewport. Element screenshots beyond the viewport can become transparent and conceal real touch/scroll defects.
 - Every new test file enters a canonical shard in the same patch. `test/shard-coverage.test.js` is the fail-closed authority.
 - Release promotion and launch readiness remain separate: prove the immutable SHA on stable staging before main, while keeping `launchReady: false` until independent launch evidence clears.
-
-## Session 76 durable patterns
-
-- A handler branch reachable only under a failure condition (store rejection, oversized body, malformed input) is not proven by reading the code or by its happy-path siblings passing — it needs its own direct test. `src/community/server.js`'s stale/unavailable snapshot fallback shipped in Session 75 undocumented-as-untested; `test/community-server.test.js` now covers it.
-- When an audit lens is this close to exhausted (75 prior sessions against the same codebase), an honest small item count is the correct report. Do not pad a ranked list to look thorough.
 
 <!-- ledger-roll:pointer -->
 ---

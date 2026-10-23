@@ -7,14 +7,6 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
 
-## 2026-09-13 — S107 — A recorded cause contradicted by the measurement it rested on
-
-**Contradiction found and resolved.** The S106 record — DECISIONS Decision 0, the S106 handoff, TASK_BOARD, CURRENT_STATE and a 37-line comment in `src/domain/playerFactory.js` — stated that the S90 gate's residual was structural rating-level redistribution. S107 measured it on the unchanged tree and it is survivor selection: the gate read only players who survived an offseason whose retirement roll depends on the overall that offseason produced. The survivor reading was +0.149 to +0.238 above the declared curve across four seeds; the full progressed population was within ±0.022. The S106 ledger entries are append-only and stay as written; DECISIONS S107 Decision 1 supersedes the causal claim, and the source comment is replaced because code comments describe the code, not history.
-
-**Gate truth.** A gate that had consumed 94% of its tolerance on selection bias was reporting green on the canonical seed while being unable to accept a correct change. It now reads the population the mechanism was applied to and isolates the environment with a matched seeded offseason. Tolerance moved from 0.25 to 0.10, which is tighter. Its negative controls reproduce the pre-S90 subsidy at +0.82 to +0.90, and they catch the survivor measurement itself.
-
-**What is claimed and what is not.** The gate readings are four seeds of one offseason. The generation table is four seeds with no simulation. Ten-season distribution readings for the landed generator are recorded in the S107 handoff with their seed counts, and no ten-season figure is carried over from S106's differently-tuned implementation as if it were this one's. `launchReady` remains false on unchanged evidence.
-
 ## 2026-09-14 — S108 — A remedy that could not fire, a surface that shipped the answer key, and a finding published where the gate cannot reach it
 
 **Contradiction found and resolved.** S106 and S107 both recorded that ledger retention was positional and that the live SIL was "three entries short of what it advertises". The instance does not reproduce: on the SIL's live shape the positional suffix and the by-session rule move the same two entries. TRUTH_AUDIT was the real instance (S83, S82, S80 above S99–S107), and beneath both sat the defect nobody had named — every closeout since S105 appended beneath the roll pointer, and the splitter sliced the file at the sentinel, so `check-ledger-budget`'s own remedy reported "fewer entries than the retention window" on ledgers holding twelve and, applied, would have dropped the two newest entries from each. The S106/S107 entries stand as written; this entry and the audit's `phantomsRejected` carry the correction.
@@ -181,6 +173,14 @@ Characters remain stylized procedural art and movement studies; no photorealism,
 
 <!-- s118-final-publication -->
 S118 selected character/family outcomes and full exact-candidate production delivery are complete. Closeout commit eb0ed0a6dfb018c2fd21aef090bb4f4325572186 is on remote main; independent review passed after one corrected receipt label. All seven CI jobs passed; hosted browser267pass/0fail/3existing opt-in skips and responsive327captures/312required passed. Actual production motion, family reload, save restoration and lab performance passed. Ark summary 01K5IB7Q1U348173B7DFE7C352 was shipped; delivery, application and recipient verification are not asserted. No configured session beacon exists. The containing receipt commit must be verified on origin/main after an ordinary push; native goal completion is withheld until that readback.
+
+## 2026-10-23 — S119 — S118's "all seven CI jobs passed" was true of its candidate, not of main
+
+- S118 recorded seven green CI jobs for candidate 863ea60e. Its own closeout commits (eb0ed0a6, 6e5b2351) then failed CI (studio: unregistered AGENT_MEMORY ledger; browser: one recovery case), and no surface recorded it. Corrected in S119; c0ce44b4 is green on all seven.
+- The TASK_BOARD "reproducible 16.2 MB" payload regression no longer reproduced (15.305 MB); closed by measurement.
+- The passer rating recorded as "pinned as shipped" in test/stat-schema-contract.test.js was a known deviation from the NFL formula; now corrected and attributed in docs/GOLDEN_BASELINE_S119.json.
+- Backend host-level container/routing identity was not re-read over SSH in S119; workflow exact-SHA health and external health are the recorded evidence.
+
 <!-- ledger-roll:pointer -->
 ---
 

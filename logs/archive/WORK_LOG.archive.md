@@ -1236,3 +1236,21 @@ CDR reviewed: no founder creative direction this session, so no entry is owed. A
 **Receipt.** Every shard green on the final tree, **1,501/1,501** (core 273, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 322). The first full run went red on exactly one test, the studio manifest gate: the five S108 test files were not registered in scripts/run-test-shard.mjs, so the receipt had silently skipped them (core read 253, unchanged from S107). My omission; registered; core and studio re-run on the final tree. Doctor lockingFailing 0.
 
 **Record.** DECISIONS S108 (six decisions), TRUTH_AUDIT S108, this entry, TASK_BOARD S108, CURRENT_STATE, the handoff, and a player-facing release note on `public/status.html`. Ledgers rolled at closeout so each live file holds its ten newest sessions.
+
+## 2026-09-14 — Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there
+
+**Triage.** Clean start on `83d6ad0`: tree clean, synced, brief fresh, genius queue exhausted, meter CONTINUE. The founder's goal in one line: full-surface audit, implement the plan in efficiency order, close out, push, deploy.
+
+**Audit** (`docs/AUDIT_2026-09-14_SESSION109.json`, 15 items, combined priority 226.6). Three parallel Explore lanes (site, shell, engine; 211,300 subagent tokens) then every premise re-verified by grep, by running the boot-budget gate and by fetching the live origin (community snapshot: status warming, sampleSize 0). Eight lane phantoms rejected before ranking. The premise checker in this repo knows only three adapters; five count premises were rewritten as multiline grep groups.
+
+**Implementation.** Five agents on isolated lanes (personas, CSS + crests, worker transport, moment cards, advisor logic; ~900,000 subagent tokens) while the website batch and the shell wiring were done directly. Order: website batch (comment strip narrowed to the sitemap; fail-closed CORS; legacy-tier gate; manifest chrome; About/FAQ, press, status archive; showcase league), then visual layer, then shell (Desk/League, First Season Contract, advisor wiring behind `deskIslands.js`), then engine (personas), then transport (worker), then image and lane cache.
+
+**Corrected premises.** Built pages already strip comments; the stat bar was already gated; the pre-cohort atlas already invites. Recorded, not shipped.
+
+**Gates that caught agent output.** Promise observability: four silent `.catch(() => {})` sinks around lazy imports (now `recordClientDiagnostic`). Reachability: the worker entry is reached only through `new Worker(new URL())` and is the one declared allowlist entry. API-contract parity: the CORS methods literal moved files and the gate's population was widened rather than the literal duplicated. Boot target: crossed six times by comment bytes and wiring; the advisor/contract wiring moved into a lazy module and every static comment was cut to a line; final 649,981.
+
+**Found by a spec.** `tests-ui/desk-islands.spec.js` asserted standings rows after a played week and found none: `latestStandings` read `statBook.getTeamSeasonTable`, which is filled at season end, so a franchise's first season showed "No rows" and later seasons showed the previous year. `teamSeasonRow` declared once, `getLiveTeamSeasonTable` for the season in progress, archive preferred when present; 3/3 with the empty archive as the negative control; release note extended.
+
+**Receipts.** Full suite run three times: the first died to the tool's own 600 s timeout, the second went green on core and red on two worker-transport tests under shared-process order (appCore subscribes a DOM renderer at module load; guarded), the third, on the final tree, 1,568/1,568 with a fresh source-bound receipt. Playwright full suite 65 passed, 1 skipped, after the worker bound was re-based on the long-task statistic (worker max 201 ms, in-page 8,100 ms) with a 750 ms wall-clock bound. Boot budget, reachability, observability, public-truth, build all green.
+
+**Deployment.** Recorded in the closeout receipts commit.

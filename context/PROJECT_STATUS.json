@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S118 complete: measured characters, articulated motion and persistent family identity verified in production.",
-  "nextMilestone": "Await the next founder-selected scope; selected S118 arc is complete.",
+  "currentFocus": "S119 complete: phone Desk clipping fixed at source, one NFL passer rating, and a red main repaired; production c0ce44b4 verified.",
+  "nextMilestone": "Next session: player-facing release note for S119 (own candidate), capture-public-qa channel parity, and payload headroom; launch holds unchanged.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
@@ -66,20 +66,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 838,
+  "silScore": 856,
   "silCategoriesV3": {
-    "devHealth": 90,
-    "creativeAlignment": 88,
-    "momentum": 70,
-    "engagement": 80,
-    "processQuality": 60,
-    "crossRepoCoherence": 90,
+    "devHealth": 92,
+    "creativeAlignment": 90,
+    "momentum": 76,
+    "engagement": 82,
+    "processQuality": 66,
+    "crossRepoCoherence": 91,
     "securityPosture": 92,
-    "ecosystemIntegration": 85,
+    "ecosystemIntegration": 84,
     "capitalEfficiency": 95,
     "automationCoverage": 88
   },
-  "currentSession": 118,
+  "currentSession": 119,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
@@ -343,14 +343,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 784,
+  "silHealth": 796,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 100,
-    "date": "2026-10-22",
+    "date": "2026-10-23",
     "passing": 12,
     "warning": 0,
     "checks": []
@@ -364,7 +364,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.058,
   "entropyLastComputed": "2026-10-22",
-  "lastSessionSummary": "S118 completed three selected outcomes and exact production delivery; seven CI jobs,267 browser passes/3existing opt-in skips,312required responsive captures,233 reviewed character/history captures, fresh save restoration and rollback verified. Independent closeout review passed.",
+  "lastSessionSummary": "S119 shipped the phone Desk fix and a single passer-rating formula to production c0ce44b4 (CI seven jobs, Pages and backend promoted, provenance, hosted fix check, performance and release authority verified, doctor 12/12) after registering AGENT_MEMORY as a rollable ledger to clear a red main.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -382,11 +382,11 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-10-22"
+      "lastChecked": "2026-10-23"
     }
   ],
-  "lastSession": 118,
-  "silLastSession": 118,
+  "lastSession": 119,
+  "silLastSession": 119,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -420,22 +420,21 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
-    "workflowRun": 39797029101,
+    "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+    "workflowRun": 39900432601,
     "workflowConclusion": "success",
     "deployServer": "bounded-pinned-ssh-exact-health",
     "workflowDeployment": "executed workflow_dispatch",
-    "receipt": "reports/backend-manual-s118.json",
-    "workflowReceipt": "reports/s118-backend-workflow.json",
+    "receipt": "reports/s119-backend-workflow.json",
     "externalHealth": {
       "verified": true,
       "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
-      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
       "database": "ready"
     },
-    "verifiedAt": "2026-10-22T16:23:49.700Z",
-    "postgresAndCaddyPreserved": true,
-    "opsCopied": true
+    "verifiedAt": "2026-10-23T07:01:48.960Z",
+    "postgresAndCaddyPreserved": null,
+    "note": "postgresAndCaddyPreserved not independently re-read in S119; see receipt limitations."
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",
@@ -492,11 +491,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "6bd33e9dd7df1ab093431574923af89050530ea320abd88592f8e42f47748b6a",
-    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "receiptSha256": "a1dae821f1b9c94aad97b7f1a7f369c7f235d84387bbc8d0211aced1b91574bf",
+    "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "digest": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe",
       "files": 361,
       "entries": [
         {
@@ -512,7 +511,7 @@
         {
           "path": "404.html",
           "bytes": 4275,
-          "sha256": "f3a8e864d086aefff602c8279d4a5c60add65946c5d87f04ef26fbe905faf940"
+          "sha256": "8eebe376ecad3bc34d8c09bb5dbfa942ea24ffcbdace1aafc439e697ff9466a3"
         },
         {
           "path": "_headers",
@@ -527,7 +526,7 @@
         {
           "path": "about.html",
           "bytes": 6379,
-          "sha256": "8e4f11e674716b20e892fdf12d6b4c7aa056e5e88bbc268916273f81e075bf06"
+          "sha256": "800b881e51cececa32e44a80213d88db5540b311fd114a196f812e8eb0a0b165"
         },
         {
           "path": "agents.json",
@@ -562,7 +561,7 @@
         {
           "path": "contact.html",
           "bytes": 5482,
-          "sha256": "caaa297ac277503f2d35c8fbe4c3e015559d551c5cbb3868de4c0d8b22ee75d8"
+          "sha256": "f467c094b99f3d784325639f98af84d7b212568a984abf923bb25ad2b779cfcd"
         },
         {
           "path": "content/claims.json",
@@ -572,7 +571,7 @@
         {
           "path": "faq.html",
           "bytes": 10553,
-          "sha256": "2223325ff301be403554e1f34ea813da2cadfd263c935f543330adb2918a7838"
+          "sha256": "b05b58571f84fb933cba4817109e6ac5a5569ccabe3612c00ca2f53dbee1b7bb"
         },
         {
           "path": "favicon.ico",
@@ -587,7 +586,7 @@
         {
           "path": "features.html",
           "bytes": 13819,
-          "sha256": "ede64f0981b2344ea3715eb8dac68ddc2895b9fe24c3ff148a1bf0286a382a54"
+          "sha256": "e78ff6ba7682e2989afc0b97d548684e8b2d536a90958c1ede26dc2636e8dbf1"
         },
         {
           "path": "footer-manifest.json",
@@ -597,12 +596,12 @@
         {
           "path": "game.html",
           "bytes": 116778,
-          "sha256": "069ae2a2926b5a431e8398210a29c8682070cbc3de799e456a3aa786eec5a204"
+          "sha256": "0a583d1f590ad2a3e0a069ab265ad3c9076b0eaed8c07a110c13eda1029e3701"
         },
         {
           "path": "how-to-play.html",
           "bytes": 8526,
-          "sha256": "9f16a9f2c40f39f3711aaf22eeb5ff97ded9170077efef6906fc51366b4319b3"
+          "sha256": "2d0b76b4bc4fa37456f18244af0f606bacf29fbb64972088b6dee5310f894d19"
         },
         {
           "path": "images/apple-touch-icon.png",
@@ -667,7 +666,7 @@
         {
           "path": "index.html",
           "bytes": 21743,
-          "sha256": "1ed1ebdbd6257c2f68e6bba22a57673c2aa14f6b5b01e41d738357675a266b46"
+          "sha256": "c8ee72d249c32ba506bcb2f044ccc92ce3bfff0f78e7ce79d1f92729e9fc64dc"
         },
         {
           "path": "lib/achievements.js",
@@ -711,8 +710,8 @@
         },
         {
           "path": "lib/appCore.js",
-          "bytes": 60660,
-          "sha256": "3add80d0453c26b79d64a7fb4014ca6cc85ee883e25030809e41a74c78ee8863"
+          "bytes": 60828,
+          "sha256": "18bff717bb9048602bf841ea566a075640542e00200310adb0a05e34d0c832a0"
         },
         {
           "path": "lib/appState.js",
@@ -1387,17 +1386,17 @@
         {
           "path": "precache-manifest.json",
           "bytes": 25901,
-          "sha256": "a5c4b060fc0aa2fdc6c3aed174131e5b0c8edd1b97c2a9d112621cd639f4d58b"
+          "sha256": "5468f5203f45a9fb8af17a8a60d89a7020dd645c9955d759e2c9e695d25483de"
         },
         {
           "path": "press.html",
           "bytes": 10946,
-          "sha256": "cfe390568597432baf5169f0c71aaae9cc1e80fff8b9c354e53cd3b8dd475a7a"
+          "sha256": "53ded85451f5ccbb429ec23d6651dc7cd85eb8cdac3539b624e712b1bafa5aed"
         },
         {
           "path": "privacy.html",
           "bytes": 7429,
-          "sha256": "cb043ad29ffcb9ee4f58261b569eb43f89ee1feb26633960285606df72483d86"
+          "sha256": "1dc4f22f0bad23f3f62e139d37e9581a039ac848a79f3bfe7f743aa7fb8284c5"
         },
         {
           "path": "public-identity.json",
@@ -1447,7 +1446,7 @@
         {
           "path": "roadmap.html",
           "bytes": 6313,
-          "sha256": "b0ba177721d5362b02ee42271fc32aea7f9fe6622f28d92bdc31810c700ac01e"
+          "sha256": "cb397bb665ca548ee027e3ab8281302229a87788f1c65c859c7ba66ac1f81f5e"
         },
         {
           "path": "robots.txt",
@@ -1467,7 +1466,7 @@
         {
           "path": "simulation.html",
           "bytes": 11282,
-          "sha256": "0dcfcd22ed7779fe3e27a8258816090815e8bdfb98f8abb1b3ccff2c4a7ac236"
+          "sha256": "c36fb4eb8dbd2fbe52c675ba44b3ed399a397ce989ef25b72eb84b3ce04c3ffc"
         },
         {
           "path": "site.11e8faac8d.css",
@@ -1881,8 +1880,8 @@
         },
         {
           "path": "src/engine/gameSimulator.js",
-          "bytes": 83851,
-          "sha256": "e1f7afbc06e9ca32b3c11811c7feb1424f7cddc55ef8123e556df31246e52a78"
+          "bytes": 83453,
+          "sha256": "ff90a03744e95a53f8ef3ea620b4e2132610e3c42a659066e3b3bb3428d3afc8"
         },
         {
           "path": "src/engine/gmArchetype.js",
@@ -2181,8 +2180,8 @@
         },
         {
           "path": "src/sport/football/statSchema.js",
-          "bytes": 13775,
-          "sha256": "1db0f0e612328c9de44b8d194479e110fb7ac9f9abf33f441af313f1db9ad94f"
+          "bytes": 14365,
+          "sha256": "750b5f9882a0ece690d3c6077b3bd5224d921d3222bfcb1da7fcca7c7f85364c"
         },
         {
           "path": "src/sport/matchReadiness.js",
@@ -2272,37 +2271,37 @@
         {
           "path": "stats.html",
           "bytes": 8090,
-          "sha256": "36c6a2f022778082dfa4283a82d132516b60d84e56467a250059d529a4cc1038"
+          "sha256": "2a525567e6e16ae2de63e7a4683309c5110d91781e51463294e4b458353ca6d0"
         },
         {
           "path": "status-archive.html",
           "bytes": 23884,
-          "sha256": "0ec8978174e3b42fff43f6e955a6c5c002c1dca7d189982755279550fb39d730"
+          "sha256": "4a5dd98975862c6f72c758594a8a6f566814881aa7d0bd37f61f4af34bd10d1f"
         },
         {
           "path": "status.html",
           "bytes": 8778,
-          "sha256": "677bdbc83482530d5a527e51cd9767b79feaed30b9909afe66b15c8bfff99eed"
+          "sha256": "c8dfc07cdcf20743c13ba3a63af2bc02240312602592a0be34506e9d76ce9b00"
         },
         {
-          "path": "styles.3c9bac11ad.css",
-          "bytes": 217536,
-          "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
+          "path": "styles.01d6d3d295.css",
+          "bytes": 217786,
+          "sha256": "01d6d3d2952aaf3c1bc03ac389a9f6a5a60bc0c8342aba285744910e11ab4b9f"
         },
         {
           "path": "styles.css",
-          "bytes": 217536,
-          "sha256": "3c9bac11ad357e8f287e348858c0f7551df7d011fa2e3b5a2534edb0f5a909db"
+          "bytes": 217786,
+          "sha256": "01d6d3d2952aaf3c1bc03ac389a9f6a5a60bc0c8342aba285744910e11ab4b9f"
         },
         {
           "path": "sw.js",
           "bytes": 12948,
-          "sha256": "c1c7644fba85e2e8808e728fa3fdac6720d23ecac0da7d2f13ed0d5909598de7"
+          "sha256": "718ed903bffc6905576f86913bbf1f0a2583ff58b9f02a72158f71a44ac9c3b1"
         },
         {
           "path": "terms.html",
           "bytes": 6025,
-          "sha256": "e175a02b7e10e5e19973c12f6fe0ed5c4a3d468582fe500545cac85daa7ffbdb"
+          "sha256": "2201cb10ba1fd5a2bcb9d98d1e8a95eb0227837b6b22463bc582f659894fcc34"
         }
       ],
       "exclusions": [
@@ -2311,21 +2310,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "f8b33838-d3b3-487e-8fa0-3a1ac54ba800",
+    "deploymentId": "11e0a5f2-2a75-4483-a5b6-2ee7be38ac51",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-22T14:34:48.275Z"
+      "checkedAt": "2026-10-23T04:26:58.287Z"
     },
     "rollback": {
-      "previousDeploymentId": "35d125cf-0fa2-4c72-b062-202368a1dc30",
+      "previousDeploymentId": "a436e449-c0a6-448e-a1f3-4300ac7759f7",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-22T14:34:48.275Z"
+    "observedAt": "2026-10-23T04:26:58.288Z"
   },
   "lastCloseoutAt": "2026-10-22",
   "performanceAuthority": {
@@ -2361,31 +2360,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-22T17:34:56.270Z",
+    "observedAt": "2026-10-23T07:01:50.285Z",
     "status": "verified",
-    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
-    "publicationRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+    "publicationRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
+      "digest": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
-        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
+        "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+        "artifactDigest": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe"
       },
       "production": {
-        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
-        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
+        "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+        "artifactDigest": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe"
       },
       "visual": {
-        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
-        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
+        "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+        "artifactDigest": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe"
       },
       "performance": {
-        "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
-        "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
+        "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+        "artifactDigest": "8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe"
       }
     },
     "checks": [
@@ -2426,17 +2425,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
-      "verifiedAt": "2026-10-22T16:23:49.700Z",
+      "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+      "verifiedAt": "2026-10-23T07:01:48.960Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "febdaaefc71b2ee47b60037bfa628d24be8717f82087229ad6d4d8298ecd4e08",
-      "productionSha256": "bbf81256ed559bb10bd829cc1195911c8a39471202dff6c1f6d98ddebfa5ec51",
-      "visualSha256": "babbb808b33b1975c348e43068016617dcf41d7f28e9cf4d3a15bec728653f3f",
-      "performanceSha256": "35b0000f1f27cf0ba1e795c43de97b816b3a1fc7897bf0af2dde96f84a70dec9"
+      "stagingSha256": "3a2a7f67a01ef7b72d014505d91f1c61960d29c54e22019ead56c17fa00f57bb",
+      "productionSha256": "37d9555dec9b65c0e67d267183cb7a0972bd8092180e86b427e624d66d22a0a6",
+      "visualSha256": "37aad2fcd2d213f28e9975e4cf07d7593382bba6a34ff407c0cf62e36c83e6b4",
+      "performanceSha256": "7f9b7131d7fdf7bd2bfc25ae28d1c889386156e77f9bb7a5c24f9c6729fc17bf"
     },
-    "receiptSha256": "b6b95580a0b1562a7996e1f85f5db59c17b464ee638eafcdcdbdc7147f788528"
+    "receiptSha256": "9a5c9a826468517f1d146fde485ef94aacc12eaeace3af0457df07ff93a8f79b"
   },
   "launchReady": false,
   "sil": {
@@ -2493,10 +2492,10 @@
   "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
-    "durableSession": 118,
-    "currentFocus": "S118 complete: measured characters, articulated motion and persistent family identity verified in production.",
-    "nextMilestone": "Await the next founder-selected scope; selected S118 arc is complete.",
-    "lastSessionSummary": "S118 completed three selected outcomes and exact production delivery; seven CI jobs,267 browser passes/3existing opt-in skips,312required responsive captures,233 reviewed character/history captures, fresh save restoration and rollback verified. Independent closeout review passed."
+    "durableSession": 119,
+    "currentFocus": "S119 complete: phone Desk clipping fixed at source, one NFL passer rating, and a red main repaired; production c0ce44b4 verified.",
+    "nextMilestone": "Next session: player-facing release note for S119 (own candidate), capture-public-qa channel parity, and payload headroom; launch holds unchanged.",
+    "lastSessionSummary": "S119 shipped the phone Desk fix and a single passer-rating formula to production c0ce44b4 (CI seven jobs, Pages and backend promoted, provenance, hosted fix check, performance and release authority verified, doctor 12/12) after registering AGENT_MEMORY as a rollable ledger to clear a red main."
   },
   "partialCloseout": {
     "session": 117,
@@ -2874,7 +2873,7 @@
     "receipt": "reports/s118-closeout-protocol.json",
     "tests": 44
   },
-  "lastCloseoutSession": 118,
+  "lastCloseoutSession": 119,
   "closeoutPublication": {
     "commit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
     "pushed": true,

@@ -1,0 +1,3155 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-22T17:25:21.828Z",
+  "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "status": "selected-character-visual-scope-reviewed; exact-candidate-production-verified",
+  "scope": "S118 selected measured-body, face/blink, foot-motion, family identity, dossier controls and status-note improvements.",
+  "sourceHashes": {
+    "public/app.js": "c79e2b07d4300e7aebd0d642618b0ad2e9a24b2fee7a72e57f09357fc9e2ab28",
+    "public/status.html": "96f719ac318b76abd1ed56702fde8e0e50570b67dae4491176199800e92b43fb",
+    "public/lib/playerHead3d.js": "b410c81a2633052a77589cb84d4401358ee490f68f8de737be92276bc0d95abb",
+    "public/lib/playerHeadImage.js": "f4c264f72ba4643abe271fc8298e8395e9096570db18e281666791c998639a0f",
+    "public/lib/playerBody3d.js": "b214af25db170da632d972a039d107137e5bc22bc6c74993b27325e8f001aa8e",
+    "public/lib/playerBodyAnimation3d.js": "ef6920eb7f435ce19a4119c937de85335e283d1890432592b03aa36a75c15d98",
+    "public/lib/playerFootArticulation.js": "2ca2890c5814109f64a60b5f8443423c124712e01413ab57d3548489175bab7e",
+    "public/lib/playerCharacter3d.js": "32f0db1d505eaac5c3629b19a7711255287e01f27bcf2064e70ccb3bd8706c58",
+    "public/lib/playerProfileNarrative.js": "f00e726494fb4df27f43172e1792609edb73abf659787438f3fea3473b490391",
+    "src/domain/playerFamilyIdentity.js": "7a319e232c58c2c8f50477fb96d81287b2769214f2e8377010eed6707bac5d4d",
+    "src/domain/playerVisualIdentity.js": "aee4524633f194c8125221cf7af971015686716d6b7d4618d5a6f0f17cebc6af",
+    "src/domain/playerIdentity.js": "c25aea313929cf1dd9c1890f675a754b2b1f8c501aada635afbf513bb07ff7f7",
+    "src/domain/playerMeasurements.js": "68156e5be124649c7549c02dcbad706fb56dd9cbc95fc52f6bdeb0dcd1cef90e",
+    "src/domain/playerFactory.js": "616f136e07074d33fa64f21732f50b16c1e22ff9ca8b71f57b9dc22083db47b3",
+    "src/runtime/identityMetadataSnapshot.js": "dfc7d5afcfd0e253350c030f690d4c539c039dbc7d2c1c507bb64684156432ad",
+    "src/engine/offseasonSimulator.js": "848dcd193a1a484b0e1330d074f30f3af56298f94c9e5f0eba57f370be2d3209",
+    "src/runtime/GameSession.js": "d25af1bf04a7af424fe76456596e8317d0e311d11dec8411eb9d787bfd12fb6d",
+    "public/lib/tabContracts.js": "d6a8b92e0e8a79ddbe65afd1c184fc6802b8b75b20727784a1ebc64b1b585f1b",
+    "public/lib/tabSettings.js": "f12a47a79e46e1788abfd69496abdf690120c479a326ba1bd5a19dab4d958e72"
+  },
+  "runtimeCaptureProvenance": {
+    "src/runtime/GameSession.js": "d25af1bf04a7af424fe76456596e8317d0e311d11dec8411eb9d787bfd12fb6d"
+  },
+  "inspection": {
+    "reviewer": "primary + independent-character-review",
+    "renderedPixelsReviewed": true,
+    "findings": [
+      "No new mandatory crown, pole or canthal defect in current optimized head.",
+      "Controls and status readable across desktop/mobile dark/light.",
+      "Stylized face shading and procedural hair remain limitations.",
+      "All 28 current frames independently inspected across desktop/mobile, dark/light and six modes plus mobile front/profile.",
+      "No mandatory visible joint, silhouette, visibility or readability defect.",
+      "Stylized torso/materials remain an art limitation; reduced-motion snapshots do not establish physical mobile frame rate.",
+      "All eight actual family dossiers inspected across both themes and viewports; shared family background/pigment with individual faces and reload consistency.",
+      "Fresh final-build body/family pass: all36 frames exactly hash-identical to independently inspected captures; primary reopened desktop dark running and mobile light jump. Runtime provenance refreshed to current owner-fix source.",
+      "Exact candidate hosted review: all52 accepted images inspected across desktop/mobile dark/light; saved height/weight, six modes, live motion/pause/resume/reduced motion, actual generated brothers and reload persistence passed with no mandatory scoped defect.",
+      "Fresh11816546 hosted review:52 inspected images; saved body dimensions, six studies, live motion controls, actual generated brothers and reload pass. Application source hashes identical to4721; failed first-candidate CI remains historical and current full CI is pending.",
+      "Freshadb9b228 hosted check:8 newly inspected images, actual observed Plant & redirect phase and visible GPU advance/pause for both athletes, persistent family identity/reload. Prior209 inspections inherited only through identical19sources/all361artifactentries. Current full CI and production remain pending.",
+      "Fresh863ea60e hosted check:8 newly inspected images, actual observed Plant & redirect phase and visible GPU advance/pause for both athletes, persistent family identity/reload. Prior217 inspections inherited only through identical19sources/all361artifactentries. Current full CI and production remain pending.",
+      "Actual production863ea60e verified:8 fresh individually inspected images and real motion/cut/family/reload checks, exact canonical provider/public source and artifact, same-origin provenance and rollback availability. Prior225 inspections preserved; full application CI seven jobs passed separately. Procedural/stylized and physical-device limitations remain unchanged."
+    ],
+    "fixesApplied": [
+      "Closed-eye canthal returns and crown preservation.",
+      "Closed torso caps and correct torso draw batching.",
+      "Gentler measured limb/torso envelopes, clothing relief and articulated swing feet.",
+      "Saved family authority and correct name-only dossier opener."
+    ],
+    "blockingDefectsOpen": 0
+  },
+  "limitations": [
+    "Stylized procedural characters; no photorealism claim.",
+    "Modeled segment volume is not validated tissue mass or closed whole-character union volume.",
+    "Headless emulated viewports do not establish physical mobile frame rate.",
+    "Historical S117 broader naturalism/actual-user 20–30-season evidence remains unselected and unproven."
+  ],
+  "previousReceipt": {
+    "file": "S117-LATEST-preserved.json",
+    "scope": "Broader S117 full-person craft",
+    "accepted": false,
+    "blockingDefectsOpen": 1,
+    "sha256": "8b65ce0dbc3b5d86d7097991cc63dd535b33cfabf1cf8904aa81148d26203554",
+    "note": "Preserved unchanged; its broader open craft claim is not silently promoted by the narrower S118 evidence."
+  },
+  "releaseVerified": true,
+  "captures": [
+    {
+      "file": "captures/s118-face-budget-person-0-desktop-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b5fe6f7efae679dbf3fc365c0177736590814d9b8e60b7b9380795ca06f567f9",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-0-open.png",
+      "person": 0,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c465eac01735686db84dff97892391fd06b49ec82acdd426f01fa4b19c90c56a",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-0-open.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-0-closed.png",
+      "person": 0,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "749104a65b7cd4aadeaacc80030089e68e1b62f311c8e14cbb34de2c40bccb87",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-0-closed.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-0-clay-closed.png",
+      "person": 0,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "6cb586cff87614fbe6ee8c50ce2606cad0ceec9d33a773b4fed6326ce161920f",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-0-clay-closed.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-1-desktop-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "7e58d6a4e1061c22f256e2d0eae499780fe4fe3f823db66f2f9fd6b6eeb5b012",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-1-open.png",
+      "person": 1,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "51fbdeeb44547edb069967cfd13782c531a2bcbd27880af058b92cd27e70b437",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-1-open.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-1-closed.png",
+      "person": 1,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c1c781b3d89defe2b4c8bb557df41071b6d006234da5e806578ac35347541da5",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-1-closed.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-1-clay-closed.png",
+      "person": 1,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "00113cf44b1cb31e1d8fdd0c5c5d9f22e948619450cd6835b244ead7b94acf50",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-1-clay-closed.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-2-desktop-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "3515fa43d90a387b4e8af41ba7bb66066f39eeeda4188910fd8e87fb64922fdb",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-2-open.png",
+      "person": 2,
+      "state": "open",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "abf0d2f46cfa5ee74929597130484caf504a9d42a2fd44d0ad232f91467f34b9",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-2-open.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-2-closed.png",
+      "person": 2,
+      "state": "closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "8546cb04aa5880842801a663eee4298bdd5337d7dfd86af955618aaac6710b97",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-2-closed.png"
+    },
+    {
+      "file": "captures/s118-face-budget-native-2-clay-closed.png",
+      "person": 2,
+      "state": "clay-closed",
+      "intrinsic": {
+        "width": 240,
+        "height": 300
+      },
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "37da7e48abb7ad0dc86a4424327f540199ee594eb07478c32d3789697bac74b7",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-native-2-clay-closed.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-0-desktop-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "9ea82c38cbf93c412fe166bc2b5bb69236cf35e45f3135c6690f92e8b96156a1",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-1-desktop-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b51b7bff8b5425d173296e639a0861ed73e07c96ec242e3f112336b4cc66f308",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-2-desktop-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b6ab7f671f0c0d7bb19b0e276b94afb7eaa32b5d4fff3a1865a4e99c4d5fc3de",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-0-mobile-dark.png",
+      "person": 0,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "283eba5997e5d9045af4f6e124f58536768723c8fed4f6e7509f820d9dcbdf5c",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-1-mobile-dark.png",
+      "person": 1,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "dbf7dc26eb42121bbcea0ed176ebff20537ab29e7ce2c2b2625c59818bbb99a4",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-2-mobile-dark.png",
+      "person": 2,
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "8ff27c15c505fa6581291ca7463da4362143e92ae30e09147008eefe820828d5",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-0-mobile-light.png",
+      "person": 0,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "f8faeb69b866ef8e952528fbe45d5cf510e17a78fee22748182347789cff5e07",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-0-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-1-mobile-light.png",
+      "person": 1,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "89f6f63b0b78117937d018817208b2aba1dc85ca973cf869040456dc091016a0",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-1-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-face-budget-person-2-mobile-light.png",
+      "person": 2,
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "08464d55055b70668aeb44d1727e012fb842a904d5ba9ede98ba441f648320c7",
+      "page": "matched saved head; current budget-constrained sculpt",
+      "phase": "after",
+      "original": "output/playwright/s118-face-budget-person-2-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-status-before-desktop-dark.png",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "c9160e47ff27cdc24ae8dd1f90283a45e0ba5f20c85110bfa7aa00e0dc7df094",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
+      },
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-status-before-desktop-light.png",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "34641600ebc51a7190f0c233e3f3ffd340bf1f8a892793bb0d6e19ee9d33060d",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
+      },
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-status-before-mobile-dark.png",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "090073ba2796e4991957186543b0d23b7ff6736e1bacfed9f0d0c97f434b6985",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
+      },
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-status-before-mobile-light.png",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6566cb638da08ae724a9bbd0632f5869c4457d8b1f4f85ad4fa46bad39fd6f4f",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
+      },
+      "page": "status release notes",
+      "baseline": "Controlled before: current built status page with only the new release-note block removed; previous note text verified against HEAD source. Shared injected header/styles retained.",
+      "original": "output/playwright/s118-status-before-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-status-after-desktop-dark.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "55b686c899ef9857d6b71b3e68e0453b2e584fb8422f365f4364b9d19b7f5319",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
+      },
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-status-after-desktop-light.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "5a4af2be392fef0fa4b85e41e930f4fa493176a36cd2ddcf3337c68fd4dec321",
+      "dimensions": {
+        "width": 1440,
+        "documentWidth": 1440
+      },
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-status-after-mobile-dark.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "37194de430e0c6f3dca389f95c075c544aa535f51c0951d3cb15bcac2578f51d",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
+      },
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-status-after-mobile-light.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "7036365953120c644983a4f35508c5cd7a1e60c72d8dc70c6328357988840b69",
+      "dimensions": {
+        "width": 390,
+        "documentWidth": 390
+      },
+      "page": "status release notes",
+      "original": "output/playwright/s118-status-after-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-controls-board-desktop-dark.png",
+      "page": "actual board controls",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "90c8bcc46b1aee8c348150b5c69408fde924737288e6a7989ecb49988210e525",
+      "original": "output/playwright/s118-controls-board-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-controls-board-desktop-light.png",
+      "page": "actual board controls",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "e29d1e16ff6792c60e2bb986302929b2cd9eb742f105eca8438dd2018652bd90",
+      "original": "output/playwright/s118-controls-board-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-controls-board-mobile-dark.png",
+      "page": "actual board controls",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "72da86db4ba3c8e0756be6a11d32976c8db89f5d97ee21f3c26db694e3aa2f09",
+      "original": "output/playwright/s118-controls-board-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-controls-board-mobile-light.png",
+      "page": "actual board controls",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "57fde4319aa6ab79e284465ca7a1b8d33c0d88f286777cc84902bde11b1783b3",
+      "original": "output/playwright/s118-controls-board-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-controls-contract-desktop-dark.png",
+      "page": "actual contract controls",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "dffd8770eede0503d97e7f63700c9480b50ca929d6ab336ea90a136010d07cdb",
+      "original": "output/playwright/s118-controls-contract-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-controls-contract-desktop-light.png",
+      "page": "actual contract controls",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "b6dc55f816f158e6d8c51296cbdd112ec0a46fea63363fa95686ed839d52881d",
+      "original": "output/playwright/s118-controls-contract-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-controls-contract-mobile-dark.png",
+      "page": "actual contract controls",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "092c379f5f771da4da57caf732a68e74a2a203a641fefc7858a422b797b8d549",
+      "original": "output/playwright/s118-controls-contract-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-controls-contract-mobile-light.png",
+      "page": "actual contract controls",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b66524bde1384356848f6feffdbbff8b5aec2972eadd7521c6bb9ecb9f622736",
+      "original": "output/playwright/s118-controls-contract-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-controls-dossier-desktop-dark.png",
+      "page": "actual dossier controls",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "feca4adfff7b0e1b21a2439e2afa24008bb36a8caaf704e05b223940f8bc1a9c",
+      "original": "output/playwright/s118-controls-dossier-desktop-dark.png"
+    },
+    {
+      "file": "captures/s118-controls-dossier-desktop-light.png",
+      "page": "actual dossier controls",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sha256": "d7751eccf990a09c7996774a0f57be33c27125bdb616bd3354860eec75ff545c",
+      "original": "output/playwright/s118-controls-dossier-desktop-light.png"
+    },
+    {
+      "file": "captures/s118-controls-dossier-mobile-dark.png",
+      "page": "actual dossier controls",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "1a082c195efc54e194568ed32da0f6fd7b94925cc4fb8630f650fd34cb4b358e",
+      "original": "output/playwright/s118-controls-dossier-mobile-dark.png"
+    },
+    {
+      "file": "captures/s118-controls-dossier-mobile-light.png",
+      "page": "actual dossier controls",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "e649eb1c8362907e6e8d3bee738279bee7793df1b0c63706ea0d95c8d74086dc",
+      "original": "output/playwright/s118-controls-dossier-mobile-light.png"
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-acceleration.png",
+      "original": "output/playwright/s118-before-desktop-dark-acceleration.png",
+      "sha256": "3c5552da549a5f29ab03c5f12fefff904492a64f6fc9a8437b97fcad2f29bcb9",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-cut.png",
+      "original": "output/playwright/s118-before-desktop-dark-cut.png",
+      "sha256": "515bfbeb005dd896fd17fbdf199766882cdd1276cbf5fce57c30060782e4bbf7",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-endurance.png",
+      "original": "output/playwright/s118-before-desktop-dark-endurance.png",
+      "sha256": "c4c1c57ad4c1d8f20dbb4a01fe2308a9487e02f8ec47c9d27efc4a0faf31eefa",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-jump.png",
+      "original": "output/playwright/s118-before-desktop-dark-jump.png",
+      "sha256": "2d960800ab6b0bc4bce0d90961944f1f69c625d2bcdcb4ba3ad96f746344e774",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-run.png",
+      "original": "output/playwright/s118-before-desktop-dark-run.png",
+      "sha256": "051a8ae10c5232f39f88e8a2749698b16a096deaeb08ba85ee0989fdf875c6ee",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-dark-strength.png",
+      "original": "output/playwright/s118-before-desktop-dark-strength.png",
+      "sha256": "6e7fbbfc9014917425842fa30e090dfd81d59d68b4558ca80c549fd3a0714c19",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-light-acceleration.png",
+      "original": "output/playwright/s118-before-desktop-light-acceleration.png",
+      "sha256": "c5379f532be1485b39224761c29b1e3df1908607ff74766718326db24a6c527f",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-light-cut.png",
+      "original": "output/playwright/s118-before-desktop-light-cut.png",
+      "sha256": "20ebbbe2944477ba0db8112f97be72d89e76233762c402385cd78ea6533a79bd",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-light-endurance.png",
+      "original": "output/playwright/s118-before-desktop-light-endurance.png",
+      "sha256": "f03892879bfca60c2c72050b34157f30cc062499334aa6df0a6e0cd9e219e487",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-light-jump.png",
+      "original": "output/playwright/s118-before-desktop-light-jump.png",
+      "sha256": "ee254d3634097834bd1f7ad6061563829c76b7ffe9b8b4544117e30a356eaa16",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-light-run.png",
+      "original": "output/playwright/s118-before-desktop-light-run.png",
+      "sha256": "76f19491252ed27ef985d9fa8c0ab76a302e0d959989883c8fa3132beab7e6f4",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-desktop-light-strength.png",
+      "original": "output/playwright/s118-before-desktop-light-strength.png",
+      "sha256": "69aa18af2fd51c63dd79164d0c489d504a34b27de5fdc04dd16165d1ac0c9e9b",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-acceleration.png",
+      "original": "output/playwright/s118-before-mobile-dark-acceleration.png",
+      "sha256": "c5d7b191f1440ab12a991288b6e8275332510c858519bcf014f7fab98e930ee8",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-cut.png",
+      "original": "output/playwright/s118-before-mobile-dark-cut.png",
+      "sha256": "ab0121387df6a378b1025336720b9c7593c8378bfc94eb7bd82f006c99bc8bf7",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-endurance.png",
+      "original": "output/playwright/s118-before-mobile-dark-endurance.png",
+      "sha256": "87ef7156de9d77736f9091a104b62841e61fb05575beb6ed2a0bdacc36ffaf21",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-front.png",
+      "original": "output/playwright/s118-before-mobile-dark-front.png",
+      "sha256": "7fb7df55707d986c68eb17aa545aa67f857274293f616e955e5b8cbe9dcffcf0",
+      "page": "actual saved OL dossier front",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-jump.png",
+      "original": "output/playwright/s118-before-mobile-dark-jump.png",
+      "sha256": "b07c094d777ee83081d059176b22f7b0ae0a00b5408acf6114f123a6cf3b97cb",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-run.png",
+      "original": "output/playwright/s118-before-mobile-dark-run.png",
+      "sha256": "b21377343eedcc653be1db6e3cd96c300daf3eceddccbe8f9761fe8755e91f49",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-side.png",
+      "original": "output/playwright/s118-before-mobile-dark-side.png",
+      "sha256": "07f62968de4b772d47b036668398a6d2b2b1375d831fa50aa645c42cc5872887",
+      "page": "actual saved OL dossier side",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-dark-strength.png",
+      "original": "output/playwright/s118-before-mobile-dark-strength.png",
+      "sha256": "fcbac1b164173009a5bb30b5077359f96daf047aa7aa60a2c3f647ebb7b689ae",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-acceleration.png",
+      "original": "output/playwright/s118-before-mobile-light-acceleration.png",
+      "sha256": "26717bbea89b48b63f2fd0d64bfe25f52417db7593a6b4086f9cfd3c6342286b",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-cut.png",
+      "original": "output/playwright/s118-before-mobile-light-cut.png",
+      "sha256": "8d23b0a1eae670d61a2d346e654ee1d9897e399d37a2d67af5af0ec686b18bd1",
+      "page": "actual saved OL dossier cut",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-endurance.png",
+      "original": "output/playwright/s118-before-mobile-light-endurance.png",
+      "sha256": "2b980ab1cfbbceb85e8f80de00a38c399aa93e7687210d5741fa393598c9b43c",
+      "page": "actual saved OL dossier endurance",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-front.png",
+      "original": "output/playwright/s118-before-mobile-light-front.png",
+      "sha256": "e0459f7b867cebd432042e3af3be2d3ec10d8bf302744b55ce42d486274cd023",
+      "page": "actual saved OL dossier front",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-jump.png",
+      "original": "output/playwright/s118-before-mobile-light-jump.png",
+      "sha256": "6a89cf1f89648f75b74fe343f3ea44a120ed2624ff523fa6b97068e1ccc8881b",
+      "page": "actual saved OL dossier jump",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-run.png",
+      "original": "output/playwright/s118-before-mobile-light-run.png",
+      "sha256": "92c2978927199f1b139ee3f4d98e7f3675e2d35c8db56087e6ac9781a8904863",
+      "page": "actual saved OL dossier run",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-side.png",
+      "original": "output/playwright/s118-before-mobile-light-side.png",
+      "sha256": "654a69bcd4a5c0438408b3c683b145c7f27a06743edb267a2932e37d1a406037",
+      "page": "actual saved OL dossier side",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-before-mobile-light-strength.png",
+      "original": "output/playwright/s118-before-mobile-light-strength.png",
+      "sha256": "96165c50d262bcb8af0e182b71bbedd21f1add27ab70302aba50e26203d5314f",
+      "page": "actual saved OL dossier strength",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "baseline": "Controlled frozen S117 body+animation modules with same saved-person setup; current shared head, styling and page shell."
+    },
+    {
+      "file": "captures/s118-release-desktop-dark-acceleration.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-acceleration.png",
+      "sha256": "3c5a21960eb5c441f5d6beac3ec8c8e719b48e0f8625813bf5608d0c71cad646",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:52.226Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-dark-cut.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-cut.png",
+      "sha256": "ca3d388233cdb5e3ec3aacc0a3e6b582228c00fae49c9be2be751ba7a2857fb1",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:52.530Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-dark-endurance.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-endurance.png",
+      "sha256": "ed61d6bea74f24fea23190690975919ae31e3932ceda3ec2d576e900c172a391",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:53.393Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-dark-jump.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-jump.png",
+      "sha256": "13dde938038c452266a37236683ae3afda897a167f26ea90918d81cd160223fb",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:52.823Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-dark-run.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-run.png",
+      "sha256": "ed7c455e4ae2ca6fc45c25f6f4b56db264ff88f63ef1e0a3277ab2fa1d56772e",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:51.921Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-dark-strength.png",
+      "original": "output/playwright/s118-candidate-desktop-dark-strength.png",
+      "sha256": "4a981027bcde5853f130919fc0e9854d32e32ba2fe07199024e031eb4c723f06",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:53.112Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-light-acceleration.png",
+      "original": "output/playwright/s118-candidate-desktop-light-acceleration.png",
+      "sha256": "40f3104ba01c76088bc91186ec82fd762c6e811b450611d8c7b7ef22eecaf72c",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:54.252Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-light-cut.png",
+      "original": "output/playwright/s118-candidate-desktop-light-cut.png",
+      "sha256": "2fdffe8282aeb1a37e57be5d30c00cea294e1ef4af68515496987c926f9745b1",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:54.541Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-light-endurance.png",
+      "original": "output/playwright/s118-candidate-desktop-light-endurance.png",
+      "sha256": "f1d962b1829218263324482f7e3a8d09334df68060a9afa9883fa2f8c56be556",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:55.442Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-light-jump.png",
+      "original": "output/playwright/s118-candidate-desktop-light-jump.png",
+      "sha256": "e88f10475db3e2af7b2c82976e192c0d017be94949fd806088819e03b7b77323",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:54.840Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-light-run.png",
+      "original": "output/playwright/s118-candidate-desktop-light-run.png",
+      "sha256": "732f99f516a53be6e6891e4b926ffb22208ca973487ba69b0fc52e6cbc8a603d",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:53.973Z"
+    },
+    {
+      "file": "captures/s118-release-desktop-light-strength.png",
+      "original": "output/playwright/s118-candidate-desktop-light-strength.png",
+      "sha256": "1315cebc131b0f635aa62590188114eec1980207d5edc100e6e169c652430f3b",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:06:55.142Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-acceleration.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-acceleration.png",
+      "sha256": "d8934ce1e64a4bb3c7882a13dcc0ad58d0a9d8ecfcf21192f2e693acffd6f3b8",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:56.905Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-cut.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-cut.png",
+      "sha256": "0066237ed8775451c60453b6036b7354ecf40d1a1bd16a6725e93d0419af2811",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:57.200Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-endurance.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-endurance.png",
+      "sha256": "c2c49b02363ee95a4d4b10685302d1e2162bbe0edb20dc41669f6d3b25b71681",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:58.629Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-front.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-front.png",
+      "sha256": "70fdbfab4600bbf8684a063d1226ba79108a7a190f3faf27215f3804e5cad89f",
+      "page": "actual saved OL dossier front",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:58.786Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-jump.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-jump.png",
+      "sha256": "1d5c050a8cf54d1b9b0b06c86d6960e2b864309bd15ca7ce9b953fc7fd0ff76e",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:57.487Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-run.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-run.png",
+      "sha256": "15f528d17d33096619ac1d0beea6c3d34653e86bcc8911c5d8f31b83e736470f",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:56.466Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-side.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-side.png",
+      "sha256": "70b65ea7d77eddd603cfb9df723f2b64c725921f30d67db0ae8163bd5cb0053a",
+      "page": "actual saved OL dossier side",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:58.933Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-dark-strength.png",
+      "original": "output/playwright/s118-candidate-mobile-dark-strength.png",
+      "sha256": "a10eb1d10982e0898434403290ffbd76b092b04452088779b0f7a2a498cc92c5",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:58.354Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-acceleration.png",
+      "original": "output/playwright/s118-candidate-mobile-light-acceleration.png",
+      "sha256": "0bc8c8d3ec097ebd57c8f4875925ad1091d03db752191f9d3b274f36499014c8",
+      "page": "actual saved OL dossier acceleration",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:59.760Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-cut.png",
+      "original": "output/playwright/s118-candidate-mobile-light-cut.png",
+      "sha256": "e28a17d98b87e419e8c7385b6cc109fcda45145812249164a41996420bf71187",
+      "page": "actual saved OL dossier cut",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:00.025Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-endurance.png",
+      "original": "output/playwright/s118-candidate-mobile-light-endurance.png",
+      "sha256": "eceeeaa801af2902d3d683718972f7e0660b3954a6c66819f0bae146740dba05",
+      "page": "actual saved OL dossier endurance",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:00.814Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-front.png",
+      "original": "output/playwright/s118-candidate-mobile-light-front.png",
+      "sha256": "3a49e3366b0fe3855502aa093046d9c101433482a98d4bf45b027f13cd89c35f",
+      "page": "actual saved OL dossier front",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:00.988Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-jump.png",
+      "original": "output/playwright/s118-candidate-mobile-light-jump.png",
+      "sha256": "199a44e010c3e635b1892b36bd11d5039000447d6a4aeb4aedca3c4a0a8a3122",
+      "page": "actual saved OL dossier jump",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:00.290Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-run.png",
+      "original": "output/playwright/s118-candidate-mobile-light-run.png",
+      "sha256": "5d3f98cb2142d83d3abf693960c56dc8392b65b8acd4b9e91da34c17f30d81de",
+      "page": "actual saved OL dossier run",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:06:59.491Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-side.png",
+      "original": "output/playwright/s118-candidate-mobile-light-side.png",
+      "sha256": "4a84605a03054ece8bfcddcd90ef5ad4a2fcb4e18aa9d517dc773d0ca1d55151",
+      "page": "actual saved OL dossier side",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:01.140Z"
+    },
+    {
+      "file": "captures/s118-release-mobile-light-strength.png",
+      "original": "output/playwright/s118-candidate-mobile-light-strength.png",
+      "sha256": "072784ca8ee81367f2098c1f68d1282cef9b81753736943bf4920f3f99d3c7be",
+      "page": "actual saved OL dossier strength",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:00.551Z"
+    },
+    {
+      "file": "captures/s118-final-family-desktop-dark-anchor.png",
+      "original": "output/playwright/s118-family-desktop-dark-anchor.png",
+      "sha256": "485616675af2ea6e165e1b38216482fed21cb3ed872ac99a5c86ec8ff8e8c2a4",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:07:07.666Z"
+    },
+    {
+      "file": "captures/s118-final-family-desktop-dark-relative.png",
+      "original": "output/playwright/s118-family-desktop-dark-relative.png",
+      "sha256": "06974be6dba25f04338370499b92172358d6ec0049fd589ceb84c9afe8a6a1f7",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:07:05.289Z"
+    },
+    {
+      "file": "captures/s118-final-family-desktop-light-anchor.png",
+      "original": "output/playwright/s118-family-desktop-light-anchor.png",
+      "sha256": "62b13ba5e7f2d8d8ab337ac991c423ba95b669dc0bf5d295712493dffb670d29",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:07:10.717Z"
+    },
+    {
+      "file": "captures/s118-final-family-desktop-light-relative.png",
+      "original": "output/playwright/s118-family-desktop-light-relative.png",
+      "sha256": "479927ee4188ac2bb1e0f14dfea70209b81793a542ebb143d1131f3a98f45cc3",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "recapturedAt": "2026-10-22T07:07:09.046Z"
+    },
+    {
+      "file": "captures/s118-final-family-mobile-dark-anchor.png",
+      "original": "output/playwright/s118-family-mobile-dark-anchor.png",
+      "sha256": "6a83e9d5a499901829a70d3d89357fdde435cf0879f0e0fe92365d36b708dcd0",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:14.545Z"
+    },
+    {
+      "file": "captures/s118-final-family-mobile-dark-relative.png",
+      "original": "output/playwright/s118-family-mobile-dark-relative.png",
+      "sha256": "498db09d111de460dc59f83e9606415c55c112eaa180d11c45780e6b9dd0b582",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:12.407Z"
+    },
+    {
+      "file": "captures/s118-final-family-mobile-light-anchor.png",
+      "original": "output/playwright/s118-family-mobile-light-anchor.png",
+      "sha256": "85c5287101cd0af1e6aa3a2d3cd1ea3db397e9ab74046a3793c8ff77c6c453f0",
+      "page": "actual family-linked anchor dossier",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:17.217Z"
+    },
+    {
+      "file": "captures/s118-final-family-mobile-light-relative.png",
+      "original": "output/playwright/s118-family-mobile-light-relative.png",
+      "sha256": "ef0d71bb52799ff05c972ce16fe834fb46c1bc1a1ba800c048fce222a75ac6de",
+      "page": "actual family-linked relative dossier",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "recapturedAt": "2026-10-22T07:07:15.793Z"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-live-run-0.png",
+      "sha256": "80e3860a0e73e73dd7094a03a05b5d95950b3076b559c2c04d61c80657f34e9b",
+      "original": "output/playwright/s118-hosted-staging-heavy-live-run-0.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-live-run-1.png",
+      "sha256": "c7a2a6ac4be1d77291386e76997b1a79ea216b2494a74ba369a75db0c2a91649",
+      "original": "output/playwright/s118-hosted-staging-heavy-live-run-1.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-dark-acceleration.png",
+      "sha256": "b9031dc510c3872f3062f974427baf8ba09e6d64e2769ecc55ce00065bbe309a",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-dark-acceleration.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-dark-cut.png",
+      "sha256": "6fbc8cbc53b383a35aed0d5938bc03fec78c729f517224748d2f3a182faefdfd",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-dark-cut.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-dark-jump.png",
+      "sha256": "c0ae64c81a9d393268ab404c5792e946c26fe5c1afb2b59b8239e024ea993753",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-dark-strength.png",
+      "sha256": "ebf9b1498406baaab3e98400e52fc45a73cfa1f0e6f42db24204861a764979a3",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-dark-strength.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-dark-endurance.png",
+      "sha256": "f90d20705955418cf60e1da68e49166ace89f3c0094c7e5e397374c7f88eeaf6",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-dark-endurance.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-light-run.png",
+      "sha256": "c09cf6edfe52cc77812b5670e3ac864e3e85ce55c03aa94b6c8cafa8fbb3e995",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-light-acceleration.png",
+      "sha256": "a2bfb30748c6ee67d31a83f834329a49d1c82ed5958b0b1c246a646a77184ceb",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-light-acceleration.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-light-cut.png",
+      "sha256": "434d898abf81c0499ca8cec3bf6d18f3c1e6418e602e0b5f7fb7acbe8599d11b",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-light-cut.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-light-jump.png",
+      "sha256": "fb5698f937a98f595b2979cb44d366d02e7837ca3903e558dadf442f3d425c35",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-light-strength.png",
+      "sha256": "6c7d64bd22bc20136b82ccb53ac4840d47767015bf151dd882ae85869c578ab4",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-light-strength.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-desktop-light-endurance.png",
+      "sha256": "037a266962215248b8fc418551504d708f4f01fced2ef858c3cc6699e361e300",
+      "original": "output/playwright/s118-hosted-staging-heavy-desktop-light-endurance.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-run-recapture.png",
+      "sha256": "bb40be2fc25266c13a60478f7ee1d095552d98c37d68822dd798b37aabbf6c33",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-run-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-acceleration-recapture.png",
+      "sha256": "812d697ee1d7b4762a3f2d02828ffabf0eb82bb637e75d570d849f0d561a6b76",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-acceleration-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-cut-recapture.png",
+      "sha256": "b228378cc6e816978f8675e25abf349a241b66b57f24c16c71e30ac400f1fa03",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-cut-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-jump-recapture.png",
+      "sha256": "cc82a866bac339be5db832abe7cf7f6452a98c8b6e03ae173992cbaf4442005c",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-jump-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-strength-recapture.png",
+      "sha256": "7a2a165d5c9d140e1d54ff954a266ecb0414224c7c1bcd7d6e6932b3e5ca976c",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-strength-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-endurance-recapture.png",
+      "sha256": "781bad430eff9b2657fd9b909584995d2e06f5b1658b21ed5bf85f79d0df819c",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-endurance-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-front-recapture.png",
+      "sha256": "f1c364de8caa1b19e9d4639df52a9f29e0c078f7637b8d9fbff56c2addceec6a",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-front-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-dark-side-recapture.png",
+      "sha256": "7ad37db24c25881edc7caf8962fb296df0ffa09ff5e470d1c93a8e2204469c2d",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-dark-side-recapture.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-run.png",
+      "sha256": "bc36ed4b6ddac8aff182468d6a57c7098ee868fc798f913a3fa06fbfea7757b1",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-acceleration.png",
+      "sha256": "d0a1c05bd07ac229b6e67d7cf84ea76c28c3e9a732aff9a478830aa861232d29",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-acceleration.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-cut.png",
+      "sha256": "559102ea5f206869be4706a3b289d32af7b286234635a882a245158ddce6b0cd",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-cut.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-jump.png",
+      "sha256": "87651fd038782ca1a9bf53b63b1c8dcad58f0692709c04b2f71d9acabd0dc74b",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-strength.png",
+      "sha256": "a289cbb70cb6882da9817fdfe9356d0c7792a7181b51c17c195a6e66c096d002",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-strength.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-endurance.png",
+      "sha256": "7075dbf802af0f3515fcf8e9cbea7bb26860886c9d28b029bf69c5d832f997c7",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-endurance.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-front.png",
+      "sha256": "0d289ff163d578efc7f7de5a1df651944c00cafc8bf226c9bcf0579f7ae393bf",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-front.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-heavy-mobile-light-side.png",
+      "sha256": "b9b17bd711a08f5705daf92322793c99e702a9d1152e8ee4a744d33d76bf2c37",
+      "original": "output/playwright/s118-hosted-staging-heavy-mobile-light-side.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-live-run-0.png",
+      "sha256": "4ab3c5285a3fd65f8362fb7ecf7deb403dbb5003b01c18f8fb166916d1348b2c",
+      "original": "output/playwright/s118-hosted-staging-light-live-run-0.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-live-run-1.png",
+      "sha256": "4726337e053573d08801517f3c4b1203d9d43f017524bef653f5e86a2e856910",
+      "original": "output/playwright/s118-hosted-staging-light-live-run-1.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-desktop-dark-run.png",
+      "sha256": "eedf91f36f6f705c7fae8d2bb9830e33c21e6e4fa2843bd2140c39222b76361d",
+      "original": "output/playwright/s118-hosted-staging-light-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-desktop-dark-jump.png",
+      "sha256": "e2cca7de66527b96b27a199dcb9b77426f00e1f9ab20365cfdbb0da58ec320fe",
+      "original": "output/playwright/s118-hosted-staging-light-desktop-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-desktop-light-run.png",
+      "sha256": "5e6dba3d0051adf88022e81639392909766926d7d5289d96d4f2f5e76d56322c",
+      "original": "output/playwright/s118-hosted-staging-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-desktop-light-jump.png",
+      "sha256": "ec81ccb2a6e91263cdf0a1dea2354bd168bebde46e7d3646503b5bf4bcb97c2d",
+      "original": "output/playwright/s118-hosted-staging-light-desktop-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-dark-run.png",
+      "sha256": "bc3fd8e0e33caa1090fe35bbc3850a9425315d2a7bd46ef63cc360ba17e09d98",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-dark-jump.png",
+      "sha256": "71d3262dd9ee5bc8f847753a2636038e5475977145ddb8b8a0df4781c24a2bac",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-dark-front.png",
+      "sha256": "8c0f103fb595ade10cd5b0c2f382cb0d67992b34a6d67f05417d74832f4d01ac",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-dark-front.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-dark-side.png",
+      "sha256": "9748d322b467c4d0fe36ec669667ca4b47b5f1d555ca81d3a2cbb6587e6f32d1",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-dark-side.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-light-run.png",
+      "sha256": "25501939626ca9d936c21d4be8eb0d636e0967880e2da31fe317e9c7a14a2dc5",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-light-jump.png",
+      "sha256": "cd617f335cd150c23071563aa2d1e9e80031c4396fe582adce2adab0cee507bb",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-light-front.png",
+      "sha256": "07784c82df6a42aded7633d93e1c7a8e580bf3426cd037e445736ce846ade165",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-light-front.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-light-mobile-light-side.png",
+      "sha256": "3693f815a6c4355897a53c02b2f2e17b48e801d0391c1d751034fa9e1ca189e0",
+      "original": "output/playwright/s118-hosted-staging-light-mobile-light-side.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-desktop-dark-anchor.png",
+      "sha256": "194183b07e8c5f5a61688a9c580a544beae5c515134d394023b8052a2342aa22",
+      "original": "output/playwright/s118-hosted-staging-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-desktop-dark-relative.png",
+      "sha256": "b1b390bf9f227925bd9f1ef94f1f63d5ac8f71f28503ec72e59c24a9b386dc88",
+      "original": "output/playwright/s118-hosted-staging-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-desktop-light-anchor.png",
+      "sha256": "19ea17b4a7cf0216cdab41f1ab2a39133d3db25dead3b63ca96549b711165d33",
+      "original": "output/playwright/s118-hosted-staging-family-desktop-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-desktop-light-relative.png",
+      "sha256": "7f4867ae6cfacde0bf1609850158bbed20ab34f3e42c727feaf63083ba1d927f",
+      "original": "output/playwright/s118-hosted-staging-family-desktop-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-mobile-dark-anchor.png",
+      "sha256": "b0443fbfb2edcf78459e6c5e667fdfaa0f8cdb584ce620ade863a7a2f2ea89ed",
+      "original": "output/playwright/s118-hosted-staging-family-mobile-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-mobile-dark-relative.png",
+      "sha256": "18dff12d66dcf3d0cf65fbf78a90ec7907c11e35bcf5feaefe087359e64d36c3",
+      "original": "output/playwright/s118-hosted-staging-family-mobile-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-mobile-light-anchor.png",
+      "sha256": "cdf5ae7a957485b6310e3849f03bcca6388e2968b4511291678ff556eb84f766",
+      "original": "output/playwright/s118-hosted-staging-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted/s118-hosted-staging-family-mobile-light-relative.png",
+      "sha256": "9cfbc99e780c6a8a54962abb0422ffddcafa30a4af829dc84f01af78ae07749e",
+      "original": "output/playwright/s118-hosted-staging-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-live-run-0.png",
+      "sha256": "2959fda0e4b411ab5c07a55410786df286720b8b3df5f9fb38dcdc129c7eb3cc",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-live-run-0.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-live-run-1.png",
+      "sha256": "237cb193aac077db0b2a1ea414c37fad3588f95459a04cc6c2d63a58dbcb7d53",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-live-run-1.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-acceleration.png",
+      "sha256": "b9031dc510c3872f3062f974427baf8ba09e6d64e2769ecc55ce00065bbe309a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-acceleration.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-cut.png",
+      "sha256": "6fbc8cbc53b383a35aed0d5938bc03fec78c729f517224748d2f3a182faefdfd",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-cut.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-jump.png",
+      "sha256": "c0ae64c81a9d393268ab404c5792e946c26fe5c1afb2b59b8239e024ea993753",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-strength.png",
+      "sha256": "ebf9b1498406baaab3e98400e52fc45a73cfa1f0e6f42db24204861a764979a3",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-strength.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-dark-endurance.png",
+      "sha256": "f90d20705955418cf60e1da68e49166ace89f3c0094c7e5e397374c7f88eeaf6",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-dark-endurance.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-run.png",
+      "sha256": "c09cf6edfe52cc77812b5670e3ac864e3e85ce55c03aa94b6c8cafa8fbb3e995",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-acceleration.png",
+      "sha256": "a2bfb30748c6ee67d31a83f834329a49d1c82ed5958b0b1c246a646a77184ceb",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-acceleration.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-cut.png",
+      "sha256": "434d898abf81c0499ca8cec3bf6d18f3c1e6418e602e0b5f7fb7acbe8599d11b",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-cut.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-jump.png",
+      "sha256": "fb5698f937a98f595b2979cb44d366d02e7837ca3903e558dadf442f3d425c35",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-strength.png",
+      "sha256": "6c7d64bd22bc20136b82ccb53ac4840d47767015bf151dd882ae85869c578ab4",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-strength.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-desktop-light-endurance.png",
+      "sha256": "037a266962215248b8fc418551504d708f4f01fced2ef858c3cc6699e361e300",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-desktop-light-endurance.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-run.png",
+      "sha256": "1af9a2fb1f43bbf19831f6850e1ea0749bc65771554346390f3d080bd064cdce",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-acceleration.png",
+      "sha256": "812d697ee1d7b4762a3f2d02828ffabf0eb82bb637e75d570d849f0d561a6b76",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-acceleration.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-cut.png",
+      "sha256": "b228378cc6e816978f8675e25abf349a241b66b57f24c16c71e30ac400f1fa03",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-cut.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-jump.png",
+      "sha256": "cc82a866bac339be5db832abe7cf7f6452a98c8b6e03ae173992cbaf4442005c",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-strength.png",
+      "sha256": "7a2a165d5c9d140e1d54ff954a266ecb0414224c7c1bcd7d6e6932b3e5ca976c",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-strength.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-endurance.png",
+      "sha256": "781bad430eff9b2657fd9b909584995d2e06f5b1658b21ed5bf85f79d0df819c",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-endurance.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-front.png",
+      "sha256": "f1c364de8caa1b19e9d4639df52a9f29e0c078f7637b8d9fbff56c2addceec6a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-front.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-dark-side.png",
+      "sha256": "d174ecc37fbe5a0ab21db11b8d6dca5c8f81972b9ecdd9d46a2f9bf08b32f137",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-dark-side.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-run.png",
+      "sha256": "4f4b5b08069674505b7200d872617e7e3214521d7d282d28c067be8f339a0a35",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-acceleration.png",
+      "sha256": "d0a1c05bd07ac229b6e67d7cf84ea76c28c3e9a732aff9a478830aa861232d29",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-acceleration.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-cut.png",
+      "sha256": "559102ea5f206869be4706a3b289d32af7b286234635a882a245158ddce6b0cd",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-cut.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-jump.png",
+      "sha256": "87651fd038782ca1a9bf53b63b1c8dcad58f0692709c04b2f71d9acabd0dc74b",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-strength.png",
+      "sha256": "a289cbb70cb6882da9817fdfe9356d0c7792a7181b51c17c195a6e66c096d002",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-strength.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-endurance.png",
+      "sha256": "7075dbf802af0f3515fcf8e9cbea7bb26860886c9d28b029bf69c5d832f997c7",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-endurance.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-front.png",
+      "sha256": "0d289ff163d578efc7f7de5a1df651944c00cafc8bf226c9bcf0579f7ae393bf",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-front.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-heavy-mobile-light-side.png",
+      "sha256": "b9b17bd711a08f5705daf92322793c99e702a9d1152e8ee4a744d33d76bf2c37",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-heavy-mobile-light-side.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-live-run-0.png",
+      "sha256": "7281e16a0aa33a449bc73fd743ffd86b6b40f956f1fec19cb0ad884f34a0561a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-live-run-0.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-live-run-1.png",
+      "sha256": "fb41182183ec0d4d43f478123d27c997b21b4c671759a6cddf7154a54845e49d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-live-run-1.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-dark-run.png",
+      "sha256": "eedf91f36f6f705c7fae8d2bb9830e33c21e6e4fa2843bd2140c39222b76361d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-dark-jump.png",
+      "sha256": "e2cca7de66527b96b27a199dcb9b77426f00e1f9ab20365cfdbb0da58ec320fe",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-desktop-light-jump.png",
+      "sha256": "ec81ccb2a6e91263cdf0a1dea2354bd168bebde46e7d3646503b5bf4bcb97c2d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-desktop-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-run.png",
+      "sha256": "14cfa522bceca11cacd0c52892492e863e438157bfab904f4e5ce0d4fee1118a",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-jump.png",
+      "sha256": "71d3262dd9ee5bc8f847753a2636038e5475977145ddb8b8a0df4781c24a2bac",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-jump.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-front.png",
+      "sha256": "8c0f103fb595ade10cd5b0c2f382cb0d67992b34a6d67f05417d74832f4d01ac",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-front.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-dark-side.png",
+      "sha256": "9748d322b467c4d0fe36ec669667ca4b47b5f1d555ca81d3a2cbb6587e6f32d1",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-dark-side.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-run.png",
+      "sha256": "1a38002d01435406ee37bc3432f72f32a16970453a00a2d1bf479e0cb30fd71d",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-jump.png",
+      "sha256": "cd617f335cd150c23071563aa2d1e9e80031c4396fe582adce2adab0cee507bb",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-jump.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-front.png",
+      "sha256": "07784c82df6a42aded7633d93e1c7a8e580bf3426cd037e445736ce846ade165",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-front.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-light-mobile-light-side.png",
+      "sha256": "3693f815a6c4355897a53c02b2f2e17b48e801d0391c1d751034fa9e1ca189e0",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-light-mobile-light-side.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-dark-anchor.png",
+      "sha256": "9dc7e2d4da712db1a850eee6c5c5f367944ec5662c37f4ba39ff0b50abcbb732",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-dark-relative.png",
+      "sha256": "a91a34df026d1743b56283b8343d4451408941c45165507c4f046863d9241972",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-light-anchor.png",
+      "sha256": "a26b11a9d7ebc7bc2b1c09e55c719744321bedfa419d8aa31d6d6c22f3ab5ccc",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-desktop-light-relative.png",
+      "sha256": "ba26f6df361645fd1e5ef3fa9fb3424b233f08ec50356862f6d99ef22a37366f",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-desktop-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-dark-anchor.png",
+      "sha256": "b0443fbfb2edcf78459e6c5e667fdfaa0f8cdb584ce620ade863a7a2f2ea89ed",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-dark-relative.png",
+      "sha256": "01f0bf9dc6de719be4936b5bd996da0ebda25c49939a34ba2510e12772713b65",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-light-anchor.png",
+      "sha256": "1c00f37ad0f10c1fdad39bc18d9419faec6b5a7fa354a9fef2ec9b60dd54d4b4",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r2/s118-hosted-staging-r2-pass2-family-mobile-light-relative.png",
+      "sha256": "6e9355539693cf5463f68b6232bccb5f1a196b50d8e0e8c0831990346b67f9d6",
+      "original": "output/playwright/s118-hosted-staging-r2-pass2-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7",
+      "original": "output/playwright/s118-hosted-staging-r3-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-heavy-mobile-light-run.png",
+      "sha256": "5f10608ed6bff2e80385dcc8788a1ff3c593163d56494f0aa6185bac3ff3fcb5",
+      "original": "output/playwright/s118-hosted-staging-r3-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15",
+      "original": "output/playwright/s118-hosted-staging-r3-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-light-mobile-dark-run.png",
+      "sha256": "f54211e275ccf4978e73f080e124b9b794c330ec7479d4ccbb6335efbfcc1c8a",
+      "original": "output/playwright/s118-hosted-staging-r3-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-family-desktop-dark-anchor.png",
+      "sha256": "9dc7e2d4da712db1a850eee6c5c5f367944ec5662c37f4ba39ff0b50abcbb732",
+      "original": "output/playwright/s118-hosted-staging-r3-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-family-desktop-dark-relative.png",
+      "sha256": "a91a34df026d1743b56283b8343d4451408941c45165507c4f046863d9241972",
+      "original": "output/playwright/s118-hosted-staging-r3-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-family-mobile-light-anchor.png",
+      "sha256": "fd5c414145a19592f42c75f14db8fa977fefa9b49f9a5797ff7f73160d8797b8",
+      "original": "output/playwright/s118-hosted-staging-r3-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r3/s118-hosted-staging-r3-family-mobile-light-relative.png",
+      "sha256": "bbeccaa0617e11c76d7d7df70347c16661a38097bcbc26fe80b4f9cb3985fac8",
+      "original": "output/playwright/s118-hosted-staging-r3-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-heavy-desktop-dark-run.png",
+      "sha256": "ae585d3dfae1ec68b0d5c7a8e5b2a60184a5b40df70dd35b62b5b4e877e861d7",
+      "original": "output/playwright/s118-hosted-staging-r5-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-heavy-mobile-light-run.png",
+      "sha256": "0c8d5e896facb52a0cb7415929baaf687a296aafff4379e275bcc046a0435f85",
+      "original": "output/playwright/s118-hosted-staging-r5-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15",
+      "original": "output/playwright/s118-hosted-staging-r5-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-light-mobile-dark-run.png",
+      "sha256": "2e6a718ce5225fee4f3ca40d04fdf25e476d995ea286879375c7757642bff66d",
+      "original": "output/playwright/s118-hosted-staging-r5-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-desktop-dark-anchor.png",
+      "sha256": "194183b07e8c5f5a61688a9c580a544beae5c515134d394023b8052a2342aa22",
+      "original": "output/playwright/s118-hosted-staging-r5-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-desktop-dark-relative.png",
+      "sha256": "3dc9c71296594bd6772aabb389073b84c0f71aa5f238677f8b573879b9fed2fc",
+      "original": "output/playwright/s118-hosted-staging-r5-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-mobile-light-anchor.png",
+      "sha256": "fd5c414145a19592f42c75f14db8fa977fefa9b49f9a5797ff7f73160d8797b8",
+      "original": "output/playwright/s118-hosted-staging-r5-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-hosted-r5/s118-hosted-staging-r5-family-mobile-light-relative.png",
+      "sha256": "9cfbc99e780c6a8a54962abb0422ffddcafa30a4af829dc84f01af78ae07749e",
+      "original": "output/playwright/s118-hosted-staging-r5-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://staging.playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-heavy-desktop-dark-run.png",
+      "sha256": "811743869663b089465e2419297af7dcaa74608db83c3f5a167f7d5b6d630df7",
+      "original": "output/playwright/s118-production-r5-heavy-desktop-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-heavy-mobile-light-run.png",
+      "sha256": "377fb94916631d77177531aa20b6b5943a776b9c3f96f03d95da96882b14a38c",
+      "original": "output/playwright/s118-production-r5-heavy-mobile-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-light-desktop-light-run.png",
+      "sha256": "04eeb1b4e999a5ca97c85aa99fa857c45cd824e3ce749daa0037404a107ccf15",
+      "original": "output/playwright/s118-production-r5-light-desktop-light-run.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-light-mobile-dark-run.png",
+      "sha256": "f68f20eea7096b02a9da44de680a598f9167584e9ace558094ef303854a50f70",
+      "original": "output/playwright/s118-production-r5-light-mobile-dark-run.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-desktop-dark-anchor.png",
+      "sha256": "9dc7e2d4da712db1a850eee6c5c5f367944ec5662c37f4ba39ff0b50abcbb732",
+      "original": "output/playwright/s118-production-r5-family-desktop-dark-anchor.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-desktop-dark-relative.png",
+      "sha256": "536d114b28571506cb1b1ca44f7312b68c567b02bcb34dc7865d7ba00b5da897",
+      "original": "output/playwright/s118-production-r5-family-desktop-dark-relative.png",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-mobile-light-anchor.png",
+      "sha256": "fd5c414145a19592f42c75f14db8fa977fefa9b49f9a5797ff7f73160d8797b8",
+      "original": "output/playwright/s118-production-r5-family-mobile-light-anchor.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    },
+    {
+      "file": "captures/s118-production/s118-production-r5-family-mobile-light-relative.png",
+      "sha256": "9cfbc99e780c6a8a54962abb0422ffddcafa30a4af829dc84f01af78ae07749e",
+      "original": "output/playwright/s118-production-r5-family-mobile-light-relative.png",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "https://playfranchisearchitect.com actual default-client character/family"
+    }
+  ],
+  "earlierRuntimeCaptureProvenance": {
+    "src/runtime/GameSession.js": "c04fa4f3033d8fe0814abe0aa94dae3117c23c243d1da66065bd99ffa2fb8c50"
+  },
+  "candidateRecapture": {
+    "capturedAt": "2026-10-22T07:07:17.217Z",
+    "build": "final local preview, before candidate commit",
+    "bodyFrames": 28,
+    "familyFrames": 8,
+    "hashIdenticalToIndependentlyReviewed": 36,
+    "bodyAndFamilyTestsPassed": 2,
+    "currentRuntimeBound": true,
+    "formatOnlyChanges": [
+      "public/lib/tabContracts.js EOF whitespace",
+      "public/lib/tabSettings.js EOF whitespace"
+    ],
+    "sourceRevision": "local-worktree"
+  },
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737"
+  },
+  "candidateBinding": {
+    "observedAt": "2026-10-22T14:38:35.138Z",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "committedSourceHashesVerified": 19,
+    "priorCaptureHashesVerified": 217,
+    "hostedCaptureCount": 8,
+    "hostedReview": "HOSTED_S118_R5.json",
+    "hostedReviewSha256": "55938426521016f141b5cee9da707d953c9d165e0c56133f245c7664482bf562",
+    "stagingDeploymentId": "f8b33838-d3b3-487e-8fa0-3a1ac54ba800",
+    "stagingProvenanceChecks": 14,
+    "method": "Eight fresh actual hosted images individually inspected, plus actual animation/cut-phase/pause/reduced-motion/family reload proofs. Prior217 inspected images are inherited through19 identical committed visual/runtime sources and all361 unchanged artifact entries; no new217-image inspection is claimed.",
+    "captureMetadata": {
+      "method": "Explicit viewport/theme filename tokens",
+      "scriptSha256": "b9f7a617307b2372a4674122b2ad8f82e1644ae5ed5c2332f6feb1473e291786"
+    }
+  },
+  "candidateBindingHistory": [
+    {
+      "observedAt": "2026-10-22T07:52:18.097Z",
+      "sourceRevision": "4721b3426edd347e73e1d724830c1b730deba91c",
+      "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "committedSourceHashesVerified": 19,
+      "priorCaptureHashesVerified": 105,
+      "hostedCaptureCount": 52,
+      "hostedReview": "HOSTED_S118.json",
+      "hostedReviewSha256": "7c2ef5289d682b1cb1237783f732cccae4daf0411e5d00906ef995813516bb05",
+      "stagingDeploymentId": "1d40413f-5adc-4786-bf8c-b386e3fa42d1",
+      "stagingProvenanceChecks": 14,
+      "method": "All prior visual/runtime source bytes match the committed candidate. New actual hosted character captures independently verified health and manifest before and after browser journeys and received rendered-pixel inspection.",
+      "captureMetadata": {
+        "corrected": 8,
+        "method": "Explicit -(desktop|mobile)-(dark|light)- filename segments. All four live-run captures occur immediately after setView(desktop,dark) in the preserved capture script.",
+        "captureScriptSha256": "f618a315c1bffc1309d278c5b765114fac499c664d002e174be764cd388b91b2"
+      }
+    },
+    {
+      "observedAt": "2026-10-22T09:50:07.183Z",
+      "sourceRevision": "118165465bedabf1e9f1316b7a50c6aa5c65efe8",
+      "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "committedSourceHashesVerified": 19,
+      "priorCaptureHashesVerified": 157,
+      "hostedCaptureCount": 52,
+      "hostedReview": "HOSTED_S118_R2.json",
+      "hostedReviewSha256": "14b2f8f1138209e81e3ae0eaed9c2b7bfbdb966351ca1424e33ea9702952d0e4",
+      "stagingDeploymentId": "f4f9ac34-8718-431d-bf5c-aa9d85f0d67e",
+      "stagingProvenanceChecks": 14,
+      "method": "All visual/runtime source bytes match the exact committed candidate. Fresh actual hosted default-worker body/family and animation journeys verified health and manifest before/after; all52 images inspected. Prior capture hashes preserved.",
+      "captureMetadata": {
+        "method": "Explicit desktop/mobile and dark/light filename tokens; live-run frames explicitly desktop dark in source helper",
+        "scriptSha256": "9f2f75c0644a459e1eb5a3d8c7496e3577fee4df1f64bbf17aa9dc432e17f4bb"
+      }
+    },
+    {
+      "observedAt": "2026-10-22T11:36:25.468Z",
+      "sourceRevision": "adb9b22840600219349b2d4428bdbe3232aa7a5f",
+      "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+      "committedSourceHashesVerified": 19,
+      "priorCaptureHashesVerified": 209,
+      "hostedCaptureCount": 8,
+      "hostedReview": "HOSTED_S118_R3.json",
+      "hostedReviewSha256": "c2b55ff2ecd35218232bf3bbda5aa3952bc14c9503050685c954e67de7800297",
+      "stagingDeploymentId": "7ed34044-fe5a-4fcf-80ec-74e28ba249d5",
+      "stagingProvenanceChecks": 14,
+      "method": "Eight fresh actual hosted images individually inspected, plus actual animation/cut-phase/pause/reduced-motion/family reload proofs. Prior209 inspected images are inherited through19 identical committed visual/runtime sources and all361 unchanged artifact entries; no new209-image inspection is claimed.",
+      "captureMetadata": {
+        "method": "Explicit viewport/theme filename tokens",
+        "scriptSha256": "09bdb4ef3fd4c7ad5f999d3403403568ce4f4f2d820b33dbe458b9a5766ee720"
+      }
+    }
+  ],
+  "productionBinding": {
+    "observedAt": "2026-10-22T17:25:21.828Z",
+    "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+    "artifactDigest": "2e2973ec0bdfedfc6f5e0b099f4031e796df6b3abbe744f55783e92db2f12737",
+    "productionDeploymentId": "11119545-e3ff-4230-82c1-cefdc64b1fc2",
+    "workflowRun": 39797016574,
+    "workflowVerified": true,
+    "productionProvenanceChecks": 14,
+    "priorCaptureHashesVerified": 225,
+    "freshProductionCaptureCount": 8,
+    "productionReview": "PRODUCTION_S118.json",
+    "productionReviewSha256": "04983416447f286c258209bed41a04a5eb07aca0af0355a1136893665ea6f037",
+    "committedSourceHashesVerified": 19,
+    "rollback": {
+      "deploymentId": "945b7008-4325-48f6-88cb-debc870a1e9e",
+      "available": true,
+      "stage": "success"
+    },
+    "method": "Eight fresh production images individually inspected after actual hosted motion/cut-phase/GPU pause/family reload checks. Before/after health and manifest, canonical provider readback, successful promotion workflow and same-origin provenance bind the exact candidate. Prior225 reviewed capture hashes preserved.",
+    "scriptSha256": "0e6bb22ec01cfb409872996147eaab35284bb451fb5a282dae6bd39678a86e16"
+  },
+  "priorReceiptCapturedAt": "2026-10-22T07:07:17.217Z",
+  "priorReceiptStatus": "selected-character-visual-scope-reviewed; exact-candidate-release-pending"
+}

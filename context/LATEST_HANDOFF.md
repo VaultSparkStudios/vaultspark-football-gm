@@ -1,6 +1,17 @@
-# Latest Handoff — Session 118 → Session 119
+# Latest Handoff — Session 119 → Session 120
 
-## Where We Left Off (Session 118)
+## Where We Left Off (Session 119)
+
+Production is c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e (artifact 8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe) on Pages and the backend API. Two player-visible fixes shipped:
+
+- **Phone Desk clipping (recorded since S117) fixed at its source.** `.team-mode-switch` was `width: max-content`; inside grid intrinsic sizing `max-width: 100%` cannot resolve, so the situational-calls switch set a 356 px minimum on the 321 px Desk column and every card ran 35.6 px past the panel. Now `fit-content` + `flex-wrap: wrap`. Guard: `tests-ui/mobile-desk-width.spec.js` (390 and 320 px), red on the old rule.
+- **One passer rating.** Season/career tables (`src/sport/football/statSchema.js`) and the client (`public/lib/appCore.js`) clamped before scaling; the box score scaled first. The box score now imports the schema's formula; `test/passer-rating.test.js` holds both copies to 99.3 / 158.3 / 115.1 / 0. The client no longer rates zero-attempt passers 39.6. Golden: `test/fixtures/football-golden-master.s119-v3.json`, only `seasonTable.passing` moved; S118 and S116 fixtures asserted byte-identical (`docs/GOLDEN_BASELINE_S119.json`).
+
+The first candidate f67f9e6c could not be promoted: S118's docs closeout had pushed `context/AGENT_MEMORY.md` to twelve session entries, which `test/session106` rejects, and CI on main had been red since. AGENT_MEMORY is now a registered newest-first rollable ledger (S72/S74 archived verbatim). Candidate c0ce44b4: CI39900408127 all seven jobs (browser included), Pages39900428496 and backend39900432601 success; staging/production provenance verified; hosted fix check passed on staging and production; hosted performance verified; release authority verified; doctor 12/12. Visual receipt `docs/visual-qa/LATEST.json` binds 214 captures, all inspected on contact sheets this session at first-viewport height for tall pages, with the S119-touched Desk surfaces also at full resolution (none inherited); S118's receipt preserved as `docs/visual-qa/S118-LATEST-preserved.json`.
+
+Open for S120: a player-facing release note for S119 (needs its own candidate; old saves now read higher passer ratings), `capture-public-qa.mjs` channel parity, and payload headroom (15.305 MB raw vs the 16 MB bar). Backend host-level container/routing identity was not re-read over SSH this session; workflow exact-SHA health and external health are the evidence. Local-only: the local sim-contract shard was stopped by host memory pressure (CI ran it green); git-ignored local files reddened the local studio shard only. Launch/email/lifecycle holds are unchanged; technical promotion is not launch approval.
+
+## Previous session (Session 118)
 
 Measured character v5 contours, garment relief, articulated feet and softer face/eye treatment are integrated into the actual player dossier. Saved height/weight continue to distinguish real roster players. Six athletic studies support motion, pause/resume and reduced motion. Explicit family authority shares racial/background category, heritage and natural pigment channels while retaining individual faces, recorded measurements and football random streams; generated brothers and reload persistence were exercised in the actual default client worker.
 

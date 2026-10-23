@@ -4,22 +4,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 
 
-## 2026-09-14 — S109 — The advisor is deterministic and the model voice is the user's key or nothing; rivals price by who they are; the worker owns the engine; three audit premises were the auditor's own phantoms
-
-**Decision 1 — the Front Office Advisor ships deterministic, cites only the packet, and any model voice is opt-in on the user's own key from the browser.** The project's contract is zero runtime token spend and zero-backend loops. `buildAdvice` ranks candidate calls with an exported weight table over packet numbers; `cites` lists the packet paths read so a test proves nothing is invented; agreement with the committed weekly plan is tallied descriptively and feeds no score. L3 was not built; if it ever is, it is the user's Anthropic key, called from the page, cached per week, with the deterministic card always rendered first.
-
-**Decision 2 — rival personas are causal at the shared trade seam, for CPU clubs only, with no RNG draw added.** `rivalGmPersona.js` had declared its traits "descriptive and non-causal". `evaluateTradeValue` now applies per-archetype tolerance (win-now .45 → rebuild .22), an age-horizon multiplier and a quality need read (premium .15, discount .12), and the rationale names the need. The controlled club stays on the flat band so the player's own evaluation is unchanged; stream invariance is asserted so no seeded league re-calibrates. **Rationale:** a persona that changes no decision is a label, and the seam already existed for CPU clubs. **Finding recorded, not acted on:** no CPU–CPU trade market exists; the realism guard bounds inbound offers instead.
-
-**Decision 3 — the in-browser engine runs in a module Worker with a storage mirror; the page keeps the in-page runtime as the fallback and every existing test runs against it unchanged.** The mirror is seeded from the page's `vsfgm` keys and replayed by message; IndexedDB stays in the worker because the hybrid store opens and closes per operation and the page builds no runtime while the worker is active, so there is one writer. The gate is the largest main-thread stall (1,000 ms) because it separates the arms fifty-fold; the 750 ms wall-clock bound is the player's number and is noisy on a loaded host.
-
-**Decision 4 — three audit premises were corrected before code and recorded as phantoms rather than shipped.** Built pages already strip HTML comments (the sitemap did not, and now does); the landing stat bar has been gated since S94 (only the legacy-tier count was ungated, and now is); the pre-cohort atlas already renders an invitation (what was missing was a product argument, now the Showcase League). **Pattern:** an audit that reads source and not the build reports the build's work as missing. The lane inventories in `docs/audit-lanes/` carry these as standing negative controls.
-
-**Decision 5 — the Overview is the Desk and the Calendar tab is League; tab ids, testids and hydration keys are unchanged.** The split was done by moving markup, not renaming surfaces, so `exactSurfaceNavigation` (which resolves the owning tab from the DOM) and every spec held. Tab count stays 14; the sidecar's "14 → 13" was wrong arithmetic and is recorded as such. The six-group drawer and the Depth Chart merge are the unshipped L2.
-
-**Decision 6 — standings are read from the live team records in-season through the one row shape the archive uses.** `latestStandings` had read the season-end archive for the project's whole history, so the Standings panel said "No rows" for every first season. The fix declares `teamSeasonRow` once and prefers the archive when it exists, so a finished season reads identically before and after. Found by a new spec, not by a player.
-
-**Decision 7 — a count premise must use a separator that cannot overlap its token.** `(?:#hex[^#]*){200}`, never `(hex[\s\S]*?){200}`: the lazy form backtracks catastrophically the moment the file holds fewer than n matches, which is exactly the state the fix produces. The checker hung for twenty minutes across three runs before it was killed.
-
 ## 2026-09-28 — S110 — Recover the candidate and finish the product promise before promotion
 
 **Decision 1 — S109's uncommitted implementation is one recoverable candidate, not a completed deployment.** `main` and `origin/main` still matched `83d6ad0` when S110 began, while S109's code and closeout files were only in the worktree. The generated zero-file proof measured `HEAD` against itself. S110 keeps that work, verifies its final form, and requires a clean exact-SHA staging candidate before promotion. Historical S109 test counts remain local evidence, not release authority.
@@ -178,6 +162,15 @@ Keep the original S116 golden fixture immutable and adopt a separately versioned
 Seven executed exact-candidate CI jobs/test steps are the release contract. Preserve every failed attempt and reject promotion until all required jobs succeed. Scope backend deployment to the application container; compare database and routing identity before/after and retain rollback images.
 
 Use the native bounded closeout ceremony because shared autopilot child scripts would write another repository despite its target flag. No foreign process mutation, --force, hook bypass or fabricated aggregate test count. Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
+
+## 2026-10-23 — S119 — Fix layout and stat truth at their sources; repair main before promoting
+
+- Fix the shared .team-mode-switch, not the Desk column: hiding the overflow with minmax(0,1fr) would have clipped the switch instead of fixing it. The fit-content width keeps the single-row look wherever it fits.
+- The passer rating lives once, in the stat schema; the engine imports it and the browser copy is held equal by published reference lines. The golden-master change is deliberate, attributed and versioned (s119-v3); prior fixtures stay byte-identical.
+- The carried 16.2 MB task is closed by measurement, not by a fix; payload compaction is deferred until it is measured again, because gzip already absorbs the repeated recipe seeds in storage.
+- A red main blocks every release. Register an accumulating ledger the session it crosses the population gate; never raise the threshold.
+- Do not commit a script change after a staged candidate to fix an evidence tool: run a reviewed .cache copy, so HEAD stays covered by the publication.
+- A visual receipt inherits review only from byte-identical images of an earlier reviewed receipt; none qualified, so all 214 were inspected.
 
 <!-- ledger-roll:pointer -->
 ---

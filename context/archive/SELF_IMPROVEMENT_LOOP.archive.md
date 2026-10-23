@@ -1832,3 +1832,20 @@ Dev Health is 97: six of six audit items shipped, two of them in the engine's ow
 - [SIL] When you fog a number, grep for every path that carries it — the raw ratings that reproduce it, the sibling table on the same tab, the mutation responses that spread the live object — before calling the surface fogged. One leak makes the fog a tax.
 - [SIL] The constant that names an age is not the constant that drives development. Project a "seasons remaining" claim from the curve that moves the rating, and export its boundary from the curve's own module so the two cannot drift apart.
 - [SIL] A pre-receipt review of a diff that touches three surfaces found eight real things in twenty-eight minutes; the receipt would have found none of them, because none were in the shards. Reviews and receipts see different defects; run the cheap one first.
+
+## 2026-09-14 — Session 109 — Fifteen items in one goal, and the audit's own phantoms caught first
+
+SIL v3.0: **958 / 1000** (Dev Health 96, Creative Alignment 97, Momentum 98, Engagement 93, Process Quality 92, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 98). Intent outcome: **Achieved** — audit, implement, closeout, deploy in one goal.
+
+The founder set one goal and the session ran the whole arc under it. A three-lane audit ranked fifteen items; before any code, three of its own premises were found wrong and recorded, and eight lane phantoms were rejected with file:line evidence. Five agents worked isolated lanes in parallel while the website batch and the shell were done directly; their output went through the repo's gates before wiring, and the gates caught what they shipped wrong.
+
+**What a player now has:** a Desk that carries decisions and a League tab that carries the league; a front office that argues one call a week and keeps score; a first-season contract; rivals that price trades by who they are; a game that keeps answering while a season simulates; shareable moments; a club crest; a public site with one chrome, an FAQ, a press kit, an archive and a showcase decade; and standings from week one, which every first season before this one never had.
+
+Dev Health is 96: 1,568/1,568 on the final tree, every browser gate green, one allowlist entry with its reason. Engagement rises to 93 on the advisor, the contract, the cards and the Desk. Process Quality is 92, not higher, because the checker hang, six boot-target crossings and a receipt invalidated by a late spec edit were all self-inflicted and each cost real time. Automation is 98: the audit-lane cache is L1 only.
+
+- [SIL] An audit that reads source and not the build will report the build's own work as missing. Verify every "ships in the artifact" premise against `static/`, or against the script that writes it, before ranking it.
+- [SIL] Agents told "do not edit X" still ship gate-tripping code in the files they may edit. Run the build gates on agent output before wiring it, not after; the gates are cheaper than the wiring.
+- [SIL] Every byte in a static module is boot. Comments and wiring belong in lazy modules; a one-line static wrapper is the whole budget a feature gets on the boot path.
+- [SIL] A count premise's separator must not overlap its token. The lazy form hangs exactly when the fix succeeds.
+- [SIL] A new spec is an audit of the surface it drives; the standings defect was older than every test that had ever passed around it.
+- [SIL] A 45-minute suite is launched detached with a log and a waiter, and nothing in its digest is edited until it lands.
