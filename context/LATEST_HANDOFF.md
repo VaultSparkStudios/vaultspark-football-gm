@@ -1,6 +1,21 @@
-# Latest Handoff — Session 119 → Session 120
+# Latest Handoff — Session 120 → Session 121
 
-## Where We Left Off (Session 119)
+## Where We Left Off (Session 120)
+
+Production Pages is 207159eae7c2cc68bb9df1058441eab34a057d3d (artifact 46ab30f68c66e949893c9b0197b9a5075105a5fd5da1381d076c3cdc5be01e0d). Four audit items shipped (docs/AUDIT_2026-10-23.json, premises 5/5 verified before edits, admission ok):
+
+- **S119 release note.** A dated 2026-10-23 note on `public/status.html`, carried by the generated `status-archive.html` and `changelog.xml`. It says most passers in existing saves now read higher (a strong season by up to about ten points), a near-perfect low-volume backup can read lower, and zero attempts reads 0. The independent review corrected an overclaim ("about ten points higher" for every strong season) and checked that ratings are recomputed from stored stats, never persisted.
+- **Weekly standings from the sport pack.** `src/engine/weeklySimulator.js` builds conference tables from `structure.conferences`; football golden master byte-identical (4/4); `test/competition-contract.test.js` red on the literal version.
+- **Browser channel everywhere.** Every script that launches Chromium honors `PLAYWRIGHT_CHANNEL`; `test/studio-protocol-smoke.test.js` scans them all. `capture-public-qa.mjs` now runs on installed Chrome straight from the committed script.
+- **Stale board items closed** (passer rating, weekly standings, channel parity).
+
+Unplanned release blocker: candidate 822ffd9e failed the Pages browser release gate (Pages39968879574, 2 of 268, `client-session-recovery`), although CI passed the same SHA. Cause: `revealTable` read the Saved Leagues `<details>` as closed, the setup page then opened it itself as deferred saves arrived (`setup.js` updateHeroActions), and the click closed it. The helper now converges on the open state; `tests-ui/reveal-table-race.spec.js` reproduces the interleaving and is red with the old helper. Candidate 207159ea: CI39993396521 success, Pages39993950168 success, staging authority 14/14, staging and production provenance 10/10, hosted performance verified, release authority reconciled, doctor 12/12. Visual receipt binds 214 captures, all inspected at 207159ea (82 byte-identical to the set inspected at 822ffd9e); S119's receipt preserved as `docs/visual-qa/S119-LATEST-preserved.json`.
+
+**Backend not promoted.** Deploy Backend Runtime 39968888182 (822ffd9e) passed every gate and both image builds, then the remote deploy returned exit 75 about a second after copying ops files, on both attempts. The deployer retries only SSH transport failures, so it stopped. The API is healthy at S119's c0ce44b4 (`reports/s120-backend-workflow.json`); S120's weeklySimulator change is not on the API host. Diagnosing needs a host read over the Studio gateway SSH, which this session was not permitted to run: a founder decision.
+
+Open for S121: the backend exit-75 diagnosis; the shared public footer has no left gutter on 11 pages (pre-existing, found by the S120 visual inspection); two capture gaps (mobile-moment-card-dark misses its card; lazy screenshots can miss full-page public captures). Local-only reds unchanged: three git-ignored files redden the local studio shard (374/377). Launch/email/lifecycle holds unchanged; technical promotion is not launch approval.
+
+## Previous session (Session 119)
 
 Production is c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e (artifact 8a8057c7a86f34c9b53ec0833bf779fa3a7214acfbff14a684e9010d3f0065fe) on Pages and the backend API. Two player-visible fixes shipped:
 

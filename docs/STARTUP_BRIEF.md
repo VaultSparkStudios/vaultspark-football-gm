@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-23 (Session 119 closeout) -->
+<!-- generated-at: 2026-10-23 (Session 120 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 2f05d8a655cd1175 -->
-<!-- session-authority: committed=S119 · SIL=S119 · status=S119 · handoff=S119; divergent=false -->
+<!-- genius-authority-fingerprint: b65a8d318b05c351 -->
+<!-- session-authority: committed=S120 · SIL=S120 · status=S120 · handoff=S120; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 119 closeout · 2026-10-23.
+> **Fast-boot brief** — generated at Session 120 closeout · 2026-10-23.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 120 · 2026-10-23 · BUILDER MODE                         ║
+║  Session 121 · 2026-10-23 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S119) - WHAT SHIPPED ══════════════════════════╗
-║  S119 shipped the phone Desk fix and a single passer-rating for  ║
+╔══ LAST SESSION (S120) - WHAT SHIPPED ══════════════════════════╗
+║  S120 shipped the player-facing Desk and passer-rating release   ║
 ║  Tests  Fresh direct six-shard suite 1702/1702, exit0; Clean te  ║
 ║  Deploy 10/10; https://github.com/VaultSparkStudios/vaultspark-  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -40,28 +40,28 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    856/1000   ████████████████████░░░░   86%                     ║
-║    SIL v3.0  ·  Avg3: 783  ·  Velocity 3→                        ║
+║    863/1000   ████████████████████░░░░   86%                     ║
+║    SIL v3.0  ·  Avg3: 852.3  ·  Velocity 4→                      ║
 ║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        92    █████████░  —        →                ║
+║    Dev Health        93    █████████░  —        →                ║
 ║    Alignment         90    █████████░  —        →                ║
-║    Momentum          76    ████████░░  —        →                ║
-║    Engagement        82    ████████░░  —        →                ║
-║    Process Qual      66    ███████░░░  —        →                ║
-║    Coherence         91    █████████░  ········ →                ║
+║    Momentum          78    ████████░░  —        →                ║
+║    Engagement        83    ████████░░  —        →                ║
+║    Process Qual      70    ███████░░░  —        →                ║
+║    Coherence         89    █████████░  ········ →                ║
 ║    Security          92    █████████░  ········ →                ║
 ║    Ecosystem         84    ████████░░  ········ →                ║
 ║    Capital           95    ██████████  ········ →                ║
-║    Automation        88    █████████░  ········ →                ║
+║    Automation        89    █████████░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 119 ═══════════════════════════╗
-║  Shipped:  S119 complete: phone Desk clipping fixed at source,   ║
+╔══ WHERE WE LEFT OFF  ·  Session 120 ═══════════════════════════╗
+║  Shipped:  S120 complete on Pages: the Desk and passer-rating r  ║
 ║  Tests:    1752/1752 passing  ·  Deploy: 10/10; https://github.  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -74,7 +74,7 @@
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
 ║  ⚠  Tests         1752/1752 passing (2026-10-02) · STALE — run   ║
-║  ✓  Velocity      3   ·  Debt: ↓                                 ║
+║  ✓  Velocity      4   ·  Debt: ↓                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
 ║  ✓  IGNIS         40285 FORGE  ·  1d old                         ║
@@ -105,20 +105,20 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
-║  Velocity:   ▁▁▁▁▁  3→  (last 5 sessions)                        ║
+║  Velocity:   ▁▁▁▁▁  4→  (last 5 sessions)                        ║
 ║  Intent:     80% achieved last 5                                 ║
-║  Streak:     ✓ 2 consecutive achieved-intent sessions            ║
+║  Streak:     ✓ 3 consecutive achieved-intent sessions            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-10-22.json               ║
-║  Closed: 3 · Open: 0                                             ║
-║  All 3 live-premise-verified audit items are done.               ║
+║  ✓ queue exhausted · source: AUDIT_2026-10-23.json               ║
+║  Closed: 4 · Open: 0                                             ║
+║  All 4 live-premise-verified audit items are done.               ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 119 closeout · 2026-10-23*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 120 closeout · 2026-10-23*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

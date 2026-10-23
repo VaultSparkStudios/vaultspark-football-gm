@@ -7,16 +7,6 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
 
-## 2026-09-14 — S108 — A remedy that could not fire, a surface that shipped the answer key, and a finding published where the gate cannot reach it
-
-**Contradiction found and resolved.** S106 and S107 both recorded that ledger retention was positional and that the live SIL was "three entries short of what it advertises". The instance does not reproduce: on the SIL's live shape the positional suffix and the by-session rule move the same two entries. TRUTH_AUDIT was the real instance (S83, S82, S80 above S99–S107), and beneath both sat the defect nobody had named — every closeout since S105 appended beneath the roll pointer, and the splitter sliced the file at the sentinel, so `check-ledger-budget`'s own remedy reported "fewer entries than the retention window" on ledgers holding twelve and, applied, would have dropped the two newest entries from each. The S106/S107 entries stand as written; this entry and the audit's `phantomsRejected` carry the correction.
-
-**A surface contradicting its own economy.** The draft room charged scouting points for a fogged read while the adjacent table, the combine table, and every draft POST response shipped the truth. That is a truth defect in the product's own terms: the number the player pays to approach was printed beside the price. Closed on every path found (the review found three the first fix missed), with the engine's copy verified untouched.
-
-**A gate that must not learn to see.** Elite composition is now measured (QB and OL hold 97% of the canonical cohort against 25% of the seats; ratios 3.9–6.7) and published on the receipt with `gated: false`. A test proves the gated verdict is identical for a cohort seated in the anchor's proportions and one concentrated in two rooms. The elite ceiling remains `watch` at 2.1% (canonical) / 2.7% (seed 2026) against 1.53%; dispersion remains `watch` at 0.093 / 0.108 against 0.08. No threshold moved.
-
-**What is claimed and what is not.** Composition readings are ten seasons on two seeds, active roster only, the same runs S107 used and reproduced to the decimal before anything changed. The development ledger's fidelity is proven player-by-player against the league on one seed and by an identical-fingerprint pair on another; the browser card is proven by one Playwright spec that drives the runtime to the retirements stage. The runway in growth seasons is a projection of the declared curve's boundary, not a measured outcome for any player. No real-cohort evidence exists and none was manufactured. Public launch remains HOLD on the same three unmet gates.
-
 ## 2026-09-14 — S109 — Three premises the auditor got wrong, two gates that caught agent output, and a panel that had been empty for every first season
 
 **The audit contradicted itself three times and the contradictions were kept.** "Internal narrative ships in built pages" was false for HTML (stripped at build since before this session) and true for the sitemap; "the stat bar is hand-typed and will drift" was false in its risk (gated since S94) and true for the tier count; "the atlas is Private for now in every cell" was false (pre-cohort renders an invitation). Each is recorded in the sidecar as `skipped-premise-corrected` or `shipped-corrected`, with the narrowed thing that actually shipped.
@@ -180,6 +170,12 @@ S118 selected character/family outcomes and full exact-candidate production deli
 - The TASK_BOARD "reproducible 16.2 MB" payload regression no longer reproduced (15.305 MB); closed by measurement.
 - The passer rating recorded as "pinned as shipped" in test/stat-schema-contract.test.js was a known deviation from the NFL formula; now corrected and attributed in docs/GOLDEN_BASELINE_S119.json.
 - Backend host-level container/routing identity was not re-read over SSH in S119; workflow exact-SHA health and external health are the recorded evidence.
+
+## 2026-10-23 — S120 — A "flaky" recovery case had a cause
+
+- S119 recorded that S118's closeout commits failed CI's browser job on "one recovery case" without a cause. S120's Pages gate failed two client-session-recovery cases the same way; the cause is a race between tests-ui revealTable's read-then-click and setup.js opening Saved Leagues when deferred saves arrive. Fixed with a deterministic reproduction; the S118 failure was very likely the same race (not re-run to prove it).
+- The S119 visual receipt said "no capture shows broken layout"; S120's inspection found the shared public footer has no left gutter on 11 of 14 public pages. It predates S120 (footer untouched) and was present in S119's captures; recorded, not fixed.
+- Backend: the production API reports c0ce44b4, not S120's candidate. Pages production is 207159ea. The two deployed identities now differ, and both are recorded as observed.
 
 <!-- ledger-roll:pointer -->
 ---

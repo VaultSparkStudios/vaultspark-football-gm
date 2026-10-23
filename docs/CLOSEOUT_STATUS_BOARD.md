@@ -1,29 +1,31 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-23 (Session 119 closeout) -->
+<!-- generated-at: 2026-10-23 (Session 120 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S119 ═════╗
-║  Date: 2026-10-23  ·  SIL: 856/1000  ·  Velocity: 3              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S120 ═════╗
+║  Date: 2026-10-23  ·  SIL: 863/1000  ·  Velocity: 3              ║
+║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ **Phone Desk clipping (recorded since S117) fixed at its sou  ║
-║  ✓ **One passer rating.** Season/career tables (`src/sport/foot  ║
+║  ✓ **S119 release note.** A dated 2026-10-23 note on `public/st  ║
+║  ✓ **Weekly standings from the sport pack.** `src/engine/weekly  ║
+║  ✓ **Browser channel everywhere.** Every script that launches C  ║
+║  ✓ **Stale board items closed** (passer rating, weekly standing  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 856/1000 ═══════════════════════════════════════╗
-║    Dev Health         92   █████████░                            ║
+╔══ SCORES · SIL 863/1000 ═══════════════════════════════════════╗
+║    Dev Health         93   █████████░                            ║
 ║    Alignment          90   █████████░                            ║
-║    Momentum           76   ████████░░                            ║
-║    Engagement         82   ████████░░                            ║
-║    Process Qual       66   ███████░░░                            ║
-║    Coherence          91   █████████░                            ║
+║    Momentum           78   ████████░░                            ║
+║    Engagement         83   ████████░░                            ║
+║    Process Qual       70   ███████░░░                            ║
+║    Coherence          89   █████████░                            ║
 ║    Security           92   █████████░                            ║
 ║    Ecosystem          84   ████████░░                            ║
 ║    Capital            95   ██████████                            ║
-║    Automation         88   █████████░                            ║
+║    Automation         89   █████████░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
@@ -38,7 +40,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 670 files  ·  M:21 A:0 D:428 ?:221                     ║
+║  Changes: 453 files  ·  M:19 A:0 D:214 ?:220                     ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -50,9 +52,9 @@
 ║  Doctor:        12/12                                            ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1752/1752 · STALE                                ║
-║  IGNIS:         1d ago                                           ║
+║  IGNIS:         2d ago                                           ║
 ║  Truth:         partial                                          ║
-║  Sanitization:  1d ago                                           ║
+║  Sanitization:  2d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

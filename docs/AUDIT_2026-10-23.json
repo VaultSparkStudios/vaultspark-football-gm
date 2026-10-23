@@ -2,8 +2,8 @@
   "date": "2026-10-23",
   "schemaVersion": "1.1",
   "session": 120,
-  "source": "c6e9d691",
-  "status": "selected-outcomes-implemented",
+  "source": "207159eae7c2cc68bb9df1058441eab34a057d3d",
+  "status": "selected-outcomes-production-verified",
   "project": {
     "slug": "franchise-architect-football",
     "name": "Franchise Architect: Football",
@@ -44,6 +44,11 @@
           "at": "2026-10-23T13:49:56.529Z",
           "status": "shipped",
           "note": "2026-10-23 note on public/status.html: phone Desk fit and the single passer-rating formula, stating that most passers in existing saves read higher (a strong season by up to about ten points) and that near-perfect low-volume backups can read lower; a zero-attempt passer reads 0, not 39.6. Facts checked by the independent review against statSchema.js/appCore.js and statBook.js (ratings are recomputed from stored stats, never persisted). No tests-ui or responsive-evidence copy dependence. check-public-truth OK; public tests 32/33, the 1 red is the known git-ignored private ledger (local only, not tracked)."
+        },
+        {
+          "at": "2026-10-23T19:14:56.850Z",
+          "status": "shipped",
+          "note": "Live on production Pages 207159ea; see finalEvidence."
         }
       ],
       "premises": [
@@ -95,6 +100,11 @@
           "at": "2026-10-23T13:49:56.529Z",
           "status": "shipped",
           "note": "capture-public-qa, community-stats-evidence, generate-cover-image and generate-favicon now honor PLAYWRIGHT_CHANNEL like responsive-evidence. test/studio-protocol-smoke.test.js scans every script that launches Chromium; passes, and fails with the bare capture-public-qa launch restored (negative control from a backup copy)."
+        },
+        {
+          "at": "2026-10-23T19:14:56.850Z",
+          "status": "shipped",
+          "note": "Live on production Pages 207159ea; see finalEvidence."
         }
       ],
       "premises": [
@@ -154,6 +164,11 @@
           "at": "2026-10-23T13:49:56.529Z",
           "status": "shipped",
           "note": "weeklySimulator builds conference tables from getSportRules(sportId).structure.conferences; football keys stay AFC, NFC, overall. test/competition-contract.test.js 10/10; the new test fails on the literal version (negative control)."
+        },
+        {
+          "at": "2026-10-23T19:14:56.850Z",
+          "status": "shipped",
+          "note": "Live on production Pages 207159ea; see finalEvidence."
         }
       ],
       "premises": [
@@ -205,6 +220,11 @@
           "at": "2026-10-23T13:49:56.529Z",
           "status": "shipped",
           "note": "TASK_BOARD Phase 1 passer-rating item closed with the S119 guard pointer; the weeklySimulator item closed with the S120 evidence."
+        },
+        {
+          "at": "2026-10-23T19:14:56.850Z",
+          "status": "shipped",
+          "note": "Live on production Pages 207159ea; see finalEvidence."
         }
       ],
       "premises": [
@@ -357,5 +377,12 @@
     "findings": 3,
     "fixed": 2,
     "note": "Fresh-context reviewer: no correctness bugs. Fixed: release-note overclaim (rating gain depends on yards per attempt; some backups read lower) and the parity test now covers every Chromium launch, not two. Not fixed: the football weekly-standings test checks keys and row counts, not row contents. Row equality holds by construction and is covered by the golden master."
-  }
+  },
+  "unplannedBlockers": [
+    {
+      "slug": "reveal-table-race",
+      "note": "Candidate 822ffd9e failed the Pages browser gate (Pages39968879574, 2/268 client-session-recovery) on a race between tests-ui revealTable's read-then-click and setup.js opening Saved Leagues when deferred saves arrive. Helper converges on the open state; tests-ui/reveal-table-race.spec.js reproduces the interleaving and is red with the old helper. Candidate 207159ea."
+    }
+  ],
+  "finalEvidence": "Production Pages 207159ea, artifact 46ab30f6: CI39993396521 success (and CI39968433866 on 822ffd9e), Pages39993950168 success, staging authority 14/14, staging and production provenance 10/10, hosted performance verified, release authority reconciled, doctor 12/12. Visual receipt 214 captures inspected at 207159ea, 0 blocking (footer gutter on 11 public pages recorded as pre-existing). Backend Deploy 39968888182 failed twice at the remote step (exit 75); API healthy at c0ce44b4; not promoted (reports/s120-backend-workflow.json)."
 }

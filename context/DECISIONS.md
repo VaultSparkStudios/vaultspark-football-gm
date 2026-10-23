@@ -4,20 +4,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 
 
-## 2026-09-28 — S110 — Recover the candidate and finish the product promise before promotion
-
-**Decision 1 — S109's uncommitted implementation is one recoverable candidate, not a completed deployment.** `main` and `origin/main` still matched `83d6ad0` when S110 began, while S109's code and closeout files were only in the worktree. The generated zero-file proof measured `HEAD` against itself. S110 keeps that work, verifies its final form, and requires a clean exact-SHA staging candidate before promotion. Historical S109 test counts remain local evidence, not release authority.
-
-**Decision 2 — the first-year trade objective must be under the player's control and the contract must settle.** A random inbound rival offer can fail to arrive, so accepting one cannot be the only way to earn the trade objective. A successful non-empty evaluation of a player-authored proposal now counts; inbound response still counts. The season review records a franchise/year-bound owner verdict from the objectives actually met, including a visible unmet or unverified outcome, rather than leaving the strip in an eternal in-progress state.
-
-**Decision 3 — the browser-module gate follows Worker URLs instead of exempting the new engine entry.** `new Worker(new URL(..., import.meta.url))` is a dependency edge in the shipped browser graph. The S109 allowlist let this entry skip the same reachability check as other modules; S110 teaches the checker to follow that syntax and removes the exception. A fixture guards the edge.
-
-**Decision 4 — technical deployment does not change launch authority.** Stable staging and exact artifact promotion are authorized for this code. The public lifecycle remains HOLD until reply-capable project-domain email, candidate-bound founder launch approval, and authoritative registry reconciliation have evidence. The local FORGE state is not changed to make the registry warning disappear.
-
-**Decision 5 — the recovery push used `--no-verify` after the Windows Bash pre-push hook hung.** The hook repeatedly spawned child shells and never completed, including with a command-local GitHub CLI credential helper. Its credential/path/router rules were checked directly over the outgoing source, `git diff --check` passed, and the public repository sanitizer reported zero findings. The bypass affected the hook only; no test or release gate was skipped. Repair the hook with a bounded non-interactive implementation and a seeded red control before the next ordinary push. No force-push or history rewrite was used.
-
-**Decision 6 — record the failed runner workflow and the verified backend recovery separately.** Manual backend workflow `36616242344` passed its Node gate and both image builds, but its SCP/SSH connections reset before any remote deploy command could run (two SCP failures, then an SSH EOF after successful SCP). The shared server accepted the Studio gateway key, was running, and had 15 SSH connections under `MaxStartups 10:30:100`; the runner failure is a transport fact, not an app verdict. Rather than mark the workflow green, recovery used the existing gateway SSH capability and the workflow's exact compose pull/up, unchanged Caddy comparison, same-host health, and external HTTPS health on `dbcd750`. `reports/s110-backend-authority.json` records the failed workflow alongside the successful exact-source runtime. A future workflow change should make SSH retries bounded without weakening host trust or opening broad new access.
-
 ## 2026-09-30 — S111 live Play hotfix — the production browser is part of the release gate
 
 **Decision 7 — document navigations belong to the browser when the host canonicalizes URLs.** The founder's Play click failed after the `9400912` production promotion. A real browser reproduced `net::ERR_FAILED` on `/game.html` with the service worker active, while the same URL loaded at `/game` with service workers blocked. Cloudflare Pages returns a 308 for `/game.html` → `/game`; the old worker precached the redirected HTML response and handed it to a navigation whose redirect mode disallowed it. Source `68856a7` excludes HTML from precache and returns without `respondWith` for navigation requests, leaving redirect handling to the browser while retaining static module caching. A VM behavior test would fail on the pre-fix worker; a stable-staging browser with an active worker successfully navigated and completed the actual Start Your Franchise click with no request errors. The previous 10/10 provenance and 69-pass browser receipts were true for the checks they ran but did not exercise this production host/worker seam. Preserve that boundary in the closeout; do not retroactively call the first promotion fully playable.
@@ -171,6 +157,14 @@ Use the native bounded closeout ceremony because shared autopilot child scripts 
 - A red main blocks every release. Register an accumulating ledger the session it crosses the population gate; never raise the threshold.
 - Do not commit a script change after a staged candidate to fix an evidence tool: run a reviewed .cache copy, so HEAD stays covered by the publication.
 - A visual receipt inherits review only from byte-identical images of an earlier reviewed receipt; none qualified, so all 214 were inspected.
+
+## 2026-10-23 — S120 — Announce what changed in a player's own save, and fix a flaky gate rather than rerun it
+
+- The S119 passer-rating change moves numbers in existing saves, so the note states the direction and range with its exception instead of a single figure; a reviewer's recomputation set the wording.
+- Weekly conference tables come from the sport pack, like schedule and postseason already did. Conference display names stay a separate step: choosing fictional names carries IP weight and the AFC/NFC ids are load-bearing in test ids.
+- The Pages release gate failed a recovery case that CI passed on the same SHA. It was fixed at its source (the helper's read-then-click raced the page's own auto-open) with a deterministic reproduction, not rerun until green; the fix is a new candidate.
+- The backend remote deploy returning exit 75 twice is recorded as a failure with the live API's real revision; it is not reported as deployed, and host diagnosis is left to the founder because this session was not permitted to read the host.
+- The footer-gutter defect found by visual inspection is pre-existing and cosmetic; it is recorded for its own candidate instead of starting a third release cycle.
 
 <!-- ledger-roll:pointer -->
 ---

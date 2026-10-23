@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "backend-workflow-deployment",
+  "sourceRevision": "822ffd9e8a88e2e48600c709eb45a07fc475a249",
+  "backendRunId": 39968888182,
+  "at": "2026-10-23T19:11:15.1703911Z",
+  "workflowConclusion": "failure",
+  "attempts": 2,
+  "failure": "deploy-server: 'backend deploy remote failure (exit 75, attempt 1/3)' about one second after 'Backend ops files copied with pinned SSH host identity.' on both attempts (15:22Z, 15:25Z). All five gates and both image builds succeeded; the deployer retries only SSH transport failures (255), so 75 stops it.",
+  "notRetriedAt": "207159ea (test-only descendant; deterministic remote failure, diagnosis needs host access this session was not permitted)",
+  "externalHealth": {
+    "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "ok": true,
+    "database": "ready",
+    "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+    "observedAt": "2026-10-23T19:11:15.1756622Z"
+  },
+  "impact": "The live API is unchanged and healthy at S119's c0ce44b4. S120's backend-relevant source change (weeklySimulator conference keys) is not deployed to the API host; Pages production is fully at 207159ea.",
+  "nextStep": "Read the host over the Studio gateway SSH to find what returns 75 (founder decision)."
+}

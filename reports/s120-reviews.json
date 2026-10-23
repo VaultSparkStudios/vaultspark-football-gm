@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "session": 120,
+  "reviews": [
+    {
+      "subject": "s120-implement",
+      "reviewer": "fresh-context general-purpose subagent",
+      "verdict": "approve",
+      "findings": 3,
+      "fixed": 2,
+      "notFixed": "football weekly-standings test checks keys and row counts, not row contents (row equality holds by construction and by the byte-identical golden master)",
+      "fixedFindings": [
+        "release-note overclaim: gain depends on yards per attempt; near-perfect low-volume backups read lower",
+        "parity test covered two scripts; now scans every Chromium launch (three more scripts fixed)"
+      ]
+    },
+    {
+      "subject": "s120-visual-receipt",
+      "reviewer": "fresh-context subagents (822ffd9e and 207159ea)",
+      "verdict": "0 blocking",
+      "findings": [
+        "public footer has no left gutter on 11 pages (pre-existing)",
+        "mobile-moment-card-dark misses its card (capture gap)",
+        "desktop-dark-features lazy screenshot not loaded (capture timing; asset ships)"
+      ]
+    }
+  ]
+}

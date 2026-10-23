@@ -3,25 +3,12 @@
 
 
 <!-- rolling-status-start -->
-Last session: 119 (2026-10-23) | Total: 856/1000 | Velocity: 3 | Debt: ↓
-Avgs — 3: 783 | 5: 813 | 10: 842.5 | 25: 917.9 | all: 967.3
+Last session: 120 (2026-10-23) | Total: 863/1000 | Velocity: 3 | Debt: ↓
+Avgs — 3: 852.3 | 5: 814 | 10: 833.6 | 25: 912.7 | all: 965.9
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 838 → 856 (+18). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 73 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 856 → 863 (+7). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 74 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
-
-## 2026-09-29 — Session 110 — Recovery made the receipts earn their claims
-
-SIL v3.0: **952 / 1000** (Dev Health 97, Creative Alignment 98, Momentum 98, Engagement 92, Process Quality 88, Cross-Repo Coherence 94, Security Posture 97, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 97). Intent outcome: **Achieved for the recovered S109–S110 implementation and closeout**; public launch remains HOLD.
-
-S109 described deployment and closeout as achieved while the source was still uncommitted and its staging, production, visual and release receipts pointed to older revisions. Recovery inspected the full diff and history, parsed every changed JSON, confirmed the local Claude configuration was valid, ran the six Node shards (1,573/1,573) and Studio Doctor (zero blocking findings), then committed the actual implementation. The exact final source passed CI and a production promotion gate. The page and game visuals were inspected in two themes and desktop/mobile, with four visible defects fixed before capture. Stable staging attested 14/14 same-origin checks; hosted lab performance passed. These are technical proofs, not player-cohort evidence or a public-launch decision.
-
-Process Quality is 88 because the initial handoff's deployment claim was phantom, the first responsive evidence script clicked hidden drawer tabs, screenshot retention was missing its ledger write until the gate caught it, and the Windows Bash pre-push hook required a documented `--no-verify` transport bypass after its checks were run directly. Security Posture is 97 because the bypass leaves a hook-repair task; the sanitizer and outgoing-diff checks themselves passed. Engagement 92 reflects stronger player-facing decisions and navigation but no measured real cohort.
-
-- [SIL] A passing source suite is not a deployment receipt. Compare the source revision and artifact digest on local, staging and live origins before writing "deployed."
-- [SIL] A screenshot of a hidden target is not visual proof of a reachable interaction. Navigate through the same visible controls a player uses and inspect both themes at mobile and desktop sizes.
-- [SIL] When a hook hangs, isolate the hook's process family, run its checks directly, document the bypass, and repair the hook. Do not kill another repository's Git process while diagnosing yours.
-- [SIL] A capture retention job that records images but misses the hash ledger will fail a later studio gate. Write and verify the ledger before treating the visual receipt as complete.
 
 ## 2026-09-29 — Session 111 — A richer league and a release receipt that can fail honestly
 
@@ -213,6 +200,15 @@ Process quality stays reduced: the session started a candidate without reading m
 
 - [SIL] Read CI on main at /start; a docs-only closeout can redden the next candidate's gate.
 - [SIL] Measure a layout defect with a min-content probe before choosing a fix; the cause was one widget, not the column.
+
+## 2026-10-23 — Session 120 — Tell the player what moved, and give a flaky gate its cause
+
+SIL v3.0: **863 / 1000** (Dev Health 93, Creative Alignment 90, Momentum 78, Engagement 83, Process Quality 70, Cross-Repo Coherence 89, Security Posture 92, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 89). Intent outcome: Achieved for the four selected outcomes, live on production Pages 207159ea; partial for "fully deploy", because the backend remote step failed (exit 75) and the API stays at c0ce44b4. Velocity: 4 selected outcomes plus one unplanned release blocker. Debt: ↓ a recurring unexplained recovery-case failure now has a cause and a deterministic guard; ↑ one recorded footer defect and two capture gaps, all pre-existing. These are engineering assessments, not measured player retention.
+
+Process quality rises: CI on main was read at /start, every fix carries a negative control, and both reviews ran with fresh context. It stays below 75: the first candidate spent a full release cycle on a race that S118's closeout had already shown and nobody chased. Coherence dips because Pages and the API now run different revisions.
+
+- [SIL] When a gate fails on a case CI passes on the same SHA, find the race before the next candidate; "flaky" in a record is a cause not yet found.
+- [SIL] A visual receipt's "no broken layout" needs a measurement on phones (left/right gutter), not only a look; the footer gutter defect survived a full S119 inspection.
 
 <!-- ledger-roll:pointer -->
 ---

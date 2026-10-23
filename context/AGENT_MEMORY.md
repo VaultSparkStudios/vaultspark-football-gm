@@ -1,5 +1,12 @@
 # Agent Memory
 
+## Session 120 durable patterns
+
+- A browser test that clicks a `<details>` summary must converge on the open state, not toggle once: page code that opens the same section asynchronously turns a read-then-click into a close. Reproduce such a race deterministically (an event the page fires mid-click) before believing the fix.
+- A test fix after a staged candidate is a new candidate; when only tests changed, the artifact digest is identical, but captures still differ (dynamic content), so re-inspect rather than inherit.
+- A remote deploy failure the deployer will not retry (non-255 exit) is not transient; one rerun to confirm, then diagnose on the host, never loop.
+- Write a player-facing number change as a range with its exceptions; a single "about N higher" overclaims when the change depends on the stat line.
+
 ## Session 119 durable patterns
 
 - Read CI on main before cutting a candidate. A docs-only closeout can redden the studio shard for every later candidate, and promotions here wait for all seven exact-candidate jobs.
@@ -93,16 +100,6 @@
 - Rendered-pixel receipts must include the newly touched component states, not only adjacent legacy surfaces; generate the session prefix from `PROJECT_STATUS.currentSession` rather than hardcoding it.
 - An innovation pack is not exhausted while a live deployment audit row is intentionally open. Protocol tests must derive their expectation from the latest sidecar's actual statuses.
 - A deployment authorization may bind the release train without authorizing a launch-state flip. Keep exact staging/backend evidence and launch readiness as independent receipts.
-
-## Session 79 durable patterns
-
-- Player-agent flavor belongs beside the canonical contract mutation, never in a parallel endpoint that can report `signed` without changing the contract.
-- Browser evidence tiers must be assigned by trusted ingress. Caller-chosen participant IDs require a bounded server-issued capability before they can contribute to a k-anonymous cohort.
-- A code-splitting budget needs both an aggregate shell ceiling and per-island headroom. Hydration and action dispatch must retry lazy loading through the same registry.
-- Weekly prediction resolution belongs at dashboard rollover before the prior schedule cache is cleared; grade winner and margin separately and keep resolution idempotent.
-- Fixed or scrollable modal screenshots should capture the visible viewport. Element screenshots beyond the viewport can become transparent and conceal real touch/scroll defects.
-- Every new test file enters a canonical shard in the same patch. `test/shard-coverage.test.js` is the fail-closed authority.
-- Release promotion and launch readiness remain separate: prove the immutable SHA on stable staging before main, while keeping `launchReady: false` until independent launch evidence clears.
 
 <!-- ledger-roll:pointer -->
 ---
