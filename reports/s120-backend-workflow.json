@@ -5,7 +5,7 @@
   "backendRunId": 39968888182,
   "at": "2026-10-23T19:11:15.1703911Z",
   "workflowConclusion": "failure",
-  "attempts": 2,
+  "attempts": 3,
   "failure": "deploy-server: 'backend deploy remote failure (exit 75, attempt 1/3)' about one second after 'Backend ops files copied with pinned SSH host identity.' on both attempts (15:22Z, 15:25Z). All five gates and both image builds succeeded; the deployer retries only SSH transport failures (255), so 75 stops it.",
   "notRetriedAt": "207159ea (test-only descendant; deterministic remote failure, diagnosis needs host access this session was not permitted)",
   "externalHealth": {
@@ -16,5 +16,13 @@
     "observedAt": "2026-10-23T19:11:15.1756622Z"
   },
   "impact": "The live API is unchanged and healthy at S119's c0ce44b4. S120's backend-relevant source change (weeklySimulator conference keys) is not deployed to the API host; Pages production is fully at 207159ea.",
-  "nextStep": "Read the host over the Studio gateway SSH to find what returns 75 (founder decision)."
+  "nextStep": "Founder: run the Studio Ops host-reserve/incident workflow (or approve a host read), then re-dispatch deploy-backend.yml with deploy_to_server=true.",
+  "thirdAttempt": {
+    "backendRunId": 40021949026,
+    "sourceRevision": "518681b7",
+    "at": "2026-10-23T21:49:30Z",
+    "result": "same: gates and both images success; 'backend deploy remote failure (exit 75, attempt 1/3)' about 1.4 s after the ops copy"
+  },
+  "diagnosis": "Exit 75 is the shared host's Studio Docker admission guard (/usr/local/bin/docker -> vaultspark-studio-ops ops/bin/docker-guard -> scripts/server/cpx-docker-guard.mjs): a growth operation such as 'docker compose pull' is refused while free disk is under 15 GiB, disk use is over 95%, available memory is under 4 GiB, or another guarded operation holds its lock. Persisting over six hours points to disk or memory reserves, not the lock. The guard's remedy is the Studio Ops incident/owner workflow on the host.",
+  "deployerGap": "scripts/deploy-backend-ssh.mjs does not print remote stderr on failure, so the guard's stated reason never reaches the workflow log. A change to log it and to retry the guard's 75 was refused by the session's permission classifier and is left for the founder."
 }
