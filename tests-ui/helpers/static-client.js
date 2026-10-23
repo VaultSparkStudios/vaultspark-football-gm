@@ -234,7 +234,15 @@ export async function openSetup(page) {
 
 export async function revealTable(page, table) {
   const details = page.locator(`details:has(${table})`);
-  if (await details.count() && await details.getAttribute("open") === null) await details.locator(":scope > summary").click();
+  if (!(await details.count())) return;
+  // The setup page opens Saved Leagues itself when deferred saves arrive
+  // (setup.js updateHeroActions). A single read-then-click can land just after
+  // that open and close the section again (S120 Pages39968879574), so converge
+  // on the open state instead of toggling once.
+  await expect(async () => {
+    if (await details.getAttribute("open") === null) await details.locator(":scope > summary").click();
+    await expect(details).toHaveAttribute("open", "", { timeout: 1_000 });
+  }).toPass({ timeout: 15_000 });
 }
 
 export async function installCheckpointFault(page) {
