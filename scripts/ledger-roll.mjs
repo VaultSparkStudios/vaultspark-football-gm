@@ -101,7 +101,10 @@ export const ROLLABLE_LEDGERS = Object.freeze([
   // Newest-first, and its standing `## Now` / `## Next` sections sit above the
   // first session entry — they are the working set and stay live by construction,
   // because the retained window starts at the first matching entry.
-  { file: "TASK_BOARD.md", dir: "context", entry: /^##\s+(?:Session\s+|S)(\d+)\b/, order: NEWEST_FIRST }
+  { file: "TASK_BOARD.md", dir: "context", entry: /^##\s+(?:Session\s+|S)(\d+)\b/, order: NEWEST_FIRST },
+  // S119: `## Session 118 durable patterns` reached twelve entries at S118 and
+  // the population gate (test/session106) went red in CI. Newest-first.
+  { file: "AGENT_MEMORY.md", dir: "context", entry: /^##\s+(?:Session\s+|S)(\d+)\b/, order: NEWEST_FIRST }
 ]);
 
 export const POINTER_SENTINEL = "<!-- ledger-roll:pointer -->";
