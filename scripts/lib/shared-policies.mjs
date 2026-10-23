@@ -83,3 +83,10 @@ export const LAUNCH_FOUNDER_ACTION_TIERS = ['T1_READY', 'T2_MINOR_UNBLOCK', 'T3_
 // /start sync uses it to decide which regenerated paths it may restore to HEAD. Both are
 // answering "does the index hold something for this path" and must ask the same way.
 export const STAGED_PATHS_GIT_ARGS = ['diff', '--cached', '--name-only', '-z'];
+
+// S398 — checklist residue proof and closeout coverage must name the same surfaces.
+export const CLOSEOUT_WRITEBACK_PATHS = Object.freeze([
+  'context/CURRENT_STATE.md', 'context/TASK_BOARD.md', 'context/LATEST_HANDOFF.md',
+  'logs/WORK_LOG.md', 'context/DECISIONS.md', 'context/SELF_IMPROVEMENT_LOOP.md',
+  'docs/CREATIVE_DIRECTION_RECORD.md', 'context/TRUTH_AUDIT.md', 'context/PROJECT_STATUS.json',
+]);

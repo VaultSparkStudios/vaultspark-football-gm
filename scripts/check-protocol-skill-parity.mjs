@@ -164,6 +164,10 @@ const GATES = {
     because: 'SESSION_PROTOCOL §2C step 2.5: "check-audit-premises.mjs --strict --audit <sidecar> BEFORE item 1. '
       + 'Exit non-zero ... = STOP" — a stop that no skill copy runs cannot stop anything.',
   },
+  'check-audit-plan-preflight': {
+    section: '§2C',
+    because: 'SESSION_PROTOCOL §2C step 3.5 requires selected candidate admission before item edits or full acceptance; nonzero diagnostics must be corrected first.',
+  },
   // §3 gates — added S280 [SIL][S280 #1], closing the blind spot this checker
   // published about itself on its first run. Same bar as §1: each cites the
   // protocol text that makes it unconditional, and anything judgment-shaped
