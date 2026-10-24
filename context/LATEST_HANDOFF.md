@@ -1,3 +1,11 @@
+## S121 release checkpoint
+
+Candidate 2c9502713c53bf39b15e0ec8c9e2fd026b6aee36 is committed and pushed; origin/main and HEAD match. Stable staging verified 14/14, artifact a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281; rollback predecessor is in ignored .cache/s121-staging.json. The immutable public capture script passes 56/56 on this exact artifact. Current LATEST visual receipt is still explicitly provisional and source-hash-bound; refresh from immutable captures before release closeout.
+
+Live release runs: CI 40045010114, production Pages 40045043633, backend deployment 40045052395. Redundant push-only backend build 40045010082 was canceled after starting the explicit deployment run. Read-only watchers run through harness handles recorded in .cache/s121-live-runs.json. Poll the handles or remote run states; an observation timeout is not terminal. Production completion and canonical closeout are unproven. Continue this bound S121 arc, not a new session.
+
+Security: native pre-push scanned 19 files, zero violations. Shared scanner found three low-confidence inherited public CDC protocol filename matches in the preserved IMPLEMENT_PLAN; reviewed as public URLs, not credentials. No new packages installed. Actual before/after footer screenshots and source review pass; a new redaction regression passes. Final release requires all candidate checks, Pages/API exact revision readback, fresh release authority and doctor, ordered ten-surface closeout, review, push, Ark and lock cleanup.
+
 # S121 in progress — full new arc
 
 Session Intent: /arc then authorized direct commit/push to main and full deployment. Native goal association is recorded in docs/AUDIT_2026-10-23_SESSION121.json; ignored binding now resumes S121. Startup and fresh nine-axis audit are complete. Four selected outcomes have source changes and focused proof; no production completion claimed. Wave 1 complete; Wave 2 immutable visual review pending; Wave 3 staging, candidate CI, Pages/backend promotion, readback and full canonical closeout pending.

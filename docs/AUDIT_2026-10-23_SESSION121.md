@@ -35,7 +35,7 @@ Combined priority: **48.6**.
 
 | Item | Status | Evidence |
 |---|---|---|
-| backend-failure-evidence | pending | — |
-| goal-lock-anchor | pending | — |
-| public-footer-gutter | pending | — |
-| capture-render-readiness | pending | — |
+| backend-failure-evidence | shipped | — |
+| goal-lock-anchor | shipped | — |
+| public-footer-gutter | shipped | — |
+| capture-render-readiness | shipped | — |

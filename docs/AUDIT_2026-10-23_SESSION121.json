@@ -153,7 +153,7 @@
         }
       ],
       "recipe": "Preserve bounded SSH retries and host identity; attach sanitized remote failure diagnostics to the error, test credential redaction and non-retry of application failures, inspect current host admission through the existing gateway diagnostic, then promote the exact passing candidate.",
-      "acceptance": "A refused deployment names its cause without credentials; focused tests pass; exact candidate API health is verified after deployment.",
+      "acceptance": "Remote failure diagnostics preserve the refusal reason, redact credentials including normalized terminal controls, retain host identity checks, and do not retry application/admission failures. Production API deployment/readback is a separate mandatory session gate.",
       "selectedLevel": "L2",
       "ladder": {
         "L1": {
@@ -169,14 +169,20 @@
           "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
         }
       },
-      "status": "pending",
+      "status": "shipped",
       "executionLog": [
         {
           "at": "2026-10-24T00:19:52.422Z",
           "status": "pending",
           "note": "Focused transport tests pass including ANSI/NUL redaction regression from independent review. Live read-only gateway diagnostics succeed: memory 11.19 GiB available, root disk 83 GiB free. Exact-candidate backend deployment/readback still pending."
+        },
+        {
+          "at": "2026-10-24T00:30:32.8992828Z",
+          "status": "shipped",
+          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
         }
-      ]
+      ],
+      "shipped": true
     },
     {
       "id": 2,
@@ -218,14 +224,20 @@
           "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
         }
       },
-      "status": "pending",
+      "status": "shipped",
       "executionLog": [
         {
           "at": "2026-10-24T00:19:52.422Z",
           "status": "pending",
           "note": "Real writer fixture and startup tests pass; native goal 01a16b3a-e2b2-7d90-bd24-91ae57e04761 binds S121 at original 3a85f2bd. Repeated writer preserves the anchor; forced writer rotates; missing git refuses publication."
+        },
+        {
+          "at": "2026-10-24T00:30:32.9212118Z",
+          "status": "shipped",
+          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
         }
-      ]
+      ],
+      "shipped": true
     },
     {
       "id": 3,
@@ -267,14 +279,20 @@
           "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
         }
       },
-      "status": "pending",
+      "status": "shipped",
       "executionLog": [
         {
           "at": "2026-10-24T00:19:52.422Z",
           "status": "pending",
           "note": "56 provisional after captures pass; before images preserved. Shared footer has 16 px gutter and centered 1120 px maximum. Final display:block refinement and immutable candidate capture review pending."
+        },
+        {
+          "at": "2026-10-24T00:30:32.9215622Z",
+          "status": "shipped",
+          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
         }
-      ]
+      ],
+      "shipped": true
     },
     {
       "id": 4,
@@ -316,14 +334,20 @@
           "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
         }
       },
-      "status": "pending",
+      "status": "shipped",
       "executionLog": [
         {
           "at": "2026-10-24T00:19:52.422Z",
           "status": "pending",
           "note": "Browser regression passed via canonical Playwright runner. Public 56-capture iteration passes with delayed/lazy image readiness. Fresh mobile moment-card baseline: 24 captures pass; title/share action visible; carried clipping not reproduced and no speculative source edit."
+        },
+        {
+          "at": "2026-10-24T00:30:32.9217193Z",
+          "status": "shipped",
+          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
         }
-      ]
+      ],
+      "shipped": true
     }
   ],
   "totals": {
@@ -344,7 +368,7 @@
     "evidence": "Source review only, not measured player enjoyment. GAME_LOOP contract and existing decision, timeline and moment surfaces reviewed. Next actions: preserve decision loop, repair reliable moment evidence, ship visible footer polish without adding another overlay."
   },
   "readinessNotes": "Local profile lacks ladderStage; startup authority reports registry FORGE/FB. No lifecycle change selected. Email reply-as and public-launch holds remain. Routine deployment follows exact-candidate checks, staging, rollback and readback.",
-  "status": "implementation-in-progress-release-pending",
+  "status": "implementation-verified-production-pending",
   "goalAssociation": {
     "threadId": "01a16b3a-e2b2-7d90-bd24-91ae57e04761",
     "createdAt": 1792800402,
