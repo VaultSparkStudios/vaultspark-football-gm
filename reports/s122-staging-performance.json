@@ -2,13 +2,13 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-10-24T18:40:50.619Z",
+  "observedAt": "2026-10-24T20:51:05.022Z",
   "baseUrl": "https://staging.playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+  "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+    "digest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
     "files": 361,
     "entries": [
       {
@@ -513,8 +513,8 @@
       },
       {
         "path": "lib/mobileLoop.js",
-        "bytes": 18748,
-        "sha256": "3d514e43d902a0a50c745fedd7c400300a31da8655b24526042c345dbdf33d33"
+        "bytes": 18822,
+        "sha256": "0d26e11f2a7e37d5bd89fca9c56fd6a571a2f58fcdc9a426aecef41fed7b8344"
       },
       {
         "path": "lib/mobileNavigation.js",
@@ -899,7 +899,7 @@
       {
         "path": "precache-manifest.json",
         "bytes": 25901,
-        "sha256": "a0a0ae99452ebbc97a4dc573cf1424bd7b4fff48599190ab6bb1bed41ab0b86e"
+        "sha256": "6f51ec3e8f341696b4ddf568b33032325bf73f10c76ab5b516c98ec5b0e47394"
       },
       {
         "path": "press.html",
@@ -1809,7 +1809,7 @@
       {
         "path": "sw.js",
         "bytes": 12948,
-        "sha256": "9faee2b6e8313dc7ba3800d3dd5065e84b5eb5031028c9878705adfa121df05e"
+        "sha256": "54643d6ebb38296c8e70bdbccc34293e599182b5a6181a8dd6c10747098ad076"
       },
       {
         "path": "terms.html",
@@ -1828,17 +1828,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a4fb1c975d66c48c-IAD",
+    "cf-ray": "a4fbdb5d29c01734-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Sat, 24 Oct 2026 18:40:44 GMT",
+    "date": "Sat, 24 Oct 2026 20:50:58 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=XU2DfiRmgs6Ol2C%2BAUBuSITz7btvw7qAC9wgToBYLQpgiT6D3qMJIW10rHH1%2Fi2vCIqvZY2n8ze2xGhJqBIIkf35bK4DnctwGoxVuHmYLbok0X2JeIIcWMoCNIELNSX%2FOk8Bfx13x%2FhkJ21Qx6Dm3dwJnJPq\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Sl%2Fhoh7u6pA0O6N9r0E1xdEcBAdUICreRyEDcrhUrsXNcBfKcIWt84U7jqI7%2F7qib6vDMI1%2FynL9ImS0djX%2Bofi46UWw9V0V8ed7QbWvFX7ofbGOWCN%2BURo2R1U4oCknGxrEjEQBl0h7%2FwflOozI1omCxpL3\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1854,13 +1854,13 @@
         "height": 1000
       },
       "runs": 5,
-      "lcpMs": 1224,
-      "inpMs": 24,
+      "lcpMs": 1204,
+      "inpMs": 32,
       "cls": 0.0003,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 884,
+          "lcpMs": 1204,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1870,7 +1870,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 1801,
+              "startTimeMs": 2219,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1927,11 +1927,11 @@
               ]
             }
           ],
-          "inpMs": 256,
+          "inpMs": 96,
           "interactionObserved": true
         },
         {
-          "lcpMs": 1640,
+          "lcpMs": 1156,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1941,220 +1941,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 2667,
-              "scrollY": 0,
-              "value": 0.0003,
-              "sources": [
-                {
-                  "tag": "SPAN",
-                  "id": null,
-                  "className": "site-status-chip",
-                  "previousRect": {
-                    "x": 512.328125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 661.609375,
-                    "bottom": 475.53125,
-                    "left": 512.328125
-                  },
-                  "currentRect": {
-                    "x": 455.453125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 604.734375,
-                    "bottom": 475.53125,
-                    "left": 455.453125
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 675.609375,
-                    "y": 456.125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 928.609375,
-                    "bottom": 469.9375,
-                    "left": 675.609375
-                  },
-                  "currentRect": {
-                    "x": 618.734375,
-                    "y": 456.125,
-                    "width": 366,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 984.734375,
-                    "bottom": 469.9375,
-                    "left": 618.734375
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 1424,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0003,
-          "shifts": [
-            {
-              "startTimeMs": 2348,
-              "scrollY": 0,
-              "value": 0.0003,
-              "sources": [
-                {
-                  "tag": "SPAN",
-                  "id": null,
-                  "className": "site-status-chip",
-                  "previousRect": {
-                    "x": 512.328125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 661.609375,
-                    "bottom": 475.53125,
-                    "left": 512.328125
-                  },
-                  "currentRect": {
-                    "x": 455.453125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 604.734375,
-                    "bottom": 475.53125,
-                    "left": 455.453125
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 675.609375,
-                    "y": 456.125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 928.609375,
-                    "bottom": 469.9375,
-                    "left": 675.609375
-                  },
-                  "currentRect": {
-                    "x": 618.734375,
-                    "y": 456.125,
-                    "width": 366,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 984.734375,
-                    "bottom": 469.9375,
-                    "left": 618.734375
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 1108,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0003,
-          "shifts": [
-            {
-              "startTimeMs": 2135,
-              "scrollY": 0,
-              "value": 0.0003,
-              "sources": [
-                {
-                  "tag": "SPAN",
-                  "id": null,
-                  "className": "site-status-chip",
-                  "previousRect": {
-                    "x": 512.328125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 661.609375,
-                    "bottom": 475.53125,
-                    "left": 512.328125
-                  },
-                  "currentRect": {
-                    "x": 455.453125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 604.734375,
-                    "bottom": 475.53125,
-                    "left": 455.453125
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 675.609375,
-                    "y": 456.125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 928.609375,
-                    "bottom": 469.9375,
-                    "left": 675.609375
-                  },
-                  "currentRect": {
-                    "x": 618.734375,
-                    "y": 456.125,
-                    "width": 366,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 984.734375,
-                    "bottom": 469.9375,
-                    "left": 618.734375
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 1224,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0003,
-          "shifts": [
-            {
-              "startTimeMs": 2118,
+              "startTimeMs": 2320,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -2213,6 +2000,219 @@
           ],
           "inpMs": 32,
           "interactionObserved": true
+        },
+        {
+          "lcpMs": 1460,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0003,
+          "shifts": [
+            {
+              "startTimeMs": 2574,
+              "scrollY": 0,
+              "value": 0.0003,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "site-status-chip",
+                  "previousRect": {
+                    "x": 512.328125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 661.609375,
+                    "bottom": 475.53125,
+                    "left": 512.328125
+                  },
+                  "currentRect": {
+                    "x": 455.453125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 604.734375,
+                    "bottom": 475.53125,
+                    "left": 455.453125
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 675.609375,
+                    "y": 456.125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 928.609375,
+                    "bottom": 469.9375,
+                    "left": 675.609375
+                  },
+                  "currentRect": {
+                    "x": 618.734375,
+                    "y": 456.125,
+                    "width": 366,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 984.734375,
+                    "bottom": 469.9375,
+                    "left": 618.734375
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 1164,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0003,
+          "shifts": [
+            {
+              "startTimeMs": 2292,
+              "scrollY": 0,
+              "value": 0.0003,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "site-status-chip",
+                  "previousRect": {
+                    "x": 512.328125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 661.609375,
+                    "bottom": 475.53125,
+                    "left": 512.328125
+                  },
+                  "currentRect": {
+                    "x": 455.453125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 604.734375,
+                    "bottom": 475.53125,
+                    "left": 455.453125
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 675.609375,
+                    "y": 456.125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 928.609375,
+                    "bottom": 469.9375,
+                    "left": 675.609375
+                  },
+                  "currentRect": {
+                    "x": 618.734375,
+                    "y": 456.125,
+                    "width": 366,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 984.734375,
+                    "bottom": 469.9375,
+                    "left": 618.734375
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 32,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 1308,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0003,
+          "shifts": [
+            {
+              "startTimeMs": 2254,
+              "scrollY": 0,
+              "value": 0.0003,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "site-status-chip",
+                  "previousRect": {
+                    "x": 512.328125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 661.609375,
+                    "bottom": 475.53125,
+                    "left": 512.328125
+                  },
+                  "currentRect": {
+                    "x": 455.453125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 604.734375,
+                    "bottom": 475.53125,
+                    "left": 455.453125
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 675.609375,
+                    "y": 456.125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 928.609375,
+                    "bottom": 469.9375,
+                    "left": 675.609375
+                  },
+                  "currentRect": {
+                    "x": 618.734375,
+                    "y": 456.125,
+                    "width": 366,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 984.734375,
+                    "bottom": 469.9375,
+                    "left": 618.734375
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
+          "interactionObserved": true
         }
       ]
     },
@@ -2223,13 +2223,13 @@
         "height": 844
       },
       "runs": 5,
-      "lcpMs": 1008,
-      "inpMs": 24,
+      "lcpMs": 1332,
+      "inpMs": 32,
       "cls": 0.0131,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 1008,
+          "lcpMs": 1144,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2239,7 +2239,103 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 2087,
+              "startTimeMs": 2192,
+              "scrollY": 0,
+              "value": 0.0131,
+              "sources": [
+                {
+                  "tag": "FIGURE",
+                  "id": null,
+                  "className": "hero-shot",
+                  "previousRect": {
+                    "x": 20.1875,
+                    "y": 534.40625,
+                    "width": 349.625,
+                    "height": 279.046875,
+                    "top": 534.40625,
+                    "right": 369.8125,
+                    "bottom": 813.453125,
+                    "left": 20.1875
+                  },
+                  "currentRect": {
+                    "x": 20.1875,
+                    "y": 546.59375,
+                    "width": 349.625,
+                    "height": 266.859375,
+                    "top": 546.59375,
+                    "right": 369.8125,
+                    "bottom": 813.453125,
+                    "left": 20.1875
+                  }
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "why",
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 781.453125,
+                    "width": 390,
+                    "height": 62.546875,
+                    "top": 781.453125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 793.640625,
+                    "width": 390,
+                    "height": 50.359375,
+                    "top": 793.640625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 68.96875,
+                    "y": 540.203125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 540.203125,
+                    "right": 321.96875,
+                    "bottom": 554.015625,
+                    "left": 68.96875
+                  },
+                  "currentRect": {
+                    "x": 36.1875,
+                    "y": 540.203125,
+                    "width": 317.625,
+                    "height": 26,
+                    "top": 540.203125,
+                    "right": 353.8125,
+                    "bottom": 566.203125,
+                    "left": 36.1875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 96,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 1164,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0131,
+          "shifts": [
+            {
+              "startTimeMs": 2375,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2335,7 +2431,103 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 2534,
+              "startTimeMs": 2383,
+              "scrollY": 0,
+              "value": 0.0131,
+              "sources": [
+                {
+                  "tag": "FIGURE",
+                  "id": null,
+                  "className": "hero-shot",
+                  "previousRect": {
+                    "x": 20.1875,
+                    "y": 534.40625,
+                    "width": 349.625,
+                    "height": 279.046875,
+                    "top": 534.40625,
+                    "right": 369.8125,
+                    "bottom": 813.453125,
+                    "left": 20.1875
+                  },
+                  "currentRect": {
+                    "x": 20.1875,
+                    "y": 546.59375,
+                    "width": 349.625,
+                    "height": 266.859375,
+                    "top": 546.59375,
+                    "right": 369.8125,
+                    "bottom": 813.453125,
+                    "left": 20.1875
+                  }
+                },
+                {
+                  "tag": "SECTION",
+                  "id": "why",
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 781.453125,
+                    "width": 390,
+                    "height": 62.546875,
+                    "top": 781.453125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 793.640625,
+                    "width": 390,
+                    "height": 50.359375,
+                    "top": 793.640625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 68.96875,
+                    "y": 540.203125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 540.203125,
+                    "right": 321.96875,
+                    "bottom": 554.015625,
+                    "left": 68.96875
+                  },
+                  "currentRect": {
+                    "x": 36.1875,
+                    "y": 540.203125,
+                    "width": 317.625,
+                    "height": 26,
+                    "top": 540.203125,
+                    "right": 353.8125,
+                    "bottom": 566.203125,
+                    "left": 36.1875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 40,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 1332,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0131,
+          "shifts": [
+            {
+              "startTimeMs": 2681,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2421,7 +2613,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 608,
+          "lcpMs": 1468,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2431,7 +2623,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1587,
+              "startTimeMs": 2679,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2513,199 +2705,7 @@
               ]
             }
           ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 1032,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0131,
-          "shifts": [
-            {
-              "startTimeMs": 1993,
-              "scrollY": 0,
-              "value": 0.0131,
-              "sources": [
-                {
-                  "tag": "FIGURE",
-                  "id": null,
-                  "className": "hero-shot",
-                  "previousRect": {
-                    "x": 20.1875,
-                    "y": 534.40625,
-                    "width": 349.625,
-                    "height": 279.046875,
-                    "top": 534.40625,
-                    "right": 369.8125,
-                    "bottom": 813.453125,
-                    "left": 20.1875
-                  },
-                  "currentRect": {
-                    "x": 20.1875,
-                    "y": 546.59375,
-                    "width": 349.625,
-                    "height": 266.859375,
-                    "top": 546.59375,
-                    "right": 369.8125,
-                    "bottom": 813.453125,
-                    "left": 20.1875
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "why",
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 781.453125,
-                    "width": 390,
-                    "height": 62.546875,
-                    "top": 781.453125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 793.640625,
-                    "width": 390,
-                    "height": 50.359375,
-                    "top": 793.640625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 68.96875,
-                    "y": 540.203125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 540.203125,
-                    "right": 321.96875,
-                    "bottom": 554.015625,
-                    "left": 68.96875
-                  },
-                  "currentRect": {
-                    "x": 36.1875,
-                    "y": 540.203125,
-                    "width": 317.625,
-                    "height": 26,
-                    "top": 540.203125,
-                    "right": 353.8125,
-                    "bottom": 566.203125,
-                    "left": 36.1875
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 576,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0131,
-          "shifts": [
-            {
-              "startTimeMs": 1419,
-              "scrollY": 0,
-              "value": 0.0131,
-              "sources": [
-                {
-                  "tag": "FIGURE",
-                  "id": null,
-                  "className": "hero-shot",
-                  "previousRect": {
-                    "x": 20.1875,
-                    "y": 534.40625,
-                    "width": 349.625,
-                    "height": 279.046875,
-                    "top": 534.40625,
-                    "right": 369.8125,
-                    "bottom": 813.453125,
-                    "left": 20.1875
-                  },
-                  "currentRect": {
-                    "x": 20.1875,
-                    "y": 546.59375,
-                    "width": 349.625,
-                    "height": 266.859375,
-                    "top": 546.59375,
-                    "right": 369.8125,
-                    "bottom": 813.453125,
-                    "left": 20.1875
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "why",
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 781.453125,
-                    "width": 390,
-                    "height": 62.546875,
-                    "top": 781.453125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 793.640625,
-                    "width": 390,
-                    "height": 50.359375,
-                    "top": 793.640625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 68.96875,
-                    "y": 540.203125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 540.203125,
-                    "right": 321.96875,
-                    "bottom": 554.015625,
-                    "left": 68.96875
-                  },
-                  "currentRect": {
-                    "x": 36.1875,
-                    "y": 540.203125,
-                    "width": 317.625,
-                    "height": 26,
-                    "top": 540.203125,
-                    "right": 353.8125,
-                    "bottom": 566.203125,
-                    "left": 36.1875
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         }
       ]
@@ -2717,13 +2717,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "fe4f067280a0e35b6476f817530ecc321d289689",
+        "observed": "26616ed93079de686d13da150e4e6d7ddf581036",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+        "observed": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
         "expected": "sha256"
       },
       {
@@ -2747,13 +2747,13 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 1224,
+        "observed": 1204,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 24,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
@@ -2771,13 +2771,13 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 1008,
+        "observed": 1332,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 24,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
@@ -2813,5 +2813,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "a1a2fb4fcc86d09eb236741ac04b3389976704b373116546b3bc5080aec0e15a"
+  "receiptSha256": "29a1223666b5650d2f835cdede8a737aafd45782a4dd463c905809e89304d1f3"
 }

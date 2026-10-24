@@ -499,7 +499,7 @@ export function runShard(name, {
   };
 }
 
-function executeWithProgress(command, shardNames, { writeGreenReceipt = false } = {}) {
+function executeWithProgress(command, shardNames, { writeGreenReceipt = false, run = runShard } = {}) {
   const root = process.cwd();
   const startedAt = new Date().toISOString();
   const timeoutMs = resolveShardTimeoutMs();
@@ -517,7 +517,7 @@ function executeWithProgress(command, shardNames, { writeGreenReceipt = false } 
 
   for (const name of shardNames) {
     update("running", name);
-    const result = runShard(name, { timeoutMs: resolveShardTimeoutMs(undefined, name) });
+    const result = run(name, { timeoutMs: resolveShardTimeoutMs(undefined, name) });
     completed.push(result);
     if (result.status !== 0) {
       update(result.timedOut ? "timed-out" : "failed", name, {
@@ -545,7 +545,7 @@ function executeWithProgress(command, shardNames, { writeGreenReceipt = false } 
 const isMainModule =
   process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
-export function runTestShardCli(requested = process.argv[2] || "all") {
+export function runTestShardCli(requested = process.argv[2] || "all", { run = runShard } = {}) {
   if (requested === "--help" || requested === "-h") {
     usage();
     return 0;
@@ -564,17 +564,19 @@ export function runTestShardCli(requested = process.argv[2] || "all") {
   }
 
   if (requested === "all") {
-    return executeWithProgress("all", DEFAULT_SHARDS, { writeGreenReceipt: true });
+    return executeWithProgress("all", DEFAULT_SHARDS, { writeGreenReceipt: true, run });
   }
 
   if (requested === "full") {
-    return executeWithProgress("full", Object.keys(SHARDS));
+    return executeWithProgress("full", Object.keys(SHARDS), { run });
   }
 
-  return executeWithProgress(requested, [requested]);
+  return executeWithProgress(requested, [requested], { run });
 }
 
-if (isMainModule) {
+export function main(requested, options) {
   // Let stdout/stderr drain before exiting, including large buffered shard logs.
-  process.exitCode = runTestShardCli();
+  process.exitCode = runTestShardCli(requested, options);
 }
+
+if (isMainModule) main();

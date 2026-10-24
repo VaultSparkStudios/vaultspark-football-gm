@@ -3,7 +3,6 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { spawnSync } from "../scripts/lib/safe-spawn.mjs";
 import { runShard } from "../scripts/run-test-shard.mjs";
 import {
@@ -118,27 +117,26 @@ test("the real shard CLI drains large child stdout and stderr before returning f
     assert.ok(path.basename(root).startsWith("fa-shard-cli-"));
     fs.rmSync(root, { recursive: true, force: true });
   });
-  // Intercept only the CLI's test child. The real runner, progress writer, output
-  // forwarding and entrypoint execute normally; no actual shard is launched.
-  const preload = `
-    import cp from 'node:child_process';
-    import { syncBuiltinESMExports } from 'node:module';
-    const original = cp.spawnSync;
-    cp.spawnSync = (command, args, options) => args?.includes('--test')
-      ? { status: 1, signal: null, stdout: 'o'.repeat(2 * 1024 * 1024) + '\\nSTDOUT-END\\n',
-          stderr: 'e'.repeat(2 * 1024 * 1024) + '\\nSTDERR-END\\n' }
-      : original(command, args, options);
-    syncBuiltinESMExports();
+  // Inject only the test-child result through the runner's spawn seam. The
+  // production entrypoint, progress writer and output forwarding execute normally.
+  // Real processes use safe-spawn; this harness never patches native spawning.
+  const harness = `
+    import { main, runShard } from ${JSON.stringify(new URL("../scripts/run-test-shard.mjs", import.meta.url).href)};
     // Windows pipes can flush synchronously. Model asynchronous pipe writes
     // explicitly so the premature-exit regression is portable and deterministic.
     for (const stream of [process.stdout, process.stderr]) {
       const write = stream.write.bind(stream);
       stream.write = (...args) => { setImmediate(() => write(...args)); return false; };
     }
+    main('runtime', { run: (name, options) => runShard(name, {
+      ...options,
+      spawn: () => ({ status: 1, signal: null,
+        stdout: 'o'.repeat(2 * 1024 * 1024) + '\\nSTDOUT-END\\n',
+        stderr: 'e'.repeat(2 * 1024 * 1024) + '\\nSTDERR-END\\n' })
+    }) });
   `;
   const child = spawnSync(process.execPath, [
-    "--import", `data:text/javascript,${encodeURIComponent(preload)}`,
-    fileURLToPath(new URL("../scripts/run-test-shard.mjs", import.meta.url)), "runtime"
+    "--input-type=module", "--eval", harness
   ], { cwd: root, encoding: "utf8", maxBuffer: 8 * 1024 * 1024, timeout: 30_000 });
   assert.ifError(child.error);
   assert.equal(child.status, 1);

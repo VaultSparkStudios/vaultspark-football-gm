@@ -1,0 +1,35 @@
+{
+  "session": 122,
+  "at": "2026-10-24T20:36:36.195Z",
+  "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
+  "phase": "staging-v4",
+  "verifiedDeployment": {
+    "path": ".cache/s122-staging-26616ed93079de686d13da150e4e6d7ddf581036-deployment.json",
+    "sha256": "813652ea5c356128eae2bb92cf0c46747e8870773666a64c3d2e80f69fea83cf"
+  },
+  "nativeEvents": {
+    "path": ".cache/s122-staging-26616ed93079de686d13da150e4e6d7ddf581036-transport-events.json",
+    "sha256": "e5d3574a13d9958f0f27b6377a0540ed0c94e4cb35851a3499a7993a081d5ac3"
+  },
+  "events": [
+    {
+      "at": "2026-10-24T20:25:31.902Z",
+      "host": "api.cloudflare.com",
+      "path": "/client/v4/accounts/<id>/pages/projects",
+      "method": "GET",
+      "attempt": 1,
+      "error": "TypeError",
+      "causeCode": "UND_ERR_SOCKET"
+    },
+    {
+      "at": "2026-10-24T20:29:27.614Z",
+      "host": "api.cloudflare.com",
+      "path": "/client/v4/accounts/<id>/pages/projects/franchise-architect-staging/domains/staging.playfranchisearchitect.com",
+      "method": "GET",
+      "attempt": 1,
+      "error": "TypeError",
+      "causeCode": "ECONNABORTED"
+    }
+  ],
+  "method": "Actual source-specific deployment transport observation. Any retry shown is bounded GET-only; mutation replay is rejected. Earlier transport evidence remains in content-addressed history."
+}

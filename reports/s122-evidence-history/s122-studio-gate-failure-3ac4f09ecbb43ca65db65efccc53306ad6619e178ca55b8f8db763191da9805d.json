@@ -1,0 +1,28 @@
+{
+  "session": 122,
+  "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
+  "status": "rejected-candidate",
+  "ci": {
+    "runId": 40132009062,
+    "jobId": 120985511251,
+    "tests": 388,
+    "passed": 387,
+    "failed": 1,
+    "observed": "Full hosted runner logs now include the complete summary and failing assertion."
+  },
+  "failure": {
+    "file": "test/studio-protocol-smoke.test.js",
+    "line": 174,
+    "name": "windows-hide guard scans both scripts/ and test/ and the tree is clean",
+    "cause": "New logging regression fixture contained a direct node:child_process import inside its preload string; the tree guard forbids native imports outside safe-spawn."
+  },
+  "correction": "Remove native interception entirely. Inject only the fake child result through the existing runShard seam and use the shared production main entrypoint; real process launches retain safe-spawn.",
+  "focused": {
+    "runner": 5,
+    "guardViolations": 0,
+    "smoke": 2,
+    "verdict": "pass"
+  },
+  "productionPromoted": false,
+  "remaining": "Fresh corrected candidate requires isolated full Studio, exact-source staging, complete seven-job CI and actual deployments."
+}

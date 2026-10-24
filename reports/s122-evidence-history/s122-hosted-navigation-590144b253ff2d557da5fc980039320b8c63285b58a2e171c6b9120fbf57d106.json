@@ -1,0 +1,67 @@
+{
+  "session": 122,
+  "at": "2026-10-24T20:36:36.195Z",
+  "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
+  "phase": "staging-v4",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "files": 361,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "passed": 4,
+  "total": 4,
+  "captures": 52,
+  "reviewed": true,
+  "reviewer": "audit_game independent rendered-pixel inspection",
+  "review": {
+    "path": "reports/s122-staging-v4-visual-review.json",
+    "sha256": "19565e8ab6cf36c264f575016029179d9302bf2d967cf079cba932411ee2ac1d"
+  },
+  "browser": {
+    "path": "reports/s122-staging-v4-browser.json",
+    "sha256": "d10d7de12731601446dabf976733da52294b4d4afae5a114577dfec00ab660a5"
+  },
+  "provenance": {
+    "path": "reports/s122-staging-provenance.json",
+    "sha256": "d6357f522a13bda8249d75c0018a278126c204ae4b8c82d2070d9a97bbc669a8"
+  },
+  "ledger": {
+    "added": 52,
+    "revised": 0,
+    "total": 5549,
+    "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+  },
+  "receipt": "docs/visual-qa/LATEST.json",
+  "priorReceipts": {
+    "reports/s122-hosted-navigation.json": {
+      "path": "reports/s122-evidence-history/s122-hosted-navigation-e3f6e143c23111d861e36dc7435c0e4ac934f478aaa0b4823137787305651888.json",
+      "sha256": "e3f6e143c23111d861e36dc7435c0e4ac934f478aaa0b4823137787305651888"
+    },
+    "reports/s122-staging-deployment.json": {
+      "path": "reports/s122-evidence-history/s122-staging-deployment-6b602f00619ba3986b0c4a5afe5ffee9348cf29a5d5c002c69261109dce82cae.json",
+      "sha256": "6b602f00619ba3986b0c4a5afe5ffee9348cf29a5d5c002c69261109dce82cae"
+    },
+    "reports/s122-staging-transport.json": {
+      "path": "reports/s122-evidence-history/s122-staging-transport-ba487ed40a0bcceb2e7d275c90250dee7b9566fc9f1b00c6636c6da36987981e.json",
+      "sha256": "ba487ed40a0bcceb2e7d275c90250dee7b9566fc9f1b00c6636c6da36987981e"
+    },
+    "reports/s122-staging-provenance.json": {
+      "path": "reports/s122-evidence-history/s122-staging-provenance-d6357f522a13bda8249d75c0018a278126c204ae4b8c82d2070d9a97bbc669a8.json",
+      "sha256": "d6357f522a13bda8249d75c0018a278126c204ae4b8c82d2070d9a97bbc669a8"
+    },
+    "docs/visual-qa/LATEST.json": {
+      "path": "reports/s122-evidence-history/LATEST-779ff3bc98e294c5c3f45f8d1b95fec042e8dfb8befb16837a70fdf8d73f9ed4.json",
+      "sha256": "779ff3bc98e294c5c3f45f8d1b95fec042e8dfb8befb16837a70fdf8d73f9ed4"
+    },
+    "docs/visual-qa/CAPTURE_LEDGER.json": {
+      "path": "reports/s122-evidence-history/CAPTURE_LEDGER-4db87f4cfccd8a3d87ac929abbd1a4ff0dc2036fb235a18f6fd9a3ca27ece7be.json",
+      "sha256": "4db87f4cfccd8a3d87ac929abbd1a4ff0dc2036fb235a18f6fd9a3ca27ece7be"
+    }
+  },
+  "limits": "Source-specific hosted staging synthetic journeys only; no production, whole-suite, physical-device or actual-user acceptance."
+}

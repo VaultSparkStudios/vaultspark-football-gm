@@ -1,0 +1,2319 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "capturedAt": "2026-10-24T20:15:30.165Z",
+  "kind": "immutable-hosted-rendered-evidence",
+  "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+  "scope": "S122 staging-v3:52 newly admitted hosted staging images at b2da78a89b5040db5f278709136e163b0f4c55f3; 128 prior images retain their original source revisions and inspection scope. No production or complete release acceptance is claimed.",
+  "sourceFiles": [
+    {
+      "path": "src/engine/architectFocusReview.js",
+      "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
+    },
+    {
+      "path": "public/lib/franchiseCommandCenter.js",
+      "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
+    },
+    {
+      "path": "public/lib/mobileLoop.js",
+      "sha256": "3d514e43d902a0a50c745fedd7c400300a31da8655b24526042c345dbdf33d33"
+    },
+    {
+      "path": "public/lib/gameplayNavigation.js",
+      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    }
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s122-nav-before-desktop-dark-desktop-news.png",
+      "sha256": "2b9225cdee164c66e76ab68fabc632f93d33e93e227eeaa81ec03648a2e122ec",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-dark-mastery-identity.png",
+      "sha256": "2455288f0480b736e29993e4574fe42a5bba592cc952ef8d4bd4100ca42d16e9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-dark-mastery-promise.png",
+      "sha256": "1782054399d8952060956f7792bad2a6f846111994e53798f71df809a35332ea",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-dark-mastery-results.png",
+      "sha256": "c00e4f3b5492aa4fccfde2aaefd6b2f00153f5a273971a8b69117491e240cc58",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-dark-mastery-stewardship.png",
+      "sha256": "0ddbdf18b532b0238549b982f2e194eaed9a37659536334e8e80cd2bf6b4c9c5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-dark-mobile-news.png",
+      "sha256": "734efe1cd9531fc05412e1a9fc593734b2c20c8c0372babf344331315077feba",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-light-desktop-news.png",
+      "sha256": "39b439d964148af6e17c15bb5cf91c58a127a4aa8f6ef143a1318672ac3f25ab",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-light-mastery-identity.png",
+      "sha256": "1c53a6721b7d00f293af0bcc4b008db8abf880d20ec1ab35ef37ee6c3fae77d5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-light-mastery-promise.png",
+      "sha256": "4817afe1861a96eb0d5cd3d3cc93628b2b30f4c85304df6d2a8082964331cc58",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-light-mastery-results.png",
+      "sha256": "58a7d6ccb39809ed2193821cc1b5875d40dc099ef01aa84c3063f0edb57db667",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-light-mastery-stewardship.png",
+      "sha256": "b801b6e2e3e5014f60eb60535c4aabfbcc31d46289fa8fcd00b293bcc9331af9",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-desktop-light-mobile-news.png",
+      "sha256": "4860bffbfa79d060ebae057ed5e5507d9e97bf06a27d779eedebfddd5cd1e0bc",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-dark-desktop-news.png",
+      "sha256": "7acafe0215d03c2087e85de4a8fbb416bbf711eda768926c753a16f32dd97a82",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-dark-mastery-identity.png",
+      "sha256": "635afb1132852fd8adfff06f0047956bfa7f3ea63ec76815245ab17d3f708554",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-dark-mastery-promise.png",
+      "sha256": "ea15e6cdd3b4ad4fd5e43cb64058cc1483f270db1e175431a9f06679c4bf455e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-dark-mastery-results.png",
+      "sha256": "c6dfa2af03ca287c43926b83080f1e773ed1c6793fcc7aa5962a3f17848419d0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-dark-mastery-stewardship.png",
+      "sha256": "a11f2caf37d1bb196f9456d31900156374ba21e7b5fed946bf9ea9b86ad090a0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-dark-mobile-news.png",
+      "sha256": "b9007845d0af01191bb3def8f279ed57f89e3c5e1ec0f1294391b56b0aa7b64c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-light-desktop-news.png",
+      "sha256": "7d19b617ba61a111fe1a5a0b9c8632b303a4723fe6d79c1a8e7a4639af28f960",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-light-mastery-identity.png",
+      "sha256": "23e03f23cd941e299181bacf5776af442817c607d41023f1c14adc00906bcb2d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-light-mastery-promise.png",
+      "sha256": "2276e8c5989f84e3463beca814e4dbc5ddf31cffe3557ef3f3b4d0ff5959ced2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-light-mastery-results.png",
+      "sha256": "bc929ab45eacd0f5b7196729a1641328b6e4f3197d1fac34a71087cbcdfbbccd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-light-mastery-stewardship.png",
+      "sha256": "0aad3361dd2546a68d1253ebad457602a3b6eb30308b4b9124843231cb00cea8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-before-mobile-light-mobile-news.png",
+      "sha256": "0dafa452fc39f5ebf584f8cdbff1c104dfd65b1f25ac7e8a96c8a607f207b088",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news",
+      "kind": "before",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-desktop-news-destination.png",
+      "sha256": "0d0d28e0ad97acab642e2c32a22fd85030691c640d4314ad36e58e2d972b2cdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-desktop-news.png",
+      "sha256": "34c535e98910b19d59b635a0b4ae7b8f79d96afa79c3e981305ce15a4b39bb84",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-identity-destination.png",
+      "sha256": "84ee6f3ee2a2d3ad22b1e21dafbde5e7d20b9a4afb1e518533ee419a5e31d303",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-identity-reload-destination.png",
+      "sha256": "1a786f5be3189b17218bde181345e91fbe61afeb29f3baf9f587308a7d08ddf5",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-reload-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-identity.png",
+      "sha256": "fca096a9207b3aee62befe116970b876e9150da89e2fb64a1fd193de3c9b7a52",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-promise-destination.png",
+      "sha256": "2f1960b3c429729bb655eca567609ca372d2b28c00d9d1f99c49142b5db6f895",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-promise.png",
+      "sha256": "c991597eb84be0f1263f0e2b7662cdf57bcb247ebc574391ebd30e5f02a836bd",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-results-destination.png",
+      "sha256": "fa1925f0308cedd7f03c020539af6294ded8f36a2f923800bc1ed2cdf17b94cb",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-results.png",
+      "sha256": "afe8e82b064e593fea07cd82dade8e071c28b3c8551f8f0b022bddb3c02112e6",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-stewardship-destination.png",
+      "sha256": "0f02cb605115bb9fbff30a9c3f3ba87dcc1e16590e5ce5f104ee32e4124baf0d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mastery-stewardship.png",
+      "sha256": "fa8edb97e126a5b742835624946a459cfb954d6d3af73da43f8add917f73cb7d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mobile-news-destination.png",
+      "sha256": "ee5001ff1da37cd136eae5e04e1fae28e48fc24535076fe527b6ba2d553cdbdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-dark-mobile-news.png",
+      "sha256": "254b0179f00f4f070f04f20d5abd8da54260a628cb84ee5bc3385efa5fc7e826",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-desktop-news-destination.png",
+      "sha256": "9687d5334248f346ebe3b731b55c0fe886b8ea8b8b916d95f6cc483b36bdb5a9",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-desktop-news.png",
+      "sha256": "9c0000a23d493d080279d0091ce48b29c88bfbc49959104232a5c75911dffd66",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-identity-destination.png",
+      "sha256": "f6885e22ed3e4732f302c558e0edcc893a7916950e49e0c76b3f289179d29a9e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-identity-reload-destination.png",
+      "sha256": "c684aaf0bb3cabd27a8f4dc036053e477954c03938306a0dec0529df34d5d6fb",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-reload-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-identity.png",
+      "sha256": "4808b90dc05051c946de3e5367e73bab8ba151e78b4588d88db9fc4f69a45018",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-promise-destination.png",
+      "sha256": "72bc0aea90d4427674583308b3ae74eeba34de21bff4420334c2e66a331b9f63",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-promise.png",
+      "sha256": "14f942387da2bad955e2121f2c0448dc118a1fe93b25e632c21b1eca071bad31",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-results-destination.png",
+      "sha256": "a863ea447b39029f86732dd5e464d049b7cd744a64f71f2fb2980e999b034290",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-results.png",
+      "sha256": "1b079569d4341eda2483dfadd11005152a32b1fbcdf2a199a97e6fd0eaf2357b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-stewardship-destination.png",
+      "sha256": "2a5b556c0166bb07cc3f53570a64209318794ebe61acfa31a9d6f3913f236a4b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mastery-stewardship.png",
+      "sha256": "e0ffeb797519f6474505a22a64561be666f40958c89db10bc9c107a918adbaea",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mobile-news-destination.png",
+      "sha256": "054310349d0c345b052e4a2469788b621dd22f29f0173faa863e206dab7c5426",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-desktop-light-mobile-news.png",
+      "sha256": "67c197a75e2f4494575add3de7e1f21e8b880e8bf0417f9d92843f91ed5e73d8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-desktop-news-destination.png",
+      "sha256": "580bcfa1baa05a4e9cecda24c0e1ca2d7b801899388ab03957291430fecee13a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-desktop-news.png",
+      "sha256": "1b0dc6f3d8199656f870fc8a23af7fa45c9a9107cfc5087a04c468d714643cd0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-identity-destination.png",
+      "sha256": "05e557f265b27a8376afc440a8141035012456af65de25ce9b43a21985a32b72",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-identity-reload-destination.png",
+      "sha256": "1641142544c6d5f435aa2004778201787e442754df97daf13be9125a69dc01a4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-reload-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-identity.png",
+      "sha256": "8131aae2f74e44c6cdfcaceabe00e17cd6884be312a5cb46076439cdf55fe5b5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-promise-destination.png",
+      "sha256": "a366ddc3ac63a9a695bccd9cb3803cc6615db2c1273b869c3083554860f23eb7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-promise.png",
+      "sha256": "91373558282529828df646432f47c270e4a6ee49850fa4b5896837b85f74f818",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-results-destination.png",
+      "sha256": "91f8d70ae0e0f6cbf419b62861f0e1b6a312709a9dc768b060c3c29e64289230",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-results.png",
+      "sha256": "d4346ee858147803ab93801e5c8f711f0ab9566b84f3e040edbdb11a6fd63321",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-stewardship-destination.png",
+      "sha256": "fab6f1105fa6fbb9f7f5b5f65b09c9e5ea0351047ed97a0759a8c7bc4adc28c5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mastery-stewardship.png",
+      "sha256": "111c262c84c829dc26be98203f7f7a2366796736ec03bddcc4b4f968bdd80e43",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mobile-news-destination.png",
+      "sha256": "8530daa19a5b6734050e777502a22c8c02b4d5e915b71342cd16f3720d41f8e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-dark-mobile-news.png",
+      "sha256": "1438d7404c837ff246865dfce0a86b8ee9d39e5782b0974882ec83a7c125f7e3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-desktop-news-destination.png",
+      "sha256": "55f12aeb51aecaf9c4987e63440056fbd7cd71d3a9d3a363dc134879ce971d6c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-desktop-news.png",
+      "sha256": "ef1fc9205cf7227998bb2a43a52ff68aeef1b6a73ea4f2de13bf0bfef3404c8b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-identity-destination.png",
+      "sha256": "8dfe355a7062811b3d03d4685e57fe63b510ac8e19c566a91a12ae2304943eaa",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-identity-reload-destination.png",
+      "sha256": "7f237f00423394afcf35f0e6061bd68b909e3d438d52ed3cc1f2120cf46d3ec1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-reload-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-identity.png",
+      "sha256": "0a9fecb05c3672ecac2084b453d3ac7ad0e02136964190464d5159976d0ca672",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-promise-destination.png",
+      "sha256": "57096395d633384975abb70c3780d3355e7fa2d8ceaa12d1dda4505caf7b090d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-promise.png",
+      "sha256": "ce425eeec38899649c6e8340d4a3aef15797e50abd8e188b355c120a34729963",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-results-destination.png",
+      "sha256": "961cbf809f16fdbceb01110876e763f3b46ef8b9c8aa6508cd46415835b15f85",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-results.png",
+      "sha256": "efd7745d902c0a5dc2fc1cfb487473e2da3bcf9100d7f9775037282e0ddd70bc",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-stewardship-destination.png",
+      "sha256": "27febfeaae8665e378b153b39d454f6ef6a82453a9fc0e93b7c07ef0dc8b8d00",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mastery-stewardship.png",
+      "sha256": "5c2696928f3ccc2081cbdff6b1dde531424d649ea435bdfec9f4f38ee94b9302",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mobile-news-destination.png",
+      "sha256": "df0c1dcbcc99d8b00a904846f6cfc3d3b770d5344c5bbc8d256c4f3d469a166d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news-destination",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-after-mobile-light-mobile-news.png",
+      "sha256": "64a00fb840be17585570edf68bc37f28d2aae3da0513450b38e13cc80d76658d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news",
+      "kind": "after",
+      "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-desktop-news-destination.png",
+      "sha256": "0d0d28e0ad97acab642e2c32a22fd85030691c640d4314ad36e58e2d972b2cdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-desktop-news.png",
+      "sha256": "c52ab953538a6d3a0309f7dc5269c27c63aba905bc6c19fbec9d9bde1878fef7",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-identity-destination.png",
+      "sha256": "02344917773510e2f8153983f4bff34f5a14edeb7953ab5979bd0b0273ad71b0",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-identity-reload-destination.png",
+      "sha256": "8d2cc61cc89ed21f5fe61f8bcddc23cc3d5944df67faeec98dfecd0270bd80fa",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-identity.png",
+      "sha256": "706ba87edbd8c3cdac03f3119e412419385335da7dfd00600c2f46041cfc4288",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-promise-destination.png",
+      "sha256": "d8295b9891be6342b623113f8d6e1104a3f0c8e0dd4f17e98e7d3cd2ce05727c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-promise.png",
+      "sha256": "e9d34489d415797c1aeedbc7f6c22e8707a862f0328fdd0cf6a4cabf713a58b9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-results-destination.png",
+      "sha256": "1f2d2b2bf44ba0eea5b58e00882120b3d5d32010c9568c92ff6f1a05fb0f1216",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-results.png",
+      "sha256": "9d5a319926d3cb4a79246ef0c40d75ea8a92986b16359e6be46ba0874746e46c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-stewardship-destination.png",
+      "sha256": "0f02cb605115bb9fbff30a9c3f3ba87dcc1e16590e5ce5f104ee32e4124baf0d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mastery-stewardship.png",
+      "sha256": "ba40291d1058f5934aa3c8be370d56e857a45b1a06ad1dd735144cbf6ae8aa7b",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mobile-news-destination.png",
+      "sha256": "ee5001ff1da37cd136eae5e04e1fae28e48fc24535076fe527b6ba2d553cdbdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-dark-mobile-news.png",
+      "sha256": "254b0179f00f4f070f04f20d5abd8da54260a628cb84ee5bc3385efa5fc7e826",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-desktop-news-destination.png",
+      "sha256": "9687d5334248f346ebe3b731b55c0fe886b8ea8b8b916d95f6cc483b36bdb5a9",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-desktop-news.png",
+      "sha256": "39d6318a47c2410a6e150400fbff9bbe7552ae45ad24d896d5c7cea92736a837",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-identity-destination.png",
+      "sha256": "637d978de86a1c2fe38037126e9892945bc390fb7195394de2472f6d235d9653",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-identity-reload-destination.png",
+      "sha256": "a48cee715da61b653dd1b24ee63fe66a3612eddfddc2b3ccf1bf6b04eb1b6a4f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-identity.png",
+      "sha256": "0bb5d94957d92a8370d19ed60d2511071f1d2a56123b4b893280dec7db512116",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-promise-destination.png",
+      "sha256": "1e0b7592bffd106d4458e5bbdbbb082fdce5200d876b589b024c4b3afd8b66f5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-promise.png",
+      "sha256": "8cd06009915a9a4cb6ae4e404d2acaa6d26a807b02b646c1833250bafdbff762",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-results-destination.png",
+      "sha256": "3bf949097a4559de13527a449fde64909fc8936c3019627db6a1c43ecaee1791",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-results.png",
+      "sha256": "0e6e2459a98c9ccd80f7291c068c719218e1c7d43cc332547918427a00c900e5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-stewardship-destination.png",
+      "sha256": "551989bb178e8b15d1e787dbd3dd1408872ab93a878910792a917f4af83a9ef3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mastery-stewardship.png",
+      "sha256": "cb26e53493454bd684a9a5c7eb70c3a92c3bc975d1855d4cecefc877e3da0049",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mobile-news-destination.png",
+      "sha256": "054310349d0c345b052e4a2469788b621dd22f29f0173faa863e206dab7c5426",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-desktop-light-mobile-news.png",
+      "sha256": "67c197a75e2f4494575add3de7e1f21e8b880e8bf0417f9d92843f91ed5e73d8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-desktop-news-destination.png",
+      "sha256": "e38a545384bc843146272b28dae6c32b4094199d3b2cb1e532e75f20d1c06726",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-desktop-news.png",
+      "sha256": "5fe92f09cb18a0d6bbe4a47aa20955ff2f6fd91743738bca629dd7656b3cf86d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-identity-destination.png",
+      "sha256": "8df42157ad7c1aa235821de8640938cc397598f702d90362dcdfc364a4a73cc4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-identity-reload-destination.png",
+      "sha256": "1641142544c6d5f435aa2004778201787e442754df97daf13be9125a69dc01a4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-identity.png",
+      "sha256": "cd756592fe3d297369a58a74b0c50335a7122eca2ee8b6ef3883a46b2e79e096",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-promise-destination.png",
+      "sha256": "e566e91432fb8c800b8530084ad6ccd86bd81c8f6f9921093c8d3b1da50a001d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-promise.png",
+      "sha256": "811d6d0ad8b762a701c34dbd3fdd5bc759ef514b1633199fe43ddaa75aa4f13f",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-results-destination.png",
+      "sha256": "91f8d70ae0e0f6cbf419b62861f0e1b6a312709a9dc768b060c3c29e64289230",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-results.png",
+      "sha256": "291aec7cfea58c617e779c5e3feaa063f21a86e7e664c0880d7cc806d3dec21f",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-stewardship-destination.png",
+      "sha256": "1a91896b665b74c0f5fefb322823e13efe8e50860b99da71ad57b111d1b1c132",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mastery-stewardship.png",
+      "sha256": "66121d098ef918aab26ad9b71e21c619c86b5f3beb9f9ca5ff06e5762040bfb4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mobile-news-destination.png",
+      "sha256": "8530daa19a5b6734050e777502a22c8c02b4d5e915b71342cd16f3720d41f8e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-dark-mobile-news.png",
+      "sha256": "c4f2aae9f65f887ca4220ce00c48f58bfb42ff2ca8f5b4959b5d535036fb196c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-desktop-news-destination.png",
+      "sha256": "81dc36fba4d4241ed884fcad51c026b7422e89a13d8ef5a8e5df82e886ca7abf",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-desktop-news.png",
+      "sha256": "90667747cd64881a408251e58fde4994890af426f18e4beb38d4b78a8a06f3e8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-identity-destination.png",
+      "sha256": "35ac969eb97df40c368611dbd956451f31fb57b22a837481f46c57311bb8b6b4",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-identity-reload-destination.png",
+      "sha256": "7f237f00423394afcf35f0e6061bd68b909e3d438d52ed3cc1f2120cf46d3ec1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-identity.png",
+      "sha256": "e2dcc2837ecb7f32426cf97b716ff511bab0e2e9b80c199be4497cb491a04f6f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-promise-destination.png",
+      "sha256": "3005213b300b5ba0eab9824a253c9e5f3d7e6099722af7302d01e20aee6d2630",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-promise.png",
+      "sha256": "db98b23819d40ea3fd31ed156078ffe059d134dc329884a0d7bb8a4a73ea45dd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-results-destination.png",
+      "sha256": "86aaa43f254795457d4005fa3efb2a27335cc73b03aac731202cbd2c3b6aa566",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-results.png",
+      "sha256": "0f8695eeca096e0e4521fbcd9d61fc3b9ad1867405b1b3c1dd795a92ef0b4373",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-stewardship-destination.png",
+      "sha256": "cd12e106bacdb1a589a346ca4108a5e9344a254860eaa89640337d4e21892ee3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mastery-stewardship.png",
+      "sha256": "17d36d24680a823e012ead521edd027e8376d4d39988eecd8778d0eddd738d69",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mobile-news-destination.png",
+      "sha256": "df0c1dcbcc99d8b00a904846f6cfc3d3b770d5344c5bbc8d256c4f3d469a166d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news-destination",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-mobile-light-mobile-news.png",
+      "sha256": "64a00fb840be17585570edf68bc37f28d2aae3da0513450b38e13cc80d76658d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news",
+      "kind": "hosted-staging",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-desktop-news-destination.png",
+      "sha256": "20e9261db9b3ba9fed4e1e40a53cb1ad01ed07bb0cc7d02c8947ff7a8cec06cf",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-desktop-news.png",
+      "sha256": "c52ab953538a6d3a0309f7dc5269c27c63aba905bc6c19fbec9d9bde1878fef7",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-identity-destination.png",
+      "sha256": "02344917773510e2f8153983f4bff34f5a14edeb7953ab5979bd0b0273ad71b0",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-identity-reload-destination.png",
+      "sha256": "8d2cc61cc89ed21f5fe61f8bcddc23cc3d5944df67faeec98dfecd0270bd80fa",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-identity.png",
+      "sha256": "706ba87edbd8c3cdac03f3119e412419385335da7dfd00600c2f46041cfc4288",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-promise-destination.png",
+      "sha256": "d8295b9891be6342b623113f8d6e1104a3f0c8e0dd4f17e98e7d3cd2ce05727c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-promise.png",
+      "sha256": "e9d34489d415797c1aeedbc7f6c22e8707a862f0328fdd0cf6a4cabf713a58b9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-results-destination.png",
+      "sha256": "1f2d2b2bf44ba0eea5b58e00882120b3d5d32010c9568c92ff6f1a05fb0f1216",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-results.png",
+      "sha256": "753f3f6c3987ba94451dd6d57c2959753484fea668e59d6184b429a13b06e718",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-stewardship-destination.png",
+      "sha256": "0f02cb605115bb9fbff30a9c3f3ba87dcc1e16590e5ce5f104ee32e4124baf0d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mastery-stewardship.png",
+      "sha256": "2207914c74f9ef952bbe3d7bc767175049999b6b869946701103202dd4ba1a6a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mobile-news-destination.png",
+      "sha256": "ee5001ff1da37cd136eae5e04e1fae28e48fc24535076fe527b6ba2d553cdbdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-dark-mobile-news.png",
+      "sha256": "254b0179f00f4f070f04f20d5abd8da54260a628cb84ee5bc3385efa5fc7e826",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-desktop-news-destination.png",
+      "sha256": "9687d5334248f346ebe3b731b55c0fe886b8ea8b8b916d95f6cc483b36bdb5a9",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-desktop-news.png",
+      "sha256": "2ac3ae10f07f25d7dd3188a225aea4113b264f58459b34f870c01c3553618993",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-identity-destination.png",
+      "sha256": "637d978de86a1c2fe38037126e9892945bc390fb7195394de2472f6d235d9653",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-identity-reload-destination.png",
+      "sha256": "a48cee715da61b653dd1b24ee63fe66a3612eddfddc2b3ccf1bf6b04eb1b6a4f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-identity.png",
+      "sha256": "ff25349a98fbbca6f4aa2b6d3da8fb42f95a0a589bb598bef16d9b8b5a7cd726",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-promise-destination.png",
+      "sha256": "1e0b7592bffd106d4458e5bbdbbb082fdce5200d876b589b024c4b3afd8b66f5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-promise.png",
+      "sha256": "794b22578578a475ac3c29f5e0030db9f2424431ccf7cd39ab5e6cab44941692",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-results-destination.png",
+      "sha256": "3bf949097a4559de13527a449fde64909fc8936c3019627db6a1c43ecaee1791",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-results.png",
+      "sha256": "c0063c7b5f48d00b54a9ed06aa742ea83037443c95afb13e01aa833e552968a1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-stewardship-destination.png",
+      "sha256": "551989bb178e8b15d1e787dbd3dd1408872ab93a878910792a917f4af83a9ef3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mastery-stewardship.png",
+      "sha256": "cb26e53493454bd684a9a5c7eb70c3a92c3bc975d1855d4cecefc877e3da0049",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mobile-news-destination.png",
+      "sha256": "054310349d0c345b052e4a2469788b621dd22f29f0173faa863e206dab7c5426",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-desktop-light-mobile-news.png",
+      "sha256": "67c197a75e2f4494575add3de7e1f21e8b880e8bf0417f9d92843f91ed5e73d8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-desktop-news-destination.png",
+      "sha256": "7980e913eb8983dccf2d7ff6d95f5fc22e89d7e6d6f8e9ab971aa25eb281ee4d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-desktop-news.png",
+      "sha256": "160c9cc4b1bac9c824a6f22e8e227588ae23781f97b50d765ed0fd36841c7686",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-identity-destination.png",
+      "sha256": "8df42157ad7c1aa235821de8640938cc397598f702d90362dcdfc364a4a73cc4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-identity-reload-destination.png",
+      "sha256": "1641142544c6d5f435aa2004778201787e442754df97daf13be9125a69dc01a4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-identity.png",
+      "sha256": "ff2d73c19665f6859926839da8b0aa9f045b2450f6c21a64a6e942cca657de5c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-promise-destination.png",
+      "sha256": "e566e91432fb8c800b8530084ad6ccd86bd81c8f6f9921093c8d3b1da50a001d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-promise.png",
+      "sha256": "982741ac621c55a8d90462a16c1e89177f16e47f86cf7b48a59863599576c87c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-results-destination.png",
+      "sha256": "91f8d70ae0e0f6cbf419b62861f0e1b6a312709a9dc768b060c3c29e64289230",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-results.png",
+      "sha256": "67179edfb854c70b48f26ef9d0f087892847f3ddb63c6f0c71bb6d8e65d69efc",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-stewardship-destination.png",
+      "sha256": "1a91896b665b74c0f5fefb322823e13efe8e50860b99da71ad57b111d1b1c132",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mastery-stewardship.png",
+      "sha256": "67b15d419bd45711b395d5068e2e8908477a5b064e0b90935614b68cf4d49467",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mobile-news-destination.png",
+      "sha256": "8530daa19a5b6734050e777502a22c8c02b4d5e915b71342cd16f3720d41f8e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-dark-mobile-news.png",
+      "sha256": "1438d7404c837ff246865dfce0a86b8ee9d39e5782b0974882ec83a7c125f7e3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-desktop-news-destination.png",
+      "sha256": "81dc36fba4d4241ed884fcad51c026b7422e89a13d8ef5a8e5df82e886ca7abf",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-desktop-news.png",
+      "sha256": "90667747cd64881a408251e58fde4994890af426f18e4beb38d4b78a8a06f3e8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-identity-destination.png",
+      "sha256": "35ac969eb97df40c368611dbd956451f31fb57b22a837481f46c57311bb8b6b4",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-identity-reload-destination.png",
+      "sha256": "7f237f00423394afcf35f0e6061bd68b909e3d438d52ed3cc1f2120cf46d3ec1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-identity.png",
+      "sha256": "e2dcc2837ecb7f32426cf97b716ff511bab0e2e9b80c199be4497cb491a04f6f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-promise-destination.png",
+      "sha256": "3005213b300b5ba0eab9824a253c9e5f3d7e6099722af7302d01e20aee6d2630",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-promise.png",
+      "sha256": "7e5eb9b40f11a40bd44f32bb4004a72ebdea349903e16502c796545a20f3a792",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-results-destination.png",
+      "sha256": "86aaa43f254795457d4005fa3efb2a27335cc73b03aac731202cbd2c3b6aa566",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-results.png",
+      "sha256": "0f8695eeca096e0e4521fbcd9d61fc3b9ad1867405b1b3c1dd795a92ef0b4373",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-stewardship-destination.png",
+      "sha256": "cd12e106bacdb1a589a346ca4108a5e9344a254860eaa89640337d4e21892ee3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mastery-stewardship.png",
+      "sha256": "0c8533397055d4b2c18263f7235d15386cbfe2c30b77ae441f9b681812386291",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mobile-news-destination.png",
+      "sha256": "df0c1dcbcc99d8b00a904846f6cfc3d3b770d5344c5bbc8d256c4f3d469a166d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    },
+    {
+      "file": "s122-nav-staging-v3-mobile-light-mobile-news.png",
+      "sha256": "aa34bce11a4a0c7a597ccb7a12c831129c9a5ecf2c765344f354016420cf3854",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v3",
+      "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "audit_game independent rendered-pixel inspection",
+    "method": "Prior captures and original inspection metadata preserved through content-addressed history. Current phase independently reviewed: Inspected every one of the52 actual staging-v3 PNGs through seven contact sheets using view_image, then inspected full-resolution mobile-light mastery stewardship, mobile-dark League news destination, desktop-light Contracts destination and mobile-dark persisted identity reload. Checked dark/light desktop/mobile control readability, concise labels fitting phone cards, correctly rendered Contracts/League destinations, retained identity review state after reload and absence of blank or mid-scroll captures. No defects found in the changed surfaces. This review proves rendered synthetic journeys only; it does not prove real-user engagement or physical-device performance.",
+    "findings": [
+      "Before: invalid tabs/targets stranded all focus actions; League news was in a different tab.",
+      "Before: long focus labels spilled beyond phone cards.",
+      "After: destinations are active, visible and focused; concise labels fit without horizontal shifting in both themes."
+    ],
+    "fixesApplied": [
+      "Correct engine focus destinations and labels.",
+      "Share leagueNews route between full and mobile pulse builders."
+    ],
+    "blockingDefectsOpen": 0,
+    "phaseReviews": [
+      {
+        "phase": "staging-v3",
+        "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+        "review": {
+          "path": "reports/s122-staging-v3-visual-review.json",
+          "sha256": "fb1ad29e741f8799b45a3b71c6d0e03fc5893b9dbca12a1a041b4436e39c1dd1"
+        },
+        "browser": {
+          "path": "reports/s122-staging-v3-browser.json",
+          "sha256": "caa8e3b0bbaf4dc2edaaa54d66cae8a06e48022439e69fa46c0e7bc083b8843c"
+        },
+        "captures": 52,
+        "reviewedAt": "2026-10-24T20:09:07.363806Z",
+        "reviewer": "audit_game independent rendered-pixel inspection"
+      }
+    ]
+  },
+  "priorSourceFiles": [
+    {
+      "path": "src/engine/architectFocusReview.js",
+      "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
+    },
+    {
+      "path": "public/lib/franchiseCommandCenter.js",
+      "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
+    },
+    {
+      "path": "public/lib/mobileLoop.js",
+      "sha256": "3d514e43d902a0a50c745fedd7c400300a31da8655b24526042c345dbdf33d33"
+    },
+    {
+      "path": "public/lib/gameplayNavigation.js",
+      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    }
+  ],
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+    "files": 361,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "priorInspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "audit_game inspected all76 via10contact sheets plus full-resolution checks; root inspected before/after phone controls, Contracts destination and desktop sheet; review_navigation independent code review PASS",
+    "method": "Real worker franchise; actual saved focus and generated handlers. Before4/4 red with24 failing actual navigations. After4/4 green including all four reloads. Final destination images use reduced-motion immediate scrolling; superseded mid-scroll captures were not admitted. Exact corrected fe4 candidate passes actual hosted browser4/4, all52 hosted images inspected via7sheets and4full-resolution spots by audit_game; root independently inspected phone Contracts and League destinations. Historical local images remain at f215; only module commentary differs, independently verified executable parity.",
+    "findings": [
+      "Before: invalid tabs/targets stranded all focus actions; League news was in a different tab.",
+      "Before: long focus labels spilled beyond phone cards.",
+      "After: destinations are active, visible and focused; concise labels fit without horizontal shifting in both themes."
+    ],
+    "fixesApplied": [
+      "Correct engine focus destinations and labels.",
+      "Share leagueNews route between full and mobile pulse builders."
+    ],
+    "blockingDefectsOpen": 0
+  }
+}

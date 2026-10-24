@@ -516,7 +516,7 @@
     },
     "rehearsal": "Native tier2-audit-plan-preflight fixtures15/15 PASS."
   },
-  "status": "selected-outcomes-verified-runtime-cause-reproduced-correction-pending",
+  "status": "selected-outcomes-verified-studio-fixture-guard-correction-pending",
   "releaseAttempts": [
     {
       "sha": "f21512d2a5cd86b7d0a2004129940fa61876ead0",
@@ -553,15 +553,36 @@
         "reports/s122-evidence-history/s122-staging-v3-browser-caa8e3b0bbaf4dc2edaaa54d66cae8a06e48022439e69fa46c0e7bc083b8843c.json",
         "reports/s122-evidence-history/s122-staging-v3-visual-review-fb1ad29e741f8799b45a3b71c6d0e03fc5893b9dbca12a1a041b4436e39c1dd1.json"
       ]
+    },
+    {
+      "sha": "26616ed93079de686d13da150e4e6d7ddf581036",
+      "status": "rejected-candidate",
+      "failure": "reports/s122-studio-gate-failure.json",
+      "stagingDeployment": "b4a4ba4c-c533-487c-9606-550f25e5f26a",
+      "hostedPassed": 4,
+      "reviewedCaptures": 52,
+      "stagingPerformance": "verified after preserved failed-series diagnosis and one registered confirmation",
+      "archivedEvidence": [
+        "reports/s122-evidence-history/s122-hosted-navigation-590144b253ff2d557da5fc980039320b8c63285b58a2e171c6b9120fbf57d106.json",
+        "reports/s122-evidence-history/s122-performance-control-26616-f5ef50ad8c3f94c87046e3e5a958f2db55625fb76f5710e5b264ca323a454908.json",
+        "reports/s122-evidence-history/s122-staging-deployment-078e5fddc5931cd630d1a92cb6635ef28a0785c846942339f166c852f1de39df.json",
+        "reports/s122-evidence-history/s122-staging-performance-confirmation-0b6f8ffa4f334535984957e0028c3fe6dfe31db05d3e4a38a327692ad0682aee.json",
+        "reports/s122-evidence-history/s122-staging-performance-0b6f8ffa4f334535984957e0028c3fe6dfe31db05d3e4a38a327692ad0682aee.json",
+        "reports/s122-evidence-history/s122-staging-provenance-d6357f522a13bda8249d75c0018a278126c204ae4b8c82d2070d9a97bbc669a8.json",
+        "reports/s122-evidence-history/s122-staging-transport-4639eaa2005a6c30d762f959c264ef941620bd53528b71f9c6c642f6ad967c90.json",
+        "reports/s122-evidence-history/s122-staging-v4-browser-d10d7de12731601446dabf976733da52294b4d4afae5a114577dfec00ab660a5.json",
+        "reports/s122-evidence-history/s122-staging-v4-visual-review-19565e8ab6cf36c264f575016029179d9302bf2d967cf079cba932411ee2ac1d.json",
+        "reports/s122-evidence-history/s122-studio-gate-failure-3ac4f09ecbb43ca65db65efccc53306ad6619e178ca55b8f8db763191da9805d.json"
+      ]
     }
   ],
   "currentRelease": {
-    "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
-    "artifactDigest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
-    "ciRun": 40121101320,
-    "pagesRun": 40121129607,
-    "backendRun": 40121131146,
+    "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
+    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "ciRun": 40132009062,
+    "pagesRun": 40132255821,
+    "backendRun": 40132257492,
     "fullGoalComplete": false,
-    "runtimeFailure": "reports/s122-runtime-gate-failure.json"
+    "failure": "reports/s122-studio-gate-failure.json"
   }
 }

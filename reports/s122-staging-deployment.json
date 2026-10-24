@@ -3,10 +3,10 @@
   "kind": "independent-staging-authority",
   "project": "franchise-architect-staging",
   "branch": "staging",
-  "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+  "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+    "digest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
     "files": 361,
     "exclusions": [
       "_health",
@@ -14,9 +14,9 @@
       "edge-policy-receipt.json"
     ]
   },
-  "promotionIdentity": "b2da78a89b5040db5f278709136e163b0f4c55f3:f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
-  "deploymentId": "fecce26d-3f99-4ad0-b375-dc223b817e0a",
-  "deploymentUrl": "https://fecce26d.franchise-architect-staging.pages.dev",
+  "promotionIdentity": "26616ed93079de686d13da150e4e6d7ddf581036:9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+  "deploymentId": "b4a4ba4c-c533-487c-9606-550f25e5f26a",
+  "deploymentUrl": "https://b4a4ba4c.franchise-architect-staging.pages.dev",
   "stableUrl": "https://staging.playfranchisearchitect.com",
   "domainStatus": "active",
   "independent": true,
@@ -26,12 +26,12 @@
     "status": "verified",
     "checksPassed": 14,
     "checksTotal": 14,
-    "checkedAt": "2026-10-24T20:04:27.815Z"
+    "checkedAt": "2026-10-24T20:29:31.005Z"
   },
   "rollback": {
-    "previousDeploymentId": "e2a0084c-204f-4b30-a33b-612350b10c77",
+    "previousDeploymentId": "fecce26d-3f99-4ad0-b375-dc223b817e0a",
     "available": true
   },
   "verified": true,
-  "observedAt": "2026-10-24T20:04:27.815Z"
+  "observedAt": "2026-10-24T20:29:31.006Z"
 }

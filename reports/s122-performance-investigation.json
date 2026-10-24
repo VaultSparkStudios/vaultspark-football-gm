@@ -1,0 +1,150 @@
+{
+  "session": 122,
+  "registeredAt": "2026-10-24T20:45:06.924Z",
+  "originalFailure": {
+    "path": "reports/s122-evidence-history/s122-staging-performance-cc5619ad27418da3f64a5c49532b46966dbc3d140fc463db414be6000487f322.json",
+    "sha256": "cc5619ad27418da3f64a5c49532b46966dbc3d140fc463db414be6000487f322",
+    "desktopMedianMs": 2100,
+    "mobileMedianMs": 1308,
+    "thresholdMs": 1800
+  },
+  "diagnostic": {
+    "path": ".cache/s122-desktop-lcp-probe.json",
+    "lcpMs": 1432,
+    "documentTtfbMs": 759.7,
+    "longTasks": 0,
+    "scope": "Not acceptance"
+  },
+  "comparison": {
+    "order": [
+      "old-immutable",
+      "current-immutable"
+    ],
+    "runsPerProfile": 5,
+    "protocol": "Unmodified canonical measure-hosted-performance; channelchrome; desktop/mobileconcurrentasimplemented; no otherbrowserwork; no warmup exclusions; retainall samples.",
+    "old": {
+      "url": "https://e2a0084c.franchise-architect-staging.pages.dev",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689"
+    },
+    "current": {
+      "url": "https://b4a4ba4c.franchise-architect-staging.pages.dev",
+      "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036"
+    }
+  },
+  "next": "Compareboth fullseries plus timings before deciding remediation. Atmostone scheduled stable-origin confirmation after diagnosis; no retry-until-green, dropped samples, threshold orprotocol changes.",
+  "comparisonResults": [
+    {
+      "path": "reports/s122-performance-control-fe4.json",
+      "sha256": "04088d06aab363773609e7d960d03219bc7153c068273aa82148ee6984c0bfa8",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "artifactDigest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+      "status": "verified",
+      "profiles": [
+        {
+          "name": "desktop",
+          "medianLcpMs": 1320,
+          "allLcpSamplesMs": [
+            1500,
+            1320,
+            1276,
+            1472,
+            1104
+          ],
+          "inpMs": 24,
+          "cls": 0.0003
+        },
+        {
+          "name": "mobile",
+          "medianLcpMs": 1412,
+          "allLcpSamplesMs": [
+            1460,
+            792,
+            1124,
+            1412,
+            1588
+          ],
+          "inpMs": 32,
+          "cls": 0.0131
+        }
+      ]
+    },
+    {
+      "path": "reports/s122-performance-control-26616.json",
+      "sha256": "f5ef50ad8c3f94c87046e3e5a958f2db55625fb76f5710e5b264ca323a454908",
+      "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
+      "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+      "status": "verified",
+      "profiles": [
+        {
+          "name": "desktop",
+          "medianLcpMs": 704,
+          "allLcpSamplesMs": [
+            1904,
+            704,
+            632,
+            1304,
+            564
+          ],
+          "inpMs": 24,
+          "cls": 0.0003
+        },
+        {
+          "name": "mobile",
+          "medianLcpMs": 1324,
+          "allLcpSamplesMs": [
+            1576,
+            1324,
+            676,
+            1568,
+            540
+          ],
+          "inpMs": 40,
+          "cls": 0.0131
+        }
+      ]
+    }
+  ],
+  "diagnosis": "Both immutable deployments pass the unchanged protocol; landing HTML/CSS/hero bytes match. Content regression is not established. The original stable-origin outliers and desktopmedian2100 remain recorded; transport/scheduling variance is supported but causality is not proven.",
+  "confirmation": {
+    "registeredAt": "2026-10-24T20:50:33.159Z",
+    "url": "https://staging.playfranchisearchitect.com",
+    "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
+    "runsPerProfile": 5,
+    "attempts": 1,
+    "method": "Unmodified native protocol, same thresholds, no warmups or sample exclusions, no overlapping browser work from this task.",
+    "remainingGate": "Stable-origin must independently pass; immutable controls are not substituted.",
+    "path": "reports/s122-staging-performance-confirmation.json",
+    "sha256": "0b6f8ffa4f334535984957e0028c3fe6dfe31db05d3e4a38a327692ad0682aee",
+    "observedAt": "2026-10-24T20:51:05.022Z",
+    "status": "verified",
+    "profiles": [
+      {
+        "name": "desktop",
+        "lcpMs": 1204,
+        "inpMs": 32,
+        "cls": 0.0003,
+        "allLcpSamplesMs": [
+          1204,
+          1156,
+          1460,
+          1164,
+          1308
+        ]
+      },
+      {
+        "name": "mobile",
+        "lcpMs": 1332,
+        "inpMs": 32,
+        "cls": 0.0131,
+        "allLcpSamplesMs": [
+          1144,
+          1164,
+          1332,
+          1332,
+          1468
+        ]
+      }
+    ]
+  },
+  "limits": "The initial stable-origin desktop median2100 exceeded1800 and remains preserved. Both immutable controls and exactlyone predeclared stable-origin confirmation passed. These observations support labdelivery/schedulingvariance, not field performance or provenrootcausality. No samples, thresholds orprotocol steps were changed."
+}
