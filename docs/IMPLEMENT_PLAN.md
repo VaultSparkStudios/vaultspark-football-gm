@@ -1,3 +1,24 @@
+<!-- source: docs/AUDIT_2026-10-23_SESSION121.json · Session 121 -->
+# S121 deployment reliability and public polish
+
+- **Expose the backend admission refusal and complete the authorized deployment**: Preserve bounded SSH retries and host identity; attach sanitized remote failure diagnostics to the error, test credential redaction and non-retry of application failures, inspect current host admission through the existing gateway diagnostic, then promote the exact passing candidate. Acceptance: A refused deployment names its cause without credentials; focused tests pass; exact candidate API health is verified after deployment.
+  Current evidence: Focused transport tests pass including ANSI/NUL redaction regression from independent review. Live read-only gateway diagnostics succeed: memory 11.19 GiB available, root disk 83 GiB free. Exact-candidate backend deployment/readback still pending.
+
+- **Make the real startup writer produce a bindable session lock**: Write and preserve the session start commit using safe-spawn; test the real writer in an isolated git fixture through bindArcGoal, including repeated startup and forced rotation. Repair this S121 lock from its observed original HEAD and bind this native goal. Acceptance: The real writer lock binds successfully; repeated startup preserves the anchor, forced startup rotates it, and this goal resumes S121.
+  Current evidence: Real writer fixture and startup tests pass; native goal 01a16b3a-e2b2-7d90-bd24-91ae57e04761 binds S121 at original 3a85f2bd. Repeated writer preserves the anchor; forced writer rotates; missing git refuses publication.
+
+- **Give the shared public footer the page gutter**: Capture before images on desktop/mobile in dark/light; add a scoped shared-footer gutter that also fits already constrained parents; inspect all shared-footer routes after build and capture the four variants. Preserve links and legal text. Acceptance: All shared-footer pages have readable horizontal spacing without overflow in both themes at desktop/mobile; before/after images are inspected and hash-bound.
+  Current evidence: 56 provisional after captures pass; before images preserved. Shared footer has 16 px gutter and centered 1120 px maximum. Final display:block refinement and immutable candidate capture review pending.
+
+- **Make evidence wait for the surface it claims to show**: Replace the arbitrary public-page delay with bounded layout and image readiness; scroll normally through lazy content before full-page capture. Add a browser regression with a delayed off-screen image. S121 mobile moment-card baseline passed 24 captures and visual inspection: carried framing defect not reproduced, no speculative fix. Acceptance: Full-page capture loads an off-screen delayed image, returns to the top, and fails on bounded-scroll exhaustion; real public captures contain loaded lazy content. Mobile moment-card baseline is recorded as not reproduced.
+  Current evidence: Browser regression passed via canonical Playwright runner. Public 56-capture iteration passes with delayed/lazy image readiness. Fresh mobile moment-card baseline: 24 captures pass; title/share action visible; carried clipping not reproduced and no speculative source edit.
+
+Wave 1 startup and fresh audit complete; Wave 2 implementation and focused checks complete, immutable visual review pending; Wave 3 exact-candidate staging/production and canonical closeout pending. Existing public launch/email holds remain.
+
+---
+
+## Preserved prior implementation plans
+
 <!-- source: docs/AUDIT_2026-10-23.json · Session 120 -->
 # Player identity and franchise development overhaul
 

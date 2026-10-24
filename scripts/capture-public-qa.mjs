@@ -4,6 +4,7 @@ import http from "node:http";
 import path from "node:path";
 import { chromium } from "@playwright/test";
 import { parseArtifactHeaderRules, resolveArtifactHeaders } from "./lib/edge-security-policy.mjs";
+import { prepareFullPageCapture } from "./lib/capture-readiness.mjs";
 
 const root = process.cwd();
 const staticDir = path.join(root, "static");
@@ -53,8 +54,7 @@ try {
       const page = await context.newPage();
       for (const route of routes) {
         const response = await page.goto(`${baseUrl}/${route}`, { waitUntil: "domcontentloaded" });
-        await page.evaluate(() => document.fonts.ready);
-        await page.waitForTimeout(250);
+        await prepareFullPageCapture(page);
         const name = `${viewport.name}-${theme}-${route.replace(".html", "")}.png`;
         await page.screenshot({ path: path.join(outputDir, name), fullPage: true });
         const dimensions = await page.evaluate(() => ({ width: innerWidth, documentWidth: document.documentElement.scrollWidth, policyViolations: globalThis.__evidencePolicyViolations || [] }));

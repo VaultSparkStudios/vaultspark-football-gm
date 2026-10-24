@@ -5924,6 +5924,12 @@ html[data-theme="light"] .bg-layer {
 .sr-first-season-contract ul { display: grid; gap: 0.35rem; margin: 0.65rem 0; padding-left: 1.3rem; }
 .sr-first-season-contract li { line-height: 1.4; }
 .sr-first-season-contract small { display: block; color: var(--muted); line-height: 1.4; }
+.public-chrome-footer {
+  display: block;
+  padding: 16px;
+  max-width: 1120px;
+  margin-inline: auto;
+}
 .public-chrome-footer .public-chrome-nav { display: block; margin-bottom: 8px; }
 .public-chrome-footer .public-chrome-nav a[aria-current="page"] { color: var(--accent-strong); font-weight: 600; }
 .community-showcase .community-stat[data-state="simulated"] { border-style: dashed; }

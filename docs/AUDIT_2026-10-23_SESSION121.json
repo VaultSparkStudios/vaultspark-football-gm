@@ -1,0 +1,355 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-23",
+  "generatedAt": "2026-10-24T00:11:35.478Z",
+  "session": 121,
+  "source": "f5ff502e074eeee5422056665cf281ef4bcabe69",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "rubric": "product",
+    "staging": "independent stable staging",
+    "source": "S121 fresh nine-axis source review"
+  },
+  "scope": "S121 full arc: reliable deployment and visible public polish",
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 3,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 1.5,
+    "speed-organization-efficiency": 1.5,
+    "token-cost": 1.5,
+    "observability-honesty": 1.5,
+    "sil-debt": 1.5
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "more-conference-extraction",
+          "premise": "Weekly standings still hard-code conference keys.",
+          "evidence": "src/engine/weeklySimulator.js now reads structure.conferences (S120); no duplicate extraction."
+        },
+        {
+          "slug": "save-payload-compaction",
+          "premise": "Payload exceeds the current 16 MB bar.",
+          "evidence": "S119 measured 15.305 MB; no newer over-budget measurement."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "public-footer-gutter"
+      ],
+      "rejectedOnVerify": []
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-retention-overlay",
+          "premise": "The game lacks a current decision or return hook.",
+          "evidence": "context/GAME_LOOP.md and public/lib/returnDigest.js already define and deliver the decision/return loop."
+        },
+        {
+          "slug": "more-moment-ui",
+          "premise": "Moment sharing has no shipped control.",
+          "evidence": "responsive-evidence.mjs mounts the shipped moment module; the demonstrated gap is evidence framing, selected separately."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-gm-advisor",
+          "premise": "An external model is required for useful GM advice.",
+          "evidence": "Existing public/lib/advisor.js is local and cost-neutral; no measured need or paid approval."
+        },
+        {
+          "slug": "new-ai-copy",
+          "premise": "Current feature copy omits all intelligence behavior.",
+          "evidence": "public/features.html already describes the shipped game; no verified missing behavior."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "retry-admission-refusal",
+          "premise": "Exit 75 should be retried until the host admits it.",
+          "evidence": "Shared-host guard enforces reserve/ownership; retrying is not a capacity remedy and is excluded."
+        },
+        {
+          "slug": "local-account-system",
+          "premise": "Deploy requires project-local authentication.",
+          "evidence": "PROJECT_STATUS declares external Obelisk and no account flows; promotion changes no trust contract."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [
+        "capture-render-readiness"
+      ],
+      "rejectedOnVerify": []
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "compact-status-prompts",
+          "premise": "This arc needs a new context compactor.",
+          "evidence": "Existing startup brief, context meter and bounded audit projection already cover context; no new measured token defect."
+        },
+        {
+          "slug": "api-cost-router",
+          "premise": "The selected fixes need paid API routing.",
+          "evidence": "Static footer and evidence changes have no per-user model API cost."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [
+        "backend-failure-evidence"
+      ],
+      "rejectedOnVerify": []
+    },
+    "sil-debt": {
+      "surviving": [
+        "goal-lock-anchor"
+      ],
+      "rejectedOnVerify": []
+    }
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 1,
+      "slug": "backend-failure-evidence",
+      "axis": "observability-honesty",
+      "title": "Expose the backend admission refusal and complete the authorized deployment",
+      "category": "observability-honesty",
+      "tier": "🔥",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 12,
+      "premise": "Live source scripts/deploy-backend-ssh.mjs contains const kind = identityOrAuthFailure; verified during S121 startup audit.",
+      "premises": [
+        {
+          "claim": "Source contract for backend-failure-evidence",
+          "adapter": "grep",
+          "target": "scripts/deploy-backend-ssh.mjs",
+          "pattern": "const kind = identityOrAuthFailure",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "recipe": "Preserve bounded SSH retries and host identity; attach sanitized remote failure diagnostics to the error, test credential redaction and non-retry of application failures, inspect current host admission through the existing gateway diagnostic, then promote the exact passing candidate.",
+      "acceptance": "A refused deployment names its cause without credentials; focused tests pass; exact candidate API health is verified after deployment.",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Measure and document the concrete failure."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Preserve bounded SSH retries and host identity; attach sanitized remote failure diagnostics to the error, test credential redaction and non-retry of application failures, inspect current host admission through the existing gateway diagnostic, then promote the exact passing candidate."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
+        }
+      },
+      "status": "pending",
+      "executionLog": [
+        {
+          "at": "2026-10-24T00:19:52.422Z",
+          "status": "pending",
+          "note": "Focused transport tests pass including ANSI/NUL redaction regression from independent review. Live read-only gateway diagnostics succeed: memory 11.19 GiB available, root disk 83 GiB free. Exact-candidate backend deployment/readback still pending."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "goal-lock-anchor",
+      "axis": "sil-debt",
+      "title": "Make the real startup writer produce a bindable session lock",
+      "category": "sil-debt",
+      "tier": "🔥",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 13.25,
+      "premise": "Live source scripts/write-session-lock.mjs omits start_head:; verified during S121 startup audit.",
+      "premises": [
+        {
+          "claim": "Source contract for goal-lock-anchor",
+          "adapter": "grep",
+          "target": "scripts/write-session-lock.mjs",
+          "pattern": "start_head:",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "recipe": "Write and preserve the session start commit using safe-spawn; test the real writer in an isolated git fixture through bindArcGoal, including repeated startup and forced rotation. Repair this S121 lock from its observed original HEAD and bind this native goal.",
+      "acceptance": "The real writer lock binds successfully; repeated startup preserves the anchor, forced startup rotates it, and this goal resumes S121.",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Measure and document the concrete failure."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Write and preserve the session start commit using safe-spawn; test the real writer in an isolated git fixture through bindArcGoal, including repeated startup and forced rotation. Repair this S121 lock from its observed original HEAD and bind this native goal."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
+        }
+      },
+      "status": "pending",
+      "executionLog": [
+        {
+          "at": "2026-10-24T00:19:52.422Z",
+          "status": "pending",
+          "note": "Real writer fixture and startup tests pass; native goal 01a16b3a-e2b2-7d90-bd24-91ae57e04761 binds S121 at original 3a85f2bd. Repeated writer preserves the anchor; forced writer rotates; missing git refuses publication."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "slug": "public-footer-gutter",
+      "axis": "ui-ux-feedback",
+      "title": "Give the shared public footer the page gutter",
+      "category": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 11.36,
+      "premise": "Live source public/styles.css omits .public-chrome-footer {; verified during S121 startup audit.",
+      "premises": [
+        {
+          "claim": "Source contract for public-footer-gutter",
+          "adapter": "grep",
+          "target": "public/styles.css",
+          "pattern": ".public-chrome-footer {",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "recipe": "Capture before images on desktop/mobile in dark/light; add a scoped shared-footer gutter that also fits already constrained parents; inspect all shared-footer routes after build and capture the four variants. Preserve links and legal text.",
+      "acceptance": "All shared-footer pages have readable horizontal spacing without overflow in both themes at desktop/mobile; before/after images are inspected and hash-bound.",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Measure and document the concrete failure."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Capture before images on desktop/mobile in dark/light; add a scoped shared-footer gutter that also fits already constrained parents; inspect all shared-footer routes after build and capture the four variants. Preserve links and legal text."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
+        }
+      },
+      "status": "pending",
+      "executionLog": [
+        {
+          "at": "2026-10-24T00:19:52.422Z",
+          "status": "pending",
+          "note": "56 provisional after captures pass; before images preserved. Shared footer has 16 px gutter and centered 1120 px maximum. Final display:block refinement and immutable candidate capture review pending."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "rank": 4,
+      "slug": "capture-render-readiness",
+      "axis": "speed-organization-efficiency",
+      "title": "Make evidence wait for the surface it claims to show",
+      "category": "speed-organization-efficiency",
+      "tier": "🔥",
+      "effortHours": 2,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 12,
+      "premise": "Live source scripts/capture-public-qa.mjs contains page.waitForTimeout(250); verified during S121 startup audit.",
+      "premises": [
+        {
+          "claim": "Source contract for capture-render-readiness",
+          "adapter": "grep",
+          "target": "scripts/capture-public-qa.mjs",
+          "pattern": "page\\.waitForTimeout\\(250\\)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "recipe": "Replace the arbitrary public-page delay with bounded layout and image readiness; scroll normally through lazy content before full-page capture. Add a browser regression with a delayed off-screen image. S121 mobile moment-card baseline passed 24 captures and visual inspection: carried framing defect not reproduced, no speculative fix.",
+      "acceptance": "Full-page capture loads an off-screen delayed image, returns to the top, and fails on bounded-scroll exhaustion; real public captures contain loaded lazy content. Mobile moment-card baseline is recorded as not reproduced.",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Measure and document the concrete failure."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Replace the arbitrary public-page delay with bounded layout and image readiness; scroll normally through lazy content before full-page capture. Add a browser regression with a delayed off-screen image. S121 mobile moment-card baseline passed 24 captures and visual inspection: carried framing defect not reproduced, no speculative fix."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
+        }
+      },
+      "status": "pending",
+      "executionLog": [
+        {
+          "at": "2026-10-24T00:19:52.422Z",
+          "status": "pending",
+          "note": "Browser regression passed via canonical Playwright runner. Public 56-capture iteration passes with delayed/lazy image readiness. Fresh mobile moment-card baseline: 24 captures pass; title/share action visible; carried clipping not reproduced and no speculative source edit."
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "count": 4,
+    "priority": 48.61,
+    "top3": [
+      "backend-failure-evidence",
+      "goal-lock-anchor",
+      "public-footer-gutter"
+    ]
+  },
+  "gameLoopReview": {
+    "loopTightness": 7,
+    "progression": 7,
+    "sessionEngagement": 7,
+    "retention": 6,
+    "soulFidelity": 7,
+    "evidence": "Source review only, not measured player enjoyment. GAME_LOOP contract and existing decision, timeline and moment surfaces reviewed. Next actions: preserve decision loop, repair reliable moment evidence, ship visible footer polish without adding another overlay."
+  },
+  "readinessNotes": "Local profile lacks ladderStage; startup authority reports registry FORGE/FB. No lifecycle change selected. Email reply-as and public-launch holds remain. Routine deployment follows exact-candidate checks, staging, rollback and readback.",
+  "status": "implementation-in-progress-release-pending",
+  "goalAssociation": {
+    "threadId": "01a16b3a-e2b2-7d90-bd24-91ae57e04761",
+    "createdAt": 1792800402,
+    "session": 121,
+    "originalHead": "3a85f2bd105d06a669fa6b29c3e33d2594e3237c",
+    "completionProven": false
+  }
+}

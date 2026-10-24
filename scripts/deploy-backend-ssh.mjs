@@ -61,14 +61,24 @@ export function validateBackendSshConfig(config) {
   return { ...config, hostKey };
 }
 
-export async function withTransportRetry(name, run, { attempts = 3, delay = async () => {} } = {}) {
+export function redactBackendDiagnostic(value, config) {
+  let text = String(value || '').replace(/\x1b\[[0-9;]*[A-Za-z]/g, '').replace(/[\x00-\x08\x0b-\x1f\x7f]/g, '');
+  // Redact before truncation: a cut token must never evade exact-value removal.
+  const sensitive = [config.registryToken, config.privateKey,
+    ...String(config.privateKey || '').split(/\r?\n/).filter((line) => line.trim().length > 8)];
+  for (const secret of sensitive.filter(Boolean).sort((a, b) => b.length - a.length)) text = text.split(secret).join('[REDACTED]');
+  return text.trim().slice(-2000);
+}
+
+export async function withTransportRetry(name, run, { attempts = 3, delay = async () => {}, diagnostic = () => '' } = {}) {
   for (let attempt = 1; attempt <= attempts; attempt++) {
     const result = await run(attempt);
     if (result.status === 0) return { ...result, attempt };
     const identityOrAuthFailure = /host key verification failed|remote host identification has changed|permission denied \(publickey|could not resolve hostname/i.test(result.stderr || "");
     if (result.status !== 255 || identityOrAuthFailure || attempt === attempts) {
       const kind = identityOrAuthFailure ? "host identity/auth" : result.status === 255 ? "transport" : "remote";
-      throw new Error(`${name} ${kind} failure (exit ${result.status ?? "unknown"}, attempt ${attempt}/${attempts})`);
+      const detail = diagnostic(result.stderr);
+      throw new Error(`${name} ${kind} failure (exit ${result.status ?? "unknown"}, attempt ${attempt}/${attempts})${detail ? `: ${detail}` : ''}`);
     }
     await delay(attempt * 3000);
   }
@@ -98,11 +108,12 @@ export async function deployBackendViaSsh(rawConfig, {
       encoding: "utf8", input, timeout: 4 * 60 * 1000, maxBuffer: 4 * 1024 * 1024,
       windowsHide: true
     });
-    const copy = await withTransportRetry("backend ops copy", () => run("scp", ["-r", ...opts, "ops", `${target}:${config.deployPath}`]), { delay });
+    const diagnostic = (value) => redactBackendDiagnostic(value, config);
+    const copy = await withTransportRetry("backend ops copy", () => run("scp", ["-r", ...opts, "ops", `${target}:${config.deployPath}`]), { delay, diagnostic });
     log("Backend ops files copied with pinned SSH host identity.");
     const remoteCommand = ["bash", "-c", shellQuote(REMOTE_SCRIPT), "backend-deploy",
       shellQuote(config.deployPath), shellQuote(config.sourceRevision), shellQuote(config.registryUser)].join(" ");
-    const deployed = await withTransportRetry("backend deploy", () => run("ssh", [...opts, target, remoteCommand], `${config.registryToken}\n`), { delay });
+    const deployed = await withTransportRetry("backend deploy", () => run("ssh", [...opts, target, remoteCommand], `${config.registryToken}\n`), { delay, diagnostic });
     if (deployed.stdout) log(deployed.stdout.trim());
     return { copyAttempts: copy.attempt, deployAttempts: deployed.attempt };
   } finally {

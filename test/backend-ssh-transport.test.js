@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { deployBackendViaSsh, validateBackendSshConfig, withTransportRetry } from "../scripts/deploy-backend-ssh.mjs";
+import { deployBackendViaSsh, redactBackendDiagnostic, validateBackendSshConfig, withTransportRetry } from "../scripts/deploy-backend-ssh.mjs";
 
 const config = {
   host: "backend.example.test",
@@ -82,6 +82,30 @@ test("backend SSH transport rejects absent or mismatched host identity before sp
   assert.throws(() => validateBackendSshConfig({ ...config, hostKey: "" }), /Missing backend SSH configuration: hostKey/);
   assert.throws(() => validateBackendSshConfig({ ...config, hostKey: "other.example.test ssh-ed25519 Zml4dHVyZQ==" }), /pinned known_hosts line/);
   assert.throws(() => validateBackendSshConfig({ ...config, deployPath: "/srv/../escape" }), /absolute simple path/);
+});
+
+test("backend admission refusal keeps its reason, redacts credentials and does not retry", async () => {
+  const calls = [];
+  await assert.rejects(deployBackendViaSsh(config, {
+    spawn(command) {
+      calls.push(command);
+      return { status: command === 'scp' ? 0 : 75, stderr: `Reserve below 15 GiB; ${config.registryToken}; ${config.privateKey}` };
+    },
+    delay: async () => { throw new Error('Must not retry admission'); },
+    log: () => {}
+  }), (error) => {
+    assert.match(error.message, /exit 75.*Reserve below 15 GiB/);
+    assert.doesNotMatch(error.message, /fixture-token|fixture-key-material/);
+    assert.match(error.message, /REDACTED/);
+    return true;
+  });
+  assert.deepEqual(calls, ['scp', 'ssh']);
+});
+
+test('terminal normalization cannot reconstruct a credential after redaction', () => {
+  const diagnostic = redactBackendDiagnostic('reserve failure: fixture-\u001b[31mtoken fixture-\u0000key-material', config);
+  assert.doesNotMatch(diagnostic, /fixture-token|fixture-key-material/);
+  assert.equal(diagnostic, 'reserve failure: [REDACTED] [REDACTED]');
 });
 
 test("host-key mismatch fails immediately even though SSH returns transport exit 255", async () => {

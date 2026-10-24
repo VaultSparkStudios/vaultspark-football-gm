@@ -1,3 +1,11 @@
+# S121 in progress — full new arc
+
+Session Intent: /arc then authorized direct commit/push to main and full deployment. Native goal association is recorded in docs/AUDIT_2026-10-23_SESSION121.json; ignored binding now resumes S121. Startup and fresh nine-axis audit are complete. Four selected outcomes have source changes and focused proof; no production completion claimed. Wave 1 complete; Wave 2 immutable visual review pending; Wave 3 staging, candidate CI, Pages/backend promotion, readback and full canonical closeout pending.
+
+Focused tests: 26/26 Node cases; 1/1 canonical browser case. Review found and fixed one diagnostic-redaction issue. Current read-only host checks find adequate root disk/memory. Launch/email holds unchanged. Detailed working evidence stays in ignored .cache/s121-*; selected audit carries the acceptance requirements.
+
+---
+
 # Latest Handoff — Session 120 → Session 121
 
 ## Where We Left Off (Session 120)

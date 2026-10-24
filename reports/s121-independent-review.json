@@ -1,0 +1,19 @@
+{
+  "session": 121,
+  "at": "2026-10-24T00:19:52.422Z",
+  "reviewer": "independent in-process review_s121",
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "fix",
+      "findings": 1,
+      "detail": "Normalize terminal controls before secret replacement to prevent reconstruction."
+    },
+    {
+      "round": 2,
+      "verdict": "accept",
+      "findings": 0,
+      "detail": "Redaction regression fixed. Lock, capture readiness and scoped gutter source accepted. Immutable visual and deployment readback remain required."
+    }
+  ]
+}

@@ -13,6 +13,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { spawnSync } from './lib/safe-spawn.mjs';
 
 // Self-healing default label, derived from the model-router chokepoint (the single
 // source of truth for model IDs) when it's reachable: a chokepoint bump (opus 4.7
@@ -112,22 +113,35 @@ const now = new Date().toISOString();
 // ledger entries by ts >= session_start). Use --force to rotate.
 const FORCE = args.includes('--force');
 let sessionStart = now;
+let startHead = null;
 if (!FORCE && fs.existsSync(lockPath)) {
   const prior = fs.readFileSync(lockPath, 'utf8');
   const m = prior.match(/^session_start:\s*(\S+)/m);
   if (m) {
     const priorTs = new Date(m[1]).getTime();
     // Only carry over if the prior lock is <12h old — otherwise treat as stale.
-    if (Date.now() - priorTs < 12 * 3600 * 1000) sessionStart = m[1];
+    if (Date.now() - priorTs < 12 * 3600 * 1000) {
+      sessionStart = m[1];
+      startHead = prior.match(/^start_head:\s*([a-f0-9]{40})\s*$/m)?.[1] || null;
+    }
   }
 }
 const sessionId = resolveSessionIdentity(ROOT, {
   lockText: fs.existsSync(lockPath) ? fs.readFileSync(lockPath, 'utf8') : '',
 });
 
+if (!startHead) {
+  const head = spawnSync('git', ['rev-parse', 'HEAD'], { cwd: ROOT, encoding: 'utf8', timeout: 10000 });
+  if (head.status !== 0 || !/^[a-f0-9]{40}$/.test(String(head.stdout || '').trim())) {
+    throw new Error('Cannot establish the session start commit; refusing an unbindable lock');
+  }
+  startHead = head.stdout.trim();
+}
+
 const content = [
   `locked_by: agent-session`,
   `session_start: ${sessionStart}`,
+  `start_head: ${startHead}`,
   ...(Number.isFinite(sessionId) ? [`session_id: ${sessionId}`] : []),
   `agent: ${agentArg}`,
   `trigger: ${triggerArg}`,
