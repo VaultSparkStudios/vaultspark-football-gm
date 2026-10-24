@@ -1,0 +1,28 @@
+{
+  "session": 122,
+  "at": "2026-10-24T18:35:53.685Z",
+  "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+    "files": 361,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "passed": 4,
+  "total": 4,
+  "captures": 52,
+  "reviewed": true,
+  "reviewer": "audit_game all52; root two actual phone destinations",
+  "ledger": {
+    "added": 52,
+    "revised": 0,
+    "total": 5445,
+    "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+  },
+  "receipt": "docs/visual-qa/LATEST.json",
+  "limits": "These are rendered synthetic journeys, not actual-user or physical-device evidence."
+}

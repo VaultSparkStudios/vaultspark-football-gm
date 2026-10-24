@@ -13,3 +13,7 @@ Wave 1 startup/audit complete; Wave 2 implementation pending; Wave 3 staging, cl
 
 
 S122 implementation acceptance: all three selected L2 outcomes verified locally. Navigation30units/4browser variants incl reload; startup18focused tests; independent reviews pass. Wave2complete; Wave3exact-candidate staging/CI/production/closeout pending. Prior implementation plans remain in Git history.
+
+S122 release correction: f21512d2 was rejected by the unchanged650000-byte boot target (650086bytes). Comment-only trim restores648746bytes; independent executable-parity review and10boot/island checks pass. Hosted URL assertion now accepts actual /game?resume=tab without weaker readiness/focus/reload checks. Corrected fe4f0672 passes staging14/14, hosted4/4, visual128reviewed, clean Studio386/386 and staging performance. All seven exact-candidate CI jobs and production/closeout remain pending.
+
+S122 runtime gate: corrected fe4 source failed both CI and backend runtime jobs. Full provider logs stop mid-line before the test summary, so the failing assertion or termination cause is unknown. Same-source local diagnostic preserves full stdout/stderr and child metadata. Runner output-drain/error-reporting correction passes five focused checks; no test, shard, timeout or buffer ceiling is removed or raised. Production and closeout remain unverified.

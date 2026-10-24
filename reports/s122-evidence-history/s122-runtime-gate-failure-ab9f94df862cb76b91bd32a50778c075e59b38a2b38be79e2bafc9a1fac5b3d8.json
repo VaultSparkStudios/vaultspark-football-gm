@@ -1,0 +1,23 @@
+{
+  "session": 122,
+  "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+  "status": "failed-release-gate",
+  "backend": {
+    "runId": 40121131146,
+    "jobId": 120952693907,
+    "conclusion": "failure"
+  },
+  "ci": {
+    "runId": 40121101320,
+    "jobId": 120952594602,
+    "conclusion": "failure"
+  },
+  "diagnosis": "Full provider logs end mid-line before TAP summary; no assertion failure or termination signal is visible. Same-source full-output diagnosis is running. No production acceptance.",
+  "runnerGaps": [
+    "CLI process.exit can discard pending stdout pipe writes",
+    "Non-timeout child signals and spawn errors are not reported"
+  ],
+  "actualCause": "unmeasured",
+  "remainingJobs": "Cancelled after executed required runtime failures; cancelled jobs are nonpassing and no promotion occurred.",
+  "cancellation": "Observed cancellation requests for CI40121101320, Pages40121129607 and backend40121131146."
+}

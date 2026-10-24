@@ -1,0 +1,14 @@
+{
+  "session": 122,
+  "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+  "scope": "Studio shard from an isolated checkout of the exact corrected commit",
+  "command": "node scripts/run-test-shard.mjs studio",
+  "tests": 386,
+  "passed": 386,
+  "failed": 0,
+  "exitCode": 0,
+  "durationMs": 526623.5995,
+  "observation": "Unified execution handle24405 completed directly; no pipeline or tail wrapper masked the exit.",
+  "generatedMetadata": ["context/PROJECT_STATUS.json", "docs/STARTUP_BRIEF.md"],
+  "limits": "Tests generate those two metadata outputs in the disposable checkout. This proves the Studio shard, not the complete six-shard application suite. Full release acceptance still requires all seven exact-candidate CI jobs."
+}

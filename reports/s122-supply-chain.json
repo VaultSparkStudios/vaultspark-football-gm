@@ -1,0 +1,44 @@
+{
+  "session": 122,
+  "at": "2026-10-24T18:44:23.083Z",
+  "subject": "franchise-architect-football",
+  "targetIdentityVerified": true,
+  "scope": "Canonical known-incident package/lockfile and checked-in dependency scanner; this is not a comprehensive vulnerability audit.",
+  "exitCode": 0,
+  "metadata": [
+    {
+      "file": "package.json",
+      "sha256": "855d0b4e2f550e449f17f5b8c30c00b3aac2f1b140bcac5b2cebfef2510425d1"
+    },
+    {
+      "file": "package-lock.json",
+      "sha256": "682a3c04e57af5d09af15ac22f5a078c42f12c05cd875dd3c7970f3365e0548a"
+    }
+  ],
+  "scan": {
+    "generatedAt": "2026-10-24T18:44:22.717Z",
+    "incidents": [
+      {
+        "id": "mini-shai-hulud-2026-05-11",
+        "name": "Mini Shai-Hulud / TanStack pwn-request compromise",
+        "date": "2026-05-11",
+        "repoCount": 0,
+        "repos": []
+      },
+      {
+        "id": "shai-hulud-2025-09",
+        "name": "Shai-Hulud chalk/debug/ansi-styles phishing wave",
+        "date": "2025-09-08",
+        "repoCount": 0,
+        "repos": []
+      },
+      {
+        "id": "tj-actions-2025-03",
+        "name": "tj-actions/changed-files GitHub Actions compromise",
+        "date": "2025-03-14",
+        "repoCount": 0,
+        "repos": []
+      }
+    ]
+  }
+}

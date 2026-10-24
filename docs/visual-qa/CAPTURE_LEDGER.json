@@ -21075,6 +21075,266 @@
       "bytes": 70888,
       "session": 122
     },
+    "s122-nav-staging-desktop-dark-desktop-news-destination.png": {
+      "sha256": "0d0d28e0ad97acab642e2c32a22fd85030691c640d4314ad36e58e2d972b2cdc",
+      "bytes": 315813,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-desktop-news.png": {
+      "sha256": "c52ab953538a6d3a0309f7dc5269c27c63aba905bc6c19fbec9d9bde1878fef7",
+      "bytes": 577227,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-identity-destination.png": {
+      "sha256": "02344917773510e2f8153983f4bff34f5a14edeb7953ab5979bd0b0273ad71b0",
+      "bytes": 604580,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-identity-reload-destination.png": {
+      "sha256": "8d2cc61cc89ed21f5fe61f8bcddc23cc3d5944df67faeec98dfecd0270bd80fa",
+      "bytes": 531926,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-identity.png": {
+      "sha256": "706ba87edbd8c3cdac03f3119e412419385335da7dfd00600c2f46041cfc4288",
+      "bytes": 488106,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-promise-destination.png": {
+      "sha256": "d8295b9891be6342b623113f8d6e1104a3f0c8e0dd4f17e98e7d3cd2ce05727c",
+      "bytes": 584061,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-promise.png": {
+      "sha256": "e9d34489d415797c1aeedbc7f6c22e8707a862f0328fdd0cf6a4cabf713a58b9",
+      "bytes": 488162,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-results-destination.png": {
+      "sha256": "1f2d2b2bf44ba0eea5b58e00882120b3d5d32010c9568c92ff6f1a05fb0f1216",
+      "bytes": 604769,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-results.png": {
+      "sha256": "9d5a319926d3cb4a79246ef0c40d75ea8a92986b16359e6be46ba0874746e46c",
+      "bytes": 487237,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-stewardship-destination.png": {
+      "sha256": "0f02cb605115bb9fbff30a9c3f3ba87dcc1e16590e5ce5f104ee32e4124baf0d",
+      "bytes": 573913,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mastery-stewardship.png": {
+      "sha256": "ba40291d1058f5934aa3c8be370d56e857a45b1a06ad1dd735144cbf6ae8aa7b",
+      "bytes": 488041,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mobile-news-destination.png": {
+      "sha256": "ee5001ff1da37cd136eae5e04e1fae28e48fc24535076fe527b6ba2d553cdbdc",
+      "bytes": 315803,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-dark-mobile-news.png": {
+      "sha256": "254b0179f00f4f070f04f20d5abd8da54260a628cb84ee5bc3385efa5fc7e826",
+      "bytes": 79776,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-desktop-news-destination.png": {
+      "sha256": "9687d5334248f346ebe3b731b55c0fe886b8ea8b8b916d95f6cc483b36bdb5a9",
+      "bytes": 264855,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-desktop-news.png": {
+      "sha256": "39d6318a47c2410a6e150400fbff9bbe7552ae45ad24d896d5c7cea92736a837",
+      "bytes": 519969,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-identity-destination.png": {
+      "sha256": "637d978de86a1c2fe38037126e9892945bc390fb7195394de2472f6d235d9653",
+      "bytes": 569982,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-identity-reload-destination.png": {
+      "sha256": "a48cee715da61b653dd1b24ee63fe66a3612eddfddc2b3ccf1bf6b04eb1b6a4f",
+      "bytes": 470996,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-identity.png": {
+      "sha256": "0bb5d94957d92a8370d19ed60d2511071f1d2a56123b4b893280dec7db512116",
+      "bytes": 418816,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-promise-destination.png": {
+      "sha256": "1e0b7592bffd106d4458e5bbdbbb082fdce5200d876b589b024c4b3afd8b66f5",
+      "bytes": 517440,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-promise.png": {
+      "sha256": "8cd06009915a9a4cb6ae4e404d2acaa6d26a807b02b646c1833250bafdbff762",
+      "bytes": 419459,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-results-destination.png": {
+      "sha256": "3bf949097a4559de13527a449fde64909fc8936c3019627db6a1c43ecaee1791",
+      "bytes": 569617,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-results.png": {
+      "sha256": "0e6e2459a98c9ccd80f7291c068c719218e1c7d43cc332547918427a00c900e5",
+      "bytes": 417922,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-stewardship-destination.png": {
+      "sha256": "551989bb178e8b15d1e787dbd3dd1408872ab93a878910792a917f4af83a9ef3",
+      "bytes": 477179,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mastery-stewardship.png": {
+      "sha256": "cb26e53493454bd684a9a5c7eb70c3a92c3bc975d1855d4cecefc877e3da0049",
+      "bytes": 418862,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mobile-news-destination.png": {
+      "sha256": "054310349d0c345b052e4a2469788b621dd22f29f0173faa863e206dab7c5426",
+      "bytes": 264959,
+      "session": 122
+    },
+    "s122-nav-staging-desktop-light-mobile-news.png": {
+      "sha256": "67c197a75e2f4494575add3de7e1f21e8b880e8bf0417f9d92843f91ed5e73d8",
+      "bytes": 84058,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-desktop-news-destination.png": {
+      "sha256": "e38a545384bc843146272b28dae6c32b4094199d3b2cb1e532e75f20d1c06726",
+      "bytes": 129931,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-desktop-news.png": {
+      "sha256": "5fe92f09cb18a0d6bbe4a47aa20955ff2f6fd91743738bca629dd7656b3cf86d",
+      "bytes": 146906,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-identity-destination.png": {
+      "sha256": "8df42157ad7c1aa235821de8640938cc397598f702d90362dcdfc364a4a73cc4",
+      "bytes": 128998,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-identity-reload-destination.png": {
+      "sha256": "1641142544c6d5f435aa2004778201787e442754df97daf13be9125a69dc01a4",
+      "bytes": 124772,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-identity.png": {
+      "sha256": "cd756592fe3d297369a58a74b0c50335a7122eca2ee8b6ef3883a46b2e79e096",
+      "bytes": 135758,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-promise-destination.png": {
+      "sha256": "e566e91432fb8c800b8530084ad6ccd86bd81c8f6f9921093c8d3b1da50a001d",
+      "bytes": 147674,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-promise.png": {
+      "sha256": "811d6d0ad8b762a701c34dbd3fdd5bc759ef514b1633199fe43ddaa75aa4f13f",
+      "bytes": 136706,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-results-destination.png": {
+      "sha256": "91f8d70ae0e0f6cbf419b62861f0e1b6a312709a9dc768b060c3c29e64289230",
+      "bytes": 127691,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-results.png": {
+      "sha256": "291aec7cfea58c617e779c5e3feaa063f21a86e7e664c0880d7cc806d3dec21f",
+      "bytes": 135544,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-stewardship-destination.png": {
+      "sha256": "1a91896b665b74c0f5fefb322823e13efe8e50860b99da71ad57b111d1b1c132",
+      "bytes": 157819,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mastery-stewardship.png": {
+      "sha256": "66121d098ef918aab26ad9b71e21c619c86b5f3beb9f9ca5ff06e5762040bfb4",
+      "bytes": 140342,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mobile-news-destination.png": {
+      "sha256": "8530daa19a5b6734050e777502a22c8c02b4d5e915b71342cd16f3720d41f8e0",
+      "bytes": 126555,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-dark-mobile-news.png": {
+      "sha256": "c4f2aae9f65f887ca4220ce00c48f58bfb42ff2ca8f5b4959b5d535036fb196c",
+      "bytes": 67299,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-desktop-news-destination.png": {
+      "sha256": "81dc36fba4d4241ed884fcad51c026b7422e89a13d8ef5a8e5df82e886ca7abf",
+      "bytes": 127340,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-desktop-news.png": {
+      "sha256": "90667747cd64881a408251e58fde4994890af426f18e4beb38d4b78a8a06f3e8",
+      "bytes": 144365,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-identity-destination.png": {
+      "sha256": "35ac969eb97df40c368611dbd956451f31fb57b22a837481f46c57311bb8b6b4",
+      "bytes": 123331,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-identity-reload-destination.png": {
+      "sha256": "7f237f00423394afcf35f0e6061bd68b909e3d438d52ed3cc1f2120cf46d3ec1",
+      "bytes": 121815,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-identity.png": {
+      "sha256": "e2dcc2837ecb7f32426cf97b716ff511bab0e2e9b80c199be4497cb491a04f6f",
+      "bytes": 128770,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-promise-destination.png": {
+      "sha256": "3005213b300b5ba0eab9824a253c9e5f3d7e6099722af7302d01e20aee6d2630",
+      "bytes": 142525,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-promise.png": {
+      "sha256": "db98b23819d40ea3fd31ed156078ffe059d134dc329884a0d7bb8a4a73ea45dd",
+      "bytes": 129720,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-results-destination.png": {
+      "sha256": "86aaa43f254795457d4005fa3efb2a27335cc73b03aac731202cbd2c3b6aa566",
+      "bytes": 121616,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-results.png": {
+      "sha256": "0f8695eeca096e0e4521fbcd9d61fc3b9ad1867405b1b3c1dd795a92ef0b4373",
+      "bytes": 128698,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-stewardship-destination.png": {
+      "sha256": "cd12e106bacdb1a589a346ca4108a5e9344a254860eaa89640337d4e21892ee3",
+      "bytes": 146885,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mastery-stewardship.png": {
+      "sha256": "17d36d24680a823e012ead521edd027e8376d4d39988eecd8778d0eddd738d69",
+      "bytes": 131817,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mobile-news-destination.png": {
+      "sha256": "df0c1dcbcc99d8b00a904846f6cfc3d3b770d5344c5bbc8d256c4f3d469a166d",
+      "bytes": 123480,
+      "session": 122
+    },
+    "s122-nav-staging-mobile-light-mobile-news.png": {
+      "sha256": "64a00fb840be17585570edf68bc37f28d2aae3da0513450b38e13cc80d76658d",
+      "bytes": 69417,
+      "session": 122
+    },
     "s69-desktop-gm-persona-dark.png": {
       "sha256": "6fceb8a7121d7c6ebe4d5bb955fd2be60b49d247dc97b43bcc00860a909a5bc5",
       "bytes": 52906,

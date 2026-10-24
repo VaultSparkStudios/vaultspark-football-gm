@@ -379,108 +379,108 @@
     {
       "area": "core journeys and product correctness",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.091Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.313Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload."
     },
     {
       "area": "onboarding and identity/access",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "accessibility, mobile parity and every supported theme",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "performance and capacity",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "security, privacy, data integrity and abuse controls",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "backup, recovery and rollback",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "email and notifications where used",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "observability and actionable analytics",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief."
     },
     {
       "area": "feedback, support and issue triage",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "branding, legal, contact and rights/provenance",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "human and agent access where applicable",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     },
     {
       "area": "staging, release evidence and truthful beta/release communication",
       "status": "partial",
-      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
-      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-      "observedAt": "2026-10-24T17:52:55.092Z",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
       "owner": "project release owner",
       "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
     }
@@ -516,5 +516,37 @@
     },
     "rehearsal": "Native tier2-audit-plan-preflight fixtures15/15 PASS."
   },
-  "status": "selected-implementation-verified-release-pending"
+  "status": "selected-outcomes-verified-release-gate-failed-diagnosis-running",
+  "releaseAttempts": [
+    {
+      "sha": "f21512d2a5cd86b7d0a2004129940fa61876ead0",
+      "status": "rejected",
+      "evidence": "reports/s122-initial-candidate-failure.json"
+    },
+    {
+      "sha": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "status": "runtime-gates-failed-diagnosis-running",
+      "staging": "reports/s122-evidence-history/s122-staging-provenance-20169627abe361298a3004ad5ad59ea1ff0cc9ba57119c3d56b0f02ed57546bb.json",
+      "hostedBrowser": "reports/s122-evidence-history/s122-hosted-navigation-f74e105551ba6c45774177bb5675a48bc85f7510d1ab1ad87e40822edb715014.json",
+      "performance": "reports/s122-evidence-history/s122-staging-performance-3c61a0a1095b2889163cc2511661bd0bbd442e05ab709f0f9e6daa12ac4043f6.json",
+      "failure": "reports/s122-runtime-gate-failure.json",
+      "archivedEvidence": [
+        "reports/s122-evidence-history/s122-clean-studio-8e6fa6c50e2f816d57602980ca760d0548c5853ad6eb6ca83e0d98daf4632983.json",
+        "reports/s122-evidence-history/s122-hosted-navigation-f74e105551ba6c45774177bb5675a48bc85f7510d1ab1ad87e40822edb715014.json",
+        "reports/s122-evidence-history/s122-runtime-gate-failure-ab9f94df862cb76b91bd32a50778c075e59b38a2b38be79e2bafc9a1fac5b3d8.json",
+        "reports/s122-evidence-history/s122-staging-deployment-392eaf591b45f6be6bb8bbdf3bafda50a73eb65036d52387cf923b4bbebf956f.json",
+        "reports/s122-evidence-history/s122-staging-performance-3c61a0a1095b2889163cc2511661bd0bbd442e05ab709f0f9e6daa12ac4043f6.json",
+        "reports/s122-evidence-history/s122-staging-provenance-20169627abe361298a3004ad5ad59ea1ff0cc9ba57119c3d56b0f02ed57546bb.json"
+      ]
+    }
+  ],
+  "currentRelease": {
+    "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+    "artifactDigest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+    "ciRun": 40121101320,
+    "pagesRun": 40121129607,
+    "backendRun": 40121131146,
+    "fullGoalComplete": false,
+    "runtimeFailure": "reports/s122-runtime-gate-failure.json"
+  }
 }

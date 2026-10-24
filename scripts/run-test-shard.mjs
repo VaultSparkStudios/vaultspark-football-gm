@@ -440,16 +440,21 @@ function usage() {
   console.error(`Usage: node scripts/run-test-shard.mjs <${names}|all|list>`);
 }
 
-export function runShard(name, { timeoutMs = resolveShardTimeoutMs(undefined, name) } = {}) {
+export function runShard(name, {
+  timeoutMs = resolveShardTimeoutMs(undefined, name),
+  spawn = spawnSync,
+  stdout = process.stdout,
+  stderr = process.stderr
+} = {}) {
   const files = SHARDS[name];
   if (!files) {
     usage();
     return { name, status: 1, summary: { valid: false, reason: "unknown shard" } };
   }
 
-  console.log(`\n== ${name} shard (${files.length} files) ==`);
+  stdout.write(`\n== ${name} shard (${files.length} files) ==\n`);
   const startedAt = Date.now();
-  const result = spawnSync(
+  const result = spawn(
     process.execPath,
     // Several integration files intentionally own listeners/timers after their
     // assertions finish. Node 24 otherwise waits forever even after emitting a
@@ -457,19 +462,37 @@ export function runShard(name, { timeoutMs = resolveShardTimeoutMs(undefined, na
     ["--test", "--test-isolation=none", "--test-force-exit", ...files],
     { encoding: "utf8", maxBuffer: 16 * 1024 * 1024, timeout: timeoutMs, killSignal: "SIGTERM" }
   );
-  if (result.stdout) process.stdout.write(result.stdout);
-  if (result.stderr) process.stderr.write(result.stderr);
+  if (result.stdout) stdout.write(result.stdout);
+  if (result.stderr) stderr.write(result.stderr);
   const durationMs = Date.now() - startedAt;
   const timedOut = result.error?.code === "ETIMEDOUT";
+  const error = result.error ? {
+    name: String(result.error.name || "Error").slice(0, 100),
+    code: String(result.error.code || "").slice(0, 100),
+    message: String(result.error.message || result.error).slice(0, 500)
+  } : null;
+  const signal = result.signal || null;
+  const status = timedOut ? 124 : (result.status ?? 1);
   const summary = parseTapSummary(result.stdout || "");
   summary.durationMs = durationMs;
   if (timedOut) {
     summary.valid = false;
     summary.reason = `Shard exceeded the bounded ${timeoutMs}ms timeout.`;
+  } else if (error || signal) {
+    summary.valid = false;
+    summary.reason = error
+      ? `Shard process error ${error.code || error.name}: ${error.message}`
+      : `Shard terminated by ${signal}.`;
+  }
+  if (status !== 0) {
+    stderr.write(`\nShard termination: ${JSON.stringify({ name, status, childExitCode: result.status ?? null, signal, error, timedOut, durationMs })}\n`);
   }
   return {
     name,
-    status: timedOut ? 124 : (result.status ?? 1),
+    status,
+    childExitCode: result.status ?? null,
+    signal,
+    error,
     timedOut,
     durationMs,
     summary
@@ -500,6 +523,9 @@ function executeWithProgress(command, shardNames, { writeGreenReceipt = false } 
       update(result.timedOut ? "timed-out" : "failed", name, {
         shard: name,
         exitCode: result.status,
+        childExitCode: result.childExitCode,
+        signal: result.signal,
+        error: result.error,
         reason: result.summary?.reason || "shard failed"
       });
       return result.status;
@@ -519,33 +545,36 @@ function executeWithProgress(command, shardNames, { writeGreenReceipt = false } 
 const isMainModule =
   process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
-if (isMainModule) {
-  const requested = process.argv[2] || "all";
-
+export function runTestShardCli(requested = process.argv[2] || "all") {
   if (requested === "--help" || requested === "-h") {
     usage();
-    process.exit(0);
+    return 0;
   }
 
   if (requested === "list") {
     for (const [name, files] of Object.entries(SHARDS)) {
       console.log(`${name}: ${files.join(", ")}`);
     }
-    process.exit(0);
+    return 0;
   }
 
   if (requested === "status") {
     console.log(JSON.stringify(inspectTestProgress(process.cwd()), null, 2));
-    process.exit(0);
+    return 0;
   }
 
   if (requested === "all") {
-    process.exit(executeWithProgress("all", DEFAULT_SHARDS, { writeGreenReceipt: true }));
+    return executeWithProgress("all", DEFAULT_SHARDS, { writeGreenReceipt: true });
   }
 
   if (requested === "full") {
-    process.exit(executeWithProgress("full", Object.keys(SHARDS)));
+    return executeWithProgress("full", Object.keys(SHARDS));
   }
 
-  process.exit(executeWithProgress(requested, [requested]));
+  return executeWithProgress(requested, [requested]);
+}
+
+if (isMainModule) {
+  // Let stdout/stderr drain before exiting, including large buffered shard logs.
+  process.exitCode = runTestShardCli();
 }
