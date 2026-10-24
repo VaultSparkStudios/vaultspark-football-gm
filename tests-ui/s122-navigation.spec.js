@@ -15,7 +15,7 @@ async function createLeague(page) {
   await page.fill("#seedInput", "20260306");
   await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
-  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
+  await expect(page).toHaveURL(/\/game(?:\.html)?(?:\?.*)?$/, { timeout: 90_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
   for (const id of ["firstDebriefDecline", "tutSkipBtn", "mlFullViewBtn"]) {
     const button = page.locator(`#${id}`);

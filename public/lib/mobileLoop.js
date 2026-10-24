@@ -5,33 +5,10 @@
  * Shows: team record, next game, cap space, top roster needs, and 2-3 actions.
  * The full game UI remains accessible via "Full View" button.
  *
- * ── The auto-enable band, and why it is 640 ────────────────────────────────
- *
- * This overlay is `position: fixed; inset: 0; z-index: 1000` — it *replaces* the
- * entire game UI rather than layering on it. That makes the auto-enable width a
- * product decision, not a styling one: every viewport inside the band loses the
- * full desktop shell by default.
- *
- * The gate originally read `innerWidth <= 480`, which left large phones on a
- * desktop layout whose `.side-menu` had already collapsed to a single stacked
- * column at 640px — the worst of both worlds. S63 corrected that, but
- * overcorrected to 980px, which swept in tablets *and* small laptops and took
- * the whole game UI away from them; CI caught it as the overlay intercepting
- * pointer events during responsive capture at 768px.
- *
- * 640px is the honest boundary: it is exactly where `styles.css` collapses the
- * desktop navigation, so it marks the point at which the full shell genuinely
- * stops working rather than an arbitrary device guess. Anything wider keeps the
- * real UI.
- *
- * A dedicated *tablet* layout — as opposed to a phone overlay stretched over
- * tablets — remains deliberately deferred (TASK_BOARD → Next) alongside touch
- * affordances, because it needs its own visual-evidence baseline.
- *
- * The explicit Settings toggle stays authoritative in *both* directions: a
- * player who chose full view on a phone keeps it, and a tablet or desktop player
- * who prefers the deck can opt in and keep it. Auto-detection only decides for
- * players who never expressed a preference.
+ * The fixed overlay replaces the full shell. Auto-enable at 640px, where CSS
+ * collapses desktop navigation; wider tablets/laptops retain the full UI.
+ * Never widen this band to 980px: it intercepted tablet navigation in S63.
+ * Explicit Settings preferences override auto-detection in both directions.
  *
  * Usage:
  *   import { isMobileModeEnabled, setMobileModeEnabled, renderMobileOverlay } from "./lib/mobileLoop.js";

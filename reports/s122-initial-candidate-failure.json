@@ -1,0 +1,27 @@
+{
+  "session": 122,
+  "sourceRevision": "f21512d2a5cd86b7d0a2004129940fa61876ead0",
+  "status": "rejected-candidate",
+  "ci": {
+    "runId": 40119789992,
+    "studioJobId": 120948623427,
+    "tests": 386,
+    "passed": 384,
+    "failed": 2,
+    "cause": "Both boot-budget contracts rejected static bytes650086 above the unchanged650000 target. No production promotion authorized from this candidate."
+  },
+  "correction": {
+    "source": "Trim non-license historical prose in mobileLoop's initial comment; preserve640px rationale and explicit Settings authority.",
+    "staticBytes": 648746,
+    "targetUnchanged": 650000,
+    "focusedBootAndIslandTests": "10/10 passed",
+    "independentReview": "review_navigation PASS; machine comparison proves executable mobileLoop source unchanged."
+  },
+  "hostedBrowser": {
+    "status": "harness-failure-observed",
+    "cause": "The test required /game.html although Cloudflare Pages serves the successfully loaded Ready game at /game?resume=tab.",
+    "correction": "Accept both supported game paths and query strings. Preserve Ready, destination, focus and reload assertions and original timeouts.",
+    "independentReview": "review_navigation PASS; setup and unrelated routes remain rejected."
+  },
+  "remaining": "New source revision must receive fresh staging, browser, full exact-candidate CI and production proof. Earlier partial, failed and cancelled runs remain nonpassing."
+}
