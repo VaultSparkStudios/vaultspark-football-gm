@@ -66,11 +66,19 @@ export function findCloseoutSuiteProof(root, { anchorMs: suppliedAnchor } = {}) 
   walk(path.join(root, '.cache', 'test-shards'));
   const candidates = files.flatMap((file) => {
     try { const proof = JSON.parse(fs.readFileSync(file, 'utf8')); return [{ file, proof }]; } catch { return []; }
-  }).sort((a, b) => Date.parse(b.proof.generatedAt) - Date.parse(a.proof.generatedAt));
+  }).sort((a, b) => Date.parse(b.proof?.generatedAt) - Date.parse(a.proof?.generatedAt));
   const rejected = [];
   for (const { file, proof } of candidates) {
-    const result = assessCloseoutSuiteProof(root, proof, { anchorMs });
     const relative = path.relative(root, file).replace(/\\/g, '/');
+    // S401 — a proof dated at or before the anchor is always rejected by the date rule in
+    // assessCloseoutSuiteProof; deciding that from the date alone skips the source-hash
+    // assessment for every historical session (83 proof dirs → 187 s for one lookup).
+    const generatedMs = Date.parse(proof?.generatedAt);
+    if (Number.isFinite(anchorMs) && (!Number.isFinite(generatedMs) || generatedMs <= anchorMs)) {
+      rejected.push({ proofPath: relative, errors: ['complete proof must be dated after the previous closeout and not in the future'] });
+      continue;
+    }
+    const result = assessCloseoutSuiteProof(root, proof, { anchorMs });
     if (result.ok) return { ...result, proofPath: relative, anchorMs };
     rejected.push({ proofPath: relative, errors: result.errors.slice(0, 5) });
   }
