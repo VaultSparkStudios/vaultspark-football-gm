@@ -1,4 +1,5 @@
 import { tradeWindow } from "./tradeWindow.js";
+import { gameplaySurface } from "./gameplayNavigation.js";
 function money(value) {
   const amount = Number(value);
   if (!Number.isFinite(amount)) return "—";
@@ -137,8 +138,7 @@ export function buildFranchiseCommandStack({
       title: "Read the room",
       detail: newsHead,
       action: "open-tab",
-      targetTab: "overviewTab",
-      targetId: "newsTable",
+      ...gameplaySurface("leagueNews"),
       tone: "neutral",
       lane: "Optional",
       blocking: false

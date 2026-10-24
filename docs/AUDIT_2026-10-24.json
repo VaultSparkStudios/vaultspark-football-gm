@@ -1,0 +1,520 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-24",
+  "session": 122,
+  "source": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "S122 fresh arc: repair decision navigation and evidence summaries",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "fresh source and independent game-loop review"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "lifecycleProvenance": "Registry franchise-architect-football FORGE/FB verified read-only; local missing ladderStage mirrored without transition. Local skill overlay is medium-only; arc-profile now resolves local fallback FB.",
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 5,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 3,
+    "speed-organization-efficiency": 3,
+    "token-cost": 1.5,
+    "observability-honesty": 3,
+    "sil-debt": 1.5
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "extra-season-loop",
+          "premise": "The game lacks a season loop.",
+          "evidence": "context/GAME_LOOP.md and seasonChapters.js already implement declaration, simulation, review and continuation."
+        },
+        {
+          "slug": "payload-compaction",
+          "premise": "Current saves exceed 16 MB.",
+          "evidence": "S119 measured 15.305 MB; no current over-budget evidence; do not add a migration without a measurement."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "more-pulse-ui",
+          "premise": "No news action exists.",
+          "evidence": "Both desktop and mobile builders render it; the actual defect is its target tab."
+        },
+        {
+          "slug": "league-pulse-destination-resolved",
+          "premise": "The demonstrated destination failure remains.",
+          "evidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        }
+      ]
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-retention-layer",
+          "premise": "No return hook exists.",
+          "evidence": "returnDigest.js records real boundaries and builds source-derived return chapters."
+        },
+        {
+          "slug": "architect-focus-destinations-resolved",
+          "premise": "The demonstrated destination failure remains.",
+          "evidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-ai-advisor",
+          "premise": "An external model is required for advice.",
+          "evidence": "The current local advisor uses real roster/pressure signals without per-user API spend."
+        },
+        {
+          "slug": "invented-causal-credit",
+          "premise": "Focus progression should attribute wins to actions.",
+          "evidence": "architectFocusReview deliberately reports source deltas without causal inference."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "replace-navigation",
+          "premise": "The exact-surface navigator accepts hidden targets.",
+          "evidence": "exactSurfaceNavigation.js rejects wrong-tab and hidden targets; repair callers."
+        },
+        {
+          "slug": "new-account-flow",
+          "premise": "The game requires project-local auth.",
+          "evidence": "Status explicitly has no account flows; Obelisk integration is an independent owned gap."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "install-router-package",
+          "premise": "Routing needs a dependency.",
+          "evidence": "Existing exactSurfaceNavigation and gameplay surface map are reusable."
+        },
+        {
+          "slug": "parallel-full-suites",
+          "premise": "Full suites should run concurrently locally.",
+          "evidence": "Single-terminal Windows discipline and measured multi-hour suite prohibit duplicate heavy spawners."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-brief-generator",
+          "premise": "Startup needs a model call.",
+          "evidence": "render-startup-brief is deterministic and reads local evidence."
+        },
+        {
+          "slug": "rewrite-summaries",
+          "premise": "More memory summaries solve source drift.",
+          "evidence": "The demonstrated issue is stale evidence promotion, not token volume."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "refresh-count-only",
+          "premise": "A fresh timestamp fixes stale totals.",
+          "evidence": "test-receipt digest is stale; do not refresh evidence without execution."
+        },
+        {
+          "slug": "startup-test-evidence-resolved",
+          "premise": "Stale totals still become current counts.",
+          "evidence": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "capture-all-again",
+          "premise": "No canonical captures exist.",
+          "evidence": "S121 has reviewed hashes; this session captures only affected states before/after, plus required release evidence."
+        },
+        {
+          "slug": "market-research",
+          "premise": "Market evidence should be invented from memory.",
+          "evidence": "No local MARKET.json or studio-market skill is available; external market research remains deferred and is not a gameplay prerequisite."
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "architect-focus-destinations",
+      "title": "Restore the four Architect Focus follow-up actions",
+      "axis": "gamification-immersion",
+      "tier": "🔥",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 17.71,
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-24T18:05:51.025Z",
+          "status": "shipped",
+          "note": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        }
+      ],
+      "selectedLevel": "L2",
+      "recipe": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload.",
+      "acceptance": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload.",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB stabilization: correct demonstrated broken journeys or misleading verification before adding breadth.",
+      "premises": [
+        {
+          "claim": "Live source contains the demonstrated defect for architect-focus-destinations",
+          "adapter": "file-content",
+          "target": "src/engine/architectFocusReview.js",
+          "pattern": "frontOfficeTab",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Correct the demonstrated source value."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload."
+        },
+        "L3": {
+          "effortHours": 4.5,
+          "recipe": "Add exhaustive cross-surface route/evidence migration tooling after a separate measured need."
+        }
+      },
+      "rank": 1,
+      "category": "gamification-immersion",
+      "premise": "Live source contains the demonstrated defect for architect-focus-destinations",
+      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+    },
+    {
+      "id": 2,
+      "slug": "league-pulse-destination",
+      "title": "Open League news from desktop and mobile pulse cards",
+      "axis": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 15.14,
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-24T18:05:51.025Z",
+          "status": "shipped",
+          "note": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        }
+      ],
+      "selectedLevel": "L2",
+      "recipe": "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused.",
+      "acceptance": "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused.",
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FORGE/FB stabilization: correct demonstrated broken journeys or misleading verification before adding breadth.",
+      "premises": [
+        {
+          "claim": "Live source contains the demonstrated defect for league-pulse-destination",
+          "adapter": "file-content",
+          "target": "public/lib/franchiseCommandCenter.js",
+          "pattern": "targetId: \"newsTable\"",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Correct the demonstrated source value."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Add exhaustive cross-surface route/evidence migration tooling after a separate measured need."
+        }
+      },
+      "rank": 2,
+      "category": "ui-ux-feedback",
+      "premise": "Live source contains the demonstrated defect for league-pulse-destination",
+      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+    },
+    {
+      "id": 3,
+      "slug": "startup-test-evidence",
+      "title": "Keep stale suite counts out of current startup summaries",
+      "axis": "observability-honesty",
+      "tier": "🔥",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 11.36,
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-24T18:00:19.658Z",
+          "status": "shipped",
+          "note": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending."
+        }
+      ],
+      "selectedLevel": "L2",
+      "recipe": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief.",
+      "acceptance": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief.",
+      "readinessArea": "observability and actionable analytics",
+      "stageRationale": "FORGE/FB stabilization: correct demonstrated broken journeys or misleading verification before adding breadth.",
+      "premises": [
+        {
+          "claim": "Live source contains the demonstrated defect for startup-test-evidence",
+          "adapter": "file-content",
+          "target": "scripts/render-startup-brief.mjs",
+          "pattern": "if (testReceiptInspection.valid)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Correct the demonstrated source value."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Add exhaustive cross-surface route/evidence migration tooling after a separate measured need."
+        }
+      },
+      "rank": 3,
+      "category": "observability-honesty",
+      "premise": "Live source contains the demonstrated defect for startup-test-evidence",
+      "executionEvidence": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending."
+    }
+  ],
+  "totals": {
+    "count": 3,
+    "priority": 44.21,
+    "top3": [
+      "architect-focus-destinations",
+      "league-pulse-destination",
+      "startup-test-evidence"
+    ]
+  },
+  "gameLoopReview": {
+    "scores": {
+      "loopTightness": 7,
+      "progression": 8,
+      "engagement": 8,
+      "retention": 7,
+      "soulFidelity": 8
+    },
+    "evidence": "Independent source review: real weekly composer/season chapters/return digest exist, but focus and pulse links strand the player. Scores are design judgment, not cohort metrics.",
+    "nextMoves": [
+      "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload.",
+      "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused.",
+      "Regression-test generated actions in the actual browser, not mirrored constants."
+    ]
+  },
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.091Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete.",
+      "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+      "observedAt": "2026-10-24T17:52:55.092Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "studio-market",
+      "reason": "MARKET.json absent and skill not installed; research is deferred, no competitor facts invented."
+    }
+  ],
+  "generatedAt": "2026-10-24T17:52:55.097Z",
+  "premiseGate": {
+    "verifiedAt": "2026-10-24T17:53:44.953Z",
+    "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+    "status": "passed",
+    "verified": 3,
+    "contradicted": 0,
+    "unverified": 0,
+    "dirtyImplementationPaths": [],
+    "method": "Project-native strict checkAudit plus read-only admission; local CLI lacks shared --record and timing helper."
+  },
+  "admission": {
+    "checkedAt": "2026-10-24T17:53:44.955Z",
+    "status": "passed",
+    "inputs": [
+      "docs/IMPLEMENT_PLAN.md",
+      ".cache/s122-audit-brief.json",
+      ".cache/s122-plan-brief.json"
+    ],
+    "result": {
+      "ok": true,
+      "errors": []
+    },
+    "rehearsal": "Native tier2-audit-plan-preflight fixtures15/15 PASS."
+  },
+  "status": "selected-implementation-verified-release-pending"
+}

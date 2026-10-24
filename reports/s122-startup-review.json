@@ -1,0 +1,25 @@
+{
+  "session": 122,
+  "at": "2026-10-24T18:00:19.662Z",
+  "subject": "startup-test-evidence",
+  "reviewer": "independent review_startup agent",
+  "rounds": [
+    {
+      "verdict": "fix",
+      "findings": 2,
+      "summary": "Structured summary bypass and rendered truncation."
+    },
+    {
+      "verdict": "pass",
+      "findings": 0,
+      "fixed": 2,
+      "independentTests": 13
+    }
+  ],
+  "focusedTests": {
+    "passed": 18,
+    "total": 18
+  },
+  "renderedProof": ".cache/s122-startup-reviewed-final.md",
+  "limits": "Application suite and release checks pending; no aggregate suite count claimed."
+}

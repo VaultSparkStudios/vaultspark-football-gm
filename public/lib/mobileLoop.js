@@ -39,6 +39,7 @@
 
 import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
 import { tradeWindow } from "./tradeWindow.js";
+import { gameplaySurface } from "./gameplayNavigation.js";
 import { teamCodeFrom } from "./teamDisplay.js";
 import { deriveTrophyRoad, readEarnedAchievements, renderTrophyRoad } from "./achievements.js";
 import { buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
@@ -393,8 +394,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       kicker: "League pulse",
       title: "Latest headline",
       detail: newsHead,
-      targetTab: "overviewTab",
-      targetId: "newsTable",
+      ...gameplaySurface("leagueNews"),
       tone: "neutral"
     });
   }

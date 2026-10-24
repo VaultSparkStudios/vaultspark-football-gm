@@ -1,7 +1,22 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { buildFranchiseCommandReceipt, buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "../public/lib/franchiseCommandCenter.js";
-import { buildMobileDecisionDeck } from "../public/lib/mobileLoop.js";
+import { buildMobileDecisionDeck, buildMobilePressureStack } from "../public/lib/mobileLoop.js";
+
+test("desktop and mobile news actions select the panel that owns the real news table", () => {
+  const input = { dashboard: {}, newsRows: [{ headline: "The latest around the league" }] };
+  const html = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
+  const newsOffset = html.indexOf('id="newsTable"');
+  assert.ok(newsOffset >= 0);
+  const panels = [...html.slice(0, newsOffset).matchAll(/<section id="([^"]+)" class="tab-panel/g)];
+  const owner = panels.at(-1)[1];
+  for (const builder of [buildFranchiseCommandStack, buildMobilePressureStack]) {
+    const news = builder(input).find((card) => card.targetId === "newsTable");
+    assert.ok(news, "low-pressure headline fallback is present");
+    assert.equal(news.targetTab, owner, "news action selects its actual containing tab");
+  }
+});
 
 test("controlled draft agency outranks every optional franchise command", () => {
   const input = {

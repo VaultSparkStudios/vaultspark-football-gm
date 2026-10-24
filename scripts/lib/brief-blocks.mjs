@@ -24,6 +24,17 @@ function top(title) {
 }
 function bottom() { return '╚' + '═'.repeat(W + 2) + '╝'; }
 
+export function wrapBriefText(text, width = W) {
+  const lines = [];
+  let current = '';
+  for (const word of String(text).split(/\s+/)) {
+    if (current && current.length + word.length + 1 > width) { lines.push(current); current = ''; }
+    current = current ? `${current} ${word}` : word;
+  }
+  if (current) lines.push(current);
+  return lines;
+}
+
 /**
  * Render the project title header block.
  * Emoji based on type; mode from sessionMode.
@@ -74,7 +85,7 @@ export function renderLastCompleted(summary, opts = {}) {
     return [
       top(`LAST SESSION (S${session}) - WHAT SHIPPED`),
       row(summary.slice(0, W)),
-      row(`Tests  ${opts.tests || '—'}`),
+      ...wrapBriefText(`Tests  ${opts.tests || '—'}`).map(row),
       row(`Deploy ${opts.deploy || '—'}`),
       bottom(),
     ].join('\n');
@@ -85,7 +96,7 @@ export function renderLastCompleted(summary, opts = {}) {
   return [
     header,
     ...shipLines,
-    row(`Tests  ${summary.tests || '—'}`),
+    ...wrapBriefText(`Tests  ${opts.tests ?? summary.tests ?? '—'}`).map(row),
     row(`Deploy ${summary.deploy || '—'}`),
     bottom(),
   ].join('\n');

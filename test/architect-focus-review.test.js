@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   buildArchitectFocusReview,
   captureArchitectFocusBaseline
@@ -49,10 +50,29 @@ test("focus review states no change explicitly and points to an exact action", (
   assert.equal(review.newReceipt, false);
   assert.deepEqual(review.delta, { score: 0, evidenceCount: 0 });
   assert.deepEqual(review.nextAction, {
-    targetTab: "strategyTab",
-    targetId: "weeklyTacticCard",
-    label: "Declare a tactic and commit its next film receipt"
+    targetTab: "overviewTab",
+    targetId: "advanceWeekBtn",
+    label: "Prepare your next weekly plan"
   });
+});
+
+test("every mastery focus names a real tab and a reachable target in the shipped game shell", () => {
+  const html = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
+  for (const id of ["results", "stewardship", "promise", "identity"]) {
+    const value = { paths: [{ ...portfolio().paths[0], id }] };
+    const action = buildArchitectFocusReview({
+      thesis: { focusPathId: id, focusBaseline: captureArchitectFocusBaseline(value, id) },
+      portfolio: value
+    }).nextAction;
+    const tab = new RegExp(`<section id="${action.targetTab}" class="tab-panel`);
+    assert.match(html, tab, `${id}: destination tab exists`);
+    const targetOffset = html.indexOf(`id="${action.targetId}"`);
+    assert.ok(targetOffset >= 0, `${id}: destination target exists`);
+    const precedingPanels = [...html.slice(0, targetOffset).matchAll(/<section id="([^"]+)" class="tab-panel/g)];
+    const owner = precedingPanels.at(-1)?.[1];
+    // Header controls precede all panels and are reachable from every tab.
+    if (owner) assert.equal(owner, action.targetTab, `${id}: target belongs to selected tab`);
+  }
 });
 
 test("focus review reports only source-derived deltas", () => {

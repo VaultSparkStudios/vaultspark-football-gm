@@ -404,6 +404,7 @@ export const SHARDS = {
     "test/startup-authority-contract.test.js",
     "test/startup-sil-truth.test.js",
     "test/startup-brief-last-session.test.js",
+    "test/startup-test-evidence.test.js",
     "test/session-lock-goal-binding.test.js",
     "test/session-intent-classifier.test.js",
     "test/session-authority.test.js",

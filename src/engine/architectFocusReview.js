@@ -2,24 +2,24 @@ export const ARCHITECT_FOCUS_REVIEW_SCHEMA_VERSION = "1.0";
 
 const ACTIONS = Object.freeze({
   results: {
-    targetTab: "scheduleTab",
+    targetTab: "overviewTab",
     targetId: "advanceWeekBtn",
-    label: "Advance the season to its next source-recorded result"
+    label: "Prepare your next week"
   },
   stewardship: {
-    targetTab: "frontOfficeTab",
-    targetId: "capLedger",
-    label: "Review cap and culture pressure before the next season receipt"
+    targetTab: "contractsTab",
+    targetId: "contractsSpotlight",
+    label: "Review contracts and cap pressure"
   },
   promise: {
     targetTab: "overviewTab",
-    targetId: "gmDecisionCard",
-    label: "Resolve the next named General Manager commitment"
+    targetId: "franchiseCommandCenter",
+    label: "Review your next General Manager call"
   },
   identity: {
-    targetTab: "strategyTab",
-    targetId: "weeklyTacticCard",
-    label: "Declare a tactic and commit its next film receipt"
+    targetTab: "overviewTab",
+    targetId: "advanceWeekBtn",
+    label: "Prepare your next weekly plan"
   }
 });
 

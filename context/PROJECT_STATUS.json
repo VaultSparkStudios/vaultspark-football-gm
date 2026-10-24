@@ -4,14 +4,16 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S121 full arc complete: four selected fixes and exact-source frontend/API deployment verified; closeout published.",
-  "nextMilestone": "Separate launch readiness: existing reply-as, founder GO, cohort, capacity and recovery evidence retain their owners. Await new founder scope.",
+  "currentFocus": "Three audited fixes verified locally; exact-candidate staging, CI, production and closeout pending.",
+  "nextMilestone": "Stage the committed candidate, pass seven exact CI jobs, promote frontend/API and verify closeout.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
   "lastUpdated": "2026-10-24",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
+  "type": "game",
+  "ladderStage": "FB",
   "obeliskArchitecture": "external",
   "obeliskIdentity": {
     "status": "not-integrated",
@@ -81,7 +83,7 @@
   },
   "currentSession": 121,
   "lastAgent": "codex",
-  "sessionMode": "founder",
+  "sessionMode": "builder",
   "lastVerification": {
     "date": "2026-10-01",
     "sourceRevision": "f8b640b3774390f0dc74692b7bc7f71e7563f1e9",
@@ -326,7 +328,7 @@
   "modelPlanModeSlash": null,
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-08-04T00:57:31.065Z",
+  "sessionModeAutoShiftedAt": "2026-10-24T17:49:15.115Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-08-08",
@@ -2361,7 +2363,7 @@
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
     "observedAt": "2026-10-24T03:22:48.416Z",
-    "status": "verified",
+    "status": "pending",
     "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
     "publicationRevision": "5410b8b5159059c516f80529ae5330e99838f266",
     "publicationDelta": null,
@@ -2417,7 +2419,7 @@
         "ok": true
       }
     ],
-    "evidenceVerified": true,
+    "evidenceVerified": false,
     "launchReady": false,
     "blockerCodes": [
       "email-delivery-unverified",
@@ -2435,7 +2437,9 @@
       "visualSha256": "00695e70355a517e5802e443c68edebde2267d569de17bb08084266392f38549",
       "performanceSha256": "2d03f5d344709ce6c9beeec377ac6c1f031faa055027d1d17b40bc96482db88d"
     },
-    "receiptSha256": "4203b3f55677ebce0479639f3df0191e7eea12eb374430a5fec3e47d941ff2cc"
+    "receiptSha256": "4203b3f55677ebce0479639f3df0191e7eea12eb374430a5fec3e47d941ff2cc",
+    "pendingSession": 122,
+    "note": "Previous identity fields retained as historical baseline; current candidate release proof pending."
   },
   "launchReady": false,
   "sil": {
@@ -2467,8 +2471,8 @@
   "sessionState": {
     "version": 1,
     "durableSession": 121,
-    "currentFocus": "S121 full arc complete: four selected fixes and exact-source frontend/API deployment verified; closeout published.",
-    "nextMilestone": "Separate launch readiness: existing reply-as, founder GO, cohort, capacity and recovery evidence retain their owners. Await new founder scope.",
+    "currentFocus": "Three audited fixes verified locally; exact-candidate staging, CI, production and closeout pending.",
+    "nextMilestone": "Stage the committed candidate, pass seven exact CI jobs, promote frontend/API and verify closeout.",
     "lastSessionSummary": "Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD."
   },
   "partialCloseout": {
@@ -2923,5 +2927,90 @@
     "status": "passed",
     "receipt": "reports/s121-closeout-protocol.json",
     "acceptance": "reports/s121-metadata-acceptance.json"
+  },
+  "priorReleaseAuthority": {
+    "schemaVersion": "1.0",
+    "kind": "unified-release-authority",
+    "observedAt": "2026-10-24T03:22:48.416Z",
+    "status": "verified",
+    "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "publicationRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "publicationDelta": null,
+    "artifactFingerprint": {
+      "algorithm": "sha256",
+      "digest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+    },
+    "identities": {
+      "staging": {
+        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+      },
+      "production": {
+        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+      },
+      "visual": {
+        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+      },
+      "performance": {
+        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+      }
+    },
+    "checks": [
+      {
+        "name": "staging verifier green",
+        "ok": true
+      },
+      {
+        "name": "production verifier green",
+        "ok": true
+      },
+      {
+        "name": "visual pixels reviewed",
+        "ok": true
+      },
+      {
+        "name": "hosted performance green",
+        "ok": true
+      },
+      {
+        "name": "one exact deployable source revision",
+        "ok": true
+      },
+      {
+        "name": "production source is candidate or verified receipt-only descendant",
+        "ok": true
+      },
+      {
+        "name": "one exact artifact fingerprint",
+        "ok": true
+      }
+    ],
+    "evidenceVerified": true,
+    "launchReady": false,
+    "blockerCodes": [
+      "email-delivery-unverified",
+      "founder-approval-unverified",
+      "lifecycle-authority-unverified"
+    ],
+    "backendAuthority": {
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "verifiedAt": "2026-10-24T02:12:48.833Z",
+      "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
+    },
+    "receipts": {
+      "stagingSha256": "5e17a20a4780e23513129681ed4ade0def7f0914181ae53b2bdc607083320869",
+      "productionSha256": "a2c27eb033618859369953ece7b4ac232d8fd4507e3ae4675241610c511df089",
+      "visualSha256": "00695e70355a517e5802e443c68edebde2267d569de17bb08084266392f38549",
+      "performanceSha256": "2d03f5d344709ce6c9beeec377ac6c1f031faa055027d1d17b40bc96482db88d"
+    },
+    "receiptSha256": "4203b3f55677ebce0479639f3df0191e7eea12eb374430a5fec3e47d941ff2cc"
+  },
+  "activeArc": {
+    "session": 122,
+    "status": "implementation-verified-release-pending",
+    "audit": "docs/AUDIT_2026-10-24.json"
   }
 }

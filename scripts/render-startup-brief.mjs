@@ -18,7 +18,7 @@ import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { spawnSync } from './lib/safe-spawn.mjs';
-import { renderTitleHeader, renderLastCompleted, renderTestItNow } from './lib/brief-blocks.mjs';
+import { renderTitleHeader, renderLastCompleted, renderTestItNow, wrapBriefText } from './lib/brief-blocks.mjs';
 import { parseUnifiedItems } from './lib/task-board.mjs';
 import { loadPortfolioTaskBoards } from './lib/cross-repo-tasks.mjs';
 import { loadIgnisInsight } from './lib/ignis-insight.mjs';
@@ -29,6 +29,7 @@ import { sparkline as _sparkline } from './lib/visual-blocks.mjs';
 import { parseSilHistory, forecastNext } from './lib/sil-forecaster.mjs';
 import { BLOCKED_STATUSES_CORE } from './lib/shared-policies.mjs';
 import { inspectTestReceipt } from './lib/test-receipt.mjs';
+import { describeStartupTests, lastSessionTests } from './lib/startup-test-evidence.mjs';
 import { updateProjectStatus } from './lib/write-project-status.mjs';
 import { inspectLifecycleCoherence } from './lifecycle-coherence.mjs';
 import {
@@ -785,13 +786,9 @@ const runwayNum = runwayNumMatch ? parseFloat(runwayNumMatch[1])
 // Direct suite receipts are the only fresh test-count authority. PROJECT_STATUS remains
 // a historical fallback, but a missing/stale receipt is visibly marked (CANON-031).
 const testReceiptInspection = inspectTestReceipt(root);
-let testsStale = !testReceiptInspection.fresh;
-if (testReceiptInspection.valid) {
-  const receipt = testReceiptInspection.receipt;
-  status.testsTotal = receipt.total;
-  status.testsPassing = receipt.passed;
-  if (receipt.generatedAt) status.testsLastRun = receipt.generatedAt.slice(0, 10);
-}function listSignalCount(value) {
+const currentTests = describeStartupTests(testReceiptInspection, status);
+const priorSessionTests = lastSessionTests(handoff, currentSession - 1);
+function listSignalCount(value) {
   return Array.isArray(value) ? value.length : (typeof value === 'number' ? value : 0);
 }
 
@@ -802,26 +799,12 @@ function compactFileList(files, max = 2) {
   return names.join(', ') + (extra ? ` +${extra}` : '');
 }
 
-// Prefer explicit pass/total from run-tests; fall back to testsTotal only; then exempt; else warn.
-const testsExempt = !status.testsTotal && (status.audience === 'internal' || status.type === 'infrastructure' || status.type === 'internal-ops') && !status.testsPassing;
-let sigTests, testsLabel;
-if (typeof status.testsPassing === 'number' && typeof status.testsTotal === 'number' && status.testsTotal > 0) {
-  const deferredCount = listSignalCount(status.testsDeferred);
-  const envBlockedCount = listSignalCount(status.testsEnvBlocked);
-  const allPass = status.testsPassing === status.testsTotal;
-  const mostlyPass = status.testsPassing / status.testsTotal >= 0.9;
-  sigTests = testsStale || deferredCount || envBlockedCount ? '⚠' : allPass ? '✓' : mostlyPass ? '⚠' : '⛔';
-  testsLabel = `${status.testsPassing}/${status.testsTotal} passing` + (status.testsLastRun ? ` (${status.testsLastRun})` : '');
-  if (deferredCount) testsLabel += ` · ${deferredCount} deferred: ${compactFileList(status.testsDeferred)}`;
-  if (envBlockedCount) testsLabel += ` · ${envBlockedCount} env-blocked: ${compactFileList(status.testsEnvBlocked)}`;
-  if (testsStale) testsLabel += ' · STALE — run node scripts/refresh-test-count.mjs';
-} else if (testsExempt) {
-  sigTests = '✓';
-  testsLabel = 'N/A (protocol repo)';
-} else {
-  sigTests = '⚠';
-  testsLabel = `${status.testsTotal ?? '?'}/? passing`;
-}
+const deferredCount = listSignalCount(status.testsDeferred);
+const envBlockedCount = listSignalCount(status.testsEnvBlocked);
+const sigTests = deferredCount || envBlockedCount ? '⚠' : currentTests.signal;
+let testsLabel = currentTests.current;
+if (deferredCount) testsLabel += ` · ${deferredCount} deferred: ${compactFileList(status.testsDeferred)}`;
+if (envBlockedCount) testsLabel += ` · ${envBlockedCount} env-blocked: ${compactFileList(status.testsEnvBlocked)}`;
 const sigVel    = sig(velocity, v => v >= 2, v => v === 1);
 const sigRun    = runwayRaw === 'unknown' ? '⚠' : sig(runwayNum, v => v > 4, v => v >= 2);
 const sigCtx    = sig(typeof ctxAge === 'number' ? ctxAge : 99, v => v <= 7, v => v <= 14);
@@ -1207,7 +1190,7 @@ const lines = [
   renderLastCompleted(status.lastSessionSummary, {
     expectedSession: currentSession - 1,
     fallback: status.currentFocus || shippedLine || 'Latest session details unavailable.',
-    tests: status.lastVerification?.canonical || status.lastVerification?.tests || null,
+    tests: priorSessionTests,
     deploy: status.lastVerification?.production || status.lastVerification?.deploy || null,
   }),
   ``,
@@ -1245,10 +1228,9 @@ const lines = [
   // ── WHERE WE LEFT OFF ──────────────────────────────────────────────────────
   top(`WHERE WE LEFT OFF  ·  Session ${currentSession - 1}`),
   row(`Shipped:  ${shippedLine.slice(0, W - 10)}`),
-  // S181 [audit #2] — was `${testsTotal} passing`, which labelled the TOTAL as
-  // PASSING (179 "passing" while 10 failed) — a CANON-031 lying surface that
-  // contradicted the SIGNALS block. Show passing/total, matching testsLabel.
-  row(`Tests:    ${typeof status.testsPassing === 'number' ? `${status.testsPassing}/${status.testsTotal ?? '?'}` : (status.testsTotal ?? '?')} passing  ·  Deploy: ${lastDeploySignal}`),
+  // Last-session evidence and current receipt freshness have different scopes.
+  ...wrapBriefText(`Tests:    ${priorSessionTests}`, W).map(row),
+  row(`Deploy: ${lastDeploySignal}`),
   bot(),
   ``,
   // ── CONTEXT METER (S119 founder directive — was buried, now first-class) ──
@@ -1279,7 +1261,7 @@ const lines = [
   ``,
   // ── SIGNALS ────────────────────────────────────────────────────────────────
   top('SIGNALS'),
-  row(`${sigTests}  Tests         ${testsLabel}`),
+  ...wrapBriefText(`${sigTests}  Tests         ${testsLabel}`, W).map(row),
   row(`${sigVel}  Velocity      ${velocity} ${velTrend}  ·  Debt: ${debtRaw}`),
   row(`${sigRun}  Runway        ${runwayRaw === 'unknown' ? 'not tracked' : runwayRaw}`),
   // Headroom moved to dedicated CONTEXT METER block above (S119).

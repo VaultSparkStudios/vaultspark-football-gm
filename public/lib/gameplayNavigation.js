@@ -11,6 +11,7 @@ export const GAMEPLAY_NAVIGATION_VERSION = "1.0";
 
 const ROUTES = Object.freeze({
   overview: Object.freeze({ targetTab: "overviewTab", targetId: "franchiseCommandCenter" }),
+  leagueNews: Object.freeze({ targetTab: "calendarTab", targetId: "newsTable" }),
   postseason: Object.freeze({ targetTab: "overviewTab", targetId: "franchiseCommandCenter" }),
   contracts: Object.freeze({ targetTab: "contractsTab", targetId: "contractsSpotlight" }),
   trades: Object.freeze({ targetTab: "transactionsTab", targetId: "tradeTeamARosterTable" }),
