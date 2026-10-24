@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "session": 121,
+  "at": "2026-10-24T03:20:39.336Z",
+  "sha": "5410b8b5159059c516f80529ae5330e99838f266",
+  "complete": true,
+  "ci": {
+    "ok": true,
+    "sha": "5410b8b5159059c516f80529ae5330e99838f266",
+    "runId": 40045673237,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "deployments": [
+    {
+      "kind": "pages",
+      "id": 40045675543,
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40045675543",
+      "headSha": "5410b8b5159059c516f80529ae5330e99838f266",
+      "status": "completed",
+      "conclusion": "success",
+      "requiredJob": "build",
+      "requiredStep": "Publish to Cloudflare Pages (live origin)"
+    },
+    {
+      "kind": "backend",
+      "id": 40045680397,
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40045680397",
+      "headSha": "5410b8b5159059c516f80529ae5330e99838f266",
+      "status": "completed",
+      "conclusion": "success",
+      "requiredJob": "deploy-server",
+      "requiredStep": "Copy ops and deploy backend with bounded pinned SSH"
+    }
+  ],
+  "api": {
+    "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "database": "ready",
+    "verified": true
+  },
+  "staging": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "production": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "visual": {
+    "captures": 64,
+    "reviewed": true
+  },
+  "performance": {
+    "status": "verified",
+    "profiles": [
+      {
+        "name": "desktop",
+        "lcpMs": 1216,
+        "inpMs": 24,
+        "cls": 0.0003
+      },
+      {
+        "name": "mobile",
+        "lcpMs": 1336,
+        "inpMs": 24,
+        "cls": 0.0131
+      }
+    ]
+  }
+}

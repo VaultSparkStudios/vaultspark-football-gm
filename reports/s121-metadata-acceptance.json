@@ -1,0 +1,28 @@
+{
+  "session": 121,
+  "at": "2026-10-24T03:39:13.208Z",
+  "scope": "Clean tracked-tree worktree plus affected authority contracts after correction",
+  "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+  "initialStudio": {
+    "tests": 380,
+    "passed": 379,
+    "failed": 1,
+    "logSha256": "c24d46f71fc8d6b52bff9ec86e9071a7db1264244c17ec429c5b538057ecb26d",
+    "failure": "Live handoff title lacked the required parseable session closeout heading."
+  },
+  "correction": "Use # Session 121 Closeout; no production source or test changed.",
+  "affectedRecheck": {
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "files": [
+      "session-authority.test.js",
+      "startup-sil-truth.test.js",
+      "startup-brief-last-session.test.js",
+      "audit-completion-contract.test.js"
+    ],
+    "logSha256": "6355a645e37d53fce5c9c0ba6466cd0799c32b0d6521cd7c312a4493e9198a5f"
+  },
+  "accepted": true,
+  "limits": "Initial full Studio run is preserved as379/380, not relabeled as a single380-pass run. Required application CI remains exact-source seven jobs green. Three ignored files in the populated primary workspace remain outside the clean tracked-tree acceptance."
+}

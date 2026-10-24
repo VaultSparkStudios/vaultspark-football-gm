@@ -18,14 +18,14 @@
   "scope": "S121 full arc: reliable deployment and visible public polish",
   "axes": {
     "features-depth": 1.5,
-    "ui-ux-feedback": 3,
+    "ui-ux-feedback": 5,
     "gamification-immersion": 5,
     "ai-intelligence": 1.5,
-    "security": 1.5,
-    "speed-organization-efficiency": 1.5,
-    "token-cost": 1.5,
-    "observability-honesty": 1.5,
-    "sil-debt": 1.5
+    "security": 3,
+    "speed-organization-efficiency": 4,
+    "token-cost": 1,
+    "observability-honesty": 3,
+    "sil-debt": 1
   },
   "axisCoverage": {
     "features-depth": {
@@ -130,8 +130,136 @@
   },
   "items": [
     {
-      "id": 1,
+      "id": 3,
       "rank": 1,
+      "slug": "public-footer-gutter",
+      "axis": "ui-ux-feedback",
+      "title": "Give the shared public footer the page gutter",
+      "category": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 56.78,
+      "premise": "Live source public/styles.css omits .public-chrome-footer {; verified during S121 startup audit.",
+      "premises": [
+        {
+          "claim": "Source contract for public-footer-gutter",
+          "adapter": "grep",
+          "target": "public/styles.css",
+          "pattern": ".public-chrome-footer {",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "recipe": "Capture before images on desktop/mobile in dark/light; add a scoped shared-footer gutter that also fits already constrained parents; inspect all shared-footer routes after build and capture the four variants. Preserve links and legal text.",
+      "acceptance": "All shared-footer pages have readable horizontal spacing without overflow in both themes at desktop/mobile; before/after images are inspected and hash-bound.",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Measure and document the concrete failure."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Capture before images on desktop/mobile in dark/light; add a scoped shared-footer gutter that also fits already constrained parents; inspect all shared-footer routes after build and capture the four variants. Preserve links and legal text."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
+        }
+      },
+      "status": "shipped",
+      "executionLog": [
+        {
+          "at": "2026-10-24T00:19:52.422Z",
+          "status": "pending",
+          "note": "56 provisional after captures pass; before images preserved. Shared footer has 16 px gutter and centered 1120 px maximum. Final display:block refinement and immutable candidate capture review pending."
+        },
+        {
+          "at": "2026-10-24T00:30:32.9215622Z",
+          "status": "shipped",
+          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
+        },
+        {
+          "at": "2026-10-24T03:22:24.967Z",
+          "status": "shipped",
+          "note": "Exact candidate5410b8b5 verified on staging and production, all selected acceptance checks pass; canonical closeout publication follows."
+        }
+      ],
+      "shipped": true,
+      "executionEvidence": "Shared footer spacing and legal-line flow are implemented. LATEST.json binds64 inspected before/after images to exact candidate5410b8b5;56 public captures and staging14/14 pass. Frontend production readback and rollback verified. Exact candidate CI seven required jobs, Pages/API promotion, production14/14 provenance and hosted performance verified; reports/s121-release-acceptance.json.",
+      "initialPriority": 11.36,
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FB stabilization: repair the observed reliability/presentation/evidence failure without speculative feature breadth or a lifecycle transition."
+    },
+    {
+      "id": 4,
+      "rank": 2,
+      "slug": "capture-render-readiness",
+      "axis": "speed-organization-efficiency",
+      "title": "Make evidence wait for the surface it claims to show",
+      "category": "speed-organization-efficiency",
+      "tier": "🔥",
+      "effortHours": 2,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 48,
+      "premise": "Live source scripts/capture-public-qa.mjs contains page.waitForTimeout(250); verified during S121 startup audit.",
+      "premises": [
+        {
+          "claim": "Source contract for capture-render-readiness",
+          "adapter": "grep",
+          "target": "scripts/capture-public-qa.mjs",
+          "pattern": "page\\.waitForTimeout\\(250\\)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "recipe": "Replace the arbitrary public-page delay with bounded layout and image readiness; scroll normally through lazy content before full-page capture. Add a browser regression with a delayed off-screen image. S121 mobile moment-card baseline passed 24 captures and visual inspection: carried framing defect not reproduced, no speculative fix.",
+      "acceptance": "Full-page capture loads an off-screen delayed image, returns to the top, and fails on bounded-scroll exhaustion; real public captures contain loaded lazy content. Mobile moment-card baseline is recorded as not reproduced.",
+      "selectedLevel": "L2",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Measure and document the concrete failure."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Replace the arbitrary public-page delay with bounded layout and image readiness; scroll normally through lazy content before full-page capture. Add a browser regression with a delayed off-screen image. S121 mobile moment-card baseline passed 24 captures and visual inspection: carried framing defect not reproduced, no speculative fix."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
+        }
+      },
+      "status": "shipped",
+      "executionLog": [
+        {
+          "at": "2026-10-24T00:19:52.422Z",
+          "status": "pending",
+          "note": "Browser regression passed via canonical Playwright runner. Public 56-capture iteration passes with delayed/lazy image readiness. Fresh mobile moment-card baseline: 24 captures pass; title/share action visible; carried clipping not reproduced and no speculative source edit."
+        },
+        {
+          "at": "2026-10-24T00:30:32.9217193Z",
+          "status": "shipped",
+          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
+        },
+        {
+          "at": "2026-10-24T03:22:24.967Z",
+          "status": "shipped",
+          "note": "Exact candidate5410b8b5 verified on staging and production, all selected acceptance checks pass; canonical closeout publication follows."
+        }
+      ],
+      "shipped": true,
+      "executionEvidence": "The delayed off-screen image regression passes in the canonical browser suite;56 immutable public captures pass. The carried mobile moment-card clipping did not reproduce in24 baseline captures and received no speculative code change. Exact candidate CI seven required jobs, Pages/API promotion, production14/14 provenance and hosted performance verified; reports/s121-release-acceptance.json.",
+      "initialPriority": 12,
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FB stabilization: repair the observed reliability/presentation/evidence failure without speculative feature breadth or a lifecycle transition."
+    },
+    {
+      "id": 1,
+      "rank": 3,
       "slug": "backend-failure-evidence",
       "axis": "observability-honesty",
       "title": "Expose the backend admission refusal and complete the authorized deployment",
@@ -140,7 +268,7 @@
       "effortHours": 2,
       "impact": 8,
       "innovation": 3,
-      "priority": 12,
+      "priority": 36,
       "premise": "Live source scripts/deploy-backend-ssh.mjs contains const kind = identityOrAuthFailure; verified during S121 startup audit.",
       "premises": [
         {
@@ -180,13 +308,22 @@
           "at": "2026-10-24T00:30:32.8992828Z",
           "status": "shipped",
           "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
+        },
+        {
+          "at": "2026-10-24T03:22:24.967Z",
+          "status": "shipped",
+          "note": "Exact candidate5410b8b5 verified on staging and production, all selected acceptance checks pass; canonical closeout publication follows."
         }
       ],
-      "shipped": true
+      "shipped": true,
+      "executionEvidence": "Credential-safe refusal diagnostics are implemented and tested, including ANSI/NUL normalization. Reports/s121-backend-workflow.json verifies the exact API deployment, unchanged database/routing/process and retained rollback image. Exact candidate CI seven required jobs, Pages/API promotion, production14/14 provenance and hosted performance verified; reports/s121-release-acceptance.json.",
+      "initialPriority": 12,
+      "readinessArea": "backup, recovery and rollback",
+      "stageRationale": "FB stabilization: repair the observed reliability/presentation/evidence failure without speculative feature breadth or a lifecycle transition."
     },
     {
       "id": 2,
-      "rank": 2,
+      "rank": 4,
       "slug": "goal-lock-anchor",
       "axis": "sil-debt",
       "title": "Make the real startup writer produce a bindable session lock",
@@ -235,128 +372,27 @@
           "at": "2026-10-24T00:30:32.9212118Z",
           "status": "shipped",
           "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
-        }
-      ],
-      "shipped": true
-    },
-    {
-      "id": 3,
-      "rank": 3,
-      "slug": "public-footer-gutter",
-      "axis": "ui-ux-feedback",
-      "title": "Give the shared public footer the page gutter",
-      "category": "ui-ux-feedback",
-      "tier": "🔥",
-      "effortHours": 1,
-      "impact": 6,
-      "innovation": 3,
-      "priority": 11.36,
-      "premise": "Live source public/styles.css omits .public-chrome-footer {; verified during S121 startup audit.",
-      "premises": [
-        {
-          "claim": "Source contract for public-footer-gutter",
-          "adapter": "grep",
-          "target": "public/styles.css",
-          "pattern": ".public-chrome-footer {",
-          "operator": "eq",
-          "expected": false
-        }
-      ],
-      "recipe": "Capture before images on desktop/mobile in dark/light; add a scoped shared-footer gutter that also fits already constrained parents; inspect all shared-footer routes after build and capture the four variants. Preserve links and legal text.",
-      "acceptance": "All shared-footer pages have readable horizontal spacing without overflow in both themes at desktop/mobile; before/after images are inspected and hash-bound.",
-      "selectedLevel": "L2",
-      "ladder": {
-        "L1": {
-          "effortHours": 0.5,
-          "recipe": "Measure and document the concrete failure."
-        },
-        "L2": {
-          "effortHours": 1,
-          "recipe": "Capture before images on desktop/mobile in dark/light; add a scoped shared-footer gutter that also fits already constrained parents; inspect all shared-footer routes after build and capture the four variants. Preserve links and legal text."
-        },
-        "L3": {
-          "effortHours": 3,
-          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
-        }
-      },
-      "status": "shipped",
-      "executionLog": [
-        {
-          "at": "2026-10-24T00:19:52.422Z",
-          "status": "pending",
-          "note": "56 provisional after captures pass; before images preserved. Shared footer has 16 px gutter and centered 1120 px maximum. Final display:block refinement and immutable candidate capture review pending."
         },
         {
-          "at": "2026-10-24T00:30:32.9215622Z",
+          "at": "2026-10-24T03:22:24.967Z",
           "status": "shipped",
-          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
+          "note": "Exact candidate5410b8b5 verified on staging and production, all selected acceptance checks pass; canonical closeout publication follows."
         }
       ],
-      "shipped": true
-    },
-    {
-      "id": 4,
-      "rank": 4,
-      "slug": "capture-render-readiness",
-      "axis": "speed-organization-efficiency",
-      "title": "Make evidence wait for the surface it claims to show",
-      "category": "speed-organization-efficiency",
-      "tier": "🔥",
-      "effortHours": 2,
-      "impact": 6,
-      "innovation": 4,
-      "priority": 12,
-      "premise": "Live source scripts/capture-public-qa.mjs contains page.waitForTimeout(250); verified during S121 startup audit.",
-      "premises": [
-        {
-          "claim": "Source contract for capture-render-readiness",
-          "adapter": "grep",
-          "target": "scripts/capture-public-qa.mjs",
-          "pattern": "page\\.waitForTimeout\\(250\\)",
-          "operator": "eq",
-          "expected": true
-        }
-      ],
-      "recipe": "Replace the arbitrary public-page delay with bounded layout and image readiness; scroll normally through lazy content before full-page capture. Add a browser regression with a delayed off-screen image. S121 mobile moment-card baseline passed 24 captures and visual inspection: carried framing defect not reproduced, no speculative fix.",
-      "acceptance": "Full-page capture loads an off-screen delayed image, returns to the top, and fails on bounded-scroll exhaustion; real public captures contain loaded lazy content. Mobile moment-card baseline is recorded as not reproduced.",
-      "selectedLevel": "L2",
-      "ladder": {
-        "L1": {
-          "effortHours": 0.5,
-          "recipe": "Measure and document the concrete failure."
-        },
-        "L2": {
-          "effortHours": 2,
-          "recipe": "Replace the arbitrary public-page delay with bounded layout and image readiness; scroll normally through lazy content before full-page capture. Add a browser regression with a delayed off-screen image. S121 mobile moment-card baseline passed 24 captures and visual inspection: carried framing defect not reproduced, no speculative fix."
-        },
-        "L3": {
-          "effortHours": 6,
-          "recipe": "Broader automation across adjacent surfaces, deferred outside this bounded arc."
-        }
-      },
-      "status": "shipped",
-      "executionLog": [
-        {
-          "at": "2026-10-24T00:19:52.422Z",
-          "status": "pending",
-          "note": "Browser regression passed via canonical Playwright runner. Public 56-capture iteration passes with delayed/lazy image readiness. Fresh mobile moment-card baseline: 24 captures pass; title/share action visible; carried clipping not reproduced and no speculative source edit."
-        },
-        {
-          "at": "2026-10-24T00:30:32.9217193Z",
-          "status": "shipped",
-          "note": "Implementation verified at 2c950271 by focused Node/browser tests, independent source review, 56 exact-artifact public captures and 14/14 staging. Production deployment remains a separate unfinished session gate; no production completion is claimed."
-        }
-      ],
-      "shipped": true
+      "shipped": true,
+      "executionEvidence": "The real writer fixture binds a native goal, preserves its start anchor on repeated startup, rotates the anchor on force and refuses a missing Git anchor. Current goal binds S121 at3a85f2bd; exact candidate CI passes the registered test. Exact candidate CI seven required jobs, Pages/API promotion, production14/14 provenance and hosted performance verified; reports/s121-release-acceptance.json.",
+      "initialPriority": 13.25,
+      "readinessArea": "observability and actionable analytics",
+      "stageRationale": "FB stabilization: repair the observed reliability/presentation/evidence failure without speculative feature breadth or a lifecycle transition."
     }
   ],
   "totals": {
     "count": 4,
-    "priority": 48.61,
+    "priority": 154.03,
     "top3": [
-      "backend-failure-evidence",
-      "goal-lock-anchor",
-      "public-footer-gutter"
+      "public-footer-gutter",
+      "capture-render-readiness",
+      "backend-failure-evidence"
     ]
   },
   "gameLoopReview": {
@@ -367,13 +403,229 @@
     "soulFidelity": 7,
     "evidence": "Source review only, not measured player enjoyment. GAME_LOOP contract and existing decision, timeline and moment surfaces reviewed. Next actions: preserve decision loop, repair reliable moment evidence, ship visible footer polish without adding another overlay."
   },
-  "readinessNotes": "Local profile lacks ladderStage; startup authority reports registry FORGE/FB. No lifecycle change selected. Email reply-as and public-launch holds remain. Routine deployment follows exact-candidate checks, staging, rollback and readback.",
-  "status": "implementation-verified-production-pending",
+  "readinessNotes": "Registry FORGE/FB is authoritative; local profile UNKNOWN was explicitly reconciled late. Twelve readiness areas are assessed. Technical promotion/selected implementation completion do not claim public launch readiness; no stage transition or expanded implementation scope occurred.",
+  "status": "selected-outcomes-production-verified-closeout-publication-pending",
   "goalAssociation": {
     "threadId": "01a16b3a-e2b2-7d90-bd24-91ae57e04761",
     "createdAt": 1792800402,
     "session": 121,
     "originalHead": "3a85f2bd105d06a669fa6b29c3e33d2594e3237c",
-    "completionProven": false
+    "note": "Identity association only; actual completion is established by release and closeout evidence, then the native goal."
+  },
+  "skipped": [
+    {
+      "slug": "more-conference-extraction",
+      "reason": "src/engine/weeklySimulator.js now reads structure.conferences (S120); no duplicate extraction."
+    },
+    {
+      "slug": "save-payload-compaction",
+      "reason": "S119 measured 15.305 MB; no newer over-budget measurement."
+    },
+    {
+      "slug": "new-retention-overlay",
+      "reason": "context/GAME_LOOP.md and public/lib/returnDigest.js already define and deliver the decision/return loop."
+    },
+    {
+      "slug": "more-moment-ui",
+      "reason": "responsive-evidence.mjs mounts the shipped moment module; the demonstrated gap is evidence framing, selected separately."
+    },
+    {
+      "slug": "paid-gm-advisor",
+      "reason": "Existing public/lib/advisor.js is local and cost-neutral; no measured need or paid approval."
+    },
+    {
+      "slug": "new-ai-copy",
+      "reason": "public/features.html already describes the shipped game; no verified missing behavior."
+    },
+    {
+      "slug": "retry-admission-refusal",
+      "reason": "Shared-host guard enforces reserve/ownership; retrying is not a capacity remedy and is excluded."
+    },
+    {
+      "slug": "local-account-system",
+      "reason": "PROJECT_STATUS declares external Obelisk and no account flows; promotion changes no trust contract."
+    },
+    {
+      "slug": "compact-status-prompts",
+      "reason": "Existing startup brief, context meter and bounded audit projection already cover context; no new measured token defect."
+    },
+    {
+      "slug": "api-cost-router",
+      "reason": "Static footer and evidence changes have no per-user model API cost."
+    }
+  ],
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "registry"
+  },
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "pass",
+      "evidence": "reports/s121-ci-proof.json verifies all seven required exact-candidate jobs and test steps, including the canonical core, runtime, simulation and browser journeys. This is engineering acceptance, not measured player retention.",
+      "owner": "project agent",
+      "nextAcceptanceCheck": "Preserve these journeys; investigate reproducible user failures if reported.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "evidence": "Current browser onboarding/save-return acceptance is in the green CI suite. PROJECT_STATUS declares no Studio account flows and external Obelisk architecture; positive account-bearing journeys are not claimed.",
+      "owner": "project agent",
+      "nextAcceptanceCheck": "Verify affected identity journeys before introducing account/session flows; obtain actual onboarding feedback.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "evidence": "docs/visual-qa/LATEST.json binds the selected shared-footer change at desktop/mobile in dark/light. All56 public captures pass. Broader character naturalism, physical-device performance and whole-product accessibility are not newly proven.",
+      "owner": "project agent",
+      "nextAcceptanceCheck": "Keep touched UI pixel checks passing; separately measure broader accessibility and physical-device gaps before claiming full readiness.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "evidence": "reports/s121-staging-performance.json records five-run synthetic LCP1016ms desktop/956ms mobile and passing INP/CLS; the failed overlapping-load sample is preserved. Marginal-cost status is cost-neutral; full load/capacity and physical-device behavior are not newly measured. Production five-run medians: LCP1216ms desktop/1336ms mobile, INP24ms both, CLS0.0003/0.0131, verified in reports/s121-production-performance.json.",
+      "owner": "project agent",
+      "nextAcceptanceCheck": "Obtain representative capacity and physical-device evidence before scaling claims.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "evidence": "Native pre-push scan reported zero violations; pinned SSH and normalized credential redaction regressions pass. Staging edge-policy checks and canonical security/data tests pass. This is not a fresh comprehensive penetration test or a policy change.",
+      "owner": "project agent",
+      "nextAcceptanceCheck": "Preserve current policy; verify affected trust/data paths for any future change.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "partial",
+      "evidence": "reports/s121-backend-workflow.json proves unchanged database/routing/process identities and retained prior API image. Previous Pages deployment is recorded privately. Named-save recovery is in CI; a fresh database backup/restore exercise was not performed. reports/s121-pages-provider.json verifies the previous frontend deployment remains available.",
+      "owner": "project operator",
+      "nextAcceptanceCheck": "Obtain a current isolated database restore receipt before claiming complete recovery readiness.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "partial",
+      "evidence": "Existing status records inbound project-email delivery and an unverified reply-as path; no new outbound or transactional-delivery proof was collected. This existing launch hold is separate from technical promotion.",
+      "owner": "project email/support owner",
+      "nextAcceptanceCheck": "Provide dated delivery and reply-as evidence through the existing email-owner workstream before launch readiness is claimed.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "evidence": "Exact source-bound CI, staging, API health and readable deployment diagnostics are verified. Broader real-user analytics, alert delivery and cohort effects are not newly measured.",
+      "owner": "project operator",
+      "nextAcceptanceCheck": "Validate actionable alerts and real-user analytics separately.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "evidence": "Public contact/feedback surfaces are present in the captured artifact and browser suite. No actual support-response or user-cohort receipt is invented; reply-as remains unverified.",
+      "owner": "project support owner",
+      "nextAcceptanceCheck": "Verify a real support response path and triage ownership before public launch claims.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "evidence": "The selected footer retains VaultSpark branding/link-back and proprietary copyright across both themes; public legal/contact pages are covered by public-page tests/captures. No new rights terms were introduced; complete provenance is not re-audited here.",
+      "owner": "project owner",
+      "nextAcceptanceCheck": "Resolve current contact/reply and remaining launch/provenance acceptance through their existing owners.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "evidence": "Machine-readable discovery and API contracts exist and are covered by static/provenance and canonical tests. No new authenticated agent journey or Studio account integration is claimed.",
+      "owner": "project agent",
+      "nextAcceptanceCheck": "Exercise applicable agent journeys with their declared scope before claiming complete human/agent parity.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "partial",
+      "evidence": "Exact candidate5410b8b5: staging and production14/14, seven CI jobs, Pages/API, rollback,64 reviewed visual images and synthetic performance pass. reports/s121-release-acceptance.json and reports/s121-pages-provider.json. Technical promotion does not clear existing launch/email/founder GO holds.",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Publish canonical closeout; obtain separate launch evidence and approval before any public launch or lifecycle transition.",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "observedAt": "2026-10-24T03:22:24.967Z"
+    }
+  ],
+  "stageReconciliation": {
+    "observedAt": "2026-10-24T02:36:30.68Z",
+    "stage": "FB",
+    "source": "authoritative Studio registry row",
+    "timing": "Late explicit matrix reconciliation during release verification. The startup local profiler reported UNKNOWN, while the audit notes already recorded registry FORGE/FB. This does not claim the matrix existed before implementation.",
+    "scopeChanged": false,
+    "lifecycleChanged": false
+  },
+  "initialAxes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 3,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 1.5,
+    "speed-organization-efficiency": 1.5,
+    "token-cost": 1.5,
+    "observability-honesty": 1.5,
+    "sil-debt": 1.5
+  },
+  "executionOrder": [
+    "goal-lock-anchor",
+    "backend-failure-evidence",
+    "capture-render-readiness",
+    "public-footer-gutter"
+  ],
+  "currentRelease": {
+    "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "ci": "verified-seven-required-jobs",
+    "ciProof": "reports/s121-ci-proof.json",
+    "backend": "production-verified",
+    "backendProof": "reports/s121-backend-workflow.json",
+    "pages": "production-verified",
+    "pagesRun": 40045675543,
+    "fullGoalComplete": false,
+    "pagesProof": "reports/s121-pages-provider.json",
+    "acceptance": "reports/s121-release-acceptance.json"
   }
 }

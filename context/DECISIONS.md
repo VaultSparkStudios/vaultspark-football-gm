@@ -4,37 +4,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 
 
-## 2026-09-30 — S111 live Play hotfix — the production browser is part of the release gate
-
-**Decision 7 — document navigations belong to the browser when the host canonicalizes URLs.** The founder's Play click failed after the `9400912` production promotion. A real browser reproduced `net::ERR_FAILED` on `/game.html` with the service worker active, while the same URL loaded at `/game` with service workers blocked. Cloudflare Pages returns a 308 for `/game.html` → `/game`; the old worker precached the redirected HTML response and handed it to a navigation whose redirect mode disallowed it. Source `68856a7` excludes HTML from precache and returns without `respondWith` for navigation requests, leaving redirect handling to the browser while retaining static module caching. A VM behavior test would fail on the pre-fix worker; a stable-staging browser with an active worker successfully navigated and completed the actual Start Your Franchise click with no request errors. The previous 10/10 provenance and 69-pass browser receipts were true for the checks they ran but did not exercise this production host/worker seam. Preserve that boundary in the closeout; do not retroactively call the first promotion fully playable.
-
-**Decision 8 — test the visible bye prompt, not its static markup.** The first hotfix promotion gate failed on a random first-week bye because the browser spec expected zero `.tactic-option` DOM nodes. Four buttons always exist under a hidden dialog, so the correct contract is that the dialog stays hidden. Source `15a962b` asserts that contract and passed the focused browser suite and full release gate. Stable staging and production both serve the same `c09fc822…686c980c` artifact; direct `/game.html`, fresh Play, and an old-worker returning visitor reached `/game` without failed requests. This verifies the Play correction while public launch remains a separate HOLD.
-
-## 2026-09-29 — S111 — The league may change without the GM, but every release claim needs its own witness
-
-**Decision 1 — CPU trade ecology runs through existing law and a matched control.** A player-controlled league whose rival clubs never transact cannot make market consequences credible. The S111 market selects bounded CPU-only candidates at weekly advance and submits them to the same TradeService that checks legality, cap, roster and picks. It uses deterministic keyed selection and a matched seeded three-season control to test transaction volume and league effects; it does not invent a separate trade authority or loosen a rule to make trades happen. League News exposes accepted moves.
-
-**Decision 2 — one Team destination joins the decisions that share a roster.** Roster and Depth were separate navigation destinations even though changing snap shares requires comparison against the players on that roster. One Team destination now has Roster and Depth submodes while preserving underlying tab IDs and deep-link behavior. Crests use the existing lazy procedural module in League and Trades; text labels remain the identity fallback. Browser and rendered-pixel checks cover keyboard and mobile navigation in both themes.
-
-**Decision 3 — email proof is a typed roundtrip, not a nonempty string.** The old launch report accepted arbitrary `--email-evidence` text. It now requires a structured project-domain receipt for inbound delivery and recipient-observed reply-as identity, including address and freshness checks. Negative controls reject malformed, incomplete and forged claims. The actual Zoho roundtrip has not been observed; `launchReady` remains false rather than turning code coverage into delivery evidence.
-
-**Decision 4 — backend transport retries are bounded and identity-preserving.** S110's workflow failure was at runner SSH transport, after gate and image builds. S111 replaced one-shot transfer/deploy with a helper that checks a pinned host key, retries transient connection resets only within a finite bound, and supplies the registry token through stdin. Application failures and host-key mismatches terminate immediately. The new GitHub workflow passed and independent external health matched the exact deployed source, closing the transport task without treating a green workflow alone as runtime proof.
-
-**Decision 5 — the S110 pre-push deadlock diagnosis is superseded by measured normal pushes.** S110 recorded a Bash hook deadlock and a `--no-verify` recovery exception. The recovered closeout push and S111 source pushes completed under the ordinary hook; one was slow, subsequent pushes took seconds. The audit rejected the deadlock premise, so no replacement hook was shipped. The historical bypass remains recorded; reopen only on a reproducible failure and retain its positive/negative checks.
-
-**Decision 6 — a visual receipt needs the durable ledger as well as the current hash list.** The first final-source Studio shard caught 158 retained S111 PNGs absent from `CAPTURE_LEDGER.json`, although `LATEST.json` and reviewed pixels were valid. The capture-ledger writer appended their hashes and the focused regression passed. The failed full run remains a failed receipt; a new six-shard run is required. Technical production promotion is distinct from public launch authority and from a real-cohort outcome.
-
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
-
-## 2026-09-30 — S111 recovery verification — completed baseline
-
-The completed S111 closeout is verified rather than repeated. Fresh direct source-bound tests pass 1,588/1,588 and Doctor reports blockingFailing 0; earlier S111 statements requesting that final run are superseded by this receipt. Preserve the historical failed run and the separate launch HOLD. No SIL score is repeated or inflated for re-verification. The recovery checkpoint changes documentation and evidence only, so no deployment or user-interface change is required.
-
-<!-- s112-closeout:decisions -->
 ## 2026-09-30 — Session 112 — Fair trades, durable saves and observed outcomes
 
 **Whole-package trade authority.** Pick-containing offers use complete economics for both clubs; only player-only trades retain the persona shortcut. Transport preserves the service’s stale-plan refusal.
@@ -166,7 +135,13 @@ Use the native bounded closeout ceremony because shared autopilot child scripts 
 - The backend remote deploy returning exit 75 twice is recorded as a failure with the live API's real revision; it is not reported as deployed, and host diagnosis is left to the founder because this session was not permitted to read the host.
 - The footer-gutter defect found by visual inspection is pre-existing and cosmetic; it is recorded for its own candidate instead of starting a third release cycle.
 
+## 2026-10-24 — Session 121 — Exact deployment and bounded evidence
+
+Preserve source identity5410b8b5 across staging, CI and production. Four audited fixes pass; receipt-only closeout descendants use the existing publication-delta contract. Normalize diagnostic control bytes before credential redaction. Wait for actual lazy image decode rather than a fixed delay. Initial audit-status error and late FORGE/FB readiness reconciliation remain recorded and reduce process scoring. Shared autopilot has foreign-root writers, so execute the subject-correct project-native closeout gates. Existing founder commit/push/deploy authorization is reused; no hook bypass, force push, public launch or lifecycle change.
+
 <!-- ledger-roll:pointer -->
 ---
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.

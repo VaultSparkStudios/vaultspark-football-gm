@@ -1,0 +1,36 @@
+{
+  "session": 121,
+  "at": "2026-10-24T03:33:23.863Z",
+  "writebackOrder": [
+    "CURRENT_STATE",
+    "TASK_BOARD",
+    "LATEST_HANDOFF",
+    "WORK_LOG",
+    "DECISIONS",
+    "SELF_IMPROVEMENT_LOOP",
+    "CDR-not-applicable-no-explicit-creative-direction",
+    "TRUTH_AUDIT",
+    "PROJECT_STATUS-canonical-writer",
+    "AGENT_MEMORY"
+  ],
+  "silScore": 864,
+  "silCategorySum": 864,
+  "independentReview": "reports/s121-closeout-review.json",
+  "doctor": "reports/s121-doctor.json",
+  "metadataAcceptance": "reports/s121-metadata-acceptance.json",
+  "intelligence": {
+    "ignis": "reports/s121-ignis-refresh.json",
+    "entropy": 0.052,
+    "stateVectorSession": 121,
+    "genome": "Snapshot refreshed; canonical parser returns0/25 because dimension scores are unmeasured. This is not a measured zero-quality claim."
+  },
+  "publicSafety": "Internal ceremony adapters and detailed checklist remain ignored; public artifacts contain project results and limitations.",
+  "metadataAccepted": true,
+  "doctorBlockingFailing": 0,
+  "sessionHygiene": {
+    "scope": "Tracked long-running release and verification handles",
+    "started": 18,
+    "closed": 18,
+    "running": 0
+  }
+}

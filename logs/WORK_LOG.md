@@ -146,6 +146,8 @@ Fresh audit (docs/AUDIT_2026-10-23.json, premises 5/5 live-verified and recorded
 Unplanned release blocker: candidate 822ffd9e failed the Pages browser gate (2/268, client-session-recovery) on a revealTable race with the setup page's own auto-open of Saved Leagues; helper converges on the open state, new red-first spec; candidate 207159ea promoted.
 Verification: CI39968433866 and CI39993396521 success; Pages39993950168 success; staging authority 14/14; staging and production provenance 10/10; hosted performance verified; release authority reconciled; doctor 12/12. Visual receipt 214 captures inspected at 207159ea (fresh-context subagent on 22 contact sheets plus full-resolution status page by the session agent), 0 blocking. Backend Deploy 39968888182 failed twice with remote exit 75; API healthy at c0ce44b4, not promoted (founder decision). Local studio shard 374/377, the 3 reds are the known git-ignored local files. Independent review: approve, 3 findings, 2 fixed.
 
+- 2026-10-24 — S121: Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD. Canonical closeout publication finalizing.
+
 <!-- ledger-roll:pointer -->
 ---
 

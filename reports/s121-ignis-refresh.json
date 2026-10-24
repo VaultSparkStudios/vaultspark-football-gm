@@ -1,0 +1,18 @@
+{
+  "session": 121,
+  "at": "2026-10-24T03:27:35.427Z",
+  "method": "Installed IGNIS runtime via canonical recipient-owned scoreVerifiedProject",
+  "wrapperAttempt": "Failed opaquely; not treated as refreshed.",
+  "exitCode": 0,
+  "proof": {
+    "ok": true,
+    "score": 42906,
+    "tier": "FORGE",
+    "project": "franchise-architect-football",
+    "sourceFingerprint": "8245650f272322e2b70425b270fe49ff15b381d74208998fb26e20554c6e932e",
+    "historyHash": "f6cb132c2b769ac0fa7bea774dddfc041c8341136c52e15c2eebdc3aefd655f1",
+    "mindHash": "85752d6dd854ced826c85884a49b08e5656cfc500436f2238313b45333002982"
+  },
+  "error": null,
+  "verified": true
+}

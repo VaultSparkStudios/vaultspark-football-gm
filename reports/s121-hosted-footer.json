@@ -1,0 +1,94 @@
+{
+  "at": "2026-10-24T03:20:29.129Z",
+  "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+  "origin": "https://playfranchisearchitect.com",
+  "captures": [
+    {
+      "file": "s121-hosted-footer-desktop-dark.png",
+      "sha256": "bc32c7b473d01aa4a270547d048f621020ea0b43dc39b25fc3ff268e756f499a",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 160,
+        "right": 1280,
+        "width": 1440,
+        "documentWidth": 1440,
+        "legal": true
+      }
+    },
+    {
+      "file": "s121-hosted-footer-desktop-light.png",
+      "sha256": "74c444616f7ad240373ed073a79c14b02bfeac067bb564f523eedc2fee45b871",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 160,
+        "right": 1280,
+        "width": 1440,
+        "documentWidth": 1440,
+        "legal": true
+      }
+    },
+    {
+      "file": "s121-hosted-footer-mobile-dark.png",
+      "sha256": "6126b61c6b13bdb9cd75a9076d0345c1ada170b2afbe0094c9df28766c87644b",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "documentWidth": 390,
+        "legal": true
+      }
+    },
+    {
+      "file": "s121-hosted-footer-mobile-light.png",
+      "sha256": "1878f83e1b38e18bf333ace758649a4e9fbaf30bb58743db2a92d51763dab77c",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "documentWidth": 390,
+        "legal": true
+      }
+    }
+  ],
+  "verified": true,
+  "inspectionPending": false,
+  "inspection": {
+    "at": "2026-10-24T03:22:24.967Z",
+    "reviewer": "session agent",
+    "result": "All four full production About pages inspected: footer gutter, legal flow and links readable at desktop/mobile in dark/light, no overflow."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "session": 121,
+  "at": "2026-10-24T03:33:23.863Z",
+  "scope": "Project staged text; canonical owner scanContent applied to project files",
+  "textFilesScanned": 44,
+  "unresolvedFindings": 0,
+  "reviewedFalsePositives": 3,
+  "falsePositiveReason": "Three low-confidence token-shape matches are the existing public CDC 2021 Anthropometry Procedures Manual filename, verified on each exact line.",
+  "settingsSanitizerFindings": 0,
+  "supplyChainFindings": 0,
+  "gateway": "Owner gateway audit executed; presence and provider acceptance are distinct. No new capability needed or installed.",
+  "authorization": "Existing bounded founder commit/push/deploy request; Twin ask reused, no deny. No force push or hook bypass."
+}

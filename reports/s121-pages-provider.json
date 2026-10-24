@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "session": 121,
+  "at": "2026-10-24T03:16:59.614Z",
+  "project": "franchise-architect-football",
+  "deploymentId": "8aeff7a2-de14-4c2c-bedc-2a0ebca1e7cd",
+  "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+  "rollback": {
+    "deploymentId": "ff9a7373-48bd-4146-80e3-9c800f4f7d97",
+    "sourceRevision": "207159eae7c2cc68bb9df1058441eab34a057d3d",
+    "available": true
+  },
+  "verified": true
+}

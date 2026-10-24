@@ -2,13 +2,22 @@
 
 Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
+## S121 Wave status
+
+- [x] Wave 1 — Full startup and fresh nine-axis audit; native goal bound to S121.
+- [x] Wave 2 — Four selected source outcomes and their focused, independent and rendered checks.
+- [x] Wave 3 — Exact-candidate hosted checks, production Pages/API deployment/readback and canonical closeout.
+
 ## Now
 
+- [ ] [SIL:121] Before the next candidate, reconcile implemented audit statuses and lifecycle readiness before cutting its SHA.
+- [ ] [SIL:121] Bind reviewed capture hashes at capture time through the canonical image ledger.
+
 - [x] S120: Make the release-gate recovery specs deterministic. — DONE: tests-ui/helpers/static-client.js revealTable converges on an open section (the setup page opens Saved Leagues itself when deferred saves arrive, and a read-then-click closed it under CI load: Pages39968879574, 2 of 268 red); tests-ui/reveal-table-race.spec.js reproduces the interleaving, red with the old helper.
-- [ ] Next: give the shared public footer its gutter on the 11 pages that lack it (about, contact, faq, features, how-to-play, press, privacy, roadmap, status, status-archive, terms): text starts at x=0 and on phones the link row reaches the right edge with a stray separator after the copyright; index, simulation and stats have 19 px. Pre-existing (S120 visual receipt finding); a CSS change needs its own candidate.
-- [ ] Next: responsive-evidence's mobile-moment-card-dark capture is scrolled past the moment card (the light twin is right), and full-page public captures can fire before lazy screenshots load (desktop-dark-features). Fix the capture, not the receipt.
-- [ ] Founder decision: the backend deploy step fails with remote exit 75 within about a second of copying ops files (Deploy Backend Runtime 39968888182 twice, 40021949026 six hours later); gates and images are green and the API stays healthy at c0ce44b4. Exit 75 is the shared host's Studio Docker admission guard refusing `compose pull` below its disk/memory reserves: run the Studio Ops host-reserve workflow, then re-dispatch deploy-backend.yml with deploy_to_server=true.
-- [ ] Next (founder-approved change): make scripts/deploy-backend-ssh.mjs print the remote stderr tail on failure so the guard's reason reaches the workflow log; whether to retry 75 is a separate call.
+- [x] S121: Shared public footer gutter implemented and independently reviewed; 56 immutable desktop/mobile and dark/light captures pass at 5410b8b5, stable staging 14/14. Production readback and hosted four-view inspection pass.
+- [x] S121: Public evidence now scrolls through lazy content and waits for decoded images; delayed-image browser regression passes. Mobile moment-card clipping did not reproduce: 24 baseline captures passed and the title/action were visibly present; no speculative fix.
+- [x] S121 Wave 3: Exact candidate5410b8b5 CI, staging, Pages/API promotion, provider rollback, production readback and performance verified; canonical closeout publication finalizing.
+- [x] S121: Backend errors preserve bounded, credential-redacted remote diagnostics, including ANSI/NUL normalization regression coverage. Host pinning and non-retry of admission/application failures remain enforced.
 - [x] S119: Fix the expanded-mobile Desk/card right-edge clipping at its source. — DONE: shared .team-mode-switch fit-content + wrap; tests-ui/mobile-desk-width.spec.js (390/320 px, negative control red); live on production c0ce44b4.
 - [x] S119: Make the passer rating one NFL formula across season tables, box score and client. — DONE: reference lines 99.3/158.3/115.1/0; golden s119-v3 moved only seasonTable.passing; live on production c0ce44b4.
 - [x] S119: Restore the studio shard: register AGENT_MEMORY.md as a rollable ledger. — DONE: CI39900408127 all seven jobs green.
@@ -184,19 +193,6 @@ Public launch remains HOLD for actual project-domain receive/reply-as evidence, 
 - [x] **CPU–CPU trade market** shipped in S111 with a matched seeded three-season transaction control.
 - [ ] **Alias mounts** (eight copies, 33.7 MB) wait on the Studio host contract before any alias becomes a 301.
 - [ ] Never write a count premise as `[\s\S]*?){n}`; the checker hung twenty minutes when the fix made n unreachable. Use a non-overlapping separator.
-
-## Session 108 — Full arc: the question answered first, the roll's remedy revived, and the offseason's verdict shown (2026-09-14)
-
-- [x] **State elite density's declared-population question before any code, and answer it.** The ceiling stays position-blind because the anchor's total (26 of 1,696) is; composition is published on the receipt, never gated. Seats by room declared in the baseline (24 allocable of 26, two returner/special-teamer seats named unallocable); `activeRosterRooms` on the summary; `buildEliteCompositionReading` on the receipt. Canonical seed: OL 80.6% of the cohort against 20.8% of seats (ratio 3.87), QB 16.7% vs 4.2% (3.98); seed 2026: QB 6.74, OL 3.03; every other room 0–0.26. Room means QB 84.1–84.6 and OL 83.1–83.3 against 76.5–78.2 elsewhere: a position-blind 90 is +1.5–1.7 sd in two rooms and +3.0–4.0 sd in five. No per-room arm, no ceiling moved; a test proves `status` is identical for a proportional and a concentrated cohort.
-- [x] **Ledger retention by session number — and the roll's remedy had been inert since S105.** Every closeout appended beneath the pointer and the splitter sliced at the sentinel: four ledgers "fewer than the window" while holding twelve, and an applied roll would have dropped S106/S107. Fixed at source (pointer found anywhere, re-appended at EOF, by-session retention in declared order, duplicate-session reason distinct, positional rule kept as negative control). Rolled live: 296 KB → 270 KB. The S106 evidence ("SIL three short") was a phantom; TRUTH_AUDIT was the instance.
-- [x] **The offseason development ledger reaches the GM.** Engine returns every progressed player's move (retirees flagged); club report on the pipeline and the league; stage message, long-form feed, beat-reporter log (inbox IMPORTANT); History-tab card from a lazily imported module. No RNG draw added. Node 7/7, Playwright 2/2.
-- [x] **The draft surface stops printing the truth the scouting board sells.** Overall, potential and ratings stripped from available prospects on every response (GET and the three POSTs, both API layers); fogged potential ±6 from a keyed generator; combine rows and reveal/reward beats read the scouted number. Engine copy untouched.
-- [x] **The profile outlook reads headroom and trait; the runway is in growth seasons.** At-ceiling players cannot read past "steady". `GROWTH_WINDOW_MAX_AGE` exported from the curve's module (the generator's `closedHeadroomAge` is not the development boundary). Roster table shows the dev trait.
-- [x] **Review before receipt** — eight findings, all acted on before a shard ran. The S94 Next item is struck.
-- [ ] **The rating scale is the next honest question, not the gate.** Rooms sit seven overall points apart, so "90" is not the same claim in every room. Any change is a generator/scale change with the full distribution receipt as its control; do not add a per-room elite arm and do not move the 1.53% ceiling.
-- [ ] Elite density `watch` at 2.1% / 2.7% (canonical / 2026) against 1.53%; dispersion `watch` at 0.093 / 0.108 against 0.08. Do not widen `stdDevDrift*`.
-- [ ] The history island sits at 15.2% headroom against a 15% floor; the next History-tab change goes behind a dynamic import, never a raised `maxBytes`.
-- [ ] Run `node scripts/ledger-roll.mjs --apply` at every closeout after appending; the live gate tolerates one session of debt, not two.
 
 <!-- ledger-roll:pointer -->
 ---

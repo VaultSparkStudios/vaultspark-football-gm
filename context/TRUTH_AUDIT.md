@@ -1,21 +1,11 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: selected S118 production verified; broader historical truth remains partial
-Last reviewed: 2026-10-22
+Overall status: selected S121 production verified; broader historical truth remains partial
+Last reviewed: 2026-10-24
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
-
-## 2026-09-14 — S109 — Three premises the auditor got wrong, two gates that caught agent output, and a panel that had been empty for every first season
-
-**The audit contradicted itself three times and the contradictions were kept.** "Internal narrative ships in built pages" was false for HTML (stripped at build since before this session) and true for the sitemap; "the stat bar is hand-typed and will drift" was false in its risk (gated since S94) and true for the tier count; "the atlas is Private for now in every cell" was false (pre-cohort renders an invitation). Each is recorded in the sidecar as `skipped-premise-corrected` or `shipped-corrected`, with the narrowed thing that actually shipped.
-
-**Agent output was treated as untrusted and the gates were right.** Four silent catch sinks and one unreachable worker entry were caught by `check-browser-promise-observability` and `check-browser-module-reachability`; the parity gate's regex went red when the CORS literal changed shape and the gate's population was widened rather than the literal duplicated. No gate was loosened; one allowlist entry was added with its reason.
-
-**A surface contradicting its own data.** The Standings table read "No rows" for a franchise's entire first season and showed the previous year's table during later ones, because the dashboard read the season-end archive. A player would have read it as "no games yet" in week one and as current standings in year two. Fixed at source; the release note says so.
-
-**What is claimed and what is not.** The worker's 152 ms activation and 201 ms largest stall are one run on one machine against an in-page control of 449 ms and 8,100 ms; the wall-clock bound was raised from 300 to 750 ms because it crossed 387 ms on an identical tree, and the long-task ceiling carries the gate. The Showcase League is one seed, ten seasons, labelled simulation. The advisor's counterfactual tally is descriptive. The persona change adds no RNG draw and changes no controlled-club decision; CPU–CPU trades do not exist to be affected. The receipt is 1,568/1,568 on the final tree after two earlier runs (one killed by a tool timeout, one red on shared-process order); Playwright 65 passed with the opt-in control skipped.
 
 ## 2026-09-28 — S110 — A green closeout was not a deployed artifact
 
@@ -176,6 +166,10 @@ S118 selected character/family outcomes and full exact-candidate production deli
 - S119 recorded that S118's closeout commits failed CI's browser job on "one recovery case" without a cause. S120's Pages gate failed two client-session-recovery cases the same way; the cause is a race between tests-ui revealTable's read-then-click and setup.js opening Saved Leagues when deferred saves arrive. Fixed with a deterministic reproduction; the S118 failure was very likely the same race (not re-run to prove it).
 - The S119 visual receipt said "no capture shows broken layout"; S120's inspection found the shared public footer has no left gutter on 11 of 14 public pages. It predates S120 (footer untouched) and was present in S119's captures; recorded, not fixed.
 - Backend: the production API reports c0ce44b4, not S120's candidate. Pages production is 207159ea. The two deployed identities now differ, and both are recorded as observed.
+
+## 2026-10-24 — Session 121 — Release identity and evidence boundaries
+
+Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD. Twelve readiness areas retain eleven partial states.64 hash-bound images reviewed; production provenance14/14, provider rollback available. First failed candidate and overlapping-load performance sample preserved. Historical1802-test receipt is not re-dated; current unit aggregate unknown, exact CI7/7 and browser271/3 separately measured. No new creative direction; private CDR untouched. Final closeout publication remains a separate verified readback.
 
 <!-- ledger-roll:pointer -->
 ---

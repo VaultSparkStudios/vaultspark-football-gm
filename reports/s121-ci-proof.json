@@ -1,0 +1,25 @@
+{
+  "at": "2026-10-24T02:12:33.855Z",
+  "ok": true,
+  "sha": "5410b8b5159059c516f80529ae5330e99838f266",
+  "runId": 40045673237,
+  "attempt": 1,
+  "requiredJobs": [
+    "unit-shards (core)",
+    "unit-shards (runtime)",
+    "unit-shards (sim:contract)",
+    "unit-shards (sim:realism)",
+    "unit-shards (long)",
+    "unit-shards (studio)",
+    "browser-gates"
+  ],
+  "lane": "hosted-exact-sha",
+  "browserSummary": {
+    "jobId": 120726709236,
+    "passed": 271,
+    "skipped": 3,
+    "scope": "Canonical browser suite only; unit aggregate case count remains unmeasured",
+    "source": "Completed exact-candidate GitHub job log via GitHub connector",
+    "summaryAt": "2026-10-24T02:10:13Z"
+  }
+}

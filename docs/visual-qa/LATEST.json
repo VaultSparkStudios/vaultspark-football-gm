@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "session": 121,
-  "capturedAt": "2026-10-24T00:22:11.105Z",
-  "sourceRevision": "local-worktree",
-  "kind": "source-bound-local-iteration",
-  "scope": "Shared public footer only; historical game review preserved separately, immutable release verification still pending.",
+  "capturedAt": "2026-10-24T00:35:14.585Z",
+  "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+  "kind": "immutable-rendered-evidence",
+  "scope": "S121 shared public footer; 14 public routes at desktop/mobile in dark/light. Before images are the S120 immutable baseline. Historical game review remains in S120-LATEST-preserved.json; no game UI change in S121.",
   "sourceFiles": [
     {
       "path": "public/styles.css",
@@ -1834,7 +1834,7 @@
   ],
   "captures": [
     {
-      "file": "s121-footers/before-desktop-dark-about.png",
+      "file": "s121-footer-before-desktop-dark-about.png",
       "sha256": "c15d78b4379008c3291c46a874a6ffcbfd034f188e38f09135e7c23b2c17e5ce",
       "theme": "dark",
       "viewport": {
@@ -1842,10 +1842,11 @@
         "height": 1000
       },
       "page": "Before S121 — before-desktop-dark-about",
-      "kind": "before-full-page"
+      "kind": "before-full-page",
+      "sourceRevision": "207159eae7c2cc68bb9df1058441eab34a057d3d"
     },
     {
-      "file": "s121-footers/before-desktop-light-about.png",
+      "file": "s121-footer-before-desktop-light-about.png",
       "sha256": "03ad80b37ed05778c6b752e5808003a2d4531a109ddc972744cd5d97459869a1",
       "theme": "light",
       "viewport": {
@@ -1853,10 +1854,11 @@
         "height": 1000
       },
       "page": "Before S121 — before-desktop-light-about",
-      "kind": "before-full-page"
+      "kind": "before-full-page",
+      "sourceRevision": "207159eae7c2cc68bb9df1058441eab34a057d3d"
     },
     {
-      "file": "s121-footers/before-mobile-dark-about.png",
+      "file": "s121-footer-before-mobile-dark-about.png",
       "sha256": "08841ab24c2a4c90c8783ff181ff0903af8ece2f009a9904013913d1b77d0aaa",
       "theme": "dark",
       "viewport": {
@@ -1864,10 +1866,11 @@
         "height": 844
       },
       "page": "Before S121 — before-mobile-dark-about",
-      "kind": "before-full-page"
+      "kind": "before-full-page",
+      "sourceRevision": "207159eae7c2cc68bb9df1058441eab34a057d3d"
     },
     {
-      "file": "s121-footers/before-mobile-light-about.png",
+      "file": "s121-footer-before-mobile-light-about.png",
       "sha256": "482d94a19900807aeddfac1624af5e8792788ac2af749677ea1c9e29107af91a",
       "theme": "light",
       "viewport": {
@@ -1875,629 +1878,770 @@
         "height": 844
       },
       "page": "Before S121 — before-mobile-light-about",
-      "kind": "before-full-page"
+      "kind": "before-full-page",
+      "sourceRevision": "207159eae7c2cc68bb9df1058441eab34a057d3d"
     },
     {
-      "file": "s121-footers/desktop-dark-about.png",
+      "file": "s121-footer-desktop-dark-about.png",
       "sha256": "0a04e9e00193e4432ce0c4008048663cd2680b8f599c9dd0d2f98577ca775d88",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-about",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-about",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-contact.png",
+      "file": "s121-footer-desktop-dark-contact.png",
       "sha256": "1764c4c67b8b487d52a8b3e2452c0f4ddd565aa5c7334d230d0cd1d6ee76e57f",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-contact",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-contact",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-faq.png",
+      "file": "s121-footer-desktop-dark-faq.png",
       "sha256": "19862577f30049c046f6824124f6ffc73235e62286c5a6bcc3826b6f91f85450",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-faq",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-faq",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-features.png",
+      "file": "s121-footer-desktop-dark-features.png",
       "sha256": "dd2f164ba7b21abccb7aed4c5cc92a94d7d7ee3d08e7768643576fccbc7144a9",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-features",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-features",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-how-to-play.png",
+      "file": "s121-footer-desktop-dark-how-to-play.png",
       "sha256": "d30a00f84f5b786ad1bcde1d03854c9277a4dd1a03bdca1f2fef18fe25939d0e",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-how-to-play",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-how-to-play",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-index.png",
+      "file": "s121-footer-desktop-dark-index.png",
       "sha256": "2e95e17f1e41342fee10e54be2ec4276fc58ad9cc0e511a2b0f483f82e937890",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-index",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-index",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-press.png",
+      "file": "s121-footer-desktop-dark-press.png",
       "sha256": "c5b30fba282047294d9134cdc2afaf240907ae24993de8129753f8ef50d6a5c1",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-press",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-press",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-privacy.png",
+      "file": "s121-footer-desktop-dark-privacy.png",
       "sha256": "4bb62acaa866fb501dfa7e15b3d1b8f79c97248f7ec4c9235f43619319b0880c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-privacy",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-privacy",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-roadmap.png",
+      "file": "s121-footer-desktop-dark-roadmap.png",
       "sha256": "018316fdbf1c6558e5ff2241041132b264b6dd294cd97a7c621a755c618bc9a9",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-roadmap",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-roadmap",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-simulation.png",
+      "file": "s121-footer-desktop-dark-simulation.png",
       "sha256": "afe57d113f03080d82e221f8327ccbaf182f184f667c28334353409f0e4be664",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-simulation",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-simulation",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-stats.png",
+      "file": "s121-footer-desktop-dark-stats.png",
       "sha256": "b6888ddf70dd00771253fe33a568676f224e7bd96d8e054f893660eef9cbc421",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-stats",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-stats",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-status-archive.png",
+      "file": "s121-footer-desktop-dark-status-archive.png",
       "sha256": "32f1bdd0397adc71508bdc54657f471ec0d65b6f00ab237a06bcef693fc65554",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-status-archive",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-status-archive",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-status.png",
+      "file": "s121-footer-desktop-dark-status.png",
       "sha256": "aeee689ea7fa9e591d44bee36370e4438a1359ffac29d546613f3d1ca6757aec",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-status",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-status",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-dark-terms.png",
+      "file": "s121-footer-desktop-dark-terms.png",
       "sha256": "ee52b60d9e9087ff552058ed8701a009aebdc92b3685d67f56cab2d06beda3d2",
       "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-dark-terms",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-dark-terms",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-about.png",
+      "file": "s121-footer-desktop-light-about.png",
       "sha256": "1b71dbd313bf80725659b223dd9ddd4a0778a3ec29a598a6761215194877ac8b",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-about",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-about",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-contact.png",
+      "file": "s121-footer-desktop-light-contact.png",
       "sha256": "4740f1cba99494f6942acb5431300f896f3161ddd4d7b13d3af9a62b9883dcf1",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-contact",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-contact",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-faq.png",
+      "file": "s121-footer-desktop-light-faq.png",
       "sha256": "6689727c2802493bd62e819ca57526cb3a0266e96605afd0d93b7134e981df90",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-faq",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-faq",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-features.png",
+      "file": "s121-footer-desktop-light-features.png",
       "sha256": "b65d95f4e7b8469441d0f014074bcaf81b7c15563dda651fc871102505f29ac5",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-features",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-features",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-how-to-play.png",
+      "file": "s121-footer-desktop-light-how-to-play.png",
       "sha256": "6b4e87f56c6a471345260cefd752afa2cd4a209c5a80a3bce404769f98102290",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-how-to-play",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-how-to-play",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-index.png",
+      "file": "s121-footer-desktop-light-index.png",
       "sha256": "ab26df51c50c26d9532970f18b8f447d2d41f4fa71c8c324fd77c30a951605a3",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-index",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-index",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-press.png",
+      "file": "s121-footer-desktop-light-press.png",
       "sha256": "f46264ce14faa7888541e239fa94877ce0f00e07548b8511b77023f40f6f5945",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-press",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-press",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-privacy.png",
+      "file": "s121-footer-desktop-light-privacy.png",
       "sha256": "2d82f58f04c86593a7910b2a9983f945ce9b257e3eb280ac38c6c17ab6023731",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-privacy",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-privacy",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-roadmap.png",
+      "file": "s121-footer-desktop-light-roadmap.png",
       "sha256": "deec261ca86d86ebb8aec38c32ff1618b3ee2b17f55a0a9607712df79c314942",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-roadmap",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-roadmap",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-simulation.png",
+      "file": "s121-footer-desktop-light-simulation.png",
       "sha256": "467bf390591be0c154d81ee1b2ab6ea15a4d28588649338e0343ec1a4134a79a",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-simulation",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-simulation",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-stats.png",
+      "file": "s121-footer-desktop-light-stats.png",
       "sha256": "f8d5b7ff4ee4498a978d3abfe23cc7c933f40ec18c3c96ad5f61f2f314a5bec6",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-stats",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-stats",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-status-archive.png",
+      "file": "s121-footer-desktop-light-status-archive.png",
       "sha256": "16f2e50d8e6ec7187247c4f8741037ca23c232462f1aa07ce45e0672c44cfb58",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-status-archive",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-status-archive",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-status.png",
+      "file": "s121-footer-desktop-light-status.png",
       "sha256": "687e5f145debe838202e64404a1d4d983e763768b24e13e212789d7d45fba166",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-status",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-status",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/desktop-light-terms.png",
+      "file": "s121-footer-desktop-light-terms.png",
       "sha256": "8bfc98d553b371cb58e0d03edaaebb82b0c5fdaffac9b2dd294112eaba02ff0a",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "After S121 source-bound local render — desktop-light-terms",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — desktop-light-terms",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-about.png",
+      "file": "s121-footer-mobile-dark-about.png",
       "sha256": "0c5c1f2f4999e3f4a7a0ef8a7ac258dd888374728ab1341d865ed3162463c468",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-about",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-about",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-contact.png",
+      "file": "s121-footer-mobile-dark-contact.png",
       "sha256": "53ef2ac23f0c2abc91fe3818b3a2684872e682c3e76d55be3e262c1b30016230",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-contact",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-contact",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-faq.png",
+      "file": "s121-footer-mobile-dark-faq.png",
       "sha256": "71c756653c1124f5677d4c41367791f3795c1b62c4a32015559b34ac6963782e",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-faq",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-faq",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-features.png",
+      "file": "s121-footer-mobile-dark-features.png",
       "sha256": "2bd6c34239e691f79e88a8b5b203a69a1cf1bf957fc5da982911b91ce22777d5",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-features",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-features",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-how-to-play.png",
+      "file": "s121-footer-mobile-dark-how-to-play.png",
       "sha256": "704db55eb4f4fe9f5f634d6f10409fbbe5f377ccce79b18039dc2500ec39509c",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-how-to-play",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-how-to-play",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-index.png",
-      "sha256": "d49c73033a72123ff13fbaec30004d8000ebed83f0c3629e37f87a77568905d4",
+      "file": "s121-footer-mobile-dark-index.png",
+      "sha256": "8ba4d8afa4351524500a4b31fb8b24c0fbf8967229fe0e199c0dfa06524f9c25",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-index",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-index",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-press.png",
+      "file": "s121-footer-mobile-dark-press.png",
       "sha256": "ef5a5115e3884acc437b93308a107a52645bbdbcadc48294933f7bb106ac68a1",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-press",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-press",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-privacy.png",
+      "file": "s121-footer-mobile-dark-privacy.png",
       "sha256": "90d3efcc0e2449439b25e4e5907aa68d85b72ddf3549d8f842f7a683992da2ce",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-privacy",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-privacy",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-roadmap.png",
+      "file": "s121-footer-mobile-dark-roadmap.png",
       "sha256": "908483be189bd7fdcd8f5b3075d1c6482c6aa9ef100baa2898f40b02dc1c6f8e",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-roadmap",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-roadmap",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-simulation.png",
+      "file": "s121-footer-mobile-dark-simulation.png",
       "sha256": "7c25474b9ac6b818ced2907f40c3a9bca4654d0451219a61812cbf0abae4e65c",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-simulation",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-simulation",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-stats.png",
+      "file": "s121-footer-mobile-dark-stats.png",
       "sha256": "a1253ef8972b1f7e48935c2c8801bb11ef5f725027cbe513eea00647da43be82",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-stats",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-stats",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-status-archive.png",
+      "file": "s121-footer-mobile-dark-status-archive.png",
       "sha256": "a109c4f0af08478ae7a19d31ecd240b2cfb1646c25af87e903089e1525b10b3b",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-status-archive",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-status-archive",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-status.png",
+      "file": "s121-footer-mobile-dark-status.png",
       "sha256": "8b6e0c0003fe254e6aa47e7ab415fd4593cf4bfefae145334e37fd7411f60a9a",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-status",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-status",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-dark-terms.png",
+      "file": "s121-footer-mobile-dark-terms.png",
       "sha256": "958852bb613ba308aad06e48b696b7e17d4da894374b8265b36832ac02effe95",
       "theme": "dark",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-dark-terms",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-dark-terms",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-about.png",
+      "file": "s121-footer-mobile-light-about.png",
       "sha256": "9831c59dcb00ba6a015aca3dc1c3f0f72044e13a9a28ae507659dc94e95a8d00",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-about",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-about",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-contact.png",
+      "file": "s121-footer-mobile-light-contact.png",
       "sha256": "166cc6d3b61df537a026632e2639fc0551449e5d6cae0fb817d39db8cff18714",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-contact",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-contact",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-faq.png",
+      "file": "s121-footer-mobile-light-faq.png",
       "sha256": "394c83c8421ae9c53f1819cf4402256a0ef5e093824cea2850cffaccc4bb0288",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-faq",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-faq",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-features.png",
+      "file": "s121-footer-mobile-light-features.png",
       "sha256": "65d845285063f76080aa3a5b3e114574cfccbac452a2209f753a77dd235a4e2e",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-features",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-features",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-how-to-play.png",
+      "file": "s121-footer-mobile-light-how-to-play.png",
       "sha256": "8ae4c163ac727924967a98cd9995485d106c90ffd1e7036285e36de4514fb732",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-how-to-play",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-how-to-play",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-index.png",
+      "file": "s121-footer-mobile-light-index.png",
       "sha256": "14e716801c0612ee5e9cf932e93ebe7deb20837e3bd14679a85c053f14ce73d9",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-index",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-index",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-press.png",
+      "file": "s121-footer-mobile-light-press.png",
       "sha256": "3dc1b206bc012bcfce1d1586c66d4973f432f583e803ddda917b39f9efb342dc",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-press",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-press",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-privacy.png",
+      "file": "s121-footer-mobile-light-privacy.png",
       "sha256": "3b7ab7b4fad4239bb59086fffe84c8e1fe717bc6c8949bf0de27f8aef0771ad9",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-privacy",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-privacy",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-roadmap.png",
+      "file": "s121-footer-mobile-light-roadmap.png",
       "sha256": "4a30009d841872ecad10a618ca6adbc01ab5436e0b23f20d4d25a3306aa39a46",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-roadmap",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-roadmap",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-simulation.png",
+      "file": "s121-footer-mobile-light-simulation.png",
       "sha256": "9be1f35b683ebc3282b1d97d7e2d2b2c7256dcfbf6ffe2136808887af0451eac",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-simulation",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-simulation",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-stats.png",
+      "file": "s121-footer-mobile-light-stats.png",
       "sha256": "78874655a8c32fa6e877103f6091feac624aabda89bfd4124f4ba6c0721f8698",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-stats",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-stats",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-status-archive.png",
+      "file": "s121-footer-mobile-light-status-archive.png",
       "sha256": "75d57fe96a0c0ef8b5742d7aa3f425d1bfee2961754e04b9cc4a9636b8e3cd47",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-status-archive",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-status-archive",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-status.png",
+      "file": "s121-footer-mobile-light-status.png",
       "sha256": "1a4f081cdccf1f3e7ff0270def49dc8432b9d3060008db79ffb4453c06d8444c",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-status",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-status",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
     },
     {
-      "file": "s121-footers/mobile-light-terms.png",
+      "file": "s121-footer-mobile-light-terms.png",
       "sha256": "1769a4b57b2736c6559470c503ac1b9b6bc5edc7c9f07fc09894a801e11263cb",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "After S121 source-bound local render — mobile-light-terms",
-      "kind": "after-footer-crop-or-full-page"
+      "page": "After S121 immutable candidate render — mobile-light-terms",
+      "kind": "after-footer-crop-or-full-page",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266"
+    },
+    {
+      "file": "s121-hosted-footer-desktop-dark.png",
+      "sha256": "bc32c7b473d01aa4a270547d048f621020ea0b43dc39b25fc3ff268e756f499a",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 160,
+        "right": 1280,
+        "width": 1440,
+        "documentWidth": 1440,
+        "legal": true
+      },
+      "kind": "production-full-page"
+    },
+    {
+      "file": "s121-hosted-footer-desktop-light.png",
+      "sha256": "74c444616f7ad240373ed073a79c14b02bfeac067bb564f523eedc2fee45b871",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 160,
+        "right": 1280,
+        "width": 1440,
+        "documentWidth": 1440,
+        "legal": true
+      },
+      "kind": "production-full-page"
+    },
+    {
+      "file": "s121-hosted-footer-mobile-dark.png",
+      "sha256": "6126b61c6b13bdb9cd75a9076d0345c1ada170b2afbe0094c9df28766c87644b",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "documentWidth": 390,
+        "legal": true
+      },
+      "kind": "production-full-page"
+    },
+    {
+      "file": "s121-hosted-footer-mobile-light.png",
+      "sha256": "1878f83e1b38e18bf333ace758649a4e9fbaf30bb58743db2a92d51763dab77c",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "page": "Hosted production About footer",
+      "layout": {
+        "padding": 16,
+        "display": "block",
+        "left": 0,
+        "right": 390,
+        "width": 390,
+        "documentWidth": 390,
+        "legal": true
+      },
+      "kind": "production-full-page"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
     "reviewer": "S121 session agent; independent source review review_s121",
-    "method": "Before full-resolution mobile dark/desktop light About; after full-resolution About/contact and four footer contact sheets for all 14 routes at desktop/mobile in both themes. Footer crops preserve real screenshot pixels. Desktop contact full images replace bottom crops that omitted the footer.",
+    "method": "56 canonical public-page captures pass at exact candidate 5410b8b5. Four footer contact sheets re-inspected in dark/light and desktop/mobile. Desktop contact uses its full screenshot because the bottom crop omits the footer. 59 of 60 bound images are byte-identical to already inspected source-bound evidence; mobile dark landing footer is the sole changed image and was re-inspected on the sheet. Before About images retain their original S120 provenance. Attachments use the canonical flat session prefix so the existing three-session retention policy can age them. All four production About captures independently inspected after promotion, plus all four original before views; hosted layout assertions pass.",
     "findings": [
       "Before: shared footer began at the screen edge on eleven pages.",
       "After: shared footer has a readable gutter, centered width and normal legal-line flow in both themes; no overflow in the 56-route matrix.",

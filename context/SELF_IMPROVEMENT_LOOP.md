@@ -3,35 +3,13 @@
 
 
 <!-- rolling-status-start -->
-Last session: 120 (2026-10-23) | Total: 863/1000 | Velocity: 3 | Debt: ↓
-Avgs — 3: 852.3 | 5: 814 | 10: 833.6 | 25: 912.7 | all: 965.9
+Last session: 121 (2026-10-24) | Total: 864/1000 | Velocity: 4 | Debt: ↓
+Avgs — 3: 861 | 5: 815.2 | 10: 826.2 | 25: 907.7 | all: 964.5
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 856 → 863 (+7). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 74 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 863 → 864 (+1). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 75 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
-## 2026-09-29 — Session 111 — A richer league and a release receipt that can fail honestly
-
-SIL v3.0: **938 / 1000** (Dev Health 94, Creative Alignment 98, Momentum 99, Engagement 90, Process Quality 78, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 95). Intent outcome: **Achieved for the requested recovery and S111 full arc, including repair of the founder-reported Play failure**; public launch remains HOLD on independent evidence. These are engineering assessments, not measured player outcomes.
-
-Phase 0 recovered and closed the interrupted S109/S110 work as its own pushed boundary. S111 then audited live code and receipts, rejected five false or unsupported candidates, shipped six ranked improvements and one second-order improvement, and deployed an exact source to stable staging, live Pages and the backend. Rival clubs now transact through real trade law; the GM gets one Team workspace for roster and playing time; club identity follows league and trade choices; the public engine count follows the build; email claims require an observed receive/reply-as roundtrip; and backend SSH transport is pinned and bounded. The first-decision budget, browser suite, same-origin staging/live checks, 158 reviewed images, and exact-source CI all passed. A real opted-in cohort has still not been observed, so Engagement is capped at 93.
-
-Process Quality is 78 for concrete self-inflicted costs. The initial new test file missed the shard registry and a comment was misread as an innovation marker; both were corrected before the deployable source. A visual capture driver initially tried to advance through a genuine GM decision gate and had to resolve the decision through the UI. A fake PEM envelope in a test fixture tripped the public sanitizer and forced a test-only source revision; no secret was present. After exact-source release checks, the first direct full suite's Studio shard caught 158 new screenshots omitted from the durable capture ledger. More seriously, the promoted service worker served Cloudflare's redirected `/game.html` response to a navigation and broke the live Play button; the production gate later caught an inherited bye-week browser assertion that counted hidden modal buttons. The browser-routing fix and corrected assertion were verified on staging before renewed promotion. Security Posture 98 reflects a clean final sanitizer, host-key pinning, and no S111 hook bypass. Automation Coverage 95 reflects the missed live navigation and the now-falsifiable ledger and mail gates, with actual mail evidence still absent.
-
-- [SIL] Add every new test file to the canonical shard registry in the same patch. A local focused green result is not a suite receipt when the suite never ran that file.
-- [SIL] Treat screenshots as a two-part receipt: inspect the rendered pixels and append immutable hashes to `CAPTURE_LEDGER.json` before the Studio shard. `LATEST.json` alone covers only the current set.
-- [SIL] Browser capture drivers must satisfy the product's real decision gates through the same visible controls a player uses. A forced week advance that skips a GM choice is invalid evidence.
-- [SIL] Public sanitizers can correctly flag fake credential-shaped fixtures. Use non-credential fixture material unless the credential syntax itself is under test; never bypass the scan for convenience.
-- [SIL] Reclassify inherited operational diagnoses when a normal path succeeds under observation. S110's pre-push “deadlock” did not reproduce; a slow push was not proof of a broken hook.
-- [SIL] Keep technical deployment, launch authority, and player outcomes as three distinct claims. Exact-source Pages/API health cannot manufacture an email roundtrip, founder approval, lifecycle change, or retention signal.
-- [SIL] Exercise Play under an installed service worker on stable staging before promotion. A network redirect can become a failed navigation when a worker returns it from cache, even when provenance, static smoke, and a worker-disabled browser all pass.
-- [SIL] Test whether a modal is visible when the product promises no prompt; static hidden descendants remain in the DOM. Add a deterministic bye fixture so the negative branch cannot be missed by a random first week.
-
----
-
-Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-<!-- s112-closeout:sil -->
 ## 2026-09-30 — Session 112 — Fair trades, durable saves and observed outcomes
 
 SIL v3.0: **804 / 1000** (Dev Health 97, Creative Alignment 98, Momentum 94, Engagement 65, Process Quality 78, Cross-Repo Coherence 88, Security Posture 75, Ecosystem Integration 65, Capital Efficiency 50, Automation Coverage 94). Intent outcome: **Achieved for the requested recovery and S112 full arc**; public launch remains HOLD. Scores are engineering judgment; real-cohort engagement remains unmeasured.
@@ -209,6 +187,19 @@ Process quality rises: CI on main was read at /start, every fix carries a negati
 
 - [SIL] When a gate fails on a case CI passes on the same SHA, find the race before the next candidate; "flaky" in a record is a cause not yet found.
 - [SIL] A visual receipt's "no broken layout" needs a measurement on phones (left/right gutter), not only a look; the footer gutter defect survived a full S119 inspection.
+
+## 2026-10-24 — Session 121 — Reliable deployment and visible footer repair
+
+SIL v3.0: **864 / 1000** (Dev Health 94, Creative Alignment 90, Momentum 79, Engagement 83, Process Quality 66, Cross-Repo Coherence 89, Security Posture 93, Ecosystem Integration 84, Capital Efficiency 95, Automation Coverage 91). Intent outcome: Achieved for four selected outcomes and exact-candidate frontend/API deployment; closeout publication finalizing. Velocity:4 selected outcomes. Debt: ↓ four reproduced gaps; broader historical debt remains. Engineering judgement only; player retention, cohort growth, capacity and full physical-device readiness are unmeasured.
+
+Top win: frontend/API source identities agree and readable redacted SSH evidence survives failures. Gap: implemented audit items stayed pending in the first candidate; authoritative stage readiness was reconciled late. Process Quality drops4 from70; total rises1 from863.
+
+Brainstorm: pre-candidate audit reconciliation; capture-time hash-ledger binding; lifecycle-aware local profile resolution. Commit the first two as future [SIL] tasks; the third belongs to the control-plane owner. No extra implementation is authorized by this brainstorm.
+
+- [SIL] Reconcile audit execution statuses and stage readiness before cutting the candidate, not after a hosted gate rejects stale prose.
+- [SIL] Bind reviewed image hashes through the canonical ledger when captured; retention and immutable provenance must agree.
+
+IGNIS note: Four bounded fixes reached exact-source production; preserve the initial failed candidate and late readiness reconciliation as process evidence instead of laundering them into a clean run.
 
 <!-- ledger-roll:pointer -->
 ---

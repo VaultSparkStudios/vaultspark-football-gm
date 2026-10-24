@@ -1,6 +1,13 @@
 <!-- source: docs/AUDIT_2026-10-23_SESSION121.json · Session 121 -->
 # S121 deployment reliability and public polish
 
+## Late FB focus reconciliation and plan review
+
+Authoritative registry stage FORGE/FB and yellow health were explicitly reconciled during release verification; the local profiler had returned UNKNOWN. The selected four outcomes remain stabilization work, so no outcome or lifecycle transition is added. The audit preserves its initial weights/priorities and labels the corrected stage-weighted ranking as late reconciliation. Execution order remains the already completed dependency/efficiency order, rather than a rewritten account of history.
+
+Current evidence: all seven exact-candidate CI jobs passed and API5410b8b5 is deployed with database/routing preservation and rollback verified. Immutable public captures and staging performance pass. Pages40045675543 and the full closeout remain pending; broad public-launch readiness is not claimed. The twelve-area matrix is authoritative in the audit JSON.
+
+
 - **Expose the backend admission refusal and complete the authorized deployment**: Preserve bounded SSH retries and host identity; attach sanitized remote failure diagnostics to the error, test credential redaction and non-retry of application failures, inspect current host admission through the existing gateway diagnostic, then promote the exact passing candidate. Acceptance: A refused deployment names its cause without credentials; focused tests pass; exact candidate API health is verified after deployment.
   Current evidence: Focused transport tests pass including ANSI/NUL redaction regression from independent review. Live read-only gateway diagnostics succeed: memory 11.19 GiB available, root disk 83 GiB free. Exact-candidate backend deployment/readback still pending.
 

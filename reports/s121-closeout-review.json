@@ -1,0 +1,30 @@
+{
+  "session": 121,
+  "reviewer": "closeout_review_s121",
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "fix",
+      "findings": 3,
+      "fixed": 3,
+      "subjects": [
+        "historical publication displayed as current",
+        "velocity3 versus4",
+        "visual count60 versus64"
+      ]
+    },
+    {
+      "round": 2,
+      "verdict": "pass",
+      "findings": 0
+    }
+  ],
+  "verified": [
+    "SHA/digest release alignment",
+    "64image hashes and inspected footer pixels",
+    "archived history preserved",
+    "eleven partial readiness areas and public launch HOLD",
+    "no obvious added credentials or private absolute paths"
+  ],
+  "publicationPending": true
+}

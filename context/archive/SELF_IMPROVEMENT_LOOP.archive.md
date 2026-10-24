@@ -1862,3 +1862,26 @@ Process Quality is 88 because the initial handoff's deployment claim was phantom
 - [SIL] A screenshot of a hidden target is not visual proof of a reachable interaction. Navigate through the same visible controls a player uses and inspect both themes at mobile and desktop sizes.
 - [SIL] When a hook hangs, isolate the hook's process family, run its checks directly, document the bypass, and repair the hook. Do not kill another repository's Git process while diagnosing yours.
 - [SIL] A capture retention job that records images but misses the hash ledger will fail a later studio gate. Write and verify the ledger before treating the visual receipt as complete.
+
+## 2026-09-29 — Session 111 — A richer league and a release receipt that can fail honestly
+
+SIL v3.0: **938 / 1000** (Dev Health 94, Creative Alignment 98, Momentum 99, Engagement 90, Process Quality 78, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 95). Intent outcome: **Achieved for the requested recovery and S111 full arc, including repair of the founder-reported Play failure**; public launch remains HOLD on independent evidence. These are engineering assessments, not measured player outcomes.
+
+Phase 0 recovered and closed the interrupted S109/S110 work as its own pushed boundary. S111 then audited live code and receipts, rejected five false or unsupported candidates, shipped six ranked improvements and one second-order improvement, and deployed an exact source to stable staging, live Pages and the backend. Rival clubs now transact through real trade law; the GM gets one Team workspace for roster and playing time; club identity follows league and trade choices; the public engine count follows the build; email claims require an observed receive/reply-as roundtrip; and backend SSH transport is pinned and bounded. The first-decision budget, browser suite, same-origin staging/live checks, 158 reviewed images, and exact-source CI all passed. A real opted-in cohort has still not been observed, so Engagement is capped at 93.
+
+Process Quality is 78 for concrete self-inflicted costs. The initial new test file missed the shard registry and a comment was misread as an innovation marker; both were corrected before the deployable source. A visual capture driver initially tried to advance through a genuine GM decision gate and had to resolve the decision through the UI. A fake PEM envelope in a test fixture tripped the public sanitizer and forced a test-only source revision; no secret was present. After exact-source release checks, the first direct full suite's Studio shard caught 158 new screenshots omitted from the durable capture ledger. More seriously, the promoted service worker served Cloudflare's redirected `/game.html` response to a navigation and broke the live Play button; the production gate later caught an inherited bye-week browser assertion that counted hidden modal buttons. The browser-routing fix and corrected assertion were verified on staging before renewed promotion. Security Posture 98 reflects a clean final sanitizer, host-key pinning, and no S111 hook bypass. Automation Coverage 95 reflects the missed live navigation and the now-falsifiable ledger and mail gates, with actual mail evidence still absent.
+
+- [SIL] Add every new test file to the canonical shard registry in the same patch. A local focused green result is not a suite receipt when the suite never ran that file.
+- [SIL] Treat screenshots as a two-part receipt: inspect the rendered pixels and append immutable hashes to `CAPTURE_LEDGER.json` before the Studio shard. `LATEST.json` alone covers only the current set.
+- [SIL] Browser capture drivers must satisfy the product's real decision gates through the same visible controls a player uses. A forced week advance that skips a GM choice is invalid evidence.
+- [SIL] Public sanitizers can correctly flag fake credential-shaped fixtures. Use non-credential fixture material unless the credential syntax itself is under test; never bypass the scan for convenience.
+- [SIL] Reclassify inherited operational diagnoses when a normal path succeeds under observation. S110's pre-push “deadlock” did not reproduce; a slow push was not proof of a broken hook.
+- [SIL] Keep technical deployment, launch authority, and player outcomes as three distinct claims. Exact-source Pages/API health cannot manufacture an email roundtrip, founder approval, lifecycle change, or retention signal.
+- [SIL] Exercise Play under an installed service worker on stable staging before promotion. A network redirect can become a failed navigation when a worker returns it from cache, even when provenance, static smoke, and a worker-disabled browser all pass.
+- [SIL] Test whether a modal is visible when the product promises no prompt; static hidden descendants remain in the DOM. Add a deterministic bye fixture so the negative branch cannot be missed by a random first week.
+
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+<!-- s112-closeout:sil -->
