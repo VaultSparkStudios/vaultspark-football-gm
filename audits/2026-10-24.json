@@ -7,8 +7,8 @@
   "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281",
   "selectedItems": 4,
   "shipped": 4,
-  "fullGoalComplete": false,
-  "closeoutPublication": "reviewed-gates-passed-publication-pending",
+  "fullGoalComplete": true,
+  "closeoutPublication": "verified-main-closeout-with-conditional-receipt-tail",
   "ci": {
     "runId": 40045673237,
     "requiredJobs": 7,
@@ -51,5 +51,10 @@
   "limits": "Technical promotion only; public launch and lifecycle approval remain separate. Eleven broader readiness areas remain partial. Unit aggregate, real cohorts, capacity, physical devices and database restore exercise unmeasured.",
   "closeoutExecution": "Subject-correct native bounded ceremony; foreign-root shared autopilot not invoked.",
   "closeoutReview": "reports/s121-closeout-review.json",
-  "metadataAcceptance": "reports/s121-metadata-acceptance.json"
+  "metadataAcceptance": "reports/s121-metadata-acceptance.json",
+  "closeoutCommit": "37cac258547aa23b8233c950ad9b314390f27db0",
+  "arkCargoId": "01K5LVUDRP9C130E63647C64C9",
+  "sessionBeacon": "unconfigured",
+  "completionCondition": "The containing receipt-only commit must be verified on origin/main before native goal completion.",
+  "finalizedAt": "2026-10-24T03:41:03.306Z"
 }

@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "status": "unconfigured",
+  "detail": "Session beacon unconfigured: BEACON_GIST_ID missing."
+}

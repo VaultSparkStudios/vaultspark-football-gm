@@ -1,6 +1,6 @@
 # Closeout Brief — Franchise Architect: Football — S121
 
-> Four selected fixes and exact-source frontend/API delivery verified; closeout publication finalizing.
+> Four selected fixes and exact-source frontend/API delivery complete; closeout37cac258 verified on remote main.
 
 ## Shipped
 

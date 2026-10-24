@@ -175,3 +175,5 @@ Four selected S121 outcomes are implemented and live at5410b8b5: persistent sess
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.

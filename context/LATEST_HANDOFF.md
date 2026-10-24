@@ -5,9 +5,9 @@
 - Shipped: 4 selected improvements — session identity, deployment diagnostics, public footer and capture readiness.
 - Tests: all seven exact-candidate CI jobs passed; browser271 passed/3 skipped. Unit case aggregate is unmeasured.
 - Deploy: staging, public frontend and API verified at 5410b8b5159059c516f80529ae5330e99838f266; artifact a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281.
-- Closeout: ordered write-back complete; independent closeout review and publication finalizing.
+- Closeout: ordered write-back, independent review and publication complete; commit 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main.
 
-Session Intent: full fresh /arc, commit/push main and fully deploy. Achieved for the selected implementation and technical deployment; final goal completion waits for verified closeout publication. Native goal identity is bound to S121; automatic continuations resume this session.
+Session Intent: full fresh /arc, commit/push main and fully deploy. Achieved for the selected implementation and technical deployment; closeout publication is verified; native completion follows verification of the containing receipt-only commit. Native goal identity is bound to S121; automatic continuations resume this session.
 
 Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD.
 
@@ -23,6 +23,8 @@ Four selected S121 outcomes are implemented and live at5410b8b5: persistent sess
 
 ## Next authorized boundary
 
-Finish independent closeout review, doctor and metadata acceptance; publish closeout, verify remote main, broadcast impact, clear lock/beacon and mark native goal complete. After this goal completes, future work requires a new founder scope. Existing support/cohort/capacity/restore evidence remains with its recorded owners.
+The selected arc and technical deployment are complete. After receipt-tail remote readback, retain the ignored goal binding and complete the native goal. Future implementation requires a new founder scope. Independent launch, support/cohort/capacity and database restore evidence remains with recorded owners.
 
-Closeout metadata acceptance: clean Studio379/380 exposed the handoff title format; corrected to the canonical session heading and19/19 affected contracts pass. Doctor0blocking, independent review passed after3receipt fixes, IGNIS42906/FORGE verified. Final publication remains pending until ordinary push and remote readback.
+Closeout metadata acceptance: clean Studio379/380 exposed the handoff title format; corrected to the canonical session heading and19/19 affected contracts pass. Doctor0blocking, independent review passed after3receipt fixes, IGNIS42906/FORGE verified. The main closeout is published and verified; containing receipt-tail readback remains the final condition.
+
+Final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main. Ark summary 01K5LVUDRP9C130E63647C64C9 shipped; recipient adoption is not claimed. Session beacon unconfigured. The containing receipt-only commit must be verified on origin/main before native goal completion.

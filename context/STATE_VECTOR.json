@@ -1,9 +1,9 @@
 {
   "vectorVersion": "1.0",
   "generatedAt": "2026-10-24",
-  "generatedAtMs": 1792813102180,
+  "generatedAtMs": 1792813323899,
   "session": 121,
-  "vectorHash": "86137d5286e05e56",
+  "vectorHash": "edd01d9126e11c14",
   "silTotal": 864,
   "silAvg3": null,
   "velocity": 4,
@@ -33,8 +33,8 @@
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Finish verified closeout publication; retain independent public launch, support/cohort and capacity evidence holds.",
-  "currentFocus": "Four S121 outcomes and exact-source frontend/API deployment verified; closeout publication finalizing.",
+  "nextMilestone": "Separate launch readiness: existing reply-as, founder GO, cohort, capacity and recovery evidence retain their owners. Await new founder scope.",
+  "currentFocus": "S121 full arc complete: four selected fixes and exact-source frontend/API deployment verified; closeout published.",
   "lastShipped": "4 selected improvements — session identity, deployment diagnostics, public footer and capture readiness.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."

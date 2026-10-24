@@ -1,0 +1,14 @@
+{
+  "session": 121,
+  "cargoId": "01K5LVUDRP9C130E63647C64C9",
+  "at": "2026-10-24T03:40:50.423Z",
+  "type": "session-impact-summary",
+  "from": "franchise-architect-football",
+  "to": "*",
+  "closeoutCommit": "37cac258547aa23b8233c950ad9b314390f27db0",
+  "state": "shipped",
+  "adoption": "Not asserted; shipping is not recipient application or verification.",
+  "signatureVerified": true,
+  "signaturePosture": "unsigned",
+  "verifiedAt": "2026-10-24T03:41:54.807Z"
+}

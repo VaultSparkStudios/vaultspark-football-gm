@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Four S121 outcomes and exact-source frontend/API deployment verified; closeout publication finalizing.",
-  "nextMilestone": "Finish verified closeout publication; retain independent public launch, support/cohort and capacity evidence holds.",
+  "currentFocus": "S121 full arc complete: four selected fixes and exact-source frontend/API deployment verified; closeout published.",
+  "nextMilestone": "Separate launch readiness: existing reply-as, founder GO, cohort, capacity and recovery evidence retain their owners. Await new founder scope.",
   "blockers": [
     "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
   ],
@@ -2467,8 +2467,8 @@
   "sessionState": {
     "version": 1,
     "durableSession": 121,
-    "currentFocus": "Four S121 outcomes and exact-source frontend/API deployment verified; closeout publication finalizing.",
-    "nextMilestone": "Finish verified closeout publication; retain independent public launch, support/cohort and capacity evidence holds.",
+    "currentFocus": "S121 full arc complete: four selected fixes and exact-source frontend/API deployment verified; closeout published.",
+    "nextMilestone": "Separate launch readiness: existing reply-as, founder GO, cohort, capacity and recovery evidence retain their owners. Await new founder scope.",
     "lastSessionSummary": "Four selected S121 outcomes are implemented and live at5410b8b5: persistent session start anchor, sanitized SSH diagnostics, shared footer gutter and decoded lazy-image captures. Exact CI7/7; browser271 passed/3 skipped; staging and production14/14; Pages/API health, rollback and hosted performance verified. Public launch remains HOLD."
   },
   "partialCloseout": {
@@ -2834,15 +2834,21 @@
     "session": 121,
     "mode": "native-bounded-ceremony",
     "sharedAutopilotExecuted": false,
-    "state": "publication-pending",
+    "state": "complete",
     "reason": "Shared children resolve foreign roots; subject-correct native gates used."
   },
   "lastCloseoutSession": 121,
   "closeoutPublication": {
     "session": 121,
-    "pushed": false,
+    "commit": "37cac258547aa23b8233c950ad9b314390f27db0",
+    "pushed": true,
     "applicationSourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
-    "state": "review-and-publication-pending"
+    "receiptOnly": true,
+    "independentReview": "passed-after-fix",
+    "arkCargoId": "01K5LVUDRP9C130E63647C64C9",
+    "arkState": "shipped",
+    "sessionBeacon": "unconfigured",
+    "completionCondition": "The containing receipt-only commit must be verified on origin/main before native goal completion."
   },
   "silVelocity": 4,
   "historicalTestShardReceipt": {

@@ -26,5 +26,6 @@
     "eleven partial readiness areas and public launch HOLD",
     "no obvious added credentials or private absolute paths"
   ],
-  "publicationPending": true
+  "publicationPending": false,
+  "closeoutCommit": "37cac258547aa23b8233c950ad9b314390f27db0"
 }

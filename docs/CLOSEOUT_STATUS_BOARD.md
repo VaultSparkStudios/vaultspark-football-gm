@@ -13,7 +13,7 @@
 ║  ✓ Shipped: 4 selected improvements — session identity, deploym  ║
 ║  ✓ Tests: all seven exact-candidate CI jobs passed; browser271   ║
 ║  ✓ Deploy: staging, public frontend and API verified at 5410b8b  ║
-║  ✓ Closeout: ordered write-back complete; independent closeout   ║
+║  ✓ Closeout: ordered write-back, independent review and publica  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 864/1000 ═══════════════════════════════════════╗
 ║    Dev Health         94   █████████░                            ║
@@ -32,7 +32,7 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,7 +40,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 758 files  ·  M:27 A:17 D:646 ?:6                      ║
+║  Changes: 17 files  ·  M:14 A:0 D:0 ?:3                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -67,4 +67,4 @@
 
 Evidence: reports/s121-ci-proof.json. Aggregate unit case count is unmeasured; cached historical case totals are not current acceptance. Project agent memory is context/AGENT_MEMORY.md.
 
-shells: 18 started · 18 closed · 0 running (tracked long-running S121 release and verification handles; completed quick commands excluded).
+shells: 19 started · 19 closed · 0 running (tracked long-running S121 release and verification handles; completed quick commands excluded).

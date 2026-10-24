@@ -404,7 +404,7 @@
     "evidence": "Source review only, not measured player enjoyment. GAME_LOOP contract and existing decision, timeline and moment surfaces reviewed. Next actions: preserve decision loop, repair reliable moment evidence, ship visible footer polish without adding another overlay."
   },
   "readinessNotes": "Registry FORGE/FB is authoritative; local profile UNKNOWN was explicitly reconciled late. Twelve readiness areas are assessed. Technical promotion/selected implementation completion do not claim public launch readiness; no stage transition or expanded implementation scope occurred.",
-  "status": "selected-outcomes-production-verified-closeout-publication-pending",
+  "status": "selected-outcomes-and-production-verified-closeout-published",
   "goalAssociation": {
     "threadId": "01a16b3a-e2b2-7d90-bd24-91ae57e04761",
     "createdAt": 1792800402,
@@ -586,7 +586,7 @@
       "status": "partial",
       "evidence": "Exact candidate5410b8b5: staging and production14/14, seven CI jobs, Pages/API, rollback,64 reviewed visual images and synthetic performance pass. reports/s121-release-acceptance.json and reports/s121-pages-provider.json. Technical promotion does not clear existing launch/email/founder GO holds.",
       "owner": "project release owner",
-      "nextAcceptanceCheck": "Publish canonical closeout; obtain separate launch evidence and approval before any public launch or lifecycle transition.",
+      "nextAcceptanceCheck": "Closeout published; obtain separate launch evidence and approval before any public launch or lifecycle transition.",
       "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
       "observedAt": "2026-10-24T03:22:24.967Z"
     }
@@ -624,8 +624,11 @@
     "backendProof": "reports/s121-backend-workflow.json",
     "pages": "production-verified",
     "pagesRun": 40045675543,
-    "fullGoalComplete": false,
+    "fullGoalComplete": true,
     "pagesProof": "reports/s121-pages-provider.json",
-    "acceptance": "reports/s121-release-acceptance.json"
+    "acceptance": "reports/s121-release-acceptance.json",
+    "closeoutCommit": "37cac258547aa23b8233c950ad9b314390f27db0",
+    "publication": "reports/s121-closeout-publication.json",
+    "completionCondition": "The containing receipt-only commit must be verified on origin/main before native goal completion."
   }
 }
