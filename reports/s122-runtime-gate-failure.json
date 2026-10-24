@@ -17,7 +17,36 @@
     "CLI process.exit can discard pending stdout pipe writes",
     "Non-timeout child signals and spawn errors are not reported"
   ],
-  "actualCause": "unmeasured",
+  "actualCause": "Locally reproduced source regression: boot-budget header trim removed two breakpoint-history phrases required by tablet navigation contracts.",
   "remainingJobs": "Cancelled after executed required runtime failures; cancelled jobs are nonpassing and no promotion occurred.",
-  "cancellation": "Observed cancellation requests for CI40121101320, Pages40121129607 and backend40121131146."
+  "cancellation": "Observed cancellation requests for CI40121101320, Pages40121129607 and backend40121131146.",
+  "localDiagnostic": {
+    "command": "Unchanged fe4 runtime SHARDS through the same Node24 test flags; full stdout/stderr captured before returning",
+    "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+    "status": 1,
+    "signal": null,
+    "error": null,
+    "durationMs": 3506406,
+    "tests": 1060,
+    "passed": 1058,
+    "failed": 2,
+    "cancelled": 0,
+    "skipped": 0,
+    "failures": [
+      {
+        "file": "test/tablet-decision-deck.test.js",
+        "line": 109,
+        "name": "the 480px gate is gone from live code, and only survives as history",
+        "cause": "Header no longer mentioned innerWidth <= 480."
+      },
+      {
+        "file": "test/tablet-decision-deck.test.js",
+        "line": 123,
+        "name": "the documented band matches the implemented band",
+        "cause": "Header no longer mentioned overcorrected to 980px."
+      }
+    ]
+  },
+  "correction": "Restore the two historical phrases in two concise comment lines. Keep executable mobile-mode logic, all tests, the640px band and650000-byte boot target unchanged.",
+  "limits": "Hosted job logs were truncated; these1060case counts come from direct local execution of the same source, not inferred hosted totals. Corrected source still requires fresh staging and complete exact-candidate CI."
 }

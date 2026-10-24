@@ -1,7 +1,8 @@
 {
   "session": 122,
-  "at": "2026-10-24T18:35:53.685Z",
-  "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+  "at": "2026-10-24T20:15:30.165Z",
+  "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+  "phase": "staging-v3",
   "artifactFingerprint": {
     "algorithm": "sha256",
     "digest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
@@ -16,13 +17,51 @@
   "total": 4,
   "captures": 52,
   "reviewed": true,
-  "reviewer": "audit_game all52; root two actual phone destinations",
+  "reviewer": "audit_game independent rendered-pixel inspection",
+  "review": {
+    "path": "reports/s122-staging-v3-visual-review.json",
+    "sha256": "fb1ad29e741f8799b45a3b71c6d0e03fc5893b9dbca12a1a041b4436e39c1dd1"
+  },
+  "browser": {
+    "path": "reports/s122-staging-v3-browser.json",
+    "sha256": "caa8e3b0bbaf4dc2edaaa54d66cae8a06e48022439e69fa46c0e7bc083b8843c"
+  },
+  "provenance": {
+    "path": "reports/s122-staging-provenance.json",
+    "sha256": "a85b3be847cc4215e6e4b8494cccdbf8b409172bbd2d18a47b87deed10b86346"
+  },
   "ledger": {
     "added": 52,
     "revised": 0,
-    "total": 5445,
+    "total": 5497,
     "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
   },
   "receipt": "docs/visual-qa/LATEST.json",
-  "limits": "These are rendered synthetic journeys, not actual-user or physical-device evidence."
+  "priorReceipts": {
+    "reports/s122-hosted-navigation.json": {
+      "path": "reports/s122-evidence-history/s122-hosted-navigation-f74e105551ba6c45774177bb5675a48bc85f7510d1ab1ad87e40822edb715014.json",
+      "sha256": "f74e105551ba6c45774177bb5675a48bc85f7510d1ab1ad87e40822edb715014"
+    },
+    "reports/s122-staging-deployment.json": {
+      "path": "reports/s122-evidence-history/s122-staging-deployment-392eaf591b45f6be6bb8bbdf3bafda50a73eb65036d52387cf923b4bbebf956f.json",
+      "sha256": "392eaf591b45f6be6bb8bbdf3bafda50a73eb65036d52387cf923b4bbebf956f"
+    },
+    "reports/s122-staging-transport.json": {
+      "path": "reports/s122-evidence-history/s122-staging-transport-02c50bc238ad00ce1fc759ea81e4b6b5c7b1bf7d2752cc6216e6b4a06733c715.json",
+      "sha256": "02c50bc238ad00ce1fc759ea81e4b6b5c7b1bf7d2752cc6216e6b4a06733c715"
+    },
+    "reports/s122-staging-provenance.json": {
+      "path": "reports/s122-evidence-history/s122-staging-provenance-a85b3be847cc4215e6e4b8494cccdbf8b409172bbd2d18a47b87deed10b86346.json",
+      "sha256": "a85b3be847cc4215e6e4b8494cccdbf8b409172bbd2d18a47b87deed10b86346"
+    },
+    "docs/visual-qa/LATEST.json": {
+      "path": "reports/s122-evidence-history/LATEST-b525487d573970550adf97dbf9776cc4f2d06c9a86cd8f01702ab0e6022481e4.json",
+      "sha256": "b525487d573970550adf97dbf9776cc4f2d06c9a86cd8f01702ab0e6022481e4"
+    },
+    "docs/visual-qa/CAPTURE_LEDGER.json": {
+      "path": "reports/s122-evidence-history/CAPTURE_LEDGER-8bd2526126b2d5ccd9e1837e1cf0e832bbc5aae05f16aea8febec220ffddfeaa.json",
+      "sha256": "8bd2526126b2d5ccd9e1837e1cf0e832bbc5aae05f16aea8febec220ffddfeaa"
+    }
+  },
+  "limits": "Source-specific hosted staging synthetic journeys only; no production, whole-suite, physical-device or actual-user acceptance."
 }

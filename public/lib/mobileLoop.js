@@ -7,7 +7,8 @@
  *
  * The fixed overlay replaces the full shell. Auto-enable at 640px, where CSS
  * collapses desktop navigation; wider tablets/laptops retain the full UI.
- * Never widen this band to 980px: it intercepted tablet navigation in S63.
+ * The old innerWidth <= 480 gate was overcorrected to 980px in S63,
+ * intercepting tablet navigation. Keep the auto band aligned with CSS at 640px.
  * Explicit Settings preferences override auto-detection in both directions.
  *
  * Usage:

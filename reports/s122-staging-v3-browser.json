@@ -1,0 +1,14 @@
+{
+  "session": 122,
+  "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+  "phase": "staging-v3",
+  "artifactDigest": "f88ded22779b6c51dadb05a1e72f4876b0120fd63be47aac734493bc091848de",
+  "exitCode": 0,
+  "passed": 4,
+  "total": 4,
+  "failed": 0,
+  "command": "S122_CAPTURE_PHASE=staging-v3 node node_modules/@playwright/test/cli.js test --config .cache/s122-hosted.config.mjs",
+  "observedAt": "2026-10-24T20:08:21.893Z",
+  "execution": "Direct unified handle15215 terminalexit0:4passed(1.7m), all four viewport/theme variants incl persisted worker reload",
+  "captures": 52
+}

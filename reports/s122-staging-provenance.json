@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.1",
   "generatedBy": "scripts/verify-staging-receipt.mjs",
-  "checkedAt": "2026-10-24T18:32:07.724Z",
+  "checkedAt": "2026-10-24T20:06:04.399Z",
   "baseUrl": "https://staging.playfranchisearchitect.com",
-  "expectedRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+  "expectedRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
   "summary": {
     "status": "verified",
     "checksPassed": 14,
@@ -51,8 +51,8 @@
     {
       "name": "source revision",
       "ok": true,
-      "expected": "fe4f067280a0e35b6476f817530ecc321d289689",
-      "observed": "fe4f067280a0e35b6476f817530ecc321d289689"
+      "expected": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+      "observed": "b2da78a89b5040db5f278709136e163b0f4c55f3"
     },
     {
       "name": "artifact fingerprint",

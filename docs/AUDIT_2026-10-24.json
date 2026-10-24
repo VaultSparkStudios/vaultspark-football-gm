@@ -516,7 +516,7 @@
     },
     "rehearsal": "Native tier2-audit-plan-preflight fixtures15/15 PASS."
   },
-  "status": "selected-outcomes-verified-release-gate-failed-diagnosis-running",
+  "status": "selected-outcomes-verified-runtime-cause-reproduced-correction-pending",
   "releaseAttempts": [
     {
       "sha": "f21512d2a5cd86b7d0a2004129940fa61876ead0",
@@ -525,7 +525,7 @@
     },
     {
       "sha": "fe4f067280a0e35b6476f817530ecc321d289689",
-      "status": "runtime-gates-failed-diagnosis-running",
+      "status": "rejected-runtime-history-contract-regression",
       "staging": "reports/s122-evidence-history/s122-staging-provenance-20169627abe361298a3004ad5ad59ea1ff0cc9ba57119c3d56b0f02ed57546bb.json",
       "hostedBrowser": "reports/s122-evidence-history/s122-hosted-navigation-f74e105551ba6c45774177bb5675a48bc85f7510d1ab1ad87e40822edb715014.json",
       "performance": "reports/s122-evidence-history/s122-staging-performance-3c61a0a1095b2889163cc2511661bd0bbd442e05ab709f0f9e6daa12ac4043f6.json",
@@ -537,6 +537,21 @@
         "reports/s122-evidence-history/s122-staging-deployment-392eaf591b45f6be6bb8bbdf3bafda50a73eb65036d52387cf923b4bbebf956f.json",
         "reports/s122-evidence-history/s122-staging-performance-3c61a0a1095b2889163cc2511661bd0bbd442e05ab709f0f9e6daa12ac4043f6.json",
         "reports/s122-evidence-history/s122-staging-provenance-20169627abe361298a3004ad5ad59ea1ff0cc9ba57119c3d56b0f02ed57546bb.json"
+      ]
+    },
+    {
+      "sha": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+      "status": "diagnostic-runner-fix-staging-verified-superseded-before-push",
+      "reason": "Native staging14/14 and hosted4/4 passed; old-source fullruntime diagnostic identified two comment-history assertions. This intermediate candidate did not reach remote main or production.",
+      "stagingDeployment": "fecce26d-3f99-4ad0-b375-dc223b817e0a",
+      "hostedCaptures": 52,
+      "archivedEvidence": [
+        "reports/s122-evidence-history/s122-hosted-navigation-e3f6e143c23111d861e36dc7435c0e4ac934f478aaa0b4823137787305651888.json",
+        "reports/s122-evidence-history/s122-staging-deployment-6b602f00619ba3986b0c4a5afe5ffee9348cf29a5d5c002c69261109dce82cae.json",
+        "reports/s122-evidence-history/s122-staging-provenance-a85b3be847cc4215e6e4b8494cccdbf8b409172bbd2d18a47b87deed10b86346.json",
+        "reports/s122-evidence-history/s122-staging-transport-ba487ed40a0bcceb2e7d275c90250dee7b9566fc9f1b00c6636c6da36987981e.json",
+        "reports/s122-evidence-history/s122-staging-v3-browser-caa8e3b0bbaf4dc2edaaa54d66cae8a06e48022439e69fa46c0e7bc083b8843c.json",
+        "reports/s122-evidence-history/s122-staging-v3-visual-review-fb1ad29e741f8799b45a3b71c6d0e03fc5893b9dbca12a1a041b4436e39c1dd1.json"
       ]
     }
   ],

@@ -1,6 +1,6 @@
 {
   "session": 122,
-  "at": "2026-10-24T18:44:23.083Z",
+  "at": "2026-10-24T20:07:30.205Z",
   "subject": "franchise-architect-football",
   "targetIdentityVerified": true,
   "scope": "Canonical known-incident package/lockfile and checked-in dependency scanner; this is not a comprehensive vulnerability audit.",
@@ -16,7 +16,7 @@
     }
   ],
   "scan": {
-    "generatedAt": "2026-10-24T18:44:22.717Z",
+    "generatedAt": "2026-10-24T20:07:28.599Z",
     "incidents": [
       {
         "id": "mini-shai-hulud-2026-05-11",

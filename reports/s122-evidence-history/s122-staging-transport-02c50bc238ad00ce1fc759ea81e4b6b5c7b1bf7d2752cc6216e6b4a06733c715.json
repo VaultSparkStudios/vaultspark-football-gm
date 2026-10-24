@@ -1,0 +1,40 @@
+{
+  "session": 122,
+  "at": "2026-10-24T18:35:53.798Z",
+  "earlierAttempts": [
+    {
+      "handle": 91764,
+      "result": "terminal fetch failed; no provider deployment created"
+    },
+    {
+      "handle": 13863,
+      "result": "terminal fetch failed; no provider deployment created"
+    }
+  ],
+  "successfulAttempt": {
+    "handle": 19841,
+    "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+    "verified": true
+  },
+  "events": [
+    {
+      "at": "2026-10-24T18:27:51.200Z",
+      "host": "api.cloudflare.com",
+      "path": "/client/v4/accounts/<id>/pages/projects",
+      "method": "GET",
+      "attempt": 1,
+      "error": "TypeError",
+      "causeCode": "UND_ERR_SOCKET"
+    },
+    {
+      "at": "2026-10-24T18:30:55.605Z",
+      "host": "api.cloudflare.com",
+      "path": "/client/v4/accounts/<id>/pages/projects/franchise-architect-staging/domains/staging.playfranchisearchitect.com",
+      "method": "GET",
+      "attempt": 1,
+      "error": "TypeError",
+      "causeCode": "ECONNABORTED"
+    }
+  ],
+  "method": "Observed-retry cache adapter around the original gateway and deployer: at most one retry per Cloudflare GET; honor abort; never replay mutations. Owner implementation remains a follow-up; no sibling edits."
+}

@@ -1,0 +1,25 @@
+{
+  "session": 122,
+  "at": "2026-10-24T20:19:24.423Z",
+  "reviewer": "review_navigation",
+  "verdict": "pass",
+  "findings": 0,
+  "comparedRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+  "reviewedSourceFile": {
+    "path": "public/lib/mobileLoop.js",
+    "sha256": "0d26e11f2a7e37d5bd89fca9c56fd6a571a2f58fcdc9a426aecef41fed7b8344"
+  },
+  "executableBodyUnchanged": true,
+  "focused": {
+    "command": "node --test --test-isolation=none --test-force-exit test/tablet-decision-deck.test.js test/mobile-loop.test.js test/browser-boot-budget.test.js test/ui-islands.test.js",
+    "passed": 34,
+    "total": 34
+  },
+  "boot": {
+    "staticBytes": 648820,
+    "target": 650000,
+    "headroom": 1180,
+    "bootManifestUnchanged": true
+  },
+  "limits": "Focused correction proof only; fresh exact-candidate staging and all seven CI jobs remain required."
+}
