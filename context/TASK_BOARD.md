@@ -1,5 +1,11 @@
 # Task Board — Franchise Architect: Football
 
+## S123 Wave status
+
+- [ ] Wave 1 — Cloud storage resilience: focused checks pass; browser POST-to-PATCH acceptance pending.
+- [ ] Wave 2 — Owner ultimatum opens Boardroom: implementation and desktop/mobile both-theme visual verification in progress.
+- [ ] Wave 3 — Deployment receipt summaries: focused checks pass; broad checks, exact candidate staging/CI/production and ordered closeout pending.
+
 ## S122 Wave status
 
 - [ ] [SIL:0][S122 #2] Future pre-implementation check: supported canonical premise recorder and complete staged/untracked snapshot; preserve this session's UNKNOWN timing conformance.

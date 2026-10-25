@@ -1,6 +1,7 @@
 const TOKEN_KEY = "vsfgm_gist_token";
 const GIST_ID_KEY = "vsfgm_gist_id";
-let memoryToken = "";
+let memoryToken = null;
+let memoryGistId = null;
 
 function storageOrNull(name) {
   try {
@@ -10,17 +11,28 @@ function storageOrNull(name) {
   }
 }
 
+function readStorage(name, key) {
+  try { return storageOrNull(name)?.getItem(key) || ""; }
+  catch { return ""; }
+}
+
+function writeStorage(name, key, value) {
+  try {
+    const storage = storageOrNull(name);
+    if (value) storage?.setItem(key, value);
+    else storage?.removeItem(key);
+  } catch {}
+}
+
 function removeLegacyToken() {
-  const persistent = storageOrNull("localStorage");
-  const legacy = persistent?.getItem(TOKEN_KEY) || "";
-  persistent?.removeItem(TOKEN_KEY);
+  const legacy = readStorage("localStorage", TOKEN_KEY);
+  writeStorage("localStorage", TOKEN_KEY, "");
   return legacy;
 }
 
 export function getSavedToken() {
-  if (memoryToken) return memoryToken;
-  const session = storageOrNull("sessionStorage");
-  const sessionToken = session?.getItem(TOKEN_KEY) || "";
+  if (memoryToken !== null) return memoryToken;
+  const sessionToken = readStorage("sessionStorage", TOKEN_KEY);
   if (sessionToken) {
     memoryToken = sessionToken;
     removeLegacyToken();
@@ -29,9 +41,9 @@ export function getSavedToken() {
   const legacy = removeLegacyToken();
   if (legacy) {
     memoryToken = legacy;
-    session?.setItem(TOKEN_KEY, legacy);
+    writeStorage("sessionStorage", TOKEN_KEY, legacy);
   }
-  return memoryToken;
+  return memoryToken || "";
 }
 
 export function saveToken(token) {
@@ -40,19 +52,16 @@ export function saveToken(token) {
     return { ok: false, error: "Masked token text is not a credential. Paste the token again." };
   }
   memoryToken = normalized;
-  const session = storageOrNull("sessionStorage");
-  if (normalized) session?.setItem(TOKEN_KEY, normalized);
-  else session?.removeItem(TOKEN_KEY);
+  writeStorage("sessionStorage", TOKEN_KEY, normalized);
   removeLegacyToken();
   return { ok: true, stored: Boolean(normalized), scope: "tab-session" };
 }
 
 export function getSavedGistId() {
-  return storageOrNull("localStorage")?.getItem(GIST_ID_KEY) || "";
+  return memoryGistId ?? readStorage("localStorage", GIST_ID_KEY);
 }
 
 export function saveGistId(id) {
-  const storage = storageOrNull("localStorage");
-  if (id) storage?.setItem(GIST_ID_KEY, id);
-  else storage?.removeItem(GIST_ID_KEY);
+  memoryGistId = String(id || "");
+  writeStorage("localStorage", GIST_ID_KEY, memoryGistId);
 }

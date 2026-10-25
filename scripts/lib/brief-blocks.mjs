@@ -63,6 +63,19 @@ export function renderTitleHeader({ name, type, lifecycle, audience, vaultStatus
 /**
  * Render the "Last session · what shipped" block from PROJECT_STATUS.lastSessionSummary.
  */
+export function describeDeploymentReceipt(receipt) {
+  if (typeof receipt === 'string') return receipt.trim() || '—';
+  if (!receipt || typeof receipt !== 'object' || Array.isArray(receipt)) return '—';
+  const state = receipt.summary?.status || receipt.status || 'recorded';
+  const passed = receipt.summary?.checksPassed ?? receipt.checksPassed;
+  const total = receipt.summary?.checksTotal ?? receipt.checksTotal;
+  const counts = Number.isInteger(passed) && Number.isInteger(total) && total > 0 && passed >= 0 && passed <= total
+    ? ` ${passed}/${total} checks` : '';
+  const revision = typeof receipt.sourceRevision === 'string' && /^[a-f0-9]{7,64}$/i.test(receipt.sourceRevision)
+    ? ` @${receipt.sourceRevision.slice(0, 8)}` : '';
+  return `${state}${counts}${revision}`;
+}
+
 export function renderLastCompleted(summary, opts = {}) {
   const expected = opts.expectedSession != null ? String(opts.expectedSession) : null;
   const renderedSession = typeof summary === 'string'
@@ -86,7 +99,7 @@ export function renderLastCompleted(summary, opts = {}) {
       top(`LAST SESSION (S${session}) - WHAT SHIPPED`),
       row(summary.slice(0, W)),
       ...wrapBriefText(`Tests  ${opts.tests || '—'}`).map(row),
-      row(`Deploy ${opts.deploy || '—'}`),
+      row(`Deploy ${describeDeploymentReceipt(opts.deploy)}`),
       bottom(),
     ].join('\n');
   }
@@ -97,7 +110,7 @@ export function renderLastCompleted(summary, opts = {}) {
     header,
     ...shipLines,
     ...wrapBriefText(`Tests  ${opts.tests ?? summary.tests ?? '—'}`).map(row),
-    row(`Deploy ${summary.deploy || '—'}`),
+    row(`Deploy ${describeDeploymentReceipt(opts.deploy ?? summary.deploy)}`),
     bottom(),
   ].join('\n');
 }

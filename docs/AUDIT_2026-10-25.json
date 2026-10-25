@@ -1,0 +1,406 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-25",
+  "session": 123,
+  "source": "99a768277141f55699840115551c58d48b882c81",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Fresh S123 arc: cloud-save resilience, owner decision continuity and deployment evidence clarity",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "fresh source and independent game-loop review"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 5,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 3,
+    "speed-organization-efficiency": 3,
+    "token-cost": 1.5,
+    "observability-honesty": 3,
+    "sil-debt": 1.5
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 1,
+      "slug": "cloud-storage-resilience",
+      "title": "Keep cloud sync usable when storage methods throw",
+      "axis": "security",
+      "category": "security",
+      "tier": "⚡",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 13.249524825000607,
+      "status": "shipped",
+      "premise": "Wrap storage operations independently, retain tab-memory fallback and preserve successful cloud exports. Test denied reads, quota writes, migration cleanup, token clearing and repeated exports.",
+      "recipe": "Wrap storage operations independently, retain tab-memory fallback and preserve successful cloud exports. Test denied reads, quota writes, migration cleanup, token clearing and repeated exports.",
+      "readinessArea": "backup, recovery and rollback",
+      "stageRationale": "FORGE/FB requires reliable existing player journeys and honest release evidence before additional feature breadth.",
+      "premises": [
+        {
+          "claim": "Current source retains the reproduced cloud-storage-resilience defect",
+          "adapter": "file-content",
+          "target": "public/lib/gistCredentials.js",
+          "pattern": "const sessionToken = session?.getItem(TOKEN_KEY) || \"\";",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Wrap storage operations independently, retain tab-memory fallback and preserve successful cloud exports"
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Wrap storage operations independently, retain tab-memory fallback and preserve successful cloud exports. Test denied reads, quota writes, migration cleanup, token clearing and repeated exports."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "Wrap storage operations independently, retain tab-memory fallback and preserve successful cloud exports. Test denied reads, quota writes, migration cleanup, token clearing and repeated exports. Add broader cross-session failure drills."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-25T17:07:11.702Z",
+          "status": "shipped",
+          "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
+          "evidence": "20 focused checks and actual-browser denied storage POST/PATCH/clear"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "owner-inbox-destination",
+      "title": "Open Boardroom from owner ultimatum actions",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 13.249524825000607,
+      "status": "shipped",
+      "premise": "Reuse the canonical Boardroom destination and resolve nested news types consistently. Verify generated inbox actions in desktop/mobile dark/light browsers with before/after images.",
+      "recipe": "Reuse the canonical Boardroom destination and resolve nested news types consistently. Verify generated inbox actions in desktop/mobile dark/light browsers with before/after images.",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB requires reliable existing player journeys and honest release evidence before additional feature breadth.",
+      "premises": [
+        {
+          "claim": "Current source retains the reproduced owner-inbox-destination defect",
+          "adapter": "file-content",
+          "target": "public/lib/engagementFeatures.js",
+          "pattern": "\"owner-ultimatum\": \"overviewTab\"",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Reuse the canonical Boardroom destination and resolve nested news types consistently"
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Reuse the canonical Boardroom destination and resolve nested news types consistently. Verify generated inbox actions in desktop/mobile dark/light browsers with before/after images."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "Reuse the canonical Boardroom destination and resolve nested news types consistently. Verify generated inbox actions in desktop/mobile dark/light browsers with before/after images. Add broader cross-session failure drills."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-25T17:07:11.704Z",
+          "status": "shipped",
+          "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
+          "evidence": "26 focused unit checks and 5 browser checks; 16 inspected before/after images"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "slug": "deploy-summary-truth",
+      "title": "Render structured deployment receipts clearly",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "⚡",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 13.249524825000607,
+      "status": "shipped",
+      "premise": "Add one shared deployment receipt formatter for both startup blocks, preserving strings and showing receipt status, counts and source revision without implying verification. Test missing, partial, verified and failed receipts.",
+      "recipe": "Add one shared deployment receipt formatter for both startup blocks, preserving strings and showing receipt status, counts and source revision without implying verification. Test missing, partial, verified and failed receipts.",
+      "readinessArea": "observability and actionable analytics",
+      "stageRationale": "FORGE/FB requires reliable existing player journeys and honest release evidence before additional feature breadth.",
+      "premises": [
+        {
+          "claim": "Current source retains the reproduced deploy-summary-truth defect",
+          "adapter": "file-content",
+          "target": "scripts/lib/brief-blocks.mjs",
+          "pattern": "row(`Deploy ${opts.deploy || '—'}`)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add one shared deployment receipt formatter for both startup blocks, preserving strings and showing receipt status, counts and source revision without implying verification"
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Add one shared deployment receipt formatter for both startup blocks, preserving strings and showing receipt status, counts and source revision without implying verification. Test missing, partial, verified and failed receipts."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "Add one shared deployment receipt formatter for both startup blocks, preserving strings and showing receipt status, counts and source revision without implying verification. Test missing, partial, verified and failed receipts. Add broader cross-session failure drills."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-25T17:07:11.704Z",
+          "status": "shipped",
+          "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
+          "evidence": "20 focused checks; actual startup renderer and format validator pass"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "count": 3,
+    "priority": 39.748574475001824,
+    "top3": [
+      "cloud-storage-resilience",
+      "owner-inbox-destination",
+      "deploy-summary-truth"
+    ]
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "season-loop",
+          "premise": "The simulator needs a new season loop.",
+          "evidence": "context/GAME_LOOP.md and existing season chapter modules already provide the declaration/simulate/review/continue loop."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "owner-inbox-destination"
+      ],
+      "rejectedOnVerify": []
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-retention-layer",
+          "premise": "There is no return hook.",
+          "evidence": "public/lib/returnDigest.js already derives return chapters from recorded boundaries; owner inbox continuity is the demonstrated repair."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-advisor",
+          "premise": "Advice requires an external model.",
+          "evidence": "public/lib/frontOfficeAdvisor.js uses local source-derived roster signals with no per-user inference cost."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [
+        "cloud-storage-resilience"
+      ],
+      "rejectedOnVerify": []
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-boot-cache",
+          "premise": "A new cache is necessary to meet the boot budget.",
+          "evidence": "npm check:browser-boot owns an existing finite 650000-byte budget; no new measured regression justifies a cache."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-model-router",
+          "premise": "This simulator requires a paid model router.",
+          "evidence": "The selected game and cloud-save paths contain no model calls; adding one introduces cost."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [
+        "deploy-summary-truth"
+      ],
+      "rejectedOnVerify": []
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-test-runner",
+          "premise": "Missing test isolation requires another runner.",
+          "evidence": "scripts/run-test-shard.mjs already owns isolated shard execution and direct termination diagnostics."
+        }
+      ]
+    }
+  },
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.338Z",
+      "evidence": "Owner ultimatum action reproduced opening Overview instead of Boardroom.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Storage methods can throw after a successful cloud response; existing export/rollback paths require fresh checks.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Actual startup brief prints deployment receipt objects as [object Object].",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "99a768277141f55699840115551c58d48b882c81",
+      "observedAt": "2026-10-25T16:58:41.339Z",
+      "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
+      "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
+    }
+  ]
+}

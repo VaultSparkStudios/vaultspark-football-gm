@@ -19,6 +19,8 @@ import { escapeHtml, fmtMoney, showToast, renderTable, teamCode } from "./appCor
 import { closeModal, openModal } from "./modalManager.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
 import { franchiseScopeFromDashboard } from "./franchiseScope.js";
+import { gameplaySurface } from "./gameplayNavigation.js";
+import { navigateToExactSurface } from "./exactSurfaceNavigation.js";
 export {
   bindSimWatchSwipeTransport,
   closeSimWatch,
@@ -96,12 +98,13 @@ export function syncInboxScope(dashboard = state.dashboard || {}, storage = null
   return scope;
 }
 
+function newsType(item = {}) {
+  return String(item.type || item.details?.type || "").toLowerCase();
+}
+
 export function classifyNewsItem(item) {
-  // S108 — `logNews` carries its type inside `details`; the dashboard feed
-  // ships entries as written, so a typed news item classified as FLAVOR here
-  // unless the type was lifted. Read both shapes.
-  const type = (item.type || item.details?.type || "").toLowerCase();
-  const headline = (item.headline || "").toLowerCase();
+  const type = newsType(item);
+  const headline = String(item.headline || "").toLowerCase();
   if (type === "development") return "IMPORTANT";
   if (type === "injury" && (headline.includes("out for season") || headline.includes("severe"))) return "CRITICAL";
   if (type === "cap-alert" || type === "cap_alert") return "CRITICAL";
@@ -198,11 +201,11 @@ const INBOX_ACTION_TABS = {
   "fa-outbid": "faTab",
   "hof-induction": "historyTab",
   "jersey-retirement": "historyTab",
-  "owner-ultimatum": "overviewTab",
+  "owner-ultimatum": gameplaySurface("boardroom").targetTab,
 };
 
 export function getInboxActionTab(item) {
-  return INBOX_ACTION_TABS[item.type?.toLowerCase()] || null;
+  return INBOX_ACTION_TABS[newsType(item)] || null;
 }
 
 function renderInboxContent() {
@@ -223,7 +226,7 @@ function renderInboxContent() {
     "playoff-elimination": "🚪", "playoff-win": "🎯",
   };
   list.innerHTML = _inbox.items.slice(0, 30).map((item) => {
-    const typeIcon = typeIcons[item.type?.toLowerCase()] || "📰";
+    const typeIcon = typeIcons[newsType(item)] || "📰";
     const actionTab = item.tier === "CRITICAL" ? getInboxActionTab(item) : null;
     return `
       <div class="inbox-item inbox-tier-${escapeHtml(item.tier.toLowerCase())}${item.resolvedAt ? " inbox-resolved" : ""}">
@@ -243,6 +246,22 @@ function renderInboxContent() {
     btn.addEventListener("click", () => {
       const tab = btn.dataset.inboxActionTab;
       const key = btn.dataset.inboxKey;
+      if (tab === gameplaySurface("boardroom").targetTab) {
+        observeBackgroundTask(async () => {
+          const { activateTab } = await import("./gameFlow.js");
+          closeInbox();
+          const result = await navigateToExactSurface(gameplaySurface("boardroom"), { activateTab });
+          if (!result.focused) throw Error("Owner unavailable");
+          const owner = document.getElementById(result.targetId);
+          owner.style.scrollMarginTop = `${(document.querySelector(".game-topbar")?.offsetHeight || 0) + 16}px`;
+          owner.scrollIntoView({ block: "start", behavior: "instant" });
+          resolveInboxItem(key);
+          renderInboxContent();
+          renderInboxBadge();
+        }, { surface: "inbox", operation: "owner", authorityKey: _inbox.scope,
+          onError: () => showToast("Retry owner from Inbox.") });
+        return;
+      }
       if (key) resolveInboxItem(key);
       if (tab) document.querySelector(`[data-tab="${tab}"]`)?.click();
       renderInboxContent();

@@ -18,7 +18,7 @@ import os from 'os';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { spawnSync } from './lib/safe-spawn.mjs';
-import { renderTitleHeader, renderLastCompleted, renderTestItNow, wrapBriefText } from './lib/brief-blocks.mjs';
+import { renderTitleHeader, renderLastCompleted, renderTestItNow, wrapBriefText, describeDeploymentReceipt } from './lib/brief-blocks.mjs';
 import { parseUnifiedItems } from './lib/task-board.mjs';
 import { loadPortfolioTaskBoards } from './lib/cross-repo-tasks.mjs';
 import { loadIgnisInsight } from './lib/ignis-insight.mjs';
@@ -763,10 +763,10 @@ const shippedLine  = handoffBlock.match(/^- Shipped:\s*(.+)$/m)?.[1]
   ?? shippedSection.match(/^-\s+(.+)$/m)?.[1]
   ?? status.currentFocus
   ?? 'see LATEST_HANDOFF.md';
-const lastDeploySignal = status.lastDeployStatus
+const lastDeploySignal = describeDeploymentReceipt(status.lastDeployStatus
   || status.lastVerification?.production
   || status.lastVerification?.deploy
-  || 'N/A';
+  || 'N/A');
 
 // ── Signal thresholds ─────────────────────────────────────────────────────────
 function sig(val, green, warn) {

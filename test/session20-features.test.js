@@ -81,7 +81,24 @@ test("gm-reputation-league-awareness: multiplier clamped at [0.85, 1.20]", () =>
 });
 
 // 5. inbox-action-deeplinks
-import { getInboxActionTab } from "../public/lib/engagementFeatures.js";
+import { classifyNewsItem, getInboxActionTab } from "../public/lib/engagementFeatures.js";
+import { gameplaySurface } from "../public/lib/gameplayNavigation.js";
+
+test("inbox-action-deeplinks: owner ultimatum follows the ownership surface", () => {
+  assert.equal(getInboxActionTab({ type: "owner-ultimatum" }), "boardroomTab");
+  assert.equal(getInboxActionTab({ type: "OWNER-ULTIMATUM" }), gameplaySurface("boardroom").targetTab);
+});
+
+test("inbox-action-deeplinks: nested source types classify and route consistently", () => {
+  const owner = { details: { type: "OWNER-ULTIMATUM" } };
+  const injury = { details: { type: "injury" }, headline: "Starter out for season" };
+  assert.equal(classifyNewsItem(owner), "CRITICAL");
+  assert.equal(getInboxActionTab(owner), "boardroomTab");
+  assert.equal(classifyNewsItem(injury), "CRITICAL");
+  assert.equal(getInboxActionTab(injury), "rosterTab");
+  assert.equal(getInboxActionTab({ type: 42 }), null);
+  assert.equal(classifyNewsItem({ type: 42, headline: 42 }), "FLAVOR");
+});
 
 test("inbox-action-deeplinks: cap-alert maps to contractsTab", () => {
   assert.equal(getInboxActionTab({ type: "cap-alert" }), "contractsTab");

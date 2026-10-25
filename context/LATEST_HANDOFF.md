@@ -1,4 +1,14 @@
-# Session 122 Closeout
+# Session 123 — active arc
+
+Session Intent: /arc then authorized direct commit/push to main and full deployment.
+
+Native goal association: thread 01a173fc-4b86-7af2-94c7-23bb028e3a3d, createdAt 1792947287, bound to S123 by the local goal helper. This invocation began at 57c77b5c; canon reconciliation committed 99a76827 before the fresh audit. Recovery is not required; S122 evidence is historical context only.
+
+Selected audit: docs/AUDIT_2026-10-25.json. Three L2 outcomes: cloud-storage resilience, owner Inbox destination and deployment-summary truth. Strict premises3/3 and pending candidate admission passed before implementation. The local premise checker has no canonical record/timing support; the before-edit report is preserved in the ignored cache, not claimed as canonical timing conformance.
+
+Current checkpoint: cloud/storage and startup fixes pass20focused checks; independent review found no blocking regression. Owner browser/visual acceptance and Studio shard are running. Boot-byte limit remains650000; resolve the measured small overage before candidate acceptance. Doctor currently reports HEAD not covered by deployed source after canon propagation; fresh release must resolve it, not waive it. Staging, main push, exact-candidate CI, production and ordered closeout remain unfinished.
+
+## Prior Session 122 Closeout
 
 ## Where We Left Off (Session 122)
 

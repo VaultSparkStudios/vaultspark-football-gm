@@ -1,0 +1,48 @@
+{
+  "session": 123,
+  "scope": "Direct local strict premise output observed before implementation. Canonical timing recorder absent; timing conformance unknown.",
+  "report": {
+    "audit": "docs/AUDIT_2026-10-25.json",
+    "session": 123,
+    "premises": [
+      {
+        "slug": "cloud-storage-resilience",
+        "status": "pending",
+        "hasOutcome": false,
+        "claim": "Current source retains the reproduced cloud-storage-resilience defect",
+        "target": "public/lib/gistCredentials.js",
+        "adapter": "file-content",
+        "expected": true,
+        "observed": true,
+        "verdict": "verified"
+      },
+      {
+        "slug": "owner-inbox-destination",
+        "status": "pending",
+        "hasOutcome": false,
+        "claim": "Current source retains the reproduced owner-inbox-destination defect",
+        "target": "public/lib/engagementFeatures.js",
+        "adapter": "file-content",
+        "expected": true,
+        "observed": true,
+        "verdict": "verified"
+      },
+      {
+        "slug": "deploy-summary-truth",
+        "status": "pending",
+        "hasOutcome": false,
+        "claim": "Current source retains the reproduced deploy-summary-truth defect",
+        "target": "scripts/lib/brief-blocks.mjs",
+        "adapter": "file-content",
+        "expected": true,
+        "observed": true,
+        "verdict": "verified"
+      }
+    ],
+    "verified": 3,
+    "contradicted": 0,
+    "resolvedContradicted": 0,
+    "openContradicted": 0,
+    "unverified": 0
+  }
+}

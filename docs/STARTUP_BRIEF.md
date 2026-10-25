@@ -3,7 +3,7 @@
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 795de1be071dac7e -->
+<!-- genius-authority-fingerprint: d8bfda0d18a10937 -->
 <!-- session-authority: committed=S122 · SIL=S122 · status=S122 · handoff=S122; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
@@ -25,7 +25,7 @@
 ║  S122: Three selected repairs plus the dated note are verified   ║
 ║  Tests C1 CI7/7; both browser runs275pass/3skip; final isolated  ║
 ║  receipt Studio388/388. Aggregate unit count unmeasured.         ║
-║  Deploy [object Object]                                          ║
+║  Deploy recorded 14/14 checks @1f001008                          ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -66,13 +66,12 @@
 ║  Tests: C1 CI7/7; both browser runs275pass/3skip; final          ║
 ║  isolated receipt Studio388/388. Aggregate unit count            ║
 ║  unmeasured.                                                     ║
-║  Deploy: [object Object]                                         ║
+║  Deploy: recorded 14/14 checks @1f001008                         ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     6,944 / 272,000 tok  ·  codex/codex-272k  ·  heuristic       ║
-║     ~3,472 tok/turn  ·  cache 50%  ·  70 turns to compact        ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
+║     38,264 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -92,7 +91,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-10-25  ✓                 ║
+║  ⛔  Doctor        11/12 (92%)  ·  1 failing                      ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -116,7 +115,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-10-24.json               ║
+║  ✓ queue exhausted · source: AUDIT_2026-10-25.json               ║
 ║  Closed: 3 · Open: 0                                             ║
 ║  All 3 live-premise-verified audit items are done.               ║
 ╚════════════════════════════════════════════════════════════════╝

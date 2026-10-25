@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "1.0",
+  "session": 123,
+  "at": "2026-10-25T17:06:45.238Z",
+  "reviewer": "game_audit",
+  "verdict": "pass",
+  "sourceFiles": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "5e68c35d525703f751c11c89856cd27b8c036100ae893d0dddf7e02bb2664be7"
+    },
+    {
+      "path": "public/lib/gameplayNavigation.js",
+      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    },
+    {
+      "path": "public/lib/exactSurfaceNavigation.js",
+      "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
+    },
+    {
+      "path": "public/lib/gistCredentials.js",
+      "sha256": "f358cc804d864e5013ddf8f06fe541d27d4129cb9df2c35b802310f5caaceda4"
+    },
+    {
+      "path": "tests-ui/s123-owner-inbox.spec.js",
+      "sha256": "5983bc02448dfd465a7878624371c1a8049a4721732ce271488740ca25f85c95"
+    }
+  ],
+  "redControl": {
+    "baseline": "57c77b5c",
+    "method": "intercept only engagementFeatures.js with baseline git source; real league and actual event listener",
+    "variantsDemonstratingWrongDeskAndOpenDialog": 4,
+    "fixtureBoundary": "Before uses top-level event against baseline module; final after uses equivalent nested details.type event to prove consistent source shape handling."
+  },
+  "focusedUnits": {
+    "passed": 26,
+    "total": 26,
+    "command": "node --test test/session20-features.test.js test/inbox-persistence.test.js"
+  },
+  "browser": {
+    "passed": 5,
+    "total": 5,
+    "channel": "msedge",
+    "scope": "four nested owner details.type variants, warning icon, focused Boardroom owner destination and browser Storage operation denial cloud POST/PATCH and clear",
+    "command": "PLAYWRIGHT_CHANNEL=msedge S123_OWNER_CAPTURE_PHASE=after playwright test tests-ui/s123-owner-inbox.spec.js"
+  },
+  "visual": {
+    "before": 8,
+    "after": 8,
+    "reviewed": 16,
+    "inspection": "Viewed every PNG. Before: drawer stays open over Desk after marking action opened. After: drawer closes and focused owner mandate is visible below sticky header on desktop/mobile in dark/light. No new clipping or unreadable text in touched states. Initial animation screenshots were replaced after capture-settling correction. Final nested-type revision: all eight after PNGs recaptured and individually viewed again; warning icon and Take Action retained, drawer closes and mandate stays readable in all four variants.",
+    "captures": [
+      {
+        "path": "output/playwright/s123-owner-inbox/before/desktop-dark-destination.png",
+        "phase": "before",
+        "sha256": "8ecba6f5295acf885fd0cdf4d5a4bc48943a76ac5108298c964ef3e0816200b1",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/before/desktop-dark-inbox.png",
+        "phase": "before",
+        "sha256": "3599f0d2c97e6f7565407de133859a7992e8b7974d63f19668b1a0e862b601f3",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/before/desktop-light-destination.png",
+        "phase": "before",
+        "sha256": "6bc82f8308950efcee9695005d0d8e516e6010a44eac3770f7c556249f78113c",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/before/desktop-light-inbox.png",
+        "phase": "before",
+        "sha256": "0c718ecc1eb43eeec30d372272449528f3a1ca2fe70eeca199be4207cde893e0",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/before/mobile-dark-destination.png",
+        "phase": "before",
+        "sha256": "60a5f755fdc2d60512f7e054afe0ddf766ebbd59b2397bd47240a77dcd54a146",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/before/mobile-dark-inbox.png",
+        "phase": "before",
+        "sha256": "e0b1885e92c4c51b98a8d23e28c9b5adb74f6a365d37c96233d13ce017f8e365",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/before/mobile-light-destination.png",
+        "phase": "before",
+        "sha256": "86583baf369402c959fbd148d4ed803f7bbbc4991cd074b836cc6eb8a9e649e0",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/before/mobile-light-inbox.png",
+        "phase": "before",
+        "sha256": "b4141ad49861dd0d6bace2e67eb37f8fd816639b3dc8da573a5821b3ff36067a",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/desktop-dark-destination.png",
+        "phase": "after",
+        "sha256": "a104218034a8b40a78eb37c1eba8e19fdf52abd116f107a26424679e6d055199",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/desktop-dark-inbox.png",
+        "phase": "after",
+        "sha256": "c5ee20425a310c060a72e89d0bdfa25fa91e3764dbedb1bc3c9fccac15fc776a",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/desktop-light-destination.png",
+        "phase": "after",
+        "sha256": "ee8dea9292e1436c603bbace934a811e2d58f60e65e11ff543d41d352b1fd19d",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/desktop-light-inbox.png",
+        "phase": "after",
+        "sha256": "b5892bf0ed6a275ee25511e0077b22f173b01bacd963a0efa400d916b0bf1a9e",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/mobile-dark-destination.png",
+        "phase": "after",
+        "sha256": "663b6e29f9750096d923ae65ef57b22f50338992dd64ea77633d1d0ab1993ff1",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/mobile-dark-inbox.png",
+        "phase": "after",
+        "sha256": "2be1bc1f2792ba2e9330bc93f8cdcefa985a949e78b4e11f050f565a574d8137",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/mobile-light-destination.png",
+        "phase": "after",
+        "sha256": "15e68d6954fe1f66b45ef9374d49ba7e7116f9ba332e3e9d73bc15ae21954c28",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/after/mobile-light-inbox.png",
+        "phase": "after",
+        "sha256": "3260e9cf0420dc330d3a2f634bbc469e29d17c3fa40ec80213ab4abd1d921c4f",
+        "inspected": true
+      }
+    ]
+  },
+  "limits": "Local browser with real generated league and explicit synthetic owner-event fixture; cloud requests mocked with a synthetic token. This is not hosted deployment proof.",
+  "bootBudget": {
+    "bytes": 649837,
+    "target": 650000,
+    "limitUnchanged": true
+  }
+}

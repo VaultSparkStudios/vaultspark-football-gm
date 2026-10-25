@@ -224,6 +224,7 @@ export const SHARDS = {
     "test/gm-decision-expansion.test.js",
     "test/gm-stewardship-report.test.js",
     "test/gist-sync-security.test.js",
+    "test/gist-storage-resilience.test.js",
     "test/history-formatting.test.js",
     "test/fa-market-competition.test.js",
     "test/owner-confidence.test.js",

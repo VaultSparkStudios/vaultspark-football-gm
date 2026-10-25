@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { renderLastCompleted } from "../scripts/lib/brief-blocks.mjs";
+import { renderLastCompleted, describeDeploymentReceipt } from "../scripts/lib/brief-blocks.mjs";
 import { closedSessionFromSil, closedSessionFromStatus, resolveRunSession, sessionIdFromLock } from "../scripts/lib/session-identity.mjs";
 import { readFileSync } from "node:fs";
 
@@ -17,6 +17,20 @@ test("structured summary renders only when its session matches", () => {
   assert.match(rendered, /LAST SESSION \(S80\)/);
   assert.match(rendered, /current truth/);
   assert.doesNotMatch(rendered, /STALE/);
+});
+
+test('deployment objects report evidence without inventing a verified verdict', () => {
+  assert.equal(describeDeploymentReceipt(null), '—');
+  assert.equal(describeDeploymentReceipt('staged'), 'staged');
+  assert.equal(describeDeploymentReceipt({ checksPassed: 14, checksTotal: 14, sourceRevision: 'abcdef0123456789' }), 'recorded 14/14 checks @abcdef01');
+  assert.equal(describeDeploymentReceipt({ summary: { status: 'blocked', checksPassed: 3, checksTotal: 14 } }), 'blocked 3/14 checks');
+  assert.equal(describeDeploymentReceipt({ summary: { status: 'verified', checksPassed: 14, checksTotal: 14 } }), 'verified 14/14 checks');
+  assert.equal(describeDeploymentReceipt({ checksPassed: 99, checksTotal: 14 }), 'recorded');
+  for (const summary of ['S80 current truth', { session: 80, shipped: ['current truth'], deploy: {} }]) {
+    const rendered = renderLastCompleted(summary, { expectedSession: 80, deploy: { status: 'failed', sourceRevision: 'abcdef0123456789' } });
+    assert.match(rendered, /Deploy failed @abcdef01/);
+    assert.doesNotMatch(rendered, /\[object Object\]/);
+  }
 });
 
 test("string summaries render supplied verification receipts instead of blank placeholders", () => {
