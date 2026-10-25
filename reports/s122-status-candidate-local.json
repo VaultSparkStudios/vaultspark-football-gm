@@ -1,0 +1,25 @@
+{
+  "session": 122,
+  "at": "2026-10-25T02:08:47.633Z",
+  "kind": "isolated-staged-candidate-studio-acceptance",
+  "baseRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "testedStagedTree": "295cff1fdf116f3aaa0336331a1e2ee19103fb32",
+  "nativeHandle": 93217,
+  "exitCode": 0,
+  "command": "node scripts/check-project-authority-contract.mjs; node scripts/run-test-shard.mjs studio",
+  "authorityPassed": true,
+  "tests": 388,
+  "passed": 388,
+  "failed": 0,
+  "skipped": 0,
+  "durationMs": 105751.8071,
+  "productDelta": [
+    "public/status.html"
+  ],
+  "rawLog": {
+    "path": ".cache/s122-status-studio-green.log",
+    "sha256": "d41ca9f7ca934b252d70cb615b9015a319ad40b9912116f9343bef5fc889ba67",
+    "bytes": 34106
+  },
+  "scope": "The exact staged tree in an owned isolated tracked-source checkout; ignored root-local files were absent and preserved. Later receipt-only publication metadata is not relabeled this tested tree. Full exact committed-candidate hosted checks and promotion remain required."
+}

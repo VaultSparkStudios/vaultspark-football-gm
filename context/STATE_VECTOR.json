@@ -1,22 +1,22 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-10-24",
-  "generatedAtMs": 1792813323899,
-  "session": 121,
-  "vectorHash": "edd01d9126e11c14",
-  "silTotal": 864,
-  "silAvg3": null,
-  "velocity": 4,
-  "debt": null,
+  "generatedAt": "2026-10-25",
+  "generatedAtMs": 1792892302783,
+  "session": 122,
+  "vectorHash": "c076b461c5b73bd8",
+  "silTotal": 485,
+  "silAvg3": 737.3,
+  "velocity": 3,
+  "debt": "↓",
   "runway": "unknown",
   "intentRate": "80% (4/5 last 5)",
-  "openNow": 5,
+  "openNow": 4,
   "openNext": 3,
   "openBlocked": 0,
   "topNow": [
     "[SIL:121] Before the next candidate, reconcile implemented audit statuses and li",
     "[SIL:121] Bind reviewed capture hashes at capture time through the canonical ima",
-    "Founder: remove three git-ignored local files that redden the local studio shard"
+    "Observe the first real opted-in cohort and verify freshness, suppression, deleti"
   ],
   "topNext": [
     "Restore `/stats` to sitemap.xml the moment the community snapshot clears its sup",
@@ -24,19 +24,19 @@
     "Offer aggregate-only Analytica ingestion through Studio Ark when that authority "
   ],
   "health": "yellow",
-  "truthStatus": "selected S121 production verified; broader historical truth remains partial",
+  "truthStatus": "selected S122 production verified; broader historical truth remains partial",
   "genome": null,
-  "ignisScore": 42906,
+  "ignisScore": 42013,
   "ignisGrade": "FORGE",
   "ignisAgeDays": 0,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
-  "type": null,
+  "type": "game",
   "lifecycle": "deployed",
-  "nextMilestone": "Separate launch readiness: existing reply-as, founder GO, cohort, capacity and recovery evidence retain their owners. Await new founder scope.",
-  "currentFocus": "S121 full arc complete: four selected fixes and exact-source frontend/API deployment verified; closeout published.",
-  "lastShipped": "4 selected improvements — session identity, deployment diagnostics, public footer and capture readiness.",
+  "nextMilestone": "Verify closeout publication and remote main, then finish this native goal; retain independent launch and broader readiness holds.",
+  "currentFocus": "Three S122 outcomes and exact-candidate technical production verified; closeout review/publication pending.",
+  "lastShipped": "Three selected outcomes — four Focus destinations, desktop/mobile League news route and truthful startup test evidence.",
   "blockers": [
-    "Launch HOLD — reply-as project email unverified (inbound verified 2026-10-05; reply-as deferred to the custom email studio project); S1 release receipt, announcement on the current URL and founder GO pending. Registry lifecycle reconciled to forge/FB on 2026-10-06 (founder apply)."
+    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ]
 }

@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-24 (Session 121 closeout) -->
+<!-- generated-at: 2026-10-25 (Session 122 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S121 ═════╗
-║  Date: 2026-10-24  ·  SIL: 864/1000  ·  Velocity: 4              ║
-║  Mode: FOUNDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S122 ═════╗
+║  Date: 2026-10-25  ·  SIL: 485/1000  ·  Velocity: 3 ↓            ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Shipped: 4 selected improvements — session identity, deploym  ║
-║  ✓ Tests: all seven exact-candidate CI jobs passed; browser271   ║
-║  ✓ Deploy: staging, public frontend and API verified at 5410b8b  ║
-║  ✓ Closeout: ordered write-back, independent review and publica  ║
+║  ✓ Shipped: Three selected outcomes — four Focus destinations,   ║
+║  ✓ Tests: At BD60, 7 exact-candidate CI jobs pass (run 40135773  ║
+║  ✓ Deploy: 14/14 staging and 14/14 production at bd60d3dd387060  ║
+║  ✓ Closeout: ordered write-back and two-round independent revie  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 864/1000 ═══════════════════════════════════════╗
-║    Dev Health         94   █████████░                            ║
-║    Alignment          90   █████████░                            ║
-║    Momentum           79   ████████░░                            ║
-║    Engagement         83   ████████░░                            ║
-║    Process Qual       66   ███████░░░                            ║
-║    Coherence          89   █████████░                            ║
-║    Security           93   █████████░                            ║
-║    Ecosystem          84   ████████░░                            ║
-║    Capital            95   ██████████                            ║
-║    Automation         91   █████████░                            ║
+╔══ SCORES · SIL 485/1000 ═══════════════════════════════════════╗
+║    Dev Health         85   █████████░                            ║
+║    Alignment          65   ███████░░░                            ║
+║    Momentum           75   ████████░░                            ║
+║    Engagement         45   █████░░░░░                            ║
+║    Process Qual       65   ███████░░░                            ║
+║    Coherence          50   █████░░░░░                            ║
+║    Security           45   █████░░░░░                            ║
+║    Ecosystem          20   ██░░░░░░░░                            ║
+║    Capital            0    ░░░░░░░░░░                            ║
+║    Automation         35   ████░░░░░░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,7 +40,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 17 files  ·  M:14 A:0 D:0 ?:3                          ║
+║  Changes: 199 files  ·  M:34 A:164 D:0 ?:1                       ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,10 +51,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        12/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests: CI7/7 jobs; UI271 pass/3 skip; unit total unknown      ║
+║  Tests:         1752/1752 · STALE                                ║
 ║  IGNIS:         0d ago                                           ║
-║  Truth:         partial                                          ║
-║  Sanitization:  2d ago                                           ║
+║  Truth:         selected S122 production verified; broader hist  ║
+║  Sanitization:  3d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
@@ -64,7 +64,3 @@
 ```
 
 *Generated by `scripts/render-closeout-board.mjs v1.0`*
-
-Evidence: reports/s121-ci-proof.json. Aggregate unit case count is unmeasured; cached historical case totals are not current acceptance. Project agent memory is context/AGENT_MEMORY.md.
-
-shells: 19 started · 19 closed · 0 running (tracked long-running S121 release and verification handles; completed quick commands excluded).

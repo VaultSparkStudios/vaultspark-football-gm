@@ -20,6 +20,49 @@
     "passed": 18,
     "total": 18
   },
-  "renderedProof": ".cache/s122-startup-reviewed-final.md",
-  "limits": "Application suite and release checks pending; no aggregate suite count claimed."
+  "renderedProof": "reports/s122-startup-render-proof.md",
+  "limits": "Review covers final startup source and the actual precloseout active-S122/prior-S121 rendered snapshot. No full-suite case-count claim or closed-S122 brief validation; final closeout rendering requires separate verification.",
+  "history": [
+    {
+      "at": "2026-10-24T18:00:19.662Z",
+      "renderedProof": ".cache/s122-startup-reviewed-final.md",
+      "limits": "Application suite and release checks pending; no aggregate suite count claimed.",
+      "finalSourceVerification": null
+    }
+  ],
+  "independentCodeReview": {
+    "reviewer": "review_navigation",
+    "verdict": "pass",
+    "findings": 0,
+    "reviewedAt": "2026-10-24T22:29:51.201Z",
+    "summary": "Final-source startup review confirms matching S121 handoff evidence, readable unmeasured aggregate limitation, active S122 identity and explicitly stale current direct totals. Existing focused/Studio counts are historical receipts, not new executions."
+  },
+  "finalSourceVerification": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "verdict": "pass",
+    "sourceFiles": [
+      {
+        "path": "scripts/render-startup-brief.mjs",
+        "sha256": "8e22cf82b57ac6e98ae75768fd7f193bd374017535fd9385da24205a7048147f"
+      },
+      {
+        "path": "scripts/lib/startup-test-evidence.mjs",
+        "sha256": "1b760ecb15c12e79be3bec53149c10da7f8ff264bdf2ae0aa3097b7b615e2d87"
+      },
+      {
+        "path": "scripts/lib/brief-blocks.mjs",
+        "sha256": "8c074e2177eff807070f90d6d1fb4276aeac50460927afecbf77987dc9b678d8"
+      },
+      {
+        "path": "test/startup-test-evidence.test.js",
+        "sha256": "949520ce84cc13dc5078f6bc22a613c4805c03d3bf927e33e2f4a23eeb124c7a"
+      }
+    ],
+    "evidence": {
+      "path": "reports/s122-startup-render-proof.md",
+      "sha256": "84ef5689b6641fc8062314fa0425a3bf988f4874a7df42bc42d7288619f3fa8d"
+    },
+    "reviewedAt": "2026-10-24T22:29:51.201Z",
+    "scope": "precloseoutactive122/prior121snapshot, nofullcasecountclaim"
+  }
 }

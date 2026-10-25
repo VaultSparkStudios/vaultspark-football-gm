@@ -1,5 +1,19 @@
 # Task Board — Franchise Architect: Football
 
+## S122 Wave status
+
+- [ ] [SIL:0][S122 #2] Future pre-implementation check: supported canonical premise recorder and complete staged/untracked snapshot; preserve this session's UNKNOWN timing conformance.
+
+- [x] Wave 1 — Full startup, fresh audit and premise/admission checks.
+- [x] Wave 2 — Three selected outcomes with independent and rendered acceptance.
+- [ ] Wave 3 — BD60 technical release verified; independent closeout review passed. The dated player-facing note requires fresh candidate checks and staging/production before final publication and readback.
+
+- [x] S122: Four Architect Focus destinations restored; generated browser actions focus the visible target and survive reload.
+- [x] S122: Desktop/mobile League pulse opens the actual League news destination in both themes.
+- [x] S122: Current startup totals require fresh direct receipts; stale totals and prior-session evidence are explicit.
+- [ ] [SIL:0][S122 #1] Before a future candidate, measure the unchanged boot-byte target and admit the actual hosted URL form in the recovery harness.
+- [ ] S122 closeout: complete independent review, metadata checks, publication, remote readback, impact cargo and verified job/lock cleanup.
+
 Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
 ## S121 Wave status
@@ -23,7 +37,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] S119: Restore the studio shard: register AGENT_MEMORY.md as a rollable ledger. — DONE: CI39900408127 all seven jobs green.
 - [x] Next: publish a player-facing release note for S119 (Desk on phones; passer ratings now match the box score and old saves read about 10 points higher for strong seasons). Copy changes break harnesses: grep tests-ui specs/helpers and responsive-evidence before committing, and it needs its own exact candidate. S120: 2026-10-23 note on status.html; no tests-ui or responsive-evidence copy dependence; public tests pass apart from the known ignored-ledger local red.
 - [x] Next: capture-public-qa.mjs ignores PLAYWRIGHT_CHANNEL (responsive-evidence honors it); align them in the next code candidate. S120: both honor it; test/studio-protocol-smoke.test.js asserts every capture launch, red on the bare launch.
-- [ ] Founder: remove three git-ignored local files that redden the local studio shard only (CI is unaffected): docs/CREATIVE_DIRECTION_RECORD.md (preserved copy in .cache/private-records), and the propagated scripts/run-tests.mjs and scripts/check-last-session-summary.mjs this project's authority contract forbids.
+- [x] S122 supersedes the former Founder file-removal request: preserve the three ignored local files and validate the exact tracked checkout in isolation. The clean tracked authority contract passes; local-only fixtures are not deployed or staged. No Founder removal action is required for this release. Tool-version compatibility is a recipient-owned follow-up.
 - [x] S118: Verify smoother measured characters, articulated movement and refined faces against compatibility, mesh-memory and rendered-pixel checks. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
 - [x] S118: Verify saved family background/coloring and relationship narratives in both draft paths and browser restoration. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
 - [x] S118: Finish the complete test inventory, inspect final captures, verify the exact candidate on staging and hosted checks, deploy Pages/backend, and record readback and rollback evidence. — DONE: exact candidate CI, hosted visual/continuity and production verification recorded in reports/s118-candidate-ci.json and current release authority.
@@ -174,25 +188,6 @@ Public launch remains HOLD for actual project-domain receive/reply-as evidence, 
 - [x] Commit/push deployable source `dbcd750`; deploy and verify its artifact on stable staging (14/14), hosted lab performance, and live Cloudflare Pages (10/10; promotion run `36613134108` success).
 - [x] Backend run `36616242344` passed gate and image builds but failed its SSH transport over three attempts; recovered through Studio gateway SSH with workflow-equivalent compose pull/up, unchanged Caddy route, and exact-source same-host plus external HTTPS health. `reports/s110-backend-authority.json` records both truths.
 - [x] Reconcile staging, live Pages, visual, performance, backend and launch-evidence receipts; public launch stays HOLD for email receive/reply-as, founder approval and lifecycle authority.
-
-## Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there (2026-09-14)
-
-- [x] **Front Office Advisor** — deterministic, packet-cited, scored at the weekly commit into a descriptive tally; lazy island on the Desk. L3 (user-keyed model voice) deliberately unshipped: zero project token spend is the contract.
-- [x] **Rival personas are causal at the trade seam** — `evaluateTradeValue` with archetype tolerance, age horizon, need premium/surplus discount and rationale; CPU clubs only; stream invariance asserted.
-- [x] **First Season Contract** — five objectives, three from actions and two from the dashboard at season close; collapses after week 6; fires one achievement.
-- [x] **Moment cards** on trophies, epilogue, development report and first-round reveal, with the challenge code.
-- [x] **Worker-hosted runtime** — module Worker with a storage mirror, in-page fallback with a diagnostic, byte-equal contract through both transports; long-task ceiling 1,000 ms is the gate, wall-clock 750 ms the bound.
-- [x] **Token sweep and crests** — zero hex outside token blocks; `teamCrest.js` in the Desk spotlight. Icon sprite not shipped.
-- [x] **Showcase League** on the stats page (committed JSON; the ten-season run took 26 minutes under load).
-- [x] **Desk and League** — Overview split; tab ids unchanged; League hydrates news, analytics and sim jobs. Six-group drawer and Depth Chart merge not shipped.
-- [x] **Public chrome** — one header, footer and theme toggle from the manifest on every page; two inert toggles repaired; About + FAQ; press kit; status archive; sitemap comment stripped; legacy-tier count gated; cover.png lossless 445 → 378 KB.
-- [x] **Dev CORS fails closed**; parity gate reads `devCors.js`.
-- [x] **Audit-lane cache** L1 — `docs/audit-lanes/` with the SHA described and the delta command for S110.
-- [x] **Live standings** — `latestStandings` read the season-end archive, so year one showed "No rows" and later years last season's table; one shared `teamSeasonRow` now serves both.
-- [x] **Icon sprite and six-group phone drawer** shipped in S110; S111 added one Team destination with Roster/Depth submodes.
-- [x] **CPU–CPU trade market** shipped in S111 with a matched seeded three-season transaction control.
-- [ ] **Alias mounts** (eight copies, 33.7 MB) wait on the Studio host contract before any alias becomes a 301.
-- [ ] Never write a count premise as `[\s\S]*?){n}`; the checker hung twenty minutes when the fix made n unreachable. Use a non-overlapping separator.
 
 <!-- ledger-roll:pointer -->
 ---

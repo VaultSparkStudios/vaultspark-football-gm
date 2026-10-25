@@ -1,0 +1,18 @@
+{
+  "session": 122,
+  "at": "2026-10-25T02:05:43.634Z",
+  "stagedTree": "8e6e53e2c5756dada0ae323af5e612eb1c50b942",
+  "nativeHandle": 3889,
+  "exitCode": 1,
+  "tests": 388,
+  "passed": 387,
+  "failed": 1,
+  "durationMs": 119078,
+  "failure": "Every capture ever taken is still provable: new status images were not yet registered in the canonical capture ledger.",
+  "resolution": "Register all eight exact image hashes with the existing writeCaptureLedger function; preserve the full original ledger and all existing entries; rerun the full Studio shard.",
+  "rawLog": {
+    "path": ".cache/s122-status-studio-first-failure.log",
+    "sha256": "cceae162d1f63a59294cae9bbafff958d2e730e66e0cbe8df635712c076f9655",
+    "bytes": 35237
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "subject": "S122 status release-note local source and rendered delta",
+  "reviewer": "audit_game independent source and rendered-pixel review",
+  "reviewedAt": "2026-10-25T02:05:51.729941Z",
+  "verdict": "pass",
+  "findings": 0,
+  "findingSeverity": "none",
+  "findingsDetails": [],
+  "reviewed": 8,
+  "renderedPixelsReviewed": true,
+  "baselineRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "sourceRevision": null,
+  "sourceFiles": [
+    {
+      "path": "public/status.html",
+      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceKind": "proposed-worktree-status-note"
+    },
+    {
+      "path": "src/engine/architectFocusReview.js",
+      "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef",
+      "scope": "Read-only live action-label copy reference"
+    }
+  ],
+  "addendumReceipt": {
+    "path": "reports/s122-status-visual-addendum.json",
+    "sha256": "0087fa44509419916393262ed41f883e83c67978b666c6d3cbeff887969ecca4"
+  },
+  "captures": [
+    {
+      "file": "docs/visual-qa/s122-status-before-desktop-dark.png",
+      "sha256": "75865833fbf2def16acde50ab516d7e6758c483f551ca3fbec397f01b3cc4056",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "dark",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-before-desktop-light.png",
+      "sha256": "24abb0edd83abc8a12c0bc6bbb6f82635e3e81474f4f882289571d159964bb2b",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "light",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-before-mobile-dark.png",
+      "sha256": "69923ee788d7c78157c4d8260d6fc412d21606fca1b14217975bbb4891472ebb",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "dark",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-before-mobile-light.png",
+      "sha256": "fdf43f3033ba1372adb0e5ed435f94e4450f4adc0ee6539a61ab53176069d015",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "light",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-desktop-dark.png",
+      "sha256": "67bd1355821eac42336a3445cc4a667771d962f996925458f00883dee645917d",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "sourceRevision": null,
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-desktop-light.png",
+      "sha256": "80004d09066e2b2db9b7bd50cb51d94515d28cd023736d8346a462aa5857b231",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "sourceRevision": null,
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-mobile-dark.png",
+      "sha256": "ebaa9a18beac6499f55c30edf36a23b7e0c0d7b3f53a9e67ec6c60e032a0e960",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "sourceRevision": null,
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-mobile-light.png",
+      "sha256": "2b36f1f77f6ac791a9ae3437003aecc8889f9ff76674e98d8af1cde889040b30",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "sourceRevision": null,
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516"
+    }
+  ],
+  "method": "Viewed all eight individual actual PNGs using view_image: before and after, desktop1440x1000/mobile390x844, dark and light. New heading and both paragraphs are readable, wrap within cards, retain adequate visual separation and show no clipped new text or horizontal overflow. Compared staged three-line HTML delta against actual four Architect Focus labels and shared League news route. No unrelated copy changes in the staged status diff.",
+  "copyAccuracy": {
+    "verdict": "pass",
+    "evidence": "The release note accurately groups Prepare your next week and Prepare your next weekly plan, reproduces Review contracts and cap pressure and Review your next General Manager call in sentence case, and describes desktop/mobile pulse navigation to League news. It makes no simulation, account, performance or launch claim."
+  },
+  "publication": "Pending final committed source, candidate CI, staging and production evidence; this review does not establish hosted publication.",
+  "limits": "Local proposed status-note delta only. BD60 evidence remains historical and cannot prove the new status source. Other staged metadata and whole-suite acceptance are outside this independent review.",
+  "backgroundHygiene": {
+    "ownRunningHandles": 0,
+    "note": "No browser or background process started for this review; all image and read-only commands completed."
+  }
+}

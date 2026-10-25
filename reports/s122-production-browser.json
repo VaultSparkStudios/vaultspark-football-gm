@@ -1,0 +1,15 @@
+{
+  "session": 122,
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "phase": "production",
+  "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+  "exitCode": 0,
+  "passed": 4,
+  "total": 4,
+  "failed": 0,
+  "command": "node node_modules/@playwright/test/cli.js test --config .cache/s122-production.config.mjs (S122_CAPTURE_PHASE=production)",
+  "observedAt": "2026-10-25T00:36:43.749Z",
+  "directHandle": 68144,
+  "duration": "1.1m",
+  "scope": "Actual production desktop/mobile × dark/light generated actions, visible destination focus and identity reload."
+}

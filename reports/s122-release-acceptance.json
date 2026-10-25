@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "session": 122,
+  "at": "2026-10-25T00:40:14.218Z",
+  "sha": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+  "complete": true,
+  "selection": {
+    "path": "reports/s122-release-selection.json",
+    "sha256": "d6fac96254c27428ae8bfe4a64288d3e85ba02313266013a9f65ba8bc8d7dd02"
+  },
+  "ci": {
+    "ok": true,
+    "sha": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "runId": 40135773664,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "receipt": {
+      "path": "reports/s122-ci-proof.json",
+      "sha256": "cec0b013197651af002f104ce95de6d2c2b71e56847f77f1dd9e80583cb48197"
+    }
+  },
+  "deployments": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "receipt": {
+      "path": "reports/s122-deployment-observations.json",
+      "sha256": "fa3070f27082a2c212c084390c17520a277affc17e9971bb7ebb03ab21d7c96e"
+    },
+    "runs": [
+      {
+        "kind": "pages",
+        "id": 40135989642,
+        "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40135989642",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "kind": "backend",
+        "id": 40135991113,
+        "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40135991113",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "staging": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "summary": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    },
+    "receipt": {
+      "path": "reports/s122-staging-provenance.json",
+      "sha256": "1fc196efc984487a844d1da751aeff05ed3e9e36809a81ae13a2fee883292979"
+    }
+  },
+  "production": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "summary": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    },
+    "receipt": {
+      "path": "reports/s122-production-provenance.json",
+      "sha256": "2cee324e7bf9b007ee05b67c55ddc7de6068de0886dc7395b4b66cc52bbed45d"
+    }
+  },
+  "visual": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "reviewed": true,
+    "captures": 336,
+    "currentSourceCaptures": 104,
+    "classifiedCounts": {
+      "before@492aaddc7707db0521d7c5c9dd2e70845b942477": 24,
+      "after@f21512d2a5cd86b7d0a2004129940fa61876ead0": 52,
+      "hosted-staging@fe4f067280a0e35b6476f817530ecc321d289689": 52,
+      "hosted-staging@b2da78a89b5040db5f278709136e163b0f4c55f3": 52,
+      "hosted-staging@26616ed93079de686d13da150e4e6d7ddf581036": 52,
+      "hosted-staging@bd60d3dd387060a2afcf2b974fc27f1e57e22394": 52,
+      "hosted-production@bd60d3dd387060a2afcf2b974fc27f1e57e22394": 52
+    },
+    "receipt": {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "8d60e0e86e231837356461bf772e65fd979a1a027142c46e06b00f893e54258e"
+    }
+  },
+  "performance": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "status": "verified",
+    "profiles": [
+      {
+        "name": "desktop",
+        "lcpMs": 1280,
+        "inpMs": 24,
+        "cls": 0.0003
+      },
+      {
+        "name": "mobile",
+        "lcpMs": 1300,
+        "inpMs": 32,
+        "cls": 0.0131
+      }
+    ],
+    "receipt": {
+      "path": "reports/s122-production-performance.json",
+      "sha256": "3742bec6249b57197f4129b3dff3e06c1e4c11f17b3b120346aa5a82fd249593"
+    }
+  },
+  "backend": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "verified": true,
+    "status": "completed",
+    "conclusion": "success",
+    "workflowRun": 40135991113,
+    "receipt": {
+      "path": "reports/s122-backend-workflow.json",
+      "sha256": "2607032c916a7cd65eaa3b308550545766c2caecae4446e7b62415b5dbfa4505"
+    }
+  },
+  "api": {
+    "schemaVersion": 1,
+    "session": 122,
+    "observedAt": "2026-10-25T00:40:14.218Z",
+    "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "verified": true,
+    "database": "ready",
+    "httpStatus": 200,
+    "health": {
+      "ok": true,
+      "database": "ready",
+      "latencyMs": 1,
+      "schemaVersion": 1,
+      "service": "franchise-architect-community-stats",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    "receipt": {
+      "path": "reports/s122-api-health.json",
+      "sha256": "a6c9bd99a6baecc8db3ef06f3a7b4c3530734e4280cbee6c5a1e1dc7ec6d7cfe"
+    }
+  },
+  "rollback": {
+    "schemaVersion": 1,
+    "session": 122,
+    "observedAt": "2026-10-25T00:40:14.218Z",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "verified": true,
+    "frontend": {
+      "previousDeploymentAvailable": true,
+      "previousDeploymentId": "8aeff7a2-de14-4c2c-bedc-2a0ebca1e7cd",
+      "currentDeploymentId": "284deb97-c752-413e-911c-95ef289ef48e"
+    },
+    "backend": {
+      "previousImageAvailable": true,
+      "image": "sha256:10d66ce77f7315ddd09f9925e76ee6c2a95a5eec59974c3bf565fc1e6eedb8c6"
+    },
+    "databasePreserved": true,
+    "routingPreserved": true,
+    "components": {
+      "pages": {
+        "path": "reports/s122-pages-provider.json",
+        "sha256": "4bc23e6f1ff569ccf9d874a6e0e870ceaa869977a11afca27e8b6af4836d7942"
+      },
+      "backend": {
+        "path": "reports/s122-backend-workflow.json",
+        "sha256": "2607032c916a7cd65eaa3b308550545766c2caecae4446e7b62415b5dbfa4505"
+      }
+    },
+    "receipt": {
+      "path": "reports/s122-rollback.json",
+      "sha256": "f610dcecc7d4fba234b8b8d4f7dbce9b77bcdad72ad6dec4f0c325fb0bca911f"
+    }
+  },
+  "hostedNavigation": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "passed": 4,
+    "total": 4,
+    "captures": 52,
+    "reviewed": true,
+    "receipt": {
+      "path": "reports/s122-hosted-navigation.json",
+      "sha256": "8cf095d5a9ec1ef4270d7d6fb8cd9179b4af78ed697733937ddf90c60b827636"
+    }
+  },
+  "productionNavigation": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "passed": 4,
+    "total": 4,
+    "captures": 52,
+    "reviewed": true,
+    "phase": "production",
+    "receipt": {
+      "path": "reports/s122-production-navigation.json",
+      "sha256": "3f845ac4d829fb3f1d6c3deaa96dee458e734a5565987097d1762d4bb54d57ba"
+    }
+  },
+  "cleanStudio": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "tests": 388,
+    "passed": 388,
+    "failed": 0,
+    "exitCode": 0,
+    "receipt": {
+      "path": "reports/s122-clean-studio.json",
+      "sha256": "1756e24a1b69f331c975e36a57f79dbe32b063933cef22e400ae97481df2a3d3"
+    }
+  },
+  "reviews": {
+    "navigation": {
+      "path": "reports/s122-navigation-review.json",
+      "sha256": "c159d9b58a93fe07eb554e46d6faf12ff7f3edc6abe3e6e94a05018bcc20b158"
+    },
+    "startup": {
+      "path": "reports/s122-startup-review.json",
+      "sha256": "0a4e35b8d25200538c0a73ff75a8d972c7593f2a1b478e29ab95953865e108b5"
+    }
+  },
+  "limits": "Technical promotion only. Public launch and lifecycle approval remain separate. Aggregate case counts are not synthesized from jobs. Historical captures retain original source identities."
+}

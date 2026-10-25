@@ -1,5 +1,12 @@
 # Agent Memory
 
+## Session 122 durable patterns
+
+- Test generated game actions in a real franchise: active tab, visible target, focused heading and reload.
+- Keep current direct receipt authority separate from matching historical handoff evidence; structured and string rendering must use the same authority. Wrap limitations instead of truncating them.
+- Measure unchanged boot-byte budgets before cutting candidates; hosted Ready /game?resume=tab is a valid observed route.
+- Preserve rejected-candidate and bounded GET observation failures. Technical production evidence never clears independent launch or native closeout publication gates.
+
 ## Session 121 durable patterns
 
 - Persist the initial Git HEAD in the actual lock writer; repeated startup must not replace the arc anchor.
@@ -92,13 +99,6 @@
 - Aggregate analytics page loads prove that reporting works; they do not prove people, sessions, engagement, retention, or a cohort.
 - Exact-artifact refusal should remain fail-closed while printing expected/observed identities and first-file deltas from a deterministic per-file ledger.
 - Generated orientation needs negative controls for inline schemas, invalid dates, and stale caches; a correct-looking total can coexist with corrupt category rows.
-
-## Session 87 durable patterns
-
-- A salary market is one versioned domain authority. Generated contracts, player offers and CPU bidding must share it or cap pressure becomes cosmetic.
-- A rendered capture passing geometry is not visual proof. Inspect the pixels; S87 found a live column decorator replacing overall with player name despite green capture output.
-- Shared-host deployment must compare the installed project fragment before reloading the shared proxy. An unchanged fragment is a no-op, not a reload event.
-- Backend health revision, static artifact identity and public-launch authority are independent receipts; report each explicitly.
 
 <!-- ledger-roll:pointer -->
 ---

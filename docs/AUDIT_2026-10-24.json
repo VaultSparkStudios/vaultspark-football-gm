@@ -208,6 +208,11 @@
           "at": "2026-10-24T18:05:51.025Z",
           "status": "shipped",
           "note": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        },
+        {
+          "at": "2026-10-25T00:40:59.931Z",
+          "status": "shipped",
+          "note": "Selected acceptance and exact technical release verified; canonical closeout publication remains pending."
         }
       ],
       "selectedLevel": "L2",
@@ -242,7 +247,7 @@
       "rank": 1,
       "category": "gamification-immersion",
       "premise": "Live source contains the demonstrated defect for architect-focus-destinations",
-      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
     },
     {
       "id": 2,
@@ -261,6 +266,11 @@
           "at": "2026-10-24T18:05:51.025Z",
           "status": "shipped",
           "note": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        },
+        {
+          "at": "2026-10-25T00:40:59.931Z",
+          "status": "shipped",
+          "note": "Selected acceptance and exact technical release verified; canonical closeout publication remains pending."
         }
       ],
       "selectedLevel": "L2",
@@ -295,7 +305,7 @@
       "rank": 2,
       "category": "ui-ux-feedback",
       "premise": "Live source contains the demonstrated defect for league-pulse-destination",
-      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
     },
     {
       "id": 3,
@@ -314,6 +324,11 @@
           "at": "2026-10-24T18:00:19.658Z",
           "status": "shipped",
           "note": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending."
+        },
+        {
+          "at": "2026-10-25T00:40:59.931Z",
+          "status": "shipped",
+          "note": "Selected acceptance and exact technical release verified; canonical closeout publication remains pending."
         }
       ],
       "selectedLevel": "L2",
@@ -348,7 +363,7 @@
       "rank": 3,
       "category": "observability-honesty",
       "premise": "Live source contains the demonstrated defect for startup-test-evidence",
-      "executionEvidence": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending."
+      "executionEvidence": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
     }
   ],
   "totals": {
@@ -493,14 +508,35 @@
   ],
   "generatedAt": "2026-10-24T17:52:55.097Z",
   "premiseGate": {
-    "verifiedAt": "2026-10-24T17:53:44.953Z",
-    "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
-    "status": "passed",
+    "schema": "premise-gate/v1",
+    "sidecar": "docs/AUDIT_2026-10-24.json",
+    "strict": true,
+    "exit": 0,
     "verified": 3,
     "contradicted": 0,
     "unverified": 0,
-    "dirtyImplementationPaths": [],
-    "method": "Project-native strict checkAudit plus read-only admission; local CLI lacks shared --record and timing helper."
+    "premiseDigest": "b91735d8bee088fce27879a5f576d38466c57bf3e1844f83bbf703c570f6d297",
+    "head": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+    "at": "2026-10-24T17:53:42.409Z",
+    "recordPathPolicy": "project",
+    "implementationDirty": null,
+    "recoveredAt": "2026-10-25T01:21:35.163Z",
+    "originalObservationAt": "2026-10-24T17:53:44.953Z",
+    "headEvidence": "Original recorded sourceRevision and this session start_head; not a newly executed historical HEAD probe.",
+    "method": "Recovered now from contemporaneous native tool evidence. Strict checking happened before the first recorded implementation patch; local CLI --record was unsupported and did not create a v1 record.",
+    "dirtyObservation": {
+      "command": "git diff --name-only",
+      "trackedRecordPaths": [
+        "context/PROJECT_STATUS.json",
+        "docs/IMPLEMENT_PLAN.md",
+        "docs/STARTUP_BRIEF.md"
+      ],
+      "observedTrackedImplementationPaths": [],
+      "stagedState": "unmeasured at gate time",
+      "untrackedState": "unmeasured at gate time"
+    },
+    "timingConformanceVerified": false,
+    "caveat": "No complete gate-time porcelain snapshot exists. implementationDirty is explicitly null, never inferred clean. Native timing verdict must remain unknown/nonpassing."
   },
   "admission": {
     "checkedAt": "2026-10-24T17:53:44.955Z",
@@ -516,7 +552,7 @@
     },
     "rehearsal": "Native tier2-audit-plan-preflight fixtures15/15 PASS."
   },
-  "status": "selected-outcomes-verified-studio-fixture-guard-correction-pending",
+  "status": "selected-outcomes-production-verified-closeout-publication-pending",
   "releaseAttempts": [
     {
       "sha": "f21512d2a5cd86b7d0a2004129940fa61876ead0",
@@ -574,15 +610,48 @@
         "reports/s122-evidence-history/s122-staging-v4-visual-review-19565e8ab6cf36c264f575016029179d9302bf2d967cf079cba932411ee2ac1d.json",
         "reports/s122-evidence-history/s122-studio-gate-failure-3ac4f09ecbb43ca65db65efccc53306ad6619e178ca55b8f8db763191da9805d.json"
       ]
+    },
+    {
+      "sha": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "status": "failed-release-gate",
+      "ciRun": 40121101320,
+      "backendRun": 40121131146,
+      "evidence": "reports/s122-runtime-gate-failure.json"
+    },
+    {
+      "sha": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "status": "technical-production-verified-closeout-publication-pending",
+      "ciRun": 40135773664,
+      "evidence": "reports/s122-release-acceptance.json",
+      "at": "2026-10-25T00:40:59.931Z"
     }
   ],
   "currentRelease": {
-    "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
-    "ciRun": 40132009062,
-    "pagesRun": 40132255821,
-    "backendRun": 40132257492,
+    "ciRun": 40135773664,
+    "backendRun": 40135991113,
+    "acceptance": "reports/s122-release-acceptance.json",
     "fullGoalComplete": false,
-    "failure": "reports/s122-studio-gate-failure.json"
+    "closeoutPublication": "pending-review-push-and-readback"
+  },
+  "processEvidence": {
+    "premiseTiming": {
+      "strictPremisesBeforeRecordedImplementation": "proven",
+      "verified": 3,
+      "fullGateTimeStagedAndUntrackedSnapshot": "unmeasured",
+      "nativeTimingVerdict": "unknown",
+      "nativeExit": 1,
+      "canonicalTimingConformanceVerified": false,
+      "receipt": {
+        "path": "reports/s122-premise-record-recovery.json",
+        "sha256": "27a7575423f4815afd9564a015e178e3ffd537727a83c3006f305d8abeb9e508"
+      }
+    }
+  },
+  "finalMetadataAcceptance": {
+    "status": "failed-repair-in-progress",
+    "receipt": "reports/s122-final-metadata-first-failure.json",
+    "statusNoteFollowThrough": "Additional static product source; fresh exact-source gates and staging/production required."
   }
 }

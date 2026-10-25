@@ -1,0 +1,17 @@
+{
+  "session": 122,
+  "at": "2026-10-25T00:33:06.203Z",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "verified": true,
+  "canonicalDeployment": {
+    "deploymentId": "284deb97-c752-413e-911c-95ef289ef48e",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "status": "success",
+    "url": "https://284deb97.franchise-architect-football.pages.dev"
+  },
+  "rollback": {
+    "previousDeploymentId": "8aeff7a2-de14-4c2c-bedc-2a0ebca1e7cd",
+    "previousSourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "available": true
+  }
+}

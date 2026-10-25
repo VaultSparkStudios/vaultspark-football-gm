@@ -154,3 +154,14 @@ Verification: CI39968433866 and CI39993396521 success; Pages39993950168 success;
 Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
 
 S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
+
+## 2026-10-25 — Session 122
+
+Three selected S122 outcomes reached exact-source technical production: all four Architect Focus actions open their real decision destinations; desktop/mobile League pulse opens League news; startup counts distinguish fresh receipts, historical totals and matching prior-session evidence. 7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; isolated Studio 388/388. Aggregate unit case total is unmeasured. Closeout publication pending; reports/s122-release-acceptance.json.
+
+
+### S122 final metadata acceptance follow-through
+
+The final metadata run measured 385/388: two assertions exposed the missing dated player-facing release note, and one exposed audit Markdown that differed from its canonical JSON renderer. The audit was regenerated and the actual S122 date/session summary restored to the native dated-bullet format. The added static status note then measured 387/388 because its eight screenshots were not yet registered; the canonical ledger added all eight with zero revised entries. Both failures are preserved in reports/s122-final-metadata-first-failure.json and reports/s122-status-local-first-failure.json. All eight new images passed independent inspection. This additional public source requires fresh exact-candidate CI, staging and production; BD60 acceptance remains historical evidence for that exact source. No test, threshold, inventory or timeout was weakened. Final publication remains pending.

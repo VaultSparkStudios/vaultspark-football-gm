@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "runId": 40135773664,
+  "jobId": 120996854114,
+  "jobUrl": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40135773664/job/120996854114",
+  "observedAt": "2026-10-24T23:25:44.381Z",
+  "conclusion": "success",
+  "passed": 275,
+  "skipped": 3,
+  "failed": 0,
+  "summaryLines": [
+    "2026-10-24T23:21:37.5133481Z   3 skipped",
+    "2026-10-24T23:21:37.5136273Z   275 passed (1.6h)"
+  ],
+  "scope": "Counts from the completed exact-source browser job's final Playwright summary. Skipped cases are not counted as passed. Aggregate unit case count remains unmeasured."
+}

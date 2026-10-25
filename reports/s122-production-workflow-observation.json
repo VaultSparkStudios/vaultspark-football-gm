@@ -1,0 +1,35 @@
+{
+  "session": 122,
+  "at": "2026-10-25T00:38:30.564Z",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "workflowRun": 40135989642,
+  "attempt": 1,
+  "workflow": ".github/workflows/deploy-pages.yml",
+  "event": "workflow_dispatch",
+  "status": "completed",
+  "conclusion": "success",
+  "job": {
+    "id": 121009999011,
+    "name": "build",
+    "head_sha": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "run_id": 40135989642,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "publishStep": {
+    "name": "Publish to Cloudflare Pages (live origin)",
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-10-25T00:32:02Z"
+  },
+  "health": {
+    "url": "https://playfranchisearchitect.com/_health",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+  },
+  "canonicalDeployment": {
+    "deploymentId": "284deb97-c752-413e-911c-95ef289ef48e",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "status": "success",
+    "url": "https://284deb97.franchise-architect-football.pages.dev"
+  }
+}

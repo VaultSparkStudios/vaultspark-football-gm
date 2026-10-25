@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "reviewedAt": "2026-10-25T02:00:15.122Z",
+  "kind": "status-note-visual-addendum",
+  "baselineRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "sourceFiles": [
+    {
+      "path": "public/status.html",
+      "beforeSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null
+    }
+  ],
+  "scope": "Local actual-browser before/after status release-note delta only; final committed-candidate and hosted publication acceptance remain separate.",
+  "captures": [
+    {
+      "file": "docs/visual-qa/s122-status-before-desktop-dark.png",
+      "sha256": "75865833fbf2def16acde50ab516d7e6758c483f551ca3fbec397f01b3cc4056",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-before-desktop-light.png",
+      "sha256": "24abb0edd83abc8a12c0bc6bbb6f82635e3e81474f4f882289571d159964bb2b",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-before-mobile-dark.png",
+      "sha256": "69923ee788d7c78157c4d8260d6fc412d21606fca1b14217975bbb4891472ebb",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-before-mobile-light.png",
+      "sha256": "fdf43f3033ba1372adb0e5ed435f94e4450f4adc0ee6539a61ab53176069d015",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-desktop-dark.png",
+      "sha256": "67bd1355821eac42336a3445cc4a667771d962f996925458f00883dee645917d",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-desktop-light.png",
+      "sha256": "80004d09066e2b2db9b7bd50cb51d94515d28cd023736d8346a462aa5857b231",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-mobile-dark.png",
+      "sha256": "ebaa9a18beac6499f55c30edf36a23b7e0c0d7b3f53a9e67ec6c60e032a0e960",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note"
+    },
+    {
+      "file": "docs/visual-qa/s122-status-after-mobile-light.png",
+      "sha256": "2b36f1f77f6ac791a9ae3437003aecc8889f9ff76674e98d8af1cde889040b30",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note"
+    }
+  ],
+  "inspection": {
+    "reviewer": "review_navigation",
+    "renderedPixelsReviewed": true,
+    "reviewed": 8,
+    "verdict": "pass",
+    "blockingDefectsOpen": 0,
+    "method": "Viewed all eight individual actual Chrome screenshots using view_image. At1440x1000 and390x844, both dark/light: date/title and both new paragraphs are fully readable, wrap within unchanged cards and show no horizontal overflow or clipped text. Before captures preserve prior latest note; after captures show new2026-10-25 note. Existing styles retained."
+  },
+  "server": {
+    "kind": "ephemeral loopback static server bound to port0; public/ only",
+    "closed": true
+  },
+  "tests": {
+    "command": "node --test test/public-compliance.test.js test/release-truth.test.js test/release-authority.test.js",
+    "passed": 31,
+    "total": 33,
+    "failed": 2,
+    "limits": "Historical initial working-tree run:31/33. One failure was the preserved ignored local CDR existence conflict; the other exposed CURRENT_STATE date/session mapping, which root subsequently corrected by making the actual S122 summary a dated Session122 bullet. No focused rerun is claimed here."
+  },
+  "publication": "not committed, pushed or deployed",
+  "limits": "No change to existing immutable LATEST.json or capture ledger. Browser renders working source directly; no final-candidate release claim.",
+  "subsequentRootVerification": {
+    "reportedBy": "root",
+    "publicTruth": {
+      "verdict": "pass",
+      "systems": 50,
+      "surfaces": 160
+    },
+    "auditMarkdown": {
+      "command": "canonical audit renderer --check",
+      "verdict": "pass"
+    },
+    "resolution": "Root corrected only the new S122 CURRENT_STATE summary into the native date/session bullet recognized by release-note currency. No historical entry edits or guard changes.",
+    "limits": "Root-reported follow-up observation; complete staged-tree Studio acceptance remains with root."
+  }
+}

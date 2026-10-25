@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "runId": 40135989642,
+  "jobId": 121009999011,
+  "jobUrl": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40135989642/job/121009999011",
+  "observedAt": "2026-10-25T00:34:10.816Z",
+  "conclusion": "success",
+  "passed": 275,
+  "skipped": 3,
+  "failed": 0,
+  "summaryLines": [
+    "2026-10-25T00:23:55.0012873Z   3 skipped",
+    "2026-10-25T00:23:55.0014966Z   275 passed (1.6h)"
+  ],
+  "scope": "Direct final summary from the completed frontend production build/release job. Skips remain distinct from passes; exact-candidate CI is attested separately."
+}

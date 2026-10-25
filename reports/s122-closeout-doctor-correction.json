@@ -1,0 +1,21 @@
+{
+  "session": 122,
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "initial": {
+    "observedAt": "2026-10-25T00:47:25.815Z",
+    "blockingFailing": 1,
+    "check": "release-authority-checked-staging-current",
+    "checkedRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "liveRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+  },
+  "correction": "Reconciled project staging authority using the original verified exact-source independent staging deployment receipt. No deployment, code, threshold or gate changed.",
+  "current": {
+    "verifiedAt": "2026-10-25T00:48:52.286Z",
+    "passing": 12,
+    "blockingFailing": 0,
+    "receipt": {
+      "path": "reports/s122-doctor.json",
+      "sha256": "9e589bf9cb4f7287ef1180448eb15121f6fabc0fb878eb1d1ed70e73680a4667"
+    }
+  }
+}

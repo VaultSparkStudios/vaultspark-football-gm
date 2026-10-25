@@ -1,0 +1,222 @@
+{
+  "session": 122,
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "phase": "staging-v5",
+  "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+  "reviewer": "audit_game independent rendered-pixel inspection",
+  "verdict": "pass",
+  "reviewed": true,
+  "findings": 0,
+  "reviewedAt": "2026-10-24T21:35:26.840507Z",
+  "captures": [
+    {
+      "file": "desktop-dark-desktop-news-destination.png",
+      "sha256": "0d0d28e0ad97acab642e2c32a22fd85030691c640d4314ad36e58e2d972b2cdc"
+    },
+    {
+      "file": "desktop-dark-desktop-news.png",
+      "sha256": "c52ab953538a6d3a0309f7dc5269c27c63aba905bc6c19fbec9d9bde1878fef7"
+    },
+    {
+      "file": "desktop-dark-mastery-identity-destination.png",
+      "sha256": "02344917773510e2f8153983f4bff34f5a14edeb7953ab5979bd0b0273ad71b0"
+    },
+    {
+      "file": "desktop-dark-mastery-identity-reload-destination.png",
+      "sha256": "8d2cc61cc89ed21f5fe61f8bcddc23cc3d5944df67faeec98dfecd0270bd80fa"
+    },
+    {
+      "file": "desktop-dark-mastery-identity.png",
+      "sha256": "706ba87edbd8c3cdac03f3119e412419385335da7dfd00600c2f46041cfc4288"
+    },
+    {
+      "file": "desktop-dark-mastery-promise-destination.png",
+      "sha256": "d8295b9891be6342b623113f8d6e1104a3f0c8e0dd4f17e98e7d3cd2ce05727c"
+    },
+    {
+      "file": "desktop-dark-mastery-promise.png",
+      "sha256": "e9d34489d415797c1aeedbc7f6c22e8707a862f0328fdd0cf6a4cabf713a58b9"
+    },
+    {
+      "file": "desktop-dark-mastery-results-destination.png",
+      "sha256": "1f2d2b2bf44ba0eea5b58e00882120b3d5d32010c9568c92ff6f1a05fb0f1216"
+    },
+    {
+      "file": "desktop-dark-mastery-results.png",
+      "sha256": "e6031444427c49ad614f7d46ef42f56b85b3e500801b271c6930b923b9e9b634"
+    },
+    {
+      "file": "desktop-dark-mastery-stewardship-destination.png",
+      "sha256": "0f02cb605115bb9fbff30a9c3f3ba87dcc1e16590e5ce5f104ee32e4124baf0d"
+    },
+    {
+      "file": "desktop-dark-mastery-stewardship.png",
+      "sha256": "b5129a8f375b5b13347f0429f49c66a1776ffe528fd4df2d7bca03f8a7303e1d"
+    },
+    {
+      "file": "desktop-dark-mobile-news-destination.png",
+      "sha256": "ee5001ff1da37cd136eae5e04e1fae28e48fc24535076fe527b6ba2d553cdbdc"
+    },
+    {
+      "file": "desktop-dark-mobile-news.png",
+      "sha256": "254b0179f00f4f070f04f20d5abd8da54260a628cb84ee5bc3385efa5fc7e826"
+    },
+    {
+      "file": "desktop-light-desktop-news-destination.png",
+      "sha256": "7b6936988c20cbc0b5cd7b1e4aca679b5ccbd49ab527f2f7befc2f58b8609660"
+    },
+    {
+      "file": "desktop-light-desktop-news.png",
+      "sha256": "2ac3ae10f07f25d7dd3188a225aea4113b264f58459b34f870c01c3553618993"
+    },
+    {
+      "file": "desktop-light-mastery-identity-destination.png",
+      "sha256": "637d978de86a1c2fe38037126e9892945bc390fb7195394de2472f6d235d9653"
+    },
+    {
+      "file": "desktop-light-mastery-identity-reload-destination.png",
+      "sha256": "a48cee715da61b653dd1b24ee63fe66a3612eddfddc2b3ccf1bf6b04eb1b6a4f"
+    },
+    {
+      "file": "desktop-light-mastery-identity.png",
+      "sha256": "9dee49931a191d09ffec8bfeff3b91821fe584067931cf0f75a22def662e7a80"
+    },
+    {
+      "file": "desktop-light-mastery-promise-destination.png",
+      "sha256": "1e0b7592bffd106d4458e5bbdbbb082fdce5200d876b589b024c4b3afd8b66f5"
+    },
+    {
+      "file": "desktop-light-mastery-promise.png",
+      "sha256": "a3488ecbf39212f21e7df8965b982d18cb4358634a58dcd0c87cf11ae71eec2e"
+    },
+    {
+      "file": "desktop-light-mastery-results-destination.png",
+      "sha256": "3bf949097a4559de13527a449fde64909fc8936c3019627db6a1c43ecaee1791"
+    },
+    {
+      "file": "desktop-light-mastery-results.png",
+      "sha256": "9e6c970d8da0e7787599f82a5adefa150bdea72e63290d1d58f991bdd537c731"
+    },
+    {
+      "file": "desktop-light-mastery-stewardship-destination.png",
+      "sha256": "551989bb178e8b15d1e787dbd3dd1408872ab93a878910792a917f4af83a9ef3"
+    },
+    {
+      "file": "desktop-light-mastery-stewardship.png",
+      "sha256": "8919dd5bf69b95708f0934d0025f7ee76ace8c9767d0fe7a4c34b27ce1b59b96"
+    },
+    {
+      "file": "desktop-light-mobile-news-destination.png",
+      "sha256": "054310349d0c345b052e4a2469788b621dd22f29f0173faa863e206dab7c5426"
+    },
+    {
+      "file": "desktop-light-mobile-news.png",
+      "sha256": "67c197a75e2f4494575add3de7e1f21e8b880e8bf0417f9d92843f91ed5e73d8"
+    },
+    {
+      "file": "mobile-dark-desktop-news-destination.png",
+      "sha256": "7980e913eb8983dccf2d7ff6d95f5fc22e89d7e6d6f8e9ab971aa25eb281ee4d"
+    },
+    {
+      "file": "mobile-dark-desktop-news.png",
+      "sha256": "5fe92f09cb18a0d6bbe4a47aa20955ff2f6fd91743738bca629dd7656b3cf86d"
+    },
+    {
+      "file": "mobile-dark-mastery-identity-destination.png",
+      "sha256": "8df42157ad7c1aa235821de8640938cc397598f702d90362dcdfc364a4a73cc4"
+    },
+    {
+      "file": "mobile-dark-mastery-identity-reload-destination.png",
+      "sha256": "1641142544c6d5f435aa2004778201787e442754df97daf13be9125a69dc01a4"
+    },
+    {
+      "file": "mobile-dark-mastery-identity.png",
+      "sha256": "b549a337f1a3851fa21b2a8f4ec4fc970cc7d4492d63a24c0a703e651b425408"
+    },
+    {
+      "file": "mobile-dark-mastery-promise-destination.png",
+      "sha256": "e566e91432fb8c800b8530084ad6ccd86bd81c8f6f9921093c8d3b1da50a001d"
+    },
+    {
+      "file": "mobile-dark-mastery-promise.png",
+      "sha256": "811d6d0ad8b762a701c34dbd3fdd5bc759ef514b1633199fe43ddaa75aa4f13f"
+    },
+    {
+      "file": "mobile-dark-mastery-results-destination.png",
+      "sha256": "91f8d70ae0e0f6cbf419b62861f0e1b6a312709a9dc768b060c3c29e64289230"
+    },
+    {
+      "file": "mobile-dark-mastery-results.png",
+      "sha256": "d0c7a5540744f05be48c2faaa1485226712c2a5790dc51472654fe09c69bdc4b"
+    },
+    {
+      "file": "mobile-dark-mastery-stewardship-destination.png",
+      "sha256": "1a91896b665b74c0f5fefb322823e13efe8e50860b99da71ad57b111d1b1c132"
+    },
+    {
+      "file": "mobile-dark-mastery-stewardship.png",
+      "sha256": "a26c1b984719d3ecba0d574877fe38cc0b4f10977f7938cde6fecb75a27f8998"
+    },
+    {
+      "file": "mobile-dark-mobile-news-destination.png",
+      "sha256": "8530daa19a5b6734050e777502a22c8c02b4d5e915b71342cd16f3720d41f8e0"
+    },
+    {
+      "file": "mobile-dark-mobile-news.png",
+      "sha256": "1438d7404c837ff246865dfce0a86b8ee9d39e5782b0974882ec83a7c125f7e3"
+    },
+    {
+      "file": "mobile-light-desktop-news-destination.png",
+      "sha256": "81dc36fba4d4241ed884fcad51c026b7422e89a13d8ef5a8e5df82e886ca7abf"
+    },
+    {
+      "file": "mobile-light-desktop-news.png",
+      "sha256": "90667747cd64881a408251e58fde4994890af426f18e4beb38d4b78a8a06f3e8"
+    },
+    {
+      "file": "mobile-light-mastery-identity-destination.png",
+      "sha256": "35ac969eb97df40c368611dbd956451f31fb57b22a837481f46c57311bb8b6b4"
+    },
+    {
+      "file": "mobile-light-mastery-identity-reload-destination.png",
+      "sha256": "7f237f00423394afcf35f0e6061bd68b909e3d438d52ed3cc1f2120cf46d3ec1"
+    },
+    {
+      "file": "mobile-light-mastery-identity.png",
+      "sha256": "3c68db511b1e03b0ba1db785715a9d833c187756a45c2fea5d5afa86bf903885"
+    },
+    {
+      "file": "mobile-light-mastery-promise-destination.png",
+      "sha256": "3005213b300b5ba0eab9824a253c9e5f3d7e6099722af7302d01e20aee6d2630"
+    },
+    {
+      "file": "mobile-light-mastery-promise.png",
+      "sha256": "db98b23819d40ea3fd31ed156078ffe059d134dc329884a0d7bb8a4a73ea45dd"
+    },
+    {
+      "file": "mobile-light-mastery-results-destination.png",
+      "sha256": "961cbf809f16fdbceb01110876e763f3b46ef8b9c8aa6508cd46415835b15f85"
+    },
+    {
+      "file": "mobile-light-mastery-results.png",
+      "sha256": "efd7745d902c0a5dc2fc1cfb487473e2da3bcf9100d7f9775037282e0ddd70bc"
+    },
+    {
+      "file": "mobile-light-mastery-stewardship-destination.png",
+      "sha256": "cd12e106bacdb1a589a346ca4108a5e9344a254860eaa89640337d4e21892ee3"
+    },
+    {
+      "file": "mobile-light-mastery-stewardship.png",
+      "sha256": "5c2696928f3ccc2081cbdff6b1dde531424d649ea435bdfec9f4f38ee94b9302"
+    },
+    {
+      "file": "mobile-light-mobile-news-destination.png",
+      "sha256": "df0c1dcbcc99d8b00a904846f6cfc3d3b770d5344c5bbc8d256c4f3d469a166d"
+    },
+    {
+      "file": "mobile-light-mobile-news.png",
+      "sha256": "1c7e5660492fc866582f5e01a5523917fc875d4090a4161ffca2ee8e125f28d2"
+    }
+  ],
+  "method": "Inspected all52 actual fresh staging-v5 PNGs using view_image across seven contact sheets and four full-resolution spots: mobile-light stewardship action, mobile-dark League news destination, desktop-light Contracts destination and mobile-dark identity reload destination. Checked dark/light desktop1440/mobile390 states, readable concise action labels fitting phone cards, rendered Contracts and League destinations, retained identity review after actual reload, and absence of blank or mid-scroll destination images. No defects found in changed surfaces. This phase-specific review preserves previous source labels and proves rendered synthetic journeys only, not actual-user engagement or physical-device performance."
+}

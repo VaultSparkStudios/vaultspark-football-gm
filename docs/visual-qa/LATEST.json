@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "session": 122,
-  "capturedAt": "2026-10-24T20:36:36.195Z",
-  "kind": "immutable-hosted-rendered-evidence",
-  "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
-  "scope": "S122 staging-v4:52 newly admitted hosted staging images at 26616ed93079de686d13da150e4e6d7ddf581036; 180 prior images retain their original source revisions and inspection scope. No production or complete release acceptance is claimed.",
+  "capturedAt": "2026-10-25T02:00:15.122Z",
+  "kind": "status-note-local-and-historical-hosted-evidence",
+  "sourceRevision": null,
+  "scope": "Eight newly reviewed local status-note before/after captures. The 336 preceding captures preserve their original sources and prior inspection; this is not new hosted-source acceptance.",
   "sourceFiles": [
     {
       "path": "src/engine/architectFocusReview.js",
@@ -21,6 +21,12 @@
     {
       "path": "public/lib/gameplayNavigation.js",
       "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    },
+    {
+      "path": "public/status.html",
+      "beforeSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null
     }
   ],
   "themes": [
@@ -2915,12 +2921,1523 @@
       "kind": "hosted-staging",
       "phase": "staging-v4",
       "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-desktop-news-destination.png",
+      "sha256": "0d0d28e0ad97acab642e2c32a22fd85030691c640d4314ad36e58e2d972b2cdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-desktop-news.png",
+      "sha256": "c52ab953538a6d3a0309f7dc5269c27c63aba905bc6c19fbec9d9bde1878fef7",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-identity-destination.png",
+      "sha256": "02344917773510e2f8153983f4bff34f5a14edeb7953ab5979bd0b0273ad71b0",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-identity-reload-destination.png",
+      "sha256": "8d2cc61cc89ed21f5fe61f8bcddc23cc3d5944df67faeec98dfecd0270bd80fa",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-identity.png",
+      "sha256": "706ba87edbd8c3cdac03f3119e412419385335da7dfd00600c2f46041cfc4288",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-promise-destination.png",
+      "sha256": "d8295b9891be6342b623113f8d6e1104a3f0c8e0dd4f17e98e7d3cd2ce05727c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-promise.png",
+      "sha256": "e9d34489d415797c1aeedbc7f6c22e8707a862f0328fdd0cf6a4cabf713a58b9",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-results-destination.png",
+      "sha256": "1f2d2b2bf44ba0eea5b58e00882120b3d5d32010c9568c92ff6f1a05fb0f1216",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-results.png",
+      "sha256": "e6031444427c49ad614f7d46ef42f56b85b3e500801b271c6930b923b9e9b634",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-stewardship-destination.png",
+      "sha256": "0f02cb605115bb9fbff30a9c3f3ba87dcc1e16590e5ce5f104ee32e4124baf0d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mastery-stewardship.png",
+      "sha256": "b5129a8f375b5b13347f0429f49c66a1776ffe528fd4df2d7bca03f8a7303e1d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mobile-news-destination.png",
+      "sha256": "ee5001ff1da37cd136eae5e04e1fae28e48fc24535076fe527b6ba2d553cdbdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-dark-mobile-news.png",
+      "sha256": "254b0179f00f4f070f04f20d5abd8da54260a628cb84ee5bc3385efa5fc7e826",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-desktop-news-destination.png",
+      "sha256": "7b6936988c20cbc0b5cd7b1e4aca679b5ccbd49ab527f2f7befc2f58b8609660",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-desktop-news.png",
+      "sha256": "2ac3ae10f07f25d7dd3188a225aea4113b264f58459b34f870c01c3553618993",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-identity-destination.png",
+      "sha256": "637d978de86a1c2fe38037126e9892945bc390fb7195394de2472f6d235d9653",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-identity-reload-destination.png",
+      "sha256": "a48cee715da61b653dd1b24ee63fe66a3612eddfddc2b3ccf1bf6b04eb1b6a4f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-identity.png",
+      "sha256": "9dee49931a191d09ffec8bfeff3b91821fe584067931cf0f75a22def662e7a80",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-promise-destination.png",
+      "sha256": "1e0b7592bffd106d4458e5bbdbbb082fdce5200d876b589b024c4b3afd8b66f5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-promise.png",
+      "sha256": "a3488ecbf39212f21e7df8965b982d18cb4358634a58dcd0c87cf11ae71eec2e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-results-destination.png",
+      "sha256": "3bf949097a4559de13527a449fde64909fc8936c3019627db6a1c43ecaee1791",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-results.png",
+      "sha256": "9e6c970d8da0e7787599f82a5adefa150bdea72e63290d1d58f991bdd537c731",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-stewardship-destination.png",
+      "sha256": "551989bb178e8b15d1e787dbd3dd1408872ab93a878910792a917f4af83a9ef3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mastery-stewardship.png",
+      "sha256": "8919dd5bf69b95708f0934d0025f7ee76ace8c9767d0fe7a4c34b27ce1b59b96",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mobile-news-destination.png",
+      "sha256": "054310349d0c345b052e4a2469788b621dd22f29f0173faa863e206dab7c5426",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-desktop-light-mobile-news.png",
+      "sha256": "67c197a75e2f4494575add3de7e1f21e8b880e8bf0417f9d92843f91ed5e73d8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-desktop-news-destination.png",
+      "sha256": "7980e913eb8983dccf2d7ff6d95f5fc22e89d7e6d6f8e9ab971aa25eb281ee4d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-desktop-news.png",
+      "sha256": "5fe92f09cb18a0d6bbe4a47aa20955ff2f6fd91743738bca629dd7656b3cf86d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-identity-destination.png",
+      "sha256": "8df42157ad7c1aa235821de8640938cc397598f702d90362dcdfc364a4a73cc4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-identity-reload-destination.png",
+      "sha256": "1641142544c6d5f435aa2004778201787e442754df97daf13be9125a69dc01a4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-identity.png",
+      "sha256": "b549a337f1a3851fa21b2a8f4ec4fc970cc7d4492d63a24c0a703e651b425408",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-promise-destination.png",
+      "sha256": "e566e91432fb8c800b8530084ad6ccd86bd81c8f6f9921093c8d3b1da50a001d",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-promise.png",
+      "sha256": "811d6d0ad8b762a701c34dbd3fdd5bc759ef514b1633199fe43ddaa75aa4f13f",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-results-destination.png",
+      "sha256": "91f8d70ae0e0f6cbf419b62861f0e1b6a312709a9dc768b060c3c29e64289230",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-results.png",
+      "sha256": "d0c7a5540744f05be48c2faaa1485226712c2a5790dc51472654fe09c69bdc4b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-stewardship-destination.png",
+      "sha256": "1a91896b665b74c0f5fefb322823e13efe8e50860b99da71ad57b111d1b1c132",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mastery-stewardship.png",
+      "sha256": "a26c1b984719d3ecba0d574877fe38cc0b4f10977f7938cde6fecb75a27f8998",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mobile-news-destination.png",
+      "sha256": "8530daa19a5b6734050e777502a22c8c02b4d5e915b71342cd16f3720d41f8e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-dark-mobile-news.png",
+      "sha256": "1438d7404c837ff246865dfce0a86b8ee9d39e5782b0974882ec83a7c125f7e3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-desktop-news-destination.png",
+      "sha256": "81dc36fba4d4241ed884fcad51c026b7422e89a13d8ef5a8e5df82e886ca7abf",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-desktop-news.png",
+      "sha256": "90667747cd64881a408251e58fde4994890af426f18e4beb38d4b78a8a06f3e8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-identity-destination.png",
+      "sha256": "35ac969eb97df40c368611dbd956451f31fb57b22a837481f46c57311bb8b6b4",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-identity-reload-destination.png",
+      "sha256": "7f237f00423394afcf35f0e6061bd68b909e3d438d52ed3cc1f2120cf46d3ec1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-reload-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-identity.png",
+      "sha256": "3c68db511b1e03b0ba1db785715a9d833c187756a45c2fea5d5afa86bf903885",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-promise-destination.png",
+      "sha256": "3005213b300b5ba0eab9824a253c9e5f3d7e6099722af7302d01e20aee6d2630",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-promise.png",
+      "sha256": "db98b23819d40ea3fd31ed156078ffe059d134dc329884a0d7bb8a4a73ea45dd",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-results-destination.png",
+      "sha256": "961cbf809f16fdbceb01110876e763f3b46ef8b9c8aa6508cd46415835b15f85",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-results.png",
+      "sha256": "efd7745d902c0a5dc2fc1cfb487473e2da3bcf9100d7f9775037282e0ddd70bc",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-stewardship-destination.png",
+      "sha256": "cd12e106bacdb1a589a346ca4108a5e9344a254860eaa89640337d4e21892ee3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mastery-stewardship.png",
+      "sha256": "5c2696928f3ccc2081cbdff6b1dde531424d649ea435bdfec9f4f38ee94b9302",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mobile-news-destination.png",
+      "sha256": "df0c1dcbcc99d8b00a904846f6cfc3d3b770d5344c5bbc8d256c4f3d469a166d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news-destination",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-staging-v5-mobile-light-mobile-news.png",
+      "sha256": "1c7e5660492fc866582f5e01a5523917fc875d4090a4161ffca2ee8e125f28d2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news",
+      "kind": "hosted-staging",
+      "phase": "staging-v5",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-desktop-news-destination.png",
+      "sha256": "0d0d28e0ad97acab642e2c32a22fd85030691c640d4314ad36e58e2d972b2cdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-desktop-news.png",
+      "sha256": "b9a2f42c1d555f357e62c0004247d2a27e53869cbeb28ba91f642d71986c2a14",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-desktop-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-identity-destination.png",
+      "sha256": "02344917773510e2f8153983f4bff34f5a14edeb7953ab5979bd0b0273ad71b0",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-identity-reload-destination.png",
+      "sha256": "8d2cc61cc89ed21f5fe61f8bcddc23cc3d5944df67faeec98dfecd0270bd80fa",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity-reload-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-identity.png",
+      "sha256": "f157b79347482c5f5cdf847ef15daab6b952a38990d08f2dd8af017c4c1d7e15",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-identity",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-promise-destination.png",
+      "sha256": "d8295b9891be6342b623113f8d6e1104a3f0c8e0dd4f17e98e7d3cd2ce05727c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-promise.png",
+      "sha256": "7d605d152e6a653c281b0eae73e35973a7a87c51ed9bbde75ac4024cd48481ed",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-promise",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-results-destination.png",
+      "sha256": "1f2d2b2bf44ba0eea5b58e00882120b3d5d32010c9568c92ff6f1a05fb0f1216",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-results.png",
+      "sha256": "7dae8b5e92dedc5bee382733d0e0b0c7a7bfd999a83dd29ec9459de242bd2c1f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-results",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-stewardship-destination.png",
+      "sha256": "0f02cb605115bb9fbff30a9c3f3ba87dcc1e16590e5ce5f104ee32e4124baf0d",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mastery-stewardship.png",
+      "sha256": "ba40291d1058f5934aa3c8be370d56e857a45b1a06ad1dd735144cbf6ae8aa7b",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mastery-stewardship",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mobile-news-destination.png",
+      "sha256": "ee5001ff1da37cd136eae5e04e1fae28e48fc24535076fe527b6ba2d553cdbdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-dark-mobile-news.png",
+      "sha256": "254b0179f00f4f070f04f20d5abd8da54260a628cb84ee5bc3385efa5fc7e826",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-dark-mobile-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-desktop-news-destination.png",
+      "sha256": "cda2655842fa310298473fcc828bd01fe0146ec205e0720b0cb9a46db962c14d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-desktop-news.png",
+      "sha256": "6764169c2e78382b4f68af9fd700c76d3b3a1bd860b4631f721c2971b27b81c3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-desktop-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-identity-destination.png",
+      "sha256": "637d978de86a1c2fe38037126e9892945bc390fb7195394de2472f6d235d9653",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-identity-reload-destination.png",
+      "sha256": "a48cee715da61b653dd1b24ee63fe66a3612eddfddc2b3ccf1bf6b04eb1b6a4f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity-reload-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-identity.png",
+      "sha256": "ea0b7799a22433b0a4dfbc3c0b9be31a37435e1edd5c87f7a3ef1e6907e22c61",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-identity",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-promise-destination.png",
+      "sha256": "3f1be554368e4a77d6e93c46ee42d17ac1777129f36630d8d0658af093c62074",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-promise.png",
+      "sha256": "52cfa5eff789d4fdc9e92883e2f890632f08f8f7e3dcdc0a5bd25b2e5880d00e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-promise",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-results-destination.png",
+      "sha256": "3bf949097a4559de13527a449fde64909fc8936c3019627db6a1c43ecaee1791",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-results.png",
+      "sha256": "45e905318ae3622e3bdce4f0f6868f857146bc5cc79aae01c30908721a8cefb6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-results",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-stewardship-destination.png",
+      "sha256": "2a5b556c0166bb07cc3f53570a64209318794ebe61acfa31a9d6f3913f236a4b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mastery-stewardship.png",
+      "sha256": "11d48bc92176b47d7e51d13291e7b3654fe2ea909967af8f4a118fe9dc5f84a1",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mastery-stewardship",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mobile-news-destination.png",
+      "sha256": "054310349d0c345b052e4a2469788b621dd22f29f0173faa863e206dab7c5426",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-desktop-light-mobile-news.png",
+      "sha256": "67c197a75e2f4494575add3de7e1f21e8b880e8bf0417f9d92843f91ed5e73d8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "desktop-light-mobile-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-desktop-news-destination.png",
+      "sha256": "e38a545384bc843146272b28dae6c32b4094199d3b2cb1e532e75f20d1c06726",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-desktop-news.png",
+      "sha256": "160c9cc4b1bac9c824a6f22e8e227588ae23781f97b50d765ed0fd36841c7686",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-desktop-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-identity-destination.png",
+      "sha256": "8df42157ad7c1aa235821de8640938cc397598f702d90362dcdfc364a4a73cc4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-identity-reload-destination.png",
+      "sha256": "1641142544c6d5f435aa2004778201787e442754df97daf13be9125a69dc01a4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity-reload-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-identity.png",
+      "sha256": "8c5cd10eee69daad52701e60f31715385e0594143f21d06e08064871e492e506",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-identity",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-promise-destination.png",
+      "sha256": "c7309e4f59f5d303cd8176563e2804070f11ffd27ee3430cde546033080a524b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-promise.png",
+      "sha256": "4608dc6634da062f110e748272042ffaad551bb7c525cd4f9986286ac889d0df",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-promise",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-results-destination.png",
+      "sha256": "88629fc955bb2f23da8bbacc8c6bd1420af7bf39cbaa892992b35667b0c4c82e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-results.png",
+      "sha256": "a24314b3755298c5e279ceaf1baf1c3d7f0f1da37020aeccfe885cf2295cb2e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-results",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-stewardship-destination.png",
+      "sha256": "1a91896b665b74c0f5fefb322823e13efe8e50860b99da71ad57b111d1b1c132",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mastery-stewardship.png",
+      "sha256": "97ae8285be7852d87bc02e72a8926c714a7e1f7e7a975baa61d5f7d81a8b1c41",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mastery-stewardship",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mobile-news-destination.png",
+      "sha256": "8530daa19a5b6734050e777502a22c8c02b4d5e915b71342cd16f3720d41f8e0",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-dark-mobile-news.png",
+      "sha256": "8455e29e016e4de712673296e825fe204e01e8df80d443ef02cbdeb27f086e40",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-dark-mobile-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-desktop-news-destination.png",
+      "sha256": "55f12aeb51aecaf9c4987e63440056fbd7cd71d3a9d3a363dc134879ce971d6c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-desktop-news.png",
+      "sha256": "7d4c25bba6314153b3f64e583225f225cd3194ad9cc948c69b1557d6d1523697",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-desktop-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-identity-destination.png",
+      "sha256": "c66c98860e0059b52aee3e619efe461ea4627fa581cb95c3fcf58f999f592f59",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-identity-reload-destination.png",
+      "sha256": "7f237f00423394afcf35f0e6061bd68b909e3d438d52ed3cc1f2120cf46d3ec1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity-reload-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-identity.png",
+      "sha256": "76154cbc81919220752e41109878ab578799e22513d6193a70d0ed5f28ead9bc",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-identity",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-promise-destination.png",
+      "sha256": "da553a9c1d96c38de7197572453a9c90c866962d9f7bfb717426d781c49e22d5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-promise.png",
+      "sha256": "c0e49619f44b7f873cd55f68b7d3879ac036823c6c6234348c162968fa162bb9",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-promise",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-results-destination.png",
+      "sha256": "961cbf809f16fdbceb01110876e763f3b46ef8b9c8aa6508cd46415835b15f85",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-results.png",
+      "sha256": "252993a485a7d702bb646a81a1feb936792bf550f54dfeb3dc66cb1a8c5ec773",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-results",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-stewardship-destination.png",
+      "sha256": "cd12e106bacdb1a589a346ca4108a5e9344a254860eaa89640337d4e21892ee3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mastery-stewardship.png",
+      "sha256": "5c2696928f3ccc2081cbdff6b1dde531424d649ea435bdfec9f4f38ee94b9302",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mastery-stewardship",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mobile-news-destination.png",
+      "sha256": "df0c1dcbcc99d8b00a904846f6cfc3d3b770d5344c5bbc8d256c4f3d469a166d",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news-destination",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-nav-production-mobile-light-mobile-news.png",
+      "sha256": "aa34bce11a4a0c7a597ccb7a12c831129c9a5ecf2c765344f354016420cf3854",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "mobile-light-mobile-news",
+      "kind": "hosted-production",
+      "phase": "production",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+    },
+    {
+      "file": "s122-status-before-desktop-dark.png",
+      "sha256": "75865833fbf2def16acde50ab516d7e6758c483f551ca3fbec397f01b3cc4056",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline",
+      "page": "status release note before desktop dark",
+      "kind": "before"
+    },
+    {
+      "file": "s122-status-before-desktop-light.png",
+      "sha256": "24abb0edd83abc8a12c0bc6bbb6f82635e3e81474f4f882289571d159964bb2b",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline",
+      "page": "status release note before desktop light",
+      "kind": "before"
+    },
+    {
+      "file": "s122-status-before-mobile-dark.png",
+      "sha256": "69923ee788d7c78157c4d8260d6fc412d21606fca1b14217975bbb4891472ebb",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline",
+      "page": "status release note before mobile dark",
+      "kind": "before"
+    },
+    {
+      "file": "s122-status-before-mobile-light.png",
+      "sha256": "fdf43f3033ba1372adb0e5ed435f94e4450f4adc0ee6539a61ab53176069d015",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceKind": "committed-baseline",
+      "page": "status release note before mobile light",
+      "kind": "before"
+    },
+    {
+      "file": "s122-status-after-desktop-dark.png",
+      "sha256": "67bd1355821eac42336a3445cc4a667771d962f996925458f00883dee645917d",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note",
+      "page": "status release note after desktop dark",
+      "kind": "after"
+    },
+    {
+      "file": "s122-status-after-desktop-light.png",
+      "sha256": "80004d09066e2b2db9b7bd50cb51d94515d28cd023736d8346a462aa5857b231",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note",
+      "page": "status release note after desktop light",
+      "kind": "after"
+    },
+    {
+      "file": "s122-status-after-mobile-dark.png",
+      "sha256": "ebaa9a18beac6499f55c30edf36a23b7e0c0d7b3f53a9e67ec6c60e032a0e960",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note",
+      "page": "status release note after mobile dark",
+      "kind": "after"
+    },
+    {
+      "file": "s122-status-after-mobile-light.png",
+      "sha256": "2b36f1f77f6ac791a9ae3437003aecc8889f9ff76674e98d8af1cde889040b30",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sourceFileSha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null,
+      "sourceKind": "proposed-worktree-status-note",
+      "page": "status release note after mobile light",
+      "kind": "after"
     }
   ],
   "inspection": {
+    "reviewer": "review_navigation",
+    "renderedPixelsReviewed": true,
+    "reviewed": 8,
+    "verdict": "pass",
+    "blockingDefectsOpen": 0,
+    "method": "Viewed all eight individual actual Chrome screenshots using view_image. At1440x1000 and390x844, both dark/light: date/title and both new paragraphs are fully readable, wrap within unchanged cards and show no horizontal overflow or clipped text. Before captures preserve prior latest note; after captures show new2026-10-25 note. Existing styles retained. Existing 336 captures and original inspection are preserved verbatim in the content-addressed prior receipt; their earlier review is not relabeled as a new review.",
+    "findings": [],
+    "fixesApplied": [
+      "Added the dated player-facing release note for the shipped navigation repairs."
+    ]
+  },
+  "priorSourceFiles": [
+    {
+      "path": "src/engine/architectFocusReview.js",
+      "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
+    },
+    {
+      "path": "public/lib/franchiseCommandCenter.js",
+      "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
+    },
+    {
+      "path": "public/lib/mobileLoop.js",
+      "sha256": "0d26e11f2a7e37d5bd89fca9c56fd6a571a2f58fcdc9a426aecef41fed7b8344"
+    },
+    {
+      "path": "public/lib/gameplayNavigation.js",
+      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    }
+  ],
+  "artifactFingerprint": null,
+  "priorInspection": {
     "renderedPixelsReviewed": true,
     "reviewer": "audit_game independent rendered-pixel inspection",
-    "method": "Prior captures and original inspection metadata preserved through content-addressed history. Current phase independently reviewed: Inspected all52 actual staging-v4 PNGs using view_image across seven contact sheets, then four full-resolution checks: mobile-light stewardship action, mobile-dark League news destination, desktop-light Contracts destination and mobile-dark identity reload destination. Checked both themes at desktop1440/mobile390, concise action labels fitting cards, correctly rendered destinations, persistent identity review after reload, readable changed controls, no blank or mid-scroll destination captures and no page-wide shift like the original baseline. No changed-surface defects found. These are rendered synthetic journeys, not evidence of actual-user engagement or physical-device performance.",
+    "method": "Prior captures and original inspection metadata preserved through content-addressed history. Current phase independently reviewed: Inspected all52 actual fresh staging-v5 PNGs using view_image across seven contact sheets and four full-resolution spots: mobile-light stewardship action, mobile-dark League news destination, desktop-light Contracts destination and mobile-dark identity reload destination. Checked dark/light desktop1440/mobile390 states, readable concise action labels fitting phone cards, rendered Contracts and League destinations, retained identity review after actual reload, and absence of blank or mid-scroll destination images. No defects found in changed surfaces. This phase-specific review preserves previous source labels and proves rendered synthetic journeys only, not actual-user engagement or physical-device performance.",
     "findings": [
       "Before: invalid tabs/targets stranded all focus actions; League news was in a different tab.",
       "Before: long focus labels spilled beyond phone cards.",
@@ -2961,28 +4478,29 @@
         "captures": 52,
         "reviewedAt": "2026-10-24T20:35:14.146233Z",
         "reviewer": "audit_game independent rendered-pixel inspection"
+      },
+      {
+        "phase": "staging-v5",
+        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+        "review": {
+          "path": "reports/s122-staging-v5-visual-review.json",
+          "sha256": "48cb1699ec3bdb42dbfde8221d0d837ef33a2719619a375a2baf8fac995a3008"
+        },
+        "browser": {
+          "path": "reports/s122-staging-v5-browser.json",
+          "sha256": "8fb2137b68431dcb317bf12748c6e13b417ce36cf04f9141168c2a1919dc9198"
+        },
+        "captures": 52,
+        "reviewedAt": "2026-10-24T21:35:26.840507Z",
+        "reviewer": "audit_game independent rendered-pixel inspection"
       }
     ]
   },
-  "priorSourceFiles": [
-    {
-      "path": "src/engine/architectFocusReview.js",
-      "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
-    },
-    {
-      "path": "public/lib/franchiseCommandCenter.js",
-      "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
-    },
-    {
-      "path": "public/lib/mobileLoop.js",
-      "sha256": "3d514e43d902a0a50c745fedd7c400300a31da8655b24526042c345dbdf33d33"
-    },
-    {
-      "path": "public/lib/gameplayNavigation.js",
-      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
-    }
-  ],
-  "artifactFingerprint": {
+  "priorReceipt": {
+    "path": "reports/s122-evidence-history/LATEST-8d60e0e86e231837356461bf772e65fd979a1a027142c46e06b00f893e54258e.json",
+    "sha256": "8d60e0e86e231837356461bf772e65fd979a1a027142c46e06b00f893e54258e"
+  },
+  "priorArtifactFingerprint": {
     "algorithm": "sha256",
     "digest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
     "files": 361,
@@ -2990,38 +4508,6 @@
       "_health",
       "deploy-manifest.json",
       "edge-policy-receipt.json"
-    ]
-  },
-  "priorInspection": {
-    "renderedPixelsReviewed": true,
-    "reviewer": "audit_game independent rendered-pixel inspection",
-    "method": "Prior captures and original inspection metadata preserved through content-addressed history. Current phase independently reviewed: Inspected every one of the52 actual staging-v3 PNGs through seven contact sheets using view_image, then inspected full-resolution mobile-light mastery stewardship, mobile-dark League news destination, desktop-light Contracts destination and mobile-dark persisted identity reload. Checked dark/light desktop/mobile control readability, concise labels fitting phone cards, correctly rendered Contracts/League destinations, retained identity review state after reload and absence of blank or mid-scroll captures. No defects found in the changed surfaces. This review proves rendered synthetic journeys only; it does not prove real-user engagement or physical-device performance.",
-    "findings": [
-      "Before: invalid tabs/targets stranded all focus actions; League news was in a different tab.",
-      "Before: long focus labels spilled beyond phone cards.",
-      "After: destinations are active, visible and focused; concise labels fit without horizontal shifting in both themes."
-    ],
-    "fixesApplied": [
-      "Correct engine focus destinations and labels.",
-      "Share leagueNews route between full and mobile pulse builders."
-    ],
-    "blockingDefectsOpen": 0,
-    "phaseReviews": [
-      {
-        "phase": "staging-v3",
-        "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
-        "review": {
-          "path": "reports/s122-staging-v3-visual-review.json",
-          "sha256": "fb1ad29e741f8799b45a3b71c6d0e03fc5893b9dbca12a1a041b4436e39c1dd1"
-        },
-        "browser": {
-          "path": "reports/s122-staging-v3-browser.json",
-          "sha256": "caa8e3b0bbaf4dc2edaaa54d66cae8a06e48022439e69fa46c0e7bc083b8843c"
-        },
-        "captures": 52,
-        "reviewedAt": "2026-10-24T20:09:07.363806Z",
-        "reviewer": "audit_game independent rendered-pixel inspection"
-      }
     ]
   }
 }

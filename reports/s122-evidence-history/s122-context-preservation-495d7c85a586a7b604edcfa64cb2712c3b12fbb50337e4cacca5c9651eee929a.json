@@ -1,0 +1,52 @@
+{
+  "session": 122,
+  "at": "2026-10-25T01:16:48.637Z",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "nativeContextGuard": {
+    "ok": false,
+    "findings": [
+      {
+        "file": "context/PROJECT_STATUS.json",
+        "issue": "content-wipe",
+        "ratio": 0.40256269578606446
+      }
+    ]
+  },
+  "appendOnlyLedgers": [
+    {
+      "file": "context/DECISIONS.md",
+      "canonicalArchiveAwareProof": true,
+      "archive": {
+        "path": "context/archive/DECISIONS_S112-S112.md",
+        "sha256": "c8084b7da6e1df1d187c1c7027628da89b66f45339c6438ddc72a36cd5d02146"
+      }
+    },
+    {
+      "file": "context/SELF_IMPROVEMENT_LOOP.md",
+      "canonicalArchiveAwareProof": true,
+      "archive": {
+        "path": "context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md",
+        "sha256": "6c38a702e635d91a194f4df0381b4218da0411dc9eae5f31ff43aa6f62ffc21e"
+      }
+    }
+  ],
+  "workLog": {
+    "priorBodyPreserved": true,
+    "scope": "Restored full previous live body and appended only S122. Existing verbatim archive copies remain available."
+  },
+  "statusCompaction": {
+    "declaredFalsePositive": true,
+    "reason": "Canonical fresh projections replaced large duplicated prior inventories/verification objects. Full prior status is preserved byte-for-byte; current schema, SIL invariant, exact staging/release authority and doctor are verified. The native size threshold is unchanged.",
+    "priorSnapshot": {
+      "path": "reports/s122-evidence-history/project-status-before-S122-closeout-bf32ca9af9c43dfad301454503ae4327e0d040135e5c7f0433dcce8317d70946.json",
+      "sha256": "bf32ca9af9c43dfad301454503ae4327e0d040135e5c7f0433dcce8317d70946"
+    },
+    "allPriorTopLevelKeysRetainedOrExplicitlyMoved": true,
+    "movedKeys": [],
+    "currentSchemaValid": true,
+    "currentSilInvariantValid": true,
+    "currentSource": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+  },
+  "effectiveContextPreserved": true,
+  "limits": "Native JSON size heuristic still reports a finding; this explicitly documented false positive is supported by preserved bytes and current canonical semantic checks. No detector threshold changed."
+}

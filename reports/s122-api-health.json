@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "observedAt": "2026-10-25T00:40:14.218Z",
+  "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "verified": true,
+  "database": "ready",
+  "httpStatus": 200,
+  "health": {
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 1,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+  }
+}

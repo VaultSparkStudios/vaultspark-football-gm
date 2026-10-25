@@ -1,0 +1,55 @@
+{
+  "session": 122,
+  "at": "2026-10-25T00:38:30.564Z",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "phase": "production",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "files": 361,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "passed": 4,
+  "total": 4,
+  "captures": 52,
+  "reviewed": true,
+  "reviewer": "audit_game independent rendered-pixel inspection",
+  "review": {
+    "path": "reports/s122-production-review.json",
+    "sha256": "22b433873a6b2fd542634fa735e39a659dab09a74407ea3d859753a6de965e53"
+  },
+  "browser": {
+    "path": "reports/s122-production-browser.json",
+    "sha256": "02dd86a110f743da606144a08ab74c5b731dc317f3a5f75552e3d55428505e6e"
+  },
+  "provenance": {
+    "path": "reports/s122-production-provenance.json",
+    "sha256": "2cee324e7bf9b007ee05b67c55ddc7de6068de0886dc7395b4b66cc52bbed45d"
+  },
+  "workflow": {
+    "path": "reports/s122-production-workflow-observation.json",
+    "sha256": "790e0e558d016e53dfd264bc90ac8082cb9e4b9aa0e05db1b9400ddca0ab3b2b"
+  },
+  "ledger": {
+    "added": 52,
+    "revised": 0,
+    "total": 5653,
+    "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+  },
+  "receipt": "docs/visual-qa/LATEST.json",
+  "priorReceipts": {
+    "docs/visual-qa/LATEST.json": {
+      "path": "reports/s122-evidence-history/LATEST-10a32348fa07357ea6eb0e5fbb5d979c89b980bb9af12249f0dc3bfbb6f0aa5b.json",
+      "sha256": "10a32348fa07357ea6eb0e5fbb5d979c89b980bb9af12249f0dc3bfbb6f0aa5b"
+    },
+    "docs/visual-qa/CAPTURE_LEDGER.json": {
+      "path": "reports/s122-evidence-history/CAPTURE_LEDGER-b464ee8d138e974497b249f0905f9166c5d2b6a34dc39ac26836275f29a1edd6.json",
+      "sha256": "b464ee8d138e974497b249f0905f9166c5d2b6a34dc39ac26836275f29a1edd6"
+    }
+  },
+  "limits": "Actual source-specific production synthetic journeys only; backend, whole-suite, physical-device, actual-user and public launch acceptance remain separate."
+}

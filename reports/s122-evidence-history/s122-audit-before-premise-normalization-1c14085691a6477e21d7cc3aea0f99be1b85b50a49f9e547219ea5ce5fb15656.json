@@ -1,0 +1,617 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-24",
+  "session": 122,
+  "source": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "S122 fresh arc: repair decision navigation and evidence summaries",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "fresh source and independent game-loop review"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "lifecycleProvenance": "Registry franchise-architect-football FORGE/FB verified read-only; local missing ladderStage mirrored without transition. Local skill overlay is medium-only; arc-profile now resolves local fallback FB.",
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 5,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 3,
+    "speed-organization-efficiency": 3,
+    "token-cost": 1.5,
+    "observability-honesty": 3,
+    "sil-debt": 1.5
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "extra-season-loop",
+          "premise": "The game lacks a season loop.",
+          "evidence": "context/GAME_LOOP.md and seasonChapters.js already implement declaration, simulation, review and continuation."
+        },
+        {
+          "slug": "payload-compaction",
+          "premise": "Current saves exceed 16 MB.",
+          "evidence": "S119 measured 15.305 MB; no current over-budget evidence; do not add a migration without a measurement."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "more-pulse-ui",
+          "premise": "No news action exists.",
+          "evidence": "Both desktop and mobile builders render it; the actual defect is its target tab."
+        },
+        {
+          "slug": "league-pulse-destination-resolved",
+          "premise": "The demonstrated destination failure remains.",
+          "evidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        }
+      ]
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-retention-layer",
+          "premise": "No return hook exists.",
+          "evidence": "returnDigest.js records real boundaries and builds source-derived return chapters."
+        },
+        {
+          "slug": "architect-focus-destinations-resolved",
+          "premise": "The demonstrated destination failure remains.",
+          "evidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-ai-advisor",
+          "premise": "An external model is required for advice.",
+          "evidence": "The current local advisor uses real roster/pressure signals without per-user API spend."
+        },
+        {
+          "slug": "invented-causal-credit",
+          "premise": "Focus progression should attribute wins to actions.",
+          "evidence": "architectFocusReview deliberately reports source deltas without causal inference."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "replace-navigation",
+          "premise": "The exact-surface navigator accepts hidden targets.",
+          "evidence": "exactSurfaceNavigation.js rejects wrong-tab and hidden targets; repair callers."
+        },
+        {
+          "slug": "new-account-flow",
+          "premise": "The game requires project-local auth.",
+          "evidence": "Status explicitly has no account flows; Obelisk integration is an independent owned gap."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "install-router-package",
+          "premise": "Routing needs a dependency.",
+          "evidence": "Existing exactSurfaceNavigation and gameplay surface map are reusable."
+        },
+        {
+          "slug": "parallel-full-suites",
+          "premise": "Full suites should run concurrently locally.",
+          "evidence": "Single-terminal Windows discipline and measured multi-hour suite prohibit duplicate heavy spawners."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-brief-generator",
+          "premise": "Startup needs a model call.",
+          "evidence": "render-startup-brief is deterministic and reads local evidence."
+        },
+        {
+          "slug": "rewrite-summaries",
+          "premise": "More memory summaries solve source drift.",
+          "evidence": "The demonstrated issue is stale evidence promotion, not token volume."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "refresh-count-only",
+          "premise": "A fresh timestamp fixes stale totals.",
+          "evidence": "test-receipt digest is stale; do not refresh evidence without execution."
+        },
+        {
+          "slug": "startup-test-evidence-resolved",
+          "premise": "Stale totals still become current counts.",
+          "evidence": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "capture-all-again",
+          "premise": "No canonical captures exist.",
+          "evidence": "S121 has reviewed hashes; this session captures only affected states before/after, plus required release evidence."
+        },
+        {
+          "slug": "market-research",
+          "premise": "Market evidence should be invented from memory.",
+          "evidence": "No local MARKET.json or studio-market skill is available; external market research remains deferred and is not a gameplay prerequisite."
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": 1,
+      "slug": "architect-focus-destinations",
+      "title": "Restore the four Architect Focus follow-up actions",
+      "axis": "gamification-immersion",
+      "tier": "🔥",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 17.71,
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-24T18:05:51.025Z",
+          "status": "shipped",
+          "note": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        },
+        {
+          "at": "2026-10-25T00:40:59.931Z",
+          "status": "shipped",
+          "note": "Selected acceptance and exact technical release verified; canonical closeout publication remains pending."
+        }
+      ],
+      "selectedLevel": "L2",
+      "recipe": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload.",
+      "acceptance": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload.",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "FORGE/FB stabilization: correct demonstrated broken journeys or misleading verification before adding breadth.",
+      "premises": [
+        {
+          "claim": "Live source contains the demonstrated defect for architect-focus-destinations",
+          "adapter": "file-content",
+          "target": "src/engine/architectFocusReview.js",
+          "pattern": "frontOfficeTab",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Correct the demonstrated source value."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload."
+        },
+        "L3": {
+          "effortHours": 4.5,
+          "recipe": "Add exhaustive cross-surface route/evidence migration tooling after a separate measured need."
+        }
+      },
+      "rank": 1,
+      "category": "gamification-immersion",
+      "premise": "Live source contains the demonstrated defect for architect-focus-destinations",
+      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
+    },
+    {
+      "id": 2,
+      "slug": "league-pulse-destination",
+      "title": "Open League news from desktop and mobile pulse cards",
+      "axis": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 15.14,
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-24T18:05:51.025Z",
+          "status": "shipped",
+          "note": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending."
+        },
+        {
+          "at": "2026-10-25T00:40:59.931Z",
+          "status": "shipped",
+          "note": "Selected acceptance and exact technical release verified; canonical closeout publication remains pending."
+        }
+      ],
+      "selectedLevel": "L2",
+      "recipe": "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused.",
+      "acceptance": "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused.",
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "FORGE/FB stabilization: correct demonstrated broken journeys or misleading verification before adding breadth.",
+      "premises": [
+        {
+          "claim": "Live source contains the demonstrated defect for league-pulse-destination",
+          "adapter": "file-content",
+          "target": "public/lib/franchiseCommandCenter.js",
+          "pattern": "targetId: \"newsTable\"",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Correct the demonstrated source value."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Add exhaustive cross-surface route/evidence migration tooling after a separate measured need."
+        }
+      },
+      "rank": 2,
+      "category": "ui-ux-feedback",
+      "premise": "Live source contains the demonstrated defect for league-pulse-destination",
+      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact-candidate hosted release remains pending. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
+    },
+    {
+      "id": 3,
+      "slug": "startup-test-evidence",
+      "title": "Keep stale suite counts out of current startup summaries",
+      "axis": "observability-honesty",
+      "tier": "🔥",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 11.36,
+      "status": "shipped",
+      "shipped": true,
+      "executionLog": [
+        {
+          "at": "2026-10-24T18:00:19.658Z",
+          "status": "shipped",
+          "note": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending."
+        },
+        {
+          "at": "2026-10-25T00:40:59.931Z",
+          "status": "shipped",
+          "note": "Selected acceptance and exact technical release verified; canonical closeout publication remains pending."
+        }
+      ],
+      "selectedLevel": "L2",
+      "recipe": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief.",
+      "acceptance": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief.",
+      "readinessArea": "observability and actionable analytics",
+      "stageRationale": "FORGE/FB stabilization: correct demonstrated broken journeys or misleading verification before adding breadth.",
+      "premises": [
+        {
+          "claim": "Live source contains the demonstrated defect for startup-test-evidence",
+          "adapter": "file-content",
+          "target": "scripts/render-startup-brief.mjs",
+          "pattern": "if (testReceiptInspection.valid)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Correct the demonstrated source value."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Add exhaustive cross-surface route/evidence migration tooling after a separate measured need."
+        }
+      },
+      "rank": 3,
+      "category": "observability-honesty",
+      "premise": "Live source contains the demonstrated defect for startup-test-evidence",
+      "executionEvidence": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Full exact-candidate suite and deployment remain pending. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
+    }
+  ],
+  "totals": {
+    "count": 3,
+    "priority": 44.21,
+    "top3": [
+      "architect-focus-destinations",
+      "league-pulse-destination",
+      "startup-test-evidence"
+    ]
+  },
+  "gameLoopReview": {
+    "scores": {
+      "loopTightness": 7,
+      "progression": 8,
+      "engagement": 8,
+      "retention": 7,
+      "soulFidelity": 8
+    },
+    "evidence": "Independent source review: real weekly composer/season chapters/return digest exist, but focus and pulse links strand the player. Scores are design judgment, not cohort metrics.",
+    "nextMoves": [
+      "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload.",
+      "Use the actual calendarTab/newsTable destination in both pulse builders; click generated full and mobile cards in the browser and prove news is visible and focused.",
+      "Regression-test generated actions in the actual browser, not mirrored constants."
+    ]
+  },
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.313Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Route results, stewardship, promise and identity through real existing decision surfaces. Add a real browser regression proving each generated action activates one tab and focuses its visible destination, including reload."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Use one evidence summary for current test signals and handoff rows: only fresh direct receipts supply current totals; stale counts remain explicitly historical with their date, and last-session checks come from the matching handoff. Prove stale/missing/fresh behavior and render the actual brief."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "partial",
+      "evidence": "S121 exact-source release proof is historical baseline. S122 checks pending; launch email, identity integration, actual-user cohort/capacity/restore proof remain independently incomplete. Corrected candidate: stable staging14/14; hosted four browser variants incl recovery pass;128 total before/local/hosted images reviewed; clean Studio386/386. Five-run staging lab medians: desktop/mobile LCP1224/1008ms, INP24ms, CLS0.0003/0.0131. All other readiness limitations remain; complete seven-job CI, production readback and closeout still pending.",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "observedAt": "2026-10-24T18:42:48.314Z",
+      "owner": "project release owner",
+      "nextAcceptanceCheck": "Verify affected candidate with canonical tests and staging; retain unrelated readiness limits."
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "studio-market",
+      "reason": "MARKET.json absent and skill not installed; research is deferred, no competitor facts invented."
+    }
+  ],
+  "generatedAt": "2026-10-24T17:52:55.097Z",
+  "premiseGate": {
+    "verifiedAt": "2026-10-24T17:53:44.953Z",
+    "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+    "status": "passed",
+    "verified": 3,
+    "contradicted": 0,
+    "unverified": 0,
+    "dirtyImplementationPaths": [],
+    "method": "Project-native strict checkAudit plus read-only admission; local CLI lacks shared --record and timing helper."
+  },
+  "admission": {
+    "checkedAt": "2026-10-24T17:53:44.955Z",
+    "status": "passed",
+    "inputs": [
+      "docs/IMPLEMENT_PLAN.md",
+      ".cache/s122-audit-brief.json",
+      ".cache/s122-plan-brief.json"
+    ],
+    "result": {
+      "ok": true,
+      "errors": []
+    },
+    "rehearsal": "Native tier2-audit-plan-preflight fixtures15/15 PASS."
+  },
+  "status": "selected-outcomes-production-verified-closeout-publication-pending",
+  "releaseAttempts": [
+    {
+      "sha": "f21512d2a5cd86b7d0a2004129940fa61876ead0",
+      "status": "rejected",
+      "evidence": "reports/s122-initial-candidate-failure.json"
+    },
+    {
+      "sha": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "status": "rejected-runtime-history-contract-regression",
+      "staging": "reports/s122-evidence-history/s122-staging-provenance-20169627abe361298a3004ad5ad59ea1ff0cc9ba57119c3d56b0f02ed57546bb.json",
+      "hostedBrowser": "reports/s122-evidence-history/s122-hosted-navigation-f74e105551ba6c45774177bb5675a48bc85f7510d1ab1ad87e40822edb715014.json",
+      "performance": "reports/s122-evidence-history/s122-staging-performance-3c61a0a1095b2889163cc2511661bd0bbd442e05ab709f0f9e6daa12ac4043f6.json",
+      "failure": "reports/s122-runtime-gate-failure.json",
+      "archivedEvidence": [
+        "reports/s122-evidence-history/s122-clean-studio-8e6fa6c50e2f816d57602980ca760d0548c5853ad6eb6ca83e0d98daf4632983.json",
+        "reports/s122-evidence-history/s122-hosted-navigation-f74e105551ba6c45774177bb5675a48bc85f7510d1ab1ad87e40822edb715014.json",
+        "reports/s122-evidence-history/s122-runtime-gate-failure-ab9f94df862cb76b91bd32a50778c075e59b38a2b38be79e2bafc9a1fac5b3d8.json",
+        "reports/s122-evidence-history/s122-staging-deployment-392eaf591b45f6be6bb8bbdf3bafda50a73eb65036d52387cf923b4bbebf956f.json",
+        "reports/s122-evidence-history/s122-staging-performance-3c61a0a1095b2889163cc2511661bd0bbd442e05ab709f0f9e6daa12ac4043f6.json",
+        "reports/s122-evidence-history/s122-staging-provenance-20169627abe361298a3004ad5ad59ea1ff0cc9ba57119c3d56b0f02ed57546bb.json"
+      ]
+    },
+    {
+      "sha": "b2da78a89b5040db5f278709136e163b0f4c55f3",
+      "status": "diagnostic-runner-fix-staging-verified-superseded-before-push",
+      "reason": "Native staging14/14 and hosted4/4 passed; old-source fullruntime diagnostic identified two comment-history assertions. This intermediate candidate did not reach remote main or production.",
+      "stagingDeployment": "fecce26d-3f99-4ad0-b375-dc223b817e0a",
+      "hostedCaptures": 52,
+      "archivedEvidence": [
+        "reports/s122-evidence-history/s122-hosted-navigation-e3f6e143c23111d861e36dc7435c0e4ac934f478aaa0b4823137787305651888.json",
+        "reports/s122-evidence-history/s122-staging-deployment-6b602f00619ba3986b0c4a5afe5ffee9348cf29a5d5c002c69261109dce82cae.json",
+        "reports/s122-evidence-history/s122-staging-provenance-a85b3be847cc4215e6e4b8494cccdbf8b409172bbd2d18a47b87deed10b86346.json",
+        "reports/s122-evidence-history/s122-staging-transport-ba487ed40a0bcceb2e7d275c90250dee7b9566fc9f1b00c6636c6da36987981e.json",
+        "reports/s122-evidence-history/s122-staging-v3-browser-caa8e3b0bbaf4dc2edaaa54d66cae8a06e48022439e69fa46c0e7bc083b8843c.json",
+        "reports/s122-evidence-history/s122-staging-v3-visual-review-fb1ad29e741f8799b45a3b71c6d0e03fc5893b9dbca12a1a041b4436e39c1dd1.json"
+      ]
+    },
+    {
+      "sha": "26616ed93079de686d13da150e4e6d7ddf581036",
+      "status": "rejected-candidate",
+      "failure": "reports/s122-studio-gate-failure.json",
+      "stagingDeployment": "b4a4ba4c-c533-487c-9606-550f25e5f26a",
+      "hostedPassed": 4,
+      "reviewedCaptures": 52,
+      "stagingPerformance": "verified after preserved failed-series diagnosis and one registered confirmation",
+      "archivedEvidence": [
+        "reports/s122-evidence-history/s122-hosted-navigation-590144b253ff2d557da5fc980039320b8c63285b58a2e171c6b9120fbf57d106.json",
+        "reports/s122-evidence-history/s122-performance-control-26616-f5ef50ad8c3f94c87046e3e5a958f2db55625fb76f5710e5b264ca323a454908.json",
+        "reports/s122-evidence-history/s122-staging-deployment-078e5fddc5931cd630d1a92cb6635ef28a0785c846942339f166c852f1de39df.json",
+        "reports/s122-evidence-history/s122-staging-performance-confirmation-0b6f8ffa4f334535984957e0028c3fe6dfe31db05d3e4a38a327692ad0682aee.json",
+        "reports/s122-evidence-history/s122-staging-performance-0b6f8ffa4f334535984957e0028c3fe6dfe31db05d3e4a38a327692ad0682aee.json",
+        "reports/s122-evidence-history/s122-staging-provenance-d6357f522a13bda8249d75c0018a278126c204ae4b8c82d2070d9a97bbc669a8.json",
+        "reports/s122-evidence-history/s122-staging-transport-4639eaa2005a6c30d762f959c264ef941620bd53528b71f9c6c642f6ad967c90.json",
+        "reports/s122-evidence-history/s122-staging-v4-browser-d10d7de12731601446dabf976733da52294b4d4afae5a114577dfec00ab660a5.json",
+        "reports/s122-evidence-history/s122-staging-v4-visual-review-19565e8ab6cf36c264f575016029179d9302bf2d967cf079cba932411ee2ac1d.json",
+        "reports/s122-evidence-history/s122-studio-gate-failure-3ac4f09ecbb43ca65db65efccc53306ad6619e178ca55b8f8db763191da9805d.json"
+      ]
+    },
+    {
+      "sha": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "status": "failed-release-gate",
+      "ciRun": 40121101320,
+      "backendRun": 40121131146,
+      "evidence": "reports/s122-runtime-gate-failure.json"
+    },
+    {
+      "sha": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "status": "technical-production-verified-closeout-publication-pending",
+      "ciRun": 40135773664,
+      "evidence": "reports/s122-release-acceptance.json",
+      "at": "2026-10-25T00:40:59.931Z"
+    }
+  ],
+  "currentRelease": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+    "ciRun": 40135773664,
+    "backendRun": 40135991113,
+    "acceptance": "reports/s122-release-acceptance.json",
+    "fullGoalComplete": false,
+    "closeoutPublication": "pending-review-push-and-readback"
+  }
+}

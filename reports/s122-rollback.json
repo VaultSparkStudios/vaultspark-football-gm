@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "observedAt": "2026-10-25T00:40:14.218Z",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "verified": true,
+  "frontend": {
+    "previousDeploymentAvailable": true,
+    "previousDeploymentId": "8aeff7a2-de14-4c2c-bedc-2a0ebca1e7cd",
+    "currentDeploymentId": "284deb97-c752-413e-911c-95ef289ef48e"
+  },
+  "backend": {
+    "previousImageAvailable": true,
+    "image": "sha256:10d66ce77f7315ddd09f9925e76ee6c2a95a5eec59974c3bf565fc1e6eedb8c6"
+  },
+  "databasePreserved": true,
+  "routingPreserved": true,
+  "components": {
+    "pages": {
+      "path": "reports/s122-pages-provider.json",
+      "sha256": "4bc23e6f1ff569ccf9d874a6e0e870ceaa869977a11afca27e8b6af4836d7942"
+    },
+    "backend": {
+      "path": "reports/s122-backend-workflow.json",
+      "sha256": "2607032c916a7cd65eaa3b308550545766c2caecae4446e7b62415b5dbfa4505"
+    }
+  }
+}

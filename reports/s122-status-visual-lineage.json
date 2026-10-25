@@ -1,0 +1,16 @@
+{
+  "session": 122,
+  "at": "2026-10-25T02:02:10.676Z",
+  "priorMutablePath": "docs/visual-qa/LATEST.json",
+  "priorSnapshot": {
+    "path": "reports/s122-evidence-history/LATEST-8d60e0e86e231837356461bf772e65fd979a1a027142c46e06b00f893e54258e.json",
+    "sha256": "8d60e0e86e231837356461bf772e65fd979a1a027142c46e06b00f893e54258e"
+  },
+  "currentReceipt": {
+    "path": "docs/visual-qa/LATEST.json",
+    "sha256": "ee610b4af3485131cd8de8cb983c6875ee16b24835ff017d4714eceed6a16d66"
+  },
+  "newCaptures": 8,
+  "preservedCaptures": 336,
+  "scope": "LATEST is a mutable evidence pointer. The previous BD60 release acceptance retains its original recorded path/hash; that historical object resolves through this exact archived snapshot. Existing admitted reports are unchanged and are not claimed to certify the additional status source."
+}

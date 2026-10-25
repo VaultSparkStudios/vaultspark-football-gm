@@ -2,6 +2,25 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/TASK_BOARD.md` for the working set.
 
+## Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there (2026-09-14)
+
+- [x] **Front Office Advisor** — deterministic, packet-cited, scored at the weekly commit into a descriptive tally; lazy island on the Desk. L3 (user-keyed model voice) deliberately unshipped: zero project token spend is the contract.
+- [x] **Rival personas are causal at the trade seam** — `evaluateTradeValue` with archetype tolerance, age horizon, need premium/surplus discount and rationale; CPU clubs only; stream invariance asserted.
+- [x] **First Season Contract** — five objectives, three from actions and two from the dashboard at season close; collapses after week 6; fires one achievement.
+- [x] **Moment cards** on trophies, epilogue, development report and first-round reveal, with the challenge code.
+- [x] **Worker-hosted runtime** — module Worker with a storage mirror, in-page fallback with a diagnostic, byte-equal contract through both transports; long-task ceiling 1,000 ms is the gate, wall-clock 750 ms the bound.
+- [x] **Token sweep and crests** — zero hex outside token blocks; `teamCrest.js` in the Desk spotlight. Icon sprite not shipped.
+- [x] **Showcase League** on the stats page (committed JSON; the ten-season run took 26 minutes under load).
+- [x] **Desk and League** — Overview split; tab ids unchanged; League hydrates news, analytics and sim jobs. Six-group drawer and Depth Chart merge not shipped.
+- [x] **Public chrome** — one header, footer and theme toggle from the manifest on every page; two inert toggles repaired; About + FAQ; press kit; status archive; sitemap comment stripped; legacy-tier count gated; cover.png lossless 445 → 378 KB.
+- [x] **Dev CORS fails closed**; parity gate reads `devCors.js`.
+- [x] **Audit-lane cache** L1 — `docs/audit-lanes/` with the SHA described and the delta command for S110.
+- [x] **Live standings** — `latestStandings` read the season-end archive, so year one showed "No rows" and later years last season's table; one shared `teamSeasonRow` now serves both.
+- [x] **Icon sprite and six-group phone drawer** shipped in S110; S111 added one Team destination with Roster/Depth submodes.
+- [x] **CPU–CPU trade market** shipped in S111 with a matched seeded three-season transaction control.
+- [ ] **Alias mounts** (eight copies, 33.7 MB) wait on the Studio host contract before any alias becomes a 301.
+- [ ] Never write a count premise as `[\s\S]*?){n}`; the checker hung twenty minutes when the fix made n unreachable. Use a non-overlapping separator.
+
 ## Session 108 — Full arc: the question answered first, the roll's remedy revived, and the offseason's verdict shown (2026-09-14)
 
 - [x] **State elite density's declared-population question before any code, and answer it.** The ceiling stays position-blind because the anchor's total (26 of 1,696) is; composition is published on the receipt, never gated. Seats by room declared in the baseline (24 allocable of 26, two returner/special-teamer seats named unallocable); `activeRosterRooms` on the summary; `buildEliteCompositionReading` on the receipt. Canonical seed: OL 80.6% of the cohort against 20.8% of seats (ratio 3.87), QB 16.7% vs 4.2% (3.98); seed 2026: QB 6.74, OL 3.03; every other room 0–0.26. Room means QB 84.1–84.6 and OL 83.1–83.3 against 76.5–78.2 elsewhere: a position-blind 90 is +1.5–1.7 sd in two rooms and +3.0–4.0 sd in five. No per-room arm, no ceiling moved; a test proves `status` is identical for a proportional and a concentrated cohort.

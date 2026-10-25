@@ -3,69 +3,15 @@
 
 
 <!-- rolling-status-start -->
-Last session: 121 (2026-10-24) | Total: 864/1000 | Velocity: 4 | Debt: ↓
-Avgs — 3: 861 | 5: 815.2 | 10: 826.2 | 25: 907.7 | all: 964.5
+Last session: 122 (2026-10-25) | Total: 485/1000 | Velocity: 3 | Debt: ↓
+Avgs — 3: 737.3 | 5: 781.2 | 10: 794.3 | 25: 887.8 | all: 958.2
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 863 → 864 (+1). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 75 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 864 → 485 (-379). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 76 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
-## 2026-09-30 — Session 112 — Fair trades, durable saves and observed outcomes
+> Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
 
-SIL v3.0: **804 / 1000** (Dev Health 97, Creative Alignment 98, Momentum 94, Engagement 65, Process Quality 78, Cross-Repo Coherence 88, Security Posture 75, Ecosystem Integration 65, Capital Efficiency 50, Automation Coverage 94). Intent outcome: **Achieved for the requested recovery and S112 full arc**; public launch remains HOLD. Scores are engineering judgment; real-cohort engagement remains unmeasured.
-
-Engineering judgment on the ten-category rubric, not ten fresh quantitative measurements. The lower total reflects stricter evidence calibration, integration gaps and session process cost; it does not establish a regression in player experience. Unknown measurements remain unknown rather than fabricated zero-valued observations. Applied after the required final acceptance passed.
-
-- Dev Health: Fresh complete canonical suite and exact-source CI are green, including durable-state, trade and browser regressions. Coverage percentage is not newly measured.
-- Creative Alignment: Whole-package fairness, franchise continuity and observable player decisions support the existing game identity; no new creative direction is inferred.
-- Momentum: Ten audit items and five second-order implementations accepted, with exact-source staging, production, backend and real browser continuity verified.
-- Engagement: Founder feedback incorporated and feedback behavior improved. Actual player cohort, community activity and retention effects remain unmeasured, so engineering tests are not scored as player traction.
-- Process Quality: Recovery and rejected candidates are preserved honestly. Repeated interrupted full runs, stale assertions, missed navigation identity and disabled-state contrast defects incurred substantial avoidable rework.
-- Cross-Repo Coherence: Current canon reconciliation and project-scoped contracts checked. Registry lifecycle disagreement remains visible; full fleet propagation and schema parity are not asserted.
-- Security Posture: Gateway-only credentials, unchanged scanner, scoped public-CSP classification and exact approved action pins. Key rotation age and access-anomaly posture were not freshly measured; this is not a perfect security audit.
-- Ecosystem Integration: Project receipts and technical surfaces are maintained. Public launch remains HOLD, beacon configuration is absent, and live Hub/social consumption is not newly proven.
-- Capital Efficiency: No added paid API use or dependency installation, and bulk checkpoint work moved to the worker. Repeated validation consumed time; cache hit rate, actual session billing, runway and a comparable token-per-outcome trend are unmeasured.
-- Automation Coverage: Implementation and technical delivery are agent-owned with source-bound validation. Explicit approval was needed for the three exact Actions exceptions. External launch requirements remain distinct from engineering completion.
-
-Prior recorded total 938/1000; current 804/1000 (-134). The change includes stricter evidence calibration and process cost, not a measured decline in player experience.
-
-Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt.
-
-Independent review reproduced three defects in the initial persistence draft: an older failed overwrite could erase a newer acknowledged save; rejected metadata deletion could leave a listed but unreadable save; a concurrent read could consume a writer’s failure. Per-slot adapter queues, recoverable deletion and request-owned worker barriers corrected all three. The original reproducer and 60/60 adapter/worker integration checks passed.
-
-The initial full UI run remains 69 passed, 1 failed and 1 intentional skip: its advisor-copy assertion expected the former two-state wording. The deterministic assertion was corrected without relabeling that red run. The first immutable visual candidate passed automated capture gates but actual pixel review found light-theme contrast defects; those defects were corrected and the final artifact was recaptured and reviewed. Superseded source 88a5e006bf0582c8dcba4ddfd84e9516f688de6d retains separate outcomes: general CI run 36747125169 succeeded with 70 browser passes and 1 skip, while Pages run 36747125173 failed with 69 passes, 1 failure and 1 skip. The unchanged reward-beats test reproduced locally at 2 passes and 1 failure across 3 repeats. Its failed image showed the Weekly Plan Composer awaiting a required choice; all three non-waiting visibility probes ran before the GM-decision response, and no advance request was submitted. Its Node run stopped after four passing shards totaling 1,293 tests; the long shard was cancelled with exit -1, so this was not a complete green suite. That candidate was not promoted to production. These earlier results remain superseded evidence, not final-source acceptance. See reports/s112-superseded-88a5e006.json. The replacement bcf5384 passed general CI after a clean failed-job rerun, but real stable-staging browser interaction proved that both new-franchise creation and explicit save loading lost the selected franchise across page navigation. Its local suite was interrupted after core 290 and runtime 909 passed (1199 total); sim-contract had not completed. No full green suite or production promotion was claimed for that candidate. The first 13 recovery browser checks failed because the test observer copied full imported snapshots into sessionStorage and its identity reader used a nonexistent field; those harness defects were corrected without treating that run as product acceptance. See reports/staging-browser-s112.json. Product source 23139baf778792dcea44118138de3ee07eed5a5a was pushed normally with hooks intact and verified on stable staging at 14/14. Its local canonical run was stopped during core with zero completed shards before correcting tested browser-gate scripts. General CI run 36787373005 passed all five hosted unit shards but failed static smoke before the full browser suite, and Pages run 36787373023 failed the same smoke: assertions expected bare game.html after successful navigation to game.html?resume=tab. Its responsive harness had the same stale expectation. Backend build 36787373038 succeeded, but no backend or production publication was accepted for that candidate. The normal push was delayed but completed; no deadlock or hook bypass is claimed. Three script sites and four client-runtime assertions across three files were corrected without changing public/src product code, server-runtime expectations or timeouts. Focused client checks passed 6 with 1 existing intentional skip, and static smoke passed. The clean replacement commit 6608db347debe8d72b44f2dbeec7e8ca39308981 builds the same artifact 5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3. Its independent final acceptance must come from final receipts, not these predecessor results. See reports/s112-superseded-23139ba.json. Source 6608db347debe8d72b44f2dbeec7e8ca39308981 completed general CI run 36793635097 successfully, including browser job 110151960971 with 89 passes and 1 intentional skip out of 90 tests (10.4 minutes, no downloadable artifacts). It reached stable staging with 14/14 identity checks and actual desktop/mobile continuity. Subsequent actual pixel review found that the light-theme primary-button foreground override also affected disabled controls, rendering white labels on pale backgrounds. Its local canonical run was stopped after core 290/290; runtime was unfinished, so it was not a complete green suite. The candidate was not promoted to production or backend. The two light-theme selectors were subsequently narrowed to enabled controls in be71869. Existing actual per-PNG inspections may carry forward only when the new capture has the exact same hash; whole-candidate visual acceptance cannot carry forward. See reports/s112-superseded-6608db3.json and reports/browser-ci-s112-6608db3.json.
-
-Process Quality accounts for the three initial durability defects, stale browser assertion and contrast defects caught after automated capture checks. Actual page-boundary identity loss and completed-season main-thread stalls added further repair cost. Final verification supports completion without erasing those costs.
-
-- [SIL] Reserve each save slot before reading old state; atomic key writes do not make a two-key transaction atomic.
-- [SIL] A storage barrier needs an owning request; unrelated reads cannot consume its failure.
-- [SIL] Distinguish unobserved action from agreement and keep repeated receipts idempotent.
-- [SIL] Exercise generated security policy and inspect actual pixels in every theme; automation alone missed visible contrast defects.
-- [SIL] Verify franchise identity after real page navigation; a 200 response or default team can hide lost state.
-- [SIL] Measure checkpoint work after actual simulation growth; early overlapping clicks do not bound later main-thread stalls.
-- [SIL] Publish immutable capture hashes when the receipt is finalized, before pruning.
-<!-- /s112-closeout:sil -->
-
-<!-- s112-delivery-followthrough -->
-### Delivery follow-through — 2026-10-01
-
-Closeout commit0f0d3a1 failed CI36893062846: two assertions found the missing public release note and one found an unparseable handoff header. Correctionf8b640b restores the parseable Session112 heading and publishes the player-facing note. The failed run and original be71869 receipts remain separate historical evidence. Edge email-protection changes whole HTML response bytes; both encoded addresses are verified and the release note itself matches the artifact exactly.
-
-Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.
-
-Portable authority: reports/session112-followthrough-acceptance.json. Backend and detailed checkpoint/continuity measurements remain explicitly bound to be71869; no new backend deployment, cohort, isolated restore timing or field-performance claim is made.
-<!-- /s112-delivery-followthrough -->
-
-S112 SIL remains804/1000 across its original ten categories. No new scored session is created.
-
-<!-- s112-startup-docs-sil-addendum -->
-### Session 112 addendum — startup documentation currency
-
-The upstream Studio Template Bot commit 08a3d08 changed three documentation files after the main closeout writeback. Correction 00b4dd7 adds only prompts/start.md to the explicit nondeployable-file list. Independent build-input review confirmed the boundary; 10/10 focused checks include mixed application, backend, build and other-prompt negative cases. Direct post-commit Doctor returned zero blockers and the standing lifecycle warning. The product suite remains 1702/1702 at f8b640b; the new focused check is separate. See reports/s112-startup-docs-classification.json. This completes the writeback for the observed upstream change and its correction; no new scored session or product deployment is claimed. S112 remains 804/1000.
-
-[SIL] Reconcile upstream changes before finalizing a session, and distinguish actual artifact inputs from agent instructions with a narrow, tested classification.
-<!-- /s112-startup-docs-sil-addendum -->
-<!-- s113-closeout:sil -->
 ## 2026-10-02 — Session 113 — Player language, League Pulse and a site that tells the truth
 
 SIL v3.0: **820 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 95, Engagement 72, Process Quality 76, Cross-Repo Coherence 85, Security Posture 82, Ecosystem Integration 72, Capital Efficiency 55, Automation Coverage 92). Intent outcome: **Achieved** — full audit, implementation, closeout and production deploy; public launch remains HOLD. Scores are engineering judgment, not player-outcome measurements.
@@ -207,3 +153,38 @@ IGNIS note: Four bounded fixes reached exact-source production; preserve the ini
 Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
 
 S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
+
+S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
+
+## 2026-10-25 — Session 122 — Restore actionable decisions and evidence truth
+
+SIL v3.0: **485 / 1000** (Dev Health 85, Creative Alignment 65, Momentum 75, Engagement 45, Process Quality 65, Cross-Repo Coherence 50, Security Posture 45, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 35). Intent outcome: Partial pending closeout publication; three selected outcomes and exact-source technical deployment verified. Velocity: 3 selected outcomes, excluding SIL tasks. Debt: ↓ three reproduced gaps. Prior total 864; delta -379. This evidence-limited reassessment replaces inherited high judgments for this new entry only; it does not establish a product regression or financial failure. Category scores are engineering judgments, and unknowns earn no invented measurement credit.
+
+Score basis:
+- 85: exact seven-job CI, clean Studio and focused browser/source proof; coverage target and broader debt remain unmeasured.
+- 65: real player decision destinations restored on existing surfaces; detailed private creative assessment and stakeholder response unmeasured.
+- 75: three selected outcomes and exact technical release verified; final closeout publication still pending at scoring.
+- 45: bounded decision/feedback-loop repairs with synthetic browser proof; stakeholder response, community/cohort activity and retention unmeasured. Product rubric judgment, not measured player traction.
+- 65: fresh audit, independent findings fixed, ordered writeback and immutable failure history; repeated avoidable candidate failures reduce confidence.
+- 50: current session canon sync and project-bound schema/authority checks; full template drift/conformance measurements remain unmeasured.
+- 45: gateway use and executed nonempty staged scans/pre-push guards; rotation ages, access anomalies and final metadata staged scan remain unmeasured/pending.
+- 20: this session updated project status; current Hub/feed parity, beacon completion and impact adoption unmeasured. Public announcement is inapplicable.
+- 0 current proof credit: cache hit rate, model-router audit, comparable token-per-outcome trend and runway lack current measurements. This is not a finding of poor finances; no-paid-services alone earns no rubric credit.
+- 35: selected implementation/validation paths agent-owned; whole-workflow ratio, blocker-resolution rate, phantom-blocker measurement and SIL conversion unmeasured.
+
+Top win: real generated actions now reach and focus decision destinations across desktop/mobile and themes, including reload; stale suite totals cannot masquerade as current. Gap: the first candidate missed the unchanged byte budget and the initial route harness rejected an actual valid URL. Rejected f21512d2 exceeded the boot target; the first hosted harness rejected the valid /game?resume=tab route. fe4f0672 local runtime measured 1058/1060, with 2 historical-comment contract failures: Locally reproduced source regression: boot-budget header trim removed two breakpoint-history phrases required by tablet navigation contracts. Restoring the phrases passed 34/34 focused checks, executable behavior unchanged; corrected boot bytes 648820/650000, target unchanged. b2da78a8 was superseded before publication. Later 26616ed9 Studio measured 387/388: New logging regression fixture contained a direct node:child_process import inside its preload string; the tree guard forbids native imports outside safe-spawn. The approved injection-seam/shared-main correction passed 5 runner plus 2 guard checks, 0 tree violations; final isolated Studio is 388/388. Bounded GET failures remain preserved. First desktop LCP median 2100ms exceeded 1800ms; 2 immutable controls and exactly 1 predeclared stable-origin confirmation passed without sample exclusions or threshold changes. Transport/scheduling variance is supported, causality unproven. Final-source native five-run staging medians: desktop 912ms, mobile 1172ms. Evidence: reports/s122-initial-candidate-failure.json, s122-runtime-gate-failure.json, s122-runtime-correction-review.json, s122-studio-gate-failure.json and s122-performance-investigation.json; audit releaseAttempts preserves every rejected/superseded identity. Final accepted source bd60d3dd387060a2afcf2b974fc27f1e57e22394 is proven separately; no timeout, budget or gate was weakened.
+
+Brainstorm: pre-candidate boot-byte checks; actual-route harness admission; structured/string evidence parity checks; bounded GET observation transport receipts. Commit the first two together as one [SIL:0][S122 #1] future pre-candidate task. These ideas do not expand the current authorized scope.
+
+IGNIS note: Three bounded improvements reached exact-source technical production. Preserve rejected candidate, harness and transport failures; closeout publication and independent launch readiness remain separate gates.
+
+### S122 process-evidence addendum
+
+Strict premise verification passed 3/3 at 2026-10-24T17:53:42.409Z before the first recorded implementation patch at 17:54:11.976Z. The local recorder checked only unstaged tracked paths, so staged/untracked state at that moment remains unmeasured. The recovered canonical timing record explicitly retains implementationDirty:null and native UNKNOWN/exit1. reports/s122-premise-record-recovery.json preserves the original record, matching premise digest and event hashes. No canonical timing pass is claimed.
+
+[SIL:0][S122 #2] Before a future implementation, require supported premise-gate/v1 recording with a complete staged/untracked porcelain snapshot; do not accept a silently ignored --record flag. Owner tool propagation remains a signed Ark follow-up. This future task does not expand the completed three selected outcomes.
+
+
+### S122 final metadata acceptance follow-through
+
+The final metadata run measured 385/388: two assertions exposed the missing dated player-facing release note, and one exposed audit Markdown that differed from its canonical JSON renderer. The audit was regenerated and the actual S122 date/session summary restored to the native dated-bullet format. The added static status note then measured 387/388 because its eight screenshots were not yet registered; the canonical ledger added all eight with zero revised entries. Both failures are preserved in reports/s122-final-metadata-first-failure.json and reports/s122-status-local-first-failure.json. All eight new images passed independent inspection. This additional public source requires fresh exact-candidate CI, staging and production; BD60 acceptance remains historical evidence for that exact source. No test, threshold, inventory or timeout was weakened. Final publication remains pending.

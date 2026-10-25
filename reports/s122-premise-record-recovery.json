@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "recoveredAt": "2026-10-25T01:21:35.163Z",
+  "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+  "originalAudit": {
+    "commit": "f21512d2a5cd86b7d0a2004129940fa61876ead0",
+    "path": "docs/AUDIT_2026-10-24.json",
+    "sha256": "ec87805cc4d679e41f71cbe334c01928847390e5a709f2dc51d9f30718444eb3"
+  },
+  "originalNoncanonicalRecord": {
+    "verifiedAt": "2026-10-24T17:53:44.953Z",
+    "sourceRevision": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+    "status": "passed",
+    "verified": 3,
+    "contradicted": 0,
+    "unverified": 0,
+    "dirtyImplementationPaths": [],
+    "method": "Project-native strict checkAudit plus read-only admission; local CLI lacks shared --record and timing helper."
+  },
+  "originalAdmission": {
+    "checkedAt": "2026-10-24T17:53:44.955Z",
+    "status": "passed",
+    "inputs": [
+      "docs/IMPLEMENT_PLAN.md",
+      ".cache/s122-audit-brief.json",
+      ".cache/s122-plan-brief.json"
+    ],
+    "result": {
+      "ok": true,
+      "errors": []
+    },
+    "rehearsal": "Native tier2-audit-plan-preflight fixtures15/15 PASS."
+  },
+  "observations": {
+    "strictCompletedAt": "2026-10-24T17:53:42.409Z",
+    "originalRecordAt": "2026-10-24T17:53:44.953Z",
+    "firstRecordedImplementationPatchAt": "2026-10-24T17:54:11.976Z",
+    "strictPremises": {
+      "verified": 3,
+      "contradicted": 0,
+      "unverified": 0,
+      "resultSha256": "fd60b0589abe2e750e7100f035e3b06b75eaa014381e294d87a8680b8e4c616e"
+    },
+    "dirtyScope": {
+      "trackedPaths": [
+        "context/PROJECT_STATUS.json",
+        "docs/IMPLEMENT_PLAN.md",
+        "docs/STARTUP_BRIEF.md"
+      ],
+      "staged": "unmeasured",
+      "untracked": "unmeasured"
+    }
+  },
+  "nativeToolEventEvidence": [
+    {
+      "label": "earlier strict invocation with unsupported record flag",
+      "line": 194,
+      "at": "2026-10-24T17:53:00.955Z",
+      "sha256": "e9f37e05f9de2547c82ffbb2bc10276ba5d3219fad371d5a63673231ad7f4e72"
+    },
+    {
+      "label": "explicit strict input and tracked diff",
+      "line": 220,
+      "at": "2026-10-24T17:53:42.409Z",
+      "sha256": "82fc3a1bf9b9d3ff42eed2591d9f5b45a7b9069454ee2c35cb4e950fc303b74f"
+    },
+    {
+      "label": "custom noncanonical admission record",
+      "line": 222,
+      "at": "2026-10-24T17:53:45.376Z",
+      "sha256": "ab3d109f7ddcb3318ed4e96b23e96d19173264af1383b1514330d9165721b5a0"
+    },
+    {
+      "label": "first recorded implementation patch",
+      "line": 233,
+      "at": "2026-10-24T17:54:11.976Z",
+      "sha256": "6c73b9fbfd981a125486cf5b12231330e91d8674849faeaf68ce84caae5a1d0e"
+    },
+    {
+      "label": "initial nonpassing timing check",
+      "line": 6296,
+      "at": "2026-10-25T00:52:45.539Z",
+      "sha256": "0daebea66ce7ad2e9cef9a4260e3186598bbcfe3077585c7ee74e0ad8a2b02d2"
+    }
+  ],
+  "initialNativeCheck": {
+    "state": "invalid",
+    "ok": false,
+    "exit": 1,
+    "at": "2026-10-25T00:52:45.539Z"
+  },
+  "normalization": {
+    "schema": "premise-gate/v1",
+    "implementationDirty": null,
+    "premiseDigest": "b91735d8bee088fce27879a5f576d38466c57bf3e1844f83bbf703c570f6d297",
+    "head": "492aaddc7707db0521d7c5c9dd2e70845b942477",
+    "at": "2026-10-24T17:53:42.409Z"
+  },
+  "measuredStrictBeforeFirstRecordedPatch": true,
+  "fullWorkingTreeAtGateMeasured": false,
+  "timingConformanceVerified": false,
+  "limits": "Recovery of original observations only. Unsupported --record and missing full staged/untracked snapshot are process deviations. This is not a newly executed pre-implementation gate and never establishes full timing conformance.",
+  "currentNativeBeforeRecovery": {
+    "state": "invalid",
+    "ok": false,
+    "exit": 1
+  },
+  "nativeAfterRecovery": {
+    "state": "unknown",
+    "ok": false,
+    "exit": 1,
+    "observedAt": "2026-10-25T01:21:37.604Z",
+    "parseFailure": false
+  },
+  "auditBeforeRecovery": {
+    "path": "reports/s122-evidence-history/s122-audit-before-premise-normalization-1c14085691a6477e21d7cc3aea0f99be1b85b50a49f9e547219ea5ce5fb15656.json",
+    "sha256": "1c14085691a6477e21d7cc3aea0f99be1b85b50a49f9e547219ea5ce5fb15656"
+  }
+}

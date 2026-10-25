@@ -1,0 +1,22 @@
+{
+  "session": 122,
+  "at": "2026-10-25T01:37:20.089Z",
+  "round": 1,
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "fixed": [
+    "R1-1",
+    "R1-2",
+    "R1-3",
+    "R1-4"
+  ],
+  "currentDraftProse": {
+    "beforeSha256": "dc106ca242bbe62008e903c45fb5b8de84ce712ed2a6f3080800d312ac95a85e",
+    "afterSha256": "abea3c2542567a16f009d334993af76e717385f82b20d10eafa96adadcb92090",
+    "scope": "Only unpublished S122 prose changed achieved to verified on the Partial classification line; all prior-session bytes, current score485 and classification Partial remain unchanged."
+  },
+  "currentAchievedIntentStreak": 0,
+  "aliases": "Current averages and generic velocity now match canonical S122 metrics.",
+  "localFixtures": "Preserved; stale Founder deletion request superseded by measured tracked-checkout resolution.",
+  "impact": "Shared frame receives readable strings; human brief retains structured content.",
+  "derivedRefresh": "Regenerate state/startup after these corrections; independent round2 still required."
+}

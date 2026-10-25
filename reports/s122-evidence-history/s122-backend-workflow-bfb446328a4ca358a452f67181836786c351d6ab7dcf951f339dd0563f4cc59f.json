@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "at": "2026-10-24T23:25:13.295Z",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "workflowRun": 40135991113,
+  "workflowUrl": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40135991113",
+  "status": "completed",
+  "conclusion": "success",
+  "checks": {
+    "snapshotsFresh": true,
+    "snapshotFieldsValid": true,
+    "hostHealthCurrent": true,
+    "exactWorkflow": true,
+    "deploymentExecuted": true,
+    "externalHealth": true,
+    "databaseUnchanged": true,
+    "routingUnchanged": true,
+    "caddyProcessUnchanged": true,
+    "rollbackImageAvailable": true
+  },
+  "databaseIdentity": {
+    "before": "6d85c4e02762636faaeab3b7cbb047d37265b5fcaae86ccf74fee56144b470c7",
+    "after": "6d85c4e02762636faaeab3b7cbb047d37265b5fcaae86ccf74fee56144b470c7"
+  },
+  "routingIdentity": {
+    "before": "dcd3cf0141b9db6ef4ae04cb3ec080daf5b02653919a177ed08b747c8fadaf0c",
+    "after": "dcd3cf0141b9db6ef4ae04cb3ec080daf5b02653919a177ed08b747c8fadaf0c"
+  },
+  "rollback": {
+    "image": "sha256:10d66ce77f7315ddd09f9925e76ee6c2a95a5eec59974c3bf565fc1e6eedb8c6",
+    "tag": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:5410b8b5159059c516f80529ae5330e99838f266",
+    "available": true
+  },
+  "externalHealth": {
+    "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "database": "ready",
+    "verified": true
+  },
+  "verified": true
+}

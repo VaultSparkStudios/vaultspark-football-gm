@@ -12,7 +12,7 @@
     },
     {
       "path": "public/lib/mobileLoop.js",
-      "sha256": "c093b735b2157d8cba65e5024d1f5fc5fef223c57817908d36ee838789be1019"
+      "sha256": "0d26e11f2a7e37d5bd89fca9c56fd6a571a2f58fcdc9a426aecef41fed7b8344"
     },
     {
       "path": "public/lib/gameplayNavigation.js",
@@ -23,16 +23,23 @@
     "reviewer": "review_navigation",
     "verdict": "pass",
     "findings": 0,
-    "tests": 24
+    "reviewedAt": "2026-10-25T00:39:38.263Z",
+    "scope": "Final navigation source and current hosted staging/production evidence. Earlier focused test executions remain historical; no new suite or browser execution."
   },
   "focusedUnits": {
     "passed": 30,
     "total": 30
   },
   "browser": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "phase": "production",
     "passed": 4,
     "total": 4,
-    "includes": "Four persisted worker reloads, all generated focus actions and actual delegated full/mobile news navigation"
+    "receipt": {
+      "path": "reports/s122-production-browser.json",
+      "sha256": "02dd86a110f743da606144a08ab74c5b731dc317f3a5f75552e3d55428505e6e"
+    },
+    "includes": "Actual production generated Focus actions, desktop/mobile League news, visible destination focus and persisted identity reload across desktop/mobile and dark/light."
   },
   "redControl": {
     "browserVariantsFailed": 4,
@@ -41,15 +48,142 @@
   },
   "visual": {
     "before": 24,
-    "after": 52,
-    "reviewed": 76,
-    "receipt": "docs/visual-qa/LATEST.json"
+    "after": 312,
+    "reviewed": 336,
+    "currentSourceReviewed": 104,
+    "currentSourceStaging": 52,
+    "currentSourceProduction": 52,
+    "historicalReviewed": 232,
+    "classifiedCounts": {
+      "before@492aaddc7707db0521d7c5c9dd2e70845b942477": 24,
+      "after@f21512d2a5cd86b7d0a2004129940fa61876ead0": 52,
+      "hosted-staging@fe4f067280a0e35b6476f817530ecc321d289689": 52,
+      "hosted-staging@b2da78a89b5040db5f278709136e163b0f4c55f3": 52,
+      "hosted-staging@26616ed93079de686d13da150e4e6d7ddf581036": 52,
+      "hosted-staging@bd60d3dd387060a2afcf2b974fc27f1e57e22394": 52,
+      "hosted-production@bd60d3dd387060a2afcf2b974fc27f1e57e22394": 52
+    },
+    "receipt": "docs/visual-qa/LATEST.json",
+    "inspection": "audit_game rendered-pixel phase reviews; source/classification and every retained PNG hash independently verified by review_navigation. Historical image review scope is retained, not relabelled as final-source capture."
   },
   "ledger": {
-    "added": 76,
+    "added": 52,
     "revised": 0,
-    "total": 5393,
+    "total": 5653,
     "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
   },
-  "limits": "Source-hash-bound local acceptance. Full candidate CI, hosted staging and production pending."
+  "limits": "Final-source navigation and synthetic hosted rendered acceptance only. 104 current-source images (52 staging,52 production) and232 historical-source images remain separately classified. Browser execution and rendered inspection are bound to their actual phase receipts; source review does not independently certify full release/launch readiness.",
+  "history": [
+    {
+      "at": "2026-10-24T18:05:51.024Z",
+      "sourceFiles": [
+        {
+          "path": "src/engine/architectFocusReview.js",
+          "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
+        },
+        {
+          "path": "public/lib/franchiseCommandCenter.js",
+          "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
+        },
+        {
+          "path": "public/lib/mobileLoop.js",
+          "sha256": "c093b735b2157d8cba65e5024d1f5fc5fef223c57817908d36ee838789be1019"
+        },
+        {
+          "path": "public/lib/gameplayNavigation.js",
+          "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+        }
+      ],
+      "independentCodeReview": {
+        "reviewer": "review_navigation",
+        "verdict": "pass",
+        "findings": 0,
+        "tests": 24
+      },
+      "browser": {
+        "passed": 4,
+        "total": 4,
+        "includes": "Four persisted worker reloads, all generated focus actions and actual delegated full/mobile news navigation"
+      },
+      "visual": {
+        "before": 24,
+        "after": 52,
+        "reviewed": 76,
+        "receipt": "docs/visual-qa/LATEST.json"
+      },
+      "ledger": {
+        "added": 76,
+        "revised": 0,
+        "total": 5393,
+        "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+      },
+      "limits": "Source-hash-bound local acceptance. Full candidate CI, hosted staging and production pending."
+    }
+  ],
+  "hostedStaging": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "passed": 4,
+    "total": 4,
+    "captures": 52,
+    "reviewed": true,
+    "receipt": {
+      "path": "reports/s122-hosted-navigation.json",
+      "sha256": "8cf095d5a9ec1ef4270d7d6fb8cd9179b4af78ed697733937ddf90c60b827636"
+    },
+    "browser": {
+      "path": "reports/s122-staging-v5-browser.json",
+      "sha256": "8fb2137b68431dcb317bf12748c6e13b417ce36cf04f9141168c2a1919dc9198"
+    },
+    "review": {
+      "path": "reports/s122-staging-v5-visual-review.json",
+      "sha256": "48cb1699ec3bdb42dbfde8221d0d837ef33a2719619a375a2baf8fac995a3008"
+    }
+  },
+  "production": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "passed": 4,
+    "total": 4,
+    "captures": 52,
+    "reviewed": true,
+    "receipt": {
+      "path": "reports/s122-production-navigation.json",
+      "sha256": "3f845ac4d829fb3f1d6c3deaa96dee458e734a5565987097d1762d4bb54d57ba"
+    },
+    "browser": {
+      "path": "reports/s122-production-browser.json",
+      "sha256": "02dd86a110f743da606144a08ab74c5b731dc317f3a5f75552e3d55428505e6e"
+    },
+    "review": {
+      "path": "reports/s122-production-review.json",
+      "sha256": "22b433873a6b2fd542634fa735e39a659dab09a74407ea3d859753a6de965e53"
+    }
+  },
+  "finalSourceVerification": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "verdict": "pass",
+    "sourceFiles": [
+      {
+        "path": "src/engine/architectFocusReview.js",
+        "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
+      },
+      {
+        "path": "public/lib/franchiseCommandCenter.js",
+        "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
+      },
+      {
+        "path": "public/lib/mobileLoop.js",
+        "sha256": "0d26e11f2a7e37d5bd89fca9c56fd6a571a2f58fcdc9a426aecef41fed7b8344"
+      },
+      {
+        "path": "public/lib/gameplayNavigation.js",
+        "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+      }
+    ],
+    "evidence": {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "8d60e0e86e231837356461bf772e65fd979a1a027142c46e06b00f893e54258e"
+    },
+    "reviewedAt": "2026-10-25T00:39:38.263Z",
+    "scope": "Four final-source navigation files, actual staging4/4 and production4/4 with52 current-source captures each;336 total reviewed images include232 historical-source captures retaining original identities. No full-suite case-count, physical-device, actual-user or launch claim."
+  }
 }

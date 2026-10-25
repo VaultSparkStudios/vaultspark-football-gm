@@ -4,39 +4,8 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 
 
-## 2026-09-30 — Session 112 — Fair trades, durable saves and observed outcomes
+> Older entries S112 live verbatim in `context/archive/DECISIONS_S112-S112.md`.
 
-**Whole-package trade authority.** Pick-containing offers use complete economics for both clubs; only player-only trades retain the persona shortcut. Transport preserves the service’s stale-plan refusal.
-
-**Durability includes overlap.** Reserve the save slot before reading previous bytes, hold it through publication and cleanup, and attribute a flush to its writing request. Publish IDB metadata after commit/readback. Deletion unpublishes metadata before authoritative byte removal and restores the old loadable save if a fallible earlier step fails. Write degradation does not disable old-IDB reads.
-
-**Feedback requires observed evidence.** Advice is checkpoint-bound, three-state and replay-idempotent. First-season signing progress requires explicit player intent in the resolved winning transaction.
-
-**Rendered security parity.** Real browser checks use generated security headers. Semantic light/dark colors and theme-aware chart repainting replace fixed foreground assumptions; capture-ledger publication retains immutable hashes.
-
-**Browser page-boundary recovery.** Restore this tab before dashboard reads, distinguish an applied action from failed checkpoint publication, retain dirty unload protection and retry only the checkpoint. Large-checkpoint fallback references only an explicitly saved or selected slot. Verify the exact frozen saved snapshot before runtime replacement; a separate live-state fingerprint excludes only diagnostic observability. JSON/hash/codec work stays in the default worker while the page verifies its receipt and owns storage markers. Capture/flush measurements are distinct from functional restore evidence; isolated restore latency was not measured.
-
-**Exact action authorization.** The founder explicitly approved actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 (v6.1.0), actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d (v6.0.0), and actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a (v7.0.1) after the generic URL trust gate returned BLOCK40. Five workflow references use those exact official releases. This narrow authorization does not change the generic verdict or approve other revisions.
-<!-- /s112-closeout:decisions -->
-
-<!-- s112-delivery-followthrough -->
-### Delivery follow-through — 2026-10-01
-
-Closeout commit0f0d3a1 failed CI36893062846: two assertions found the missing public release note and one found an unparseable handoff header. Correctionf8b640b restores the parseable Session112 heading and publishes the player-facing note. The failed run and original be71869 receipts remain separate historical evidence. Edge email-protection changes whole HTML response bytes; both encoded addresses are verified and the release note itself matches the artifact exactly.
-
-Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.
-
-Portable authority: reports/session112-followthrough-acceptance.json. Backend and detailed checkpoint/continuity measurements remain explicitly bound to be71869; no new backend deployment, cohort, isolated restore timing or field-performance claim is made.
-<!-- /s112-delivery-followthrough -->
-
-
-<!-- s112-startup-docs-reconciliation -->
-### Startup documentation reconciliation — 2026-10-01
-
-While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with three documentation files. Closeout 31087ed subsequently passed all six CI jobs. A clean pull --rebase fast-forwarded the checkout. Doctor then reported one blocker because prompts/start.md was absent from its nondeployable-file list. The exact-file classification now matches Pages, Docker and SSH deployment inputs; no prompts-directory exemption was added. Focused release-authority checks passed 10/10, including mixed application/build/backend changes that still block; direct Doctor returned 0 blockers and 1 standing lifecycle warning. Independent deployment-scope review passed. Evidence: reports/s112-startup-docs-classification.json. The full 1702/1702 suite remains bound to product source f8b640b; the focused checker test is separate. Product deployment and SIL 804 remain unchanged.
-<!-- /s112-startup-docs-reconciliation -->
-
-<!-- s113-closeout:decisions -->
 ## 2026-10-02 — S113 — Player language is a product surface, and gates are kept by intent
 
 **Decision 1 — the honesty voice stays; the vocabulary changes.** "No hidden bonus", "predicts no result" and "not a causal claim" are kept in plain words; "receipt", "authority", "schema" and raw reason codes are not player language.
@@ -145,3 +114,13 @@ Preserve source identity5410b8b5 across staging, CI and production. Four audited
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
 
 S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.
+
+S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.
+
+## 2026-10-25 — Session 122 — Destination and receipt authority
+
+Use real existing destination tabs/targets for all four Focus actions and one shared League news route for desktop/mobile. Prove generated actions, visible focus and reload in the actual browser. Fresh source-bound direct receipts alone authorize current totals; prior-session tests come from the matching handoff for both structured and string cards, with wrapping that preserves limitations. Rejected f21512d2 exceeded the boot target; the first hosted harness rejected the valid /game?resume=tab route. fe4f0672 local runtime measured 1058/1060, with 2 historical-comment contract failures: Locally reproduced source regression: boot-budget header trim removed two breakpoint-history phrases required by tablet navigation contracts. Restoring the phrases passed 34/34 focused checks, executable behavior unchanged; corrected boot bytes 648820/650000, target unchanged. b2da78a8 was superseded before publication. Later 26616ed9 Studio measured 387/388: New logging regression fixture contained a direct node:child_process import inside its preload string; the tree guard forbids native imports outside safe-spawn. The approved injection-seam/shared-main correction passed 5 runner plus 2 guard checks, 0 tree violations; final isolated Studio is 388/388. Bounded GET failures remain preserved. First desktop LCP median 2100ms exceeded 1800ms; 2 immutable controls and exactly 1 predeclared stable-origin confirmation passed without sample exclusions or threshold changes. Transport/scheduling variance is supported, causality unproven. Final-source native five-run staging medians: desktop 912ms, mobile 1172ms. Evidence: reports/s122-initial-candidate-failure.json, s122-runtime-gate-failure.json, s122-runtime-correction-review.json, s122-studio-gate-failure.json and s122-performance-investigation.json; audit releaseAttempts preserves every rejected/superseded identity. Final accepted source bd60d3dd387060a2afcf2b974fc27f1e57e22394 is proven separately; no timeout, budget or gate was weakened. Exact source bd60d3dd387060a2afcf2b974fc27f1e57e22394 and artifact 9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958 bind technical release evidence. Receipt-only closeout descendants require separate publication-delta acceptance. Existing launch/S117 holds remain. No hook bypass or force push is authorized by this writer.
+
+### S122 process-evidence compatibility
+
+Strict premise verification passed 3/3 at 2026-10-24T17:53:42.409Z before the first recorded implementation patch at 17:54:11.976Z. The local recorder checked only unstaged tracked paths, so staged/untracked state at that moment remains unmeasured. The recovered canonical timing record explicitly retains implementationDirty:null and native UNKNOWN/exit1. reports/s122-premise-record-recovery.json preserves the original record, matching premise digest and event hashes. No canonical timing pass is claimed. The exact prior ledger sections now use canonical archive-aware pointers; prior work-log text remains intact. Current staging authority retains the full matching native inventory, and the default context guard passes without threshold changes. Historical S14 names this exact repository remote under its legacy published mount; its unchanged tracked bytes remain preserved.

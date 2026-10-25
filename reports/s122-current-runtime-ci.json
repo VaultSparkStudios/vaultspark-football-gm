@@ -1,0 +1,15 @@
+{
+  "session": 122,
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "runId": 40135773664,
+  "jobId": 120996854317,
+  "job": "unit-shards (runtime)",
+  "status": "completed",
+  "conclusion": "success",
+  "tests": 1060,
+  "passed": 1060,
+  "failed": 0,
+  "durationMs": 1874535.655965,
+  "source": "DirectGitHubjoblogsummaryobserved22:19:27UTC; completeTAPsummaryvisibleafterrunnerlogdrainfix",
+  "scope": "Runtime shard only, no complete seven-job release proof claimed"
+}
