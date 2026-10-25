@@ -51,6 +51,53 @@ for (const [device, width, height] of [["desktop", 1440, 1000], ["mobile", 390, 
         await expect.poll(() => page.locator("#inboxDrawer").evaluate((element) => element.getBoundingClientRect().left)).toBeGreaterThanOrEqual(width);
       }
       await page.screenshot({ path: path.join(output, `${device}-${theme}-destination.png`) });
+      if (phase !== "before") {
+        for (const boundary of ["before-import", "during-navigation"]) {
+          const result = await page.evaluate(async (boundary) => {
+            const inbox = await import("/lib/engagementFeatures.js");
+            const { state } = await import("/lib/appState.js");
+            const flow = await import("/lib/gameFlow.js");
+            const { clientDiagnostics } = await import("/lib/clientDiagnostics.js");
+            await flow.activateTab("overviewTab");
+            const original = state.dashboard;
+            const event = { id: `scope-${boundary}`, type: "owner-ultimatum", headline: "Ownership scope regression" };
+            state.dashboard = { ...original, franchiseId: `${boundary}-origin` };
+            inbox.ingestNewsIntoInbox([event]);
+            inbox.openInbox();
+            clientDiagnostics.record({ surface: "inbox", operation: "owner", error: "Pending scope regression" });
+            const completed = new Promise((resolve) => {
+              const unsubscribe = clientDiagnostics.subscribe((snapshot) => {
+                if (!snapshot.entries.some((row) => row.surface === "inbox" && row.operation === "owner")) {
+                  unsubscribe(); resolve();
+                }
+              });
+            });
+            let switched = false;
+            const switchScope = () => {
+              switched = true;
+              state.dashboard = { ...original, franchiseId: `${boundary}-recipient` };
+              inbox.ingestNewsIntoInbox([event]);
+            };
+            const observer = new MutationObserver(() => {
+              if (document.getElementById("boardroomTab").classList.contains("active")) {
+                observer.disconnect(); switchScope();
+              }
+            });
+            if (boundary === "during-navigation") observer.observe(document.getElementById("boardroomTab"), { attributes: true, attributeFilter: ["class"] });
+            document.querySelector(`[data-inbox-key="id:${event.id}"]`).click();
+            if (boundary === "before-import") switchScope();
+            await completed;
+            observer.disconnect();
+            const recipient = inbox.getInboxSnapshot();
+            const value = { switched, scope: recipient.scope, resolvedAt: recipient.items.find((row) => row.id === event.id)?.resolvedAt };
+            state.dashboard = original;
+            inbox.closeInbox();
+            inbox.syncInboxScope(original);
+            return value;
+          }, boundary);
+          expect(result).toEqual({ switched: true, scope: `${boundary}-recipient`, resolvedAt: null });
+        }
+      }
     });
   }
 }

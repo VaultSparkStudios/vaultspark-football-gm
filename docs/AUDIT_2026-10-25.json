@@ -99,7 +99,15 @@
           "at": "2026-10-25T17:07:11.702Z",
           "status": "shipped",
           "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
-          "evidence": "20 focused checks and actual-browser denied storage POST/PATCH/clear"
+          "evidence": "20 focused checks and actual-browser denied storage POST/PATCH/clear",
+          "note": "20 focused checks and actual-browser denied storage POST/PATCH/clear; local implementation and hosted staging verified, exact-candidate CI/production/closeout pending."
+        },
+        {
+          "at": "2026-10-25T17:56:31.022Z",
+          "status": "shipped",
+          "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
+          "evidence": "20 focused checks and actual-browser denied storage POST/PATCH/clear",
+          "note": "20 focused checks and actual-browser denied storage POST/PATCH/clear; corrected local source only. Fresh exact-source staging/CI/production and closeout remain pending."
         }
       ]
     },
@@ -149,7 +157,20 @@
           "at": "2026-10-25T17:07:11.704Z",
           "status": "shipped",
           "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
-          "evidence": "26 focused unit checks and 5 browser checks; 16 inspected before/after images"
+          "evidence": "26 focused unit checks and 5 browser checks; 16 inspected before/after images",
+          "note": "26 focused unit checks and 5 browser checks; 16 inspected before/after images; local implementation and hosted staging verified, exact-candidate CI/production/closeout pending."
+        },
+        {
+          "at": "2026-10-25T17:55:01.237Z",
+          "status": "shipped",
+          "note": "Reopened after introduced async scope mutation in456682bf. Scope guards now cover Inbox and dashboard identity at both awaits;26units, browser5/5 with8same-key boundary regressions and16reviewed local before/after PNGs pass. Corrected candidate staging/CI/production pending. reports/s123-owner-scope-regression.json"
+        },
+        {
+          "at": "2026-10-25T17:56:31.023Z",
+          "status": "shipped",
+          "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
+          "evidence": "26 focused unit checks and 5 browser checks; 16 inspected before/after images",
+          "note": "26 focused unit checks and 5 browser checks; 16 inspected before/after images; corrected local source only. Fresh exact-source staging/CI/production and closeout remain pending."
         }
       ]
     },
@@ -199,7 +220,15 @@
           "at": "2026-10-25T17:07:11.704Z",
           "status": "shipped",
           "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
-          "evidence": "20 focused checks; actual startup renderer and format validator pass"
+          "evidence": "20 focused checks; actual startup renderer and format validator pass",
+          "note": "20 focused checks; actual startup renderer and format validator pass; local implementation and hosted staging verified, exact-candidate CI/production/closeout pending."
+        },
+        {
+          "at": "2026-10-25T17:56:31.023Z",
+          "status": "shipped",
+          "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
+          "evidence": "20 focused checks; actual startup renderer and format validator pass",
+          "note": "20 focused checks; actual startup renderer and format validator pass; corrected local source only. Fresh exact-source staging/CI/production and closeout remain pending."
         }
       ]
     }
@@ -402,5 +431,26 @@
       "evidence": "Existing project surfaces and S122 receipts inspected as historical context; this invocation has not yet reverified the entire readiness area.",
       "nextAcceptanceCheck": "Run relevant candidate checks and exact-source staging/production verification; retain broader unmeasured readiness as partial."
     }
-  ]
+  ],
+  "releaseAttempts": [
+    {
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "status": "superseded-before-production",
+      "reason": "Introduced owner Inbox cross-franchise receipt mutation reproduced at both async boundaries; corrected source requires new staging and exact-candidate CI.",
+      "evidence": "reports/s123-owner-scope-regression.json",
+      "archive": "reports/s123-evidence-history/456682bf",
+      "workflowIds": [
+        40215685779,
+        40215685736,
+        40215685734
+      ],
+      "cancelRequested": true
+    }
+  ],
+  "currentRelease": {
+    "status": "corrected-local-source-awaiting-candidate-staging",
+    "rejectedSourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+    "localReview": "reports/s123-owner-navigation-review.json"
+  }
 }

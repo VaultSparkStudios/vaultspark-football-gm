@@ -2915,16 +2915,27 @@
     "receiptSha256": "4203b3f55677ebce0479639f3df0191e7eea12eb374430a5fec3e47d941ff2cc"
   },
   "activeArc": {
-    "session": 122,
-    "status": "selected-outcomes-and-release-verified",
-    "audit": "docs/AUDIT_2026-10-24.json",
-    "acceptance": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
-    "closeoutTransport": {
-      "receipt": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ark.json",
-      "state": "shipped",
-      "adoptionVerified": false
-    },
-    "nativeCompletionGuard": "Verify the containing receipt-only commit on remote main, scoped lock cleanup and zero owned running jobs before native completion."
+    "session": 123,
+    "goalThreadId": "01a173fc-4b86-7af2-94c7-23bb028e3a3d",
+    "goalCreatedAt": 1792947287,
+    "status": "corrected-local-source-awaiting-new-candidate",
+    "audit": "docs/AUDIT_2026-10-25.json",
+    "sourceRevision": null,
+    "artifactDigest": null,
+    "localAcceptance": null,
+    "stagingDeployment": "reports/s123-staging-deployment.json",
+    "stagingBrowser": "reports/s123-staging-browser-review.json",
+    "runs": {},
+    "remaining": [
+      "Cut and verify corrected candidate on staging",
+      "Push and complete exact-source CI/image builds",
+      "Frontend/API production and readback",
+      "Ordered closeout/final metadata publication/cleanup",
+      "Native completion audit"
+    ],
+    "supersededSources": [
+      "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    ]
   },
   "silScoreBasis": {
     "devHealth": "85: exact seven-job CI, clean Studio and focused browser/source proof; coverage target and broader debt remain unmeasured.",

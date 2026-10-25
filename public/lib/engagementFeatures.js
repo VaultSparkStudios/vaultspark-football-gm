@@ -1,7 +1,5 @@
 /**
- * engagementFeatures.js — Session 8 engagement & depth feature suite
- *
- * Exports:
+ * Engagement surfaces:
  *   Priority Inbox system (bell icon, CRITICAL/IMPORTANT/FLAVOR tiers)
  *   Franchise Moment card (cinematic post-game drama)
  *   GM Decision modal (pre-advance critical-week choices)
@@ -247,10 +245,14 @@ function renderInboxContent() {
       const tab = btn.dataset.inboxActionTab;
       const key = btn.dataset.inboxKey;
       if (tab === gameplaySurface("boardroom").targetTab) {
+        const scope = _inbox.scope;
+        const current = () => _inbox.scope === scope && inboxScopeFromDashboard(state.dashboard) === scope;
         observeBackgroundTask(async () => {
           const { activateTab } = await import("./gameFlow.js");
+          if (!current()) return;
           closeInbox();
           const result = await navigateToExactSurface(gameplaySurface("boardroom"), { activateTab });
+          if (!current()) return;
           if (!result.focused) throw Error("Owner unavailable");
           const owner = document.getElementById(result.targetId);
           owner.style.scrollMarginTop = `${(document.querySelector(".game-topbar")?.offsetHeight || 0) + 16}px`;

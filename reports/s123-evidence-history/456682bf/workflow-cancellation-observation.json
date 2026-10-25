@@ -1,0 +1,1164 @@
+{
+  "session": 123,
+  "observedAt": "2026-10-25T17:50:10.419Z",
+  "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+  "repository": "VaultSparkStudios/vaultspark-football-gm",
+  "runs": [
+    {
+      "id": 40215685779,
+      "name": "CI",
+      "headSha": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "path": ".github/workflows/ci.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40215685779",
+      "jobs": [
+        {
+          "id": 121236195925,
+          "name": "browser-gates",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:11Z"
+            },
+            {
+              "name": "Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:11Z",
+              "completed_at": "2026-10-25T17:17:15Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:15Z",
+              "completed_at": "2026-10-25T17:17:16Z"
+            },
+            {
+              "name": "Verify installed browser",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:16Z",
+              "completed_at": "2026-10-25T17:17:18Z"
+            },
+            {
+              "name": "Verify Pages build",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6,
+              "started_at": "2026-10-25T17:17:18Z",
+              "completed_at": "2026-10-25T17:17:20Z"
+            },
+            {
+              "name": "Smoke static Pages client",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7,
+              "started_at": "2026-10-25T17:17:20Z",
+              "completed_at": "2026-10-25T17:17:35Z"
+            },
+            {
+              "name": "Run UI tests",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 8,
+              "started_at": "2026-10-25T17:17:35Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Setup Node",
+              "status": "pending",
+              "conclusion": null,
+              "number": 15,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Checkout",
+              "status": "pending",
+              "conclusion": null,
+              "number": 16,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 121236196117,
+          "name": "unit-shards (long)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:46Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:09Z"
+            },
+            {
+              "name": "Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:09Z",
+              "completed_at": "2026-10-25T17:17:14Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:14Z",
+              "completed_at": "2026-10-25T17:17:15Z"
+            },
+            {
+              "name": "Run long shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:15Z",
+              "completed_at": "2026-10-25T17:35:28Z"
+            },
+            {
+              "name": "Post Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:35:28Z",
+              "completed_at": "2026-10-25T17:35:28Z"
+            },
+            {
+              "name": "Post Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:35:28Z",
+              "completed_at": "2026-10-25T17:35:28Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:35:28Z",
+              "completed_at": "2026-10-25T17:35:28Z"
+            }
+          ]
+        },
+        {
+          "id": 121236196118,
+          "name": "unit-shards (studio)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:46Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:10Z"
+            },
+            {
+              "name": "Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:10Z",
+              "completed_at": "2026-10-25T17:17:15Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:15Z",
+              "completed_at": "2026-10-25T17:17:16Z"
+            },
+            {
+              "name": "Run studio shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:16Z",
+              "completed_at": "2026-10-25T17:17:52Z"
+            },
+            {
+              "name": "Post Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:17:52Z",
+              "completed_at": "2026-10-25T17:17:52Z"
+            },
+            {
+              "name": "Post Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:17:52Z",
+              "completed_at": "2026-10-25T17:17:53Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:17:53Z",
+              "completed_at": "2026-10-25T17:17:53Z"
+            }
+          ]
+        },
+        {
+          "id": 121236196136,
+          "name": "unit-shards (sim:realism)",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:09Z"
+            },
+            {
+              "name": "Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:09Z",
+              "completed_at": "2026-10-25T17:17:14Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:14Z",
+              "completed_at": "2026-10-25T17:17:15Z"
+            },
+            {
+              "name": "Run sim:realism shard",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-25T17:17:15Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Setup Node",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Checkout",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 121236196145,
+          "name": "unit-shards (runtime)",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:11Z"
+            },
+            {
+              "name": "Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:11Z",
+              "completed_at": "2026-10-25T17:17:17Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:17Z",
+              "completed_at": "2026-10-25T17:17:17Z"
+            },
+            {
+              "name": "Run runtime shard",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-25T17:17:17Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Setup Node",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Checkout",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 121236196185,
+          "name": "unit-shards (sim:contract)",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:46Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:12Z"
+            },
+            {
+              "name": "Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:12Z",
+              "completed_at": "2026-10-25T17:17:17Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:17Z",
+              "completed_at": "2026-10-25T17:17:18Z"
+            },
+            {
+              "name": "Run sim:contract shard",
+              "status": "completed",
+              "conclusion": "cancelled",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:18Z",
+              "completed_at": "2026-10-25T17:49:58Z"
+            },
+            {
+              "name": "Post Setup Node",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 9,
+              "started_at": "2026-10-25T17:49:58Z",
+              "completed_at": "2026-10-25T17:49:58Z"
+            },
+            {
+              "name": "Post Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:49:58Z",
+              "completed_at": "2026-10-25T17:49:58Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:49:58Z",
+              "completed_at": "2026-10-25T17:49:58Z"
+            }
+          ]
+        },
+        {
+          "id": 121236196352,
+          "name": "unit-shards (core)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:48Z"
+            },
+            {
+              "name": "Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:48Z",
+              "completed_at": "2026-10-25T17:17:11Z"
+            },
+            {
+              "name": "Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:11Z",
+              "completed_at": "2026-10-25T17:17:19Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:19Z",
+              "completed_at": "2026-10-25T17:17:19Z"
+            },
+            {
+              "name": "Run core shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:19Z",
+              "completed_at": "2026-10-25T17:45:27Z"
+            },
+            {
+              "name": "Post Setup Node",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:45:27Z",
+              "completed_at": "2026-10-25T17:45:27Z"
+            },
+            {
+              "name": "Post Checkout",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:45:27Z",
+              "completed_at": "2026-10-25T17:45:28Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:45:28Z",
+              "completed_at": "2026-10-25T17:45:28Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 40215685736,
+      "name": "Deploy Pages",
+      "headSha": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "path": ".github/workflows/deploy-pages.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40215685736",
+      "jobs": [
+        {
+          "id": 121236196070,
+          "name": "gate (sim realism)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:11Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:11Z",
+              "completed_at": "2026-10-25T17:17:17Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:17Z",
+              "completed_at": "2026-10-25T17:17:18Z"
+            },
+            {
+              "name": "Run sim realism shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:18Z",
+              "completed_at": "2026-10-25T17:43:48Z"
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:43:48Z",
+              "completed_at": "2026-10-25T17:43:48Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:43:48Z",
+              "completed_at": "2026-10-25T17:43:48Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:43:48Z",
+              "completed_at": "2026-10-25T17:43:48Z"
+            }
+          ]
+        },
+        {
+          "id": 121236196155,
+          "name": "gate (core (engine + domain behavior))",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:48Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:48Z",
+              "completed_at": "2026-10-25T17:17:14Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:14Z",
+              "completed_at": "2026-10-25T17:17:20Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:20Z",
+              "completed_at": "2026-10-25T17:17:21Z"
+            },
+            {
+              "name": "Run core (engine + domain behavior) shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:21Z",
+              "completed_at": "2026-10-25T17:48:52Z"
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:48:52Z",
+              "completed_at": "2026-10-25T17:48:52Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:48:52Z",
+              "completed_at": "2026-10-25T17:48:52Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:48:52Z",
+              "completed_at": "2026-10-25T17:48:52Z"
+            }
+          ]
+        },
+        {
+          "id": 121236196213,
+          "name": "gate (studio (protocol truth))",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:45Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:45Z",
+              "completed_at": "2026-10-25T17:17:50Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:50Z",
+              "completed_at": "2026-10-25T17:17:50Z"
+            },
+            {
+              "name": "Run studio (protocol truth) shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:50Z",
+              "completed_at": "2026-10-25T17:18:12Z"
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:18:12Z",
+              "completed_at": "2026-10-25T17:18:12Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:18:12Z",
+              "completed_at": "2026-10-25T17:18:12Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:18:12Z",
+              "completed_at": "2026-10-25T17:18:12Z"
+            }
+          ]
+        },
+        {
+          "id": 121236196227,
+          "name": "gate (sim contract)",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:48Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:48Z",
+              "completed_at": "2026-10-25T17:17:13Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:13Z",
+              "completed_at": "2026-10-25T17:17:19Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:19Z",
+              "completed_at": "2026-10-25T17:17:19Z"
+            },
+            {
+              "name": "Run sim contract shard",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-25T17:17:19Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 40215685734,
+      "name": "Deploy Backend Runtime",
+      "headSha": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "path": ".github/workflows/deploy-backend.yml",
+      "status": "in_progress",
+      "conclusion": null,
+      "attempt": 1,
+      "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40215685734",
+      "jobs": [
+        {
+          "id": 121236195755,
+          "name": "gate (runtime)",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:46Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:10Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:10Z",
+              "completed_at": "2026-10-25T17:17:15Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:15Z",
+              "completed_at": "2026-10-25T17:17:15Z"
+            },
+            {
+              "name": "Run runtime shard",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-25T17:17:15Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 121236195944,
+          "name": "gate (studio)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:48Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:48Z",
+              "completed_at": "2026-10-25T17:17:12Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:12Z",
+              "completed_at": "2026-10-25T17:17:18Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:18Z",
+              "completed_at": "2026-10-25T17:17:18Z"
+            },
+            {
+              "name": "Run studio shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:18Z",
+              "completed_at": "2026-10-25T17:17:46Z"
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:17:46Z",
+              "completed_at": "2026-10-25T17:17:46Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:17:46Z",
+              "completed_at": "2026-10-25T17:17:47Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:17:47Z",
+              "completed_at": "2026-10-25T17:17:47Z"
+            }
+          ]
+        },
+        {
+          "id": 121236195965,
+          "name": "gate (sim-realism)",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:10Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:10Z",
+              "completed_at": "2026-10-25T17:17:14Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:14Z",
+              "completed_at": "2026-10-25T17:17:15Z"
+            },
+            {
+              "name": "Run sim-realism shard",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-25T17:17:15Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 121236196025,
+          "name": "gate (sim-contract)",
+          "status": "in_progress",
+          "conclusion": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:46Z",
+              "completed_at": "2026-10-25T17:16:47Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:47Z",
+              "completed_at": "2026-10-25T17:17:09Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:09Z",
+              "completed_at": "2026-10-25T17:17:17Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:17Z",
+              "completed_at": "2026-10-25T17:17:18Z"
+            },
+            {
+              "name": "Run sim-contract shard",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-25T17:17:18Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 121236196053,
+          "name": "gate (core)",
+          "status": "completed",
+          "conclusion": "success",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-25T17:16:46Z",
+              "completed_at": "2026-10-25T17:16:48Z"
+            },
+            {
+              "name": "Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-25T17:16:48Z",
+              "completed_at": "2026-10-25T17:17:11Z"
+            },
+            {
+              "name": "Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-25T17:17:11Z",
+              "completed_at": "2026-10-25T17:17:18Z"
+            },
+            {
+              "name": "Install dependencies",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-25T17:17:18Z",
+              "completed_at": "2026-10-25T17:17:19Z"
+            },
+            {
+              "name": "Run core shard",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-25T17:17:19Z",
+              "completed_at": "2026-10-25T17:39:16Z"
+            },
+            {
+              "name": "Post Run actions/setup-node@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-25T17:39:16Z",
+              "completed_at": "2026-10-25T17:39:16Z"
+            },
+            {
+              "name": "Post Run actions/checkout@v5",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-25T17:39:16Z",
+              "completed_at": "2026-10-25T17:39:16Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-25T17:39:16Z",
+              "completed_at": "2026-10-25T17:39:16Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

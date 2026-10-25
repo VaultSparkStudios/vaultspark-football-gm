@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "session": 123,
-  "capturedAt": "2026-10-25T17:06:45.238Z",
+  "capturedAt": "2026-10-25T17:52:26.108Z",
   "kind": "local-owner-navigation-before-after",
   "sourceRevision": null,
   "sourceFiles": [
     {
       "path": "public/lib/engagementFeatures.js",
-      "sha256": "5e68c35d525703f751c11c89856cd27b8c036100ae893d0dddf7e02bb2664be7"
+      "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc"
     },
     {
       "path": "public/lib/gameplayNavigation.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "tests-ui/s123-owner-inbox.spec.js",
-      "sha256": "5983bc02448dfd465a7878624371c1a8049a4721732ce271488740ca25f85c95"
+      "sha256": "efb6b72b8ccf5215e718e0f7c7288dbfd5ef36b15360c08bc3f9a47a0450533a"
     }
   ],
   "artifact": "Local source hashes; hosted candidate identity pending",
@@ -142,7 +142,7 @@
     },
     {
       "file": "s123-owner-after-desktop-dark-inbox.png",
-      "sha256": "c5ee20425a310c060a72e89d0bdfa25fa91e3764dbedb1bc3c9fccac15fc776a",
+      "sha256": "1a14f5893a332d150d2d432debbd4530614157cd36d33acd2a2ec9e69234518a",
       "phase": "after",
       "theme": "dark",
       "viewport": {
@@ -166,7 +166,7 @@
     },
     {
       "file": "s123-owner-after-desktop-light-inbox.png",
-      "sha256": "b5892bf0ed6a275ee25511e0077b22f173b01bacd963a0efa400d916b0bf1a9e",
+      "sha256": "bb39c5b619958ca96edbcfb801370d05403efeccdae6acbfbf58b6808402e991",
       "phase": "after",
       "theme": "light",
       "viewport": {
@@ -190,7 +190,7 @@
     },
     {
       "file": "s123-owner-after-mobile-dark-inbox.png",
-      "sha256": "2be1bc1f2792ba2e9330bc93f8cdcefa985a949e78b4e11f050f565a574d8137",
+      "sha256": "d8f5e7088e3bd4ab5529b20db675d9620a4fe4e6f7de241a91b926b335b63791",
       "phase": "after",
       "theme": "dark",
       "viewport": {
@@ -214,7 +214,7 @@
     },
     {
       "file": "s123-owner-after-mobile-light-inbox.png",
-      "sha256": "3260e9cf0420dc330d3a2f634bbc469e29d17c3fa40ec80213ab4abd1d921c4f",
+      "sha256": "df032a30767978a64347fcb76297e40a4887940a18eddb3483aef9537049c5ad",
       "phase": "after",
       "theme": "light",
       "viewport": {
@@ -226,8 +226,8 @@
     }
   ],
   "priorReceipt": {
-    "path": "reports/s123-evidence-history/LATEST-dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5.json",
-    "sha256": "dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5"
+    "path": "reports/s123-evidence-history/LATEST-2e05a2ce87e3f04d5eeceab6eb42ae0108a8c555c49ff8adede83787f99c7baf.json",
+    "sha256": "2e05a2ce87e3f04d5eeceab6eb42ae0108a8c555c49ff8adede83787f99c7baf"
   },
   "inspection": {
     "renderedPixelsReviewed": true,
@@ -238,6 +238,6 @@
     "fixesApplied": [
       "Canonical Boardroom destination, closed Inbox and visible focused owner mandate."
     ],
-    "method": "Viewed every PNG. Before: drawer stays open over Desk after marking action opened. After: drawer closes and focused owner mandate is visible below sticky header on desktop/mobile in dark/light. No new clipping or unreadable text in touched states. Initial animation screenshots were replaced after capture-settling correction. Final nested-type revision: all eight after PNGs recaptured and individually viewed again; warning icon and Take Action retained, drawer closes and mandate stays readable in all four variants."
+    "method": "Viewed every PNG. Before: drawer stays open over Desk after marking action opened. After: drawer closes and focused owner mandate is visible below sticky header on desktop/mobile in dark/light. No new clipping or unreadable text in touched states. Initial animation screenshots were replaced after capture-settling correction. Final nested-type revision: all eight after PNGs recaptured and individually viewed again; warning icon and Take Action retained, drawer closes and mandate stays readable in all four variants. Scope-guard final revision: eight after PNGs recaptured and viewed again, unchanged readable ownership destination and warning/action controls."
   }
 }

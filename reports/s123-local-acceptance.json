@@ -1,0 +1,43 @@
+{
+  "session": 123,
+  "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+  "observedAt": "2026-10-25T17:20:49.457Z",
+  "focused": {
+    "passed": 49,
+    "total": 49,
+    "exitCode": 0,
+    "scope": "Cloud credential denial/migration/clear, Gist verification, deployment summaries, owner inbox and boot budget"
+  },
+  "studio": {
+    "passed": 389,
+    "total": 389,
+    "exitCode": 0,
+    "environment": "Dedicated tracked candidate checkout with existing dependencies linked; ignored private ledger and generic helper files absent at admission",
+    "postTestGeneratedChanges": [
+      "context/PROJECT_STATUS.json",
+      "docs/STARTUP_BRIEF.md"
+    ],
+    "scope": "Project-native Studio shard; not a signed independent hosted CI substitute"
+  },
+  "independentReview": {
+    "verdict": "pass",
+    "scope": "Credential fallback, deployment-summary truth, final owner routing and nested event support;21 source/capture hashes verified",
+    "reviewer": "review_repairs"
+  },
+  "boot": {
+    "bytes": 649837,
+    "target": 650000,
+    "passed": true
+  },
+  "browser": {
+    "passed": 5,
+    "total": 5,
+    "receipt": "reports/s123-owner-navigation-review.json"
+  },
+  "stagingBrowser": {
+    "passed": 5,
+    "total": 5,
+    "receipt": "reports/s123-staging-browser-review.json"
+  },
+  "canonicalTimingConformance": "unknown: recipient checker lacks canonical recorder/timing helper; strict pre-implementation output retained separately"
+}

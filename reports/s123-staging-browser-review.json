@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0",
+  "session": 123,
+  "at": "2026-10-25T17:16:15.787Z",
+  "phase": "staging",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35"
+  },
+  "manifestReadback": {
+    "httpStatus": 200,
+    "exactSource": true,
+    "exactArtifact": true
+  },
+  "reviewer": "game_audit",
+  "verdict": "pass",
+  "browser": {
+    "passed": 5,
+    "total": 5,
+    "failed": 0,
+    "skipped": 0,
+    "channel": "msedge",
+    "durationMs": 31797.000000000004,
+    "rawReportSha256": "ce538163d814ab8fe13e2ee212fc32283ed40d3b4d7b8971a5e1de7f3d18cdfd",
+    "scope": "Real hosted league creation; nested owner Inbox warning/action reaches focused visible ownerSpotlight with dialog closed, desktop/mobile dark/light. Fifth test denies all Storage methods and verifies mocked GitHub POST then PATCH, remembered Gist ID and token clear."
+  },
+  "sourceFiles": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "5e68c35d525703f751c11c89856cd27b8c036100ae893d0dddf7e02bb2664be7"
+    },
+    {
+      "path": "public/lib/gistCredentials.js",
+      "sha256": "f358cc804d864e5013ddf8f06fe541d27d4129cb9df2c35b802310f5caaceda4"
+    },
+    {
+      "path": "tests-ui/s123-owner-inbox.spec.js",
+      "sha256": "5983bc02448dfd465a7878624371c1a8049a4721732ce271488740ca25f85c95"
+    }
+  ],
+  "visual": {
+    "reviewed": 8,
+    "captures": [
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/desktop-dark-destination.png",
+        "sha256": "96b72afc0736463d54de48b1357bf18f84211169b95f836ab0179ab46ed55e4b",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/desktop-dark-inbox.png",
+        "sha256": "df94120e5c24b755e1decbe76dddace545beea31a4f40d6ac1ff2c6d751309dd",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/desktop-light-destination.png",
+        "sha256": "cc56793e8d32dde53070a3a9cc5d6bbdaa9531889a36efb0af6e0628c43d6d8d",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/desktop-light-inbox.png",
+        "sha256": "3b67b286c90b9db053cfbb0b029c2910327d9119fd34e37dd75178b38ea0f9cf",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/mobile-dark-destination.png",
+        "sha256": "9ba611b06b3242b4a5ba37016dedf5f489e9b1e0ad63a5d5caa9f08fc2922dbc",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/mobile-dark-inbox.png",
+        "sha256": "69a63a935f1a4135170236ed8044d1a213ebf36b983859c3394d1b1d192853d8",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/mobile-light-destination.png",
+        "sha256": "cff86dd0b73407095fd83d8f03b26e35f159f760537b0940e924e2d2199327f2",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/staging/mobile-light-inbox.png",
+        "sha256": "48c37829d02de5ffae66ab55dedd21a7504be6477537cbf96c0d5c6aab5eac90",
+        "inspected": true
+      }
+    ],
+    "inspection": "Individually viewed all eight hosted screenshots. Inbox warning icon and Take Action visible, correct ownership mandate reached below sticky header, drawer closed, no new clipping or unreadable text in touched desktop/mobile dark/light states."
+  },
+  "limits": "Synthetic owner event and mocked cloud network/token inside isolated browser contexts; hosted application modules and league creation are real. No real account credential or remote GitHub write used."
+}

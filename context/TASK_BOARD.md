@@ -2,9 +2,9 @@
 
 ## S123 Wave status
 
-- [ ] Wave 1 — Cloud storage resilience: focused checks pass; browser POST-to-PATCH acceptance pending.
-- [ ] Wave 2 — Owner ultimatum opens Boardroom: implementation and desktop/mobile both-theme visual verification in progress.
-- [ ] Wave 3 — Deployment receipt summaries: focused checks pass; broad checks, exact candidate staging/CI/production and ordered closeout pending.
+- [x] Wave 1 — Cloud storage resilience: focused and real-browser denied-storage POST/PATCH/clear checks pass locally and on staging.
+- [x] Wave 2 — Owner ultimatum opens Boardroom: corrected async ownership guard passes26units and local browser5/5 including8cross-franchise boundary cases;16images inspected/hash-bound. Hosted corrected-source proof remains in Wave3.
+- [ ] Wave 3 — Candidate456682bf superseded before production for an introduced ownership race; all3provider workflows confirmed cancelled. Corrected source passes focused49/49 and boot649986/650000. Cut/stage/push corrected candidate, complete exact CI and production, then ordered closeout/final metadata publication.
 
 ## S122 Wave status
 

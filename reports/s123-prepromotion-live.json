@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-25T17:13:06.671Z",
+  "observations": [
+    {
+      "url": "https://staging.playfranchisearchitect.com/_health",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "service": "franchise-architect-football",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactFingerprint": {
+          "algorithm": "sha256",
+          "digest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+          "files": 361,
+          "exclusions": [
+            "_health",
+            "deploy-manifest.json",
+            "edge-policy-receipt.json"
+          ]
+        },
+        "styleAsset": "styles.c4075a9e38.css",
+        "communityStatsAsset": "community-stats.25f97e0a1e.js",
+        "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+        "edgePolicyAppliedToHostedOrigin": false,
+        "generatedAt": "2026-10-25T02:09:42.064Z",
+        "launchReady": false,
+        "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+      }
+    },
+    {
+      "url": "https://playfranchisearchitect.com/_health",
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "service": "franchise-architect-football",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactFingerprint": {
+          "algorithm": "sha256",
+          "digest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+          "files": 361,
+          "exclusions": [
+            "_health",
+            "deploy-manifest.json",
+            "edge-policy-receipt.json"
+          ]
+        },
+        "styleAsset": "styles.c4075a9e38.css",
+        "communityStatsAsset": "community-stats.25f97e0a1e.js",
+        "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+        "edgePolicyAppliedToHostedOrigin": false,
+        "generatedAt": "2026-10-25T03:02:00.159Z",
+        "launchReady": false,
+        "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+      }
+    },
+    {
+      "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+      "status": 200,
+      "body": {
+        "ok": true,
+        "database": "ready",
+        "latencyMs": 0,
+        "schemaVersion": 1,
+        "service": "franchise-architect-community-stats",
+        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+      }
+    }
+  ]
+}

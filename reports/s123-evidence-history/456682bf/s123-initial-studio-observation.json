@@ -1,0 +1,16 @@
+{
+  "session": 123,
+  "command": "node scripts/run-test-shard.mjs studio",
+  "exitCode": 1,
+  "tests": 389,
+  "passed": 384,
+  "failed": 5,
+  "scope": "Working checkout while implementation and audit-state reconciliation were still active; not final candidate acceptance.",
+  "classifications": [
+    { "test": "browser boot budget", "cause": "self", "observedBytes": 650312, "limit": 650000, "nextCheck": "final source budget and clean candidate suite" },
+    { "test": "project authority contract", "cause": "ignored local generic authority scripts exist", "nextCheck": "clean candidate checkout, preserving ignored local files" },
+    { "test": "public private-ledger absence", "cause": "ignored local private ledger exists; git ls-files confirms it is not tracked", "nextCheck": "clean candidate checkout, preserving private local ledger" },
+    { "test": "audit premises readable", "cause": "self: three repaired items were still pending", "nextCheck": "local shipped statuses and strict resolved-premise verification" },
+    { "test": "audit corpus no open decay", "cause": "self: same three pending item statuses", "nextCheck": "local shipped statuses and clean candidate suite" }
+  ]
+}

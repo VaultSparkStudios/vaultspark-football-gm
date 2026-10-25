@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "session": 123,
+  "capturedAt": "2026-10-25T17:16:15.787Z",
+  "kind": "owner-navigation-local-and-hosted-rendered-evidence",
+  "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+  "sourceFiles": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "5e68c35d525703f751c11c89856cd27b8c036100ae893d0dddf7e02bb2664be7"
+    },
+    {
+      "path": "public/lib/gameplayNavigation.js",
+      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    },
+    {
+      "path": "public/lib/exactSurfaceNavigation.js",
+      "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
+    },
+    {
+      "path": "public/lib/gistCredentials.js",
+      "sha256": "f358cc804d864e5013ddf8f06fe541d27d4129cb9df2c35b802310f5caaceda4"
+    },
+    {
+      "path": "tests-ui/s123-owner-inbox.spec.js",
+      "sha256": "5983bc02448dfd465a7878624371c1a8049a4721732ce271488740ca25f85c95"
+    }
+  ],
+  "artifact": "Exact staged application artifact; local before/after controls and actual hosted staging evidence are separately identified",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s123-owner-before-desktop-dark-destination.png",
+      "sha256": "8ecba6f5295acf885fd0cdf4d5a4bc48943a76ac5108298c964ef3e0816200b1",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action before desktop dark",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-before-desktop-dark-inbox.png",
+      "sha256": "3599f0d2c97e6f7565407de133859a7992e8b7974d63f19668b1a0e862b601f3",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action before desktop dark",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-before-desktop-light-destination.png",
+      "sha256": "6bc82f8308950efcee9695005d0d8e516e6010a44eac3770f7c556249f78113c",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action before desktop light",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-before-desktop-light-inbox.png",
+      "sha256": "0c718ecc1eb43eeec30d372272449528f3a1ca2fe70eeca199be4207cde893e0",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action before desktop light",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-before-mobile-dark-destination.png",
+      "sha256": "60a5f755fdc2d60512f7e054afe0ddf766ebbd59b2397bd47240a77dcd54a146",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action before mobile dark",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-before-mobile-dark-inbox.png",
+      "sha256": "e0b1885e92c4c51b98a8d23e28c9b5adb74f6a365d37c96233d13ce017f8e365",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action before mobile dark",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-before-mobile-light-destination.png",
+      "sha256": "86583baf369402c959fbd148d4ed803f7bbbc4991cd074b836cc6eb8a9e649e0",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action before mobile light",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-before-mobile-light-inbox.png",
+      "sha256": "b4141ad49861dd0d6bace2e67eb37f8fd816639b3dc8da573a5821b3ff36067a",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action before mobile light",
+      "inspected": true,
+      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+    },
+    {
+      "file": "s123-owner-after-desktop-dark-destination.png",
+      "sha256": "a104218034a8b40a78eb37c1eba8e19fdf52abd116f107a26424679e6d055199",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action after desktop dark",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-after-desktop-dark-inbox.png",
+      "sha256": "c5ee20425a310c060a72e89d0bdfa25fa91e3764dbedb1bc3c9fccac15fc776a",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action after desktop dark",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-after-desktop-light-destination.png",
+      "sha256": "ee8dea9292e1436c603bbace934a811e2d58f60e65e11ff543d41d352b1fd19d",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action after desktop light",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-after-desktop-light-inbox.png",
+      "sha256": "b5892bf0ed6a275ee25511e0077b22f173b01bacd963a0efa400d916b0bf1a9e",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner Inbox action after desktop light",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-after-mobile-dark-destination.png",
+      "sha256": "663b6e29f9750096d923ae65ef57b22f50338992dd64ea77633d1d0ab1993ff1",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action after mobile dark",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-after-mobile-dark-inbox.png",
+      "sha256": "2be1bc1f2792ba2e9330bc93f8cdcefa985a949e78b4e11f050f565a574d8137",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action after mobile dark",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-after-mobile-light-destination.png",
+      "sha256": "15e68d6954fe1f66b45ef9374d49ba7e7116f9ba332e3e9d73bc15ae21954c28",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action after mobile light",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-after-mobile-light-inbox.png",
+      "sha256": "3260e9cf0420dc330d3a2f634bbc469e29d17c3fa40ec80213ab4abd1d921c4f",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner Inbox action after mobile light",
+      "inspected": true,
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385"
+    },
+    {
+      "file": "s123-owner-staging-desktop-dark-destination.png",
+      "sha256": "96b72afc0736463d54de48b1357bf18f84211169b95f836ab0179ab46ed55e4b",
+      "theme": "dark",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hosted staging owner Inbox desktop-dark-destination.png",
+      "inspected": true
+    },
+    {
+      "file": "s123-owner-staging-desktop-dark-inbox.png",
+      "sha256": "df94120e5c24b755e1decbe76dddace545beea31a4f40d6ac1ff2c6d751309dd",
+      "theme": "dark",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hosted staging owner Inbox desktop-dark-inbox.png",
+      "inspected": true
+    },
+    {
+      "file": "s123-owner-staging-desktop-light-destination.png",
+      "sha256": "cc56793e8d32dde53070a3a9cc5d6bbdaa9531889a36efb0af6e0628c43d6d8d",
+      "theme": "light",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hosted staging owner Inbox desktop-light-destination.png",
+      "inspected": true
+    },
+    {
+      "file": "s123-owner-staging-desktop-light-inbox.png",
+      "sha256": "3b67b286c90b9db053cfbb0b029c2910327d9119fd34e37dd75178b38ea0f9cf",
+      "theme": "light",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hosted staging owner Inbox desktop-light-inbox.png",
+      "inspected": true
+    },
+    {
+      "file": "s123-owner-staging-mobile-dark-destination.png",
+      "sha256": "9ba611b06b3242b4a5ba37016dedf5f489e9b1e0ad63a5d5caa9f08fc2922dbc",
+      "theme": "dark",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hosted staging owner Inbox mobile-dark-destination.png",
+      "inspected": true
+    },
+    {
+      "file": "s123-owner-staging-mobile-dark-inbox.png",
+      "sha256": "69a63a935f1a4135170236ed8044d1a213ebf36b983859c3394d1b1d192853d8",
+      "theme": "dark",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hosted staging owner Inbox mobile-dark-inbox.png",
+      "inspected": true
+    },
+    {
+      "file": "s123-owner-staging-mobile-light-destination.png",
+      "sha256": "cff86dd0b73407095fd83d8f03b26e35f159f760537b0940e924e2d2199327f2",
+      "theme": "light",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hosted staging owner Inbox mobile-light-destination.png",
+      "inspected": true
+    },
+    {
+      "file": "s123-owner-staging-mobile-light-inbox.png",
+      "sha256": "48c37829d02de5ffae66ab55dedd21a7504be6477537cbf96c0d5c6aab5eac90",
+      "theme": "light",
+      "phase": "staging",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hosted staging owner Inbox mobile-light-inbox.png",
+      "inspected": true
+    }
+  ],
+  "priorReceipt": {
+    "path": "reports/s123-evidence-history/LATEST-dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5.json",
+    "sha256": "dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5"
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "game_audit",
+    "verdict": "pass",
+    "blockingDefectsOpen": 0,
+    "findings": [],
+    "fixesApplied": [
+      "Canonical Boardroom destination, closed Inbox and visible focused owner mandate."
+    ],
+    "method": "Viewed every PNG. Before: drawer stays open over Desk after marking action opened. After: drawer closes and focused owner mandate is visible below sticky header on desktop/mobile in dark/light. No new clipping or unreadable text in touched states. Initial animation screenshots were replaced after capture-settling correction. Final nested-type revision: all eight after PNGs recaptured and individually viewed again; warning icon and Take Action retained, drawer closes and mandate stays readable in all four variants. staging eight hosted PNGs individually inspected by game_audit; source and artifact verified."
+  },
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35"
+  },
+  "scope": "16 local before/after controls plus 8 staging actual hosted captures. The cloud check stubs only GitHub responses, while all owner journeys run against the actual deployed app.",
+  "hostedReviews": {
+    "staging": {
+      "path": "reports/s123-staging-browser-review.json",
+      "sha256": "002d3b8f58abe997769fb6b0d0217c65e97d44304846098bb4526a0d2559256e"
+    }
+  }
+}

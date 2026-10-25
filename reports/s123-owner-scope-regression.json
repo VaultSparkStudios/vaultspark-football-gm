@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "session": 123,
+  "at": "2026-10-25T17:52:26.081Z",
+  "finding": "Async owner Inbox action could resolve another franchise same-key event after an authority switch",
+  "original": {
+    "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+    "sourceSha256": "5e68c35d525703f751c11c89856cd27b8c036100ae893d0dddf7e02bb2664be7",
+    "origin": "https://staging.playfranchisearchitect.com",
+    "artifactFingerprint": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+    "observed": {
+      "originalScope": "fa-20260306-buf",
+      "newScope": "probe-new-franchise",
+      "beforeResolved": null,
+      "afterResolved": 1792950504674,
+      "activeTab": "boardroomTab"
+    },
+    "reproduction": "Real hosted league, inject shared-key owner event in A, dispatch actual Take Action click, synchronously switch dashboard/inbox to B and inject same key before dynamic import resumes. B event becomes resolved despite no B click.",
+    "probeSha256": "8cf338f305eea6b20404535f97a5cfc85ff3c4a5021f52743f74b4383d765fe7"
+  },
+  "fix": {
+    "source": "public/lib/engagementFeatures.js",
+    "sourceSha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc",
+    "contract": "Capture Inbox scope at click and compare both Inbox and current dashboard franchise scope after dynamic import and after navigation before completing action."
+  },
+  "regression": {
+    "test": "tests-ui/s123-owner-inbox.spec.js",
+    "testSha256": "efb6b72b8ccf5215e718e0f7c7288dbfd5ef36b15360c08bc3f9a47a0450533a",
+    "browserPassed": 5,
+    "browserTotal": 5,
+    "scopeBoundaryCases": 8,
+    "variants": [
+      "desktop dark",
+      "desktop light",
+      "mobile dark",
+      "mobile light"
+    ],
+    "boundaries": [
+      "before dynamic import resumes",
+      "during navigation hydration after Boardroom activation"
+    ],
+    "scheduling": "Synchronous source switch and real DOM MutationObserver; real diagnostics completion subscription awaits handler completion. No implementation source interception in fixed regression tests.",
+    "result": "Recipient same-key owner event remains unresolved at both boundaries in all four variants."
+  },
+  "bootBudget": {
+    "bytes": 649986,
+    "target": 650000,
+    "limitUnchanged": true
+  },
+  "limits": "Local fixed-candidate browser proof; exact hosted replacement candidate still requires fresh staging and production verification."
+}

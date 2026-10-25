@@ -22481,9 +22481,12 @@
       "session": 123
     },
     "s123-owner-after-desktop-dark-inbox.png": {
-      "sha256": "c5ee20425a310c060a72e89d0bdfa25fa91e3764dbedb1bc3c9fccac15fc776a",
-      "bytes": 497348,
-      "session": 123
+      "sha256": "1a14f5893a332d150d2d432debbd4530614157cd36d33acd2a2ec9e69234518a",
+      "bytes": 498348,
+      "session": 123,
+      "supersededSha256": [
+        "c5ee20425a310c060a72e89d0bdfa25fa91e3764dbedb1bc3c9fccac15fc776a"
+      ]
     },
     "s123-owner-after-desktop-light-destination.png": {
       "sha256": "ee8dea9292e1436c603bbace934a811e2d58f60e65e11ff543d41d352b1fd19d",
@@ -22491,9 +22494,12 @@
       "session": 123
     },
     "s123-owner-after-desktop-light-inbox.png": {
-      "sha256": "b5892bf0ed6a275ee25511e0077b22f173b01bacd963a0efa400d916b0bf1a9e",
-      "bytes": 427673,
-      "session": 123
+      "sha256": "bb39c5b619958ca96edbcfb801370d05403efeccdae6acbfbf58b6808402e991",
+      "bytes": 427667,
+      "session": 123,
+      "supersededSha256": [
+        "b5892bf0ed6a275ee25511e0077b22f173b01bacd963a0efa400d916b0bf1a9e"
+      ]
     },
     "s123-owner-after-mobile-dark-destination.png": {
       "sha256": "663b6e29f9750096d923ae65ef57b22f50338992dd64ea77633d1d0ab1993ff1",
@@ -22501,9 +22507,12 @@
       "session": 123
     },
     "s123-owner-after-mobile-dark-inbox.png": {
-      "sha256": "2be1bc1f2792ba2e9330bc93f8cdcefa985a949e78b4e11f050f565a574d8137",
-      "bytes": 15577,
-      "session": 123
+      "sha256": "d8f5e7088e3bd4ab5529b20db675d9620a4fe4e6f7de241a91b926b335b63791",
+      "bytes": 15895,
+      "session": 123,
+      "supersededSha256": [
+        "2be1bc1f2792ba2e9330bc93f8cdcefa985a949e78b4e11f050f565a574d8137"
+      ]
     },
     "s123-owner-after-mobile-light-destination.png": {
       "sha256": "15e68d6954fe1f66b45ef9374d49ba7e7116f9ba332e3e9d73bc15ae21954c28",
@@ -22511,9 +22520,12 @@
       "session": 123
     },
     "s123-owner-after-mobile-light-inbox.png": {
-      "sha256": "3260e9cf0420dc330d3a2f634bbc469e29d17c3fa40ec80213ab4abd1d921c4f",
-      "bytes": 14870,
-      "session": 123
+      "sha256": "df032a30767978a64347fcb76297e40a4887940a18eddb3483aef9537049c5ad",
+      "bytes": 14863,
+      "session": 123,
+      "supersededSha256": [
+        "3260e9cf0420dc330d3a2f634bbc469e29d17c3fa40ec80213ab4abd1d921c4f"
+      ]
     },
     "s123-owner-before-desktop-dark-destination.png": {
       "sha256": "8ecba6f5295acf885fd0cdf4d5a4bc48943a76ac5108298c964ef3e0816200b1",
@@ -22553,6 +22565,46 @@
     "s123-owner-before-mobile-light-inbox.png": {
       "sha256": "b4141ad49861dd0d6bace2e67eb37f8fd816639b3dc8da573a5821b3ff36067a",
       "bytes": 14560,
+      "session": 123
+    },
+    "s123-owner-staging-desktop-dark-destination.png": {
+      "sha256": "96b72afc0736463d54de48b1357bf18f84211169b95f836ab0179ab46ed55e4b",
+      "bytes": 512714,
+      "session": 123
+    },
+    "s123-owner-staging-desktop-dark-inbox.png": {
+      "sha256": "df94120e5c24b755e1decbe76dddace545beea31a4f40d6ac1ff2c6d751309dd",
+      "bytes": 500811,
+      "session": 123
+    },
+    "s123-owner-staging-desktop-light-destination.png": {
+      "sha256": "cc56793e8d32dde53070a3a9cc5d6bbdaa9531889a36efb0af6e0628c43d6d8d",
+      "bytes": 426754,
+      "session": 123
+    },
+    "s123-owner-staging-desktop-light-inbox.png": {
+      "sha256": "3b67b286c90b9db053cfbb0b029c2910327d9119fd34e37dd75178b38ea0f9cf",
+      "bytes": 431274,
+      "session": 123
+    },
+    "s123-owner-staging-mobile-dark-destination.png": {
+      "sha256": "9ba611b06b3242b4a5ba37016dedf5f489e9b1e0ad63a5d5caa9f08fc2922dbc",
+      "bytes": 145536,
+      "session": 123
+    },
+    "s123-owner-staging-mobile-dark-inbox.png": {
+      "sha256": "69a63a935f1a4135170236ed8044d1a213ebf36b983859c3394d1b1d192853d8",
+      "bytes": 15408,
+      "session": 123
+    },
+    "s123-owner-staging-mobile-light-destination.png": {
+      "sha256": "cff86dd0b73407095fd83d8f03b26e35f159f760537b0940e924e2d2199327f2",
+      "bytes": 136556,
+      "session": 123
+    },
+    "s123-owner-staging-mobile-light-inbox.png": {
+      "sha256": "48c37829d02de5ffae66ab55dedd21a7504be6477537cbf96c0d5c6aab5eac90",
+      "bytes": 14783,
       "session": 123
     },
     "s69-desktop-gm-persona-dark.png": {

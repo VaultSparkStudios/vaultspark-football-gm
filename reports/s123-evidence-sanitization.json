@@ -1,0 +1,14 @@
+{
+  "session": 123,
+  "scope": "Public performance receipt copies",
+  "initialGenericMatches": 4,
+  "classification": "Provider response report-to endpoint URL query parameters",
+  "redaction": "Only URL query parameters of verified HTTPS *.cloudflare.com reporting endpoints are omitted; raw receipt hashes and unchanged metrics/identity/security headers remain in each public copy.",
+  "scannerRulesChanged": false,
+  "thresholdsChanged": false,
+  "allowlistAdded": false,
+  "workingRescan": {
+    "textFiles": 32,
+    "findings": 0
+  }
+}

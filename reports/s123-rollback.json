@@ -1,0 +1,103 @@
+{
+  "session": 123,
+  "observedAt": "2026-10-25T17:27:56.603Z",
+  "frontend": {
+    "previous": {
+      "id": "9f82b5a9-74b8-4baa-a551-a6d5d6c5bc8e",
+      "url": "https://9f82b5a9.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "createdAt": "2026-10-25T04:43:32.507344Z"
+    },
+    "available": true,
+    "restore": "Cloudflare Pages rollback to the recorded prior successful production deployment"
+  },
+  "backend": {
+    "previousSourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "liveHealthReceipt": "reports/s123-prepromotion-live.json",
+    "restore": "Promote the prior recorded image tag with the existing pinned-SSH deployer; do not recreate or reset the database"
+  },
+  "deployments": [
+    {
+      "id": "9f82b5a9-74b8-4baa-a551-a6d5d6c5bc8e",
+      "url": "https://9f82b5a9.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "createdAt": "2026-10-25T04:43:32.507344Z"
+    },
+    {
+      "id": "284deb97-c752-413e-911c-95ef289ef48e",
+      "url": "https://284deb97.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "createdAt": "2026-10-25T00:32:00.113369Z"
+    },
+    {
+      "id": "8aeff7a2-de14-4c2c-bedc-2a0ebca1e7cd",
+      "url": "https://8aeff7a2.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "createdAt": "2026-10-24T03:15:38.432325Z"
+    },
+    {
+      "id": "ff9a7373-48bd-4146-80e3-9c800f4f7d97",
+      "url": "https://ff9a7373.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "207159eae7c2cc68bb9df1058441eab34a057d3d",
+      "createdAt": "2026-10-23T19:08:37.963553Z"
+    },
+    {
+      "id": "c2a3bd23-32ec-424c-be84-c76135fa5acc",
+      "url": "https://c2a3bd23.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "c0ce44b4b3c99f2c494b1ca7c6f243c371f4c10e",
+      "createdAt": "2026-10-23T06:57:53.355376Z"
+    },
+    {
+      "id": "11119545-e3ff-4230-82c1-cefdc64b1fc2",
+      "url": "https://11119545.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
+      "createdAt": "2026-10-22T17:21:11.962419Z"
+    },
+    {
+      "id": "945b7008-4325-48f6-88cb-debc870a1e9e",
+      "url": "https://945b7008.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "d913b9f9c0043d00131506c0d4271034a15fc169",
+      "createdAt": "2026-10-04T12:20:35.856561Z"
+    },
+    {
+      "id": "57465903-3ce9-4873-8e99-39f8a972147d",
+      "url": "https://57465903.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "80125a0a5609be8a9fd7c01399e176ffe1b8e052",
+      "createdAt": "2026-10-03T18:17:44.372296Z"
+    },
+    {
+      "id": "887593df-83d9-463d-b5ee-4bcab89926bf",
+      "url": "https://887593df.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "1c57a3beeb420001d6ba1611e027043df76f7d57",
+      "createdAt": "2026-10-02T20:12:56.282722Z"
+    },
+    {
+      "id": "640f7de0-0c41-41c4-bdd2-99b15b7f2079",
+      "url": "https://640f7de0.franchise-architect-football.pages.dev",
+      "environment": "production",
+      "status": "success",
+      "sourceRevision": "097a7caf6f63c019bc4bf18ed763a3dae68da4d3",
+      "createdAt": "2026-10-02T09:23:22.217918Z"
+    }
+  ]
+}
