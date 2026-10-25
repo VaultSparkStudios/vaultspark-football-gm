@@ -227,12 +227,23 @@ export function testRecordCoherenceViolations(status = {}) {
  * Validate + write context/PROJECT_STATUS.json under the invariant.
  * Returns { written, violations }. Throws on schema-contract or I/O failure.
  */
-function writeProjectStatusHeld(repoRoot, status, { touchLastUpdated = true } = {}, lock) {
+/**
+ * What a canonical write would publish, without writing (S404): the invariant, the
+ * session projection and the schema contract, exactly as writeProjectStatus applies
+ * them. Throws where the write would throw. The closeout fail-fast simulates its later
+ * steps' writes through this, so a write the contract refuses is refused there too.
+ */
+export function projectStatusForWrite(repoRoot, status, { touchLastUpdated = true } = {}) {
   const { status: invariantStatus, violations } = enforceSilInvariant(status);
   const fixed = refreshSessionProjection(invariantStatus);
   if (touchLastUpdated) fixed.lastUpdated = new Date().toISOString().slice(0, 10);
   const shape = validateProjectStatusShape(fixed, repoRoot);
   if (!shape.ok) throw new Error(`PROJECT_STATUS contract invalid:\n${shape.errors.map((error) => `  - ${error}`).join('\n')}`);
+  return { status: fixed, violations };
+}
+
+function writeProjectStatusHeld(repoRoot, status, opts = {}, lock) {
+  const { status: fixed, violations } = projectStatusForWrite(repoRoot, status, opts);
   const p = path.join(repoRoot, 'context', 'PROJECT_STATUS.json');
   fs.mkdirSync(path.dirname(p), { recursive: true });
   atomicWriteJson(p, fixed, lock.assertHeld);
