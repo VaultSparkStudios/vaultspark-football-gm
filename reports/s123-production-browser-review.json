@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "session": 123,
+  "at": "2026-10-25T19:20:48.676Z",
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+  },
+  "manifestReadback": {
+    "httpStatus": 200,
+    "exactSource": true,
+    "exactArtifact": true
+  },
+  "reviewer": "game_audit",
+  "verdict": "pass",
+  "browser": {
+    "passed": 5,
+    "total": 5,
+    "failed": 0,
+    "skipped": 0,
+    "channel": "msedge",
+    "durationMs": 31980.842999999997,
+    "rawReportSha256": "299c8d4a68ec7da9b0e967c93685660413ff986f8251489f96778eb5888d3ce0",
+    "scope": "Real hosted league creation, nested owner Inbox icon/action reaches focused ownership controls with dialog closed across desktop/mobile dark/light. Each variant verifies both async cross-franchise same-key boundaries (8 regressions). Fifth test denies Storage operations and verifies mocked GitHub POST/PATCH, remembered Gist ID and token clear.",
+    "crossFranchiseBoundaryCases": 8
+  },
+  "sourceFiles": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc"
+    },
+    {
+      "path": "public/lib/gistCredentials.js",
+      "sha256": "f358cc804d864e5013ddf8f06fe541d27d4129cb9df2c35b802310f5caaceda4"
+    },
+    {
+      "path": "tests-ui/s123-owner-inbox.spec.js",
+      "sha256": "efb6b72b8ccf5215e718e0f7c7288dbfd5ef36b15360c08bc3f9a47a0450533a"
+    }
+  ],
+  "visual": {
+    "reviewed": 8,
+    "captures": [
+      {
+        "path": "output/playwright/s123-owner-inbox/production/desktop-dark-destination.png",
+        "sha256": "96b72afc0736463d54de48b1357bf18f84211169b95f836ab0179ab46ed55e4b",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/production/desktop-dark-inbox.png",
+        "sha256": "8ba6d1b62379c907622322773625cc8feae1e008aff0f2b9a799e026388ec0a7",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/production/desktop-light-destination.png",
+        "sha256": "cc56793e8d32dde53070a3a9cc5d6bbdaa9531889a36efb0af6e0628c43d6d8d",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/production/desktop-light-inbox.png",
+        "sha256": "b3cdd995c08f3f12c8e867dec8ed8536e8ec32766a15bcc3dc3e317b42b4f3f9",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/production/mobile-dark-destination.png",
+        "sha256": "9ba611b06b3242b4a5ba37016dedf5f489e9b1e0ad63a5d5caa9f08fc2922dbc",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/production/mobile-dark-inbox.png",
+        "sha256": "929e1934233231dd232de9484bbae59641fe0597ad008f58c9be914028bcab32",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/production/mobile-light-destination.png",
+        "sha256": "cff86dd0b73407095fd83d8f03b26e35f159f760537b0940e924e2d2199327f2",
+        "inspected": true
+      },
+      {
+        "path": "output/playwright/s123-owner-inbox/production/mobile-light-inbox.png",
+        "sha256": "d3bdbdfb0c72615e1264cbbc83c3a5eb37bf1109d0e6de723467bee0a2c14642",
+        "inspected": true
+      }
+    ],
+    "inspection": "Individually viewed all eight fresh hosted images. Readable Inbox warning and action; drawer closes and focused ownership mandate is visible below sticky header, desktop/mobile in both themes. No new clipping in touched states."
+  },
+  "limits": "Synthetic owner events and mocked cloud network/token inside isolated browser contexts; hosted modules and generated league are real. No real account credential or remote GitHub write.",
+  "runtimeModules": [
+    {
+      "path": "lib/engagementFeatures.js",
+      "httpStatus": 200,
+      "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc",
+      "artifactEntryMatches": true
+    },
+    {
+      "path": "lib/gistCredentials.js",
+      "httpStatus": 200,
+      "sha256": "f358cc804d864e5013ddf8f06fe541d27d4129cb9df2c35b802310f5caaceda4",
+      "artifactEntryMatches": true
+    },
+    {
+      "path": "lib/gistSync.js",
+      "httpStatus": 200,
+      "sha256": "10409f97753e6323fe7ce0574ab7305f0306b1bf2ff0426dceaf4350d039b429",
+      "artifactEntryMatches": true
+    }
+  ]
+}

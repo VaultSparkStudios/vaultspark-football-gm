@@ -1,0 +1,12 @@
+{
+  "session": 123,
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "runId": 40220306443,
+  "jobId": 121250249203,
+  "conclusion": "success",
+  "passed": 280,
+  "skipped": 3,
+  "failed": 0,
+  "rawLogSha256": "70809038956560764deb90b819ba3dbed31838b29b7932ac607d5b3133cb9d21",
+  "scope": "Actual completed CI browser job log; skipped cases remain distinct from passes."
+}

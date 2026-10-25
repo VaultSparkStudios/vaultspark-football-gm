@@ -1,0 +1,62 @@
+{
+  "session": 123,
+  "at": "2026-10-25T19:22:01.238Z",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "runId": 40220306459,
+  "status": "completed",
+  "conclusion": "cancelled",
+  "reason": "Redundant on-push build cancelled after actual brokered direct production promotion and final nonred workflow observation. No Pages success is claimed.",
+  "priorObservation": {
+    "id": 40220306459,
+    "headSha": "49035219b7511bb5a54c438eba73f62798f0e072",
+    "status": "in_progress",
+    "conclusion": null,
+    "attempt": 1,
+    "observedAt": "2026-10-25T19:20:19.799Z",
+    "jobsObserved": 5,
+    "noExecutedRed": true
+  },
+  "acceptance": {
+    "ciRunId": 40220306443,
+    "sevenRequiredJobsVerified": true,
+    "frontendReceipt": "reports/s123-frontend-deployment.json",
+    "deploymentId": "9674e9d1-5282-418a-b607-32410054a026",
+    "canonicalProductionNative": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14
+    }
+  },
+  "jobs": [
+    {
+      "name": "gate (sim realism)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "gate (sim contract)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "gate (studio (protocol truth))",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "gate (core (engine + domain behavior))",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "build",
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "cancelled"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "session": 123,
+  "observedAt": "2026-10-25T19:33:41.579Z",
+  "scope": "Actively re-polled 19 retained root yielded-execution handles. This is a scoped handle count, not all historical shell commands. Subsequent test and publication handles require separate reconciliation.",
+  "started": 19,
+  "closed": 19,
+  "running": 0,
+  "handles": [
+    {
+      "id": 38032,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 80720,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 8317,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 60975,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 40299,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 45282,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 23226,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 15680,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 27583,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 21233,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 34128,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 44203,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 44620,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 34978,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 3729,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 79194,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 88884,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 18752,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    },
+    {
+      "id": 1732,
+      "state": "handle-missing",
+      "terminalOrMissing": true
+    }
+  ],
+  "failuresNotRelabeled": true,
+  "finalCleanupComplete": false
+}

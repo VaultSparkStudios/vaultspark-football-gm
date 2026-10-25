@@ -1,10 +1,10 @@
 {
   "vectorVersion": "1.0",
   "generatedAt": "2026-10-25",
-  "generatedAtMs": 1792915840854,
-  "session": 122,
-  "vectorHash": "0790280558e8e67e",
-  "silTotal": 485,
+  "generatedAtMs": 1792956696926,
+  "session": 123,
+  "vectorHash": "f2e7a53fb79a221f",
+  "silTotal": 500,
   "silAvg3": 737.3,
   "velocity": 3,
   "debt": "↓",
@@ -24,18 +24,18 @@
     "Offer aggregate-only Analytica ingestion through Studio Ark when that authority "
   ],
   "health": "yellow",
-  "truthStatus": "selected S122 production verified; broader historical truth remains partial",
+  "truthStatus": "selected S123 technical production verified; final closeout publication pending; broader readiness remains partial",
   "genome": null,
-  "ignisScore": 41609,
+  "ignisScore": 42460,
   "ignisGrade": "FORGE",
   "ignisAgeDays": 0,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": "game",
   "lifecycle": "deployed",
-  "nextMilestone": "Verify the containing receipt-only commit on remote main, reconcile owned jobs/lock, then complete this native goal.",
-  "currentFocus": "Selected S122 outcomes and technical production verified; final receipt ready for publication.",
-  "lastShipped": "Three selected repairs plus dated player release-note follow-through.",
+  "nextMilestone": "Verify final closeout metadata and publish receipts; broader public launch remains under its existing evidence gates.",
+  "currentFocus": "S123: Cloud sync survives denied storage, owner Inbox actions reach Boardroom without crossing franchise scope, and startup deployment receipts render clearly.",
+  "lastShipped": "S123: Cloud sync survives denied storage, owner Inbox actions reach Boardroom without crossing franchise scope, and startup deployment receipts render clearly.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ]

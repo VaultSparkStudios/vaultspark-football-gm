@@ -1,0 +1,53 @@
+{
+  "session": 123,
+  "at": "2026-10-25T19:37:54.074Z",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "scope": "Current closeout working metadata checkpoint. Exact staged detector and native push hooks remain required after final result receipts.",
+  "settings": {
+    "findings": 0,
+    "changed": false
+  },
+  "gateway": {
+    "auditExitCode": 0,
+    "capabilitiesReady": 60,
+    "total": 92,
+    "providerAccepted": 7,
+    "presenceOnlyNotClaimedProviderVerified": true
+  },
+  "supplyChain": {
+    "selectedSubjectVerified": true,
+    "subjects": 1,
+    "incidents": 3,
+    "findings": 0,
+    "manifestHashes": [
+      {
+        "path": "package.json",
+        "sha256": "855d0b4e2f550e449f17f5b8c30c00b3aac2f1b140bcac5b2cebfef2510425d1"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "682a3c04e57af5d09af15ac22f5a078c42f12c05cd875dd3c7970f3365e0548a"
+      }
+    ]
+  },
+  "publicSafeScan": {
+    "target": "franchise-architect-football",
+    "mode": "local",
+    "findings": 0,
+    "remoteVisibility": "unknown",
+    "remoteVisibilityUnknownRetained": true
+  },
+  "secretDetector": {
+    "textFilesScanned": 50,
+    "findings": [],
+    "count": 0
+  },
+  "exactStagedScan": {
+    "verified": true,
+    "findings": 0,
+    "reviewSha256": "ad78ca94637679c7a30ce326e00ba7e92f7dea09901bcbbb5383d5835f9977b0",
+    "tree": "8900179c12448bccac9bc5a038eaf7f710dc09d0",
+    "method": "Canonical detector in exact reviewed metadata staging gate; all19 immutable acceptance refs verified in index."
+  },
+  "passed": true
+}

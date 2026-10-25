@@ -1,0 +1,49 @@
+{
+  "session": 123,
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "testedStagedTree": "8900179c12448bccac9bc5a038eaf7f710dc09d0",
+  "reviewSha256": "ad78ca94637679c7a30ce326e00ba7e92f7dea09901bcbbb5383d5835f9977b0",
+  "stageReportSha256": "be0a9f530b1cde343d6046aade04082a7dd417ef5b7d89c2d3dde8e45e1752ba",
+  "releaseAcceptanceSha256": "81f4b6af0bca7fe539a5193801ba00b8868659492a11108d01157b0daf0d195e",
+  "releaseRefs": 19,
+  "initialClean": true,
+  "exactPatchApplied": true,
+  "worktree": ".cache/s123-final-metadata",
+  "startedAt": "2026-10-25T19:50:43.702Z",
+  "executedAt": "2026-10-25T19:50:59.172Z",
+  "finishedAt": "2026-10-25T19:54:12.344Z",
+  "command": "npm run test:studio",
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 389,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "verified": true,
+  "rawLog": {
+    "path": ".cache/s123-final-metadata-studio.log",
+    "sha256": "0231cd5d8f93f08b77d1364804c2abe824c47a589563b281d9268fd630cf52d2",
+    "bytes": 33926
+  },
+  "generated": {
+    "files": [
+      "context/PROJECT_STATUS.json",
+      "docs/STARTUP_BRIEF.md"
+    ],
+    "untracked": [],
+    "allowed": true,
+    "patchSha256": "efa1665bc5e42eb9d080a33201f7960724d6d688196bd4ae581f0b40bfbb04f6",
+    "stagedTreeUnchanged": true
+  },
+  "scope": "Exact frozen tracked product plus reviewed staged metadata; ignored root files absent, existing dependencies linked through an owned junction. Generated status/brief changes are recorded separately and never substituted for the tested stage.",
+  "priorFailure": "reports/s123-first-final-metadata.json",
+  "recovery": "reports/s123-ledger-retention-recovery.json",
+  "subsequentDelta": "Only result receipts, proof labels, signed impact receipt and publication/cleanup records may follow this tested metadata snapshot. Application/workflow/package/test bytes remain frozen; final exact index scans and native hooks apply."
+}

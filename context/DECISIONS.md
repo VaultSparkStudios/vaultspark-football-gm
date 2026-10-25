@@ -6,22 +6,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 > Older entries S112 live verbatim in `context/archive/DECISIONS_S112-S112.md`.
 
-## 2026-10-02 — S113 — Player language is a product surface, and gates are kept by intent
-
-**Decision 1 — the honesty voice stays; the vocabulary changes.** "No hidden bonus", "predicts no result" and "not a causal claim" are kept in plain words; "receipt", "authority", "schema" and raw reason codes are not player language.
-
-**Decision 2 — "free early access" replaces "open beta".** The lifecycle public-status gate checks intent (a pre-launch declaration that never claims launch); its pattern was widened to accept the new label rather than reverting the copy.
-
-**Decision 3 — fog potential, not overall.** A veteran's play is on film; what he becomes is an estimate until he is yours. Bands narrow with age and come from a derived stream, so no simulated outcome moves.
-
-**Decision 4 — the League Pulse is a lens, not a system.** Rankings, races and the record watch read existing state, reuse the MVP ballot weights and draw no RNG; regular-season measures read regular-season tables once playoffs begin.
-
-**Decision 5 — defer the server route split and persona drafting with reasons.** The split needs the text-reading parity tooling moved first; persona drafting changes simulation outcomes and needs a measured realism window.
-
-**Decision 6 — supersede rather than patch a released candidate.** The first promotion failed in its own evidence build; the fix became a new fully re-verified candidate instead of a partial re-run.
-<!-- /s113-closeout:decisions -->
-
-<!-- s114-closeout:decisions -->
 ## 2026-10-02 — S114 — Measure before you build, and keep the candidate bound
 
 **Decision 1 — retire the CSS split.** The stylesheet is 31 KB brotli and cached by the service worker after the first visit; a split saves roughly 10–12 KB on a first visit only, and risks unstyled flashes, cache-busting and CSP issues across more than 200 reviewed surfaces.
@@ -108,11 +92,6 @@ Use the native bounded closeout ceremony because shared autopilot child scripts 
 
 Preserve source identity5410b8b5 across staging, CI and production. Four audited fixes pass; receipt-only closeout descendants use the existing publication-delta contract. Normalize diagnostic control bytes before credential redaction. Wait for actual lazy image decode rather than a fixed delay. Initial audit-status error and late FORGE/FB readiness reconciliation remain recorded and reduce process scoring. Shared autopilot has foreign-root writers, so execute the subject-correct project-native closeout gates. Existing founder commit/push/deploy authorization is reused; no hook bypass, force push, public launch or lifecycle change.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.
 
 S121 closeout verification: the clean tracked-tree Studio run passed379/380, exposing an unparseable handoff heading. Corrected the title to the existing Session121 Closeout contract; all19 affected authority checks then passed. Preserve both runs; no application or test change and no manufactured380-pass rerun claim.
@@ -129,3 +108,17 @@ Strict premise verification passed 3/3 at 2026-10-24T17:53:42.409Z before the fi
 ### D-S122.4 — Release-note follow-through uses a fresh candidate
 
 The final metadata gate exposed a stale player note and noncanonical audit Markdown. A three-line status-source addition required fresh C1 CI/staging/production; BD60 proof was retained historically. Native artifacts differ only in status, archive, feed and sitemap (357primary files unchanged). Accepted hosted status pixels total8, with344 preserved historical/local captures; four rejected framing captures remain ledger-only. Local observation failures are distinct from successful original hosted attempts. reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json.
+
+
+## 2026-10-25 — Session 123 — Optional storage and exact release evidence
+
+Storage operations fail independently, retaining tab memory and explicit empty tombstones so denied deletion cannot resurrect a cleared credential during the tab session. Persistent legacy cleanup stays best-effort under browser denial. Owner events share one type resolver and canonical Boardroom destination; mark opened only after visible focus succeeds and the originating Inbox/dashboard franchise scope still matches. Deployment receipts retain their observed verdict/count/revision rather than implicit object coercion or invented verification.
+
+The existing CANON-045 identity readiness gap remains a separate launch gate: this routine promotion does not change identity/trust policy or claim account-bearing launch readiness. CANON-055 is fulfilled through the actual game/cloud surfaces, hosted both-theme journeys and source-bound release receipts. Missing recipient canonical timing recorder is preserved as UNKNOWN; strict premises3/3 and candidate admission were observed before edits. No hook bypass, force push, dependency or public-policy change.
+
+Candidate456682bf introduced an async owner-action race: switching logical franchise during either await could mark a never-clicked recipient same-key warning opened. It was withheld from production and superseded by49035219, whose guards compare originating Inbox and current dashboard franchise scope after both awaits. Actual old/corrected hosted modules reproduce8incorrectly-resolved versus8preserved-unresolved recipient warnings;16rendered scope-state images were individually inspected and hash-bound in reports/s123-scope-visual-review.json. The fixture is a synthetic browser authority switch, not real account/server data.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

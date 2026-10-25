@@ -1,0 +1,60 @@
+{
+  "session": 123,
+  "observedAt": "2026-10-25T19:22:01.234Z",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+  "scope": "Health and manifest identity readbacks across canonical origin, provider default alias and exact immutable deployment URL; full native14 checks apply separately to canonical production.",
+  "observations": [
+    {
+      "origin": "https://playfranchisearchitect.com",
+      "verified": true,
+      "checks": [
+        {
+          "file": "_health",
+          "httpStatus": 200,
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+        },
+        {
+          "file": "deploy-manifest.json",
+          "httpStatus": 200,
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        }
+      ]
+    },
+    {
+      "origin": "https://franchise-architect-football.pages.dev",
+      "verified": true,
+      "checks": [
+        {
+          "file": "_health",
+          "httpStatus": 200,
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+        },
+        {
+          "file": "deploy-manifest.json",
+          "httpStatus": 200,
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        }
+      ]
+    },
+    {
+      "origin": "https://9674e9d1.franchise-architect-football.pages.dev",
+      "verified": true,
+      "checks": [
+        {
+          "file": "_health",
+          "httpStatus": 200,
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+        },
+        {
+          "file": "deploy-manifest.json",
+          "httpStatus": 200,
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        }
+      ]
+    }
+  ]
+}

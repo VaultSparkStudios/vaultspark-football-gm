@@ -1,0 +1,86 @@
+{
+  "session": 123,
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "generatedAt": "2026-10-25T19:28:26.567Z",
+  "exitCode": 0,
+  "blockingFailing": 0,
+  "failing": 0,
+  "warning": 0,
+  "passing": 12,
+  "items": [],
+  "lifecycle": {
+    "coherent": true,
+    "audience": "public-unlaunched"
+  },
+  "releaseCurrency": {
+    "status": "current",
+    "identities": {
+      "head": "49035219b7511bb5a54c438eba73f62798f0e072",
+      "checked": {
+        "staging": {
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        },
+        "releaseSource": {
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        },
+        "publication": {
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        }
+      },
+      "live": {
+        "staging": {
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        },
+        "production": {
+          "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+          "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
+        }
+      }
+    },
+    "checks": [
+      {
+        "id": "live-staging-observed",
+        "ok": true,
+        "unknown": false,
+        "contradiction": false,
+        "detail": "49035219b7511bb5a54c438eba73f62798f0e072"
+      },
+      {
+        "id": "live-production-observed",
+        "ok": true,
+        "unknown": false,
+        "contradiction": false,
+        "detail": "49035219b7511bb5a54c438eba73f62798f0e072"
+      },
+      {
+        "id": "checked-staging-current",
+        "ok": true,
+        "contradiction": false,
+        "detail": "checked 49035219b7511bb5a54c438eba73f62798f0e072 · live 49035219b7511bb5a54c438eba73f62798f0e072"
+      },
+      {
+        "id": "checked-publication-current",
+        "ok": true,
+        "contradiction": false,
+        "detail": "checked 49035219b7511bb5a54c438eba73f62798f0e072 · live 49035219b7511bb5a54c438eba73f62798f0e072"
+      },
+      {
+        "id": "release-source-current",
+        "ok": true,
+        "contradiction": false,
+        "detail": "release source 49035219b7511bb5a54c438eba73f62798f0e072 · live staging 49035219b7511bb5a54c438eba73f62798f0e072"
+      },
+      {
+        "id": "git-head-covered-by-publication",
+        "ok": true,
+        "contradiction": false,
+        "detail": "HEAD 49035219b7511bb5a54c438eba73f62798f0e072 is live"
+      }
+    ]
+  },
+  "rawReceiptSha256": "82bcaf944ecab025a9666cdcfe2a7dce22c3b9894f8148e5b66c627d76d438a0"
+}

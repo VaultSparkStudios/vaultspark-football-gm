@@ -1,5 +1,15 @@
 # Agent Memory
 
+## Session 123 durable patterns
+
+- Browser Storage objects can exist while each operation throws; isolate reads/writes/removals and preserve in-tab empty tombstones.
+- Verify cloud exports end to end: first POST, then PATCH of the remembered Gist when persistence is denied.
+- Owner Inbox actions must close the dialog, open canonical Boardroom, focus the visible mandate and clear the sticky header. Normalize top-level/nested event types once.
+- Async owner actions must capture originating scope and recheck both Inbox scope and dashboard franchise after import and navigation; never resolve another franchise same-key item.
+- Structured deployment receipts need explicit status/count/revision formatting; missing verdict never implies verified.
+- Source-suite acceptance predates final metadata; final staged metadata must receive its own clean-checkout acceptance.
+
+
 ## Session 122 durable patterns
 
 - Test generated game actions in a real franchise: active tab, visible target, focused heading and reload.
@@ -93,18 +103,7 @@
 - Keep the irreversible phone commit in a sticky, opaque, theme-correct dock inside four-edge safe areas, and inspect 390px plus 430px pixels in both themes.
 - Do not assume an unsupported `--help` is read-only. Verify the script's pure-help branch before invoking it, especially for cross-repo utilities.
 
-## Session 96 durable patterns
-
-- Rendered-state evidence must poll bounded geometry before capture. A fixed sleep can pass locally and still freeze mid-animation under throttled Linux CI.
-- Aggregate analytics page loads prove that reporting works; they do not prove people, sessions, engagement, retention, or a cohort.
-- Exact-artifact refusal should remain fail-closed while printing expected/observed identities and first-file deltas from a deterministic per-file ledger.
-- Generated orientation needs negative controls for inline schemas, invalid dates, and stale caches; a correct-looking total can coexist with corrupt category rows.
-
 <!-- ledger-roll:pointer -->
 ---
 
 Older entries are retained verbatim in `context/archive/AGENT_MEMORY.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-S122 continuation: a static release-note delta is deployable source and needs fresh exact-source gates. Register every screenshot, including rejected framing attempts, in the canonical ledger. Resolve native artifact inventory entries under static/ even when paths begin src/. Preserve observer failures separately from actual successful workflow results.
-
-S122 final evidence: C1 uses independent source-bound CI/Pages275pass+3skip, hosted14/14 and eight reviewed status images. Preserve HMAC verification separately from unsigned Ed25519 posture; delivery is not adoption. Observer expiry/network loss does not establish workflow failure; fresh reads verified the same original successful attempts. Final metadata publication uses the existing receipt-only lineage contract.

@@ -1942,3 +1942,28 @@ The upstream Studio Template Bot commit 08a3d08 changed three documentation file
 [SIL] Reconcile upstream changes before finalizing a session, and distinguish actual artifact inputs from agent instructions with a narrow, tested classification.
 <!-- /s112-startup-docs-sil-addendum -->
 <!-- s113-closeout:sil -->
+
+## 2026-10-02 — Session 113 — Player language, League Pulse and a site that tells the truth
+
+SIL v3.0: **820 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 95, Engagement 72, Process Quality 76, Cross-Repo Coherence 85, Security Posture 82, Ecosystem Integration 72, Capital Efficiency 55, Automation Coverage 92). Intent outcome: **Achieved** — full audit, implementation, closeout and production deploy; public launch remains HOLD. Scores are engineering judgment, not player-outcome measurements.
+
+- Dev Health: canonical 1748/1748 at the deployed source and the full browser suite green in the promotion build.
+- Creative Alignment: player-facing voice and fictional league identity now match the game's honesty contract.
+- Momentum: 17 of 18 ranked items shipped; one deferred with a stated dependency.
+- Engagement: rankings, races, record chases, look-ahead and real replays add weekly talking points; real cohort effects remain unmeasured.
+- Process Quality: rework was real — 25 browser failures from pinned wording and collapsed settings, two push races with Studio OS syncs, a promotion that failed in its own evidence harness and a superseded candidate.
+- Cross-Repo Coherence: studio-ops start-sync/canon-sync scripts are absent in this repo and were not run; two upstream syncs rebased cleanly.
+- Security Posture: concrete server hardening with tests; no fresh key-rotation audit.
+- Ecosystem Integration: new public pages, RSS, manifest and press kit; launch HOLD and cohort absent.
+- Capital Efficiency: no paid services; parallel agents consumed substantial tokens.
+- Automation Coverage: agent-owned through production; no founder approvals required.
+
+Prior recorded total 804/1000; current 820/1000 (+16). Source 097a7caf6f63c019bc4bf18ed763a3dae68da4d3. Direct six-shard suite 1748/1748 (core 290, runtime 996, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact af49f89b…), production promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36985778315 success (gate, build with full browser suite and evidence, deploy), production provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt: 214 captures bound to 097a7ca, changed surfaces inspected in both themes. Public launch remains HOLD.
+
+- [SIL] A copy pass must sweep the browser and evidence harnesses too; pinned UI strings live in tests-ui and scripts/responsive-evidence.mjs, not only in test/.
+- [SIL] Moving a control under a collapsed section breaks every automation that clicks it; open sections in helpers, never in each test.
+- [SIL] Review captures of the first candidate before promoting; the second candidate existed only because copy gaps surfaced in pixels.
+- [SIL] Keep the push window short on a repo with automated syncs; fetch and rebase immediately before a long pre-push hook.
+<!-- /s113-closeout:sil -->
+
+<!-- s114-closeout:sil -->

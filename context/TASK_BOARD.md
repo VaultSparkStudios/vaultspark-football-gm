@@ -2,9 +2,11 @@
 
 ## S123 Wave status
 
+- [ ] S123 final receipt metadata acceptance, remote publication, signed impact delivery and owned cleanup.
+
 - [x] Wave 1 — Cloud storage resilience: focused and real-browser denied-storage POST/PATCH/clear checks pass locally and on staging.
 - [x] Wave 2 — Owner ultimatum opens Boardroom: corrected async ownership guard passes26units and local browser5/5 including8cross-franchise boundary cases;16images inspected/hash-bound. Hosted corrected-source proof remains in Wave3.
-- [ ] Wave 3 — Candidate456682bf superseded before production for an introduced ownership race; all3provider workflows confirmed cancelled. Corrected source passes focused49/49 and boot649986/650000. Cut/stage/push corrected candidate, complete exact CI and production, then ordered closeout/final metadata publication.
+- [x] Wave 3 — Candidate456682bf withheld from production after the introduced ownership race; corrected candidate 49035219b7511bb5a54c438eba73f62798f0e072 verified on exact CI, staging and production. Ordered writeback recorded; final metadata checks, receipt publication and cleanup are tracked below.
 
 ## S122 Wave status
 
@@ -183,17 +185,6 @@ Public launch remains HOLD for actual project-domain receive/reply-as evidence, 
 - [x] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker. **Completed S112: three explicitly approved exact Node 24 release revisions update five workflow references; exact-source CI passed.**
 - [x] [SIL:1] Reclassify the S110 Windows pre-push deadlock premise: ordinary recovery/source pushes completed without `--no-verify` (one was slow, later pushes took seconds). Preserve the existing hook and reopen only if a measured, reproducible hang occurs.
 - [x] [SIL:1] Make backend runner SSH transport resilient to observed pre-auth resets. Reset-success and terminal controls pass, host-key checking stays strict, and the S111 deploy workflow plus external runtime probe succeeded.
-
-## Session 110 — Recover S109 and finish the authorized release (2026-09-28)
-
-- [x] Recover the uncommitted S109 implementation and verify that `main` still matches `origin/main`; preserve its work and the public launch HOLD.
-- [x] Close the remaining player-facing S109 audit rungs: six-section mobile drawer and SVG icon sprite; make the First Season Contract trade objective player-controllable and show its season-end verdict.
-- [x] Make the Worker entry discoverable by the browser-module reachability check rather than using a build-only allowlist; add a recorded audit-lane delta command.
-- [x] Direct Node suite 1,573/1,573, full browser suite 69 pass with one intentional skip, final-candidate focused Desk browser tests 2/2, static smoke, boot/public truth, and public sanitizer green. The full Node receipt preceded the final visual-only corrections; candidate CI is the final-source gate.
-- [x] Capture and inspect 261 responsive and 40 public rendered states; 146 hash-bound images in the S110 receipt pass CANON-053 across desktop/mobile and dark/light themes.
-- [x] Commit/push deployable source `dbcd750`; deploy and verify its artifact on stable staging (14/14), hosted lab performance, and live Cloudflare Pages (10/10; promotion run `36613134108` success).
-- [x] Backend run `36616242344` passed gate and image builds but failed its SSH transport over three attempts; recovered through Studio gateway SSH with workflow-equivalent compose pull/up, unchanged Caddy route, and exact-source same-host plus external HTTPS health. `reports/s110-backend-authority.json` records both truths.
-- [x] Reconcile staging, live Pages, visual, performance, backend and launch-evidence receipts; public launch stays HOLD for email receive/reply-as, founder approval and lifecycle authority.
 
 <!-- ledger-roll:pointer -->
 ---

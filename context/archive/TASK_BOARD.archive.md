@@ -2,6 +2,17 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/TASK_BOARD.md` for the working set.
 
+## Session 110 — Recover S109 and finish the authorized release (2026-09-28)
+
+- [x] Recover the uncommitted S109 implementation and verify that `main` still matches `origin/main`; preserve its work and the public launch HOLD.
+- [x] Close the remaining player-facing S109 audit rungs: six-section mobile drawer and SVG icon sprite; make the First Season Contract trade objective player-controllable and show its season-end verdict.
+- [x] Make the Worker entry discoverable by the browser-module reachability check rather than using a build-only allowlist; add a recorded audit-lane delta command.
+- [x] Direct Node suite 1,573/1,573, full browser suite 69 pass with one intentional skip, final-candidate focused Desk browser tests 2/2, static smoke, boot/public truth, and public sanitizer green. The full Node receipt preceded the final visual-only corrections; candidate CI is the final-source gate.
+- [x] Capture and inspect 261 responsive and 40 public rendered states; 146 hash-bound images in the S110 receipt pass CANON-053 across desktop/mobile and dark/light themes.
+- [x] Commit/push deployable source `dbcd750`; deploy and verify its artifact on stable staging (14/14), hosted lab performance, and live Cloudflare Pages (10/10; promotion run `36613134108` success).
+- [x] Backend run `36616242344` passed gate and image builds but failed its SSH transport over three attempts; recovered through Studio gateway SSH with workflow-equivalent compose pull/up, unchanged Caddy route, and exact-source same-host plus external HTTPS health. `reports/s110-backend-authority.json` records both truths.
+- [x] Reconcile staging, live Pages, visual, performance, backend and launch-evidence receipts; public launch stays HOLD for email receive/reply-as, founder approval and lifecycle authority.
+
 ## Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there (2026-09-14)
 
 - [x] **Front Office Advisor** — deterministic, packet-cited, scored at the weekly commit into a descriptive tally; lazy island on the Desk. L3 (user-keyed model voice) deliberately unshipped: zero project token spend is the contract.

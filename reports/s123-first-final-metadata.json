@@ -1,0 +1,47 @@
+{
+  "session": 123,
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "testedStagedTree": "f289f0a221b83b650161c7e75edeebd5215cea9b",
+  "reviewSha256": "ac24a859ea0bedd663c261d636687a0579059c8bf9abd9ee7fcf3d151d8ed567",
+  "stageReportSha256": "ad87c18e005ff5e6632e2a74cbfdb44b554f413d814a0907a15ec4af9f534c60",
+  "releaseAcceptanceSha256": "81f4b6af0bca7fe539a5193801ba00b8868659492a11108d01157b0daf0d195e",
+  "releaseRefs": 19,
+  "initialClean": true,
+  "exactPatchApplied": true,
+  "worktree": ".cache/s123-final-metadata",
+  "startedAt": "2026-10-25T19:40:52.932Z",
+  "executedAt": "2026-10-25T19:41:06.290Z",
+  "finishedAt": "2026-10-25T19:44:47.947Z",
+  "command": "npm run test:studio",
+  "exitCode": 1,
+  "signal": null,
+  "errorCode": null,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 388,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "verified": false,
+  "rawLog": {
+    "path": ".cache/s123-first-metadata-run/s123-final-metadata-studio.log",
+    "sha256": "b6ade0b5d9bd9a0ed0f36cf6da7cfa0669bf978b5f7673bfdd0819955564b687",
+    "bytes": 35251
+  },
+  "generated": {
+    "files": [
+      "context/PROJECT_STATUS.json",
+      "docs/STARTUP_BRIEF.md"
+    ],
+    "untracked": [],
+    "allowed": true,
+    "patchSha256": "efa1665bc5e42eb9d080a33201f7960724d6d688196bd4ae581f0b40bfbb04f6",
+    "stagedTreeUnchanged": true
+  },
+  "scope": "Exact frozen tracked product plus reviewed staged metadata; ignored root files absent, existing dependencies linked through an owned junction. Generated status/brief changes are recorded separately and never substituted for the tested stage.",
+  "worktreeDisposition": "Owned failed checkout removed after verbatim ledger preservation and raw log/stage/patch/result retention; a fresh checkout is required for the corrected metadata."
+}

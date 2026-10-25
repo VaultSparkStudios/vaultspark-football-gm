@@ -2,6 +2,17 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/AGENT_MEMORY.md` for the working set.
 
+## Session 96 durable patterns
+
+- Rendered-state evidence must poll bounded geometry before capture. A fixed sleep can pass locally and still freeze mid-animation under throttled Linux CI.
+- Aggregate analytics page loads prove that reporting works; they do not prove people, sessions, engagement, retention, or a cohort.
+- Exact-artifact refusal should remain fail-closed while printing expected/observed identities and first-file deltas from a deterministic per-file ledger.
+- Generated orientation needs negative controls for inline schemas, invalid dates, and stale caches; a correct-looking total can coexist with corrupt category rows.
+
+S122 continuation: a static release-note delta is deployable source and needs fresh exact-source gates. Register every screenshot, including rejected framing attempts, in the canonical ledger. Resolve native artifact inventory entries under static/ even when paths begin src/. Preserve observer failures separately from actual successful workflow results.
+
+S122 final evidence: C1 uses independent source-bound CI/Pages275pass+3skip, hosted14/14 and eight reviewed status images. Preserve HMAC verification separately from unsigned Ed25519 posture; delivery is not adoption. Observer expiry/network loss does not establish workflow failure; fresh reads verified the same original successful attempts. Final metadata publication uses the existing receipt-only lineage contract.
+
 ## Session 87 durable patterns
 
 - A salary market is one versioned domain authority. Generated contracts, player offers and CPU bidding must share it or cap pressure becomes cosmetic.

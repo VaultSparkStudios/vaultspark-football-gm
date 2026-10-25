@@ -3,39 +3,15 @@
 
 
 <!-- rolling-status-start -->
-Last session: 122 (2026-10-25) | Total: 485/1000 | Velocity: 3 | Debt: ↓
-Avgs — 3: 737.3 | 5: 781.2 | 10: 794.3 | 25: 887.8 | all: 958.2
+Last session: 123 (2026-10-25) | Total: 500/1000 | Velocity: 3 | Debt: ↓
+Avgs — 3: 616.3 | 5: 713.6 | 10: 762.3 | 25: 868.1 | all: 952.2
 Sparkline: ▁▁▁▁▁
 Intent rate: 80% (4/5 last 5)
-SIL delta: 864 → 485 (-379). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 76 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 485 → 500 (+15). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 77 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
 
-## 2026-10-02 — Session 113 — Player language, League Pulse and a site that tells the truth
-
-SIL v3.0: **820 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 95, Engagement 72, Process Quality 76, Cross-Repo Coherence 85, Security Posture 82, Ecosystem Integration 72, Capital Efficiency 55, Automation Coverage 92). Intent outcome: **Achieved** — full audit, implementation, closeout and production deploy; public launch remains HOLD. Scores are engineering judgment, not player-outcome measurements.
-
-- Dev Health: canonical 1748/1748 at the deployed source and the full browser suite green in the promotion build.
-- Creative Alignment: player-facing voice and fictional league identity now match the game's honesty contract.
-- Momentum: 17 of 18 ranked items shipped; one deferred with a stated dependency.
-- Engagement: rankings, races, record chases, look-ahead and real replays add weekly talking points; real cohort effects remain unmeasured.
-- Process Quality: rework was real — 25 browser failures from pinned wording and collapsed settings, two push races with Studio OS syncs, a promotion that failed in its own evidence harness and a superseded candidate.
-- Cross-Repo Coherence: studio-ops start-sync/canon-sync scripts are absent in this repo and were not run; two upstream syncs rebased cleanly.
-- Security Posture: concrete server hardening with tests; no fresh key-rotation audit.
-- Ecosystem Integration: new public pages, RSS, manifest and press kit; launch HOLD and cohort absent.
-- Capital Efficiency: no paid services; parallel agents consumed substantial tokens.
-- Automation Coverage: agent-owned through production; no founder approvals required.
-
-Prior recorded total 804/1000; current 820/1000 (+16). Source 097a7caf6f63c019bc4bf18ed763a3dae68da4d3. Direct six-shard suite 1748/1748 (core 290, runtime 996, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact af49f89b…), production promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36985778315 success (gate, build with full browser suite and evidence, deploy), production provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt: 214 captures bound to 097a7ca, changed surfaces inspected in both themes. Public launch remains HOLD.
-
-- [SIL] A copy pass must sweep the browser and evidence harnesses too; pinned UI strings live in tests-ui and scripts/responsive-evidence.mjs, not only in test/.
-- [SIL] Moving a control under a collapsed section breaks every automation that clicks it; open sections in helpers, never in each test.
-- [SIL] Review captures of the first candidate before promoting; the second candidate existed only because copy gaps surfaced in pixels.
-- [SIL] Keep the push window short on a repo with automated syncs; fetch and rebase immediately before a long pre-push hook.
-<!-- /s113-closeout:sil -->
-
-<!-- s114-closeout:sil -->
 ## 2026-10-02 — Session 114 — Release note, display codes and the server route split
 
 SIL v3.0: **846 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 92, Engagement 72, Process Quality 86, Cross-Repo Coherence 86, Security Posture 82, Ecosystem Integration 74, Capital Efficiency 70, Automation Coverage 93). Intent outcome: **Achieved**. Public launch remains HOLD. Scores are engineering judgment.
@@ -147,11 +123,6 @@ Brainstorm: pre-candidate audit reconciliation; capture-time hash-ledger binding
 
 IGNIS note: Four bounded fixes reached exact-source production; preserve the initial failed candidate and late readiness reconciliation as process evidence instead of laundering them into a clean run.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
 
 S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verified on remote main; frontend/API5410b8b5 remain verified. Ark 01K5LVUDRP9C130E63647C64C9 shipped. The containing receipt-only commit must be verified on origin/main before native goal completion.
@@ -193,3 +164,15 @@ The final metadata run measured 385/388: two assertions exposed the missing date
 ### S122 publication evidence receipt
 
 Source and initial writeback1f001008 are verified on remote main, and the dated note is verified on canonical production9f82b5a9-74b8-4baa-a551-a6d5d6c5bc8e. All three selected repairs remain verified. C1 CI7/7 and both full browser runs275pass/3skip; native staging/production14/14; production LCP1232ms desktop/1244ms mobile; current doctor12/12. HMAC-verified impact cargo 01K5P1EVBS9CA9BA6A0323CE76 and owner baton 01K5P1EVCB36A3B3B69A0F60F6 shipped; recipient adoption is not asserted and native Ed25519 posture is unsigned. The earlier Partial assessment remains its original prepublication snapshot; no second scored entry or classification is introduced. reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json. The containing receipt-only commit must be verified on remote main before native goal completion.
+
+
+## 2026-10-25 — Session 123 — Storage resilience and ownership decisions
+
+SIL v3.0: **500 / 1000** (Dev Health 85, Creative Alignment 65, Momentum 75, Engagement 45, Process Quality 70, Cross-Repo Coherence 50, Security Posture 50, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 40). Intent outcome: **Achieved** for selected implementation and exact technical release; final receipt publication remains pending at scoring. Engineering judgment, not measured player retention, field performance or financial outcomes.
+
+Three selected outcomes verified. Exact candidate CI7/7; local focused49/49; corrected-source clean Studio389/389; hosted staging/production browser5/5 each including8cross-franchise boundary cases per phase; native staging/production14/14. Final receipt metadata acceptance is separate. Aggregate application case count unmeasured. Score changes reflect a single accepted source candidate, denied-storage custody/clear coverage and repeatable hosted owner-action regressions; cohort/capacity/financial metrics earn no invented credit. Initial source/working-checkout failures remain classified. Future discipline: preserve complete premise-timing evidence with a compatible recipient recorder, and run final metadata acceptance after all receipts/boards are present.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

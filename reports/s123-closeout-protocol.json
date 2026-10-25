@@ -1,0 +1,71 @@
+{
+  "session": 123,
+  "at": "2026-10-25T19:37:51.950Z",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "orderedWriteback": {
+    "complete": true,
+    "creativeDirection": "Reviewed — no new human creative direction; existing private record untouched."
+  },
+  "selectedOutcomes": {
+    "verified": 3,
+    "remaining": 0
+  },
+  "independentReview": {
+    "rounds": 2,
+    "verdict": "pass",
+    "receipt": {
+      "path": "reports/s123-closeout-review.json",
+      "sha256": "7f84d19fc3d186dfdc909f1db11bbedafb906648bdae0362ffd46eacce842a56"
+    }
+  },
+  "coherence": {
+    "path": "reports/s123-closeout-gates.json",
+    "sha256": "c3869d3c66fe17ecfa1067498b40099448226073c90c621e4e5e7755bb3fe166"
+  },
+  "doctor": {
+    "path": "reports/s123-doctor.json",
+    "sha256": "0817262e0aa612f966fdf79e7368c043bdd87412c00d9a7d46c31b1f53ae64ac"
+  },
+  "intelligence": {
+    "ignis": {
+      "path": "reports/s123-ignis-refresh.json",
+      "sha256": "63e28d4a75873ae5af951e5c7c9afd8f0c6d413542ba07cec3cc045b8a9d88bc"
+    },
+    "stateVector": {
+      "path": "context/STATE_VECTOR.json",
+      "sha256": "f7fdccfb082f4ac689dee64b0f8da575e7407084c7a572d491438b458f539a76"
+    },
+    "entropy": {
+      "measured": 0.059
+    },
+    "genome": {
+      "commandExecuted": true,
+      "parsedTotal": 0,
+      "assessment": "unmeasured",
+      "reason": "Recipient truth document has none of the five numeric dimension rows expected by the canonical parser. Mechanical zero is retained and is not presented as a measured merit score."
+    }
+  },
+  "compatibility": {
+    "sharedAutopilotExecuted": false,
+    "localChecklistAvailable": false,
+    "localRecordReviewAvailable": false,
+    "equivalence": "Project-local runners and explicit-root canonical exports executed. Root-bound owner-only autopilot/record-review entrypoints were not misapplied to a sibling.",
+    "premiseTiming": "UNKNOWN — compatible recipient timing recorder is absent; strict3/3 and pre-edit admission receipts preserved."
+  },
+  "finalMetadataAcceptance": {
+    "verified": true,
+    "passed": 389,
+    "total": 389,
+    "testedStagedTree": "8900179c12448bccac9bc5a038eaf7f710dc09d0",
+    "receipt": {
+      "path": "reports/s123-final-metadata.json",
+      "sha256": "ff565b4d48fd858adf0646b99906fdb1472e0ed9ccbdcf117839119f33e1d275"
+    },
+    "priorFailure": "reports/s123-first-final-metadata.json",
+    "ledgerRecovery": "reports/s123-ledger-retention-recovery.json"
+  },
+  "remoteReceiptPublication": "pending",
+  "signedImpactDelivery": "pending",
+  "ownedCleanup": "pending",
+  "complete": false
+}

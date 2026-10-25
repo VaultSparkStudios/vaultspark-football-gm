@@ -1,7 +1,7 @@
 {
   "session": 123,
-  "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-  "observedAt": "2026-10-25T17:20:49.457Z",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "observedAt": "2026-10-25T18:25:44.698Z",
   "focused": {
     "passed": 49,
     "total": 49,
@@ -21,18 +21,19 @@
   },
   "independentReview": {
     "verdict": "pass",
-    "scope": "Credential fallback, deployment-summary truth, final owner routing and nested event support;21 source/capture hashes verified",
+    "scope": "Credential fallback, deployment-summary truth, owner routing/nested events and corrected async scope guards",
     "reviewer": "review_repairs"
   },
   "boot": {
-    "bytes": 649837,
+    "bytes": 649986,
     "target": 650000,
     "passed": true
   },
   "browser": {
     "passed": 5,
     "total": 5,
-    "receipt": "reports/s123-owner-navigation-review.json"
+    "receipt": "reports/s123-owner-navigation-review.json",
+    "crossFranchiseBoundaryCases": 8
   },
   "stagingBrowser": {
     "passed": 5,

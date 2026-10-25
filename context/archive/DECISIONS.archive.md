@@ -1545,3 +1545,20 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 <!-- /s112-startup-docs-reconciliation -->
 
 <!-- s113-closeout:decisions -->
+
+## 2026-10-02 — S113 — Player language is a product surface, and gates are kept by intent
+
+**Decision 1 — the honesty voice stays; the vocabulary changes.** "No hidden bonus", "predicts no result" and "not a causal claim" are kept in plain words; "receipt", "authority", "schema" and raw reason codes are not player language.
+
+**Decision 2 — "free early access" replaces "open beta".** The lifecycle public-status gate checks intent (a pre-launch declaration that never claims launch); its pattern was widened to accept the new label rather than reverting the copy.
+
+**Decision 3 — fog potential, not overall.** A veteran's play is on film; what he becomes is an estimate until he is yours. Bands narrow with age and come from a derived stream, so no simulated outcome moves.
+
+**Decision 4 — the League Pulse is a lens, not a system.** Rankings, races and the record watch read existing state, reuse the MVP ballot weights and draw no RNG; regular-season measures read regular-season tables once playoffs begin.
+
+**Decision 5 — defer the server route split and persona drafting with reasons.** The split needs the text-reading parity tooling moved first; persona drafting changes simulation outcomes and needs a measured realism window.
+
+**Decision 6 — supersede rather than patch a released candidate.** The first promotion failed in its own evidence build; the fix became a new fully re-verified candidate instead of a partial re-run.
+<!-- /s113-closeout:decisions -->
+
+<!-- s114-closeout:decisions -->

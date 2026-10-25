@@ -1,0 +1,289 @@
+{
+  "session": 123,
+  "at": "2026-10-25T18:22:20.504Z",
+  "fixture": "Synthetic logical franchise switch, not real account/server data. Each recipient B warning is never clicked; it shares the source A event key.",
+  "targets": [
+    {
+      "phase": "before",
+      "origin": "https://29148a59.franchise-architect-staging.pages.dev",
+      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+      "artifactFingerprint": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+      "httpStatus": 200,
+      "runtimeModule": {
+        "path": "lib/engagementFeatures.js",
+        "sha256": "5e68c35d525703f751c11c89856cd27b8c036100ae893d0dddf7e02bb2664be7",
+        "httpStatus": 200
+      }
+    },
+    {
+      "phase": "after",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+      "artifactFingerprint": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+      "httpStatus": 200,
+      "runtimeModule": {
+        "path": "lib/engagementFeatures.js",
+        "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc",
+        "httpStatus": 200
+      }
+    }
+  ],
+  "captures": [
+    {
+      "path": "output/playwright/s123-scope-visual/before-desktop-dark-before-import.png",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "dark",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": 1792952546105
+      },
+      "sha256": "a148460a075414999e387c3e0d2731cc6363749d53d6ba302ec703daf8e44926",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/before-desktop-dark-during-navigation.png",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "dark",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": 1792952546786
+      },
+      "sha256": "4749551d262d6ec7610d9bafeb6beab778278e0da4c186be715a055b75b0e596",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/before-desktop-light-before-import.png",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "light",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": 1792952551330
+      },
+      "sha256": "15c8934473a21a0b79e9408da0d3bead1fc35dd97dce4aea212cca18b3e45ed4",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/before-desktop-light-during-navigation.png",
+      "phase": "before",
+      "device": "desktop",
+      "theme": "light",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": 1792952552186
+      },
+      "sha256": "413e3bbd872ff320bc6779fe2af217e15a0b4dda202b7084359148cebe40c32a",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/before-mobile-dark-before-import.png",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "dark",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": 1792952556379
+      },
+      "sha256": "fb726218a472d9c002a979141d6f01dd3e1b4f1fc5b5bfa000bc923a2fe88afc",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/before-mobile-dark-during-navigation.png",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "dark",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": 1792952556857
+      },
+      "sha256": "eff3c39f071b541dbfbc29bb11567bb8c00f751ac3c681c0667e49be9ebd80ae",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/before-mobile-light-before-import.png",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "light",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": 1792952563003
+      },
+      "sha256": "08e0f004611823681c7c16143f68fccc30fad672f11fe6951c0edceaa19db131",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/before-mobile-light-during-navigation.png",
+      "phase": "before",
+      "device": "mobile",
+      "theme": "light",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": 1792952563488
+      },
+      "sha256": "fe1a7b33a038ab29ca1a20491520b42e848c550ba7ecdd5609b5627f90196e6f",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-desktop-dark-before-import.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": null
+      },
+      "sha256": "e8bd08a950cd23cfc26cf2dc71092c5d21159a5525da66faf2cec883c0739649",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-desktop-dark-during-navigation.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": null
+      },
+      "sha256": "692ea1439662a0313bea962b43018b2cf4f2c941623f987b6ab79d825cf27b58",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-desktop-light-before-import.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": null
+      },
+      "sha256": "fd4839ba613aefc20df7ae531e69f831b93cd96cb1b9a4ca93edbe16d4f68f62",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-desktop-light-during-navigation.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": null
+      },
+      "sha256": "50f612e8528b9e4cc44f4cd394d2f59b6212a89f4c804861d3758184370d0fbb",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-mobile-dark-before-import.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": null
+      },
+      "sha256": "e398fa0d9c0639407afa94dd18bb6a3cee1974ea43ed59d3296059fe2907f664",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-mobile-dark-during-navigation.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": null
+      },
+      "sha256": "1c69b29264cad8d4a840e0ab90276a8ee9499ac95e9c41e2d5be01ca52a35ccb",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-mobile-light-before-import.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "boundary": "before-import",
+      "observed": {
+        "switched": true,
+        "scope": "before-import-recipient-b",
+        "eventId": "scope-before-import",
+        "resolvedAt": null
+      },
+      "sha256": "41b430e3d20ccd505994931e0db03d89ba7d34064e6f5a8db1df5236d89c172a",
+      "inspected": true
+    },
+    {
+      "path": "output/playwright/s123-scope-visual/after-mobile-light-during-navigation.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "boundary": "during-navigation",
+      "observed": {
+        "switched": true,
+        "scope": "during-navigation-recipient-b",
+        "eventId": "scope-during-navigation",
+        "resolvedAt": null
+      },
+      "sha256": "64bc6bef3e3d1405d068bd00723823a9c2969a874137af00cf97244e1f815b54",
+      "inspected": true
+    }
+  ],
+  "schemaVersion": "1.0",
+  "reviewedAt": "2026-10-25T18:23:59.403Z",
+  "reviewer": "game_audit",
+  "verdict": "pass",
+  "counts": {
+    "before": 8,
+    "after": 8,
+    "individuallyInspected": 16
+  },
+  "invariants": {
+    "before": "All 8 recipient B events incorrectly resolved; screenshots show Action opened without a B click.",
+    "after": "All 8 recipient B events remain resolvedAt:null; screenshots retain Take Action at both async boundaries in all4device/theme variants."
+  },
+  "inspection": "Viewed all16 PNGs individually: synthetic recipient B label and unchanged-key detail readable, old Action opened and new Take Action state clear, no new clipping in touched Inbox state, desktop/mobile dark/light.",
+  "probeSha256": "3a69e1d53f70fd1dda92e63a2eb758b5c10a52c0f35bda4b9bb0725c48584a00",
+  "limits": "Logical browser dashboard/Inbox franchise identity fixture, not real account, server, or cross-account data. Actual immutable old deployment and corrected staging modules run unchanged. Captures reopen recipient Inbox after handler completes; they do not assert navigation stayed on source panel during an already-started tab hydration."
+}

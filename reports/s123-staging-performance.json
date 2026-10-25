@@ -2,13 +2,13 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-10-25T17:18:12.790Z",
+  "observedAt": "2026-10-25T18:18:29.930Z",
   "baseUrl": "https://staging.playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+    "digest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
     "files": 361,
     "entries": [
       {
@@ -353,8 +353,8 @@
       },
       {
         "path": "lib/engagementFeatures.js",
-        "bytes": 33668,
-        "sha256": "5e68c35d525703f751c11c89856cd27b8c036100ae893d0dddf7e02bb2664be7"
+        "bytes": 33817,
+        "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc"
       },
       {
         "path": "lib/exactSurfaceNavigation.js",
@@ -899,7 +899,7 @@
       {
         "path": "precache-manifest.json",
         "bytes": 25901,
-        "sha256": "8e3879f25d9d0dcc6ae0ee3780dbf902c0d12b7bb926e3fa56967dee27d418c6"
+        "sha256": "9719fe6bd3eec2cb158bf29ed7bf5f5c3797d93c8c9300c474a68e42946c3b9f"
       },
       {
         "path": "press.html",
@@ -1809,7 +1809,7 @@
       {
         "path": "sw.js",
         "bytes": 12948,
-        "sha256": "2ef434b2c0ff865deba6140389016a8ab876781cc8f922559f00969c49d5126a"
+        "sha256": "cfe433a242d68cd03ff8d2cbd1b86619efee7ff824f292bd57fc5e65c35e40fe"
       },
       {
         "path": "terms.html",
@@ -1828,12 +1828,12 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a502e1053963b885-IAD",
+    "cf-ray": "a5033952fcf4e647-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-5xtFfSx9Fq1X93Duw1OP1UEDCnB47VIUzMCkUNWnmwA=' 'sha256-PcCdTkGn5oGFoWBKDddCGzMq6p3CI2TzeALf2rGa140=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Sun, 25 Oct 2026 17:18:10 GMT",
+    "date": "Sun, 25 Oct 2026 18:18:27 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/clientRecoveryUi.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
@@ -1854,13 +1854,13 @@
         "height": 1000
       },
       "runs": 5,
-      "lcpMs": 412,
-      "inpMs": 24,
+      "lcpMs": 384,
+      "inpMs": 32,
       "cls": 0.0003,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 620,
+          "lcpMs": 636,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1870,7 +1870,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 1357,
+              "startTimeMs": 1892,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -1927,11 +1927,11 @@
               ]
             }
           ],
-          "inpMs": 88,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 432,
+          "lcpMs": 408,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -1941,7 +1941,78 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 1419,
+              "startTimeMs": 1252,
+              "scrollY": 0,
+              "value": 0.0003,
+              "sources": [
+                {
+                  "tag": "SPAN",
+                  "id": null,
+                  "className": "site-status-chip",
+                  "previousRect": {
+                    "x": 512.328125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 661.609375,
+                    "bottom": 475.53125,
+                    "left": 512.328125
+                  },
+                  "currentRect": {
+                    "x": 455.453125,
+                    "y": 450.53125,
+                    "width": 149.28125,
+                    "height": 25,
+                    "top": 450.53125,
+                    "right": 604.734375,
+                    "bottom": 475.53125,
+                    "left": 455.453125
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "activeLeagueText",
+                  "className": "setup-session-status",
+                  "previousRect": {
+                    "x": 675.609375,
+                    "y": 456.125,
+                    "width": 253,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 928.609375,
+                    "bottom": 469.9375,
+                    "left": 675.609375
+                  },
+                  "currentRect": {
+                    "x": 618.734375,
+                    "y": 456.125,
+                    "width": 366,
+                    "height": 13.8125,
+                    "top": 456.125,
+                    "right": 984.734375,
+                    "bottom": 469.9375,
+                    "left": 618.734375
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 32,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 272,
+          "lcpElement": {
+            "tag": "IMG",
+            "id": null,
+            "className": "",
+            "text": ""
+          },
+          "cls": 0.0003,
+          "shifts": [
+            {
+              "startTimeMs": 1036,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -2002,7 +2073,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 412,
+          "lcpMs": 384,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2012,7 +2083,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 1259,
+              "startTimeMs": 994,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -2073,7 +2144,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 396,
+          "lcpMs": 372,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2083,7 +2154,7 @@
           "cls": 0.0003,
           "shifts": [
             {
-              "startTimeMs": 1031,
+              "startTimeMs": 1614,
               "scrollY": 0,
               "value": 0.0003,
               "sources": [
@@ -2140,78 +2211,7 @@
               ]
             }
           ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 312,
-          "lcpElement": {
-            "tag": "IMG",
-            "id": null,
-            "className": "",
-            "text": ""
-          },
-          "cls": 0.0003,
-          "shifts": [
-            {
-              "startTimeMs": 1160,
-              "scrollY": 0,
-              "value": 0.0003,
-              "sources": [
-                {
-                  "tag": "SPAN",
-                  "id": null,
-                  "className": "site-status-chip",
-                  "previousRect": {
-                    "x": 512.328125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 661.609375,
-                    "bottom": 475.53125,
-                    "left": 512.328125
-                  },
-                  "currentRect": {
-                    "x": 455.453125,
-                    "y": 450.53125,
-                    "width": 149.28125,
-                    "height": 25,
-                    "top": 450.53125,
-                    "right": 604.734375,
-                    "bottom": 475.53125,
-                    "left": 455.453125
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "activeLeagueText",
-                  "className": "setup-session-status",
-                  "previousRect": {
-                    "x": 675.609375,
-                    "y": 456.125,
-                    "width": 253,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 928.609375,
-                    "bottom": 469.9375,
-                    "left": 675.609375
-                  },
-                  "currentRect": {
-                    "x": 618.734375,
-                    "y": 456.125,
-                    "width": 366,
-                    "height": 13.8125,
-                    "top": 456.125,
-                    "right": 984.734375,
-                    "bottom": 469.9375,
-                    "left": 618.734375
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 40,
+          "inpMs": 32,
           "interactionObserved": true
         }
       ]
@@ -2223,13 +2223,13 @@
         "height": 844
       },
       "runs": 5,
-      "lcpMs": 456,
+      "lcpMs": 416,
       "inpMs": 24,
       "cls": 0.0131,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 528,
+          "lcpMs": 608,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2239,7 +2239,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1461,
+              "startTimeMs": 1371,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2321,7 +2321,7 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 96,
           "interactionObserved": true
         },
         {
@@ -2335,7 +2335,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1281,
+              "startTimeMs": 1677,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2421,7 +2421,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 376,
+          "lcpMs": 496,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2431,7 +2431,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1242,
+              "startTimeMs": 1587,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2517,7 +2517,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 560,
+          "lcpMs": 316,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2527,7 +2527,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1686,
+              "startTimeMs": 1257,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2613,7 +2613,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 456,
+          "lcpMs": 352,
           "lcpElement": {
             "tag": "IMG",
             "id": null,
@@ -2623,7 +2623,7 @@
           "cls": 0.0131,
           "shifts": [
             {
-              "startTimeMs": 1290,
+              "startTimeMs": 1096,
               "scrollY": 0,
               "value": 0.0131,
               "sources": [
@@ -2717,13 +2717,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
+        "observed": "49035219b7511bb5a54c438eba73f62798f0e072",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
+        "observed": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
         "expected": "sha256"
       },
       {
@@ -2747,13 +2747,13 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 412,
+        "observed": 384,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 24,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
@@ -2771,7 +2771,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 456,
+        "observed": 416,
         "expected": "< 1800ms"
       },
       {
@@ -2816,8 +2816,8 @@
   "publicationSanitization": {
     "field": "edgeHeaders.report-to endpoint URL query",
     "reason": "Transient provider network-error reporting parameters are omitted from public evidence; measured performance, application identity and security headers are unchanged.",
-    "rawReceiptSha256": "356784a5996c747a10f23fa52a79d8ce40f2ed85be93274e515cc4305eeba39c",
+    "rawReceiptSha256": "99187241c4cdcd0ac59b58e6a460af602e83e1ab1ccf321d03f9aff369492e9b",
     "rawVerdict": "verified"
   },
-  "receiptSha256": "9bafa027a6218722c782b757f6fed2ecac0981d16b750af3004a5b3b87c00aab"
+  "receiptSha256": "04998f34702606953cfc294bdadb57cdc2e8577490e851c5d46dc4e649a8b9df"
 }

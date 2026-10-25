@@ -1,0 +1,47 @@
+{
+  "session": 123,
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+  "transport": "brokered-direct-upload",
+  "ciRunId": 40220306443,
+  "startedAt": "2026-10-25T19:17:53.798Z",
+  "observedAt": "2026-10-25T19:18:14.936Z",
+  "deploymentId": "9674e9d1-5282-418a-b607-32410054a026",
+  "deploymentUrl": "https://9674e9d1.franchise-architect-football.pages.dev",
+  "previousDeploymentId": "9f82b5a9-74b8-4baa-a551-a6d5d6c5bc8e",
+  "stagingNative": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "productionNative": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "uploadInventory": {
+    "verified": true,
+    "primaryArtifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+    "primaryFiles": 361,
+    "completeUploadDigest": "bb290fe72170cadc64d0ffb9151c29cc6187da586d79981239749f589e87c63f",
+    "completeUploadFiles": 3640,
+    "publishedMounts": [
+      "/",
+      "/franchise-architect-football/",
+      "/vaultspark-football-gm/",
+      "/franchise-architect/",
+      "/games/vaultspark-football-gm/",
+      "/games/franchise-architect/",
+      "/games/franchise-architect-football/"
+    ],
+    "boundary": "Primary digest is the native pre-mirror content identity. Every final upload path and byte hash is independently checked against the staged primary ledger and the committed mirror-copy contract."
+  },
+  "verified": true,
+  "pagesWorkflow": {
+    "runId": 40220306459,
+    "statusAtAdmission": "in_progress",
+    "conclusionAtAdmission": null,
+    "notClaimedSuccessful": true
+  },
+  "legacySurfaces": "Observed GitHub Pages URL redirects to a Studio listing linking the canonical app; no separate gameplay build is served there."
+}

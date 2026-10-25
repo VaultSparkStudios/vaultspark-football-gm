@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "session": 123,
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "observedAt": "2026-10-25T19:23:01.527Z",
+  "status": "reconciled-ready-for-one-corrected-attempt",
+  "failures": [
+    {
+      "observedAt": "2026-10-25T19:18:54Z",
+      "kind": "unexpanded-home-key-reference",
+      "stage": "before-native-deployer",
+      "remoteMutation": false,
+      "rawEvidenceRetained": false,
+      "evidence": "Observed by the session owner; the shared failure file was later overwritten. No retained first-failure raw hash is claimed."
+    },
+    {
+      "observedAt": "2026-10-25T19:19:31.108Z",
+      "kind": "windows-scratch-identity-permission-refusal",
+      "stage": "ops-copy-before-authentication",
+      "exitCode": 255,
+      "attempt": 1,
+      "remoteMutation": false,
+      "rawEvidenceRetained": true,
+      "evidence": "Native deployer stopped on authentication refusal before any ops copy or remote deployment command."
+    }
+  ],
+  "reconciliation": {
+    "priorSourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "apiHttpStatus": 200,
+    "apiDatabase": "ready",
+    "runningTargetAndHealthyDatabaseVerified": true,
+    "readOnlyPinnedTargetObservedAt": "2026-10-25T19:22:17.230Z",
+    "remoteMutation": false
+  },
+  "correction": {
+    "scope": "Windows transport adapter through the unchanged native deployer spawn seam",
+    "identity": "Existing gateway-resolved regular identity file; no secret read or copied by adapter",
+    "nativeScratchContainsOnlyNonsecretSentinel": true,
+    "pinnedHostAndNoninteractiveArgumentsPreserved": true,
+    "registryCredentialRemainsStdinOnly": true,
+    "tests": {
+      "passed": 4,
+      "total": 4,
+      "failed": 0,
+      "sourceSha256": "47f6368f2ba03a2837f5bfd8f91dfecf6f419b2126e40de4b56daf4db2e3ad20",
+      "testSha256": "37a9d776a26c6b34d917a91102ef3a118d0e3fd9b6548b3c2672639b31ba35e5"
+    }
+  },
+  "retainedEvidence": [
+    {
+      "kind": "attempt",
+      "sha256": "e51f04ea84620e82caf920e2d1c78cf0d0a86b12f170d0f67d98c4555694ddb9",
+      "retainedInIgnoredCache": true
+    },
+    {
+      "kind": "failure",
+      "sha256": "e390db5cc17d411e3804f85907a44a5aa9c2503345795a875b8203129506c41a",
+      "retainedInIgnoredCache": true
+    }
+  ],
+  "limitations": "At the pre-attempt snapshot, corrected deployment was not yet executed; that snapshot proves reconciliation and adapter checks only. The later resolution below separately records successful promotion from its actual receipt.",
+  "resolution": {
+    "verified": true,
+    "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+    "receipt": "reports/s123-backend-deployment.json",
+    "observedAt": "2026-10-25T19:23:37.612Z",
+    "database": "ready",
+    "privateKeyCopied": false
+  }
+}

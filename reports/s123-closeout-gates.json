@@ -1,0 +1,29 @@
+{
+  "session": 123,
+  "at": "2026-10-25T19:31:13.217Z",
+  "scope": "Read-only canonical exports invoked with explicit subject root; owner autopilot not run. A historical repository-name claim is resolved only with exact current remote, declared legacy mount and unchanged tracked bytes.",
+  "checks": {
+    "aliases": true,
+    "coherence": true,
+    "freshness": true,
+    "summary": true,
+    "context": true
+  },
+  "ok": true,
+  "legacyIdentityResolutions": [
+    {
+      "file": "docs/CLOSEOUT_BRIEF_S14_2026-06-04.md",
+      "claimed": "vaultspark-football-gm",
+      "verifiedSameProject": true,
+      "basis": "Claim matches this exact repository remote name and a declared published legacy mount; tracked historical brief is unchanged.",
+      "fileSha256": "00cccdc16987e799f60dd45a5c24336fcfad596776dac018aec14d306fc1d071"
+    }
+  ],
+  "unresolvedForeignBriefs": [],
+  "chronicFlaky": {
+    "historyMeasured": false,
+    "sessionsTracked": null,
+    "escalations": null,
+    "scope": "No project-local history; historical trend unmeasured, never claimed as a clean trend."
+  }
+}

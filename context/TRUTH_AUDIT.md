@@ -1,39 +1,12 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: selected S122 production verified; broader historical truth remains partial
+Overall status: selected S123 technical production verified; final closeout publication pending; broader readiness remains partial
 Last reviewed: 2026-10-25
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
 
-## 2026-09-30 — S111 hotfix truth — provenance was green while Play was broken
-
-The `9400912` static artifact was exactly what staging and production reported, and the backend health was exact, yet the public Play click failed under an active service worker. This was a missing behavior witness, not a false artifact digest: local browser tests served `.html` directly while Cloudflare Pages canonicalized `/game.html` to `/game` with a 308. The old worker returned a cached redirected HTML response to a navigation that rejected it. A fresh browser with and without the worker supplied the negative control. The `68856a7` fix passed stable-staging Play with an active worker. The first hotfix promotion stopped on an inherited bye-week assertion that incorrectly counted four hidden modal buttons; `15a962b` corrected the assertion. Final exact-source CI, stable staging 14/14, Pages promotion `36664256243`, live origin 10/10, direct `/game.html`, fresh Play, and an old-worker upgrade all passed without failed requests. The 158-image reviewed visual receipt binds final source `15a962b` to artifact `c09fc822…686c980c`; prior `9400912` capture hashes remain in the append-only ledger as superseded entries. Public launch remains HOLD for actual email roundtrip, founder approval, and authoritative lifecycle evidence.
-
-## 2026-09-29 — S111 — Technical truth and the capture history
-
-**The public engine count now has a writer.** Adding the CPU market made the hand-maintained landing count stale. `build-pages.mjs` derives 44 source modules and the public-truth gate rejects a missing or contradictory marker, so the published claim follows the build rather than a release note author.
-
-**Mail evidence must represent the actual roundtrip.** A previous nonempty `--email-evidence` string could mark email verified without anyone receiving a message or observing the reply identity. The typed validator requires both inbound and recipient-observed reply-as evidence for the project-domain alias, with negative controls for incomplete and forged claims. No such real receipt exists yet. The live route/header probe is green, while email, founder approval and authoritative lifecycle remain independent launch holds.
-
-**Source, artifact and backend identity are separate observations.** Exact deployable source `9400912dc95898c458620efb7ed499347bdb3d11` passed CI. Stable staging 14/14 and live Pages 10/10 agree on artifact digest `228907d77371312ad326b08ba24f00cd67c4d0e7adc4939fc08d0213d1a41ad7`; backend workflow success is separately backed by external HTTPS health reporting source `9400912` and database ready. The later closeout commit is receipt-only and is not a new deployed source. Hosted lab performance is not field-cohort evidence.
-
-**A screenshot hash list is not the historical capture ledger.** The first final-source direct suite passed five shards but Studio failed 1 of 351 because all 158 new PNGs were absent from `docs/visual-qa/CAPTURE_LEDGER.json`. The ledger writer appended their hashes, and the focused regression passed. The first full run is recorded as failed, not re-described as green; a fresh six-shard receipt is required after write-back.
-
-**An inherited pre-push diagnosis did not survive ordinary pushes.** S110's “deadlocked hook” wording was a hypothesis drawn from a slow push. Recovery and S111 normal pushes finished with hooks enabled; this session did not bypass them or replace the hook without a reproducer. The S110 bypass remains historical fact.
-
----
-
-Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
-
-## 2026-09-30 — S111 recovery verification — completed baseline
-
-Fresh recovery verifies the S111 final green claim: 1,588/1,588 across every canonical shard, direct exit 0, Doctor blockingFailing 0. The older pending-verification prose is superseded; the first red run is not rewritten. The CPU-market tests prove a matched-seed single-week enabled/disabled control plus a three-year volume bound; they do **not** prove a matched three-year disabled-market parity comparison. That broader reading of the earlier handoff is unsupported. No source corruption, unfinished source diff, or missing closeout surface was found.
-
-<!-- s112-closeout:truth -->
 ## 2026-09-30 — Session 112 — Fair trades, durable saves and observed outcomes
 
 Recovery boundary a783194 verified S111 separately: fresh 1,588/1,588 tests, Doctor blockingFailing 0, valid closeout receipts, and no unfinished source diff. It does not recount S111 implementation as S112 work. The CPU-market evidence remains a matched-seed single-week control plus a three-year volume bound, not a matched three-year disabled-market comparison.
@@ -161,12 +134,18 @@ S121 final publication: closeout 37cac258547aa23b8233c950ad9b314390f27db0 verifi
 
 Three selected S122 outcomes reached exact-source technical production: all four Architect Focus actions open their real decision destinations; desktop/mobile League pulse opens League news; startup counts distinguish fresh receipts, historical totals and matching prior-session evidence. 7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; isolated Studio 388/388. Aggregate unit case total is unmeasured. Stale historical receipt totals remain dated and unverified for current source; no aggregate case count is synthesized from job counts. Matching handoff evidence feeds both prior-session cards and wrapping preserves every limitation. reports/s122-release-acceptance.json verifies exact bd60d3dd387060a2afcf2b974fc27f1e57e22394/9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958; historical image revisions are preserved. Rejected f21512d2 exceeded the boot target; the first hosted harness rejected the valid /game?resume=tab route. fe4f0672 local runtime measured 1058/1060, with 2 historical-comment contract failures: Locally reproduced source regression: boot-budget header trim removed two breakpoint-history phrases required by tablet navigation contracts. Restoring the phrases passed 34/34 focused checks, executable behavior unchanged; corrected boot bytes 648820/650000, target unchanged. b2da78a8 was superseded before publication. Later 26616ed9 Studio measured 387/388: New logging regression fixture contained a direct node:child_process import inside its preload string; the tree guard forbids native imports outside safe-spawn. The approved injection-seam/shared-main correction passed 5 runner plus 2 guard checks, 0 tree violations; final isolated Studio is 388/388. Bounded GET failures remain preserved. First desktop LCP median 2100ms exceeded 1800ms; 2 immutable controls and exactly 1 predeclared stable-origin confirmation passed without sample exclusions or threshold changes. Transport/scheduling variance is supported, causality unproven. Final-source native five-run staging medians: desktop 912ms, mobile 1172ms. Evidence: reports/s122-initial-candidate-failure.json, s122-runtime-gate-failure.json, s122-runtime-correction-review.json, s122-studio-gate-failure.json and s122-performance-investigation.json; audit releaseAttempts preserves every rejected/superseded identity. Final accepted source bd60d3dd387060a2afcf2b974fc27f1e57e22394 is proven separately; no timeout, budget or gate was weakened. Technical release only. Public launch remains HOLD: reply-as email and SHA-bound founder GO remain unverified. Existing S117 appearance/policy/cohort work remains partial; real-user engagement, capacity, physical devices and isolated database restore remain unmeasured. Native goal binding proves identity only; closeout review, publication and remote readback are still pending.
 
+## 2026-10-25 — Session 122 C1 current release evidence
+
+All three selected S122 repairs and dated note are live at1f001008; APIbd60d3dd healthy. C1 CI7/7, both full browser runs275pass/3skip, staging/production14/14, reviewed status images and five-run performance verified. Ordered write-back, two-round review and HMAC-signed impact/owner transport are recorded. Final containing receipt-only commit must be verified on remote main before native completion. Public launch HOLD and UNKNOWN premise timing remain separate. Eight accepted current C1 status images are distinct from344 historical/local images. Four rejected capture frames remain ledger-only. Backend persistence evidence is the dated00:33 BD60 proof; fresh API/database readiness is separately verified. Current project-owned IGNIS41609/FORGE is a dated engineering score, not observed player impact or recipient adoption. reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json.
+
+
+## 2026-10-25 — Session 123 — Explicit receipt and verification scope
+
+Exact source 49035219b7511bb5a54c438eba73f62798f0e072 and artifact 9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04 bind this technical release. Exact candidate CI7/7; local focused49/49; corrected-source clean Studio389/389; hosted staging/production browser5/5 each including8cross-franchise boundary cases per phase; native staging/production14/14. Final receipt metadata acceptance is separate. Aggregate application case count unmeasured. Source-bound before/after and hosted images preserve baseline versus current identities; superseded session120 PNGs were removed only after their hashes were durable in the canonical capture ledger. Initial Studio384/389 is not redescribed as passing. Candidate456682bf passed earlier narrow checks but failed the newly reproduced ownership-boundary invariant; its receipts remain historical and are not corrected-source completion proof. The clean source result389/389 does not certify later metadata; final metadata acceptance remains required.
+
+Strict pre-implementation premise output and pending admission passed, but canonical timing conformance remains UNKNOWN because its recipient recorder/checker is absent. Public launch, real user uptake, isolated backup/restore drills and wider readiness matrix remain separate.
+
 <!-- ledger-roll:pointer -->
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
-## 2026-10-25 — Session 122 C1 current release evidence
-
-All three selected S122 repairs and dated note are live at1f001008; APIbd60d3dd healthy. C1 CI7/7, both full browser runs275pass/3skip, staging/production14/14, reviewed status images and five-run performance verified. Ordered write-back, two-round review and HMAC-signed impact/owner transport are recorded. Final containing receipt-only commit must be verified on remote main before native completion. Public launch HOLD and UNKNOWN premise timing remain separate. Eight accepted current C1 status images are distinct from344 historical/local images. Four rejected capture frames remain ledger-only. Backend persistence evidence is the dated00:33 BD60 proof; fresh API/database readiness is separately verified. Current project-owned IGNIS41609/FORGE is a dated engineering score, not observed player impact or recipient adoption. reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json.

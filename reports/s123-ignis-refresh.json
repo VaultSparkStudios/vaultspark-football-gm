@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "session": 123,
+  "project": "franchise-architect-football",
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+  "computedAt": "2026-10-25T19:28:57.412Z",
+  "verified": true,
+  "score": 42460,
+  "tier": "FORGE",
+  "sourceFingerprint": "8245650f272322e2b70425b270fe49ff15b381d74208998fb26e20554c6e932e",
+  "mindHash": "ab04b9fa73a00d822e487696ca2e031aa08ac97bbc7cde275ddc8afd085b0c49",
+  "historyHash": "9f0f84872106eae90584e7612af9feb534218b7dd91aecdc696918bdc897cce1",
+  "acceptance": {
+    "path": "reports/s123-release-acceptance.json",
+    "sha256": "81f4b6af0bca7fe539a5193801ba00b8868659492a11108d01157b0daf0d195e"
+  },
+  "scope": "Fresh local IGNIS engineering score from owned session artifacts; no field engagement or public launch approval inferred. Registry/Ark publication remains separate."
+}

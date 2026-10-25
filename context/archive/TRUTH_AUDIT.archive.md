@@ -936,3 +936,31 @@ Feedback save failures are visible and are never counted as saved. Milestone fix
 **Release boundary.** Stable staging returned 14/14 same-origin provenance checks for source `dbcd750b1c8e8d477928f28ca8afa869bb80d253` and artifact `6585b783020cbca6b639f8222fd26825139db2e3c665e7ff576ae237534cd51a`. Hosted lab entry-route performance was verified (desktop LCP 696 ms, mobile 784 ms; desktop/mobile CLS 0/0.0085). These are lab and staging measurements; they are not real-cohort metrics or evidence of production promotion. Public launch remains HOLD.
 
 **S110 release truth, 2026-09-29.** The source and artifact are now observed on stable staging (14/14) and live Pages (10/10), with the reviewed 146-image visual receipt and hosted lab performance bound to the same `dbcd750` source and `6585b783…534cd51a` artifact. Launch evidence reaches all nine public routes and verifies origin security headers but reports `launchReady:false`: project-domain receive/reply-as email, founder approval and authoritative lifecycle remain unverified. The backend workflow's test gate and images passed, but three runner attempts failed at SSH transport. Gateway SSH subsequently deployed the exact source, and same-host plus external HTTPS health reported it ready. The backend deployment claim comes from that independent observation; the workflow conclusion remains failure. Studio closeout rerun passed 340/340 after the S110 SIL header was rendered. The direct six-shard 1,573/1,573 receipt predates final visual-only edits; exact-candidate CI supplies final-source test coverage.
+
+## 2026-09-30 — S111 hotfix truth — provenance was green while Play was broken
+
+The `9400912` static artifact was exactly what staging and production reported, and the backend health was exact, yet the public Play click failed under an active service worker. This was a missing behavior witness, not a false artifact digest: local browser tests served `.html` directly while Cloudflare Pages canonicalized `/game.html` to `/game` with a 308. The old worker returned a cached redirected HTML response to a navigation that rejected it. A fresh browser with and without the worker supplied the negative control. The `68856a7` fix passed stable-staging Play with an active worker. The first hotfix promotion stopped on an inherited bye-week assertion that incorrectly counted four hidden modal buttons; `15a962b` corrected the assertion. Final exact-source CI, stable staging 14/14, Pages promotion `36664256243`, live origin 10/10, direct `/game.html`, fresh Play, and an old-worker upgrade all passed without failed requests. The 158-image reviewed visual receipt binds final source `15a962b` to artifact `c09fc822…686c980c`; prior `9400912` capture hashes remain in the append-only ledger as superseded entries. Public launch remains HOLD for actual email roundtrip, founder approval, and authoritative lifecycle evidence.
+
+## 2026-09-29 — S111 — Technical truth and the capture history
+
+**The public engine count now has a writer.** Adding the CPU market made the hand-maintained landing count stale. `build-pages.mjs` derives 44 source modules and the public-truth gate rejects a missing or contradictory marker, so the published claim follows the build rather than a release note author.
+
+**Mail evidence must represent the actual roundtrip.** A previous nonempty `--email-evidence` string could mark email verified without anyone receiving a message or observing the reply identity. The typed validator requires both inbound and recipient-observed reply-as evidence for the project-domain alias, with negative controls for incomplete and forged claims. No such real receipt exists yet. The live route/header probe is green, while email, founder approval and authoritative lifecycle remain independent launch holds.
+
+**Source, artifact and backend identity are separate observations.** Exact deployable source `9400912dc95898c458620efb7ed499347bdb3d11` passed CI. Stable staging 14/14 and live Pages 10/10 agree on artifact digest `228907d77371312ad326b08ba24f00cd67c4d0e7adc4939fc08d0213d1a41ad7`; backend workflow success is separately backed by external HTTPS health reporting source `9400912` and database ready. The later closeout commit is receipt-only and is not a new deployed source. Hosted lab performance is not field-cohort evidence.
+
+**A screenshot hash list is not the historical capture ledger.** The first final-source direct suite passed five shards but Studio failed 1 of 351 because all 158 new PNGs were absent from `docs/visual-qa/CAPTURE_LEDGER.json`. The ledger writer appended their hashes, and the focused regression passed. The first full run is recorded as failed, not re-described as green; a fresh six-shard receipt is required after write-back.
+
+**An inherited pre-push diagnosis did not survive ordinary pushes.** S110's “deadlocked hook” wording was a hypothesis drawn from a slow push. Recovery and S111 normal pushes finished with hooks enabled; this session did not bypass them or replace the hook without a reproducer. The S110 bypass remains historical fact.
+
+---
+
+Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+
+## 2026-09-30 — S111 recovery verification — completed baseline
+
+Fresh recovery verifies the S111 final green claim: 1,588/1,588 across every canonical shard, direct exit 0, Doctor blockingFailing 0. The older pending-verification prose is superseded; the first red run is not rewritten. The CPU-market tests prove a matched-seed single-week enabled/disabled control plus a three-year volume bound; they do **not** prove a matched three-year disabled-market parity comparison. That broader reading of the earlier handoff is unsupported. No source corruption, unfinished source diff, or missing closeout surface was found.
+
+<!-- s112-closeout:truth -->

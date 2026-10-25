@@ -107,9 +107,15 @@
           "status": "shipped",
           "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
           "evidence": "20 focused checks and actual-browser denied storage POST/PATCH/clear",
-          "note": "20 focused checks and actual-browser denied storage POST/PATCH/clear; corrected local source only. Fresh exact-source staging/CI/production and closeout remain pending."
+          "note": "20 focused checks and actual-browser denied storage POST/PATCH/clear; local implementation and hosted staging verified, exact-candidate CI/production/closeout pending."
+        },
+        {
+          "at": "2026-10-25T19:24:13.868Z",
+          "status": "shipped",
+          "note": "Local implementation and exact-source staging/production verified. reports/s123-release-acceptance.json; final receipt metadata publication pending."
         }
-      ]
+      ],
+      "shipped": true
     },
     {
       "id": 2,
@@ -170,9 +176,15 @@
           "status": "shipped",
           "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
           "evidence": "26 focused unit checks and 5 browser checks; 16 inspected before/after images",
-          "note": "26 focused unit checks and 5 browser checks; 16 inspected before/after images; corrected local source only. Fresh exact-source staging/CI/production and closeout remain pending."
+          "note": "26 focused unit checks and 5 browser checks; 16 inspected before/after images; local implementation and hosted staging verified, exact-candidate CI/production/closeout pending."
+        },
+        {
+          "at": "2026-10-25T19:24:13.868Z",
+          "status": "shipped",
+          "note": "Local implementation and exact-source staging/production verified. reports/s123-release-acceptance.json; final receipt metadata publication pending."
         }
-      ]
+      ],
+      "shipped": true
     },
     {
       "id": 3,
@@ -228,9 +240,15 @@
           "status": "shipped",
           "scope": "Local implementation verified; staging/CI/production/closeout still pending.",
           "evidence": "20 focused checks; actual startup renderer and format validator pass",
-          "note": "20 focused checks; actual startup renderer and format validator pass; corrected local source only. Fresh exact-source staging/CI/production and closeout remain pending."
+          "note": "20 focused checks; actual startup renderer and format validator pass; local implementation and hosted staging verified, exact-candidate CI/production/closeout pending."
+        },
+        {
+          "at": "2026-10-25T19:24:13.868Z",
+          "status": "shipped",
+          "note": "Local implementation and exact-source staging/production verified. reports/s123-release-acceptance.json; final receipt metadata publication pending."
         }
-      ]
+      ],
+      "shipped": true
     }
   ],
   "totals": {
@@ -254,10 +272,14 @@
       ]
     },
     "ui-ux-feedback": {
-      "surviving": [
-        "owner-inbox-destination"
-      ],
-      "rejectedOnVerify": []
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "owner-inbox-destination-resolved",
+          "premise": "Current source retains the reproduced owner-inbox-destination defect",
+          "evidence": "The selected repair is verified by Local implementation and exact-source staging/production verified. reports/s123-release-acceptance.json; final receipt metadata publication pending."
+        }
+      ]
     },
     "gamification-immersion": {
       "surviving": [],
@@ -280,10 +302,14 @@
       ]
     },
     "security": {
-      "surviving": [
-        "cloud-storage-resilience"
-      ],
-      "rejectedOnVerify": []
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "cloud-storage-resilience-resolved",
+          "premise": "Current source retains the reproduced cloud-storage-resilience defect",
+          "evidence": "The selected repair is verified by Local implementation and exact-source staging/production verified. reports/s123-release-acceptance.json; final receipt metadata publication pending."
+        }
+      ]
     },
     "speed-organization-efficiency": {
       "surviving": [],
@@ -306,10 +332,14 @@
       ]
     },
     "observability-honesty": {
-      "surviving": [
-        "deploy-summary-truth"
-      ],
-      "rejectedOnVerify": []
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "deploy-summary-truth-resolved",
+          "premise": "Current source retains the reproduced deploy-summary-truth defect",
+          "evidence": "The selected repair is verified by Local implementation and exact-source staging/production verified. reports/s123-release-acceptance.json; final receipt metadata publication pending."
+        }
+      ]
     },
     "sil-debt": {
       "surviving": [],
@@ -449,8 +479,9 @@
     }
   ],
   "currentRelease": {
-    "status": "corrected-local-source-awaiting-candidate-staging",
-    "rejectedSourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-    "localReview": "reports/s123-owner-navigation-review.json"
+    "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+    "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+    "acceptance": "reports/s123-release-acceptance.json",
+    "status": "technical-production-verified-closeout-pending"
   }
 }

@@ -1,0 +1,308 @@
+{
+  "session": 123,
+  "at": "2026-10-25T19:48:39.347Z",
+  "failureReceipt": "reports/s123-first-final-metadata.json",
+  "cause": "Current-state/work-log retention exceeded canonical one-session roll-debt tolerance.",
+  "command": "Canonical project rollLedgers({root:currentProject,apply:true}) from scripts/ledger-roll.mjs",
+  "before": [
+    {
+      "file": "CURRENT_STATE.md",
+      "before": 24432,
+      "after": 20568,
+      "archived": 3,
+      "archivedSessions": [
+        110,
+        110,
+        109
+      ],
+      "retainedSessions": [
+        123,
+        122,
+        120,
+        119,
+        118,
+        116,
+        116,
+        115,
+        114,
+        113,
+        112
+      ],
+      "reordered": false,
+      "order": "newest-first",
+      "archivePath": "context\\archive\\CURRENT_STATE.archive.md"
+    },
+    {
+      "file": "DECISIONS.md",
+      "before": 18885,
+      "after": 17364,
+      "archived": 1,
+      "archivedSessions": [
+        113
+      ],
+      "retainedSessions": [
+        114,
+        115,
+        116,
+        116,
+        117,
+        118,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123
+      ],
+      "reordered": false,
+      "order": "newest-last",
+      "archivePath": "context\\archive\\DECISIONS.archive.md"
+    },
+    {
+      "file": "TRUTH_AUDIT.md",
+      "before": 33040,
+      "after": 28584,
+      "archived": 3,
+      "archivedSessions": [
+        111,
+        111,
+        111
+      ],
+      "retainedSessions": [
+        112,
+        113,
+        115,
+        116,
+        118,
+        118,
+        119,
+        120,
+        121,
+        122,
+        122,
+        123
+      ],
+      "reordered": false,
+      "order": "newest-last",
+      "archivePath": "context\\archive\\TRUTH_AUDIT.archive.md"
+    },
+    {
+      "file": "SELF_IMPROVEMENT_LOOP.md",
+      "before": 27722,
+      "after": 24772,
+      "archived": 1,
+      "archivedSessions": [
+        113
+      ],
+      "retainedSessions": [
+        114,
+        115,
+        116,
+        117,
+        118,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123
+      ],
+      "reordered": false,
+      "order": "newest-last",
+      "archivePath": "context\\archive\\SELF_IMPROVEMENT_LOOP.archive.md"
+    },
+    {
+      "file": "WORK_LOG.md",
+      "before": 39371,
+      "after": 21323,
+      "archived": 4,
+      "archivedSessions": [
+        111,
+        111,
+        111,
+        112
+      ],
+      "retainedSessions": [
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        122,
+        123
+      ],
+      "reordered": false,
+      "order": "newest-last",
+      "archivePath": "logs\\archive\\WORK_LOG.archive.md"
+    },
+    {
+      "file": "TASK_BOARD.md",
+      "before": 30497,
+      "after": 28700,
+      "archived": 1,
+      "archivedSessions": [
+        110
+      ],
+      "retainedSessions": [
+        123,
+        122,
+        121,
+        117,
+        116,
+        115,
+        114,
+        113,
+        112,
+        111
+      ],
+      "reordered": false,
+      "order": "newest-first",
+      "archivePath": "context\\archive\\TASK_BOARD.archive.md"
+    },
+    {
+      "file": "AGENT_MEMORY.md",
+      "before": 13567,
+      "after": 12146,
+      "archived": 1,
+      "archivedSessions": [
+        96
+      ],
+      "retainedSessions": [
+        123,
+        122,
+        121,
+        120,
+        119,
+        118,
+        112,
+        111,
+        98,
+        97
+      ],
+      "reordered": false,
+      "order": "newest-first",
+      "archivePath": "context\\archive\\AGENT_MEMORY.archive.md"
+    }
+  ],
+  "after": [
+    {
+      "file": "CURRENT_STATE.md",
+      "before": 20568,
+      "after": 20568,
+      "archived": 0,
+      "pointerRelocated": false,
+      "skipped": "duplicate session headings inside the retention window"
+    },
+    {
+      "file": "DECISIONS.md",
+      "before": 17364,
+      "after": 17364,
+      "archived": 0,
+      "pointerRelocated": false,
+      "skipped": "duplicate session headings inside the retention window"
+    },
+    {
+      "file": "TRUTH_AUDIT.md",
+      "before": 28584,
+      "after": 28584,
+      "archived": 0,
+      "pointerRelocated": false,
+      "skipped": "duplicate session headings inside the retention window"
+    },
+    {
+      "file": "SELF_IMPROVEMENT_LOOP.md",
+      "before": 24772,
+      "after": 24772,
+      "archived": 0,
+      "pointerRelocated": false,
+      "skipped": "duplicate session headings inside the retention window"
+    },
+    {
+      "file": "WORK_LOG.md",
+      "before": 21323,
+      "after": 21323,
+      "archived": 0,
+      "pointerRelocated": false,
+      "skipped": "fewer entries than the retention window"
+    },
+    {
+      "file": "TASK_BOARD.md",
+      "before": 28700,
+      "after": 28700,
+      "archived": 0,
+      "pointerRelocated": false,
+      "skipped": "fewer entries than the retention window"
+    },
+    {
+      "file": "AGENT_MEMORY.md",
+      "before": 12146,
+      "after": 12146,
+      "archived": 0,
+      "pointerRelocated": false,
+      "skipped": "fewer entries than the retention window"
+    }
+  ],
+  "preservation": [
+    {
+      "path": "context/CURRENT_STATE.md",
+      "beforeStagedSha256": "7da4c751518aa6188a183f200757585fd641fd96ed69e6bdd2be2028364cc783",
+      "afterSha256": "86c02ae7233decb7abf8abe264497a640363338c42d71d5fa00273444cbea99e",
+      "datedEntrySegmentsChecked": 14,
+      "missing": 0
+    },
+    {
+      "path": "context/DECISIONS.md",
+      "beforeStagedSha256": "a9076f27878774fa62c8cb85321ad0b33fbb09fae0ca642b31b00ac586a24972",
+      "afterSha256": "458f9fb9ba8e3e81c7d555627b5e1100d295cd82be76590d7347ceb873cec508",
+      "datedEntrySegmentsChecked": 13,
+      "missing": 0
+    },
+    {
+      "path": "context/TRUTH_AUDIT.md",
+      "beforeStagedSha256": "a012783b45bca8b81f5440b2bc96d89ab473cb5a87aa7dd9dbe90efe1252d321",
+      "afterSha256": "3d08bccb4c1ee9be77c8354c6a229d2f638827b402d61dc5d32f6bc8cbd73c1e",
+      "datedEntrySegmentsChecked": 15,
+      "missing": 0
+    },
+    {
+      "path": "context/SELF_IMPROVEMENT_LOOP.md",
+      "beforeStagedSha256": "91492f8272538f11ca53faf7c49d9af3592884b355b9a0ef398e81763289f78d",
+      "afterSha256": "8ad76c8d073116a1cf60bbf5d37b2e79aeeef10f9c282dc7a95656527604242b",
+      "datedEntrySegmentsChecked": 12,
+      "missing": 0
+    },
+    {
+      "path": "logs/WORK_LOG.md",
+      "beforeStagedSha256": "ae2a7abf43c337a8a33e60832a23462897ab8cb40b05987f70954bf5d74f2855",
+      "afterSha256": "197ed1c8d7f555c0fb8c674d64be8b94d585236a33b0ce67af8dcb92547dcb09",
+      "datedEntrySegmentsChecked": 14,
+      "missing": 0
+    },
+    {
+      "path": "context/TASK_BOARD.md",
+      "beforeStagedSha256": "57452ce3b3bcbc23541c3a6615e42ad992b99ab416b5b77b21a2547bf63b6f4d",
+      "afterSha256": "429881aafa9702f72180a87348c60e216491d7556e1f4782eada4a7cf9e8c434",
+      "datedEntrySegmentsChecked": 11,
+      "missing": 0
+    },
+    {
+      "path": "context/AGENT_MEMORY.md",
+      "beforeStagedSha256": "11cd23365e343db83139d8bb428d9dca4cf0e5ec201d81792fe54ca522742b42",
+      "afterSha256": "ea73e8422e702c9c2b89416a10f874a557b711e90f619ab62d311de2559a4171",
+      "datedEntrySegmentsChecked": 11,
+      "missing": 0
+    }
+  ],
+  "verificationMethod": "Every canonical dated-entry segment and pre-entry header from the exact staged baseline occurs in live or archive output after line-ending normalization. A preliminary generic-heading checker was inapplicable to CURRENT_STATE dated-bullet entries; no text loss is inferred from that checker rejection.",
+  "focusedChecks": {
+    "tests": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "verified": true,
+  "applicationSourceUnchanged": true,
+  "freshCompleteMetadataRerun": "required"
+}

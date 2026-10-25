@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "sha": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "runId": 40220306443,
+  "attempt": 1,
+  "requiredJobs": [
+    "unit-shards (core)",
+    "unit-shards (runtime)",
+    "unit-shards (sim:contract)",
+    "unit-shards (sim:realism)",
+    "unit-shards (long)",
+    "unit-shards (studio)",
+    "browser-gates"
+  ],
+  "lane": "hosted-exact-sha",
+  "session": 123,
+  "observedAt": "2026-10-25T19:28:07.188Z"
+}
