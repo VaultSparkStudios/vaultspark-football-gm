@@ -1,0 +1,26 @@
+{
+  "session": 123,
+  "at": "2026-10-25T19:57:59.467Z",
+  "commit": "647e59964995fe8db4cb1d0f5ef7298587bed1a5",
+  "approvedReviewSha256": "572fbe536b1d17622404ba70fac64bb3414db6e6c07804484a00f4b29cdaf230",
+  "approvedFiles": 89,
+  "committedFiles": 89,
+  "allCommittedBytesMatchApproved": true,
+  "immutableReleaseRefsVerified": 19,
+  "canonicalCommittedSecretScan": {
+    "textFiles": 61,
+    "findings": 0
+  },
+  "stagingReceiptOverlap": {
+    "occurred": true,
+    "gateExited": 0,
+    "emptyCachePatchWasNotUsedForTestsOrPublicationProof": true
+  },
+  "reconstructedCommittedPatch": {
+    "sha256": "b750de250ac42205a3e88506ff0a3aac05637cd41f7be989af4d54fdeeb35c7e",
+    "bytes": 10101767
+  },
+  "testedMetadataTree": "8900179c12448bccac9bc5a038eaf7f710dc09d0",
+  "scope": "Post-commit proof validates the exact committed tree independently of the overlapping final staging cache write; no source or gate is bypassed.",
+  "verified": true
+}

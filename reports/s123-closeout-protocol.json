@@ -64,8 +64,22 @@
     "priorFailure": "reports/s123-first-final-metadata.json",
     "ledgerRecovery": "reports/s123-ledger-retention-recovery.json"
   },
-  "remoteReceiptPublication": "pending",
-  "signedImpactDelivery": "pending",
-  "ownedCleanup": "pending",
-  "complete": false
+  "remoteReceiptPublication": {
+    "verified": true,
+    "commit": "647e59964995fe8db4cb1d0f5ef7298587bed1a5"
+  },
+  "signedImpactDelivery": {
+    "path": "reports/s123-ark-impact.json",
+    "sha256": "0fe6b586fa1ac17a474725c1b821a2a76e5f08bbf1ce32b455b79babce0574bb"
+  },
+  "ownedCleanup": {
+    "worktreeVerified": true,
+    "receipt": {
+      "path": "reports/s123-owned-worktree-cleanup.json",
+      "sha256": "e4f2dda6a350b9b4a9d74a77c6848cf64140bda3731bf9d27eef5c1e08d40c46"
+    },
+    "lockRelease": "Enforced after final containing-commit observation."
+  },
+  "artifactsVerified": true,
+  "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
 }

@@ -2,7 +2,7 @@
 
 ## S123 Wave status
 
-- [ ] S123 final receipt metadata acceptance, remote publication, signed impact delivery and owned cleanup.
+- [x] S123 closeout artifacts: metadata389/389, first receipt publication, HMAC impact and owned checkout cleanup verified. Native completion requires final containing-commit readback and owned job/lock release.
 
 - [x] Wave 1 — Cloud storage resilience: focused and real-browser denied-storage POST/PATCH/clear checks pass locally and on staging.
 - [x] Wave 2 — Owner ultimatum opens Boardroom: corrected async ownership guard passes26units and local browser5/5 including8cross-franchise boundary cases;16images inspected/hash-bound. Hosted corrected-source proof remains in Wave3.

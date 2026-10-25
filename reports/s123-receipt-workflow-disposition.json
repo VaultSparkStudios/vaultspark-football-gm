@@ -1,0 +1,16 @@
+{
+  "session": 123,
+  "at": "2026-10-25T20:02:17.384Z",
+  "head": "647e59964995fe8db4cb1d0f5ef7298587bed1a5",
+  "applicationSource": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "receiptOnly": true,
+  "terminal": true,
+  "workflows": [
+    {
+      "id": 40228528828,
+      "status": "completed",
+      "conclusion": "cancelled"
+    }
+  ],
+  "scope": "Only the observed CI push workflow for the verified receipt-only commit. Unchanged Pages/backend path filters exclude all metadata prefixes, so no deployment workflow is expected. No application CI success is claimed for cancelled runs."
+}

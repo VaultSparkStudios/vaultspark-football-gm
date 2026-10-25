@@ -24,6 +24,8 @@
     "sha256": "9059489f94867a7216c1f07527deb67afc81ef2e8ab145335e5bcedb4318d5e4"
   },
   "acceptance": "reports/s123-release-acceptance.json",
-  "closeoutComplete": false,
-  "scope": "Selected outcomes and technical release; final metadata/publication remains required"
+  "scope": "Selected outcomes and technical release; final metadata/publication remains required",
+  "closeoutArtifactsVerified": true,
+  "completion": "reports/s123-closeout-completion.json",
+  "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
 }

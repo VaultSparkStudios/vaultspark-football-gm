@@ -5,7 +5,7 @@
 - Shipped: S123: Cloud sync survives denied storage, owner Inbox actions reach Boardroom without crossing franchise scope, and startup deployment receipts render clearly.
 - Tests: Exact candidate CI7/7; local focused49/49; corrected-source clean Studio389/389; hosted staging/production browser5/5 each including8cross-franchise boundary cases per phase; native staging/production14/14. Final receipt metadata acceptance is separate. Aggregate application case count unmeasured.
 - Deploy: Frontend and API at 49035219b7511bb5a54c438eba73f62798f0e072; artifact 9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04; native staging/production14/14.
-- Closeout: ordered write-back, independent review and final isolated metadata389/389 verified. Receipt publication, signed impact and owned cleanup remain pending. Initial metadata388/389 retention failure and verbatim archive recovery remain recorded.
+- Closeout: ordered records, independent review, metadata389/389, first receipt publication, HMAC impact delivery and owned checkout cleanup verified. Final containing-commit/job/lock readback is enforced before native completion. Initial388/389 retention failure and verbatim archive recovery remain recorded.
 
 Session Intent: Full fresh /arc, selected implementation, authorized direct main publication and complete technical deployment. Selected outcomes and technical release verified; native goal completion requires final closeout publication/readback.
 

@@ -1,0 +1,12 @@
+{
+  "session": 123,
+  "observedAt": "2026-10-25T20:01:13.9070488Z",
+  "verified": true,
+  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "testedStagedTree": "8900179c12448bccac9bc5a038eaf7f710dc09d0",
+  "ownWorktreeRemoved": true,
+  "dependencyJunctionRemovedNonrecursively": true,
+  "preservedTreeRef": "refs/codex/evidence/s123-tested-metadata",
+  "unrelatedWorktreesUntouched": true,
+  "lock": "retained until final containing-commit readback"
+}

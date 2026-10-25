@@ -67,8 +67,10 @@
 
 S123 measured acceptance: CI7/7; CI browser280passed/3skipped; source Studio389/389; final isolated receipt metadata389/389 passed (tested tree8900179c12448bccac9bc5a038eaf7f710dc09d0).
 
-SCAFFOLD:4 tasks ·3 done ·0 in progress ·1 open (final receipt acceptance/publication/impact/cleanup).
+SCAFFOLD:4 tasks ·4 done ·0 in progress ·0 open (selected outcomes and closeout artifacts).
 
 SHELLS checkpoint:19 tracked yielded handles started ·19 closed/missing ·0 running. Subsequent final test/publication handles remain separately tracked.
 
 IGNIS freshly computed2026-10-25T19:28:57.412Z; source49035219, score42460/FORGE. The renderer’s age label rounds date-only values. Historical aggregate test totals remain explicitly STALE; current exact-source evidence is reports/s123-release-acceptance.json.
+
+Final closeout artifacts verified: reports/s123-closeout-completion.json. HMAC impact 01K5QA9ORG6B2B702FA5817A21 shipped; recipient adoption is not asserted. Owned test checkout removed. Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion.

@@ -1,0 +1,68 @@
+{
+  "session": 123,
+  "at": "2026-10-25T20:03:47.099Z",
+  "applicationSource": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+  "selectedOutcomes": {
+    "verified": 3,
+    "remaining": 0
+  },
+  "closeoutArtifactsVerified": true,
+  "receiptPublication": {
+    "commit": "647e59964995fe8db4cb1d0f5ef7298587bed1a5",
+    "remoteVerified": true,
+    "receiptOnly": true
+  },
+  "metadata": {
+    "passed": 389,
+    "total": 389,
+    "testedStagedTree": "8900179c12448bccac9bc5a038eaf7f710dc09d0",
+    "priorFailurePreserved": true
+  },
+  "signedImpact": {
+    "cargoId": "01K5QA9ORG6B2B702FA5817A21",
+    "hmacVerified": true,
+    "ed25519Posture": "unsigned",
+    "recipientAdoption": "not asserted"
+  },
+  "receipts": [
+    {
+      "path": "reports/s123-release-acceptance.json",
+      "sha256": "81f4b6af0bca7fe539a5193801ba00b8868659492a11108d01157b0daf0d195e"
+    },
+    {
+      "path": "reports/s123-final-metadata.json",
+      "sha256": "ff565b4d48fd858adf0646b99906fdb1472e0ed9ccbdcf117839119f33e1d275"
+    },
+    {
+      "path": "reports/s123-closeout-review.json",
+      "sha256": "7f84d19fc3d186dfdc909f1db11bbedafb906648bdae0362ffd46eacce842a56"
+    },
+    {
+      "path": "reports/s123-doctor.json",
+      "sha256": "0817262e0aa612f966fdf79e7368c043bdd87412c00d9a7d46c31b1f53ae64ac"
+    },
+    {
+      "path": "reports/s123-ark-impact.json",
+      "sha256": "0fe6b586fa1ac17a474725c1b821a2a76e5f08bbf1ce32b455b79babce0574bb"
+    },
+    {
+      "path": "reports/s123-owned-worktree-cleanup.json",
+      "sha256": "e4f2dda6a350b9b4a9d74a77c6848cf64140bda3731bf9d27eef5c1e08d40c46"
+    },
+    {
+      "path": "reports/s123-commit-inventory-reconciliation.json",
+      "sha256": "9d33908129a1aa839b794f94213890ae29ef47cc08ca200ec59fd2b096740235"
+    },
+    {
+      "path": "reports/s123-receipt-workflow-disposition.json",
+      "sha256": "4ce89f1d1200b8a5ef4538984e6bd10497fa79a77df6a0d55302cff05cf52364"
+    }
+  ],
+  "processLimitations": [
+    "Canonical premise timing remains UNKNOWN.",
+    "Genomic dimensions are unmeasured; parser fallback zero earns no inferred merit.",
+    "Final staging cache receipt overlapped commit; exact89committed files and19refs were subsequently verified independently before push."
+  ],
+  "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
+}
