@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "session": 122,
-  "capturedAt": "2026-10-25T02:00:15.122Z",
-  "kind": "status-note-local-and-historical-hosted-evidence",
-  "sourceRevision": null,
-  "scope": "Eight newly reviewed local status-note before/after captures. The 336 preceding captures preserve their original sources and prior inspection; this is not new hosted-source acceptance.",
+  "capturedAt": "2026-10-25T07:56:47.563Z",
+  "kind": "status-note-current-hosted-and-historical-gameplay-evidence",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "scope": "Eight accepted C1 status-note hosted images (staging4 and production4). All344 prior captures and their original source/review metadata remain historical or local evidence, including104 BD60 gameplay captures. No C1 gameplay-image claim.",
   "sourceFiles": [
     {
       "path": "src/engine/architectFocusReview.js",
@@ -24,9 +24,7 @@
     },
     {
       "path": "public/status.html",
-      "beforeSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
-      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
-      "sourceRevision": null
+      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516"
     }
   ],
   "themes": [
@@ -4401,18 +4399,290 @@
       "sourceKind": "proposed-worktree-status-note",
       "page": "status release note after mobile light",
       "kind": "after"
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "file": "s122-status-staging-v2-1f001008-desktop-dark.png",
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 65,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportHeight": 1000
+      },
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-desktop-dark.png",
+      "phase": "staging-v2",
+      "kind": "hosted-status-staging",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+        "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "file": "s122-status-staging-v2-1f001008-desktop-light.png",
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 65,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportHeight": 1000
+      },
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-desktop-light.png",
+      "phase": "staging-v2",
+      "kind": "hosted-status-staging",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+        "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "file": "s122-status-staging-v2-1f001008-mobile-dark.png",
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 98,
+        "viewportWidth": 390,
+        "scrollWidth": 390,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportHeight": 844
+      },
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-mobile-dark.png",
+      "phase": "staging-v2",
+      "kind": "hosted-status-staging",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+        "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "file": "s122-status-staging-v2-1f001008-mobile-light.png",
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 98,
+        "viewportWidth": 390,
+        "scrollWidth": 390,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportHeight": 844
+      },
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-mobile-light.png",
+      "phase": "staging-v2",
+      "kind": "hosted-status-staging",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+        "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "file": "s122-status-production-v2-1f001008-desktop-dark.png",
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 65,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportHeight": 1000
+      },
+      "url": "https://playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-desktop-dark.png",
+      "phase": "production-v2",
+      "kind": "hosted-status-production",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+        "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "file": "s122-status-production-v2-1f001008-desktop-light.png",
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 65,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportHeight": 1000
+      },
+      "url": "https://playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-desktop-light.png",
+      "phase": "production-v2",
+      "kind": "hosted-status-production",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+        "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "file": "s122-status-production-v2-1f001008-mobile-dark.png",
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 98,
+        "viewportWidth": 390,
+        "scrollWidth": 390,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportHeight": 844
+      },
+      "url": "https://playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-mobile-dark.png",
+      "phase": "production-v2",
+      "kind": "hosted-status-production",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+        "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "file": "s122-status-production-v2-1f001008-mobile-light.png",
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 98,
+        "viewportWidth": 390,
+        "scrollWidth": 390,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportHeight": 844
+      },
+      "url": "https://playfranchisearchitect.com/status",
+      "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-mobile-light.png",
+      "phase": "production-v2",
+      "kind": "hosted-status-production",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+        "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+      }
     }
   ],
   "inspection": {
-    "reviewer": "review_navigation",
+    "reviewer": "review_navigation; review_navigation",
     "renderedPixelsReviewed": true,
     "reviewed": 8,
     "verdict": "pass",
     "blockingDefectsOpen": 0,
-    "method": "Viewed all eight individual actual Chrome screenshots using view_image. At1440x1000 and390x844, both dark/light: date/title and both new paragraphs are fully readable, wrap within unchanged cards and show no horizontal overflow or clipped text. Before captures preserve prior latest note; after captures show new2026-10-25 note. Existing styles retained. Existing 336 captures and original inspection are preserved verbatim in the content-addressed prior receipt; their earlier review is not relabeled as a new review.",
+    "method": "Current C1 status-note pixels accepted only from independently reviewed actual staging-v2 and production-v2 browser receipts. Original historical/local inspection remains in priorInspection and byte-exact priorEvidenceReceipt.",
     "findings": [],
     "fixesApplied": [
       "Added the dated player-facing release note for the shipped navigation repairs."
+    ],
+    "phaseReviews": [
+      {
+        "phase": "staging-v2",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "browser": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-browser.json",
+          "sha256": "679a289c79e417738fc17059b0fc7c234c3d927daacf152e2831c857f4dbf31a"
+        },
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+          "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+        },
+        "provenance": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-provenance.json",
+          "sha256": "3c105cc036ac7ee657f8f234e6cbdbb66fe25184a4a90d0d68271cafb09d760d"
+        },
+        "performance": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-performance.json",
+          "sha256": "0882bec9d1a0ff01e0bb6919f608e2f5e34782211f95a957e911f5671eb77f47"
+        },
+        "captures": 4,
+        "reviewer": "review_navigation",
+        "reviewedAt": "2026-10-25T02:13:37.840Z"
+      },
+      {
+        "phase": "production-v2",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "browser": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-browser.json",
+          "sha256": "61d16ac654bccf8010597b03a5cf21609289b3c5b8e2ef85e25e61ba7009231b"
+        },
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+          "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+        },
+        "provenance": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-provenance.json",
+          "sha256": "bc62cb2fc0ed0bf930679bb9608cccadd45361f4e197c88026937530a2fb33e0"
+        },
+        "performance": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-performance.json",
+          "sha256": "73e22c963559c28074e6b764714d26af0ffbcd2e1274d029f0c6d8d4ee7377fa"
+        },
+        "captures": 4,
+        "reviewer": "review_navigation",
+        "reviewedAt": "2026-10-25T07:55:29.595Z"
+      }
     ]
   },
   "priorSourceFiles": [
@@ -4431,69 +4701,34 @@
     {
       "path": "public/lib/gameplayNavigation.js",
       "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    },
+    {
+      "path": "public/status.html",
+      "beforeSha256": "11f557ea9a33032e50c8d5cb17ae9b2dbb8add94ef5db0bcb331ffd551b85c8f",
+      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "sourceRevision": null
     }
   ],
-  "artifactFingerprint": null,
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+    "files": 361,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
   "priorInspection": {
+    "reviewer": "review_navigation",
     "renderedPixelsReviewed": true,
-    "reviewer": "audit_game independent rendered-pixel inspection",
-    "method": "Prior captures and original inspection metadata preserved through content-addressed history. Current phase independently reviewed: Inspected all52 actual fresh staging-v5 PNGs using view_image across seven contact sheets and four full-resolution spots: mobile-light stewardship action, mobile-dark League news destination, desktop-light Contracts destination and mobile-dark identity reload destination. Checked dark/light desktop1440/mobile390 states, readable concise action labels fitting phone cards, rendered Contracts and League destinations, retained identity review after actual reload, and absence of blank or mid-scroll destination images. No defects found in changed surfaces. This phase-specific review preserves previous source labels and proves rendered synthetic journeys only, not actual-user engagement or physical-device performance.",
-    "findings": [
-      "Before: invalid tabs/targets stranded all focus actions; League news was in a different tab.",
-      "Before: long focus labels spilled beyond phone cards.",
-      "After: destinations are active, visible and focused; concise labels fit without horizontal shifting in both themes."
-    ],
-    "fixesApplied": [
-      "Correct engine focus destinations and labels.",
-      "Share leagueNews route between full and mobile pulse builders."
-    ],
+    "reviewed": 8,
+    "verdict": "pass",
     "blockingDefectsOpen": 0,
-    "phaseReviews": [
-      {
-        "phase": "staging-v3",
-        "sourceRevision": "b2da78a89b5040db5f278709136e163b0f4c55f3",
-        "review": {
-          "path": "reports/s122-staging-v3-visual-review.json",
-          "sha256": "fb1ad29e741f8799b45a3b71c6d0e03fc5893b9dbca12a1a041b4436e39c1dd1"
-        },
-        "browser": {
-          "path": "reports/s122-staging-v3-browser.json",
-          "sha256": "caa8e3b0bbaf4dc2edaaa54d66cae8a06e48022439e69fa46c0e7bc083b8843c"
-        },
-        "captures": 52,
-        "reviewedAt": "2026-10-24T20:09:07.363806Z",
-        "reviewer": "audit_game independent rendered-pixel inspection"
-      },
-      {
-        "phase": "staging-v4",
-        "sourceRevision": "26616ed93079de686d13da150e4e6d7ddf581036",
-        "review": {
-          "path": "reports/s122-staging-v4-visual-review.json",
-          "sha256": "19565e8ab6cf36c264f575016029179d9302bf2d967cf079cba932411ee2ac1d"
-        },
-        "browser": {
-          "path": "reports/s122-staging-v4-browser.json",
-          "sha256": "d10d7de12731601446dabf976733da52294b4d4afae5a114577dfec00ab660a5"
-        },
-        "captures": 52,
-        "reviewedAt": "2026-10-24T20:35:14.146233Z",
-        "reviewer": "audit_game independent rendered-pixel inspection"
-      },
-      {
-        "phase": "staging-v5",
-        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-        "review": {
-          "path": "reports/s122-staging-v5-visual-review.json",
-          "sha256": "48cb1699ec3bdb42dbfde8221d0d837ef33a2719619a375a2baf8fac995a3008"
-        },
-        "browser": {
-          "path": "reports/s122-staging-v5-browser.json",
-          "sha256": "8fb2137b68431dcb317bf12748c6e13b417ce36cf04f9141168c2a1919dc9198"
-        },
-        "captures": 52,
-        "reviewedAt": "2026-10-24T21:35:26.840507Z",
-        "reviewer": "audit_game independent rendered-pixel inspection"
-      }
+    "method": "Viewed all eight individual actual Chrome screenshots using view_image. At1440x1000 and390x844, both dark/light: date/title and both new paragraphs are fully readable, wrap within unchanged cards and show no horizontal overflow or clipped text. Before captures preserve prior latest note; after captures show new2026-10-25 note. Existing styles retained. Existing 336 captures and original inspection are preserved verbatim in the content-addressed prior receipt; their earlier review is not relabeled as a new review.",
+    "findings": [],
+    "fixesApplied": [
+      "Added the dated player-facing release note for the shipped navigation repairs."
     ]
   },
   "priorReceipt": {
@@ -4509,5 +4744,9 @@
       "deploy-manifest.json",
       "edge-policy-receipt.json"
     ]
+  },
+  "priorEvidenceReceipt": {
+    "path": "reports/s122-evidence-history/LATEST-ee610b4af3485131cd8de8cb983c6875ee16b24835ff017d4714eceed6a16d66.json",
+    "sha256": "ee610b4af3485131cd8de8cb983c6875ee16b24835ff017d4714eceed6a16d66"
   }
 }

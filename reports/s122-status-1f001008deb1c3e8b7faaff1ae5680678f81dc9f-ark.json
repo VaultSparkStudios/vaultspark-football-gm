@@ -1,0 +1,36 @@
+{
+  "session": 122,
+  "at": "2026-10-25T08:09:01.806Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "cargo": [
+    {
+      "session": 122,
+      "at": "2026-10-25T08:05:04.521Z",
+      "cargoId": "01K5P1EVBS9CA9BA6A0323CE76",
+      "type": "session-impact-summary",
+      "from": "franchise-architect-football",
+      "to": "*",
+      "closeoutCommit": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "signatureVerified": true,
+      "signaturePosture": "unsigned",
+      "state": "shipped",
+      "adoption": "Not asserted; recipient application and verification remain separate."
+    },
+    {
+      "session": 122,
+      "at": "2026-10-25T08:05:04.526Z",
+      "cargoId": "01K5P1EVCB36A3B3B69A0F60F6",
+      "type": "session-handoff-baton",
+      "from": "franchise-architect-football",
+      "to": "vaultspark-studio-ops",
+      "closeoutCommit": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "signatureVerified": true,
+      "signaturePosture": "unsigned",
+      "state": "shipped",
+      "adoption": "Not asserted; recipient application and verification remain separate."
+    }
+  ],
+  "signatureScheme": "Native HMAC-SHA256 signatures verified. Native Ed25519 posture is unsigned; no Ed25519 claim.",
+  "state": "shipped",
+  "adoption": "Not asserted; each recipient owns application and verification."
+}

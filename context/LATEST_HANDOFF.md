@@ -2,6 +2,15 @@
 
 ## Where We Left Off (Session 122)
 
+- Shipped: Three selected repairs plus dated player release-note follow-through.
+- Tests: C1 CI7/7; both browser runs275pass/3skip; final isolated receipt Studio388/388. Aggregate unit count unmeasured.
+- Deploy: Frontend1f001008 and unchanged APIbd60d3dd verified; native staging/production14/14.
+- Closeout: ordered write-back complete; independent review, HMAC transport and metadata388/388 verified. Native completion requires the containing receipt commit on remote main, zero owned running jobs and owned lock cleanup.
+
+Current acceptance: reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json. Production five-run LCP1232ms desktop/1244ms mobile. Eight current hosted status images and344 historical/local images remain distinctly classified; four rejected capture images are ledger-only. Premise-timing conformance remains UNKNOWN; public launch remains HOLD. CDR reviewed — no new entries.
+
+## Earlier S122 checkpoint — superseded by the current C1 release
+
 - Shipped: Three selected outcomes — four Focus destinations, desktop/mobile League news route and truthful startup test evidence.
 - Tests: At BD60, 7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; pristine isolated Studio 388/388. Final metadata first measured 385/388, then the added release-note candidate measured 387/388 until its eight captures were registered. Fresh combined-candidate acceptance is pending; the earlier pristine run does not certify later metadata. Aggregate unit case total is unmeasured.
 - Deploy: 14/14 staging and 14/14 production at bd60d3dd387060a2afcf2b974fc27f1e57e22394; artifact 9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958; backend/API and prior frontend/backend rollback verified.

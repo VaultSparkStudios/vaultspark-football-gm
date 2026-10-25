@@ -1,0 +1,53 @@
+{
+  "session": 122,
+  "at": "2026-10-25T07:56:22.618Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "kind": "observer-recovery-without-workflow-rerun",
+  "observationFailures": [
+    {
+      "nativeHandle": 18753,
+      "exitCode": 1,
+      "reason": "Local bounded195-minute CI observation expired before it observed completed success."
+    },
+    {
+      "nativeHandle": 38384,
+      "exitCode": 1,
+      "reason": "Local Pages observer fetch failed.",
+      "receipts": [
+        {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-workflow-nonpassing-1792914742093.json",
+          "sha256": "251a24e4b2820a1184b6f994b831e494f6aedb57d0533102c5945ddd1d297b23"
+        }
+      ]
+    }
+  ],
+  "clockInterval": {
+    "requestedSleepMs": 45000,
+    "observedSleepMs": 15522943.9,
+    "cause": "Unmeasured; no causal claim about the host or provider."
+  },
+  "actualWorkflowResults": {
+    "ci": {
+      "runId": 40153452502,
+      "attempt": 1,
+      "requiredJobs": 7,
+      "success": true,
+      "receipt": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ci-proof.json",
+        "sha256": "321fac5784a1a4d7d1374102c5065ad2f0b48054cf655e22bd0a21fdb60f819e"
+      }
+    },
+    "pages": {
+      "runId": 40153653086,
+      "attempt": 1,
+      "requiredJobs": 6,
+      "success": true,
+      "receipt": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-workflow.json",
+        "sha256": "2c1443bf730f3334153a1130054a9782e2946e9a632eddb46bdd1351a861dcee"
+      }
+    }
+  },
+  "workflowRerun": false,
+  "scope": "The new successful commands were read-only observations of the same original successful hosted attempts. Local observation failures are retained and are not relabeled test failures or passing observations."
+}

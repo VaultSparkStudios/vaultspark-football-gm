@@ -22,16 +22,10 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S122) - WHAT SHIPPED ══════════════════════════╗
-║  S122: Three selected S122 outcomes reached exact-source techni  ║
-║  Tests At BD60, 7 exact-candidate CI jobs pass (run              ║
-║  40135773664); CI browser 275 passed and 3 skipped (not counted  ║
-║  as passed); hosted navigation 4/4; pristine isolated Studio     ║
-║  388/388. Final metadata first measured 385/388, then the added  ║
-║  release-note candidate measured 387/388 until its eight         ║
-║  captures were registered. Fresh combined-candidate acceptance   ║
-║  is pending; the earlier pristine run does not certify later     ║
-║  metadata. Aggregate unit case total is unmeasured.              ║
-║  Deploy 14/14 staging and 14/14 production; frontend/API health  ║
+║  S122: Three selected repairs plus the dated note are verified   ║
+║  Tests C1 CI7/7; both browser runs275pass/3skip; final isolated  ║
+║  receipt Studio388/388. Aggregate unit count unmeasured.         ║
+║  Deploy [object Object]                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -68,22 +62,17 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 122 ═══════════════════════════╗
-║  Shipped:  Three selected outcomes — four Focus destinations, d  ║
-║  Tests: At BD60, 7 exact-candidate CI jobs pass (run             ║
-║  40135773664); CI browser 275 passed and 3 skipped (not counted  ║
-║  as passed); hosted navigation 4/4; pristine isolated Studio     ║
-║  388/388. Final metadata first measured 385/388, then the added  ║
-║  release-note candidate measured 387/388 until its eight         ║
-║  captures were registered. Fresh combined-candidate acceptance   ║
-║  is pending; the earlier pristine run does not certify later     ║
-║  metadata. Aggregate unit case total is unmeasured.              ║
-║  Deploy: 14/14 staging and 14/14 production; frontend/API healt  ║
+║  Shipped:  Three selected repairs plus dated player release-not  ║
+║  Tests: C1 CI7/7; both browser runs275pass/3skip; final          ║
+║  isolated receipt Studio388/388. Aggregate unit count            ║
+║  unmeasured.                                                     ║
+║  Deploy: [object Object]                                         ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ██░░░░░░░░░░░░░░░░░░░░░░    7% used                          ║
-║     18,517 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
-║     ~9,259 tok/turn  ·  cache 50%  ·  25 turns to compact        ║
+║     19,141 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
+║     ~9,571 tok/turn  ·  cache 50%  ·  24 turns to compact        ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -93,11 +82,11 @@
 ║  ✓  Velocity      3   ·  Debt: ↓                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         42013 FORGE  ·  0d old                         ║
+║  ✓  IGNIS         41609 FORGE  ·  0d old                         ║
 ║  ⛔  Truth         selected S122 production verified; broader hi  ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.052  (healthy)                               ║
+║  ✓  Entropy       0.059  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║

@@ -104,3 +104,7 @@
 ---
 
 Older entries are retained verbatim in `context/archive/AGENT_MEMORY.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+S122 continuation: a static release-note delta is deployable source and needs fresh exact-source gates. Register every screenshot, including rejected framing attempts, in the canonical ledger. Resolve native artifact inventory entries under static/ even when paths begin src/. Preserve observer failures separately from actual successful workflow results.
+
+S122 final evidence: C1 uses independent source-bound CI/Pages275pass+3skip, hosted14/14 and eight reviewed status images. Preserve HMAC verification separately from unsigned Ed25519 posture; delivery is not adoption. Observer expiry/network loss does not establish workflow failure; fresh reads verified the same original successful attempts. Final metadata publication uses the existing receipt-only lineage contract.

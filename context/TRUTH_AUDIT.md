@@ -165,3 +165,8 @@ Three selected S122 outcomes reached exact-source technical production: all four
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+## 2026-10-25 — Session 122 C1 current release evidence
+
+All three selected S122 repairs and dated note are live at1f001008; APIbd60d3dd healthy. C1 CI7/7, both full browser runs275pass/3skip, staging/production14/14, reviewed status images and five-run performance verified. Ordered write-back, two-round review and HMAC-signed impact/owner transport are recorded. Final containing receipt-only commit must be verified on remote main before native completion. Public launch HOLD and UNKNOWN premise timing remain separate. Eight accepted current C1 status images are distinct from344 historical/local images. Four rejected capture frames remain ledger-only. Backend persistence evidence is the dated00:33 BD60 proof; fresh API/database readiness is separately verified. Current project-owned IGNIS41609/FORGE is a dated engineering score, not observed player impact or recipient adoption. reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json.

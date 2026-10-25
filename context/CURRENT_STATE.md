@@ -2,7 +2,7 @@
 
 ## 2026-10-25 — Session 122
 
-- 2026-10-25: Session 122's three selected outcomes reached exact-source technical production: all four Architect Focus actions open their real decision destinations; desktop/mobile League pulse opens League news; startup counts distinguish fresh receipts, historical totals and matching prior-session evidence. Closeout publication pending. The dated player-facing release-note follow-through is undergoing fresh candidate acceptance. See context/LATEST_HANDOFF.md for acceptance and limits.
+- 2026-10-25: Session 122 verified all three selected repairs and the dated player note at production1f001008; unchanged APIbd60d3dd is healthy. C1 CI7/7, both browser runs275pass/3skip, hosted14/14, current doctor12/12 and final isolated receipt Studio388/388 pass. Closeout records and HMAC transport are verified; native completion requires the containing receipt commit on remote main and scoped job/lock cleanup. Public launch HOLD and UNKNOWN premise timing remain separate.
 
 ## 2026-10-24 — Session 121
 

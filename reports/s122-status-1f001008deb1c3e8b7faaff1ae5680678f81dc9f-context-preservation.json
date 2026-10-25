@@ -1,0 +1,11 @@
+{
+  "session": 122,
+  "at": "2026-10-25T08:01:05.799Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "nativeContextGuard": {
+    "ok": true,
+    "findings": []
+  },
+  "currentNativeInventory": 361,
+  "scope": "Actual complete current native artifact inventory retained in its existing staging authority slot, without detector exceptions or unrelated padding."
+}

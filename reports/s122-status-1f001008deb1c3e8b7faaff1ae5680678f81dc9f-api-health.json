@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "observedAt": "2026-10-25T07:53:31.643Z",
+  "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+  "frontendSourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "verified": true,
+  "database": "ready",
+  "httpStatus": 200,
+  "health": {
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 0,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
+  },
+  "frontendProvenance": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-provenance.json",
+    "sha256": "bc62cb2fc0ed0bf930679bb9608cccadd45361f4e197c88026937530a2fb33e0"
+  },
+  "scope": "Fresh public health for the unchanged, separately deployed BD60 API component. This does not relabel dated Docker/database/Caddy preservation evidence as a new SSH measurement."
+}

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "at": "2026-10-25T07:53:07.938Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+    "files": 361,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "verified": true,
+  "project": "franchise-architect-football",
+  "canonicalDeployment": {
+    "deploymentId": "9f82b5a9-74b8-4baa-a551-a6d5d6c5bc8e",
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "status": "success",
+    "url": "https://9f82b5a9.franchise-architect-football.pages.dev"
+  },
+  "rollback": {
+    "available": true,
+    "previousDeploymentId": "284deb97-c752-413e-911c-95ef289ef48e",
+    "previousSourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "bd60": {
+      "deploymentId": "284deb97-c752-413e-911c-95ef289ef48e",
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "status": "success",
+      "available": true
+    },
+    "originalBaseline": {
+      "deploymentId": "8aeff7a2-de14-4c2c-bedc-2a0ebca1e7cd",
+      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+      "status": "success",
+      "available": true
+    }
+  },
+  "priorEvidence": {
+    "bd60": {
+      "path": "reports/s122-pages-provider.json",
+      "sha256": "4bc23e6f1ff569ccf9d874a6e0e870ceaa869977a11afca27e8b6af4836d7942"
+    },
+    "originalBaselineSha256": "f6df3177f401a30c027f631e3441bda3186d422829062df0c4370be4fbddd5ae"
+  },
+  "scope": "Current canonical frontend provider source and both successful rollback deployments observed by brokered GET only. Artifact content/provenance, CI, browser and backend acceptance remain separate."
+}

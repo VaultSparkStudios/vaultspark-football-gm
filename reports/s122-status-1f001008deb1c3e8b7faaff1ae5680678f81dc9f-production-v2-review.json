@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "phase": "production-v2",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+  "reviewer": "review_navigation",
+  "verdict": "pass",
+  "reviewed": 4,
+  "findings": 0,
+  "reviewedAt": "2026-10-25T07:55:29.595Z",
+  "browser": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-browser.json",
+    "sha256": "61d16ac654bccf8010597b03a5cf21609289b3c5b8e2ef85e25e61ba7009231b"
+  },
+  "captures": [
+    {
+      "file": "docs/visual-qa/s122-status-production-v2-1f001008-desktop-dark.png",
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "docs/visual-qa/s122-status-production-v2-1f001008-desktop-light.png",
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "docs/visual-qa/s122-status-production-v2-1f001008-mobile-dark.png",
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "docs/visual-qa/s122-status-production-v2-1f001008-mobile-light.png",
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "method": "Independently viewed all four actual production-v2 PNGs using view_image. Desktop1440x1000 and mobile390x844, dark/light: complete2026-10-25 title and both paragraphs readable below the fixed navigation, with natural wrapping and clear contrast. No horizontal overflow, clipped new copy or obscured title. Verified all four image hashes, exact source/artifact observations before and after capture, and header-aware geometry against the immutable production browser receipt.",
+  "limits": "Actual status-note hosted production visual acceptance only. Does not certify whole-game behavior, backend, complete release/launch, physical devices or actual-user engagement; staging review is separate."
+}

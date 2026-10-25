@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "at": "2026-10-25T07:57:37.889Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+  "complete": true,
+  "scope": "C1 frontend status-note technical release only; original three outcomes remain supported by immutable BD60 gameplay/source evidence and unchanged executable component bytes.",
+  "inputs": {
+    "ci-proof": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ci-proof.json",
+      "sha256": "321fac5784a1a4d7d1374102c5065ad2f0b48054cf655e22bd0a21fdb60f819e"
+    },
+    "pages-workflow": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-workflow.json",
+      "sha256": "2c1443bf730f3334153a1130054a9782e2946e9a632eddb46bdd1351a861dcee"
+    },
+    "pages-provider": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-provider.json",
+      "sha256": "cf97ad037f94fb4694087f539a14d569958725601e463de05a6b92a5da0ae3df"
+    },
+    "ci-browser-summary": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ci-browser-summary.json",
+      "sha256": "84898c6ba6b0ccb39df6c82a049816941db63764869a7864bbebc50364e232ef"
+    },
+    "pages-browser-summary": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-browser-summary.json",
+      "sha256": "8657c3104b87bb744295c51ee12a4c485bc8a0b1e430cad65c68167d743a18e6"
+    },
+    "source-delta": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-source-delta.json",
+      "sha256": "1896d3a6617940ce9af9d2f7c63fcaa0cfd3f6277a8391a4e4164e3244079929"
+    },
+    "staging-provenance": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-provenance.json",
+      "sha256": "3c105cc036ac7ee657f8f234e6cbdbb66fe25184a4a90d0d68271cafb09d760d"
+    },
+    "production-provenance": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-provenance.json",
+      "sha256": "bc62cb2fc0ed0bf930679bb9608cccadd45361f4e197c88026937530a2fb33e0"
+    },
+    "staging-performance": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-performance.json",
+      "sha256": "0882bec9d1a0ff01e0bb6919f608e2f5e34782211f95a957e911f5671eb77f47"
+    },
+    "production-performance": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-performance.json",
+      "sha256": "73e22c963559c28074e6b764714d26af0ffbcd2e1274d029f0c6d8d4ee7377fa"
+    },
+    "staging-v2-browser": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-browser.json",
+      "sha256": "679a289c79e417738fc17059b0fc7c234c3d927daacf152e2831c857f4dbf31a"
+    },
+    "staging-v2-review": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+      "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+    },
+    "production-v2-browser": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-browser.json",
+      "sha256": "61d16ac654bccf8010597b03a5cf21609289b3c5b8e2ef85e25e61ba7009231b"
+    },
+    "production-v2-review": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+      "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+    },
+    "visual-binding": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-visual-binding.json",
+      "sha256": "af5f44f3e978b312199fee764334c8b5b4271d8b9ea7d85562b7ff7ec3e5c328"
+    },
+    "api-health": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-api-health.json",
+      "sha256": "2f042e82dc49b7807b05e02e64a89105559f98b0da7cd225508041c159045188"
+    }
+  },
+  "visual": {
+    "frozenReceipt": {
+      "path": "reports/s122-evidence-history/LATEST-dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5.json",
+      "sha256": "dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5"
+    },
+    "currentSourceCaptures": 8,
+    "historicalCaptures": 344,
+    "totalCaptures": 352,
+    "rejectedLedgerOnly": 4
+  },
+  "backend": {
+    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "componentCodeUnchanged": true,
+    "persistenceObservationAt": "2026-10-25T00:33:16.909Z",
+    "persistenceReceipt": {
+      "path": "reports/s122-backend-workflow.json",
+      "sha256": "2607032c916a7cd65eaa3b308550545766c2caecae4446e7b62415b5dbfa4505"
+    },
+    "freshApiReceipt": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-api-health.json",
+      "sha256": "2f042e82dc49b7807b05e02e64a89105559f98b0da7cd225508041c159045188"
+    },
+    "limits": "Database/routing/rollback persistence proof is the original dated00:33 BD60 observation, not a fresh SSH snapshot. Fresh API readback is measured separately."
+  },
+  "artifact": {
+    "primaryFiles": 361,
+    "derivedFiles": 3276,
+    "manifest": {
+      "path": "static/deploy-manifest.json",
+      "sha256": "54a7d9e8369035760e3dad44408e7abdd0b36ef67703ab1cc67f256145962243"
+    }
+  },
+  "browserCounts": {
+    "ci": {
+      "passed": 275,
+      "skipped": 3,
+      "failed": 0,
+      "flaky": 0,
+      "summaryLines": [
+        {
+          "line": "275 passed (1.6h)",
+          "at": "2026-10-25T03:46:14.381Z"
+        },
+        {
+          "line": "3 skipped",
+          "at": "2026-10-25T03:46:14.381Z"
+        }
+      ],
+      "zeroCountDerivation": "Absent failed/skipped/flaky lines mean zero only within this complete timestamped step with one unambiguous positive passed summary and an independently successful native step."
+    },
+    "pages": {
+      "passed": 275,
+      "skipped": 3,
+      "failed": 0,
+      "flaky": 0,
+      "summaryLines": [
+        {
+          "line": "275 passed (1.5h)",
+          "at": "2026-10-25T04:35:18.265Z"
+        },
+        {
+          "line": "3 skipped",
+          "at": "2026-10-25T04:35:18.265Z"
+        }
+      ],
+      "zeroCountDerivation": "Absent failed/skipped/flaky lines mean zero only within this complete timestamped step with one unambiguous positive passed summary and an independently successful native step."
+    },
+    "aggregateUnitCaseCount": null
+  },
+  "limits": [
+    "Technical C1 release only; native goal closure and final closeout publication remain pending.",
+    "Public launch remains HOLD; email, SHA-bound founder approval and lifecycle authority are independent.",
+    "Canonical premise timing remains UNKNOWN/nonpassing; full gate-time staged/untracked state remains unmeasured.",
+    "Aggregate unit case total remains unmeasured; skipped browser cases are not passed cases.",
+    "Historical gameplay captures are not relabeled as current C1 status evidence.",
+    "No cohort, capacity, physical-device or isolated database restore outcome is inferred."
+  ]
+}

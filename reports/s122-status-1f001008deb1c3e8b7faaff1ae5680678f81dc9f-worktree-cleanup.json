@@ -1,0 +1,20 @@
+{
+  "session": 122,
+  "at": "2026-10-25T08:24:03.850Z",
+  "scope": "Only two worktrees created for this S122 invocation; other historical worktrees and all ignored user-local files were untouched.",
+  "removed": [
+    {
+      "path": ".cache/s122-pre-release-check",
+      "sourceRevision": "fe4f067280a0e35b6476f817530ecc321d289689",
+      "trackedEditsVerifiedOwned": 2,
+      "reparsePoints": 0
+    },
+    {
+      "path": ".cache/s122-bd60-studio",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "trackedEditsVerifiedOwned": 62,
+      "reparsePoints": 0
+    }
+  ],
+  "forensics": "Immediate ignored log/JSON evidence preserved under .cache/s122-preserved-worktrees; final native green log also retained at its referenced root-cache path."
+}

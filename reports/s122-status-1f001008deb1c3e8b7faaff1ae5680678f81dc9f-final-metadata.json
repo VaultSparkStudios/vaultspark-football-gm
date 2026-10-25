@@ -1,0 +1,20 @@
+{
+  "session": 122,
+  "at": "2026-10-25T08:20:51.038Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "testedStagedTree": "bb152bd1fda0207cff77c28d8d001255003de93d",
+  "nativeHandle": 3230,
+  "exitCode": 0,
+  "authorityPassed": true,
+  "tests": 388,
+  "passed": 388,
+  "failed": 0,
+  "skipped": 0,
+  "durationMs": 119546.7703,
+  "rawLog": {
+    "path": ".cache/s122-final-receipt-studio-green.log",
+    "sha256": "04d1335fdd0769b2f195c3cc6726154fb652d4cb75c3f1196bd6dfd4f3789a75",
+    "bytes": 34144
+  },
+  "scope": "Exact isolated C1 tracked source plus the staged receipt metadata snapshot. Subsequent acceptance receipts and state labels remain receipt-only; no app, workflow, package or test source changed."
+}

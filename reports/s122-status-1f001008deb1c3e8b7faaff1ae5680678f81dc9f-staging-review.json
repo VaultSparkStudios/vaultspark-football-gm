@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "phase": "staging",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+  "reviewer": "review_navigation",
+  "verdict": "fix",
+  "reviewed": 4,
+  "findings": 1,
+  "reviewedAt": "2026-10-25T02:12:08.855Z",
+  "browser": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-browser.json",
+    "sha256": "53a54fb3c5551e2bd4f4d9bdfae5fe0f7fb7e9c009c1b16863985c418d4ac666"
+  },
+  "captures": [
+    {
+      "file": "docs/visual-qa/s122-status-staging-1f001008-desktop-dark.png",
+      "sha256": "0f4cb925942654632208d3781259f82ab19f05e0fe8261072ba7437680cd7830",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "docs/visual-qa/s122-status-staging-1f001008-desktop-light.png",
+      "sha256": "1cb47bd96e78b8bf14a37defd98185dfb95bb76b478f84571244d1eed4704629",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    {
+      "file": "docs/visual-qa/s122-status-staging-1f001008-mobile-dark.png",
+      "sha256": "ce2e47c6efb53cac401a476a53febb234d6466124e20a7aa67e25a648d9a1b87",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "file": "docs/visual-qa/s122-status-staging-1f001008-mobile-light.png",
+      "sha256": "61863c276b8551840c0b39be8348d2ce0717090c9e93bd780469e8657e6478a1",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "findingDetails": [
+    {
+      "kind": "capture-evidence",
+      "severity": "blocking-for-pixel-acceptance",
+      "summary": "Hosted sticky navigation obscures the2026-10-25 release-note title in all4 captures: fully on mobile and partially on desktop.",
+      "cause": "Capture helper scrolls Release Notes heading to20px without accounting for hosted sticky-header height. Raw local source captures did not include injected navigation.",
+      "requiredCorrection": "Preserve original receipts/images. Recapture4 variants with the heading below sticky navigation, using new immutable attempt-specific filenames. Inspect date/title and both paragraphs fully visible. No application-source defect or style change is indicated."
+    }
+  ],
+  "limits": "Actual first hosted staging image review only. Browser checks4/4 and identity observations remain valid, but DOM visibility did not prove title pixels unobscured. No production acceptance."
+}

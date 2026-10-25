@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "sha": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "runId": 40153452502,
+  "attempt": 1,
+  "requiredJobs": [
+    "unit-shards (core)",
+    "unit-shards (runtime)",
+    "unit-shards (sim:contract)",
+    "unit-shards (sim:realism)",
+    "unit-shards (long)",
+    "unit-shards (studio)",
+    "browser-gates"
+  ],
+  "lane": "hosted-exact-sha",
+  "session": 122,
+  "at": "2026-10-25T07:53:08.823Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "scope": "New status/publication candidate: all seven native jobs and actual test steps. Prior BD60 gameplay receipts retain their original source identity; unit case aggregates unmeasured."
+}

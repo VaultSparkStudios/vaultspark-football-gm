@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "at": "2026-10-25T07:53:09.149Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "mode": "ci",
+  "verified": true,
+  "workflowRun": 40153452502,
+  "attempt": 1,
+  "workflow": ".github/workflows/ci.yml",
+  "event": "push",
+  "job": {
+    "id": 121049649233,
+    "name": "browser-gates",
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40153452502/job/121049649233",
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "step": {
+    "name": "Run UI tests",
+    "number": 8,
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-10-25T02:11:26Z",
+    "completedAt": "2026-10-25T03:46:14Z"
+  },
+  "counts": {
+    "passed": 275,
+    "skipped": 3,
+    "failed": 0,
+    "flaky": 0,
+    "summaryLines": [
+      {
+        "line": "275 passed (1.6h)",
+        "at": "2026-10-25T03:46:14.381Z"
+      },
+      {
+        "line": "3 skipped",
+        "at": "2026-10-25T03:46:14.381Z"
+      }
+    ],
+    "zeroCountDerivation": "Absent failed/skipped/flaky lines mean zero only within this complete timestamped step with one unambiguous positive passed summary and an independently successful native step."
+  },
+  "rawLog": {
+    "path": ".cache/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ci-browser-job-121049649233-1792914788782.log",
+    "sha256": "11570bda3f610b2aed107ceda71802f35732b9edc512dc61e34b9d105ac5119d",
+    "bytes": 22184
+  },
+  "aggregateUnitCaseCount": null,
+  "scope": "Actual selected C1 browser test-step Playwright summary only. Historical BD60 counts are not reused; aggregate unit counts remain unmeasured. Signed download URL is neither retained nor printed."
+}

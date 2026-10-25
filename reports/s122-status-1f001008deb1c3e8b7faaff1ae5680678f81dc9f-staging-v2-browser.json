@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "phase": "staging",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "baseUrl": "https://staging.playfranchisearchitect.com",
+  "startedAt": "2026-10-25T02:12:47.082Z",
+  "sourceFiles": [
+    {
+      "path": "public/status.html",
+      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516"
+    }
+  ],
+  "passed": 4,
+  "total": 4,
+  "failed": 0,
+  "reviewed": false,
+  "captures": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "file": "docs/visual-qa/s122-status-staging-v2-1f001008-desktop-dark.png",
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 65,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportHeight": 1000
+      },
+      "url": "https://staging.playfranchisearchitect.com/status"
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "file": "docs/visual-qa/s122-status-staging-v2-1f001008-desktop-light.png",
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 65,
+        "viewportWidth": 1440,
+        "scrollWidth": 1440,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportHeight": 1000
+      },
+      "url": "https://staging.playfranchisearchitect.com/status"
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "file": "docs/visual-qa/s122-status-staging-v2-1f001008-mobile-dark.png",
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 98,
+        "viewportWidth": 390,
+        "scrollWidth": 390,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportHeight": 844
+      },
+      "url": "https://staging.playfranchisearchitect.com/status"
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "file": "docs/visual-qa/s122-status-staging-v2-1f001008-mobile-light.png",
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "geometry": {
+        "headerBottom": 98,
+        "viewportWidth": 390,
+        "scrollWidth": 390,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportHeight": 844
+      },
+      "url": "https://staging.playfranchisearchitect.com/status"
+    }
+  ],
+  "observations": {
+    "before": [
+      {
+        "url": "https://staging.playfranchisearchitect.com/_health",
+        "httpStatus": 200,
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "sha256": "09022e02ff45cdb7674e9b5ad1c2c9c0305830b77695bec375351c4c3ed26db6",
+        "observedAt": "2026-10-25T02:12:47.244Z"
+      },
+      {
+        "url": "https://staging.playfranchisearchitect.com/deploy-manifest.json",
+        "httpStatus": 200,
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "sha256": "54a7d9e8369035760e3dad44408e7abdd0b36ef67703ab1cc67f256145962243",
+        "observedAt": "2026-10-25T02:12:47.418Z"
+      }
+    ],
+    "after": [
+      {
+        "url": "https://staging.playfranchisearchitect.com/_health",
+        "httpStatus": 200,
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "sha256": "09022e02ff45cdb7674e9b5ad1c2c9c0305830b77695bec375351c4c3ed26db6",
+        "observedAt": "2026-10-25T02:12:57.744Z"
+      },
+      {
+        "url": "https://staging.playfranchisearchitect.com/deploy-manifest.json",
+        "httpStatus": 200,
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "sha256": "54a7d9e8369035760e3dad44408e7abdd0b36ef67703ab1cc67f256145962243",
+        "observedAt": "2026-10-25T02:12:57.925Z"
+      }
+    ]
+  },
+  "browserClosed": true,
+  "limits": "Actual hosted status-note rendering only. Independent pixel review remains pending; no complete release, launch, physical-device or actual-user claim.",
+  "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+  "exitCode": 0,
+  "finishedAt": "2026-10-25T02:12:58.219Z"
+}

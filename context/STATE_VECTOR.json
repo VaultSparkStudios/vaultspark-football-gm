@@ -1,9 +1,9 @@
 {
   "vectorVersion": "1.0",
   "generatedAt": "2026-10-25",
-  "generatedAtMs": 1792892302783,
+  "generatedAtMs": 1792915840854,
   "session": 122,
-  "vectorHash": "c076b461c5b73bd8",
+  "vectorHash": "0790280558e8e67e",
   "silTotal": 485,
   "silAvg3": 737.3,
   "velocity": 3,
@@ -26,16 +26,16 @@
   "health": "yellow",
   "truthStatus": "selected S122 production verified; broader historical truth remains partial",
   "genome": null,
-  "ignisScore": 42013,
+  "ignisScore": 41609,
   "ignisGrade": "FORGE",
   "ignisAgeDays": 0,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": "game",
   "lifecycle": "deployed",
-  "nextMilestone": "Verify closeout publication and remote main, then finish this native goal; retain independent launch and broader readiness holds.",
-  "currentFocus": "Three S122 outcomes and exact-candidate technical production verified; closeout review/publication pending.",
-  "lastShipped": "Three selected outcomes — four Focus destinations, desktop/mobile League news route and truthful startup test evidence.",
+  "nextMilestone": "Verify the containing receipt-only commit on remote main, reconcile owned jobs/lock, then complete this native goal.",
+  "currentFocus": "Selected S122 outcomes and technical production verified; final receipt ready for publication.",
+  "lastShipped": "Three selected repairs plus dated player release-note follow-through.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ]

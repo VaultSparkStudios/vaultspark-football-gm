@@ -1,0 +1,56 @@
+{
+  "session": 122,
+  "at": "2026-10-25T02:18:04.769Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+  "ciRunId": 40153452502,
+  "pagesRunId": 40153653086,
+  "backendBuildRunId": 40153452492,
+  "backendProductionSource": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "superseded": {
+    "runId": 40153452504,
+    "event": "push",
+    "conclusion": "cancelled",
+    "reason": "The workflow-owned cancel-in-progress concurrency replaced the automatic build-only push run with the exact staged-candidate manually dispatched promotion. Cancelled work is not counted as passing.",
+    "jobs": [
+      {
+        "id": 121049649144,
+        "name": "gate (sim realism)",
+        "status": "completed",
+        "conclusion": "cancelled"
+      },
+      {
+        "id": 121049649321,
+        "name": "gate (studio (protocol truth))",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 121049649329,
+        "name": "gate (sim contract)",
+        "status": "completed",
+        "conclusion": "cancelled"
+      },
+      {
+        "id": 121049649409,
+        "name": "gate (core (engine + domain behavior))",
+        "status": "completed",
+        "conclusion": "cancelled"
+      },
+      {
+        "id": 121050428017,
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "cancelled"
+      },
+      {
+        "id": 121050428162,
+        "name": "build",
+        "status": "completed",
+        "conclusion": "cancelled"
+      }
+    ]
+  },
+  "requiredAcceptance": "All seven exact-candidate CI jobs and all declared Pages gate/build/deploy jobs and publication steps; selected runs remain pending at this snapshot.",
+  "rawObservationSha256": "ccf02f59ae56a8756d84d99d99f38024e67a2169d38b52dba29b27d7c8e961d3"
+}

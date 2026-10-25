@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "at": "2026-10-25T07:53:09.457Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "mode": "pages",
+  "verified": true,
+  "workflowRun": 40153653086,
+  "attempt": 1,
+  "workflow": ".github/workflows/deploy-pages.yml",
+  "event": "workflow_dispatch",
+  "job": {
+    "id": 121059352199,
+    "name": "build",
+    "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/40153653086/job/121059352199",
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "step": {
+    "name": "Run browser release gate",
+    "number": 9,
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-10-25T03:02:19Z",
+    "completedAt": "2026-10-25T04:35:18Z"
+  },
+  "counts": {
+    "passed": 275,
+    "skipped": 3,
+    "failed": 0,
+    "flaky": 0,
+    "summaryLines": [
+      {
+        "line": "275 passed (1.5h)",
+        "at": "2026-10-25T04:35:18.265Z"
+      },
+      {
+        "line": "3 skipped",
+        "at": "2026-10-25T04:35:18.265Z"
+      }
+    ],
+    "zeroCountDerivation": "Absent failed/skipped/flaky lines mean zero only within this complete timestamped step with one unambiguous positive passed summary and an independently successful native step."
+  },
+  "rawLog": {
+    "path": ".cache/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-browser-job-121059352199-1792914788918.log",
+    "sha256": "e9a170f41990e88fc7856277d4d8337e928bc4f162dc08231544668e216b010e",
+    "bytes": 399258
+  },
+  "aggregateUnitCaseCount": null,
+  "scope": "Actual selected C1 browser test-step Playwright summary only. Historical BD60 counts are not reused; aggregate unit counts remain unmeasured. Signed download URL is neither retained nor printed."
+}

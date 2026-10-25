@@ -247,7 +247,7 @@
       "rank": 1,
       "category": "gamification-immersion",
       "premise": "Live source contains the demonstrated defect for architect-focus-destinations",
-      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
+      "executionEvidence": "Selected outcome verified. C1 exact CI7/7 and both full browser runs275pass/3skip; native staging/production14/14, reviewed status4-view captures and five-run performance: reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json. Original gameplay renders retain their BD60 source; executable bytes are unchanged. Technical production and signed transport verified. Final receipt-only publication requires remote readback."
     },
     {
       "id": 2,
@@ -305,7 +305,7 @@
       "rank": 2,
       "category": "ui-ux-feedback",
       "premise": "Live source contains the demonstrated defect for league-pulse-destination",
-      "executionEvidence": "Focused unit30/30 and actual browser4/4 pass, all four saved-focus reloads. Old source produced24 broken interactions across4 variants. Independent navigation review PASS;76 real before/after images inspected and hash-bound. reports/s122-navigation-review.json. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
+      "executionEvidence": "Selected outcome verified. C1 exact CI7/7 and both full browser runs275pass/3skip; native staging/production14/14, reviewed status4-view captures and five-run performance: reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json. Original gameplay renders retain their BD60 source; executable bytes are unchanged. Technical production and signed transport verified. Final receipt-only publication requires remote readback."
     },
     {
       "id": 3,
@@ -363,7 +363,7 @@
       "rank": 3,
       "category": "observability-honesty",
       "premise": "Live source contains the demonstrated defect for startup-test-evidence",
-      "executionEvidence": "18 focused tests pass (startup evidence, last-session renderer, receipt digest). Actual renderer .cache/s122-startup-reviewed-final.md preserves current-unverified, historical count/date and prior aggregate-unmeasured text. Independent reviewer found structured-summary bypass and truncation; both fixed; second review PASS with 13 independent checks. Exact candidate staging/production, seven required CI jobs, frontend/backend/API health, rollback and reviewed synthetic visual/performance acceptance: reports/s122-release-acceptance.json. Closeout publication pending."
+      "executionEvidence": "Selected outcome verified. C1 exact CI7/7 and both full browser runs275pass/3skip; native staging/production14/14, reviewed status4-view captures and five-run performance: reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json. Original gameplay renders retain their BD60 source; executable bytes are unchanged. Technical production and signed transport verified. Final receipt-only publication requires remote readback."
     }
   ],
   "totals": {
@@ -624,16 +624,26 @@
       "ciRun": 40135773664,
       "evidence": "reports/s122-release-acceptance.json",
       "at": "2026-10-25T00:40:59.931Z"
+    },
+    {
+      "sha": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "status": "technical-production-verified-final-receipt-pending",
+      "at": "2026-10-25T08:00:00.480Z",
+      "ciRun": 40153452502,
+      "pagesRun": 40153653086,
+      "evidence": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json"
     }
   ],
   "currentRelease": {
-    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
-    "ciRun": 40135773664,
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+    "ciRun": 40153452502,
+    "pagesRun": 40153653086,
+    "backendSourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "backendRun": 40135991113,
-    "acceptance": "reports/s122-release-acceptance.json",
-    "fullGoalComplete": false,
-    "closeoutPublication": "pending-review-push-and-readback"
+    "acceptance": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
+    "closeoutPublication": "C1 source and initial writeback verified on remote main; final containing receipt-only publication requires native readback.",
+    "closeoutTransport": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ark.json"
   },
   "processEvidence": {
     "premiseTiming": {
@@ -650,8 +660,20 @@
     }
   },
   "finalMetadataAcceptance": {
-    "status": "failed-repair-in-progress",
-    "receipt": "reports/s122-final-metadata-first-failure.json",
-    "statusNoteFollowThrough": "Additional static product source; fresh exact-source gates and staging/production required."
+    "status": "C1-hosted-CI-verified",
+    "receipt": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
+      "sha256": "ef0c557ce81407d523d4f923ea89e994edec814157095ecd526bb3dda7b1bca1"
+    },
+    "priorFailures": [
+      "reports/s122-final-metadata-first-failure.json",
+      "reports/s122-status-local-first-failure.json"
+    ],
+    "finalReceiptMetadata": {
+      "status": "verified",
+      "passed": 388,
+      "total": 388,
+      "receipt": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-final-metadata.json"
+    }
   }
 }

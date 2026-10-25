@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "project": "franchise-architect-football",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+  "computedAt": "2026-10-25T08:03:03.973Z",
+  "verified": true,
+  "score": 41609,
+  "tier": "FORGE",
+  "sourceFingerprint": "8245650f272322e2b70425b270fe49ff15b381d74208998fb26e20554c6e932e",
+  "mindHash": "d48c7b4265f5a2ceedc98be7f469b94ec686e241bc59982c11e38bd392e1f715",
+  "historyHash": "2d403b2e05052a5d2614201b206bbb90248d30d3d3befcc9980adb750b0dea69",
+  "acceptance": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
+    "sha256": "ef0c557ce81407d523d4f923ea89e994edec814157095ecd526bb3dda7b1bca1"
+  },
+  "backendSourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+  "timingConformanceVerified": false,
+  "scope": "New local IGNIS engineering score after C1 status-release writeback; eight current status images and344 historical gameplay images retain their actual identities. Backend persistence is dated BD60 evidence with separate fresh API readback. Native premise timing remains UNKNOWN; no actual-user engagement or public launch inference. Registry/Ark publication remains separate."
+}

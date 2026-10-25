@@ -10,10 +10,10 @@
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Shipped: Three selected outcomes — four Focus destinations,   ║
-║  ✓ Tests: At BD60, 7 exact-candidate CI jobs pass (run 40135773  ║
-║  ✓ Deploy: 14/14 staging and 14/14 production at bd60d3dd387060  ║
-║  ✓ Closeout: ordered write-back and two-round independent revie  ║
+║  ✓ Shipped: Three selected repairs plus dated player release-no  ║
+║  ✓ Tests: C1 CI7/7; both browser runs275pass/3skip; final isola  ║
+║  ✓ Deploy: Frontend1f001008 and unchanged APIbd60d3dd verified;  ║
+║  ✓ Closeout: ordered write-back complete; independent review, H  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 485/1000 ═══════════════════════════════════════╗
 ║    Dev Health         85   █████████░                            ║
@@ -40,7 +40,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 199 files  ·  M:34 A:164 D:0 ?:1                       ║
+║  Changes: 68 files  ·  M:19 A:44 D:0 ?:5                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

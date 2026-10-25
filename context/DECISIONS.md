@@ -124,3 +124,8 @@ Use real existing destination tabs/targets for all four Focus actions and one sh
 ### S122 process-evidence compatibility
 
 Strict premise verification passed 3/3 at 2026-10-24T17:53:42.409Z before the first recorded implementation patch at 17:54:11.976Z. The local recorder checked only unstaged tracked paths, so staged/untracked state at that moment remains unmeasured. The recovered canonical timing record explicitly retains implementationDirty:null and native UNKNOWN/exit1. reports/s122-premise-record-recovery.json preserves the original record, matching premise digest and event hashes. No canonical timing pass is claimed. The exact prior ledger sections now use canonical archive-aware pointers; prior work-log text remains intact. Current staging authority retains the full matching native inventory, and the default context guard passes without threshold changes. Historical S14 names this exact repository remote under its legacy published mount; its unchanged tracked bytes remain preserved.
+
+
+### D-S122.4 — Release-note follow-through uses a fresh candidate
+
+The final metadata gate exposed a stale player note and noncanonical audit Markdown. A three-line status-source addition required fresh C1 CI/staging/production; BD60 proof was retained historically. Native artifacts differ only in status, archive, feed and sitemap (357primary files unchanged). Accepted hosted status pixels total8, with344 preserved historical/local captures; four rejected framing captures remain ledger-only. Local observation failures are distinct from successful original hosted attempts. reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json.

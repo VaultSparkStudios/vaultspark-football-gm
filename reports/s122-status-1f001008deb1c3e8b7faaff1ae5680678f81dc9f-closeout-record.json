@@ -1,0 +1,47 @@
+{
+  "session": 122,
+  "at": "2026-10-25T08:26:53.459Z",
+  "kind": "closeout-prepublication-record",
+  "sourcePublication": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "selectedOutcomes": {
+    "verified": 3,
+    "remaining": 0
+  },
+  "technicalAcceptance": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
+    "sha256": "ef0c557ce81407d523d4f923ea89e994edec814157095ecd526bb3dda7b1bca1"
+  },
+  "metadataAcceptance": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-final-metadata.json",
+    "sha256": "947e2fb4a1ddffbd028f7373f302b569b5f41e403c4bf21c523ff008cb5cb989"
+  },
+  "doctor": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-doctor.json",
+    "sha256": "e0c78629650c1201b4c376abc52995595ca78d5b06c06b16cdf7a06178b63353"
+  },
+  "intelligence": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ignis-refresh.json",
+    "sha256": "d318abf77b102bbdf77f17d846bc92e6e15cbee9fdd2f9f976ba9fd5cc610f77"
+  },
+  "transport": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ark.json",
+    "sha256": "123608f6d8a3f1afa531b3dbc3778894e5c192e3e7f9f7736f20b4cadc6d642f"
+  },
+  "ownedWorktreeCleanup": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-worktree-cleanup.json",
+    "sha256": "c3394a06706c41e4f212efe57cf782c771c5453677a3dca76aa56c3c5d15edb8"
+  },
+  "beacon": {
+    "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-beacon.json",
+    "sha256": "643518bc56f6faffbd2f96f2be6b490fe1b44f86e1525d9d0876318212d99e81"
+  },
+  "backgroundCheckpoint": {
+    "rootStarted": 99,
+    "rootClosed": 99,
+    "rootRunning": 0,
+    "activeSubagents": 0,
+    "scope": "Actively reconfirmed before publication; any subsequent publication handle is separately consumed and reconfirmed by the native session."
+  },
+  "processDeviation": "Strict premises passed before recorded edits; complete gate-time staged/untracked snapshot remains unmeasured and native timing conformance remains UNKNOWN.",
+  "nativeCompletionGuard": "Verify the containing receipt-only commit on remote main, release only the original owned S122 lock and reconfirm zero owned running jobs before completing the native goal."
+}

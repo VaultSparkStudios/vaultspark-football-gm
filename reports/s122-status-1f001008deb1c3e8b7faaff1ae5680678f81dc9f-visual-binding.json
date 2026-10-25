@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "session": 122,
+  "at": "2026-10-25T07:56:47.563Z",
+  "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+  "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+  "scope": "C1 status-note hosted visual admission only; historical gameplay is not current C1 evidence.",
+  "priorReceipt": {
+    "path": "reports/s122-evidence-history/LATEST-ee610b4af3485131cd8de8cb983c6875ee16b24835ff017d4714eceed6a16d66.json",
+    "sha256": "ee610b4af3485131cd8de8cb983c6875ee16b24835ff017d4714eceed6a16d66"
+  },
+  "priorLedger": {
+    "path": "reports/s122-evidence-history/CAPTURE_LEDGER-669e2bb02bcf339822d641aab8a69dbe26c0fa42ae5a6762ba333feb58468697.json",
+    "sha256": "669e2bb02bcf339822d641aab8a69dbe26c0fa42ae5a6762ba333feb58468697"
+  },
+  "currentReceipt": {
+    "path": "docs/visual-qa/LATEST.json",
+    "sha256": "dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5"
+  },
+  "currentLedger": {
+    "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+    "sha256": "62550192d7ecae6b2439fa41cff4c45fff9c957d963f67a18e8988be55eb2424"
+  },
+  "sourceFiles": [
+    {
+      "path": "src/engine/architectFocusReview.js",
+      "sha256": "6cf717ee0eae118b932b9292a332ac1d018011db4a5333454162f361cbdbdfef"
+    },
+    {
+      "path": "public/lib/franchiseCommandCenter.js",
+      "sha256": "b8a41c783ca5d4e4edb83cb465c908f63b8514b9d73e4c027e14a42f962590cd"
+    },
+    {
+      "path": "public/lib/mobileLoop.js",
+      "sha256": "0d26e11f2a7e37d5bd89fca9c56fd6a571a2f58fcdc9a426aecef41fed7b8344"
+    },
+    {
+      "path": "public/lib/gameplayNavigation.js",
+      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516"
+    }
+  ],
+  "artifactInventory": {
+    "primaryFiles": 361,
+    "derivedFiles": 3276
+  },
+  "reviews": [
+    {
+      "phase": "staging-v2",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "browser": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-browser.json",
+        "sha256": "679a289c79e417738fc17059b0fc7c234c3d927daacf152e2831c857f4dbf31a"
+      },
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+        "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+      },
+      "provenance": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-provenance.json",
+        "sha256": "3c105cc036ac7ee657f8f234e6cbdbb66fe25184a4a90d0d68271cafb09d760d"
+      },
+      "performance": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-performance.json",
+        "sha256": "0882bec9d1a0ff01e0bb6919f608e2f5e34782211f95a957e911f5671eb77f47"
+      },
+      "captures": 4,
+      "reviewer": "review_navigation",
+      "reviewedAt": "2026-10-25T02:13:37.840Z"
+    },
+    {
+      "phase": "production-v2",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "browser": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-browser.json",
+        "sha256": "61d16ac654bccf8010597b03a5cf21609289b3c5b8e2ef85e25e61ba7009231b"
+      },
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+        "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+      },
+      "provenance": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-provenance.json",
+        "sha256": "bc62cb2fc0ed0bf930679bb9608cccadd45361f4e197c88026937530a2fb33e0"
+      },
+      "performance": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-performance.json",
+        "sha256": "73e22c963559c28074e6b764714d26af0ffbcd2e1274d029f0c6d8d4ee7377fa"
+      },
+      "captures": 4,
+      "reviewer": "review_navigation",
+      "reviewedAt": "2026-10-25T07:55:29.595Z"
+    }
+  ],
+  "accepted": {
+    "count": 8,
+    "captures": [
+      {
+        "device": "desktop",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "file": "s122-status-staging-v2-1f001008-desktop-dark.png",
+        "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 65,
+          "viewportWidth": 1440,
+          "scrollWidth": 1440,
+          "noteTop": 380.625,
+          "noteBottom": 500.796875,
+          "viewportHeight": 1000
+        },
+        "url": "https://staging.playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-desktop-dark.png",
+        "phase": "staging-v2",
+        "kind": "hosted-status-staging",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+          "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+        }
+      },
+      {
+        "device": "desktop",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "file": "s122-status-staging-v2-1f001008-desktop-light.png",
+        "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 65,
+          "viewportWidth": 1440,
+          "scrollWidth": 1440,
+          "noteTop": 380.625,
+          "noteBottom": 500.796875,
+          "viewportHeight": 1000
+        },
+        "url": "https://staging.playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-desktop-light.png",
+        "phase": "staging-v2",
+        "kind": "hosted-status-staging",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+          "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+        }
+      },
+      {
+        "device": "mobile",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "file": "s122-status-staging-v2-1f001008-mobile-dark.png",
+        "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 98,
+          "viewportWidth": 390,
+          "scrollWidth": 390,
+          "noteTop": 446.40625,
+          "noteBottom": 689.953125,
+          "viewportHeight": 844
+        },
+        "url": "https://staging.playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-mobile-dark.png",
+        "phase": "staging-v2",
+        "kind": "hosted-status-staging",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+          "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+        }
+      },
+      {
+        "device": "mobile",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "file": "s122-status-staging-v2-1f001008-mobile-light.png",
+        "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 98,
+          "viewportWidth": 390,
+          "scrollWidth": 390,
+          "noteTop": 446.40625,
+          "noteBottom": 689.953125,
+          "viewportHeight": 844
+        },
+        "url": "https://staging.playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-staging-v2-1f001008-mobile-light.png",
+        "phase": "staging-v2",
+        "kind": "hosted-status-staging",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-v2-review.json",
+          "sha256": "d8c7f266f6cbf6c8d8548d8ec23b0d891e028662b3158f1e7c8e67288d818c8b"
+        }
+      },
+      {
+        "device": "desktop",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "file": "s122-status-production-v2-1f001008-desktop-dark.png",
+        "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 65,
+          "viewportWidth": 1440,
+          "scrollWidth": 1440,
+          "noteTop": 380.625,
+          "noteBottom": 500.796875,
+          "viewportHeight": 1000
+        },
+        "url": "https://playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-desktop-dark.png",
+        "phase": "production-v2",
+        "kind": "hosted-status-production",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+          "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+        }
+      },
+      {
+        "device": "desktop",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "file": "s122-status-production-v2-1f001008-desktop-light.png",
+        "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 65,
+          "viewportWidth": 1440,
+          "scrollWidth": 1440,
+          "noteTop": 380.625,
+          "noteBottom": 500.796875,
+          "viewportHeight": 1000
+        },
+        "url": "https://playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-desktop-light.png",
+        "phase": "production-v2",
+        "kind": "hosted-status-production",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+          "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+        }
+      },
+      {
+        "device": "mobile",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "file": "s122-status-production-v2-1f001008-mobile-dark.png",
+        "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 98,
+          "viewportWidth": 390,
+          "scrollWidth": 390,
+          "noteTop": 446.40625,
+          "noteBottom": 689.953125,
+          "viewportHeight": 844
+        },
+        "url": "https://playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-mobile-dark.png",
+        "phase": "production-v2",
+        "kind": "hosted-status-production",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+          "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+        }
+      },
+      {
+        "device": "mobile",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "file": "s122-status-production-v2-1f001008-mobile-light.png",
+        "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "geometry": {
+          "headerBottom": 98,
+          "viewportWidth": 390,
+          "scrollWidth": 390,
+          "noteTop": 446.40625,
+          "noteBottom": 689.953125,
+          "viewportHeight": 844
+        },
+        "url": "https://playfranchisearchitect.com/status",
+        "originalFile": "docs/visual-qa/s122-status-production-v2-1f001008-mobile-light.png",
+        "phase": "production-v2",
+        "kind": "hosted-status-production",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+          "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
+        }
+      }
+    ]
+  },
+  "rejected": {
+    "count": 4,
+    "disposition": "ledger-only; excluded from LATEST accepted capture array",
+    "browser": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-browser.json",
+      "sha256": "53a54fb3c5551e2bd4f4d9bdfae5fe0f7fb7e9c009c1b16863985c418d4ac666"
+    },
+    "review": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-review.json",
+      "sha256": "a74b4bbd71930637712687db93e413c6de84f88fc97b99f0430faebe94be3440"
+    },
+    "captures": [
+      {
+        "file": "docs/visual-qa/s122-status-staging-1f001008-desktop-dark.png",
+        "sha256": "0f4cb925942654632208d3781259f82ab19f05e0fe8261072ba7437680cd7830",
+        "device": "desktop",
+        "theme": "dark",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "disposition": "rejected-ledger-only",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-review.json",
+          "sha256": "a74b4bbd71930637712687db93e413c6de84f88fc97b99f0430faebe94be3440"
+        }
+      },
+      {
+        "file": "docs/visual-qa/s122-status-staging-1f001008-desktop-light.png",
+        "sha256": "1cb47bd96e78b8bf14a37defd98185dfb95bb76b478f84571244d1eed4704629",
+        "device": "desktop",
+        "theme": "light",
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "disposition": "rejected-ledger-only",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-review.json",
+          "sha256": "a74b4bbd71930637712687db93e413c6de84f88fc97b99f0430faebe94be3440"
+        }
+      },
+      {
+        "file": "docs/visual-qa/s122-status-staging-1f001008-mobile-dark.png",
+        "sha256": "ce2e47c6efb53cac401a476a53febb234d6466124e20a7aa67e25a648d9a1b87",
+        "device": "mobile",
+        "theme": "dark",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "disposition": "rejected-ledger-only",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-review.json",
+          "sha256": "a74b4bbd71930637712687db93e413c6de84f88fc97b99f0430faebe94be3440"
+        }
+      },
+      {
+        "file": "docs/visual-qa/s122-status-staging-1f001008-mobile-light.png",
+        "sha256": "61863c276b8551840c0b39be8348d2ce0717090c9e93bd780469e8657e6478a1",
+        "device": "mobile",
+        "theme": "light",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "disposition": "rejected-ledger-only",
+        "review": {
+          "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-review.json",
+          "sha256": "a74b4bbd71930637712687db93e413c6de84f88fc97b99f0430faebe94be3440"
+        }
+      }
+    ]
+  },
+  "historical": {
+    "count": 344,
+    "preserved": true,
+    "receipt": {
+      "path": "reports/s122-evidence-history/LATEST-ee610b4af3485131cd8de8cb983c6875ee16b24835ff017d4714eceed6a16d66.json",
+      "sha256": "ee610b4af3485131cd8de8cb983c6875ee16b24835ff017d4714eceed6a16d66"
+    }
+  },
+  "ledger": {
+    "added": 12,
+    "revised": 0,
+    "total": 5673,
+    "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json",
+    "oldEntriesUnchanged": true,
+    "addedPaths": [
+      "s122-status-production-v2-1f001008-desktop-dark.png",
+      "s122-status-production-v2-1f001008-desktop-light.png",
+      "s122-status-production-v2-1f001008-mobile-dark.png",
+      "s122-status-production-v2-1f001008-mobile-light.png",
+      "s122-status-staging-1f001008-desktop-dark.png",
+      "s122-status-staging-1f001008-desktop-light.png",
+      "s122-status-staging-1f001008-mobile-dark.png",
+      "s122-status-staging-1f001008-mobile-light.png",
+      "s122-status-staging-v2-1f001008-desktop-dark.png",
+      "s122-status-staging-v2-1f001008-desktop-light.png",
+      "s122-status-staging-v2-1f001008-mobile-dark.png",
+      "s122-status-staging-v2-1f001008-mobile-light.png"
+    ]
+  },
+  "totalAcceptedInLatest": 352,
+  "fullReleaseComplete": false,
+  "limits": "No new gameplay, full-release, lifecycle, launch, physical-device or actual-user claim follows from status-note image admission."
+}

@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Three S122 outcomes and exact-candidate technical production verified; closeout review/publication pending.",
-  "nextMilestone": "Verify closeout publication and remote main, then finish this native goal; retain independent launch and broader readiness holds.",
+  "currentFocus": "Three selected S122 repairs, dated note and closeout evidence verified.",
+  "nextMilestone": "A new founder request defines further work. Native completion of S122 is gated on containing-receipt readback and scoped job/lock cleanup.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -24,7 +24,7 @@
   },
   "truthAuditStatus": "selected S122 production verified; broader historical truth remains partial",
   "truthAuditLastRun": "2026-10-25",
-  "ignisScore": 42013,
+  "ignisScore": 41609,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-10-25",
   "testSuiteStatus": "passed",
@@ -86,179 +86,117 @@
   "sessionMode": "builder",
   "lastVerification": {
     "date": "2026-10-25",
-    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-    "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
-    "canonical": "7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; isolated Studio 388/388. Aggregate unit case total is unmeasured.",
-    "tests": "7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; isolated Studio 388/388. Aggregate unit case total is unmeasured.",
-    "receipt": "reports/s122-release-acceptance.json",
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
+    "canonical": "C1 CI7/7; browser275 passed/3 skipped in each full hosted run; staged-tree Studio388/388. Aggregate unit case count unmeasured.",
+    "tests": "C1 CI7/7; browser275 passed/3 skipped in each full hosted run; staged-tree Studio388/388. Aggregate unit case count unmeasured.",
+    "receipt": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
     "ci": {
-      "ok": true,
-      "sha": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "runId": 40135773664,
-      "attempt": 1,
-      "requiredJobs": [
-        "unit-shards (core)",
-        "unit-shards (runtime)",
-        "unit-shards (sim:contract)",
-        "unit-shards (sim:realism)",
-        "unit-shards (long)",
-        "unit-shards (studio)",
-        "browser-gates"
-      ],
-      "lane": "hosted-exact-sha",
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "runId": 40153452502,
+      "passedJobs": 7,
+      "requiredJobs": 7,
       "receipt": {
-        "path": "reports/s122-ci-proof.json",
-        "sha256": "cec0b013197651af002f104ce95de6d2c2b71e56847f77f1dd9e80583cb48197"
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ci-proof.json",
+        "sha256": "321fac5784a1a4d7d1374102c5065ad2f0b48054cf655e22bd0a21fdb60f819e"
       }
     },
     "staging": {
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
-      "summary": {
-        "status": "verified",
-        "checksPassed": 14,
-        "checksTotal": 14
-      },
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "checksPassed": 14,
+      "checksTotal": 14,
       "receipt": {
-        "path": "reports/s122-staging-provenance.json",
-        "sha256": "1fc196efc984487a844d1da751aeff05ed3e9e36809a81ae13a2fee883292979"
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-provenance.json",
+        "sha256": "3c105cc036ac7ee657f8f234e6cbdbb66fe25184a4a90d0d68271cafb09d760d"
       }
     },
-    "production": "14/14 staging and 14/14 production; frontend/API health and rollback verified; reports/s122-release-acceptance.json",
-    "productionEvidence": {
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
-      "summary": {
-        "status": "verified",
-        "checksPassed": 14,
-        "checksTotal": 14
-      },
+    "production": {
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "checksPassed": 14,
+      "checksTotal": 14,
       "receipt": {
-        "path": "reports/s122-production-provenance.json",
-        "sha256": "2cee324e7bf9b007ee05b67c55ddc7de6068de0886dc7395b4b66cc52bbed45d"
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-provenance.json",
+        "sha256": "bc62cb2fc0ed0bf930679bb9608cccadd45361f4e197c88026937530a2fb33e0"
+      }
+    },
+    "productionEvidence": {
+      "workflow": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-workflow.json",
+        "sha256": "2c1443bf730f3334153a1130054a9782e2946e9a632eddb46bdd1351a861dcee"
+      },
+      "provider": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-provider.json",
+        "sha256": "cf97ad037f94fb4694087f539a14d569958725601e463de05a6b92a5da0ae3df"
+      },
+      "browser": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-browser.json",
+        "sha256": "61d16ac654bccf8010597b03a5cf21609289b3c5b8e2ef85e25e61ba7009231b"
+      },
+      "review": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-v2-review.json",
+        "sha256": "cb6fbc3a0f5e630d3dd9352e177de229eef73fdad5309f15f5636d5d90c8ae22"
       }
     },
     "visual": {
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
-      "reviewed": true,
-      "captures": 336,
-      "currentSourceCaptures": 104,
-      "classifiedCounts": {
-        "before@492aaddc7707db0521d7c5c9dd2e70845b942477": 24,
-        "after@f21512d2a5cd86b7d0a2004129940fa61876ead0": 52,
-        "hosted-staging@fe4f067280a0e35b6476f817530ecc321d289689": 52,
-        "hosted-staging@b2da78a89b5040db5f278709136e163b0f4c55f3": 52,
-        "hosted-staging@26616ed93079de686d13da150e4e6d7ddf581036": 52,
-        "hosted-staging@bd60d3dd387060a2afcf2b974fc27f1e57e22394": 52,
-        "hosted-production@bd60d3dd387060a2afcf2b974fc27f1e57e22394": 52
-      },
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
       "receipt": {
-        "path": "docs/visual-qa/LATEST.json",
-        "sha256": "8d60e0e86e231837356461bf772e65fd979a1a027142c46e06b00f893e54258e"
+        "path": "reports/s122-evidence-history/LATEST-dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5.json",
+        "sha256": "dd275ee4cb5587fe66d0073ebc4c90fed31caa8747ec40dfe0393e17fcc1d2f5"
       },
-      "reviewedImages": 336,
-      "historicalCaptures": 232
+      "currentStatusCaptures": 8,
+      "historicalCaptures": 344,
+      "totalCaptures": 352,
+      "rejectedLedgerOnly": 4
     },
     "backend": {
       "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "verified": true,
-      "status": "completed",
-      "conclusion": "success",
-      "workflowRun": 40135991113,
+      "componentCodeUnchanged": true,
       "receipt": {
+        "path": "reports/s122-backend-workflow.json",
+        "sha256": "2607032c916a7cd65eaa3b308550545766c2caecae4446e7b62415b5dbfa4505"
+      },
+      "persistenceObservationAt": "2026-10-25T00:33:16.909Z"
+    },
+    "api": {
+      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "receipt": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-api-health.json",
+        "sha256": "2f042e82dc49b7807b05e02e64a89105559f98b0da7cd225508041c159045188"
+      },
+      "database": "ready"
+    },
+    "rollback": {
+      "frontend": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-pages-provider.json",
+        "sha256": "cf97ad037f94fb4694087f539a14d569958725601e463de05a6b92a5da0ae3df"
+      },
+      "backend": {
         "path": "reports/s122-backend-workflow.json",
         "sha256": "2607032c916a7cd65eaa3b308550545766c2caecae4446e7b62415b5dbfa4505"
       }
     },
-    "api": {
-      "schemaVersion": 1,
-      "session": 122,
-      "observedAt": "2026-10-25T00:40:14.218Z",
-      "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "verified": true,
-      "database": "ready",
-      "httpStatus": 200,
-      "health": {
-        "ok": true,
-        "database": "ready",
-        "latencyMs": 1,
-        "schemaVersion": 1,
-        "service": "franchise-architect-community-stats",
-        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394"
-      },
-      "receipt": {
-        "path": "reports/s122-api-health.json",
-        "sha256": "a6c9bd99a6baecc8db3ef06f3a7b4c3530734e4280cbee6c5a1e1dc7ec6d7cfe"
-      }
-    },
-    "rollback": {
-      "schemaVersion": 1,
-      "session": 122,
-      "observedAt": "2026-10-25T00:40:14.218Z",
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "verified": true,
-      "frontend": {
-        "previousDeploymentAvailable": true,
-        "previousDeploymentId": "8aeff7a2-de14-4c2c-bedc-2a0ebca1e7cd",
-        "currentDeploymentId": "284deb97-c752-413e-911c-95ef289ef48e"
-      },
-      "backend": {
-        "previousImageAvailable": true,
-        "image": "sha256:10d66ce77f7315ddd09f9925e76ee6c2a95a5eec59974c3bf565fc1e6eedb8c6"
-      },
-      "databasePreserved": true,
-      "routingPreserved": true,
-      "components": {
-        "pages": {
-          "path": "reports/s122-pages-provider.json",
-          "sha256": "4bc23e6f1ff569ccf9d874a6e0e870ceaa869977a11afca27e8b6af4836d7942"
-        },
-        "backend": {
-          "path": "reports/s122-backend-workflow.json",
-          "sha256": "2607032c916a7cd65eaa3b308550545766c2caecae4446e7b62415b5dbfa4505"
-        }
-      },
-      "receipt": {
-        "path": "reports/s122-rollback.json",
-        "sha256": "f610dcecc7d4fba234b8b8d4f7dbce9b77bcdad72ad6dec4f0c325fb0bca911f"
-      }
-    },
     "performance": {
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "status": "verified",
-      "profiles": [
-        {
-          "name": "desktop",
-          "lcpMs": 1280,
-          "inpMs": 24,
-          "cls": 0.0003
-        },
-        {
-          "name": "mobile",
-          "lcpMs": 1300,
-          "inpMs": 32,
-          "cls": 0.0131
-        }
-      ],
-      "receipt": {
-        "path": "reports/s122-production-performance.json",
-        "sha256": "3742bec6249b57197f4129b3dff3e06c1e4c11f17b3b120346aa5a82fd249593"
-      }
+      "staging": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-staging-performance.json",
+        "sha256": "0882bec9d1a0ff01e0bb6919f608e2f5e34782211f95a957e911f5671eb77f47"
+      },
+      "production": {
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-performance.json",
+        "sha256": "73e22c963559c28074e6b764714d26af0ffbcd2e1274d029f0c6d8d4ee7377fa"
+      },
+      "desktopLcpMs": 1232,
+      "mobileLcpMs": 1244
     },
     "doctor": {
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
       "status": "verified",
-      "verifiedAt": "2026-10-25T00:48:52.286Z",
+      "verifiedAt": "2026-10-25T08:01:08.148Z",
       "passing": 12,
-      "total": 12,
       "warning": 0,
       "blockingFailing": 0,
       "receipt": {
-        "path": "reports/s122-doctor.json",
-        "sha256": "9e589bf9cb4f7287ef1180448eb15121f6fabc0fb878eb1d1ed70e73680a4667"
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-doctor.json",
+        "sha256": "e0c78629650c1201b4c376abc52995595ca78d5b06c06b16cdf7a06178b63353"
       }
     }
   },
@@ -306,9 +244,9 @@
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.052,
+  "entropyScore": 0.059,
   "entropyLastComputed": "2026-10-25",
-  "lastSessionSummary": "S122: Three selected S122 outcomes reached exact-source technical production: all four Architect Focus actions open their real decision destinations; desktop/mobile League pulse opens League news; startup counts distinguish fresh receipts, historical totals and matching prior-session evidence. 7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; isolated Studio 388/388. Aggregate unit case total is unmeasured. Technical release only. Public launch remains HOLD: reply-as email and SHA-bound founder GO remain unverified. Broader historical appearance/policy/cohort work remains partial; real-user engagement, capacity, physical devices and isolated database restore remain unmeasured. Native goal binding proves identity only; closeout review, publication and remote readback are still pending.",
+  "lastSessionSummary": "S122: Three selected repairs plus the dated note are verified live at1f001008; APIbd60d3dd healthy. C1 CI7/7, both full browser runs275pass/3skip, final isolated receipt Studio388/388, doctor12/12, hosted14/14 and reviewed/performance evidence verified. HMAC transport shipped; adoption is not asserted. Native completion requires the containing receipt commit on remote main and scoped job/lock cleanup. Public launch HOLD and UNKNOWN premise timing remain distinct.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -326,7 +264,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-10-24"
+      "lastChecked": "2026-10-25"
     }
   ],
   "lastSession": 122,
@@ -435,11 +373,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "4a2c291cba7208465fad532868f3839e2be6310b02177aa247c72b0e8c1e5c07",
-    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "receiptSha256": "7d1b6dd381e82edd95ec46d9a64da843a7050abaa46a189dd2e11f98a1c078e8",
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958",
+      "digest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343",
       "files": 361,
       "entries": [
         {
@@ -489,8 +427,8 @@
         },
         {
           "path": "changelog.xml",
-          "bytes": 27307,
-          "sha256": "055468d2f6d0e50fe4aff638fb11a4f07cb87d6b9a519fe389a675e8398c7dcb"
+          "bytes": 27923,
+          "sha256": "5127993e4f3f2b9641fc659e46d7da1efa58e49d3e9bc6eaea58da6c3889bf2d"
         },
         {
           "path": "community-stats.25f97e0a1e.js",
@@ -1425,7 +1363,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1844,
-          "sha256": "6226861212c79b3cbc9651714290cc7feae66bd28c3fae8dcde318b6efdebb72"
+          "sha256": "32f6639554023c784aa3954bc0eeac8ccb2940e5550333ecb1a383085e88bd81"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -2219,13 +2157,13 @@
         },
         {
           "path": "status-archive.html",
-          "bytes": 24945,
-          "sha256": "a2ddb962bb0e42790ecbdfcfe750146f4eee39ef4b3b181fe1cf84a6587014db"
+          "bytes": 25297,
+          "sha256": "9963d6bf897ecac67da1bb418bf9035848bb040d165d1aa26fd63bc65c4aa538"
         },
         {
           "path": "status.html",
-          "bytes": 8861,
-          "sha256": "84d8f65b5a9c1941dd517ad57f4b258569b0cea32ff97a234c25708a1fdc1324"
+          "bytes": 8013,
+          "sha256": "473aae623bdb8c85456cc99495873cadd6f6f65ef4a34342fa29d84f31331a6c"
         },
         {
           "path": "styles.c4075a9e38.css",
@@ -2254,26 +2192,26 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "c5964437-1d07-49fa-92cb-b8a35f97f077",
+    "deploymentId": "5ec2b60e-e018-4de2-8104-f44436c8aeb0",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-24T21:25:42.350Z"
+      "checkedAt": "2026-10-25T02:10:32.982Z"
     },
     "rollback": {
-      "previousDeploymentId": "b4a4ba4c-c533-487c-9606-550f25e5f26a",
+      "previousDeploymentId": "c5964437-1d07-49fa-92cb-b8a35f97f077",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-10-24T21:25:42.350Z",
+    "observedAt": "2026-10-25T02:10:32.982Z",
     "inventoryEvidence": {
-      "path": "reports/s122-production-performance.json",
-      "sha256": "3742bec6249b57197f4129b3dff3e06c1e4c11f17b3b120346aa5a82fd249593",
-      "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-      "scope": "Expanded exact current native artifact inventory. Core identity equals the unchanged original independent staging receipt; its receipt hash remains unchanged."
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-production-performance.json",
+      "sha256": "73e22c963559c28074e6b764714d26af0ffbcd2e1274d029f0c6d8d4ee7377fa",
+      "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+      "scope": "Complete actual current native inventory; original staging receipt core identity and hash are preserved."
     }
   },
   "lastCloseoutAt": "2026-10-24T03:39:13.208Z",
@@ -2310,31 +2248,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-25T00:40:49.128Z",
+    "observedAt": "2026-10-25T08:00:02.013Z",
     "status": "verified",
-    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-    "publicationRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "publicationRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958"
+      "digest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-        "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958"
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343"
       },
       "production": {
-        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-        "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958"
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343"
       },
       "visual": {
-        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-        "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958"
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343"
       },
       "performance": {
-        "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-        "artifactDigest": "9c4e5e67973e0d5540760b4c0906e8065942359384b1a79e4afc43ccab5b4958"
+        "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+        "artifactDigest": "b96ef49d43ff446aeff7cff13d03a6b5c5a550f9ded8fd1e1b5c38db47e7f343"
       }
     },
     "checks": [
@@ -2380,12 +2318,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "6414aef67c68abb214a12c1b3aa71f82946a30709e57e39abdda1a4ca338af14",
-      "productionSha256": "ffd1c16e4f6c5cdc9620f2b66a185f5db4a5a55b40cabb926c6f4ea84c254ae7",
-      "visualSha256": "4258bee8e3f9f1cc1a76d11639abb84205e0f43813bf5e3c15ad67c196433572",
-      "performanceSha256": "73c4e848214a14cbcbbf6e7f4a563d7264ac828ffc6183538b6b741bfc0906f7"
+      "stagingSha256": "2dfdc3133c8529f444a777d94e220b5e4f5df8b5012e3d73ad25f34e0bd2c8bb",
+      "productionSha256": "9d56089900187570f2827ca29f93bde565776de1d08d87d84da514c9271c97ad",
+      "visualSha256": "b7a92b7a2473c75f83f667acadaf69213140dd4f35591d74ec94cc6a5aeabf3f",
+      "performanceSha256": "6135cb1d34212b79fbb33b0d81278ae558237aec7545058627bf78fb6c96988a"
     },
-    "receiptSha256": "5d2c53bea7cc3921188618a2461a8d752cff130f9f8191b7a2877b8ecb0e6c81"
+    "receiptSha256": "889ec3ecc52ea39c98cdd6c6ad23b123db0f371fea7a55ae892ab03d81950a6e"
   },
   "launchReady": false,
   "sil": {
@@ -2417,9 +2355,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 122,
-    "currentFocus": "Three S122 outcomes and exact-candidate technical production verified; closeout review/publication pending.",
-    "nextMilestone": "Verify closeout publication and remote main, then finish this native goal; retain independent launch and broader readiness holds.",
-    "lastSessionSummary": "S122: Three selected S122 outcomes reached exact-source technical production: all four Architect Focus actions open their real decision destinations; desktop/mobile League pulse opens League news; startup counts distinguish fresh receipts, historical totals and matching prior-session evidence. 7 exact-candidate CI jobs pass (run 40135773664); CI browser 275 passed and 3 skipped (not counted as passed); hosted navigation 4/4; isolated Studio 388/388. Aggregate unit case total is unmeasured. Technical release only. Public launch remains HOLD: reply-as email and SHA-bound founder GO remain unverified. Broader historical appearance/policy/cohort work remains partial; real-user engagement, capacity, physical devices and isolated database restore remain unmeasured. Native goal binding proves identity only; closeout review, publication and remote readback are still pending."
+    "currentFocus": "Three selected S122 repairs, dated note and closeout evidence verified.",
+    "nextMilestone": "A new founder request defines further work. Native completion of S122 is gated on containing-receipt readback and scoped job/lock cleanup.",
+    "lastSessionSummary": "S122: Three selected repairs plus the dated note are verified live at1f001008; APIbd60d3dd healthy. C1 CI7/7, both full browser runs275pass/3skip, final isolated receipt Studio388/388, doctor12/12, hosted14/14 and reviewed/performance evidence verified. HMAC transport shipped; adoption is not asserted. Native completion requires the containing receipt commit on remote main and scoped job/lock cleanup. Public launch HOLD and UNKNOWN premise timing remain distinct."
   },
   "partialCloseout": {
     "session": 117,
@@ -2828,30 +2766,33 @@
     "note": "Native receipt sourceRevision remains unchanged; this sourceRevision is the separate run-start binding."
   },
   "currentTestEvidence": {
-    "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-    "runId": 40135773664,
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "runId": 40153452502,
     "requiredJobs": 7,
     "passedJobs": 7,
     "aggregateUnitCaseCount": null,
-    "hostedNavigation": {
-      "passed": 4,
-      "total": 4,
+    "browser": {
+      "passed": 275,
+      "skipped": 3,
+      "failed": 0,
       "receipt": {
-        "path": "reports/s122-hosted-navigation.json",
-        "sha256": "8cf095d5a9ec1ef4270d7d6fb8cd9179b4af78ed697733937ddf90c60b827636"
+        "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ci-browser-summary.json",
+        "sha256": "84898c6ba6b0ccb39df6c82a049816941db63764869a7864bbebc50364e232ef"
       }
     },
-    "isolatedStudio": {
+    "localStudio": {
       "passed": 388,
       "total": 388,
+      "testedStagedTree": "295cff1fdf116f3aaa0336331a1e2ee19103fb32",
       "receipt": {
-        "path": "reports/s122-clean-studio.json",
-        "sha256": "1756e24a1b69f331c975e36a57f79dbe32b063933cef22e400ae97481df2a3d3"
-      }
+        "path": "reports/s122-status-candidate-local.json",
+        "sha256": "2c1f4828542fb3134973d5c42d2af2434677d6035a4af338d0250a7da8828637"
+      },
+      "scope": "Staged snapshot; exact C1 hosted CI is independently complete."
     },
-    "proof": "reports/s122-release-acceptance.json"
+    "proof": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json"
   },
-  "testsDeferredNote": "No required hosted CI job deferred; aggregate case count is unmeasured. Known ignored local-file conflicts remain separate from isolated and hosted acceptance.",
+  "testsDeferredNote": "All seven C1 jobs passed; three browser skips remain distinct from passes. Aggregate unit-case count is unmeasured. Root ignored fixtures are preserved; tracked-source authority is verified in isolation.",
   "historicalCloseoutPublication": {
     "commit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
     "pushed": true,
@@ -2968,9 +2909,15 @@
   },
   "activeArc": {
     "session": 122,
-    "status": "technical-release-verified-closeout-publication-pending",
+    "status": "selected-outcomes-and-release-verified",
     "audit": "docs/AUDIT_2026-10-24.json",
-    "acceptance": "reports/s122-release-acceptance.json"
+    "acceptance": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
+    "closeoutTransport": {
+      "receipt": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ark.json",
+      "state": "shipped",
+      "adoptionVerified": false
+    },
+    "nativeCompletionGuard": "Verify the containing receipt-only commit on remote main, scoped lock cleanup and zero owned running jobs before native completion."
   },
   "silScoreBasis": {
     "devHealth": "85: exact seven-job CI, clean Studio and focused browser/source proof; coverage target and broader debt remain unmeasured.",
@@ -2990,9 +2937,9 @@
     "session": 122,
     "verified": true,
     "sourceFingerprint": "8245650f272322e2b70425b270fe49ff15b381d74208998fb26e20554c6e932e",
-    "mindHash": "08ea904dc95f8add23b6797fc3ba6ebf8129f815cd3d64a37131740ec2688cc0",
-    "historyHash": "79de84b813eefea1f7097424a3b09e26a39d84cdf6acc740d13061f6d154626a",
-    "receipt": "reports/s122-ignis-refresh.json"
+    "mindHash": "d48c7b4265f5a2ceedc98be7f469b94ec686e241bc59982c11e38bd392e1f715",
+    "historyHash": "2d403b2e05052a5d2614201b206bbb90248d30d3d3befcc9980adb750b0dea69",
+    "receipt": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-ignis-refresh.json"
   },
   "silAvg3": 737.3,
   "silAvg5": 781.2,
@@ -3016,7 +2963,7 @@
   },
   "finalCloseoutFollowThrough": {
     "session": 122,
-    "status": "local-passed-fresh-hosted-candidate-and-promotion-pending",
+    "status": "selected-outcomes-release-and-receipt-metadata-verified",
     "priorTechnicalSource": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "productDelta": [
       "public/status.html"
@@ -3034,12 +2981,24 @@
       "receipt": "reports/s122-status-local-first-failure.json"
     },
     "visualReview": "reports/s122-status-independent-review.json",
-    "fullGoalComplete": false,
     "localAcceptance": {
       "receipt": "reports/s122-status-candidate-local.json",
       "passed": 388,
       "total": 388,
       "testedStagedTree": "295cff1fdf116f3aaa0336331a1e2ee19103fb32"
-    }
+    },
+    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
+    "acceptance": {
+      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
+      "sha256": "ef0c557ce81407d523d4f923ea89e994edec814157095ecd526bb3dda7b1bca1"
+    },
+    "finalMetadataAcceptance": {
+      "status": "verified",
+      "passed": 388,
+      "total": 388,
+      "receipt": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-final-metadata.json",
+      "testedStagedTree": "bb152bd1fda0207cff77c28d8d001255003de93d"
+    },
+    "nativeCompletionGuard": "Containing receipt-only commit must be verified remotely after metadata acceptance and scoped cleanup."
   }
 }
