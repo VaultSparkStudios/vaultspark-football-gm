@@ -1,3 +1,4 @@
+import { browserStorage } from "./browserStorage.js";
 /**
  * firstSeasonContract.js — five things a first-year GM gets judged on (S109).
  *
@@ -55,7 +56,7 @@ export function contractStorageKey(dashboard = {}) {
   return franchiseStorageKey(FIRST_SEASON_CONTRACT_PREFIX, dashboard);
 }
 
-export function readContractState(dashboard = {}, storage = globalThis.localStorage) {
+export function readContractState(dashboard = {}, storage = browserStorage()) {
   try {
     const raw = storage?.getItem?.(contractStorageKey(dashboard));
     const parsed = raw ? JSON.parse(raw) : null;
@@ -71,7 +72,7 @@ export function readContractState(dashboard = {}, storage = globalThis.localStor
   }
 }
 
-export function writeContractState(dashboard = {}, next = {}, storage = globalThis.localStorage) {
+export function writeContractState(dashboard = {}, next = {}, storage = browserStorage()) {
   try {
     storage?.setItem?.(contractStorageKey(dashboard), JSON.stringify(next));
   } catch {
@@ -158,7 +159,7 @@ export function isDeliberateTradeEvaluation(payload = {}) {
 /** Freeze the first-season evidence at the season-awards boundary, before the
  * offseason can replace the standings or cap reading. Reopening is idempotent.
  */
-export function finalizeFirstSeasonContract(dashboard = {}, storage = globalThis.localStorage) {
+export function finalizeFirstSeasonContract(dashboard = {}, storage = browserStorage()) {
   const current = readContractState(dashboard, storage);
   if (current.finalized) return current.finalized;
   const year = Number(dashboard.seasonAwardsStage?.year ?? dashboard.currentYear);
@@ -204,7 +205,7 @@ export function contractVisibility(dashboard = {}, contractState = {}) {
   return Number(dashboard.currentWeek || 0) > COLLAPSE_AFTER_WEEK ? "compact" : "open";
 }
 
-export function markObjective(dashboard = {}, id, storage = globalThis.localStorage) {
+export function markObjective(dashboard = {}, id, storage = browserStorage()) {
   if (!OBJECTIVES.some((objective) => objective.id === id)) return readContractState(dashboard, storage);
   const current = readContractState(dashboard, storage);
   if (current.marks[id]) return current;
@@ -216,7 +217,7 @@ export function markObjective(dashboard = {}, id, storage = globalThis.localStor
   return writeContractState(dashboard, next, storage);
 }
 
-export function dismissContract(dashboard = {}, storage = globalThis.localStorage) {
+export function dismissContract(dashboard = {}, storage = browserStorage()) {
   return writeContractState(dashboard, { ...readContractState(dashboard, storage), dismissed: true }, storage);
 }
 
@@ -251,7 +252,7 @@ export function renderContractCloseout(closeout) {
  * Render into the Desk strip. Returns what happened so the caller can fire
  * the achievement exactly once, on the render that completes the contract.
  */
-export function renderFirstSeasonContract({ dashboard, storage = globalThis.localStorage, documentRef = globalThis.document } = {}) {
+export function renderFirstSeasonContract({ dashboard, storage = browserStorage(), documentRef = globalThis.document } = {}) {
   const panel = documentRef?.getElementById?.("firstSeasonContract");
   if (!panel || !dashboard) return { visibility: "hidden", completedNow: false };
   let contractState = readContractState(dashboard, storage);

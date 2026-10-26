@@ -1,3 +1,4 @@
+import { browserStorage } from "./browserStorage.js";
 import { buildPlaytestJourneySummary, loadPlaytestJourney } from "./playtestJourney.js";
 
 export const PLAYTEST_RECEIPT_SCHEMA_VERSION = "1.0";
@@ -45,7 +46,7 @@ export function buildLocalPlaytestReceipt(input = {}, context = {}) {
   };
 }
 
-export function loadLocalPlaytestReceipts(storage = globalThis.localStorage) {
+export function loadLocalPlaytestReceipts(storage = browserStorage()) {
   try {
     const parsed = JSON.parse(storage?.getItem?.(PLAYTEST_RECEIPT_STORAGE_KEY) || "[]");
     return Array.isArray(parsed)
@@ -56,10 +57,11 @@ export function loadLocalPlaytestReceipts(storage = globalThis.localStorage) {
   }
 }
 
-export function saveLocalPlaytestReceipt(receipt, storage = globalThis.localStorage) {
+export function saveLocalPlaytestReceipt(receipt, storage = browserStorage()) {
   if (receipt?.schemaVersion !== PLAYTEST_RECEIPT_SCHEMA_VERSION || receipt?.kind !== "local-playtest-receipt") {
     throw new Error("A valid playtest note is required.");
   }
+  if (typeof storage?.setItem !== "function") throw new Error("Browser storage is unavailable. This note was not saved.");
   const receipts = [receipt, ...loadLocalPlaytestReceipts(storage).filter((entry) => entry.receiptId !== receipt.receiptId)].slice(0, PLAYTEST_RECEIPT_LIMIT);
   storage?.setItem?.(PLAYTEST_RECEIPT_STORAGE_KEY, JSON.stringify(receipts));
   return receipts;

@@ -1,0 +1,330 @@
+{
+  "session": 124,
+  "at": "2026-10-26T22:25:22.481Z",
+  "origin": "http://localhost:4273",
+  "phase": "after",
+  "sourceRevision": null,
+  "sourceFiles": [
+    {
+      "path": "public/lib/browserStorage.js",
+      "sha256": "03d7ca99e5652bfe51db32fd9a1d5af2bf4c869cb21918a42d658481e598fe1a"
+    },
+    {
+      "path": "public/lib/returnDigest.js",
+      "sha256": "ebdc6a1e707cb36d12537d292f40061aa11d0b681605c8df5759b0a9d9152ead"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0"
+    },
+    {
+      "path": "public/lib/tutorialCampaign.js",
+      "sha256": "c22d311be378e21c73009347c4814368040910fb3bce92475c9d796de69c62a5"
+    },
+    {
+      "path": "public/lib/appCore.js",
+      "sha256": "e33ccab3cdb0678b90da36bd2ef14e141a249eb6dd6ff100ced1c4cb28b165e8"
+    },
+    {
+      "path": "public/lib/contextualFeedback.js",
+      "sha256": "6154c32b796b73ef7544996a6f698c9ddbca52cc9bfdaec0be9fda4f0b04df88"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "46b021f495df07ed1630e191a66e96de7e21fa4832b52980b0abe4e018db584b"
+    }
+  ],
+  "baselineRouting": null,
+  "captures": [
+    {
+      "path": "output/playwright/s124-after/desktop-dark-tutorial.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "tutorial",
+      "sha256": "06a7decb7509e4c313dfa586e10c2e4e5056428edb5ffe5789b485bfaa735eaa",
+      "observation": {
+        "state": "tutorial",
+        "theme": "dark",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/desktop-dark-tutorial-complete.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "tutorial-complete",
+      "sha256": "edfd50f78d2c07f87e331b76941fc5bc7a6cb81343156237e26a2f16125aabc1",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/desktop-dark-feedback.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "feedback",
+      "sha256": "685a65b28385ead92a2d3ff9faa6b2b5026314cc137d955109f5f5685e1a0d86",
+      "observation": {
+        "state": "feedback",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/desktop-light-tutorial.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "state": "tutorial",
+      "sha256": "7681155addf4c46e358b57e619c66b3972ca8bc2657e77bfbe41ef2fdae4d83b",
+      "observation": {
+        "state": "tutorial",
+        "theme": "light",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/desktop-light-tutorial-complete.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "state": "tutorial-complete",
+      "sha256": "be1505c78ed1a307a375e4a0f9327fe70db10f7f86dd7f8d766bdf2cdfe73482",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/desktop-light-feedback.png",
+      "phase": "after",
+      "device": "desktop",
+      "theme": "light",
+      "state": "feedback",
+      "sha256": "db946b765b89df40613d3187d3afbd73204b35677729aecfa3ca62123bd15809",
+      "observation": {
+        "state": "feedback",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/mobile-dark-tutorial.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "tutorial",
+      "sha256": "689562b261d698fb335a1c3d8d1fc98feb8498aeda5758f9e53a5f322d0156f4",
+      "observation": {
+        "state": "tutorial",
+        "theme": "dark",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/mobile-dark-tutorial-complete.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "tutorial-complete",
+      "sha256": "e08b3a3609955ae5792a9680406a47e53f444b22963f8cb5c1e7163496d97ff2",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/mobile-dark-feedback.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "feedback",
+      "sha256": "a2fbd35a0907b4f299f0c18517ee904fd17ef4feb1a6d30876af92d1066f6650",
+      "observation": {
+        "state": "feedback",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/mobile-light-tutorial.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "state": "tutorial",
+      "sha256": "4f9c430ff029c945ac5ffdc69a23e9b547df58b1cf949dc9146e8fd16c7f172c",
+      "observation": {
+        "state": "tutorial",
+        "theme": "light",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/mobile-light-tutorial-complete.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "state": "tutorial-complete",
+      "sha256": "226f838f34c5e15bc3c30e14b6458e13055c5f199ffcb685239a46e1f4c5d104",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-after/mobile-light-feedback.png",
+      "phase": "after",
+      "device": "mobile",
+      "theme": "light",
+      "state": "feedback",
+      "sha256": "21e708853b0d0471083ab92cceb9ac5acd92f6ce082db2d787399d8f9659a7f6",
+      "observation": {
+        "state": "feedback",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "errors": []
+    }
+  ]
+}

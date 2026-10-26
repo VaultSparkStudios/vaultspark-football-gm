@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-26",
+  "session": 124,
+  "source": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Fresh S124 arc: optional browser storage failure recovery",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "fresh source and independent game-loop review"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 5,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 3,
+    "speed-organization-efficiency": 3,
+    "token-cost": 1.5,
+    "observability-honesty": 3,
+    "sil-debt": 1.5
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 1,
+      "slug": "optional-storage-access",
+      "title": "Keep optional player panels usable when storage access is denied",
+      "axis": "security",
+      "category": "security",
+      "tier": "⚡",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 13.249524825000607,
+      "status": "shipped",
+      "premise": "Use one safe storage accessor for the six reproduced modules. Preserve injected storage and franchise keys. Return false when no return boundary can be written. Test denied getters, missing storage, normal storage and cross-franchise isolation.",
+      "recipe": "Use one safe storage accessor for the six reproduced modules. Preserve injected storage and franchise keys. Return false when no return boundary can be written. Test denied getters, missing storage, normal storage and cross-franchise isolation.",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "Local FORGE/FB beta hardening: reproduced optional storage failures must not interrupt existing player decisions or falsely confirm saving.",
+      "premises": [
+        {
+          "claim": "Live source retains reproduced optional-storage-access failure",
+          "adapter": "file-content",
+          "target": "public/lib/returnDigest.js",
+          "pattern": "storage = globalThis.localStorage",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the reproduced entry point."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Use one safe storage accessor for the six reproduced modules. Preserve injected storage and franchise keys. Return false when no return boundary can be written. Test denied getters, missing storage, normal storage and cross-franchise isolation."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "Extend storage fault injection to every player journey after the selected repair."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-26T22:28:36.476Z",
+          "status": "shipped",
+          "note": "Selected L2 source outcome verified: focused45/45; corrected browser9/9; independent round2approve;24inspected images. Exact-source CI/staging/production remains pending.",
+          "evidence": [
+            "reports/s124-focused-checks.json",
+            "reports/s124-storage-review.json",
+            "reports/s124-after-browser.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "tutorial-storage-failure",
+      "title": "Allow tutorial completion and dismissal when storage methods fail",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 13.249524825000607,
+      "status": "shipped",
+      "premise": "Guard tutorial reads, writes and removals independently. Keep authoritative completion receipts unchanged and make persistence best effort. Verify skip and applied-receipt dismissal with quota and denied storage failures in both themes and desktop/mobile.",
+      "recipe": "Guard tutorial reads, writes and removals independently. Keep authoritative completion receipts unchanged and make persistence best effort. Verify skip and applied-receipt dismissal with quota and denied storage failures in both themes and desktop/mobile.",
+      "readinessArea": "onboarding and identity/access",
+      "stageRationale": "Local FORGE/FB beta hardening: reproduced optional storage failures must not interrupt existing player decisions or falsely confirm saving.",
+      "premises": [
+        {
+          "claim": "Live source retains reproduced tutorial-storage-failure failure",
+          "adapter": "file-content",
+          "target": "public/lib/tutorialCampaign.js",
+          "pattern": "storage?.setItem?.(tutorialSeenKey(scope)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the reproduced entry point."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Guard tutorial reads, writes and removals independently. Keep authoritative completion receipts unchanged and make persistence best effort. Verify skip and applied-receipt dismissal with quota and denied storage failures in both themes and desktop/mobile."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "Extend storage fault injection to every player journey after the selected repair."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-26T22:28:36.477Z",
+          "status": "shipped",
+          "note": "Selected L2 source outcome verified: focused45/45; corrected browser9/9; independent round2approve;24inspected images. Exact-source CI/staging/production remains pending.",
+          "evidence": [
+            "reports/s124-focused-checks.json",
+            "reports/s124-storage-review.json",
+            "reports/s124-after-browser.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "slug": "feedback-storage-failure",
+      "title": "Keep feedback drafts visible when browser persistence fails",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "⚡",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 13.249524825000607,
+      "status": "shipped",
+      "premise": "Make optional feedback cadence reads and writes safe. Require an actual receipt writer for successful saving. Catch save failure in the contextual prompt, retain the draft and show an accessible retry message; never invoke onSaved or mark completed after a failed save. Test denied reads, quota failure and a successful retry in both themes and desktop/mobile.",
+      "recipe": "Make optional feedback cadence reads and writes safe. Require an actual receipt writer for successful saving. Catch save failure in the contextual prompt, retain the draft and show an accessible retry message; never invoke onSaved or mark completed after a failed save. Test denied reads, quota failure and a successful retry in both themes and desktop/mobile.",
+      "readinessArea": "feedback, support and issue triage",
+      "stageRationale": "Local FORGE/FB beta hardening: reproduced optional storage failures must not interrupt existing player decisions or falsely confirm saving.",
+      "premises": [
+        {
+          "claim": "Live source retains reproduced feedback-storage-failure failure",
+          "adapter": "file-content",
+          "target": "public/lib/contextualFeedback.js",
+          "pattern": "saveLocalPlaytestReceipt(receipt, storage);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the reproduced entry point."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Make optional feedback cadence reads and writes safe. Require an actual receipt writer for successful saving. Catch save failure in the contextual prompt, retain the draft and show an accessible retry message; never invoke onSaved or mark completed after a failed save. Test denied reads, quota failure and a successful retry in both themes and desktop/mobile."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "Extend storage fault injection to every player journey after the selected repair."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-26T22:28:36.477Z",
+          "status": "shipped",
+          "note": "Selected L2 source outcome verified: focused45/45; corrected browser9/9; independent round2approve;24inspected images. Exact-source CI/staging/production remains pending.",
+          "evidence": [
+            "reports/s124-focused-checks.json",
+            "reports/s124-storage-review.json",
+            "reports/s124-after-browser.json"
+          ]
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "count": 3,
+    "priority": 39.748574475001824,
+    "top3": [
+      "optional-storage-access",
+      "tutorial-storage-failure",
+      "feedback-storage-failure"
+    ]
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-franchise-loop",
+          "premise": "The game lacks a long-term loop.",
+          "evidence": "context/GAME_LOOP.md and seasonChapters already define four decision horizons; repair optional panels before new breadth."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "tutorial-storage-failure"
+      ],
+      "rejectedOnVerify": []
+    },
+    "gamification-immersion": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-return-rewards",
+          "premise": "Elapsed absence should grant rewards.",
+          "evidence": "returnDigest derives only real state deltas; artificial absence rewards violate the existing evidence contract."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-storage-advisor",
+          "premise": "External inference is needed to explain storage faults.",
+          "evidence": "These are deterministic browser exceptions; local recovery and explicit messages suffice."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [
+        "optional-storage-access"
+      ],
+      "rejectedOnVerify": []
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-storage-library",
+          "premise": "A dependency is required for safe property access.",
+          "evidence": "gistCredentials already uses a small guarded accessor; no package or download is necessary."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-model-cache",
+          "premise": "Caching inference would reduce these failures.",
+          "evidence": "The affected modules perform no model calls; measured inference savings would be zero."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [
+        "feedback-storage-failure"
+      ],
+      "rejectedOnVerify": []
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "startup-sync-substitution",
+          "premise": "Run the sibling start-sync to repair a missing local tool.",
+          "evidence": "scripts/start-sync.mjs is absent and owner-rooted scripts measure the wrong repository; clean local fetch and zero divergence were verified instead."
+        }
+      ]
+    }
+  },
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.608Z",
+      "evidence": "reports/s124-storage-before.json reproduces SecurityError in six player modules.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Contextual feedback storage methods are unguarded; a failed receipt write aborts its event handler.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+      "observedAt": "2026-10-26T22:18:34.609Z",
+      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
+      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+    }
+  ],
+  "gameLoopReview": {
+    "scores": {
+      "loopTightness": 7,
+      "progression": 7,
+      "sessionEngagement": 6,
+      "retention": 5,
+      "soulFidelity": 8
+    },
+    "basis": "Source/design review, not real-player engagement measurement",
+    "evidence": [
+      "context/GAME_LOOP.md",
+      "public/lib/returnDigest.js",
+      "public/lib/firstSeasonContract.js",
+      "public/lib/tutorialCampaign.js"
+    ],
+    "nextMoves": [
+      "Keep optional player panels usable when storage access is denied",
+      "Allow tutorial completion and dismissal when storage methods fail",
+      "Keep feedback drafts visible when browser persistence fails"
+    ]
+  },
+  "processLimitations": [
+    "Local check-audit-premises accepts --input, not --audit/--record. Its actual latest selected sidecar was S124 and printed3/3 before edits, but canonical premiseGate timing is UNKNOWN; no timing certification is claimed."
+  ],
+  "verificationHistory": [
+    {
+      "kind": "browser-focused",
+      "initial": {
+        "passed": 7,
+        "failed": 2,
+        "reason": "Test fixture assumed an overviewTab exists on the landing page; application correctly supports body fallback."
+      },
+      "corrected": {
+        "passed": 9,
+        "failed": 0
+      }
+    },
+    {
+      "kind": "boot-target",
+      "rejectedBytes": [
+        650878,
+        650648,
+        650128
+      ],
+      "acceptedBytes": 649992,
+      "unchangedTarget": 650000
+    },
+    {
+      "kind": "review",
+      "initial": "fix",
+      "final": "approve",
+      "report": "reports/s124-storage-review.json"
+    }
+  ]
+}

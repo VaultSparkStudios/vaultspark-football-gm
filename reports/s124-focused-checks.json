@@ -1,0 +1,19 @@
+{
+  "session": 124,
+  "startedAt": "2026-10-26T22:27:20.685Z",
+  "completedAt": "2026-10-26T22:27:29.808Z",
+  "mode": "focused",
+  "sourceBase": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
+  "exitCode": 0,
+  "summary": [
+    "ℹ tests 45",
+    "ℹ suites 0",
+    "ℹ pass 45",
+    "ℹ fail 0",
+    "ℹ cancelled 0",
+    "ℹ skipped 0",
+    "ℹ todo 0",
+    "ℹ duration_ms 6790.179"
+  ],
+  "rawLog": ".cache/s124-focused.log"
+}

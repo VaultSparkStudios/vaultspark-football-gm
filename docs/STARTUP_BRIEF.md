@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-25 (Session 122 closeout) -->
+<!-- generated-at: 2026-10-26 (Session 123 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
 <!-- genius-authority-fingerprint: d8bfda0d18a10937 -->
-<!-- session-authority: committed=S122 · SIL=S122 · status=S122 · handoff=S122; divergent=false -->
+<!-- session-authority: committed=S123 · SIL=S123 · status=S123 · handoff=S123; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 122 closeout · 2026-10-25.
+> **Fast-boot brief** — generated at Session 123 closeout · 2026-10-26.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,15 +17,19 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 123 · 2026-10-25 · BUILDER MODE                         ║
+║  Session 124 · 2026-10-26 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S122) - WHAT SHIPPED ══════════════════════════╗
-║  S122: Three selected repairs plus the dated note are verified   ║
-║  Tests C1 CI7/7; both browser runs275pass/3skip; final isolated  ║
-║  receipt Studio388/388. Aggregate unit count unmeasured.         ║
-║  Deploy recorded 14/14 checks @1f001008                          ║
+╔══ LAST SESSION (S123) - WHAT SHIPPED ══════════════════════════╗
+║  S123: Cloud sync survives denied storage, owner Inbox actions   ║
+║  Tests Exact candidate CI7/7; local focused49/49;                ║
+║  corrected-source clean Studio389/389; hosted                    ║
+║  staging/production browser5/5 each including8cross-franchise    ║
+║  boundary cases per phase; native staging/production14/14.       ║
+║  Final receipt metadata acceptance is separate. Aggregate        ║
+║  application case count unmeasured.                              ║
+║  Deploy recorded 14/14 checks @49035219                          ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -35,15 +39,15 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 26d · refresh required             ║
+║  Profile · game · cache stale 27d · refresh required             ║
 ║  ✓ Lifecycle authority · local FORGE · registry FORGE            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    485/1000   ███████████░░░░░░░░░░░░░   49%                     ║
-║    SIL v3.0  ·  Avg3: 737.3  ·  Velocity 3→                      ║
-║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
+║    500/1000   ████████████░░░░░░░░░░░░   50%                     ║
+║    SIL v3.0  ·  Avg3: 616.3  ·  Velocity 3→                      ║
+║    Active 1d · closeout 1d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -52,26 +56,30 @@
 ║    Alignment         65    ███████░░░  —        →                ║
 ║    Momentum          75    ████████░░  —        →                ║
 ║    Engagement        45    █████░░░░░  —        →                ║
-║    Process Qual      65    ███████░░░  —        →                ║
+║    Process Qual      70    ███████░░░  —        →                ║
 ║    Coherence         50    █████░░░░░  ········ →                ║
-║    Security          45    █████░░░░░  ········ →                ║
+║    Security          50    █████░░░░░  ········ →                ║
 ║    Ecosystem         20    ██░░░░░░░░  ········ →                ║
 ║    Capital            0    ░░░░░░░░░░  ········ →                ║
-║    Automation        35    ████░░░░░░  ········ →                ║
+║    Automation        40    ████░░░░░░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 122 ═══════════════════════════╗
-║  Shipped:  Three selected repairs plus dated player release-not  ║
-║  Tests: C1 CI7/7; both browser runs275pass/3skip; final          ║
-║  isolated receipt Studio388/388. Aggregate unit count            ║
-║  unmeasured.                                                     ║
-║  Deploy: recorded 14/14 checks @1f001008                         ║
+╔══ WHERE WE LEFT OFF  ·  Session 123 ═══════════════════════════╗
+║  Shipped:  S123: Cloud sync survives denied storage, owner Inbo  ║
+║  Tests: Exact candidate CI7/7; local focused49/49;               ║
+║  corrected-source clean Studio389/389; hosted                    ║
+║  staging/production browser5/5 each including8cross-franchise    ║
+║  boundary cases per phase; native staging/production14/14.       ║
+║  Final receipt metadata acceptance is separate. Aggregate        ║
+║  application case count unmeasured.                              ║
+║  Deploy: Production source49035219 verified on frontend and API  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     38,264 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     7,290 / 272,000 tok  ·  codex/codex-272k  ·  heuristic       ║
+║     ~3,645 tok/turn  ·  cache 50%  ·  66 turns to compact        ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -80,9 +88,9 @@
 ║  (2026-10-02)                                                    ║
 ║  ✓  Velocity      3   ·  Debt: ↓                                 ║
 ║  ⚠  Runway        not tracked                                    ║
-║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         41609 FORGE  ·  0d old                         ║
-║  ⛔  Truth         selected S122 production verified; broader hi  ║
+║  ✓  Context age   1d                                             ║
+║  ✓  IGNIS         42460 FORGE  ·  1d old                         ║
+║  ⛔  Truth         selected S123 technical production verified;   ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
 ║  ✓  Entropy       0.059  (healthy)                               ║
@@ -111,7 +119,7 @@
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▁▁▁▁▁  3→  (last 5 sessions)                        ║
 ║  Intent:     80% achieved last 5                                 ║
-║  Streak:     — (last intent not achieved)                        ║
+║  Streak:     ✓ 1 consecutive achieved-intent session             ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
@@ -124,5 +132,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 122 closeout · 2026-10-25*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 123 closeout · 2026-10-26*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

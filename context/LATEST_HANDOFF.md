@@ -1,4 +1,14 @@
-# Session 123 Closeout
+# Session 124 — active arc
+
+Session Intent: Fresh /arc, implement selected beta repairs, authorized direct main commit/push and complete technical deployment.
+
+Native goal 01a17a46-fc1d-7690-a2f9-f7234e2ce8ad createdAt1793052868 is bound to S124. Automatic continuation resumes this session. StartHead8dbbb5bc; startup propagation produced9d87b5ec. Fresh audit docs/AUDIT_2026-10-26.json selects three L2 storage-failure outcomes; premises3/3 and candidate admission pass before application edits. No production change yet.
+
+Waves: Wave1 startup/audit complete; Wave2 implementation and browser evidence in progress; Wave3 exact-candidate tests/staging/production and ordered closeout pending. Before repro reports/s124-storage-before.json records six SecurityError failures. Browser capture .cache/s124-browser.mjs before is running against owned development server exec58907. Native goal remains active; never borrow S123 completion.
+
+Startup: clean fetch divergence0/0; missing local start-sync/recovery tools are delivery gaps, not permission to run owner-rooted substitutes. Canon sync succeeded55entries; frontier radar10/10current. Conformance zeroABSOLUTE gaps, manual/doctor-owned checks remain distinct. Beacon unconfigured/no lease. Writeback probe debt is final S123 receipt commit8dbbb5bc after real SIL closeout647e5996; full diff inspected and prior completion receipts retained. No unfinished code recovery inferred. No new CDR direction. Existing public-launch holds remain distinct from technical deployment.
+
+## Prior Session 123 Closeout
 
 ## Where We Left Off (Session 123)
 

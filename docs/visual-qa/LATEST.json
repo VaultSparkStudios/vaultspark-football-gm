@@ -1,743 +1,373 @@
 {
   "schemaVersion": 1,
-  "session": 123,
-  "capturedAt": "2026-10-25T19:20:48.676Z",
-  "kind": "owner-navigation-local-and-hosted-rendered-evidence",
-  "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "session": 124,
+  "capturedAt": "2026-10-26T22:25:22.481Z",
+  "kind": "optional-storage-local-rendered-evidence",
+  "sourceRevision": null,
   "sourceFiles": [
     {
-      "path": "public/lib/engagementFeatures.js",
-      "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc"
+      "path": "public/lib/browserStorage.js",
+      "sha256": "03d7ca99e5652bfe51db32fd9a1d5af2bf4c869cb21918a42d658481e598fe1a"
     },
     {
-      "path": "public/lib/gameplayNavigation.js",
-      "sha256": "ae1ab7e2665343fafbe28c9ba1b42aa767174dc0b9edb4a954d8c4958a8ac39c"
+      "path": "public/lib/returnDigest.js",
+      "sha256": "ebdc6a1e707cb36d12537d292f40061aa11d0b681605c8df5759b0a9d9152ead"
     },
     {
-      "path": "public/lib/exactSurfaceNavigation.js",
-      "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0"
     },
     {
-      "path": "public/lib/gistCredentials.js",
-      "sha256": "f358cc804d864e5013ddf8f06fe541d27d4129cb9df2c35b802310f5caaceda4"
+      "path": "public/lib/tutorialCampaign.js",
+      "sha256": "c22d311be378e21c73009347c4814368040910fb3bce92475c9d796de69c62a5"
     },
     {
-      "path": "tests-ui/s123-owner-inbox.spec.js",
-      "sha256": "efb6b72b8ccf5215e718e0f7c7288dbfd5ef36b15360c08bc3f9a47a0450533a"
+      "path": "public/lib/appCore.js",
+      "sha256": "e33ccab3cdb0678b90da36bd2ef14e141a249eb6dd6ff100ced1c4cb28b165e8"
+    },
+    {
+      "path": "public/lib/contextualFeedback.js",
+      "sha256": "6154c32b796b73ef7544996a6f698c9ddbca52cc9bfdaec0be9fda4f0b04df88"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "46b021f495df07ed1630e191a66e96de7e21fa4832b52980b0abe4e018db584b"
     }
   ],
-  "artifact": "Exact production artifact 9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04; local before controls retain their baseline identity",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "s123-owner-before-desktop-dark-destination.png",
-      "sha256": "8ecba6f5295acf885fd0cdf4d5a4bc48943a76ac5108298c964ef3e0816200b1",
+      "file": "s124-before-desktop-dark-tutorial.png",
+      "sha256": "ea6e9a097db60a96b5dc4a947e6e5e6de71fc93baf0333ca9f6082776267a720",
+      "theme": "dark",
       "phase": "before",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action before desktop dark",
+      "page": "Optional storage before tutorial desktop dark",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-before-desktop-dark-inbox.png",
-      "sha256": "3599f0d2c97e6f7565407de133859a7992e8b7974d63f19668b1a0e862b601f3",
+      "file": "s124-before-desktop-dark-tutorial-complete.png",
+      "sha256": "d79e317505b29daba01c641be75c62b6ac468b0139b31a193d6b5e3ece91a34c",
+      "theme": "dark",
       "phase": "before",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action before desktop dark",
+      "page": "Optional storage before tutorial-complete desktop dark",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-before-desktop-light-destination.png",
-      "sha256": "6bc82f8308950efcee9695005d0d8e516e6010a44eac3770f7c556249f78113c",
+      "file": "s124-before-desktop-dark-feedback.png",
+      "sha256": "55eb0ac5abe07e1f059933edaa25eba2972364bcb4088c1744302874b1a2b6d3",
+      "theme": "dark",
       "phase": "before",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action before desktop light",
+      "page": "Optional storage before feedback desktop dark",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-before-desktop-light-inbox.png",
-      "sha256": "0c718ecc1eb43eeec30d372272449528f3a1ca2fe70eeca199be4207cde893e0",
+      "file": "s124-before-desktop-light-tutorial.png",
+      "sha256": "c08737cde2a1eee507556b223c32953da2d9467170e156b9e44ba5c5ebf807e5",
+      "theme": "light",
       "phase": "before",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action before desktop light",
+      "page": "Optional storage before tutorial desktop light",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-before-mobile-dark-destination.png",
-      "sha256": "60a5f755fdc2d60512f7e054afe0ddf766ebbd59b2397bd47240a77dcd54a146",
+      "file": "s124-before-desktop-light-tutorial-complete.png",
+      "sha256": "4e3116bb29e8cb228fc0b37864b855851888fffce2e68bddc4ac62d458fe4626",
+      "theme": "light",
       "phase": "before",
-      "theme": "dark",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Owner Inbox action before mobile dark",
+      "page": "Optional storage before tutorial-complete desktop light",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-before-mobile-dark-inbox.png",
-      "sha256": "e0b1885e92c4c51b98a8d23e28c9b5adb74f6a365d37c96233d13ce017f8e365",
+      "file": "s124-before-desktop-light-feedback.png",
+      "sha256": "81475404ae5961532304da5a2c1ba792aa3a512811ac6491dca63b4d2b34950d",
+      "theme": "light",
       "phase": "before",
-      "theme": "dark",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Owner Inbox action before mobile dark",
+      "page": "Optional storage before feedback desktop light",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-before-mobile-light-destination.png",
-      "sha256": "86583baf369402c959fbd148d4ed803f7bbbc4991cd074b836cc6eb8a9e649e0",
+      "file": "s124-before-mobile-dark-tutorial.png",
+      "sha256": "202515b6b494dd99831c760d56271385487462863b6aca498116a74b44d6b9f6",
+      "theme": "dark",
       "phase": "before",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Owner Inbox action before mobile light",
+      "page": "Optional storage before tutorial mobile dark",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-before-mobile-light-inbox.png",
-      "sha256": "b4141ad49861dd0d6bace2e67eb37f8fd816639b3dc8da573a5821b3ff36067a",
+      "file": "s124-before-mobile-dark-tutorial-complete.png",
+      "sha256": "f8f0a24c3c566cf072165e6b6457bff0c8b5b9baed252d36f55f93112093b8a5",
+      "theme": "dark",
       "phase": "before",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Owner Inbox action before mobile light",
+      "page": "Optional storage before tutorial-complete mobile dark",
       "inspected": true,
-      "sourceRevision": "57c77b5c7f90d45ee0f8027292bea16382f3590b"
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
     },
     {
-      "file": "s123-owner-after-desktop-dark-destination.png",
-      "sha256": "a104218034a8b40a78eb37c1eba8e19fdf52abd116f107a26424679e6d055199",
+      "file": "s124-before-mobile-dark-feedback.png",
+      "sha256": "54574ae588762ba453c338c910aec4c64cde0db722269909e82209ca96f5ec16",
+      "theme": "dark",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional storage before feedback mobile dark",
+      "inspected": true,
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
+    },
+    {
+      "file": "s124-before-mobile-light-tutorial.png",
+      "sha256": "4f902c9514bc74b8d0c4dab246dd5e9c205a0b229c109191d3df1076f9be0fc8",
+      "theme": "light",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional storage before tutorial mobile light",
+      "inspected": true,
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
+    },
+    {
+      "file": "s124-before-mobile-light-tutorial-complete.png",
+      "sha256": "197c904a2ee44e5266381cdf439ed76f0af94ecc14bace898aa1afc1ba0ef2dd",
+      "theme": "light",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional storage before tutorial-complete mobile light",
+      "inspected": true,
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
+    },
+    {
+      "file": "s124-before-mobile-light-feedback.png",
+      "sha256": "11ee62610ec232defc4ba7bd051909fa8606ec2debd103611edea60067b7a23c",
+      "theme": "light",
+      "phase": "before",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional storage before feedback mobile light",
+      "inspected": true,
+      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b"
+    },
+    {
+      "file": "s124-after-desktop-dark-tutorial.png",
+      "sha256": "06a7decb7509e4c313dfa586e10c2e4e5056428edb5ffe5789b485bfaa735eaa",
+      "theme": "dark",
       "phase": "after",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action after desktop dark",
+      "page": "Optional storage after tutorial desktop dark",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-after-desktop-dark-inbox.png",
-      "sha256": "1a14f5893a332d150d2d432debbd4530614157cd36d33acd2a2ec9e69234518a",
+      "file": "s124-after-desktop-dark-tutorial-complete.png",
+      "sha256": "edfd50f78d2c07f87e331b76941fc5bc7a6cb81343156237e26a2f16125aabc1",
+      "theme": "dark",
       "phase": "after",
-      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action after desktop dark",
+      "page": "Optional storage after tutorial-complete desktop dark",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-after-desktop-light-destination.png",
-      "sha256": "ee8dea9292e1436c603bbace934a811e2d58f60e65e11ff543d41d352b1fd19d",
+      "file": "s124-after-desktop-dark-feedback.png",
+      "sha256": "685a65b28385ead92a2d3ff9faa6b2b5026314cc137d955109f5f5685e1a0d86",
+      "theme": "dark",
       "phase": "after",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action after desktop light",
+      "page": "Optional storage after feedback desktop dark",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-after-desktop-light-inbox.png",
-      "sha256": "bb39c5b619958ca96edbcfb801370d05403efeccdae6acbfbf58b6808402e991",
+      "file": "s124-after-desktop-light-tutorial.png",
+      "sha256": "7681155addf4c46e358b57e619c66b3972ca8bc2657e77bfbe41ef2fdae4d83b",
+      "theme": "light",
       "phase": "after",
-      "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Owner Inbox action after desktop light",
+      "page": "Optional storage after tutorial desktop light",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-after-mobile-dark-destination.png",
-      "sha256": "663b6e29f9750096d923ae65ef57b22f50338992dd64ea77633d1d0ab1993ff1",
+      "file": "s124-after-desktop-light-tutorial-complete.png",
+      "sha256": "be1505c78ed1a307a375e4a0f9327fe70db10f7f86dd7f8d766bdf2cdfe73482",
+      "theme": "light",
       "phase": "after",
-      "theme": "dark",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Owner Inbox action after mobile dark",
+      "page": "Optional storage after tutorial-complete desktop light",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-after-mobile-dark-inbox.png",
-      "sha256": "d8f5e7088e3bd4ab5529b20db675d9620a4fe4e6f7de241a91b926b335b63791",
+      "file": "s124-after-desktop-light-feedback.png",
+      "sha256": "db946b765b89df40613d3187d3afbd73204b35677729aecfa3ca62123bd15809",
+      "theme": "light",
       "phase": "after",
-      "theme": "dark",
       "viewport": {
-        "width": 390,
-        "height": 844
+        "width": 1440,
+        "height": 1000
       },
-      "page": "Owner Inbox action after mobile dark",
+      "page": "Optional storage after feedback desktop light",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-after-mobile-light-destination.png",
-      "sha256": "15e68d6954fe1f66b45ef9374d49ba7e7116f9ba332e3e9d73bc15ae21954c28",
+      "file": "s124-after-mobile-dark-tutorial.png",
+      "sha256": "689562b261d698fb335a1c3d8d1fc98feb8498aeda5758f9e53a5f322d0156f4",
+      "theme": "dark",
       "phase": "after",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Owner Inbox action after mobile light",
+      "page": "Optional storage after tutorial mobile dark",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-after-mobile-light-inbox.png",
-      "sha256": "df032a30767978a64347fcb76297e40a4887940a18eddb3483aef9537049c5ad",
+      "file": "s124-after-mobile-dark-tutorial-complete.png",
+      "sha256": "e08b3a3609955ae5792a9680406a47e53f444b22963f8cb5c1e7163496d97ff2",
+      "theme": "dark",
       "phase": "after",
-      "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Owner Inbox action after mobile light",
+      "page": "Optional storage after tutorial-complete mobile dark",
       "inspected": true,
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-staging-desktop-dark-destination.png",
-      "sha256": "96b72afc0736463d54de48b1357bf18f84211169b95f836ab0179ab46ed55e4b",
+      "file": "s124-after-mobile-dark-feedback.png",
+      "sha256": "a2fbd35a0907b4f299f0c18517ee904fd17ef4feb1a6d30876af92d1066f6650",
       "theme": "dark",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted staging owner Inbox desktop-dark-destination.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-staging-desktop-dark-inbox.png",
-      "sha256": "52dc4fc3b55985d6bce48020af3d8597732af85902d176c2bc309dfa1276cc02",
-      "theme": "dark",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted staging owner Inbox desktop-dark-inbox.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-staging-desktop-light-destination.png",
-      "sha256": "cc56793e8d32dde53070a3a9cc5d6bbdaa9531889a36efb0af6e0628c43d6d8d",
-      "theme": "light",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted staging owner Inbox desktop-light-destination.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-staging-desktop-light-inbox.png",
-      "sha256": "41605dd309aa4843ff0bff773bfd3179cf4fad144a29e3ca9a7c0fc7a0796734",
-      "theme": "light",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted staging owner Inbox desktop-light-inbox.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-staging-mobile-dark-destination.png",
-      "sha256": "9ba611b06b3242b4a5ba37016dedf5f489e9b1e0ad63a5d5caa9f08fc2922dbc",
-      "theme": "dark",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+      "phase": "after",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Hosted staging owner Inbox mobile-dark-destination.png",
-      "inspected": true
+      "page": "Optional storage after feedback mobile dark",
+      "inspected": true,
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-staging-mobile-dark-inbox.png",
-      "sha256": "d1976d64e7f0f6e8715b32610f2b0cf6bf517bd53b9d95db993de85033bf8a15",
-      "theme": "dark",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Hosted staging owner Inbox mobile-dark-inbox.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-staging-mobile-light-destination.png",
-      "sha256": "cff86dd0b73407095fd83d8f03b26e35f159f760537b0940e924e2d2199327f2",
+      "file": "s124-after-mobile-light-tutorial.png",
+      "sha256": "4f9c430ff029c945ac5ffdc69a23e9b547df58b1cf949dc9146e8fd16c7f172c",
       "theme": "light",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+      "phase": "after",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Hosted staging owner Inbox mobile-light-destination.png",
-      "inspected": true
+      "page": "Optional storage after tutorial mobile light",
+      "inspected": true,
+      "sourceRevision": null
     },
     {
-      "file": "s123-owner-staging-mobile-light-inbox.png",
-      "sha256": "a339cb61d0a4d77e595ede488557b4c0b457423fadfcc2e40d1c9be73decb9d1",
+      "file": "s124-after-mobile-light-tutorial-complete.png",
+      "sha256": "226f838f34c5e15bc3c30e14b6458e13055c5f199ffcb685239a46e1f4c5d104",
       "theme": "light",
-      "phase": "staging",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
+      "phase": "after",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Hosted staging owner Inbox mobile-light-inbox.png",
-      "inspected": true
+      "page": "Optional storage after tutorial-complete mobile light",
+      "inspected": true,
+      "sourceRevision": null
     },
     {
-      "file": "s123-scope-before-desktop-dark-before-import.png",
-      "sha256": "a148460a075414999e387c3e0d2731cc6363749d53d6ba302ec703daf8e44926",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before before-import desktop dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-before-desktop-dark-during-navigation.png",
-      "sha256": "4749551d262d6ec7610d9bafeb6beab778278e0da4c186be715a055b75b0e596",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before during-navigation desktop dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-before-desktop-light-before-import.png",
-      "sha256": "15c8934473a21a0b79e9408da0d3bead1fc35dd97dce4aea212cca18b3e45ed4",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
+      "file": "s124-after-mobile-light-feedback.png",
+      "sha256": "21e708853b0d0471083ab92cceb9ac5acd92f6ce082db2d787399d8f9659a7f6",
       "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before before-import desktop light",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-before-desktop-light-during-navigation.png",
-      "sha256": "413e3bbd872ff320bc6779fe2af217e15a0b4dda202b7084359148cebe40c32a",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before during-navigation desktop light",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-before-mobile-dark-before-import.png",
-      "sha256": "fb726218a472d9c002a979141d6f01dd3e1b4f1fc5b5bfa000bc923a2fe88afc",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
-      "theme": "dark",
+      "phase": "after",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before before-import mobile dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-before-mobile-dark-during-navigation.png",
-      "sha256": "eff3c39f071b541dbfbc29bb11567bb8c00f751ac3c681c0667e49be9ebd80ae",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before during-navigation mobile dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-before-mobile-light-before-import.png",
-      "sha256": "08e0f004611823681c7c16143f68fccc30fad672f11fe6951c0edceaa19db131",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before before-import mobile light",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-before-mobile-light-during-navigation.png",
-      "sha256": "fe1a7b33a038ab29ca1a20491520b42e848c550ba7ecdd5609b5627f90196e6f",
-      "kind": "scope-receipt-control",
-      "phase": "scope-before",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "sourceRevision": "456682bfd78a2c2d0fd9dde2378d5e98c1c10385",
-      "artifactDigest": "c0601de928f2b4b3c8bf989853f79757bc8fa6141ac78e28789e8d1d0b850b35",
-      "page": "Synthetic recipient B warning before during-navigation mobile light",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-desktop-dark-before-import.png",
-      "sha256": "e8bd08a950cd23cfc26cf2dc71092c5d21159a5525da66faf2cec883c0739649",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after before-import desktop dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-desktop-dark-during-navigation.png",
-      "sha256": "692ea1439662a0313bea962b43018b2cf4f2c941623f987b6ab79d825cf27b58",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after during-navigation desktop dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-desktop-light-before-import.png",
-      "sha256": "fd4839ba613aefc20df7ae531e69f831b93cd96cb1b9a4ca93edbe16d4f68f62",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after before-import desktop light",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-desktop-light-during-navigation.png",
-      "sha256": "50f612e8528b9e4cc44f4cd394d2f59b6212a89f4c804861d3758184370d0fbb",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after during-navigation desktop light",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-mobile-dark-before-import.png",
-      "sha256": "e398fa0d9c0639407afa94dd18bb6a3cee1974ea43ed59d3296059fe2907f664",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after before-import mobile dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-mobile-dark-during-navigation.png",
-      "sha256": "1c69b29264cad8d4a840e0ab90276a8ee9499ac95e9c41e2d5be01ca52a35ccb",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after during-navigation mobile dark",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-mobile-light-before-import.png",
-      "sha256": "41b430e3d20ccd505994931e0db03d89ba7d34064e6f5a8db1df5236d89c172a",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after before-import mobile light",
-      "inspected": true
-    },
-    {
-      "file": "s123-scope-after-mobile-light-during-navigation.png",
-      "sha256": "64bc6bef3e3d1405d068bd00723823a9c2969a874137af00cf97244e1f815b54",
-      "kind": "scope-receipt-control",
-      "phase": "scope-after",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "page": "Synthetic recipient B warning after during-navigation mobile light",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-desktop-dark-destination.png",
-      "sha256": "96b72afc0736463d54de48b1357bf18f84211169b95f836ab0179ab46ed55e4b",
-      "theme": "dark",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted production owner Inbox desktop-dark-destination.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-desktop-dark-inbox.png",
-      "sha256": "8ba6d1b62379c907622322773625cc8feae1e008aff0f2b9a799e026388ec0a7",
-      "theme": "dark",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted production owner Inbox desktop-dark-inbox.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-desktop-light-destination.png",
-      "sha256": "cc56793e8d32dde53070a3a9cc5d6bbdaa9531889a36efb0af6e0628c43d6d8d",
-      "theme": "light",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted production owner Inbox desktop-light-destination.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-desktop-light-inbox.png",
-      "sha256": "b3cdd995c08f3f12c8e867dec8ed8536e8ec32766a15bcc3dc3e317b42b4f3f9",
-      "theme": "light",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Hosted production owner Inbox desktop-light-inbox.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-mobile-dark-destination.png",
-      "sha256": "9ba611b06b3242b4a5ba37016dedf5f489e9b1e0ad63a5d5caa9f08fc2922dbc",
-      "theme": "dark",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Hosted production owner Inbox mobile-dark-destination.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-mobile-dark-inbox.png",
-      "sha256": "929e1934233231dd232de9484bbae59641fe0597ad008f58c9be914028bcab32",
-      "theme": "dark",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Hosted production owner Inbox mobile-dark-inbox.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-mobile-light-destination.png",
-      "sha256": "cff86dd0b73407095fd83d8f03b26e35f159f760537b0940e924e2d2199327f2",
-      "theme": "light",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Hosted production owner Inbox mobile-light-destination.png",
-      "inspected": true
-    },
-    {
-      "file": "s123-owner-production-mobile-light-inbox.png",
-      "sha256": "d3bdbdfb0c72615e1264cbbc83c3a5eb37bf1109d0e6de723467bee0a2c14642",
-      "theme": "light",
-      "phase": "production",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "artifactDigest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Hosted production owner Inbox mobile-light-inbox.png",
-      "inspected": true
+      "page": "Optional storage after feedback mobile light",
+      "inspected": true,
+      "sourceRevision": null
     }
   ],
   "priorReceipt": {
-    "path": "reports/s123-evidence-history/LATEST-2e05a2ce87e3f04d5eeceab6eb42ae0108a8c555c49ff8adede83787f99c7baf.json",
-    "sha256": "2e05a2ce87e3f04d5eeceab6eb42ae0108a8c555c49ff8adede83787f99c7baf"
+    "path": "reports/s124-evidence-history/LATEST-58ee2297ef94875ca53ba616c07044b9e5818fe4aba012febca5cfd2a9047a7c.json",
+    "sha256": "58ee2297ef94875ca53ba616c07044b9e5818fe4aba012febca5cfd2a9047a7c"
   },
+  "scope": "Synthetic fault-injection controls rendered on actual local product surfaces. Twelve baseline controls use verbatim9d87b5ec modules; twelve candidate controls bind current source hashes. No hosted or real-user outcome claim.",
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "game_audit",
+    "reviewer": "independent studio-reviewer",
     "verdict": "pass",
     "blockingDefectsOpen": 0,
     "findings": [],
     "fixesApplied": [
-      "Canonical Boardroom destination, closed Inbox and visible focused owner mandate.",
-      "A stale owner action cannot mark another logical franchise same-key warning opened after either await."
+      "Apply both root and body product themes in verification.",
+      "Exercise full applied-contract receipt and dismissal.",
+      "Preserve feedback draft and display save failure with retry."
     ],
-    "method": "Viewed every PNG. Before: drawer stays open over Desk after marking action opened. After: drawer closes and focused owner mandate is visible below sticky header on desktop/mobile in dark/light. No new clipping or unreadable text in touched states. Initial animation screenshots were replaced after capture-settling correction. Final nested-type revision: all eight after PNGs recaptured and individually viewed again; warning icon and Take Action retained, drawer closes and mandate stays readable in all four variants. Scope-guard final revision: eight after PNGs recaptured and viewed again, unchanged readable ownership destination and warning/action controls. staging eight hosted PNGs individually inspected by game_audit; source and artifact verified. All16scope recipient-state PNGs individually inspected by game_audit; before456 shows Action opened while corrected490 retains Take Action. production eight hosted PNGs individually inspected by game_audit; source and artifact verified."
-  },
-  "artifactFingerprint": {
-    "algorithm": "sha256",
-    "digest": "9ca5566b9d397d34c274f01c771ce930af9e2c8ba14be9b1eb37deb7b60e2f04"
-  },
-  "scope": "16 local before/after controls plus 8 staging and8 production actual hosted captures. The cloud check stubs only GitHub responses, while all owner journeys run against the actual deployed app. Additional 16 actual-hosted scope receipt controls preserve their own before/after source identities and synthetic-fixture boundary.",
-  "hostedReviews": {
-    "staging": {
-      "path": "reports/s123-staging-browser-review.json",
-      "sha256": "6fecd8bc942fe46dd1ff6fe01873a31db043718e63bbc522eff9fe3932773017"
-    },
-    "production": {
-      "path": "reports/s123-production-browser-review.json",
-      "sha256": "03f48eb6e3c248d901876b5fa3f0eb2b169274f59b616850c327656ab8e3ebf2"
-    }
-  },
-  "scopeReview": {
-    "path": "reports/s123-scope-visual-review.json",
-    "sha256": "c4672ba1d6e28c261b21bb41b1a7246338a5388de18ecebcd2491b4eb3f4e41a"
+    "method": "All24PNG images individually inspected via view_image; see reports/s124-storage-review.json round2."
   }
 }

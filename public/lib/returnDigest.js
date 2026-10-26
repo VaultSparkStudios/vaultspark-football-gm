@@ -1,10 +1,4 @@
-/**
- * returnDigest.js — session-bound Welcome Back continuity hook
- *
- * Persists an authoritative franchise boundary after each committed action and
- * at pagehide. The next session only surfaces a digest when live state differs
- * from that boundary; elapsed time alone never invents activity or urgency.
- */
+import { browserStorage } from "./browserStorage.js";
 
 import { api } from "./appState.js";
 import { escapeHtml } from "./appCore.js";
@@ -21,7 +15,7 @@ export function returnDigestStorageKey(dashboard = {}) {
   return franchiseStorageKey(STORAGE_PREFIX, dashboard);
 }
 
-export function readLastVisit(dashboard = {}, storage = globalThis.localStorage) {
+export function readLastVisit(dashboard = {}, storage = browserStorage()) {
   try {
     const raw = storage?.getItem?.(returnDigestStorageKey(dashboard));
     return raw ? JSON.parse(raw) : null;
@@ -30,8 +24,9 @@ export function readLastVisit(dashboard = {}, storage = globalThis.localStorage)
   }
 }
 
-export function writeLastVisit(dashboard = {}, entry = {}, storage = globalThis.localStorage) {
+export function writeLastVisit(dashboard = {}, entry = {}, storage = browserStorage()) {
   try {
+    if (typeof storage?.setItem !== "function") return false;
     storage?.setItem?.(returnDigestStorageKey(dashboard), JSON.stringify({
       schemaVersion: RETURN_BOUNDARY_SCHEMA_VERSION,
       ...entry,
@@ -39,8 +34,7 @@ export function writeLastVisit(dashboard = {}, entry = {}, storage = globalThis.
     }));
     return true;
   } catch {
-    // Ignore storage failures (private browsing, quota) — the boundary is a
-    // useful continuity receipt, never a hard requirement to boot the game.
+    // Optional persistence must not interrupt play.
     return false;
   }
 }
@@ -88,14 +82,14 @@ export function buildReturnBoundary(dashboard = {}, {
   };
 }
 
-export function recordReturnBoundary(dashboard = {}, options = {}, storage = globalThis.localStorage) {
+export function recordReturnBoundary(dashboard = {}, options = {}, storage = browserStorage()) {
   if (!dashboard) return false;
   const prior = readLastVisit(dashboard, storage);
   const sequence = Math.max(0, Number(prior?.sequence || 0)) + 1;
   return writeLastVisit(dashboard, buildReturnBoundary(dashboard, { ...options, sequence }), storage);
 }
 
-export function bindReturnBoundaryLifecycle(getDashboard, windowObject = globalThis.window, storage = globalThis.localStorage) {
+export function bindReturnBoundaryLifecycle(getDashboard, windowObject = globalThis.window, storage = browserStorage()) {
   if (lifecycleBound || typeof getDashboard !== "function" || !windowObject?.addEventListener) return false;
   lifecycleBound = true;
   windowObject.addEventListener("pagehide", () => {
@@ -104,10 +98,6 @@ export function bindReturnBoundaryLifecycle(getDashboard, windowObject = globalT
   return true;
 }
 
-/**
- * Pure — no DOM, no storage side effects. Returns null when no digest
- * should be shown (first visit, or the player was barely away).
- */
 export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
   if (!dashboard || !priorVisit) return null;
   const scope = franchiseScopeFromDashboard(dashboard);
@@ -270,11 +260,6 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
   return overlay;
 }
 
-/**
- * Orchestrates the full return-hook flow: read the prior visit, build the
- * digest, render it if applicable, then stamp this visit for next time.
- * Call once, after the dashboard has finished its first load.
- */
 export async function maybeShowReturnDigest(dashboard, options = {}) {
   const priorVisit = readLastVisit(dashboard);
   let shown = false;

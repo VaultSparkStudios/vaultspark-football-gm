@@ -22739,6 +22739,126 @@
       "bytes": 15093,
       "session": 123
     },
+    "s124-after-desktop-dark-feedback.png": {
+      "sha256": "685a65b28385ead92a2d3ff9faa6b2b5026314cc137d955109f5f5685e1a0d86",
+      "bytes": 675122,
+      "session": 124
+    },
+    "s124-after-desktop-dark-tutorial-complete.png": {
+      "sha256": "edfd50f78d2c07f87e331b76941fc5bc7a6cb81343156237e26a2f16125aabc1",
+      "bytes": 183732,
+      "session": 124
+    },
+    "s124-after-desktop-dark-tutorial.png": {
+      "sha256": "06a7decb7509e4c313dfa586e10c2e4e5056428edb5ffe5789b485bfaa735eaa",
+      "bytes": 964530,
+      "session": 124
+    },
+    "s124-after-desktop-light-feedback.png": {
+      "sha256": "db946b765b89df40613d3187d3afbd73204b35677729aecfa3ca62123bd15809",
+      "bytes": 645063,
+      "session": 124
+    },
+    "s124-after-desktop-light-tutorial-complete.png": {
+      "sha256": "be1505c78ed1a307a375e4a0f9327fe70db10f7f86dd7f8d766bdf2cdfe73482",
+      "bytes": 292614,
+      "session": 124
+    },
+    "s124-after-desktop-light-tutorial.png": {
+      "sha256": "7681155addf4c46e358b57e619c66b3972ca8bc2657e77bfbe41ef2fdae4d83b",
+      "bytes": 948621,
+      "session": 124
+    },
+    "s124-after-mobile-dark-feedback.png": {
+      "sha256": "a2fbd35a0907b4f299f0c18517ee904fd17ef4feb1a6d30876af92d1066f6650",
+      "bytes": 193733,
+      "session": 124
+    },
+    "s124-after-mobile-dark-tutorial-complete.png": {
+      "sha256": "e08b3a3609955ae5792a9680406a47e53f444b22963f8cb5c1e7163496d97ff2",
+      "bytes": 82045,
+      "session": 124
+    },
+    "s124-after-mobile-dark-tutorial.png": {
+      "sha256": "689562b261d698fb335a1c3d8d1fc98feb8498aeda5758f9e53a5f322d0156f4",
+      "bytes": 283048,
+      "session": 124
+    },
+    "s124-after-mobile-light-feedback.png": {
+      "sha256": "21e708853b0d0471083ab92cceb9ac5acd92f6ce082db2d787399d8f9659a7f6",
+      "bytes": 156036,
+      "session": 124
+    },
+    "s124-after-mobile-light-tutorial-complete.png": {
+      "sha256": "226f838f34c5e15bc3c30e14b6458e13055c5f199ffcb685239a46e1f4c5d104",
+      "bytes": 110925,
+      "session": 124
+    },
+    "s124-after-mobile-light-tutorial.png": {
+      "sha256": "4f9c430ff029c945ac5ffdc69a23e9b547df58b1cf949dc9146e8fd16c7f172c",
+      "bytes": 226342,
+      "session": 124
+    },
+    "s124-before-desktop-dark-feedback.png": {
+      "sha256": "55eb0ac5abe07e1f059933edaa25eba2972364bcb4088c1744302874b1a2b6d3",
+      "bytes": 696270,
+      "session": 124
+    },
+    "s124-before-desktop-dark-tutorial-complete.png": {
+      "sha256": "d79e317505b29daba01c641be75c62b6ac468b0139b31a193d6b5e3ece91a34c",
+      "bytes": 202185,
+      "session": 124
+    },
+    "s124-before-desktop-dark-tutorial.png": {
+      "sha256": "ea6e9a097db60a96b5dc4a947e6e5e6de71fc93baf0333ca9f6082776267a720",
+      "bytes": 190572,
+      "session": 124
+    },
+    "s124-before-desktop-light-feedback.png": {
+      "sha256": "81475404ae5961532304da5a2c1ba792aa3a512811ac6491dca63b4d2b34950d",
+      "bytes": 667575,
+      "session": 124
+    },
+    "s124-before-desktop-light-tutorial-complete.png": {
+      "sha256": "4e3116bb29e8cb228fc0b37864b855851888fffce2e68bddc4ac62d458fe4626",
+      "bytes": 266871,
+      "session": 124
+    },
+    "s124-before-desktop-light-tutorial.png": {
+      "sha256": "c08737cde2a1eee507556b223c32953da2d9467170e156b9e44ba5c5ebf807e5",
+      "bytes": 266771,
+      "session": 124
+    },
+    "s124-before-mobile-dark-feedback.png": {
+      "sha256": "54574ae588762ba453c338c910aec4c64cde0db722269909e82209ca96f5ec16",
+      "bytes": 205008,
+      "session": 124
+    },
+    "s124-before-mobile-dark-tutorial-complete.png": {
+      "sha256": "f8f0a24c3c566cf072165e6b6457bff0c8b5b9baed252d36f55f93112093b8a5",
+      "bytes": 116314,
+      "session": 124
+    },
+    "s124-before-mobile-dark-tutorial.png": {
+      "sha256": "202515b6b494dd99831c760d56271385487462863b6aca498116a74b44d6b9f6",
+      "bytes": 105465,
+      "session": 124
+    },
+    "s124-before-mobile-light-feedback.png": {
+      "sha256": "11ee62610ec232defc4ba7bd051909fa8606ec2debd103611edea60067b7a23c",
+      "bytes": 162903,
+      "session": 124
+    },
+    "s124-before-mobile-light-tutorial-complete.png": {
+      "sha256": "197c904a2ee44e5266381cdf439ed76f0af94ecc14bace898aa1afc1ba0ef2dd",
+      "bytes": 112800,
+      "session": 124
+    },
+    "s124-before-mobile-light-tutorial.png": {
+      "sha256": "4f902c9514bc74b8d0c4dab246dd5e9c205a0b229c109191d3df1076f9be0fc8",
+      "bytes": 105893,
+      "session": 124
+    },
     "s69-desktop-gm-persona-dark.png": {
       "sha256": "6fceb8a7121d7c6ebe4d5bb955fd2be60b49d247dc97b43bcc00860a909a5bc5",
       "bytes": 52906,

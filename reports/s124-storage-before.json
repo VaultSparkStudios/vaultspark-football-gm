@@ -1,0 +1,43 @@
+{
+  "session": 124,
+  "at": "2026-10-26T22:17:43.670Z",
+  "condition": "Browser localStorage getter throws SecurityError before function body",
+  "rows": [
+    {
+      "name": "returnDigest",
+      "method": "readLastVisit",
+      "throws": true,
+      "error": "SecurityError"
+    },
+    {
+      "name": "firstSeasonContract",
+      "method": "readContractState",
+      "throws": true,
+      "error": "SecurityError"
+    },
+    {
+      "name": "tutorialCampaign",
+      "method": "getTutorialState",
+      "throws": true,
+      "error": "SecurityError"
+    },
+    {
+      "name": "appCore",
+      "method": "readTradeBlockIds",
+      "throws": true,
+      "error": "SecurityError"
+    },
+    {
+      "name": "contextualFeedback",
+      "method": "loadContextualFeedbackLedger",
+      "throws": true,
+      "error": "SecurityError"
+    },
+    {
+      "name": "playtestReceipts",
+      "method": "loadLocalPlaytestReceipts",
+      "throws": true,
+      "error": "SecurityError"
+    }
+  ]
+}

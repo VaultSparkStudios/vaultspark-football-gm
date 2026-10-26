@@ -1,3 +1,4 @@
+import { browserStorage } from "./browserStorage.js";
 import { buildLocalPlaytestReceipt, saveLocalPlaytestReceipt } from "./playtestReceipts.js";
 
 export const CONTEXTUAL_FEEDBACK_STORAGE_KEY = "vsfgm:contextual-feedback:v1";
@@ -13,8 +14,9 @@ function escapeHtml(value) {
   })[character]);
 }
 
-export function loadContextualFeedbackLedger(storage = globalThis.localStorage) {
-  const parsed = safeParse(storage?.getItem?.(CONTEXTUAL_FEEDBACK_STORAGE_KEY) || "{}", {});
+export function loadContextualFeedbackLedger(storage = browserStorage()) {
+  let parsed = {};
+  try { parsed = safeParse(storage?.getItem?.(CONTEXTUAL_FEEDBACK_STORAGE_KEY) || "{}", {}) || {}; } catch {}
   return {
     version: 1,
     lastPromptAt: Number(parsed.lastPromptAt) || 0,
@@ -22,8 +24,8 @@ export function loadContextualFeedbackLedger(storage = globalThis.localStorage) 
   };
 }
 
-export function saveContextualFeedbackLedger(ledger, storage = globalThis.localStorage) {
-  storage?.setItem?.(CONTEXTUAL_FEEDBACK_STORAGE_KEY, JSON.stringify(ledger));
+export function saveContextualFeedbackLedger(ledger, storage = browserStorage()) {
+  try { storage?.setItem?.(CONTEXTUAL_FEEDBACK_STORAGE_KEY, JSON.stringify(ledger)); } catch {}
   return ledger;
 }
 
@@ -97,7 +99,7 @@ function ratingField(id, label) {
 }
 
 export function maybeMountContextualFeedback(dashboard = {}, {
-  storage = globalThis.localStorage,
+  storage = browserStorage(),
   documentRef = globalThis.document,
   now = () => Date.now(),
   onSaved = () => {}
@@ -121,6 +123,7 @@ export function maybeMountContextualFeedback(dashboard = {}, {
     </div>
     <label class="contextual-evidence-note">One moment worth preserving (optional)<textarea data-context-note maxlength="280" rows="2"></textarea></label>
     <p class="contextual-evidence-privacy">Saved only in this browser unless you explicitly export it. No save data or personal identifier is included.</p>
+    <p data-context-error role="alert" hidden></p>
     <div class="contextual-evidence-actions"><button type="button" data-context-action="snooze">Ask in a week</button><button type="button" class="btn btn-accent" data-context-action="save">Save note</button></div>`;
 
   const shownLedger = recordContextualFeedbackAction({ ledger, momentId: moment.id, action: "shown", now: now() });
@@ -140,7 +143,14 @@ export function maybeMountContextualFeedback(dashboard = {}, {
         teamId: dashboard.controlledTeamId, openingContractStatus: dashboard.openingContractProgress?.status,
         evidenceMoment: moment.kind
       });
-      saveLocalPlaytestReceipt(receipt, storage);
+      try {
+        saveLocalPlaytestReceipt(receipt, storage);
+      } catch {
+        const error = panel.querySelector("[data-context-error]");
+        error.textContent = "Note not saved. Keep your draft here and retry when browser storage is available.";
+        error.hidden = false;
+        return;
+      }
       saveContextualFeedbackLedger(recordContextualFeedbackAction({ ledger: currentLedger, momentId: moment.id, action: "saved", now: now() }), storage);
       onSaved(receipt);
       panel.remove();

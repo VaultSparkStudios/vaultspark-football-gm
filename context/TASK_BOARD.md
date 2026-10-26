@@ -24,6 +24,12 @@
 
 Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
+## S124 Wave status
+
+- [x] Wave 1 — Fresh startup, native goal binding, nine-axis audit and pending-candidate admission.
+- [x] Wave 2 — Three selected storage recovery outcomes; focused45/45, browser9/9, independent round2approve and24reviewed captures.
+- [ ] Wave 3 — Exact candidate, staging, required checks, production verification and ordered closeout.
+
 ## S121 Wave status
 
 - [x] Wave 1 — Full startup and fresh nine-axis audit; native goal bound to S121.

@@ -1,20 +1,5 @@
-/**
- * Tutorial Campaign — Year 1 Franchise Challenge
- *
- * A guided 3-decision intro scenario that surfaces scheme fit,
- * owner patience, and scouting confidence in context BEFORE the player
- * touches a full league.
- *
- * Fully skippable. State persisted to localStorage so it doesn't repeat.
- * Renders as an overlay modal on first league creation.
- *
- * Steps:
- *   1. IDENTITY    — pick your franchise identity (scheme + culture)
- *   2. PRESSURE    — your owner delivers the mandate (win expectation)
- *   3. FIRST CALL  — a scout calls with a prospect flag (scouting confidence demo)
- *
- * After step 3, the tutorial resolves and the player enters the full game.
- */
+import { browserStorage } from "./browserStorage.js";
+// Year 1 Franchise Challenge: skippable identity, pressure and scouting choices.
 
 import { closeModal, openModal } from "./modalManager.js";
 import { buildStartScenarioRequest } from "./startScenarioContract.js";
@@ -26,21 +11,23 @@ export function tutorialSeenKey(scope = {}) {
   return franchiseStorageKey(TUTORIAL_SEEN_PREFIX, scope);
 }
 
-export function getTutorialState(scope = {}, storage = globalThis.localStorage) {
-  const value = storage?.getItem?.(tutorialSeenKey(scope));
-  return value === "done" || value === "deferred" ? value : null;
+export function getTutorialState(scope = {}, storage = browserStorage()) {
+  try {
+    const value = storage?.getItem?.(tutorialSeenKey(scope));
+    return value === "done" || value === "deferred" ? value : null;
+  } catch { return null; }
 }
 
-export function hasTutorialBeenSeen(scope = {}, storage = globalThis.localStorage) {
+export function hasTutorialBeenSeen(scope = {}, storage = browserStorage()) {
   return getTutorialState(scope, storage) !== null;
 }
 
-export function markTutorialSeen(scope = {}, storage = globalThis.localStorage, status = "done") {
-  storage?.setItem?.(tutorialSeenKey(scope), status === "deferred" ? "deferred" : "done");
+export function markTutorialSeen(scope = {}, storage = browserStorage(), status = "done") {
+  try { storage?.setItem?.(tutorialSeenKey(scope), status === "deferred" ? "deferred" : "done"); } catch {}
 }
 
-export function resetTutorial(scope = {}, storage = globalThis.localStorage) {
-  storage?.removeItem?.(tutorialSeenKey(scope));
+export function resetTutorial(scope = {}, storage = browserStorage()) {
+  try { storage?.removeItem?.(tutorialSeenKey(scope)); } catch {}
 }
 
 // ── Step definitions ──────────────────────────────────────────────────────────
@@ -129,7 +116,7 @@ const STEPS = [
 
 // ── Mount tutorial modal ──────────────────────────────────────────────────────
 
-export function mountTutorial({ onComplete, onSkip, scope = {}, completed = false, storage = globalThis.localStorage }) {
+export function mountTutorial({ onComplete, onSkip, scope = {}, completed = false, storage = browserStorage() }) {
   if (completed || hasTutorialBeenSeen(scope, storage)) { onSkip?.(); return; }
 
   let currentStep = 0;

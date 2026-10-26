@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S123: Cloud sync survives denied storage, owner Inbox actions reach Boardroom without crossing franchise scope, and startup deployment receipts render clearly.",
-  "nextMilestone": "Selected S123 scope complete. Future implementation requires a fresh request; independent public-launch evidence holds remain.",
+  "currentFocus": "Active arc: three selected storage recovery outcomes verified locally; exact-candidate staging, CI, production and closeout pending.",
+  "nextMilestone": "Verify exact candidate and publish its complete technical release, then ordered closeout.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-10-25",
+  "lastUpdated": "2026-10-26",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -124,14 +124,21 @@
   "silHealth": 468,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 100,
-    "date": "2026-10-25",
-    "passing": 12,
+    "failing": 1,
+    "score": 92,
+    "date": "2026-10-26",
+    "passing": 11,
     "warning": 0,
-    "checks": []
+    "checks": [
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 9d87b5ec3f4c6845a25a4365e71979b9f591629b is not covered by live production 49035219b7511bb5a54c438eba73f62798f0e072"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
@@ -2252,8 +2259,8 @@
   "sessionState": {
     "version": 1,
     "durableSession": 123,
-    "currentFocus": "S123: Cloud sync survives denied storage, owner Inbox actions reach Boardroom without crossing franchise scope, and startup deployment receipts render clearly.",
-    "nextMilestone": "Selected S123 scope complete. Future implementation requires a fresh request; independent public-launch evidence holds remain.",
+    "currentFocus": "Active arc: three selected storage recovery outcomes verified locally; exact-candidate staging, CI, production and closeout pending.",
+    "nextMilestone": "Verify exact candidate and publish its complete technical release, then ordered closeout.",
     "lastSessionSummary": "S123: Cloud sync survives denied storage, owner Inbox actions reach Boardroom without crossing franchise scope, and startup deployment receipts render clearly."
   },
   "partialCloseout": {

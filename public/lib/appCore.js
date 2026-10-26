@@ -1,3 +1,4 @@
+import { browserStorage } from "./browserStorage.js";
 import { state, api, DISPLAY_LABELS, GUIDE_SECTIONS, STATS_BENCHMARK_HINTS, TEAM_THEME_MAP } from "./appState.js";
 import { buildPlayerProfileNarrative } from "./playerProfileNarrative.js";
 import { actionCoordinator } from "./actionCoordinator.js";
@@ -310,7 +311,7 @@ export function saveStatsHiddenColumns(columns) {
 
 const TRADE_BLOCK_STORAGE_PREFIX = "vsfgm:trade-block:v2";
 
-export function readTradeBlockIds(dashboard = state.dashboard || {}, storage = globalThis.localStorage) {
+export function readTradeBlockIds(dashboard = state.dashboard || {}, storage = browserStorage()) {
   try {
     const parsed = JSON.parse(storage?.getItem?.(franchiseStorageKey(TRADE_BLOCK_STORAGE_PREFIX, dashboard)) || "[]");
     return Array.isArray(parsed) ? [...new Set(parsed.map(String).filter(Boolean))] : [];
@@ -319,7 +320,7 @@ export function readTradeBlockIds(dashboard = state.dashboard || {}, storage = g
   }
 }
 
-export function syncTradeBlockScope(dashboard = state.dashboard || {}, storage = globalThis.localStorage) {
+export function syncTradeBlockScope(dashboard = state.dashboard || {}, storage = browserStorage()) {
   const scope = franchiseScopeFromDashboard(dashboard);
   if (state.tradeBlockScope === scope) return false;
   state.tradeBlockScope = scope;
@@ -327,7 +328,7 @@ export function syncTradeBlockScope(dashboard = state.dashboard || {}, storage =
   return true;
 }
 
-export function saveTradeBlockIds(ids, dashboard = state.dashboard || {}, storage = globalThis.localStorage) {
+export function saveTradeBlockIds(ids, dashboard = state.dashboard || {}, storage = browserStorage()) {
   const scope = franchiseScopeFromDashboard(dashboard);
   state.tradeBlockScope = scope;
   state.tradeBlockIds = [...new Set((ids || []).map(String).filter(Boolean))];

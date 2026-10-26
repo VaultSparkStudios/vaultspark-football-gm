@@ -193,6 +193,7 @@ export const SHARDS = {
     "test/rival-gm-persona.test.js",
     "test/beta-feedback.test.js",
     "test/contextual-feedback.test.js",
+    "test/optional-storage-resilience.test.js",
     "test/box-score-presentation.test.js",
     "test/browser-save-store.test.js",
     "test/hybrid-save-store.test.js",
