@@ -966,6 +966,6 @@
     "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
     "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
     "acceptance": "reports/s124-release-acceptance.json",
-    "status": "technical-production-verified-closeout-pending"
+    "status": "technical-production-and-closeout-artifacts-verified-native-guard-pending"
   }
 }

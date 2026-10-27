@@ -93,7 +93,7 @@
   "refs": [
     {
       "path": "context/STATE_VECTOR.json",
-      "sha256": "b81343709151cc2ea79a73bd73d84b849f61a926081a38e5beea8fd2abdfd019"
+      "sha256": "b19ff41dbeefdc5e87a3cc85f26c78dcaf76c6669f14101fcac8470365645e20"
     },
     {
       "path": "context/GENOME_HISTORY.json",

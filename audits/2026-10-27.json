@@ -21,6 +21,8 @@
   "silScore": 510,
   "priorDateAudit": null,
   "acceptance": "reports/s124-release-acceptance.json",
-  "closeoutComplete": false,
-  "scope": "Actual technical release and ordered write-back; final metadata/publication/cleanup remain required."
+  "scope": "Actual technical release and ordered write-back; final metadata/publication/cleanup remain required.",
+  "closeoutArtifactsVerified": true,
+  "completion": "reports/s124-closeout-completion.json",
+  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
 }

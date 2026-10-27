@@ -29,7 +29,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] Wave 1 — Fresh startup, native goal binding, nine-axis audit and pending-candidate admission.
 - [x] Wave 2 — Three selected storage recovery outcomes; focused45/45, browser9/9, independent round2approve and24reviewed captures.
 - [x] Wave 3 — Exact candidate, staging, required checks and actual frontend/API production verified.
-- [ ] Wave 4 — Ordered closeout, final metadata acceptance, receipt publication/readback, signed impact and owned cleanup.
+- [x] Wave 4 — Closeout artifacts verified: ordered records, metadata389/389, first receipt publication/readback, signed impact and owned checkout cleanup. Final native publication/job/original-lock guard remains required before goal completion.
 
 ## S121 Wave status
 

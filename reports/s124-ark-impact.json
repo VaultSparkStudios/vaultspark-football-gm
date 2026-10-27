@@ -1,0 +1,16 @@
+{
+  "session": 124,
+  "at": "2026-10-27T01:15:55.840Z",
+  "cargoId": "01K5TER7VI75068B4EFF09E20E",
+  "type": "session-impact-summary",
+  "from": "franchise-architect-football",
+  "to": "*",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "closeoutCommit": "63d9e39ae4c8ea3714b40d96831987c48f5267a1",
+  "currentRemoteMain": "63d9e39ae4c8ea3714b40d96831987c48f5267a1",
+  "hmacVerified": true,
+  "ed25519Posture": "unsigned",
+  "state": "shipped",
+  "reusedExisting": false,
+  "adoption": "Not asserted; recipient application and verification remain separate."
+}

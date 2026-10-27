@@ -1,0 +1,86 @@
+{
+  "session": 124,
+  "at": "2026-10-27T01:19:28.773Z",
+  "verified": true,
+  "worktrees": [
+    {
+      "path": ".cache/s124-clean",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "indexTree": "1266ef33a9d2936aae7f0ef1d845645d54554504",
+      "generatedPatch": {
+        "path": ".cache/s124-clean-generated.patch",
+        "sha256": "510bd0f8efa56cef6545f18bcd024d0bbf882ebfb7878fccc7f2be7cba72bda6",
+        "bytes": 7953
+      },
+      "ignoredGenerated": [
+        {
+          "path": ".cache/active-skill.json",
+          "sha256": "6c6b0142625f6c0d92a459f9945a20b9415c1d851ae1eb8b7352cfe9d7575b2f",
+          "bytes": 86,
+          "archive": ".cache/s124-owned-generated-archives/s124-clean/.cache/active-skill.json"
+        },
+        {
+          "path": ".cache/genius-list.json",
+          "sha256": "73424b1556c2d069a50d7dd77ac4edf3ee84b0d4249ffcf9e833968baa91f8c4",
+          "bytes": 336,
+          "archive": ".cache/s124-owned-generated-archives/s124-clean/.cache/genius-list.json"
+        },
+        {
+          "path": ".cache/skill-cost-ledger.jsonl",
+          "sha256": "54bed0561f72d1b9a43e0a6a68777272ebac38c3145b5462438c358966a1586d",
+          "bytes": 222,
+          "archive": ".cache/s124-owned-generated-archives/s124-clean/.cache/skill-cost-ledger.jsonl"
+        },
+        {
+          "path": ".cache/skill-costs.jsonl",
+          "sha256": "3df4a8a860892517da2b4af4eac075503249b39c8a5d729da35fd2a81f973b8c",
+          "bytes": 987,
+          "archive": ".cache/s124-owned-generated-archives/s124-clean/.cache/skill-costs.jsonl"
+        }
+      ],
+      "dependencyJunctionUnlinked": true,
+      "directoryRemoved": true
+    },
+    {
+      "path": ".cache/s124-final-metadata",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "indexTree": "64b62a09deb3eb0a423fc7141bd11dfdd23e3d0e",
+      "generatedPatch": {
+        "path": ".cache/s124-final-metadata-generated.patch",
+        "sha256": "9d4491e2c495e386e5092d866ff10f9b6f59b36b3f8dbe079085e7c67682bff0",
+        "bytes": 5073
+      },
+      "ignoredGenerated": [
+        {
+          "path": ".cache/active-skill.json",
+          "sha256": "6418a312d69aff25d1e8d53eb3223a44e4e76b058bf435d8a408b87479bc5998",
+          "bytes": 86,
+          "archive": ".cache/s124-owned-generated-archives/s124-final-metadata/.cache/active-skill.json"
+        },
+        {
+          "path": ".cache/genius-list.json",
+          "sha256": "eab2d10561b35d4493eb0044d40ac15cba32b596d700a1b0aff2b472852d1bd9",
+          "bytes": 336,
+          "archive": ".cache/s124-owned-generated-archives/s124-final-metadata/.cache/genius-list.json"
+        },
+        {
+          "path": ".cache/skill-cost-ledger.jsonl",
+          "sha256": "9035a3149fb4ed7f41519720d751a642df5703e6a457a23f62cba77c4dae8169",
+          "bytes": 222,
+          "archive": ".cache/s124-owned-generated-archives/s124-final-metadata/.cache/skill-cost-ledger.jsonl"
+        },
+        {
+          "path": ".cache/skill-costs.jsonl",
+          "sha256": "da6ffc73e9efc7e64e8c020b30ed316d979be8c1f8c5ff63a1adf83b31823d97",
+          "bytes": 987,
+          "archive": ".cache/s124-owned-generated-archives/s124-final-metadata/.cache/skill-costs.jsonl"
+        }
+      ],
+      "dependencyJunctionUnlinked": true,
+      "directoryRemoved": true
+    }
+  ],
+  "sharedDependencyDirectoryRetained": true,
+  "sentinelUnchanged": true,
+  "scope": "Only the two owned S124 checkouts; exact generated patches/logs and eight known ignored generated files remain privately archived. OS job and original lock cleanup are separate."
+}

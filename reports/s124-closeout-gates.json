@@ -1,6 +1,6 @@
 {
   "session": 124,
-  "at": "2026-10-27T00:36:35.595Z",
+  "at": "2026-10-27T01:32:04.043Z",
   "scope": "Read-only canonical exports invoked with explicit subject root; owner autopilot not run. A historical repository-name claim is resolved only with exact current remote, declared legacy mount and unchanged tracked bytes.",
   "checks": {
     "aliases": true,

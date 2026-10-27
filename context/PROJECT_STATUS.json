@@ -5,7 +5,7 @@
   "status": "active",
   "health": "yellow",
   "currentFocus": "S124: Optional player panels survive denied storage access, tutorials complete and dismiss despite storage failures, and failed feedback saves retain the draft with an honest retry message.",
-  "nextMilestone": "Publish verified closeout receipts, deliver signed impact and finish owned cleanup.",
+  "nextMilestone": "Selected S124 product and closeout artifacts verified. Finish terminal native guard; future implementation requires a new request.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -2116,7 +2116,7 @@
     "verified": true,
     "observedAt": "2026-10-26T22:38:44.745Z"
   },
-  "lastCloseoutAt": "2026-10-25T20:03:47.099Z",
+  "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "863ea60e61398fa149d0e5715f15341a57337df5",
@@ -2258,7 +2258,7 @@
     "version": 1,
     "durableSession": 124,
     "currentFocus": "S124: Optional player panels survive denied storage access, tutorials complete and dismiss despite storage failures, and failed feedback saves retain the draft with an honest retry message.",
-    "nextMilestone": "Publish verified closeout receipts, deliver signed impact and finish owned cleanup.",
+    "nextMilestone": "Selected S124 product and closeout artifacts verified. Finish terminal native guard; future implementation requires a new request.",
     "lastSessionSummary": "S124: Optional player panels survive denied storage access, tutorials complete and dismiss despite storage failures, and failed feedback saves retain the draft with an honest retry message."
   },
   "partialCloseout": {
@@ -2622,19 +2622,19 @@
   "technicalDebtTrend": "decreasing",
   "closeoutExecution": {
     "session": 124,
-    "state": "metadata-verified-publication-impact-cleanup-pending"
+    "state": "artifacts-verified-native-guard-pending"
   },
-  "lastCloseoutSession": 123,
+  "lastCloseoutSession": 124,
   "closeoutPublication": {
-    "session": 123,
-    "commit": "647e59964995fe8db4cb1d0f5ef7298587bed1a5",
+    "session": 124,
+    "commit": "63d9e39ae4c8ea3714b40d96831987c48f5267a1",
     "pushed": true,
-    "applicationSourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+    "applicationSourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
     "receiptOnly": true,
-    "independentReview": "passed-after-fix",
-    "arkCargoId": "01K5QA9ORG6B2B702FA5817A21",
-    "completion": "reports/s123-closeout-completion.json",
-    "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
+    "independentReview": "approved-after-two-display-fixes",
+    "arkCargoId": "01K5TER7VI75068B4EFF09E20E",
+    "completion": "reports/s124-closeout-completion.json",
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "silVelocity": 3,
   "historicalTestShardReceipt": {
@@ -2753,11 +2753,9 @@
   },
   "closeoutProtocol": {
     "session": 124,
-    "status": "metadata-verified-publication-impact-cleanup-pending",
-    "review": {
-      "path": "reports/s124-closeout-review.json",
-      "sha256": "54a09077acc61a0b0bdbf2c7e4e1015a117932d36289119c77115ad75bbf4ffa"
-    }
+    "status": "artifacts-verified",
+    "receipt": "reports/s124-closeout-completion.json",
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "priorReleaseAuthority": {
     "schemaVersion": "1.0",
@@ -2843,7 +2841,7 @@
     "session": 124,
     "goalThreadId": "01a17a46-fc1d-7690-a2f9-f7234e2ce8ad",
     "goalCreatedAt": 1793052868,
-    "status": "metadata-verified-awaiting-final-publication",
+    "status": "artifacts-verified",
     "audit": "docs/AUDIT_2026-10-26.json",
     "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
     "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
@@ -2863,11 +2861,12 @@
       "sha256": "40a23e0ab5aac761653817dc47fd426caf6e16df9e8811c7e348be6ded42de02"
     },
     "remaining": [
-      "Receipt publication and remote readback",
-      "Signed impact delivery",
-      "Owned worktree/job/lock cleanup",
-      "Native completion audit"
-    ]
+      "Final containing-commit publication/readback",
+      "Owned job/process and original lock release",
+      "Native goal completion audit"
+    ],
+    "completion": "reports/s124-closeout-completion.json",
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "silScoreBasis": {
     "devHealth": "85: exact seven-job CI, clean Studio and focused browser/source proof; coverage target and broader debt remain unmeasured.",
@@ -2916,11 +2915,11 @@
     "scope": "Actual strict three-premise check preceded recorded edits; staged/untracked state was not fully measured. This is a reported process deviation, never a passing canonical timing claim."
   },
   "finalCloseoutFollowThrough": {
-    "session": 123,
-    "status": "selected-outcomes-release-receipt-metadata-and-impact-verified",
-    "applicationSource": "49035219b7511bb5a54c438eba73f62798f0e072",
-    "completion": "reports/s123-closeout-completion.json",
-    "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
+    "session": 124,
+    "status": "selected-outcomes-release-metadata-first-publication-impact-and-worktrees-verified",
+    "applicationSource": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "completion": "reports/s124-closeout-completion.json",
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
   "silDebtTrend": "↓",
   "silLastUpdated": "2026-10-25",
@@ -2972,57 +2971,23 @@
     "proof": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json"
   },
   "previousCloseoutPublication": {
-    "session": 121,
-    "commit": "37cac258547aa23b8233c950ad9b314390f27db0",
+    "session": 123,
+    "commit": "647e59964995fe8db4cb1d0f5ef7298587bed1a5",
     "pushed": true,
-    "applicationSourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "applicationSourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
     "receiptOnly": true,
     "independentReview": "passed-after-fix",
-    "arkCargoId": "01K5LVUDRP9C130E63647C64C9",
-    "arkState": "shipped",
-    "sessionBeacon": "unconfigured",
-    "completionCondition": "The containing receipt-only commit must be verified on origin/main before native goal completion."
+    "arkCargoId": "01K5QA9ORG6B2B702FA5817A21",
+    "completion": "reports/s123-closeout-completion.json",
+    "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
   "previousFinalCloseoutFollowThrough": {
-    "session": 122,
-    "status": "selected-outcomes-release-and-receipt-metadata-verified",
-    "priorTechnicalSource": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
-    "productDelta": [
-      "public/status.html"
-    ],
-    "firstMetadata": {
-      "tests": 388,
-      "passed": 385,
-      "failed": 3,
-      "receipt": "reports/s122-final-metadata-first-failure.json"
-    },
-    "firstStatusCandidate": {
-      "tests": 388,
-      "passed": 387,
-      "failed": 1,
-      "receipt": "reports/s122-status-local-first-failure.json"
-    },
-    "visualReview": "reports/s122-status-independent-review.json",
-    "localAcceptance": {
-      "receipt": "reports/s122-status-candidate-local.json",
-      "passed": 388,
-      "total": 388,
-      "testedStagedTree": "295cff1fdf116f3aaa0336331a1e2ee19103fb32"
-    },
-    "sourceRevision": "1f001008deb1c3e8b7faaff1ae5680678f81dc9f",
-    "acceptance": {
-      "path": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-release-acceptance.json",
-      "sha256": "ef0c557ce81407d523d4f923ea89e994edec814157095ecd526bb3dda7b1bca1"
-    },
-    "finalMetadataAcceptance": {
-      "status": "verified",
-      "passed": 388,
-      "total": 388,
-      "receipt": "reports/s122-status-1f001008deb1c3e8b7faaff1ae5680678f81dc9f-final-metadata.json",
-      "testedStagedTree": "bb152bd1fda0207cff77c28d8d001255003de93d"
-    },
-    "nativeCompletionGuard": "Containing receipt-only commit must be verified remotely after metadata acceptance and scoped cleanup."
+    "session": 123,
+    "status": "selected-outcomes-release-receipt-metadata-and-impact-verified",
+    "applicationSource": "49035219b7511bb5a54c438eba73f62798f0e072",
+    "completion": "reports/s123-closeout-completion.json",
+    "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
   "sessionIntentAchieved": false,
-  "sessionIntentDisposition": "Technical release verified; full arc publication and cleanup pending"
+  "sessionIntentDisposition": "Artifacts verified; full native goal completion remains conditional on final containing-commit/job/original-lock guard."
 }

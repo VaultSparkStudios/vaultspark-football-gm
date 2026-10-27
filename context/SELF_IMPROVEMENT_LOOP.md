@@ -188,3 +188,6 @@ Brainstorm: verify native CLI recording before edits; capture correct product th
 
 
 S124 closeout recovery addendum: preparation review missed the retired lastSessionDate field; canonical atomic status writing rejected it. Exact journal/backups enabled reviewed recovery of only unfinished surfaces. Two read-only acceptance attempts also failed through GitHub socket closure; the reviewed connection-only change passed without weakening checks. These failures and the initial hosted4/5→unchanged5/5 retry remain evidence, not erased successes. The510score remains an engineering judgment and the full intent is still Partial until publication/cleanup.
+
+
+S124 terminal artifact checkpoint: exact staged metadata389/389, first receipt publication63d9e39a, HMAC impact and two owned checkout removals are verified. Eight ignored generated files, both generated patches and raw logs are preserved. Initial Partial intent scoring remains a historical checkpoint; the native goal stays active until final containing-commit/job/original-lock guard. No additional measured player outcome or merit score is inferred.

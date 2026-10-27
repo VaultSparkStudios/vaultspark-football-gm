@@ -1,6 +1,6 @@
 # Closeout Brief — franchise-architect-football — S124
 
-> Storage failures no longer interrupt optional player panels, tutorial completion or honest feedback saving.
+> Three storage recovery repairs are verified on the deployed source, with closeout artifacts accepted.
 
 ## Shipped
 
@@ -10,7 +10,7 @@
 
 ## Follow-ups
 
-- **Final closeout**: Final staged metadata test, receipt publication/readback, signed impact and owned cleanup remain pending.
+- **Final native completion guard**: Final containing receipt publication/readback, terminal redundant metadata CI, zero owned transient jobs and original session-lock release remain enforced before native goal completion.
 - **Future evidence discipline**: Two unselected [SIL:124] tasks preserve native premise recording and complete theme/callback/raw-result practices.
 
 ## Blockers
@@ -27,4 +27,4 @@
 - Files changed: 89 at closeout review checkpoint; final commit inventory separate
 - Insertions: n/a
 - Deletions: n/a
-- Suite: Exact-source CI7/7; source Studio389/389; focused45/45; local browser9/9; hosted browser5/5 after first4/5; staging/production14/14; final metadata pending.
+- Suite: Exact-source CI7/7; source Studio389/389; focused45/45; local browser9/9; hosted5/5 after first4/5; staging/production14/14; exact91file metadata389/389; first publication and signed impact verified.

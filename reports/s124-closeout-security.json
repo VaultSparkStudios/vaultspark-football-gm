@@ -29,5 +29,12 @@
     "receipt": "reports/s124-staged-secret-scan.json",
     "sha256": "8e9433340c5116bf37929e45ceb913bc9060344159e51d1dd5094686a47d9668",
     "scope": "Actual67textfiles in the exact91file staged metadata tree. Later result/publication overlays require final outgoing-blob scan."
-  }
+  },
+  "firstPublicationHook": {
+    "commit": "63d9e39ae4c8ea3714b40d96831987c48f5267a1",
+    "scanned": 70,
+    "violations": 0,
+    "hooksPreserved": true
+  },
+  "finalPublicationHook": "Still required; no bypass authorized"
 }

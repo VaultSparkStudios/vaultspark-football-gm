@@ -1,18 +1,13 @@
 {
   "session": 124,
-  "observedAt": "2026-10-27 00:39:24 UTC",
-  "source": "Actual native thread exec result envelopes; 46 unique yielded handles independently queried",
-  "started": 46,
-  "closedOrMissing": 46,
+  "observedAt": "2026-10-27T01:21:28.7420670Z",
+  "source": "Actual native thread yielded exec handles independently queried",
+  "started": 60,
+  "closedOrMissing": 60,
   "running": 0,
-  "scope": "Missing handles prove no retained exec session, not a passing command. Synchronous calls excluded. New metadata/publication handles will be reconciled separately; OS process/worktree/lock cleanup remains required.",
-  "subsequentCompletedHandles": [
-    99268,
-    4073
-  ],
-  "cumulativeCheckpoint": {
-    "started": 48,
-    "closedOrMissing": 48,
-    "running": 0
-  }
+  "os": {
+    "ownedTransientNodeProcesses": 0,
+    "localPlaywrightListeners": 0
+  },
+  "scope": "Pre-final-publication checkpoint. Missing handles do not imply successful commands. Subsequent final receipt publication handles and the original lock require terminal native guard."
 }

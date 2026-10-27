@@ -78,6 +78,22 @@
   },
   "publication": "pending",
   "signedImpact": "pending",
-  "ownedCleanup": "pending",
-  "closeoutComplete": false
+  "ownedCleanup": {
+    "worktreesVerified": true,
+    "receipt": {
+      "path": "reports/s124-owned-worktree-cleanup.json",
+      "sha256": "03cfc5b1dc2d266b530afb64aa25d99ccce4d082c416d11a6faf6e71251d1fe7"
+    },
+    "lockRelease": "Only after final native guard"
+  },
+  "artifactsVerified": true,
+  "remoteReceiptPublication": {
+    "verified": true,
+    "commit": "63d9e39ae4c8ea3714b40d96831987c48f5267a1"
+  },
+  "signedImpactDelivery": {
+    "path": "reports/s124-ark-impact.json",
+    "sha256": "6406e00ed5f3f7ba7248226ab52a0b38c827bd47fee9126c1b099494bf259918"
+  },
+  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
 }
