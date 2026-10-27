@@ -1,0 +1,187 @@
+{
+  "session": 125,
+  "at": "2026-10-27T04:08:21.552Z",
+  "reviewer": "independent studio-reviewer",
+  "verdict": "pass",
+  "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "sourceModules": [
+    {
+      "path": "public/lib/playtestJourney.js",
+      "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s125-staging-final-desktop-dark-boot-getter.png",
+      "sha256": "f2de55fb67b8603c5802cafd4928a8bf761f6cf396a47687b17745f8cf794cb6",
+      "phase": "staging-final",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-desktop-dark-boot-quota.png",
+      "sha256": "acd636bc8683b3d81e3638fa7f77e822104485a3fa5fc2c7f844e163b808308d",
+      "phase": "staging-final",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-desktop-dark-contract-mark.png",
+      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
+      "phase": "staging-final",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-desktop-light-boot-getter.png",
+      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
+      "phase": "staging-final",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-desktop-light-boot-quota.png",
+      "sha256": "3bb083d882be4edb426438ecb8375dba52c898df1b1523102e8b50a235b7825c",
+      "phase": "staging-final",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-desktop-light-contract-mark.png",
+      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "phase": "staging-final",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-mobile-dark-boot-getter.png",
+      "sha256": "b90890b046d17f5ef23b2371fe5ef1090b8dbf2f7229c58f8da6b5f691664f13",
+      "phase": "staging-final",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-mobile-dark-boot-quota.png",
+      "sha256": "785e90cc69049da82ebfc8b418c3633ccda3c51c20ee141fb103c54b40b17e53",
+      "phase": "staging-final",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-mobile-dark-contract-mark.png",
+      "sha256": "ed3adbbf8d8ef93f7743658b707aae99deecc835ebb6107224f81badb22b2838",
+      "phase": "staging-final",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-mobile-light-boot-getter.png",
+      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
+      "phase": "staging-final",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-mobile-light-boot-quota.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "phase": "staging-final",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    },
+    {
+      "file": "s125-staging-final-mobile-light-contract-mark.png",
+      "sha256": "6ae46c6847fd375905999ba9a0736207b9de7d43baf0d352d3b709ea70f54e9a",
+      "phase": "staging-final",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": true,
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c"
+    }
+  ],
+  "controls": 16,
+  "scope": "Staging only. Client optional journey quota reaches Ready; whole getter denial remains visible checkpoint refusal/notReady while optional ledger works. Contract mark and Inbox preserved.",
+  "limitations": [
+    "Lower contract objectives extend below mobile viewport; changed heading/message/objective are visible.",
+    "Cached-version notice overlaps bottom edge without hiding selected content.",
+    "Source2CI later failed2metadata checks; this visual approval never proves CI or production."
+  ]
+}

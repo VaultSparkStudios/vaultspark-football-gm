@@ -1,0 +1,47 @@
+{
+  "session": 125,
+  "at": "2026-10-27T04:04:04.437Z",
+  "failedCandidate": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c",
+  "ciRun": 40446540896,
+  "studioJob": 121999075291,
+  "observed": {
+    "passed": 387,
+    "total": 389,
+    "failed": 2
+  },
+  "failures": [
+    {
+      "test": "test/session-authority.test.js",
+      "problem": "Active-only handoff title was not closed-session authority.",
+      "fix": "Use canonical last-closed124 → active125 handoff heading; no prematureS125closeout."
+    },
+    {
+      "test": "test/session94-context-budget.test.js",
+      "problem": "Reviewed on-diskS125captures absent from canonical append-only ledger.",
+      "fix": "Canonical writeCaptureLedger records60actual image hashes; every prior entry remains unchanged."
+    }
+  ],
+  "testsChanged": false,
+  "productChanged": false,
+  "lateCaptureBinding": true,
+  "focusedAuthorityAndLedger": {
+    "passed": 12,
+    "total": 12,
+    "scope": "Actual two failing test files; not a substitute for full isolated Studio/CI."
+  },
+  "ledger": {
+    "added": 60,
+    "revised": 0,
+    "total": 5829,
+    "priorEntriesUnchanged": true
+  },
+  "localRuntime": {
+    "cancelled": true,
+    "passingCredit": false
+  },
+  "rawFailureLog": {
+    "path": ".cache/s125-job-121999075291.log",
+    "sha256": "2a409111aa5d17f6915bb1a87e7c2c6c8a8a286b51be2a7dc028b3d0332ae183"
+  },
+  "releaseComplete": false
+}

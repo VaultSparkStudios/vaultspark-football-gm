@@ -1,0 +1,67 @@
+{
+  "session": 125,
+  "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c",
+  "testedStagedTree": "3090cdb9be73dc7ed4bf7432cc1717700f05fa94",
+  "startedAt": "2026-10-27T04:09:55.878Z",
+  "executedAt": "2026-10-27T04:13:04.084Z",
+  "finishedAt": "2026-10-27T04:19:51.184Z",
+  "worktree": ".cache/s125-studio-preflight-checkout",
+  "command": "node scripts/run-test-shard.mjs studio",
+  "initialClean": true,
+  "exactBinaryPatchApplied": true,
+  "existingDependenciesLinked": true,
+  "expectedTests": 389,
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 389,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "verified": true,
+  "rawLog": {
+    "path": ".cache/s125-studio-preflight-studio.log",
+    "sha256": "201b13cce2178648c66e9c5fa955446b14051b9c02a147328fa2944c710d651f",
+    "bytes": 33913
+  },
+  "stage": {
+    "path": ".cache/s125-studio-preflight-stage.json",
+    "sha256": "5b28aabf81b4828a3cb8a01696f49511b5fb41835c19df5ced4a0e3aa679a5d3"
+  },
+  "sourceSurface": {
+    "directoriesAndFiles": [
+      "public",
+      "src",
+      "scripts",
+      "test",
+      "tests-ui",
+      "packages",
+      "package.json",
+      "package-lock.json",
+      "playwright.config.mjs"
+    ],
+    "files": 1156,
+    "beforeDigest": "7e03f42281f73d7884fafb8ec9aa93d9a2b815cdf7dea54c9e370fbef56fe2b1",
+    "afterDigest": "7e03f42281f73d7884fafb8ec9aa93d9a2b815cdf7dea54c9e370fbef56fe2b1",
+    "unchanged": true
+  },
+  "generated": {
+    "files": [
+      "context/PROJECT_STATUS.json",
+      "docs/STARTUP_BRIEF.md"
+    ],
+    "untracked": [],
+    "allowed": true,
+    "patchPath": ".cache/s125-studio-preflight-generated.patch",
+    "patchSha256": "97d89c0be01b2bb1fa1513626d6115abe448ac73929684108f6ae546ce079a41",
+    "indexUnchanged": true
+  },
+  "rootUnchanged": true,
+  "scope": "Exact root reviewed staged tracked tree replayed over source2 in a new owned worktree. Root ignored private/generic helpers absent; existing own node_modules linked without installation. Native Studio shard only, not a fresh application/UI/CI/deployment acceptance. Generated status/brief diff retained separately and never substituted for the tested tree."
+}
