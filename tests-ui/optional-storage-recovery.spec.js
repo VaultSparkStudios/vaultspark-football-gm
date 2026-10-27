@@ -1,13 +1,22 @@
 import { test, expect } from '@playwright/test';
 
-for(const failure of ['getter','quota'])test(`game initializes and records planning despite session storage ${failure}`,async({page})=>{
+for(const failure of ['read','quota'])test(`client game initializes despite optional journey storage ${failure}`,async({page})=>{
  await page.addInitScript(failure=>{
-  if(failure==='getter')Object.defineProperty(window,'sessionStorage',{configurable:true,get(){throw new DOMException('Denied','SecurityError');}});
-  else{const target=sessionStorage,original=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(this===target)throw new DOMException('Full','QuotaExceededError');return original.call(this,key,value);};}
+  const method=failure==='read'?'getItem':'setItem',original=Storage.prototype[method];
+  Storage.prototype[method]=function(key,...args){if(this===sessionStorage&&key==='vsfgm:playtest-journey:v1')throw new DOMException('Optional journey storage failed',failure==='read'?'SecurityError':'QuotaExceededError');return original.call(this,key,...args);};
  },failure);
- await page.goto('/game.html');await expect(page.locator('#statusChip')).toHaveText('Ready',{timeout:30000});
+ await page.goto('/game.html?runtime=client');await expect(page.locator('#statusChip')).toHaveText('Ready',{timeout:30000});
  const result=await page.evaluate(async()=>{const m=await import('/lib/playtestJourney.js');m.recordPlaytestJourneyCheckpoint('weekly-plan-opened');m.recordPlaytestJourneyCheckpoint('weekly-plan-reviewed');return m.buildPlaytestJourneySummary();});
  expect(result.planningFriction.reviewed).toBe(true);expect(result.events.map(e=>e.name)).toContain('session-start');expect(result).not.toHaveProperty('startedAt');
+});
+
+test('client recovery remains fail closed while optional journey tolerates a denied getter',async({page})=>{
+ await page.addInitScript(()=>Object.defineProperty(window,'sessionStorage',{configurable:true,get(){throw new DOMException('Denied','SecurityError');}}));
+ await page.goto('/game.html?runtime=client');
+ await expect(page.getByRole('alert',{name:'Franchise recovery required'})).toBeVisible({timeout:30000});
+ await expect(page.getByRole('alert')).toContainText('could not read its recovery checkpoint');
+ const names=await page.evaluate(async()=>{const m=await import('/lib/playtestJourney.js');m.recordPlaytestJourneyCheckpoint('weekly-plan-opened');return m.loadPlaytestJourney().events.map(e=>e.name);});
+ expect(names).toContain('weekly-plan-opened');await expect(page.locator('#statusChip')).not.toHaveText('Ready');
 });
 
 test('contract marks survive denied getter recovery in the rendered game',async({page})=>{

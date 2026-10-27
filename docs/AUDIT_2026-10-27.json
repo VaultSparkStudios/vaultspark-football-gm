@@ -104,6 +104,11 @@
             "reports/s125-implementation-review.json",
             "docs/visual-qa/LATEST.json"
           ]
+        },
+        {
+          "at": "2026-10-27T03:39:40.592Z",
+          "status": "shipped",
+          "note": "Corrected client acceptance: focused13/13, fresh client before/after24pixel review. Optional journey faults are distinct from deliberate refusal when authoritative recovery storage is unreadable. Original server-runtime proof remains historical. Exact release still OPEN."
         }
       ]
     },
@@ -158,6 +163,11 @@
             "reports/s125-implementation-review.json",
             "docs/visual-qa/LATEST.json"
           ]
+        },
+        {
+          "at": "2026-10-27T03:39:40.592Z",
+          "status": "shipped",
+          "note": "Corrected client acceptance: focused13/13, fresh client before/after24pixel review. Optional journey faults are distinct from deliberate refusal when authoritative recovery storage is unreadable. Original server-runtime proof remains historical. Exact release still OPEN."
         }
       ]
     },
@@ -212,6 +222,11 @@
             "reports/s125-implementation-review.json",
             "docs/visual-qa/LATEST.json"
           ]
+        },
+        {
+          "at": "2026-10-27T03:39:40.592Z",
+          "status": "shipped",
+          "note": "Corrected client acceptance: focused13/13, fresh client before/after24pixel review. Optional journey faults are distinct from deliberate refusal when authoritative recovery storage is unreadable. Original server-runtime proof remains historical. Exact release still OPEN."
         }
       ]
     }
@@ -632,6 +647,11 @@
   "processLimitations": [
     "Initial strict recorder included before-capture artifacts; preserved, relocated evidence before product edits, then canonical pre-implementation timing passed.",
     "Initial capture fixture/clipping and partial11/12run retained. Focused first10/12 retained; setup readiness and synthetic fixture hydration race corrected.",
-    "Missing canonical startup helper was delivered locally and stopped on owned capture residue; final sync still required. Missing local record-review was not replaced with a foreign-root writer; review facts are recorded here."
-  ]
+    "Missing canonical startup helper was delivered locally and stopped on owned capture residue; final sync still required. Missing local record-review was not replaced with a foreign-root writer; review facts are recorded here.",
+    "Original local boot images used dev-server runtime and did not prove client boot under total storage denial. Preserve those images and reports as historical server-only evidence."
+  ],
+  "acceptanceCorrection": {
+    "path": "reports/s125-client-acceptance-correction.json",
+    "sha256": "3f85b0217e1143ae5566e0334d5b3dfe7e70f6366fd3912f28e60770ad135e4f"
+  }
 }

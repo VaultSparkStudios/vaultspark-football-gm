@@ -1,0 +1,580 @@
+{
+  "session": 125,
+  "phase": "client-after",
+  "origin": "http://localhost:4273",
+  "at": "2026-10-27T03:37:17.875Z",
+  "completed": true,
+  "verified": true,
+  "driverSha256": "cece5f2abcb7745238c6ec3a8b9c12ab17729ac19a2147e1215cf8742fa6f4aa",
+  "hosted": null,
+  "files": [
+    {
+      "path": "public/lib/playtestJourney.js",
+      "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s125-client-after-desktop-dark-boot-getter.png",
+      "sha256": "a1fc14ea692a48d8d8327a48987549587bd95bc4194d827fb1814d62235124db",
+      "phase": "client-after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-desktop-dark-boot-quota.png",
+      "sha256": "7664c55ca183678ce9dae6ef488ceaf2b6eaf6f174f0681a1790f04446da8c38",
+      "phase": "client-after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-desktop-dark-contract-mark.png",
+      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
+      "phase": "client-after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-desktop-light-boot-getter.png",
+      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
+      "phase": "client-after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-desktop-light-boot-quota.png",
+      "sha256": "a3522cf759082fac0a7d46fce7465fe9eebea3a92d86caa01ac17c314ce8b6d2",
+      "phase": "client-after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-desktop-light-contract-mark.png",
+      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "phase": "client-after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-mobile-dark-boot-getter.png",
+      "sha256": "6cb6c104a81e52b81c04b2cf41439f3b6e564043498b38fddb03a4dd396605d0",
+      "phase": "client-after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-mobile-dark-boot-quota.png",
+      "sha256": "54cdc3788ad3c6aa2f97e48a8ef8f19035afb75210dc68054f738334de8e33bb",
+      "phase": "client-after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-mobile-dark-contract-mark.png",
+      "sha256": "08233f148e89d98d447c416d38cb8cec8425990a38db1067be70da13e92bd39a",
+      "phase": "client-after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-mobile-light-boot-getter.png",
+      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
+      "phase": "client-after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-mobile-light-boot-quota.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "phase": "client-after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-after-mobile-light-contract-mark.png",
+      "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1",
+      "phase": "client-after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": false
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 1397,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 1397
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Visible fail-closed recovery when authoritative checkpoint cannot be read; optional instrumentation remains usable.",
+      "authoritativeDenied": true
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 2745,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 2745
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Ready when only optional journey writes fail.",
+      "authoritativeDenied": false
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "inbox",
+      "items": 1
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 1201,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 1201
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Visible fail-closed recovery when authoritative checkpoint cannot be read; optional instrumentation remains usable.",
+      "authoritativeDenied": true
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 5889,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 5889
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Ready when only optional journey writes fail.",
+      "authoritativeDenied": false
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "inbox",
+      "items": 1
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 1267,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 1267
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Visible fail-closed recovery when authoritative checkpoint cannot be read; optional instrumentation remains usable.",
+      "authoritativeDenied": true
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 2742,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 2742
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Ready when only optional journey writes fail.",
+      "authoritativeDenied": false
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "inbox",
+      "items": 1
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 969,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 969
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Visible fail-closed recovery when authoritative checkpoint cannot be read; optional instrumentation remains usable.",
+      "authoritativeDenied": true
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 2121,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 2121
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        },
+        "runtimeMode": "client"
+      },
+      "expected": "Ready when only optional journey writes fail.",
+      "authoritativeDenied": false
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "inbox",
+      "items": 1
+    }
+  ]
+}

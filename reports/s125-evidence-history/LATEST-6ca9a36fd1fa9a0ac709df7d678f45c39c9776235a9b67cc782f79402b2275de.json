@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "capturedAt": "2026-10-27T03:13:02.482Z",
+  "kind": "optional-player-state-rendered-evidence",
+  "sourceRevision": null,
+  "sourceState": "Uncommitted implementation; exact sourceFiles hashes bind pixels until candidate selection.",
+  "sourceFiles": [
+    {
+      "path": "public/lib/playtestJourney.js",
+      "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+    }
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s125-before-desktop-dark-boot-getter.png",
+      "sha256": "a97b12df9543e1c4fe51f3faeb00419328ad2ad754b77884c2d7ac07781e6d21",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-desktop-dark-boot-quota.png",
+      "sha256": "13530fab9d767441359ab1e95be82e9af60a83d421c4f08526d69144c2369ce0",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-desktop-dark-contract-mark.png",
+      "sha256": "7c51add0e248afb6431f132f7eb05ff1674dba16865d8a4dfb29c016a31147ae",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-desktop-light-boot-getter.png",
+      "sha256": "f8fd9dd0fd0b5a2baaa54afa6be20c91ee0b1322e351fbbd4ee3193e4afec8a7",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-desktop-light-boot-quota.png",
+      "sha256": "7d5906b3e84ae160f782309e3d58bd6866cf9a2d1cf1e4ee07ad15406a6187e3",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-desktop-light-contract-mark.png",
+      "sha256": "068627cd17420565310738984c74b7646b6913877fcb7bf1129d470609fa56b3",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-mobile-dark-boot-getter.png",
+      "sha256": "014401a919fa3db9f2a0bf8b761d6d020a226358cfef0332bacf61769887a29a",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-mobile-dark-boot-quota.png",
+      "sha256": "61df52fed879e7b3394ef3f1d49e5420c1cea8bc060cc379c1a49e87b2938d52",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-mobile-dark-contract-mark.png",
+      "sha256": "ab638f2c3a5751de58696e54b29984e81efa2824114c03fa4b12013d4d9bd4c2",
+      "phase": "before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-mobile-light-boot-getter.png",
+      "sha256": "04031db0bb52a1845dd03aeb37ade3ba30158ce3d49af356d3768f4a8ada2f12",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-mobile-light-boot-quota.png",
+      "sha256": "3f1212d2e75135122ce49229cd0f0da24127f1fef8926c1430f6d27fcdf29f73",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-before-mobile-light-contract-mark.png",
+      "sha256": "a47019dce94254f18ffe9dc19f6b745e5213f5d672a2e4a9e6a30f1b4f0a4466",
+      "phase": "before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-desktop-dark-boot-getter.png",
+      "sha256": "1f1c5ccbc569cba4c1c4d727327601bc7c9d448ce2c2a8065b7ec31451de86dc",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-desktop-dark-boot-quota.png",
+      "sha256": "733b0cd76dce65501623df5a388d9d698ccc27cd977a94c4f87dedb2c3d1126f",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-desktop-dark-contract-mark.png",
+      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-desktop-light-boot-getter.png",
+      "sha256": "1fd8c409b6646be6bb3c7a9e5aa63895025dc8cb8c80808bc86de8009b325dff",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-desktop-light-boot-quota.png",
+      "sha256": "1c16b5cdb38f7526b5c644e6be4ab289b87b4a52c4b93ecae6d8cedbd1d9297b",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-desktop-light-contract-mark.png",
+      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-mobile-dark-boot-getter.png",
+      "sha256": "6767bec9c61e9e2ba6be41a11bfbb92bcf35b6ac700b67c67b0dbb861f12bc05",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-mobile-dark-boot-quota.png",
+      "sha256": "3b68184fce42d71deb174783c569eab94b6414b9b47ca8d96958eb3636c856b8",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-mobile-dark-contract-mark.png",
+      "sha256": "98ed50eae15a603e079b7a3d37442b7358f989b67604f84233d025470bb94d11",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-mobile-light-boot-getter.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-mobile-light-boot-quota.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": true
+    },
+    {
+      "file": "s125-after-mobile-light-contract-mark.png",
+      "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": true
+    }
+  ],
+  "previousReceipt": {
+    "path": "reports/s125-evidence-history/LATEST-075dd0d56560cc1fa48cbb00fe0147f3f0e46220f172caddeac830372921ebdf.json",
+    "sha256": "075dd0d56560cc1fa48cbb00fe0147f3f0e46220f172caddeac830372921ebdf"
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "independent studio-reviewer",
+    "verdict": "pass",
+    "blockingDefectsOpen": 0,
+    "findings": [],
+    "fixesApplied": [
+      "Stable contract default context across getter denial/recovery.",
+      "Framing exposes changed mobile message below sticky chrome."
+    ],
+    "method": "All24finalPNGs individually inspected and hashes checked independently; before03:12:02.665Z, after03:13:02.482Z."
+  },
+  "scope": "Eight real game-boot controls per phase; contract state uses synthetic fixture through actual template/styles isolated from background hydration. Mobile captures cover title, temporary-tracking message and changed objective; lower objectives extend below viewport. Local proof, no hosted or real-user claim."
+}

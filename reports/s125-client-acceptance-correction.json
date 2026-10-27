@@ -1,0 +1,159 @@
+{
+  "session": 125,
+  "at": "2026-10-27T03:39:40.592Z",
+  "applicationSource": "b794ba83dc8ec9e59477287ed7b5e488379f2316",
+  "productSourceUnchanged": true,
+  "scope": "Correct acceptance evidence; never weaken authoritative client checkpoint recovery.",
+  "initialEvidenceLimitation": "Original local boot images used dev-server runtime and did not prove client boot under total storage denial. Preserve those images and reports as historical server-only evidence.",
+  "stagingFindings": [
+    "First three-module preflight reported a mismatch for firstSeasonContract; later diagnostic matched stable and immutable URLs with and without revision query. No redeployment was used to hide the observation.",
+    "Whole sessionStorage getter denial correctly produced authoritative checkpoint recovery refusal; optional journey recording itself remained usable."
+  ],
+  "acceptedBoundary": {
+    "optionalJourney": "Explicit client mode reaches Ready under per-journey-key read/quota faults; bounded relative recording remains usable.",
+    "authoritativeRecovery": "Whole sessionStorage getter denial requires visible recovery alert, checkpoint-read message and notReady. The recovery module is unchanged.",
+    "contract": "Marks remain within the tab after failed persistence and the temporary-tracking label is readable."
+  },
+  "focused": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "raw": {
+      "path": ".cache/s125-focused.raw.json",
+      "sha256": "f4e247547fd45f58f91e69d81af4ab71254e0768b5c9197744a4c841f39f7826"
+    },
+    "log": {
+      "path": ".cache/s125-focused.log",
+      "sha256": "e10bf69609457a1c268a1c44a4726cab60ccc0fe5b371e9d1265f5915550c984"
+    },
+    "testSource": {
+      "path": "tests-ui/optional-storage-recovery.spec.js",
+      "sha256": "390da7a3715cca864cf82c94e065815f8335b34bbea2775abebd5f84a45511c2"
+    }
+  },
+  "visualReview": {
+    "reviewer": "independent studio-reviewer",
+    "verdict": "pass",
+    "inspected": 24,
+    "hashesVerified": true,
+    "sourceFiles": [
+      {
+        "path": "public/lib/playtestJourney.js",
+        "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+      },
+      {
+        "path": "public/lib/engagementFeatures.js",
+        "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+      },
+      {
+        "path": "public/lib/firstSeasonContract.js",
+        "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+      }
+    ],
+    "captures": [
+      {
+        "file": "s125-client-before-desktop-dark-boot-getter.png",
+        "sha256": "a97b12df9543e1c4fe51f3faeb00419328ad2ad754b77884c2d7ac07781e6d21"
+      },
+      {
+        "file": "s125-client-before-desktop-dark-boot-quota.png",
+        "sha256": "9890f92f4abeaf04a7b13511f3919b9657cd9d9a542ca2f9ea274d61eb3a5d2c"
+      },
+      {
+        "file": "s125-client-before-desktop-dark-contract-mark.png",
+        "sha256": "7c51add0e248afb6431f132f7eb05ff1674dba16865d8a4dfb29c016a31147ae"
+      },
+      {
+        "file": "s125-client-before-desktop-light-boot-getter.png",
+        "sha256": "f8fd9dd0fd0b5a2baaa54afa6be20c91ee0b1322e351fbbd4ee3193e4afec8a7"
+      },
+      {
+        "file": "s125-client-before-desktop-light-boot-quota.png",
+        "sha256": "83494e68fbf7ecfbc0a3005f3d980047f1f4d5a74ac5cbd4d80127f66315f783"
+      },
+      {
+        "file": "s125-client-before-desktop-light-contract-mark.png",
+        "sha256": "93e7b7a2acab8a0f392df2c0b991c6863d5bab539038d4333294e8e9fa04d635"
+      },
+      {
+        "file": "s125-client-before-mobile-dark-boot-getter.png",
+        "sha256": "6371141207a233f0639eaad498bdcafb44a74e5c0aba6b0c48cb7d156bd2b0de"
+      },
+      {
+        "file": "s125-client-before-mobile-dark-boot-quota.png",
+        "sha256": "cef2397b2550a9eba0d67943082769d734a5132241b0f55caf93a5372826c08d"
+      },
+      {
+        "file": "s125-client-before-mobile-dark-contract-mark.png",
+        "sha256": "40c541cccc43c3617bc63e7f84fc7d7fcd8a01cd90c1fb3513bea68018830201"
+      },
+      {
+        "file": "s125-client-before-mobile-light-boot-getter.png",
+        "sha256": "04031db0bb52a1845dd03aeb37ade3ba30158ce3d49af356d3768f4a8ada2f12"
+      },
+      {
+        "file": "s125-client-before-mobile-light-boot-quota.png",
+        "sha256": "f48a31c8b3cc1973e63b122b1c5b7a45a5fbc2a80122de8bc9377d289e7c81fd"
+      },
+      {
+        "file": "s125-client-before-mobile-light-contract-mark.png",
+        "sha256": "a47019dce94254f18ffe9dc19f6b745e5213f5d672a2e4a9e6a30f1b4f0a4466"
+      },
+      {
+        "file": "s125-client-after-desktop-dark-boot-getter.png",
+        "sha256": "a1fc14ea692a48d8d8327a48987549587bd95bc4194d827fb1814d62235124db"
+      },
+      {
+        "file": "s125-client-after-desktop-dark-boot-quota.png",
+        "sha256": "7664c55ca183678ce9dae6ef488ceaf2b6eaf6f174f0681a1790f04446da8c38"
+      },
+      {
+        "file": "s125-client-after-desktop-dark-contract-mark.png",
+        "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5"
+      },
+      {
+        "file": "s125-client-after-desktop-light-boot-getter.png",
+        "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7"
+      },
+      {
+        "file": "s125-client-after-desktop-light-boot-quota.png",
+        "sha256": "a3522cf759082fac0a7d46fce7465fe9eebea3a92d86caa01ac17c314ce8b6d2"
+      },
+      {
+        "file": "s125-client-after-desktop-light-contract-mark.png",
+        "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d"
+      },
+      {
+        "file": "s125-client-after-mobile-dark-boot-getter.png",
+        "sha256": "6cb6c104a81e52b81c04b2cf41439f3b6e564043498b38fddb03a4dd396605d0"
+      },
+      {
+        "file": "s125-client-after-mobile-dark-boot-quota.png",
+        "sha256": "54cdc3788ad3c6aa2f97e48a8ef8f19035afb75210dc68054f738334de8e33bb"
+      },
+      {
+        "file": "s125-client-after-mobile-dark-contract-mark.png",
+        "sha256": "08233f148e89d98d447c416d38cb8cec8425990a38db1067be70da13e92bd39a"
+      },
+      {
+        "file": "s125-client-after-mobile-light-boot-getter.png",
+        "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603"
+      },
+      {
+        "file": "s125-client-after-mobile-light-boot-quota.png",
+        "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f"
+      },
+      {
+        "file": "s125-client-after-mobile-light-contract-mark.png",
+        "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1"
+      }
+    ],
+    "limitation": "Mobile contract frames cover the changed heading/message/objective; lower objectives remain below the viewport."
+  },
+  "driver": {
+    "path": ".cache/s125-browser.mjs",
+    "sha256": "cece5f2abcb7745238c6ec3a8b9c12ab17729ac19a2147e1215cf8742fa6f4aa"
+  },
+  "releaseComplete": false
+}

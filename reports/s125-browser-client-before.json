@@ -1,0 +1,305 @@
+{
+  "session": 125,
+  "phase": "client-before",
+  "origin": "http://localhost:4273",
+  "at": "2026-10-27T03:35:26.180Z",
+  "hosted": null,
+  "files": [
+    {
+      "path": "public/lib/playtestJourney.js",
+      "sha256": "a07965f79cb3fbecde479ba1e991625381d380c83c136ec0e286440e778c96c4"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s125-client-before-desktop-dark-boot-getter.png",
+      "sha256": "a97b12df9543e1c4fe51f3faeb00419328ad2ad754b77884c2d7ac07781e6d21",
+      "phase": "client-before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-desktop-dark-boot-quota.png",
+      "sha256": "9890f92f4abeaf04a7b13511f3919b9657cd9d9a542ca2f9ea274d61eb3a5d2c",
+      "phase": "client-before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-desktop-dark-contract-mark.png",
+      "sha256": "7c51add0e248afb6431f132f7eb05ff1674dba16865d8a4dfb29c016a31147ae",
+      "phase": "client-before",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-desktop-light-boot-getter.png",
+      "sha256": "f8fd9dd0fd0b5a2baaa54afa6be20c91ee0b1322e351fbbd4ee3193e4afec8a7",
+      "phase": "client-before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-desktop-light-boot-quota.png",
+      "sha256": "83494e68fbf7ecfbc0a3005f3d980047f1f4d5a74ac5cbd4d80127f66315f783",
+      "phase": "client-before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-desktop-light-contract-mark.png",
+      "sha256": "93e7b7a2acab8a0f392df2c0b991c6863d5bab539038d4333294e8e9fa04d635",
+      "phase": "client-before",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-mobile-dark-boot-getter.png",
+      "sha256": "6371141207a233f0639eaad498bdcafb44a74e5c0aba6b0c48cb7d156bd2b0de",
+      "phase": "client-before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-mobile-dark-boot-quota.png",
+      "sha256": "cef2397b2550a9eba0d67943082769d734a5132241b0f55caf93a5372826c08d",
+      "phase": "client-before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-mobile-dark-contract-mark.png",
+      "sha256": "40c541cccc43c3617bc63e7f84fc7d7fcd8a01cd90c1fb3513bea68018830201",
+      "phase": "client-before",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-mobile-light-boot-getter.png",
+      "sha256": "04031db0bb52a1845dd03aeb37ade3ba30158ce3d49af356d3768f4a8ada2f12",
+      "phase": "client-before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-mobile-light-boot-quota.png",
+      "sha256": "f48a31c8b3cc1973e63b122b1c5b7a45a5fbc2a80122de8bc9377d289e7c81fd",
+      "phase": "client-before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-client-before-mobile-light-contract-mark.png",
+      "sha256": "a47019dce94254f18ffe9dc19f6b745e5213f5d672a2e4a9e6a30f1b4f0a4466",
+      "phase": "client-before",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": false
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: SecurityError: Denied session storage"
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "boot-quota",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: QuotaExceededError: Full optional journey storage"
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "contract-mark",
+      "marks": {},
+      "text": "0 of 5",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "inbox",
+      "error": "Denied"
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: SecurityError: Denied session storage"
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "boot-quota",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: QuotaExceededError: Full optional journey storage"
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "contract-mark",
+      "marks": {},
+      "text": "0 of 5",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "inbox",
+      "error": "Denied"
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: SecurityError: Denied session storage"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "boot-quota",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: QuotaExceededError: Full optional journey storage"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "contract-mark",
+      "marks": {},
+      "text": "0 of 5",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "inbox",
+      "error": "Denied"
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "boot-getter",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: SecurityError: Denied session storage"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "boot-quota",
+      "status": "Loading...",
+      "errors": [],
+      "checkpoint": {
+        "error": "page.evaluate: QuotaExceededError: Full optional journey storage"
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "contract-mark",
+      "marks": {},
+      "text": "0 of 5",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "inbox",
+      "error": "Denied"
+    }
+  ]
+}
