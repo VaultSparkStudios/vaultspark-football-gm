@@ -30,24 +30,48 @@ function safeLedger(value = {}) {
   };
 }
 
-export function loadPlaytestJourney(storage = globalThis.sessionStorage) {
+const journeys = new WeakMap();
+const unavailableStorage = {};
+const tabStorage = {
+  getItem(key) { return globalThis.sessionStorage.getItem(key); },
+  setItem(key, value) { globalThis.sessionStorage.setItem(key, value); }
+};
+function memoryFor(storage) {
+  const key = storage && typeof storage === "object" ? storage : unavailableStorage;
+  if (!journeys.has(key)) journeys.set(key, { ledger: safeLedger(), pending: false });
+  return journeys.get(key);
+}
+function saveJourney(storage, ledger) {
+  const memory = memoryFor(storage);
+  memory.ledger = safeLedger(ledger);
+  memory.pending = true;
   try {
-    return safeLedger(JSON.parse(storage?.getItem?.(PLAYTEST_JOURNEY_STORAGE_KEY) || "{}"));
-  } catch {
-    return safeLedger();
-  }
+    if (typeof storage?.setItem === "function") {
+      storage.setItem(PLAYTEST_JOURNEY_STORAGE_KEY, JSON.stringify(memory.ledger));
+      memory.pending = false;
+    }
+  } catch { /* Optional instrumentation must never interrupt play. */ }
+  return safeLedger(memory.ledger);
 }
 
-export function startPlaytestJourney(storage = globalThis.sessionStorage, now = Date.now()) {
+export function loadPlaytestJourney(storage = tabStorage) {
+  const memory = memoryFor(storage);
+  if (memory.pending) return safeLedger(memory.ledger);
+  try {
+    if (typeof storage?.getItem === "function") memory.ledger = safeLedger(JSON.parse(storage.getItem(PLAYTEST_JOURNEY_STORAGE_KEY) || "{}"));
+  } catch { /* Retain this tab's last observed checkpoints. */ }
+  return safeLedger(memory.ledger);
+}
+
+export function startPlaytestJourney(storage = tabStorage, now = Date.now()) {
   const existing = loadPlaytestJourney(storage);
   if (existing.startedAt) return existing;
   const ledger = safeLedger({ startedAt: now, events: [{ name: "session-start", atMs: 0 }] });
-  storage?.setItem?.(PLAYTEST_JOURNEY_STORAGE_KEY, JSON.stringify(ledger));
-  return ledger;
+  return saveJourney(storage, ledger);
 }
 
 export function recordPlaytestJourneyCheckpoint(name, {
-  storage = globalThis.sessionStorage,
+  storage = tabStorage,
   now = Date.now()
 } = {}) {
   if (!ALLOWED_CHECKPOINTS.has(name)) return loadPlaytestJourney(storage);
@@ -57,8 +81,7 @@ export function recordPlaytestJourneyCheckpoint(name, {
     ...ledger,
     events: [...ledger.events, { name, atMs: Math.max(0, now - ledger.startedAt) }]
   });
-  storage?.setItem?.(PLAYTEST_JOURNEY_STORAGE_KEY, JSON.stringify(next));
-  return next;
+  return saveJourney(storage, next);
 }
 
 export function buildPlaytestJourneySummary(ledger = loadPlaytestJourney()) {

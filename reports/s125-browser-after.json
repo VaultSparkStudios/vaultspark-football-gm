@@ -1,0 +1,552 @@
+{
+  "session": 125,
+  "phase": "after",
+  "origin": "http://localhost:4273",
+  "at": "2026-10-27T03:13:02.482Z",
+  "files": [
+    {
+      "path": "public/lib/playtestJourney.js",
+      "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s125-after-desktop-dark-boot-getter.png",
+      "sha256": "1f1c5ccbc569cba4c1c4d727327601bc7c9d448ce2c2a8065b7ec31451de86dc",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-desktop-dark-boot-quota.png",
+      "sha256": "733b0cd76dce65501623df5a388d9d698ccc27cd977a94c4f87dedb2c3d1126f",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-desktop-dark-contract-mark.png",
+      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-desktop-light-boot-getter.png",
+      "sha256": "1fd8c409b6646be6bb3c7a9e5aa63895025dc8cb8c80808bc86de8009b325dff",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-desktop-light-boot-quota.png",
+      "sha256": "1c16b5cdb38f7526b5c644e6be4ab289b87b4a52c4b93ecae6d8cedbd1d9297b",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-desktop-light-contract-mark.png",
+      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-mobile-dark-boot-getter.png",
+      "sha256": "6767bec9c61e9e2ba6be41a11bfbb92bcf35b6ac700b67c67b0dbb861f12bc05",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-mobile-dark-boot-quota.png",
+      "sha256": "3b68184fce42d71deb174783c569eab94b6414b9b47ca8d96958eb3636c856b8",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-mobile-dark-contract-mark.png",
+      "sha256": "98ed50eae15a603e079b7a3d37442b7358f989b67604f84233d025470bb94d11",
+      "phase": "after",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-mobile-light-boot-getter.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-getter",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-mobile-light-boot-quota.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "boot-quota",
+      "inspected": false
+    },
+    {
+      "file": "s125-after-mobile-light-contract-mark.png",
+      "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1",
+      "phase": "after",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "contract-mark",
+      "inspected": false
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "boot-getter",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 1489,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 1489
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 645,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 645
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "inbox",
+      "items": 1
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "boot-getter",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 1165,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 1165
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 784,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 784
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "inbox",
+      "items": 1
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "boot-getter",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 1366,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 1366
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 685,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 685
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "inbox",
+      "items": 1
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "boot-getter",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 549,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 549
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "boot-quota",
+      "status": "Ready",
+      "errors": [],
+      "checkpoint": {
+        "schemaVersion": "1.1",
+        "kind": "local-playtest-journey",
+        "eventCount": 2,
+        "durationMs": 482,
+        "events": [
+          {
+            "name": "session-start",
+            "atMs": 0
+          },
+          {
+            "name": "weekly-plan-opened",
+            "atMs": 482
+          }
+        ],
+        "planningFriction": {
+          "status": "incomplete",
+          "reviewed": false,
+          "revisionRequested": false,
+          "deferred": false,
+          "elapsedToReviewMs": null,
+          "elapsedToCommitMs": null,
+          "elapsedToDebriefMs": null,
+          "evidenceBoundary": "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+        },
+        "privacy": {
+          "localOnlyUntilShared": true,
+          "relativeTimeOnly": true,
+          "accountIdentifierIncluded": false,
+          "savePayloadIncluded": false,
+          "cohortClaimPermitted": false
+        }
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "contract-mark",
+      "marks": {
+        "depth-chart": true
+      },
+      "text": "1 of 5 · this tab only",
+      "scope": "Synthetic state rendered through the actual component template and styles; isolated from background app hydration."
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "inbox",
+      "items": 1
+    }
+  ]
+}

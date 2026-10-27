@@ -1,5 +1,27 @@
 import { test, expect } from '@playwright/test';
 
+for(const failure of ['getter','quota'])test(`game initializes and records planning despite session storage ${failure}`,async({page})=>{
+ await page.addInitScript(failure=>{
+  if(failure==='getter')Object.defineProperty(window,'sessionStorage',{configurable:true,get(){throw new DOMException('Denied','SecurityError');}});
+  else{const target=sessionStorage,original=Storage.prototype.setItem;Storage.prototype.setItem=function(key,value){if(this===target)throw new DOMException('Full','QuotaExceededError');return original.call(this,key,value);};}
+ },failure);
+ await page.goto('/game.html');await expect(page.locator('#statusChip')).toHaveText('Ready',{timeout:30000});
+ const result=await page.evaluate(async()=>{const m=await import('/lib/playtestJourney.js');m.recordPlaytestJourneyCheckpoint('weekly-plan-opened');m.recordPlaytestJourneyCheckpoint('weekly-plan-reviewed');return m.buildPlaytestJourneySummary();});
+ expect(result.planningFriction.reviewed).toBe(true);expect(result.events.map(e=>e.name)).toContain('session-start');expect(result).not.toHaveProperty('startedAt');
+});
+
+test('contract marks survive denied getter recovery in the rendered game',async({page})=>{
+ await page.goto('/game.html');await expect(page.locator('#statusChip')).toHaveText('Ready',{timeout:30000});
+ await page.locator('#tutSkipBtn').click();
+ const marks=await page.evaluate(async()=>{
+  const m=await import('/lib/firstSeasonContract.js'),{state}=await import('/lib/appState.js'),d=state.dashboard;
+  m.markObjective(d,'depth-chart');const old=Object.getOwnPropertyDescriptor(window,'localStorage');
+  try{Object.defineProperty(window,'localStorage',{configurable:true,get(){throw new DOMException('Denied','SecurityError');}});m.markObjective(d,'answer-the-phone');m.renderFirstSeasonContract({dashboard:d});return m.readContractState(d).marks;}
+  finally{Object.defineProperty(window,'localStorage',old);m.renderFirstSeasonContract({dashboard:d});}
+ });
+ expect(marks).toEqual({'depth-chart':true,'answer-the-phone':true});await expect(page.locator('#firstSeasonContractProgress')).toContainText('2 of 5');await expect(page.locator('#firstSeasonContractProgress')).toContainText('this tab only');
+});
+
 test('optional player panels survive a denied localStorage getter',async({page})=>{
  await page.goto('/');await expect(page.locator('#setupStatus')).toContainText('Ready');
  const result=await page.evaluate(async()=>{

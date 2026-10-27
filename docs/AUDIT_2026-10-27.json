@@ -1,0 +1,637 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-27",
+  "session": 125,
+  "source": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Fresh S125 arc: nonblocking instrumentation, usable Inbox and tab-safe first-season progress",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "live code and independent game-loop review"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 3,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 3,
+      "slug": "journey-noninterference",
+      "title": "Keep optional journey instrumentation from interrupting startup or play",
+      "axis": "observability-honesty",
+      "category": "observability-honesty",
+      "tier": "🔥",
+      "effortHours": 1.5,
+      "impact": 10,
+      "innovation": 3,
+      "priority": 16.598842669953367,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "Live local FORGE/FB beta hardening: reproduced failures disrupt real player loops; no lifecycle change.",
+      "premise": "Resolve session storage inside a guard. Keep a bounded per-storage/tab memory fallback when reads or writes fail, with no network, absolute-time export or invented durability. Prove denied getter, quota, mid-session failure, deduplication and separate stores; prove actual game startup and checkpoint calls in the browser.",
+      "recipe": "Resolve session storage inside a guard. Keep a bounded per-storage/tab memory fallback when reads or writes fail, with no network, absolute-time export or invented durability. Prove denied getter, quota, mid-session failure, deduplication and separate stores; prove actual game startup and checkpoint calls in the browser.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced journey-noninterference failure",
+          "adapter": "file-content",
+          "target": "public/lib/playtestJourney.js",
+          "pattern": "storage = globalThis.sessionStorage",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the immediate failing call; no broader abstraction."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Resolve session storage inside a guard. Keep a bounded per-storage/tab memory fallback when reads or writes fail, with no network, absolute-time export or invented durability. Prove denied getter, quota, mid-session failure, deduplication and separate stores; prove actual game startup and checkpoint calls in the browser."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Extend fault-injection across all player loops only if separately selected."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-27T03:15:24.095Z",
+          "status": "shipped",
+          "note": "L2 implementation accepted locally: focused40/40, browser12/12, independent source and24image review. Source-bound staging, requiredCI and production release remain separate OPEN arc outcomes.",
+          "evidence": [
+            "reports/s125-local-checks.json",
+            "reports/s125-implementation-review.json",
+            "docs/visual-qa/LATEST.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "inbox-safe-storage",
+      "title": "Keep the Inbox usable when browser storage access is denied",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "⚡",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 39.83722240788808,
+      "status": "shipped",
+      "readinessArea": "email and notifications where used",
+      "stageRationale": "Live local FORGE/FB beta hardening: reproduced failures disrupt real player loops; no lifecycle change.",
+      "premise": "Reuse the safe local-storage accessor in Inbox resolution. Preserve existing injected stores and in-memory scope rules. Test denied getter, method failures, ingest, dedup, unread/resolve and franchise switch. Verify actual Inbox browser behavior.",
+      "recipe": "Reuse the safe local-storage accessor in Inbox resolution. Preserve existing injected stores and in-memory scope rules. Test denied getter, method failures, ingest, dedup, unread/resolve and franchise switch. Verify actual Inbox browser behavior.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced inbox-safe-storage failure",
+          "adapter": "file-content",
+          "target": "public/lib/engagementFeatures.js",
+          "pattern": "return storage || globalThis.localStorage || null;",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the immediate failing call; no broader abstraction."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Reuse the safe local-storage accessor in Inbox resolution. Preserve existing injected stores and in-memory scope rules. Test denied getter, method failures, ingest, dedup, unread/resolve and franchise switch. Verify actual Inbox browser behavior."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Extend fault-injection across all player loops only if separately selected."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-27T03:15:24.095Z",
+          "status": "shipped",
+          "note": "L2 implementation accepted locally: focused40/40, browser12/12, independent source and24image review. Source-bound staging, requiredCI and production release remain separate OPEN arc outcomes.",
+          "evidence": [
+            "reports/s125-local-checks.json",
+            "reports/s125-implementation-review.json",
+            "docs/visual-qa/LATEST.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rank": 1,
+      "slug": "contract-tab-progress",
+      "title": "Keep First Season Contract progress during this tab after failed persistence",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "⚡",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 66.39537067981347,
+      "status": "shipped",
+      "readinessArea": "onboarding and identity/access",
+      "stageRationale": "Live local FORGE/FB beta hardening: reproduced failures disrupt real player loops; no lifecycle change.",
+      "premise": "Retain contract state by storage context and franchise key after failed writes. Preserve marks, dismissal, first-year boundary, season-close verdict and once-only completion through repeated reads/renders; isolate franchises and injected stores. Explain temporary tab-only tracking when persistence fails without claiming reload durability. Verify desktop/mobile in both themes.",
+      "recipe": "Retain contract state by storage context and franchise key after failed writes. Preserve marks, dismissal, first-year boundary, season-close verdict and once-only completion through repeated reads/renders; isolate franchises and injected stores. Explain temporary tab-only tracking when persistence fails without claiming reload durability. Verify desktop/mobile in both themes.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced contract-tab-progress failure",
+          "adapter": "file-content",
+          "target": "public/lib/firstSeasonContract.js",
+          "pattern": "the strip re-derives on the next render",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the immediate failing call; no broader abstraction."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Retain contract state by storage context and franchise key after failed writes. Preserve marks, dismissal, first-year boundary, season-close verdict and once-only completion through repeated reads/renders; isolate franchises and injected stores. Explain temporary tab-only tracking when persistence fails without claiming reload durability. Verify desktop/mobile in both themes."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Extend fault-injection across all player loops only if separately selected."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-27T03:15:24.095Z",
+          "status": "shipped",
+          "note": "L2 implementation accepted locally: focused40/40, browser12/12, independent source and24image review. Source-bound staging, requiredCI and production release remain separate OPEN arc outcomes.",
+          "evidence": [
+            "reports/s125-local-checks.json",
+            "reports/s125-implementation-review.json",
+            "docs/visual-qa/LATEST.json"
+          ]
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "count": 3,
+    "priority": 122.83143575765492,
+    "top3": [
+      "contract-tab-progress",
+      "inbox-safe-storage",
+      "journey-noninterference"
+    ]
+  },
+  "candidates": [
+    {
+      "axis": "features-depth",
+      "slug": "contract-tab-progress",
+      "disposition": "selected",
+      "evidence": "Live marks/dismissal return success then disappear at next storage-only read.",
+      "novelConcept": false
+    },
+    {
+      "axis": "features-depth",
+      "slug": "trophy-tab-progress",
+      "disposition": "unselected",
+      "evidence": "achievements.js storage-only reads contradict its session-unlock comment; independent follow-up, outside these three outcomes.",
+      "novelConcept": false
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "inbox-safe-storage",
+      "disposition": "selected",
+      "evidence": "engagementFeatures browserStorage reads denied property before try.",
+      "novelConcept": false
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "limited-player-agenda",
+      "disposition": "unselected",
+      "evidence": "Novel player-authored optional pin alongside authoritative chapter; not in inspected command stack, need real need evidence.",
+      "novelConcept": true
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "contract-tab-progress",
+      "disposition": "selected",
+      "evidence": "Contract progress/dismissal/completion are lost under quota.",
+      "novelConcept": false
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "decision-review-queue",
+      "disposition": "unselected",
+      "evidence": "Novel explicit nomination of one past declaration at relevant chapter; anthology is historical, no inferred regret or causal claim.",
+      "novelConcept": true
+    },
+    {
+      "axis": "ai-intelligence",
+      "slug": "advisor-sensitivity-card",
+      "disposition": "unselected",
+      "evidence": "Novel deterministic observed-input ranking threshold; existing advisor exposes margins/weights/citations, but no need evidence for new card.",
+      "novelConcept": true
+    },
+    {
+      "axis": "ai-intelligence",
+      "slug": "preserve-unobserved-advisor",
+      "disposition": "rejected-on-verify",
+      "evidence": "Advisor already distinguishes unobserved disagreement; no missing capability proved.",
+      "novelConcept": false
+    },
+    {
+      "axis": "security",
+      "slug": "journey-export-boundary",
+      "disposition": "selected-invariant",
+      "evidence": "Memory fallback must preserve allowlist, relative times and absence of account/save data.",
+      "novelConcept": false
+    },
+    {
+      "axis": "security",
+      "slug": "contract-scope-isolation",
+      "disposition": "selected-invariant",
+      "evidence": "Use franchiseStorageKey plus injected store identity to avoid cross-franchise/context state.",
+      "novelConcept": false
+    },
+    {
+      "axis": "security",
+      "slug": "replace-identity-policy",
+      "disposition": "rejected-on-verify",
+      "evidence": "These optional storage repairs do not alter identity or authorization; standing identity launch hold remains.",
+      "novelConcept": false
+    },
+    {
+      "axis": "speed-organization-efficiency",
+      "slug": "reuse-safe-accessor",
+      "disposition": "selected-recipe",
+      "evidence": "browserStorage.js already guards localStorage; no dependency necessary.",
+      "novelConcept": false
+    },
+    {
+      "axis": "speed-organization-efficiency",
+      "slug": "broad-storage-framework",
+      "disposition": "rejected-on-verify",
+      "evidence": "Three bounded stores need no new framework; preserve payload and existing budgets.",
+      "novelConcept": false
+    },
+    {
+      "axis": "token-cost",
+      "slug": "local-journey-recovery",
+      "disposition": "preserve-existing",
+      "evidence": "Journey makes no API calls; no measured token saving claim.",
+      "novelConcept": false
+    },
+    {
+      "axis": "token-cost",
+      "slug": "paid-storage-advisor",
+      "disposition": "rejected-on-verify",
+      "evidence": "Deterministic errors and fallback require no external inference or paid service.",
+      "novelConcept": false
+    },
+    {
+      "axis": "observability-honesty",
+      "slug": "journey-noninterference",
+      "disposition": "selected",
+      "evidence": "startPlaytestJourney is first init statement; start/checkpoint throwing setItem reproduced.",
+      "novelConcept": false
+    },
+    {
+      "axis": "observability-honesty",
+      "slug": "cohort-retention-claims",
+      "disposition": "rejected-on-verify",
+      "evidence": "No real opted-in cohort; local instrumentation cannot establish retention/comprehension.",
+      "novelConcept": false
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "canonical-premise-timing",
+      "disposition": "selected-process",
+      "evidence": "Native recorder lacks --record; canonical owner supports explicit --project and --audit, use before product edits.",
+      "novelConcept": false
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "startup-helper-delivery",
+      "disposition": "selected-process",
+      "evidence": "Missing local start-sync delivered byte-identically and ignored. Late STOP is retained; run after owned commit, never claim early pass.",
+      "novelConcept": false
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "reuse-prior-arc",
+      "disposition": "rejected-on-verify",
+      "evidence": "Fresh native goal requires S125 full audit/implementation/closeout; S124 completion cannot satisfy it.",
+      "novelConcept": false
+    }
+  ],
+  "innovationReserve": [
+    "limited-player-agenda",
+    "decision-review-queue",
+    "advisor-sensitivity-card"
+  ],
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "trophy-tab-progress",
+          "premise": "unselected",
+          "evidence": "achievements.js storage-only reads contradict its session-unlock comment; independent follow-up, outside these three outcomes."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "inbox-safe-storage"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "limited-player-agenda",
+          "premise": "unselected",
+          "evidence": "Novel player-authored optional pin alongside authoritative chapter; not in inspected command stack, need real need evidence."
+        }
+      ]
+    },
+    "gamification-immersion": {
+      "surviving": [
+        "contract-tab-progress"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "decision-review-queue",
+          "premise": "unselected",
+          "evidence": "Novel explicit nomination of one past declaration at relevant chapter; anthology is historical, no inferred regret or causal claim."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "advisor-sensitivity-card",
+          "premise": "unselected",
+          "evidence": "Novel deterministic observed-input ranking threshold; existing advisor exposes margins/weights/citations, but no need evidence for new card."
+        },
+        {
+          "slug": "preserve-unobserved-advisor",
+          "premise": "rejected-on-verify",
+          "evidence": "Advisor already distinguishes unobserved disagreement; no missing capability proved."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "replace-identity-policy",
+          "premise": "rejected-on-verify",
+          "evidence": "These optional storage repairs do not alter identity or authorization; standing identity launch hold remains."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "broad-storage-framework",
+          "premise": "rejected-on-verify",
+          "evidence": "Three bounded stores need no new framework; preserve payload and existing budgets."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "local-journey-recovery",
+          "premise": "preserve-existing",
+          "evidence": "Journey makes no API calls; no measured token saving claim."
+        },
+        {
+          "slug": "paid-storage-advisor",
+          "premise": "rejected-on-verify",
+          "evidence": "Deterministic errors and fallback require no external inference or paid service."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [
+        "journey-noninterference"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "cohort-retention-claims",
+          "premise": "rejected-on-verify",
+          "evidence": "No real opted-in cohort; local instrumentation cannot establish retention/comprehension."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "reuse-prior-arc",
+          "premise": "rejected-on-verify",
+          "evidence": "Fresh native goal requires S125 full audit/implementation/closeout; S124 completion cannot satisfy it."
+        }
+      ]
+    }
+  },
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.262Z",
+      "evidence": "Denied session getter/quota can abort first app initialization statement and planning checkpoints.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "First Season Contract action marks and dismissal disappear after write failure; standing identity gap remains.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "S124 visual proof historical. S125 before/after both themes desktop/mobile required.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Unchanged boot baseline649992/650000 measured; exact candidate and capacity not yet measured.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Existing relative allowlisted export; preserve scope and privacy under memory fallback.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Candidate-specific rollback/recovery not yet verified.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Inbox denied getter reproduced; mail reply-as remains separate standing hold.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Optional journey measurement currently can interrupt the measured journey.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Existing local notes/feedback repairs; real cohort unmeasured.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Existing public legal/contact surfaces; current exact release gates still required.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "Existing bounded Co-GM/manual packet; no identity/agent contract change.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "unknown",
+      "owner": "project release owner",
+      "sourceRevision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+      "observedAt": "2026-10-27T02:52:55.263Z",
+      "evidence": "S124 release historical; S125 source-bound staging/production/push and closeout required.",
+      "nextAcceptanceCheck": "Verify selected repairs, current candidate tests, visual receipt, staging and production; preserve unrelated launch holds."
+    }
+  ],
+  "gameLoopReview": {
+    "scores": {
+      "loopTightness": 6,
+      "progression": 7,
+      "sessionEngagement": 7,
+      "retention": 6,
+      "soulFidelity": 7
+    },
+    "basis": "Independent source/design review, no real-player outcome claim",
+    "nextMoves": [
+      "Keep optional journey instrumentation from interrupting startup or play",
+      "Keep the Inbox usable when browser storage access is denied",
+      "Keep First Season Contract progress during this tab after failed persistence"
+    ],
+    "evidence": [
+      "context/GAME_LOOP.md",
+      "public/app.js",
+      "public/lib/playtestJourney.js",
+      "public/lib/engagementFeatures.js",
+      "public/lib/firstSeasonContract.js"
+    ]
+  },
+  "premiseGate": {
+    "schema": "premise-gate/v1",
+    "at": "2026-10-27T02:56:17.310Z",
+    "head": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+    "sidecar": "docs/AUDIT_2026-10-27.json",
+    "selectionMode": "explicit",
+    "recordPathPolicy": "project",
+    "strict": true,
+    "exit": 0,
+    "verified": 3,
+    "contradicted": 0,
+    "unverified": 0,
+    "premiseDigest": "a74c0f271dee98724aa788fc25957583878ac5be0420e090a945b04cc37f9909",
+    "implementationDirty": []
+  },
+  "implementationComplete": true,
+  "releaseComplete": false,
+  "processLimitations": [
+    "Initial strict recorder included before-capture artifacts; preserved, relocated evidence before product edits, then canonical pre-implementation timing passed.",
+    "Initial capture fixture/clipping and partial11/12run retained. Focused first10/12 retained; setup readiness and synthetic fixture hydration race corrected.",
+    "Missing canonical startup helper was delivered locally and stopped on owned capture residue; final sync still required. Missing local record-review was not replaced with a foreign-root writer; review facts are recorded here."
+  ]
+}

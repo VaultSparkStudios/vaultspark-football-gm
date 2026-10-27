@@ -1,0 +1,64 @@
+{
+  "session": 125,
+  "startedAt": "2026-10-27T03:13:20.148Z",
+  "completedAt": "2026-10-27T03:13:24.916Z",
+  "exitCode": 0,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 40,
+    "pass": 40,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "unchanged": true,
+  "verified": true,
+  "sources": [
+    {
+      "path": "public/lib/playtestJourney.js",
+      "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "ae37d517a0a7f2434cdb11c786cd1c7f2dcae28954c572852c1d4fc8913f4840"
+    },
+    {
+      "path": "test/player-state-storage-failure.test.js",
+      "sha256": "37f1ec9b8d6791520be537f36e6c70390f2c67eb9896ede9ca18f372623c997f"
+    },
+    {
+      "path": "test/playtest-journey.test.js",
+      "sha256": "15530aaeaad68305cdbbf5ccce945178beae1c09d0b72a9a5e2e509f0548da1b"
+    },
+    {
+      "path": "test/session109-first-season-contract.test.js",
+      "sha256": "3ec399b8b7bf74d898d9603fe57cb60cb235133765e2d22d5570d6428e8e8aff"
+    },
+    {
+      "path": "test/inbox-persistence.test.js",
+      "sha256": "986d8cfb9621c768b598064ae98bc61eebd0cda5cb649c3062ea0a8b25c20198"
+    },
+    {
+      "path": "test/optional-storage-resilience.test.js",
+      "sha256": "69bfe75c5d5bed89204867b8a10172c45d5bdeb1c7ba63cbbad9b8f5e5528744"
+    },
+    {
+      "path": "test/browser-boot-budget.test.js",
+      "sha256": "70a6251a60532ddd9fbfaa850f09538c8d24945e2cb88be21c48f5048b816029"
+    }
+  ],
+  "rawLog": {
+    "path": ".cache/s125-checks.log",
+    "sha256": "074bc9786fa1ca75dd07ab8ac949a8607901b4c5955672111592fe616e0b2468"
+  }
+}

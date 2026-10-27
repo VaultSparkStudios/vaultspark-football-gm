@@ -1,14 +1,12 @@
-<!-- source: docs/AUDIT_2026-10-26.json · Session 124 -->
-# S124 storage failure recovery
+<!-- source: docs/AUDIT_2026-10-27.json · Session 125 -->
+# S125 nonblocking player state
 
-Live local lifecycle FORGE/FB, health yellow; no transition.
+Stage FORGE/FB from local project status; health yellow. L2 selected, no lifecycle change.
 
-1. **Keep optional player panels usable when storage access is denied** (L2). Use one safe storage accessor for the six reproduced modules. Preserve injected storage and franchise keys. Return false when no return boundary can be written. Test denied getters, missing storage, normal storage and cross-franchise isolation. Readiness: core journeys and product correctness. Done only with fault-injection tests and real browser evidence.
+1. **Keep optional journey instrumentation from interrupting startup or play**. Resolve session storage inside a guard. Keep a bounded per-storage/tab memory fallback when reads or writes fail, with no network, absolute-time export or invented durability. Prove denied getter, quota, mid-session failure, deduplication and separate stores; prove actual game startup and checkpoint calls in the browser. Readiness: core journeys and product correctness. Done only after behavioral tests, actual browser evidence and independent diff review.
 
-2. **Allow tutorial completion and dismissal when storage methods fail** (L2). Guard tutorial reads, writes and removals independently. Keep authoritative completion receipts unchanged and make persistence best effort. Verify skip and applied-receipt dismissal with quota and denied storage failures in both themes and desktop/mobile. Readiness: onboarding and identity/access. Done only with fault-injection tests and real browser evidence.
+2. **Keep the Inbox usable when browser storage access is denied**. Reuse the safe local-storage accessor in Inbox resolution. Preserve existing injected stores and in-memory scope rules. Test denied getter, method failures, ingest, dedup, unread/resolve and franchise switch. Verify actual Inbox browser behavior. Readiness: email and notifications where used. Done only after behavioral tests, actual browser evidence and independent diff review.
 
-3. **Keep feedback drafts visible when browser persistence fails** (L2). Make optional feedback cadence reads and writes safe. Require an actual receipt writer for successful saving. Catch save failure in the contextual prompt, retain the draft and show an accessible retry message; never invoke onSaved or mark completed after a failed save. Test denied reads, quota failure and a successful retry in both themes and desktop/mobile. Readiness: feedback, support and issue triage. Done only with fault-injection tests and real browser evidence.
+3. **Keep First Season Contract progress during this tab after failed persistence**. Retain contract state by storage context and franchise key after failed writes. Preserve marks, dismissal, first-year boundary, season-close verdict and once-only completion through repeated reads/renders; isolate franchises and injected stores. Explain temporary tab-only tracking when persistence fails without claiming reload durability. Verify desktop/mobile in both themes. Readiness: onboarding and identity/access. Done only after behavioral tests, actual browser evidence and independent diff review.
 
-Stop after these three outcomes, required exact-candidate checks, staging, production readback and full ordered closeout.
-
-Late audit review corrects priority weighting and adds the required candidate/readiness breadth; the initial sidecar is preserved by hash. Selection and this dependency order stay unchanged. Three source outcomes are locally and on staging verified; exact CI, production and closeout remain pending.
+Wave1: startup/audit; Wave2: these three outcomes; Wave3: exact candidate staging, production and ordered closeout. Stop after verified selected outcomes and authorized release/closeout.

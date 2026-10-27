@@ -1,4 +1,20 @@
-# Session 124 Closeout
+# Session 125 Active
+
+Session Intent: Full fresh /arc, selected implementation, authorized direct main commit/push and full technical deployment.
+
+Native goal 01a17b3d-b57a-7870-9920-7768203223d1 createdAt1793069036 is bound to S125. Continuations resume this arc. S124 below is historical evidence only.
+
+- Wave1: fresh audit20candidates/nineaxes/three novel unselected concepts and12readiness areas. Canon/adoption/conformance/radar checked; no absolute gap. Missing local start-sync delivered canonically into ignored files, then correctly STOPPED on new captures. Start gateway fetch proved0/0. Rerun local helper after owned commit; early canonical startup sync is not claimed.
+- Wave2: three selected L2 repairs locally ACCEPTED. Optional journey instrumentation cannot block boot/planning; Inbox getter denial guarded; contract progress survives storage failure in this tab. Review1found default healthy/denied/recovered contract context loss; review2approves stable default facade. Expanded40/40; browser12/12; all24final before/after images individually reviewed/hash-bound. Boot646070under unchanged650000. Regression registered in runtime shard. Strict premise timing and selected admission passed before product edits.
+- Wave3: OPEN: exact source commit, staging, requiredCI, production frontend/API, push, ordered closeout and native completion.
+
+Contract: docs/AUDIT_2026-10-27.json and docs/IMPLEMENT_PLAN.md. Canonical strict premises3/3, timing pre-implementation and selected plan admission pass. Before captures were relocated into ignored capture workspace before final gate; first conservative capture-dirty records retained. No product path changed before the gate.
+
+Browser evidence remains PARTIAL. First after run12captures/16controls passed but mobile header obscured progress. Later framing attempt11/12timed out at normal init. First focused browser10/12: setup readiness failed, and synthetic contract fixture was overwritten by background hydration. Real raw/log/traces retained in .cache/s125-attempts and nested cache. Fixed raw-report path; behavior test now uses actual dashboard; capture driver isolates actual component template from background hydration. No failed attempt is passing evidence.
+
+Current owned process handles: server99284(test-only canonical rate100000), native runtime suite3212. Focused21688is terminal12/12; capture23579terminal12captures/16controls. Final receipts: reports/s125-implementation-review.json, reports/s125-local-checks.json and docs/visual-qa/LATEST.json. Initial expanded39/40used the same franchise for independent denial cases; corrected fixture isolation and added retained-mark assertion, then40/40. Observe live handles before restarting. Driver .cache/s125-browser.mjs; focused .cache/s125-focused.mjs. Prior handoff backup .cache/s125-prior-handoff.md. No S125 commit/push/deployment yet. Preserve standing identity/email/cohort/capacity/restore launch holds; no lifecycle or policy change.
+
+## Historical S124 handoff (does not satisfy S125)
 
 ## Where We Left Off (Session 124)
 

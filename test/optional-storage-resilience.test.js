@@ -13,6 +13,7 @@ function memory(){const data=new Map();return {getItem:k=>data.get(k)||null,setI
 function denied(){return {getItem(){throw new DOMException('denied','SecurityError');},setItem(){throw new DOMException('full','QuotaExceededError');},removeItem(){throw new DOMException('denied','SecurityError');}};}
 
 for(const kind of ['denied-getter','missing'])test(`${kind}: optional panels remain usable and receipt writes never claim success`,()=>{
+ const a={franchiseId:`storage-${kind}`,controlledTeamId:'BUF'};
  const previous=Object.getOwnPropertyDescriptor(globalThis,'localStorage');
  try{
   if(kind==='denied-getter')Object.defineProperty(globalThis,'localStorage',{configurable:true,get(){throw new DOMException('denied','SecurityError');}});
@@ -21,6 +22,7 @@ for(const kind of ['denied-getter','missing'])test(`${kind}: optional panels rem
   assert.equal(recordReturnBoundary(a),false);
   assert.deepEqual(readContractState(a).marks,{});
   assert.doesNotThrow(()=>markObjective(a,'depth-chart'));
+  assert.equal(readContractState(a).marks['depth-chart'],true);
   assert.equal(getTutorialState(a),null);
   assert.doesNotThrow(()=>markTutorialSeen(a));
   assert.doesNotThrow(()=>resetTutorial(a));

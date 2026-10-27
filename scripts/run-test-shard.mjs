@@ -249,6 +249,7 @@ export const SHARDS = {
     "test/opening-contract-choice-matrix.test.js",
     "test/player-profile-narrative.test.js",
     "test/playtest-journey.test.js",
+    "test/player-state-storage-failure.test.js",
     "test/post-commit-hydration.test.js",
     "test/potential-visibility.test.js",
     "test/progressive-week-room.test.js",

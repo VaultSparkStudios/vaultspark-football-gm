@@ -1,4 +1,3 @@
-import { browserStorage } from "./browserStorage.js";
 /**
  * firstSeasonContract.js — five things a first-year GM gets judged on (S109).
  *
@@ -56,29 +55,49 @@ export function contractStorageKey(dashboard = {}) {
   return franchiseStorageKey(FIRST_SEASON_CONTRACT_PREFIX, dashboard);
 }
 
-export function readContractState(dashboard = {}, storage = browserStorage()) {
-  try {
-    const raw = storage?.getItem?.(contractStorageKey(dashboard));
-    const parsed = raw ? JSON.parse(raw) : null;
-    return {
-      marks: { ...(parsed?.marks || {}) },
-      dismissed: Boolean(parsed?.dismissed),
-      completedAt: parsed?.completedAt || null,
-      startYear: parsed?.startYear ?? null,
-      finalized: parsed?.finalized || null
-    };
-  } catch {
-    return { marks: {}, dismissed: false, completedAt: null, startYear: null, finalized: null };
-  }
+const contractStores = new WeakMap();
+const unavailableStorage = {};
+const tabStorage = {
+  getItem(key) { return globalThis.localStorage.getItem(key); },
+  setItem(key, value) { globalThis.localStorage.setItem(key, value); }
+};
+function contractMemory(dashboard, storage) {
+  const context = storage && typeof storage === "object" ? storage : unavailableStorage;
+  if (!contractStores.has(context)) contractStores.set(context, new Map());
+  const records = contractStores.get(context), key = contractStorageKey(dashboard);
+  if (!records.has(key)) records.set(key, { value: null, pending: false });
+  return records.get(key);
+}
+function contractValue(parsed) {
+  return {
+    marks: { ...(parsed?.marks || {}) },
+    dismissed: Boolean(parsed?.dismissed),
+    completedAt: parsed?.completedAt || null,
+    startYear: parsed?.startYear ?? null,
+    finalized: parsed?.finalized ? JSON.parse(JSON.stringify(parsed.finalized)) : null
+  };
 }
 
-export function writeContractState(dashboard = {}, next = {}, storage = browserStorage()) {
+export function readContractState(dashboard = {}, storage = tabStorage) {
+  const memory = contractMemory(dashboard, storage);
+  if (memory.pending) return contractValue(memory.value);
   try {
-    storage?.setItem?.(contractStorageKey(dashboard), JSON.stringify(next));
-  } catch {
-    // Storage can be full or blocked; the strip re-derives on the next render.
-  }
-  return next;
+    if (typeof storage?.getItem === "function") memory.value = contractValue(JSON.parse(storage.getItem(contractStorageKey(dashboard)) || "null"));
+  } catch { /* Keep the last state observed in this tab. */ }
+  return contractValue(memory.value);
+}
+
+export function writeContractState(dashboard = {}, next = {}, storage = tabStorage) {
+  const memory = contractMemory(dashboard, storage);
+  memory.value = contractValue(next);
+  memory.pending = true;
+  try {
+    if (typeof storage?.setItem === "function") {
+      storage.setItem(contractStorageKey(dashboard), JSON.stringify(memory.value));
+      memory.pending = false;
+    }
+  } catch { /* Progress remains in this tab, not a durable save. */ }
+  return contractValue(memory.value);
 }
 
 function controlledRecord(dashboard = {}) {
@@ -159,7 +178,7 @@ export function isDeliberateTradeEvaluation(payload = {}) {
 /** Freeze the first-season evidence at the season-awards boundary, before the
  * offseason can replace the standings or cap reading. Reopening is idempotent.
  */
-export function finalizeFirstSeasonContract(dashboard = {}, storage = browserStorage()) {
+export function finalizeFirstSeasonContract(dashboard = {}, storage = tabStorage) {
   const current = readContractState(dashboard, storage);
   if (current.finalized) return current.finalized;
   const year = Number(dashboard.seasonAwardsStage?.year ?? dashboard.currentYear);
@@ -205,7 +224,7 @@ export function contractVisibility(dashboard = {}, contractState = {}) {
   return Number(dashboard.currentWeek || 0) > COLLAPSE_AFTER_WEEK ? "compact" : "open";
 }
 
-export function markObjective(dashboard = {}, id, storage = browserStorage()) {
+export function markObjective(dashboard = {}, id, storage = tabStorage) {
   if (!OBJECTIVES.some((objective) => objective.id === id)) return readContractState(dashboard, storage);
   const current = readContractState(dashboard, storage);
   if (current.marks[id]) return current;
@@ -217,7 +236,7 @@ export function markObjective(dashboard = {}, id, storage = browserStorage()) {
   return writeContractState(dashboard, next, storage);
 }
 
-export function dismissContract(dashboard = {}, storage = browserStorage()) {
+export function dismissContract(dashboard = {}, storage = tabStorage) {
   return writeContractState(dashboard, { ...readContractState(dashboard, storage), dismissed: true }, storage);
 }
 
@@ -252,7 +271,7 @@ export function renderContractCloseout(closeout) {
  * Render into the Desk strip. Returns what happened so the caller can fire
  * the achievement exactly once, on the render that completes the contract.
  */
-export function renderFirstSeasonContract({ dashboard, storage = browserStorage(), documentRef = globalThis.document } = {}) {
+export function renderFirstSeasonContract({ dashboard, storage = tabStorage, documentRef = globalThis.document } = {}) {
   const panel = documentRef?.getElementById?.("firstSeasonContract");
   if (!panel || !dashboard) return { visibility: "hidden", completedNow: false };
   let contractState = readContractState(dashboard, storage);
@@ -280,5 +299,6 @@ export function renderFirstSeasonContract({ dashboard, storage = browserStorage(
   if (progress) progress.textContent = contractState.finalized
     ? `Season ${contractState.finalized.year}: ${summary.done} of ${summary.total} met`
     : completedNow ? "Contract honoured" : `${summary.done} of ${summary.total}`;
+  if (progress && contractMemory(dashboard, storage).pending) progress.textContent += " · this tab only";
   return { visibility, completedNow, summary };
 }

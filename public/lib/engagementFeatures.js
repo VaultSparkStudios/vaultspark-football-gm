@@ -13,6 +13,7 @@
  */
 
 import { state, api } from "./appState.js";
+import { browserStorage as safeBrowserStorage } from "./browserStorage.js";
 import { escapeHtml, fmtMoney, showToast, renderTable, teamCode } from "./appCore.js";
 import { closeModal, openModal } from "./modalManager.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
@@ -32,15 +33,13 @@ export {
   toggleSimWatchPlayback
 } from "./simWatchDirector.js";
 
-// ─────────────────────────────────────────────────────────────────────────────
 // PRIORITY INBOX SYSTEM
-// ─────────────────────────────────────────────────────────────────────────────
 
 const INBOX_STORAGE_PREFIX = "fa-inbox-v1";
 const _inbox = { scope: null, items: [], seen: new Set(), lastSeen: 0 };
 
 function browserStorage(storage) {
-  return storage || globalThis.localStorage || null;
+  return storage || safeBrowserStorage() || null;
 }
 
 export function inboxScopeFromDashboard(dashboard = {}) {
@@ -272,9 +271,7 @@ function renderInboxContent() {
   });
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // FRANCHISE MOMENT CARD
-// ─────────────────────────────────────────────────────────────────────────────
 
 let _lastShownMomentGameId = null;
 
@@ -339,9 +336,7 @@ export function closeFranchiseMomentModal() {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // GM DECISION MODAL
-// ─────────────────────────────────────────────────────────────────────────────
 
 let _pendingDecisionResolve = null;
 let _activeDecision = null;
@@ -429,12 +424,9 @@ export function dismissGmDecision() {
   resolveGmDecision(null);
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // SIM-WATCH OVERLAY (Live box score feed with 300ms animation)
-// ─────────────────────────────────────────────────────────────────────────────
 
 // SEASON NARRATIVE ARCS PANEL
-// ─────────────────────────────────────────────────────────────────────────────
 
 export async function renderSeasonArcs() {
   const el = document.getElementById("seasonArcsPanel");
@@ -463,9 +455,7 @@ export async function renderSeasonArcs() {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // CAP WAR ROOM (multi-year cap timeline)
-// ─────────────────────────────────────────────────────────────────────────────
 
 const CAP_WAR_ROOM_LIMIT = 255_000_000;
 
@@ -541,9 +531,7 @@ export async function renderCapWarRoom() {
   }
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // TRADE BREAKDOWN CARD (letter grades + verdict)
-// ─────────────────────────────────────────────────────────────────────────────
 
 export function renderTradeBreakdown(evalResult) {
   const el = document.getElementById("tradeBreakdownCard");
@@ -605,9 +593,7 @@ export function hideTradeBreakdown() {
   if (el) el.hidden = true;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // DYNASTY RECORDS BOARD
-// ─────────────────────────────────────────────────────────────────────────────
 
 export async function renderDynastyRecordsBoard() {
   const el = document.getElementById("dynastyRecordsBoard");
@@ -633,9 +619,7 @@ export async function renderDynastyRecordsBoard() {
   }).join("")}</div>`;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // AI GM ARCHETYPES DISPLAY
-// ─────────────────────────────────────────────────────────────────────────────
 
 let _archetypesCache = null;
 
@@ -662,9 +646,7 @@ export function renderArchetypesTable() {
   renderTable("teamArchetypesTable", rows);
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // MENTORSHIP BADGE RENDERER
-// ─────────────────────────────────────────────────────────────────────────────
 
 export function buildMentorshipBadge(player, mentorships = []) {
   if (!player?.id) return "";
@@ -680,9 +662,7 @@ export function buildMentorshipBadge(player, mentorships = []) {
     </div>`;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
 // LOCALSTORAGE SIZE GUARD
-// ─────────────────────────────────────────────────────────────────────────────
 
 const REWIND_SIZE_LIMIT = 4 * 1024 * 1024; // 4MB
 

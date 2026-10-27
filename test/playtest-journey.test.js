@@ -49,7 +49,7 @@ test("journey checkpoints are allowlisted, relative, deduplicated, and local", (
 test("journey storage is tab-scoped and captures the opening contract boundary", () => {
   const source = readFileSync(new URL("../public/lib/playtestJourney.js", import.meta.url), "utf8");
   const app = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
-  assert.match(source, /storage = globalThis\.sessionStorage/g);
+  assert.match(source, /globalThis\.sessionStorage/);
   assert.doesNotMatch(source, /storage = globalThis\.localStorage/);
   assert.match(source, /"opening-contract-committed"/);
   assert.match(app, /recordPlaytestJourneyCheckpoint\("opening-contract-committed"\)/);
