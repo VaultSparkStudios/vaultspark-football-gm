@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "reviewedAt": "2026-10-27T05:38:20.590Z",
+  "reviewer": "Independent game_audit review",
+  "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "verdict": "approve",
+  "scope": "Bounded closeout preparation only; no approval of actual release, final reviewed plan, execution, full closeout or native goal completion.",
+  "preparationManifest": {
+    "path": ".cache/s125-closeout-preparation.json",
+    "sha256": "6671234e93d122db64f6e50a4902d6afb75b6239c5f45b64088366ed736281c7"
+  },
+  "reviewedFiles": [
+    {
+      "path": ".cache/s125-closeout-common.mjs",
+      "sha256": "fe059503b4d7355a03a7f5e7951e07b950163741e50ea7166ef5f26a7d3d065b"
+    },
+    {
+      "path": ".cache/s125-closeout-bind-release.mjs",
+      "sha256": "63b9c98a584c2808a88a058b342039d4b076447f6a88efbfa4b7b0c8152a5e52"
+    },
+    {
+      "path": ".cache/s125-closeout-writeback.mjs",
+      "sha256": "30c9d1734b9618777f147f09c22ccb6646a3af932599c03115f3ed815a4d6a45"
+    },
+    {
+      "path": ".cache/s125-closeout-ignis.mjs",
+      "sha256": "e0cef63d7cdccc8a31ac827c160dc5af4a34cdccfa7e30e9c107f8ceb9dbb23e"
+    },
+    {
+      "path": ".cache/s125-closeout-derive.mjs",
+      "sha256": "f0fa706a8cd82f66715aad09ebb4290a3835b7a96eb326b88e80f692889866d6"
+    },
+    {
+      "path": ".cache/s125-closeout-render.mjs",
+      "sha256": "c720899ce3f273c510730967d31f8619c783a7986501feffa6979bdadfe179c3"
+    },
+    {
+      "path": ".cache/s125-closeout-stage-metadata.mjs",
+      "sha256": "0f13a2a40396d9e0569cea486169d7ce65b41e0b3a29343117d86fa8276f24c4"
+    },
+    {
+      "path": ".cache/s125-closeout-test-metadata.mjs",
+      "sha256": "5e84bf943f987ec35783042b30219771510406d01b8ab1e60a8e656a7bab5814"
+    },
+    {
+      "path": ".cache/s125-closeout-gates.mjs",
+      "sha256": "0fb346778e372266bdef574f5b770bf824eaf5c7cdb35c33c039144e55cad6bc"
+    },
+    {
+      "path": ".cache/s125-closeout-ark.mjs",
+      "sha256": "a79c27d9c4696802f70b78f7483fe2cfd4013ff271d4a5617488c6c18572cad8"
+    },
+    {
+      "path": ".cache/s125-closeout-guards.test.mjs",
+      "sha256": "c12e93f61b6f5b3b8c956fb35bf697d997a6bc1b95c4a952193441212c46aed3"
+    },
+    {
+      "path": ".cache/s125-prepare-closeout-gates.mjs",
+      "sha256": "17a1ab27285851a0775f3e358a40e2ca450117b1e8faa7c04bc49b45c32ae30d"
+    },
+    {
+      "path": ".cache/s125-closeout-plan.json",
+      "sha256": "4b7059d156dcf4925c13af3d9c78fe5040c211b63ac58996423c6dc111600e0e"
+    },
+    {
+      "path": ".cache/s125-score-proposal.json",
+      "sha256": "42ebcee888462f7601ff8881876ed24c6d6fdd0bb458d8b1a58919f485273527"
+    },
+    {
+      "path": ".cache/s125-closeout-readiness.json",
+      "sha256": "ed7f7c91914fed458adc226c07031b9324455ba3963d72545e28bcb5357b9973"
+    }
+  ],
+  "checks": {
+    "fileHashes": {
+      "matched": 15,
+      "total": 15
+    },
+    "syntax": {
+      "modules": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "offlineGuardControls": {
+      "tests": 20,
+      "passed": 20,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "Synthetic guard behavior only; not runtime release or closeout proof."
+    }
+  },
+  "findings": [],
+  "reviewedProperties": [
+    "Exact S125 native goal association, original lock bytes, source revision and artifact digest bindings.",
+    "Dynamic complete actual release receipt set, count and byte-hash guards; no fixed historical receipt count credit.",
+    "Ordered ten-surface journal, preserved original snapshots, pending-step recording and refusal of blind replay; explicit recovery is required after interruption.",
+    "Native status projection and append-only historical records with partial intent and unfinished publication honestly retained.",
+    "Subject-correct intelligence signals, exact staged metadata tree and isolated native metadata verification.",
+    "Gateway-based Ark transport with bounded reviewed payload, persisted-attempt reconciliation and no blind resend.",
+    "No invented player metrics, adoption, production success, launch approval or historical test-count credit."
+  ],
+  "pending": [
+    "Actual accepted release with all runtime evidence and immutable receipt hashes.",
+    "Separate root review of the post-release bound plan, ten-category score, CDR disposition and engineering impact judgment.",
+    "Separately prepared and independently reviewed runtime finalization adapters."
+  ],
+  "requiredRemainingFinalSteps": [
+    "Reconcile Wave4 and actual session intent only after its required evidence is complete.",
+    "Append a clarification linking the earlier partial SIL checkpoint to final completion; preserve the original entry.",
+    "Set final native status and activeArc disposition and publish a handoff that makes no active-goal or completion claim prematurely.",
+    "Verify the actual containing remote commit, final metadata verification and receipt CI disposition.",
+    "Verify actual Ark delivery and its audit without inferring recipient adoption.",
+    "Verify owned checkout cleanup, preserved evidence and a fresh owned-process/job census.",
+    "Recheck live source/artifact and remote publication, then release only the exact original owned session lock.",
+    "Root performs the final full-arc audit before native goal completion."
+  ],
+  "execution": {
+    "adaptersExecuted": false,
+    "writebackExecuted": false,
+    "scoreAssigned": false,
+    "arkSent": false,
+    "pushed": false,
+    "deployed": false,
+    "lockReleased": false
+  },
+  "limitations": [
+    "The reviewed plan is pending and must be rebound to actual acceptance and reviewed again before execution.",
+    "The existing writer journals interrupted work and refuses replay; this review does not claim an automated recovery adapter exists.",
+    "Current staging native verification is 14/14 for the exact source/artifact; this is not production proof.",
+    "Actual production release acceptance and independent production visual review were absent at review time.",
+    "The readiness document contains historical browser12 shorthand; the actual acceptance court requires the corrected browser13 proof."
+  ]
+}

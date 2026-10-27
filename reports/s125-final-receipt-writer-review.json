@@ -1,0 +1,14 @@
+{
+  "session": 125,
+  "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "verdict": "approve",
+  "reviewer": "root independent review of startup_delivery-authored guard corrections",
+  "rounds": [{"round":1,"verdict":"fix","findings":"Require complete source-bound matrices, explicit predecessors and actual runtime identities."},{"round":2,"verdict":"approve","findings":[]}],
+  "reviewedFiles": [
+    {"path":".cache/s125-finalize-visual-receipt.mjs","sha256":"4f9fbfb5a06d05695b848bdc286a93a16a185d9cba0a0e4d99137b3ab7bf0af3"},
+    {"path":".cache/s125-publish-rollback.mjs","sha256":"3b304ad007b49b15a09be1f72d2dfcb4ffa42d08e2b1b14ea18d4faebe886f53"}
+  ],
+  "rootReadOnlyRehearsal": {"historicalCaptures":36,"historicalReceiptBindings":5,"localContractCaptures":40,"currentStagingCaptures":32,"negativeCases":9,"originalLatestUnchanged":true,"publishersExecuted":false},
+  "boundary": "Acceptance writer logic approval only. Original historical f402/b794/d6 labels remain intact. Production proofs must actually exist and pass all source/artifact, matrix, review, native/API/image and complete upload checks before either publication runs."
+}

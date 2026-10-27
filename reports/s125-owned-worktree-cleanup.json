@@ -1,0 +1,66 @@
+{
+  "session": 125,
+  "at": "2026-10-27T05:07:01.912Z",
+  "verified": true,
+  "removedWorktrees": [
+    {
+      "path": ".cache/s125-studio-preflight-checkout",
+      "sourceRevision": "d6cce7fd64bc53e3236a550e5d8533b0cf7c840c",
+      "indexTree": "3090cdb9be73dc7ed4bf7432cc1717700f05fa94",
+      "generatedPatch": {
+        "path": ".cache/s125-studio-preflight-generated.patch",
+        "sha256": "97d89c0be01b2bb1fa1513626d6115abe448ac73929684108f6ae546ce079a41",
+        "bytes": 6993
+      },
+      "ignoredArtifactsArchived": [
+        {
+          "path": ".cache/active-skill.json",
+          "sha256": "6f05084a3a56e1b5bb6008858047a1a3c79a3c41c8bd2dea39086a68a62b3e02",
+          "bytes": 86,
+          "archive": ".cache/s125-owned-generated-archives/studio-preflight-checkout/.cache/active-skill.json",
+          "expectedKnown": true
+        },
+        {
+          "path": ".cache/genius-list.json",
+          "sha256": "63a3b9f638efff32a54579935b0f6cdd2711ec04619db9d045fefb907e2f9b7a",
+          "bytes": 327,
+          "archive": ".cache/s125-owned-generated-archives/studio-preflight-checkout/.cache/genius-list.json",
+          "expectedKnown": true
+        },
+        {
+          "path": ".cache/skill-cost-ledger.jsonl",
+          "sha256": "61c980baf9aad25e2e2ce01abec2c394e995df71b7176e867b7ac0995273a57d",
+          "bytes": 222,
+          "archive": ".cache/s125-owned-generated-archives/studio-preflight-checkout/.cache/skill-cost-ledger.jsonl",
+          "expectedKnown": true
+        },
+        {
+          "path": ".cache/skill-costs.jsonl",
+          "sha256": "1c8c9ee9028287d5f7144e84e379a5cd436ee902d2feac3916723748254dff4a",
+          "bytes": 987,
+          "archive": ".cache/s125-owned-generated-archives/studio-preflight-checkout/.cache/skill-costs.jsonl",
+          "expectedKnown": true
+        }
+      ],
+      "dependencyJunctionUnlinked": true,
+      "directoryRemoved": true
+    }
+  ],
+  "sharedDependencyDirectoryRetained": true,
+  "dependencySentinelUnchanged": true,
+  "unrelatedWorktreesUnchanged": true,
+  "sessionLockPreserved": true,
+  "nativeHandleEvidence": {
+    "handle": 1976,
+    "status": "missing",
+    "source": "Parent live tools.write_stdin observation reported in this task",
+    "observation": "Unknown process id1976",
+    "approximateObservedAt": "2026-10-27T05:08Z",
+    "exactObservationTimeKnown": false,
+    "originalTerminalToolResultAvailable": false,
+    "originalToolResultReconstructed": false,
+    "limitation": "This is handle-expiration evidence, not a recovered original native terminal output. Actual runner terminal/result/raw389 evidence and an independent fresh owned-process census establish the cleanup admission."
+  },
+  "reviewedManifestSha256": "506b347b8d6d374f094c29714147b8b46fc7129952c97aa6b49613c98dda0944",
+  "scope": "Only the owned S125 staged-tree Studio checkout. Logs, result, exact staged patch, generated patch and every ignored regular artifact remain privately preserved. Other worktrees and the S125 goal/session lock remain untouched."
+}

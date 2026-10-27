@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T05:05:20.370Z",
+  "reviewer": "independent studio-reviewer",
+  "verdict": "approve",
+  "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "preparationManifest": {
+    "path": ".cache/s125-transport-preparation.json",
+    "sha256": "c9b7629d22fc69d893f5df89ae30fbf5ec7cd9d4232e56f3a6db200cdd811bc2"
+  },
+  "reviewedFiles": [
+    {
+      "path": ".cache/s125-upload-inventory.mjs",
+      "sha256": "aa55b8a40db40dca49526ba27face445cddfe70391c9bed2a0575ef43a2ee686"
+    },
+    {
+      "path": ".cache/s125-surface-inventory.mjs",
+      "sha256": "6d610d4fdc6c925449bb4d7857b4886523ff248c7d8c25885ea5922291a77b8c"
+    },
+    {
+      "path": ".cache/s125-deploy-frontend.mjs",
+      "sha256": "eecd0749307abea0f87f4ac9dd6875f0ae6ae16336e74a4606f64726506ba68b"
+    },
+    {
+      "path": ".cache/s125-deploy-backend.mjs",
+      "sha256": "a12ad922c87a842ce9e116ac5f6812655e05cf3b1748dd25bcb4d282d97f9c1d"
+    },
+    {
+      "path": ".cache/s125-candidate.mjs",
+      "sha256": "24ef0e13fa9acda04f17424cac630fa3662ec9bdfda898a0b508d6b0b127bbf9"
+    },
+    {
+      "path": ".cache/s125-backend-target.mjs",
+      "sha256": "7f7c1848d036bffb10041f08a88706d9cccf0bcf6d5ef28cdad11e67f44b4e5b"
+    },
+    {
+      "path": ".cache/s125-pages-admission.mjs",
+      "sha256": "19c9282f6811a0f6dfad4614161f9e4529bf61afad319671a896b533f9a6f828"
+    },
+    {
+      "path": ".cache/s125-pages-admission.test.mjs",
+      "sha256": "6c5f1eb41795fb4ff7638c153cad802960947a5d8694d9059eee7464eacd2e81"
+    },
+    {
+      "path": ".cache/s124-image-proof.mjs",
+      "sha256": "6f443dffd1d8b7f623f3bac4989bb1c2675b5beda3b60422cae73fb746320349"
+    },
+    {
+      "path": ".cache/s124-pages-observation.mjs",
+      "sha256": "4523d31b534260694093f037443e7bf6f2c297ae18810c50805b74f32d8f9ae6"
+    },
+    {
+      "path": ".cache/s124-windows-ssh-adapter.mjs",
+      "sha256": "d53426f80bb111dd9d7b0903f2ce32699232208ab59d850d0817e134c0f78d7c"
+    }
+  ],
+  "conditionalPages": {
+    "round1": {
+      "verdict": "fix",
+      "findings": 1,
+      "detail": "An older declared green run could ignore a newer red exact-source run."
+    },
+    "round2": {
+      "verdict": "approve",
+      "findings": 0,
+      "controls": 34,
+      "failed": 0,
+      "skipped": 0,
+      "detail": "Newest exact-source run required; new runs and attempts during strict observation require readmission. Complete zero plus bounded metadata proof permits absence, never successful-workflow credit."
+    }
+  },
+  "executed": false,
+  "scope": "Prepared transport/admission review only. Exact live CI, images, fresh staging, rollback and production readback remain required."
+}

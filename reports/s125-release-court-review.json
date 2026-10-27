@@ -1,0 +1,15 @@
+{
+  "session": 125,
+  "reviewer": "root independent review of game_audit-authored court",
+  "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "verdict": "approve",
+  "reviewedFiles": [
+    {"path":".cache/s125-release-court.mjs","sha256":"4d81eec8c21548402fa64c3647b4baf44c3dfaadeff8a802790ee2a5faef6924"},
+    {"path":".cache/s125-release-guards.mjs","sha256":"9b1cb18217e75686fff44d03d1c897ce70faf7fbe75720b5a836627de64dae6d"}
+  ],
+  "checks": ["Exact source/artifact and distinct seven required CI jobs via native observer", "Exact immutable two-image producer and current provider/API source", "Actual native fourteen checks for each hosted origin", "Source-bound focused40 and corrected browser13 without skip/flaky credit", "Each hosted base12 plus contract20 capture, distinct control matrix and independently reviewed byte hashes", "Five measured desktop/mobile performance samples with recomputed metrics/evaluation/digest", "Current frontend/backend rollback and frozen receipt bytes", "Failed attempts and launch readiness kept distinct from technical release"],
+  "offlineControls": {"passed":25,"failed":0,"skipped":0,"rootReran":true},
+  "findings": [],
+  "boundary": "Review of acceptance logic only. This approval does not prove pending CI/images, production deployment, production pixels/performance or closeout. The court must run against actual completed runtime evidence."
+}

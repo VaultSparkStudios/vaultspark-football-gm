@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T05:05:20.363Z",
+  "reviewer": "independent studio-reviewer",
+  "verdict": "approve",
+  "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "inspected": 32,
+  "manifests": [
+    {
+      "path": "reports/s125-browser-staging-current.json",
+      "sha256": "a73255777ff65f269bb2035f7bfcb2f4c54428e8363a69e6b6e0fea384a07df9"
+    },
+    {
+      "path": "reports/s125-contract-staging.json",
+      "sha256": "65b3820f852d0ca1541db1052422352a7e4048a0a8a24c39d633d5f447e97828"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s125-staging-current-desktop-dark-boot-getter.png",
+      "sha256": "a1fc14ea692a48d8d8327a48987549587bd95bc4194d827fb1814d62235124db",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-desktop-dark-boot-quota.png",
+      "sha256": "f99a37c28c9deddc266895236b78713ac18e9b51117a20c34a767639eefea320",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-desktop-dark-contract-mark.png",
+      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-desktop-light-boot-getter.png",
+      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-desktop-light-boot-quota.png",
+      "sha256": "7ffb4caae58095e3119c48435e158a276f0fb02c258a138e2f4f97fcec47513d",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-desktop-light-contract-mark.png",
+      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-mobile-dark-boot-getter.png",
+      "sha256": "6cb6c104a81e52b81c04b2cf41439f3b6e564043498b38fddb03a4dd396605d0",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-mobile-dark-boot-quota.png",
+      "sha256": "2f2636c4208d173fdaec7e188aa13dda8d5164d7ded7235a00cf83dbd50156ab",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-mobile-dark-contract-mark.png",
+      "sha256": "fdd7c6c890cf0acf8b8a7281f5170bf26f40b25761f106b81f20a60bb94d9a5c",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-mobile-light-boot-getter.png",
+      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-mobile-light-boot-quota.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-current-mobile-light-contract-mark.png",
+      "sha256": "6ae46c6847fd375905999ba9a0736207b9de7d43baf0d352d3b709ea70f54e9a",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-dark-dismissed.png",
+      "sha256": "a99650b90231b6715e957e05124fd5d61bcbeb8fcf61a69174e4b08fcb627751",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-dark-complete-first.png",
+      "sha256": "9491f04f7cd027a11784c7e6eccd264a6229da9a03bb1e25d59e4edd01f24e3f",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-dark-complete-revisit.png",
+      "sha256": "569a69f832c53942284067263bdf7abe6447b2be1f9317a76d3da0306e6f2918",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-dark-finalized-2026.png",
+      "sha256": "0c4d2591581e68c330f4e30b4c09470ab30d73d9621b291521d59b28e03f862f",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-dark-finalized-2027.png",
+      "sha256": "33f325621d523625d27f755aa7dfa882ab5720224d5116e1fccfcedda5369601",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-light-dismissed.png",
+      "sha256": "49cde0c1e7cfbb761c6393ec27f210c354ba20e2a9a4d065d456cdd4d9abf554",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-light-complete-first.png",
+      "sha256": "3cccdad45ccdea0a0de350758837895d248c7835154e47c8d4ff7539a8cfb7c6",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-light-complete-revisit.png",
+      "sha256": "580f72b94313553779df1e4b3d46ae98659cc3c657823754f7bd9f203b856047",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-light-finalized-2026.png",
+      "sha256": "e8c3c5c12faf6cc26c42e7e59d4c5dce1509e19806c7b1578bc0475aaf428da4",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-desktop-light-finalized-2027.png",
+      "sha256": "bdf44f3e62b790d41e2756cf44626e4deb881bd8ad05f078f9e57572ef8aebce",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-dark-dismissed.png",
+      "sha256": "62cf6e567d5ec5a18c2f6dff4a6f2e2c317277330bd26cff54e90324b8b1f6e5",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-dark-complete-first.png",
+      "sha256": "b7e0364944244f7afa6fd5cb8f73211ae896e3e2a0bf16f3bb53935a415e1966",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-dark-complete-revisit.png",
+      "sha256": "cefd29c9d8080f2ecb2644d30d935e762a72a34be9000f0d4c5ecf4d4154f346",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-dark-finalized-2026.png",
+      "sha256": "97b1874416fc3df41cacaff1f0d0f6639e3d4e67514c87831bc637ad7aa9f1df",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-dark-finalized-2027.png",
+      "sha256": "97b1874416fc3df41cacaff1f0d0f6639e3d4e67514c87831bc637ad7aa9f1df",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-light-dismissed.png",
+      "sha256": "455ba8d3d0ceb9f8ea8c38a08783bd0ab4558f9285c8076741d1ba0b4a7282ba",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-light-complete-first.png",
+      "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-light-complete-revisit.png",
+      "sha256": "6749d8e5ae81bd0ea39e7fe74a165f3a6c12f022df051cc1dbb647571426d59c",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-light-finalized-2026.png",
+      "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-mobile-light-finalized-2027.png",
+      "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930",
+      "inspected": true
+    }
+  ],
+  "findings": [],
+  "scope": "Thirty-two exact-source staging images independently inspected. Optional journey quota reaches Ready; whole getter denial preserves visible authoritative checkpoint refusal and usable optional instrumentation. Contract five-state matrix and Inbox controls verified.",
+  "limitations": [
+    "Isolated synthetic contract fixtures are not a complete player-season journey or cohort evidence.",
+    "Mobile lower objectives extend below the viewport; changed heading, message and state are visible.",
+    "Staging cached-version notices overlay only the bottom edge; no production or CI completion claim."
+  ]
+}

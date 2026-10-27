@@ -19,16 +19,28 @@ test('client recovery remains fail closed while optional journey tolerates a den
  expect(names).toContain('weekly-plan-opened');await expect(page.locator('#statusChip')).not.toHaveText('Ready');
 });
 
-test('contract marks survive denied getter recovery in the rendered game',async({page})=>{
- await page.goto('/game.html');await expect(page.locator('#statusChip')).toHaveText('Ready',{timeout:30000});
+for(const closed of [false,true])test(`contract marks survive denied getter recovery in an ${closed?'ended':'open'} season`,async({page})=>{
+ await page.goto('/game.html?runtime=client');await expect(page.locator('#statusChip')).toHaveText('Ready',{timeout:30000});
  await page.locator('#tutSkipBtn').click();
- const marks=await page.evaluate(async()=>{
-  const m=await import('/lib/firstSeasonContract.js'),{state}=await import('/lib/appState.js'),d=state.dashboard;
+ const marks=await page.evaluate(async closed=>{
+  const m=await import('/lib/firstSeasonContract.js');
+  // Use the real component template with isolated IDs: suite-wide server state
+  // and late app hydration must not supply a different season to this fixture.
+  const panel=document.getElementById('firstSeasonContract').cloneNode(true),nodes={};
+  for(const node of [panel,...panel.querySelectorAll('[id]')]){nodes[node.id]=node;node.id='storage-fixture-'+node.id;}
+  const host=document.getElementById('overviewTab');host.hidden=false;host.style.display='block';host.prepend(panel);
+  const d={franchiseId:`getter-recovery-${closed?'ended':'open'}`,controlledTeamId:'BUF',controlledTeam:{id:'BUF',owner:{expectation:{targetWins:9}}},currentYear:2026,currentWeek:closed?18:1,phase:closed?'season-awards':'regular-season',seasonsSimulated:0,cap:{capSpace:1000},latestStandings:[{teamId:'BUF',wins:0,losses:0}]};
+  const render=()=>m.renderFirstSeasonContract({dashboard:d,documentRef:{getElementById:id=>nodes[id]}});
   m.markObjective(d,'depth-chart');const old=Object.getOwnPropertyDescriptor(window,'localStorage');
-  try{Object.defineProperty(window,'localStorage',{configurable:true,get(){throw new DOMException('Denied','SecurityError');}});m.markObjective(d,'answer-the-phone');m.renderFirstSeasonContract({dashboard:d});return m.readContractState(d).marks;}
-  finally{Object.defineProperty(window,'localStorage',old);m.renderFirstSeasonContract({dashboard:d});}
- });
- expect(marks).toEqual({'depth-chart':true,'answer-the-phone':true});await expect(page.locator('#firstSeasonContractProgress')).toContainText('2 of 5');await expect(page.locator('#firstSeasonContractProgress')).toContainText('this tab only');
+  try{Object.defineProperty(window,'localStorage',{configurable:true,get(){throw new DOMException('Denied','SecurityError');}});m.markObjective(d,'answer-the-phone');render();return m.readContractState(d).marks;}
+  finally{Object.defineProperty(window,'localStorage',old);render();}
+ },closed);
+ expect(marks).toEqual({'depth-chart':true,'answer-the-phone':true});
+ const fixture=page.locator('#storage-fixture-firstSeasonContract');
+ await expect(fixture.locator('[data-objective="depth-chart"]')).toHaveAttribute('data-done','true');
+ await expect(fixture.locator('[data-objective="answer-the-phone"]')).toHaveAttribute('data-done','true');
+ await expect(fixture.locator('[data-objective="cap-compliant"]')).toHaveAttribute('data-done',String(closed));
+ await expect(page.locator('#storage-fixture-firstSeasonContractProgress')).toHaveText(`${closed?3:2} of 5 · this tab only`);
 });
 
 test('optional player panels survive a denied localStorage getter',async({page})=>{

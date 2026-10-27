@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T05:58:41.156Z",
+  "failedCandidate": {
+    "sourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
+    "ciRunId": 40450528192,
+    "attempt": 1,
+    "jobId": 122011915387,
+    "conclusion": "failure",
+    "browser": {
+      "tests": 292,
+      "passed": 288,
+      "skipped": 3,
+      "failed": 1
+    },
+    "rawLog": {
+      "path": ".cache/s125-failed-candidates/4a2c6a96172938ab56dbec742e59f00ff4bc585c/browser-job-122011915387.log",
+      "sha256": "8e8c6cdcc4ae37addca370e6f3c3729d64a6bc9b296595f44b38aab00f04e55f"
+    },
+    "failure": "Contract getter recovery fixture expected2of5; full suite displayed3of5 with both asserted action marks retained. A legitimately closed season also completes the cap-derived objective. This failure remains nonpassing."
+  },
+  "correction": {
+    "test": {
+      "path": "tests-ui/optional-storage-recovery.spec.js",
+      "sha256": "7c40c782db97e77d0e8c1ca256ce381d0815145ecb5fe5af3cb7eb883950040d"
+    },
+    "runtime": "client",
+    "fixture": "Real component template with isolated IDs/documentRef; separate explicit open/ended season franchises; real default browser storage facade, denied getter then restored.",
+    "assertions": [
+      "Exact two retained action marks",
+      "Both rendered action objectives data-done true",
+      "Cap-derived objective false for open and true for ended season",
+      "Exact2of5/open and3of5/ended, each labelled this tab only"
+    ],
+    "review": {
+      "reviewer": "independent game_audit",
+      "verdict": "approve",
+      "scope": "Source inspection; root separately observed focused execution."
+    }
+  },
+  "focused": {
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "errors": 0,
+    "raw": {
+      "path": ".cache/s125-successor-focused.raw.json",
+      "sha256": "517e1e7f75fbb4cd88243ac319c943df74764769ac11aa430808f8087b9273af"
+    },
+    "log": {
+      "path": ".cache/s125-successor-focused.log",
+      "sha256": "e2837a600dfc871f73de974bb1d2f6c51016c49dc2053bdbf89dc9d5674a58cd"
+    },
+    "sources": [
+      {
+        "path": "public/lib/playtestJourney.js",
+        "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+      },
+      {
+        "path": "public/lib/engagementFeatures.js",
+        "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+      },
+      {
+        "path": "public/lib/firstSeasonContract.js",
+        "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+      },
+      {
+        "path": "tests-ui/optional-storage-recovery.spec.js",
+        "sha256": "7c40c782db97e77d0e8c1ca256ce381d0815145ecb5fe5af3cb7eb883950040d"
+      },
+      {
+        "path": "tests-ui/first-debrief-storage.spec.js",
+        "sha256": "c40aed7f04c18fa4937dea8b32e2a550532ac15bbd137d9ac12c1c5bc8edadf2"
+      }
+    ]
+  },
+  "productModulesUnchanged": true,
+  "testedBeforeCommit": true,
+  "releaseComplete": false,
+  "scope": "Focused fixture correction only. New exact candidate CI/staging/images and actual production remain required; no production action occurred."
+}
