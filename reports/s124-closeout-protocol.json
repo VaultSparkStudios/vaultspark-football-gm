@@ -1,0 +1,83 @@
+{
+  "session": 124,
+  "at": "2026-10-27T00:40:03.700Z",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "orderedRecords": {
+    "verified": true,
+    "steps": [
+      "CURRENT_STATE",
+      "TASK_BOARD",
+      "LATEST_HANDOFF",
+      "WORK_LOG",
+      "DECISIONS",
+      "SELF_IMPROVEMENT_LOOP",
+      "CDR-disposition",
+      "TRUTH_AUDIT",
+      "PROJECT_STATUS",
+      "AGENT_MEMORY",
+      "audit-and-date-record"
+    ],
+    "personalMemory": "reports/s124-personal-memory.json",
+    "recovery": "reports/s124-status-recovery-review.json",
+    "scope": "First8steps preserved; only unfinished3surfaces recovered after canonical rejection of a retired status field."
+  },
+  "sil": {
+    "categories": {
+      "devHealth": 90,
+      "creativeAlignment": 65,
+      "momentum": 75,
+      "engagement": 45,
+      "processQuality": 65,
+      "crossRepoCoherence": 50,
+      "securityPosture": 55,
+      "ecosystemIntegration": 20,
+      "capitalEfficiency": 0,
+      "automationCoverage": 45
+    },
+    "total": 510,
+    "intent": "Partial until remaining closeout gates complete"
+  },
+  "release": {
+    "verified": true,
+    "receipt": "reports/s124-release-acceptance.json",
+    "refs": 28
+  },
+  "doctor": {
+    "blockingFailing": 0,
+    "failing": 0,
+    "warning": 0,
+    "passing": 12,
+    "receipt": "reports/s124-closeout-doctor.json"
+  },
+  "coherence": {
+    "verified": true,
+    "receipt": "reports/s124-closeout-gates.json"
+  },
+  "security": "reports/s124-closeout-security.json",
+  "intelligence": "reports/s124-intelligence-refresh.json",
+  "premiseTiming": "UNKNOWN: incompatible/missing recipient recorder; strict3premises and candidate admission observed before edits; no reconstructed timing pass.",
+  "independentReview": {
+    "verdict": "approve",
+    "round": 2,
+    "receipt": {
+      "path": "reports/s124-closeout-review.json",
+      "sha256": "54a09077acc61a0b0bdbf2c7e4e1015a117932d36289119c77115ad75bbf4ffa"
+    },
+    "earlierFindingsPreserved": true
+  },
+  "finalMetadataAcceptance": {
+    "verified": true,
+    "passed": 389,
+    "total": 389,
+    "testedStagedTree": "64b62a09deb3eb0a423fc7141bd11dfdd23e3d0e",
+    "receipt": {
+      "path": "reports/s124-final-metadata.json",
+      "sha256": "40a23e0ab5aac761653817dc47fd426caf6e16df9e8811c7e348be6ded42de02"
+    }
+  },
+  "publication": "pending",
+  "signedImpact": "pending",
+  "ownedCleanup": "pending",
+  "closeoutComplete": false
+}

@@ -1,0 +1,386 @@
+{
+  "session": 124,
+  "at": "2026-10-26T22:39:46.464Z",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "phase": "staging",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "hosted": {
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+    "health": {
+      "status": "ok",
+      "service": "franchise-architect-football",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "artifactFingerprint": {
+        "algorithm": "sha256",
+        "digest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+        "files": 362,
+        "exclusions": [
+          "_health",
+          "deploy-manifest.json",
+          "edge-policy-receipt.json"
+        ]
+      },
+      "styleAsset": "styles.c4075a9e38.css",
+      "communityStatsAsset": "community-stats.25f97e0a1e.js",
+      "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+      "edgePolicyAppliedToHostedOrigin": false,
+      "generatedAt": "2026-10-26T22:36:17.214Z",
+      "launchReady": false,
+      "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+    },
+    "modulesVerified": [
+      {
+        "path": "public/lib/browserStorage.js",
+        "sha256": "03d7ca99e5652bfe51db32fd9a1d5af2bf4c869cb21918a42d658481e598fe1a"
+      },
+      {
+        "path": "public/lib/returnDigest.js",
+        "sha256": "ebdc6a1e707cb36d12537d292f40061aa11d0b681605c8df5759b0a9d9152ead"
+      },
+      {
+        "path": "public/lib/firstSeasonContract.js",
+        "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0"
+      },
+      {
+        "path": "public/lib/tutorialCampaign.js",
+        "sha256": "c22d311be378e21c73009347c4814368040910fb3bce92475c9d796de69c62a5"
+      },
+      {
+        "path": "public/lib/appCore.js",
+        "sha256": "e33ccab3cdb0678b90da36bd2ef14e141a249eb6dd6ff100ced1c4cb28b165e8"
+      },
+      {
+        "path": "public/lib/contextualFeedback.js",
+        "sha256": "6154c32b796b73ef7544996a6f698c9ddbca52cc9bfdaec0be9fda4f0b04df88"
+      },
+      {
+        "path": "public/lib/playtestReceipts.js",
+        "sha256": "46b021f495df07ed1630e191a66e96de7e21fa4832b52980b0abe4e018db584b"
+      }
+    ]
+  },
+  "sourceFiles": [
+    {
+      "path": "public/lib/browserStorage.js",
+      "sha256": "03d7ca99e5652bfe51db32fd9a1d5af2bf4c869cb21918a42d658481e598fe1a"
+    },
+    {
+      "path": "public/lib/returnDigest.js",
+      "sha256": "ebdc6a1e707cb36d12537d292f40061aa11d0b681605c8df5759b0a9d9152ead"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0"
+    },
+    {
+      "path": "public/lib/tutorialCampaign.js",
+      "sha256": "c22d311be378e21c73009347c4814368040910fb3bce92475c9d796de69c62a5"
+    },
+    {
+      "path": "public/lib/appCore.js",
+      "sha256": "e33ccab3cdb0678b90da36bd2ef14e141a249eb6dd6ff100ced1c4cb28b165e8"
+    },
+    {
+      "path": "public/lib/contextualFeedback.js",
+      "sha256": "6154c32b796b73ef7544996a6f698c9ddbca52cc9bfdaec0be9fda4f0b04df88"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "46b021f495df07ed1630e191a66e96de7e21fa4832b52980b0abe4e018db584b"
+    }
+  ],
+  "baselineRouting": null,
+  "captures": [
+    {
+      "path": "output/playwright/s124-staging/desktop-dark-tutorial.png",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "tutorial",
+      "sha256": "8a2ac61044e92edcc1e84c173a1b044525cbc33e7b97e24e8fcf27a1bb8eaf0c",
+      "observation": {
+        "state": "tutorial",
+        "theme": "dark",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/desktop-dark-tutorial-complete.png",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "tutorial-complete",
+      "sha256": "30b25d1aaad6267370cc5df71b7b4f885e9e753f42415aa509f5df636d21e886",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/desktop-dark-feedback.png",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "feedback",
+      "sha256": "554cbfe828eb216cca679212721a478ba166ed230be4e8be71a49fa600014797",
+      "observation": {
+        "state": "feedback",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/desktop-light-tutorial.png",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "light",
+      "state": "tutorial",
+      "sha256": "878db6dccb5aa9e4c97d8293ea9a30db54941e37b8cf70874f2d903ae54adb44",
+      "observation": {
+        "state": "tutorial",
+        "theme": "light",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/desktop-light-tutorial-complete.png",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "light",
+      "state": "tutorial-complete",
+      "sha256": "0c0b2bd647067d67f8e4ba17da2c6bafc1d8a6762fa6bf6d29b773238c1c6503",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/desktop-light-feedback.png",
+      "phase": "staging",
+      "device": "desktop",
+      "theme": "light",
+      "state": "feedback",
+      "sha256": "fed94b9a2144795bbbb12a28ec4f4ba621bf5a0bd29fad4b1c5b6bb1f95b3a1c",
+      "observation": {
+        "state": "feedback",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/mobile-dark-tutorial.png",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "tutorial",
+      "sha256": "929f076493a252e1b54e7e9bd81b5beb2b470ec1fb7c662025bf1b06ce12c9f4",
+      "observation": {
+        "state": "tutorial",
+        "theme": "dark",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/mobile-dark-tutorial-complete.png",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "tutorial-complete",
+      "sha256": "d3821b8f54582a54eb2a652475ed4ae47eb5b175d266ce631e59c306d280e29d",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/mobile-dark-feedback.png",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "feedback",
+      "sha256": "4f01873dd930a4d617e925f057638f32a26ae6448ce2079d13aa768daadff208",
+      "observation": {
+        "state": "feedback",
+        "theme": "dark",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/mobile-light-tutorial.png",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "light",
+      "state": "tutorial",
+      "sha256": "8a454200eb4b2c636721849231affc4a1a76b7c2ae93b2086152d131ced99dc6",
+      "observation": {
+        "state": "tutorial",
+        "theme": "light",
+        "skipped": 1,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/mobile-light-tutorial-complete.png",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "light",
+      "state": "tutorial-complete",
+      "sha256": "34a462487033f726f6ea7c9507c250c9192fad67e49637b95aa6ff5e729c2546",
+      "observation": {
+        "state": "tutorial-complete",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": true,
+        "receiptPresent": true,
+        "promptPresent": false,
+        "draft": null,
+        "error": null
+      }
+    },
+    {
+      "path": "output/playwright/s124-staging/mobile-light-feedback.png",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "light",
+      "state": "feedback",
+      "sha256": "ffd449df3773002af28da057b206ad638c491d6ee507f2c341a5c8e7347259de",
+      "observation": {
+        "state": "feedback",
+        "theme": "light",
+        "skipped": 0,
+        "saved": 0,
+        "tutorialPresent": false,
+        "receiptPresent": false,
+        "promptPresent": true,
+        "draft": "Keep this draft after a failed save.",
+        "error": "Note not saved. Keep your draft here and retry when browser storage is available."
+      }
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "state": "feedback",
+      "retry": {
+        "saved": 1,
+        "promptPresent": false,
+        "receiptStored": true
+      }
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "errors": []
+    }
+  ]
+}

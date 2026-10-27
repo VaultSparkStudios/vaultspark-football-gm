@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.3",
+  "session": 124,
+  "date": "2026-10-27",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "selectedItems": 3,
+  "shipped": 3,
+  "silCategoriesV3": {
+    "devHealth": 90,
+    "creativeAlignment": 65,
+    "momentum": 75,
+    "engagement": 45,
+    "processQuality": 65,
+    "crossRepoCoherence": 50,
+    "securityPosture": 55,
+    "ecosystemIntegration": 20,
+    "capitalEfficiency": 0,
+    "automationCoverage": 45
+  },
+  "silScore": 510,
+  "priorDateAudit": null,
+  "acceptance": "reports/s124-release-acceptance.json",
+  "closeoutComplete": false,
+  "scope": "Actual technical release and ordered write-back; final metadata/publication/cleanup remain required."
+}

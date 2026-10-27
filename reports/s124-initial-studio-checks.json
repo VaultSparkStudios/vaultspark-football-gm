@@ -1,0 +1,19 @@
+{
+  "session": 124,
+  "startedAt": "2026-10-26T22:27:34.413Z",
+  "completedAt": "2026-10-26T22:34:09.717Z",
+  "mode": "studio",
+  "sourceBase": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "exitCode": 1,
+  "summary": [
+    "ℹ tests 389",
+    "ℹ suites 0",
+    "ℹ pass 386",
+    "ℹ fail 3",
+    "ℹ cancelled 0",
+    "ℹ skipped 0",
+    "ℹ todo 0",
+    "ℹ duration_ms 390425.3012"
+  ],
+  "rawLog": ".cache/s124-studio.log"
+}

@@ -1,0 +1,105 @@
+{
+  "session": 124,
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "startedAt": "2026-10-26T23:21:14.815Z",
+  "finishedAt": "2026-10-26T23:21:48.025Z",
+  "exitCode": 0,
+  "verified": true,
+  "passed": 9,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "tests": [
+    {
+      "title": "optional check-in remains dismissible with denied storage: click",
+      "ok": true
+    },
+    {
+      "title": "optional check-in remains dismissible with denied storage: Escape",
+      "ok": true
+    },
+    {
+      "title": "check-in never claims saved when storage is write-denied",
+      "ok": true
+    },
+    {
+      "title": "check-in never claims saved when storage is missing",
+      "ok": true
+    },
+    {
+      "title": "optional player panels survive a denied localStorage getter",
+      "ok": true
+    },
+    {
+      "title": "tutorial skip works when persistence methods throw",
+      "ok": true
+    },
+    {
+      "title": "tutorial complete works when persistence methods throw",
+      "ok": true
+    },
+    {
+      "title": "contextual feedback keeps drafts after quota storage failure",
+      "ok": true
+    },
+    {
+      "title": "contextual feedback keeps drafts after missing storage failure",
+      "ok": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "tests-ui/optional-storage-recovery.spec.js",
+      "sha256": "a8a5e50eba23be4552ec2943a4afb3ec8304aa69a9577d9776a70a9a7d53e391"
+    },
+    {
+      "path": "tests-ui/first-debrief-storage.spec.js",
+      "sha256": "c40aed7f04c18fa4937dea8b32e2a550532ac15bbd137d9ac12c1c5bc8edadf2"
+    },
+    {
+      "path": "playwright.config.mjs",
+      "sha256": "40333a34985f3031c0a0a4a04f5daa8c9726894c13624cb4c76d397f65018639"
+    },
+    {
+      "path": "public/lib/appCore.js",
+      "sha256": "e33ccab3cdb0678b90da36bd2ef14e141a249eb6dd6ff100ced1c4cb28b165e8"
+    },
+    {
+      "path": "public/lib/browserStorage.js",
+      "sha256": "03d7ca99e5652bfe51db32fd9a1d5af2bf4c869cb21918a42d658481e598fe1a"
+    },
+    {
+      "path": "public/lib/contextualFeedback.js",
+      "sha256": "6154c32b796b73ef7544996a6f698c9ddbca52cc9bfdaec0be9fda4f0b04df88"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "46b021f495df07ed1630e191a66e96de7e21fa4832b52980b0abe4e018db584b"
+    },
+    {
+      "path": "public/lib/returnDigest.js",
+      "sha256": "ebdc6a1e707cb36d12537d292f40061aa11d0b681605c8df5759b0a9d9152ead"
+    },
+    {
+      "path": "public/lib/tutorialCampaign.js",
+      "sha256": "c22d311be378e21c73009347c4814368040910fb3bce92475c9d796de69c62a5"
+    }
+  ],
+  "configSource": {
+    "path": ".cache/s124-local-browser-proof.config.mjs",
+    "sha256": "57f12622b096792a8ebb22883afbab5291280e5979d2874b28f7828f6982b88c"
+  },
+  "rawReport": {
+    "path": ".cache/s124-local-browser-proof.raw.json",
+    "sha256": "31c176474b499ec00a8f2240549ce96cb10519b9aa80baeecb3b0a7bdb2e8be5"
+  },
+  "rawLog": {
+    "path": ".cache/s124-local-browser-proof.log",
+    "sha256": "8687b3ef356d7ef193301e0bb8c0b4428a1d26989ca6810ced87363b0b76e4b2"
+  },
+  "scope": "New actual focused9measurement after evidence-gap review, at unchanged exact committed source. This does not fabricate or replace the original list-only transcript or initial7/9failure."
+}

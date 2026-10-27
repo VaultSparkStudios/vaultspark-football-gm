@@ -1,0 +1,23 @@
+{
+  "session": 124,
+  "observedAt": "2026-10-27T00:44:26.621Z",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "exitCode": 0,
+  "blockingFailing": 0,
+  "failing": 0,
+  "warning": 0,
+  "passing": 12,
+  "authoritativeStatusProjected": true,
+  "raw": {
+    "path": ".cache/s124-doctor-current.json",
+    "sha256": "79b609ef5dbc107e4c06db286254e85ea47ff395b04415c353357c058a928c00"
+  },
+  "priorObservation": {
+    "observedAt": "2026-10-27T00:32:07.881Z",
+    "passing": 12,
+    "blockingFailing": 0,
+    "rawSha256": "acbf8b30bc20dc25a80c683b412c3dda3fc01b1a666b65c3460f35756606a83b",
+    "scope": "Earlier actual12/12 read without status projection; retained, not relabelled."
+  },
+  "scope": "Fresh project-native doctor --update-json also reconciled canonical status; final metadata acceptance separate."
+}

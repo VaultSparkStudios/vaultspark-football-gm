@@ -28,7 +28,8 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 - [x] Wave 1 — Fresh startup, native goal binding, nine-axis audit and pending-candidate admission.
 - [x] Wave 2 — Three selected storage recovery outcomes; focused45/45, browser9/9, independent round2approve and24reviewed captures.
-- [ ] Wave 3 — Exact candidate, staging, required checks, production verification and ordered closeout.
+- [x] Wave 3 — Exact candidate, staging, required checks and actual frontend/API production verified.
+- [ ] Wave 4 — Ordered closeout, final metadata acceptance, receipt publication/readback, signed impact and owned cleanup.
 
 ## S121 Wave status
 
@@ -196,3 +197,9 @@ Public launch remains HOLD for actual project-domain receive/reply-as evidence, 
 ---
 
 Older entries are retained verbatim in `context/archive/TASK_BOARD.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+## S124 future discipline — unselected follow-ups
+
+- [ ] [SIL:124] Check native premise-recorder CLI compatibility before future implementation; require complete staged/untracked timing evidence.
+- [ ] [SIL:124] Use real product themes and complete callback/receipt paths in future storage-fault capture matrices; preserve raw structured browser results.

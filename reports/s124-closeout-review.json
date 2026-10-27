@@ -1,0 +1,131 @@
+{
+  "session": 124,
+  "reviewer": "independent studio-reviewer",
+  "reviewRound": 2,
+  "verdict": "approve",
+  "reviewedAt": "2026-10-27T00:47:37.945Z",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactFingerprint": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "scope": "Actual ordered project writeback and current closeout evidence; final metadata acceptance/publication/impact transport/cleanup remain pending",
+  "snapshot": {
+    "path": ".cache/s124-closeout-diff-review.json",
+    "sha256": "de4a1a9b1a8d6cbc5766febf7baabca737da7efded23aff33750c4233a377934",
+    "files": 91,
+    "allFrozenHashesVerified": true,
+    "boundary": "Snapshot validated before this final review report replaced its own round1 bytes; stage/acceptance must fingerprint final report bytes separately."
+  },
+  "findings": [
+    {
+      "id": "C1-impact-rendered-objects",
+      "status": "resolved",
+      "finding": "Actual generated impact FOLLOW-UPS/BLOCKERS contained literal [object Object].",
+      "resolution": "Regenerated impact has readable title/evidence strings, no object/undefined tokens. Brief count explicitly labels its earlier89-file checkpoint."
+    },
+    {
+      "id": "C2-stale-doctor-projection",
+      "status": "resolved",
+      "finding": "PROJECT_STATUS doctorScore still reports11passing/1blocking for historical HEAD9d87/live490, and current board repeats11/12, despite actual fresh doctor12passing/0failure.",
+      "requiredFix": "Reconcile status doctorScore through canonical recipient update API to actual retained doctor receipt, then regenerate board and refresh intelligence/snapshot as needed without claiming the earlier IGNIS input was frozen.",
+      "resolution": "Actual canonical doctor --update-json reconciled status12passing/0failure/0blocking; board now12/12. Fresh raw report hash and preserved prior read-only observation both independently verified; startup brief refreshed forS124 and state vector/intelligence references updated."
+    }
+  ],
+  "verified": {
+    "releaseReceiptHashes": 28,
+    "orderedJournalSteps": 11,
+    "journalPendingStep": null,
+    "sourceTestScriptPackageDiffFromCandidateEmpty": true,
+    "appendOnlyOriginalPrefixesPreserved": [
+      "logs/WORK_LOG.md",
+      "context/DECISIONS.md",
+      "context/SELF_IMPROVEMENT_LOOP.md except permitted rolling-status block"
+    ],
+    "activeHandoffArchiveExact": true,
+    "silCategories": 10,
+    "silSum": 510,
+    "sessionIntentAchieved": false,
+    "activeArcCloseoutComplete": false,
+    "wave4Open": true,
+    "lateAuditCandidates": 18,
+    "candidatesPerAxis": 2,
+    "originalUnselectedNovelConcepts": 3,
+    "readinessAreas": 12,
+    "readinessPassing": false,
+    "publishedHostedPNGsHashMatched": 24,
+    "latestVisualCaptures": 48,
+    "boundedPublicTextScan": {
+      "files": 65,
+      "absoluteUserPaths": 0,
+      "privateKeyBlocks": 0,
+      "githubTokenLiterals": 0
+    }
+  },
+  "limitations": [
+    "No helper, test suite, deployment or writeback executed by reviewer.",
+    "Canonical doctor/protocol/security/intelligence outputs inspected as retained observations; no new full-suite or remote acceptance run performed.",
+    "Personal memory receipt and original-index guard evidence are root-owned; private memory contents and native46handle readback were not independently replayed in this review.",
+    "Final metadata exact-tree389, canonical staged secret scan, normal metadata publication/readback, signed impact delivery and owned OS/worktree/lock cleanup remain unverified future gates.",
+    "Premise timing stays UNKNOWN; late audit quality correction is not initial protocol compliance; synthetic browser evidence is not measured real-user outcomes.",
+    "Earlier status writer rejection and two court socket failures remain preserved in review/history and project records."
+  ],
+  "history": [
+    {
+      "reviewRound": 1,
+      "sha256": "61ac94804b73c4a5db6b3e288a82511766109723b4ce19b264fff9f599a256b7",
+      "verdict": "fix",
+      "findings": [
+        {
+          "id": "C1-impact-rendered-objects",
+          "status": "resolved-pending-refreeze",
+          "finding": "Actual generated impact FOLLOW-UPS/BLOCKERS contained literal [object Object].",
+          "resolution": "Root regenerated with readable title/evidence strings; independently read corrected impact. Brief changed-file count now labelled checkpoint rather than final inventory."
+        },
+        {
+          "id": "C2-stale-doctor-projection",
+          "status": "open",
+          "finding": "PROJECT_STATUS doctorScore still reports11passing/1blocking for historical HEAD9d87/live490, and current board repeats11/12, despite actual fresh doctor12passing/0failure.",
+          "requiredFix": "Reconcile status doctorScore through canonical recipient update API to actual retained doctor receipt, then regenerate board and refresh intelligence/snapshot as needed without claiming the earlier IGNIS input was frozen."
+        }
+      ],
+      "snapshot": {
+        "path": ".cache/s124-closeout-diff-review.json",
+        "sha256": "ffd61d8ddba63a137f8ad27616db83076917ad841851e918004f69985f076f93",
+        "files": 89,
+        "allFrozenHashesVerified": true
+      }
+    }
+  ],
+  "round2": {
+    "all28ReleaseReferencesRehashed": true,
+    "applicationSourceFreezeUnchanged": true,
+    "currentDoctorRaw": "79b609ef5dbc107e4c06db286254e85ea47ff395b04415c353357c058a928c00",
+    "priorDoctorRaw": "acbf8b30bc20dc25a80c683b412c3dda3fc01b1a666b65c3460f35756606a83b",
+    "priorDoctorRawHashActuallyVerified": true,
+    "statusDurableSession": 124,
+    "doctor": {
+      "passing": 12,
+      "failing": 0,
+      "blockingFailing": 0
+    },
+    "intelligence": {
+      "ignis": 43029,
+      "tier": "FORGE",
+      "inputOverlapDisclosurePreserved": true,
+      "entropy": 0.051,
+      "genome": "UNMEASURED parser fallback",
+      "stateVectorHashVerified": true
+    },
+    "jobs": {
+      "rootOwnedReceiptStarted": 48,
+      "closedOrMissing": 48,
+      "running": 0,
+      "scope": "Retained native ledger readback; not a reviewer OS-level cleanup measurement"
+    },
+    "remaining": [
+      "Exact final staged metadata acceptance389 and fresh staged scan",
+      "Normal main metadata publication and containing-commit remote readback",
+      "Signed impact delivery without inferred recipient adoption",
+      "Owned process/worktree cleanup and original lock release",
+      "Final truthful completion reconciliation and only then native goal completion"
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "session": 124,
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "startedAt": "2026-10-27T00:22:03.042Z",
+  "finishedAt": "2026-10-27T00:22:26.945Z",
+  "origin": "https://playfranchisearchitect.com",
+  "exitCode": 0,
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "flaky": 0,
+  "verified": true,
+  "tests": [
+    {
+      "title": "optional player panels survive a denied localStorage getter",
+      "ok": true
+    },
+    {
+      "title": "tutorial skip works when persistence methods throw",
+      "ok": true
+    },
+    {
+      "title": "tutorial complete works when persistence methods throw",
+      "ok": true
+    },
+    {
+      "title": "contextual feedback keeps drafts after quota storage failure",
+      "ok": true
+    },
+    {
+      "title": "contextual feedback keeps drafts after missing storage failure",
+      "ok": true
+    }
+  ],
+  "testSource": {
+    "path": "tests-ui/optional-storage-recovery.spec.js",
+    "sha256": "a8a5e50eba23be4552ec2943a4afb3ec8304aa69a9577d9776a70a9a7d53e391"
+  },
+  "configSource": {
+    "path": ".cache/s124-production-focused.config.mjs",
+    "sha256": "612048bbd95a718f5f2268968551a27fcadbe98665a3e1cc21f44af570dcb49c"
+  },
+  "rawReport": {
+    "path": ".cache/s124-production-focused.raw.json",
+    "sha256": "7510f439b6e811d717286570a0e5bc86723b5a30c17c2fcbe1985d20ae41c1e4"
+  },
+  "before": {
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
+  },
+  "after": {
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
+  },
+  "scope": "Five committed fault-injection browser cases on actual hosted modules; synthetic fixtures, separate from source CI and real-user outcomes.",
+  "priorAttempt": {
+    "passed": 4,
+    "failed": 1,
+    "receipt": {
+      "original": "reports/s124-production-focused-browser.json",
+      "path": "reports/s124-evidence-history/production-focused-first-40e20f42d1f0027cabec28dd609fe3f90ef338cb88fc8994e45c9644301db52d.json",
+      "sha256": "40e20f42d1f0027cabec28dd609fe3f90ef338cb88fc8994e45c9644301db52d"
+    },
+    "cause": "Initial Ready wait timed out before storage fault injection; four other cases passed. Same unchanged test/config passed all5 on one bounded rerun. Raw first results and log retained in ignored cache; automatic first trace/image was not retained across the test runner cleanup."
+  }
+}

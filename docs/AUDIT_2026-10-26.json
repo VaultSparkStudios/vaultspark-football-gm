@@ -43,19 +43,19 @@
   },
   "axes": {
     "features-depth": 1.5,
-    "ui-ux-feedback": 5,
+    "ui-ux-feedback": 3,
     "gamification-immersion": 5,
     "ai-intelligence": 1.5,
-    "security": 3,
-    "speed-organization-efficiency": 3,
-    "token-cost": 1.5,
-    "observability-honesty": 3,
-    "sil-debt": 1.5
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
   },
   "items": [
     {
       "id": 1,
-      "rank": 1,
+      "rank": 2,
       "slug": "optional-storage-access",
       "title": "Keep optional player panels usable when storage access is denied",
       "axis": "security",
@@ -104,12 +104,18 @@
             "reports/s124-storage-review.json",
             "reports/s124-after-browser.json"
           ]
+        },
+        {
+          "at": "2026-10-27T00:31:18.351Z",
+          "status": "shipped",
+          "note": "Selected outcome and actual exact-source frontend/API release verified. Final closeout publication remains pending; reports/s124-release-acceptance.json."
         }
-      ]
+      ],
+      "axisWeight": 1
     },
     {
       "id": 2,
-      "rank": 2,
+      "rank": 1,
       "slug": "tutorial-storage-failure",
       "title": "Allow tutorial completion and dismissal when storage methods fail",
       "axis": "ui-ux-feedback",
@@ -118,7 +124,7 @@
       "effortHours": 1,
       "impact": 7,
       "innovation": 3,
-      "priority": 13.249524825000607,
+      "priority": 39.748574475001824,
       "status": "shipped",
       "premise": "Guard tutorial reads, writes and removals independently. Keep authoritative completion receipts unchanged and make persistence best effort. Verify skip and applied-receipt dismissal with quota and denied storage failures in both themes and desktop/mobile.",
       "recipe": "Guard tutorial reads, writes and removals independently. Keep authoritative completion receipts unchanged and make persistence best effort. Verify skip and applied-receipt dismissal with quota and denied storage failures in both themes and desktop/mobile.",
@@ -158,8 +164,14 @@
             "reports/s124-storage-review.json",
             "reports/s124-after-browser.json"
           ]
+        },
+        {
+          "at": "2026-10-27T00:31:18.351Z",
+          "status": "shipped",
+          "note": "Selected outcome and actual exact-source frontend/API release verified. Final closeout publication remains pending; reports/s124-release-acceptance.json."
         }
-      ]
+      ],
+      "axisWeight": 3
     },
     {
       "id": 3,
@@ -212,16 +224,22 @@
             "reports/s124-storage-review.json",
             "reports/s124-after-browser.json"
           ]
+        },
+        {
+          "at": "2026-10-27T00:31:18.351Z",
+          "status": "shipped",
+          "note": "Selected outcome and actual exact-source frontend/API release verified. Final closeout publication remains pending; reports/s124-release-acceptance.json."
         }
-      ]
+      ],
+      "axisWeight": 1
     }
   ],
   "totals": {
     "count": 3,
-    "priority": 39.748574475001824,
+    "priority": 66.24762412500304,
     "top3": [
-      "optional-storage-access",
       "tutorial-storage-failure",
+      "optional-storage-access",
       "feedback-storage-failure"
     ]
   },
@@ -309,110 +327,170 @@
     {
       "area": "core journeys and product correctness",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.608Z",
-      "evidence": "reports/s124-storage-before.json reproduces SecurityError in six player modules.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "Focused45/45, browser9/9 and clean exact-source Studio389/389 in reports/s124-local-acceptance.json. Hosted storage controls12inreports/s124-staging-browser.json; source-backed loop/chapter/objective components inspected."
+      ],
+      "gaps": [
+        "No current complete100-year/player-career or real-user decision-comprehension proof in this checkpoint. Required full CI remains active at its latest recorded observation."
+      ],
+      "nextAcceptanceCheck": "Retain selected storage acceptance; obtain full exact-candidate CI and source-bound production controls before technical completion."
     },
     {
       "area": "onboarding and identity/access",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "Tutorial skip and applied receipt survive failed storage methods in both viewport/theme combinations; real choice UI and completion callback independently checked. Source public/lib/tutorialCampaign.js still requires a confirmed effects receipt."
+      ],
+      "gaps": [
+        "No new authenticated signup/login/recovery or positive Obelisk integration journey verified; existingCANON045launchgap remains. Core anonymous play does not establish account-bearing readiness."
+      ],
+      "nextAcceptanceCheck": "Keep accountless tutorial proof distinct from future identity-owner acceptance; do not add auth scope."
     },
     {
       "area": "accessibility, mobile parity and every supported theme",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "24local and12hosted PNGs individually inspected;1440×1000and390×844dark/light; feedback alert is role=alert and draft/actions fit viewport."
+      ],
+      "gaps": [
+        "Scope is the selected touched states, not every existing surface, keyboard/focus path, assistive technology or physical device. Baseline mobile failed tutorial state required scroll."
+      ],
+      "nextAcceptanceCheck": "Preserve touched-state hashes; require full scoped accessibility/device acceptance for any broader launch claim."
     },
     {
       "area": "performance and capacity",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "reports/s124-staging-performance.json:five-run hosted desktop/mobile lab proof verified; measured LCP516/492ms,INP24/24ms,CLS0.0003/0.0131. Boot649992/650000bytes,52modules."
+      ],
+      "gaps": [
+        "Eight-byte boot headroom is brittle; public field performance, concurrent capacity and long-career limits are unmeasured. Lab success is not field success."
+      ],
+      "nextAcceptanceCheck": "Retain unchanged cap and lab proof; separately measure game-shell/long-career load and actual capacity before claims."
     },
     {
       "area": "security, privacy, data integrity and abuse controls",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "Six-module denied-getter/method checks and explicit receipt writer failure verified. Working secret scan25changedcontents with0findings. src/community/server.js has origin admission,mutation-origin requirement,process-localrate limiting and signed participation capabilities; src/server.js invokes franchise authority before mutations."
+      ],
+      "gaps": [
+        "Source inspection is not live abuse/load proof or complete authenticated cross-tenant testing. Existing policy/privacy commitments must remain unchanged."
+      ],
+      "nextAcceptanceCheck": "Run affected exact-source access/abuse cases under a separately scoped plan; retain current no-policy-change boundary."
     },
     {
       "area": "backup, recovery and rollback",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "reports/s124-rollback.json records prior frontend provider deployment490and priorAPI490immutable tags; transport review verifies scope/pins/attempt journaling. gistSync provides versioned integrity/authentication checks."
+      ],
+      "gaps": [
+        "No isolated database restore demonstrated at this checkpoint; optional browser-state fallback cannot make blocked persistence durable. Full saved-career recovery and corrupted Gist drills are not newly measured."
+      ],
+      "nextAcceptanceCheck": "Keep technical rollback available; owner must produce isolated restore and user-save recovery evidence before broad recovery readiness."
     },
     {
       "area": "email and notifications where used",
-      "status": "partial",
+      "status": "unknown",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "public/contact.html names football@playfranchisearchitect.com and offers in-game/GitHub/email paths. Bounded task projection retains founder-deferred reply-as proof."
+      ],
+      "gaps": [
+        "A mailto link proves neither inbound delivery nor reply-as identity. No new email round-trip receipt exists. No transactional notification use was demonstrated in the20file survey."
+      ],
+      "nextAcceptanceCheck": "Follow existing deferred email-owner scope; require delivery plus reply-as evidence before treating this launch requirement as passed."
     },
     {
       "area": "observability and actionable analytics",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "Native staging14/14bindssource/artifactandlaunchReady:false. Community health exposes sourceRevision; local server tracks routeHits/routeTiming. Feedback receipt schema excludes identifiers/savepayloads."
+      ],
+      "gaps": [
+        "No real opted-in cohort, field alert response or measured user-journey success established; synthetic lab/browser controls do not constitute engagement telemetry."
+      ],
+      "nextAcceptanceCheck": "Retain source-bound health and honest pending labels; measure opt-in cohort freshness/suppression/deletion only under existing separate work."
     },
     {
       "area": "feedback, support and issue triage",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Contextual feedback storage methods are unguarded; a failed receipt write aborts its event handler.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "Contextual failed-save/retry state is verified on hosted source. public/lib/betaFeedback.js prepares bounded public-safe GitHub issue context and requires explicit selection of a receipt; contact source names routes."
+      ],
+      "gaps": [
+        "No real support issue response/triage turnaround or player comprehension of the failure message measured. No issue or email was sent by this review."
+      ],
+      "nextAcceptanceCheck": "Maintain draft-safe behavior and bounded disclosure; use real voluntarily shared feedback for later prioritization without manufacturing rows."
     },
     {
       "area": "branding, legal, contact and rights/provenance",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "public/contact.html links Studio home and states2026VaultSparkownership; terms.html has proprietary/all-rights-reserved wording; privacy.html discloses local saves,tabtokens,optionalGistandCommunityStats. docs/RIGHTS_PROVENANCE.md has proprietary default and no declared exceptions."
+      ],
+      "gaps": [
+        "Rights document third-party table is a placeholder and dated2026-04-06; this checkpoint does not prove a complete asset/dependency legal inventory or current mailbox operation. No rights or policy changes made."
+      ],
+      "nextAcceptanceCheck": "Keep existing notices; obtain owner-reviewed complete provenance and contact evidence before launch assertions."
     },
     {
       "area": "human and agent access where applicable",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "public/agents.json declares canonical entrypoints,manualCoGMcopy/download and excludes credentials/savepayloads/hiddenstate. coGmBriefing bounds visible receipts/needs and frontOfficeAdvisor cites present packet fields."
+      ],
+      "gaps": [
+        "Discovery text is not end-to-end agent authorization proof; no new positive Obelisk human/agent session verified. No automated account integration is inferred."
+      ],
+      "nextAcceptanceCheck": "Preserve manual visible-state packet contract; require affected agent/identity journeys only when separately selected or launch-gated."
     },
     {
       "area": "staging, release evidence and truthful beta/release communication",
       "status": "partial",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "observedAt": "2026-10-26T22:54:06.854Z",
       "owner": "project release owner",
-      "sourceRevision": "9d87b5ec3f4c6845a25a4365e71979b9f591629b",
-      "observedAt": "2026-10-26T22:18:34.609Z",
-      "evidence": "Prior release evidence is historical context; full area acceptance remains unmeasured this session.",
-      "nextAcceptanceCheck": "Verify selected storage fault cases, exact candidate checks and staged/production release; retain broader readiness gaps."
+      "evidence": [
+        "Exact stagingf39b801c/artifactcccd7985, native14/14, reviewed12hostedcontrols and five-run performance. Prepared transport reviewed with41offlinechecks and rollback recorded."
+      ],
+      "gaps": [
+        "Latest .cache/s124-workflows-observed.json at22:47:08Z recordsCI40414282137,Pages40414282143andbackend40414282135stillinprogress. No production result is proved by preparation. Launch/email/founderGOholds remain separate."
+      ],
+      "nextAcceptanceCheck": "Root must observe successful exactCI/images, promote admitted candidate, verify real production frontend/API, then complete ordered closeout/publication."
     }
   ],
   "gameLoopReview": {
@@ -437,7 +515,8 @@
     ]
   },
   "processLimitations": [
-    "Local check-audit-premises accepts --input, not --audit/--record. Its actual latest selected sidecar was S124 and printed3/3 before edits, but canonical premiseGate timing is UNKNOWN; no timing certification is claimed."
+    "Local check-audit-premises accepts --input, not --audit/--record. Its actual latest selected sidecar was S124 and printed3/3 before edits, but canonical premiseGate timing is UNKNOWN; no timing certification is claimed.",
+    "Initial audit breadth and weighting were incomplete; late checkpoint review adds18considered candidates and3unselected concepts, corrects scores and records specific readiness evidence. It does not retroactively certify initial audit quality."
   ],
   "verificationHistory": [
     {
@@ -468,5 +547,425 @@
       "final": "approve",
       "report": "reports/s124-storage-review.json"
     }
-  ]
+  ],
+  "implementationOrder": [
+    "optional-storage-access",
+    "tutorial-storage-failure",
+    "feedback-storage-failure"
+  ],
+  "lateAuditReview": {
+    "at": "2026-10-26T22:54:06.854Z",
+    "report": {
+      "path": "reports/s124-audit-completeness-review.json",
+      "sha256": "d6416beee719a698ba15d1f26f2ab2d1556e0b82bd1a0550ff3a53f503b79b90"
+    },
+    "priorAudit": {
+      "path": "reports/s124-evidence-history/AUDIT-before-late-review-34137b885530d1386351415cbf4ab484b165837a2686f12ccec92ba10bf8cd09.json",
+      "sha256": "34137b885530d1386351415cbf4ab484b165837a2686f12ccec92ba10bf8cd09"
+    },
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "candidates": [
+      {
+        "axis": "features-depth",
+        "slug": "replace-missing-season-loop",
+        "title": "Add a missing season loop",
+        "premise": "The game has no sequence from weekly decisions to season reckoning.",
+        "premiseStatus": "disproven",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "context/GAME_LOOP.md defines four horizons; public/lib/seasonChapters.js builds chapters, checkpoint evidence and next calls."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "features-depth",
+        "slug": "continuity-envelope",
+        "title": "Optional continuity envelope",
+        "premise": "Players may benefit from one view distinguishing authoritative franchise state, tab-only conveniences and receipts that could not persist. The six independent storage fallbacks establish a technical basis, not demand.",
+        "premiseStatus": "need-unmeasured",
+        "disposition": "future-unselected-opportunity",
+        "evidence": [
+          "public/lib/returnDigest.js writeLastVisit returns false without a writer; public/lib/firstSeasonContract.js re-derives state; public/lib/playtestReceipts.js rejects unavailable writes. A new aggregate explanation would need player comprehension evidence."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": true,
+        "selectedNow": false
+      },
+      {
+        "axis": "ui-ux-feedback",
+        "slug": "tutorial-storage-failure",
+        "title": "Allow tutorial completion and dismissal under storage failure",
+        "premise": "Storage method exceptions could misreport successful contract application as a retry and prevent dismissal.",
+        "premiseStatus": "historical-defect-now-verified-repaired",
+        "disposition": "preserve-selected-verified",
+        "evidence": [
+          "reports/s124-before-browser.json has quota errors and no receipt; reports/s124-staging-browser.json has applied receipts and successful skip; independent staging review inspected all12PNGs."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "ui-ux-feedback",
+        "slug": "new-global-error-framework",
+        "title": "Introduce a replacement error framework",
+        "premise": "Every panel needs a new error rendering system before optional persistence can be explained.",
+        "premiseStatus": "disproven",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "public/lib/appCore.js already exports formatActionError, presentActionError and renderPanelError; selected contextualFeedback repair uses a local role=alert. Reuse existing presentation primitives."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "gamification-immersion",
+        "slug": "absence-reward-layer",
+        "title": "Grant rewards for returning after elapsed time",
+        "premise": "Elapsed absence is sufficient evidence of meaningful franchise progression.",
+        "premiseStatus": "disproven",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "public/lib/returnDigest.js requires authoritative week/record/chapter/unread deltas; elapsedMs is descriptive. context/GAME_LOOP.md rejects invented outcome or urgency."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "gamification-immersion",
+        "slug": "gm-prediction-cards",
+        "title": "Private General Manager prediction cards",
+        "premise": "An optional pre-decision confidence card could compare the player's own expectation with later recorded results, without granting rewards or predicting hidden simulation state. Engagement benefit is unknown.",
+        "premiseStatus": "need-unmeasured",
+        "disposition": "future-unselected-opportunity",
+        "evidence": [
+          "public/lib/firstSeasonContract.js already distinguishes action evidence from dashboard-derived outcomes; public/lib/playtestReceipts.js provides a bounded local-only note pattern; public/lib/challengeCodes.js supplies seeded challenge context. No prediction-card implementation is asserted absent outside the bounded survey."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": true,
+        "selectedNow": false
+      },
+      {
+        "axis": "ai-intelligence",
+        "slug": "paid-storage-advisor",
+        "title": "Require remote inference to explain storage faults",
+        "premise": "The repaired storage faults require an external model to explain or recover.",
+        "premiseStatus": "disproven",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "public/lib/frontOfficeAdvisor.js is deterministic, cites packet fields and degrades confidence with missing data; the actual repaired failures are deterministic browser exceptions."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "ai-intelligence",
+        "slug": "advisor-pressure-switchboard",
+        "title": "Read-only advisor pressure switchboard",
+        "premise": "A sandbox could show how disclosed owner/cap/injury weights would change advice ranking while keeping the actual league and authoritative recommendation untouched. Educational value is unmeasured.",
+        "premiseStatus": "need-unmeasured",
+        "disposition": "future-unselected-opportunity",
+        "evidence": [
+          "public/lib/frontOfficeAdvisor.js exposes ADVISOR_WEIGHTS, field citations and confidence margins; public/lib/coGmBriefing.js bounds current pressure inputs. Prototype only with copied evidence and explicit hypothetical labels; no new model calls or policy changes."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": true,
+        "selectedNow": false
+      },
+      {
+        "axis": "security",
+        "slug": "optional-storage-access",
+        "title": "Keep optional panels usable under denied storage access",
+        "premise": "Default argument evaluation accessed a denied localStorage getter before error handlers could run.",
+        "premiseStatus": "historical-defect-now-verified-repaired",
+        "disposition": "preserve-selected-verified",
+        "evidence": [
+          "reports/s124-storage-before.json reproduces six SecurityErrors; reports/s124-focused-checks.json records45passing focused tests; reports/s124-local-acceptance.json records9browser checks and injected franchise isolation coverage."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "security",
+        "slug": "encrypt-gist-by-default",
+        "title": "Add optional cloud-save encryption",
+        "premise": "Some players may want content confidentiality in addition to modification detection. Demand and compatibility costs are unmeasured; current authentication is not encryption.",
+        "premiseStatus": "need-unmeasured",
+        "disposition": "future-unselected-opportunity",
+        "evidence": [
+          "public/lib/gistSync.js verifies metadata and explicitly distinguishes corruption checks/HMAC; public/privacy.html explicitly says authentication does not encrypt the save. Any encryption format or policy change would require separate scope and review, never silent retrofit."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "speed-organization-efficiency",
+        "slug": "external-storage-wrapper",
+        "title": "Install a storage library for this fix",
+        "premise": "Safe property access and a few isolated storage calls require a downloaded package.",
+        "premiseStatus": "disproven",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "The selected modules now import the small local browserStorage accessor; public/lib/tutorialCampaign.js guards individual methods. Existing dependency-free implementation already passes fault injection."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "speed-organization-efficiency",
+        "slug": "restore-boot-headroom",
+        "title": "Measure and restore boot graph headroom before further UI growth",
+        "premise": "The exact candidate is below the byte cap but has only8bytes of headroom; future additions could cross it. This is future risk, not a failed current release.",
+        "premiseStatus": "verified-future-risk",
+        "disposition": "future-unselected-opportunity",
+        "evidence": [
+          "reports/s124-local-acceptance.json:649992/650000bytes,52modules; scripts/check-browser-boot-budget.mjs walks the static import graph. First step is graph attribution and cold-island boundary measurement, keeping the existing cap."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "token-cost",
+        "slug": "model-response-cache",
+        "title": "Cache paid advisor model responses",
+        "premise": "The surveyed advisor or selected storage paths incur repeated inference charges.",
+        "premiseStatus": "disproven-within-survey",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "public/lib/frontOfficeAdvisor.js uses pure deterministic functions; selected storage paths and contextualFeedback have no model request. No claim is made about every repository file."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "token-cost",
+        "slug": "co-gm-delta-envelope",
+        "title": "Measure an opt-in briefing delta export",
+        "premise": "Repeated external reading of Co-GM packets might benefit from bounded changed-field exports; no measured token problem or user demand exists yet.",
+        "premiseStatus": "need-unmeasured",
+        "disposition": "future-unselected-opportunity",
+        "evidence": [
+          "public/lib/coGmBriefing.js already limits receipts to3 and needs to4; public/agents.json describes player-initiated copy/download and excludes hidden/private state. Measurement plan: compare current packet bytes and provider-tokenized size versus candidate delta across10fixed public-safe fixtures, retaining a full packet fallback and unchanged authority fields; no saving is claimed before measurement."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "observability-honesty",
+        "slug": "feedback-storage-failure",
+        "title": "Keep feedback drafts after unsuccessful persistence",
+        "premise": "The contextual save action could throw without explaining failure, and a missing receipt writer must never count as saved.",
+        "premiseStatus": "historical-defect-now-verified-repaired",
+        "disposition": "preserve-selected-verified",
+        "evidence": [
+          "public/lib/contextualFeedback.js preserves draft and renders not-saved alert before returning; public/lib/playtestReceipts.js requires a writer. reports/s124-staging-browser.json records callback0afterfailure and callback1withpersistedreceiptafterretry in all4viewport/theme cases."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "observability-honesty",
+        "slug": "missing-release-identity",
+        "title": "Invent a new health identity mechanism",
+        "premise": "Current hosted release evidence has no exact source/artifact identity or separation from launch readiness.",
+        "premiseStatus": "disproven",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "reports/s124-staging-provenance.json verifies exact source/artifact in14checks; reports/s124-staging-browser.json health has launchReady:false. Existing mechanisms should be reused, not duplicated."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "sil-debt",
+        "slug": "new-isolation-runner",
+        "title": "Build another isolated Studio test runner",
+        "premise": "No available runner can distinguish ignored local residue from exact-candidate test health.",
+        "premiseStatus": "disproven",
+        "disposition": "rejected-on-verify",
+        "evidence": [
+          "reports/s124-initial-studio-checks.json preserves386/389rootresult; reports/s124-clean-studio-checks.json records389/389inacleanexactcandidatecheckout. Existing scripts/run-test-shard.mjs and test lane are already used."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      },
+      {
+        "axis": "sil-debt",
+        "slug": "candidate-breadth-admission",
+        "title": "Future audit candidate-breadth admission",
+        "premise": "Initial S124 axisCoverage has only one considered candidate per axis despite the protocol requiring2–6. Existing key-presence validation did not prove ideation depth.",
+        "premiseStatus": "verified-process-gap",
+        "disposition": "future-unselected-opportunity",
+        "evidence": [
+          "docs/SESSION_PROTOCOL.md §2B.5 states2–6candidates/axis and≥3novel; initial docs/AUDIT_2026-10-26.json coverage records one survivor or rejection per axis. This late review adds honest evidence, not an initial-timing pass. Future first step: propose a recipient-owned validator enhancement against a throwaway pending sidecar; no shared gate or sibling edits authorized here."
+        ],
+        "consideredAt": "2026-10-26T22:54:06.854Z",
+        "checkpoint": "late S124 review; not initial audit",
+        "novelConcept": false,
+        "selectedNow": false
+      }
+    ],
+    "coverage": {
+      "features-depth": {
+        "considered": [
+          "replace-missing-season-loop",
+          "continuity-envelope"
+        ],
+        "count": 2
+      },
+      "ui-ux-feedback": {
+        "considered": [
+          "tutorial-storage-failure",
+          "new-global-error-framework"
+        ],
+        "count": 2
+      },
+      "gamification-immersion": {
+        "considered": [
+          "absence-reward-layer",
+          "gm-prediction-cards"
+        ],
+        "count": 2
+      },
+      "ai-intelligence": {
+        "considered": [
+          "paid-storage-advisor",
+          "advisor-pressure-switchboard"
+        ],
+        "count": 2
+      },
+      "security": {
+        "considered": [
+          "optional-storage-access",
+          "encrypt-gist-by-default"
+        ],
+        "count": 2
+      },
+      "speed-organization-efficiency": {
+        "considered": [
+          "external-storage-wrapper",
+          "restore-boot-headroom"
+        ],
+        "count": 2
+      },
+      "token-cost": {
+        "considered": [
+          "model-response-cache",
+          "co-gm-delta-envelope"
+        ],
+        "count": 2
+      },
+      "observability-honesty": {
+        "considered": [
+          "feedback-storage-failure",
+          "missing-release-identity"
+        ],
+        "count": 2
+      },
+      "sil-debt": {
+        "considered": [
+          "new-isolation-runner",
+          "candidate-breadth-admission"
+        ],
+        "count": 2
+      }
+    },
+    "novelConceptCount": 3,
+    "scoreCorrection": {
+      "status": "required-late-mechanical-correction",
+      "provenance": "SESSION_PROTOCOL game weights:UX2,gamification3,AI/depth1.5,otherwisebaseline1; live overlay:+UX1,+gamification2,+speed1.",
+      "initialAxes": {
+        "features-depth": 1.5,
+        "ui-ux-feedback": 5,
+        "gamification-immersion": 5,
+        "ai-intelligence": 1.5,
+        "security": 3,
+        "speed-organization-efficiency": 3,
+        "token-cost": 1.5,
+        "observability-honesty": 3,
+        "sil-debt": 1.5
+      },
+      "correctedAxes": {
+        "features-depth": 1.5,
+        "ui-ux-feedback": 3,
+        "gamification-immersion": 5,
+        "ai-intelligence": 1.5,
+        "security": 1,
+        "speed-organization-efficiency": 2,
+        "token-cost": 1,
+        "observability-honesty": 1,
+        "sil-debt": 1
+      },
+      "formula": "priority=(impact*axisWeight*innovation)/log2(effortHours+2)",
+      "selectedItemCorrections": [
+        {
+          "slug": "optional-storage-access",
+          "axis": "security",
+          "impact": 7,
+          "innovation": 3,
+          "effortHours": 1,
+          "recordedPriority": 13.249524825000607,
+          "correctedPriority": 13.249524825000607
+        },
+        {
+          "slug": "tutorial-storage-failure",
+          "axis": "ui-ux-feedback",
+          "impact": 7,
+          "innovation": 3,
+          "effortHours": 1,
+          "recordedPriority": 13.249524825000607,
+          "correctedPriority": 39.748574475001824
+        },
+        {
+          "slug": "feedback-storage-failure",
+          "axis": "observability-honesty",
+          "impact": 7,
+          "innovation": 3,
+          "effortHours": 1,
+          "recordedPriority": 13.249524825000607,
+          "correctedPriority": 13.249524825000607
+        }
+      ],
+      "selectionBoundary": "Correct arithmetic late without pretending initial weighted ranking was correct. Preserve the same three already verified outcomes; no additional candidates become selected."
+    },
+    "scopeChange": false,
+    "boundary": "Late completeness/scoring correction; initial audit breadth/scoring and canonical timing defects remain explicit. No new selected work or backdated evidence."
+  },
+  "currentRelease": {
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+    "acceptance": "reports/s124-release-acceptance.json",
+    "status": "technical-production-verified-closeout-pending"
+  }
 }

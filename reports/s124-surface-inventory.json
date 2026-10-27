@@ -1,0 +1,102 @@
+{
+  "session": 124,
+  "observedAt": "2026-10-26T22:37:53.662Z",
+  "githubPages": {
+    "status": null,
+    "htmlUrl": "https://vaultsparkstudios.com/vaultspark-football-gm/",
+    "cname": null,
+    "buildType": "workflow",
+    "source": {
+      "branch": "main",
+      "path": "/"
+    }
+  },
+  "observations": [
+    {
+      "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
+      "status": 301,
+      "location": "http://vaultsparkstudios.com/vaultspark-football-gm/",
+      "sourceRevision": null
+    },
+    {
+      "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/_health",
+      "status": 301,
+      "location": "http://vaultsparkstudios.com/vaultspark-football-gm/_health",
+      "sourceRevision": null
+    }
+  ],
+  "traces": [
+    {
+      "start": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
+      "hops": [
+        {
+          "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
+          "status": 301,
+          "location": "http://vaultsparkstudios.com/vaultspark-football-gm/"
+        },
+        {
+          "url": "http://vaultsparkstudios.com/vaultspark-football-gm/",
+          "status": 301,
+          "location": "https://vaultsparkstudios.com/vaultspark-football-gm/"
+        },
+        {
+          "url": "https://vaultsparkstudios.com/vaultspark-football-gm/",
+          "status": 301,
+          "location": "https://vaultsparkstudios.com/games/franchise-architect/"
+        },
+        {
+          "url": "https://vaultsparkstudios.com/games/franchise-architect/",
+          "status": 200,
+          "location": null,
+          "page": {
+            "title": "Franchise Architect — Free NFL Management Game | VaultSpark Studios",
+            "gameSetupPresent": false,
+            "appLinks": [
+              "https://playfranchisearchitect.com/",
+              "https://playfranchisearchitect.com/",
+              "https://playfranchisearchitect.com/",
+              "https://playfranchisearchitect.com/"
+            ],
+            "appFrames": []
+          }
+        }
+      ]
+    },
+    {
+      "start": "https://vaultsparkstudios.github.io/vaultspark-football-gm/_health",
+      "hops": [
+        {
+          "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/_health",
+          "status": 301,
+          "location": "http://vaultsparkstudios.com/vaultspark-football-gm/_health"
+        },
+        {
+          "url": "http://vaultsparkstudios.com/vaultspark-football-gm/_health",
+          "status": 301,
+          "location": "https://vaultsparkstudios.com/vaultspark-football-gm/_health"
+        },
+        {
+          "url": "https://vaultsparkstudios.com/vaultspark-football-gm/_health",
+          "status": 301,
+          "location": "https://vaultsparkstudios.com/games/franchise-architect/"
+        },
+        {
+          "url": "https://vaultsparkstudios.com/games/franchise-architect/",
+          "status": 200,
+          "location": null,
+          "page": {
+            "title": "Franchise Architect — Free NFL Management Game | VaultSpark Studios",
+            "gameSetupPresent": false,
+            "appLinks": [
+              "https://playfranchisearchitect.com/",
+              "https://playfranchisearchitect.com/",
+              "https://playfranchisearchitect.com/",
+              "https://playfranchisearchitect.com/"
+            ],
+            "appFrames": []
+          }
+        }
+      ]
+    }
+  ]
+}

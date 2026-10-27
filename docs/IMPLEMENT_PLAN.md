@@ -10,3 +10,5 @@ Live local lifecycle FORGE/FB, health yellow; no transition.
 3. **Keep feedback drafts visible when browser persistence fails** (L2). Make optional feedback cadence reads and writes safe. Require an actual receipt writer for successful saving. Catch save failure in the contextual prompt, retain the draft and show an accessible retry message; never invoke onSaved or mark completed after a failed save. Test denied reads, quota failure and a successful retry in both themes and desktop/mobile. Readiness: feedback, support and issue triage. Done only with fault-injection tests and real browser evidence.
 
 Stop after these three outcomes, required exact-candidate checks, staging, production readback and full ordered closeout.
+
+Late audit review corrects priority weighting and adds the required candidate/readiness breadth; the initial sidecar is preserved by hash. Selection and this dependency order stay unchanged. Three source outcomes are locally and on staging verified; exact CI, production and closeout remain pending.

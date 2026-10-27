@@ -1,5 +1,15 @@
 # Agent Memory
 
+## Session 124 durable patterns
+
+- Storage property access can throw before a function body; use guarded accessors and isolate method failures.
+- Optional persistence must not block tutorial completion/dismissal or claim feedback saved without a real write.
+- Preserve drafts and success-callback boundaries across failed writes and a successful retry.
+- Use product applyTheme on root/body and verify complete applied receipts, not just skip controls.
+- Keep real structured measurements and freeze checked receipt bytes before publication.
+- Final metadata needs fresh isolated acceptance; ignored local files are not committed-source proof.
+
+
 ## Session 123 durable patterns
 
 - Browser Storage objects can exist while each operation throws; isolate reads/writes/removals and preserve in-tab empty tombstones.

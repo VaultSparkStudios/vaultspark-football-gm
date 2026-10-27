@@ -1,0 +1,32 @@
+{
+  "session": 124,
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "startedAt": "2026-10-26T22:35:10.830Z",
+  "completedAt": "2026-10-26T22:43:03.366Z",
+  "initialClean": true,
+  "worktree": ".cache/s124-clean",
+  "existingDependenciesLinked": true,
+  "exitCode": 0,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 389,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "verified": true,
+  "generated": [
+    "context/PROJECT_STATUS.json",
+    "docs/STARTUP_BRIEF.md"
+  ],
+  "untracked": [],
+  "rawLog": {
+    "path": ".cache/s124-clean-studio.log",
+    "sha256": "223733da33fda9e62c2c75d23c9d19e93afd4ca973a176aefb00d0e5cf1276f4"
+  },
+  "initialRootFailure": "reports/s124-initial-studio-checks.json",
+  "scope": "Exact committed candidate, ignored root files absent. Generated status/brief diff retained separately."
+}

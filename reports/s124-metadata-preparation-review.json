@@ -1,0 +1,63 @@
+{
+  "session": 124,
+  "reviewer": "independent studio-reviewer",
+  "verdict": "approve",
+  "reviewedAt": "2026-10-26T23:58:53.346Z",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactFingerprint": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "scope": "Dormant metadata/intelligence helper source review only; no execution or actual metadata/scoring result is certified",
+  "reviewedFiles": [
+    {
+      "path": ".cache/s124-metadata-tools.mjs",
+      "sha256": "83bd44ef20b5d9ae1539d3732cfd83359fdc935a1240e8d2355c60223b3e3152"
+    },
+    {
+      "path": ".cache/s124-stage-metadata.mjs",
+      "sha256": "4de19aa34bb3340b51c547f326a408d86fd9ac9fe2617ba628e8046f5a543678"
+    },
+    {
+      "path": ".cache/s124-run-final-metadata.mjs",
+      "sha256": "c0cec9e6422be0ccd86353e09904fdce2e070f938efb25fd813f9c5895c3b81e"
+    },
+    {
+      "path": ".cache/s124-closeout-gates.mjs",
+      "sha256": "0b75e1c959ff2c50a2b5160d18e9e4f308c28b2ee030ff7da15376aa80cabf01"
+    },
+    {
+      "path": ".cache/s124-refresh-ignis.mjs",
+      "sha256": "df11efd79346db8db2dcc71bd60bf8f59f7d7d99ab61c2a603c1c6c536dcf095"
+    }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "M1-stale-alias-expectation",
+      "initial": "Closeout gates compared against 124 but labelled the private expected value 123.",
+      "resolution": "Expected literal 124 now agrees with the actual alias and durable-session comparison.",
+      "status": "resolved"
+    },
+    {
+      "id": "M2-unmeasured-sibling-unchanged-claim",
+      "initial": "IGNIS scope claimed owner registry/status/sibling outputs unchanged without observing them",
+      "resolution": "Scope now says no sibling writes requested and limits canonical proof to the owned target",
+      "status": "resolved"
+    }
+  ],
+  "checks": {
+    "subject": "Metadata ROOT derives from the recipient cache parent realpath, with frozen f39 HEAD and fixed source/artifact. Closeout gates also verify the public project slug and invoke canonical exports with the explicit recipient root.",
+    "release": "Require 28 unique actual release references, complete exact-source acceptance, permitted paths and matching byte hashes. Check staged acceptance independently from index bytes.",
+    "scopeAndSecrets": "Admit only context/docs/reports/audits/logs metadata. Reject secrets, environment, CDR, credentials and key paths. Owned paths reject traversal and existing symlinks/junctions. Changed JSON must parse; text uses canonical scanContent and findings withhold values.",
+    "staging": "Require the explicit reviewed inventory hash and unchanged recomputed index/worktree inventory. Verify the exact staged path set, staged release hash and empty root unstaged diff before recording binary patch/tree proof.",
+    "isolatedMetadata": "Create only a new owned detached worktree; preserve an existing one. Verify Git common directory and frozen SHA, apply the binary patch to the index, and require the resulting tree to equal the reviewed stage. Link only existing owned dependencies through a checked junction; no installation or download.",
+    "suiteResult": "Run only the project Studio shard. Require direct process status, signal/error absence and a strict 389 passing summary. The staged tree must remain unchanged. Record generated status/brief diffs separately; unexpected tracked/untracked outputs are nonpassing. Existing log/result/running markers prevent blind replay.",
+    "windows": "Use safe-spawn and windowsHide. The NPM shell invocation occurs only on Windows. These helpers contain no private-key copy, credential transport or remote command.",
+    "closeoutGates": "Compare alias/durable session 124 and run canonical coherence, freshness, summary and context checks against the recipient root. A legacy-name exception requires the actual Git remote, declared mount and unchanged tracked historical brief. Missing flaky history remains unmeasured.",
+    "ignis": "Require actual release, ordered writer journal and current status. Use the registered installed scorer; its registry project realpath must match ROOT. Canonical scoreVerifiedProject checks fresh owned-target history/mind outputs and stable scorer source identity. Real attempt/result receipts are still needed before claiming fresh scoring.",
+    "ignoredScorerOutputs": "git check-ignore confirmed the IGNIS score-history and mind-score output files are ignored; those scorer outputs are excluded from public metadata staging."
+  },
+  "limitations": [
+    "Reviewer executed no helper, metadata stage, worktree run, gate producer or scorer. No full suite or remote mutation.",
+    "Approval does not imply actual release, ordered write-back, metadata acceptance, fresh IGNIS result, publication or full closeout completion.",
+    "Root must inspect the actual metadata inventory and supply its exact approval hash. Generated status/brief bytes must not replace the tested staged tree.",
+    "Changed helper hashes require another review. Actual post-writeback, metadata and scorer results need separate verification."
+  ]
+}

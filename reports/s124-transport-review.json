@@ -1,0 +1,181 @@
+{
+  "session": 124,
+  "reviewer": "independent studio-reviewer",
+  "verdict": "approve",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactFingerprint": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "previousBackendRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+  "history": [
+    {
+      "round": 1,
+      "verdict": "fix",
+      "findings": [
+        {
+          "id": "T1-image-attempt-race",
+          "finding": "Initial image verifier accepted an initial successful run and its jobs without re-reading the run, and did not require a positive integer attempt. A rerun racing the jobs snapshot or malformed attempt could inherit prior green image evidence.",
+          "evidence": "Original S124 helper was copied byte-for-byte from retained S123 image verifier; offline controls against the retained original accepted rerun-during-jobs, missing-attempt and negative-attempt cases with only one run read.",
+          "requiredFix": "Validate positive integer attempt and complete unique jobs collection; re-read run after jobs and require the same successful attempt.",
+          "status": "resolved",
+          "resolution": "Corrected verifier validates attempt/jobs and re-reads stable successful run. Nine independent offline cases pass."
+        },
+        {
+          "id": "T2-backend-final-admission",
+          "finding": "Backend CI/image admission occurred before ops inventory and target/user/identity admission; it lacked a final stable run/attempt check immediately before mutation.",
+          "requiredFix": "Re-observe CI and image producer immediately before attempt marker and require unchanged successful run/attempt identities.",
+          "status": "resolved",
+          "resolution": "CI and image admission are repeated immediately before final live target checks; run and attempt must match original admission."
+        },
+        {
+          "id": "T3-target-expiry",
+          "finding": "Target age was checked before later bounded network admission and could expire beyond its own five-minute bound before mutation.",
+          "requiredFix": "Re-read live previous API/database state and re-check the five-minute target age immediately before the attempt marker.",
+          "status": "resolved",
+          "resolution": "Final previous-source API/database readback and finalTargetAge are checked immediately before attempt marker."
+        }
+      ]
+    }
+  ],
+  "sourceReview": {
+    "frontend": [
+      "Candidate source/artifact must match selected static manifest; staging native14/14 and byte-identical excluded metadata are observed afresh.",
+      "Complete upload path/byte inventory includes mirrors and rejects unexpected files and symlinks.",
+      "Required exact-candidate CI is checked twice; changed CI run/attempt refuses admission. Pages observation rejects executed red jobs/steps and stale attempt races without claiming pending workflow success.",
+      "Existing rollback ID, reviewed legacy-surface traces and installed Wrangler are required. No download fallback.",
+      "A durable attempt marker precedes brokered upload. Existing same-candidate attempt/completion refuses replay; provider/native observation is the recovery path.",
+      "Successful CLI upload alone is not completion: provider source match and production native14/14 are subsequently required."
+    ],
+    "backend": [
+      "Candidate requires exact successful API/play image producer jobs and actual push steps, plus seven-job CI coverage.",
+      "Deploy script/ops diff and every tracked ops byte are compared to exact candidate; unexpected ops files/symlinks refuse upload.",
+      "Previous live API source is intentionally49035219. Those references are current rollback/admission scope, not stale S123 candidate coupling.",
+      "Backend target comes from read-only inspection of the expected service/config root and healthy existing database. It does not provision or migrate a database.",
+      "Existing gateway-resolved identity and pre-enrolled Ed25519 host pin are required. No keyscan, enrollment or private-key read/copy is performed by cache adapters.",
+      "Canonical deployer receives a non-secret sentinel in scratch. Native adapter substitutes only the existing identity argument, preserving pin, target, noninteractive options and token-only stdin.",
+      "Identity regular-file/realpath/size/mtime checks, exact command-family/target/options checks and bounded native processes constrain the adapter.",
+      "Existing backend attempt refuses replay. Native failures preserve redacted failure receipt; successful return still requires exact-source API/database readback."
+    ],
+    "staleSessionCoupling": "No S123 imports or receipt paths remain in the seven prepared S124 helpers. Intentional490previous-source checks remain."
+  },
+  "offlineChecks": [
+    {
+      "name": "Corrected image producer admission",
+      "passed": 9,
+      "total": 9,
+      "cases": [
+        "valid same successful attempt",
+        "rerun during jobs",
+        "failure during jobs",
+        "missing attempt",
+        "negative attempt",
+        "truncated jobs",
+        "duplicate job ID",
+        "foreign job SHA",
+        "failed image push"
+      ],
+      "scope": "One positive control and eight rejected malformed/racing controls; synthetic request adapter, no network."
+    },
+    {
+      "name": "Pages observation and native existing-identity adapter",
+      "passed": 11,
+      "total": 11,
+      "scope": "Seven Pages state/provenance/race checks and four native adapter checks, using S124 imports and synthetic delegate/key-placeholder fixtures. No remote command executed."
+    },
+    {
+      "name": "Shared CI wait and promotion binding",
+      "passed": 14,
+      "total": 14,
+      "scope": "Project-native test/candidate-ci-wait.test.js and test/promotion-bind.test.js. Includes seven-job/actual-step coverage, rerun races, pagination, timeout, failure and exact source/artifact binding."
+    },
+    {
+      "name": "Complete upload inventory and rejected mutations",
+      "passed": 7,
+      "total": 7,
+      "actualFiles": 3650,
+      "primaryFiles": 362,
+      "completeUploadDigest": "7756aa066bcadb08548477a83ceff4527a55195d4da197409de3b4ea585a5668",
+      "cases": [
+        "actual complete upload inventory",
+        "extra file",
+        "removed file",
+        "changed byte hash",
+        "foreign candidate source",
+        "foreign artifact digest",
+        "unauthorized metadata extension"
+      ]
+    }
+  ],
+  "limitations": [
+    "Prepared transport and offline verification do not prove deployment, live successful CI/image production or production readiness.",
+    "Approval applies only to the reviewed helper hashes and this exact selected candidate/artifact. Root owns fresh live admission and deployment observation.",
+    "Backend canonical transport retries only its defined connection failures; an interrupted top-level recorded attempt still requires live reconciliation rather than replay.",
+    "No credentials, private key material, provider host addresses or absolute local filesystem paths are included in this report."
+  ],
+  "reviewedFiles": [
+    {
+      "path": ".cache/s124-deploy-frontend.mjs",
+      "sha256": "13d21cc013b873e5f7c43867a4c254dab5b87ebae15624188833ee3937bdd2eb"
+    },
+    {
+      "path": ".cache/s124-upload-inventory.mjs",
+      "sha256": "708628a60a90d770f5fbcc8d780237c54c0c7b7ddd433edd4833ee7834e07eea"
+    },
+    {
+      "path": ".cache/s124-deploy-backend.mjs",
+      "sha256": "2c11c3e8d9c22ab38537503132ebb19388ac021f90f07f31d7cd283300db55b1"
+    },
+    {
+      "path": ".cache/s124-backend-target.mjs",
+      "sha256": "cb9c31680c33c955629d906e4874dc0a2059488ec50013dea64d7d6b57ca6ba6"
+    },
+    {
+      "path": ".cache/s124-image-proof.mjs",
+      "sha256": "6f443dffd1d8b7f623f3bac4989bb1c2675b5beda3b60422cae73fb746320349"
+    },
+    {
+      "path": ".cache/s124-pages-observation.mjs",
+      "sha256": "4523d31b534260694093f037443e7bf6f2c297ae18810c50805b74f32d8f9ae6"
+    },
+    {
+      "path": ".cache/s124-windows-ssh-adapter.mjs",
+      "sha256": "d53426f80bb111dd9d7b0903f2ce32699232208ab59d850d0817e134c0f78d7c"
+    }
+  ],
+  "supportingFiles": [
+    {
+      "path": ".cache/s124-candidate.mjs",
+      "sha256": "3edfed92bb9de5125fdfc34ff1f9d3003c0c38cddc7c1edf3af9cb4a8cd94893"
+    },
+    {
+      "path": "scripts/wait-for-candidate-ci.mjs",
+      "sha256": "d98c9e69bc4ded5aec048bfe73f9b133c6cd28d0cc2028661544ee965270edd9"
+    },
+    {
+      "path": "scripts/deploy-backend-ssh.mjs",
+      "sha256": "2495012e0f4b4848e30805210556b664127cad965078e4570b01e4e01599b7db"
+    },
+    {
+      "path": "scripts/verify-promotion-bind.mjs",
+      "sha256": "91931f689d790eb9ac68e5f3594ad1577841021a5daa08ff895ff7f2c340a09b"
+    }
+  ],
+  "candidateSelection": {
+    "path": ".cache/s124-candidate.json",
+    "sha256": "ecbd80590ed19e338e9c6a10b1444413e6e9cd6b1e0e3b46564cefa9ece685aa",
+    "runs": {
+      "ci": 40414282137,
+      "backendImages": 40414282135,
+      "pages": 40414282143
+    }
+  },
+  "receiptCorrection": {
+    "status": "verified",
+    "observation": "Backend attempt marker retains CI/image attempt numbers and final backend report retains CI attempt, so later reruns cannot erase admission-attempt identity."
+  },
+  "syntaxChecks": {
+    "passed": 7,
+    "total": 7,
+    "note": "All seven helpers parsed with node --check; final backend receipt correction parsed again."
+  },
+  "reviewedAt": "2026-10-26T22:47:10.981Z",
+  "conditionalAdmission": "Deployment remains disallowed until actual exact-candidate CI/image checks finish successfully and fresh transport admission passes; this report approves prepared transport only."
+}

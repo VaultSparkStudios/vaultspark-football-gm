@@ -1,5 +1,12 @@
 # Current State
 
+## 2026-10-27 — Session 124 — Optional storage recovery
+
+- 2026-10-27: Session 124 shipped optional-storage, tutorial and feedback recovery repairs.
+- Source `f39b801c505dfd32f180decc186e5fa5b1e72e3f`; artifact `cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7`; actual frontend/API release: reports/s124-release-acceptance.json.
+- Exact candidate CI7/7; historical focused45/45 with retained raw log; fresh exact-source local browser9/9; clean source Studio389/389; native staging/production14/14; hosted12controls per phase plus committed production browser5/5; desktop/mobile five-run performance verified. Aggregate application case count and real-user outcomes remain unmeasured. Final metadata acceptance is separate. Full narrative and remaining publication guard: context/LATEST_HANDOFF.md.
+
+
 ## 2026-10-25 — Session 123 — Reliable cloud saves and owner follow-ups
 
 - 2026-10-25: Session 123 shipped cloud-storage fallback, owner Inbox routing and readable deployment receipts.

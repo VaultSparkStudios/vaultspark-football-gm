@@ -1,0 +1,342 @@
+{
+  "session": 124,
+  "reviewer": "independent studio-reviewer",
+  "reviewRound": 2,
+  "verdict": "approve",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactFingerprint": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "deploymentState": "UNDEPLOYED at the task checkpoint; no production release proof generated or observed by this reviewer",
+  "reviewedFiles": [
+    {
+      "path": ".cache/s124-release-acceptance.mjs",
+      "sha256": "aee458ffe542f520b57f22fce7a9942ff11759a9b2d1487fccffde4c499364a9"
+    },
+    {
+      "path": ".cache/s124-release-proof-guards.mjs",
+      "sha256": "db310d391bd93b5c7f2eb0c91d9bc84e9d201790c4aa483ab624e06e284bbdf5"
+    },
+    {
+      "path": ".cache/s124-production-focused.mjs",
+      "sha256": "a54d1a0eda2524298ca7d85d51ede60baaa925d5cc473d6a97761bd8ebcf2821"
+    },
+    {
+      "path": ".cache/s124-production-focused.config.mjs",
+      "sha256": "612048bbd95a718f5f2268968551a27fcadbe98665a3e1cc21f44af570dcb49c"
+    },
+    {
+      "path": ".cache/s124-postpromotion-readback.mjs",
+      "sha256": "13325250c16ed15c06e78561343881dc33fb136d163bf56f165fd53051512534"
+    },
+    {
+      "path": ".cache/s124-local-browser-proof.mjs",
+      "sha256": "30aec337860214a1ff3457acb67aa96728ab098cb0b19a1855a21e045b159798"
+    },
+    {
+      "path": ".cache/s124-local-browser-proof.config.mjs",
+      "sha256": "57f12622b096792a8ebb22883afbab5291280e5979d2874b28f7828f6982b88c"
+    }
+  ],
+  "findings": [
+    {
+      "id": "C1-unvalidated-required-receipts",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Aliases, Pages disposition and legacy surface inventory are listed as required immutableFiles but never parsed or semantically validated by the court. File existence alone permits a missing/partial/foreign or even non-JSON receipt to stand in for that proof.",
+      "requiredFix": "Validate session/source/artifact and exact expected alias origins with two distinct successful health/manifest checks each. Validate Pages exact run/attempt and honest terminal disposition. Validate required legacy traces end at the reviewed Studio listing with canonical app links and no separate gameplay surface. Bind all checked bytes to final receipt hashes.",
+      "resolution": "Court now parses exact aliases/legacy traces and terminal Pages disposition through dedicated guards; actual legacy trace positive and malformed negatives pass."
+    },
+    {
+      "id": "C2-empty-module-and-unbound-visual-proof",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "browser.sourceFiles can be an empty array and its verification loop still succeeds. The court does not require the exact seven module names or matching hosted.modulesVerified/reviewer module evidence. Final visual receipt requires only count48, a review boolean and hashes, permitting duplicate/unrelated captures rather than exact reviewed local/staging/production matrices. The approved local storage review is not a required immutable input or checked against local.review.sha256.",
+      "requiredFix": "Require seven unique expected module paths with candidate Git bytes, hosted module hashes and reviewer evidence matching. Require reviewed capture bijections and unique phase/device/theme/state coverage; hash actual source PNGs and committed visual copies. Include and validate approved local review/hash. Keep historical baseline source identity separate from candidate source.",
+      "resolution": "Exact seven source/hosted/reviewer module hashes,12unique reviewed captures per hosted phase,48phase/device/theme/state visual bijection and approved local24capture review hash are mandatory. Actual incomplete preproduction visual receipt is rejected."
+    },
+    {
+      "id": "C3-performance-empty-and-self-attested",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "performance.profiles=[] satisfies profiles.every(p=>p.runs===5), while evaluation.status:'verified' is trusted without checking the measured profiles, sample count or recomputing acceptance. A claimed verified receipt can therefore lack all desktop/mobile measurements.",
+      "requiredFix": "Require exactly one desktop and one mobile profile, five finite samples each, actual interaction evidence, immutable source/artifact identity and unchanged thresholds. Recompute medians/profile checks through scripts/lib/hosted-performance.mjs and compare evaluation with measured data. Reject empty, duplicate, missing, nonfinite, inconsistent or stale profile proof.",
+      "resolution": "Exactly two viewport profiles with five finite actual-interaction samples, recomputed medians/evaluation/unchanged thresholds and receipt/raw digest bindings are required. Actual public/raw staging performance passes; malformed profile cases reject."
+    },
+    {
+      "id": "C4-focused-and-local-proof-not-bound",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Court accepts a focused receipt with verified:false or flaky>0 if its source/artifact/exitCode and5/0/0scalar fields match. It does not check the five unique cases, committed test source hash, raw report hash/results or producer before/after identities. Local acceptance scalar fields similarly do not bind the referenced focused/clean/review receipts.",
+      "requiredFix": "Require strict verified:true, zero flaky/cancelled/failed/skipped, all five expected committed specs with actual passing results, matching before/after source/artifact, committed test hash and raw report hash/content. Verify referenced local45/45, browser9/9, clean389/389 and approved review receipts; preserve initial failed attempts. Producer should reject stale raw output using unique run output or checked stats timestamp, and bind its reviewed config.",
+      "resolution": "Producer invokes strict focusedProof before retaining verified:true. Court validates exact five actual passed result rows/titles/timestamps/source/config/raw hashes. New localProof binds retained historical45 and exact clean389 logs and fresh actual9JSON/source/config proof without relabeling prior evidence."
+    },
+    {
+      "id": "C5-native-checks-and-provider-scope",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Fourteen native check entries need not have fourteen distinct required names; duplicates with ok:true and an artifact check satisfy the recorded-report predicate. Several verified flags use truthiness rather than strict booleans. Provider readback checks source/success but not production environment or deployment identity consistency. Frontend upload inventory is accepted from verified truthiness without its candidate digest/full inventory contract.",
+      "requiredFix": "Require the canonical14-name set with strict booleans and source/artifact checks, expected origin and complete summary consistency. Require provider deployment ID/environment production and exact source, and bind upload inventory digest/count. Reuse the existing native builder for current proof rather than trusting summary labels.",
+      "resolution": "Native14distinct names and matching source/artifact/origin required; production provider ID/environment/main branch enforced; deployment/upload/rollback booleans strict and upload primary digest/count/mounts bound."
+    },
+    {
+      "id": "C6-cancelled-pages-can-hide-new-attempt-or-red",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Cancelled-Pages branch accepts a prior noExecutedRed snapshot based only on run ID/SHA. It does not require the same attempt, inspect final attempt jobs/steps or re-read a stable terminal run. A rerun or failure occurring after the earlier snapshot can be hidden by a later cancelled conclusion. Its text also claims cancellation occurred after verifiedCI7 and actual promotion without binding that chronology.",
+      "requiredFix": "Require candidate run ID and positive matching attempt; verify complete final job/step collection, reject every executed failure/timed_out/action_required/unknown, and re-read stable terminal cancellation. Bind prior no-red observation and actual CI/promotion receipt times before cancellation. Keep cancelled as cancelled, never successful. If reliable final cancellation evidence is unavailable, retain the pending/nonpassing state.",
+      "resolution": "Same positive attempt, complete unique expected jobs and final no-red completed steps required; successful executed jobs require nonempty steps. Producer and court re-read terminal run/attempt. Unsupported cancellation actor/timing claim removed; cancelled stays cancelled."
+    },
+    {
+      "id": "C7-checked-bytes-and-final-live-evidence",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Court parses receipts earlier and re-reads them only for final hashes; concurrent receipt changes can make final references describe different bytes from those checked. CI is observed near the beginning, before later provider/native/API reads, without a final stable run/attempt check.",
+      "requiredFix": "Snapshot each input byte buffer once, validate those bytes and fail if any referenced input changes before publication. Re-observe stable required CI/image attempts immediately before writing acceptance. Preserve source/artifact and all evidence time boundaries; a stale or racing proof must remain nonpassing.",
+      "resolution": "Court snapshots input byte buffers, validates/hashes frozen bytes and refuses any checked file change. Final exact CI/image and Pages attempt/terminal readbacks must remain stable before acceptance."
+    }
+  ],
+  "offlinePredicateControls": [
+    {
+      "case": "empty performance profiles plus claimed verified evaluation",
+      "originalPredicateAccepted": true
+    },
+    {
+      "case": "focused verified:false and flaky:7 with scalar5/0/0",
+      "originalPredicateAccepted": true
+    },
+    {
+      "case": "empty module list",
+      "originalPredicateAccepted": true
+    }
+  ],
+  "controlBoundary": "These are isolated predicate demonstrations against crafted fragments. The full court was not invoked and no release acceptance was generated; missing production files currently stop it.",
+  "positiveCoverage": [
+    "Court requires actual frontend and backend receipts, current seven-job exact CI, exact successful image producer, fresh native staging/production and live API/database identity.",
+    "Prepared production-focused config selects only the five committed optional-storage cases, fixes the canonical production origin and uses one headless worker. Producer compares the test file with exact candidate Git bytes and checks health before and after.",
+    "Production-focused cases cover six denied-getter module entries, actual tutorial skip/completion and feedback missing/quota save failure/retry. Synthetic fixtures remain distinct from real-user outcomes.",
+    "Postpromotion alias producer fetches health and manifest from canonical, provider alias and immutable deployment URL, and refuses mismatched source/artifact.",
+    "Successful Pages branch uses the previously reviewed stable no-red observer. Pending/nonpassing terminal states throw rather than being labelled successful."
+  ],
+  "limits": [
+    "Approval covers the seven prepared court/producer/config hashes, not deployment or actual production acceptance.",
+    "Court remains fail-closed pending real exactCI/image success, actual transport execution, reviewed production12controls, committed production5case execution and all required receipts.",
+    "Reviewer ran no full suite and made no remote mutation.56offline controls are not added to application-case totals.",
+    "Root owns ordered closeout, final publication and native goal completion; existing launch/email/identity and process holds remain separate."
+  ],
+  "reviewedAt": "2026-10-26T23:31:12.218Z",
+  "history": [
+    {
+      "session": 124,
+      "reviewer": "independent studio-reviewer",
+      "reviewRound": 1,
+      "verdict": "fix",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "artifactFingerprint": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+      "deploymentState": "UNDEPLOYED at this review checkpoint; prepared court and observation helpers are not release proof",
+      "reviewedFiles": [
+        {
+          "path": ".cache/s124-release-acceptance.mjs",
+          "sha256": "099d48b9318619f9295ecf4f4b63a6293fa79c61449e3881b646825e1c981188"
+        },
+        {
+          "path": ".cache/s124-production-focused.mjs",
+          "sha256": "c4c1fc20b447cca32d5467d1a27561910d65517fc95555cde84281ac42e6ab9f"
+        },
+        {
+          "path": ".cache/s124-production-focused.config.mjs",
+          "sha256": "612048bbd95a718f5f2268968551a27fcadbe98665a3e1cc21f44af570dcb49c"
+        },
+        {
+          "path": ".cache/s124-postpromotion-readback.mjs",
+          "sha256": "8c74ec3ee0bff60771d867198b0222f398c4e93bf43263d01568ec7a04db1c94"
+        }
+      ],
+      "findings": [
+        {
+          "id": "C1-unvalidated-required-receipts",
+          "severity": "required",
+          "status": "open",
+          "finding": "Aliases, Pages disposition and legacy surface inventory are listed as required immutableFiles but never parsed or semantically validated by the court. File existence alone permits a missing/partial/foreign or even non-JSON receipt to stand in for that proof.",
+          "requiredFix": "Validate session/source/artifact and exact expected alias origins with two distinct successful health/manifest checks each. Validate Pages exact run/attempt and honest terminal disposition. Validate required legacy traces end at the reviewed Studio listing with canonical app links and no separate gameplay surface. Bind all checked bytes to final receipt hashes."
+        },
+        {
+          "id": "C2-empty-module-and-unbound-visual-proof",
+          "severity": "required",
+          "status": "open",
+          "finding": "browser.sourceFiles can be an empty array and its verification loop still succeeds. The court does not require the exact seven module names or matching hosted.modulesVerified/reviewer module evidence. Final visual receipt requires only count48, a review boolean and hashes, permitting duplicate/unrelated captures rather than exact reviewed local/staging/production matrices. The approved local storage review is not a required immutable input or checked against local.review.sha256.",
+          "requiredFix": "Require seven unique expected module paths with candidate Git bytes, hosted module hashes and reviewer evidence matching. Require reviewed capture bijections and unique phase/device/theme/state coverage; hash actual source PNGs and committed visual copies. Include and validate approved local review/hash. Keep historical baseline source identity separate from candidate source."
+        },
+        {
+          "id": "C3-performance-empty-and-self-attested",
+          "severity": "required",
+          "status": "open",
+          "finding": "performance.profiles=[] satisfies profiles.every(p=>p.runs===5), while evaluation.status:'verified' is trusted without checking the measured profiles, sample count or recomputing acceptance. A claimed verified receipt can therefore lack all desktop/mobile measurements.",
+          "requiredFix": "Require exactly one desktop and one mobile profile, five finite samples each, actual interaction evidence, immutable source/artifact identity and unchanged thresholds. Recompute medians/profile checks through scripts/lib/hosted-performance.mjs and compare evaluation with measured data. Reject empty, duplicate, missing, nonfinite, inconsistent or stale profile proof."
+        },
+        {
+          "id": "C4-focused-and-local-proof-not-bound",
+          "severity": "required",
+          "status": "open",
+          "finding": "Court accepts a focused receipt with verified:false or flaky>0 if its source/artifact/exitCode and5/0/0scalar fields match. It does not check the five unique cases, committed test source hash, raw report hash/results or producer before/after identities. Local acceptance scalar fields similarly do not bind the referenced focused/clean/review receipts.",
+          "requiredFix": "Require strict verified:true, zero flaky/cancelled/failed/skipped, all five expected committed specs with actual passing results, matching before/after source/artifact, committed test hash and raw report hash/content. Verify referenced local45/45, browser9/9, clean389/389 and approved review receipts; preserve initial failed attempts. Producer should reject stale raw output using unique run output or checked stats timestamp, and bind its reviewed config."
+        },
+        {
+          "id": "C5-native-checks-and-provider-scope",
+          "severity": "required",
+          "status": "open",
+          "finding": "Fourteen native check entries need not have fourteen distinct required names; duplicates with ok:true and an artifact check satisfy the recorded-report predicate. Several verified flags use truthiness rather than strict booleans. Provider readback checks source/success but not production environment or deployment identity consistency. Frontend upload inventory is accepted from verified truthiness without its candidate digest/full inventory contract.",
+          "requiredFix": "Require the canonical14-name set with strict booleans and source/artifact checks, expected origin and complete summary consistency. Require provider deployment ID/environment production and exact source, and bind upload inventory digest/count. Reuse the existing native builder for current proof rather than trusting summary labels."
+        },
+        {
+          "id": "C6-cancelled-pages-can-hide-new-attempt-or-red",
+          "severity": "required",
+          "status": "open",
+          "finding": "Cancelled-Pages branch accepts a prior noExecutedRed snapshot based only on run ID/SHA. It does not require the same attempt, inspect final attempt jobs/steps or re-read a stable terminal run. A rerun or failure occurring after the earlier snapshot can be hidden by a later cancelled conclusion. Its text also claims cancellation occurred after verifiedCI7 and actual promotion without binding that chronology.",
+          "requiredFix": "Require candidate run ID and positive matching attempt; verify complete final job/step collection, reject every executed failure/timed_out/action_required/unknown, and re-read stable terminal cancellation. Bind prior no-red observation and actual CI/promotion receipt times before cancellation. Keep cancelled as cancelled, never successful. If reliable final cancellation evidence is unavailable, retain the pending/nonpassing state."
+        },
+        {
+          "id": "C7-checked-bytes-and-final-live-evidence",
+          "severity": "required",
+          "status": "open",
+          "finding": "Court parses receipts earlier and re-reads them only for final hashes; concurrent receipt changes can make final references describe different bytes from those checked. CI is observed near the beginning, before later provider/native/API reads, without a final stable run/attempt check.",
+          "requiredFix": "Snapshot each input byte buffer once, validate those bytes and fail if any referenced input changes before publication. Re-observe stable required CI/image attempts immediately before writing acceptance. Preserve source/artifact and all evidence time boundaries; a stale or racing proof must remain nonpassing."
+        }
+      ],
+      "offlinePredicateControls": [
+        {
+          "case": "empty performance profiles plus claimed verified evaluation",
+          "originalPredicateAccepted": true
+        },
+        {
+          "case": "focused verified:false and flaky:7 with scalar5/0/0",
+          "originalPredicateAccepted": true
+        },
+        {
+          "case": "empty module list",
+          "originalPredicateAccepted": true
+        }
+      ],
+      "controlBoundary": "These are isolated predicate demonstrations against crafted fragments. The full court was not invoked and no release acceptance was generated; missing production files currently stop it.",
+      "positiveCoverage": [
+        "Court requires actual frontend and backend receipts, current seven-job exact CI, exact successful image producer, fresh native staging/production and live API/database identity.",
+        "Prepared production-focused config selects only the five committed optional-storage cases, fixes the canonical production origin and uses one headless worker. Producer compares the test file with exact candidate Git bytes and checks health before and after.",
+        "Production-focused cases cover six denied-getter module entries, actual tutorial skip/completion and feedback missing/quota save failure/retry. Synthetic fixtures remain distinct from real-user outcomes.",
+        "Postpromotion alias producer fetches health and manifest from canonical, provider alias and immutable deployment URL, and refuses mismatched source/artifact.",
+        "Successful Pages branch uses the previously reviewed stable no-red observer. Pending/nonpassing terminal states throw rather than being labelled successful."
+      ],
+      "limits": [
+        "No remote mutations, deployment, cancellation or full suite run by this reviewer.",
+        "No reviewed transport helper was changed.",
+        "Initial exact CI remains pending according to the root's live-handle observation; this review never converts that wait into release success.",
+        "Verdict remains fix until source-independent court/observer corrections and focused adversarial acceptance are reviewed."
+      ],
+      "reviewedAt": "2026-10-26T23:05:54.800Z"
+    }
+  ],
+  "round2": {
+    "at": "2026-10-26T23:31:12.218Z",
+    "offlineControls": {
+      "total": 56,
+      "correct": 56,
+      "failed": 0,
+      "scope": "44existing release-guard controls plus10new localProof controls, actual raw-staging performance positive and actual incomplete preproduction visual negative. Synthetic fixtures are offline contract tests, not application or production measurements.",
+      "groups": {
+        "priorGuardControls": 44,
+        "newLocalProofControls": 10,
+        "actualRawPerformance": 1,
+        "incompleteActualVisualRejection": 1
+      },
+      "unchangedPriorGuardPrefix": {
+        "sha256": "70dc656d10e3acd9dd1bbff9ad20ae6f9b57b70f6468fcfeab729a05f3ff162d",
+        "verified": true,
+        "method": "Removed only newly added parseTapSummary import and appended localProof from current guard; remaining bytes exactly match the previously44/44tested guard."
+      },
+      "localControls": {
+        "path": ".cache/s124-local-proof-review-controls.json",
+        "sha256": "4bae59dcbf7c7bfc92504a38537b8f5dc8e0b5b6fba2f90dd4d4785821a3afb9"
+      }
+    },
+    "remaining": [],
+    "localMeasurement": {
+      "path": "reports/s124-local-browser-proof.json",
+      "sha256": "737dda07faa193ccbcd8cdfa8db87763baac7f7e7a427269a3912b0ddb513e4f",
+      "passed": 9,
+      "failed": 0,
+      "flaky": 0,
+      "skipped": 0,
+      "startedAt": "2026-10-26T23:21:14.815Z",
+      "finishedAt": "2026-10-26T23:21:48.025Z",
+      "sourceFilesVerified": 10,
+      "rawReportHashVerified": true,
+      "rawLogHashVerified": true,
+      "scope": "New actual focused9measurement. Earlier list-only observation and failed7/9remain historical, not rewritten. Retained focused45 is explicitly a precommit working-tree observation; clean389 is exactcandidate."
+    },
+    "eolNormalization": {
+      "verified": true,
+      "paths": [
+        "tests-ui/first-debrief-storage.spec.js",
+        "playwright.config.mjs"
+      ],
+      "scope": "Independent backup/current hash readback and CRLF-to-LF comparison proved EOL-only differences; current10test/config/application hashes match committed source. All7application module bytes unchanged."
+    },
+    "serverHygiene": "Port4273readback found no listening process; reviewer launched no server or remote mutation.",
+    "transportHelpers": {
+      "count": 7,
+      "approvedHashesUnchanged": true
+    }
+  },
+  "currentReviewedFiles": [
+    {
+      "path": ".cache/s124-release-acceptance.mjs",
+      "sha256": "aee458ffe542f520b57f22fce7a9942ff11759a9b2d1487fccffde4c499364a9"
+    },
+    {
+      "path": ".cache/s124-release-proof-guards.mjs",
+      "sha256": "db310d391bd93b5c7f2eb0c91d9bc84e9d201790c4aa483ab624e06e284bbdf5"
+    },
+    {
+      "path": ".cache/s124-production-focused.mjs",
+      "sha256": "a54d1a0eda2524298ca7d85d51ede60baaa925d5cc473d6a97761bd8ebcf2821"
+    },
+    {
+      "path": ".cache/s124-production-focused.config.mjs",
+      "sha256": "612048bbd95a718f5f2268968551a27fcadbe98665a3e1cc21f44af570dcb49c"
+    },
+    {
+      "path": ".cache/s124-postpromotion-readback.mjs",
+      "sha256": "13325250c16ed15c06e78561343881dc33fb136d163bf56f165fd53051512534"
+    },
+    {
+      "path": ".cache/s124-local-browser-proof.mjs",
+      "sha256": "30aec337860214a1ff3457acb67aa96728ab098cb0b19a1855a21e045b159798"
+    },
+    {
+      "path": ".cache/s124-local-browser-proof.config.mjs",
+      "sha256": "57f12622b096792a8ebb22883afbab5291280e5979d2874b28f7828f6982b88c"
+    }
+  ],
+  "transportAddenda": [
+    {
+      "reviewedAt": "2026-10-27T00:28:03.979Z",
+      "verdict": "approve",
+      "previousApprovedReviewHash": "ce6b0263b7aa5f1096aa704707b3558b3e9043963bf32690087ad282f33b52b1",
+      "previousCourtSHA256": "9c9809d00e46466fb94e20af0ceca942f84483aef793ff1d16cff25076fa19d6",
+      "currentCourtSHA256": "aee458ffe542f520b57f22fce7a9942ff11759a9b2d1487fccffde4c499364a9",
+      "exactDiff": "Only GitHub read-only request header Connection:'close' added; removing that exact token reconstructs the approved bytes.",
+      "otherSixReviewedFileHashesUnchanged": true,
+      "proofAssertionsUnchanged": true,
+      "executionByReviewer": false,
+      "priorOfflineControls": 56,
+      "offlineControlDisposition": "Prior passing controls remain applicable because proof/producer/guard bytes and all court assertions are unchanged; no real court was executed during this addendum.",
+      "failedAttempts": 2,
+      "history": {
+        "path": ".cache/s124-release-court-transport-history.json",
+        "sha256": "2cd1b0080dcefd3368b11b52efa45a57f630c02679735d93b8db37b3ae9fa7da"
+      },
+      "limitations": [
+        "Both prior real court attempts failed with GitHub UND_ERR_SOCKET and emitted no acceptance. The first native tool output has no persistent raw log; the second retained raw log is named in the transport history.",
+        "Idle connection reuse is a suspected cause, not established causation. Connection close is a transport adjustment whose actual recovery must be measured by a subsequent real court invocation.",
+        "Original deploymentState remains a historical review checkpoint; this addendum does not certify acceptance, closeout or overall launch readiness."
+      ]
+    }
+  ]
+}

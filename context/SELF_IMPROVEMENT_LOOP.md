@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 123 (2026-10-25) | Total: 500/1000 | Velocity: 3 | Debt: ↓
-Avgs — 3: 616.3 | 5: 713.6 | 10: 762.3 | 25: 868.1 | all: 952.2
+Last session: 124 (2026-10-27) | Total: 510/1000 | Velocity: 3 | Debt: ↓
+Avgs — 3: 498.3 | 5: 644.4 | 10: 728.7 | 25: 849.4 | all: 946.6
 Sparkline: ▁▁▁▁▁
-Intent rate: 80% (4/5 last 5)
-SIL delta: 485 → 500 (+15). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 77 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+Intent rate: 60% (3/5 last 5)
+SIL delta: 500 → 510 (+10). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 78 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -176,3 +176,15 @@ Three selected outcomes verified. Exact candidate CI7/7; local focused49/49; cor
 ---
 
 Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+## 2026-10-27 — Session 124 — Storage faults stay optional
+
+SIL v3.0: **510 / 1000** (Dev Health 90, Creative Alignment 65, Momentum 75, Engagement 45, Process Quality 65, Cross-Repo Coherence 50, Security Posture 55, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 45). Intent outcome: **Partial** at this scoring checkpoint: product implementation and actual technical release are verified; ordered write-back is in progress, and full arc publication, final metadata and cleanup remain required. This is engineering judgment, not measured engagement, retention or financial impact.
+
+Exact candidate CI7/7; historical focused45/45 with retained raw log; fresh exact-source local browser9/9; clean source Studio389/389; native staging/production14/14; hosted12controls per phase plus committed production browser5/5; desktop/mobile five-run performance verified. Aggregate application case count and real-user outcomes remain unmeasured. Final metadata acceptance is separate. Security/automation credit reflects real denied-access/method coverage and source-bound recovery evidence. Process quality is reduced for the initial audit/timing/evidence gaps; corrections never erase those facts.
+
+Brainstorm: verify native CLI recording before edits; capture correct product themes and all callback boundaries; retain structured browser evidence at measurement time; bind frozen checked receipts to their final hashes. Commit two future [SIL:124] items on TASK_BOARD; they are unselected future discipline, not additional current implementation.
+
+
+S124 closeout recovery addendum: preparation review missed the retired lastSessionDate field; canonical atomic status writing rejected it. Exact journal/backups enabled reviewed recovery of only unfinished surfaces. Two read-only acceptance attempts also failed through GitHub socket closure; the reviewed connection-only change passed without weakening checks. These failures and the initial hosted4/5→unchanged5/5 retry remain evidence, not erased successes. The510score remains an engineering judgment and the full intent is still Partial until publication/cleanup.

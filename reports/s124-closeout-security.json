@@ -1,0 +1,33 @@
+{
+  "session": 124,
+  "at": "2026-10-27T00:40:03.332Z",
+  "settings": {
+    "checkOnly": true,
+    "findings": 0,
+    "changed": false
+  },
+  "workingSecretScan": {
+    "session": 124,
+    "at": "2026-10-27T00:35:05.833Z",
+    "mode": "working",
+    "scope": "Explicit local project changed contents scanned through canonical detector, without owner-rooted CLI substitution",
+    "scanned": 58,
+    "findings": []
+  },
+  "dependencyChanges": false,
+  "supplyChain": "Exact candidate package/lock bytes unchanged since recorded clean supply-chain check; native pre-push hook remains mandatory.",
+  "blockerDiscipline": {
+    "verdict": "ok",
+    "newBlockers": 0,
+    "scope": "Recipient-scoped canonical HEAD~1 gate; no new current metadata human-blocker labels introduced. Historical holds remain separate."
+  },
+  "exactStagedScan": {
+    "verified": true,
+    "findings": 0,
+    "scanned": 67,
+    "testedStagedTree": "64b62a09deb3eb0a423fc7141bd11dfdd23e3d0e",
+    "receipt": "reports/s124-staged-secret-scan.json",
+    "sha256": "8e9433340c5116bf37929e45ceb913bc9060344159e51d1dd5094686a47d9668",
+    "scope": "Actual67textfiles in the exact91file staged metadata tree. Later result/publication overlays require final outgoing-blob scan."
+  }
+}

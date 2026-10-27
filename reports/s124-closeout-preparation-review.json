@@ -1,0 +1,347 @@
+{
+  "session": 124,
+  "reviewer": "independent studio-reviewer",
+  "reviewRound": 2,
+  "verdict": "approve",
+  "scope": "Prepared ordered write-back and checklist adapter only; full post-writeback closeout review is still required",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactFingerprint": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "executionState": {
+    "actualReleaseAcceptanceExists": false,
+    "writerJournalExists": false,
+    "writerExecutedByReviewer": false,
+    "prepareScriptExecutedByReviewer": false,
+    "requiredDisposition": "Preparation approved only; writer remains unexecuted until actual exact-source release acceptance exists and all admission checks pass.",
+    "writerOriginalsDirectoryExists": false
+  },
+  "findings": [
+    {
+      "id": "W1-first-step-replay-and-partial-write",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Writer never checks its existing progress marker. If CURRENT_STATE succeeds and execution stops before TASK_BOARD, the marker exists but no append-only S124 entry or checked board row exists, so rerunning passes preflight and prepends duplicate S124 state. The marker is also written only after each mutation, leaving the current mutation unjournaled if it fails midway.",
+      "requiredFix": "Create an exclusive durable start journal before the first mutation; refuse any existing journal and require per-surface recovery. Persist the in-flight step before mutation and completed step afterward. Preserve original bytes/hashes of mutable targets privately before writing so a truncated write can be reconstructed without losing uncommitted active-session evidence. Do not claim an automatic replay is recovery.",
+      "resolution": "Exclusive backup directory and exact-byte wx backups/readback for eleven mutable targets, stability recheck and per-target existence/hash/path journal precede first project-record mutation. Existing journal or backup directory refuses replay. Each step records in-flight intent before mutation; partial recovery is explicit, never automatic replay."
+    },
+    {
+      "id": "W2-wave-and-records-premature-completion",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "TASK_BOARD step marks Wave3[x] even though that wave explicitly includes ordered closeout and final publication remains pending. At SIL step6 the entry says ordered records are verified before CDR/TRUTH/status/memory/audit records have completed. An interruption preserves a completed-looking wave and an inaccurate checkpoint claim despite otherwise honest Partial flags.",
+      "requiredFix": "Keep the full closeout/publication wave open until its actual acceptance, or split verified technical release from a separate open closeout/publication wave. At the SIL checkpoint state that ordered records are being written; let the final journal establish project-record completion. Final goal attainment must be recorded only after metadata/publication/cleanup evidence, with append-only completion addenda where necessary.",
+      "resolution": "Technical release becomes Wave3done while new Wave4closeout/publication/cleanup remains open. Handoff and SIL say ordered write-back is in progress; sessionIntentAchieved remains false and native goal remains active."
+    },
+    {
+      "id": "W3-release-and-session-admission",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Initial admission checks complete:true/session/source/artifact and iterates release.receipts, but an empty receipt array passes. It does not verify the expected acceptance schema/required reference coverage or current original S124 session/goal ownership. A copied or incomplete completion object, or a stale prepared writer in another session, could therefore authorize extensive context mutations.",
+      "requiredFix": "Validate the actual court-produced schema, exact candidate identity, successful required CI identity/coverage, nonempty unique required receipt references and their byte hashes before journaling. Bind the acceptance bytes and approved court/helper evidence. Validate the original S124 lock and goal association before any write; fail closed if they differ or are absent.",
+      "resolution": "Original lock/session-start and native goal binding/startHead required before writes. Actual schema2accepted source/artifact, successful exactCI and exact28unique receipt paths with matching byte hashes required; missing release currently prevents execution."
+    },
+    {
+      "id": "W4-audit-and-handoff-archive-safety",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "Dated audit bytes are captured at script entry and the dated target is replaced much later without checking whether it changed or appeared in the meantime. Both prior dated-audit and active-handoff archive writes overwrite an existing archive path without verifying that existing bytes are identical. The initial snapshots are otherwise correctly hashed and the handoff is preserved verbatim.",
+      "requiredFix": "Before replacing the dated audit, require its current existence/hash to match the captured original snapshot, including the originally-absent case. Create archival files exclusively, or reuse an existing archive only after exact-byte/hash equality. Verify preserved archive bytes before replacing the active handoff or dated target; journal original target identities for recovery.",
+      "resolution": "Exclusive archive creation or exact-byte reuse refuses collisions. Dated audit existence/hash must still match preflight, including absent-to-present races; first dated creation uses wx. Active handoff is archived verbatim before replacement and originals are additionally backed up privately."
+    },
+    {
+      "id": "W5-preparer-can-downgrade-later-state",
+      "severity": "required",
+      "status": "resolved",
+      "finding": "prepare-closeout is not only a checklist generator: it unconditionally writes activeArc status staging-verified-ci-running and productionVerified:false. Replaying it after actual promotion or under a different active goal would downgrade authoritative state while appearing to perform harmless preparation.",
+      "requiredFix": "Separate private checklist generation from state mutation, or guard the status reconciliation with matching S124 goal/lock identity and a pre-production phase. Refuse to overwrite a verified production/closeout state or an actual accepted release. Preserve newer current evidence instead of restoring a hardcoded earlier phase.",
+      "resolution": "Original S124 lock required; matching existing S124 goal/source activeArc is preserved instead of rewritten, and advanced durable session or foreign S124 goal/source refuses initialization."
+    }
+  ],
+  "positiveChecks": {
+    "orderedSurfaces": [
+      "CURRENT_STATE",
+      "TASK_BOARD",
+      "LATEST_HANDOFF",
+      "WORK_LOG",
+      "DECISIONS",
+      "SELF_IMPROVEMENT_LOOP",
+      "CDR-disposition",
+      "TRUTH_AUDIT",
+      "PROJECT_STATUS",
+      "AGENT_MEMORY",
+      "audit-and-date-record"
+    ],
+    "canonicalOrderCorrect": true,
+    "appendOnly": {
+      "preservedByAppendOperations": [
+        "logs/WORK_LOG.md",
+        "context/DECISIONS.md",
+        "context/SELF_IMPROVEMENT_LOOP.md"
+      ],
+      "cdr": "No explicit creative direction; no append is appropriate and the disposition is explicit",
+      "truthAudit": "Session entry appended; mutable overall-status header updated separately, which is not a DECISIONS/SIL/CDR append-only violation",
+      "postWritebackRequirement": "Independently compare preserved prefixes/archive bytes after actual writing; preparation cannot prove that future writes succeeded"
+    },
+    "score": {
+      "categories": {
+        "devHealth": 90,
+        "creativeAlignment": 65,
+        "momentum": 75,
+        "engagement": 45,
+        "processQuality": 65,
+        "crossRepoCoherence": 50,
+        "securityPosture": 55,
+        "ecosystemIntegration": 20,
+        "capitalEfficiency": 0,
+        "automationCoverage": 45
+      },
+      "categoryCount": 10,
+      "sum": 510,
+      "eachWithinZeroToHundred": true,
+      "rubric": "product; subjective engineering judgment is explicitly distinguished from real-user/financial measurement"
+    },
+    "intentTruth": {
+      "silIntentOutcome": "Partial",
+      "statusSessionIntentAchieved": false,
+      "activeArcCloseoutComplete": false,
+      "nativeGoal": "No completion call exists in writer; handoff retains this original goal and remaining full objective"
+    },
+    "step9": "Uses recipient-local shared updateProjectStatus/applySessionProjection and writes category sum510. No sibling state write or lifecycle/identity/policy change is introduced.",
+    "agentMemory": {
+      "projectMemory": "Prepared pattern-only insertion into context/AGENT_MEMORY.md is appropriate",
+      "personalCodexMemory": "Still explicitly required in final marker/console, so step10 project memory must not be treated as completion of personal agent memory",
+      "checklistNote": "Canonical private checklist still displays Claude memory location; use the Codex-equivalent location from SESSION_PROTOCOL, not that display path as authority"
+    },
+    "checklistAdapter": {
+      "canonicalSourceHashMatches": true,
+      "adaptedHashMatches": true,
+      "subjectCorrect": true,
+      "output": ".cache/s124-CLOSEOUT_CHECKLIST.md",
+      "scope": "Already-rendered private checklist reflects this project, product rubric and S123 prior score; does not measure Studio Ops as this recipient"
+    }
+  },
+  "remainingAfterActualWriteback": [
+    "Full independent ordered-surface and append/archive preservation review",
+    "Personal Codex memory and index disposition",
+    "Required intelligence, rolling status, state vector/entropy/genome and impact/status board rendering",
+    "Current doctor/security and isolated exact metadata acceptance",
+    "Normal main publication, containing-commit remote readback and deploy-currency disposition",
+    "Signed impact transport, owned process/worktree cleanup and original lock release",
+    "Only then full-goal completion and truthful final status reconciliation"
+  ],
+  "limitations": [
+    "Reviewer performed only source, existing context/checklist and hash/existence reads; no prepared writer, preparer, adapter or closeout action was executed.",
+    "No actual release acceptance exists at this checkpoint. This report is not permission to bypass that gate.",
+    "No human-blocked label, new selected outcome, full-suite run or remote mutation is introduced."
+  ],
+  "reviewedAt": "2026-10-26T23:51:28.227Z",
+  "reviewedFiles": [
+    {
+      "path": ".cache/s124-closeout-writeback.mjs",
+      "sha256": "3ad13afe4b076d5402dda11a43475eedb3d568f78887a3bdb9deb1dec8ec879b"
+    },
+    {
+      "path": ".cache/s124-prepare-closeout.mjs",
+      "sha256": "647664e77bbd416ad9587c2e6ed0af189fd07be39767de06cb63e62c0f7a55f8"
+    },
+    {
+      "path": ".cache/s124-render-closeout-checklist.mjs",
+      "sha256": "36d1a3b945eb602eeef784b5ffe5cbe04b722277a50ecb84e621c20cfa996e88"
+    },
+    {
+      "path": ".cache/s124-closeout-checklist-adapter.json",
+      "sha256": "5ae7f60754ae1123264fca61436fac6a206e2d70d3a55f503b4e877d003162f8"
+    },
+    {
+      "path": ".cache/s124-CLOSEOUT_CHECKLIST.md",
+      "sha256": "d7aebc469104179bff6667a9e64c84435399db0764a2730ea05acabf54d7cfa9"
+    }
+  ],
+  "history": [
+    {
+      "session": 124,
+      "reviewer": "independent studio-reviewer",
+      "reviewRound": 1,
+      "verdict": "fix",
+      "scope": "Prepared ordered write-back and checklist adapter only; full post-writeback closeout review is still required",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "artifactFingerprint": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+      "executionState": {
+        "actualReleaseAcceptanceExists": false,
+        "writerJournalExists": false,
+        "writerExecutedByReviewer": false,
+        "prepareScriptExecutedByReviewer": false,
+        "requiredDisposition": "Writer must remain unexecuted until real exact-source release acceptance and corrected preparation are verified"
+      },
+      "findings": [
+        {
+          "id": "W1-first-step-replay-and-partial-write",
+          "severity": "required",
+          "status": "open",
+          "finding": "Writer never checks its existing progress marker. If CURRENT_STATE succeeds and execution stops before TASK_BOARD, the marker exists but no append-only S124 entry or checked board row exists, so rerunning passes preflight and prepends duplicate S124 state. The marker is also written only after each mutation, leaving the current mutation unjournaled if it fails midway.",
+          "requiredFix": "Create an exclusive durable start journal before the first mutation; refuse any existing journal and require per-surface recovery. Persist the in-flight step before mutation and completed step afterward. Preserve original bytes/hashes of mutable targets privately before writing so a truncated write can be reconstructed without losing uncommitted active-session evidence. Do not claim an automatic replay is recovery."
+        },
+        {
+          "id": "W2-wave-and-records-premature-completion",
+          "severity": "required",
+          "status": "open",
+          "finding": "TASK_BOARD step marks Wave3[x] even though that wave explicitly includes ordered closeout and final publication remains pending. At SIL step6 the entry says ordered records are verified before CDR/TRUTH/status/memory/audit records have completed. An interruption preserves a completed-looking wave and an inaccurate checkpoint claim despite otherwise honest Partial flags.",
+          "requiredFix": "Keep the full closeout/publication wave open until its actual acceptance, or split verified technical release from a separate open closeout/publication wave. At the SIL checkpoint state that ordered records are being written; let the final journal establish project-record completion. Final goal attainment must be recorded only after metadata/publication/cleanup evidence, with append-only completion addenda where necessary."
+        },
+        {
+          "id": "W3-release-and-session-admission",
+          "severity": "required",
+          "status": "open",
+          "finding": "Initial admission checks complete:true/session/source/artifact and iterates release.receipts, but an empty receipt array passes. It does not verify the expected acceptance schema/required reference coverage or current original S124 session/goal ownership. A copied or incomplete completion object, or a stale prepared writer in another session, could therefore authorize extensive context mutations.",
+          "requiredFix": "Validate the actual court-produced schema, exact candidate identity, successful required CI identity/coverage, nonempty unique required receipt references and their byte hashes before journaling. Bind the acceptance bytes and approved court/helper evidence. Validate the original S124 lock and goal association before any write; fail closed if they differ or are absent."
+        },
+        {
+          "id": "W4-audit-and-handoff-archive-safety",
+          "severity": "required",
+          "status": "open",
+          "finding": "Dated audit bytes are captured at script entry and the dated target is replaced much later without checking whether it changed or appeared in the meantime. Both prior dated-audit and active-handoff archive writes overwrite an existing archive path without verifying that existing bytes are identical. The initial snapshots are otherwise correctly hashed and the handoff is preserved verbatim.",
+          "requiredFix": "Before replacing the dated audit, require its current existence/hash to match the captured original snapshot, including the originally-absent case. Create archival files exclusively, or reuse an existing archive only after exact-byte/hash equality. Verify preserved archive bytes before replacing the active handoff or dated target; journal original target identities for recovery."
+        },
+        {
+          "id": "W5-preparer-can-downgrade-later-state",
+          "severity": "required",
+          "status": "open",
+          "finding": "prepare-closeout is not only a checklist generator: it unconditionally writes activeArc status staging-verified-ci-running and productionVerified:false. Replaying it after actual promotion or under a different active goal would downgrade authoritative state while appearing to perform harmless preparation.",
+          "requiredFix": "Separate private checklist generation from state mutation, or guard the status reconciliation with matching S124 goal/lock identity and a pre-production phase. Refuse to overwrite a verified production/closeout state or an actual accepted release. Preserve newer current evidence instead of restoring a hardcoded earlier phase."
+        }
+      ],
+      "positiveChecks": {
+        "orderedSurfaces": [
+          "CURRENT_STATE",
+          "TASK_BOARD",
+          "LATEST_HANDOFF",
+          "WORK_LOG",
+          "DECISIONS",
+          "SELF_IMPROVEMENT_LOOP",
+          "CDR-disposition",
+          "TRUTH_AUDIT",
+          "PROJECT_STATUS",
+          "AGENT_MEMORY",
+          "audit-and-date-record"
+        ],
+        "canonicalOrderCorrect": true,
+        "appendOnly": {
+          "preservedByAppendOperations": [
+            "logs/WORK_LOG.md",
+            "context/DECISIONS.md",
+            "context/SELF_IMPROVEMENT_LOOP.md"
+          ],
+          "cdr": "No explicit creative direction; no append is appropriate and the disposition is explicit",
+          "truthAudit": "Session entry appended; mutable overall-status header updated separately, which is not a DECISIONS/SIL/CDR append-only violation",
+          "postWritebackRequirement": "Independently compare preserved prefixes/archive bytes after actual writing; preparation cannot prove that future writes succeeded"
+        },
+        "score": {
+          "categories": {
+            "devHealth": 90,
+            "creativeAlignment": 65,
+            "momentum": 75,
+            "engagement": 45,
+            "processQuality": 65,
+            "crossRepoCoherence": 50,
+            "securityPosture": 55,
+            "ecosystemIntegration": 20,
+            "capitalEfficiency": 0,
+            "automationCoverage": 45
+          },
+          "categoryCount": 10,
+          "sum": 510,
+          "eachWithinZeroToHundred": true,
+          "rubric": "product; subjective engineering judgment is explicitly distinguished from real-user/financial measurement"
+        },
+        "intentTruth": {
+          "silIntentOutcome": "Partial",
+          "statusSessionIntentAchieved": false,
+          "activeArcCloseoutComplete": false,
+          "nativeGoal": "No completion call exists in writer; handoff retains this original goal and remaining full objective"
+        },
+        "step9": "Uses recipient-local shared updateProjectStatus/applySessionProjection and writes category sum510. No sibling state write or lifecycle/identity/policy change is introduced.",
+        "agentMemory": {
+          "projectMemory": "Prepared pattern-only insertion into context/AGENT_MEMORY.md is appropriate",
+          "personalCodexMemory": "Still explicitly required in final marker/console, so step10 project memory must not be treated as completion of personal agent memory",
+          "checklistNote": "Canonical private checklist still displays Claude memory location; use the Codex-equivalent location from SESSION_PROTOCOL, not that display path as authority"
+        },
+        "checklistAdapter": {
+          "canonicalSourceHashMatches": true,
+          "adaptedHashMatches": true,
+          "subjectCorrect": true,
+          "output": ".cache/s124-CLOSEOUT_CHECKLIST.md",
+          "scope": "Already-rendered private checklist reflects this project, product rubric and S123 prior score; does not measure Studio Ops as this recipient"
+        }
+      },
+      "remainingAfterActualWriteback": [
+        "Full independent ordered-surface and append/archive preservation review",
+        "Personal Codex memory and index disposition",
+        "Required intelligence, rolling status, state vector/entropy/genome and impact/status board rendering",
+        "Current doctor/security and isolated exact metadata acceptance",
+        "Normal main publication, containing-commit remote readback and deploy-currency disposition",
+        "Signed impact transport, owned process/worktree cleanup and original lock release",
+        "Only then full-goal completion and truthful final status reconciliation"
+      ],
+      "limitations": [
+        "Reviewer performed only source, existing context/checklist and hash/existence reads; no prepared writer, preparer, adapter or closeout action was executed.",
+        "No actual release acceptance exists at this checkpoint. This report is not permission to bypass that gate.",
+        "No human-blocked label, new selected outcome, full-suite run or remote mutation is introduced."
+      ],
+      "reviewedAt": "2026-10-26T23:45:38.886Z",
+      "reviewedFiles": [
+        {
+          "path": ".cache/s124-closeout-writeback.mjs",
+          "sha256": "8c4cd82502d984a9544ca25aa9215e9d6cbdceddefaa5dc2c14f86a417038d0c"
+        },
+        {
+          "path": ".cache/s124-prepare-closeout.mjs",
+          "sha256": "647664e77bbd416ad9587c2e6ed0af189fd07be39767de06cb63e62c0f7a55f8"
+        },
+        {
+          "path": ".cache/s124-render-closeout-checklist.mjs",
+          "sha256": "36d1a3b945eb602eeef784b5ffe5cbe04b722277a50ecb84e621c20cfa996e88"
+        },
+        {
+          "path": ".cache/s124-closeout-checklist-adapter.json",
+          "sha256": "5ae7f60754ae1123264fca61436fac6a206e2d70d3a55f503b4e877d003162f8"
+        },
+        {
+          "path": ".cache/s124-CLOSEOUT_CHECKLIST.md",
+          "sha256": "d7aebc469104179bff6667a9e64c84435399db0764a2730ea05acabf54d7cfa9"
+        }
+      ]
+    }
+  ],
+  "initialReviewHash": "31f37cf0ec4f443f4b2bc34553c1e1736ee2fa1b034a9bbcc568a6291152cfd0",
+  "initialSourceFingerprintBoundary": "Initial findings came from the first source read. Root concurrently applied corrections before the five file hashes in round1 were captured; those hashes are not claimed as the original pre-correction script hashes. Original failed report bytes are preserved in ignored cache and history.",
+  "round2": {
+    "scope": "Source readback only, no writer/preparer/adapter execution",
+    "scoreTotalRechecked": 510,
+    "backupTargets": 11,
+    "receiptReferencesRequired": 28,
+    "fullPostWritebackReviewStillRequired": true,
+    "personalCodexMemoryStillRequired": true
+  },
+  "preparationAddenda": [
+    {
+      "reviewedAt": "2026-10-27T00:26:13.751Z",
+      "verdict": "approve",
+      "previousApprovedReportHash": "3d212caf9fd6e19fa81e646e01da1fd253791bd0dda490f6ff11106b73b2d908",
+      "scope": "Only the limitations string gained the truthful production focused first 4/5 timeout, unchanged bounded rerun 5/5 and missing first automatic trace/image disclosure.",
+      "writerPreviousSHA256": "8b9802ec2cc0b1d9324ea8430983e1f33f2be9641e378d536f84e9742932128c",
+      "writerCurrentSHA256": "3ad13afe4b076d5402dda11a43475eedb3d568f78887a3bdb9deb1dec8ec879b",
+      "exactPriorBytesReconstructedByRemovingAddedText": true,
+      "otherFourReviewedFileHashesUnchanged": true,
+      "receiptObserved": "reports/s124-production-focused-browser.json",
+      "receiptPriorAttempt": {
+        "passed": 4,
+        "failed": 1,
+        "cause": "Initial Ready wait before storage fault injection",
+        "retained": "Original first receipt and raw/log; first automatic trace/image not retained"
+      },
+      "receiptFinalVerified": true,
+      "fullPostWritebackReviewStillRequired": true,
+      "writerExecutedByReviewer": false,
+      "limitation": "Original executionState is preserved as its earlier preparation checkpoint; this addendum does not certify current release admission or actual writeback."
+    }
+  ]
+}

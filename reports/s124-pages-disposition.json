@@ -1,0 +1,484 @@
+{
+  "session": 124,
+  "at": "2026-10-27T00:24:41.246Z",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "runId": 40414282143,
+  "status": "completed",
+  "conclusion": "cancelled",
+  "prior": {
+    "id": 40414282143,
+    "headSha": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "status": "in_progress",
+    "conclusion": null,
+    "attempt": 1,
+    "observedAt": "2026-10-27T00:23:19.632Z",
+    "jobsObserved": 5,
+    "noExecutedRed": true
+  },
+  "scope": "On-push workflow is cancelled. Same-attempt final jobs/steps contain no observed executed failure; cancellation actor/timing is not inferred. CI7 and actual production promotion are independently attested; no Pages success claimed.",
+  "finalJobs": [
+    {
+      "id": 121892531939,
+      "name": "gate (studio (protocol truth))",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T22:40:53Z",
+          "completed_at": "2026-10-26T22:40:53Z"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T22:40:53Z",
+          "completed_at": "2026-10-26T22:42:47Z"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T22:42:47Z",
+          "completed_at": "2026-10-26T22:42:54Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T22:42:54Z",
+          "completed_at": "2026-10-26T22:42:54Z"
+        },
+        {
+          "name": "Run studio (protocol truth) shard",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T22:42:54Z",
+          "completed_at": "2026-10-26T22:43:25Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T22:43:25Z",
+          "completed_at": "2026-10-26T22:43:25Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T22:43:25Z",
+          "completed_at": "2026-10-26T22:43:25Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-26T22:43:25Z",
+          "completed_at": "2026-10-26T22:43:25Z"
+        }
+      ]
+    },
+    {
+      "id": 121892532209,
+      "name": "gate (core (engine + domain behavior))",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T22:40:52Z",
+          "completed_at": "2026-10-26T22:40:53Z"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T22:40:53Z",
+          "completed_at": "2026-10-26T22:41:14Z"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T22:41:14Z",
+          "completed_at": "2026-10-26T22:41:19Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T22:41:19Z",
+          "completed_at": "2026-10-26T22:41:20Z"
+        },
+        {
+          "name": "Run core (engine + domain behavior) shard",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T22:41:20Z",
+          "completed_at": "2026-10-26T23:02:37Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T23:02:37Z",
+          "completed_at": "2026-10-26T23:02:37Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T23:02:37Z",
+          "completed_at": "2026-10-26T23:02:37Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-26T23:02:37Z",
+          "completed_at": "2026-10-26T23:02:37Z"
+        }
+      ]
+    },
+    {
+      "id": 121892532230,
+      "name": "gate (sim realism)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T22:40:53Z",
+          "completed_at": "2026-10-26T22:40:54Z"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T22:40:54Z",
+          "completed_at": "2026-10-26T22:41:15Z"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T22:41:15Z",
+          "completed_at": "2026-10-26T22:41:21Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T22:41:21Z",
+          "completed_at": "2026-10-26T22:41:21Z"
+        },
+        {
+          "name": "Run sim realism shard",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T22:41:21Z",
+          "completed_at": "2026-10-26T23:19:56Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T23:19:56Z",
+          "completed_at": "2026-10-26T23:19:56Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T23:19:56Z",
+          "completed_at": "2026-10-26T23:19:56Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-26T23:19:56Z",
+          "completed_at": "2026-10-26T23:19:56Z"
+        }
+      ]
+    },
+    {
+      "id": 121892532272,
+      "name": "gate (sim contract)",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T22:40:53Z",
+          "completed_at": "2026-10-26T22:40:53Z"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T22:40:53Z",
+          "completed_at": "2026-10-26T22:41:15Z"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T22:41:15Z",
+          "completed_at": "2026-10-26T22:41:20Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T22:41:20Z",
+          "completed_at": "2026-10-26T22:41:21Z"
+        },
+        {
+          "name": "Run sim contract shard",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T22:41:21Z",
+          "completed_at": "2026-10-26T23:43:54Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-26T23:43:54Z",
+          "completed_at": "2026-10-26T23:43:54Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-26T23:43:54Z",
+          "completed_at": "2026-10-26T23:43:54Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-26T23:43:54Z",
+          "completed_at": "2026-10-26T23:43:54Z"
+        }
+      ]
+    },
+    {
+      "id": 121917563605,
+      "name": "build",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-26T23:44:00Z",
+          "completed_at": "2026-10-26T23:44:02Z"
+        },
+        {
+          "name": "Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-26T23:44:02Z",
+          "completed_at": "2026-10-26T23:44:41Z"
+        },
+        {
+          "name": "Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-26T23:44:41Z",
+          "completed_at": "2026-10-26T23:44:47Z"
+        },
+        {
+          "name": "Run actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-26T23:44:47Z",
+          "completed_at": "2026-10-26T23:44:48Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-26T23:44:48Z",
+          "completed_at": "2026-10-26T23:44:48Z"
+        },
+        {
+          "name": "Build Pages bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-26T23:44:48Z",
+          "completed_at": "2026-10-26T23:44:50Z"
+        },
+        {
+          "name": "Verify installed browser",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-26T23:44:50Z",
+          "completed_at": "2026-10-26T23:44:52Z"
+        },
+        {
+          "name": "Smoke static Pages client",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-26T23:44:52Z",
+          "completed_at": "2026-10-26T23:45:08Z"
+        },
+        {
+          "name": "Run browser release gate",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "number": 9,
+          "started_at": "2026-10-26T23:45:08Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Capture responsive artifact evidence",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Upload responsive evidence",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Upload Pages artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Bind production promotion to the exact staged candidate",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Verify stable staging serves the exact promotion candidate",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Require complete exact-candidate CI before production publication",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Publish to Cloudflare Pages (live origin)",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Verify the live origin serves this build",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v5",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 33,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-10-27T00:24:16Z",
+          "completed_at": "2026-10-27T00:24:16Z"
+        }
+      ]
+    },
+    {
+      "id": 121932382660,
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "steps": []
+    }
+  ]
+}

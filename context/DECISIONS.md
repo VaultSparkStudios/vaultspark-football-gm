@@ -122,3 +122,10 @@ Candidate456682bf introduced an async owner-action race: switching logical franc
 ---
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+## 2026-10-27 — Session 124 — Best-effort optional state and truthful saving
+
+Resolve browser storage access inside a guard before default arguments use it. Preserve existing injected stores and franchise keys. Tutorial persistence is best effort; authoritative applied-contract receipts remain required. Feedback saving requires an actual writer: failed receipt writes retain the draft/error and never call success or mark completed. Return-boundary writes without a writer return false.
+
+Routine exact-source frontend/API promotion uses existing founder authorization, source checks, staged artifact parity and pinned rollback; no lifecycle/identity, rights, spending or public-policy change is inferred. CANON-055 is fulfilled through actual player surfaces and hosted controls. Initial hosted focused run4/5 timed out waiting for initial Ready before storage injection; unchanged bounded rerun5/5 passed. First result/raw/log retained; first automatic trace/image was not retained across runner cleanup. Initial root Studio386/389 reflected ignored generic scripts/privateCDR; isolated tracked source passed389/389. Initial browser7/9 fixture failure, theme/completion harness defects and boot650878/650648/650128 failures remain recorded. Final boot649992under unchanged650000. Initial audit breadth/weighting was incomplete; late18candidate/3novel-unselected review corrects the record without backdating. Canonical premise timing remains UNKNOWN; pre-edit strict3/3 and admission were observed, but recipient flags did not record canonical timing. Initial prepared court weaknesses were corrected and independently rechecked, not used as release proof.

@@ -1,0 +1,54 @@
+{
+  "session": 124,
+  "at": "2026-10-26T22:45:18.373Z",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "selectedOutcomes": 3,
+  "focused": {
+    "passed": 45,
+    "failed": 0,
+    "receipt": "reports/s124-focused-checks.json",
+    "rawLog": {
+      "path": ".cache/s124-focused.log",
+      "sha256": "444177afd3055b740ef468369fd7ce26dad1937332744a66210004a0c48c56a4",
+      "boundAt": "2026-10-26T23:24:05.620Z",
+      "scope": "Retained original45/45working-tree transcript; not relabelled as an exact-SHA run."
+    }
+  },
+  "browser": {
+    "passed": 9,
+    "failed": 0,
+    "scope": "Corrected local optional-storage5plus existing first-debrief4",
+    "initial": {
+      "passed": 7,
+      "failed": 2,
+      "classification": "Fixture assumed overviewTab on landing; corrected to product body fallback."
+    },
+    "receipt": "reports/s124-local-browser-proof.json",
+    "measurement": "Fresh actual structured9at exact committed candidate after evidence-gap review",
+    "originalScope": "Earlier9pass list-only transcript is historical; no raw JSON is fabricated for it."
+  },
+  "studio": {
+    "passed": 389,
+    "total": 389,
+    "failed": 0,
+    "isolated": true,
+    "receipt": "reports/s124-clean-studio-checks.json",
+    "initial": "reports/s124-initial-studio-checks.json"
+  },
+  "boot": {
+    "bytes": 649992,
+    "target": 650000,
+    "modules": 52,
+    "limitUnchanged": true
+  },
+  "review": {
+    "path": "reports/s124-storage-review.json",
+    "sha256": "6442bf08d4be3f69c071f2532669e84e6514bf47497b0bc509cf8966c4f9ef3f"
+  },
+  "processLimitations": [
+    "Canonical premise timing UNKNOWN; local verifier did not support --record.",
+    "Initial root Studio386/389 is retained, not reclassified as passing.",
+    "Aggregate complete application case count is unmeasured."
+  ]
+}

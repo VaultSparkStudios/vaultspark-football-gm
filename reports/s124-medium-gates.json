@@ -1,0 +1,25 @@
+{
+  "session": 124,
+  "at": "2026-10-26T22:51:08.302Z",
+  "rows": [
+    {
+      "slug": "optional-storage-access",
+      "pass": true,
+      "reason": "no core-loop files touched",
+      "medium": "game"
+    },
+    {
+      "slug": "tutorial-storage-failure",
+      "pass": true,
+      "reason": "no core-loop files touched",
+      "medium": "game"
+    },
+    {
+      "slug": "feedback-storage-failure",
+      "pass": true,
+      "reason": "no core-loop files touched",
+      "medium": "game"
+    }
+  ],
+  "scope": "Native per-medium gate, separate from actual browser/pixel acceptance. Standalone game CLI also passed. Initial node-e import activated the helper CLI as infrastructure and exited; that invocation is not item evidence."
+}

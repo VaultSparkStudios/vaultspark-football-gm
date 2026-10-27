@@ -1,7 +1,7 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: selected S123 technical production verified; final closeout publication pending; broader readiness remains partial
+Overall status: selected S124 technical production verified; final closeout publication pending; broader readiness remains partial
 Last reviewed: 2026-10-25
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
@@ -149,3 +149,10 @@ Strict pre-implementation premise output and pending admission passed, but canon
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+## 2026-10-27 — Session 124 — Actual recovery and release evidence
+
+Sourcef39b801c505dfd32f180decc186e5fa5b1e72e3f and artifactcccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7 bind the technical release. Exact candidate CI7/7; historical focused45/45 with retained raw log; fresh exact-source local browser9/9; clean source Studio389/389; native staging/production14/14; hosted12controls per phase plus committed production browser5/5; desktop/mobile five-run performance verified. Aggregate application case count and real-user outcomes remain unmeasured. Final metadata acceptance is separate. All48reviewed images retain their original local baseline/candidate versus hosted source identities. Initial hosted focused run4/5 timed out waiting for initial Ready before storage injection; unchanged bounded rerun5/5 passed. First result/raw/log retained; first automatic trace/image was not retained across runner cleanup. Initial root Studio386/389 reflected ignored generic scripts/privateCDR; isolated tracked source passed389/389. Initial browser7/9 fixture failure, theme/completion harness defects and boot650878/650648/650128 failures remain recorded. Final boot649992under unchanged650000. Initial audit breadth/weighting was incomplete; late18candidate/3novel-unselected review corrects the record without backdating. Canonical premise timing remains UNKNOWN; pre-edit strict3/3 and admission were observed, but recipient flags did not record canonical timing. Initial prepared court weaknesses were corrected and independently rechecked, not used as release proof.
+
+Prepared helper approval is distinct from actual deployment; actual release proof is reports/s124-release-acceptance.json. Later closeout metadata requires its own acceptance. No public launch, lifecycle transition, real-user/cohort effect or isolated restore proof is claimed.

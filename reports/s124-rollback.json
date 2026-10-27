@@ -1,0 +1,16 @@
+{
+  "session": 124,
+  "at": "2026-10-26T22:35:34.770Z",
+  "frontend": {
+    "available": true,
+    "previous": {
+      "id": "9674e9d1-5282-418a-b607-32410054a026",
+      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+      "url": "https://9674e9d1.franchise-architect-football.pages.dev"
+    }
+  },
+  "backend": {
+    "previousSourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+    "restore": "Re-run the pinned, scoped native deployer using the previous immutable49035219 API/play image tags and existing protected deploy inputs; no database migration."
+  }
+}

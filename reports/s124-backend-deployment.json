@@ -1,0 +1,40 @@
+{
+  "session": 124,
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "transport": "native-pinned-ssh",
+  "identityTransport": "existing-gateway-resolved-identity-via-native-spawn-seam",
+  "privateKeyCopied": false,
+  "imageBuildRunId": 40414282135,
+  "imageBuildAttempt": 1,
+  "imageProducer": {
+    "id": 40414282135,
+    "attempt": 1,
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "verified": true,
+    "requiredJobs": [
+      "build-images (api)",
+      "build-images (play)"
+    ]
+  },
+  "ciRunId": 40414282137,
+  "ciAttempt": 1,
+  "startedAt": "2026-10-27T00:18:26.244Z",
+  "observedAt": "2026-10-27T00:18:35.356Z",
+  "hostPinVerified": true,
+  "scopedNativeDeployer": true,
+  "opsPayload": [
+    "ops/Caddyfile",
+    "ops/deploy-backend.docker-compose.yml"
+  ],
+  "copyAttempts": 1,
+  "deployAttempts": 1,
+  "verified": true,
+  "health": {
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 1,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f"
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 2,
+  "session": 124,
+  "at": "2026-10-27T00:28:59.374Z",
+  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "complete": true,
+  "scope": "Three selected storage recovery outcomes and actual exact-source frontend/API technical deployment; launch/readiness and process limitations remain explicit.",
+  "ci": {
+    "ok": true,
+    "sha": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "runId": 40414282137,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "api": {
+    "verified": true,
+    "database": "ready"
+  },
+  "live": [
+    {
+      "label": "staging",
+      "checkedAt": "2026-10-27T00:28:54.160Z",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    },
+    {
+      "label": "production",
+      "checkedAt": "2026-10-27T00:28:54.535Z",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    }
+  ],
+  "receipts": [
+    {
+      "path": "reports/s124-local-acceptance.json",
+      "sha256": "6ad10c4f388cb18c2041cb7c58a27f146fdda77718026c2b46bdd19c91be785a"
+    },
+    {
+      "path": "reports/s124-clean-studio-checks.json",
+      "sha256": "28c729c2390cf00ca22b36817833b4f0fbcd7d5e9d6656410e4f2539a18ac10b"
+    },
+    {
+      "path": "reports/s124-storage-review.json",
+      "sha256": "6442bf08d4be3f69c071f2532669e84e6514bf47497b0bc509cf8966c4f9ef3f"
+    },
+    {
+      "path": "reports/s124-before-browser.json",
+      "sha256": "c68f4744122c66ce19054b9ab13de315fe8b9d8626c50f7db64ca40508ef8942"
+    },
+    {
+      "path": "reports/s124-after-browser.json",
+      "sha256": "3dac84041660ec14ce340b1ed17bae830df17121f9fd39d251eaab6ab12a1582"
+    },
+    {
+      "path": "reports/s124-staging-deployment.json",
+      "sha256": "8bf4a941d55ff2030b3338321f7db59894648b1a94528678ef4aac753a1b011a"
+    },
+    {
+      "path": "reports/s124-staging-provenance.json",
+      "sha256": "ac55b8516736d5320e7676cc38ce3f605970d1d25df0105403e18f965402bbb2"
+    },
+    {
+      "path": "reports/s124-production-provenance.json",
+      "sha256": "5cc245b3fb708c49689587353b55a8a21532efdec7c7f0ea13da182aca9b614b"
+    },
+    {
+      "path": "reports/s124-staging-browser.json",
+      "sha256": "78e63206651989cfbbf82b965e07c77b2794a8a2af717259a709daacfec710bc"
+    },
+    {
+      "path": "reports/s124-staging-browser-review.json",
+      "sha256": "95c70e45a892541079a73ce4c9440ee05723a7ca4655cea118179b6101735010"
+    },
+    {
+      "path": "reports/s124-production-browser.json",
+      "sha256": "b6ababdf5449db12f4a538c94fc8a2dc364e099a7deb7072bcaf7c8f74abcb94"
+    },
+    {
+      "path": "reports/s124-production-browser-review.json",
+      "sha256": "712198ee0de8b805783f5d80566e8a158c31852d05fea2e1cf973e27cb1df104"
+    },
+    {
+      "path": "reports/s124-production-focused-browser.json",
+      "sha256": "26c267471b7529abb7cc0af030310b39106726bcbeba1e8614229f4d200fad04"
+    },
+    {
+      "path": "reports/s124-staging-performance.json",
+      "sha256": "0414b5eb04222a22a79aef640e7cf2f8bcf4e52eaa18754f1e1a78e9dffdf992"
+    },
+    {
+      "path": "reports/s124-production-performance.json",
+      "sha256": "dbdf377e4d77a762d93c47e5dd98ec4055e9ebce927b733a827d60c1b598bb08"
+    },
+    {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "075dd0d56560cc1fa48cbb00fe0147f3f0e46220f172caddeac830372921ebdf"
+    },
+    {
+      "path": "reports/s124-frontend-deployment.json",
+      "sha256": "32a887bbee98f505d16d38bf6c5fa03e84487a187a6d6c5396115cdeddb463d8"
+    },
+    {
+      "path": "reports/s124-backend-deployment.json",
+      "sha256": "4c210290ba46cd5b03f1a31c3480591fd059b9291c4ab8204caddc487565d337"
+    },
+    {
+      "path": "reports/s124-rollback.json",
+      "sha256": "51750dcead300570b8becc70612219dc325577e7b84a02fa8e7804a2713b6f1c"
+    },
+    {
+      "path": "reports/s124-surface-inventory.json",
+      "sha256": "340dde362e2502a32da3aa6d7ceba226c668728ac670cd90f72f3a0801fce695"
+    },
+    {
+      "path": "reports/s124-production-aliases.json",
+      "sha256": "fa01ff83ddbf73f00a2561aa1c3ba0aa4a6de00be961cf5047fc11c3e8646fbc"
+    },
+    {
+      "path": "reports/s124-pages-disposition.json",
+      "sha256": "4904e1aae2e4a593d91f9c61c858567a35f97dd74c54f342af0e6b164bb2a5be"
+    },
+    {
+      "path": "reports/s124-transport-review.json",
+      "sha256": "e0d0b1218d63166573128448b9b1b3510c17a39b0701f22683c344ee0d9bcfad"
+    },
+    {
+      "path": "reports/s124-focused-checks.json",
+      "sha256": "c956fe36075cf71e2bb3caab238d0d102a9bb175956d1528d771d09d1d59661a"
+    },
+    {
+      "path": "reports/s124-local-browser-proof.json",
+      "sha256": "737dda07faa193ccbcd8cdfa8db87763baac7f7e7a427269a3912b0ddb513e4f"
+    },
+    {
+      "path": "reports/s124-release-court-review.json",
+      "sha256": "3764c167985d30c3b65823ead33809eec7f9c9b943002d2262147542835fda81"
+    },
+    {
+      "path": "reports/s124-api-health.json",
+      "sha256": "bfb2fb2cc86cfb13d20cc0edb3312c458e7b8984eae8d488e8bb6b0fe3ea6ee3"
+    },
+    {
+      "path": "reports/s124-ci-proof.json",
+      "sha256": "73bceb97a235854b9e713976f97a5317d86037edbbb86516bba90300b9e57403"
+    }
+  ],
+  "closeoutComplete": false,
+  "processLimitations": [
+    "Canonical premise timing UNKNOWN; local verifier did not support --record.",
+    "Initial root Studio386/389 is retained, not reclassified as passing.",
+    "Aggregate complete application case count is unmeasured."
+  ]
+}

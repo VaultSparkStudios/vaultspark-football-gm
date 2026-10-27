@@ -1,0 +1,103 @@
+{
+  "session": 124,
+  "at": "2026-10-27T00:40:03.697Z",
+  "ignis": {
+    "verified": true,
+    "score": 43029,
+    "tier": "FORGE",
+    "receipt": "reports/s124-ignis-refresh.json",
+    "scope": "Canonical owned-target fresh rubric output; doctor refreshed project status during the score interval, so no frozen-project-input equivalence is claimed."
+  },
+  "sil": {
+    "score": 510,
+    "average3": 498.3,
+    "engineeringJudgment": true
+  },
+  "entropy": {
+    "project": "Franchise-Architect",
+    "date": "2026-10-27",
+    "entropy": 0.051,
+    "signal": "healthy",
+    "signals": [
+      {
+        "name": "CURRENT_STATE.md",
+        "score": 0,
+        "weight": 1,
+        "note": "0.0d"
+      },
+      {
+        "name": "TASK_BOARD.md",
+        "score": 0,
+        "weight": 1.2,
+        "note": "0.0d"
+      },
+      {
+        "name": "LATEST_HANDOFF.md",
+        "score": 0,
+        "weight": 1,
+        "note": "0.0d"
+      },
+      {
+        "name": "SELF_IMPROVEMENT_LOOP",
+        "score": 0,
+        "weight": 0.8,
+        "note": "0.0d"
+      },
+      {
+        "name": "Truth audit",
+        "score": 0.001,
+        "weight": 1,
+        "note": "0.0d since run"
+      },
+      {
+        "name": "IGNIS score",
+        "score": 0.001,
+        "weight": 0.8,
+        "note": "0.0d old"
+      },
+      {
+        "name": "SIL skip pressure",
+        "score": 0.3,
+        "weight": 1.5,
+        "note": "2 at :1, 0 at :2⛔"
+      },
+      {
+        "name": "Oldest HAR item",
+        "score": 0,
+        "weight": 1,
+        "note": "0 sessions old (oldest)"
+      },
+      {
+        "name": "Now bucket",
+        "score": 0,
+        "weight": 0.6,
+        "note": "27 open item(s)"
+      }
+    ]
+  },
+  "genome": {
+    "parsedTotal": 0,
+    "max": 25,
+    "measurement": "UNMEASURED: numeric dimensions absent from source truth audit; parser fallback zero is not a merit measurement."
+  },
+  "direction": {
+    "reviewed": true,
+    "newCreativeDirection": false,
+    "privateCdrUntouched": true,
+    "canonicalDetector": "Unavailable locally; owner-rooted detector not used as project-local proof. Current conversation and authoritative handoff reviewed manually."
+  },
+  "patterns": {
+    "personalMemory": "reports/s124-personal-memory.json",
+    "contextMemory": "context/AGENT_MEMORY.md"
+  },
+  "refs": [
+    {
+      "path": "context/STATE_VECTOR.json",
+      "sha256": "b81343709151cc2ea79a73bd73d84b849f61a926081a38e5beea8fd2abdfd019"
+    },
+    {
+      "path": "context/GENOME_HISTORY.json",
+      "sha256": "4545ee6425b7893bd92e2dac3130625d052f8ae265283cf5d2309aaa43dcdc42"
+    }
+  ]
+}
