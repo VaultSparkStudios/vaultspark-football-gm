@@ -1,5 +1,5 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-27 (Session 125 closeout) -->
+<!-- generated-at: 2026-10-28 (Session 125 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
@@ -8,7 +8,7 @@
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 125 closeout · 2026-10-27.
+> **Fast-boot brief** — generated at Session 125 closeout · 2026-10-28.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,17 +17,13 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 126 · 2026-10-27 · BUILDER MODE                         ║
+║  Session 126 · 2026-10-28 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S125) - WHAT SHIPPED ══════════════════════════╗
-║  S125: Optional journey notes no longer interrupt play, Inbox s  ║
-║  Tests Exact accepted candidate CI7/7 and image producer2/2;     ║
-║  staging/production14/14 each; scope-bound client, contract,     ║
-║  visual and hosted performance checks bound by 168 frozen court  ║
-║  receipts. Aggregate real-player/capacity outcomes remain        ║
-║  unmeasured.                                                     ║
+║  S125: Three optional player-state repairs shipped and accepted  ║
+║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -38,7 +34,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 28d · refresh required             ║
+║  Profile · game · cache stale 29d · refresh required             ║
 ║  ✓ Lifecycle authority · local FORGE · registry FORGE            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -46,7 +42,7 @@
 ║                                                                  ║
 ║    505/1000   ████████████░░░░░░░░░░░░   51%                     ║
 ║    SIL v3.0  ·  Avg3: 505  ·  Velocity 3→                        ║
-║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
+║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -65,19 +61,15 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 125 ═══════════════════════════╗
-║  Shipped:  S125: Optional journey notes no longer interrupt pla  ║
-║  Tests: Exact accepted candidate CI7/7 and image producer2/2;    ║
-║  staging/production14/14 each; scope-bound client, contract,     ║
-║  visual and hosted performance checks bound by 168 frozen court  ║
-║  receipts. Aggregate real-player/capacity outcomes remain        ║
-║  unmeasured.                                                     ║
-║  Deploy: S125 frontend/API source1ad07d99 production verified;   ║
+║  Shipped:  S125: Three optional player-state repairs shipped an  ║
+║  Tests: Unverified for this session                              ║
+║  Deploy: S125 current frontend note12a8/d541 and API/GAME1ad ar  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █████████░░░░░░░░░░░░░░░   36% used                          ║
-║     96,888 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
-║     ~48,444 tok/turn  ·  cache 50%  ·  3 turns to compact        ║
+║  ✓  ██░░░░░░░░░░░░░░░░░░░░░░    8% used                          ║
+║     22,220 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
+║     ~11,110 tok/turn  ·  cache 50%  ·  20 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -87,7 +79,7 @@
 ║  ✓  Velocity      3   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         43029 FORGE  ·  0d old                         ║
+║  ✓  IGNIS         43029 FORGE  ·  1d old                         ║
 ║  ⛔  Truth         selected S125 technical production verified;   ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -97,7 +89,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-10-27  ✓                 ║
+║  ✓  Doctor        12/12 (100%)  ·  2026-10-28  ✓                 ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -116,7 +108,7 @@
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▁▁▁▁▁  3→  (last 5 sessions)                        ║
-║  Intent:     40% achieved last 5                                 ║
+║  Intent:     60% achieved last 5                                 ║
 ║  Streak:     — (last intent not achieved)                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -130,5 +122,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 125 closeout · 2026-10-27*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 125 closeout · 2026-10-28*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

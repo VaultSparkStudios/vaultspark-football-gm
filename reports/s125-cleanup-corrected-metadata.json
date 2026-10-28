@@ -1,0 +1,68 @@
+{
+  "session": 125,
+  "at": "2026-10-28T02:24:46.555Z",
+  "verified": true,
+  "kind": "corrected-metadata",
+  "targetRelative": ".cache/s125-closeout-corrected-checkout",
+  "baseHead": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "testedStagedTree": "17da29da3e8d52077cf15515176772464ae5e44e",
+  "originalResultVerified": false,
+  "originalSummary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 388,
+    "fail": 1,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "archivedFiles": [
+    {
+      "path": ".cache/s125-closeout-corrected-checkout/.cache/active-skill.json",
+      "sha256": "e89573981205af395b045b03bcbc0335f0a6ba8951026100335b117cb9048a77",
+      "archive": ".cache/s125-note-owned-archives/corrected-metadata/e89573981205af395b045b03bcbc0335f0a6ba8951026100335b117cb9048a77.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-corrected-checkout/.cache/genius-list.json",
+      "sha256": "c3e32c28901104a00a3a354f79db01c6e10c128632ddbff6dc1f96d80bcf90fc",
+      "archive": ".cache/s125-note-owned-archives/corrected-metadata/c3e32c28901104a00a3a354f79db01c6e10c128632ddbff6dc1f96d80bcf90fc.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-corrected-checkout/.cache/skill-cost-ledger.jsonl",
+      "sha256": "cdbce08873c8c38d292d4feeac7db0fc242d9c255ff84e163bb9410a5ddd1210",
+      "archive": ".cache/s125-note-owned-archives/corrected-metadata/cdbce08873c8c38d292d4feeac7db0fc242d9c255ff84e163bb9410a5ddd1210.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-corrected-checkout/.cache/skill-costs.jsonl",
+      "sha256": "e640fb76d794c6145c26293d33f64931afa675c107be2fba740b8276c762b389",
+      "archive": ".cache/s125-note-owned-archives/corrected-metadata/e640fb76d794c6145c26293d33f64931afa675c107be2fba740b8276c762b389.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-corrected-checkout/.cache/test-progress.json",
+      "sha256": "a1e1db5f7a1161b9cf2d225f31febc0330ebfcde4e1c929163ddbca5501a2507",
+      "archive": ".cache/s125-note-owned-archives/corrected-metadata/a1e1db5f7a1161b9cf2d225f31febc0330ebfcde4e1c929163ddbca5501a2507.bin"
+    }
+  ],
+  "preservedEvidence": [
+    {
+      "path": "reports/s125-corrected-metadata.json",
+      "sha256": "d55aea26b6849e6642049d8f9ce5012ea7b298030b6e268426160453c0b28f6d"
+    },
+    {
+      "path": ".cache/s125-corrected-metadata.log",
+      "sha256": "28e43517a350c06fc9c86a1ed1309403debb89ae1cc8a5cfb3d3512789acb1c2"
+    },
+    {
+      "path": ".cache/s125-corrected-metadata-generated.patch",
+      "sha256": "2a0ee73ff3d7114dc510d7379fc4fd80a17a062337b48ab005ce29173b0fc39f"
+    },
+    {
+      "path": ".cache/s125-corrected-metadata.patch",
+      "sha256": "3b9d99ac51121a4c8a7d7f0d65c794e16d4c15e45e6c99f3cd790c61b0f219ab"
+    }
+  ],
+  "dependenciesPreserved": true,
+  "unrelatedWorktreesPreserved": true,
+  "originalLockPreserved": true
+}

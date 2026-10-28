@@ -43,3 +43,6 @@
 
   BLOCKERS
     • Independent launch readiness: Existing identity, email, cohort/capacity/device and isolated restore evidence holds remain separate; no lifecycle/public launch approval.
+
+
+S125 accepted-artifact reconciliation: Current frontend note 12a8abf88403ffbc4905b853a77495fb7babac1b / d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74; API and selected GAME release remain 1ad07d9919f75d0a8ccfb024c7f42b7f58f62937. First containing commit a215623caf79eb326889cbecbc43ec0172e90358 and signed GAME impact 01K604PB039056B3306CA03B39 are actual. Initial owned cleanup is verified. Engineering score505 is retained; no new score, game pixels, retention, revenue, recipient adoption or launch approval is inferred. Final exact staged Studio/publication/service guard is still pending. Original provisional failures remain nonpassing.

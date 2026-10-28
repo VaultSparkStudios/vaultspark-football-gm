@@ -1,19 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-10-27 (Session 125 closeout) -->
+<!-- generated-at: 2026-10-28 (Session 125 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
 ╔══ SESSION CLOSEOUT · Franchise Architect: Football · S125 ═════╗
-║  Date: 2026-10-27  ·  SIL: 505/1000  ·  Velocity: 3 →            ║
+║  Date: 2026-10-28  ·  SIL: 505/1000  ·  Velocity: 3 →            ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Shipped: S125: Optional journey notes no longer interrupt pl  ║
-║  ✓ Tests: Exact accepted candidate CI7/7 and image producer2/2;  ║
-║  ✓ Deploy: frontend/API source1ad07d9919f75d0a8ccfb024c7f42b7f5  ║
-║  ✓ Closeout: ordered writeback in progress; final metadata, con  ║
+╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ chore: record S125 verified deployment and closeout checkpoi  ║
+║  ✓ docs: publish storage recovery release note                   ║
+║  ✓ test: isolate contract recovery from league history           ║
+║  ✓ fix: preserve closed-session and capture authority            ║
+║  ✓ test: verify optional storage failures in the actual client   ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 505/1000 ═══════════════════════════════════════╗
 ║    Dev Health         90   █████████░                            ║
@@ -40,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 117 files  ·  M:19 A:0 D:0 ?:98                        ║
+║  Changes: 19 files  ·  M:14 A:0 D:0 ?:5                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -53,7 +54,7 @@
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1752/1752 · STALE                                ║
 ║  IGNIS:         1d ago                                           ║
-║  Truth:         Selected S125 technical release verified; final  ║
+║  Truth:         Selected game release and public note supplemen  ║
 ║  Sanitization:  3d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗

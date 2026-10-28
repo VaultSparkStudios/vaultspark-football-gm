@@ -1,0 +1,95 @@
+{
+  "session": 125,
+  "phase": "final",
+  "at": "2026-10-28T02:38:44.848Z",
+  "stagedTree": "b3ac976351e82a94fc1dd62301b95903f60a84e9",
+  "scanned": 20,
+  "findings": [],
+  "subjects": [
+    {
+      "path": "audits/2026-10-27.json",
+      "sha256": "284c1dc5dab163d38e5e8a5980568e4ea81c783ed923a330dd1ec83e21f214d7"
+    },
+    {
+      "path": "context/AGENT_MEMORY.md",
+      "sha256": "655358b5372d47728f2388db15b5ad4e99cfb06af9be023b225ccd2afaa746a8"
+    },
+    {
+      "path": "context/CURRENT_STATE.md",
+      "sha256": "a020ecb4007c1aea914c8e54d4b3e22db9202b2f9f03880f47ca490bb986baa7"
+    },
+    {
+      "path": "context/LATEST_HANDOFF.md",
+      "sha256": "2aa7bf388cafe4fdef5564e64eba0cc078ad5e07ffb193b803851ae81712e209"
+    },
+    {
+      "path": "context/PROJECT_STATUS.json",
+      "sha256": "186111e70b3d1567888f10612e5d18b110e68ace37bc9c2a67f2b6621278948f"
+    },
+    {
+      "path": "context/SELF_IMPROVEMENT_LOOP.md",
+      "sha256": "932168ad89bd4a06bda9d75e7b1ca301098ee3f76d0dad9d473bb68980045237"
+    },
+    {
+      "path": "context/STATE_VECTOR.json",
+      "sha256": "f04d574b9b8ef8bdbc90512a109d49c305ec41ec65933b27610864ad6babdc80"
+    },
+    {
+      "path": "context/TASK_BOARD.md",
+      "sha256": "4ef36fe8d2b96b99df844d63bd9f933f4ddfe0cf8c20142ee1e59a5ffa02ac2f"
+    },
+    {
+      "path": "context/TRUTH_AUDIT.md",
+      "sha256": "75c8f194b86d02a521f8140731a08cdd29e59c7c1b1f602b123b94720db4d74d"
+    },
+    {
+      "path": "context/archive/LATEST_HANDOFF_S125_PARTIAL_406cb5af88213c567b887c400d1472f9e1d21ac89b011be7bdb91054e52e0dfb.md",
+      "sha256": "406cb5af88213c567b887c400d1472f9e1d21ac89b011be7bdb91054e52e0dfb"
+    },
+    {
+      "path": "docs/AUDIT_2026-10-27.json",
+      "sha256": "0fe3b633a97fa9f29515e935acf4730f09678869e3ad8127eccbca92ed4c9fc0"
+    },
+    {
+      "path": "docs/CLOSEOUT_BRIEF_S125_2026-10-27.md",
+      "sha256": "1e2c9694739b7a8c3def63f44f30de3e3cde9a10c54adcbe960bfd740a17528a"
+    },
+    {
+      "path": "docs/CLOSEOUT_STATUS_BOARD.md",
+      "sha256": "e96995c1a3e14bea37504feb6b2f01b3a5d7086b9ac2673d5d88ad78de6c56dc"
+    },
+    {
+      "path": "docs/STARTUP_BRIEF.md",
+      "sha256": "4136abebc208ada0b477b60baa9985ff167ab4b92f9fefaa253cb39efbb7db62"
+    },
+    {
+      "path": "logs/WORK_LOG.md",
+      "sha256": "4b5b57347dc9e8e6416cd2627ffc573b11dce8fdbea9b65d55e880d75dd28895"
+    },
+    {
+      "path": "reports/s125-ark-impact.json",
+      "sha256": "2c8b20304ee9c564389ff417cbd65289ddaea44d81ea97aa36efbba021d18efc"
+    },
+    {
+      "path": "reports/s125-cleanup-corrected-metadata.json",
+      "sha256": "edcea3563f21c4c14654b7a7752f478b04d8c1088a681f68788c69f674861f7a"
+    },
+    {
+      "path": "reports/s125-cleanup-failed-metadata1.json",
+      "sha256": "c824e114b9184614350db03b9718c49c06a502aa636ce593174cbb528d2b51b8"
+    },
+    {
+      "path": "reports/s125-cleanup-note-source.json",
+      "sha256": "92ed092f168b462f0675d6107296ce3810966320bb16a96ba7bf192f5d6b2f8d"
+    },
+    {
+      "path": "reports/s125-note-final-gates.json",
+      "sha256": "15113e27b307a5b5217de1dc33e6541662f5698357c055a3e84d56cf04062c66"
+    }
+  ],
+  "settings": {
+    "passing": true,
+    "findings": 0
+  },
+  "scope": "Actual staged blob bytes scanned through the canonical Studio detector and public local-path rule. Binary captures are hash-bound, excluded from text matching. The generated scan receipt is included in the normal native pre-push hook."
+}

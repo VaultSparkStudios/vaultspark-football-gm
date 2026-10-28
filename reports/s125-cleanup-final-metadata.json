@@ -1,0 +1,63 @@
+{
+  "session": 125,
+  "at": "2026-10-28T02:52:01.629Z",
+  "verified": true,
+  "kind": "final-metadata",
+  "targetRelative": ".cache/s125-note-final-metadata-checkout",
+  "baseHead": "a215623caf79eb326889cbecbc43ec0172e90358",
+  "testedStagedTree": "a5eda7d5e6cf18a450852ad26ce5f9df637b2264",
+  "originalResultVerified": true,
+  "originalSummary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 389,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "archivedFiles": [
+    {
+      "path": ".cache/s125-note-final-metadata-checkout/.cache/active-skill.json",
+      "sha256": "85fa777cc307f26f8976ad764a2579b913dd10931ae15683b0d9f521b8544f18",
+      "archive": ".cache/s125-note-owned-archives/final-metadata/85fa777cc307f26f8976ad764a2579b913dd10931ae15683b0d9f521b8544f18.bin"
+    },
+    {
+      "path": ".cache/s125-note-final-metadata-checkout/.cache/genius-list.json",
+      "sha256": "09499a9e69cf2e7db49f2e81cd25705995c886dcdd5bd4fc388cc30044197114",
+      "archive": ".cache/s125-note-owned-archives/final-metadata/09499a9e69cf2e7db49f2e81cd25705995c886dcdd5bd4fc388cc30044197114.bin"
+    },
+    {
+      "path": ".cache/s125-note-final-metadata-checkout/.cache/skill-cost-ledger.jsonl",
+      "sha256": "5792f367d8c8abd29531821de88797dda0c66ce825d1feef921a0297fe57a3ab",
+      "archive": ".cache/s125-note-owned-archives/final-metadata/5792f367d8c8abd29531821de88797dda0c66ce825d1feef921a0297fe57a3ab.bin"
+    },
+    {
+      "path": ".cache/s125-note-final-metadata-checkout/.cache/skill-costs.jsonl",
+      "sha256": "882e9d15e44bee1142136c4c641209bea91b8731a664f1d5860db7a503716f51",
+      "archive": ".cache/s125-note-owned-archives/final-metadata/882e9d15e44bee1142136c4c641209bea91b8731a664f1d5860db7a503716f51.bin"
+    }
+  ],
+  "preservedEvidence": [
+    {
+      "path": "reports/s125-note-final-metadata.json",
+      "sha256": "4cdbe263540560325d3a0528e91f7736b9d2364e79ac11844b9621e3e4657590"
+    },
+    {
+      "path": ".cache/s125-note-final.log",
+      "sha256": "8381ff3cba786d58479c8a9b2a0e5ac7c7a115f393f3a506340c80764e7fb939"
+    },
+    {
+      "path": ".cache/s125-note-final-generated.patch",
+      "sha256": "7c8bcc92307babd677fa490310d1dfe4c1dfe6b85585be53cfd678f9980af597"
+    },
+    {
+      "path": ".cache/s125-note-final.patch",
+      "sha256": "34c06e94e218ff5bb842777acdc03fa05725bb37795b10a46c7c62f4b1f92d35"
+    }
+  ],
+  "dependenciesPreserved": true,
+  "unrelatedWorktreesPreserved": true,
+  "originalLockPreserved": true
+}

@@ -109,6 +109,10 @@
 - Test the actual Play click and direct document URL on the stable Pages hostname with an installed service worker. Pages canonicalizes `/game.html` to `/game`; a worker returning the cached redirected HTML response breaks the navigation even when static provenance is exact. Let the browser own navigation and keep the worker cache for static assets.
 - A hidden dialog can retain all of its buttons in the DOM. On a bye week, assert that the tactic dialog stays hidden; counting `.tactic-option` elements misstates the user-visible contract.
 
+## Session 125 — Note delivery boundary
+
+A public status note changes the frontend artifact and generated archive/feed/sitemap. Preserve accepted game/API authority separately, stage and verify the new frontend, register every actual note PNG in the canonical ledger, and retain failed metadata attempts. Final root native service completion is a separate event.
+
 <!-- ledger-roll:pointer -->
 ---
 

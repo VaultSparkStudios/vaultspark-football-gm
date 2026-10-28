@@ -99,6 +99,10 @@ S124: Optional player panels survive denied storage access, tutorials complete a
 
 S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails. Exact accepted candidate CI7/7 and image producer2/2; staging/production14/14 each; scope-bound client, contract, visual and hosted performance checks bound by 168 frozen court receipts. Aggregate real-player/capacity outcomes remain unmeasured. Source1ad07d9919f75d0a8ccfb024c7f42b7f58f62937; reports/s125-release-acceptance.json. Final closeout publication/cleanup remain pending.
 
+## 2026-10-28 — Session 125 — Final clarification
+
+S125: Three optional player-state repairs shipped and accepted at game/API1ad; the truthful public release note is live at frontend12a8. Original evidence, actual signed GAME impact and initial owned cleanup are preserved; independent launch holds remain. GAME/API 1ad07d9919f75d0a8ccfb024c7f42b7f58f62937 remains independently accepted under original168/82fd. Current frontend 12a8abf88403ffbc4905b853a77495fb7babac1b uses artifactd541 and actual sourceCI7/native14, note12 pixels and measured public-entry performance. First containing commit a215623caf79eb326889cbecbc43ec0172e90358 and signed GAME cargo 01K604PB039056B3306CA03B39 are actual. Failed provisional metadata389/386/3 and389/388/1 remain failed. Final clarified metadata still requires one exact native full Studio, containing publication, final cleanup and the native service completion guard before the goal is marked complete.
+
 <!-- ledger-roll:pointer -->
 ---
 

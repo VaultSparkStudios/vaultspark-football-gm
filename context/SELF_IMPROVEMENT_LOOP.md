@@ -3,10 +3,10 @@
 
 
 <!-- rolling-status-start -->
-Last session: 125 (2026-10-27) | Total: 505/1000 | Velocity: 3 | Debt: →
+Last session: 125 (2026-10-28) | Total: 505/1000 | Velocity: 3 | Debt: →
 Avgs — 3: 505 | 5: 572.8 | 10: 693.4 | 25: 831.5 | all: 941
 Sparkline: ▁▁▁▁▁
-Intent rate: 40% (2/5 last 5)
+Intent rate: 60% (3/5 last 5)
 SIL delta: 510 → 505 (-5). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 79 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
@@ -169,6 +169,12 @@ Exact accepted candidate CI7/7 and image producer2/2; staging/production14/14 ea
 Brainstorm: Optional observability cannot block play, but authoritative recovery denial must never silently create fresh authority. Storage identity must remain stable across getter denial and recovery; explicit injected stores and franchise keys remain isolated. Test the real static client authority and per-key failures; a permissive dev server is not hosted acceptance. Freeze source-bound evidence, validate capture-ledger coverage and session projections before cutting a candidate, and retain executed failures. An absent path-filtered Pages run is not success; exact CI/images/staging/artifact/rollback remain positive gates, and a newer red run cannot borrow an older green. On Windows, hash the exact committed source bytes for source-bound receipts; preserve working-copy line-ending evidence separately rather than treating CRLF as a logic change. Two future [SIL:125] discipline items are recorded but unselected; they do not expand the current implementation scope.
 
 Source4a2 exact CI browser failure remains nonpassing; its focused13 report and local40 pixels retain original source labels. New client fixture focused14 and exact successor CI7 are separate. Historical local40 are used only under specific full payload/module byte equivalence, never as fresh successor hosted proof. Earlier server-runtime captures are historical only; authoritative client checkpoint refusal remains intentional. Initial late capture-ledger binding and failed metadata CI remain historical. Synthetic component fixtures and hosted lab performance do not prove player cohorts, complete seasons, device capacity or public launch readiness. Earlier dev-server/fixture/capture overreach, source2 Studio387/389, failed source4a2 browser288passed/3skipped/1failed, and prepared Pages admission findings remain recorded in the S125 evidence reports. No rejected attempt is relabeled passing.
+
+## 2026-10-28 — Session 125 — Final accepted-artifact clarification
+
+Intent outcome: **Achieved** for the accepted session work and actual closing artifacts. This append supersedes the historical Partial ordered checkpoint; final native acceptance remains explicitly pending until actually run. SIL v3.0 retained: **505 / 1000** (Dev Health 90, Creative Alignment 70, Momentum 60, Engagement 45, Process Quality 45, Cross-Repo Coherence 60, Security Posture 60, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 55). Same reviewed engineering judgment; no extra scored session or measured retention/revenue/adoption claim.
+
+GAME/API 1ad07d9919f75d0a8ccfb024c7f42b7f58f62937 remains independently accepted under original168/82fd. Current frontend 12a8abf88403ffbc4905b853a77495fb7babac1b uses artifactd541 and actual sourceCI7/native14, note12 pixels and measured public-entry performance. First containing commit a215623caf79eb326889cbecbc43ec0172e90358 and signed GAME cargo 01K604PB039056B3306CA03B39 are actual. Failed provisional metadata389/386/3 and389/388/1 remain failed. Final clarified metadata still requires one exact native full Studio, containing publication, final cleanup and the native service completion guard before the goal is marked complete.
 
 <!-- ledger-roll:pointer -->
 ---

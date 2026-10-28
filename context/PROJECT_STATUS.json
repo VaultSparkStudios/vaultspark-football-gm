@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails.",
-  "nextMilestone": "Finish S125 final metadata, receipt publication/readback, signed impact and owned cleanup; preserve independent launch-readiness holds.",
+  "currentFocus": "S125: Three optional player-state repairs shipped and accepted at game/API1ad; the truthful public release note is live at frontend12a8. Original evidence, actual signed GAME impact and initial owned cleanup are preserved; independent launch holds remain.",
+  "nextMilestone": "Choose the next fresh audit; retain independent lifecycle and public-launch holds.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-10-27",
+  "lastUpdated": "2026-10-28",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -22,7 +22,7 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "Selected S125 technical release verified; final closeout publication pending; broader readiness partial",
+  "truthAuditStatus": "Selected game release and public note supplement verified; broader launch readiness partial.",
   "truthAuditLastRun": "2026-10-27",
   "ignisScore": 43029,
   "ignisGrade": "FORGE",
@@ -123,7 +123,7 @@
     "total": 12,
     "failing": 0,
     "score": 100,
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "passing": 12,
     "warning": 0,
     "checks": []
@@ -137,7 +137,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.058,
   "entropyLastComputed": "2026-10-27",
-  "lastSessionSummary": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails.",
+  "lastSessionSummary": "S125: Three optional player-state repairs shipped and accepted at game/API1ad; the truthful public release note is live at frontend12a8. Original evidence, actual signed GAME impact and initial owned cleanup are preserved; independent launch holds remain.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -274,12 +274,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receipt": "reports/s125-staging-successor-provenance.json",
-    "receiptSha256": "1afaada935b043283f6b6c112aa0c1a719ac00541929b7a26b968d317685eff0",
-    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "receipt": "reports/s125-note-staging-provenance.json",
+    "receiptSha256": "fb2565030bf1661228ab2b20b5e063301df194628a90bd0734013e1bca7beb52",
+    "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+      "digest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
       "files": 362,
       "entries": [
         {
@@ -329,8 +329,8 @@
         },
         {
           "path": "changelog.xml",
-          "bytes": 27923,
-          "sha256": "5127993e4f3f2b9641fc659e46d7da1efa58e49d3e9bc6eaea58da6c3889bf2d"
+          "bytes": 28490,
+          "sha256": "ac23a37e79b53308f9ecbd8e18f703531461c47928eb8a978f51d959788bab5e"
         },
         {
           "path": "community-stats.25f97e0a1e.js",
@@ -1270,7 +1270,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1844,
-          "sha256": "32f6639554023c784aa3954bc0eeac8ccb2940e5550333ecb1a383085e88bd81"
+          "sha256": "07898e678d7c6188e43c7dde063a5b6eda9bbbd750ecff1ba208ec6a347e14fc"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -2064,13 +2064,13 @@
         },
         {
           "path": "status-archive.html",
-          "bytes": 25297,
-          "sha256": "9963d6bf897ecac67da1bb418bf9035848bb040d165d1aa26fd63bc65c4aa538"
+          "bytes": 25585,
+          "sha256": "7da87ad43671e4055538938c6bc14a273957d5b3c056884685025e61e5f37318"
         },
         {
           "path": "status.html",
-          "bytes": 8013,
-          "sha256": "473aae623bdb8c85456cc99495873cadd6f6f65ef4a34342fa29d84f31331a6c"
+          "bytes": 7465,
+          "sha256": "d4baad162afe54a0912bda3cf632a8bbb8d2319e03675dd90b31f67d28ea82e4"
         },
         {
           "path": "styles.c4075a9e38.css",
@@ -2099,17 +2099,18 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "88e9e37d-24a6-4e66-b878-f889381706af",
+    "deploymentId": "3588c8fe-6984-4740-9a40-0a4c56c65850",
+    "deploymentUrl": "https://3588c8fe.franchise-architect-staging.pages.dev",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-27T06:17:48.072Z"
+      "checkedAt": "2026-10-28T01:30:51.115Z"
     },
     "verified": true,
-    "observedAt": "2026-10-27T06:17:48.072Z"
+    "observedAt": "2026-10-28T01:30:51.115Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2145,31 +2146,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-27T17:28:45.093Z",
+    "observedAt": "2026-10-28T02:31:14.297Z",
     "status": "verified",
-    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-    "publicationRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+    "publicationRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+      "digest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+        "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
       },
       "production": {
-        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+        "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
       },
       "visual": {
-        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+        "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
       },
       "performance": {
-        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+        "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
       }
     },
     "checks": [
@@ -2215,12 +2216,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "02e93d33c58a6ad83f8c9ff21bfce510e00856ce084a765dcebdb71ae6278e03",
-      "productionSha256": "f6bb8e0ef6040b51c03bdbd715209d1629a59996b7f9bb43aa808092dbfd761e",
-      "visualSha256": "9e6af7b96c289baf6b270c8215e3df2f7781f8fd0dde07aa766ef0f7041414e3",
-      "performanceSha256": "f4f872102d83ac7e54c174ce148c82d5d43edb33d5dca0212275a2fd503ed9ef"
+      "stagingSha256": "42077cab37bdcb851490d58ec9d7b8982b77dfce0a11775748222f9093cec314",
+      "productionSha256": "493f2cc21bd78a7ea28076c74cdf60cd502ed53a1f34e8fd1ccc4e609fad793a",
+      "visualSha256": "b96ea7f835c9baa49f07e358b3ae169ce5369e668380913775fbfe0b0e1af2bc",
+      "performanceSha256": "740e3c2f84cf8e265653cce9dc4463cb435f1c5a7e7661a3f1a7387a06bf898e"
     },
-    "receiptSha256": "78482f140088aca46e17259f7ce2452168b510b510974d812eeca65fad9fd48f"
+    "receiptSha256": "f2fdbda9d2216348486864d78bd7bf9951050cbafbc004d5cfc90761fb11fd1c"
   },
   "launchReady": false,
   "sil": {
@@ -2252,9 +2253,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 125,
-    "currentFocus": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails.",
-    "nextMilestone": "Finish S125 final metadata, receipt publication/readback, signed impact and owned cleanup; preserve independent launch-readiness holds.",
-    "lastSessionSummary": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails."
+    "currentFocus": "S125: Three optional player-state repairs shipped and accepted at game/API1ad; the truthful public release note is live at frontend12a8. Original evidence, actual signed GAME impact and initial owned cleanup are preserved; independent launch holds remain.",
+    "nextMilestone": "Choose the next fresh audit; retain independent lifecycle and public-launch holds.",
+    "lastSessionSummary": "S125: Three optional player-state repairs shipped and accepted at game/API1ad; the truthful public release note is live at frontend12a8. Original evidence, actual signed GAME impact and initial owned cleanup are preserved; independent launch holds remain."
   },
   "partialCloseout": {
     "session": 117,
@@ -2837,12 +2838,17 @@
     "goalThreadId": "01a17b3d-b57a-7870-9920-7768203223d1",
     "goalCreatedAt": 1793069036,
     "audit": "docs/AUDIT_2026-10-27.json",
-    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
-    "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
-    "status": "technical-production-verified-closeout-pending",
+    "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+    "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+    "status": "closed",
     "productionVerified": true,
     "acceptance": "reports/s125-release-acceptance.json",
-    "closeoutComplete": false
+    "closeoutComplete": true,
+    "sourceRevisionScope": "Frontend note source; GAME/API remain independently1ad.",
+    "frontendSourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+    "gameReleaseSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "apiSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "nativeGoalCompletion": "pending-final-exact-native-guard"
   },
   "silScoreBasis": {
     "devHealth": "90: Exact candidate CI7, fresh focused40 and client14, actual frontend/API release and reviewed hosted states pass.",
@@ -2899,7 +2905,7 @@
   },
   "silDebtTrend": "→",
   "silLastUpdated": "2026-10-25",
-  "lastDeployStatus": "S125 frontend/API source1ad07d99 production verified; final closeout publication remains required.",
+  "lastDeployStatus": "S125 current frontend note12a8/d541 and API/GAME1ad are verified independently; accepted artifacts reconciled, final exact metadata/native completion guard pending.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "workflowRun": 40135991113,
@@ -2964,8 +2970,8 @@
     "completion": "reports/s123-closeout-completion.json",
     "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
-  "sessionIntentAchieved": false,
-  "sessionIntentDisposition": "Partial until final metadata, containing publication, signed impact and cleanup are actually verified; selected technical release alone does not complete the native goal.",
+  "sessionIntentAchieved": true,
+  "sessionIntentDisposition": "Accepted session outcomes and actual closeout artifacts; final exact metadata/native service guard pending.",
   "silSparkline": [
     838,
     856,

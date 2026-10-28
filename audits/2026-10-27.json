@@ -24,6 +24,51 @@
     "sha256": "774c3f0c72a5c45bc7b800a1656a3424d51a9cc58bfa0a9b360bac3d934513c3"
   },
   "acceptance": "reports/s125-release-acceptance.json",
-  "closeoutComplete": false,
-  "scope": "Actual technical release and ordered records; final metadata/publication/cleanup remain required."
+  "closeoutComplete": true,
+  "scope": "Actual technical release and ordered records; final metadata/publication/cleanup remain required.",
+  "closeoutCandidate": true,
+  "noteSupplement": {
+    "session": 125,
+    "at": "2026-10-28T02:33:36.003Z",
+    "acceptedArtifactCandidate": true,
+    "gameReleaseSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "apiSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "frontendNoteSourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+    "frontendArtifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+    "noteSupplement": {
+      "path": "reports/s125-note-release-acceptance.json",
+      "sha256": "e7670c5714748f6ad2f8d7217e1075579a760f1dd7dadc7212461cc0612e23ea"
+    },
+    "firstContainingCommit": "a215623caf79eb326889cbecbc43ec0172e90358",
+    "gameImpact": {
+      "cargoId": "01K604PB039056B3306CA03B39",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "delivered": true,
+      "adoption": "Not asserted"
+    },
+    "initialCleanups": [
+      {
+        "kind": "failed-metadata1",
+        "path": "reports/s125-cleanup-failed-metadata1.json",
+        "sha256": "c824e114b9184614350db03b9718c49c06a502aa636ce593174cbb528d2b51b8",
+        "originalResultVerified": false
+      },
+      {
+        "kind": "corrected-metadata",
+        "path": "reports/s125-cleanup-corrected-metadata.json",
+        "sha256": "edcea3563f21c4c14654b7a7752f478b04d8c1088a681f68788c69f674861f7a",
+        "originalResultVerified": false
+      },
+      {
+        "kind": "note-source",
+        "path": "reports/s125-cleanup-note-source.json",
+        "sha256": "92ed092f168b462f0675d6107296ce3810966320bb16a96ba7bf192f5d6b2f8d",
+        "originalResultVerified": true
+      }
+    ],
+    "finalStudio": "Pending ONE actual exact staged-tree native Studio; no provisional result is relabeled green.",
+    "nativeServiceCompletion": "Pending actual private final publication/cleanup/goal guard. Native goal may still report paused despite explicit user continuation."
+  },
+  "finalStudioPending": true,
+  "nativeServiceCompletionPending": true
 }

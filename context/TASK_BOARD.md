@@ -5,7 +5,7 @@
 - [x] Wave 1 — Fresh audit and pre-implementation admission/timing; startup sync delivery/order limitation retained.
 - [x] Wave 2 — Optional journey, safe Inbox and tab-local First Season Contract repairs, independently reviewed.
 - [x] Wave 3 — Exact accepted candidate CI/images, staged/client proof and actual frontend/API technical promotion.
-- [ ] Wave 4 — Ordered closeout, final metadata, containing publication/readback, signed impact and owned cleanup.
+- [x] Wave 4 — Accepted game/note delivery, ordered writeback, first containing publication, signed GAME impact and initial cleanup verified; final candidate records await exact native Studio/publication/service guard.
 
 
 ## S125 future discipline — unselected follow-ups

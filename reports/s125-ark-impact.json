@@ -1,0 +1,13 @@
+{
+  "session": 125,
+  "at": "2026-10-28T02:17:50.869Z",
+  "cargoId": "01K604PB039056B3306CA03B39",
+  "state": "shipped",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "closeoutCommit": "a215623caf79eb326889cbecbc43ec0172e90358",
+  "hmacVerified": true,
+  "ed25519Posture": "unsigned",
+  "scope": "Accepted GAME1ad outcomes only; no final closing Studio green claim.",
+  "adoption": "Not asserted"
+}

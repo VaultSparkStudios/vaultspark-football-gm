@@ -1,0 +1,69 @@
+{
+  "session": 125,
+  "at": "2026-10-28T02:21:45.459Z",
+  "verified": true,
+  "kind": "failed-metadata1",
+  "targetRelative": ".cache/s125-closeout-metadata-checkout",
+  "baseHead": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "testedStagedTree": "5394e28e8dd080c7433a113d8e13ce534edda0db",
+  "originalResultVerified": false,
+  "originalSummary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 386,
+    "fail": 3,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "archivedFiles": [
+    {
+      "path": ".cache/s125-closeout-metadata-checkout/.cache/active-skill.json",
+      "sha256": "d003775b657ec8776cedc66f28b08383017c44b6b9ee543f14d6cc98ba05e9e3",
+      "archive": ".cache/s125-note-owned-archives/failed-metadata1/d003775b657ec8776cedc66f28b08383017c44b6b9ee543f14d6cc98ba05e9e3.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-metadata-checkout/.cache/genius-list.json",
+      "sha256": "febfde5948a5a94d4bb3d08231b4bacdf2f6ac3d63a8f5089fe8aa297e4fbbfc",
+      "archive": ".cache/s125-note-owned-archives/failed-metadata1/febfde5948a5a94d4bb3d08231b4bacdf2f6ac3d63a8f5089fe8aa297e4fbbfc.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-metadata-checkout/.cache/skill-cost-ledger.jsonl",
+      "sha256": "79943404efea032e480d4d90fc766616a358c26ccfd840fbfc7df5b870ee4e6d",
+      "archive": ".cache/s125-note-owned-archives/failed-metadata1/79943404efea032e480d4d90fc766616a358c26ccfd840fbfc7df5b870ee4e6d.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-metadata-checkout/.cache/skill-costs.jsonl",
+      "sha256": "fc3c77117ace205ea8110dadcecfc1c4e344742e34731250cadd1c8c862cf547",
+      "archive": ".cache/s125-note-owned-archives/failed-metadata1/fc3c77117ace205ea8110dadcecfc1c4e344742e34731250cadd1c8c862cf547.bin"
+    },
+    {
+      "path": ".cache/s125-closeout-metadata-checkout/.cache/test-progress.json",
+      "sha256": "04577d0fb74973f5d3cde453afc4cefbc7da6eef082e574290efac05a411a90a",
+      "archive": ".cache/s125-note-owned-archives/failed-metadata1/04577d0fb74973f5d3cde453afc4cefbc7da6eef082e574290efac05a411a90a.bin"
+    }
+  ],
+  "preservedEvidence": [
+    {
+      "path": "reports/s125-final-metadata.json",
+      "sha256": "7f4153dbff87fbc012e137f86062bc11bf5754ed7cfa5b1bbb0dc87b1a4e45bf"
+    },
+    {
+      "path": ".cache/s125-closeout-final-metadata.log",
+      "sha256": "cd4b7d0a250702a9fdda4aa37a4138bc9c3b930ffab99860610e5dc012cbd4cd"
+    },
+    {
+      "path": ".cache/s125-closeout-metadata-generated.patch",
+      "sha256": "f607265ee177d37efbe010b003033adeff3c9dc1ec4a73d53f2fce15fb2d7a58"
+    },
+    {
+      "path": ".cache/s125-closeout-final-metadata.patch",
+      "sha256": "5076313c72dce8d9d9423121a9703c4f6d680ba942242a60206e6da03a811773",
+      "bytes": 20693735
+    }
+  ],
+  "dependenciesPreserved": true,
+  "unrelatedWorktreesPreserved": true,
+  "originalLockPreserved": true
+}

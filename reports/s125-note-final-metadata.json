@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 2,
+  "session": 125,
+  "state": "terminal",
+  "baseHead": "a215623caf79eb326889cbecbc43ec0172e90358",
+  "sourceRevision": null,
+  "gameReleaseSource": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "frontendNoteSource": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "testedStagedTree": "a5eda7d5e6cf18a450852ad26ce5f9df637b2264",
+  "worktree": ".cache/s125-note-final-metadata-checkout",
+  "command": "node scripts/run-test-shard.mjs studio",
+  "startedAt": "2026-10-28T02:43:48.294Z",
+  "finishedAt": "2026-10-28T02:46:41.573Z",
+  "initialClean": true,
+  "exactPatchApplied": true,
+  "nativeRunnerSha256": "a9291bf6c036b62a5e2efc6592989a05d23c9897c074f7b57c54babe0ff90b2b",
+  "nativeStudioFiles": [
+    "test/session109-public-chrome.test.js",
+    "test/session109-css-tokens.test.js",
+    "test/session109-dev-cors.test.js",
+    "test/api-contract-parity.test.js",
+    "test/audit-renderer.test.js",
+    "test/session104-audit-premise-decay.test.js",
+    "test/session105-brief-authority-writers.test.js",
+    "test/session106-ledger-population-and-authority.test.js",
+    "test/session108-ledger-retention-by-session.test.js",
+    "test/card-visibility-gate.test.js",
+    "test/browser-module-reachability.test.js",
+    "test/script-cli-smoke.test.js",
+    "test/visual-game-receipt.test.js",
+    "test/browser-boot-budget.test.js",
+    "test/browser-promise-observability.test.js",
+    "test/cloudflare-web-analytics.test.js",
+    "test/capability-operations-authority.test.js",
+    "test/closeout-board-truth.test.js",
+    "test/community-deploy-config.test.js",
+    "test/backend-ssh-transport.test.js",
+    "test/candidate-ci-wait.test.js",
+    "test/context-meter-authority.test.js",
+    "test/edge-security-policy.test.js",
+    "test/session94-context-budget.test.js",
+    "test/session94-game-surfaces.test.js",
+    "test/session94-public-surface.test.js",
+    "test/session94-review-fixes.test.js",
+    "test/edge-style-hash.test.js",
+    "test/hosted-performance.test.js",
+    "test/edge-policy-application.test.js",
+    "test/launch-evidence-report.test.js",
+    "test/lifecycle-coherence.test.js",
+    "test/obelisk-migration-boundary.test.js",
+    "test/public-compliance.test.js",
+    "test/public-claims.test.js",
+    "test/project-authority-contract.test.js",
+    "test/promotion-bind.test.js",
+    "test/release-provenance.test.js",
+    "test/release-authority.test.js",
+    "test/release-truth.test.js",
+    "test/secrets-gateway-authority.test.js",
+    "test/session52-innovations.test.js",
+    "test/session53-innovations.test.js",
+    "test/session54-innovations.test.js",
+    "test/staging-authority-reconcile.test.js",
+    "test/staging-receipt.test.js",
+    "test/static-module-roots.test.js",
+    "test/service-worker-precache.test.js",
+    "test/test-receipt.test.js",
+    "test/test-shard-progress.test.js",
+    "test/ui-islands.test.js",
+    "test/shard-coverage.test.js",
+    "test/publish-path-shard-gate.test.js",
+    "test/session101-writeback-currency.test.js",
+    "test/duplicate-pr-guard.test.js",
+    "test/studio-protocol-smoke.test.js",
+    "test/audit-completion-contract.test.js",
+    "test/startup-authority-contract.test.js",
+    "test/startup-sil-truth.test.js",
+    "test/startup-brief-last-session.test.js",
+    "test/startup-test-evidence.test.js",
+    "test/session-lock-goal-binding.test.js",
+    "test/session-intent-classifier.test.js",
+    "test/session-authority.test.js",
+    "test/task-board-parser-authority.test.js"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 389,
+    "pass": 389,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "verified": true,
+  "generated": [
+    "context/PROJECT_STATUS.json",
+    "docs/STARTUP_BRIEF.md"
+  ],
+  "untracked": [],
+  "patch": {
+    "path": ".cache/s125-note-final.patch",
+    "sha256": "34c06e94e218ff5bb842777acdc03fa05725bb37795b10a46c7c62f4b1f92d35"
+  },
+  "generatedPatch": {
+    "path": ".cache/s125-note-final-generated.patch",
+    "sha256": "7c8bcc92307babd677fa490310d1dfe4c1dfe6b85585be53cfd678f9980af597"
+  },
+  "rawLog": {
+    "path": ".cache/s125-note-final.log",
+    "sha256": "8381ff3cba786d58479c8a9b2a0e5ac7c7a115f393f3a506340c80764e7fb939"
+  },
+  "inventory": {
+    "path": ".cache/s125-note-final-inventory.json",
+    "sha256": "58732dfaaea6927ed691a94d8aa94b75db76539f3f6eeda31aa53a0300244444"
+  },
+  "originalRelease": {
+    "receiptSha256": "82fd3ded625dbc0d0997999a9264bd3121928a79b3ca336f0aa5b7a4fad64b75",
+    "refs": 168,
+    "freeze": {
+      "path": ".cache/s125-accepted-release-snapshot/manifest.json",
+      "sha256": "27dfbe05e36255300fd884f7fd2fb039868377206693d991e530e38ddfd19cad"
+    },
+    "centralLedger": {
+      "changed": true,
+      "oldSha256": "e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4",
+      "currentSha256": "97a8dcb862f43fed0786fa566a416698adbdd80848b02e21a341209346185d73",
+      "added": 12,
+      "unchangedHistoricalEntries": 5965,
+      "names": [
+        "s125-status-before-desktop-dark.png",
+        "s125-status-before-desktop-light.png",
+        "s125-status-before-mobile-dark.png",
+        "s125-status-before-mobile-light.png",
+        "s125-status-production-desktop-dark.png",
+        "s125-status-production-desktop-light.png",
+        "s125-status-production-mobile-dark.png",
+        "s125-status-production-mobile-light.png",
+        "s125-status-staging-desktop-dark.png",
+        "s125-status-staging-desktop-light.png",
+        "s125-status-staging-mobile-dark.png",
+        "s125-status-staging-mobile-light.png"
+      ],
+      "ownLedger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "sha256": "b7da53b9cef66e956b3ca7a7e1876672f3833f1eaf87982d455ac8683128da25"
+      },
+      "manifests": [
+        {
+          "path": "reports/s125-note-before.json",
+          "sha256": "bbe602f943425dc7ca050953f749e09af64dca150f8002938c1933802867d348"
+        },
+        {
+          "path": "reports/s125-note-production.json",
+          "sha256": "1ef43db91784f12cb4603a06103d9fe9b2a020c83fab690c93c00898be42621f"
+        },
+        {
+          "path": "reports/s125-note-staging.json",
+          "sha256": "a3b79e6b0038711e3dc90727ca29fc6c50f63b4e874e9d4cefade85c24308439"
+        }
+      ]
+    }
+  },
+  "scope": "Exact closing metadata on the new note base; original game/API1ad release and failed metadata1 remain unchanged. No production/court/goal completion inferred."
+}
