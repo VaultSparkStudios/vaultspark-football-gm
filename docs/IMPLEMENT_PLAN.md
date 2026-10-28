@@ -1,12 +1,12 @@
-<!-- source: docs/AUDIT_2026-10-27.json · Session 125 -->
-# S125 nonblocking player state
+<!-- source: docs/AUDIT_2026-10-28.json · Session 126 -->
+# S126 resilient player loops
 
-Stage FORGE/FB from local project status; health yellow. L2 selected, no lifecycle change.
+FORGE/FB from local project status; L2 selected. No lifecycle transition.
 
-1. **Keep optional journey instrumentation from interrupting startup or play**. Resolve session storage inside a guard. Keep a bounded per-storage/tab memory fallback when reads or writes fail, with no network, absolute-time export or invented durability. Prove denied getter, quota, mid-session failure, deduplication and separate stores; prove actual game startup and checkpoint calls in the browser. Readiness: core journeys and product correctness. Done only after behavioral tests, actual browser evidence and independent diff review.
+1. **Keep mobile decision controls usable without browser storage**. Guard storage access and retain the explicit mobile/full-view preference in this tab when reads or writes fail. Preserve stored preferences and viewport defaults. Verify getter/read/quota failures, both switch directions and actual mobile navigation in both themes. Readiness: accessibility, mobile parity and every supported theme. Done only with focused behavioral tests, actual browser evidence, required visual proof and independent diff review.
 
-2. **Keep the Inbox usable when browser storage access is denied**. Reuse the safe local-storage accessor in Inbox resolution. Preserve existing injected stores and in-memory scope rules. Test denied getter, method failures, ingest, dedup, unread/resolve and franchise switch. Verify actual Inbox browser behavior. Readiness: email and notifications where used. Done only after behavioral tests, actual browser evidence and independent diff review.
+2. **Keep damaged optional predictions from interrupting dashboard updates**. Validate persisted prediction maps, entries, statistics and receipts before use. Discard malformed data without invented grades. Keep league/year/week isolation, engine input immutability and once-only grading. Prove dashboard hydration with corrupt optional storage and normal prediction submission/settlement. Readiness: core journeys and product correctness. Done only with focused behavioral tests, actual browser evidence, required visual proof and independent diff review.
 
-3. **Keep First Season Contract progress during this tab after failed persistence**. Retain contract state by storage context and franchise key after failed writes. Preserve marks, dismissal, first-year boundary, season-close verdict and once-only completion through repeated reads/renders; isolate franchises and injected stores. Explain temporary tab-only tracking when persistence fails without claiming reload durability. Verify desktop/mobile in both themes. Readiness: onboarding and identity/access. Done only after behavioral tests, actual browser evidence and independent diff review.
+3. **Keep earned trophies during this tab after failed persistence**. Retain validated earned trophy records in tab memory when persistence fails. Deduplicate repeated events, keep browser-wide cross-franchise trophy semantics, restore durable data without losing tab awards, and explain temporary persistence truthfully in Trophy Case. Verify repeated events, malformed records, quota/read/getter failures and actual desktop/mobile renders in both themes. Readiness: backup, recovery and rollback. Done only with focused behavioral tests, actual browser evidence, required visual proof and independent diff review.
 
-Wave1: startup/audit; Wave2: these three outcomes; Wave3: exact candidate staging, production and ordered closeout. Stop after verified selected outcomes and authorized release/closeout.
+Wave 1: startup and audit. Wave 2: selected repairs. Wave 3: staging, production, push and ordered closeout.

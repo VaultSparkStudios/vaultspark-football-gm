@@ -1,0 +1,724 @@
+{
+  "schemaVersion": "2.1",
+  "date": "2026-10-28",
+  "session": 126,
+  "source": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+  "project": {
+    "slug": "franchise-architect-football",
+    "type": "game",
+    "name": "Franchise Architect: Football"
+  },
+  "scope": "Fresh S126 arc: resilient mobile controls, safe prediction hydration and trophy continuity",
+  "profile": {
+    "rubric": "product",
+    "audience": "public-unlaunched",
+    "source": "live code and independent game-loop review"
+  },
+  "lifecycleFocus": {
+    "stage": "FB",
+    "recordedStage": "FB",
+    "display": "FORGE · BETA",
+    "audience": "public-unlaunched",
+    "health": "yellow",
+    "releaseTarget": null,
+    "mode": "public-beta-hardening",
+    "readiness": true,
+    "areas": [
+      "core journeys and product correctness",
+      "onboarding and identity/access",
+      "accessibility, mobile parity and every supported theme",
+      "performance and capacity",
+      "security, privacy, data integrity and abuse controls",
+      "backup, recovery and rollback",
+      "email and notifications where used",
+      "observability and actionable analytics",
+      "feedback, support and issue triage",
+      "branding, legal, contact and rights/provenance",
+      "human and agent access where applicable",
+      "staging, release evidence and truthful beta/release communication"
+    ],
+    "stageConflict": null,
+    "statusSource": "project-status",
+    "stageSource": "project-status"
+  },
+  "axes": {
+    "features-depth": 1.5,
+    "ui-ux-feedback": 3,
+    "gamification-immersion": 5,
+    "ai-intelligence": 1.5,
+    "security": 1,
+    "speed-organization-efficiency": 2,
+    "token-cost": 1,
+    "observability-honesty": 1,
+    "sil-debt": 1
+  },
+  "items": [
+    {
+      "id": 1,
+      "rank": 1,
+      "slug": "mobile-mode-recovery",
+      "title": "Keep mobile decision controls usable without browser storage",
+      "axis": "ui-ux-feedback",
+      "category": "ui-ux-feedback",
+      "tier": "🔥",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 3,
+      "priority": 40.5,
+      "status": "shipped",
+      "readinessArea": "accessibility, mobile parity and every supported theme",
+      "stageRationale": "Current local FORGE/FB beta hardening: reproduced player failure, no lifecycle transition.",
+      "premise": "Guard storage access and retain the explicit mobile/full-view preference in this tab when reads or writes fail. Preserve stored preferences and viewport defaults. Verify getter/read/quota failures, both switch directions and actual mobile navigation in both themes.",
+      "recipe": "Guard storage access and retain the explicit mobile/full-view preference in this tab when reads or writes fail. Preserve stored preferences and viewport defaults. Verify getter/read/quota failures, both switch directions and actual mobile navigation in both themes.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced mobile-mode-recovery failure",
+          "adapter": "file-content",
+          "target": "public/lib/mobileLoop.js",
+          "pattern": "const stored = localStorage.getItem(MOBILE_PREF_KEY);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the immediate exception only."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Guard storage access and retain the explicit mobile/full-view preference in this tab when reads or writes fail. Preserve stored preferences and viewport defaults. Verify getter/read/quota failures, both switch directions and actual mobile navigation in both themes."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "Broader optional-state fault matrix only if separately selected."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-28T17:09:22.768Z",
+          "status": "shipped",
+          "note": "Selected L2 implementation verified locally; production release remains separate.",
+          "evidence": [
+            {
+              "path": "reports/s126-local-checks.json",
+              "sha256": "1831a47b268df7cd28874809b6fb0899778774a34b8f65fb2398a02549e4814a"
+            },
+            {
+              "path": "reports/s126-local-browser.json",
+              "sha256": "2189ea29cdb8b66e06c1095825abb972b2418e1034fe7b68d7c014e8f5242bc9"
+            },
+            {
+              "path": "reports/s126-independent-review.json",
+              "sha256": "2b5505f38e502abf3988e37e62e8a322ab756ac83d17e75738847991b465701c"
+            },
+            {
+              "path": "docs/visual-qa/S126_LOCAL.json",
+              "sha256": "cbfa305ee541fd52e82c288d5ed74874ba5f4f1f1a864ad3bfa021ae301c123f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "rank": 2,
+      "slug": "prediction-corruption-boundary",
+      "title": "Keep damaged optional predictions from interrupting dashboard updates",
+      "axis": "features-depth",
+      "category": "features-depth",
+      "tier": "🔥",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 3,
+      "priority": 20.25,
+      "status": "shipped",
+      "readinessArea": "core journeys and product correctness",
+      "stageRationale": "Current local FORGE/FB beta hardening: reproduced player failure, no lifecycle transition.",
+      "premise": "Validate persisted prediction maps, entries, statistics and receipts before use. Discard malformed data without invented grades. Keep league/year/week isolation, engine input immutability and once-only grading. Prove dashboard hydration with corrupt optional storage and normal prediction submission/settlement.",
+      "recipe": "Validate persisted prediction maps, entries, statistics and receipts before use. Discard malformed data without invented grades. Keep league/year/week isolation, engine input immutability and once-only grading. Prove dashboard hydration with corrupt optional storage and normal prediction submission/settlement.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced prediction-corruption-boundary failure",
+          "adapter": "file-content",
+          "target": "public/lib/spreadPredictions.js",
+          "pattern": "return raw ? JSON.parse(raw) : fallback;",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the immediate exception only."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Validate persisted prediction maps, entries, statistics and receipts before use. Discard malformed data without invented grades. Keep league/year/week isolation, engine input immutability and once-only grading. Prove dashboard hydration with corrupt optional storage and normal prediction submission/settlement."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "Broader optional-state fault matrix only if separately selected."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-28T17:09:22.768Z",
+          "status": "shipped",
+          "note": "Selected L2 implementation verified locally; production release remains separate.",
+          "evidence": [
+            {
+              "path": "reports/s126-local-checks.json",
+              "sha256": "1831a47b268df7cd28874809b6fb0899778774a34b8f65fb2398a02549e4814a"
+            },
+            {
+              "path": "reports/s126-local-browser.json",
+              "sha256": "2189ea29cdb8b66e06c1095825abb972b2418e1034fe7b68d7c014e8f5242bc9"
+            },
+            {
+              "path": "reports/s126-independent-review.json",
+              "sha256": "2b5505f38e502abf3988e37e62e8a322ab756ac83d17e75738847991b465701c"
+            },
+            {
+              "path": "docs/visual-qa/S126_LOCAL.json",
+              "sha256": "cbfa305ee541fd52e82c288d5ed74874ba5f4f1f1a864ad3bfa021ae301c123f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "rank": 3,
+      "slug": "trophy-tab-continuity",
+      "title": "Keep earned trophies during this tab after failed persistence",
+      "axis": "gamification-immersion",
+      "category": "gamification-immersion",
+      "tier": "🔥",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 3,
+      "priority": 67.5,
+      "status": "shipped",
+      "readinessArea": "backup, recovery and rollback",
+      "stageRationale": "Current local FORGE/FB beta hardening: reproduced player failure, no lifecycle transition.",
+      "premise": "Retain validated earned trophy records in tab memory when persistence fails. Deduplicate repeated events, keep browser-wide cross-franchise trophy semantics, restore durable data without losing tab awards, and explain temporary persistence truthfully in Trophy Case. Verify repeated events, malformed records, quota/read/getter failures and actual desktop/mobile renders in both themes.",
+      "recipe": "Retain validated earned trophy records in tab memory when persistence fails. Deduplicate repeated events, keep browser-wide cross-franchise trophy semantics, restore durable data without losing tab awards, and explain temporary persistence truthfully in Trophy Case. Verify repeated events, malformed records, quota/read/getter failures and actual desktop/mobile renders in both themes.",
+      "premises": [
+        {
+          "claim": "Live source contains reproduced trophy-tab-continuity failure",
+          "adapter": "file-content",
+          "target": "public/lib/achievements.js",
+          "pattern": "const raw = localStorage.getItem(STORAGE_KEY);",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Guard the immediate exception only."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Retain validated earned trophy records in tab memory when persistence fails. Deduplicate repeated events, keep browser-wide cross-franchise trophy semantics, restore durable data without losing tab awards, and explain temporary persistence truthfully in Trophy Case. Verify repeated events, malformed records, quota/read/getter failures and actual desktop/mobile renders in both themes."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "Broader optional-state fault matrix only if separately selected."
+        }
+      },
+      "executionLog": [
+        {
+          "at": "2026-10-28T17:09:22.768Z",
+          "status": "shipped",
+          "note": "Selected L2 implementation verified locally; production release remains separate.",
+          "evidence": [
+            {
+              "path": "reports/s126-local-checks.json",
+              "sha256": "1831a47b268df7cd28874809b6fb0899778774a34b8f65fb2398a02549e4814a"
+            },
+            {
+              "path": "reports/s126-local-browser.json",
+              "sha256": "2189ea29cdb8b66e06c1095825abb972b2418e1034fe7b68d7c014e8f5242bc9"
+            },
+            {
+              "path": "reports/s126-independent-review.json",
+              "sha256": "2b5505f38e502abf3988e37e62e8a322ab756ac83d17e75738847991b465701c"
+            },
+            {
+              "path": "docs/visual-qa/S126_LOCAL.json",
+              "sha256": "cbfa305ee541fd52e82c288d5ed74874ba5f4f1f1a864ad3bfa021ae301c123f"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "count": 3,
+    "priority": 128.25,
+    "top3": [
+      "mobile-mode-recovery",
+      "prediction-corruption-boundary",
+      "trophy-tab-continuity"
+    ]
+  },
+  "axisCoverage": {
+    "features-depth": {
+      "surviving": [
+        "prediction-corruption-boundary"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "story-record-lookup",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Live statBook row.team is a team ID; current export lookup matches it."
+        },
+        {
+          "slug": "player-agenda-pin",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Novel player-authored next-session pin; no demonstrated beta failure beyond existing command stack."
+        }
+      ]
+    },
+    "ui-ux-feedback": {
+      "surviving": [
+        "mobile-mode-recovery"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "mobile-breakpoint-change",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Existing 640px breakpoint is intentional and tested; storage failure is the demonstrated issue."
+        },
+        {
+          "slug": "session-control-receipt",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Novel explicit last view-switch receipt; unnecessary new surface for a reversible toggle."
+        }
+      ]
+    },
+    "gamification-immersion": {
+      "surviving": [
+        "trophy-tab-continuity"
+      ],
+      "rejectedOnVerify": [
+        {
+          "slug": "decision-review-nomination",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Novel player-nominated past decision review; no real-player need evidence."
+        },
+        {
+          "slug": "new-trophy-catalog",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Existing registry has meaningful season/career goals; retention continuity is the proven failure."
+        }
+      ]
+    },
+    "ai-intelligence": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-recovery-agent",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Deterministic local errors require no paid inference."
+        },
+        {
+          "slug": "advisor-explanation-rewrite",
+          "premise": "rejected or unselected after live review",
+          "evidence": "frontOfficeAdvisor already uses evidence boundaries; no missing AI capability proved."
+        }
+      ]
+    },
+    "security": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "new-auth-policy",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Selected optional local-state changes do not need altered identity policy; existing CANON-045 launch gap stays visible."
+        },
+        {
+          "slug": "persist-gist-token",
+          "premise": "rejected or unselected after live review",
+          "evidence": "gistCredentials already limits token persistence to tab-session; preserve it."
+        }
+      ]
+    },
+    "speed-organization-efficiency": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "storage-framework",
+          "premise": "rejected or unselected after live review",
+          "evidence": "browserStorage.js is a reusable guarded accessor; no dependency or general framework needed."
+        },
+        {
+          "slug": "eager-load-all-tabs",
+          "premise": "rejected or unselected after live review",
+          "evidence": "gameFlow already loads UI islands lazily; no measured need for broader loading."
+        }
+      ]
+    },
+    "token-cost": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "paid-prediction-api",
+          "premise": "rejected or unselected after live review",
+          "evidence": "spreadPredictions is local-only; external calls would add cost without fixing corruption."
+        },
+        {
+          "slug": "claim-token-savings",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Selected local repairs have no token consumption baseline; no savings claim."
+        }
+      ]
+    },
+    "observability-honesty": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "claim-cohort-retention",
+          "premise": "rejected or unselected after live review",
+          "evidence": "No recent playtest cohort; implementation tests cannot establish real retention."
+        },
+        {
+          "slug": "reuse-historical-release",
+          "premise": "rejected or unselected after live review",
+          "evidence": "S125 release is historical evidence only; S126 needs fresh exact-source staging and production."
+        }
+      ]
+    },
+    "sil-debt": {
+      "surviving": [],
+      "rejectedOnVerify": [
+        {
+          "slug": "reuse-prior-arc",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Native identity binds S126; completed S125 cannot satisfy this invocation."
+        },
+        {
+          "slug": "rewrite-ledgers",
+          "premise": "rejected or unselected after live review",
+          "evidence": "Historical records remain append-only; reconcile current facts during S126 closeout."
+        }
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "mobile-mode-recovery",
+      "disposition": "selected",
+      "evidence": "Guard storage access and retain the explicit mobile/full-view preference in this tab when reads or writes fail. Preserve stored preferences and viewport defaults. Verify getter/read/quota failures, both switch directions and actual mobile navigation in both themes.",
+      "novelConcept": false
+    },
+    {
+      "axis": "features-depth",
+      "slug": "prediction-corruption-boundary",
+      "disposition": "selected",
+      "evidence": "Validate persisted prediction maps, entries, statistics and receipts before use. Discard malformed data without invented grades. Keep league/year/week isolation, engine input immutability and once-only grading. Prove dashboard hydration with corrupt optional storage and normal prediction submission/settlement.",
+      "novelConcept": false
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "trophy-tab-continuity",
+      "disposition": "selected",
+      "evidence": "Retain validated earned trophy records in tab memory when persistence fails. Deduplicate repeated events, keep browser-wide cross-franchise trophy semantics, restore durable data without losing tab awards, and explain temporary persistence truthfully in Trophy Case. Verify repeated events, malformed records, quota/read/getter failures and actual desktop/mobile renders in both themes.",
+      "novelConcept": false
+    },
+    {
+      "axis": "features-depth",
+      "slug": "story-record-lookup",
+      "disposition": "unselected",
+      "evidence": "Live statBook row.team is a team ID; current export lookup matches it.",
+      "novelConcept": false
+    },
+    {
+      "axis": "features-depth",
+      "slug": "player-agenda-pin",
+      "disposition": "unselected",
+      "evidence": "Novel player-authored next-session pin; no demonstrated beta failure beyond existing command stack.",
+      "novelConcept": true
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "mobile-breakpoint-change",
+      "disposition": "unselected",
+      "evidence": "Existing 640px breakpoint is intentional and tested; storage failure is the demonstrated issue.",
+      "novelConcept": false
+    },
+    {
+      "axis": "ui-ux-feedback",
+      "slug": "session-control-receipt",
+      "disposition": "unselected",
+      "evidence": "Novel explicit last view-switch receipt; unnecessary new surface for a reversible toggle.",
+      "novelConcept": true
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "decision-review-nomination",
+      "disposition": "unselected",
+      "evidence": "Novel player-nominated past decision review; no real-player need evidence.",
+      "novelConcept": true
+    },
+    {
+      "axis": "gamification-immersion",
+      "slug": "new-trophy-catalog",
+      "disposition": "unselected",
+      "evidence": "Existing registry has meaningful season/career goals; retention continuity is the proven failure.",
+      "novelConcept": false
+    },
+    {
+      "axis": "ai-intelligence",
+      "slug": "paid-recovery-agent",
+      "disposition": "unselected",
+      "evidence": "Deterministic local errors require no paid inference.",
+      "novelConcept": false
+    },
+    {
+      "axis": "ai-intelligence",
+      "slug": "advisor-explanation-rewrite",
+      "disposition": "unselected",
+      "evidence": "frontOfficeAdvisor already uses evidence boundaries; no missing AI capability proved.",
+      "novelConcept": false
+    },
+    {
+      "axis": "security",
+      "slug": "new-auth-policy",
+      "disposition": "unselected",
+      "evidence": "Selected optional local-state changes do not need altered identity policy; existing CANON-045 launch gap stays visible.",
+      "novelConcept": false
+    },
+    {
+      "axis": "security",
+      "slug": "persist-gist-token",
+      "disposition": "unselected",
+      "evidence": "gistCredentials already limits token persistence to tab-session; preserve it.",
+      "novelConcept": false
+    },
+    {
+      "axis": "speed-organization-efficiency",
+      "slug": "storage-framework",
+      "disposition": "unselected",
+      "evidence": "browserStorage.js is a reusable guarded accessor; no dependency or general framework needed.",
+      "novelConcept": false
+    },
+    {
+      "axis": "speed-organization-efficiency",
+      "slug": "eager-load-all-tabs",
+      "disposition": "unselected",
+      "evidence": "gameFlow already loads UI islands lazily; no measured need for broader loading.",
+      "novelConcept": false
+    },
+    {
+      "axis": "token-cost",
+      "slug": "paid-prediction-api",
+      "disposition": "unselected",
+      "evidence": "spreadPredictions is local-only; external calls would add cost without fixing corruption.",
+      "novelConcept": false
+    },
+    {
+      "axis": "token-cost",
+      "slug": "claim-token-savings",
+      "disposition": "unselected",
+      "evidence": "Selected local repairs have no token consumption baseline; no savings claim.",
+      "novelConcept": false
+    },
+    {
+      "axis": "observability-honesty",
+      "slug": "claim-cohort-retention",
+      "disposition": "unselected",
+      "evidence": "No recent playtest cohort; implementation tests cannot establish real retention.",
+      "novelConcept": false
+    },
+    {
+      "axis": "observability-honesty",
+      "slug": "reuse-historical-release",
+      "disposition": "unselected",
+      "evidence": "S125 release is historical evidence only; S126 needs fresh exact-source staging and production.",
+      "novelConcept": false
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "reuse-prior-arc",
+      "disposition": "unselected",
+      "evidence": "Native identity binds S126; completed S125 cannot satisfy this invocation.",
+      "novelConcept": false
+    },
+    {
+      "axis": "sil-debt",
+      "slug": "rewrite-ledgers",
+      "disposition": "unselected",
+      "evidence": "Historical records remain append-only; reconcile current facts during S126 closeout.",
+      "novelConcept": false
+    },
+    {
+      "axis": "features-depth",
+      "slug": "market-evidence-gap",
+      "disposition": "unselected",
+      "evidence": "docs/market/MARKET.json absent; competitive research remains an explicit future task, no competitor facts or market-completeness claim made. Selected scope is the three reproduced beta failures.",
+      "novelConcept": false
+    }
+  ],
+  "innovationReserve": [],
+  "readinessAssessment": [
+    {
+      "area": "core journeys and product correctness",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Keep damaged optional predictions from interrupting dashboard updates",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "onboarding and identity/access",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "accessibility, mobile parity and every supported theme",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Keep mobile decision controls usable without browser storage",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "performance and capacity",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "security, privacy, data integrity and abuse controls",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "backup, recovery and rollback",
+      "status": "fail",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Keep earned trophies during this tab after failed persistence",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "email and notifications where used",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "observability and actionable analytics",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "feedback, support and issue triage",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "branding, legal, contact and rights/provenance",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "human and agent access where applicable",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    },
+    {
+      "area": "staging, release evidence and truthful beta/release communication",
+      "status": "partial",
+      "owner": "project release owner",
+      "sourceRevision": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+      "observedAt": "2026-10-28T16:29:31.155Z",
+      "evidence": "Existing public beta surface inspected; full readiness remains unproven by this bounded repair audit.",
+      "nextAcceptanceCheck": "Selected repairs require focused behavior, browser, visual, exact-candidate release and closeout evidence. Existing email/identity/public launch holds remain independent."
+    }
+  ],
+  "gameLoopReview": {
+    "scores": {
+      "loopTightness": 7,
+      "progression": 7,
+      "sessionEngagement": 7,
+      "retention": 5,
+      "soulFidelity": 7
+    },
+    "basis": "Independent live-source review; GAME_LOOP/SOUL/CURRENT_STATE read; no recent playtests or real-user outcome proof.",
+    "nextMoves": [
+      "Keep mobile decision controls usable without browser storage",
+      "Keep damaged optional predictions from interrupting dashboard updates",
+      "Keep earned trophies during this tab after failed persistence"
+    ],
+    "evidence": [
+      "context/GAME_LOOP.md",
+      "public/lib/mobileLoop.js",
+      "public/lib/spreadPredictions.js",
+      "public/lib/achievements.js",
+      "public/lib/gameFlow.js"
+    ]
+  },
+  "implementationComplete": true,
+  "releaseComplete": false,
+  "closeoutComplete": false,
+  "premiseGate": {
+    "schema": "premise-gate/v1",
+    "at": "2026-10-28T16:29:51.437Z",
+    "head": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+    "sidecar": "docs/AUDIT_2026-10-28.json",
+    "selectionMode": "explicit",
+    "recordPathPolicy": "project",
+    "strict": true,
+    "exit": 0,
+    "verified": 3,
+    "contradicted": 0,
+    "unverified": 0,
+    "premiseDigest": "7aa8fe53cac98a4893fe749ce97ac04539429978b74eb1c3e9796c8c733f58f6",
+    "implementationDirty": []
+  },
+  "processLimitations": [
+    "Native startup recovery helper and local record-review helper are absent; current writeback-currency/start-sync, canonical goal binding, project-owned independent review evidence and recipient-scoped gates were used.",
+    "Pending candidate admitted before product edits; throwaway fixture rehearsal occurred later and is not claimed as pre-implementation.",
+    "Initial combined focus138/139 failed boot target; final frozen source143/143 passes at649437bytes with unchanged650000target.",
+    "Provisional native Studio begun during implementation failed383/389; output observation was truncated. It is not exact-candidate green evidence. Current exact-source full required checks remain necessary.",
+    "Initial status theme key was stale. Corrected exact-baseline/current theme captures pass; accidental overwrite of initial invalid before images is disclosed in visual review."
+  ]
+}

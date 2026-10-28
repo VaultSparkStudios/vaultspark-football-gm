@@ -1,18 +1,8 @@
 /**
- * Mobile Core Loop — Simplified Single-Column Daily Decision View
- *
- * Activates on phone-width viewports (≤ 640px) or via the Settings toggle.
- * Shows: team record, next game, cap space, top roster needs, and 2-3 actions.
- * The full game UI remains accessible via "Full View" button.
- *
- * The fixed overlay replaces the full shell. Auto-enable at 640px, where CSS
- * collapses desktop navigation; wider tablets/laptops retain the full UI.
+ * Mobile decision deck: auto-enable at ≤ 640px, matching collapsed navigation.
+ * Explicit Settings/Full View choices override viewport detection.
  * The old innerWidth <= 480 gate was overcorrected to 980px in S63,
- * intercepting tablet navigation. Keep the auto band aligned with CSS at 640px.
- * Explicit Settings preferences override auto-detection in both directions.
- *
- * Usage:
- *   import { isMobileModeEnabled, setMobileModeEnabled, renderMobileOverlay } from "./lib/mobileLoop.js";
+ * swallowing tablet navigation. Wider viewports retain the full shell.
  */
 
 import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
@@ -22,24 +12,21 @@ import { teamCodeFrom } from "./teamDisplay.js";
 import { deriveTrophyRoad, readEarnedAchievements, renderTrophyRoad } from "./achievements.js";
 import { buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
+import { browserStorage } from "./browserStorage.js";
 
 const MOBILE_PREF_KEY = "vsfgm_mobile_loop";
+// An explicit choice must work for this tab even when persistence is denied.
+let tabPreference = null;
 
-// ── Mode detection ────────────────────────────────────────────────────────────
+// Mode detection
 
-/**
- * Widest viewport that auto-enables the decision deck.
- *
- * Matches the `max-width: 640px` breakpoint at which styles.css collapses
- * `.side-menu` to a single column — the point where the desktop shell stops
- * being usable. Kept in sync with scripts/responsive-evidence.mjs by
- * test/tablet-decision-deck.test.js, so the deck can never silently swallow a
- * viewport the evidence capture expects to drive as desktop.
- */
+// Kept aligned with CSS and responsive captures by tablet-decision-deck.test.js.
 export const MOBILE_AUTO_MAX_WIDTH = 640;
 
 export function isMobileModeEnabled(width = null) {
-  const stored = localStorage.getItem(MOBILE_PREF_KEY);
+  if (tabPreference !== null) return tabPreference;
+  let stored = null;
+  try { stored = browserStorage()?.getItem(MOBILE_PREF_KEY); } catch { /* use viewport default */ }
   if (stored === "1") return true;
   if (stored === "0") return false;
   const viewport = Number.isFinite(width) ? width : window.innerWidth;
@@ -47,20 +34,18 @@ export function isMobileModeEnabled(width = null) {
 }
 
 export function setMobileModeEnabled(enabled) {
-  localStorage.setItem(MOBILE_PREF_KEY, enabled ? "1" : "0");
-  _applyBodyClass(enabled);
+  tabPreference = Boolean(enabled);
+  try { browserStorage()?.setItem(MOBILE_PREF_KEY, tabPreference ? "1" : "0"); } catch { /* this tab keeps the choice */ }
+  _applyBodyClass(tabPreference);
 }
 
 function _applyBodyClass(enabled) {
   document.body.classList.toggle("mobile-loop-active", !!enabled);
-  // The deck is a full-screen replacement, so it owns the viewport outright.
-  // Dismiss the CANON-041 nav drawer rather than leaving it open underneath —
-  // otherwise exiting via "Full View" reveals an already-open drawer the player
-  // never asked for.
+  // Do not leave an open navigation drawer underneath the full-screen deck.
   if (enabled) document.body.classList.remove("mobile-nav-open");
 }
 
-// ── Render the mobile overlay ─────────────────────────────────────────────────
+// Render the mobile overlay
 
 export function renderMobileOverlay(state, onAdvanceWeek) {
   const overlay = document.getElementById("mobileLoopOverlay");
@@ -239,7 +224,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
   });
 }
 
-// ── Init on load ──────────────────────────────────────────────────────────────
+// Init on load
 
 /**
  * Apply the current gate verdict to the overlay.
@@ -280,7 +265,7 @@ export function initMobileLoop(state, onAdvanceWeek) {
   }
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// Helpers
 
 export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {}) {
   const controlledTeamId = dashboard.controlledTeamId;

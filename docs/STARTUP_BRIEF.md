@@ -3,7 +3,7 @@
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: ffb3c54915bddae7 -->
+<!-- genius-authority-fingerprint: 227d768c2f18f67d -->
 <!-- session-authority: committed=S125 · SIL=S125 · status=S125 · handoff=S125; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
@@ -67,9 +67,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ██░░░░░░░░░░░░░░░░░░░░░░    8% used                          ║
-║     22,220 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
-║     ~11,110 tok/turn  ·  cache 50%  ·  20 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     30,927 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -113,7 +112,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-10-27.json               ║
+║  ✓ queue exhausted · source: AUDIT_2026-10-28.json               ║
 ║  Closed: 3 · Open: 0                                             ║
 ║  All 3 live-premise-verified audit items are done.               ║
 ╚════════════════════════════════════════════════════════════════╝

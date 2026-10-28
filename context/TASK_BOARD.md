@@ -1,5 +1,11 @@
 # Task Board — Franchise Architect: Football
 
+## S126 Wave status
+
+- [x] Wave 1 — Fresh startup, goal/session binding, nine-axis audit, pending admission and pre-implementation premise timing.
+- [x] Wave 2 — Mobile control recovery, prediction corruption safety and trophy continuity; local143/143 focused, client7/7 browser,32 selected final images and independent reviews accepted.
+- [ ] Wave 3 — Exact candidate staging, required checks, production, push and ordered closeout.
+
 ## S125 Wave status
 
 - [x] Wave 1 — Fresh audit and pre-implementation admission/timing; startup sync delivery/order limitation retained.

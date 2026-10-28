@@ -1,4 +1,14 @@
-# Session 125 Closeout
+# Session 126 — Active arc
+
+## Where We Left Off (Session 126)
+
+Session Intent: Run a fresh full arc, commit/push directly to main and fully deploy the selected changes. This invocation is bound to S126; prior S125 evidence is historical.
+
+Fresh audit: docs/AUDIT_2026-10-28.json. Selected L2 outcomes are locally verified: mobile preference recovery, prediction corruption boundary and trophy continuity. Admission and strict pre-implementation premise timing passed. Final frozen-source focused143/143 and actual client browser7/7 pass; independent review accepted all three repairs after correcting malformed grades and quota-failed invalidation. Local32 selected final images bind desktop/mobile, both themes and touched states; the complete review retains52 inspected images. Reports: s126-local-checks, s126-local-browser, s126-independent-review and s126-local-visual-review. Exact-candidate full checks, staging/production, push and ordered closeout remain required. No S126 release is claimed.
+
+Wave 1 and Wave 2 complete locally. Wave 3 open. The provisional Studio run started during implementation failed383/389 and is not source-bound green evidence; final exact-source full checks remain mandatory. Public launch, identity/email and real-cohort readiness holds remain independent. Startup: canonical sync passed with recipient-owned propagation holds; radar current; no ABSOLUTE conformance gaps, standing STRONG CANON-045 gap retained without changing identity/trust policy. Session beacon is unconfigured. Doctor12/12 observed the historical published release only.
+
+## Prior Session 125 Closeout
 
 ## Where We Left Off (Session 125)
 

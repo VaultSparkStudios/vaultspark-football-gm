@@ -11,7 +11,7 @@ import { findTeamStanding, normalizeTeamRecord } from "./teamRecord.js";
 
 const STORAGE_KEY = "fa:achievements:v1";
 
-// ── Registry ─────────────────────────────────────────────────────────────────
+// Registry
 // check(ctx) returns false, true, or a string detail. ctx:
 //   event: { type, ...payload }   — the receipted trigger
 //   game:  controlled-team game summary on week-advanced events
@@ -144,27 +144,67 @@ export function deriveTrophyRoad({ dashboard = {}, recentBoxScores = [], earned 
   };
 }
 
-// ── Persistence (cross-save, bounded: ids + timestamps only) ─────────────────
+// Persistence (cross-save, bounded: ids + timestamps only)
+
+let tabEarned = {};
+let pendingEarned = {};
+let trophyStorageReadable = false;
+
+function validEarnedRecords(value) {
+  const records = {};
+  if (!value || typeof value !== "object" || Array.isArray(value)) return records;
+  for (const { id } of ACHIEVEMENTS) {
+    if (!Object.hasOwn(value, id)) continue;
+    const record = value[id];
+    if (!record || typeof record !== "object" || Array.isArray(record) ||
+        typeof record.earnedAt !== "string" || !Number.isFinite(Date.parse(record.earnedAt))) continue;
+    records[id] = {
+      earnedAt: record.earnedAt,
+      franchise: typeof record.franchise === "string" ? record.franchise.slice(0, 160) : ""
+    };
+  }
+  return records;
+}
+
+function mergeEarnedRecords(durable, pending) {
+  const merged = validEarnedRecords(durable);
+  for (const [id, record] of Object.entries(validEarnedRecords(pending))) {
+    // Keep the original unlock when another tab has already saved the trophy.
+    if (!merged[id] || Date.parse(record.earnedAt) < Date.parse(merged[id].earnedAt)) merged[id] = record;
+  }
+  return merged;
+}
+
+function flushPendingAchievements() {
+  if (!trophyStorageReadable || !Object.keys(pendingEarned).length) return;
+  try {
+    globalThis.localStorage.setItem(STORAGE_KEY, JSON.stringify(tabEarned));
+    pendingEarned = {};
+  } catch { /* Keep awards in this tab until browser storage recovers. */ }
+}
 
 export function readEarnedAchievements() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    const parsed = raw ? JSON.parse(raw) : {};
-    return parsed && typeof parsed === "object" ? parsed : {};
+    const raw = globalThis.localStorage.getItem(STORAGE_KEY);
+    let parsed = {};
+    try { parsed = raw ? JSON.parse(raw) : {}; } catch { /* Discard malformed optional data. */ }
+    tabEarned = mergeEarnedRecords(parsed, pendingEarned);
+    trophyStorageReadable = true;
+    flushPendingAchievements();
   } catch {
-    return {};
+    trophyStorageReadable = false;
   }
+  return validEarnedRecords(tabEarned);
 }
 
 function writeEarnedAchievements(earned) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(earned));
-  } catch {
-    // Quota/storage failure: the unlock still shows this session.
-  }
+  tabEarned = mergeEarnedRecords(tabEarned, earned);
+  pendingEarned = mergeEarnedRecords(pendingEarned, earned);
+  // Never overwrite an unreadable store: it may hold other earned trophies.
+  flushPendingAchievements();
 }
 
-// ── Evaluation ───────────────────────────────────────────────────────────────
+// Evaluation
 
 export function deriveControlledGame(recentBoxScores, controlledTeamId, week, year) {
   const rows = Array.isArray(recentBoxScores) ? recentBoxScores : [];
@@ -250,7 +290,7 @@ export function recordAchievementEvent(type, payload = {}) {
   return { unlocked, game: ctx.game };
 }
 
-// ── Presentation ─────────────────────────────────────────────────────────────
+// Presentation
 
 const TIER_LABELS = { bronze: "Bronze", silver: "Silver", gold: "Gold", legend: "Legend" };
 
@@ -303,6 +343,12 @@ export function renderTrophyCase() {
   const el = document.getElementById("trophyCaseContent");
   if (!el) return;
   const earned = readEarnedAchievements();
+  const temporary = !trophyStorageReadable || Object.keys(pendingEarned).length > 0;
+  const persistenceCopy = temporary
+    ? "Browser storage unavailable — new trophies stay in this tab only."
+    : "Saved across every franchise in this browser.";
+  const kicker = document.getElementById("trophyCasePanel")?.querySelector(".narrative-panel-kicker");
+  if (kicker) kicker.textContent = "Achievements earned across every franchise";
   const earnedCount = ACHIEVEMENTS.filter((a) => earned[a.id]).length;
   const rows = ACHIEVEMENTS.map((achievement) => {
     const record = earned[achievement.id];
@@ -319,7 +365,7 @@ export function renderTrophyCase() {
       </div>`;
   }).join("");
   el.innerHTML = `
-    <div class="trophy-case-summary">${earnedCount} / ${ACHIEVEMENTS.length} trophies earned — permanent across every franchise in this browser.</div>
+    <div class="trophy-case-summary">${earnedCount} / ${ACHIEVEMENTS.length} trophies earned · ${persistenceCopy}</div>
     <div class="trophy-case-grid">${rows}</div>`;
   mountTrophyCaseShareControls(el, earned);
   el.querySelectorAll("button[data-trophy-share]").forEach((button) => {

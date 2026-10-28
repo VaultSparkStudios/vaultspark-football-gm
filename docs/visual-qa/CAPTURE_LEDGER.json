@@ -24019,6 +24019,226 @@
       "bytes": 145144,
       "session": 125
     },
+    "s126-after-final-trophy-desktop-dark.png": {
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
+      "bytes": 208143,
+      "session": 126
+    },
+    "s126-after-final-trophy-desktop-light.png": {
+      "sha256": "122dbfc7b0b1bc9940c28832ec73331a589ad471174327c11f193a5f11a10606",
+      "bytes": 174162,
+      "session": 126
+    },
+    "s126-after-final-trophy-mobile-dark.png": {
+      "sha256": "731400c18710591728371ed8a4ccabec4766fee47b5073cca1f5390fd10cee76",
+      "bytes": 230923,
+      "session": 126
+    },
+    "s126-after-final-trophy-mobile-light.png": {
+      "sha256": "b9d80330b8c2e1bf3b7fc378a47c0c4c5cf24370c84635386173914366eeaaa8",
+      "bytes": 214020,
+      "session": 126
+    },
+    "s126-after-trophy-desktop-dark.png": {
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
+      "bytes": 208143,
+      "session": 126
+    },
+    "s126-after-trophy-desktop-light.png": {
+      "sha256": "122dbfc7b0b1bc9940c28832ec73331a589ad471174327c11f193a5f11a10606",
+      "bytes": 174162,
+      "session": 126
+    },
+    "s126-after-trophy-mobile-dark.png": {
+      "sha256": "21da2189c85f27d942e3c40ba26912fffa53cbdbffdbfb5a40e2bdb625c287d9",
+      "bytes": 230923,
+      "session": 126
+    },
+    "s126-after-trophy-mobile-light.png": {
+      "sha256": "b9d80330b8c2e1bf3b7fc378a47c0c4c5cf24370c84635386173914366eeaaa8",
+      "bytes": 214020,
+      "session": 126
+    },
+    "s126-before-trophy-desktop-dark.png": {
+      "sha256": "1d8756e55fcfdbfa2057ffd9319b1028debfa8cb2a610402fc44e70ece1ee2fd",
+      "bytes": 194857,
+      "session": 126
+    },
+    "s126-before-trophy-desktop-light.png": {
+      "sha256": "d2247b18a507a025754759a47acbfc7fbbf100b95a7ec584f80c6958510d6c13",
+      "bytes": 166167,
+      "session": 126
+    },
+    "s126-before-trophy-mobile-dark.png": {
+      "sha256": "6d612f57cabcea4b3f1936f4422af0bbd4fcc08d93802e2d6b74e1b511f754b9",
+      "bytes": 223444,
+      "session": 126
+    },
+    "s126-before-trophy-mobile-light.png": {
+      "sha256": "e6a30d42b4753686c4beb2f097d52c3eab2df94cbb5176eee49bc72195b245ca",
+      "bytes": 209482,
+      "session": 126
+    },
+    "s126-mobile-after-current-desktop-dark-deck.png": {
+      "sha256": "0145ba3f75967fa8f32123678db9db57f514e97c712632903ab351e873b4114f",
+      "bytes": 87901,
+      "session": 126
+    },
+    "s126-mobile-after-current-desktop-dark-full-view.png": {
+      "sha256": "32045bd9a1a95465db879726c0f3bc2c366790cb5e5e3431eb21ac8c4d2e3971",
+      "bytes": 600390,
+      "session": 126
+    },
+    "s126-mobile-after-current-desktop-light-deck.png": {
+      "sha256": "84e76a4e067a11c17b1aa9dc83e9653a24fa889e14947d3252b5171168772c15",
+      "bytes": 92310,
+      "session": 126
+    },
+    "s126-mobile-after-current-desktop-light-full-view.png": {
+      "sha256": "279bb9f1b74fd61b439ee7dc37dc3b882946fb5344801fd9c04f712c196ca596",
+      "bytes": 541349,
+      "session": 126
+    },
+    "s126-mobile-after-current-mobile-dark-deck.png": {
+      "sha256": "f56b8758d6115e2e3d2b06078929bac62503fc09cd0e1570ac0a616620db72e2",
+      "bytes": 70504,
+      "session": 126
+    },
+    "s126-mobile-after-current-mobile-dark-full-view.png": {
+      "sha256": "9f3732f80c0a24f09178e54e6abcb8154b2c17a6e3a5faf0f7e6ee2964e66018",
+      "bytes": 160347,
+      "session": 126
+    },
+    "s126-mobile-after-current-mobile-light-deck.png": {
+      "sha256": "340dc97652cc380dc3b78347fe41290cf35dfbab31e9748ee03faa61b2b572e7",
+      "bytes": 74746,
+      "session": 126
+    },
+    "s126-mobile-after-current-mobile-light-full-view.png": {
+      "sha256": "d839459212fb1cf300422de75c0a7c747e14aa6a6a72a41a6d3d97a43923e7f0",
+      "bytes": 156694,
+      "session": 126
+    },
+    "s126-mobile-after-final-desktop-dark-deck.png": {
+      "sha256": "e5f12b675d2962bbefb70afcc79982fb67dedf29b8d6a08733b52752e5a8c2da",
+      "bytes": 87842,
+      "session": 126
+    },
+    "s126-mobile-after-final-desktop-dark-full-view.png": {
+      "sha256": "2d87f2e03d79d973ed3161c61d0af956820ad83e81bcae6d64cf26ed3aa68517",
+      "bytes": 602143,
+      "session": 126
+    },
+    "s126-mobile-after-final-desktop-light-deck.png": {
+      "sha256": "b4e4a2f895a4862982550dd9daef0597d72bf4af8108e8736ce1e6dc21926cf6",
+      "bytes": 92816,
+      "session": 126
+    },
+    "s126-mobile-after-final-desktop-light-full-view.png": {
+      "sha256": "689d94d44cddeeeb6b49fc1b7e83c72748b64cea917713f658ed7941e9b3a32b",
+      "bytes": 541487,
+      "session": 126
+    },
+    "s126-mobile-after-final-mobile-dark-deck.png": {
+      "sha256": "80e7de4d8ca22f34cfe61812e5b76fa2f8db3ad6c0591ff5acae167b45aa5c07",
+      "bytes": 70197,
+      "session": 126
+    },
+    "s126-mobile-after-final-mobile-dark-full-view.png": {
+      "sha256": "b323bfb362bb0980831249d36d2d095aac10648f6646eaf31430763c2f69ba54",
+      "bytes": 160590,
+      "session": 126
+    },
+    "s126-mobile-after-final-mobile-light-deck.png": {
+      "sha256": "82f0012b64b22d4b4a881b53c103bd9249281b0e8735e6d5133d77c20c554090",
+      "bytes": 74945,
+      "session": 126
+    },
+    "s126-mobile-after-final-mobile-light-full-view.png": {
+      "sha256": "7700a9bd1d03471a9c72fc554ce0d0997d123e31607251970e5f115ae2425ec1",
+      "bytes": 157322,
+      "session": 126
+    },
+    "s126-mobile-before-desktop-dark-deck.png": {
+      "sha256": "5e7036f4fa748e1d976dde3245aa0c17d26888bac3efbf4b8c8ca928f1b1d2b5",
+      "bytes": 88179,
+      "session": 126
+    },
+    "s126-mobile-before-desktop-dark-full-view.png": {
+      "sha256": "255395a0efe8b41b40d6c2f9806bda5e27ab68c30d268e9bd6fad34b67c6f779",
+      "bytes": 87922,
+      "session": 126
+    },
+    "s126-mobile-before-desktop-light-deck.png": {
+      "sha256": "10ecbe7f1a7270eea81324f1de737e1fa8c3afab5306f8dc736710335582b1ce",
+      "bytes": 92259,
+      "session": 126
+    },
+    "s126-mobile-before-desktop-light-full-view.png": {
+      "sha256": "6cd9a0ef79373a3f8d989dcd6d41f36c76230f688e5f832057bd384d0ceec126",
+      "bytes": 90968,
+      "session": 126
+    },
+    "s126-mobile-before-mobile-dark-deck.png": {
+      "sha256": "6c7895cf6b4ad3281171493cc5402377be78b3b3055feb30bf10c586e77343c4",
+      "bytes": 70221,
+      "session": 126
+    },
+    "s126-mobile-before-mobile-dark-full-view.png": {
+      "sha256": "f00d34743755146833eb47f87285e977acdb2aa7f83ce6254b95dcf1fe4c3b47",
+      "bytes": 67696,
+      "session": 126
+    },
+    "s126-mobile-before-mobile-light-deck.png": {
+      "sha256": "74b102fcf6eeaabfc4596b7924e78c05829e0d8c3e41739dfab9f1a2c321312e",
+      "bytes": 74888,
+      "session": 126
+    },
+    "s126-mobile-before-mobile-light-full-view.png": {
+      "sha256": "0da85024cad77b2947c7cb97cbcc7ecbab5c08bc2294abfc2043e60c349e9a67",
+      "bytes": 73473,
+      "session": 126
+    },
+    "s126-status-after-v2-desktop-dark.png": {
+      "sha256": "f31dea94b6b23d671eb3069a6d1d090b1490a51aaae544bf5d31f19fdc0a8bb7",
+      "bytes": 618257,
+      "session": 126
+    },
+    "s126-status-after-v2-desktop-light.png": {
+      "sha256": "cdd2317ac2405b0b944292034b491106a66634c103d865965f07658c0b77bc1e",
+      "bytes": 664284,
+      "session": 126
+    },
+    "s126-status-after-v2-mobile-dark.png": {
+      "sha256": "4634b62ba25955429d4e2e2e9ea9301fda5d1d45af90cb19b271471a317d5403",
+      "bytes": 166915,
+      "session": 126
+    },
+    "s126-status-after-v2-mobile-light.png": {
+      "sha256": "4e7364a4dafcb7eefde967f3f40a925d9a1c8a22da5d46dd4c96ae16d347dc56",
+      "bytes": 156361,
+      "session": 126
+    },
+    "s126-status-before-v2-desktop-dark.png": {
+      "sha256": "76569815a3b25d098d587ea373bbd5c772c41ef98c5ea218182a51ac76126ce9",
+      "bytes": 625801,
+      "session": 126
+    },
+    "s126-status-before-v2-desktop-light.png": {
+      "sha256": "73d3ddd10451271c45c147611ae6c18c9738e76e8194fbf3bef6f69fce8f6761",
+      "bytes": 670416,
+      "session": 126
+    },
+    "s126-status-before-v2-mobile-dark.png": {
+      "sha256": "18ea1ccc4ab1c7755ab1d6d0ebf4d810af5f942ad9cfe2e5b3a4a31fa1c6cb10",
+      "bytes": 162766,
+      "session": 126
+    },
+    "s126-status-before-v2-mobile-light.png": {
+      "sha256": "ce5d04f5d0b587ab01fdc0f1e6c9534641ec14171b4de10d0e6c95c1df9cafc3",
+      "bytes": 154309,
+      "session": 126
+    },
     "s69-desktop-gm-persona-dark.png": {
       "sha256": "6fceb8a7121d7c6ebe4d5bb955fd2be60b49d247dc97b43bcc00860a909a5bc5",
       "bytes": 52906,

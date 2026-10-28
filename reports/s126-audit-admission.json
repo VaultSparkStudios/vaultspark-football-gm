@@ -1,0 +1,48 @@
+{
+  "session": 126,
+  "at": "2026-10-28T17:09:21.770Z",
+  "selectedAdmission": {
+    "ok": true,
+    "phase": "before-product-edits",
+    "command": "check-audit-plan-preflight",
+    "inputs": {
+      "audit": {
+        "path": "docs/AUDIT_2026-10-28.json",
+        "sha256": "424058178599885c161e6a9b7a2c0ae26b51eb36163ea6eba13eccbf2d6e2723"
+      },
+      "plan": {
+        "path": "docs/IMPLEMENT_PLAN.md",
+        "sha256": "8704678f96f5a4c45e046716a0b42466d76c28c3bc10cca99d29fbf180a6e9db"
+      },
+      "auditBrief": {
+        "path": "audit-brief.json",
+        "sha256": "3c00f92bb5ff45eff87a98032047eed6addecb05c7dd02af16950c1601648c4b"
+      },
+      "planBrief": {
+        "path": "plan-brief.json",
+        "sha256": "fec510bd1812ccac5cf910d457e2fdc0f3dcf99dbab7d43513e1033beefc68d2"
+      }
+    }
+  },
+  "premiseGate": {
+    "schema": "premise-gate/v1",
+    "at": "2026-10-28T16:29:51.437Z",
+    "head": "ef9f43d687558d55f4f1477b276e4a9ea8cc6f0f",
+    "sidecar": "docs/AUDIT_2026-10-28.json",
+    "selectionMode": "explicit",
+    "recordPathPolicy": "project",
+    "strict": true,
+    "exit": 0,
+    "verified": 3,
+    "contradicted": 0,
+    "unverified": 0,
+    "premiseDigest": "7aa8fe53cac98a4893fe749ce97ac04539429978b74eb1c3e9796c8c733f58f6",
+    "implementationDirty": []
+  },
+  "rehearsal": {
+    "ok": true,
+    "errors": [],
+    "phase": "after-implementation-before-shipped-record",
+    "limitation": "The pending candidate was admitted before product edits. Throwaway fixture rehearsal was executed later; it is not represented as a pre-implementation step."
+  }
+}
