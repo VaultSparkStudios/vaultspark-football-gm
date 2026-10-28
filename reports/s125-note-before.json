@@ -1,0 +1,205 @@
+{
+  "session": 125,
+  "phase": "before",
+  "startedAt": "2026-10-27T17:47:34.173Z",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "workingBaseRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "source": {
+    "path": "public/status.html",
+    "sha256": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+    "uncommitted": false
+  },
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "driverSha256": "2216a761c0ea033b2ea96686c1880d578f13edbba17a4aec7301a004979423f9",
+  "completed": true,
+  "verified": true,
+  "captures": [
+    {
+      "file": "s125-status-before-desktop-dark.png",
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "dark"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d"
+      }
+    },
+    {
+      "file": "s125-status-before-desktop-light.png",
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "light"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f"
+      }
+    },
+    {
+      "file": "s125-status-before-mobile-dark.png",
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "dark"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571"
+      }
+    },
+    {
+      "file": "s125-status-before-mobile-light.png",
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "light"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "label": "before",
+      "at": "2026-10-27T17:47:34.739Z",
+      "rows": [
+        {
+          "route": "/_health",
+          "sha256": "af83d3239af247158dfc072069ad6ae53577d6f9cf4c2190a806274145232fdf",
+          "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+          "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        },
+        {
+          "route": "/deploy-manifest.json",
+          "sha256": "bd3a3f406184bca0ee659e9b21226bc4959c2ed41ac24276820105dce95c6ebd",
+          "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+          "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        }
+      ]
+    },
+    {
+      "label": "after",
+      "at": "2026-10-27T17:47:44.608Z",
+      "rows": [
+        {
+          "route": "/_health",
+          "sha256": "af83d3239af247158dfc072069ad6ae53577d6f9cf4c2190a806274145232fdf",
+          "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+          "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        },
+        {
+          "route": "/deploy-manifest.json",
+          "sha256": "bd3a3f406184bca0ee659e9b21226bc4959c2ed41ac24276820105dce95c6ebd",
+          "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+          "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+        }
+      ]
+    }
+  ],
+  "frozenAcceptedEvidence": {
+    "ledger": "e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4",
+    "latest": "e61f31337ba20e3780788bff0985562fa21125b04a3c4ff37f4db2cf840003bb"
+  },
+  "ledgerPath": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+  "scope": "Only the actual status-page note, four theme/viewport renders; original accepted game evidence and original capture ledger stay immutable. Local after pixels are explicitly uncommitted, not deployed-candidate evidence.",
+  "origin": "https://playfranchisearchitect.com",
+  "finishedAt": "2026-10-27T17:47:44.911Z",
+  "frozenAcceptedEvidenceUnchanged": true
+}

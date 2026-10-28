@@ -466,7 +466,7 @@ This public repo no longer carries the detailed internal work log. Internal sess
   - Scouting investment now drives pro-day reveal precision (position-weighted combine grades proven via Pearson correlation across the real 256-prospect class; investment-gated, per-team-private interview/medical reads) instead of a flat RNG bump regardless of spend.
   - `src/engine/playCalling.js` — real down/distance/field-position tracking within each drive, situational pass/run leans, and a genuine fourth-down go/kick/punt brain, reusing the existing FG-make/punt-yardage formulas unchanged for calibration stability. Full calibration/monte-carlo/stats/ratings/career-realism/determinism regression suite verified green before and after.
   - `public/lib/returnDigest.js` — zero-backend "While You Were Away" return loop (localStorage-stamped last visit, 6h+/week-advance trigger, record delta + inbox count + pending GM decision digest).
-  - ARIA tab semantics (role=tablist/tab/tabpanel, aria-selected sync, roving tabindex with arrow/Home/End) + `public/lib/modalManager.js` focus-trap utility + 44px mobile touch targets.
+  - ARIA tab semantics (role=tablist/tab/tabpanel, aria-selected sync, roving tabindex with arrow[local path redacted] + `public/lib/modalManager.js` focus-trap utility + 44px mobile touch targets.
   - Six infra/truth fixes: genius-cache reads Execution Log truth instead of mtimes/prose substrings; 5 orphaned test files sharded plus a no-orphan guard; `landing.html` un-orphaned (sitemap + footer links); launch-evidence redirect-chain following; the studio-protocol-smoke test routed through the windows-hide-safe spawner; CI deploy-gating on a fast test job.
 - Caught and fixed a real bug in my own test harness mid-session: `scripts/run-test-shard.mjs` runs shards with `--test-isolation=none`, sharing one process across files; a module-scope `globalThis.document` assignment in a new test file collided with another file's async cleanup. Found via a genuine full-suite failure (not assumed), fixed by making every test set `document` fresh synchronously, re-verified.
 - Deferred honestly: what-if-replay, silent-error-surfacing, service-scaffold-honesty. Two were dispatched as background subagents but returned no usable result alongside a session-limit signal; consolidated and verified in-flight work instead of dispatching further large parallel work under that constraint.
@@ -495,7 +495,7 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Ran the continuous `/arc` sequence from current repo evidence: startup gates, fresh live audit, implementation, verification, and closeout prep.
 - Generated `docs/AUDIT_2026-07-03_SESSION34.*` with two ranked items after rejecting stale latest-audit follow-through and SPARKED flip on evidence.
 - Shipped Launch Readiness truth repair: `buildLaunchReadinessRows()` now exposes the real Contact Email gate, defaults it to Unverified, accepts verified/needs-check evidence, updates public-domain copy to `playfranchisearchitect.com`, and carries the row into beta feedback issue bodies.
-- Shipped theme customizer accessibility polish: stable popover ids, `aria-controls`, selected-control focus on open, Escape focus restore, and arrow/Home/End navigation for Appearance and Accent controls.
+- Shipped theme customizer accessibility polish: stable popover ids, `aria-controls`, selected-control focus on open, Escape focus restore, and arrow[local path redacted] navigation for Appearance and Accent controls.
 - Verification: focused launch/feedback tests 10/10; Playwright theme 7/7; default `npm test` 276/276; Playwright UI 16/16; Pages build/smoke; sitemap compliance 10/10; release/cost gates; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; PROJECT_STATUS SIL invariant clean.
 - Honesty note: sitemap compliance initially hit a Windows sandbox `CryptUnprotectData` failure before execution; rerun outside the sandbox passed 10/10. Launch/SPARKED remains blocked on real email receipt plus live origin/routing evidence.
 
@@ -1359,3 +1359,20 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 <!-- /s112-startup-docs-reconciliation -->
 
 <!-- s113-closeout:worklog -->
+
+## Session 113 — 2026-10-02 — Player language, League Pulse, scouting fog and the public site
+
+Startup read the brief (S112 queue exhausted, SIL 804, launch HOLD); studio-ops start-sync/canon-sync are absent here and were not run. Three read-only sweeps produced an 18-item plan; the founder approved it and set the goal: implement in full, close out, push and deploy.
+
+Parallel agents took disjoint files: server hardening (route split deferred — parity tooling reads src/server.js as text), the public site (claims single source, five pages, RSS, press kit, jargon gate), the in-game jargon sweep (~150 strings across 35 files) and the trademark/team-code sweep. The orchestrating session built the Desk lead, dev gating, guide, League Pulse, look-ahead, potential fog, operating statement, real-spot Sim-Watch, GM archetype and cap fixes.
+
+Verification found real problems before release: a code review (restored-session potential leak, playoff stats in records, two spacing bugs), the first canonical run (unregistered tests, a hex fallback, the lifecycle gate's beta wording), 25 browser failures (pinned wording, collapsed Advanced settings, a .row overriding [hidden]) and a promotion that failed in its own evidence harness. Candidate b62e4bb was superseded by 097a7ca, which passed 1748/1748, staging 14/14, promotion 36985778315, production 10/10, hosted performance and Doctor blockingFailing 0.
+<!-- /s113-closeout:worklog -->
+
+<!-- s114-closeout:worklog -->
+## Session 114 — 2026-10-02 — Release note, display codes and the server route split
+
+On the founder's "yes" to the S113 next list: published the S113 release note, moved engine headlines and four client panels to display codes, and split src/server.js into 11 route modules with a shared source reader (one agent; parity 129/129 and a 142-request side-by-side replay). The styles.css split was measured (31 KB brotli, service-worker cached) and retired. The evidence harness ran locally before promotion and passed. One promotion was cancelled when the gate job hit its 25-minute timeout on a slower runner; the same candidate was re-dispatched and succeeded. Closeout's CURRENT_STATE entry format ("- date: Session N") was corrected after the release-note freshness gate could not read the shorthand.
+<!-- /s114-closeout:worklog -->
+
+<!-- s115-closeout:worklog -->

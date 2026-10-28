@@ -109,6 +109,11 @@
           "at": "2026-10-27T03:39:40.592Z",
           "status": "shipped",
           "note": "Corrected client acceptance: focused13/13, fresh client before/after24pixel review. Optional journey faults are distinct from deliberate refusal when authoritative recovery storage is unreadable. Original server-runtime proof remains historical. Exact release still OPEN."
+        },
+        {
+          "at": "2026-10-27T17:23:45.408Z",
+          "status": "shipped",
+          "note": "Selected outcome and actual exact-source technical release accepted. Final closeout metadata/publication/cleanup remain pending."
         }
       ]
     },
@@ -168,6 +173,11 @@
           "at": "2026-10-27T03:39:40.592Z",
           "status": "shipped",
           "note": "Corrected client acceptance: focused13/13, fresh client before/after24pixel review. Optional journey faults are distinct from deliberate refusal when authoritative recovery storage is unreadable. Original server-runtime proof remains historical. Exact release still OPEN."
+        },
+        {
+          "at": "2026-10-27T17:23:45.408Z",
+          "status": "shipped",
+          "note": "Selected outcome and actual exact-source technical release accepted. Final closeout metadata/publication/cleanup remain pending."
         }
       ]
     },
@@ -227,6 +237,11 @@
           "at": "2026-10-27T03:39:40.592Z",
           "status": "shipped",
           "note": "Corrected client acceptance: focused13/13, fresh client before/after24pixel review. Optional journey faults are distinct from deliberate refusal when authoritative recovery storage is unreadable. Original server-runtime proof remains historical. Exact release still OPEN."
+        },
+        {
+          "at": "2026-10-27T17:23:45.408Z",
+          "status": "shipped",
+          "note": "Selected outcome and actual exact-source technical release accepted. Final closeout metadata/publication/cleanup remain pending."
         }
       ]
     }
@@ -643,7 +658,7 @@
     "implementationDirty": []
   },
   "implementationComplete": true,
-  "releaseComplete": false,
+  "releaseComplete": true,
   "processLimitations": [
     "Initial strict recorder included before-capture artifacts; preserved, relocated evidence before product edits, then canonical pre-implementation timing passed.",
     "Initial capture fixture/clipping and partial11/12run retained. Focused first10/12 retained; setup readiness and synthetic fixture hydration race corrected.",
@@ -653,5 +668,12 @@
   "acceptanceCorrection": {
     "path": "reports/s125-client-acceptance-correction.json",
     "sha256": "3f85b0217e1143ae5566e0334d5b3dfe7e70f6366fd3912f28e60770ad135e4f"
+  },
+  "closeoutComplete": false,
+  "currentRelease": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+    "acceptance": "reports/s125-release-acceptance.json",
+    "status": "technical-production-verified-closeout-pending"
   }
 }

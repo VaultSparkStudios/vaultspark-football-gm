@@ -1,8 +1,23 @@
 {
   "session": 125,
-  "startedAt": "2026-10-27T03:13:20.148Z",
-  "completedAt": "2026-10-27T03:13:24.916Z",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "startedAt": "2026-10-27T17:15:17.185Z",
+  "completedAt": "2026-10-27T17:15:20.697Z",
   "exitCode": 0,
+  "command": {
+    "executable": "node",
+    "args": [
+      "--test",
+      "--test-reporter=tap",
+      "--test-concurrency=1",
+      "test/player-state-storage-failure.test.js",
+      "test/playtest-journey.test.js",
+      "test/session109-first-season-contract.test.js",
+      "test/inbox-persistence.test.js",
+      "test/optional-storage-resilience.test.js",
+      "test/browser-boot-budget.test.js"
+    ]
+  },
   "summary": {
     "valid": true,
     "reason": null,
@@ -30,7 +45,7 @@
     },
     {
       "path": "scripts/run-test-shard.mjs",
-      "sha256": "ae37d517a0a7f2434cdb11c786cd1c7f2dcae28954c572852c1d4fc8913f4840"
+      "sha256": "a9291bf6c036b62a5e2efc6592989a05d23c9897c074f7b57c54babe0ff90b2b"
     },
     {
       "path": "test/player-state-storage-failure.test.js",
@@ -38,7 +53,7 @@
     },
     {
       "path": "test/playtest-journey.test.js",
-      "sha256": "15530aaeaad68305cdbbf5ccce945178beae1c09d0b72a9a5e2e509f0548da1b"
+      "sha256": "06cf908e8967b212176b19c9480977845fb185f688224839ca029741e76b0e62"
     },
     {
       "path": "test/session109-first-season-contract.test.js",
@@ -58,7 +73,26 @@
     }
   ],
   "rawLog": {
-    "path": ".cache/s125-checks.log",
-    "sha256": "074bc9786fa1ca75dd07ab8ac949a8607901b4c5955672111592fe616e0b2468"
-  }
+    "path": ".cache/s125-successor-local-checks.log",
+    "sha256": "85baddd8d4897620cfac38d570ef2129444f952218aca9fd52dd5eca5468b081"
+  },
+  "previousReceipt": {
+    "path": "reports/s125-evidence-history/local-checks-cc056294d7f85bb47f795c377dc5abf6a073d9bd843f14f70a1e87d1d241245e.json",
+    "sha256": "cc056294d7f85bb47f795c377dc5abf6a073d9bd843f14f70a1e87d1d241245e"
+  },
+  "normalization": [
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "beforeSha256": "ae37d517a0a7f2434cdb11c786cd1c7f2dcae28954c572852c1d4fc8913f4840",
+      "committedSha256": "a9291bf6c036b62a5e2efc6592989a05d23c9897c074f7b57c54babe0ff90b2b",
+      "change": "CRLF to committed LF only"
+    },
+    {
+      "path": "test/playtest-journey.test.js",
+      "beforeSha256": "15530aaeaad68305cdbbf5ccce945178beae1c09d0b72a9a5e2e509f0548da1b",
+      "committedSha256": "06cf908e8967b212176b19c9480977845fb185f688224839ca029741e76b0e62",
+      "change": "CRLF to committed LF only"
+    }
+  ],
+  "scope": "Fresh focused40 against exact committed source bytes. Historical working-copy CRLF hashes remain preserved; no product or test logic changed."
 }

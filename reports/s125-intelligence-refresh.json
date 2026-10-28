@@ -1,0 +1,190 @@
+{
+  "session": 125,
+  "at": "2026-10-27T17:30:55.770Z",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "sil": {
+    "score": 505,
+    "average3": 505,
+    "average5": 572.8,
+    "population": 79,
+    "engineeringJudgment": true
+  },
+  "ignis": {
+    "receipt": "reports/s125-ignis-refresh.json",
+    "verified": true
+  },
+  "entropy": {
+    "project": "Franchise-Architect",
+    "date": "2026-10-27",
+    "entropy": 0.058,
+    "signal": "healthy",
+    "signals": [
+      {
+        "name": "CURRENT_STATE.md",
+        "score": 0,
+        "weight": 1,
+        "note": "0.0d"
+      },
+      {
+        "name": "TASK_BOARD.md",
+        "score": 0,
+        "weight": 1.2,
+        "note": "0.0d"
+      },
+      {
+        "name": "LATEST_HANDOFF.md",
+        "score": 0,
+        "weight": 1,
+        "note": "0.0d"
+      },
+      {
+        "name": "SELF_IMPROVEMENT_LOOP",
+        "score": 0,
+        "weight": 0.8,
+        "note": "0.0d"
+      },
+      {
+        "name": "Truth audit",
+        "score": 0.035,
+        "weight": 1,
+        "note": "0.7d since run"
+      },
+      {
+        "name": "IGNIS score",
+        "score": 0.035,
+        "weight": 0.8,
+        "note": "0.7d old"
+      },
+      {
+        "name": "SIL skip pressure",
+        "score": 0.3,
+        "weight": 1.5,
+        "note": "2 at :1, 0 at :2⛔"
+      },
+      {
+        "name": "Oldest HAR item",
+        "score": 0,
+        "weight": 1,
+        "note": "0 sessions old (oldest)"
+      },
+      {
+        "name": "Now bucket",
+        "score": 0,
+        "weight": 0.6,
+        "note": "29 open item(s)"
+      }
+    ]
+  },
+  "genome": {
+    "dimensionsMeasured": false,
+    "scope": "UNMEASURED: native parser fallback zero is not an observed merit score."
+  },
+  "direction": {
+    "reviewed": true,
+    "newCreativeDirection": false,
+    "privateCdrUntouched": true
+  },
+  "memory": {
+    "receipt": "reports/s125-personal-memory.json",
+    "context": "context/AGENT_MEMORY.md"
+  },
+  "stateVector": {
+    "session": 125,
+    "sha256": "a94c4b0cc37d3fe50455e427c9e1c2e446bea3a2abf1ce3c4b92f203fd4a53fd"
+  },
+  "steps": [
+    {
+      "name": "sil-header",
+      "args": [
+        "scripts/render-sil-rolling-status.mjs",
+        "--write"
+      ],
+      "exitCode": 0,
+      "logSha256": "55c87223b4baa583e129d46683434bbb0a445bb58eddc29ead4c5a8a282d92aa"
+    },
+    {
+      "name": "sil-check",
+      "args": [
+        "scripts/render-sil-rolling-status.mjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "logSha256": "86b7526ec808769cc683d4ca86b910899eecac6eb57b36b971ec9f03983003b3"
+    },
+    {
+      "name": "entropy",
+      "args": [
+        "../vaultspark-studio-ops/scripts/compute-entropy.mjs",
+        "--project",
+        ".",
+        "--json",
+        "--update"
+      ],
+      "exitCode": 0,
+      "logSha256": "109be8d91cf7045691c9b18c3eedac14c8499e8992f89d69d36c240ff5db427b"
+    },
+    {
+      "name": "genome",
+      "args": [
+        "../vaultspark-studio-ops/scripts/append-genome-snapshot.mjs",
+        "--project",
+        "."
+      ],
+      "exitCode": 0,
+      "logSha256": "a3105fef9da58eec3f14a08ace3fa065d2179607b29f4bb6dbba1d6a513f44d5"
+    },
+    {
+      "name": "doctor-reconciled",
+      "args": [
+        "scripts/doctor.mjs",
+        "--update-json"
+      ],
+      "exitCode": 0,
+      "logSha256": "50f1af51fa3a8e86cf6bf91b70bf67b988e940b09d3a21d85adfd2bc91ad9952"
+    },
+    {
+      "name": "startup",
+      "args": [
+        "scripts/render-startup-brief.mjs"
+      ],
+      "exitCode": 0,
+      "logSha256": "39d463bbf5ef901952d486ceb63e844691b0566c69640ffeb7e64b0f6d7f2c98"
+    },
+    {
+      "name": "startup-format",
+      "args": [
+        "scripts/validate-brief-format.mjs",
+        "docs/STARTUP_BRIEF.md"
+      ],
+      "exitCode": 0,
+      "logSha256": "a687437197d81f7e3bc03d137ab0aa047e746a6e49e1836e0fb60bcf295cc407"
+    },
+    {
+      "name": "state-vector",
+      "args": [
+        "../vaultspark-studio-ops/scripts/render-state-vector.mjs",
+        "--project",
+        "."
+      ],
+      "exitCode": 0,
+      "logSha256": "84911aafc7e2915f4961677ff6b6be5343d87ab81584148c0177620fc84219db"
+    }
+  ],
+  "priorFailure": {
+    "path": ".cache/s125-closeout-derived-failed-3d524f25c523483f8c3a409bfa793ad7abcd21d094ec615787e83497e2fdb8b4.json",
+    "sha256": "3d524f25c523483f8c3a409bfa793ad7abcd21d094ec615787e83497e2fdb8b4",
+    "failedSteps": [
+      {
+        "name": "doctor",
+        "args": [
+          "scripts/doctor.mjs",
+          "--update-json"
+        ],
+        "exitCode": 2,
+        "logSha256": "3ddbf0eaeeed7bdc2d9794e2404ebbd8ded3a08aa86ce380864c2b4fca7d3706"
+      }
+    ]
+  },
+  "reconciliation": "reports/s125-release-status-reconciliation.json",
+  "scope": "Actual owned derivations. Original successful entropy/genome steps were retained without replay; stale release-authority doctor failure is archived and resolved by current native authority and doctor readback."
+}

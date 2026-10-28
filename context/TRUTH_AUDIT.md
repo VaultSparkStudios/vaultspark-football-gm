@@ -1,59 +1,12 @@
 <!-- truth-audit-version: 1.1 -->
 # Truth Audit
 
-Overall status: selected S124 technical production verified; final closeout publication pending; broader readiness remains partial
+Overall status: selected S125 technical production verified; final closeout publication pending; broader readiness partial
 Last reviewed: 2026-10-25
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
 
-## 2026-09-30 — Session 112 — Fair trades, durable saves and observed outcomes
-
-Recovery boundary a783194 verified S111 separately: fresh 1,588/1,588 tests, Doctor blockingFailing 0, valid closeout receipts, and no unfinished source diff. It does not recount S111 implementation as S112 work. The CPU-market evidence remains a matched-seed single-week control plus a three-year volume bound, not a matched three-year disabled-market comparison.
-
-Independent review reproduced three defects in the initial persistence draft: an older failed overwrite could erase a newer acknowledged save; rejected metadata deletion could leave a listed but unreadable save; a concurrent read could consume a writer’s failure. Per-slot adapter queues, recoverable deletion and request-owned worker barriers corrected all three. The original reproducer and 60/60 adapter/worker integration checks passed.
-
-The initial full UI run remains 69 passed, 1 failed and 1 intentional skip: its advisor-copy assertion expected the former two-state wording. The deterministic assertion was corrected without relabeling that red run. The first immutable visual candidate passed automated capture gates but actual pixel review found light-theme contrast defects; those defects were corrected and the final artifact was recaptured and reviewed. Superseded source 88a5e006bf0582c8dcba4ddfd84e9516f688de6d retains separate outcomes: general CI run 36747125169 succeeded with 70 browser passes and 1 skip, while Pages run 36747125173 failed with 69 passes, 1 failure and 1 skip. The unchanged reward-beats test reproduced locally at 2 passes and 1 failure across 3 repeats. Its failed image showed the Weekly Plan Composer awaiting a required choice; all three non-waiting visibility probes ran before the GM-decision response, and no advance request was submitted. Its Node run stopped after four passing shards totaling 1,293 tests; the long shard was cancelled with exit -1, so this was not a complete green suite. That candidate was not promoted to production. These earlier results remain superseded evidence, not final-source acceptance. See reports/s112-superseded-88a5e006.json. The replacement bcf5384 passed general CI after a clean failed-job rerun, but real stable-staging browser interaction proved that both new-franchise creation and explicit save loading lost the selected franchise across page navigation. Its local suite was interrupted after core 290 and runtime 909 passed (1199 total); sim-contract had not completed. No full green suite or production promotion was claimed for that candidate. The first 13 recovery browser checks failed because the test observer copied full imported snapshots into sessionStorage and its identity reader used a nonexistent field; those harness defects were corrected without treating that run as product acceptance. See reports/staging-browser-s112.json. Product source 23139baf778792dcea44118138de3ee07eed5a5a was pushed normally with hooks intact and verified on stable staging at 14/14. Its local canonical run was stopped during core with zero completed shards before correcting tested browser-gate scripts. General CI run 36787373005 passed all five hosted unit shards but failed static smoke before the full browser suite, and Pages run 36787373023 failed the same smoke: assertions expected bare game.html after successful navigation to game.html?resume=tab. Its responsive harness had the same stale expectation. Backend build 36787373038 succeeded, but no backend or production publication was accepted for that candidate. The normal push was delayed but completed; no deadlock or hook bypass is claimed. Three script sites and four client-runtime assertions across three files were corrected without changing public/src product code, server-runtime expectations or timeouts. Focused client checks passed 6 with 1 existing intentional skip, and static smoke passed. The clean replacement commit 6608db347debe8d72b44f2dbeec7e8ca39308981 builds the same artifact 5c60a5bd34d4f140464ba4a204850ca0df8b5387691bdc006b66d16c0f7a60e3. Its independent final acceptance must come from final receipts, not these predecessor results. See reports/s112-superseded-23139ba.json. Source 6608db347debe8d72b44f2dbeec7e8ca39308981 completed general CI run 36793635097 successfully, including browser job 110151960971 with 89 passes and 1 intentional skip out of 90 tests (10.4 minutes, no downloadable artifacts). It reached stable staging with 14/14 identity checks and actual desktop/mobile continuity. Subsequent actual pixel review found that the light-theme primary-button foreground override also affected disabled controls, rendering white labels on pale backgrounds. Its local canonical run was stopped after core 290/290; runtime was unfinished, so it was not a complete green suite. The candidate was not promoted to production or backend. The two light-theme selectors were subsequently narrowed to enabled controls in be71869. Existing actual per-PNG inspections may carry forward only when the new capture has the exact same hash; whole-candidate visual acceptance cannot carry forward. See reports/s112-superseded-6608db3.json and reports/browser-ci-s112-6608db3.json.
-
-Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt.
-
-Test identity: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt. Test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef.
-
-The founder explicitly approved actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 (v6.1.0), actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d (v6.0.0), and actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a (v7.0.1) after the generic URL trust gate returned BLOCK40. Five workflow references use those exact official releases. This narrow authorization does not change the generic verdict or approve other revisions.
-
-Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks.
-<!-- /s112-closeout:truth -->
-
-<!-- s112-delivery-followthrough -->
-### Delivery follow-through — 2026-10-01
-
-Closeout commit0f0d3a1 failed CI36893062846: two assertions found the missing public release note and one found an unparseable handoff header. Correctionf8b640b restores the parseable Session112 heading and publishes the player-facing note. The failed run and original be71869 receipts remain separate historical evidence. Edge email-protection changes whole HTML response bytes; both encoded addresses are verified and the release note itself matches the artifact exactly.
-
-Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.
-
-Portable authority: reports/session112-followthrough-acceptance.json. Backend and detailed checkpoint/continuity measurements remain explicitly bound to be71869; no new backend deployment, cohort, isolated restore timing or field-performance claim is made.
-<!-- /s112-delivery-followthrough -->
-
-
-<!-- s112-startup-docs-reconciliation -->
-### Startup documentation reconciliation — 2026-10-01
-
-While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with three documentation files. Closeout 31087ed subsequently passed all six CI jobs. A clean pull --rebase fast-forwarded the checkout. Doctor then reported one blocker because prompts/start.md was absent from its nondeployable-file list. The exact-file classification now matches Pages, Docker and SSH deployment inputs; no prompts-directory exemption was added. Focused release-authority checks passed 10/10, including mixed application/build/backend changes that still block; direct Doctor returned 0 blockers and 1 standing lifecycle warning. Independent deployment-scope review passed. Evidence: reports/s112-startup-docs-classification.json. The full 1702/1702 suite remains bound to product source f8b640b; the focused checker test is separate. Product deployment and SIL 804 remain unchanged.
-<!-- /s112-startup-docs-reconciliation -->
-
-<!-- s113-closeout:truth -->
-## 2026-10-02 — S113 — Three surfaces were showing something other than the truth
-
-**Sim-Watch's ball marker was decoration.** It moved by a formula on the play index while every play carried its recorded field position; it now reads the spot, and an unknown spot falls back to midfield rather than being invented.
-
-**Every club was "Loyalty".** Both transports classified GM archetypes from fields a team never has; one shared classifier now reads strategy, roster age, rating and cap use, with a negative control on a generated league.
-
-**"Active cap" was always $0.** The panel read a field the cap summary never returns.
-
-**A gate fix was checked for intent, not wording.** The lifecycle gate's pre-launch check accepts "early access" and still refuses any launch claim. The first canonical run, 25 browser failures, a code review (four real defects, including a restored-session potential leak proven by negative control) and a failed promotion are recorded as found, not erased. Source 097a7caf6f63c019bc4bf18ed763a3dae68da4d3. Direct six-shard suite 1748/1748 (core 290, runtime 996, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact af49f89b…), production promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36985778315 success (gate, build with full browser suite and evidence, deploy), production provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt: 214 captures bound to 097a7ca, changed surfaces inspected in both themes. Public launch remains HOLD.
-<!-- /s113-closeout:truth -->
-
-<!-- s115-closeout:truth -->
 ## 2026-10-03 — S115 — A persona effect that measured as nothing, and two closeouts that skipped this ledger
 
 **The first draft tilt was a no-op.** Keyed to strategy profile, it acted on a population that is almost entirely "balanced". A matched 10-season probe against a clean worktree showed no movement. It was re-keyed to GM archetype and re-measured: Win-Now draftee headroom fell from 2.38–2.49 to 1.69–1.73, and league overall mean, sd and p90 and the spread of champions held.
@@ -145,14 +98,20 @@ Exact source 49035219b7511bb5a54c438eba73f62798f0e072 and artifact 9ca5566b9d397
 
 Strict pre-implementation premise output and pending admission passed, but canonical timing conformance remains UNKNOWN because its recipient recorder/checker is absent. Public launch, real user uptake, isolated backup/restore drills and wider readiness matrix remain separate.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-10-27 — Session 124 — Actual recovery and release evidence
 
 Sourcef39b801c505dfd32f180decc186e5fa5b1e72e3f and artifactcccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7 bind the technical release. Exact candidate CI7/7; historical focused45/45 with retained raw log; fresh exact-source local browser9/9; clean source Studio389/389; native staging/production14/14; hosted12controls per phase plus committed production browser5/5; desktop/mobile five-run performance verified. Aggregate application case count and real-user outcomes remain unmeasured. Final metadata acceptance is separate. All48reviewed images retain their original local baseline/candidate versus hosted source identities. Initial hosted focused run4/5 timed out waiting for initial Ready before storage injection; unchanged bounded rerun5/5 passed. First result/raw/log retained; first automatic trace/image was not retained across runner cleanup. Initial root Studio386/389 reflected ignored generic scripts/privateCDR; isolated tracked source passed389/389. Initial browser7/9 fixture failure, theme/completion harness defects and boot650878/650648/650128 failures remain recorded. Final boot649992under unchanged650000. Initial audit breadth/weighting was incomplete; late18candidate/3novel-unselected review corrects the record without backdating. Canonical premise timing remains UNKNOWN; pre-edit strict3/3 and admission were observed, but recipient flags did not record canonical timing. Initial prepared court weaknesses were corrected and independently rechecked, not used as release proof.
 
 Prepared helper approval is distinct from actual deployment; actual release proof is reports/s124-release-acceptance.json. Later closeout metadata requires its own acceptance. No public launch, lifecycle transition, real-user/cohort effect or isolated restore proof is claimed.
+
+
+## 2026-10-27 — Session 125 — Authority-correct technical release
+
+Source1ad07d9919f75d0a8ccfb024c7f42b7f58f62937 and artifact93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53 bind actual technical release. Exact accepted candidate CI7/7 and image producer2/2; staging/production14/14 each; scope-bound client, contract, visual and hosted performance checks bound by 168 frozen court receipts. Aggregate real-player/capacity outcomes remain unmeasured. Source4a2 exact CI browser failure remains nonpassing; its focused13 report and local40 pixels retain original source labels. New client fixture focused14 and exact successor CI7 are separate. Historical local40 are used only under specific full payload/module byte equivalence, never as fresh successor hosted proof. Earlier server-runtime captures are historical only; authoritative client checkpoint refusal remains intentional. Initial late capture-ledger binding and failed metadata CI remain historical. Synthetic component fixtures and hosted lab performance do not prove player cohorts, complete seasons, device capacity or public launch readiness. Earlier dev-server/fixture/capture overreach, source2 Studio387/389, failed source4a2 browser288passed/3skipped/1failed, and prepared Pages admission findings remain recorded in the S125 evidence reports. No rejected attempt is relabeled passing.
+
+Closeout records require separate final metadata/publication proof. Prepared helpers, historical staging and receipt delivery never establish native completion, launch readiness or recipient adoption.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

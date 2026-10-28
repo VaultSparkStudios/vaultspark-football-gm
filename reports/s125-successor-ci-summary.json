@@ -1,0 +1,32 @@
+{
+  "session": 125,
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "observedAt": "2026-10-27T07:35:06.627Z",
+  "ci": {
+    "runId": 40458742116,
+    "attempt": 1,
+    "verified": true,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ]
+  },
+  "browser": {
+    "jobId": 122038071802,
+    "conclusion": "success",
+    "tests": 293,
+    "passed": 290,
+    "skipped": 3,
+    "failed": 0,
+    "rawLog": {
+      "path": ".cache/s125-successor-browser-job-122038071802.log",
+      "sha256": "2129ef00f3e027ad816975f767d05fdb22bd923b53ee5b6b880d12f414e0bf1e"
+    }
+  },
+  "scope": "Actual exact hosted CI7 and full browser execution; existing skipped UI cases remain explicit. Focused14 zero-skip regression is a separate receipt. Aggregate unit-test count and real-user outcomes are unmeasured."
+}

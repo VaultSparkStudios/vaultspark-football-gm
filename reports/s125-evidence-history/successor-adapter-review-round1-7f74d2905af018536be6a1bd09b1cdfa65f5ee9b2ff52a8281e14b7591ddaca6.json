@@ -1,0 +1,302 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T06:46:47.421Z",
+  "reviewer": "Independent game_audit complete successor adapter review",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "verdict": "fix",
+  "scope": "Preparation only. No current CI success, production deployment, closing action or native completion inferred.",
+  "preparationManifest": {
+    "path": ".cache/s125-successor-preparation.json",
+    "sha256": "6374917dc01857b8c6ad87729b14e4a2ca003c1e383ca58ce56f344948f29021"
+  },
+  "reviewedFiles": [
+    {
+      "path": ".cache/s125-successor-backend-target.mjs",
+      "sha256": "f99dd1208350b60c1bc50c49fb6216c04f866f47caf58641ef6e1e483c0d2b37"
+    },
+    {
+      "path": ".cache/s125-successor-candidate.mjs",
+      "sha256": "308377bab657d7e240e056973e87ccfc0a1cbf40d33425164c73db339f23e6c3"
+    },
+    {
+      "path": ".cache/s125-successor-cleanup-metadata-worktree.mjs",
+      "sha256": "c5a5491a3926eb8feff0e4a25d249417b604dbb1b7c746fee6146ae03dc1b1a0"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-ark.mjs",
+      "sha256": "35f5461202720330121bd7c44ded8bd7c403adfad6cec9001d057b77c98c8c0a"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-bind-release.mjs",
+      "sha256": "45c48d2d008ebf681fa5a799b6b5f4ef89eabce842904fb049b611db86a11aec"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-common.mjs",
+      "sha256": "9c17dc95273f8a3c5c422143ca16f1fd8c4b51f9338dceb17af2507309a6761c"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-derive.mjs",
+      "sha256": "2f655708d2a5911d1f1bf778278c2734321ef7d5cfe3d79b8cb892121a694fc7"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-gates.mjs",
+      "sha256": "69b9d9d6efc8f3bd0016b15832abd68e95068f4c9616064c378173f467cb3172"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-guards.test.mjs",
+      "sha256": "2c890e61bd6041beb2db929d6e32880981e39253467975eeaa1e89e37fed9c63"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-ignis.mjs",
+      "sha256": "c78ce61f8a296b1d9c8e0a7d7d60447fc83ca7094f7728c031bea36bd1b9f2c7"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-render.mjs",
+      "sha256": "b742042f163ed5a5da42f16a3227bd8a13a40ff660c470079b05d7c2b52c6509"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-stage-metadata.mjs",
+      "sha256": "2e17b35e77a38ee6743189aa269c75c702958bbca123ddd7c2f05122ab3c31ab"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-test-metadata.mjs",
+      "sha256": "88ddc558003c1a025d4177ffc3d6090a9b9e509df59b45f573095fb486826301"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-writeback.mjs",
+      "sha256": "fc8925ac240e39d55c06639c6945fa0f7a778b29b3fb4dd3ad663ed0310c18b2"
+    },
+    {
+      "path": ".cache/s125-successor-deploy-backend.mjs",
+      "sha256": "0cfcb16bab842c452aa29c7bbaf8b975f547512fe0e8d6176c5a16f5fe2b3ae9"
+    },
+    {
+      "path": ".cache/s125-successor-deploy-frontend.mjs",
+      "sha256": "97893609de9ff072fa60695b45316b33a62982f65abaa166109677e6311747f8"
+    },
+    {
+      "path": ".cache/s125-successor-dispatch-images.mjs",
+      "sha256": "100a9fd1fc29fb931af358c3410c538d18dcffb6b2390bff07d5fd08a4783efc"
+    },
+    {
+      "path": ".cache/s125-successor-final-clarification-stage.mjs",
+      "sha256": "9b65150dd73839054980c8e24303a161e274950dd38ef3b4290e79423faa6ea6"
+    },
+    {
+      "path": ".cache/s125-successor-final-clarification-test.mjs",
+      "sha256": "65d6fd20f322315d0c531342df5112ebaba9473771b08bf56ad6f25c3efe18ac"
+    },
+    {
+      "path": ".cache/s125-successor-final-clarification.mjs",
+      "sha256": "82f0fcab351266d968e780ec9c920177c83514051fd0630292061bd798729cbd"
+    },
+    {
+      "path": ".cache/s125-successor-finalization-common.mjs",
+      "sha256": "4e2229d1c815104d4517a9383c2ebe51ae95be2b07ac9f72ae6e0d487e65ae2b"
+    },
+    {
+      "path": ".cache/s125-successor-finalization-guards.test.mjs",
+      "sha256": "9f24f1cc0851cbd0ba18da5d025ef5efec7c0266215312e70701ff059ae908dd"
+    },
+    {
+      "path": ".cache/s125-successor-finalize-visual-receipt.mjs",
+      "sha256": "ca3d7008aefc06873d242e90d9f317f8e24cf19f5f896a703b7baee40a4180ba"
+    },
+    {
+      "path": ".cache/s125-successor-finish-native-guard.mjs",
+      "sha256": "ac1c78ea19615b0c353de0c3c7255faff2470d64ae52fa0e8f9b9d61342c65b7"
+    },
+    {
+      "path": ".cache/s125-successor-identity.mjs",
+      "sha256": "c92bf89bb1789de9fa0c1b14bf44611d1187df021f04f44b605562dd031ece27"
+    },
+    {
+      "path": ".cache/s125-successor-local-equivalence.mjs",
+      "sha256": "49f0d4b30ab7c6e8071a6b71db493e3dd2bce55ac11cc89c05b88919be8e4984"
+    },
+    {
+      "path": ".cache/s125-successor-observe-publication.mjs",
+      "sha256": "f57225c7b179e81e7bcf530ddf48651c76803d3a77c854994c9c4541c7577330"
+    },
+    {
+      "path": ".cache/s125-successor-pages-admission.mjs",
+      "sha256": "a6857dd06bad205a234a39b3b0bd7c626cef614b67b5ff83e0a9335c8285e08f"
+    },
+    {
+      "path": ".cache/s125-successor-pages-admission.test.mjs",
+      "sha256": "49e762fbec82ef8706385e9b28b3a614ea0ef3ab95a9646e22e18af4998b44ed"
+    },
+    {
+      "path": ".cache/s125-successor-release-court.mjs",
+      "sha256": "836af46e7a49001727c6fa4d5c5aab8551c023be026bc98271e28451b96fc858"
+    },
+    {
+      "path": ".cache/s125-successor-release-guards.mjs",
+      "sha256": "17648c98380d64f81936335e83a025fd93aaebb960ceb8eb4e90d826bebb28aa"
+    },
+    {
+      "path": ".cache/s125-successor-release-guards.test.mjs",
+      "sha256": "f0610bc6754f7d40872b7bd758eefc27b54950ffd66143258881a6e411e5b1bc"
+    },
+    {
+      "path": ".cache/s125-successor-surface-inventory.mjs",
+      "sha256": "f091baef0cc9e76a12c833823fd238f2329e84ad2686e6bfad70e2534ac7ceca"
+    },
+    {
+      "path": ".cache/s125-successor-terminal-census.mjs",
+      "sha256": "29092e3e21e6caedb247d11a975e7238e2368025fa4c2fd12ee26d0f6896e6af"
+    },
+    {
+      "path": ".cache/s125-successor-upload-inventory.mjs",
+      "sha256": "a4d6bd52f05d377a9cde22cb1c0ff2aca429eccb44e18a02507d6e30f1f201e6"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-plan.json",
+      "sha256": "f0041e4af0257300a5281ad4e016fb9f8611ec8b296dff6efd4865b3e91ffa59"
+    },
+    {
+      "path": ".cache/s125-successor-finalization-plan.json",
+      "sha256": "08e15fd99ee6b00747f9e1ef2cb1baa8e53518d7d3e5464109e957d91c53279b"
+    },
+    {
+      "path": ".cache/s125-successor-finalization-first-plan.json",
+      "sha256": "a91225724bbfac08d8a12163f16d0e78bfa03da9260aa526e239f598f3c2eb86"
+    },
+    {
+      "path": ".cache/s125-successor-score-proposal.json",
+      "sha256": "95eefe6b55e5f0712a93360d1717f5c71453cadfbce0f49e44d0d67bcdce704e"
+    },
+    {
+      "path": ".cache/s125-successor-closeout-readiness.json",
+      "sha256": "1976beb71af75718e541eb6f63b026f9c481e55d0bcaeecb393c8104a75d6679"
+    },
+    {
+      "path": ".cache/s125-successor-pages-diff-contract.json",
+      "sha256": "796eafb906c76db0a45dd4b104303f17dfb9f1b2bf48b630d853bc9f7ae2267c"
+    },
+    {
+      "path": ".cache/s125-successor-transport-preparation.json",
+      "sha256": "546dff68bde4e73ac7425703954ad1367d55e1dba228b6e1f564bb52a050d42d"
+    },
+    {
+      "path": ".cache/s125-successor-finalization-steps.md",
+      "sha256": "efb2c0e78312a2b335ccf053e1053f9a91b48d86dce3604a151135dce2d3ae06"
+    },
+    {
+      "path": ".cache/s125-successor-preparation-controls.tap",
+      "sha256": "5236cfe39396e65d4b04fa9434b02124c85d87f9cc303fc87e71ba685e5ca648"
+    }
+  ],
+  "adjacentReviewedReferences": [
+    {
+      "path": ".cache/s125-successor-driver-readcheck.mjs",
+      "sha256": "f142c5b9f8a27ad581b3785c08ddc01bb94fdca7f171eabf0517eb94809bfb67",
+      "owner": "Root/startup_delivery/game_audit; bytes referenced only, not edited by preparer"
+    },
+    {
+      "path": ".cache/s125-successor-focused.config.mjs",
+      "sha256": "11a6d05c09170b90fe8b712f60af4df393a363e345edce0cacaa7ded3134e4e8",
+      "owner": "Root/startup_delivery/game_audit; bytes referenced only, not edited by preparer"
+    },
+    {
+      "path": ".cache/s125-browser-successor.mjs",
+      "sha256": "a909dd214c2309eaa8eda7643e3cdac6acc15d80dfd44a848aff641770f4290f",
+      "owner": "Root/startup_delivery/game_audit; bytes referenced only, not edited by preparer"
+    },
+    {
+      "path": ".cache/s125-contract-states-successor.mjs",
+      "sha256": "970289dfbb2a0a035a0395fec1c5d5f66f410e6b2fb98a822d4e57990e4a4c91",
+      "owner": "Root/startup_delivery/game_audit; bytes referenced only, not edited by preparer"
+    },
+    {
+      "path": ".cache/s125-successor-pages-independent-review.json",
+      "sha256": "08a3115535d313e8075572515d4596dc0b232aa627e2dbc0ec3a4f03a97c73c6",
+      "owner": "Root/startup_delivery/game_audit; bytes referenced only, not edited by preparer"
+    },
+    {
+      "path": ".cache/s125-finalization-score-round2-review.json",
+      "sha256": "d066136d5124c3afe1aa1433b346e27dcd339a2fcb1d050f4ca2e5196fe6ed16",
+      "owner": "Root/startup_delivery/game_audit; bytes referenced only, not edited by preparer"
+    }
+  ],
+  "actualEvidenceReferenced": [
+    {
+      "path": "reports/s125-successor-local-equivalence.json",
+      "sha256": "6ca31654e8308520168947f9e9d8992cd8b560e0ca21d223ddfc62427d294779"
+    },
+    {
+      "path": "reports/s125-staging-successor-provenance.json",
+      "sha256": "1afaada935b043283f6b6c112aa0c1a719ac00541929b7a26b968d317685eff0"
+    },
+    {
+      "path": "reports/s125-browser-staging-successor.json",
+      "sha256": "97307d976ac792ed2fe3f91b9bbcd9ca045b1f81ab2ea8b59986e81ca972fbce"
+    },
+    {
+      "path": "reports/s125-contract-staging-successor.json",
+      "sha256": "205c96636453ac1c4bf8eccffab8ad4cb3a70e2aae2041260e3bb86b85bdbfbf"
+    },
+    {
+      "path": "reports/s125-staging-successor-review.json",
+      "sha256": "4b22f4788db55d5255da825a22502a1fb9e584679987f4c6713f236fe2342124"
+    },
+    {
+      "path": "reports/s125-staging-successor-performance.json",
+      "sha256": "551dda2805c55ea33d9da3f7ee3437e89e022497f5731c39949639dcb525707b"
+    }
+  ],
+  "checks": {
+    "manifestFilesMatched": 44,
+    "allReferencedHashesMatched": 56,
+    "syntaxModules": 37,
+    "syntaxPassed": 37,
+    "offlineControls": {
+      "pages": 41,
+      "releaseGuards": 35,
+      "closeoutGuards": 20,
+      "finalizationGuards": 25,
+      "total": 121,
+      "passed": 121,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "findings": [
+    {
+      "id": "S125-SUCCESSOR-EXACT-PRODUCER-ATTEMPT",
+      "severity": "high",
+      "paths": [
+        ".cache/s125-successor-deploy-frontend.mjs",
+        ".cache/s125-successor-deploy-backend.mjs",
+        ".cache/s125-successor-release-court.mjs"
+      ],
+      "finding": "Observed CI is compared only to the initial observation in both transports, rather than the explicitly reviewed run40458742116/attempt1. The generic image observer allows any positive attempt for run40460369518; caller checks do not pin attempt1. Thus a different internally successful observation can authorize deployment before later closeout rejects it.",
+      "required": "Before mutation and again in fresh admission, require exact current source, CIrun40458742116/attempt1 and image run40460369518/attempt1. Reuse an explicit pure identity guard in both transports and court, with negative run/attempt controls."
+    }
+  ],
+  "positiveFindings": [
+    "Exact successor source and artifact, direct parent and hash-bound93-file Pages fixture exception; absence is never passing CI.",
+    "Focused14 requires actual corrected fixture blob, raw one-attempt passing executions and all five source inputs; failed4a2 and old13 stay historical.",
+    "Current native staging14, all32 independently inspected successor pixels, performance samples and exact driver hashes remain separate from historical local40.",
+    "Historical local40 preserve4a2/f402 source labels under exact three-module/full-payload equivalence; visual finalizer preserves these labels and original receipts.",
+    "Dynamic actual transport inventory and release snapshot hashes avoid fixed predecessor counts and mutable draft-plan bindings.",
+    "Original ten-surface ordered journal, native status schema, reviewed-score identity, subject-correct intelligence and gateway Ark behavior retained.",
+    "Two bounded publication cycles require real first publication/Ark/cleanup, separate exact final Studio tree, individually reviewed report descendants, terminal receipt run/job/step disposition, native ledger/census and exact original-lock guard."
+  ],
+  "runtimePending": true,
+  "rootPlanReviewPending": true,
+  "executorsRun": false,
+  "productionAttempted": false,
+  "rounds": [
+    {
+      "round": 1,
+      "manifestSha256": "6374917dc01857b8c6ad87729b14e4a2ca003c1e383ca58ce56f344948f29021",
+      "verdict": "fix",
+      "openFindings": [
+        "S125-SUCCESSOR-EXACT-PRODUCER-ATTEMPT"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T17:11:10.147Z",
+  "reviewer": "Independent game_audit production rendered-pixel review",
+  "verdict": "approve",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "inspected": 32,
+  "manifests": [
+    {
+      "path": "reports/s125-browser-production.json",
+      "sha256": "0b697eafe1bd95ad7e8992b4f31a8cd3cf819c22290c18ca645949e1a7dddb0e"
+    },
+    {
+      "path": "reports/s125-contract-production.json",
+      "sha256": "9c4feba968531fef32ff6ce6a01f48b12ac61c2c1d5e38c032528a2acb71cf76"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s125-production-desktop-dark-boot-getter.png",
+      "sha256": "5012ea9be9b915e5bc13fbb3b93794e0f9d752baab4b205f8bef6ba940a404d3",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-desktop-dark-boot-quota.png",
+      "sha256": "5c7e40fb19c854ca29d2e76b79ce883732be1f0d5298db449c58037f65dddaa9",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-desktop-dark-contract-mark.png",
+      "sha256": "a1b0ccf68505b67c13dde4388b8d24b16230b13724f8c1d2bac075bf2d6373b5",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-desktop-light-boot-getter.png",
+      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-desktop-light-boot-quota.png",
+      "sha256": "893ad94a60bb9e29cbb50d09a4b3e8e8f3b40b10a7d8b3212f4d92ef71355841",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-desktop-light-contract-mark.png",
+      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-mobile-dark-boot-getter.png",
+      "sha256": "e824ceb841b28de5265612bd8334a53bd00646da2ea01ec49774b08bcc634e68",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-mobile-dark-boot-quota.png",
+      "sha256": "5b53a0da7921c4f414a2fc959ae5f50317d946960d44eb16883c5427a68d2c93",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-mobile-dark-contract-mark.png",
+      "sha256": "158045bc389383d60f57fa9752255c0064308b882748ee1133df41c30eab36a7",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-mobile-light-boot-getter.png",
+      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-mobile-light-boot-quota.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "inspected": true
+    },
+    {
+      "file": "s125-production-mobile-light-contract-mark.png",
+      "sha256": "5a53396f3f0d887edb59a0321e19347ee6276d108c81fa9a60f9c947937a39e1",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-dismissed.png",
+      "sha256": "8a16368ed51db198c70595a1e9e92f712cce55f4371af0e9d4ae411e4c6ad431",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-complete-first.png",
+      "sha256": "a98b91de7939d0717af9014600a9080f11c8972f64bc057f16cf12765c9b941a",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-complete-revisit.png",
+      "sha256": "9f76038ed98498bbbb6637556c4fdcde39efe3088679e2ef01baf778a5749380",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-finalized-2026.png",
+      "sha256": "adea4b46bdf07be7954ad1d027c6fe1848ac17564fd8021325ec2848b159ff6a",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-finalized-2027.png",
+      "sha256": "12cb8952e35a827a9343e18746d70d951ce2a1162b3eebdeabeaba5f819138cf",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-light-dismissed.png",
+      "sha256": "e2332b6b58b0ae3372752eee1392a7fd58555aa3e5c9767912ac212f24633718",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-light-complete-first.png",
+      "sha256": "fa36ed92c9864cd24469657966e4b91d485f4f647bba156b62c7364e9be49f8a",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-light-complete-revisit.png",
+      "sha256": "f268ade2998dcddd1ce363bae8df9e3403c5910a32ea982a956f44f1ccc66af9",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-light-finalized-2026.png",
+      "sha256": "f556b24fc0eb9870efd2592e0c8772af78f786cb23477b213da59654a4ac97d3",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-desktop-light-finalized-2027.png",
+      "sha256": "8205862feeb5c1a4ebf5b71ead7bd6d62fffd61dbcfc785c96bcca757ac3dbb7",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-dismissed.png",
+      "sha256": "81cd70622d57a2cc7d999a7a3dc73696da84d42ad3b72378a6e4c53d2576fe20",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-complete-first.png",
+      "sha256": "ad220f2b9d54fe862b1b230a28cff3592b3ec874629bce1d6e8bafa6b9eb11e1",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-complete-revisit.png",
+      "sha256": "f6c228feb798e682c3bd1a7f9e2c1d3cbf86f76ef058e6700d7c7d9fcc9e913f",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-finalized-2026.png",
+      "sha256": "633fd5405a68c704a81232b8443a976d248333f5fa3bba2c4cce7b8064dd5a9d",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-finalized-2027.png",
+      "sha256": "7aa53b5586ee4b0138e6c59b49d1ddeeaf7e5583d1feb4272d2b4cd82cbca96f",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-light-dismissed.png",
+      "sha256": "c8912ce85ad9f1f74e221cebbee3411e1f2e69cd1eb0e690c3f4e1546eed343c",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-light-complete-first.png",
+      "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-light-complete-revisit.png",
+      "sha256": "12de6a178e5c5c8b69bcd1551eb069aa34f43e6d262554ce7b14460dd9870b8b",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-light-finalized-2026.png",
+      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-production-mobile-light-finalized-2027.png",
+      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
+      "inspected": true
+    }
+  ],
+  "findings": [],
+  "scope": "All twelve production base images and twenty production contract-state images independently viewed in both themes at desktop/mobile sizes. Sixteen distinct base controls and the complete five-state contract matrix were checked against actual structured results. This is a production pixel review, not full closeout or public launch approval.",
+  "observations": [
+    "Recovery-checkpoint getter denial visibly shows the correct refusal, retry and saved-franchise actions with readable text at both viewport sizes; client is not Ready while optional journey instrumentation remains usable.",
+    "Optional journey quota failure reaches Ready and displays a fully framed usable tutorial; all choices and Skip Tutorial fit the mobile capture.",
+    "Retained depth-chart mark is visibly done, with readable 1 of 5 · this tab only; structured Inbox controls return one item.",
+    "Dismissal and completion revisit intentionally hide the isolated contract panel, revealing actual Desk content. First completion displays Contract honoured · this tab only once.",
+    "Both finalized captures retain Season 2026: 5 of 5 met · this tab only; structured initial/later finalized objects match despite 2027 input.",
+    "No horizontal clipping of the changed contract title/status or recovery actions. Desktop captures show all five rows; mobile captures show the status and first three rows clearly."
+  ],
+  "pixelHashes": {
+    "matched": 32,
+    "total": 32
+  },
+  "canonicalLedger": {
+    "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+    "sha256": "e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4",
+    "matched": 32
+  },
+  "nativeProduction": {
+    "path": "reports/s125-production-provenance.json",
+    "sha256": "869d60847086622e5075af3a51b887d56a2e8aae94006cb7154c025933abd74e",
+    "passed": 14,
+    "total": 14
+  },
+  "deploymentBindings": [
+    {
+      "path": "reports/s125-frontend-deployment.json",
+      "sha256": "37f61dfcadeb2f377906e32a6549400196a6f6e47141f66a4853648aa9b49449"
+    },
+    {
+      "path": "reports/s125-backend-deployment.json",
+      "sha256": "9c98b4d8e60ad30e4337fa37635c3825de0e4a97816fc920cbc75578e89c9f73"
+    }
+  ],
+  "limitations": [
+    "Mobile contract cards extend below the viewport; the lower objectives are not fully shown in those images. Their actual structured rendered-state controls are retained separately.",
+    "The existing floating feedback control sits near the lower-right edge of some mobile captures without covering the changed status/title or depth-chart mark.",
+    "Five contract states use distinct synthetic franchises and the isolated actual component template/styles; this does not prove an entire player season or cohort behavior.",
+    "Whole sessionStorage getter denial intentionally fails closed for authoritative recovery; these images do not describe it as successful initialization.",
+    "Hosted visual checks do not establish player retention, real-device capacity, public launch readiness, performance completion or native session closeout."
+  ]
+}

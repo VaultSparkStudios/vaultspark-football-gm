@@ -1,0 +1,81 @@
+{
+  "session": 125,
+  "at": "2026-10-28T02:00:51.323Z",
+  "scope": "Read-only canonical exports invoked with explicit subject root; owner autopilot not run. A historical repository-name claim is resolved only with exact current remote, declared legacy mount and unchanged tracked bytes. Context preservation was resolved by explicit evidence review; the native archive-format result remains separately nonpassing and retained.",
+  "checks": {
+    "aliases": true,
+    "coherence": true,
+    "freshness": true,
+    "summary": true,
+    "context": true
+  },
+  "ok": true,
+  "legacyIdentityResolutions": [
+    {
+      "file": "docs/CLOSEOUT_BRIEF_S14_2026-06-04.md",
+      "claimed": "vaultspark-football-gm",
+      "verifiedSameProject": true,
+      "basis": "Claim matches this exact repository remote name and a declared published legacy mount; tracked historical brief is unchanged.",
+      "fileSha256": "00cccdc16987e799f60dd45a5c24336fcfad596776dac018aec14d306fc1d071"
+    }
+  ],
+  "unresolvedForeignBriefs": [],
+  "chronicFlaky": {
+    "historyMeasured": false,
+    "sessionsTracked": null,
+    "escalations": null,
+    "scope": "No project-local history; historical trend unmeasured, never claimed as a clean trend."
+  },
+  "nativeChecks": {
+    "aliases": true,
+    "coherence": true,
+    "freshness": true,
+    "summary": true,
+    "context": false
+  },
+  "contextResolution": {
+    "method": "Explicit independent conservation review for canonical project archive format",
+    "nativeGuardPassing": false,
+    "rawPublicReceipt": {
+      "path": "reports/s125-evidence-history/note-closeout-gates-ca39009d94b3ff543cef8979df9756d937ee01454e6007b8c85adce682ab12a3.json",
+      "sha256": "ca39009d94b3ff543cef8979df9756d937ee01454e6007b8c85adce682ab12a3"
+    },
+    "rawFullGuard": {
+      "path": ".cache/s125-note-closeout-gates-full.json",
+      "sha256": "6756b33826287fa2b6a2a3db4fbbc16b28633def516d8621d33a4124e401207e",
+      "context": {
+        "ok": false,
+        "findings": [
+          {
+            "file": "context/DECISIONS.md",
+            "issue": "append-only-violated",
+            "ratio": 0.9722838137472284
+          },
+          {
+            "file": "context/SELF_IMPROVEMENT_LOOP.md",
+            "issue": "append-only-violated",
+            "ratio": 0.994390056099439
+          },
+          {
+            "file": "logs/WORK_LOG.md",
+            "issue": "append-only-violated",
+            "ratio": 0.9243309214541017
+          }
+        ]
+      },
+      "notRewritten": true
+    },
+    "review": {
+      "path": ".cache/s125-ledger-preservation-root-review.json",
+      "sha256": "014bbf80ac8a887e4bf9fda67cc277c44f7a801cb8554ede3c0fd497f325399b"
+    },
+    "proof": {
+      "path": ".cache/s125-ledger-preservation-proof.json",
+      "sha256": "72a822fdbb7d38da532c4d666b375ad7d67adb8604e558aba371bb385a44a9dd"
+    },
+    "preservedSections": 36,
+    "preservedPreambles": 3,
+    "explicitPublicRedactions": 5,
+    "parserOrThresholdChanged": false
+  }
+}

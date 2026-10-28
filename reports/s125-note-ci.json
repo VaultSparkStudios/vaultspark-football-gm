@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "sha": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "runId": 40554115517,
+  "attempt": 1,
+  "requiredJobs": [
+    "unit-shards (core)",
+    "unit-shards (runtime)",
+    "unit-shards (sim:contract)",
+    "unit-shards (sim:realism)",
+    "unit-shards (long)",
+    "unit-shards (studio)",
+    "browser-gates"
+  ],
+  "lane": "hosted-exact-sha",
+  "session": 125,
+  "observedAt": "2026-10-28T01:30:10.987Z",
+  "priorObserver": {
+    "path": ".cache/s125-note-ci-state.json",
+    "sha256": "49d06b47b43f8dab80eef160397b1d93e457e90a73e7cf71cb3ccc2a8a6c4722",
+    "disposition": "Original bounded watcher expired during pause; it remains failed. This is a fresh completed exact-source observation."
+  }
+}

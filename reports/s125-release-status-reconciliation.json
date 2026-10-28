@@ -1,0 +1,11 @@
+{
+  "session": 125,
+  "at": "2026-10-27T17:28:45.108Z",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "verified": true,
+  "beforeStatusSha256": "3297e265d181000699cd6b4051e6854e7182eedf10c5e590e2f9a4aaf815dd19",
+  "afterStatusSha256": "ffefff14ba6e89a6baa5fb775f715836b7bc96e360dfc8a27ea54b1d8d610c6e",
+  "authorityReceiptSha256": "78482f140088aca46e17259f7ce2452168b510b510974d812eeca65fad9fd48f",
+  "launchReady": false,
+  "scope": "Recipient-native status fields reconciled from actual S125 staging, production, visual, performance and pinned backend receipts; previous status snapshot preserved privately. No remote mutation."
+}

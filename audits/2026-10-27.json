@@ -1,28 +1,29 @@
 {
   "schemaVersion": "1.3",
-  "session": 124,
+  "session": 125,
   "date": "2026-10-27",
-  "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-  "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
   "selectedItems": 3,
   "shipped": 3,
   "silCategoriesV3": {
     "devHealth": 90,
-    "creativeAlignment": 65,
-    "momentum": 75,
+    "creativeAlignment": 70,
+    "momentum": 60,
     "engagement": 45,
-    "processQuality": 65,
-    "crossRepoCoherence": 50,
-    "securityPosture": 55,
+    "processQuality": 45,
+    "crossRepoCoherence": 60,
+    "securityPosture": 60,
     "ecosystemIntegration": 20,
     "capitalEfficiency": 0,
-    "automationCoverage": 45
+    "automationCoverage": 55
   },
-  "silScore": 510,
-  "priorDateAudit": null,
-  "acceptance": "reports/s124-release-acceptance.json",
-  "scope": "Actual technical release and ordered write-back; final metadata/publication/cleanup remain required.",
-  "closeoutArtifactsVerified": true,
-  "completion": "reports/s124-closeout-completion.json",
-  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
+  "silScore": 505,
+  "priorDateAudit": {
+    "path": "audits/archive/2026-10-27-before-S125-774c3f0c72a5c45bc7b800a1656a3424d51a9cc58bfa0a9b360bac3d934513c3.json",
+    "sha256": "774c3f0c72a5c45bc7b800a1656a3424d51a9cc58bfa0a9b360bac3d934513c3"
+  },
+  "acceptance": "reports/s125-release-acceptance.json",
+  "closeoutComplete": false,
+  "scope": "Actual technical release and ordered records; final metadata/publication/cleanup remain required."
 }

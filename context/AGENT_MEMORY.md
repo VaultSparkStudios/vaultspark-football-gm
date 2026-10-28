@@ -1,5 +1,15 @@
 # Agent Memory
 
+## Session 125 durable patterns
+
+- Optional observability cannot block play, but authoritative recovery denial must never silently create fresh authority.
+- Storage identity must remain stable across getter denial and recovery; explicit injected stores and franchise keys remain isolated.
+- Test the real static client authority and per-key failures; a permissive dev server is not hosted acceptance.
+- Freeze source-bound evidence, validate capture-ledger coverage and session projections before cutting a candidate, and retain executed failures.
+- An absent path-filtered Pages run is not success; exact CI/images/staging/artifact/rollback remain positive gates, and a newer red run cannot borrow an older green.
+- On Windows, hash the exact committed source bytes for source-bound receipts; preserve working-copy line-ending evidence separately rather than treating CRLF as a logic change.
+
+
 ## Session 124 durable patterns
 
 - Storage property access can throw before a function body; use guarded accessors and isolate method failures.
@@ -98,20 +108,6 @@
 - Re-check inherited incident language against ordinary observed commands. The S110 hook completed on normal pushes and was slow rather than reproducibly deadlocked; do not replace it from a stale diagnosis.
 - Test the actual Play click and direct document URL on the stable Pages hostname with an installed service worker. Pages canonicalizes `/game.html` to `/game`; a worker returning the cached redirected HTML response breaks the navigation even when static provenance is exact. Let the browser own navigation and keep the worker cache for static assets.
 - A hidden dialog can retain all of its buttons in the DOM. On a bye week, assert that the tactic dialog stays hidden; counting `.tactic-option` elements misstates the user-visible contract.
-
-## Session 98 durable patterns
-
-- A transition guard should read the previous and current domain states it is asked to compare. A second sentinel that is initialized only inside the transition path makes the first valid transition disappear.
-- When an upstream API already promises year/week-descending receipts, downstream reward code must preserve that order. Re-sorting on a partial key destroys authority at season boundaries.
-- A tablist needs one keyboard owner. Resolve keys from declared orientation, activate through the shared path, and move focus out before a responsive drawer becomes inert.
-- Boot-budget failures are architecture feedback: keep generated preloads aligned with the actual initial graph and reduce the graph instead of raising the ceiling or preloading a declared lazy island.
-
-## Session 97 durable patterns
-
-- Treat a football record as W-L-T everywhere and compute percentage as `(wins + 0.5 * ties) / games`; tie-only movement must cross persistence and return boundaries.
-- Health receipts and product activity use separate clocks. Pass `touchLastUpdated:false` for read-oriented automation and test the real command path.
-- Keep the irreversible phone commit in a sticky, opaque, theme-correct dock inside four-edge safe areas, and inspect 390px plus 430px pixels in both themes.
-- Do not assume an unsupported `--help` is read-only. Verify the script's pure-help branch before invoking it, especially for cross-repo utilities.
 
 <!-- ledger-roll:pointer -->
 ---

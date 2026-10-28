@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-28T01:43:02.657Z",
+  "reviewer": "Independent game_audit rendered note production review",
+  "verdict": "approve",
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "inspected": 4,
+  "report": {
+    "path": "reports/s125-note-production.json",
+    "sha256": "1ef43db91784f12cb4603a06103d9fe9b2a020c83fab690c93c00898be42621f"
+  },
+  "reviewedPrivateReport": {
+    "path": ".cache/s125-note-production-pixels.json",
+    "sha256": "1ef43db91784f12cb4603a06103d9fe9b2a020c83fab690c93c00898be42621f"
+  },
+  "captures": [
+    {
+      "file": "s125-status-production-desktop-dark.png",
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02",
+      "inspected": true
+    },
+    {
+      "file": "s125-status-production-desktop-light.png",
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc",
+      "inspected": true
+    },
+    {
+      "file": "s125-status-production-mobile-dark.png",
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957",
+      "inspected": true
+    },
+    {
+      "file": "s125-status-production-mobile-light.png",
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a",
+      "inspected": true
+    }
+  ],
+  "privateLedger": {
+    "path": ".cache/s125-note-private-capture-ledger.json",
+    "sha256": "b7da53b9cef66e956b3ca7a7e1876672f3833f1eaf87982d455ac8683128da25",
+    "matched": 4
+  },
+  "productionAuthority": {
+    "path": ".cache/s125-note-production-authority.json",
+    "sha256": "03e6ec9af8c1527ac392065a0252acfdb4dfb70d2bde8cb2ef4fb0857a005330",
+    "deploymentId": "760d7dc2-a2e2-4dbc-9c4f-da8d56c8e798",
+    "nativePassed": 14,
+    "nativeTotal": 14,
+    "apiSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "apiRedeployed": false
+  },
+  "findings": [],
+  "observations": [
+    "All four actual production private PNGs viewed individually: desktop/mobile and dark/light.",
+    "The complete new heading and paragraph are readable in every image, including this tab only; no new-note clipping, header overlap or horizontal overflow.",
+    "Exact committed copy/theme and captured viewport geometry match structured raw report controls.",
+    "Before/after hosted health and manifest observations bind note12a/d541. Current central-ledger/LATEST aliases were unchanged during this capture; their historical evolution is separate.",
+    "Actual note frontend authority records deployment760d7dc2 and native14; API remains separately1ad without redeployment."
+  ],
+  "publication": {
+    "state": "not-exported-by-reviewer",
+    "scope": "Intended public reportpath is covered only by a byte-identical export of the reviewed private raw report. Transformed bytes require renewed hash review."
+  },
+  "limitations": [
+    "Status-note page review only; original accepted game/API1ad state matrix and historical release remain separate.",
+    "This pixel review does not mark either failed389 metadata attempt passing, closeout complete, recipient adoption or native goal completion.",
+    "Final exact native Studio remains pending after actual Ark/final clarification."
+  ],
+  "execution": {
+    "publicWrites": false,
+    "stagedEdits": false,
+    "deploymentsByReviewer": false
+  }
+}

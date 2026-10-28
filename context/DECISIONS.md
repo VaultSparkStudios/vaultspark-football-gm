@@ -6,30 +6,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 > Older entries S112 live verbatim in `context/archive/DECISIONS_S112-S112.md`.
 
-## 2026-10-02 — S114 — Measure before you build, and keep the candidate bound
-
-**Decision 1 — retire the CSS split.** The stylesheet is 31 KB brotli and cached by the service worker after the first visit; a split saves roughly 10–12 KB on a first visit only, and risks unstyled flashes, cache-busting and CSP issues across more than 200 reviewed surfaces.
-
-**Decision 2 — rewrite team ids where text is created, not where it is displayed.** Rewriting stored text at display time would mangle ordinary words that collide with a team id (for example "NO"). Older saves keep their original headline text.
-
-**Decision 3 — split the server by domain, verified by behavior.** Routes are exact method and path pairs with no duplicates, so domain grouping cannot change which route matches. Both servers were replayed side by side.
-
-**Decision 4 — re-dispatch rather than edit the workflow.** The gate job timed out on a slower runner with no failing test. Changing the timeout on main would have broken the candidate binding, so the same candidate was re-dispatched and the headroom fix was queued.
-<!-- /s114-closeout:decisions -->
-
-<!-- s115-closeout:decisions -->
-## 2026-10-03 — S115 — Measure the population before trusting a persona effect
-
-**Decision 1 — re-key the draft tilt.** Keyed to the strategy profile, the tilt did almost nothing, because generated clubs are nearly all "balanced". It is now keyed to the GM archetype, the classifier the archetype table shows, so the drafting a player watches matches the label the player reads.
-
-**Decision 2 — defaults are the old engine.** Situational calls change thresholds and weights only. "By the book" and "Standard" are asserted to be exactly zero, with a negative control.
-
-**Decision 3 — parallelize the gate rather than raise its timeout.** Four legs keep the same budget each and cut the wall-clock time.
-
-**Decision 4 — complete an interrupted run instead of restarting it.** The host reaped the full run during the studio shard; the five finished shards and a studio re-run at the same commit form the record.
-<!-- /s115-closeout:decisions -->
-
-<!-- s116-closeout:decisions -->
 ## 2026-10-04 — S116 — Extract behind a byte-identity gate, one seam at a time
 
 **Decision 1 — no extraction step ships unless football is byte-identical.** The golden master hashes 70 sections per scenario. Each gate's negative control was a real behavior change, never a synthetic one: a 0.01 draft-weight nudge was too small to change any pick, so the control was strengthened until the gate demonstrably fired.
@@ -118,14 +94,20 @@ The existing CANON-045 identity readiness gap remains a separate launch gate: th
 
 Candidate456682bf introduced an async owner-action race: switching logical franchise during either await could mark a never-clicked recipient same-key warning opened. It was withheld from production and superseded by49035219, whose guards compare originating Inbox and current dashboard franchise scope after both awaits. Actual old/corrected hosted modules reproduce8incorrectly-resolved versus8preserved-unresolved recipient warnings;16rendered scope-state images were individually inspected and hash-bound in reports/s123-scope-visual-review.json. The fixture is a synthetic browser authority switch, not real account/server data.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-10-27 — Session 124 — Best-effort optional state and truthful saving
 
 Resolve browser storage access inside a guard before default arguments use it. Preserve existing injected stores and franchise keys. Tutorial persistence is best effort; authoritative applied-contract receipts remain required. Feedback saving requires an actual writer: failed receipt writes retain the draft/error and never call success or mark completed. Return-boundary writes without a writer return false.
 
 Routine exact-source frontend/API promotion uses existing founder authorization, source checks, staged artifact parity and pinned rollback; no lifecycle/identity, rights, spending or public-policy change is inferred. CANON-055 is fulfilled through actual player surfaces and hosted controls. Initial hosted focused run4/5 timed out waiting for initial Ready before storage injection; unchanged bounded rerun5/5 passed. First result/raw/log retained; first automatic trace/image was not retained across runner cleanup. Initial root Studio386/389 reflected ignored generic scripts/privateCDR; isolated tracked source passed389/389. Initial browser7/9 fixture failure, theme/completion harness defects and boot650878/650648/650128 failures remain recorded. Final boot649992under unchanged650000. Initial audit breadth/weighting was incomplete; late18candidate/3novel-unselected review corrects the record without backdating. Canonical premise timing remains UNKNOWN; pre-edit strict3/3 and admission were observed, but recipient flags did not record canonical timing. Initial prepared court weaknesses were corrected and independently rechecked, not used as release proof.
+
+
+## 2026-10-27 — Session 125 — Optional evidence and authoritative recovery
+
+Guard optional player evidence without weakening authoritative checkpoint recovery. A denied whole sessionStorage getter must still fail closed when saved client authority cannot be read. Keep default contract storage identity stable across denial/recovery, preserve injected-store/franchise isolation, and describe undurable progress as this-tab-only.
+
+Routine exact-source promotion reuses existing bounded founder authorization. Metadata-only successor retains exact CI/image/staging/artifact/rollback gates; absence of path-filtered Pages is explicitly not success. No policy/identity/lifecycle/right/spend change is inferred. Source4a2 exact CI browser failure remains nonpassing; its focused13 report and local40 pixels retain original source labels. New client fixture focused14 and exact successor CI7 are separate. Historical local40 are used only under specific full payload/module byte equivalence, never as fresh successor hosted proof. Earlier server-runtime captures are historical only; authoritative client checkpoint refusal remains intentional. Initial late capture-ledger binding and failed metadata CI remain historical. Synthetic component fixtures and hosted lab performance do not prove player cohorts, complete seasons, device capacity or public launch readiness. Earlier dev-server/fixture/capture overreach, source2 Studio387/389, failed source4a2 browser288passed/3skipped/1failed, and prepared Pages admission findings remain recorded in the S125 evidence reports. No rejected attempt is relabeled passing.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

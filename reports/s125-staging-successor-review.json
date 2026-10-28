@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T06:25:35.917Z",
+  "reviewer": "Independent game_audit rendered-pixel review",
+  "verdict": "approve",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "inspected": 32,
+  "manifests": [
+    {
+      "path": "reports/s125-browser-staging-successor.json",
+      "sha256": "97307d976ac792ed2fe3f91b9bbcd9ca045b1f81ab2ea8b59986e81ca972fbce"
+    },
+    {
+      "path": "reports/s125-contract-staging-successor.json",
+      "sha256": "205c96636453ac1c4bf8eccffab8ad4cb3a70e2aae2041260e3bb86b85bdbfbf"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s125-staging-successor-desktop-dark-boot-getter.png",
+      "sha256": "bab93ba2c8a6d4ddc1fd99c145b3a49985f3742e3922c867627c6c8bfceb8767",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-desktop-dark-boot-quota.png",
+      "sha256": "08ebe906dcca0c887e15eaa29c84f75bf31b561ae48d229b569725d32d119dfe",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-desktop-dark-contract-mark.png",
+      "sha256": "98971a2838c6894d2ea9a900108ef5b2b6c8c57272a5d82441d4fe8dd3064634",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-desktop-light-boot-getter.png",
+      "sha256": "ef6845fa9673b09e80fa02af54e47727c5948c85463902517ac901c5c67410d7",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-desktop-light-boot-quota.png",
+      "sha256": "b71e0190df96a71e9dae6fa97939d1279e9c17afb79757377eb8f2de89a12793",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-desktop-light-contract-mark.png",
+      "sha256": "974ca5ea68eef00f6983f8eb9db6a21e1514b237f344e188147c116b3849dc7d",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-mobile-dark-boot-getter.png",
+      "sha256": "5da2c66410699f676bc4f48864217150ff09b0e854bc951e69753e52909c06a0",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-mobile-dark-boot-quota.png",
+      "sha256": "7ec20c71ad0844b362dd82e86cd7641e8e86b86ed4ffa7daa3f5202bd2521a09",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-mobile-dark-contract-mark.png",
+      "sha256": "7bdd393acc31ecf34ed863a7d05c90348d05486cd0e35b5af23e90142632bd2b",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-mobile-light-boot-getter.png",
+      "sha256": "a176fdcbc2b4b2e3c190c388e8e44c3240f36c7cad3363b1a65a19f2f9ce8603",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-mobile-light-boot-quota.png",
+      "sha256": "d0df34724f41e42ceb7289bc7af068fe44fe774350266d823b1f66517acaca9f",
+      "inspected": true
+    },
+    {
+      "file": "s125-staging-successor-mobile-light-contract-mark.png",
+      "sha256": "6ae46c6847fd375905999ba9a0736207b9de7d43baf0d352d3b709ea70f54e9a",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-dark-dismissed.png",
+      "sha256": "bd52cc48faf4186df7cf5ea83e446ab5934d72167584df9d93d5437f071f191d",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-dark-complete-first.png",
+      "sha256": "b640a651507d8ac995d53de19d31735992de8b2872716f3d959677a1d6f45f08",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-dark-complete-revisit.png",
+      "sha256": "25409ae4421700c45ff1f0a3f2f7c8cb437a47b6d9069c2222f792d2503e17ff",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-dark-finalized-2026.png",
+      "sha256": "a49c489377167e17d45554015c235e51dfec970e309935be6eea6dbd938a11e6",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-dark-finalized-2027.png",
+      "sha256": "d0719c2a307c5ada2e2170c557aa868f23239e34a91280c029a0f1e9b59bd6a9",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-light-dismissed.png",
+      "sha256": "4e5cb9b18f8b0f646f0ac95980299f9db14fe7fabf7d420def6a6e518210275d",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-light-complete-first.png",
+      "sha256": "8c028c2410cae6f2f857851456b95895a0603e63bc746d519c43518f74ccf56e",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-light-complete-revisit.png",
+      "sha256": "cb97f9fda273a6382dcf8be5376942a7130ceac0a33a3dc28ed99ae98aecf44e",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-light-finalized-2026.png",
+      "sha256": "9f5654cb6bcb9135a5f0e0e18070e8b940809b75d061c9185bd66faa642f0451",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-desktop-light-finalized-2027.png",
+      "sha256": "a9976ce21745c58c867559953cc345c118f2f2d297db0cff5d921fe458bd91af",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-dark-dismissed.png",
+      "sha256": "6af2d98dc5a59f87cdbe50f345dafe20930cf45e790ce7b475cb6b7af2f502ca",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-dark-complete-first.png",
+      "sha256": "0a9782a1442dcf00fc27673219897a491d1c4c4b36cce59a8d8b5a26b385822f",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-dark-complete-revisit.png",
+      "sha256": "94935b677bf9e03d7b66f560623272fec78fd7251bd6c48a6f0eb09471d7dba9",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-dark-finalized-2026.png",
+      "sha256": "0061f8cf9b27b423517657009190af30fa842e4fd26e0376b867cc7b4c0db891",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-dark-finalized-2027.png",
+      "sha256": "e6c53a8869388ce618d19e34cd5a24841618580f5c9a27f438117d6ea5c2b208",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-light-dismissed.png",
+      "sha256": "0bc5829975ab3a6841ba189399833eb0eba9bf05d4f67378dbe8d57a5695513e",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-light-complete-first.png",
+      "sha256": "14f49d6919938a18150da3932591058b8a4c2b95b12bc8d9f0d154a411510326",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-light-complete-revisit.png",
+      "sha256": "c3d4c4ee4a6a8538883f144ef6ed0390216c9ec5d3c2301302570e22cdb9bee6",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-light-finalized-2026.png",
+      "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930",
+      "inspected": true
+    },
+    {
+      "file": "s125-contract-staging-successor-mobile-light-finalized-2027.png",
+      "sha256": "0dcedff7fe2898fca24ab0858ab79353b571c32cad972c946cf6bba7cdfd0930",
+      "inspected": true
+    }
+  ],
+  "findings": [],
+  "scope": "All thirty-two actual successor staging images independently viewed: twelve base captures with sixteen controls, plus twenty five-state contract captures, in dark/light themes at desktop/mobile sizes. Exact source/artifact and current native staging14 are independently hash-bound.",
+  "observations": [
+    "Whole sessionStorage getter denial visibly refuses unreadable authoritative recovery checkpoint, with retry and saved-franchise actions; optional journey instrumentation remains usable and client status is not Ready.",
+    "Optional journey-key quota failure reaches Ready and displays the usable tutorial in both themes/sizes.",
+    "Depth-chart mark remains done with readable 1 of 5 · this tab only. Inbox structured controls return one item.",
+    "Dismissed and completion-revisit fixtures are intentionally hidden, exposing the actual Desk; initial completion appears once as Contract honoured · this tab only.",
+    "Finalized 2026 result stays Season 2026: 5 of 5 met · this tab only after later 2027 input; structured finalized objects are identical.",
+    "No horizontal clipping of changed contract titles/status messages or recovery actions was observed."
+  ],
+  "nativeStaging": {
+    "path": "reports/s125-staging-successor-provenance.json",
+    "sha256": "1afaada935b043283f6b6c112aa0c1a719ac00541929b7a26b968d317685eff0",
+    "passed": 14,
+    "total": 14
+  },
+  "ledger": {
+    "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+    "sha256": "3d647ead4110a1579399b2c1ea7cd65fe61b74467863fe77baed6ab6abe5f724",
+    "matchedCaptures": 32
+  },
+  "historicalLocalEquivalence": {
+    "path": "reports/s125-successor-local-equivalence.json",
+    "sha256": "6ca31654e8308520168947f9e9d8992cd8b560e0ca21d223ddfc62427d294779",
+    "reviewed": true,
+    "moduleByteComparisons": 3,
+    "historicalCaptureHashesMatched": 40,
+    "scope": "Historical4a2 local before/after captures retain their original source labels and f402 baseline. Three exact modules are byte-identical to successor1ad. This proves equivalence only; it is not recapture, current hosted runtime or passing CI proof."
+  },
+  "limitations": [
+    "Mobile contract cards extend below the viewport: lower objectives are not all visible in these captures. The changed title/status and first three objectives are visible.",
+    "An existing cached-version notification overlays the bottom edge of several Desk/contract captures; it does not cover the reviewed title/status or retained depth-chart mark.",
+    "Contract states use distinct synthetic franchises and the isolated actual component template/styles; this is not a complete season player journey or cohort evidence.",
+    "Whole getter denial is an intentional authoritative fail-closed recovery state, not successful game initialization.",
+    "Staging pixels and native14 do not prove pending exact successor CI, image production, production runtime or full closeout."
+  ]
+}

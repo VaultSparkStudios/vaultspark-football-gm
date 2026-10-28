@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-28T01:56:16.821Z",
+  "complete": true,
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "gameReleaseSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "apiSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "closeoutComplete": false,
+  "launchApproved": false,
+  "scope": "Actual technical frontend status-note follow-through only. Three selected game repairs and API remain accepted at1ad with unchanged358 primary artifact entries; no new game-pixel claim.",
+  "ci": {
+    "runId": 40554115517,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "verified": true
+  },
+  "frontend": {
+    "deploymentId": "760d7dc2-a2e2-4dbc-9c4f-da8d56c8e798",
+    "previousDeploymentId": "f18b7f94-3952-41f1-a0c6-1535f87ab204",
+    "verified": true,
+    "wholeUploadFiles": 3650
+  },
+  "api": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "unchanged": true,
+    "redeployed": false,
+    "database": "ready",
+    "beforeObservedAt": "2026-10-28T01:39:43.504Z",
+    "afterObservedAt": "2026-10-28T01:40:01.187Z"
+  },
+  "visual": {
+    "noteCaptures": 12,
+    "rootViewed": 12,
+    "independentAfterViewed": 8,
+    "historicalGameCaptures": 140,
+    "newGamePixelsCaptured": 0,
+    "unchangedPrimaryArtifactFiles": 358
+  },
+  "originalAcceptedEvidence": {
+    "acceptance": {
+      "path": "reports/s125-release-acceptance.json",
+      "sha256": "82fd3ded625dbc0d0997999a9264bd3121928a79b3ca336f0aa5b7a4fad64b75"
+    },
+    "freeze": {
+      "path": ".cache/s125-accepted-release-snapshot/manifest.json",
+      "sha256": "27dfbe05e36255300fd884f7fd2fb039868377206693d991e530e38ddfd19cad"
+    },
+    "frozenReceiptCount": 168,
+    "allOriginalArchivesVerified": true,
+    "nonledgerCurrentOriginalPathsUnchanged": true,
+    "centralLedgerContinuity": {
+      "original": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "sha256": "e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4",
+        "archive": ".cache/s125-accepted-release-snapshot/bytes/e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4"
+      },
+      "current": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "sha256": "97a8dcb862f43fed0786fa566a416698adbdd80848b02e21a341209346185d73"
+      },
+      "allOldEntriesIdentical": true,
+      "addedActualNoteEntries": [
+        "s125-status-before-desktop-dark.png",
+        "s125-status-before-desktop-light.png",
+        "s125-status-before-mobile-dark.png",
+        "s125-status-before-mobile-light.png",
+        "s125-status-production-desktop-dark.png",
+        "s125-status-production-desktop-light.png",
+        "s125-status-production-mobile-dark.png",
+        "s125-status-production-mobile-light.png",
+        "s125-status-staging-desktop-dark.png",
+        "s125-status-staging-desktop-light.png",
+        "s125-status-staging-mobile-dark.png",
+        "s125-status-staging-mobile-light.png"
+      ]
+    }
+  },
+  "receipts": [
+    {
+      "path": ".cache/s125-accepted-release-snapshot/manifest.json",
+      "sha256": "27dfbe05e36255300fd884f7fd2fb039868377206693d991e530e38ddfd19cad"
+    },
+    {
+      "path": "reports/s125-release-acceptance.json",
+      "sha256": "82fd3ded625dbc0d0997999a9264bd3121928a79b3ca336f0aa5b7a4fad64b75"
+    },
+    {
+      "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+      "sha256": "97a8dcb862f43fed0786fa566a416698adbdd80848b02e21a341209346185d73"
+    },
+    {
+      "path": "reports/s125-note-ci.json",
+      "sha256": "1489ddeab4d535f3228f46ea9e5ccce9ea18e2993f5a8244cd5db7f445fc2b14"
+    },
+    {
+      "path": "reports/s125-note-manifest.json",
+      "sha256": "88d9aae12df9dd1682181b07317a58b605ed1a7b7d34472ac1ebc489fe89dbde"
+    },
+    {
+      "path": "reports/s125-note-source-delta.json",
+      "sha256": "2eea9ab7337a8afc1be43e83515b23b69aa480968bc5004372473a027482df08"
+    },
+    {
+      "path": "reports/s125-note-staging-provenance.json",
+      "sha256": "fb2565030bf1661228ab2b20b5e063301df194628a90bd0734013e1bca7beb52"
+    },
+    {
+      "path": "reports/s125-note-staging-authority.json",
+      "sha256": "0165c2ce32673fdafbf4bbf0d69cd5b28b1538c8f0b399fe52957dffc3bc41d9"
+    },
+    {
+      "path": "reports/s125-note-staging-performance.json",
+      "sha256": "784a314ff1c334131d3965f50cd65cf8cea8ce3780a4042c654645dd0770ac4e"
+    },
+    {
+      "path": "reports/s125-note-staging.json",
+      "sha256": "a3b79e6b0038711e3dc90727ca29fc6c50f63b4e874e9d4cefade85c24308439"
+    },
+    {
+      "path": "reports/s125-note-staging-review.json",
+      "sha256": "77f4aa8fb9c178f5ff5d7c12ead0ef8cb485877ea6ffe1bbe2fb50ef1034403d"
+    },
+    {
+      "path": "reports/s125-note-production-provenance.json",
+      "sha256": "a3d9cd028334ecdc81d64dd8bc6b7b0cdb1ae8642a956c2db6f5bdedb248d8c3"
+    },
+    {
+      "path": "reports/s125-note-production-authority.json",
+      "sha256": "03e6ec9af8c1527ac392065a0252acfdb4dfb70d2bde8cb2ef4fb0857a005330"
+    },
+    {
+      "path": "reports/s125-note-production-performance.json",
+      "sha256": "af242057aed4d9b1d39ea5d6f0576a755bbc4ba9761e0313168b830425932efe"
+    },
+    {
+      "path": "reports/s125-note-production.json",
+      "sha256": "1ef43db91784f12cb4603a06103d9fe9b2a020c83fab690c93c00898be42621f"
+    },
+    {
+      "path": "reports/s125-note-production-review.json",
+      "sha256": "90959a3c6aaff28504f555b9d590b11259b48247a6bec53a6997b8c8b914dbcc"
+    },
+    {
+      "path": "reports/s125-note-frontend-deployment.json",
+      "sha256": "03e6ec9af8c1527ac392065a0252acfdb4dfb70d2bde8cb2ef4fb0857a005330"
+    },
+    {
+      "path": "reports/s125-note-rollback.json",
+      "sha256": "c47e4658ba50c14fbeae5a3350c8c094603f5478493d4a7db04a8864361f9b61"
+    },
+    {
+      "path": "docs/visual-qa/S125_NOTE_LATEST.json",
+      "sha256": "edbcb17926e650344d5e2bc455a0f1791054d0b1754e2a485b7711eaba4fa673"
+    },
+    {
+      "path": ".cache/s125-note-visual-root-review.json",
+      "sha256": "3d63077688bd7b6059346a8275a9cf6199e79441cfe957e30ca876f2d21376a1"
+    },
+    {
+      "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+      "sha256": "b7da53b9cef66e956b3ca7a7e1876672f3833f1eaf87982d455ac8683128da25"
+    },
+    {
+      "path": "reports/s125-note-before.json",
+      "sha256": "bbe602f943425dc7ca050953f749e09af64dca150f8002938c1933802867d348"
+    },
+    {
+      "path": ".cache/s125-note-before-inspection.json",
+      "sha256": "27323c289ee5a06c10a4785d7ac3f6f6d532a6b3218ab19529edf6014484d0d6"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-before-desktop-dark.png",
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-before-desktop-light.png",
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-before-mobile-dark.png",
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-before-mobile-light.png",
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-staging-desktop-dark.png",
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-staging-desktop-light.png",
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-staging-mobile-dark.png",
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-staging-mobile-light.png",
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-production-desktop-dark.png",
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-production-desktop-light.png",
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-production-mobile-dark.png",
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957"
+    },
+    {
+      "path": "docs/visual-qa/s125-status-production-mobile-light.png",
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a"
+    },
+    {
+      "path": "reports/s125-note-game-visual-baseline.json",
+      "sha256": "e61f31337ba20e3780788bff0985562fa21125b04a3c4ff37f4db2cf840003bb"
+    },
+    {
+      "path": "reports/s125-note-ledger-staging.json",
+      "sha256": "cfe9c3c6fec360f130a258ac2d2a7a96bab82dabce73cfb753b0958e99a86911"
+    },
+    {
+      "path": ".cache/s125-note-staging-upload.log",
+      "sha256": "17f1a590f5a54fff4f0f01faad94d091dda5624f52e54508acbc114a172521d2"
+    },
+    {
+      "path": ".cache/s125-note-production-upload.log",
+      "sha256": "e1decc624d8923f787a6257ab8e4f8ec77b330d49ac021b0bfc676b17397ba62"
+    }
+  ],
+  "limitations": [
+    "Both failed metadata389 attempts remain failed historical results.",
+    "Full final native Studio after actual signed game1ad impact/final context clarification, final publication, cleanup and native goal completion remain separate.",
+    "Original1ad game140 image/source distinctions and API authority are preserved, not relabeled12a8.",
+    "No API redeployment, database operation, cohort outcome or public launch is inferred."
+  ]
+}

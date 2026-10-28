@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-28T01:35:28.977Z",
+  "reviewer": "Independent game_audit rendered note staging review",
+  "verdict": "approve",
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "inspected": 4,
+  "report": {
+    "path": "reports/s125-note-staging.json",
+    "sha256": "a3b79e6b0038711e3dc90727ca29fc6c50f63b4e874e9d4cefade85c24308439"
+  },
+  "reviewedPrivateReport": {
+    "path": ".cache/s125-note-staging-pixels.json",
+    "sha256": "a3b79e6b0038711e3dc90727ca29fc6c50f63b4e874e9d4cefade85c24308439"
+  },
+  "captures": [
+    {
+      "file": "s125-status-staging-desktop-dark.png",
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02",
+      "inspected": true
+    },
+    {
+      "file": "s125-status-staging-desktop-light.png",
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc",
+      "inspected": true
+    },
+    {
+      "file": "s125-status-staging-mobile-dark.png",
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957",
+      "inspected": true
+    },
+    {
+      "file": "s125-status-staging-mobile-light.png",
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a",
+      "inspected": true
+    }
+  ],
+  "privateLedger": {
+    "path": ".cache/s125-note-private-capture-ledger.json",
+    "sha256": "cfe9c3c6fec360f130a258ac2d2a7a96bab82dabce73cfb753b0958e99a86911",
+    "matched": 4
+  },
+  "findings": [],
+  "observations": [
+    "All four actual private PNGs viewed individually: desktop/mobile and dark/light.",
+    "The entire new2026-10-27 heading and paragraph are readable in every capture, including quoted this tab only.",
+    "Mobile390px and desktop1440px render without horizontal overflow, header overlap or clipped new note copy.",
+    "Before/after hosted health/manifest observations both bind note12a/d541; original accepted ledger/LATEST remained unchanged.",
+    "The note copy accurately describes optional current-tab continuity and does not claim authoritative recovery boot success or player/cohort outcomes."
+  ],
+  "publication": {
+    "state": "not-exported",
+    "scope": "This receipt reviews ignored artifacts only. Intended public reportpath is valid only for a byte-identical export of the reviewed private report; changed/export-transformed bytes require renewed hash review."
+  },
+  "limitations": [
+    "Status-note page only; does not rerun the full game state matrix. Original accepted game/API1ad state proof remains separate.",
+    "This is staging review; actual note production pixels/native evidence remain required."
+  ],
+  "execution": {
+    "publicWrites": false,
+    "stagedEdits": false,
+    "deploymentsByReviewer": false
+  }
+}

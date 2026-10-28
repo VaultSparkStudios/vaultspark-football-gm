@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "phase": "staging",
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "verified": true,
+  "observedAt": "2026-10-28T01:30:51.117Z",
+  "deploymentId": "3588c8fe-6984-4740-9a40-0a4c56c65850",
+  "deploymentUrl": "https://3588c8fe.franchise-architect-staging.pages.dev",
+  "previousDeploymentId": "88e9e37d-24a6-4e66-b878-f889381706af",
+  "previousSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "previousDeploymentUrl": "https://88e9e37d.franchise-architect-staging.pages.dev",
+  "ci": null,
+  "uploadInventory": {
+    "verified": true,
+    "primaryArtifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+    "primaryFiles": 362,
+    "completeUploadDigest": "6290fe4c6aa8bfef4df5d30a117b35b5118408de5b9bdd4c0e15f10b42dfcf6b",
+    "completeUploadFiles": 3650,
+    "publishedMounts": [
+      "/",
+      "/franchise-architect-football/",
+      "/vaultspark-football-gm/",
+      "/franchise-architect/",
+      "/games/vaultspark-football-gm/",
+      "/games/franchise-architect/",
+      "/games/franchise-architect-football/"
+    ]
+  },
+  "native": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "stagingNative": null,
+  "stagingPixels": null,
+  "api": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "unchanged": true,
+    "redeployed": false,
+    "before": null,
+    "after": null
+  },
+  "scope": "New exact frontend status-note artifact only. Original game/API release1ad stays independently accepted; no backend images or database mutation."
+}

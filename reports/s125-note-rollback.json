@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "frontend": {
+    "available": true,
+    "previous": {
+      "id": "f18b7f94-3952-41f1-a0c6-1535f87ab204",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "url": "https://f18b7f94.franchise-architect-football.pages.dev"
+    },
+    "restore": "Promote this observed prior successful frontend1ad deployment through the existing canonical broker and verify health/artifact."
+  },
+  "api": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "unchanged": true,
+    "redeployed": false
+  },
+  "boundary": "Frontend note-only rollback. No API rollback, database change or restore drill was performed."
+}

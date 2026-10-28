@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S124: Optional player panels survive denied storage access, tutorials complete and dismiss despite storage failures, and failed feedback saves retain the draft with an honest retry message.",
-  "nextMilestone": "Selected S124 product and closeout artifacts verified. Finish terminal native guard; future implementation requires a new request.",
+  "currentFocus": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails.",
+  "nextMilestone": "Finish S125 final metadata, receipt publication/readback, signed impact and owned cleanup; preserve independent launch-readiness holds.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -22,7 +22,7 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "Selected S124 technical release verified; final closeout publication pending; broader readiness partial",
+  "truthAuditStatus": "Selected S125 technical release verified; final closeout publication pending; broader readiness partial",
   "truthAuditLastRun": "2026-10-27",
   "ignisScore": 43029,
   "ignisGrade": "FORGE",
@@ -68,33 +68,28 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 510,
+  "silScore": 505,
   "silCategoriesV3": {
     "devHealth": 90,
-    "creativeAlignment": 65,
-    "momentum": 75,
+    "creativeAlignment": 70,
+    "momentum": 60,
     "engagement": 45,
-    "processQuality": 65,
-    "crossRepoCoherence": 50,
-    "securityPosture": 55,
+    "processQuality": 45,
+    "crossRepoCoherence": 60,
+    "securityPosture": 60,
     "ecosystemIntegration": 20,
     "capitalEfficiency": 0,
-    "automationCoverage": 45
+    "automationCoverage": 55
   },
-  "currentSession": 124,
+  "currentSession": 125,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
-    "session": 124,
-    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-    "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
-    "acceptance": "reports/s124-release-acceptance.json",
-    "production": {
-      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-      "checksPassed": 14,
-      "checksTotal": 14
-    },
-    "tests": "Exact candidate CI7/7; historical focused45/45 with retained raw log; fresh exact-source local browser9/9; clean source Studio389/389; native staging/production14/14; hosted12controls per phase plus committed production browser5/5; desktop/mobile five-run performance verified. Aggregate application case count and real-user outcomes remain unmeasured. Final metadata acceptance is separate."
+    "session": 125,
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+    "acceptance": "reports/s125-release-acceptance.json",
+    "tests": "Exact accepted candidate CI7/7 and image producer2/2; staging/production14/14 each; scope-bound client, contract, visual and hosted performance checks bound by 168 frozen court receipts. Aggregate real-player/capacity outcomes remain unmeasured."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -121,7 +116,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 482,
+  "silHealth": 487,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -140,9 +135,9 @@
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.051,
+  "entropyScore": 0.058,
   "entropyLastComputed": "2026-10-27",
-  "lastSessionSummary": "S124: Optional player panels survive denied storage access, tutorials complete and dismiss despite storage failures, and failed feedback saves retain the draft with an honest retry message.",
+  "lastSessionSummary": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -163,8 +158,8 @@
       "lastChecked": "2026-10-26"
     }
   ],
-  "lastSession": 124,
-  "silLastSession": 124,
+  "lastSession": 125,
+  "silLastSession": 125,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -198,16 +193,17 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
     "verified": true,
-    "verifiedAt": "2026-10-25T19:23:37.612Z",
-    "lastDeployedAt": "2026-10-27T00:18:35.356Z",
-    "liveHealthSourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-    "receipt": "reports/s124-backend-deployment.json",
+    "verifiedAt": "2026-10-27T17:02:55.599Z",
+    "lastDeployedAt": "2026-10-27T17:02:55.599Z",
+    "liveHealthSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "receipt": "reports/s125-backend-deployment.json",
     "transport": "native-pinned-ssh",
-    "imageBuildRunId": 40220306431,
+    "imageBuildRunId": 40460369518,
     "imageBuildAttempt": 1,
-    "ciRunId": 40220306443,
+    "ciRunId": 40458742116,
+    "ciAttempt": 1,
     "hostPinVerified": true,
     "privateKeyCopied": false,
     "externalHealth": {
@@ -216,10 +212,12 @@
       "latencyMs": 1,
       "schemaVersion": 1,
       "service": "franchise-architect-community-stats",
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072"
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937"
     },
     "database": "ready",
-    "note": "Actual S123 native pinned SSH runtime promotion. Prior workflow/persistence evidence is retained separately in previousBackendDeployment; no fresh physical restore drill is claimed."
+    "previousSourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "previousImage": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "note": "Actual S125 exact pinned runtime promotion; existing PostgreSQL retained. No restore drill or broad launch readiness inferred."
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",
@@ -276,11 +274,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "bbd5060700eb9350042b2d1d1009f252f52e5df90cb0fa0b40341f8c7a8e3ba9",
-    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "receipt": "reports/s125-staging-successor-provenance.json",
+    "receiptSha256": "1afaada935b043283f6b6c112aa0c1a719ac00541929b7a26b968d317685eff0",
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
+      "digest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
       "files": 362,
       "entries": [
         {
@@ -630,8 +629,8 @@
         },
         {
           "path": "lib/engagementFeatures.js",
-          "bytes": 33817,
-          "sha256": "f62527e3c9be5405e6c00360688b7592d844526dc797284394319a8693bb59cc"
+          "bytes": 28955,
+          "sha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
         },
         {
           "path": "lib/exactSurfaceNavigation.js",
@@ -665,8 +664,8 @@
         },
         {
           "path": "lib/firstSeasonContract.js",
-          "bytes": 13589,
-          "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0"
+          "bytes": 14639,
+          "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
         },
         {
           "path": "lib/franchiseArchitecture.js",
@@ -930,8 +929,8 @@
         },
         {
           "path": "lib/playtestJourney.js",
-          "bytes": 4111,
-          "sha256": "a07965f79cb3fbecde479ba1e991625381d380c83c136ec0e286440e778c96c4"
+          "bytes": 5051,
+          "sha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
         },
         {
           "path": "lib/playtestReceipts.js",
@@ -1176,7 +1175,7 @@
         {
           "path": "precache-manifest.json",
           "bytes": 25973,
-          "sha256": "75d78aaf2a0889cb8bb9df9f29a27f6222a61a25798dfe1b26221a9105a50f59"
+          "sha256": "d0bf1c4f64d5787b23af0d45fefd490e6138373c852dddc51679834d485016cf"
         },
         {
           "path": "press.html",
@@ -2086,7 +2085,7 @@
         {
           "path": "sw.js",
           "bytes": 12974,
-          "sha256": "b08086219514e4d9eebfd8c50979d31ab05e400a7667f4aac6c22d3c053eab1f"
+          "sha256": "35a9bd52ecc447b0d2de0401838ff871ab96fe3db27f7a918c29947ca7305f65"
         },
         {
           "path": "terms.html",
@@ -2100,21 +2099,17 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "a64c0816-9b27-4ad9-b83c-762cacd196ea",
+    "deploymentId": "88e9e37d-24a6-4e66-b878-f889381706af",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-10-26T22:38:44.745Z"
-    },
-    "rollback": {
-      "previousDeploymentId": "f6e5af37-0aa7-4b38-8be2-a53c311a969c",
-      "available": true
+      "checkedAt": "2026-10-27T06:17:48.072Z"
     },
     "verified": true,
-    "observedAt": "2026-10-26T22:38:44.745Z"
+    "observedAt": "2026-10-27T06:17:48.072Z"
   },
   "lastCloseoutAt": "2026-10-27T01:27:00.881Z",
   "performanceAuthority": {
@@ -2150,31 +2145,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-27T00:25:23.420Z",
+    "observedAt": "2026-10-27T17:28:45.093Z",
     "status": "verified",
-    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-    "publicationRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "publicationRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
+      "digest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
+        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
       },
       "production": {
-        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
+        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
       },
       "visual": {
-        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
+        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
       },
       "performance": {
-        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
+        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+        "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
       }
     },
     "checks": [
@@ -2215,17 +2210,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
-      "verifiedAt": "2026-10-25T19:23:37.612Z",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "verifiedAt": "2026-10-27T17:02:55.599Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "7146593800cb722e8868aa64544be5e4e3ff005332a36598a517e5642538eecd",
-      "productionSha256": "71315517af598122a615664d5247f71cdb3370b247c3ec725cd9f840a97ebb86",
-      "visualSha256": "dd13cabdf1598360b685dc7a2b07203c6291cd082d5cf2fa237f76d63d67f3a8",
-      "performanceSha256": "459905a06dccef11c126f027b69c4bde7c0328e86de817b5d326975b715f4957"
+      "stagingSha256": "02e93d33c58a6ad83f8c9ff21bfce510e00856ce084a765dcebdb71ae6278e03",
+      "productionSha256": "f6bb8e0ef6040b51c03bdbd715209d1629a59996b7f9bb43aa808092dbfd761e",
+      "visualSha256": "9e6af7b96c289baf6b270c8215e3df2f7781f8fd0dde07aa766ef0f7041414e3",
+      "performanceSha256": "f4f872102d83ac7e54c174ce148c82d5d43edb33d5dca0212275a2fd503ed9ef"
     },
-    "receiptSha256": "9d22b69f8ab81adc0e355ff661a193350750cda24bf71ff067338a3743606476"
+    "receiptSha256": "78482f140088aca46e17259f7ce2452168b510b510974d812eeca65fad9fd48f"
   },
   "launchReady": false,
   "sil": {
@@ -2256,10 +2251,10 @@
   "session112Summary": "S112 completed ten audit items and five second-order outcomes. Correction source f8b640b3774390f0dc74692b7bc7f71e7563f1e9, artifact dc8f15e50f56f251a0d26b3075fdec6248c0dc4555d27a0796b440ad6f18191a: fresh six-shard suite 1702/1702, CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36896631492 success (89 browser passes, 1 intentional skip), 222 reviewed images (147 fresh, 75 exact-byte inherited), staging 14/14, production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36903401555; Doctor 0 blocking and 1 warning. The October1 release note is verified on both origins. Public launch remains HOLD.",
   "sessionState": {
     "version": 1,
-    "durableSession": 124,
-    "currentFocus": "S124: Optional player panels survive denied storage access, tutorials complete and dismiss despite storage failures, and failed feedback saves retain the draft with an honest retry message.",
-    "nextMilestone": "Selected S124 product and closeout artifacts verified. Finish terminal native guard; future implementation requires a new request.",
-    "lastSessionSummary": "S124: Optional player panels survive denied storage access, tutorials complete and dismiss despite storage failures, and failed feedback saves retain the draft with an honest retry message."
+    "durableSession": 125,
+    "currentFocus": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails.",
+    "nextMilestone": "Finish S125 final metadata, receipt publication/readback, signed impact and owned cleanup; preserve independent launch-readiness holds.",
+    "lastSessionSummary": "S125: Optional journey notes no longer interrupt play, Inbox storage denial is guarded, and First Season Contract progress stays in this tab when persistence fails."
   },
   "partialCloseout": {
     "session": 117,
@@ -2760,31 +2755,31 @@
   "priorReleaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-10-24T03:22:48.416Z",
+    "observedAt": "2026-10-27T00:25:23.420Z",
     "status": "verified",
-    "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
-    "publicationRevision": "5410b8b5159059c516f80529ae5330e99838f266",
+    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "publicationRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+      "digest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
-        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
       },
       "production": {
-        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
-        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
       },
       "visual": {
-        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
-        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
       },
       "performance": {
-        "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
-        "artifactDigest": "a5b69d21f409b9a688e314e568eec33bcf8604c0095f027102e28dbe4c7ce281"
+        "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+        "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7"
       }
     },
     "checks": [
@@ -2825,62 +2820,43 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "5410b8b5159059c516f80529ae5330e99838f266",
-      "verifiedAt": "2026-10-24T02:12:48.833Z",
+      "sourceRevision": "49035219b7511bb5a54c438eba73f62798f0e072",
+      "verifiedAt": "2026-10-25T19:23:37.612Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "5e17a20a4780e23513129681ed4ade0def7f0914181ae53b2bdc607083320869",
-      "productionSha256": "a2c27eb033618859369953ece7b4ac232d8fd4507e3ae4675241610c511df089",
-      "visualSha256": "00695e70355a517e5802e443c68edebde2267d569de17bb08084266392f38549",
-      "performanceSha256": "2d03f5d344709ce6c9beeec377ac6c1f031faa055027d1d17b40bc96482db88d"
+      "stagingSha256": "7146593800cb722e8868aa64544be5e4e3ff005332a36598a517e5642538eecd",
+      "productionSha256": "71315517af598122a615664d5247f71cdb3370b247c3ec725cd9f840a97ebb86",
+      "visualSha256": "dd13cabdf1598360b685dc7a2b07203c6291cd082d5cf2fa237f76d63d67f3a8",
+      "performanceSha256": "459905a06dccef11c126f027b69c4bde7c0328e86de817b5d326975b715f4957"
     },
-    "receiptSha256": "4203b3f55677ebce0479639f3df0191e7eea12eb374430a5fec3e47d941ff2cc"
+    "receiptSha256": "9d22b69f8ab81adc0e355ff661a193350750cda24bf71ff067338a3743606476"
   },
   "activeArc": {
-    "session": 124,
-    "goalThreadId": "01a17a46-fc1d-7690-a2f9-f7234e2ce8ad",
-    "goalCreatedAt": 1793052868,
-    "status": "artifacts-verified",
-    "audit": "docs/AUDIT_2026-10-26.json",
-    "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
-    "artifactDigest": "cccd7985727967d696cae241598b50142c8a82371f6b0167e6314d9d4c9a06d7",
-    "localAcceptance": "reports/s124-local-acceptance.json",
-    "stagingDeployment": "reports/s124-staging-deployment.json",
-    "stagingBrowser": "reports/s124-staging-browser-review.json",
-    "runs": {
-      "ci": 40414282137,
-      "backendImages": 40414282135,
-      "pages": 40414282143
-    },
+    "session": 125,
+    "goalThreadId": "01a17b3d-b57a-7870-9920-7768203223d1",
+    "goalCreatedAt": 1793069036,
+    "audit": "docs/AUDIT_2026-10-27.json",
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+    "status": "technical-production-verified-closeout-pending",
     "productionVerified": true,
-    "closeoutComplete": false,
-    "acceptance": "reports/s124-release-acceptance.json",
-    "metadataAcceptance": {
-      "path": "reports/s124-final-metadata.json",
-      "sha256": "40a23e0ab5aac761653817dc47fd426caf6e16df9e8811c7e348be6ded42de02"
-    },
-    "remaining": [
-      "Final containing-commit publication/readback",
-      "Owned job/process and original lock release",
-      "Native goal completion audit"
-    ],
-    "completion": "reports/s124-closeout-completion.json",
-    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
+    "acceptance": "reports/s125-release-acceptance.json",
+    "closeoutComplete": false
   },
   "silScoreBasis": {
-    "devHealth": "85: exact seven-job CI, clean Studio and focused browser/source proof; coverage target and broader debt remain unmeasured.",
-    "creativeAlignment": "65: real player decision destinations restored on existing surfaces; detailed private creative assessment and stakeholder response unmeasured.",
-    "momentum": "75: three selected outcomes and exact technical release verified; final closeout publication still pending at scoring.",
-    "engagement": "45: bounded decision/feedback-loop repairs with synthetic browser proof; stakeholder response, community/cohort activity and retention unmeasured. Product rubric judgment, not measured player traction.",
-    "processQuality": "65: fresh audit, independent findings fixed, ordered writeback and immutable failure history; repeated avoidable candidate failures reduce confidence.",
-    "crossRepoCoherence": "50: current session canon sync and project-bound schema/authority checks; full template drift/conformance measurements remain unmeasured.",
-    "securityPosture": "45: gateway use and executed nonempty staged scans/pre-push guards; rotation ages, access anomalies and final metadata staged scan remain unmeasured/pending.",
-    "ecosystemIntegration": "20: this session updated project status; current Hub/feed parity, beacon completion and impact adoption unmeasured. Public announcement is inapplicable.",
-    "capitalEfficiency": "0 current proof credit: cache hit rate, model-router audit, comparable token-per-outcome trend and runway lack current measurements. This is not a finding of poor finances; no-paid-services alone earns no rubric credit.",
-    "automationCoverage": "35: selected implementation/validation paths agent-owned; whole-workflow ratio, blocker-resolution rate, phantom-blocker measurement and SIL conversion unmeasured."
+    "devHealth": "90: Exact candidate CI7, fresh focused40 and client14, actual frontend/API release and reviewed hosted states pass.",
+    "creativeAlignment": "70: Preserves the football decision loop and player-owned progress without unauthorized feature expansion.",
+    "momentum": "60: Three selected outcomes shipped; repeated evidence and fixture corrections extended delivery.",
+    "engagement": "45: Player continuity improved; real-player retention and engagement are unmeasured.",
+    "processQuality": "45: Retain late startup/capture binding, metadata CI failure, shared-season fixture failure and closing receipt-binding errors honestly.",
+    "crossRepoCoherence": "60: Canonical gateway, recipient-native measurements and scoped signed transport are used; inherited delivery/launch gaps and unmeasured adoption remain.",
+    "securityPosture": "60: Optional failures do not weaken authoritative checkpoint recovery; storage and franchise boundaries have regressions.",
+    "ecosystemIntegration": "20: Existing identity/email/launch holds remain; no new integration or recipient adoption claimed.",
+    "capitalEfficiency": "0: No financial/unit-economics measurement; retain zero evidence credit.",
+    "automationCoverage": "55: New registered default-storage, recovery, open/ended-season and component regressions add shipped coverage. Private preparation checks are not player outcomes."
   },
-  "silDebt": "↓",
+  "silDebt": "→",
   "testsLastRun": "2026-10-25",
   "ignisProof": {
     "session": 124,
@@ -2894,11 +2870,11 @@
     "mindHash": "e7ccf63ef328f3c1e4ee3e69d40607628cb0c423369dea8d67fd0a3fb2d9e3fe",
     "receipt": "reports/s124-ignis-refresh.json"
   },
-  "silAvg3": 498.3,
-  "silAvg5": 781.2,
-  "silAvg10": 794.3,
-  "silAvg25": 887.8,
-  "silAvgAll": 958.2,
+  "silAvg3": 505,
+  "silAvg5": 572.8,
+  "silAvg10": 693.4,
+  "silAvg25": 831.5,
+  "silAvgAll": 941,
   "closeoutProcessEvidence": {
     "premiseTiming": {
       "strictPremisesBeforeRecordedImplementation": "proven",
@@ -2921,9 +2897,9 @@
     "completion": "reports/s124-closeout-completion.json",
     "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
   },
-  "silDebtTrend": "↓",
+  "silDebtTrend": "→",
   "silLastUpdated": "2026-10-25",
-  "lastDeployStatus": "Production source49035219 verified on frontend and API",
+  "lastDeployStatus": "S125 frontend/API source1ad07d99 production verified; final closeout publication remains required.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "workflowRun": 40135991113,
@@ -2989,5 +2965,15 @@
     "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
   "sessionIntentAchieved": false,
-  "sessionIntentDisposition": "Artifacts verified; full native goal completion remains conditional on final containing-commit/job/original-lock guard."
+  "sessionIntentDisposition": "Partial until final metadata, containing publication, signed impact and cleanup are actually verified; selected technical release alone does not complete the native goal.",
+  "silSparkline": [
+    838,
+    856,
+    863,
+    864,
+    485,
+    500,
+    510,
+    505
+  ]
 }

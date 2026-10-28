@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T17:12:56.594Z",
+  "verified": true,
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "frontend": {
+    "available": true,
+    "previous": {
+      "id": "c14aa648-555d-43b7-acad-0c1afeaa31be",
+      "sourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+      "url": "https://c14aa648.franchise-architect-football.pages.dev"
+    },
+    "currentUpload": {
+      "verified": true,
+      "primaryArtifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+      "primaryFiles": 362,
+      "completeUploadDigest": "3786f93ea87b57ee1ce45e8e1b479cc58b347054d34c26ca714a405b91487ce5",
+      "completeUploadFiles": 3650,
+      "publishedMounts": [
+        "/",
+        "/franchise-architect-football/",
+        "/vaultspark-football-gm/",
+        "/franchise-architect/",
+        "/games/vaultspark-football-gm/",
+        "/games/franchise-architect/",
+        "/games/franchise-architect-football/"
+      ],
+      "boundary": "Primary digest is the native pre-mirror content identity. Every final upload path and byte hash is independently checked against the staged primary ledger and the committed mirror-copy contract."
+    },
+    "restore": "Promote the recorded prior successful Cloudflare Pages production deployment through the canonical broker, then verify canonical health/artifact."
+  },
+  "backend": {
+    "previousSourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "previousImage": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "restore": "Use the canonical pinned native backend deployer with the recorded immutable previous image/source and existing deployment root; retain PostgreSQL and verify API database-ready health. No database migration or deletion is part of this release."
+  },
+  "observations": {
+    "frontend": "2026-10-27T07:35:47.143Z",
+    "backend": "2026-10-27T17:02:55.599Z"
+  },
+  "receipts": [
+    {
+      "path": ".cache/s125-candidate.json",
+      "sha256": "7dd2bcaa151ecbff6a1aa22fc4c58ba94ed95bf51d8f6b97e39d755d9440fce8"
+    },
+    {
+      "path": ".cache/s125-rollback.json",
+      "sha256": "e274323b1b806f897d288ec0114b792859411f0a9841bc07537ef4cba7b51821"
+    },
+    {
+      "path": "reports/s125-frontend-deployment.json",
+      "sha256": "37f61dfcadeb2f377906e32a6549400196a6f6e47141f66a4853648aa9b49449"
+    },
+    {
+      "path": "reports/s125-backend-deployment.json",
+      "sha256": "9c98b4d8e60ad30e4337fa37635c3825de0e4a97816fc920cbc75578e89c9f73"
+    },
+    {
+      "path": ".cache/s125-frontend-provider.json",
+      "sha256": "4be225c4e9f0687dd138ea14eb2f61d4adc69701d5f04d4988e06da9f694d07e"
+    },
+    {
+      "path": ".cache/s125-successor-backend-target.json",
+      "sha256": "e92dd510003f53e687795625bf84c301670ee6274b2074800176ace607518e4a"
+    },
+    {
+      "path": "reports/s124-frontend-deployment.json",
+      "sha256": "32a887bbee98f505d16d38bf6c5fa03e84487a187a6d6c5396115cdeddb463d8"
+    },
+    {
+      "path": "reports/s125-staging-successor-provenance.json",
+      "sha256": "1afaada935b043283f6b6c112aa0c1a719ac00541929b7a26b968d317685eff0"
+    },
+    {
+      "path": "reports/s125-production-provenance.json",
+      "sha256": "869d60847086622e5075af3a51b887d56a2e8aae94006cb7154c025933abd74e"
+    },
+    {
+      "path": "static/deploy-manifest.json",
+      "sha256": "bd3a3f406184bca0ee659e9b21226bc4959c2ed41ac24276820105dce95c6ebd"
+    },
+    {
+      "path": ".cache/s125-frontend-upload-inventory.json",
+      "sha256": "6fac6c733cd3ea07d19b8801ba9ddfb0f32935e927c05cd61dda7cc2e25af707"
+    },
+    {
+      "path": ".cache/s125-frontend-attempt.json",
+      "sha256": "64c0783bd4419ec1209d686b08631ae3bc698e5cb7bf4aaac26253219b7101e4"
+    },
+    {
+      "path": ".cache/s125-frontend-upload.json",
+      "sha256": "1bd1b842ff8696664511767e1f949e46a4aacb49270e44114e209cff103e9b19"
+    },
+    {
+      "path": ".cache/s125-successor-ci-proof.json",
+      "sha256": "8b0f2a061088ddd5332626ef2c0f9dc344700807acb80b82454b1d38f36399eb"
+    },
+    {
+      "path": ".cache/s125-successor-images-proof.json",
+      "sha256": "3f567038ad58a4cd21edb70f61808dba612efae4ccd46c18c37c5338e27d1682"
+    },
+    {
+      "path": ".cache/s125-successor-history-manifest.json",
+      "sha256": "2f52798de84649154a4e54dad414256d509c46b572f8576952b56d8b69db23c8"
+    },
+    {
+      "path": "static/_health",
+      "sha256": "af83d3239af247158dfc072069ad6ae53577d6f9cf4c2190a806274145232fdf"
+    },
+    {
+      "path": "static/edge-policy-receipt.json",
+      "sha256": "76d31c830198d1fb9ba1e38885bde6f710110479d24654e0578d246c9d8fdae7"
+    }
+  ],
+  "miniPreparation": {
+    "path": ".cache/s125-successor-rollback-preparation.json",
+    "sha256": "aab0e2a18ebf8525c17df7a7926326676db2927bc5b550c1216681c92ea4ca5c"
+  },
+  "boundary": "Observed actual frontend/backend deployment predecessors, distinct native14 staging/production provenance, exact attempt1 producers and complete upload inventory. Stored deployment observations are validated here; no fresh remote query or destructive restore drill is claimed."
+}

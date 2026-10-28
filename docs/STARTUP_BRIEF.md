@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-10-27 (Session 124 closeout) -->
+<!-- generated-at: 2026-10-27 (Session 125 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: 06c3f662e849c4b7 -->
-<!-- genius-authority-fingerprint: 9e30f1a02118968a -->
-<!-- session-authority: committed=S124 · SIL=S124 · status=S124 · handoff=S124; divergent=false -->
+<!-- genius-authority-fingerprint: ffb3c54915bddae7 -->
+<!-- session-authority: committed=S125 · SIL=S125 · status=S125 · handoff=S125; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 124 closeout · 2026-10-27.
+> **Fast-boot brief** — generated at Session 125 closeout · 2026-10-27.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,20 +17,18 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 125 · 2026-10-27 · BUILDER MODE                         ║
+║  Session 126 · 2026-10-27 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S124) - WHAT SHIPPED ══════════════════════════╗
-║  S124: Optional player panels survive denied storage access, tu  ║
-║  Tests Exact candidate CI7/7; historical focused45/45 with       ║
-║  retained raw log; fresh exact-source local browser9/9; clean    ║
-║  source Studio389/389; native staging/production14/14;           ║
-║  hosted12controls per phase plus committed production            ║
-║  browser5/5; desktop/mobile five-run performance verified.       ║
-║  Aggregate application case count and real-user outcomes remain  ║
-║  unmeasured. Final metadata acceptance is separate.              ║
-║  Deploy recorded 14/14 checks @f39b801c                          ║
+╔══ LAST SESSION (S125) - WHAT SHIPPED ══════════════════════════╗
+║  S125: Optional journey notes no longer interrupt play, Inbox s  ║
+║  Tests Exact accepted candidate CI7/7 and image producer2/2;     ║
+║  staging/production14/14 each; scope-bound client, contract,     ║
+║  visual and hosted performance checks bound by 168 frozen court  ║
+║  receipts. Aggregate real-player/capacity outcomes remain        ║
+║  unmeasured.                                                     ║
+║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -46,56 +44,54 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    510/1000   ████████████░░░░░░░░░░░░   51%                     ║
-║    SIL v3.0  ·  Avg3: 498.3  ·  Velocity 3→                      ║
+║    505/1000   ████████████░░░░░░░░░░░░   51%                     ║
+║    SIL v3.0  ·  Avg3: 505  ·  Velocity 3→                        ║
 ║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▁▁▁▁▁  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
 ║    Dev Health        90    █████████░  —        →                ║
-║    Alignment         65    ███████░░░  —        →                ║
-║    Momentum          75    ████████░░  —        →                ║
+║    Alignment         70    ███████░░░  —        →                ║
+║    Momentum          60    ██████░░░░  —        →                ║
 ║    Engagement        45    █████░░░░░  —        →                ║
-║    Process Qual      65    ███████░░░  —        →                ║
-║    Coherence         50    █████░░░░░  ········ →                ║
-║    Security          55    ██████░░░░  ········ →                ║
+║    Process Qual      45    █████░░░░░  —        →                ║
+║    Coherence         60    ██████░░░░  ········ →                ║
+║    Security          60    ██████░░░░  ········ →                ║
 ║    Ecosystem         20    ██░░░░░░░░  ········ →                ║
 ║    Capital            0    ░░░░░░░░░░  ········ →                ║
-║    Automation        45    █████░░░░░  ········ →                ║
+║    Automation        55    ██████░░░░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 124 ═══════════════════════════╗
-║  Shipped:  S124: Optional player panels survive denied storage   ║
-║  Tests: Exact candidate CI7/7; historical focused45/45 with      ║
-║  retained raw log; fresh exact-source local browser9/9; clean    ║
-║  source Studio389/389; native staging/production14/14;           ║
-║  hosted12controls per phase plus committed production            ║
-║  browser5/5; desktop/mobile five-run performance verified.       ║
-║  Aggregate application case count and real-user outcomes remain  ║
-║  unmeasured. Final metadata acceptance is separate.              ║
-║  Deploy: Production source49035219 verified on frontend and API  ║
+╔══ WHERE WE LEFT OFF  ·  Session 125 ═══════════════════════════╗
+║  Shipped:  S125: Optional journey notes no longer interrupt pla  ║
+║  Tests: Exact accepted candidate CI7/7 and image producer2/2;    ║
+║  staging/production14/14 each; scope-bound client, contract,     ║
+║  visual and hosted performance checks bound by 168 frozen court  ║
+║  receipts. Aggregate real-player/capacity outcomes remain        ║
+║  unmeasured.                                                     ║
+║  Deploy: S125 frontend/API source1ad07d99 production verified;   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     7,519 / 272,000 tok  ·  codex/codex-272k  ·  heuristic       ║
-║     ~3,760 tok/turn  ·  cache 50%  ·  64 turns to compact        ║
+║  ✓  █████████░░░░░░░░░░░░░░░   36% used                          ║
+║     96,888 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
+║     ~48,444 tok/turn  ·  cache 50%  ·  3 turns to compact        ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
 ║  ⚠ Tests STALE · current unverified; historical 1752/1752        ║
 ║  (2026-10-02)                                                    ║
-║  ✓  Velocity      3   ·  Debt: ↓                                 ║
+║  ✓  Velocity      3   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
 ║  ✓  IGNIS         43029 FORGE  ·  0d old                         ║
-║  ⛔  Truth         selected S124 technical production verified;   ║
+║  ⛔  Truth         selected S125 technical production verified;   ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.051  (healthy)                               ║
+║  ✓  Entropy       0.058  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
@@ -120,12 +116,12 @@
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▁▁▁▁▁  3→  (last 5 sessions)                        ║
-║  Intent:     60% achieved last 5                                 ║
+║  Intent:     40% achieved last 5                                 ║
 ║  Streak:     — (last intent not achieved)                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-10-26.json               ║
+║  ✓ queue exhausted · source: AUDIT_2026-10-27.json               ║
 ║  Closed: 3 · Open: 0                                             ║
 ║  All 3 live-premise-verified audit items are done.               ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -134,5 +130,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 124 closeout · 2026-10-27*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 125 closeout · 2026-10-27*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

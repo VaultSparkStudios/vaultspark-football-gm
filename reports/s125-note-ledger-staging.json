@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0",
+  "note": "sha256 per visual-QA capture. The hash is the durable audit trail; the PNG is its human-readable attachment and is retained only for a bounded window (scripts/visual-qa-retention.mjs). Append-only: an entry is never rewritten or removed, so a capture pruned from the working tree remains provable.",
+  "captures": {
+    "s125-status-before-desktop-dark.png": {
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+      "bytes": 595928,
+      "session": 125
+    },
+    "s125-status-before-desktop-light.png": {
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+      "bytes": 647938,
+      "session": 125
+    },
+    "s125-status-before-mobile-dark.png": {
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+      "bytes": 148723,
+      "session": 125
+    },
+    "s125-status-before-mobile-light.png": {
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+      "bytes": 147067,
+      "session": 125
+    },
+    "s125-status-staging-desktop-dark.png": {
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02",
+      "bytes": 601009,
+      "session": 125
+    },
+    "s125-status-staging-desktop-light.png": {
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc",
+      "bytes": 653666,
+      "session": 125
+    },
+    "s125-status-staging-mobile-dark.png": {
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957",
+      "bytes": 146814,
+      "session": 125
+    },
+    "s125-status-staging-mobile-light.png": {
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a",
+      "bytes": 145144,
+      "session": 125
+    }
+  }
+}

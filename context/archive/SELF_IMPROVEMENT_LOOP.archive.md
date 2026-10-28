@@ -1967,3 +1967,31 @@ Prior recorded total 804/1000; current 820/1000 (+16). Source 097a7caf6f63c019bc
 <!-- /s113-closeout:sil -->
 
 <!-- s114-closeout:sil -->
+
+## 2026-10-02 — Session 114 — Release note, display codes and the server route split
+
+SIL v3.0: **846 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 92, Engagement 72, Process Quality 86, Cross-Repo Coherence 86, Security Posture 82, Ecosystem Integration 74, Capital Efficiency 70, Automation Coverage 93). Intent outcome: **Achieved**. Public launch remains HOLD. Scores are engineering judgment.
+
+- Process Quality: the S113 lesson held. The evidence harness ran locally before promotion and passed, and the only rework was a runner-speed gate timeout.
+- Capital Efficiency: one focused agent, and a measured decision not to build a low-value split.
+
+Source 1c57a3beeb420001d6ba1611e027043df76f7d57. Direct six-shard suite 1752/1752 (core 290, runtime 1000, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact a878e519…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37054296649 success after run 37050905781 hit the gate job's 25-minute timeout on a slower runner, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 1c57a3b. Public launch remains HOLD.
+
+- [SIL] Measure the payoff (compressed and cached bytes) before scheduling a performance refactor.
+- [SIL] The deploy gate runs about 23 of its 25 minutes; give timeouts headroom before they become flakiness.
+<!-- /s114-closeout:sil -->
+
+<!-- s115-closeout:sil -->
+## 2026-10-03 — Session 115 — Situational calls, archetype drafting and a parallel deploy gate
+
+SIL v3.0: **858 / 1000** (Dev Health 96, Creative Alignment 96, Momentum 93, Engagement 78, Process Quality 87, Cross-Repo Coherence 86, Security Posture 82, Ecosystem Integration 74, Capital Efficiency 72, Automation Coverage 94). Intent outcome: **Achieved**. Public launch remains HOLD. Scores are engineering judgment.
+
+- Engagement: the first player-controlled game-day decisions, with measured effects, plus rivals whose drafting matches their visible identity.
+- Process Quality: the matched probe caught a no-op before release. An interruption by host memory pressure was completed rather than repeated.
+
+Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
+
+- [SIL] Before claiming a persona effect, count how many clubs actually have that persona; a population of one style turns any tilt into a no-op.
+<!-- /s115-closeout:sil -->
+
+<!-- s116-closeout:sil -->

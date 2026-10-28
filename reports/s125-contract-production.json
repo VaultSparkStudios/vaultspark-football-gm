@@ -1,0 +1,4390 @@
+{
+  "session": 125,
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "startedAt": "2026-10-27T17:06:38.743Z",
+  "completed": true,
+  "verified": true,
+  "driverSha256": "970289dfbb2a0a035a0395fec1c5d5f66f410e6b2fb98a822d4e57990e4a4c91",
+  "expected": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+  },
+  "captures": [
+    {
+      "file": "s125-contract-production-desktop-dark-dismissed.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-dark-dismissed.png",
+      "sha256": "8a16368ed51db198c70595a1e9e92f712cce55f4371af0e9d4ae411e4c6ad431",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "dismissed",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:06:50.561Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5946,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-complete-first.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-dark-complete-first.png",
+      "sha256": "a98b91de7939d0717af9014600a9080f11c8972f64bc057f16cf12765c9b941a",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "complete-first",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:06:58.796Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5947,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-complete-revisit.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-dark-complete-revisit.png",
+      "sha256": "9f76038ed98498bbbb6637556c4fdcde39efe3088679e2ef01baf778a5749380",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "complete-revisit",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:05.023Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5948,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-finalized-2026.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-dark-finalized-2026.png",
+      "sha256": "adea4b46bdf07be7954ad1d027c6fe1848ac17564fd8021325ec2848b159ff6a",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "finalized-2026",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:09.018Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5949,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-dark-finalized-2027.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-dark-finalized-2027.png",
+      "sha256": "12cb8952e35a827a9343e18746d70d951ce2a1162b3eebdeabeaba5f819138cf",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "finalized-2027",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:17.658Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5950,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-light-dismissed.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-light-dismissed.png",
+      "sha256": "e2332b6b58b0ae3372752eee1392a7fd58555aa3e5c9767912ac212f24633718",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "dismissed",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:24.107Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5951,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-light-complete-first.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-light-complete-first.png",
+      "sha256": "fa36ed92c9864cd24469657966e4b91d485f4f647bba156b62c7364e9be49f8a",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "complete-first",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:29.158Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5952,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-light-complete-revisit.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-light-complete-revisit.png",
+      "sha256": "f268ade2998dcddd1ce363bae8df9e3403c5910a32ea982a956f44f1ccc66af9",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "complete-revisit",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:34.901Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5953,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-light-finalized-2026.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-light-finalized-2026.png",
+      "sha256": "f556b24fc0eb9870efd2592e0c8772af78f786cb23477b213da59654a4ac97d3",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "finalized-2026",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:38.237Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5954,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-desktop-light-finalized-2027.png",
+      "path": "docs/visual-qa/s125-contract-production-desktop-light-finalized-2027.png",
+      "sha256": "8205862feeb5c1a4ebf5b71ead7bd6d62fffd61dbcfc785c96bcca757ac3dbb7",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "state": "finalized-2027",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:42.378Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5955,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-dismissed.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-dark-dismissed.png",
+      "sha256": "81cd70622d57a2cc7d999a7a3dc73696da84d42ad3b72378a6e4c53d2576fe20",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "dismissed",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:47.943Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5956,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-complete-first.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-dark-complete-first.png",
+      "sha256": "ad220f2b9d54fe862b1b230a28cff3592b3ec874629bce1d6e8bafa6b9eb11e1",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "complete-first",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:51.489Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5957,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-complete-revisit.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-dark-complete-revisit.png",
+      "sha256": "f6c228feb798e682c3bd1a7f9e2c1d3cbf86f76ef058e6700d7c7d9fcc9e913f",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "complete-revisit",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:07:54.743Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5958,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-finalized-2026.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-dark-finalized-2026.png",
+      "sha256": "633fd5405a68c704a81232b8443a976d248333f5fa3bba2c4cce7b8064dd5a9d",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "finalized-2026",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:08:00.099Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5959,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-dark-finalized-2027.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-dark-finalized-2027.png",
+      "sha256": "7aa53b5586ee4b0138e6c59b49d1ddeeaf7e5583d1feb4272d2b4cd82cbca96f",
+      "phase": "production",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "finalized-2027",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:08:03.653Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5960,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-light-dismissed.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-light-dismissed.png",
+      "sha256": "c8912ce85ad9f1f74e221cebbee3411e1f2e69cd1eb0e690c3f4e1546eed343c",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "dismissed",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:08:08.934Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5961,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-light-complete-first.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-light-complete-first.png",
+      "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "complete-first",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:08:13.626Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5962,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-light-complete-revisit.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-light-complete-revisit.png",
+      "sha256": "12de6a178e5c5c8b69bcd1551eb069aa34f43e6d262554ce7b14460dd9870b8b",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "complete-revisit",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:08:17.368Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5963,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-light-finalized-2026.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-light-finalized-2026.png",
+      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "finalized-2026",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:08:22.072Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5964,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    },
+    {
+      "file": "s125-contract-production-mobile-light-finalized-2027.png",
+      "path": "docs/visual-qa/s125-contract-production-mobile-light-finalized-2027.png",
+      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d",
+      "phase": "production",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "state": "finalized-2027",
+      "inspected": false,
+      "capturedAt": "2026-10-27T17:08:27.382Z",
+      "ledger": {
+        "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+        "bound": true,
+        "result": {
+          "added": 1,
+          "revised": 0,
+          "total": 5965,
+          "ledgerPath": "docs\\visual-qa\\CAPTURE_LEDGER.json"
+        }
+      }
+    }
+  ],
+  "results": [
+    {
+      "state": "dismissed",
+      "scope": "s125-contract-production-desktop-dark-dismissed",
+      "runtimeMode": "client",
+      "writeAttempts": 2,
+      "flags": {
+        "render": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 0,
+            "total": 5,
+            "complete": false
+          }
+        }
+      },
+      "stored": {
+        "marks": {},
+        "dismissed": true,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "0 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "false",
+          "text": "○Sign a free agentPut one name on a contract the market was not going to hand you.open"
+        },
+        {
+          "id": "depth-chart",
+          "done": "false",
+          "text": "○Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.open"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "false",
+          "text": "○Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.open"
+        },
+        {
+          "id": "owner-floor",
+          "done": "false",
+          "text": "○Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsopen"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "false",
+          "text": "○Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capopen"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-first",
+      "scope": "s125-contract-production-desktop-dark-complete-first",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:06:54.674Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": false,
+      "visibility": "complete",
+      "visibleProgress": "Contract honoured · this tab only",
+      "hiddenProgress": "Contract honoured · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 138.703125,
+          "bottom": 735.296875,
+          "left": 253.59375,
+          "right": 1422.40625,
+          "width": 1168.8125,
+          "height": 596.59375
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-revisit",
+      "scope": "s125-contract-production-desktop-dark-complete-revisit",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "revisit": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:07:01.474Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "5 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2026",
+      "scope": "s125-contract-production-desktop-dark-finalized-2026",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 138.703125,
+          "bottom": 735.296875,
+          "left": 253.59375,
+          "right": 1422.40625,
+          "width": 1168.8125,
+          "height": 596.59375
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2027",
+      "scope": "s125-contract-production-desktop-dark-finalized-2027",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "laterFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "laterRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 138.703125,
+          "bottom": 735.296875,
+          "left": 253.59375,
+          "right": 1422.40625,
+          "width": 1168.8125,
+          "height": 596.59375
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "dismissed",
+      "scope": "s125-contract-production-desktop-light-dismissed",
+      "runtimeMode": "client",
+      "writeAttempts": 2,
+      "flags": {
+        "render": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 0,
+            "total": 5,
+            "complete": false
+          }
+        }
+      },
+      "stored": {
+        "marks": {},
+        "dismissed": true,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "0 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "false",
+          "text": "○Sign a free agentPut one name on a contract the market was not going to hand you.open"
+        },
+        {
+          "id": "depth-chart",
+          "done": "false",
+          "text": "○Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.open"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "false",
+          "text": "○Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.open"
+        },
+        {
+          "id": "owner-floor",
+          "done": "false",
+          "text": "○Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsopen"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "false",
+          "text": "○Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capopen"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-first",
+      "scope": "s125-contract-production-desktop-light-complete-first",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:07:28.301Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": false,
+      "visibility": "complete",
+      "visibleProgress": "Contract honoured · this tab only",
+      "hiddenProgress": "Contract honoured · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 138.703125,
+          "bottom": 735.296875,
+          "left": 253.59375,
+          "right": 1422.40625,
+          "width": 1168.8125,
+          "height": 596.59375
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-revisit",
+      "scope": "s125-contract-production-desktop-light-complete-revisit",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "revisit": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:07:33.955Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "5 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2026",
+      "scope": "s125-contract-production-desktop-light-finalized-2026",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 138.703125,
+          "bottom": 735.296875,
+          "left": 253.59375,
+          "right": 1422.40625,
+          "width": 1168.8125,
+          "height": 596.59375
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2027",
+      "scope": "s125-contract-production-desktop-light-finalized-2027",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "laterFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "laterRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "desktop",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 114.515625,
+        "panel": {
+          "top": 138.703125,
+          "bottom": 735.296875,
+          "left": 253.59375,
+          "right": 1422.40625,
+          "width": 1168.8125,
+          "height": 596.59375
+        },
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "dismissed",
+      "scope": "s125-contract-production-mobile-dark-dismissed",
+      "runtimeMode": "client",
+      "writeAttempts": 2,
+      "flags": {
+        "render": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 0,
+            "total": 5,
+            "complete": false
+          }
+        }
+      },
+      "stored": {
+        "marks": {},
+        "dismissed": true,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "0 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "false",
+          "text": "○Sign a free agentPut one name on a contract the market was not going to hand you.open"
+        },
+        {
+          "id": "depth-chart",
+          "done": "false",
+          "text": "○Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.open"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "false",
+          "text": "○Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.open"
+        },
+        {
+          "id": "owner-floor",
+          "done": "false",
+          "text": "○Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsopen"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "false",
+          "text": "○Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capopen"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-first",
+      "scope": "s125-contract-production-mobile-dark-complete-first",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:07:50.664Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": false,
+      "visibility": "complete",
+      "visibleProgress": "Contract honoured · this tab only",
+      "hiddenProgress": "Contract honoured · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 365.546875,
+          "bottom": 1040.140625,
+          "left": 17.59375,
+          "right": 372.40625,
+          "width": 354.8125,
+          "height": 674.59375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-revisit",
+      "scope": "s125-contract-production-mobile-dark-complete-revisit",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "revisit": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:07:53.935Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "5 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2026",
+      "scope": "s125-contract-production-mobile-dark-finalized-2026",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 365.546875,
+          "bottom": 1040.140625,
+          "left": 17.59375,
+          "right": 372.40625,
+          "width": 354.8125,
+          "height": 674.59375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2027",
+      "scope": "s125-contract-production-mobile-dark-finalized-2027",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "laterFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "laterRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "dark",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 365.546875,
+          "bottom": 1040.140625,
+          "left": 17.59375,
+          "right": 372.40625,
+          "width": 354.8125,
+          "height": 674.59375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "dark",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "dismissed",
+      "scope": "s125-contract-production-mobile-light-dismissed",
+      "runtimeMode": "client",
+      "writeAttempts": 2,
+      "flags": {
+        "render": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": false,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": false,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 0,
+            "total": 5,
+            "complete": false
+          }
+        }
+      },
+      "stored": {
+        "marks": {},
+        "dismissed": true,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "0 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "false",
+          "text": "○Sign a free agentPut one name on a contract the market was not going to hand you.open"
+        },
+        {
+          "id": "depth-chart",
+          "done": "false",
+          "text": "○Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.open"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "false",
+          "text": "○Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.open"
+        },
+        {
+          "id": "owner-floor",
+          "done": "false",
+          "text": "○Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsopen"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "false",
+          "text": "○Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capopen"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-first",
+      "scope": "s125-contract-production-mobile-light-complete-first",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:08:12.725Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": false,
+      "visibility": "complete",
+      "visibleProgress": "Contract honoured · this tab only",
+      "hiddenProgress": "Contract honoured · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 365.546875,
+          "bottom": 1040.140625,
+          "left": 17.59375,
+          "right": 372.40625,
+          "width": 354.8125,
+          "height": 674.59375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "complete-revisit",
+      "scope": "s125-contract-production-mobile-light-complete-revisit",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "first": {
+          "visibility": "complete",
+          "completedNow": true,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "revisit": {
+          "visibility": "hidden",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "source": "action",
+                "done": true,
+                "progress": ""
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "10 of 9 wins"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "source": "dashboard",
+                "done": true,
+                "progress": "under the cap"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": "2026-10-27T17:08:16.515Z",
+        "startYear": 2026,
+        "finalized": null
+      },
+      "hidden": true,
+      "visibility": "hidden",
+      "visibleProgress": null,
+      "hiddenProgress": "5 of 5 · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.done"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.done"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.done"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsdone"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capdone"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": true,
+        "renderedRects": 0,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0,
+          "width": 0,
+          "height": 0
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2026",
+      "scope": "s125-contract-production-mobile-light-finalized-2026",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 365.546875,
+          "bottom": 1040.140625,
+          "left": 17.59375,
+          "right": 372.40625,
+          "width": 354.8125,
+          "height": 674.59375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    },
+    {
+      "state": "finalized-2027",
+      "scope": "s125-contract-production-mobile-light-finalized-2027",
+      "runtimeMode": "client",
+      "writeAttempts": 4,
+      "flags": {
+        "initialFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "initialRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        },
+        "laterFinalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        },
+        "laterRender": {
+          "visibility": "closed",
+          "completedNow": false,
+          "summary": {
+            "rows": [
+              {
+                "id": "sign-starter",
+                "title": "Sign a free agent",
+                "detail": "Put one name on a contract the market was not going to hand you.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "depth-chart",
+                "title": "Set a depth chart yourself",
+                "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "answer-the-phone",
+                "title": "Work the trade desk",
+                "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+                "done": true,
+                "progress": "",
+                "status": "met"
+              },
+              {
+                "id": "owner-floor",
+                "title": "Reach the owner's win target",
+                "detail": "Finish the regular season at or above the number the mandate names.",
+                "done": true,
+                "progress": "10 of 9 wins",
+                "status": "met"
+              },
+              {
+                "id": "cap-compliant",
+                "title": "Carry a legal cap into the offseason",
+                "detail": "Be under the cap when the season closes; the release path is not a plan.",
+                "done": true,
+                "progress": "under the cap",
+                "status": "met"
+              }
+            ],
+            "done": 5,
+            "total": 5,
+            "complete": true
+          }
+        }
+      },
+      "stored": {
+        "marks": {
+          "sign-starter": true,
+          "depth-chart": true,
+          "answer-the-phone": true
+        },
+        "dismissed": false,
+        "completedAt": null,
+        "startYear": 2026,
+        "finalized": {
+          "year": 2026,
+          "done": 5,
+          "total": 5,
+          "rows": [
+            {
+              "id": "sign-starter",
+              "title": "Sign a free agent",
+              "detail": "Put one name on a contract the market was not going to hand you.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "depth-chart",
+              "title": "Set a depth chart yourself",
+              "detail": "Save one position's order and snap shares instead of letting the coordinators guess.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "answer-the-phone",
+              "title": "Work the trade desk",
+              "detail": "Answer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.",
+              "done": true,
+              "progress": "",
+              "status": "met"
+            },
+            {
+              "id": "owner-floor",
+              "title": "Reach the owner's win target",
+              "detail": "Finish the regular season at or above the number the mandate names.",
+              "done": true,
+              "progress": "10 of 9 wins",
+              "status": "met"
+            },
+            {
+              "id": "cap-compliant",
+              "title": "Carry a legal cap into the offseason",
+              "detail": "Be under the cap when the season closes; the release path is not a plan.",
+              "done": true,
+              "progress": "under the cap",
+              "status": "met"
+            }
+          ],
+          "verdict": "All five first-season objectives met.",
+          "evidenceBoundary": "Based on marked GM actions and the season-close dashboard; this does not alter the owner's separate verdict."
+        }
+      },
+      "hidden": false,
+      "visibility": "closed",
+      "visibleProgress": "Season 2026: 5 of 5 met · this tab only",
+      "hiddenProgress": "Season 2026: 5 of 5 met · this tab only",
+      "renderedRows": [
+        {
+          "id": "sign-starter",
+          "done": "true",
+          "text": "✓Sign a free agentPut one name on a contract the market was not going to hand you.met"
+        },
+        {
+          "id": "depth-chart",
+          "done": "true",
+          "text": "✓Set a depth chart yourselfSave one position's order and snap shares instead of letting the coordinators guess.met"
+        },
+        {
+          "id": "answer-the-phone",
+          "done": "true",
+          "text": "✓Work the trade deskAnswer a rival's offer, or evaluate a real package you built. You never have to accept a bad trade.met"
+        },
+        {
+          "id": "owner-floor",
+          "done": "true",
+          "text": "✓Reach the owner's win targetFinish the regular season at or above the number the mandate names.10 of 9 winsmet"
+        },
+        {
+          "id": "cap-compliant",
+          "done": "true",
+          "text": "✓Carry a legal cap into the offseasonBe under the cap when the season closes; the release path is not a plan.under the capmet"
+        }
+      ],
+      "scopeBoundary": "Fresh throwing store and distinct synthetic franchise per captured state; no data leaves local game state.",
+      "device": "mobile",
+      "theme": "light",
+      "pageErrors": [],
+      "framing": {
+        "hidden": false,
+        "renderedRects": 1,
+        "headerBottom": 341.359375,
+        "panel": {
+          "top": 365.546875,
+          "bottom": 1040.140625,
+          "left": 17.59375,
+          "right": 372.40625,
+          "width": 354.8125,
+          "height": 674.59375
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "theme": "light",
+        "scrollY": 32
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic component states rendered through actual game template/styles and exported component APIs; no cohort or real-player outcome claim.",
+    "The completion once flag is component evidence, not a real trophy event.",
+    "This version permits only fresh successor-source staging/production capture; immutable old before/after reports retain their actual source labels.",
+    "Captures require independent rendered-image inspection; this driver leaves inspected:false."
+  ],
+  "baselineSource": {
+    "revision": "f4021d2cc2b55e578d96ae4e9f5502a9676eb6af",
+    "path": "public/lib/firstSeasonContract.js",
+    "rawPath": ".cache/s125-contract-production-baseline-source.js",
+    "sha256": "0628831e7a6d2f7bf3ed52324ed467231c0e02efbba29d46f6814d1666bdc0d0",
+    "bytes": 13589
+  },
+  "candidateSource": {
+    "revision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "path": "public/lib/firstSeasonContract.js",
+    "rawPath": ".cache/s125-contract-production-candidate-source.js",
+    "sha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d",
+    "bytes": 14639
+  },
+  "hosted": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+    "health": {
+      "status": "ok",
+      "service": "franchise-architect-football",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "artifactFingerprint": {
+        "algorithm": "sha256",
+        "digest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+        "files": 362,
+        "exclusions": [
+          "_health",
+          "deploy-manifest.json",
+          "edge-policy-receipt.json"
+        ]
+      },
+      "styleAsset": "styles.c4075a9e38.css",
+      "communityStatsAsset": "community-stats.25f97e0a1e.js",
+      "edgePolicyFingerprint": "sha256:ab90ac6ac9bb45df7f931e799e26742567d211082f0be1cf5f7495a5823d553c",
+      "edgePolicyAppliedToHostedOrigin": false,
+      "generatedAt": "2026-10-27T06:14:13.453Z",
+      "launchReady": false,
+      "launchNote": "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
+    },
+    "moduleSha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d",
+    "observedAt": "2026-10-27T17:06:41.242Z"
+  },
+  "finishedAt": "2026-10-27T17:08:27.762Z"
+}

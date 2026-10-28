@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "phase": "production",
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "verified": true,
+  "observedAt": "2026-10-28T01:40:01.188Z",
+  "deploymentId": "760d7dc2-a2e2-4dbc-9c4f-da8d56c8e798",
+  "deploymentUrl": "https://760d7dc2.franchise-architect-football.pages.dev",
+  "previousDeploymentId": "f18b7f94-3952-41f1-a0c6-1535f87ab204",
+  "previousSourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "previousDeploymentUrl": "https://f18b7f94.franchise-architect-football.pages.dev",
+  "ci": {
+    "ok": true,
+    "sha": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+    "runId": 40554115517,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "uploadInventory": {
+    "verified": true,
+    "primaryArtifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+    "primaryFiles": 362,
+    "completeUploadDigest": "6290fe4c6aa8bfef4df5d30a117b35b5118408de5b9bdd4c0e15f10b42dfcf6b",
+    "completeUploadFiles": 3650,
+    "publishedMounts": [
+      "/",
+      "/franchise-architect-football/",
+      "/vaultspark-football-gm/",
+      "/franchise-architect/",
+      "/games/vaultspark-football-gm/",
+      "/games/franchise-architect/",
+      "/games/franchise-architect-football/"
+    ]
+  },
+  "native": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "stagingNative": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "stagingPixels": {
+    "report": {
+      "path": "reports/s125-note-staging.json",
+      "sha256": "a3b79e6b0038711e3dc90727ca29fc6c50f63b4e874e9d4cefade85c24308439"
+    },
+    "review": {
+      "path": "reports/s125-note-staging-review.json",
+      "sha256": "77f4aa8fb9c178f5ff5d7c12ead0ef8cb485877ea6ffe1bbe2fb50ef1034403d"
+    }
+  },
+  "api": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "unchanged": true,
+    "redeployed": false,
+    "before": {
+      "observedAt": "2026-10-28T01:39:43.504Z",
+      "verified": true,
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "health": {
+        "ok": true,
+        "database": "ready",
+        "latencyMs": 1,
+        "schemaVersion": 1,
+        "service": "franchise-architect-community-stats",
+        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937"
+      }
+    },
+    "after": {
+      "observedAt": "2026-10-28T01:40:01.187Z",
+      "verified": true,
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "health": {
+        "ok": true,
+        "database": "ready",
+        "latencyMs": 0,
+        "schemaVersion": 1,
+        "service": "franchise-architect-community-stats",
+        "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937"
+      }
+    }
+  },
+  "scope": "New exact frontend status-note artifact only. Original game/API release1ad stays independently accepted; no backend images or database mutation."
+}

@@ -3,42 +3,15 @@
 
 
 <!-- rolling-status-start -->
-Last session: 124 (2026-10-27) | Total: 510/1000 | Velocity: 3 | Debt: ↓
-Avgs — 3: 498.3 | 5: 644.4 | 10: 728.7 | 25: 849.4 | all: 946.6
+Last session: 125 (2026-10-27) | Total: 505/1000 | Velocity: 3 | Debt: →
+Avgs — 3: 505 | 5: 572.8 | 10: 693.4 | 25: 831.5 | all: 941
 Sparkline: ▁▁▁▁▁
-Intent rate: 60% (3/5 last 5)
-SIL delta: 500 → 510 (+10). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 78 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+Intent rate: 40% (2/5 last 5)
+SIL delta: 510 → 505 (-5). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 79 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
 
-## 2026-10-02 — Session 114 — Release note, display codes and the server route split
-
-SIL v3.0: **846 / 1000** (Dev Health 96, Creative Alignment 95, Momentum 92, Engagement 72, Process Quality 86, Cross-Repo Coherence 86, Security Posture 82, Ecosystem Integration 74, Capital Efficiency 70, Automation Coverage 93). Intent outcome: **Achieved**. Public launch remains HOLD. Scores are engineering judgment.
-
-- Process Quality: the S113 lesson held. The evidence harness ran locally before promotion and passed, and the only rework was a runner-speed gate timeout.
-- Capital Efficiency: one focused agent, and a measured decision not to build a low-value split.
-
-Source 1c57a3beeb420001d6ba1611e027043df76f7d57. Direct six-shard suite 1752/1752 (core 290, runtime 1000, sim-contract 85, sim-realism 9, long 3, studio 365), exit 0. Stable staging 14/14 (artifact a878e519…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37054296649 success after run 37050905781 hit the gate job's 25-minute timeout on a slower runner, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 1c57a3b. Public launch remains HOLD.
-
-- [SIL] Measure the payoff (compressed and cached bytes) before scheduling a performance refactor.
-- [SIL] The deploy gate runs about 23 of its 25 minutes; give timeouts headroom before they become flakiness.
-<!-- /s114-closeout:sil -->
-
-<!-- s115-closeout:sil -->
-## 2026-10-03 — Session 115 — Situational calls, archetype drafting and a parallel deploy gate
-
-SIL v3.0: **858 / 1000** (Dev Health 96, Creative Alignment 96, Momentum 93, Engagement 78, Process Quality 87, Cross-Repo Coherence 86, Security Posture 82, Ecosystem Integration 74, Capital Efficiency 72, Automation Coverage 94). Intent outcome: **Achieved**. Public launch remains HOLD. Scores are engineering judgment.
-
-- Engagement: the first player-controlled game-day decisions, with measured effects, plus rivals whose drafting matches their visible identity.
-- Process Quality: the matched probe caught a no-op before release. An interruption by host memory pressure was completed rather than repeated.
-
-Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
-
-- [SIL] Before claiming a persona effect, count how many clubs actually have that persona; a population of one style turns any tilt into a no-op.
-<!-- /s115-closeout:sil -->
-
-<!-- s116-closeout:sil -->
 ## 2026-10-04 — Session 116 — Multi-sport platform: guardrails and the first six seams
 
 SIL v3.0: **858 / 1000** (Dev Health 97, Creative Alignment 96, Momentum 95, Engagement 72, Process Quality 88, Cross-Repo Coherence 88, Security Posture 82, Ecosystem Integration 76, Capital Efficiency 70, Automation Coverage 94). Intent outcome: **Achieved** for Phase 0 and steps 1–6. Public launch remains HOLD. Scores are engineering judgment.
@@ -172,12 +145,6 @@ SIL v3.0: **500 / 1000** (Dev Health 85, Creative Alignment 65, Momentum 75, Eng
 
 Three selected outcomes verified. Exact candidate CI7/7; local focused49/49; corrected-source clean Studio389/389; hosted staging/production browser5/5 each including8cross-franchise boundary cases per phase; native staging/production14/14. Final receipt metadata acceptance is separate. Aggregate application case count unmeasured. Score changes reflect a single accepted source candidate, denied-storage custody/clear coverage and repeatable hosted owner-action regressions; cohort/capacity/financial metrics earn no invented credit. Initial source/working-checkout failures remain classified. Future discipline: preserve complete premise-timing evidence with a compatible recipient recorder, and run final metadata acceptance after all receipts/boards are present.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-10-27 — Session 124 — Storage faults stay optional
 
 SIL v3.0: **510 / 1000** (Dev Health 90, Creative Alignment 65, Momentum 75, Engagement 45, Process Quality 65, Cross-Repo Coherence 50, Security Posture 55, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 45). Intent outcome: **Partial** at this scoring checkpoint: product implementation and actual technical release are verified; ordered write-back is in progress, and full arc publication, final metadata and cleanup remain required. This is engineering judgment, not measured engagement, retention or financial impact.
@@ -191,3 +158,19 @@ S124 closeout recovery addendum: preparation review missed the retired lastSessi
 
 
 S124 terminal artifact checkpoint: exact staged metadata389/389, first receipt publication63d9e39a, HMAC impact and two owned checkout removals are verified. Eight ignored generated files, both generated patches and raw logs are preserved. Initial Partial intent scoring remains a historical checkpoint; the native goal stays active until final containing-commit/job/original-lock guard. No additional measured player outcome or merit score is inferred.
+
+
+## 2026-10-27 — Session 125 — Optional state keeps its boundary
+
+SIL v3.0: **505 / 1000** (Dev Health 90, Creative Alignment 70, Momentum 60, Engagement 45, Process Quality 45, Cross-Repo Coherence 60, Security Posture 60, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 55). Intent outcome: **Partial** at this ordered-record checkpoint: technical product/release acceptance is verified; final metadata/publication/impact/cleanup remain required. Scores are reviewed engineering judgment, not measured player or financial outcomes.
+
+Exact accepted candidate CI7/7 and image producer2/2; staging/production14/14 each; scope-bound client, contract, visual and hosted performance checks bound by 168 frozen court receipts. Aggregate real-player/capacity outcomes remain unmeasured. Velocity: 3 product outcomes, excluding SIL/meta tasks. Debt: → (0 to 0 open explicitly tagged [DEBT] rows). Explicit open [DEBT] rows; other backlog and unselected SIL tasks are not measured debt..
+
+Brainstorm: Optional observability cannot block play, but authoritative recovery denial must never silently create fresh authority. Storage identity must remain stable across getter denial and recovery; explicit injected stores and franchise keys remain isolated. Test the real static client authority and per-key failures; a permissive dev server is not hosted acceptance. Freeze source-bound evidence, validate capture-ledger coverage and session projections before cutting a candidate, and retain executed failures. An absent path-filtered Pages run is not success; exact CI/images/staging/artifact/rollback remain positive gates, and a newer red run cannot borrow an older green. On Windows, hash the exact committed source bytes for source-bound receipts; preserve working-copy line-ending evidence separately rather than treating CRLF as a logic change. Two future [SIL:125] discipline items are recorded but unselected; they do not expand the current implementation scope.
+
+Source4a2 exact CI browser failure remains nonpassing; its focused13 report and local40 pixels retain original source labels. New client fixture focused14 and exact successor CI7 are separate. Historical local40 are used only under specific full payload/module byte equivalence, never as fresh successor hosted proof. Earlier server-runtime captures are historical only; authoritative client checkpoint refusal remains intentional. Initial late capture-ledger binding and failed metadata CI remain historical. Synthetic component fixtures and hosted lab performance do not prove player cohorts, complete seasons, device capacity or public launch readiness. Earlier dev-server/fixture/capture overreach, source2 Studio387/389, failed source4a2 browser288passed/3skipped/1failed, and prepared Pages admission findings remain recorded in the S125 evidence reports. No rejected attempt is relabeled passing.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

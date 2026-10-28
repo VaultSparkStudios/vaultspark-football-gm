@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T07:04:46.827Z",
+  "reviewer": "Independent game_audit review",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "verdict": "approve",
+  "scope": "Prepared logic only. Actual exact successor CI/images, production runtime, reviewed post-release plans and native completion remain separate gates.",
+  "executorsRun": false,
+  "productionAttempted": false,
+  "preparationManifest": {
+    "path": ".cache/s125-successor-transport-preparation.json",
+    "sha256": "4c080d9352ebb0a4e0a4ba903fc65e322dfa5fc06bee450ec048b3886f4a3f8a"
+  },
+  "reviewedFiles": [
+    {
+      "path": ".cache/s125-successor-upload-inventory.mjs",
+      "sha256": "a4d6bd52f05d377a9cde22cb1c0ff2aca429eccb44e18a02507d6e30f1f201e6"
+    },
+    {
+      "path": ".cache/s125-successor-surface-inventory.mjs",
+      "sha256": "f091baef0cc9e76a12c833823fd238f2329e84ad2686e6bfad70e2534ac7ceca"
+    },
+    {
+      "path": ".cache/s125-successor-deploy-frontend.mjs",
+      "sha256": "e6c928c743f22966fa7acfe3b983ba9206b0e85fee6ee6ae0ebb190e22d2d30d"
+    },
+    {
+      "path": ".cache/s125-successor-deploy-backend.mjs",
+      "sha256": "95a537b2a86305e861adcf924b6538728f1be5ec1b8476280c68541de61979c8"
+    },
+    {
+      "path": ".cache/s125-successor-candidate.mjs",
+      "sha256": "308377bab657d7e240e056973e87ccfc0a1cbf40d33425164c73db339f23e6c3"
+    },
+    {
+      "path": ".cache/s125-successor-backend-target.mjs",
+      "sha256": "f99dd1208350b60c1bc50c49fb6216c04f866f47caf58641ef6e1e483c0d2b37"
+    },
+    {
+      "path": ".cache/s125-successor-pages-admission.mjs",
+      "sha256": "a6857dd06bad205a234a39b3b0bd7c626cef614b67b5ff83e0a9335c8285e08f"
+    },
+    {
+      "path": ".cache/s125-successor-pages-admission.test.mjs",
+      "sha256": "49e762fbec82ef8706385e9b28b3a614ea0ef3ab95a9646e22e18af4998b44ed"
+    },
+    {
+      "path": ".cache/s125-successor-identity.mjs",
+      "sha256": "c92bf89bb1789de9fa0c1b14bf44611d1187df021f04f44b605562dd031ece27"
+    },
+    {
+      "path": ".cache/s125-successor-pages-diff-contract.json",
+      "sha256": "796eafb906c76db0a45dd4b104303f17dfb9f1b2bf48b630d853bc9f7ae2267c"
+    },
+    {
+      "path": ".cache/s125-successor-dispatch-images.mjs",
+      "sha256": "100a9fd1fc29fb931af358c3410c538d18dcffb6b2390bff07d5fd08a4783efc"
+    },
+    {
+      "path": ".cache/s125-successor-producer-identity.mjs",
+      "sha256": "e8aa4f9e6417be055135ba6ed01ecf371e37c4ea48ce72e569a42a972ec517e5"
+    },
+    {
+      "path": ".cache/s125-successor-producer-identity.test.mjs",
+      "sha256": "abdf09fc9d9a0365616ae7f1405d9324924c947de7b9be19f5bbb0768f6de653"
+    },
+    {
+      "path": ".cache/s124-image-proof.mjs",
+      "sha256": "6f443dffd1d8b7f623f3bac4989bb1c2675b5beda3b60422cae73fb746320349",
+      "scope": "Unchanged generic exact-identity observer/native transport seam; session labels are diagnostic only."
+    },
+    {
+      "path": ".cache/s124-pages-observation.mjs",
+      "sha256": "4523d31b534260694093f037443e7bf6f2c297ae18810c50805b74f32d8f9ae6",
+      "scope": "Unchanged generic exact-identity observer/native transport seam; session labels are diagnostic only."
+    },
+    {
+      "path": ".cache/s124-windows-ssh-adapter.mjs",
+      "sha256": "d53426f80bb111dd9d7b0903f2ce32699232208ab59d850d0817e134c0f78d7c",
+      "scope": "Unchanged generic exact-identity observer/native transport seam; session labels are diagnostic only."
+    }
+  ],
+  "checks": {
+    "referencedHashesMatched": 16,
+    "offlinePagesControls": 41,
+    "offlineProducerIdentityControls": 17,
+    "fullPreparationControls": 138
+  },
+  "findings": [],
+  "reviewRounds": [
+    {
+      "round": 1,
+      "manifestSha256": "6374917dc01857b8c6ad87729b14e4a2ca003c1e383ca58ce56f344948f29021",
+      "verdict": "fix",
+      "openFindings": [
+        "S125-SUCCESSOR-EXACT-PRODUCER-ATTEMPT"
+      ]
+    },
+    {
+      "round": 2,
+      "manifestSha256": "4ab1297f0f4aa6c67e76ff6c1a5e677ebe85bc8a4ca6c5d28e4e2f59f528dc80",
+      "verdict": "approve",
+      "resolvedFindings": [
+        "S125-SUCCESSOR-EXACT-PRODUCER-ATTEMPT"
+      ],
+      "offlineControlsPassed": 138
+    }
+  ],
+  "fullReview": {
+    "path": "reports/s125-successor-adapter-review.json",
+    "sha256": "fffcda7ec65a3110416d988e46a008aabfe84992059440fd5b3372a3c1194a35"
+  },
+  "reviewedProperties": [
+    "Both frontend and backend transports require exact positive CI40458742116/attempt1 seven jobs and image40460369518/attempt1 two jobs, initially and before mutation.",
+    "Exact source/artifact staging14, unchanged complete upload and ops payloads, current canonical rollback, fresh five-minute target and healthy live prior source.",
+    "Specific93-file Pages exception and exact fixture blob; complete freshly observed zero absence is not success; existing newest-run/attempt/race strict observer retained.",
+    "Gateway credential resolution, installed deploy tools and hidden native SSH identity/pinned-host adapter; durable attempt markers prevent blind repeat."
+  ],
+  "limitations": [
+    "This approval does not say pending workflows passed or authorize weakening any actual runtime gate."
+  ]
+}

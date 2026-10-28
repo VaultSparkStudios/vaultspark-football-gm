@@ -2,6 +2,48 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/TASK_BOARD.md` for the working set.
 
+## Session 112 — Fair trades, durable saves and observed outcomes (2026-09-30)
+
+- [x] Recover S111 at a783194 with fresh 1,588/1,588 and zero blocking Doctor findings.
+- [x] Price every pick in the complete trade package. 4/4 direct engine controls and 11/11 persona, trade-plan and CPU-market neighbors; repeated asset IDs refused without changing legal player-only trades or tolerance constants.
+- [x] Acknowledge durable worker storage and retire failed workers. 23/23 focused worker, actual-runtime parity/fallback and observability checks. Includes independent-review regressions for held writer/concurrent read, request-owned failure attribution, initialization ordering and continuing after failure.
+- [x] Publish saves only after IndexedDB commits. 55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Transaction completion, bounded stalled/blocked operations, versioned payload publication, committed readback, and readable prior IDB records after write degradation verified. Independent concurrency and failed-delete reproducers now pass.
+- [x] Deliver lazy-surface styles under the real production policy. Six module-injected style blocks moved into the themed stylesheet. Generated element-style policy remains self-only and is exercised by the immutable browser harness and actual staging/production. Selected-tip, inherited light-text and disabled-primary regressions were found by actual pixel review and fixed. Final222 reviewed images pass (126 fresh,96 exact-byte inherited), plus four freshly reviewed real held-I/O disabled Start/Create frames. Rejected before-images remain preserved.
+- [x] Carry evaluated trade authority through both API routes. Real local and HTTP route scenario passed: stale evaluation returns409 without asset/log mutation; current plan succeeds and omitted fingerprint remains compatible.
+- [x] Score only observed advisor actions from the matching checkpoint. 20/20 advisor, briefing and source-bound outcome checks, including no observed action, wrong decision occurrence, wrong franchise/checkpoint, replay and reload; unscored copy distinct from agreement/disagreement.
+- [x] Keep the previous save when an overwrite fails. 55/55 adapter, codec and integrity controls; final adapter/worker integration 60/60. Per-slot serialization preserves newest acknowledged overwrite and prior readable save on payload, metadata or deletion failure. Busy/protected eviction and backup pruning tested. Irrecoverable rollback failures remain explicit.
+- [x] Credit a winning player bid in the first-season contract. 18/18 new and existing first-season checks: pending/outbid/CPU/legacy/later-year/finalized exclusions and real winning player intent through restore/team switch.
+- [x] Exercise both played-week and bye-week browser paths deterministically. 4/4 Playwright spec: seed20260306 BUF played-game and CHI bye, explicit schedule preconditions, actual onboarding, exactly one advance, bye modal absence, receipted ledger and reload coherence.
+- [x] Adopt the available official Node 24 action majors. Founder approved the exact signed-release actions/cache6.1.0, configure-pages6.0.0 and upload-artifact7.0.1 SHAs after the generic URL package-trust BLOCK40. Five action references changed; Node24.14.0 and gates remain pinned. Exact final CI36796745264 completed successfully, including all five hosted unit shards and89 browser passes plus1 intentional skip.
+- [x] Complete five second-order outcomes: advisor checkpoint/replay authority, readable saves after write degradation, real-policy artifact proof, automatic capture-ledger publication, and exact browser-session recovery across navigation.
+- [x] Verify final source and technical publication. Source be71869a428e6224330d72cbba76df436ee31938, artifact fe99666e7525fe4f10ccac4059732ad80ddbdd7e91526f366f2a2ab8579ff5bc. Direct six-shard suite 1702/1702 (core 290/290, runtime 961/961, sim-contract 85/85, sim-realism 9/9, long 3/3, studio 354/354), exit 0; test-surface SHA256 59a4c91afef6efc6ac5264c6b06b1c8d3abb60c8acb30718dad966f1964d75ef; source binding: Clean tested paths at the recorded Git revision before launching the unchanged canonical runner. Completion must match both the original test-surface digest and the native all-shard receipt.. Doctor blockingFailing 0 with 1 warnings; exact-source CI https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36796745264 success; browser 89 passed, 1 declared skips. Stable staging 14/14; production 10/10 via https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/36800546768. Visual review: 222 images accounted for (182 game, 40 public): 126 freshly inspected with view_image and 96 exact-SHA256 matches to individually reviewed prior images, with complete hash coverage. Backend be71869a428e6224330d72cbba76df436ee31938: Exact successful gate and both image builds; scoped gateway SSH deployed only community-stats. Same-host and external HTTPS health verify be71869 with database ready; existing PostgreSQL container and Caddy bytes preserved. Build-only workflow deployment was skipped; manual deployment succeeded in one attempt.
+
+Public launch remains HOLD for actual project-domain receive/reply-as evidence, candidate-bound launch approval and authoritative lifecycle reconciliation. No real player cohort, retention result or field-performance claim follows from these engineering checks.
+<!-- /s112-closeout:tasks -->
+
+## Session 111 — Full arc: rival market, Team decisions, and exact-source technical promotion (2026-09-29)
+
+- [x] Close the founder-reported Play outage on live Pages. The worker no longer intercepts document navigation or precaches HTML aliases; source `15a962b` passed exact-source CI, staging 14/14, live Pages 10/10, and promotion `36664256243`. An existing visitor upgraded from the old cache and clicked Play; direct `/game.html` and fresh Play also loaded without failed requests.
+- [x] Audit the live product and release seams, reject five stale or unsupported premises, implement all six ranked items and the second-order derived public engine count.
+- [x] Add a bounded deterministic CPU-to-CPU market through the existing trade authority, with matched seeded transaction controls and league news.
+- [x] Join Roster and Depth under one Team destination, carry crests through League and Trades, and verify the changed states in dark/light desktop/mobile rendered pixels.
+- [x] Replace freeform email assertions with typed inbound and reply-as evidence; negative controls reject forged or incomplete receipts. Actual delivery remains unverified.
+- [x] Deploy through bounded pinned-host SSH; workflow `36652030133` passed gate, image builds and server deployment, and independent HTTPS API health reports source `9400912` with database ready.
+- [x] The original feature source `9400912` passed CI, staging 14/14 and Pages provenance 10/10, but its live Play route failed under the installed worker. Final source `15a962b` supersedes that release at artifact `c09fc822…686c980c`; full browser CI and 158 reviewed hash-bound captures pass. Public launch remains HOLD.
+- [x] Finish the direct six-shard closeout receipt and Doctor after ledger/status write-back. Final run passed 1,588/1,588 and Doctor has blockingFailing 0. The first run caught 158 omitted capture-ledger entries; the writer repaired them before the final receipt.
+
+## Next
+
+- [x] Make the first-week bye branch deterministic in the browser test so it always exercises the hidden tactic modal and receipt, rather than relying on a random bye. The production gate exposed the previous assertion's false assumption. **Completed S112: fixed played-week and bye fixtures verify one advance, modal visibility, receipt and reload.**
+- [ ] Restore `/stats` to sitemap.xml the moment the community snapshot clears its suppression threshold. S94 withheld it so the first page indexed about this game is not a table of zeros; that is a temporary state with a defined exit condition, not a permanent decision.
+- [x] Re-run `/code-review` against a session's own diff BEFORE the canonical receipt, not after. **Done S108: eight findings, all acted on before any shard ran.** S94 ran it late and it found ten real defects, which cost a full 45-minute shard re-run. The review is cheap relative to the receipt and should precede it.
+- [x] Reconsider the mobile tab-target count on its own terms. S110 grouped the fourteen destinations behind six phone drawer sections while retaining direct desktop tab access; visual evidence is being re-baselined before release.
+- [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
+- [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+- [x] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker. **Completed S112: three explicitly approved exact Node 24 release revisions update five workflow references; exact-source CI passed.**
+- [x] [SIL:1] Reclassify the S110 Windows pre-push deadlock premise: ordinary recovery/source pushes completed without `--no-verify` (one was slow, later pushes took seconds). Preserve the existing hook and reopen only if a measured, reproducible hang occurs.
+- [x] [SIL:1] Make backend runner SSH transport resilient to observed pre-auth resets. Reset-success and terminal controls pass, host-key checking stays strict, and the S111 deploy workflow plus external runtime probe succeeded.
+
 ## Session 110 — Recover S109 and finish the authorized release (2026-09-28)
 
 - [x] Recover the uncommitted S109 implementation and verify that `main` still matches `origin/main`; preserve its work and the public launch HOLD.
@@ -212,7 +254,7 @@ Portable authority: reports/session112-followthrough-acceptance.json. Backend an
 - [x] Replace the never-initialized dashboard-phase sentinel with one pure previous/current season-transition authority.
 - [x] Prove initial load and ordinary refresh remain quiet while the first regular-season or postseason completion opens the existing season review exactly once.
 - [x] Preserve `GameSession.getRecentBoxScores()` year/week-descending authority in Trophy Road instead of applying a destructive week-only re-sort.
-- [x] Consolidate duplicate Arrow/Home/End handlers into one declared-orientation keyboard authority.
+- [x] Consolidate duplicate Arrow[local path redacted] handlers into one declared-orientation keyboard authority.
 - [x] Preserve desktop roving focus and return tablet focus to the visible drawer toggle after selection closes and inerts the drawer.
 - [x] Bring the corrected boot graph under the strict 650 KB initial-shell budget without declaring a lazy island as a preload.
 - [x] Bind Node, browser, responsive-pixel, hosted-performance, staging, production Pages and backend deployment evidence to source `3cce0a51e82e78625bdfad82f1cbdb19a31c94aa` and artifact `6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4`.
@@ -1024,7 +1066,7 @@ Source: `docs/AUDIT_2026-07-03_SESSION34.md`.
 | Item | Status |
 |------|--------|
 | launch-readiness-email-gate-row — show the real on-domain email receipt gate in Launch Readiness and beta feedback, with current `playfranchisearchitect.com` copy | Done |
-| theme-customizer-keyboard-polish — `aria-controls`, focus handoff/restore, and arrow/Home/End navigation for Appearance/Accent controls | Done |
+| theme-customizer-keyboard-polish — `aria-controls`, focus handoff/restore, and arrow[local path redacted] navigation for Appearance/Accent controls | Done |
 | latest-audit-follow-through | Rejected on evidence — latest Session 32 audit already exhausted |
 | sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live origin/routing evidence |
 

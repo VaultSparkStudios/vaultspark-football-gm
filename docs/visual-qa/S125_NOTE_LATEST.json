@@ -1,0 +1,611 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "kind": "bounded-public-status-note-visual-evidence",
+  "capturedAt": "2026-10-28T01:41:05.461Z",
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+  },
+  "sourceFiles": [
+    {
+      "path": "public/status.html",
+      "sha256": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485"
+    }
+  ],
+  "surfaces": [
+    "Public /status newest release note"
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s125-status-before-desktop-dark.png",
+      "sha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "dark"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "7baca9039b51a43867f994a2d958dbb66f6d6ab0a6a4ffb22707dcdcfdabbe5d"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": ".cache/s125-note-before-inspection.json",
+      "reviewKind": "implementer-baseline",
+      "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+    },
+    {
+      "file": "s125-status-before-desktop-light.png",
+      "sha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 500.796875,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "light"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "a06f4f868acda0befba8dc05cc3f4355ac5c14e1b2ebb231d305e43b2f53ea9f"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": ".cache/s125-note-before-inspection.json",
+      "reviewKind": "implementer-baseline",
+      "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+    },
+    {
+      "file": "s125-status-before-mobile-dark.png",
+      "sha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "dark"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "b73ec61609a66bd26ebf95328d9629689b8b7d7be05f27460621636f6a7c6571"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": ".cache/s125-note-before-inspection.json",
+      "reviewKind": "implementer-baseline",
+      "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+    },
+    {
+      "file": "s125-status-before-mobile-light.png",
+      "sha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "before",
+      "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+      "sourceHash": "3c8fe56de23f985ed5cf8641a4b116da0410632ddf976d673790d975051d0516",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 689.953125,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-25 — Follow-ups take you to the right place",
+        "paragraphs": [
+          "Architect Focus follow-ups now take you to the controls they name: prepare your next week or weekly plan, review contracts and cap pressure, or review your next General Manager call.",
+          "League pulse cards now open League news on desktop and mobile."
+        ],
+        "theme": "light"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+        "captureSha256": "8c20c496d5f72cbf2cd2089767f96fb85531c21ab82439c825cf6fff12c0d14d"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": ".cache/s125-note-before-inspection.json",
+      "reviewKind": "implementer-baseline",
+      "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53"
+    },
+    {
+      "file": "s125-status-staging-desktop-dark.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-desktop-dark.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-desktop-dark.png",
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 459.203125,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "dark"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-staging-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    },
+    {
+      "file": "s125-status-staging-desktop-light.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-desktop-light.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-desktop-light.png",
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 459.203125,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "light"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-staging-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    },
+    {
+      "file": "s125-status-staging-mobile-dark.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-mobile-dark.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-mobile-dark.png",
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 622.765625,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "dark"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-staging-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    },
+    {
+      "file": "s125-status-staging-mobile-light.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-mobile-light.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-mobile-light.png",
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 622.765625,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "light"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-staging-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    },
+    {
+      "file": "s125-status-production-desktop-dark.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-production-desktop-dark.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-production-desktop-dark.png",
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "production",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 459.203125,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "dark"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-production-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    },
+    {
+      "file": "s125-status-production-desktop-light.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-production-desktop-light.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-production-desktop-light.png",
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "production",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 459.203125,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "light"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-production-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    },
+    {
+      "file": "s125-status-production-mobile-dark.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-production-mobile-dark.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-production-mobile-dark.png",
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "production",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 622.765625,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "dark"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-production-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    },
+    {
+      "file": "s125-status-production-mobile-light.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-production-mobile-light.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-production-mobile-light.png",
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "production",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 622.765625,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "light"
+      },
+      "inspected": true,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a"
+      },
+      "page": "Public status page newest release note",
+      "reviewReceipt": "reports/s125-note-production-review.json",
+      "reviewKind": "independent-hosted",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "verdict": "pass",
+    "blockingDefectsOpen": 0,
+    "inspected": 12,
+    "independentlyInspected": 8,
+    "implementerBaselineInspected": 4,
+    "reviewer": "Implementer baseline4 plus independent game_audit staging4 and production4",
+    "method": "All twelve actual status-note captures inspected by the explicitly named phase reviewers. Four before images retain original1ad identity; eight hosted after images bind12a8/d541. Root reviews this combined typed receipt separately.",
+    "findings": []
+  },
+  "captureLedger": {
+    "path": "docs/visual-qa/S125_NOTE_CAPTURE_LEDGER.json",
+    "sha256": "b7da53b9cef66e956b3ca7a7e1876672f3833f1eaf87982d455ac8683128da25"
+  },
+  "centralLedger": {
+    "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+    "sha256": "97a8dcb862f43fed0786fa566a416698adbdd80848b02e21a341209346185d73",
+    "originalAcceptedSnapshot": {
+      "path": "docs/visual-qa/CAPTURE_LEDGER.json",
+      "sha256": "e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4",
+      "archive": ".cache/s125-accepted-release-snapshot/bytes/e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4"
+    },
+    "addedNoteEntries": [
+      "s125-status-before-desktop-dark.png",
+      "s125-status-before-desktop-light.png",
+      "s125-status-before-mobile-dark.png",
+      "s125-status-before-mobile-light.png",
+      "s125-status-production-desktop-dark.png",
+      "s125-status-production-desktop-light.png",
+      "s125-status-production-mobile-dark.png",
+      "s125-status-production-mobile-light.png",
+      "s125-status-staging-desktop-dark.png",
+      "s125-status-staging-desktop-light.png",
+      "s125-status-staging-mobile-dark.png",
+      "s125-status-staging-mobile-light.png"
+    ],
+    "allOldEntriesIdentical": true
+  },
+  "phaseReviews": [
+    {
+      "phase": "before",
+      "report": {
+        "path": "reports/s125-note-before.json",
+        "sha256": "bbe602f943425dc7ca050953f749e09af64dca150f8002938c1933802867d348"
+      },
+      "review": {
+        "path": ".cache/s125-note-before-inspection.json",
+        "sha256": "27323c289ee5a06c10a4785d7ac3f6f6d532a6b3218ab19529edf6014484d0d6"
+      }
+    },
+    {
+      "phase": "staging",
+      "report": {
+        "path": "reports/s125-note-staging.json",
+        "sha256": "a3b79e6b0038711e3dc90727ca29fc6c50f63b4e874e9d4cefade85c24308439"
+      },
+      "review": {
+        "path": "reports/s125-note-staging-review.json",
+        "sha256": "77f4aa8fb9c178f5ff5d7c12ead0ef8cb485877ea6ffe1bbe2fb50ef1034403d"
+      }
+    },
+    {
+      "phase": "production",
+      "report": {
+        "path": "reports/s125-note-production.json",
+        "sha256": "1ef43db91784f12cb4603a06103d9fe9b2a020c83fab690c93c00898be42621f"
+      },
+      "review": {
+        "path": "reports/s125-note-production-review.json",
+        "sha256": "90959a3c6aaff28504f555b9d590b11259b48247a6bec53a6997b8c8b914dbcc"
+      }
+    }
+  ],
+  "historicalStagingNoteLedger": {
+    "path": "reports/s125-note-ledger-staging.json",
+    "sha256": "cfe9c3c6fec360f130a258ac2d2a7a96bab82dabce73cfb753b0958e99a86911"
+  },
+  "historicalGameEvidence": {
+    "receipt": {
+      "path": "reports/s125-note-game-visual-baseline.json",
+      "sha256": "e61f31337ba20e3780788bff0985562fa21125b04a3c4ff37f4db2cf840003bb"
+    },
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "captures": 140,
+    "preserved": true,
+    "newGamePixelsCaptured": 0,
+    "artifactEquivalence": {
+      "receipt": {
+        "path": "reports/s125-note-source-delta.json",
+        "sha256": "2eea9ab7337a8afc1be43e83515b23b69aa480968bc5004372473a027482df08"
+      },
+      "unchangedPrimaryFiles": 358,
+      "totalPrimaryFiles": 362,
+      "changedNoteDerivedFiles": [
+        "changelog.xml",
+        "sitemap.xml",
+        "status-archive.html",
+        "status.html"
+      ]
+    },
+    "scope": "Full original140 evidence catalog and its original source/state distinctions are preserved. Byte-equivalent unchanged game artifacts support continuity; these are not newly captured game pixels or fresh1ad gameplay observations at12a8."
+  },
+  "scope": "Frontend status-note-only before/after evidence. Original game LATEST and accepted release remain unchanged; API source stays1ad independently.",
+  "limitations": [
+    "No cohort, retention, field-performance or new full-game visual claim.",
+    "Native global visual producer was not invoked because it has no custom output and would overwrite accepted gameLATEST.",
+    "The source1ad before images and original140 game catalog are historical; they are not relabeled12a8."
+  ]
+}

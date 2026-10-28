@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "baselineRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "startedAt": "2026-10-27T17:51:59.476Z",
+  "finishedAt": "2026-10-27T17:53:01.777Z",
+  "verified": true,
+  "worktree": ".cache/s125-note-source-checkout",
+  "staticRoot": ".cache/s125-note-source-checkout/static",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "manifest": {
+    "path": ".cache/s125-note-source-checkout/static/deploy-manifest.json",
+    "sha256": "88d9aae12df9dd1682181b07317a58b605ed1a7b7d34472ac1ebc489fe89dbde"
+  },
+  "source": {
+    "path": "public/status.html",
+    "sha256": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+    "onlyDeployablePath": true
+  },
+  "primary": {
+    "files": 362,
+    "unchangedFiles": 358,
+    "changed": [
+      {
+        "path": "changelog.xml",
+        "beforeSha256": "5127993e4f3f2b9641fc659e46d7da1efa58e49d3e9bc6eaea58da6c3889bf2d",
+        "afterSha256": "ac23a37e79b53308f9ecbd8e18f703531461c47928eb8a978f51d959788bab5e",
+        "beforeBytes": 27923,
+        "afterBytes": 28490
+      },
+      {
+        "path": "sitemap.xml",
+        "beforeSha256": "32f6639554023c784aa3954bc0eeac8ccb2940e5550333ecb1a383085e88bd81",
+        "afterSha256": "07898e678d7c6188e43c7dde063a5b6eda9bbbd750ecff1ba208ec6a347e14fc",
+        "beforeBytes": 1844,
+        "afterBytes": 1844
+      },
+      {
+        "path": "status-archive.html",
+        "beforeSha256": "9963d6bf897ecac67da1bb418bf9035848bb040d165d1aa26fd63bc65c4aa538",
+        "afterSha256": "7da87ad43671e4055538938c6bc14a273957d5b3c056884685025e61e5f37318",
+        "beforeBytes": 25297,
+        "afterBytes": 25585
+      },
+      {
+        "path": "status.html",
+        "beforeSha256": "473aae623bdb8c85456cc99495873cadd6f6f65ef4a34342fa29d84f31331a6c",
+        "afterSha256": "d4baad162afe54a0912bda3cf632a8bbb8d2319e03675dd90b31f67d28ea82e4",
+        "beforeBytes": 8013,
+        "afterBytes": 7465
+      }
+    ],
+    "additions": 0,
+    "removals": 0
+  },
+  "derivedFiles": 3285,
+  "rawLog": {
+    "path": ".cache/s125-note-build.log",
+    "sha256": "d5ef221586953cb2a245d514bfe6d27b510edc9c16a389df986cdfcf1040784e"
+  },
+  "baselineFreeze": {
+    "path": ".cache/s125-accepted-release-snapshot/manifest.json",
+    "sha256": "27dfbe05e36255300fd884f7fd2fb039868377206693d991e530e38ddfd19cad",
+    "manifest": {
+      "path": "static/deploy-manifest.json",
+      "sha256": "bd3a3f406184bca0ee659e9b21226bc4959c2ed41ac24276820105dce95c6ebd",
+      "archive": ".cache/s125-accepted-release-snapshot/bytes/bd3a3f406184bca0ee659e9b21226bc4959c2ed41ac24276820105dce95c6ebd"
+    }
+  },
+  "rootStaticManifestUnchanged": true,
+  "noInstall": true,
+  "networkMutation": false,
+  "api": {
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "unchanged": true,
+    "redeployed": false
+  },
+  "scope": "Exact new frontend status-note artifact only. Original game/API acceptance stays historical; exact new CI, staging, pixels and production remain pending."
+}

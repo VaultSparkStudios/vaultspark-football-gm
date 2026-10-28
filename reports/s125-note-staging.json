@@ -1,0 +1,209 @@
+{
+  "session": 125,
+  "phase": "staging",
+  "startedAt": "2026-10-28T01:31:29.041Z",
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "workingBaseRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "source": {
+    "path": "public/status.html",
+    "sha256": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+    "uncommitted": false
+  },
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "driverSha256": "6cf582f8dc0ba102ef346335c4ea2fee5a6e080edafd91f6600a877c309357c7",
+  "completed": true,
+  "verified": true,
+  "captures": [
+    {
+      "file": "s125-status-staging-desktop-dark.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-desktop-dark.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-desktop-dark.png",
+      "sha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 459.203125,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "dark"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "4455c2d55a3defa0b3c56b9dc531fc67e8cb53f6b5bd65cbfff8e6ebf1708b02"
+      }
+    },
+    {
+      "file": "s125-status-staging-desktop-light.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-desktop-light.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-desktop-light.png",
+      "sha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 65,
+        "noteTop": 380.625,
+        "noteBottom": 459.203125,
+        "viewportWidth": 1440,
+        "viewportHeight": 1000,
+        "scrollWidth": 1440
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "light"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "72a78df578b2f17f6a65b3f2ee02f283b8623ace0d97e93453a096e253c520cc"
+      }
+    },
+    {
+      "file": "s125-status-staging-mobile-dark.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-mobile-dark.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-mobile-dark.png",
+      "sha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 622.765625,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "dark"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "c53ab72fda3f5883144dca919ac9be28f6fd1216a0cd300bbca46df0c16c5957"
+      }
+    },
+    {
+      "file": "s125-status-staging-mobile-light.png",
+      "privatePath": ".cache/s125-note-private-pixels/s125-status-staging-mobile-light.png",
+      "intendedPublicPath": "docs/visual-qa/s125-status-staging-mobile-light.png",
+      "sha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "phase": "staging",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "sourceHash": "326450db04de0045b58eeb640702544394cfd3ed130919cef90a6a4681ce9485",
+      "url": "https://staging.playfranchisearchitect.com/status",
+      "geometry": {
+        "headerBottom": 98,
+        "noteTop": 446.40625,
+        "noteBottom": 622.765625,
+        "viewportWidth": 390,
+        "viewportHeight": 844,
+        "scrollWidth": 390
+      },
+      "content": {
+        "title": "2026-10-27 — First-season progress stays usable when storage fills up",
+        "paragraphs": [
+          "If your browser cannot store optional progress, the First Season Contract and Inbox keep working for the current tab. Temporary contract progress is labelled “this tab only.”"
+        ],
+        "theme": "light"
+      },
+      "inspected": false,
+      "ledger": {
+        "path": ".cache/s125-note-private-capture-ledger.json",
+        "captureSha256": "3a090e33318f78123c4243a7b9180723e75c33f80849ee5eba6a226c70b0b05a"
+      }
+    }
+  ],
+  "observations": [
+    {
+      "label": "before",
+      "at": "2026-10-28T01:31:29.549Z",
+      "rows": [
+        {
+          "route": "/_health",
+          "sha256": "858092e1849c02a019af278d459afa8bbbe9b57515cfd41bda12809701a3e810",
+          "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+          "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+        },
+        {
+          "route": "/deploy-manifest.json",
+          "sha256": "88d9aae12df9dd1682181b07317a58b605ed1a7b7d34472ac1ebc489fe89dbde",
+          "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+          "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+        }
+      ]
+    },
+    {
+      "label": "after",
+      "at": "2026-10-28T01:31:37.822Z",
+      "rows": [
+        {
+          "route": "/_health",
+          "sha256": "858092e1849c02a019af278d459afa8bbbe9b57515cfd41bda12809701a3e810",
+          "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+          "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+        },
+        {
+          "route": "/deploy-manifest.json",
+          "sha256": "88d9aae12df9dd1682181b07317a58b605ed1a7b7d34472ac1ebc489fe89dbde",
+          "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+          "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74"
+        }
+      ]
+    }
+  ],
+  "frozenAcceptedEvidence": {
+    "ledger": "e8bdceef06e77622581de96a50075973c07b7a40d7caf207b06ecc094eb592e4",
+    "latest": "e61f31337ba20e3780788bff0985562fa21125b04a3c4ff37f4db2cf840003bb"
+  },
+  "ledgerPath": ".cache/s125-note-private-capture-ledger.json",
+  "scope": "Ignored-output-only actual hosted status-note capture. Four theme/viewport renders and a canonical note ledger remain private until root explicitly publishes exact bytes after its metadata boundary; no original accepted evidence is written.",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "finishedAt": "2026-10-28T01:31:38.225Z",
+  "frozenAcceptedEvidenceUnchanged": true
+}

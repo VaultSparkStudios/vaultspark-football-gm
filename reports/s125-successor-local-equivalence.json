@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "historicalSourceRevision": "4a2c6a96172938ab56dbec742e59f00ff4bc585c",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "complete": true,
+  "scope": "Exact original local before/after40 reviewed pixels remain historical4a2 shell/template/styles. Original before module baselinef402 is preserved. Three product modules are byte-identical to successor1ad; no new captures or current hosted runtime acceptance inferred.",
+  "modules": [
+    {
+      "path": "public/lib/playtestJourney.js",
+      "historicalSha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050",
+      "successorSha256": "bb3f8aeae0814da8cb820a0e9e7ad22e7a770c2cc463345fae82e501eca0e050"
+    },
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "historicalSha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915",
+      "successorSha256": "e8454234db472d0aec39398766c9de88f194eb3b048a2475c6a9cfdba03a4915"
+    },
+    {
+      "path": "public/lib/firstSeasonContract.js",
+      "historicalSha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d",
+      "successorSha256": "d8228f2cc832301db9310093df35cdb5f814e93ae67ccf0026d7dad2da66625d"
+    }
+  ],
+  "productPayload": {
+    "unchanged": true,
+    "treeListingSha256": "aef1fb226aa143482a762bee9bcc03994593f61295fa435eafbefbc25ef6acf6",
+    "roots": [
+      "public",
+      "src",
+      "ops",
+      "scripts",
+      "test",
+      ".github/workflows",
+      "package.json",
+      "package-lock.json"
+    ]
+  },
+  "successorStaging": {
+    "path": "reports/s125-staging-successor-provenance.json",
+    "sha256": "1afaada935b043283f6b6c112aa0c1a719ac00541929b7a26b968d317685eff0"
+  },
+  "manifests": [
+    {
+      "path": "reports/s125-contract-before.json",
+      "sha256": "c42f8d1b56ebe4f2a1c498931069f0038a8e7f1419dd919b5ba90e180e185dc4"
+    },
+    {
+      "path": "reports/s125-contract-after.json",
+      "sha256": "42fd02aa7fedd1690b4714d7a3ca3157fc630898763971e9401826119037303a"
+    }
+  ],
+  "review": {
+    "path": "reports/s125-contract-state-review.json",
+    "sha256": "18c4186e9a2f7d6e58d7b02c4ff76e41c348d114db9e1bcd636565bad9e5b7a9"
+  },
+  "captures": [
+    {
+      "file": "s125-contract-before-desktop-dark-dismissed.png",
+      "sha256": "5920df68cadd4efd72962ce62e202c174dd7a77d90a640bd5df86d4532dca2eb"
+    },
+    {
+      "file": "s125-contract-before-desktop-dark-complete-first.png",
+      "sha256": "716d011330d360bf63f2b3187301db4b401f562ce64165dfd257d488f0ce6a77"
+    },
+    {
+      "file": "s125-contract-before-desktop-dark-complete-revisit.png",
+      "sha256": "3b0ec2e26b5c28efdd428d765d0d9046db388d1ad30f1c60230318f840ac38b9"
+    },
+    {
+      "file": "s125-contract-before-desktop-dark-finalized-2026.png",
+      "sha256": "712eaf59e4f84fcbc26ae77a34252a63161fcfa59341292d4376969b00f3dfa7"
+    },
+    {
+      "file": "s125-contract-before-desktop-dark-finalized-2027.png",
+      "sha256": "780d41445b2e3d937abdc2190a7564f030c409b77c6dadf9ce77960ddd3f8696"
+    },
+    {
+      "file": "s125-contract-before-desktop-light-dismissed.png",
+      "sha256": "8fc15cbb926ce3a617888b9adb7b9dfc26b6aab1e5ece1ec7a5791fd5a8c40ed"
+    },
+    {
+      "file": "s125-contract-before-desktop-light-complete-first.png",
+      "sha256": "86158cd4e077a48bb936233f5114c2a8addda3e348d1691ec73fb505a7500504"
+    },
+    {
+      "file": "s125-contract-before-desktop-light-complete-revisit.png",
+      "sha256": "724cf58bb61eb3aa50cbb1ca5a7bc12ce6cbdf49023aca230b34c76615480e26"
+    },
+    {
+      "file": "s125-contract-before-desktop-light-finalized-2026.png",
+      "sha256": "f30331b7d8cb4ffe7b8c98dfbfe467c2a3796ca6eb198297d903eb6ce807d4ee"
+    },
+    {
+      "file": "s125-contract-before-desktop-light-finalized-2027.png",
+      "sha256": "d0dac5b1857aeaee216eb147ed11ebf18af3dabd24bdc6129729a2f011108189"
+    },
+    {
+      "file": "s125-contract-before-mobile-dark-dismissed.png",
+      "sha256": "589daf50c614e7865120814fcd699663f5742ee60c238faf5339bf39eaef2a5d"
+    },
+    {
+      "file": "s125-contract-before-mobile-dark-complete-first.png",
+      "sha256": "1674696db51025733b928d970cbd6f343a12f16de7c89bf66cf277aaabb4b67e"
+    },
+    {
+      "file": "s125-contract-before-mobile-dark-complete-revisit.png",
+      "sha256": "08abb691fb2ddb20396746eb74ae862a6ca64c0ee7025bad978f8edff0fa774e"
+    },
+    {
+      "file": "s125-contract-before-mobile-dark-finalized-2026.png",
+      "sha256": "35ec2292e3f15f97bfa6e926541b5e151f8d142453a182b5189f38b37795fe7d"
+    },
+    {
+      "file": "s125-contract-before-mobile-dark-finalized-2027.png",
+      "sha256": "070a8cad6d6bf9c1fbbba6d2d52e1aeac3141aae4573938921a647c3b8a77b07"
+    },
+    {
+      "file": "s125-contract-before-mobile-light-dismissed.png",
+      "sha256": "4a749977a5b7acb9f79c6819858a9324d66c6abf87c22d14edecd091170eeb35"
+    },
+    {
+      "file": "s125-contract-before-mobile-light-complete-first.png",
+      "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b"
+    },
+    {
+      "file": "s125-contract-before-mobile-light-complete-revisit.png",
+      "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b"
+    },
+    {
+      "file": "s125-contract-before-mobile-light-finalized-2026.png",
+      "sha256": "ee84921a8ca3dc9f76d2ccb2b1f952758195a885b612fdcdfda99bf993cfe69b"
+    },
+    {
+      "file": "s125-contract-before-mobile-light-finalized-2027.png",
+      "sha256": "6574db6cc4f73d8560282411bb4114f6af90796f554a6aab2211971565ac91b3"
+    },
+    {
+      "file": "s125-contract-after-desktop-dark-dismissed.png",
+      "sha256": "e83854e624a38377ace1479dcd2746d785619bb9886cda4210d733428cea880a"
+    },
+    {
+      "file": "s125-contract-after-desktop-dark-complete-first.png",
+      "sha256": "968303b13e80d74b772b761d4145ba7cc31dfd4aa11343bd92d4bf9af341f37a"
+    },
+    {
+      "file": "s125-contract-after-desktop-dark-complete-revisit.png",
+      "sha256": "a6019131d372a0ada50364d767071f6133354f886b7b5db589f43fde0e418361"
+    },
+    {
+      "file": "s125-contract-after-desktop-dark-finalized-2026.png",
+      "sha256": "a58e2e48784d81f901cd2627750d83f502f7a0adf6b0f4371e36781b87a2e21e"
+    },
+    {
+      "file": "s125-contract-after-desktop-dark-finalized-2027.png",
+      "sha256": "e1fe1c249773130bbafdf12f1f96e7de2053e26b4afcbe4ee288ea2eb4a40c5f"
+    },
+    {
+      "file": "s125-contract-after-desktop-light-dismissed.png",
+      "sha256": "d2c3b8e016b0e15687020a8acfc303a8aaa929adb17affd95e0670b571fb7bc3"
+    },
+    {
+      "file": "s125-contract-after-desktop-light-complete-first.png",
+      "sha256": "a4f1a9d2b765270b8110a9ad579bdff07c02c87179972491217d07b7f39a9199"
+    },
+    {
+      "file": "s125-contract-after-desktop-light-complete-revisit.png",
+      "sha256": "68dd994a26ce1ca080e90ed25b2867f7c53413de6b3b64709c715101d146d9b5"
+    },
+    {
+      "file": "s125-contract-after-desktop-light-finalized-2026.png",
+      "sha256": "9ae4458804f122c2c26a3aa20ca378b3d57cd6fb3cb96b1358cebed18d96496a"
+    },
+    {
+      "file": "s125-contract-after-desktop-light-finalized-2027.png",
+      "sha256": "9bd2c661879fb491662b88a12794630e1ea405c41943ae1d4aeb37b165956bba"
+    },
+    {
+      "file": "s125-contract-after-mobile-dark-dismissed.png",
+      "sha256": "154d535f472cce7bb9f6c184e56f0133396bae1081141fd3e6c3fdb68cae9a6f"
+    },
+    {
+      "file": "s125-contract-after-mobile-dark-complete-first.png",
+      "sha256": "0fd7ccd3112270494139b9558290495e73c2b979a4622cb90bc411faea1085f3"
+    },
+    {
+      "file": "s125-contract-after-mobile-dark-complete-revisit.png",
+      "sha256": "8301fc4e5f9448ddce88fec72e2176f63815032a20ec8683263cf6454f38c77c"
+    },
+    {
+      "file": "s125-contract-after-mobile-dark-finalized-2026.png",
+      "sha256": "759c6321d54ee12f43a46451dbe4912f728f6656737cae982606397151ff5b64"
+    },
+    {
+      "file": "s125-contract-after-mobile-dark-finalized-2027.png",
+      "sha256": "a8f16da02e9cdebd7748e2beb141d4b65a912c4746cebc186a4105833374da2f"
+    },
+    {
+      "file": "s125-contract-after-mobile-light-dismissed.png",
+      "sha256": "8136303b7d17065cb3a30bf46b89c687b8f018f04473b3cbf958bc4c360a3714"
+    },
+    {
+      "file": "s125-contract-after-mobile-light-complete-first.png",
+      "sha256": "5dba9aa27c2774a9fc7e93309443d4c06f2961f06927439c3ad24a72810671a4"
+    },
+    {
+      "file": "s125-contract-after-mobile-light-complete-revisit.png",
+      "sha256": "c3484b6e7edfbca83688d1126f32bb1e9462dce5c977934ff2d3cfede2aae6fb"
+    },
+    {
+      "file": "s125-contract-after-mobile-light-finalized-2026.png",
+      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d"
+    },
+    {
+      "file": "s125-contract-after-mobile-light-finalized-2027.png",
+      "sha256": "a3d058c258b574cef0d6236f9fcc6c1ae4fb89445291feab345b295d398f8f1d"
+    }
+  ],
+  "observedAt": "2026-10-27T06:21:28.612Z"
+}

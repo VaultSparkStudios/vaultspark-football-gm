@@ -1,0 +1,42 @@
+{
+  "session": 125,
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "transport": "native-pinned-ssh",
+  "identityTransport": "existing-gateway-resolved-identity-via-native-spawn-seam",
+  "privateKeyCopied": false,
+  "imageBuildRunId": 40460369518,
+  "imageBuildAttempt": 1,
+  "imageProducer": {
+    "id": 40460369518,
+    "attempt": 1,
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+    "verified": true,
+    "requiredJobs": [
+      "build-images (api)",
+      "build-images (play)"
+    ]
+  },
+  "ciRunId": 40458742116,
+  "ciAttempt": 1,
+  "startedAt": "2026-10-27T17:02:48.207Z",
+  "observedAt": "2026-10-27T17:02:55.599Z",
+  "hostPinVerified": true,
+  "scopedNativeDeployer": true,
+  "previousSourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "previousImage": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+  "opsPayload": [
+    "ops/Caddyfile",
+    "ops/deploy-backend.docker-compose.yml"
+  ],
+  "copyAttempts": 1,
+  "deployAttempts": 1,
+  "verified": true,
+  "health": {
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 1,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937"
+  }
+}

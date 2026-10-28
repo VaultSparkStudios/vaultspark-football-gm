@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "session": 125,
+  "at": "2026-10-27T17:20:32.157Z",
+  "reviewer": "Independent game_audit post-deployment court snapshot correction review",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "artifactDigest": "93a9391d42b5049844f5491e01bc10115f646220d43c24bc273294cf78b5fa53",
+  "verdict": "approve",
+  "scope": "Narrow one-line required-receipt snapshot closure correction. This review does not execute the court, bind acceptance, run ordered closing records or prove native completion.",
+  "executorsRun": false,
+  "reviewedFiles": [
+    {
+      "path": ".cache/s125-successor-release-court.mjs",
+      "sha256": "0f1215c1844fdc87707a6a763e30fa2fc2eb0011485633b9b4bd748c457a08b5"
+    },
+    {
+      "path": ".cache/s125-successor-release-guards.mjs",
+      "sha256": "17648c98380d64f81936335e83a025fd93aaebb960ceb8eb4e90d826bebb28aa"
+    }
+  ],
+  "fullReview": {
+    "path": "reports/s125-successor-adapter-review.json",
+    "sha256": "fffcda7ec65a3110416d988e46a008aabfe84992059440fd5b3372a3c1194a35"
+  },
+  "checks": {
+    "historicalPreparationControls": 138,
+    "scopeOfHistoricalControls": "Previously reviewed producer/Pages/release/closeout/finalization guards; not rerun or newly claimed by this one-line review.",
+    "currentCourtSyntaxPassed": true,
+    "exactOneLineDiffVerified": true,
+    "guardModuleUnchanged": true,
+    "requiredReceiptSnapshotClosure": {
+      "declaredUnique": 22,
+      "readableActual": 22,
+      "snapshotted": 22,
+      "previouslyOmittedHistoricalReceiptsIncluded": [
+        "reports/s125-client-acceptance-correction.json",
+        "reports/s125-ci-integrity-corrections.json"
+      ]
+    },
+    "dynamicCourtTotal": "Must come from the actual rerun; no fixed total is assigned here."
+  },
+  "findings": [],
+  "reviewedProperties": [
+    "Exact successor source/run/attempt positive CI7 and API/play image2 proofs, dynamically complete transport inventory and ALL actual frozen release refs.",
+    "Actual corrected focused14 raw one-attempt executions and exact five-source inputs; historical13/failed4a2 are not current passing authority.",
+    "Historical local40 labels and original f402 baseline retained under measured module/full-payload equivalence; new hosted native14/base12/contract20/performance each phase remain mandatory.",
+    "Independent32-image reviews, PNG/ledger hashes, exact capture drivers and selected-source times; five measured runs each desktop/mobile with recomputed metrics/evaluation/digest.",
+    "Actual frontend provider/API/database/live source, upload inventory, rollback and final fresh CI/image/Pages observations."
+  ],
+  "boundary": "Root must rerun the corrected court and bind its entire actual receipt set before any closing executor. No court, binder or writer was executed by this reviewer.",
+  "originalReview": {
+    "path": "reports/s125-evidence-history/s125-successor-release-court-review-95b189fde7b2489e7c34325fef7ebfcfb952b079368de7c05c771abd668cd065.json",
+    "sha256": "95b189fde7b2489e7c34325fef7ebfcfb952b079368de7c05c771abd668cd065"
+  },
+  "originalCourt": {
+    "path": ".cache/s125-court-revision-history/s125-successor-release-court-82877c8e7795521ae4f6c0d1bb2e6aae30fd32be40363544804d8b2efc41c8ea.mjs",
+    "sha256": "82877c8e7795521ae4f6c0d1bb2e6aae30fd32be40363544804d8b2efc41c8ea"
+  },
+  "incompleteAcceptancePreserved": {
+    "path": "reports/s125-evidence-history/s125-release-acceptance-4c25de51234954b8f8590de14892798bf5a58871ae8d1cda6b553873a6a116ff.json",
+    "sha256": "4c25de51234954b8f8590de14892798bf5a58871ae8d1cda6b553873a6a116ff",
+    "scope": "Historical first acceptance omitted two declared minimum receipts from its frozen snapshot set. Subsequent binding rejected it; it is not accepted closing authority."
+  },
+  "resolvedFindings": [
+    {
+      "id": "S125-COURT-REQUIRED-SNAPSHOT-CLOSURE",
+      "finding": "The old minimum prerequisite loop asserted existence but did not read every declared receipt into snapshots. Two required historical correction receipts were therefore absent from the acceptance receipt inventory, and closing bind correctly rejected it.",
+      "resolution": "Every declared required receipt is now passed through the existing immutable read/snapshot function before substantive checks. Existing full dynamic read-set freezing, byte-drift checks and all source/producer/runtime gates remain unchanged.",
+      "reviewLimitation": "The first independent court review did not identify this snapshot-closure omission. This record preserves the original review and the incomplete acceptance rather than reclassifying them as complete."
+    }
+  ],
+  "reviewRounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "review": {
+        "path": "reports/s125-evidence-history/s125-successor-release-court-review-95b189fde7b2489e7c34325fef7ebfcfb952b079368de7c05c771abd668cd065.json",
+        "sha256": "95b189fde7b2489e7c34325fef7ebfcfb952b079368de7c05c771abd668cd065"
+      },
+      "laterFinding": "S125-COURT-REQUIRED-SNAPSHOT-CLOSURE"
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "courtSha256": "0f1215c1844fdc87707a6a763e30fa2fc2eb0011485633b9b4bd748c457a08b5",
+      "resolvedFinding": "S125-COURT-REQUIRED-SNAPSHOT-CLOSURE"
+    }
+  ],
+  "productionAttemptedByReviewer": false
+}

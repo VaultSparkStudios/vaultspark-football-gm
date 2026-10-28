@@ -1,0 +1,28 @@
+{
+  "session": 125,
+  "at": "2026-10-27T17:55:12.803Z",
+  "scope": "Remove local filesystem paths from public historical archive copies; preserve original historical bytes privately. No credential or application-code changes.",
+  "rows": [
+    {
+      "path": "context/archive/CURRENT_STATE.archive.md",
+      "originalSha256": "9d358fa7245efd83e08a994523d2bb5e6b648627ba7506a39058e1b1e91397aa",
+      "publicSha256": "33579f5d937847645e52582e132d7a4679b3df76d51284b1c6f650fe04e96b73",
+      "redactions": 1,
+      "originalPrivatelyPreserved": true
+    },
+    {
+      "path": "context/archive/TASK_BOARD.archive.md",
+      "originalSha256": "f3bc3b0c61c1b56305dfd4ab66964c24fcd9ed6d6aa778e47dea79fc19a87a39",
+      "publicSha256": "7d3c8e58ba9699e13f1f7ed292931826e29f6a8f65e7bfa078189077936572c1",
+      "redactions": 2,
+      "originalPrivatelyPreserved": true
+    },
+    {
+      "path": "logs/archive/WORK_LOG.archive.md",
+      "originalSha256": "0c09e30fcde475cb2f6881e35f193d8de636d558c26b3659709e5056e10c4b30",
+      "publicSha256": "76bea052883385f31297d54a11081e74bd4d48268d2bf7c40f76a28ce11ec691",
+      "redactions": 2,
+      "originalPrivatelyPreserved": true
+    }
+  ]
+}

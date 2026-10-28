@@ -1,0 +1,19 @@
+{
+  "session": 125,
+  "startedAt": "2026-10-27T17:24:04.587Z",
+  "finishedAt": "2026-10-27T17:24:39.807Z",
+  "sourceRevision": "1ad07d9919f75d0a8ccfb024c7f42b7f58f62937",
+  "exitCode": 0,
+  "verified": true,
+  "proof": {
+    "ok": true,
+    "score": 43702,
+    "tier": "FORGE",
+    "project": "franchise-architect-football",
+    "sourceFingerprint": "8245650f272322e2b70425b270fe49ff15b381d74208998fb26e20554c6e932e",
+    "historyHash": "f69ead6b273ab9a3ed2283825693ad5f9c64f0f715f18b774ff4da2d0e2d9d7e",
+    "mindHash": "e6b98478ae460ae1590434550b0358fd30ca4644066f26b17b5810bf6315aedf"
+  },
+  "rawLogSha256": "cb81755dd2e7a4d6021d1bd30e90973fc4038115d975d9d8a0640d14f950d355",
+  "scope": "Fresh installed canonical scorer of this owned target only. Numeric output is a rubric result, not measured player outcomes. No sibling registry/status write requested; no frozen-input equivalence inferred."
+}
