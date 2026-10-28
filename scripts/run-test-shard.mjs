@@ -364,6 +364,7 @@ export const SHARDS = {
     "test/script-cli-smoke.test.js",
     "test/visual-game-receipt.test.js",
     "test/browser-boot-budget.test.js",
+    "test/inline-public-entry.test.js",
     "test/browser-promise-observability.test.js",
     "test/cloudflare-web-analytics.test.js",
     "test/capability-operations-authority.test.js",

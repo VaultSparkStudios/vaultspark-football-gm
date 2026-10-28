@@ -1,0 +1,13 @@
+{
+  "session": 126,
+  "at": "2026-10-28T21:13:27.090Z",
+  "mode": "staged",
+  "scanned": 52,
+  "findings": [],
+  "settings": {
+    "passing": true,
+    "findings": 0
+  },
+  "gatewayAudit": "Startup canonical capability audit completed; deployment credentials resolved through the gateway only.",
+  "scope": "Current project changed bytes through canonical detector, excludes binary captures."
+}

@@ -1,0 +1,235 @@
+{
+  "session": 126,
+  "phase": "entry-local-before-after",
+  "reviewedAt": "2026-10-28T20:49:37.128Z",
+  "reviewer": "game_audit",
+  "verdict": "pass-local-entry-selected-states",
+  "sourceStatus": "local-worktree-c2 prototype; not an exact committed or published C2",
+  "gitHead": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "manifestSourceRevision": "local-worktree",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "sourceHashes": [
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    }
+  ],
+  "captureReports": [
+    {
+      "phase": "before",
+      "path": "reports/s126-entry-before-pixels.json",
+      "sha256": "75d414b2507aa1164cd3df54e10cf891f238c1bdb0ccef98cf532777df8c7c34",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f"
+    },
+    {
+      "phase": "after-local",
+      "path": "reports/s126-entry-after-local-pixels.json",
+      "sha256": "1b528148853d4fd13480fa510d0530e044f3a3e4be2cfcce4fa518d82d5de252",
+      "manifestSourceRevision": "local-worktree",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d"
+    }
+  ],
+  "priorBeforeReview": {
+    "path": ".cache/s126-entry-before-review.json",
+    "sha256": "0cdd1964755327bd0ccb7768a77c623b9c9d091d409bfffea9fbd434cd3354fd"
+  },
+  "artifactVerification": {
+    "path": "reports/s126-entry-after-local-verification.json",
+    "sha256": "59c70887733ba40a27417db13b5023fa9789d66dcdf4e397f650d6bd0bff96d2"
+  },
+  "inspectedImageCount": 8,
+  "inspected": [
+    {
+      "file": ".cache/s126-entry-before/desktop-dark.png",
+      "sha256": "0062ea0b98a4b82ee86dea05643cec879fb85feb902963b55615d0994fcbfa5c",
+      "device": "desktop",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "phase": "before",
+      "method": "Prior actual view_image inspection revalidated by exact image/report hashes",
+      "verdict": "pass-entry-selected-state"
+    },
+    {
+      "file": ".cache/s126-entry-before/desktop-light.png",
+      "sha256": "b5a376b538702bc295a1743e9fe5718e9cdea880794c257fdbd44adb12dcb7ac",
+      "device": "desktop",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "phase": "before",
+      "method": "Prior actual view_image inspection revalidated by exact image/report hashes",
+      "verdict": "pass-entry-selected-state"
+    },
+    {
+      "file": ".cache/s126-entry-before/mobile-dark.png",
+      "sha256": "536e67de4db33c0c2c6582a93c772651e73411c207b2f87000e8eb2a77487d31",
+      "device": "mobile",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "phase": "before",
+      "method": "Prior actual view_image inspection revalidated by exact image/report hashes",
+      "verdict": "pass-entry-selected-state"
+    },
+    {
+      "file": ".cache/s126-entry-before/mobile-light.png",
+      "sha256": "4ddb81e38e5d847c421225c8e8da96cd55f91440a176dab00c9d29b309fe729e",
+      "device": "mobile",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true,
+      "phase": "before",
+      "method": "Prior actual view_image inspection revalidated by exact image/report hashes",
+      "verdict": "pass-entry-selected-state"
+    },
+    {
+      "file": ".cache/s126-entry-after-local/desktop-dark.png",
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Actual built root entry",
+      "sourceStatus": "local-worktree-c2 prototype; not an exact committed or published C2",
+      "gitHead": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "manifestSourceRevision": "local-worktree",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "phase": "after-local",
+      "method": "Actual view_image pixel inspection this review",
+      "verdict": "pass-entry-selected-state"
+    },
+    {
+      "file": ".cache/s126-entry-after-local/desktop-light.png",
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Actual built root entry",
+      "sourceStatus": "local-worktree-c2 prototype; not an exact committed or published C2",
+      "gitHead": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "manifestSourceRevision": "local-worktree",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "phase": "after-local",
+      "method": "Actual view_image pixel inspection this review",
+      "verdict": "pass-entry-selected-state"
+    },
+    {
+      "file": ".cache/s126-entry-after-local/mobile-dark.png",
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Actual built root entry",
+      "sourceStatus": "local-worktree-c2 prototype; not an exact committed or published C2",
+      "gitHead": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "manifestSourceRevision": "local-worktree",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "phase": "after-local",
+      "method": "Actual view_image pixel inspection this review",
+      "verdict": "pass-entry-selected-state"
+    },
+    {
+      "file": ".cache/s126-entry-after-local/mobile-light.png",
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Actual built root entry",
+      "sourceStatus": "local-worktree-c2 prototype; not an exact committed or published C2",
+      "gitHead": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "manifestSourceRevision": "local-worktree",
+      "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+      "inspected": true,
+      "phase": "after-local",
+      "method": "Actual view_image pixel inspection this review",
+      "verdict": "pass-entry-selected-state"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0
+  },
+  "openCaptureDefects": 0,
+  "findings": [
+    "Actual desktop/mobile dark/light after pixels retain the baseline landing composition, readable title and copy, clear start button and early-access label, and intact hero JPEG. No new clipping, missing image, blank content or theme contrast defect appears in these four states."
+  ],
+  "limits": [
+    "Local uncommitted worktree C2 prototype only; gitHead remains C1 and manifest source is literally local-worktree. This is not committed, published, staging or production candidate evidence.",
+    "Before four images were individually viewed in the prior bound review and rehashed now; after four images were individually viewed during this review.",
+    "Four full viewport selected landing states only. The scaled game screenshot is a visual preview, not readable gameplay detail at mobile size.",
+    "Native CSP/body/JPEG/alias and theme interaction assertions are referenced capture verification evidence; rendered screenshots do not independently prove network or performance behavior.",
+    "No performance improvement or release acceptance claimed. Fresh exact committed artifact, staging and production checks remain required."
+  ]
+}

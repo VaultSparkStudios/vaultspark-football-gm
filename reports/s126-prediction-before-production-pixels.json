@@ -1,0 +1,481 @@
+{
+  "session": 126,
+  "phase": "before-production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+  "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+  "startedAt": "2026-10-28T19:02:57.851Z",
+  "before": {
+    "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+    "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+    "observedAt": "2026-10-28T19:02:58.763Z"
+  },
+  "modulesBefore": [
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
+    },
+    {
+      "path": "lib/predictionPanel.js",
+      "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+    },
+    {
+      "path": "lib/tabOverview.js",
+      "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+    }
+  ],
+  "captures": [
+    {
+      "file": ".cache/s126-prediction-before-production/desktop-dark-malformed-grade.png",
+      "sha256": "3bd18c9c1b171b16bcd295d2be7f7a2bd96926d3768d7845df0d1b9c3a3fffe1",
+      "phase": "before-production",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 446.203125,
+        "width": 560.609375,
+        "height": 108
+      },
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-before-production/desktop-dark-valid-recovered.png",
+      "sha256": "3e0ff7259f972daf60c0ca78d8d55b6ac4b553fc3f4bdf935a51252e4d25dfe9",
+      "phase": "before-production",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 427.203125,
+        "width": 560.609375,
+        "height": 146
+      },
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-before-production/desktop-light-malformed-grade.png",
+      "sha256": "3a0b68a987364cc7581f428a0c89b85bcda954ff10a52afb214888af761f5f16",
+      "phase": "before-production",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 446.203125,
+        "width": 560.609375,
+        "height": 108
+      },
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-before-production/desktop-light-valid-recovered.png",
+      "sha256": "ca0b747088c5a8f629339f0384cb26835eab4dfef10c11773a5da2d316baac51",
+      "phase": "before-production",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 427.203125,
+        "width": 560.609375,
+        "height": 146
+      },
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-before-production/mobile-dark-malformed-grade.png",
+      "sha256": "a376b06975f2ce88de30f0dfca3068939d4810d977d0d71270c03f0462d9094d",
+      "phase": "before-production",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 331.09375,
+        "width": 320.8125,
+        "height": 182
+      },
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-before-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "ba3d553bdcea19457e80ba948229861eba08253a30ab70931c340585b41bb531",
+      "phase": "before-production",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 302.1875,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-before-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "ba3d553bdcea19457e80ba948229861eba08253a30ab70931c340585b41bb531",
+          "bytes": 18458
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-before-production/mobile-light-malformed-grade.png",
+      "sha256": "2d168e754bf0dbbb96107392886089d7be3945612aca22e66779a54395adad4a",
+      "phase": "before-production",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 331.09375,
+        "width": 320.8125,
+        "height": 182
+      },
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-before-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "e852fe82d64f80dc85364a73e1b8ddbe47491500bf24a74bd5a814209c361bbf",
+      "phase": "before-production",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 301.96875,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-before-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "e852fe82d64f80dc85364a73e1b8ddbe47491500bf24a74bd5a814209c361bbf",
+          "bytes": 18616
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": false
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "malformed": {
+        "storedEntries": 1,
+        "noPick": false,
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      0 current streak\n      0 best streak\n      0% winner accuracy (0/0)\n      — margin MAE\n    \n      \n      DK @ OS\n    \n      ✓\n      Predicted DK by 14\n      — actual: OS by 14\n      · exact margin",
+        "stats": {
+          "seasonStreak": 0,
+          "bestStreak": 0,
+          "correctCount": 0,
+          "totalCount": 0,
+          "marginErrorTotal": 0,
+          "marginCount": 0
+        }
+      },
+      "recovery": {
+        "underQuota": {
+          "durableResolved": false,
+          "tabResolved": false
+        },
+        "durableResolved": true,
+        "stats": {
+          "seasonStreak": 2,
+          "bestStreak": 2,
+          "correctCount": 2,
+          "totalCount": 2,
+          "marginErrorTotal": 0,
+          "marginCount": 2
+        },
+        "recent": [
+          {
+            "gameId": "NYJ@BUF",
+            "predictedWinnerId": "BUF",
+            "predictedMargin": 14,
+            "actualWinnerId": "BUF",
+            "actualMargin": 14,
+            "isTie": false,
+            "winnerCorrect": true,
+            "correct": true,
+            "marginError": 0,
+            "marginBand": "exact",
+            "receiptId": "2026-4-NYJ@BUF",
+            "year": 2026,
+            "week": 4,
+            "resolvedAt": 1793214199548
+          }
+        ],
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      2 current streak\n      2 best streak\n      100% winner accuracy (2/2)\n      0 margin MAE\n    \n      \n    \n      Recent results\n      \n        \n          Y2026 W4\n          · NYJ@BUF\n          · winner hit\n          · exact margin\n        \n    \n      DK @ OS\n    \n      ✓\n      Predicted OS by 14\n      — actual: OS by 14\n      · exact margin"
+      },
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed",
+      "cspViolations": [],
+      "pageErrors": []
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "malformed": {
+        "storedEntries": 1,
+        "noPick": false,
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      0 current streak\n      0 best streak\n      0% winner accuracy (0/0)\n      — margin MAE\n    \n      \n      DK @ OS\n    \n      ✓\n      Predicted DK by 14\n      — actual: OS by 14\n      · exact margin",
+        "stats": {
+          "seasonStreak": 0,
+          "bestStreak": 0,
+          "correctCount": 0,
+          "totalCount": 0,
+          "marginErrorTotal": 0,
+          "marginCount": 0
+        }
+      },
+      "recovery": {
+        "underQuota": {
+          "durableResolved": false,
+          "tabResolved": false
+        },
+        "durableResolved": true,
+        "stats": {
+          "seasonStreak": 2,
+          "bestStreak": 2,
+          "correctCount": 2,
+          "totalCount": 2,
+          "marginErrorTotal": 0,
+          "marginCount": 2
+        },
+        "recent": [
+          {
+            "gameId": "NYJ@BUF",
+            "predictedWinnerId": "BUF",
+            "predictedMargin": 14,
+            "actualWinnerId": "BUF",
+            "actualMargin": 14,
+            "isTie": false,
+            "winnerCorrect": true,
+            "correct": true,
+            "marginError": 0,
+            "marginBand": "exact",
+            "receiptId": "2026-4-NYJ@BUF",
+            "year": 2026,
+            "week": 4,
+            "resolvedAt": 1793214208001
+          }
+        ],
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      2 current streak\n      2 best streak\n      100% winner accuracy (2/2)\n      0 margin MAE\n    \n      \n    \n      Recent results\n      \n        \n          Y2026 W4\n          · NYJ@BUF\n          · winner hit\n          · exact margin\n        \n    \n      DK @ OS\n    \n      ✓\n      Predicted OS by 14\n      — actual: OS by 14\n      · exact margin"
+      },
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed",
+      "cspViolations": [],
+      "pageErrors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "malformed": {
+        "storedEntries": 1,
+        "noPick": false,
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      0 current streak\n      0 best streak\n      0% winner accuracy (0/0)\n      — margin MAE\n    \n      \n      DK @ OS\n    \n      ✓\n      Predicted DK by 14\n      — actual: OS by 14\n      · exact margin",
+        "stats": {
+          "seasonStreak": 0,
+          "bestStreak": 0,
+          "correctCount": 0,
+          "totalCount": 0,
+          "marginErrorTotal": 0,
+          "marginCount": 0
+        }
+      },
+      "recovery": {
+        "underQuota": {
+          "durableResolved": false,
+          "tabResolved": false
+        },
+        "durableResolved": true,
+        "stats": {
+          "seasonStreak": 2,
+          "bestStreak": 2,
+          "correctCount": 2,
+          "totalCount": 2,
+          "marginErrorTotal": 0,
+          "marginCount": 2
+        },
+        "recent": [
+          {
+            "gameId": "NYJ@BUF",
+            "predictedWinnerId": "BUF",
+            "predictedMargin": 14,
+            "actualWinnerId": "BUF",
+            "actualMargin": 14,
+            "isTie": false,
+            "winnerCorrect": true,
+            "correct": true,
+            "marginError": 0,
+            "marginBand": "exact",
+            "receiptId": "2026-4-NYJ@BUF",
+            "year": 2026,
+            "week": 4,
+            "resolvedAt": 1793214690095
+          }
+        ],
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      2 current streak\n      2 best streak\n      100% winner accuracy (2/2)\n      0 margin MAE\n    \n      \n    \n      Recent results\n      \n        \n          Y2026 W4\n          · NYJ@BUF\n          · winner hit\n          · exact margin\n        \n    \n      DK @ OS\n    \n      ✓\n      Predicted OS by 14\n      — actual: OS by 14\n      · exact margin"
+      },
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed",
+      "cspViolations": [],
+      "pageErrors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "malformed": {
+        "storedEntries": 1,
+        "noPick": false,
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      0 current streak\n      0 best streak\n      0% winner accuracy (0/0)\n      — margin MAE\n    \n      \n      DK @ OS\n    \n      ✓\n      Predicted DK by 14\n      — actual: OS by 14\n      · exact margin",
+        "stats": {
+          "seasonStreak": 0,
+          "bestStreak": 0,
+          "correctCount": 0,
+          "totalCount": 0,
+          "marginErrorTotal": 0,
+          "marginCount": 0
+        }
+      },
+      "recovery": {
+        "underQuota": {
+          "durableResolved": false,
+          "tabResolved": false
+        },
+        "durableResolved": true,
+        "stats": {
+          "seasonStreak": 2,
+          "bestStreak": 2,
+          "correctCount": 2,
+          "totalCount": 2,
+          "marginErrorTotal": 0,
+          "marginCount": 2
+        },
+        "recent": [
+          {
+            "gameId": "NYJ@BUF",
+            "predictedWinnerId": "BUF",
+            "predictedMargin": 14,
+            "actualWinnerId": "BUF",
+            "actualMargin": 14,
+            "isTie": false,
+            "winnerCorrect": true,
+            "correct": true,
+            "marginError": 0,
+            "marginBand": "exact",
+            "receiptId": "2026-4-NYJ@BUF",
+            "year": 2026,
+            "week": 4,
+            "resolvedAt": 1793214697929
+          }
+        ],
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      2 current streak\n      2 best streak\n      100% winner accuracy (2/2)\n      0 margin MAE\n    \n      \n    \n      Recent results\n      \n        \n          Y2026 W4\n          · NYJ@BUF\n          · winner hit\n          · exact margin\n        \n    \n      DK @ OS\n    \n      ✓\n      Predicted OS by 14\n      — actual: OS by 14\n      · exact margin"
+      },
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed",
+      "cspViolations": [],
+      "pageErrors": []
+    }
+  ],
+  "completed": true,
+  "inspected": false,
+  "boundary": "Actual hosted client runtime and native Desk Predictions panel, driven with named synthetic local-only pick/game fixtures. No route interception, standalone mock, source replacement, CSP change or real-player outcome claim. Quota fixture affects only its week-map key. Browser service workers are blocked to avoid cached code.",
+  "after": {
+    "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+    "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+    "observedAt": "2026-10-28T19:11:39.623Z"
+  },
+  "modulesAfter": [
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
+    },
+    {
+      "path": "lib/predictionPanel.js",
+      "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+    },
+    {
+      "path": "lib/tabOverview.js",
+      "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+    }
+  ],
+  "completedAt": "2026-10-28T19:11:46.404Z",
+  "mobileHeadingCorrection": {
+    "archivedReviewedAttempt": ".cache/s126-prediction-reviewed-attempt1-before-production/report.json",
+    "previousVerdict": "fix; original mobile valid-recovered captures not passing",
+    "replacementReport": {
+      "path": "reports/s126-prediction-before-production-mobile-valid-replacement-pixels.json",
+      "sha256": "da6408598b87f6983974f515014ff7e19e33e9f81da3fb43d6e4a5a88d98afc1"
+    },
+    "fixtureTreatment": "Actual hosted client runtime and native Desk Predictions panel, driven with named synthetic local-only pick/game fixtures. Mobile valid-recovered component captures hide the unrelated fixed .game-topbar via style.visibility to prevent heading occlusion; the native panel itself is unchanged. No route interception, standalone mock, source replacement, CSP change or real-player outcome claim. Quota fixture affects only its week-map key. Browser service workers are blocked to avoid cached code.",
+    "independentReview": "pending"
+  },
+  "initialCaptureCompletedAt": "2026-10-28T19:03:54.795Z"
+}

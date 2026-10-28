@@ -1,0 +1,19 @@
+{
+  "session": 126,
+  "verified": true,
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "ok": true,
+  "sha": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "runId": 40740747747,
+  "attempt": 1,
+  "requiredJobs": [
+    "unit-shards (core)",
+    "unit-shards (runtime)",
+    "unit-shards (sim:contract)",
+    "unit-shards (sim:realism)",
+    "unit-shards (long)",
+    "unit-shards (studio)",
+    "browser-gates"
+  ],
+  "lane": "hosted-exact-sha"
+}

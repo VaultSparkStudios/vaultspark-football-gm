@@ -1,0 +1,23 @@
+{
+  "session": 126,
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "observedAt": "2026-10-28T18:53:29.630Z",
+  "readOnly": true,
+  "runId": 40740746860,
+  "attempt": 1,
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "verified": true,
+  "producer": {
+    "id": 40740746860,
+    "attempt": 1,
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "verified": true,
+    "requiredJobs": [
+      "build-images (api)",
+      "build-images (play)"
+    ]
+  },
+  "boundary": "Exact source API/play image producer workflow and required build/push steps only; deployment and complete CI remain independent."
+}

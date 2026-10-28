@@ -24079,6 +24079,46 @@
       "bytes": 209482,
       "session": 126
     },
+    "s126-entry-after-local-desktop-dark.png": {
+      "sha256": "128d9a73d12e3616f87e7eede7ab845f3f579e6d2e1753bac1dc5767bbe2b63c",
+      "bytes": 970154,
+      "session": 126
+    },
+    "s126-entry-after-local-desktop-light.png": {
+      "sha256": "aa0ef636bd560e5e43c7164513dddbbd283d12a18a428db1ba16b359f9d749c1",
+      "bytes": 945862,
+      "session": 126
+    },
+    "s126-entry-after-local-mobile-dark.png": {
+      "sha256": "c765ad2ec20920015e7e9796858190e7c1807e88a9611f0b5fc7c27be1d43eb1",
+      "bytes": 270796,
+      "session": 126
+    },
+    "s126-entry-after-local-mobile-light.png": {
+      "sha256": "d01cdaa45615518cc4fee6b2a096ab206ba98345f8394d5a4f4d6795304139d3",
+      "bytes": 227153,
+      "session": 126
+    },
+    "s126-entry-before-desktop-dark.png": {
+      "sha256": "0062ea0b98a4b82ee86dea05643cec879fb85feb902963b55615d0994fcbfa5c",
+      "bytes": 961162,
+      "session": 126
+    },
+    "s126-entry-before-desktop-light.png": {
+      "sha256": "b5a376b538702bc295a1743e9fe5718e9cdea880794c257fdbd44adb12dcb7ac",
+      "bytes": 936447,
+      "session": 126
+    },
+    "s126-entry-before-mobile-dark.png": {
+      "sha256": "536e67de4db33c0c2c6582a93c772651e73411c207b2f87000e8eb2a77487d31",
+      "bytes": 269607,
+      "session": 126
+    },
+    "s126-entry-before-mobile-light.png": {
+      "sha256": "4ddb81e38e5d847c421225c8e8da96cd55f91440a176dab00c9d29b309fe729e",
+      "bytes": 226161,
+      "session": 126
+    },
     "s126-mobile-after-current-desktop-dark-deck.png": {
       "sha256": "0145ba3f75967fa8f32123678db9db57f514e97c712632903ab351e873b4114f",
       "bytes": 87901,
@@ -24197,6 +24237,126 @@
     "s126-mobile-before-mobile-light-full-view.png": {
       "sha256": "0da85024cad77b2947c7cb97cbcc7ecbab5c08bc2294abfc2043e60c349e9a67",
       "bytes": 73473,
+      "session": 126
+    },
+    "s126-prediction-before-production-desktop-dark-malformed-grade.png": {
+      "sha256": "3bd18c9c1b171b16bcd295d2be7f7a2bd96926d3768d7845df0d1b9c3a3fffe1",
+      "bytes": 11345,
+      "session": 126
+    },
+    "s126-prediction-before-production-desktop-dark-valid-recovered.png": {
+      "sha256": "3e0ff7259f972daf60c0ca78d8d55b6ac4b553fc3f4bdf935a51252e4d25dfe9",
+      "bytes": 18099,
+      "session": 126
+    },
+    "s126-prediction-before-production-desktop-light-malformed-grade.png": {
+      "sha256": "3a0b68a987364cc7581f428a0c89b85bcda954ff10a52afb214888af761f5f16",
+      "bytes": 11673,
+      "session": 126
+    },
+    "s126-prediction-before-production-desktop-light-valid-recovered.png": {
+      "sha256": "ca0b747088c5a8f629339f0384cb26835eab4dfef10c11773a5da2d316baac51",
+      "bytes": 18238,
+      "session": 126
+    },
+    "s126-prediction-before-production-mobile-dark-malformed-grade.png": {
+      "sha256": "a376b06975f2ce88de30f0dfca3068939d4810d977d0d71270c03f0462d9094d",
+      "bytes": 12939,
+      "session": 126
+    },
+    "s126-prediction-before-production-mobile-dark-valid-recovered.png": {
+      "sha256": "ba3d553bdcea19457e80ba948229861eba08253a30ab70931c340585b41bb531",
+      "bytes": 18458,
+      "session": 126
+    },
+    "s126-prediction-before-production-mobile-light-malformed-grade.png": {
+      "sha256": "2d168e754bf0dbbb96107392886089d7be3945612aca22e66779a54395adad4a",
+      "bytes": 13573,
+      "session": 126
+    },
+    "s126-prediction-before-production-mobile-light-valid-recovered.png": {
+      "sha256": "e852fe82d64f80dc85364a73e1b8ddbe47491500bf24a74bd5a814209c361bbf",
+      "bytes": 18616,
+      "session": 126
+    },
+    "s126-prediction-production-desktop-dark-malformed-grade.png": {
+      "sha256": "ab9218729969cb2768de99309407fe9d42c5be10c79e2d99f38f3f0e9700f2ea",
+      "bytes": 9992,
+      "session": 126
+    },
+    "s126-prediction-production-desktop-dark-valid-recovered.png": {
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "bytes": 17603,
+      "session": 126
+    },
+    "s126-prediction-production-desktop-light-malformed-grade.png": {
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "bytes": 10044,
+      "session": 126
+    },
+    "s126-prediction-production-desktop-light-valid-recovered.png": {
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "bytes": 17784,
+      "session": 126
+    },
+    "s126-prediction-production-mobile-dark-malformed-grade.png": {
+      "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+      "bytes": 10444,
+      "session": 126
+    },
+    "s126-prediction-production-mobile-dark-valid-recovered.png": {
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "bytes": 17741,
+      "session": 126
+    },
+    "s126-prediction-production-mobile-light-malformed-grade.png": {
+      "sha256": "37ef99b5042b6433ac9eb32214953a4382e0cf4fa0852d5025c2a773945012b7",
+      "bytes": 10594,
+      "session": 126
+    },
+    "s126-prediction-production-mobile-light-valid-recovered.png": {
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "bytes": 17925,
+      "session": 126
+    },
+    "s126-prediction-staging-desktop-dark-malformed-grade.png": {
+      "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+      "bytes": 9992,
+      "session": 126
+    },
+    "s126-prediction-staging-desktop-dark-valid-recovered.png": {
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "bytes": 17603,
+      "session": 126
+    },
+    "s126-prediction-staging-desktop-light-malformed-grade.png": {
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "bytes": 10044,
+      "session": 126
+    },
+    "s126-prediction-staging-desktop-light-valid-recovered.png": {
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "bytes": 17784,
+      "session": 126
+    },
+    "s126-prediction-staging-mobile-dark-malformed-grade.png": {
+      "sha256": "76519aff410fce8eaf186b5851ae69050117a1e91512cbcb07e75644d125aa26",
+      "bytes": 10421,
+      "session": 126
+    },
+    "s126-prediction-staging-mobile-dark-valid-recovered.png": {
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "bytes": 17741,
+      "session": 126
+    },
+    "s126-prediction-staging-mobile-light-malformed-grade.png": {
+      "sha256": "a925dac6433e2d2ee9d9bee89ff4632fc263d042084bf1e204987459e789f51a",
+      "bytes": 10614,
+      "session": 126
+    },
+    "s126-prediction-staging-mobile-light-valid-recovered.png": {
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "bytes": 17925,
       "session": 126
     },
     "s126-status-after-v2-desktop-dark.png": {

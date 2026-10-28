@@ -16,6 +16,7 @@ import { replaceSimulationAnchor, SIMULATION_ANCHOR_START } from "./lib/simulati
 import { ensurePageMetadata, inspectIndexFooter, renderChangelogFeed, renderPublicChrome, splitStatusNotes, stripXmlComments } from "./lib/public-chrome.mjs";
 import { applyClaimBlocks, findUnfilledMarkers, loadClaims } from "./lib/public-claims.mjs";
 import { inspectBuiltPublicVocabulary } from "./check-public-truth.mjs";
+import { inlinePublicEntry } from "./lib/inline-public-entry.mjs";
 // CANON-016: never the raw module — safe-spawn forces windowsHide so a build
 // does not flash a console window per git call on Windows.
 import { execFileSync } from "./lib/safe-spawn.mjs";
@@ -351,7 +352,20 @@ async function writeHtml(pageName) {
   for (const [name, html] of outputs) {
     const leftover = findUnfilledMarkers(html);
     if (leftover.length) throw new Error(`${name} shipped unfilled claims markers: ${leftover.join(", ")}`);
-    await fs.writeFile(name === pageName ? outputPath : path.join(outDir, name), html, "utf8");
+    let servedHtml = html;
+    if (name === "index.html") {
+      const entry = inlinePublicEntry({
+        pageName: name, html,
+        themeBoot: await fs.readFile(path.join(outDir, "lib", "themeBoot.js"), "utf8"),
+        styles: await fs.readFile(path.join(outDir, hashedStyleHref), "utf8"),
+        siteStyles: await fs.readFile(path.join(outDir, hashedSiteStyleHref), "utf8"),
+        heroJpeg: await fs.readFile(path.join(outDir, "images", "screens", "hero.jpg")),
+        styleHref: hashedStyleHref, siteStyleHref: hashedSiteStyleHref
+      });
+      servedHtml = entry.html;
+      console.log(`Public entry: ${entry.metrics.decodedBytes} decoded bytes; gzip ${entry.metrics.encodings.gzip.afterBytes}, brotli ${entry.metrics.encodings.brotli.afterBytes} cold bytes`);
+    }
+    await fs.writeFile(name === pageName ? outputPath : path.join(outDir, name), servedHtml, "utf8");
   }
 }
 

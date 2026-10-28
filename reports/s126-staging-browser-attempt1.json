@@ -1,0 +1,25 @@
+{
+  "session": 126,
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "accepted": false,
+  "wrapperExitCode": 1,
+  "childExitCode": null,
+  "stats": {
+    "startTime": "2026-10-28T17:46:58.006Z",
+    "duration": 85957.27900000001,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "failure": "Post-child health observation failed with UND_ERR_SOCKET. The original wrapper did not persist child exit status before that read, so assertions alone are not passing release evidence.",
+  "raw": {
+    "path": ".cache/s126-staging-browser-attempt1.raw.json",
+    "sha256": "e2a1f62c93f1f4d536456bc82d93df8fd7eb37f5875317c71d1d869ffe6a0bd0"
+  },
+  "driver": {
+    "path": ".cache/s126-hosted-browser-attempt1-driver.mjs",
+    "sha256": "3312dd50818fb8b2bd309c299e6b3e7bf859977c86a2701f4a1123fc7f9435c8"
+  }
+}

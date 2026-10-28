@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "session": 126,
+  "capturedAt": "2026-10-28T19:58:50.504Z",
+  "kind": "selected-prediction-state-supplement",
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f"
+  },
+  "phases": [
+    {
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "captureReport": {
+        "path": "reports/s126-prediction-before-production-pixels.json",
+        "sha256": "a3f422715485823fa966acc6d3b1031a2f6da2804bf1f51546e195e50ab35dcc"
+      },
+      "modules": [
+        {
+          "path": "lib/spreadPredictions.js",
+          "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
+        },
+        {
+          "path": "lib/predictionPanel.js",
+          "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+        },
+        {
+          "path": "lib/tabOverview.js",
+          "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+        }
+      ]
+    },
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "captureReport": {
+        "path": "reports/s126-prediction-staging-pixels.json",
+        "sha256": "e52c386e1de11ff02910bae1559fb398a72548cb447a5e00c79629a5d69cd7eb"
+      },
+      "modules": [
+        {
+          "path": "lib/spreadPredictions.js",
+          "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+        },
+        {
+          "path": "lib/predictionPanel.js",
+          "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+        },
+        {
+          "path": "lib/tabOverview.js",
+          "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+        }
+      ]
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "captureReport": {
+        "path": "reports/s126-prediction-production-pixels.json",
+        "sha256": "720c7f85f05e38ba1e350ebc62ae16491ce7cead076cd4435d3a5c8658813bf0"
+      },
+      "modules": [
+        {
+          "path": "lib/spreadPredictions.js",
+          "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+        },
+        {
+          "path": "lib/predictionPanel.js",
+          "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+        },
+        {
+          "path": "lib/tabOverview.js",
+          "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "path": "reports/s126-prediction-preproduction-visual-review.json",
+      "sha256": "736b522aebe07e18eec63d25b0aeff02e193a216ec21b309caaff8491e060fec",
+      "inspectedImageCount": 16
+    },
+    {
+      "path": "reports/s126-prediction-production-visual-review.json",
+      "sha256": "2f08790bed972d0d406e1d7860ade73a1712fc15232edc396717b624f1d683de",
+      "inspectedImageCount": 8
+    }
+  ],
+  "history": [
+    {
+      "path": "reports/s126-prediction-preproduction-visual-review-attempt1.json",
+      "sha256": "8f81831a68a220d98a27a92b35394f975bf6da8d9987dac616d84ba20120d7c7"
+    },
+    {
+      "path": ".cache/s126-prediction-reviewed-attempt1-before-production/report.json",
+      "sha256": "25cb5f90f2e6745a19253b1fa9e5af06bc9c27057b6cca1bc84fbd3497a0aa4b"
+    },
+    {
+      "path": ".cache/s126-prediction-reviewed-attempt1-staging/report.json",
+      "sha256": "da01c729001d6ee644e43eebba916171c2c6cdf36d249bcc3acbe326c37b461d"
+    },
+    {
+      "path": ".cache/s126-prediction-staging-attempt1/report.json",
+      "sha256": "d00e891fd70fb9c0deee1748faaa185d0586119717ff39d7d20e9a79e615aaff"
+    }
+  ],
+  "captures": [
+    {
+      "file": "s126-prediction-before-production-desktop-dark-malformed-grade.png",
+      "sha256": "3bd18c9c1b171b16bcd295d2be7f7a2bd96926d3768d7845df0d1b9c3a3fffe1",
+      "sourceFile": ".cache/s126-prediction-before-production/desktop-dark-malformed-grade.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-before-production-desktop-dark-valid-recovered.png",
+      "sha256": "3e0ff7259f972daf60c0ca78d8d55b6ac4b553fc3f4bdf935a51252e4d25dfe9",
+      "sourceFile": ".cache/s126-prediction-before-production/desktop-dark-valid-recovered.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-before-production-desktop-light-malformed-grade.png",
+      "sha256": "3a0b68a987364cc7581f428a0c89b85bcda954ff10a52afb214888af761f5f16",
+      "sourceFile": ".cache/s126-prediction-before-production/desktop-light-malformed-grade.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-before-production-desktop-light-valid-recovered.png",
+      "sha256": "ca0b747088c5a8f629339f0384cb26835eab4dfef10c11773a5da2d316baac51",
+      "sourceFile": ".cache/s126-prediction-before-production/desktop-light-valid-recovered.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-before-production-mobile-dark-malformed-grade.png",
+      "sha256": "a376b06975f2ce88de30f0dfca3068939d4810d977d0d71270c03f0462d9094d",
+      "sourceFile": ".cache/s126-prediction-before-production/mobile-dark-malformed-grade.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-before-production-mobile-dark-valid-recovered.png",
+      "sha256": "ba3d553bdcea19457e80ba948229861eba08253a30ab70931c340585b41bb531",
+      "sourceFile": ".cache/s126-prediction-before-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-before-production-mobile-light-malformed-grade.png",
+      "sha256": "2d168e754bf0dbbb96107392886089d7be3945612aca22e66779a54395adad4a",
+      "sourceFile": ".cache/s126-prediction-before-production/mobile-light-malformed-grade.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-before-production-mobile-light-valid-recovered.png",
+      "sha256": "e852fe82d64f80dc85364a73e1b8ddbe47491500bf24a74bd5a814209c361bbf",
+      "sourceFile": ".cache/s126-prediction-before-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+      "phase": "before-production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "12a8abf88403ffbc4905b853a77495fb7babac1b",
+      "artifactDigest": "d54127556927ab0338ffa46733affae91cef6fef421af98532c77e0e44a0ec74",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-desktop-dark-malformed-grade.png",
+      "sha256": "f61d2bee14af36d5dd80673b8f23a185a73feb66ab5212ef711c3ac57154c00a",
+      "sourceFile": ".cache/s126-prediction-staging/desktop-dark-malformed-grade-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-desktop-dark-valid-recovered.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "sourceFile": ".cache/s126-prediction-staging/desktop-dark-valid-recovered-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-desktop-light-malformed-grade.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "sourceFile": ".cache/s126-prediction-staging/desktop-light-malformed-grade-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-desktop-light-valid-recovered.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "sourceFile": ".cache/s126-prediction-staging/desktop-light-valid-recovered-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-mobile-dark-malformed-grade.png",
+      "sha256": "76519aff410fce8eaf186b5851ae69050117a1e91512cbcb07e75644d125aa26",
+      "sourceFile": ".cache/s126-prediction-staging/mobile-dark-malformed-grade-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-mobile-dark-valid-recovered.png",
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "sourceFile": ".cache/s126-prediction-staging/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-mobile-light-malformed-grade.png",
+      "sha256": "a925dac6433e2d2ee9d9bee89ff4632fc263d042084bf1e204987459e789f51a",
+      "sourceFile": ".cache/s126-prediction-staging/mobile-light-malformed-grade-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-staging-mobile-light-valid-recovered.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "sourceFile": ".cache/s126-prediction-staging/mobile-light-valid-recovered-clear-heading-attempt1.png",
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-desktop-dark-malformed-grade.png",
+      "sha256": "ab9218729969cb2768de99309407fe9d42c5be10c79e2d99f38f3f0e9700f2ea",
+      "sourceFile": ".cache/s126-prediction-production/desktop-dark-malformed-grade-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-desktop-dark-valid-recovered.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "sourceFile": ".cache/s126-prediction-production/desktop-dark-valid-recovered-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-desktop-light-malformed-grade.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "sourceFile": ".cache/s126-prediction-production/desktop-light-malformed-grade-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-desktop-light-valid-recovered.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "sourceFile": ".cache/s126-prediction-production/desktop-light-valid-recovered-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-mobile-dark-malformed-grade.png",
+      "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+      "sourceFile": ".cache/s126-prediction-production/mobile-dark-malformed-grade-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-mobile-dark-valid-recovered.png",
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "sourceFile": ".cache/s126-prediction-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "dark",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-mobile-light-malformed-grade.png",
+      "sha256": "37ef99b5042b6433ac9eb32214953a4382e0cf4fa0852d5025c2a773945012b7",
+      "sourceFile": ".cache/s126-prediction-production/mobile-light-malformed-grade-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    },
+    {
+      "file": "s126-prediction-production-mobile-light-valid-recovered.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "sourceFile": ".cache/s126-prediction-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "theme": "light",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": true
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0,
+    "reviewer": "game_audit independent phase reviews",
+    "findings": [
+      "Malformed graded records are discarded in candidate staging/production.",
+      "A valid pick survives quota recovery and is graded once; original baseline duplicate totals remain visibly historical."
+    ]
+  },
+  "scope": "24 individually reviewed native Desk Predictions component states: two states, desktop/mobile, dark/light, actual old-production baseline and exact candidate staging/production. This receipt proves supplemental24 selected states only; primary64 linking and combined coverage are verified separately, never whole-application coverage.",
+  "limits": [
+    "Named synthetic local-only pick/game fixtures are not real-player outcome evidence.",
+    "Mobile recovered-state component screenshots hide unrelated fixed .game-topbar with permitted style.visibility; native component/CSP unchanged.",
+    "Original four occluded captures and FIX review remain nonpassing history.",
+    "Component pixels do not prove complete scroll/header integration, numerical contrast, all assistive technologies, performance, lifecycle or public-launch readiness."
+  ]
+}

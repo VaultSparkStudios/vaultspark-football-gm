@@ -1,0 +1,40 @@
+{
+  "session": 126,
+  "subjectMatchesCurrent": true,
+  "scannedManifests": [
+    {
+      "path": "package.json",
+      "sha256": "855d0b4e2f550e449f17f5b8c30c00b3aac2f1b140bcac5b2cebfef2510425d1"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "682a3c04e57af5d09af15ac22f5a078c42f12c05cd875dd3c7970f3365e0548a"
+    }
+  ],
+  "report": {
+    "generatedAt": "2026-10-28T21:04:07.587Z",
+    "incidents": [
+      {
+        "id": "mini-shai-hulud-2026-05-11",
+        "name": "Mini Shai-Hulud / TanStack pwn-request compromise",
+        "date": "2026-05-11",
+        "repoCount": 0,
+        "repos": []
+      },
+      {
+        "id": "shai-hulud-2025-09",
+        "name": "Shai-Hulud chalk/debug/ansi-styles phishing wave",
+        "date": "2025-09-08",
+        "repoCount": 0,
+        "repos": []
+      },
+      {
+        "id": "tj-actions-2025-03",
+        "name": "tj-actions/changed-files GitHub Actions compromise",
+        "date": "2025-03-14",
+        "repoCount": 0,
+        "repos": []
+      }
+    ]
+  }
+}

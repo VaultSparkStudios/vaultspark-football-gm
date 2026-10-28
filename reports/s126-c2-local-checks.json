@@ -1,0 +1,82 @@
+{
+  "session": 126,
+  "sourceStatus": "local-worktree-c2 before source freeze",
+  "startedAt": "2026-10-28T20:57:22.036Z",
+  "completedAt": "2026-10-28T20:57:25.339Z",
+  "exitCode": 0,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 37,
+    "pass": 37,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "unchanged": true,
+  "verified": true,
+  "sources": [
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "9b1ff32822dc75d00985e452c1a85c344d3b76d8b00e73a75f552a59cd2a87fc"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "2a55ca64d2aba25c2deb82a32830318356c0df74cf8b93b4cee1395a467ec5cf"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    },
+    {
+      "path": "test/inline-public-entry.test.js",
+      "sha256": "fce1415a439154e80d9592fc16f81f091b65274f4efe636876964eff8b1eaa7c"
+    },
+    {
+      "path": "test/edge-style-hash.test.js",
+      "sha256": "b7c052e2558263d230af0e2a3d5973059d07a377ad63c6b724ee1ab624acba03"
+    },
+    {
+      "path": "test/edge-security-policy.test.js",
+      "sha256": "95b992c2440e968d4404c33371b5cac4cfbd40a67a26de444fcd2bab0e38fad7"
+    },
+    {
+      "path": "test/public-claims.test.js",
+      "sha256": "48c0846b26d1fe77f9105b102c7bfc4c74c2e12197cfd6c6b8114196b07171be"
+    },
+    {
+      "path": "test/session109-public-chrome.test.js",
+      "sha256": "49d3ef7041d248498b24ffc438e5859707e7e322a8e9a078902ca6d4f51700a7"
+    }
+  ],
+  "rawLog": {
+    "path": ".cache/s126-c2-local-checks-full37.log",
+    "sha256": "4e04fd41a5d34450bc0fe068e10e76d73210cd4ec092b95c13b50813a33f6c1a"
+  },
+  "scope": "Entry/edge/claims/chrome focused checks on actual current source and prototype artifact; not exact-source hosted CI or published performance evidence."
+}

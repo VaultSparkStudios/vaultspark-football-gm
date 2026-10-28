@@ -1,0 +1,17 @@
+{
+  "session": 126,
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "primaryDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "completeUploadDigest": "d663089e13b95f249bdae6d3548c43f1198fa6ed07a20932cd0c83c81b6091ee",
+  "completeUploadFiles": 3650,
+  "allPathsAndBytesVerified": true,
+  "publishedMounts": [
+    "/",
+    "/franchise-architect-football/",
+    "/vaultspark-football-gm/",
+    "/franchise-architect/",
+    "/games/vaultspark-football-gm/",
+    "/games/franchise-architect/",
+    "/games/franchise-architect-football/"
+  ]
+}

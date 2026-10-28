@@ -1,0 +1,191 @@
+{
+  "session": 126,
+  "phase": "entry-before",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "startedAt": "2026-10-28T20:21:28.950Z",
+  "before": {
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+    "observedAt": "2026-10-28T20:21:29.608Z"
+  },
+  "captures": [
+    {
+      "file": ".cache/s126-entry-before/desktop-dark.png",
+      "sha256": "0062ea0b98a4b82ee86dea05643cec879fb85feb902963b55615d0994fcbfa5c",
+      "device": "desktop",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-entry-before/desktop-light.png",
+      "sha256": "b5a376b538702bc295a1743e9fe5718e9cdea880794c257fdbd44adb12dcb7ac",
+      "device": "desktop",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-entry-before/mobile-dark.png",
+      "sha256": "536e67de4db33c0c2c6582a93c772651e73411c207b2f87000e8eb2a77487d31",
+      "device": "mobile",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-entry-before/mobile-light.png",
+      "sha256": "4ddb81e38e5d847c421225c8e8da96cd55f91440a176dab00c9d29b309fe729e",
+      "device": "mobile",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Root landing before critical bundling",
+      "fullViewport": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "inspected": false
+    }
+  ],
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "savedTheme": "dark",
+      "savedMode": "dark",
+      "hero": {
+        "currentSrc": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+        "src": "./images/screens/hero.jpg",
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "cspViolations": [],
+      "heroResponses": [
+        {
+          "url": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+          "status": 200,
+          "bytes": 154408,
+          "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+        }
+      ],
+      "pageErrors": [],
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed"
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "actualTheme": "light",
+      "savedTheme": "light",
+      "savedMode": "light",
+      "hero": {
+        "currentSrc": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+        "src": "./images/screens/hero.jpg",
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "cspViolations": [],
+      "heroResponses": [
+        {
+          "url": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+          "status": 200,
+          "bytes": 154408,
+          "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+        }
+      ],
+      "pageErrors": [],
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed"
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "savedTheme": "dark",
+      "savedMode": "dark",
+      "hero": {
+        "currentSrc": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+        "src": "./images/screens/hero.jpg",
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "cspViolations": [],
+      "heroResponses": [
+        {
+          "url": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+          "status": 200,
+          "bytes": 154408,
+          "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+        }
+      ],
+      "pageErrors": [],
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed"
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "actualTheme": "light",
+      "savedTheme": "light",
+      "savedMode": "light",
+      "hero": {
+        "currentSrc": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+        "src": "./images/screens/hero.jpg",
+        "complete": true,
+        "naturalWidth": 1440,
+        "naturalHeight": 900
+      },
+      "cspViolations": [],
+      "heroResponses": [
+        {
+          "url": "https://playfranchisearchitect.com/images/screens/hero.jpg",
+          "status": 200,
+          "bytes": 154408,
+          "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+        }
+      ],
+      "pageErrors": [],
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed"
+    }
+  ],
+  "completed": true,
+  "inspected": false,
+  "sourceStatus": "actual deployed C/D before critical entry bundling",
+  "boundary": "Four actual production root landing full-viewport captures. Native saved theme and theme mode are set before first navigation. No source replacement, route interception, style injection, hidden controls or image editing. Browser defaults retained; this is visual baseline evidence, not a performance acceptance run.",
+  "after": {
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+    "observedAt": "2026-10-28T20:21:57.294Z"
+  },
+  "completedAt": "2026-10-28T20:21:57.688Z"
+}

@@ -1,0 +1,94 @@
+{
+  "session": 126,
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "sourceBinding": "Exact committed bytes for every listed input; historical local report retained separately",
+  "startedAt": "2026-10-28T19:00:54.014Z",
+  "completedAt": "2026-10-28T19:01:59.861Z",
+  "exitCode": 0,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 143,
+    "pass": 143,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "unchanged": true,
+  "verified": true,
+  "sources": [
+    {
+      "path": "public/lib/mobileLoop.js",
+      "sha256": "6101bf17edff16908983ca9f13b3bca49a8a650fb09f722307e2717af277dbd8"
+    },
+    {
+      "path": "public/lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+    },
+    {
+      "path": "public/lib/achievements.js",
+      "sha256": "312d506800d32150a214f21472b0186c9356f9d911b22688e614ed12bb1e670e"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "05f218d16f70b7facb72484267d9147066bf09a8759261f5a66f04625fbd4162"
+    },
+    {
+      "path": "test/mobile-mode-recovery.test.js",
+      "sha256": "8cf86bde4ca5e352543628c6dbdfe30b2771c89be8e44f0c56f9a8088f196a61"
+    },
+    {
+      "path": "test/tablet-decision-deck.test.js",
+      "sha256": "900aba01fe6e4a4ac17c3c76843ee0cd010114ca06842b8ace6e9941d29eff39"
+    },
+    {
+      "path": "test/mobile-loop.test.js",
+      "sha256": "bdd7bd751293581140962611ff3954ecae33322a3b758bb1bc08761b224265b0"
+    },
+    {
+      "path": "test/mobile-weekly-intent.test.js",
+      "sha256": "b1b32aa65666b96dc427602fe657242f8815ca380a2e86a6f9c2359a9c8b1005"
+    },
+    {
+      "path": "test/prediction-corruption.test.js",
+      "sha256": "73dd8dfdeba21190486856a677d20d2d6883977694896c09a0f1c27db7b12e9e"
+    },
+    {
+      "path": "test/spread-predictions.test.js",
+      "sha256": "86c5ba1ae536101f400c1327548581b1ef723e065065805c66462360683db7ec"
+    },
+    {
+      "path": "test/league-story-export.test.js",
+      "sha256": "fcc6cb8158831d210340d000f25b6b76e624b11eed0e95ca1bd6305181ca24f8"
+    },
+    {
+      "path": "test/prediction-panel.test.js",
+      "sha256": "265801c7820c4af3311243c3a0acdfd1671a2fbba215e51d43a499b7e6632de2"
+    },
+    {
+      "path": "test/session126-trophy-continuity.test.js",
+      "sha256": "4c7ebd2f2f48820ff73bce5e5763b36bb970bbdd2878bd0ed4af1739ef739b40"
+    },
+    {
+      "path": "test/reward-layer.test.js",
+      "sha256": "35e286a9c5cb9f3a96d04760961206dd801069cd414f6ff10f16829492d6453c"
+    },
+    {
+      "path": "test/session109-moment-card.test.js",
+      "sha256": "46d14c39c609adc36c46e436ffe3e674d60ca2f59f73c4243d7a2c42bce1427c"
+    },
+    {
+      "path": "test/team-record-truth.test.js",
+      "sha256": "46edd9788dd4e725a38d9a9f385e9efa2f3964c877cdf385fda5ead8fccd05fb"
+    },
+    {
+      "path": "test/browser-boot-budget.test.js",
+      "sha256": "70a6251a60532ddd9fbfaa850f09538c8d24945e2cb88be21c48f5048b816029"
+    }
+  ],
+  "rawLog": {
+    "path": ".cache/s126-candidate-checks.log",
+    "sha256": "4ce64ba34273e71e305718162bf7f0b6366bfbbaf7809747fb3adfd1ffafc1ae"
+  }
+}

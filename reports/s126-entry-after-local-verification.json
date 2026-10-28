@@ -1,0 +1,92 @@
+{
+  "session": 126,
+  "phase": "local",
+  "sourceStatus": "local-worktree-c2 prototype; not an exact committed or published C2",
+  "gitHead": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "manifestSourceRevision": "local-worktree",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+  "indexBytes": 458050,
+  "headerSha256": "bfb73560f89678d5c2446b30b05842821571191daf5f3fa23f2c043146880c64",
+  "primaryFilesVerified": 362,
+  "decodedJpeg": {
+    "bytes": 154408,
+    "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+    "unchanged": true
+  },
+  "trustedBodyHashes": {
+    "themeBoot": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+    "styles": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+    "siteStyles": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+  },
+  "externalAssetsRetained": true,
+  "aliases": [
+    {
+      "mount": "/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/franchise-architect-football/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/vaultspark-football-gm/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/franchise-architect/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/games/vaultspark-football-gm/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/games/franchise-architect/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    },
+    {
+      "mount": "/games/franchise-architect-football/",
+      "indexSha256": "4db07886902f0134b6586de9be2c01265320111f97d768cfeaa09612a69ca706",
+      "nativeCspInherited": true
+    }
+  ],
+  "sourceHashes": [
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "20dc7b2f2bc970df7b602cd3bb924d89ab17f58a0edd32db0cc6f6022105e6d4"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "sha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "sha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "sha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    }
+  ],
+  "verified": true,
+  "boundary": "Scoped entry/artifact proof only. Local prototype metadata is recorded literally; no committed/published C2 claim or native full smoke/performance acceptance claim."
+}

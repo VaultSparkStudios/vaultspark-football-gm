@@ -1,0 +1,244 @@
+{
+  "session": 126,
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "startedAt": "2026-10-28T19:50:24.223Z",
+  "completedAt": "2026-10-28T19:51:55.849Z",
+  "before": {
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f"
+  },
+  "after": {
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f"
+  },
+  "modules": [
+    {
+      "path": "lib/mobileLoop.js",
+      "sha256": "6101bf17edff16908983ca9f13b3bca49a8a650fb09f722307e2717af277dbd8"
+    },
+    {
+      "path": "lib/achievements.js",
+      "sha256": "312d506800d32150a214f21472b0186c9356f9d911b22688e614ed12bb1e670e"
+    },
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+    },
+    {
+      "path": "status.html",
+      "sha256": "e2faaa27c307426eb05c80c8e217f29c9bd6eba84b28f7d0b749ae280c7c63f4"
+    }
+  ],
+  "captures": [
+    {
+      "file": ".cache/s126-mobile-production/desktop-dark-deck.png",
+      "sha256": "6f811ca6d990d76e9cf0b6581708e398a7062db79e50a933574d61abb804d917",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "deck",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": false,
+      "page": "mobile deck"
+    },
+    {
+      "file": ".cache/s126-mobile-production/desktop-dark-full-view.png",
+      "sha256": "73b2ff93dbd2d1004ccc078a98c1e9c503efd424d2e3ed415f9f08626c30c6fc",
+      "device": "desktop",
+      "theme": "dark",
+      "state": "full-view",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": false,
+      "page": "mobile full-view"
+    },
+    {
+      "file": ".cache/s126-mobile-production/desktop-light-deck.png",
+      "sha256": "c279e6572cdca91d3da5f9714af68cf25f53daccfb04024aa2ef7b41e0635bcc",
+      "device": "desktop",
+      "theme": "light",
+      "state": "deck",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": false,
+      "page": "mobile deck"
+    },
+    {
+      "file": ".cache/s126-mobile-production/desktop-light-full-view.png",
+      "sha256": "96e7564e8acb843b517d9377f9ffb7b30d6b8333c01be6248d8dd70432c9f979",
+      "device": "desktop",
+      "theme": "light",
+      "state": "full-view",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": false,
+      "page": "mobile full-view"
+    },
+    {
+      "file": ".cache/s126-mobile-production/mobile-dark-deck.png",
+      "sha256": "0468adc5acde60c65cd3eca69f0f420b8da1dbae44eef589a750eccdd4da838e",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "deck",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": false,
+      "page": "mobile deck"
+    },
+    {
+      "file": ".cache/s126-mobile-production/mobile-dark-full-view.png",
+      "sha256": "3420bcf69f3ca643216af07c1df4be1233a3d7bbea5df05ab4c7f6d165b63b51",
+      "device": "mobile",
+      "theme": "dark",
+      "state": "full-view",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": false,
+      "page": "mobile full-view"
+    },
+    {
+      "file": ".cache/s126-mobile-production/mobile-light-deck.png",
+      "sha256": "93b8295310558241beba5d4d0c34eb3bb7cd4093440f4365c60e69227a5c24ec",
+      "device": "mobile",
+      "theme": "light",
+      "state": "deck",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": false,
+      "page": "mobile deck"
+    },
+    {
+      "file": ".cache/s126-mobile-production/mobile-light-full-view.png",
+      "sha256": "df32bed415c7167eb30dcd1b81bac55cab1eb3b4c07c14e654e13a78d97d8880",
+      "device": "mobile",
+      "theme": "light",
+      "state": "full-view",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": false,
+      "page": "mobile full-view"
+    },
+    {
+      "file": ".cache/s126-after-production/trophy-desktop-dark.png",
+      "sha256": "61d07f747b4c4578b71d125b2b83d05b250acb3a98a91c65c22833a8693d0c42",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": false,
+      "page": "Trophy Case quota recovery"
+    },
+    {
+      "file": ".cache/s126-after-production/trophy-desktop-light.png",
+      "sha256": "ec1d5c31326d9352e8481754b918cedce0da4e56a1c340ae57865457d5542dc4",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": false,
+      "page": "Trophy Case quota recovery"
+    },
+    {
+      "file": ".cache/s126-after-production/trophy-mobile-dark.png",
+      "sha256": "731400c18710591728371ed8a4ccabec4766fee47b5073cca1f5390fd10cee76",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": false,
+      "page": "Trophy Case quota recovery"
+    },
+    {
+      "file": ".cache/s126-after-production/trophy-mobile-light.png",
+      "sha256": "b9d80330b8c2e1bf3b7fc378a47c0c4c5cf24370c84635386173914366eeaaa8",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": false,
+      "page": "Trophy Case quota recovery"
+    },
+    {
+      "file": ".cache/s126-status-production-v2/desktop-dark.png",
+      "phase": "production",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "status",
+      "sha256": "0259565d15891adaf8ba00a0a0715838d654e1acab4ce0a3f179ec28860b76d6",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-status-production-v2/desktop-light.png",
+      "phase": "production",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "status",
+      "sha256": "c58d78578db60c236d5104c0255ccf7b2edbce4d7b08ba25380128bbdb1b86b5",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-status-production-v2/mobile-dark.png",
+      "phase": "production",
+      "theme": "dark",
+      "actualTheme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status",
+      "sha256": "a100fe9a804657a6531b575dbbf172251e7d6a8d9a5b7516cabe975308cd9ad7",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-status-production-v2/mobile-light.png",
+      "phase": "production",
+      "theme": "light",
+      "actualTheme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "status",
+      "sha256": "46241621e5f3efbc97c7c50d267b17a425725ecd01c54b2f2b24c2308d8e7e4f",
+      "inspected": false
+    }
+  ],
+  "completed": true,
+  "inspected": false,
+  "boundary": "Actual hosted client/pixel fixtures for selected states. Trophy screenshot hides unrelated fixed topbar/toast; no real-player outcome claim."
+}

@@ -1,0 +1,231 @@
+{
+  "session": 126,
+  "phase": "staging",
+  "origin": "https://staging.playfranchisearchitect.com",
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "startedAt": "2026-10-28T19:11:43.240Z",
+  "before": {
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+    "observedAt": "2026-10-28T19:11:43.888Z"
+  },
+  "modulesBefore": [
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+    },
+    {
+      "path": "lib/predictionPanel.js",
+      "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+    },
+    {
+      "path": "lib/tabOverview.js",
+      "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+    }
+  ],
+  "captures": [
+    {
+      "file": ".cache/s126-prediction-staging/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 302.1875,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-staging/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+          "bytes": 17741
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": false
+    },
+    {
+      "file": ".cache/s126-prediction-staging/mobile-light-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "phase": "staging",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 301.96875,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-staging/mobile-light-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+          "bytes": 17925
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": false
+    }
+  ],
+  "results": [
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "malformed": {
+        "storedEntries": 0,
+        "noPick": true,
+        "correctBadge": false,
+        "text": "Predict the Week\n      \n    \n      0 current streak\n      0 best streak\n      0% winner accuracy (0/0)\n      — margin MAE\n    \n      \n      DK @ OSNo prediction submitted.",
+        "stats": {
+          "seasonStreak": 0,
+          "bestStreak": 0,
+          "correctCount": 0,
+          "totalCount": 0,
+          "marginErrorTotal": 0,
+          "marginCount": 0
+        }
+      },
+      "recovery": {
+        "underQuota": {
+          "durableResolved": false,
+          "tabResolved": true
+        },
+        "durableResolved": true,
+        "stats": {
+          "seasonStreak": 1,
+          "bestStreak": 1,
+          "correctCount": 1,
+          "totalCount": 1,
+          "marginErrorTotal": 0,
+          "marginCount": 1
+        },
+        "recent": [
+          {
+            "gameId": "NYJ@BUF",
+            "predictedWinnerId": "BUF",
+            "predictedMargin": 14,
+            "actualWinnerId": "BUF",
+            "actualMargin": 14,
+            "isTie": false,
+            "winnerCorrect": true,
+            "correct": true,
+            "marginError": 0,
+            "marginBand": "exact",
+            "receiptId": "2026-4-NYJ@BUF",
+            "year": 2026,
+            "week": 4,
+            "resolvedAt": 1793214717163
+          }
+        ],
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      1 current streak\n      1 best streak\n      100% winner accuracy (1/1)\n      0 margin MAE\n    \n      \n    \n      Recent results\n      \n        \n          Y2026 W4\n          · NYJ@BUF\n          · winner hit\n          · exact margin\n        \n    \n      DK @ OS\n    \n      ✓\n      Predicted OS by 14\n      — actual: OS by 14\n      · exact margin"
+      },
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed",
+      "cspViolations": [],
+      "pageErrors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "malformed": {
+        "storedEntries": 0,
+        "noPick": true,
+        "correctBadge": false,
+        "text": "Predict the Week\n      \n    \n      0 current streak\n      0 best streak\n      0% winner accuracy (0/0)\n      — margin MAE\n    \n      \n      DK @ OSNo prediction submitted.",
+        "stats": {
+          "seasonStreak": 0,
+          "bestStreak": 0,
+          "correctCount": 0,
+          "totalCount": 0,
+          "marginErrorTotal": 0,
+          "marginCount": 0
+        }
+      },
+      "recovery": {
+        "underQuota": {
+          "durableResolved": false,
+          "tabResolved": true
+        },
+        "durableResolved": true,
+        "stats": {
+          "seasonStreak": 1,
+          "bestStreak": 1,
+          "correctCount": 1,
+          "totalCount": 1,
+          "marginErrorTotal": 0,
+          "marginCount": 1
+        },
+        "recent": [
+          {
+            "gameId": "NYJ@BUF",
+            "predictedWinnerId": "BUF",
+            "predictedMargin": 14,
+            "actualWinnerId": "BUF",
+            "actualMargin": 14,
+            "isTie": false,
+            "winnerCorrect": true,
+            "correct": true,
+            "marginError": 0,
+            "marginBand": "exact",
+            "receiptId": "2026-4-NYJ@BUF",
+            "year": 2026,
+            "week": 4,
+            "resolvedAt": 1793214724661
+          }
+        ],
+        "correctBadge": true,
+        "text": "Predict the Week\n      \n    \n      1 current streak\n      1 best streak\n      100% winner accuracy (1/1)\n      0 margin MAE\n    \n      \n    \n      Recent results\n      \n        \n          Y2026 W4\n          · NYJ@BUF\n          · winner hit\n          · exact margin\n        \n    \n      DK @ OS\n    \n      ✓\n      Predicted OS by 14\n      — actual: OS by 14\n      · exact margin"
+      },
+      "cspSha256": "7716b79eb5ba7b18f41d2059b122de81963323bdb443e7accfa1a1d44000ebed",
+      "cspViolations": [],
+      "pageErrors": []
+    }
+  ],
+  "completed": true,
+  "inspected": false,
+  "scope": "mobile valid-recovered replacements only",
+  "boundary": "Actual hosted client runtime and native Desk Predictions panel, driven with named synthetic local-only pick/game fixtures. Mobile valid-recovered component captures hide the unrelated fixed .game-topbar via style.visibility to prevent heading occlusion; the native panel itself is unchanged. No route interception, standalone mock, source replacement, CSP change or real-player outcome claim. Quota fixture affects only its week-map key. Browser service workers are blocked to avoid cached code.",
+  "after": {
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+    "observedAt": "2026-10-28T19:12:06.279Z"
+  },
+  "modulesAfter": [
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+    },
+    {
+      "path": "lib/predictionPanel.js",
+      "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+    },
+    {
+      "path": "lib/tabOverview.js",
+      "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+    }
+  ],
+  "completedAt": "2026-10-28T19:12:22.317Z"
+}

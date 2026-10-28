@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "session": 126,
+  "phase": "production",
+  "origin": "https://playfranchisearchitect.com",
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "captureReport": "reports/s126-prediction-production-pixels.json",
+  "captureReportSha256": "720c7f85f05e38ba1e350ebc62ae16491ce7cead076cd4435d3a5c8658813bf0",
+  "reviewedAt": "2026-10-28T19:51:12.589Z",
+  "reviewer": "game_audit",
+  "verdict": "pass-production-selected-states",
+  "inspectedImageCount": 8,
+  "inspected": [
+    {
+      "file": ".cache/s126-prediction-production/desktop-dark-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "ab9218729969cb2768de99309407fe9d42c5be10c79e2d99f38f3f0e9700f2ea",
+      "phase": "production",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 445.921875,
+        "width": 560.609375,
+        "height": 107
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/desktop-dark-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "ab9218729969cb2768de99309407fe9d42c5be10c79e2d99f38f3f0e9700f2ea",
+          "bytes": 9992
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    },
+    {
+      "file": ".cache/s126-prediction-production/desktop-dark-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+      "phase": "production",
+      "device": "desktop",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 426.921875,
+        "width": 560.609375,
+        "height": 146
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/desktop-dark-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "0dba2bc8a448e7e7ac68818451565a279ced7b26ddf38b50b29bdb8e66c9a8e1",
+          "bytes": 17603
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    },
+    {
+      "file": ".cache/s126-prediction-production/desktop-light-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+      "phase": "production",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 445.921875,
+        "width": 560.609375,
+        "height": 107
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/desktop-light-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "b575cebc814ff82dbc4296107d80e70e53ae95f293615f896dae784f9e5fa22d",
+          "bytes": 10044
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    },
+    {
+      "file": ".cache/s126-prediction-production/desktop-light-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+      "phase": "production",
+      "device": "desktop",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 270.59375,
+        "y": 426.921875,
+        "width": 560.609375,
+        "height": 146
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/desktop-light-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "9822fdc8d963a10d2de4c965d734a4261f12adfedc1b080799d402ff61aca3b3",
+          "bytes": 17784
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    },
+    {
+      "file": ".cache/s126-prediction-production/mobile-dark-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+      "phase": "production",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 353.1875,
+        "width": 320.8125,
+        "height": 137
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/mobile-dark-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "2cbf18a98205793b035f940b48e749f747aa1f7fd1accc61e9e2a0d3ecef8617",
+          "bytes": 10444
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    },
+    {
+      "file": ".cache/s126-prediction-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+      "phase": "production",
+      "device": "mobile",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 302.1875,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/mobile-dark-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "5667600fcc986342a64ef67b5888c2c28e88d8ab58f863d2a82ead9e41aa513d",
+          "bytes": 17741
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    },
+    {
+      "file": ".cache/s126-prediction-production/mobile-light-malformed-grade-clear-heading-attempt1.png",
+      "sha256": "37ef99b5042b6433ac9eb32214953a4382e0cf4fa0852d5025c2a773945012b7",
+      "phase": "production",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "malformed-grade",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 353.8125,
+        "width": 320.8125,
+        "height": 137
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/mobile-light-malformed-grade-clear-heading-attempt1.png",
+          "sha256": "37ef99b5042b6433ac9eb32214953a4382e0cf4fa0852d5025c2a773945012b7",
+          "bytes": 10594
+        }
+      ],
+      "fixtureOcclusionTreatment": "none",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    },
+    {
+      "file": ".cache/s126-prediction-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+      "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+      "phase": "production",
+      "device": "mobile",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Native Desk Predictions panel",
+      "state": "valid-recovered",
+      "boundingBox": {
+        "x": 34.59375,
+        "y": 302.8125,
+        "width": 320.8125,
+        "height": 239
+      },
+      "captureAttempts": [
+        {
+          "file": ".cache/s126-prediction-production/mobile-light-valid-recovered-clear-heading-attempt1.png",
+          "sha256": "a09ccd456da32557d5d6afee99f3935081035a08858ea552cd3cf1a203ffd464",
+          "bytes": 17925
+        }
+      ],
+      "fixtureOcclusionTreatment": "Unrelated fixed .game-topbar visibility hidden; native panel unchanged",
+      "inspected": true,
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "verdict": "pass-production-selected-state",
+      "method": "actual view_image pixel inspection"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0
+  },
+  "openCaptureDefects": 0,
+  "modules": [
+    {
+      "path": "lib/spreadPredictions.js",
+      "sha256": "9b050094ac3396d463048b5d403af0112ac061f782b00d6c16897dfcd4539909"
+    },
+    {
+      "path": "lib/predictionPanel.js",
+      "sha256": "25e6a578537f1b77e47619098115a03396d1c130306ce14202c203119aa06b63"
+    },
+    {
+      "path": "lib/tabOverview.js",
+      "sha256": "d8dc8476510703d2dbbbab3fd35ddce5376bcb102d8f265bb93ce2ad4a7bd1d9"
+    }
+  ],
+  "sourceBoundary": {
+    "before": {
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "observedAt": "2026-10-28T19:48:39.398Z"
+    },
+    "after": {
+      "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+      "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+      "observedAt": "2026-10-28T19:49:23.182Z"
+    }
+  },
+  "preproductionReference": {
+    "path": "reports/s126-prediction-preproduction-visual-review.json",
+    "sha256": "736b522aebe07e18eec63d25b0aeff02e193a216ec21b309caaff8491e060fec",
+    "scope": "Separate actual baseline12a8/stagingC16 review; not merged or relabeled as production pixels."
+  },
+  "findings": [
+    {
+      "state": "malformed-grade",
+      "verdict": "pass",
+      "detail": "All four actual production panels show No prediction submitted, zero graded totals and no false green result. Title and native styled panel are nonblank and readable in desktop/mobile dark/light."
+    },
+    {
+      "state": "valid-recovered",
+      "verdict": "pass",
+      "detail": "All four actual production panels show1/1 winner accuracy, streak1 and one exact-margin win. Headings are fully visible; Recent results and result sentence wrap within the native component on mobile without horizontal clipping."
+    }
+  ],
+  "limits": [
+    "Only the named eight actual production component images were independently viewed and rehashed. No broad whole-product visual acceptance is inferred.",
+    "Named synthetic local-only pick/game inputs verify these hosted display states, not real-player behavior or engagement outcomes.",
+    "Mobile recovered-state captures hide unrelated fixed .game-topbar through permitted style.visibility. Native panel and Content Security Policy remain unchanged; this does not verify header/scroll integration.",
+    "Capture report attests exact source/artifact health boundaries and module bytes; review binds those report bytes and independently inspects rasters. Lifecycle/public launch, numerical accessibility, physical-device performance and broader release acceptance remain separate."
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "session": 126,
+  "verifiedAt": "2026-10-28T20:23:50.871Z",
+  "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+  "artifactDigest": "5207631f568fa31c16ea90f9c6b0e076aa3dbac3b98594e290196d008667345f",
+  "premiseVerified": true,
+  "implementationNotStarted": true,
+  "requiredDependency": "Public entry loading must meet the existing hosted performance gate before this arc can close.",
+  "observed": {
+    "firstDesktopLcpMs": 1824,
+    "confirmationDesktopLcpMs": 2088,
+    "limitMs": 1800,
+    "heroEncodedBytes": 154408,
+    "diagnosticSamples": 8,
+    "baselineImages": 4
+  },
+  "refs": [
+    {
+      "path": "reports/s126-production-performance-attempt1.json",
+      "sha256": "48335fcc61be7ca92bdbccc97cb71086bc39b02373e125dfd377f780afd96b4c"
+    },
+    {
+      "path": "reports/s126-production-performance-followup.json",
+      "sha256": "79656f0ab45a6d5acd70a6fd84ee2728408be2e6bf28201e6e87e19a71b728be"
+    },
+    {
+      "path": ".cache/s126-production-performance-diagnostic.json",
+      "sha256": "3839d009d9289b37a0b7dfe5abe6c557268e99e76b092516f1e81ea16a01f611"
+    },
+    {
+      "path": ".cache/s126-critical-waterfall.json",
+      "sha256": "1fb5e446d0d2bcc2e20d9beec3d6f0c4876217b98f0d2281e478f858fbbf6c70"
+    },
+    {
+      "path": "reports/s126-entry-before-pixels.json",
+      "sha256": "75d414b2507aa1164cd3df54e10cf891f238c1bdb0ccef98cf532777df8c7c34"
+    }
+  ],
+  "inputs": [
+    {
+      "path": "scripts/build-pages.mjs",
+      "workingSha256": "0d3d3919e5f89ea88407d3452374ef6c7c0da17aa0bfffdc4958ffde2e432a52",
+      "committedSha256": "0d3d3919e5f89ea88407d3452374ef6c7c0da17aa0bfffdc4958ffde2e432a52"
+    },
+    {
+      "path": "public/lib/themeBoot.js",
+      "workingSha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f",
+      "committedSha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+    },
+    {
+      "path": "public/styles.css",
+      "workingSha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83",
+      "committedSha256": "c4075a9e380f47a7e1f9db8cb3ceb2571be09f16a5a7207cb3f9f76df2634a83"
+    },
+    {
+      "path": "public/site.css",
+      "workingSha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a",
+      "committedSha256": "11e8faac8d82b787bb0daeb134409e42d67492724267c07edf7d3d912e29684a"
+    },
+    {
+      "path": "public/images/screens/hero.jpg",
+      "workingSha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8",
+      "committedSha256": "3b4ae1ca8959785f4e9b9c8f53bf425fc674dddc3f2167be830bdf882ddafad8"
+    }
+  ],
+  "scope": "Index-only build transformation of exact existing theme script, two stylesheets and hero JPEG. Source assets, all other pages, downloadable images, module preloads, service-worker contracts and security-policy mechanism remain intact.",
+  "acceptance": [
+    "Native five-run desktop/mobile staging and production metrics meet unchanged1800/200/0.1 limits.",
+    "Cold compressed entry payload remains comparable; decoded entry has a bounded budget.",
+    "Exact JPEG bytes and normalized trusted script/style bodies retained; strict replacement/raw-text/url guards.",
+    "CSP hashes cover inserted trusted bodies; no added source origin or unsafe-inline policy.",
+    "Actual before/after desktop/mobile dark/light pixels inspected; native controls remain usable.",
+    "Fresh exact-candidate CI7, source/artifact staging and production14, browser faults and API authority verified."
+  ],
+  "authorization": "Necessary release-gate remediation within the founder-authorized full arc, main push and deployment; no new feature, lifecycle, billing, rights or policy scope.",
+  "predecessor": {
+    "sourceRevision": "1c73ef673ea2dc4e86b49f0b5d4cac846868b911",
+    "frontendDeployment": "c92bfcd8-e746-4069-85e9-fe9f9eb262c4",
+    "artifactSnapshot": ".cache/s126-c1-artifact",
+    "firstFailurePreserved": true,
+    "confirmationPreserved": true
+  },
+  "closeoutComplete": false
+}

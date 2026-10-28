@@ -6,6 +6,8 @@
 - [x] Wave 2 — Mobile control recovery, prediction corruption safety and trophy continuity; local143/143 focused, client7/7 browser,32 selected final images and independent reviews accepted.
 - [ ] Wave 3 — Exact candidate staging, required checks, production, push and ordered closeout.
 
+Release dependency: candidate `1c73ef6` passed all seven CI jobs and is live on the frontend/API, with production provenance14/14, browser7/7 and selected-state visuals accepted. Desktop entry LCP missed the unchanged1,800ms limit in two native runs (1,824ms and2,088ms). Entry-only bundling of existing critical assets is now required before release acceptance and closeout. Baseline4 and pre-implementation evidence are recorded in reports/s126-entry-performance-premise.json; a new exact candidate and fresh staging/production evidence remain required.
+
 ## S125 Wave status
 
 - [x] Wave 1 — Fresh audit and pre-implementation admission/timing; startup sync delivery/order limitation retained.

@@ -1,0 +1,40 @@
+{
+  "session": 126,
+  "reviewer": "game_audit",
+  "reviewedAt": "2026-10-28T21:04:03.956Z",
+  "verdict": "pass",
+  "sourceFiles": [
+    {
+      "path": "scripts/lib/inline-public-entry.mjs",
+      "sha256": "af815788536e9af637ce1fb3ea93c248927246c6f8eb69d18c6533d70e5b0303"
+    },
+    {
+      "path": "scripts/build-pages.mjs",
+      "sha256": "58b5d0cd541efa564466a12d7b1f8e1a065e13f949570c5f2601c0f2af082e6f"
+    },
+    {
+      "path": "test/inline-public-entry.test.js",
+      "sha256": "fce1415a439154e80d9592fc16f81f091b65274f4efe636876964eff8b1eaa7c"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "9b1ff32822dc75d00985e452c1a85c344d3b76d8b00e73a75f552a59cd2a87fc"
+    }
+  ],
+  "findings": [],
+  "unresolvedFindings": [],
+  "independentFocused": {
+    "command": "node --test test/inline-public-entry.test.js",
+    "tests": 9,
+    "pass": 9,
+    "fail": 0,
+    "skipped": 0
+  },
+  "rootFocused": {
+    "path": "reports/s126-c2-local-checks.json",
+    "sha256": "f6d74c7f159578411208632a9b5cc18d4ea09d10a4550d49460b7ef356dde999",
+    "tests": 37,
+    "pass": 37
+  },
+  "scope": "Independent source review of the bounded index-only transform. Actual hosted C2 delivery and performance are not yet proven."
+}

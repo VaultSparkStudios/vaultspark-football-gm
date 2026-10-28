@@ -119,14 +119,33 @@
   "silHealth": 487,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 3,
     "total": 12,
-    "failing": 0,
-    "score": 100,
+    "failing": 3,
+    "score": 75,
     "date": "2026-10-28",
-    "passing": 12,
+    "passing": 9,
     "warning": 0,
-    "checks": []
+    "checks": [
+      {
+        "id": "release-authority-checked-staging-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "checked 12a8abf88403ffbc4905b853a77495fb7babac1b · live 1c73ef673ea2dc4e86b49f0b5d4cac846868b911"
+      },
+      {
+        "id": "release-authority-checked-publication-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "checked 12a8abf88403ffbc4905b853a77495fb7babac1b · live 1c73ef673ea2dc4e86b49f0b5d4cac846868b911"
+      },
+      {
+        "id": "release-authority-release-source-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "release source 12a8abf88403ffbc4905b853a77495fb7babac1b · live staging 1c73ef673ea2dc4e86b49f0b5d4cac846868b911"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
