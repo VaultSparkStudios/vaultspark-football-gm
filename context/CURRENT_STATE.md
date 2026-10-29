@@ -1,5 +1,14 @@
 # Current State
 
+## 2026-10-29 — Session 128 — Reliable Inbox and trustworthy playtest notes
+
+- 2026-10-29: Session 128 shipped reliable Inbox recovery and trustworthy playtest notes at verified matching frontend/API source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`. Final closing-metadata acceptance and closeout publication remain pending.
+
+S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending.
+
+Technical source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`; artifact `86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553`; reports/s128-release-acceptance.json. See LATEST_HANDOFF for the scoped evidence and candidate history. Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This ordered checkpoint does not prove full closeout, final publication or native goal completion.
+
+
 ## 2026-10-29 — Session 127 — Verified finalization checkpoint
 
 S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API release and formal closeout evidence are verified, subject to final containing receipt publication and original-lock release.

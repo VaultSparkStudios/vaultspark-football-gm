@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.1",
+  "generatedBy": "scripts/verify-staging-receipt.mjs",
+  "checkedAt": "2026-10-29T20:06:27.444Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "expectedRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "summary": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "checks": [
+    {
+      "name": "health stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "manifest stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "style asset stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "health reachable",
+      "ok": true
+    },
+    {
+      "name": "manifest reachable",
+      "ok": true
+    },
+    {
+      "name": "style asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset identity",
+      "ok": true,
+      "expected": "community-stats.25f97e0a1e.js",
+      "observed": "community-stats.25f97e0a1e.js"
+    },
+    {
+      "name": "source revision",
+      "ok": true,
+      "expected": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "observed": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5"
+    },
+    {
+      "name": "artifact fingerprint",
+      "ok": true,
+      "expected": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+      "observed": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553"
+    },
+    {
+      "name": "style asset identity",
+      "ok": true,
+      "expected": "styles.c4075a9e38.css",
+      "observed": "styles.c4075a9e38.css"
+    },
+    {
+      "name": "repository identity",
+      "ok": true,
+      "expected": "VaultSparkStudios/vaultspark-football-gm",
+      "observed": "VaultSparkStudios/vaultspark-football-gm"
+    },
+    {
+      "name": "launch truth separation",
+      "ok": true,
+      "expected": false,
+      "observed": false
+    }
+  ],
+  "stagingContract": {
+    "sameOriginRequired": true,
+    "healthSchemaRequired": true,
+    "exactDeployIdentityRequired": true,
+    "declaredBootAssetsRequired": true
+  }
+}

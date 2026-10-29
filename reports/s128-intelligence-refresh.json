@@ -1,0 +1,60 @@
+{
+  "session": 128,
+  "observedAt": "2026-10-29T20:13:40.162Z",
+  "subject": "franchise-architect-football",
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "verified": true,
+  "scoring": {
+    "ok": true,
+    "score": 43808,
+    "tier": "FORGE",
+    "project": "franchise-architect-football",
+    "sourceFingerprint": "8245650f272322e2b70425b270fe49ff15b381d74208998fb26e20554c6e932e",
+    "historyHash": "9e7c11e26d08544bdd85bfa358eb324cbaef7c04167639758aba194847ea821f",
+    "mindHash": "c5bea20286e9fed561bc64e16d9736316940fa99d0928547ee99a93a1c21b020",
+    "scorerSource": "registry",
+    "log": {
+      "path": ".cache/s128-ignis-refresh.log",
+      "sha256": "70774f9459a2d0aa889d0b385d188d43f4a63eaecc1ae3d3908e30ac85f8ad33"
+    }
+  },
+  "steps": [
+    {
+      "name": "compute-entropy",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "target": "current-project",
+      "entryOwner": "control-plane-explicit-project",
+      "log": {
+        "path": ".cache/s128-compute-entropy.log",
+        "sha256": "b7159e49c1f7c3a1f781f268e29e9da321c2803e2395e863bdc158926e961751"
+      }
+    },
+    {
+      "name": "append-genome-snapshot",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "target": "current-project",
+      "entryOwner": "control-plane-explicit-project",
+      "log": {
+        "path": ".cache/s128-append-genome-snapshot.log",
+        "sha256": "25dbb7c46e4db262e5c94cdc9a55b87da85bc27f84a951a758f5f9ea29dc9190"
+      }
+    },
+    {
+      "name": "render-state-vector",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "target": "current-project",
+      "entryOwner": "control-plane-explicit-project",
+      "log": {
+        "path": ".cache/s128-render-state-vector.log",
+        "sha256": "8b973bb7f6ad770847e833e15166bbd8d46047f61cd7ba7cf32fdf0e5f9045be"
+      }
+    }
+  ],
+  "closeoutComplete": false,
+  "nativeGoalComplete": false,
+  "scope": "One recipient-owned score and explicit current-project entropy/genome/state-vector derivations. Final metadata, containing publication/readback, signed impact and owned cleanup remain separately required. No ecosystem rescore, sibling write or recipient adoption claim."
+}

@@ -2,9 +2,14 @@
 
 ## S128 Wave status
 
-- [x] Wave 1: fresh startup, bound goal, live audit and candidate admission.
-- [x] Wave 2: both selected repairs; C3 focused49/49, local browser4/4 and independent code/pixel review; fresh critical news admission included. Hosted acceptance remains separate.
-- [ ] Wave 3: exact candidate staging/production, full ordered closeout and push.
+- [x] Wave 1: fresh startup, goal binding, live audit and pre-edit admission.
+- [x] Wave 2: both selected L2 repairs, C3 focused49/49, local browser4/4 and18 reviewed captures; rejected candidates retained.
+- [ ] Wave 3: exact C3 frontend/API technical release verified by reports/s128-release-acceptance.json; ordered records written. Final closing metadata, containing publication/readback, signed impact and owned cleanup remain required.
+
+## S128 future discipline — explicitly unselected
+
+- [ ] [SIL:128] Future discipline — unselected; current arc unauthorized: Future discipline: cache admission tests must prove identity-only or whitespace payloads cannot reserve a real source event ID; then verify the next authoritative action.
+- [ ] [SIL:128] Future discipline — unselected; current arc unauthorized: Future discipline: before cutting a candidate, reconcile selected code tests, visible mobile target states and every source/artifact-bound receipt; preserve failed candidates and cancelled jobs as historical.
 
 ## S127 Wave status
 

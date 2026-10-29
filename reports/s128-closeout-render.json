@@ -1,0 +1,94 @@
+{
+  "session": 128,
+  "observedAt": "2026-10-29T20:15:20.360Z",
+  "verified": true,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "silDelta": {
+    "previous": 536,
+    "current": 532,
+    "kind": "numeric"
+  },
+  "selectedVisualCount": 62,
+  "waveCount": 3,
+  "impactJudgment": {
+    "reviewer": "root",
+    "basis": "Engineering judgment; real-player and financial outcomes unmeasured."
+  },
+  "ascii": {
+    "path": "docs/CLOSEOUT_IMPACT_S128_2026-10-29.md",
+    "sha256": "c23c1282c3aee70819a8e9740bb96d3b2a949feff170c46e09aeeb090d81877d"
+  },
+  "board": {
+    "path": "docs/CLOSEOUT_STATUS_BOARD.md",
+    "sha256": "84b0155e660eb098c48116e57cddacc7c090be693f85bdda8fd6e7dcd37f9c11"
+  },
+  "nativeLogs": [
+    {
+      "name": "sil-check",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "log": {
+        "path": ".cache/s128-render-sil-check.log",
+        "sha256": "86b7526ec808769cc683d4ca86b910899eecac6eb57b36b971ec9f03983003b3"
+      }
+    },
+    {
+      "name": "status",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "log": {
+        "path": ".cache/s128-render-status.log",
+        "sha256": "135f163084413d21bb792d1da266f1d1b86a3c3ea9a62ad121bce57fd47abff0"
+      }
+    },
+    {
+      "name": "startup",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "log": {
+        "path": ".cache/s128-render-startup.log",
+        "sha256": "61ade4017d2846886e3a7de8cdcedd0ecb5db85ea57003a47c573d708b25a22d"
+      }
+    },
+    {
+      "name": "startup-format",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "log": {
+        "path": ".cache/s128-render-startup-format.log",
+        "sha256": "a687437197d81f7e3bc03d137ab0aa047e746a6e49e1836e0fb60bcf295cc407"
+      }
+    },
+    {
+      "name": "brief",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "log": {
+        "path": ".cache/s128-render-brief.log",
+        "sha256": "034b81a61d36f33285c1387424f96e29bc97f896c5b5c525a1e47ff66132f21f"
+      }
+    },
+    {
+      "name": "board",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "log": {
+        "path": ".cache/s128-render-board.log",
+        "sha256": "6831bcf0409ebc4b4ff2efaa57df3d5d83bf1c36d8fa3e1e4ed7d4d815cc0a19"
+      }
+    },
+    {
+      "name": "board-format",
+      "exitCode": 0,
+      "subject": "franchise-architect-football",
+      "log": {
+        "path": ".cache/s128-render-board-format.log",
+        "sha256": "9bc473bb0c65b8959da200871aff4f6d1177115cf030ccf275d8d23e2232dfc6"
+      }
+    }
+  ],
+  "closeoutComplete": false,
+  "nativeGoalComplete": false,
+  "scope": "Ordered checkpoint render only. Exact closing metadata, containing publication/readback, signed impact and owned cleanup remain separately required."
+}

@@ -1,5 +1,16 @@
 # Agent Memory
 
+## Session 128 durable patterns
+
+- An ID is a deduplication key, not proof that an optional cache row contains usable message content.
+- Valid JSON can contain malformed nested data; admit disclosed fields and bounded types before exports, trend math or global UI state.
+- A test-only source change can create a new exact candidate even if hosted artifact bytes match; do not borrow source-specific acceptance.
+- Keep focused tests, source Studio, hosted CI jobs, actual worker journeys, provenance checks, performance samples and inspected pixels separately scoped.
+- Preserve source-bound rejected/superseded receipts and explicit capture limits; task-local evidence does not prove player outcomes.
+
+These are safe project-native patterns; actual current completion remains in LATEST_HANDOFF. No private memory path or credential is published.
+
+
 ## Session 127 verified finalization — same-session evidence
 
 Preserve failed full-suite attempts and truthful Partial checkpoints. Append a separate same-session Achieved entry after actual exact metadata, first containing readback, signed impact and owned cleanup; never let a parser-first Partial entry be silently rewritten. Score536 and two outcomes are counted once. Final containing receipt publication and original-lock release remain separately verified.

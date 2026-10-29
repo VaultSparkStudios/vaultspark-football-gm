@@ -3,11 +3,11 @@
 
 
 <!-- rolling-status-start -->
-Last session: 127 (2026-10-29) | Total: 536/1000 | Velocity: 2 | Debt: →
-Avgs — 3: 524.3 | 5: 516.6 | 10: 648.9 | 25: 797.7 | all: 930.9
+Last session: 128 (2026-10-29) | Total: 532/1000 | Velocity: 2 | Debt: →
+Avgs — 3: 533.3 | 5: 523 | 10: 618.3 | 25: 780.6 | all: 926.1
 Sparkline: ▁▁▁▁▁
-Intent rate: 60% (3/5 last 5)
-SIL delta: 532 → 536 (+4). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 81 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+Intent rate: 40% (2/5 last 5)
+SIL delta: 536 → 532 (-4). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 82 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
@@ -220,3 +220,31 @@ Proof: reports/s127-closeout-completion.json. Existing two unselected future-dis
 ---
 
 Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-29 — Session 128 — Reliable Inbox and trustworthy playtest notes
+
+SIL v3.0: **532 / 1000** (Dev Health 93, Creative Alignment 70, Momentum 63, Engagement 45, Process Quality 58, Cross-Repo Coherence 60, Security Posture 61, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 62). Classification: **Partial — finalization pending** at this ordered checkpoint. Prior536; delta-4. Scores are root-reviewed engineering judgment, not measured player or financial outcomes.
+
+Two selected outcomes. Focused49/49, exact-source Studio398/398 and hosted CI7/7 are separate evidence scopes. Staging and production each passed four actual worker journeys, native provenance14/14, eighteen independently inspected captures and unchanged five-run performance checks per desktop/mobile profile. Final visual62 preserves baseline8, local-C3 18, staging18 and production18 boundaries. API database ready; database/routing preserved and rollback source/image retained. C1/C2 failures and supersession remain historical. No actual-player, financial, recipient-adoption or public-launch outcome is claimed.
+
+Velocity:2 selected product outcomes, counted once and excluding SIL/meta tasks. Debt trend remains unmeasured unless derived from the current board.
+
+- Dev Health: 93 retained: both selected failures repaired; exact source Studio398, CI7 and hosted worker matrices pass. These checks do not establish whole-product or actual-player outcomes.
+- Creative Alignment: 70 retained: deterministic football management and existing disclosed note fields preserved; no new creative direction.
+- Momentum: 63, down2: two selected repairs reached verified matching frontend/API production; repeated candidate rework and a long delivery cycle limit momentum credit.
+- Engagement: 45 retained: continuity and feedback reliability are implementation changes; real-player comprehension, fun, return intent and retention remain unmeasured.
+- Process Quality: 58 proposed, down4: pre-edit admission and independent review are strengths, but id-only/whitespace cache admission defects survived earlier checks and cost repeated candidate cycles. Preserved failures are not erased by later green.
+- Cross-Repo Coherence: 60 retained: existing control-plane, credential gateway and recipient-owned boundaries used; no recipient adoption proven.
+- Security Posture: 61 proposed, up1: known-field receipt admission/export removes undisclosed nested fields and invalid rating evidence without changing data policy; independent identity/email holds remain.
+- Ecosystem Integration: 20 retained: no newly verified Obelisk identity or reply-as email integration.
+- Capital Efficiency: 0 retained: no measured financial outcome or unit economics, without implying a financial loss.
+- Automation Coverage: 62 proposed, up1: meaningful malformed-shape, identity-collision and export regression coverage; task-local adapters are not reusable shipped automation.
+
+Brainstorm: An ID is a deduplication key, not proof that an optional cache row contains usable message content. Valid JSON can contain malformed nested data; admit disclosed fields and bounded types before exports, trend math or global UI state. A test-only source change can create a new exact candidate even if hosted artifact bytes match; do not borrow source-specific acceptance. Keep focused tests, source Studio, hosted CI jobs, actual worker journeys, provenance checks, performance samples and inspected pixels separately scoped. Preserve source-bound rejected/superseded receipts and explicit capture limits; task-local evidence does not prove player outcomes.
+
+- [SIL:128] Future discipline — unselected; current arc unauthorized: Future discipline: cache admission tests must prove identity-only or whitespace payloads cannot reserve a real source event ID; then verify the next authoritative action.
+- [SIL:128] Future discipline — unselected; current arc unauthorized: Future discipline: before cutting a candidate, reconcile selected code tests, visible mobile target states and every source/artifact-bound receipt; preserve failed candidates and cancelled jobs as historical.
+
+Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This ordered checkpoint does not prove full closeout, final publication or native goal completion.
+
+Intent outcome: Partial. S128 selected repairs and actual matching frontend/API production are verified; closing-metadata acceptance, containing publication/readback, signed impact and owned cleanup remain pending. The first closing-metadata run measured395/398 and remains part of this session's evidence. A corrected retry is not passing evidence until verified; no full closeout or native goal completion is claimed.

@@ -125,3 +125,15 @@ C1 source0059051c passed focused48/48, staging native14/14, actual staging brows
 ## 2026-10-29 — S128 C3 Inbox admission correction
 
 Final independent review reproduced an ID-only cache row reserving the key of later critical source news. Require meaningful message content even when an ID exists; the new regression verifies admission, unread count and persistent resolution. C3 focused49/49 and local browser4/4 pass, with18 inspected captures and explicit clipboard/week/reload evidence. C2 passed its native Studio398/398 but was superseded before production; its three obsolete push workflows received cancellation requests. Preserve their actual dispositions and all earlier evidence. Local reports before the hosted worker-kind assertion are browser evidence, not proof of runtime kind.
+
+## 2026-10-29 — Session 128 — Usable cache messages and disclosed playtest evidence
+
+Admit usable message content before deduplication/global Inbox state. IDs alone, malformed shapes or whitespace payloads must not reserve a later authoritative source event. Preserve valid history, resolution and scope; derive safe priority/timestamps and verify fresh critical news plus the next authoritative action.
+
+Normalize stored and caller-supplied playtest notes to disclosed fields before rendering, export and trend math. Invalid ratings cannot contribute trend evidence; unknown nested fields do not enter copied packets. This implements existing disclosures without changing identity, data-handling, trust, rights/licensing, spending or lifecycle policy.
+
+C1/C2 candidate failures, revised tests, cancelled jobs and capture limitations remain historical. Only exact C3 receipt bytes prove current technical acceptance. Source398/398 does not accept later closing metadata. Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This ordered checkpoint does not prove full closeout, final publication or native goal completion.
+
+## 2026-10-29 — S128 closing-record correction
+
+S128 first closing-metadata attempt returned395/398, preserved in reports/s128-final-metadata-attempt1.json. The native freshness checker resolves the already-deployed dated Inbox/playtest release note through a dated CURRENT_STATE session bullet, which was missing; the new SIL entry also lacked the explicit Intent outcome field. Independent review confirmed these are record-format defects. Correct only those records, retain the Partial checkpoint and failed native evidence, and require an unchanged complete native retry. Product source/artifact and frozen release acceptance remain unchanged.

@@ -1,0 +1,33 @@
+{
+  "session": 128,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "startedAt": "2026-10-29T18:32:16.096Z",
+  "completedAt": "2026-10-29T18:45:22.022Z",
+  "exactCommittedTree": "8ef3f6797952219fe3201b5aec1e47fe714ab5c6",
+  "initialClean": true,
+  "isolated": true,
+  "checkout": ".cache/s128-c3-source-checkout",
+  "nativeRunnerSha256": "8a1e6ba618402dc701b146a5b2fae9bde49ef01442029ef8359469e2d402e574",
+  "exitCode": 0,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 398,
+    "pass": 398,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "generated": [
+    "context/PROJECT_STATUS.json",
+    "docs/STARTUP_BRIEF.md"
+  ],
+  "untracked": [],
+  "verified": true,
+  "rawLog": {
+    "path": ".cache/s128-c3-isolated-studio.log",
+    "sha256": "9449183f9bb922144b6f83c3a9ffcc28f0ae0a191c190ed4d9a0c5bfd0b526a4"
+  },
+  "boundary": "Native complete Studio suite on exact committed source with existing node_modules linked; local ignored generic scripts and private CDR excluded. No installs, no omitted tests and no production promotion."
+}

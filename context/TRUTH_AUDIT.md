@@ -100,3 +100,13 @@ The prior source398, failed metadata397/398 and corrected metadata398/398 remain
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-29 — Session 128 — Candidate and evidence boundaries
+
+Two selected outcomes. Focused49/49, exact-source Studio398/398 and hosted CI7/7 are separate evidence scopes. Staging and production each passed four actual worker journeys, native provenance14/14, eighteen independently inspected captures and unchanged five-run performance checks per desktop/mobile profile. Final visual62 preserves baseline8, local-C3 18, staging18 and production18 boundaries. API database ready; database/routing preserved and rollback source/image retained. C1/C2 failures and supersession remain historical. No actual-player, financial, recipient-adoption or public-launch outcome is claimed.
+
+Technical source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`; artifact `86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553`; reports/s128-release-acceptance.json. Final visual62 retains baseline8/local-C3 18/staging18/production18 with actual inspected bytes and capture limits. C1/C2 tests, cancelled runs and superseded receipts retain their original identity. Focused49, native source398, CI7, hosted4-per-origin, provenance14-per-origin and performance5-runs-per-profile are separate scopes, never an aggregate application case count. No actual-player/cohort, financial, physical-device, restore-drill or public-launch outcome is inferred. Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This ordered checkpoint does not prove full closeout, final publication or native goal completion.
+
+## 2026-10-29 — S128 closing-record correction
+
+S128 first closing-metadata attempt returned395/398, preserved in reports/s128-final-metadata-attempt1.json. The native freshness checker resolves the already-deployed dated Inbox/playtest release note through a dated CURRENT_STATE session bullet, which was missing; the new SIL entry also lacked the explicit Intent outcome field. Independent review confirmed these are record-format defects. Correct only those records, retain the Partial checkpoint and failed native evidence, and require an unchanged complete native retry. Product source/artifact and frozen release acceptance remain unchanged.

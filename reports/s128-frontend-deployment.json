@@ -1,0 +1,48 @@
+{
+  "session": 128,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "verified": true,
+  "transport": "brokered-direct-upload",
+  "ci": {
+    "ok": true,
+    "sha": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "runId": 40934553781,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "stagingNative": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "productionNative": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "deploymentId": "c484acb7-4930-4631-a260-ea25f78581f0",
+  "deploymentUrl": "https://c484acb7.franchise-architect-football.pages.dev",
+  "previousDeploymentId": "1ebd486d-40a4-4a4e-8195-42cccd8bb022",
+  "rollback": {
+    "available": true,
+    "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+    "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2"
+  },
+  "uploadInventory": {
+    "completeUploadDigest": "76681f1511714e7110c2a469dfed57cb3754a06c02517be85f3cfb4ed5535b9b",
+    "completeUploadFiles": 3660,
+    "allPathsAndBytesVerified": true
+  },
+  "observedAt": "2026-10-29T20:06:27.444Z",
+  "boundary": "Frontend provider/native provenance only; hosted production browser/pixels/performance and full release closeout remain separate."
+}

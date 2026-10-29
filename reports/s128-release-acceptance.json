@@ -1,0 +1,349 @@
+{
+  "schemaVersion": "1.0",
+  "session": 128,
+  "at": "2026-10-29T20:10:52.323Z",
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "technicalAcceptanceComplete": true,
+  "verified": true,
+  "technicalReleaseVerified": true,
+  "closeoutComplete": false,
+  "launchApproved": false,
+  "ci": {
+    "ok": true,
+    "sha": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "runId": 40934553781,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "focused": {
+    "passed": 49,
+    "total": 49,
+    "scope": "Exact listed C3 input hashes; no aggregate application count."
+  },
+  "sourceStudio": {
+    "passed": 398,
+    "total": 398,
+    "scope": "Exact committed source; closing metadata acceptance remains separate."
+  },
+  "frontend": {
+    "deploymentId": "c484acb7-4930-4631-a260-ea25f78581f0",
+    "rollback": {
+      "available": true,
+      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2"
+    }
+  },
+  "backend": {
+    "verified": true,
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "preservedDatabaseAndRouting": true,
+    "previousSourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f"
+  },
+  "api": {
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 1,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5"
+  },
+  "phases": [
+    {
+      "phase": "staging",
+      "origin": "https://staging.playfranchisearchitect.com",
+      "workerJourneys": 4,
+      "reviewedCaptures": 18,
+      "performanceVerified": true,
+      "native": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    },
+    {
+      "phase": "production",
+      "origin": "https://playfranchisearchitect.com",
+      "workerJourneys": 4,
+      "reviewedCaptures": 18,
+      "performanceVerified": true,
+      "native": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      }
+    }
+  ],
+  "live": [
+    {
+      "phase": "staging",
+      "schemaVersion": "1.1",
+      "generatedBy": "scripts/verify-staging-receipt.mjs",
+      "checkedAt": "2026-10-29T20:10:50.567Z",
+      "baseUrl": "https://staging.playfranchisearchitect.com",
+      "expectedRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      },
+      "checks": [
+        {
+          "name": "health stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "manifest stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "style asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "health reachable",
+          "ok": true
+        },
+        {
+          "name": "manifest reachable",
+          "ok": true
+        },
+        {
+          "name": "style asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset identity",
+          "ok": true,
+          "expected": "community-stats.25f97e0a1e.js",
+          "observed": "community-stats.25f97e0a1e.js"
+        },
+        {
+          "name": "source revision",
+          "ok": true,
+          "expected": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+          "observed": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5"
+        },
+        {
+          "name": "artifact fingerprint",
+          "ok": true,
+          "expected": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+          "observed": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553"
+        },
+        {
+          "name": "style asset identity",
+          "ok": true,
+          "expected": "styles.c4075a9e38.css",
+          "observed": "styles.c4075a9e38.css"
+        },
+        {
+          "name": "repository identity",
+          "ok": true,
+          "expected": "VaultSparkStudios/vaultspark-football-gm",
+          "observed": "VaultSparkStudios/vaultspark-football-gm"
+        },
+        {
+          "name": "launch truth separation",
+          "ok": true,
+          "expected": false,
+          "observed": false
+        }
+      ],
+      "stagingContract": {
+        "sameOriginRequired": true,
+        "healthSchemaRequired": true,
+        "exactDeployIdentityRequired": true,
+        "declaredBootAssetsRequired": true
+      }
+    },
+    {
+      "phase": "production",
+      "schemaVersion": "1.1",
+      "generatedBy": "scripts/verify-staging-receipt.mjs",
+      "checkedAt": "2026-10-29T20:10:50.847Z",
+      "baseUrl": "https://playfranchisearchitect.com",
+      "expectedRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "summary": {
+        "status": "verified",
+        "checksPassed": 14,
+        "checksTotal": 14
+      },
+      "checks": [
+        {
+          "name": "health stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "manifest stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "style asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset stayed on staging origin",
+          "ok": true
+        },
+        {
+          "name": "health reachable",
+          "ok": true
+        },
+        {
+          "name": "manifest reachable",
+          "ok": true
+        },
+        {
+          "name": "style asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset reachable",
+          "ok": true
+        },
+        {
+          "name": "Community Stats asset identity",
+          "ok": true,
+          "expected": "community-stats.25f97e0a1e.js",
+          "observed": "community-stats.25f97e0a1e.js"
+        },
+        {
+          "name": "source revision",
+          "ok": true,
+          "expected": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+          "observed": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5"
+        },
+        {
+          "name": "artifact fingerprint",
+          "ok": true,
+          "expected": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+          "observed": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553"
+        },
+        {
+          "name": "style asset identity",
+          "ok": true,
+          "expected": "styles.c4075a9e38.css",
+          "observed": "styles.c4075a9e38.css"
+        },
+        {
+          "name": "repository identity",
+          "ok": true,
+          "expected": "VaultSparkStudios/vaultspark-football-gm",
+          "observed": "VaultSparkStudios/vaultspark-football-gm"
+        },
+        {
+          "name": "launch truth separation",
+          "ok": true,
+          "expected": false,
+          "observed": false
+        }
+      ],
+      "stagingContract": {
+        "sameOriginRequired": true,
+        "healthSchemaRequired": true,
+        "exactDeployIdentityRequired": true,
+        "declaredBootAssetsRequired": true
+      }
+    }
+  ],
+  "visual": {
+    "captures": 62,
+    "scope": "62 selected rasters:8 original baseline,18 exact-input C3 local,18 staging and18 production at exact C3. Baseline and local runtime/capture limits remain distinct from actual hosted worker proof. Selected content/action coverage does not establish whole-product visual, physical-device or actual-player outcome acceptance."
+  },
+  "receipts": [
+    {
+      "path": ".cache/s128-candidate.json",
+      "sha256": "971dee3bbcf93bc362f337c83f78a00e8e9dfe9e4f7a926c2722876f6e5f0668"
+    },
+    {
+      "path": "reports/s128-ci.json",
+      "sha256": "dc6cac83458efe0452f0bc11cf78dc20b6ca4b0344163d5819089897cb868223"
+    },
+    {
+      "path": "reports/s128-isolated-studio.json",
+      "sha256": "f29ee16beaa9214855419e49aabe49d0d55782d06dbdd00e3291daa6a2c9a5e6"
+    },
+    {
+      "path": "reports/s128-frontend-deployment.json",
+      "sha256": "f1aa4e1ab36477721a098a86cb24e1d4734b9595d40c475637b21096ff9f120f"
+    },
+    {
+      "path": "reports/s128-backend-deployment.json",
+      "sha256": "c2c7dd7b48177ef1648d73543455928fd9064cbcdc500c56d5f9ab058b98d1a0"
+    },
+    {
+      "path": "reports/s128-source-publication.json",
+      "sha256": "bc6b14c35af34f28ee8eb61ff6dc16b351e112113abf7c2183a03e395b2d2c13"
+    },
+    {
+      "path": "reports/s128-c3-focused-checks.json",
+      "sha256": "f1a5bf4c6d6206e50213d065d0902bf444f18cd0e8173565110003e099e77304"
+    },
+    {
+      "path": ".cache/s128-c3-isolated-studio.log",
+      "sha256": "9449183f9bb922144b6f83c3a9ffcc28f0ae0a191c190ed4d9a0c5bfd0b526a4"
+    },
+    {
+      "path": ".cache/s128-focused-checks.log",
+      "sha256": "9da5b6820a4f1872a9e6d6fd6a6e9a0cf89385ae3f4124b481e84cc86451e082"
+    },
+    {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "04585dd7946784d524a525c881028f4cf92cc14b0cf83974b9dccd3f0f837bec"
+    },
+    {
+      "path": "docs/visual-qa/S128_LOCAL_C3.json",
+      "sha256": "e411c68d48030f385560ca94baa9b2440ce62830754d2dc92506ba5064bd8f4b"
+    },
+    {
+      "path": "reports/s128-staging-visual-review.json",
+      "sha256": "b58f62ac8e67daed4ed1f425a41f259cb029478dfaebdd5a553c49f3017ef8c5"
+    },
+    {
+      "path": "reports/s128-production-visual-review.json",
+      "sha256": "f209bca4d79050a2e716f723387959fd984629672f7ebd24576dd85380045542"
+    },
+    {
+      "path": "static/deploy-manifest.json",
+      "sha256": "3d23be7e277261cb00dbf48965f6c4b4b3304fad728bf8b43450de3bf42c6da9"
+    },
+    {
+      "path": "reports/s128-staging-browser.json",
+      "sha256": "ae4a85f03c476b838b3c96f5ccb97d336283a1d3d1b550c857bd47e6c420fde5"
+    },
+    {
+      "path": "reports/s128-staging-performance.json",
+      "sha256": "d52df032489985af664fa9fa0a2cc862b10055895c04bd4f78ee7d59c6234e0c"
+    },
+    {
+      "path": "reports/s128-production-browser.json",
+      "sha256": "d25fb99d22d538c480cf1710eef5cbc3264789cdaa32da0e9309c69319b7885b"
+    },
+    {
+      "path": "reports/s128-production-performance.json",
+      "sha256": "ff6e04498f4099513b928c22c4d8c125874e6b6ec76e16b1c80d6487b0b304b7"
+    }
+  ],
+  "limits": [
+    "Selected technical release only; no public/lifecycle launch approval or actual-player/cohort/financial outcome claim.",
+    "Baseline8 and local-C3 18 retain their source/runtime/capture limitations; hosted18 per origin is separate actual worker evidence.",
+    "Ordered closeout, exact closing-metadata acceptance, containing publication/readback, signed impact and owned cleanup remain required."
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "session": 128,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "transport": "native-pinned-ssh",
+  "privateKeyCopied": false,
+  "imageProducer": {
+    "id": 40934554160,
+    "attempt": 1,
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "verified": true,
+    "requiredJobs": [
+      "build-images (api)",
+      "build-images (play)"
+    ]
+  },
+  "ci": {
+    "ok": true,
+    "sha": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "runId": 40934553781,
+    "attempt": 1,
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "lane": "hosted-exact-sha"
+  },
+  "startedAt": "2026-10-29T20:00:47.481Z",
+  "observedAt": "2026-10-29T20:01:03.170Z",
+  "hostPinVerified": true,
+  "scopedNativeDeployer": true,
+  "previousSourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "previousImage": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "opsPayload": [
+    "ops/Caddyfile",
+    "ops/deploy-backend.docker-compose.yml"
+  ],
+  "copyAttempts": 1,
+  "deployAttempts": 1,
+  "verified": true,
+  "health": {
+    "ok": true,
+    "database": "ready",
+    "latencyMs": 2,
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5"
+  },
+  "runtime": {
+    "id": "1979991268d0182dbf88dfeb24907c480b745a5f745ebccc20c94c9653150487",
+    "imageId": "sha256:7a292875fcbdc128fd2514179bdba2151986d7ab63ba2e335587375fdeaf1fc8",
+    "imageRef": "ghcr.io/vaultsparkstudios/franchise-architect-football-api:812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "status": "running",
+    "observedAt": "2026-10-29T20:01:01.286Z"
+  },
+  "preservation": {
+    "verified": true,
+    "before": {
+      "postgres": {
+        "id": "78d30c4ff6e1d2a067422ac0a64265458f56349d64b2d7787776bcb64e8efa73",
+        "imageId": "sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54",
+        "imageRef": "postgres:16",
+        "startedAt": "2026-10-01T18:57:37.203018954Z",
+        "running": true,
+        "health": "healthy",
+        "mountHash": "3523d623e29a91f4ee08bdf2aa9bc6e63d1a70a842050d58aaf246461a829c5b"
+      },
+      "caddy": {
+        "mainConfigHash": "98517b24d886f237a610ce97c31d8afc578091f02809ad43357c5a4d633b190a",
+        "routeHash": "7e0ab011060a3c34b83d476602019b1742f424a09e8061a4c4e78a933dc75cea",
+        "service": {
+          "MainPID": "1165315",
+          "ExecMainStartTimestampMonotonic": "7947091080102",
+          "ActiveState": "active"
+        }
+      }
+    },
+    "after": {
+      "postgres": {
+        "id": "78d30c4ff6e1d2a067422ac0a64265458f56349d64b2d7787776bcb64e8efa73",
+        "imageId": "sha256:1a6ab3f5345eb6dbe04a1349529caabdb0ab09293a09590fad07b2246bfa4b54",
+        "imageRef": "postgres:16",
+        "startedAt": "2026-10-01T18:57:37.203018954Z",
+        "running": true,
+        "health": "healthy",
+        "mountHash": "3523d623e29a91f4ee08bdf2aa9bc6e63d1a70a842050d58aaf246461a829c5b"
+      },
+      "caddy": {
+        "mainConfigHash": "98517b24d886f237a610ce97c31d8afc578091f02809ad43357c5a4d633b190a",
+        "routeHash": "7e0ab011060a3c34b83d476602019b1742f424a09e8061a4c4e78a933dc75cea",
+        "service": {
+          "MainPID": "1165315",
+          "ExecMainStartTimestampMonotonic": "7947091080102",
+          "ActiveState": "active"
+        }
+      }
+    }
+  }
+}

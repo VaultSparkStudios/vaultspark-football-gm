@@ -610,7 +610,7 @@
     ]
   },
   "implementationComplete": true,
-  "releaseComplete": false,
+  "releaseComplete": true,
   "closeoutComplete": false,
   "generatedAt": "2026-10-29T06:01:28.231Z",
   "preverifiedSkips": [
@@ -749,5 +749,12 @@
       "reports/s128-working-security.json",
       "test/playtest-receipt-integrity.test.js"
     ]
+  },
+  "closeoutRecorded": true,
+  "currentRelease": {
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "acceptance": "reports/s128-release-acceptance.json",
+    "status": "technical-production-verified-finalization-pending"
   }
 }

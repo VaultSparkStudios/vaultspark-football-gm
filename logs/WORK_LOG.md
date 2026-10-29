@@ -115,3 +115,9 @@ Proof: reports/s127-closeout-completion.json. SIL remains536/1000; selected outc
 ---
 
 Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-29 — Session 128
+
+S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending. Technical source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`; reports/s128-release-acceptance.json. Two selected outcomes; ordered checkpoint only, finalization pending.
+
+S128 metadata acceptance395/398 retained; two record-format defects diagnosed and corrected with independent review. Full retry remains required.

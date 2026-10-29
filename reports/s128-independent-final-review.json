@@ -1,0 +1,64 @@
+{
+  "session": 128,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "reviewer": "release_review",
+  "verified": true,
+  "verdict": "approve-after-fix",
+  "rounds": [
+    {
+      "session": 128,
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+      "phase": "prepared-finalizer",
+      "verdict": "fix",
+      "disposition": "resolved",
+      "findings": [
+        "Readable executionEvidence preserved; structured details use currentExecutionEvidence."
+      ]
+    },
+    {
+      "session": 128,
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+      "phase": "closing-metadata-attempt1",
+      "verdict": "fix",
+      "disposition": "resolved-with-preserved-failure",
+      "findings": [
+        "Actual395/398 exposed missing CURRENT_STATE dated session mapping and explicit SIL Partial intent. Checker-source review confirmed the deployed public note was already correct; no public-source change was required."
+      ]
+    },
+    {
+      "session": 128,
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+      "phase": "actual-corrected-closing-metadata",
+      "verdict": "approve",
+      "findings": []
+    }
+  ],
+  "metadataEvidence": {
+    "receipt": "reports/s128-final-metadata.json",
+    "sha256": "6c567f2a0ebec1e2cbe507989d40d366fa1d37fcddf608e16dc5d24edd57d4d3",
+    "testedStagedTree": "5a2a137c89deb5bc20dea32130a4e113576cf647",
+    "passed": 398,
+    "total": 398,
+    "failed": 0,
+    "rootUnchanged": true,
+    "nativeRunnerUnchanged": true,
+    "rawLogSha256": "1fb62c5c59fb0db4be03abc24f940c76235f2a546ba42c3f951b29dae89f7e01",
+    "completedAt": "2026-10-29T20:33:00.245Z",
+    "failedAttemptPreserved": true,
+    "failedAttemptReceiptSha256": "23c259c0cce1198307dca14b7596ca3700fec76ff7885c221af4290609801028",
+    "frozenReleaseReferencesVerified": 18
+  },
+  "scope": "Selected technical release and corrected exact staged closing-metadata checkpoint. Containing publication, signed impact, cleanup, final formal records and native completion remain separate.",
+  "ownedJobs": {
+    "live": 0,
+    "terminalHandles": [
+      12773,
+      33562
+    ],
+    "servicesStarted": 0
+  }
+}
