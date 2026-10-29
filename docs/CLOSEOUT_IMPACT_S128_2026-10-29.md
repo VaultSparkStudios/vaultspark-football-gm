@@ -4,13 +4,13 @@
 ╠═════════════════════════════════════════════════════════════════════════════════════════════╣
 ║                                                                                               ║
 ║  HEADLINE                                                                                     ║
-║    Reliable Inbox messages and trustworthy playtest notes reached the verified matching       ║
-║    frontend/API release; closeout finalization remains pending.                               ║
+║    Reliable Inbox and playtest feedback reached matching frontend/API production; formal      ║
+║    closeout phase evidence is verified and final native guards remain.                        ║
 ║                                                                                               ║
 ║  PROJECT IMPACT     ████████░░   80/100                                                       ║
 ║  ECOSYSTEM IMPACT   █░░░░░░░░░   10/100                                                       ║
 ║  SIL DELTA          536 → 532  (-4)                                                           ║
-║  WAVE STATUS        Wave1 startup/audit verified; Wave2 selected implementation verified; Wave3 technical release verified, final closeout/publication/impact/cleanup pending.  ║
+║  WAVE STATUS        Wave1 startup/audit verified; Wave2 selected implementation verified; Wave3 technical release and formal closeout evidence verified. Final containing publication/readback and original-lock guards remain.  ║
 ║                                                                                               ║
 ╚═════════════════════════════════════════════════════════════════════════════════════════════╝
 
@@ -32,7 +32,7 @@
   ───────────────────────────────────────────────────────────────────────────────────────────
 
   FOLLOW-UPS
-    • Finalization remains required: Exact closing-metadata acceptance, containing main publication/readback, signed impact and owned cleanup remain pending.
+    • Final native completion guards: Verify the final containing receipt publication/readback and release ONLY the original goal-bound S128 lock after current zero-owned-job and derived-surface checks. This brief cannot attest to its own containing push.
 
   BLOCKERS
     • Independent public launch holds: Identity/email, lifecycle and founder public-launch approval remain separate; no lifecycle transition is claimed.

@@ -6,7 +6,7 @@
 Last session: 128 (2026-10-29) | Total: 532/1000 | Velocity: 2 | Debt: →
 Avgs — 3: 533.3 | 5: 523 | 10: 618.3 | 25: 780.6 | all: 926.1
 Sparkline: ▁▁▁▁▁
-Intent rate: 40% (2/5 last 5)
+Intent rate: 60% (3/5 last 5)
 SIL delta: 536 → 532 (-4). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 82 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
@@ -248,3 +248,15 @@ Brainstorm: An ID is a deduplication key, not proof that an optional cache row c
 Final exact staged closing-metadata Studio acceptance, final staged security/supply-chain checks, containing metadata commit/push/readback, actual signed impact and owned process/worktree/lock cleanup remain required. This ordered checkpoint does not prove full closeout, final publication or native goal completion.
 
 Intent outcome: Partial. S128 selected repairs and actual matching frontend/API production are verified; closing-metadata acceptance, containing publication/readback, signed impact and owned cleanup remain pending. The first closing-metadata run measured395/398 and remains part of this session's evidence. A corrected retry is not passing evidence until verified; no full closeout or native goal completion is claimed.
+
+## 2026-10-29 — Session 128 — Verified finalization checkpoint
+
+SIL v3.0: **532 / 1000** (Dev Health 93, Creative Alignment 70, Momentum 63, Engagement 45, Process Quality 58, Cross-Repo Coherence 60, Security Posture 61, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 62). Intent outcome: Achieved for the two selected product outcomes, actual matching frontend/API deployment and verified closeout phase evidence; final containing receipt publication/readback and only original bound S128 lock release remain native guards.
+
+Same-session finalization, not another session, score increment or delivery. The original Partial checkpoint above remains verbatim. Scores remain root-reviewed engineering judgment; player and financial outcomes are unmeasured. Velocity:2 selected outcomes for S128, counted once.
+
+Two selected outcomes. C3 focused49/49, exact-source CI7/7, source Studio398/398 and corrected closing-metadata Studio398/398 are separate checks, never an aggregate application count. Staging and production each have four desktop/mobile dark/light actual worker journeys,18 independently reviewed captures, native provenance14/14 and five-run performance on both profiles. Matching API source/database readiness and preservation are accepted by reports/s128-release-acceptance.json. Final visual62 preserves baseline8/local-C3 18/staging18/production18 and capture limits. No actual-player, financial, restore-drill, broad launch readiness or lifecycle outcome is inferred.
+
+The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
+
+Proof: reports/s128-closeout-completion.json. Both future SIL discipline items remain unselected and current-arc unauthorized.

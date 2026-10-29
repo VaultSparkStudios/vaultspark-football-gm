@@ -1,0 +1,31 @@
+{
+  "session": 128,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "at": "2026-10-29T21:00:16.055Z",
+  "verified": true,
+  "checks": {
+    "coherence": {
+      "ok": true,
+      "unmeasured": false
+    },
+    "freshness": {
+      "ok": true,
+      "unmeasured": false
+    },
+    "summary": {
+      "ok": true,
+      "unmeasured": false
+    },
+    "contextPreservation": {
+      "ok": true,
+      "unmeasured": false
+    },
+    "writebackCurrency": {
+      "ok": true,
+      "unmeasured": false
+    }
+  },
+  "rawPath": ".cache/s128-final-receipt-gates.json",
+  "rawSha256": "1dbed1bf4a16b821fbbd6bc69ce6915b2d8dbbcad7f1cf874b2920ffc70ac0b7",
+  "scope": "Explicitly recipient-rooted native record coherence/preservation validators, separate from unchanged full Studio398 and release acceptance."
+}

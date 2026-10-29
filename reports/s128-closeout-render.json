@@ -17,11 +17,11 @@
   },
   "ascii": {
     "path": "docs/CLOSEOUT_IMPACT_S128_2026-10-29.md",
-    "sha256": "c23c1282c3aee70819a8e9740bb96d3b2a949feff170c46e09aeeb090d81877d"
+    "sha256": "be137bc877ac55c020bc5d35d926486b3732b0c5c83ad60641885056f4295862"
   },
   "board": {
     "path": "docs/CLOSEOUT_STATUS_BOARD.md",
-    "sha256": "84b0155e660eb098c48116e57cddacc7c090be693f85bdda8fd6e7dcd37f9c11"
+    "sha256": "b0d58e31fb8b8b70fe43e48063f1eacbac136dc0134e97a2dd0f002bcd30e551"
   },
   "nativeLogs": [
     {
@@ -88,7 +88,149 @@
       }
     }
   ],
-  "closeoutComplete": false,
+  "closeoutComplete": true,
   "nativeGoalComplete": false,
-  "scope": "Ordered checkpoint render only. Exact closing metadata, containing publication/readback, signed impact and owned cleanup remain separately required."
+  "scope": "Canonical ordered checkpoint and same-session formal finalization projections. Frozen technical/visual receipts and rasters remain byte-identical. Final containing receipt publication/readback, current derived surfaces, zero-owned-jobs and ONLY original bound lock release remain native completion guards.",
+  "projectionHistory": [
+    {
+      "capturedAt": "2026-10-29T20:59:18.117Z",
+      "ascii": {
+        "path": "docs/CLOSEOUT_IMPACT_S128_2026-10-29.md",
+        "sha256": "c23c1282c3aee70819a8e9740bb96d3b2a949feff170c46e09aeeb090d81877d"
+      },
+      "board": {
+        "path": "docs/CLOSEOUT_STATUS_BOARD.md",
+        "sha256": "84b0155e660eb098c48116e57cddacc7c090be693f85bdda8fd6e7dcd37f9c11"
+      },
+      "scope": "Ordered checkpoint render only. Exact closing metadata, containing publication/readback, signed impact and owned cleanup remain separately required."
+    }
+  ],
+  "finalizationProjection": {
+    "observedAt": "2026-10-29T20:59:18.119Z",
+    "verified": true,
+    "nativeLogs": [
+      {
+        "name": "sil-write",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-sil-write.log",
+          "sha256": "55c87223b4baa583e129d46683434bbb0a445bb58eddc29ead4c5a8a282d92aa"
+        }
+      },
+      {
+        "name": "sil-check",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-sil-check.log",
+          "sha256": "86b7526ec808769cc683d4ca86b910899eecac6eb57b36b971ec9f03983003b3"
+        }
+      },
+      {
+        "name": "status",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-status.log",
+          "sha256": "135f163084413d21bb792d1da266f1d1b86a3c3ea9a62ad121bce57fd47abff0"
+        }
+      },
+      {
+        "name": "startup",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-startup.log",
+          "sha256": "1ec57b82656fcec70054c6b066035d1cf5eec49ca2861d99928ccd0ff3071b45"
+        }
+      },
+      {
+        "name": "startup-format",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-startup-format.log",
+          "sha256": "a687437197d81f7e3bc03d137ab0aa047e746a6e49e1836e0fb60bcf295cc407"
+        }
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-audit.log",
+          "sha256": "51cb750b58db357bebc8b8a1581115e58b18ebd8f359b6d92a15c27f7eaad931"
+        }
+      },
+      {
+        "name": "audit-check",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-audit-check.log",
+          "sha256": "33c4b44c666d4ba6c06c8691b824c114c67e03e7d16393d91f4e829d2f2532cf"
+        }
+      },
+      {
+        "name": "brief",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-brief.log",
+          "sha256": "7c7736383ad14c3a6e3808067227e95ba1c14a5b631fbc86955d4eacb80d7128"
+        }
+      },
+      {
+        "name": "board",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-board.log",
+          "sha256": "6831bcf0409ebc4b4ff2efaa57df3d5d83bf1c36d8fa3e1e4ed7d4d815cc0a19"
+        }
+      },
+      {
+        "name": "board-format",
+        "exitCode": 0,
+        "subject": "franchise-architect-football",
+        "log": {
+          "path": ".cache/s128-final-projection-board-format.log",
+          "sha256": "9bc473bb0c65b8959da200871aff4f6d1177115cf030ccf275d8d23e2232dfc6"
+        }
+      }
+    ],
+    "silDelta": {
+      "previous": 536,
+      "current": 532,
+      "kind": "numeric"
+    },
+    "derivedAverages": [
+      533.3,
+      523,
+      618.3,
+      780.6,
+      926.1
+    ],
+    "formalCompletion": {
+      "path": "reports/s128-closeout-completion.json",
+      "sha256": "eae8590a8730f824e3019a3f8abf6a28509193ed7f86381f470c26b5dad05632"
+    },
+    "shellCensus": {
+      "path": "reports/s128-owned-jobs.json",
+      "sha256": "2256d745938344453400e08ce3d3014b4141f747ff00ab78d38ee8e40509dc31"
+    },
+    "files": {
+      "docs/CLOSEOUT_IMPACT_S128_2026-10-29.md": "be137bc877ac55c020bc5d35d926486b3732b0c5c83ad60641885056f4295862",
+      "docs/CLOSEOUT_STATUS_BOARD.md": "b0d58e31fb8b8b70fe43e48063f1eacbac136dc0134e97a2dd0f002bcd30e551",
+      "docs/STARTUP_BRIEF.md": "01f86769c5b1ccb39da622ab1a443d253d3611b1c93197bc6dcda2a9e0f8562f",
+      "docs/AUDIT_2026-10-29-S128.md": "ee924e8068667d6e3f3753498793ff8fe5f2a9ec35b5f9db100d13e457022189",
+      "context/SELF_IMPROVEMENT_LOOP.md": "0e3cdc035f0c2612e0488331f26a2b80fa1bda709c3caad74c548f95bff496e5",
+      "context/PROJECT_STATUS.json": "5193d0c72e34a3e8f749b1eb921e7766dd0cdb752cfcd2f8e640df7ca236ec38"
+    },
+    "frozenEvidenceUnchanged": true,
+    "finalContainingPublicationVerified": false,
+    "originalBoundLockReleased": false,
+    "nativeGoalComplete": false
+  }
 }

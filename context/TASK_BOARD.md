@@ -4,7 +4,7 @@
 
 - [x] Wave 1: fresh startup, goal binding, live audit and pre-edit admission.
 - [x] Wave 2: both selected L2 repairs, C3 focused49/49, local browser4/4 and18 reviewed captures; rejected candidates retained.
-- [ ] Wave 3: exact C3 frontend/API technical release verified by reports/s128-release-acceptance.json; ordered records written. Final closing metadata, containing publication/readback, signed impact and owned cleanup remain required.
+- [x] Wave 3: exact C3 technical release, ordered records, accepted metadata398/publication/readback, signed impact and owned cleanup verified; reports/s128-closeout-completion.json. Final containing receipt publication/readback and only original bound S128 lock release remain native guards.
 
 ## S128 future discipline — explicitly unselected
 

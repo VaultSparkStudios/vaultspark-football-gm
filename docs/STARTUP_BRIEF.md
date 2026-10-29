@@ -22,7 +22,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ LAST SESSION (S128) - WHAT SHIPPED ══════════════════════════╗
-║  S128 shipped reliable Inbox recovery and trustworthy playtest   ║
+║  S128 repaired damaged Inbox message admission and playtest rec  ║
 ║  Tests Unverified for this session                               ║
 ║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -61,15 +61,15 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 128 ═══════════════════════════╗
-║  Shipped:  S128 shipped reliable Inbox recovery and trustworthy  ║
+║  Shipped:  S128 repaired damaged Inbox message admission and pl  ║
 ║  Tests: Unverified for this session                              ║
-║  Deploy: S128 matching frontend/API812fd52b accepted: native14   ║
+║  Deploy: S128 matching frontend/API812fd52b accepted; corrected  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ██░░░░░░░░░░░░░░░░░░░░░░    6% used                          ║
-║     17,215 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
-║     ~8,608 tok/turn  ·  cache 50%  ·  27 turns to compact        ║
+║  ✓  ███░░░░░░░░░░░░░░░░░░░░░   14% used                          ║
+║     38,391 / 272,000 tok  ·  codex/codex-272k  ·  heuristic      ║
+║     ~19,196 tok/turn  ·  cache 50%  ·  11 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -108,7 +108,7 @@
 
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▁▁▁▁▁  2→  (last 5 sessions)                        ║
-║  Intent:     40% achieved last 5                                 ║
+║  Intent:     60% achieved last 5                                 ║
 ║  Streak:     — (last intent not achieved)                        ║
 ╚════════════════════════════════════════════════════════════════╝
 

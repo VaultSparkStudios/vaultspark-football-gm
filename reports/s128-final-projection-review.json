@@ -1,0 +1,15 @@
+{
+  "session": 128,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "reviewer": "release_review",
+  "verified": true,
+  "verdict": "approve",
+  "findings": [],
+  "completionSha256": "eae8590a8730f824e3019a3f8abf6a28509193ed7f86381f470c26b5dad05632",
+  "checked": {"metadataPaths":25,"privatePatternHits":0,"frozenReleaseReferences":18,"formalInputHashes":32,"projectionBindings":6,"projectionChecks":10,"freshNativeRecordValidators":5},
+  "silScore": 532,
+  "historicalPartialAndFailedMetadataPreserved": true,
+  "laneLiveJobs": 0,
+  "scope": "Actual formal and derived-record diff only. Counts are evidence inventories, not application-test totals. Final containing publication, current clean/job checks and original-lock release remain native guards."
+}

@@ -1,5 +1,10 @@
 # Agent Memory
 
+## Session 128 verified finalization — same-session evidence
+
+Preserve truthful Partial checkpoints and superseded candidate evidence. Record verified finalization as an append-only same-session addendum after actual closing metadata, containing readback, signed impact and owned cleanup. Keep the approved score and two outcomes counted once. The formal receipt cannot prove its own final containing publication or original-lock release. Project-native patterns only; private global memory is untouched.
+
+
 ## Session 128 durable patterns
 
 - An ID is a deduplication key, not proof that an optional cache row contains usable message content.

@@ -1,5 +1,16 @@
 # Current State
 
+## 2026-10-29 — Session 128 — Verified finalization checkpoint
+
+S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.
+
+Two selected outcomes. C3 focused49/49, exact-source CI7/7, source Studio398/398 and corrected closing-metadata Studio398/398 are separate checks, never an aggregate application count. Staging and production each have four desktop/mobile dark/light actual worker journeys,18 independently reviewed captures, native provenance14/14 and five-run performance on both profiles. Matching API source/database readiness and preservation are accepted by reports/s128-release-acceptance.json. Final visual62 preserves baseline8/local-C3 18/staging18/production18 and capture limits. No actual-player, financial, restore-drill, broad launch readiness or lifecycle outcome is inferred.
+
+The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
+
+Completion: reports/s128-closeout-completion.json. Earlier Partial/pending entries remain historical.
+
+
 ## 2026-10-29 — Session 128 — Reliable Inbox and trustworthy playtest notes
 
 - 2026-10-29: Session 128 shipped reliable Inbox recovery and trustworthy playtest notes at verified matching frontend/API source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`. Final closing-metadata acceptance and closeout publication remain pending.

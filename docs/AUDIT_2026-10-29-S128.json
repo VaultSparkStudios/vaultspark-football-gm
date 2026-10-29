@@ -8,7 +8,7 @@
     "type": "game",
     "name": "Franchise Architect: Football"
   },
-  "scope": "S128 selected outcomes verified on corrected C3 local source. C2 was superseded before production; C3 staging, CI, frontend/API deployment and closeout remain pending.",
+  "scope": "S128 two selected outcomes, actual C3 frontend/API release, accepted metadata398, containing readback, signed impact and owned cleanup verified. Final containing receipt publication/readback, canonical derived-surface follow-through and original bound lock release remain native guards. Historical candidates and Partial checkpoints remain preserved; no actual-player or public-launch claim.",
   "profile": {
     "rubric": "product",
     "audience": "public-unlaunched",
@@ -115,10 +115,60 @@
               "sha256": "0f26407415ca177f485feabfb74388a4e1d3e619dff2f90aa4a29424666fe615"
             }
           ]
+        },
+        {
+          "at": "2026-10-29T20:57:51.292Z",
+          "status": "shipped",
+          "phase": "technical-production-and-same-session-formal-finalization",
+          "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+          "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+          "note": "Exact C3 technical frontend/API release, CI7, source398, hosted worker4/18 per origin and corrected closing-metadata398/publication/readback, signed impact and owned cleanup verified. Earlier pending/local notes remain historical. Final containing formal receipt publication and original-lock guards remain; no additional product outcome or actual-player measurement.",
+          "evidence": [
+            {
+              "path": "reports/s128-release-acceptance.json",
+              "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a"
+            },
+            {
+              "path": "reports/s128-final-metadata.json",
+              "sha256": "6c567f2a0ebec1e2cbe507989d40d366fa1d37fcddf608e16dc5d24edd57d4d3"
+            },
+            {
+              "path": "reports/s128-metadata-publication.json",
+              "sha256": "f24c8168a63ee09816245f72c0303587e5ade60213c629b395c148afd7788f17"
+            },
+            {
+              "path": "reports/s128-ark-impact.json",
+              "sha256": "4386439db8daf03cbfbdcd86185839554bbb74d01327512434a752abd157afee"
+            }
+          ]
         }
       ],
       "premise": "Live source retains unvalidated inbox-cache-admission",
-      "executionEvidence": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending."
+      "executionEvidence": "Selected outcome verified on C3 812fd52b5ea01d1e0ef3d4037d383f311998aaa5, artifact 86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553; technical acceptance reports/s128-release-acceptance.json (sha256 35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a); corrected closing-metadata398 at 5a2a137c89deb5bc20dea32130a4e113576cf647, first containing publication 8ef2050062a4c2c8c89e1c331d25da8e18c934e3; same-session completion reports/s128-closeout-completion.json. Final containing receipt publication/readback and original bound-lock release remain guarded; no actual-player outcome is claimed.",
+      "executionEvidenceHistory": [
+        {
+          "capturedAt": "2026-10-29T20:57:51.292Z",
+          "disposition": "prior-current-projection-preserved",
+          "evidence": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending.",
+          "currentExecutionEvidence": null
+        }
+      ],
+      "currentExecutionEvidence": {
+        "session": 128,
+        "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+        "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+        "selectedOutcomeVerified": true,
+        "technicalProductionVerified": true,
+        "closeoutPhaseEvidenceVerified": true,
+        "acceptance": {
+          "path": "reports/s128-release-acceptance.json",
+          "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a"
+        },
+        "completion": "reports/s128-closeout-completion.json",
+        "finalContainingReceiptPublicationVerified": false,
+        "originalBoundLockReleased": false,
+        "nativeGoalComplete": false
+      }
     },
     {
       "id": 2,
@@ -182,10 +232,60 @@
               "sha256": "0f26407415ca177f485feabfb74388a4e1d3e619dff2f90aa4a29424666fe615"
             }
           ]
+        },
+        {
+          "at": "2026-10-29T20:57:51.292Z",
+          "status": "shipped",
+          "phase": "technical-production-and-same-session-formal-finalization",
+          "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+          "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+          "note": "Exact C3 technical frontend/API release, CI7, source398, hosted worker4/18 per origin and corrected closing-metadata398/publication/readback, signed impact and owned cleanup verified. Earlier pending/local notes remain historical. Final containing formal receipt publication and original-lock guards remain; no additional product outcome or actual-player measurement.",
+          "evidence": [
+            {
+              "path": "reports/s128-release-acceptance.json",
+              "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a"
+            },
+            {
+              "path": "reports/s128-final-metadata.json",
+              "sha256": "6c567f2a0ebec1e2cbe507989d40d366fa1d37fcddf608e16dc5d24edd57d4d3"
+            },
+            {
+              "path": "reports/s128-metadata-publication.json",
+              "sha256": "f24c8168a63ee09816245f72c0303587e5ade60213c629b395c148afd7788f17"
+            },
+            {
+              "path": "reports/s128-ark-impact.json",
+              "sha256": "4386439db8daf03cbfbdcd86185839554bbb74d01327512434a752abd157afee"
+            }
+          ]
         }
       ],
       "premise": "Live source retains unvalidated playtest-receipt-integrity",
-      "executionEvidence": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending."
+      "executionEvidence": "Selected outcome verified on C3 812fd52b5ea01d1e0ef3d4037d383f311998aaa5, artifact 86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553; technical acceptance reports/s128-release-acceptance.json (sha256 35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a); corrected closing-metadata398 at 5a2a137c89deb5bc20dea32130a4e113576cf647, first containing publication 8ef2050062a4c2c8c89e1c331d25da8e18c934e3; same-session completion reports/s128-closeout-completion.json. Final containing receipt publication/readback and original bound-lock release remain guarded; no actual-player outcome is claimed.",
+      "executionEvidenceHistory": [
+        {
+          "capturedAt": "2026-10-29T20:57:51.292Z",
+          "disposition": "prior-current-projection-preserved",
+          "evidence": "C3 local source-bound focused49/49 and browser4/4 with18 independently inspected captures; ID-only cache admission repaired. Exact-source hosted acceptance remains pending.",
+          "currentExecutionEvidence": null
+        }
+      ],
+      "currentExecutionEvidence": {
+        "session": 128,
+        "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+        "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+        "selectedOutcomeVerified": true,
+        "technicalProductionVerified": true,
+        "closeoutPhaseEvidenceVerified": true,
+        "acceptance": {
+          "path": "reports/s128-release-acceptance.json",
+          "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a"
+        },
+        "completion": "reports/s128-closeout-completion.json",
+        "finalContainingReceiptPublicationVerified": false,
+        "originalBoundLockReleased": false,
+        "nativeGoalComplete": false
+      }
     }
   ],
   "totals": {
@@ -481,12 +581,17 @@
   "readinessAssessment": [
     {
       "area": "core journeys and product correctness",
-      "status": "fail",
+      "status": "partial",
       "owner": "project release owner",
-      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
-      "observedAt": "2026-10-29T06:01:28.215Z",
-      "evidence": "Recover a damaged Inbox without losing valid messages",
-      "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "observedAt": "2026-10-29T20:57:51.292Z",
+      "evidence": "Selected Inbox corruption/source-admission/action/reload failures are verified repaired by actual hosted worker journeys. Broader core-product readiness remains unmeasured.",
+      "nextAcceptanceCheck": "Retain verified selected repair evidence; assess remaining area-specific readiness separately without inferring broad launch readiness.",
+      "selectedOutcomeStatus": "verified",
+      "acceptance": {
+        "path": "reports/s128-release-acceptance.json",
+        "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a"
+      }
     },
     {
       "area": "onboarding and identity/access",
@@ -553,12 +658,17 @@
     },
     {
       "area": "feedback, support and issue triage",
-      "status": "fail",
+      "status": "partial",
       "owner": "project release owner",
-      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
-      "observedAt": "2026-10-29T06:01:28.215Z",
-      "evidence": "Validate playtest notes and copy only disclosed fields",
-      "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "observedAt": "2026-10-29T20:57:51.292Z",
+      "evidence": "Selected playtest note admission, Save/Copy and malformed-rating failures are verified repaired. Broader support/triage readiness and actual player outcomes remain unmeasured.",
+      "nextAcceptanceCheck": "Retain verified selected repair evidence; assess remaining area-specific readiness separately without inferring broad launch readiness.",
+      "selectedOutcomeStatus": "verified",
+      "acceptance": {
+        "path": "reports/s128-release-acceptance.json",
+        "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a"
+      }
     },
     {
       "area": "branding, legal, contact and rights/provenance",
@@ -580,12 +690,17 @@
     },
     {
       "area": "staging, release evidence and truthful beta/release communication",
-      "status": "unknown",
+      "status": "partial",
       "owner": "project release owner",
-      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
-      "observedAt": "2026-10-29T06:01:28.215Z",
-      "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
-      "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "observedAt": "2026-10-29T20:57:51.292Z",
+      "evidence": "Exact C3 technical frontend/API release, hosted acceptance and first containing metadata publication are verified. Final formal receipt publication/original-lock guards and independent public-launch holds remain.",
+      "nextAcceptanceCheck": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.",
+      "selectedOutcomeStatus": "verified",
+      "acceptance": {
+        "path": "reports/s128-release-acceptance.json",
+        "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a"
+      }
     }
   ],
   "gameLoopReview": {
@@ -611,7 +726,7 @@
   },
   "implementationComplete": true,
   "releaseComplete": true,
-  "closeoutComplete": false,
+  "closeoutComplete": true,
   "generatedAt": "2026-10-29T06:01:28.231Z",
   "preverifiedSkips": [
     {
@@ -752,9 +867,374 @@
   },
   "closeoutRecorded": true,
   "currentRelease": {
+    "session": 128,
+    "candidate": "C3",
     "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
     "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
     "acceptance": "reports/s128-release-acceptance.json",
-    "status": "technical-production-verified-finalization-pending"
+    "acceptanceSha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a",
+    "status": "technical-production-and-closeout-phase-evidence-verified-final-native-guards-pending",
+    "verified": true,
+    "technicalReleaseVerified": true,
+    "frontendVerified": true,
+    "apiVerified": true,
+    "firstContainingPublication": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+    "metadataTestedTree": "5a2a137c89deb5bc20dea32130a4e113576cf647",
+    "closeoutCompletion": "reports/s128-closeout-completion.json",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalBoundLockReleased": false,
+    "nativeGoalComplete": false,
+    "launchApproved": false
+  },
+  "historicalCheckpoints": [
+    {
+      "capturedAt": "2026-10-29T20:57:51.292Z",
+      "disposition": "pre-formal-finalization-checkpoint",
+      "scope": "S128 selected outcomes verified on corrected C3 local source. C2 was superseded before production; C3 staging, CI, frontend/API deployment and closeout remain pending.",
+      "implementationComplete": true,
+      "releaseComplete": true,
+      "closeoutRecorded": true,
+      "closeoutComplete": false,
+      "currentCandidate": null,
+      "currentRelease": {
+        "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+        "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+        "acceptance": "reports/s128-release-acceptance.json",
+        "status": "technical-production-verified-finalization-pending"
+      },
+      "executionEvidence": null,
+      "readinessAssessment": [
+        {
+          "area": "core journeys and product correctness",
+          "status": "fail",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Recover a damaged Inbox without losing valid messages",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "onboarding and identity/access",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "accessibility, mobile parity and every supported theme",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "performance and capacity",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "security, privacy, data integrity and abuse controls",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "backup, recovery and rollback",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "email and notifications where used",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "observability and actionable analytics",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "feedback, support and issue triage",
+          "status": "fail",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Validate playtest notes and copy only disclosed fields",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "branding, legal, contact and rights/provenance",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "human and agent access where applicable",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        },
+        {
+          "area": "staging, release evidence and truthful beta/release communication",
+          "status": "unknown",
+          "owner": "project release owner",
+          "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090",
+          "observedAt": "2026-10-29T06:01:28.215Z",
+          "evidence": "Historical S127 receipts are source-specific. Current broad readiness is not proved; identity/email/launch holds remain independent.",
+          "nextAcceptanceCheck": "Verify selected behavior with focused tests and actual worker desktop/mobile dark/light journeys, exact-source staging and production, then ordered closeout; remaining readiness requires area-specific evidence."
+        }
+      ],
+      "boundary": "Historical checkpoint only. Its pending statements and superseded candidates are not current release status."
+    }
+  ],
+  "selectedOutcomeIds": [
+    "inbox-cache-admission",
+    "playtest-receipt-integrity"
+  ],
+  "closeoutCompletion": "reports/s128-closeout-completion.json",
+  "completion": "reports/s128-closeout-completion.json",
+  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.",
+  "currentCandidate": {
+    "session": 128,
+    "candidate": "C3",
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "sourcePublished": true,
+    "sourcePublication": {
+      "path": "reports/s128-source-publication.json",
+      "sha256": "bc6b14c35af34f28ee8eb61ff6dc16b351e112113abf7c2183a03e395b2d2c13"
+    },
+    "stagingVerified": true,
+    "sourceStudioVerified": true,
+    "sourceStudioReceipt": {
+      "path": "reports/s128-isolated-studio.json",
+      "sha256": "f29ee16beaa9214855419e49aabe49d0d55782d06dbdd00e3291daa6a2c9a5e6"
+    },
+    "requiredCiRun": 40934553781,
+    "requiredCiAttempt": 1,
+    "requiredCiStatus": "completed",
+    "requiredCiConclusion": "success",
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "productionVerified": true,
+    "technicalAcceptance": "reports/s128-release-acceptance.json",
+    "technicalAcceptanceSha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a",
+    "closeoutCompletion": "reports/s128-closeout-completion.json",
+    "firstContainingPublication": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalBoundLockReleased": false,
+    "state": "technical-production-and-closeout-phase-evidence-verified-final-native-guards-pending"
+  },
+  "executionEvidence": {
+    "session": 128,
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "observedAt": "2026-10-29T20:57:51.292Z",
+    "selectedOutcomeIds": [
+      "inbox-cache-admission",
+      "playtest-receipt-integrity"
+    ],
+    "selectedOutcomes": 2,
+    "technicalReleaseVerified": true,
+    "technicalAcceptance": {
+      "path": "reports/s128-release-acceptance.json",
+      "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a",
+      "verified": true
+    },
+    "focused": {
+      "path": "reports/s128-c3-focused-checks.json",
+      "sha256": "f1a5bf4c6d6206e50213d065d0902bf444f18cd0e8173565110003e099e77304",
+      "passed": 49,
+      "total": 49,
+      "scope": "Exact listed C3 input hashes; not an aggregate application count."
+    },
+    "localVisual": {
+      "path": "docs/visual-qa/S128_LOCAL_C3.json",
+      "sha256": "e411c68d48030f385560ca94baa9b2440ce62830754d2dc92506ba5064bd8f4b",
+      "captures": 26,
+      "baseline": 8,
+      "localC3": 18,
+      "runtimeKind": "not-recorded",
+      "scope": "Independent selected local input/pixel review; actual hosted worker evidence is separate."
+    },
+    "sourceStudio": {
+      "path": "reports/s128-isolated-studio.json",
+      "sha256": "f29ee16beaa9214855419e49aabe49d0d55782d06dbdd00e3291daa6a2c9a5e6",
+      "passed": 398,
+      "total": 398,
+      "scope": "Exact source only; corrected closing-metadata tree tested separately."
+    },
+    "ci": {
+      "path": "reports/s128-ci.json",
+      "sha256": "dc6cac83458efe0452f0bc11cf78dc20b6ca4b0344163d5819089897cb868223",
+      "sha": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "runId": 40934553781,
+      "attempt": 1,
+      "requiredJobs": [
+        "unit-shards (core)",
+        "unit-shards (runtime)",
+        "unit-shards (sim:contract)",
+        "unit-shards (sim:realism)",
+        "unit-shards (long)",
+        "unit-shards (studio)",
+        "browser-gates"
+      ],
+      "passedJobs": 7
+    },
+    "sourcePublication": {
+      "path": "reports/s128-source-publication.json",
+      "sha256": "bc6b14c35af34f28ee8eb61ff6dc16b351e112113abf7c2183a03e395b2d2c13",
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "observedRemoteRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "scope": "Source publication before the later receipt-only containing descendant."
+    },
+    "hosted": {
+      "staging": {
+        "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+        "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+        "browser": {
+          "path": "reports/s128-staging-browser.json",
+          "sha256": "ae4a85f03c476b838b3c96f5ccb97d336283a1d3d1b550c857bd47e6c420fde5",
+          "workerJourneys": 4,
+          "captures": 18
+        },
+        "visualReview": {
+          "path": "reports/s128-staging-visual-review.json",
+          "sha256": "b58f62ac8e67daed4ed1f425a41f259cb029478dfaebdd5a553c49f3017ef8c5",
+          "inspected": 18
+        },
+        "native": {
+          "status": "verified",
+          "checksPassed": 14,
+          "checksTotal": 14
+        },
+        "performance": {
+          "path": "reports/s128-staging-performance.json",
+          "sha256": "d52df032489985af664fa9fa0a2cc862b10055895c04bd4f78ee7d59c6234e0c",
+          "verified": true,
+          "profiles": 2,
+          "runsPerProfile": 5
+        }
+      },
+      "production": {
+        "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+        "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+        "browser": {
+          "path": "reports/s128-production-browser.json",
+          "sha256": "d25fb99d22d538c480cf1710eef5cbc3264789cdaa32da0e9309c69319b7885b",
+          "workerJourneys": 4,
+          "captures": 18
+        },
+        "visualReview": {
+          "path": "reports/s128-production-visual-review.json",
+          "sha256": "f209bca4d79050a2e716f723387959fd984629672f7ebd24576dd85380045542",
+          "inspected": 18
+        },
+        "native": {
+          "status": "verified",
+          "checksPassed": 14,
+          "checksTotal": 14
+        },
+        "performance": {
+          "path": "reports/s128-production-performance.json",
+          "sha256": "ff6e04498f4099513b928c22c4d8c125874e6b6ec76e16b1c80d6487b0b304b7",
+          "verified": true,
+          "profiles": 2,
+          "runsPerProfile": 5
+        }
+      }
+    },
+    "visual": {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "04585dd7946784d524a525c881028f4cf92cc14b0cf83974b9dccd3f0f837bec",
+      "captures": 62,
+      "groups": {
+        "baseline": 8,
+        "local-C3": 18,
+        "staging": 18,
+        "production": 18
+      },
+      "scope": "62 selected rasters:8 original baseline,18 exact-input C3 local,18 staging and18 production at exact C3. Baseline and local runtime/capture limits remain distinct from actual hosted worker proof. Selected content/action coverage does not establish whole-product visual, physical-device or actual-player outcome acceptance."
+    },
+    "firstClosingMetadata": {
+      "path": "reports/s128-final-metadata.json",
+      "sha256": "6c567f2a0ebec1e2cbe507989d40d366fa1d37fcddf608e16dc5d24edd57d4d3",
+      "passed": 398,
+      "total": 398,
+      "testedStagedTree": "5a2a137c89deb5bc20dea32130a4e113576cf647",
+      "scope": "Actual ordered checkpoint only; later formal attestation requires its own review/scans/publication."
+    },
+    "firstContainingPublication": {
+      "path": "reports/s128-metadata-publication.json",
+      "sha256": "f24c8168a63ee09816245f72c0303587e5ade60213c629b395c148afd7788f17",
+      "publicationRevision": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+      "remoteHead": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+      "verified": true
+    },
+    "signedImpact": {
+      "path": "reports/s128-ark-impact.json",
+      "sha256": "4386439db8daf03cbfbdcd86185839554bbb74d01327512434a752abd157afee",
+      "cargoId": "01K64MNHEAF6081E99DCEF4F13",
+      "state": "shipped",
+      "hmacVerified": true,
+      "adoption": "Not asserted"
+    },
+    "ownedCheckoutCleanup": {
+      "path": "reports/s128-owned-checkout-cleanup.json",
+      "sha256": "f8c223e333de24658104d3866250db77a3e16f31d7696d721c63759e8400c295"
+    },
+    "ownedJobs": {
+      "path": "reports/s128-owned-jobs.json",
+      "sha256": "2256d745938344453400e08ce3d3014b4141f747ff00ab78d38ee8e40509dc31",
+      "running": 0,
+      "osTaskProcessMatches": 0,
+      "ownedPreviewListeners": 0
+    },
+    "independentFinalReview": {
+      "path": "reports/s128-independent-final-review.json",
+      "sha256": "f45bb38ce75b9b8ed77a3811333efb6422915959c04d644f4c4b740bbe228d8e"
+    },
+    "closeoutCompletion": "reports/s128-closeout-completion.json",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalBoundLockReleased": false,
+    "nativeGoalComplete": false,
+    "remaining": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.",
+    "limits": "No aggregation of distinct check scopes, actual-player/cohort/financial outcome, recipient adoption or public-launch approval. Superseded candidates and prior pending notes remain historical."
   }
 }

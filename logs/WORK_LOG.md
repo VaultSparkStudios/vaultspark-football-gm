@@ -121,3 +121,9 @@ Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothi
 S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending. Technical source `812fd52b5ea01d1e0ef3d4037d383f311998aaa5`; reports/s128-release-acceptance.json. Two selected outcomes; ordered checkpoint only, finalization pending.
 
 S128 metadata acceptance395/398 retained; two record-format defects diagnosed and corrected with independent review. Full retry remains required.
+
+## 2026-10-29 — Session 128 — Verified finalization checkpoint
+
+The unchanged native Studio suite passed398/398 at ordered-checkpoint staged tree 5a2a137c89deb5bc20dea32130a4e113576cf647. First containing metadata commit 8ef2050062a4c2c8c89e1c331d25da8e18c934e3 was pushed and read back. Signed impact 01K64MNHEAF6081E99DCEF4F13 was shipped and HMAC verified; recipient adoption is not asserted. The owned C3 checkout was removed with raw/patch evidence preserved, and the recorded post-cleanup census found zero owned jobs/listeners. This is same-session finalization, no new session, score increment or additional product outcome. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.
+
+Proof: reports/s128-closeout-completion.json. Same approved SIL532/1000 and two outcomes, counted once.

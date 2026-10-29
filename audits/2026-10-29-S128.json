@@ -20,6 +20,266 @@
   },
   "silScore": 532,
   "acceptance": "reports/s128-release-acceptance.json",
-  "closeoutComplete": false,
-  "scope": "Selected technical release and ordered record checkpoint only; final metadata/publication/impact/cleanup remain unverified."
+  "closeoutComplete": true,
+  "scope": "S128 two selected outcomes, actual C3 frontend/API release, accepted metadata398, containing readback, signed impact and owned cleanup verified. Final containing receipt publication/readback, canonical derived-surface follow-through and original bound lock release remain native guards. Historical candidates and Partial checkpoints remain preserved; no actual-player or public-launch claim.",
+  "historicalCheckpoints": [
+    {
+      "capturedAt": "2026-10-29T20:57:51.294Z",
+      "disposition": "pre-formal-finalization-checkpoint",
+      "scope": "Selected technical release and ordered record checkpoint only; final metadata/publication/impact/cleanup remain unverified.",
+      "implementationComplete": null,
+      "releaseComplete": null,
+      "closeoutRecorded": null,
+      "closeoutComplete": false,
+      "currentCandidate": null,
+      "currentRelease": null,
+      "executionEvidence": null,
+      "readinessAssessment": null,
+      "boundary": "Historical checkpoint only. Its pending statements and superseded candidates are not current release status."
+    }
+  ],
+  "implementationComplete": true,
+  "releaseComplete": true,
+  "closeoutRecorded": true,
+  "selectedOutcomeIds": [
+    "inbox-cache-admission",
+    "playtest-receipt-integrity"
+  ],
+  "closeoutCompletion": "reports/s128-closeout-completion.json",
+  "completion": "reports/s128-closeout-completion.json",
+  "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.",
+  "currentCandidate": {
+    "session": 128,
+    "candidate": "C3",
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "sourcePublished": true,
+    "sourcePublication": {
+      "path": "reports/s128-source-publication.json",
+      "sha256": "bc6b14c35af34f28ee8eb61ff6dc16b351e112113abf7c2183a03e395b2d2c13"
+    },
+    "stagingVerified": true,
+    "sourceStudioVerified": true,
+    "sourceStudioReceipt": {
+      "path": "reports/s128-isolated-studio.json",
+      "sha256": "f29ee16beaa9214855419e49aabe49d0d55782d06dbdd00e3291daa6a2c9a5e6"
+    },
+    "requiredCiRun": 40934553781,
+    "requiredCiAttempt": 1,
+    "requiredCiStatus": "completed",
+    "requiredCiConclusion": "success",
+    "requiredJobs": [
+      "unit-shards (core)",
+      "unit-shards (runtime)",
+      "unit-shards (sim:contract)",
+      "unit-shards (sim:realism)",
+      "unit-shards (long)",
+      "unit-shards (studio)",
+      "browser-gates"
+    ],
+    "productionVerified": true,
+    "technicalAcceptance": "reports/s128-release-acceptance.json",
+    "technicalAcceptanceSha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a",
+    "closeoutCompletion": "reports/s128-closeout-completion.json",
+    "firstContainingPublication": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalBoundLockReleased": false,
+    "state": "technical-production-and-closeout-phase-evidence-verified-final-native-guards-pending"
+  },
+  "currentRelease": {
+    "session": 128,
+    "candidate": "C3",
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "acceptance": "reports/s128-release-acceptance.json",
+    "acceptanceSha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a",
+    "status": "technical-production-and-closeout-phase-evidence-verified-final-native-guards-pending",
+    "verified": true,
+    "technicalReleaseVerified": true,
+    "frontendVerified": true,
+    "apiVerified": true,
+    "firstContainingPublication": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+    "metadataTestedTree": "5a2a137c89deb5bc20dea32130a4e113576cf647",
+    "closeoutCompletion": "reports/s128-closeout-completion.json",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalBoundLockReleased": false,
+    "nativeGoalComplete": false,
+    "launchApproved": false
+  },
+  "executionEvidence": {
+    "session": 128,
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "observedAt": "2026-10-29T20:57:51.294Z",
+    "selectedOutcomeIds": [
+      "inbox-cache-admission",
+      "playtest-receipt-integrity"
+    ],
+    "selectedOutcomes": 2,
+    "technicalReleaseVerified": true,
+    "technicalAcceptance": {
+      "path": "reports/s128-release-acceptance.json",
+      "sha256": "35db1add3c866ab2a10a370dc70ffd820bbe52af9786f5240a5330a24980509a",
+      "verified": true
+    },
+    "focused": {
+      "path": "reports/s128-c3-focused-checks.json",
+      "sha256": "f1a5bf4c6d6206e50213d065d0902bf444f18cd0e8173565110003e099e77304",
+      "passed": 49,
+      "total": 49,
+      "scope": "Exact listed C3 input hashes; not an aggregate application count."
+    },
+    "localVisual": {
+      "path": "docs/visual-qa/S128_LOCAL_C3.json",
+      "sha256": "e411c68d48030f385560ca94baa9b2440ce62830754d2dc92506ba5064bd8f4b",
+      "captures": 26,
+      "baseline": 8,
+      "localC3": 18,
+      "runtimeKind": "not-recorded",
+      "scope": "Independent selected local input/pixel review; actual hosted worker evidence is separate."
+    },
+    "sourceStudio": {
+      "path": "reports/s128-isolated-studio.json",
+      "sha256": "f29ee16beaa9214855419e49aabe49d0d55782d06dbdd00e3291daa6a2c9a5e6",
+      "passed": 398,
+      "total": 398,
+      "scope": "Exact source only; corrected closing-metadata tree tested separately."
+    },
+    "ci": {
+      "path": "reports/s128-ci.json",
+      "sha256": "dc6cac83458efe0452f0bc11cf78dc20b6ca4b0344163d5819089897cb868223",
+      "sha": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "runId": 40934553781,
+      "attempt": 1,
+      "requiredJobs": [
+        "unit-shards (core)",
+        "unit-shards (runtime)",
+        "unit-shards (sim:contract)",
+        "unit-shards (sim:realism)",
+        "unit-shards (long)",
+        "unit-shards (studio)",
+        "browser-gates"
+      ],
+      "passedJobs": 7
+    },
+    "sourcePublication": {
+      "path": "reports/s128-source-publication.json",
+      "sha256": "bc6b14c35af34f28ee8eb61ff6dc16b351e112113abf7c2183a03e395b2d2c13",
+      "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "observedRemoteRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+      "scope": "Source publication before the later receipt-only containing descendant."
+    },
+    "hosted": {
+      "staging": {
+        "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+        "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+        "browser": {
+          "path": "reports/s128-staging-browser.json",
+          "sha256": "ae4a85f03c476b838b3c96f5ccb97d336283a1d3d1b550c857bd47e6c420fde5",
+          "workerJourneys": 4,
+          "captures": 18
+        },
+        "visualReview": {
+          "path": "reports/s128-staging-visual-review.json",
+          "sha256": "b58f62ac8e67daed4ed1f425a41f259cb029478dfaebdd5a553c49f3017ef8c5",
+          "inspected": 18
+        },
+        "native": {
+          "status": "verified",
+          "checksPassed": 14,
+          "checksTotal": 14
+        },
+        "performance": {
+          "path": "reports/s128-staging-performance.json",
+          "sha256": "d52df032489985af664fa9fa0a2cc862b10055895c04bd4f78ee7d59c6234e0c",
+          "verified": true,
+          "profiles": 2,
+          "runsPerProfile": 5
+        }
+      },
+      "production": {
+        "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+        "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+        "browser": {
+          "path": "reports/s128-production-browser.json",
+          "sha256": "d25fb99d22d538c480cf1710eef5cbc3264789cdaa32da0e9309c69319b7885b",
+          "workerJourneys": 4,
+          "captures": 18
+        },
+        "visualReview": {
+          "path": "reports/s128-production-visual-review.json",
+          "sha256": "f209bca4d79050a2e716f723387959fd984629672f7ebd24576dd85380045542",
+          "inspected": 18
+        },
+        "native": {
+          "status": "verified",
+          "checksPassed": 14,
+          "checksTotal": 14
+        },
+        "performance": {
+          "path": "reports/s128-production-performance.json",
+          "sha256": "ff6e04498f4099513b928c22c4d8c125874e6b6ec76e16b1c80d6487b0b304b7",
+          "verified": true,
+          "profiles": 2,
+          "runsPerProfile": 5
+        }
+      }
+    },
+    "visual": {
+      "path": "docs/visual-qa/LATEST.json",
+      "sha256": "04585dd7946784d524a525c881028f4cf92cc14b0cf83974b9dccd3f0f837bec",
+      "captures": 62,
+      "groups": {
+        "baseline": 8,
+        "local-C3": 18,
+        "staging": 18,
+        "production": 18
+      },
+      "scope": "62 selected rasters:8 original baseline,18 exact-input C3 local,18 staging and18 production at exact C3. Baseline and local runtime/capture limits remain distinct from actual hosted worker proof. Selected content/action coverage does not establish whole-product visual, physical-device or actual-player outcome acceptance."
+    },
+    "firstClosingMetadata": {
+      "path": "reports/s128-final-metadata.json",
+      "sha256": "6c567f2a0ebec1e2cbe507989d40d366fa1d37fcddf608e16dc5d24edd57d4d3",
+      "passed": 398,
+      "total": 398,
+      "testedStagedTree": "5a2a137c89deb5bc20dea32130a4e113576cf647",
+      "scope": "Actual ordered checkpoint only; later formal attestation requires its own review/scans/publication."
+    },
+    "firstContainingPublication": {
+      "path": "reports/s128-metadata-publication.json",
+      "sha256": "f24c8168a63ee09816245f72c0303587e5ade60213c629b395c148afd7788f17",
+      "publicationRevision": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+      "remoteHead": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+      "verified": true
+    },
+    "signedImpact": {
+      "path": "reports/s128-ark-impact.json",
+      "sha256": "4386439db8daf03cbfbdcd86185839554bbb74d01327512434a752abd157afee",
+      "cargoId": "01K64MNHEAF6081E99DCEF4F13",
+      "state": "shipped",
+      "hmacVerified": true,
+      "adoption": "Not asserted"
+    },
+    "ownedCheckoutCleanup": {
+      "path": "reports/s128-owned-checkout-cleanup.json",
+      "sha256": "f8c223e333de24658104d3866250db77a3e16f31d7696d721c63759e8400c295"
+    },
+    "ownedJobs": {
+      "path": "reports/s128-owned-jobs.json",
+      "sha256": "2256d745938344453400e08ce3d3014b4141f747ff00ab78d38ee8e40509dc31",
+      "running": 0,
+      "osTaskProcessMatches": 0,
+      "ownedPreviewListeners": 0
+    },
+    "independentFinalReview": {
+      "path": "reports/s128-independent-final-review.json",
+      "sha256": "f45bb38ce75b9b8ed77a3811333efb6422915959c04d644f4c4b740bbe228d8e"
+    },
+    "closeoutCompletion": "reports/s128-closeout-completion.json",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalBoundLockReleased": false,
+    "nativeGoalComplete": false,
+    "remaining": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.",
+    "limits": "No aggregation of distinct check scopes, actual-player/cohort/financial outcome, recipient adoption or public-launch approval. Superseded candidates and prior pending notes remain historical."
+  }
 }

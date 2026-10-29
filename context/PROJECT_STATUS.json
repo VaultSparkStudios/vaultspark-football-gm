@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending.",
-  "nextMilestone": "Finish S128 exact closing metadata, containing publication/readback, signed impact and owned cleanup; retain independent identity/email/public-launch holds.",
+  "currentFocus": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.",
+  "nextMilestone": "Verify final S128 containing receipt publication/readback and canonical derived surfaces, then release only the original bound lock; independent identity/email/public-launch holds remain separate.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -22,7 +22,7 @@
     "protocol": "oidc-authorization-code-s256-pkce",
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
-  "truthAuditStatus": "Selected S127 technical release and closeout phases verified; final containing receipt publication/readback and ONLY original bound S127 lock release remain native completion guards; broader launch readiness partial.",
+  "truthAuditStatus": "Selected S128 technical release and formal closeout phase evidence verified; final containing receipt publication/readback and original bound lock release remain native guards; broader launch readiness partial.",
   "truthAuditLastRun": "2026-10-29",
   "ignisScore": 43808,
   "ignisGrade": "FORGE",
@@ -91,7 +91,9 @@
     "acceptance": "reports/s128-release-acceptance.json",
     "sourceStudioReceipt": "reports/s128-isolated-studio.json",
     "tests": "Two selected outcomes. Focused49/49, exact-source Studio398/398 and hosted CI7/7 are separate evidence scopes. Staging and production each passed four actual worker journeys, native provenance14/14, eighteen independently inspected captures and unchanged five-run performance checks per desktop/mobile profile. Final visual62 preserves baseline8, local-C3 18, staging18 and production18 boundaries. API database ready; database/routing preserved and rollback source/image retained. C1/C2 failures and supersession remain historical. No actual-player, financial, recipient-adoption or public-launch outcome is claimed.",
-    "scope": "Selected actual technical frontend/API release; final closing metadata/publication/impact/cleanup pending."
+    "scope": "Source/release and first staged closing-metadata checkpoint separately verified; subsequent formal attestation publication and original-lock release remain guarded.",
+    "finalMetadataReceipt": "reports/s128-final-metadata.json",
+    "completion": "reports/s128-closeout-completion.json"
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -139,7 +141,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.008,
   "entropyLastComputed": "2026-10-29",
-  "lastSessionSummary": "S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending.",
+  "lastSessionSummary": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -2287,9 +2289,9 @@
   "sessionState": {
     "version": 1,
     "durableSession": 128,
-    "currentFocus": "S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending.",
-    "nextMilestone": "Finish S128 exact closing metadata, containing publication/readback, signed impact and owned cleanup; retain independent identity/email/public-launch holds.",
-    "lastSessionSummary": "S128 shipped reliable Inbox recovery and trustworthy playtest notes. Usable cached messages retain history while empty identities cannot suppress fresh critical news. Valid playtest notes survive reload and export only disclosed fields. Matching frontend/API production is verified; final closeout remains pending."
+    "currentFocus": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards.",
+    "nextMilestone": "Verify final S128 containing receipt publication/readback and canonical derived surfaces, then release only the original bound lock; independent identity/email/public-launch holds remain separate.",
+    "lastSessionSummary": "S128 repaired damaged Inbox message admission and playtest receipt integrity. Valid message history and actions survive malformed cache rows; fresh critical source news remains actionable. Playtest exports admit only disclosed fields and invalid ratings do not create trend evidence. Matching frontend/API technical release and same-session formal evidence are verified, subject to final containing receipt publication and original-lock guards."
   },
   "partialCloseout": {
     "session": 117,
@@ -2653,25 +2655,29 @@
   "technicalDebtTrend": "decreasing",
   "closeoutExecution": {
     "session": 128,
-    "state": "ordered-records-written-finalization-pending",
-    "finalMetadataVerified": false,
-    "publicationVerified": false,
-    "arkDelivered": false,
-    "cleanupVerified": false
+    "state": "verified-with-final-containing-publication-and-original-lock-guards",
+    "finalMetadataVerified": true,
+    "publicationVerified": true,
+    "arkDelivered": true,
+    "cleanupVerified": true,
+    "completion": "reports/s128-closeout-completion.json",
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release.",
+    "finalContainingReceiptPublicationVerified": false,
+    "originalLockReleased": false
   },
   "lastCloseoutSession": 128,
   "closeoutPublication": {
-    "session": 127,
-    "commit": "a533a31b32c7d8f7e463abceff7ef8d07270ba2a",
+    "session": 128,
+    "commit": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
     "pushed": true,
-    "applicationSourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-    "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+    "applicationSourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
     "receiptOnly": true,
-    "independentReview": "reports/s127-independent-final-review.json",
-    "arkCargoId": "01K63134KU7A5F6CF32DD300EC",
-    "completion": "reports/s127-closeout-completion.json",
+    "independentReview": "reports/s128-independent-final-review.json",
+    "arkCargoId": "01K64MNHEAF6081E99DCEF4F13",
+    "completion": "reports/s128-closeout-completion.json",
     "finalContainingReceiptPublicationVerified": false,
-    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release."
   },
   "silVelocity": 2,
   "historicalTestShardReceipt": {
@@ -2733,12 +2739,16 @@
       }
     },
     "finalMetadata": {
-      "verified": false,
-      "status": "pending exact staged closing metadata"
+      "verified": true,
+      "passed": 398,
+      "total": 398,
+      "testedStagedTree": "5a2a137c89deb5bc20dea32130a4e113576cf647",
+      "receipt": "reports/s128-final-metadata.json",
+      "scope": "Actual tested ordered checkpoint; subsequent formal attestations are metadata only and require their own review, scans and publication."
     },
     "proof": "reports/s128-release-acceptance.json"
   },
-  "testsDeferredNote": "Exact-source CI7/7, source Studio398/398 and corrected closing metadata398/398 separately passed. First metadata397/398 failure is preserved. No aggregate application case count or real-player outcome is claimed.",
+  "testsDeferredNote": "Exact C3 CI7/7, source Studio398/398 and corrected closing-metadata398/398 separately passed. Focused49, hosted journeys, provenance and pixels retain separate scopes; aggregate application cases and actual-player outcomes remain unmeasured.",
   "historicalCloseoutPublication": {
     "commit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
     "pushed": true,
@@ -2760,7 +2770,7 @@
     "receipt": "reports/s118-closeout-protocol.json",
     "tests": 44
   },
-  "truthAuditNote": "S127 technical source/release and corrected metadata proof verified with preserved failed attempt and scoped visual evidence; final containing receipt publication and original-lock release remain guarded. Independent launch holds unchanged.",
+  "truthAuditNote": "S128 source and first metadata proof are separately verified. Historical candidates and Partial checkpoint are preserved. Final containing receipt publication/original-lock release remain guarded; identity/email/public-launch holds unchanged.",
   "closeoutSecurity": {
     "session": 123,
     "status": "passed",
@@ -2768,13 +2778,13 @@
     "exactStagedScan": "verified"
   },
   "closeoutProtocol": {
-    "session": 127,
+    "session": 128,
     "status": "verified-phases-final-native-guards-pending",
-    "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-    "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-    "receipt": "reports/s127-closeout-completion.json",
+    "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+    "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+    "receipt": "reports/s128-closeout-completion.json",
     "orderedSteps": 11,
-    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
+    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with a fresh zero-owned-jobs observation; then release ONLY the original goal-bound S128 lock (start 2026-10-29T05:57:59.205Z, startHead a8220ea9736da857b0d1d558f70e52d769fef090). This receipt cannot attest to its own containing publication or lock release."
   },
   "priorReleaseAuthority": {
     "schemaVersion": "1.0",
@@ -2861,10 +2871,11 @@
     "audit": "docs/AUDIT_2026-10-29-S128.json",
     "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
     "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
-    "status": "technical-production-verified-ordered-records-written-finalization-pending",
+    "status": "selected-outcomes-and-closeout-phase-evidence-verified-final-native-guards-pending",
     "productionVerified": true,
     "acceptance": "reports/s128-release-acceptance.json",
-    "closeoutComplete": false
+    "closeoutComplete": true,
+    "completion": "reports/s128-closeout-completion.json"
   },
   "silScoreBasis": "Root-reviewed engineering judgment; player and financial outcomes remain unmeasured.",
   "silDebt": "→",
@@ -2910,7 +2921,7 @@
   },
   "silDebtTrend": "→",
   "silLastUpdated": "2026-10-29",
-  "lastDeployStatus": "S128 matching frontend/API812fd52b accepted: native14 each origin, worker4 each origin, source Studio398 and CI7, performance and selected pixels verified. Ordered records are written; final closing metadata, containing publication, signed impact and owned cleanup remain required.",
+  "lastDeployStatus": "S128 matching frontend/API812fd52b accepted; corrected closing metadata398, first containing publication/readback, signed impact and owned cleanup verified. Final containing receipt publication/readback and original bound-lock release remain guarded.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "workflowRun": 40135991113,
@@ -2975,8 +2986,8 @@
     "completion": "reports/s123-closeout-completion.json",
     "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
-  "sessionIntentAchieved": false,
-  "sessionIntentDisposition": "partial-finalization-pending",
+  "sessionIntentAchieved": true,
+  "sessionIntentDisposition": "verified-phases-final-containing-publication-and-original-lock-guards",
   "silSparkline": [
     838,
     856,
@@ -3014,11 +3025,43 @@
         "nativeCompletionGuard": "Before native goal completion require the final containing receipt commit on remote main, exact ancestor receipt bytes, clean project worktree, zero owned transient jobs and release only the original bound S126 lock. This receipt does not attest to its own containing push."
       },
       "scope": "Historical prior-session record; never S127 completion evidence."
+    },
+    {
+      "field": "closeoutProtocol",
+      "historicalSession": 127,
+      "record": {
+        "session": 127,
+        "status": "verified-phases-final-native-guards-pending",
+        "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+        "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+        "receipt": "reports/s127-closeout-completion.json",
+        "orderedSteps": 11,
+        "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
+      },
+      "scope": "Historical prior-session evidence, never S128 completion."
+    },
+    {
+      "field": "closeoutPublication",
+      "historicalSession": 127,
+      "record": {
+        "session": 127,
+        "commit": "a533a31b32c7d8f7e463abceff7ef8d07270ba2a",
+        "pushed": true,
+        "applicationSourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+        "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+        "receiptOnly": true,
+        "independentReview": "reports/s127-independent-final-review.json",
+        "arkCargoId": "01K63134KU7A5F6CF32DD300EC",
+        "completion": "reports/s127-closeout-completion.json",
+        "finalContainingReceiptPublicationVerified": false,
+        "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release."
+      },
+      "scope": "Historical prior-session evidence, never S128 completion."
     }
   ],
   "sanitizationEvidence": {
-    "session": 127,
-    "receipt": "reports/s127-final-staged-security.json",
-    "scope": "Actual initial containing closing-metadata staged blobs and settings checked. Final receipt descendants require their own fresh staged scan before publication."
+    "session": 128,
+    "receipt": "reports/s128-final-staged-security.json",
+    "scope": "Actual initial containing closing-metadata staged blobs/settings checked. Final formal-receipt descendants require their own fresh staged scan before publication."
   }
 }

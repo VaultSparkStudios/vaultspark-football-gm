@@ -1,0 +1,23 @@
+{
+  "session": 128,
+  "at": "2026-10-29T20:48:24.027Z",
+  "cargoId": "01K64MNHEAF6081E99DCEF4F13",
+  "type": "session-impact-summary",
+  "from": "franchise-architect-football",
+  "to": "*",
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "artifactDigest": "86cd6cb638fdc81174725f4b9263807bf22403932a55e5731ddfaedb1c1a1553",
+  "operationKey": "7c25554e43e578e67da8a4c985bbd8b9eb7726161cdd207e8b5069796c363bad",
+  "reviewedPlanSha256": "d92ea12652e9104c3fa70aa08f1aa015cf8e2f4f12e8664d4b6093c78da518bf",
+  "approvedCloseoutPlanSha256": "4272ecb26bcd7f7e5dff689a5299cf07c82aaf33ee208c24774343dd930fdcba",
+  "silScore": 532,
+  "closeoutCommit": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+  "observedRemoteMain": "8ef2050062a4c2c8c89e1c331d25da8e18c934e3",
+  "hmacVerified": true,
+  "ed25519Posture": "unsigned",
+  "repoRootExplicit": true,
+  "studioOpsRootExplicit": true,
+  "state": "shipped",
+  "reusedExisting": false,
+  "adoption": "Not asserted. Signed delivery, recipient acceptance/application and verified adoption remain distinct."
+}

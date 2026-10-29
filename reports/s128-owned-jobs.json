@@ -1,0 +1,21 @@
+{
+  "session": 128,
+  "sourceRevision": "812fd52b5ea01d1e0ef3d4037d383f311998aaa5",
+  "at": "2026-10-29T20:53:30.547Z",
+  "verified": true,
+  "started": 86,
+  "closed": 86,
+  "running": 0,
+  "unknown": 0,
+  "osTaskProcessMatches": 0,
+  "ownedPreviewListeners": 0,
+  "toolCensus": {
+    "path": ".cache/s128-tool-census-final.json",
+    "sha256": "747f37682a4888683f34056baac428ef149054aeb011b39085afe8633e1ca791"
+  },
+  "osCensus": {
+    "path": ".cache/s128-os-census.json",
+    "sha256": "99e693fe2288293f024418c911431746ba090ef4ae27ffb626aafb79a0b8df9c"
+  },
+  "scope": "Directly inventoried root asynchronous exec handles and current S128 process/preview-port snapshot after owned checkout removal. Missing native handles establish ended registry entries, not successful command exits. Later finalization/publication commands and agent lanes require their own final native census."
+}
