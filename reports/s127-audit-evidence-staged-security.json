@@ -1,0 +1,44 @@
+{
+  "session": 127,
+  "at": "2026-10-29T05:34:28.420Z",
+  "mode": "staged",
+  "scanned": 3,
+  "findings": [],
+  "settings": {
+    "passing": true,
+    "findings": 0
+  },
+  "stagedTree": "64bed7e339859c1aa6c94a916e070e6865ada96b",
+  "blobBytesVerified": true,
+  "files": [
+    {
+      "path": "docs/AUDIT_2026-10-29.json",
+      "sha256": "201975645b0f8cfc43ccb1b49ec9c1d58d26cc17d8082d66577b8deb426dee3f",
+      "bytes": 31436,
+      "gitBlob": "a20b5ea2a57f8a9835d2998b1a64413e66d151fc"
+    },
+    {
+      "path": "docs/AUDIT_2026-10-29.md",
+      "sha256": "301e8e2f436fcb9ccce042bb2282175a36d265fb2e0febd00092221a1f9a9488",
+      "bytes": 3170,
+      "gitBlob": "5798edbf25fe4fc8f8fa434cb541dfa4190d5d47"
+    },
+    {
+      "path": "reports/s127-audit-evidence-followthrough.json",
+      "sha256": "dc7ae1c9d07d4e523444f6aaa8d29d736fd539f37029d93ad65d111d683e8d51",
+      "bytes": 1825,
+      "gitBlob": "059ed2557d7e39b65327ce50ecd932074250a491"
+    }
+  ],
+  "gatewayAudit": {
+    "session": 127,
+    "at": "2026-10-29T04:50:46.828Z",
+    "exitCode": 0,
+    "resolvedThroughCanonicalGateway": true,
+    "advisory": true,
+    "scope": "Canonical capability inventory resolution only; legacy --audit flag is ignored by the owner CLI. Provider action health is not inferred from presence.",
+    "parseable": true,
+    "rawLog": ".cache/s127-final-gateway-advisory.log"
+  },
+  "scope": "Exact staged blobs read in one native Git batch and independently blob-hashed; canonical detector and private-path rule unchanged. Binary captures excluded from text scanning."
+}

@@ -111,7 +111,7 @@
         }
       ],
       "premise": "Apply the restored dashboard from the response state. Move byte-budget pruning into the local runtime owning rewind storage, remove page-side mutation, preserve newest checkpoints, keep index and payloads coherent, and cover worker persistence and actual restore then next action.",
-      "executionEvidence": "Local implementation: reports/s127-implementation-review.json and reports/s127-local-final-2-browser.json. Release pending."
+      "executionEvidence": "Local implementation: reports/s127-implementation-review.json and reports/s127-local-final-2-browser.json. Current verification: exact-source CI7/7 and isolated source Studio398/398; matching frontend/API release reports/s127-release-acceptance.json; corrected closing metadata398/398 reports/s127-final-metadata.json; closeout phases reports/s127-closeout-completion.json. Final native publication/original-lock guards remain separately enforced."
     },
     {
       "id": 2,
@@ -171,7 +171,7 @@
         }
       ],
       "premise": "Validate stored contract records and season-close rows before use. Retain legitimate action marks and valid closed results, reject malformed rows and false completion, preserve franchise isolation and tab-only progress, then prove actual Desk hydration in both themes and viewport sizes.",
-      "executionEvidence": "Local implementation: reports/s127-implementation-review.json and reports/s127-local-final-2-browser.json. Release pending."
+      "executionEvidence": "Local implementation: reports/s127-implementation-review.json and reports/s127-local-final-2-browser.json. Current verification: exact-source CI7/7 and isolated source Studio398/398; matching frontend/API release reports/s127-release-acceptance.json; corrected closing metadata398/398 reports/s127-final-metadata.json; closeout phases reports/s127-closeout-completion.json. Final native publication/original-lock guards remain separately enforced."
     }
   ],
   "totals": {
@@ -610,7 +610,7 @@
   ],
   "requiredReleaseRepair": {
     "reason": "Full native Studio exposed an extra local rewind response field; removed it to preserve server/local response parity.",
-    "verification": "Targeted API/session/ledger checks21/21 passed after repair; full clean exact-source Studio and hosted CI remain required."
+    "verification": "Resolved: targeted API/session/ledger21/21, clean exact-source Studio398/398, hosted CI7/7 and actual matching frontend/API acceptance. Corrected closing metadata398/398 and closeout phase proof are separately recorded in reports/s127-closeout-completion.json."
   },
   "currentCandidate": {
     "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
@@ -619,8 +619,11 @@
     "stagingVerified": true,
     "sourceStudioVerified": true,
     "requiredCiRun": 40809657220,
-    "requiredCiStatus": "in_progress",
-    "productionVerified": false
+    "requiredCiStatus": "completed",
+    "productionVerified": true,
+    "requiredCiConclusion": "success",
+    "technicalAcceptance": "reports/s127-release-acceptance.json",
+    "closeoutCompletion": "reports/s127-closeout-completion.json"
   },
   "closeoutRecorded": true,
   "currentRelease": {

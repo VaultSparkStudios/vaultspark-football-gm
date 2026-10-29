@@ -1,0 +1,44 @@
+{
+  "session": 127,
+  "observedAt": "2026-10-29T05:32:14.033Z",
+  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
+  "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
+  "verified": true,
+  "corrected": [
+    "Two shipped execution-evidence strings now cite actual release and closeout receipts",
+    "Current candidate CI completed/success and productionVerified true",
+    "Resolved release-repair verification points to actual accepted checks"
+  ],
+  "baselinePreserved": {
+    "source": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
+    "readinessAssessment": "Original source-bound pre-implementation observations retained; broad launch readiness is not relabeled green."
+  },
+  "results": [
+    {
+      "command": "node scripts/render-audit-md.mjs --input docs/AUDIT_2026-10-29.json",
+      "exitCode": 0,
+      "logSha256": "99dcd0887d08d8ed0ca7d1e31f312d80ed8ccc9e6763101f99ab0ef3c2cff8de"
+    },
+    {
+      "command": "node scripts/render-audit-md.mjs --input docs/AUDIT_2026-10-29.json --check",
+      "exitCode": 0,
+      "logSha256": "2217475fbbd2d3386ba1a621bb22b1f36872b4f2326db65f9e43783af313454a"
+    },
+    {
+      "command": "node --test --test-isolation=none --test-force-exit test/audit-completion-contract.test.js",
+      "exitCode": 0,
+      "logSha256": "a3ce4478654236898bb0c35abe0b78ffee48660d8aae4eb8277d0eec6a703088",
+      "summary": {
+        "valid": true,
+        "reason": null,
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    }
+  ],
+  "scope": "Metadata-only correction of stale checkpoint labels. Product source, frozen acceptance/visual evidence, score536 and two delivered outcomes are unchanged. Containing publication remains a separate native guard."
+}
