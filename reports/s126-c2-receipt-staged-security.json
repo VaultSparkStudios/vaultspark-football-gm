@@ -1,0 +1,146 @@
+{
+  "session": 126,
+  "at": "2026-10-29T00:45:25.439Z",
+  "mode": "staged",
+  "scanned": 20,
+  "findings": [],
+  "settings": {
+    "passing": true,
+    "findings": 0
+  },
+  "stagedTree": "654c334159b96823da2c359ceaf05b9f85753f49",
+  "blobBytesVerified": true,
+  "files": [
+    {
+      "path": "audits/2026-10-28.json",
+      "sha256": "e66ba8e5fbabbee8251a8da6ac50283eb5e94e411851304063ab70298a9888f6",
+      "bytes": 956,
+      "gitBlob": "a82044f73bde922ed29c310e369871282ca791c2"
+    },
+    {
+      "path": "context/AGENT_MEMORY.md",
+      "sha256": "3004305c84fc8be09e9ba33e2ebfd98a88c6da2368bd904321ad4351c9eac6d4",
+      "bytes": 13558,
+      "gitBlob": "98360d307cd7c3eb6f0e48ebfed755b092eefebc"
+    },
+    {
+      "path": "context/CURRENT_STATE.md",
+      "sha256": "eb146603e0a49849a9187e13fe4a97b76a2054b32ebab8d88bb774b621cc2723",
+      "bytes": 17875,
+      "gitBlob": "53e6838afdb064b5b8f2407fb927498a324f4b9c"
+    },
+    {
+      "path": "context/DECISIONS.md",
+      "sha256": "24757268f3826fd767edf1cf69d98f455d90c003abcdd2954ae170eb938c4db1",
+      "bytes": 20625,
+      "gitBlob": "812e01c6870dfaf91dbd42454a03a5d9eb9a9c56"
+    },
+    {
+      "path": "context/LATEST_HANDOFF.md",
+      "sha256": "6117c87a2de93c6d4191f8670590788cad374145df41d6d21b49ed1a402d45a3",
+      "bytes": 2763,
+      "gitBlob": "0f276adccd961fa5a4b404c91d078b8249e371a3"
+    },
+    {
+      "path": "context/PROJECT_STATUS.json",
+      "sha256": "09f0d0aa1b01f144a850bb33a2872bca1e7f088a03812834b10350a64c3fbe26",
+      "bytes": 112037,
+      "gitBlob": "04b388cacd0a4e02262731cd0a34d5b30154b5fd"
+    },
+    {
+      "path": "context/SELF_IMPROVEMENT_LOOP.md",
+      "sha256": "211f452597bc92d68ab51b2cd67fb0b0d4733706b67d5798bd19abeccb606c95",
+      "bytes": 33493,
+      "gitBlob": "262c473e4c23eff9c45acce352815aa3519ea735"
+    },
+    {
+      "path": "context/TASK_BOARD.md",
+      "sha256": "60b26f5131a27ac4957be62febb3a279b444f37e7427663801c6556b2141dae0",
+      "bytes": 22826,
+      "gitBlob": "4b9bcfbc3f41d30cf975d89f70c35b2b2cd6a00f"
+    },
+    {
+      "path": "docs/AUDIT_2026-10-28.json",
+      "sha256": "adedd24dc087279cbb9cdaa39915d7ec5abbccd1b0d89ee3c1deca5ddd7f9c0a",
+      "bytes": 34043,
+      "gitBlob": "ac593eae744e808d8f8741fe4c6390fd15d71ccb"
+    },
+    {
+      "path": "docs/CLOSEOUT_BRIEF_S126_2026-10-28.md",
+      "sha256": "4bd16848da751471570d574d5099a6bc58df643657d5ba0a4d4a2bb1ef390aa4",
+      "bytes": 2220,
+      "gitBlob": "6d71de09ec96c2716412f9798691e2fa5b463da9"
+    },
+    {
+      "path": "docs/CLOSEOUT_IMPACT_S126_2026-10-28.md",
+      "sha256": "ec13d37f473c543e80a366631d41b0aac2dbff985f349e2f30008955c5af3b21",
+      "bytes": 5911,
+      "gitBlob": "f0debbbd3bafe3e6cb470428ac75851df03f2bb0"
+    },
+    {
+      "path": "docs/CLOSEOUT_STATUS_BOARD.md",
+      "sha256": "aa0a2bbe17259fa98b36224b9ed5222be05f178bab5e5265b17c6a81c4f0d0d3",
+      "bytes": 7812,
+      "gitBlob": "fd378c1697bb2ac6131dc71c6f5d2dd6dc8b3a2f"
+    },
+    {
+      "path": "docs/STARTUP_BRIEF.md",
+      "sha256": "bbacea819321267ff37b8b1cd13fdc37fd75cfa8231775c4f8de51a9bf9062fe",
+      "bytes": 10969,
+      "gitBlob": "55c7132713eeaf6dbcfb089a3df63b05e1827428"
+    },
+    {
+      "path": "logs/WORK_LOG.md",
+      "sha256": "9ef5985d9ff9a6934248e7955fe0118fb27257aec3ba7be6b6c54e277981cae4",
+      "bytes": 24474,
+      "gitBlob": "6805edb11886fe24a15248162b2b799712beafdc"
+    },
+    {
+      "path": "reports/s126-c2-ark-impact.json",
+      "sha256": "ce7aef1f7df27380fa6c0bf50ff699318b868cb1e54a860d445af6fa8d0dab21",
+      "bytes": 700,
+      "gitBlob": "12ebe08ee11201ce4dc75a11c4257571403fa303"
+    },
+    {
+      "path": "reports/s126-c2-closeout-completion.json",
+      "sha256": "dbe741d7b7263d4ea5de98d410b38d7210c56393358dd9abdf481a56b8adfcc7",
+      "bytes": 1462,
+      "gitBlob": "fbc456065056874475995ae7b37b2788e88d81e3"
+    },
+    {
+      "path": "reports/s126-c2-final-record-checks.json",
+      "sha256": "571646a87ff41caae1192f282a8731e5a0cfd6908481347f50a901f8bb372412",
+      "bytes": 1639,
+      "gitBlob": "87d69215ad2ae828f7eb772d4b7435ea94a80089"
+    },
+    {
+      "path": "reports/s126-c2-metadata-publication.json",
+      "sha256": "e46f9f9f693e34e1d0a90eabd41472a43f6e2dffc45264f0f7af5c446f3db4ce",
+      "bytes": 11679,
+      "gitBlob": "b23808418e65af1d8878ddeeb21d4e8426b9fc47"
+    },
+    {
+      "path": "reports/s126-c2-owned-checkout-cleanup.json",
+      "sha256": "e470b61ed8b830024493537ffd08237f996185f005af07ece89ec8390f81472f",
+      "bytes": 474,
+      "gitBlob": "b271ff0d53b24fc050837e3fe3e3160eac8c1a93"
+    },
+    {
+      "path": "reports/s126-c2-owned-jobs.json",
+      "sha256": "6b56f2e7f12b4d8a9f079a1352223442cee086b084a1155bca0e52ab6898d787",
+      "bytes": 528,
+      "gitBlob": "f956bfb460791837cce9a52eb3ff7163b5205336"
+    }
+  ],
+  "gatewayAudit": {
+    "session": 126,
+    "at": "2026-10-29T00:10:20.887Z",
+    "exitCode": 0,
+    "resolvedThroughCanonicalGateway": true,
+    "advisory": true,
+    "scope": "Canonical capability inventory resolution only; legacy --audit flag is ignored by the owner CLI. Provider action health is not inferred from presence.",
+    "parseable": true,
+    "rawLog": ".cache/s126-c2-final-gateway-advisory.log"
+  },
+  "scope": "Exact staged blobs read in one native Git batch and independently blob-hashed; canonical detector and private-path rule unchanged. Binary captures excluded from text scanning."
+}

@@ -5,9 +5,9 @@
 - [x] Wave 1 — Fresh startup, goal/session binding, nine-axis audit, pending admission and pre-implementation premise timing.
 - [x] Wave 2 — Mobile control recovery, prediction corruption safety and trophy continuity; local143/143 focused, client7/7 browser,32 selected final images and independent reviews accepted.
 - [x] Wave 3a — Exact source staging, required CI, main source publication and actual frontend/API technical production accepted.
-- [ ] Wave 3b — Final closing-metadata acceptance, containing receipt publication/readback, signed impact and owned cleanup remain required.
+- [x] Wave 3b — Exact closing metadata, first containing publication/readback, signed impact and owned cleanup verified; final containing receipt push and original-lock release remain native completion guards.
 
-Historical release dependency — resolved by C2: candidate `1c73ef6` passed all seven CI jobs and was deployed to the frontend/API, but desktop entry LCP missed the unchanged1,800ms limit in two native runs (1,824ms and2,088ms). The required entry-only bundling repair is now accepted at exact C2 source `309bb0f`, deployed to both frontend and API, with CI7/7, provenance14/14 and browser7/7 at each origin, and passing five-run desktop/mobile performance. See reports/s126-c2-release-acceptance.json. Baseline4, pre-implementation evidence and both C1 misses remain historical in reports/s126-entry-performance-premise.json and the original performance receipts. Only the Wave3b finalization remains open.
+Historical release dependency — resolved by C2: candidate `1c73ef6` passed all seven CI jobs and was deployed to the frontend/API, but desktop entry LCP missed the unchanged1,800ms limit in two native runs (1,824ms and2,088ms). The required entry-only bundling repair is now accepted at exact C2 source `309bb0f`, deployed to both frontend and API, with CI7/7, provenance14/14 and browser7/7 at each origin, and passing five-run desktop/mobile performance. See reports/s126-c2-release-acceptance.json. Baseline4, pre-implementation evidence and both C1 misses remain historical in reports/s126-entry-performance-premise.json and the original performance receipts. Wave3b proof is recorded in reports/s126-c2-closeout-completion.json; final containing publication is guarded separately.
 
 ## S126 future discipline — unselected follow-ups
 

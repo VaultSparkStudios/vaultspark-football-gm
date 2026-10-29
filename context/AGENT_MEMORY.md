@@ -126,3 +126,6 @@ A public status note changes the frontend artifact and generated archive/feed/si
 ---
 
 Older entries are retained verbatim in `context/archive/AGENT_MEMORY.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+S126 closeout lesson: canonical handoff headings carry session authority. Preserve an executed failed metadata suite and verify the corrected staged tree with the full native suite; do not relabel source CI as closing-metadata evidence.

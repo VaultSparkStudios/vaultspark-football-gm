@@ -119,3 +119,10 @@ Validate prediction containers and resolved grades before interpreting them. A d
 Two retained production measurements missed the unchanged entry performance bar. The required C2 repair inlines the existing root theme script, two stylesheets and original preview image into the first response, preserving exact content, native CSP hashes, external assets and the existing performance limits. New native staging and production measurements pass.
 
 Exact technical release is accepted by reports/s126-c2-release-acceptance.json; closing records, final metadata and containing publication have distinct evidence boundaries. Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.
+
+
+### S126 finalization addendum
+
+Final closing metadata passed the full unchanged native Studio suite (398/398) on staged tree 5fffb3f7898640997bd3ef376d6c23a00d709376. First containing metadata commit 463f686e3db270435bc24a1f5f859ed7b5121a4b was pushed and read back. Signed impact 01K62HHV1K620ABDCA3702225A was persisted and verified; delivery is not adoption. The owned verification checkout was removed after preserving its evidence; owned native job census found zero running. Final containing receipt publication and original-lock release are enforced post-publication guards. Independent launch holds remain in force.
+
+Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected outcome count remains3.

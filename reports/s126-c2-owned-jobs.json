@@ -1,0 +1,12 @@
+{
+  "session": 126,
+  "at": "2026-10-29T00:41:17.251Z",
+  "verified": true,
+  "rootReturnedLiveHandlesObserved": 115,
+  "terminal": 6,
+  "missing": 109,
+  "running": 0,
+  "osTaskProcessMatches": 0,
+  "childAgents": "All observed non-root agents completed; capture owner confirms zero browsers/hosts and preserved native terminal receipt.",
+  "scope": "Native handle polls plus project-specific OS process census. Missing handles are not relabeled successful exits; unrelated services and production containers are preserved."
+}

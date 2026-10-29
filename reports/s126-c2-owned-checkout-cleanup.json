@@ -1,0 +1,14 @@
+{
+  "session": 126,
+  "at": "2026-10-29T00:40:15.552Z",
+  "verified": true,
+  "worktree": ".cache/s126-c2-final-metadata-checkout",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "testedStagedTree": "5fffb3f7898640997bd3ef376d6c23a00d709376",
+  "ownershipVerified": true,
+  "exactGeneratedOverlayVerified": true,
+  "rootEvidencePreserved": true,
+  "dependencyJunctionUnlinkedNonrecursively": true,
+  "dependencyTargetPreserved": true,
+  "removed": true
+}

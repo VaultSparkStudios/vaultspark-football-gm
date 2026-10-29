@@ -701,7 +701,7 @@
   },
   "implementationComplete": true,
   "releaseComplete": true,
-  "closeoutComplete": false,
+  "closeoutComplete": true,
   "premiseGate": {
     "schema": "premise-gate/v1",
     "at": "2026-10-28T16:29:51.437Z",
@@ -729,7 +729,7 @@
     "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
     "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
     "acceptance": "reports/s126-c2-release-acceptance.json",
-    "status": "technical-production-verified-finalization-pending"
+    "status": "technical-production-and-closeout-verified"
   },
   "requiredReleaseRepair": {
     "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
@@ -737,5 +737,6 @@
     "reason": "Two retained C1 production performance misses required an index-only loading repair.",
     "outcome": "Existing critical landing assets inline with unchanged content, CSP and performance limits; actual C2 staging/production five-run profiles pass.",
     "selectedOutcomeCountUnchanged": 3
-  }
+  },
+  "closeoutCompletion": "reports/s126-c2-closeout-completion.json"
 }

@@ -29,3 +29,5 @@
 - Insertions: n/a
 - Deletions: n/a
 - Suite: Exact CI7/7; source Studio398/398; selected143 and entry37 separately; hosted7 and native14 each origin;84scoped pixels.
+
+S126 finalization addendum: Final closing metadata passed the full unchanged native Studio suite (398/398) on staged tree 5fffb3f7898640997bd3ef376d6c23a00d709376. First containing metadata commit 463f686e3db270435bc24a1f5f859ed7b5121a4b was pushed and read back. Signed impact 01K62HHV1K620ABDCA3702225A was persisted and verified; delivery is not adoption. The owned verification checkout was removed after preserving its evidence; owned native job census found zero running. Final containing receipt publication and original-lock release are enforced post-publication guards. Independent launch holds remain in force.

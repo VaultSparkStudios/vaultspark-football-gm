@@ -5,11 +5,11 @@
   "status": "active",
   "health": "yellow",
   "currentFocus": "S126: Mobile and Full View controls remain usable when browser storage fails, damaged optional predictions cannot interrupt dashboard updates or invent graded picks, and earned trophies remain visible in this tab after failed persistence. The landing page also combines its existing theme, layout and preview in the initial response to satisfy the unchanged performance gate.",
-  "nextMilestone": "Finish exact closing metadata, containing publication, actual signed impact and owned cleanup for S126; preserve independent public-launch holds.",
+  "nextMilestone": "Observe the first opted-in cohort and satisfy the independent identity/email, lifecycle and founder public-launch holds.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-10-28",
+  "lastUpdated": "2026-10-29",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "type": "game",
@@ -92,7 +92,15 @@
     "focusedReceipt": "reports/s126-c2-candidate-checks.json",
     "sourceStudioReceipt": "reports/s126-c2-ci-studio.json",
     "tests": "Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37/37 separately, with overlap not summed. Actual C2 staging/production browser7/7 and native provenance14/14 per origin; 60 primary plus24 prediction images cover selected named states only. Native five-run desktop/mobile performance passed both origins; production LCP1472/1456ms, INP24ms and CLS0.0003/0.0131. Matching immutable C2 API image and ready database verified with existing database/routing preservation. Earlier C1 local/browser and failed performance observations remain historical. Aggregate application case count, actual-player outcomes and full launch readiness remain unmeasured.",
-    "scope": "Accepted selected source/release evidence only; final closing-metadata verification and containing publication remain pending."
+    "scope": "Source/release and exact staged closing metadata separately verified; final containing receipt publication and original lock release are native completion guards.",
+    "finalMetadataReceipt": "reports/s126-c2-final-metadata.json",
+    "production": {
+      "status": "verified",
+      "checksPassed": 14,
+      "checksTotal": 14,
+      "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+      "receipt": "reports/s126-c2-production-provenance.json"
+    }
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -126,7 +134,7 @@
     "total": 12,
     "failing": 0,
     "score": 100,
-    "date": "2026-10-28",
+    "date": "2026-10-29",
     "passing": 12,
     "warning": 0,
     "checks": []
@@ -2283,7 +2291,7 @@
     "version": 1,
     "durableSession": 126,
     "currentFocus": "S126: Mobile and Full View controls remain usable when browser storage fails, damaged optional predictions cannot interrupt dashboard updates or invent graded picks, and earned trophies remain visible in this tab after failed persistence. The landing page also combines its existing theme, layout and preview in the initial response to satisfy the unchanged performance gate.",
-    "nextMilestone": "Finish exact closing metadata, containing publication, actual signed impact and owned cleanup for S126; preserve independent public-launch holds.",
+    "nextMilestone": "Observe the first opted-in cohort and satisfy the independent identity/email, lifecycle and founder public-launch holds.",
     "lastSessionSummary": "S126: Mobile and Full View controls remain usable when browser storage fails, damaged optional predictions cannot interrupt dashboard updates or invent graded picks, and earned trophies remain visible in this tab after failed persistence. The landing page also combines its existing theme, layout and preview in the initial response to satisfy the unchanged performance gate."
   },
   "partialCloseout": {
@@ -2648,23 +2656,24 @@
   "technicalDebtTrend": "decreasing",
   "closeoutExecution": {
     "session": 126,
-    "state": "ordered-records-written-finalization-pending",
-    "finalMetadataVerified": false,
-    "publicationVerified": false,
-    "arkDelivered": false,
-    "cleanupVerified": false
+    "state": "verified-with-final-containing-publication-guard",
+    "finalMetadataVerified": true,
+    "publicationVerified": true,
+    "arkDelivered": true,
+    "cleanupVerified": true,
+    "nativeCompletionGuard": "Before native goal completion require the final containing receipt commit on remote main, exact ancestor receipt bytes, clean project worktree, zero owned transient jobs and release only the original bound S126 lock. This receipt does not attest to its own containing push."
   },
   "lastCloseoutSession": 126,
   "closeoutPublication": {
-    "session": 124,
-    "commit": "63d9e39ae4c8ea3714b40d96831987c48f5267a1",
+    "session": 126,
+    "commit": "463f686e3db270435bc24a1f5f859ed7b5121a4b",
     "pushed": true,
-    "applicationSourceRevision": "f39b801c505dfd32f180decc186e5fa5b1e72e3f",
+    "applicationSourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
     "receiptOnly": true,
-    "independentReview": "approved-after-two-display-fixes",
-    "arkCargoId": "01K5TER7VI75068B4EFF09E20E",
-    "completion": "reports/s124-closeout-completion.json",
-    "nativeCompletionGuard": "Before native goal completion verify the final containing receipt commit on remote main, exact f39 staging/frontend/API identity, terminal receipt-only CI with no observed executed failure, zero owned transient jobs/processes, and release only the original S124 lock."
+    "independentReview": "passed-round-two-after-two-display-fixes",
+    "arkCargoId": "01K62HHV1K620ABDCA3702225A",
+    "completion": "reports/s126-c2-closeout-completion.json",
+    "nativeCompletionGuard": "Before native goal completion require the final containing receipt commit on remote main, exact ancestor receipt bytes, clean project worktree, zero owned transient jobs and release only the original bound S126 lock. This receipt does not attest to its own containing push."
   },
   "silVelocity": 3,
   "historicalTestShardReceipt": {
@@ -2733,12 +2742,16 @@
       }
     },
     "finalMetadata": {
-      "verified": false,
-      "status": "pending exact staged metadata"
+      "verified": true,
+      "passed": 398,
+      "total": 398,
+      "testedStagedTree": "5fffb3f7898640997bd3ef376d6c23a00d709376",
+      "receipt": "reports/s126-c2-final-metadata.json",
+      "scope": "Tested closing checkpoint; subsequent attestations/formal record updates are metadata only, separately checked."
     },
     "proof": "reports/s126-c2-release-acceptance.json"
   },
-  "testsDeferredNote": "Exact-source CI7/7 passed, including280 browser passes and3skips. Aggregate unit-case count remains unmeasured. Final closeout metadata acceptance remains separate.",
+  "testsDeferredNote": "Exact-source CI7/7, source Studio398/398 and final metadata Studio separately passed. Aggregate unit-case count and real-player outcomes remain unmeasured.",
   "historicalCloseoutPublication": {
     "commit": "eb0ed0a6dfb018c2fd21aef090bb4f4325572186",
     "pushed": true,
@@ -2858,10 +2871,11 @@
     "audit": "docs/AUDIT_2026-10-28.json",
     "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
     "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
-    "status": "technical-production-verified-closeout-records-written-finalization-pending",
+    "status": "selected-outcomes-and-full-arc-verified",
     "productionVerified": true,
     "acceptance": "reports/s126-c2-release-acceptance.json",
-    "closeoutComplete": false
+    "closeoutComplete": true,
+    "completion": "reports/s126-c2-closeout-completion.json"
   },
   "silScoreBasis": "Reviewed engineering judgment; no measured player or financial outcome claim.",
   "silDebt": "→",
@@ -2907,7 +2921,7 @@
   },
   "silDebtTrend": "→",
   "silLastUpdated": "2026-10-28",
-  "lastDeployStatus": "S126 C2 frontend acb0b9ed/source309bb0f/artifact30742dc and matching API309bb0f are verified; CI7/7, native14/14 and browser7/7 each origin, and unchanged five-run performance gates passed. Closing metadata, receipt publication, signed impact and owned cleanup remain separate.",
+  "lastDeployStatus": "S126 C2 frontend and matching API309bb0f verified; closeout proof reports/s126-c2-closeout-completion.json; final containing publication and original-lock release are native completion guards.",
   "previousBackendDeployment": {
     "sourceRevision": "bd60d3dd387060a2afcf2b974fc27f1e57e22394",
     "workflowRun": 40135991113,
@@ -2972,8 +2986,8 @@
     "completion": "reports/s123-closeout-completion.json",
     "nativeCompletionGuard": "Verify this final containing receipt commit on remote main, reconfirm live490 staging/frontend/API, zero owned running jobs and release only the original S123 lock before native goal completion."
   },
-  "sessionIntentAchieved": false,
-  "sessionIntentDisposition": "partial-finalization-pending",
+  "sessionIntentAchieved": true,
+  "sessionIntentDisposition": "complete-with-final-publication-guard",
   "silSparkline": [
     838,
     856,

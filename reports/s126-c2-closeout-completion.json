@@ -1,0 +1,38 @@
+{
+  "session": 126,
+  "at": "2026-10-29T00:41:21.231Z",
+  "sourceRevision": "309bb0fa11f89b4fb643f1dd554dbcf860c3aff5",
+  "artifactDigest": "30742dc502cf0f7afbb607db93db5a956ff0e6fc6960720f75b1c90f2869ee2d",
+  "selectedOutcomes": 3,
+  "fullArcPhasesVerified": true,
+  "finalMetadata": {
+    "receipt": "reports/s126-c2-final-metadata.json",
+    "testedStagedTree": "5fffb3f7898640997bd3ef376d6c23a00d709376",
+    "summary": {
+      "valid": true,
+      "reason": null,
+      "tests": 398,
+      "pass": 398,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "firstContainingPublication": "463f686e3db270435bc24a1f5f859ed7b5121a4b",
+  "ark": {
+    "receipt": "reports/s126-c2-ark-impact.json",
+    "cargoId": "01K62HHV1K620ABDCA3702225A",
+    "state": "shipped",
+    "adoption": "Not asserted"
+  },
+  "ownedCleanup": {
+    "checkout": "reports/s126-c2-owned-checkout-cleanup.json",
+    "jobs": "reports/s126-c2-owned-jobs.json",
+    "running": 0
+  },
+  "independentReview": "reports/s126-c2-independent-final-review.json",
+  "contextPreservation": "reports/s126-c2-context-preservation.json",
+  "launchApproved": false,
+  "nativeCompletionGuard": "Before native goal completion require the final containing receipt commit on remote main, exact ancestor receipt bytes, clean project worktree, zero owned transient jobs and release only the original bound S126 lock. This receipt does not attest to its own containing push."
+}

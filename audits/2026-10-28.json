@@ -20,6 +20,7 @@
   },
   "silScore": 532,
   "acceptance": "reports/s126-c2-release-acceptance.json",
-  "closeoutComplete": false,
-  "scope": "Accepted selected technical release and ordered record checkpoint. Final metadata/publication/impact/cleanup not yet verified."
+  "closeoutComplete": true,
+  "scope": "Selected technical release, exact closing metadata, first containing publication, signed impact and owned verification cleanup verified. Final containing receipt push and original-lock release are native completion guards.",
+  "completion": "reports/s126-c2-closeout-completion.json"
 }
