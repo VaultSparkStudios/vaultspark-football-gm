@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-29T06:03:46.906Z",
+  "report": {
+    "audit": "docs/AUDIT_2026-10-29-S128.json",
+    "session": 128,
+    "premises": [
+      {
+        "slug": "inbox-cache-admission",
+        "status": "pending",
+        "hasOutcome": false,
+        "claim": "Live source retains unvalidated inbox-cache-admission",
+        "target": "public/lib/engagementFeatures.js",
+        "adapter": "file-content",
+        "expected": true,
+        "observed": true,
+        "verdict": "verified"
+      },
+      {
+        "slug": "playtest-receipt-integrity",
+        "status": "pending",
+        "hasOutcome": false,
+        "claim": "Live source retains unvalidated playtest-receipt-integrity",
+        "target": "public/lib/playtestReceipts.js",
+        "adapter": "file-content",
+        "expected": true,
+        "observed": true,
+        "verdict": "verified"
+      }
+    ],
+    "verified": 2,
+    "contradicted": 0,
+    "resolvedContradicted": 0,
+    "openContradicted": 0,
+    "unverified": 0
+  },
+  "sources": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "1962e29aed23a9319a3838ac747bb5363ffa49bafa5b3b846b156004852ff216"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "46b021f495df07ed1630e191a66e96de7e21fa4832b52980b0abe4e018db584b"
+    }
+  ],
+  "timingConformance": "Native checker has --input/--strict but no --record support. This timestamped pre-edit source snapshot is supplemental evidence; canonical premise timing is unmeasured."
+}

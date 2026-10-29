@@ -1,0 +1,78 @@
+{
+  "session": 128,
+  "group": "studio",
+  "startedAt": "2026-10-29T06:08:15.755Z",
+  "completedAt": "2026-10-29T06:14:58.867Z",
+  "head": "a8220ea9736da857b0d1d558f70e52d769fef090",
+  "sourceBinding": "Listed worktree input hashes; exact committed identity is checked separately.",
+  "sources": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "f73deeeb16b03afcdbe4c070edd6cfdd8b51a270ed1950791c8d26d44c92bcc1"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "f4ca2eba71fe53bac8758ed5ce43062b573de5bfd28bda3146d5c88556ee9039"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "c4048362737325643e5d50158bf705becdc5dbacc3cb60ded8d0b92b509e27fc"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "8a1e6ba618402dc701b146a5b2fae9bde49ef01442029ef8359469e2d402e574"
+    },
+    {
+      "path": "test/inbox-persistence.test.js",
+      "sha256": "57422901ec9f7ef9d69179f4f4c0dbc4930785c6bc4e44dd24b7e9274a14786f"
+    },
+    {
+      "path": "test/player-state-storage-failure.test.js",
+      "sha256": "37f1ec9b8d6791520be537f36e6c70390f2c67eb9896ede9ca18f372623c997f"
+    },
+    {
+      "path": "test/playtest-receipt-integrity.test.js",
+      "sha256": "cbe36525f31f3bf70e941e18cd9ef0519866e5ebfe1b6551accdd36fb2d34d40"
+    },
+    {
+      "path": "test/beta-feedback.test.js",
+      "sha256": "8e4c484f92200a3211a40fc7a0a5de352f59144366a44025ceb2cfb85da46f7d"
+    },
+    {
+      "path": "test/contextual-feedback.test.js",
+      "sha256": "7a5b558b0a52d54557c4331ef1fffd07e3529e1bcf2ad3b8c891bd8b8a39dd90"
+    },
+    {
+      "path": "test/optional-storage-resilience.test.js",
+      "sha256": "69bfe75c5d5bed89204867b8a10172c45d5bdeb1c7ba63cbbad9b8f5e5528744"
+    },
+    {
+      "path": "test/playtest-journey.test.js",
+      "sha256": "06cf908e8967b212176b19c9480977845fb185f688224839ca029741e76b0e62"
+    }
+  ],
+  "exitCode": 1,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 398,
+    "pass": 393,
+    "fail": 5,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "unchanged": false,
+  "verified": false,
+  "rawLog": {
+    "path": ".cache/s128-studio-checks.log",
+    "sha256": "76b218e9b56f2ece7be080b8904a35afb7a1471118f86abc5c4395d109f588bc"
+  },
+  "classification": {
+    "boot": "self regression, repaired by shared constructor/schema and smaller served comments; unchanged650000 target",
+    "projectAuthority": "ignored local generic scripts absent from committed source; verify clean checkout",
+    "privateCdr": "ignored private local file absent from public committed source; verify clean checkout",
+    "premise": "active pending audit during implementation, reconcile actual verified statuses before candidate",
+    "innovation": "ignored generic tooling plus active audit; verify committed candidate"
+  }
+}

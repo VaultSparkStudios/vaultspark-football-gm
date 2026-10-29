@@ -166,3 +166,9 @@ S112 evidence correction to the older CPU–CPU market task: test/session111-cpu
 ---
 
 Older entries are retained verbatim in `context/archive/TASK_BOARD.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## S128 Wave status
+
+- [x] Wave 1: fresh startup, bound goal, live audit and candidate admission.
+- [x] Wave 2: both selected repairs; focused48/48, actual worker browser4/4, independent code/pixel review. Hosted acceptance remains separate.
+- [ ] Wave 3: exact candidate staging/production, full ordered closeout and push.

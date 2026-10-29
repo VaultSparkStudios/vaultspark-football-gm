@@ -1,3 +1,9 @@
+# Session 128 active arc
+
+Session Intent: Complete a fresh audit, repair damaged Inbox cache admission and playtest receipt integrity at L2, verify actual browser journeys, stage and deploy the authorized candidate, then run full ordered closeout and push. Native goal is bound by thread identity in ignored arc-goal metadata. Prior S127 evidence is historical.
+
+Wave 1 startup/audit complete; Wave 2 implementation in progress; Wave 3 release and closeout pending.
+
 # Session 127 Closeout — verified outcomes
 
 ## Where We Left Off (Session 127)

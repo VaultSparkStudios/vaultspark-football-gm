@@ -1,0 +1,71 @@
+{
+  "session": 128,
+  "group": "focused",
+  "startedAt": "2026-10-29T06:14:42.384Z",
+  "completedAt": "2026-10-29T06:14:47.030Z",
+  "head": "a8220ea9736da857b0d1d558f70e52d769fef090",
+  "sourceBinding": "Listed worktree input hashes; exact committed identity is checked separately.",
+  "sources": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "a6cd680d2d904a41ef6118f63180f800ffaf4f45b705c8b2951d8c5e679e9945"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "219783e865a96feb88717ee4b9401212a65b4f83d339a90ffdb5b214cf9b538e"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "c4048362737325643e5d50158bf705becdc5dbacc3cb60ded8d0b92b509e27fc"
+    },
+    {
+      "path": "scripts/run-test-shard.mjs",
+      "sha256": "8a1e6ba618402dc701b146a5b2fae9bde49ef01442029ef8359469e2d402e574"
+    },
+    {
+      "path": "test/inbox-persistence.test.js",
+      "sha256": "57422901ec9f7ef9d69179f4f4c0dbc4930785c6bc4e44dd24b7e9274a14786f"
+    },
+    {
+      "path": "test/player-state-storage-failure.test.js",
+      "sha256": "37f1ec9b8d6791520be537f36e6c70390f2c67eb9896ede9ca18f372623c997f"
+    },
+    {
+      "path": "test/playtest-receipt-integrity.test.js",
+      "sha256": "cbe36525f31f3bf70e941e18cd9ef0519866e5ebfe1b6551accdd36fb2d34d40"
+    },
+    {
+      "path": "test/beta-feedback.test.js",
+      "sha256": "8e4c484f92200a3211a40fc7a0a5de352f59144366a44025ceb2cfb85da46f7d"
+    },
+    {
+      "path": "test/contextual-feedback.test.js",
+      "sha256": "7a5b558b0a52d54557c4331ef1fffd07e3529e1bcf2ad3b8c891bd8b8a39dd90"
+    },
+    {
+      "path": "test/optional-storage-resilience.test.js",
+      "sha256": "69bfe75c5d5bed89204867b8a10172c45d5bdeb1c7ba63cbbad9b8f5e5528744"
+    },
+    {
+      "path": "test/playtest-journey.test.js",
+      "sha256": "06cf908e8967b212176b19c9480977845fb185f688224839ca029741e76b0e62"
+    }
+  ],
+  "exitCode": 0,
+  "summary": {
+    "valid": true,
+    "reason": null,
+    "tests": 48,
+    "pass": 48,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "unchanged": true,
+  "verified": true,
+  "rawLog": {
+    "path": ".cache/s128-focused-checks.log",
+    "sha256": "7dd2c8c5d41335baf48808ea4f9f8a5c5a6bb6872034fec6fcda1ed31fddd386"
+  }
+}

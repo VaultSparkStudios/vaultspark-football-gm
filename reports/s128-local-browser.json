@@ -1,0 +1,196 @@
+{
+  "session": 128,
+  "phase": "local",
+  "origin": "http://localhost:4278",
+  "at": "2026-10-29T06:06:46.732Z",
+  "verified": true,
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "inbox": {
+        "threw": false,
+        "unread": 2,
+        "items": 2
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:06:10.106Z-BUF\",\"createdAt\":\"2026-10-29T06:06:10.106Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "inbox": {
+        "threw": false,
+        "unread": 2,
+        "items": 2
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:06:18.685Z-BUF\",\"createdAt\":\"2026-10-29T06:06:18.685Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "inbox": {
+        "threw": false,
+        "unread": 2,
+        "items": 2
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:06:27.608Z-BUF\",\"createdAt\":\"2026-10-29T06:06:27.608Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "inbox": {
+        "threw": false,
+        "unread": 2,
+        "items": 2
+      },
+      "notes": {
+        "count": 1,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":1,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:06:39.945Z-BUF\",\"createdAt\":\"2026-10-29T06:06:39.945Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\"},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false}}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": false,
+          "count": 0,
+          "minimum": 3,
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    }
+  ],
+  "captures": [
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-local/inbox-desktop-dark.png",
+      "sha256": "74c65a74910460a068f19203a16d41b76ffc2a6577bbeae3e098b355d5db6eee"
+    },
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": ".cache/s128-local/playtest-desktop-dark.png",
+      "sha256": "f644f7beb34dc3bcb4505845d680c5ddc021888a4813ce2d4f4accbf9c44687d"
+    },
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-local/inbox-desktop-light.png",
+      "sha256": "734de7539e4aebbef780ef391ce046d6ecae4e41e63f0a3d8b706cd9a524bd89"
+    },
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": ".cache/s128-local/playtest-desktop-light.png",
+      "sha256": "bfe75624ae1d508a04f4b986117ba630b8fde66ef9ab22bcf5b09eef685f16d7"
+    },
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-local/inbox-mobile-dark.png",
+      "sha256": "d258fbcc393b24175b6641e8836be5d59cd2949aac369fce7a8c76d04e103f42"
+    },
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": ".cache/s128-local/playtest-mobile-dark.png",
+      "sha256": "2ca2ad4419d6ffabeb3cf5638e5270cb4dda541e2648faf87bb7b1ccec0e08a7"
+    },
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-local/inbox-mobile-light.png",
+      "sha256": "073a7438df5d2e179f43a1e9c35cf16cfcf233a5720b534e6c774b1d6408b8dc"
+    },
+    {
+      "phase": "local",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": ".cache/s128-local/playtest-mobile-light.png",
+      "sha256": "bf389421ead66c84800abb38b37e8bb4db6afea9b29ef4113e9fb265394c9877"
+    }
+  ],
+  "error": null
+}

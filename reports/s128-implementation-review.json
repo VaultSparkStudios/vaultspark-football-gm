@@ -1,0 +1,38 @@
+{
+  "session": 128,
+  "at": "2026-10-29T06:18:25.504Z",
+  "verdict": "pass",
+  "findingsOpen": 0,
+  "reviewer": "independent review_playtest agent and session agent",
+  "subjects": [
+    "inbox-cache-admission",
+    "playtest-receipt-integrity"
+  ],
+  "evidence": {
+    "focused": {
+      "path": "reports/s128-focused-checks.json",
+      "sha256": "7a4cccaa348e630eef4e49570afcc993c0e6031cdd3fc21b3b17cb49466c22b3",
+      "pass": 48
+    },
+    "browser": {
+      "path": "reports/s128-local-candidate-browser.json",
+      "sha256": "f49d3db90e4b456bbeb7fe12effd0c4980b23346cbd2610ac56dd79c47f26952",
+      "journeys": 4
+    }
+  },
+  "sources": [
+    {
+      "path": "public/lib/engagementFeatures.js",
+      "sha256": "a6cd680d2d904a41ef6118f63180f800ffaf4f45b705c8b2951d8c5e679e9945"
+    },
+    {
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "219783e865a96feb88717ee4b9401212a65b4f83d339a90ffdb5b214cf9b538e"
+    },
+    {
+      "path": "public/status.html",
+      "sha256": "c4048362737325643e5d50158bf705becdc5dbacc3cb60ded8d0b92b509e27fc"
+    }
+  ],
+  "boundary": "Selected behavior and local source only. Hosted release, broad readiness and actual-player outcomes remain unproved."
+}

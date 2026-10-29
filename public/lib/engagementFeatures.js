@@ -1,16 +1,4 @@
-/**
- * Engagement surfaces:
- *   Priority Inbox system (bell icon, CRITICAL/IMPORTANT/FLAVOR tiers)
- *   Franchise Moment card (cinematic post-game drama)
- *   GM Decision modal (pre-advance critical-week choices)
- *   Sim-Watch overlay (live 300ms drive-log animation)
- *   Season Narrative Arcs panel
- *   Cap War Room panel
- *   Trade Breakdown card
- *   Dynasty Records Board
- *   AI GM Archetypes display
- *   Mentorship badge renderer
- */
+// Inbox, franchise moments, decisions and dynasty panels.
 
 import { state, api } from "./appState.js";
 import { browserStorage as safeBrowserStorage } from "./browserStorage.js";
@@ -57,6 +45,33 @@ function storageKey(scope) {
   return `${INBOX_STORAGE_PREFIX}:${scope}`;
 }
 
+function inboxTimestamp(value, fallback = 0) {
+  return typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : fallback;
+}
+
+function normalizeInboxItem(value, { cached = false, receivedAt = 0 } = {}) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const text = (field) => typeof field === "string" ? field : "";
+  const id = typeof value.id === "string" && value.id.trim() ? value.id.trim()
+    : typeof value.id === "number" && Number.isFinite(value.id) ? value.id : null;
+  const item = {
+    type: text(value.type).trim() || text(value.details?.type).trim(),
+    headline: text(value.headline),
+    detail: text(value.detail),
+    quote: text(value.quote)
+  };
+  if (id != null) item.id = id;
+  if (id == null && ![item.type, item.headline, item.detail].some((field) => field.trim())) return null;
+  for (const field of ["year", "week"]) {
+    if (typeof value[field] === "number" && Number.isFinite(value[field]) && value[field] >= 0) item[field] = value[field];
+  }
+  item.inboxKey = inboxItemKey(item);
+  item.tier = classifyNewsItem(item);
+  item.receivedAt = inboxTimestamp(cached ? value.receivedAt : receivedAt);
+  item.resolvedAt = cached && value.resolvedAt != null ? inboxTimestamp(value.resolvedAt, null) : null;
+  return item;
+}
+
 function persistInbox(storage = null) {
   const target = browserStorage(storage);
   if (!target || !_inbox.scope) return false;
@@ -85,9 +100,19 @@ export function syncInboxScope(dashboard = state.dashboard || {}, storage = null
   try {
     const saved = JSON.parse(target.getItem(storageKey(scope)) || "null");
     if (saved?.version === 1 && saved.scope === scope && Array.isArray(saved.items)) {
-      _inbox.items = saved.items.slice(0, 60);
-      _inbox.seen = new Set(_inbox.items.map(inboxItemKey));
-      _inbox.lastSeen = Number(saved.lastSeen || 0);
+      // Validate before installing state so one bad row cannot poison the Inbox.
+      const items = [];
+      const seen = new Set();
+      for (const row of saved.items) {
+        const item = normalizeInboxItem(row, { cached: true });
+        if (!item || seen.has(item.inboxKey)) continue;
+        items.push(item);
+        seen.add(item.inboxKey);
+        if (items.length === 60) break;
+      }
+      _inbox.items = items;
+      _inbox.seen = seen;
+      _inbox.lastSeen = inboxTimestamp(saved.lastSeen);
     }
   } catch {
     // A corrupt browser cache never blocks the simulation; rebuild from source news.
@@ -122,12 +147,14 @@ export function classifyNewsItem(item) {
 export function ingestNewsIntoInbox(newsItems = [], { dashboard = state.dashboard || {}, storage = null, now = Date.now } = {}) {
   syncInboxScope(dashboard, storage);
   let newCount = 0;
-  for (const item of newsItems) {
-    const key = inboxItemKey(item);
+  for (const row of Array.isArray(newsItems) ? newsItems : []) {
+    const item = normalizeInboxItem(row, { receivedAt: inboxTimestamp(now(), Date.now()) });
+    if (!item) continue;
+    const key = item.inboxKey;
     if (_inbox.seen.has(key)) continue;
     _inbox.seen.add(key);
-    const tier = classifyNewsItem(item);
-    _inbox.items.unshift({ ...item, inboxKey: key, tier, receivedAt: Number(now()), resolvedAt: null });
+    const tier = item.tier;
+    _inbox.items.unshift(item);
     if (tier === "CRITICAL" || tier === "IMPORTANT") newCount++;
   }
   // Cap at 60 items
@@ -138,13 +165,13 @@ export function ingestNewsIntoInbox(newsItems = [], { dashboard = state.dashboar
 
 export function getUnreadCount({ dashboard = state.dashboard || {}, storage = null } = {}) {
   syncInboxScope(dashboard, storage);
-  return _inbox.items.filter((i) => !i.resolvedAt && i.receivedAt > _inbox.lastSeen && (i.tier === "CRITICAL" || i.tier === "IMPORTANT")).length;
+  return _inbox.items.filter((i) => i.resolvedAt == null && i.receivedAt > _inbox.lastSeen && (i.tier === "CRITICAL" || i.tier === "IMPORTANT")).length;
 }
 
 export function resolveInboxItem(key, { storage = null, now = Date.now } = {}) {
   const item = _inbox.items.find((entry) => (entry.inboxKey || inboxItemKey(entry)) === key);
   if (!item) return false;
-  item.resolvedAt = Number(now());
+  item.resolvedAt = inboxTimestamp(now(), Date.now());
   persistInbox(storage);
   return true;
 }
@@ -166,7 +193,7 @@ export function renderInboxBadge() {
   const count = getUnreadCount();
   badge.textContent = count > 9 ? "9+" : String(count);
   badge.hidden = count === 0;
-  badge.className = count > 0 ? "inbox-badge" + (_inbox.items.some((i) => !i.resolvedAt && i.tier === "CRITICAL" && i.receivedAt > _inbox.lastSeen) ? " inbox-badge-critical" : "") : "inbox-badge";
+  badge.className = count > 0 ? "inbox-badge" + (_inbox.items.some((i) => i.resolvedAt == null && i.tier === "CRITICAL" && i.receivedAt > _inbox.lastSeen) ? " inbox-badge-critical" : "") : "inbox-badge";
 }
 
 export function openInbox() {
@@ -226,7 +253,7 @@ function renderInboxContent() {
     const typeIcon = typeIcons[newsType(item)] || "📰";
     const actionTab = item.tier === "CRITICAL" ? getInboxActionTab(item) : null;
     return `
-      <div class="inbox-item inbox-tier-${escapeHtml(item.tier.toLowerCase())}${item.resolvedAt ? " inbox-resolved" : ""}">
+      <div class="inbox-item inbox-tier-${escapeHtml(item.tier.toLowerCase())}${item.resolvedAt != null ? " inbox-resolved" : ""}">
         <div class="inbox-item-header">
           <span class="inbox-tier-dot" title="${escapeHtml(tierLabels[item.tier])}">${escapeHtml(tierIcons[item.tier])}</span>
           <span class="inbox-type-icon">${typeIcon}</span>
@@ -235,7 +262,7 @@ function renderInboxContent() {
         </div>
         ${item.detail ? `<div class="inbox-detail">${escapeHtml(item.detail)}</div>` : ""}
         ${item.quote ? `<div class="inbox-quote">"${escapeHtml(item.quote.slice(0, 100))}"</div>` : ""}
-        ${item.resolvedAt ? `<div class="inbox-action-row"><span class="inbox-resolution">Action opened</span></div>` : actionTab ? `<div class="inbox-action-row"><button class="inbox-action-btn" data-inbox-key="${escapeHtml(item.inboxKey || inboxItemKey(item))}" data-inbox-action-tab="${escapeHtml(actionTab)}">Take Action →</button></div>` : ""}
+        ${item.resolvedAt != null ? `<div class="inbox-action-row"><span class="inbox-resolution">Action opened</span></div>` : actionTab ? `<div class="inbox-action-row"><button class="inbox-action-btn" data-inbox-key="${escapeHtml(item.inboxKey || inboxItemKey(item))}" data-inbox-action-tab="${escapeHtml(actionTab)}">Take Action →</button></div>` : ""}
       </div>`;
   }).join("");
 
@@ -424,8 +451,6 @@ export function dismissGmDecision() {
   resolveGmDecision(null);
 }
 
-// SIM-WATCH OVERLAY (Live box score feed with 300ms animation)
-
 // SEASON NARRATIVE ARCS PANEL
 
 export async function renderSeasonArcs() {
@@ -459,15 +484,7 @@ export async function renderSeasonArcs() {
 
 const CAP_WAR_ROOM_LIMIT = 255_000_000;
 
-/**
- * Pure multi-year cap projection used by the Cap War Room panel.
- *
- * A contract at yearsRemaining === 0 is a real, legally reachable mid-season
- * state (S67 offseason fix made contract expiry reachable at all) and is
- * arguably *more* urgent than one at yearsRemaining === 1, so both count as
- * "expiring" in the current year — `<= 1` rather than the old `=== 1`
- * boundary that made 0-year contracts invisible to this counter.
- */
+// Cap projection: both zero-year and one-year contracts expire this year.
 export function computeCapProjection(roster, currentYear, { capLimit = CAP_WAR_ROOM_LIMIT, yearSpan = 4 } = {}) {
   const years = Array.from({ length: yearSpan }, (_, i) => currentYear + i);
   return years.map((yr) => {

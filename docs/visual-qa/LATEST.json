@@ -1,54 +1,21 @@
 {
   "schemaVersion": 1,
-  "session": 127,
-  "capturedAt": "2026-10-29T04:44:54.911Z",
-  "kind": "selected-recovery-surfaces-baseline-local-staging-production",
-  "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-  "artifactFingerprint": {
-    "algorithm": "sha256",
-    "digest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-    "files": 363
-  },
+  "session": 128,
+  "capturedAt": "2026-10-29T06:16:45.861Z",
+  "kind": "selected-inbox-feedback-local",
+  "sourceRevision": "local-worktree",
   "sourceFiles": [
     {
-      "path": "src/adapters/persistence/rewindRetention.js",
-      "sha256": "fa45f931976f6b1ac4697fa75e54db092a75f1b2aef89f9d104913fb5822899a"
-    },
-    {
-      "path": "src/app/api/localApiRuntime.js",
-      "sha256": "a9d4a912dd96c26647a4fcb19a16cc277b30c3a1974b36be30fc2d6527fa4213"
-    },
-    {
-      "path": "public/lib/tabSettings.js",
-      "sha256": "84a361b4edacb6359537aadb953afba4f8c8fb86409219726e79567110a4879f"
-    },
-    {
-      "path": "public/lib/firstSeasonContract.js",
-      "sha256": "a0fdea0126fcbcd89601e4fc2f22ebad9958801de32b3eb45718aef4e8897960"
-    },
-    {
       "path": "public/lib/engagementFeatures.js",
-      "sha256": "1962e29aed23a9319a3838ac747bb5363ffa49bafa5b3b846b156004852ff216"
+      "sha256": "a6cd680d2d904a41ef6118f63180f800ffaf4f45b705c8b2951d8c5e679e9945"
     },
     {
-      "path": "public/app.js",
-      "sha256": "59bc345f65cb26435a5c661d74e9e7e93764b4822daa73e9d0be447a3761b8dd"
+      "path": "public/lib/playtestReceipts.js",
+      "sha256": "219783e865a96feb88717ee4b9401212a65b4f83d339a90ffdb5b214cf9b538e"
     },
     {
       "path": "public/status.html",
-      "sha256": "fd7e2771dd5eed62b56232580ea8fa34981101fb6f49ece7654504267f9021c1"
-    },
-    {
-      "path": "scripts/run-test-shard.mjs",
-      "sha256": "73335c0faa45ea9709df43f27cf6141adf23dc0b82d4a5c0699fd688500090a4"
-    },
-    {
-      "path": "test/session127-first-season-contract.test.js",
-      "sha256": "302ca1c4880ebf375c0029f958b748c9e55293b3cbaf0e0dcadafd3ad8dc51a9"
-    },
-    {
-      "path": "test/session127-rewind-retention.test.js",
-      "sha256": "af1144fbb8a98fb0c604c45a3041b427e286655e488e33e5a4902516ec7aac8e"
+      "sha256": "c4048362737325643e5d50158bf705becdc5dbacc3cb60ded8d0b92b509e27fc"
     }
   ],
   "themes": [
@@ -57,272 +24,184 @@
   ],
   "captures": [
     {
-      "file": "s127-before-contract-desktop-dark.png",
-      "sha256": "278593e857d294c83a69902d294e168f4cc61f977d43abb2312cb8c757e5f7bd",
       "phase": "before",
-      "theme": "dark",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "contract",
+      "theme": "dark",
+      "state": "inbox",
+      "file": "s128-before-inbox-desktop-dark.png",
+      "sha256": "e503d2d96ed5709867c68433c2cdf29d34673ff9ef463f47a1d88a60f6eb8a1d",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
     },
     {
-      "file": "s127-before-contract-desktop-light.png",
-      "sha256": "63c4b562686c661617c4138f0151664945cbe90dc36302901d636d96459058d5",
       "phase": "before",
-      "theme": "light",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "contract",
-      "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
-    },
-    {
-      "file": "s127-before-contract-mobile-dark.png",
-      "sha256": "cc7be1347aede8446511a216890f9017a7f7f33514b5d381f6c5abf05948580d",
-      "phase": "before",
       "theme": "dark",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract",
+      "state": "playtest",
+      "file": "s128-before-playtest-desktop-dark.png",
+      "sha256": "7b2d5c1e57b90d3a353df2a8f0652f3dbe6ed05c56dcdb807fd446d90d12bfbf",
+      "page": "playtest",
       "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
     },
     {
-      "file": "s127-before-contract-mobile-light.png",
-      "sha256": "f9d889ee54714cf553317c02e6363cd789225d9b0e364770777304f80ace086d",
       "phase": "before",
-      "theme": "light",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "contract",
-      "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
-    },
-    {
-      "file": "s127-before-rewind-desktop-dark.png",
-      "sha256": "71882ab455af4e85f4aa75f097b30f3b8c01981688c98a894328bd95b64668e6",
-      "phase": "before",
-      "theme": "dark",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "rewind",
+      "theme": "light",
+      "state": "inbox",
+      "file": "s128-before-inbox-desktop-light.png",
+      "sha256": "af7f22c50f28fdf7acb72cfa74204c4476282cfdf62ed67c6d52722885e65658",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
     },
     {
-      "file": "s127-before-rewind-desktop-light.png",
-      "sha256": "f0116834f0bea10c48f6bae06dbb893aa37905d803be89223fe14d037619d55f",
       "phase": "before",
-      "theme": "light",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "rewind",
-      "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
-    },
-    {
-      "file": "s127-before-rewind-mobile-dark.png",
-      "sha256": "137b86df5cb77f67aaf126a08762326e29f1c16ef943b57c9955ff4fa60a97ba",
-      "phase": "before",
-      "theme": "dark",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "rewind",
-      "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
-    },
-    {
-      "file": "s127-before-rewind-mobile-light.png",
-      "sha256": "626cd672de98c173f9ed8adc95771a3284c2b1d235eb5b8ff383c421d434b1e3",
-      "phase": "before",
       "theme": "light",
+      "state": "playtest",
+      "file": "s128-before-playtest-desktop-light.png",
+      "sha256": "d62d11525507f88449b13623e6ae234241c9e62c7aa29856e42ee38a4b81dea5",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "rewind",
-      "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
-    },
-    {
-      "file": "s127-before-status-desktop-dark.png",
-      "sha256": "dbe1aeadd512af488aade4561188cb7f1c881474d8df68ef0dd285a2dc405a6a",
-      "phase": "before",
       "theme": "dark",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "status",
+      "state": "inbox",
+      "file": "s128-before-inbox-mobile-dark.png",
+      "sha256": "20483ef2d01c30462dfd6a1b98e5384cd07a88aef40194372cf7d7ebd74fe719",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
     },
     {
-      "file": "s127-before-status-desktop-light.png",
-      "sha256": "72448ac0e82dfabce450f3b98954a77bb56f577334b4e44ca05d7e59ed6ca954",
       "phase": "before",
-      "theme": "light",
-      "device": "desktop",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
       "viewport": {
-        "width": 1440,
-        "height": 1000
+        "width": 390,
+        "height": 844
       },
-      "page": "status",
-      "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
-    },
-    {
-      "file": "s127-before-status-mobile-dark.png",
-      "sha256": "79f42681a436e5ec315237fa474273ce6cd3ba4c02300b3f0421ce365ec550e7",
-      "phase": "before",
       "theme": "dark",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "status",
+      "state": "playtest",
+      "file": "s128-before-playtest-mobile-dark.png",
+      "sha256": "d7feb67b0324643aead75e6e24cce9ea9b57f29300f438c38005317603d3b5e0",
+      "page": "playtest",
       "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
     },
     {
-      "file": "s127-before-status-mobile-light.png",
-      "sha256": "2f53eb9daee9987d523eb14cb5a7f466700b8a065e95e36175b050e8a403d017",
       "phase": "before",
-      "theme": "light",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "status",
+      "theme": "light",
+      "state": "inbox",
+      "file": "s128-before-inbox-mobile-light.png",
+      "sha256": "e482943640e002c5f6d7f0e1125428e8ae387592904e1f227c0d280657587f34",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd",
-      "group": "baseline",
-      "sourceBinding": "Original pre-implementation baseline."
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": "s128-before-playtest-mobile-light.png",
+      "sha256": "bf5230468c682cad6a9b3b2f875318da1b7648e95bb281c8dc639538dd2f9063",
+      "page": "playtest",
+      "inspected": true,
+      "sourceRevision": "a8220ea9736da857b0d1d558f70e52d769fef090"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
       "theme": "dark",
-      "state": "contract-recovered",
-      "file": "s127-after-contract-recovered-desktop-dark.png",
-      "sha256": "9ccdde998f61705ce8b580861d9af88663b86694c4a39595c41d4bf819523b16",
-      "page": "contract-recovered",
+      "state": "inbox",
+      "file": "s128-after-inbox-desktop-dark.png",
+      "sha256": "bd87648a19ff456dfa3c2b304c967ec8f6995272360158f757f2e18a33be893c",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
       "theme": "dark",
-      "state": "contract-closed",
-      "file": "s127-after-contract-closed-desktop-dark.png",
-      "sha256": "765635c64980340664b73bc2e5f83860aee4cd8d8fe46beb02350ee349e3863c",
-      "page": "contract-closed",
+      "state": "inbox-resolved",
+      "file": "s128-after-inbox-resolved-desktop-dark.png",
+      "sha256": "1097ca16e6457d50ccd2adfd84ee909fc0c607ce59e12d62562f6fc348e92e02",
+      "page": "inbox-resolved",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
       "theme": "dark",
-      "state": "rewind-checkpoint",
-      "file": "s127-after-rewind-checkpoint-desktop-dark.png",
-      "sha256": "1a17424a1949e7631897d0ba5ca630789bc35af5493ada35d10ccdbda694459d",
-      "page": "rewind-checkpoint",
+      "state": "playtest",
+      "file": "s128-after-playtest-desktop-dark.png",
+      "sha256": "f644f7beb34dc3bcb4505845d680c5ddc021888a4813ce2d4f4accbf9c44687d",
+      "page": "playtest",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "rewind-restored",
-      "file": "s127-after-rewind-restored-desktop-dark.png",
-      "sha256": "791bed8676646c77a10e4f7f6e6a89c5b971a9530b59cb4acf99da639592b61b",
-      "page": "rewind-restored",
-      "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
-    },
-    {
-      "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
@@ -330,89 +209,63 @@
       },
       "theme": "dark",
       "state": "status",
-      "file": "s127-after-status-desktop-dark.png",
-      "sha256": "4d47c74870fe61a0a4fd13f4e37b2238ff661fafba6d92672f2cc1fc58675c8b",
+      "file": "s128-after-status-desktop-dark.png",
+      "sha256": "40f2b91cf7c3b8112fa8e9aa459e7b4777bf518c0f9954365d709b4eafd8ccf1",
       "page": "status",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
       "theme": "light",
-      "state": "contract-recovered",
-      "file": "s127-after-contract-recovered-desktop-light.png",
-      "sha256": "179877eb9a437727597d91965e2b744d155bf098db04f613cc0e36b253330bc0",
-      "page": "contract-recovered",
+      "state": "inbox",
+      "file": "s128-after-inbox-desktop-light.png",
+      "sha256": "713e6c33c37d3dc6cce6532bb72134fcd5dda88364a54907d67ca2ac2edbd8af",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
       "theme": "light",
-      "state": "contract-closed",
-      "file": "s127-after-contract-closed-desktop-light.png",
-      "sha256": "4bedd7633a034ce4dcc6e53f692b849802f85cf36412cca083bcafef68157a95",
-      "page": "contract-closed",
+      "state": "inbox-resolved",
+      "file": "s128-after-inbox-resolved-desktop-light.png",
+      "sha256": "53ed386aa808edd0e161cb9d759dc7642c5018cd2fc292359f9c835f8d49f997",
+      "page": "inbox-resolved",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
       "theme": "light",
-      "state": "rewind-checkpoint",
-      "file": "s127-after-rewind-checkpoint-desktop-light.png",
-      "sha256": "adf608e2653676679f928eb89e27adb605deca67f4dffb43232f09d873090d86",
-      "page": "rewind-checkpoint",
+      "state": "playtest",
+      "file": "s128-after-playtest-desktop-light.png",
+      "sha256": "bfe75624ae1d508a04f4b986117ba630b8fde66ef9ab22bcf5b09eef685f16d7",
+      "page": "playtest",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "rewind-restored",
-      "file": "s127-after-rewind-restored-desktop-light.png",
-      "sha256": "8a22049c0057f8e12d9d9630b61dfb86d116e45ad750b506120b2211f71c3aaf",
-      "page": "rewind-restored",
-      "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
-    },
-    {
-      "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "desktop",
       "viewport": {
         "width": 1440,
@@ -420,125 +273,79 @@
       },
       "theme": "light",
       "state": "status",
-      "file": "s127-after-status-desktop-light.png",
-      "sha256": "87568f3792b979890230fe2c80e29f5fbe810c7570eaaab88e5ef33c89becc78",
+      "file": "s128-after-status-desktop-light.png",
+      "sha256": "69b0762410aecf62b60d82b45de29c261e1e9179ad50a27cde2198a2777455a1",
       "page": "status",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "dark",
-      "state": "contract-recovered",
-      "file": "s127-after-contract-recovered-mobile-dark.png",
-      "sha256": "38f8633d43681a8fa4f212c572aa8645f21adbeaa4b2683f3bf1cf388b43f3d0",
-      "page": "contract-recovered",
+      "state": "inbox",
+      "file": "s128-after-inbox-mobile-dark.png",
+      "sha256": "7693b46c2ea304a72b421be4a3ebff32da3ba6e037082f06fd8cf5366c0541ff",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "dark",
-      "state": "contract-recovered-top",
-      "file": "s127-after-contract-recovered-top-mobile-dark.png",
-      "sha256": "aa1f70b914157460a119d2b67597616c4ef769fd86bd1aaa9c8de6176b8a0950",
-      "page": "contract-recovered-top",
+      "state": "inbox-resolved",
+      "file": "s128-after-inbox-resolved-mobile-dark.png",
+      "sha256": "7564a652a9a19656151eff5f2f3b5d0e9ea3a77774ecebc8eb6405edf2703187",
+      "page": "inbox-resolved",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "dark",
-      "state": "contract-closed",
-      "file": "s127-after-contract-closed-mobile-dark.png",
-      "sha256": "8b5e1506a8a7ed1e6a09fcb1df52db6ea6f084a9c0d7433509d2fb3bec5e7471",
-      "page": "contract-closed",
+      "state": "playtest-top",
+      "file": "s128-after-playtest-top-mobile-dark.png",
+      "sha256": "0a48f6f5fe8e3b5b6c5d34df865b458b77af3b6b0caeafadf8e21917f14655bd",
+      "page": "playtest-top",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "dark",
-      "state": "contract-closed-top",
-      "file": "s127-after-contract-closed-top-mobile-dark.png",
-      "sha256": "9dc4e1901a67b76aac8fd22fb65d403eff95cff41474d8717b2b10f30f72acbb",
-      "page": "contract-closed-top",
+      "state": "playtest-bottom",
+      "file": "s128-after-playtest-bottom-mobile-dark.png",
+      "sha256": "3d166b97e86786765b69367c3e62d77b9f0f120af11c09d5bd886fc7cf37e63b",
+      "page": "playtest-bottom",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "rewind-checkpoint",
-      "file": "s127-after-rewind-checkpoint-mobile-dark.png",
-      "sha256": "14aba5085268347ac3cc8854e248e7205950a91462fb9c5837a46ede8bc55bbd",
-      "page": "rewind-checkpoint",
-      "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
-    },
-    {
-      "phase": "after",
-      "origin": "http://localhost:4273",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "rewind-restored",
-      "file": "s127-after-rewind-restored-mobile-dark.png",
-      "sha256": "3a2be56d099479e70762b745bc5a775607c7e5abea992218771c4efebe5ffee8",
-      "page": "rewind-restored",
-      "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
-    },
-    {
-      "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
@@ -546,125 +353,79 @@
       },
       "theme": "dark",
       "state": "status",
-      "file": "s127-after-status-mobile-dark.png",
-      "sha256": "43fcab7ec2165e71c5b5391025920bf54a6bd9f65e6c3b60ae6f99ae9da545ce",
+      "file": "s128-after-status-mobile-dark.png",
+      "sha256": "cf267f913721ad6fc5024ba8a03142fdb1d1b645c474d602eef2d67277345d7d",
       "page": "status",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "light",
-      "state": "contract-recovered",
-      "file": "s127-after-contract-recovered-mobile-light.png",
-      "sha256": "34e2876febfda0f55192629062580386b94eb936ee1ed02c85b85f7e0aba733c",
-      "page": "contract-recovered",
+      "state": "inbox",
+      "file": "s128-after-inbox-mobile-light.png",
+      "sha256": "b1a00f7005eedc27de3b56da6caa4a40f810e88042839dc70dfa444ffcf33997",
+      "page": "inbox",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "light",
-      "state": "contract-recovered-top",
-      "file": "s127-after-contract-recovered-top-mobile-light.png",
-      "sha256": "52b3768ff614d7a672822b4e1bc414b4c2fa7b3d5fe4926601e5ae0eef57c26b",
-      "page": "contract-recovered-top",
+      "state": "inbox-resolved",
+      "file": "s128-after-inbox-resolved-mobile-light.png",
+      "sha256": "9f161e267acfba6c9fa92aaf7b36fe2a124a1e65fdd87b994457b1fa5713a0a5",
+      "page": "inbox-resolved",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "light",
-      "state": "contract-closed",
-      "file": "s127-after-contract-closed-mobile-light.png",
-      "sha256": "550b7829800603431446f92d0baf2cf3fb30c199459ba6a6c89fdf8eaa0796e4",
-      "page": "contract-closed",
+      "state": "playtest-top",
+      "file": "s128-after-playtest-top-mobile-light.png",
+      "sha256": "fbf048aa4eefadf894e730cfa94cde39a75483aeff0ab8280c071d998b49e784",
+      "page": "playtest-top",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "theme": "light",
-      "state": "contract-closed-top",
-      "file": "s127-after-contract-closed-top-mobile-light.png",
-      "sha256": "93ea90d7bac0a6c73b6210397fd49fe0b2692ac52e62898d775a06a354342cbb",
-      "page": "contract-closed-top",
+      "state": "playtest-bottom",
+      "file": "s128-after-playtest-bottom-mobile-light.png",
+      "sha256": "e0b7ef7261a3a148b90c0829950a9b0c1921a9a25756d3d8b232076c2d64ff4c",
+      "page": "playtest-bottom",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
+      "sourceRevision": "local-worktree"
     },
     {
       "phase": "after",
-      "origin": "http://localhost:4273",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "rewind-checkpoint",
-      "file": "s127-after-rewind-checkpoint-mobile-light.png",
-      "sha256": "ceec89e7675b8841ea703a914f00ae2a1a13b7ebe9be397f0022912702cbfcd0",
-      "page": "rewind-checkpoint",
-      "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
-    },
-    {
-      "phase": "after",
-      "origin": "http://localhost:4273",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "rewind-restored",
-      "file": "s127-after-rewind-restored-mobile-light.png",
-      "sha256": "014615056d26530b3fce816a0865317bf34e2f7d0f169433c78500bc543b95fe",
-      "page": "rewind-restored",
-      "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
-    },
-    {
-      "phase": "after",
-      "origin": "http://localhost:4273",
+      "origin": "http://localhost:4278",
       "device": "mobile",
       "viewport": {
         "width": 390,
@@ -672,905 +433,28 @@
       },
       "theme": "light",
       "state": "status",
-      "file": "s127-after-status-mobile-light.png",
-      "sha256": "9622b71006653770458483c457ef5e0847388a0dd5ab355a89d7d5fbd2a8e24a",
+      "file": "s128-after-status-mobile-light.png",
+      "sha256": "afb4062cd1b80d8c5c98295728cbf534905e72a17e481ea1cf99dcc384512830",
       "page": "status",
       "inspected": true,
-      "sourceRevision": "f8b6fc50a64d0f6a6ebbdecdc7403b77e8aed524",
-      "group": "local-C1",
-      "sourceBinding": "Exact committed C1 input hashes; not hosted C2 acceptance."
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "contract-recovered",
-      "file": "s127-staging-contract-recovered-desktop-dark.png",
-      "sha256": "6b98bcf95f3afb82efd757c7c0b873fe320894a1a67075d8571da71becf9ddcb",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "contract-closed",
-      "file": "s127-staging-contract-closed-desktop-dark.png",
-      "sha256": "b4c595c34b96f0e622c3e510c03c207da51feec8454d75f24546e862960bc42b",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "rewind-checkpoint",
-      "file": "s127-staging-rewind-checkpoint-desktop-dark.png",
-      "sha256": "0c41160517828f0c08bf62a95608d0db8bb21642b92032d2e76a1049d92c4394",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "rewind-restored",
-      "file": "s127-staging-rewind-restored-desktop-dark.png",
-      "sha256": "32cf154e089e3eb916bcca3088d94ca4ed9ebba7899fe3951b44ec477b37ce61",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "status",
-      "file": "s127-staging-status-desktop-dark.png",
-      "sha256": "33d1abf434e89ae1547272485cc2253f7dab1defe84bd1b5448d2baa606ce4b4",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "contract-recovered",
-      "file": "s127-staging-contract-recovered-desktop-light.png",
-      "sha256": "b4b52fe343de08cfdab582919c9ae35616220e58c423428f3a8ed85ec4a497df",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "contract-closed",
-      "file": "s127-staging-contract-closed-desktop-light.png",
-      "sha256": "4bedd7633a034ce4dcc6e53f692b849802f85cf36412cca083bcafef68157a95",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "rewind-checkpoint",
-      "file": "s127-staging-rewind-checkpoint-desktop-light.png",
-      "sha256": "0db689539b908da4d030abfc1c0c294de6a76ed4b4eab103c02c6521368bbd11",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "rewind-restored",
-      "file": "s127-staging-rewind-restored-desktop-light.png",
-      "sha256": "430ffeb896a46d78a8ee85960a48aa888159736ae90b054727d3d9a6e976209b",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "status",
-      "file": "s127-staging-status-desktop-light.png",
-      "sha256": "3b6471c9870858c0e6a129926defced42b1093d071e8842d256cbc02b1d8ad66",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-recovered",
-      "file": "s127-staging-contract-recovered-mobile-dark.png",
-      "sha256": "f65b59c9736649157fb937eba00ee54ed3b4faf173624a2342df2a5ba33e9abb",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-recovered-top",
-      "file": "s127-staging-contract-recovered-top-mobile-dark.png",
-      "sha256": "d10beb8f1fe80136f2ebd41385f1498f80bc680f4bbc53687103062a3d74cecd",
-      "page": "contract-recovered-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-closed",
-      "file": "s127-staging-contract-closed-mobile-dark.png",
-      "sha256": "8b5e1506a8a7ed1e6a09fcb1df52db6ea6f084a9c0d7433509d2fb3bec5e7471",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-closed-top",
-      "file": "s127-staging-contract-closed-top-mobile-dark.png",
-      "sha256": "436df26c41dfef26df948f077b3ef31b6ad7f98ebb31b65280b1b45c2b4ba712",
-      "page": "contract-closed-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "rewind-checkpoint",
-      "file": "s127-staging-rewind-checkpoint-mobile-dark.png",
-      "sha256": "1001962095468f35d6167664a21e21255d0b09e5227224e66e4540dfcafa5c06",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "rewind-restored",
-      "file": "s127-staging-rewind-restored-mobile-dark.png",
-      "sha256": "0525fff73501304f1e6889a4ed82d5ef86c0fb65593cb1cb37a0f65dc35e961a",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "status",
-      "file": "s127-staging-status-mobile-dark.png",
-      "sha256": "80623bfa689e3a137fa4a4c07f76b1a454dd51f1b2a7a49f9b5cd3d08c43ef21",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-recovered",
-      "file": "s127-staging-contract-recovered-mobile-light.png",
-      "sha256": "34e2876febfda0f55192629062580386b94eb936ee1ed02c85b85f7e0aba733c",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-recovered-top",
-      "file": "s127-staging-contract-recovered-top-mobile-light.png",
-      "sha256": "1c4379e4dab53973ea535873412bb6ed2841387caea754740077ef2adca9428b",
-      "page": "contract-recovered-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-closed",
-      "file": "s127-staging-contract-closed-mobile-light.png",
-      "sha256": "0a994b2ef6e38bda664c2cec38625e658181791b855dbe1de7315a2034d29ca9",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-closed-top",
-      "file": "s127-staging-contract-closed-top-mobile-light.png",
-      "sha256": "25a8bd6811e6d817d900294a0c1507c044d4a8948515b4cf43715d4611103fc8",
-      "page": "contract-closed-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "rewind-checkpoint",
-      "file": "s127-staging-rewind-checkpoint-mobile-light.png",
-      "sha256": "fa74afe6371d3bfb5e535fc0d63d5d3280857c03706abd3c450056d80562fe50",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "rewind-restored",
-      "file": "s127-staging-rewind-restored-mobile-light.png",
-      "sha256": "d2a7cdf11239bf11e1771bd85c71017be7b676c8e1e6fd20288821882c4524fb",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "staging",
-      "origin": "https://staging.playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "status",
-      "file": "s127-staging-status-mobile-light.png",
-      "sha256": "7f116a717560d3fbf38566bb2ceae00d9d7c46d30f4f41dd4e45daa088d23edd",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "staging"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "contract-recovered",
-      "file": "s127-production-contract-recovered-desktop-dark.png",
-      "sha256": "8935b23b59f09417be2ef2d7fa2179c1bb491841fc6b0292984cbbe192df5c10",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "contract-closed",
-      "file": "s127-production-contract-closed-desktop-dark.png",
-      "sha256": "765635c64980340664b73bc2e5f83860aee4cd8d8fe46beb02350ee349e3863c",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "rewind-checkpoint",
-      "file": "s127-production-rewind-checkpoint-desktop-dark.png",
-      "sha256": "5acfa113c59d944b4ee08e1d361b0d5b6bdfa597bfa5d5d90a34261430bbba08",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "rewind-restored",
-      "file": "s127-production-rewind-restored-desktop-dark.png",
-      "sha256": "5c6d846a90f5c52f45c464f8d6fc635945f20e422974ab1a2b8ce523a5a47ba9",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "dark",
-      "state": "status",
-      "file": "s127-production-status-desktop-dark.png",
-      "sha256": "33d1abf434e89ae1547272485cc2253f7dab1defe84bd1b5448d2baa606ce4b4",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "contract-recovered",
-      "file": "s127-production-contract-recovered-desktop-light.png",
-      "sha256": "67a2e7dea7ac7d7b4619643a6d7c03a5093dd66cf07a417a0ae26d94fce2f49d",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "contract-closed",
-      "file": "s127-production-contract-closed-desktop-light.png",
-      "sha256": "4bedd7633a034ce4dcc6e53f692b849802f85cf36412cca083bcafef68157a95",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "rewind-checkpoint",
-      "file": "s127-production-rewind-checkpoint-desktop-light.png",
-      "sha256": "f8293b3c327405cfe753710b156abbdf10a9da9b6e5e432b7e386b70814f1328",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "rewind-restored",
-      "file": "s127-production-rewind-restored-desktop-light.png",
-      "sha256": "198140a01bb89403dc2b09361e8e9b1797c902df8bc5056d72ab56e171683a91",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "desktop",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "theme": "light",
-      "state": "status",
-      "file": "s127-production-status-desktop-light.png",
-      "sha256": "3b6471c9870858c0e6a129926defced42b1093d071e8842d256cbc02b1d8ad66",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-recovered",
-      "file": "s127-production-contract-recovered-mobile-dark.png",
-      "sha256": "f65b59c9736649157fb937eba00ee54ed3b4faf173624a2342df2a5ba33e9abb",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-recovered-top",
-      "file": "s127-production-contract-recovered-top-mobile-dark.png",
-      "sha256": "55ab0f8c295d17f2b924a08fe6bb298f105d6be3f825eb423f450deee1025c06",
-      "page": "contract-recovered-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-closed",
-      "file": "s127-production-contract-closed-mobile-dark.png",
-      "sha256": "3b041e2bb392755e309053ed0a8c5e4357cdca704eed2970c23470614cb20343",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "contract-closed-top",
-      "file": "s127-production-contract-closed-top-mobile-dark.png",
-      "sha256": "5b1be191eaceb91773b42991b4b98a55e83a7a345baae6dfc9261c2bb24aa263",
-      "page": "contract-closed-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "rewind-checkpoint",
-      "file": "s127-production-rewind-checkpoint-mobile-dark.png",
-      "sha256": "47d0e1f68d5a55311405ac19b369733b34a85f32faea108b02921947d81fef6e",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "rewind-restored",
-      "file": "s127-production-rewind-restored-mobile-dark.png",
-      "sha256": "86054cd1922b5bf48a6c7517e9e79e9f0a0dad4a1644fbf3afa214330c32d0ee",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "dark",
-      "state": "status",
-      "file": "s127-production-status-mobile-dark.png",
-      "sha256": "80623bfa689e3a137fa4a4c07f76b1a454dd51f1b2a7a49f9b5cd3d08c43ef21",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-recovered",
-      "file": "s127-production-contract-recovered-mobile-light.png",
-      "sha256": "bed2cda51840f125f8c33418661931a231f6470ffa0eb1a55b6ca1cfe04e7e5c",
-      "page": "contract-recovered",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-recovered-top",
-      "file": "s127-production-contract-recovered-top-mobile-light.png",
-      "sha256": "cb24a1e4ff564486aac688f56806d9e354bbb1498f53a990aeb7db991fc3727d",
-      "page": "contract-recovered-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-closed",
-      "file": "s127-production-contract-closed-mobile-light.png",
-      "sha256": "0a994b2ef6e38bda664c2cec38625e658181791b855dbe1de7315a2034d29ca9",
-      "page": "contract-closed",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "contract-closed-top",
-      "file": "s127-production-contract-closed-top-mobile-light.png",
-      "sha256": "faf26bb11d8e9c45b80334a9f3104d466b5de22ce16f14de9d8056f1ca91e52d",
-      "page": "contract-closed-top",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "rewind-checkpoint",
-      "file": "s127-production-rewind-checkpoint-mobile-light.png",
-      "sha256": "3b4ecb42f8bb47eb66ce0b1556075fc05e3cf04511ed76d5b708569f28be3bc8",
-      "page": "rewind-checkpoint",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "rewind-restored",
-      "file": "s127-production-rewind-restored-mobile-light.png",
-      "sha256": "199ae0170755bc7e532c6e80f2f6c7bdc8921200e92bcb7d9984f9c2061fa9eb",
-      "page": "rewind-restored",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    },
-    {
-      "phase": "production",
-      "origin": "https://playfranchisearchitect.com",
-      "device": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "theme": "light",
-      "state": "status",
-      "file": "s127-production-status-mobile-light.png",
-      "sha256": "7f116a717560d3fbf38566bb2ceae00d9d7c46d30f4f41dd4e45daa088d23edd",
-      "page": "status",
-      "sourceRevision": "8ab05e49d658e512e03614bd5cc12f6f85a5a75f",
-      "artifactDigest": "9cfe2f0b43148d5c4ba05fa80d92e6a6b3872428cd5290f639b801abf76f7cb2",
-      "inspected": true,
-      "group": "production"
-    }
-  ],
-  "reviews": [
-    {
-      "path": "reports/s127-staging-visual-review.json",
-      "sha256": "bc9bd036ca9bdb6235e17f39ee86afc04fbaa496928fa132536df86601dc5223"
-    },
-    {
-      "path": "reports/s127-production-visual-review.json",
-      "sha256": "f8d84f13bfc9aae4b711dc1533c9cb1aeb9d2d4585d9a219ceeac08f348e1d75"
+      "sourceRevision": "local-worktree"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "review_contract and session-agent",
+    "reviewer": "independent review_playtest agent and session agent",
     "blockingDefectsOpen": 0,
     "findings": [
-      "Actual hosted worker restoration and optional contract states are covered in both themes and viewport widths."
+      "Inbox messages and action history readable; notes reject invalid ratings and show the correct count; status note readable."
     ],
     "fixesApplied": [
-      "Mobile contract top/bottom views cover the tall panel without hiding the sticky header."
+      "Captured mobile note top/bottom with sticky-header clearance, no transient toast, and extra clearance above floating Feedback control."
     ],
     "captureLimitations": [
-      "Baseline rewind images show empty timeline; contract screenshots show stale markup, not the thrown exception. Actual4baseline throws are recorded separately.",
-      "Mobile contract baseline top is behind sticky header. Final top/bottom pair covers all5rows.",
-      "Mobile rewind heading sits behind sticky header in element captures; checkpoint entries and controls are visible.",
-      "Hosted mobile headings/upper rows may be cropped by the sticky header; contract top/bottom pairs preserve all five rows. Transient cache notices and untested dismissal interaction remain explicitly outside accepted content coverage."
+      "Baseline Inbox screenshots show the underlying Desk after the caught exception; exception evidence is recorded in the baseline browser report.",
+      "Baseline mobile note header/disclaimer are partly obscured by sticky header/toast; final pairs cover them.",
+      "Selected state coverage only; this is not whole-product visual acceptance."
     ]
   },
-  "scope": "84 selected rasters:12 original baseline,24 exact-input C1 local,24 staging and24 production at current C2. Historical images retain their own source boundaries. This is selected content/action coverage, not whole-product visual, field-device or real-player outcome acceptance."
+  "scope": "8 baseline and18 final local source-bound selected-state captures; actual action resolution, note copying, next week and returning reload are behavior-checked separately in the browser report."
 }

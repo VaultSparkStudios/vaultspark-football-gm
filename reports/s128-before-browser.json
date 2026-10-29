@@ -1,0 +1,220 @@
+{
+  "session": 128,
+  "phase": "before",
+  "origin": "http://localhost:4278",
+  "at": "2026-10-29T06:03:24.485Z",
+  "verified": true,
+  "results": [
+    {
+      "device": "desktop",
+      "theme": "dark",
+      "inbox": {
+        "threw": true,
+        "error": "Cannot read properties of null (reading 'resolvedAt')"
+      },
+      "notes": {
+        "count": 2,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":2,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"bad\",\"createdAt\":\"2026-10-29T06:03:10.910Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":99,\"agency\":99,\"pace\":99,\"returnIntent\":99},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"},{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:03:10.910Z-BUF\",\"createdAt\":\"2026-10-29T06:03:10.910Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4,\"token\":\"s128-hidden-token\"},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": true,
+          "count": 3,
+          "averages": {
+            "clarity": 99,
+            "agency": 99,
+            "pace": 99,
+            "returnIntent": 99
+          },
+          "strongest": "agency",
+          "friction": "agency",
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "theme": "light",
+      "inbox": {
+        "threw": true,
+        "error": "Cannot read properties of null (reading 'resolvedAt')"
+      },
+      "notes": {
+        "count": 2,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":2,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"bad\",\"createdAt\":\"2026-10-29T06:03:14.472Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":99,\"agency\":99,\"pace\":99,\"returnIntent\":99},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"},{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:03:14.472Z-BUF\",\"createdAt\":\"2026-10-29T06:03:14.472Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4,\"token\":\"s128-hidden-token\"},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": true,
+          "count": 3,
+          "averages": {
+            "clarity": 99,
+            "agency": 99,
+            "pace": 99,
+            "returnIntent": 99
+          },
+          "strongest": "agency",
+          "friction": "agency",
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "dark",
+      "inbox": {
+        "threw": true,
+        "error": "Cannot read properties of null (reading 'resolvedAt')"
+      },
+      "notes": {
+        "count": 2,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":2,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"bad\",\"createdAt\":\"2026-10-29T06:03:18.226Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":99,\"agency\":99,\"pace\":99,\"returnIntent\":99},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"},{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:03:18.226Z-BUF\",\"createdAt\":\"2026-10-29T06:03:18.226Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4,\"token\":\"s128-hidden-token\"},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": true,
+          "count": 3,
+          "averages": {
+            "clarity": 99,
+            "agency": 99,
+            "pace": 99,
+            "returnIntent": 99
+          },
+          "strongest": "agency",
+          "friction": "agency",
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "theme": "light",
+      "inbox": {
+        "threw": true,
+        "error": "Cannot read properties of null (reading 'resolvedAt')"
+      },
+      "notes": {
+        "count": 2,
+        "export": "{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt-pack\",\"count\":2,\"receipts\":[{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"bad\",\"createdAt\":\"2026-10-29T06:03:23.723Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":99,\"agency\":99,\"pace\":99,\"returnIntent\":99},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"},{\"schemaVersion\":\"1.0\",\"kind\":\"local-playtest-receipt\",\"receiptId\":\"playtest-2026-10-29T06:03:23.723Z-BUF\",\"createdAt\":\"2026-10-29T06:03:23.723Z\",\"context\":{\"year\":2026,\"week\":1,\"phase\":\"unknown\",\"teamId\":\"BUF\",\"openingContractStatus\":\"not-observed\",\"evidenceMoment\":\"manual\",\"savePayload\":{\"marker\":\"s128-hidden-payload\"}},\"ratings\":{\"clarity\":4,\"agency\":5,\"pace\":3,\"returnIntent\":4,\"token\":\"s128-hidden-token\"},\"note\":\"Useful draft choice.\",\"privacy\":{\"localOnlyUntilShared\":true,\"personalIdentifiersCollected\":false,\"savePayloadIncluded\":false},\"accountIdentifier\":\"s128-should-not-export\"}],\"journey\":{\"schemaVersion\":\"1.1\",\"kind\":\"local-playtest-journey\",\"eventCount\":0,\"durationMs\":0,\"events\":[],\"planningFriction\":{\"status\":\"not-observed\",\"reviewed\":false,\"revisionRequested\":false,\"deferred\":false,\"elapsedToReviewMs\":null,\"elapsedToCommitMs\":null,\"elapsedToDebriefMs\":null,\"evidenceBoundary\":\"Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality.\"},\"privacy\":{\"localOnlyUntilShared\":true,\"relativeTimeOnly\":true,\"accountIdentifierIncluded\":false,\"savePayloadIncluded\":false,\"cohortClaimPermitted\":false}},\"privacy\":\"Only the playtest notes you saved and relative play-progress checkpoints; no account identifier or save payload is included; no token or absolute journey timestamp is included. This small, self-selected sample cannot support cohort, retention, comprehension, or causal claims.\"}",
+        "trend": {
+          "available": true,
+          "count": 3,
+          "averages": {
+            "clarity": 99,
+            "agency": 99,
+            "pace": 99,
+            "returnIntent": 99
+          },
+          "strongest": "agency",
+          "friction": "agency",
+          "warning": "Small, self-selected local sample; ratings describe recorded moments and do not prove player-wide impact or causality."
+        }
+      },
+      "errors": []
+    }
+  ],
+  "captures": [
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-before/inbox-desktop-dark.png",
+      "sha256": "e503d2d96ed5709867c68433c2cdf29d34673ff9ef463f47a1d88a60f6eb8a1d"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": ".cache/s128-before/playtest-desktop-dark.png",
+      "sha256": "7b2d5c1e57b90d3a353df2a8f0652f3dbe6ed05c56dcdb807fd446d90d12bfbf"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-before/inbox-desktop-light.png",
+      "sha256": "af7f22c50f28fdf7acb72cfa74204c4476282cfdf62ed67c6d52722885e65658"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": ".cache/s128-before/playtest-desktop-light.png",
+      "sha256": "d62d11525507f88449b13623e6ae234241c9e62c7aa29856e42ee38a4b81dea5"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "inbox",
+      "file": ".cache/s128-before/inbox-mobile-dark.png",
+      "sha256": "20483ef2d01c30462dfd6a1b98e5384cd07a88aef40194372cf7d7ebd74fe719"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "dark",
+      "state": "playtest",
+      "file": ".cache/s128-before/playtest-mobile-dark.png",
+      "sha256": "d7feb67b0324643aead75e6e24cce9ea9b57f29300f438c38005317603d3b5e0"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "inbox",
+      "file": ".cache/s128-before/inbox-mobile-light.png",
+      "sha256": "e482943640e002c5f6d7f0e1125428e8ae387592904e1f227c0d280657587f34"
+    },
+    {
+      "phase": "before",
+      "origin": "http://localhost:4278",
+      "device": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "theme": "light",
+      "state": "playtest",
+      "file": ".cache/s128-before/playtest-mobile-light.png",
+      "sha256": "bf5230468c682cad6a9b3b2f875318da1b7648e95bb281c8dc639538dd2f9063"
+    }
+  ],
+  "error": null
+}
