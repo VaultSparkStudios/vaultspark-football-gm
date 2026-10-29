@@ -7,31 +7,6 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 
 
 
-## 2026-10-04 — S116 — A gate that could not see a small change, and a formula that is not the one it claims
-
-**The first negative control proved nothing.** Moving a draft weight from −0.35 to −0.36 left the golden master identical, because no pick changed. A −6 weight flipped 94 sections. The gate is real; the first control was too gentle to show it.
-
-**Passer rating is not the published formula.** The schema extraction pinned it as it is: clamping before scaling caps the yards term, so the example line rates 89.3, not 99.3. It is recorded as a deliberate fix, not silently changed inside a refactor.
-
-**Pluggability is proven, not asserted.** A toy round-robin sport runs a season through the core functions, and statBook.js builds a toy schema's tables. League generation, awards and the superBowl key remain football-specific and are listed as such.
-<!-- /s116-closeout:truth -->
-
-<!-- s116-addendum:truth -->
-### 2026-10-05 — S116 addendum — inbound proved, reply-as not
-
-Inbound football@ delivery is proved: a test was sent from an external Gmail address, delivered with no bounce, and replied to from the founder's Zoho mailbox. The reply came from founder@, so "reply as the project address" is **not** proved, and no email round-trip receipt has been written. The launch evidence report correctly still reads "email: unverified". The registry is still S0/sparked until the founder applies FB.
-<!-- /s116-addendum:truth -->
-
-## S117 — 2026-10-08 — Explicit partial closeout
-
-Founder requested “finish up and /closeout and deploy.” Demographic research and the implementation plan now cover probabilistic birthplace/background, diaspora and mixed heritage; correlated skin, hair and eye appearance; varied grooming; and body proportions tied to saved measurements. Race/background never determines gameplay ability. Population datasets retain their country-specific instruments and limitations.
-
-Accepted portrait changes are scoped foundations, including the face sculpt and modern eyes; they do not establish whole-person naturalism. The unadopted trunk experiment is preserved in agent scratch storage, outside production and portable tests.
-
-Verification: full core attempt 712/713; the historical modern grooming comparison was corrected to its immutable pre-sculpt authority and its focused rerun passed 3/3. No full-core green rerun is claimed. Runtime timed out at 45 minutes and independently reproduces a 16.2 MB six-week raw snapshot against the unchanged 16 MB bar. Visual QA retains one blocking craft defect. Fresh final 30-season GM verification and remaining NFL benefits/policy scope are pending.
-
-Deploy: deferred because applicable checks are nonpassing. Cloudflare credential discovery is READY; this is agent verification work, not a missing-credential or founder-approval dependency. No release gate override, production promotion, public launch, or completed-goal claim. Evidence: docs/visual-qa/PLAYER_PARTIAL_CLOSEOUT_2026-10-08.json.
-
 ## 2026-10-22 — S118 — Candidate evidence remains distinct from delivery
 
 Focused character, family and save checks pass; full engine/browser and exact deployment acceptance remain pending. Characters remain stylized, and modeled body volume does not prove complete physical tissue mass or population calibration. Emulated mobile captures do not prove physical-device frame rates. Historical golden and visual records remain historical. New test inventory gaps are repaired without removing assertions; interrupted and failed runs are not counted as full acceptance. The public status preview describes implemented candidate behavior and does not establish production delivery.
@@ -107,11 +82,6 @@ S125: Three optional player-state repairs shipped and accepted at game/API1ad; t
 
 Exact C2 source CI7/7; source Studio398/398; selected focused143/143 and entry37/37 separately, with overlap not summed. Actual C2 staging/production browser7/7 and native provenance14/14 per origin; 60 primary plus24 prediction images cover selected named states only. Native five-run desktop/mobile performance passed both origins; production LCP1472/1456ms, INP24ms and CLS0.0003/0.0131. Matching immutable C2 API image and ready database verified with existing database/routing preservation. Earlier C1 local/browser and failed performance observations remain historical. Aggregate application case count, actual-player outcomes and full launch readiness remain unmeasured. Primary60 and prediction supplemental24 images cover named selected states and themes only. Source Studio is not final metadata acceptance; full application test totals and real-player outcomes are not measured. Original failed fixture, quota-grade and transport observations remain retained. Exact frontend/API release: reports/s126-c2-release-acceptance.json. Final exact staged closing-metadata Studio acceptance, final security/supply-chain checks, containing main commit/push/readback, actual signed impact delivery and owned process/worktree/lock cleanup remain required. No final metadata, publication, Ark delivery, cleanup or native goal completion is claimed at this checkpoint.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-29 — Session 127 — Separate accepted technical release from finalization
 
 Two selected outcomes independently reviewed. Exact committed source has native Studio398/398 and hosted CI7/7. Staging and production each have four desktop/mobile dark/light worker journeys,24 independently reviewed captures, native provenance14/14 and unchanged five-run performance checks on both profiles. Actual matching API image is running, database ready, existing database/routing preserved, prior source/image and frontend deployment retained for rollback. Final visual84 preserves baseline/local/hosted source boundaries and documented capture limits. Counts have separate scopes and are not summed. No real-player outcome, restore drill or public launch approval is claimed.
@@ -125,3 +95,8 @@ Two selected outcomes. Exact-source hosted CI7/7, source Studio398/398 and corre
 The corrected closing metadata passed the unchanged native Studio suite398/398 at staged tree 150020108b8857ad084b5ac15661097c3d896225; the first397/398 failure remains preserved as reports/s127-final-metadata-attempt1.json. First containing metadata commit a533a31b32c7d8f7e463abceff7ef8d07270ba2a was pushed and read back. Signed impact 01K63134KU7A5F6CF32DD300EC was shipped and HMAC verified; recipient adoption is not asserted. The owned verification checkout was removed with evidence preserved, and actual owned-job census found zero running. This is verified finalization for the same S127, not a new session or additional product delivery. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release.
 
 The prior source398, failed metadata397/398 and corrected metadata398/398 remain separately attributed. Earlier pending statements are historical checkpoints. Completion: reports/s127-closeout-completion.json.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

@@ -12,16 +12,6 @@ SIL delta: 532 → 536 (+4). Engineering assessments, not user-outcome measureme
 
 > Older entries S112 live verbatim in `context/archive/SELF_IMPROVEMENT_LOOP_S112-S112.md`.
 
-## 2026-10-08 — Session 117 — Scoped foundations, explicit partial handoff
-
-SIL v3.0: **655 / 1000** (Dev Health 55, Creative Alignment 75, Momentum 60, Engagement 50, Process Quality 55, Cross-Repo Coherence 70, Security Posture 75, Ecosystem Integration 60, Capital Efficiency 90, Automation Coverage 65). Intent outcome: Partial. Velocity: 0 newly completed whole audit items at closeout. Debt: ↑ reproducible save-payload regression and uncompleted final verification. These are engineering assessments, not measured player outcomes. Scores reflect substantial researched/scoped progress, explicit observed failures, and an unfinished integrated outcome.
-
-- Preserve historical geometry proof against immutable milestone source; deliberate later anatomy changes need current independent checks.
-- Whole-person visual acceptance cannot be inferred from passing focused mesh tests.
-- Avoid concurrent expensive shard runs on a pressured host; timeout evidence remains nonpassing until a complete source-bound rerun.
-- Prototype tests depending on scratch files must stay outside portable release tests.
-- Explicit closeout carries unfinished scope without a goal-complete claim.
-
 ## 2026-10-22 — S118 — Active verification checkpoint, unscored
 
 The character implementation is under complete verification. Three crown/memory failures were repaired within existing limits; the scouting click collision was corrected; the claim lazy-load check now observes actual responses; ten omitted tests were added to the inventory. No final score or completed-session record is assigned while full acceptance and deployment remain pending. The latest closed-session score below remains S117.
@@ -185,11 +175,6 @@ Final closing metadata passed the full unchanged native Studio suite (398/398) o
 
 Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected outcome count remains3.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-29 — Session 127 — Trustworthy franchise recovery
 
 SIL v3.0: **536 / 1000** (Dev Health 93, Creative Alignment 70, Momentum 65, Engagement 45, Process Quality 62, Cross-Repo Coherence 60, Security Posture 60, Ecosystem Integration 20, Capital Efficiency 0, Automation Coverage 61). Classification: **Partial — finalization pending** at this ordered-record checkpoint. Selected product and technical release evidence is verified; final metadata/publication/impact/cleanup remain required. Scores are reviewed engineering judgment, not measured player or financial outcomes.
@@ -230,3 +215,8 @@ Two selected outcomes. Exact-source hosted CI7/7, source Studio398/398 and corre
 The corrected closing metadata passed the unchanged native Studio suite398/398 at staged tree 150020108b8857ad084b5ac15661097c3d896225; the first397/398 failure remains preserved as reports/s127-final-metadata-attempt1.json. First containing metadata commit a533a31b32c7d8f7e463abceff7ef8d07270ba2a was pushed and read back. Signed impact 01K63134KU7A5F6CF32DD300EC was shipped and HMAC verified; recipient adoption is not asserted. The owned verification checkout was removed with evidence preserved, and actual owned-job census found zero running. This is verified finalization for the same S127, not a new session or additional product delivery. Before native goal completion verify the final containing receipt commit on remote main, exact ancestor receipt bytes and current canonical derived surfaces in a clean project worktree with zero owned transient jobs; then release ONLY the original goal-bound S127 lock (start 2026-10-29T02:12:39.579Z, startHead ba3a126cd2ceaa2a1f95c972fc4898ece55ffefd). This receipt cannot attest to its own containing publication or lock release.
 
 Proof: reports/s127-closeout-completion.json. Existing two unselected future-discipline items remain unselected; no additional work is authorized by this record.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

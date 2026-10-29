@@ -1,14 +1,3 @@
-## Session 116 — 2026-10-04 — Multi-sport platform: guardrails and the first six seams
-
-The founder asked for every sport as a branch of Franchise Architect. Plan approved: one shared core plus sport packs in this monorepo, with basketball second. This session built Phase 0 (golden master and conformance kit) and Phase 1 steps 1–6 with agents, verifying each step independently against the golden master. The host repeatedly stopped long background test runs under memory pressure (WSL held about 7 GB), so every shard ran at each commit in the foreground or in runtime chunks. A deploy cycle brought production level with main once the refactors had moved past it. Source d913b9f9c0043d00131506c0d4271034a15fc169. All six shards green at this commit, run shard by shard and in runtime chunks under host memory pressure (studio 365, sim-contract 122, sim-realism 9, long 3, core 290, runtime 1013). Football golden master identical at every extraction step. Stable staging 14/14 (artifact b4acf986…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37200292923 success, production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Public launch remains HOLD.
-<!-- /s116-closeout:worklog -->
-
-<!-- s116-addendum:worklog -->
-### Session 116 addendum — 2026-10-05 — launch path
-
-The founder asked the agent to clear the launch blockers and to consult studio-ops. A Studio-ops review found the D-S259.2 email contract: Zoho for human mail, Brevo for transactional mail, Cloudflare Routing for inbound. FA's ledger state was "dns-configured-unproved". The first inbound test bounced (550 5.1.1) because no routing rule existed. The agent added a forward rule through the Cloudflare API after the founder re-authenticated the connector, and the third test was delivered. The founder's Zoho reply proved inbound delivery but came from founder@, so reply-as is not yet proved and the founder deferred it to a custom email studio project. The S0→FB registry request was filed and verdicted green. The founder-go apply was blocked for the agent by the permission system and remains founder-run.
-<!-- /s116-addendum:worklog -->
-
 ## S117 — 2026-10-08 — Explicit partial closeout
 
 Founder requested “finish up and /closeout and deploy.” Demographic research and the implementation plan now cover probabilistic birthplace/background, diaspora and mixed heritage; correlated skin, hair and eye appearance; varied grooming; and body proportions tied to saved measurements. Race/background never determines gameplay ability. Population datasets retain their country-specific instruments and limitations.
@@ -108,11 +97,6 @@ Final closing metadata passed the full unchanged native Studio suite (398/398) o
 
 Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected outcome count remains3.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-29 — Session 127 — Trustworthy franchise recovery
 
 S127 shipped trustworthy franchise recovery: Restore applies the saved dashboard and preserves the next playable action; runtime-owned retention handles storage pressure. Damaged optional First Season Contract records no longer crash the Desk or grant malformed completion. Matching frontend/API production source is verified; closeout finalization remains pending. Two selected outcomes independently reviewed. Exact committed source has native Studio398/398 and hosted CI7/7. Staging and production each have four desktop/mobile dark/light worker journeys,24 independently reviewed captures, native provenance14/14 and unchanged five-run performance checks on both profiles. Actual matching API image is running, database ready, existing database/routing preserved, prior source/image and frontend deployment retained for rollback. Final visual84 preserves baseline/local/hosted source boundaries and documented capture limits. Counts have separate scopes and are not summed. No real-player outcome, restore drill or public launch approval is claimed.
@@ -126,3 +110,8 @@ The corrected closing metadata passed the unchanged native Studio suite398/398 a
 Two selected outcomes. Exact-source hosted CI7/7, source Studio398/398 and corrected closing-metadata Studio398/398 are separate checks, never an aggregate application case count. Staging and production each have four desktop/mobile dark/light actual worker journeys,24 independently reviewed captures, native provenance14/14 and five-run performance on both profiles. Matching API image/database readiness and existing database/routing preservation are accepted by reports/s127-release-acceptance.json. Final visual84 retains baseline12/local-C1 24/staging24/production24 scopes and capture limitations. No real-player outcome, restore drill, broad launch readiness or lifecycle transition is inferred.
 
 Proof: reports/s127-closeout-completion.json. SIL remains536/1000; selected outcome count remains2.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `logs/archive/WORK_LOG.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

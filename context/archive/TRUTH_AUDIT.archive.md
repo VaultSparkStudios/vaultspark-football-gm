@@ -1025,3 +1025,28 @@ While closeout CI was running, Studio Template Bot advanced main to 08a3d08 with
 <!-- /s115-closeout:truth -->
 
 <!-- s116-closeout:truth -->
+
+## 2026-10-04 — S116 — A gate that could not see a small change, and a formula that is not the one it claims
+
+**The first negative control proved nothing.** Moving a draft weight from −0.35 to −0.36 left the golden master identical, because no pick changed. A −6 weight flipped 94 sections. The gate is real; the first control was too gentle to show it.
+
+**Passer rating is not the published formula.** The schema extraction pinned it as it is: clamping before scaling caps the yards term, so the example line rates 89.3, not 99.3. It is recorded as a deliberate fix, not silently changed inside a refactor.
+
+**Pluggability is proven, not asserted.** A toy round-robin sport runs a season through the core functions, and statBook.js builds a toy schema's tables. League generation, awards and the superBowl key remain football-specific and are listed as such.
+<!-- /s116-closeout:truth -->
+
+<!-- s116-addendum:truth -->
+### 2026-10-05 — S116 addendum — inbound proved, reply-as not
+
+Inbound football@ delivery is proved: a test was sent from an external Gmail address, delivered with no bounce, and replied to from the founder's Zoho mailbox. The reply came from founder@, so "reply as the project address" is **not** proved, and no email round-trip receipt has been written. The launch evidence report correctly still reads "email: unverified". The registry is still S0/sparked until the founder applies FB.
+<!-- /s116-addendum:truth -->
+
+## S117 — 2026-10-08 — Explicit partial closeout
+
+Founder requested “finish up and /closeout and deploy.” Demographic research and the implementation plan now cover probabilistic birthplace/background, diaspora and mixed heritage; correlated skin, hair and eye appearance; varied grooming; and body proportions tied to saved measurements. Race/background never determines gameplay ability. Population datasets retain their country-specific instruments and limitations.
+
+Accepted portrait changes are scoped foundations, including the face sculpt and modern eyes; they do not establish whole-person naturalism. The unadopted trunk experiment is preserved in agent scratch storage, outside production and portable tests.
+
+Verification: full core attempt 712/713; the historical modern grooming comparison was corrected to its immutable pre-sculpt authority and its focused rerun passed 3/3. No full-core green rerun is claimed. Runtime timed out at 45 minutes and independently reproduces a 16.2 MB six-week raw snapshot against the unchanged 16 MB bar. Visual QA retains one blocking craft defect. Fresh final 30-season GM verification and remaining NFL benefits/policy scope are pending.
+
+Deploy: deferred because applicable checks are nonpassing. Cloudflare credential discovery is READY; this is agent verification work, not a missing-credential or founder-approval dependency. No release gate override, production promotion, public launch, or completed-goal claim. Evidence: docs/visual-qa/PLAYER_PARTIAL_CLOSEOUT_2026-10-08.json.

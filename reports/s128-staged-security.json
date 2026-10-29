@@ -1,8 +1,8 @@
 {
   "session": 128,
-  "at": "2026-10-29T06:20:56.900Z",
+  "at": "2026-10-29T06:39:23.731Z",
   "mode": "staged",
-  "scanned": 28,
+  "scanned": 20,
   "findings": [],
   "settings": {
     "passing": true,

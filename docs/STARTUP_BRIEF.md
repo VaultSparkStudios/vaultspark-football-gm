@@ -67,8 +67,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     36,451 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     34,378 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        12/12 (100%)  ·  2026-10-29  ✓                 ║
+║  ⛔  Doctor        9/12 (75%)  ·  3 failing                       ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 

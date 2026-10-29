@@ -1,5 +1,11 @@
 # Task Board — Franchise Architect: Football
 
+## S128 Wave status
+
+- [x] Wave 1: fresh startup, bound goal, live audit and candidate admission.
+- [x] Wave 2: both selected repairs; focused48/48, actual worker browser4/4, independent code/pixel review. Hosted acceptance remains separate.
+- [ ] Wave 3: exact candidate staging/production, full ordered closeout and push.
+
 ## S127 Wave status
 
 - [x] Wave 1 — Fresh native goal S127 binding, startup checks, nine-axis audit and pre-edit admission. Startup held-source-absent and missing-helper limits remain recorded.
@@ -150,25 +156,7 @@ S112 evidence correction to the older CPU–CPU market task: test/session111-cpu
 - [ ] Studio-ops gaps: Analytica feed (baton 2026-10-02), Obelisk OIDC (handoff 2026-10-01), Studio OS map 14/15; decide hello@ (studio standard) vs football@.
 <!-- /s116-closeout:tasks -->
 
-## Session 115 — Situational calls, archetype drafting and a parallel deploy gate (2026-10-03)
-
-- [x] Situational calls: a standing 4th-down and two-minute posture for the controlled club. Defaults are byte-identical to the previous engine over 36 seeded games, every posture uses one draw per decision, and the measured go rate is 0.078 / 0.125 / 0.188 with 245 vs 373 two-minute plays. Desk card, both transports, 2-MIN replay tag.
-- [x] CPU drafting tilts by GM archetype. In a matched 10-season probe on two seeds, Win-Now draftee headroom was 1.69–1.73 vs 2.38–2.49, with league overall mean, sd and p90 and the spread of champions unchanged.
-- [x] Deploy gate runs as parallel matrix legs; the promotion gate took 7.5 minutes instead of about 23.
-- [x] Verify and deliver: Source 80125a0a5609be8a9fd7c01399e176ffe1b8e052. Six-shard suite 1765/1765 at this commit (core 290, runtime 1013, sim-contract 85, sim-realism 9, long 3 in one run; studio 365 re-run after the first run was stopped by host memory pressure). Stable staging 14/14 (artifact b4506762…), promotion https://github.com/VaultSparkStudios/vaultspark-football-gm/actions/runs/37141977109 success with the gate as four parallel legs (about 7.5 minutes, was about 23), production and staging provenance 10/10, hosted performance verified, Doctor blockingFailing 0. Visual receipt 214 captures bound to 80125a0. Public launch remains HOLD.
-
-### Next
-- [ ] Moneyball is never selected in generated leagues and Loyalty clubs barely move, because draft classes carry about 2 points of headroom. Revisit archetype spread or headroom variance only with a measured purpose.
-- [ ] Launch stays HOLD: delivered on-domain email, candidate-bound founder approval and lifecycle reconciliation (registry SPARKED vs local FORGE).
-<!-- /s115-closeout:tasks -->
-
 <!-- ledger-roll:pointer -->
 ---
 
 Older entries are retained verbatim in `context/archive/TASK_BOARD.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-## S128 Wave status
-
-- [x] Wave 1: fresh startup, bound goal, live audit and candidate admission.
-- [x] Wave 2: both selected repairs; focused48/48, actual worker browser4/4, independent code/pixel review. Hosted acceptance remains separate.
-- [ ] Wave 3: exact candidate staging/production, full ordered closeout and push.

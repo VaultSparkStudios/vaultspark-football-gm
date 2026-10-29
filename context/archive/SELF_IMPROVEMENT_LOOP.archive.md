@@ -2016,3 +2016,13 @@ S116 remains 858/1000. The email blocker was a missing route, not a missing prov
 
 - [SIL] Before configuring providers, send one real message and read the bounce; it names the broken hop.
 <!-- /s116-addendum:sil -->
+
+## 2026-10-08 — Session 117 — Scoped foundations, explicit partial handoff
+
+SIL v3.0: **655 / 1000** (Dev Health 55, Creative Alignment 75, Momentum 60, Engagement 50, Process Quality 55, Cross-Repo Coherence 70, Security Posture 75, Ecosystem Integration 60, Capital Efficiency 90, Automation Coverage 65). Intent outcome: Partial. Velocity: 0 newly completed whole audit items at closeout. Debt: ↑ reproducible save-payload regression and uncompleted final verification. These are engineering assessments, not measured player outcomes. Scores reflect substantial researched/scoped progress, explicit observed failures, and an unfinished integrated outcome.
+
+- Preserve historical geometry proof against immutable milestone source; deliberate later anatomy changes need current independent checks.
+- Whole-person visual acceptance cannot be inferred from passing focused mesh tests.
+- Avoid concurrent expensive shard runs on a pressured host; timeout evidence remains nonpassing until a complete source-bound rerun.
+- Prototype tests depending on scratch files must stay outside portable release tests.
+- Explicit closeout carries unfinished scope without a goal-complete claim.

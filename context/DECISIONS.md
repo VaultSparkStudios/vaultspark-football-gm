@@ -6,24 +6,6 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 > Older entries S112 live verbatim in `context/archive/DECISIONS_S112-S112.md`.
 
-## 2026-10-08 — S117 partial closeout and release disposition
-
-Honor explicit closeout without converting partial work into completion. Preserve the immutable accepted grooming fixture for historical modern geometry; current categorical geometry remains compared to production and modern sculpt/eyes have their own acceptance authority. Do not regenerate goldens. Preserve unadopted trunk experiments outside production. Keep the save-size and rendered appearance gates unchanged; authorized deployment waits on applicable checks, with no redundant approval request.
-
-## 2026-10-22 — S118 — Character compatibility and bounded rendering
-
-New body proportions use an explicit v5 decoder so existing v4/v3 records retain their geometry. The softer face sculpt preserves the exact crown boundary and the existing1,650,000-byte mesh budget; redundant canthal subdivisions were removed rather than increasing that budget. Family links share background and natural pigment channels while preserving individual faces, recorded measurements and football random streams. Original naming metadata remains generation provenance when a linked surname changes. Complete candidate verification and deployment remain pending.
-
-
-<!-- s118-final:decisions -->
-## 2026-10-22 — Session 118 — Preserve historical authority and deploy only complete candidates
-
-Keep the original S116 golden fixture immutable and adopt a separately versioned S118v2 fixture with attributed section changes and strict retention checks. Store original synthetic browser fixtures as versioned, hash-checked data; lossless gzip preserves the exact injury snapshot. Exclude only opaque PNG payloads from textual finite-geometry validation and prove invalid geometry still fails.
-
-Seven executed exact-candidate CI jobs/test steps are the release contract. Preserve every failed attempt and reject promotion until all required jobs succeed. Scope backend deployment to the application container; compare database and routing identity before/after and retain rollback images.
-
-Use the native bounded closeout ceremony because shared autopilot child scripts would write another repository despite its target flag. No foreign process mutation, --force, hook bypass or fabricated aggregate test count. Characters remain stylized procedural art and movement studies; no photorealism, motion capture, complete physical tissue-mass calibration, physical-device frame-rate or actual-user long-career proof is claimed. Existing expanded-mobile Desk/card right-edge clipping remains recorded and does not obstruct the tested save-restoration controls. Broader S117 benefits/policy and actual-user career work remain outside this selected three-item scope. Technical promotion does not authorize a public launch or lifecycle transition; launch/email holds remain independent.
-
 ## 2026-10-23 — S119 — Fix layout and stat truth at their sources; repair main before promoting
 
 - Fix the shared .team-mode-switch, not the Desk column: hiding the overflow with minmax(0,1fr) would have clipped the switch instead of fixing it. The fit-content width keeps the single-row look wherever it fits.
@@ -99,11 +81,6 @@ Final closing metadata passed the full unchanged native Studio suite (398/398) o
 
 Proof: reports/s126-c2-closeout-completion.json. SIL remains532/1000; selected outcome count remains3.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-10-29 — Session 127 — Recovery authority and validated optional progress
 
 Apply the restored dashboard from the response state rather than passing its envelope into browser authority. Rewind retention belongs to the runtime storage writer, including acknowledged worker writes; preflight and bounded quota retry preserve a usable recent recovery point. Missing dates require a total ordering and newly written checkpoints must survive inherited future dates.
@@ -135,3 +112,12 @@ No new creative, licensing, security-policy, lifecycle or launch decision is mad
 Preserve valid Inbox history and local playtest notes while validating damaged optional data at admission. Copy packets enforce the existing disclosed fields; no privacy policy, identity contract or lifecycle change. The initial Studio attempt retained five failures: a repaired startup-byte regression, interim audit state, and ignored local tooling/private-file conflicts to be checked against the clean committed candidate. Reusing the note constructor schema restores the unchanged650000-byte startup target (649987 measured); headroom remains narrow. CANON-045 remains an existing independent launch gap; this release changes no authentication.
 
 The local premise checker verified both original problem markers before edits but lacks canonical --record support. A supplemental pre-edit source snapshot is preserved; a later canonical recorder cannot retroactively prove gate timing and will be recorded as a deviation.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-10-29 — S128 candidate record correction
+
+C1 source0059051c passed focused48/48, staging native14/14, actual staging browser4/4 and hosted performance, but its isolated Studio suite passed397/398: the newly appended decision session exposed overdue ledger retention. Canonical ledger-roll moved older entries verbatim into archives; the focused retention suite then passed10/10. C1 was never pushed or promoted to production. Its evidence remains separately named; the corrected candidate must pass fresh exact-source checks and staging.
